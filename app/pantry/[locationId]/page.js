@@ -207,6 +207,21 @@ export default function LocationDetail() {
     setSaving(true);
     try {
       const r = await resolveProduct(nameInput);
+
+      // après avoir obtenu `r = await resolveProduct(nameInput)` :
+      const prodRow = products.find(p=>p.id===r.id);
+      if (prodRow && (prodRow.density_g_per_ml==null || prodRow.grams_per_unit==null)) {
+        const { estimateProductMeta } = await import('@/lib/meta');
+        const est = estimateProductMeta({ name: prodRow.name, category: prodRow.category });
+        const patch = {};
+        if (prodRow.density_g_per_ml==null && est.confidence_density>=0.6) patch.density_g_per_ml = est.density_g_per_ml;
+        if (prodRow.grams_per_unit==null && est.grams_per_unit && est.confidence_unit>=0.6) patch.grams_per_unit = est.grams_per_unit;
+        if (Object.keys(patch).length) {
+          await supabase.from('products_catalog').update(patch).eq('id', prodRow.id);
+          setProducts(prev => prev.map(p => p.id===prodRow.id ? {...p, ...patch} : p));
+        }
+      }
+
       // si pas de DLC saisie, appliquer notre proposition
       const finalDlc = dlc || addDaysISO(r.shelfDays || 7);
       // si le produit n'avait pas de shelf_life_days en base, on l’écrit avec l’estimation (apprentissage)
