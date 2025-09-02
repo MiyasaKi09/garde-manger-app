@@ -1,4 +1,3 @@
-// app/pantry/[locationId]/page.js
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
@@ -37,9 +36,9 @@ const pluralizeSoft = (s) => {
 const todayISO = () => new Date().toISOString().slice(0,10);
 const addDaysISO = (d) => new Date(Date.now() + d*86400000).toISOString().slice(0,10);
 
-/* ---------- Estimation DLC (améliorée) ---------- */
+/* ---------- Estimation DLC (plancher 3j, tomates 7j) ---------- */
 const CAT_DAYS = {
-  'Sec': 365, 'Surgelé': 180, 'Conserve': 1095, 'Laitier': 7, 'Fromage': 21, 'Boulangerie': 3, 'Frais': 5, 'Viande/Poisson': 2,
+  'Sec': 365, 'Surgelé': 180, 'Conserve': 1095, 'Laitier': 7, 'Fromage': 21, 'Boulangerie': 3, 'Frais': 7, 'Viande/Poisson': 2,
 };
 const KEYWORDS = [
   { rx: /ya+?ourt|yogh/i, days: 14 },
@@ -53,22 +52,17 @@ const KEYWORDS = [
   { rx: /steak|boeuf|veau|agneau|poulet|dinde|porc/i, days: 2 },
   { rx: /poisson|saumon|thon|cabillaud/i, days: 2 },
   { rx: /jambon|charcut/i, days: 5 },
-  // fruits & légumes frais
   { rx: /tomate|salade|courgette|pomme|banane|carotte|oignon/i, days: 7 },
   { rx: /herbe|persil|basilic|coriandre|menthe/i, days: 4 },
   { rx: /surg|congel/i, days: 180 },
 ];
 function applyModifiers({ days, confidence, locationName='', isOpened=false, category='' }) {
   const loc = (locationName||'').toLowerCase();
-  // congélation → long
   if (/cong|surg/.test(loc)) { days = Math.max(days, 180); confidence = Math.max(confidence, 0.6); }
-  // placard → max 1 an
   if (/placard|epicer|cave/.test(loc)) { days = Math.min(days, 365); }
-  // frigo pour laitier/charcut/fromage
   if (/frigo|frigidaire/.test(loc) && /(lait|creme|charcut|fromage|yaourt)/i.test((category||'')+' '+loc)) {
     days = Math.min(days, 21);
   }
-  // ouvert → réduction
   if (isOpened) { days = Math.max(1, Math.round(days * 0.6)); confidence -= 0.1; }
   return { days, confidence: Math.max(0.2, Math.min(1, confidence)) };
 }
@@ -77,7 +71,6 @@ function estimateShelfLife({ name='', category='', locationName='', isOpened=fal
     if (r.rx.test(name)) {
       let days = r.days; let confidence = 0.8;
       ({ days, confidence } = applyModifiers({ days, confidence, locationName, isOpened, category }));
-      // Plancher global (évite les 1–2 jours accidentels si non-ouvert)
       if (!isOpened) days = Math.max(days, 3);
       return { days, confidence, reason: 'keyword' };
     }
@@ -171,7 +164,7 @@ export default function LocationDetail() {
     };
   }, []);
 
-  // Suggestions (seulement produits/alias existants)
+  // Suggestions (uniquement EXISTANT, dédupliqué par produit)
   const suggestions = useMemo(() => {
     const q = nameInput.trim();
     if (!q) return [];
@@ -181,27 +174,30 @@ export default function LocationDetail() {
       const p = products.find(x=>x.id===a.product_id); if (!p) continue;
       cands.push({ id:p.id, label:p.name, base:a.alias, score:scoreCandidate(q, a.alias), unit:p.default_unit||'g' });
     }
-    const best = new Map();
+    const best = new Map(); // id -> meilleur match
     for (const c of cands) { const prev = best.get(c.id); if (!prev || c.score<prev.score) best.set(c.id, c); }
     return Array.from(best.values()).sort((a,b)=>a.score-b.score).slice(0,7);
   }, [nameInput, products, aliases]);
 
-  // Hint transparent directement dans le champ (fin de la meilleure suggestion)
+  // Ghost-texte aligné : on superpose un “miroir” avec la même fonte/padding
   const inlineHint = useMemo(() => {
     const q = nameInput;
     if (!q || !suggestions.length) return '';
     const best = suggestions[0].label || '';
     const nQ = strip(q), nB = strip(best);
     if (!nB.startsWith(nQ) || nQ.length>=best.length) return '';
-    return best.slice(q.length); // on affiche seulement la terminaison
+    return best.slice(q.length);
   }, [nameInput, suggestions]);
 
-  async function resolveProduct(rawName) {
+  /**
+   * Résout un produit.
+   * - lookupOnly=true : ne crée pas, ne génère pas d’alias (utilisé pour le PREVIEW/DLC).
+   * - addAliasOnMatch=true : si on matche un existant et que le texte diffère → ajoute un alias (utilisé sur AJOUT).
+   */
+  async function resolveProduct(rawName, { lookupOnly=false, addAliasOnMatch=false, createIfMissing=true } = {}) {
     const q = rawName.trim();
     if (!q) throw new Error('Nom vide');
 
-    // On NE crée PAS à partir des suggestions : resolveProduct est utilisé pour l’ajout
-    // => si pas trouvé proprement, on crée (mais la bulle n’affiche que l’existant).
     let best = null;
     for (const p of products) {
       const s = scoreCandidate(q, p.name);
@@ -215,15 +211,23 @@ export default function LocationDetail() {
     }
 
     if (best && best.score <= 2) {
-      const typed = strip(q), canonical = strip(best.name);
-      if (typed && canonical && typed!==canonical) {
-        await supabase.from('product_aliases').insert({ product_id: best.id, alias: q }).catch(()=>{});
+      if (!lookupOnly && addAliasOnMatch) {
+        const typed = strip(q), canonical = strip(best.name);
+        if (typed && canonical && typed!==canonical) {
+          await supabase.from('product_aliases').insert({ product_id: best.id, alias: q }).catch(()=>{});
+        }
       }
       const shelfDays = Number(best.shelf) || estimateShelfLife({ name: best.name, category: best.category, locationName: locName }).days;
       return { id: best.id, unit: best.unit, created:false, canonicalName: best.name, shelfDays, category: best.category };
     }
 
-    // création (si on tape un nom réellement nouveau)
+    if (lookupOnly || !createIfMissing) {
+      // on ne crée rien en mode preview
+      const guessed = estimateShelfLife({ name: q, locationName: locName });
+      return { id: null, unit: 'g', created:false, canonicalName: q, shelfDays: guessed.days, category: null };
+    }
+
+    // création (validée uniquement quand on clique “Ajouter”)
     const canonical = toTitle(pluralizeSoft(q));
     const already = products.find(p=> strip(p.name)===strip(canonical));
     if (already) {
@@ -241,11 +245,11 @@ export default function LocationDetail() {
     return { id: ins.id, unit: ins.default_unit||'g', created:true, canonicalName: ins.name, shelfDays: guessed.days, category: ins.category };
   }
 
-  // Pré-aperçu DLC
+  // Pré-aperçu DLC : lookupOnly → ne crée pas, n’ajoute pas d’alias
   useEffect(()=>{ (async()=>{
     if (!nameInput.trim() || dlc) { setPreviewDlc(null); return; }
     try {
-      const r = await resolveProduct(nameInput);
+      const r = await resolveProduct(nameInput, { lookupOnly:true, addAliasOnMatch:false, createIfMissing:false });
       const when = addDaysISO(r.shelfDays || 7);
       setPreviewDlc(when);
     } catch { setPreviewDlc(null); }
@@ -256,7 +260,8 @@ export default function LocationDetail() {
     if (!nameInput.trim() || !qty) return alert('Produit et quantité requis.');
     setSaving(true);
     try {
-      const r = await resolveProduct(nameInput); // produit résolu
+      // 👉 création & alias UNIQUEMENT ici
+      const r = await resolveProduct(nameInput, { lookupOnly:false, addAliasOnMatch:true, createIfMissing:true });
 
       /* --- Apprentissage meta (densité / g par unité) si manquants --- */
       const prodRow = products.find(p => p.id === r.id);
@@ -317,23 +322,26 @@ export default function LocationDetail() {
     <div>
       <h1>{locName}</h1>
 
-      {/* Formulaire ajout avec auto-complétion + unités fixes + DLC auto */}
+      {/* Formulaire ajout */}
       <form onSubmit={addLot} className="card" style={{display:'grid',gap:8,maxWidth:760}}>
         <div style={{display:'grid',gridTemplateColumns:'2fr 1fr',gap:8}}>
           <label>Produit
             <div style={{position:'relative'}}>
-              {/* hint transparent */}
+              {/* Ghost/hint superposé (miroir) */}
               {inlineHint && (
                 <div
                   aria-hidden
                   style={{
-                    position:'absolute', inset:'1px 1px auto 1px',
-                    padding:'8px 10px', pointerEvents:'none',
-                    color:'rgba(0,0,0,.35)', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis',
+                    position:'absolute', inset:'0',
+                    display:'flex', alignItems:'center',
+                    padding:'8px 10px',
+                    pointerEvents:'none',
+                    font: 'inherit', lineHeight: 'inherit',
+                    color:'rgba(0,0,0,.35)',
+                    whiteSpace:'nowrap', overflow:'hidden'
                   }}
                 >
-                  {/* on affiche la saisie + la terminaison en léger */}
-                  <span style={{opacity:0}}>{nameInput}</span>
+                  <span style={{visibility:'hidden'}}>{nameInput}</span>
                   <span>{inlineHint}</span>
                 </div>
               )}
@@ -413,7 +421,7 @@ export default function LocationDetail() {
         <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:8}}>
           <label>Unité
             <select className="input" value={unit} onChange={e=>setUnit(e.target.value)}>
-              {UNIT_OPTIONS.map(u=><option key={u} value={u}>{u}</option>)}
+              {['g','kg','ml','cl','l','u'].map(u=><option key={u} value={u}>{u}</option>)}
             </select>
           </label>
           <label>DLC
@@ -434,7 +442,7 @@ export default function LocationDetail() {
       </form>
 
       {/* lots groupés par produit */}
-      {Object.entries(groups).map(([name, items]) => (
+      {Object.entries(groupBy(lots, l => l.product?.name ?? '—')).map(([name, items]) => (
         <div key={name} className="card">
           <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:8}}>
             <strong>{name}</strong>
