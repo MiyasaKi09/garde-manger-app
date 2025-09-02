@@ -4,14 +4,15 @@ import { useParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import IconButton from '@/components/ui/IconButton';
 
-// ---------- utils fuzzy ----------
+// ---------- utils ----------
 const strip = (s='') => s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().trim();
 function levenshtein(a, b) {
   a = strip(a); b = strip(b);
   const m = a.length, n = b.length;
   if (!m) return n; if (!n) return m;
-  const dp = Array.from({length: m+1}, (_,i)=>[i, ...Array(n).fill(0)]);
-  for (let j=1;j<=n;j++) dp[0][j]=j;
+  const dp = Array.from({length: m+1}, (_,i)=>Array(n+1).fill(0));
+  for (let i=0;i<=m;i++) dp[i][0]=i;
+  for (let j=0;j<=n;j++) dp[0][j]=j;
   for (let i=1;i<=m;i++){
     for (let j=1;j<=n;j++){
       const cost = a[i-1]===b[j-1]?0:1;
@@ -23,16 +24,52 @@ function levenshtein(a, b) {
 function scoreCandidate(query, target) {
   const q = strip(query), t = strip(target);
   if (!q || !t) return 999;
-  if (t.startsWith(q)) return 0;                // parfait début
-  if (t.includes(q))  return 1;                // contient
-  return levenshtein(q, t);                    // distance
+  if (t.startsWith(q)) return 0;
+  if (t.includes(q))  return 1;
+  return levenshtein(q, t);
 }
 const toTitle = (s) => s ? s.trim().replace(/\s+/g,' ').replace(/^.| [a-z]/g, m => m.toUpperCase()) : s;
 const pluralizeSoft = (s) => {
   const t = s.trim();
-  // Règle très simple: si >2 lettres et ne finit pas par 's', ajoute 's' (évite "Lait")
   return t.length>2 && !/[sxz]$/i.test(t) && !t.endsWith('s') ? t + 's' : t;
 };
+const todayISO = () => new Date().toISOString().slice(0,10);
+const addDaysISO = (d) => new Date(Date.now() + d*86400000).toISOString().slice(0,10);
+
+// Règles simples d’estimation si shelf_life_days absent
+function guessShelfLifeDays(name='', category='') {
+  const n = strip(name);
+  const c = strip(category);
+  const has = (k) => n.includes(k);
+
+  // Catégories “secs”
+  if (c.includes('sec') || has('pate') || has('riz') || has('farine') || has('semoule') || has('lentille') || has('boite') || has('conserve')) return 365;
+  if (has('cann')) return 1095; // conserves
+  if (has('sucre') || has('sel') || has('cafe')) return 365;
+
+  // Laitier
+  if (has('yaourt') || has('yogh') || has('fromage blanc')) return 14;
+  if (has('lait') || has('creme')) return 7;
+  if (has('fromage')) return 21;
+
+  // Boulangerie
+  if (has('pain') || has('brioche')) return 3;
+
+  // Viande/poisson/charcuterie
+  if (has('steak') || has('boeuf') || has('veau') || has('agneau') || has('poulet') || has('dinde') || has('porc')) return 2;
+  if (has('poisson') || has('saumon') || has('thon') || has('cabillaud')) return 2;
+  if (has('jambon') || has('charcut')) return 5;
+
+  // Fruits & légumes frais
+  if (c.includes('frais') || has('tomate') || has('salade') || has('courgette') || has('pomme') || has('banane') || has('carotte') || has('oignon')) return 5;
+  if (has('herbe') || has('persil') || has('basilic') || has('coriandre') || has('menthe')) return 3;
+
+  // Surgelé
+  if (has('surg') || has('congel')) return 180;
+
+  // Par défaut
+  return 7;
+}
 
 // ---------- page ----------
 function groupBy(arr, keyFn) {
@@ -45,15 +82,16 @@ export default function LocationDetail() {
   const [lots, setLots] = useState([]);
 
   // catalogue + alias
-  const [products, setProducts] = useState([]);            // [{id,name,default_unit}]
+  const [products, setProducts] = useState([]);            // [{id,name,default_unit,category,shelf_life_days}]
   const [aliases, setAliases] = useState([]);              // [{product_id, alias}]
   const [loading, setLoading] = useState(true);
 
   // formulaire ajout
-  const [nameInput, setNameInput] = useState('');          // saisie libre
+  const [nameInput, setNameInput] = useState('');
   const [qty, setQty] = useState('');
   const [unit, setUnit] = useState('g');
   const [dlc, setDlc] = useState('');
+  const [previewDlc, setPreviewDlc] = useState(null);
   const [saving, setSaving] = useState(false);
   const inputRef = useRef(null);
 
@@ -69,7 +107,8 @@ export default function LocationDetail() {
       .order('dlc', { ascending: true });
     setLots(lotsRows || []);
 
-    const { data: prods } = await supabase.from('products_catalog').select('id,name,default_unit').order('name');
+    const { data: prods } = await supabase.from('products_catalog')
+      .select('id,name,default_unit,category,shelf_life_days').order('name');
     setProducts(prods || []);
     const { data: aliasRows } = await supabase.from('product_aliases').select('product_id,alias');
     setAliases(aliasRows || []);
@@ -83,19 +122,14 @@ export default function LocationDetail() {
     const q = nameInput.trim();
     if (!q) return [];
     const candidates = [];
-
-    // noms directs
     for (const p of products) {
       candidates.push({ id: p.id, label: p.name, base: p.name, score: scoreCandidate(q, p.name), unit: p.default_unit || 'g' });
     }
-    // alias → pointe vers le produit
     for (const a of aliases) {
       const p = products.find(x => x.id === a.product_id);
       if (!p) continue;
       candidates.push({ id: p.id, label: p.name, base: a.alias, score: scoreCandidate(q, a.alias), unit: p.default_unit || 'g' });
     }
-
-    // dédup par id en gardant le meilleur score
     const best = new Map();
     for (const c of candidates) {
       const prev = best.get(c.id);
@@ -104,78 +138,99 @@ export default function LocationDetail() {
     return Array.from(best.values()).sort((a,b)=>a.score-b.score).slice(0,7);
   }, [nameInput, products, aliases]);
 
-  // résout un nom → id produit (ou création)
-  async function resolveProductId(rawName) {
+  // résout un nom → id produit (ou création) + renvoie la shelf_life si connue/estimée
+  async function resolveProduct(rawName) {
     const q = rawName.trim();
     if (!q) throw new Error('Nom vide');
 
-    // 1) essaie correspondance existante
     let best = null;
     for (const p of products) {
       const s = scoreCandidate(q, p.name);
-      if (best===null || s < best.score) best = { type:'product', id:p.id, name:p.name, unit:p.default_unit||'g', score:s };
+      if (best===null || s < best.score) best = { type:'product', id:p.id, name:p.name, unit:p.default_unit||'g', score:s, category:p.category, shelf:p.shelf_life_days };
     }
     for (const a of aliases) {
       const p = products.find(x=>x.id===a.product_id);
       if (!p) continue;
       const s = scoreCandidate(q, a.alias);
-      if (best===null || s < best.score) best = { type:'alias', id:p.id, name:p.name, unit:p.default_unit||'g', score:s, alias:a.alias };
+      if (best===null || s < best.score) best = { type:'alias', id:p.id, name:p.name, unit:p.default_unit||'g', score:s, category:p.category, shelf:p.shelf_life_days, alias:a.alias };
     }
 
-    // Seuils “bonne” correspondance (faute légère ou proche)
     if (best && best.score <= 2) {
-      // optionnel: si l'utilisateur a tapé une variante différente du nom canonique, on l'enregistre en alias
+      // on enregistre l'alias tapé si différent
       const typed = strip(q), canonical = strip(best.name);
       if (typed && canonical && typed !== canonical) {
         await supabase.from('product_aliases').insert({ product_id: best.id, alias: q }).catch(()=>{});
       }
-      return { id: best.id, unit: best.unit, created: false, canonicalName: best.name };
+      const shelfDays = Number(best.shelf) || guessShelfLifeDays(best.name, best.category);
+      return { id: best.id, unit: best.unit, created: false, canonicalName: best.name, shelfDays };
     }
 
-    // 2) sinon on CRÉE le produit (nom canonique propre)
-    let canonical = toTitle(pluralizeSoft(q)); // "tomate" -> "Tomates"
-    // évite doublon exact qui pourrait exister mais non scoré
+    // sinon création
+    let canonical = toTitle(pluralizeSoft(q));
     const already = products.find(p => strip(p.name) === strip(canonical));
-    if (already) return { id: already.id, unit: already.default_unit||'g', created:false, canonicalName: already.name };
+    if (already) {
+      const shelfDays = Number(already.shelf_life_days) || guessShelfLifeDays(already.name, already.category);
+      return { id: already.id, unit: already.default_unit||'g', created:false, canonicalName: already.name, shelfDays };
+    }
 
+    // estimer une shelf life par défaut (catégorie inconnue ici → nom seul)
+    const guessedDays = guessShelfLifeDays(canonical, '');
     const { data: ins, error } = await supabase
       .from('products_catalog')
-      .insert({ name: canonical, default_unit: 'g' })
-      .select('id,name,default_unit').single();
+      .insert({ name: canonical, default_unit: 'g', shelf_life_days: guessedDays })
+      .select('id,name,default_unit,category,shelf_life_days').single();
     if (error) throw error;
 
-    // on garde l’orthographe saisie comme alias
     await supabase.from('product_aliases').insert({ product_id: ins.id, alias: q }).catch(()=>{});
 
-    // maj cache local minimal
     setProducts(prev => [...prev, ins]);
 
-    return { id: ins.id, unit: ins.default_unit || 'g', created: true, canonicalName: ins.name };
+    return { id: ins.id, unit: ins.default_unit || 'g', created: true, canonicalName: ins.name, shelfDays: guessedDays };
   }
+
+  // prévisualiser la DLC si l’utilisateur ne renseigne pas le champ
+  useEffect(() => {
+    (async () => {
+      if (!nameInput.trim() || dlc) { setPreviewDlc(null); return; }
+      try {
+        const r = await resolveProduct(nameInput);
+        const when = addDaysISO(r.shelfDays || 7);
+        setPreviewDlc(when);
+      } catch { setPreviewDlc(null); }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nameInput, dlc]);
 
   async function addLot(e) {
     e.preventDefault();
     if (!nameInput.trim() || !qty) return alert('Produit et quantité requis.');
     setSaving(true);
     try {
-      const { id: product_id, unit: defaultUnit } = await resolveProductId(nameInput);
-      const finalUnit = unit || defaultUnit || 'g';
+      const r = await resolveProduct(nameInput);
+      // si pas de DLC saisie, appliquer notre proposition
+      const finalDlc = dlc || addDaysISO(r.shelfDays || 7);
+      // si le produit n'avait pas de shelf_life_days en base, on l’écrit avec l’estimation (apprentissage)
+      if (!r.created) {
+        const prod = products.find(p=>p.id===r.id);
+        if (prod && (prod.shelf_life_days == null || prod.shelf_life_days === 0)) {
+          await supabase.from('products_catalog').update({ shelf_life_days: r.shelfDays }).eq('id', r.id).catch(()=>{});
+          setProducts(prev => prev.map(p => p.id===r.id ? {...p, shelf_life_days: r.shelfDays} : p));
+        }
+      }
+
+      const finalUnit = unit || r.unit || 'g';
       const { error } = await supabase.from('inventory_lots').insert({
-        product_id,
+        product_id: r.id,
         location_id: locationId,
         qty: Number(qty),
         unit: finalUnit,
-        dlc: dlc || null,
+        dlc: finalDlc,
         source: 'achat'
       });
       if (error) throw error;
-      // reset form
-      setNameInput('');
-      setQty('');
-      setUnit('g');
-      setDlc('');
+
+      setNameInput(''); setQty(''); setUnit('g'); setDlc(''); setPreviewDlc(null);
       await refresh();
-      // focus à nouveau sur le champ
       inputRef.current?.focus();
     } catch (err) {
       alert(err.message || 'Erreur');
@@ -197,8 +252,8 @@ export default function LocationDetail() {
     <div>
       <h1>{locName}</h1>
 
-      {/* mini formulaire ajouter un lot avec autocomplétion */}
-      <form onSubmit={addLot} className="card" style={{display:'grid',gap:8,maxWidth:620}}>
+      {/* mini formulaire ajouter un lot avec auto-complétion + auto-DLC */}
+      <form onSubmit={addLot} className="card" style={{display:'grid',gap:8,maxWidth:660}}>
         <div style={{display:'grid',gridTemplateColumns:'2fr 1fr',gap:8}}>
           <label>Produit
             <div style={{position:'relative'}}>
@@ -223,8 +278,9 @@ export default function LocationDetail() {
                       key={s.id}
                       style={{padding:'8px 10px', cursor:'pointer'}}
                       onMouseDown={()=>{
-                        setNameInput(s.label); // nom canonique
-                        setUnit(s.unit || 'g');
+                        setNameInput(s.label);
+                        const p = products.find(x=>x.id===s.id);
+                        if (p?.default_unit) setUnit(p.default_unit);
                       }}
                     >
                       {s.label} <span style={{opacity:.6,fontSize:12}}>({s.unit||'g'})</span>
@@ -246,6 +302,11 @@ export default function LocationDetail() {
           </label>
           <label>DLC
             <input className="input" type="date" value={dlc} onChange={e=>setDlc(e.target.value)}/>
+            {!dlc && previewDlc && (
+              <div style={{fontSize:12,opacity:.7,marginTop:4}}>
+                Suggestion : {previewDlc} (sera appliquée si tu laisses vide)
+              </div>
+            )}
           </label>
         </div>
 
