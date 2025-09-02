@@ -17,7 +17,6 @@ export default function RootLayout({ children }) {
             <nav style={{marginLeft:12,display:'flex',gap:12,flexWrap:'wrap'}}>
               <Link href="/">Accueil</Link>
               <Link href="/pantry">Garde-manger</Link>
-              <Link href="/add">Ajouter</Link>
               <Link href="/recipes">Recettes</Link>
               <Link href="/garden">Potager</Link>
               <Link href="/settings">Paramètres</Link>
