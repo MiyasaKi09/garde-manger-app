@@ -8,6 +8,8 @@ export default function RecipeDetail(){
   const [recipe, setRecipe] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [undoToken, setUndoToken] = useState(null);
+  const [missing, setMissing] = useState([]); // [{name, missingQty, unit, available}, ...]
 
   useEffect(()=>{ (async ()=>{
     const { data: r } = await supabase.from('recipes').select('*').eq('id', id).single();
@@ -20,17 +22,42 @@ export default function RecipeDetail(){
 
   const cook = async ()=>{
     setLoading(true);
+    setMissing([]);
+    setUndoToken(null);
     const res = await fetch(`/api/cook/${id}`, { method:'POST' });
     const json = await res.json();
     setLoading(false);
-    if(!res.ok) alert(json.error || 'Erreur');
-    else alert('Cuisiné ✅ (décrément FIFO)');
+
+    if(!res.ok){
+      if (json?.missing?.length) {
+        // Affiche la liste complète des manquants
+        setMissing(json.missing);
+      } else {
+        alert(json.error || 'Erreur');
+      }
+    } else {
+      setUndoToken(json.undoToken || null);
+    }
+  };
+
+  const undo = async ()=>{
+    if(!undoToken) return;
+    const res = await fetch('/api/cook/undo', {
+      method:'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ undoToken })
+    });
+    const json = await res.json();
+    if(!res.ok){ alert(json.error || 'Erreur undo'); return; }
+    setUndoToken(null);
+    alert('Annulé ✅');
   };
 
   if(!recipe) return <p>Chargement…</p>;
   return (
     <div>
       <h1>{recipe.title}</h1>
+
       <h3>Ingrédients</h3>
       <ul>
         {ingredients.map(i => (
@@ -39,7 +66,25 @@ export default function RecipeDetail(){
           </li>
         ))}
       </ul>
-      <button disabled={loading} onClick={cook}>{loading ? 'En cours…' : 'Cuisiner'}</button>
+
+      <div style={{display:'flex',gap:8,alignItems:'center',margin:'8px 0'}}>
+        <button disabled={loading} onClick={cook}>{loading ? 'En cours…' : 'Cuisiner'}</button>
+        {undoToken && <button onClick={undo}>Annuler</button>}
+      </div>
+
+      {missing.length>0 && (
+        <div className="card" style={{borderColor:'#f66'}}>
+          <strong>Manque de stock :</strong>
+          <ul>
+            {missing.map((m, idx)=>(
+              <li key={idx}>
+                {m.name} — manque {m.missingQty} {m.unit} (disponible {m.available} {m.unit})
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <h3>Étapes</h3>
       <pre className="card" style={{whiteSpace:'pre-wrap'}}>{recipe.steps || '—'}</pre>
     </div>
