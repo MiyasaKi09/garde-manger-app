@@ -15,15 +15,13 @@ export default function RootLayout({ children }) {
           <div className="container" style={{display:'flex',gap:12,alignItems:'center'}}>
             <strong>🥫 Garde-Manger</strong>
             // app/layout.js (extrait du <nav>)
-<nav style={{marginLeft:12,display:'flex',gap:12,flexWrap:'wrap'}}>
-  <Link href="/">Accueil</Link>
-  <Link href="/pantry">Garde-manger</Link>
-  <Link href="/add">Ajouter</Link>
-  <Link href="/recipes">Recettes</Link>
-  <Link href="/garden">Potager</Link>
-  <Link href="/settings">Paramètres</Link>
-</nav>
-
+            <nav style={{marginLeft:12,display:'flex',gap:12,flexWrap:'wrap'}}>
+              <Link href="/">Accueil</Link>
+              <Link href="/pantry">Garde-manger</Link>
+              <Link href="/add">Ajouter</Link>
+              <Link href="/recipes">Recettes</Link>
+              <Link href="/garden">Potager</Link>
+              <Link href="/settings">Paramètres</Link>
             </nav>
           </div>
         </header>
