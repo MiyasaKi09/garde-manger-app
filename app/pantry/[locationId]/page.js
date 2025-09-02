@@ -18,6 +18,7 @@ export default function LocationDetail() {
   const [lots, setLots] = useState([]);
   const [products, setProducts] = useState([]);
   const [form, setForm] = useState({ product_id:'', qty:'', unit:'g', dlc:'' });
+  const [saving, setSaving] = useState(false);
 
   async function refresh() {
     const { data: loc } = await supabase.from('locations').select('name').eq('id', locationId).single();
@@ -37,6 +38,7 @@ export default function LocationDetail() {
   async function addLot(e) {
     e.preventDefault();
     if (!form.product_id || !form.qty) return alert('Produit et quantité requis.');
+    setSaving(true);
     const { error } = await supabase.from('inventory_lots').insert({
       product_id: form.product_id,
       location_id: locationId,
@@ -45,6 +47,7 @@ export default function LocationDetail() {
       dlc: form.dlc || null,
       source: 'achat'
     });
+    setSaving(false);
     if (error) return alert(error.message);
     setForm({ product_id:'', qty:'', unit:'g', dlc:'' });
     await refresh();
@@ -64,10 +67,11 @@ export default function LocationDetail() {
       <h1>{locName}</h1>
 
       {/* mini formulaire ajouter un lot ici */}
-      <form onSubmit={addLot} className="card" style={{display:'grid',gap:8,maxWidth:520}}>
+      <form onSubmit={addLot} className="card" style={{display:'grid',gap:8,maxWidth:560}}>
         <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:8}}>
           <label>Produit
             <select
+              required
               value={form.product_id}
               onChange={e=>{
                 const id = e.target.value;
@@ -79,18 +83,22 @@ export default function LocationDetail() {
             </select>
           </label>
           <label>Quantité
-            <input type="number" step="0.01" value={form.qty} onChange={e=>setForm(f=>({...f,qty:e.target.value}))}/>
+            <input className="input" required type="number" step="0.01" min="0" value={form.qty} onChange={e=>setForm(f=>({...f,qty:e.target.value}))}/>
           </label>
         </div>
         <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:8}}>
           <label>Unité
-            <input value={form.unit} onChange={e=>setForm(f=>({...f,unit:e.target.value}))}/>
+            <input className="input" required value={form.unit} onChange={e=>setForm(f=>({...f,unit:e.target.value}))}/>
           </label>
           <label>DLC
-            <input type="date" value={form.dlc} onChange={e=>setForm(f=>({...f,dlc:e.target.value}))}/>
+            <input className="input" type="date" value={form.dlc} onChange={e=>setForm(f=>({...f,dlc:e.target.value}))}/>
           </label>
         </div>
-        <div><button type="submit">Ajouter ici</button></div>
+        <div>
+          <button className="btn primary" type="submit" disabled={saving}>
+            {saving ? 'Ajout…' : 'Ajouter ici'}
+          </button>
+        </div>
       </form>
 
       {/* lots groupés par produit */}
@@ -102,7 +110,7 @@ export default function LocationDetail() {
           </div>
           <div style={{marginTop:6}}>
             {items.map(i => (
-              <div key={i.id} style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:8,padding:'4px 0'}}>
+              <div key={i.id} style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:8,padding:'6px 0'}}>
                 <div>• {i.qty} {i.unit} — DLC {i.dlc || '—'}</div>
                 <IconButton title="Retirer" onClick={()=>removeLot(i.id)}>✖️</IconButton>
               </div>
