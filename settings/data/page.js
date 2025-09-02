@@ -1,3 +1,4 @@
+// app/settings/data/page.js
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
@@ -11,13 +12,11 @@ export default function DataAdmin(){
 
   async function load(){
     setBusy(true); setMsg('');
-    // produits
     const { data: prods } = await supabase
       .from('products_catalog')
       .select('id,name,default_unit,density_g_per_ml,grams_per_unit')
       .order('name');
     setProducts(prods||[]);
-    // alias
     const { data: als } = await supabase
       .from('product_aliases')
       .select('id,product_id,alias,product:products_catalog(name)')
@@ -33,14 +32,7 @@ export default function DataAdmin(){
     return products.filter(p => p.name.toLowerCase().includes(s));
   },[q,products]);
 
-  async function counts(pid){
-    // compte lots et ingrédients liés
-    const { data: lots } = await supabase
-      .from('inventory_lots')
-      .select('id', { count: 'exact', head: true })
-      .eq('product_id', pid);
-    const lotsCount = lots?.length ?? 0; // with head:true, length is undefined; so we make another query:
-    // fallback robust:
+  async function countRefs(pid){
     const { count: cLots } = await supabase
       .from('inventory_lots')
       .select('*', { count: 'exact', head: true })
@@ -54,7 +46,7 @@ export default function DataAdmin(){
 
   async function deleteProduct(p){
     setMsg('');
-    const { lots, ings } = await counts(p.id);
+    const { lots, ings } = await countRefs(p.id);
     if (lots>0 || ings>0) {
       alert(`Impossible de supprimer: ${lots} lot(s) et ${ings} ingrédient(s) référencent ce produit.`);
       return;
@@ -76,15 +68,17 @@ export default function DataAdmin(){
   }
 
   async function deleteOrphanAliases(){
-    // supprime les alias dont le produit cible n'existe plus
     setBusy(true);
     const { data: als } = await supabase.from('product_aliases').select('id,product_id');
     const pids = new Set((products||[]).map(p=>p.id));
     const toDel = (als||[]).filter(a=>!pids.has(a.product_id)).map(a=>a.id);
-    if (toDel.length===0){ setBusy(false); setMsg('Aucun alias orphelin.'); return; }
-    await supabase.from('product_aliases').delete().in('id', toDel);
+    if (toDel.length) {
+      await supabase.from('product_aliases').delete().in('id', toDel);
+      setMsg(`${toDel.length} alias orphelin(s) supprimé(s).`);
+    } else {
+      setMsg('Aucun alias orphelin.');
+    }
     setBusy(false);
-    setMsg(`${toDel.length} alias orphelin(s) supprimé(s).`);
     load();
   }
 
