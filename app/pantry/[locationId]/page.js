@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import IconButton from '@/components/ui/IconButton';
 
-/* ---------- utils texte & dates ---------- */
+/* ---------- helpers texte ---------- */
 const strip = (s='') => s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().trim();
 function levenshtein(a, b) {
   a = strip(a); b = strip(b);
@@ -37,7 +37,7 @@ const pluralizeSoft = (s) => {
 const todayISO = () => new Date().toISOString().slice(0,10);
 const addDaysISO = (d) => new Date(Date.now() + d*86400000).toISOString().slice(0,10);
 
-/* ---------- estimation DLC ---------- */
+/* ---------- Estimation DLC (améliorée) ---------- */
 const CAT_DAYS = {
   'Sec': 365, 'Surgelé': 180, 'Conserve': 1095, 'Laitier': 7, 'Fromage': 21, 'Boulangerie': 3, 'Frais': 5, 'Viande/Poisson': 2,
 };
@@ -53,17 +53,22 @@ const KEYWORDS = [
   { rx: /steak|boeuf|veau|agneau|poulet|dinde|porc/i, days: 2 },
   { rx: /poisson|saumon|thon|cabillaud/i, days: 2 },
   { rx: /jambon|charcut/i, days: 5 },
-  { rx: /herbe|persil|basilic|coriandre|menthe/i, days: 3 },
-  { rx: /tomate|salade|courgette|pomme|banane|carotte|oignon/i, days: 5 },
+  // fruits & légumes frais
+  { rx: /tomate|salade|courgette|pomme|banane|carotte|oignon/i, days: 7 },
+  { rx: /herbe|persil|basilic|coriandre|menthe/i, days: 4 },
   { rx: /surg|congel/i, days: 180 },
 ];
 function applyModifiers({ days, confidence, locationName='', isOpened=false, category='' }) {
   const loc = (locationName||'').toLowerCase();
+  // congélation → long
   if (/cong|surg/.test(loc)) { days = Math.max(days, 180); confidence = Math.max(confidence, 0.6); }
+  // placard → max 1 an
   if (/placard|epicer|cave/.test(loc)) { days = Math.min(days, 365); }
-  if (/frigo|frigidaire/.test(loc) && /(lait|creme|charcut|fromage|yaourt)/.test((category||'')+' '+loc)) {
+  // frigo pour laitier/charcut/fromage
+  if (/frigo|frigidaire/.test(loc) && /(lait|creme|charcut|fromage|yaourt)/i.test((category||'')+' '+loc)) {
     days = Math.min(days, 21);
   }
+  // ouvert → réduction
   if (isOpened) { days = Math.max(1, Math.round(days * 0.6)); confidence -= 0.1; }
   return { days, confidence: Math.max(0.2, Math.min(1, confidence)) };
 }
@@ -72,6 +77,8 @@ function estimateShelfLife({ name='', category='', locationName='', isOpened=fal
     if (r.rx.test(name)) {
       let days = r.days; let confidence = 0.8;
       ({ days, confidence } = applyModifiers({ days, confidence, locationName, isOpened, category }));
+      // Plancher global (évite les 1–2 jours accidentels si non-ouvert)
+      if (!isOpened) days = Math.max(days, 3);
       return { days, confidence, reason: 'keyword' };
     }
   }
@@ -81,15 +88,17 @@ function estimateShelfLife({ name='', category='', locationName='', isOpened=fal
   }
   if (daysCat == null) {
     if (/sec/.test(strip(category))) daysCat = 365;
-    else if (/frais/.test(strip(category))) daysCat = 5;
+    else if (/frais/.test(strip(category))) daysCat = 7;
   }
   if (daysCat != null) {
     let days = daysCat; let confidence = 0.6;
     ({ days, confidence } = applyModifiers({ days, confidence, locationName, isOpened, category }));
+    if (!isOpened) days = Math.max(days, 3);
     return { days, confidence, reason: 'category' };
   }
   let days = 7; let confidence = 0.4;
   ({ days, confidence } = applyModifiers({ days, confidence, locationName, isOpened, category }));
+  if (!isOpened) days = Math.max(days, 3);
   return { days, confidence, reason: 'default' };
 }
 
@@ -104,7 +113,7 @@ export default function LocationDetail() {
   const [locName, setLocName] = useState('…');
   const [lots, setLots] = useState([]);
 
-  // catalogue + alias (et meta pour apprentissage)
+  // catalogue + alias
   const [products, setProducts] = useState([]); // id,name,default_unit,category,shelf_life_days,density_g_per_ml,grams_per_unit
   const [aliases, setAliases] = useState([]);   // {product_id, alias}
 
@@ -145,7 +154,7 @@ export default function LocationDetail() {
   }
   useEffect(()=>{ refresh(); },[locationId]);
 
-  // Close suggestions on outside click / escape
+  // Fermer la bulle sur clic dehors / ESC
   useEffect(() => {
     function onDocDown(e) {
       const t = e.target;
@@ -162,7 +171,7 @@ export default function LocationDetail() {
     };
   }, []);
 
-  // suggestions
+  // Suggestions (seulement produits/alias existants)
   const suggestions = useMemo(() => {
     const q = nameInput.trim();
     if (!q) return [];
@@ -177,10 +186,22 @@ export default function LocationDetail() {
     return Array.from(best.values()).sort((a,b)=>a.score-b.score).slice(0,7);
   }, [nameInput, products, aliases]);
 
+  // Hint transparent directement dans le champ (fin de la meilleure suggestion)
+  const inlineHint = useMemo(() => {
+    const q = nameInput;
+    if (!q || !suggestions.length) return '';
+    const best = suggestions[0].label || '';
+    const nQ = strip(q), nB = strip(best);
+    if (!nB.startsWith(nQ) || nQ.length>=best.length) return '';
+    return best.slice(q.length); // on affiche seulement la terminaison
+  }, [nameInput, suggestions]);
+
   async function resolveProduct(rawName) {
     const q = rawName.trim();
     if (!q) throw new Error('Nom vide');
 
+    // On NE crée PAS à partir des suggestions : resolveProduct est utilisé pour l’ajout
+    // => si pas trouvé proprement, on crée (mais la bulle n’affiche que l’existant).
     let best = null;
     for (const p of products) {
       const s = scoreCandidate(q, p.name);
@@ -202,7 +223,7 @@ export default function LocationDetail() {
       return { id: best.id, unit: best.unit, created:false, canonicalName: best.name, shelfDays, category: best.category };
     }
 
-    // création
+    // création (si on tape un nom réellement nouveau)
     const canonical = toTitle(pluralizeSoft(q));
     const already = products.find(p=> strip(p.name)===strip(canonical));
     if (already) {
@@ -220,7 +241,7 @@ export default function LocationDetail() {
     return { id: ins.id, unit: ins.default_unit||'g', created:true, canonicalName: ins.name, shelfDays: guessed.days, category: ins.category };
   }
 
-  // preview DLC si champ vide
+  // Pré-aperçu DLC
   useEffect(()=>{ (async()=>{
     if (!nameInput.trim() || dlc) { setPreviewDlc(null); return; }
     try {
@@ -240,7 +261,7 @@ export default function LocationDetail() {
       /* --- Apprentissage meta (densité / g par unité) si manquants --- */
       const prodRow = products.find(p => p.id === r.id);
       if (prodRow && (prodRow.density_g_per_ml == null || prodRow.grams_per_unit == null)) {
-        const { estimateProductMeta } = await import('@/lib/meta'); // charge à la demande
+        const { estimateProductMeta } = await import('@/lib/meta'); // lazy
         const est = estimateProductMeta({ name: prodRow.name, category: prodRow.category });
         const patch = {};
         if (prodRow.density_g_per_ml == null && est.confidence_density >= 0.6) patch.density_g_per_ml = est.density_g_per_ml;
@@ -252,7 +273,7 @@ export default function LocationDetail() {
       }
       /* --------------------------------------------------------------- */
 
-      // si le produit n’a pas encore de shelf_life_days, on mémorise l’estimation
+      // Mémorise l’estimation DLC si produit sans valeur
       const prod = products.find(p=>p.id===r.id);
       if (prod && (prod.shelf_life_days==null || prod.shelf_life_days===0)) {
         await supabase.from('products_catalog').update({ shelf_life_days: r.shelfDays }).eq('id', r.id).catch(()=>{});
@@ -296,11 +317,26 @@ export default function LocationDetail() {
     <div>
       <h1>{locName}</h1>
 
-      {/* Formulaire ajout avec autocomplétion + unités fixes + DLC auto */}
-      <form onSubmit={addLot} className="card" style={{display:'grid',gap:8,maxWidth:720}}>
+      {/* Formulaire ajout avec auto-complétion + unités fixes + DLC auto */}
+      <form onSubmit={addLot} className="card" style={{display:'grid',gap:8,maxWidth:760}}>
         <div style={{display:'grid',gridTemplateColumns:'2fr 1fr',gap:8}}>
           <label>Produit
             <div style={{position:'relative'}}>
+              {/* hint transparent */}
+              {inlineHint && (
+                <div
+                  aria-hidden
+                  style={{
+                    position:'absolute', inset:'1px 1px auto 1px',
+                    padding:'8px 10px', pointerEvents:'none',
+                    color:'rgba(0,0,0,.35)', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis',
+                  }}
+                >
+                  {/* on affiche la saisie + la terminaison en léger */}
+                  <span style={{opacity:0}}>{nameInput}</span>
+                  <span>{inlineHint}</span>
+                </div>
+              )}
               <input
                 ref={inputRef}
                 className="input"
@@ -354,7 +390,14 @@ export default function LocationDetail() {
                         setTimeout(()=>inputRef.current?.focus(),0);
                       }}
                     >
-                      {s.label} <span style={{opacity:.6,fontSize:12}}>({s.unit||'g'})</span>
+                      <div style={{
+                        display:'-webkit-box',
+                        WebkitLineClamp:3,
+                        WebkitBoxOrient:'vertical',
+                        overflow:'hidden'
+                      }}>
+                        {s.label} <span style={{opacity:.6,fontSize:12}}>({s.unit||'g'})</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -390,7 +433,7 @@ export default function LocationDetail() {
         </div>
       </form>
 
-      {/* lots groupés */}
+      {/* lots groupés par produit */}
       {Object.entries(groups).map(([name, items]) => (
         <div key={name} className="card">
           <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:8}}>
