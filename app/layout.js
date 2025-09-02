@@ -12,9 +12,8 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body>
         <header style={{position:'sticky',top:0,background:'#fff',borderBottom:'1px solid #eee',zIndex:10}}>
-          <div className="container" style={{display:'flex',gap:12,alignItems:'center'}}>
+          <div className="container" style={{display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>
             <strong>🥫 Garde-Manger</strong>
-            // app/layout.js (extrait du <nav>)
             <nav style={{marginLeft:12,display:'flex',gap:12,flexWrap:'wrap'}}>
               <Link href="/">Accueil</Link>
               <Link href="/pantry">Garde-manger</Link>
