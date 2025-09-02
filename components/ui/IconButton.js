@@ -3,13 +3,14 @@ export default function IconButton({ title, children, ...props }) {
     <button
       {...props}
       title={title}
+      className="btn"
       style={{
-        background: 'transparent',
-        border: 'none',
-        cursor: 'pointer',
-        padding: 4,
-        borderRadius: 6,
-        lineHeight: 1
+        background:'#fff',
+        border:'1px solid #dcdce0',
+        borderRadius:8,
+        padding:'4px 6px',
+        lineHeight:1,
+        cursor:'pointer'
       }}
     >
       {children}
