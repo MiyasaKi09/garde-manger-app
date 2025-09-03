@@ -1,3 +1,21 @@
+import AuthGate from '@/components/AuthGate';
+// ... tes imports existants
+
+export default function RecipesPage(){
+  return (
+    <AuthGate>
+      <RecipesInner />
+    </AuthGate>
+  );
+}
+
+// ↓ Déplace ici TOUT ton composant actuel (le code que tu m’as envoyé)
+// en le renommant en RecipesInner (aucune autre modif nécessaire)
+function RecipesInner(){
+  // ... colle ici ton composant existant (état, load(), JSX, etc.)
+}
+
+
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
