@@ -1,20 +1,55 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import PartySizeControl from "@/components/PartySizeControl";
 
 const CATS = ['Tous','Végé','Viande/Poisson','Dessert','Accompagnement','Entrée','Boisson','Autre'];
 
-function RecipeCard({ r, onOpen, onDelete }) {
+/* ---------- utils ---------- */
+function displayTitle(r){
+  return r?.title || r?.name || 'Recette';
+}
+function mealsFromBatch(servingsPerBatch, people){
+  if(!servingsPerBatch || !people) return 0;
+  return Math.floor(Number(servingsPerBatch) / Number(people));
+}
+
+/* ---------- Carte Recette (inline) ---------- */
+function RecipeCard({ r, people = 2, onOpen, onDelete }) {
+  const title = displayTitle(r);
+  const nonDivisible = r?.is_divisible === false;
+  const batchMeals = nonDivisible ? mealsFromBatch(r?.servings, people) : null;
+
   return (
-    <div className="card" style={{display:'grid',gap:6}}>
-      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-        <strong>{r.name}</strong>
-        <div style={{fontSize:12,opacity:.7}}>{r.category || (r.is_veg?'Végé':'—')}</div>
+    <div className="card" style={{display:'grid',gap:8, padding:12}}>
+      {/* Titre + catégorie */}
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'baseline', gap:10}}>
+        <strong className="line-clamp-2" style={{fontSize:16}} title={title}>{title}</strong>
+        <div style={{fontSize:12,opacity:.7}}>
+          {r?.category || (r?.is_veg ? 'Végé' : '—')}
+        </div>
       </div>
+
+      {/* Meta */}
       <div style={{fontSize:12,opacity:.75}}>
-        {r.servings ?? 2} pers • prep {r.prep_min||0}′ • cuisson {r.cook_min||0}′
+        {r?.servings ?? 2} pers (base) • prep {r?.prep_min||0}′ • cuisson {r?.cook_min||0}′
       </div>
-      <div style={{display:'flex',gap:6,marginTop:4}}>
+
+      {/* Info “Nb personnes” */}
+      <div style={{fontSize:12, marginTop:2}}>
+        {nonDivisible ? (
+          <span title="Recette non divisible (batch entier)">
+            Batch entier • avec <b>{people}</b> pers → <b>{batchMeals ?? 0}</b> repas
+          </span>
+        ) : (
+          <span>
+            Ajustée pour <b>{people}</b> pers
+          </span>
+        )}
+      </div>
+
+      {/* Actions */}
+      <div style={{display:'flex',gap:6,marginTop:6}}>
         <button className="btn" onClick={()=>onOpen(r)}>Ouvrir</button>
         <button className="btn" onClick={()=>onDelete(r)} title="Supprimer">Supprimer</button>
       </div>
@@ -22,6 +57,7 @@ function RecipeCard({ r, onOpen, onDelete }) {
   );
 }
 
+/* ---------- Modal détail (reprend ton implémentation en lissant title/name) ---------- */
 function RecipeModal({ id, onClose }) {
   const [recipe,setRecipe]=useState(null);
   const [ings,setIngs]=useState([]);
@@ -45,13 +81,17 @@ function RecipeModal({ id, onClose }) {
       display:'grid', placeItems:'center', zIndex:100
     }}>
       <div className="card" style={{width:'min(860px, 92vw)', maxHeight:'88vh', overflow:'auto', display:'grid', gap:10}}>
-        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-          <h2 style={{margin:0}}>{recipe?.name || 'Recette'}</h2>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center', gap:8}}>
+          <h2 style={{margin:0}}>{displayTitle(recipe)}</h2>
           <button className="btn" onClick={onClose}>Fermer</button>
         </div>
+
         <div style={{fontSize:13,opacity:.75}}>
           {recipe?.category || (recipe?.is_veg?'Végé':'—')} • {recipe?.servings ?? 2} pers •
           {' '}prep {recipe?.prep_min||0}′ • cuisson {recipe?.cook_min||0}′
+          {recipe?.is_divisible===false && (
+            <span className="badge" style={{marginLeft:8}}>Non divisible</span>
+          )}
         </div>
 
         {recipe?.description && <p style={{whiteSpace:'pre-wrap'}}>{recipe.description}</p>}
@@ -75,20 +115,35 @@ function RecipeModal({ id, onClose }) {
   );
 }
 
+/* ---------- Page ---------- */
 export default function RecipesPage(){
   const [recipes,setRecipes]=useState([]);
   const [q,setQ]=useState('');
   const [cat,setCat]=useState('Tous');
   const [opening,setOpening]=useState(null);
 
+  const [people, setPeople] = useState(2);
+
   // Form nouvel élément
-  const [name,setName]=useState('');
+  const [title,setTitle]=useState('');        // on passe à "title"
   const [isVeg,setIsVeg]=useState(false);
   const [category,setCategory]=useState('');
   const [servings,setServings]=useState(2);
+  const [isDivisible, setIsDivisible] = useState(true);
+
+  useEffect(()=>{
+    const saved = localStorage.getItem('myko.partySize');
+    if(saved){
+      const n = parseInt(saved,10);
+      if(!Number.isNaN(n) && n>0) setPeople(n);
+    }
+  },[]);
 
   async function load(){
-    const { data } = await supabase.from('recipes').select('*').order('created_at', { ascending:false });
+    const { data } = await supabase
+      .from('recipes')
+      .select('id,title,name,category,is_veg,servings,prep_min,cook_min,is_divisible,created_at')
+      .order('created_at', { ascending:false });
     setRecipes(data||[]);
   }
   useEffect(()=>{ load(); },[]);
@@ -96,24 +151,35 @@ export default function RecipesPage(){
   const filtered = useMemo(()=>{
     const s = (q||'').toLowerCase();
     return (recipes||[]).filter(r=>{
-      const okQ = !s || r.name.toLowerCase().includes(s);
-      const okC = cat==='Tous' || (cat==='Végé' ? r.is_veg===true || r.category==='Végé' : (r.category===cat));
+      const t = displayTitle(r).toLowerCase();
+      const okQ = !s || t.includes(s);
+      const okC = cat==='Tous'
+        ? true
+        : (cat==='Végé'
+            ? (r.is_veg===true || r.category==='Végé')
+            : (r.category===cat));
       return okQ && okC;
     });
   },[recipes,q,cat]);
 
   async function addRecipe(e){
     e.preventDefault();
-    if(!name.trim()) return;
-    const r = { name: name.trim(), is_veg: isVeg, category: category || null, servings: Number(servings)||2 };
-    const { data, error } = await supabase.from('recipes').insert(r).select('*').single();
+    if(!title.trim()) return;
+    const rec = {
+      title: title.trim(),                       // <— on écrit title
+      is_veg: isVeg,
+      category: category || null,
+      servings: Number(servings)||2,
+      is_divisible: isDivisible
+    };
+    const { data, error } = await supabase.from('recipes').insert(rec).select('*').single();
     if(error) return alert(error.message);
     setRecipes(prev=>[data, ...prev]);
-    setName(''); setIsVeg(false); setCategory(''); setServings(2);
+    setTitle(''); setIsVeg(false); setCategory(''); setServings(2); setIsDivisible(true);
   }
 
   async function deleteRecipe(r){
-    if(!confirm(`Supprimer "${r.name}" ?`)) return;
+    if(!confirm(`Supprimer "${displayTitle(r)}" ?`)) return;
     const { error } = await supabase.from('recipes').delete().eq('id', r.id);
     if(error) return alert(error.message);
     setRecipes(prev=>prev.filter(x=>x.id!==r.id));
@@ -123,34 +189,41 @@ export default function RecipesPage(){
     <div>
       <h1>Recettes</h1>
 
-      {/* filtres */}
+      {/* filtres + Nb personnes */}
       <div className="card" style={{display:'grid',gap:8}}>
-        <div style={{display:'flex',gap:8,flexWrap:'wrap',alignItems:'center'}}>
-          <input className="input" placeholder="Rechercher…" value={q} onChange={e=>setQ(e.target.value)} style={{minWidth:220}}/>
-          <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
-            {CATS.map(c=>(
-              <button key={c}
-                className={`btn ${cat===c?'primary':''}`}
-                onClick={()=>setCat(c)}
-              >{c}</button>
-            ))}
+        <div style={{display:'flex',gap:8,flexWrap:'wrap',alignItems:'center', justifyContent:'space-between'}}>
+          <div style={{display:'flex',gap:8,flexWrap:'wrap',alignItems:'center'}}>
+            <input className="input" placeholder="Rechercher…" value={q} onChange={e=>setQ(e.target.value)} style={{minWidth:220}}/>
+            <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
+              {CATS.map(c=>(
+                <button key={c}
+                  className={`btn ${cat===c?'primary':''}`}
+                  onClick={()=>setCat(c)}
+                >{c}</button>
+              ))}
+            </div>
           </div>
+          <PartySizeControl value={people} onChange={(n)=>{ setPeople(n); localStorage.setItem('myko.partySize', String(n)); }} />
         </div>
       </div>
 
       {/* Ajouter */}
       <form onSubmit={addRecipe} className="card" style={{display:'grid',gap:8, marginTop:10, maxWidth:900}}>
         <h3 style={{margin:0}}>Ajouter une recette</h3>
-        <div style={{display:'grid',gridTemplateColumns:'2fr 1fr 1fr 1fr',gap:8}}>
-          <input className="input" placeholder="Nom de la recette" value={name} onChange={e=>setName(e.target.value)} required/>
+        <div style={{display:'grid',gridTemplateColumns:'2fr 1fr 1fr 1fr 1fr',gap:8, alignItems:'center'}}>
+          <input className="input" placeholder="Nom de la recette" value={title} onChange={e=>setTitle(e.target.value)} required/>
           <select className="input" value={category} onChange={e=>setCategory(e.target.value)}>
             <option value="">Catégorie…</option>
-            {CATS.filter(c=>c!=='Tous').map(c=><option key={c} value={c}>{c}</option>)}
+            {CATS.filter(c=>c!=='Tous' && c!=='Végé').map(c=><option key={c} value={c}>{c}</option>)}
           </select>
           <label className="input" style={{display:'flex',alignItems:'center',gap:6}}>
             <input type="checkbox" checked={isVeg} onChange={e=>setIsVeg(e.target.checked)}/> Végé
           </label>
           <input className="input" type="number" min="1" value={servings} onChange={e=>setServings(e.target.value)} title="Portions"/>
+          <label className="input" style={{display:'flex',alignItems:'center',gap:6}}>
+            <input type="checkbox" checked={!isDivisible} onChange={e=>setIsDivisible(!e.target.checked)}/>
+            Non divisible
+          </label>
         </div>
         <div><button className="btn primary" type="submit">Créer</button></div>
       </form>
@@ -158,7 +231,7 @@ export default function RecipesPage(){
       {/* grille */}
       <div className="grid" style={{gap:10, gridTemplateColumns:'repeat(auto-fill, minmax(240px, 1fr))', marginTop:12}}>
         {filtered.map(r=>(
-          <RecipeCard key={r.id} r={r} onOpen={setOpening} onDelete={deleteRecipe}/>
+          <RecipeCard key={r.id} r={r} people={people} onOpen={setOpening} onDelete={deleteRecipe}/>
         ))}
         {filtered.length===0 && <p style={{opacity:.7}}>Aucune recette.</p>}
       </div>
