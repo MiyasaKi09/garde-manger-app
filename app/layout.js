@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
               <Link href="/pantry">Garde-manger</Link>
               <Link href="/recipes">Recettes</Link>
               <Link href="/garden">Potager</Link>
+              <a href="/planning">Planning</a>
               <a href="/settings">Paramètres</a>
 
 
