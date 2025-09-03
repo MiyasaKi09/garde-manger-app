@@ -1,25 +1,9 @@
-import AuthGate from '@/components/AuthGate';
-// ... tes imports existants
+'use client'; // <-- Doit être en première ligne
 
-export default function RecipesPage(){
-  return (
-    <AuthGate>
-      <RecipesInner />
-    </AuthGate>
-  );
-}
-
-// ↓ Déplace ici TOUT ton composant actuel (le code que tu m’as envoyé)
-// en le renommant en RecipesInner (aucune autre modif nécessaire)
-function RecipesInner(){
-  // ... colle ici ton composant existant (état, load(), JSX, etc.)
-}
-
-
-'use client';
 import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import PartySizeControl from "@/components/PartySizeControl";
+import PartySizeControl from '@/components/PartySizeControl';
+import AuthGate from '@/components/AuthGate';
 
 const CATS = ['Tous','Végé','Viande/Poisson','Dessert','Accompagnement','Entrée','Boisson','Autre'];
 
@@ -32,7 +16,7 @@ function mealsFromBatch(servingsPerBatch, people){
   return Math.floor(Number(servingsPerBatch) / Number(people));
 }
 
-/* ---------- Carte Recette (inline) ---------- */
+/* ---------- Carte ---------- */
 function RecipeCard({ r, people = 2, onOpen, onDelete }) {
   const title = displayTitle(r);
   const nonDivisible = r?.is_divisible === false;
@@ -40,7 +24,6 @@ function RecipeCard({ r, people = 2, onOpen, onDelete }) {
 
   return (
     <div className="card" style={{display:'grid',gap:8, padding:12}}>
-      {/* Titre + catégorie */}
       <div style={{display:'flex',justifyContent:'space-between',alignItems:'baseline', gap:10}}>
         <strong className="line-clamp-2" style={{fontSize:16}} title={title}>{title}</strong>
         <div style={{fontSize:12,opacity:.7}}>
@@ -48,12 +31,10 @@ function RecipeCard({ r, people = 2, onOpen, onDelete }) {
         </div>
       </div>
 
-      {/* Meta */}
       <div style={{fontSize:12,opacity:.75}}>
         {r?.servings ?? 2} pers (base) • prep {r?.prep_min||0}′ • cuisson {r?.cook_min||0}′
       </div>
 
-      {/* Info “Nb personnes” */}
       <div style={{fontSize:12, marginTop:2}}>
         {nonDivisible ? (
           <span title="Recette non divisible (batch entier)">
@@ -66,7 +47,6 @@ function RecipeCard({ r, people = 2, onOpen, onDelete }) {
         )}
       </div>
 
-      {/* Actions */}
       <div style={{display:'flex',gap:6,marginTop:6}}>
         <button className="btn" onClick={()=>onOpen(r)}>Ouvrir</button>
         <button className="btn" onClick={()=>onDelete(r)} title="Supprimer">Supprimer</button>
@@ -75,20 +55,22 @@ function RecipeCard({ r, people = 2, onOpen, onDelete }) {
   );
 }
 
-/* ---------- Modal détail (reprend ton implémentation en lissant title/name) ---------- */
+/* ---------- Modal ---------- */
 function RecipeModal({ id, onClose }) {
   const [recipe,setRecipe]=useState(null);
   const [ings,setIngs]=useState([]);
 
   useEffect(()=>{ (async()=>{
     if(!id) return;
-    const { data: r } = await supabase.from('recipes').select('*').eq('id', id).single();
+    const { data: r, error: e1 } = await supabase.from('recipes').select('*').eq('id', id).single();
+    if (e1) console.error('recipe fetch error', e1);
     setRecipe(r||null);
-    const { data: ri } = await supabase
+    const { data: ri, error: e2 } = await supabase
       .from('recipe_ingredients')
       .select('id, qty, unit, note, product:products_catalog(id,name,default_unit)')
       .eq('recipe_id', id)
       .order('id');
+    if (e2) console.error('ingredients fetch error', e2);
     setIngs(ri||[]);
   })(); },[id]);
 
@@ -133,8 +115,17 @@ function RecipeModal({ id, onClose }) {
   );
 }
 
-/* ---------- Page ---------- */
+/* ---------- Page protégée ---------- */
 export default function RecipesPage(){
+  return (
+    <AuthGate>
+      <RecipesInner />
+    </AuthGate>
+  );
+}
+
+/* ---------- Le contenu réel de la page ---------- */
+function RecipesInner(){
   const [recipes,setRecipes]=useState([]);
   const [q,setQ]=useState('');
   const [cat,setCat]=useState('Tous');
@@ -143,7 +134,7 @@ export default function RecipesPage(){
   const [people, setPeople] = useState(2);
 
   // Form nouvel élément
-  const [title,setTitle]=useState('');        // on passe à "title"
+  const [title,setTitle]=useState('');
   const [isVeg,setIsVeg]=useState(false);
   const [category,setCategory]=useState('');
   const [servings,setServings]=useState(2);
@@ -157,21 +148,23 @@ export default function RecipesPage(){
     }
   },[]);
 
- async function load(){
-  const { data, error } = await supabase
-    .from('recipes')
-    .select('id,title,name,category,is_veg,servings,prep_min,cook_min,is_divisible,created_at')
-    .order('created_at', { ascending:false })
-    .order('title', { ascending:true });
+  async function load(){
+    const { data, error } = await supabase
+      .from('recipes')
+      .select('id,title,name,category,is_veg,servings,prep_min,cook_min,is_divisible,created_at')
+      .order('created_at', { ascending:false })
+      .order('title', { ascending:true });
 
-  if (error) {
-    console.error('Supabase recipes error:', error);
-    alert(`Erreur chargement recettes: ${error.message}`);
-    setRecipes([]);
-    return;
+    if (error) {
+      console.error('Supabase recipes error:', error);
+      alert(`Erreur chargement recettes: ${error.message}`);
+      setRecipes([]);
+      return;
+    }
+    setRecipes(data||[]);
   }
-  setRecipes(data||[]);
-}
+
+  useEffect(()=>{ load(); },[]); // <-- on appelait plus load()
 
   const filtered = useMemo(()=>{
     const s = (q||'').toLowerCase();
@@ -191,7 +184,7 @@ export default function RecipesPage(){
     e.preventDefault();
     if(!title.trim()) return;
     const rec = {
-      title: title.trim(),                       // <— on écrit title
+      title: title.trim(),
       is_veg: isVeg,
       category: category || null,
       servings: Number(servings)||2,
