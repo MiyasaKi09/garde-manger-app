@@ -139,14 +139,21 @@ export default function RecipesPage(){
     }
   },[]);
 
-  async function load(){
-    const { data } = await supabase
-      .from('recipes')
-      .select('id,title,name,category,is_veg,servings,prep_min,cook_min,is_divisible,created_at')
-      .order('created_at', { ascending:false });
-    setRecipes(data||[]);
+ async function load(){
+  const { data, error } = await supabase
+    .from('recipes')
+    .select('id,title,name,category,is_veg,servings,prep_min,cook_min,is_divisible,created_at')
+    .order('created_at', { ascending:false })
+    .order('title', { ascending:true });
+
+  if (error) {
+    console.error('Supabase recipes error:', error);
+    alert(`Erreur chargement recettes: ${error.message}`);
+    setRecipes([]);
+    return;
   }
-  useEffect(()=>{ load(); },[]);
+  setRecipes(data||[]);
+}
 
   const filtered = useMemo(()=>{
     const s = (q||'').toLowerCase();
