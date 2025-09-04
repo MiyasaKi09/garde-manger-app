@@ -1,11 +1,9 @@
-// app/auth/callback/page.jsx
 'use client';
 
 import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 
-/** CSR only, pas de pré-rendu */
 export const dynamic = 'force-dynamic';
 
 function CallbackInner() {
@@ -18,7 +16,7 @@ function CallbackInner() {
       try {
         const redirect = search.get('redirect') || '/';
 
-        // Erreurs renvoyées par Supabase (ex: otp_expired)
+        // 1) Erreur relayée par Supabase (ex: otp_expired)
         const urlError = search.get('error');
         const urlErrorDesc = search.get('error_description');
         if (urlError) {
@@ -26,7 +24,7 @@ function CallbackInner() {
           return;
         }
 
-        // 1) Magic link : tokens dans le hash
+        // 2) Magic link : tokens dans le hash
         const hs = new URLSearchParams((window.location.hash || '').replace(/^#/, ''));
         const access_token = hs.get('access_token');
         const refresh_token = hs.get('refresh_token');
@@ -34,15 +32,6 @@ function CallbackInner() {
         if (access_token && refresh_token) {
           const { error: setErr } = await supabase.auth.setSession({ access_token, refresh_token });
           if (setErr) throw setErr;
-          router.replace(redirect);
-          return;
-        }
-
-        // 2) Fallback PKCE : ?code=...
-        const code = search.get('code');
-        if (code) {
-          const { error: exchErr } = await supabase.auth.exchangeCodeForSession(code);
-          if (exchErr) throw exchErr;
           router.replace(redirect);
           return;
         }
