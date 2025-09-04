@@ -8,6 +8,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [otp, setOtp] = useState('');
   const [redirectTo, setRedirectTo] = useState('/');
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -16,40 +17,48 @@ export default function LoginPage() {
 
   async function sendOtp(e){
     e.preventDefault();
-    setError('');
-    // Envoie un OTP par email, sans redirection
+    setError(''); setStatus('Envoi du code…');
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: {
-        shouldCreateUser: true,          // crée l’utilisateur si besoin
-        // pas de emailRedirectTo ici
-      },
+      options: { shouldCreateUser: true },
     });
-    if (error) setError(error.message);
-    else setSent(true);
+    if (error) { console.error('[sendOtp]', error); setError(error.message); setStatus(''); return; }
+    setSent(true);
+    setStatus('Code envoyé. Consulte ta boîte mail.');
   }
 
   async function verify(e){
     e.preventDefault();
-    setError('');
-    // Vérifie le code à 6 chiffres reçu par email
+    setError(''); setStatus('Vérification du code…');
+
+    // 1) Vérifie le code OTP (6 chiffres)
     const { data, error } = await supabase.auth.verifyOtp({
       email,
       token: otp,
-      type: 'email', // 'email' = OTP à 6 chiffres
+      type: 'email', // IMPORTANT: 6-digit email OTP
     });
     if (error) {
-      setError(error.message);
+      console.error('[verifyOtp]', error);
+      setError(`Vérification impossible: ${error.message}`);
+      setStatus('');
       return;
     }
-    // Optionnel : contrôler la session
-    const { data: sess } = await supabase.auth.getSession();
-    if (!sess?.session) {
-      setError('Session non initialisée. Réessaie ou contacte-moi.');
-      return;
+    // 2) Attendre que la session soit réellement disponible
+    setStatus('Connexion…');
+    let tries = 0;
+    while (tries < 20) { // ~2 secondes max
+      const { data: sData, error: sErr } = await supabase.auth.getSession();
+      if (sErr) { console.error('[getSession]', sErr); }
+      if (sData?.session) {
+        setStatus('Connecté ✅ redirection…');
+        window.location.replace(redirectTo || '/');
+        return;
+      }
+      await new Promise(r => setTimeout(r, 100));
+      tries++;
     }
-    // Redirection après connexion
-    window.location.replace(redirectTo || '/');
+    setError('Session non initialisée après vérification. Réessaie (ou dis-moi ce message).');
+    setStatus('');
   }
 
   return (
@@ -86,12 +95,13 @@ export default function LoginPage() {
               required
             />
             <button className="btn primary" type="submit">Se connecter</button>
-            <button className="btn" type="button" onClick={()=>{ setSent(false); setOtp(''); }}>
+            <button className="btn" type="button" onClick={()=>{ setSent(false); setOtp(''); setStatus(''); }}>
               Changer d’email
             </button>
           </form>
         )}
 
+        {status && <div style={{fontSize:12, opacity:.8}}>{status}</div>}
         {error && <div style={{color:'#b91c1c'}}>{error}</div>}
 
         <p style={{fontSize:12, opacity:.7}}>
