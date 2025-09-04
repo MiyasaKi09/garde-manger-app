@@ -1,15 +1,13 @@
+// middleware.js
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
 
-export async function middleware(req: NextRequest) {
+export async function middleware(req) {
   const res = NextResponse.next();
   const supabase = createMiddlewareClient({ req, res });
   const { data: { session } } = await supabase.auth.getSession();
 
   const path = req.nextUrl.pathname;
-
-  // Routes publiques (login + callback + assets)
   const isPublic =
     path.startsWith('/login') ||
     path.startsWith('/auth/callback') ||
@@ -35,6 +33,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // Protège tout sauf les fichiers statiques
   matcher: ['/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)'],
 };
