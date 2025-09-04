@@ -16,10 +16,13 @@ export default function LoginPage() {
   async function onSubmit(e){
     e.preventDefault();
     setError('');
+    // IMPORTANT: rediriger vers /auth/callback en PROD
+    const emailRedirectTo = `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`;
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`
+        emailRedirectTo,
+        shouldCreateUser: true,         // création automatique si pas encore inscrit
       }
     });
     if (error) setError(error.message);
@@ -31,7 +34,7 @@ export default function LoginPage() {
       <div className="card" style={{maxWidth:420, width:'100%', display:'grid', gap:12}}>
         <h1>Connexion</h1>
         {sent ? (
-          <p>Un lien de connexion a été envoyé à <b>{email}</b>. Clique dessus pour entrer.</p>
+          <p>Un lien de connexion a été envoyé à <b>{email}</b>. Ouvre-le sur <u>cet appareil</u>.</p>
         ) : (
           <form onSubmit={onSubmit} style={{display:'grid', gap:8}}>
             <input
@@ -46,6 +49,9 @@ export default function LoginPage() {
             {error && <div style={{color:'#b91c1c'}}>{error}</div>}
           </form>
         )}
+        <p style={{fontSize:12, opacity:.7}}>
+          Après connexion, tu restes identifié sur cet appareil.
+        </p>
       </div>
     </div>
   );
