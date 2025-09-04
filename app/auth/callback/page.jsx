@@ -1,3 +1,4 @@
+// app/auth/callback/page.jsx
 'use client';
 
 import React, { Suspense, useEffect, useState } from 'react';
@@ -6,7 +7,6 @@ import { supabase } from '@/lib/supabaseClient';
 
 /** CSR only, pas de pré-rendu */
 export const dynamic = 'force-dynamic';
-// (⚠️ ne pas exporter revalidate ici)
 
 function CallbackInner() {
   const search = useSearchParams();
@@ -18,7 +18,7 @@ function CallbackInner() {
       try {
         const redirect = search.get('redirect') || '/';
 
-        // Erreurs relayées par Supabase (ex: otp_expired)
+        // Erreurs renvoyées par Supabase (ex: otp_expired)
         const urlError = search.get('error');
         const urlErrorDesc = search.get('error_description');
         if (urlError) {
