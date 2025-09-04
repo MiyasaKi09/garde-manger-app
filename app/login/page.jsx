@@ -2,6 +2,10 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 
+const BASE_URL =
+  (process.env.NEXT_PUBLIC_SITE_URL || '').replace(/\/$/, '') ||
+  'https://ton-site.vercel.app'; // petit filet de sécu vers ton domaine prod
+
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
@@ -16,7 +20,7 @@ export default function LoginPage() {
   async function onSubmit(e){
     e.preventDefault();
     setError('');
-    const emailRedirectTo = `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`;
+    const emailRedirectTo = `${BASE_URL}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`;
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: { emailRedirectTo }
@@ -30,24 +34,18 @@ export default function LoginPage() {
       <div className="card" style={{maxWidth:420, width:'100%', display:'grid', gap:12}}>
         <h1>Connexion</h1>
         {sent ? (
-          <p>Un lien de connexion a été envoyé à <b>{email}</b>. Ouvre-le sur cet appareil.</p>
+          <p>
+            Un lien de connexion a été envoyé à <b>{email}</b>.<br />
+            Il ouvrira <code>{BASE_URL}</code>.
+          </p>
         ) : (
           <form onSubmit={onSubmit} style={{display:'grid', gap:8}}>
-            <input
-              className="input"
-              type="email"
-              required
-              placeholder="email@exemple.com"
-              value={email}
-              onChange={(e)=>setEmail(e.target.value)}
-            />
+            <input className="input" type="email" required placeholder="email@exemple.com"
+              value={email} onChange={(e)=>setEmail(e.target.value)} />
             <button className="btn primary" type="submit">Recevoir un lien</button>
             {error && <div style={{color:'#b91c1c'}}>{error}</div>}
           </form>
         )}
-        <p style={{fontSize:12, opacity:.7}}>
-          Après connexion, tu restes identifié sur cet appareil (cookies persistants).
-        </p>
       </div>
     </div>
   );
