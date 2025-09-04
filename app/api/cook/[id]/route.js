@@ -1,421 +1,327 @@
-// app/api/cook/[id]/route.js
-import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-import { sortLotsFIFO, todayISO } from '@/lib/utils';
-import { convertWithMeta, sumAvailableInUnitWithMeta } from '@/lib/units';
-import { estimateProductMeta } from '@/lib/meta';
+'use client';
 
-function supabaseServer() {
-  const key =
-    process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  return createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, key, {
-    auth: { persistSession: false },
-  });
+import { useEffect, useMemo, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabaseClient';
+import PartySizeControl from '@/components/PartySizeControl';
+
+// ---------- Helpers ----------
+function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+function fmt(n) {
+  if (n == null) return '';
+  const v = Number(n);
+  return Number.isInteger(v) ? String(v) : String(Math.round(v * 100) / 100);
 }
 
-/**
- * Body optionnel:
- * {
- *   "plan": [
- *     // Plan manuel pour forcer la prise sur certains lots (sinon FIFO)
- *     // qty est exprimée dans l'unité du lot (unit)
- *     { "product_id": "...", "lot_id": "...", "qty": 2, "unit": "u" }
- *   ]
- * }
- */
-export async function POST(req, { params }) {
-  const recipeId = params.id;
-  const supabase = supabaseServer();
+export default function CookPage() {
+  const { id } = useParams();
+  const router = useRouter();
 
-  // Lire éventuel plan manuel
-  let plan = null;
-  try {
-    const body = await req.json().catch(() => null);
-    plan = body?.plan && Array.isArray(body.plan) ? body.plan : null;
-  } catch {
-    plan = null;
-  }
+  // ---------- State ----------
+  const [loading, setLoading] = useState(true);
 
-  // Ingrédients + métadonnées produit
-  const { data: ingredients, error: ingErr } = await supabase
-    .from('recipe_ingredients')
-    .select(`
-      product_id, qty, unit, optional,
-      product:products_catalog(id, name, category, default_unit, density_g_per_ml, grams_per_unit)
-    `)
-    .eq('recipe_id', recipeId);
+  const [recipe, setRecipe] = useState(null);        // { id, title/name, servings, prep_min, cook_min, ... }
+  const [ingredients, setIngredients] = useState([]); // [{id, qty, unit, note, product:{id,name,default_unit}}]
+  const [lots, setLots] = useState([]);               // [{id, product_id, qty, unit, dlc, location_id}]
 
-  if (ingErr)
-    return NextResponse.json({ error: ingErr.message }, { status: 500 });
-  if (!ingredients?.length)
-    return NextResponse.json(
-      { error: 'Aucun ingrédient.' },
-      { status: 400 }
-    );
+  const [people, setPeople] = useState(2);
+  const [neverExceed, setNeverExceed] = useState(true);
 
-  const writes = []; // {type:'update'|'delete', id, values?, before}
-  const delta = []; // pour undo
-  const missing = [];
+  // Plan = résultat du dry-run
+  // { lines:[{ingredientId, productId, productName, neededBaseQty, neededBaseUnit, neededScaledQty, allocations:[{lotId, lotUnit, takeQty}]}],
+  //   missing:[{label, reason}] }
+  const [plan, setPlan] = useState(null);
 
-  // Collecte d'apprentissage (par produit)
-  // structure: product_id -> { gramsTaken, unitsTaken, lastMeta, productRow }
-  const learnByProduct = new Map();
+  // ---------- Prefs locales ----------
+  useEffect(() => {
+    const savedP = parseInt(localStorage.getItem('myko.partySize') || '2', 10);
+    if (!Number.isNaN(savedP) && savedP > 0) setPeople(savedP);
+    const savedN = localStorage.getItem('myko.neverExceed');
+    if (savedN != null) setNeverExceed(savedN === '1');
+  }, []);
 
-  // Utilitaires plan manuel
-  const planByProduct = new Map();
-  if (plan) {
-    for (const p of plan) {
-      if (!p?.product_id || !p?.lot_id || !(p?.qty > 0)) continue;
-      const bucket = planByProduct.get(p.product_id) || [];
-      bucket.push({
-        lot_id: p.lot_id,
-        qty: Number(p.qty),
-        unit: (p.unit || 'u').toLowerCase(),
-      });
-      planByProduct.set(p.product_id, bucket);
-    }
-  }
+  // ---------- Load data ----------
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      try {
+        // 1) Recette
+        const { data: r, error: er } = await supabase
+          .from('recipes')
+          .select('*')
+          .eq('id', id)
+          .single();
+        if (er) throw er;
+        setRecipe(r);
 
-  // --------- DRY-RUN : préparer tout sans écrire ---------
-  for (const ing of ingredients) {
-    // 1) métadonnées → connues ? sinon estimer & mémoriser si confiance ok
-    let density = ing.product?.density_g_per_ml;
-    let gPerUnit = ing.product?.grams_per_unit;
-    if (density == null || gPerUnit == null) {
-      const est = estimateProductMeta({
-        name: ing.product?.name,
-        category: ing.product?.category,
-      });
-      density = density ?? est.density_g_per_ml;
-      gPerUnit = gPerUnit ?? est.grams_per_unit;
-      const patch = {};
-      if (
-        ing.product?.density_g_per_ml == null &&
-        est.confidence_density >= 0.6
-      )
-        patch.density_g_per_ml = est.density_g_per_ml;
-      if (
-        ing.product?.grams_per_unit == null &&
-        est.grams_per_unit &&
-        est.confidence_unit >= 0.6
-      )
-        patch.grams_per_unit = est.grams_per_unit;
-      if (Object.keys(patch).length) {
-        await supabase
-          .from('products_catalog')
-          .update(patch)
-          .eq('id', ing.product.id);
-        // note: pas besoin de recharger; meta local suffit pour ce run
-      }
-    }
-    const meta = {
-      density_g_per_ml: Number(density ?? 1.0),
-      grams_per_unit: Number(gPerUnit ?? 0),
-    };
+        // 2) Ingrédients (avec produit)
+        const { data: ri, error: ei } = await supabase
+          .from('recipe_ingredients')
+          .select('id, qty, unit, note, product:products_catalog(id,name,default_unit)')
+          .eq('recipe_id', id)
+          .order('id');
+        if (ei) throw ei;
+        setIngredients(ri || []);
 
-    if (!learnByProduct.has(ing.product_id)) {
-      learnByProduct.set(ing.product_id, {
-        gramsTaken: 0,
-        unitsTaken: 0,
-        lastMeta: meta,
-        productRow: ing.product,
-      });
-    }
-
-    const needQty = Number(ing.qty || 0);
-    const needUnit = (ing.unit || ing.product?.default_unit || 'g').toLowerCase();
-
-    // 2) lots du produit
-    const { data: lots, error: lotErr } = await supabase
-      .from('inventory_lots')
-      .select(
-        'id, product_id, location_id, qty, unit, dlc, entered_at, opened_at, note, source'
-      )
-      .eq('product_id', ing.product_id)
-      .order('dlc', { ascending: true, nullsFirst: false })
-      .order('entered_at', { ascending: true });
-    if (lotErr)
-      return NextResponse.json({ error: lotErr.message }, { status: 500 });
-
-    // 3) dispo globale (en needUnit)
-    const available = sumAvailableInUnitWithMeta(lots, needUnit, meta);
-
-    // Si plan manuel fourni pour ce produit : on vérifiera la couverture par le plan
-    const planForProduct = planByProduct.get(ing.product_id) || null;
-    if (planForProduct && planForProduct.length) {
-      // Vérifier que le plan couvre la demande
-      let plannedTotalInNeed = 0;
-      for (const step of planForProduct) {
-        const lot = (lots || []).find((l) => l.id === step.lot_id);
-        if (!lot)
-          return NextResponse.json(
-            { error: `Lot ${step.lot_id} introuvable pour plan manuel.` },
-            { status: 400 }
-          );
-        // convertir la quantité demandée par le plan (dans l'unité du step) -> needUnit
-        const inNeed = convertWithMeta(
-          Number(step.qty),
-          step.unit || lot.unit,
-          needUnit,
-          meta
-        ).qty;
-        plannedTotalInNeed += inNeed;
-      }
-      if (plannedTotalInNeed + 1e-9 < needQty && !ing.optional) {
-        missing.push({
-          product_id: ing.product_id,
-          name: ing.product?.name || 'Ingrédient',
-          missingQty: +(needQty - plannedTotalInNeed).toFixed(2),
-          unit: needUnit,
-          available: +plannedTotalInNeed.toFixed(2),
-          via: 'plan',
-        });
-        continue;
-      }
-    } else {
-      // Pas de plan manuel → vérifier la dispo globale
-      if (available + 1e-9 < needQty && !ing.optional) {
-        missing.push({
-          product_id: ing.product_id,
-          name: ing.product?.name || 'Ingrédient',
-          missingQty: +(needQty - available).toFixed(2),
-          unit: needUnit,
-          available: +available.toFixed(2),
-        });
-        continue;
-      }
-    }
-
-    // 4) Préparer le plan d'écriture
-    if (planForProduct && planForProduct.length) {
-      // Utiliser exactement les steps fournis (dans l'ordre du plan)
-      let coveredInNeed = 0;
-      for (const step of planForProduct) {
-        const lot = (lots || []).find((l) => l.id === step.lot_id);
-        if (!lot) continue;
-        const takeInLot = Number(step.qty);
-        if (!(takeInLot > 0)) continue;
-
-        // Contrôle: ne pas dépasser le lot
-        if (takeInLot - Number(lot.qty) > 1e-9) {
-          return NextResponse.json(
-            {
-              error: `Plan manuel dépasse le stock du lot ${lot.id} (${takeInLot} ${step.unit || lot.unit} > ${lot.qty} ${lot.unit}).`,
-            },
-            { status: 400 }
-          );
-        }
-
-        // Impact en unité de besoin (pour couvrir le besoin total)
-        const takeInNeed = convertWithMeta(
-          takeInLot,
-          step.unit || lot.unit,
-          needUnit,
-          meta
-        ).qty;
-        coveredInNeed += takeInNeed;
-
-        // Calcul du nouveau stock
-        const newQtyLot = Number(lot.qty) - takeInLot;
-        if (newQtyLot <= 1e-9) {
-          writes.push({
-            type: 'delete',
-            id: lot.id,
-            before: { ...lot },
-            took: takeInLot,
-            unit: step.unit || lot.unit,
-          });
-          delta.push({
-            action: 'delete',
-            took: takeInLot,
-            unit: step.unit || lot.unit,
-            lot_before: { ...lot },
-          });
+        // 3) Lots pour les produits concernés, tri FEFO (DLC croissante)
+        const productIds = (ri || []).map(x => x.product?.id).filter(Boolean);
+        if (productIds.length) {
+          const { data: pl, error: el } = await supabase
+            .from('pantry_lots')
+            .select('id, product_id, qty, unit, dlc, location_id')
+            .in('product_id', Array.from(new Set(productIds)))
+            .order('dlc', { ascending: true, nullsFirst: false });
+          if (el) throw el;
+          setLots(pl || []);
         } else {
-          const newOpened = lot.opened_at || todayISO();
-          writes.push({
-            type: 'update',
-            id: lot.id,
-            values: { qty: newQtyLot, opened_at: newOpened },
-            before: { ...lot },
-          });
-          delta.push({
-            action: 'update',
-            took: takeInLot,
-            unit: step.unit || lot.unit,
-            lot_before: { ...lot },
-            lot_after: { id: lot.id, qty: newQtyLot, opened_at: newOpened },
-          });
+          setLots([]);
         }
-
-        // Apprentissage (g et u réellement retirés)
-        const gDelta = convertWithMeta(
-          takeInLot,
-          step.unit || lot.unit,
-          'g',
-          meta
-        ).qty;
-        const uDelta = convertWithMeta(
-          takeInLot,
-          step.unit || lot.unit,
-          'u',
-          meta
-        ).qty;
-        const learn = learnByProduct.get(ing.product_id);
-        learn.gramsTaken += Number(gDelta) || 0;
-        learn.unitsTaken += Number(uDelta) || 0;
+      } catch (e) {
+        console.error(e);
+        alert('Erreur chargement: ' + (e?.message || e));
+      } finally {
+        setLoading(false);
       }
+    })();
+  }, [id]);
 
-      // Si le plan ne couvre pas tout et que l'ingrédient n'est pas optionnel → on bloque
-      if (coveredInNeed + 1e-9 < needQty && !ing.optional) {
-        missing.push({
-          product_id: ing.product_id,
-          name: ing.product?.name || 'Ingrédient',
-          missingQty: +(needQty - coveredInNeed).toFixed(2),
-          unit: needUnit,
-          available: +coveredInNeed.toFixed(2),
-          via: 'plan',
+  // ---------- Scaling factor ----------
+  const factor = useMemo(() => {
+    const base = Number(recipe?.servings || 2);
+    const p = Number(people || 2);
+    if (!base || base <= 0) return 1;
+    return clamp(p / base, 0.05, 50);
+  }, [recipe, people]);
+
+  // ---------- Dry-run: construit un plan de déduction ----------
+  async function buildPlan() {
+    const lines = [];
+    const missing = [];
+
+    for (const ing of (ingredients || [])) {
+      const productId = ing.product?.id;
+      const productName = ing.product?.name || '??';
+      const baseQty = Number(ing.qty || 0);
+      const baseUnit = (ing.unit || '').trim();
+      const needed = baseQty * factor;
+
+      const lotsForProduct = (lots || []).filter(l => l.product_id === productId); // FEFO déjà trié
+
+      if (!productId) {
+        missing.push({ label: productName, reason: 'Produit inconnu (pas de product_id)' });
+        lines.push({
+          ingredientId: ing.id,
+          productId,
+          productName,
+          neededBaseQty: baseQty,
+          neededBaseUnit: baseUnit,
+          neededScaledQty: needed,
+          allocations: []
         });
         continue;
       }
-    } else {
-      // Pas de plan → FIFO automatique avec conversions
-      let remainingNeed = needQty; // exprimé en needUnit
-      for (const lot of sortLotsFIFO(lots || [])) {
-        if (remainingNeed <= 1e-9) break;
 
-        const lotInNeed = convertWithMeta(
-          Number(lot.qty),
-          lot.unit,
-          needUnit,
-          meta
-        ).qty;
-        const takeInNeed = Math.min(lotInNeed, remainingNeed);
-        if (takeInNeed <= 0) continue;
+      let remainingInRecipeUnit = needed;
+      const allocations = [];
 
-        // re-convertir vers l’unité native du lot pour l’écriture
-        const takeInLot = convertWithMeta(
-          takeInNeed,
-          needUnit,
-          lot.unit,
-          meta
-        ).qty;
-        const newQtyLot = Number(lot.qty) - takeInLot;
+      for (const lot of lotsForProduct) {
+        if (remainingInRecipeUnit <= 0) break;
 
-        if (newQtyLot <= 1e-9) {
-          writes.push({
-            type: 'delete',
-            id: lot.id,
-            before: { ...lot },
-            took: takeInLot,
-            unit: lot.unit,
-          });
-          delta.push({
-            action: 'delete',
-            took: takeInLot,
-            unit: lot.unit,
-            lot_before: { ...lot },
-          });
-        } else {
-          const newOpened = lot.opened_at || todayISO();
-          writes.push({
-            type: 'update',
-            id: lot.id,
-            values: { qty: newQtyLot, opened_at: newOpened },
-            before: { ...lot },
-          });
-          delta.push({
-            action: 'update',
-            took: takeInLot,
-            unit: lot.unit,
-            lot_before: { ...lot },
-            lot_after: { id: lot.id, qty: newQtyLot, opened_at: newOpened },
-          });
+        // Convertir "quantité restante de recette" -> "unité du lot"
+        const { data: convLotQty, error } = await supabase.rpc('convert_qty', {
+          p_product_id: productId,
+          p_from_unit: baseUnit || ing.product?.default_unit || null,
+          p_to_unit: lot.unit,
+          p_qty: remainingInRecipeUnit
+        });
+        if (error) {
+          console.error('convert_qty error', error);
+        }
+        if (convLotQty == null) {
+          // Pas de conversion vers l’unité de ce lot : on ignore ce lot
+          continue;
         }
 
-        // Apprentissage (g et u réellement retirés)
-        const gDelta = convertWithMeta(takeInLot, lot.unit, 'g', meta).qty;
-        const uDelta = convertWithMeta(takeInLot, lot.unit, 'u', meta).qty;
-        const learn = learnByProduct.get(ing.product_id);
-        learn.gramsTaken += Number(gDelta) || 0;
-        learn.unitsTaken += Number(uDelta) || 0;
+        const canTakeLotUnit = Math.min(Number(lot.qty || 0), Number(convLotQty));
+        if (canTakeLotUnit > 0) {
+          allocations.push({
+            lotId: lot.id,
+            lotUnit: lot.unit,
+            takeQty: canTakeLotUnit
+          });
 
-        remainingNeed -= takeInNeed;
+          // Back-convert ce qu'on vient d'allouer en "unité recette" pour diminuer le reste
+          const { data: backToRecipeUnit } = await supabase.rpc('convert_qty', {
+            p_product_id: productId,
+            p_from_unit: lot.unit,
+            p_to_unit: baseUnit || ing.product?.default_unit || null,
+            p_qty: canTakeLotUnit
+          });
+          if (backToRecipeUnit != null) {
+            remainingInRecipeUnit = Math.max(0, remainingInRecipeUnit - Number(backToRecipeUnit));
+          }
+        }
       }
-    }
-  }
 
-  // Si manquants → on ne fait AUCUNE écriture
-  if (missing.length) {
-    return NextResponse.json(
-      { error: 'Stock insuffisant', missing },
-      { status: 400 }
-    );
-  }
+      if (remainingInRecipeUnit > 0) {
+        missing.push({
+          label: productName,
+          reason: `${fmt(remainingInRecipeUnit)} ${baseUnit || ''} manquants`
+        });
+      }
 
-  // --------- APPLICATION DES ÉCRITURES ---------
-  for (const w of writes) {
-    if (w.type === 'delete') {
-      const { error } = await supabase
-        .from('inventory_lots')
-        .delete()
-        .eq('id', w.id);
-      if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-    } else {
-      const { error } = await supabase
-        .from('inventory_lots')
-        .update(w.values)
-        .eq('id', w.id);
-      if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-    }
-  }
-
-  // --------- LOG + UNDO ---------
-  const { data: logRows, error: logErr } = await supabase
-    .from('cook_logs')
-    .insert({ recipe_id: recipeId, portions: 1, delta })
-    .select('id')
-    .limit(1);
-  if (logErr)
-    return NextResponse.json({ error: logErr.message }, { status: 500 });
-
-  // --------- APPRENTISSAGE (g/u) APRÈS CUISSON ---------
-  for (const [productId, rec] of learnByProduct.entries()) {
-    if (rec.unitsTaken > 0 && rec.gramsTaken > 0) {
-      const obs = rec.gramsTaken / rec.unitsTaken; // g/u observé
-      // 1) journalise l'observation
-      await supabase.from('product_meta_observations').insert({
-        product_id: productId,
-        grams_per_unit_obs: obs,
-        density_g_per_ml_obs: rec.lastMeta?.density_g_per_ml ?? null,
-        source: 'cook',
+      lines.push({
+        ingredientId: ing.id,
+        productId,
+        productName,
+        neededBaseQty: baseQty,
+        neededBaseUnit: baseUnit,
+        neededScaledQty: needed,
+        allocations
       });
+    }
 
-      // 2) pose ou affine grams_per_unit
-      const prod = rec.productRow;
-      const hasGPU =
-        prod?.grams_per_unit != null && Number(prod.grams_per_unit) > 0;
-      if (!hasGPU) {
-        const gpu = Math.max(1, Math.round(obs));
-        await supabase
-          .from('products_catalog')
-          .update({ grams_per_unit: gpu })
-          .eq('id', productId);
-      } else {
-        // moyenne glissante douce si l'écart est significatif
-        const prev = Number(prod.grams_per_unit) || 0;
-        const alpha = 0.7; // inertie
-        const updated = Math.round(prev * alpha + obs * (1 - alpha));
-        if (prev > 0 && Math.abs(updated - prev) / prev > 0.1) {
-          await supabase
-            .from('products_catalog')
-            .update({ grams_per_unit: updated })
-            .eq('id', productId);
-        }
-      }
+    return { lines, missing };
+  }
+
+  // ---------- Actions ----------
+  async function onPrepare() {
+    const p = await buildPlan();
+    setPlan(p);
+    if (neverExceed && p.missing.length) {
+      alert(
+        `Ingrédients manquants (ne jamais dépasser activé) :\n- ` +
+        p.missing.map(m => `${m.label}: ${m.reason}`).join('\n- ')
+      );
     }
   }
 
-  return NextResponse.json({ ok: true, undoToken: logRows?.[0]?.id || null });
+  async function onCook() {
+    const p = plan || await buildPlan();
+    setPlan(p);
+
+    if (neverExceed && p.missing.length) {
+      alert(
+        `Impossible de cuisiner car il manque :\n- ` +
+        p.missing.map(m => `${m.label}: ${m.reason}`).join('\n- ')
+      );
+      return;
+    }
+
+    // Appliquer le plan : décrémenter les lots
+    // (Pour un "tout ou rien" strict, je peux te faire une RPC transactionnelle côté SQL.)
+    try {
+      for (const line of p.lines) {
+        for (const al of line.allocations) {
+          if (al.takeQty > 0) {
+            // re-lire qty courante par sécurité
+            const { data: lotRow, error: er } = await supabase
+              .from('pantry_lots')
+              .select('qty')
+              .eq('id', al.lotId)
+              .single();
+            if (er) throw er;
+
+            const newQty = Math.max(0, Number(lotRow?.qty || 0) - Number(al.takeQty));
+            const { error: eu } = await supabase
+              .from('pantry_lots')
+              .update({ qty: newQty })
+              .eq('id', al.lotId);
+            if (eu) throw eu;
+          }
+        }
+      }
+
+      alert('✅ Déduction effectuée !');
+      router.push('/pantry'); // redirige où tu préfères
+    } catch (e) {
+      console.error(e);
+      alert('Erreur pendant la déduction: ' + (e?.message || e));
+    }
+  }
+
+  // ---------- UI ----------
+  const scaledIngredients = useMemo(() =>
+    (ingredients || []).map(i => ({
+      ...i,
+      scaledQty: (Number(i.qty || 0) * factor) || 0
+    }))
+    , [ingredients, factor]);
+
+  return (
+    <div className="grid" style={{ gap: 12 }}>
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+        <div>
+          <h1 style={{ margin: '6px 0' }}>{recipe?.title || recipe?.name || 'Cuisiner'}</h1>
+          <div style={{ opacity: .7, fontSize: 13 }}>
+            Base: {recipe?.servings ?? 2} pers • prep {recipe?.prep_min || 0}′ • cuisson {recipe?.cook_min || 0}′
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+          <PartySizeControl
+            value={people}
+            onChange={(n) => { setPeople(n); localStorage.setItem('myko.partySize', String(n)); }}
+          />
+          <label className="input" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <input
+              type="checkbox"
+              checked={neverExceed}
+              onChange={e => { setNeverExceed(e.target.checked); localStorage.setItem('myko.neverExceed', e.target.checked ? '1' : '0'); }}
+            />
+            Ne jamais dépasser
+          </label>
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button className="btn" onClick={onPrepare} disabled={loading}>Préparer (dry-run)</button>
+            <button className="btn primary" onClick={onCook} disabled={loading}>Cuisiner</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Ingrédients scalés */}
+      <div className="card" style={{ display: 'grid', gap: 8 }}>
+        <h3 style={{ margin: 0 }}>Ingrédients (pour {people} pers)</h3>
+        <ul style={{ margin: 0, paddingLeft: 18 }}>
+          {scaledIngredients.map(i => (
+            <li key={i.id}>
+              {fmt(i.scaledQty)} {i.unit} — <b>{i.product?.name || '??'}</b> {i.note ? <em style={{ opacity: .7 }}>({i.note})</em> : null}
+            </li>
+          ))}
+          {!scaledIngredients.length && <em style={{ opacity: .7 }}>Aucun ingrédient.</em>}
+        </ul>
+      </div>
+
+      {/* Plan de déduction */}
+      {plan && (
+        <div className="card" style={{ display: 'grid', gap: 10 }}>
+          <h3 style={{ margin: 0 }}>Plan de déduction</h3>
+          {plan.lines.map(line => (
+            <div key={line.ingredientId} style={{ borderTop: '1px solid #eee', paddingTop: 8 }}>
+              <div><b>{line.productName}</b> — besoin: {fmt(line.neededScaledQty)} {line.neededBaseUnit || ''}</div>
+              {line.allocations.length ? (
+                <ul style={{ margin: '6px 0 0', paddingLeft: 18 }}>
+                  {line.allocations.map(a => (
+                    <li key={a.lotId}>Lot {a.lotId.slice(0, 8)} : −{fmt(a.takeQty)} {a.lotUnit}</li>
+                  ))}
+                </ul>
+              ) : (
+                <div style={{ opacity: .7, fontSize: 13 }}>Aucune allocation possible (conversion inconnue ou pas de lot).</div>
+              )}
+            </div>
+          ))}
+          {plan.missing?.length ? (
+            <div style={{ color: '#b91c1c' }}>
+              <b>Manquants :</b>
+              <ul style={{ margin: '6px 0 0', paddingLeft: 18 }}>
+                {plan.missing.map((m, idx) => (<li key={idx}>{m.label} — {m.reason}</li>))}
+              </ul>
+            </div>
+          ) : (
+            <div style={{ color: '#15803d' }}>Tous les ingrédients sont couverts ✅</div>
+          )}
+        </div>
+      )}
+    </div>
+  );
 }
