@@ -1,6 +1,21 @@
 // app/layout.js
 import './globals.css';
 import Link from 'next/link';
+import { SignOutButton } from '@/components/SignOutButton';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="fr">
+      <body>
+        <header className="p-4 flex justify-between items-center border-b">
+          <h1>🌱 Myko</h1>
+          <SignOutButton />
+        </header>
+        <main>{children}</main>
+      </body>
+    </html>
+  );
+}
 
 export const metadata = {
   title: 'Garde-Manger & Potager',
