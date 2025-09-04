@@ -4,9 +4,9 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 
-/** Empêche la pré-génération statique de cette page (CSR only) */
+/** CSR only, pas de pré-rendu */
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// (⚠️ ne pas exporter revalidate ici)
 
 function CallbackInner() {
   const search = useSearchParams();
@@ -18,7 +18,7 @@ function CallbackInner() {
       try {
         const redirect = search.get('redirect') || '/';
 
-        // Erreur éventuelle renvoyée par Supabase
+        // Erreurs relayées par Supabase (ex: otp_expired)
         const urlError = search.get('error');
         const urlErrorDesc = search.get('error_description');
         if (urlError) {
@@ -26,7 +26,7 @@ function CallbackInner() {
           return;
         }
 
-        // 1) Magic link : tokens dans le hash (#access_token=...&refresh_token=...)
+        // 1) Magic link : tokens dans le hash
         const hs = new URLSearchParams((window.location.hash || '').replace(/^#/, ''));
         const access_token = hs.get('access_token');
         const refresh_token = hs.get('refresh_token');
