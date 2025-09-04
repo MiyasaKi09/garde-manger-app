@@ -1,10 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 
-export default function AuthCallbackPage() {
+/** Empêche la pré-génération statique de cette page (CSR only) */
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+function CallbackInner() {
   const search = useSearchParams();
   const router = useRouter();
   const [msg, setMsg] = useState('Restauration de la session…');
@@ -14,7 +18,7 @@ export default function AuthCallbackPage() {
       try {
         const redirect = search.get('redirect') || '/';
 
-        // 1) Erreur éventuelle renvoyée par Supabase (ex: otp_expired)
+        // Erreur éventuelle renvoyée par Supabase
         const urlError = search.get('error');
         const urlErrorDesc = search.get('error_description');
         if (urlError) {
@@ -22,23 +26,19 @@ export default function AuthCallbackPage() {
           return;
         }
 
-        // 2) Cas MAGIC LINK : tokens dans le hash (#access_token=...&refresh_token=...)
-        const hash = window.location.hash || '';
-        const hs = new URLSearchParams(hash.startsWith('#') ? hash.slice(1) : hash);
+        // 1) Magic link : tokens dans le hash (#access_token=...&refresh_token=...)
+        const hs = new URLSearchParams((window.location.hash || '').replace(/^#/, ''));
         const access_token = hs.get('access_token');
         const refresh_token = hs.get('refresh_token');
 
         if (access_token && refresh_token) {
-          const { error: setErr } = await supabase.auth.setSession({
-            access_token,
-            refresh_token,
-          });
+          const { error: setErr } = await supabase.auth.setSession({ access_token, refresh_token });
           if (setErr) throw setErr;
           router.replace(redirect);
           return;
         }
 
-        // 3) Cas PKCE : ?code=... (au cas où Supabase enverrait un "code")
+        // 2) Fallback PKCE : ?code=...
         const code = search.get('code');
         if (code) {
           const { error: exchErr } = await supabase.auth.exchangeCodeForSession(code);
@@ -47,7 +47,13 @@ export default function AuthCallbackPage() {
           return;
         }
 
-        // 4) Rien trouvé
+        // 3) Déjà authentifié ?
+        const { data } = await supabase.auth.getSession();
+        if (data?.session) {
+          router.replace(redirect);
+          return;
+        }
+
         setMsg('Aucun jeton trouvé dans cette URL.');
       } catch (e) {
         console.error(e);
@@ -58,15 +64,32 @@ export default function AuthCallbackPage() {
 
   return (
     <div className="min-h-screen grid place-items-center p-6">
-      <div className="card" style={{maxWidth:520}}>
+      <div className="card" style={{ maxWidth: 520 }}>
         <h2>Connexion</h2>
         <p>{msg}</p>
-        <p style={{marginTop:8}}>
+        <p style={{ marginTop: 8 }}>
           <a className="btn" href={`/login?redirect=${encodeURIComponent(search.get('redirect') || '/')}`}>
             Revenir à la connexion
           </a>
         </p>
       </div>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen grid place-items-center p-6">
+          <div className="card" style={{ maxWidth: 520 }}>
+            <h2>Connexion</h2>
+            <p>Initialisation…</p>
+          </div>
+        </div>
+      }
+    >
+      <CallbackInner />
+    </Suspense>
   );
 }
