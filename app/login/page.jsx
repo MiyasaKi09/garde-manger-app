@@ -11,22 +11,29 @@ export default function LoginPage() {
   useEffect(() => {
     const url = new URL(window.location.href);
     setRedirectTo(url.searchParams.get('redirect') || '/');
+    // pré-remplir avec le dernier email utilisé (optionnel)
+    const last = localStorage.getItem('myko.lastEmail');
+    if (last) setEmail(last);
   }, []);
 
   async function onSubmit(e){
     e.preventDefault();
     setError('');
-    // IMPORTANT: rediriger vers /auth/callback en PROD
+    // IMPORTANT : toujours renvoyer vers notre callback
     const emailRedirectTo = `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`;
+
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
         emailRedirectTo,
-        shouldCreateUser: true,         // création automatique si pas encore inscrit
+        shouldCreateUser: true,
       }
     });
     if (error) setError(error.message);
-    else setSent(true);
+    else {
+      localStorage.setItem('myko.lastEmail', email); // 🔹 mémorise pour verifyOtp (token_hash)
+      setSent(true);
+    }
   }
 
   return (
