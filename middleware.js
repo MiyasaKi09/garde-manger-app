@@ -1,44 +1,44 @@
-// middleware.ts
+// middleware.js
 import { NextResponse } from 'next/server';
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
-import type { NextRequest } from 'next/server';
 
+// Protéger tout sauf ces chemins publics
 export const config = {
   matcher: [
-    // Protégez tout SAUF login et auth…
-    '/((?!login|auth|_next|favicon.ico|public).*)',
+    '/((?!login|auth|_next|favicon.ico|robots.txt|sitemap.xml|site.webmanifest|images|public).*)',
   ],
 };
 
-export async function middleware(req: NextRequest) {
+export async function middleware(req) {
   const res = NextResponse.next();
   const supabase = createMiddlewareClient({ req, res });
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  // Récupère la session Supabase depuis les cookies (Edge-safe)
+  const { data: { session } } = await supabase.auth.getSession();
 
-  // Allowlist emails en prod
+  // Allowlist d’emails (définir sur Vercel)
   const allow = (process.env.NEXT_PUBLIC_ALLOWED_EMAILS || '')
     .split(',')
-    .map(s=>s.trim().toLowerCase())
+    .map(s => s.trim().toLowerCase())
     .filter(Boolean);
 
+  const url = req.nextUrl;
+
+  // Si pas connecté → redirige vers /login avec redirect=…
   if (!session) {
-    const url = req.nextUrl.clone();
-    url.pathname = '/login';
-    url.searchParams.set('redirect', req.nextUrl.pathname + req.nextUrl.search);
-    return NextResponse.redirect(url);
+    const loginUrl = url.clone();
+    loginUrl.pathname = '/login';
+    loginUrl.searchParams.set('redirect', url.pathname + url.search);
+    return NextResponse.redirect(loginUrl);
   }
 
-  const email = session.user?.email?.toLowerCase() || '';
+  // Si connecté mais email non autorisé → redirige vers /login
+  const email = (session.user?.email || '').toLowerCase();
   if (allow.length && !allow.includes(email)) {
-    // session invalide → déconnexion et redirection vers /login
-    const url = req.nextUrl.clone();
-    url.pathname = '/login';
-    url.searchParams.set('redirect', '/');
-    // On ne peut pas signOut ici, on force le client à le faire à la prochaine nav
-    return NextResponse.redirect(url);
+    const loginUrl = url.clone();
+    loginUrl.pathname = '/login';
+    loginUrl.searchParams.set('redirect', '/');
+    return NextResponse.redirect(loginUrl);
   }
 
   return res;
