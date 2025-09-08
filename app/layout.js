@@ -1,6 +1,6 @@
 // app/layout.jsx
-import './globals.css';              // keep your base styles
-import './myko-theme.css';           // NEW: theme styles moved out of styled-jsx
+import './globals.css';
+import './myko-theme.css';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { SignOutButton } from '@/components/SignOutButton';
@@ -65,16 +65,8 @@ export default function RootLayout({ children }) {
         <div className="mycelium-bg" />
 
         <main className="main-container">
-          <Suspense
-            fallback={
-              <div className="loading-container">
-                <div className="loading-mycelium"><span /><span /><span /></div>
-                <p>Connexion au réseau mycorhizien...</p>
-              </div>
-            }
-          >
-            {children}
-          </Suspense>
+          {/* IMPORTANT: pas de Suspense global ici */}
+          {children}
         </main>
       </body>
     </html>
