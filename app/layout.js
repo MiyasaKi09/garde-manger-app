@@ -1,9 +1,8 @@
-// app/layout.jsx
+// app/layout.tsx
 import './globals.css';
-import './myko-theme.css';
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { SignOutButton } from '@/components/SignOutButton';
+import HeaderAuth from '@/components/HeaderAuth';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = false;
@@ -14,11 +13,10 @@ export const metadata = {
   description: 'Cultivez les connexions entre cuisine, garde-manger et potager',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -55,19 +53,34 @@ export default function RootLayout({ children }) {
                 <span className="season-icon">🍂</span>
                 <span className="season-text">Automne</span>
               </div>
-              <Suspense fallback={<div style={{ opacity: 0.7 }}>…</div>}>
-                <SignOutButton />
-              </Suspense>
+
+              {/* ← ICI : conditionnel serveur */}
+              {/* Affiche "Se connecter" si pas loggé, sinon "Se déconnecter" */}
+              {/* HeaderAuth appelle votre SignOutButton (client) quand connecté */}
+              {/**/}
+              <HeaderAuth />
             </div>
           </div>
         </header>
 
-        <div className="mycelium-bg" />
+        <div className="mycelium-bg"></div>
 
         <main className="main-container">
-          {/* IMPORTANT: pas de Suspense global ici */}
-          {children}
+          <Suspense
+            fallback={
+              <div className="loading-container">
+                <div className="loading-mycelium">
+                  <span></span><span></span><span></span>
+                </div>
+                <p>Connexion au réseau mycorhizien...</p>
+              </div>
+            }
+          >
+            {children}
+          </Suspense>
         </main>
+
+        {/* … garde tes styles globaux ici, inchangés … */}
       </body>
     </html>
   );
