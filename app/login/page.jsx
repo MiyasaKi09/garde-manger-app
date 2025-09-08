@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 
 export const dynamic = 'force-dynamic';
-export const revalidate = false;       // ✅ pas d'objet
+export const revalidate = false;
 export const fetchCache = 'force-no-store';
 
 const allowed = (process.env.NEXT_PUBLIC_ALLOWED_EMAILS || '')
@@ -24,7 +24,6 @@ export default function LoginPage(){
   const [loading, setLoading] = useState(false);
   const [redirectTo, setRedirectTo] = useState('/');
 
-  // récupérer ?redirect=… sans useSearchParams (évite soucis de prerender)
   useEffect(()=>{
     try {
       const url = new URL(window.location.href);
@@ -32,7 +31,6 @@ export default function LoginPage(){
     } catch {}
   },[]);
 
-  // si déjà connecté, on saute le login
   useEffect(()=>{
     (async()=>{
       const { data: { session } } = await supabase.auth.getSession();
@@ -50,7 +48,6 @@ export default function LoginPage(){
         setError("Cet email n'est pas autorisé.");
         return;
       }
-      // OTP par email (6 chiffres) — pas de magic link
       const { error } = await supabase.auth.signInWithOtp({
         email: em,
         options: { shouldCreateUser: true }
