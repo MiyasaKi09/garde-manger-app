@@ -32,14 +32,13 @@ export default function LoginPage() {
       return
     }
 
-    // IMPORTANT: lien vers /auth/callback (client) — flux implicit/hash
     const emailRedirectTo = `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`
 
     const { error: err } = await supabase.auth.signInWithOtp({
       email: emailNorm,
       options: {
-        emailRedirectTo,       // Supabase ajoutera #access_token=... au retour
-        shouldCreateUser: true // ok pour créer l’utilisateur si pas existant
+        emailRedirectTo,       // redirige vers /auth/callback (hash tokens)
+        shouldCreateUser: true
       }
     })
     if (err) setError(err.message)
@@ -52,14 +51,13 @@ export default function LoginPage() {
 
       {!supabase && (
         <div style={{marginTop:12, padding:12, background:'#fee2e2', border:'1px solid #ef4444', borderRadius:8}}>
-          <strong>Erreur :</strong> Supabase non configuré. Renseigne
-          <code style={{marginLeft:6}}>NEXT_PUBLIC_SUPABASE_URL</code> et
-          <code style={{marginLeft:6}}>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> dans Vercel.
+          <strong>Erreur :</strong> Supabase non configuré.
+          Ajoute <code>NEXT_PUBLIC_SUPABASE_URL</code> et <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> dans Vercel.
         </div>
       )}
 
       {sent ? (
-        <p style={{marginTop:12}}>Un lien de connexion a été envoyé à <b>{email}</b>. Ouvre-le sur ce même appareil.</p>
+        <p style={{marginTop:12}}>Un lien a été envoyé à <b>{email}</b>. Ouvre-le sur cet appareil.</p>
       ) : (
         <form onSubmit={onSubmit} style={{ display: 'grid', gap: 8, marginTop: 12 }}>
           <input
@@ -70,12 +68,7 @@ export default function LoginPage() {
             value={email}
             onChange={(e)=>setEmail(e.target.value)}
           />
-          <button
-            className="btn primary"
-            type="submit"
-            disabled={!supabase}
-            title={!supabase ? 'Supabase non configuré' : ''}
-          >
+          <button className="btn primary" type="submit" disabled={!supabase}>
             Recevoir un lien
           </button>
           {error && <div style={{ color: '#b91c1c' }}>{error}</div>}
