@@ -1,11 +1,11 @@
 // app/layout.jsx
 import './globals.css';
 import Link from 'next/link';
-import { SignOutButton } from '@/components/SignOutButton';
 import { Suspense } from 'react';
+import { SignOutButton } from '@/components/SignOutButton';
 
 export const dynamic = 'force-dynamic';
-export const revalidate = false;
+export const revalidate = false;           // ok: false ou un nombre
 export const fetchCache = 'force-no-store';
 
 export const metadata = {
@@ -17,9 +17,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
+        <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* En JSX, crossOrigin doit être une string */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <header className="myko-header">
@@ -34,7 +39,7 @@ export default function RootLayout({ children }) {
                 </div>
                 <span className="logo-text">Myko</span>
               </Link>
-              
+
               <nav className="main-nav">
                 <Link href="/" className="nav-link">
                   <span className="nav-icon">🏠</span>
@@ -62,28 +67,36 @@ export default function RootLayout({ children }) {
                 </Link>
               </nav>
             </div>
-            
+
             <div className="header-actions">
               <div className="season-indicator">
                 <span className="season-icon">🍂</span>
                 <span className="season-text">Automne</span>
               </div>
-              <SignOutButton />
+
+              {/* Si SignOutButton est un composant client, on le protège dans un Suspense */}
+              <Suspense fallback={<div style={{ opacity: 0.7 }}>…</div>}>
+                <SignOutButton />
+              </Suspense>
             </div>
           </div>
         </header>
-        
+
         <div className="mycelium-bg"></div>
-        
+
         <main className="main-container">
-          <Suspense fallback={
-            <div className="loading-container">
-              <div className="loading-mycelium">
-                <span></span><span></span><span></span>
+          <Suspense
+            fallback={
+              <div className="loading-container">
+                <div className="loading-mycelium">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <p>Connexion au réseau mycorhizien...</p>
               </div>
-              <p>Connexion au réseau mycorhizien...</p>
-            </div>
-          }>
+            }
+          >
             {children}
           </Suspense>
         </main>
@@ -122,22 +135,33 @@ export default function RootLayout({ children }) {
             overflow-x: hidden;
           }
 
-          h1, h2, h3 {
+          h1,
+          h2,
+          h3 {
             font-family: 'Crimson Text', Georgia, serif;
             font-weight: 600;
             color: var(--forest-green);
             letter-spacing: -0.02em;
           }
 
-          h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-          h2 { font-size: 1.875rem; margin-bottom: 0.75rem; }
-          h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+          h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+          }
+          h2 {
+            font-size: 1.875rem;
+            margin-bottom: 0.75rem;
+          }
+          h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+          }
 
           /* Header Styles */
           .myko-header {
             position: sticky;
             top: 0;
-            background: linear-gradient(180deg, rgba(255,254,249,0.98) 0%, rgba(250,248,243,0.95) 100%);
+            background: linear-gradient(180deg, rgba(255, 254, 249, 0.98) 0%, rgba(250, 248, 243, 0.95) 100%);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(139, 149, 109, 0.2);
             box-shadow: var(--soft-shadow);
@@ -190,9 +214,23 @@ export default function RootLayout({ children }) {
             animation: float 6s ease-in-out infinite;
           }
 
-          .spore:nth-child(1) { top: 5px; left: 10px; animation-delay: 0s; }
-          .spore:nth-child(2) { top: 15px; left: 25px; animation-delay: 2s; background: var(--moss-green); }
-          .spore:nth-child(3) { top: 25px; left: 8px; animation-delay: 4s; background: var(--earth-brown); }
+          .spore:nth-child(1) {
+            top: 5px;
+            left: 10px;
+            animation-delay: 0s;
+          }
+          .spore:nth-child(2) {
+            top: 15px;
+            left: 25px;
+            animation-delay: 2s;
+            background: var(--moss-green);
+          }
+          .spore:nth-child(3) {
+            top: 25px;
+            left: 8px;
+            animation-delay: 4s;
+            background: var(--earth-brown);
+          }
 
           .mycelium {
             position: absolute;
@@ -206,13 +244,25 @@ export default function RootLayout({ children }) {
           }
 
           @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            0%,
+            100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-5px);
+            }
           }
 
           @keyframes pulse {
-            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scaleX(0.5); }
-            50% { opacity: 0.8; transform: translate(-50%, -50%) scaleX(1); }
+            0%,
+            100% {
+              opacity: 0.3;
+              transform: translate(-50%, -50%) scaleX(0.5);
+            }
+            50% {
+              opacity: 0.8;
+              transform: translate(-50%, -50%) scaleX(1);
+            }
           }
 
           .logo-text {
@@ -300,8 +350,13 @@ export default function RootLayout({ children }) {
           }
 
           @keyframes sway {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
+            0%,
+            100% {
+              transform: rotate(-5deg);
+            }
+            50% {
+              transform: rotate(5deg);
+            }
           }
 
           /* Background mycelium network */
@@ -314,8 +369,7 @@ export default function RootLayout({ children }) {
             pointer-events: none;
             opacity: 0.03;
             z-index: 0;
-            background-image: 
-              radial-gradient(circle at 20% 30%, var(--sage-green) 1px, transparent 1px),
+            background-image: radial-gradient(circle at 20% 30%, var(--sage-green) 1px, transparent 1px),
               radial-gradient(circle at 80% 60%, var(--moss-green) 1px, transparent 1px),
               radial-gradient(circle at 40% 80%, var(--mushroom) 1px, transparent 1px);
             background-size: 100px 100px, 150px 150px, 200px 200px;
@@ -323,8 +377,12 @@ export default function RootLayout({ children }) {
           }
 
           @keyframes drift {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-50px, -50px); }
+            0% {
+              transform: translate(0, 0);
+            }
+            100% {
+              transform: translate(-50px, -50px);
+            }
           }
 
           /* Main container */
@@ -372,7 +430,9 @@ export default function RootLayout({ children }) {
           }
 
           @keyframes loading-pulse {
-            0%, 80%, 100% {
+            0%,
+            80%,
+            100% {
               transform: scale(0.8);
               opacity: 0.5;
             }
@@ -438,21 +498,25 @@ export default function RootLayout({ children }) {
             .header-container {
               padding: 0.75rem 1rem;
             }
-            
+
             .main-nav {
               flex-wrap: wrap;
             }
-            
+
             .nav-link span:not(.nav-icon) {
               display: none;
             }
-            
+
             .season-indicator .season-text {
               display: none;
             }
-            
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
+
+            h1 {
+              font-size: 2rem;
+            }
+            h2 {
+              font-size: 1.5rem;
+            }
           }
         `}</style>
       </body>
