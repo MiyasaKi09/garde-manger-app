@@ -20,7 +20,6 @@ export default function AuthCallbackPage() {
           return
         }
 
-        // 1) Le hash doit contenir access_token/refresh_token
         const hash = window.location.hash
         const params = new URLSearchParams(hash.startsWith('#') ? hash.slice(1) : hash)
         const access_token = params.get('access_token')
@@ -31,7 +30,6 @@ export default function AuthCallbackPage() {
           return
         }
 
-        // 2) On configure la session Supabase
         const { error: err } = await supabase.auth.setSession({ access_token, refresh_token })
         if (err) {
           setError(err.message)
@@ -39,7 +37,6 @@ export default function AuthCallbackPage() {
         }
 
         setStatus('Session restaurée ✔')
-        // 3) Redirection finale
         const redirect = sp.get('redirect') || '/'
         router.replace(redirect)
       } catch (e) {
@@ -47,7 +44,7 @@ export default function AuthCallbackPage() {
       }
     }
     run()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
