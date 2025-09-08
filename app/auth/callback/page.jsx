@@ -1,42 +1,69 @@
-'use client';
-
-import { useSearchParams } from 'next/navigation';
-
-export const dynamic = 'force-dynamic';
+'use client'
+import { useEffect, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import Link from 'next/link'
+import { getSupabase } from '@/lib/supabaseClient'
 
 export default function AuthCallbackPage() {
-  const sp = useSearchParams();
-  const err = sp.get('error');
+  const router = useRouter()
+  const sp = useSearchParams()
+  const supabase = getSupabase()
 
-  if (!err) {
-    // Normalement on est déjà redirigé par la route server ci-dessus.
-    // Si on voit cette page sans erreur, c'est un aller-retour très rapide.
-    return (
-      <main className="min-h-screen grid place-items-center p-6">
-        <div style={{maxWidth:520, width:'100%', padding:16, border:'1px solid #e5e7eb', borderRadius:12, background:'#fff'}}>
-          <h1>Restauration de session…</h1>
-          <p>Tu peux fermer cette page si rien ne se passe.</p>
-        </div>
-      </main>
-    );
-  }
+  const [status, setStatus] = useState('Restauration de session…')
+  const [error, setError] = useState('')
 
-  // Affichage d’erreur lisible
-  const msg =
-    err === 'no_token'
-      ? "Aucun jeton trouvé dans l’URL. Ouvre le lien de l’e-mail sur cet appareil."
-      : err;
+  useEffect(() => {
+    async function run() {
+      try {
+        if (!supabase) {
+          setError("Supabase non configuré (env manquantes).")
+          return
+        }
+
+        // 1) Le hash doit contenir access_token/refresh_token
+        const hash = window.location.hash
+        const params = new URLSearchParams(hash.startsWith('#') ? hash.slice(1) : hash)
+        const access_token = params.get('access_token')
+        const refresh_token = params.get('refresh_token')
+
+        if (!access_token || !refresh_token) {
+          setError('Aucun jeton trouvé dans cette URL.')
+          return
+        }
+
+        // 2) On configure la session Supabase
+        const { error: err } = await supabase.auth.setSession({ access_token, refresh_token })
+        if (err) {
+          setError(err.message)
+          return
+        }
+
+        setStatus('Session restaurée ✔')
+        // 3) Redirection finale
+        const redirect = sp.get('redirect') || '/'
+        router.replace(redirect)
+      } catch (e) {
+        setError(e.message || String(e))
+      }
+    }
+    run()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
-    <main className="min-h-screen grid place-items-center p-6">
-      <div style={{maxWidth:520, width:'100%', padding:16, borderRadius:12, border:'1px solid #fecaca', background:'#fee2e2', color:'#7f1d1d', whiteSpace:'pre-wrap'}}>
-        <h1>Connexion</h1>
-        <p style={{marginTop:8}}>{msg}</p>
-        <div style={{marginTop:12, display:'flex', gap:8, flexWrap:'wrap'}}>
-          <a href="/login" style={{padding:'8px 12px', borderRadius:8, background:'#991b1b', color:'#fff', textDecoration:'none'}}>Revenir à la connexion</a>
-          <a href="/" style={{padding:'8px 12px', borderRadius:8, background:'#1f2937', color:'#fff', textDecoration:'none'}}>Accueil</a>
+    <main style={{ padding: 24, maxWidth: 640, margin: '0 auto' }}>
+      <h1>Connexion</h1>
+      {error ? (
+        <div style={{marginTop:12, padding:12, background:'#fee2e2', border:'1px solid #ef4444', borderRadius:8}}>
+          <div style={{fontWeight:600, marginBottom:6}}>Une erreur s’est produite</div>
+          <div style={{whiteSpace:'pre-wrap'}}>{error}</div>
+          <div style={{marginTop:12}}>
+            <Link href="/login">Revenir à la connexion</Link>
+          </div>
         </div>
-      </div>
+      ) : (
+        <p style={{marginTop:12}}>{status}</p>
+      )}
     </main>
-  );
+  )
 }
