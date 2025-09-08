@@ -1,8 +1,12 @@
-// app/login/layout.jsx
 export const dynamic = 'force-dynamic';
-export const revalidate = false;   // ✅ valeur attendue: false ou un nombre
-export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 export default function LoginLayout({ children }) {
-  return children;
+  return (
+    <html lang="fr">
+      <body style={{ background: '#fafafa' }}>
+        {children}
+      </body>
+    </html>
+  );
 }
