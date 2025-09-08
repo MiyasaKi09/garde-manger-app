@@ -1,4 +1,4 @@
-// app/layout.tsx
+// app/layout.jsx
 import './globals.css';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -13,12 +13,16 @@ export const metadata = {
   description: 'Cultivez les connexions entre cuisine, garde-manger et potager',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet"
@@ -39,12 +43,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </Link>
 
               <nav className="main-nav">
-                <Link href="/" className="nav-link"><span className="nav-icon">🏠</span><span>Accueil</span></Link>
-                <Link href="/pantry" className="nav-link"><span className="nav-icon">🏺</span><span>Garde-manger</span></Link>
-                <Link href="/recipes" className="nav-link"><span className="nav-icon">📖</span><span>Recettes</span></Link>
-                <Link href="/garden" className="nav-link"><span className="nav-icon">🌱</span><span>Potager</span></Link>
-                <Link href="/planning" className="nav-link"><span className="nav-icon">📅</span><span>Planning</span></Link>
-                <Link href="/settings" className="nav-link"><span className="nav-icon">⚙️</span><span>Paramètres</span></Link>
+                <Link href="/" className="nav-link">
+                  <span className="nav-icon">🏠</span>
+                  <span>Accueil</span>
+                </Link>
+                <Link href="/pantry" className="nav-link">
+                  <span className="nav-icon">🏺</span>
+                  <span>Garde-manger</span>
+                </Link>
+                <Link href="/recipes" className="nav-link">
+                  <span className="nav-icon">📖</span>
+                  <span>Recettes</span>
+                </Link>
+                <Link href="/garden" className="nav-link">
+                  <span className="nav-icon">🌱</span>
+                  <span>Potager</span>
+                </Link>
+                <Link href="/planning" className="nav-link">
+                  <span className="nav-icon">📅</span>
+                  <span>Planning</span>
+                </Link>
+                <Link href="/settings" className="nav-link">
+                  <span className="nav-icon">⚙️</span>
+                  <span>Paramètres</span>
+                </Link>
               </nav>
             </div>
 
@@ -53,11 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <span className="season-icon">🍂</span>
                 <span className="season-text">Automne</span>
               </div>
-
-              {/* ← ICI : conditionnel serveur */}
-              {/* Affiche "Se connecter" si pas loggé, sinon "Se déconnecter" */}
-              {/* HeaderAuth appelle votre SignOutButton (client) quand connecté */}
-              {/**/}
+              {/* Connexion si pas loggé, Déconnexion si loggé */}
               <HeaderAuth />
             </div>
           </div>
@@ -70,7 +88,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             fallback={
               <div className="loading-container">
                 <div className="loading-mycelium">
-                  <span></span><span></span><span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
                 </div>
                 <p>Connexion au réseau mycorhizien...</p>
               </div>
@@ -79,8 +99,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </Suspense>
         </main>
-
-        {/* … garde tes styles globaux ici, inchangés … */}
       </body>
     </html>
   );
