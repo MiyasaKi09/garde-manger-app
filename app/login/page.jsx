@@ -1,8 +1,13 @@
 // app/login/page.jsx
 'use client';
+
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+
+// Force dynamic rendering so Vercel doesn't try to prerender this page
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const allowed = (process.env.NEXT_PUBLIC_ALLOWED_EMAILS || '')
   .split(',')
@@ -11,14 +16,23 @@ const allowed = (process.env.NEXT_PUBLIC_ALLOWED_EMAILS || '')
 
 export default function LoginPage(){
   const router = useRouter();
-  const sp = useSearchParams();
+
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
   const [token, setToken] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const redirectTo = sp.get('redirect') || '/';
+  const [redirectTo, setRedirectTo] = useState('/');
 
+  // Read redirect query param client-side (no useSearchParams)
+  useEffect(()=>{
+    try {
+      const url = new URL(window.location.href);
+      setRedirectTo(url.searchParams.get('redirect') || '/');
+    } catch {}
+  },[]);
+
+  // If already logged in on this device, skip login
   useEffect(()=>{
     (async()=>{
       const { data: { session } } = await supabase.auth.getSession();
@@ -35,18 +49,17 @@ export default function LoginPage(){
     try {
       const em = email.trim().toLowerCase();
 
-      // Anti-bruit : on bloque ici si email non autorisé
       if (allowed.length > 0 && !allowed.includes(em)) {
         setError("Cet email n'est pas autorisé.");
         return;
       }
 
-      // IMPORTANT : ne PAS passer emailRedirectTo => OTP (code 6 chiffres) et PAS magic link
-      const { data, error } = await supabase.auth.signInWithOtp({
+      // IMPORTANT: no emailRedirectTo => Supabase sends a 6-digit OTP (not a magic link)
+      const { error } = await supabase.auth.signInWithOtp({
         email: em,
         options: {
-          shouldCreateUser: true, // mets false si tu ne veux pas créer d’utilisateur automatiquement
-          // NE PAS METTRE emailRedirectTo DU TOUT
+          shouldCreateUser: true, // set to false if you don't want auto signups
+          // DO NOT set emailRedirectTo => we want OTP code emails
         }
       });
 
@@ -54,8 +67,6 @@ export default function LoginPage(){
         setError(error.message);
         return;
       }
-
-      // même si Supabase renvoie data null/undefined, on passe à l’étape "saisie du code"
       setSent(true);
     } catch (err) {
       setError(String(err?.message || err));
@@ -74,7 +85,7 @@ export default function LoginPage(){
       const { data, error } = await supabase.auth.verifyOtp({
         email: em,
         token,
-        type: 'email' // OTP par email (6 chiffres)
+        type: 'email', // 6-digit email OTP
       });
 
       if (error) {
@@ -82,7 +93,7 @@ export default function LoginPage(){
         return;
       }
 
-      // Double check whitelist (au cas où)
+      // Safety: re-check allowlist after verify
       const userEmail = data?.user?.email?.toLowerCase() || '';
       if (allowed.length > 0 && !allowed.includes(userEmail)) {
         await supabase.auth.signOut();
