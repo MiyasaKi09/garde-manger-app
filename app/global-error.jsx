@@ -1,16 +1,25 @@
 'use client';
 
 export default function GlobalError({ error, reset }) {
-  console.error('Global Error boundary:', error);
+  // Next.js fournit `error.digest` en prod
+  console.error('GlobalError:', error);
+
   return (
     <html>
-      <body>
-        <div className="card" style={{margin:'24px auto', maxWidth:700}}>
-          <h2>Erreur critique</h2>
-          <pre style={{whiteSpace:'pre-wrap', background:'#f6f6f6', padding:12, borderRadius:6}}>
-            {String(error?.message || error)}
-          </pre>
-          <button className="btn" onClick={() => reset()}>Réessayer</button>
+      <body style={{minHeight:'100vh',display:'grid',placeItems:'center',padding:24}}>
+        <div style={{maxWidth:600}}>
+          <h1>Oups 🙈</h1>
+          <p>Une erreur est survenue pendant le rendu.</p>
+          {error?.digest && (
+            <p style={{opacity:.7}}>
+              <small>Digest: <code>{String(error.digest)}</code></small>
+            </p>
+          )}
+          <div style={{display:'flex',gap:8,marginTop:12}}>
+            <button className="btn" onClick={() => reset()}>Réessayer</button>
+            <a className="btn" href="/login">Aller à la connexion</a>
+            <a className="btn" href="/">Accueil</a>
+          </div>
         </div>
       </body>
     </html>
