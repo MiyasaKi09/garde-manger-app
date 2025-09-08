@@ -16,10 +16,10 @@ export default function LoginPage(){
   const [sent, setSent] = useState(false);
   const [token, setToken] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const redirectTo = sp.get('redirect') || '/';
 
   useEffect(()=>{
-    // Si déjà loggé, on file sur redirect
     (async()=>{
       const { data: { session } } = await supabase.auth.getSession();
       if(session){
@@ -31,47 +31,71 @@ export default function LoginPage(){
   async function requestCode(e){
     e.preventDefault();
     setError('');
-    const em = email.trim().toLowerCase();
+    setLoading(true);
+    try {
+      const em = email.trim().toLowerCase();
 
-    // Anti-bruit : on empêche même la demande de code si email non autorisé
-    if (allowed.length > 0 && !allowed.includes(em)) {
-      setError("Cet email n'est pas autorisé.");
-      return;
-    }
-
-    const { error } = await supabase.auth.signInWithOtp({
-      email: em,
-      options: {
-        // IMPORTANT : on ne fait pas de magic link, juste un code
-        shouldCreateUser: true, // ou false si tu veux empêcher la création automatique
-        emailRedirectTo: null,
+      // Anti-bruit : on bloque ici si email non autorisé
+      if (allowed.length > 0 && !allowed.includes(em)) {
+        setError("Cet email n'est pas autorisé.");
+        return;
       }
-    });
-    if(error){ setError(error.message); return; }
-    setSent(true);
+
+      // IMPORTANT : ne PAS passer emailRedirectTo => OTP (code 6 chiffres) et PAS magic link
+      const { data, error } = await supabase.auth.signInWithOtp({
+        email: em,
+        options: {
+          shouldCreateUser: true, // mets false si tu ne veux pas créer d’utilisateur automatiquement
+          // NE PAS METTRE emailRedirectTo DU TOUT
+        }
+      });
+
+      if (error) {
+        setError(error.message);
+        return;
+      }
+
+      // même si Supabase renvoie data null/undefined, on passe à l’étape "saisie du code"
+      setSent(true);
+    } catch (err) {
+      setError(String(err?.message || err));
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function verifyCode(e){
     e.preventDefault();
     setError('');
-    const em = email.trim().toLowerCase();
+    setLoading(true);
+    try {
+      const em = email.trim().toLowerCase();
 
-    const { data, error } = await supabase.auth.verifyOtp({
-      email: em,
-      token,
-      type: 'email' // <- le type pour OTP 6 chiffres par email
-    });
-    if(error){ setError(error.message); return; }
+      const { data, error } = await supabase.auth.verifyOtp({
+        email: em,
+        token,
+        type: 'email' // OTP par email (6 chiffres)
+      });
 
-    // Double check whitelist (au cas où signup auto)
-    const userEmail = data?.user?.email?.toLowerCase() || '';
-    if (allowed.length > 0 && !allowed.includes(userEmail)) {
-      await supabase.auth.signOut();
-      setError("Cet email n'est pas autorisé.");
-      return;
+      if (error) {
+        setError(error.message);
+        return;
+      }
+
+      // Double check whitelist (au cas où)
+      const userEmail = data?.user?.email?.toLowerCase() || '';
+      if (allowed.length > 0 && !allowed.includes(userEmail)) {
+        await supabase.auth.signOut();
+        setError("Cet email n'est pas autorisé.");
+        return;
+      }
+
+      router.replace(redirectTo);
+    } catch (err) {
+      setError(String(err?.message || err));
+    } finally {
+      setLoading(false);
     }
-
-    router.replace(redirectTo);
   }
 
   return (
@@ -89,7 +113,9 @@ export default function LoginPage(){
               value={email}
               onChange={e=>setEmail(e.target.value)}
             />
-            <button className="btn primary" type="submit">Recevoir un code</button>
+            <button className="btn primary" type="submit" disabled={loading}>
+              {loading ? 'Envoi…' : 'Recevoir un code'}
+            </button>
             {error && <div style={{color:'#b91c1c'}}>{error}</div>}
             <p style={{fontSize:12, opacity:.7}}>
               Seuls les emails autorisés peuvent se connecter.
@@ -105,10 +131,12 @@ export default function LoginPage(){
               maxLength={6}
               placeholder="Code à 6 chiffres"
               value={token}
-              onChange={e=>setToken(e.target.value.replace(/\D/g,''))}
+              onChange={(e)=>setToken(e.target.value.replace(/\D/g,''))}
               required
             />
-            <button className="btn primary" type="submit">Valider</button>
+            <button className="btn primary" type="submit" disabled={loading}>
+              {loading ? 'Vérification…' : 'Valider'}
+            </button>
             {error && <div style={{color:'#b91c1c'}}>{error}</div>}
             <button className="btn" type="button" onClick={()=>{ setSent(false); setToken(''); }}>
               Utiliser un autre email
