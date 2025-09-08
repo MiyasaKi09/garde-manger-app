@@ -2,12 +2,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabaseClient';
 
-// Empêche le pre-render et le cache sur Vercel/Next
 export const dynamic = 'force-dynamic';
-export const revalidate = false; // ✅ doit être un nombre ou false (pas un objet)
+export const revalidate = false;       // ✅ pas d'objet
 export const fetchCache = 'force-no-store';
 
 const allowed = (process.env.NEXT_PUBLIC_ALLOWED_EMAILS || '')
@@ -25,7 +24,7 @@ export default function LoginPage(){
   const [loading, setLoading] = useState(false);
   const [redirectTo, setRedirectTo] = useState('/');
 
-  // Lire ?redirect=… côté client (pas de useSearchParams pour éviter le prerender)
+  // récupérer ?redirect=… sans useSearchParams (évite soucis de prerender)
   useEffect(()=>{
     try {
       const url = new URL(window.location.href);
@@ -33,13 +32,11 @@ export default function LoginPage(){
     } catch {}
   },[]);
 
-  // Si déjà connecté sur cet appareil, on saute la page login
+  // si déjà connecté, on saute le login
   useEffect(()=>{
     (async()=>{
       const { data: { session } } = await supabase.auth.getSession();
-      if(session){
-        router.replace(redirectTo);
-      }
+      if(session) router.replace(redirectTo);
     })();
   },[router, redirectTo]);
 
@@ -49,30 +46,20 @@ export default function LoginPage(){
     setLoading(true);
     try {
       const em = email.trim().toLowerCase();
-
-      if (allowed.length > 0 && !allowed.includes(em)) {
+      if (allowed.length && !allowed.includes(em)) {
         setError("Cet email n'est pas autorisé.");
         return;
       }
-
-      // Pas de emailRedirectTo => Supabase envoie un OTP (6 chiffres), pas un magic link
+      // OTP par email (6 chiffres) — pas de magic link
       const { error } = await supabase.auth.signInWithOtp({
         email: em,
-        options: {
-          shouldCreateUser: true, // mets false si tu ne veux pas d’auto-création
-        }
+        options: { shouldCreateUser: true }
       });
-
-      if (error) {
-        setError(error.message);
-        return;
-      }
+      if (error) { setError(error.message); return; }
       setSent(true);
     } catch (err) {
       setError(String(err?.message || err));
-    } finally {
-      setLoading(false);
-    }
+    } finally { setLoading(false); }
   }
 
   async function verifyCode(e){
@@ -81,32 +68,23 @@ export default function LoginPage(){
     setLoading(true);
     try {
       const em = email.trim().toLowerCase();
-
       const { data, error } = await supabase.auth.verifyOtp({
         email: em,
         token,
-        type: 'email', // code 6 chiffres par email
+        type: 'email',
       });
+      if (error) { setError(error.message); return; }
 
-      if (error) {
-        setError(error.message);
-        return;
-      }
-
-      // Sécurité: re-check allowlist après succès
       const userEmail = data?.user?.email?.toLowerCase() || '';
-      if (allowed.length > 0 && !allowed.includes(userEmail)) {
+      if (allowed.length && !allowed.includes(userEmail)) {
         await supabase.auth.signOut();
         setError("Cet email n'est pas autorisé.");
         return;
       }
-
       router.replace(redirectTo);
     } catch (err) {
       setError(String(err?.message || err));
-    } finally {
-      setLoading(false);
-    }
+    } finally { setLoading(false); }
   }
 
   return (
@@ -129,7 +107,7 @@ export default function LoginPage(){
             </button>
             {error && <div style={{color:'#b91c1c'}}>{error}</div>}
             <p style={{fontSize:12, opacity:.7}}>
-              Seuls les emails autorisés peuvent se connecter.
+              Accès restreint (allowlist). Tu resteras connecté sur cet appareil.
             </p>
           </form>
         ) : (
@@ -154,10 +132,6 @@ export default function LoginPage(){
             </button>
           </form>
         )}
-
-        <p style={{fontSize:12, opacity:.7}}>
-          Tu resteras connecté sur cet appareil jusqu’à déconnexion.
-        </p>
       </div>
     </div>
   );
