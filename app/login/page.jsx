@@ -1,15 +1,12 @@
 'use client';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-export const runtime = 'nodejs';
-
-import { useState } from 'react';
-import { supabase } from '../../lib/supabaseClient';
+import { useMemo, useState } from 'react';
+import { getSupabase } from '../../lib/supabaseClient';
 
 const ALLOWED = ['julenglet@gmail.com', 'zoefhebert@gmail.com'];
 
 export default function LoginPage() {
+  const supabase = useMemo(() => getSupabase(), []);
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
@@ -17,6 +14,13 @@ export default function LoginPage() {
   async function onSubmit(e) {
     e.preventDefault();
     setError('');
+
+    if (!supabase) {
+      setError(
+        "Configuration manquante côté client : vérifie NEXT_PUBLIC_SUPABASE_URL et NEXT_PUBLIC_SUPABASE_ANON_KEY dans Vercel."
+      );
+      return;
+    }
 
     const eLower = (email || '').trim().toLowerCase();
     if (!ALLOWED.includes(eLower)) {
@@ -42,6 +46,13 @@ export default function LoginPage() {
       <div style={{ maxWidth: 420, width:'100%', display:'grid', gap:12, background:'#fff', border:'1px solid #e5e7eb', borderRadius:12, padding:16 }}>
         <h1>Connexion</h1>
 
+        {!supabase && (
+          <div style={{ padding:10, border:'1px solid #fecaca', background:'#fee2e2', color:'#991b1b', borderRadius:8 }}>
+            <b>Supabase non configuré côté client.</b><br />
+            Pose les variables <code>NEXT_PUBLIC_SUPABASE_URL</code> et <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> dans Vercel (Project → Settings → Environment Variables), puis redeploie.
+          </div>
+        )}
+
         {sent ? (
           <p>
             Un lien de connexion a été envoyé à <b>{email}</b>.<br />
@@ -57,7 +68,12 @@ export default function LoginPage() {
               value={email}
               onChange={(e)=>setEmail(e.target.value)}
             />
-            <button style={{ padding:10, borderRadius:8, background:'#16a34a', color:'#fff', border:0 }} type="submit">
+            <button
+              style={{ padding:10, borderRadius:8, background:'#16a34a', color:'#fff', border:0 }}
+              type="submit"
+              disabled={!supabase}
+              title={!supabase ? 'Supabase non configuré' : ''}
+            >
               Recevoir un lien
             </button>
             {error && <div style={{ color:'#b91c1c' }}>{error}</div>}
@@ -66,10 +82,6 @@ export default function LoginPage() {
             </div>
           </form>
         )}
-
-        <p style={{ fontSize:12, opacity:.7 }}>
-          Après connexion, tu restes identifié sur cet appareil (cookie persistant).
-        </p>
       </div>
     </main>
   );
