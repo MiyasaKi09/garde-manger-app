@@ -1,32 +1,16 @@
-// middleware.js (à la racine du repo, à côté de package.json)
+// middleware.ts
 import { NextResponse } from 'next/server';
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
+import type { NextRequest } from 'next/server';
 
-const PUBLIC_PATHS = [
-  '/login',
-  '/favicon.ico',
-  '/robots.txt',
-  '/manifest.json',
-  '/_next',      // assets Next
-  '/images',     // adapte si tu as un dossier public/images
-  '/auth',       // si tu gardes d'autres routes publiques
-];
+export const config = {
+  matcher: [
+    // Protégez tout SAUF login et auth…
+    '/((?!login|auth|_next|favicon.ico|public).*)',
+  ],
+};
 
-const allowedEnv = process.env.NEXT_PUBLIC_ALLOWED_EMAILS || '';
-const ALLOWED = allowedEnv
-  .split(',')
-  .map(s => s.trim().toLowerCase())
-  .filter(Boolean);
-
-export async function middleware(req) {
-  const url = req.nextUrl.clone();
-  const path = url.pathname;
-
-  // laisser passer les routes publiques
-  if (PUBLIC_PATHS.some(prefix => path.startsWith(prefix))) {
-    return NextResponse.next();
-  }
-
+export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   const supabase = createMiddlewareClient({ req, res });
 
@@ -34,30 +18,28 @@ export async function middleware(req) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  // pas de session => login
+  // Allowlist emails en prod
+  const allow = (process.env.NEXT_PUBLIC_ALLOWED_EMAILS || '')
+    .split(',')
+    .map(s=>s.trim().toLowerCase())
+    .filter(Boolean);
+
   if (!session) {
+    const url = req.nextUrl.clone();
     url.pathname = '/login';
-    url.searchParams.set('redirect', path);
+    url.searchParams.set('redirect', req.nextUrl.pathname + req.nextUrl.search);
     return NextResponse.redirect(url);
   }
 
   const email = session.user?.email?.toLowerCase() || '';
-
-  // whitelist stricte (si ALLOWED non vide, on applique)
-  if (ALLOWED.length > 0 && !ALLOWED.includes(email)) {
-    // on kill la session et on renvoie au login
-    await supabase.auth.signOut();
+  if (allow.length && !allow.includes(email)) {
+    // session invalide → déconnexion et redirection vers /login
+    const url = req.nextUrl.clone();
     url.pathname = '/login';
-    url.searchParams.set('error', 'not_allowed');
+    url.searchParams.set('redirect', '/');
+    // On ne peut pas signOut ici, on force le client à le faire à la prochaine nav
     return NextResponse.redirect(url);
   }
 
   return res;
 }
-
-export const config = {
-  matcher: [
-    // protège tout sauf API/next assets (déjà gérés plus haut)
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
-  ],
-};
