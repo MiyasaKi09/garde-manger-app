@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 
-// Force dynamic rendering so Vercel doesn't try to prerender this page
+// Empêche le pre-render et le cache sur Vercel/Next
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = false; // ✅ doit être un nombre ou false (pas un objet)
+export const fetchCache = 'force-no-store';
 
 const allowed = (process.env.NEXT_PUBLIC_ALLOWED_EMAILS || '')
   .split(',')
@@ -24,7 +25,7 @@ export default function LoginPage(){
   const [loading, setLoading] = useState(false);
   const [redirectTo, setRedirectTo] = useState('/');
 
-  // Read redirect query param client-side (no useSearchParams)
+  // Lire ?redirect=… côté client (pas de useSearchParams pour éviter le prerender)
   useEffect(()=>{
     try {
       const url = new URL(window.location.href);
@@ -32,7 +33,7 @@ export default function LoginPage(){
     } catch {}
   },[]);
 
-  // If already logged in on this device, skip login
+  // Si déjà connecté sur cet appareil, on saute la page login
   useEffect(()=>{
     (async()=>{
       const { data: { session } } = await supabase.auth.getSession();
@@ -54,12 +55,11 @@ export default function LoginPage(){
         return;
       }
 
-      // IMPORTANT: no emailRedirectTo => Supabase sends a 6-digit OTP (not a magic link)
+      // Pas de emailRedirectTo => Supabase envoie un OTP (6 chiffres), pas un magic link
       const { error } = await supabase.auth.signInWithOtp({
         email: em,
         options: {
-          shouldCreateUser: true, // set to false if you don't want auto signups
-          // DO NOT set emailRedirectTo => we want OTP code emails
+          shouldCreateUser: true, // mets false si tu ne veux pas d’auto-création
         }
       });
 
@@ -85,7 +85,7 @@ export default function LoginPage(){
       const { data, error } = await supabase.auth.verifyOtp({
         email: em,
         token,
-        type: 'email', // 6-digit email OTP
+        type: 'email', // code 6 chiffres par email
       });
 
       if (error) {
@@ -93,7 +93,7 @@ export default function LoginPage(){
         return;
       }
 
-      // Safety: re-check allowlist after verify
+      // Sécurité: re-check allowlist après succès
       const userEmail = data?.user?.email?.toLowerCase() || '';
       if (allowed.length > 0 && !allowed.includes(userEmail)) {
         await supabase.auth.signOut();
