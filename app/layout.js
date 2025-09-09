@@ -1,8 +1,8 @@
-// app/layout.jsx
+// app/layout.js (Server Component)
 import './globals.css';
 import Link from 'next/link';
 import { Suspense } from 'react';
-import HeaderAuth from '@/components/HeaderAuth';
+import HeaderAuth from '@/components/HeaderAuth'; // montre Connexion/Déconnexion
 
 export const dynamic = 'force-dynamic';
 export const revalidate = false;
@@ -18,11 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet"
@@ -75,22 +71,19 @@ export default function RootLayout({ children }) {
                 <span className="season-icon">🍂</span>
                 <span className="season-text">Automne</span>
               </div>
-              {/* Connexion si pas loggé, Déconnexion si loggé */}
               <HeaderAuth />
             </div>
           </div>
         </header>
 
-        <div className="mycelium-bg"></div>
+        <div className="mycelium-bg" />
 
         <main className="main-container">
           <Suspense
             fallback={
               <div className="loading-container">
                 <div className="loading-mycelium">
-                  <span></span>
-                  <span></span>
-                  <span></span>
+                  <span></span><span></span><span></span>
                 </div>
                 <p>Connexion au réseau mycorhizien...</p>
               </div>
