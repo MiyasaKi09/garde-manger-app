@@ -1,86 +1,163 @@
-'use client'
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { getSupabase } from '@/lib/supabaseClient'
+'use client';
 
-const ALLOWED = ['julenglet@gmail.com', 'zoefhebert@gmail.com']
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabaseClient';
 
 export default function LoginPage() {
-  const supabase = getSupabase()
-  const [email, setEmail] = useState('')
-  const [sent, setSent] = useState(false)
-  const [error, setError] = useState('')
-  const [redirectTo, setRedirectTo] = useState('/')
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    const url = new URL(window.location.href)
-    setRedirectTo(url.searchParams.get('redirect') || '/')
-  }, [])
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
 
-  async function onSubmit(e) {
-    e.preventDefault()
-    setError('')
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (!supabase) {
-      setError("Supabase non configuré (variables d'env manquantes).")
-      return
-    }
-
-    const emailNorm = (email || '').trim().toLowerCase()
-    if (!ALLOWED.includes(emailNorm)) {
-      setError("Cet email n'est pas autorisé.")
-      return
-    }
-
-    const emailRedirectTo = `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`
-
-    const { error: err } = await supabase.auth.signInWithOtp({
-      email: emailNorm,
-      options: {
-        emailRedirectTo,       // redirige vers /auth/callback (hash tokens)
-        shouldCreateUser: true
+      if (error) {
+        setError(error.message);
+      } else {
+        router.push('/');
       }
-    })
-    if (err) setError(err.message)
-    else setSent(true)
-  }
+    } catch (err) {
+      setError('Une erreur est survenue');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleMagicLink = async () => {
+    setLoading(true);
+    setError('');
+    setMessage('');
+
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
+        },
+      });
+
+      if (error) {
+        setError(error.message);
+      } else {
+        setMessage('Vérifiez votre email pour le lien de connexion !');
+      }
+    } catch (err) {
+      setError('Une erreur est survenue');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <main style={{ padding: 24, maxWidth: 420, margin: '0 auto' }}>
-      <h1>Connexion</h1>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: 'calc(100vh - 100px)',
+      padding: '2rem'
+    }}>
+      <div className="card" style={{
+        width: '100%',
+        maxWidth: '400px',
+        padding: '2rem'
+      }}>
+        <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          🍄 Connexion à Myko
+        </h1>
 
-      {!supabase && (
-        <div style={{marginTop:12, padding:12, background:'#fee2e2', border:'1px solid #ef4444', borderRadius:8}}>
-          <strong>Erreur :</strong> Supabase non configuré.
-          Ajoute <code>NEXT_PUBLIC_SUPABASE_URL</code> et <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> dans Vercel.
-        </div>
-      )}
-
-      {sent ? (
-        <p style={{marginTop:12}}>Un lien a été envoyé à <b>{email}</b>. Ouvre-le sur cet appareil.</p>
-      ) : (
-        <form onSubmit={onSubmit} style={{ display: 'grid', gap: 8, marginTop: 12 }}>
-          <input
-            className="input"
-            type="email"
-            required
-            placeholder="email@exemple.com"
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-          />
-          <button className="btn primary" type="submit" disabled={!supabase}>
-            Recevoir un lien
-          </button>
-          {error && <div style={{ color: '#b91c1c' }}>{error}</div>}
-          <div style={{ fontSize:12, opacity:.7, marginTop:6 }}>
-            Emails autorisés : {ALLOWED.join(', ')}
+        {error && (
+          <div style={{
+            padding: '1rem',
+            background: '#fee',
+            color: '#c00',
+            borderRadius: '4px',
+            marginBottom: '1rem'
+          }}>
+            {error}
           </div>
-        </form>
-      )}
+        )}
 
-      <div style={{marginTop:16}}>
-        <Link href="/">← Revenir à l’accueil</Link>
+        {message && (
+          <div style={{
+            padding: '1rem',
+            background: '#efe',
+            color: '#060',
+            borderRadius: '4px',
+            marginBottom: '1rem'
+          }}>
+            {message}
+          </div>
+        )}
+
+        <form onSubmit={handleLogin}>
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              className="input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="votre@email.com"
+            />
+          </div>
+
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              id="password"
+              type="password"
+              className="input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="••••••••"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="btn"
+            disabled={loading}
+            style={{ width: '100%', marginBottom: '1rem' }}
+          >
+            {loading ? 'Connexion...' : 'Se connecter'}
+          </button>
+
+          <button
+            type="button"
+            className="btn secondary"
+            onClick={handleMagicLink}
+            disabled={loading || !email}
+            style={{ width: '100%' }}
+          >
+            Envoyer un lien magique
+          </button>
+        </form>
+
+        <p style={{
+          textAlign: 'center',
+          marginTop: '2rem',
+          fontSize: '0.9rem',
+          color: '#666'
+        }}>
+          Pas encore de compte ?<br />
+          Contactez l'administrateur
+        </p>
       </div>
-    </main>
-  )
+    </div>
+  );
 }
