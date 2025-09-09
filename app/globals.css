@@ -43,12 +43,11 @@
   --medium-gray: #b8b5ad;
   --dark-gray: #4a483f;
 
-  --paper:#f6f7f3;
-  --earth:#b1793a;
-  --clay:#c9b098;
-  --moss:#6ea067;
-  --bg-top:#0b0f0a;
-  --bg-bottom:#1a2318;
+:root{
+  --cream-100: #f4efe6;   /* Fond principal (crème) */
+  --olive-500: #6e8b5e;   /* Tache olive */
+  --terra-500: #c08a5a;   /* Tache terracotta */
+  --ink: #243424;         /* Couleur du texte principal */
   
   /* États */
   --success: #27ae60;
