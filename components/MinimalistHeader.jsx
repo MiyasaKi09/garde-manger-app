@@ -7,18 +7,15 @@ import { useRouter, usePathname } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 
 /**
- * Header style "solaax.com" :
- * – Navigation centrée dans une boîte glassmorphique (flottante, arrondie)
- * – CTA "Se connecter" dans la même boîte
- * – Effet shrink au scroll (fond légèrement plus opaque)
- * – Overlay mobile plein écran
+ * Header style solaax + Background Matisse très marqué
+ * – Nav centrée dans une boîte glassmorphique
+ * – Fond global sombre avec motifs organiques type "Matisse"
  */
 export default function MinimalistHeader() {
   const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState(null);
   const [elevated, setElevated] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const init = async () => {
@@ -75,12 +72,12 @@ export default function MinimalistHeader() {
             display: 'flex',
             alignItems: 'center',
             gap: '2rem',
-            padding: '.5rem 1rem',
+            padding: '.6rem 1.2rem',
             borderRadius: '999px',
-            background: elevated ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.1)',
-            border: '1px solid rgba(255,255,255,0.2)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
+            background: elevated ? 'rgba(30,30,30,0.35)' : 'rgba(30,30,30,0.25)',
+            border: '1px solid rgba(255,255,255,0.25)',
+            backdropFilter: 'blur(18px)',
+            WebkitBackdropFilter: 'blur(18px)',
           }}
         >
           {navItems.map((item) => {
@@ -107,10 +104,12 @@ export default function MinimalistHeader() {
       {/* Spacer dynamique */}
       <div style={{ height: headerHeight }} />
 
-      {/* Styles globaux */}
+      {/* Effet Matisse fort */}
+      <div className="matisse-bg" aria-hidden />
+
       <style jsx global>{`
         body {
-          background: linear-gradient(180deg, #0b0f0a, #1c2418);
+          background: #0a0f0a;
           color: #fff;
         }
 
@@ -139,11 +138,41 @@ export default function MinimalistHeader() {
           border: 1px solid rgba(255,255,255,0.25);
           transition: background .2s ease;
         }
-        .myko-solid-btn:hover { background: rgba(255,255,255,0.3); }
+        .myko-solid-btn:hover { background: rgba(255,255,255,0.35); }
+
+        /* Effet Matisse très fort */
+        .matisse-bg {
+          position: fixed;
+          inset: 0;
+          z-index: -1;
+          background: linear-gradient(180deg, #0a0f0a 0%, #1c2418 100%);
+        }
+        .matisse-bg::before,
+        .matisse-bg::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(ellipse 35% 20% at 15% 25%, rgba(92,129,81,0.8) 0 50%, transparent 51%),
+            radial-gradient(ellipse 30% 15% at 70% 30%, rgba(175,133,76,0.7) 0 50%, transparent 51%),
+            radial-gradient(ellipse 40% 20% at 25% 70%, rgba(114,146,96,0.8) 0 45%, transparent 46%),
+            radial-gradient(ellipse 30% 15% at 80% 75%, rgba(84,62,33,0.7) 0 48%, transparent 49%);
+          mix-blend-mode: multiply;
+          filter: blur(4px) contrast(1.2);
+          opacity: 0.9;
+        }
+        .matisse-bg::after {
+          opacity: 0.6;
+          background:
+            radial-gradient(ellipse 20% 10% at 40% 40%, rgba(162,125,71,0.8) 0 50%, transparent 51%),
+            radial-gradient(ellipse 18% 9% at 65% 55%, rgba(122,157,108,0.8) 0 50%, transparent 51%);
+          filter: blur(2px);
+        }
       `}</style>
     </>
   );
 }
+
 
 /* ------------------------------------------------------
    Background organique type "Matisse" — VERSION FORTE
@@ -232,3 +261,78 @@ export function MatisseBackgroundStrong(){
 </body>
 */
 
+
+/* ------------------------------------------------------
+   MatisseCutoutsBG — fond "découpes" façon Matisse (SVG net, très fort)
+   Couleurs : liées à tes variables projet
+   Usage : <MatisseCutoutsBG /> juste après <MinimalistHeader />
+------------------------------------------------------ */
+export function MatisseCutoutsBG() {
+  return (
+    <div aria-hidden style={{ position:'fixed', inset:0, zIndex:0, pointerEvents:'none' }}>
+      <svg width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          {/* Palette paramétrable via CSS variables */}
+          <linearGradient id="bgGrad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stopColor="var(--bg-top, #0b0f0a)"/>
+            <stop offset="100%" stopColor="var(--bg-bottom, #1a2318)"/>
+          </linearGradient>
+          <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+            <feComponentTransfer>
+              <feFuncA type="table" tableValues="0 0 .05 .15 .05 0"/>
+            </feComponentTransfer>
+            <feBlend mode="multiply" in2="SourceGraphic"/>
+          </filter>
+          <style>
+            {`
+              .paper { fill: var(--paper, #f6f7f3); }
+              .earth { fill: var(--earth, #b1793a); }
+              .clay { fill: var(--clay, #c9b098); }
+              .moss { fill: var(--moss, #6ea067); }
+              .deep { fill: url(#bgGrad); }
+            `}
+          </style>
+        </defs>
+
+        {/* Fond */}
+        <rect className="deep" x="0" y="0" width="1000" height="1000" />
+
+        {/* Bandeau gauche (négatif papier) */}
+        <g>
+          <path className="paper" d="M40,60 C40,60 80,50 120,60 C140,70 160,95 170,130 C180,160 180,210 170,250 C160,295 140,330 120,360 C100,390 85,420 80,460 C70,520 90,560 110,610 C130,655 150,700 140,740 C120,820 60,860 40,860 L40,60 Z"/>
+          {/* Découpes ocres à l'intérieur (stries) */}
+          <path className="earth" d="M90,140 C140,110 200,120 240,160 C210,180 170,200 120,230 C110,200 100,170 90,140 Z"/>
+          <path className="earth" d="M95,260 C165,225 225,230 270,270 C240,290 175,320 110,350 C105,320 100,290 95,260 Z"/>
+          <path className="earth" d="M95,380 C170,345 245,350 290,395 C255,420 175,450 110,480 C103,446 99,413 95,380 Z"/>
+          <path className="earth" d="M95,500 C165,468 235,472 280,515 C240,540 170,565 110,595 C104,564 100,532 95,500 Z"/>
+          <path className="earth" d="M95,620 C160,595 225,598 265,640 C230,662 165,690 115,715 C107,683 101,651 95,620 Z"/>
+        </g>
+
+        {/* Bandeau droit (papier clair + formes) */}
+        <g>
+          <path className="clay" d="M880,80 C930,120 950,170 950,230 C950,320 900,370 870,430 C845,480 845,530 865,580 C890,640 930,690 940,750 C950,820 915,880 860,910 C800,940 740,930 700,900 C760,860 775,820 770,770 C765,720 735,680 720,640 C700,585 710,525 735,480 C760,435 800,410 820,360 C850,290 830,210 800,160 C830,150 860,150 880,80 Z"/>
+          <path className="paper" d="M760,840 C800,800 820,760 805,715 C792,680 760,650 740,620 C765,640 790,640 815,630 C845,620 875,600 895,575 C905,615 910,655 905,700 C900,760 870,815 820,860 C800,860 780,850 760,840 Z"/>
+        </g>
+
+        {/* Quelques touches mousse/vert (rares) pour rester terreux */}
+        <path className="moss" d="M640,170 C700,150 760,165 790,210 C760,220 705,235 655,255 C648,225 645,195 640,170 Z" opacity=".55"/>
+        <path className="moss" d="M620,420 C675,400 735,410 760,450 C735,460 680,480 640,495 C633,470 628,445 620,420 Z" opacity=".5"/>
+
+        {/* Grain subtil sur tout l'écran */}
+        <rect x="0" y="0" width="1000" height="1000" filter="url(#grain)" opacity="0.18" />
+      </svg>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------
+   Variables conseillées (à placer dans :root)
+   --paper: #f6f7f3; // clair
+   --earth: #b1793a; // ocre terre
+   --clay:  #c9b098; // argile
+   --moss:  #6ea067; // mousse
+   --bg-top:    #0b0f0a; // vert-noir
+   --bg-bottom: #1a2318; // vert profond
+------------------------------------------------------ */
