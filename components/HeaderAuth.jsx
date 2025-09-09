@@ -1,21 +1,22 @@
-// components/HeaderAuth.tsx
+// components/HeaderAuth.jsx (Server Component)
 import Link from 'next/link';
 import { getServerSupabase } from '@/lib/supabaseServer';
-import { SignOutButton } from '@/components/SignOutButton'; // votre bouton client existant
 
 export default async function HeaderAuth() {
   const supabase = getServerSupabase();
-  const { data } = await supabase.auth.getUser();
-  const user = data?.user;
+  const { data: { session } } = await supabase.auth.getSession();
 
-  // Connecté → bouton Déconnexion ; sinon → lien Connexion
-  if (user) {
-    return <SignOutButton />;
+  if (!session) {
+    return (
+      <Link href="/login" className="btn btn-secondary" prefetch>
+        Se connecter
+      </Link>
+    );
   }
 
   return (
-    <Link href="/login" className="btn btn-secondary" prefetch={false}>
-      Se connecter
-    </Link>
+    <form action="/auth/signout" method="post">
+      <button className="btn" type="submit">Se déconnecter</button>
+    </form>
   );
 }
