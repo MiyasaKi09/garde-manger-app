@@ -1,669 +1,596 @@
-// app/page.jsx
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabaseClient';
-import { todayISO } from '@/lib/utils';
 
-// --- Helpers ---
-const addDaysISO = (d) => new Date(Date.now() + d * 86400000).toISOString().slice(0, 10);
-const daysLeft = (dlc) => (dlc ? Math.ceil((new Date(dlc) - new Date()) / 86400000) : null);
+// Helpers
+const todayISO = () => new Date().toISOString().slice(0, 10);
+const daysUntil = (date) => {
+  if (!date) return null;
+  const diff = new Date(date) - new Date();
+  return Math.ceil(diff / 86400000);
+};
 
-// --- Composants UI poétiques ---
-function LifeIndicator({ days }) {
-  if (days === undefined || days === null) return null;
+// Composant pour les particules mycorhiziennes animées
+function MyceliumNetwork() {
+  useEffect(() => {
+    const canvas = document.getElementById('mycelium-canvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const particles = [];
+    const connections = [];
+    const particleCount = 50;
+    
+    // Créer les particules (spores)
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 2 + 1,
+      });
+    }
+    
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Mettre à jour et dessiner les particules
+      particles.forEach((particle, i) => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        
+        // Rebondir sur les bords
+        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+        
+        // Dessiner la particule
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(139, 149, 109, 0.6)';
+        ctx.fill();
+        
+        // Créer des connexions
+        particles.forEach((otherParticle, j) => {
+          if (i !== j) {
+            const dist = Math.hypot(particle.x - otherParticle.x, particle.y - otherParticle.y);
+            if (dist < 150) {
+              ctx.beginPath();
+              ctx.moveTo(particle.x, particle.y);
+              ctx.lineTo(otherParticle.x, otherParticle.y);
+              ctx.strokeStyle = `rgba(139, 149, 109, ${0.2 * (1 - dist / 150)})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        });
+      });
+      
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  return (
+    <canvas
+      id="mycelium-canvas"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        opacity: 0.3,
+        zIndex: 0,
+      }}
+    />
+  );
+}
 
-  let color = 'var(--sage-green)';
-  let icon = '🌿';
-
-  if (days < 0) { color = 'var(--earth-brown)'; icon = '🍂'; }
-  else if (days <= 3) { color = 'var(--autumn-orange)'; icon = '🍁'; }
-  else if (days <= 7) { color = 'var(--gold-accent)'; icon = '🌾'; }
-
+// Carte de statistique animée
+function StatCard({ icon, value, label, color, trend }) {
+  const [isHovered, setIsHovered] = useState(false);
+  
   return (
     <div
-      className="life-indicator"
+      className="stat-card"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '0.25rem',
-        padding: '0.2rem 0.6rem',
-        background: `linear-gradient(135deg, ${color}22, ${color}11)`,
-        border: `1px solid ${color}44`,
-        borderRadius: '12px',
-        fontSize: '0.85rem',
-        color,
-        fontWeight: '500',
+        background: `linear-gradient(135deg, ${color}15, ${color}08)`,
+        border: `2px solid ${color}30`,
+        borderRadius: 'var(--radius-lg)',
+        padding: '1.5rem',
+        textAlign: 'center',
+        transition: 'all var(--transition-spring)',
+        transform: isHovered ? 'translateY(-8px) scale(1.05)' : 'none',
+        boxShadow: isHovered ? 'var(--shadow-lg)' : 'var(--shadow-md)',
+        cursor: 'pointer',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      <span style={{ fontSize: '0.9rem' }}>{icon}</span>
-      <span>{Math.abs(days)}j</span>
+      <div
+        style={{
+          position: 'absolute',
+          top: '-50%',
+          right: '-50%',
+          width: '200%',
+          height: '200%',
+          background: `radial-gradient(circle, ${color}10 0%, transparent 70%)`,
+          transform: isHovered ? 'scale(1)' : 'scale(0)',
+          transition: 'transform var(--transition-slow)',
+        }}
+      />
+      
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{icon}</div>
+        <div style={{ fontSize: '2.5rem', fontWeight: '700', color, marginBottom: '0.25rem' }}>
+          {value}
+        </div>
+        <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)', fontWeight: '500' }}>
+          {label}
+        </div>
+        {trend && (
+          <div style={{ 
+            fontSize: '0.8rem', 
+            color: trend > 0 ? 'var(--success)' : 'var(--danger)',
+            marginTop: '0.5rem',
+          }}>
+            {trend > 0 ? '↑' : '↓'} {Math.abs(trend)}% cette semaine
+          </div>
+        )}
+      </div>
     </div>
   );
 }
 
-function renderItemContent(item, type) {
-  if (type === 'alert') {
-    return (
-      <>
-        <div style={{ flex: 1 }}>
-          <strong style={{ color: 'var(--forest-green)' }}>{item.product?.name}</strong>
-          <span style={{ color: 'var(--moss-green)', marginLeft: '0.5rem' }}>
-            {item.qty} {item.unit}
-          </span>
+// Carte d'action rapide
+function QuickActionCard({ icon, title, description, href, color = 'var(--forest-500)' }) {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  return (
+    <Link href={href} style={{ textDecoration: 'none' }}>
+      <div
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{
+          background: 'var(--warm-white)',
+          border: `2px solid ${isHovered ? color : 'var(--soft-gray)'}`,
+          borderRadius: 'var(--radius-lg)',
+          padding: '1.5rem',
+          height: '100%',
+          transition: 'all var(--transition-base)',
+          transform: isHovered ? 'translateY(-4px)' : 'none',
+          boxShadow: isHovered ? 'var(--shadow-lg)' : 'var(--shadow-sm)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          gap: '0.75rem',
+        }}
+      >
+        <div
+          style={{
+            fontSize: '3rem',
+            transform: isHovered ? 'scale(1.2) rotate(5deg)' : 'scale(1)',
+            transition: 'transform var(--transition-spring)',
+          }}
+        >
+          {icon}
+        </div>
+        <h3 style={{ margin: 0, color: 'var(--forest-700)', fontSize: '1.1rem' }}>
+          {title}
+        </h3>
+        {description && (
+          <p style={{ margin: 0, color: 'var(--earth-600)', fontSize: '0.85rem', opacity: 0.8 }}>
+            {description}
+          </p>
+        )}
+      </div>
+    </Link>
+  );
+}
+
+// Carte d'alerte produit
+function AlertCard({ item, type = 'expiring' }) {
+  const days = daysUntil(item.dlc || item.best_before);
+  
+  const getStatus = () => {
+    if (type === 'expired' || days < 0) return { color: 'var(--danger)', label: 'Périmé', icon: '🍂' };
+    if (days === 0) return { color: 'var(--autumn-orange)', label: "Aujourd'hui", icon: '⚡' };
+    if (days <= 3) return { color: 'var(--autumn-yellow)', label: `${days}j`, icon: '⏰' };
+    if (days <= 7) return { color: 'var(--forest-500)', label: `${days}j`, icon: '📅' };
+    return { color: 'var(--success)', label: `${days}j`, icon: '🌿' };
+  };
+  
+  const status = getStatus();
+  
+  return (
+    <div
+      className="alert-card"
+      style={{
+        background: 'var(--warm-white)',
+        border: `2px solid ${status.color}30`,
+        borderLeft: `4px solid ${status.color}`,
+        borderRadius: 'var(--radius-md)',
+        padding: '1rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        transition: 'all var(--transition-base)',
+        cursor: 'pointer',
+      }}
+    >
+      <div style={{ flex: 1 }}>
+        <div style={{ fontWeight: '600', color: 'var(--forest-700)', marginBottom: '0.25rem' }}>
+          {item.product?.name || 'Produit'}
+        </div>
+        <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>
+          {item.qty} {item.unit}
           {item.location?.name && (
-            <span
-              style={{
-                color: 'var(--spore)',
-                fontSize: '0.85rem',
-                marginLeft: '0.5rem',
-                fontStyle: 'italic',
-              }}
-            >
+            <span style={{ marginLeft: '0.5rem', color: 'var(--earth-500)' }}>
               📍 {item.location.name}
             </span>
           )}
         </div>
-        <LifeIndicator days={daysLeft(item.dlc)} />
-      </>
-    );
-  }
-
-  if (type === 'task') {
-    return (
-      <>
-        <div style={{ flex: 1 }}>
-          <strong style={{ color: 'var(--forest-green)', textTransform: 'capitalize' }}>
-            {item.type}
-          </strong>
-          {item.planting?.variety && (
-            <span style={{ color: 'var(--moss-green)', marginLeft: '0.5rem' }}>
-              {item.planting.variety.species} {item.planting.variety.variety}
-            </span>
-          )}
-          {item.planting?.bed?.name && (
-            <span
-              style={{
-                color: 'var(--spore)',
-                fontSize: '0.85rem',
-                marginLeft: '0.5rem',
-              }}
-            >
-              • {item.planting.bed.name}
-            </span>
-          )}
-        </div>
-        {item.due_date && (
-          <span
-            style={{
-              fontSize: '0.85rem',
-              color: 'var(--spore)',
-              fontStyle: 'italic',
-            }}
-          >
-            {new Date(item.due_date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
-          </span>
-        )}
-      </>
-    );
-  }
-
-  if (type === 'harvest') {
-    return (
-      <>
-        <div style={{ flex: 1 }}>
-          <strong style={{ color: 'var(--forest-green)' }}>
-            {item.qty} {item.unit}
-          </strong>
-          {item.planting?.variety && (
-            <span style={{ color: 'var(--moss-green)', marginLeft: '0.5rem' }}>
-              {item.planting.variety.species} {item.planting.variety.variety}
-            </span>
-          )}
-        </div>
-        <span
-          style={{
-            fontSize: '0.85rem',
-            color: 'var(--spore)',
-            fontStyle: 'italic',
-          }}
-        >
-          {new Date(item.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
-        </span>
-      </>
-    );
-  }
-
-  return null;
-}
-
-function ConnectionCard({
-  title,
-  items,
-  type = 'alert',
-  emptyMessage = 'Le calme plat 🌊',
-  linkText = 'Explorer →',
-  linkHref = '/pantry',
-}) {
-  const typeStyles = {
-    alert: {
-      gradient: 'linear-gradient(135deg, rgba(230, 126, 34, 0.05), rgba(212, 165, 116, 0.05))',
-      border: 'rgba(230, 126, 34, 0.2)',
-      icon: '⚡',
-    },
-    task: {
-      gradient: 'linear-gradient(135deg, rgba(135, 169, 107, 0.05), rgba(139, 149, 109, 0.05))',
-      border: 'rgba(135, 169, 107, 0.3)',
-      icon: '🌱',
-    },
-    harvest: {
-      gradient: 'linear-gradient(135deg, rgba(212, 165, 116, 0.05), rgba(160, 130, 109, 0.05))',
-      border: 'rgba(212, 165, 116, 0.3)',
-      icon: '🧺',
-    },
-  };
-
-  const style = typeStyles[type] || typeStyles.alert;
-
-  return (
-    <div
-      className="connection-card"
-      style={{
-        background: style.gradient,
-        border: `1px solid ${style.border}`,
-        borderRadius: '16px',
-        padding: '1.25rem',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
+      </div>
       <div
         style={{
           display: 'flex',
-          justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '1rem',
+          gap: '0.5rem',
+          padding: '0.4rem 0.8rem',
+          background: `${status.color}15`,
+          borderRadius: 'var(--radius-full)',
+          color: status.color,
+          fontWeight: '500',
+          fontSize: '0.9rem',
         }}
       >
-        <h3 style={{ fontSize: '1.1rem', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ fontSize: '1.2rem' }}>{style.icon}</span>
-          {title}
-        </h3>
-        <Link
-          href={linkHref}
-          style={{
-            color: 'var(--moss-green)',
-            textDecoration: 'none',
-            fontSize: '0.9rem',
-            fontWeight: '500',
-            transition: 'color 0.3s',
-          }}
-        >
-          {linkText}
-        </Link>
-      </div>
-
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-        {!items || items.length === 0 ? (
-          <p
-            style={{
-              color: 'var(--moss-green)',
-              fontStyle: 'italic',
-              fontSize: '0.95rem',
-              opacity: 0.8,
-              textAlign: 'center',
-              padding: '1rem 0',
-            }}
-          >
-            {emptyMessage}
-          </p>
-        ) : (
-          items.slice(0, 4).map((item, idx) => (
-            <div
-              key={item.id || idx}
-              className="item-row"
-              style={{
-                padding: '0.6rem',
-                background: 'var(--warm-white)',
-                borderRadius: '8px',
-                fontSize: '0.9rem',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                transition: 'all 0.2s',
-                cursor: 'pointer',
-              }}
-            >
-              {renderItemContent(item, type)}
-            </div>
-          ))
-        )}
+        <span>{status.icon}</span>
+        <span>{status.label}</span>
       </div>
     </div>
   );
 }
 
-function QuickAction({ href, icon, label, description }) {
+// Section Hero avec animation
+function HeroSection({ user }) {
+  const [timeOfDay, setTimeOfDay] = useState('');
+  
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour < 12) setTimeOfDay('Bonjour');
+    else if (hour < 18) setTimeOfDay('Bon après-midi');
+    else setTimeOfDay('Bonsoir');
+  }, []);
+  
   return (
-    <Link href={href} style={{ textDecoration: 'none' }}>
+    <section
+      className="hero-section"
+      style={{
+        background: 'linear-gradient(135deg, var(--forest-50), var(--earth-50))',
+        borderRadius: 'var(--radius-xl)',
+        padding: '3rem',
+        marginBottom: '2rem',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Pattern décoratif */}
       <div
-        className="quick-action"
         style={{
-          background: 'var(--warm-white)',
-          border: '2px solid transparent',
-          borderRadius: '16px',
-          padding: '1.25rem',
-          textAlign: 'center',
-          transition: 'all 0.3s',
-          cursor: 'pointer',
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          width: '40%',
           height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '0.5rem',
+          opacity: 0.1,
+          background: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
         }}
-      >
-        <div
-          style={{
-            fontSize: '2rem',
-            marginBottom: '0.25rem',
-            transform: 'scale(1)',
-            transition: 'transform 0.3s',
-          }}
-          className="action-icon"
-        >
-          {icon}
-        </div>
-        <div style={{ color: 'var(--forest-green)', fontWeight: '600', fontSize: '0.95rem' }}>{label}</div>
-        {description && (
-          <div
-            style={{
-              color: 'var(--moss-green)',
-              fontSize: '0.8rem',
-              opacity: 0.8,
-              marginTop: '0.25rem',
-            }}
-          >
-            {description}
+      />
+      
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem' }}>
+          {timeOfDay}{user ? `, ${user.email?.split('@')[0]}` : ''} 🌿
+        </h1>
+        <p style={{ fontSize: '1.25rem', color: 'var(--earth-600)', marginBottom: '2rem', maxWidth: '600px' }}>
+          Bienvenue dans <strong>Myko</strong>, votre réseau mycorhizien qui connecte 
+          <span style={{ color: 'var(--forest-500)', fontWeight: '600' }}> garde-manger</span>,
+          <span style={{ color: 'var(--autumn-orange)', fontWeight: '600' }}> recettes</span> et
+          <span style={{ color: 'var(--earth-600)', fontWeight: '600' }}> potager</span>.
+        </p>
+        
+        {!user && (
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <Link href="/login" className="btn primary" style={{ fontSize: '1.1rem', padding: '0.75rem 2rem' }}>
+              Se connecter
+            </Link>
+            <Link href="/recipes" className="btn secondary" style={{ fontSize: '1.1rem', padding: '0.75rem 2rem' }}>
+              Explorer les recettes
+            </Link>
           </div>
         )}
       </div>
-    </Link>
+    </section>
   );
 }
 
-function RecipeConnection({ recipe }) {
-  return (
-    <Link href={`/recipes/${recipe.id}`} style={{ textDecoration: 'none' }}>
-      <div
-        className="recipe-card"
-        style={{
-          background: 'linear-gradient(135deg, var(--warm-white), rgba(212, 196, 176, 0.1))',
-          border: '1px solid rgba(160, 130, 109, 0.2)',
-          borderRadius: '12px',
-          padding: '1rem',
-          transition: 'all 0.3s',
-          cursor: 'pointer',
-        }}
-      >
-        <h4
-          style={{
-            margin: '0 0 0.5rem 0',
-            color: 'var(--forest-green)',
-            fontSize: '1rem',
-          }}
-        >
-          {recipe.title}
-        </h4>
-        <div
-          style={{
-            display: 'flex',
-            gap: '0.5rem',
-            fontSize: '0.85rem',
-            color: 'var(--moss-green)',
-          }}
-        >
-          {recipe.time_min && <span>⏱ {recipe.time_min}min</span>}
-          {recipe.tags && recipe.tags.length > 0 && <span>• {recipe.tags.slice(0, 2).join(', ')}</span>}
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-export default function Dashboard() {
-  // --- SESSION ---
-  const [me, setMe] = useState(null);
-
-  // --- DATA ---
-  const [lots, setLots] = useState([]);
-  const [recipes, setRecipes] = useState([]);
-  const [tasksToday, setTasksToday] = useState([]);
-  const [tasksNext, setTasksNext] = useState([]);
-  const [plantings, setPlantings] = useState([]);
-  const [harvestsRecent, setHarvestsRecent] = useState([]);
+export default function HomePage() {
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState('');
-
-  // 1) Récupération + écoute de la session (pour que le CTA disparaisse dès qu’on est connecté)
+  const [data, setData] = useState({
+    lots: [],
+    recipes: [],
+    tasks: [],
+    plantings: [],
+    harvests: [],
+  });
+  
+  // Auth
   useEffect(() => {
     let mounted = true;
-
-    supabase.auth.getSession().then(({ data, error }) => {
-      if (!mounted) return;
-      if (error) console.warn('getSession error:', error.message);
-      setMe(data?.session?.user ?? null);
+    
+    supabase.auth.getSession().then(({ data }) => {
+      if (mounted) setUser(data?.session?.user || null);
     });
-
+    
     const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-      setMe(session?.user ?? null);
+      if (mounted) setUser(session?.user || null);
     });
-
+    
     return () => {
       mounted = false;
       sub?.subscription?.unsubscribe();
     };
   }, []);
-
-  // 2) Chargement des données — on ne tente pas si pas de session
+  
+  // Load data
   useEffect(() => {
-    let cancelled = false;
-
-    (async () => {
-      setLoading(true);
-      setErr('');
-
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+    
+    async function loadData() {
       try {
-        if (!me) {
-          // pas de session : on n’affiche pas d’erreur, juste le CTA
-          setLots([]); setRecipes([]); setTasksToday([]); setTasksNext([]);
-          setPlantings([]); setHarvestsRecent([]);
-          return;
-        }
-
         const today = todayISO();
-        const soon7 = addDaysISO(7);
-
-        const [
-          lotsRes,
-          recipesRes,
-          todayTasksRes,
-          nextTasksRes,
-          plantingsRes,
-          harvestsRes,
-        ] = await Promise.all([
+        
+        // Charger toutes les données en parallèle
+        const [lotsRes, recipesRes, tasksRes, plantingsRes, harvestsRes] = await Promise.all([
           supabase
             .from('inventory_lots')
-            .select(
-              'id, product_id, qty, unit, dlc, opened_at, entered_at, product:products_catalog(name,category), location:locations(name)'
-            )
-            .order('dlc', { ascending: true }),
+            .select('*, product:products_catalog(name), location:locations(name)')
+            .order('dlc', { ascending: true })
+            .limit(20),
           supabase
             .from('recipes')
-            .select(
-              'id, title, time_min, tags, ingredients:recipe_ingredients(product_id, qty, unit, optional, product:products_catalog(name))'
-            )
-            .order('title'),
+            .select('*')
+            .limit(10),
           supabase
             .from('care_tasks')
-            .select(
-              'id, type, due_date, planting:plantings(id, sow_or_plant_date, variety:plant_varieties(species,variety), bed:garden_beds(name))'
-            )
+            .select('*, planting:plantings(*, variety:plant_varieties(*))')
             .is('done_at', null)
             .lte('due_date', today)
-            .order('due_date', { ascending: true }),
-          supabase
-            .from('care_tasks')
-            .select(
-              'id, type, due_date, planting:plantings(id, sow_or_plant_date, variety:plant_varieties(species,variety), bed:garden_beds(name))'
-            )
-            .is('done_at', null)
-            .gt('due_date', today)
-            .lte('due_date', soon7)
-            .order('due_date', { ascending: true }),
+            .limit(10),
           supabase
             .from('plantings')
-            .select(
-              'id, status, sow_or_plant_date, note, variety:plant_varieties(species,variety), bed:garden_beds(name)'
-            )
+            .select('*, variety:plant_varieties(*), bed:garden_beds(name)')
             .eq('status', 'en_cours')
-            .order('sow_or_plant_date', { ascending: false })
-            .limit(5),
+            .limit(10),
           supabase
             .from('harvests')
-            .select('id, date, qty, unit, planting:plantings(variety:plant_varieties(species,variety))')
-            .gte('date', addDaysISO(-7))
+            .select('*, planting:plantings(variety:plant_varieties(*))')
             .order('date', { ascending: false })
             .limit(5),
         ]);
-
-        if (cancelled) return;
-
-        // Affectations + log d’erreurs sans casser l’UI
-        setLots(lotsRes?.data || []);
-        setRecipes(recipesRes?.data || []);
-        setTasksToday(todayTasksRes?.data || []);
-        setTasksNext(nextTasksRes?.data || []);
-        setPlantings(plantingsRes?.data || []);
-        setHarvestsRecent(harvestsRes?.data || []);
-
-        [lotsRes, recipesRes, todayTasksRes, nextTasksRes, plantingsRes, harvestsRes].forEach((r, i) => {
-          if (r?.error) console.warn('[Home] supabase error idx', i, r.error?.message);
+        
+        setData({
+          lots: lotsRes.data || [],
+          recipes: recipesRes.data || [],
+          tasks: tasksRes.data || [],
+          plantings: plantingsRes.data || [],
+          harvests: harvestsRes.data || [],
         });
-      } catch (e) {
-        console.error('[Home] load error:', e);
-        if (!cancelled) setErr('Impossible de récupérer les données. Réessaie plus tard.');
+      } catch (error) {
+        console.error('Error loading data:', error);
       } finally {
-        if (!cancelled) setLoading(false);
+        setLoading(false);
       }
-    })();
-
-    return () => { cancelled = true; };
-  }, [me]);
-
-  // Dérivés : alertes garde-manger
-  const urgentLots = useMemo(() => {
-    const d3 = addDaysISO(3);
-    return (lots || []).filter((l) => l.dlc && new Date(l.dlc) <= new Date(d3));
-  }, [lots]);
-
-  const soonLots = useMemo(() => {
-    const d3 = addDaysISO(3);
-    const d7 = addDaysISO(7);
-    return (lots || []).filter((l) => l.dlc && new Date(l.dlc) > new Date(d3) && new Date(l.dlc) <= new Date(d7));
-  }, [lots]);
-
-  // Dérivés : suggestions recettes à partir des urgences
-  const recipeSuggestions = useMemo(() => {
-    if (!recipes?.length || !urgentLots?.length) return [];
-    const names = urgentLots.map((l) => l.product?.name?.toLowerCase()).filter(Boolean);
-
-    const scored = recipes.map((r) => {
-      const ingNames = (r.ingredients || []).map((i) => i.product?.name?.toLowerCase()).filter(Boolean);
-      const score = ingNames.reduce((acc, n) => (names.some((x) => n.includes(x) || x.includes(n)) ? acc + 1 : acc), 0);
-      return { ...r, _score: score };
-    });
-
-    return scored.filter((r) => r._score > 0).sort((a, b) => b._score - a._score).slice(0, 6);
-  }, [recipes, urgentLots]);
-
-  // --- Rendu ---
+    }
+    
+    loadData();
+  }, [user]);
+  
+  // Calculs
+  const stats = useMemo(() => {
+    const expired = data.lots.filter(l => daysUntil(l.dlc) < 0).length;
+    const expiring = data.lots.filter(l => {
+      const d = daysUntil(l.dlc);
+      return d !== null && d >= 0 && d <= 7;
+    }).length;
+    const totalLots = data.lots.length;
+    const activePlants = data.plantings.length;
+    const pendingTasks = data.tasks.length;
+    const totalRecipes = data.recipes.length;
+    
+    return { expired, expiring, totalLots, activePlants, pendingTasks, totalRecipes };
+  }, [data]);
+  
+  const urgentItems = useMemo(() => {
+    return data.lots
+      .filter(l => {
+        const d = daysUntil(l.dlc);
+        return d !== null && d <= 3;
+      })
+      .slice(0, 5);
+  }, [data.lots]);
+  
   return (
-    <div style={{ display: 'grid', gap: '1.25rem' }}>
-      <section className="hero card" style={{ padding: '1.25rem 1.25rem 0.75rem' }}>
-        <h1>Bienvenue dans Myko</h1>
-        <p style={{ opacity: 0.8, marginTop: 4 }}>
-          Le réseau qui relie <b>garde-manger</b>, <b>recettes</b> et <b>potager</b>.
-        </p>
-        {/* CTA visible seulement si NON connecté */}
-        {!me && (
-          <div style={{ marginTop: 12 }}>
-            <Link className="btn" href="/login">Se connecter</Link>
-          </div>
-        )}
-      </section>
-
-      {/* Erreur data (jamais affichée si pas connecté) */}
-      {me && err && (
-        <div className="card" style={{ padding: 12, borderColor: '#ef4444' }}>
-          <div style={{ color: '#b91c1c' }}>⚠️ {err}</div>
-        </div>
-      )}
-
-      {/* chargement doux */}
-      {me && loading && (
-        <div className="card" style={{ padding: 16 }}>
-          <div className="loading-container">
-            <div className="loading-mycelium"><span></span><span></span><span></span></div>
-            <p>Connexion au réseau mycorhizien…</p>
-          </div>
-        </div>
-      )}
-
-      {/* non connecté : actions rapides simples */}
-      {!me && (
-        <section className="card" style={{ padding: 16 }}>
-          <h2 style={{ marginBottom: 8 }}>Actions rapides</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px,1fr))', gap: 12 }}>
-            <QuickAction href="/login" icon="🔑" label="Se connecter" description="Accéder à vos données" />
-            <QuickAction href="/recipes" icon="📖" label="Voir les recettes" />
-            <QuickAction href="/pantry" icon="🏺" label="Voir le garde-manger" />
+    <div className="container" style={{ position: 'relative' }}>
+      <MyceliumNetwork />
+      
+      <HeroSection user={user} />
+      
+      {/* Stats Dashboard */}
+      {user && !loading && (
+        <section style={{ marginBottom: '2rem' }}>
+          <h2 style={{ marginBottom: '1.5rem' }}>📊 Vue d'ensemble</h2>
+          <div className="grid cols-4">
+            <StatCard
+              icon="🏺"
+              value={stats.totalLots}
+              label="Lots en stock"
+              color="var(--forest-500)"
+              trend={5}
+            />
+            <StatCard
+              icon="⚠️"
+              value={stats.expiring}
+              label="À consommer"
+              color="var(--autumn-orange)"
+              trend={-10}
+            />
+            <StatCard
+              icon="🌱"
+              value={stats.activePlants}
+              label="Plantations actives"
+              color="var(--earth-600)"
+              trend={15}
+            />
+            <StatCard
+              icon="📖"
+              value={stats.totalRecipes}
+              label="Recettes disponibles"
+              color="var(--mushroom)"
+            />
           </div>
         </section>
       )}
-
-      {/* connecté : dashboard complet */}
-      {me && !loading && (
-        <>
-          <section style={{ display: 'grid', gap: 12, gridTemplateColumns: '2fr 1fr' }}>
-            <div className="card" style={{ padding: 16 }}>
-              <h2 style={{ marginBottom: 8 }}>Connexions & alertes</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px,1fr))', gap: 12 }}>
-                <ConnectionCard
-                  title="Périssables (≤ 3j)"
-                  items={urgentLots}
-                  type="alert"
-                  linkHref="/pantry"
-                  linkText="Gérer le garde-manger →"
-                  emptyMessage="Rien d’urgent pour l’instant 🍃"
-                />
-                <ConnectionCard
-                  title="À surveiller (≤ 7j)"
-                  items={soonLots}
-                  type="alert"
-                  linkHref="/pantry"
-                  linkText="Voir tout →"
-                  emptyMessage="Tout est au frais 🍶"
-                />
-                <ConnectionCard
-                  title="Tâches du jour"
-                  items={tasksToday}
-                  type="task"
-                  linkHref="/planning"
-                  linkText="Planning →"
-                  emptyMessage="Aucun soin prévu aujourd’hui 🌞"
-                />
-                <ConnectionCard
-                  title="À venir (7 jours)"
-                  items={tasksNext}
-                  type="task"
-                  linkHref="/planning"
-                  linkText="Préparer →"
-                  emptyMessage="Calendrier léger 🌿"
-                />
-              </div>
-            </div>
-
-            <aside className="card" style={{ padding: 16 }}>
-              <h3 style={{ marginBottom: 8 }}>Actions rapides</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 10 }}>
-                <QuickAction href="/pantry" icon="➕" label="Ajouter un lot" description="Entrer un aliment" />
-                <QuickAction href="/recipes/new" icon="🍳" label="Nouvelle recette" description="Écrire / importer" />
-                <QuickAction href="/garden/plant" icon="🌱" label="Planter" description="Démarrer un semis" />
-                <QuickAction href="/planning" icon="🗓️" label="Planifier" description="Arrosage, paillage…" />
-              </div>
-            </aside>
-          </section>
-
-          <section style={{ display: 'grid', gap: 12, gridTemplateColumns: '2fr 1fr' }}>
-            <div className="card" style={{ padding: 16 }}>
-              <h2 style={{ marginBottom: 8 }}>Recettes à partir du stock urgent</h2>
-              {recipeSuggestions.length === 0 ? (
-                <p style={{ opacity: 0.75 }}>Ajoutez des recettes ou des lots pour voir des suggestions ✨</p>
-              ) : (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px,1fr))', gap: 10 }}>
-                  {recipeSuggestions.map((r) => <RecipeConnection key={r.id} recipe={r} />)}
-                </div>
-              )}
-            </div>
-
-            <aside className="card" style={{ padding: 16 }}>
-              <h3 style={{ marginBottom: 8 }}>Récoltes récentes</h3>
-              {harvestsRecent?.length ? (
-                <div style={{ display: 'grid', gap: 8 }}>
-                  {harvestsRecent.map((h) => (
-                    <div
-                      key={h.id}
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        padding: '0.5rem',
-                        background: 'var(--warm-white)',
-                        borderRadius: 8,
-                      }}
-                    >
-                      <div>
-                        <strong style={{ color: 'var(--forest-green)' }}>
-                          {h.qty} {h.unit}
-                        </strong>
-                        {h.planting?.variety && (
-                          <span style={{ color: 'var(--moss-green)', marginLeft: 6 }}>
-                            {h.planting.variety.species} {h.planting.variety.variety}
-                          </span>
-                        )}
-                      </div>
-                      <span style={{ fontSize: 12, color: 'var(--spore)' }}>
-                        {new Date(h.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p style={{ opacity: 0.75 }}>Pas de récolte récente.</p>
-              )}
-            </aside>
-          </section>
-
-          <section className="card" style={{ padding: 16 }}>
-            <h2 style={{ marginBottom: 8 }}>Plantations en cours</h2>
-            {plantings?.length ? (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px,1fr))', gap: 10 }}>
-                {plantings.map((p) => (
-                  <div key={p.id} className="card" style={{ padding: 12, border: '1px solid rgba(139,149,109,0.2)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-                      <strong style={{ color: 'var(--forest-green)' }}>
-                        {p.variety?.species} {p.variety?.variety}
-                      </strong>
-                      {p.bed?.name && (
-                        <span style={{ color: 'var(--spore)', fontSize: 12, fontStyle: 'italic' }}>
-                          {p.bed.name}
-                        </span>
-                      )}
-                    </div>
-                    <div style={{ color: 'var(--moss-green)', fontSize: 13 }}>
-                      🌱 {new Date(p.sow_or_plant_date).toLocaleDateString('fr-FR')}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p style={{ opacity: 0.75 }}>Aucune plantation en cours.</p>
-            )}
-          </section>
-        </>
+      
+      {/* Actions rapides */}
+      <section style={{ marginBottom: '2rem' }}>
+        <h2 style={{ marginBottom: '1.5rem' }}>⚡ Actions rapides</h2>
+        <div className="grid cols-4">
+          <QuickActionCard
+            icon="➕"
+            title="Ajouter un lot"
+            description="Nouveau produit"
+            href="/pantry"
+            color="var(--forest-500)"
+          />
+          <QuickActionCard
+            icon="🥘"
+            title="Cuisiner"
+            description="Lancer une recette"
+            href="/recipes"
+            color="var(--autumn-orange)"
+          />
+          <QuickActionCard
+            icon="🌱"
+            title="Planter"
+            description="Nouveau semis"
+            href="/garden"
+            color="var(--earth-600)"
+          />
+          <QuickActionCard
+            icon="📅"
+            title="Planning"
+            description="Voir les tâches"
+            href="/planning"
+            color="var(--mushroom)"
+          />
+        </div>
+      </section>
+      
+      {/* Alertes et notifications */}
+      {user && urgentItems.length > 0 && (
+        <section style={{ marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+            <h2 style={{ margin: 0 }}>🔔 Produits à consommer rapidement</h2>
+            <Link href="/pantry" className="btn secondary small">
+              Voir tout →
+            </Link>
+          </div>
+          <div className="grid cols-2">
+            {urgentItems.map(item => (
+              <AlertCard key={item.id} item={item} />
+            ))}
+          </div>
+        </section>
+      )}
+      
+      {/* Section réseau mycorhizien */}
+      <section
+        className="card"
+        style={{
+          background: 'linear-gradient(135deg, var(--mushroom)10, var(--earth-100))',
+          padding: '2rem',
+          textAlign: 'center',
+        }}
+      >
+        <h2 style={{ marginBottom: '1rem' }}>🍄 Le Réseau Mycorhizien</h2>
+        <p style={{ maxWidth: '600px', margin: '0 auto 1.5rem', color: 'var(--earth-700)' }}>
+          Comme les champignons connectent les arbres dans la forêt, Myko relie vos aliments,
+          recettes et cultures pour créer un écosystème alimentaire harmonieux et durable.
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🏺</div>
+            <div style={{ fontWeight: '600', color: 'var(--forest-700)' }}>Garde-manger</div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--earth-600)' }}>Gérez vos stocks</div>
+          </div>
+          <div style={{ fontSize: '2rem', alignSelf: 'center', color: 'var(--mushroom)' }}>↔️</div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>📖</div>
+            <div style={{ fontWeight: '600', color: 'var(--forest-700)' }}>Recettes</div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--earth-600)' }}>Cuisinez malin</div>
+          </div>
+          <div style={{ fontSize: '2rem', alignSelf: 'center', color: 'var(--mushroom)' }}>↔️</div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🌱</div>
+            <div style={{ fontWeight: '600', color: 'var(--forest-700)' }}>Potager</div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--earth-600)' }}>Cultivez local</div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Message de bienvenue pour non-connectés */}
+      {!user && (
+        <section
+          className="card"
+          style={{
+            marginTop: '2rem',
+            padding: '3rem',
+            textAlign: 'center',
+            background: 'linear-gradient(135deg, var(--forest-50), var(--warm-white))',
+          }}
+        >
+          <h2 style={{ marginBottom: '1rem' }}>🌿 Rejoignez le réseau</h2>
+          <p style={{ maxWidth: '500px', margin: '0 auto 2rem', color: 'var(--earth-700)' }}>
+            Connectez-vous pour accéder à toutes les fonctionnalités et commencer à gérer
+            votre écosystème alimentaire de manière intelligente et durable.
+          </p>
+          <Link href="/login" className="btn primary" style={{ fontSize: '1.1rem', padding: '0.75rem 2rem' }}>
+            Commencer maintenant →
+          </Link>
+        </section>
       )}
     </div>
   );
