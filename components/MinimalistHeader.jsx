@@ -7,15 +7,11 @@ import { useRouter, usePathname } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 
 /**
- * Header "solaax-like" pour Myko
- * — Transparent au dessus du hero, verre dépoli + hairline
- * — Nav centrée, uppercase (optionnelle), soulignement fin sur l'onglet actif
- * — Réduction de hauteur au scroll
- * — Overlay mobile plein écran
- * — Conserve la logique d'auth Supabase (login/logout)
- *
- * ⚙️ Dépend uniquement de CSS inline + <style jsx global>, pas de Tailwind.
- * ✅ Drop-in replacement de votre MinimalistHeader existant.
+ * MinimalistHeader — version plus proche de solaax.com
+ * — Barre pleine largeur, **sans boîte flottante** ni bord arrondi
+ * — Transparente en haut, légère teinte sombre au scroll (pas de glassmorphism)
+ * — Nav centrée, uppercase optionnel, hairline 1px sous l'onglet actif
+ * — Mobile : overlay simple, sombre
  */
 export default function MinimalistHeader() {
   const router = useRouter();
@@ -24,18 +20,19 @@ export default function MinimalistHeader() {
   const [elevated, setElevated] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // --- AUTH ---
   useEffect(() => {
-    let unsub = null;
-    supabase.auth.getSession().then(({ data: { session } }) => setUser(session?.user ?? null));
-    const { data } = supabase.auth.onAuthStateChange((_event, session) => setUser(session?.user ?? null));
-    unsub = data?.subscription;
+    const init = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
+    };
+    init();
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => setUser(session?.user ?? null));
 
     const onScroll = () => setElevated(window.scrollY > 10);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
-      unsub?.unsubscribe?.();
+      subscription?.unsubscribe();
       window.removeEventListener('scroll', onScroll);
     };
   }, []);
@@ -53,7 +50,7 @@ export default function MinimalistHeader() {
     { href: '/shopping', label: 'Courses' },
   ]), []);
 
-  const headerHeight = elevated ? 60 : 80;
+  const headerHeight = elevated ? 56 : 72;
 
   return (
     <>
@@ -61,16 +58,14 @@ export default function MinimalistHeader() {
         role="banner"
         style={{
           position: 'fixed',
-          inset: '0 auto auto 0',
+          top: 0,
+          left: 0,
           right: 0,
           height: headerHeight,
           zIndex: 1000,
-          transition: 'height .25s ease, background .25s ease, box-shadow .25s ease, border-color .25s ease',
-          background: elevated ? 'rgba(253, 252, 248, 0.92)' : 'rgba(253, 252, 248, 0.08)',
-          WebkitBackdropFilter: 'blur(18px)',
-          backdropFilter: 'blur(18px)',
-          borderBottom: `1px solid ${elevated ? 'rgba(45,80,22,.12)' : 'rgba(45,80,22,.08)'}`,
-          boxShadow: elevated ? '0 6px 24px rgba(0,0,0,.06)' : 'none',
+          transition: 'height .2s ease, background .2s ease, border-color .2s ease',
+          background: elevated ? 'rgba(10, 12, 9, 0.6)' : 'transparent',
+          borderBottom: elevated ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
         }}
         aria-label="En-tête Myko"
       >
@@ -82,26 +77,12 @@ export default function MinimalistHeader() {
           display: 'grid',
           gridTemplateColumns: '1fr auto 1fr',
           alignItems: 'center',
-          gap: '1rem',
         }}>
           {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '.75rem' }}>
-            <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '.75rem', textDecoration: 'none' }}>
-              <div style={{
-                width: 34,
-                height: 34,
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, var(--forest-500), var(--forest-700))',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: 'inset 0 0 0 1px rgba(255,255,255,.35)',
-              }}>
-                <span aria-hidden>🍄</span>
-              </div>
-              <span style={{ fontSize: '1.15rem', fontWeight: 600, letterSpacing: '-.2px', color: 'var(--forest-800)', fontFamily: 'Inter, system-ui, sans-serif' }}>Myko</span>
-            </Link>
-          </div>
+          <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '.6rem', textDecoration: 'none' }}>
+            <div aria-hidden style={{ width: 28, height: 28, borderRadius: '50%', background: 'linear-gradient(145deg, #2e4d27, #1f341b)' }} />
+            <span style={{ fontSize: '1.05rem', fontWeight: 600, letterSpacing: '.02em', color: 'var(--paper-50)' }}>Myko</span>
+          </Link>
 
           {/* Nav centrée (desktop) */}
           <nav className="myko-center-nav" aria-label="Navigation principale">
@@ -121,26 +102,17 @@ export default function MinimalistHeader() {
           </nav>
 
           {/* Actions droites */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '.6rem' }}>
             {user ? (
               <>
-                <span className="myko-desktop-only" style={{ fontSize: '.92rem', color: 'var(--forest-700)', opacity: .85 }}>
+                <span className="myko-desktop-only" style={{ fontSize: '.9rem', color: 'var(--paper-300)', opacity: .9 }}>
                   {user.email?.split('@')[0]}
                 </span>
-                <button
-                  onClick={handleLogout}
-                  className="myko-ghost-btn myko-desktop-only"
-                >
-                  Déconnexion
-                </button>
+                <button onClick={handleLogout} className="myko-outline-btn myko-desktop-only">Déconnexion</button>
               </>
             ) : (
-              <Link href="/login" className="myko-cta">
-                Se connecter
-              </Link>
+              <Link href="/login" className="myko-solid-btn">Se connecter</Link>
             )}
-
-            {/* Burger */}
             <button
               className="myko-burger myko-mobile-only"
               onClick={() => setMobileOpen((v) => !v)}
@@ -167,170 +139,134 @@ export default function MinimalistHeader() {
         </div>
       </header>
 
-      {/* Overlay mobile plein écran */}
+      {/* Overlay mobile */}
       {mobileOpen && (
         <div
           id="myko-mobile-menu"
           style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 999,
-            background: 'rgba(253,252,248,.96)',
-            WebkitBackdropFilter: 'blur(18px)',
-            backdropFilter: 'blur(18px)',
-            animation: 'myko-fade-in .25s ease',
+            position: 'fixed', inset: 0, zIndex: 999,
+            background: 'rgba(9,11,8,.96)',
+            animation: 'myko-fade-in .2s ease',
           }}
           onClick={() => setMobileOpen(false)}
         >
-          <div
-            role="menu"
-            aria-label="Menu mobile"
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              maxWidth: 640,
-              margin: '100px auto 0 auto',
-              padding: '1rem 1.25rem',
-              display: 'grid',
-              gap: '0.5rem',
-            }}
-          >
+          <div role="menu" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 640, margin: '88px auto 0', padding: '0 1.25rem', display: 'grid', gap: '.5rem' }}>
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className={`myko-mobile-link${pathname === item.href ? ' is-active' : ''}`}
-              >
+              <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className={`myko-mobile-link${pathname === item.href ? ' is-active' : ''}`}>
                 {item.label}
               </Link>
             ))}
-            <div style={{ height: 8 }} />
+            <div style={{ height: 10 }} />
             {user ? (
               <button onClick={handleLogout} className="myko-mobile-logout">Déconnexion</button>
             ) : (
-              <Link href="/login" className="myko-mobile-login" onClick={() => setMobileOpen(false)}>
-                Se connecter
-              </Link>
+              <Link href="/login" className="myko-mobile-login" onClick={() => setMobileOpen(false)}>Se connecter</Link>
             )}
           </div>
         </div>
       )}
 
-      {/* Spacer pour compenser le header fixed */}
+      {/* Spacer dynamique */}
       <div style={{ height: headerHeight }} />
 
-      {/* Styles globaux dédiés au header */}
       <style jsx global>{`
-        .myko-center-nav {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 2rem;
-        }
-        .myko-nav-link {
-          position: relative;
-          text-decoration: none;
-          font-size: 0.93rem;
-          font-weight: 600;
-          letter-spacing: .02em;
-          color: var(--forest-700);
-          opacity: .78;
-          transition: opacity .2s ease, color .2s ease;
-        }
-        .myko-nav-link:hover { opacity: 1; }
-        .myko-nav-link.is-active { opacity: 1; color: var(--forest-800); }
-        .myko-nav-link::after {
-          content: '';
-          position: absolute;
-          left: 0; right: 0; bottom: -6px;
-          height: 1px;
-          background: currentColor;
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform .25s ease;
-        }
-        .myko-nav-link.is-active::after { transform: scaleX(1); }
-
-        .myko-cta {
-          display: inline-flex;
-          align-items: center;
-          gap: .5rem;
-          text-decoration: none;
-          padding: .55rem 1.1rem;
-          border-radius: 999px;
-          background: var(--forest-700);
-          color: #fff;
-          font-weight: 600;
-          font-size: .92rem;
-          transition: transform .15s ease, background .2s ease;
-        }
-        .myko-cta:hover { transform: translateY(-1px); background: var(--forest-800); }
-
-        .myko-ghost-btn {
-          background: transparent;
-          border: 1px solid var(--forest-400);
-          color: var(--forest-700);
-          padding: .5rem 1rem;
-          border-radius: 999px;
-          font-size: .9rem;
-          font-weight: 500;
-          cursor: pointer;
-          transition: background .2s ease, color .2s ease, border-color .2s ease;
-        }
-        .myko-ghost-btn:hover { background: var(--forest-600); color: #fff; border-color: var(--forest-600); }
-
-        .myko-burger {
-          display: none;
-          background: transparent;
-          border: none;
-          padding: .5rem;
-          cursor: pointer;
-          color: var(--forest-900);
+        :root{
+          /* Palette sombre terre/forêt */
+          --paper-950:#0a0c09; /* fond global */
+          --paper-900:#121710;
+          --paper-700:#1b2418;
+          --paper-300:#d8dbd2;
+          --paper-100:#ecefe7;
+          --paper-50:#f6f7f3;
+          --accent-500:#8ab075; /* mousse */
+          --accent-600:#739a5d;
         }
 
-        .myko-mobile-link {
-          display: block;
-          padding: .9rem 1rem;
-          border-radius: 12px;
-          text-decoration: none;
-          font-size: 1.05rem;
-          color: var(--forest-700);
-          background: transparent;
-          transition: background .2s ease, color .2s ease;
-        }
-        .myko-mobile-link:hover { background: rgba(45,80,22,.06); }
-        .myko-mobile-link.is-active { background: rgba(45,80,22,.08); color: var(--forest-900); }
+        /* NAV */
+        .myko-center-nav{ display:flex; align-items:center; justify-content:center; gap:2rem; }
+        .myko-nav-link{ position:relative; text-decoration:none; font-size:.92rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--paper-300); opacity:.88; transition:opacity .2s ease,color .2s ease; }
+        .myko-nav-link:hover{ opacity:1 }
+        .myko-nav-link.is-active{ color:var(--paper-50); opacity:1 }
+        .myko-nav-link::after{ content:''; position:absolute; left:0; right:0; bottom:-8px; height:1px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .25s ease }
+        .myko-nav-link.is-active::after{ transform:scaleX(1) }
 
-        .myko-mobile-login, .myko-mobile-logout {
-          display: inline-flex; align-items: center; justify-content: center;
-          text-decoration: none; cursor: pointer;
-          width: 100%; padding: .9rem 1rem; border-radius: 999px;
-          font-weight: 600; font-size: 1rem;
-        }
-        .myko-mobile-login { background: var(--forest-700); color: #fff; }
-        .myko-mobile-login:hover { background: var(--forest-800); }
-        .myko-mobile-logout { background: transparent; color: var(--forest-700); border: 1px solid var(--forest-400); }
-        .myko-mobile-logout:hover { background: var(--forest-600); color: #fff; border-color: var(--forest-600); }
+        /* Boutons */
+        .myko-solid-btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.5rem 1rem; border-radius:999px; background:var(--accent-600); color:#fff; text-decoration:none; font-weight:600; font-size:.9rem; }
+        .myko-solid-btn:hover{ background:var(--accent-500) }
+        .myko-outline-btn{ background:transparent; border:1px solid rgba(255,255,255,.18); color:var(--paper-100); padding:.45rem 1rem; border-radius:999px; font-size:.9rem; font-weight:600; cursor:pointer }
+        .myko-outline-btn:hover{ border-color:rgba(255,255,255,.36) }
 
-        @keyframes myko-fade-in { from { opacity: 0 } to { opacity: 1 } }
+        /* Burger + responsive */
+        .myko-burger{ display:none; background:transparent; border:none; padding:.5rem; cursor:pointer; color:var(--paper-50) }
+        @media (max-width: 1024px){ .myko-center-nav{ display:none } .myko-desktop-only{ display:none } .myko-burger{ display:inline-flex } }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-          .myko-center-nav { display: none; }
-          .myko-desktop-only { display: none; }
-          .myko-burger { display: inline-flex; }
-        }
+        /* Mobile overlay */
+        .myko-mobile-link{ display:block; padding:1rem 1rem; border-radius:10px; text-decoration:none; font-size:1.05rem; color:var(--paper-100); transition:background .2s ease }
+        .myko-mobile-link:hover{ background:rgba(255,255,255,.04) }
+        .myko-mobile-link.is-active{ background:rgba(255,255,255,.07); color:#fff }
+        .myko-mobile-login,.myko-mobile-logout{ display:inline-flex; align-items:center; justify-content:center; width:100%; padding:.9rem 1rem; border-radius:999px; font-weight:700; font-size:1rem; text-decoration:none }
+        .myko-mobile-login{ background:var(--accent-600); color:#fff }
+        .myko-mobile-login:hover{ background:var(--accent-500) }
+        .myko-mobile-logout{ background:transparent; color:var(--paper-100); border:1px solid rgba(255,255,255,.18) }
+
+        @keyframes myko-fade-in{ from{opacity:0} to{opacity:1} }
       `}</style>
     </>
   );
 }
 
-/**
- * 📌 Notes d'intégration
- * 1) Le composant est un drop-in : il suffit de garder <MinimalistHeader /> dans app/layout.js
- * 2) La hauteur du header est automatiquement compensée par un spacer. Si vous avez déjà un spacer, supprimez-le.
- * 3) Les variables CSS utilisées (existant chez vous) :
- *    --forest-50/400/500/600/700/800/900, --mushroom
- * 4) Pour une barre plus marquée au scroll, augmentez l'opacité de borderBottom lorsque elevated = true.
- * 5) Pour forcer un header toujours 100% transparent (au-dessus d'un hero), remplacez background par 'transparent' et supprimez le borderBottom à l'état non scrollé.
- */
+/* ------------------------------------------------------
+   Background organique type "Matisse" sombre
+   À placer dans app/layout.js juste après <MinimalistHeader />
+   <MatisseBackground />
+------------------------------------------------------ */
+export function MatisseBackground(){
+  return (
+    <div aria-hidden className="matisse-bg" />
+  );
+}
+
+<style jsx global>{`
+  .matisse-bg{
+    position: fixed; inset: 0; z-index: 0; pointer-events:none;
+    /* Base sombre */
+    background:
+      radial-gradient(1200px 800px at 20% -10%, rgba(114,146,96,.10), transparent 60%),
+      radial-gradient(900px 700px at 80% -20%, rgba(175,133,76,.10), transparent 60%),
+      linear-gradient(180deg, var(--paper-950), var(--paper-900));
+  }
+  /* Découpes organiques superposées (effet papier découpé) */
+  .matisse-bg::before,
+  .matisse-bg::after{
+    content:''; position:absolute; inset:0; opacity:.9;
+    background:
+      /* feuilles grandes */
+      radial-gradient(ellipse 36% 18% at 15% 28%, rgba(62,92,54,.55) 0 45%, transparent 46%),
+      radial-gradient(ellipse 22% 12% at 32% 18%, rgba(92,129,81,.55) 0 48%, transparent 49%),
+      radial-gradient(ellipse 28% 14% at 78% 20%, rgba(63,44,23,.55) 0 45%, transparent 46%),
+      radial-gradient(ellipse 24% 12% at 70% 36%, rgba(99,73,39,.55) 0 47%, transparent 48%),
+      /* silhouettes plus lointaines */
+      radial-gradient(ellipse 40% 20% at 10% 70%, rgba(21,28,19,.65) 0 40%, transparent 41%),
+      radial-gradient(ellipse 30% 16% at 82% 78%, rgba(26,34,24,.65) 0 42%, transparent 43%);
+    filter: blur(2px);
+  }
+  .matisse-bg::after{
+    opacity:.5;
+    background:
+      radial-gradient(ellipse 18% 9% at 25% 40%, rgba(162,125,71,.35) 0 48%, transparent 49%),
+      radial-gradient(ellipse 16% 8% at 60% 58%, rgba(122,157,108,.35) 0 48%, transparent 49%),
+      radial-gradient(ellipse 14% 7% at 75% 32%, rgba(84,62,33,.35) 0 48%, transparent 49%);
+    filter: blur(1.5px);
+  }
+`}</style>
+
+/* ------------------------------------------------------
+   Exemple d'intégration dans app/layout.js (extrait)
+------------------------------------------------------
+<head>…</head>
+<body style={{ background: 'var(--paper-950)', color: 'var(--paper-50)' }}>
+  <MinimalistHeader />
+  <MatisseBackground />
+  <main style={{ position:'relative', zIndex:1 }}>…</main>
+</body>
+*/
