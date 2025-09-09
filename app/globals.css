@@ -43,10 +43,10 @@
   --medium-gray: #b8b5ad;
   --dark-gray: #4a483f;
 
-  --color-bg: #fdfaf4;       /* crème (fond global) */
-  --color-olive: #6e8b5e;    /* vert olive */
-  --color-terra: #c08a5a;    /* terre cuite */
-  --color-sable: #e2c98f;    /* sable chaud */
+  --cream-100:#f4efe6;
+  --olive-500:#6e8b5e;
+  --terra-500:#c08a5a;
+  --sable-300:#e2c98f;
   
   /* États */
   --success: #27ae60;
