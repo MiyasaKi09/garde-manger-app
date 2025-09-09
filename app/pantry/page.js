@@ -1,13 +1,180 @@
-// app/pantry/page.jsx
+// app/pantry/page.js
 'use client';
 
 import { useEffect, useMemo, useState, useCallback } from 'react';
+import Link from 'next/link';
 import { supabase } from '@/lib/supabaseClient';
-import { glassBase } from '@/components/ui/glass';
-import { daysUntil } from '@/lib/dates';
-import LotCard from '@/components/pantry/LotCard';
-import ProductCard from '@/components/pantry/ProductCard';
 
+/* ----------------- Helpers dates & style ----------------- */
+function daysUntil(date) {
+  if (!date) return null;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const d = new Date(date); d.setHours(0,0,0,0);
+  return Math.round((d - today) / 86400000);
+}
+function fmtDate(d) {
+  if (!d) return '—';
+  try {
+    const x = new Date(d);
+    return x.toLocaleDateString('fr-FR', { day:'2-digit', month:'short', year:'numeric' });
+  } catch { return d; }
+}
+const glassBase = {
+  background: 'rgba(255,255,255,0.55)',
+  backdropFilter: 'blur(10px) saturate(120%)',
+  WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+  border: '1px solid rgba(0,0,0,0.06)',
+  boxShadow: '0 8px 28px rgba(0,0,0,0.08)',
+  color: 'var(--ink, #1f281f)',
+};
+
+/* ----------------- UI mini-composants ----------------- */
+function LifespanBadge({ date }) {
+  const d = daysUntil(date);
+  if (d === null) return null;
+
+  let status='ok', icon='🌿', label=`${d} j`, color='var(--success)';
+  if (d < 0)      { status='expired'; icon='🍂'; label=`Périmé ${Math.abs(d)}j`; color='var(--danger)'; }
+  else if (d===0) { status='today';   icon='⚡'; label="Aujourd'hui";           color='var(--autumn-orange)'; }
+  else if (d<=3)  { status='urgent';  icon='⏰'; label=`${d}j`;                  color='var(--autumn-yellow)'; }
+  else if (d<=7)  { status='soon';    icon='📅'; label=`${d}j`;                  color='var(--forest-500)'; }
+
+  return (
+    <span
+      className={`lifespan-badge ${status}`}
+      style={{
+        display:'inline-flex',alignItems:'center',gap:6,
+        padding:'4px 10px', borderRadius:999,
+        background:`linear-gradient(135deg, ${color}15, ${color}08)`,
+        border:`1px solid ${color}40`, color
+      }}
+      title={date || ''}
+    >
+      <span>{icon}</span><span>{label}</span>
+    </span>
+  );
+}
+
+function Stat({ value, label, tone }) {
+  const color = tone==='danger' ? 'var(--danger)' :
+                tone==='warning' ? 'var(--autumn-orange)' :
+                tone==='muted' ? 'var(--earth-700)' : 'var(--forest-600)';
+  return (
+    <div className="glass-card" style={{ ...glassBase, borderRadius:'var(--radius-lg)', padding:'12px', textAlign:'center' }}>
+      <div style={{ fontSize:'1.6rem', fontWeight:800, color }}>{value}</div>
+      <div style={{ fontSize:'.9rem', color:'var(--earth-700)' }}>{label}</div>
+    </div>
+  );
+}
+function Badge({ children, tone='muted' }) {
+  const color = tone==='danger' ? 'var(--danger)' :
+                tone==='warning' ? 'var(--autumn-orange)' : 'var(--earth-700)';
+  return (
+    <span style={{ fontSize:'.85rem', padding:'4px 10px', borderRadius:999, border:`1px solid ${color}40`, color, background:`${color}10` }}>
+      {children}
+    </span>
+  );
+}
+function EmptyBox() {
+  return (
+    <div className="glass-card" style={{ ...glassBase, borderRadius:'var(--radius-lg)', padding:'2rem', textAlign:'center' }}>
+      <div style={{fontSize:'2rem'}}>🌾</div>
+      <div style={{color:'var(--earth-700)'}}>Aucun résultat</div>
+    </div>
+  );
+}
+
+/* ----------------- Cartes ----------------- */
+function LotCard({ lot, onIncQty, onDelete }) {
+  return (
+    <div
+      className="card lot-card"
+      style={{
+        ...glassBase, borderRadius:'var(--radius-lg)', padding:'12px',
+        transition:'all .2s'
+      }}
+    >
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'start',gap:8, marginBottom:8}}>
+        <div style={{fontWeight:600, color:'var(--forest-700)'}}>
+          {lot.product?.name || 'Produit'}
+        </div>
+        <LifespanBadge date={lot.best_before} />
+      </div>
+
+      <div style={{display:'flex',gap:8,alignItems:'baseline', marginBottom:6}}>
+        <span style={{fontSize:'1.25rem', fontWeight:700, color:'var(--forest-700)'}}>{Number(lot.qty)||0}</span>
+        <span style={{opacity:.75}}>{lot.unit || 'u'}</span>
+      </div>
+
+      {lot.best_before && (
+        <div style={{fontSize:'.9rem', color:'var(--earth-600)', marginBottom:8}}>
+          📅 {fmtDate(lot.best_before)}
+        </div>
+      )}
+
+      {lot.note && (
+        <div style={{fontSize:'.85rem', color:'var(--earth-700)', background:'rgba(0,0,0,0.04)', padding:'6px 8px', borderRadius:10, marginBottom:8}}>
+          💬 {lot.note}
+        </div>
+      )}
+
+      <div style={{display:'flex', gap:8}}>
+        <button className="btn small" onClick={()=>onIncQty?.(lot, +1)} style={{flex:1}}>➕</button>
+        <button className="btn small secondary" onClick={()=>onIncQty?.(lot, -1)} disabled={(Number(lot.qty)||0)<=0} style={{flex:1}}>➖</button>
+        <button className="btn small danger" onClick={()=>onDelete?.(lot)} title="Supprimer">🗑️</button>
+      </div>
+    </div>
+  );
+}
+
+function ProductCard({ productId, name, category, unit, lots=[] }) {
+  const { total, nextDate, locations } = useMemo(()=>{
+    let total=0, nextDate=null;
+    const locSet = new Set();
+    for (const l of lots) {
+      total += Number(l.qty||0);
+      if (l.location?.name) locSet.add(l.location.name);
+      const d = l.best_before;
+      if (d && (nextDate===null || new Date(d) < new Date(nextDate))) nextDate = d;
+    }
+    return { total, nextDate, locations:[...locSet].slice(0,6) };
+  },[lots]);
+
+  const soon = nextDate ? daysUntil(nextDate) : null;
+  const cap = (s)=>s ? s[0].toUpperCase()+s.slice(1) : '—';
+
+  return (
+    <div className="product-card" style={{ ...glassBase, borderRadius:'var(--radius-lg)', padding:'14px', display:'grid', gap:8 }}>
+      <div style={{display:'flex', justifyContent:'space-between', gap:8}}>
+        <div>
+          <div style={{fontWeight:700, color:'var(--forest-700)'}}>{name}</div>
+          <div style={{fontSize:'.85rem', color:'var(--earth-600)'}}>{cap(category)}</div>
+        </div>
+        <LifespanBadge date={nextDate} />
+      </div>
+
+      <div style={{display:'flex', alignItems:'baseline', gap:6}}>
+        <span style={{fontSize:'1.6rem', fontWeight:800, color:'var(--forest-700)'}}>{total}</span>
+        <span style={{opacity:.7}}>{unit || lots[0]?.unit || 'u'}</span>
+        {soon!=null && <span style={{marginLeft:8, fontSize:'.9rem', color:'var(--earth-700)'}}>• plus proche : J+{Math.max(soon,0)}</span>}
+      </div>
+
+      {!!locations.length && (
+        <div style={{display:'flex', flexWrap:'wrap', gap:6}}>
+          {locations.map(loc => (
+            <span key={loc} style={{ fontSize:'.8rem', padding:'4px 8px', borderRadius:999, background:'rgba(0,0,0,0.04)' }}>📍 {loc}</span>
+          ))}
+        </div>
+      )}
+
+      <div style={{display:'flex', justifyContent:'flex-end'}}>
+        <Link className="btn small secondary" href={`/produits/${productId}`}>Détails →</Link>
+      </div>
+    </div>
+  );
+}
+
+/* ----------------- Page ----------------- */
 export default function PantryPage() {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState('');
@@ -16,25 +183,29 @@ export default function PantryPage() {
   const [q, setQ] = useState('');
   const [locFilter, setLocFilter] = useState('Tous');
   const [view, setView] = useState('products'); // 'products' | 'locations'
-  const [showAddForm, setShowAddForm] = useState(false); // branche sur ton form existant si besoin
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const load = useCallback(async ()=>{
     setLoading(true); setErr('');
     try {
-      const { data: ls, error: e2 } = await supabase
-        .from('inventory_lots')
-        .select(`
-          id, qty, unit, best_before:dlc, note, created_at,
-          product:products_catalog ( id, name, category ),
-          location:locations ( id, name )
-        `)
-        .order('dlc', { ascending: true, nullsFirst: true })
-        .order('created_at', { ascending: false });
+      const [{ data: locs, error: e1 }, { data: ls, error: e2 }] = await Promise.all([
+        supabase.from('locations').select('id, name').order('name',{ascending:true}),
+        supabase
+          .from('inventory_lots')
+          .select(
+            `
+              id, qty, unit, best_before:dlc, note, created_at,
+              product:products_catalog ( id, name, category ),
+              location:locations ( id, name )
+            `
+          )
+          .order('dlc', { ascending:true, nullsFirst:true })
+          .order('created_at', { ascending:false })
       ]);
       if (e1) throw e1;
       if (e2) throw e2;
       setLocations(locs||[]);
-      setLots(ls||[]);
+      setLots((ls||[]));
     } catch (e) {
       console.error(e); setErr(e.message || 'Erreur de chargement');
     } finally { setLoading(false); }
@@ -149,11 +320,10 @@ export default function PantryPage() {
         </div>
       </section>
 
-      {/* (optionnel) ton AddLotForm existant ici */}
+      {/* (optionnel) bloc pour ton AddLotForm existant */}
       {showAddForm && (
         <div className="glass-card" style={{ ...glassBase, borderRadius:'var(--radius-lg)', padding:'1rem', marginBottom:'1rem' }}>
-          {/* Monte ton AddLotForm ici, branché sur inventory_lots/locations/products_catalog */}
-          <em>Formulaire d’ajout — à brancher (on peut le recoder si tu veux).</em>
+          <em>Formulaire d’ajout — branche ton composant ici.</em>
         </div>
       )}
 
@@ -217,36 +387,6 @@ export default function PantryPage() {
           )}
         </>
       )}
-    </div>
-  );
-}
-
-/* ——— Petits sous-composants ——— */
-function Stat({ value, label, tone }) {
-  const color = tone==='danger' ? 'var(--danger)' :
-                tone==='warning' ? 'var(--autumn-orange)' :
-                tone==='muted' ? 'var(--earth-700)' : 'var(--forest-600)';
-  return (
-    <div className="glass-card" style={{ ...glassBase, borderRadius:'var(--radius-lg)', padding:'12px', textAlign:'center' }}>
-      <div style={{ fontSize:'1.6rem', fontWeight:800, color }}>{value}</div>
-      <div style={{ fontSize:'.9rem', color:'var(--earth-700)' }}>{label}</div>
-    </div>
-  );
-}
-function Badge({ children, tone='muted' }) {
-  const color = tone==='danger' ? 'var(--danger)' :
-                tone==='warning' ? 'var(--autumn-orange)' : 'var(--earth-700)';
-  return (
-    <span style={{ fontSize:'.85rem', padding:'4px 10px', borderRadius:999, border:`1px solid ${color}40`, color, background:`${color}10` }}>
-      {children}
-    </span>
-  );
-}
-function EmptyBox() {
-  return (
-    <div className="glass-card" style={{ ...glassBase, borderRadius:'var(--radius-lg)', padding:'2rem', textAlign:'center' }}>
-      <div style={{fontSize:'2rem'}}>🌾</div>
-      <div style={{color:'var(--earth-700)'}}>Aucun résultat</div>
     </div>
   );
 }
