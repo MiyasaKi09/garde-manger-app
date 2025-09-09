@@ -194,13 +194,13 @@ export default function PantryPage() {
           .from('inventory_lots')
           .select(
             `
-              id, qty, unit, best_before:dlc, note, created_at,
+              id, qty, unit, best_before:dlc, note, entered_at,
               product:products_catalog ( id, name, category ),
               location:locations ( id, name )
             `
           )
           .order('dlc', { ascending:true, nullsFirst:true })
-          .order('created_at', { ascending:false })
+          .order('entered_at', { ascending:false })
       ]);
       if (e1) throw e1;
       if (e2) throw e2;
