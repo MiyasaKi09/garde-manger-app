@@ -32,6 +32,7 @@ export default function RootLayout({ children }) {
       >
         <MinimalistHeader />
         <MatisseCutoutsBG />
+        <ReadableScrim /> 
 
         <main
           className="main-container"
