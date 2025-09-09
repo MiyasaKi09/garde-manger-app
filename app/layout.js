@@ -3,8 +3,9 @@ import "./globals.css";
 import { Suspense } from "react";
 import MinimalistHeader from "@/components/MinimalistHeader";
 // si tu utilises le fond + scrim :
-import MatisseCutoutsBGRandom from "@/components/MatisseCutoutsBGRandom";
+import MatisseWallpaperRandom from "@/components/MatisseWallpaperRandom";
 import ReadableScrim from "@/components/ReadableScrim";
+
 
 export const metadata = {
   title: "Myko — Réseau mycorhizien",
@@ -35,7 +36,7 @@ export default function RootLayout({ children }) {
         <MinimalistHeader />
 
         {/* Fond Matisse + scrim de lisibilité */}
-        <MatisseCutoutsBGRandom />
+        <MatisseWallpaperRandom />
         <ReadableScrim />
 
         <main style={{ position: "relative", zIndex: 1 }}>
