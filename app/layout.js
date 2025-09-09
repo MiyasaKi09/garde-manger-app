@@ -21,7 +21,14 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <MinimalistHeader />
-        
+
+<body style={{ background: '#0a0e0a' }}>
+  <MinimalistHeader />
+  <MatisseBackgroundStrong />
+  <main style={{ position:'relative', zIndex:1 }}>{children}</main>
+</body>
+
+            
         {/* Pattern de fond organique subtil */}
         <div
           style={{
