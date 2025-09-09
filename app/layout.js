@@ -327,58 +327,7 @@ export default function RootLayout({ children }) {
           </Suspense>
         </main>
 
-        <style jsx global>{`
-          @keyframes pulse {
-            0%, 100% { opacity: 0.1; transform: scale(1); }
-            50% { opacity: 0.2; transform: scale(1.1); }
-          }
-          
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-          }
-          
-          @keyframes drift {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-30px, -20px) rotate(180deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
-          }
-          
-          @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-          }
-          
-          @keyframes pulse-dot {
-            0%, 80%, 100% {
-              transform: scale(0.8);
-              opacity: 0.5;
-            }
-            40% {
-              transform: scale(1.2);
-              opacity: 1;
-            }
-          }
 
-          /* Responsive */
-          @media (max-width: 768px) {
-            .header-container {
-              padding: 0.75rem 1rem !important;
-              flex-wrap: wrap;
-            }
-            
-            nav {
-              order: 3;
-              width: 100%;
-              justify-content: center;
-              padding-top: 0.5rem;
-            }
-            
-            .hide-mobile {
-              display: none !important;
-            }
-          }
-        `}</style>
       </body>
     </html>
   );
