@@ -21,17 +21,15 @@ export default function PantryPage() {
   const load = useCallback(async ()=>{
     setLoading(true); setErr('');
     try {
-      const [{ data: locs, error: e1 }, { data: ls, error: e2 }] = await Promise.all([
-        supabase.from('locations').select('id, name').order('name',{ascending:true}),
-        supabase
-          .from('inventory_lots')
-          .select(`
-            id, qty, unit, dlc AS best_before, note, created_at,
-            product:products_catalog ( id, name, category ),
-            location:locations ( id, name )
-          `)
-          .order('dlc', { ascending:true, nullsFirst:true })
-          .order('created_at', { ascending:false })
+      const { data: ls, error: e2 } = await supabase
+        .from('inventory_lots')
+        .select(`
+          id, qty, unit, best_before:dlc, note, created_at,
+          product:products_catalog ( id, name, category ),
+          location:locations ( id, name )
+        `)
+        .order('dlc', { ascending: true, nullsFirst: true })
+        .order('created_at', { ascending: false });
       ]);
       if (e1) throw e1;
       if (e2) throw e2;
