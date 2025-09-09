@@ -1,66 +1,55 @@
-'use client'
-import { useEffect, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
-import Link from 'next/link'
-import { getSupabase } from '@/lib/supabaseClient'
+'use client';
 
-export default function AuthCallbackPage() {
-  const router = useRouter()
-  const sp = useSearchParams()
-  const supabase = getSupabase()
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabaseClient';
 
-  const [status, setStatus] = useState('Restauration de session…')
-  const [error, setError] = useState('')
+export default function AuthCallback() {
+  const router = useRouter();
 
   useEffect(() => {
-    async function run() {
+    const handleCallback = async () => {
       try {
-        if (!supabase) {
-          setError("Supabase non configuré (env manquantes).")
-          return
+        // Récupérer le code depuis l'URL
+        const code = new URLSearchParams(window.location.search).get('code');
+        
+        if (code) {
+          // Échanger le code pour une session
+          const { error } = await supabase.auth.exchangeCodeForSession(code);
+          
+          if (error) {
+            console.error('Erreur auth callback:', error);
+            router.push('/login?error=auth_failed');
+            return;
+          }
         }
-
-        const hash = window.location.hash
-        const params = new URLSearchParams(hash.startsWith('#') ? hash.slice(1) : hash)
-        const access_token = params.get('access_token')
-        const refresh_token = params.get('refresh_token')
-
-        if (!access_token || !refresh_token) {
-          setError('Aucun jeton trouvé dans cette URL.')
-          return
-        }
-
-        const { error: err } = await supabase.auth.setSession({ access_token, refresh_token })
-        if (err) {
-          setError(err.message)
-          return
-        }
-
-        setStatus('Session restaurée ✔')
-        const redirect = sp.get('redirect') || '/'
-        router.replace(redirect)
-      } catch (e) {
-        setError(e.message || String(e))
+        
+        // Rediriger vers la page d'accueil après connexion réussie
+        router.push('/');
+      } catch (error) {
+        console.error('Erreur callback:', error);
+        router.push('/login?error=callback_error');
       }
-    }
-    run()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    };
+
+    handleCallback();
+  }, [router]);
 
   return (
-    <main style={{ padding: 24, maxWidth: 640, margin: '0 auto' }}>
-      <h1>Connexion</h1>
-      {error ? (
-        <div style={{marginTop:12, padding:12, background:'#fee2e2', border:'1px solid #ef4444', borderRadius:8}}>
-          <div style={{fontWeight:600, marginBottom:6}}>Une erreur s’est produite</div>
-          <div style={{whiteSpace:'pre-wrap'}}>{error}</div>
-          <div style={{marginTop:12}}>
-            <Link href="/login">Revenir à la connexion</Link>
-          </div>
-        </div>
-      ) : (
-        <p style={{marginTop:12}}>{status}</p>
-      )}
-    </main>
-  )
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      padding: '2rem'
+    }}>
+      <div className="loading-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <p style={{ marginTop: '1rem' }}>Connexion en cours...</p>
+    </div>
+  );
 }
