@@ -1,7 +1,7 @@
-// app/layout.js
 import './globals.css';
 import { Suspense } from 'react';
 import MinimalistHeader from '@/components/MinimalistHeader';
+import MatisseCutoutsBG from '@/components/MatisseCutoutsBG';
 
 export const metadata = {
   title: 'Myko — Réseau mycorhizien',
@@ -14,75 +14,17 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
       </head>
-      <body>
-  <MinimalistHeader />
-  <MatisseCutoutsBG />
-  <main style={{ position:'relative', zIndex:1 }}>{children}</main>
-</body>
+      <body style={{ background: 'linear-gradient(180deg, var(--bg-top, #0b0f0a), var(--bg-bottom, #1a2318))' }}>
+        <MinimalistHeader />
+        <MatisseCutoutsBG />
 
-      
-                  
-        {/* Pattern de fond organique subtil */}
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            pointerEvents: 'none',
-            opacity: 0.02,
-            zIndex: 0,
-            background: `
-              radial-gradient(circle at 20% 30%, var(--forest-400) 1px, transparent 1px),
-              radial-gradient(circle at 60% 70%, var(--earth-400) 1px, transparent 1px),
-              radial-gradient(circle at 80% 20%, var(--mushroom) 1px, transparent 1px)
-            `,
-            backgroundSize: '100px 100px, 150px 150px, 200px 200px',
-            animation: 'drift 120s linear infinite',
-          }}
-        />
-
-        <main 
+        <main
           className="main-container"
-          style={{
-            maxWidth: '1400px',
-            margin: '0 auto',
-            padding: '2rem',
-            minHeight: 'calc(100vh - 150px)',
-            position: 'relative',
-            zIndex: 1,
-          }}
+          style={{ maxWidth: '1400px', margin: '0 auto', padding: '2rem', minHeight: 'calc(100vh - 150px)', position: 'relative', zIndex: 1 }}
         >
           <Suspense
             fallback={
-              <div 
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  minHeight: '300px',
-                  gap: '1rem',
-                }}
-              >
-                <div className="loading-dots">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <p style={{ color: 'var(--forest-600)', fontSize: '0.95rem' }}>
-                  Connexion au réseau mycorhizien...
-                </p>
-              </div>
-            }
-          >
-            {children}
-          </Suspense>
-        </main>
-      </body>
-    </html>
-  );
-}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '300px', gap: '1rem' }}>
+                <div className="loading-dots"><span></span><span></span><span>
