@@ -12,21 +12,14 @@ const daysLeft = (dlc) => (dlc ? Math.ceil((new Date(dlc) - new Date()) / 864000
 
 // --- Composants UI poétiques ---
 function LifeIndicator({ days }) {
-  if (!days && days !== 0) return null;
+  if (days === undefined || days === null) return null;
 
   let color = 'var(--sage-green)';
   let icon = '🌿';
 
-  if (days < 0) {
-    color = 'var(--earth-brown)'; // périmé
-    icon = '🍂';
-  } else if (days <= 3) {
-    color = 'var(--autumn-orange)'; // urgent
-    icon = '🍁';
-  } else if (days <= 7) {
-    color = 'var(--gold-accent)'; // bientôt
-    icon = '🌾';
-  }
+  if (days < 0) { color = 'var(--earth-brown)'; icon = '🍂'; }
+  else if (days <= 3) { color = 'var(--autumn-orange)'; icon = '🍁'; }
+  else if (days <= 7) { color = 'var(--gold-accent)'; icon = '🌾'; }
 
   return (
     <div
@@ -341,7 +334,10 @@ function RecipeConnection({ recipe }) {
 }
 
 export default function Dashboard() {
+  // --- SESSION ---
   const [me, setMe] = useState(null);
+
+  // --- DATA ---
   const [lots, setLots] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [tasksToday, setTasksToday] = useState([]);
@@ -351,6 +347,27 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState('');
 
+  // 1) Récupération + écoute de la session (pour que le CTA disparaisse dès qu’on est connecté)
+  useEffect(() => {
+    let mounted = true;
+
+    supabase.auth.getSession().then(({ data, error }) => {
+      if (!mounted) return;
+      if (error) console.warn('getSession error:', error.message);
+      setMe(data?.session?.user ?? null);
+    });
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setMe(session?.user ?? null);
+    });
+
+    return () => {
+      mounted = false;
+      sub?.subscription?.unsubscribe();
+    };
+  }, []);
+
+  // 2) Chargement des données — on ne tente pas si pas de session
   useEffect(() => {
     let cancelled = false;
 
@@ -359,28 +376,24 @@ export default function Dashboard() {
       setErr('');
 
       try {
-        // 1) Session utilisateur
-        const { data: userData, error: userErr } = await supabase.auth.getUser();
-        if (userErr) throw userErr;
-        if (cancelled) return;
-        setMe(userData?.user ?? null);
-
-        // Si pas de session : on arrête proprement (affichera CTA login + sections vides)
-        if (!userData?.user) {
-          setLots([]);
-          setRecipes([]);
-          setTasksToday([]);
-          setTasksNext([]);
-          setPlantings([]);
-          setHarvestsRecent([]);
+        if (!me) {
+          // pas de session : on n’affiche pas d’erreur, juste le CTA
+          setLots([]); setRecipes([]); setTasksToday([]); setTasksNext([]);
+          setPlantings([]); setHarvestsRecent([]);
           return;
         }
 
-        // 2) Charge toutes les données en parallèle
         const today = todayISO();
         const soon7 = addDaysISO(7);
 
-        const promises = [
+        const [
+          lotsRes,
+          recipesRes,
+          todayTasksRes,
+          nextTasksRes,
+          plantingsRes,
+          harvestsRes,
+        ] = await Promise.all([
           supabase
             .from('inventory_lots')
             .select(
@@ -424,20 +437,11 @@ export default function Dashboard() {
             .gte('date', addDaysISO(-7))
             .order('date', { ascending: false })
             .limit(5),
-        ];
-
-        const [
-          lotsRes,
-          recipesRes,
-          todayTasksRes,
-          nextTasksRes,
-          plantingsRes,
-          harvestsRes,
-        ] = await Promise.all(promises);
+        ]);
 
         if (cancelled) return;
 
-        // 3) Affectations avec fallback sûr
+        // Affectations + log d’erreurs sans casser l’UI
         setLots(lotsRes?.data || []);
         setRecipes(recipesRes?.data || []);
         setTasksToday(todayTasksRes?.data || []);
@@ -445,47 +449,36 @@ export default function Dashboard() {
         setPlantings(plantingsRes?.data || []);
         setHarvestsRecent(harvestsRes?.data || []);
 
-        // Optionnel: log des erreurs sans casser l’UI
         [lotsRes, recipesRes, todayTasksRes, nextTasksRes, plantingsRes, harvestsRes].forEach((r, i) => {
-          if (r?.error) {
-            console.warn('[Home] data fetch error idx', i, r.error?.message);
-          }
+          if (r?.error) console.warn('[Home] supabase error idx', i, r.error?.message);
         });
       } catch (e) {
         console.error('[Home] load error:', e);
-        if (!cancelled) {
-          setErr('Impossible de récupérer les données. Réessaie plus tard.');
-        }
+        if (!cancelled) setErr('Impossible de récupérer les données. Réessaie plus tard.');
       } finally {
         if (!cancelled) setLoading(false);
       }
     })();
 
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+    return () => { cancelled = true; };
+  }, [me]);
 
   // Dérivés : alertes garde-manger
   const urgentLots = useMemo(() => {
-    const today = todayISO();
-    return (lots || []).filter((l) => l.dlc && new Date(l.dlc) <= new Date(addDaysISO(3)));
+    const d3 = addDaysISO(3);
+    return (lots || []).filter((l) => l.dlc && new Date(l.dlc) <= new Date(d3));
   }, [lots]);
 
   const soonLots = useMemo(() => {
+    const d3 = addDaysISO(3);
     const d7 = addDaysISO(7);
-    const today = todayISO();
-    return (lots || []).filter(
-      (l) => l.dlc && new Date(l.dlc) > new Date(addDaysISO(3)) && new Date(l.dlc) <= new Date(d7)
-    );
+    return (lots || []).filter((l) => l.dlc && new Date(l.dlc) > new Date(d3) && new Date(l.dlc) <= new Date(d7));
   }, [lots]);
 
-  // Dérivés : quelques recettes liées aux produits urgents (heuristique simple)
+  // Dérivés : suggestions recettes à partir des urgences
   const recipeSuggestions = useMemo(() => {
     if (!recipes?.length || !urgentLots?.length) return [];
-    const names = urgentLots
-      .map((l) => l.product?.name?.toLowerCase())
-      .filter(Boolean);
+    const names = urgentLots.map((l) => l.product?.name?.toLowerCase()).filter(Boolean);
 
     const scored = recipes.map((r) => {
       const ingNames = (r.ingredients || []).map((i) => i.product?.name?.toLowerCase()).filter(Boolean);
@@ -493,10 +486,7 @@ export default function Dashboard() {
       return { ...r, _score: score };
     });
 
-    return scored
-      .filter((r) => r._score > 0)
-      .sort((a, b) => b._score - a._score)
-      .slice(0, 6);
+    return scored.filter((r) => r._score > 0).sort((a, b) => b._score - a._score).slice(0, 6);
   }, [recipes, urgentLots]);
 
   // --- Rendu ---
@@ -507,35 +497,33 @@ export default function Dashboard() {
         <p style={{ opacity: 0.8, marginTop: 4 }}>
           Le réseau qui relie <b>garde-manger</b>, <b>recettes</b> et <b>potager</b>.
         </p>
+        {/* CTA visible seulement si NON connecté */}
         {!me && (
           <div style={{ marginTop: 12 }}>
-            <Link className="btn" href="/login">
-              Se connecter
-            </Link>
+            <Link className="btn" href="/login">Se connecter</Link>
           </div>
         )}
       </section>
 
-      {err && (
+      {/* Erreur data (jamais affichée si pas connecté) */}
+      {me && err && (
         <div className="card" style={{ padding: 12, borderColor: '#ef4444' }}>
           <div style={{ color: '#b91c1c' }}>⚠️ {err}</div>
         </div>
       )}
 
-      {/* état de chargement doux */}
-      {loading && (
+      {/* chargement doux */}
+      {me && loading && (
         <div className="card" style={{ padding: 16 }}>
           <div className="loading-container">
-            <div className="loading-mycelium">
-              <span></span><span></span><span></span>
-            </div>
+            <div className="loading-mycelium"><span></span><span></span><span></span></div>
             <p>Connexion au réseau mycorhizien…</p>
           </div>
         </div>
       )}
 
-      {/* quand pas connecté : on montre juste des actions rapides */}
-      {!loading && !me && (
+      {/* non connecté : actions rapides simples */}
+      {!me && (
         <section className="card" style={{ padding: 16 }}>
           <h2 style={{ marginBottom: 8 }}>Actions rapides</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px,1fr))', gap: 12 }}>
@@ -546,19 +534,13 @@ export default function Dashboard() {
         </section>
       )}
 
-      {/* connecté : on affiche tout le dashboard */}
-      {!loading && me && (
+      {/* connecté : dashboard complet */}
+      {me && !loading && (
         <>
           <section style={{ display: 'grid', gap: 12, gridTemplateColumns: '2fr 1fr' }}>
             <div className="card" style={{ padding: 16 }}>
               <h2 style={{ marginBottom: 8 }}>Connexions & alertes</h2>
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(260px,1fr))',
-                  gap: 12,
-                }}
-              >
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px,1fr))', gap: 12 }}>
                 <ConnectionCard
                   title="Périssables (≤ 3j)"
                   items={urgentLots}
@@ -612,9 +594,7 @@ export default function Dashboard() {
                 <p style={{ opacity: 0.75 }}>Ajoutez des recettes ou des lots pour voir des suggestions ✨</p>
               ) : (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px,1fr))', gap: 10 }}>
-                  {recipeSuggestions.map((r) => (
-                    <RecipeConnection key={r.id} recipe={r} />
-                  ))}
+                  {recipeSuggestions.map((r) => <RecipeConnection key={r.id} recipe={r} />)}
                 </div>
               )}
             </div>
@@ -662,11 +642,7 @@ export default function Dashboard() {
             {plantings?.length ? (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px,1fr))', gap: 10 }}>
                 {plantings.map((p) => (
-                  <div
-                    key={p.id}
-                    className="card"
-                    style={{ padding: 12, border: '1px solid rgba(139,149,109,0.2)' }}
-                  >
+                  <div key={p.id} className="card" style={{ padding: 12, border: '1px solid rgba(139,149,109,0.2)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
                       <strong style={{ color: 'var(--forest-green)' }}>
                         {p.variety?.species} {p.variety?.variety}
