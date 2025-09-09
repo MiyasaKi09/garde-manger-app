@@ -1,52 +1,81 @@
 // app/layout.js
 import './globals.css';
+import { Suspense } from 'react';
+import Header from '@/components/Header';
 
 export const metadata = {
-  title: 'Myko',
-  description: 'Garde-manger, recettes et potager',
+  title: 'Myko — Réseau mycorhizien',
+  description: 'Cultivez les connexions entre cuisine, garde-manger et potager',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
-        <header style={{
-          position: 'sticky',
-          top: 0,
-          background: '#fff',
-          borderBottom: '1px solid #eee',
-          zIndex: 10,
-          padding: '1rem'
-        }}>
-          <div style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            display: 'flex',
-            gap: '2rem',
-            alignItems: 'center'
-          }}>
-            <a href="/" style={{ 
-              fontSize: '1.5rem', 
-              fontWeight: 'bold',
-              textDecoration: 'none',
-              color: '#2d5016'
-            }}>
-              🍄 Myko
-            </a>
-            <nav style={{ display: 'flex', gap: '1rem' }}>
-              <a href="/pantry" style={{ textDecoration: 'none', color: '#333' }}>Garde-manger</a>
-              <a href="/recipes" style={{ textDecoration: 'none', color: '#333' }}>Recettes</a>
-              <a href="/garden" style={{ textDecoration: 'none', color: '#333' }}>Potager</a>
-            </nav>
-          </div>
-        </header>
+        <Header />
+        
+        {/* Pattern de fond organique subtil */}
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            pointerEvents: 'none',
+            opacity: 0.02,
+            zIndex: 0,
+            background: `
+              radial-gradient(circle at 20% 30%, var(--forest-400) 1px, transparent 1px),
+              radial-gradient(circle at 60% 70%, var(--earth-400) 1px, transparent 1px),
+              radial-gradient(circle at 80% 20%, var(--mushroom) 1px, transparent 1px)
+            `,
+            backgroundSize: '100px 100px, 150px 150px, 200px 200px',
+            animation: 'drift 120s linear infinite',
+          }}
+        />
 
-        <main style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '2rem'
-        }}>
-          {children}
+        <main 
+          className="main-container"
+          style={{
+            maxWidth: '1400px',
+            margin: '0 auto',
+            padding: '2rem',
+            minHeight: 'calc(100vh - 150px)',
+            position: 'relative',
+            zIndex: 1,
+          }}
+        >
+          <Suspense
+            fallback={
+              <div 
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: '300px',
+                  gap: '1rem',
+                }}
+              >
+                <div className="loading-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <p style={{ color: 'var(--forest-600)', fontSize: '0.95rem' }}>
+                  Connexion au réseau mycorhizien...
+                </p>
+              </div>
+            }
+          >
+            {children}
+          </Suspense>
         </main>
       </body>
     </html>
