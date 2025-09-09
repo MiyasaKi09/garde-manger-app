@@ -2,7 +2,8 @@
 import "./globals.css";
 import { Suspense } from "react";
 import MinimalistHeader from "@/components/MinimalistHeader";
-import MatisseCutoutsBG from "@/components/MatisseCutoutsBG";
+import MatisseCutoutsBGRandom from "@/components/MatisseCutoutsBGRandom";
+import ReadableScrim from "@/components/ReadableScrim";
 
 export const metadata = {
   title: "Myko — Réseau mycorhizien",
@@ -31,7 +32,7 @@ export default function RootLayout({ children }) {
         }}
       >
         <MinimalistHeader />
-        <MatisseCutoutsBG />
+        <MatisseCutoutsBGRandom />
         <ReadableScrim /> 
 
         <main style={{ position: "relative", zIndex: 1 }}>
