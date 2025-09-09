@@ -759,3 +759,199 @@ tr:hover {
 
 .transition { transition: all var(--transition-base); }
 .no-transition { transition: none; }
+
+/* ==========================================================================
+   MYKO V2 — HOOKS MK-* (à coller en bas de globals.css)
+   ========================================================================== */
+
+/* === 1) Aliases de variables pour les hooks === */
+:root{
+  /* Accents (mappés sur ta palette existante) */
+  --accent: 120 36% 35%;        /* proche forest-500 en HSL */
+  --accent-2: 27 80% 56%;       /* autumn-orange */
+  --accent-3: 206 70% 40%;      /* proche info */
+
+  /* Fond / texte */
+  --bg: var(--cream);
+  --bg-2: var(--earth-50);
+  --ink: var(--forest-800);
+  --muted: var(--medium-gray);
+  --line: var(--soft-gray);
+
+  /* Verre / arrondis / ombres */
+  --glass: rgba(255,255,255,0.55);
+  --glass-border: rgba(10,14,10,0.08);
+  --radius-xl: var(--radius-xl);
+  --radius-lg: var(--radius-lg);
+  --radius-md: var(--radius-md);
+  --shadow-1: var(--shadow-md);
+  --shadow-2: var(--shadow-lg);
+
+  /* Layout */
+  --maxw: 1080px;
+}
+
+/* === 2) Fond mycélien (calque fixe) === */
+.mk-mycelium-bg{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(800px 400px at 20% 10%, rgba(76,175,80,0.08), transparent 60%),
+    radial-gradient(700px 350px at 80% -5%, rgba(255,152,0,0.08), transparent 60%),
+    radial-gradient(900px 480px at -10% 80%, rgba(33,150,243,0.07), transparent 60%);
+  mask-image: radial-gradient(1200px 900px at 50% 10%, rgba(0,0,0,.9), transparent 80%);
+}
+.mk-mycelium-bg::after{
+  content:"";
+  position:absolute; inset:0; opacity:.5;
+  background:
+    repeating-linear-gradient(115deg, rgba(0,0,0,.02) 0 2px, transparent 2px 8px),
+    repeating-linear-gradient(65deg, rgba(0,0,0,.015) 0 3px, transparent 3px 10px);
+  mix-blend-mode:multiply;
+}
+
+/* === 3) Header & nav === */
+.mk-header{
+  position:sticky; top:0; z-index:40;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--glass-border);
+}
+.mk-container{ max-width:var(--maxw); margin:0 auto; padding:0 var(--space-md); }
+.header-container.mk-container{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:var(--space-md); height:64px;
+}
+
+.mk-logo{ display:flex; align-items:center; gap:var(--space-md); }
+.mk-logo-link{ display:flex; align-items:center; gap:.6rem; text-decoration:none; color:inherit; }
+.mk-icon{ position:relative; width:28px; height:28px; }
+.mk-spore{ position:absolute; width:6px; height:6px; border-radius:50%; background:hsl(var(--accent)); }
+.mk-spore:nth-child(1){ top:2px; left:10px; background:hsl(var(--accent-2)); }
+.mk-spore:nth-child(2){ bottom:3px; right:3px; background:hsl(var(--accent)); }
+.mk-spore:nth-child(3){ top:12px; left:-2px; background:hsl(var(--accent-3)); }
+.mk-mycelium-line{ position:absolute; inset:3px; border-radius:50%; box-shadow: inset 0 0 0 1.5px rgba(0,0,0,.08); }
+.mk-wordmark{ font-family: "Crimson Text", Georgia, serif; font-size:1.5rem; letter-spacing:.02em; }
+
+.mk-nav{ display:flex; gap:.25rem .5rem; align-items:center; margin-left:1rem; flex-wrap:wrap; }
+.mk-nav-link{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.5rem .75rem; border-radius: var(--radius-md);
+  text-decoration:none; color:inherit; position:relative;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+.mk-nav-link:hover{ background:rgba(0,0,0,.04); transform: translateY(-1px); }
+.mk-nav-ico{ opacity:.9; }
+.mk-nav-link[aria-current="page"]{
+  background:linear-gradient( to bottom, rgba(0,0,0,.06), rgba(0,0,0,.03) );
+  border:1px solid var(--glass-border);
+}
+
+/* Saison + actions header */
+.mk-actions{ display:flex; align-items:center; gap:.75rem; }
+.mk-season{
+  display:flex; align-items:center; gap:.35rem;
+  padding:.35rem .55rem; border-radius:999px;
+  background: rgba(255,152,0,.10);
+  border:1px solid rgba(255,152,0,.25);
+  font-size:.9rem; color:#8a5a00;
+}
+.mk-season-ico{ line-height:1; }
+
+/* === 4) Main & utilitaires layout === */
+.mk-main{ min-height: calc(100svh - 64px - 72px); padding: 1.25rem; }
+@media (min-width: 768px){ .mk-main{ padding: 2rem; } }
+
+.main-container{ /* compat ancienne classe */
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.mk-card{
+  background:#fff; border:1px solid var(--glass-border);
+  border-radius: var(--radius-xl); box-shadow: var(--shadow-1);
+  padding:1rem;
+}
+
+/* === 5) Loading (fallback Suspense) === */
+.mk-loading{
+  display:grid; place-items:center;
+  gap:1rem; padding: 3rem 0;
+  color: var(--muted);
+}
+.mk-loading-orb{
+  width:64px; height:18px; display:flex; justify-content:space-between; align-items:center;
+}
+.mk-loading-orb > span{
+  width:14px; height:14px; border-radius:50%;
+  background: hsl(var(--accent) / .25);
+  animation: mk-pulse 1.2s infinite ease-in-out;
+}
+.mk-loading-orb > span:nth-child(2){ animation-delay:.15s }
+.mk-loading-orb > span:nth-child(3){ animation-delay:.3s }
+@keyframes mk-pulse{
+  0%, 80%, 100%{ transform:scale(.8); opacity:.6 }
+  40%{ transform:scale(1); opacity:1 }
+}
+.mk-loading-text{ font-style:italic; font-family:"Crimson Text", Georgia, serif; }
+
+/* === 6) Footer === */
+.mk-footer{
+  margin-top:2rem; border-top:1px solid var(--line);
+  background: linear-gradient( to top, rgba(0,0,0,.03), transparent );
+}
+.mk-footer-inner{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:.75rem; padding: 1rem var(--space-md) 1.25rem;
+}
+.mk-footline{ margin:0; color:var(--muted); display:flex; gap:.5rem; align-items:center; }
+.mk-footmark{ font-weight:600; color: hsl(var(--accent)); }
+.mk-footsep{ opacity:.4 }
+.mk-footmotto{ font-family: "Crimson Text", Georgia, serif; font-style:italic; }
+
+.mk-footer-nav{ display:flex; gap:.75rem; }
+.mk-footer-link{
+  color:inherit; text-decoration:none; opacity:.85;
+  padding:.25rem .5rem; border-radius:.4rem;
+}
+.mk-footer-link:hover{ background:rgba(0,0,0,.05) }
+
+/* === 7) Accessibilité / focus / skip link === */
+.mk-skip{
+  position:fixed; left:50%; transform:translateX(-50%);
+  top:-40px; background:#fff; color:#000; padding:.5rem .75rem;
+  border-radius:.5rem; border:1px solid var(--glass-border);
+  box-shadow:var(--shadow-1); text-decoration:none; z-index:1000;
+  transition: top var(--transition-fast);
+}
+.mk-skip:focus{ top:10px; outline:none; }
+
+/* Focus visible cohérent */
+:focus-visible{
+  outline: 2px solid hsl(var(--accent));
+  outline-offset: 2px;
+  border-radius:.35rem;
+}
+
+/* === 8) Modes : dark / motion === */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0d110d; --bg-2:#0f140f; --ink:#eef3ee; --muted:#a6b1a8; --line:#1c231c;
+    --glass: rgba(12,16,12,0.55);
+    --glass-border: rgba(255,255,255,0.08);
+    --shadow-1: 0 8px 26px rgba(0,0,0,.45);
+    --shadow-2: 0 14px 40px rgba(0,0,0,.6);
+  }
+  .mk-nav-link:hover{ background:rgba(255,255,255,.06) }
+  .mk-season{
+    background: rgba(255,152,0,.15);
+    border-color: rgba(255,152,0,.35);
+    color:#ffcf99;
+  }
+  .mk-card{ background: #121612; }
+  .mk-footer{ background: linear-gradient( to top, rgba(255,255,255,.04), transparent ); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition:none !important; scroll-behavior:auto !important; }
+}
+
