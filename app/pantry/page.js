@@ -28,6 +28,130 @@ const glassBase = {
   color: 'var(--ink, #1f281f)',
 };
 
+/* ----------------- Helpers conversion d'unités ----------------- */
+const MASS = ['g','kg'];
+const VOL  = ['ml','cl','l'];
+const UNIT = ['u','pièce','piece','pcs'];
+
+function normUnit(u='') {
+  const x = (u||'').toLowerCase();
+  if (x === 'piece' || x === 'pcs' || x === 'pièce') return 'u';
+  return x;
+}
+function unitFamily(u) {
+  u = normUnit(u);
+  if (MASS.includes(u)) return 'mass';
+  if (VOL.includes(u))  return 'vol';
+  if (UNIT.includes(u)) return 'unit';
+  return 'other';
+}
+function factorWithinFamily(from, to) {
+  from = normUnit(from); to = normUnit(to);
+  if (from===to) return 1;
+
+  // masse
+  if (MASS.includes(from) && MASS.includes(to)) {
+    // base g
+    const toG = from === 'kg' ? 1000 : 1;
+    return to === 'kg' ? toG/1000 : toG; // g->kg: /1000, kg->g: *1000
+  }
+  // volume
+  if (VOL.includes(from) && VOL.includes(to)) {
+    // base ml
+    const toMl = from === 'l' ? 1000 : from === 'cl' ? 10 : 1;
+    return to === 'l' ? toMl/1000 : to === 'cl' ? toMl/10 : toMl;
+  }
+  return null;
+}
+function toBaseMass(qty, u) { // -> grammes
+  u = normUnit(u);
+  if (u==='kg') return Number(qty)*1000;
+  return Number(qty);
+}
+function fromBaseMass(qtyG, toUnit) { // g -> g|kg
+  toUnit = normUnit(toUnit);
+  if (toUnit==='kg') return { qty: qtyG/1000, unit: 'kg' };
+  return { qty: qtyG, unit: 'g' };
+}
+function toBaseVol(qty, u) { // -> ml
+  u = normUnit(u);
+  if (u==='l') return Number(qty)*1000;
+  if (u==='cl') return Number(qty)*10;
+  return Number(qty); // ml
+}
+function fromBaseVol(qtyMl, toUnit) { // ml -> ml|cl|l
+  toUnit = normUnit(toUnit);
+  if (toUnit==='l')  return { qty: qtyMl/1000, unit:'l' };
+  if (toUnit==='cl') return { qty: qtyMl/10,   unit:'cl' };
+  return { qty: qtyMl, unit:'ml' };
+}
+
+/**
+ * Convertit qty depuis fromUnit vers toUnit en utilisant les infos produit.
+ * Retourne { qty, unit } ou null si conversion impossible.
+ * - Même famille (masse/volume) => facteurs connus
+ * - Masse <-> Volume => nécessite product.density_g_per_ml
+ * - Unit <-> Masse => nécessite product.grams_per_unit
+ * - Unit <-> Volume => nécessite grams_per_unit + density_g_per_ml (via masse)
+ */
+function convertQty(qty, fromUnit, toUnit, product) {
+  fromUnit = normUnit(fromUnit);
+  toUnit   = normUnit(toUnit);
+  if (!qty && qty !== 0) return null;
+  if (fromUnit === toUnit) return { qty, unit: toUnit };
+
+  const famFrom = unitFamily(fromUnit);
+  const famTo   = unitFamily(toUnit);
+
+  // 1) même famille
+  const f = factorWithinFamily(fromUnit, toUnit);
+  if (f != null) return { qty: Number(qty) * f, unit: toUnit };
+
+  // Helpers data produit
+  const density = Number(product?.density_g_per_ml || 0) || null;   // g / ml
+  const gPerU   = Number(product?.grams_per_unit || 0) || null;     // g / u
+
+  // 2) Mass <-> Volume via density
+  if (famFrom==='mass' && famTo==='vol') {
+    if (!density) return null;
+    const qtyMl = (toBaseMass(qty, fromUnit) / density); // ml
+    return fromBaseVol(qtyMl, toUnit);
+  }
+  if (famFrom==='vol' && famTo==='mass') {
+    if (!density) return null;
+    const qtyG = toBaseVol(qty, fromUnit) * density; // g
+    return fromBaseMass(qtyG, toUnit);
+  }
+
+  // 3) Unit <-> Mass via grams_per_unit
+  if (famFrom==='unit' && famTo==='mass') {
+    if (!gPerU) return null;
+    const qtyG = Number(qty) * gPerU;
+    return fromBaseMass(qtyG, toUnit);
+  }
+  if (famFrom==='mass' && famTo==='unit') {
+    if (!gPerU) return null;
+    const qtyU = toBaseMass(qty, fromUnit) / gPerU;
+    return { qty: qtyU, unit: toUnit };
+  }
+
+  // 4) Unit <-> Volume via grams_per_unit + density
+  if (famFrom==='unit' && famTo==='vol') {
+    if (!gPerU || !density) return null;
+    const g = Number(qty) * gPerU;
+    const ml = g / density;
+    return fromBaseVol(ml, toUnit);
+  }
+  if (famFrom==='vol' && famTo==='unit') {
+    if (!gPerU || !density) return null;
+    const g = toBaseVol(qty, fromUnit) * density;
+    const u = g / gPerU;
+    return { qty: u, unit: toUnit };
+  }
+
+  return null;
+}
+
 /* ----------------- UI mini-composants ----------------- */
 function LifespanBadge({ date }) {
   const d = daysUntil(date);
@@ -202,6 +326,34 @@ function ProductDetailModal({ product, lots, locations, onClose, onIncQty, onUpd
   if (!product) return null;
   const productLots = (lots||[]).filter(l => l.product?.id === product.productId);
 
+  function availableUnitsForProduct() {
+    // On expose un set raisonnable; la logique désactive les options impossibles (voir renderUnitOptions)
+    return ['g','kg','ml','cl','l','u'];
+  }
+  function renderUnitOptions(prod, currentUnit) {
+    const density = Number(prod?.density_g_per_ml || 0) || null;
+    const gPerU   = Number(prod?.grams_per_unit || 0) || null;
+
+    return availableUnitsForProduct().map(u=>{
+      const fromFam = unitFamily(currentUnit||'u');
+      const toFam   = unitFamily(u);
+      let disabled = false;
+
+      if (fromFam!==toFam) {
+        if ((fromFam==='mass' && toFam==='vol') || (fromFam==='vol' && toFam==='mass')) {
+          if (!density) disabled = true;
+        }
+        if ((fromFam==='unit' && toFam==='mass') || (fromFam==='mass' && toFam==='unit')) {
+          if (!gPerU) disabled = true;
+        }
+        if ((fromFam==='unit' && toFam==='vol') || (fromFam==='vol' && toFam==='unit')) {
+          if (!(gPerU && density)) disabled = true;
+        }
+      }
+      return <option key={u} value={u} disabled={disabled}>{u}</option>;
+    });
+  }
+
   return (
     <div
       role="dialog"
@@ -230,14 +382,39 @@ function ProductDetailModal({ product, lots, locations, onClose, onIncQty, onUpd
           <div style={{ display:'grid', gap:10 }}>
             {productLots.map(lot => (
               <div key={lot.id} className="card" style={{ ...glassBase, borderRadius:16, padding:'10px 12px' }}>
-                <div style={{ display:'grid', gridTemplateColumns:'1.2fr .8fr .9fr 1.1fr auto', gap:10, alignItems:'center' }}>
-                  {/* Quantité */}
-                  <div style={{ display:'flex', alignItems:'baseline', gap:8 }}>
+                <div style={{ display:'grid', gridTemplateColumns:'1.35fr 1.1fr .9fr 1.1fr auto', gap:10, alignItems:'center' }}>
+                  {/* Quantité + Unité (avec conversion) */}
+                  <div style={{ display:'grid', gridTemplateColumns:'auto 1fr 0.9fr', gap:6, alignItems:'center' }}>
                     <button className="btn small" onClick={()=>onIncQty(lot,-1)} disabled={(Number(lot.qty)||0)<=0}>−</button>
-                    <div style={{ fontWeight:700, color:'var(--forest-700)' }}>
-                      {Number(lot.qty)||0} <span style={{ opacity:.7, fontWeight:500 }}>{lot.unit || 'u'}</span>
-                    </div>
-                    <button className="btn small" onClick={()=>onIncQty(lot,+1)}>＋</button>
+
+                    <input
+                      className="input"
+                      type="number"
+                      step="0.01"
+                      defaultValue={Number(lot.qty)||0}
+                      onBlur={(e)=>{
+                        const v = Number(e.target.value||0);
+                        if (Number.isNaN(v)) return;
+                        onUpdateLot(lot.id, { qty: v });
+                      }}
+                    />
+
+                    <select
+                      className="input"
+                      defaultValue={lot.unit || 'u'}
+                      onChange={(e)=>{
+                        const nextU = e.target.value;
+                        const res = convertQty(Number(lot.qty||0), lot.unit||'u', nextU, lot.product);
+                        if (!res) {
+                          e.target.value = lot.unit || 'u';
+                          alert("Conversion d'unité impossible pour ce produit (il manque density_g_per_ml ou grams_per_unit).");
+                          return;
+                        }
+                        onUpdateLot(lot.id, { qty: Number(res.qty.toFixed(2)), unit: res.unit });
+                      }}
+                    >
+                      {renderUnitOptions(lot.product, lot.unit)}
+                    </select>
                   </div>
 
                   {/* DLC */}
@@ -256,7 +433,7 @@ function ProductDetailModal({ product, lots, locations, onClose, onIncQty, onUpd
                     <label style={{ fontSize:12, opacity:.7 }}>Lieu</label>
                     <select
                       className="input"
-                      defaultValue={lot.location?.id || ''}
+                      defaultValue={lot.location?.id || lot.location_id || ''}
                       onChange={e=>onUpdateLot(lot.id, { location_id: e.target.value || null })}
                     >
                       <option value="">—</option>
@@ -294,8 +471,6 @@ export default function PantryPage() {
   const [locFilter, setLocFilter] = useState('Tous');
   const [view, setView] = useState('products'); // 'products' | 'locations'
   const [showAddForm, setShowAddForm] = useState(false);
-
-  // produit ouvert dans le modal
   const [openProduct, setOpenProduct] = useState(null); // { productId, name }
 
   const load = useCallback(async ()=>{
@@ -308,7 +483,7 @@ export default function PantryPage() {
           .select(
             `
               id, qty, unit, best_before:dlc, note, entered_at, location_id,
-              product:products_catalog ( id, name, category ),
+              product:products_catalog ( id, name, category, default_unit, density_g_per_ml, grams_per_unit ),
               location:locations ( id, name )
             `
           )
@@ -398,10 +573,6 @@ export default function PantryPage() {
   async function updateLot(lotId, patch) {
     // patch peut contenir { dlc, location_id, unit, note, qty }
     const dbPatch = { ...patch };
-    if ('dlc' in dbPatch) {
-      // côté UI on manipule best_before, mais DB = dlc ; ici patch.dlc = valeur
-      // rien à faire, on a déjà la bonne clé (dlc)
-    }
     const { data, error } = await supabase
       .from('inventory_lots')
       .update(dbPatch)
@@ -422,7 +593,7 @@ export default function PantryPage() {
       if ('unit' in dbPatch) next.unit = data.unit;
       if ('location_id' in dbPatch) {
         next.location_id = data.location_id;
-        const loc = locations.find(l=>l.id === data.location_id) || null;
+        const loc = locations.find(l=>String(l.id) === String(data.location_id)) || null;
         next.location = loc ? { id: loc.id, name: loc.name } : null;
       }
       return next;
