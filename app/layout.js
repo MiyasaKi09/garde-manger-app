@@ -34,43 +34,24 @@ export default function RootLayout({ children }) {
         <MatisseCutoutsBG />
         <ReadableScrim /> 
 
-        <main
-          className="main-container"
-          style={{
-            maxWidth: "1400px",
-            margin: "0 auto",
-            padding: "2rem",
-            minHeight: "calc(100vh - 150px)",
-            position: "relative",
-            zIndex: 1,
-          }}
-        >
-          <Suspense
-            fallback={
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "300px",
-                  gap: "1rem",
-                }}
-              >
-                <div className="loading-dots">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <p style={{ color: "var(--forest-600)", fontSize: "0.95rem" }}>
-                  Connexion au réseau mycorhizien...
-                </p>
-              </div>
-            }
-          >
-            {children}
-          </Suspense>
-        </main>
+        <main style={{ position: "relative", zIndex: 1 }}>
+  <div
+    style={{
+      maxWidth: 960,
+      margin: "0 auto",
+      padding: "2rem",
+      background: "rgba(12,17,12,.35)",
+      backdropFilter: "blur(4px)",
+      border: "1px solid rgba(255,255,255,.06)",
+      borderRadius: 16,
+    }}
+  >
+    <Suspense fallback={...}>
+      {children}
+    </Suspense>
+  </div>
+</main>
+
       </body>
     </html>
   );
