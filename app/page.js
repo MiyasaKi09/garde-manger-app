@@ -4,7 +4,7 @@ import { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabaseClient';
 
-// Helpers
+/* ----------------- Helpers ----------------- */
 const todayISO = () => new Date().toISOString().slice(0, 10);
 const daysUntil = (date) => {
   if (!date) return null;
@@ -12,193 +12,88 @@ const daysUntil = (date) => {
   return Math.ceil(diff / 86400000);
 };
 
-// Composant pour les particules mycorhiziennes animées
-function MyceliumNetwork() {
-  useEffect(() => {
-    const canvas = document.getElementById('mycelium-canvas');
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    const particles = [];
-    const connections = [];
-    const particleCount = 50;
-    
-    // Créer les particules (spores)
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 2 + 1,
-      });
-    }
-    
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Mettre à jour et dessiner les particules
-      particles.forEach((particle, i) => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-        
-        // Rebondir sur les bords
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-        
-        // Dessiner la particule
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(139, 149, 109, 0.6)';
-        ctx.fill();
-        
-        // Créer des connexions
-        particles.forEach((otherParticle, j) => {
-          if (i !== j) {
-            const dist = Math.hypot(particle.x - otherParticle.x, particle.y - otherParticle.y);
-            if (dist < 150) {
-              ctx.beginPath();
-              ctx.moveTo(particle.x, particle.y);
-              ctx.lineTo(otherParticle.x, otherParticle.y);
-              ctx.strokeStyle = `rgba(139, 149, 109, ${0.2 * (1 - dist / 150)})`;
-              ctx.lineWidth = 0.5;
-              ctx.stroke();
-            }
-          }
-        });
-      });
-      
-      requestAnimationFrame(animate);
-    }
-    
-    animate();
-    
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-  
-  return (
-    <canvas
-      id="mycelium-canvas"
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-        opacity: 0.3,
-        zIndex: 0,
-      }}
-    />
-  );
-}
+/* ----------------- Composants UI (glass) ----------------- */
+const glassBase = {
+  background: 'rgba(255,255,255,0.55)',
+  backdropFilter: 'blur(10px) saturate(120%)',
+  WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+  border: '1px solid rgba(0,0,0,0.06)',
+  boxShadow: '0 8px 28px rgba(0,0,0,0.08)',
+  color: 'var(--ink, #1f281f)',
+};
 
-// Carte de statistique animée
 function StatCard({ icon, value, label, color, trend }) {
-  const [isHovered, setIsHovered] = useState(false);
-  
+  const [hover, setHover] = useState(false);
   return (
     <div
-      className="stat-card"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="glass-card"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
       style={{
-        background: `linear-gradient(135deg, ${color}15, ${color}08)`,
-        border: `2px solid ${color}30`,
+        ...glassBase,
         borderRadius: 'var(--radius-lg)',
-        padding: '1.5rem',
+        padding: '1.25rem',
         textAlign: 'center',
-        transition: 'all var(--transition-spring)',
-        transform: isHovered ? 'translateY(-8px) scale(1.05)' : 'none',
-        boxShadow: isHovered ? 'var(--shadow-lg)' : 'var(--shadow-md)',
-        cursor: 'pointer',
-        position: 'relative',
-        overflow: 'hidden',
+        transition: 'transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), border-color var(--transition-base)',
+        transform: hover ? 'translateY(-2px)' : 'none',
+        boxShadow: hover ? '0 12px 34px rgba(0,0,0,0.12)' : glassBase.boxShadow,
       }}
     >
-      <div
-        style={{
-          position: 'absolute',
-          top: '-50%',
-          right: '-50%',
-          width: '200%',
-          height: '200%',
-          background: `radial-gradient(circle, ${color}10 0%, transparent 70%)`,
-          transform: isHovered ? 'scale(1)' : 'scale(0)',
-          transition: 'transform var(--transition-slow)',
-        }}
-      />
-      
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{icon}</div>
-        <div style={{ fontSize: '2.5rem', fontWeight: '700', color, marginBottom: '0.25rem' }}>
-          {value}
-        </div>
-        <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)', fontWeight: '500' }}>
-          {label}
-        </div>
-        {trend && (
-          <div style={{ 
-            fontSize: '0.8rem', 
+      <div style={{ fontSize: '2rem', marginBottom: '.25rem' }}>{icon}</div>
+      <div style={{ fontSize: '2rem', fontWeight: 700, color, lineHeight: 1 }}>{value}</div>
+      <div style={{ fontSize: '.9rem', color: 'var(--earth-600)' }}>{label}</div>
+      {typeof trend === 'number' && (
+        <div
+          style={{
+            fontSize: '.8rem',
             color: trend > 0 ? 'var(--success)' : 'var(--danger)',
-            marginTop: '0.5rem',
-          }}>
-            {trend > 0 ? '↑' : '↓'} {Math.abs(trend)}% cette semaine
-          </div>
-        )}
-      </div>
+            marginTop: '.5rem',
+            fontWeight: 600,
+          }}
+        >
+          {trend > 0 ? '↑' : '↓'} {Math.abs(trend)}% cette semaine
+        </div>
+      )}
     </div>
   );
 }
 
-// Carte d'action rapide
 function QuickActionCard({ icon, title, description, href, color = 'var(--forest-500)' }) {
-  const [isHovered, setIsHovered] = useState(false);
-  
+  const [hover, setHover] = useState(false);
   return (
     <Link href={href} style={{ textDecoration: 'none' }}>
       <div
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        className="glass-card"
         style={{
-          background: 'var(--warm-white)',
-          border: `2px solid ${isHovered ? color : 'var(--soft-gray)'}`,
+          ...glassBase,
           borderRadius: 'var(--radius-lg)',
-          padding: '1.5rem',
+          padding: '1.25rem',
           height: '100%',
-          transition: 'all var(--transition-base)',
-          transform: isHovered ? 'translateY(-4px)' : 'none',
-          boxShadow: isHovered ? 'var(--shadow-lg)' : 'var(--shadow-sm)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
-          gap: '0.75rem',
+          gap: '.6rem',
+          transition: 'transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base)',
+          transform: hover ? 'translateY(-2px)' : 'none',
+          boxShadow: hover ? '0 12px 34px rgba(0,0,0,0.12)' : glassBase.boxShadow,
+          borderColor: hover ? 'rgba(0,0,0,0.10)' : glassBase.borderColor,
         }}
       >
         <div
           style={{
-            fontSize: '3rem',
-            transform: isHovered ? 'scale(1.2) rotate(5deg)' : 'scale(1)',
-            transition: 'transform var(--transition-spring)',
+            fontSize: '2.2rem',
+            transform: hover ? 'scale(1.05) rotate(3deg)' : 'scale(1)',
+            transition: 'transform var(--transition-slow)',
           }}
         >
           {icon}
         </div>
-        <h3 style={{ margin: 0, color: 'var(--forest-700)', fontSize: '1.1rem' }}>
-          {title}
-        </h3>
+        <h3 style={{ margin: 0, color: 'var(--forest-700)', fontSize: '1.05rem' }}>{title}</h3>
         {description && (
-          <p style={{ margin: 0, color: 'var(--earth-600)', fontSize: '0.85rem', opacity: 0.8 }}>
+          <p style={{ margin: 0, color: 'var(--earth-600)', fontSize: '.86rem', opacity: .9 }}>
             {description}
           </p>
         )}
@@ -207,44 +102,37 @@ function QuickActionCard({ icon, title, description, href, color = 'var(--forest
   );
 }
 
-// Carte d'alerte produit
 function AlertCard({ item, type = 'expiring' }) {
   const days = daysUntil(item.dlc || item.best_before);
-  
-  const getStatus = () => {
+  const status = (() => {
     if (type === 'expired' || days < 0) return { color: 'var(--danger)', label: 'Périmé', icon: '🍂' };
     if (days === 0) return { color: 'var(--autumn-orange)', label: "Aujourd'hui", icon: '⚡' };
     if (days <= 3) return { color: 'var(--autumn-yellow)', label: `${days}j`, icon: '⏰' };
     if (days <= 7) return { color: 'var(--forest-500)', label: `${days}j`, icon: '📅' };
     return { color: 'var(--success)', label: `${days}j`, icon: '🌿' };
-  };
-  
-  const status = getStatus();
-  
+  })();
+
   return (
     <div
-      className="alert-card"
+      className="glass-card"
       style={{
-        background: 'var(--warm-white)',
-        border: `2px solid ${status.color}30`,
-        borderLeft: `4px solid ${status.color}`,
+        ...glassBase,
         borderRadius: 'var(--radius-md)',
         padding: '1rem',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        transition: 'all var(--transition-base)',
-        cursor: 'pointer',
+        borderLeft: `4px solid ${getComputedStyleColor(status.color)}`,
       }}
     >
-      <div style={{ flex: 1 }}>
-        <div style={{ fontWeight: '600', color: 'var(--forest-700)', marginBottom: '0.25rem' }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontWeight: 600, color: 'var(--forest-700)', marginBottom: '.25rem' }}>
           {item.product?.name || 'Produit'}
         </div>
-        <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>
+        <div style={{ fontSize: '.9rem', color: 'var(--earth-600)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {item.qty} {item.unit}
           {item.location?.name && (
-            <span style={{ marginLeft: '0.5rem', color: 'var(--earth-500)' }}>
+            <span style={{ marginLeft: '.5rem', color: 'var(--earth-500)' }}>
               📍 {item.location.name}
             </span>
           )}
@@ -254,13 +142,14 @@ function AlertCard({ item, type = 'expiring' }) {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '0.5rem',
-          padding: '0.4rem 0.8rem',
-          background: `${status.color}15`,
+          gap: '.5rem',
+          padding: '.4rem .8rem',
+          background: 'rgba(255,255,255,0.7)',
+          border: '1px solid rgba(0,0,0,0.06)',
           borderRadius: 'var(--radius-full)',
           color: status.color,
-          fontWeight: '500',
-          fontSize: '0.9rem',
+          fontWeight: 600,
+          fontSize: '.9rem',
         }}
       >
         <span>{status.icon}</span>
@@ -270,68 +159,64 @@ function AlertCard({ item, type = 'expiring' }) {
   );
 }
 
-// Section Hero avec animation
+/* Convertit une var CSS en valeur RGBA lisible quand utilisée inline */
+function getComputedStyleColor(cssVar) {
+  if (typeof window === 'undefined') return 'currentColor';
+  try {
+    const name = cssVar.replace('var(', '').replace(')', '').trim();
+    const val = getComputedStyle(document.documentElement).getPropertyValue(name);
+    return val || cssVar;
+  } catch {
+    return cssVar;
+  }
+}
+
+/* ----------------- Hero ----------------- */
 function HeroSection({ user }) {
   const [timeOfDay, setTimeOfDay] = useState('');
-  
   useEffect(() => {
     const hour = new Date().getHours();
     if (hour < 12) setTimeOfDay('Bonjour');
     else if (hour < 18) setTimeOfDay('Bon après-midi');
     else setTimeOfDay('Bonsoir');
   }, []);
-  
+
+  // Hero en “verre” pour une lisibilité parfaite sur le papier peint
   return (
     <section
-      className="hero-section"
+      className="glass-card"
       style={{
-        background: 'linear-gradient(135deg, var(--forest-50), var(--earth-50))',
+        ...glassBase,
         borderRadius: 'var(--radius-xl)',
-        padding: '3rem',
+        padding: '2rem',
         marginBottom: '2rem',
-        position: 'relative',
-        overflow: 'hidden',
       }}
     >
-      {/* Pattern décoratif */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          width: '40%',
-          height: '100%',
-          opacity: 0.1,
-          background: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-        }}
-      />
-      
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem' }}>
-          {timeOfDay}{user ? `, ${user.email?.split('@')[0]}` : ''} 🌿
-        </h1>
-        <p style={{ fontSize: '1.25rem', color: 'var(--earth-600)', marginBottom: '2rem', maxWidth: '600px' }}>
-          Bienvenue dans <strong>Myko</strong>, votre réseau mycorhizien qui connecte 
-          <span style={{ color: 'var(--forest-500)', fontWeight: '600' }}> garde-manger</span>,
-          <span style={{ color: 'var(--autumn-orange)', fontWeight: '600' }}> recettes</span> et
-          <span style={{ color: 'var(--earth-600)', fontWeight: '600' }}> potager</span>.
-        </p>
-        
-        {!user && (
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link href="/login" className="btn primary" style={{ fontSize: '1.1rem', padding: '0.75rem 2rem' }}>
-              Se connecter
-            </Link>
-            <Link href="/recipes" className="btn secondary" style={{ fontSize: '1.1rem', padding: '0.75rem 2rem' }}>
-              Explorer les recettes
-            </Link>
-          </div>
-        )}
-      </div>
+      <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.2rem)', marginBottom: '.5rem' }}>
+        {timeOfDay}{user ? `, ${user.email?.split('@')[0]}` : ''} 🌿
+      </h1>
+      <p style={{ fontSize: '1.1rem', color: 'var(--earth-700)', marginBottom: user ? '0' : '1.25rem', maxWidth: 700 }}>
+        Bienvenue dans <strong>Myko</strong>, votre réseau mycorhizien qui connecte
+        <span style={{ color: 'var(--forest-600)', fontWeight: 600 }}> garde-manger</span>,
+        <span style={{ color: 'var(--autumn-orange)', fontWeight: 600 }}> recettes</span> et
+        <span style={{ color: 'var(--earth-700)', fontWeight: 600 }}> potager</span>.
+      </p>
+
+      {!user && (
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Link href="/login" className="btn primary" style={{ fontSize: '1.05rem', padding: '.7rem 1.6rem' }}>
+            Se connecter
+          </Link>
+          <Link href="/recipes" className="btn secondary" style={{ fontSize: '1.05rem', padding: '.7rem 1.6rem' }}>
+            Explorer les recettes
+          </Link>
+        </div>
+      )}
     </section>
   );
 }
 
+/* ----------------- Page ----------------- */
 export default function HomePage() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -342,47 +227,38 @@ export default function HomePage() {
     plantings: [],
     harvests: [],
   });
-  
-  // Auth
+
+  /* Auth */
   useEffect(() => {
     let mounted = true;
-    
     supabase.auth.getSession().then(({ data }) => {
       if (mounted) setUser(data?.session?.user || null);
     });
-    
     const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
       if (mounted) setUser(session?.user || null);
     });
-    
     return () => {
       mounted = false;
       sub?.subscription?.unsubscribe();
     };
   }, []);
-  
-  // Load data
+
+  /* Data */
   useEffect(() => {
     if (!user) {
       setLoading(false);
       return;
     }
-    
     async function loadData() {
       try {
         const today = todayISO();
-        
-        // Charger toutes les données en parallèle
         const [lotsRes, recipesRes, tasksRes, plantingsRes, harvestsRes] = await Promise.all([
           supabase
             .from('inventory_lots')
             .select('*, product:products_catalog(name), location:locations(name)')
             .order('dlc', { ascending: true })
             .limit(20),
-          supabase
-            .from('recipes')
-            .select('*')
-            .limit(10),
+          supabase.from('recipes').select('*').limit(10),
           supabase
             .from('care_tasks')
             .select('*, planting:plantings(*, variety:plant_varieties(*))')
@@ -400,7 +276,7 @@ export default function HomePage() {
             .order('date', { ascending: false })
             .limit(5),
         ]);
-        
+
         setData({
           lots: lotsRes.data || [],
           recipes: recipesRes.data || [],
@@ -414,11 +290,10 @@ export default function HomePage() {
         setLoading(false);
       }
     }
-    
     loadData();
   }, [user]);
-  
-  // Calculs
+
+  /* Stats */
   const stats = useMemo(() => {
     const expired = data.lots.filter(l => daysUntil(l.dlc) < 0).length;
     const expiring = data.lots.filter(l => {
@@ -429,10 +304,9 @@ export default function HomePage() {
     const activePlants = data.plantings.length;
     const pendingTasks = data.tasks.length;
     const totalRecipes = data.recipes.length;
-    
     return { expired, expiring, totalLots, activePlants, pendingTasks, totalRecipes };
   }, [data]);
-  
+
   const urgentItems = useMemo(() => {
     return data.lots
       .filter(l => {
@@ -441,92 +315,42 @@ export default function HomePage() {
       })
       .slice(0, 5);
   }, [data.lots]);
-  
+
   return (
-    <div className="container" style={{ position: 'relative' }}>
-      <MyceliumNetwork />
-      
+    <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+      {/* HERO (verre) */}
       <HeroSection user={user} />
-      
-      {/* Stats Dashboard */}
+
+      {/* Stats Dashboard (verre) */}
       {user && !loading && (
         <section style={{ marginBottom: '2rem' }}>
-          <h2 style={{ marginBottom: '1.5rem' }}>📊 Vue d'ensemble</h2>
+          <h2 style={{ marginBottom: '1rem' }}>📊 Vue d'ensemble</h2>
           <div className="grid cols-4">
-            <StatCard
-              icon="🏺"
-              value={stats.totalLots}
-              label="Lots en stock"
-              color="var(--forest-500)"
-              trend={5}
-            />
-            <StatCard
-              icon="⚠️"
-              value={stats.expiring}
-              label="À consommer"
-              color="var(--autumn-orange)"
-              trend={-10}
-            />
-            <StatCard
-              icon="🌱"
-              value={stats.activePlants}
-              label="Plantations actives"
-              color="var(--earth-600)"
-              trend={15}
-            />
-            <StatCard
-              icon="📖"
-              value={stats.totalRecipes}
-              label="Recettes disponibles"
-              color="var(--mushroom)"
-            />
+            <StatCard icon="🏺" value={stats.totalLots} label="Lots en stock" color="var(--forest-600)" trend={5} />
+            <StatCard icon="⚠️" value={stats.expiring} label="À consommer" color="var(--autumn-orange)" trend={-10} />
+            <StatCard icon="🌱" value={stats.activePlants} label="Plantations actives" color="var(--earth-700)" trend={15} />
+            <StatCard icon="📖" value={stats.totalRecipes} label="Recettes disponibles" color="var(--mushroom)" />
           </div>
         </section>
       )}
-      
-      {/* Actions rapides */}
+
+      {/* Actions rapides (verre) */}
       <section style={{ marginBottom: '2rem' }}>
-        <h2 style={{ marginBottom: '1.5rem' }}>⚡ Actions rapides</h2>
+        <h2 style={{ marginBottom: '1rem' }}>⚡ Actions rapides</h2>
         <div className="grid cols-4">
-          <QuickActionCard
-            icon="➕"
-            title="Ajouter un lot"
-            description="Nouveau produit"
-            href="/pantry"
-            color="var(--forest-500)"
-          />
-          <QuickActionCard
-            icon="🥘"
-            title="Cuisiner"
-            description="Lancer une recette"
-            href="/recipes"
-            color="var(--autumn-orange)"
-          />
-          <QuickActionCard
-            icon="🌱"
-            title="Planter"
-            description="Nouveau semis"
-            href="/garden"
-            color="var(--earth-600)"
-          />
-          <QuickActionCard
-            icon="📅"
-            title="Planning"
-            description="Voir les tâches"
-            href="/planning"
-            color="var(--mushroom)"
-          />
+          <QuickActionCard icon="➕" title="Ajouter un lot" description="Nouveau produit" href="/pantry" color="var(--forest-500)" />
+          <QuickActionCard icon="🥘" title="Cuisiner" description="Lancer une recette" href="/recipes" color="var(--autumn-orange)" />
+          <QuickActionCard icon="🌱" title="Planter" description="Nouveau semis" href="/garden" color="var(--earth-600)" />
+          <QuickActionCard icon="📅" title="Planning" description="Voir les tâches" href="/planning" color="var(--mushroom)" />
         </div>
       </section>
-      
-      {/* Alertes et notifications */}
+
+      {/* Alertes (verre) */}
       {user && urgentItems.length > 0 && (
         <section style={{ marginBottom: '2rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <h2 style={{ margin: 0 }}>🔔 Produits à consommer rapidement</h2>
-            <Link href="/pantry" className="btn secondary small">
-              Voir tout →
-            </Link>
+            <Link href="/pantry" className="btn secondary small">Voir tout →</Link>
           </div>
           <div className="grid cols-2">
             {urgentItems.map(item => (
@@ -535,59 +359,61 @@ export default function HomePage() {
           </div>
         </section>
       )}
-      
-      {/* Section réseau mycorhizien */}
+
+      {/* Section réseau mycorhizien (verre, lisible) */}
       <section
-        className="card"
+        className="glass-card"
         style={{
-          background: 'linear-gradient(135deg, var(--mushroom)10, var(--earth-100))',
+          ...glassBase,
+          borderRadius: 'var(--radius-xl)',
           padding: '2rem',
+          marginBottom: '2rem',
           textAlign: 'center',
         }}
       >
-        <h2 style={{ marginBottom: '1rem' }}>🍄 Le Réseau Mycorhizien</h2>
-        <p style={{ maxWidth: '600px', margin: '0 auto 1.5rem', color: 'var(--earth-700)' }}>
+        <h2 style={{ marginBottom: '.75rem' }}>🍄 Le Réseau Mycorhizien</h2>
+        <p style={{ maxWidth: 700, margin: '0 auto 1.25rem', color: 'var(--earth-700)' }}>
           Comme les champignons connectent les arbres dans la forêt, Myko relie vos aliments,
           recettes et cultures pour créer un écosystème alimentaire harmonieux et durable.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🏺</div>
-            <div style={{ fontWeight: '600', color: 'var(--forest-700)' }}>Garde-manger</div>
-            <div style={{ fontSize: '0.85rem', color: 'var(--earth-600)' }}>Gérez vos stocks</div>
+            <div style={{ fontSize: '2.4rem', marginBottom: '.25rem' }}>🏺</div>
+            <div style={{ fontWeight: 600, color: 'var(--forest-700)' }}>Garde-manger</div>
+            <div style={{ fontSize: '.85rem', color: 'var(--earth-700)' }}>Gérez vos stocks</div>
           </div>
-          <div style={{ fontSize: '2rem', alignSelf: 'center', color: 'var(--mushroom)' }}>↔️</div>
+          <div style={{ fontSize: '1.6rem', alignSelf: 'center', color: 'var(--mushroom)' }}>↔️</div>
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>📖</div>
-            <div style={{ fontWeight: '600', color: 'var(--forest-700)' }}>Recettes</div>
-            <div style={{ fontSize: '0.85rem', color: 'var(--earth-600)' }}>Cuisinez malin</div>
+            <div style={{ fontSize: '2.4rem', marginBottom: '.25rem' }}>📖</div>
+            <div style={{ fontWeight: 600, color: 'var(--forest-700)' }}>Recettes</div>
+            <div style={{ fontSize: '.85rem', color: 'var(--earth-700)' }}>Cuisinez malin</div>
           </div>
-          <div style={{ fontSize: '2rem', alignSelf: 'center', color: 'var(--mushroom)' }}>↔️</div>
+          <div style={{ fontSize: '1.6rem', alignSelf: 'center', color: 'var(--mushroom)' }}>↔️</div>
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🌱</div>
-            <div style={{ fontWeight: '600', color: 'var(--forest-700)' }}>Potager</div>
-            <div style={{ fontSize: '0.85rem', color: 'var(--earth-600)' }}>Cultivez local</div>
+            <div style={{ fontSize: '2.4rem', marginBottom: '.25rem' }}>🌱</div>
+            <div style={{ fontWeight: 600, color: 'var(--forest-700)' }}>Potager</div>
+            <div style={{ fontSize: '.85rem', color: 'var(--earth-700)' }}>Cultivez local</div>
           </div>
         </div>
       </section>
-      
-      {/* Message de bienvenue pour non-connectés */}
+
+      {/* Message de bienvenue (verre) */}
       {!user && (
         <section
-          className="card"
+          className="glass-card"
           style={{
-            marginTop: '2rem',
-            padding: '3rem',
+            ...glassBase,
+            borderRadius: 'var(--radius-xl)',
+            padding: '2rem',
             textAlign: 'center',
-            background: 'linear-gradient(135deg, var(--forest-50), var(--warm-white))',
           }}
         >
-          <h2 style={{ marginBottom: '1rem' }}>🌿 Rejoignez le réseau</h2>
-          <p style={{ maxWidth: '500px', margin: '0 auto 2rem', color: 'var(--earth-700)' }}>
+          <h2 style={{ marginBottom: '.75rem' }}>🌿 Rejoignez le réseau</h2>
+          <p style={{ maxWidth: 560, margin: '0 auto 1.25rem', color: 'var(--earth-700)' }}>
             Connectez-vous pour accéder à toutes les fonctionnalités et commencer à gérer
             votre écosystème alimentaire de manière intelligente et durable.
           </p>
-          <Link href="/login" className="btn primary" style={{ fontSize: '1.1rem', padding: '0.75rem 2rem' }}>
+          <Link href="/login" className="btn primary" style={{ fontSize: '1.05rem', padding: '.7rem 1.6rem' }}>
             Commencer maintenant →
           </Link>
         </section>
