@@ -1,4 +1,165 @@
-/>
+'use client';
+
+import { useEffect, useMemo, useState, useCallback } from 'react';
+import { supabase } from '@/lib/supabaseClient';
+
+const P_LOC_TABLE = 'pantry_locations';
+
+// Helpers visuels améliorés
+function fmtDate(d) {
+  if (!d) return '—';
+  try {
+    const x = new Date(d);
+    const options = { day: 'numeric', month: 'short', year: 'numeric' };
+    return x.toLocaleDateString('fr-FR', options);
+  } catch {
+    return d;
+  }
+}
+
+function daysUntil(d) {
+  if (!d) return null;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const x = new Date(d);
+  x.setHours(0, 0, 0, 0);
+  return Math.round((x - today) / 86400000);
+}
+
+function LifespanIndicator({ bestBefore }) {
+  const days = daysUntil(bestBefore);
+  if (days === null) return null;
+
+  let status, icon, label, color;
+  
+  if (days < 0) {
+    status = 'expired';
+    icon = '🍂';
+    label = `Périmé depuis ${Math.abs(days)}j`;
+    color = 'var(--danger)';
+  } else if (days === 0) {
+    status = 'today';
+    icon = '⚡';
+    label = "Aujourd'hui";
+    color = 'var(--autumn-orange)';
+  } else if (days <= 3) {
+    status = 'urgent';
+    icon = '⏰';
+    label = `${days}j restant${days > 1 ? 's' : ''}`;
+    color = 'var(--autumn-yellow)';
+  } else if (days <= 7) {
+    status = 'soon';
+    icon = '📅';
+    label = `${days} jours`;
+    color = 'var(--forest-400)';
+  } else {
+    status = 'ok';
+    icon = '🌿';
+    label = `${days} jours`;
+    color = 'var(--success)';
+  }
+
+  return (
+    <div 
+      className={`lifespan-badge ${status}`}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.3rem',
+        padding: '0.3rem 0.75rem',
+        borderRadius: '20px',
+        fontSize: '0.85rem',
+        fontWeight: '500',
+        background: `linear-gradient(135deg, ${color}15, ${color}08)`,
+        border: `1px solid ${color}40`,
+        color: color,
+      }}
+    >
+      <span style={{ fontSize: '1rem' }}>{icon}</span>
+      <span>{label}</span>
+    </div>
+  );
+}
+
+function LocationSection({ locationName, lots, onIncQty, onDeleteLot }) {
+  const [isExpanded, setIsExpanded] = useState(true);
+  
+  // Statistiques du lieu
+  const stats = useMemo(() => {
+    const expired = lots.filter(l => daysUntil(l.best_before) < 0).length;
+    const urgent = lots.filter(l => {
+      const d = daysUntil(l.best_before);
+      return d !== null && d >= 0 && d <= 3;
+    }).length;
+    return { expired, urgent, total: lots.length };
+  }, [lots]);
+
+  return (
+    <section className="location-section card" style={{ marginBottom: '1.5rem' }}>
+      <div 
+        className="location-header"
+        onClick={() => setIsExpanded(!isExpanded)}
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          cursor: 'pointer',
+          marginBottom: isExpanded ? '1rem' : 0,
+          padding: '0.5rem',
+          borderRadius: 'var(--radius-md)',
+          transition: 'background var(--transition-base)',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <h3 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>📍</span>
+            {locationName}
+          </h3>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            {stats.expired > 0 && (
+              <span className="badge danger">
+                {stats.expired} périmé{stats.expired > 1 ? 's' : ''}
+              </span>
+            )}
+            {stats.urgent > 0 && (
+              <span className="badge warning">
+                {stats.urgent} urgent{stats.urgent > 1 ? 's' : ''}
+              </span>
+            )}
+            <span className="badge info">{stats.total} total</span>
+          </div>
+        </div>
+        <button 
+          className="btn icon"
+          style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0)' }}
+        >
+          ▼
+        </button>
+      </div>
+
+      {isExpanded && (
+        <div className="location-content">
+          {lots.length === 0 ? (
+            <div 
+              style={{
+                textAlign: 'center',
+                padding: '2rem',
+                color: 'var(--medium-gray)',
+                fontStyle: 'italic',
+              }}
+            >
+              <span style={{ fontSize: '2rem', display: 'block', marginBottom: '0.5rem' }}>🌾</span>
+              Aucun lot dans ce lieu
+            </div>
+          ) : (
+            <div className="grid cols-3">
+              {lots.map(lot => (
+                <LotCard 
+                  key={lot.id}
+                  lot={lot}
+                  onIncQty={onIncQty}
+                  onDelete={onDeleteLot}
+                />
               ))}
             </div>
           )}
@@ -657,161 +818,4 @@ export default function PantryPage() {
       )}
     </div>
   );
-}'use client';
-
-import { useEffect, useMemo, useState, useCallback } from 'react';
-import { supabase } from '@/lib/supabaseClient';
-
-const P_LOC_TABLE = 'pantry_locations';
-
-// Helpers visuels améliorés
-function fmtDate(d) {
-  if (!d) return '—';
-  try {
-    const x = new Date(d);
-    const options = { day: 'numeric', month: 'short', year: 'numeric' };
-    return x.toLocaleDateString('fr-FR', options);
-  } catch {
-    return d;
-  }
 }
-
-function daysUntil(d) {
-  if (!d) return null;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const x = new Date(d);
-  x.setHours(0, 0, 0, 0);
-  return Math.round((x - today) / 86400000);
-}
-
-function LifespanIndicator({ bestBefore }) {
-  const days = daysUntil(bestBefore);
-  if (days === null) return null;
-
-  let status, icon, label, color;
-  
-  if (days < 0) {
-    status = 'expired';
-    icon = '🍂';
-    label = `Périmé depuis ${Math.abs(days)}j`;
-    color = 'var(--danger)';
-  } else if (days === 0) {
-    status = 'today';
-    icon = '⚡';
-    label = "Aujourd'hui";
-    color = 'var(--autumn-orange)';
-  } else if (days <= 3) {
-    status = 'urgent';
-    icon = '⏰';
-    label = `${days}j restant${days > 1 ? 's' : ''}`;
-    color = 'var(--autumn-yellow)';
-  } else if (days <= 7) {
-    status = 'soon';
-    icon = '📅';
-    label = `${days} jours`;
-    color = 'var(--forest-400)';
-  } else {
-    status = 'ok';
-    icon = '🌿';
-    label = `${days} jours`;
-    color = 'var(--success)';
-  }
-
-  return (
-    <div 
-      className={`lifespan-badge ${status}`}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '0.3rem',
-        padding: '0.3rem 0.75rem',
-        borderRadius: '20px',
-        fontSize: '0.85rem',
-        fontWeight: '500',
-        background: `linear-gradient(135deg, ${color}15, ${color}08)`,
-        border: `1px solid ${color}40`,
-        color: color,
-      }}
-    >
-      <span style={{ fontSize: '1rem' }}>{icon}</span>
-      <span>{label}</span>
-    </div>
-  );
-}
-
-function LocationSection({ locationName, lots, onIncQty, onDeleteLot }) {
-  const [isExpanded, setIsExpanded] = useState(true);
-  
-  // Statistiques du lieu
-  const stats = useMemo(() => {
-    const expired = lots.filter(l => daysUntil(l.best_before) < 0).length;
-    const urgent = lots.filter(l => {
-      const d = daysUntil(l.best_before);
-      return d !== null && d >= 0 && d <= 3;
-    }).length;
-    return { expired, urgent, total: lots.length };
-  }, [lots]);
-
-  return (
-    <section className="location-section card" style={{ marginBottom: '1.5rem' }}>
-      <div 
-        className="location-header"
-        onClick={() => setIsExpanded(!isExpanded)}
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          cursor: 'pointer',
-          marginBottom: isExpanded ? '1rem' : 0,
-          padding: '0.5rem',
-          borderRadius: 'var(--radius-md)',
-          transition: 'background var(--transition-base)',
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <h3 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '1.5rem' }}>📍</span>
-            {locationName}
-          </h3>
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            {stats.expired > 0 && (
-              <span className="badge danger">
-                {stats.expired} périmé{stats.expired > 1 ? 's' : ''}
-              </span>
-            )}
-            {stats.urgent > 0 && (
-              <span className="badge warning">
-                {stats.urgent} urgent{stats.urgent > 1 ? 's' : ''}
-              </span>
-            )}
-            <span className="badge info">{stats.total} total</span>
-          </div>
-        </div>
-        <button 
-          className="btn icon"
-          style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0)' }}
-        >
-          ▼
-        </button>
-      </div>
-
-      {isExpanded && (
-        <div className="location-content">
-          {lots.length === 0 ? (
-            <div 
-              style={{
-                textAlign: 'center',
-                padding: '2rem',
-                color: 'var(--medium-gray)',
-                fontStyle: 'italic',
-              }}
-            >
-              <span style={{ fontSize: '2rem', display: 'block', marginBottom: '0.5rem' }}>🌾</span>
-              Aucun lot dans ce lieu
-            </div>
-          ) : (
-            <div className="grid cols-3">
-              {lots.map(lot => (
-                <LotCard 
-                  key={lot.id}
