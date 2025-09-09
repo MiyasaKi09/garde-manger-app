@@ -7,33 +7,34 @@ const CONFIG = {
   blobScale: 1,             // échelle globale des blobs
   // Quantités (augmente si tu veux plus de taches)
   counts: {
-    forest-50: 5,               // gros aplats crème (fond déjà crème + renforts doux)
-    olive: 5,               // taches olive
-    terra: 4,               // taches terracotta
+    olive: 6,               // taches vert olive
+    terra: 5,               // taches terracotta
+    sable: 6,               // taches sable (clair, mais pas crème)
   },
-  // Forme : moins de waves + jitter doux => silhouettes "Matisse", rondes
+  // Forme : peu de waves + jitter doux => silhouettes "Matisse", rondes
   shape: {
     waves: { min: 10, max: 14 },
     jitter: { min: 0.16, max: 0.26 },
     rotate: true,
   },
-  // Tailles de base (seront randomisées autour de ces valeurs)
+  // Tailles de base (randomisées autour de ces valeurs)
   size: {
-    forest-50: { rx: 220, ry: 300 },
-    olive: { rx: 140, ry: 210 },
-    terra: { rx: 120, ry: 160 },
+    olive: { rx: 160, ry: 220 },
+    terra: { rx: 130, ry: 180 },
+    sable: { rx: 200, ry: 260 },
   },
   // Distance minimale entre centres pour limiter les chevauchements
   spacing: {
-    forest-50: 240,
     olive: 190,
     terra: 160,
+    sable: 210,
   },
-  // Couleurs (via variables CSS, avec fallbacks)
+  // Couleurs (via vars CSS avec fallback)
   colors: {
-    forest-50: "var(--cream-100, #f4efe6)",
+    bg:    "var(--cream-100, #f4efe6)",   // fond (papier peint)
     olive: "var(--olive-500, #6e8b5e)",
     terra: "var(--terra-500, #c08a5a)",
+    sable: "var(--sable-300, #e2c98f)",
   },
 };
 
@@ -121,7 +122,7 @@ function sampleCenters({
 }
 
 /* ==================== Composant ==================== */
-// v3 : grand lé statique, qui suit le scroll (pas de modulo ni “sauts”)
+// Grand lé statique, qui suit le scroll (pas de modulo ni “sauts”)
 export default function MatisseWallpaperRandom() {
   const rnd = useRNG();
   const [docH, setDocH] = useState(2000); // hauteur du “lé”
@@ -136,7 +137,6 @@ export default function MatisseWallpaperRandom() {
     };
     update();
     window.addEventListener("resize", update);
-    // Optionnel : observer les mutations si ton contenu change dynamiquement
     const mo = new MutationObserver(update);
     mo.observe(document.body, { childList: true, subtree: true });
     return () => {
@@ -146,23 +146,15 @@ export default function MatisseWallpaperRandom() {
   }, []);
 
   const W = CONFIG.tileWidth;
-  const H = docH; // un seul grand motif aussi haut que la page
+  const H = docH;
 
-  // Zones verticales pour répartir les groupes (limite le recouvrement)
   const bandH = Math.max(600, Math.floor(H / 4));
 
-  // Centres par couleur
-  const cCream = sampleCenters({
-    count: CONFIG.counts.cream,
-    minY: 0,
-    maxY: H,
-    minDist: CONFIG.spacing.cream,
-    rnd,
-  });
+  // Centres par couleur (pas de crème ici)
   const cOlive = sampleCenters({
     count: CONFIG.counts.olive,
-    minY: bandH * 0.3,
-    maxY: H - bandH * 0.3,
+    minY: bandH * 0.2,
+    maxY: H - bandH * 0.2,
     minDist: CONFIG.spacing.olive,
     rnd,
   });
@@ -173,6 +165,13 @@ export default function MatisseWallpaperRandom() {
     minDist: CONFIG.spacing.terra,
     rnd,
   });
+  const cSable = sampleCenters({
+    count: CONFIG.counts.sable,
+    minY: 0,
+    maxY: H,
+    minDist: CONFIG.spacing.sable,
+    rnd,
+  });
 
   // Helper taille/forme
   const rBetween = (a, b) => a + rnd() * (b - a);
@@ -181,19 +180,7 @@ export default function MatisseWallpaperRandom() {
   const jitter = () => rBetween(CONFIG.shape.jitter.min, CONFIG.shape.jitter.max);
   const rot = () => (CONFIG.shape.rotate ? rnd() * 180 : 0);
 
-  // Génère chemins
-  const creamPaths = cCream.map(({ x, y }) =>
-    makeBlobPath({
-      cx: x,
-      cy: y,
-      rx: CONFIG.size.cream.rx * CONFIG.blobScale * rBetween(0.9, 1.15),
-      ry: CONFIG.size.cream.ry * CONFIG.blobScale * rBetween(0.9, 1.15),
-      waves: waves(),
-      jitter: jitter(),
-      rnd,
-      rotate: rot(),
-    })
-  );
+  // Chemins
   const olivePaths = cOlive.map(({ x, y }) =>
     makeBlobPath({
       cx: x,
@@ -212,6 +199,18 @@ export default function MatisseWallpaperRandom() {
       cy: y,
       rx: CONFIG.size.terra.rx * CONFIG.blobScale * rBetween(0.9, 1.1),
       ry: CONFIG.size.terra.ry * CONFIG.blobScale * rBetween(0.9, 1.1),
+      waves: waves(),
+      jitter: jitter(),
+      rnd,
+      rotate: rot(),
+    })
+  );
+  const sablePaths = cSable.map(({ x, y }) =>
+    makeBlobPath({
+      cx: x,
+      cy: y,
+      rx: CONFIG.size.sable.rx * CONFIG.blobScale * rBetween(0.9, 1.15),
+      ry: CONFIG.size.sable.ry * CONFIG.blobScale * rBetween(0.9, 1.15),
       waves: waves(),
       jitter: jitter(),
       rnd,
@@ -239,15 +238,13 @@ export default function MatisseWallpaperRandom() {
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* fond crème plein */}
-        <rect x="0" y="0" width={W} height={H} fill={CONFIG.colors.cream} />
+        {/* fond “papier peint” (crème) */}
+        <rect x="0" y="0" width={W} height={H} fill={CONFIG.colors.bg} />
 
-        {/* aplats crème (léger renfort/variation) */}
-        {creamPaths.map((d, i) => (
-          <path key={`c${i}`} d={d} style={{ fill: CONFIG.colors.cream }} opacity={0.98} />
+        {/* taches (PAS de crème) */}
+        {sablePaths.map((d, i) => (
+          <path key={`s${i}`} d={d} style={{ fill: CONFIG.colors.sable }} opacity={0.9} />
         ))}
-
-        {/* taches olive & terracotta (plus nombreuses) */}
         {olivePaths.map((d, i) => (
           <path key={`o${i}`} d={d} style={{ fill: CONFIG.colors.olive }} opacity={0.88} />
         ))}
