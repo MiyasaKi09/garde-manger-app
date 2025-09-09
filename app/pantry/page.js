@@ -127,7 +127,7 @@ function LotCard({ lot, onIncQty, onDelete }) {
   );
 }
 
-function ProductCard({ productId, name, category, unit, lots=[] }) {
+function ProductCard({ productId, name, category, unit, lots=[], onOpen }) {
   const { total, nextDate, locations } = useMemo(()=>{
     let total=0, nextDate=null;
     const locSet = new Set();
@@ -142,9 +142,29 @@ function ProductCard({ productId, name, category, unit, lots=[] }) {
 
   const soon = nextDate ? daysUntil(nextDate) : null;
   const cap = (s)=>s ? s[0].toUpperCase()+s.slice(1) : '—';
+  const [pressed, setPressed] = useState(false);
 
   return (
-    <div className="product-card" style={{ ...glassBase, borderRadius:'var(--radius-lg)', padding:'14px', display:'grid', gap:8 }}>
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={()=>onOpen?.({ productId, name })}
+      onKeyDown={(e)=>{ if(e.key==='Enter' || e.key===' ') onOpen?.({ productId, name }); }}
+      onMouseDown={()=>setPressed(true)}
+      onMouseUp={()=>setPressed(false)}
+      onMouseLeave={()=>setPressed(false)}
+      className="product-card"
+      style={{
+        ...glassBase,
+        borderRadius:'var(--radius-lg)',
+        padding:'14px',
+        display:'grid',
+        gap:8,
+        cursor:'pointer',
+        transform: pressed ? 'scale(1.02)' : 'none',
+        transition: 'transform var(--transition-base, .18s ease)'
+      }}
+    >
       <div style={{display:'flex', justifyContent:'space-between', gap:8}}>
         <div>
           <div style={{fontWeight:700, color:'var(--forest-700)'}}>{name}</div>
@@ -167,8 +187,98 @@ function ProductCard({ productId, name, category, unit, lots=[] }) {
         </div>
       )}
 
-      <div style={{display:'flex', justifyContent:'flex-end'}}>
-        <Link className="btn small secondary" href={`/produits/${productId}`}>Détails →</Link>
+      <div style={{display:'flex', justifyContent:'flex-end', gap:8}}>
+        <Link className="btn small secondary" href={`/produits/${productId}`} onClick={(e)=>e.stopPropagation()}>Détails →</Link>
+        <button className="btn small" onClick={(e)=>{ e.stopPropagation(); onOpen?.({ productId, name }); }}>
+          Gérer
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ----------------- Modal Gestion Produit ----------------- */
+function ProductDetailModal({ product, lots, locations, onClose, onIncQty, onUpdateLot, onDeleteLot }) {
+  if (!product) return null;
+  const productLots = (lots||[]).filter(l => l.product?.id === product.productId);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      onClick={onClose}
+      style={{
+        position:'fixed', inset:0, zIndex:1000,
+        background:'rgba(0,0,0,.28)', display:'flex', alignItems:'center', justifyContent:'center', padding:'2rem'
+      }}
+    >
+      <div
+        onClick={(e)=>e.stopPropagation()}
+        className="glass-card"
+        style={{ ...glassBase, width:'min(900px, 96vw)', maxHeight:'85vh', overflow:'auto', borderRadius:'24px', padding:'1.2rem' }}
+      >
+        <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:12, marginBottom:12}}>
+          <h2 style={{margin:0}}>🍄 {product.name}</h2>
+          <button className="btn icon" onClick={onClose} title="Fermer">✕</button>
+        </div>
+
+        {productLots.length === 0 ? (
+          <div style={{ padding:'2rem', textAlign:'center', color:'var(--earth-700)' }}>
+            Aucun lot pour ce produit.
+          </div>
+        ) : (
+          <div style={{ display:'grid', gap:10 }}>
+            {productLots.map(lot => (
+              <div key={lot.id} className="card" style={{ ...glassBase, borderRadius:16, padding:'10px 12px' }}>
+                <div style={{ display:'grid', gridTemplateColumns:'1.2fr .8fr .9fr 1.1fr auto', gap:10, alignItems:'center' }}>
+                  {/* Quantité */}
+                  <div style={{ display:'flex', alignItems:'baseline', gap:8 }}>
+                    <button className="btn small" onClick={()=>onIncQty(lot,-1)} disabled={(Number(lot.qty)||0)<=0}>−</button>
+                    <div style={{ fontWeight:700, color:'var(--forest-700)' }}>
+                      {Number(lot.qty)||0} <span style={{ opacity:.7, fontWeight:500 }}>{lot.unit || 'u'}</span>
+                    </div>
+                    <button className="btn small" onClick={()=>onIncQty(lot,+1)}>＋</button>
+                  </div>
+
+                  {/* DLC */}
+                  <div>
+                    <label style={{ fontSize:12, opacity:.7 }}>DLC</label>
+                    <input
+                      className="input"
+                      type="date"
+                      defaultValue={lot.best_before || ''}
+                      onChange={(e)=>onUpdateLot(lot.id, { dlc: e.target.value || null })}
+                    />
+                  </div>
+
+                  {/* Lieu */}
+                  <div>
+                    <label style={{ fontSize:12, opacity:.7 }}>Lieu</label>
+                    <select
+                      className="input"
+                      defaultValue={lot.location?.id || ''}
+                      onChange={e=>onUpdateLot(lot.id, { location_id: e.target.value || null })}
+                    >
+                      <option value="">—</option>
+                      {locations.map(l => <option key={l.id} value={l.id}>{l.name}</option>)}
+                    </select>
+                  </div>
+
+                  {/* Badge & date jolie */}
+                  <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+                    <LifespanBadge date={lot.best_before} />
+                    <span style={{ fontSize:'.9rem', color:'var(--earth-700)' }}>{lot.best_before ? fmtDate(lot.best_before) : '—'}</span>
+                  </div>
+
+                  {/* Supprimer */}
+                  <div style={{ display:'flex', justifyContent:'flex-end' }}>
+                    <button className="btn small danger" onClick={()=>onDeleteLot(lot)} title="Supprimer ce lot">🗑️</button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -185,6 +295,9 @@ export default function PantryPage() {
   const [view, setView] = useState('products'); // 'products' | 'locations'
   const [showAddForm, setShowAddForm] = useState(false);
 
+  // produit ouvert dans le modal
+  const [openProduct, setOpenProduct] = useState(null); // { productId, name }
+
   const load = useCallback(async ()=>{
     setLoading(true); setErr('');
     try {
@@ -194,7 +307,7 @@ export default function PantryPage() {
           .from('inventory_lots')
           .select(
             `
-              id, qty, unit, best_before:dlc, note, entered_at,
+              id, qty, unit, best_before:dlc, note, entered_at, location_id,
               product:products_catalog ( id, name, category ),
               location:locations ( id, name )
             `
@@ -231,7 +344,6 @@ export default function PantryPage() {
       if (!m.has(key)) m.set(key, []);
       m.get(key).push(lot);
     }
-    // tri du plus urgent au moins urgent
     for (const [k, arr] of m) {
       arr.sort((a,b)=>{
         const da = daysUntil(a.best_before);
@@ -270,7 +382,7 @@ export default function PantryPage() {
     return { total, expired, urgent, soon };
   }, [filtered]);
 
-  // actions
+  /* --------- actions lots (mutations Supabase) --------- */
   async function incQty(lot, delta) {
     const newQty = Math.max(0, Number(lot.qty||0) + delta);
     const { data, error } = await supabase
@@ -282,6 +394,41 @@ export default function PantryPage() {
     if (error) return alert(error.message);
     setLots(prev => prev.map(x => x.id===lot.id ? { ...x, qty: data.qty } : x));
   }
+
+  async function updateLot(lotId, patch) {
+    // patch peut contenir { dlc, location_id, unit, note, qty }
+    const dbPatch = { ...patch };
+    if ('dlc' in dbPatch) {
+      // côté UI on manipule best_before, mais DB = dlc ; ici patch.dlc = valeur
+      // rien à faire, on a déjà la bonne clé (dlc)
+    }
+    const { data, error } = await supabase
+      .from('inventory_lots')
+      .update(dbPatch)
+      .eq('id', lotId)
+      .select(
+        `
+          id, qty, unit, dlc, location_id
+        `
+      )
+      .single();
+    if (error) return alert(error.message);
+
+    setLots(prev => prev.map(x => {
+      if (x.id !== lotId) return x;
+      const next = { ...x };
+      if ('dlc' in dbPatch) next.best_before = data.dlc || null;
+      if ('qty' in dbPatch) next.qty = data.qty;
+      if ('unit' in dbPatch) next.unit = data.unit;
+      if ('location_id' in dbPatch) {
+        next.location_id = data.location_id;
+        const loc = locations.find(l=>l.id === data.location_id) || null;
+        next.location = loc ? { id: loc.id, name: loc.name } : null;
+      }
+      return next;
+    }));
+  }
+
   async function deleteLot(lot) {
     if (!confirm(`Supprimer le lot de "${lot.product?.name}" ?`)) return;
     const { error } = await supabase.from('inventory_lots').delete().eq('id', lot.id);
@@ -351,6 +498,7 @@ export default function PantryPage() {
                   category={p.category}
                   unit={p.unit}
                   lots={p.lots}
+                  onOpen={setOpenProduct}
                 />
               ))}
               {byProduct.length===0 && <EmptyBox />}
@@ -387,6 +535,17 @@ export default function PantryPage() {
           )}
         </>
       )}
+
+      {/* MODAL produit */}
+      <ProductDetailModal
+        product={openProduct}
+        lots={lots}
+        locations={locations}
+        onClose={()=>setOpenProduct(null)}
+        onIncQty={incQty}
+        onUpdateLot={updateLot}
+        onDeleteLot={deleteLot}
+      />
     </div>
   );
 }
