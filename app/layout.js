@@ -2,10 +2,7 @@
 import "./globals.css";
 import { Suspense } from "react";
 import MinimalistHeader from "@/components/MinimalistHeader";
-// si tu utilises le fond + scrim :
 import MatisseWallpaperRandom from "@/components/MatisseWallpaperRandom";
-import ReadableScrim from "@/components/ReadableScrim";
-
 
 export const metadata = {
   title: "Myko — Réseau mycorhizien",
@@ -27,56 +24,35 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body
-        style={{
-          background:
-            "linear-gradient(180deg, var(--bg-top, #0b0f0a), var(--bg-bottom, #1a2318))",
-        }}
-      >
+      <body>
+        {/* Header fixé (ton composant existant) */}
         <MinimalistHeader />
 
-        {/* Fond Matisse + scrim de lisibilité */}
+        {/* Fond papier-peint Matisse (clair) */}
         <MatisseWallpaperRandom />
-        <ReadableScrim />
 
-        <main style={{ position: "relative", zIndex: 1 }}>
-          <div
-            style={{
-              maxWidth: 960,
-              margin: "0 auto",
-              padding: "2rem",
-              background: "rgba(12,17,12,.35)",
-              backdropFilter: "blur(4px)",
-              border: "1px solid rgba(255,255,255,.06)",
-              borderRadius: 16,
-            }}
-          >
-            <Suspense
-              fallback={
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    minHeight: "300px",
-                    gap: "1rem",
-                  }}
-                >
-                  <div className="loading-dots">
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                  <p style={{ color: "var(--forest-600)", fontSize: "0.95rem" }}>
-                    Connexion au réseau mycorhizien...
-                  </p>
+        {/* Contenu (sans gros overlay sombre) */}
+        <main className="main">
+          <Suspense
+            fallback={
+              <div
+                style={{
+                  display: "grid",
+                  placeItems: "center",
+                  minHeight: 240,
+                  padding: "2rem",
+                }}
+              >
+                <div className="loading-dots">
+                  <span />
+                  <span />
+                  <span />
                 </div>
-              }
-            >
-              {children}
-            </Suspense>
-          </div>
+              </div>
+            }
+          >
+            {children}
+          </Suspense>
         </main>
       </body>
     </html>
