@@ -49,21 +49,19 @@ function factorWithinFamily(from, to) {
   from = normUnit(from); to = normUnit(to);
   if (from===to) return 1;
 
-  // masse
+  // masse (base g)
   if (MASS.includes(from) && MASS.includes(to)) {
-    // base g
     const toG = from === 'kg' ? 1000 : 1;
     return to === 'kg' ? toG/1000 : toG; // g->kg: /1000, kg->g: *1000
   }
-  // volume
+  // volume (base ml)
   if (VOL.includes(from) && VOL.includes(to)) {
-    // base ml
     const toMl = from === 'l' ? 1000 : from === 'cl' ? 10 : 1;
     return to === 'l' ? toMl/1000 : to === 'cl' ? toMl/10 : toMl;
   }
   return null;
 }
-function toBaseMass(qty, u) { // -> grammes
+function toBaseMass(qty, u) { // -> g
   u = normUnit(u);
   if (u==='kg') return Number(qty)*1000;
   return Number(qty);
@@ -77,7 +75,7 @@ function toBaseVol(qty, u) { // -> ml
   u = normUnit(u);
   if (u==='l') return Number(qty)*1000;
   if (u==='cl') return Number(qty)*10;
-  return Number(qty); // ml
+  return Number(qty);
 }
 function fromBaseVol(qtyMl, toUnit) { // ml -> ml|cl|l
   toUnit = normUnit(toUnit);
@@ -86,13 +84,28 @@ function fromBaseVol(qtyMl, toUnit) { // ml -> ml|cl|l
   return { qty: qtyMl, unit:'ml' };
 }
 
+/** Détermine si un produit est "liquide" pour l’UX (donc unités volume uniquement, jamais 'u') */
+function isLiquid(product) {
+  const cat = (product?.category || '').toLowerCase();
+  const defU = normUnit(product?.default_unit || '');
+  const density = Number(product?.density_g_per_ml || 0) || null;
+
+  // Catégories typiquement liquides
+  const liquidCats = ['boisson','liquide','sauce','huile','sirop','lait','laitier','jus','soupe'];
+  if (liquidCats.some(c => cat.includes(c))) return true;
+
+  // Par défaut d’unité à la création
+  if (VOL.includes(defU)) return true;
+
+  // Présence d’une densité sans grams_per_unit → typiquement volume/masse, pas pièce
+  if (density && !product?.grams_per_unit) return true;
+
+  return false;
+}
+
 /**
  * Convertit qty depuis fromUnit vers toUnit en utilisant les infos produit.
  * Retourne { qty, unit } ou null si conversion impossible.
- * - Même famille (masse/volume) => facteurs connus
- * - Masse <-> Volume => nécessite product.density_g_per_ml
- * - Unit <-> Masse => nécessite product.grams_per_unit
- * - Unit <-> Volume => nécessite grams_per_unit + density_g_per_ml (via masse)
  */
 function convertQty(qty, fromUnit, toUnit, product) {
   fromUnit = normUnit(fromUnit);
@@ -326,32 +339,21 @@ function ProductDetailModal({ product, lots, locations, onClose, onIncQty, onUpd
   if (!product) return null;
   const productLots = (lots||[]).filter(l => l.product?.id === product.productId);
 
-  function availableUnitsForProduct() {
-    // On expose un set raisonnable; la logique désactive les options impossibles (voir renderUnitOptions)
-    return ['g','kg','ml','cl','l','u'];
+  function availableUnitsForProduct(prod) {
+    // Règle : Liquide → seulement volume ; pas d’unité 'u'
+    if (isLiquid(prod)) return ['ml','cl','l'];
+
+    // Solide → masse toujours; 'u' si grams_per_unit dispo; volume si densité dispo
+    const out = ['g','kg'];
+    if (Number(prod?.grams_per_unit || 0)) out.push('u');
+    if (Number(prod?.density_g_per_ml || 0)) out.push('ml','cl','l');
+    return out;
   }
-  function renderUnitOptions(prod, currentUnit) {
-    const density = Number(prod?.density_g_per_ml || 0) || null;
-    const gPerU   = Number(prod?.grams_per_unit || 0) || null;
 
-    return availableUnitsForProduct().map(u=>{
-      const fromFam = unitFamily(currentUnit||'u');
-      const toFam   = unitFamily(u);
-      let disabled = false;
-
-      if (fromFam!==toFam) {
-        if ((fromFam==='mass' && toFam==='vol') || (fromFam==='vol' && toFam==='mass')) {
-          if (!density) disabled = true;
-        }
-        if ((fromFam==='unit' && toFam==='mass') || (fromFam==='mass' && toFam==='unit')) {
-          if (!gPerU) disabled = true;
-        }
-        if ((fromFam==='unit' && toFam==='vol') || (fromFam==='vol' && toFam==='unit')) {
-          if (!(gPerU && density)) disabled = true;
-        }
-      }
-      return <option key={u} value={u} disabled={disabled}>{u}</option>;
-    });
+  function renderUnitOptions(prod) {
+    return availableUnitsForProduct(prod)
+      .filter((v, i, arr) => arr.indexOf(v) === i) // de-dup
+      .map(u => <option key={u} value={u}>{u}</option>);
   }
 
   return (
@@ -401,19 +403,19 @@ function ProductDetailModal({ product, lots, locations, onClose, onIncQty, onUpd
 
                     <select
                       className="input"
-                      defaultValue={lot.unit || 'u'}
+                      value={normUnit(lot.unit || (isLiquid(lot.product) ? 'ml' : 'g'))}
                       onChange={(e)=>{
                         const nextU = e.target.value;
-                        const res = convertQty(Number(lot.qty||0), lot.unit||'u', nextU, lot.product);
+                        // On ne propose que les unités convertibles → convertQty doit réussir
+                        const res = convertQty(Number(lot.qty||0), lot.unit || (isLiquid(lot.product) ? 'ml' : 'g'), nextU, lot.product);
                         if (!res) {
-                          e.target.value = lot.unit || 'u';
-                          alert("Conversion d'unité impossible pour ce produit (il manque density_g_per_ml ou grams_per_unit).");
+                          // Par sécurité, si ça arrivait, on n’empêche pas l’UI : on ne change rien.
                           return;
                         }
                         onUpdateLot(lot.id, { qty: Number(res.qty.toFixed(2)), unit: res.unit });
                       }}
                     >
-                      {renderUnitOptions(lot.product, lot.unit)}
+                      {renderUnitOptions(lot.product)}
                     </select>
                   </div>
 
@@ -577,11 +579,7 @@ export default function PantryPage() {
       .from('inventory_lots')
       .update(dbPatch)
       .eq('id', lotId)
-      .select(
-        `
-          id, qty, unit, dlc, location_id
-        `
-      )
+      .select(`id, qty, unit, dlc, location_id`)
       .single();
     if (error) return alert(error.message);
 
