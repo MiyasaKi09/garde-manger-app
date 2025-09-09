@@ -7,7 +7,7 @@ const CONFIG = {
   blobScale: 1,             // échelle globale des blobs
   // Quantités (augmente si tu veux plus de taches)
   counts: {
-    cream: 5,               // gros aplats crème (fond déjà crème + renforts doux)
+    forest-50: 5,               // gros aplats crème (fond déjà crème + renforts doux)
     olive: 5,               // taches olive
     terra: 4,               // taches terracotta
   },
@@ -19,19 +19,19 @@ const CONFIG = {
   },
   // Tailles de base (seront randomisées autour de ces valeurs)
   size: {
-    cream: { rx: 220, ry: 300 },
+    forest-50: { rx: 220, ry: 300 },
     olive: { rx: 140, ry: 210 },
     terra: { rx: 120, ry: 160 },
   },
   // Distance minimale entre centres pour limiter les chevauchements
   spacing: {
-    cream: 240,
+    forest-50: 240,
     olive: 190,
     terra: 160,
   },
   // Couleurs (via variables CSS, avec fallbacks)
   colors: {
-    cream: "var(--cream-100, #f4efe6)",
+    forest-50: "var(--cream-100, #f4efe6)",
     olive: "var(--olive-500, #6e8b5e)",
     terra: "var(--terra-500, #c08a5a)",
   },
