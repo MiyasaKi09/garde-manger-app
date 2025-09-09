@@ -955,3 +955,132 @@ tr:hover {
   *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition:none !important; scroll-behavior:auto !important; }
 }
 
+/* ================================
+   MYKO LAYOUT — QUICK BEAUTY PASS
+   ================================ */
+
+/* 0) Fond mycélien moins “sale” et vraiment derrière */
+.mk-mycelium-bg{
+  z-index: -1; /* passe sous body::before */
+  opacity: .6;
+}
+.mk-mycelium-bg::after{ opacity:.35; }
+
+/* 1) Header plus fin, plus clair, moins gris */
+.mk-header{
+  height: 56px;
+  background: linear-gradient(to bottom, rgba(255,255,255,.78), rgba(255,255,255,.65));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+.header-container.mk-container{ height:56px; }
+
+.mk-wordmark{
+  font-size: 1.35rem;
+  letter-spacing: .01em;
+  background: linear-gradient(135deg, var(--forest-800), var(--forest-600));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 2) Nav : plus lisible + hover élégant (soulignement fluide) */
+.mk-nav{ gap:.35rem .65rem; margin-left:.5rem; }
+.mk-nav-link{
+  padding:.45rem .6rem;
+  border-radius: 10px;
+  background: transparent;
+}
+.mk-nav-link::after{
+  content:""; position:absolute; left:.6rem; right:.6rem; bottom:.3rem;
+  height:2px; border-radius:2px; transform: scaleX(0);
+  background: linear-gradient(90deg, var(--forest-400), var(--forest-300));
+  transition: transform 160ms ease;
+  transform-origin: left;
+}
+.mk-nav-link:hover{ background: rgba(58,107,30,.06); transform:none; }
+.mk-nav-link:hover::after{ transform: scaleX(1); }
+
+.mk-nav-link[aria-current="page"]{
+  background: rgba(58,107,30,.10);
+  border: 1px solid rgba(58,107,30,.18);
+}
+.mk-nav-ico{ opacity:1; filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+
+/* 3) Pilule “Saison” plus discrète */
+.mk-season{
+  background: rgba(214, 148, 18, .12);
+  border-color: rgba(214,148,18,.28);
+  color: #8A6A2A;
+  padding:.3rem .55rem;
+  font-size:.85rem;
+}
+
+/* 4) Main : respiration + cartes moins “béton” */
+.mk-main{ padding: clamp(16px, 3vw, 28px); }
+.mk-card{
+  background: linear-gradient(145deg, var(--warm-white), rgba(255,255,255,.96));
+  border: 1px solid rgba(139,149,109,.14);
+  box-shadow: var(--shadow-sm);
+  padding: 1rem;
+}
+.mk-card:hover{
+  box-shadow: var(--shadow-md);
+  border-color: var(--forest-200);
+}
+
+/* 5) Bandeau de bienvenue (si tu as un hero en haut) */
+.mk-hero{
+  background: linear-gradient(0deg, rgba(106,166,68,.07), rgba(106,166,68,.03));
+  border: 1px solid rgba(106,166,68,.18);
+  border-radius: var(--radius-lg);
+  padding: clamp(16px, 3vw, 24px);
+  box-shadow: var(--shadow-xs);
+}
+.mk-hero h1{
+  background: linear-gradient(135deg, var(--forest-800), var(--forest-600));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: .35rem;
+}
+.mk-hero p{ color: var(--forest-700); }
+
+/* 6) Bouton “Se connecter” (HeaderAuth) plus sexy */
+.header-actions .btn,
+.header-actions button{
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--forest-500), var(--forest-600));
+  color:#fff; border: none;
+  box-shadow: 0 6px 14px rgba(58,107,30,.15);
+}
+.header-actions .btn:hover,
+.header-actions button:hover{
+  background: linear-gradient(135deg, var(--forest-600), var(--forest-500));
+  box-shadow: 0 10px 24px rgba(58,107,30,.18);
+}
+
+/* 7) Loading plus fin */
+.mk-loading-orb > span{
+  width:12px; height:12px;
+  background: color-mix(in oklab, rgb(106,166,68) 30%, white);
+}
+
+/* 8) Dark mode — header propre */
+@media (prefers-color-scheme: dark){
+  .mk-header{
+    background: linear-gradient(to bottom, rgba(18,22,18,.65), rgba(18,22,18,.5));
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    box-shadow: 0 2px 10px rgba(0,0,0,.5);
+  }
+  .mk-nav-link:hover{ background: rgba(255,255,255,.06); }
+  .mk-nav-link[aria-current="page"]{
+    background: rgba(106,166,68,.18);
+    border-color: rgba(106,166,68,.35);
+  }
+  .mk-card{ background: #121612; border-color: rgba(255,255,255,.06); }
+  .mk-hero{
+    background: linear-gradient(0deg, rgba(106,166,68,.12), rgba(106,166,68,.06));
+    border-color: rgba(255,255,255,.08);
+  }
+}
