@@ -3,6 +3,7 @@ import './globals.css';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import HeaderAuth from '@/components/HeaderAuth';
+import NavLink from '@/components/NavLink';
 
 // — Runtime / cache controls
 export const dynamic = 'force-dynamic';
@@ -14,10 +15,7 @@ export const metadata = {
   title: 'Myko — Réseau mycorhizien',
   description: 'Cultivez les connexions entre cuisine, garde-manger et potager',
   metadataBase: new URL('https://myko.app'), // ajuste si besoin
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-  },
+  icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#F3F6F2' },
     { media: '(prefers-color-scheme: dark)', color: '#0C0F0C' },
@@ -36,14 +34,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" className="mk-html">
       <head>
-        {/* Typo — garde ton couple Inter + CrimsonText (style “organique sobre”) */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet"
@@ -55,11 +48,7 @@ export default function RootLayout({ children }) {
         <div aria-hidden="true" className="mycelium-bg mk-mycelium-bg" />
 
         {/* Header */}
-        <header
-          className="myko-header mk-header"
-          role="banner"
-          data-elevation="1"
-        >
+        <header className="myko-header mk-header" role="banner" data-elevation="1">
           <div className="header-container mk-container">
             <div className="logo-group mk-logo">
               <Link href="/" className="logo mk-logo-link" aria-label="Accueil Myko">
@@ -73,30 +62,12 @@ export default function RootLayout({ children }) {
               </Link>
 
               <nav className="main-nav mk-nav" aria-label="Navigation principale">
-                <Link href="/" className="nav-link mk-nav-link" data-icon="home">
-                  <span className="nav-icon mk-nav-ico" aria-hidden="true">🏠</span>
-                  <span>Accueil</span>
-                </Link>
-                <Link href="/pantry" className="nav-link mk-nav-link" data-icon="pantry">
-                  <span className="nav-icon mk-nav-ico" aria-hidden="true">🏺</span>
-                  <span>Garde-manger</span>
-                </Link>
-                <Link href="/recipes" className="nav-link mk-nav-link" data-icon="recipes">
-                  <span className="nav-icon mk-nav-ico" aria-hidden="true">📖</span>
-                  <span>Recettes</span>
-                </Link>
-                <Link href="/garden" className="nav-link mk-nav-link" data-icon="garden">
-                  <span className="nav-icon mk-nav-ico" aria-hidden="true">🌱</span>
-                  <span>Potager</span>
-                </Link>
-                <Link href="/planning" className="nav-link mk-nav-link" data-icon="planning">
-                  <span className="nav-icon mk-nav-ico" aria-hidden="true">📅</span>
-                  <span>Planning</span>
-                </Link>
-                <Link href="/settings" className="nav-link mk-nav-link" data-icon="settings">
-                  <span className="nav-icon mk-nav-ico" aria-hidden="true">⚙️</span>
-                  <span>Paramètres</span>
-                </Link>
+                <NavLink href="/" icon="🏠">Accueil</NavLink>
+                <NavLink href="/pantry" icon="🏺">Garde-manger</NavLink>
+                <NavLink href="/recipes" icon="📖">Recettes</NavLink>
+                <NavLink href="/garden" icon="🌱">Potager</NavLink>
+                <NavLink href="/planning" icon="📅">Planning</NavLink>
+                <NavLink href="/settings" icon="⚙️">Paramètres</NavLink>
               </nav>
             </div>
 
@@ -138,7 +109,9 @@ export default function RootLayout({ children }) {
             <p className="mk-footline">
               <span className="mk-footmark">Myko</span>
               <span className="mk-footsep">•</span>
-              <span className="mk-footmotto">« Ne laisse rien mourir en silence. Donne une seconde vie à chaque aliment. »</span>
+              <span className="mk-footmotto">
+                « Ne laisse rien mourir en silence. Donne une seconde vie à chaque aliment. »
+              </span>
             </p>
             <nav aria-label="Liens de bas de page" className="mk-footer-nav">
               <Link href="/about" className="mk-footer-link">À propos</Link>
