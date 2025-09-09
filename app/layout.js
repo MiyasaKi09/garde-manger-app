@@ -25,13 +25,13 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        {/* Header fixé (ton composant existant) */}
+        {/* Header fixé */}
         <MinimalistHeader />
 
-        {/* Fond papier-peint Matisse (clair) */}
+        {/* Fond papier-peint Matisse (lé unique, suit le scroll) */}
         <MatisseWallpaperRandom />
 
-        {/* Contenu (sans gros overlay sombre) */}
+        {/* Contenu sans overlay sombre */}
         <main className="main">
           <Suspense
             fallback={
