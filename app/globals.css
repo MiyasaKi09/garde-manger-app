@@ -1202,3 +1202,141 @@ tr:hover {
     color: #ffd7a1;
   }
 }
+/* ==============================================
+   HEADER V4 — centré, régulier, propre (fix)
+   ============================================== */
+
+/* 0) Harmoniser la largeur max du layout avec ta .container */
+:root{
+  --maxw: 1400px;       /* = ta .container */
+  --header-h: 60px;     /* hauteur du header */
+  --ctl-h: 36px;        /* hauteur normalisée des “pilules” / liens / boutons */
+}
+
+/* 1) Header plat + centré */
+.mk-header{
+  position: sticky; top: 0; z-index: 40;
+  height: var(--header-h);
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--soft-gray);
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.header-container.mk-container{
+  height: var(--header-h);
+  display:flex; align-items:center; justify-content:space-between;
+  gap: var(--space-md);
+  max-width: var(--maxw);   /* centrage identique au contenu */
+  margin: 0 auto;
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+}
+@media (max-width: 768px){
+  .header-container.mk-container{
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+}
+
+/* 2) Logo */
+.mk-logo{ display:flex; align-items:center; gap:var(--space-md); }
+.mk-wordmark{
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 1.35rem;
+  letter-spacing: .01em;
+  color: var(--forest-700);
+}
+
+/* 3) Nav — éléments de même hauteur, alignés */
+.mk-nav{
+  display:flex; align-items:center; gap:.35rem .5rem; margin-left:.5rem; flex-wrap:wrap;
+}
+.mk-nav-link{
+  display:inline-flex; align-items:center; gap:.5rem;
+  height: var(--ctl-h);
+  padding: 0 .75rem;           /* padding horizontal seulement */
+  border-radius: 10px;
+  color: var(--forest-700);
+  background: transparent;
+  position: relative;
+  line-height: 1;              /* évite les décalages verticaux */
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+.mk-nav-ico{ width:18px; height:18px; display:inline-grid; place-items:center; }
+
+/* hover souligné fin */
+.mk-nav-link::after{
+  content:""; position:absolute; left:.75rem; right:.75rem; bottom:.35rem;
+  height:2px; border-radius:2px; transform: scaleX(0);
+  background: linear-gradient(90deg, var(--forest-400), var(--forest-300));
+  transition: transform 160ms ease; transform-origin: left;
+}
+.mk-nav-link:hover{ color: var(--forest-600); }
+.mk-nav-link:hover::after{ transform: scaleX(1); }
+
+/* actif discret, cohérent avec tes cartes */
+.mk-nav-link[aria-current="page"]{
+  background: linear-gradient(145deg, var(--warm-white), rgba(255,255,255,.96));
+  border: 1px solid rgba(139,149,109,.18);
+  box-shadow: var(--shadow-xs);
+  color: var(--forest-700);
+}
+
+/* 4) Actions à droite — TOUT à la même hauteur */
+.mk-actions{ display:flex; align-items:center; gap:.6rem; }
+
+/* Pilule saison */
+.mk-season{
+  display:inline-flex; align-items:center; gap:.35rem;
+  height: var(--ctl-h);
+  padding: 0 .66rem;
+  border-radius: 999px;
+  background: rgba(214,148,18,.12);
+  border: 1px solid rgba(214,148,18,.28);
+  color: #8A6A2A;
+  font-size:.9rem; line-height:1;
+}
+.mk-season-ico{ line-height:1; }
+
+/* Bouton HeaderAuth (a ou button) — normalisé */
+.header-actions .btn,
+.header-actions button,
+.header-actions a[role="button"],
+.header-actions a.btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  height: var(--ctl-h);
+  padding: 0 .9rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--forest-500), var(--forest-600));
+  color:#fff; border: none;
+  box-shadow: 0 6px 14px rgba(58,107,30,.15);
+  line-height:1; text-decoration:none;
+}
+.header-actions .btn:hover,
+.header-actions button:hover,
+.header-actions a[role="button"]:hover,
+.header-actions a.btn:hover{
+  background: linear-gradient(135deg, var(--forest-600), var(--forest-500));
+  box-shadow: 0 10px 24px rgba(58,107,30,.18);
+}
+
+/* 5) Dark mode propre */
+@media (prefers-color-scheme: dark){
+  .mk-header{
+    background: #121612;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    box-shadow: 0 2px 10px rgba(0,0,0,.5);
+  }
+  .mk-wordmark{ color: #e7efe3; }
+  .mk-nav-link{ color: #e7efe3; }
+  .mk-nav-link:hover{ color: #cfe4c8; }
+  .mk-nav-link[aria-current="page"]{
+    background: rgba(106,166,68,.14);
+    border-color: rgba(106,166,68,.30);
+    box-shadow: none;
+  }
+  .mk-season{
+    background: rgba(214,148,18,.18);
+    border-color: rgba(214,148,18,.35);
+    color: #ffd7a1;
+  }
+}
