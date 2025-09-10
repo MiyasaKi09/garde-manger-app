@@ -1,4 +1,4 @@
-// app/pantry/page.js - Version modulaire
+// app/pantry/page.js - Version corrigée complète
 'use client';
 
 import { useEffect, useMemo, useState, useCallback } from 'react';
@@ -138,6 +138,10 @@ export default function PantryPage() {
     handleAddLot, handleDeleteLot, handleUpdateLot
   } = usePantryData();
 
+  // États pour les nouvelles fonctionnalités
+  const [selectedProductForAdd, setSelectedProductForAdd] = useState(null);
+  const [detailProduct, setDetailProduct] = useState(null);
+
   useEffect(() => { load(); }, [load]);
 
   const filtered = useMemo(() => {
@@ -201,11 +205,16 @@ export default function PantryPage() {
   }, [byProduct, filtered]);
 
   const handleQuickAction = (action, data) => {
-    if (action === 'add') setShowAddForm(true);
+    if (action === 'add') {
+      setSelectedProductForAdd(data);
+      setShowAddForm(true);
+    }
   };
 
   const handleProductOpen = ({ productId, name }) => {
-    alert(`Ouverture de la vue détaillée pour "${name}" (ID: ${productId})`);
+    // Trouver tous les lots de ce produit
+    const productLots = lots.filter(lot => lot.product?.id === productId);
+    setDetailProduct({ productId, name, lots: productLots });
   };
 
   if (loading) return (
@@ -248,7 +257,11 @@ export default function PantryPage() {
           <SmartAddForm
             locations={locations}
             onAdd={handleAddLot}
-            onClose={() => setShowAddForm(false)}
+            onClose={() => {
+              setShowAddForm(false);
+              setSelectedProductForAdd(null);
+            }}
+            initialProduct={selectedProductForAdd}
           />
         </div>
       )}
@@ -260,6 +273,89 @@ export default function PantryPage() {
           borderRadius: 8, marginBottom: 20, border: '1px solid #fecaca'
         }}>
           ❌ {err}
+        </div>
+      )}
+
+      {/* Modal de détail produit */}
+      {detailProduct && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+          background: 'rgba(0,0,0,0.7)', zIndex: 1000,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: 20
+        }}>
+          <div style={{
+            background: 'white', borderRadius: 16, padding: 24,
+            maxWidth: 800, width: '100%', maxHeight: '80vh', overflowY: 'auto'
+          }}>
+            <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20}}>
+              <h2>📦 Détail : {detailProduct.name}</h2>
+              <button 
+                onClick={() => setDetailProduct(null)}
+                style={{background:'#dc2626', color:'white', border:'none', padding:'8px 12px', borderRadius:6, cursor:'pointer'}}
+              >
+                ❌ Fermer
+              </button>
+            </div>
+            
+            <div style={{marginBottom:16}}>
+              <strong>Nombre de lots :</strong> {detailProduct.lots.length}
+            </div>
+            
+            <div style={{display:'grid', gap:12}}>
+              {detailProduct.lots.map(lot => (
+                <div key={lot.id} style={{
+                  border:'1px solid #ddd', padding:12, borderRadius:8,
+                  display:'flex', justifyContent:'space-between', alignItems:'center'
+                }}>
+                  <div>
+                    <div><strong>{lot.qty} {lot.unit}</strong></div>
+                    <div style={{fontSize:'0.9rem', color:'#666'}}>
+                      📍 {lot.location?.name || 'Sans lieu'} • 
+                      📅 DLC: {lot.dlc ? new Date(lot.dlc).toLocaleDateString('fr-FR') : 'Non définie'}
+                    </div>
+                    {lot.note && <div style={{fontSize:'0.8rem', opacity:0.7}}>💬 {lot.note}</div>}
+                  </div>
+                  
+                  <div style={{display:'flex', gap:6}}>
+                    <button
+                      onClick={() => handleUpdateLot(lot.id, { qty: Math.max(0, Number(lot.qty) + 1) })}
+                      style={{padding:'4px 8px', background:'#16a34a', color:'white', border:'none', borderRadius:4, cursor:'pointer'}}
+                    >
+                      +1
+                    </button>
+                    <button
+                      onClick={() => handleUpdateLot(lot.id, { qty: Math.max(0, Number(lot.qty) - 1) })}
+                      style={{padding:'4px 8px', background:'#ea580c', color:'white', border:'none', borderRadius:4, cursor:'pointer'}}
+                      disabled={Number(lot.qty) <= 0}
+                    >
+                      -1
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (confirm('Supprimer ce lot ?')) {
+                          handleDeleteLot(lot.id);
+                          setDetailProduct(prev => ({
+                            ...prev,
+                            lots: prev.lots.filter(l => l.id !== lot.id)
+                          }));
+                        }
+                      }}
+                      style={{padding:'4px 8px', background:'#dc2626', color:'white', border:'none', borderRadius:4, cursor:'pointer'}}
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {detailProduct.lots.length === 0 && (
+              <div style={{textAlign:'center', padding:40, color:'#666'}}>
+                Aucun lot pour ce produit
+              </div>
+            )}
+          </div>
         </div>
       )}
 
