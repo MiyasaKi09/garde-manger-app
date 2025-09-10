@@ -5,7 +5,6 @@ import { supabase } from '@/lib/supabaseClient';
 import { SmartAddForm } from './components/SmartAddForm';
 import { ProductCard } from './components/ProductCard';
 import { LotsView } from './components/LotsView';
-import { PantryControls } from './components/PantryControls';
 import { PantryStats } from './components/PantryStats';
 import { EnhancedLotCard } from './components/EnhancedLotCard';
 
@@ -213,62 +212,99 @@ export default function PantryPage() {
     return { totalProducts, expiredCount, soonCount, totalLots };
   }, [byProduct, filtered]);
 
-  if (loading) return (
-    <div style={{ textAlign: 'center', padding: 60 }}>
-      🔄 Chargement des données...
-    </div>
-  );
+  if (loading) {
+    return (
+      <div className="container">
+        <div className="loading-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p style={{ textAlign: 'center', color: 'var(--forest-600)', marginTop: '1rem' }}>
+          Chargement des données...
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div style={{ padding: 24, maxWidth: 1400, margin: '0 auto' }}>
+    <div className="container">
+      {/* Titre principal avec style Myko */}
       <h1 style={{ 
-        fontSize: '2.5rem', 
-        fontWeight: 800, 
-        color: '#15803d', 
-        margin: '0 0 24px 0',
         display: 'flex',
         alignItems: 'center',
-        gap: 16
+        gap: '1rem',
+        marginBottom: '2rem'
       }}>
         🏺 Garde-Manger
       </h1>
 
+      {/* Stats - utilisant votre design system */}
       <PantryStats stats={stats} />
 
-      <PantryControls
-        q={q} setQ={setQ}
-        locFilter={locFilter} setLocFilter={setLocFilter}
-        view={view} setView={setView}
-        showAddForm={showAddForm} setShowAddForm={setShowAddForm}
-        locations={locations}
-        onRefresh={load}
-      />
+      {/* Barre de contrôles unifiée - style Myko */}
+      <div className="toolbar">
+        {/* Recherche */}
+        <input 
+          className="input" 
+          type="search"
+          placeholder="🔍 Rechercher un produit..." 
+          value={q} 
+          onChange={e => setQ(e.target.value)}
+          style={{ minWidth: '280px' }}
+        />
+        
+        {/* Filtre par lieu */}
+        <select 
+          className="input" 
+          value={locFilter} 
+          onChange={e => setLocFilter(e.target.value)}
+          style={{ minWidth: '160px' }}
+        >
+          <option value="Tous">📍 Tous les lieux</option>
+          {locations.map(l => (
+            <option key={l.id} value={l.name}>{l.name}</option>
+          ))}
+          {locations.length === 0 && (
+            <option disabled>(Aucun lieu)</option>
+          )}
+        </select>
 
-      {/* Sélecteur de vue amélioré */}
+        {/* Actions */}
+        <button 
+          className="btn secondary" 
+          onClick={load}
+          title="Rafraîchir les données"
+        >
+          ↻ Actualiser
+        </button>
+        
+        <button 
+          className="btn primary" 
+          onClick={() => setShowAddForm(v => !v)}
+        >
+          {showAddForm ? '✕ Fermer' : '➕ Ajouter'}
+        </button>
+      </div>
+
+      {/* Sélecteur de vue - style Myko glassmorphisme */}
       <div style={{
-        background: 'rgba(255, 255, 255, 0.9)',
+        background: 'rgba(255,255,255,0.55)',
+        backdropFilter: 'blur(10px) saturate(120%)',
+        WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+        border: '1px solid rgba(0,0,0,0.06)',
+        borderRadius: 'var(--radius-lg)',
         padding: '8px',
-        borderRadius: 16,
-        marginBottom: 20,
+        marginBottom: '1.5rem',
         display: 'flex',
-        gap: 8,
-        border: '1px solid rgba(34, 197, 94, 0.2)',
-        backdropFilter: 'blur(12px)'
+        gap: '8px'
       }}>
         <button
           onClick={() => setView('products')}
-          style={{
+          className={view === 'products' ? 'btn primary' : 'btn secondary'}
+          style={{ 
             flex: 1,
-            padding: '12px 20px',
-            borderRadius: 12,
-            border: 'none',
-            background: view === 'products' 
-              ? 'linear-gradient(135deg, #059669, #10b981)' 
-              : 'transparent',
-            color: view === 'products' ? 'white' : '#6b7280',
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
+            borderRadius: 'var(--radius-md)',
             fontSize: '0.95rem'
           }}
         >
@@ -276,18 +312,10 @@ export default function PantryPage() {
         </button>
         <button
           onClick={() => setView('lots')}
-          style={{
+          className={view === 'lots' ? 'btn primary' : 'btn secondary'}
+          style={{ 
             flex: 1,
-            padding: '12px 20px',
-            borderRadius: 12,
-            border: 'none',
-            background: view === 'lots' 
-              ? 'linear-gradient(135deg, #059669, #10b981)' 
-              : 'transparent',
-            color: view === 'lots' ? 'white' : '#6b7280',
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
+            borderRadius: 'var(--radius-md)',
             fontSize: '0.95rem'
           }}
         >
@@ -295,8 +323,9 @@ export default function PantryPage() {
         </button>
       </div>
 
+      {/* Formulaire d'ajout */}
       {showAddForm && (
-        <div style={{ marginBottom: 20 }}>
+        <div className="card" style={{ marginBottom: '1.5rem' }}>
           <SmartAddForm
             locations={locations}
             onAdd={handleAddLot}
@@ -309,19 +338,20 @@ export default function PantryPage() {
         </div>
       )}
 
+      {/* Messages d'erreur */}
       {err && (
-        <div style={{
-          background: '#fee2e2', 
-          color: '#991b1b', 
-          padding: 16,
-          borderRadius: 8, 
-          marginBottom: 20, 
-          border: '1px solid #fecaca'
+        <div className="badge danger" style={{
+          display: 'block',
+          padding: '1rem',
+          marginBottom: '1.5rem',
+          textAlign: 'center',
+          fontSize: '0.95rem'
         }}>
           ❌ {err}
         </div>
       )}
 
+      {/* Modal de détail produit */}
       {detailProduct && (
         <div 
           style={{
@@ -336,45 +366,34 @@ export default function PantryPage() {
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center',
-            padding: 20
+            padding: '20px'
           }}
           onClick={(e) => e.target === e.currentTarget && setDetailProduct(null)}
         >
-          <div style={{
-            background: 'rgba(255, 255, 255, 0.95)',
-            backdropFilter: 'blur(20px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-            borderRadius: 24,
-            padding: 32,
-            maxWidth: 900,
+          <div className="glass-card" style={{
+            borderRadius: 'var(--radius-xl)',
+            padding: '2rem',
+            maxWidth: '900px',
             width: '100%',
             maxHeight: '85vh',
             overflowY: 'auto',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
             position: 'relative'
           }}>
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginBottom: 28,
-              paddingBottom: 20,
-              borderBottom: '2px solid #e5e7eb'
+              marginBottom: '1.5rem',
+              paddingBottom: '1rem',
+              borderBottom: '2px solid var(--soft-gray)'
             }}>
               <div>
-                <h2 style={{
-                  fontSize: '2rem',
-                  fontWeight: 800,
-                  margin: 0,
-                  color: '#059669'
-                }}>
+                <h2 style={{ margin: 0 }}>
                   📦 {detailProduct.name}
                 </h2>
                 <div style={{
-                  fontSize: '1.1rem',
-                  color: '#6b7280',
-                  marginTop: 8,
+                  color: 'var(--forest-600)',
+                  marginTop: '0.5rem',
                   fontWeight: 500
                 }}>
                   {detailProduct.lots.length} lot{detailProduct.lots.length > 1 ? 's' : ''} • 
@@ -383,28 +402,14 @@ export default function PantryPage() {
               </div>
               
               <button 
+                className="btn danger"
                 onClick={() => setDetailProduct(null)}
-                style={{
-                  background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.9))',
-                  color: 'white',
-                  border: 'none',
-                  padding: '12px 16px',
-                  borderRadius: 16,
-                  cursor: 'pointer',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                }}
               >
                 ✕ Fermer
               </button>
             </div>
             
-            <div style={{
-              display: 'grid',
-              gap: 20,
-              gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))'
-            }}>
+            <div className="grid cols-2">
               {detailProduct.lots.map((lot, index) => (
                 <EnhancedLotCard
                   key={lot.id}
@@ -436,13 +441,12 @@ export default function PantryPage() {
             {detailProduct.lots.length === 0 && (
               <div style={{
                 textAlign: 'center',
-                padding: 60,
-                color: '#9ca3af',
-                fontSize: '1.2rem',
-                fontWeight: 500,
-                background: 'rgba(156, 163, 175, 0.1)',
-                borderRadius: 20,
-                border: '2px dashed rgba(156, 163, 175, 0.3)'
+                padding: '3rem',
+                color: 'var(--medium-gray)',
+                fontSize: '1.1rem',
+                background: 'var(--earth-50)',
+                borderRadius: 'var(--radius-lg)',
+                border: '2px dashed var(--soft-gray)'
               }}>
                 📭 Aucun lot pour ce produit
               </div>
@@ -451,12 +455,9 @@ export default function PantryPage() {
         </div>
       )}
 
+      {/* Contenu principal */}
       {view === 'products' ? (
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
-          gap: 16 
-        }}>
+        <div className="grid cols-3">
           {byProduct.map(({ productId, name, category, unit, lots }) => (
             <ProductCard
               key={productId}
@@ -479,14 +480,12 @@ export default function PantryPage() {
           ))}
           
           {byProduct.length === 0 && (
-            <div style={{ 
+            <div className="card" style={{ 
+              gridColumn: '1 / -1',
               textAlign: 'center', 
-              padding: 60, 
-              color: '#6b7280',
-              background: 'white',
-              borderRadius: 16,
-              border: '2px dashed #e5e7eb',
-              gridColumn: '1 / -1'
+              padding: '3rem',
+              color: 'var(--forest-600)',
+              border: '2px dashed var(--soft-gray)'
             }}>
               {q || locFilter !== 'Tous' ? 
                 '🔍 Aucun produit ne correspond aux filtres.' :
