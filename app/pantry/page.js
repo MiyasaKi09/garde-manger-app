@@ -577,7 +577,8 @@ function SmartAddForm({ locations, onAdd, onClose }) {
             <div style={{
               position:'absolute', top:'100%', left:0, right:0, zIndex:10,
               background:'white', border:'1px solid #ddd', borderRadius:12, marginTop:4,
-              boxShadow:'0 8px 24px rgba(0,0,0,0.15)', maxHeight:280, overflowY:'auto'
+              boxShadow:'0 8px 24px rgba(0,0,0,0.15)', maxHeight:280, overflowY:'auto',
+              zIndex: 1500 // Z-index élevé pour passer au-dessus des cartes
             }}>
               {suggestions.map(product => (
                 <div
