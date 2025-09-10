@@ -1,108 +1,78 @@
-// app/pantry/components/PantryControls.js
-import { PantryStyles } from './pantryUtils';
-
+// app/pantry/components/PantryControls.js - Adapté au style Myko
 export function PantryControls({
   q, setQ, locFilter, setLocFilter, view, setView,
   showAddForm, setShowAddForm, locations, onRefresh
 }) {
   return (
-    <div style={{
-      ...PantryStyles.glassBase,
-      borderRadius: 12,
-      padding: 16,
-      marginBottom: 20,
-      display: 'grid',
-      gap: 16
-    }}>
-      <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+    <div className="toolbar">
+      {/* Barre de recherche et filtres */}
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap', flex: 1 }}>
         <input
+          className="input"
+          type="search"
           placeholder="🔍 Rechercher un produit..."
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          style={{
-            minWidth: 220,
-            padding: '10px 14px',
-            borderRadius: 8,
-            border: '1px solid #ddd',
-            fontSize: '1rem'
-          }}
+          style={{ minWidth: '280px' }}
         />
         
         <select
+          className="input"
           value={locFilter}
           onChange={(e) => setLocFilter(e.target.value)}
-          style={{
-            padding: '10px 14px',
-            borderRadius: 8,
-            border: '1px solid #ddd'
-          }}
+          style={{ minWidth: '160px' }}
         >
-          <option value="Tous">Tous les lieux</option>
+          <option value="Tous">📍 Tous les lieux</option>
           {locations.map(l => (
             <option key={l.id} value={l.name}>{l.name}</option>
           ))}
+          {locations.length === 0 && (
+            <option disabled>(Aucun lieu)</option>
+          )}
         </select>
-        
-        <div style={{display:'flex', gap:8}}>
-          <button
-            onClick={() => setView('products')}
-            style={{
-              padding: '10px 16px',
-              borderRadius: 8,
-              border: '1px solid #ddd',
-              background: view === 'products' ? '#2563eb' : 'white',
-              color: view === 'products' ? 'white' : '#374151',
-              cursor: 'pointer',
-              fontWeight: 600
-            }}
-          >
-            🎯 Par produits
-          </button>
-          
-          <button
-            onClick={() => setView('lots')}
-            style={{
-              padding: '10px 16px',
-              borderRadius: 8,
-              border: '1px solid #ddd',
-              background: view === 'lots' ? '#2563eb' : 'white',
-              color: view === 'lots' ? 'white' : '#374151',
-              cursor: 'pointer',
-              fontWeight: 600
-            }}
-          >
-            📦 Tous les lots
-          </button>
-        </div>
-        
+      </div>
+
+      {/* Sélecteur de vue */}
+      <div style={{ 
+        display: 'flex', 
+        gap: '0.5rem',
+        background: 'rgba(255,255,255,0.6)',
+        padding: '4px',
+        borderRadius: 'var(--radius-md)',
+        border: '1px solid var(--soft-gray)'
+      }}>
         <button
-          onClick={() => setShowAddForm(!showAddForm)}
-          style={{
-            padding: '10px 16px',
-            borderRadius: 8,
-            background: showAddForm ? '#dc2626' : '#16a34a',
-            color: 'white',
-            border: 'none',
-            cursor: 'pointer',
-            fontWeight: 600
-          }}
+          onClick={() => setView('products')}
+          className={view === 'products' ? 'btn primary small' : 'btn secondary small'}
+          style={{ borderRadius: 'var(--radius-sm)' }}
         >
-          {showAddForm ? '❌ Fermer' : '➕ Ajouter'}
+          📦 Par produits
         </button>
         
         <button
-          onClick={onRefresh}
-          style={{
-            padding: '10px 16px',
-            borderRadius: 8,
-            background: '#6b7280',
-            color: 'white',
-            border: 'none',
-            cursor: 'pointer',
-            fontWeight: 600
-          }}
+          onClick={() => setView('lots')}
+          className={view === 'lots' ? 'btn primary small' : 'btn secondary small'}
+          style={{ borderRadius: 'var(--radius-sm)' }}
         >
-          🔄 Actualiser
+          📋 Tous les lots
+        </button>
+      </div>
+
+      {/* Actions */}
+      <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <button
+          className="btn secondary"
+          onClick={onRefresh}
+          title="Rafraîchir les données"
+        >
+          ↻ Actualiser
+        </button>
+        
+        <button
+          className={showAddForm ? 'btn danger' : 'btn primary'}
+          onClick={() => setShowAddForm(!showAddForm)}
+        >
+          {showAddForm ? '✕ Fermer' : '➕ Ajouter'}
         </button>
       </div>
     </div>
