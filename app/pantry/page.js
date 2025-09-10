@@ -244,6 +244,57 @@ export default function PantryPage() {
         onRefresh={load}
       />
 
+      {/* Sélecteur de vue amélioré */}
+      <div style={{
+        background: 'rgba(255, 255, 255, 0.9)',
+        padding: '8px',
+        borderRadius: 16,
+        marginBottom: 20,
+        display: 'flex',
+        gap: 8,
+        border: '1px solid rgba(34, 197, 94, 0.2)',
+        backdropFilter: 'blur(12px)'
+      }}>
+        <button
+          onClick={() => setView('products')}
+          style={{
+            flex: 1,
+            padding: '12px 20px',
+            borderRadius: 12,
+            border: 'none',
+            background: view === 'products' 
+              ? 'linear-gradient(135deg, #059669, #10b981)' 
+              : 'transparent',
+            color: view === 'products' ? 'white' : '#6b7280',
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            fontSize: '0.95rem'
+          }}
+        >
+          📦 Vue par produits
+        </button>
+        <button
+          onClick={() => setView('lots')}
+          style={{
+            flex: 1,
+            padding: '12px 20px',
+            borderRadius: 12,
+            border: 'none',
+            background: view === 'lots' 
+              ? 'linear-gradient(135deg, #059669, #10b981)' 
+              : 'transparent',
+            color: view === 'lots' ? 'white' : '#6b7280',
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            fontSize: '0.95rem'
+          }}
+        >
+          📋 Tous les lots
+        </button>
+      </div>
+
       {showAddForm && (
         <div style={{ marginBottom: 20 }}>
           <SmartAddForm
