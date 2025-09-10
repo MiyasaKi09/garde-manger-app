@@ -1,4 +1,15 @@
-// app/pantry/page.js
+{/* Option pour créer un nouveau produit avec modal avancée */}
+              <div
+                onClick={() => setShowCreateModal(true)}
+                style={{
+                  padding:'12px 16px', cursor:'pointer', 
+                  background:'#e8f5e8', color:'#2563eb', fontWeight:600,
+                  borderTop: '2px solid #90ee90'
+                }}
+                onMouseEnter={(e) => e.target.style.background = '#d4edda'}
+                onMouseLeave={(e) => e.target.style.background = '#e8f5e8'}
+              >
+                ➕// app/pantry/page.js
 'use client';
 
 import { useEffect, useMemo, useState, useCallback } from 'react';
@@ -295,33 +306,38 @@ function SmartAddForm({ locations, onAdd, onClose }) {
     try {
       let product = selectedProduct;
       
-      // Si pas de produit sélectionné, en créer un nouveau
+      // Si pas de produit sélectionné, ouvrir la modal de création
       if (!product) {
-        product = await createNewProduct(query);
+        setShowCreateModal(true);
+        return;
       }
       
-      // Créer le lot
+      // Validation des données
+      if (!qty || Number(qty) <= 0) {
+        alert('Veuillez saisir une quantité valide');
+        return;
+      }
+      
+      // Créer le lot avec les bonnes métadonnées
       const lot = {
         product_id: product.id,
         location_id: locationId || null,
-        qty: Number(qty) || 0,
+        qty: Number(qty),
         unit: unit || product.default_unit || 'g',
         dlc: dlc || null,
-        note: selectedProduct ? 'Ajouté via suggestions' : 'Nouveau produit créé',
+        note: `Ajouté via recherche (${selectedProduct ? 'trouvé' : 'créé'})`,
         entered_at: new Date().toISOString()
       };
 
       await onAdd(lot, product);
       
-      // Reset form
-      setQuery('');
-      setSelectedProduct(null);
+      // Reset form mais garde le produit sélectionné pour faciliter l'ajout multiple
       setQty(1);
-      setUnit('');
       setDlc('');
       setLocationId('');
       
     } catch (err) {
+      console.error('Erreur ajout:', err);
       alert('Erreur lors de l\'ajout: ' + err.message);
     } finally {
       setLoading(false);
@@ -329,10 +345,35 @@ function SmartAddForm({ locations, onAdd, onClose }) {
   }
 
   return (
-    <div className="glass-card" style={{ ...glassBase, borderRadius:'var(--radius-xl)', padding:'1.2rem' }}>
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:16}}>
-        <h3 style={{margin:0}}>➕ Ajouter un produit</h3>
-        <button className="btn small" onClick={onClose}>✕</button>
+    <div className="glass-card" style={{ 
+      ...glassBase, 
+      borderRadius:'var(--radius-xl)', 
+      padding:'1.2rem',
+      background: 'linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.9))',
+      backdropFilter: 'blur(12px)',
+      border: '2px solid rgba(34,197,94,0.2)'
+    }}>
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20}}>
+        <h3 style={{margin:0, display:'flex', alignItems:'center', gap:8}}>
+          🛒 Ajouter un produit intelligent
+          <span style={{
+            fontSize:'0.7rem', 
+            background:'rgba(34,197,94,0.1)', 
+            color:'#16a34a',
+            padding:'2px 8px', 
+            borderRadius:12,
+            fontWeight:600
+          }}>
+            IA
+          </span>
+        </h3>
+        <button 
+          className="btn small secondary" 
+          onClick={onClose}
+          style={{minWidth:'auto', padding:'6px 10px'}}
+        >
+          ✕
+        </button>
       </div>
 
       <form onSubmit={handleSubmit}>
