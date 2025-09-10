@@ -1,4 +1,14 @@
-{/* Option pour créer un nouveau produit avec modal avancée */}
+{/* Détails du produit sélectionné */}
+        {selectedProduct && (
+          <div style={{
+            background:'linear-gradient(135deg, #e8f5e8, #f0f8f0)', 
+            padding:16, borderRadius:12, marginBottom:16,
+            border:'2px solid #90ee90'
+          }}>
+            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+              <div>
+                <div style={{fontWeight:700, fontSize:'1.1rem', color:'#2d5016'}}>
+                  ✅ {selectedProduct.              {/* Option pour créer un nouveau produit avec modal avancée */}
               <div
                 onClick={() => setShowCreateModal(true)}
                 style={{
@@ -415,6 +425,56 @@ function SmartAddForm({ locations, onAdd, onClose }) {
                       <div style={{fontSize:'0.85rem', color:'#666'}}>{product.category}</div>
                     )}
                   </div>
+        
+        {/* Prévisualisation des conversions possibles */}
+        {selectedProduct && qty && unit && (
+          <div style={{
+            marginTop:12, padding:12, 
+            background:'linear-gradient(135deg, #f0f9ff, #e0f2fe)', 
+            borderRadius:8,
+            fontSize:'0.9rem', color:'#0369a1',
+            border: '1px solid #7dd3fc'
+          }}>
+            <div style={{fontWeight:600, marginBottom:6, display:'flex', alignItems:'center', gap:6}}>
+              <span>💡</span> Conversions automatiques disponibles :
+            </div>
+            <div style={{display:'flex', gap:12, flexWrap:'wrap'}}>
+              {getConversionPreview(selectedProduct, qty, unit).map((conv, i) => (
+                <span key={i} style={{
+                  padding:'4px 10px', 
+                  background:'rgba(255,255,255,0.8)', 
+                  borderRadius:6, 
+                  border:'1px solid #bae6fd',
+                  fontWeight:600
+                }}>
+                  ≈ {conv.qty} {conv.unit}
+                </span>
+              ))}
+              {getConversionPreview(selectedProduct, qty, unit).length === 0 && (
+                <span style={{opacity:0.7}}>Aucune conversion disponible</span>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Informations sur le produit sélectionné */}
+        {selectedProduct && (
+          <div style={{
+            marginTop:8, padding:8, background:'#f8fafc', borderRadius:6,
+            fontSize:'0.8rem', color:'#64748b'
+          }}>
+            <strong>Métadonnées :</strong>
+            {selectedProduct.density_g_per_ml && selectedProduct.density_g_per_ml !== 1.0 && (
+              <span> • Densité: {selectedProduct.density_g_per_ml} g/ml</span>
+            )}
+            {selectedProduct.grams_per_unit && (
+              <span> • Poids unitaire: {selectedProduct.grams_per_unit}g</span>
+            )}
+            {selectedProduct.category && (
+              <span> • Catégorie: {selectedProduct.category}</span>
+            )}
+          </div>
+        )}
                   <div style={{fontSize:'0.9rem', color:'#999'}}>
                     Score: {Math.round(product.score)}
                   </div>
