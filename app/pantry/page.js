@@ -159,12 +159,10 @@ function SmartProductCreationModal({ isOpen, onClose, onSave, initialName = '' }
   useEffect(() => {
     if (isOpen) {
       setName(initialName);
-      // Estimation automatique des métadonnées
       if (initialName) {
         const meta = estimateProductMeta({ name: initialName, category: '' });
         setEstimatedMeta(meta);
         
-        // Auto-suggestion de catégorie basée sur le nom
         const nameLower = initialName.toLowerCase();
         if (/tomate|salade|épinard|carotte|oignon|courgette|poivron/.test(nameLower)) {
           setCategory('légumes');
@@ -183,7 +181,6 @@ function SmartProductCreationModal({ isOpen, onClose, onSave, initialName = '' }
           setTypicalShelfLife('365');
         }
         
-        // Auto-suggestion d'unité
         if (/liquide|lait|huile|jus|sauce/.test(nameLower)) {
           setDefaultUnit('ml');
         } else if (/oeuf|œuf|citron|orange|pomme(?! de terre)|banane/.test(nameLower)) {
@@ -203,7 +200,6 @@ function SmartProductCreationModal({ isOpen, onClose, onSave, initialName = '' }
         category: category.trim() || null,
         default_unit: defaultUnit,
         typical_shelf_life_days: typicalShelfLife ? parseInt(typicalShelfLife) : null,
-        // Ajout des métadonnées estimées
         density_g_per_ml: estimatedMeta?.density_g_per_ml || 1.0,
         grams_per_unit: estimatedMeta?.grams_per_unit || null,
         confidence_density: estimatedMeta?.confidence_density || 0.5,
@@ -251,715 +247,7 @@ function SmartProductCreationModal({ isOpen, onClose, onSave, initialName = '' }
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                style={{width:'100%', padding:'8px', borderRadius:6, border:'1px solid #ddd'}}
-              title="Date Limite de Consommation"
-            />
-          </div>
-          
-          <div>
-            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
-              Lieu
-            </label>
-            <select
-              value={locationId}
-              onChange={(e) => setLocationId(e.target.value)}
-              style={{width:'100%', padding:'8px', borderRadius:6, border:'1px solid #ddd'}}
-            >
-              <option value="">Choisir un lieu...</option>
-              {locations.map(loc => (
-                <option key={loc.id} value={loc.id}>{loc.name}</option>
-              ))}
-            </select>
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            style={{
-              whiteSpace:'nowrap', 
-              minWidth:100,
-              padding:'10px 16px',
-              background: loading ? '#ccc' : '#2563eb',
-              color:'white',
-              border:'none',
-              borderRadius:8,
-              cursor: loading ? 'not-allowed' : 'pointer',
-              fontWeight:600
-            }}
-          >
-            {loading ? '⏳ Ajout...' : '✅ Ajouter'}
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-/* ----------------- Carte de produit ----------------- */
-function ProductCard({ productId, name, category, unit, lots=[], onOpen, onQuickAction }) {
-  const { total, nextDate, locations, urgentCount } = useMemo(()=>{
-    let total = 0;
-    let nextDate = null;
-    const locSet = new Set();
-    let urgentCount = 0;
-    
-    for (const lot of lots) {
-      total += Number(lot.qty || 0);
-      if (lot.location?.name) locSet.add(lot.location.name);
-      
-      const d = lot.dlc || lot.best_before;
-      if (d && (nextDate === null || new Date(d) < new Date(nextDate))) nextDate = d;
-      
-      const days = daysUntil(d);
-      if (days !== null && days <= 3) urgentCount++;
-    }
-    
-    return { 
-      total: Math.round(total * 100) / 100, 
-      nextDate, 
-      locations: [...locSet].slice(0, 3),
-      urgentCount
-    };
-  }, [lots]);
-
-  const soon = nextDate ? daysUntil(nextDate) : null;
-  const isUrgent = soon !== null && soon <= 3;
-
-  return (
-    <div
-      style={{
-        ...glassBase,
-        borderRadius:12,
-        padding:14,
-        display:'grid',
-        gap:8,
-        cursor:'pointer',
-        transition: 'all 0.2s ease',
-        borderLeft: isUrgent ? '4px solid #dc2626' : '1px solid rgba(0,0,0,0.06)'
-      }}
-      onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
-      onMouseLeave={(e) => e.target.style.transform = 'none'}
-    >
-      <div style={{display:'flex', justifyContent:'space-between', gap:8}}>
-        <div style={{flex:1}}>
-          <div style={{fontWeight:700, color:'#15803d', fontSize:'1.1rem'}}>{name}</div>
-          <div style={{fontSize:'.85rem', color:'#78716c'}}>
-            {category ? category[0].toUpperCase() + category.slice(1) : '—'}
-          </div>
-        </div>
-        <LifespanBadge date={nextDate} />
-      </div>
-
-      <div style={{display:'flex', alignItems:'baseline', justifyContent:'space-between'}}>
-        <div style={{display:'flex', alignItems:'baseline', gap:6}}>
-          <span style={{fontSize:'1.6rem', fontWeight:800, color:'#15803d'}}>
-            {total}
-          </span>
-          <span style={{opacity:.7}}>{lots[0]?.unit || unit || 'u'}</span>
-        </div>
-        
-        {urgentCount > 0 && (
-          <span style={{
-            fontSize:'0.8rem', padding:'2px 6px', borderRadius:12,
-            background:'#fee2e2', color:'#991b1b', fontWeight:600
-          }}>
-            {urgentCount} urgent{urgentCount > 1 ? 's' : ''}
-          </span>
-        )}
-      </div>
-
-      {!!locations.length && (
-        <div style={{display:'flex', flexWrap:'wrap', gap:4}}>
-          {locations.map(loc => (
-            <span key={loc} style={{ 
-              fontSize:'.75rem', padding:'2px 6px', borderRadius:999, 
-              background:'rgba(0,0,0,0.04)' 
-            }}>
-              📍 {loc}
-            </span>
-          ))}
-          {lots.length > locations.length && (
-            <span style={{fontSize:'.75rem', opacity:0.6}}>
-              +{lots.length - locations.length} autre{lots.length - locations.length > 1 ? 's' : ''}
-            </span>
-          )}
-        </div>
-      )}
-
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:8}}>
-        <span style={{fontSize:'.8rem', color:'#78716c'}}>
-          {lots.length} lot{lots.length > 1 ? 's' : ''}
-        </span>
-        
-        <div style={{display:'flex', gap:4}}>
-          <button 
-            onClick={(e) => { 
-              e.stopPropagation(); 
-              onQuickAction?.('add', { productId, name }); 
-            }}
-            style={{
-              padding:'4px 8px', fontSize:'0.8rem', 
-              background:'#16a34a', color:'white',
-              border:'none', borderRadius:4, cursor:'pointer'
-            }}
-            title="Ajouter un lot"
-          >
-            +
-          </button>
-          
-          <button 
-            onClick={(e) => { 
-              e.stopPropagation(); 
-              onOpen?.({ productId, name }); 
-            }}
-            style={{
-              padding:'4px 8px', fontSize:'0.8rem', 
-              background:'#2563eb', color:'white',
-              border:'none', borderRadius:4, cursor:'pointer'
-            }}
-          >
-            Gérer →
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ----------------- Vue par lots individuels ----------------- */
-function LotsView({ lots, onDeleteLot, onUpdateLot }) {
-  const sortedLots = useMemo(() => {
-    return [...lots].sort((a, b) => {
-      const da = daysUntil(a.best_before);
-      const db = daysUntil(b.best_before);
-      
-      if (da === null && db === null) return 0;
-      if (da === null) return 1;
-      if (db === null) return -1;
-      return da - db;
-    });
-  }, [lots]);
-
-  async function quickUpdateQty(lot, delta) {
-    const newQty = Math.max(0, Number(lot.qty || 0) + delta);
-    await onUpdateLot(lot.id, { qty: newQty });
-  }
-
-  return (
-    <div style={{display:'grid', gap:12, gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))'}}>
-      {sortedLots.map(lot => {
-        const days = daysUntil(lot.best_before);
-        const isUrgent = days !== null && days <= 3;
-        
-        return (
-          <div
-            key={lot.id}
-            style={{
-              ...glassBase,
-              borderRadius:10,
-              padding:12,
-              borderLeft: isUrgent ? '4px solid #dc2626' : '1px solid rgba(0,0,0,0.06)'
-            }}
-          >
-            <div style={{display:'flex', justifyContent:'space-between', alignItems:'start', marginBottom:8}}>
-              <div style={{flex:1}}>
-                <div style={{fontWeight:600, color:'#15803d'}}>
-                  {lot.product?.name || 'Produit inconnu'}
-                </div>
-                <div style={{fontSize:'0.85rem', color:'#78716c'}}>
-                  {lot.location?.name || 'Sans lieu'}
-                </div>
-              </div>
-              <LifespanBadge date={lot.best_before} />
-            </div>
-
-            <div style={{display:'flex', alignItems:'center', gap:8, marginBottom:8}}>
-              <span style={{fontSize:'1.3rem', fontWeight:700}}>
-                {Number(lot.qty || 0)}
-              </span>
-              <span style={{opacity:0.7}}>{lot.unit}</span>
-            </div>
-
-            {lot.note && (
-              <div style={{fontSize:'0.8rem', opacity:0.6, marginBottom:8}}>
-                💬 {lot.note}
-              </div>
-            )}
-
-            <div style={{display:'flex', gap:6, flexWrap:'wrap'}}>
-              <button
-                onClick={() => quickUpdateQty(lot, 1)}
-                style={{
-                  padding:'4px 8px', fontSize:'0.8rem',
-                  background:'#16a34a', color:'white',
-                  border:'none', borderRadius:4, cursor:'pointer'
-                }}
-              >
-                +1
-              </button>
-              
-              <button
-                onClick={() => quickUpdateQty(lot, -1)}
-                disabled={Number(lot.qty || 0) <= 0}
-                style={{
-                  padding:'4px 8px', fontSize:'0.8rem',
-                  background: Number(lot.qty || 0) <= 0 ? '#ccc' : '#ea580c', 
-                  color:'white',
-                  border:'none', borderRadius:4, 
-                  cursor: Number(lot.qty || 0) <= 0 ? 'not-allowed' : 'pointer'
-                }}
-              >
-                -1
-              </button>
-
-              <button
-                onClick={() => {
-                  if (confirm(`Supprimer le lot de "${lot.product?.name}" ?`)) {
-                    onDeleteLot(lot.id);
-                  }
-                }}
-                style={{
-                  padding:'4px 8px', fontSize:'0.8rem',
-                  background:'#dc2626', color:'white',
-                  border:'none', borderRadius:4, cursor:'pointer'
-                }}
-              >
-                🗑️
-              </button>
-            </div>
-
-            <div style={{fontSize:'0.75rem', opacity:0.5, marginTop:8}}>
-              Ajouté le {fmtDate(lot.entered_at)}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-/* ----------------- Page principale ----------------- */
-export default function PantryPage() {
-  const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState('');
-  const [lots, setLots] = useState([]);
-  const [locations, setLocations] = useState([]);
-  const [q, setQ] = useState('');
-  const [locFilter, setLocFilter] = useState('Tous');
-  const [view, setView] = useState('products'); // 'products' ou 'lots'
-  const [showAddForm, setShowAddForm] = useState(false);
-
-  const load = useCallback(async () => {
-    setLoading(true);
-    setErr('');
-    
-    try {
-      const [{ data: locs, error: e1 }, { data: ls, error: e2 }] = await Promise.all([
-        supabase.from('locations').select('id, name').order('name', { ascending: true }),
-        supabase
-          .from('inventory_lots')
-          .select(`
-            id, qty, unit, dlc, note, entered_at, location_id,
-            product:products_catalog ( 
-              id, name, category, default_unit, density_g_per_ml, grams_per_unit 
-            ),
-            location:locations ( id, name )
-          `)
-          .order('dlc', { ascending: true, nullsFirst: true })
-          .order('entered_at', { ascending: false })
-      ]);
-      
-      if (e1) throw e1;
-      if (e2) throw e2;
-      
-      setLocations(locs || []);
-      
-      const normalizedLots = (ls || []).map(lot => ({
-        ...lot,
-        best_before: lot.dlc || lot.best_before
-      }));
-      
-      setLots(normalizedLots);
-      
-    } catch (e) {
-      console.error(e);
-      setErr(e.message || 'Erreur de chargement');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => { load(); }, [load]);
-
-  const filtered = useMemo(() => {
-    const s = (q || '').toLowerCase().trim();
-    return (lots || []).filter(l => {
-      const okLoc = locFilter === 'Tous' || l.location?.name === locFilter;
-      if (!okLoc) return false;
-      
-      if (!s) return true;
-      
-      const productName = (l.product?.name || '').toLowerCase();
-      const category = (l.product?.category || '').toLowerCase();
-      const note = (l.note || '').toLowerCase();
-      
-      return productName.includes(s) || category.includes(s) || note.includes(s);
-    });
-  }, [lots, q, locFilter]);
-
-  const byProduct = useMemo(() => {
-    const m = new Map();
-    
-    for (const lot of filtered) {
-      const pid = lot.product?.id;
-      if (!pid) continue;
-      
-      if (!m.has(pid)) {
-        m.set(pid, { 
-          productId: pid, 
-          name: lot.product.name, 
-          category: lot.product.category,
-          unit: lot.product.default_unit || lot.unit,
-          lots: [] 
-        });
-      }
-      m.get(pid).lots.push(lot);
-    }
-    
-    return Array.from(m.values()).sort((a, b) => {
-      const aUrgent = Math.min(...a.lots.map(l => daysUntil(l.best_before) ?? 999));
-      const bUrgent = Math.min(...b.lots.map(l => daysUntil(l.best_before) ?? 999));
-      if (aUrgent !== bUrgent) return aUrgent - bUrgent;
-      return a.name.localeCompare(b.name);
-    });
-  }, [filtered]);
-
-  const stats = useMemo(() => {
-    const totalProducts = byProduct.length;
-    let expiredCount = 0;
-    let soonCount = 0;
-    let totalLots = filtered.length;
-    
-    for (const lot of filtered) {
-      const days = daysUntil(lot.best_before);
-      if (days !== null) {
-        if (days < 0) expiredCount++;
-        else if (days <= 3) soonCount++;
-      }
-    }
-    
-    return { totalProducts, expiredCount, soonCount, totalLots };
-  }, [byProduct, filtered]);
-
-  async function handleAddLot(lotData, product) {
-    try {
-      const { data: newLot, error } = await supabase
-        .from('inventory_lots')
-        .insert([lotData])
-        .select(`
-          id, qty, unit, dlc, note, entered_at, location_id,
-          product:products_catalog ( 
-            id, name, category, default_unit, density_g_per_ml, grams_per_unit 
-          ),
-          location:locations ( id, name )
-        `)
-        .single();
-        
-      if (error) throw error;
-      
-      const normalizedLot = {
-        ...newLot,
-        best_before: newLot.dlc || newLot.best_before
-      };
-      
-      setLots(prev => [normalizedLot, ...prev]);
-      setShowAddForm(false);
-      
-      alert(`Lot ajouté avec succès !`);
-    } catch (err) {
-      console.error('Erreur ajout lot:', err);
-      throw err;
-    }
-  }
-
-  async function handleDeleteLot(lotId) {
-    try {
-      const { error } = await supabase
-        .from('inventory_lots')
-        .delete()
-        .eq('id', lotId);
-        
-      if (error) throw error;
-      
-      setLots(prev => prev.filter(l => l.id !== lotId));
-    } catch (err) {
-      console.error('Erreur suppression lot:', err);
-      alert('Erreur: ' + err.message);
-    }
-  }
-
-  async function handleUpdateLot(lotId, updates) {
-    try {
-      const { data, error } = await supabase
-        .from('inventory_lots')
-        .update(updates)
-        .eq('id', lotId)
-        .select()
-        .single();
-        
-      if (error) throw error;
-      
-      setLots(prev => prev.map(l => l.id === lotId ? {
-        ...l,
-        ...data,
-        best_before: data.dlc || data.best_before
-      } : l));
-    } catch (err) {
-      console.error('Erreur mise à jour lot:', err);
-      alert('Erreur: ' + err.message);
-    }
-  }
-
-  function handleQuickAction(action, { productId, name }) {
-    if (action === 'add') {
-      // TODO: Ouvrir un modal d'ajout rapide pour ce produit spécifique
-      setShowAddForm(true);
-    }
-  }
-
-  function handleProductOpen({ productId, name }) {
-    // TODO: Ouvrir une vue détaillée du produit avec tous ses lots
-    alert(`Ouverture de la vue détaillée pour "${name}" (ID: ${productId})`);
-  }
-
-  return (
-    <div style={{ padding: 24, maxWidth: 1400, margin: '0 auto' }}>
-      {/* En-tête avec titre et stats */}
-      <div style={{ marginBottom: 24 }}>
-        <h1 style={{ 
-          fontSize: '2.5rem', 
-          fontWeight: 800, 
-          color: '#15803d', 
-          margin: '0 0 16px 0',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 16
-        }}>
-          🏺 Garde-Manger
-        </h1>
-        
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', 
-          gap: 16, 
-          marginBottom: 20 
-        }}>
-          <Stat value={stats.totalProducts} label="Produits" />
-          <Stat value={stats.totalLots} label="Lots" />
-          <Stat value={stats.expiredCount} label="Périmés" tone={stats.expiredCount > 0 ? 'danger' : 'muted'} />
-          <Stat value={stats.soonCount} label="Urgents" tone={stats.soonCount > 0 ? 'warning' : 'muted'} />
-        </div>
-      </div>
-
-      {/* Barre de contrôles */}
-      <div style={{
-        ...glassBase,
-        borderRadius: 12,
-        padding: 16,
-        marginBottom: 20,
-        display: 'grid',
-        gap: 16
-      }}>
-        <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-          <input
-            placeholder="🔍 Rechercher un produit..."
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            style={{
-              minWidth: 220,
-              padding: '10px 14px',
-              borderRadius: 8,
-              border: '1px solid #ddd',
-              fontSize: '1rem'
-            }}
-          />
-          
-          <select
-            value={locFilter}
-            onChange={(e) => setLocFilter(e.target.value)}
-            style={{
-              padding: '10px 14px',
-              borderRadius: 8,
-              border: '1px solid #ddd'
-            }}
-          >
-            <option value="Tous">Tous les lieux</option>
-            {locations.map(l => (
-              <option key={l.id} value={l.name}>{l.name}</option>
-            ))}
-          </select>
-          
-          <div style={{display:'flex', gap:8}}>
-            <button
-              onClick={() => setView('products')}
-              style={{
-                padding: '10px 16px',
-                borderRadius: 8,
-                border: '1px solid #ddd',
-                background: view === 'products' ? '#2563eb' : 'white',
-                color: view === 'products' ? 'white' : '#374151',
-                cursor: 'pointer',
-                fontWeight: 600
-              }}
-            >
-              🎯 Par produits
-            </button>
-            
-            <button
-              onClick={() => setView('lots')}
-              style={{
-                padding: '10px 16px',
-                borderRadius: 8,
-                border: '1px solid #ddd',
-                background: view === 'lots' ? '#2563eb' : 'white',
-                color: view === 'lots' ? 'white' : '#374151',
-                cursor: 'pointer',
-                fontWeight: 600
-              }}
-            >
-              📦 Tous les lots
-            </button>
-          </div>
-          
-          <button
-            onClick={() => setShowAddForm(!showAddForm)}
-            style={{
-              padding: '10px 16px',
-              borderRadius: 8,
-              background: showAddForm ? '#dc2626' : '#16a34a',
-              color: 'white',
-              border: 'none',
-              cursor: 'pointer',
-              fontWeight: 600
-            }}
-          >
-            {showAddForm ? '❌ Fermer' : '➕ Ajouter'}
-          </button>
-          
-          <button
-            onClick={load}
-            style={{
-              padding: '10px 16px',
-              borderRadius: 8,
-              background: '#6b7280',
-              color: 'white',
-              border: 'none',
-              cursor: 'pointer',
-              fontWeight: 600
-            }}
-          >
-            🔄 Actualiser
-          </button>
-        </div>
-      </div>
-
-      {/* Formulaire d'ajout intelligent */}
-      {showAddForm && (
-        <div style={{ marginBottom: 20 }}>
-          <SmartAddForm
-            locations={locations}
-            onAdd={handleAddLot}
-            onClose={() => setShowAddForm(false)}
-          />
-        </div>
-      )}
-
-      {/* Messages d'état */}
-      {err && (
-        <div style={{
-          background: '#fee2e2',
-          color: '#991b1b',
-          padding: 16,
-          borderRadius: 8,
-          marginBottom: 20,
-          border: '1px solid #fecaca'
-        }}>
-          ❌ {err}
-        </div>
-      )}
-      
-      {loading && (
-        <div style={{
-          textAlign: 'center',
-          padding: 40,
-          color: '#6b7280'
-        }}>
-          🔄 Chargement des données...
-        </div>
-      )}
-
-      {/* Contenu principal */}
-      {!loading && (
-        <>
-          {view === 'products' ? (
-            <div>
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
-                gap: 16 
-              }}>
-                {byProduct.map(({ productId, name, category, unit, lots }) => (
-                  <ProductCard
-                    key={productId}
-                    productId={productId}
-                    name={name}
-                    category={category}
-                    unit={unit}
-                    lots={lots}
-                    onOpen={handleProductOpen}
-                    onQuickAction={handleQuickAction}
-                  />
-                ))}
-              </div>
-              
-              {byProduct.length === 0 && (
-                <div style={{
-                  textAlign: 'center',
-                  padding: 60,
-                  color: '#6b7280'
-                }}>
-                  {q || locFilter !== 'Tous' ? 
-                    '🔍 Aucun produit ne correspond aux filtres.' :
-                    '📦 Aucun produit dans le garde-manger. Commencez par ajouter des lots !'
-                  }
-                </div>
-              )}
-            </div>
-          ) : (
-            <LotsView
-              lots={filtered}
-              onDeleteLot={handleDeleteLot}
-              onUpdateLot={handleUpdateLot}
-            />
-          )}
-          
-          {view === 'lots' && filtered.length === 0 && (
-            <div style={{
-              textAlign: 'center',
-              padding: 60,
-              color: '#6b7280'
-            }}>
-              {q || locFilter !== 'Tous' ? 
-                '🔍 Aucun lot ne correspond aux filtres.' :
-                '📦 Aucun lot dans le garde-manger.'
-              }
-            </div>
-          )}
-        </>
-      )}
-    </div>
-  );
-}:'100%', padding:'10px', borderRadius:8, border:'1px solid #ddd'}}
+                style={{width:'100%', padding:'10px', borderRadius:8, border:'1px solid #ddd'}}
                 required
               />
             </div>
@@ -1432,4 +720,705 @@ function SmartAddForm({ locations, onAdd, onClose }) {
               type="date"
               value={dlc}
               onChange={(e) => setDlc(e.target.value)}
-              style={{width
+              style={{width:'100%', padding:'8px', borderRadius:6, border:'1px solid #ddd'}}
+              title="Date Limite de Consommation"
+            />
+          </div>
+          
+          <div>
+            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+              Lieu
+            </label>
+            <select
+              value={locationId}
+              onChange={(e) => setLocationId(e.target.value)}
+              style={{width:'100%', padding:'8px', borderRadius:6, border:'1px solid #ddd'}}
+            >
+              <option value="">Choisir un lieu...</option>
+              {locations.map(loc => (
+                <option key={loc.id} value={loc.id}>{loc.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            style={{
+              whiteSpace:'nowrap', 
+              minWidth:100,
+              padding:'10px 16px',
+              background: loading ? '#ccc' : '#2563eb',
+              color:'white',
+              border:'none',
+              borderRadius:8,
+              cursor: loading ? 'not-allowed' : 'pointer',
+              fontWeight:600
+            }}
+          >
+            {loading ? '⏳ Ajout...' : '✅ Ajouter'}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+/* ----------------- Carte de produit ----------------- */
+function ProductCard({ productId, name, category, unit, lots=[], onOpen, onQuickAction }) {
+  const { total, nextDate, locations, urgentCount } = useMemo(()=>{
+    let total = 0;
+    let nextDate = null;
+    const locSet = new Set();
+    let urgentCount = 0;
+    
+    for (const lot of lots) {
+      total += Number(lot.qty || 0);
+      if (lot.location?.name) locSet.add(lot.location.name);
+      
+      const d = lot.dlc || lot.best_before;
+      if (d && (nextDate === null || new Date(d) < new Date(nextDate))) nextDate = d;
+      
+      const days = daysUntil(d);
+      if (days !== null && days <= 3) urgentCount++;
+    }
+    
+    return { 
+      total: Math.round(total * 100) / 100, 
+      nextDate, 
+      locations: [...locSet].slice(0, 3),
+      urgentCount
+    };
+  }, [lots]);
+
+  const soon = nextDate ? daysUntil(nextDate) : null;
+  const isUrgent = soon !== null && soon <= 3;
+
+  return (
+    <div
+      style={{
+        ...glassBase,
+        borderRadius:12,
+        padding:14,
+        display:'grid',
+        gap:8,
+        cursor:'pointer',
+        transition: 'all 0.2s ease',
+        borderLeft: isUrgent ? '4px solid #dc2626' : '1px solid rgba(0,0,0,0.06)'
+      }}
+      onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
+      onMouseLeave={(e) => e.target.style.transform = 'none'}
+    >
+      <div style={{display:'flex', justifyContent:'space-between', gap:8}}>
+        <div style={{flex:1}}>
+          <div style={{fontWeight:700, color:'#15803d', fontSize:'1.1rem'}}>{name}</div>
+          <div style={{fontSize:'.85rem', color:'#78716c'}}>
+            {category ? category[0].toUpperCase() + category.slice(1) : '—'}
+          </div>
+        </div>
+        <LifespanBadge date={nextDate} />
+      </div>
+
+      <div style={{display:'flex', alignItems:'baseline', justifyContent:'space-between'}}>
+        <div style={{display:'flex', alignItems:'baseline', gap:6}}>
+          <span style={{fontSize:'1.6rem', fontWeight:800, color:'#15803d'}}>
+            {total}
+          </span>
+          <span style={{opacity:.7}}>{lots[0]?.unit || unit || 'u'}</span>
+        </div>
+        
+        {urgentCount > 0 && (
+          <span style={{
+            fontSize:'0.8rem', padding:'2px 6px', borderRadius:12,
+            background:'#fee2e2', color:'#991b1b', fontWeight:600
+          }}>
+            {urgentCount} urgent{urgentCount > 1 ? 's' : ''}
+          </span>
+        )}
+      </div>
+
+      {!!locations.length && (
+        <div style={{display:'flex', flexWrap:'wrap', gap:4}}>
+          {locations.map(loc => (
+            <span key={loc} style={{ 
+              fontSize:'.75rem', padding:'2px 6px', borderRadius:999, 
+              background:'rgba(0,0,0,0.04)' 
+            }}>
+              📍 {loc}
+            </span>
+          ))}
+          {lots.length > locations.length && (
+            <span style={{fontSize:'.75rem', opacity:0.6}}>
+              +{lots.length - locations.length} autre{lots.length - locations.length > 1 ? 's' : ''}
+            </span>
+          )}
+        </div>
+      )}
+
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:8}}>
+        <span style={{fontSize:'.8rem', color:'#78716c'}}>
+          {lots.length} lot{lots.length > 1 ? 's' : ''}
+        </span>
+        
+        <div style={{display:'flex', gap:4}}>
+          <button 
+            onClick={(e) => { 
+              e.stopPropagation(); 
+              onQuickAction?.('add', { productId, name }); 
+            }}
+            style={{
+              padding:'4px 8px', fontSize:'0.8rem', 
+              background:'#16a34a', color:'white',
+              border:'none', borderRadius:4, cursor:'pointer'
+            }}
+            title="Ajouter un lot"
+          >
+            +
+          </button>
+          
+          <button 
+            onClick={(e) => { 
+              e.stopPropagation(); 
+              onOpen?.({ productId, name }); 
+            }}
+            style={{
+              padding:'4px 8px', fontSize:'0.8rem', 
+              background:'#2563eb', color:'white',
+              border:'none', borderRadius:4, cursor:'pointer'
+            }}
+          >
+            Gérer →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ----------------- Vue par lots individuels ----------------- */
+function LotsView({ lots, onDeleteLot, onUpdateLot }) {
+  const sortedLots = useMemo(() => {
+    return [...lots].sort((a, b) => {
+      const da = daysUntil(a.best_before);
+      const db = daysUntil(b.best_before);
+      
+      if (da === null && db === null) return 0;
+      if (da === null) return 1;
+      if (db === null) return -1;
+      return da - db;
+    });
+  }, [lots]);
+
+  async function quickUpdateQty(lot, delta) {
+    const newQty = Math.max(0, Number(lot.qty || 0) + delta);
+    await onUpdateLot(lot.id, { qty: newQty });
+  }
+
+  return (
+    <div style={{display:'grid', gap:12, gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))'}}>
+      {sortedLots.map(lot => {
+        const days = daysUntil(lot.best_before);
+        const isUrgent = days !== null && days <= 3;
+        
+        return (
+          <div
+            key={lot.id}
+            style={{
+              ...glassBase,
+              borderRadius:10,
+              padding:12,
+              borderLeft: isUrgent ? '4px solid #dc2626' : '1px solid rgba(0,0,0,0.06)'
+            }}
+          >
+            <div style={{display:'flex', justifyContent:'space-between', alignItems:'start', marginBottom:8}}>
+              <div style={{flex:1}}>
+                <div style={{fontWeight:600, color:'#15803d'}}>
+                  {lot.product?.name || 'Produit inconnu'}
+                </div>
+                <div style={{fontSize:'0.85rem', color:'#78716c'}}>
+                  {lot.location?.name || 'Sans lieu'}
+                </div>
+              </div>
+              <LifespanBadge date={lot.best_before} />
+            </div>
+
+            <div style={{display:'flex', alignItems:'center', gap:8, marginBottom:8}}>
+              <span style={{fontSize:'1.3rem', fontWeight:700}}>
+                {Number(lot.qty || 0)}
+              </span>
+              <span style={{opacity:0.7}}>{lot.unit}</span>
+            </div>
+
+            {lot.note && (
+              <div style={{fontSize:'0.8rem', opacity:0.6, marginBottom:8}}>
+                💬 {lot.note}
+              </div>
+            )}
+
+            <div style={{display:'flex', gap:6, flexWrap:'wrap'}}>
+              <button
+                onClick={() => quickUpdateQty(lot, 1)}
+                style={{
+                  padding:'4px 8px', fontSize:'0.8rem',
+                  background:'#16a34a', color:'white',
+                  border:'none', borderRadius:4, cursor:'pointer'
+                }}
+              >
+                +1
+              </button>
+              
+              <button
+                onClick={() => quickUpdateQty(lot, -1)}
+                disabled={Number(lot.qty || 0) <= 0}
+                style={{
+                  padding:'4px 8px', fontSize:'0.8rem',
+                  background: Number(lot.qty || 0) <= 0 ? '#ccc' : '#ea580c', 
+                  color:'white',
+                  border:'none', borderRadius:4, 
+                  cursor: Number(lot.qty || 0) <= 0 ? 'not-allowed' : 'pointer'
+                }}
+              >
+                -1
+              </button>
+
+              <button
+                onClick={() => {
+                  if (confirm(`Supprimer le lot de "${lot.product?.name}" ?`)) {
+                    onDeleteLot(lot.id);
+                  }
+                }}
+                style={{
+                  padding:'4px 8px', fontSize:'0.8rem',
+                  background:'#dc2626', color:'white',
+                  border:'none', borderRadius:4, cursor:'pointer'
+                }}
+              >
+                🗑️
+              </button>
+            </div>
+
+            <div style={{fontSize:'0.75rem', opacity:0.5, marginTop:8}}>
+              Ajouté le {fmtDate(lot.entered_at)}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ----------------- Page principale ----------------- */
+export default function PantryPage() {
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState('');
+  const [lots, setLots] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const [q, setQ] = useState('');
+  const [locFilter, setLocFilter] = useState('Tous');
+  const [view, setView] = useState('products'); // 'products' ou 'lots'
+  const [showAddForm, setShowAddForm] = useState(false);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    setErr('');
+    
+    try {
+      const [{ data: locs, error: e1 }, { data: ls, error: e2 }] = await Promise.all([
+        supabase.from('locations').select('id, name').order('name', { ascending: true }),
+        supabase
+          .from('inventory_lots')
+          .select(`
+            id, qty, unit, dlc, note, entered_at, location_id,
+            product:products_catalog ( 
+              id, name, category, default_unit, density_g_per_ml, grams_per_unit 
+            ),
+            location:locations ( id, name )
+          `)
+          .order('dlc', { ascending: true, nullsFirst: true })
+          .order('entered_at', { ascending: false })
+      ]);
+      
+      if (e1) throw e1;
+      if (e2) throw e2;
+      
+      setLocations(locs || []);
+      
+      const normalizedLots = (ls || []).map(lot => ({
+        ...lot,
+        best_before: lot.dlc || lot.best_before
+      }));
+      
+      setLots(normalizedLots);
+      
+    } catch (e) {
+      console.error(e);
+      setErr(e.message || 'Erreur de chargement');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { load(); }, [load]);
+
+  const filtered = useMemo(() => {
+    const s = (q || '').toLowerCase().trim();
+    return (lots || []).filter(l => {
+      const okLoc = locFilter === 'Tous' || l.location?.name === locFilter;
+      if (!okLoc) return false;
+      
+      if (!s) return true;
+      
+      const productName = (l.product?.name || '').toLowerCase();
+      const category = (l.product?.category || '').toLowerCase();
+      const note = (l.note || '').toLowerCase();
+      
+      return productName.includes(s) || category.includes(s) || note.includes(s);
+    });
+  }, [lots, q, locFilter]);
+
+  const byProduct = useMemo(() => {
+    const m = new Map();
+    
+    for (const lot of filtered) {
+      const pid = lot.product?.id;
+      if (!pid) continue;
+      
+      if (!m.has(pid)) {
+        m.set(pid, { 
+          productId: pid, 
+          name: lot.product.name, 
+          category: lot.product.category,
+          unit: lot.product.default_unit || lot.unit,
+          lots: [] 
+        });
+      }
+      m.get(pid).lots.push(lot);
+    }
+    
+    return Array.from(m.values()).sort((a, b) => {
+      const aUrgent = Math.min(...a.lots.map(l => daysUntil(l.best_before) ?? 999));
+      const bUrgent = Math.min(...b.lots.map(l => daysUntil(l.best_before) ?? 999));
+      if (aUrgent !== bUrgent) return aUrgent - bUrgent;
+      return a.name.localeCompare(b.name);
+    });
+  }, [filtered]);
+
+  const stats = useMemo(() => {
+    const totalProducts = byProduct.length;
+    let expiredCount = 0;
+    let soonCount = 0;
+    let totalLots = filtered.length;
+    
+    for (const lot of filtered) {
+      const days = daysUntil(lot.best_before);
+      if (days !== null) {
+        if (days < 0) expiredCount++;
+        else if (days <= 3) soonCount++;
+      }
+    }
+    
+    return { totalProducts, expiredCount, soonCount, totalLots };
+  }, [byProduct, filtered]);
+
+  async function handleAddLot(lotData, product) {
+    try {
+      const { data: newLot, error } = await supabase
+        .from('inventory_lots')
+        .insert([lotData])
+        .select(`
+          id, qty, unit, dlc, note, entered_at, location_id,
+          product:products_catalog ( 
+            id, name, category, default_unit, density_g_per_ml, grams_per_unit 
+          ),
+          location:locations ( id, name )
+        `)
+        .single();
+        
+      if (error) throw error;
+      
+      const normalizedLot = {
+        ...newLot,
+        best_before: newLot.dlc || newLot.best_before
+      };
+      
+      setLots(prev => [normalizedLot, ...prev]);
+      setShowAddForm(false);
+      
+      alert(`Lot ajouté avec succès !`);
+    } catch (err) {
+      console.error('Erreur ajout lot:', err);
+      throw err;
+    }
+  }
+
+  async function handleDeleteLot(lotId) {
+    try {
+      const { error } = await supabase
+        .from('inventory_lots')
+        .delete()
+        .eq('id', lotId);
+        
+      if (error) throw error;
+      
+      setLots(prev => prev.filter(l => l.id !== lotId));
+    } catch (err) {
+      console.error('Erreur suppression lot:', err);
+      alert('Erreur: ' + err.message);
+    }
+  }
+
+  async function handleUpdateLot(lotId, updates) {
+    try {
+      const { data, error } = await supabase
+        .from('inventory_lots')
+        .update(updates)
+        .eq('id', lotId)
+        .select()
+        .single();
+        
+      if (error) throw error;
+      
+      setLots(prev => prev.map(l => l.id === lotId ? {
+        ...l,
+        ...data,
+        best_before: data.dlc || data.best_before
+      } : l));
+    } catch (err) {
+      console.error('Erreur mise à jour lot:', err);
+      alert('Erreur: ' + err.message);
+    }
+  }
+
+  function handleQuickAction(action, { productId, name }) {
+    if (action === 'add') {
+      setShowAddForm(true);
+    }
+  }
+
+  function handleProductOpen({ productId, name }) {
+    alert(`Ouverture de la vue détaillée pour "${name}" (ID: ${productId})`);
+  }
+
+  return (
+    <div style={{ padding: 24, maxWidth: 1400, margin: '0 auto' }}>
+      <div style={{ marginBottom: 24 }}>
+        <h1 style={{ 
+          fontSize: '2.5rem', 
+          fontWeight: 800, 
+          color: '#15803d', 
+          margin: '0 0 16px 0',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 16
+        }}>
+          🏺 Garde-Manger
+        </h1>
+        
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', 
+          gap: 16, 
+          marginBottom: 20 
+        }}>
+          <Stat value={stats.totalProducts} label="Produits" />
+          <Stat value={stats.totalLots} label="Lots" />
+          <Stat value={stats.expiredCount} label="Périmés" tone={stats.expiredCount > 0 ? 'danger' : 'muted'} />
+          <Stat value={stats.soonCount} label="Urgents" tone={stats.soonCount > 0 ? 'warning' : 'muted'} />
+        </div>
+      </div>
+
+      <div style={{
+        ...glassBase,
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 20,
+        display: 'grid',
+        gap: 16
+      }}>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+          <input
+            placeholder="🔍 Rechercher un produit..."
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            style={{
+              minWidth: 220,
+              padding: '10px 14px',
+              borderRadius: 8,
+              border: '1px solid #ddd',
+              fontSize: '1rem'
+            }}
+          />
+          
+          <select
+            value={locFilter}
+            onChange={(e) => setLocFilter(e.target.value)}
+            style={{
+              padding: '10px 14px',
+              borderRadius: 8,
+              border: '1px solid #ddd'
+            }}
+          >
+            <option value="Tous">Tous les lieux</option>
+            {locations.map(l => (
+              <option key={l.id} value={l.name}>{l.name}</option>
+            ))}
+          </select>
+          
+          <div style={{display:'flex', gap:8}}>
+            <button
+              onClick={() => setView('products')}
+              style={{
+                padding: '10px 16px',
+                borderRadius: 8,
+                border: '1px solid #ddd',
+                background: view === 'products' ? '#2563eb' : 'white',
+                color: view === 'products' ? 'white' : '#374151',
+                cursor: 'pointer',
+                fontWeight: 600
+              }}
+            >
+              🎯 Par produits
+            </button>
+            
+            <button
+              onClick={() => setView('lots')}
+              style={{
+                padding: '10px 16px',
+                borderRadius: 8,
+                border: '1px solid #ddd',
+                background: view === 'lots' ? '#2563eb' : 'white',
+                color: view === 'lots' ? 'white' : '#374151',
+                cursor: 'pointer',
+                fontWeight: 600
+              }}
+            >
+              📦 Tous les lots
+            </button>
+          </div>
+          
+          <button
+            onClick={() => setShowAddForm(!showAddForm)}
+            style={{
+              padding: '10px 16px',
+              borderRadius: 8,
+              background: showAddForm ? '#dc2626' : '#16a34a',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              fontWeight: 600
+            }}
+          >
+            {showAddForm ? '❌ Fermer' : '➕ Ajouter'}
+          </button>
+          
+          <button
+            onClick={load}
+            style={{
+              padding: '10px 16px',
+              borderRadius: 8,
+              background: '#6b7280',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              fontWeight: 600
+            }}
+          >
+            🔄 Actualiser
+          </button>
+        </div>
+      </div>
+
+      {showAddForm && (
+        <div style={{ marginBottom: 20 }}>
+          <SmartAddForm
+            locations={locations}
+            onAdd={handleAddLot}
+            onClose={() => setShowAddForm(false)}
+          />
+        </div>
+      )}
+
+      {err && (
+        <div style={{
+          background: '#fee2e2',
+          color: '#991b1b',
+          padding: 16,
+          borderRadius: 8,
+          marginBottom: 20,
+          border: '1px solid #fecaca'
+        }}>
+          ❌ {err}
+        </div>
+      )}
+      
+      {loading && (
+        <div style={{
+          textAlign: 'center',
+          padding: 40,
+          color: '#6b7280'
+        }}>
+          🔄 Chargement des données...
+        </div>
+      )}
+
+      {!loading && (
+        <>
+          {view === 'products' ? (
+            <div>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
+                gap: 16 
+              }}>
+                {byProduct.map(({ productId, name, category, unit, lots }) => (
+                  <ProductCard
+                    key={productId}
+                    productId={productId}
+                    name={name}
+                    category={category}
+                    unit={unit}
+                    lots={lots}
+                    onOpen={handleProductOpen}
+                    onQuickAction={handleQuickAction}
+                  />
+                ))}
+              </div>
+              
+              {byProduct.length === 0 && (
+                <div style={{
+                  textAlign: 'center',
+                  padding: 60,
+                  color: '#6b7280'
+                }}>
+                  {q || locFilter !== 'Tous' ? 
+                    '🔍 Aucun produit ne correspond aux filtres.' :
+                    '📦 Aucun produit dans le garde-manger. Commencez par ajouter des lots !'
+                  }
+                </div>
+              )}
+            </div>
+          ) : (
+            <LotsView
+              lots={filtered}
+              onDeleteLot={handleDeleteLot}
+              onUpdateLot={handleUpdateLot}
+            />
+          )}
+          
+          {view === 'lots' && filtered.length === 0 && (
+            <div style={{
+              textAlign: 'center',
+              padding: 60,
+              color: '#6b7280'
+            }}>
+              {q || locFilter !== 'Tous' ? 
+                '🔍 Aucun lot ne correspond aux filtres.' :
+                '📦 Aucun lot dans le garde-manger.'
+              }
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
