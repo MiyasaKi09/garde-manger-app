@@ -2,7 +2,10 @@
 'use client';
 
 import { useEffect, useMemo, useState, useCallback } from 'react';
+import Link from 'next/link';
 import { supabase } from '@/lib/supabaseClient';
+import { estimateProductMeta } from '@/lib/meta';
+import { convertWithMeta } from '@/lib/units';
 
 /* ----------------- Helpers dates & style ----------------- */
 function daysUntil(date) {
@@ -14,14 +17,92 @@ function daysUntil(date) {
   return Math.round((d - today) / 86400000);
 }
 
+function fmtDate(d) {
+  if (!d) return '—';
+  try {
+    const x = new Date(d);
+    return x.toLocaleDateString('fr-FR', { day:'2-digit', month:'short', year:'numeric' });
+  } catch { 
+    return d; 
+  }
+}
+
 const glassBase = {
   background: 'rgba(255,255,255,0.55)',
   backdropFilter: 'blur(10px) saturate(120%)',
   WebkitBackdropFilter: 'blur(10px) saturate(120%)',
   border: '1px solid rgba(0,0,0,0.06)',
   boxShadow: '0 8px 28px rgba(0,0,0,0.08)',
-  color: '#1f281f',
+  color: 'var(--ink, #1f281f)',
 };
+
+/* ----------------- Recherche floue de produits ----------------- */
+function fuzzyScore(needle, haystack) {
+  if (!needle || !haystack) return 0;
+  
+  const n = needle.toLowerCase();
+  const h = haystack.toLowerCase();
+  
+  if (h === n) return 1000;
+  if (h.includes(n)) return 800;
+  
+  const needleWords = n.split(/\s+/);
+  const haystackWords = h.split(/\s+/);
+  
+  let score = 0;
+  let matchedWords = 0;
+  
+  for (const nWord of needleWords) {
+    let bestWordScore = 0;
+    for (const hWord of haystackWords) {
+      if (hWord === nWord) bestWordScore = Math.max(bestWordScore, 100);
+      else if (hWord.includes(nWord)) bestWordScore = Math.max(bestWordScore, 80);
+      else if (nWord.includes(hWord)) bestWordScore = Math.max(bestWordScore, 60);
+      else {
+        const dist = levenshteinDistance(nWord, hWord);
+        const maxLen = Math.max(nWord.length, hWord.length);
+        if (dist <= maxLen * 0.3) bestWordScore = Math.max(bestWordScore, 40);
+      }
+    }
+    score += bestWordScore;
+    if (bestWordScore > 50) matchedWords++;
+  }
+  
+  if (matchedWords === needleWords.length && needleWords.length > 1) {
+    score *= 1.5;
+  }
+  
+  return score;
+}
+
+function levenshteinDistance(a, b) {
+  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
+  
+  const matrix = [];
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  }
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+  
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+  
+  return matrix[b.length][a.length];
+}
 
 /* ----------------- Composants UI ----------------- */
 function LifespanBadge({ date }) {
@@ -36,6 +117,7 @@ function LifespanBadge({ date }) {
 
   return (
     <span
+      className={`lifespan-badge ${status}`}
       style={{
         display:'inline-flex', alignItems:'center', gap:6,
         padding:'4px 10px', borderRadius:999,
@@ -65,167 +147,112 @@ function Stat({ value, label, tone }) {
   );
 }
 
-/* ----------------- Formulaire d'ajout simple ----------------- */
-function SimpleAddForm({ locations, onAdd, onClose }) {
-  const [productName, setProductName] = useState('');
-  const [qty, setQty] = useState(1);
-  const [unit, setUnit] = useState('g');
-  const [dlc, setDlc] = useState('');
-  const [locationId, setLocationId] = useState('');
+/* ----------------- Modal de création de produit intelligent ----------------- */
+function SmartProductCreationModal({ isOpen, onClose, onSave, initialName = '' }) {
+  const [name, setName] = useState(initialName);
+  const [category, setCategory] = useState('');
+  const [defaultUnit, setDefaultUnit] = useState('g');
+  const [typicalShelfLife, setTypicalShelfLife] = useState('');
   const [loading, setLoading] = useState(false);
+  const [estimatedMeta, setEstimatedMeta] = useState(null);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!productName.trim()) return;
-    
-    setLoading(true);
-    try {
-      // 1. Créer ou trouver le produit
-      let product;
-      const { data: existingProduct } = await supabase
-        .from('products_catalog')
-        .select('id, name, default_unit')
-        .ilike('name', productName.trim())
-        .single();
-
-      if (existingProduct) {
-        product = existingProduct;
-      } else {
-        // Créer nouveau produit
-        const { data: newProduct, error: productError } = await supabase
-          .from('products_catalog')
-          .insert([{
-            name: productName.trim(),
-            category: 'Autre',
-            default_unit: unit,
-            created_at: new Date().toISOString()
-          }])
-          .select()
-          .single();
-          
-        if (productError) throw productError;
-        product = newProduct;
+  useEffect(() => {
+    if (isOpen) {
+      setName(initialName);
+      // Estimation automatique des métadonnées
+      if (initialName) {
+        const meta = estimateProductMeta({ name: initialName, category: '' });
+        setEstimatedMeta(meta);
+        
+        // Auto-suggestion de catégorie basée sur le nom
+        const nameLower = initialName.toLowerCase();
+        if (/tomate|salade|épinard|carotte|oignon|courgette|poivron/.test(nameLower)) {
+          setCategory('légumes');
+          setTypicalShelfLife('7');
+        } else if (/pomme|banane|orange|citron|avocat/.test(nameLower)) {
+          setCategory('fruits');
+          setTypicalShelfLife('7');
+        } else if (/lait|yaourt|crème|fromage/.test(nameLower)) {
+          setCategory('produits laitiers');
+          setTypicalShelfLife('7');
+        } else if (/viande|poisson|charcuterie/.test(nameLower)) {
+          setCategory('protéines animales');
+          setTypicalShelfLife('3');
+        } else if (/farine|sucre|sel|épice/.test(nameLower)) {
+          setCategory('épicerie sèche');
+          setTypicalShelfLife('365');
+        }
+        
+        // Auto-suggestion d'unité
+        if (/liquide|lait|huile|jus|sauce/.test(nameLower)) {
+          setDefaultUnit('ml');
+        } else if (/oeuf|œuf|citron|orange|pomme(?! de terre)|banane/.test(nameLower)) {
+          setDefaultUnit('u');
+        }
       }
+    }
+  }, [isOpen, initialName]);
 
-      // 2. Créer le lot
-      const lot = {
-        product_id: product.id,
-        location_id: locationId || null,
-        qty: Number(qty),
-        unit: unit,
-        dlc: dlc || null,
-        note: 'Ajouté manuellement',
-        entered_at: new Date().toISOString()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    try {
+      const productData = {
+        name: name.trim(),
+        category: category.trim() || null,
+        default_unit: defaultUnit,
+        typical_shelf_life_days: typicalShelfLife ? parseInt(typicalShelfLife) : null,
+        // Ajout des métadonnées estimées
+        density_g_per_ml: estimatedMeta?.density_g_per_ml || 1.0,
+        grams_per_unit: estimatedMeta?.grams_per_unit || null,
+        confidence_density: estimatedMeta?.confidence_density || 0.5,
+        confidence_unit: estimatedMeta?.confidence_unit || 0.3,
+        created_at: new Date().toISOString()
       };
-
-      await onAdd(lot, product);
       
-      // Reset
-      setProductName('');
-      setQty(1);
-      setUnit('g');
-      setDlc('');
-      setLocationId('');
-      
+      await onSave(productData);
+      onClose();
     } catch (err) {
-      console.error('Erreur ajout:', err);
-      alert('Erreur lors de l\'ajout: ' + err.message);
+      console.error('Erreur création produit:', err);
+      alert('Erreur: ' + err.message);
     } finally {
       setLoading(false);
     }
-  }
+  };
+
+  if (!isOpen) return null;
 
   return (
-    <div style={{ 
-      ...glassBase, 
-      borderRadius:16, 
-      padding:20,
-      marginBottom:16,
-      border: '2px solid rgba(34,197,94,0.2)'
+    <div style={{
+      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+      background: 'rgba(0,0,0,0.5)', zIndex: 1000,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      padding: 20
     }}>
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:16}}>
-        <h3 style={{margin:0}}>➕ Ajouter un produit</h3>
-        <button 
-          onClick={onClose}
-          style={{
-            background:'none', border:'none', fontSize:'1.2rem', cursor:'pointer',
-            padding:'6px 10px', borderRadius:6
-          }}
-        >
-          ✕
-        </button>
-      </div>
+      <div style={{
+        background: 'white', borderRadius: 16, padding: 24,
+        maxWidth: 600, width: '100%', maxHeight: '90vh', overflowY: 'auto'
+      }}>
+        <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20}}>
+          <h3 style={{margin:0}}>✨ Créer un nouveau produit</h3>
+          <button onClick={onClose} style={{background:'none', border:'none', fontSize:'1.5rem', cursor:'pointer'}}>
+            ×
+          </button>
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        <div style={{
-          display:'grid', 
-          gridTemplateColumns:'2fr 1fr 1fr 1fr 1fr', 
-          gap:12, 
-          alignItems:'end'
-        }}>
-          <div>
-            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
-              Produit
-            </label>
-            <input
-              placeholder="Nom du produit"
-              value={productName}
-              onChange={(e) => setProductName(e.target.value)}
-              style={{
-                width:'100%', padding:'8px 12px', borderRadius:8, border:'1px solid #ddd'
-              }}
-              required
-            />
-          </div>
-          
-          <div>
-            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
-              Quantité
-            </label>
-            <input
-              type="number"
-              min="0"
-              step="0.01"
-              value={qty}
-              onChange={(e) => setQty(e.target.value)}
-              style={{
-                width:'100%', padding:'8px 12px', borderRadius:8, border:'1px solid #ddd'
-              }}
-              required
-            />
-          </div>
-          
-          <div>
-            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
-              Unité
-            </label>
-            <select
-              value={unit}
-              onChange={(e) => setUnit(e.target.value)}
-              style={{
-                width:'100%', padding:'8px 12px', borderRadius:8, border:'1px solid #ddd'
-              }}
-            >
-              <option value="g">g</option>
-              <option value="kg">kg</option>
-              <option value="ml">ml</option>
-              <option value="cl">cl</option>
-              <option value="l">l</option>
-              <option value="u">u</option>
-            </select>
-          </div>
-          
-          <div>
-            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
-              DLC
-            </label>
-            <input
-              type="date"
-              value={dlc}
-              onChange={(e) => setDlc(e.target.value)}
-              style={{
-                width:'100%', padding:'8px 12px', borderRadius:8, border:'1px solid #ddd'
-              }}
+        <form onSubmit={handleSubmit}>
+          <div style={{display:'grid', gap:16}}>
+            <div>
+              <label style={{display:'block', marginBottom:8, fontWeight:600}}>
+                Nom du produit *
+              </label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                style={{width:'100%', padding:'8px', borderRadius:6, border:'1px solid #ddd'}}
+              title="Date Limite de Consommation"
             />
           </div>
           
@@ -236,24 +263,22 @@ function SimpleAddForm({ locations, onAdd, onClose }) {
             <select
               value={locationId}
               onChange={(e) => setLocationId(e.target.value)}
-              style={{
-                width:'100%', padding:'8px 12px', borderRadius:8, border:'1px solid #ddd'
-              }}
+              style={{width:'100%', padding:'8px', borderRadius:6, border:'1px solid #ddd'}}
             >
-              <option value="">Choisir...</option>
+              <option value="">Choisir un lieu...</option>
               {locations.map(loc => (
                 <option key={loc.id} value={loc.id}>{loc.name}</option>
               ))}
             </select>
           </div>
-        </div>
-        
-        <div style={{marginTop:16}}>
+
           <button
             type="submit"
             disabled={loading}
             style={{
-              padding:'10px 20px',
+              whiteSpace:'nowrap', 
+              minWidth:100,
+              padding:'10px 16px',
               background: loading ? '#ccc' : '#2563eb',
               color:'white',
               border:'none',
@@ -262,7 +287,7 @@ function SimpleAddForm({ locations, onAdd, onClose }) {
               fontWeight:600
             }}
           >
-            {loading ? 'Ajout...' : '✅ Ajouter'}
+            {loading ? '⏳ Ajout...' : '✅ Ajouter'}
           </button>
         </div>
       </form>
@@ -271,31 +296,37 @@ function SimpleAddForm({ locations, onAdd, onClose }) {
 }
 
 /* ----------------- Carte de produit ----------------- */
-function ProductCard({ productId, name, category, unit, lots=[], onOpen }) {
-  const { total, nextDate, locations } = useMemo(()=>{
+function ProductCard({ productId, name, category, unit, lots=[], onOpen, onQuickAction }) {
+  const { total, nextDate, locations, urgentCount } = useMemo(()=>{
     let total = 0;
     let nextDate = null;
     const locSet = new Set();
+    let urgentCount = 0;
     
     for (const lot of lots) {
       total += Number(lot.qty || 0);
       if (lot.location?.name) locSet.add(lot.location.name);
+      
       const d = lot.dlc || lot.best_before;
       if (d && (nextDate === null || new Date(d) < new Date(nextDate))) nextDate = d;
+      
+      const days = daysUntil(d);
+      if (days !== null && days <= 3) urgentCount++;
     }
     
     return { 
       total: Math.round(total * 100) / 100, 
       nextDate, 
-      locations: [...locSet].slice(0, 6)
+      locations: [...locSet].slice(0, 3),
+      urgentCount
     };
   }, [lots]);
 
   const soon = nextDate ? daysUntil(nextDate) : null;
+  const isUrgent = soon !== null && soon <= 3;
 
   return (
     <div
-      onClick={() => onOpen?.({ productId, name })}
       style={{
         ...glassBase,
         borderRadius:12,
@@ -303,14 +334,15 @@ function ProductCard({ productId, name, category, unit, lots=[], onOpen }) {
         display:'grid',
         gap:8,
         cursor:'pointer',
-        transition: 'transform 0.2s ease'
+        transition: 'all 0.2s ease',
+        borderLeft: isUrgent ? '4px solid #dc2626' : '1px solid rgba(0,0,0,0.06)'
       }}
       onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
       onMouseLeave={(e) => e.target.style.transform = 'none'}
     >
       <div style={{display:'flex', justifyContent:'space-between', gap:8}}>
-        <div>
-          <div style={{fontWeight:700, color:'#15803d'}}>{name}</div>
+        <div style={{flex:1}}>
+          <div style={{fontWeight:700, color:'#15803d', fontSize:'1.1rem'}}>{name}</div>
           <div style={{fontSize:'.85rem', color:'#78716c'}}>
             {category ? category[0].toUpperCase() + category.slice(1) : '—'}
           </div>
@@ -318,47 +350,190 @@ function ProductCard({ productId, name, category, unit, lots=[], onOpen }) {
         <LifespanBadge date={nextDate} />
       </div>
 
-      <div style={{display:'flex', alignItems:'baseline', gap:6}}>
-        <span style={{fontSize:'1.6rem', fontWeight:800, color:'#15803d'}}>
-          {total}
-        </span>
-        <span style={{opacity:.7}}>{lots[0]?.unit || unit || 'u'}</span>
+      <div style={{display:'flex', alignItems:'baseline', justifyContent:'space-between'}}>
+        <div style={{display:'flex', alignItems:'baseline', gap:6}}>
+          <span style={{fontSize:'1.6rem', fontWeight:800, color:'#15803d'}}>
+            {total}
+          </span>
+          <span style={{opacity:.7}}>{lots[0]?.unit || unit || 'u'}</span>
+        </div>
+        
+        {urgentCount > 0 && (
+          <span style={{
+            fontSize:'0.8rem', padding:'2px 6px', borderRadius:12,
+            background:'#fee2e2', color:'#991b1b', fontWeight:600
+          }}>
+            {urgentCount} urgent{urgentCount > 1 ? 's' : ''}
+          </span>
+        )}
       </div>
 
-      {soon !== null && (
-        <div style={{fontSize:'.9rem', color:'#57534e'}}>
-          ⏰ Plus proche: {soon >= 0 ? `J+${soon}` : `périmé depuis ${Math.abs(soon)}j`}
-        </div>
-      )}
-
       {!!locations.length && (
-        <div style={{display:'flex', flexWrap:'wrap', gap:6}}>
+        <div style={{display:'flex', flexWrap:'wrap', gap:4}}>
           {locations.map(loc => (
             <span key={loc} style={{ 
-              fontSize:'.8rem', padding:'4px 8px', borderRadius:999, 
+              fontSize:'.75rem', padding:'2px 6px', borderRadius:999, 
               background:'rgba(0,0,0,0.04)' 
             }}>
               📍 {loc}
             </span>
           ))}
+          {lots.length > locations.length && (
+            <span style={{fontSize:'.75rem', opacity:0.6}}>
+              +{lots.length - locations.length} autre{lots.length - locations.length > 1 ? 's' : ''}
+            </span>
+          )}
         </div>
       )}
 
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:8}}>
         <span style={{fontSize:'.8rem', color:'#78716c'}}>
           {lots.length} lot{lots.length > 1 ? 's' : ''}
         </span>
-        <button 
-          onClick={(e) => { e.stopPropagation(); onOpen?.({ productId, name }); }}
-          style={{
-            padding:'4px 8px', fontSize:'0.8rem', 
-            background:'#2563eb', color:'white',
-            border:'none', borderRadius:4, cursor:'pointer'
-          }}
-        >
-          Gérer →
-        </button>
+        
+        <div style={{display:'flex', gap:4}}>
+          <button 
+            onClick={(e) => { 
+              e.stopPropagation(); 
+              onQuickAction?.('add', { productId, name }); 
+            }}
+            style={{
+              padding:'4px 8px', fontSize:'0.8rem', 
+              background:'#16a34a', color:'white',
+              border:'none', borderRadius:4, cursor:'pointer'
+            }}
+            title="Ajouter un lot"
+          >
+            +
+          </button>
+          
+          <button 
+            onClick={(e) => { 
+              e.stopPropagation(); 
+              onOpen?.({ productId, name }); 
+            }}
+            style={{
+              padding:'4px 8px', fontSize:'0.8rem', 
+              background:'#2563eb', color:'white',
+              border:'none', borderRadius:4, cursor:'pointer'
+            }}
+          >
+            Gérer →
+          </button>
+        </div>
       </div>
+    </div>
+  );
+}
+
+/* ----------------- Vue par lots individuels ----------------- */
+function LotsView({ lots, onDeleteLot, onUpdateLot }) {
+  const sortedLots = useMemo(() => {
+    return [...lots].sort((a, b) => {
+      const da = daysUntil(a.best_before);
+      const db = daysUntil(b.best_before);
+      
+      if (da === null && db === null) return 0;
+      if (da === null) return 1;
+      if (db === null) return -1;
+      return da - db;
+    });
+  }, [lots]);
+
+  async function quickUpdateQty(lot, delta) {
+    const newQty = Math.max(0, Number(lot.qty || 0) + delta);
+    await onUpdateLot(lot.id, { qty: newQty });
+  }
+
+  return (
+    <div style={{display:'grid', gap:12, gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))'}}>
+      {sortedLots.map(lot => {
+        const days = daysUntil(lot.best_before);
+        const isUrgent = days !== null && days <= 3;
+        
+        return (
+          <div
+            key={lot.id}
+            style={{
+              ...glassBase,
+              borderRadius:10,
+              padding:12,
+              borderLeft: isUrgent ? '4px solid #dc2626' : '1px solid rgba(0,0,0,0.06)'
+            }}
+          >
+            <div style={{display:'flex', justifyContent:'space-between', alignItems:'start', marginBottom:8}}>
+              <div style={{flex:1}}>
+                <div style={{fontWeight:600, color:'#15803d'}}>
+                  {lot.product?.name || 'Produit inconnu'}
+                </div>
+                <div style={{fontSize:'0.85rem', color:'#78716c'}}>
+                  {lot.location?.name || 'Sans lieu'}
+                </div>
+              </div>
+              <LifespanBadge date={lot.best_before} />
+            </div>
+
+            <div style={{display:'flex', alignItems:'center', gap:8, marginBottom:8}}>
+              <span style={{fontSize:'1.3rem', fontWeight:700}}>
+                {Number(lot.qty || 0)}
+              </span>
+              <span style={{opacity:0.7}}>{lot.unit}</span>
+            </div>
+
+            {lot.note && (
+              <div style={{fontSize:'0.8rem', opacity:0.6, marginBottom:8}}>
+                💬 {lot.note}
+              </div>
+            )}
+
+            <div style={{display:'flex', gap:6, flexWrap:'wrap'}}>
+              <button
+                onClick={() => quickUpdateQty(lot, 1)}
+                style={{
+                  padding:'4px 8px', fontSize:'0.8rem',
+                  background:'#16a34a', color:'white',
+                  border:'none', borderRadius:4, cursor:'pointer'
+                }}
+              >
+                +1
+              </button>
+              
+              <button
+                onClick={() => quickUpdateQty(lot, -1)}
+                disabled={Number(lot.qty || 0) <= 0}
+                style={{
+                  padding:'4px 8px', fontSize:'0.8rem',
+                  background: Number(lot.qty || 0) <= 0 ? '#ccc' : '#ea580c', 
+                  color:'white',
+                  border:'none', borderRadius:4, 
+                  cursor: Number(lot.qty || 0) <= 0 ? 'not-allowed' : 'pointer'
+                }}
+              >
+                -1
+              </button>
+
+              <button
+                onClick={() => {
+                  if (confirm(`Supprimer le lot de "${lot.product?.name}" ?`)) {
+                    onDeleteLot(lot.id);
+                  }
+                }}
+                style={{
+                  padding:'4px 8px', fontSize:'0.8rem',
+                  background:'#dc2626', color:'white',
+                  border:'none', borderRadius:4, cursor:'pointer'
+                }}
+              >
+                🗑️
+              </button>
+            </div>
+
+            <div style={{fontSize:'0.75rem', opacity:0.5, marginTop:8}}>
+              Ajouté le {fmtDate(lot.entered_at)}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -371,6 +546,7 @@ export default function PantryPage() {
   const [locations, setLocations] = useState([]);
   const [q, setQ] = useState('');
   const [locFilter, setLocFilter] = useState('Tous');
+  const [view, setView] = useState('products'); // 'products' ou 'lots'
   const [showAddForm, setShowAddForm] = useState(false);
 
   const load = useCallback(async () => {
@@ -384,7 +560,9 @@ export default function PantryPage() {
           .from('inventory_lots')
           .select(`
             id, qty, unit, dlc, note, entered_at, location_id,
-            product:products_catalog ( id, name, category, default_unit ),
+            product:products_catalog ( 
+              id, name, category, default_unit, density_g_per_ml, grams_per_unit 
+            ),
             location:locations ( id, name )
           `)
           .order('dlc', { ascending: true, nullsFirst: true })
@@ -451,261 +629,807 @@ export default function PantryPage() {
     return Array.from(m.values()).sort((a, b) => {
       const aUrgent = Math.min(...a.lots.map(l => daysUntil(l.best_before) ?? 999));
       const bUrgent = Math.min(...b.lots.map(l => daysUntil(l.best_before) ?? 999));
-      
       if (aUrgent !== bUrgent) return aUrgent - bUrgent;
       return a.name.localeCompare(b.name);
     });
   }, [filtered]);
 
   const stats = useMemo(() => {
-    const total = filtered.length;
-    const expired = filtered.filter(l => daysUntil(l.best_before) < 0).length;
-    const urgent = filtered.filter(l => {
-      const d = daysUntil(l.best_before);
-      return d !== null && d >= 0 && d <= 3;
-    }).length;
-    const soon = filtered.filter(l => {
-      const d = daysUntil(l.best_before);
-      return d !== null && d > 3 && d <= 7;
-    }).length;
+    const totalProducts = byProduct.length;
+    let expiredCount = 0;
+    let soonCount = 0;
+    let totalLots = filtered.length;
     
-    return { total, expired, urgent, soon };
-  }, [filtered]);
+    for (const lot of filtered) {
+      const days = daysUntil(lot.best_before);
+      if (days !== null) {
+        if (days < 0) expiredCount++;
+        else if (days <= 3) soonCount++;
+      }
+    }
+    
+    return { totalProducts, expiredCount, soonCount, totalLots };
+  }, [byProduct, filtered]);
 
-  async function addLot(lotData, productData) {
-    const { data, error } = await supabase
-      .from('inventory_lots')
-      .insert([lotData])
-      .select(`
-        id, qty, unit, dlc, note, entered_at, location_id,
-        product:products_catalog ( id, name, category, default_unit ),
-        location:locations ( id, name )
-      `)
-      .single();
+  async function handleAddLot(lotData, product) {
+    try {
+      const { data: newLot, error } = await supabase
+        .from('inventory_lots')
+        .insert([lotData])
+        .select(`
+          id, qty, unit, dlc, note, entered_at, location_id,
+          product:products_catalog ( 
+            id, name, category, default_unit, density_g_per_ml, grams_per_unit 
+          ),
+          location:locations ( id, name )
+        `)
+        .single();
+        
+      if (error) throw error;
       
-    if (error) throw error;
-    
-    const newLot = {
-      ...data,
-      best_before: data.dlc || data.best_before
-    };
-    
-    setLots(prev => [newLot, ...prev]);
-    setShowAddForm(false);
+      const normalizedLot = {
+        ...newLot,
+        best_before: newLot.dlc || newLot.best_before
+      };
+      
+      setLots(prev => [normalizedLot, ...prev]);
+      setShowAddForm(false);
+      
+      alert(`Lot ajouté avec succès !`);
+    } catch (err) {
+      console.error('Erreur ajout lot:', err);
+      throw err;
+    }
+  }
+
+  async function handleDeleteLot(lotId) {
+    try {
+      const { error } = await supabase
+        .from('inventory_lots')
+        .delete()
+        .eq('id', lotId);
+        
+      if (error) throw error;
+      
+      setLots(prev => prev.filter(l => l.id !== lotId));
+    } catch (err) {
+      console.error('Erreur suppression lot:', err);
+      alert('Erreur: ' + err.message);
+    }
+  }
+
+  async function handleUpdateLot(lotId, updates) {
+    try {
+      const { data, error } = await supabase
+        .from('inventory_lots')
+        .update(updates)
+        .eq('id', lotId)
+        .select()
+        .single();
+        
+      if (error) throw error;
+      
+      setLots(prev => prev.map(l => l.id === lotId ? {
+        ...l,
+        ...data,
+        best_before: data.dlc || data.best_before
+      } : l));
+    } catch (err) {
+      console.error('Erreur mise à jour lot:', err);
+      alert('Erreur: ' + err.message);
+    }
+  }
+
+  function handleQuickAction(action, { productId, name }) {
+    if (action === 'add') {
+      // TODO: Ouvrir un modal d'ajout rapide pour ce produit spécifique
+      setShowAddForm(true);
+    }
+  }
+
+  function handleProductOpen({ productId, name }) {
+    // TODO: Ouvrir une vue détaillée du produit avec tous ses lots
+    alert(`Ouverture de la vue détaillée pour "${name}" (ID: ${productId})`);
   }
 
   return (
-    <div style={{maxWidth:1200, margin:'0 auto', padding:16}}>
-      {/* Header */}
-      <section style={{ 
-        ...glassBase, 
-        borderRadius:16, 
-        padding:20, 
-        marginBottom:16 
-      }}>
-        <div style={{display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:12}}>
-          <h1 style={{margin:0, display:'flex', alignItems:'center', gap:8}}>
-            🏺 Garde-manger
-            <span style={{fontSize:'0.6em', opacity:0.6}}>({stats.total} lots)</span>
-          </h1>
-        </div>
-
-        {/* Stats */}
-        <div style={{
-          display:'grid', 
-          gridTemplateColumns:'repeat(auto-fit, minmax(150px, 1fr))', 
-          gap:12, 
-          marginTop:16
+    <div style={{ padding: 24, maxWidth: 1400, margin: '0 auto' }}>
+      {/* En-tête avec titre et stats */}
+      <div style={{ marginBottom: 24 }}>
+        <h1 style={{ 
+          fontSize: '2.5rem', 
+          fontWeight: 800, 
+          color: '#15803d', 
+          margin: '0 0 16px 0',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 16
         }}>
-          <Stat value={stats.total} label="Lots totaux" />
-          <Stat value={stats.expired} label="Périmés" tone="danger" />
-          <Stat value={stats.urgent} label="Urgent (≤3j)" tone="warning" />
-          <Stat value={stats.soon} label="À surveiller (≤7j)" tone="muted" />
-        </div>
-
-        {/* Outils */}
-        <div style={{
-          display:'flex', gap:10, alignItems:'center', marginTop:16, 
-          flexWrap:'wrap', justifyContent:'space-between'
-        }}>
-          <div style={{display:'flex', gap:10, alignItems:'center', flex:1}}>
-            <input 
-              placeholder="🔍 Rechercher un produit..." 
-              value={q} 
-              onChange={e => setQ(e.target.value)}
-              style={{
-                flex:1, maxWidth:300, padding:'8px 12px', borderRadius:8, 
-                border:'1px solid #ddd'
-              }}
-            />
-            
-            <select 
-              value={locFilter} 
-              onChange={e => setLocFilter(e.target.value)}
-              style={{minWidth:180, padding:'8px', borderRadius:8, border:'1px solid #ddd'}}
-            >
-              <option value="Tous">📍 Tous les lieux</option>
-              {locations.map(l => (
-                <option key={l.id} value={l.name}>{l.name}</option>
-              ))}
-            </select>
-          </div>
-
-          <div style={{display:'flex', gap:8}}>
-            <button 
-              onClick={load}
-              disabled={loading}
-              style={{
-                padding:'8px 16px', borderRadius:8, border:'1px solid #ddd',
-                background:'white', cursor: loading ? 'not-allowed' : 'pointer'
-              }}
-            >
-              {loading ? 'Chargement...' : '↻ Actualiser'}
-            </button>
-            
-            <button 
-              onClick={() => setShowAddForm(s => !s)}
-              style={{
-                padding:'8px 16px', borderRadius:8, border:'none',
-                background:'#2563eb', color:'white', cursor:'pointer',
-                fontWeight:600
-              }}
-            >
-              {showAddForm ? '✕ Fermer' : '➕ Ajouter'}
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Formulaire d'ajout */}
-      {showAddForm && (
-        <SimpleAddForm
-          locations={locations}
-          onAdd={addLot}
-          onClose={() => setShowAddForm(false)}
-        />
-      )}
-
-      {/* Messages d'erreur */}
-      {err && (
+          🏺 Garde-Manger
+        </h1>
+        
         <div style={{ 
-          ...glassBase, 
-          borderRadius:12, 
-          padding:16, 
-          borderColor:'#dc2626', 
-          color:'#dc2626', 
-          marginBottom:16 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', 
+          gap: 16, 
+          marginBottom: 20 
         }}>
-          ⚠️ {err}
-          <button 
-            onClick={() => setErr('')}
+          <Stat value={stats.totalProducts} label="Produits" />
+          <Stat value={stats.totalLots} label="Lots" />
+          <Stat value={stats.expiredCount} label="Périmés" tone={stats.expiredCount > 0 ? 'danger' : 'muted'} />
+          <Stat value={stats.soonCount} label="Urgents" tone={stats.soonCount > 0 ? 'warning' : 'muted'} />
+        </div>
+      </div>
+
+      {/* Barre de contrôles */}
+      <div style={{
+        ...glassBase,
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 20,
+        display: 'grid',
+        gap: 16
+      }}>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+          <input
+            placeholder="🔍 Rechercher un produit..."
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
             style={{
-              marginLeft:12, padding:'4px 8px', borderRadius:4,
-              border:'1px solid #dc2626', background:'white', cursor:'pointer'
+              minWidth: 220,
+              padding: '10px 14px',
+              borderRadius: 8,
+              border: '1px solid #ddd',
+              fontSize: '1rem'
+            }}
+          />
+          
+          <select
+            value={locFilter}
+            onChange={(e) => setLocFilter(e.target.value)}
+            style={{
+              padding: '10px 14px',
+              borderRadius: 8,
+              border: '1px solid #ddd'
             }}
           >
-            Fermer
+            <option value="Tous">Tous les lieux</option>
+            {locations.map(l => (
+              <option key={l.id} value={l.name}>{l.name}</option>
+            ))}
+          </select>
+          
+          <div style={{display:'flex', gap:8}}>
+            <button
+              onClick={() => setView('products')}
+              style={{
+                padding: '10px 16px',
+                borderRadius: 8,
+                border: '1px solid #ddd',
+                background: view === 'products' ? '#2563eb' : 'white',
+                color: view === 'products' ? 'white' : '#374151',
+                cursor: 'pointer',
+                fontWeight: 600
+              }}
+            >
+              🎯 Par produits
+            </button>
+            
+            <button
+              onClick={() => setView('lots')}
+              style={{
+                padding: '10px 16px',
+                borderRadius: 8,
+                border: '1px solid #ddd',
+                background: view === 'lots' ? '#2563eb' : 'white',
+                color: view === 'lots' ? 'white' : '#374151',
+                cursor: 'pointer',
+                fontWeight: 600
+              }}
+            >
+              📦 Tous les lots
+            </button>
+          </div>
+          
+          <button
+            onClick={() => setShowAddForm(!showAddForm)}
+            style={{
+              padding: '10px 16px',
+              borderRadius: 8,
+              background: showAddForm ? '#dc2626' : '#16a34a',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              fontWeight: 600
+            }}
+          >
+            {showAddForm ? '❌ Fermer' : '➕ Ajouter'}
           </button>
+          
+          <button
+            onClick={load}
+            style={{
+              padding: '10px 16px',
+              borderRadius: 8,
+              background: '#6b7280',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              fontWeight: 600
+            }}
+          >
+            🔄 Actualiser
+          </button>
+        </div>
+      </div>
+
+      {/* Formulaire d'ajout intelligent */}
+      {showAddForm && (
+        <div style={{ marginBottom: 20 }}>
+          <SmartAddForm
+            locations={locations}
+            onAdd={handleAddLot}
+            onClose={() => setShowAddForm(false)}
+          />
         </div>
       )}
 
-      {/* Chargement */}
-      {loading && (
-        <div style={{ 
-          ...glassBase, 
-          borderRadius:12, 
-          padding:48, 
-          textAlign:'center' 
+      {/* Messages d'état */}
+      {err && (
+        <div style={{
+          background: '#fee2e2',
+          color: '#991b1b',
+          padding: 16,
+          borderRadius: 8,
+          marginBottom: 20,
+          border: '1px solid #fecaca'
         }}>
-          <div style={{fontSize:'2rem', marginBottom:8}}>⏳</div>
-          <div>Chargement de votre garde-manger...</div>
+          ❌ {err}
+        </div>
+      )}
+      
+      {loading && (
+        <div style={{
+          textAlign: 'center',
+          padding: 40,
+          color: '#6b7280'
+        }}>
+          🔄 Chargement des données...
         </div>
       )}
 
       {/* Contenu principal */}
       {!loading && (
         <>
-          {/* Messages informatifs */}
-          {stats.urgent > 0 && (
-            <div style={{ 
-              ...glassBase, 
-              borderRadius:12, 
-              padding:16,
-              marginBottom:16,
-              borderLeft:'4px solid #ea580c',
-              background:'rgba(255,193,7,0.1)'
-            }}>
-              ⚠️ <strong>{stats.urgent}</strong> lot{stats.urgent > 1 ? 's' : ''} à consommer rapidement (≤ 3 jours)
-            </div>
-          )}
-          
-          {stats.expired > 0 && (
-            <div style={{ 
-              ...glassBase, 
-              borderRadius:12, 
-              padding:16,
-              marginBottom:16,
-              borderLeft:'4px solid #dc2626',
-              background:'rgba(220,38,38,0.1)'
-            }}>
-              🍂 <strong>{stats.expired}</strong> lot{stats.expired > 1 ? 's' : ''} périmé{stats.expired > 1 ? 's' : ''}
-            </div>
-          )}
-
-          {/* Vue par produits */}
-          <section>
-            {byProduct.length > 0 ? (
-              <div style={{
-                display:'grid', 
-                gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))',
-                gap:16
+          {view === 'products' ? (
+            <div>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
+                gap: 16 
               }}>
-                {byProduct.map(p => (
+                {byProduct.map(({ productId, name, category, unit, lots }) => (
                   <ProductCard
-                    key={p.productId}
-                    productId={p.productId}
-                    name={p.name}
-                    category={p.category}
-                    unit={p.unit}
-                    lots={p.lots}
-                    onOpen={() => console.log('Ouvrir produit:', p.name)}
+                    key={productId}
+                    productId={productId}
+                    name={name}
+                    category={category}
+                    unit={unit}
+                    lots={lots}
+                    onOpen={handleProductOpen}
+                    onQuickAction={handleQuickAction}
                   />
                 ))}
               </div>
-            ) : (
-              <div style={{ 
-                ...glassBase, 
-                borderRadius:12, 
-                padding:48, 
-                textAlign:'center' 
-              }}>
-                <div style={{fontSize:'3rem', marginBottom:16}}>🌾</div>
-                <div style={{fontSize:'1.2rem', fontWeight:600, marginBottom:8}}>
-                  Aucun produit trouvé
-                </div>
-                <div style={{color:'#57534e', marginBottom:16}}>
-                  {q ? 
-                    `Aucun résultat pour "${q}"` : 
-                    'Votre garde-manger est vide'
+              
+              {byProduct.length === 0 && (
+                <div style={{
+                  textAlign: 'center',
+                  padding: 60,
+                  color: '#6b7280'
+                }}>
+                  {q || locFilter !== 'Tous' ? 
+                    '🔍 Aucun produit ne correspond aux filtres.' :
+                    '📦 Aucun produit dans le garde-manger. Commencez par ajouter des lots !'
                   }
                 </div>
-                {!q && (
-                  <button 
-                    onClick={() => setShowAddForm(true)}
-                    style={{
-                      padding:'12px 24px', borderRadius:8, border:'none',
-                      background:'#2563eb', color:'white', cursor:'pointer',
-                      fontWeight:600
-                    }}
-                  >
-                    ➕ Ajouter votre premier produit
-                  </button>
-                )}
-              </div>
-            )}
-          </section>
+              )}
+            </div>
+          ) : (
+            <LotsView
+              lots={filtered}
+              onDeleteLot={handleDeleteLot}
+              onUpdateLot={handleUpdateLot}
+            />
+          )}
+          
+          {view === 'lots' && filtered.length === 0 && (
+            <div style={{
+              textAlign: 'center',
+              padding: 60,
+              color: '#6b7280'
+            }}>
+              {q || locFilter !== 'Tous' ? 
+                '🔍 Aucun lot ne correspond aux filtres.' :
+                '📦 Aucun lot dans le garde-manger.'
+              }
+            </div>
+          )}
         </>
       )}
     </div>
   );
+}:'100%', padding:'10px', borderRadius:8, border:'1px solid #ddd'}}
+                required
+              />
+            </div>
+
+            <div>
+              <label style={{display:'block', marginBottom:8, fontWeight:600}}>
+                Catégorie
+              </label>
+              <input
+                type="text"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                placeholder="ex: légumes, fruits, épicerie sèche..."
+                style={{width:'100%', padding:'10px', borderRadius:8, border:'1px solid #ddd'}}
+              />
+            </div>
+
+            <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:16}}>
+              <div>
+                <label style={{display:'block', marginBottom:8, fontWeight:600}}>
+                  Unité par défaut
+                </label>
+                <select
+                  value={defaultUnit}
+                  onChange={(e) => setDefaultUnit(e.target.value)}
+                  style={{width:'100%', padding:'10px', borderRadius:8, border:'1px solid #ddd'}}
+                >
+                  <option value="g">grammes (g)</option>
+                  <option value="kg">kilogrammes (kg)</option>
+                  <option value="ml">millilitres (ml)</option>
+                  <option value="cl">centilitres (cl)</option>
+                  <option value="l">litres (l)</option>
+                  <option value="u">unités (u)</option>
+                </select>
+              </div>
+
+              <div>
+                <label style={{display:'block', marginBottom:8, fontWeight:600}}>
+                  Durée de vie typique (jours)
+                </label>
+                <input
+                  type="number"
+                  value={typicalShelfLife}
+                  onChange={(e) => setTypicalShelfLife(e.target.value)}
+                  placeholder="ex: 7"
+                  style={{width:'100%', padding:'10px', borderRadius:8, border:'1px solid #ddd'}}
+                />
+              </div>
+            </div>
+
+            {estimatedMeta && (
+              <div style={{
+                background:'#f0f8ff', padding:16, borderRadius:8, border:'1px solid #b6d7ff'
+              }}>
+                <h4 style={{margin:'0 0 12px 0', color:'#2563eb'}}>🤖 Métadonnées estimées par IA</h4>
+                <div style={{fontSize:'0.9rem', color:'#374151'}}>
+                  <div>• Densité: {estimatedMeta.density_g_per_ml} g/ml (confiance: {Math.round(estimatedMeta.confidence_density * 100)}%)</div>
+                  <div>• Poids unitaire: {estimatedMeta.grams_per_unit || 'non estimé'} {estimatedMeta.grams_per_unit ? `g/u (confiance: ${Math.round(estimatedMeta.confidence_unit * 100)}%)` : ''}</div>
+                  <div style={{marginTop:8, fontSize:'0.8rem', opacity:0.8}}>
+                    Ces valeurs seront utilisées pour les conversions automatiques d'unités.
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div style={{display:'flex', gap:12, justifyContent:'flex-end', marginTop:20}}>
+              <button
+                type="button"
+                onClick={onClose}
+                style={{
+                  padding:'10px 20px', border:'1px solid #ddd', background:'white',
+                  borderRadius:8, cursor:'pointer'
+                }}
+              >
+                Annuler
+              </button>
+              <button
+                type="submit"
+                disabled={loading || !name.trim()}
+                style={{
+                  padding:'10px 20px', background:'#2563eb', color:'white',
+                  border:'none', borderRadius:8, cursor:'pointer',
+                  opacity: loading || !name.trim() ? 0.5 : 1
+                }}
+              >
+                {loading ? 'Création...' : 'Créer le produit'}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
+
+/* ----------------- Formulaire d'ajout intelligent ----------------- */
+function SmartAddForm({ locations, onAdd, onClose }) {
+  const [query, setQuery] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [qty, setQty] = useState(1);
+  const [unit, setUnit] = useState('');
+  const [dlc, setDlc] = useState('');
+  const [locationId, setLocationId] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+
+  useEffect(() => {
+    if (!query.trim() || query.length < 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    const timeoutId = setTimeout(async () => {
+      try {
+        const { data: products, error } = await supabase
+          .from('products_catalog')
+          .select('id, name, category, default_unit, density_g_per_ml, grams_per_unit')
+          .limit(20);
+          
+        if (error) throw error;
+        
+        const scored = products
+          .map(p => ({
+            ...p,
+            score: fuzzyScore(query, p.name) + fuzzyScore(query, p.category || '') * 0.3
+          }))
+          .filter(p => p.score > 10)
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 8);
+          
+        setSuggestions(scored);
+      } catch (err) {
+        console.error('Erreur recherche produits:', err);
+      }
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [query]);
+
+  function selectProduct(product) {
+    setSelectedProduct(product);
+    setQuery(product.name);
+    setUnit(product.default_unit || 'g');
+    setSuggestions([]);
+    
+    const estimatedDays = estimateDlcDays(product);
+    if (estimatedDays) {
+      const futureDate = new Date();
+      futureDate.setDate(futureDate.getDate() + estimatedDays);
+      setDlc(futureDate.toISOString().slice(0, 10));
+    }
+  }
+
+  function estimateDlcDays(product) {
+    if (product.typical_shelf_life_days) {
+      return product.typical_shelf_life_days;
+    }
+    
+    const category = (product.category || '').toLowerCase();
+    const name = (product.name || '').toLowerCase();
+    
+    if (/frais|laitier|yaourt|crème|lait(?!\s*en\s*poudre)/.test(category + ' ' + name)) return 7;
+    if (/viande|poisson|charcuterie/.test(category + ' ' + name)) return 3;
+    if (/légume|fruit|herb/.test(category + ' ' + name)) {
+      if (/tomate|salade|épinard|basilic/.test(name)) return 3;
+      if (/carotte|oignon|pomme(?!\s*de\s*terre)|orange/.test(name)) return 14;
+      return 7;
+    }
+    if (/conserve|sauce|huile|vinaigre/.test(category + ' ' + name)) return 365;
+    if (/farine|sucre|sel|épice/.test(category + ' ' + name)) return 365;
+    if (/pâtes|riz|quinoa|légumineuse/.test(category + ' ' + name)) return 365;
+    if (/oeuf|œuf/.test(name)) return 28;
+    return 7;
+  }
+
+  async function handleCreateProduct(productData) {
+    try {
+      const { data: newProduct, error: productError } = await supabase
+        .from('products_catalog')
+        .insert([productData])
+        .select()
+        .single();
+        
+      if (productError) throw productError;
+      
+      setSelectedProduct(newProduct);
+      setQuery(newProduct.name);
+      setUnit(newProduct.default_unit || 'g');
+      setSuggestions([]);
+      setShowCreateModal(false);
+      
+      if (newProduct.typical_shelf_life_days) {
+        const futureDate = new Date();
+        futureDate.setDate(futureDate.getDate() + newProduct.typical_shelf_life_days);
+        setDlc(futureDate.toISOString().slice(0, 10));
+      }
+      
+      alert(`Produit "${newProduct.name}" créé avec succès !`);
+    } catch (err) {
+      console.error('Erreur création produit:', err);
+      alert('Erreur lors de la création: ' + err.message);
+    }
+  }
+
+  function getAvailableUnitsForProduct(product) {
+    if (!product) return ['g', 'kg', 'ml', 'cl', 'l', 'u'];
+    
+    const units = ['g', 'kg'];
+    
+    if (product.density_g_per_ml && product.density_g_per_ml !== 1.0) {
+      units.push('ml', 'cl', 'l');
+    }
+    
+    if (product.grams_per_unit) {
+      units.push('u');
+    }
+    
+    if (isLiquidProduct(product)) {
+      return ['ml', 'cl', 'l', ...units.filter(u => !['ml','cl','l'].includes(u))];
+    }
+    
+    return [...new Set(units)];
+  }
+
+  function isLiquidProduct(product) {
+    if (!product) return false;
+    const text = `${product.name || ''} ${product.category || ''}`.toLowerCase();
+    return /lait|huile|jus|sauce|sirop|vinaigre|crème.*liquide|bouillon/.test(text);
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!query.trim()) return;
+    
+    setLoading(true);
+    try {
+      let product = selectedProduct;
+      
+      if (!product) {
+        setShowCreateModal(true);
+        setLoading(false);
+        return;
+      }
+      
+      if (!qty || Number(qty) <= 0) {
+        alert('Veuillez saisir une quantité valide');
+        setLoading(false);
+        return;
+      }
+      
+      const lot = {
+        product_id: product.id,
+        location_id: locationId || null,
+        qty: Number(qty),
+        unit: unit || product.default_unit || 'g',
+        dlc: dlc || null,
+        note: 'Ajouté via recherche intelligente',
+        entered_at: new Date().toISOString()
+      };
+
+      await onAdd(lot, product);
+      
+      setQty(1);
+      setDlc('');
+      setLocationId('');
+      
+    } catch (err) {
+      console.error('Erreur ajout:', err);
+      alert('Erreur lors de l\'ajout: ' + err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div style={{ 
+      ...glassBase, 
+      borderRadius:16, 
+      padding:20,
+      background: 'linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.9))',
+      backdropFilter: 'blur(12px)',
+      border: '2px solid rgba(34,197,94,0.2)'
+    }}>
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20}}>
+        <h3 style={{margin:0, display:'flex', alignItems:'center', gap:8}}>
+          🛒 Ajouter un produit intelligent
+          <span style={{
+            fontSize:'0.7rem', 
+            background:'rgba(34,197,94,0.1)', 
+            color:'#16a34a',
+            padding:'2px 8px', 
+            borderRadius:12,
+            fontWeight:600
+          }}>
+            IA
+          </span>
+        </h3>
+        <button 
+          onClick={onClose}
+          style={{
+            background:'none', border:'none', fontSize:'1.2rem', cursor:'pointer',
+            padding:'6px 10px', borderRadius:6
+          }}
+        >
+          ✕
+        </button>
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <div style={{position:'relative', marginBottom:16}}>
+          <input
+            placeholder="🔍 Tapez le nom du produit (ex: tomate coeur de boeuf)"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setSelectedProduct(null);
+            }}
+            style={{
+              width:'100%', padding:'12px', borderRadius:8, border:'1px solid #ddd',
+              fontSize:'1rem'
+            }}
+            required
+          />
+          
+          {suggestions.length > 0 && (
+            <div style={{
+              position:'absolute', top:'100%', left:0, right:0, zIndex:10,
+              background:'white', border:'1px solid #ddd', borderRadius:12, marginTop:4,
+              boxShadow:'0 8px 24px rgba(0,0,0,0.15)', maxHeight:280, overflowY:'auto'
+            }}>
+              {suggestions.map(product => (
+                <div
+                  key={product.id}
+                  onClick={() => selectProduct(product)}
+                  style={{
+                    padding:'12px 16px', cursor:'pointer', borderBottom:'1px solid #f0f0f0',
+                    display:'flex', justifyContent:'space-between', alignItems:'center'
+                  }}
+                  onMouseEnter={(e) => e.target.style.background = '#f8f9fa'}
+                  onMouseLeave={(e) => e.target.style.background = 'white'}
+                >
+                  <div>
+                    <div style={{fontWeight:600}}>{product.name}</div>
+                    {product.category && (
+                      <div style={{fontSize:'0.85rem', color:'#666'}}>{product.category}</div>
+                    )}
+                  </div>
+                  <div style={{fontSize:'0.9rem', color:'#999'}}>
+                    Score: {Math.round(product.score)}
+                  </div>
+                </div>
+              ))}
+              
+              <div
+                onClick={() => setShowCreateModal(true)}
+                style={{
+                  padding:'12px 16px', cursor:'pointer', 
+                  background:'linear-gradient(135deg, #e8f5e8, #f0f8f0)', 
+                  color:'#2563eb', fontWeight:600,
+                  borderTop: '2px solid #4ade80',
+                  borderLeft: '4px solid #22c55e'
+                }}
+                onMouseEnter={(e) => e.target.style.background = 'linear-gradient(135deg, #dcfce7, #e8f5e8)'}
+                onMouseLeave={(e) => e.target.style.background = 'linear-gradient(135deg, #e8f5e8, #f0f8f0)'}
+              >
+                <div style={{display:'flex', alignItems:'center', gap:8}}>
+                  <span style={{fontSize:'1.2rem'}}>✨</span>
+                  <div>
+                    <div style={{fontWeight:700}}>Créer "{query}" avec métadonnées avancées</div>
+                    <div style={{fontSize:'0.8rem', color:'#16a34a', marginTop:2}}>
+                      Mode IA : densité, poids unitaire, catégorie automatique
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <SmartProductCreationModal
+          isOpen={showCreateModal}
+          onClose={() => setShowCreateModal(false)}
+          onSave={handleCreateProduct}
+          initialName={query}
+        />
+
+        {selectedProduct && (
+          <div style={{
+            background:'linear-gradient(135deg, #e8f5e8, #f0f8f0)', 
+            padding:16, borderRadius:12, marginBottom:16,
+            border:'2px solid #90ee90'
+          }}>
+            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+              <div>
+                <div style={{fontWeight:700, fontSize:'1.1rem', color:'#2d5016'}}>
+                  ✅ {selectedProduct.name}
+                </div>
+                <div style={{fontSize:'0.9rem', color:'#6b8e23', marginTop:4}}>
+                  {selectedProduct.category} • Unité: {selectedProduct.default_unit || 'g'}
+                  {selectedProduct.grams_per_unit && ` • ${selectedProduct.grams_per_unit}g/unité`}
+                  {selectedProduct.density_g_per_ml !== 1.0 && ` • Densité: ${selectedProduct.density_g_per_ml}`}
+                </div>
+              </div>
+              
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedProduct(null);
+                  setQuery('');
+                  setUnit('');
+                }}
+                style={{
+                  padding:'6px 12px', border:'1px solid #ddd', borderRadius:6,
+                  background:'white', cursor:'pointer'
+                }}
+                title="Choisir un autre produit"
+              >
+                Changer
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div style={{
+          display:'grid', 
+          gridTemplateColumns:'120px 100px 140px 1fr auto', 
+          gap:12, 
+          alignItems:'end',
+          background:'rgba(255,255,255,0.8)',
+          padding:16,
+          borderRadius:12,
+          border:'1px solid #e0e0e0'
+        }}>
+          <div>
+            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+              Quantité
+            </label>
+            <input
+              type="number"
+              min="0"
+              step="0.01"
+              value={qty}
+              onChange={(e) => setQty(e.target.value)}
+              style={{width:'100%', padding:'8px', borderRadius:6, border:'1px solid #ddd'}}
+              required
+            />
+          </div>
+          
+          <div>
+            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+              Unité
+            </label>
+            <select
+              value={unit}
+              onChange={(e) => setUnit(e.target.value)}
+              style={{width:'100%', padding:'8px', borderRadius:6, border:'1px solid #ddd'}}
+            >
+              {getAvailableUnitsForProduct(selectedProduct).map(u => (
+                <option key={u} value={u}>{u}</option>
+              ))}
+            </select>
+          </div>
+          
+          <div>
+            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+              DLC/DLUO
+            </label>
+            <input
+              type="date"
+              value={dlc}
+              onChange={(e) => setDlc(e.target.value)}
+              style={{width
