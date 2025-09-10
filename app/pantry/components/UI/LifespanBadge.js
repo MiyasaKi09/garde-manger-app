@@ -15,6 +15,19 @@ export function LifespanBadge({ date }) {
     <span
       className={`lifespan-badge ${status}`}
       style={{
-        display:'inline-flex', alignItems:'center', gap:6,
-        padding:'4px 10px', borderRadius:999,
-        backgroun
+        display:'inline-flex', 
+        alignItems:'center', 
+        gap:6,
+        padding:'4px 10px', 
+        borderRadius:999,
+        background:`${color}15`, 
+        border:`1px solid ${color}40`, 
+        color
+      }}
+      title={date || ''}
+    >
+      <span>{icon}</span>
+      <span>{label}</span>
+    </span>
+  );
+}
