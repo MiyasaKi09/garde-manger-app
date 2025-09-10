@@ -1,10 +1,10 @@
-// app/pantry/components/SmartAddForm.js - Version corrigée
+// app/pantry/components/SmartAddForm.js - Version corrigée complète
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { estimateProductMeta } from '@/lib/meta';
 import { ProductAI, ProductSearch, PantryStyles } from './pantryUtils';
 
-export function SmartAddForm({ locations, onAdd, onClose }) {
+export function SmartAddForm({ locations, onAdd, onClose, initialProduct = null }) {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -13,6 +13,34 @@ export function SmartAddForm({ locations, onAdd, onClose }) {
   const [dlc, setDlc] = useState('');
   const [locationId, setLocationId] = useState('');
   const [loading, setLoading] = useState(false);
+
+  // Effet pour pré-remplir avec le produit initial (quand on clique sur +)
+  useEffect(() => {
+    if (initialProduct) {
+      setQuery(initialProduct.name);
+      setSelectedProduct({
+        id: initialProduct.productId,
+        name: initialProduct.name,
+        category: initialProduct.category,
+        default_unit: initialProduct.unit
+      });
+      setUnit(initialProduct.unit || 'g');
+      
+      // Auto-suggestions pour ce produit
+      const analysis = ProductAI.analyzeProductName(initialProduct.name);
+      const suggestedLocation = ProductAI.findLocationByType(locations, analysis.location);
+      if (suggestedLocation) {
+        setLocationId(suggestedLocation.id);
+      }
+      
+      // Auto-calcul DLC
+      if (analysis.shelfLife) {
+        const futureDate = new Date();
+        futureDate.setDate(futureDate.getDate() + analysis.shelfLife);
+        setDlc(futureDate.toISOString().slice(0, 10));
+      }
+    }
+  }, [initialProduct, locations]);
 
   // Recherche de produits
   useEffect(() => {
