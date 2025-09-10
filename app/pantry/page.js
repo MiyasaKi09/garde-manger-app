@@ -1,25 +1,4 @@
-{/* Détails du produit sélectionné */}
-        {selectedProduct && (
-          <div style={{
-            background:'linear-gradient(135deg, #e8f5e8, #f0f8f0)', 
-            padding:16, borderRadius:12, marginBottom:16,
-            border:'2px solid #90ee90'
-          }}>
-            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-              <div>
-                <div style={{fontWeight:700, fontSize:'1.1rem', color:'#2d5016'}}>
-                  ✅ {selectedProduct.              {/* Option pour créer un nouveau produit avec modal avancée */}
-              <div
-                onClick={() => setShowCreateModal(true)}
-                style={{
-                  padding:'12px 16px', cursor:'pointer', 
-                  background:'#e8f5e8', color:'#2563eb', fontWeight:600,
-                  borderTop: '2px solid #90ee90'
-                }}
-                onMouseEnter={(e) => e.target.style.background = '#d4edda'}
-                onMouseLeave={(e) => e.target.style.background = '#e8f5e8'}
-              >
-                ➕// app/pantry/page.js
+// app/pantry/page.js
 'use client';
 
 import { useEffect, useMemo, useState, useCallback } from 'react';
@@ -27,6 +6,7 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabaseClient';
 import { estimateProductMeta } from '@/lib/meta';
 import { convertWithMeta } from '@/lib/units';
+import { SmartProductCreationModal } from '@/components/SmartProductCreation';
 
 /* ----------------- Helpers dates & style ----------------- */
 function daysUntil(date) {
@@ -174,6 +154,7 @@ function SmartAddForm({ locations, onAdd, onClose }) {
   const [dlc, setDlc] = useState('');
   const [locationId, setLocationId] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   // Recherche de produits avec délai
   useEffect(() => {
@@ -231,80 +212,118 @@ function SmartAddForm({ locations, onAdd, onClose }) {
     const category = (product.category || '').toLowerCase();
     const name = (product.name || '').toLowerCase();
     
-    // Produits frais
-    if (/frais|laitier|yaourt|cr[eé]me|lait(?!\s*en\s*poudre)/.test(category + ' ' + name)) return 7;
+    if (/frais|laitier|yaourt|crème|lait(?!\s*en\s*poudre)/.test(category + ' ' + name)) return 7;
     if (/viande|poisson|charcuterie/.test(category + ' ' + name)) return 3;
-    if (/l[eé]gume|fruit|herb/.test(category + ' ' + name)) {
-      if (/tomate|salade|[eé]pinard|basilic/.test(name)) return 3;
+    if (/légume|fruit|herb/.test(category + ' ' + name)) {
+      if (/tomate|salade|épinard|basilic/.test(name)) return 3;
       if (/carotte|oignon|pomme(?!\s*de\s*terre)|orange/.test(name)) return 14;
       return 7;
     }
-    
-    // Produits secs/conserves
     if (/conserve|sauce|huile|vinaigre/.test(category + ' ' + name)) return 365;
-    if (/farine|sucre|sel|[eé]pice/.test(category + ' ' + name)) return 365;
-    if (/p[aâ]tes|riz|quinoa|l[eé]gumineuse/.test(category + ' ' + name)) return 365;
-    
-    // Oeufs
+    if (/farine|sucre|sel|épice/.test(category + ' ' + name)) return 365;
+    if (/pâtes|riz|quinoa|légumineuse/.test(category + ' ' + name)) return 365;
     if (/oeuf|œuf/.test(name)) return 28;
-    
-    // Défaut produits périssables
     return 7;
   }
 
-  // Création d'un nouveau produit avec métadonnées
-  async function createNewProduct(name) {
-    const meta = estimateProductMeta({ name });
-    
-    const newProduct = {
-      name: name.trim(),
-      category: guessCategory(name),
-      default_unit: guessDefaultUnit(name, meta),
-      density_g_per_ml: meta.density_g_per_ml,
-      grams_per_unit: meta.grams_per_unit,
-      created_at: new Date().toISOString()
-    };
-
-    const { data, error } = await supabase
-      .from('products_catalog')
-      .insert([newProduct])
-      .select()
-      .single();
+  // Création d'un nouveau produit avec modal intelligente
+  async function handleCreateProduct(productData) {
+    try {
+      const { data: newProduct, error: productError } = await supabase
+        .from('products_catalog')
+        .insert([productData])
+        .select()
+        .single();
+        
+      if (productError) throw productError;
       
-    if (error) throw error;
-    return { ...data, ...meta };
+      // Auto-sélectionner le nouveau produit
+      setSelectedProduct(newProduct);
+      setQuery(newProduct.name);
+      setUnit(newProduct.default_unit || 'g');
+      setSuggestions([]);
+      setShowCreateModal(false);
+      
+      // Estimation DLC basée sur le nouveau produit
+      if (newProduct.typical_shelf_life_days) {
+        const futureDate = new Date();
+        futureDate.setDate(futureDate.getDate() + newProduct.typical_shelf_life_days);
+        setDlc(futureDate.toISOString().slice(0, 10));
+      }
+      
+      alert(`Produit "${newProduct.name}" créé avec succès !`);
+    } catch (err) {
+      console.error('Erreur création produit:', err);
+      alert('Erreur lors de la création: ' + err.message);
+    }
   }
 
-  // Deviner la catégorie à partir du nom
-  function guessCategory(name) {
-    const n = name.toLowerCase();
+  // Fonctions utilitaires pour les conversions et unités
+  function getAvailableUnitsForProduct(product) {
+    if (!product) return ['g', 'kg', 'ml', 'cl', 'l', 'u'];
     
-    if (/tomate|concombre|salade|[eé]pinard|carotte|oignon|poivron|courgette|aubergine/.test(n)) return 'légume';
-    if (/pomme(?!\s*de\s*terre)|poire|banane|orange|citron|fraise|raisin/.test(n)) return 'fruit';
-    if (/lait|yaourt|cr[eé]me|fromage|beurre/.test(n)) return 'laitier';
-    if (/poulet|bœuf|porc|agneau|jambon/.test(n)) return 'viande';
-    if (/saumon|thon|cabillaud|crevette/.test(n)) return 'poisson';
-    if (/huile|vinaigre|moutarde|ketchup/.test(n)) return 'condiment';
-    if (/farine|sucre|sel|poivre/.test(n)) return 'épicerie de base';
-    if (/p[aâ]tes|riz|quinoa|lentille/.test(n)) return 'féculents';
-    if (/pain|baguette|croissant/.test(n)) return 'boulangerie';
-    if (/oeuf|œuf/.test(n)) return 'œufs';
+    const units = ['g', 'kg']; // Base : toujours masse
     
-    return 'autre';
+    // Volume si densité disponible
+    if (product.density_g_per_ml && product.density_g_per_ml !== 1.0) {
+      units.push('ml', 'cl', 'l');
+    }
+    
+    // Unités si poids par unité disponible
+    if (product.grams_per_unit) {
+      units.push('u');
+    }
+    
+    // Priorité volume pour liquides
+    if (isLiquidProduct(product)) {
+      return ['ml', 'cl', 'l', ...units.filter(u => !['ml','cl','l'].includes(u))];
+    }
+    
+    return [...new Set(units)];
   }
 
-  // Deviner l'unité par défaut
-  function guessDefaultUnit(name, meta) {
-    const n = name.toLowerCase();
+  function isLiquidProduct(product) {
+    if (!product) return false;
+    const text = `${product.name || ''} ${product.category || ''}`.toLowerCase();
+    return /lait|huile|jus|sauce|sirop|vinaigre|crème.*liquide|bouillon/.test(text);
+  }
+
+  function getConversionPreview(product, qty, fromUnit) {
+    if (!product || !qty || !fromUnit) return [];
     
-    // Liquides
-    if (/lait|huile|vinaigre|jus|sirop|sauce/.test(n)) return 'ml';
+    const conversions = [];
+    const availableUnits = getAvailableUnitsForProduct(product).slice(0, 4);
     
-    // Unités naturelles
-    if (/oeuf|œuf|citron|orange|pomme(?!\s*de\s*terre)|avocat/.test(n)) return 'u';
+    for (const toUnit of availableUnits) {
+      if (toUnit === fromUnit) continue;
+      
+      try {
+        const result = convertWithMeta(
+          Number(qty),
+          fromUnit,
+          toUnit,
+          {
+            density_g_per_ml: product.density_g_per_ml,
+            grams_per_unit: product.grams_per_unit
+          }
+        );
+        
+        if (result && result.qty && result.qty !== Number(qty)) {
+          const displayQty = result.qty < 0.01 ? 
+            result.qty.toExponential(2) : 
+            Math.round(result.qty * 100) / 100;
+            
+          conversions.push({
+            qty: displayQty,
+            unit: result.unit
+          });
+        }
+      } catch (e) {
+        // Conversion impossible, on ignore
+      }
+    }
     
-    // Masses pour le reste
-    return 'g';
+    return conversions.slice(0, 3);
   }
 
   // Soumission du formulaire
@@ -316,32 +335,33 @@ function SmartAddForm({ locations, onAdd, onClose }) {
     try {
       let product = selectedProduct;
       
-      // Si pas de produit sélectionné, ouvrir la modal de création
+      // Si pas de produit sélectionné, ouvrir la modal
       if (!product) {
         setShowCreateModal(true);
+        setLoading(false);
         return;
       }
       
-      // Validation des données
       if (!qty || Number(qty) <= 0) {
         alert('Veuillez saisir une quantité valide');
+        setLoading(false);
         return;
       }
       
-      // Créer le lot avec les bonnes métadonnées
+      // Créer le lot
       const lot = {
         product_id: product.id,
         location_id: locationId || null,
         qty: Number(qty),
         unit: unit || product.default_unit || 'g',
         dlc: dlc || null,
-        note: `Ajouté via recherche (${selectedProduct ? 'trouvé' : 'créé'})`,
+        note: 'Ajouté via recherche intelligente',
         entered_at: new Date().toISOString()
       };
 
       await onAdd(lot, product);
       
-      // Reset form mais garde le produit sélectionné pour faciliter l'ajout multiple
+      // Reset partiel pour faciliter l'ajout multiple
       setQty(1);
       setDlc('');
       setLocationId('');
@@ -425,6 +445,165 @@ function SmartAddForm({ locations, onAdd, onClose }) {
                       <div style={{fontSize:'0.85rem', color:'#666'}}>{product.category}</div>
                     )}
                   </div>
+                  <div style={{fontSize:'0.9rem', color:'#999'}}>
+                    Score: {Math.round(product.score)}
+                  </div>
+                </div>
+              ))}
+              
+              {/* Option pour créer un nouveau produit avec modal avancée */}
+              <div
+                onClick={() => setShowCreateModal(true)}
+                style={{
+                  padding:'12px 16px', cursor:'pointer', 
+                  background:'linear-gradient(135deg, #e8f5e8, #f0f8f0)', 
+                  color:'#2563eb', fontWeight:600,
+                  borderTop: '2px solid #4ade80',
+                  borderLeft: '4px solid #22c55e'
+                }}
+                onMouseEnter={(e) => e.target.style.background = 'linear-gradient(135deg, #dcfce7, #e8f5e8)'}
+                onMouseLeave={(e) => e.target.style.background = 'linear-gradient(135deg, #e8f5e8, #f0f8f0)'}
+              >
+                <div style={{display:'flex', alignItems:'center', gap:8}}>
+                  <span style={{fontSize:'1.2rem'}}>✨</span>
+                  <div>
+                    <div style={{fontWeight:700}}>Créer "{query}" avec métadonnées avancées</div>
+                    <div style={{fontSize:'0.8rem', color:'#16a34a', marginTop:2}}>
+                      Mode IA : densité, poids unitaire, catégorie automatique
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Modal de création de produit intelligente */}
+        <SmartProductCreationModal
+          isOpen={showCreateModal}
+          onClose={() => setShowCreateModal(false)}
+          onSave={handleCreateProduct}
+          initialName={query}
+        />
+
+        {/* Détails du produit sélectionné */}
+        {selectedProduct && (
+          <div style={{
+            background:'linear-gradient(135deg, #e8f5e8, #f0f8f0)', 
+            padding:16, borderRadius:12, marginBottom:16,
+            border:'2px solid #90ee90'
+          }}>
+            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+              <div>
+                <div style={{fontWeight:700, fontSize:'1.1rem', color:'#2d5016'}}>
+                  ✅ {selectedProduct.name}
+                </div>
+                <div style={{fontSize:'0.9rem', color:'#6b8e23', marginTop:4}}>
+                  {selectedProduct.category} • Unité: {selectedProduct.default_unit || 'g'}
+                  {selectedProduct.grams_per_unit && ` • ${selectedProduct.grams_per_unit}g/unité`}
+                  {selectedProduct.density_g_per_ml !== 1.0 && ` • Densité: ${selectedProduct.density_g_per_ml}`}
+                </div>
+              </div>
+              
+              <button
+                type="button"
+                className="btn small secondary"
+                onClick={() => {
+                  setSelectedProduct(null);
+                  setQuery('');
+                  setUnit('');
+                }}
+                title="Choisir un autre produit"
+              >
+                Changer
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Formulaire de détails simplifié */}
+        <div style={{
+          display:'grid', 
+          gridTemplateColumns:'120px 100px 140px 1fr auto', 
+          gap:12, 
+          alignItems:'end',
+          background:'rgba(255,255,255,0.8)',
+          padding:16,
+          borderRadius:12,
+          border:'1px solid #e0e0e0'
+        }}>
+          <div>
+            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+              Quantité
+            </label>
+            <input
+              className="input"
+              type="number"
+              min="0"
+              step="0.01"
+              value={qty}
+              onChange={(e) => setQty(e.target.value)}
+              style={{width:'100%'}}
+              required
+            />
+          </div>
+          
+          <div>
+            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+              Unité
+            </label>
+            <select
+              className="input"
+              value={unit}
+              onChange={(e) => setUnit(e.target.value)}
+              style={{width:'100%'}}
+            >
+              {getAvailableUnitsForProduct(selectedProduct).map(u => (
+                <option key={u} value={u}>{u}</option>
+              ))}
+            </select>
+          </div>
+          
+          <div>
+            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+              DLC/DLUO
+            </label>
+            <input
+              className="input"
+              type="date"
+              value={dlc}
+              onChange={(e) => setDlc(e.target.value)}
+              style={{width:'100%'}}
+              title="Date Limite de Consommation"
+            />
+          </div>
+          
+          <div>
+            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+              Lieu
+            </label>
+            <select
+              className="input"
+              value={locationId}
+              onChange={(e) => setLocationId(e.target.value)}
+              style={{width:'100%'}}
+            >
+              <option value="">Choisir un lieu...</option>
+              {locations.map(loc => (
+                <option key={loc.id} value={loc.id}>{loc.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            className="btn primary"
+            disabled={loading}
+            style={{whiteSpace:'nowrap', minWidth:100}}
+          >
+            {loading ? '⏳ Ajout...' : '✅ Ajouter'}
+          </button>
+        </div>
         
         {/* Prévisualisation des conversions possibles */}
         {selectedProduct && qty && unit && (
@@ -456,6 +635,7 @@ function SmartAddForm({ locations, onAdd, onClose }) {
             </div>
           </div>
         )}
+
 
         {/* Informations sur le produit sélectionné */}
         {selectedProduct && (
