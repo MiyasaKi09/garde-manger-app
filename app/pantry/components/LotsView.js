@@ -1,6 +1,6 @@
 // app/pantry/components/LotsView.js
 import { useMemo } from 'react';
-import { LifespanBadge } from './LifespanBadge';
+import { LifespanBadge } from './UI/LifespanBadge';
 import { DateHelpers, PantryStyles } from './pantryUtils';
 
 export function LotsView({ lots, onDeleteLot, onUpdateLot }) {
