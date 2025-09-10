@@ -1,7 +1,5 @@
-// app/pantry/components/LotsView.js
+// app/pantry/components/LotsView.js - Adapté au style Myko
 import { useMemo } from 'react';
-import { LifespanBadge } from './UI/LifespanBadge';
-import { DateHelpers, PantryStyles } from './pantryUtils';
 
 export function LotsView({ lots, onDeleteLot, onUpdateLot }) {
   const sortedLots = useMemo(() => {
@@ -22,89 +20,94 @@ export function LotsView({ lots, onDeleteLot, onUpdateLot }) {
   }
 
   return (
-    <div style={{display:'grid', gap:12, gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))'}}>
+    <div className="grid cols-3">
       {sortedLots.map(lot => {
         const days = DateHelpers.daysUntil(lot.best_before);
         const isUrgent = days !== null && days <= 3;
         
         return (
-          <div
-            key={lot.id}
-            style={{
-              ...PantryStyles.glassBase,
-              borderRadius:10,
-              padding:12,
-              borderLeft: isUrgent ? '4px solid #dc2626' : '1px solid rgba(0,0,0,0.06)'
-            }}
-          >
-            <div style={{display:'flex', justifyContent:'space-between', alignItems:'start', marginBottom:8}}>
-              <div style={{flex:1}}>
-                <div style={{fontWeight:600, color:'#15803d'}}>
+          <div key={lot.id} className={`card ${isUrgent ? 'urgent' : ''}`}>
+            <div style={{
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              alignItems: 'start', 
+              marginBottom: '0.5rem'
+            }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontWeight: '600', color: 'var(--forest-700)' }}>
                   {lot.product?.name || 'Produit inconnu'}
                 </div>
-                <div style={{fontSize:'0.85rem', color:'#78716c'}}>
-                  {lot.location?.name || 'Sans lieu'}
+                <div style={{ fontSize: '0.85rem', color: 'var(--forest-500)' }}>
+                  📍 {lot.location?.name || 'Sans lieu'}
                 </div>
               </div>
               <LifespanBadge date={lot.best_before} />
             </div>
 
-            <div style={{display:'flex', alignItems:'center', gap:8, marginBottom:8}}>
-              <span style={{fontSize:'1.3rem', fontWeight:700}}>
+            <div style={{
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '0.5rem', 
+              marginBottom: '0.5rem'
+            }}>
+              <span style={{ 
+                fontSize: '1.3rem', 
+                fontWeight: '700',
+                color: 'var(--earth-600)'
+              }}>
                 {Number(lot.qty || 0)}
               </span>
-              <span style={{opacity:0.7}}>{lot.unit}</span>
+              <span style={{ opacity: 0.7, color: 'var(--forest-500)' }}>
+                {lot.unit}
+              </span>
             </div>
 
             {lot.note && (
-              <div style={{fontSize:'0.8rem', opacity:0.6, marginBottom:8}}>
+              <div style={{
+                fontSize: '0.8rem', 
+                opacity: 0.6, 
+                marginBottom: '0.5rem',
+                color: 'var(--medium-gray)'
+              }}>
                 💬 {lot.note}
               </div>
             )}
 
-            <div style={{display:'flex', gap:6, flexWrap:'wrap'}}>
+            <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
               <button
+                className="btn primary small"
                 onClick={() => quickUpdateQty(lot, 1)}
-                style={{
-                  padding:'4px 8px', fontSize:'0.8rem',
-                  background:'#16a34a', color:'white',
-                  border:'none', borderRadius:4, cursor:'pointer'
-                }}
               >
                 +1
               </button>
               
               <button
+                className="btn danger small"
                 onClick={() => quickUpdateQty(lot, -1)}
                 disabled={Number(lot.qty || 0) <= 0}
-                style={{
-                  padding:'4px 8px', fontSize:'0.8rem',
-                  background: Number(lot.qty || 0) <= 0 ? '#ccc' : '#ea580c', 
-                  color:'white',
-                  border:'none', borderRadius:4, 
-                  cursor: Number(lot.qty || 0) <= 0 ? 'not-allowed' : 'pointer'
-                }}
+                style={{ opacity: Number(lot.qty || 0) <= 0 ? 0.5 : 1 }}
               >
                 -1
               </button>
 
               <button
+                className="btn danger small"
                 onClick={() => {
                   if (confirm(`Supprimer le lot de "${lot.product?.name}" ?`)) {
                     onDeleteLot(lot.id);
                   }
-                }}
-                style={{
-                  padding:'4px 8px', fontSize:'0.8rem',
-                  background:'#dc2626', color:'white',
-                  border:'none', borderRadius:4, cursor:'pointer'
                 }}
               >
                 🗑️
               </button>
             </div>
 
-            <div style={{fontSize:'0.75rem', opacity:0.5, marginTop:8}}>
+            <div style={{
+              fontSize: '0.75rem', 
+              opacity: 0.5, 
+              marginTop: '0.5rem',
+              color: 'var(--medium-gray)'
+            }}>
               Ajouté le {DateHelpers.fmtDate(lot.entered_at)}
             </div>
           </div>
@@ -112,11 +115,12 @@ export function LotsView({ lots, onDeleteLot, onUpdateLot }) {
       })}
       
       {sortedLots.length === 0 && (
-        <div style={{
+        <div className="card" style={{
+          gridColumn: '1 / -1',
           textAlign: 'center',
-          padding: 60,
-          color: '#6b7280',
-          gridColumn: '1 / -1'
+          padding: '3rem',
+          color: 'var(--forest-600)',
+          border: '2px dashed var(--soft-gray)'
         }}>
           📦 Aucun lot ne correspond aux filtres.
         </div>
