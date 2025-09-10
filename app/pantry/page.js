@@ -7,7 +7,7 @@ import { supabase } from '@/lib/supabaseClient';
 import { estimateProductMeta } from '@/lib/meta';
 import { convertWithMeta } from '@/lib/units';
 
-/* ----------------- Helpers dates & style ----------------- */
+/* ----------------- Helpers dates & style ---------------z-- */
 function daysUntil(date) {
   if (!date) return null;
   const today = new Date(); 
