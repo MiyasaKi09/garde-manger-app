@@ -1,660 +1,660 @@
-// app/pantry/page.js
-'use client';
-
-import { useEffect, useMemo, useState, useCallback } from 'react';
-import Link from 'next/link';
-import { supabase } from '@/lib/supabaseClient';
-import { estimateProductMeta } from '@/lib/meta';
-import { convertWithMeta } from '@/lib/units';
-import { SmartProductCreationModal } from '@/components/SmartProductCreation';
-
-/* ----------------- Helpers dates & style ----------------- */
-function daysUntil(date) {
-  if (!date) return null;
-  const today = new Date(); today.setHours(0,0,0,0);
-  const d = new Date(date); d.setHours(0,0,0,0);
-  return Math.round((d - today) / 86400000);
-}
-
-function fmtDate(d) {
-  if (!d) return '—';
-  try {
-    const x = new Date(d);
-    return x.toLocaleDateString('fr-FR', { day:'2-digit', month:'short', year:'numeric' });
-  } catch { return d; }
-}
-
-const glassBase = {
-  background: 'rgba(255,255,255,0.55)',
-  backdropFilter: 'blur(10px) saturate(120%)',
-  WebkitBackdropFilter: 'blur(10px) saturate(120%)',
-  border: '1px solid rgba(0,0,0,0.06)',
-  boxShadow: '0 8px 28px rgba(0,0,0,0.08)',
-  color: 'var(--ink, #1f281f)',
-};
-
-/* ----------------- Recherche floue de produits ----------------- */
-function fuzzyScore(needle, haystack) {
-  if (!needle || !haystack) return 0;
-  
-  const n = needle.toLowerCase();
-  const h = haystack.toLowerCase();
-  
-  // Score exact
-  if (h === n) return 1000;
-  if (h.includes(n)) return 800;
-  
-  // Score par mots
-  const needleWords = n.split(/\s+/);
-  const haystackWords = h.split(/\s+/);
-  
-  let score = 0;
-  let matchedWords = 0;
-  
-  for (const nWord of needleWords) {
-    let bestWordScore = 0;
-    for (const hWord of haystackWords) {
-      if (hWord === nWord) bestWordScore = Math.max(bestWordScore, 100);
-      else if (hWord.includes(nWord)) bestWordScore = Math.max(bestWordScore, 80);
-      else if (nWord.includes(hWord)) bestWordScore = Math.max(bestWordScore, 60);
-      else {
-        // Distance de Levenshtein simplifiée
-        const dist = levenshteinDistance(nWord, hWord);
-        const maxLen = Math.max(nWord.length, hWord.length);
-        if (dist <= maxLen * 0.3) bestWordScore = Math.max(bestWordScore, 40);
-      }
-    }
-    score += bestWordScore;
-    if (bestWordScore > 50) matchedWords++;
-  }
-  
-  // Bonus si tous les mots matchent
-  if (matchedWords === needleWords.length && needleWords.length > 1) {
-    score *= 1.5;
-  }
-  
-  return score;
-}
-
-function levenshteinDistance(a, b) {
-  if (a.length === 0) return b.length;
-  if (b.length === 0) return a.length;
-  
-  const matrix = [];
-  for (let i = 0; i <= b.length; i++) {
-    matrix[i] = [i];
-  }
-  for (let j = 0; j <= a.length; j++) {
-    matrix[0][j] = j;
-  }
-  
-  for (let i = 1; i <= b.length; i++) {
-    for (let j = 1; j <= a.length; j++) {
-      if (b.charAt(i - 1) === a.charAt(j - 1)) {
-        matrix[i][j] = matrix[i - 1][j - 1];
-      } else {
-        matrix[i][j] = Math.min(
-          matrix[i - 1][j - 1] + 1,
-          matrix[i][j - 1] + 1,
-          matrix[i - 1][j] + 1
-        );
-      }
-    }
-  }
-  
-  return matrix[b.length][a.length];
-}
-
-/* ----------------- Composants UI ----------------- */
-function LifespanBadge({ date }) {
-  const d = daysUntil(date);
-  if (d === null) return null;
-
-  let status='ok', icon='🌿', label=`${d} j`, color='var(--success)';
-  if (d < 0)      { status='expired'; icon='🍂'; label=`Périmé ${Math.abs(d)}j`; color='var(--danger)'; }
-  else if (d===0) { status='today';   icon='⚡'; label="Aujourd'hui";           color='var(--autumn-orange)'; }
-  else if (d<=3)  { status='urgent';  icon='⏰'; label=`${d}j`;                  color='var(--autumn-yellow)'; }
-  else if (d<=7)  { status='soon';    icon='📅'; label=`${d}j`;                  color='var(--forest-500)'; }
-
-  return (
-    <span
-      className={`lifespan-badge ${status}`}
-      style={{
-        display:'inline-flex',alignItems:'center',gap:6,
-        padding:'4px 10px', borderRadius:999,
-        background:`linear-gradient(135deg, ${color}15, ${color}08)`,
-        border:`1px solid ${color}40`, color
-      }}
-      title={date || ''}
-    >
-      <span>{icon}</span><span>{label}</span>
-    </span>
-  );
-}
-
-function Stat({ value, label, tone }) {
-  const color = tone==='danger' ? 'var(--danger)' :
-                tone==='warning' ? 'var(--autumn-orange)' :
-                tone==='muted' ? 'var(--earth-700)' : 'var(--forest-600)';
-  return (
-    <div className="glass-card" style={{ ...glassBase, borderRadius:'var(--radius-lg)', padding:'12px', textAlign:'center' }}>
-      <div style={{ fontSize:'1.6rem', fontWeight:800, color }}>{value}</div>
-      <div style={{ fontSize:'.9rem', color:'var(--earth-700)' }}>{label}</div>
-    </div>
-  );
-}
-
-/* ----------------- Formulaire d'ajout intelligent ----------------- */
-function SmartAddForm({ locations, onAdd, onClose }) {
-  const [query, setQuery] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [qty, setQty] = useState(1);
-  const [unit, setUnit] = useState('');
-  const [dlc, setDlc] = useState('');
-  const [locationId, setLocationId] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [showCreateModal, setShowCreateModal] = useState(false);
-
-  // Recherche de produits avec délai
-  useEffect(() => {
-    if (!query.trim() || query.length < 2) {
-      setSuggestions([]);
-      return;
-    }
-
-    const timeoutId = setTimeout(async () => {
-      try {
-        const { data: products, error } = await supabase
-          .from('products_catalog')
-          .select('id, name, category, default_unit, density_g_per_ml, grams_per_unit')
-          .limit(20);
-          
-        if (error) throw error;
-        
-        // Calcul des scores et tri
-        const scored = products
-          .map(p => ({
-            ...p,
-            score: fuzzyScore(query, p.name) + fuzzyScore(query, p.category || '') * 0.3
-          }))
-          .filter(p => p.score > 10)
-          .sort((a, b) => b.score - a.score)
-          .slice(0, 8);
-          
-        setSuggestions(scored);
-      } catch (err) {
-        console.error('Erreur recherche produits:', err);
-      }
-    }, 300);
-
-    return () => clearTimeout(timeoutId);
-  }, [query]);
-
-  // Sélection d'un produit existant
-  function selectProduct(product) {
-    setSelectedProduct(product);
-    setQuery(product.name);
-    setUnit(product.default_unit || 'g');
-    setSuggestions([]);
-    
-    // Estimation de la DLC basée sur la catégorie
-    const estimatedDays = estimateDlcDays(product);
-    if (estimatedDays) {
-      const futureDate = new Date();
-      futureDate.setDate(futureDate.getDate() + estimatedDays);
-      setDlc(futureDate.toISOString().slice(0, 10));
-    }
-  }
-
-  // Estimation des jours de conservation selon la catégorie
-  function estimateDlcDays(product) {
-    const category = (product.category || '').toLowerCase();
-    const name = (product.name || '').toLowerCase();
-    
-    if (/frais|laitier|yaourt|crème|lait(?!\s*en\s*poudre)/.test(category + ' ' + name)) return 7;
-    if (/viande|poisson|charcuterie/.test(category + ' ' + name)) return 3;
-    if (/légume|fruit|herb/.test(category + ' ' + name)) {
-      if (/tomate|salade|épinard|basilic/.test(name)) return 3;
-      if (/carotte|oignon|pomme(?!\s*de\s*terre)|orange/.test(name)) return 14;
-      return 7;
-    }
-    if (/conserve|sauce|huile|vinaigre/.test(category + ' ' + name)) return 365;
-    if (/farine|sucre|sel|épice/.test(category + ' ' + name)) return 365;
-    if (/pâtes|riz|quinoa|légumineuse/.test(category + ' ' + name)) return 365;
-    if (/oeuf|œuf/.test(name)) return 28;
-    return 7;
-  }
-
-  // Création d'un nouveau produit avec modal intelligente
-  async function handleCreateProduct(productData) {
-    try {
-      const { data: newProduct, error: productError } = await supabase
-        .from('products_catalog')
-        .insert([productData])
-        .select()
-        .single();
-        
-      if (productError) throw productError;
+      // app/pantry/page.js
+      'use client';
       
-      // Auto-sélectionner le nouveau produit
-      setSelectedProduct(newProduct);
-      setQuery(newProduct.name);
-      setUnit(newProduct.default_unit || 'g');
-      setSuggestions([]);
-      setShowCreateModal(false);
+      import { useEffect, useMemo, useState, useCallback } from 'react';
+      import Link from 'next/link';
+      import { supabase } from '@/lib/supabaseClient';
+      import { estimateProductMeta } from '@/lib/meta';
+      import { convertWithMeta } from '@/lib/units';
+      import { SmartProductCreationModal } from '@/components/SmartProductCreation';
       
-      // Estimation DLC basée sur le nouveau produit
-      if (newProduct.typical_shelf_life_days) {
-        const futureDate = new Date();
-        futureDate.setDate(futureDate.getDate() + newProduct.typical_shelf_life_days);
-        setDlc(futureDate.toISOString().slice(0, 10));
+      /* ----------------- Helpers dates & style ----------------- */
+      function daysUntil(date) {
+        if (!date) return null;
+        const today = new Date(); today.setHours(0,0,0,0);
+        const d = new Date(date); d.setHours(0,0,0,0);
+        return Math.round((d - today) / 86400000);
       }
       
-      alert(`Produit "${newProduct.name}" créé avec succès !`);
-    } catch (err) {
-      console.error('Erreur création produit:', err);
-      alert('Erreur lors de la création: ' + err.message);
-    }
-  }
-
-  // Fonctions utilitaires pour les conversions et unités
-  function getAvailableUnitsForProduct(product) {
-    if (!product) return ['g', 'kg', 'ml', 'cl', 'l', 'u'];
-    
-    const units = ['g', 'kg']; // Base : toujours masse
-    
-    // Volume si densité disponible
-    if (product.density_g_per_ml && product.density_g_per_ml !== 1.0) {
-      units.push('ml', 'cl', 'l');
-    }
-    
-    // Unités si poids par unité disponible
-    if (product.grams_per_unit) {
-      units.push('u');
-    }
-    
-    // Priorité volume pour liquides
-    if (isLiquidProduct(product)) {
-      return ['ml', 'cl', 'l', ...units.filter(u => !['ml','cl','l'].includes(u))];
-    }
-    
-    return [...new Set(units)];
-  }
-
-  function isLiquidProduct(product) {
-    if (!product) return false;
-    const text = `${product.name || ''} ${product.category || ''}`.toLowerCase();
-    return /lait|huile|jus|sauce|sirop|vinaigre|crème.*liquide|bouillon/.test(text);
-  }
-
-  function getConversionPreview(product, qty, fromUnit) {
-    if (!product || !qty || !fromUnit) return [];
-    
-    const conversions = [];
-    const availableUnits = getAvailableUnitsForProduct(product).slice(0, 4);
-    
-    for (const toUnit of availableUnits) {
-      if (toUnit === fromUnit) continue;
-      
-      try {
-        const result = convertWithMeta(
-          Number(qty),
-          fromUnit,
-          toUnit,
-          {
-            density_g_per_ml: product.density_g_per_ml,
-            grams_per_unit: product.grams_per_unit
-          }
-        );
-        
-        if (result && result.qty && result.qty !== Number(qty)) {
-          const displayQty = result.qty < 0.01 ? 
-            result.qty.toExponential(2) : 
-            Math.round(result.qty * 100) / 100;
-            
-          conversions.push({
-            qty: displayQty,
-            unit: result.unit
-          });
-        }
-      } catch (e) {
-        // Conversion impossible, on ignore
-      }
-    }
-    
-    return conversions.slice(0, 3);
-  }
-
-  // Soumission du formulaire
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!query.trim()) return;
-    
-    setLoading(true);
-    try {
-      let product = selectedProduct;
-      
-      // Si pas de produit sélectionné, ouvrir la modal
-      if (!product) {
-        setShowCreateModal(true);
-        setLoading(false);
-        return;
+      function fmtDate(d) {
+        if (!d) return '—';
+        try {
+          const x = new Date(d);
+          return x.toLocaleDateString('fr-FR', { day:'2-digit', month:'short', year:'numeric' });
+        } catch { return d; }
       }
       
-      if (!qty || Number(qty) <= 0) {
-        alert('Veuillez saisir une quantité valide');
-        setLoading(false);
-        return;
-      }
-      
-      // Créer le lot
-      const lot = {
-        product_id: product.id,
-        location_id: locationId || null,
-        qty: Number(qty),
-        unit: unit || product.default_unit || 'g',
-        dlc: dlc || null,
-        note: 'Ajouté via recherche intelligente',
-        entered_at: new Date().toISOString()
+      const glassBase = {
+        background: 'rgba(255,255,255,0.55)',
+        backdropFilter: 'blur(10px) saturate(120%)',
+        WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+        border: '1px solid rgba(0,0,0,0.06)',
+        boxShadow: '0 8px 28px rgba(0,0,0,0.08)',
+        color: 'var(--ink, #1f281f)',
       };
-
-      await onAdd(lot, product);
       
-      // Reset partiel pour faciliter l'ajout multiple
-      setQty(1);
-      setDlc('');
-      setLocationId('');
-      
-    } catch (err) {
-      console.error('Erreur ajout:', err);
-      alert('Erreur lors de l\'ajout: ' + err.message);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  return (
-    <div className="glass-card" style={{ 
-      ...glassBase, 
-      borderRadius:'var(--radius-xl)', 
-      padding:'1.2rem',
-      background: 'linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.9))',
-      backdropFilter: 'blur(12px)',
-      border: '2px solid rgba(34,197,94,0.2)'
-    }}>
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20}}>
-        <h3 style={{margin:0, display:'flex', alignItems:'center', gap:8}}>
-          🛒 Ajouter un produit intelligent
-          <span style={{
-            fontSize:'0.7rem', 
-            background:'rgba(34,197,94,0.1)', 
-            color:'#16a34a',
-            padding:'2px 8px', 
-            borderRadius:12,
-            fontWeight:600
-          }}>
-            IA
-          </span>
-        </h3>
-        <button 
-          className="btn small secondary" 
-          onClick={onClose}
-          style={{minWidth:'auto', padding:'6px 10px'}}
-        >
-          ✕
-        </button>
-      </div>
-
-      <form onSubmit={handleSubmit}>
-        {/* Recherche de produit */}
-        <div style={{position:'relative', marginBottom:16}}>
-          <input
-            className="input"
-            placeholder="🔍 Tapez le nom du produit (ex: tomate coeur de boeuf)"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setSelectedProduct(null);
-            }}
-            style={{width:'100%'}}
-            required
-          />
-          
-          {/* Suggestions */}
-          {suggestions.length > 0 && (
-            <div style={{
-              position:'absolute', top:'100%', left:0, right:0, zIndex:10,
-              background:'white', border:'1px solid #ddd', borderRadius:12, marginTop:4,
-              boxShadow:'0 8px 24px rgba(0,0,0,0.15)', maxHeight:280, overflowY:'auto'
-            }}>
-              {suggestions.map(product => (
-                <div
-                  key={product.id}
-                  onClick={() => selectProduct(product)}
-                  style={{
-                    padding:'12px 16px', cursor:'pointer', borderBottom:'1px solid #f0f0f0',
-                    display:'flex', justifyContent:'space-between', alignItems:'center'
-                  }}
-                  onMouseEnter={(e) => e.target.style.background = '#f8f9fa'}
-                  onMouseLeave={(e) => e.target.style.background = 'white'}
-                >
-                  <div>
-                    <div style={{fontWeight:600}}>{product.name}</div>
-                    {product.category && (
-                      <div style={{fontSize:'0.85rem', color:'#666'}}>{product.category}</div>
-                    )}
-                  </div>
-                  <div style={{fontSize:'0.9rem', color:'#999'}}>
-                    Score: {Math.round(product.score)}
-                  </div>
-                </div>
-              ))}
-              
-              {/* Option pour créer un nouveau produit avec modal avancée */}
-              <div
-                onClick={() => setShowCreateModal(true)}
-                style={{
-                  padding:'12px 16px', cursor:'pointer', 
-                  background:'linear-gradient(135deg, #e8f5e8, #f0f8f0)', 
-                  color:'#2563eb', fontWeight:600,
-                  borderTop: '2px solid #4ade80',
-                  borderLeft: '4px solid #22c55e'
-                }}
-                onMouseEnter={(e) => e.target.style.background = 'linear-gradient(135deg, #dcfce7, #e8f5e8)'}
-                onMouseLeave={(e) => e.target.style.background = 'linear-gradient(135deg, #e8f5e8, #f0f8f0)'}
-              >
-                <div style={{display:'flex', alignItems:'center', gap:8}}>
-                  <span style={{fontSize:'1.2rem'}}>✨</span>
-                  <div>
-                    <div style={{fontWeight:700}}>Créer "{query}" avec métadonnées avancées</div>
-                    <div style={{fontSize:'0.8rem', color:'#16a34a', marginTop:2}}>
-                      Mode IA : densité, poids unitaire, catégorie automatique
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Modal de création de produit intelligente */}
-        <SmartProductCreationModal
-          isOpen={showCreateModal}
-          onClose={() => setShowCreateModal(false)}
-          onSave={handleCreateProduct}
-          initialName={query}
-        />
-
-        {/* Détails du produit sélectionné */}
-        {selectedProduct && (
-          <div style={{
-            background:'linear-gradient(135deg, #e8f5e8, #f0f8f0)', 
-            padding:16, borderRadius:12, marginBottom:16,
-            border:'2px solid #90ee90'
-          }}>
-            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-              <div>
-                <div style={{fontWeight:700, fontSize:'1.1rem', color:'#2d5016'}}>
-                  ✅ {selectedProduct.name}
-                </div>
-                <div style={{fontSize:'0.9rem', color:'#6b8e23', marginTop:4}}>
-                  {selectedProduct.category} • Unité: {selectedProduct.default_unit || 'g'}
-                  {selectedProduct.grams_per_unit && ` • ${selectedProduct.grams_per_unit}g/unité`}
-                  {selectedProduct.density_g_per_ml !== 1.0 && ` • Densité: ${selectedProduct.density_g_per_ml}`}
-                </div>
-              </div>
-              
-              <button
-                type="button"
-                className="btn small secondary"
-                onClick={() => {
-                  setSelectedProduct(null);
-                  setQuery('');
-                  setUnit('');
-                }}
-                title="Choisir un autre produit"
-              >
-                Changer
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Formulaire de détails simplifié */}
-        <div style={{
-          display:'grid', 
-          gridTemplateColumns:'120px 100px 140px 1fr auto', 
-          gap:12, 
-          alignItems:'end',
-          background:'rgba(255,255,255,0.8)',
-          padding:16,
-          borderRadius:12,
-          border:'1px solid #e0e0e0'
-        }}>
-          <div>
-            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
-              Quantité
-            </label>
-            <input
-              className="input"
-              type="number"
-              min="0"
-              step="0.01"
-              value={qty}
-              onChange={(e) => setQty(e.target.value)}
-              style={{width:'100%'}}
-              required
-            />
-          </div>
-          
-          <div>
-            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
-              Unité
-            </label>
-            <select
-              className="input"
-              value={unit}
-              onChange={(e) => setUnit(e.target.value)}
-              style={{width:'100%'}}
-            >
-              {getAvailableUnitsForProduct(selectedProduct).map(u => (
-                <option key={u} value={u}>{u}</option>
-              ))}
-            </select>
-          </div>
-          
-          <div>
-            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
-              DLC/DLUO
-            </label>
-            <input
-              className="input"
-              type="date"
-              value={dlc}
-              onChange={(e) => setDlc(e.target.value)}
-              style={{width:'100%'}}
-              title="Date Limite de Consommation"
-            />
-          </div>
-          
-          <div>
-            <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
-              Lieu
-            </label>
-            <select
-              className="input"
-              value={locationId}
-              onChange={(e) => setLocationId(e.target.value)}
-              style={{width:'100%'}}
-            >
-              <option value="">Choisir un lieu...</option>
-              {locations.map(loc => (
-                <option key={loc.id} value={loc.id}>{loc.name}</option>
-              ))}
-            </select>
-          </div>
-
-          <button
-            type="submit"
-            className="btn primary"
-            disabled={loading}
-            style={{whiteSpace:'nowrap', minWidth:100}}
-          >
-            {loading ? '⏳ Ajout...' : '✅ Ajouter'}
-          </button>
-        </div>
+      /* ----------------- Recherche floue de produits ----------------- */
+      function fuzzyScore(needle, haystack) {
+        if (!needle || !haystack) return 0;
         
-        {/* Prévisualisation des conversions possibles */}
-        {selectedProduct && qty && unit && (
-          <div style={{
-            marginTop:12, padding:12, 
-            background:'linear-gradient(135deg, #f0f9ff, #e0f2fe)', 
-            borderRadius:8,
-            fontSize:'0.9rem', color:'#0369a1',
-            border: '1px solid #7dd3fc'
+        const n = needle.toLowerCase();
+        const h = haystack.toLowerCase();
+        
+        // Score exact
+        if (h === n) return 1000;
+        if (h.includes(n)) return 800;
+        
+        // Score par mots
+        const needleWords = n.split(/\s+/);
+        const haystackWords = h.split(/\s+/);
+        
+        let score = 0;
+        let matchedWords = 0;
+        
+        for (const nWord of needleWords) {
+          let bestWordScore = 0;
+          for (const hWord of haystackWords) {
+            if (hWord === nWord) bestWordScore = Math.max(bestWordScore, 100);
+            else if (hWord.includes(nWord)) bestWordScore = Math.max(bestWordScore, 80);
+            else if (nWord.includes(hWord)) bestWordScore = Math.max(bestWordScore, 60);
+            else {
+              // Distance de Levenshtein simplifiée
+              const dist = levenshteinDistance(nWord, hWord);
+              const maxLen = Math.max(nWord.length, hWord.length);
+              if (dist <= maxLen * 0.3) bestWordScore = Math.max(bestWordScore, 40);
+            }
+          }
+          score += bestWordScore;
+          if (bestWordScore > 50) matchedWords++;
+        }
+        
+        // Bonus si tous les mots matchent
+        if (matchedWords === needleWords.length && needleWords.length > 1) {
+          score *= 1.5;
+        }
+        
+        return score;
+      }
+      
+      function levenshteinDistance(a, b) {
+        if (a.length === 0) return b.length;
+        if (b.length === 0) return a.length;
+        
+        const matrix = [];
+        for (let i = 0; i <= b.length; i++) {
+          matrix[i] = [i];
+        }
+        for (let j = 0; j <= a.length; j++) {
+          matrix[0][j] = j;
+        }
+        
+        for (let i = 1; i <= b.length; i++) {
+          for (let j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+              matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+              matrix[i][j] = Math.min(
+                matrix[i - 1][j - 1] + 1,
+                matrix[i][j - 1] + 1,
+                matrix[i - 1][j] + 1
+              );
+            }
+          }
+        }
+        
+        return matrix[b.length][a.length];
+      }
+      
+      /* ----------------- Composants UI ----------------- */
+      function LifespanBadge({ date }) {
+        const d = daysUntil(date);
+        if (d === null) return null;
+      
+        let status='ok', icon='🌿', label=`${d} j`, color='var(--success)';
+        if (d < 0)      { status='expired'; icon='🍂'; label=`Périmé ${Math.abs(d)}j`; color='var(--danger)'; }
+        else if (d===0) { status='today';   icon='⚡'; label="Aujourd'hui";           color='var(--autumn-orange)'; }
+        else if (d<=3)  { status='urgent';  icon='⏰'; label=`${d}j`;                  color='var(--autumn-yellow)'; }
+        else if (d<=7)  { status='soon';    icon='📅'; label=`${d}j`;                  color='var(--forest-500)'; }
+      
+        return (
+          <span
+            className={`lifespan-badge ${status}`}
+            style={{
+              display:'inline-flex',alignItems:'center',gap:6,
+              padding:'4px 10px', borderRadius:999,
+              background:`linear-gradient(135deg, ${color}15, ${color}08)`,
+              border:`1px solid ${color}40`, color
+            }}
+            title={date || ''}
+          >
+            <span>{icon}</span><span>{label}</span>
+          </span>
+        );
+      }
+      
+      function Stat({ value, label, tone }) {
+        const color = tone==='danger' ? 'var(--danger)' :
+                      tone==='warning' ? 'var(--autumn-orange)' :
+                      tone==='muted' ? 'var(--earth-700)' : 'var(--forest-600)';
+        return (
+          <div className="glass-card" style={{ ...glassBase, borderRadius:'var(--radius-lg)', padding:'12px', textAlign:'center' }}>
+            <div style={{ fontSize:'1.6rem', fontWeight:800, color }}>{value}</div>
+            <div style={{ fontSize:'.9rem', color:'var(--earth-700)' }}>{label}</div>
+          </div>
+        );
+      }
+      
+      /* ----------------- Formulaire d'ajout intelligent ----------------- */
+      function SmartAddForm({ locations, onAdd, onClose }) {
+        const [query, setQuery] = useState('');
+        const [suggestions, setSuggestions] = useState([]);
+        const [selectedProduct, setSelectedProduct] = useState(null);
+        const [qty, setQty] = useState(1);
+        const [unit, setUnit] = useState('');
+        const [dlc, setDlc] = useState('');
+        const [locationId, setLocationId] = useState('');
+        const [loading, setLoading] = useState(false);
+        const [showCreateModal, setShowCreateModal] = useState(false);
+      
+        // Recherche de produits avec délai
+        useEffect(() => {
+          if (!query.trim() || query.length < 2) {
+            setSuggestions([]);
+            return;
+          }
+      
+          const timeoutId = setTimeout(async () => {
+            try {
+              const { data: products, error } = await supabase
+                .from('products_catalog')
+                .select('id, name, category, default_unit, density_g_per_ml, grams_per_unit')
+                .limit(20);
+                
+              if (error) throw error;
+              
+              // Calcul des scores et tri
+              const scored = products
+                .map(p => ({
+                  ...p,
+                  score: fuzzyScore(query, p.name) + fuzzyScore(query, p.category || '') * 0.3
+                }))
+                .filter(p => p.score > 10)
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 8);
+                
+              setSuggestions(scored);
+            } catch (err) {
+              console.error('Erreur recherche produits:', err);
+            }
+          }, 300);
+      
+          return () => clearTimeout(timeoutId);
+        }, [query]);
+      
+        // Sélection d'un produit existant
+        function selectProduct(product) {
+          setSelectedProduct(product);
+          setQuery(product.name);
+          setUnit(product.default_unit || 'g');
+          setSuggestions([]);
+          
+          // Estimation de la DLC basée sur la catégorie
+          const estimatedDays = estimateDlcDays(product);
+          if (estimatedDays) {
+            const futureDate = new Date();
+            futureDate.setDate(futureDate.getDate() + estimatedDays);
+            setDlc(futureDate.toISOString().slice(0, 10));
+          }
+        }
+      
+        // Estimation des jours de conservation selon la catégorie
+        function estimateDlcDays(product) {
+          const category = (product.category || '').toLowerCase();
+          const name = (product.name || '').toLowerCase();
+          
+          if (/frais|laitier|yaourt|crème|lait(?!\s*en\s*poudre)/.test(category + ' ' + name)) return 7;
+          if (/viande|poisson|charcuterie/.test(category + ' ' + name)) return 3;
+          if (/légume|fruit|herb/.test(category + ' ' + name)) {
+            if (/tomate|salade|épinard|basilic/.test(name)) return 3;
+            if (/carotte|oignon|pomme(?!\s*de\s*terre)|orange/.test(name)) return 14;
+            return 7;
+          }
+          if (/conserve|sauce|huile|vinaigre/.test(category + ' ' + name)) return 365;
+          if (/farine|sucre|sel|épice/.test(category + ' ' + name)) return 365;
+          if (/pâtes|riz|quinoa|légumineuse/.test(category + ' ' + name)) return 365;
+          if (/oeuf|œuf/.test(name)) return 28;
+          return 7;
+        }
+      
+        // Création d'un nouveau produit avec modal intelligente
+        async function handleCreateProduct(productData) {
+          try {
+            const { data: newProduct, error: productError } = await supabase
+              .from('products_catalog')
+              .insert([productData])
+              .select()
+              .single();
+              
+            if (productError) throw productError;
+            
+            // Auto-sélectionner le nouveau produit
+            setSelectedProduct(newProduct);
+            setQuery(newProduct.name);
+            setUnit(newProduct.default_unit || 'g');
+            setSuggestions([]);
+            setShowCreateModal(false);
+            
+            // Estimation DLC basée sur le nouveau produit
+            if (newProduct.typical_shelf_life_days) {
+              const futureDate = new Date();
+              futureDate.setDate(futureDate.getDate() + newProduct.typical_shelf_life_days);
+              setDlc(futureDate.toISOString().slice(0, 10));
+            }
+            
+            alert(`Produit "${newProduct.name}" créé avec succès !`);
+          } catch (err) {
+            console.error('Erreur création produit:', err);
+            alert('Erreur lors de la création: ' + err.message);
+          }
+        }
+      
+        // Fonctions utilitaires pour les conversions et unités
+        function getAvailableUnitsForProduct(product) {
+          if (!product) return ['g', 'kg', 'ml', 'cl', 'l', 'u'];
+          
+          const units = ['g', 'kg']; // Base : toujours masse
+          
+          // Volume si densité disponible
+          if (product.density_g_per_ml && product.density_g_per_ml !== 1.0) {
+            units.push('ml', 'cl', 'l');
+          }
+          
+          // Unités si poids par unité disponible
+          if (product.grams_per_unit) {
+            units.push('u');
+          }
+          
+          // Priorité volume pour liquides
+          if (isLiquidProduct(product)) {
+            return ['ml', 'cl', 'l', ...units.filter(u => !['ml','cl','l'].includes(u))];
+          }
+          
+          return [...new Set(units)];
+        }
+      
+        function isLiquidProduct(product) {
+          if (!product) return false;
+          const text = `${product.name || ''} ${product.category || ''}`.toLowerCase();
+          return /lait|huile|jus|sauce|sirop|vinaigre|crème.*liquide|bouillon/.test(text);
+        }
+      
+        function getConversionPreview(product, qty, fromUnit) {
+          if (!product || !qty || !fromUnit) return [];
+          
+          const conversions = [];
+          const availableUnits = getAvailableUnitsForProduct(product).slice(0, 4);
+          
+          for (const toUnit of availableUnits) {
+            if (toUnit === fromUnit) continue;
+            
+            try {
+              const result = convertWithMeta(
+                Number(qty),
+                fromUnit,
+                toUnit,
+                {
+                  density_g_per_ml: product.density_g_per_ml,
+                  grams_per_unit: product.grams_per_unit
+                }
+              );
+              
+              if (result && result.qty && result.qty !== Number(qty)) {
+                const displayQty = result.qty < 0.01 ? 
+                  result.qty.toExponential(2) : 
+                  Math.round(result.qty * 100) / 100;
+                  
+                conversions.push({
+                  qty: displayQty,
+                  unit: result.unit
+                });
+              }
+            } catch (e) {
+              // Conversion impossible, on ignore
+            }
+          }
+          
+          return conversions.slice(0, 3);
+        }
+      
+        // Soumission du formulaire
+        async function handleSubmit(e) {
+          e.preventDefault();
+          if (!query.trim()) return;
+          
+          setLoading(true);
+          try {
+            let product = selectedProduct;
+            
+            // Si pas de produit sélectionné, ouvrir la modal
+            if (!product) {
+              setShowCreateModal(true);
+              setLoading(false);
+              return;
+            }
+            
+            if (!qty || Number(qty) <= 0) {
+              alert('Veuillez saisir une quantité valide');
+              setLoading(false);
+              return;
+            }
+            
+            // Créer le lot
+            const lot = {
+              product_id: product.id,
+              location_id: locationId || null,
+              qty: Number(qty),
+              unit: unit || product.default_unit || 'g',
+              dlc: dlc || null,
+              note: 'Ajouté via recherche intelligente',
+              entered_at: new Date().toISOString()
+            };
+      
+            await onAdd(lot, product);
+            
+            // Reset partiel pour faciliter l'ajout multiple
+            setQty(1);
+            setDlc('');
+            setLocationId('');
+            
+          } catch (err) {
+            console.error('Erreur ajout:', err);
+            alert('Erreur lors de l\'ajout: ' + err.message);
+          } finally {
+            setLoading(false);
+          }
+        }
+      
+        return (
+          <div className="glass-card" style={{ 
+            ...glassBase, 
+            borderRadius:'var(--radius-xl)', 
+            padding:'1.2rem',
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.9))',
+            backdropFilter: 'blur(12px)',
+            border: '2px solid rgba(34,197,94,0.2)'
           }}>
-            <div style={{fontWeight:600, marginBottom:6, display:'flex', alignItems:'center', gap:6}}>
-              <span>💡</span> Conversions automatiques disponibles :
-            </div>
-            <div style={{display:'flex', gap:12, flexWrap:'wrap'}}>
-              {getConversionPreview(selectedProduct, qty, unit).map((conv, i) => (
-                <span key={i} style={{
-                  padding:'4px 10px', 
-                  background:'rgba(255,255,255,0.8)', 
-                  borderRadius:6, 
-                  border:'1px solid #bae6fd',
+            <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20}}>
+              <h3 style={{margin:0, display:'flex', alignItems:'center', gap:8}}>
+                🛒 Ajouter un produit intelligent
+                <span style={{
+                  fontSize:'0.7rem', 
+                  background:'rgba(34,197,94,0.1)', 
+                  color:'#16a34a',
+                  padding:'2px 8px', 
+                  borderRadius:12,
                   fontWeight:600
                 }}>
-                  ≈ {conv.qty} {conv.unit}
+                  IA
                 </span>
-              ))}
-              {getConversionPreview(selectedProduct, qty, unit).length === 0 && (
-                <span style={{opacity:0.7}}>Aucune conversion disponible</span>
-              )}
+              </h3>
+              <button 
+                className="btn small secondary" 
+                onClick={onClose}
+                style={{minWidth:'auto', padding:'6px 10px'}}
+              >
+                ✕
+              </button>
             </div>
-          </div>
-        )}
-
-
-        {/* Informations sur le produit sélectionné */}
-        {selectedProduct && (
-          <div style={{
-            marginTop:8, padding:8, background:'#f8fafc', borderRadius:6,
-            fontSize:'0.8rem', color:'#64748b'
-          }}>
-            <strong>Métadonnées :</strong>
-            {selectedProduct.density_g_per_ml && selectedProduct.density_g_per_ml !== 1.0 && (
-              <span> • Densité: {selectedProduct.density_g_per_ml} g/ml</span>
-            )}
-            {selectedProduct.grams_per_unit && (
-              <span> • Poids unitaire: {selectedProduct.grams_per_unit}g</span>
-            )}
-            {selectedProduct.category && (
-              <span> • Catégorie: {selectedProduct.category}</span>
-            )}
-          </div>
-        )}
+      
+            <form onSubmit={handleSubmit}>
+              {/* Recherche de produit */}
+              <div style={{position:'relative', marginBottom:16}}>
+                <input
+                  className="input"
+                  placeholder="🔍 Tapez le nom du produit (ex: tomate coeur de boeuf)"
+                  value={query}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setSelectedProduct(null);
+                  }}
+                  style={{width:'100%'}}
+                  required
+                />
+                
+                {/* Suggestions */}
+                {suggestions.length > 0 && (
+                  <div style={{
+                    position:'absolute', top:'100%', left:0, right:0, zIndex:10,
+                    background:'white', border:'1px solid #ddd', borderRadius:12, marginTop:4,
+                    boxShadow:'0 8px 24px rgba(0,0,0,0.15)', maxHeight:280, overflowY:'auto'
+                  }}>
+                    {suggestions.map(product => (
+                      <div
+                        key={product.id}
+                        onClick={() => selectProduct(product)}
+                        style={{
+                          padding:'12px 16px', cursor:'pointer', borderBottom:'1px solid #f0f0f0',
+                          display:'flex', justifyContent:'space-between', alignItems:'center'
+                        }}
+                        onMouseEnter={(e) => e.target.style.background = '#f8f9fa'}
+                        onMouseLeave={(e) => e.target.style.background = 'white'}
+                      >
+                        <div>
+                          <div style={{fontWeight:600}}>{product.name}</div>
+                          {product.category && (
+                            <div style={{fontSize:'0.85rem', color:'#666'}}>{product.category}</div>
+                          )}
+                        </div>
+                        <div style={{fontSize:'0.9rem', color:'#999'}}>
+                          Score: {Math.round(product.score)}
+                        </div>
+                      </div>
+                    ))}
+                    
+                    {/* Option pour créer un nouveau produit avec modal avancée */}
+                    <div
+                      onClick={() => setShowCreateModal(true)}
+                      style={{
+                        padding:'12px 16px', cursor:'pointer', 
+                        background:'linear-gradient(135deg, #e8f5e8, #f0f8f0)', 
+                        color:'#2563eb', fontWeight:600,
+                        borderTop: '2px solid #4ade80',
+                        borderLeft: '4px solid #22c55e'
+                      }}
+                      onMouseEnter={(e) => e.target.style.background = 'linear-gradient(135deg, #dcfce7, #e8f5e8)'}
+                      onMouseLeave={(e) => e.target.style.background = 'linear-gradient(135deg, #e8f5e8, #f0f8f0)'}
+                    >
+                      <div style={{display:'flex', alignItems:'center', gap:8}}>
+                        <span style={{fontSize:'1.2rem'}}>✨</span>
+                        <div>
+                          <div style={{fontWeight:700}}>Créer "{query}" avec métadonnées avancées</div>
+                          <div style={{fontSize:'0.8rem', color:'#16a34a', marginTop:2}}>
+                            Mode IA : densité, poids unitaire, catégorie automatique
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+      
+              {/* Modal de création de produit intelligente */}
+              <SmartProductCreationModal
+                isOpen={showCreateModal}
+                onClose={() => setShowCreateModal(false)}
+                onSave={handleCreateProduct}
+                initialName={query}
+              />
+      
+              {/* Détails du produit sélectionné */}
+              {selectedProduct && (
+                <div style={{
+                  background:'linear-gradient(135deg, #e8f5e8, #f0f8f0)', 
+                  padding:16, borderRadius:12, marginBottom:16,
+                  border:'2px solid #90ee90'
+                }}>
+                  <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                    <div>
+                      <div style={{fontWeight:700, fontSize:'1.1rem', color:'#2d5016'}}>
+                        ✅ {selectedProduct.name}
+                      </div>
+                      <div style={{fontSize:'0.9rem', color:'#6b8e23', marginTop:4}}>
+                        {selectedProduct.category} • Unité: {selectedProduct.default_unit || 'g'}
+                        {selectedProduct.grams_per_unit && ` • ${selectedProduct.grams_per_unit}g/unité`}
+                        {selectedProduct.density_g_per_ml !== 1.0 && ` • Densité: ${selectedProduct.density_g_per_ml}`}
+                      </div>
+                    </div>
+                    
+                    <button
+                      type="button"
+                      className="btn small secondary"
+                      onClick={() => {
+                        setSelectedProduct(null);
+                        setQuery('');
+                        setUnit('');
+                      }}
+                      title="Choisir un autre produit"
+                    >
+                      Changer
+                    </button>
+                  </div>
+                </div>
+              )}
+      
+              {/* Formulaire de détails simplifié */}
+              <div style={{
+                display:'grid', 
+                gridTemplateColumns:'120px 100px 140px 1fr auto', 
+                gap:12, 
+                alignItems:'end',
+                background:'rgba(255,255,255,0.8)',
+                padding:16,
+                borderRadius:12,
+                border:'1px solid #e0e0e0'
+              }}>
+                <div>
+                  <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+                    Quantité
+                  </label>
+                  <input
+                    className="input"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value={qty}
+                    onChange={(e) => setQty(e.target.value)}
+                    style={{width:'100%'}}
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+                    Unité
+                  </label>
+                  <select
+                    className="input"
+                    value={unit}
+                    onChange={(e) => setUnit(e.target.value)}
+                    style={{width:'100%'}}
+                  >
+                    {getAvailableUnitsForProduct(selectedProduct).map(u => (
+                      <option key={u} value={u}>{u}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div>
+                  <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+                    DLC/DLUO
+                  </label>
+                  <input
+                    className="input"
+                    type="date"
+                    value={dlc}
+                    onChange={(e) => setDlc(e.target.value)}
+                    style={{width:'100%'}}
+                    title="Date Limite de Consommation"
+                  />
+                </div>
+                
+                <div>
+                  <label style={{fontSize:'0.9rem', color:'#666', marginBottom:4, display:'block'}}>
+                    Lieu
+                  </label>
+                  <select
+                    className="input"
+                    value={locationId}
+                    onChange={(e) => setLocationId(e.target.value)}
+                    style={{width:'100%'}}
+                  >
+                    <option value="">Choisir un lieu...</option>
+                    {locations.map(loc => (
+                      <option key={loc.id} value={loc.id}>{loc.name}</option>
+                    ))}
+                  </select>
+                </div>
+      
+                <button
+                  type="submit"
+                  className="btn primary"
+                  disabled={loading}
+                  style={{whiteSpace:'nowrap', minWidth:100}}
+                >
+                  {loading ? '⏳ Ajout...' : '✅ Ajouter'}
+                </button>
+              </div>
+              
+              {/* Prévisualisation des conversions possibles */}
+              {selectedProduct && qty && unit && (
+                <div style={{
+                  marginTop:12, padding:12, 
+                  background:'linear-gradient(135deg, #f0f9ff, #e0f2fe)', 
+                  borderRadius:8,
+                  fontSize:'0.9rem', color:'#0369a1',
+                  border: '1px solid #7dd3fc'
+                }}>
+                  <div style={{fontWeight:600, marginBottom:6, display:'flex', alignItems:'center', gap:6}}>
+                    <span>💡</span> Conversions automatiques disponibles :
+                  </div>
+                  <div style={{display:'flex', gap:12, flexWrap:'wrap'}}>
+                    {getConversionPreview(selectedProduct, qty, unit).map((conv, i) => (
+                      <span key={i} style={{
+                        padding:'4px 10px', 
+                        background:'rgba(255,255,255,0.8)', 
+                        borderRadius:6, 
+                        border:'1px solid #bae6fd',
+                        fontWeight:600
+                      }}>
+                        ≈ {conv.qty} {conv.unit}
+                      </span>
+                    ))}
+                    {getConversionPreview(selectedProduct, qty, unit).length === 0 && (
+                      <span style={{opacity:0.7}}>Aucune conversion disponible</span>
+                    )}
+                  </div>
+                </div>
+              )}
+      
+      
+              {/* Informations sur le produit sélectionné */}
+              {selectedProduct && (
+                <div style={{
+                  marginTop:8, padding:8, background:'#f8fafc', borderRadius:6,
+                  fontSize:'0.8rem', color:'#64748b'
+                }}>
+                  <strong>Métadonnées :</strong>
+                  {selectedProduct.density_g_per_ml && selectedProduct.density_g_per_ml !== 1.0 && (
+                    <span> • Densité: {selectedProduct.density_g_per_ml} g/ml</span>
+                  )}
+                  {selectedProduct.grams_per_unit && (
+                    <span> • Poids unitaire: {selectedProduct.grams_per_unit}g</span>
+                  )}
+                  {selectedProduct.category && (
+                    <span> • Catégorie: {selectedProduct.category}</span>
+                  )}
+                </div>
+              )}
                   <div style={{fontSize:'0.9rem', color:'#999'}}>
                     Score: {Math.round(product.score)}
                   </div>
