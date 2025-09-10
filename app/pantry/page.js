@@ -3,17 +3,12 @@
 
 import { useEffect, useMemo, useState, useCallback } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import { 
-  ProductAI, 
-  ProductSearch, 
-  DateHelpers, 
-  PantryStyles 
-} from './components/pantryUtils';
-import { SmartAddForm } from './components/SmartAddForm';
-import { ProductCard } from './components/ProductCard';
-import { LotsView } from './components/LotsView';
-import { PantryControls } from './components/PantryControls';
-import { PantryStats } from './components/PantryStats';
+// Les imports des composants sont commentés car ils n'existent pas encore
+// import { SmartAddForm } from './components/SmartAddForm';
+// import { ProductCard } from './components/ProductCard';
+// import { LotsView } from './components/LotsView';
+// import { PantryControls } from './components/PantryControls';
+// import { PantryStats } from './components/PantryStats';
 
 // Hook personnalisé pour la gestion des données
 function usePantryData() {
