@@ -1,4 +1,4 @@
-// app/pantry/components/SmartAddForm.js
+// app/pantry/components/SmartAddForm.js - Version corrigée
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { estimateProductMeta } from '@/lib/meta';
@@ -13,30 +13,6 @@ export function SmartAddForm({ locations, onAdd, onClose }) {
   const [dlc, setDlc] = useState('');
   const [locationId, setLocationId] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showCreateModal, setShowCreateModal] = useState(false);
-  const [existingCategories, setExistingCategories] = useState([]);
-
-  // Charger les catégories existantes
-  useEffect(() => {
-    const loadCategories = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('products_catalog')
-          .select('category')
-          .not('category', 'is', null)
-          .neq('category', '');
-        
-        if (error) throw error;
-        
-        const uniqueCategories = [...new Set(data.map(p => p.category))].sort();
-        setExistingCategories(uniqueCategories);
-      } catch (err) {
-        console.error('Erreur chargement catégories:', err);
-      }
-    };
-    
-    loadCategories();
-  }, []);
 
   // Recherche de produits
   useEffect(() => {
@@ -95,52 +71,51 @@ export function SmartAddForm({ locations, onAdd, onClose }) {
     }
   }
 
-  async function handleCreateProduct(productData) {
-    try {
-      const { data: newProduct, error: productError } = await supabase
-        .from('products_catalog')
-        .insert([productData])
-        .select()
-        .single();
-        
-      if (productError) throw productError;
-      
-      setSelectedProduct(newProduct);
-      setQuery(newProduct.name);
-      setUnit(newProduct.default_unit || 'g');
-      setSuggestions([]);
-      setShowCreateModal(false);
-      
-      // Auto-sélection du lieu après création
-      const analysis = ProductAI.analyzeProductName(newProduct.name);
-      const suggestedLocation = ProductAI.findLocationByType(locations, analysis.location);
-      if (suggestedLocation) {
-        setLocationId(suggestedLocation.id);
-      }
-      
-      // Auto-calcul DLC après création
-      if (newProduct.typical_shelf_life_days) {
-        const futureDate = new Date();
-        futureDate.setDate(futureDate.getDate() + newProduct.typical_shelf_life_days);
-        setDlc(futureDate.toISOString().slice(0, 10));
-      }
-      
-      // Recharger les catégories
-      const { data: categories } = await supabase
-        .from('products_catalog')
-        .select('category')
-        .not('category', 'is', null)
-        .neq('category', '');
-      
-      if (categories) {
-        const uniqueCategories = [...new Set(categories.map(p => p.category))].sort();
-        setExistingCategories(uniqueCategories);
-      }
-      
-    } catch (err) {
-      console.error('Erreur création produit:', err);
-      alert('Erreur lors de la création: ' + err.message);
+  // Fonction pour créer ou récupérer un produit
+  async function getOrCreateProduct(productName) {
+    const name = productName.trim();
+    
+    // 1. Vérifier si le produit existe déjà (recherche case-insensitive)
+    const { data: existingProduct, error: searchError } = await supabase
+      .from('products_catalog')
+      .select('*')
+      .ilike('name', name)
+      .maybeSingle();
+    
+    if (searchError && searchError.code !== 'PGRST116') {
+      throw searchError;
     }
+    
+    // 2. Si le produit existe, le retourner
+    if (existingProduct) {
+      return existingProduct;
+    }
+    
+    // 3. Sinon, créer un nouveau produit
+    const analysis = ProductAI.analyzeProductName(name);
+    const meta = estimateProductMeta({ name, category: analysis.category });
+    
+    const productData = {
+      name: name,
+      category: analysis.category || null,
+      default_unit: analysis.unit || 'g',
+      typical_shelf_life_days: analysis.shelfLife || 7,
+      density_g_per_ml: meta?.density_g_per_ml || 1.0,
+      grams_per_unit: meta?.grams_per_unit || null,
+      created_at: new Date().toISOString()
+    };
+    
+    const { data: newProduct, error: createError } = await supabase
+      .from('products_catalog')
+      .insert([productData])
+      .select()
+      .single();
+    
+    if (createError) {
+      throw createError;
+    }
+    
+    return newProduct;
   }
 
   function getAvailableUnitsForProduct(product) {
@@ -176,33 +151,48 @@ export function SmartAddForm({ locations, onAdd, onClose }) {
     
     setLoading(true);
     try {
+      // 1. Obtenir ou créer le produit
       let product = selectedProduct;
-      
       if (!product) {
-        setShowCreateModal(true);
-        setLoading(false);
-        return;
+        product = await getOrCreateProduct(query);
+        setSelectedProduct(product);
+        
+        // Auto-suggestions après création
+        const analysis = ProductAI.analyzeProductName(product.name);
+        const suggestedLocation = ProductAI.findLocationByType(locations, analysis.location);
+        if (suggestedLocation && !locationId) {
+          setLocationId(suggestedLocation.id);
+        }
+        
+        // Auto-calcul DLC
+        if (product.typical_shelf_life_days && !dlc) {
+          const futureDate = new Date();
+          futureDate.setDate(futureDate.getDate() + product.typical_shelf_life_days);
+          setDlc(futureDate.toISOString().slice(0, 10));
+        }
       }
       
+      // 2. Validation
       if (!qty || Number(qty) <= 0) {
         alert('Veuillez saisir une quantité valide');
         setLoading(false);
         return;
       }
       
+      // 3. Créer le lot
       const lot = {
         product_id: product.id,
         location_id: locationId || null,
         qty: Number(qty),
         unit: unit || product.default_unit || 'g',
         dlc: dlc || null,
-        note: 'Ajouté via recherche intelligente IA',
+        note: 'Ajouté via IA avancée',
         entered_at: new Date().toISOString()
       };
 
       await onAdd(lot, product);
       
-      // Reset après ajout réussi
+      // 4. Reset après ajout réussi
       setQty(1);
       setDlc('');
       setLocationId('');
@@ -344,63 +334,9 @@ export function SmartAddForm({ locations, onAdd, onClose }) {
                   </div>
                 </div>
               ))}
-              
-              <div
-                onClick={() => setShowCreateModal(true)}
-                style={{
-                  padding:'16px 20px', 
-                  cursor:'pointer', 
-                  background:'linear-gradient(135deg, #ecfdf5, #d1fae5)', 
-                  color:'#065f46', 
-                  fontWeight:700,
-                  borderTop: '2px solid #10b981'
-                }}
-                onMouseEnter={(e) => e.target.style.background = 'linear-gradient(135deg, #d1fae5, #a7f3d0)'}
-                onMouseLeave={(e) => e.target.style.background = 'linear-gradient(135deg, #ecfdf5, #d1fae5)'}
-              >
-                <div style={{display:'flex', alignItems:'center', gap:12}}>
-                  <span style={{fontSize:'1.4rem'}}>✨</span>
-                  <div>
-                    <div style={{fontWeight:800, fontSize:'1.1rem'}}>Créer "{query}" avec IA avancée</div>
-                    <div style={{fontSize:'0.85rem', color:'#047857', marginTop:4}}>
-                      🤖 Auto-détection : catégorie, unité, durée de vie, lieu de stockage
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           )}
         </div>
-
-        {/* Modal de création - simplifié pour l'instant */}
-        {showCreateModal && (
-          <div style={{
-            position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-            background: 'rgba(0,0,0,0.8)', zIndex: 9999,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            padding: 20
-          }}>
-            <div style={{
-              background: 'white', borderRadius: 16, padding: 24,
-              maxWidth: 500, width: '100%'
-            }}>
-              <h3>Créer le produit "{query}"</h3>
-              <p>Fonctionnalité de création avancée en cours de développement...</p>
-              <div style={{display:'flex', gap:12, justifyContent:'flex-end'}}>
-                <button onClick={() => setShowCreateModal(false)}>Annuler</button>
-                <button onClick={() => {
-                  // Pour l'instant, création basique
-                  handleCreateProduct({
-                    name: query,
-                    category: ProductAI.analyzeProductName(query).category,
-                    default_unit: ProductAI.analyzeProductName(query).unit,
-                    typical_shelf_life_days: ProductAI.analyzeProductName(query).shelfLife
-                  });
-                }}>Créer</button>
-              </div>
-            </div>
-          </div>
-        )}
 
         {selectedProduct && (
           <div style={{
@@ -408,59 +344,21 @@ export function SmartAddForm({ locations, onAdd, onClose }) {
             padding:20, 
             borderRadius:16, 
             marginBottom:20,
-            border:'3px solid #34d399',
-            position:'relative'
+            border:'3px solid #34d399'
           }}>
             <div style={{
-              position:'absolute',
-              top:-10,
-              left:20,
-              background:'#10b981',
-              color:'white',
-              padding:'4px 12px',
-              borderRadius:8,
-              fontSize:'0.8rem',
-              fontWeight:700
+              fontWeight:800, 
+              fontSize:'1.2rem', 
+              color:'#064e3b',
+              marginBottom:8
             }}>
-              ✅ PRODUIT SÉLECTIONNÉ
+              ✅ {selectedProduct.name}
             </div>
-            
-            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', marginTop:8}}>
-              <div>
-                <div style={{fontWeight:800, fontSize:'1.2rem', color:'#064e3b'}}>
-                  {selectedProduct.name}
-                </div>
-                <div style={{fontSize:'1rem', color:'#047857', marginTop:6}}>
-                  📂 {selectedProduct.category || 'Sans catégorie'} • 
-                  📏 Unité par défaut: {selectedProduct.default_unit || 'g'}
-                  {selectedProduct.grams_per_unit && ` • ⚖️ ${selectedProduct.grams_per_unit}g/unité`}
-                  {selectedProduct.density_g_per_ml && selectedProduct.density_g_per_ml !== 1.0 && 
-                    ` • 🧪 Densité: ${selectedProduct.density_g_per_ml} g/ml`}
-                </div>
-              </div>
-              
-              <button
-                type="button"
-                onClick={() => {
-                  setSelectedProduct(null);
-                  setQuery('');
-                  setUnit('g');
-                  setLocationId('');
-                  setDlc('');
-                }}
-                style={{
-                  padding:'8px 16px', 
-                  border:'2px solid #065f46', 
-                  borderRadius:8,
-                  background:'white', 
-                  cursor:'pointer',
-                  color:'#065f46',
-                  fontWeight:600
-                }}
-                title="Choisir un autre produit"
-              >
-                🔄 Changer
-              </button>
+            <div style={{fontSize:'1rem', color:'#047857'}}>
+              📂 {selectedProduct.category || 'Sans catégorie'} • 
+              📏 {selectedProduct.default_unit || 'g'}
+              {selectedProduct.typical_shelf_life_days && 
+                ` • 📅 ${selectedProduct.typical_shelf_life_days} jours`}
             </div>
           </div>
         )}
