@@ -1,18 +1,30 @@
-// app/pantry/components/ProductCard.js
+// app/pantry/components/ProductCard.js - Version améliorée
 import { useMemo } from 'react';
 import { LifespanBadge } from './UI/LifespanBadge';
 import { DateHelpers, PantryStyles } from './pantryUtils';
 
 export function ProductCard({ productId, name, category, unit, lots=[], onOpen, onQuickAction }) {
-  const { total, nextDate, locations, urgentCount } = useMemo(()=>{
+  const { total, nextDate, locations, urgentCount, lotDetails } = useMemo(()=>{
     let total = 0;
     let nextDate = null;
     const locSet = new Set();
     let urgentCount = 0;
+    const lotsByLocation = new Map();
     
     for (const lot of lots) {
       total += Number(lot.qty || 0);
-      if (lot.location?.name) locSet.add(lot.location.name);
+      if (lot.location?.name) {
+        locSet.add(lot.location.name);
+        
+        // Grouper par lieu pour affichage détaillé
+        const locName = lot.location.name;
+        if (!lotsByLocation.has(locName)) {
+          lotsByLocation.set(locName, { qty: 0, count: 0 });
+        }
+        const locData = lotsByLocation.get(locName);
+        locData.qty += Number(lot.qty || 0);
+        locData.count += 1;
+      }
       
       const d = lot.dlc || lot.best_before;
       if (d && (nextDate === null || new Date(d) < new Date(nextDate))) nextDate = d;
@@ -25,7 +37,12 @@ export function ProductCard({ productId, name, category, unit, lots=[], onOpen, 
       total: Math.round(total * 100) / 100, 
       nextDate, 
       locations: [...locSet].slice(0, 3),
-      urgentCount
+      urgentCount,
+      lotDetails: Array.from(lotsByLocation.entries()).map(([loc, data]) => ({
+        location: loc,
+        qty: Math.round(data.qty * 100) / 100,
+        count: data.count
+      }))
     };
   }, [lots]);
 
@@ -36,99 +53,74 @@ export function ProductCard({ productId, name, category, unit, lots=[], onOpen, 
     <div
       style={{
         ...PantryStyles.glassBase,
-        borderRadius:12,
-        padding:14,
-        display:'grid',
-        gap:8,
-        cursor:'pointer',
-        transition: 'all 0.2s ease',
-        borderLeft: isUrgent ? '4px solid #dc2626' : '1px solid rgba(0,0,0,0.06)'
+        borderRadius: 16,
+        padding: 18,
+        display: 'grid',
+        gap: 12,
+        cursor: 'pointer',
+        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        borderLeft: isUrgent ? '4px solid #dc2626' : '2px solid rgba(34, 197, 94, 0.3)',
+        position: 'relative',
+        overflow: 'hidden',
+        background: 'rgba(255, 255, 255, 0.8)',
+        backdropFilter: 'blur(12px) saturate(130%)',
+        WebkitBackdropFilter: 'blur(12px) saturate(130%)',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+        border: '1px solid rgba(255, 255, 255, 0.3)'
       }}
-      onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
-      onMouseLeave={(e) => e.target.style.transform = 'none'}
+      onMouseEnter={(e) => {
+        e.target.style.transform = 'translateY(-8px) scale(1.02)';
+        e.target.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+        e.target.style.borderLeft = isUrgent ? '4px solid #dc2626' : '4px solid rgba(34, 197, 94, 0.6)';
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.transform = 'translateY(0px) scale(1)';
+        e.target.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+        e.target.style.borderLeft = isUrgent ? '4px solid #dc2626' : '2px solid rgba(34, 197, 94, 0.3)';
+      }}
     >
-      <div style={{display:'flex', justifyContent:'space-between', gap:8}}>
+      {/* Effet de vague pour les produits urgents */}
+      {isUrgent && (
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 3,
+          background: 'linear-gradient(90deg, #dc2626, #f97316, #dc2626)',
+          backgroundSize: '200% 100%',
+          animation: 'gradientWave 2s ease-in-out infinite'
+        }} />
+      )}
+      
+      {/* Header avec nom et badge */}
+      <div style={{display:'flex', justifyContent:'space-between', gap:12}}>
         <div style={{flex:1}}>
-          <div style={{fontWeight:700, color:'#15803d', fontSize:'1.1rem'}}>{name}</div>
-          <div style={{fontSize:'.85rem', color:'#78716c'}}>
-            {category ? category[0].toUpperCase() + category.slice(1) : '—'}
+          <div style={{
+            fontWeight: 800, 
+            color: '#059669', 
+            fontSize: '1.2rem',
+            marginBottom: 4,
+            lineHeight: 1.3
+          }}>
+            {name}
+          </div>
+          <div style={{
+            fontSize: '.9rem', 
+            color: '#6b7280',
+            fontWeight: 500
+          }}>
+            📂 {category ? category[0].toUpperCase() + category.slice(1) : 'Sans catégorie'}
           </div>
         </div>
         <LifespanBadge date={nextDate} />
       </div>
 
-      <div style={{display:'flex', alignItems:'baseline', justifyContent:'space-between'}}>
-        <div style={{display:'flex', alignItems:'baseline', gap:6}}>
-          <span style={{fontSize:'1.6rem', fontWeight:800, color:'#15803d'}}>
-            {total}
-          </span>
-          <span style={{opacity:.7}}>{lots[0]?.unit || unit || 'u'}</span>
-        </div>
-        
-        {urgentCount > 0 && (
-          <span style={{
-            fontSize:'0.8rem', padding:'2px 6px', borderRadius:12,
-            background:'#fee2e2', color:'#991b1b', fontWeight:600
-          }}>
-            {urgentCount} urgent{urgentCount > 1 ? 's' : ''}
-          </span>
-        )}
-      </div>
-
-      {!!locations.length && (
-        <div style={{display:'flex', flexWrap:'wrap', gap:4}}>
-          {locations.map(loc => (
-            <span key={loc} style={{ 
-              fontSize:'.75rem', padding:'2px 6px', borderRadius:999, 
-              background:'rgba(0,0,0,0.04)' 
-            }}>
-              📍 {loc}
-            </span>
-          ))}
-          {lots.length > locations.length && (
-            <span style={{fontSize:'.75rem', opacity:0.6}}>
-              +{lots.length - locations.length} autre{lots.length - locations.length > 1 ? 's' : ''}
-            </span>
-          )}
-        </div>
-      )}
-
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:8}}>
-        <span style={{fontSize:'.8rem', color:'#78716c'}}>
-          {lots.length} lot{lots.length > 1 ? 's' : ''}
-        </span>
-        
-        <div style={{display:'flex', gap:4}}>
-          <button 
-            onClick={(e) => { 
-              e.stopPropagation(); 
-              onQuickAction?.('add', { productId, name }); 
-            }}
-            style={{
-              padding:'4px 8px', fontSize:'0.8rem', 
-              background:'#16a34a', color:'white',
-              border:'none', borderRadius:4, cursor:'pointer'
-            }}
-            title="Ajouter un lot"
-          >
-            +
-          </button>
-          
-          <button 
-            onClick={(e) => { 
-              e.stopPropagation(); 
-              onOpen?.({ productId, name }); 
-            }}
-            style={{
-              padding:'4px 8px', fontSize:'0.8rem', 
-              background:'#2563eb', color:'white',
-              border:'none', borderRadius:4, cursor:'pointer'
-            }}
-          >
-            Gérer →
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
+      {/* Quantité totale avec style amélioré */}
+      <div style={{
+        background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.1))',
+        padding: 16,
+        borderRadius: 14,
+        border: '2px solid rgba(34, 197, 94, 0.2)',
+        position: 'relative'
+      }}>
