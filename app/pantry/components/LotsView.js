@@ -1,7 +1,7 @@
-// app/pantry/components/LotsView.js - Version corrigée
+// app/pantry/components/LotsView.js - Version complète corrigée
 import { useMemo } from 'react';
 
-// Helper pour les dates (à définir si pas déjà fait)
+// Helper pour les dates
 const DateHelpers = {
   daysUntil(dateStr) {
     if (!dateStr) return null;
@@ -70,9 +70,12 @@ function LifespanBadge({ date }) {
   return <span className="lifespan-badge good">{days}j</span>;
 }
 
+// Composant principal LotsView
 export function LotsView({ lots, onDeleteLot, onUpdateLot }) {
-  console.log('LotsView reçoit:', lots?.length, 'lots'); // Debug
+  // Debug pour identifier les problèmes
+  console.log('LotsView reçoit:', lots?.length, 'lots');
 
+  // Tri des lots par urgence
   const sortedLots = useMemo(() => {
     if (!lots || !Array.isArray(lots)) {
       console.warn('LotsView: lots n\'est pas un tableau valide', lots);
@@ -93,6 +96,7 @@ export function LotsView({ lots, onDeleteLot, onUpdateLot }) {
     });
   }, [lots]);
 
+  // Fonction pour modifier rapidement la quantité
   async function quickUpdateQty(lot, delta) {
     try {
       const newQty = Math.max(0, Number(lot.qty || 0) + delta);
@@ -121,6 +125,7 @@ export function LotsView({ lots, onDeleteLot, onUpdateLot }) {
     );
   }
 
+  // Affichage principal
   return (
     <div className="lots-grid">
       {sortedLots.map(lot => {
@@ -165,7 +170,7 @@ export function LotsView({ lots, onDeleteLot, onUpdateLot }) {
               <LifespanBadge date={lot.best_before || lot.dlc} />
             </div>
 
-            {/* Quantité */}
+            {/* Quantité avec fond légèrement différent */}
             <div style={{
               display: 'flex', 
               alignItems: 'center', 
@@ -209,7 +214,7 @@ export function LotsView({ lots, onDeleteLot, onUpdateLot }) {
               </div>
             )}
 
-            {/* Actions */}
+            {/* Actions sur le lot */}
             <div className="lot-actions">
               <button
                 className="btn primary small"
@@ -244,7 +249,7 @@ export function LotsView({ lots, onDeleteLot, onUpdateLot }) {
               </button>
             </div>
 
-            {/* Date d'ajout */}
+            {/* Date d'ajout en bas */}
             <div style={{
               fontSize: '0.75rem', 
               opacity: 0.5, 
