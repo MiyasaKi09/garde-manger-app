@@ -6,39 +6,24 @@ const CONFIG = {
   tileWidth: 1000,
   colors: {
     bg:    "var(--cream-100, #f4efe6)",
-    olive: "var(--olive-500, #6e8b5e)",
+    olive: "var(--olive-500, #6e8b5e)", 
     terra: "var(--terra-500, #c08a5a)",
     sable: "var(--sable-300, #e2c98f)",
+    // Nouvelles couleurs exactes du projet
+    paper: "#f4efe6", // crème
+    earth: "#b1793a", // ocre
+    clay:  "#e6d7c4", // argile claire
+    moss:  "#6ea067", // vert mousse
   },
-  counts: { olive: 6, terra: 5, sable: 6 },
-  sizes: {
-    olive: { rx: 160, ry: 220 },
-    terra: { rx: 130, ry: 180 },
-    sable: { rx: 200, ry: 260 },
-  },
-  packing: {
-    radiusFactor: 0.62,
-    padding: 24,
-    attemptsPerBlob: 120,
-    sideInset: 80,
-  },
-  shape: {
-    points: 36, // Réduit pour des morphings plus fluides
-    noiseAmp: 0.25, // Augmenté pour plus de déformation
-    harmonicMin: 2,
-    harmonicMax: 6,
-    tension: 0.45,
-    scaleJitter: 0.15,
-    rotate: true,
-  },
-  // NOUVEAU: Morphing dynamique
-  morphing: {
-    updateInterval: 150, // Mise à jour toutes les 150ms
-    deformationSpeed: 0.02, // Vitesse de déformation
-    fusionDistance: 180, // Distance pour déclencher fusion
-    maxDeformation: 0.4, // Déformation maximale
-    splitProbability: 0.003, // Probabilité de division par frame
-    fusionProbability: 0.008, // Probabilité de fusion par frame
+  // Configuration pour les bulles organiques nettes
+  organicBubbles: {
+    count: 8,
+    minRadius: 60,
+    maxRadius: 140,
+    controlPoints: 8,
+    morphSpeed: 0.008,
+    fusionDistance: 100,
+    colors: ['paper', 'earth', 'clay', 'moss']
   }
 };
 
@@ -54,224 +39,167 @@ function mulberry32(seed) {
 
 const randBetween = (rnd, a, b) => a + rnd() * (b - a);
 
-/* ========== Forme dynamique avec morphing ========== */
-function toCubicPath(points, tension = 0.45) {
-  const n = points.length;
-  let d = `M ${points[0][0]},${points[0][1]}`;
-  for (let i = 0; i < n; i++) {
-    const p0 = points[(i - 1 + n) % n];
-    const p1 = points[i];
-    const p2 = points[(i + 1) % n];
-    const p3 = points[(i + 2) % n];
-    const d1x = (p2[0] - p0[0]) * tension;
-    const d1y = (p2[1] - p0[1]) * tension;
-    const d2x = (p3[0] - p1[0]) * tension;
-    const d2y = (p3[1] - p1[1]) * tension;
-    const c1x = p1[0] + d1x / 3;
-    const c1y = p1[1] + d1y / 3;
-    const c2x = p2[0] - d2x / 3;
-    const c2y = p2[1] - d2y / 3;
-    d += ` C ${c1x},${c1y} ${c2x},${c2y} ${p2[0]},${p2[1]}`;
-  }
-  return d + " Z";
-}
-
-class MorphingBlob {
-  constructor({ cx, cy, rx, ry, colorKey, rnd, id }) {
-    this.id = id;
-    this.cx = cx;
-    this.cy = cy;
-    this.baseRx = rx;
-    this.baseRy = ry;
+/* ========== Bulle Organique Nette ========== */
+class OrganicCrispBubble {
+  constructor(x, y, radius, colorKey, seed) {
+    this.x = x;
+    this.y = y;
+    this.baseRadius = radius;
     this.colorKey = colorKey;
-    this.rnd = rnd;
-    
-    // États de morphing
+    this.seed = seed;
+    this.rnd = mulberry32(seed);
+    this.age = 0;
     this.time = 0;
-    this.deformParams = [];
-    this.targetDeformParams = [];
-    this.velocity = { x: 0, y: 0 };
-    this.scale = 1;
-    this.targetScale = 1;
-    this.opacity = 0.8;
-    this.targetOpacity = 0.8;
     
-    // Initialiser les paramètres de déformation
-    this.initDeformParams();
-    this.generateTargetParams();
+    // Points de contrôle pour forme organique mais nette
+    this.controlPoints = CONFIG.organicBubbles.controlPoints;
+    const rndFunc = this.rnd;
+    this.deformations = Array(this.controlPoints).fill().map((_, i) => ({
+      amplitude: 0.1 + rndFunc() * 0.15,
+      frequency: 0.2 + rndFunc() * 0.6,
+      phase: rndFunc() * Math.PI * 2,
+      baseOffset: (rndFunc() - 0.5) * 0.2
+    }));
+    
+    // Mouvement lent et fluide
+    this.velocity = {
+      x: (rndFunc() - 0.5) * 0.2,
+      y: (rndFunc() - 0.5) * 0.2
+    };
+    
+    this.targetX = x;
+    this.targetY = y;
+    this.metabolismRate = 0.15 + rndFunc() * 0.25;
   }
-  
-  initDeformParams() {
-    const { points } = CONFIG.shape;
-    for (let i = 0; i < points; i++) {
-      this.deformParams.push({
-        radiusMultiplier: 1,
-        angleOffset: 0,
-        noise: 0
-      });
-      this.targetDeformParams.push({
-        radiusMultiplier: 1,
-        angleOffset: 0,
-        noise: 0
-      });
-    }
-  }
-  
-  generateTargetParams() {
-    const { maxDeformation } = CONFIG.morphing;
-    for (let i = 0; i < this.deformParams.length; i++) {
-      this.targetDeformParams[i] = {
-        radiusMultiplier: 0.7 + this.rnd() * 0.6,
-        angleOffset: (this.rnd() - 0.5) * maxDeformation,
-        noise: (this.rnd() - 0.5) * maxDeformation
-      };
-    }
-    this.targetScale = 0.8 + this.rnd() * 0.4;
-    this.targetOpacity = 0.6 + this.rnd() * 0.3;
-  }
-  
-  update() {
-    const { deformationSpeed } = CONFIG.morphing;
-    this.time += 0.016; // ~60fps
+
+  update(time, allBubbles, W, H) {
+    this.time = time;
+    this.age += 0.016;
     
-    // Interpolation vers les cibles
-    for (let i = 0; i < this.deformParams.length; i++) {
-      const current = this.deformParams[i];
-      const target = this.targetDeformParams[i];
-      
-      current.radiusMultiplier += (target.radiusMultiplier - current.radiusMultiplier) * deformationSpeed;
-      current.angleOffset += (target.angleOffset - current.angleOffset) * deformationSpeed;
-      current.noise += (target.noise - current.noise) * deformationSpeed;
-    }
+    // Respiration subtile
+    const breathCycle = Math.sin(time * this.metabolismRate) * 0.06;
+    this.currentRadius = this.baseRadius * (1 + breathCycle);
     
-    this.scale += (this.targetScale - this.scale) * deformationSpeed;
-    this.opacity += (this.targetOpacity - this.opacity) * deformationSpeed;
-    
-    // Mouvement brownien
-    this.velocity.x += (this.rnd() - 0.5) * 0.5;
-    this.velocity.y += (this.rnd() - 0.5) * 0.5;
-    this.velocity.x *= 0.98; // Friction
-    this.velocity.y *= 0.98;
-    
-    this.cx += this.velocity.x;
-    this.cy += this.velocity.y;
-    
-    // Générer de nouvelles cibles périodiquement
-    if (this.time % 3 < 0.016) { // Toutes les 3 secondes environ
-      this.generateTargetParams();
-    }
-  }
-  
-  getPath() {
-    const { points, tension } = CONFIG.shape;
-    const pts = [];
-    
-    for (let i = 0; i < points; i++) {
-      const angle = (i / points) * Math.PI * 2;
-      const params = this.deformParams[i];
-      
-      // Rayon de base avec déformation
-      const baseRadius = (this.baseRx + this.baseRy) * 0.5;
-      const radius = baseRadius * this.scale * params.radiusMultiplier;
-      
-      // Position avec bruit et décalage d'angle
-      const adjustedAngle = angle + params.angleOffset + Math.sin(this.time * 2 + i * 0.5) * 0.1;
-      const noiseOffset = Math.sin(this.time * 3 + i * 0.3) * params.noise * 20;
-      
-      const x = this.cx + Math.cos(adjustedAngle) * (radius + noiseOffset);
-      const y = this.cy + Math.sin(adjustedAngle) * (radius + noiseOffset);
-      
-      pts.push([x, y]);
-    }
-    
-    return toCubicPath(pts, tension);
-  }
-  
-  distanceTo(other) {
-    const dx = this.cx - other.cx;
-    const dy = this.cy - other.cy;
-    return Math.sqrt(dx * dx + dy * dy);
-  }
-  
-  canFuseWith(other) {
-    return this.colorKey === other.colorKey && 
-           this.distanceTo(other) < CONFIG.morphing.fusionDistance;
-  }
-  
-  fuseWith(other) {
-    // Fusionner les positions (moyenne pondérée)
-    const totalScale = this.scale + other.scale;
-    this.cx = (this.cx * this.scale + other.cx * other.scale) / totalScale;
-    this.cy = (this.cy * this.scale + other.cy * other.scale) / totalScale;
-    this.scale = Math.min(totalScale * 0.7, 2); // Limite la taille
-    this.targetScale = this.scale;
-    
-    // Fusionner les paramètres de déformation
-    for (let i = 0; i < this.deformParams.length; i++) {
-      this.deformParams[i].radiusMultiplier = 
-        (this.deformParams[i].radiusMultiplier + other.deformParams[i].radiusMultiplier) * 0.6;
-    }
-    
-    this.generateTargetParams();
-  }
-  
-  split() {
-    const newBlob = new MorphingBlob({
-      cx: this.cx + (this.rnd() - 0.5) * 100,
-      cy: this.cy + (this.rnd() - 0.5) * 100,
-      rx: this.baseRx * 0.7,
-      ry: this.baseRy * 0.7,
-      colorKey: this.colorKey,
-      rnd: this.rnd,
-      id: this.id + '_split_' + Date.now()
+    // Mise à jour des déformations
+    this.deformations.forEach(def => {
+      def.currentOffset = def.baseOffset + def.amplitude * Math.sin(time * def.frequency + def.phase);
     });
     
-    this.scale *= 0.8;
-    this.targetScale = this.scale;
-    newBlob.scale = 0.6;
-    newBlob.targetScale = 0.6;
+    // Mouvement fluide vers la cible
+    this.x += (this.targetX - this.x) * 0.015;
+    this.y += (this.targetY - this.y) * 0.015;
     
-    return newBlob;
+    // Nouvelle cible périodiquement
+    if (Math.floor(time * 8) % 180 === 0 && Math.random() < 0.08) {
+      this.targetX = this.currentRadius + Math.random() * (W - this.currentRadius * 2);
+      this.targetY = this.currentRadius + Math.random() * (H - this.currentRadius * 2);
+    }
+    
+    // Confinement doux
+    this.bounceOffWalls(W, H);
+  }
+
+  bounceOffWalls(W, H) {
+    const margin = this.currentRadius;
+    if (this.x < margin) {
+      this.x = margin;
+      this.targetX = margin + 50;
+    }
+    if (this.x > W - margin) {
+      this.x = W - margin;
+      this.targetX = W - margin - 50;
+    }
+    if (this.y < margin) {
+      this.y = margin;
+      this.targetY = margin + 50;
+    }
+    if (this.y > H - margin) {
+      this.y = H - margin;
+      this.targetY = H - margin - 50;
+    }
+  }
+
+  generateSharpPath() {
+    const points = [];
+    
+    for (let i = 0; i < this.controlPoints; i++) {
+      const angle = (i / this.controlPoints) * Math.PI * 2;
+      const def = this.deformations[i];
+      
+      // Rayon avec déformation nette
+      const radius = this.currentRadius * (1 + def.currentOffset);
+      
+      const x = this.x + Math.cos(angle) * radius;
+      const y = this.y + Math.sin(angle) * radius;
+      
+      points.push([x, y]);
+    }
+    
+    return this.createCrispPath(points);
+  }
+
+  createCrispPath(points) {
+    if (points.length < 3) return '';
+    
+    let path = `M ${points[0][0].toFixed(1)},${points[0][1].toFixed(1)}`;
+    
+    for (let i = 0; i < points.length; i++) {
+      const current = points[i];
+      const next = points[(i + 1) % points.length];
+      const nextNext = points[(i + 2) % points.length];
+      
+      // Courbes de Bézier pour la fluidité mais sans sur-lissage
+      const tension = 0.15; // Moins de tension = plus net
+      const cp1x = current[0] + (next[0] - points[(i - 1 + points.length) % points.length][0]) * tension;
+      const cp1y = current[1] + (next[1] - points[(i - 1 + points.length) % points.length][1]) * tension;
+      const cp2x = next[0] - (nextNext[0] - current[0]) * tension;
+      const cp2y = next[1] - (nextNext[1] - current[1]) * tension;
+      
+      path += ` C ${cp1x.toFixed(1)},${cp1y.toFixed(1)} ${cp2x.toFixed(1)},${cp2y.toFixed(1)} ${next[0].toFixed(1)},${next[1].toFixed(1)}`;
+    }
+    
+    return path + ' Z';
+  }
+
+  distanceTo(other) {
+    const dx = this.x - other.x;
+    const dy = this.y - other.y;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  canFuseWith(other) {
+    return this.distanceTo(other) < CONFIG.organicBubbles.fusionDistance && 
+           Math.abs(CONFIG.organicBubbles.colors.indexOf(this.colorKey) - 
+                   CONFIG.organicBubbles.colors.indexOf(other.colorKey)) <= 1;
   }
 }
 
-/* ========== Placement initial ========== */
-function createInitialBlobs(rnd, W, H) {
-  const allBlobs = [];
-  let blobId = 0;
+/* ========== Création des bulles initiales ========== */
+function createOrganicBubbles(rnd, W, H) {
+  const bubbles = [];
+  const { count, minRadius, maxRadius, colors } = CONFIG.organicBubbles;
   
-  ['olive', 'terra', 'sable'].forEach(colorKey => {
-    const count = CONFIG.counts[colorKey];
-    const { rx, ry } = CONFIG.sizes[colorKey];
+  for (let i = 0; i < count; i++) {
+    const x = minRadius + rnd() * (W - minRadius * 2);
+    const y = minRadius + rnd() * (H - minRadius * 2);
     
-    for (let i = 0; i < count; i++) {
-      const attempts = 50;
-      let placed = false;
-      
-      for (let attempt = 0; attempt < attempts; attempt++) {
-        const cx = randBetween(rnd, CONFIG.packing.sideInset, W - CONFIG.packing.sideInset);
-        const cy = randBetween(rnd, CONFIG.packing.sideInset, H - CONFIG.packing.sideInset);
-        
-        // Vérifier la distance avec les autres blobs
-        const tooClose = allBlobs.some(blob => {
-          const dx = cx - blob.cx;
-          const dy = cy - blob.cy;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          return dist < (rx + ry + blob.baseRx + blob.baseRy) * 0.3;
-        });
-        
-        if (!tooClose) {
-          allBlobs.push(new MorphingBlob({
-            cx, cy, rx, ry, colorKey, rnd, id: blobId++
-          }));
-          placed = true;
-          break;
-        }
-      }
+    // Privilégier les grosses tailles (70% de grosses bulles)
+    const sizeRoll = rnd();
+    let radius;
+    if (sizeRoll < 0.7) {
+      // Grosses bulles
+      radius = maxRadius * 0.8 + rnd() * (maxRadius * 0.2);
+    } else {
+      // Moyennes bulles
+      radius = minRadius + rnd() * (maxRadius - minRadius) * 0.6;
     }
-  });
+    
+    const colorKey = colors[Math.floor(rnd() * colors.length)];
+    
+    bubbles.push(new OrganicCrispBubble(x, y, radius, colorKey, i * 1000 + Date.now()));
+  }
   
-  return allBlobs;
+  return bubbles;
 }
 
 /* ================= Hook de dimension écran ================= */
@@ -293,7 +221,8 @@ function useWindowSize() {
 
 /* ================= COMPOSANT PRINCIPAL ================= */
 export default function MatisseWallpaperRandom() {
-  const [blobs, setBlobs] = useState([]);
+  const [bubbles, setBubbles] = useState([]);
+  const [time, setTime] = useState(0);
   const { width: docW, height: docH } = useWindowSize();
   
   // Initialisation avec RNG
@@ -306,59 +235,84 @@ export default function MatisseWallpaperRandom() {
     return mulberry32(Date.now() & 0xffffffff);
   }, []);
   
-  // Créer les blobs initiaux
+  // Créer les bulles organiques initiales
   useEffect(() => {
     const W = Math.max(docW, CONFIG.tileWidth);
     const H = docH;
-    const initialBlobs = createInitialBlobs(rnd, W, H);
-    setBlobs(initialBlobs);
+    const organicBubbles = createOrganicBubbles(rnd, W, H);
+    setBubbles(organicBubbles);
   }, [rnd, docW, docH]);
   
   // Animation loop
   useEffect(() => {
     const interval = setInterval(() => {
-      setBlobs(currentBlobs => {
-        const newBlobs = [...currentBlobs];
-        const { splitProbability, fusionProbability } = CONFIG.morphing;
+      setTime(prev => prev + 0.016);
+      
+      setBubbles(currentBubbles => {
+        const W = Math.max(docW, CONFIG.tileWidth);
+        const H = docH;
+        const updatedBubbles = [...currentBubbles];
         
-        // Mettre à jour tous les blobs
-        newBlobs.forEach(blob => blob.update());
+        // Mettre à jour toutes les bulles
+        updatedBubbles.forEach(bubble => {
+          bubble.update(time, updatedBubbles, W, H);
+        });
         
-        // Gestion des fusions
-        for (let i = newBlobs.length - 1; i >= 0; i--) {
-          for (let j = i - 1; j >= 0; j--) {
-            if (newBlobs[i].canFuseWith(newBlobs[j]) && rnd() < fusionProbability) {
-              newBlobs[i].fuseWith(newBlobs[j]);
-              newBlobs.splice(j, 1);
-              i--; // Ajuster l'index
-              break;
+        // Fusion très occasionnelle
+        for (let i = 0; i < updatedBubbles.length; i++) {
+          for (let j = i + 1; j < updatedBubbles.length; j++) {
+            if (updatedBubbles[i].canFuseWith(updatedBubbles[j])) {
+              if (Math.random() < 0.003) { // Très rare
+                const bubble1 = updatedBubbles[i];
+                const bubble2 = updatedBubbles[j];
+                
+                const newX = (bubble1.x + bubble2.x) / 2;
+                const newY = (bubble1.y + bubble2.y) / 2;
+                const newRadius = Math.min(
+                  Math.sqrt(bubble1.baseRadius ** 2 + bubble2.baseRadius ** 2) * 0.85,
+                  CONFIG.organicBubbles.maxRadius * 1.3
+                );
+                const newColorKey = bubble1.colorKey;
+                
+                const fusedBubble = new OrganicCrispBubble(
+                  newX, newY, newRadius, newColorKey, Date.now() + i * j
+                );
+                
+                updatedBubbles.splice(j, 1);
+                updatedBubbles.splice(i, 1);
+                updatedBubbles.push(fusedBubble);
+                return updatedBubbles;
+              }
             }
           }
         }
         
-        // Gestion des divisions
-        const blobsToAdd = [];
-        newBlobs.forEach(blob => {
-          if (blob.scale > 1.2 && rnd() < splitProbability) {
-            const splitBlob = blob.split();
-            blobsToAdd.push(splitBlob);
+        // Division très rare pour les énormes bulles
+        updatedBubbles.forEach((bubble, index) => {
+          if (bubble.baseRadius > CONFIG.organicBubbles.maxRadius * 1.2 && Math.random() < 0.0008) {
+            const childRadius = bubble.baseRadius * 0.6;
+            const angle = Math.random() * Math.PI * 2;
+            const distance = childRadius * 2;
+            
+            const child = new OrganicCrispBubble(
+              bubble.x + Math.cos(angle) * distance,
+              bubble.y + Math.sin(angle) * distance,
+              childRadius,
+              bubble.colorKey,
+              Date.now() + index * 10000
+            );
+            
+            bubble.baseRadius *= 0.75;
+            updatedBubbles.push(child);
           }
         });
         
-        // Limiter le nombre total de blobs
-        const allBlobs = [...newBlobs, ...blobsToAdd];
-        if (allBlobs.length > 25) {
-          // Supprimer les plus petits blobs
-          allBlobs.sort((a, b) => a.scale - b.scale);
-          return allBlobs.slice(allBlobs.length - 25);
-        }
-        
-        return allBlobs;
+        return updatedBubbles;
       });
-    }, CONFIG.morphing.updateInterval);
+    }, 16);
     
     return () => clearInterval(interval);
-  }, [rnd]);
+  }, [time, docW, docH]);
   
   const { W, H } = useMemo(() => ({
     W: Math.max(docW, CONFIG.tileWidth),
@@ -387,28 +341,46 @@ export default function MatisseWallpaperRandom() {
       >
         <rect x="0" y="0" width={W} height={H} fill={CONFIG.colors.bg} />
         
-        {/* Defs pour les filtres de fusion */}
         <defs>
-          <filter id="gooey" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-          </filter>
+          {/* Gradient pour effet de profondeur sans flou */}
+          <radialGradient id="crispGradient" cx="25%" cy="25%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.25)" />
+            <stop offset="70%" stopColor="rgba(255,255,255,0.05)" />
+            <stop offset="100%" stopColor="rgba(0,0,0,0.03)" />
+          </radialGradient>
         </defs>
         
-        {/* Rendu des blobs avec tension de surface */}
-        <g filter="url(#gooey)">
-          {blobs.map((blob) => (
-            <path
-              key={blob.id}
-              d={blob.getPath()}
-              fill={CONFIG.colors[blob.colorKey]}
-              opacity={blob.opacity}
-              filter="url(#soften)"
-              style={{
-                transition: 'opacity 0.5s ease'
-              }}
-            />
+        {/* Rendu des bulles organiques SANS filtres de flou */}
+        <g>
+          {bubbles.map((bubble, index) => (
+            <g key={index}>
+              {/* Ombre légère et nette */}
+              <path
+                d={bubble.generateSharpPath()}
+                fill="rgba(0,0,0,0.04)"
+                transform="translate(1.5,1.5)"
+              />
+              
+              {/* Bulle principale avec contour net */}
+              <path
+                d={bubble.generateSharpPath()}
+                fill={CONFIG.colors[bubble.colorKey]}
+                stroke="rgba(255,255,255,0.3)"
+                strokeWidth="1"
+                shapeRendering="geometricPrecision"
+                opacity="0.9"
+              />
+              
+              {/* Reflet subtil et net */}
+              <ellipse
+                cx={bubble.x - bubble.currentRadius * 0.2}
+                cy={bubble.y - bubble.currentRadius * 0.2}
+                rx={bubble.currentRadius * 0.25}
+                ry={bubble.currentRadius * 0.12}
+                fill="url(#crispGradient)"
+                opacity="0.4"
+              />
+            </g>
           ))}
         </g>
       </svg>
