@@ -17,12 +17,12 @@ const CONFIG = {
   },
   // Configuration pour les bulles organiques nettes
   organicBubbles: {
-    count: 8,
-    minRadius: 60,
-    maxRadius: 140,
+    count: 18,
+    minRadius: 40,
+    maxRadius: 160,
     controlPoints: 8,
-    morphSpeed: 0.008,
-    fusionDistance: 100,
+    morphSpeed: 0.02,
+    fusionDistance: 120,
     colors: ['paper', 'earth', 'clay', 'moss']
   }
 };
@@ -61,36 +61,43 @@ class OrganicCrispBubble {
       baseOffset: (rndFunc() - 0.5) * 0.2
     }));
     
-    // Mouvement lent et fluide
+    // Mouvement lent et fluide MAIS PLUS ACTIF
     this.velocity = {
-      x: (rndFunc() - 0.5) * 0.2,
-      y: (rndFunc() - 0.5) * 0.2
+      x: (rndFunc() - 0.5) * 0.8,
+      y: (rndFunc() - 0.5) * 0.8
     };
     
     this.targetX = x;
     this.targetY = y;
-    this.metabolismRate = 0.15 + rndFunc() * 0.25;
+    this.metabolismRate = 0.3 + rndFunc() * 0.4;
+    this.driftSpeed = 0.1 + rndFunc() * 0.3;
   }
 
   update(time, allBubbles, W, H) {
     this.time = time;
     this.age += 0.016;
     
-    // Respiration subtile
-    const breathCycle = Math.sin(time * this.metabolismRate) * 0.06;
+    // Respiration plus marquée
+    const breathCycle = Math.sin(time * this.metabolismRate) * 0.12;
     this.currentRadius = this.baseRadius * (1 + breathCycle);
     
-    // Mise à jour des déformations
-    this.deformations.forEach(def => {
-      def.currentOffset = def.baseOffset + def.amplitude * Math.sin(time * def.frequency + def.phase);
+    // Mise à jour des déformations plus actives
+    this.deformations.forEach((def, i) => {
+      def.currentOffset = def.baseOffset + 
+        def.amplitude * Math.sin(time * def.frequency + def.phase) +
+        Math.sin(time * 0.5 + i) * 0.08;
     });
     
-    // Mouvement fluide vers la cible
-    this.x += (this.targetX - this.x) * 0.015;
-    this.y += (this.targetY - this.y) * 0.015;
+    // Mouvement actif continu
+    this.velocity.x += Math.sin(time * this.driftSpeed + this.seed) * 0.02;
+    this.velocity.y += Math.cos(time * this.driftSpeed * 1.3 + this.seed) * 0.02;
     
-    // Nouvelle cible périodiquement
-    if (Math.floor(time * 8) % 180 === 0 && Math.random() < 0.08) {
+    // Mouvement vers la cible PLUS actif
+    this.x += (this.targetX - this.x) * 0.03 + this.velocity.x;
+    this.y += (this.targetY - this.y) * 0.03 + this.velocity.y;
+    
+    // Nouvelle cible plus fréquemment
+    if (Math.floor(time * 12) % 120 === 0 && Math.random() < 0.15) {
       this.targetX = this.currentRadius + Math.random() * (W - this.currentRadius * 2);
       this.targetY = this.currentRadius + Math.random() * (H - this.currentRadius * 2);
     }
@@ -149,7 +156,7 @@ class OrganicCrispBubble {
       const nextNext = points[(i + 2) % points.length];
       
       // Courbes de Bézier pour la fluidité mais sans sur-lissage
-      const tension = 0.15; // Moins de tension = plus net
+      const tension = 0.15;
       const cp1x = current[0] + (next[0] - points[(i - 1 + points.length) % points.length][0]) * tension;
       const cp1y = current[1] + (next[1] - points[(i - 1 + points.length) % points.length][1]) * tension;
       const cp2x = next[0] - (nextNext[0] - current[0]) * tension;
@@ -202,10 +209,12 @@ function createOrganicBubbles(rnd, W, H) {
   return bubbles;
 }
 
-/* ================= Hook de dimension écran ================= */
+/* ================= Hook de dimension écran - SIMPLIFIÉ ================= */
 function useWindowSize() {
   const [size, setSize] = useState({ width: 1200, height: 800 });
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     function updateSize() {
       setSize({ 
         width: window.innerWidth, 
@@ -219,11 +228,17 @@ function useWindowSize() {
   return size;
 }
 
-/* ================= COMPOSANT PRINCIPAL ================= */
+/* ================= COMPOSANT PRINCIPAL - SSR SAFE ================= */
 export default function MatisseWallpaperRandom() {
   const [bubbles, setBubbles] = useState([]);
   const [time, setTime] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const { width: docW, height: docH } = useWindowSize();
+  
+  // Attendre le montage côté client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   
   // Initialisation avec RNG
   const rnd = useMemo(() => {
@@ -237,14 +252,18 @@ export default function MatisseWallpaperRandom() {
   
   // Créer les bulles organiques initiales
   useEffect(() => {
+    if (!mounted) return;
+    
     const W = Math.max(docW, CONFIG.tileWidth);
     const H = docH;
     const organicBubbles = createOrganicBubbles(rnd, W, H);
     setBubbles(organicBubbles);
-  }, [rnd, docW, docH]);
+  }, [rnd, docW, docH, mounted]);
   
-  // Animation loop
+  // Animation loop - SANS SCROLL POUR ÉVITER SSR
   useEffect(() => {
+    if (!mounted) return;
+    
     const interval = setInterval(() => {
       setTime(prev => prev + 0.016);
       
@@ -253,16 +272,16 @@ export default function MatisseWallpaperRandom() {
         const H = docH;
         const updatedBubbles = [...currentBubbles];
         
-        // Mettre à jour toutes les bulles
+        // Mettre à jour toutes les bulles SANS scrollY
         updatedBubbles.forEach(bubble => {
           bubble.update(time, updatedBubbles, W, H);
         });
         
-        // Fusion très occasionnelle
+        // Fusion plus fréquente pour compenser le nombre
         for (let i = 0; i < updatedBubbles.length; i++) {
           for (let j = i + 1; j < updatedBubbles.length; j++) {
             if (updatedBubbles[i].canFuseWith(updatedBubbles[j])) {
-              if (Math.random() < 0.003) { // Très rare
+              if (Math.random() < 0.006) {
                 const bubble1 = updatedBubbles[i];
                 const bubble2 = updatedBubbles[j];
                 
@@ -270,7 +289,7 @@ export default function MatisseWallpaperRandom() {
                 const newY = (bubble1.y + bubble2.y) / 2;
                 const newRadius = Math.min(
                   Math.sqrt(bubble1.baseRadius ** 2 + bubble2.baseRadius ** 2) * 0.85,
-                  CONFIG.organicBubbles.maxRadius * 1.3
+                  CONFIG.organicBubbles.maxRadius * 1.4
                 );
                 const newColorKey = bubble1.colorKey;
                 
@@ -287,12 +306,12 @@ export default function MatisseWallpaperRandom() {
           }
         }
         
-        // Division très rare pour les énormes bulles
+        // Division plus fréquente pour maintenir le nombre
         updatedBubbles.forEach((bubble, index) => {
-          if (bubble.baseRadius > CONFIG.organicBubbles.maxRadius * 1.2 && Math.random() < 0.0008) {
-            const childRadius = bubble.baseRadius * 0.6;
+          if (bubble.baseRadius > CONFIG.organicBubbles.maxRadius * 1.1 && Math.random() < 0.002) {
+            const childRadius = bubble.baseRadius * 0.65;
             const angle = Math.random() * Math.PI * 2;
-            const distance = childRadius * 2;
+            const distance = childRadius * 2.2;
             
             const child = new OrganicCrispBubble(
               bubble.x + Math.cos(angle) * distance,
@@ -302,7 +321,7 @@ export default function MatisseWallpaperRandom() {
               Date.now() + index * 10000
             );
             
-            bubble.baseRadius *= 0.75;
+            bubble.baseRadius *= 0.8;
             updatedBubbles.push(child);
           }
         });
@@ -312,12 +331,28 @@ export default function MatisseWallpaperRandom() {
     }, 16);
     
     return () => clearInterval(interval);
-  }, [time, docW, docH]);
+  }, [time, docW, docH, mounted]);
   
   const { W, H } = useMemo(() => ({
     W: Math.max(docW, CONFIG.tileWidth),
     H: docH
   }), [docW, docH]);
+  
+  // Ne rien rendre pendant l'hydratation SSR
+  if (!mounted) {
+    return (
+      <div
+        aria-hidden
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+          background: CONFIG.colors.bg
+        }}
+      />
+    );
+  }
   
   return (
     <div
@@ -328,8 +363,8 @@ export default function MatisseWallpaperRandom() {
         height: `${H}px`,
         zIndex: 0,
         pointerEvents: "none",
-        overflow: "hidden",
-        transform: `translateY(${scrollY * 0.3}px)` // Parallax avec le scroll
+        overflow: "hidden"
+        // PAS DE TRANSFORM SCROLL - sera ajouté plus tard via JS côté client
       }}
     >
       <svg
