@@ -328,7 +328,8 @@ export default function MatisseWallpaperRandom() {
         height: `${H}px`,
         zIndex: 0,
         pointerEvents: "none",
-        overflow: "hidden"
+        overflow: "hidden",
+        transform: `translateY(${scrollY * 0.3}px)` // Parallax avec le scroll
       }}
     >
       <svg
