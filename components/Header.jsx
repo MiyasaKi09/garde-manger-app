@@ -9,7 +9,7 @@ export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,6 +29,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    setMobileMenuOpen(false);
     router.push('/');
   };
 
@@ -41,12 +42,18 @@ export default function Header() {
     { href: '/shopping', label: 'Courses', icon: '🛒', color: 'var(--autumn-gold)' },
   ];
 
+  // Fermer le menu mobile lors du changement de route
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   return (
     <header style={{
       position: 'sticky',
       top: 0,
-      background: 'linear-gradient(180deg, rgba(255,254,249,0.98) 0%, rgba(250,248,243,0.95) 100%)',
+      background: 'rgba(255, 254, 249, 0.98)',
       backdropFilter: 'blur(12px)',
+      WebkitBackdropFilter: 'blur(12px)',
       borderBottom: '1px solid rgba(139, 149, 109, 0.2)',
       boxShadow: '0 2px 20px rgba(45, 80, 22, 0.08)',
       zIndex: 100,
@@ -55,216 +62,400 @@ export default function Header() {
       <div style={{
         maxWidth: '1400px',
         margin: '0 auto',
-        padding: '0.75rem 2rem',
+        padding: '0.75rem 1rem',
       }}>
-        {/* Ligne du haut - Logo et Auth */}
+        
+        {/* Ligne principale - Logo, Navigation, Auth */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '0.75rem',
+          gap: '1rem'
         }}>
-          {/* Logo */}
-          <Link href="/" style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            textDecoration: 'none',
-            transition: 'transform 0.3s ease',
-          }}>
+          
+          {/* Logo - NOUVEAU : Lien vers accueil */}
+          <Link 
+            href="/" 
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              textDecoration: 'none',
+              color: 'var(--forest-700)',
+              padding: '0.5rem',
+              borderRadius: 'var(--radius-md)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(58, 107, 30, 0.05)';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            {/* Icône animée */}
             <div style={{
-              width: '45px',
-              height: '45px',
-              position: 'relative',
+              width: '40px',
+              height: '40px',
+              background: 'linear-gradient(135deg, var(--forest-500), var(--forest-400))',
+              borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              boxShadow: '0 4px 16px rgba(58, 107, 30, 0.2)',
+              transition: 'all 0.3s ease'
             }}>
-              <div style={{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                background: 'linear-gradient(135deg, var(--forest-400), var(--forest-500))',
-                borderRadius: '50%',
-                opacity: 0.1,
-                animation: 'pulse 3s ease-in-out infinite',
-              }} />
-              <span style={{ fontSize: '1.8rem', position: 'relative', zIndex: 1 }}>🍄</span>
-              
-              {/* Petites spores */}
-              <div style={{
-                position: 'absolute',
-                width: '6px',
-                height: '6px',
-                background: 'var(--forest-400)',
-                borderRadius: '50%',
-                top: '5px',
-                left: '10px',
-                animation: 'float 6s ease-in-out infinite',
-              }} />
-              <div style={{
-                position: 'absolute',
-                width: '4px',
-                height: '4px',
-                background: 'var(--earth-400)',
-                borderRadius: '50%',
-                bottom: '8px',
-                right: '8px',
-                animation: 'float 6s ease-in-out infinite 2s',
-              }} />
+              <span style={{ fontSize: '18px' }}>🌿</span>
             </div>
             
-            <div>
-              <span style={{
-                fontSize: '1.75rem',
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              lineHeight: '1.2'
+            }}>
+              <div style={{
+                fontFamily: 'Crimson Text, serif',
+                fontSize: '1.4rem',
                 fontWeight: '600',
-                fontFamily: "'Crimson Text', serif",
-                background: 'linear-gradient(135deg, var(--forest-600), var(--forest-500))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                letterSpacing: '0.5px',
+                color: 'var(--forest-700)',
+                letterSpacing: '-0.01em'
               }}>
                 Myko
-              </span>
+              </div>
               <div style={{
                 fontSize: '0.75rem',
                 color: 'var(--earth-600)',
-                marginTop: '-0.25rem',
-                fontStyle: 'italic',
+                fontWeight: '400',
+                marginTop: '-2px'
               }}>
-                Réseau mycorhizien
+                Écosystème
               </div>
             </div>
           </Link>
 
-          {/* Section Auth */}
+          {/* Navigation Desktop */}
+          <nav style={{
+            display: 'flex',
+            gap: '0.5rem',
+            alignItems: 'center',
+            flex: 1,
+            justifyContent: 'center'
+          }}
+          className="desktop-nav"
+          >
+            {navItems.slice(1).map(item => (
+              <NavLink
+                key={item.href}
+                href={item.href}
+                icon={item.icon}
+                label={item.label}
+                color={item.color}
+                isActive={pathname === item.href}
+              />
+            ))}
+          </nav>
+
+          {/* Actions utilisateur */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '1rem',
+            gap: '0.75rem'
           }}>
-            {/* Indicateur de saison */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              padding: '0.5rem 1rem',
-              background: 'linear-gradient(135deg, rgba(230,126,34,0.1), rgba(212,165,116,0.1))',
-              borderRadius: '20px',
-              border: '1px solid rgba(230,126,34,0.2)',
-              fontSize: '0.9rem',
-              color: 'var(--earth-600)',
-            }}>
-              <span style={{ fontSize: '1.1rem' }}>🍂</span>
-              <span style={{ fontWeight: '500' }}>Automne</span>
-            </div>
-
-            {/* Auth buttons */}
             {loading ? (
-              <div className="loading-spinner" style={{ width: '20px', height: '20px' }} />
+              <div style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                background: 'var(--soft-gray)',
+                animation: 'pulse 2s infinite'
+              }} />
             ) : user ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <>
+                {/* Avatar utilisateur */}
                 <div style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, var(--forest-400), var(--earth-500))',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.5rem 1rem',
-                  background: 'var(--forest-50)',
-                  borderRadius: '20px',
-                  fontSize: '0.9rem',
-                  color: 'var(--forest-700)',
-                }}>
-                  <span>👤</span>
-                  <span style={{ fontWeight: '500' }}>
-                    {user.email?.split('@')[0]}
-                  </span>
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '0.85rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                }}
+                title={user.email}
+                >
+                  {user.email?.charAt(0).toUpperCase()}
                 </div>
+                
                 <button
                   onClick={handleLogout}
-                  className="btn secondary"
                   style={{
-                    padding: '0.5rem 1.25rem',
-                    fontSize: '0.9rem',
+                    padding: '0.5rem 1rem',
+                    background: 'transparent',
+                    border: '1px solid var(--soft-gray)',
+                    borderRadius: 'var(--radius-md)',
+                    color: 'var(--forest-600)',
+                    fontSize: '0.85rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
                   }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = 'var(--forest-50)';
+                    e.target.style.borderColor = 'var(--forest-300)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'transparent';
+                    e.target.style.borderColor = 'var(--soft-gray)';
+                  }}
+                  className="desktop-only"
                 >
                   Déconnexion
                 </button>
-              </div>
+              </>
             ) : (
               <Link
                 href="/login"
-                className="btn primary"
                 style={{
-                  padding: '0.5rem 1.5rem',
-                  fontSize: '0.95rem',
+                  padding: '0.5rem 1.25rem',
+                  background: 'linear-gradient(135deg, var(--forest-500), var(--forest-400))',
+                  color: 'white',
+                  textDecoration: 'none',
+                  borderRadius: 'var(--radius-md)',
+                  fontSize: '0.9rem',
+                  fontWeight: '500',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 2px 8px rgba(58, 107, 30, 0.2)'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'translateY(-1px)';
+                  e.target.style.boxShadow = '0 4px 12px rgba(58, 107, 30, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = '0 2px 8px rgba(58, 107, 30, 0.2)';
                 }}
               >
                 Se connecter
               </Link>
             )}
 
-            {/* Menu mobile */}
+            {/* Bouton menu mobile */}
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               style={{
                 display: 'none',
+                width: '40px',
+                height: '40px',
                 background: 'transparent',
-                border: 'none',
-                fontSize: '1.5rem',
+                border: '1px solid var(--soft-gray)',
+                borderRadius: 'var(--radius-md)',
                 cursor: 'pointer',
+                fontSize: '1.2rem',
+                color: 'var(--forest-600)',
+                transition: 'all 0.3s ease'
               }}
               className="mobile-menu-btn"
+              aria-label="Menu"
             >
-              {menuOpen ? '✕' : '☰'}
+              {mobileMenuOpen ? '✕' : '☰'}
             </button>
           </div>
         </div>
 
-        {/* Navigation principale */}
-        <nav style={{
-          display: 'flex',
-          gap: '0.5rem',
-          alignItems: 'center',
-          overflowX: 'auto',
-          paddingBottom: '0.5rem',
-        }}>
-          {navItems.map(item => (
-            <NavLink
-              key={item.href}
-              href={item.href}
-              icon={item.icon}
-              label={item.label}
-              color={item.color}
-              isActive={pathname === item.href}
-            />
-          ))}
-        </nav>
+        {/* Menu mobile */}
+        {mobileMenuOpen && (
+          <div 
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              right: 0,
+              background: 'rgba(255, 254, 249, 0.98)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(139, 149, 109, 0.2)',
+              borderTop: 'none',
+              borderRadius: '0 0 var(--radius-lg) var(--radius-lg)',
+              boxShadow: '0 8px 32px rgba(45, 80, 22, 0.15)',
+              padding: '1rem',
+              zIndex: 1000
+            }}
+            className="mobile-menu"
+          >
+            <nav style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem'
+            }}>
+              {navItems.map(item => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '1rem',
+                    padding: '1rem',
+                    textDecoration: 'none',
+                    color: pathname === item.href ? 'white' : 'var(--forest-700)',
+                    background: pathname === item.href 
+                      ? `linear-gradient(135deg, ${item.color}dd, ${item.color})` 
+                      : 'transparent',
+                    borderRadius: 'var(--radius-md)',
+                    transition: 'all 0.3s ease',
+                    fontSize: '1rem',
+                    fontWeight: pathname === item.href ? '600' : '450'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (pathname !== item.href) {
+                      e.target.style.background = `linear-gradient(135deg, ${item.color}15, ${item.color}08)`;
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (pathname !== item.href) {
+                      e.target.style.background = 'transparent';
+                    }
+                  }}
+                >
+                  <span style={{ fontSize: '1.3rem' }}>{item.icon}</span>
+                  <span>{item.label}</span>
+                </Link>
+              ))}
+
+              {/* Actions utilisateur mobile */}
+              {user ? (
+                <div style={{
+                  marginTop: '1rem',
+                  paddingTop: '1rem',
+                  borderTop: '1px solid var(--soft-gray)'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    marginBottom: '1rem',
+                    padding: '0.5rem'
+                  }}>
+                    <div style={{
+                      width: '32px',
+                      height: '32px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, var(--forest-400), var(--earth-500))',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'white',
+                      fontSize: '0.85rem',
+                      fontWeight: '600'
+                    }}>
+                      {user.email?.charAt(0).toUpperCase()}
+                    </div>
+                    <div style={{
+                      fontSize: '0.9rem',
+                      color: 'var(--forest-600)',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis'
+                    }}>
+                      {user.email}
+                    </div>
+                  </div>
+                  
+                  <button
+                    onClick={handleLogout}
+                    style={{
+                      width: '100%',
+                      padding: '1rem',
+                      background: 'var(--forest-50)',
+                      border: '1px solid var(--forest-300)',
+                      borderRadius: 'var(--radius-md)',
+                      color: 'var(--forest-700)',
+                      fontSize: '0.9rem',
+                      fontWeight: '500',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    🚪 Déconnexion
+                  </button>
+                </div>
+              ) : (
+                <div style={{
+                  marginTop: '1rem',
+                  paddingTop: '1rem',
+                  borderTop: '1px solid var(--soft-gray)'
+                }}>
+                  <Link
+                    href="/login"
+                    onClick={() => setMobileMenuOpen(false)}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      padding: '1rem',
+                      background: 'linear-gradient(135deg, var(--forest-500), var(--forest-400))',
+                      color: 'white',
+                      textDecoration: 'none',
+                      borderRadius: 'var(--radius-md)',
+                      fontSize: '0.9rem',
+                      fontWeight: '500',
+                      textAlign: 'center',
+                      boxShadow: '0 2px 8px rgba(58, 107, 30, 0.2)'
+                    }}
+                  >
+                    🔑 Se connecter
+                  </Link>
+                </div>
+              )}
+            </nav>
+          </div>
+        )}
       </div>
 
-      {/* Barre de progression décorative */}
-      <div style={{
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: '2px',
-        background: 'linear-gradient(90deg, var(--forest-400), var(--autumn-orange), var(--earth-600), var(--mushroom), var(--autumn-gold))',
-        opacity: 0.3,
-        animation: 'shimmer 3s linear infinite',
-      }} />
-
+      {/* Styles CSS intégrés pour la responsivité */}
       <style jsx>{`
         @media (max-width: 768px) {
-          .mobile-menu-btn {
-            display: block !important;
+          .desktop-nav {
+            display: none !important;
           }
+          
+          .mobile-menu-btn {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .desktop-only {
+            display: none !important;
+          }
+        }
+
+        @media (min-width: 769px) {
+          .mobile-menu {
+            display: none !important;
+          }
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
         }
       `}</style>
     </header>
   );
 }
 
+// Composant NavLink pour la navigation desktop
 function NavLink({ href, icon, label, color, isActive }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -297,8 +488,8 @@ function NavLink({ href, icon, label, color, isActive }) {
       }}
     >
       <span style={{
-        fontSize: '1.2rem',
-        transform: isHovered ? 'scale(1.2) rotate(10deg)' : 'scale(1)',
+        fontSize: '1.1rem',
+        transform: isHovered ? 'scale(1.15) rotate(5deg)' : 'scale(1)',
         transition: 'transform 0.3s ease',
       }}>
         {icon}
@@ -311,10 +502,10 @@ function NavLink({ href, icon, label, color, isActive }) {
           bottom: '3px',
           left: '50%',
           transform: 'translateX(-50%)',
-          width: '30px',
-          height: '3px',
+          width: '24px',
+          height: '2px',
           background: 'white',
-          borderRadius: '2px',
+          borderRadius: '1px',
           opacity: 0.8,
         }} />
       )}
