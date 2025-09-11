@@ -1,33 +1,44 @@
 'use client';
 import { useEffect, useMemo, useState } from "react";
 
-/* ================= CONFIGURATION MÉTABALLS ================= */
+/* ================= REGLAGES ================= */
 const CONFIG = {
+  tileWidth: 1000,
   colors: {
-    bg: "var(--cream-100, #f4efe6)",
+    bg:    "var(--cream-100, #f4efe6)",
     olive: "var(--olive-500, #6e8b5e)",
     terra: "var(--terra-500, #c08a5a)",
     sable: "var(--sable-300, #e2c98f)",
   },
-  counts: { olive: 4, terra: 3, sable: 4 },
-  bubbles: {
-    minRadius: 80,
-    maxRadius: 150,
-    moveSpeed: 0.3,
-    fusionThreshold: 0.7, // Distance pour fusion (relatif aux rayons)
-    splitThreshold: 180, // Rayon max avant division
-    minSplitRadius: 60,
+  counts: { olive: 6, terra: 5, sable: 6 },
+  sizes: {
+    olive: { rx: 160, ry: 220 },
+    terra: { rx: 130, ry: 180 },
+    sable: { rx: 200, ry: 260 },
   },
-  metaballs: {
-    threshold: 1.0, // Seuil pour définir la surface
-    gridSize: 8, // Résolution de la grille
-    smoothing: 0.5, // Lissage des contours
+  packing: {
+    radiusFactor: 0.62,
+    padding: 24,
+    attemptsPerBlob: 120,
+    sideInset: 80,
   },
-  physics: {
-    attraction: 0.02, // Force d'attraction entre bulles
-    repulsion: 0.05, // Force de répulsion si trop proches
-    friction: 0.95, // Friction pour ralentir
-    boundaryForce: 0.1, // Force pour rester dans les limites
+  shape: {
+    points: 36, // Réduit pour des morphings plus fluides
+    noiseAmp: 0.25, // Augmenté pour plus de déformation
+    harmonicMin: 2,
+    harmonicMax: 6,
+    tension: 0.45,
+    scaleJitter: 0.15,
+    rotate: true,
+  },
+  // NOUVEAU: Morphing dynamique
+  morphing: {
+    updateInterval: 150, // Mise à jour toutes les 150ms
+    deformationSpeed: 0.02, // Vitesse de déformation
+    fusionDistance: 180, // Distance pour déclencher fusion
+    maxDeformation: 0.4, // Déformation maximale
+    splitProbability: 0.003, // Probabilité de division par frame
+    fusionProbability: 0.008, // Probabilité de fusion par frame
   }
 };
 
@@ -43,257 +54,227 @@ function mulberry32(seed) {
 
 const randBetween = (rnd, a, b) => a + rnd() * (b - a);
 
-/* ================= CLASSE BULLE ================= */
-class MetaBubble {
-  constructor({ x, y, radius, colorKey, rnd, id }) {
+/* ========== Forme dynamique avec morphing ========== */
+function toCubicPath(points, tension = 0.45) {
+  const n = points.length;
+  let d = `M ${points[0][0]},${points[0][1]}`;
+  for (let i = 0; i < n; i++) {
+    const p0 = points[(i - 1 + n) % n];
+    const p1 = points[i];
+    const p2 = points[(i + 1) % n];
+    const p3 = points[(i + 2) % n];
+    const d1x = (p2[0] - p0[0]) * tension;
+    const d1y = (p2[1] - p0[1]) * tension;
+    const d2x = (p3[0] - p1[0]) * tension;
+    const d2y = (p3[1] - p1[1]) * tension;
+    const c1x = p1[0] + d1x / 3;
+    const c1y = p1[1] + d1y / 3;
+    const c2x = p2[0] - d2x / 3;
+    const c2y = p2[1] - d2y / 3;
+    d += ` C ${c1x},${c1y} ${c2x},${c2y} ${p2[0]},${p2[1]}`;
+  }
+  return d + " Z";
+}
+
+class MorphingBlob {
+  constructor({ cx, cy, rx, ry, colorKey, rnd, id }) {
     this.id = id;
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-    this.targetRadius = radius;
+    this.cx = cx;
+    this.cy = cy;
+    this.baseRx = rx;
+    this.baseRy = ry;
     this.colorKey = colorKey;
     this.rnd = rnd;
     
-    // Vélocité et forces
-    this.vx = randBetween(rnd, -1, 1);
-    this.vy = randBetween(rnd, -1, 1);
-    this.fx = 0;
-    this.fy = 0;
-    
-    // États
-    this.age = 0;
+    // États de morphing
+    this.time = 0;
+    this.deformParams = [];
+    this.targetDeformParams = [];
+    this.velocity = { x: 0, y: 0 };
+    this.scale = 1;
+    this.targetScale = 1;
     this.opacity = 0.8;
-    this.canSplit = true;
-    this.splitCooldown = 0;
+    this.targetOpacity = 0.8;
+    
+    // Initialiser les paramètres de déformation
+    this.initDeformParams();
+    this.generateTargetParams();
   }
   
-  update(allBubbles, bounds) {
-    this.age++;
+  initDeformParams() {
+    const { points } = CONFIG.shape;
+    for (let i = 0; i < points; i++) {
+      this.deformParams.push({
+        radiusMultiplier: 1,
+        angleOffset: 0,
+        noise: 0
+      });
+      this.targetDeformParams.push({
+        radiusMultiplier: 1,
+        angleOffset: 0,
+        noise: 0
+      });
+    }
+  }
+  
+  generateTargetParams() {
+    const { maxDeformation } = CONFIG.morphing;
+    for (let i = 0; i < this.deformParams.length; i++) {
+      this.targetDeformParams[i] = {
+        radiusMultiplier: 0.7 + this.rnd() * 0.6,
+        angleOffset: (this.rnd() - 0.5) * maxDeformation,
+        noise: (this.rnd() - 0.5) * maxDeformation
+      };
+    }
+    this.targetScale = 0.8 + this.rnd() * 0.4;
+    this.targetOpacity = 0.6 + this.rnd() * 0.3;
+  }
+  
+  update() {
+    const { deformationSpeed } = CONFIG.morphing;
+    this.time += 0.016; // ~60fps
     
-    // Réinitialiser les forces
-    this.fx = 0;
-    this.fy = 0;
-    
-    // Forces entre bulles
-    allBubbles.forEach(other => {
-      if (other.id === this.id) return;
+    // Interpolation vers les cibles
+    for (let i = 0; i < this.deformParams.length; i++) {
+      const current = this.deformParams[i];
+      const target = this.targetDeformParams[i];
       
-      const dx = other.x - this.x;
-      const dy = other.y - this.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
+      current.radiusMultiplier += (target.radiusMultiplier - current.radiusMultiplier) * deformationSpeed;
+      current.angleOffset += (target.angleOffset - current.angleOffset) * deformationSpeed;
+      current.noise += (target.noise - current.noise) * deformationSpeed;
+    }
+    
+    this.scale += (this.targetScale - this.scale) * deformationSpeed;
+    this.opacity += (this.targetOpacity - this.opacity) * deformationSpeed;
+    
+    // Mouvement brownien
+    this.velocity.x += (this.rnd() - 0.5) * 0.5;
+    this.velocity.y += (this.rnd() - 0.5) * 0.5;
+    this.velocity.x *= 0.98; // Friction
+    this.velocity.y *= 0.98;
+    
+    this.cx += this.velocity.x;
+    this.cy += this.velocity.y;
+    
+    // Générer de nouvelles cibles périodiquement
+    if (this.time % 3 < 0.016) { // Toutes les 3 secondes environ
+      this.generateTargetParams();
+    }
+  }
+  
+  getPath() {
+    const { points, tension } = CONFIG.shape;
+    const pts = [];
+    
+    for (let i = 0; i < points; i++) {
+      const angle = (i / points) * Math.PI * 2;
+      const params = this.deformParams[i];
       
-      if (distance > 0) {
-        const normalizedDx = dx / distance;
-        const normalizedDy = dy / distance;
-        
-        // Distance relative aux rayons
-        const relativeDistance = distance / (this.radius + other.radius);
-        
-        if (relativeDistance < 2) {
-          if (other.colorKey === this.colorKey) {
-            // Attraction entre bulles de même couleur
-            const attractionForce = CONFIG.physics.attraction * (2 - relativeDistance);
-            this.fx += normalizedDx * attractionForce;
-            this.fy += normalizedDy * attractionForce;
-          } else {
-            // Répulsion entre bulles de couleurs différentes
-            const repulsionForce = CONFIG.physics.repulsion / relativeDistance;
-            this.fx -= normalizedDx * repulsionForce;
-            this.fy -= normalizedDy * repulsionForce;
-          }
-        }
-      }
-    });
+      // Rayon de base avec déformation
+      const baseRadius = (this.baseRx + this.baseRy) * 0.5;
+      const radius = baseRadius * this.scale * params.radiusMultiplier;
+      
+      // Position avec bruit et décalage d'angle
+      const adjustedAngle = angle + params.angleOffset + Math.sin(this.time * 2 + i * 0.5) * 0.1;
+      const noiseOffset = Math.sin(this.time * 3 + i * 0.3) * params.noise * 20;
+      
+      const x = this.cx + Math.cos(adjustedAngle) * (radius + noiseOffset);
+      const y = this.cy + Math.sin(adjustedAngle) * (radius + noiseOffset);
+      
+      pts.push([x, y]);
+    }
     
-    // Forces de bordure (rester dans l'écran)
-    const margin = this.radius + 50;
-    if (this.x < margin) this.fx += CONFIG.physics.boundaryForce;
-    if (this.x > bounds.width - margin) this.fx -= CONFIG.physics.boundaryForce;
-    if (this.y < margin) this.fy += CONFIG.physics.boundaryForce;
-    if (this.y > bounds.height - margin) this.fy -= CONFIG.physics.boundaryForce;
-    
-    // Bruit brownien
-    this.fx += (this.rnd() - 0.5) * 0.02;
-    this.fy += (this.rnd() - 0.5) * 0.02;
-    
-    // Mise à jour vélocité
-    this.vx += this.fx;
-    this.vy += this.fy;
-    this.vx *= CONFIG.physics.friction;
-    this.vy *= CONFIG.physics.friction;
-    
-    // Mise à jour position
-    this.x += this.vx * CONFIG.bubbles.moveSpeed;
-    this.y += this.vy * CONFIG.bubbles.moveSpeed;
-    
-    // Mise à jour rayon vers la cible
-    this.radius += (this.targetRadius - this.radius) * 0.05;
-    
-    // Cooldown pour split
-    if (this.splitCooldown > 0) this.splitCooldown--;
+    return toCubicPath(pts, tension);
+  }
+  
+  distanceTo(other) {
+    const dx = this.cx - other.cx;
+    const dy = this.cy - other.cy;
+    return Math.sqrt(dx * dx + dy * dy);
   }
   
   canFuseWith(other) {
-    if (other.colorKey !== this.colorKey) return false;
-    
-    const dx = other.x - this.x;
-    const dy = other.y - this.y;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-    const fusionDistance = (this.radius + other.radius) * CONFIG.bubbles.fusionThreshold;
-    
-    return distance < fusionDistance;
+    return this.colorKey === other.colorKey && 
+           this.distanceTo(other) < CONFIG.morphing.fusionDistance;
   }
   
   fuseWith(other) {
-    // Conservation de la masse (surface)
-    const totalArea = Math.PI * (this.radius * this.radius + other.radius * other.radius);
-    const newRadius = Math.sqrt(totalArea / Math.PI);
+    // Fusionner les positions (moyenne pondérée)
+    const totalScale = this.scale + other.scale;
+    this.cx = (this.cx * this.scale + other.cx * other.scale) / totalScale;
+    this.cy = (this.cy * this.scale + other.cy * other.scale) / totalScale;
+    this.scale = Math.min(totalScale * 0.7, 2); // Limite la taille
+    this.targetScale = this.scale;
     
-    // Position pondérée par la masse
-    const totalMass = this.radius * this.radius + other.radius * other.radius;
-    this.x = (this.x * this.radius * this.radius + other.x * other.radius * other.radius) / totalMass;
-    this.y = (this.y * this.radius * this.radius + other.y * other.radius * other.radius) / totalMass;
+    // Fusionner les paramètres de déformation
+    for (let i = 0; i < this.deformParams.length; i++) {
+      this.deformParams[i].radiusMultiplier = 
+        (this.deformParams[i].radiusMultiplier + other.deformParams[i].radiusMultiplier) * 0.6;
+    }
     
-    // Nouveau rayon
-    this.targetRadius = Math.min(newRadius, CONFIG.bubbles.splitThreshold * 0.8);
-    
-    // Conservation de la quantité de mouvement
-    this.vx = (this.vx * this.radius + other.vx * other.radius) / (this.radius + other.radius);
-    this.vy = (this.vy * this.radius + other.vy * other.radius) / (this.radius + other.radius);
-    
-    this.splitCooldown = 60; // Empêcher split immédiat
-  }
-  
-  shouldSplit() {
-    return this.canSplit && 
-           this.splitCooldown === 0 && 
-           this.radius > CONFIG.bubbles.splitThreshold && 
-           this.rnd() < 0.01; // 1% de chance par frame
+    this.generateTargetParams();
   }
   
   split() {
-    const newRadius = this.radius * 0.7;
-    const offset = newRadius * 0.5;
-    
-    // Angle aléatoire pour la direction de split
-    const angle = this.rnd() * Math.PI * 2;
-    const offsetX = Math.cos(angle) * offset;
-    const offsetY = Math.sin(angle) * offset;
-    
-    // Nouvelle bulle
-    const newBubble = new MetaBubble({
-      x: this.x + offsetX,
-      y: this.y + offsetY,
-      radius: newRadius,
+    const newBlob = new MorphingBlob({
+      cx: this.cx + (this.rnd() - 0.5) * 100,
+      cy: this.cy + (this.rnd() - 0.5) * 100,
+      rx: this.baseRx * 0.7,
+      ry: this.baseRy * 0.7,
       colorKey: this.colorKey,
       rnd: this.rnd,
       id: this.id + '_split_' + Date.now()
     });
     
-    // Vélocités opposées
-    newBubble.vx = -this.vx * 0.5 + Math.cos(angle) * 2;
-    newBubble.vy = -this.vy * 0.5 + Math.sin(angle) * 2;
+    this.scale *= 0.8;
+    this.targetScale = this.scale;
+    newBlob.scale = 0.6;
+    newBlob.targetScale = 0.6;
     
-    // Mise à jour de la bulle actuelle
-    this.x -= offsetX;
-    this.y -= offsetY;
-    this.targetRadius = newRadius;
-    this.vx = this.vx * 0.5 - Math.cos(angle) * 2;
-    this.vy = this.vy * 0.5 - Math.sin(angle) * 2;
-    this.splitCooldown = 120;
-    
-    return newBubble;
-  }
-  
-  // Contribution à la fonction métaball
-  getInfluence(x, y) {
-    const dx = x - this.x;
-    const dy = y - this.y;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-    
-    if (distance === 0) return this.radius * this.radius;
-    
-    // Fonction métaball classique
-    return (this.radius * this.radius) / (distance * distance);
+    return newBlob;
   }
 }
 
-/* ================= GÉNÉRATION DU CHEMIN SVG DEPUIS MÉTABALLS ================= */
-function generateMetaballPath(bubbles, bounds) {
-  const { threshold, gridSize } = CONFIG.metaballs;
-  const width = bounds.width;
-  const height = bounds.height;
+/* ========== Placement initial ========== */
+function createInitialBlobs(rnd, W, H) {
+  const allBlobs = [];
+  let blobId = 0;
   
-  // Créer une grille de valeurs
-  const cols = Math.ceil(width / gridSize);
-  const rows = Math.ceil(height / gridSize);
-  const grid = [];
-  
-  for (let y = 0; y <= rows; y++) {
-    grid[y] = [];
-    for (let x = 0; x <= cols; x++) {
-      const px = x * gridSize;
-      const py = y * gridSize;
+  ['olive', 'terra', 'sable'].forEach(colorKey => {
+    const count = CONFIG.counts[colorKey];
+    const { rx, ry } = CONFIG.sizes[colorKey];
+    
+    for (let i = 0; i < count; i++) {
+      const attempts = 50;
+      let placed = false;
       
-      let value = 0;
-      bubbles.forEach(bubble => {
-        value += bubble.getInfluence(px, py);
-      });
-      
-      grid[y][x] = value;
-    }
-  }
-  
-  // Marching squares pour générer les contours
-  const paths = [];
-  
-  for (let y = 0; y < rows; y++) {
-    for (let x = 0; x < cols; x++) {
-      const tl = grid[y][x] >= threshold ? 1 : 0;
-      const tr = grid[y][x + 1] >= threshold ? 1 : 0;
-      const bl = grid[y + 1][x] >= threshold ? 1 : 0;
-      const br = grid[y + 1][x + 1] >= threshold ? 1 : 0;
-      
-      const caseNum = tl * 8 + tr * 4 + br * 2 + bl;
-      
-      if (caseNum !== 0 && caseNum !== 15) {
-        // Il y a une frontière dans cette cellule
-        const cellPath = getMarchingSquaresPath(caseNum, x * gridSize, y * gridSize, gridSize);
-        if (cellPath) paths.push(cellPath);
+      for (let attempt = 0; attempt < attempts; attempt++) {
+        const cx = randBetween(rnd, CONFIG.packing.sideInset, W - CONFIG.packing.sideInset);
+        const cy = randBetween(rnd, CONFIG.packing.sideInset, H - CONFIG.packing.sideInset);
+        
+        // Vérifier la distance avec les autres blobs
+        const tooClose = allBlobs.some(blob => {
+          const dx = cx - blob.cx;
+          const dy = cy - blob.cy;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          return dist < (rx + ry + blob.baseRx + blob.baseRy) * 0.3;
+        });
+        
+        if (!tooClose) {
+          allBlobs.push(new MorphingBlob({
+            cx, cy, rx, ry, colorKey, rnd, id: blobId++
+          }));
+          placed = true;
+          break;
+        }
       }
     }
-  }
+  });
   
-  return paths.join(' ');
+  return allBlobs;
 }
 
-function getMarchingSquaresPath(caseNum, x, y, size) {
-  const midX = x + size / 2;
-  const midY = y + size / 2;
-  const rightX = x + size;
-  const bottomY = y + size;
-  
-  // Marching squares lookup table (simplifié)
-  switch (caseNum) {
-    case 1: return `M ${x} ${midY} L ${midX} ${bottomY}`;
-    case 2: return `M ${midX} ${bottomY} L ${rightX} ${midY}`;
-    case 3: return `M ${x} ${midY} L ${rightX} ${midY}`;
-    case 4: return `M ${midX} ${y} L ${rightX} ${midY}`;
-    case 5: return `M ${x} ${midY} L ${midX} ${y} M ${midX} ${bottomY} L ${rightX} ${midY}`;
-    case 6: return `M ${midX} ${y} L ${midX} ${bottomY}`;
-    case 7: return `M ${x} ${midY} L ${midX} ${y}`;
-    case 8: return `M ${x} ${midY} L ${midX} ${y}`;
-    case 9: return `M ${midX} ${y} L ${midX} ${bottomY}`;
-    case 10: return `M ${x} ${midY} L ${midX} ${bottomY} M ${midX} ${y} L ${rightX} ${midY}`;
-    case 11: return `M ${midX} ${y} L ${rightX} ${midY}`;
-    case 12: return `M ${x} ${midY} L ${rightX} ${midY}`;
-    case 13: return `M ${midX} ${bottomY} L ${rightX} ${midY}`;
-    case 14: return `M ${x} ${midY} L ${midX} ${bottomY}`;
-    default: return '';
-  }
-}
-
-/* ================= HOOK DE TAILLE ================= */
+/* ================= Hook de dimension écran ================= */
 function useWindowSize() {
   const [size, setSize] = useState({ width: 1200, height: 800 });
   useEffect(() => {
@@ -312,10 +293,10 @@ function useWindowSize() {
 
 /* ================= COMPOSANT PRINCIPAL ================= */
 export default function MatisseWallpaperRandom() {
-  const [bubbles, setBubbles] = useState([]);
+  const [blobs, setBlobs] = useState([]);
   const { width: docW, height: docH } = useWindowSize();
   
-  // RNG
+  // Initialisation avec RNG
   const rnd = useMemo(() => {
     if (typeof crypto !== "undefined" && crypto.getRandomValues) {
       const a = new Uint32Array(1);
@@ -325,46 +306,30 @@ export default function MatisseWallpaperRandom() {
     return mulberry32(Date.now() & 0xffffffff);
   }, []);
   
-  // Initialisation des bulles
+  // Créer les blobs initiaux
   useEffect(() => {
-    const initialBubbles = [];
-    let id = 0;
-    
-    ['olive', 'terra', 'sable'].forEach(colorKey => {
-      const count = CONFIG.counts[colorKey];
-      
-      for (let i = 0; i < count; i++) {
-        const radius = randBetween(rnd, CONFIG.bubbles.minRadius, CONFIG.bubbles.maxRadius);
-        const x = randBetween(rnd, radius + 100, docW - radius - 100);
-        const y = randBetween(rnd, radius + 100, docH - radius - 100);
-        
-        initialBubbles.push(new MetaBubble({
-          x, y, radius, colorKey, rnd, id: id++
-        }));
-      }
-    });
-    
-    setBubbles(initialBubbles);
+    const W = Math.max(docW, CONFIG.tileWidth);
+    const H = docH;
+    const initialBlobs = createInitialBlobs(rnd, W, H);
+    setBlobs(initialBlobs);
   }, [rnd, docW, docH]);
   
   // Animation loop
   useEffect(() => {
     const interval = setInterval(() => {
-      setBubbles(currentBubbles => {
-        if (currentBubbles.length === 0) return currentBubbles;
+      setBlobs(currentBlobs => {
+        const newBlobs = [...currentBlobs];
+        const { splitProbability, fusionProbability } = CONFIG.morphing;
         
-        const bounds = { width: docW, height: docH };
-        const newBubbles = [...currentBubbles];
-        
-        // Mise à jour de toutes les bulles
-        newBubbles.forEach(bubble => bubble.update(newBubbles, bounds));
+        // Mettre à jour tous les blobs
+        newBlobs.forEach(blob => blob.update());
         
         // Gestion des fusions
-        for (let i = newBubbles.length - 1; i >= 0; i--) {
+        for (let i = newBlobs.length - 1; i >= 0; i--) {
           for (let j = i - 1; j >= 0; j--) {
-            if (newBubbles[i].canFuseWith(newBubbles[j])) {
-              newBubbles[i].fuseWith(newBubbles[j]);
-              newBubbles.splice(j, 1);
+            if (newBlobs[i].canFuseWith(newBlobs[j]) && rnd() < fusionProbability) {
+              newBlobs[i].fuseWith(newBlobs[j]);
+              newBlobs.splice(j, 1);
               i--; // Ajuster l'index
               break;
             }
@@ -372,38 +337,33 @@ export default function MatisseWallpaperRandom() {
         }
         
         // Gestion des divisions
-        const bubblesAdded = [];
-        newBubbles.forEach(bubble => {
-          if (bubble.shouldSplit()) {
-            const splitBubble = bubble.split();
-            bubblesAdded.push(splitBubble);
+        const blobsToAdd = [];
+        newBlobs.forEach(blob => {
+          if (blob.scale > 1.2 && rnd() < splitProbability) {
+            const splitBlob = blob.split();
+            blobsToAdd.push(splitBlob);
           }
         });
         
-        // Limiter le nombre total
-        const allBubbles = [...newBubbles, ...bubblesAdded];
-        if (allBubbles.length > 15) {
-          allBubbles.sort((a, b) => a.radius - b.radius);
-          return allBubbles.slice(-15);
+        // Limiter le nombre total de blobs
+        const allBlobs = [...newBlobs, ...blobsToAdd];
+        if (allBlobs.length > 25) {
+          // Supprimer les plus petits blobs
+          allBlobs.sort((a, b) => a.scale - b.scale);
+          return allBlobs.slice(allBlobs.length - 25);
         }
         
-        return allBubbles;
+        return allBlobs;
       });
-    }, 50); // 20 FPS pour fluidité
+    }, CONFIG.morphing.updateInterval);
     
     return () => clearInterval(interval);
-  }, [docW, docH]);
+  }, [rnd]);
   
-  // Grouper par couleur pour le rendu
-  const bubblesByColor = useMemo(() => {
-    const groups = { olive: [], terra: [], sable: [] };
-    bubbles.forEach(bubble => {
-      if (groups[bubble.colorKey]) {
-        groups[bubble.colorKey].push(bubble);
-      }
-    });
-    return groups;
-  }, [bubbles]);
+  const { W, H } = useMemo(() => ({
+    W: Math.max(docW, CONFIG.tileWidth),
+    H: docH
+  }), [docW, docH]);
   
   return (
     <div
@@ -411,7 +371,7 @@ export default function MatisseWallpaperRandom() {
       style={{
         position: "fixed",
         inset: 0,
-        height: `${docH}px`,
+        height: `${H}px`,
         zIndex: 0,
         pointerEvents: "none",
         overflow: "hidden"
@@ -420,31 +380,37 @@ export default function MatisseWallpaperRandom() {
       <svg
         width="100%"
         height="100%"
-        viewBox={`0 0 ${docW} ${docH}`}
+        viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
         style={{ background: CONFIG.colors.bg }}
       >
-        <rect x="0" y="0" width={docW} height={docH} fill={CONFIG.colors.bg} />
+        <rect x="0" y="0" width={W} height={H} fill={CONFIG.colors.bg} />
         
-        {/* Rendu des métaballs par couleur */}
-        {Object.entries(bubblesByColor).map(([colorKey, colorBubbles]) => {
-          if (colorBubbles.length === 0) return null;
-          
-          const path = generateMetaballPath(colorBubbles, { width: docW, height: docH });
-          
-          return (
+        {/* Defs pour les filtres de fusion */}
+        <defs>
+          <filter id="gooey" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+          </filter>
+        </defs>
+        
+        {/* Rendu des blobs avec tension de surface */}
+        <g filter="url(#gooey)">
+          {blobs.map((blob) => (
             <path
-              key={colorKey}
-              d={path}
-              fill={CONFIG.colors[colorKey]}
-              opacity="0.8"
+              key={blob.id}
+              d={blob.getPath()}
+              fill={CONFIG.colors[blob.colorKey]}
+              opacity={blob.opacity}
+              filter="url(#soften)"
               style={{
-                filter: 'blur(1px)', // Léger lissage
+                transition: 'opacity 0.5s ease'
               }}
             />
-          );
-        })}
+          ))}
+        </g>
       </svg>
     </div>
   );
