@@ -21,9 +21,9 @@ const CONFIG = {
   },
   // Anti-chevauchement : facteur de rayon effectif + padding
   packing: {
-    radiusFactor: 0.62, // 0.6–0.7 : marge “convexe” de la tache
+    radiusFactor: 0.62, // 0.6–0.7 : marge "convexe" de la tache
     padding: 24,        // px supplémentaires entre taches
-    attemptsPerBlob: 120, // nb d’essais pour placer une tache
+    attemptsPerBlob: 120, // nb d'essais pour placer une tache
     sideInset: 80,      // marge latérale pour éviter les bords
   },
   // Forme : très douce, basse fréquence
@@ -36,6 +36,19 @@ const CONFIG = {
     scaleJitter: 0.12,   // variation de taille ±12%
     rotate: true,
   },
+  // NOUVEAU: Animations
+  animations: {
+    duration: {
+      slow: '45s',
+      medium: '35s', 
+      fast: '25s'
+    },
+    delays: {
+      olive: '0s',
+      terra: '15s',
+      sable: '30s'
+    }
+  }
 };
 
 /* ================= RNG ================= */
@@ -59,7 +72,7 @@ function useRNG() {
 }
 const randBetween = (rnd, a, b) => a + rnd() * (b - a);
 
-/* ========== Forme lisse sans “pics” (super-ellipse + harmoniques basses) ========== */
+/* ========== Forme lisse sans "pics" (super-ellipse + harmoniques basses) ========== */
 function toCubicPath(points, tension = 0.52) {
   // points: [[x,y], ...] fermé (le 1er = le 0)
   const n = points.length;
@@ -159,141 +172,249 @@ function tryPlaceBlobs({
       const rEff = effRadius(rxJ, ryJ) + padding;
 
       // test contre les déjà placés (toutes couleurs confondues)
-      ok = placedSoFar.every((b) => {
-        const dx = b.cx - cx;
-        const dy = b.cy - cy;
-        const minDist = b.rEff + rEff;
-        return dx * dx + dy * dy >= minDist * minDist;
+      ok = placedSoFar.every(blob => {
+        const dx = cx - blob.cx;
+        const dy = cy - blob.cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        return dist >= rEff + blob.rEff;
       });
-
-      // test interne à ce groupe
-      if (ok) {
-        ok = blobs.every((b) => {
-          const dx = b.cx - cx;
-          const dy = b.cy - cy;
-          const minDist = b.rEff + rEff;
-          return dx * dx + dy * dy >= minDist * minDist;
-        });
-      }
 
       if (ok) {
         rx = rxJ;
         ry = ryJ;
         path = makeSmoothBlob({ cx, cy, rx, ry, rnd });
+        placedSoFar.push({ cx, cy, rEff });
       }
     }
 
     if (ok) {
-      const obj = { cx, cy, rx, ry, rEff: effRadius(rx, ry), colorKey, path };
-      blobs.push(obj);
-      placedSoFar.push(obj); // important : on empile globalement
+      blobs.push({ cx, cy, rx, ry, path, colorKey });
       placed++;
     } else {
-      // on stoppe si ça ne passe plus (évite boucle longue)
+      // Si on n'arrive pas à placer, on s'arrête
+      console.warn(`Impossible de placer blob ${placed + 1}/${count} pour ${colorKey}`);
       break;
     }
   }
+
   return blobs;
 }
 
-/* ==================== Composant ==================== */
-export default function MatisseWallpaperRandom() {
-  const rnd = useRNG();
-  const [docH, setDocH] = useState(2000);
-
+/* ================= Hook de dimension écran ================= */
+function useWindowSize() {
+  const [size, setSize] = useState({ width: 1200, height: 800 }); // fallback SSR
   useEffect(() => {
-    const update = () => {
-      const h =
-        document.documentElement.scrollHeight ||
-        document.body.scrollHeight ||
-        window.innerHeight;
-      setDocH(Math.max(h, window.innerHeight));
-    };
-    update();
-
-    // maj auto si le contenu change
-    const mo = new MutationObserver(update);
-    mo.observe(document.body, { childList: true, subtree: true });
-
-    window.addEventListener("resize", update);
+    function updateSize() {
+      setSize({ 
+        width: window.innerWidth, 
+        height: Math.max(window.innerHeight, document.documentElement.scrollHeight)
+      });
+    }
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    window.addEventListener('orientationchange', updateSize);
     return () => {
-      mo.disconnect();
-      window.removeEventListener("resize", update);
+      window.removeEventListener('resize', updateSize);
+      window.removeEventListener('orientationchange', updateSize);
     };
   }, []);
+  return size;
+}
 
-  const W = CONFIG.tileWidth;
-  const H = docH;
+/* ================= COMPOSANT PRINCIPAL ================= */
+export default function MatisseWallpaperRandom() {
+  const rnd = useRNG();
+  const { width: docW, height: docH } = useWindowSize();
 
-  // placement global anti-chevauchement (toutes couleurs confondues)
-  const placedGlobal = [];
+  // génération des blobs avec anti-chevauchement
+  const blobs = useMemo(() => {
+    const W = Math.max(docW, CONFIG.tileWidth);
+    const H = docH;
 
-  const oliveBlobs = tryPlaceBlobs({
-    rnd,
-    count: CONFIG.counts.olive,
-    baseRx: CONFIG.sizes.olive.rx,
-    baseRy: CONFIG.sizes.olive.ry,
-    colorKey: "olive",
-    H,
-    W,
-    placedSoFar: placedGlobal,
-  });
+    // placement global anti-chevauchement (toutes couleurs confondues)
+    const placedGlobal = [];
 
-  const terraBlobs = tryPlaceBlobs({
-    rnd,
-    count: CONFIG.counts.terra,
-    baseRx: CONFIG.sizes.terra.rx,
-    baseRy: CONFIG.sizes.terra.ry,
-    colorKey: "terra",
-    H,
-    W,
-    placedSoFar: placedGlobal,
-  });
+    const oliveBlobs = tryPlaceBlobs({
+      rnd,
+      count: CONFIG.counts.olive,
+      baseRx: CONFIG.sizes.olive.rx,
+      baseRy: CONFIG.sizes.olive.ry,
+      colorKey: "olive",
+      H,
+      W,
+      placedSoFar: placedGlobal,
+    });
 
-  const sableBlobs = tryPlaceBlobs({
-    rnd,
-    count: CONFIG.counts.sable,
-    baseRx: CONFIG.sizes.sable.rx,
-    baseRy: CONFIG.sizes.sable.ry,
-    colorKey: "sable",
-    H,
-    W,
-    placedSoFar: placedGlobal,
-  });
+    const terraBlobs = tryPlaceBlobs({
+      rnd,
+      count: CONFIG.counts.terra,
+      baseRx: CONFIG.sizes.terra.rx,
+      baseRy: CONFIG.sizes.terra.ry,
+      colorKey: "terra",
+      H,
+      W,
+      placedSoFar: placedGlobal,
+    });
 
-  const all = [...sableBlobs, ...oliveBlobs, ...terraBlobs];
+    const sableBlobs = tryPlaceBlobs({
+      rnd,
+      count: CONFIG.counts.sable,
+      baseRx: CONFIG.sizes.sable.rx,
+      baseRy: CONFIG.sizes.sable.ry,
+      colorKey: "sable",
+      H,
+      W,
+      placedSoFar: placedGlobal,
+    });
+
+    return {
+      olive: oliveBlobs,
+      terra: terraBlobs,
+      sable: sableBlobs,
+      W,
+      H
+    };
+  }, [rnd, docW, docH]);
 
   return (
     <div
       aria-hidden
       style={{
-        position: "absolute",
+        position: "fixed",
         inset: 0,
-        height: `${H}px`,
+        height: `${blobs.H}px`,
         zIndex: 0,
         pointerEvents: "none",
+        overflow: "hidden"
       }}
     >
       <svg
         width="100%"
         height="100%"
-        viewBox={`0 0 ${W} ${H}`}
+        viewBox={`0 0 ${blobs.W} ${blobs.H}`}
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
+        style={{ background: CONFIG.colors.bg }}
       >
         {/* Fond papier peint (crème via var CSS) */}
-        <rect x="0" y="0" width={W} height={H} fill={CONFIG.colors.bg} />
+        <rect x="0" y="0" width={blobs.W} height={blobs.H} fill={CONFIG.colors.bg} />
 
-        {/* Taches (sans crème) – formes douces, pas de pics */}
-        {all.map((b, i) => (
-          <path
-            key={i}
-            d={b.path}
-            style={{ fill: CONFIG.colors[b.colorKey] }}
-            opacity={0.9}
-          />
-        ))}
+        {/* Groupes de taches avec animations différentes */}
+        <g className="olive-group">
+          {blobs.olive.map((b, i) => (
+            <path
+              key={`olive-${i}`}
+              d={b.path}
+              fill={CONFIG.colors.olive}
+              opacity="0.9"
+              style={{
+                animation: `organicFloat1 ${CONFIG.animations.duration.slow} ease-in-out infinite`,
+                animationDelay: `${i * 3}s`,
+                transformOrigin: `${b.cx}px ${b.cy}px`
+              }}
+            />
+          ))}
+        </g>
+
+        <g className="terra-group">
+          {blobs.terra.map((b, i) => (
+            <path
+              key={`terra-${i}`}
+              d={b.path}
+              fill={CONFIG.colors.terra}
+              opacity="0.8"
+              style={{
+                animation: `organicFloat2 ${CONFIG.animations.duration.medium} ease-in-out infinite reverse`,
+                animationDelay: `${CONFIG.animations.delays.terra}`,
+                animationDelay: `${i * 4}s`,
+                transformOrigin: `${b.cx}px ${b.cy}px`
+              }}
+            />
+          ))}
+        </g>
+
+        <g className="sable-group">
+          {blobs.sable.map((b, i) => (
+            <path
+              key={`sable-${i}`}
+              d={b.path}
+              fill={CONFIG.colors.sable}
+              opacity="0.7"
+              style={{
+                animation: `organicFloat3 ${CONFIG.animations.duration.fast} ease-in-out infinite`,
+                animationDelay: `${CONFIG.animations.delays.sable}`,
+                animationDelay: `${i * 2}s`,
+                transformOrigin: `${b.cx}px ${b.cy}px`
+              }}
+            />
+          ))}
+        </g>
       </svg>
+
+      {/* CSS pour les animations */}
+      <style jsx>{`
+        @keyframes organicFloat1 {
+          0%, 100% { 
+            transform: translate(0px, 0px) rotate(0deg) scale(1); 
+          }
+          25% { 
+            transform: translate(15px, -25px) rotate(1deg) scale(1.02); 
+          }
+          50% { 
+            transform: translate(-10px, 20px) rotate(-0.5deg) scale(0.98); 
+          }
+          75% { 
+            transform: translate(-20px, -10px) rotate(1.2deg) scale(1.01); 
+          }
+        }
+
+        @keyframes organicFloat2 {
+          0%, 100% { 
+            transform: translate(0px, 0px) rotate(0deg) scale(1); 
+          }
+          33% { 
+            transform: translate(-18px, 30px) rotate(-0.8deg) scale(1.03); 
+          }
+          66% { 
+            transform: translate(25px, -15px) rotate(0.6deg) scale(0.97); 
+          }
+        }
+
+        @keyframes organicFloat3 {
+          0%, 100% { 
+            transform: translate(0px, 0px) rotate(0deg) scale(1); 
+          }
+          20% { 
+            transform: translate(12px, 18px) rotate(0.4deg) scale(1.01); 
+          }
+          40% { 
+            transform: translate(-15px, -12px) rotate(-0.7deg) scale(0.99); 
+          }
+          60% { 
+            transform: translate(8px, -20px) rotate(0.5deg) scale(1.02); 
+          }
+          80% { 
+            transform: translate(-10px, 15px) rotate(-0.3deg) scale(0.98); 
+          }
+        }
+
+        /* Réduction sur mobile pour les performances */
+        @media (max-width: 768px) {
+          .olive-group, .terra-group, .sable-group {
+            animation-duration: 60s !important;
+          }
+        }
+
+        /* Respect des préférences d'accessibilité */
+        @media (prefers-reduced-motion: reduce) {
+          .olive-group, .terra-group, .sable-group {
+            animation: none !important;
+          }
+          .olive-group path, .terra-group path, .sable-group path {
+            transform: none !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
