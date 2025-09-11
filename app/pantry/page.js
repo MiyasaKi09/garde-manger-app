@@ -194,6 +194,75 @@ function ViewSelector({ view, setView }) {
   );
 }
 
+// Composant Header Organique (Option 2)
+function OrganicHeader() {
+  return (
+    <div style={{
+      position: 'relative',
+      marginBottom: '2rem',
+      padding: '2rem 0'
+    }}>
+      {/* Formes organiques en arrière-plan */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        opacity: 0.1,
+        zIndex: -1,
+        background: `
+          radial-gradient(ellipse 30% 20% at 20% 30%, var(--forest-400) 0%, transparent 50%),
+          radial-gradient(ellipse 40% 25% at 80% 70%, var(--earth-400) 0%, transparent 50%),
+          radial-gradient(ellipse 25% 15% at 60% 20%, var(--autumn-orange) 0%, transparent 50%)
+        `
+      }} />
+
+      <div style={{ textAlign: 'center' }}>
+        <div style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '1rem',
+          padding: '1rem 2rem',
+          background: 'rgba(255, 255, 255, 0.8)',
+          backdropFilter: 'blur(8px)',
+          borderRadius: 'var(--radius-xl)',
+          border: '1px solid rgba(0, 0, 0, 0.06)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
+        }}>
+          {/* Icône stylisée */}
+          <div style={{
+            width: '48px',
+            height: '48px',
+            background: 'linear-gradient(135deg, var(--forest-500), var(--forest-400))',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 16px rgba(58, 107, 30, 0.3)'
+          }}>
+            <span style={{ fontSize: '20px' }}>🏺</span>
+          </div>
+
+          <h1 style={{
+            fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
+            fontFamily: 'Crimson Text, serif',
+            fontWeight: '600',
+            background: 'linear-gradient(135deg, var(--forest-700), var(--forest-500))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            margin: 0,
+            letterSpacing: '-0.02em'
+          }}>
+            Garde-Manger
+          </h1>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Page principale
 export default function PantryPage() {
   const {
@@ -298,15 +367,8 @@ export default function PantryPage() {
 
   return (
     <div className="container">
-      {/* Titre principal */}
-      <h1 style={{ 
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1rem',
-        marginBottom: '2rem'
-      }}>
-        🏺 Garde-Manger
-      </h1>
+      {/* NOUVEAU HEADER ORGANIQUE - Option 2 */}
+      <OrganicHeader />
 
       {/* Stats */}
       <PantryStats stats={stats} />
