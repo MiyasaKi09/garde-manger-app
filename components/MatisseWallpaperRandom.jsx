@@ -396,7 +396,7 @@ export default function MatisseWallpaperRandom() {
           </filter>
         </defs>
         
-        {/* Rendu des blobs avec effet de fusion */}
+        {/* Rendu des blobs avec tension de surface */}
         <g filter="url(#gooey)">
           {blobs.map((blob) => (
             <path
@@ -404,8 +404,9 @@ export default function MatisseWallpaperRandom() {
               d={blob.getPath()}
               fill={CONFIG.colors[blob.colorKey]}
               opacity={blob.opacity}
+              filter="url(#soften)"
               style={{
-                transition: 'opacity 0.3s ease'
+                transition: 'opacity 0.5s ease'
               }}
             />
           ))}
