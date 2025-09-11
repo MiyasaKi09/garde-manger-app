@@ -1,68 +1,69 @@
-// app/pantry/components/PantryStats.js - Adapté au style Myko
-import { PantryStyles } from './pantryUtils';
-
-function Stat({ value, label, tone, icon }) {
-  const color = tone === 'danger' ? 'var(--danger)' :
-                tone === 'warning' ? 'var(--autumn-orange)' :
-                tone === 'muted' ? 'var(--dark-gray)' : 'var(--forest-600)';
-  
+// app/pantry/components/PantryStats.js - Composant de statistiques
+export function PantryStats({ stats }) {
   return (
-    <div className="card" style={{ 
-      textAlign: 'center',
-      padding: '1rem',
-      background: tone === 'danger' ? 'rgba(231, 76, 60, 0.05)' :
-                  tone === 'warning' ? 'rgba(243, 156, 18, 0.05)' :
-                  'linear-gradient(145deg, var(--warm-white), rgba(250, 248, 243, 0.95))'
-    }}>
-      <div style={{ 
-        fontSize: '2rem', 
-        fontWeight: 800, 
-        color,
-        marginBottom: '0.5rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '0.5rem'
-      }}>
-        {icon && <span style={{ fontSize: '1.5rem' }}>{icon}</span>}
-        {value}
-      </div>
-      <div style={{ 
-        fontSize: '0.95rem', 
-        color: 'var(--forest-500)',
-        fontWeight: '500'
-      }}>
-        {label}
-      </div>
+    <div className="grid cols-4" style={{ marginBottom: '2rem' }}>
+      <StatCard 
+        icon="📦" 
+        value={stats.totalProducts} 
+        label="Produits" 
+        color="var(--forest-600)" 
+      />
+      <StatCard 
+        icon="📋" 
+        value={stats.totalLots} 
+        label="Lots totaux" 
+        color="var(--earth-600)" 
+      />
+      <StatCard 
+        icon="⚠️" 
+        value={stats.soonCount} 
+        label="À consommer" 
+        color="var(--autumn-orange)" 
+        urgent={stats.soonCount > 0}
+      />
+      <StatCard 
+        icon="💀" 
+        value={stats.expiredCount} 
+        label="Expirés" 
+        color="#e74c3c" 
+        urgent={stats.expiredCount > 0}
+      />
     </div>
   );
 }
 
-export function PantryStats({ stats }) {
+function StatCard({ icon, value, label, color, urgent = false }) {
   return (
-    <div className="grid cols-4" style={{ marginBottom: '1.5rem' }}>
-      <Stat 
-        value={stats.totalProducts} 
-        label="Produits" 
-        icon="📦"
-      />
-      <Stat 
-        value={stats.totalLots} 
-        label="Lots totaux" 
-        icon="📋"
-      />
-      <Stat 
-        value={stats.expiredCount} 
-        label="Périmés" 
-        tone={stats.expiredCount > 0 ? 'danger' : 'muted'}
-        icon="⚠️"
-      />
-      <Stat 
-        value={stats.soonCount} 
-        label="Urgents" 
-        tone={stats.soonCount > 0 ? 'warning' : 'muted'}
-        icon="⏰"
-      />
+    <div 
+      className={`card ${urgent ? 'urgent' : ''}`}
+      style={{
+        textAlign: 'center',
+        padding: '1.5rem 1rem',
+        background: urgent ? 'rgba(231, 76, 60, 0.05)' : undefined,
+        borderColor: urgent ? 'rgba(231, 76, 60, 0.2)' : undefined
+      }}
+    >
+      <div style={{ 
+        fontSize: '2rem', 
+        marginBottom: '0.5rem' 
+      }}>
+        {icon}
+      </div>
+      <div style={{ 
+        fontSize: '2rem', 
+        fontWeight: '700', 
+        color, 
+        marginBottom: '0.25rem' 
+      }}>
+        {value || 0}
+      </div>
+      <div style={{ 
+        fontSize: '0.9rem', 
+        color: 'var(--forest-600)',
+        fontWeight: '500'
+      }}>
+        {label}
+      </div>
     </div>
   );
 }
