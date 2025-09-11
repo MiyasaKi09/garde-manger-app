@@ -17,13 +17,17 @@ const CONFIG = {
   },
   // Configuration pour les bulles organiques nettes
   organicBubbles: {
-    count: 18,
-    minRadius: 40,
-    maxRadius: 160,
+    count: 20,
+    minRadius: 50,
+    maxRadius: 180,
     controlPoints: 8,
     morphSpeed: 0.02,
-    fusionDistance: 120,
-    colors: ['paper', 'earth', 'clay', 'moss']
+    fusionDistance: 100,
+    colors: ['paper', 'earth', 'clay', 'moss'],
+    // Nouvelles propriétés pour la fluidité
+    fusionSpeed: 0.008, // Vitesse de fusion graduelle
+    birthRadius: 20, // Taille de naissance des bulles
+    maxAge: 300 // Age max avant division naturelle
   }
 };
 
@@ -39,102 +43,160 @@ function mulberry32(seed) {
 
 const randBetween = (rnd, a, b) => a + rnd() * (b - a);
 
-/* ========== Bulle Organique Nette ========== */
-class OrganicCrispBubble {
-  constructor(x, y, radius, colorKey, seed) {
+/* ========== Bulle Organique avec Cycle de Vie ========== */
+class LifeCycleBubble {
+  constructor(x, y, radius, colorKey, seed, age = 0) {
     this.x = x;
     this.y = y;
     this.baseRadius = radius;
+    this.currentRadius = radius;
+    this.targetRadius = radius;
     this.colorKey = colorKey;
     this.seed = seed;
     this.rnd = mulberry32(seed);
-    this.age = 0;
+    this.age = age;
     this.time = 0;
+    this.opacity = age === 0 ? 0 : 0.9; // Naissance progressive
+    this.targetOpacity = 0.9;
     
-    // Points de contrôle pour forme organique mais nette
+    // État de fusion
+    this.fusionPartner = null;
+    this.fusionProgress = 0;
+    this.isFusing = false;
+    this.isBeingBorn = age === 0;
+    
+    // Points de contrôle pour forme organique
     this.controlPoints = CONFIG.organicBubbles.controlPoints;
     const rndFunc = this.rnd;
     this.deformations = Array(this.controlPoints).fill().map((_, i) => ({
-      amplitude: 0.1 + rndFunc() * 0.15,
-      frequency: 0.2 + rndFunc() * 0.6,
+      amplitude: 0.08 + rndFunc() * 0.12,
+      frequency: 0.15 + rndFunc() * 0.4,
       phase: rndFunc() * Math.PI * 2,
-      baseOffset: (rndFunc() - 0.5) * 0.2
+      baseOffset: (rndFunc() - 0.5) * 0.15
     }));
     
-    // Mouvement lent et fluide MAIS PLUS ACTIF
+    // Mouvement organique
     this.velocity = {
-      x: (rndFunc() - 0.5) * 0.8,
-      y: (rndFunc() - 0.5) * 0.8
+      x: (rndFunc() - 0.5) * 0.3,
+      y: (rndFunc() - 0.5) * 0.3
     };
     
     this.targetX = x;
     this.targetY = y;
-    this.metabolismRate = 0.3 + rndFunc() * 0.4;
-    this.driftSpeed = 0.1 + rndFunc() * 0.3;
+    this.metabolismRate = 0.2 + rndFunc() * 0.3;
+    this.driftSpeed = 0.05 + rndFunc() * 0.15;
   }
 
-  update(time, allBubbles, W, H) {
+  update(time, allBubbles, W, H, scrollY = 0) {
     this.time = time;
     this.age += 0.016;
     
-    // Respiration plus marquée
-    const breathCycle = Math.sin(time * this.metabolismRate) * 0.12;
-    this.currentRadius = this.baseRadius * (1 + breathCycle);
+    // Naissance douce
+    if (this.isBeingBorn) {
+      this.opacity = Math.min(this.opacity + 0.02, this.targetOpacity);
+      this.currentRadius = Math.min(this.currentRadius + 1.5, this.targetRadius);
+      if (this.opacity >= this.targetOpacity && this.currentRadius >= this.targetRadius - 5) {
+        this.isBeingBorn = false;
+      }
+    }
     
-    // Mise à jour des déformations plus actives
+    // Gestion fusion douce
+    if (this.isFusing && this.fusionPartner) {
+      this.fusionProgress += CONFIG.organicBubbles.fusionSpeed;
+      
+      // Rapprochement graduel
+      const lerpFactor = this.fusionProgress;
+      this.x += (this.fusionPartner.x - this.x) * lerpFactor * 0.1;
+      this.y += (this.fusionPartner.y - this.y) * lerpFactor * 0.1;
+      
+      // Fusion des tailles graduellement
+      const combinedRadius = Math.sqrt(this.baseRadius ** 2 + this.fusionPartner.baseRadius ** 2) * 0.9;
+      this.targetRadius = this.baseRadius + (combinedRadius - this.baseRadius) * lerpFactor;
+      
+      // Transparence pour la fusion
+      this.targetOpacity = 0.9 - lerpFactor * 0.3;
+    }
+    
+    // Ajustement graduel de la taille
+    this.currentRadius += (this.targetRadius - this.currentRadius) * 0.05;
+    this.opacity += (this.targetOpacity - this.opacity) * 0.03;
+    
+    // Respiration organique
+    const breathCycle = Math.sin(time * this.metabolismRate) * 0.08;
+    const finalRadius = this.currentRadius * (1 + breathCycle);
+    
+    // Mise à jour des déformations
     this.deformations.forEach((def, i) => {
       def.currentOffset = def.baseOffset + 
         def.amplitude * Math.sin(time * def.frequency + def.phase) +
-        Math.sin(time * 0.5 + i) * 0.08;
+        Math.sin(time * 0.3 + i * 0.7) * 0.05;
     });
     
-    // Mouvement actif continu
-    this.velocity.x += Math.sin(time * this.driftSpeed + this.seed) * 0.02;
-    this.velocity.y += Math.cos(time * this.driftSpeed * 1.3 + this.seed) * 0.02;
+    // Mouvement brownien doux
+    this.velocity.x += Math.sin(time * this.driftSpeed + this.seed) * 0.01;
+    this.velocity.y += Math.cos(time * this.driftSpeed * 1.2 + this.seed) * 0.01;
+    this.velocity.x *= 0.95; // Friction
+    this.velocity.y *= 0.95;
     
-    // Mouvement vers la cible PLUS actif
-    this.x += (this.targetX - this.x) * 0.03 + this.velocity.x;
-    this.y += (this.targetY - this.y) * 0.03 + this.velocity.y;
-    
-    // Nouvelle cible plus fréquemment
-    if (Math.floor(time * 12) % 120 === 0 && Math.random() < 0.15) {
-      this.targetX = this.currentRadius + Math.random() * (W - this.currentRadius * 2);
-      this.targetY = this.currentRadius + Math.random() * (H - this.currentRadius * 2);
+    // Effet de scroll parallax fluide
+    if (typeof window !== 'undefined' && scrollY) {
+      const parallaxFactor = 0.3 + (this.baseRadius / CONFIG.organicBubbles.maxRadius) * 0.4;
+      this.y += scrollY * parallaxFactor * 0.001;
     }
     
-    // Confinement doux
-    this.bounceOffWalls(W, H);
+    // Application du mouvement
+    this.x += (this.targetX - this.x) * 0.02 + this.velocity.x;
+    this.y += (this.targetY - this.y) * 0.02 + this.velocity.y;
+    
+    // Nouvelle cible périodiquement
+    if (Math.floor(time * 5) % 200 === 0 && Math.random() < 0.08) {
+      this.setNewTarget(W, H);
+    }
+    
+    // Confinement avec circulation
+    this.handleWorldBounds(W, H);
+    
+    return finalRadius;
   }
-
-  bounceOffWalls(W, H) {
-    const margin = this.currentRadius;
-    if (this.x < margin) {
-      this.x = margin;
-      this.targetX = margin + 50;
+  
+  setNewTarget(W, H) {
+    // Éviter les bords pour éviter les "pops"
+    const margin = this.currentRadius + 50;
+    this.targetX = margin + Math.random() * (W - margin * 2);
+    this.targetY = margin + Math.random() * (H - margin * 2);
+  }
+  
+  handleWorldBounds(W, H) {
+    const margin = this.currentRadius + 20;
+    
+    // Circulation fluide au lieu de rebond
+    if (this.x < -margin) {
+      this.x = W + margin;
+      this.targetX = W - margin;
     }
-    if (this.x > W - margin) {
-      this.x = W - margin;
-      this.targetX = W - margin - 50;
+    if (this.x > W + margin) {
+      this.x = -margin;
+      this.targetX = margin;
     }
-    if (this.y < margin) {
-      this.y = margin;
-      this.targetY = margin + 50;
+    if (this.y < -margin) {
+      this.y = H + margin;
+      this.targetY = H - margin;
     }
-    if (this.y > H - margin) {
-      this.y = H - margin;
-      this.targetY = H - margin - 50;
+    if (this.y > H + margin) {
+      this.y = -margin;
+      this.targetY = margin;
     }
   }
 
   generateSharpPath() {
     const points = [];
+    const finalRadius = this.currentRadius;
     
     for (let i = 0; i < this.controlPoints; i++) {
       const angle = (i / this.controlPoints) * Math.PI * 2;
       const def = this.deformations[i];
       
-      // Rayon avec déformation nette
-      const radius = this.currentRadius * (1 + def.currentOffset);
+      const radius = finalRadius * (1 + def.currentOffset);
       
       const x = this.x + Math.cos(angle) * radius;
       const y = this.y + Math.sin(angle) * radius;
@@ -155,8 +217,7 @@ class OrganicCrispBubble {
       const next = points[(i + 1) % points.length];
       const nextNext = points[(i + 2) % points.length];
       
-      // Courbes de Bézier pour la fluidité mais sans sur-lissage
-      const tension = 0.15;
+      const tension = 0.12;
       const cp1x = current[0] + (next[0] - points[(i - 1 + points.length) % points.length][0]) * tension;
       const cp1y = current[1] + (next[1] - points[(i - 1 + points.length) % points.length][1]) * tension;
       const cp2x = next[0] - (nextNext[0] - current[0]) * tension;
@@ -175,41 +236,84 @@ class OrganicCrispBubble {
   }
 
   canFuseWith(other) {
+    if (this.isFusing || other.isFusing || this.isBeingBorn || other.isBeingBorn) return false;
+    
     return this.distanceTo(other) < CONFIG.organicBubbles.fusionDistance && 
            Math.abs(CONFIG.organicBubbles.colors.indexOf(this.colorKey) - 
-                   CONFIG.organicBubbles.colors.indexOf(other.colorKey)) <= 1;
+                   CONFIG.organicBubbles.colors.indexOf(other.colorKey)) <= 1 &&
+           this.age > 30 && other.age > 30; // Maturité requise
+  }
+  
+  startFusion(partner) {
+    this.isFusing = true;
+    this.fusionPartner = partner;
+    this.fusionProgress = 0;
+  }
+  
+  shouldDivide() {
+    return !this.isFusing && 
+           !this.isBeingBorn && 
+           this.currentRadius > CONFIG.organicBubbles.maxRadius * 0.9 && 
+           this.age > CONFIG.organicBubbles.maxAge;
+  }
+  
+  createOffspring(W, H) {
+    const angle = Math.random() * Math.PI * 2;
+    const distance = this.currentRadius * 1.5;
+    const childRadius = this.currentRadius * 0.6;
+    
+    const childX = this.x + Math.cos(angle) * distance;
+    const childY = this.y + Math.sin(angle) * distance;
+    
+    // Ajuster la position pour éviter les bords
+    const margin = childRadius + 30;
+    const safeX = Math.max(margin, Math.min(W - margin, childX));
+    const safeY = Math.max(margin, Math.min(H - margin, childY));
+    
+    const child = new LifeCycleBubble(
+      safeX, safeY, CONFIG.organicBubbles.birthRadius, 
+      this.colorKey, Date.now() + Math.random() * 10000, 0
+    );
+    
+    child.targetRadius = childRadius;
+    
+    // Réduire la taille du parent
+    this.targetRadius = this.currentRadius * 0.7;
+    this.age = 0; // Rajeunir le parent
+    
+    return child;
   }
 }
 
-/* ========== Création des bulles initiales ========== */
+/* ========== Création initiale avec spawn organique ========== */
 function createOrganicBubbles(rnd, W, H) {
   const bubbles = [];
   const { count, minRadius, maxRadius, colors } = CONFIG.organicBubbles;
   
   for (let i = 0; i < count; i++) {
-    const x = minRadius + rnd() * (W - minRadius * 2);
-    const y = minRadius + rnd() * (H - minRadius * 2);
+    // Spawn avec marges pour éviter les "pops"
+    const margin = maxRadius + 50;
+    const x = margin + rnd() * (W - margin * 2);
+    const y = margin + rnd() * (H - margin * 2);
     
-    // Privilégier les grosses tailles (70% de grosses bulles)
     const sizeRoll = rnd();
     let radius;
-    if (sizeRoll < 0.7) {
-      // Grosses bulles
-      radius = maxRadius * 0.8 + rnd() * (maxRadius * 0.2);
+    if (sizeRoll < 0.6) {
+      radius = maxRadius * 0.7 + rnd() * (maxRadius * 0.3);
     } else {
-      // Moyennes bulles
       radius = minRadius + rnd() * (maxRadius - minRadius) * 0.6;
     }
     
     const colorKey = colors[Math.floor(rnd() * colors.length)];
+    const age = rnd() * 100; // Age initial varié
     
-    bubbles.push(new OrganicCrispBubble(x, y, radius, colorKey, i * 1000 + Date.now()));
+    bubbles.push(new LifeCycleBubble(x, y, radius, colorKey, i * 1000 + Date.now(), age));
   }
   
   return bubbles;
 }
 
-/* ================= Hook de dimension écran - SIMPLIFIÉ ================= */
+/* ================= Hooks sécurisés ================= */
 function useWindowSize() {
   const [size, setSize] = useState({ width: 1200, height: 800 });
   useEffect(() => {
@@ -218,7 +322,7 @@ function useWindowSize() {
     function updateSize() {
       setSize({ 
         width: window.innerWidth, 
-        height: Math.max(window.innerHeight, document.documentElement.scrollHeight)
+        height: Math.max(window.innerHeight, document.documentElement.scrollHeight * 1.5) // Plus grand pour le scroll
       });
     }
     updateSize();
@@ -228,19 +332,34 @@ function useWindowSize() {
   return size;
 }
 
-/* ================= COMPOSANT PRINCIPAL - SSR SAFE ================= */
+function useScrollPosition() {
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    function updateScroll() {
+      setScrollY(window.scrollY);
+    }
+    
+    updateScroll();
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    return () => window.removeEventListener('scroll', updateScroll);
+  }, []);
+  return scrollY;
+}
+
+/* ================= COMPOSANT PRINCIPAL ================= */
 export default function MatisseWallpaperRandom() {
   const [bubbles, setBubbles] = useState([]);
   const [time, setTime] = useState(0);
   const [mounted, setMounted] = useState(false);
   const { width: docW, height: docH } = useWindowSize();
+  const scrollY = useScrollPosition();
   
-  // Attendre le montage côté client
   useEffect(() => {
     setMounted(true);
   }, []);
   
-  // Initialisation avec RNG
   const rnd = useMemo(() => {
     if (typeof crypto !== "undefined" && crypto.getRandomValues) {
       const a = new Uint32Array(1);
@@ -250,7 +369,7 @@ export default function MatisseWallpaperRandom() {
     return mulberry32(Date.now() & 0xffffffff);
   }, []);
   
-  // Créer les bulles organiques initiales
+  // Initialisation
   useEffect(() => {
     if (!mounted) return;
     
@@ -260,7 +379,7 @@ export default function MatisseWallpaperRandom() {
     setBubbles(organicBubbles);
   }, [rnd, docW, docH, mounted]);
   
-  // Animation loop - SANS SCROLL POUR ÉVITER SSR
+  // Animation avec gestion cycle de vie
   useEffect(() => {
     if (!mounted) return;
     
@@ -270,75 +389,85 @@ export default function MatisseWallpaperRandom() {
       setBubbles(currentBubbles => {
         const W = Math.max(docW, CONFIG.tileWidth);
         const H = docH;
-        const updatedBubbles = [...currentBubbles];
+        let updatedBubbles = [...currentBubbles];
         
-        // Mettre à jour toutes les bulles SANS scrollY
+        // Mise à jour de toutes les bulles
         updatedBubbles.forEach(bubble => {
-          bubble.update(time, updatedBubbles, W, H);
+          bubble.update(time, updatedBubbles, W, H, scrollY);
         });
         
-        // Fusion plus fréquente pour compenser le nombre
+        // Gestion des fusions organiques
         for (let i = 0; i < updatedBubbles.length; i++) {
           for (let j = i + 1; j < updatedBubbles.length; j++) {
-            if (updatedBubbles[i].canFuseWith(updatedBubbles[j])) {
-              if (Math.random() < 0.006) {
-                const bubble1 = updatedBubbles[i];
-                const bubble2 = updatedBubbles[j];
-                
-                const newX = (bubble1.x + bubble2.x) / 2;
-                const newY = (bubble1.y + bubble2.y) / 2;
-                const newRadius = Math.min(
-                  Math.sqrt(bubble1.baseRadius ** 2 + bubble2.baseRadius ** 2) * 0.85,
-                  CONFIG.organicBubbles.maxRadius * 1.4
-                );
-                const newColorKey = bubble1.colorKey;
-                
-                const fusedBubble = new OrganicCrispBubble(
-                  newX, newY, newRadius, newColorKey, Date.now() + i * j
-                );
-                
-                updatedBubbles.splice(j, 1);
-                updatedBubbles.splice(i, 1);
-                updatedBubbles.push(fusedBubble);
-                return updatedBubbles;
-              }
+            const bubble1 = updatedBubbles[i];
+            const bubble2 = updatedBubbles[j];
+            
+            if (bubble1.canFuseWith(bubble2) && Math.random() < 0.002) {
+              // Commencer la fusion
+              bubble1.startFusion(bubble2);
+              bubble2.startFusion(bubble1);
             }
           }
         }
         
-        // Division plus fréquente pour maintenir le nombre
+        // Compléter les fusions
+        const completedFusions = [];
         updatedBubbles.forEach((bubble, index) => {
-          if (bubble.baseRadius > CONFIG.organicBubbles.maxRadius * 1.1 && Math.random() < 0.002) {
-            const childRadius = bubble.baseRadius * 0.65;
-            const angle = Math.random() * Math.PI * 2;
-            const distance = childRadius * 2.2;
-            
-            const child = new OrganicCrispBubble(
-              bubble.x + Math.cos(angle) * distance,
-              bubble.y + Math.sin(angle) * distance,
-              childRadius,
-              bubble.colorKey,
-              Date.now() + index * 10000
-            );
-            
-            bubble.baseRadius *= 0.8;
-            updatedBubbles.push(child);
+          if (bubble.isFusing && bubble.fusionProgress > 1) {
+            completedFusions.push(index);
           }
         });
+        
+        // Créer les nouvelles bulles fusionnées
+        if (completedFusions.length >= 2) {
+          const bubble1 = updatedBubbles[completedFusions[0]];
+          const bubble2 = updatedBubbles[completedFusions[1]];
+          
+          const newX = (bubble1.x + bubble2.x) / 2;
+          const newY = (bubble1.y + bubble2.y) / 2;
+          const newRadius = Math.min(bubble1.targetRadius, CONFIG.organicBubbles.maxRadius * 1.2);
+          
+          const fusedBubble = new LifeCycleBubble(
+            newX, newY, CONFIG.organicBubbles.birthRadius, 
+            bubble1.colorKey, Date.now(), 0
+          );
+          fusedBubble.targetRadius = newRadius;
+          
+          // Supprimer les bulles fusionnées et ajouter la nouvelle
+          updatedBubbles = updatedBubbles.filter((_, idx) => !completedFusions.includes(idx));
+          updatedBubbles.push(fusedBubble);
+        }
+        
+        // Divisions organiques
+        const newBubbles = [];
+        updatedBubbles.forEach(bubble => {
+          if (bubble.shouldDivide() && Math.random() < 0.001) {
+            const offspring = bubble.createOffspring(W, H);
+            newBubbles.push(offspring);
+          }
+        });
+        
+        // Ajouter les nouvelles bulles
+        updatedBubbles.push(...newBubbles);
+        
+        // Limiter le nombre total
+        if (updatedBubbles.length > CONFIG.organicBubbles.count * 1.5) {
+          updatedBubbles.sort((a, b) => a.currentRadius - b.currentRadius);
+          updatedBubbles = updatedBubbles.slice(-CONFIG.organicBubbles.count * 1.2);
+        }
         
         return updatedBubbles;
       });
     }, 16);
     
     return () => clearInterval(interval);
-  }, [time, docW, docH, mounted]);
+  }, [time, docW, docH, scrollY, mounted]);
   
   const { W, H } = useMemo(() => ({
     W: Math.max(docW, CONFIG.tileWidth),
     H: docH
   }), [docW, docH]);
   
-  // Ne rien rendre pendant l'hydratation SSR
   if (!mounted) {
     return (
       <div
@@ -364,7 +493,6 @@ export default function MatisseWallpaperRandom() {
         zIndex: 0,
         pointerEvents: "none",
         overflow: "hidden"
-        // PAS DE TRANSFORM SCROLL - sera ajouté plus tard via JS côté client
       }}
     >
       <svg
@@ -378,7 +506,6 @@ export default function MatisseWallpaperRandom() {
         <rect x="0" y="0" width={W} height={H} fill={CONFIG.colors.bg} />
         
         <defs>
-          {/* Gradient pour effet de profondeur sans flou */}
           <radialGradient id="crispGradient" cx="25%" cy="25%">
             <stop offset="0%" stopColor="rgba(255,255,255,0.25)" />
             <stop offset="70%" stopColor="rgba(255,255,255,0.05)" />
@@ -386,35 +513,34 @@ export default function MatisseWallpaperRandom() {
           </radialGradient>
         </defs>
         
-        {/* Rendu des bulles organiques SANS filtres de flou */}
         <g>
           {bubbles.map((bubble, index) => (
-            <g key={index}>
-              {/* Ombre légère et nette */}
+            <g key={`${bubble.seed}-${index}`}>
               <path
                 d={bubble.generateSharpPath()}
-                fill="rgba(0,0,0,0.04)"
-                transform="translate(1.5,1.5)"
+                fill="rgba(0,0,0,0.03)"
+                transform="translate(1,1)"
               />
               
-              {/* Bulle principale avec contour net */}
               <path
                 d={bubble.generateSharpPath()}
                 fill={CONFIG.colors[bubble.colorKey]}
-                stroke="rgba(255,255,255,0.3)"
-                strokeWidth="1"
+                stroke="rgba(255,255,255,0.2)"
+                strokeWidth="0.5"
                 shapeRendering="geometricPrecision"
-                opacity="0.9"
+                opacity={bubble.opacity}
+                style={{
+                  transition: 'opacity 0.5s ease'
+                }}
               />
               
-              {/* Reflet subtil et net */}
               <ellipse
-                cx={bubble.x - bubble.currentRadius * 0.2}
-                cy={bubble.y - bubble.currentRadius * 0.2}
-                rx={bubble.currentRadius * 0.25}
-                ry={bubble.currentRadius * 0.12}
+                cx={bubble.x - bubble.currentRadius * 0.15}
+                cy={bubble.y - bubble.currentRadius * 0.15}
+                rx={bubble.currentRadius * 0.2}
+                ry={bubble.currentRadius * 0.1}
                 fill="url(#crispGradient)"
-                opacity="0.4"
+                opacity={bubble.opacity * 0.4}
               />
             </g>
           ))}
