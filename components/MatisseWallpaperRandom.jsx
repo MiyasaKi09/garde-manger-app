@@ -26,7 +26,7 @@ const CONFIG = {
   physics: {
     baseSpeed: 15,           // Vitesse de déplacement
     rotationSpeed: 0.2,      // Vitesse de rotation nominale
-    rotationVariability: 2.0,// Variabilité supplémentaire de rotation
+    rotationVariability: 0.6,// Variabilité supplémentaire de rotation
     friction: 0.94,          // Friction pour l'inertie
     repulsionForce: 150,     // Force de répulsion entre couleurs différentes
     fusionDistance: 30,      // Distance pour fusionner (utilisée qualitativement)
@@ -95,7 +95,7 @@ class Cell {
     // Forme
     this.points = [];
     this.targetPoints = [];
-    const numPoints = CONFIG.animation.pointCount || 8;
+    const numPoints = CONFIG.animation.pointCount || 6;
     for (let i = 0; i < numPoints; i++) {
       const radius = 0.7 + rnd() * 0.6;
       const angleOffset = (rnd() - 0.5) * CONFIG.animation.morphIntensity;
