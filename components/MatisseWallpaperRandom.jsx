@@ -62,25 +62,40 @@ class Cell {
     this.rnd = rnd;
     this.isDead = false;
     
+    // État de fusion
+    this.isFusing = false;
+    this.fusionProgress = 0;
+    this.fusionTarget = null;
+    
     // Physique
     this.vx = 0;
     this.vy = 0;
     this.rotation = rnd() * Math.PI * 2;
-    this.rotationSpeed = (rnd() - 0.5) * CONFIG.physics.rotationSpeed;
+    // Rotation très variable et potentiellement très lente
+    const rotationBase = (rnd() - 0.5) * CONFIG.physics.rotationSpeed;
+    this.rotationSpeed = rotationBase * (0.1 + rnd() * CONFIG.physics.rotationVariability);
+    // Changement de direction de rotation occasionnel
+    this.rotationChangeTimer = rnd() * 5000;
     
     // Animation
-    this.scale = fromEdge ? 0.1 : 1;
-    this.targetScale = 1;
+    this.scale = fromEdge ? 0.1 : (0.9 + rnd() * 0.2);
+    this.targetScale = 0.9 + rnd() * 0.2;
     this.opacity = fromEdge ? 0 : 1;
     
-    // Forme (6 points pour une forme organique)
+    // Forme avec plus de points et plus de variabilité
     this.points = [];
     this.targetPoints = [];
-    for (let i = 0; i < 6; i++) {
-      const angle = (i / 6) * Math.PI * 2;
-      const radius = 1 + (rnd() - 0.5) * 0.3;
-      this.points.push({ r: radius, a: 0 });
-      this.targetPoints.push({ r: radius, a: (rnd() - 0.5) * 0.2 });
+    const numPoints = CONFIG.animation.pointCount;
+    for (let i = 0; i < numPoints; i++) {
+      const angle = (i / numPoints) * Math.PI * 2;
+      // Variabilité initiale plus importante
+      const radius = 0.7 + rnd() * 0.6;
+      const angleOffset = (rnd() - 0.5) * CONFIG.animation.morphIntensity;
+      this.points.push({ r: radius, a: angleOffset });
+      this.targetPoints.push({ 
+        r: 0.7 + rnd() * 0.6, 
+        a: (rnd() - 0.5) * CONFIG.animation.morphIntensity 
+      });
     }
     
     // Si spawn depuis le bord
@@ -215,25 +230,8 @@ class Cell {
   }
   
   fuseWith(other) {
-    // Conservation de la surface : πr₁² + πr₂² = πr₃²
-    const area1 = Math.PI * Math.pow(this.size * this.scale, 2);
-    const area2 = Math.PI * Math.pow(other.size * other.scale, 2);
-    const newArea = area1 + area2;
-    const newRadius = Math.sqrt(newArea / Math.PI);
-    
-    // Position pondérée
-    const totalMass = area1 + area2;
-    this.x = (this.x * area1 + other.x * area2) / totalMass;
-    this.y = (this.y * area1 + other.y * area2) / totalMass;
-    
-    // Nouvelle taille
-    this.size = newRadius;
-    this.scale = 1;
-    this.targetScale = 1;
-    
-    // Combiner les vitesses
-    this.vx = (this.vx * area1 + other.vx * area2) / totalMass;
-    this.vy = (this.vy * area1 + other.vy * area2) / totalMass;
+    // Cette méthode n'est plus utilisée directement
+    // Utiliser startFusion() et completeFusion() à la place
   }
   
   getPath() {
@@ -311,12 +309,26 @@ export default function MatisseWallpaper() {
   const { width: docW, height: docH } = usePageSize();
   const animationRef = useRef();
   const lastTimeRef = useRef(0);
+  const coverageCheckRef = useRef(0);
   
   const rnd = useMemo(() => {
     const seed = typeof crypto !== "undefined" && crypto.getRandomValues ? 
       new Uint32Array(1)[0] : Date.now();
     return mulberry32(seed);
   }, []);
+  
+  // Calculer la couverture des cellules
+  const calculateCoverage = (cellList, width, height) => {
+    const totalPageArea = width * height;
+    let cellsArea = 0;
+    
+    cellList.forEach(cell => {
+      const radius = cell.size * cell.scale;
+      cellsArea += Math.PI * radius * radius;
+    });
+    
+    return cellsArea / totalPageArea;
+  };
   
   // Initialisation avec distribution homogène
   useEffect(() => {
@@ -333,6 +345,8 @@ export default function MatisseWallpaper() {
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols && newCells.length < CONFIG.initialCount; col++) {
         const color = colors[newCells.length % colors.length];
+        const sizeRange = CONFIG.sizes[color];
+        const size = sizeRange.min + rnd() * (sizeRange.max - sizeRange.min);
         const x = (col + 0.5) * cellWidth + (rnd() - 0.5) * cellWidth * 0.3;
         const y = (row + 0.5) * cellHeight + (rnd() - 0.5) * cellHeight * 0.3;
         
@@ -340,7 +354,7 @@ export default function MatisseWallpaper() {
           x: Math.max(100, Math.min(docW - 100, x)),
           y: Math.max(100, Math.min(docH - 100, y)),
           color,
-          size: CONFIG.sizes[color],
+          size,
           rnd,
           id: `cell_${Date.now()}_${newCells.length}`,
           bounds,
@@ -370,29 +384,69 @@ export default function MatisseWallpaper() {
           // Retirer les cellules mortes
           newCells = newCells.filter(cell => !cell.isDead);
           
-          // Fusion des cellules de même couleur
+          // Fusion organique des cellules de même couleur
           const toRemove = new Set();
           for (let i = 0; i < newCells.length; i++) {
             if (toRemove.has(i)) continue;
             for (let j = i + 1; j < newCells.length; j++) {
               if (toRemove.has(j)) continue;
               if (newCells[i].canFuseWith(newCells[j])) {
-                newCells[i].fuseWith(newCells[j]);
+                newCells[i].startFusion(newCells[j]);
                 toRemove.add(j);
               }
             }
           }
           newCells = newCells.filter((_, idx) => !toRemove.has(idx));
           
-          // Spawn occasionnel depuis les bords
-          if (newCells.length < CONFIG.maxCells && Math.random() < 0.005) {
+          // Vérifier la couverture toutes les 2 secondes
+          coverageCheckRef.current += deltaTime;
+          if (coverageCheckRef.current >= CONFIG.coverage.checkInterval) {
+            coverageCheckRef.current = 0;
+            const coverage = calculateCoverage(newCells, docW, docH);
+            
+            // Si couverture trop faible, spawn plus fréquent
+            if (coverage < CONFIG.coverage.min && newCells.length < CONFIG.maxCells) {
+              const colors = ['olive', 'terra', 'sable'];
+              const color = colors[Math.floor(rnd() * colors.length)];
+              const sizeRange = CONFIG.sizes[color];
+              const size = sizeRange.min + rnd() * (sizeRange.max - sizeRange.min);
+              
+              newCells.push(new Cell({
+                x: 0, y: 0,
+                color,
+                size,
+                rnd,
+                id: `cell_${Date.now()}_${Math.random()}`,
+                bounds,
+                fromEdge: true
+              }));
+            }
+            // Si couverture trop élevée, réduire les spawns ou laisser mourir
+            else if (coverage > CONFIG.coverage.max && newCells.length > CONFIG.minCells) {
+              // Les cellules en bordure meurent plus vite
+              newCells.forEach(cell => {
+                if (cell.x < 100 || cell.x > docW - 100 || 
+                    cell.y < 100 || cell.y > docH - 100) {
+                  cell.opacity *= 0.98;
+                }
+              });
+            }
+          }
+          
+          // Spawn occasionnel depuis les bords (ajusté selon la couverture)
+          const coverage = calculateCoverage(newCells, docW, docH);
+          const spawnChance = coverage > CONFIG.coverage.target ? 0.002 : 0.008;
+          
+          if (newCells.length < CONFIG.maxCells && Math.random() < spawnChance) {
             const colors = ['olive', 'terra', 'sable'];
             const color = colors[Math.floor(rnd() * colors.length)];
+            const sizeRange = CONFIG.sizes[color];
+            const size = sizeRange.min + rnd() * (sizeRange.max - sizeRange.min);
             
             newCells.push(new Cell({
               x: 0, y: 0,
               color,
-              size: CONFIG.sizes[color],
+              size,
               rnd,
               id: `cell_${Date.now()}_${Math.random()}`,
               bounds,
