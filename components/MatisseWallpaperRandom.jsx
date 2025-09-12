@@ -12,9 +12,9 @@ const CONFIG = {
 
   // Tailles sous forme de plages {min, max}
   sizes: {
-    olive: { min: 130, max: 200 },
-    terra: { min: 130, max: 200 },
-    sable: { min: 100, max: 135 },
+    olive: { min: 70, max: 150 },
+    terra: { min: 70, max: 150 },
+    sable: { min: 50, max: 135 },
   },
 
   // Nombre de cellules
@@ -25,20 +25,20 @@ const CONFIG = {
   // Physique
   physics: {
     baseSpeed: 15,           // Vitesse de déplacement
-    rotationSpeed: 0.2,      // Vitesse de rotation nominale
-    rotationVariability: 0.6,// Variabilité supplémentaire de rotation
+    rotationSpeed: 0.1,      // Vitesse de rotation nominale
+    rotationVariability: 0.3,// Variabilité supplémentaire de rotation
     friction: 0.94,          // Friction pour l'inertie
-    repulsionForce: 30,     // Force de répulsion entre couleurs différentes
+    repulsionForce: 40,     // Force de répulsion entre couleurs différentes
     fusionDistance: 30,      // Distance pour fusionner (utilisée qualitativement)
   },
 
   // Animation
   animation: {
     fps: 30,                 // 30 FPS pour la fluidité
-    morphSpeed: 0.05,        // Vitesse de déformation
+    morphSpeed: 0.1,        // Vitesse de déformation
     scaleSpeed: 0.2,       // Vitesse de dilatation/compression
     scaleRange: [0.5, 1.6],  // Min/max de scale
-    pointCount: 10,          // Nombre de points de la forme
+    pointCount: 8,          // Nombre de points de la forme
     morphIntensity: 0.6,     // Amplitude d’offset angulaire initial et cible
   },
 
@@ -172,7 +172,7 @@ class Cell {
         const minDist = this.size * this.scale + other.size * other.scale;
 
         if (dist < minDist * 1.5 && dist > 0) {
-          const force = CONFIG.physics.repulsionForce * (1 - dist / (minDist * 1.1));
+          const force = CONFIG.physics.repulsionForce * (1 - dist / (minDist * 1.3));
           this.vx += (dx / dist) * force * dt;
           this.vy += (dy / dist) * force * dt;
         }
