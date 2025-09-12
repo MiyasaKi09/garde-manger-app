@@ -28,7 +28,7 @@ const CONFIG = {
     rotationSpeed: 0.6,      // Vitesse de rotation nominale
     rotationVariability: 0.3,// Variabilité supplémentaire de rotation
     friction: 0.94,          // Friction pour l'inertie
-    repulsionForce: 40,     // Force de répulsion entre couleurs différentes
+    repulsionForce: 20,     // Force de répulsion entre couleurs différentes
     fusionDistance: 30,      // Distance pour fusionner (utilisée qualitativement)
   },
 
