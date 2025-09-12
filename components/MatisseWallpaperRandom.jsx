@@ -12,20 +12,20 @@ const CONFIG = {
 
   // Tailles sous forme de plages {min, max}
   sizes: {
-    olive: { min: 90, max: 120 },
-    terra: { min: 75, max: 100 },
+    olive: { min: 130, max: 200 },
+    terra: { min: 130, max: 200 },
     sable: { min: 100, max: 135 },
   },
 
   // Nombre de cellules
   initialCount: 12,
   maxCells: 20,
-  minCells: 6,
+  minCells: 10,
 
   // Physique
   physics: {
     baseSpeed: 15,           // Vitesse de déplacement
-    rotationSpeed: 0.4,      // Vitesse de rotation nominale
+    rotationSpeed: 0.2,      // Vitesse de rotation nominale
     rotationVariability: 2.0,// Variabilité supplémentaire de rotation
     friction: 0.94,          // Friction pour l'inertie
     repulsionForce: 150,     // Force de répulsion entre couleurs différentes
@@ -35,18 +35,18 @@ const CONFIG = {
   // Animation
   animation: {
     fps: 30,                 // 30 FPS pour la fluidité
-    morphSpeed: 0.01,        // Vitesse de déformation
-    scaleSpeed: 0.002,       // Vitesse de dilatation/compression
-    scaleRange: [0.8, 1.3],  // Min/max de scale
+    morphSpeed: 0.05,        // Vitesse de déformation
+    scaleSpeed: 0.2,       // Vitesse de dilatation/compression
+    scaleRange: [0.5, 1.6],  // Min/max de scale
     pointCount: 10,          // Nombre de points de la forme
     morphIntensity: 0.6,     // Amplitude d’offset angulaire initial et cible
   },
 
   // Couverture (aire totale des cellules / aire de la page)
   coverage: {
-    min: 0.12,
-    max: 0.35,
-    target: 0.25,
+    min: 0.3,
+    max: 0.6,
+    target: 0.45,
     checkInterval: 2000, // ms
   },
 };
