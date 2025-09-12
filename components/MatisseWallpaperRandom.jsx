@@ -24,8 +24,8 @@ const CONFIG = {
 
   // Physique
   physics: {
-    baseSpeed: 2,           // Vitesse de déplacement
-    rotationSpeed: 0.6,      // Vitesse de rotation nominale
+    baseSpeed: 1,           // Vitesse de déplacement
+    rotationSpeed: 0.4,      // Vitesse de rotation nominale
     rotationVariability: 0.3,// Variabilité supplémentaire de rotation
     friction: 0.94,          // Friction pour l'inertie
     repulsionForce: 20,     // Force de répulsion entre couleurs différentes
@@ -35,7 +35,7 @@ const CONFIG = {
   // Animation
   animation: {
     fps: 30,                 // 30 FPS pour la fluidité
-    morphSpeed: 0.1,        // Vitesse de déformation
+    morphSpeed: 0.3,        // Vitesse de déformation
     scaleSpeed: 0.2,       // Vitesse de dilatation/compression
     scaleRange: [0.5, 1.6],  // Min/max de scale
     pointCount: 8,          // Nombre de points de la forme
