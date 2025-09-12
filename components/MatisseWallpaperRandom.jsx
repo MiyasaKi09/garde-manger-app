@@ -174,8 +174,9 @@ class MorphingBlob {
   }
   
   update(deltaTime, allBlobs) {
-    const { deformationSpeed, movementSpeed, scaleSpeed, minScale, maxScale } = CONFIG.life;
+    const { deformationSpeed, movementSpeed, scaleSpeed, minScale, maxScale, pulseAmplitude } = CONFIG.life;
     this.time += deltaTime * 0.0008;
+    this.pulsePhase += deltaTime * 0.001 * this.pulseSpeed; // Pulsation à vitesse variable
     
     // Vérifier si hors limites pour mourir
     if (this.isOutOfBounds()) {
@@ -192,23 +193,26 @@ class MorphingBlob {
     // Rotation continue
     this.rotation += this.rotationSpeed * deltaTime * 0.001;
     
-    // Mouvement Brownien aléatoire
-    this.velocity.x += (this.rnd() - 0.5) * movementSpeed * 0.1;
-    this.velocity.y += (this.rnd() - 0.5) * movementSpeed * 0.1;
+    // Mouvement Brownien aléatoire PLUS FORT
+    this.velocity.x += (this.rnd() - 0.5) * movementSpeed * 0.3;
+    this.velocity.y += (this.rnd() - 0.5) * movementSpeed * 0.3;
     
-    // Friction pour éviter les vitesses excessives
-    this.velocity.x *= 0.98;
-    this.velocity.y *= 0.98;
+    // Friction réduite pour plus de mouvement
+    this.velocity.x *= 0.95;
+    this.velocity.y *= 0.95;
     
     // Appliquer le mouvement
     this.cx += this.velocity.x;
     this.cy += this.velocity.y;
     
-    // Dilatation/compression avec pulsation
-    const pulsation = Math.sin(this.time * 2) * 0.1;
+    // Dilatation/compression avec pulsation à vitesse variable
+    const pulsation = Math.sin(this.pulsePhase) * pulseAmplitude;
     this.targetScale = Math.max(minScale, Math.min(maxScale, 
-      this.targetScale + (this.rnd() - 0.5) * 0.02 + pulsation));
-    this.scale += (this.targetScale - this.scale) * scaleSpeed;
+      this.targetScale + (this.rnd() - 0.5) * 0.02));
+    
+    // Appliquer la pulsation au scale actuel
+    const pulsedScale = this.targetScale * (1 + pulsation);
+    this.scale += (pulsedScale - this.scale) * scaleSpeed;
     
     // Morphing de la forme
     for (let i = 0; i < this.shapeParams.length; i++) {
@@ -225,10 +229,16 @@ class MorphingBlob {
       this.generateNewTargets();
     }
     
-    // Changement de direction occasionnel
-    if (Math.random() < 0.01) {
-      this.velocity.x = (this.rnd() - 0.5) * movementSpeed * 2;
-      this.velocity.y = (this.rnd() - 0.5) * movementSpeed * 2;
+    // Changement de direction plus fréquent et plus fort
+    if (Math.random() < 0.02) {
+      this.velocity.x = (this.rnd() - 0.5) * movementSpeed * 3;
+      this.velocity.y = (this.rnd() - 0.5) * movementSpeed * 3;
+    }
+    
+    // Changement occasionnel de vitesse de pulsation
+    if (Math.random() < 0.002) {
+      this.pulseSpeed = CONFIG.life.pulseSpeedMin + 
+                       this.rnd() * (CONFIG.life.pulseSpeedMax - CONFIG.life.pulseSpeedMin);
     }
   }
   
