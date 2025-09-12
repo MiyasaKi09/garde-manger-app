@@ -484,18 +484,25 @@ export default function MatisseWallpaperRandom() {
           // Retirer les blobs morts
           newBlobs = newBlobs.filter(blob => !blob.isDead);
           
-          // Fusion (moins fréquente)
-          if (Math.random() < CONFIG.life.fusionProbability) {
-            for (let i = newBlobs.length - 1; i >= 0; i--) {
-              for (let j = i - 1; j >= 0; j--) {
-                if (newBlobs[i] && newBlobs[j] && newBlobs[i].canFuseWith(newBlobs[j])) {
-                  newBlobs[i].fuseWith(newBlobs[j]);
-                  newBlobs.splice(j, 1);
-                  i--;
-                  break;
-                }
+          // Fusion - vraie fusion en une seule cellule
+          const toRemove = new Set();
+          for (let i = 0; i < newBlobs.length; i++) {
+            if (toRemove.has(i)) continue;
+            
+            for (let j = i + 1; j < newBlobs.length; j++) {
+              if (toRemove.has(j)) continue;
+              
+              if (newBlobs[i].canFuseWith(newBlobs[j])) {
+                // Fusionner j dans i
+                newBlobs[i].fuseWith(newBlobs[j]);
+                toRemove.add(j); // Marquer j pour suppression
               }
             }
+          }
+          
+          // Supprimer les blobs fusionnés
+          if (toRemove.size > 0) {
+            newBlobs = newBlobs.filter((_, index) => !toRemove.has(index));
           }
           
           // Division (plus fréquente pour les grosses cellules)
