@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useMemo, useState } from "react";
 
-/* ================= REGLAGES ================= */
+/* ================= REGLAGES OPTIMISES ================= */
 const CONFIG = {
   tileWidth: 1000,
   colors: {
@@ -10,7 +10,8 @@ const CONFIG = {
     terra: "var(--terra-500, #c08a5a)",
     sable: "var(--sable-300, #e2c98f)",
   },
-  counts: { olive: 6, terra: 5, sable: 6 },
+  // RÉDUIT le nombre de blobs pour de meilleures performances
+  counts: { olive: 4, terra: 3, sable: 4 },
   sizes: {
     olive: { rx: 160, ry: 220 },
     terra: { rx: 130, ry: 180 },
@@ -23,22 +24,22 @@ const CONFIG = {
     sideInset: 80,
   },
   shape: {
-    points: 36, // Réduit pour des morphings plus fluides
-    noiseAmp: 0.25, // Augmenté pour plus de déformation
+    points: 24, // RÉDUIT pour de meilleures performances
+    noiseAmp: 0.2,
     harmonicMin: 2,
-    harmonicMax: 6,
+    harmonicMax: 4,
     tension: 0.45,
     scaleJitter: 0.15,
     rotate: true,
   },
-  // NOUVEAU: Morphing dynamique
+  // Animation plus lente et moins intensive
   morphing: {
-    updateInterval: 150, // Mise à jour toutes les 150ms
-    deformationSpeed: 0.02, // Vitesse de déformation
-    fusionDistance: 180, // Distance pour déclencher fusion
-    maxDeformation: 0.4, // Déformation maximale
-    splitProbability: 0.003, // Probabilité de division par frame
-    fusionProbability: 0.008, // Probabilité de fusion par frame
+    updateInterval: 300, // PLUS LENT : mise à jour toutes les 300ms
+    deformationSpeed: 0.01, // PLUS LENT
+    fusionDistance: 200,
+    maxDeformation: 0.3, // RÉDUIT
+    splitProbability: 0.001, // RÉDUIT
+    fusionProbability: 0.002, // RÉDUIT
   }
 };
 
@@ -54,7 +55,7 @@ function mulberry32(seed) {
 
 const randBetween = (rnd, a, b) => a + rnd() * (b - a);
 
-/* ========== Forme dynamique avec morphing ========== */
+/* ========== Forme statique optimisée ========== */
 function toCubicPath(points, tension = 0.45) {
   const n = points.length;
   let d = `M ${points[0][0]},${points[0][1]}`;
@@ -76,7 +77,8 @@ function toCubicPath(points, tension = 0.45) {
   return d + " Z";
 }
 
-class MorphingBlob {
+// Version simplifiée du blob avec moins d'animations
+class OptimizedBlob {
   constructor({ cx, cy, rx, ry, colorKey, rnd, id }) {
     this.id = id;
     this.cx = cx;
@@ -86,152 +88,61 @@ class MorphingBlob {
     this.colorKey = colorKey;
     this.rnd = rnd;
     
-    // États de morphing
-    this.time = 0;
-    this.deformParams = [];
-    this.targetDeformParams = [];
-    this.velocity = { x: 0, y: 0 };
-    this.scale = 1;
-    this.targetScale = 1;
-    this.opacity = 0.8;
-    this.targetOpacity = 0.8;
-    
-    // Initialiser les paramètres de déformation
-    this.initDeformParams();
-    this.generateTargetParams();
+    // États simplifiés
+    this.time = rnd() * 100; // Décalage initial
+    this.basePoints = this.generateBasePoints();
+    this.scale = 0.9 + rnd() * 0.2;
+    this.opacity = 0.7 + rnd() * 0.2;
+    this.rotationSpeed = (rnd() - 0.5) * 0.002; // TRÈS lent
   }
   
-  initDeformParams() {
+  generateBasePoints() {
     const { points } = CONFIG.shape;
-    for (let i = 0; i < points; i++) {
-      this.deformParams.push({
-        radiusMultiplier: 1,
-        angleOffset: 0,
-        noise: 0
-      });
-      this.targetDeformParams.push({
-        radiusMultiplier: 1,
-        angleOffset: 0,
-        noise: 0
-      });
-    }
-  }
-  
-  generateTargetParams() {
-    const { maxDeformation } = CONFIG.morphing;
-    for (let i = 0; i < this.deformParams.length; i++) {
-      this.targetDeformParams[i] = {
-        radiusMultiplier: 0.7 + this.rnd() * 0.6,
-        angleOffset: (this.rnd() - 0.5) * maxDeformation,
-        noise: (this.rnd() - 0.5) * maxDeformation
-      };
-    }
-    this.targetScale = 0.8 + this.rnd() * 0.4;
-    this.targetOpacity = 0.6 + this.rnd() * 0.3;
-  }
-  
-  update() {
-    const { deformationSpeed } = CONFIG.morphing;
-    this.time += 0.016; // ~60fps
-    
-    // Interpolation vers les cibles
-    for (let i = 0; i < this.deformParams.length; i++) {
-      const current = this.deformParams[i];
-      const target = this.targetDeformParams[i];
-      
-      current.radiusMultiplier += (target.radiusMultiplier - current.radiusMultiplier) * deformationSpeed;
-      current.angleOffset += (target.angleOffset - current.angleOffset) * deformationSpeed;
-      current.noise += (target.noise - current.noise) * deformationSpeed;
-    }
-    
-    this.scale += (this.targetScale - this.scale) * deformationSpeed;
-    this.opacity += (this.targetOpacity - this.opacity) * deformationSpeed;
-    
-    // Mouvement brownien
-    this.velocity.x += (this.rnd() - 0.5) * 0.5;
-    this.velocity.y += (this.rnd() - 0.5) * 0.5;
-    this.velocity.x *= 0.98; // Friction
-    this.velocity.y *= 0.98;
-    
-    this.cx += this.velocity.x;
-    this.cy += this.velocity.y;
-    
-    // Générer de nouvelles cibles périodiquement
-    if (this.time % 3 < 0.016) { // Toutes les 3 secondes environ
-      this.generateTargetParams();
-    }
-  }
-  
-  getPath() {
-    const { points, tension } = CONFIG.shape;
     const pts = [];
     
     for (let i = 0; i < points; i++) {
       const angle = (i / points) * Math.PI * 2;
-      const params = this.deformParams[i];
+      const radiusVar = 0.8 + this.rnd() * 0.4;
+      const radius = ((this.baseRx + this.baseRy) * 0.5) * radiusVar;
       
-      // Rayon de base avec déformation
-      const baseRadius = (this.baseRx + this.baseRy) * 0.5;
-      const radius = baseRadius * this.scale * params.radiusMultiplier;
-      
-      // Position avec bruit et décalage d'angle
-      const adjustedAngle = angle + params.angleOffset + Math.sin(this.time * 2 + i * 0.5) * 0.1;
-      const noiseOffset = Math.sin(this.time * 3 + i * 0.3) * params.noise * 20;
-      
-      const x = this.cx + Math.cos(adjustedAngle) * (radius + noiseOffset);
-      const y = this.cy + Math.sin(adjustedAngle) * (radius + noiseOffset);
+      const x = this.cx + Math.cos(angle) * radius;
+      const y = this.cy + Math.sin(angle) * radius;
       
       pts.push([x, y]);
     }
     
-    return toCubicPath(pts, tension);
+    return pts;
+  }
+  
+  update() {
+    this.time += 0.016;
+  }
+  
+  getPath() {
+    // Animation très subtile basée sur le temps
+    const animatedPoints = this.basePoints.map((point, i) => {
+      const wave = Math.sin(this.time * 0.5 + i * 0.3) * 3; // Mouvement très subtil
+      const rotation = this.time * this.rotationSpeed;
+      
+      // Rotation autour du centre
+      const dx = point[0] - this.cx;
+      const dy = point[1] - this.cy;
+      const cos = Math.cos(rotation);
+      const sin = Math.sin(rotation);
+      
+      return [
+        this.cx + dx * cos - dy * sin + wave,
+        this.cy + dx * sin + dy * cos + wave * 0.5
+      ];
+    });
+    
+    return toCubicPath(animatedPoints, CONFIG.shape.tension);
   }
   
   distanceTo(other) {
     const dx = this.cx - other.cx;
     const dy = this.cy - other.cy;
     return Math.sqrt(dx * dx + dy * dy);
-  }
-  
-  canFuseWith(other) {
-    return this.colorKey === other.colorKey && 
-           this.distanceTo(other) < CONFIG.morphing.fusionDistance;
-  }
-  
-  fuseWith(other) {
-    // Fusionner les positions (moyenne pondérée)
-    const totalScale = this.scale + other.scale;
-    this.cx = (this.cx * this.scale + other.cx * other.scale) / totalScale;
-    this.cy = (this.cy * this.scale + other.cy * other.scale) / totalScale;
-    this.scale = Math.min(totalScale * 0.7, 2); // Limite la taille
-    this.targetScale = this.scale;
-    
-    // Fusionner les paramètres de déformation
-    for (let i = 0; i < this.deformParams.length; i++) {
-      this.deformParams[i].radiusMultiplier = 
-        (this.deformParams[i].radiusMultiplier + other.deformParams[i].radiusMultiplier) * 0.6;
-    }
-    
-    this.generateTargetParams();
-  }
-  
-  split() {
-    const newBlob = new MorphingBlob({
-      cx: this.cx + (this.rnd() - 0.5) * 100,
-      cy: this.cy + (this.rnd() - 0.5) * 100,
-      rx: this.baseRx * 0.7,
-      ry: this.baseRy * 0.7,
-      colorKey: this.colorKey,
-      rnd: this.rnd,
-      id: this.id + '_split_' + Date.now()
-    });
-    
-    this.scale *= 0.8;
-    this.targetScale = this.scale;
-    newBlob.scale = 0.6;
-    newBlob.targetScale = 0.6;
-    
-    return newBlob;
   }
 }
 
@@ -257,11 +168,11 @@ function createInitialBlobs(rnd, W, H) {
           const dx = cx - blob.cx;
           const dy = cy - blob.cy;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          return dist < (rx + ry + blob.baseRx + blob.baseRy) * 0.3;
+          return dist < (rx + ry + blob.baseRx + blob.baseRy) * 0.4;
         });
         
         if (!tooClose) {
-          allBlobs.push(new MorphingBlob({
+          allBlobs.push(new OptimizedBlob({
             cx, cy, rx, ry, colorKey, rnd, id: blobId++
           }));
           placed = true;
@@ -277,6 +188,7 @@ function createInitialBlobs(rnd, W, H) {
 /* ================= Hook de dimension écran ================= */
 function useWindowSize() {
   const [size, setSize] = useState({ width: 1200, height: 800 });
+  
   useEffect(() => {
     function updateSize() {
       setSize({ 
@@ -284,14 +196,16 @@ function useWindowSize() {
         height: Math.max(window.innerHeight, document.documentElement.scrollHeight)
       });
     }
+    
     updateSize();
     window.addEventListener('resize', updateSize);
     return () => window.removeEventListener('resize', updateSize);
   }, []);
+  
   return size;
 }
 
-/* ================= COMPOSANT PRINCIPAL ================= */
+/* ================= COMPOSANT PRINCIPAL OPTIMISÉ ================= */
 export default function MatisseWallpaperRandom() {
   const [blobs, setBlobs] = useState([]);
   const { width: docW, height: docH } = useWindowSize();
@@ -306,7 +220,7 @@ export default function MatisseWallpaperRandom() {
     return mulberry32(Date.now() & 0xffffffff);
   }, []);
   
-  // Créer les blobs initiaux
+  // Créer les blobs initiaux (une seule fois)
   useEffect(() => {
     const W = Math.max(docW, CONFIG.tileWidth);
     const H = docH;
@@ -314,51 +228,31 @@ export default function MatisseWallpaperRandom() {
     setBlobs(initialBlobs);
   }, [rnd, docW, docH]);
   
-  // Animation loop
+  // Animation loop OPTIMISÉE
   useEffect(() => {
-    const interval = setInterval(() => {
-      setBlobs(currentBlobs => {
-        const newBlobs = [...currentBlobs];
-        const { splitProbability, fusionProbability } = CONFIG.morphing;
-        
-        // Mettre à jour tous les blobs
-        newBlobs.forEach(blob => blob.update());
-        
-        // Gestion des fusions
-        for (let i = newBlobs.length - 1; i >= 0; i--) {
-          for (let j = i - 1; j >= 0; j--) {
-            if (newBlobs[i].canFuseWith(newBlobs[j]) && rnd() < fusionProbability) {
-              newBlobs[i].fuseWith(newBlobs[j]);
-              newBlobs.splice(j, 1);
-              i--; // Ajuster l'index
-              break;
-            }
-          }
-        }
-        
-        // Gestion des divisions
-        const blobsToAdd = [];
-        newBlobs.forEach(blob => {
-          if (blob.scale > 1.2 && rnd() < splitProbability) {
-            const splitBlob = blob.split();
-            blobsToAdd.push(splitBlob);
-          }
-        });
-        
-        // Limiter le nombre total de blobs
-        const allBlobs = [...newBlobs, ...blobsToAdd];
-        if (allBlobs.length > 25) {
-          // Supprimer les plus petits blobs
-          allBlobs.sort((a, b) => a.scale - b.scale);
-          return allBlobs.slice(allBlobs.length - 25);
-        }
-        
-        return allBlobs;
-      });
-    }, CONFIG.morphing.updateInterval);
+    let animationId;
     
-    return () => clearInterval(interval);
-  }, [rnd]);
+    const animate = () => {
+      setBlobs(currentBlobs => {
+        // Mise à jour simple et rapide
+        currentBlobs.forEach(blob => blob.update());
+        return [...currentBlobs]; // Force re-render
+      });
+      
+      // Utilise setTimeout au lieu de setInterval pour de meilleures performances
+      setTimeout(() => {
+        animationId = requestAnimationFrame(animate);
+      }, CONFIG.morphing.updateInterval);
+    };
+    
+    animationId = requestAnimationFrame(animate);
+    
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, []);
   
   const { W, H } = useMemo(() => ({
     W: Math.max(docW, CONFIG.tileWidth),
@@ -367,7 +261,7 @@ export default function MatisseWallpaperRandom() {
   
   return (
     <div
-      aria-hidden
+      aria-hidden="true"
       style={{
         position: "fixed",
         inset: 0,
@@ -383,33 +277,36 @@ export default function MatisseWallpaperRandom() {
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ background: CONFIG.colors.bg }}
+        style={{ 
+          background: CONFIG.colors.bg,
+          // Optimisation du rendu
+          shapeRendering: "geometricPrecision"
+        }}
       >
         <rect x="0" y="0" width={W} height={H} fill={CONFIG.colors.bg} />
         
-        {/* Defs pour les filtres de fusion */}
+        {/* Filtres simplifiés pour de meilleures performances */}
         <defs>
-          <filter id="gooey" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+          <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
           </filter>
         </defs>
         
-        {/* Rendu des blobs avec tension de surface */}
-        <g filter="url(#gooey)">
-          {blobs.map((blob) => (
-            <path
-              key={blob.id}
-              d={blob.getPath()}
-              fill={CONFIG.colors[blob.colorKey]}
-              opacity={blob.opacity}
-              style={{
-                transition: 'opacity 0.5s ease'
-              }}
-            />
-          ))}
-        </g>
+        {/* Rendu des blobs optimisé */}
+        {blobs.map((blob) => (
+          <path
+            key={blob.id}
+            d={blob.getPath()}
+            fill={CONFIG.colors[blob.colorKey]}
+            opacity={blob.opacity}
+            filter="url(#softBlur)"
+            style={{
+              // CSS optimisé pour les performances
+              willChange: 'auto',
+              transform: 'translateZ(0)', // Force GPU acceleration
+            }}
+          />
+        ))}
       </svg>
     </div>
   );
