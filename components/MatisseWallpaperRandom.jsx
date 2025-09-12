@@ -245,10 +245,10 @@ class MorphingBlob {
     this.cx += this.velocity.x;
     this.cy += this.velocity.y;
     
-    // Pulsation
-    const pulsation = Math.sin(this.pulsePhase) * pulseAmplitude;
+    // Pulsation QUASI INVISIBLE
+    const pulsation = Math.sin(this.pulsePhase) * pulseAmplitude; // Amplitude 0.02 = quasi invisible
     const pulsedScale = this.targetScale * (1 + pulsation);
-    this.scale += (pulsedScale - this.scale) * scaleSpeed;
+    this.scale += (pulsedScale - this.scale) * scaleSpeed * 0.1; // Encore plus lent
     this.scale = Math.max(minScale, Math.min(maxScale, this.scale));
     
     // Morphing de forme
