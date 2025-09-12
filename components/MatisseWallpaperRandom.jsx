@@ -144,7 +144,7 @@ class MorphingBlob {
   spawnFromEdge() {
     const { boundaryMargin } = CONFIG.life;
     const side = Math.floor(this.rnd() * 4);
-    const spawnDistance = 100; // Distance depuis le bord visible
+    const spawnDistance = 80; // Réduit pour les petites tailles
     
     switch(side) {
       case 0: // Haut
