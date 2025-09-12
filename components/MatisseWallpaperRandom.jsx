@@ -25,8 +25,8 @@ const CONFIG = {
   life: {
     updateInterval: 50, // 20 FPS
     deformationSpeed: 0.008,
-    rotationSpeed: 0.1,
-    movementSpeed: 2.0, // Vitesse de base du mouvement
+    rotationSpeed: 0.2,
+    movementSpeed: 3.0, // Vitesse de base du mouvement
     
     // Vie cellulaire
     fusionDistance: 180,
@@ -37,11 +37,11 @@ const CONFIG = {
     // Dilatation/compression
     minScale: 0.4,
     maxScale: 2.0,
-    scaleSpeed: 0.02,
+    scaleSpeed: 0.002,
     
     // Pulsation variable
-    pulseSpeedMin: 0.2,
-    pulseSpeedMax: 2.0,
+    pulseSpeedMin: 0.1,
+    pulseSpeedMax: 1.0,
     pulseAmplitude: 0.12,
     
     // Spawn et disparition
