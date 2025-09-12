@@ -384,9 +384,9 @@ function createInitialBlobs(rnd, W, H) {
     const { rx, ry } = CONFIG.sizes[colorKey];
     
     for (let i = 0; i < count; i++) {
-      // Répartir sur toute la page, y compris hors écran
-      const cx = randBetween(rnd, -200, W + 200);
-      const cy = randBetween(rnd, -200, H + 200);
+      // Placer les blobs initiaux DANS l'écran, pas en dehors
+      const cx = randBetween(rnd, 100, W - 100);
+      const cy = randBetween(rnd, 100, H - 100);
       
       allBlobs.push(new MorphingBlob({
         cx, cy, rx, ry, colorKey, rnd,
