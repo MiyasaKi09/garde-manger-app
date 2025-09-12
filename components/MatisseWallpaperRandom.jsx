@@ -28,7 +28,7 @@ const CONFIG = {
     rotationSpeed: 0.2,      // Vitesse de rotation nominale
     rotationVariability: 0.6,// Variabilité supplémentaire de rotation
     friction: 0.94,          // Friction pour l'inertie
-    repulsionForce: 150,     // Force de répulsion entre couleurs différentes
+    repulsionForce: 30,     // Force de répulsion entre couleurs différentes
     fusionDistance: 30,      // Distance pour fusionner (utilisée qualitativement)
   },
 
@@ -172,7 +172,7 @@ class Cell {
         const minDist = this.size * this.scale + other.size * other.scale;
 
         if (dist < minDist * 1.5 && dist > 0) {
-          const force = CONFIG.physics.repulsionForce * (1 - dist / (minDist * 1.5));
+          const force = CONFIG.physics.repulsionForce * (1 - dist / (minDist * 1.1));
           this.vx += (dx / dist) * force * dt;
           this.vy += (dy / dist) * force * dt;
         }
