@@ -24,7 +24,7 @@ const CONFIG = {
 
   // Physique
   physics: {
-    baseSpeed: 15,           // Vitesse de déplacement
+    baseSpeed: 2,           // Vitesse de déplacement
     rotationSpeed: 0.6,      // Vitesse de rotation nominale
     rotationVariability: 0.3,// Variabilité supplémentaire de rotation
     friction: 0.94,          // Friction pour l'inertie
