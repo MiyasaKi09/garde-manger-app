@@ -10,39 +10,44 @@ const CONFIG = {
     terra: "var(--terra-500, #c08a5a)",
     sable: "var(--sable-300, #e2c98f)",
   },
-  counts: { olive: 5, terra: 4, sable: 5 }, // Plus de cellules pour la vie
+  counts: { olive: 4, terra: 3, sable: 4 }, // Nombre initial de cellules
   sizes: {
     olive: { rx: 160, ry: 220 },
     terra: { rx: 130, ry: 180 },
     sable: { rx: 200, ry: 260 },
   },
   shape: {
-    points: 6, // Moins de points pour plus de fluidité
+    points: 6, // Peu de points pour des formes lisses
     tension: 0.95, // Tension maximale pour ultra-lissage
-    variability: 0.4, // Plus de variabilité dans les formes
+    variability: 0.4, // Variabilité dans les formes
   },
   // Animation avec vie cellulaire
   life: {
     updateInterval: 50, // 20 FPS
     deformationSpeed: 0.008,
     rotationSpeed: 0.1,
-    movementSpeed: 1.2, // Vitesse de déplacement aléatoire
+    movementSpeed: 2.0, // Vitesse de base du mouvement
     
     // Vie cellulaire
-    fusionDistance: 200, // Distance pour fusionner
-    fusionProbability: 0.15, // Probabilité de fusion
-    splitThreshold: 1.8, // Taille pour division
-    splitProbability: 0.1, // Probabilité de division
+    fusionDistance: 180,
+    fusionProbability: 0.08,
+    splitThreshold: 1.8,
+    splitProbability: 0.05,
     
     // Dilatation/compression
     minScale: 0.4,
     maxScale: 2.0,
-    scaleSpeed: 0.01,
+    scaleSpeed: 0.02,
+    
+    // Pulsation variable
+    pulseSpeedMin: 0.2,
+    pulseSpeedMax: 2.0,
+    pulseAmplitude: 0.12,
     
     // Spawn et disparition
-    spawnRate: 0.002, // Probabilité d'apparition
-    maxBlobs: 25, // Maximum de blobs
-    boundaryMargin: 300, // Marge hors écran pour spawn/despawn
+    spawnRate: 0.003,
+    maxBlobs: 20,
+    boundaryMargin: 400, // Zone hors écran pour spawn/despawn
   }
 };
 
@@ -71,7 +76,6 @@ function toCubicPath(points, tension = 0.95) {
     const p2 = points[(i + 1) % n];
     const p3 = points[(i + 2) % n];
     
-    // Tangentes ultra-lisses
     const d1x = (p2[0] - p0[0]) * tension;
     const d1y = (p2[1] - p0[1]) * tension;
     const d2x = (p3[0] - p1[0]) * tension;
@@ -88,7 +92,7 @@ function toCubicPath(points, tension = 0.95) {
 }
 
 class MorphingBlob {
-  constructor({ cx, cy, rx, ry, colorKey, rnd, id, viewBounds, isNewSpawn = false }) {
+  constructor({ cx, cy, rx, ry, colorKey, rnd, id, viewBounds, startFromEdge = false }) {
     this.id = id;
     this.cx = cx;
     this.cy = cy;
@@ -98,29 +102,38 @@ class MorphingBlob {
     this.rnd = rnd;
     this.viewBounds = viewBounds;
     this.isDead = false;
+    this.age = 0; // Age du blob pour gérer l'apparition/disparition
     
-    // Si nouveau spawn, apparaître hors écran
-    if (isNewSpawn) {
-      this.spawnFromOutside();
+    // Si spawn depuis le bord
+    if (startFromEdge) {
+      this.spawnFromEdge();
+      this.scale = 0.3; // Commence petit
+      this.opacity = 0; // Commence invisible
+    } else {
+      // Blobs initiaux
+      this.scale = 0.7 + rnd() * 0.4;
+      this.opacity = 0.8; // Visible directement
     }
     
-    // Scale variable pour dilatation/compression
-    this.scale = isNewSpawn ? 0.1 : (0.6 + rnd() * 0.8);
     this.targetScale = 0.8 + rnd() * 0.6;
-    this.opacity = isNewSpawn ? 0 : (0.5 + rnd() * 0.4);
     this.targetOpacity = 0.6 + rnd() * 0.3;
+    
+    // Pulsation unique
+    this.pulseSpeed = CONFIG.life.pulseSpeedMin + 
+                      rnd() * (CONFIG.life.pulseSpeedMax - CONFIG.life.pulseSpeedMin);
+    this.pulsePhase = rnd() * Math.PI * 2;
     
     // Rotation
     this.rotation = rnd() * Math.PI * 2;
     this.rotationSpeed = (rnd() - 0.5) * CONFIG.life.rotationSpeed;
     
-    // Mouvement aléatoire Brownien
+    // Vitesse de mouvement
     this.velocity = {
       x: (rnd() - 0.5) * CONFIG.life.movementSpeed,
       y: (rnd() - 0.5) * CONFIG.life.movementSpeed
     };
     
-    // Forme variable
+    // Forme
     this.time = rnd() * Math.PI * 2;
     this.shapeParams = [];
     this.targetShapeParams = [];
@@ -128,26 +141,35 @@ class MorphingBlob {
     this.initVariableShape();
   }
   
-  spawnFromOutside() {
+  spawnFromEdge() {
     const { boundaryMargin } = CONFIG.life;
-    const side = Math.floor(this.rnd() * 4); // 0: haut, 1: droite, 2: bas, 3: gauche
+    const side = Math.floor(this.rnd() * 4);
+    const spawnDistance = 100; // Distance depuis le bord visible
     
     switch(side) {
       case 0: // Haut
-        this.cx = randBetween(this.rnd, 0, this.viewBounds.width);
-        this.cy = -boundaryMargin;
+        this.cx = randBetween(this.rnd, 100, this.viewBounds.width - 100);
+        this.cy = -spawnDistance;
+        this.velocity.y = Math.abs(this.rnd() + 0.5) * CONFIG.life.movementSpeed;
+        this.velocity.x = (this.rnd() - 0.5) * CONFIG.life.movementSpeed * 0.5;
         break;
       case 1: // Droite
-        this.cx = this.viewBounds.width + boundaryMargin;
-        this.cy = randBetween(this.rnd, 0, this.viewBounds.height);
+        this.cx = this.viewBounds.width + spawnDistance;
+        this.cy = randBetween(this.rnd, 100, this.viewBounds.height - 100);
+        this.velocity.x = -Math.abs(this.rnd() + 0.5) * CONFIG.life.movementSpeed;
+        this.velocity.y = (this.rnd() - 0.5) * CONFIG.life.movementSpeed * 0.5;
         break;
       case 2: // Bas
-        this.cx = randBetween(this.rnd, 0, this.viewBounds.width);
-        this.cy = this.viewBounds.height + boundaryMargin;
+        this.cx = randBetween(this.rnd, 100, this.viewBounds.width - 100);
+        this.cy = this.viewBounds.height + spawnDistance;
+        this.velocity.y = -Math.abs(this.rnd() + 0.5) * CONFIG.life.movementSpeed;
+        this.velocity.x = (this.rnd() - 0.5) * CONFIG.life.movementSpeed * 0.5;
         break;
       case 3: // Gauche
-        this.cx = -boundaryMargin;
-        this.cy = randBetween(this.rnd, 0, this.viewBounds.height);
+        this.cx = -spawnDistance;
+        this.cy = randBetween(this.rnd, 100, this.viewBounds.height - 100);
+        this.velocity.x = Math.abs(this.rnd() + 0.5) * CONFIG.life.movementSpeed;
+        this.velocity.y = (this.rnd() - 0.5) * CONFIG.life.movementSpeed * 0.5;
         break;
     }
   }
@@ -155,9 +177,8 @@ class MorphingBlob {
   initVariableShape() {
     const { points, variability } = CONFIG.shape;
     for (let i = 0; i < points; i++) {
-      // Forme plus variable
-      const radiusVar = 0.5 + this.rnd() * 1.0; // Grande variabilité
-      const angleVar = (this.rnd() - 0.5) * variability;
+      const radiusVar = 0.6 + this.rnd() * 0.8;
+      const angleVar = (this.rnd() - 0.5) * variability * 0.5;
       
       this.shapeParams.push({
         radius: radiusVar,
@@ -166,55 +187,71 @@ class MorphingBlob {
       });
       
       this.targetShapeParams.push({
-        radius: 0.5 + this.rnd() * 1.0,
-        angleOffset: (this.rnd() - 0.5) * variability,
+        radius: 0.6 + this.rnd() * 0.8,
+        angleOffset: (this.rnd() - 0.5) * variability * 0.5,
         phase: this.rnd() * Math.PI * 2
       });
     }
   }
   
-  update(deltaTime, allBlobs) {
-    const { deformationSpeed, movementSpeed, scaleSpeed, minScale, maxScale, pulseAmplitude } = CONFIG.life;
-    this.time += deltaTime * 0.0008;
-    this.pulsePhase += deltaTime * 0.001 * this.pulseSpeed; // Pulsation à vitesse variable
+  update(deltaTime) {
+    const { deformationSpeed, movementSpeed, scaleSpeed, minScale, maxScale, pulseAmplitude, boundaryMargin } = CONFIG.life;
     
-    // Vérifier si hors limites pour mourir
-    if (this.isOutOfBounds()) {
-      this.opacity *= 0.95; // Fade out rapide
+    this.age += deltaTime;
+    this.time += deltaTime * 0.0008;
+    this.pulsePhase += deltaTime * 0.001 * this.pulseSpeed;
+    
+    // Apparition progressive (première seconde)
+    if (this.age < 1000) {
+      this.opacity = Math.min(this.targetOpacity, this.opacity + 0.03);
+      this.scale = Math.min(this.targetScale, this.scale + 0.02);
+    }
+    
+    // Vérifier si vraiment hors limites
+    const margin = boundaryMargin;
+    const isOut = (
+      this.cx < -margin ||
+      this.cx > this.viewBounds.width + margin ||
+      this.cy < -margin ||
+      this.cy > this.viewBounds.height + margin
+    );
+    
+    // Disparition progressive si hors limites
+    if (isOut && this.age > 2000) { // Attendre 2 secondes avant de pouvoir mourir
+      this.opacity *= 0.9;
       if (this.opacity < 0.01) {
         this.isDead = true;
         return;
       }
-    } else {
-      // Fade in si dans les limites
-      this.opacity += (this.targetOpacity - this.opacity) * 0.02;
     }
     
-    // Rotation continue
+    // Rotation
     this.rotation += this.rotationSpeed * deltaTime * 0.001;
     
-    // Mouvement Brownien aléatoire PLUS FORT
-    this.velocity.x += (this.rnd() - 0.5) * movementSpeed * 0.3;
-    this.velocity.y += (this.rnd() - 0.5) * movementSpeed * 0.3;
+    // Mouvement Brownien
+    this.velocity.x += (this.rnd() - 0.5) * movementSpeed * 0.15;
+    this.velocity.y += (this.rnd() - 0.5) * movementSpeed * 0.15;
     
-    // Friction réduite pour plus de mouvement
-    this.velocity.x *= 0.95;
-    this.velocity.y *= 0.95;
+    // Friction légère
+    this.velocity.x *= 0.97;
+    this.velocity.y *= 0.97;
+    
+    // Limiter la vitesse max
+    const maxVel = movementSpeed * 3;
+    this.velocity.x = Math.max(-maxVel, Math.min(maxVel, this.velocity.x));
+    this.velocity.y = Math.max(-maxVel, Math.min(maxVel, this.velocity.y));
     
     // Appliquer le mouvement
     this.cx += this.velocity.x;
     this.cy += this.velocity.y;
     
-    // Dilatation/compression avec pulsation à vitesse variable
+    // Pulsation
     const pulsation = Math.sin(this.pulsePhase) * pulseAmplitude;
-    this.targetScale = Math.max(minScale, Math.min(maxScale, 
-      this.targetScale + (this.rnd() - 0.5) * 0.02));
-    
-    // Appliquer la pulsation au scale actuel
     const pulsedScale = this.targetScale * (1 + pulsation);
     this.scale += (pulsedScale - this.scale) * scaleSpeed;
+    this.scale = Math.max(minScale, Math.min(maxScale, this.scale));
     
-    // Morphing de la forme
+    // Morphing de forme
     for (let i = 0; i < this.shapeParams.length; i++) {
       const param = this.shapeParams[i];
       const target = this.targetShapeParams[i];
@@ -224,19 +261,19 @@ class MorphingBlob {
       param.phase += deltaTime * 0.001;
     }
     
-    // Nouvelles cibles occasionnelles
-    if (Math.random() < 0.005) {
+    // Changements occasionnels
+    if (Math.random() < 0.003) {
       this.generateNewTargets();
     }
     
-    // Changement de direction plus fréquent et plus fort
-    if (Math.random() < 0.02) {
-      this.velocity.x = (this.rnd() - 0.5) * movementSpeed * 3;
-      this.velocity.y = (this.rnd() - 0.5) * movementSpeed * 3;
+    if (Math.random() < 0.01) {
+      // Impulsion de mouvement
+      this.velocity.x += (this.rnd() - 0.5) * movementSpeed * 2;
+      this.velocity.y += (this.rnd() - 0.5) * movementSpeed * 2;
     }
     
-    // Changement occasionnel de vitesse de pulsation
-    if (Math.random() < 0.002) {
+    if (Math.random() < 0.001) {
+      // Changer la vitesse de pulsation
       this.pulseSpeed = CONFIG.life.pulseSpeedMin + 
                        this.rnd() * (CONFIG.life.pulseSpeedMax - CONFIG.life.pulseSpeedMin);
     }
@@ -246,24 +283,13 @@ class MorphingBlob {
     const { variability } = CONFIG.shape;
     for (let i = 0; i < this.targetShapeParams.length; i++) {
       this.targetShapeParams[i] = {
-        radius: 0.4 + this.rnd() * 1.2,
-        angleOffset: (this.rnd() - 0.5) * variability,
+        radius: 0.5 + this.rnd() * 1.0,
+        angleOffset: (this.rnd() - 0.5) * variability * 0.5,
         phase: this.targetShapeParams[i].phase
       };
     }
+    this.targetScale = 0.7 + this.rnd() * 0.8;
     this.rotationSpeed = (this.rnd() - 0.5) * CONFIG.life.rotationSpeed;
-  }
-  
-  isOutOfBounds() {
-    const { boundaryMargin } = CONFIG.life;
-    const margin = boundaryMargin + this.baseRx * this.scale;
-    
-    return (
-      this.cx < -margin ||
-      this.cx > this.viewBounds.width + margin ||
-      this.cy < -margin ||
-      this.cy > this.viewBounds.height + margin
-    );
   }
   
   getPath() {
@@ -274,15 +300,12 @@ class MorphingBlob {
       const angle = (i / points) * Math.PI * 2;
       const param = this.shapeParams[i];
       
-      // Ondulation organique complexe
-      const wave1 = Math.sin(param.phase + this.time) * 0.15;
-      const wave2 = Math.cos(param.phase * 2 + this.time * 1.5) * 0.1;
+      const wave1 = Math.sin(param.phase + this.time) * 0.1;
+      const wave2 = Math.cos(param.phase * 2 + this.time * 1.5) * 0.05;
       
-      // Rayon très variable
       const avgRadius = (this.baseRx + this.baseRy) * 0.5;
       const radius = avgRadius * this.scale * param.radius * (1 + wave1 + wave2);
       
-      // Angle avec décalage et rotation
       const adjustedAngle = angle + param.angleOffset + this.rotation;
       
       const x = this.cx + Math.cos(adjustedAngle) * radius;
@@ -302,25 +325,22 @@ class MorphingBlob {
   
   canFuseWith(other) {
     if (this.colorKey !== other.colorKey) return false;
+    if (this.age < 1000 || other.age < 1000) return false; // Pas de fusion au début
     const combinedSize = (this.scale + other.scale) * 0.5;
     return this.distanceTo(other) < CONFIG.life.fusionDistance * combinedSize;
   }
   
   fuseWith(other) {
-    // Fusion pondérée par la taille
     const totalScale = this.scale + other.scale;
     this.cx = (this.cx * this.scale + other.cx * other.scale) / totalScale;
     this.cy = (this.cy * this.scale + other.cy * other.scale) / totalScale;
     
-    // Combiner les vitesses
     this.velocity.x = (this.velocity.x + other.velocity.x) * 0.5;
     this.velocity.y = (this.velocity.y + other.velocity.y) * 0.5;
     
-    // Nouvelle taille (pas juste la somme pour éviter l'explosion)
-    this.scale = Math.min(CONFIG.life.maxScale, totalScale * 0.7);
+    this.scale = Math.min(CONFIG.life.maxScale, totalScale * 0.65);
     this.targetScale = this.scale;
     
-    // Mélanger les formes
     for (let i = 0; i < this.shapeParams.length; i++) {
       this.shapeParams[i].radius = (this.shapeParams[i].radius + other.shapeParams[i].radius) * 0.5;
     }
@@ -330,7 +350,7 @@ class MorphingBlob {
   
   split() {
     const angle = this.rnd() * Math.PI * 2;
-    const distance = 50 + this.rnd() * 100;
+    const distance = 30 + this.rnd() * 50;
     
     const newBlob = new MorphingBlob({
       cx: this.cx + Math.cos(angle) * distance,
@@ -341,36 +361,23 @@ class MorphingBlob {
       rnd: this.rnd,
       id: this.id + '_split_' + Date.now(),
       viewBounds: this.viewBounds,
-      isNewSpawn: false
+      startFromEdge: false
     });
     
-    // Réduire la taille des deux blobs
-    this.scale *= 0.7;
+    this.scale *= 0.65;
     this.targetScale = this.scale;
-    newBlob.scale = this.scale * 0.8;
-    newBlob.targetScale = newBlob.scale;
+    newBlob.scale = this.scale;
+    newBlob.targetScale = this.scale;
+    newBlob.opacity = this.opacity;
+    newBlob.age = 1000; // Commence déjà "adulte"
     
-    // Donner des vitesses opposées
-    newBlob.velocity.x = -this.velocity.x + (this.rnd() - 0.5) * 2;
-    newBlob.velocity.y = -this.velocity.y + (this.rnd() - 0.5) * 2;
+    newBlob.velocity.x = Math.cos(angle) * CONFIG.life.movementSpeed;
+    newBlob.velocity.y = Math.sin(angle) * CONFIG.life.movementSpeed;
+    this.velocity.x = -newBlob.velocity.x;
+    this.velocity.y = -newBlob.velocity.y;
     
     return newBlob;
   }
-}
-
-/* ========== Gestion de la population de blobs ========== */
-function spawnNewBlob(rnd, viewBounds) {
-  const colors = ['olive', 'terra', 'sable'];
-  const colorKey = colors[Math.floor(rnd() * colors.length)];
-  const { rx, ry } = CONFIG.sizes[colorKey];
-  
-  return new MorphingBlob({
-    cx: 0, cy: 0, // Sera défini par spawnFromOutside
-    rx, ry, colorKey, rnd,
-    id: 'blob_' + Date.now() + '_' + Math.random(),
-    viewBounds,
-    isNewSpawn: true
-  });
 }
 
 /* ========== Placement initial ========== */
@@ -384,15 +391,15 @@ function createInitialBlobs(rnd, W, H) {
     const { rx, ry } = CONFIG.sizes[colorKey];
     
     for (let i = 0; i < count; i++) {
-      // Placer les blobs initiaux DANS l'écran, pas en dehors
-      const cx = randBetween(rnd, 100, W - 100);
-      const cy = randBetween(rnd, 100, H - 100);
+      // Distribuer sur toute la hauteur de la page
+      const cx = randBetween(rnd, 150, W - 150);
+      const cy = randBetween(rnd, 150, H - 150);
       
       allBlobs.push(new MorphingBlob({
         cx, cy, rx, ry, colorKey, rnd,
         id: blobId++,
         viewBounds,
-        isNewSpawn: false
+        startFromEdge: false
       }));
     }
   });
@@ -459,7 +466,7 @@ export default function MatisseWallpaperRandom() {
     setBlobs(initialBlobs);
   }, [rnd, docW, docH]);
   
-  // Animation loop avec vie cellulaire
+  // Animation loop
   useEffect(() => {
     if (blobs.length === 0) return;
     
@@ -472,12 +479,12 @@ export default function MatisseWallpaperRandom() {
           const viewBounds = { width: docW, height: docH };
           
           // Mettre à jour tous les blobs
-          newBlobs.forEach(blob => blob.update(deltaTime, newBlobs));
+          newBlobs.forEach(blob => blob.update(deltaTime));
           
           // Retirer les blobs morts
           newBlobs = newBlobs.filter(blob => !blob.isDead);
           
-          // Fusion
+          // Fusion (moins fréquente)
           if (Math.random() < CONFIG.life.fusionProbability) {
             for (let i = newBlobs.length - 1; i >= 0; i--) {
               for (let j = i - 1; j >= 0; j--) {
@@ -495,26 +502,31 @@ export default function MatisseWallpaperRandom() {
           const blobsToAdd = [];
           newBlobs.forEach(blob => {
             if (blob.scale > CONFIG.life.splitThreshold && 
+                blob.age > 3000 && // Au moins 3 secondes d'âge
                 Math.random() < CONFIG.life.splitProbability) {
               blobsToAdd.push(blob.split());
             }
           });
           newBlobs = [...newBlobs, ...blobsToAdd];
           
-          // Spawn de nouveaux blobs
+          // Spawn de nouveaux blobs depuis les bords
           if (newBlobs.length < CONFIG.life.maxBlobs && 
               Math.random() < CONFIG.life.spawnRate) {
-            newBlobs.push(spawnNewBlob(rnd, viewBounds));
+            const colors = ['olive', 'terra', 'sable'];
+            const colorKey = colors[Math.floor(rnd() * colors.length)];
+            const { rx, ry } = CONFIG.sizes[colorKey];
+            
+            newBlobs.push(new MorphingBlob({
+              cx: 0, cy: 0, rx, ry, colorKey, rnd,
+              id: 'blob_' + Date.now() + '_' + Math.random(),
+              viewBounds,
+              startFromEdge: true
+            }));
           }
           
-          // Limiter le nombre de blobs
+          // Limiter le nombre
           if (newBlobs.length > CONFIG.life.maxBlobs) {
-            // Garder les blobs les plus proches du centre
-            newBlobs.sort((a, b) => {
-              const distA = Math.abs(a.cx - docW/2) + Math.abs(a.cy - docH/2);
-              const distB = Math.abs(b.cx - docW/2) + Math.abs(b.cy - docH/2);
-              return distA - distB;
-            });
+            newBlobs.sort((a, b) => b.opacity - a.opacity);
             newBlobs = newBlobs.slice(0, CONFIG.life.maxBlobs);
           }
           
@@ -569,7 +581,6 @@ export default function MatisseWallpaperRandom() {
       >
         <rect x="0" y="0" width={W} height={H} fill={CONFIG.colors.bg} />
         
-        {/* Filtre organique amélioré */}
         <defs>
           <filter id="organic" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
