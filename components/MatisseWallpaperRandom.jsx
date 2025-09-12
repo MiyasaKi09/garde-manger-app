@@ -10,7 +10,7 @@ const CONFIG = {
     terra: "var(--terra-500, #c08a5a)",
     sable: "var(--sable-300, #e2c98f)",
   },
-  counts: { olive: 3, terra: 3, sable: 3 }, // Réduit pour la performance
+  counts: { olive: 4, terra: 3, sable: 4 }, // Un peu plus pour remplir l'espace
   sizes: {
     olive: { rx: 160, ry: 220 },
     terra: { rx: 130, ry: 180 },
@@ -27,14 +27,14 @@ const CONFIG = {
     tension: 0.85, // Tension élevée pour des courbes très douces
     scaleJitter: 0.15,
   },
-  // Animation ULTRA optimisée
+  // Animation avec rotation et déplacement
   morphing: {
     updateInterval: 50, // 20 FPS max pour la fluidité
-    deformationSpeed: 0.008, // Très lent et smooth
-    maxDeformation: 0.15, // Déformation minimale
-    fusionDistance: 180,
-    splitProbability: 0, // Désactivé pour la performance
-    fusionProbability: 0, // Désactivé pour la performance
+    deformationSpeed: 0.012, // Un peu plus rapide
+    maxDeformation: 0.2, // Un peu plus de déformation
+    rotationSpeed: 0.15, // Vitesse de rotation
+    movementSpeed: 0.8, // Vitesse de déplacement
+    driftRadius: 150, // Rayon de dérive autour de la position initiale
   }
 };
 
@@ -80,6 +80,8 @@ function toCubicPath(points, tension = 0.85) {
 class MorphingBlob {
   constructor({ cx, cy, rx, ry, colorKey, rnd, id, startScale = 0 }) {
     this.id = id;
+    this.baseCx = cx; // Position de base pour la dérive
+    this.baseCy = cy;
     this.cx = cx;
     this.cy = cy;
     this.baseRx = rx;
@@ -88,20 +90,28 @@ class MorphingBlob {
     this.rnd = rnd;
     
     // Animation d'apparition smooth
-    this.scale = startScale; // Commence à 0 pour l'apparition progressive
+    this.scale = startScale;
     this.targetScale = 0.9 + rnd() * 0.2;
     this.opacity = 0;
-    this.targetOpacity = 0.7 + rnd() * 0.2;
+    this.targetOpacity = 0.6 + rnd() * 0.3;
+    
+    // Rotation
+    this.rotation = rnd() * Math.PI * 2; // Rotation initiale aléatoire
+    this.rotationSpeed = (rnd() - 0.5) * CONFIG.morphing.rotationSpeed;
+    
+    // Mouvement circulaire/elliptique autour de la position de base
+    this.movementPhase = rnd() * Math.PI * 2;
+    this.movementSpeedX = (0.5 + rnd() * 0.5) * CONFIG.morphing.movementSpeed;
+    this.movementSpeedY = (0.5 + rnd() * 0.5) * CONFIG.morphing.movementSpeed;
+    this.movementRadiusX = (0.5 + rnd() * 0.5) * CONFIG.morphing.driftRadius;
+    this.movementRadiusY = (0.5 + rnd() * 0.5) * CONFIG.morphing.driftRadius;
     
     // États de morphing simplifiés
-    this.time = rnd() * Math.PI * 2; // Phase aléatoire pour désynchroniser
+    this.time = rnd() * Math.PI * 2;
     this.angleOffsets = [];
     this.targetAngleOffsets = [];
     this.radiusMultipliers = [];
     this.targetRadiusMultipliers = [];
-    
-    // Vitesse de déplacement très lente
-    this.velocity = { x: 0, y: 0 };
     
     // Initialiser avec des valeurs smooth
     this.initSmoothParams();
@@ -112,7 +122,7 @@ class MorphingBlob {
     for (let i = 0; i < points; i++) {
       // Valeurs initiales très proches du cercle parfait
       this.angleOffsets.push(0);
-      this.targetAngleOffsets.push((this.rnd() - 0.5) * 0.1);
+      this.targetAngleOffsets.push((this.rnd() - 0.5) * 0.15);
       
       this.radiusMultipliers.push(1);
       this.targetRadiusMultipliers.push(0.85 + this.rnd() * 0.3);
@@ -121,7 +131,7 @@ class MorphingBlob {
   
   update(deltaTime) {
     const { deformationSpeed } = CONFIG.morphing;
-    this.time += deltaTime * 0.0005; // Animation très lente
+    this.time += deltaTime * 0.001;
     
     // Apparition progressive au démarrage
     if (this.scale < this.targetScale) {
@@ -131,24 +141,34 @@ class MorphingBlob {
       this.opacity += (this.targetOpacity - this.opacity) * 0.02;
     }
     
-    // Interpolation ultra-smooth des paramètres
+    // Rotation continue
+    this.rotation += this.rotationSpeed * deltaTime * 0.001;
+    
+    // Mouvement elliptique autour de la position de base
+    this.movementPhase += deltaTime * 0.0001;
+    const moveX = Math.cos(this.movementPhase * this.movementSpeedX) * this.movementRadiusX;
+    const moveY = Math.sin(this.movementPhase * this.movementSpeedY) * this.movementRadiusY;
+    
+    // Appliquer le mouvement avec une interpolation smooth
+    const targetCx = this.baseCx + moveX;
+    const targetCy = this.baseCy + moveY;
+    this.cx += (targetCx - this.cx) * 0.05;
+    this.cy += (targetCy - this.cy) * 0.05;
+    
+    // Interpolation ultra-smooth des paramètres de forme
     for (let i = 0; i < CONFIG.shape.points; i++) {
       this.angleOffsets[i] += (this.targetAngleOffsets[i] - this.angleOffsets[i]) * deformationSpeed;
       this.radiusMultipliers[i] += (this.targetRadiusMultipliers[i] - this.radiusMultipliers[i]) * deformationSpeed;
     }
     
-    // Mouvement brownien très subtil
-    this.velocity.x += (this.rnd() - 0.5) * 0.05;
-    this.velocity.y += (this.rnd() - 0.5) * 0.05;
-    this.velocity.x *= 0.98; // Forte friction
-    this.velocity.y *= 0.98;
-    
-    this.cx += this.velocity.x * deltaTime * 0.01;
-    this.cy += this.velocity.y * deltaTime * 0.01;
-    
-    // Nouvelles cibles de temps en temps (toutes les ~10 secondes)
-    if (Math.random() < 0.001) {
+    // Nouvelles cibles de temps en temps (toutes les ~8 secondes)
+    if (Math.random() < 0.002) {
       this.generateNewTargets();
+    }
+    
+    // Changer occasionnellement la vitesse de rotation
+    if (Math.random() < 0.001) {
+      this.rotationSpeed = (this.rnd() - 0.5) * CONFIG.morphing.rotationSpeed;
     }
   }
   
@@ -158,6 +178,9 @@ class MorphingBlob {
       this.targetAngleOffsets[i] = (this.rnd() - 0.5) * maxDeformation * 0.5;
       this.targetRadiusMultipliers[i] = 0.8 + this.rnd() * 0.4;
     }
+    // Nouvelles cibles de mouvement
+    this.movementRadiusX = (0.3 + this.rnd() * 0.7) * CONFIG.morphing.driftRadius;
+    this.movementRadiusY = (0.3 + this.rnd() * 0.7) * CONFIG.morphing.driftRadius;
   }
   
   getPath() {
@@ -168,14 +191,14 @@ class MorphingBlob {
       const angle = (i / points) * Math.PI * 2;
       
       // Ondulation organique très douce
-      const waveOffset = Math.sin(this.time + i * (Math.PI / 4)) * 0.05;
+      const waveOffset = Math.sin(this.time * 2 + i * (Math.PI / 4)) * 0.08;
       
       // Rayon avec variation smooth
       const avgRadius = (this.baseRx + this.baseRy) * 0.5;
       const radius = avgRadius * this.scale * this.radiusMultipliers[i] * (1 + waveOffset);
       
-      // Angle avec offset minimal
-      const adjustedAngle = angle + this.angleOffsets[i];
+      // Angle avec offset minimal + rotation globale
+      const adjustedAngle = angle + this.angleOffsets[i] + this.rotation;
       
       const x = this.cx + Math.cos(adjustedAngle) * radius;
       const y = this.cy + Math.sin(adjustedAngle) * radius;
@@ -200,13 +223,14 @@ function createInitialBlobs(rnd, W, H) {
       const attempts = 50;
       
       for (let attempt = 0; attempt < attempts; attempt++) {
+        // Répartir les blobs sur toute la hauteur de la page
         const cx = randBetween(rnd, CONFIG.packing.sideInset, W - CONFIG.packing.sideInset);
         const cy = randBetween(rnd, CONFIG.packing.sideInset, H - CONFIG.packing.sideInset);
         
         // Vérifier la distance avec les autres blobs
         const tooClose = allBlobs.some(blob => {
-          const dx = cx - blob.cx;
-          const dy = cy - blob.cy;
+          const dx = cx - blob.baseCx;
+          const dy = cy - blob.baseCy;
           const dist = Math.sqrt(dx * dx + dy * dy);
           return dist < (rx + ry + blob.baseRx + blob.baseRy) * 0.35;
         });
@@ -226,21 +250,38 @@ function createInitialBlobs(rnd, W, H) {
   return allBlobs;
 }
 
-/* ================= Hook de dimension écran ================= */
-function useWindowSize() {
+/* ================= Hook de dimension de la page ================= */
+function usePageSize() {
   const [size, setSize] = useState({ width: 1200, height: 800 });
   
   useEffect(() => {
     function updateSize() {
+      // Utiliser la hauteur totale du document, pas juste la fenêtre
+      const docHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      );
+      
       setSize({ 
-        width: window.innerWidth, 
-        height: Math.max(window.innerHeight, document.documentElement.scrollHeight)
+        width: window.innerWidth,
+        height: docHeight
       });
     }
     
     updateSize();
+    
+    // Observer les changements de taille du document
+    const resizeObserver = new ResizeObserver(updateSize);
+    resizeObserver.observe(document.body);
     window.addEventListener('resize', updateSize);
-    return () => window.removeEventListener('resize', updateSize);
+    
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateSize);
+    };
   }, []);
   
   return size;
@@ -249,7 +290,7 @@ function useWindowSize() {
 /* ================= COMPOSANT PRINCIPAL ================= */
 export default function MatisseWallpaperRandom() {
   const [blobs, setBlobs] = useState([]);
-  const { width: docW, height: docH } = useWindowSize();
+  const { width: docW, height: docH } = usePageSize(); // Utilise la taille de la page
   const animationRef = useRef();
   const lastTimeRef = useRef(0);
   
@@ -313,24 +354,26 @@ export default function MatisseWallpaperRandom() {
     <div
       aria-hidden="true"
       style={{
-        position: "fixed",
-        inset: 0,
-        height: `${H}px`,
+        position: "absolute", // Changé de fixed à absolute pour suivre le scroll
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: `${H}px`, // Hauteur totale du document
         zIndex: 0,
         pointerEvents: "none",
         overflow: "hidden",
-        willChange: 'transform' // Optimisation GPU
+        willChange: 'transform'
       }}
     >
       <svg
         width="100%"
-        height="100%"
+        height={H}
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
         style={{ 
           background: CONFIG.colors.bg,
-          transform: 'translateZ(0)' // Force GPU
+          transform: 'translateZ(0)'
         }}
       >
         <rect x="0" y="0" width={W} height={H} fill={CONFIG.colors.bg} />
@@ -338,11 +381,11 @@ export default function MatisseWallpaperRandom() {
         {/* Filtre très léger pour l'effet organique */}
         <defs>
           <filter id="organic" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
             <feColorMatrix 
               in="blur" 
               type="matrix" 
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" 
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -8" 
               result="goo" 
             />
             <feBlend in="SourceGraphic" in2="goo" mode="normal"/>
@@ -358,7 +401,7 @@ export default function MatisseWallpaperRandom() {
               fill={CONFIG.colors[blob.colorKey]}
               opacity={blob.opacity}
               style={{
-                transform: 'translateZ(0)', // Force GPU pour chaque blob
+                transform: 'translateZ(0)',
               }}
             />
           ))}
