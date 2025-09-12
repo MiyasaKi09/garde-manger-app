@@ -85,9 +85,8 @@ class Cell {
     // Forme avec plus de points et plus de variabilité
     this.points = [];
     this.targetPoints = [];
-    const numPoints = CONFIG.animation.pointCount;
+    const numPoints = CONFIG.animation.pointCount || 8; // Valeur par défaut si undefined
     for (let i = 0; i < numPoints; i++) {
-      const angle = (i / numPoints) * Math.PI * 2;
       // Variabilité initiale plus importante
       const radius = 0.7 + rnd() * 0.6;
       const angleOffset = (rnd() - 0.5) * CONFIG.animation.morphIntensity;
