@@ -498,13 +498,20 @@ export default function MatisseWallpaperRandom() {
             }
           }
           
-          // Division
+          // Division (plus fréquente pour les grosses cellules)
           const blobsToAdd = [];
           newBlobs.forEach(blob => {
-            if (blob.scale > CONFIG.life.splitThreshold && 
-                blob.age > 3000 && // Au moins 3 secondes d'âge
-                Math.random() < CONFIG.life.splitProbability) {
-              blobsToAdd.push(blob.split());
+            if (blob.age > 3000) { // Au moins 3 secondes d'âge
+              // Plus la cellule est grosse, plus elle a de chance de se diviser
+              const splitChance = blob.scale > CONFIG.life.multiSplitThreshold ? 
+                CONFIG.life.splitProbability * 2 : // Double chance si très grosse
+                blob.scale > CONFIG.life.splitThreshold ? 
+                CONFIG.life.splitProbability : 0;
+              
+              if (Math.random() < splitChance) {
+                const newBlobs = blob.split();
+                blobsToAdd.push(...newBlobs);
+              }
             }
           });
           newBlobs = [...newBlobs, ...blobsToAdd];
