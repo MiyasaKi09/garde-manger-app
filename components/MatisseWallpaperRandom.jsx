@@ -44,9 +44,9 @@ const CONFIG = {
 
   // Couverture (aire totale des cellules / aire de la page)
   coverage: {
-    min: 0.3,
-    max: 0.6,
-    target: 0.45,
+    min: 0.5,
+    max: 0.8,
+    target: 0.65,
     checkInterval: 2000, // ms
   },
 };
