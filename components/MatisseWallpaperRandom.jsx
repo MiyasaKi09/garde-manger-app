@@ -1,59 +1,47 @@
 'use client';
 import { useEffect, useMemo, useState, useRef } from "react";
 
-/* ================= REGLAGES ================= */
+/* ================= CONFIGURATION ================= */
 const CONFIG = {
-  tileWidth: 1000,
   colors: {
-    bg:    "var(--cream-100, #f4efe6)",
+    bg: "var(--cream-100, #f4efe6)",
     olive: "var(--olive-500, #6e8b5e)",
     terra: "var(--terra-500, #c08a5a)",
     sable: "var(--sable-300, #e2c98f)",
   },
-  counts: { olive: 4, terra: 3, sable: 4 }, // Nombre initial de cellules
+  
+  // Tailles de base des cellules
   sizes: {
-    olive: { rx: 160, ry: 220 },
-    terra: { rx: 130, ry: 180 },
-    sable: { rx: 200, ry: 260 },
+    olive: 100,
+    terra: 85,
+    sable: 115,
   },
-  shape: {
-    points: 6, // Peu de points pour des formes lisses
-    tension: 0.95, // Tension maximale pour ultra-lissage
-    variability: 0.4, // Variabilité dans les formes
+  
+  // Nombre initial de cellules
+  initialCount: 12,
+  maxCells: 20,
+  
+  // Physique
+  physics: {
+    baseSpeed: 15, // Vitesse de déplacement
+    rotationSpeed: 0.4, // Vitesse de rotation
+    friction: 0.94, // Friction pour l'inertie
+    repulsionForce: 150, // Force de répulsion entre couleurs différentes
+    fusionDistance: 30, // Distance pour fusionner
   },
-  // Animation avec vie cellulaire
-  life: {
-    updateInterval: 50, // 20 FPS
-    deformationSpeed: 0.008,
-    rotationSpeed: 0.2,
-    movementSpeed: 3.0, // Vitesse de base du mouvement
-    
-    // Vie cellulaire
-    fusionDistance: 180,
-    fusionProbability: 0.08,
-    splitThreshold: 1.8,
-    splitProbability: 0.05,
-    
-    // Dilatation/compression
-    minScale: 0.4,
-    maxScale: 2.0,
-    scaleSpeed: 0.002,
-    
-    // Pulsation variable
-    pulseSpeedMin: 0.1,
-    pulseSpeedMax: 1.0,
-    pulseAmplitude: 0.12,
-    
-    // Spawn et disparition
-    spawnRate: 0.003,
-    maxBlobs: 20,
-    boundaryMargin: 400, // Zone hors écran pour spawn/despawn
+  
+  // Animation
+  animation: {
+    fps: 30, // 30 FPS pour la fluidité
+    morphSpeed: 0.01, // Vitesse de déformation
+    scaleSpeed: 0.002, // Vitesse de dilatation/compression
+    scaleRange: [0.8, 1.3], // Min/max de scale
   }
 };
 
-/* ================= RNG ================= */
+/* ================= UTILS ================= */
 function mulberry32(seed) {
-  return function () {
+  return function() {
     let t = (seed += 0x6D2B79F5);
     t = Math.imul(t ^ (t >>> 15), t | 1);
     t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
@@ -61,353 +49,230 @@ function mulberry32(seed) {
   };
 }
 
-const randBetween = (rnd, a, b) => a + rnd() * (b - a);
-
-/* ========== Forme ultra-lisse avec Bézier ========== */
-function toCubicPath(points, tension = 0.95) {
-  const n = points.length;
-  if (n < 3) return '';
-  
-  let d = `M ${points[0][0]},${points[0][1]}`;
-  
-  for (let i = 0; i < n; i++) {
-    const p0 = points[(i - 1 + n) % n];
-    const p1 = points[i];
-    const p2 = points[(i + 1) % n];
-    const p3 = points[(i + 2) % n];
-    
-    const d1x = (p2[0] - p0[0]) * tension;
-    const d1y = (p2[1] - p0[1]) * tension;
-    const d2x = (p3[0] - p1[0]) * tension;
-    const d2y = (p3[1] - p1[1]) * tension;
-    
-    const c1x = p1[0] + d1x / 3;
-    const c1y = p1[1] + d1y / 3;
-    const c2x = p2[0] - d2x / 3;
-    const c2y = p2[1] - d2y / 3;
-    
-    d += ` C ${c1x},${c1y} ${c2x},${c2y} ${p2[0]},${p2[1]}`;
-  }
-  return d + " Z";
-}
-
-class MorphingBlob {
-  constructor({ cx, cy, rx, ry, colorKey, rnd, id, viewBounds, startFromEdge = false }) {
+/* ================= CLASSE CELLULE ================= */
+class Cell {
+  constructor({ x, y, color, size, rnd, id, bounds, fromEdge = false }) {
     this.id = id;
-    this.cx = cx;
-    this.cy = cy;
-    this.baseRx = rx;
-    this.baseRy = ry;
-    this.colorKey = colorKey;
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.baseSize = size;
+    this.size = size;
+    this.bounds = bounds;
     this.rnd = rnd;
-    this.viewBounds = viewBounds;
     this.isDead = false;
-    this.age = 0; // Age du blob pour gérer l'apparition/disparition
     
-    // Si spawn depuis le bord
-    if (startFromEdge) {
-      this.spawnFromEdge();
-      this.scale = 0.3; // Commence petit
-      this.opacity = 0; // Commence invisible
-    } else {
-      // Blobs initiaux
-      this.scale = 0.7 + rnd() * 0.4;
-      this.opacity = 0.8; // Visible directement
+    // Physique
+    this.vx = 0;
+    this.vy = 0;
+    this.rotation = rnd() * Math.PI * 2;
+    this.rotationSpeed = (rnd() - 0.5) * CONFIG.physics.rotationSpeed;
+    
+    // Animation
+    this.scale = fromEdge ? 0.1 : 1;
+    this.targetScale = 1;
+    this.opacity = fromEdge ? 0 : 1;
+    
+    // Forme (6 points pour une forme organique)
+    this.points = [];
+    this.targetPoints = [];
+    for (let i = 0; i < 6; i++) {
+      const angle = (i / 6) * Math.PI * 2;
+      const radius = 1 + (rnd() - 0.5) * 0.3;
+      this.points.push({ r: radius, a: 0 });
+      this.targetPoints.push({ r: radius, a: (rnd() - 0.5) * 0.2 });
     }
     
-    this.targetScale = 0.8 + rnd() * 0.6;
-    this.targetOpacity = 0.6 + rnd() * 0.3;
-    
-    // Pulsation unique
-    this.pulseSpeed = CONFIG.life.pulseSpeedMin + 
-                      rnd() * (CONFIG.life.pulseSpeedMax - CONFIG.life.pulseSpeedMin);
-    this.pulsePhase = rnd() * Math.PI * 2;
-    
-    // Rotation
-    this.rotation = rnd() * Math.PI * 2;
-    this.rotationSpeed = (rnd() - 0.5) * CONFIG.life.rotationSpeed;
-    
-    // Vitesse de mouvement
-    this.velocity = {
-      x: (rnd() - 0.5) * CONFIG.life.movementSpeed,
-      y: (rnd() - 0.5) * CONFIG.life.movementSpeed
-    };
-    
-    // Forme
-    this.time = rnd() * Math.PI * 2;
-    this.shapeParams = [];
-    this.targetShapeParams = [];
-    
-    this.initVariableShape();
+    // Si spawn depuis le bord
+    if (fromEdge) {
+      this.spawnFromEdge();
+    } else {
+      // Vitesse initiale aléatoire
+      this.vx = (rnd() - 0.5) * CONFIG.physics.baseSpeed;
+      this.vy = (rnd() - 0.5) * CONFIG.physics.baseSpeed;
+    }
   }
   
   spawnFromEdge() {
-    const { boundaryMargin } = CONFIG.life;
     const side = Math.floor(this.rnd() * 4);
-    const spawnDistance = 80; // Réduit pour les petites tailles
+    const margin = 50;
     
     switch(side) {
       case 0: // Haut
-        this.cx = randBetween(this.rnd, 100, this.viewBounds.width - 100);
-        this.cy = -spawnDistance;
-        this.velocity.y = Math.abs(this.rnd() + 0.5) * CONFIG.life.movementSpeed;
-        this.velocity.x = (this.rnd() - 0.5) * CONFIG.life.movementSpeed * 0.5;
+        this.x = this.rnd() * this.bounds.width;
+        this.y = -margin;
+        this.vx = (this.rnd() - 0.5) * CONFIG.physics.baseSpeed * 0.5;
+        this.vy = Math.abs(this.rnd() * CONFIG.physics.baseSpeed);
         break;
       case 1: // Droite
-        this.cx = this.viewBounds.width + spawnDistance;
-        this.cy = randBetween(this.rnd, 100, this.viewBounds.height - 100);
-        this.velocity.x = -Math.abs(this.rnd() + 0.5) * CONFIG.life.movementSpeed;
-        this.velocity.y = (this.rnd() - 0.5) * CONFIG.life.movementSpeed * 0.5;
+        this.x = this.bounds.width + margin;
+        this.y = this.rnd() * this.bounds.height;
+        this.vx = -Math.abs(this.rnd() * CONFIG.physics.baseSpeed);
+        this.vy = (this.rnd() - 0.5) * CONFIG.physics.baseSpeed * 0.5;
         break;
       case 2: // Bas
-        this.cx = randBetween(this.rnd, 100, this.viewBounds.width - 100);
-        this.cy = this.viewBounds.height + spawnDistance;
-        this.velocity.y = -Math.abs(this.rnd() + 0.5) * CONFIG.life.movementSpeed;
-        this.velocity.x = (this.rnd() - 0.5) * CONFIG.life.movementSpeed * 0.5;
+        this.x = this.rnd() * this.bounds.width;
+        this.y = this.bounds.height + margin;
+        this.vx = (this.rnd() - 0.5) * CONFIG.physics.baseSpeed * 0.5;
+        this.vy = -Math.abs(this.rnd() * CONFIG.physics.baseSpeed);
         break;
       case 3: // Gauche
-        this.cx = -spawnDistance;
-        this.cy = randBetween(this.rnd, 100, this.viewBounds.height - 100);
-        this.velocity.x = Math.abs(this.rnd() + 0.5) * CONFIG.life.movementSpeed;
-        this.velocity.y = (this.rnd() - 0.5) * CONFIG.life.movementSpeed * 0.5;
+        this.x = -margin;
+        this.y = this.rnd() * this.bounds.height;
+        this.vx = Math.abs(this.rnd() * CONFIG.physics.baseSpeed);
+        this.vy = (this.rnd() - 0.5) * CONFIG.physics.baseSpeed * 0.5;
         break;
     }
   }
   
-  initVariableShape() {
-    const { points, variability } = CONFIG.shape;
-    for (let i = 0; i < points; i++) {
-      const radiusVar = 0.6 + this.rnd() * 0.8;
-      const angleVar = (this.rnd() - 0.5) * variability * 0.5;
-      
-      this.shapeParams.push({
-        radius: radiusVar,
-        angleOffset: angleVar,
-        phase: this.rnd() * Math.PI * 2
-      });
-      
-      this.targetShapeParams.push({
-        radius: 0.6 + this.rnd() * 0.8,
-        angleOffset: (this.rnd() - 0.5) * variability * 0.5,
-        phase: this.rnd() * Math.PI * 2
-      });
-    }
-  }
-  
-  update(deltaTime) {
-    const { deformationSpeed, movementSpeed, scaleSpeed, minScale, maxScale, pulseAmplitude, boundaryMargin } = CONFIG.life;
+  update(deltaTime, allCells) {
+    const dt = deltaTime / 1000; // Convertir en secondes
     
-    this.age += deltaTime;
-    this.time += deltaTime * 0.0008;
-    this.pulsePhase += deltaTime * 0.001 * this.pulseSpeed;
-    
-    // Apparition progressive (première seconde)
-    if (this.age < 1000) {
-      this.opacity = Math.min(this.targetOpacity, this.opacity + 0.03);
-      this.scale = Math.min(this.targetScale, this.scale + 0.02);
-    }
-    
-    // Vérifier si vraiment hors limites
-    const margin = boundaryMargin;
-    const isOut = (
-      this.cx < -margin ||
-      this.cx > this.viewBounds.width + margin ||
-      this.cy < -margin ||
-      this.cy > this.viewBounds.height + margin
-    );
-    
-    // Disparition progressive si hors limites
-    if (isOut && this.age > 2000) { // Attendre 2 secondes avant de pouvoir mourir
-      this.opacity *= 0.9;
-      if (this.opacity < 0.01) {
-        this.isDead = true;
-        return;
-      }
+    // Fade in/out
+    if (this.scale < 1) {
+      this.scale = Math.min(1, this.scale + 0.05);
+      this.opacity = Math.min(1, this.opacity + 0.05);
     }
     
     // Rotation
-    this.rotation += this.rotationSpeed * deltaTime * 0.001;
+    this.rotation += this.rotationSpeed;
     
-    // Mouvement Brownien
-    this.velocity.x += (this.rnd() - 0.5) * movementSpeed * 0.15;
-    this.velocity.y += (this.rnd() - 0.5) * movementSpeed * 0.15;
+    // Forces aléatoires pour le mouvement brownien
+    this.vx += (this.rnd() - 0.5) * 30 * dt;
+    this.vy += (this.rnd() - 0.5) * 30 * dt;
     
-    // Friction légère
-    this.velocity.x *= 0.97;
-    this.velocity.y *= 0.97;
+    // Répulsion entre cellules de couleurs différentes
+    allCells.forEach(other => {
+      if (other.id !== this.id && other.color !== this.color) {
+        const dx = this.x - other.x;
+        const dy = this.y - other.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const minDist = this.size * this.scale + other.size * other.scale;
+        
+        if (dist < minDist * 1.5 && dist > 0) {
+          const force = CONFIG.physics.repulsionForce * (1 - dist / (minDist * 1.5));
+          this.vx += (dx / dist) * force * dt;
+          this.vy += (dy / dist) * force * dt;
+        }
+      }
+    });
     
-    // Limiter la vitesse max
-    const maxVel = movementSpeed * 3;
-    this.velocity.x = Math.max(-maxVel, Math.min(maxVel, this.velocity.x));
-    this.velocity.y = Math.max(-maxVel, Math.min(maxVel, this.velocity.y));
+    // Friction
+    this.vx *= CONFIG.physics.friction;
+    this.vy *= CONFIG.physics.friction;
+    
+    // Limiter la vitesse
+    const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+    if (speed > CONFIG.physics.baseSpeed * 2) {
+      this.vx = (this.vx / speed) * CONFIG.physics.baseSpeed * 2;
+      this.vy = (this.vy / speed) * CONFIG.physics.baseSpeed * 2;
+    }
     
     // Appliquer le mouvement
-    this.cx += this.velocity.x;
-    this.cy += this.velocity.y;
+    this.x += this.vx * dt * 60;
+    this.y += this.vy * dt * 60;
     
-    // Pulsation QUASI INVISIBLE
-    const pulsation = Math.sin(this.pulsePhase) * pulseAmplitude; // Amplitude 0.02 = quasi invisible
-    const pulsedScale = this.targetScale * (1 + pulsation);
-    this.scale += (pulsedScale - this.scale) * scaleSpeed * 0.1; // Encore plus lent
-    this.scale = Math.max(minScale, Math.min(maxScale, this.scale));
-    
-    // Morphing de forme
-    for (let i = 0; i < this.shapeParams.length; i++) {
-      const param = this.shapeParams[i];
-      const target = this.targetShapeParams[i];
-      
-      param.radius += (target.radius - param.radius) * deformationSpeed;
-      param.angleOffset += (target.angleOffset - param.angleOffset) * deformationSpeed;
-      param.phase += deltaTime * 0.001;
+    // Rebond aux bords
+    if (this.x < -100 || this.x > this.bounds.width + 100 ||
+        this.y < -100 || this.y > this.bounds.height + 100) {
+      this.opacity *= 0.95;
+      if (this.opacity < 0.01) {
+        this.isDead = true;
+      }
     }
     
-    // Changements occasionnels
-    if (Math.random() < 0.003) {
-      this.generateNewTargets();
-    }
-    
+    // Animation de scale (dilatation/compression)
     if (Math.random() < 0.01) {
-      // Impulsion de mouvement
-      this.velocity.x += (this.rnd() - 0.5) * movementSpeed * 2;
-      this.velocity.y += (this.rnd() - 0.5) * movementSpeed * 2;
+      this.targetScale = CONFIG.animation.scaleRange[0] + 
+                        this.rnd() * (CONFIG.animation.scaleRange[1] - CONFIG.animation.scaleRange[0]);
+    }
+    this.scale += (this.targetScale - this.scale) * CONFIG.animation.scaleSpeed;
+    
+    // Morphing de la forme
+    for (let i = 0; i < this.points.length; i++) {
+      if (Math.random() < 0.005) {
+        this.targetPoints[i].r = 1 + (this.rnd() - 0.5) * 0.4;
+        this.targetPoints[i].a = (this.rnd() - 0.5) * 0.3;
+      }
+      this.points[i].r += (this.targetPoints[i].r - this.points[i].r) * CONFIG.animation.morphSpeed;
+      this.points[i].a += (this.targetPoints[i].a - this.points[i].a) * CONFIG.animation.morphSpeed;
     }
     
-    if (Math.random() < 0.001) {
-      // Changer la vitesse de pulsation
-      this.pulseSpeed = CONFIG.life.pulseSpeedMin + 
-                       this.rnd() * (CONFIG.life.pulseSpeedMax - CONFIG.life.pulseSpeedMin);
+    // Impulsion occasionnelle
+    if (Math.random() < 0.02) {
+      this.vx += (this.rnd() - 0.5) * CONFIG.physics.baseSpeed;
+      this.vy += (this.rnd() - 0.5) * CONFIG.physics.baseSpeed;
     }
-  }
-  
-  generateNewTargets() {
-    const { variability } = CONFIG.shape;
-    for (let i = 0; i < this.targetShapeParams.length; i++) {
-      this.targetShapeParams[i] = {
-        radius: 0.5 + this.rnd() * 1.0,
-        angleOffset: (this.rnd() - 0.5) * variability * 0.5,
-        phase: this.targetShapeParams[i].phase
-      };
-    }
-    this.targetScale = 0.7 + this.rnd() * 0.8;
-    this.rotationSpeed = (this.rnd() - 0.5) * CONFIG.life.rotationSpeed;
-  }
-  
-  getPath() {
-    const { points, tension } = CONFIG.shape;
-    const pts = [];
-    
-    for (let i = 0; i < points; i++) {
-      const angle = (i / points) * Math.PI * 2;
-      const param = this.shapeParams[i];
-      
-      const wave1 = Math.sin(param.phase + this.time) * 0.1;
-      const wave2 = Math.cos(param.phase * 2 + this.time * 1.5) * 0.05;
-      
-      const avgRadius = (this.baseRx + this.baseRy) * 0.5;
-      const radius = avgRadius * this.scale * param.radius * (1 + wave1 + wave2);
-      
-      const adjustedAngle = angle + param.angleOffset + this.rotation;
-      
-      const x = this.cx + Math.cos(adjustedAngle) * radius;
-      const y = this.cy + Math.sin(adjustedAngle) * radius;
-      
-      pts.push([x, y]);
-    }
-    
-    return toCubicPath(pts, tension);
-  }
-  
-  distanceTo(other) {
-    const dx = this.cx - other.cx;
-    const dy = this.cy - other.cy;
-    return Math.sqrt(dx * dx + dy * dy);
   }
   
   canFuseWith(other) {
-    if (this.colorKey !== other.colorKey) return false;
-    if (this.age < 1000 || other.age < 1000) return false; // Pas de fusion au début
-    const combinedSize = (this.scale + other.scale) * 0.5;
-    return this.distanceTo(other) < CONFIG.life.fusionDistance * combinedSize;
+    if (this.color !== other.color) return false;
+    const dx = this.x - other.x;
+    const dy = this.y - other.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const touchDist = (this.size * this.scale + other.size * other.scale) * 0.8;
+    return dist < touchDist;
   }
   
   fuseWith(other) {
-    const totalScale = this.scale + other.scale;
-    this.cx = (this.cx * this.scale + other.cx * other.scale) / totalScale;
-    this.cy = (this.cy * this.scale + other.cy * other.scale) / totalScale;
+    // Conservation de la surface : πr₁² + πr₂² = πr₃²
+    const area1 = Math.PI * Math.pow(this.size * this.scale, 2);
+    const area2 = Math.PI * Math.pow(other.size * other.scale, 2);
+    const newArea = area1 + area2;
+    const newRadius = Math.sqrt(newArea / Math.PI);
     
-    this.velocity.x = (this.velocity.x + other.velocity.x) * 0.5;
-    this.velocity.y = (this.velocity.y + other.velocity.y) * 0.5;
+    // Position pondérée
+    const totalMass = area1 + area2;
+    this.x = (this.x * area1 + other.x * area2) / totalMass;
+    this.y = (this.y * area1 + other.y * area2) / totalMass;
     
-    this.scale = Math.min(CONFIG.life.maxScale, totalScale * 0.65);
-    this.targetScale = this.scale;
+    // Nouvelle taille
+    this.size = newRadius;
+    this.scale = 1;
+    this.targetScale = 1;
     
-    for (let i = 0; i < this.shapeParams.length; i++) {
-      this.shapeParams[i].radius = (this.shapeParams[i].radius + other.shapeParams[i].radius) * 0.5;
+    // Combiner les vitesses
+    this.vx = (this.vx * area1 + other.vx * area2) / totalMass;
+    this.vy = (this.vy * area1 + other.vy * area2) / totalMass;
+  }
+  
+  getPath() {
+    const points = [];
+    const numPoints = this.points.length;
+    
+    for (let i = 0; i < numPoints; i++) {
+      const p = this.points[i];
+      const angle = (i / numPoints) * Math.PI * 2 + p.a + this.rotation;
+      const radius = this.size * this.scale * p.r;
+      points.push([
+        this.x + Math.cos(angle) * radius,
+        this.y + Math.sin(angle) * radius
+      ]);
     }
     
-    this.generateNewTargets();
-  }
-  
-  split() {
-    const angle = this.rnd() * Math.PI * 2;
-    const distance = 30 + this.rnd() * 50;
-    
-    const newBlob = new MorphingBlob({
-      cx: this.cx + Math.cos(angle) * distance,
-      cy: this.cy + Math.sin(angle) * distance,
-      rx: this.baseRx,
-      ry: this.baseRy,
-      colorKey: this.colorKey,
-      rnd: this.rnd,
-      id: this.id + '_split_' + Date.now(),
-      viewBounds: this.viewBounds,
-      startFromEdge: false
-    });
-    
-    this.scale *= 0.65;
-    this.targetScale = this.scale;
-    newBlob.scale = this.scale;
-    newBlob.targetScale = this.scale;
-    newBlob.opacity = this.opacity;
-    newBlob.age = 1000; // Commence déjà "adulte"
-    
-    newBlob.velocity.x = Math.cos(angle) * CONFIG.life.movementSpeed;
-    newBlob.velocity.y = Math.sin(angle) * CONFIG.life.movementSpeed;
-    this.velocity.x = -newBlob.velocity.x;
-    this.velocity.y = -newBlob.velocity.y;
-    
-    return newBlob;
-  }
-}
-
-/* ========== Placement initial ========== */
-function createInitialBlobs(rnd, W, H) {
-  const allBlobs = [];
-  let blobId = 0;
-  const viewBounds = { width: W, height: H };
-  
-  ['olive', 'terra', 'sable'].forEach(colorKey => {
-    const count = CONFIG.counts[colorKey];
-    const { rx, ry } = CONFIG.sizes[colorKey];
-    
-    for (let i = 0; i < count; i++) {
-      // Distribuer sur toute la hauteur de la page
-      const cx = randBetween(rnd, 150, W - 150);
-      const cy = randBetween(rnd, 150, H - 150);
+    // Créer une courbe de Bézier smooth
+    let path = `M ${points[0][0]},${points[0][1]}`;
+    for (let i = 0; i < numPoints; i++) {
+      const p1 = points[i];
+      const p2 = points[(i + 1) % numPoints];
+      const p0 = points[(i - 1 + numPoints) % numPoints];
+      const p3 = points[(i + 2) % numPoints];
       
-      allBlobs.push(new MorphingBlob({
-        cx, cy, rx, ry, colorKey, rnd,
-        id: blobId++,
-        viewBounds,
-        startFromEdge: false
-      }));
+      const tension = 0.9;
+      const cp1x = p1[0] + (p2[0] - p0[0]) * tension / 3;
+      const cp1y = p1[1] + (p2[1] - p0[1]) * tension / 3;
+      const cp2x = p2[0] - (p3[0] - p1[0]) * tension / 3;
+      const cp2y = p2[1] - (p3[1] - p1[1]) * tension / 3;
+      
+      path += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${p2[0]},${p2[1]}`;
     }
-  });
-  
-  return allBlobs;
+    path += ' Z';
+    
+    return path;
+  }
 }
 
-/* ================= Hook de dimension de la page ================= */
+/* ================= HOOK TAILLE PAGE ================= */
 function usePageSize() {
   const [size, setSize] = useState({ width: 1200, height: 800 });
   
@@ -420,7 +285,6 @@ function usePageSize() {
         document.documentElement.scrollHeight,
         document.documentElement.offsetHeight
       );
-      
       setSize({ 
         width: window.innerWidth,
         height: docHeight
@@ -428,7 +292,6 @@ function usePageSize() {
     }
     
     updateSize();
-    
     const resizeObserver = new ResizeObserver(updateSize);
     resizeObserver.observe(document.body);
     window.addEventListener('resize', updateSize);
@@ -443,108 +306,101 @@ function usePageSize() {
 }
 
 /* ================= COMPOSANT PRINCIPAL ================= */
-export default function MatisseWallpaperRandom() {
-  const [blobs, setBlobs] = useState([]);
+export default function MatisseWallpaper() {
+  const [cells, setCells] = useState([]);
   const { width: docW, height: docH } = usePageSize();
   const animationRef = useRef();
   const lastTimeRef = useRef(0);
   
   const rnd = useMemo(() => {
-    if (typeof crypto !== "undefined" && crypto.getRandomValues) {
-      const a = new Uint32Array(1);
-      crypto.getRandomValues(a);
-      return mulberry32(a[0]);
-    }
-    return mulberry32(Date.now() & 0xffffffff);
+    const seed = typeof crypto !== "undefined" && crypto.getRandomValues ? 
+      new Uint32Array(1)[0] : Date.now();
+    return mulberry32(seed);
   }, []);
   
-  // Créer les blobs initiaux
+  // Initialisation avec distribution homogène
   useEffect(() => {
-    const W = Math.max(docW, CONFIG.tileWidth);
-    const H = docH;
-    const initialBlobs = createInitialBlobs(rnd, W, H);
-    setBlobs(initialBlobs);
+    const bounds = { width: docW, height: docH };
+    const newCells = [];
+    const colors = ['olive', 'terra', 'sable'];
+    
+    // Grille pour distribution homogène
+    const cols = 4;
+    const rows = 3;
+    const cellWidth = docW / cols;
+    const cellHeight = docH / rows;
+    
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols && newCells.length < CONFIG.initialCount; col++) {
+        const color = colors[newCells.length % colors.length];
+        const x = (col + 0.5) * cellWidth + (rnd() - 0.5) * cellWidth * 0.3;
+        const y = (row + 0.5) * cellHeight + (rnd() - 0.5) * cellHeight * 0.3;
+        
+        newCells.push(new Cell({
+          x: Math.max(100, Math.min(docW - 100, x)),
+          y: Math.max(100, Math.min(docH - 100, y)),
+          color,
+          size: CONFIG.sizes[color],
+          rnd,
+          id: `cell_${Date.now()}_${newCells.length}`,
+          bounds,
+          fromEdge: false
+        }));
+      }
+    }
+    
+    setCells(newCells);
   }, [rnd, docW, docH]);
   
-  // Animation loop
+  // Boucle d'animation
   useEffect(() => {
-    if (blobs.length === 0) return;
+    if (cells.length === 0) return;
     
     const animate = (currentTime) => {
       const deltaTime = currentTime - lastTimeRef.current;
       
-      if (deltaTime >= CONFIG.life.updateInterval) {
-        setBlobs(currentBlobs => {
-          let newBlobs = [...currentBlobs];
-          const viewBounds = { width: docW, height: docH };
+      if (deltaTime >= 1000 / CONFIG.animation.fps) {
+        setCells(currentCells => {
+          let newCells = [...currentCells];
+          const bounds = { width: docW, height: docH };
           
-          // Mettre à jour tous les blobs
-          newBlobs.forEach(blob => blob.update(deltaTime));
+          // Mise à jour de chaque cellule
+          newCells.forEach(cell => cell.update(deltaTime, newCells));
           
-          // Retirer les blobs morts
-          newBlobs = newBlobs.filter(blob => !blob.isDead);
+          // Retirer les cellules mortes
+          newCells = newCells.filter(cell => !cell.isDead);
           
-          // Fusion - vraie fusion en une seule cellule
+          // Fusion des cellules de même couleur
           const toRemove = new Set();
-          for (let i = 0; i < newBlobs.length; i++) {
+          for (let i = 0; i < newCells.length; i++) {
             if (toRemove.has(i)) continue;
-            
-            for (let j = i + 1; j < newBlobs.length; j++) {
+            for (let j = i + 1; j < newCells.length; j++) {
               if (toRemove.has(j)) continue;
-              
-              if (newBlobs[i].canFuseWith(newBlobs[j])) {
-                // Fusionner j dans i
-                newBlobs[i].fuseWith(newBlobs[j]);
-                toRemove.add(j); // Marquer j pour suppression
+              if (newCells[i].canFuseWith(newCells[j])) {
+                newCells[i].fuseWith(newCells[j]);
+                toRemove.add(j);
               }
             }
           }
+          newCells = newCells.filter((_, idx) => !toRemove.has(idx));
           
-          // Supprimer les blobs fusionnés
-          if (toRemove.size > 0) {
-            newBlobs = newBlobs.filter((_, index) => !toRemove.has(index));
-          }
-          
-          // Division (plus fréquente pour les grosses cellules)
-          const blobsToAdd = [];
-          newBlobs.forEach(blob => {
-            if (blob.age > 3000) { // Au moins 3 secondes d'âge
-              // Plus la cellule est grosse, plus elle a de chance de se diviser
-              const splitChance = blob.scale > CONFIG.life.multiSplitThreshold ? 
-                CONFIG.life.splitProbability * 2 : // Double chance si très grosse
-                blob.scale > CONFIG.life.splitThreshold ? 
-                CONFIG.life.splitProbability : 0;
-              
-              if (Math.random() < splitChance) {
-                const newBlobs = blob.split();
-                blobsToAdd.push(...newBlobs);
-              }
-            }
-          });
-          newBlobs = [...newBlobs, ...blobsToAdd];
-          
-          // Spawn de nouveaux blobs depuis les bords
-          if (newBlobs.length < CONFIG.life.maxBlobs && 
-              Math.random() < CONFIG.life.spawnRate) {
+          // Spawn occasionnel depuis les bords
+          if (newCells.length < CONFIG.maxCells && Math.random() < 0.005) {
             const colors = ['olive', 'terra', 'sable'];
-            const colorKey = colors[Math.floor(rnd() * colors.length)];
-            const { rx, ry } = CONFIG.sizes[colorKey];
+            const color = colors[Math.floor(rnd() * colors.length)];
             
-            newBlobs.push(new MorphingBlob({
-              cx: 0, cy: 0, rx, ry, colorKey, rnd,
-              id: 'blob_' + Date.now() + '_' + Math.random(),
-              viewBounds,
-              startFromEdge: true
+            newCells.push(new Cell({
+              x: 0, y: 0,
+              color,
+              size: CONFIG.sizes[color],
+              rnd,
+              id: `cell_${Date.now()}_${Math.random()}`,
+              bounds,
+              fromEdge: true
             }));
           }
           
-          // Limiter le nombre
-          if (newBlobs.length > CONFIG.life.maxBlobs) {
-            newBlobs.sort((a, b) => b.opacity - a.opacity);
-            newBlobs = newBlobs.slice(0, CONFIG.life.maxBlobs);
-          }
-          
-          return newBlobs;
+          return newCells;
         });
         
         lastTimeRef.current = currentTime;
@@ -560,12 +416,7 @@ export default function MatisseWallpaperRandom() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [blobs.length, rnd, docW, docH]);
-  
-  const { W, H } = useMemo(() => ({
-    W: Math.max(docW, CONFIG.tileWidth),
-    H: docH
-  }), [docW, docH]);
+  }, [cells.length, rnd, docW, docH]);
   
   return (
     <div
@@ -575,17 +426,16 @@ export default function MatisseWallpaperRandom() {
         top: 0,
         left: 0,
         width: '100%',
-        height: `${H}px`,
+        height: `${docH}px`,
         zIndex: 0,
         pointerEvents: "none",
-        overflow: "hidden",
-        willChange: 'transform'
+        overflow: "hidden"
       }}
     >
       <svg
         width="100%"
-        height={H}
-        viewBox={`0 0 ${W} ${H}`}
+        height={docH}
+        viewBox={`0 0 ${docW} ${docH}`}
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
         style={{ 
@@ -593,31 +443,24 @@ export default function MatisseWallpaperRandom() {
           transform: 'translateZ(0)'
         }}
       >
-        <rect x="0" y="0" width={W} height={H} fill={CONFIG.colors.bg} />
-        
         <defs>
-          <filter id="organic" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+          <filter id="organic">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
             <feColorMatrix 
               in="blur" 
               type="matrix" 
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" 
-              result="goo" 
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -8" 
             />
-            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
           </filter>
         </defs>
         
         <g filter="url(#organic)">
-          {blobs.map((blob) => (
+          {cells.map(cell => (
             <path
-              key={blob.id}
-              d={blob.getPath()}
-              fill={CONFIG.colors[blob.colorKey]}
-              opacity={blob.opacity}
-              style={{
-                transform: 'translateZ(0)',
-              }}
+              key={cell.id}
+              d={cell.getPath()}
+              fill={CONFIG.colors[cell.color]}
+              opacity={cell.opacity}
             />
           ))}
         </g>
