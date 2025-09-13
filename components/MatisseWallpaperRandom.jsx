@@ -211,67 +211,106 @@ class OrganicCell {
     }
   }
   
+  updateWanderTarget() {
+    // Nouveau point d'exploration dans un rayon
+    const angle = this.wanderAngle + (this.rnd() - 0.5) * Math.PI * 0.5;
+    const dist = CONFIG.physics.wanderRadius * (0.5 + this.rnd() * 0.5);
+    this.wanderTarget = {
+      x: this.x + Math.cos(angle) * dist,
+      y: this.y + Math.sin(angle) * dist
+    };
+    this.wanderAngle = angle;
+  }
+  
   update(deltaTime, allCells) {
     const dt = deltaTime / 1000;
     this.age += deltaTime;
     
-    // Sauvegarder position précédente pour calculer la vitesse réelle
+    // Sauvegarder position précédente
     this.prevX = this.x;
     this.prevY = this.y;
     
-    // Fade in smooth
+    // Fade in ultra smooth
     if (this.scale < 1) {
-      this.scale = Math.min(1, this.scale + 0.02);
-      this.opacity = Math.min(1, this.opacity + 0.02);
+      const scaleSpeed = 0.005 + smoothstep(this.scale) * 0.01;
+      this.scale = Math.min(1, this.scale + scaleSpeed);
+      this.opacity = Math.min(1, this.opacity + scaleSpeed);
     }
     
     // Respiration naturelle
     this.breathPhase += CONFIG.animation.breathingSpeed * this.breathRate * deltaTime;
     const breathing = Math.sin(this.breathPhase) * this.breathAmplitude;
     
-    // Turbulence organique
-    this.turbulencePhase += this.turbulenceSpeed * deltaTime;
-    const turbX = noise2D(this.x * 0.01, this.age * 0.0001, 0) * CONFIG.physics.turbulence;
-    const turbY = noise2D(this.y * 0.01, this.age * 0.0001, 100) * CONFIG.physics.turbulence;
+    // === EXPLORATION AUTONOME ===
+    // Mise à jour occasionnelle de la cible d'exploration
+    if (Math.random() < 0.01 || 
+        Math.abs(this.x - this.wanderTarget.x) < 20 && 
+        Math.abs(this.y - this.wanderTarget.y) < 20) {
+      this.updateWanderTarget();
+    }
     
-    // Forces appliquées
-    this.ax = turbX;
-    this.ay = turbY;
+    // Force d'exploration vers la cible (très douce)
+    const wanderDx = this.wanderTarget.x - this.x;
+    const wanderDy = this.wanderTarget.y - this.y;
+    const wanderDist = Math.sqrt(wanderDx * wanderDx + wanderDy * wanderDy);
     
-    // Répulsion douce entre cellules différentes
+    if (wanderDist > 1) {
+      const wanderForce = CONFIG.physics.wanderStrength * smoothstep(Math.min(1, wanderDist / 200));
+      this.ax += (wanderDx / wanderDist) * wanderForce;
+      this.ay += (wanderDy / wanderDist) * wanderForce;
+    }
+    
+    // Bruit organique pour le mouvement (plus subtil)
+    const noiseX = noise2D(this.x * 0.005, this.age * 0.00005, 0) * 0.2;
+    const noiseY = noise2D(this.y * 0.005, this.age * 0.00005, 100) * 0.2;
+    this.ax += noiseX;
+    this.ay += noiseY;
+    
+    // === INTERACTIONS AVEC LES AUTRES CELLULES ===
     allCells.forEach(other => {
       if (other.id !== this.id) {
         const dx = this.x - other.x;
         const dy = this.y - other.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         
-        if (dist > 0 && dist < 200) {
-          const minDist = (this.size + other.size) * 0.8;
+        if (dist > 0.1 && dist < 300) {
+          const minDist = (this.size + other.size) * 0.9;
           
-          if (other.color !== this.color && dist < minDist * 1.5) {
-            // Répulsion fluide entre couleurs différentes
-            const force = smoothstep(1 - dist / (minDist * 1.5)) * 30;
-            this.ax += (dx / dist) * force;
-            this.ay += (dy / dist) * force;
-          } else if (other.color === this.color && dist < minDist * 0.6) {
-            // Attraction douce pour fusion
-            if (!this.isFusing && !other.isFusing) {
-              const attraction = smoothstep(1 - dist / (minDist * 0.6)) * 10;
-              this.ax -= (dx / dist) * attraction;
-              this.ay -= (dy / dist) * attraction;
-            }
+          if (other.color !== this.color && dist < minDist * 2) {
+            // Répulsion ultra douce avec fonction sigmoïde
+            const normalizedDist = dist / (minDist * 2);
+            const repulsion = 1 / (1 + Math.exp((normalizedDist - 0.5) * CONFIG.physics.repulsionSoftness));
+            const force = repulsion * 15;
+            this.ax += (dx / dist) * force * dt;
+            this.ay += (dy / dist) * force * dt;
+          } else if (other.color === this.color && dist < minDist * 0.8 && dist > minDist * 0.5) {
+            // Attraction très légère pour cohésion (pas fusion immédiate)
+            const attraction = CONFIG.physics.attractionForce * (1 - dist / (minDist * 0.8));
+            this.ax -= (dx / dist) * attraction;
+            this.ay -= (dy / dist) * attraction;
           }
         }
       }
     });
     
-    // Intégration de la vitesse avec viscosité
+    // === ACCÉLÉRATION ET VITESSE PROGRESSIVES ===
+    // Limiter l'accélération pour éviter les mouvements brusques
+    const maxAccel = CONFIG.physics.acceleration;
+    const accelMag = Math.sqrt(this.ax * this.ax + this.ay * this.ay);
+    if (accelMag > maxAccel) {
+      this.ax = (this.ax / accelMag) * maxAccel;
+      this.ay = (this.ay / accelMag) * maxAccel;
+    }
+    
+    // Intégration de la vitesse avec accélération progressive
     this.vx += this.ax * dt * 60;
     this.vy += this.ay * dt * 60;
-    this.vx *= CONFIG.physics.viscosity;
-    this.vy *= CONFIG.physics.viscosity;
     
-    // Limiter la vitesse
+    // Décélération naturelle (friction)
+    this.vx *= CONFIG.physics.deceleration;
+    this.vy *= CONFIG.physics.deceleration;
+    
+    // Limiter la vitesse en douceur
     const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
     if (speed > CONFIG.physics.maxSpeed) {
       const factor = CONFIG.physics.maxSpeed / speed;
@@ -280,62 +319,76 @@ class OrganicCell {
     }
     
     // Mise à jour position
-    this.x += this.vx * dt * 60;
-    this.y += this.vy * dt * 60;
+    this.x += this.vx;
+    this.y += this.vy;
     
-    // Calcul de la vitesse réelle pour la déformation
-    const realVx = (this.x - this.prevX) / (dt * 60);
-    const realVy = (this.y - this.prevY) / (dt * 60);
-    const realSpeed = Math.sqrt(realVx * realVx + realVy * realVy);
+    // Reset accélération pour le prochain frame
+    this.ax = 0;
+    this.ay = 0;
     
-    // Déformation basée sur le mouvement (étirement dans la direction du mouvement)
-    if (realSpeed > 0.5) {
-      const targetStretchX = 1 + (realVx / CONFIG.physics.maxSpeed) * CONFIG.physics.deformationResponse;
-      const targetStretchY = 1 + (realVy / CONFIG.physics.maxSpeed) * CONFIG.physics.deformationResponse;
-      this.stretchX += (targetStretchX - this.stretchX) * 0.1;
-      this.stretchY += (targetStretchY - this.stretchY) * 0.1;
-      
-      // Skew basé sur l'accélération latérale
-      const targetSkew = (this.ax * realVy - this.ay * realVx) * 0.001;
-      this.skew += (targetSkew - this.skew) * 0.05;
-    } else {
-      // Retour à la forme normale
-      this.stretchX += (1 - this.stretchX) * CONFIG.animation.tensionRelaxation;
-      this.stretchY += (1 - this.stretchY) * CONFIG.animation.tensionRelaxation;
-      this.skew *= 0.95;
+    // === ROTATION ULTRA PROGRESSIVE ===
+    // Changement très occasionnel et doux de la cible de rotation
+    if (Math.random() < 0.002) {
+      this.targetRotationSpeed = (this.rnd() - 0.5) * CONFIG.physics.rotationMaxSpeed;
     }
     
-    // Rotation organique avec inertie
-    this.rotationAccel = (this.targetRotationSpeed - this.rotationSpeed) * 0.01;
-    this.rotationSpeed += this.rotationAccel;
-    this.rotationSpeed *= CONFIG.physics.rotationInertia;
+    // Accélération rotationnelle progressive
+    const rotationAccel = (this.targetRotationSpeed - this.rotationSpeed) * CONFIG.physics.rotationAcceleration;
+    this.rotationSpeed += rotationAccel;
+    this.rotationSpeed *= CONFIG.physics.rotationDamping; // Amortissement
     this.rotation += this.rotationSpeed;
     
-    // Changement occasionnel de direction de rotation
-    if (Math.random() < 0.001) {
-      this.targetRotationSpeed = (this.rnd() - 0.5) * 0.08;
+    // === DÉFORMATION BASÉE SUR LE MOUVEMENT ===
+    const realVx = this.x - this.prevX;
+    const realVy = this.y - this.prevY;
+    const realSpeed = Math.sqrt(realVx * realVx + realVy * realVy);
+    
+    // Déformation très progressive
+    if (realSpeed > 0.1) {
+      const deformFactor = Math.min(1, realSpeed / CONFIG.physics.maxSpeed);
+      const targetStretchX = 1 + realVx * 0.02 * deformFactor;
+      const targetStretchY = 1 + realVy * 0.02 * deformFactor;
+      
+      this.stretchX += (targetStretchX - this.stretchX) * 0.03;
+      this.stretchY += (targetStretchY - this.stretchY) * 0.03;
+      
+      // Légère inclinaison dans la direction du mouvement
+      const movementAngle = Math.atan2(realVy, realVx);
+      const targetSkew = Math.sin(movementAngle) * deformFactor * 0.1;
+      this.skew += (targetSkew - this.skew) * 0.02;
+    } else {
+      // Retour très lent à la forme normale
+      this.stretchX += (1 - this.stretchX) * 0.01;
+      this.stretchY += (1 - this.stretchY) * 0.01;
+      this.skew *= 0.99;
     }
     
-    // Animation des points de forme
+    // === ANIMATION DES POINTS POUR FORME IRRÉGULIÈRE ===
     for (let i = 0; i < this.points.length; i++) {
       const point = this.points[i];
       const velocity = this.pointVelocities[i];
       
-      // Cible avec respiration et mouvement
-      const baseRadius = 1 + breathing;
-      const movementInfluence = realSpeed * 0.01;
-      point.targetR = baseRadius + (this.rnd() - 0.5) * 0.1 * (1 + movementInfluence);
-      point.targetA = (this.rnd() - 0.5) * 0.1 * (1 + movementInfluence);
+      // Oscillation naturelle avec phases différentes
+      const wavePhase = this.age * 0.001 + i * 0.5;
+      const wave = Math.sin(wavePhase) * 0.05;
       
-      // Physics-based animation
-      velocity.r += (point.targetR - point.r) * 0.02 - velocity.r * 0.1;
-      velocity.a += (point.targetA - point.a) * 0.02 - velocity.a * 0.1;
+      // Cible avec variation et mouvement
+      const movementInfluence = realSpeed * 0.02;
+      point.targetR = point.baseR * (1 + breathing + wave) + (this.rnd() - 0.5) * 0.05 * (1 + movementInfluence);
+      point.targetA = (this.rnd() - 0.5) * 0.2 * (1 + movementInfluence);
+      
+      // Animation avec inertie
+      velocity.r += (point.targetR - point.r) * 0.008;
+      velocity.a += (point.targetA - point.a) * 0.008;
+      velocity.r *= 0.92; // Amortissement
+      velocity.a *= 0.92;
       
       point.r += velocity.r;
       point.a += velocity.a;
       
-      // Limiter les valeurs
-      point.r = Math.max(0.5, Math.min(1.5, point.r));
+      // Limites pour éviter les déformations extrêmes
+      point.r = Math.max(0.3, Math.min(1.7, point.r));
+      point.a = Math.max(-0.5, Math.min(0.5, point.a));
     }
     
     // Gestion de la fusion
