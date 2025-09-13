@@ -275,8 +275,10 @@ class OrganicCell {
     this.ay += noiseY;
     
     // === INTERACTIONS AVEC LES AUTRES CELLULES ===
-    allCells.forEach(other => {
-      if (other.id !== this.id) {
+    if (allCells && Array.isArray(allCells)) {
+      allCells.forEach(other => {
+        if (!other || other.id === this.id || !other.x || !other.y) return;
+        
         const dx = this.x - other.x;
         const dy = this.y - other.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -298,8 +300,8 @@ class OrganicCell {
             this.ay -= (dy / dist) * attraction;
           }
         }
-      }
-    });
+      });
+    }
     
     // === ACCÉLÉRATION ET VITESSE PROGRESSIVES ===
     // Limiter l'accélération pour éviter les mouvements brusques
