@@ -10,41 +10,48 @@ const CONFIG = {
     sable: "var(--sable-300, #e2c98f)",
   },
   
-  // Tailles de base des cellules (plus de variété)
+  // Tailles de base des cellules (plages)
   sizes: {
     olive: { min: 80, max: 120 },
     terra: { min: 70, max: 100 },
     sable: { min: 90, max: 140 },
   },
   
-  // Nombre de cellules et couverture
+  // Couverture
   coverage: {
-    min: 0.3, // 30% de couverture minimum
-    max: 0.6, // 60% de couverture maximum
-    target: 0.45, // Cible idéale
-    checkInterval: 2000, // Vérifier toutes les 2 secondes
+    min: 0.30,
+    max: 0.60,
+    target: 0.45,
+    checkInterval: 2000, // ms
   },
   initialCount: 10,
   minCells: 8,
   maxCells: 25,
   
-  // Physique organique
+  // Physique organique (complétée)
   physics: {
-    baseSpeed: 8, // Vitesse réduite pour plus de fluidité
+    baseSpeed: 8,
     maxSpeed: 15,
-    viscosity: 0.96, // Viscosité du milieu (comme dans un fluide)
-    turbulence: 0.3, // Force de turbulence
-    rotationInertia: 0.98, // Inertie de rotation
-    deformationResponse: 0.4, // Réponse de déformation au mouvement
+    // viscosité / amortissements
+    deceleration: 0.98,         // remplace ton usage précédent
+    rotationDamping: 0.98,
+    // accélérations / forces
+    acceleration: 0.15,
+    wanderRadius: 120,
+    wanderStrength: 0.8,
+    rotationMaxSpeed: 0.03,
+    rotationAcceleration: 0.04,
+    repulsionSoftness: 6.0,
+    attractionForce: 2.0,
   },
   
-  // Animation organique
+  // Animation
   animation: {
-    fps: 60, // 60 FPS pour ultra smooth
-    breathingSpeed: 0.0008, // Respiration très lente
-    morphSmoothness: 0.015, // Lissage du morphing
-    tensionRelaxation: 0.02, // Relaxation de la tension
-    pointCount: 12, // Plus de points pour plus de fluidité
+    fps: 60,
+    breathingSpeed: 0.0008,
+    morphSmoothness: 0.015,
+    tensionRelaxation: 0.02,
+    pointCount: 12,
   }
 };
 
@@ -58,47 +65,37 @@ function mulberry32(seed) {
   };
 }
 
-// Fonction d'interpolation smooth (ease in-out)
 function smoothstep(t) {
   return t * t * (3 - 2 * t);
 }
 
-// Noise Perlin simplifié pour mouvement organique
 function noise2D(x, y, seed = 0) {
   const dot = (gx, gy, dx, dy) => gx * dx + gy * dy;
   const mix = (a, b, t) => a * (1 - t) + b * t;
-  
   const X = Math.floor(x) & 255;
   const Y = Math.floor(y) & 255;
   const xf = x - Math.floor(x);
   const yf = y - Math.floor(y);
-  
   const u = smoothstep(xf);
   const v = smoothstep(yf);
-  
   const grad = [
     [1, 1], [-1, 1], [1, -1], [-1, -1],
     [1, 0], [-1, 0], [0, 1], [0, -1]
   ];
-  
   const hash = (x, y) => {
     const h = (x * 374761393 + y * 668265263 + seed * 1013904223) & 0x7fffffff;
     return grad[h % 8];
   };
-  
   const g00 = hash(X, Y);
   const g10 = hash(X + 1, Y);
   const g01 = hash(X, Y + 1);
   const g11 = hash(X + 1, Y + 1);
-  
   const n00 = dot(g00[0], g00[1], xf, yf);
   const n10 = dot(g10[0], g10[1], xf - 1, yf);
   const n01 = dot(g01[0], g01[1], xf, yf - 1);
   const n11 = dot(g11[0], g11[1], xf - 1, yf - 1);
-  
   const nx0 = mix(n00, n10, u);
   const nx1 = mix(n01, n11, u);
-  
   return mix(nx0, nx1, v);
 }
 
@@ -118,71 +115,62 @@ class OrganicCell {
     this.isDead = false;
     this.age = 0;
     
-    // Physique fluide
+    // Physique
     this.vx = 0;
     this.vy = 0;
-    this.ax = 0; // Accélération
+    this.ax = 0;
     this.ay = 0;
     
-    // Rotation organique
+    // Rotation
     this.rotation = rnd() * Math.PI * 2;
     this.rotationSpeed = 0;
-    this.rotationAccel = 0;
-    this.targetRotationSpeed = (rnd() - 0.5) * 0.05;
+    this.targetRotationSpeed = (rnd() - 0.5) * 0.02;
     
-    // État de respiration
+    // Respiration
     this.breathPhase = rnd() * Math.PI * 2;
-    this.breathRate = 0.5 + rnd() * 0.5; // Vitesse de respiration variable
+    this.breathRate = 0.5 + rnd() * 0.5;
     this.breathAmplitude = 0.03 + rnd() * 0.02;
     
-    // Animation
+    // Apparition
     this.scale = fromEdge ? 0.1 : 1;
     this.opacity = fromEdge ? 0 : 1;
     
-    // Forme organique avec tension
+    // Forme
     this.points = [];
     this.pointVelocities = [];
-    this.pointTensions = [];
     const numPoints = CONFIG.animation.pointCount;
-    
     for (let i = 0; i < numPoints; i++) {
-      const angle = (i / numPoints) * Math.PI * 2;
       const radius = 0.9 + rnd() * 0.2;
-      
       this.points.push({
         r: radius,
         a: 0,
         targetR: radius,
-        targetA: 0
+        targetA: 0,
+        baseR: radius, // <-- important
       });
-      
       this.pointVelocities.push({ r: 0, a: 0 });
-      this.pointTensions.push(0);
     }
     
-    // États de déformation
+    // Déformations globales
     this.stretchX = 1;
     this.stretchY = 1;
     this.skew = 0;
     
-    // Fusion organique
+    // Fusion
     this.isFusing = false;
     this.fusionPartner = null;
     this.fusionProgress = 0;
     
-    // Turbulence locale
-    this.turbulencePhase = rnd() * Math.PI * 2;
-    this.turbulenceSpeed = 0.001 + rnd() * 0.002;
+    // Wander / exploration (INITIALISÉS ICI)
+    this.wanderAngle = rnd() * Math.PI * 2;
+    this.wanderTarget = { x, y }; // <-- évite undefined
     
-    if (fromEdge) {
-      this.spawnFromEdge();
-    }
+    if (fromEdge) this.spawnFromEdge();
   }
   
   spawnFromEdge() {
     const side = Math.floor(this.rnd() * 4);
     const margin = 50;
-    
     switch(side) {
       case 0: // Haut
         this.x = this.rnd() * this.bounds.width;
@@ -212,17 +200,11 @@ class OrganicCell {
   }
   
   updateWanderTarget() {
-    // Vérifier que les bounds existent
     if (!this.bounds) return;
-    
-    // Nouveau point d'exploration dans un rayon
     const angle = this.wanderAngle + (this.rnd() - 0.5) * Math.PI * 0.5;
     const dist = CONFIG.physics.wanderRadius * (0.5 + this.rnd() * 0.5);
-    
-    // S'assurer que la cible reste dans les limites
     const targetX = this.x + Math.cos(angle) * dist;
     const targetY = this.y + Math.sin(angle) * dist;
-    
     this.wanderTarget = {
       x: Math.max(50, Math.min(this.bounds.width - 50, targetX)),
       y: Math.max(50, Math.min(this.bounds.height - 50, targetY))
@@ -231,70 +213,66 @@ class OrganicCell {
   }
   
   update(deltaTime, allCells) {
-    const dt = deltaTime / 1000;
+    const dt = Math.max(0, deltaTime) / 1000;
     this.age += deltaTime;
     
-    // Sauvegarder position précédente
+    // Mémoriser la position précédente
     this.prevX = this.x;
     this.prevY = this.y;
     
-    // Fade in ultra smooth
+    // Apparition
     if (this.scale < 1) {
       const scaleSpeed = 0.005 + smoothstep(this.scale) * 0.01;
       this.scale = Math.min(1, this.scale + scaleSpeed);
       this.opacity = Math.min(1, this.opacity + scaleSpeed);
     }
     
-    // Respiration naturelle
+    // Respiration
     this.breathPhase += CONFIG.animation.breathingSpeed * this.breathRate * deltaTime;
     const breathing = Math.sin(this.breathPhase) * this.breathAmplitude;
     
     // === EXPLORATION AUTONOME ===
-    // Mise à jour occasionnelle de la cible d'exploration
-    if (Math.random() < 0.01 || 
-        Math.abs(this.x - this.wanderTarget.x) < 20 && 
-        Math.abs(this.y - this.wanderTarget.y) < 20) {
+    // Sécuriser l'accès à wanderTarget
+    if (
+      !this.wanderTarget ||
+      Math.random() < 0.01 ||
+      (Math.abs(this.x - this.wanderTarget.x) < 20 &&
+       Math.abs(this.y - this.wanderTarget.y) < 20)
+    ) {
       this.updateWanderTarget();
     }
-    
-    // Force d'exploration vers la cible (très douce)
     const wanderDx = this.wanderTarget.x - this.x;
     const wanderDy = this.wanderTarget.y - this.y;
-    const wanderDist = Math.sqrt(wanderDx * wanderDx + wanderDy * wanderDy);
-    
+    const wanderDist = Math.hypot(wanderDx, wanderDy);
     if (wanderDist > 1) {
       const wanderForce = CONFIG.physics.wanderStrength * smoothstep(Math.min(1, wanderDist / 200));
       this.ax += (wanderDx / wanderDist) * wanderForce;
       this.ay += (wanderDy / wanderDist) * wanderForce;
     }
     
-    // Bruit organique pour le mouvement (plus subtil)
+    // Bruit organique léger
     const noiseX = noise2D(this.x * 0.005, this.age * 0.00005, 0) * 0.2;
     const noiseY = noise2D(this.y * 0.005, this.age * 0.00005, 100) * 0.2;
     this.ax += noiseX;
     this.ay += noiseY;
     
-    // === INTERACTIONS AVEC LES AUTRES CELLULES ===
-    if (allCells && Array.isArray(allCells)) {
+    // === INTERACTIONS ===
+    if (Array.isArray(allCells)) {
       allCells.forEach(other => {
-        if (!other || other.id === this.id || !other.x || !other.y) return;
-        
+        if (!other || other.id === this.id) return;
+        if (!isFinite(other.x) || !isFinite(other.y)) return;
         const dx = this.x - other.x;
         const dy = this.y - other.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        
+        const dist = Math.hypot(dx, dy);
         if (dist > 0.1 && dist < 300) {
           const minDist = (this.size + other.size) * 0.9;
-          
           if (other.color !== this.color && dist < minDist * 2) {
-            // Répulsion ultra douce avec fonction sigmoïde
             const normalizedDist = dist / (minDist * 2);
             const repulsion = 1 / (1 + Math.exp((normalizedDist - 0.5) * CONFIG.physics.repulsionSoftness));
             const force = repulsion * 15;
             this.ax += (dx / dist) * force * dt;
             this.ay += (dy / dist) * force * dt;
           } else if (other.color === this.color && dist < minDist * 0.8 && dist > minDist * 0.5) {
-            // Attraction très légère pour cohésion (pas fusion immédiate)
             const attraction = CONFIG.physics.attractionForce * (1 - dist / (minDist * 0.8));
             this.ax -= (dx / dist) * attraction;
             this.ay -= (dy / dist) * attraction;
@@ -303,120 +281,92 @@ class OrganicCell {
       });
     }
     
-    // === ACCÉLÉRATION ET VITESSE PROGRESSIVES ===
-    // Limiter l'accélération pour éviter les mouvements brusques
+    // Limiter l'accélération
     const maxAccel = CONFIG.physics.acceleration;
-    const accelMag = Math.sqrt(this.ax * this.ax + this.ay * this.ay);
+    const accelMag = Math.hypot(this.ax, this.ay);
     if (accelMag > maxAccel) {
       this.ax = (this.ax / accelMag) * maxAccel;
       this.ay = (this.ay / accelMag) * maxAccel;
     }
     
-    // Intégration de la vitesse avec accélération progressive
+    // Intégration + friction
     this.vx += this.ax * dt * 60;
     this.vy += this.ay * dt * 60;
-    
-    // Décélération naturelle (friction)
     this.vx *= CONFIG.physics.deceleration;
     this.vy *= CONFIG.physics.deceleration;
     
-    // Limiter la vitesse en douceur
-    const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+    // Limiter la vitesse
+    const speed = Math.hypot(this.vx, this.vy);
     if (speed > CONFIG.physics.maxSpeed) {
       const factor = CONFIG.physics.maxSpeed / speed;
       this.vx *= factor;
       this.vy *= factor;
     }
     
-    // Mise à jour position
+    // Position
     this.x += this.vx;
     this.y += this.vy;
+    this.ax = 0; this.ay = 0;
     
-    // Reset accélération pour le prochain frame
-    this.ax = 0;
-    this.ay = 0;
-    
-    // === ROTATION ULTRA PROGRESSIVE ===
-    // Changement très occasionnel et doux de la cible de rotation
+    // Rotation — cible douce
     if (Math.random() < 0.002) {
       this.targetRotationSpeed = (this.rnd() - 0.5) * CONFIG.physics.rotationMaxSpeed;
     }
-    
-    // Accélération rotationnelle progressive
     const rotationAccel = (this.targetRotationSpeed - this.rotationSpeed) * CONFIG.physics.rotationAcceleration;
-    this.rotationSpeed += rotationAccel;
-    this.rotationSpeed *= CONFIG.physics.rotationDamping; // Amortissement
+    this.rotationSpeed = (this.rotationSpeed + rotationAccel) * CONFIG.physics.rotationDamping;
     this.rotation += this.rotationSpeed;
     
-    // === DÉFORMATION BASÉE SUR LE MOUVEMENT ===
+    // Déformation basée mouvement
     const realVx = this.x - this.prevX;
     const realVy = this.y - this.prevY;
-    const realSpeed = Math.sqrt(realVx * realVx + realVy * realVy);
-    
-    // Déformation très progressive
+    const realSpeed = Math.hypot(realVx, realVy);
     if (realSpeed > 0.1) {
       const deformFactor = Math.min(1, realSpeed / CONFIG.physics.maxSpeed);
       const targetStretchX = 1 + realVx * 0.02 * deformFactor;
       const targetStretchY = 1 + realVy * 0.02 * deformFactor;
-      
       this.stretchX += (targetStretchX - this.stretchX) * 0.03;
       this.stretchY += (targetStretchY - this.stretchY) * 0.03;
-      
-      // Légère inclinaison dans la direction du mouvement
       const movementAngle = Math.atan2(realVy, realVx);
       const targetSkew = Math.sin(movementAngle) * deformFactor * 0.1;
       this.skew += (targetSkew - this.skew) * 0.02;
     } else {
-      // Retour très lent à la forme normale
       this.stretchX += (1 - this.stretchX) * 0.01;
       this.stretchY += (1 - this.stretchY) * 0.01;
       this.skew *= 0.99;
     }
     
-    // === ANIMATION DES POINTS POUR FORME IRRÉGULIÈRE ===
+    // Animation des points
     for (let i = 0; i < this.points.length; i++) {
       const point = this.points[i];
       const velocity = this.pointVelocities[i];
-      
-      // Oscillation naturelle avec phases différentes
       const wavePhase = this.age * 0.001 + i * 0.5;
       const wave = Math.sin(wavePhase) * 0.05;
-      
-      // Cible avec variation et mouvement
       const movementInfluence = realSpeed * 0.02;
+      
       point.targetR = point.baseR * (1 + breathing + wave) + (this.rnd() - 0.5) * 0.05 * (1 + movementInfluence);
       point.targetA = (this.rnd() - 0.5) * 0.2 * (1 + movementInfluence);
       
-      // Animation avec inertie
       velocity.r += (point.targetR - point.r) * 0.008;
       velocity.a += (point.targetA - point.a) * 0.008;
-      velocity.r *= 0.92; // Amortissement
+      velocity.r *= 0.92;
       velocity.a *= 0.92;
-      
       point.r += velocity.r;
       point.a += velocity.a;
-      
-      // Limites pour éviter les déformations extrêmes
       point.r = Math.max(0.3, Math.min(1.7, point.r));
       point.a = Math.max(-0.5, Math.min(0.5, point.a));
     }
     
-    // Gestion de la fusion
+    // Fusion : progression
     if (this.isFusing && this.fusionPartner) {
-      this.fusionProgress += dt * 2; // 0.5 seconde pour fusion complète
-      
+      this.fusionProgress += dt * 2;
       if (this.fusionProgress >= 1) {
         this.completeFusion();
       } else {
-        // Mouvement vers le partenaire avec déformation
         const t = smoothstep(this.fusionProgress);
         const dx = this.fusionPartner.x - this.x;
         const dy = this.fusionPartner.y - this.y;
-        
         this.vx += dx * t * 0.1;
         this.vy += dy * t * 0.1;
-        
-        // Déformation pendant la fusion
         this.stretchX = 1 + dx * 0.001 * t;
         this.stretchY = 1 + dy * 0.001 * t;
       }
@@ -426,21 +376,18 @@ class OrganicCell {
     if (this.x < -200 || this.x > this.bounds.width + 200 ||
         this.y < -200 || this.y > this.bounds.height + 200) {
       this.opacity *= 0.95;
-      if (this.opacity < 0.01) {
-        this.isDead = true;
-      }
+      if (this.opacity < 0.01) this.isDead = true;
     }
   }
   
   canFuseWith(other) {
+    if (!other) return false;
     if (this.color !== other.color) return false;
     if (this.isFusing || other.isFusing) return false;
-    
     const dx = this.x - other.x;
     const dy = this.y - other.y;
-    const dist = Math.sqrt(dx * dx + dy * dy);
+    const dist = Math.hypot(dx, dy);
     const minDist = (this.size + other.size) * 0.5;
-    
     return dist < minDist;
   }
   
@@ -452,30 +399,18 @@ class OrganicCell {
   
   completeFusion() {
     if (!this.fusionPartner) return;
-    
-    // Conservation de la surface
     const area1 = Math.PI * this.size * this.size;
     const area2 = Math.PI * this.fusionPartner.size * this.fusionPartner.size;
     const newArea = area1 + area2;
     this.size = Math.sqrt(newArea / Math.PI);
-    
-    // Conservation de la quantité de mouvement
-    const m1 = area1;
-    const m2 = area2;
-    const totalMass = m1 + m2;
+    const m1 = area1, m2 = area2, totalMass = m1 + m2;
     this.vx = (this.vx * m1 + this.fusionPartner.vx * m2) / totalMass;
     this.vy = (this.vy * m1 + this.fusionPartner.vy * m2) / totalMass;
-    
-    // Position pondérée
     this.x = (this.x * m1 + this.fusionPartner.x * m2) / totalMass;
     this.y = (this.y * m1 + this.fusionPartner.y * m2) / totalMass;
-    
-    // Reset
     this.isFusing = false;
     this.fusionPartner = null;
     this.fusionProgress = 0;
-    
-    // Nouvelle forme après fusion
     for (let i = 0; i < this.points.length; i++) {
       this.points[i].targetR = 0.9 + this.rnd() * 0.2;
       this.points[i].targetA = (this.rnd() - 0.5) * 0.1;
@@ -483,58 +418,36 @@ class OrganicCell {
   }
   
   getPath() {
+    if (!isFinite(this.x) || !isFinite(this.y) || !isFinite(this.size) || !isFinite(this.scale)) {
+      return '';
+    }
     const points = [];
     const numPoints = this.points.length;
-    
     if (numPoints < 3) return '';
-    
     for (let i = 0; i < numPoints; i++) {
       const point = this.points[i];
-      if (!point) continue;
-      
-      const angle = (i / numPoints) * Math.PI * 2 + point.a + this.rotation;
-      
-      // Appliquer les déformations
-      let x = Math.cos(angle) * point.r;
-      let y = Math.sin(angle) * point.r;
-      
-      // Étirement
-      x *= this.stretchX;
-      y *= this.stretchY;
-      
-      // Skew
-      x += y * this.skew;
-      
-      // Échelle finale
-      x *= this.size * this.scale;
-      y *= this.size * this.scale;
-      
-      points.push([this.x + x, this.y + y]);
+      const angle = (i / numPoints) * Math.PI * 2 + (isFinite(point.a) ? point.a : 0) + (isFinite(this.rotation) ? this.rotation : 0);
+      let x = Math.cos(angle) * (isFinite(point.r) ? point.r : 1);
+      let y = Math.sin(angle) * (isFinite(point.r) ? point.r : 1);
+      x *= this.stretchX; y *= this.stretchY; x += y * this.skew;
+      x *= this.size * this.scale; y *= this.size * this.scale;
+      const px = this.x + x, py = this.y + y;
+      if (!isFinite(px) || !isFinite(py)) return '';
+      points.push([px, py]);
     }
-    
-    if (points.length < 3) return '';
-    
-    // Courbe de Bézier ultra smooth avec tension variable
     let path = `M ${points[0][0]},${points[0][1]}`;
-    const tension = 0.4 + smoothstep(Math.min(1, this.age / 3000)) * 0.4; // Tension progressive
-    
+    const tension = 0.4 + smoothstep(Math.min(1, this.age / 3000)) * 0.4;
     for (let i = 0; i < points.length; i++) {
       const p0 = points[(i - 1 + points.length) % points.length];
       const p1 = points[i];
       const p2 = points[(i + 1) % points.length];
       const p3 = points[(i + 2) % points.length];
-      
-      if (!p1 || !p2 || !p0 || !p3) continue;
-      
-      // Tangentes Catmull-Rom
       const cp1x = p1[0] + (p2[0] - p0[0]) * tension / 3;
       const cp1y = p1[1] + (p2[1] - p0[1]) * tension / 3;
       const cp2x = p2[0] - (p3[0] - p1[0]) * tension / 3;
       const cp2y = p2[1] - (p3[1] - p1[1]) * tension / 3;
-      
       path += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${p2[0]},${p2[1]}`;
     }
-    
     return path + ' Z';
   }
 }
@@ -542,7 +455,6 @@ class OrganicCell {
 /* ================= HOOK TAILLE PAGE ================= */
 function usePageSize() {
   const [size, setSize] = useState({ width: 1200, height: 800 });
-  
   useEffect(() => {
     function updateSize() {
       const docHeight = Math.max(
@@ -552,23 +464,17 @@ function usePageSize() {
         document.documentElement.scrollHeight,
         document.documentElement.offsetHeight
       );
-      setSize({ 
-        width: window.innerWidth,
-        height: docHeight
-      });
+      setSize({ width: window.innerWidth, height: docHeight });
     }
-    
     updateSize();
     const resizeObserver = new ResizeObserver(updateSize);
     resizeObserver.observe(document.body);
     window.addEventListener('resize', updateSize);
-    
     return () => {
       resizeObserver.disconnect();
       window.removeEventListener('resize', updateSize);
     };
   }, []);
-  
   return size;
 }
 
@@ -577,82 +483,73 @@ export default function MatisseWallpaper() {
   const [cells, setCells] = useState([]);
   const { width: docW, height: docH } = usePageSize();
   const animationRef = useRef();
-  const lastTimeRef = useRef(performance.now());
+  const lastTimeRef = useRef(0);
   const coverageCheckRef = useRef(0);
   
   const rnd = useMemo(() => {
-    const seed = typeof crypto !== "undefined" && crypto.getRandomValues ? 
-      crypto.getRandomValues(new Uint32Array(1))[0] : Date.now();
-    return mulberry32(seed);
+    if (typeof crypto !== "undefined" && crypto.getRandomValues) {
+      const arr = new Uint32Array(1);
+      crypto.getRandomValues(arr);
+      return mulberry32(arr[0] >>> 0);
+    }
+    return mulberry32(Date.now() >>> 0);
   }, []);
   
-  // Calculer la couverture
   const calculateCoverage = (cellList, width, height) => {
-    const totalArea = width * height;
+    const totalArea = Math.max(1, width * height);
     let cellsArea = 0;
-    
-    cellList.forEach(cell => {
-      cellsArea += Math.PI * cell.size * cell.size * cell.scale * cell.scale;
-    });
-    
+    for (const cell of cellList) {
+      const r = Math.max(0, cell.size * cell.scale);
+      cellsArea += Math.PI * r * r;
+    }
     return cellsArea / totalArea;
   };
   
   // Initialisation
   useEffect(() => {
+    if (!docW || !docH) return;
     const bounds = { width: docW, height: docH };
     const newCells = [];
     const colors = ['olive', 'terra', 'sable'];
-    
-    const cols = 4;
-    const rows = 3;
+    const cols = 4, rows = 3;
     const cellWidth = docW / cols;
     const cellHeight = docH / rows;
-    
     for (let i = 0; i < CONFIG.initialCount; i++) {
       const row = Math.floor(i / cols);
       const col = i % cols;
       const color = colors[i % colors.length];
-      const sizeRange = CONFIG.sizes[color];
-      const size = sizeRange.min + rnd() * (sizeRange.max - sizeRange.min);
-      
+      const { min, max } = CONFIG.sizes[color];
+      const size = min + rnd() * (max - min);
       const x = (col + 0.5) * cellWidth + (rnd() - 0.5) * cellWidth * 0.4;
       const y = (row + 0.5) * cellHeight + (rnd() - 0.5) * cellHeight * 0.4;
-      
       newCells.push(new OrganicCell({
         x: Math.max(100, Math.min(docW - 100, x)),
         y: Math.max(100, Math.min(docH - 100, y)),
-        color,
-        size,
-        rnd,
+        color, size, rnd,
         id: `cell_${Date.now()}_${i}`,
-        bounds,
-        fromEdge: false
+        bounds, fromEdge: false
       }));
     }
-    
     setCells(newCells);
   }, [rnd, docW, docH]);
   
-  // Animation loop
+  // Animation
   useEffect(() => {
     if (cells.length === 0) return;
-    
     const animate = (currentTime) => {
-      const deltaTime = currentTime - lastTimeRef.current;
-      
+      const deltaTime = lastTimeRef.current ? (currentTime - lastTimeRef.current) : 16;
       if (deltaTime >= 1000 / CONFIG.animation.fps) {
         setCells(currentCells => {
-          let newCells = [...currentCells];
+          let newCells = currentCells.slice();
           const bounds = { width: docW, height: docH };
-          
-          // Update
-          newCells.forEach(cell => cell.update(deltaTime, newCells));
-          
-          // Remove dead
-          newCells = newCells.filter(cell => !cell.isDead);
-          
-          // Fusion
+          // update
+          newCells.forEach(cell => {
+            cell.bounds = bounds; // garder à jour
+            cell.update(deltaTime, newCells);
+          });
+          // purge
+          newCells = newCells.filter(c => !c.isDead && isFinite(c.x) && isFinite(c.y));
+          // fusion
           const toRemove = new Set();
           for (let i = 0; i < newCells.length; i++) {
             if (toRemove.has(i)) continue;
@@ -665,47 +562,42 @@ export default function MatisseWallpaper() {
             }
           }
           newCells = newCells.filter((_, idx) => !toRemove.has(idx));
-          
-          // Coverage check
+          // couverture
           coverageCheckRef.current += deltaTime;
           if (coverageCheckRef.current >= CONFIG.coverage.checkInterval) {
             coverageCheckRef.current = 0;
             const coverage = calculateCoverage(newCells, docW, docH);
-            
-            // Spawn si nécessaire
             if (coverage < CONFIG.coverage.min && newCells.length < CONFIG.maxCells) {
               const colors = ['olive', 'terra', 'sable'];
               const color = colors[Math.floor(rnd() * colors.length)];
-              const sizeRange = CONFIG.sizes[color];
-              const size = sizeRange.min + rnd() * (sizeRange.max - sizeRange.min);
-              
+              const { min, max } = CONFIG.sizes[color];
+              const size = min + rnd() * (max - min);
               newCells.push(new OrganicCell({
                 x: 0, y: 0,
-                color,
-                size,
-                rnd,
+                color, size, rnd,
                 id: `cell_${Date.now()}_${Math.random()}`,
-                bounds,
-                fromEdge: true
+                bounds, fromEdge: true
               }));
+            } else if (coverage > CONFIG.coverage.max && newCells.length > CONFIG.minCells) {
+              newCells.forEach(c => {
+                if (c.x < 100 || c.x > docW - 100 || c.y < 100 || c.y > docH - 100) {
+                  c.opacity *= 0.98;
+                  if (c.opacity < 0.01) c.isDead = true;
+                }
+              });
+              newCells = newCells.filter(c => !c.isDead);
             }
           }
-          
           return newCells;
         });
-        
         lastTimeRef.current = currentTime;
       }
-      
       animationRef.current = requestAnimationFrame(animate);
     };
-    
     animationRef.current = requestAnimationFrame(animate);
-    
     return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      lastTimeRef.current = 0;
     };
   }, [cells.length, rnd, docW, docH]);
   
@@ -746,20 +638,20 @@ export default function MatisseWallpaper() {
             <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
           </filter>
         </defs>
-        
         <g filter="url(#organic)">
-          {cells.map(cell => (
-            <path
-              key={cell.id}
-              d={cell.getPath()}
-              fill={CONFIG.colors[cell.color]}
-              opacity={cell.opacity}
-              style={{
-                transition: 'none',
-                willChange: 'transform'
-              }}
-            />
-          ))}
+          {cells.map(cell => {
+            const d = cell.getPath();
+            if (!d) return null;
+            return (
+              <path
+                key={cell.id}
+                d={d}
+                fill={CONFIG.colors[cell.color]}
+                opacity={cell.opacity}
+                style={{ transition: 'none', willChange: 'transform' }}
+              />
+            );
+          })}
         </g>
       </svg>
     </div>
