@@ -9,46 +9,43 @@ const CONFIG = {
     terra: "var(--terra-500, #c08a5a)",
     sable: "var(--sable-300, #e2c98f)",
   },
-
-  // Tailles sous forme de plages {min, max}
+  
+  // Tailles de base des cellules (plus de variété)
   sizes: {
-    olive: { min: 70, max: 150 },
-    terra: { min: 70, max: 150 },
-    sable: { min: 50, max: 135 },
+    olive: { min: 80, max: 120 },
+    terra: { min: 70, max: 100 },
+    sable: { min: 90, max: 140 },
   },
-
-  // Nombre de cellules
-  initialCount: 12,
-  maxCells: 20,
-  minCells: 10,
-
-  // Physique
-  physics: {
-    baseSpeed: 1,           // Vitesse de déplacement
-    rotationSpeed: 0.4,      // Vitesse de rotation nominale
-    rotationVariability: 0.3,// Variabilité supplémentaire de rotation
-    friction: 0.94,          // Friction pour l'inertie
-    repulsionForce: 20,     // Force de répulsion entre couleurs différentes
-    fusionDistance: 30,      // Distance pour fusionner (utilisée qualitativement)
-  },
-
-  // Animation
-  animation: {
-    fps: 30,                 // 30 FPS pour la fluidité
-    morphSpeed: 0.3,        // Vitesse de déformation
-    scaleSpeed: 0.2,       // Vitesse de dilatation/compression
-    scaleRange: [0.5, 1.6],  // Min/max de scale
-    pointCount: 8,          // Nombre de points de la forme
-    morphIntensity: 0.6,     // Amplitude d’offset angulaire initial et cible
-  },
-
-  // Couverture (aire totale des cellules / aire de la page)
+  
+  // Nombre de cellules et couverture
   coverage: {
-    min: 0.5,
-    max: 0.8,
-    target: 0.65,
-    checkInterval: 2000, // ms
+    min: 0.3, // 30% de couverture minimum
+    max: 0.6, // 60% de couverture maximum
+    target: 0.45, // Cible idéale
+    checkInterval: 2000, // Vérifier toutes les 2 secondes
   },
+  initialCount: 10,
+  minCells: 8,
+  maxCells: 25,
+  
+  // Physique organique
+  physics: {
+    baseSpeed: 8, // Vitesse réduite pour plus de fluidité
+    maxSpeed: 15,
+    viscosity: 0.96, // Viscosité du milieu (comme dans un fluide)
+    turbulence: 0.3, // Force de turbulence
+    rotationInertia: 0.98, // Inertie de rotation
+    deformationResponse: 0.4, // Réponse de déformation au mouvement
+  },
+  
+  // Animation organique
+  animation: {
+    fps: 60, // 60 FPS pour ultra smooth
+    breathingSpeed: 0.0008, // Respiration très lente
+    morphSmoothness: 0.015, // Lissage du morphing
+    tensionRelaxation: 0.02, // Relaxation de la tension
+    pointCount: 12, // Plus de points pour plus de fluidité
+  }
 };
 
 /* ================= UTILS ================= */
@@ -61,243 +58,428 @@ function mulberry32(seed) {
   };
 }
 
-/* ================= CLASSE CELLULE ================= */
-class Cell {
+// Fonction d'interpolation smooth (ease in-out)
+function smoothstep(t) {
+  return t * t * (3 - 2 * t);
+}
+
+// Noise Perlin simplifié pour mouvement organique
+function noise2D(x, y, seed = 0) {
+  const dot = (gx, gy, dx, dy) => gx * dx + gy * dy;
+  const mix = (a, b, t) => a * (1 - t) + b * t;
+  
+  const X = Math.floor(x) & 255;
+  const Y = Math.floor(y) & 255;
+  const xf = x - Math.floor(x);
+  const yf = y - Math.floor(y);
+  
+  const u = smoothstep(xf);
+  const v = smoothstep(yf);
+  
+  const grad = [
+    [1, 1], [-1, 1], [1, -1], [-1, -1],
+    [1, 0], [-1, 0], [0, 1], [0, -1]
+  ];
+  
+  const hash = (x, y) => {
+    const h = (x * 374761393 + y * 668265263 + seed * 1013904223) & 0x7fffffff;
+    return grad[h % 8];
+  };
+  
+  const g00 = hash(X, Y);
+  const g10 = hash(X + 1, Y);
+  const g01 = hash(X, Y + 1);
+  const g11 = hash(X + 1, Y + 1);
+  
+  const n00 = dot(g00[0], g00[1], xf, yf);
+  const n10 = dot(g10[0], g10[1], xf - 1, yf);
+  const n01 = dot(g01[0], g01[1], xf, yf - 1);
+  const n11 = dot(g11[0], g11[1], xf - 1, yf - 1);
+  
+  const nx0 = mix(n00, n10, u);
+  const nx1 = mix(n01, n11, u);
+  
+  return mix(nx0, nx1, v);
+}
+
+/* ================= CLASSE CELLULE ORGANIQUE ================= */
+class OrganicCell {
   constructor({ x, y, color, size, rnd, id, bounds, fromEdge = false }) {
     this.id = id;
     this.x = x;
     this.y = y;
+    this.prevX = x;
+    this.prevY = y;
     this.color = color;
     this.baseSize = size;
     this.size = size;
     this.bounds = bounds;
     this.rnd = rnd;
     this.isDead = false;
-
-    // État de fusion
-    this.isFusing = false;
-    this.fusionProgress = 0;
-    this.fusionTarget = null;
-
-    // Physique
+    this.age = 0;
+    
+    // Physique fluide
     this.vx = 0;
     this.vy = 0;
+    this.ax = 0; // Accélération
+    this.ay = 0;
+    
+    // Rotation organique
     this.rotation = rnd() * Math.PI * 2;
-    const rotationBase = (rnd() - 0.5) * CONFIG.physics.rotationSpeed;
-    this.rotationSpeed = rotationBase * (0.1 + rnd() * CONFIG.physics.rotationVariability);
-    this.rotationChangeTimer = rnd() * 5000;
-
+    this.rotationSpeed = 0;
+    this.rotationAccel = 0;
+    this.targetRotationSpeed = (rnd() - 0.5) * 0.05;
+    
+    // État de respiration
+    this.breathPhase = rnd() * Math.PI * 2;
+    this.breathRate = 0.5 + rnd() * 0.5; // Vitesse de respiration variable
+    this.breathAmplitude = 0.03 + rnd() * 0.02;
+    
     // Animation
-    this.scale = fromEdge ? 0.1 : (0.9 + rnd() * 0.2);
-    this.targetScale = 0.9 + rnd() * 0.2;
+    this.scale = fromEdge ? 0.1 : 1;
     this.opacity = fromEdge ? 0 : 1;
-
-    // Forme
+    
+    // Forme organique avec tension
     this.points = [];
-    this.targetPoints = [];
-    const numPoints = CONFIG.animation.pointCount || 6;
+    this.pointVelocities = [];
+    this.pointTensions = [];
+    const numPoints = CONFIG.animation.pointCount;
+    
     for (let i = 0; i < numPoints; i++) {
-      const radius = 0.7 + rnd() * 0.6;
-      const angleOffset = (rnd() - 0.5) * CONFIG.animation.morphIntensity;
-      this.points.push({ r: radius, a: angleOffset });
-      this.targetPoints.push({
-        r: 0.7 + rnd() * 0.6,
-        a: (rnd() - 0.5) * CONFIG.animation.morphIntensity,
+      const angle = (i / numPoints) * Math.PI * 2;
+      const radius = 0.9 + rnd() * 0.2;
+      
+      this.points.push({
+        r: radius,
+        a: 0,
+        targetR: radius,
+        targetA: 0
       });
+      
+      this.pointVelocities.push({ r: 0, a: 0 });
+      this.pointTensions.push(0);
     }
-
-    // Spawn
+    
+    // États de déformation
+    this.stretchX = 1;
+    this.stretchY = 1;
+    this.skew = 0;
+    
+    // Fusion organique
+    this.isFusing = false;
+    this.fusionPartner = null;
+    this.fusionProgress = 0;
+    
+    // Turbulence locale
+    this.turbulencePhase = rnd() * Math.PI * 2;
+    this.turbulenceSpeed = 0.001 + rnd() * 0.002;
+    
     if (fromEdge) {
       this.spawnFromEdge();
-    } else {
-      this.vx = (rnd() - 0.5) * CONFIG.physics.baseSpeed;
-      this.vy = (rnd() - 0.5) * CONFIG.physics.baseSpeed;
     }
   }
-
+  
   spawnFromEdge() {
     const side = Math.floor(this.rnd() * 4);
     const margin = 50;
-
-    switch (side) {
+    
+    switch(side) {
       case 0: // Haut
         this.x = this.rnd() * this.bounds.width;
         this.y = -margin;
-        this.vx = (this.rnd() - 0.5) * CONFIG.physics.baseSpeed * 0.5;
-        this.vy = Math.abs(this.rnd() * CONFIG.physics.baseSpeed);
+        this.vx = (this.rnd() - 0.5) * 2;
+        this.vy = 2 + this.rnd() * 2;
         break;
       case 1: // Droite
         this.x = this.bounds.width + margin;
         this.y = this.rnd() * this.bounds.height;
-        this.vx = -Math.abs(this.rnd() * CONFIG.physics.baseSpeed);
-        this.vy = (this.rnd() - 0.5) * CONFIG.physics.baseSpeed * 0.5;
+        this.vx = -(2 + this.rnd() * 2);
+        this.vy = (this.rnd() - 0.5) * 2;
         break;
       case 2: // Bas
         this.x = this.rnd() * this.bounds.width;
         this.y = this.bounds.height + margin;
-        this.vx = (this.rnd() - 0.5) * CONFIG.physics.baseSpeed * 0.5;
-        this.vy = -Math.abs(this.rnd() * CONFIG.physics.baseSpeed);
+        this.vx = (this.rnd() - 0.5) * 2;
+        this.vy = -(2 + this.rnd() * 2);
         break;
       case 3: // Gauche
         this.x = -margin;
         this.y = this.rnd() * this.bounds.height;
-        this.vx = Math.abs(this.rnd() * CONFIG.physics.baseSpeed);
-        this.vy = (this.rnd() - 0.5) * CONFIG.physics.baseSpeed * 0.5;
+        this.vx = 2 + this.rnd() * 2;
+        this.vy = (this.rnd() - 0.5) * 2;
         break;
     }
   }
-
+  
   update(deltaTime, allCells) {
-    const dt = Math.max(0, deltaTime) / 1000; // Convertir en secondes
-
-    // Fade in/out
+    const dt = deltaTime / 1000;
+    this.age += deltaTime;
+    
+    // Sauvegarder position précédente pour calculer la vitesse réelle
+    this.prevX = this.x;
+    this.prevY = this.y;
+    
+    // Fade in smooth
     if (this.scale < 1) {
-      this.scale = Math.min(1, this.scale + 0.05);
-      this.opacity = Math.min(1, this.opacity + 0.05);
+      this.scale = Math.min(1, this.scale + 0.02);
+      this.opacity = Math.min(1, this.opacity + 0.02);
     }
-
-    // Rotation
-    this.rotation += this.rotationSpeed;
-
-    // Forces aléatoires pour le mouvement brownien
-    this.vx += (this.rnd() - 0.5) * 30 * dt;
-    this.vy += (this.rnd() - 0.5) * 30 * dt;
-
-    // Répulsion entre cellules de couleurs différentes
+    
+    // Respiration naturelle
+    this.breathPhase += CONFIG.animation.breathingSpeed * this.breathRate * deltaTime;
+    const breathing = Math.sin(this.breathPhase) * this.breathAmplitude;
+    
+    // Turbulence organique
+    this.turbulencePhase += this.turbulenceSpeed * deltaTime;
+    const turbX = noise2D(this.x * 0.01, this.age * 0.0001, 0) * CONFIG.physics.turbulence;
+    const turbY = noise2D(this.y * 0.01, this.age * 0.0001, 100) * CONFIG.physics.turbulence;
+    
+    // Forces appliquées
+    this.ax = turbX;
+    this.ay = turbY;
+    
+    // Répulsion douce entre cellules différentes
     allCells.forEach(other => {
-      if (other.id !== this.id && other.color !== this.color) {
+      if (other.id !== this.id) {
         const dx = this.x - other.x;
         const dy = this.y - other.y;
-        const dist = Math.hypot(dx, dy);
-        const minDist = this.size * this.scale + other.size * other.scale;
-
-        if (dist < minDist * 1.5 && dist > 0) {
-          const force = CONFIG.physics.repulsionForce * (1 - dist / (minDist * 1.3));
-          this.vx += (dx / dist) * force * dt;
-          this.vy += (dy / dist) * force * dt;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist > 0 && dist < 200) {
+          const minDist = (this.size + other.size) * 0.8;
+          
+          if (other.color !== this.color && dist < minDist * 1.5) {
+            // Répulsion fluide entre couleurs différentes
+            const force = smoothstep(1 - dist / (minDist * 1.5)) * 30;
+            this.ax += (dx / dist) * force;
+            this.ay += (dy / dist) * force;
+          } else if (other.color === this.color && dist < minDist * 0.6) {
+            // Attraction douce pour fusion
+            if (!this.isFusing && !other.isFusing) {
+              const attraction = smoothstep(1 - dist / (minDist * 0.6)) * 10;
+              this.ax -= (dx / dist) * attraction;
+              this.ay -= (dy / dist) * attraction;
+            }
+          }
         }
       }
     });
-
-    // Friction
-    this.vx *= CONFIG.physics.friction;
-    this.vy *= CONFIG.physics.friction;
-
+    
+    // Intégration de la vitesse avec viscosité
+    this.vx += this.ax * dt * 60;
+    this.vy += this.ay * dt * 60;
+    this.vx *= CONFIG.physics.viscosity;
+    this.vy *= CONFIG.physics.viscosity;
+    
     // Limiter la vitesse
-    const speed = Math.hypot(this.vx, this.vy);
-    const maxSpeed = CONFIG.physics.baseSpeed * 2;
-    if (speed > maxSpeed && speed > 0) {
-      this.vx = (this.vx / speed) * maxSpeed;
-      this.vy = (this.vy / speed) * maxSpeed;
+    const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+    if (speed > CONFIG.physics.maxSpeed) {
+      const factor = CONFIG.physics.maxSpeed / speed;
+      this.vx *= factor;
+      this.vy *= factor;
     }
-
-    // Appliquer le mouvement (×60 pour un ressenti frame-based)
+    
+    // Mise à jour position
     this.x += this.vx * dt * 60;
     this.y += this.vy * dt * 60;
-
-    // Extinction hors-bords
-    if (
-      this.x < -100 || this.x > this.bounds.width + 100 ||
-      this.y < -100 || this.y > this.bounds.height + 100
-    ) {
+    
+    // Calcul de la vitesse réelle pour la déformation
+    const realVx = (this.x - this.prevX) / (dt * 60);
+    const realVy = (this.y - this.prevY) / (dt * 60);
+    const realSpeed = Math.sqrt(realVx * realVx + realVy * realVy);
+    
+    // Déformation basée sur le mouvement (étirement dans la direction du mouvement)
+    if (realSpeed > 0.5) {
+      const targetStretchX = 1 + (realVx / CONFIG.physics.maxSpeed) * CONFIG.physics.deformationResponse;
+      const targetStretchY = 1 + (realVy / CONFIG.physics.maxSpeed) * CONFIG.physics.deformationResponse;
+      this.stretchX += (targetStretchX - this.stretchX) * 0.1;
+      this.stretchY += (targetStretchY - this.stretchY) * 0.1;
+      
+      // Skew basé sur l'accélération latérale
+      const targetSkew = (this.ax * realVy - this.ay * realVx) * 0.001;
+      this.skew += (targetSkew - this.skew) * 0.05;
+    } else {
+      // Retour à la forme normale
+      this.stretchX += (1 - this.stretchX) * CONFIG.animation.tensionRelaxation;
+      this.stretchY += (1 - this.stretchY) * CONFIG.animation.tensionRelaxation;
+      this.skew *= 0.95;
+    }
+    
+    // Rotation organique avec inertie
+    this.rotationAccel = (this.targetRotationSpeed - this.rotationSpeed) * 0.01;
+    this.rotationSpeed += this.rotationAccel;
+    this.rotationSpeed *= CONFIG.physics.rotationInertia;
+    this.rotation += this.rotationSpeed;
+    
+    // Changement occasionnel de direction de rotation
+    if (Math.random() < 0.001) {
+      this.targetRotationSpeed = (this.rnd() - 0.5) * 0.08;
+    }
+    
+    // Animation des points de forme
+    for (let i = 0; i < this.points.length; i++) {
+      const point = this.points[i];
+      const velocity = this.pointVelocities[i];
+      
+      // Cible avec respiration et mouvement
+      const baseRadius = 1 + breathing;
+      const movementInfluence = realSpeed * 0.01;
+      point.targetR = baseRadius + (this.rnd() - 0.5) * 0.1 * (1 + movementInfluence);
+      point.targetA = (this.rnd() - 0.5) * 0.1 * (1 + movementInfluence);
+      
+      // Physics-based animation
+      velocity.r += (point.targetR - point.r) * 0.02 - velocity.r * 0.1;
+      velocity.a += (point.targetA - point.a) * 0.02 - velocity.a * 0.1;
+      
+      point.r += velocity.r;
+      point.a += velocity.a;
+      
+      // Limiter les valeurs
+      point.r = Math.max(0.5, Math.min(1.5, point.r));
+    }
+    
+    // Gestion de la fusion
+    if (this.isFusing && this.fusionPartner) {
+      this.fusionProgress += dt * 2; // 0.5 seconde pour fusion complète
+      
+      if (this.fusionProgress >= 1) {
+        this.completeFusion();
+      } else {
+        // Mouvement vers le partenaire avec déformation
+        const t = smoothstep(this.fusionProgress);
+        const dx = this.fusionPartner.x - this.x;
+        const dy = this.fusionPartner.y - this.y;
+        
+        this.vx += dx * t * 0.1;
+        this.vy += dy * t * 0.1;
+        
+        // Déformation pendant la fusion
+        this.stretchX = 1 + dx * 0.001 * t;
+        this.stretchY = 1 + dy * 0.001 * t;
+      }
+    }
+    
+    // Mort hors limites
+    if (this.x < -200 || this.x > this.bounds.width + 200 ||
+        this.y < -200 || this.y > this.bounds.height + 200) {
       this.opacity *= 0.95;
       if (this.opacity < 0.01) {
         this.isDead = true;
       }
     }
-
-    // Animation de scale
-    if (Math.random() < 0.01) {
-      this.targetScale =
-        CONFIG.animation.scaleRange[0] +
-        this.rnd() * (CONFIG.animation.scaleRange[1] - CONFIG.animation.scaleRange[0]);
-    }
-    this.scale += (this.targetScale - this.scale) * CONFIG.animation.scaleSpeed;
-
-    // Morphing de la forme
-    for (let i = 0; i < this.points.length; i++) {
-      if (Math.random() < 0.005) {
-        this.targetPoints[i].r = 1 + (this.rnd() - 0.5) * 0.4;
-        this.targetPoints[i].a = (this.rnd() - 0.5) * 0.3;
-      }
-      this.points[i].r += (this.targetPoints[i].r - this.points[i].r) * CONFIG.animation.morphSpeed;
-      this.points[i].a += (this.targetPoints[i].a - this.points[i].a) * CONFIG.animation.morphSpeed;
-    }
-
-    // Impulsion occasionnelle
-    if (Math.random() < 0.02) {
-      this.vx += (this.rnd() - 0.5) * CONFIG.physics.baseSpeed;
-      this.vy += (this.rnd() - 0.5) * CONFIG.physics.baseSpeed;
-    }
   }
-
+  
   canFuseWith(other) {
     if (this.color !== other.color) return false;
+    if (this.isFusing || other.isFusing) return false;
+    
     const dx = this.x - other.x;
     const dy = this.y - other.y;
-    const dist = Math.hypot(dx, dy);
-    const touchDist = (this.size * this.scale + other.size * other.scale) * 0.8;
-    return dist < touchDist;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const minDist = (this.size + other.size) * 0.5;
+    
+    return dist < minDist;
   }
-
-  // Implémentation simple de fusion "absorbante"
+  
   startFusion(other) {
-    const factor = 0.35; // quantité absorbée
-    this.size = Math.min(this.baseSize * 1.8, this.size + other.size * factor);
-    this.x = (this.x + other.x) / 2;
-    this.y = (this.y + other.y) / 2;
-    this.scale = Math.min(CONFIG.animation.scaleRange[1], this.scale * 1.02);
-    this.opacity = Math.min(1, (this.opacity + other.opacity) / 2);
+    this.isFusing = true;
+    this.fusionPartner = other;
+    this.fusionProgress = 0;
   }
-
+  
+  completeFusion() {
+    if (!this.fusionPartner) return;
+    
+    // Conservation de la surface
+    const area1 = Math.PI * this.size * this.size;
+    const area2 = Math.PI * this.fusionPartner.size * this.fusionPartner.size;
+    const newArea = area1 + area2;
+    this.size = Math.sqrt(newArea / Math.PI);
+    
+    // Conservation de la quantité de mouvement
+    const m1 = area1;
+    const m2 = area2;
+    const totalMass = m1 + m2;
+    this.vx = (this.vx * m1 + this.fusionPartner.vx * m2) / totalMass;
+    this.vy = (this.vy * m1 + this.fusionPartner.vy * m2) / totalMass;
+    
+    // Position pondérée
+    this.x = (this.x * m1 + this.fusionPartner.x * m2) / totalMass;
+    this.y = (this.y * m1 + this.fusionPartner.y * m2) / totalMass;
+    
+    // Reset
+    this.isFusing = false;
+    this.fusionPartner = null;
+    this.fusionProgress = 0;
+    
+    // Nouvelle forme après fusion
+    for (let i = 0; i < this.points.length; i++) {
+      this.points[i].targetR = 0.9 + this.rnd() * 0.2;
+      this.points[i].targetA = (this.rnd() - 0.5) * 0.1;
+    }
+  }
+  
   getPath() {
-    // Garde-fous
-    if (!isFinite(this.x) || !isFinite(this.y) || !isFinite(this.size) || !isFinite(this.scale)) {
-      return "";
-    }
-
     const points = [];
-    const numPoints = Math.max(3, this.points.length || 8);
-
+    const numPoints = this.points.length;
+    
+    if (numPoints < 3) return '';
+    
     for (let i = 0; i < numPoints; i++) {
-      const p = this.points[i] || { r: 1, a: 0 };
-      const a = (isFinite(p.a) ? p.a : 0);
-      const r = (isFinite(p.r) ? p.r : 1);
-      const angle = (i / numPoints) * Math.PI * 2 + a + (isFinite(this.rotation) ? this.rotation : 0);
-      const radius = this.size * this.scale * r;
-      const px = this.x + Math.cos(angle) * radius;
-      const py = this.y + Math.sin(angle) * radius;
-      if (!isFinite(px) || !isFinite(py)) return "";
-      points.push([px, py]);
+      const point = this.points[i];
+      if (!point) continue;
+      
+      const angle = (i / numPoints) * Math.PI * 2 + point.a + this.rotation;
+      
+      // Appliquer les déformations
+      let x = Math.cos(angle) * point.r;
+      let y = Math.sin(angle) * point.r;
+      
+      // Étirement
+      x *= this.stretchX;
+      y *= this.stretchY;
+      
+      // Skew
+      x += y * this.skew;
+      
+      // Échelle finale
+      x *= this.size * this.scale;
+      y *= this.size * this.scale;
+      
+      points.push([this.x + x, this.y + y]);
     }
-
-    if (!points.length) return "";
-
-    // Courbe de Bézier smooth
+    
+    if (points.length < 3) return '';
+    
+    // Courbe de Bézier ultra smooth avec tension variable
     let path = `M ${points[0][0]},${points[0][1]}`;
-    const tension = 0.9;
-    for (let i = 0; i < numPoints; i++) {
+    const tension = 0.4 + smoothstep(Math.min(1, this.age / 3000)) * 0.4; // Tension progressive
+    
+    for (let i = 0; i < points.length; i++) {
+      const p0 = points[(i - 1 + points.length) % points.length];
       const p1 = points[i];
-      const p2 = points[(i + 1) % numPoints];
-      const p0 = points[(i - 1 + numPoints) % numPoints];
-      const p3 = points[(i + 2) % numPoints];
-
+      const p2 = points[(i + 1) % points.length];
+      const p3 = points[(i + 2) % points.length];
+      
+      if (!p1 || !p2 || !p0 || !p3) continue;
+      
+      // Tangentes Catmull-Rom
       const cp1x = p1[0] + (p2[0] - p0[0]) * tension / 3;
       const cp1y = p1[1] + (p2[1] - p0[1]) * tension / 3;
       const cp2x = p2[0] - (p3[0] - p1[0]) * tension / 3;
       const cp2y = p2[1] - (p3[1] - p1[1]) * tension / 3;
-
-      if (![cp1x, cp1y, cp2x, cp2y, p2[0], p2[1]].every(isFinite)) return "";
+      
       path += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${p2[0]},${p2[1]}`;
     }
-    return path + " Z";
+    
+    return path + ' Z';
   }
 }
 
 /* ================= HOOK TAILLE PAGE ================= */
 function usePageSize() {
   const [size, setSize] = useState({ width: 1200, height: 800 });
-
+  
   useEffect(() => {
     function updateSize() {
       const docHeight = Math.max(
@@ -307,23 +489,23 @@ function usePageSize() {
         document.documentElement.scrollHeight,
         document.documentElement.offsetHeight
       );
-      setSize({
+      setSize({ 
         width: window.innerWidth,
         height: docHeight
       });
     }
-
+    
     updateSize();
     const resizeObserver = new ResizeObserver(updateSize);
     resizeObserver.observe(document.body);
     window.addEventListener('resize', updateSize);
-
+    
     return () => {
       resizeObserver.disconnect();
       window.removeEventListener('resize', updateSize);
     };
   }, []);
-
+  
   return size;
 }
 
@@ -332,89 +514,82 @@ export default function MatisseWallpaper() {
   const [cells, setCells] = useState([]);
   const { width: docW, height: docH } = usePageSize();
   const animationRef = useRef();
-  const lastTimeRef = useRef(0);
+  const lastTimeRef = useRef(performance.now());
   const coverageCheckRef = useRef(0);
-
+  
   const rnd = useMemo(() => {
-    if (typeof crypto !== "undefined" && crypto.getRandomValues) {
-      const arr = new Uint32Array(1);
-      crypto.getRandomValues(arr);
-      return mulberry32(arr[0] >>> 0);
-    }
-    return mulberry32(Date.now() >>> 0);
+    const seed = typeof crypto !== "undefined" && crypto.getRandomValues ? 
+      crypto.getRandomValues(new Uint32Array(1))[0] : Date.now();
+    return mulberry32(seed);
   }, []);
-
-  // Calculer la couverture des cellules
+  
+  // Calculer la couverture
   const calculateCoverage = (cellList, width, height) => {
-    const totalPageArea = Math.max(1, width * height);
+    const totalArea = width * height;
     let cellsArea = 0;
-
+    
     cellList.forEach(cell => {
-      const radius = Math.max(0, cell.size * cell.scale);
-      cellsArea += Math.PI * radius * radius;
+      cellsArea += Math.PI * cell.size * cell.size * cell.scale * cell.scale;
     });
-
-    return cellsArea / totalPageArea;
+    
+    return cellsArea / totalArea;
   };
-
-  // Initialisation avec distribution homogène
+  
+  // Initialisation
   useEffect(() => {
-    if (!docW || !docH) return;
     const bounds = { width: docW, height: docH };
     const newCells = [];
     const colors = ['olive', 'terra', 'sable'];
-
-    // Grille pour distribution homogène
+    
     const cols = 4;
     const rows = 3;
     const cellWidth = docW / cols;
     const cellHeight = docH / rows;
-
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols && newCells.length < CONFIG.initialCount; col++) {
-        const color = colors[newCells.length % colors.length];
-        const { min, max } = CONFIG.sizes[color];
-        const size = min + rnd() * (max - min);
-        const x = (col + 0.5) * cellWidth + (rnd() - 0.5) * cellWidth * 0.3;
-        const y = (row + 0.5) * cellHeight + (rnd() - 0.5) * cellHeight * 0.3;
-
-        newCells.push(new Cell({
-          x: Math.max(100, Math.min(docW - 100, x)),
-          y: Math.max(100, Math.min(docH - 100, y)),
-          color,
-          size,
-          rnd,
-          id: `cell_${Date.now()}_${newCells.length}`,
-          bounds,
-          fromEdge: false
-        }));
-      }
+    
+    for (let i = 0; i < CONFIG.initialCount; i++) {
+      const row = Math.floor(i / cols);
+      const col = i % cols;
+      const color = colors[i % colors.length];
+      const sizeRange = CONFIG.sizes[color];
+      const size = sizeRange.min + rnd() * (sizeRange.max - sizeRange.min);
+      
+      const x = (col + 0.5) * cellWidth + (rnd() - 0.5) * cellWidth * 0.4;
+      const y = (row + 0.5) * cellHeight + (rnd() - 0.5) * cellHeight * 0.4;
+      
+      newCells.push(new OrganicCell({
+        x: Math.max(100, Math.min(docW - 100, x)),
+        y: Math.max(100, Math.min(docH - 100, y)),
+        color,
+        size,
+        rnd,
+        id: `cell_${Date.now()}_${i}`,
+        bounds,
+        fromEdge: false
+      }));
     }
-
+    
     setCells(newCells);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rnd, docW, docH]);
-
-  // Boucle d'animation
+  
+  // Animation loop
   useEffect(() => {
     if (cells.length === 0) return;
-
+    
     const animate = (currentTime) => {
-      if (!lastTimeRef.current) lastTimeRef.current = currentTime;
       const deltaTime = currentTime - lastTimeRef.current;
-
+      
       if (deltaTime >= 1000 / CONFIG.animation.fps) {
         setCells(currentCells => {
-          let newCells = currentCells.map(c => c); // shallow copy
+          let newCells = [...currentCells];
           const bounds = { width: docW, height: docH };
-
-          // Mise à jour de chaque cellule
+          
+          // Update
           newCells.forEach(cell => cell.update(deltaTime, newCells));
-
-          // Retirer les cellules mortes
+          
+          // Remove dead
           newCells = newCells.filter(cell => !cell.isDead);
-
-          // Fusion organique des cellules de même couleur
+          
+          // Fusion
           const toRemove = new Set();
           for (let i = 0; i < newCells.length; i++) {
             if (toRemove.has(i)) continue;
@@ -427,21 +602,21 @@ export default function MatisseWallpaper() {
             }
           }
           newCells = newCells.filter((_, idx) => !toRemove.has(idx));
-
-          // Vérifier la couverture toutes les X secondes
+          
+          // Coverage check
           coverageCheckRef.current += deltaTime;
           if (coverageCheckRef.current >= CONFIG.coverage.checkInterval) {
             coverageCheckRef.current = 0;
             const coverage = calculateCoverage(newCells, docW, docH);
-
-            // Si couverture trop faible, spawn plus fréquent
+            
+            // Spawn si nécessaire
             if (coverage < CONFIG.coverage.min && newCells.length < CONFIG.maxCells) {
               const colors = ['olive', 'terra', 'sable'];
               const color = colors[Math.floor(rnd() * colors.length)];
-              const { min, max } = CONFIG.sizes[color];
-              const size = min + rnd() * (max - min);
-
-              newCells.push(new Cell({
+              const sizeRange = CONFIG.sizes[color];
+              const size = sizeRange.min + rnd() * (sizeRange.max - sizeRange.min);
+              
+              newCells.push(new OrganicCell({
                 x: 0, y: 0,
                 color,
                 size,
@@ -451,61 +626,26 @@ export default function MatisseWallpaper() {
                 fromEdge: true
               }));
             }
-            // Si couverture trop élevée, réduire les spawns ou laisser mourir
-            else if (coverage > CONFIG.coverage.max && newCells.length > CONFIG.minCells) {
-              // Les cellules en bordure meurent plus vite
-              newCells.forEach(cell => {
-                if (
-                  cell.x < 100 || cell.x > docW - 100 ||
-                  cell.y < 100 || cell.y > docH - 100
-                ) {
-                  cell.opacity *= 0.98;
-                  if (cell.opacity < 0.01) cell.isDead = true;
-                }
-              });
-              newCells = newCells.filter(cell => !cell.isDead);
-            }
           }
-
-          // Spawn occasionnel depuis les bords (ajusté selon la couverture)
-          const coverageNow = calculateCoverage(newCells, docW, docH);
-          const spawnChance = coverageNow > CONFIG.coverage.target ? 0.002 : 0.008;
-
-          if (newCells.length < CONFIG.maxCells && Math.random() < spawnChance) {
-            const colors = ['olive', 'terra', 'sable'];
-            const color = colors[Math.floor(rnd() * colors.length)];
-            const { min, max } = CONFIG.sizes[color];
-            const size = min + rnd() * (max - min);
-
-            newCells.push(new Cell({
-              x: 0, y: 0,
-              color,
-              size,
-              rnd,
-              id: `cell_${Date.now()}_${Math.random()}`,
-              bounds,
-              fromEdge: true
-            }));
-          }
-
+          
           return newCells;
         });
-
+        
         lastTimeRef.current = currentTime;
       }
-
+      
       animationRef.current = requestAnimationFrame(animate);
     };
-
+    
     animationRef.current = requestAnimationFrame(animate);
-
+    
     return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-      lastTimeRef.current = 0;
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cells.length, rnd, docW, docH]);
-
+  
   return (
     <div
       aria-hidden="true"
@@ -526,35 +666,37 @@ export default function MatisseWallpaper() {
         viewBox={`0 0 ${docW} ${docH}`}
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
-        style={{
+        style={{ 
           background: CONFIG.colors.bg,
           transform: 'translateZ(0)'
         }}
       >
         <defs>
-          <filter id="organic">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
-            <feColorMatrix
-              in="blur"
-              type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -8"
+          <filter id="organic" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+            <feColorMatrix 
+              in="blur" 
+              type="matrix" 
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" 
+              result="goo"
             />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
           </filter>
         </defs>
-
+        
         <g filter="url(#organic)">
-          {cells.map(cell => {
-            const d = cell.getPath();
-            if (!d) return null; // évite les NaN dans d
-            return (
-              <path
-                key={cell.id}
-                d={d}
-                fill={CONFIG.colors[cell.color]}
-                opacity={cell.opacity}
-              />
-            );
-          })}
+          {cells.map(cell => (
+            <path
+              key={cell.id}
+              d={cell.getPath()}
+              fill={CONFIG.colors[cell.color]}
+              opacity={cell.opacity}
+              style={{
+                transition: 'none',
+                willChange: 'transform'
+              }}
+            />
+          ))}
         </g>
       </svg>
     </div>
