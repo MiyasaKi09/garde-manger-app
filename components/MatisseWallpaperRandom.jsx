@@ -9,14 +9,14 @@ const CONFIG = {
     terra: "var(--terra-500, #c08a5a)",
     sable: "var(--sable-300, #e2c98f)",
   },
-  
-  // Tailles de base des cellules (plages)
+
+  // Tailles (plages)
   sizes: {
     olive: { min: 80, max: 120 },
     terra: { min: 70, max: 100 },
     sable: { min: 90, max: 140 },
   },
-  
+
   // Couverture
   coverage: {
     min: 0.30,
@@ -24,17 +24,20 @@ const CONFIG = {
     target: 0.45,
     checkInterval: 2000, // ms
   },
+
   initialCount: 10,
   minCells: 8,
   maxCells: 25,
-  
-  // Physique organique (complétée)
+
+  // Physique organique (toutes les constantes nécessaires)
   physics: {
     baseSpeed: 8,
     maxSpeed: 15,
-    // viscosité / amortissements
-    deceleration: 0.98,         // remplace ton usage précédent
+
+    // amortissements
+    deceleration: 0.98,
     rotationDamping: 0.98,
+
     // accélérations / forces
     acceleration: 0.15,
     wanderRadius: 120,
@@ -44,7 +47,7 @@ const CONFIG = {
     repulsionSoftness: 6.0,
     attractionForce: 2.0,
   },
-  
+
   // Animation
   animation: {
     fps: 60,
@@ -72,28 +75,34 @@ function smoothstep(t) {
 function noise2D(x, y, seed = 0) {
   const dot = (gx, gy, dx, dy) => gx * dx + gy * dy;
   const mix = (a, b, t) => a * (1 - t) + b * t;
+
   const X = Math.floor(x) & 255;
   const Y = Math.floor(y) & 255;
   const xf = x - Math.floor(x);
   const yf = y - Math.floor(y);
   const u = smoothstep(xf);
   const v = smoothstep(yf);
+
   const grad = [
     [1, 1], [-1, 1], [1, -1], [-1, -1],
     [1, 0], [-1, 0], [0, 1], [0, -1]
   ];
+
   const hash = (x, y) => {
     const h = (x * 374761393 + y * 668265263 + seed * 1013904223) & 0x7fffffff;
     return grad[h % 8];
   };
+
   const g00 = hash(X, Y);
   const g10 = hash(X + 1, Y);
   const g01 = hash(X, Y + 1);
   const g11 = hash(X + 1, Y + 1);
+
   const n00 = dot(g00[0], g00[1], xf, yf);
   const n10 = dot(g10[0], g10[1], xf - 1, yf);
   const n01 = dot(g01[0], g01[1], xf, yf - 1);
   const n11 = dot(g11[0], g11[1], xf - 1, yf - 1);
+
   const nx0 = mix(n00, n10, u);
   const nx1 = mix(n01, n11, u);
   return mix(nx0, nx1, v);
@@ -114,27 +123,27 @@ class OrganicCell {
     this.rnd = rnd;
     this.isDead = false;
     this.age = 0;
-    
+
     // Physique
     this.vx = 0;
     this.vy = 0;
     this.ax = 0;
     this.ay = 0;
-    
+
     // Rotation
     this.rotation = rnd() * Math.PI * 2;
     this.rotationSpeed = 0;
     this.targetRotationSpeed = (rnd() - 0.5) * 0.02;
-    
+
     // Respiration
     this.breathPhase = rnd() * Math.PI * 2;
     this.breathRate = 0.5 + rnd() * 0.5;
     this.breathAmplitude = 0.03 + rnd() * 0.02;
-    
+
     // Apparition
     this.scale = fromEdge ? 0.1 : 1;
     this.opacity = fromEdge ? 0 : 1;
-    
+
     // Forme
     this.points = [];
     this.pointVelocities = [];
@@ -146,32 +155,32 @@ class OrganicCell {
         a: 0,
         targetR: radius,
         targetA: 0,
-        baseR: radius, // <-- important
+        baseR: radius, // base pour oscillations
       });
       this.pointVelocities.push({ r: 0, a: 0 });
     }
-    
+
     // Déformations globales
     this.stretchX = 1;
     this.stretchY = 1;
     this.skew = 0;
-    
+
     // Fusion
     this.isFusing = false;
     this.fusionPartner = null;
     this.fusionProgress = 0;
-    
-    // Wander / exploration (INITIALISÉS ICI)
+
+    // Wander / exploration (initialisés)
     this.wanderAngle = rnd() * Math.PI * 2;
-    this.wanderTarget = { x, y }; // <-- évite undefined
-    
+    this.wanderTarget = { x, y };
+
     if (fromEdge) this.spawnFromEdge();
   }
-  
+
   spawnFromEdge() {
     const side = Math.floor(this.rnd() * 4);
     const margin = 50;
-    switch(side) {
+    switch (side) {
       case 0: // Haut
         this.x = this.rnd() * this.bounds.width;
         this.y = -margin;
@@ -198,7 +207,7 @@ class OrganicCell {
         break;
     }
   }
-  
+
   updateWanderTarget() {
     if (!this.bounds) return;
     const angle = this.wanderAngle + (this.rnd() - 0.5) * Math.PI * 0.5;
@@ -211,28 +220,27 @@ class OrganicCell {
     };
     this.wanderAngle = angle;
   }
-  
+
   update(deltaTime, allCells) {
     const dt = Math.max(0, deltaTime) / 1000;
     this.age += deltaTime;
-    
+
     // Mémoriser la position précédente
     this.prevX = this.x;
     this.prevY = this.y;
-    
+
     // Apparition
     if (this.scale < 1) {
       const scaleSpeed = 0.005 + smoothstep(this.scale) * 0.01;
       this.scale = Math.min(1, this.scale + scaleSpeed);
       this.opacity = Math.min(1, this.opacity + scaleSpeed);
     }
-    
+
     // Respiration
     this.breathPhase += CONFIG.animation.breathingSpeed * this.breathRate * deltaTime;
     const breathing = Math.sin(this.breathPhase) * this.breathAmplitude;
-    
+
     // === EXPLORATION AUTONOME ===
-    // Sécuriser l'accès à wanderTarget
     if (
       !this.wanderTarget ||
       Math.random() < 0.01 ||
@@ -249,30 +257,35 @@ class OrganicCell {
       this.ax += (wanderDx / wanderDist) * wanderForce;
       this.ay += (wanderDy / wanderDist) * wanderForce;
     }
-    
+
     // Bruit organique léger
     const noiseX = noise2D(this.x * 0.005, this.age * 0.00005, 0) * 0.2;
     const noiseY = noise2D(this.y * 0.005, this.age * 0.00005, 100) * 0.2;
     this.ax += noiseX;
     this.ay += noiseY;
-    
+
     // === INTERACTIONS ===
     if (Array.isArray(allCells)) {
       allCells.forEach(other => {
         if (!other || other.id === this.id) return;
         if (!isFinite(other.x) || !isFinite(other.y)) return;
+
         const dx = this.x - other.x;
         const dy = this.y - other.y;
         const dist = Math.hypot(dx, dy);
+
         if (dist > 0.1 && dist < 300) {
           const minDist = (this.size + other.size) * 0.9;
+
           if (other.color !== this.color && dist < minDist * 2) {
+            // répulsion douce (sigmoïde)
             const normalizedDist = dist / (minDist * 2);
             const repulsion = 1 / (1 + Math.exp((normalizedDist - 0.5) * CONFIG.physics.repulsionSoftness));
             const force = repulsion * 15;
             this.ax += (dx / dist) * force * dt;
             this.ay += (dy / dist) * force * dt;
           } else if (other.color === this.color && dist < minDist * 0.8 && dist > minDist * 0.5) {
+            // légère cohésion
             const attraction = CONFIG.physics.attractionForce * (1 - dist / (minDist * 0.8));
             this.ax -= (dx / dist) * attraction;
             this.ay -= (dy / dist) * attraction;
@@ -280,7 +293,7 @@ class OrganicCell {
         }
       });
     }
-    
+
     // Limiter l'accélération
     const maxAccel = CONFIG.physics.acceleration;
     const accelMag = Math.hypot(this.ax, this.ay);
@@ -288,13 +301,13 @@ class OrganicCell {
       this.ax = (this.ax / accelMag) * maxAccel;
       this.ay = (this.ay / accelMag) * maxAccel;
     }
-    
+
     // Intégration + friction
     this.vx += this.ax * dt * 60;
     this.vy += this.ay * dt * 60;
     this.vx *= CONFIG.physics.deceleration;
     this.vy *= CONFIG.physics.deceleration;
-    
+
     // Limiter la vitesse
     const speed = Math.hypot(this.vx, this.vy);
     if (speed > CONFIG.physics.maxSpeed) {
@@ -302,12 +315,12 @@ class OrganicCell {
       this.vx *= factor;
       this.vy *= factor;
     }
-    
+
     // Position
     this.x += this.vx;
     this.y += this.vy;
     this.ax = 0; this.ay = 0;
-    
+
     // Rotation — cible douce
     if (Math.random() < 0.002) {
       this.targetRotationSpeed = (this.rnd() - 0.5) * CONFIG.physics.rotationMaxSpeed;
@@ -315,8 +328,8 @@ class OrganicCell {
     const rotationAccel = (this.targetRotationSpeed - this.rotationSpeed) * CONFIG.physics.rotationAcceleration;
     this.rotationSpeed = (this.rotationSpeed + rotationAccel) * CONFIG.physics.rotationDamping;
     this.rotation += this.rotationSpeed;
-    
-    // Déformation basée mouvement
+
+    // Déformation basée sur le mouvement
     const realVx = this.x - this.prevX;
     const realVy = this.y - this.prevY;
     const realSpeed = Math.hypot(realVx, realVy);
@@ -334,29 +347,31 @@ class OrganicCell {
       this.stretchY += (1 - this.stretchY) * 0.01;
       this.skew *= 0.99;
     }
-    
-    // Animation des points
+
+    // Animation des points (irrégularité)
     for (let i = 0; i < this.points.length; i++) {
       const point = this.points[i];
       const velocity = this.pointVelocities[i];
       const wavePhase = this.age * 0.001 + i * 0.5;
       const wave = Math.sin(wavePhase) * 0.05;
       const movementInfluence = realSpeed * 0.02;
-      
+
       point.targetR = point.baseR * (1 + breathing + wave) + (this.rnd() - 0.5) * 0.05 * (1 + movementInfluence);
       point.targetA = (this.rnd() - 0.5) * 0.2 * (1 + movementInfluence);
-      
+
       velocity.r += (point.targetR - point.r) * 0.008;
       velocity.a += (point.targetA - point.a) * 0.008;
       velocity.r *= 0.92;
       velocity.a *= 0.92;
+
       point.r += velocity.r;
       point.a += velocity.a;
+
       point.r = Math.max(0.3, Math.min(1.7, point.r));
       point.a = Math.max(-0.5, Math.min(0.5, point.a));
     }
-    
-    // Fusion : progression
+
+    // Fusion
     if (this.isFusing && this.fusionPartner) {
       this.fusionProgress += dt * 2;
       if (this.fusionProgress >= 1) {
@@ -371,7 +386,7 @@ class OrganicCell {
         this.stretchY = 1 + dy * 0.001 * t;
       }
     }
-    
+
     // Mort hors limites
     if (this.x < -200 || this.x > this.bounds.width + 200 ||
         this.y < -200 || this.y > this.bounds.height + 200) {
@@ -379,7 +394,7 @@ class OrganicCell {
       if (this.opacity < 0.01) this.isDead = true;
     }
   }
-  
+
   canFuseWith(other) {
     if (!other) return false;
     if (this.color !== other.color) return false;
@@ -390,13 +405,13 @@ class OrganicCell {
     const minDist = (this.size + other.size) * 0.5;
     return dist < minDist;
   }
-  
+
   startFusion(other) {
     this.isFusing = true;
     this.fusionPartner = other;
     this.fusionProgress = 0;
   }
-  
+
   completeFusion() {
     if (!this.fusionPartner) return;
     const area1 = Math.PI * this.size * this.size;
@@ -416,7 +431,7 @@ class OrganicCell {
       this.points[i].targetA = (this.rnd() - 0.5) * 0.1;
     }
   }
-  
+
   getPath() {
     if (!isFinite(this.x) || !isFinite(this.y) || !isFinite(this.size) || !isFinite(this.scale)) {
       return '';
@@ -482,10 +497,8 @@ function usePageSize() {
 export default function MatisseWallpaper() {
   const [cells, setCells] = useState([]);
   const { width: docW, height: docH } = usePageSize();
-  const animationRef = useRef();
-  const lastTimeRef = useRef(0);
   const coverageCheckRef = useRef(0);
-  
+
   const rnd = useMemo(() => {
     if (typeof crypto !== "undefined" && crypto.getRandomValues) {
       const arr = new Uint32Array(1);
@@ -494,7 +507,7 @@ export default function MatisseWallpaper() {
     }
     return mulberry32(Date.now() >>> 0);
   }, []);
-  
+
   const calculateCoverage = (cellList, width, height) => {
     const totalArea = Math.max(1, width * height);
     let cellsArea = 0;
@@ -504,7 +517,7 @@ export default function MatisseWallpaper() {
     }
     return cellsArea / totalArea;
   };
-  
+
   // Initialisation
   useEffect(() => {
     if (!docW || !docH) return;
@@ -532,23 +545,38 @@ export default function MatisseWallpaper() {
     }
     setCells(newCells);
   }, [rnd, docW, docH]);
-  
-  // Animation
+
+  // Animation (cadencée à fps constant)
   useEffect(() => {
     if (cells.length === 0) return;
-    const animate = (currentTime) => {
-      const deltaTime = lastTimeRef.current ? (currentTime - lastTimeRef.current) : 16;
-      if (deltaTime >= 1000 / CONFIG.animation.fps) {
-        setCells(currentCells => {
+
+    const frameInterval = 1000 / CONFIG.animation.fps; // ms
+    let rafId = 0;
+    let last = 0;
+    let acc = 0;
+
+    const animate = (t) => {
+      if (!last) last = t;
+      const dt = t - last;
+      last = t;
+      acc += dt;
+
+      while (acc >= frameInterval) {
+        setCells((currentCells) => {
           let newCells = currentCells.slice();
           const bounds = { width: docW, height: docH };
+
           // update
-          newCells.forEach(cell => {
+          newCells.forEach((cell) => {
             cell.bounds = bounds; // garder à jour
-            cell.update(deltaTime, newCells);
+            cell.update(frameInterval, newCells); // intervalle fixe
           });
-          // purge
-          newCells = newCells.filter(c => !c.isDead && isFinite(c.x) && isFinite(c.y));
+
+          // purge NaN / morts
+          newCells = newCells.filter(
+            (c) => !c.isDead && isFinite(c.x) && isFinite(c.y) && isFinite(c.size) && isFinite(c.scale)
+          );
+
           // fusion
           const toRemove = new Set();
           for (let i = 0; i < newCells.length; i++) {
@@ -562,45 +590,54 @@ export default function MatisseWallpaper() {
             }
           }
           newCells = newCells.filter((_, idx) => !toRemove.has(idx));
-          // couverture
-          coverageCheckRef.current += deltaTime;
+
+          // couverture (toutes les X ms simulées)
+          coverageCheckRef.current += frameInterval;
           if (coverageCheckRef.current >= CONFIG.coverage.checkInterval) {
             coverageCheckRef.current = 0;
             const coverage = calculateCoverage(newCells, docW, docH);
+
             if (coverage < CONFIG.coverage.min && newCells.length < CONFIG.maxCells) {
               const colors = ['olive', 'terra', 'sable'];
               const color = colors[Math.floor(rnd() * colors.length)];
               const { min, max } = CONFIG.sizes[color];
               const size = min + rnd() * (max - min);
-              newCells.push(new OrganicCell({
-                x: 0, y: 0,
-                color, size, rnd,
-                id: `cell_${Date.now()}_${Math.random()}`,
-                bounds, fromEdge: true
-              }));
+              newCells.push(
+                new OrganicCell({
+                  x: 0,
+                  y: 0,
+                  color,
+                  size,
+                  rnd,
+                  id: `cell_${Date.now()}_${Math.random()}`,
+                  bounds,
+                  fromEdge: true,
+                })
+              );
             } else if (coverage > CONFIG.coverage.max && newCells.length > CONFIG.minCells) {
-              newCells.forEach(c => {
+              newCells.forEach((c) => {
                 if (c.x < 100 || c.x > docW - 100 || c.y < 100 || c.y > docH - 100) {
                   c.opacity *= 0.98;
                   if (c.opacity < 0.01) c.isDead = true;
                 }
               });
-              newCells = newCells.filter(c => !c.isDead);
+              newCells = newCells.filter((c) => !c.isDead);
             }
           }
+
           return newCells;
         });
-        lastTimeRef.current = currentTime;
+
+        acc -= frameInterval;
       }
-      animationRef.current = requestAnimationFrame(animate);
+
+      rafId = requestAnimationFrame(animate);
     };
-    animationRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-      lastTimeRef.current = 0;
-    };
+
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
   }, [cells.length, rnd, docW, docH]);
-  
+
   return (
     <div
       aria-hidden="true"
@@ -610,7 +647,7 @@ export default function MatisseWallpaper() {
         left: 0,
         width: '100%',
         height: `${docH}px`,
-        zIndex: 0,
+        zIndex: 0,                 // ajuste si besoin (0 derrière des éléments z>0)
         pointerEvents: "none",
         overflow: "hidden"
       }}
@@ -621,7 +658,7 @@ export default function MatisseWallpaper() {
         viewBox={`0 0 ${docW} ${docH}`}
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ 
+        style={{
           background: CONFIG.colors.bg,
           transform: 'translateZ(0)'
         }}
@@ -629,19 +666,20 @@ export default function MatisseWallpaper() {
         <defs>
           <filter id="organic" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-            <feColorMatrix 
-              in="blur" 
-              type="matrix" 
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" 
+            <feColorMatrix
+              in="blur"
+              type="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
               result="goo"
             />
-            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
           </filter>
         </defs>
+
         <g filter="url(#organic)">
-          {cells.map(cell => {
+          {cells.map((cell) => {
             const d = cell.getPath();
-            if (!d) return null;
+            if (!d) return null; // évite le montage si path invalide
             return (
               <path
                 key={cell.id}
