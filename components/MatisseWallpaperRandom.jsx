@@ -212,12 +212,20 @@ class OrganicCell {
   }
   
   updateWanderTarget() {
+    // Vérifier que les bounds existent
+    if (!this.bounds) return;
+    
     // Nouveau point d'exploration dans un rayon
     const angle = this.wanderAngle + (this.rnd() - 0.5) * Math.PI * 0.5;
     const dist = CONFIG.physics.wanderRadius * (0.5 + this.rnd() * 0.5);
+    
+    // S'assurer que la cible reste dans les limites
+    const targetX = this.x + Math.cos(angle) * dist;
+    const targetY = this.y + Math.sin(angle) * dist;
+    
     this.wanderTarget = {
-      x: this.x + Math.cos(angle) * dist,
-      y: this.y + Math.sin(angle) * dist
+      x: Math.max(50, Math.min(this.bounds.width - 50, targetX)),
+      y: Math.max(50, Math.min(this.bounds.height - 50, targetY))
     };
     this.wanderAngle = angle;
   }
