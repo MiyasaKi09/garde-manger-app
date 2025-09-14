@@ -1,7 +1,3 @@
-// ================================================================
-// 4. app/pantry/page.js - VERSION NETTOYÉE
-// ================================================================
-
 'use client';
 
 import { useEffect, useMemo, useState, useCallback } from 'react';
@@ -61,7 +57,92 @@ function usePantryData() {
     }
   }, []);
 
-  // ... reste des méthodes handleAddLot, handleDeleteLot, handleUpdateLot identiques ...
+  const handleAddLot = useCallback(async (lotData, product) => {
+    try {
+      setErr('');
+      
+      const { data: newLot, error } = await supabase
+        .from('inventory_lots')
+        .insert([lotData])
+        .select(`
+          id, qty, unit, dlc, note, entered_at, location_id,
+          product:products_catalog ( 
+            id, name, category, default_unit, density_g_per_ml, grams_per_unit 
+          ),
+          location:locations ( id, name )
+        `)
+        .single();
+      
+      if (error) throw error;
+      
+      const enrichedLot = {
+        ...newLot,
+        best_before: newLot.dlc || newLot.best_before
+      };
+      
+      setLots(prev => [enrichedLot, ...prev]);
+      return true;
+    } catch (e) {
+      console.error('Erreur ajout lot:', e);
+      setErr(e.message || 'Erreur lors de l\'ajout');
+      return false;
+    }
+  }, []);
+
+  const handleDeleteLot = useCallback(async (lotId) => {
+    try {
+      setErr('');
+      
+      const { error } = await supabase
+        .from('inventory_lots')
+        .delete()
+        .eq('id', lotId);
+      
+      if (error) throw error;
+      
+      setLots(prev => prev.filter(lot => lot.id !== lotId));
+      return true;
+    } catch (e) {
+      console.error('Erreur suppression lot:', e);
+      setErr(e.message || 'Erreur lors de la suppression');
+      return false;
+    }
+  }, []);
+
+  const handleUpdateLot = useCallback(async (lotId, updates) => {
+    try {
+      setErr('');
+      
+      const { data: updatedLot, error } = await supabase
+        .from('inventory_lots')
+        .update(updates)
+        .eq('id', lotId)
+        .select(`
+          id, qty, unit, dlc, note, entered_at, location_id,
+          product:products_catalog ( 
+            id, name, category, default_unit, density_g_per_ml, grams_per_unit 
+          ),
+          location:locations ( id, name )
+        `)
+        .single();
+      
+      if (error) throw error;
+      
+      const enrichedLot = {
+        ...updatedLot,
+        best_before: updatedLot.dlc || updatedLot.best_before
+      };
+      
+      setLots(prev => prev.map(lot => 
+        lot.id === lotId ? enrichedLot : lot
+      ));
+      return true;
+    } catch (e) {
+      console.error('Erreur mise à jour lot:', e);
+      setErr(e.message || 'Erreur lors de la mise à jour');
+      return false;
+    }
+  }, []);
 
   return {
     loading, err, lots, locations, q, setQ, locFilter, setLocFilter,
@@ -70,17 +151,131 @@ function usePantryData() {
   };
 }
 
-// Composants UI helpers (gardent la même structure)
+// Composants UI helpers
 function SearchBar({ q, setQ, locFilter, setLocFilter, locations }) {
-  // ... code identique ...
+  return (
+    <div style={{
+      display: 'flex',
+      gap: '1rem',
+      marginBottom: '1.5rem',
+      flexWrap: 'wrap'
+    }}>
+      <input
+        type="text"
+        placeholder="🔍 Rechercher un produit..."
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+        style={{
+          flex: '2',
+          minWidth: '200px',
+          padding: '0.75rem 1rem',
+          borderRadius: 'var(--radius-md)',
+          border: '1px solid var(--forest-300)',
+          fontSize: '1rem'
+        }}
+      />
+      
+      <select
+        value={locFilter}
+        onChange={(e) => setLocFilter(e.target.value)}
+        style={{
+          flex: '1',
+          minWidth: '150px',
+          padding: '0.75rem',
+          borderRadius: 'var(--radius-md)',
+          border: '1px solid var(--forest-300)',
+          fontSize: '1rem'
+        }}
+      >
+        <option value="Tous">📍 Tous les lieux</option>
+        {locations.map(loc => (
+          <option key={loc.id} value={loc.name}>
+            📍 {loc.name}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
 }
 
 function ViewSelector({ view, setView }) {
-  // ... code identique ...
+  return (
+    <div style={{
+      display: 'flex',
+      gap: '0.5rem',
+      marginBottom: '1.5rem',
+      padding: '0.25rem',
+      background: 'var(--forest-100)',
+      borderRadius: 'var(--radius-md)',
+      width: 'fit-content'
+    }}>
+      {[
+        { key: 'products', icon: '🧺', label: 'Produits' },
+        { key: 'lots', icon: '📦', label: 'Lots' },
+        { key: 'stats', icon: '📊', label: 'Stats' }
+      ].map(({ key, icon, label }) => (
+        <button
+          key={key}
+          onClick={() => setView(key)}
+          className={`btn small ${view === key ? 'primary' : 'secondary'}`}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.5rem 1rem'
+          }}
+        >
+          <span>{icon}</span>
+          {label}
+        </button>
+      ))}
+    </div>
+  );
 }
 
 function Header() {
-  // ... code identique ...
+  return (
+    <div style={{
+      background: 'linear-gradient(135deg, var(--forest-400) 0%, var(--earth-400) 100%)',
+      margin: '-2rem -2rem 2rem -2rem',
+      padding: '2rem',
+      borderRadius: '0 0 1rem 1rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1rem',
+        color: 'white'
+      }}>
+        <div style={{
+          width: '48px',
+          height: '48px',
+          background: 'linear-gradient(135deg, var(--forest-500), var(--forest-400))',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 4px 16px rgba(58, 107, 30, 0.3)'
+        }}>
+          <span style={{ fontSize: '20px' }}>🏺</span>
+        </div>
+
+        <h1 style={{
+          fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
+          fontFamily: 'Crimson Text, serif',
+          fontWeight: '600',
+          background: 'linear-gradient(135deg, var(--forest-700), var(--forest-500))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          margin: 0,
+          letterSpacing: '-0.02em'
+        }}>
+          Garde-Manger
+        </h1>
+      </div>
+    </div>
+  );
 }
 
 // Page principale
@@ -143,7 +338,28 @@ export default function PantryPage() {
     });
   }, [filtered]);
 
-  if (loading) return <div>Chargement...</div>;
+  if (loading) {
+    return (
+      <div className="page">
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          minHeight: '60vh',
+          flexDirection: 'column'
+        }}>
+          <div className="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <p style={{ marginTop: '1rem', color: 'var(--forest-600)' }}>
+            Chargement du garde-manger...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="page">
@@ -166,6 +382,11 @@ export default function PantryPage() {
         <button 
           onClick={() => setShowAddForm(!showAddForm)}
           className={`btn ${showAddForm ? 'danger' : 'primary'}`}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem'
+          }}
         >
           {showAddForm ? '✕ Fermer' : '➕ Ajouter'}
         </button>
@@ -173,8 +394,7 @@ export default function PantryPage() {
 
       <ViewSelector view={view} setView={setView} />
 
-      {/* Reste du JSX identique... */}
-      
+      {/* Formulaire d'ajout */}
       {showAddForm && (
         <div className="card" style={{ marginBottom: '1.5rem' }}>
           <SmartAddForm
@@ -189,17 +409,20 @@ export default function PantryPage() {
         </div>
       )}
 
+      {/* Messages d'erreur */}
       {err && (
         <div className="badge danger" style={{
           display: 'block',
           padding: '1rem',
           marginBottom: '1.5rem',
-          textAlign: 'center'
+          textAlign: 'center',
+          fontSize: '0.95rem'
         }}>
           ❌ {err}
         </div>
       )}
 
+      {/* Contenu principal */}
       {view === 'products' ? (
         <div className="grid cols-3">
           {byProduct.map(({ productId, name, category, unit, lots }) => (
@@ -266,6 +489,7 @@ export default function PantryPage() {
                 <EnhancedLotCard
                   key={lot.id}
                   lot={lot}
+                  locations={locations}
                   onDelete={() => {
                     handleDeleteLot(lot.id);
                     setDetailProduct(null);
