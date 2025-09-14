@@ -1,4 +1,4 @@
-// app/pantry/components/ProductCard.js - Version mise à jour pour la nouvelle structure
+// app/pantry/components/ProductCard.js - Version complète corrigée
 
 'use client';
 
@@ -8,7 +8,6 @@ import { PantryStyles } from './pantryUtils';
 
 export function ProductCard({ product, onUpdate, onDelete, onDetail }) {
   const [expanded, setExpanded] = useState(false);
-  const [editingLot, setEditingLot] = useState(null);
 
   // Calculs des statistiques du produit
   const stats = useMemo(() => {
@@ -387,6 +386,7 @@ export function ProductCard({ product, onUpdate, onDelete, onDetail }) {
                     const days = daysUntil(lot.best_before);
                     return days === null ? '❓'
                          : days < 0 ? '🚨'
+                         : days <= 2 ? '⚠️'
                          : days <= 7 ? '📅'
                          : '✅';
                   })()}
@@ -469,5 +469,4 @@ export function ProductCard({ product, onUpdate, onDelete, onDetail }) {
       </div>
     </div>
   );
-} 2 ? '⚠️'
-                         : days <=
+}
