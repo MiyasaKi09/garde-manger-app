@@ -1,4 +1,4 @@
-// app/pantry/components/pantryUtils.js
+// app/pantry/components/pantryUtils.js - Version nettoyée
 // Utilitaires centralisés pour le garde-manger
 
 /* ============= STYLES GLOBAUX ============= */
@@ -10,28 +10,6 @@ export const PantryStyles = {
     border: '1px solid rgba(0,0,0,0.06)',
     boxShadow: '0 8px 28px rgba(0,0,0,0.08)',
     color: 'var(--ink, #1f281f)',
-  }
-};
-
-/* ============= HELPERS DE DATE ============= */
-export const DateHelpers = {
-  daysUntil(date) {
-    if (!date) return null;
-    const today = new Date(); 
-    today.setHours(0,0,0,0);
-    const d = new Date(date); 
-    d.setHours(0,0,0,0);
-    return Math.round((d - today) / 86400000);
-  },
-
-  fmtDate(d) {
-    if (!d) return '—';
-    try {
-      const x = new Date(d);
-      return x.toLocaleDateString('fr-FR', { day:'2-digit', month:'short', year:'numeric' });
-    } catch { 
-      return d; 
-    }
   }
 };
 
@@ -95,82 +73,168 @@ export const ProductAI = {
       bac_legumes: /bac.*légume|légume/i,
       corbeille: /corbeille|fruit|plan.*travail/i,
       placard: /placard|épicerie|garde.*manger/i,
-      huche: /huche|pain/i
+      huche: /huche|pain|boulanger/i
     };
     
     const pattern = locationPatterns[locationType];
     if (!pattern) return null;
     
-    return locations.find(loc => pattern.test(loc.name)) || null;
+    return locations.find(loc => pattern.test(loc.name));
+  },
+
+  suggestExpirationDate(productName, shelfLifeDays = 7) {
+    const today = new Date();
+    const expiration = new Date(today);
+    expiration.setDate(today.getDate() + shelfLifeDays);
+    
+    return expiration.toISOString().slice(0, 10); // Format YYYY-MM-DD
+  },
+
+  calculateShelfLife(productName, category = '', locationName = '') {
+    const analysis = this.analyzeProductName(productName);
+    let days = analysis.shelfLife || 7;
+    
+    // Ajustements basés sur le lieu de stockage
+    const loc = (locationName || '').toLowerCase();
+    if (/congel|surgel/.test(loc)) {
+      days = Math.max(days, 90); // Au moins 3 mois pour les surgelés
+    } else if (/frigo|frigidaire/.test(loc) && /légume|fruit|laitier/.test(category.toLowerCase())) {
+      days = Math.min(days, 14); // Maximum 2 semaines au frigo pour les produits frais
+    } else if (/placard|épicerie/.test(loc)) {
+      days = Math.min(days, 365); // Maximum 1 an au placard
+    }
+    
+    // Planchers de sécurité
+    const isProduce = /(légume|fruit|frais)/i.test(category);
+    days = Math.max(days, isProduce ? 2 : 1);
+    
+    return days;
   }
 };
 
-/* ============= RECHERCHE FLOUE ============= */
-export const ProductSearch = {
-  fuzzyScore(needle, haystack) {
-    if (!needle || !haystack) return 0;
-    
-    const n = needle.toLowerCase();
-    const h = haystack.toLowerCase();
-    
-    if (h === n) return 1000;
-    if (h.includes(n)) return 800;
-    
-    const needleWords = n.split(/\s+/);
-    const haystackWords = h.split(/\s+/);
-    
-    let score = 0;
-    let matchedWords = 0;
-    
-    for (const nWord of needleWords) {
-      let bestWordScore = 0;
-      for (const hWord of haystackWords) {
-        if (hWord === nWord) bestWordScore = Math.max(bestWordScore, 100);
-        else if (hWord.includes(nWord)) bestWordScore = Math.max(bestWordScore, 80);
-        else if (nWord.includes(hWord)) bestWordScore = Math.max(bestWordScore, 60);
-        else {
-          const dist = this.levenshteinDistance(nWord, hWord);
-          const maxLen = Math.max(nWord.length, hWord.length);
-          if (dist <= maxLen * 0.3) bestWordScore = Math.max(bestWordScore, 40);
-        }
-      }
-      score += bestWordScore;
-      if (bestWordScore > 50) matchedWords++;
-    }
-    
-    if (matchedWords === needleWords.length && needleWords.length > 1) {
-      score *= 1.5;
-    }
-    
-    return score;
+/* ============= UTILITAIRES DE FORMATAGE ============= */
+export const formatUtils = {
+  /**
+   * Capitalise la première lettre d'une chaîne
+   */
+  capitalize(str) {
+    return str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : '';
   },
 
-  levenshteinDistance(a, b) {
-    if (a.length === 0) return b.length;
-    if (b.length === 0) return a.length;
+  /**
+   * Formate une quantité avec son unité
+   */
+  formatQuantity(qty, unit) {
+    const num = Number(qty) || 0;
+    const formattedNum = num % 1 === 0 ? num.toString() : num.toFixed(1);
+    return `${formattedNum} ${unit || 'u'}`;
+  },
+
+  /**
+   * Génère un nom d'affichage pour un produit
+   */
+  displayName(product) {
+    if (!product) return 'Produit inconnu';
     
-    const matrix = [];
-    for (let i = 0; i <= b.length; i++) {
-      matrix[i] = [i];
-    }
-    for (let j = 0; j <= a.length; j++) {
-      matrix[0][j] = j;
-    }
+    let name = product.name || 'Sans nom';
     
-    for (let i = 1; i <= b.length; i++) {
-      for (let j = 1; j <= a.length; j++) {
-        if (b.charAt(i - 1) === a.charAt(j - 1)) {
-          matrix[i][j] = matrix[i - 1][j - 1];
-        } else {
-          matrix[i][j] = Math.min(
-            matrix[i - 1][j - 1] + 1,
-            matrix[i][j - 1] + 1,
-            matrix[i - 1][j] + 1
-          );
-        }
-      }
+    if (product.brand) {
+      name = `${product.brand} ${name}`;
     }
     
-    return matrix[b.length][a.length];
+    return name;
+  }
+};
+
+/* ============= UTILITAIRES DE TRI ============= */
+export const sortUtils = {
+  /**
+   * Trie les lots par urgence (péremption)
+   */
+  byUrgency(lots, dateField = 'best_before') {
+    return lots.sort((a, b) => {
+      const dateA = a[dateField] || a.dlc;
+      const dateB = b[dateField] || b.dlc;
+      
+      if (!dateA && !dateB) return 0;
+      if (!dateA) return 1;  // Sans date à la fin
+      if (!dateB) return -1; // Sans date à la fin
+      
+      return new Date(dateA) - new Date(dateB);
+    });
+  },
+
+  /**
+   * Trie les produits par nom alphabétique
+   */
+  byName(products, nameField = 'name') {
+    return products.sort((a, b) => {
+      const nameA = (a[nameField] || '').toLowerCase();
+      const nameB = (b[nameField] || '').toLowerCase();
+      return nameA.localeCompare(nameB);
+    });
+  },
+
+  /**
+   * Trie les lots par quantité
+   */
+  byQuantity(lots, ascending = false) {
+    return lots.sort((a, b) => {
+      const qtyA = Number(a.qty) || 0;
+      const qtyB = Number(b.qty) || 0;
+      return ascending ? qtyA - qtyB : qtyB - qtyA;
+    });
+  }
+};
+
+/* ============= VALIDATION ============= */
+export const validation = {
+  /**
+   * Valide qu'un lot a les champs requis
+   */
+  validateLot(lot) {
+    const errors = [];
+    
+    if (!lot.product_id) {
+      errors.push('Un produit doit être sélectionné');
+    }
+    
+    if (!lot.qty || Number(lot.qty) <= 0) {
+      errors.push('La quantité doit être positive');
+    }
+    
+    if (!lot.location_id) {
+      errors.push('Un lieu doit être sélectionné');
+    }
+    
+    if (lot.dlc && new Date(lot.dlc) < new Date()) {
+      errors.push('La date de péremption ne peut pas être dans le passé');
+    }
+    
+    return {
+      isValid: errors.length === 0,
+      errors
+    };
+  },
+
+  /**
+   * Valide qu'un nom de produit est correct
+   */
+  validateProductName(name) {
+    if (!name || name.trim().length < 2) {
+      return {
+        isValid: false,
+        error: 'Le nom doit contenir au moins 2 caractères'
+      };
+    }
+    
+    if (name.length > 100) {
+      return {
+        isValid: false,
+        error: 'Le nom ne peut pas dépasser 100 caractères'
+      };
+    }
+    
+    return { isValid: true };
   }
 };
