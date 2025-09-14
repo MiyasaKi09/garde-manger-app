@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState, useCallback } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import { daysUntil } from '@/lib/dates'; // ✅ Import unifié
+import { daysUntil } from '@/lib/dates';
 import { SmartAddForm } from './components/SmartAddForm';
 import { ProductCard } from './components/ProductCard';
 import { LotsView } from './components/LotsView';
@@ -25,28 +25,68 @@ function usePantryData() {
     setErr('');
     
     try {
-      const [{ data: locs, error: e1 }, { data: ls, error: e2 }] = await Promise.all([
-        supabase.from('locations').select('id, name').order('name', { ascending: true }),
-        supabase
-          .from('inventory_lots')
-          .select(`
-            id, qty, unit, dlc, note, entered_at, location_id,
-            product:products_catalog ( 
-              id, name, category, default_unit, density_g_per_ml, grams_per_unit 
-            ),
-            location:locations ( id, name )
-          `)
-          .order('dlc', { ascending: true, nullsFirst: true })
-          .order('entered_at', { ascending: false })
-      ]);
+      // Récupération des emplacements de stockage depuis storage_guides
+      const { data: storageData, error: e1 } = await supabase
+        .from('storage_guides')
+        .select('method')
+        .is('owner_id', null); // Guides globaux seulement
+
+      const storageLocations = [...new Set(storageData?.map(s => s.method) || [])];
       
-      if (e1) throw e1;
+      // Transformation en format compatible avec l'ancien système
+      const formattedLocations = storageLocations.map((method, index) => ({
+        id: index + 1,
+        name: method === 'fridge' ? 'Frigo' 
+            : method === 'pantry' ? 'Placard'
+            : method === 'freezer' ? 'Congélateur'
+            : method === 'cellar' ? 'Cave'
+            : method === 'counter' ? 'Plan de travail'
+            : method
+      }));
+
+      // Récupération des lots via la vue unifiée
+      const { data: lotsData, error: e2 } = await supabase
+        .from('v_inventory_display')
+        .select('*')
+        .order('effective_expiration', { ascending: true, nullsFirst: false })
+        .order('created_at', { ascending: false });
+      
       if (e2) throw e2;
       
-      setLocations(locs || []);
-      setLots((ls || []).map(lot => ({
+      setLocations(formattedLocations);
+      setLots((lotsData || []).map(lot => ({
         ...lot,
-        best_before: lot.dlc || lot.best_before
+        // Compatibilité avec l'ancien format
+        id: lot.id,
+        qty: lot.qty_remaining,
+        unit: lot.unit,
+        dlc: lot.effective_expiration,
+        best_before: lot.effective_expiration,
+        note: lot.notes,
+        entered_at: lot.created_at,
+        location_id: null, // Pas utilisé dans le nouveau système
+        product: {
+          id: lot.canonical_food_id || lot.cultivar_id || lot.derived_product_id || lot.generic_product_id,
+          name: lot.display_name,
+          category: lot.category_name,
+          default_unit: lot.default_unit,
+          density_g_per_ml: lot.density_g_per_ml,
+          grams_per_unit: lot.unit_weight_grams
+        },
+        location: {
+          id: 1,
+          name: lot.storage_method === 'fridge' ? 'Frigo' 
+              : lot.storage_method === 'pantry' ? 'Placard'
+              : lot.storage_method === 'freezer' ? 'Congélateur'
+              : lot.storage_method === 'cellar' ? 'Cave'
+              : lot.storage_method === 'counter' ? 'Plan de travail'
+              : lot.recommended_storage || 'Non défini'
+        },
+        // Nouvelles propriétés
+        product_type: lot.product_type,
+        category_icon: lot.category_icon,
+        category_color: lot.category_color,
+        storage_place: lot.storage_place
       })));
       
     } catch (e) {
@@ -57,42 +97,55 @@ function usePantryData() {
     }
   }, []);
 
-  const handleAddLot = useCallback(async (lotData, product) => {
+  const handleAddLot = useCallback(async (lotData, productInfo) => {
     try {
       setErr('');
       
+      // Déterminer quel type de produit on ajoute
+      let insertData = {
+        owner_id: (await supabase.auth.getUser()).data.user?.id,
+        initial_qty: lotData.qty,
+        qty_remaining: lotData.qty,
+        unit: lotData.unit,
+        storage_method: lotData.storage_method,
+        storage_place: lotData.storage_place || '',
+        acquired_on: lotData.acquired_on || new Date().toISOString().split('T')[0],
+        expiration_date: lotData.dlc,
+        notes: lotData.note || ''
+      };
+
+      // Assignation selon le type de produit
+      if (productInfo.product_type === 'canonical') {
+        insertData.canonical_food_id = productInfo.id;
+      } else if (productInfo.product_type === 'cultivar') {
+        insertData.cultivar_id = productInfo.id;
+      } else if (productInfo.product_type === 'derived') {
+        insertData.derived_product_id = productInfo.id;
+      } else if (productInfo.product_type === 'generic') {
+        insertData.generic_product_id = productInfo.id;
+      }
+
       const { data: newLot, error } = await supabase
         .from('inventory_lots')
-        .insert([lotData])
-        .select(`
-          id, qty, unit, dlc, note, entered_at, location_id,
-          product:products_catalog ( 
-            id, name, category, default_unit, density_g_per_ml, grams_per_unit 
-          ),
-          location:locations ( id, name )
-        `)
+        .insert([insertData])
+        .select()
         .single();
       
       if (error) throw error;
       
-      const enrichedLot = {
-        ...newLot,
-        best_before: newLot.dlc || newLot.best_before
-      };
-      
-      setLots(prev => [enrichedLot, ...prev]);
+      // Recharger les données pour avoir la vue complète
+      await load();
       return true;
     } catch (e) {
-      console.error('Erreur ajout lot:', e);
-      setErr(e.message || 'Erreur lors de l\'ajout');
+      console.error(e);
+      setErr(e.message);
       return false;
     }
-  }, []);
+  }, [load]);
 
   const handleDeleteLot = useCallback(async (lotId) => {
     try {
       setErr('');
-      
       const { error } = await supabase
         .from('inventory_lots')
         .delete()
@@ -100,11 +153,11 @@ function usePantryData() {
       
       if (error) throw error;
       
-      setLots(prev => prev.filter(lot => lot.id !== lotId));
+      setLots(prev => prev.filter(l => l.id !== lotId));
       return true;
     } catch (e) {
-      console.error('Erreur suppression lot:', e);
-      setErr(e.message || 'Erreur lors de la suppression');
+      console.error(e);
+      setErr(e.message);
       return false;
     }
   }, []);
@@ -113,33 +166,36 @@ function usePantryData() {
     try {
       setErr('');
       
-      const { data: updatedLot, error } = await supabase
+      // Transformation des champs pour la nouvelle structure
+      const updateData = {};
+      if (updates.qty !== undefined) updateData.qty_remaining = updates.qty;
+      if (updates.dlc !== undefined) updateData.expiration_date = updates.dlc;
+      if (updates.note !== undefined) updateData.notes = updates.note;
+      if (updates.storage_method !== undefined) updateData.storage_method = updates.storage_method;
+      if (updates.storage_place !== undefined) updateData.storage_place = updates.storage_place;
+      
+      const { error } = await supabase
         .from('inventory_lots')
-        .update(updates)
-        .eq('id', lotId)
-        .select(`
-          id, qty, unit, dlc, note, entered_at, location_id,
-          product:products_catalog ( 
-            id, name, category, default_unit, density_g_per_ml, grams_per_unit 
-          ),
-          location:locations ( id, name )
-        `)
-        .single();
+        .update(updateData)
+        .eq('id', lotId);
       
       if (error) throw error;
       
-      const enrichedLot = {
-        ...updatedLot,
-        best_before: updatedLot.dlc || updatedLot.best_before
-      };
-      
-      setLots(prev => prev.map(lot => 
-        lot.id === lotId ? enrichedLot : lot
+      setLots(prev => prev.map(l => 
+        l.id === lotId 
+          ? { 
+              ...l, 
+              qty: updates.qty !== undefined ? updates.qty : l.qty,
+              dlc: updates.dlc !== undefined ? updates.dlc : l.dlc,
+              best_before: updates.dlc !== undefined ? updates.dlc : l.best_before,
+              note: updates.note !== undefined ? updates.note : l.note
+            }
+          : l
       ));
       return true;
     } catch (e) {
-      console.error('Erreur mise à jour lot:', e);
-      setErr(e.message || 'Erreur lors de la mise à jour');
+      console.error(e);
+      setErr(e.message);
       return false;
     }
   }, []);
@@ -151,7 +207,7 @@ function usePantryData() {
   };
 }
 
-// Composants UI helpers
+// Composants d'interface
 function SearchBar({ q, setQ, locFilter, setLocFilter, locations }) {
   return (
     <div style={{
@@ -160,37 +216,37 @@ function SearchBar({ q, setQ, locFilter, setLocFilter, locations }) {
       marginBottom: '1.5rem',
       flexWrap: 'wrap'
     }}>
-      <input
-        type="text"
-        placeholder="🔍 Rechercher un produit..."
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        style={{
-          flex: '2',
-          minWidth: '200px',
-          padding: '0.75rem 1rem',
-          borderRadius: 'var(--radius-md)',
-          border: '1px solid var(--forest-300)',
-          fontSize: '1rem'
-        }}
-      />
+      <div style={{ flex: 1, minWidth: '200px' }}>
+        <input
+          type="text"
+          placeholder="Rechercher un produit..."
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          style={{
+            width: '100%',
+            padding: '0.75rem',
+            borderRadius: '0.5rem',
+            border: '2px solid var(--earth-300)',
+            fontSize: '1rem'
+          }}
+        />
+      </div>
       
       <select
         value={locFilter}
         onChange={(e) => setLocFilter(e.target.value)}
         style={{
-          flex: '1',
-          minWidth: '150px',
           padding: '0.75rem',
-          borderRadius: 'var(--radius-md)',
-          border: '1px solid var(--forest-300)',
-          fontSize: '1rem'
+          borderRadius: '0.5rem',
+          border: '2px solid var(--earth-300)',
+          fontSize: '1rem',
+          minWidth: '150px'
         }}
       >
         <option value="Tous">📍 Tous les lieux</option>
         {locations.map(loc => (
           <option key={loc.id} value={loc.name}>
-            📍 {loc.name}
+            {loc.name}
           </option>
         ))}
       </select>
@@ -198,26 +254,25 @@ function SearchBar({ q, setQ, locFilter, setLocFilter, locations }) {
   );
 }
 
-function ViewSelector({ view, setView }) {
+function ViewToggle({ view, setView }) {
+  const views = [
+    { key: 'products', icon: '📦', label: 'Par produit' },
+    { key: 'lots', icon: '🏷️', label: 'Par lot' },
+    { key: 'stats', icon: '📊', label: 'Statistiques' }
+  ];
+
   return (
     <div style={{
       display: 'flex',
       gap: '0.5rem',
       marginBottom: '1.5rem',
-      padding: '0.25rem',
-      background: 'var(--forest-100)',
-      borderRadius: 'var(--radius-md)',
-      width: 'fit-content'
+      flexWrap: 'wrap'
     }}>
-      {[
-        { key: 'products', icon: '🧺', label: 'Produits' },
-        { key: 'lots', icon: '📦', label: 'Lots' },
-        { key: 'stats', icon: '📊', label: 'Stats' }
-      ].map(({ key, icon, label }) => (
+      {views.map(({ key, icon, label }) => (
         <button
           key={key}
           onClick={() => setView(key)}
-          className={`btn small ${view === key ? 'primary' : 'secondary'}`}
+          className={`btn ${view === key ? 'primary' : 'secondary'}`}
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -306,8 +361,9 @@ export default function PantryPage() {
       const productName = (l.product?.name || '').toLowerCase();
       const category = (l.product?.category || '').toLowerCase();
       const note = (l.note || '').toLowerCase();
+      const storagePlace = (l.storage_place || '').toLowerCase();
       
-      return productName.includes(s) || category.includes(s) || note.includes(s);
+      return productName.includes(s) || category.includes(s) || note.includes(s) || storagePlace.includes(s);
     });
   }, [lots, q, locFilter]);
 
@@ -325,7 +381,10 @@ export default function PantryPage() {
           name: lot.product.name, 
           category: lot.product.category,
           unit: lot.product.default_unit || lot.unit,
-          lots: [] 
+          lots: [],
+          category_icon: lot.category_icon,
+          category_color: lot.category_color,
+          product_type: lot.product_type
         });
       }
       m.get(pid).lots.push(lot);
@@ -388,211 +447,89 @@ export default function PantryPage() {
             gap: '0.5rem'
           }}
         >
-          {showAddForm ? '✕ Fermer' : '➕ Ajouter'}
+          {showAddForm ? (
+            <>
+              <span>❌</span>
+              Annuler
+            </>
+          ) : (
+            <>
+              <span>➕</span>
+              Ajouter un produit
+            </>
+          )}
         </button>
+
+        <ViewToggle view={view} setView={setView} />
       </div>
 
-      <ViewSelector view={view} setView={setView} />
+      {err && (
+        <div className="alert error" style={{ marginBottom: '1rem' }}>
+          <strong>Erreur :</strong> {err}
+        </div>
+      )}
 
-      {/* Formulaire d'ajout */}
       {showAddForm && (
-        <div className="card" style={{ marginBottom: '1.5rem' }}>
+        <div style={{ marginBottom: '2rem' }}>
           <SmartAddForm
+            onSave={handleAddLot}
+            onCancel={() => setShowAddForm(false)}
             locations={locations}
-            onAdd={handleAddLot}
-            onClose={() => {
-              setShowAddForm(false);
-              setSelectedProductForAdd(null);
-            }}
-            initialProduct={selectedProductForAdd}
           />
         </div>
       )}
 
-      {/* Messages d'erreur */}
-      {err && (
-        <div className="badge danger" style={{
-          display: 'block',
-          padding: '1rem',
-          marginBottom: '1.5rem',
-          textAlign: 'center',
-          fontSize: '0.95rem'
-        }}>
-          ❌ {err}
-        </div>
-      )}
-
-      {/* Contenu principal */}
-      {view === 'products' ? (
-        <div className="grid cols-3">
-          {byProduct.map(({ productId, name, category, unit, lots }) => (
-            <ProductCard
-              key={productId}
-              productId={productId}
-              name={name}
-              category={category}
-              unit={unit}
-              lots={lots}
-              onOpen={({ productId, name }) => {
-                const productLots = lots.filter(lot => lot.product?.id === productId);
-                setDetailProduct({ productId, name, lots: productLots });
-              }}
-              onQuickAction={(action, data) => {
-                if (action === 'add') {
-                  setSelectedProductForAdd(data);
-                  setShowAddForm(true);
-                }
-              }}
-            />
-          ))}
-          
-          {byProduct.length === 0 && (
-            <div className="empty-state">
-              {q || locFilter !== 'Tous' ? 
-                '🔍 Aucun produit ne correspond aux filtres.' :
-                '📦 Aucun produit dans le garde-manger. Commencez par ajouter des lots !'
-              }
-            </div>
-          )}
-        </div>
-      ) : view === 'lots' ? (
-        <LotsView 
-          lots={filtered} 
-          onDeleteLot={handleDeleteLot}
-          onUpdateLot={handleUpdateLot}
-        />
-      ) : (
-        <PantryStats lots={filtered} />
-      )}
-
-      {/* Modal de détails produit */}
-      {detailProduct && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(0, 0, 0, 0.6)',
-            backdropFilter: 'blur(8px)',
-            zIndex: 1000,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '2rem'
-          }}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) {
-              setDetailProduct(null);
-            }
-          }}
-        >
-          <div 
-            style={{
-              background: 'rgba(255, 255, 255, 0.95)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              borderRadius: 'var(--radius-xl)',
-              padding: '2rem',
-              maxWidth: '900px',
-              width: '100%',
-              maxHeight: '85vh',
-              overflowY: 'auto',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)',
-              position: 'relative'
-            }}
-            onClick={e => e.stopPropagation()}
-          >
-            {/* Header du modal */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '1.5rem',
-              paddingBottom: '1rem',
-              borderBottom: '2px solid var(--forest-200)'
+      {view === 'stats' && <PantryStats lots={filtered} />}
+      
+      {view === 'products' && (
+        <div className="grid cols-1 md:cols-2 lg:cols-3" style={{ gap: '1rem' }}>
+          {byProduct.length === 0 ? (
+            <div style={{ 
+              gridColumn: '1/-1', 
+              textAlign: 'center', 
+              padding: '3rem',
+              color: 'var(--medium-gray)'
             }}>
-              <div>
-                <h2 style={{ 
-                  margin: 0,
-                  color: 'var(--forest-800)',
-                  fontFamily: "'Crimson Text', Georgia, serif"
-                }}>
-                  📦 {detailProduct.name}
-                </h2>
-                <div style={{
-                  color: 'var(--forest-600)',
-                  marginTop: '0.5rem',
-                  fontWeight: 500
-                }}>
-                  {detailProduct.lots.length} lot{detailProduct.lots.length > 1 ? 's' : ''} • 
-                  {detailProduct.lots.reduce((sum, lot) => sum + Number(lot.qty || 0), 0).toFixed(1)} unités totales
-                </div>
-              </div>
-              
-              <button 
-                onClick={() => setDetailProduct(null)}
-                style={{
-                  background: 'var(--forest-100)',
-                  border: '2px solid var(--forest-300)',
-                  borderRadius: '50%',
-                  width: '40px',
-                  height: '40px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  fontSize: '1.2rem',
-                  color: 'var(--forest-700)',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseEnter={e => {
-                  e.target.style.background = 'var(--forest-200)';
-                  e.target.style.transform = 'scale(1.1)';
-                }}
-                onMouseLeave={e => {
-                  e.target.style.background = 'var(--forest-100)';
-                  e.target.style.transform = 'scale(1)';
-                }}
-                title="Fermer"
-              >
-                ✕
-              </button>
-            </div>
-            
-            {/* Contenu du modal */}
-            <div className="grid cols-2" style={{ gap: '1.5rem' }}>
-              {detailProduct.lots.map(lot => (
-                <EnhancedLotCard
-                  key={lot.id}
-                  lot={lot}
-                  locations={locations}
-                  onDelete={() => {
-                    handleDeleteLot(lot.id);
-                    setDetailProduct(null);
-                  }}
-                  onUpdate={(updates) => handleUpdateLot(lot.id, updates)}
-                />
-              ))}
-              
-              {detailProduct.lots.length === 0 && (
-                <div style={{
-                  gridColumn: '1 / -1',
-                  textAlign: 'center',
-                  padding: '3rem',
-                  color: 'var(--forest-600)',
-                  border: '2px dashed var(--forest-300)',
-                  borderRadius: 'var(--radius-lg)',
-                  background: 'var(--forest-50)'
-                }}>
-                  📦 Aucun lot pour ce produit
-                </div>
+              {q || locFilter !== 'Tous' ? (
+                <>
+                  <p style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔍</p>
+                  <p>Aucun produit trouvé avec ces critères</p>
+                  <button 
+                    onClick={() => { setQ(''); setLocFilter('Tous'); }}
+                    className="btn secondary"
+                    style={{ marginTop: '1rem' }}
+                  >
+                    Effacer les filtres
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p style={{ fontSize: '3rem', marginBottom: '1rem' }}>📦</p>
+                  <p>Votre garde-manger est vide</p>
+                  <p style={{ fontSize: '0.9rem' }}>Ajoutez vos premiers produits pour commencer</p>
+                </>
               )}
             </div>
-          </div>
+          ) : (
+            byProduct.map(product => (
+              <ProductCard
+                key={product.productId}
+                product={product}
+                onUpdate={handleUpdateLot}
+                onDelete={handleDeleteLot}
+                onDetail={setDetailProduct}
+              />
+            ))
+          )}
         </div>
+      )}
+      
+      {view === 'lots' && (
+        <LotsView 
+          lots={filtered}
+          onUpdate={handleUpdateLot}
+          onDelete={handleDeleteLot}
+        />
       )}
     </div>
   );
