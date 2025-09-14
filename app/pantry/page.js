@@ -1,3 +1,4 @@
+// app/pantry/page.js - Version corrigée
 'use client';
 
 import { useEffect, useMemo, useState, useCallback } from 'react';
@@ -8,35 +9,8 @@ import { LotsView } from './components/LotsView';
 import { PantryStats } from './components/PantryStats';
 import { EnhancedLotCard } from './components/EnhancedLotCard';
 
-// Utilitaires DateHelpers
-const DateHelpers = {
-  daysUntil(dateStr) {
-    if (!dateStr) return null;
-    try {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const target = new Date(dateStr);
-      target.setHours(0, 0, 0, 0);
-      return Math.round((target - today) / (1000 * 60 * 60 * 24));
-    } catch {
-      return null;
-    }
-  },
-
-  fmtDate(dateStr) {
-    if (!dateStr) return '—';
-    try {
-      const date = new Date(dateStr);
-      return date.toLocaleDateString('fr-FR', { 
-        day: '2-digit', 
-        month: 'short', 
-        year: 'numeric' 
-      });
-    } catch {
-      return dateStr;
-    }
-  }
-};
+// ✅ IMPORTER DateHelpers depuis le fichier utilitaire au lieu de le redéfinir
+import { DateHelpers } from './components/pantryUtils';
 
 // Hook personnalisé pour la gestion des données
 function usePantryData() {
@@ -99,19 +73,20 @@ function usePantryData() {
           location:locations ( id, name )
         `)
         .single();
-
+      
       if (error) throw error;
-
-      const lotWithBestBefore = {
+      
+      const enrichedLot = {
         ...newLot,
         best_before: newLot.dlc || newLot.best_before
       };
-
-      setLots(prev => [lotWithBestBefore, ...prev]);
-      return lotWithBestBefore;
-    } catch (error) {
-      console.error('Erreur ajout:', error);
-      throw error;
+      
+      setLots(prev => [enrichedLot, ...prev]);
+      return true;
+    } catch (e) {
+      console.error(e);
+      setErr(e.message || 'Erreur lors de l\'ajout');
+      return false;
     }
   };
 
@@ -121,19 +96,19 @@ function usePantryData() {
         .from('inventory_lots')
         .delete()
         .eq('id', lotId);
-
+      
       if (error) throw error;
       
-      setLots(prev => prev.filter(l => l.id !== lotId));
-    } catch (error) {
-      console.error('Erreur suppression:', error);
-      alert('Erreur: ' + error.message);
+      setLots(prev => prev.filter(lot => lot.id !== lotId));
+    } catch (e) {
+      console.error(e);
+      setErr(e.message || 'Erreur lors de la suppression');
     }
   };
 
   const handleUpdateLot = async (lotId, updates) => {
     try {
-      const { data, error } = await supabase
+      const { data: updatedLot, error } = await supabase
         .from('inventory_lots')
         .update(updates)
         .eq('id', lotId)
@@ -145,15 +120,20 @@ function usePantryData() {
           location:locations ( id, name )
         `)
         .single();
-
+      
       if (error) throw error;
-
-      setLots(prev => prev.map(l => l.id === lotId ? {
-        ...l, ...data, best_before: data.dlc || data.best_before
-      } : l));
-    } catch (err) {
-      console.error('Erreur mise à jour:', err);
-      alert('Erreur: ' + err.message);
+      
+      const enrichedLot = {
+        ...updatedLot,
+        best_before: updatedLot.dlc || updatedLot.best_before
+      };
+      
+      setLots(prev => prev.map(lot => 
+        lot.id === lotId ? enrichedLot : lot
+      ));
+    } catch (e) {
+      console.error(e);
+      setErr(e.message || 'Erreur lors de la mise à jour');
     }
   };
 
@@ -164,100 +144,128 @@ function usePantryData() {
   };
 }
 
-// Composant pour le sélecteur de vue
-function ViewSelector({ view, setView }) {
+// Composants supplémentaires...
+function SearchBar({ q, setQ, locFilter, setLocFilter, locations }) {
   return (
-    <div className="view-selector">
-      <button
-        onClick={() => setView('products')}
-        className={view === 'products' ? 'btn primary' : 'btn secondary'}
-        style={{ 
-          flex: 1,
+    <div style={{
+      display: 'flex',
+      gap: '1rem',
+      marginBottom: '1.5rem',
+      flexWrap: 'wrap'
+    }}>
+      <input
+        type="text"
+        placeholder="🔍 Rechercher un produit..."
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+        style={{
+          flex: '2',
+          minWidth: '200px',
+          padding: '0.75rem 1rem',
           borderRadius: 'var(--radius-md)',
-          fontSize: '0.95rem'
+          border: '1px solid var(--forest-300)',
+          fontSize: '1rem'
+        }}
+      />
+      
+      <select
+        value={locFilter}
+        onChange={(e) => setLocFilter(e.target.value)}
+        style={{
+          flex: '1',
+          minWidth: '150px',
+          padding: '0.75rem',
+          borderRadius: 'var(--radius-md)',
+          border: '1px solid var(--forest-300)',
+          fontSize: '1rem'
         }}
       >
-        📦 Vue par produits
-      </button>
-      <button
-        onClick={() => setView('lots')}
-        className={view === 'lots' ? 'btn primary' : 'btn secondary'}
-        style={{ 
-          flex: 1,
-          borderRadius: 'var(--radius-md)',
-          fontSize: '0.95rem'
-        }}
-      >
-        📋 Tous les lots
-      </button>
+        <option value="Tous">📍 Tous les lieux</option>
+        {locations.map(loc => (
+          <option key={loc.id} value={loc.name}>
+            📍 {loc.name}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }
 
-// Composant Header Organique (Option 2)
-function OrganicHeader() {
+function ViewSelector({ view, setView }) {
   return (
     <div style={{
-      position: 'relative',
-      marginBottom: '2rem',
-      padding: '2rem 0'
+      display: 'flex',
+      gap: '0.5rem',
+      marginBottom: '1.5rem',
+      padding: '0.25rem',
+      background: 'var(--forest-100)',
+      borderRadius: 'var(--radius-md)',
+      width: 'fit-content'
     }}>
-      {/* Formes organiques en arrière-plan */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        opacity: 0.1,
-        zIndex: -1,
-        background: `
-          radial-gradient(ellipse 30% 20% at 20% 30%, var(--forest-400) 0%, transparent 50%),
-          radial-gradient(ellipse 40% 25% at 80% 70%, var(--earth-400) 0%, transparent 50%),
-          radial-gradient(ellipse 25% 15% at 60% 20%, var(--autumn-orange) 0%, transparent 50%)
-        `
-      }} />
-
-      <div style={{ textAlign: 'center' }}>
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '1rem',
-          padding: '1rem 2rem',
-          background: 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(8px)',
-          borderRadius: 'var(--radius-xl)',
-          border: '1px solid rgba(0, 0, 0, 0.06)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
-        }}>
-          {/* Icône stylisée */}
-          <div style={{
-            width: '48px',
-            height: '48px',
-            background: 'linear-gradient(135deg, var(--forest-500), var(--forest-400))',
-            borderRadius: '50%',
+      {[
+        { key: 'products', icon: '🧺', label: 'Produits' },
+        { key: 'lots', icon: '📦', label: 'Lots' },
+        { key: 'stats', icon: '📊', label: 'Stats' }
+      ].map(({ key, icon, label }) => (
+        <button
+          key={key}
+          onClick={() => setView(key)}
+          className={`btn small ${view === key ? 'primary' : 'secondary'}`}
+          style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 16px rgba(58, 107, 30, 0.3)'
-          }}>
-            <span style={{ fontSize: '20px' }}>🏺</span>
-          </div>
+            gap: '0.5rem',
+            padding: '0.5rem 1rem'
+          }}
+        >
+          <span>{icon}</span>
+          {label}
+        </button>
+      ))}
+    </div>
+  );
+}
 
-          <h1 style={{
-            fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
-            fontFamily: 'Crimson Text, serif',
-            fontWeight: '600',
-            background: 'linear-gradient(135deg, var(--forest-700), var(--forest-500))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            margin: 0,
-            letterSpacing: '-0.02em'
-          }}>
-            Garde-Manger
-          </h1>
+function Header() {
+  return (
+    <div style={{
+      background: 'linear-gradient(135deg, var(--forest-400) 0%, var(--earth-400) 100%)',
+      margin: '-2rem -2rem 2rem -2rem',
+      padding: '2rem',
+      borderRadius: '0 0 1rem 1rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1rem',
+        color: 'white'
+      }}>
+        <div style={{
+          width: '48px',
+          height: '48px',
+          background: 'linear-gradient(135deg, var(--forest-500), var(--forest-400))',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 4px 16px rgba(58, 107, 30, 0.3)'
+        }}>
+          <span style={{ fontSize: '20px' }}>🏺</span>
         </div>
+
+        <h1 style={{
+          fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
+          fontFamily: 'Crimson Text, serif',
+          fontWeight: '600',
+          background: 'linear-gradient(135deg, var(--forest-700), var(--forest-500))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          margin: 0,
+          letterSpacing: '-0.02em'
+        }}>
+          Garde-Manger
+        </h1>
       </div>
     </div>
   );
@@ -324,98 +332,43 @@ export default function PantryPage() {
     return Array.from(m.values()).sort((a, b) => {
       const aUrgent = Math.min(...a.lots.map(l => DateHelpers.daysUntil(l.best_before) ?? 999));
       const bUrgent = Math.min(...b.lots.map(l => DateHelpers.daysUntil(l.best_before) ?? 999));
-      if (aUrgent !== bUrgent) return aUrgent - bUrgent;
-      return a.name.localeCompare(b.name);
+      return aUrgent - bUrgent;
     });
   }, [filtered]);
 
-  // Calcul des statistiques
-  const stats = useMemo(() => {
-    const totalProducts = byProduct.length;
-    let expiredCount = 0;
-    let soonCount = 0;
-    let totalLots = filtered.length;
-    
-    for (const lot of filtered) {
-      const days = DateHelpers.daysUntil(lot.best_before);
-      if (days !== null) {
-        if (days < 0) expiredCount++;
-        else if (days <= 3) soonCount++;
-      }
-    }
-    
-    return { totalProducts, expiredCount, soonCount, totalLots };
-  }, [byProduct, filtered]);
-
-  // Debug pour identifier le problème de filtrage
-  console.log('Debug - view:', view, 'filtered.length:', filtered?.length, 'lots.length:', lots?.length);
-
-  if (loading) {
-    return (
-      <div className="container">
-        <div className="loading-dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <p style={{ textAlign: 'center', color: 'var(--forest-600)', marginTop: '1rem' }}>
-          Chargement des données...
-        </p>
-      </div>
-    );
-  }
+  if (loading) return <div>Chargement...</div>;
 
   return (
-    <div className="container">
-      {/* NOUVEAU HEADER ORGANIQUE - Option 2 */}
-      <OrganicHeader />
-
-      {/* Stats */}
-      <PantryStats stats={stats} />
-
-      {/* Barre de contrôles */}
-      <div className="toolbar">
-        <input 
-          className="input" 
-          type="search"
-          placeholder="🔍 Rechercher un produit..." 
-          value={q} 
-          onChange={e => setQ(e.target.value)}
-          style={{ minWidth: '280px' }}
-        />
-        
-        <select 
-          className="input" 
-          value={locFilter} 
-          onChange={e => setLocFilter(e.target.value)}
-          style={{ minWidth: '160px' }}
-        >
-          <option value="Tous">📍 Tous les lieux</option>
-          {locations.map(l => (
-            <option key={l.id} value={l.name}>{l.name}</option>
-          ))}
-          {locations.length === 0 && (
-            <option disabled>(Aucun lieu)</option>
-          )}
-        </select>
-
+    <div className="page">
+      <Header />
+      
+      <SearchBar 
+        q={q} 
+        setQ={setQ} 
+        locFilter={locFilter} 
+        setLocFilter={setLocFilter}
+        locations={locations}
+      />
+      
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '1.5rem'
+      }}>
         <button 
-          className="btn secondary" 
-          onClick={load}
-          title="Rafraîchir les données"
-        >
-          ↻ Actualiser
-        </button>
-        
-        <button 
-          className="btn primary" 
-          onClick={() => setShowAddForm(v => !v)}
+          onClick={() => setShowAddForm(!showAddForm)}
+          className={`btn ${showAddForm ? 'danger' : 'primary'}`}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem'
+          }}
         >
           {showAddForm ? '✕ Fermer' : '➕ Ajouter'}
         </button>
       </div>
 
-      {/* Sélecteur de vue corrigé */}
       <ViewSelector view={view} setView={setView} />
 
       {/* Formulaire d'ajout */}
@@ -446,7 +399,7 @@ export default function PantryPage() {
         </div>
       )}
 
-      {/* Contenu principal - CORRECTION APPLIQUÉE */}
+      {/* Contenu principal */}
       {view === 'products' ? (
         <div className="grid cols-3">
           {byProduct.map(({ productId, name, category, unit, lots }) => (
@@ -479,115 +432,48 @@ export default function PantryPage() {
             </div>
           )}
         </div>
-      ) : (
-        // CORRECTION: Passage des données filtrées à LotsView
-        <LotsView
-          lots={filtered}
+      ) : view === 'lots' ? (
+        <LotsView 
+          lots={filtered} 
           onDeleteLot={handleDeleteLot}
           onUpdateLot={handleUpdateLot}
         />
+      ) : (
+        <PantryStats lots={filtered} />
       )}
 
-      {/* Modal de détail produit */}
+      {/* Modal de détails produit */}
       {detailProduct && (
-        <div 
-          style={{
-            position: 'fixed', 
-            top: 0, 
-            left: 0, 
-            right: 0, 
-            bottom: 0,
-            background: 'rgba(0,0,0,0.4)',
-            backdropFilter: 'blur(8px)',
-            zIndex: 1000,
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center',
-            padding: '20px'
-          }}
-          onClick={(e) => e.target === e.currentTarget && setDetailProduct(null)}
-        >
-          <div className="glass-card-prominent" style={{
-            borderRadius: 'var(--radius-xl)',
-            padding: '2rem',
-            maxWidth: '900px',
-            width: '100%',
-            maxHeight: '85vh',
-            overflowY: 'auto',
-            position: 'relative'
-          }}>
+        <div className="modal-backdrop" onClick={() => setDetailProduct(null)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginBottom: '1.5rem',
-              paddingBottom: '1rem',
-              borderBottom: '2px solid var(--soft-gray)'
+              marginBottom: '1.5rem'
             }}>
-              <div>
-                <h2 style={{ margin: 0 }}>
-                  📦 {detailProduct.name}
-                </h2>
-                <div style={{
-                  color: 'var(--forest-600)',
-                  marginTop: '0.5rem',
-                  fontWeight: 500
-                }}>
-                  {detailProduct.lots.length} lot{detailProduct.lots.length > 1 ? 's' : ''} • 
-                  {detailProduct.lots.reduce((sum, lot) => sum + Number(lot.qty || 0), 0).toFixed(1)} unités totales
-                </div>
-              </div>
-              
+              <h2>{detailProduct.name}</h2>
               <button 
-                className="btn danger"
                 onClick={() => setDetailProduct(null)}
+                className="btn secondary small"
               >
-                ✕ Fermer
+                ✕
               </button>
             </div>
             
-            <div className="grid cols-2">
-              {detailProduct.lots.map((lot, index) => (
+            <div className="grid cols-2" style={{ gap: '1rem' }}>
+              {detailProduct.lots.map(lot => (
                 <EnhancedLotCard
                   key={lot.id}
                   lot={lot}
-                  index={index}
-                  locations={locations}
-                  onUpdate={(updates) => {
-                    handleUpdateLot(lot.id, updates);
-                    setDetailProduct(prev => ({
-                      ...prev,
-                      lots: prev.lots.map(l => 
-                        l.id === lot.id ? { ...l, ...updates } : l
-                      )
-                    }));
-                  }}
                   onDelete={() => {
-                    if (confirm(`Supprimer le lot de ${lot.qty} ${lot.unit} ?`)) {
-                      handleDeleteLot(lot.id);
-                      setDetailProduct(prev => ({
-                        ...prev,
-                        lots: prev.lots.filter(l => l.id !== lot.id)
-                      }));
-                    }
+                    handleDeleteLot(lot.id);
+                    setDetailProduct(null);
                   }}
+                  onUpdate={(updates) => handleUpdateLot(lot.id, updates)}
                 />
               ))}
             </div>
-            
-            {detailProduct.lots.length === 0 && (
-              <div style={{
-                textAlign: 'center',
-                padding: '3rem',
-                color: 'var(--medium-gray)',
-                fontSize: '1.1rem',
-                background: 'var(--earth-50)',
-                borderRadius: 'var(--radius-lg)',
-                border: '2px dashed var(--soft-gray)'
-              }}>
-                📭 Aucun lot pour ce produit
-              </div>
-            )}
           </div>
         </div>
       )}
