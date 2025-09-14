@@ -1,223 +1,42 @@
-// app/pantry/components/EnhancedLotCard.js
-import { useState } from 'react';
-import { daysUntil, formatDate } from '@/lib/dates'; // ✅ Import unifié
-import { LifespanBadge } from './LifespanBadge'; // ✅ Import du composant unifié
+// app/pantry/components/EnhancedLotCard.js - Version mise à jour avec nouvelles fonctionnalités
 
-export function EnhancedLotCard({ lot, onDelete, onUpdate, locations = [] }) {
+'use client';
+
+import { useState, useMemo } from 'react';
+import { daysUntil, formatDate } from '@/lib/dates';
+import { PantryStyles } from './pantryUtils';
+
+export function EnhancedLotCard({ lot, onUpdate, onDelete, compact = false }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({
     qty: lot.qty || 0,
-    dlc: lot.dlc || lot.best_before || '',
-    note: lot.note || '',
-    location_id: lot.location_id || ''
+    unit: lot.unit || 'g',
+    expiration_date: lot.best_before || lot.expiration_date || '',
+    notes: lot.note || lot.notes || '',
+    storage_place: lot.storage_place || ''
   });
 
-  const handleSave = () => {
-    if (onUpdate) {
-      onUpdate(editData);
-    }
-    setIsEditing(false);
-  };
+  // Calculs pour l'affichage
+  const calculations = useMemo(() => {
+    const daysLeft = daysUntil(lot.best_before || lot.expiration_date);
+    
+    const urgencyLevel = daysLeft === null ? 'unknown'
+                      : daysLeft < 0 ? 'expired'
+                      : daysLeft === 0 ? 'today'
+                      : daysLeft <= 2 ? 'critical'
+                      : daysLeft <= 7 ? 'warning'
+                      : 'ok';
 
-  const handleCancel = () => {
-    setEditData({
-      qty: lot.qty || 0,
-      dlc: lot.dlc || lot.best_before || '',
-      note: lot.note || '',
-      location_id: lot.location_id || ''
-    });
-    setIsEditing(false);
-  };
+    const urgencyConfig = {
+      expired: { emoji: '🚨', color: '#e74c3c', label: 'Expiré', bg: 'rgba(231, 76, 60, 0.1)' },
+      today: { emoji: '⏰', color: '#e67e22', label: 'Expire aujourd\'hui', bg: 'rgba(230, 126, 34, 0.1)' },
+      critical: { emoji: '⚠️', color: '#f39c12', label: 'Urgent', bg: 'rgba(243, 156, 18, 0.1)' },
+      warning: { emoji: '📅', color: '#f1c40f', label: 'Bientôt', bg: 'rgba(241, 196, 15, 0.1)' },
+      ok: { emoji: '✅', color: '#27ae60', label: 'OK', bg: 'rgba(39, 174, 96, 0.1)' },
+      unknown: { emoji: '❓', color: '#95a5a6', label: 'Inconnue', bg: 'rgba(149, 165, 166, 0.1)' }
+    };
 
-  const isUrgent = daysUntil(lot.best_before || lot.dlc) <= 3;
+    const urgency = urgencyConfig[urgencyLevel];
 
-  if (isEditing) {
-    return (
-      <div className={`card ${isUrgent ? 'urgent' : ''}`}>
-        <h4 style={{ margin: '0 0 1rem 0', color: 'var(--forest-800)' }}>
-          ✏️ Modifier le lot
-        </h4>
-
-        <div style={{ display: 'grid', gap: '1rem' }}>
-          {/* Quantité */}
-          <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
-              Quantité
-            </label>
-            <input
-              type="number"
-              min="0"
-              step="0.1"
-              value={editData.qty}
-              onChange={(e) => setEditData(prev => ({ ...prev, qty: e.target.value }))}
-              className="input"
-              style={{ width: '100%' }}
-            />
-          </div>
-
-          {/* Date de péremption */}
-          <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
-              Date de péremption
-            </label>
-            <input
-              type="date"
-              value={editData.dlc}
-              onChange={(e) => setEditData(prev => ({ ...prev, dlc: e.target.value }))}
-              className="input"
-              style={{ width: '100%' }}
-            />
-          </div>
-
-          {/* Lieu */}
-          <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
-              Lieu
-            </label>
-            <select
-              value={editData.location_id}
-              onChange={(e) => setEditData(prev => ({ ...prev, location_id: e.target.value }))}
-              className="input"
-              style={{ width: '100%' }}
-            >
-              <option value="">Choisir un lieu...</option>
-              {locations.map(loc => (
-                <option key={loc.id} value={loc.id}>
-                  {loc.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Note */}
-          <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
-              Note
-            </label>
-            <textarea
-              value={editData.note}
-              onChange={(e) => setEditData(prev => ({ ...prev, note: e.target.value }))}
-              className="input"
-              style={{ width: '100%', minHeight: '80px', resize: 'vertical' }}
-              placeholder="Note optionnelle..."
-            />
-          </div>
-
-          {/* Actions */}
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <button onClick={handleSave} className="btn primary small" style={{ flex: 1 }}>
-              ✅ Sauvegarder
-            </button>
-            <button onClick={handleCancel} className="btn secondary small" style={{ flex: 1 }}>
-              ❌ Annuler
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className={`card ${isUrgent ? 'urgent' : ''}`}>
-      {/* En-tête */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'start',
-        marginBottom: '1rem'
-      }}>
-        <div>
-          <h4 style={{ 
-            margin: 0, 
-            color: 'var(--forest-800)',
-            fontFamily: "'Crimson Text', Georgia, serif"
-          }}>
-            {lot.product?.name || 'Produit'}
-          </h4>
-          
-          {lot.product?.category && (
-            <div style={{
-              fontSize: '0.85rem',
-              color: 'var(--forest-600)',
-              marginTop: '0.25rem'
-            }}>
-              📂 {lot.product.category}
-            </div>
-          )}
-        </div>
-        
-        <LifespanBadge date={lot.best_before || lot.dlc} />
-      </div>
-
-      {/* Infos principales */}
-      <div style={{ display: 'grid', gap: '0.75rem', marginBottom: '1rem' }}>
-        {/* Quantité */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          padding: '0.5rem',
-          background: 'var(--earth-50)',
-          borderRadius: 'var(--radius-sm)'
-        }}>
-          <span style={{ fontSize: '1.2rem', fontWeight: '700', color: 'var(--earth-600)' }}>
-            {Number(lot.qty) || 0}
-          </span>
-          <span style={{ opacity: 0.8, color: 'var(--forest-500)' }}>
-            {lot.unit || 'unité(s)'}
-          </span>
-        </div>
-
-        {/* Lieu */}
-        {lot.location?.name && (
-          <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>
-            📍 {lot.location.name}
-          </div>
-        )}
-
-        {/* Date */}
-        {(lot.best_before || lot.dlc) && (
-          <div style={{ fontSize: '0.9rem', color: 'var(--medium-gray)' }}>
-            📅 {formatDate(lot.best_before || lot.dlc)}
-          </div>
-        )}
-
-        {/* Note */}
-        {lot.note && (
-          <div style={{
-            fontSize: '0.85rem',
-            color: 'var(--medium-gray)',
-            fontStyle: 'italic',
-            padding: '0.5rem',
-            background: 'rgba(0, 0, 0, 0.02)',
-            borderRadius: 'var(--radius-sm)'
-          }}>
-            💬 {lot.note}
-          </div>
-        )}
-      </div>
-
-      {/* Actions */}
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
-        <button
-          onClick={() => setIsEditing(true)}
-          className="btn secondary small"
-          style={{ flex: 1 }}
-        >
-          ✏️ Modifier
-        </button>
-        
-        <button
-          onClick={() => {
-            if (confirm(`Supprimer définitivement ce lot de "${lot.product?.name || 'produit'}" ?`)) {
-              onDelete && onDelete();
-            }
-          }}
-          className="btn danger small"
-        >
-          🗑️
-        </button>
-      </div>
-    </div>
-  );
-}
+    // Calcul du pourcentage de consommation
+    const
