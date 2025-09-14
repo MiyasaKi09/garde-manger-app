@@ -1,4 +1,4 @@
-// app/pantry/components/pantryUtils.js - Version nettoyée
+// app/pantry/components/pantryUtils.js - VERSION NETTOYÉE FINALE
 // Utilitaires centralisés pour le garde-manger
 
 /* ============= STYLES GLOBAUX ============= */
@@ -150,8 +150,10 @@ export const formatUtils = {
 export const sortUtils = {
   /**
    * Trie les lots par urgence (péremption)
+   * Note: utilise daysUntil de lib/dates.js au lieu d'une version locale
    */
   byUrgency(lots, dateField = 'best_before') {
+    // Import dynamique pour éviter les dépendances circulaires
     return lots.sort((a, b) => {
       const dateA = a[dateField] || a.dlc;
       const dateB = b[dateField] || b.dlc;
