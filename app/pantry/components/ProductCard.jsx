@@ -1,10 +1,7 @@
-// ================================================================
-// 3. app/pantry/components/ProductCard.js - VERSION UNIFIÉE FINALE
-// ================================================================
-
+// app/pantry/components/ProductCard.js - VERSION FINALE UNIFIÉE
 import { useMemo } from 'react';
-import { daysUntil } from '@/lib/dates';
-import { LifespanBadge } from './LifespanBadge';
+import { daysUntil } from '@/lib/dates'; // ✅ Import unifié
+import { LifespanBadge } from './LifespanBadge'; // ✅ Import du composant unifié
 
 export function ProductCard({ productId, name, category, unit, lots = [], onOpen, onQuickAction }) {
   const { total, nextDate, locations, urgentCount, lotDetails } = useMemo(() => {
@@ -33,7 +30,7 @@ export function ProductCard({ productId, name, category, unit, lots = [], onOpen
         nextDate = d;
       }
       
-      const days = daysUntil(d);
+      const days = daysUntil(d); // ✅ Utilise la fonction unifiée
       if (days !== null && days <= 3) urgentCount++;
     }
     
@@ -50,7 +47,7 @@ export function ProductCard({ productId, name, category, unit, lots = [], onOpen
     };
   }, [lots]);
 
-  const soon = nextDate ? daysUntil(nextDate) : null;
+  const soon = nextDate ? daysUntil(nextDate) : null; // ✅ Utilise la fonction unifiée
   const isUrgent = soon !== null && soon <= 3;
 
   return (
@@ -164,6 +161,49 @@ export function ProductCard({ productId, name, category, unit, lots = [], onOpen
         }}>
           📍 {locations.join(', ')}
           {locations.length === 3 && '...'}
+        </div>
+      )}
+
+      {/* Répartition par lieu (si plusieurs) */}
+      {lotDetails.length > 1 && (
+        <div style={{
+          background: 'var(--forest-50)',
+          padding: '0.75rem',
+          borderRadius: 'var(--radius-sm)',
+          marginBottom: '1rem',
+          border: '1px solid var(--forest-200)'
+        }}>
+          <div style={{
+            fontSize: '0.8rem', 
+            color: 'var(--forest-600)', 
+            marginBottom: '0.5rem', 
+            fontWeight: '600'
+          }}>
+            Répartition par lieu:
+          </div>
+          {lotDetails.slice(0, 3).map(detail => (
+            <div key={detail.location} style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontSize: '0.75rem',
+              color: 'var(--forest-700)',
+              marginBottom: '0.25rem'
+            }}>
+              <span>{detail.location}</span>
+              <span style={{ fontWeight: '600' }}>
+                {detail.qty} {unit} ({detail.count} lot{detail.count > 1 ? 's' : ''})
+              </span>
+            </div>
+          ))}
+          {lotDetails.length > 3 && (
+            <div style={{
+              fontSize: '0.7rem', 
+              color: 'var(--medium-gray)', 
+              textAlign: 'center'
+            }}>
+              +{lotDetails.length - 3} autre{lotDetails.length - 3 > 1 ? 's' : ''} lieu{lotDetails.length - 3 > 1 ? 'x' : ''}
+            </div>
+          )}
         </div>
       )}
 
