@@ -1,8 +1,36 @@
 // app/pantry/components/SmartAddForm.js - Version corrigée complète
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import { estimateProductMeta } from '@/lib/meta';
-import { ProductAI, ProductSearch, PantryStyles } from './pantryUtils';
+import { daysUntil, formatDate } from '@/lib/dates'; // ✅ Import unifié
+import { ProductAI, PantryStyles } from './pantryUtils';
+
+// Utilitaire de recherche de produits
+const ProductSearch = {
+  fuzzyScore(query, text) {
+    if (!query || !text) return 0;
+    
+    const q = query.toLowerCase();
+    const t = text.toLowerCase();
+    
+    // Correspondance exacte
+    if (t.includes(q)) return 100;
+    
+    // Score basé sur les mots en commun
+    const qWords = q.split(/\s+/);
+    const tWords = t.split(/\s+/);
+    let score = 0;
+    
+    for (const qWord of qWords) {
+      for (const tWord of tWords) {
+        if (tWord.includes(qWord)) {
+          score += qWord.length / q.length * 50;
+        }
+      }
+    }
+    
+    return score;
+  }
+};
 
 export function SmartAddForm({ locations, onAdd, onClose, initialProduct = null }) {
   const [query, setQuery] = useState('');
@@ -67,101 +95,61 @@ export function SmartAddForm({ locations, onAdd, onClose, initialProduct = null 
           .filter(p => p.score > 10)
           .sort((a, b) => b.score - a.score)
           .slice(0, 8);
-          
+        
         setSuggestions(scored);
-      } catch (err) {
-        console.error('Erreur recherche produits:', err);
+      } catch (error) {
+        console.error('Erreur recherche produits:', error);
+        setSuggestions([]);
       }
     }, 300);
 
     return () => clearTimeout(timeoutId);
   }, [query]);
 
-  function selectProduct(product) {
-    setSelectedProduct(product);
-    setQuery(product.name);
-    setUnit(product.default_unit || 'g');
-    setSuggestions([]);
-    
-    // Auto-sélection du lieu avec IA
-    const analysis = ProductAI.analyzeProductName(product.name);
-    const suggestedLocation = ProductAI.findLocationByType(locations, analysis.location);
-    if (suggestedLocation) {
-      setLocationId(suggestedLocation.id);
-    }
-    
-    // Auto-calcul de la DLC
-    const shelfLifeDays = product.typical_shelf_life_days || analysis.shelfLife;
-    if (shelfLifeDays) {
-      const futureDate = new Date();
-      futureDate.setDate(futureDate.getDate() + shelfLifeDays);
-      setDlc(futureDate.toISOString().slice(0, 10));
-    }
-  }
-
-  // Fonction pour créer ou récupérer un produit
   async function getOrCreateProduct(productName) {
-    const name = productName.trim();
-    
-    // 1. Vérifier si le produit existe déjà (recherche case-insensitive)
-    const { data: existingProduct, error: searchError } = await supabase
+    // 1. Chercher un produit existant
+    const { data: existing } = await supabase
       .from('products_catalog')
       .select('*')
-      .ilike('name', name)
-      .maybeSingle();
+      .ilike('name', productName)
+      .single();
+      
+    if (existing) return existing;
     
-    if (searchError && searchError.code !== 'PGRST116') {
-      throw searchError;
-    }
+    // 2. Créer un nouveau produit avec l'IA
+    const analysis = ProductAI.analyzeProductName(productName);
     
-    // 2. Si le produit existe, le retourner
-    if (existingProduct) {
-      return existingProduct;
-    }
-    
-    // 3. Sinon, créer un nouveau produit
-    const analysis = ProductAI.analyzeProductName(name);
-    const meta = estimateProductMeta({ name, category: analysis.category });
-    
-    const productData = {
-      name: name,
-      category: analysis.category || null,
+    const newProduct = {
+      name: productName,
+      category: analysis.category || 'autre',
       default_unit: analysis.unit || 'g',
       typical_shelf_life_days: analysis.shelfLife || 7,
-      density_g_per_ml: meta?.density_g_per_ml || 1.0,
-      grams_per_unit: meta?.grams_per_unit || null,
       created_at: new Date().toISOString()
     };
     
-    const { data: newProduct, error: createError } = await supabase
+    const { data: created, error } = await supabase
       .from('products_catalog')
-      .insert([productData])
+      .insert([newProduct])
       .select()
       .single();
-    
-    if (createError) {
-      throw createError;
-    }
-    
-    return newProduct;
+      
+    if (error) throw error;
+    return created;
   }
 
   function getAvailableUnitsForProduct(product) {
-    if (!product) return ['g', 'kg', 'ml', 'cl', 'l', 'u'];
+    if (!product) return ['g', 'u'];
     
-    const units = ['g', 'kg'];
+    const defaultUnit = product.default_unit || 'g';
+    const baseUnits = ['g', 'kg', 'u', 'ml', 'cl', 'l'];
     
-    if (product.density_g_per_ml && product.density_g_per_ml !== 1.0) {
-      units.push('ml', 'cl', 'l');
-    }
+    // Unités spécifiques selon le type de produit
+    const units = [defaultUnit];
     
-    if (product.grams_per_unit) {
-      units.push('u');
-    }
-    
-    // Priorité aux liquides
     if (isLiquidProduct(product)) {
-      return ['ml', 'cl', 'l', ...units.filter(u => !['ml','cl','l'].includes(u))];
+      units.push(...baseUnits.filter(u => ['ml','cl','l'].includes(u)));
+    } else {
+      units.push(...baseUnits.filter(u => !['ml','cl','l'].includes(u)));
     }
     
     return [...new Set(units)];
@@ -238,8 +226,8 @@ export function SmartAddForm({ locations, onAdd, onClose, initialProduct = null 
   return (
     <div style={{ 
       ...PantryStyles.glassBase, 
-      borderRadius:16, 
-      padding:24,
+      borderRadius: 16, 
+      padding: 24,
       background: 'linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,250,252,0.95))',
       backdropFilter: 'blur(16px)',
       border: '2px solid rgba(34,197,94,0.3)',
@@ -262,187 +250,154 @@ export function SmartAddForm({ locations, onAdd, onClose, initialProduct = null 
             IA Avancée
           </span>
         </h3>
-        <button 
+        
+        <button
           onClick={onClose}
           style={{
-            background:'linear-gradient(135deg, #ef4444, #dc2626)', 
-            color:'white',
+            background:'none', 
             border:'none', 
-            fontSize:'1rem', 
+            fontSize:'1.5rem', 
             cursor:'pointer',
-            padding:'8px 12px', 
-            borderRadius:8,
-            fontWeight:600
+            opacity:0.7,
+            transition:'opacity 0.2s'
           }}
+          onMouseEnter={e=>e.target.style.opacity=1}
+          onMouseLeave={e=>e.target.style.opacity=0.7}
         >
-          ❌ Fermer
+          ✕
         </button>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div style={{position:'relative', marginBottom:20}}>
-          <input
-            placeholder="🔍 Tapez le nom du produit (ex: tomate cœur de bœuf, huile d'olive...)"
-            value={query}
-            onChange={(e) => {
-              const newQuery = e.target.value;
-              setQuery(newQuery);
-              setSelectedProduct(null);
-              
-              // Pre-analyse pour suggestions d'unité
-              if (newQuery.length > 2) {
-                const analysis = ProductAI.analyzeProductName(newQuery);
-                setUnit(analysis.unit);
-                
-                // Suggestion de lieu en temps réel
-                const suggestedLocation = ProductAI.findLocationByType(locations, analysis.location);
-                if (suggestedLocation && !locationId) {
-                  setLocationId(suggestedLocation.id);
-                }
-              }
-            }}
-            style={{
-              width:'100%', 
-              padding:'16px', 
-              borderRadius:12, 
-              border:'2px solid #d1d5db',
-              fontSize:'1.1rem',
-              background:'rgba(255,255,255,0.9)'
-            }}
-            required
-          />
-          
-          {suggestions.length > 0 && (
-            <div style={{
-              position:'absolute', 
-              top:'100%', 
-              left:0, 
-              right:0, 
-              zIndex:10000,
-              background:'white', 
-              border:'2px solid #d1d5db', 
-              borderRadius:16, 
-              marginTop:8,
-              boxShadow:'0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)', 
-              maxHeight:320, 
-              overflowY:'auto'
-            }}>
-              {suggestions.map((product, index) => (
-                <div
-                  key={product.id}
-                  onClick={() => selectProduct(product)}
-                  style={{
-                    padding:'16px 20px', 
-                    cursor:'pointer', 
-                    borderBottom: index < suggestions.length - 1 ? '1px solid #f3f4f6' : 'none',
-                    display:'flex', 
-                    justifyContent:'space-between', 
-                    alignItems:'center'
-                  }}
-                  onMouseEnter={(e) => e.target.style.background = '#f8fafc'}
-                  onMouseLeave={(e) => e.target.style.background = 'white'}
-                >
-                  <div>
-                    <div style={{fontWeight:700, fontSize:'1.05rem', color:'#1f2937'}}>{product.name}</div>
-                    {product.category && (
-                      <div style={{fontSize:'0.9rem', color:'#6b7280', marginTop:2}}>
-                        📂 {product.category}
-                      </div>
-                    )}
-                  </div>
-                  <div style={{
-                    fontSize:'0.85rem', 
-                    color:'#10b981', 
-                    fontWeight:600,
-                    background:'rgba(16,185,129,0.1)',
-                    padding:'4px 8px',
-                    borderRadius:8
-                  }}>
-                    Score: {Math.round(product.score)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {selectedProduct && (
-          <div style={{
-            background:'linear-gradient(135deg, #ecfdf5, #d1fae5)', 
-            padding:20, 
-            borderRadius:16, 
-            marginBottom:20,
-            border:'3px solid #34d399'
-          }}>
-            <div style={{
-              fontWeight:800, 
-              fontSize:'1.2rem', 
-              color:'#064e3b',
-              marginBottom:8
-            }}>
-              ✅ {selectedProduct.name}
-            </div>
-            <div style={{fontSize:'1rem', color:'#047857'}}>
-              📂 {selectedProduct.category || 'Sans catégorie'} • 
-              📏 {selectedProduct.default_unit || 'g'}
-              {selectedProduct.typical_shelf_life_days && 
-                ` • 📅 ${selectedProduct.typical_shelf_life_days} jours`}
-            </div>
-          </div>
-        )}
-
-        <div style={{
-          display:'grid', 
-          gridTemplateColumns:'140px 120px 160px 1fr auto', 
-          gap:16, 
-          alignItems:'end',
-          background:'rgba(255,255,255,0.9)',
-          padding:20,
-          borderRadius:16,
-          border:'2px solid #e5e7eb'
-        }}>
+        <div style={{display:'grid', gap:20}}>
+          {/* Recherche de produit */}
           <div>
             <label style={{fontSize:'1rem', color:'#374151', marginBottom:8, display:'block', fontWeight:600}}>
-              📊 Quantité
+              🔍 Nom du produit
             </label>
             <input
-              type="number"
-              min="0"
-              step="0.01"
-              value={qty}
-              onChange={(e) => setQty(e.target.value)}
+              type="text"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setSelectedProduct(null);
+              }}
+              placeholder="Ex: Tomates cerises, Yaourt nature..."
               style={{
                 width:'100%', 
                 padding:'12px', 
                 borderRadius:8, 
                 border:'2px solid #d1d5db',
-                fontSize:'1.1rem',
-                fontWeight:600
+                fontSize:'1rem'
               }}
-              required
+              autoFocus={!initialProduct}
             />
+            
+            {/* Suggestions */}
+            {suggestions.length > 0 && !selectedProduct && (
+              <div style={{
+                marginTop:8, 
+                maxHeight:200, 
+                overflowY:'auto',
+                border:'1px solid #e5e7eb',
+                borderRadius:8,
+                background:'white'
+              }}>
+                {suggestions.map(p => (
+                  <div
+                    key={p.id}
+                    onClick={() => {
+                      setSelectedProduct(p);
+                      setQuery(p.name);
+                      setUnit(p.default_unit || 'g');
+                      setSuggestions([]);
+                      
+                      // Auto-suggestions
+                      const analysis = ProductAI.analyzeProductName(p.name);
+                      const suggestedLocation = ProductAI.findLocationByType(locations, analysis.location);
+                      if (suggestedLocation && !locationId) {
+                        setLocationId(suggestedLocation.id);
+                      }
+                      
+                      // Auto-DLC
+                      if (p.typical_shelf_life_days && !dlc) {
+                        const futureDate = new Date();
+                        futureDate.setDate(futureDate.getDate() + p.typical_shelf_life_days);
+                        setDlc(futureDate.toISOString().slice(0, 10));
+                      }
+                    }}
+                    style={{
+                      padding:'12px',
+                      cursor:'pointer',
+                      borderBottom:'1px solid #f3f4f6',
+                      transition:'background 0.15s'
+                    }}
+                    onMouseEnter={e=>e.target.style.background='#f9fafb'}
+                    onMouseLeave={e=>e.target.style.background='white'}
+                  >
+                    <div style={{fontWeight:600}}>{p.name}</div>
+                    <div style={{fontSize:'0.85rem', opacity:0.7}}>{p.category}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            {selectedProduct && (
+              <div style={{
+                marginTop:8, 
+                padding:12, 
+                background:'#ecfdf5', 
+                border:'1px solid #10b981',
+                borderRadius:8,
+                fontSize:'0.9rem'
+              }}>
+                ✅ Produit sélectionné: <strong>{selectedProduct.name}</strong>
+                {selectedProduct.category && ` (${selectedProduct.category})`}
+              </div>
+            )}
           </div>
           
-          <div>
-            <label style={{fontSize:'1rem', color:'#374151', marginBottom:8, display:'block', fontWeight:600}}>
-              📏 Unité
-            </label>
-            <select
-              value={unit}
-              onChange={(e) => setUnit(e.target.value)}
-              style={{
-                width:'100%', 
-                padding:'12px', 
-                borderRadius:8, 
-                border:'2px solid #d1d5db',
-                fontSize:'1rem',
-                fontWeight:600
-              }}
-            >
-              {getAvailableUnitsForProduct(selectedProduct).map(u => (
-                <option key={u} value={u}>{u}</option>
-              ))}
-            </select>
+          <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:16}}>
+            <div>
+              <label style={{fontSize:'1rem', color:'#374151', marginBottom:8, display:'block', fontWeight:600}}>
+                🔢 Quantité
+              </label>
+              <input
+                type="number"
+                min="0.1"
+                step="0.1"
+                value={qty}
+                onChange={(e) => setQty(e.target.value)}
+                style={{
+                  width:'100%', 
+                  padding:'12px', 
+                  borderRadius:8, 
+                  border:'2px solid #d1d5db',
+                  fontSize:'1rem'
+                }}
+              />
+            </div>
+            
+            <div>
+              <label style={{fontSize:'1rem', color:'#374151', marginBottom:8, display:'block', fontWeight:600}}>
+                📏 Unité
+              </label>
+              <select
+                value={unit}
+                onChange={(e) => setUnit(e.target.value)}
+                style={{
+                  width:'100%', 
+                  padding:'12px', 
+                  borderRadius:8, 
+                  border:'2px solid #d1d5db',
+                  fontSize:'1rem'
+                }}
+              >
+                {getAvailableUnitsForProduct(selectedProduct).map(u => (
+                  <option key={u} value={u}>{u}</option>
+                ))}
+              </select>
+            </div>
           </div>
           
           <div>
