@@ -1,482 +1,300 @@
-// app/pantry/page.js - Version corrigée
+// ==================================================
+// 1. Correction de app/pantry/page.js
+// ==================================================
+
 'use client';
 
 import { useEffect, useMemo, useState, useCallback } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { SmartAddForm } from './components/SmartAddForm';
-import { ProductCard } from './components/ProductCard';
+import { ProductCard } from './components/ProductCard'; // ✅ Utiliser le bon chemin
 import { LotsView } from './components/LotsView';
 import { PantryStats } from './components/PantryStats';
 import { EnhancedLotCard } from './components/EnhancedLotCard';
 
-// ✅ IMPORTER DateHelpers depuis le fichier utilitaire au lieu de le redéfinir
+// ✅ Importer DateHelpers depuis le bon fichier
 import { DateHelpers } from './components/pantryUtils';
 
-// Hook personnalisé pour la gestion des données
+// Rest of the page component stays the same...
 function usePantryData() {
-  const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState('');
-  const [lots, setLots] = useState([]);
-  const [locations, setLocations] = useState([]);
-  const [q, setQ] = useState('');
-  const [locFilter, setLocFilter] = useState('Tous');
-  const [view, setView] = useState('products');
-  const [showAddForm, setShowAddForm] = useState(false);
-
-  const load = useCallback(async () => {
-    setLoading(true);
-    setErr('');
-    
-    try {
-      const [{ data: locs, error: e1 }, { data: ls, error: e2 }] = await Promise.all([
-        supabase.from('locations').select('id, name').order('name', { ascending: true }),
-        supabase
-          .from('inventory_lots')
-          .select(`
-            id, qty, unit, dlc, note, entered_at, location_id,
-            product:products_catalog ( 
-              id, name, category, default_unit, density_g_per_ml, grams_per_unit 
-            ),
-            location:locations ( id, name )
-          `)
-          .order('dlc', { ascending: true, nullsFirst: true })
-          .order('entered_at', { ascending: false })
-      ]);
-      
-      if (e1) throw e1;
-      if (e2) throw e2;
-      
-      setLocations(locs || []);
-      setLots((ls || []).map(lot => ({
-        ...lot,
-        best_before: lot.dlc || lot.best_before
-      })));
-      
-    } catch (e) {
-      console.error(e);
-      setErr(e.message || 'Erreur de chargement');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  const handleAddLot = async (lotData, product) => {
-    try {
-      const { data: newLot, error } = await supabase
-        .from('inventory_lots')
-        .insert([lotData])
-        .select(`
-          id, qty, unit, dlc, note, entered_at, location_id,
-          product:products_catalog ( 
-            id, name, category, default_unit, density_g_per_ml, grams_per_unit 
-          ),
-          location:locations ( id, name )
-        `)
-        .single();
-      
-      if (error) throw error;
-      
-      const enrichedLot = {
-        ...newLot,
-        best_before: newLot.dlc || newLot.best_before
-      };
-      
-      setLots(prev => [enrichedLot, ...prev]);
-      return true;
-    } catch (e) {
-      console.error(e);
-      setErr(e.message || 'Erreur lors de l\'ajout');
-      return false;
-    }
-  };
-
-  const handleDeleteLot = async (lotId) => {
-    try {
-      const { error } = await supabase
-        .from('inventory_lots')
-        .delete()
-        .eq('id', lotId);
-      
-      if (error) throw error;
-      
-      setLots(prev => prev.filter(lot => lot.id !== lotId));
-    } catch (e) {
-      console.error(e);
-      setErr(e.message || 'Erreur lors de la suppression');
-    }
-  };
-
-  const handleUpdateLot = async (lotId, updates) => {
-    try {
-      const { data: updatedLot, error } = await supabase
-        .from('inventory_lots')
-        .update(updates)
-        .eq('id', lotId)
-        .select(`
-          id, qty, unit, dlc, note, entered_at, location_id,
-          product:products_catalog ( 
-            id, name, category, default_unit, density_g_per_ml, grams_per_unit 
-          ),
-          location:locations ( id, name )
-        `)
-        .single();
-      
-      if (error) throw error;
-      
-      const enrichedLot = {
-        ...updatedLot,
-        best_before: updatedLot.dlc || updatedLot.best_before
-      };
-      
-      setLots(prev => prev.map(lot => 
-        lot.id === lotId ? enrichedLot : lot
-      ));
-    } catch (e) {
-      console.error(e);
-      setErr(e.message || 'Erreur lors de la mise à jour');
-    }
-  };
-
-  return {
-    loading, err, lots, locations, q, setQ, locFilter, setLocFilter,
-    view, setView, showAddForm, setShowAddForm, load,
-    handleAddLot, handleDeleteLot, handleUpdateLot
-  };
-}
-
-// Composants supplémentaires...
-function SearchBar({ q, setQ, locFilter, setLocFilter, locations }) {
-  return (
-    <div style={{
-      display: 'flex',
-      gap: '1rem',
-      marginBottom: '1.5rem',
-      flexWrap: 'wrap'
-    }}>
-      <input
-        type="text"
-        placeholder="🔍 Rechercher un produit..."
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        style={{
-          flex: '2',
-          minWidth: '200px',
-          padding: '0.75rem 1rem',
-          borderRadius: 'var(--radius-md)',
-          border: '1px solid var(--forest-300)',
-          fontSize: '1rem'
-        }}
-      />
-      
-      <select
-        value={locFilter}
-        onChange={(e) => setLocFilter(e.target.value)}
-        style={{
-          flex: '1',
-          minWidth: '150px',
-          padding: '0.75rem',
-          borderRadius: 'var(--radius-md)',
-          border: '1px solid var(--forest-300)',
-          fontSize: '1rem'
-        }}
-      >
-        <option value="Tous">📍 Tous les lieux</option>
-        {locations.map(loc => (
-          <option key={loc.id} value={loc.name}>
-            📍 {loc.name}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-}
-
-function ViewSelector({ view, setView }) {
-  return (
-    <div style={{
-      display: 'flex',
-      gap: '0.5rem',
-      marginBottom: '1.5rem',
-      padding: '0.25rem',
-      background: 'var(--forest-100)',
-      borderRadius: 'var(--radius-md)',
-      width: 'fit-content'
-    }}>
-      {[
-        { key: 'products', icon: '🧺', label: 'Produits' },
-        { key: 'lots', icon: '📦', label: 'Lots' },
-        { key: 'stats', icon: '📊', label: 'Stats' }
-      ].map(({ key, icon, label }) => (
-        <button
-          key={key}
-          onClick={() => setView(key)}
-          className={`btn small ${view === key ? 'primary' : 'secondary'}`}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.5rem 1rem'
-          }}
-        >
-          <span>{icon}</span>
-          {label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function Header() {
-  return (
-    <div style={{
-      background: 'linear-gradient(135deg, var(--forest-400) 0%, var(--earth-400) 100%)',
-      margin: '-2rem -2rem 2rem -2rem',
-      padding: '2rem',
-      borderRadius: '0 0 1rem 1rem'
-    }}>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1rem',
-        color: 'white'
-      }}>
-        <div style={{
-          width: '48px',
-          height: '48px',
-          background: 'linear-gradient(135deg, var(--forest-500), var(--forest-400))',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 4px 16px rgba(58, 107, 30, 0.3)'
-        }}>
-          <span style={{ fontSize: '20px' }}>🏺</span>
-        </div>
-
-        <h1 style={{
-          fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
-          fontFamily: 'Crimson Text, serif',
-          fontWeight: '600',
-          background: 'linear-gradient(135deg, var(--forest-700), var(--forest-500))',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          margin: 0,
-          letterSpacing: '-0.02em'
-        }}>
-          Garde-Manger
-        </h1>
-      </div>
-    </div>
-  );
+  // ... (votre code existant)
 }
 
 // Page principale
 export default function PantryPage() {
-  const {
-    loading, err, lots, locations, q, setQ, locFilter, setLocFilter,
-    view, setView, showAddForm, setShowAddForm, load,
-    handleAddLot, handleDeleteLot, handleUpdateLot
-  } = usePantryData();
+  // ... (votre code existant - reste identique)
+}
 
-  const [selectedProductForAdd, setSelectedProductForAdd] = useState(null);
-  const [detailProduct, setDetailProduct] = useState(null);
+// ==================================================
+// 2. Correction de app/pantry/components/ProductCard.js
+// ==================================================
 
-  useEffect(() => { 
-    load(); 
-  }, [load]);
+// app/pantry/components/ProductCard.js
+import { useMemo } from 'react';
+// ✅ Assurer que l'import est correct
+import { DateHelpers } from './pantryUtils';
 
-  // Filtrage des lots
-  const filtered = useMemo(() => {
-    const s = (q || '').toLowerCase().trim();
-    console.log('Filtrage:', { 
-      totalLots: lots?.length, 
-      searchQuery: s, 
-      locationFilter: locFilter 
-    });
+// Badge de péremption adapté au style Myko
+const LifespanBadge = ({ date }) => {
+  if (!date) return null;
+  
+  const days = DateHelpers.daysUntil(date);
+  let badgeClass = 'success';
+  let text = 'OK';
+  
+  if (days === null) return null;
+  
+  if (days < 0) {
+    badgeClass = 'danger';
+    text = `Périmé ${Math.abs(days)}j`;
+  } else if (days === 0) {
+    badgeClass = 'danger';
+    text = "Aujourd'hui";
+  } else if (days === 1) {
+    badgeClass = 'warning';
+    text = 'Demain';
+  } else if (days <= 3) {
+    badgeClass = 'warning';
+    text = `${days}j`;
+  } else if (days <= 7) {
+    badgeClass = 'info';
+    text = `${days}j`;
+  }
+  
+  return <span className={`badge ${badgeClass}`}>{text}</span>;
+};
+
+export function ProductCard({ productId, name, category, unit, lots=[], onOpen, onQuickAction }) {
+  const { total, nextDate, locations, urgentCount, lotDetails } = useMemo(() => {
+    let total = 0;
+    let nextDate = null;
+    const locSet = new Set();
+    let urgentCount = 0;
+    const lotsByLocation = new Map();
     
-    return (lots || []).filter(l => {
-      const okLoc = locFilter === 'Tous' || l.location?.name === locFilter;
-      if (!okLoc) return false;
-      
-      if (!s) return true;
-      
-      const productName = (l.product?.name || '').toLowerCase();
-      const category = (l.product?.category || '').toLowerCase();
-      const note = (l.note || '').toLowerCase();
-      
-      return productName.includes(s) || category.includes(s) || note.includes(s);
-    });
-  }, [lots, q, locFilter]);
-
-  // Groupement par produit pour la vue "products"
-  const byProduct = useMemo(() => {
-    const m = new Map();
-    
-    for (const lot of filtered) {
-      const pid = lot.product?.id;
-      if (!pid) continue;
-      
-      if (!m.has(pid)) {
-        m.set(pid, { 
-          productId: pid, 
-          name: lot.product.name, 
-          category: lot.product.category,
-          unit: lot.product.default_unit || lot.unit,
-          lots: [] 
-        });
+    for (const lot of lots) {
+      total += Number(lot.qty || 0);
+      if (lot.location?.name) {
+        locSet.add(lot.location.name);
+        
+        const locName = lot.location.name;
+        if (!lotsByLocation.has(locName)) {
+          lotsByLocation.set(locName, { qty: 0, count: 0 });
+        }
+        const locData = lotsByLocation.get(locName);
+        locData.qty += Number(lot.qty || 0);
+        locData.count += 1;
       }
-      m.get(pid).lots.push(lot);
+      
+      const d = lot.dlc || lot.best_before;
+      if (d && (nextDate === null || new Date(d) < new Date(nextDate))) nextDate = d;
+      
+      const days = DateHelpers.daysUntil(d);
+      if (days !== null && days <= 3) urgentCount++;
     }
     
-    return Array.from(m.values()).sort((a, b) => {
-      const aUrgent = Math.min(...a.lots.map(l => DateHelpers.daysUntil(l.best_before) ?? 999));
-      const bUrgent = Math.min(...b.lots.map(l => DateHelpers.daysUntil(l.best_before) ?? 999));
-      return aUrgent - bUrgent;
-    });
-  }, [filtered]);
+    return { 
+      total: Math.round(total * 100) / 100, 
+      nextDate, 
+      locations: [...locSet].slice(0, 3),
+      urgentCount,
+      lotDetails: Array.from(lotsByLocation.entries()).map(([loc, data]) => ({
+        location: loc,
+        qty: Math.round(data.qty * 100) / 100,
+        count: data.count
+      }))
+    };
+  }, [lots]);
 
-  if (loading) return <div>Chargement...</div>;
+  const soon = nextDate ? DateHelpers.daysUntil(nextDate) : null;
+  const isUrgent = soon !== null && soon <= 3;
 
   return (
-    <div className="page">
-      <Header />
-      
-      <SearchBar 
-        q={q} 
-        setQ={setQ} 
-        locFilter={locFilter} 
-        setLocFilter={setLocFilter}
-        locations={locations}
-      />
-      
+    <div 
+      className={`card interactive ${isUrgent ? 'urgent' : ''}`}
+      onClick={() => onOpen && onOpen({ productId, name })}
+      style={{ cursor: 'pointer' }}
+    >
+      {/* En-tête avec nom et badge */}
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'start',
+        marginBottom: '1rem' 
+      }}>
+        <div style={{ flex: 1 }}>
+          <h3 style={{ 
+            margin: 0, 
+            fontSize: '1.25rem',
+            color: 'var(--forest-800)',
+            fontFamily: "'Crimson Text', Georgia, serif"
+          }}>
+            {name}
+          </h3>
+          {category && (
+            <div style={{
+              fontSize: '0.9rem',
+              color: 'var(--forest-600)',
+              marginTop: '0.25rem',
+              fontWeight: '500'
+            }}>
+              📂 {category}
+            </div>
+          )}
+        </div>
+        <LifespanBadge date={nextDate} />
+      </div>
+
+      {/* Quantité totale */}
+      <div style={{
+        background: 'var(--earth-50)',
+        padding: '1rem',
+        borderRadius: 'var(--radius-md)',
+        marginBottom: '1rem',
+        textAlign: 'center',
+        position: 'relative'
+      }}>
+        <div style={{
+          fontSize: '2rem',
+          fontWeight: '800',
+          color: 'var(--earth-600)',
+          lineHeight: 1
+        }}>
+          {total.toFixed(total % 1 === 0 ? 0 : 1)}
+        </div>
+        <div style={{
+          fontSize: '0.9rem',
+          color: 'var(--earth-500)',
+          fontWeight: '500',
+          marginTop: '0.25rem'
+        }}>
+          {unit || 'unité'}
+        </div>
+        
+        {urgentCount > 0 && (
+          <div style={{
+            position: 'absolute',
+            top: '-8px',
+            right: '-8px',
+            background: 'var(--danger)',
+            color: 'white',
+            borderRadius: '50%',
+            width: '24px',
+            height: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '0.75rem',
+            fontWeight: '700',
+            animation: 'pulse-urgent 2s ease-in-out infinite'
+          }}>
+            {urgentCount}
+          </div>
+        )}
+      </div>
+
+      {/* Informations sur les lots */}
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: '1.5rem'
+        marginBottom: '1rem',
+        fontSize: '0.9rem',
+        color: 'var(--forest-600)'
       }}>
-        <button 
-          onClick={() => setShowAddForm(!showAddForm)}
-          className={`btn ${showAddForm ? 'danger' : 'primary'}`}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
-          }}
-        >
-          {showAddForm ? '✕ Fermer' : '➕ Ajouter'}
-        </button>
+        <span>📦 {lots.length} lot{lots.length > 1 ? 's' : ''}</span>
+        
+        {urgentCount > 0 && (
+          <span className="badge warning" style={{ fontSize: '0.75rem' }}>
+            {urgentCount} urgent{urgentCount > 1 ? 's' : ''}
+          </span>
+        )}
       </div>
 
-      <ViewSelector view={view} setView={setView} />
-
-      {/* Formulaire d'ajout */}
-      {showAddForm && (
-        <div className="card" style={{ marginBottom: '1.5rem' }}>
-          <SmartAddForm
-            locations={locations}
-            onAdd={handleAddLot}
-            onClose={() => {
-              setShowAddForm(false);
-              setSelectedProductForAdd(null);
-            }}
-            initialProduct={selectedProductForAdd}
-          />
-        </div>
-      )}
-
-      {/* Messages d'erreur */}
-      {err && (
-        <div className="badge danger" style={{
-          display: 'block',
-          padding: '1rem',
-          marginBottom: '1.5rem',
-          textAlign: 'center',
-          fontSize: '0.95rem'
+      {/* Lieux de stockage */}
+      {locations.length > 0 && (
+        <div style={{
+          fontSize: '0.85rem',
+          color: 'var(--forest-500)',
+          marginBottom: '1rem'
         }}>
-          ❌ {err}
+          📍 {locations.join(', ')}
+          {locations.length === 3 && '...'}
         </div>
       )}
 
-      {/* Contenu principal */}
-      {view === 'products' ? (
-        <div className="grid cols-3">
-          {byProduct.map(({ productId, name, category, unit, lots }) => (
-            <ProductCard
-              key={productId}
-              productId={productId}
-              name={name}
-              category={category}
-              unit={unit}
-              lots={lots}
-              onOpen={({ productId, name }) => {
-                const productLots = lots.filter(lot => lot.product?.id === productId);
-                setDetailProduct({ productId, name, lots: productLots });
-              }}
-              onQuickAction={(action, data) => {
-                if (action === 'add') {
-                  setSelectedProductForAdd(data);
-                  setShowAddForm(true);
-                }
-              }}
-            />
-          ))}
-          
-          {byProduct.length === 0 && (
-            <div className="empty-state">
-              {q || locFilter !== 'Tous' ? 
-                '🔍 Aucun produit ne correspond aux filtres.' :
-                '📦 Aucun produit dans le garde-manger. Commencez par ajouter des lots !'
-              }
-            </div>
-          )}
-        </div>
-      ) : view === 'lots' ? (
-        <LotsView 
-          lots={filtered} 
-          onDeleteLot={handleDeleteLot}
-          onUpdateLot={handleUpdateLot}
-        />
-      ) : (
-        <PantryStats lots={filtered} />
-      )}
-
-      {/* Modal de détails produit */}
-      {detailProduct && (
-        <div className="modal-backdrop" onClick={() => setDetailProduct(null)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '1.5rem'
-            }}>
-              <h2>{detailProduct.name}</h2>
-              <button 
-                onClick={() => setDetailProduct(null)}
-                className="btn secondary small"
-              >
-                ✕
-              </button>
-            </div>
-            
-            <div className="grid cols-2" style={{ gap: '1rem' }}>
-              {detailProduct.lots.map(lot => (
-                <EnhancedLotCard
-                  key={lot.id}
-                  lot={lot}
-                  onDelete={() => {
-                    handleDeleteLot(lot.id);
-                    setDetailProduct(null);
-                  }}
-                  onUpdate={(updates) => handleUpdateLot(lot.id, updates)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Actions */}
+      <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <button
+          className="btn primary small"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpen && onOpen({ productId, name });
+          }}
+          style={{ flex: 1 }}
+        >
+          👁️ Détails
+        </button>
+        
+        <button
+          className="btn secondary small"
+          onClick={(e) => {
+            e.stopPropagation();
+            onQuickAction && onQuickAction('add', { productId, name, category });
+          }}
+          title="Ajouter un lot"
+        >
+          ➕
+        </button>
+      </div>
     </div>
   );
 }
+
+// ==================================================
+// 3. Vérifiez que pantryUtils.js exporte bien DateHelpers
+// ==================================================
+
+// app/pantry/components/pantryUtils.js
+export const DateHelpers = {
+  daysUntil(date) {
+    if (!date) return null;
+    const today = new Date(); 
+    today.setHours(0,0,0,0);
+    const d = new Date(date); 
+    d.setHours(0,0,0,0);
+    return Math.round((d - today) / 86400000);
+  },
+
+  fmtDate(d) {
+    if (!d) return '—';
+    try {
+      const x = new Date(d);
+      return x.toLocaleDateString('fr-FR', { day:'2-digit', month:'short', year:'numeric' });
+    } catch { 
+      return d; 
+    }
+  }
+};
+
+// Autres exports...
+export const PantryStyles = {
+  // ... vos styles existants
+};
+
+export const ProductAI = {
+  // ... votre code existant
+};
+
+// ==================================================
+// INSTRUCTIONS DE DÉBOGAGE
+// ==================================================
+
+/* 
+Si le problème persiste, ajoutez temporairement ces lignes en haut de ProductCard.js :
+
+console.log('ProductCard: DateHelpers imported =', DateHelpers);
+console.log('ProductCard: DateHelpers.daysUntil =', DateHelpers?.daysUntil);
+
+Puis ouvrez la console de votre navigateur pour voir si DateHelpers est bien importé.
+*/
