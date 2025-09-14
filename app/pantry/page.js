@@ -467,24 +467,103 @@ export default function PantryPage() {
 
       {/* Modal de détails produit */}
       {detailProduct && (
-        <div className="modal-backdrop" onClick={() => setDetailProduct(null)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.6)',
+            backdropFilter: 'blur(8px)',
+            zIndex: 1000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '2rem'
+          }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setDetailProduct(null);
+            }
+          }}
+        >
+          <div 
+            style={{
+              background: 'rgba(255, 255, 255, 0.95)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              borderRadius: 'var(--radius-xl)',
+              padding: '2rem',
+              maxWidth: '900px',
+              width: '100%',
+              maxHeight: '85vh',
+              overflowY: 'auto',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)',
+              position: 'relative'
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header du modal */}
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginBottom: '1.5rem'
+              marginBottom: '1.5rem',
+              paddingBottom: '1rem',
+              borderBottom: '2px solid var(--forest-200)'
             }}>
-              <h2>{detailProduct.name}</h2>
+              <div>
+                <h2 style={{ 
+                  margin: 0,
+                  color: 'var(--forest-800)',
+                  fontFamily: "'Crimson Text', Georgia, serif"
+                }}>
+                  📦 {detailProduct.name}
+                </h2>
+                <div style={{
+                  color: 'var(--forest-600)',
+                  marginTop: '0.5rem',
+                  fontWeight: 500
+                }}>
+                  {detailProduct.lots.length} lot{detailProduct.lots.length > 1 ? 's' : ''} • 
+                  {detailProduct.lots.reduce((sum, lot) => sum + Number(lot.qty || 0), 0).toFixed(1)} unités totales
+                </div>
+              </div>
+              
               <button 
                 onClick={() => setDetailProduct(null)}
-                className="btn secondary small"
+                style={{
+                  background: 'var(--forest-100)',
+                  border: '2px solid var(--forest-300)',
+                  borderRadius: '50%',
+                  width: '40px',
+                  height: '40px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  fontSize: '1.2rem',
+                  color: 'var(--forest-700)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={e => {
+                  e.target.style.background = 'var(--forest-200)';
+                  e.target.style.transform = 'scale(1.1)';
+                }}
+                onMouseLeave={e => {
+                  e.target.style.background = 'var(--forest-100)';
+                  e.target.style.transform = 'scale(1)';
+                }}
+                title="Fermer"
               >
                 ✕
               </button>
             </div>
             
-            <div className="grid cols-2" style={{ gap: '1rem' }}>
+            {/* Contenu du modal */}
+            <div className="grid cols-2" style={{ gap: '1.5rem' }}>
               {detailProduct.lots.map(lot => (
                 <EnhancedLotCard
                   key={lot.id}
@@ -497,6 +576,20 @@ export default function PantryPage() {
                   onUpdate={(updates) => handleUpdateLot(lot.id, updates)}
                 />
               ))}
+              
+              {detailProduct.lots.length === 0 && (
+                <div style={{
+                  gridColumn: '1 / -1',
+                  textAlign: 'center',
+                  padding: '3rem',
+                  color: 'var(--forest-600)',
+                  border: '2px dashed var(--forest-300)',
+                  borderRadius: 'var(--radius-lg)',
+                  background: 'var(--forest-50)'
+                }}>
+                  📦 Aucun lot pour ce produit
+                </div>
+              )}
             </div>
           </div>
         </div>
