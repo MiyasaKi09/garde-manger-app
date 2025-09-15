@@ -17,6 +17,7 @@ import {
   Check,
   Layers3
 } from 'lucide-react';
+// import { supabase } from '@/lib/supabaseClient'; // <-- décommente si tu branches Supabase
 
 /* ===========================
    Hook données (à brancher)
@@ -40,6 +41,14 @@ function usePantryData() {
         { id: 'l3', canonical_food_id: 'p2', display_name: 'Carottes', category_name: 'Légumes', qty_remaining: 4, unit: 'pcs', effective_expiration: addDaysISO(7), location_name: 'Bac à légumes' },
         { id: 'l4', canonical_food_id: 'p3', display_name: 'Lait demi-écrémé', category_name: 'Produits laitiers', qty_remaining: 0.75, unit: 'L', effective_expiration: addDaysISO(2), location_name: 'Frigo' },
       ]);
+
+      // — Exemple Supabase —
+      // const { data, error } = await supabase
+      //   .from('inventory_lots_view')
+      //   .select('*')
+      //   .order('effective_expiration', { ascending: true });
+      // if (error) throw error;
+      // setLots(data ?? []);
     } catch (e) {
       setError('Impossible de charger les données.');
     } finally {
@@ -53,19 +62,19 @@ function usePantryData() {
     load();
   }, [load]);
 
-  // Mutations (optimistes)
+  // Mutations (optimistes) — à remplacer par Supabase
   const addLot = useCallback(async (newLot) => {
-    // TODO: Supabase insert -> products_inventory_lots
+    // await supabase.from('products_inventory_lots').insert(newLot);
     setLots((prev) => [ { id: cryptoId(), ...newLot }, ...prev ]);
   }, []);
 
   const updateLot = useCallback(async (id, patch) => {
-    // TODO: Supabase update
+    // await supabase.from('products_inventory_lots').update(patch).eq('id', id);
     setLots((prev) => prev.map(l => l.id === id ? { ...l, ...patch } : l));
   }, []);
 
   const deleteLot = useCallback(async (id) => {
-    // TODO: Supabase delete
+    // await supabase.from('products_inventory_lots').delete().eq('id', id);
     setLots((prev) => prev.filter(l => l.id !== id));
   }, []);
 
@@ -327,13 +336,12 @@ export default function PantryPage() {
         }}
       />
 
-      {/* Modal ajout lot rapide */}
+      {/* Modal ajout lot global */}
       <AddLotModal
         open={showAddForm}
         onClose={()=>setShowAddForm(false)}
         productsCatalog={groupedProducts.map(p=>({ id:p.productId, name:p.productName, unit:p.unit, category:p.category }))}
         onCreate={(payload)=>{
-          // Si un produit existant est choisi
           if (payload.canonical_food_id) {
             addLot(payload);
           } else {
@@ -402,8 +410,6 @@ function formatQty(q) {
 }
 
 function FreshnessBar({ days }) {
-  // - null => stable (sec/longue)
-  // - <0 périmé / 0 / <=3 / <=7 / >7
   let pct = 100;
   if (days === null) pct = 85;
   else if (days <= 0) pct = 8;
@@ -583,7 +589,7 @@ function ProductSheet({ product, onClose, onUpdateLot, onDeleteLot, onAddLot }) 
   );
 
   function onAddLotOpen() {
-    // Scroll to la section d’ajout inline
+    // Scroll vers la section d’ajout inline
     const el = document.querySelector('#add-inline-lot');
     if (el) el.scrollIntoView({ behavior:'smooth', block:'center' });
   }
@@ -748,7 +754,7 @@ const styles = `
 .expiry-label{margin-left:auto}
 
 /* Sheet (panneau latéral) */
-.sheet-root{position:fixed;inset:0;pointer-events:none}
+.sheet-root{position:fixed;inset:0;pointer-events:none;z-index:40}
 .sheet-root.open{pointer-events:auto}
 .sheet-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.2);opacity:0;transition:opacity .25s}
 .sheet-root.open .sheet-backdrop{opacity:1}
@@ -824,36 +830,37 @@ const styles = `
 
 1) Chargement des lots (Supabase)
 ---------------------------------
-- Remplace le mock de `usePantryData.load()` par ta requête:
+- Remplace le mock de `usePantryData.load()` par ta requête :
   const { data, error } = await supabase
     .from('inventory_lots_view') // ou ta vue/req jointe
     .select('*')
     .order('effective_expiration', { ascending: true });
 
-- Adapte les champs si besoin pour matcher:
+- Adapte les champs si besoin pour matcher :
   { id, canonical_food_id, display_name, category_name, qty_remaining, unit, effective_expiration, location_name }
 
 2) Création / mise à jour / suppression
 ---------------------------------------
-- addLot(payload):
+- addLot(payload) :
   await supabase.from('products_inventory_lots').insert(payload).select().single();
 
-- updateLot(id, patch):
+- updateLot(id, patch) :
   await supabase.from('products_inventory_lots').update(patch).eq('id', id);
 
-- deleteLot(id):
+- deleteLot(id) :
   await supabase.from('products_inventory_lots').delete().eq('id', id);
 
 3) UX
 -----
 - La carte s’ouvre au clic (sheet) → édition directe de chaque lot + ajout inline.
 - Le bouton “Ajouter” ouvre une modal globale pour créer un lot (produit existant OU nouveau).
-- Conversion unités/quantités: branche ton util existant si tu veux convertir à la volée.
-- Si tu veux l’effet “la carte grossit”, tu peux ajouter une classe :focus-visible sur .product-card et jouer sur transform/box-shadow.
+- Conversion unités/quantités : branche ton util existant si tu veux convertir à la volée.
+- Pour l’effet “la carte grossit”, ajoute :focus-visible sur .product-card et renforce transform/box-shadow.
 
 4) Accessibilité
 ----------------
 - Les éléments cliquables sont des <button>, labels, rôles dialog, aria-modal.
 - Les transitions restent sobres pour éviter le motion sickness.
 
-Si tu veux, je te le branche directement à ta structure Supabase (tables/vues/colonnes existantes) et j’ajoute la conversion d’unités auto par produit.
+Fin du bloc TODO
+*/
