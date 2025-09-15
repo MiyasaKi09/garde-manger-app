@@ -396,25 +396,12 @@ export default function PantryPage() {
         .pantry-page {
           min-height: 100vh;
           background: 
-            radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.15) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-            radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
             linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 20%, #f0f9ff 40%, #faf5ff 60%, #f9fafb 80%, #f0fdf4 100%);
           padding: 20px;
           position: relative;
-        }
-
-        .pantry-page::before {
-          content: '';
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: 
-            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.03'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-          opacity: 0.4;
-          z-index: -1;
         }
 
         .pantry-loading {
@@ -427,14 +414,12 @@ export default function PantryPage() {
           color: #6b7280;
           background: rgba(255, 255, 255, 0.7);
           backdrop-filter: blur(12px);
-          border-radius: 24px;
+          border-radius: 20px;
           padding: 40px;
           margin: 20px auto;
           max-width: 400px;
           border: 1px solid rgba(255, 255, 255, 0.8);
-          box-shadow: 
-            0 25px 50px -12px rgba(0, 0, 0, 0.25),
-            0 0 0 1px rgba(255, 255, 255, 0.05);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .loading-spinner {
@@ -446,16 +431,13 @@ export default function PantryPage() {
         }
 
         .pantry-header {
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(20px) saturate(180%);
-          border-radius: 24px;
-          padding: 32px;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(16px);
+          border-radius: 20px;
+          padding: 28px;
           margin-bottom: 24px;
           border: 1px solid rgba(255, 255, 255, 0.9);
-          box-shadow: 
-            0 25px 50px -12px rgba(0, 0, 0, 0.25),
-            0 0 0 1px rgba(255, 255, 255, 0.05),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .header-content {
@@ -467,13 +449,12 @@ export default function PantryPage() {
 
         .header-title h1 {
           font-size: 32px;
-          font-weight: 800;
-          background: linear-gradient(135deg, #059669 0%, #0891b2 50%, #7c3aed 100%);
+          font-weight: 700;
+          background: linear-gradient(135deg, #059669 0%, #0891b2 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
           margin: 0 0 8px 0;
-          letter-spacing: -0.025em;
         }
 
         .header-title p {
@@ -484,120 +465,90 @@ export default function PantryPage() {
 
         .header-stats {
           display: flex;
-          gap: 20px;
+          gap: 16px;
         }
 
         .stat-card {
           display: flex;
           align-items: center;
-          gap: 16px;
-          background: rgba(255, 255, 255, 0.6);
-          backdrop-filter: blur(12px);
-          padding: 20px 24px;
-          border-radius: 20px;
+          gap: 12px;
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(8px);
+          padding: 18px 22px;
+          border-radius: 16px;
           border: 1px solid rgba(255, 255, 255, 0.8);
           color: #059669;
-          min-width: 140px;
-          box-shadow: 
-            0 8px 32px rgba(0, 0, 0, 0.12),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
-          transition: all 0.3s ease;
+          min-width: 130px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+          transition: all 0.2s ease;
         }
 
         .stat-card:hover {
           transform: translateY(-2px);
-          box-shadow: 
-            0 12px 40px rgba(0, 0, 0, 0.15),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
 
         .stat-card.warning {
           color: #d97706;
           background: rgba(255, 251, 235, 0.8);
-          border-color: rgba(253, 186, 116, 0.5);
         }
 
         .stat-card.success {
           color: #059669;
           background: rgba(236, 253, 245, 0.8);
-          border-color: rgba(187, 247, 208, 0.5);
         }
 
         .stat-number {
-          font-size: 28px;
-          font-weight: 800;
+          font-size: 24px;
+          font-weight: 700;
           line-height: 1;
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .stat-label {
-          font-size: 13px;
+          font-size: 12px;
           opacity: 0.8;
           font-weight: 500;
         }
 
         .header-actions {
           display: flex;
-          gap: 16px;
+          gap: 12px;
         }
 
         .btn-action {
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 14px 24px;
-          border-radius: 16px;
+          gap: 8px;
+          padding: 12px 20px;
+          border-radius: 12px;
           font-weight: 600;
           font-size: 14px;
           cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.2s ease;
           border: none;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .btn-action::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-          transition: left 0.5s;
-        }
-
-        .btn-action:hover::before {
-          left: 100%;
         }
 
         .btn-action.primary {
           background: linear-gradient(135deg, #059669 0%, #047857 100%);
           color: white;
-          box-shadow: 
-            0 8px 25px rgba(5, 150, 105, 0.4),
-            0 4px 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
         }
 
         .btn-action.primary:hover {
           transform: translateY(-2px);
-          box-shadow: 
-            0 12px 35px rgba(5, 150, 105, 0.5),
-            0 6px 15px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 6px 16px rgba(5, 150, 105, 0.4);
         }
 
         .btn-action.secondary {
           background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(12px);
+          backdrop-filter: blur(8px);
           color: #374151;
-          border: 1px solid rgba(255, 255, 255, 0.8);
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.9);
         }
 
         .btn-action.secondary:hover {
           background: rgba(255, 255, 255, 0.9);
           transform: translateY(-1px);
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
         .btn-action:disabled {
@@ -607,24 +558,22 @@ export default function PantryPage() {
         }
 
         .pantry-controls {
-          background: rgba(255, 255, 255, 0.75);
-          backdrop-filter: blur(16px) saturate(180%);
-          border-radius: 20px;
-          padding: 24px;
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(12px);
+          border-radius: 16px;
+          padding: 20px;
           margin-bottom: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.8);
-          box-shadow: 
-            0 8px 32px rgba(0, 0, 0, 0.12),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
           display: flex;
           flex-wrap: wrap;
-          gap: 20px;
+          gap: 16px;
           align-items: center;
         }
 
         .search-section {
           flex: 1;
-          min-width: 320px;
+          min-width: 300px;
         }
 
         .search-input-group {
@@ -635,61 +584,57 @@ export default function PantryPage() {
 
         .search-input-group svg {
           position: absolute;
-          left: 16px;
+          left: 12px;
           color: #9ca3af;
           z-index: 2;
         }
 
         .search-input {
           width: 100%;
-          padding: 16px 16px 16px 52px;
-          border: 2px solid rgba(255, 255, 255, 0.6);
-          border-radius: 16px;
+          padding: 12px 12px 12px 44px;
+          border: 2px solid rgba(229, 231, 235, 0.8);
+          border-radius: 12px;
           font-size: 16px;
-          transition: all 0.3s ease;
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(8px);
+          transition: all 0.2s ease;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(4px);
         }
 
         .search-input:focus {
           outline: none;
           border-color: #059669;
-          box-shadow: 
-            0 0 0 4px rgba(5, 150, 105, 0.1),
-            0 4px 20px rgba(5, 150, 105, 0.2);
+          box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
           background: rgba(255, 255, 255, 0.95);
         }
 
         .filters-section {
           display: flex;
-          gap: 16px;
+          gap: 12px;
           align-items: center;
         }
 
         .filter-group {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 8px;
           color: #6b7280;
         }
 
         .filter-select {
-          padding: 12px 16px;
-          border: 1px solid rgba(255, 255, 255, 0.6);
-          border-radius: 12px;
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(8px);
+          padding: 8px 12px;
+          border: 1px solid rgba(209, 213, 219, 0.8);
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(4px);
           color: #374151;
           cursor: pointer;
-          transition: all 0.3s ease;
-          font-weight: 500;
+          transition: all 0.2s ease;
         }
 
         .filter-select:focus {
           outline: none;
           border-color: #059669;
           box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
-          background: rgba(255, 255, 255, 0.95);
         }
 
         .error-banner {
@@ -697,25 +642,23 @@ export default function PantryPage() {
           align-items: center;
           gap: 12px;
           background: rgba(254, 242, 242, 0.9);
-          backdrop-filter: blur(12px);
+          backdrop-filter: blur(8px);
           color: #dc2626;
-          padding: 16px 24px;
-          border-radius: 16px;
+          padding: 16px 20px;
+          border-radius: 12px;
           border: 1px solid rgba(252, 165, 165, 0.5);
           margin-bottom: 24px;
-          box-shadow: 0 4px 20px rgba(220, 38, 38, 0.1);
         }
 
         .btn-retry {
-          background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+          background: #dc2626;
           color: white;
           border: none;
-          padding: 8px 16px;
-          border-radius: 8px;
+          padding: 6px 12px;
+          border-radius: 6px;
           cursor: pointer;
           font-size: 12px;
           margin-left: auto;
-          font-weight: 600;
         }
 
         .pantry-content {
@@ -724,8 +667,8 @@ export default function PantryPage() {
 
         .products-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-          gap: 24px;
+          grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+          gap: 20px;
         }
 
         .empty-state {
@@ -734,46 +677,40 @@ export default function PantryPage() {
           align-items: center;
           justify-content: center;
           text-align: center;
-          padding: 80px 40px;
+          padding: 60px 30px;
           color: #6b7280;
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(16px);
-          border-radius: 24px;
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(12px);
+          border-radius: 20px;
           border: 2px dashed rgba(209, 213, 219, 0.6);
-          box-shadow: 
-            0 25px 50px -12px rgba(0, 0, 0, 0.25),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .empty-state svg {
-          margin-bottom: 20px;
-          opacity: 0.6;
+          margin-bottom: 16px;
+          opacity: 0.5;
         }
 
         .empty-state h3 {
-          font-size: 24px;
-          font-weight: 700;
+          font-size: 20px;
+          font-weight: 600;
           color: #374151;
-          margin: 0 0 12px 0;
+          margin: 0 0 8px 0;
         }
 
         .empty-state p {
-          margin: 0 0 32px 0;
+          margin: 0 0 24px 0;
           max-width: 400px;
-          font-size: 16px;
-          line-height: 1.5;
         }
 
         .product-card {
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(16px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.8);
-          border-radius: 20px;
-          padding: 24px;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 
-            0 8px 32px rgba(0, 0, 0, 0.12),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          border-radius: 16px;
+          padding: 20px;
+          transition: all 0.2s ease;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
           position: relative;
           overflow: hidden;
         }
@@ -785,15 +722,135 @@ export default function PantryPage() {
           left: 0;
           right: 0;
           height: 3px;
-          background: linear-gradient(90deg, #059669 0%, #0891b2 50%, #7c3aed 100%);
+          background: linear-gradient(90deg, #059669 0%, #0891b2 100%);
           opacity: 0;
-          transition: opacity 0.3s ease;
+          transition: opacity 0.2s ease;
         }
 
         .product-card:hover {
           transform: translateY(-4px);
-          box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.15),
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+          border-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .product-card:hover::before {
+          opacity: 1;
+        }
+
+        .product-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+
+        .product-info {
+          flex: 1;
+        }
+
+        .product-name {
+          font-size: 18px;
+          font-weight: 600;
+          color: #111827;
+          margin: 0 0 6px 0;
+        }
+
+        .product-meta {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          font-size: 14px;
+          color: #6b7280;
+        }
+
+        .product-quantity {
+          font-weight: 600;
+          color: #374151;
+          background: rgba(59, 130, 246, 0.1);
+          padding: 4px 10px;
+          border-radius: 8px;
+          border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .lots-count {
+          opacity: 0.7;
+          font-size: 12px;
+        }
+
+        .expiration-status {
+          text-align: right;
+          font-weight: 600;
+          font-size: 14px;
+          padding: 8px 12px;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(4px);
+          border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .expiry-date {
+          font-size: 11px;
+          opacity: 0.8;
+          margin-top: 3px;
+          font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .pantry-page {
+            padding: 12px;
+          }
+
+          .header-content {
+            flex-direction: column;
+            gap: 16px;
+          }
+
+          .header-stats {
+            width: 100%;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+          }
+
+          .stat-card {
+            flex: 1;
+            min-width: 110px;
+            padding: 14px 16px;
+          }
+
+          .stat-number {
+            font-size: 20px;
+          }
+
+          .pantry-controls {
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .search-section {
+            min-width: 0;
+          }
+
+          .products-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .header-stats {
+            flex-direction: column;
+            gap: 8px;
+          }
+
+          .stat-card {
+            justify-content: center;
+          }
+
+          .header-title h1 {
+            font-size: 24px;
+          }
+        }
+      `}</style> 0.15),
             0 8px 16px rgba(0, 0, 0, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.9);
           border-color: rgba(255, 255, 255, 0.9);
