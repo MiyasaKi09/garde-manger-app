@@ -20,51 +20,7 @@ function usePantryData() {
   const [error, setError] = useState('');
   const [lots, setLots] = useState([]);
 
-  // Données de démonstration
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLots([
-        {
-          id: 1,
-          display_name: 'Tomates cerises bio',
-          canonical_food_id: 'tomatoes',
-          category_name: 'Légumes',
-          unit: 'g',
-          qty_remaining: 250,
-          effective_expiration: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString()
-        },
-        {
-          id: 2,
-          display_name: 'Basilic frais',
-          canonical_food_id: 'basil',
-          category_name: 'Herbes',
-          unit: 'g',
-          qty_remaining: 30,
-          effective_expiration: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString()
-        },
-        {
-          id: 3,
-          display_name: 'Miel de lavande',
-          canonical_food_id: 'honey',
-          category_name: 'Condiments',
-          unit: 'ml',
-          qty_remaining: 500,
-          effective_expiration: null
-        },
-        {
-          id: 4,
-          display_name: 'Champignons shiitake',
-          canonical_food_id: 'mushrooms',
-          category_name: 'Légumes',
-          unit: 'g',
-          qty_remaining: 150,
-          effective_expiration: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString()
-        }
-      ]);
-      setLoading(false);
-    }, 1000);
-  }, []);
+
 
   const refresh = useCallback(() => {
     // Logique de rafraîchissement
