@@ -1,15 +1,16 @@
-// app/pantry/components/SmartAddForm.js - Version complète corrigée
-
+// app/pantry/components/SmartAddForm.js
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import { PantryStyles } from './pantryUtils';
+import { Search, Plus, Package, Calendar, MapPin, AlertCircle, CheckCircle2, X } from 'lucide-react';
 
-export function SmartAddForm({ onSave, onCancel, locations }) {
+// Composant de recherche unifié pour tous les types de produits
+export function SmartAddForm({ onSave, onCancel, locations = [] }) {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   
   // Recherche et sélection de produit
   const [searchQuery, setSearchQuery] = useState('');
@@ -27,7 +28,24 @@ export function SmartAddForm({ onSave, onCancel, locations }) {
     notes: ''
   });
 
-  // Recherche unifiée dans tous les types de produits
+  const searchInputRef = useRef(null);
+  const qtyInputRef = useRef(null);
+
+  // Auto-focus sur le champ de recherche au montage
+  useEffect(() => {
+    if (step === 1 && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [step]);
+
+  // Auto-focus sur la quantité quand on passe à l'étape 2
+  useEffect(() => {
+    if (step === 2 && qtyInputRef.current) {
+      setTimeout(() => qtyInputRef.current?.focus(), 100);
+    }
+  }, [step]);
+
+  // Recherche unifiée dans tous les types de produits avec scoring intelligent
   const searchProducts = useCallback(async (query) => {
     if (!query.trim()) {
       setSearchResults([]);
@@ -35,7 +53,11 @@ export function SmartAddForm({ onSave, onCancel, locations }) {
     }
 
     setSearchLoading(true);
+    setError('');
+    
     try {
+      const searchTerm = query.trim().toLowerCase();
+      
       // Recherche dans les aliments canoniques
       const { data: canonicalResults } = await supabase
         .from('canonical_foods')
@@ -43,19 +65,21 @@ export function SmartAddForm({ onSave, onCancel, locations }) {
           id, canonical_name, 
           category:reference_categories(name, icon, color_hex),
           primary_unit, unit_weight_grams, density_g_per_ml,
-          keywords
+          keywords, subcategory, calories_per_100g,
+          shelf_life_days_fridge, shelf_life_days_pantry, shelf_life_days_freezer
         `)
         .or(`canonical_name.ilike.%${query}%,keywords.cs.{${query}}`)
-        .limit(10);
+        .limit(15);
 
-      // Recherche dans les variétés
+      // Recherche dans les variétés/cultivars
       const { data: cultivarResults } = await supabase
         .from('cultivars')
         .select(`
           id, cultivar_name, synonyms,
           canonical_food:canonical_foods(
-            canonical_name, primary_unit, unit_weight_grams, density_g_per_ml,
-            category:reference_categories(name, icon, color_hex)
+            id, canonical_name, primary_unit, unit_weight_grams, density_g_per_ml,
+            category:reference_categories(name, icon, color_hex),
+            shelf_life_days_fridge, shelf_life_days_pantry, shelf_life_days_freezer
           )
         `)
         .or(`cultivar_name.ilike.%${query}%,synonyms.cs.{${query}}`)
@@ -72,102 +96,110 @@ export function SmartAddForm({ onSave, onCancel, locations }) {
         .or(`name.ilike.%${query}%,keywords.cs.{${query}}`)
         .limit(10);
 
-      // Recherche dans les produits dérivés
-      const { data: derivedResults } = await supabase
-        .from('derived_products')
-        .select(`
-          id, derived_name, process_method,
-          cultivar:cultivars(
-            cultivar_name,
-            canonical_food:canonical_foods(
-              canonical_name, primary_unit, unit_weight_grams, density_g_per_ml,
-              category:reference_categories(name, icon, color_hex)
-            )
-          )
-        `)
-        .ilike('derived_name', `%${query}%`)
-        .limit(5);
-
-      // Formatage des résultats
+      // Formatage et scoring des résultats
       const results = [];
+
+      // Fonction de scoring basée sur la pertinence
+      const scoreResult = (name, searchTerm) => {
+        const nameLower = name.toLowerCase();
+        
+        // Correspondance exacte = score parfait
+        if (nameLower === searchTerm) return 0;
+        
+        // Commence par le terme recherché = très bon score
+        if (nameLower.startsWith(searchTerm)) return 1;
+        
+        // Contient le terme au début d'un mot = bon score
+        if (nameLower.includes(' ' + searchTerm)) return 2;
+        
+        // Contient le terme = score moyen
+        if (nameLower.includes(searchTerm)) return 3;
+        
+        // Sinon score par défaut
+        return 10;
+      };
 
       // Aliments canoniques
       (canonicalResults || []).forEach(item => {
+        const score = scoreResult(item.canonical_name, searchTerm);
         results.push({
           id: item.id,
           type: 'canonical',
           name: item.canonical_name,
           display_name: item.canonical_name,
+          subcategory: item.subcategory,
           category: item.category,
-          primary_unit: item.primary_unit,
+          primary_unit: item.primary_unit || 'g',
           unit_weight_grams: item.unit_weight_grams,
           density_g_per_ml: item.density_g_per_ml,
-          source: 'Aliment de base'
+          calories_per_100g: item.calories_per_100g,
+          shelf_life_days: {
+            fridge: item.shelf_life_days_fridge,
+            pantry: item.shelf_life_days_pantry,
+            freezer: item.shelf_life_days_freezer
+          },
+          source: 'Aliment de base',
+          icon: '🥬',
+          score
         });
       });
 
-      // Variétés
+      // Variétés/cultivars
       (cultivarResults || []).forEach(item => {
+        if (!item.canonical_food) return;
+        
+        const score = scoreResult(item.cultivar_name, searchTerm);
         results.push({
           id: item.id,
           type: 'cultivar',
+          canonical_food_id: item.canonical_food.id,
           name: item.cultivar_name,
-          display_name: `${item.cultivar_name} (${item.canonical_food?.canonical_name})`,
-          category: item.canonical_food?.category,
-          primary_unit: item.canonical_food?.primary_unit,
-          unit_weight_grams: item.canonical_food?.unit_weight_grams,
-          density_g_per_ml: item.canonical_food?.density_g_per_ml,
-          source: 'Variété'
+          display_name: `${item.cultivar_name} (${item.canonical_food.canonical_name})`,
+          category: item.canonical_food.category,
+          primary_unit: item.canonical_food.primary_unit || 'g',
+          unit_weight_grams: item.canonical_food.unit_weight_grams,
+          density_g_per_ml: item.canonical_food.density_g_per_ml,
+          shelf_life_days: {
+            fridge: item.canonical_food.shelf_life_days_fridge,
+            pantry: item.canonical_food.shelf_life_days_pantry,
+            freezer: item.canonical_food.shelf_life_days_freezer
+          },
+          source: 'Variété',
+          icon: '🌱',
+          score
         });
       });
 
       // Produits génériques
       (genericResults || []).forEach(item => {
+        const score = scoreResult(item.name, searchTerm);
         results.push({
           id: item.id,
           type: 'generic',
           name: item.name,
           display_name: item.name,
           category: item.category,
-          primary_unit: item.primary_unit,
+          primary_unit: item.primary_unit || 'g',
           unit_weight_grams: item.unit_weight_grams,
           density_g_per_ml: item.density_g_per_ml,
-          source: 'Produit commerce'
+          source: 'Produit commerce',
+          icon: '📦',
+          score
         });
       });
 
-      // Produits dérivés
-      (derivedResults || []).forEach(item => {
-        results.push({
-          id: item.id,
-          type: 'derived',
-          name: item.derived_name,
-          display_name: `${item.derived_name} (${item.cultivar?.cultivar_name || item.cultivar?.canonical_food?.canonical_name})`,
-          category: item.cultivar?.canonical_food?.category,
-          primary_unit: item.cultivar?.canonical_food?.primary_unit,
-          unit_weight_grams: item.cultivar?.canonical_food?.unit_weight_grams,
-          density_g_per_ml: item.cultivar?.canonical_food?.density_g_per_ml,
-          process_method: item.process_method,
-          source: 'Transformation'
-        });
-      });
-
-      // Tri par pertinence
+      // Tri par score puis par type (canonique > cultivar > générique)
       results.sort((a, b) => {
-        const aExact = a.name.toLowerCase() === query.toLowerCase();
-        const bExact = b.name.toLowerCase() === query.toLowerCase();
+        if (a.score !== b.score) return a.score - b.score;
         
-        if (aExact && !bExact) return -1;
-        if (!aExact && bExact) return 1;
-        
-        const typeOrder = { canonical: 0, cultivar: 1, generic: 2, derived: 3 };
+        const typeOrder = { canonical: 0, cultivar: 1, generic: 2 };
         return typeOrder[a.type] - typeOrder[b.type];
       });
 
-      setSearchResults(results.slice(0, 15));
+      setSearchResults(results.slice(0, 12));
     } catch (err) {
       console.error('Erreur de recherche:', err);
-      setError('Erreur lors de la recherche');
+      setError('Erreur lors de la recherche des produits');
     } finally {
       setSearchLoading(false);
     }
@@ -191,23 +223,133 @@ export function SmartAddForm({ onSave, onCancel, locations }) {
     setSelectedProduct(product);
     setLotData(prev => ({
       ...prev,
-      unit: product.primary_unit || 'g'
+      unit: product.primary_unit || 'g',
+      // Calcul automatique de la date d'expiration basé sur le stockage
+      expiration_date: calculateExpirationDate(product, prev.storage_method)
     }));
     setStep(2);
   }, []);
 
-  // Création d'un nouveau produit rapide
-  const handleCreateQuickProduct = useCallback(async () => {
+  // Calcul automatique de la date d'expiration
+  const calculateExpirationDate = (product, storageMethod) => {
+    if (!product?.shelf_life_days) return '';
+    
+    const days = product.shelf_life_days[storageMethod] || product.shelf_life_days.fridge || 7;
+    const futureDate = new Date();
+    futureDate.setDate(futureDate.getDate() + days);
+    return futureDate.toISOString().split('T')[0];
+  };
+
+  // Mise à jour de la date d'expiration quand on change la méthode de stockage
+  const handleStorageMethodChange = (method) => {
+    setLotData(prev => ({
+      ...prev,
+      storage_method: method,
+      expiration_date: selectedProduct ? calculateExpirationDate(selectedProduct, method) : prev.expiration_date
+    }));
+  };
+
+  // Création du lot en base
+  const handleCreateLot = async () => {
+    if (!selectedProduct || !lotData.qty) {
+      setError('Produit et quantité requis');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+    
+    try {
+      // Préparation des données selon le type de produit
+      const lotInsertData = {
+        qty_remaining: parseFloat(lotData.qty),
+        unit: lotData.unit,
+        storage_method: lotData.storage_method,
+        storage_place: lotData.storage_place || null,
+        expiration_date: lotData.expiration_date || null,
+        notes: lotData.notes || null,
+        source: 'manual',
+        created_at: new Date().toISOString()
+      };
+
+      // Attribution du bon ID selon le type
+      switch (selectedProduct.type) {
+        case 'canonical':
+          lotInsertData.canonical_food_id = selectedProduct.id;
+          break;
+        case 'cultivar':
+          lotInsertData.cultivar_id = selectedProduct.id;
+          break;
+        case 'generic':
+          lotInsertData.generic_product_id = selectedProduct.id;
+          break;
+        default:
+          throw new Error('Type de produit non reconnu');
+      }
+
+      const { data: newLot, error } = await supabase
+        .from('inventory_lots')
+        .insert([lotInsertData])
+        .select(`
+          *,
+          canonical_food:canonical_foods(canonical_name, category:reference_categories(name, icon, color_hex)),
+          cultivar:cultivars(cultivar_name, canonical_food:canonical_foods(canonical_name, category:reference_categories(name, icon, color_hex))),
+          generic_product:generic_products(name, category:reference_categories(name, icon, color_hex))
+        `)
+        .single();
+
+      if (error) throw error;
+
+      setSuccess(`Lot de ${lotData.qty} ${lotData.unit} ajouté avec succès !`);
+      
+      // Callback vers le parent
+      if (onSave) {
+        onSave(newLot);
+      }
+
+      // Reset après 2 secondes
+      setTimeout(() => {
+        resetForm();
+      }, 2000);
+
+    } catch (err) {
+      console.error('Erreur création lot:', err);
+      setError(err.message || 'Erreur lors de la création du lot');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Reset du formulaire
+  const resetForm = () => {
+    setStep(1);
+    setSearchQuery('');
+    setSearchResults([]);
+    setSelectedProduct(null);
+    setLotData({
+      qty: '',
+      unit: 'g',
+      storage_method: 'fridge',
+      storage_place: '',
+      expiration_date: '',
+      notes: ''
+    });
+    setError('');
+    setSuccess('');
+  };
+
+  // Création rapide d'un nouveau produit générique
+  const handleCreateQuickProduct = async () => {
     if (!searchQuery.trim()) return;
 
     setLoading(true);
     try {
-      // Création d'un produit générique simple
       const { data: newProduct, error } = await supabase
         .from('generic_products')
         .insert([{
           name: searchQuery.trim(),
-          primary_unit: 'g'
+          primary_unit: 'g',
+          keywords: [searchQuery.trim().toLowerCase()]
         }])
         .select(`
           id, name, primary_unit,
@@ -224,225 +366,120 @@ export function SmartAddForm({ onSave, onCancel, locations }) {
         display_name: newProduct.name,
         category: newProduct.category,
         primary_unit: newProduct.primary_unit,
-        source: 'Nouveau produit'
+        source: 'Nouveau produit',
+        icon: '✨'
       };
 
       handleSelectProduct(product);
     } catch (err) {
-      console.error('Erreur création produit:', err);
       setError('Erreur lors de la création du produit');
     } finally {
       setLoading(false);
     }
-  }, [searchQuery, handleSelectProduct]);
+  };
 
-  // Sauvegarde du lot
-  const handleSave = useCallback(async () => {
-    if (!selectedProduct || !lotData.qty) {
-      setError('Veuillez remplir tous les champs obligatoires');
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const success = await onSave(lotData, {
-        ...selectedProduct,
-        product_type: selectedProduct.type
-      });
-      
-      if (success) {
-        onCancel();
-      }
-    } catch (err) {
-      console.error('Erreur sauvegarde:', err);
-      setError('Erreur lors de la sauvegarde');
-    } finally {
-      setLoading(false);
-    }
-  }, [selectedProduct, lotData, onSave, onCancel]);
-
-  // Estimation automatique de la DLC
-  const estimateExpirationDate = useCallback(async (productType, productId, storageMethod) => {
-    try {
-      // Recherche des guides de conservation
-      let guideQuery = supabase
-        .from('storage_guides')
-        .select('shelf_life_days')
-        .eq('method', storageMethod)
-        .limit(1);
-
-      if (productType === 'canonical') {
-        guideQuery = guideQuery.eq('canonical_food_id', productId);
-      } else if (productType === 'cultivar') {
-        guideQuery = guideQuery.eq('cultivar_id', productId);
-      } else if (productType === 'derived') {
-        guideQuery = guideQuery.eq('derived_product_id', productId);
-      }
-
-      const { data: guides } = await guideQuery;
-      
-      if (guides && guides.length > 0) {
-        const days = guides[0].shelf_life_days;
-        if (days) {
-          const date = new Date();
-          date.setDate(date.getDate() + days);
-          return date.toISOString().split('T')[0];
-        }
-      }
-
-      // Fallback: estimation basique par méthode de stockage
-      const defaultDays = {
-        'fridge': 7,
-        'freezer': 90,
-        'pantry': 30,
-        'cellar': 60,
-        'counter': 3
-      };
-
-      const days = defaultDays[storageMethod] || 7;
-      const date = new Date();
-      date.setDate(date.getDate() + days);
-      return date.toISOString().split('T')[0];
-      
-    } catch (err) {
-      console.error('Erreur estimation DLC:', err);
-      return '';
-    }
-  }, []);
-
-  // Mise à jour automatique de la DLC quand on change la méthode de stockage
-  useEffect(() => {
-    if (selectedProduct && lotData.storage_method && !lotData.expiration_date) {
-      estimateExpirationDate(selectedProduct.type, selectedProduct.id, lotData.storage_method)
-        .then(date => {
-          if (date) {
-            setLotData(prev => ({ ...prev, expiration_date: date }));
-          }
-        });
-    }
-  }, [selectedProduct, lotData.storage_method, lotData.expiration_date, estimateExpirationDate]);
+  if (success) {
+    return (
+      <div className="smart-add-success">
+        <CheckCircle2 className="success-icon" />
+        <p>{success}</p>
+        <button onClick={resetForm} className="btn-primary">
+          Ajouter un autre produit
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div style={{
-      ...PantryStyles.glassBase,
-      padding: '1.5rem',
-      borderRadius: '1rem',
-      maxWidth: '600px',
-      margin: '0 auto'
-    }}>
-      <h3 style={{ 
-        marginBottom: '1.5rem', 
-        color: 'var(--forest-700)',
-        textAlign: 'center'
-      }}>
-        ➕ Ajouter un produit au garde-manger
-      </h3>
+    <div className="smart-add-form">
+      {/* En-tête avec progression */}
+      <div className="form-header">
+        <div className="progress-steps">
+          <div className={`step ${step >= 1 ? 'active' : ''}`}>
+            <Search size={16} />
+            <span>Rechercher</span>
+          </div>
+          <div className={`step ${step >= 2 ? 'active' : ''}`}>
+            <Package size={16} />
+            <span>Détails</span>
+          </div>
+        </div>
+        
+        {onCancel && (
+          <button onClick={onCancel} className="btn-close">
+            <X size={16} />
+          </button>
+        )}
+      </div>
 
+      {/* Messages d'erreur */}
       {error && (
-        <div className="alert error" style={{ marginBottom: '1rem' }}>
-          {error}
+        <div className="error-message">
+          <AlertCircle size={16} />
+          <span>{error}</span>
         </div>
       )}
 
       {/* Étape 1: Recherche de produit */}
       {step === 1 && (
-        <div>
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-            Nom du produit
-          </label>
-          <input
-            type="text"
-            placeholder="Rechercher un produit..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              marginBottom: '1rem',
-              borderRadius: '0.5rem',
-              border: '2px solid var(--earth-300)',
-              fontSize: '1rem'
-            }}
-            autoFocus
-          />
+        <div className="search-step">
+          <div className="search-input-group">
+            <Search className="search-icon" size={20} />
+            <input
+              ref={searchInputRef}
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Chercher un produit (ex: tomate, pomme, yaourt...)"
+              className="search-input"
+              disabled={loading}
+            />
+            {searchLoading && <div className="loading-spinner" />}
+          </div>
 
           {/* Résultats de recherche */}
-          {searchLoading && (
-            <div style={{ textAlign: 'center', padding: '1rem' }}>
-              <div className="loading-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-          )}
-
           {searchResults.length > 0 && (
-            <div style={{ marginBottom: '1rem' }}>
-              <h4 style={{ marginBottom: '0.5rem', color: 'var(--forest-600)' }}>
-                Produits trouvés :
-              </h4>
-              <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
-                {searchResults.map((product, index) => (
-                  <button
-                    key={`${product.type}-${product.id}-${index}`}
-                    onClick={() => handleSelectProduct(product)}
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem',
-                      marginBottom: '0.5rem',
-                      border: '1px solid var(--earth-300)',
-                      borderRadius: '0.5rem',
-                      background: 'white',
-                      textAlign: 'left',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.75rem'
-                    }}
-                  >
-                    <span style={{ fontSize: '1.5rem' }}>
-                      {product.category?.icon || '📦'}
-                    </span>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontWeight: 'bold' }}>
-                        {product.display_name}
-                      </div>
-                      <div style={{ 
-                        fontSize: '0.8rem', 
-                        color: 'var(--medium-gray)',
-                        display: 'flex',
-                        gap: '0.5rem'
-                      }}>
-                        <span>📂 {product.category?.name || 'Sans catégorie'}</span>
-                        <span>🏷️ {product.source}</span>
-                        <span>📏 {product.primary_unit}</span>
-                      </div>
+            <div className="search-results">
+              {searchResults.map((product) => (
+                <div
+                  key={`${product.type}-${product.id}`}
+                  onClick={() => handleSelectProduct(product)}
+                  className="search-result-item"
+                >
+                  <div className="product-icon">{product.icon}</div>
+                  <div className="product-info">
+                    <div className="product-name">{product.display_name}</div>
+                    <div className="product-meta">
+                      <span className="product-source">{product.source}</span>
+                      {product.category && (
+                        <span className="product-category">
+                          {product.category.name}
+                        </span>
+                      )}
+                      {product.subcategory && (
+                        <span className="product-subcategory">
+                          {product.subcategory}
+                        </span>
+                      )}
                     </div>
-                  </button>
-                ))}
-              </div>
+                  </div>
+                  <div className="product-unit">{product.primary_unit}</div>
+                </div>
+              ))}
             </div>
           )}
 
           {/* Option de création rapide */}
-          {searchQuery && searchResults.length === 0 && !searchLoading && (
-            <div style={{
-              padding: '1rem',
-              border: '2px dashed var(--earth-300)',
-              borderRadius: '0.5rem',
-              textAlign: 'center',
-              marginBottom: '1rem'
-            }}>
-              <p style={{ marginBottom: '1rem' }}>
-                Produit "{searchQuery}" non trouvé
-              </p>
+          {searchQuery && !searchLoading && searchResults.length === 0 && (
+            <div className="no-results">
+              <p>Aucun produit trouvé pour "{searchQuery}"</p>
               <button
                 onClick={handleCreateQuickProduct}
-                className="btn secondary"
+                className="btn-create-quick"
                 disabled={loading}
               >
-                ➕ Créer ce produit
+                <Plus size={16} />
+                Créer "{searchQuery}"
               </button>
             </div>
           )}
@@ -451,193 +488,544 @@ export function SmartAddForm({ onSave, onCancel, locations }) {
 
       {/* Étape 2: Détails du lot */}
       {step === 2 && selectedProduct && (
-        <div>
-          {/* Produit sélectionné */}
-          <div style={{
-            padding: '1rem',
-            background: 'var(--earth-100)',
-            borderRadius: '0.5rem',
-            marginBottom: '1.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem'
-          }}>
-            <span style={{ fontSize: '2rem' }}>
-              {selectedProduct.category?.icon || '📦'}
-            </span>
+        <div className="lot-details-step">
+          {/* Récapitulatif produit sélectionné */}
+          <div className="selected-product-summary">
+            <div className="product-icon">{selectedProduct.icon}</div>
             <div>
-              <h4 style={{ margin: 0 }}>
-                {selectedProduct.display_name}
-              </h4>
-              <p style={{ 
-                margin: 0, 
-                fontSize: '0.9rem', 
-                color: 'var(--medium-gray)' 
-              }}>
-                {selectedProduct.category?.name} • {selectedProduct.source}
-              </p>
+              <div className="product-name">{selectedProduct.display_name}</div>
+              <div className="product-source">{selectedProduct.source}</div>
             </div>
             <button
               onClick={() => setStep(1)}
-              className="btn secondary small"
-              style={{ marginLeft: 'auto' }}
+              className="btn-change"
             >
               Changer
             </button>
           </div>
 
-          {/* Formulaire du lot */}
-          <div className="grid cols-2" style={{ gap: '1rem', marginBottom: '1rem' }}>
-            <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-                Quantité *
+          {/* Formulaire des détails */}
+          <div className="lot-form">
+            {/* Quantité et unité */}
+            <div className="form-row">
+              <div className="form-group flex-2">
+                <label htmlFor="qty">Quantité *</label>
+                <input
+                  ref={qtyInputRef}
+                  id="qty"
+                  type="number"
+                  step="0.1"
+                  min="0"
+                  value={lotData.qty}
+                  onChange={(e) => setLotData(prev => ({ ...prev, qty: e.target.value }))}
+                  placeholder="0"
+                  className="form-input"
+                />
+              </div>
+              <div className="form-group flex-1">
+                <label htmlFor="unit">Unité</label>
+                <select
+                  id="unit"
+                  value={lotData.unit}
+                  onChange={(e) => setLotData(prev => ({ ...prev, unit: e.target.value }))}
+                  className="form-select"
+                >
+                  <option value="g">g</option>
+                  <option value="kg">kg</option>
+                  <option value="ml">ml</option>
+                  <option value="l">l</option>
+                  <option value="pièce">pièce</option>
+                  <option value="barquette">barquette</option>
+                  <option value="pot">pot</option>
+                  <option value="sachet">sachet</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Méthode de stockage */}
+            <div className="form-group">
+              <label>Méthode de stockage</label>
+              <div className="storage-methods">
+                {[
+                  { value: 'fridge', label: 'Frigo', icon: '❄️' },
+                  { value: 'pantry', label: 'Placard', icon: '🏠' },
+                  { value: 'freezer', label: 'Congélateur', icon: '🧊' },
+                  { value: 'counter', label: 'Plan travail', icon: '🏪' }
+                ].map(method => (
+                  <button
+                    key={method.value}
+                    type="button"
+                    onClick={() => handleStorageMethodChange(method.value)}
+                    className={`storage-method ${lotData.storage_method === method.value ? 'active' : ''}`}
+                  >
+                    <span className="method-icon">{method.icon}</span>
+                    <span className="method-label">{method.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Lieu de stockage spécifique */}
+            <div className="form-group">
+              <label htmlFor="storage_place">
+                <MapPin size={16} />
+                Lieu spécifique (optionnel)
               </label>
               <input
-                type="number"
-                step="0.1"
-                min="0"
-                placeholder="0"
-                value={lotData.qty}
-                onChange={(e) => setLotData(prev => ({ ...prev, qty: e.target.value }))}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  borderRadius: '0.5rem',
-                  border: '2px solid var(--earth-300)'
-                }}
+                id="storage_place"
+                type="text"
+                value={lotData.storage_place}
+                onChange={(e) => setLotData(prev => ({ ...prev, storage_place: e.target.value }))}
+                placeholder="ex: étagère du haut, tiroir à légumes..."
+                className="form-input"
               />
             </div>
 
-            <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-                Unité
-              </label>
-              <select
-                value={lotData.unit}
-                onChange={(e) => setLotData(prev => ({ ...prev, unit: e.target.value }))}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  borderRadius: '0.5rem',
-                  border: '2px solid var(--earth-300)'
-                }}
-              >
-                <option value="g">Grammes (g)</option>
-                <option value="kg">Kilogrammes (kg)</option>
-                <option value="ml">Millilitres (ml)</option>
-                <option value="cl">Centilitres (cl)</option>
-                <option value="l">Litres (l)</option>
-                <option value="u">Unités (u)</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="grid cols-2" style={{ gap: '1rem', marginBottom: '1rem' }}>
-            <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-                Lieu de stockage
-              </label>
-              <select
-                value={lotData.storage_method}
-                onChange={(e) => setLotData(prev => ({ ...prev, storage_method: e.target.value }))}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  borderRadius: '0.5rem',
-                  border: '2px solid var(--earth-300)'
-                }}
-              >
-                <option value="fridge">🧊 Frigo</option>
-                <option value="freezer">❄️ Congélateur</option>
-                <option value="pantry">🏠 Placard</option>
-                <option value="cellar">🍷 Cave</option>
-                <option value="counter">🪑 Plan de travail</option>
-              </select>
-            </div>
-
-            <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-                Date de péremption
+            {/* Date d'expiration */}
+            <div className="form-group">
+              <label htmlFor="expiration_date">
+                <Calendar size={16} />
+                Date d'expiration
               </label>
               <input
+                id="expiration_date"
                 type="date"
                 value={lotData.expiration_date}
                 onChange={(e) => setLotData(prev => ({ ...prev, expiration_date: e.target.value }))}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  borderRadius: '0.5rem',
-                  border: '2px solid var(--earth-300)'
-                }}
+                className="form-input"
+              />
+              {selectedProduct.shelf_life_days && (
+                <div className="expiration-hint">
+                  Suggestion basée sur la conservation en {lotData.storage_method === 'fridge' ? 'frigo' : 
+                    lotData.storage_method === 'pantry' ? 'placard' : 
+                    lotData.storage_method === 'freezer' ? 'congélateur' : 'plan de travail'}
+                </div>
+              )}
+            </div>
+
+            {/* Notes */}
+            <div className="form-group">
+              <label htmlFor="notes">Notes (optionnel)</label>
+              <textarea
+                id="notes"
+                value={lotData.notes}
+                onChange={(e) => setLotData(prev => ({ ...prev, notes: e.target.value }))}
+                placeholder="Marque, origine, particularités..."
+                className="form-textarea"
+                rows="2"
               />
             </div>
           </div>
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-              Emplacement précis (optionnel)
-            </label>
-            <input
-              type="text"
-              placeholder="Ex: Bac à légumes, Étagère du haut..."
-              value={lotData.storage_place}
-              onChange={(e) => setLotData(prev => ({ ...prev, storage_place: e.target.value }))}
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                borderRadius: '0.5rem',
-                border: '2px solid var(--earth-300)'
-              }}
-            />
-          </div>
-
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-              Notes (optionnel)
-            </label>
-            <textarea
-              placeholder="Informations complémentaires..."
-              value={lotData.notes}
-              onChange={(e) => setLotData(prev => ({ ...prev, notes: e.target.value }))}
-              rows={3}
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                borderRadius: '0.5rem',
-                border: '2px solid var(--earth-300)',
-                resize: 'vertical'
-              }}
-            />
+          {/* Actions */}
+          <div className="form-actions">
+            <button
+              onClick={() => setStep(1)}
+              className="btn-secondary"
+              disabled={loading}
+            >
+              Retour
+            </button>
+            <button
+              onClick={handleCreateLot}
+              className="btn-primary"
+              disabled={loading || !lotData.qty}
+            >
+              {loading ? 'Ajout...' : 'Ajouter au garde-manger'}
+            </button>
           </div>
         </div>
       )}
 
-      {/* Boutons d'action */}
-      <div style={{
-        display: 'flex',
-        gap: '1rem',
-        justifyContent: 'flex-end',
-        paddingTop: '1rem',
-        borderTop: '1px solid var(--earth-200)'
-      }}>
-        <button
-          onClick={onCancel}
-          className="btn secondary"
-          disabled={loading}
-        >
-          Annuler
-        </button>
-        
-        {step === 2 && (
-          <button
-            onClick={handleSave}
-            className="btn primary"
-            disabled={loading || !selectedProduct || !lotData.qty}
-          >
-            {loading ? 'Enregistrement...' : 'Enregistrer'}
-          </button>
-        )}
-      </div>
+      <style jsx>{`
+        .smart-add-form {
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          overflow: hidden;
+          max-width: 500px;
+          width: 100%;
+        }
+
+        .form-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+          border-bottom: 1px solid #e5e7eb;
+          background: #f9fafb;
+        }
+
+        .progress-steps {
+          display: flex;
+          gap: 20px;
+        }
+
+        .step {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #9ca3af;
+          font-size: 14px;
+          transition: color 0.2s;
+        }
+
+        .step.active {
+          color: #059669;
+        }
+
+        .btn-close {
+          background: none;
+          border: none;
+          padding: 4px;
+          border-radius: 4px;
+          cursor: pointer;
+          color: #6b7280;
+        }
+
+        .btn-close:hover {
+          background: #f3f4f6;
+          color: #374151;
+        }
+
+        .error-message {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: #fef2f2;
+          color: #dc2626;
+          padding: 12px 20px;
+          border-left: 4px solid #dc2626;
+        }
+
+        .search-step, .lot-details-step {
+          padding: 20px;
+        }
+
+        .search-input-group {
+          position: relative;
+          margin-bottom: 16px;
+        }
+
+        .search-icon {
+          position: absolute;
+          left: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #9ca3af;
+        }
+
+        .search-input {
+          width: 100%;
+          padding: 12px 12px 12px 44px;
+          border: 2px solid #e5e7eb;
+          border-radius: 8px;
+          font-size: 16px;
+          transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+          outline: none;
+          border-color: #059669;
+          box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .loading-spinner {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 20px;
+          height: 20px;
+          border: 2px solid #e5e7eb;
+          border-top: 2px solid #059669;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+          to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .search-results {
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+          max-height: 300px;
+          overflow-y: auto;
+        }
+
+        .search-result-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px;
+          cursor: pointer;
+          border-bottom: 1px solid #f3f4f6;
+          transition: background-color 0.2s;
+        }
+
+        .search-result-item:hover {
+          background: #f9fafb;
+        }
+
+        .search-result-item:last-child {
+          border-bottom: none;
+        }
+
+        .product-icon {
+          font-size: 20px;
+          width: 32px;
+          text-align: center;
+        }
+
+        .product-info {
+          flex: 1;
+        }
+
+        .product-name {
+          font-weight: 500;
+          color: #111827;
+          margin-bottom: 2px;
+        }
+
+        .product-meta {
+          display: flex;
+          gap: 8px;
+          font-size: 12px;
+          color: #6b7280;
+        }
+
+        .product-source {
+          background: #e5e7eb;
+          padding: 2px 6px;
+          border-radius: 4px;
+        }
+
+        .product-category, .product-subcategory {
+          background: #ddd6fe;
+          color: #7c3aed;
+          padding: 2px 6px;
+          border-radius: 4px;
+        }
+
+        .product-unit {
+          font-size: 12px;
+          color: #6b7280;
+          background: #f3f4f6;
+          padding: 4px 8px;
+          border-radius: 4px;
+        }
+
+        .no-results {
+          text-align: center;
+          padding: 20px;
+          color: #6b7280;
+        }
+
+        .btn-create-quick {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: #059669;
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 6px;
+          cursor: pointer;
+          margin-top: 12px;
+          transition: background-color 0.2s;
+        }
+
+        .btn-create-quick:hover {
+          background: #047857;
+        }
+
+        .selected-product-summary {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          background: #f0fdf4;
+          padding: 12px;
+          border-radius: 8px;
+          margin-bottom: 20px;
+        }
+
+        .btn-change {
+          background: none;
+          border: 1px solid #d1d5db;
+          padding: 4px 12px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 12px;
+          color: #6b7280;
+        }
+
+        .btn-change:hover {
+          background: #f9fafb;
+        }
+
+        .lot-form {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .form-row {
+          display: flex;
+          gap: 12px;
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .form-group.flex-1 { flex: 1; }
+        .form-group.flex-2 { flex: 2; }
+
+        .form-group label {
+          font-weight: 500;
+          color: #374151;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 14px;
+        }
+
+        .form-input, .form-select, .form-textarea {
+          padding: 10px 12px;
+          border: 1px solid #d1d5db;
+          border-radius: 6px;
+          font-size: 14px;
+          transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+          outline: none;
+          border-color: #059669;
+          box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .storage-methods {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+
+        .storage-method {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+          padding: 12px 8px;
+          border: 2px solid #e5e7eb;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .storage-method:hover {
+          border-color: #d1d5db;
+          background: #f9fafb;
+        }
+
+        .storage-method.active {
+          border-color: #059669;
+          background: #ecfdf5;
+          color: #059669;
+        }
+
+        .method-icon {
+          font-size: 20px;
+        }
+
+        .method-label {
+          font-size: 12px;
+          font-weight: 500;
+        }
+
+        .expiration-hint {
+          font-size: 12px;
+          color: #6b7280;
+          font-style: italic;
+          margin-top: 4px;
+        }
+
+        .form-actions {
+          display: flex;
+          gap: 12px;
+          margin-top: 20px;
+          padding-top: 20px;
+          border-top: 1px solid #e5e7eb;
+        }
+
+        .btn-secondary {
+          flex: 1;
+          padding: 12px 20px;
+          background: white;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 500;
+          transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+          background: #f9fafb;
+          border-color: #9ca3af;
+        }
+
+        .btn-primary {
+          flex: 2;
+          padding: 12px 20px;
+          background: #059669;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 500;
+          transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+          background: #047857;
+        }
+
+        .btn-primary:disabled {
+          background: #9ca3af;
+          cursor: not-allowed;
+        }
+
+        .smart-add-success {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+          padding: 40px 20px;
+          text-align: center;
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .success-icon {
+          color: #059669;
+          width: 48px;
+          height: 48px;
+        }
+
+        .smart-add-success p {
+          font-size: 16px;
+          color: #374151;
+          margin: 0;
+        }
+
+        .smart-add-success .btn-primary {
+          flex: none;
+        }
+      `}</style>
     </div>
   );
 }
