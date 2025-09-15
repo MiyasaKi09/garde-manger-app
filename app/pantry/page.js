@@ -1,8 +1,39 @@
-// app/pantry/page.js
+.header-title h1 {
+            font-size: 24px;
+          }
+        }
+
+        /* Modal styles */
+        .modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.5);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+          padding: 20px;
+        }
+
+        .modal-content {
+          background: transparent;
+          border-radius: 20px;
+          max-width: 600px;
+          width: 100%;
+          max-height: 90vh;
+          overflow-y: auto;
+        }
+      `}</style>// app/pantry/page.js
 'use client';
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import { SmartAddForm } from './components/SmartAddForm';
 import { 
   Plus, 
   Search, 
@@ -97,6 +128,12 @@ export default function PantryPage() {
   const [showAddForm, setShowAddForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
+
+  // Gestion de l'ajout de produit
+  const handleAddProduct = useCallback((newLot) => {
+    refresh();
+    setShowAddForm(false);
+  }, [refresh]);
 
   // Groupement des lots par produit
   const groupedProducts = useMemo(() => {
@@ -392,16 +429,48 @@ export default function PantryPage() {
         )}
       </div>
 
+      {/* Modal d'ajout */}
+      {showAddForm && (
+        <div className="modal-overlay" onClick={() => setShowAddForm(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <SmartAddForm
+              onSave={handleAddProduct}
+              onCancel={() => setShowAddForm(false)}
+            />
+          </div>
+        </div>
+      )}
+
       <style jsx>{`
         .pantry-page {
           min-height: 100vh;
           background: 
-            radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.2) 0%, transparent 60%),
+            radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.2) 0%, transparent 60%),
+            radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 60%),
+            radial-gradient(circle at 60% 30%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
             linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 20%, #f0f9ff 40%, #faf5ff 60%, #f9fafb 80%, #f0fdf4 100%);
           padding: 20px;
           position: relative;
+          overflow-x: hidden;
+        }
+
+        .pantry-page::before {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: 
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.05'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .pantry-page > * {
+          position: relative;
+          z-index: 1;
         }
 
         .pantry-loading {
@@ -431,13 +500,16 @@ export default function PantryPage() {
         }
 
         .pantry-header {
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(16px);
-          border-radius: 20px;
-          padding: 28px;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border-radius: 24px;
+          padding: 32px;
           margin-bottom: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.9);
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .header-content {
@@ -472,30 +544,38 @@ export default function PantryPage() {
           display: flex;
           align-items: center;
           gap: 12px;
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(8px);
-          padding: 18px 22px;
-          border-radius: 16px;
-          border: 1px solid rgba(255, 255, 255, 0.8);
+          background: rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(16px) saturate(200%);
+          -webkit-backdrop-filter: blur(16px) saturate(200%);
+          padding: 20px 24px;
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.3);
           color: #059669;
           min-width: 130px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-          transition: all 0.2s ease;
+          box-shadow: 
+            0 8px 25px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+          transition: all 0.3s ease;
         }
 
         .stat-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+          transform: translateY(-3px);
+          box-shadow: 
+            0 12px 35px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6);
+          background: rgba(255, 255, 255, 0.3);
         }
 
         .stat-card.warning {
           color: #d97706;
-          background: rgba(255, 251, 235, 0.8);
+          background: rgba(255, 251, 235, 0.3);
+          border-color: rgba(253, 186, 116, 0.4);
         }
 
         .stat-card.success {
           color: #059669;
-          background: rgba(236, 253, 245, 0.8);
+          background: rgba(236, 253, 245, 0.3);
+          border-color: rgba(187, 247, 208, 0.4);
         }
 
         .stat-number {
@@ -558,13 +638,16 @@ export default function PantryPage() {
         }
 
         .pantry-controls {
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(12px);
-          border-radius: 16px;
-          padding: 20px;
+          background: rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border-radius: 20px;
+          padding: 24px;
           margin-bottom: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.9);
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 
+            0 8px 25px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
           display: flex;
           flex-wrap: wrap;
           gap: 16px;
@@ -704,19 +787,43 @@ export default function PantryPage() {
         }
 
         .product-card {
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.9);
-          border-radius: 16px;
-          padding: 20px;
-          transition: all 0.2s ease;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+          background: rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 20px;
+          padding: 24px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 
+            0 8px 25px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .product-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #059669 0%, #0891b2 50%, #7c3aed 100%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
         }
 
         .product-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-          border-color: rgba(255, 255, 255, 0.95);
+          transform: translateY(-6px);
+          box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+          background: rgba(255, 255, 255, 0.25);
+          border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .product-card:hover::before {
+          opacity: 1;
         }
 
         .product-header {
