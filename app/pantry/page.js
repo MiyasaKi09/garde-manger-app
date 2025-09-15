@@ -1,9 +1,6 @@
-// app/pantry/page.js
 'use client';
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
-import { supabase } from '@/lib/supabaseClient';
-import { SmartAddForm } from './components/SmartAddForm';
 import { 
   Plus, 
   Search, 
@@ -11,59 +8,72 @@ import {
   Package, 
   AlertTriangle, 
   Calendar,
-  TrendingUp,
-  RefreshCw
+  RefreshCw,
+  Leaf,
+  Droplets,
+  Sun
 } from 'lucide-react';
 
-// Hook personnalisé pour la gestion des données du garde-manger
+// Hook personnalisé pour la gestion des données
 function usePantryData() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [lots, setLots] = useState([]);
-  const [refreshKey, setRefreshKey] = useState(0);
 
-  const loadData = useCallback(async () => {
-    setLoading(true);
-    setError('');
-    
-    try {
-      // Chargement des lots via la vue unifiée
-      const { data: lotsData, error: lotsError } = await supabase
-        .from('v_inventory_display')
-        .select('*')
-        .gt('qty_remaining', 0)
-        .order('effective_expiration', { ascending: true, nullsFirst: false })
-        .order('created_at', { ascending: false });
-      
-      if (lotsError) throw lotsError;
-      
-      setLots(lotsData || []);
-      
-    } catch (err) {
-      console.error('Erreur chargement données:', err);
-      setError(err.message || 'Erreur lors du chargement des données');
-    } finally {
-      setLoading(false);
-    }
-  }, [refreshKey]);
-
+  // Données de démonstration
   useEffect(() => {
-    loadData();
-  }, [loadData]);
-
-  const refresh = useCallback(() => {
-    setRefreshKey(prev => prev + 1);
+    setLoading(true);
+    setTimeout(() => {
+      setLots([
+        {
+          id: 1,
+          display_name: 'Tomates cerises bio',
+          canonical_food_id: 'tomatoes',
+          category_name: 'Légumes',
+          unit: 'g',
+          qty_remaining: 250,
+          effective_expiration: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString()
+        },
+        {
+          id: 2,
+          display_name: 'Basilic frais',
+          canonical_food_id: 'basil',
+          category_name: 'Herbes',
+          unit: 'g',
+          qty_remaining: 30,
+          effective_expiration: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString()
+        },
+        {
+          id: 3,
+          display_name: 'Miel de lavande',
+          canonical_food_id: 'honey',
+          category_name: 'Condiments',
+          unit: 'ml',
+          qty_remaining: 500,
+          effective_expiration: null
+        },
+        {
+          id: 4,
+          display_name: 'Champignons shiitake',
+          canonical_food_id: 'mushrooms',
+          category_name: 'Légumes',
+          unit: 'g',
+          qty_remaining: 150,
+          effective_expiration: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString()
+        }
+      ]);
+      setLoading(false);
+    }, 1000);
   }, []);
 
-  return {
-    loading,
-    error,
-    lots,
-    refresh
-  };
+  const refresh = useCallback(() => {
+    // Logique de rafraîchissement
+  }, []);
+
+  return { loading, error, lots, refresh };
 }
 
-// Utilitaires simples
+// Utilitaires
 const daysUntil = (date) => {
   if (!date) return null;
   const today = new Date();
@@ -76,43 +86,32 @@ const formatDate = (date) => {
   if (!date) return '';
   return new Date(date).toLocaleDateString('fr-FR', {
     day: 'numeric',
-    month: 'short',
-    year: 'numeric'
+    month: 'short'
   });
 };
 
 const getExpirationStatus = (days) => {
-  if (days === null) return { status: 'unknown', color: '#6b7280', label: 'Sans date' };
-  if (days < 0) return { status: 'expired', color: '#dc2626', label: 'Expiré' };
-  if (days === 0) return { status: 'today', color: '#ea580c', label: 'Aujourd\'hui' };
-  if (days <= 3) return { status: 'critical', color: '#d97706', label: `${days}j` };
-  if (days <= 7) return { status: 'warning', color: '#ca8a04', label: `${days}j` };
-  return { status: 'good', color: '#059669', label: `${days}j` };
+  if (days === null) return { emoji: '🌿', label: 'Stable', color: 'var(--earth-600)' };
+  if (days < 0) return { emoji: '🍂', label: 'Périmé', color: '#dc2626' };
+  if (days === 0) return { emoji: '⏰', label: "Aujourd'hui", color: '#ea580c' };
+  if (days <= 3) return { emoji: '🍊', label: `${days}j`, color: 'var(--autumn-orange)' };
+  if (days <= 7) return { emoji: '🌾', label: `${days}j`, color: 'var(--mushroom)' };
+  return { emoji: '🌱', label: `${days}j`, color: 'var(--forest-500)' };
 };
 
-// Composant principal
 export default function PantryPage() {
   const { loading, error, lots, refresh } = usePantryData();
-  
-  // États de l'interface
-  const [showAddForm, setShowAddForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
+  const [showAddForm, setShowAddForm] = useState(false);
 
-  // Gestion de l'ajout de produit
-  const handleAddProduct = useCallback((newLot) => {
-    refresh();
-    setShowAddForm(false);
-  }, [refresh]);
-
-  // Groupement des lots par produit
+  // Groupement des produits
   const groupedProducts = useMemo(() => {
     const groups = new Map();
     
     lots.forEach(lot => {
-      const productId = lot.canonical_food_id || lot.cultivar_id || 
-                       lot.generic_product_id || lot.derived_product_id;
-      const productName = lot.display_name || 'Produit inconnu';
+      const productId = lot.canonical_food_id;
+      const productName = lot.display_name;
       
       if (!groups.has(productId)) {
         groups.set(productId, {
@@ -120,8 +119,8 @@ export default function PantryPage() {
           productName,
           lots: [],
           totalQuantity: 0,
-          primaryUnit: lot.unit,
-          category: { name: lot.category_name },
+          unit: lot.unit,
+          category: lot.category_name,
           nextExpiry: null
         });
       }
@@ -139,42 +138,35 @@ export default function PantryPage() {
     return Array.from(groups.values());
   }, [lots]);
 
-  // Filtrage des produits
+  // Filtrage
   const filteredProducts = useMemo(() => {
     let filtered = groupedProducts;
 
-    // Filtrage par recherche
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(product => 
         product.productName.toLowerCase().includes(query) ||
-        product.category?.name?.toLowerCase().includes(query)
+        product.category?.toLowerCase().includes(query)
       );
     }
 
-    // Filtrage par statut
-    filtered = filtered.filter(product => {
-      if (selectedFilter === 'all') return true;
-      
-      const daysToExpiry = daysUntil(product.nextExpiry);
-      const status = getExpirationStatus(daysToExpiry);
-      
-      switch (selectedFilter) {
-        case 'expired':
-          return status.status === 'expired';
-        case 'expiring':
-          return ['today', 'critical'].includes(status.status);
-        case 'fresh':
-          return ['good', 'warning'].includes(status.status);
-        case 'no-date':
-          return status.status === 'unknown';
-        default:
-          return true;
-      }
-    });
+    if (selectedFilter !== 'all') {
+      filtered = filtered.filter(product => {
+        const days = daysUntil(product.nextExpiry);
+        const status = getExpirationStatus(days);
+        
+        switch (selectedFilter) {
+          case 'expiring':
+            return days !== null && days <= 7;
+          case 'fresh':
+            return days === null || days > 7;
+          default:
+            return true;
+        }
+      });
+    }
 
-    // Tri par date d'expiration
-    filtered.sort((a, b) => {
+    return filtered.sort((a, b) => {
       const daysA = daysUntil(a.nextExpiry);
       const daysB = daysUntil(b.nextExpiry);
       
@@ -184,60 +176,51 @@ export default function PantryPage() {
       
       return daysA - daysB;
     });
-
-    return filtered;
   }, [groupedProducts, searchQuery, selectedFilter]);
 
-  // Statistiques
+  // Stats
   const stats = useMemo(() => {
     const totalProducts = groupedProducts.length;
-    const totalLots = lots.length;
-    
-    let expiredCount = 0;
     let expiringCount = 0;
+    let freshCount = 0;
     
     groupedProducts.forEach(product => {
       const days = daysUntil(product.nextExpiry);
-      const status = getExpirationStatus(days);
-      
-      if (status.status === 'expired') expiredCount++;
-      else if (['today', 'critical'].includes(status.status)) expiringCount++;
+      if (days !== null && days <= 7) expiringCount++;
+      else freshCount++;
     });
 
-    return {
-      totalProducts,
-      totalLots,
-      expiredCount,
-      expiringCount,
-      freshCount: totalProducts - expiredCount - expiringCount
-    };
-  }, [groupedProducts, lots]);
+    return { totalProducts, expiringCount, freshCount };
+  }, [groupedProducts]);
 
-  // Composant ProductCard simplifié
+  // Composant Card produit
   const ProductCard = ({ product }) => {
-    const daysToExpiry = daysUntil(product.nextExpiry);
-    const status = getExpirationStatus(daysToExpiry);
+    const days = daysUntil(product.nextExpiry);
+    const status = getExpirationStatus(days);
     
     return (
-      <div className="product-card">
-        <div className="product-header">
-          <div className="product-info">
+      <div className="product-card glass-card">
+        <div className="card-accent" />
+        <div className="card-content">
+          <div className="product-header">
+            <span className="product-emoji">{status.emoji}</span>
             <h3 className="product-name">{product.productName}</h3>
-            <div className="product-meta">
-              <span className="product-quantity">
-                {product.totalQuantity.toFixed(1)} {product.primaryUnit}
-              </span>
-              <span className="lots-count">
-                ({product.lots.length} lot{product.lots.length > 1 ? 's' : ''})
-              </span>
+          </div>
+          
+          <div className="product-meta">
+            <span className="category-badge">{product.category}</span>
+            <span className="quantity">
+              {product.totalQuantity.toFixed(0)}{product.unit}
+            </span>
+          </div>
+          
+          {product.nextExpiry && (
+            <div className="expiry-info" style={{ color: status.color }}>
+              <Calendar size={14} />
+              <span>{formatDate(product.nextExpiry)}</span>
+              <span className="expiry-label">{status.label}</span>
             </div>
-          </div>
-          <div className="expiration-status" style={{ color: status.color }}>
-            <div className="status-text">{status.label}</div>
-            {product.nextExpiry && (
-              <div className="expiry-date">{formatDate(product.nextExpiry)}</div>
-            )}
-          </div>
+          )}
         </div>
       </div>
     );
@@ -245,694 +228,524 @@ export default function PantryPage() {
 
   if (loading) {
     return (
-      <div className="pantry-loading">
-        <RefreshCw className="loading-spinner" size={32} />
+      <div className="loading-container">
+        <div className="loading-spinner">
+          <Leaf className="spin" size={32} />
+        </div>
         <p>Chargement du garde-manger...</p>
       </div>
     );
   }
 
   return (
-    <div className="pantry-page">
-      {/* En-tête avec statistiques */}
-      <div className="pantry-header">
-        <div className="header-content">
-          <div className="header-title">
-            <h1>Mon garde-manger</h1>
-            <p>Gérez votre stock alimentaire intelligemment</p>
+    <div className="pantry-container">
+      {/* En-tête organique */}
+      <header className="pantry-header glass-card">
+        <div className="header-main">
+          <div className="title-section">
+            <h1>
+              <Leaf className="title-icon" />
+              Mon garde-manger vivant
+            </h1>
+            <p>Cultivez l'harmonie entre vos réserves et la nature</p>
           </div>
           
-          <div className="header-stats">
-            <div className="stat-card">
+          <div className="stats-bubbles">
+            <div className="stat-bubble fresh">
+              <Sun size={20} />
+              <div className="stat-content">
+                <span className="stat-value">{stats.freshCount}</span>
+                <span className="stat-label">Frais</span>
+              </div>
+            </div>
+            
+            <div className="stat-bubble warning">
+              <Droplets size={20} />
+              <div className="stat-content">
+                <span className="stat-value">{stats.expiringCount}</span>
+                <span className="stat-label">À consommer</span>
+              </div>
+            </div>
+            
+            <div className="stat-bubble total">
               <Package size={20} />
-              <div>
-                <div className="stat-number">{stats.totalProducts}</div>
-                <div className="stat-label">Produits</div>
-              </div>
-            </div>
-            
-            <div className="stat-card warning">
-              <AlertTriangle size={20} />
-              <div>
-                <div className="stat-number">{stats.expiredCount + stats.expiringCount}</div>
-                <div className="stat-label">À surveiller</div>
-              </div>
-            </div>
-            
-            <div className="stat-card success">
-              <Calendar size={20} />
-              <div>
-                <div className="stat-number">{stats.freshCount}</div>
-                <div className="stat-label">Frais</div>
+              <div className="stat-content">
+                <span className="stat-value">{stats.totalProducts}</span>
+                <span className="stat-label">Produits</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="header-actions">
-          <button 
-            onClick={refresh}
-            className="btn-action secondary"
-            disabled={loading}
-          >
+          <button onClick={refresh} className="btn-organic secondary">
             <RefreshCw size={16} />
             Actualiser
           </button>
           
-          <button 
-            onClick={() => setShowAddForm(true)}
-            className="btn-action primary"
-          >
+          <button onClick={() => setShowAddForm(true)} className="btn-organic primary">
             <Plus size={16} />
-            Ajouter un produit
+            Ajouter
+          </button>
+        </div>
+      </header>
+
+      {/* Barre de recherche fluide */}
+      <div className="search-bar glass-card">
+        <div className="search-input-wrapper">
+          <Search size={20} />
+          <input
+            type="text"
+            placeholder="Rechercher dans le garde-manger..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="search-input"
+          />
+        </div>
+        
+        <div className="filter-pills">
+          <button 
+            className={`filter-pill ${selectedFilter === 'all' ? 'active' : ''}`}
+            onClick={() => setSelectedFilter('all')}
+          >
+            Tous
+          </button>
+          <button 
+            className={`filter-pill ${selectedFilter === 'expiring' ? 'active' : ''}`}
+            onClick={() => setSelectedFilter('expiring')}
+          >
+            À consommer
+          </button>
+          <button 
+            className={`filter-pill ${selectedFilter === 'fresh' ? 'active' : ''}`}
+            onClick={() => setSelectedFilter('fresh')}
+          >
+            Longue conservation
           </button>
         </div>
       </div>
 
-      {/* Barre de recherche et filtres */}
-      <div className="pantry-controls">
-        <div className="search-section">
-          <div className="search-input-group">
-            <Search size={20} />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Rechercher un produit..."
-              className="search-input"
-            />
-          </div>
-        </div>
-
-        <div className="filters-section">
-          <div className="filter-group">
-            <Filter size={16} />
-            <select
-              value={selectedFilter}
-              onChange={(e) => setSelectedFilter(e.target.value)}
-              className="filter-select"
-            >
-              <option value="all">Tous les produits</option>
-              <option value="expiring">À consommer rapidement</option>
-              <option value="expired">Expirés</option>
-              <option value="fresh">Produits frais</option>
-              <option value="no-date">Sans date d'expiration</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      {/* Messages d'erreur */}
-      {error && (
-        <div className="error-banner">
-          <AlertTriangle size={16} />
-          <span>{error}</span>
-          <button onClick={refresh} className="btn-retry">
-            Réessayer
-          </button>
-        </div>
-      )}
-
-      {/* Contenu principal */}
-      <div className="pantry-content">
+      {/* Grille de produits */}
+      <div className="products-garden">
         {filteredProducts.length === 0 ? (
-          <div className="empty-state">
-            {searchQuery || selectedFilter !== 'all' ? (
-              <>
-                <Search size={48} />
-                <h3>Aucun produit trouvé</h3>
-                <p>Essayez de modifier vos critères de recherche ou filtres</p>
-                <button 
-                  onClick={() => {
-                    setSearchQuery('');
-                    setSelectedFilter('all');
-                  }}
-                  className="btn-action secondary"
-                >
-                  Réinitialiser les filtres
-                </button>
-              </>
-            ) : (
-              <>
-                <Package size={48} />
-                <h3>Votre garde-manger est vide</h3>
-                <p>Commencez par ajouter vos premiers produits</p>
-                <button 
-                  onClick={() => setShowAddForm(true)}
-                  className="btn-action primary"
-                >
-                  <Plus size={16} />
-                  Ajouter un produit
-                </button>
-              </>
-            )}
+          <div className="empty-state glass-card">
+            <Package size={48} style={{ opacity: 0.3 }} />
+            <h3>Votre garde-manger attend ses premières réserves</h3>
+            <p>Commencez à cultiver votre autonomie alimentaire</p>
+            <button onClick={() => setShowAddForm(true)} className="btn-organic primary">
+              <Plus size={16} />
+              Ajouter un premier produit
+            </button>
           </div>
         ) : (
-          <div className="products-grid">
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.productId}
-                product={product}
-              />
-            ))}
-          </div>
+          filteredProducts.map(product => (
+            <ProductCard key={product.productId} product={product} />
+          ))
         )}
       </div>
 
-      {/* Modal d'ajout */}
-      {showAddForm && (
-        <div className="modal-overlay" onClick={() => setShowAddForm(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <SmartAddForm
-              onSave={handleAddProduct}
-              onCancel={() => setShowAddForm(false)}
-            />
-          </div>
-        </div>
-      )}
-
       <style jsx>{`
-        .pantry-page {
+        .pantry-container {
           min-height: 100vh;
-          background: 
-            radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.2) 0%, transparent 60%),
-            radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.2) 0%, transparent 60%),
-            radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 60%),
-            radial-gradient(circle at 60% 30%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
-            linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 20%, #f0f9ff 40%, #faf5ff 60%, #f9fafb 80%, #f0fdf4 100%);
-          padding: 20px;
-          position: relative;
-          overflow-x: hidden;
+          padding: 1.5rem;
+          max-width: 1400px;
+          margin: 0 auto;
+          font-family: 'Inter', -apple-system, sans-serif;
         }
 
-        .pantry-page::before {
-          content: '';
-          position: fixed;
-          top: 0;
-          left: 0;
+        /* Glassmorphisme organique */
+        .glass-card {
+          background: rgba(255, 255, 255, 0.75);
+          backdrop-filter: blur(6px) saturate(110%);
+          -webkit-backdrop-filter: blur(6px) saturate(110%);
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+          border-radius: 24px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* Header naturel */
+        .pantry-header {
+          margin-bottom: 2rem;
+          padding: 2rem;
+          animation: float-in 0.6s ease-out;
+        }
+
+        .header-main {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          gap: 2rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .title-section h1 {
+          font-size: 2rem;
+          font-weight: 700;
+          color: var(--forest-700, #4a7c4a);
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin: 0 0 0.5rem 0;
+        }
+
+        .title-icon {
+          animation: sway 3s ease-in-out infinite;
+        }
+
+        .title-section p {
+          color: var(--earth-600, #a39274);
+          font-size: 1rem;
+          margin: 0;
+        }
+
+        /* Bulles de stats organiques */
+        .stats-bubbles {
+          display: flex;
+          gap: 1.5rem;
+        }
+
+        .stat-bubble {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 1rem 1.5rem;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(8px);
+          border-radius: 50px;
+          border: 2px solid;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stat-bubble:hover {
+          transform: translateY(-3px) scale(1.05);
+        }
+
+        .stat-bubble.fresh {
+          border-color: var(--forest-300, #c8d8c8);
+          color: var(--forest-600, #6b9d6b);
+        }
+
+        .stat-bubble.warning {
+          border-color: var(--mushroom, #d4a574);
+          color: var(--autumn-orange, #e67e22);
+        }
+
+        .stat-bubble.total {
+          border-color: var(--earth-300, #ddd4c4);
+          color: var(--earth-700, #8b7a5d);
+        }
+
+        .stat-content {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .stat-value {
+          font-size: 1.5rem;
+          font-weight: 700;
+          line-height: 1;
+        }
+
+        .stat-label {
+          font-size: 0.75rem;
+          opacity: 0.8;
+        }
+
+        /* Boutons organiques */
+        .header-actions {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .btn-organic {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.75rem 1.5rem;
+          border: none;
+          border-radius: 50px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-organic.primary {
+          background: linear-gradient(135deg, var(--forest-500, #8bb58b), var(--forest-600, #6b9d6b));
+          color: white;
+          box-shadow: 0 4px 12px rgba(139, 181, 139, 0.3);
+        }
+
+        .btn-organic.primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(139, 181, 139, 0.4);
+        }
+
+        .btn-organic.secondary {
+          background: rgba(255, 255, 255, 0.8);
+          color: var(--forest-700, #4a7c4a);
+          border: 2px solid var(--forest-300, #c8d8c8);
+        }
+
+        .btn-organic.secondary:hover {
+          background: rgba(255, 255, 255, 0.95);
+          transform: scale(1.05);
+        }
+
+        /* Barre de recherche fluide */
+        .search-bar {
+          margin-bottom: 2rem;
+          padding: 1.5rem;
+          animation: float-in 0.7s ease-out 0.1s both;
+        }
+
+        .search-input-wrapper {
+          position: relative;
+          margin-bottom: 1rem;
+        }
+
+        .search-input-wrapper svg {
+          position: absolute;
+          left: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          color: var(--earth-500, #b8a98e);
+        }
+
+        .search-input {
           width: 100%;
-          height: 100%;
-          background: 
-            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.05'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-          pointer-events: none;
-          z-index: 0;
+          padding: 0.875rem 1rem 0.875rem 3rem;
+          border: 2px solid transparent;
+          border-radius: 50px;
+          background: rgba(255, 255, 255, 0.8);
+          font-size: 1rem;
+          transition: all 0.3s ease;
         }
 
-        .pantry-page > * {
-          position: relative;
-          z-index: 1;
+        .search-input:focus {
+          outline: none;
+          border-color: var(--forest-400, #a8c5a8);
+          background: white;
+          box-shadow: 0 0 0 3px rgba(168, 197, 168, 0.2);
         }
 
-        .pantry-loading {
+        /* Filtres en pilules */
+        .filter-pills {
+          display: flex;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+        }
+
+        .filter-pill {
+          padding: 0.5rem 1.25rem;
+          border: 2px solid var(--earth-200, #ebe5da);
+          border-radius: 50px;
+          background: rgba(255, 255, 255, 0.6);
+          color: var(--earth-700, #8b7a5d);
+          font-size: 0.875rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .filter-pill:hover {
+          background: rgba(255, 255, 255, 0.9);
+          transform: scale(1.05);
+        }
+
+        .filter-pill.active {
+          background: var(--forest-500, #8bb58b);
+          color: white;
+          border-color: var(--forest-500, #8bb58b);
+        }
+
+        /* Grille de produits */
+        .products-garden {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: 1.5rem;
+          animation: float-in 0.8s ease-out 0.2s both;
+        }
+
+        /* Carte produit organique */
+        .product-card {
+          padding: 0;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          cursor: pointer;
+        }
+
+        .product-card:hover {
+          transform: translateY(-4px) rotate(-0.5deg);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-accent {
+          height: 4px;
+          background: linear-gradient(90deg, 
+            var(--forest-400, #a8c5a8) 0%, 
+            var(--mushroom, #d4a574) 50%, 
+            var(--earth-400, #ccc0aa) 100%);
+          opacity: 0.7;
+        }
+
+        .card-content {
+          padding: 1.5rem;
+        }
+
+        .product-header {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+        }
+
+        .product-emoji {
+          font-size: 1.5rem;
+        }
+
+        .product-name {
+          font-size: 1.125rem;
+          font-weight: 600;
+          color: var(--forest-800, #2d5a2d);
+          margin: 0;
+        }
+
+        .product-meta {
+          display: flex;
+          gap: 0.75rem;
+          align-items: center;
+          margin-bottom: 0.75rem;
+        }
+
+        .category-badge {
+          padding: 0.25rem 0.75rem;
+          background: rgba(168, 197, 168, 0.2);
+          color: var(--forest-700, #4a7c4a);
+          border-radius: 50px;
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+
+        .quantity {
+          font-weight: 600;
+          color: var(--earth-700, #8b7a5d);
+        }
+
+        .expiry-info {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.875rem;
+          font-weight: 500;
+        }
+
+        .expiry-label {
+          margin-left: auto;
+          font-weight: 600;
+        }
+
+        /* État vide */
+        .empty-state {
+          grid-column: 1 / -1;
+          padding: 4rem 2rem;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .empty-state h3 {
+          color: var(--forest-700, #4a7c4a);
+          font-size: 1.25rem;
+          margin: 0;
+        }
+
+        .empty-state p {
+          color: var(--earth-600, #a39274);
+          max-width: 400px;
+          margin: 0;
+        }
+
+        /* Loading */
+        .loading-container {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           min-height: 60vh;
-          gap: 16px;
-          color: #6b7280;
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(12px);
-          border-radius: 20px;
-          padding: 40px;
-          margin: 20px auto;
-          max-width: 400px;
-          border: 1px solid rgba(255, 255, 255, 0.8);
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+          gap: 1rem;
+          color: var(--forest-600, #6b9d6b);
         }
 
         .loading-spinner {
-          animation: spin 1s linear infinite;
+          animation: spin 2s linear infinite;
+        }
+
+        /* Animations */
+        @keyframes float-in {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes sway {
+          0%, 100% { transform: rotate(-2deg); }
+          50% { transform: rotate(2deg); }
         }
 
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
 
-        .pantry-header {
-          background: rgba(255, 255, 255, 0.15);
-          backdrop-filter: blur(20px) saturate(180%);
-          -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border-radius: 24px;
-          padding: 32px;
-          margin-bottom: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          box-shadow: 
-            0 8px 32px rgba(0, 0, 0, 0.15),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
-
-        .header-content {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 24px;
-        }
-
-        .header-title h1 {
-          font-size: 32px;
-          font-weight: 700;
-          background: linear-gradient(135deg, #059669 0%, #0891b2 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin: 0 0 8px 0;
-        }
-
-        .header-title p {
-          color: #6b7280;
-          margin: 0;
-          font-size: 16px;
-        }
-
-        .header-stats {
-          display: flex;
-          gap: 16px;
-        }
-
-        .stat-card {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          background: rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(16px) saturate(200%);
-          -webkit-backdrop-filter: blur(16px) saturate(200%);
-          padding: 20px 24px;
-          border-radius: 20px;
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          color: #059669;
-          min-width: 130px;
-          box-shadow: 
-            0 8px 25px rgba(0, 0, 0, 0.1),
-            inset 0 1px 0 rgba(255, 255, 255, 0.5);
-          transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-          transform: translateY(-3px);
-          box-shadow: 
-            0 12px 35px rgba(0, 0, 0, 0.15),
-            inset 0 1px 0 rgba(255, 255, 255, 0.6);
-          background: rgba(255, 255, 255, 0.3);
-        }
-
-        .stat-card.warning {
-          color: #d97706;
-          background: rgba(255, 251, 235, 0.3);
-          border-color: rgba(253, 186, 116, 0.4);
-        }
-
-        .stat-card.success {
-          color: #059669;
-          background: rgba(236, 253, 245, 0.3);
-          border-color: rgba(187, 247, 208, 0.4);
-        }
-
-        .stat-number {
-          font-size: 24px;
-          font-weight: 700;
-          line-height: 1;
-        }
-
-        .stat-label {
-          font-size: 12px;
-          opacity: 0.8;
-          font-weight: 500;
-        }
-
-        .header-actions {
-          display: flex;
-          gap: 12px;
-        }
-
-        .btn-action {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 12px 20px;
-          border-radius: 12px;
-          font-weight: 600;
-          font-size: 14px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          border: none;
-        }
-
-        .btn-action.primary {
-          background: linear-gradient(135deg, #059669 0%, #047857 100%);
-          color: white;
-          box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
-        }
-
-        .btn-action.primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(5, 150, 105, 0.4);
-        }
-
-        .btn-action.secondary {
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(8px);
-          color: #374151;
-          border: 1px solid rgba(255, 255, 255, 0.9);
-        }
-
-        .btn-action.secondary:hover {
-          background: rgba(255, 255, 255, 0.9);
-          transform: translateY(-1px);
-        }
-
-        .btn-action:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-          transform: none;
-        }
-
-        .pantry-controls {
-          background: rgba(255, 255, 255, 0.2);
-          backdrop-filter: blur(20px) saturate(180%);
-          -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border-radius: 20px;
-          padding: 24px;
-          margin-bottom: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          box-shadow: 
-            0 8px 25px rgba(0, 0, 0, 0.1),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-          display: flex;
-          flex-wrap: wrap;
-          gap: 16px;
-          align-items: center;
-        }
-
-        .search-section {
-          flex: 1;
-          min-width: 300px;
-        }
-
-        .search-input-group {
-          position: relative;
-          display: flex;
-          align-items: center;
-        }
-
-        .search-input-group svg {
-          position: absolute;
-          left: 12px;
-          color: #9ca3af;
-          z-index: 2;
-        }
-
-        .search-input {
-          width: 100%;
-          padding: 12px 12px 12px 44px;
-          border: 2px solid rgba(229, 231, 235, 0.8);
-          border-radius: 12px;
-          font-size: 16px;
-          transition: all 0.2s ease;
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(4px);
-        }
-
-        .search-input:focus {
-          outline: none;
-          border-color: #059669;
-          box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
-          background: rgba(255, 255, 255, 0.95);
-        }
-
-        .filters-section {
-          display: flex;
-          gap: 12px;
-          align-items: center;
-        }
-
-        .filter-group {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          color: #6b7280;
-        }
-
-        .filter-select {
-          padding: 8px 12px;
-          border: 1px solid rgba(209, 213, 219, 0.8);
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(4px);
-          color: #374151;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        .filter-select:focus {
-          outline: none;
-          border-color: #059669;
-          box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
-        }
-
-        .error-banner {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          background: rgba(254, 242, 242, 0.9);
-          backdrop-filter: blur(8px);
-          color: #dc2626;
-          padding: 16px 20px;
-          border-radius: 12px;
-          border: 1px solid rgba(252, 165, 165, 0.5);
-          margin-bottom: 24px;
-        }
-
-        .btn-retry {
-          background: #dc2626;
-          color: white;
-          border: none;
-          padding: 6px 12px;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 12px;
-          margin-left: auto;
-        }
-
-        .pantry-content {
-          min-height: 400px;
-        }
-
-        .products-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-          gap: 20px;
-        }
-
-        .empty-state {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          padding: 60px 30px;
-          color: #6b7280;
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(12px);
-          border-radius: 20px;
-          border: 2px dashed rgba(209, 213, 219, 0.6);
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .empty-state svg {
-          margin-bottom: 16px;
-          opacity: 0.5;
-        }
-
-        .empty-state h3 {
-          font-size: 20px;
-          font-weight: 600;
-          color: #374151;
-          margin: 0 0 8px 0;
-        }
-
-        .empty-state p {
-          margin: 0 0 24px 0;
-          max-width: 400px;
-        }
-
-        .product-card {
-          background: rgba(255, 255, 255, 0.2);
-          backdrop-filter: blur(20px) saturate(180%);
-          -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          border-radius: 20px;
-          padding: 24px;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 
-            0 8px 25px rgba(0, 0, 0, 0.1),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .product-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background: linear-gradient(90deg, #059669 0%, #0891b2 50%, #7c3aed 100%);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .product-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.15),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4);
-          background: rgba(255, 255, 255, 0.25);
-          border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .product-card:hover::before {
-          opacity: 1;
-        }
-
-        .product-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-        }
-
-        .product-info {
-          flex: 1;
-        }
-
-        .product-name {
-          font-size: 18px;
-          font-weight: 600;
-          color: #111827;
-          margin: 0 0 6px 0;
-        }
-
-        .product-meta {
-          display: flex;
-          gap: 10px;
-          align-items: center;
-          font-size: 14px;
-          color: #6b7280;
-        }
-
-        .product-quantity {
-          font-weight: 600;
-          color: #374151;
-          background: rgba(59, 130, 246, 0.1);
-          padding: 4px 10px;
-          border-radius: 8px;
-          border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .lots-count {
-          opacity: 0.7;
-          font-size: 12px;
-        }
-
-        .expiration-status {
-          text-align: right;
-          font-weight: 600;
-          font-size: 14px;
-          padding: 8px 12px;
-          border-radius: 10px;
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(4px);
-          border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .expiry-date {
-          font-size: 11px;
-          opacity: 0.8;
-          margin-top: 3px;
-          font-weight: 500;
-        }
-
-        /* Modal styles */
-        .modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.5);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 1000;
-          padding: 20px;
-        }
-
-        .modal-content {
-          background: transparent;
-          border-radius: 20px;
-          max-width: 600px;
-          width: 100%;
-          max-height: 90vh;
-          overflow-y: auto;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
-          .pantry-page {
-            padding: 12px;
+          .pantry-container {
+            padding: 1rem;
           }
 
-          .header-content {
+          .title-section h1 {
+            font-size: 1.5rem;
+          }
+
+          .header-main {
             flex-direction: column;
-            gap: 16px;
+            gap: 1.5rem;
           }
 
-          .header-stats {
+          .stats-bubbles {
             width: 100%;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
           }
 
-          .stat-card {
-            flex: 1;
-            min-width: 110px;
-            padding: 14px 16px;
+          .stat-bubble {
+            padding: 0.75rem 1rem;
           }
 
-          .stat-number {
-            font-size: 20px;
+          .stat-value {
+            font-size: 1.25rem;
           }
 
-          .pantry-controls {
-            flex-direction: column;
-            align-items: stretch;
-          }
-
-          .search-section {
-            min-width: 0;
-          }
-
-          .products-grid {
+          .products-garden {
             grid-template-columns: 1fr;
           }
         }
 
         @media (max-width: 480px) {
-          .header-stats {
+          .stats-bubbles {
             flex-direction: column;
-            gap: 8px;
           }
 
-          .stat-card {
+          .filter-pills {
             justify-content: center;
-          }
-
-          .header-title h1 {
-            font-size: 24px;
           }
         }
       `}</style>
