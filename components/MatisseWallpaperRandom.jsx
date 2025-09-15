@@ -31,15 +31,15 @@ const CONFIG = {
 
   // Physique organique (toutes les constantes nécessaires)
   physics: {
-    baseSpeed: 8,
-    maxSpeed: 15,
+    baseSpeed: 0.8,
+    maxSpeed: 1.5,
 
     // amortissements
     deceleration: 0.98,
     rotationDamping: 0.98,
 
     // accélérations / forces
-    acceleration: 0.15,
+    acceleration: 0.015,
     wanderRadius: 120,
     wanderStrength: 0.8,
     rotationMaxSpeed: 0.03,
@@ -50,7 +50,7 @@ const CONFIG = {
 
   // Animation
   animation: {
-    fps: 60,
+    fps: 30,
     breathingSpeed: 0.0008,
     morphSmoothness: 0.015,
     tensionRelaxation: 0.02,
