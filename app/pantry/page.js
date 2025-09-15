@@ -711,30 +711,12 @@ export default function PantryPage() {
           padding: 20px;
           transition: all 0.2s ease;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .product-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background: linear-gradient(90deg, #059669 0%, #0891b2 100%);
-          opacity: 0;
-          transition: opacity 0.2s ease;
         }
 
         .product-card:hover {
           transform: translateY(-4px);
           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
           border-color: rgba(255, 255, 255, 0.95);
-        }
-
-        .product-card:hover::before {
-          opacity: 1;
         }
 
         .product-header {
@@ -848,151 +830,6 @@ export default function PantryPage() {
 
           .header-title h1 {
             font-size: 24px;
-          }
-        }
-      `}</style> 0.15),
-            0 8px 16px rgba(0, 0, 0, 0.1),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
-          border-color: rgba(255, 255, 255, 0.9);
-        }
-
-        .product-card:hover::before {
-          opacity: 1;
-        }
-
-        .product-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-        }
-
-        .product-info {
-          flex: 1;
-        }
-
-        .product-name {
-          font-size: 18px;
-          font-weight: 700;
-          color: #111827;
-          margin: 0 0 8px 0;
-          letter-spacing: -0.025em;
-        }
-
-        .product-meta {
-          display: flex;
-          gap: 12px;
-          align-items: center;
-          font-size: 14px;
-          color: #6b7280;
-        }
-
-        .product-quantity {
-          font-weight: 600;
-          color: #374151;
-          background: rgba(59, 130, 246, 0.1);
-          padding: 4px 12px;
-          border-radius: 12px;
-          border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .lots-count {
-          opacity: 0.8;
-          font-size: 13px;
-        }
-
-        .expiration-status {
-          text-align: right;
-          font-weight: 700;
-          font-size: 15px;
-          padding: 8px 16px;
-          border-radius: 12px;
-          background: rgba(255, 255, 255, 0.6);
-          backdrop-filter: blur(8px);
-          border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .expiry-date {
-          font-size: 12px;
-          opacity: 0.8;
-          margin-top: 4px;
-          font-weight: 500;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-          .pantry-page {
-            padding: 16px;
-          }
-
-          .header-content {
-            flex-direction: column;
-            gap: 20px;
-          }
-
-          .header-stats {
-            width: 100%;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-          }
-
-          .stat-card {
-            flex: 1;
-            min-width: 120px;
-            padding: 16px 20px;
-          }
-
-          .stat-number {
-            font-size: 24px;
-          }
-
-          .pantry-controls {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 16px;
-          }
-
-          .search-section {
-            min-width: 0;
-          }
-
-          .products-grid {
-            grid-template-columns: 1fr;
-            gap: 16px;
-          }
-
-          .product-card {
-            padding: 20px;
-          }
-
-          .empty-state {
-            padding: 60px 24px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .header-stats {
-            flex-direction: column;
-            gap: 12px;
-          }
-
-          .stat-card {
-            justify-content: center;
-            min-width: 0;
-          }
-
-          .header-title h1 {
-            font-size: 28px;
-          }
-
-          .header-actions {
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-          }
-
-          .btn-action {
-            justify-content: center;
           }
         }
       `}</style>
