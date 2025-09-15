@@ -1,472 +1,626 @@
-// app/pantry/components/ProductCard.js - Version complète corrigée
-
+// app/pantry/components/ProductCard.js
 'use client';
 
-import { useState, useMemo } from 'react';
-import { daysUntil } from '@/lib/dates';
-import { PantryStyles } from './pantryUtils';
+import { useState } from 'react';
+import { Calendar, MapPin, Package, AlertTriangle, CheckCircle, Clock } from 'lucide-react';
 
-export function ProductCard({ product, onUpdate, onDelete, onDetail }) {
-  const [expanded, setExpanded] = useState(false);
+// Calcul des jours jusqu'à expiration
+const daysUntil = (date) => {
+  if (!date) return null;
+  const today = new Date();
+  const expiry = new Date(date);
+  const diffTime = expiry - today;
+  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+};
 
-  // Calculs des statistiques du produit
-  const stats = useMemo(() => {
-    const lots = product.lots || [];
+// Formatage de la date en français
+const formatDate = (date) => {
+  if (!date) return '';
+  return new Date(date).toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  });
+};
+
+// Détermination du statut d'expiration
+const getExpirationStatus = (days) => {
+  if (days === null) return { status: 'unknown', color: '#6b7280', icon: Clock };
+  if (days < 0) return { status: 'expired', color: '#dc2626', icon: AlertTriangle };
+  if (days === 0) return { status: 'today', color: '#ea580c', icon: AlertTriangle };
+  if (days <= 3) return { status: 'soon', color: '#d97706', icon: AlertTriangle };
+  if (days <= 7) return { status: 'warning', color: '#ca8a04', icon: Clock };
+  return { status: 'good', color: '#059669', icon: CheckCircle };
+};
+
+// Composant principal ProductCard
+export function ProductCard({ 
+  product, 
+  lots = [], 
+  onUpdateLot, 
+  onDeleteLot,
+  onConsumeProduct,
+  expanded = false,
+  onToggleExpand
+}) {
+  const [isExpanded, setIsExpanded] = useState(expanded);
+
+  // Calcul des statistiques du produit
+  const totalQuantity = lots.reduce((sum, lot) => {
+    // Conversion basique vers l'unité principale
+    const qty = lot.qty || lot.qty_remaining || 0;
+    return sum + qty;
+  }, 0);
+
+  // Lot le plus proche de l'expiration
+  const nextExpiringLot = lots
+    .filter(lot => lot.dlc || lot.expiration_date || lot.effective_expiration)
+    .sort((a, b) => {
+      const dateA = new Date(a.dlc || a.expiration_date || a.effective_expiration);
+      const dateB = new Date(b.dlc || b.expiration_date || b.effective_expiration);
+      return dateA - dateB;
+    })[0];
+
+  const nextExpiryDate = nextExpiringLot?.dlc || nextExpiringLot?.expiration_date || nextExpiringLot?.effective_expiration;
+  const daysToExpiry = daysUntil(nextExpiryDate);
+  const expirationStatus = getExpirationStatus(daysToExpiry);
+
+  // Icône du produit basée sur la catégorie
+  const getProductIcon = (category) => {
+    const categoryName = category?.name?.toLowerCase() || '';
     
-    const totalQty = lots.reduce((sum, lot) => {
-      // Conversion basique pour additionner les quantités
-      const qty = Number(lot.qty || 0);
-      if (lot.unit === 'kg' && product.unit === 'g') return sum + (qty * 1000);
-      if (lot.unit === 'g' && product.unit === 'kg') return sum + (qty / 1000);
-      if (lot.unit === 'l' && product.unit === 'ml') return sum + (qty * 1000);
-      if (lot.unit === 'ml' && product.unit === 'l') return sum + (qty / 1000);
-      return sum + qty;
-    }, 0);
-
-    const daysToExpire = lots.map(lot => daysUntil(lot.best_before)).filter(d => d !== null);
-    const minDays = daysToExpire.length > 0 ? Math.min(...daysToExpire) : null;
-    
-    const urgencyLevel = minDays === null ? 'none'
-                      : minDays < 0 ? 'expired'
-                      : minDays <= 2 ? 'critical' 
-                      : minDays <= 7 ? 'warning'
-                      : 'ok';
-
-    const expiringCount = daysToExpire.filter(d => d >= 0 && d <= 7).length;
-    const expiredCount = daysToExpire.filter(d => d < 0).length;
-
-    return {
-      totalQty,
-      totalLots: lots.length,
-      minDays,
-      urgencyLevel,
-      expiringCount,
-      expiredCount,
-      hasMultipleLocations: new Set(lots.map(l => l.location?.name)).size > 1
-    };
-  }, [product.lots, product.unit]);
-
-  // Style de la carte selon l'urgence
-  const cardStyle = useMemo(() => {
-    const base = {
-      ...PantryStyles.glassBase,
-      padding: '1.25rem',
-      borderRadius: '1rem',
-      cursor: 'pointer',
-      transition: 'all 0.2s ease',
-      position: 'relative',
-      overflow: 'hidden'
-    };
-
-    const urgencyColors = {
-      expired: { border: '2px solid #e74c3c', background: 'rgba(231, 76, 60, 0.1)' },
-      critical: { border: '2px solid #f39c12', background: 'rgba(243, 156, 18, 0.1)' },
-      warning: { border: '2px solid #f1c40f', background: 'rgba(241, 196, 15, 0.1)' },
-      ok: { border: '2px solid var(--forest-300)', background: base.background },
-      none: { border: '2px solid var(--earth-300)', background: base.background }
-    };
-
-    return { ...base, ...urgencyColors[stats.urgencyLevel] };
-  }, [stats.urgencyLevel]);
-
-  // Emoji d'urgence
-  const urgencyEmoji = {
-    expired: '🚨',
-    critical: '⚠️',
-    warning: '📅',
-    ok: '✅',
-    none: '📦'
+    if (categoryName.includes('légume')) return '🥬';
+    if (categoryName.includes('fruit')) return '🍎';
+    if (categoryName.includes('viande')) return '🥩';
+    if (categoryName.includes('poisson')) return '🐟';
+    if (categoryName.includes('laitier') || categoryName.includes('fromage')) return '🧀';
+    if (categoryName.includes('céréale') || categoryName.includes('pain')) return '🌾';
+    if (categoryName.includes('épice') || categoryName.includes('aromate')) return '🌿';
+    if (categoryName.includes('boisson')) return '🥤';
+    return '📦';
   };
 
-  // Formatage de la quantité totale
-  const formatTotalQty = (qty, unit) => {
-    if (qty === 0) return '0';
-    if (qty >= 1000 && unit === 'g') return `${(qty / 1000).toFixed(1)}kg`;
-    if (qty >= 1000 && unit === 'ml') return `${(qty / 1000).toFixed(1)}L`;
-    return `${qty.toFixed(qty % 1 === 0 ? 0 : 1)}${unit}`;
-  };
-
-  // Gestion de l'édition rapide d'un lot
-  const handleQuickEdit = (lot, field, value) => {
-    const updates = { [field]: value };
-    onUpdate(lot.id, updates);
-  };
-
-  // Composant d'édition inline
-  const EditableField = ({ lot, field, value, type = 'text', options = [] }) => {
-    const [isEditing, setIsEditing] = useState(false);
-    const [editValue, setEditValue] = useState(value || '');
-
-    const handleSave = () => {
-      if (editValue !== value) {
-        handleQuickEdit(lot, field, editValue);
-      }
-      setIsEditing(false);
-    };
-
-    if (isEditing) {
-      return type === 'select' ? (
-        <select
-          value={editValue}
-          onChange={(e) => setEditValue(e.target.value)}
-          onBlur={handleSave}
-          onKeyDown={(e) => e.key === 'Enter' && handleSave()}
-          autoFocus
-          style={{
-            background: 'white',
-            border: '1px solid var(--forest-400)',
-            borderRadius: '4px',
-            padding: '2px 4px',
-            fontSize: '0.85rem',
-            width: '100%'
-          }}
-        >
-          {options.map(opt => (
-            <option key={opt.value} value={opt.value}>{opt.label}</option>
-          ))}
-        </select>
-      ) : (
-        <input
-          type={type}
-          value={editValue}
-          onChange={(e) => setEditValue(e.target.value)}
-          onBlur={handleSave}
-          onKeyDown={(e) => e.key === 'Enter' && handleSave()}
-          autoFocus
-          style={{
-            background: 'white',
-            border: '1px solid var(--forest-400)',
-            borderRadius: '4px',
-            padding: '2px 4px',
-            fontSize: '0.85rem',
-            width: '100%'
-          }}
-        />
-      );
+  const toggleExpanded = () => {
+    const newExpanded = !isExpanded;
+    setIsExpanded(newExpanded);
+    if (onToggleExpand) {
+      onToggleExpand(newExpanded);
     }
-
-    return (
-      <span
-        onClick={() => setIsEditing(true)}
-        style={{ 
-          cursor: 'pointer',
-          padding: '2px 4px',
-          borderRadius: '4px',
-          border: '1px solid transparent'
-        }}
-        title="Cliquer pour modifier"
-      >
-        {type === 'date' && value ? new Date(value).toLocaleDateString('fr-FR') : value || '-'}
-      </span>
-    );
   };
 
   return (
-    <div
-      style={cardStyle}
-      onClick={() => setExpanded(!expanded)}
-    >
-      {/* Badge de catégorie avec couleur */}
-      {product.category_color && (
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            width: '60px',
-            height: '60px',
-            background: `linear-gradient(135deg, ${product.category_color}33, ${product.category_color}11)`,
-            borderRadius: '0 1rem 0 100%'
-          }}
-        />
-      )}
-
-      {/* En-tête */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'flex-start',
-        gap: '0.75rem',
-        marginBottom: expanded ? '1rem' : '0'
-      }}>
-        <div style={{
-          fontSize: '2rem',
-          background: product.category_color ? `${product.category_color}22` : 'var(--earth-100)',
-          borderRadius: '50%',
-          padding: '0.5rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          minWidth: '60px',
-          height: '60px'
-        }}>
-          {product.category_icon || '📦'}
-        </div>
-        
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <h3 style={{
-            margin: 0,
-            fontSize: '1.1rem',
-            fontWeight: 'bold',
-            color: 'var(--forest-700)',
-            lineHeight: '1.3',
-            wordBreak: 'break-word'
-          }}>
-            {product.name}
-          </h3>
+    <div className={`product-card ${isExpanded ? 'expanded' : ''}`}>
+      {/* En-tête principal */}
+      <div className="product-header" onClick={toggleExpanded}>
+        <div className="product-main-info">
+          <div className="product-icon">
+            {getProductIcon(product.category)}
+          </div>
           
-          <p style={{
-            margin: '0.25rem 0 0',
-            fontSize: '0.85rem',
-            color: 'var(--medium-gray)'
-          }}>
-            {product.category} • {stats.totalLots} lot{stats.totalLots > 1 ? 's' : ''}
-          </p>
-          
-          {/* Badges d'état */}
-          <div style={{
-            display: 'flex',
-            gap: '0.5rem',
-            marginTop: '0.5rem',
-            flexWrap: 'wrap'
-          }}>
-            {stats.expiredCount > 0 && (
-              <span style={{
-                fontSize: '0.75rem',
-                padding: '0.25rem 0.5rem',
-                borderRadius: '12px',
-                background: '#e74c3c',
-                color: 'white'
-              }}>
-                {stats.expiredCount} expiré{stats.expiredCount > 1 ? 's' : ''}
-              </span>
-            )}
+          <div className="product-details">
+            <h3 className="product-name">
+              {product.name || product.display_name}
+            </h3>
             
-            {stats.expiringCount > 0 && (
-              <span style={{
-                fontSize: '0.75rem',
-                padding: '0.25rem 0.5rem',
-                borderRadius: '12px',
-                background: '#f39c12',
-                color: 'white'
-              }}>
-                {stats.expiringCount} à consommer
+            <div className="product-meta">
+              {product.category && (
+                <span className="product-category">
+                  {product.category.name}
+                </span>
+              )}
+              
+              <span className="product-quantity">
+                {totalQuantity.toFixed(1)} {product.default_unit || 'unité'}
+                {lots.length > 1 && (
+                  <span className="lots-count">
+                    ({lots.length} lot{lots.length > 1 ? 's' : ''})
+                  </span>
+                )}
               </span>
-            )}
-            
-            {stats.hasMultipleLocations && (
-              <span style={{
-                fontSize: '0.75rem',
-                padding: '0.25rem 0.5rem',
-                borderRadius: '12px',
-                background: 'var(--earth-400)',
-                color: 'white'
-              }}>
-                📍 Multi-lieux
-              </span>
-            )}
+            </div>
           </div>
         </div>
 
-        <div style={{
-          textAlign: 'right',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-end',
-          gap: '0.25rem'
-        }}>
-          <span style={{ fontSize: '1.5rem' }}>
-            {urgencyEmoji[stats.urgencyLevel]}
-          </span>
-          
-          <div style={{
-            fontSize: '1.2rem',
-            fontWeight: 'bold',
-            color: 'var(--forest-600)'
-          }}>
-            {formatTotalQty(stats.totalQty, product.unit)}
+        {/* Statut d'expiration */}
+        <div className="expiration-status">
+          <div 
+            className="status-indicator"
+            style={{ color: expirationStatus.color }}
+          >
+            <expirationStatus.icon size={16} />
+            <span className="status-text">
+              {daysToExpiry === null ? 'Sans date' :
+               daysToExpiry < 0 ? `Expiré` :
+               daysToExpiry === 0 ? 'Aujourd\'hui' :
+               daysToExpiry === 1 ? 'Demain' :
+               `${daysToExpiry}j`}
+            </span>
           </div>
           
-          {stats.minDays !== null && (
-            <div style={{
-              fontSize: '0.8rem',
-              color: stats.urgencyLevel === 'expired' ? '#e74c3c'
-                   : stats.urgencyLevel === 'critical' ? '#f39c12'
-                   : stats.urgencyLevel === 'warning' ? '#f1c40f'
-                   : 'var(--medium-gray)'
-            }}>
-              {stats.minDays < 0 
-                ? `Expiré il y a ${Math.abs(stats.minDays)} jour${Math.abs(stats.minDays) > 1 ? 's' : ''}`
-                : stats.minDays === 0
-                ? 'Expire aujourd\'hui'
-                : stats.minDays === 1
-                ? 'Expire demain'
-                : `Dans ${stats.minDays} jours`
-              }
+          {nextExpiryDate && (
+            <div className="expiry-date">
+              {formatDate(nextExpiryDate)}
             </div>
           )}
         </div>
+
+        {/* Indicateur d'expansion */}
+        <div className={`expand-indicator ${isExpanded ? 'expanded' : ''}`}>
+          ▼
+        </div>
       </div>
 
-      {/* Détails des lots (si développé) */}
-      {expanded && (
-        <div onClick={(e) => e.stopPropagation()}>
-          <div style={{
-            maxHeight: '400px',
-            overflowY: 'auto',
-            paddingTop: '1rem',
-            borderTop: '1px solid var(--earth-200)'
-          }}>
-            {product.lots.map(lot => (
-              <div
-                key={lot.id}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr auto auto auto auto',
-                  gap: '0.75rem',
-                  alignItems: 'center',
-                  padding: '0.75rem',
-                  marginBottom: '0.5rem',
-                  background: 'rgba(255,255,255,0.7)',
-                  borderRadius: '0.5rem',
-                  border: '1px solid var(--earth-200)',
-                  fontSize: '0.9rem'
-                }}
+      {/* Détails étendus */}
+      {isExpanded && (
+        <div className="product-expanded">
+          {lots.length === 0 ? (
+            <div className="no-lots">
+              <Package size={24} />
+              <p>Aucun lot en stock</p>
+            </div>
+          ) : (
+            <div className="lots-list">
+              <h4 className="lots-title">
+                Lots en stock ({lots.length})
+              </h4>
+              
+              {lots.map((lot) => (
+                <LotCard
+                  key={lot.id}
+                  lot={lot}
+                  onUpdate={onUpdateLot}
+                  onDelete={onDeleteLot}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Actions sur le produit */}
+          <div className="product-actions">
+            {onConsumeProduct && totalQuantity > 0 && (
+              <button 
+                onClick={() => onConsumeProduct(product)}
+                className="btn-consume"
               >
-                {/* Informations du lot */}
-                <div>
-                  <div style={{ fontWeight: 'bold' }}>
-                    <EditableField 
-                      lot={lot} 
-                      field="qty" 
-                      value={lot.qty} 
-                      type="number" 
-                    />
-                    {' '}{lot.unit}
-                  </div>
-                  <div style={{ 
-                    fontSize: '0.8rem', 
-                    color: 'var(--medium-gray)',
-                    marginTop: '0.25rem'
-                  }}>
-                    📍 {lot.location?.name}
-                    {lot.storage_place && ` • ${lot.storage_place}`}
-                  </div>
-                  {lot.note && (
-                    <div style={{ 
-                      fontSize: '0.8rem', 
-                      color: 'var(--medium-gray)',
-                      fontStyle: 'italic',
-                      marginTop: '0.25rem'
-                    }}>
-                      💬 <EditableField 
-                        lot={lot} 
-                        field="note" 
-                        value={lot.note} 
-                      />
-                    </div>
-                  )}
-                </div>
-
-                {/* DLC */}
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--medium-gray)' }}>
-                    DLC
-                  </div>
-                  <EditableField 
-                    lot={lot} 
-                    field="dlc" 
-                    value={lot.best_before} 
-                    type="date" 
-                  />
-                </div>
-
-                {/* Urgence */}
-                <div style={{ textAlign: 'center', fontSize: '1.2rem' }}>
-                  {(() => {
-                    const days = daysUntil(lot.best_before);
-                    return days === null ? '❓'
-                         : days < 0 ? '🚨'
-                         : days <= 2 ? '⚠️'
-                         : days <= 7 ? '📅'
-                         : '✅';
-                  })()}
-                </div>
-
-                {/* Actions */}
-                <div style={{ display: 'flex', gap: '0.25rem' }}>
-                  <button
-                    onClick={() => onDetail && onDetail(product)}
-                    className="btn secondary small"
-                    style={{ 
-                      padding: '0.25rem 0.5rem',
-                      fontSize: '0.8rem'
-                    }}
-                    title="Voir détails"
-                  >
-                    👁️
-                  </button>
-                  
-                  <button
-                    onClick={() => {
-                      if (confirm(`Supprimer ce lot de ${lot.qty}${lot.unit} ?`)) {
-                        onDelete(lot.id);
-                      }
-                    }}
-                    className="btn danger small"
-                    style={{ 
-                      padding: '0.25rem 0.5rem',
-                      fontSize: '0.8rem'
-                    }}
-                    title="Supprimer le lot"
-                  >
-                    🗑️
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Actions globales */}
-          <div style={{
-            marginTop: '1rem',
-            display: 'flex',
-            gap: '0.5rem',
-            justifyContent: 'flex-end',
-            paddingTop: '1rem',
-            borderTop: '1px solid var(--earth-200)'
-          }}>
-            <button
-              onClick={() => onDetail && onDetail(product)}
-              className="btn secondary small"
-            >
-              📊 Historique
-            </button>
-            
-            <button
-              onClick={() => {
-                // TODO: Implémenter l'ajout d'un nouveau lot du même produit
-                console.log('Ajouter nouveau lot pour', product.name);
-              }}
-              className="btn primary small"
-            >
-              ➕ Nouveau lot
-            </button>
+                Consommer
+              </button>
+            )}
           </div>
         </div>
       )}
 
-      {/* Indicateur d'expansion */}
-      <div style={{
-        position: 'absolute',
-        bottom: '0.5rem',
-        right: '0.5rem',
-        fontSize: '0.8rem',
-        color: 'var(--medium-gray)',
-        transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
-        transition: 'transform 0.2s ease'
-      }}>
-        ⌄
+      <style jsx>{`
+        .product-card {
+          background: white;
+          border: 1px solid #e5e7eb;
+          border-radius: 12px;
+          overflow: hidden;
+          transition: all 0.2s ease;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .product-card:hover {
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          border-color: #d1d5db;
+        }
+
+        .product-card.expanded {
+          box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 16px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        }
+
+        .product-header:hover {
+          background: #f9fafb;
+        }
+
+        .product-main-info {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex: 1;
+        }
+
+        .product-icon {
+          font-size: 24px;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f3f4f6;
+          border-radius: 8px;
+        }
+
+        .product-details {
+          flex: 1;
+        }
+
+        .product-name {
+          font-size: 16px;
+          font-weight: 600;
+          color: #111827;
+          margin: 0 0 4px 0;
+        }
+
+        .product-meta {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .product-category {
+          background: #ddd6fe;
+          color: #7c3aed;
+          padding: 2px 8px;
+          border-radius: 12px;
+          font-size: 11px;
+          font-weight: 500;
+        }
+
+        .product-quantity {
+          font-size: 14px;
+          color: #6b7280;
+          font-weight: 500;
+        }
+
+        .lots-count {
+          color: #9ca3af;
+          font-weight: normal;
+          margin-left: 4px;
+        }
+
+        .expiration-status {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 2px;
+        }
+
+        .status-indicator {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          font-weight: 600;
+          font-size: 14px;
+        }
+
+        .expiry-date {
+          font-size: 12px;
+          color: #6b7280;
+        }
+
+        .expand-indicator {
+          color: #9ca3af;
+          transition: transform 0.2s;
+          font-size: 12px;
+        }
+
+        .expand-indicator.expanded {
+          transform: rotate(180deg);
+        }
+
+        .product-expanded {
+          border-top: 1px solid #f3f4f6;
+          padding: 16px;
+          background: #fafafa;
+        }
+
+        .no-lots {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          padding: 20px;
+          color: #9ca3af;
+          text-align: center;
+        }
+
+        .lots-title {
+          font-size: 14px;
+          font-weight: 600;
+          color: #374151;
+          margin: 0 0 12px 0;
+        }
+
+        .lots-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .product-actions {
+          margin-top: 16px;
+          display: flex;
+          gap: 8px;
+        }
+
+        .btn-consume {
+          background: #059669;
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 6px;
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        }
+
+        .btn-consume:hover {
+          background: #047857;
+        }
+      `}</style>
+    </div>
+  );
+}
+
+// Composant pour un lot individuel
+function LotCard({ lot, onUpdate, onDelete }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editData, setEditData] = useState({
+    qty: lot.qty || lot.qty_remaining || 0,
+    expiration_date: lot.dlc || lot.expiration_date || lot.effective_expiration || '',
+    notes: lot.notes || lot.note || ''
+  });
+
+  const daysToExpiry = daysUntil(lot.dlc || lot.expiration_date || lot.effective_expiration);
+  const expirationStatus = getExpirationStatus(daysToExpiry);
+
+  const handleSave = async () => {
+    if (onUpdate) {
+      const success = await onUpdate(lot.id, editData);
+      if (success) {
+        setIsEditing(false);
+      }
+    }
+  };
+
+  const handleDelete = () => {
+    if (confirm('Supprimer ce lot ?')) {
+      onDelete?.(lot.id);
+    }
+  };
+
+  return (
+    <div className="lot-card">
+      <div className="lot-header">
+        <div className="lot-info">
+          <div className="lot-quantity">
+            {isEditing ? (
+              <input
+                type="number"
+                step="0.1"
+                value={editData.qty}
+                onChange={(e) => setEditData(prev => ({ ...prev, qty: e.target.value }))}
+                className="qty-input"
+              />
+            ) : (
+              <span>{(lot.qty || lot.qty_remaining || 0).toFixed(1)}</span>
+            )}
+            <span className="unit">{lot.unit}</span>
+          </div>
+          
+          <div className="lot-storage">
+            <MapPin size={12} />
+            <span>
+              {lot.storage_method === 'fridge' ? 'Frigo' :
+               lot.storage_method === 'pantry' ? 'Placard' :
+               lot.storage_method === 'freezer' ? 'Congélateur' :
+               lot.storage_method === 'counter' ? 'Plan de travail' :
+               lot.storage_method || 'Non spécifié'}
+            </span>
+            {(lot.storage_place || lot.location?.name) && (
+              <span className="storage-place">
+                • {lot.storage_place || lot.location?.name}
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="lot-expiry">
+          <div 
+            className="expiry-status"
+            style={{ color: expirationStatus.color }}
+          >
+            <expirationStatus.icon size={12} />
+            {isEditing ? (
+              <input
+                type="date"
+                value={editData.expiration_date}
+                onChange={(e) => setEditData(prev => ({ ...prev, expiration_date: e.target.value }))}
+                className="date-input"
+              />
+            ) : (
+              <span>
+                {daysToExpiry === null ? 'Sans date' :
+                 daysToExpiry < 0 ? 'Expiré' :
+                 daysToExpiry === 0 ? 'Aujourd\'hui' :
+                 `${daysToExpiry}j`}
+              </span>
+            )}
+          </div>
+        </div>
       </div>
+
+      {(lot.notes || lot.note || isEditing) && (
+        <div className="lot-notes">
+          {isEditing ? (
+            <textarea
+              value={editData.notes}
+              onChange={(e) => setEditData(prev => ({ ...prev, notes: e.target.value }))}
+              placeholder="Notes..."
+              className="notes-input"
+              rows="2"
+            />
+          ) : (
+            <p>{lot.notes || lot.note}</p>
+          )}
+        </div>
+      )}
+
+      <div className="lot-actions">
+        {isEditing ? (
+          <>
+            <button onClick={handleSave} className="btn-save">
+              Sauver
+            </button>
+            <button onClick={() => setIsEditing(false)} className="btn-cancel">
+              Annuler
+            </button>
+          </>
+        ) : (
+          <>
+            <button onClick={() => setIsEditing(true)} className="btn-edit">
+              Modifier
+            </button>
+            <button onClick={handleDelete} className="btn-delete">
+              Supprimer
+            </button>
+          </>
+        )}
+      </div>
+
+      <style jsx>{`
+        .lot-card {
+          background: white;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+          padding: 12px;
+          transition: all 0.2s;
+        }
+
+        .lot-card:hover {
+          border-color: #d1d5db;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .lot-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 8px;
+        }
+
+        .lot-info {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .lot-quantity {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          font-weight: 600;
+          color: #111827;
+        }
+
+        .unit {
+          color: #6b7280;
+          font-weight: normal;
+          font-size: 14px;
+        }
+
+        .lot-storage {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          font-size: 12px;
+          color: #6b7280;
+        }
+
+        .storage-place {
+          color: #9ca3af;
+        }
+
+        .lot-expiry {
+          text-align: right;
+        }
+
+        .expiry-status {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+
+        .lot-notes {
+          margin: 8px 0;
+          padding: 8px;
+          background: #f9fafb;
+          border-radius: 6px;
+          font-size: 12px;
+          color: #6b7280;
+        }
+
+        .lot-notes p {
+          margin: 0;
+          font-style: italic;
+        }
+
+        .lot-actions {
+          display: flex;
+          gap: 6px;
+          margin-top: 8px;
+        }
+
+        .lot-actions button {
+          padding: 4px 8px;
+          border-radius: 4px;
+          font-size: 11px;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .btn-edit, .btn-save {
+          background: #e0f2fe;
+          color: #0369a1;
+          border: 1px solid #0369a1;
+        }
+
+        .btn-edit:hover, .btn-save:hover {
+          background: #0369a1;
+          color: white;
+        }
+
+        .btn-delete, .btn-cancel {
+          background: #fef2f2;
+          color: #dc2626;
+          border: 1px solid #dc2626;
+        }
+
+        .btn-delete:hover, .btn-cancel:hover {
+          background: #dc2626;
+          color: white;
+        }
+
+        .qty-input, .date-input {
+          padding: 2px 6px;
+          border: 1px solid #d1d5db;
+          border-radius: 4px;
+          font-size: 12px;
+          width: 80px;
+        }
+
+        .notes-input {
+          width: 100%;
+          padding: 6px;
+          border: 1px solid #d1d5db;
+          border-radius: 4px;
+          font-size: 12px;
+          resize: vertical;
+        }
+      `}</style>
     </div>
   );
 }
