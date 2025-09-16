@@ -9,7 +9,8 @@ import ProductCard from './components/ProductCard';
 import LotsView from './components/LotsView';
 import SmartAddForm from './components/SmartAddForm';
 
-import { daysUntil, getExpirationStatus, formatQuantity } from './components/pantryUtils';
+// ✅ CORRECTION: formatQty → formatQuantity
+import { daysUntil, getExpirationStatus, formatQuantity, groupLotsByProduct } from './components/pantryUtils';
 
 /* ===========================
    Hook données Supabase
@@ -32,7 +33,11 @@ function usePantryData() {
         .order('sort_priority');
 
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) { setLots([]); setLoading(false); return; }
+      if (!user) { 
+        setLots([]);
+        setLoading(false);
+        return;
+      }
 
       const { data, error } = await supabase
         .from('user_food_items')
@@ -142,46 +147,28 @@ function usePantryData() {
    ============================ */
 export default function PantryPage() {
   const { loading, error, lots, categories, refresh, addLot, updateLot, deleteLot } = usePantryData();
+  
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
-  const [activeProduct, setActiveProduct] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
+  const [activeProduct, setActiveProduct] = useState(null);
 
-  // Groupement
+  // Grouper lots par produit
   const groupedProducts = useMemo(() => {
-    const groups = new Map();
-    lots.forEach(lot => {
-      const id = lot.canonical_food_id;
-      if (!groups.has(id)) {
-        groups.set(id, {
-          productId: id,
-          productName: lot.display_name,
-          lots: [],
-          totalQuantity: 0,
-          unit: lot.unit,
-          category: lot.category_name,
-          categoryIcon: lot.category_icon,
-          categoryColor: lot.category_color,
-          nextExpiry: null
-        });
-      }
-      const g = groups.get(id);
-      g.lots.push(lot);
-      g.totalQuantity += Number(lot.qty_remaining || 0);
-      if (lot.effective_expiration && (!g.nextExpiry || new Date(lot.effective_expiration) < new Date(g.nextExpiry))) {
-        g.nextExpiry = lot.effective_expiration;
-      }
-    });
-    return Array.from(groups.values());
+    return groupLotsByProduct(lots);
   }, [lots]);
 
-  // Filtre + tri
+  // Produits filtrés selon recherche + filtre
   const filteredProducts = useMemo(() => {
-    let arr = groupedProducts;
+    let arr = [...groupedProducts];
+    
+    // Filtre recherche
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
-      arr = arr.filter(p => p.productName.toLowerCase().includes(q) || p.category?.toLowerCase().includes(q));
+      arr = arr.filter(p => p.productName.toLowerCase().includes(q));
     }
+    
+    // Filtre état
     if (selectedFilter !== 'all') {
       arr = arr.filter(p => {
         const d = daysUntil(p.nextExpiry);
@@ -190,8 +177,11 @@ export default function PantryPage() {
         return true;
       });
     }
-    return arr.sort((a,b)=>{
-      const da = daysUntil(a.nextExpiry), db = daysUntil(b.nextExpiry);
+    
+    // Tri par urgence
+    return arr.sort((a, b) => {
+      const da = daysUntil(a.nextExpiry);
+      const db = daysUntil(b.nextExpiry);
       if (da === null && db === null) return a.productName.localeCompare(b.productName);
       if (da === null) return 1;
       if (db === null) return -1;
@@ -205,15 +195,43 @@ export default function PantryPage() {
     let expiring = 0, fresh = 0;
     groupedProducts.forEach(p => {
       const d = daysUntil(p.nextExpiry);
-      if (d !== null && d <= 7) expiring++; else fresh++;
+      if (d !== null && d <= 7) expiring++; 
+      else fresh++;
     });
     return { totalProducts: total, expiringCount: expiring, freshCount: fresh };
   }, [groupedProducts]);
 
+  // ✅ PROTECTION: Vérifier que tous les composants sont définis
+  const componentsReady = useMemo(() => {
+    const components = { PantryStats, ProductCard, LotsView, SmartAddForm, Leaf };
+    const missing = Object.entries(components)
+      .filter(([name, component]) => !component)
+      .map(([name]) => name);
+    
+    if (missing.length > 0) {
+      console.error('❌ Composants manquants:', missing);
+      return false;
+    }
+    return true;
+  }, []);
+
+  if (!componentsReady) {
+    return (
+      <div className="pantry-container">
+        <div className="error-text">
+          Erreur: Certains composants ne sont pas disponibles. Vérifiez la console pour plus de détails.
+        </div>
+        <style jsx>{styles}</style>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="loading-container">
-        <div className="loading-spinner"><Leaf className="spin" size={32}/></div>
+        <div className="loading-spinner">
+          <Leaf className="spin" size={32}/>
+        </div>
         <p>Chargement du garde-manger...</p>
         <style jsx>{styles}</style>
       </div>
@@ -226,7 +244,9 @@ export default function PantryPage() {
       <header className="pantry-header glass-card">
         <div className="header-main">
           <div className="title-section">
-            <h1><Leaf className="title-icon"/> Mon garde-manger vivant</h1>
+            <h1>
+              <Leaf className="title-icon"/> Mon garde-manger vivant
+            </h1>
             <p>Cultivez l'harmonie entre vos réserves et la nature</p>
           </div>
           <PantryStats
@@ -237,15 +257,18 @@ export default function PantryPage() {
           />
         </div>
         <div className="header-actions">
-          <button onClick={refresh} className="btn-organic secondary"><RefreshCw size={16}/> Actualiser</button>
-          <button onClick={()=>setShowAddForm(true)} className="btn-organic primary"><Package size={16}/> Ajouter</button>
+          <button onClick={refresh} className="btn-organic secondary">
+            <RefreshCw size={16}/> Actualiser
+          </button>
+          <button onClick={()=>setShowAddForm(true)} className="btn-organic primary">
+            <Package size={16}/> Ajouter
+          </button>
         </div>
       </header>
 
       {/* Recherche + filtres */}
       <div className="search-bar glass-card">
         <div className="search-input-wrapper">
-          <svg width="0" height="0" style={{position:'absolute'}} aria-hidden />{/* éviter décalage icône SSR */}
           <input
             type="text"
             placeholder="Rechercher dans le garde-manger..."
@@ -264,7 +287,9 @@ export default function PantryPage() {
               key={f.key}
               className={`filter-pill ${selectedFilter===f.key?'active':''}`}
               onClick={()=>setSelectedFilter(f.key)}
-            >{f.label}</button>
+            >
+              {f.label}
+            </button>
           ))}
         </div>
       </div>
@@ -282,42 +307,52 @@ export default function PantryPage() {
           </div>
         ) : (
           filteredProducts.map(p => (
-            <ProductCard key={p.productId} product={p} onOpen={()=>setActiveProduct(p)} />
+            <ProductCard 
+              key={p.productId} 
+              product={p} 
+              onOpen={()=>setActiveProduct(p)} 
+            />
           ))
         )}
       </div>
 
       {/* Sheet lots */}
-      <LotsView
-        product={activeProduct}
-        onClose={()=>setActiveProduct(null)}
-        onUpdateLot={updateLot}
-        onDeleteLot={deleteLot}
-        onAddLot={(payload)=>{
-          if (!activeProduct) return;
-          addLot({
-            canonical_food_id: activeProduct.productId,
-            display_name: activeProduct.productName,
-            category_name: activeProduct.category,
-            ...payload
-          });
-        }}
-      />
+      {activeProduct && (
+        <LotsView
+          product={activeProduct}
+          onClose={()=>setActiveProduct(null)}
+          onUpdateLot={updateLot}
+          onDeleteLot={deleteLot}
+          onAddLot={(payload)=>{
+            if (!activeProduct) return;
+            addLot({
+              canonical_food_id: activeProduct.productId,
+              display_name: activeProduct.productName,
+              category_name: activeProduct.category,
+              ...payload
+            });
+          }}
+        />
+      )}
 
       {/* Modal ajout intelligent */}
-      <SmartAddForm
-        open={showAddForm}
-        onClose={()=>setShowAddForm(false)}
-        // catalogue minimal pour auto-complétion (id, name, unit, category, meta shelf)
-        productsCatalog={groupedProducts.map(p=>({
-          id: p.productId,
-          name: p.productName,
-          unit: p.unit,
-          category: p.category
-        }))}
-        categories={categories}
-        onCreate={(payload)=>{ addLot(payload); setShowAddForm(false); }}
-      />
+      {showAddForm && (
+        <SmartAddForm
+          open={showAddForm}
+          onClose={()=>setShowAddForm(false)}
+          productsCatalog={groupedProducts.map(p=>({
+            id: p.productId,
+            name: p.productName,
+            unit: p.primaryUnit,
+            category: p.category
+          }))}
+          categories={categories}
+          onCreate={(payload)=>{ 
+            addLot(payload); 
+            setShowAddForm(false); 
+          }}
+        />
+      )}
 
       {error && <p className="error-text">{error}</p>}
       <style jsx>{styles}</style>
@@ -329,7 +364,6 @@ export default function PantryPage() {
    Styles (JSX CSS)
    ================ */
 const styles = `
-/* … mêmes styles que la version précédente (identiques) … */
 .pantry-container{min-height:100vh;padding:1.5rem;max-width:1200px;margin:0 auto;font-family:'Inter',-apple-system,sans-serif}
 .glass-card{background:rgba(255,255,255,.75);backdrop-filter:blur(6px) saturate(110%);-webkit-backdrop-filter:blur(6px) saturate(110%);border:1px solid rgba(0,0,0,.08);box-shadow:0 6px 20px rgba(0,0,0,.12);border-radius:20px;position:relative;overflow:hidden}
 .pantry-header{margin-bottom:1.5rem;padding:1.5rem;animation:float-in .6s ease-out}
@@ -354,7 +388,8 @@ const styles = `
 .empty-state h3{color:var(--forest-700,#2d5a2d)}
 .loading-container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:1rem;color:var(--forest-600,#4a7c4a)}
 .loading-spinner{animation:spin 2s linear infinite}
-.error-text{margin-top:1rem;color:#b42318}
+.error-text{margin-top:1rem;color:#b42318;padding:1rem;background:#fef2f2;border-radius:8px;border:1px solid #fecaca}
 @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
 @keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 `;
