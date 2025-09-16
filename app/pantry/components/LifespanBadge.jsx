@@ -1,62 +1,53 @@
-// ================================================================
-// 2. app/pantry/components/LifespanBadge.js - VERSION UNIFIÉE
-// ================================================================
+// app/pantry/components/LifespanBadge.js
+'use client';
 
-import { daysUntil } from '@/lib/dates';
+import { daysUntil, formatDate, getExpirationStatus } from './pantryUtils';
 
-export function LifespanBadge({ date }) {
-  if (!date) return null;
-  
-  const days = daysUntil(date);
-  if (days === null) return null;
+/**
+ * Badge de durée de vie (DLC/DSD)
+ * Props:
+ *  - date: string | Date | null
+ *  - size: 'sm' | 'md' (par défaut 'md')
+ *  - showDate: boolean (affiche la date formatée en plus du badge)
+ */
+export function LifespanBadge({ date, size = 'md', showDate = false }) {
+  const d = daysUntil(date);
+  const s = getExpirationStatus(d);
 
-  let status = 'ok';
-  let icon = '🌿';
-  let label = `${days} j`;
-  let color = '#16a34a';
-  
-  if (days < 0) {
-    status = 'expired';
-    icon = '🍂';
-    label = `Périmé ${Math.abs(days)}j`;
-    color = '#dc2626';
-  } else if (days === 0) {
-    status = 'today';
-    icon = '⚡';
-    label = "Aujourd'hui";
-    color = '#ea580c';
-  } else if (days <= 3) {
-    status = 'urgent';
-    icon = '⏰';
-    label = `${days}j`;
-    color = '#ca8a04';
-  } else if (days <= 7) {
-    status = 'soon';
-    icon = '📅';
-    label = `${days}j`;
-    color = '#22c55e';
-  }
+  const paddings = size === 'sm' ? '4px 8px' : '6px 10px';
+  const fontSize = size === 'sm' ? '11px' : '12px';
+  const radius = size === 'sm' ? '9999px' : '12px';
 
   return (
-    <span
-      className={`lifespan-badge ${status}`}
-      style={{
-        display: 'inline-flex', 
-        alignItems: 'center', 
-        gap: 6,
-        padding: '4px 10px', 
-        borderRadius: 999,
-        background: `${color}15`, 
-        border: `1px solid ${color}40`, 
-        color,
-        fontSize: '0.75rem',
-        fontWeight: '600',
-        whiteSpace: 'nowrap'
-      }}
-      title={date || ''}
-    >
-      <span>{icon}</span>
-      <span>{label}</span>
-    </span>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+      <span
+        title={date ? `Expire le ${formatDate(date)}` : 'Pas de date'}
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: paddings,
+          fontSize,
+          fontWeight: 700,
+          color: s.color,
+          background: s.bgColor,
+          border: `1px solid ${s.color}20`,
+          borderRadius: radius,
+          lineHeight: 1,
+          minWidth: size === 'sm' ? 0 : 44,
+          textTransform: 'none'
+        }}
+      >
+        {s.label}
+      </span>
+
+      {showDate && date && (
+        <span style={{ fontSize: 12, color: '#6b7280' }}>
+          {formatDate(date)}
+        </span>
+      )}
+    </div>
   );
 }
+
+export default LifespanBadge;
