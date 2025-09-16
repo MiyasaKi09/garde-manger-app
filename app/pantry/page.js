@@ -51,340 +51,266 @@ export default function PantryPage() {
           .select(`
             *,
             canonical_food:canonical_food_item_id (
-              canonical_name,
-              category_id,
-              subcategory,
-              primary_unit,
-              shelf_life_days_pantry,
-              shelf_life_days_fridge,
-              shelf_life_days_freezer
+              *,
+              category:categories(*)
             ),
-            location:location_id (
-              name,
-              icon
-            )
+            location:locations(*)
           `)
           .eq('user_id', user.id)
           .order('expiry_date', { ascending: true })
 
-        // Enrichir les produits avec les infos de catégorie
-        const enrichedProducts = await Promise.all(userProducts?.map(async (product) => {
-          // Récupérer la catégorie
-          const { data: category } = await supabase
-            .from('categories')
-            .select('*')
-            .eq('id', product.canonical_food?.category_id)
-            .single()
-
-          // Calculer les jours restants
-          const today = new Date()
-          const expiryDate = new Date(product.expiry_date)
-          const daysLeft = Math.ceil((expiryDate - today) / (1000 * 60 * 60 * 24))
-          
-          // Déterminer la durée de conservation max selon le lieu de stockage
-          let maxDays = 30 // par défaut
-          if (product.location?.name === 'Frigo') {
-            maxDays = product.canonical_food?.shelf_life_days_fridge || 7
-          } else if (product.location?.name === 'Congélateur') {
-            maxDays = product.canonical_food?.shelf_life_days_freezer || 90
-          } else {
-            maxDays = product.canonical_food?.shelf_life_days_pantry || 30
-          }
-
-          return {
-            ...product,
-            category: category,
-            daysLeft: daysLeft,
-            maxDays: maxDays,
-            percentage: (daysLeft / maxDays) * 100
-          }
-        }) || [])
-
-        setProducts(enrichedProducts)
-        setCategories(categoriesData || [])
-        setLocations(locationsData || [])
-        updateStats(enrichedProducts)
+        setProducts(userProducts || [])
+        calculateStats(userProducts || [])
       }
+
+      setCategories(categoriesData || [])
+      setLocations(locationsData || [])
+      
     } catch (error) {
       console.error('Erreur lors du chargement des données:', error)
-    } finally {
-      setLoading(false)
     }
+    setLoading(false)
   }
 
-  // Fonction pour appliquer les filtres
+  // Calculer les statistiques
+  function calculateStats(productList) {
+    const now = new Date()
+    const threeDaysFromNow = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000)
+    
+    const fresh = productList.filter(p => {
+      if (!p.expiry_date) return true
+      return new Date(p.expiry_date) > threeDaysFromNow
+    }).length
+
+    const soon = productList.filter(p => {
+      if (!p.expiry_date) return false
+      const expiryDate = new Date(p.expiry_date)
+      return expiryDate <= threeDaysFromNow && expiryDate >= now
+    }).length
+
+    setStats({ fresh, soon, total: productList.length })
+  }
+
+  // Appliquer les filtres
   function applyFilters() {
     let filtered = [...products]
-    
-    // Filtrer par catégorie
-    if (currentFilter !== 'all' && currentFilter !== 'long') {
-      filtered = filtered.filter(p => p.category?.id === currentFilter)
-    }
-    
-    // Filtrer par conservation longue
-    if (currentFilter === 'long') {
-      filtered = filtered.filter(p => p.daysLeft > 30)
-    }
-    
-    // Filtrer par recherche
-    if (searchTerm) {
-      filtered = filtered.filter(p => 
-        p.canonical_food?.canonical_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.custom_name?.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    }
-    
-    setFilteredProducts(filtered)
-    updateStats(filtered)
-  }
 
-  // Fonction pour mettre à jour les statistiques
-  function updateStats(productsToCount) {
-    const fresh = productsToCount.filter(p => p.percentage > 40).length
-    const soon = productsToCount.filter(p => p.percentage <= 40 && p.percentage > 0).length
-    const total = productsToCount.length
-    
-    setStats({ fresh, soon, total })
-  }
-
-  // Fonction pour filtrer par fraîcheur
-  function filterByFreshness(freshness) {
-    if (freshness === 'fresh') {
-      setFilteredProducts(products.filter(p => p.percentage > 40))
-    } else if (freshness === 'soon') {
-      setFilteredProducts(products.filter(p => p.percentage <= 40 && p.percentage > 0))
-    } else {
-      setFilteredProducts(products)
-    }
-  }
-
-  // Fonction pour actualiser les données
-  async function refreshPantry() {
-    await loadAllData()
-  }
-
-  // Fonction pour ajouter un produit
-  function addProduct() {
-    // Rediriger vers la page d'ajout ou ouvrir un modal
-    window.location.href = '/add-product'
-  }
-
-  // Fonction pour obtenir la classe CSS de péremption
-  function getExpiryClass(percentage) {
-    if (percentage <= 20) return 'expiry-urgent'
-    if (percentage <= 40) return 'expiry-soon'
-    return 'expiry-fresh'
-  }
-
-  // Fonction pour obtenir le texte et l'icône de péremption
-  function getExpiryInfo(product) {
-    const percentage = product.percentage
-    let text = `${product.daysLeft} jours restants`
-    let icon = '✨'
-    
-    if (product.daysLeft < 0) {
-      text = `Périmé depuis ${Math.abs(product.daysLeft)} jours`
-      icon = '❌'
-    } else if (percentage <= 20) {
-      text = `À consommer rapidement (${product.daysLeft}j)`
-      icon = '⚠️'
-    } else if (percentage <= 40) {
-      text = `À consommer bientôt (${product.daysLeft}j)`
-      icon = '⏰'
-    } else if (product.daysLeft > 365) {
-      text = 'Longue conservation'
-      icon = '🌟'
-    }
-    
-    return { text, icon }
-  }
-
-  // Fonction pour ouvrir les détails d'un produit
-  async function openProductDetails(productId) {
-    // Rediriger vers la page de détails ou ouvrir un modal
-    window.location.href = `/product/${productId}`
-  }
-
-  // Fonction pour supprimer un produit
-  async function deleteProduct(productId, e) {
-    e.stopPropagation() // Empêcher l'ouverture des détails
-    
-    if (confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) {
-      try {
-        const { error } = await supabase
-          .from('user_food_items')
-          .delete()
-          .eq('id', productId)
-        
-        if (!error) {
-          await loadAllData() // Recharger les données
-        }
-      } catch (error) {
-        console.error('Erreur lors de la suppression:', error)
+    // Filtre par catégorie
+    if (currentFilter !== 'all') {
+      if (currentFilter === 'soon') {
+        const threeDaysFromNow = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
+        filtered = filtered.filter(p => 
+          p.expiry_date && new Date(p.expiry_date) <= threeDaysFromNow
+        )
+      } else if (currentFilter === 'expired') {
+        filtered = filtered.filter(p => 
+          p.expiry_date && new Date(p.expiry_date) < new Date()
+        )
+      } else {
+        filtered = filtered.filter(p => 
+          p.canonical_food?.category?.name === currentFilter
+        )
       }
     }
+
+    // Filtre par recherche
+    if (searchTerm.trim()) {
+      const term = searchTerm.toLowerCase()
+      filtered = filtered.filter(p =>
+        p.product_name?.toLowerCase().includes(term) ||
+        p.canonical_food?.canonical_name?.toLowerCase().includes(term) ||
+        p.location?.name?.toLowerCase().includes(term)
+      )
+    }
+
+    setFilteredProducts(filtered)
+  }
+
+  // Supprimer un produit
+  async function deleteProduct(productId) {
+    if (!confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) return
+
+    try {
+      const { error } = await supabase
+        .from('user_food_items')
+        .delete()
+        .eq('id', productId)
+
+      if (error) throw error
+
+      // Recharger les données
+      loadAllData()
+    } catch (error) {
+      console.error('Erreur lors de la suppression:', error)
+      alert('Erreur lors de la suppression du produit')
+    }
+  }
+
+  // Formater la date d'expiration
+  function formatExpiryDate(dateString) {
+    if (!dateString) return 'Pas de DLC'
+    
+    const date = new Date(dateString)
+    const now = new Date()
+    const diffTime = date.getTime() - now.getTime()
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
+    if (diffDays < 0) {
+      return `Expiré depuis ${Math.abs(diffDays)} jour(s)`
+    } else if (diffDays === 0) {
+      return 'Expire aujourd\'hui'
+    } else if (diffDays <= 3) {
+      return `Expire dans ${diffDays} jour(s)`
+    } else {
+      return date.toLocaleDateString('fr-FR')
+    }
+  }
+
+  // Obtenir la classe CSS pour l'urgence
+  function getUrgencyClass(dateString) {
+    if (!dateString) return ''
+    
+    const date = new Date(dateString)
+    const now = new Date()
+    const diffTime = date.getTime() - now.getTime()
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
+    if (diffDays < 0) return 'expired'
+    if (diffDays <= 3) return 'soon'
+    return 'fresh'
   }
 
   if (loading) {
     return (
-      <div className="loading-container">
-        <div className="loading-spinner">🌿</div>
-        <p>Chargement de votre garde-manger...</p>
+      <div className="pantry-page">
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+          <p>Chargement de votre garde-manger...</p>
+        </div>
       </div>
     )
   }
 
   return (
-    <>
-      {/* Formes organiques en arrière-plan */}
-      <div className="organic-bg">
-        <div className="organic-shape shape1"></div>
-        <div className="organic-shape shape2"></div>
-        <div className="organic-shape shape3"></div>
-        <div className="organic-shape shape4"></div>
+    <div className="pantry-page">
+      {/* En-tête avec statistiques */}
+      <div className="pantry-header">
+        <h1>🥫 Mon garde-manger</h1>
+        <div className="stats-bar">
+          <div className="stat fresh">
+            <span className="number">{stats.fresh}</span>
+            <span className="label">Frais</span>
+          </div>
+          <div className="stat soon">
+            <span className="number">{stats.soon}</span>
+            <span className="label">À consommer</span>
+          </div>
+          <div className="stat total">
+            <span className="number">{stats.total}</span>
+            <span className="label">Total</span>
+          </div>
+        </div>
       </div>
 
-      {/* Navigation */}
-      <nav>
-        <div className="nav-container">
-          <button className="nav-btn" onClick={() => window.location.href = '/'}>Accueil</button>
-          <button className="nav-btn active">Garde-manger</button>
-          <button className="nav-btn" onClick={() => window.location.href = '/recipes'}>Recettes</button>
-          <button className="nav-btn" onClick={() => window.location.href = '/garden'}>Potager</button>
-          <button className="nav-btn" onClick={() => window.location.href = '/planning'}>Planning</button>
-          <button className="nav-btn" onClick={() => window.location.href = '/shopping'}>Courses</button>
-          <button className="nav-btn" onClick={() => supabase.auth.signOut()}>Déconnexion</button>
-        </div>
-      </nav>
-
-      {/* Container principal */}
-      <div className="container">
-        {/* Header avec stats */}
-        <div className="header-section">
-          <h1 className="header-title">
-            <span>🌿</span> Mon garde-manger vivant
-          </h1>
-          <p className="header-subtitle">Cultivez l'harmonie entre vos réserves et la nature</p>
-          
-          <div className="stats-container">
-            <div className="stat-card" onClick={() => filterByFreshness('fresh')}>
-              <div className="stat-number">{stats.fresh}</div>
-              <div className="stat-label">Frais</div>
-            </div>
-            <div className="stat-card" onClick={() => filterByFreshness('soon')}>
-              <div className="stat-number">{stats.soon}</div>
-              <div className="stat-label">À consommer</div>
-            </div>
-            <div className="stat-card" onClick={() => filterByFreshness('all')}>
-              <div className="stat-number">{stats.total}</div>
-              <div className="stat-label">Produits</div>
-            </div>
-          </div>
-
-          <div className="actions-container">
-            <button className="action-btn btn-refresh" onClick={refreshPantry}>
-              <span>🔄</span> Actualiser
-            </button>
-            <button className="action-btn btn-add" onClick={addProduct}>
-              <span>➕</span> Ajouter
-            </button>
-          </div>
-        </div>
-
-        {/* Recherche et filtres */}
-        <div className="search-section">
-          <div className="search-bar">
-            <span className="search-icon">🔍</span>
-            <input 
-              type="text" 
-              className="search-input" 
-              placeholder="Rechercher dans le garde-manger..." 
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-          
-          <div className="filters-container">
-            <button 
-              className={`filter-btn ${currentFilter === 'all' ? 'active' : ''}`} 
-              onClick={() => setCurrentFilter('all')}
+      {/* Barre de filtres */}
+      <div className="filters-bar">
+        <div className="filter-tabs">
+          <button 
+            className={currentFilter === 'all' ? 'active' : ''}
+            onClick={() => setCurrentFilter('all')}
+          >
+            Tous ({stats.total})
+          </button>
+          <button 
+            className={currentFilter === 'soon' ? 'active' : ''}
+            onClick={() => setCurrentFilter('soon')}
+          >
+            À consommer ({stats.soon})
+          </button>
+          <button 
+            className={currentFilter === 'expired' ? 'active' : ''}
+            onClick={() => setCurrentFilter('expired')}
+          >
+            Expirés
+          </button>
+          {categories.map(cat => (
+            <button
+              key={cat.id}
+              className={currentFilter === cat.name ? 'active' : ''}
+              onClick={() => setCurrentFilter(cat.name)}
             >
-              <span className="filter-icon">📦</span> Tous
+              {cat.name}
             </button>
-            {categories.map(category => (
-              <button 
-                key={category.id}
-                className={`filter-btn ${currentFilter === category.id ? 'active' : ''}`} 
-                onClick={() => setCurrentFilter(category.id)}
-              >
-                <span className="filter-icon">{category.icon}</span> {category.name}
-              </button>
-            ))}
-            <button 
-              className={`filter-btn ${currentFilter === 'long' ? 'active' : ''}`} 
-              onClick={() => setCurrentFilter('long')}
-            >
-              <span className="filter-icon">⏳</span> Longue conservation
-            </button>
-          </div>
+          ))}
         </div>
 
-        {/* Grille de produits */}
-        <div className="products-grid">
-          {filteredProducts.length === 0 ? (
-            <div className="empty-state">
-              <p>🌱 Aucun produit trouvé</p>
-              <button onClick={addProduct} className="btn-add">
-                Ajouter votre premier produit
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Rechercher un produit..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+        </div>
+      </div>
+
+      {/* Liste des produits */}
+      <div className="products-grid">
+        {filteredProducts.length === 0 ? (
+          <div className="empty-state">
+            <p>Aucun produit trouvé.</p>
+            {searchTerm && (
+              <button onClick={() => setSearchTerm('')} className="btn-secondary">
+                Effacer la recherche
               </button>
-            </div>
-          ) : (
-            filteredProducts.map(product => {
-              const expiryInfo = getExpiryInfo(product)
-              const displayName = product.custom_name || product.canonical_food?.canonical_name || 'Produit'
-              
-              return (
-                <div key={product.id} className="product-card" onClick={() => openProductDetails(product.id)}>
-                  <div className="product-header">
-                    <div className="product-info">
-                      <h3 className="product-name">{displayName}</h3>
-                      <div className="product-details">
-                        <span className="product-detail">
-                          <span>📦</span> {product.quantity} {product.unit || product.canonical_food?.primary_unit}
-                        </span>
-                        <span className="product-detail">
-                          <span>{product.location?.icon || '📍'}</span> {product.location?.name}
-                        </span>
-                      </div>
-                    </div>
-                    <div className={`product-category-icon category-${product.category?.id}`}>
-                      <span>{product.category?.icon}</span>
-                    </div>
-                  </div>
-                  <div className="expiry-container">
-                    <div className="expiry-visual">
-                      <div 
-                        className={`expiry-fill ${getExpiryClass(product.percentage)}`} 
-                        style={{ width: `${Math.max(10, Math.min(100, product.percentage))}%` }}
-                      >
-                        <span className="expiry-text">{expiryInfo.text}</span>
-                      </div>
-                      <span className="expiry-icon">{expiryInfo.icon}</span>
-                    </div>
-                  </div>
-                  <button 
-                    className="delete-btn" 
-                    onClick={(e) => deleteProduct(product.id, e)}
-                    aria-label="Supprimer"
-                  >
-                    🗑️
-                  </button>
+            )}
+          </div>
+        ) : (
+          filteredProducts.map(product => (
+            <div key={product.id} className={`product-card ${getUrgencyClass(product.expiry_date)}`}>
+              <div className="product-header">
+                <h3 className="product-name">
+                  {product.product_name || product.canonical_food?.canonical_name}
+                </h3>
+                <button 
+                  onClick={() => deleteProduct(product.id)}
+                  className="delete-btn"
+                  title="Supprimer ce produit"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="product-info">
+                <div className="quantity">
+                  <strong>{product.quantity} {product.unit}</strong>
                 </div>
-              )
-            })
-          )}
-        </div>
+                
+                <div className="expiry">
+                  {formatExpiryDate(product.expiry_date)}
+                </div>
+
+                <div className="location">
+                  📍 {product.location?.name || 'Non défini'}
+                </div>
+
+                {product.canonical_food?.category && (
+                  <div className="category">
+                    🏷️ {product.canonical_food.category.name}
+                  </div>
+                )}
+
+                {product.notes && (
+                  <div className="notes">
+                    💬 {product.notes}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))
+        )}
       </div>
-    </>
+    </div>
   )
 }
