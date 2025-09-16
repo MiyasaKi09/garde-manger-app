@@ -103,9 +103,15 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         return;
       }
       setSearchLoading(true);
+ codex/update-pantry-page-styling-x4u3ry
+      setSearchError(null);
       try {
-        // Recherche principale: canonical_name ILIKE + keywords array contains
-        const { data, error } = await supabase
+        const escaped = q.replace(/[%_]/g, '\\$&');
+
+        // 1) recherche sur le nom canonique
+        const { data: nameMatches, error: nameError } = await supabase
+
+ main
           .from('canonical_foods')
           .select(`
             id,
@@ -117,12 +123,52 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_fridge,
             shelf_life_days_freezer
           `)
-          .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}}`)
-          .limit(12);
+ codex/update-pantry-page-styling-x4u3ry
+          .ilike('canonical_name', `%${escaped}%`)
+          .limit(15);
 
-        if (error) throw error;
+        if (nameError) throw nameError;
 
-        const normalized = (data || []).map((row) => ({
+        let combined = nameMatches || [];
+
+        // 2) recherche complémentaire via les mots-clés (si disponibles)
+        if (q.length > 1) {
+          const keywordTokens = q
+            .toLowerCase()
+            .split(/[\s,]+/)
+            .map((token) => token.trim())
+            .filter(Boolean);
+
+          if (keywordTokens.length > 0) {
+            const { data: keywordMatches, error: keywordError } = await supabase
+              .from('canonical_foods')
+              .select(`
+                id,
+                canonical_name,
+                category_id,
+                subcategory,
+                primary_unit,
+                shelf_life_days_pantry,
+                shelf_life_days_fridge,
+                shelf_life_days_freezer
+              `)
+              .contains('keywords', keywordTokens)
+              .limit(15);
+
+            if (keywordError) {
+              console.warn('keyword search error', keywordError);
+            } else if (keywordMatches?.length) {
+              const existingIds = new Set(combined.map((item) => item.id));
+              keywordMatches.forEach((item) => {
+                if (!existingIds.has(item.id)) combined.push(item);
+              });
+            }
+          }
+        }
+
+        const normalized = combined.map((row) => ({
+
+ main
           id: row.id,
           type: 'canonical',
           name: row.canonical_name,
@@ -148,7 +194,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
         // Toujours offrir la création d'un nouveau produit (basée sur la saisie)
         const results = [
-          ...normalized,
+codex/update-pantry-page-styling-x4u3ry
+          ...normalized.slice(0, 11),
+ main
           {
             id: 'new-product',
             type: 'new',
@@ -163,6 +211,10 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         setSearchResults(results);
       } catch (e) {
         console.error('search error', e);
+ codex/update-pantry-page-styling-x4u3ry
+        setSearchError('Erreur lors de la recherche');
+
+main
         setSearchResults([
           {
             id: 'new-product',
@@ -175,16 +227,17 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           }
         ]);
       } finally {
-        setSearchLoading(false);
-      }
-    },
-    [supabase]
-  );
+      setSearchLoading(false);
+    }
+  },
+  [supabase]
+);
 
   // Debounce
   useEffect(() => {
     if (!searchQuery.trim()) {
       setSearchResults([]);
+      setSearchError(null);
       return;
     }
     const t = setTimeout(() => searchProducts(searchQuery), 300);
@@ -348,6 +401,15 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                   <small>
                     🔍 Recherche: "{searchQuery}" • {searchResults.length} résultats
                   </small>
+ codex/update-pantry-page-styling-x4u3ry
+                </div>
+              )}
+
+              {searchError && (
+                <div className="error-info">
+                  <small>⚠️ {searchError}</small>
+
+main
                 </div>
               )}
 
@@ -530,6 +592,10 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .loading { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); animation: spin 1s linear infinite; }
         @keyframes spin { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
         .debug-info { margin-bottom: 1rem; padding: .5rem; background: #f0f9ff; border-radius: 6px; color: #1d4ed8; }
+ codex/update-pantry-page-styling-x4u3ry
+        .error-info { margin-bottom: 1rem; padding: .5rem; background: #fef2f2; border-radius: 6px; color: #b91c1c; }
+
+ main
         .results-list { display: flex; flex-direction: column; gap: .5rem; max-height: 300px; overflow-y: auto; }
         .result-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 12px; cursor: pointer; background: white; }
         .result-item:hover { border-color: #c8d8c8; background: #f8fdf8; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.1); }
