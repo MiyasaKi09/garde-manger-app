@@ -21,6 +21,25 @@ function usePantryData() {
   const [categories, setCategories] = useState([]);
   const supabase = createClientComponentClient();
 
+  const parseNullableNumber = (value) => {
+    if (value === null || value === undefined) return null;
+    if (typeof value === 'string' && value.trim() === '') return null;
+    const num = Number(value);
+    return Number.isFinite(num) ? num : null;
+  };
+
+  const sanitizeText = (value) => {
+    if (value === null || value === undefined) return null;
+    if (value instanceof Date && !Number.isNaN(value.valueOf())) {
+      return value.toISOString().split('T')[0];
+    }
+    if (typeof value === 'string') {
+      const trimmed = value.trim();
+      return trimmed.length > 0 ? trimmed : null;
+    }
+    return value;
+  };
+
   const load = useCallback(async () => {
     try {
       setLoading(true);
@@ -127,6 +146,8 @@ function usePantryData() {
           categoryInfo = item.generic_product.category;
         }
 
+        const locationName = item.location?.name ?? item.storage_place ?? 'Non spécifié';
+
         return {
           id: item.id,
           canonical_food_id: productInfo?.canonical_food_id || productInfo?.id,
@@ -134,11 +155,12 @@ function usePantryData() {
           category_name: categoryInfo?.name || 'Autre',
           category_icon: categoryInfo?.icon || '📦',
           category_color: categoryInfo?.color_hex || '#808080',
-          qty_remaining: item.qty_remaining || 0,
+          qty_remaining: Number(item.qty_remaining ?? 0),
           unit: item.unit || productInfo?.primary_unit || 'unité',
           effective_expiration: item.expiration_date,
-          location_name: item.location?.name || 'Non spécifié',
+          location_name: locationName,
           location_id: item.location_id || null,
+          storage_place: item.storage_place || null,
           storage_method: item.storage_method || 'pantry',
           notes: item.notes,
           meta: {
@@ -171,16 +193,22 @@ function usePantryData() {
     try {
       // Construire l'objet d'insertion pour inventory_lots
       const insertData = {
-        user_id: user.id,
-        qty_remaining: payload.qty_remaining,
-        unit: payload.unit,
-        expiration_date: payload.effective_expiration,
-        storage_method: payload.storage_method || 'pantry',
-        storage_place: payload.location_name,
-        notes: payload.notes,
-        display_name: payload.display_name,
-        source: 'manual'
+        qty_remaining: parseNullableNumber(payload.qty_remaining ?? payload.qty),
+        initial_qty: parseNullableNumber(payload.initial_qty ?? payload.qty_remaining ?? payload.qty),
+        unit: sanitizeText(payload.unit),
+        expiration_date: sanitizeText(payload.effective_expiration ?? payload.expiration_date),
+        storage_method: sanitizeText(payload.storage_method) || 'pantry',
+        storage_place: sanitizeText(payload.location_name ?? payload.storage_place),
+        notes: payload.notes ?? null
       };
+
+      if (!insertData.unit) delete insertData.unit;
+      if (!insertData.storage_method) delete insertData.storage_method;
+      if (!insertData.storage_place) delete insertData.storage_place;
+      if (insertData.notes === undefined) delete insertData.notes;
+      if (insertData.initial_qty === null) delete insertData.initial_qty;
+      if (insertData.qty_remaining === null) delete insertData.qty_remaining;
+      if (insertData.expiration_date === null) delete insertData.expiration_date;
 
       // Ajouter la référence au produit selon le type
       if (payload.canonical_food_id) {
@@ -207,15 +235,57 @@ function usePantryData() {
 
   const updateLot = useCallback(async (id, patch) => {
     try {
+      const updatePayload = {};
+
+      if (patch.qty_remaining !== undefined || patch.qty !== undefined) {
+        const qty = parseNullableNumber(patch.qty_remaining ?? patch.qty);
+        updatePayload.qty_remaining = qty;
+      }
+
+      if (patch.unit !== undefined) {
+        const unit = sanitizeText(patch.unit);
+        updatePayload.unit = unit;
+      }
+
+      if (patch.effective_expiration !== undefined || patch.expiration_date !== undefined) {
+        updatePayload.expiration_date = sanitizeText(patch.effective_expiration ?? patch.expiration_date);
+      }
+
+      if (patch.location_name !== undefined || patch.storage_place !== undefined) {
+        updatePayload.storage_place = sanitizeText(patch.location_name ?? patch.storage_place);
+      }
+
+      if (patch.storage_method !== undefined) {
+        updatePayload.storage_method = sanitizeText(patch.storage_method);
+      }
+
+      if (patch.notes !== undefined) {
+        updatePayload.notes = patch.notes ?? null;
+      }
+
+      if (patch.initial_qty !== undefined) {
+        updatePayload.initial_qty = parseNullableNumber(patch.initial_qty);
+      }
+
+      if (patch.opened_on !== undefined) {
+        updatePayload.opened_on = sanitizeText(patch.opened_on);
+      }
+
+      if (patch.acquired_on !== undefined) {
+        updatePayload.acquired_on = sanitizeText(patch.acquired_on);
+      }
+
+      if (patch.produced_on !== undefined) {
+        updatePayload.produced_on = sanitizeText(patch.produced_on);
+      }
+
+      if (Object.keys(updatePayload).length === 0) {
+        return;
+      }
+
       const { error } = await supabase
         .from('inventory_lots')
-        .update({
-          qty_remaining: patch.qty_remaining,
-          unit: patch.unit,
-          expiration_date: patch.effective_expiration,
-          display_name: patch.display_name,
-          notes: patch.notes
-        })
+        .update(updatePayload)
         .eq('id', id);
 
       if (error) throw error;
