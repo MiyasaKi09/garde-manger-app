@@ -7,6 +7,7 @@ import { daysUntil, formatDate } from './pantryUtils';
 import LifespanBadge from './LifespanBadge';
 
 
+
 // Helper: résout la date d'expiration d'un lot (tous alias pris en charge)
 const getLotExpiry = (lot) =>
   lot?.effective_expiration ||
