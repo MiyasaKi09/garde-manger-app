@@ -282,260 +282,247 @@ export default function SmartAddForm({
   if (!open) return null;
 
   return (
-    <>
-      <div className="smart-add-overlay" onClick={handleClose}>
-        <div className="smart-add-modal" onClick={(e) => e.stopPropagation()}>
-          {/* Header */}
-          <div className="modal-header">
-            <div className="header-title">
-              <Plus size={20} />
-              <span>Ajouter un produit</span>
-            </div>
-            <button onClick={handleClose} className="close-button">
-              <X size={20} />
-            </button>
+    <div className="modal-overlay">
+      <div className="modal-container">
+        {/* Header */}
+        <div className="modal-header">
+          <div className="header-title">
+            <Plus size={20} />
+            <span>Ajouter un produit</span>
           </div>
+          <button onClick={handleClose} className="close-btn">
+            <X size={20} />
+          </button>
+        </div>
 
-          {/* Progress */}
-          <div className="progress-bar">
-            <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>
-              1. Produit
-            </div>
-            <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>
-              2. Quantité
-            </div>
+        {/* Progress */}
+        <div className="progress-bar">
+          <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>
+            1. Produit
           </div>
+          <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>
+            2. Quantité
+          </div>
+        </div>
 
-          {/* Content */}
-          <div className="modal-content">
-            {/* Étape 1: Recherche de produit */}
-            {step === 1 && (
-              <div className="search-step">
-                <div className="search-input-wrapper">
-                  <Search size={20} className="search-icon" />
-                  <input
-                    ref={searchInputRef}
-                    type="text"
-                    placeholder="Rechercher un produit (ex: tomate, yaourt, riz...)"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="search-input"
-                  />
-                  {searchLoading && (
-                    <div className="loading-spinner">🔄</div>
-                  )}
-                </div>
+        {/* Content */}
+        <div className="modal-content">
+          {/* Étape 1: Recherche de produit */}
+          {step === 1 && (
+            <div className="search-step">
+              <div className="search-wrapper">
+                <Search size={20} className="search-icon" />
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  placeholder="Rechercher un produit (ex: tomate, yaourt, riz...)"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="search-input"
+                />
+                {searchLoading && <div className="loading">🔄</div>}
+              </div>
 
-                {/* Résultats de recherche */}
-                {searchResults.length > 0 && (
-                  <div className="search-results">
-                    {searchResults.map((product) => (
-                      <div
-                        key={`${product.type}-${product.id}`}
-                        className={`search-result ${product.type === 'new' ? 'create-new' : ''}`}
-                        onClick={() => handleSelectProduct(product)}
-                      >
-                        <div className="result-icon">
-                          {product.icon}
+              {/* Résultats de recherche */}
+              {searchResults.length > 0 && (
+                <div className="results-list">
+                  {searchResults.map((product) => (
+                    <div
+                      key={`${product.type}-${product.id}`}
+                      className={`result-item ${product.type === 'new' ? 'new-item' : ''}`}
+                      onClick={() => handleSelectProduct(product)}
+                    >
+                      <div className="result-icon">{product.icon}</div>
+                      <div className="result-content">
+                        <div className="result-name">
+                          {product.display_name}
+                          {product.type === 'new' && <span className="new-badge">Nouveau</span>}
                         </div>
-                        <div className="result-info">
-                          <div className="result-name">
-                            {product.display_name}
-                            {product.type === 'new' && (
-                              <span className="new-badge">Nouveau</span>
-                            )}
-                          </div>
-                          <div className="result-meta">
-                            <span className="product-source">{product.source}</span>
-                            {product.category?.name && (
-                              <span className="product-category">{product.category.name}</span>
-                            )}
-                            {product.subcategory && (
-                              <span className="product-subcategory">{product.subcategory}</span>
-                            )}
-                          </div>
+                        <div className="result-meta">
+                          <span className="source">{product.source}</span>
+                          {product.category?.name && (
+                            <span className="category">{product.category.name}</span>
+                          )}
+                          {product.subcategory && (
+                            <span className="subcategory">{product.subcategory}</span>
+                          )}
                         </div>
                       </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {searchQuery && !searchLoading && searchResults.length === 0 && (
+                <div className="no-results">
+                  <p>Recherche en cours...</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Étape 2: Détails du lot */}
+          {step === 2 && selectedProduct && (
+            <div className="form-step">
+              {/* Récap produit */}
+              <div className="product-summary">
+                <div className="product-icon">{selectedProduct.icon}</div>
+                <div className="product-info">
+                  <div className="product-name">{selectedProduct.display_name}</div>
+                  <div className="product-source">{selectedProduct.source}</div>
+                </div>
+                <div className={`confidence-badge ${confidence.tone}`}>
+                  <ShieldCheck size={14} />
+                  <span>{confidence.label} ({confidence.percent}%)</span>
+                </div>
+                <button onClick={() => setStep(1)} className="change-btn">
+                  Changer
+                </button>
+              </div>
+
+              {/* Formulaire */}
+              <div className="lot-form">
+                <div className="form-row">
+                  <div className="form-group flex-2">
+                    <label htmlFor="qty">Quantité *</label>
+                    <input
+                      ref={qtyInputRef}
+                      id="qty"
+                      type="number"
+                      step="0.1"
+                      min="0"
+                      required
+                      value={lotData.qty}
+                      onChange={(e) => setLotData(prev => ({ 
+                        ...prev, 
+                        qty: e.target.value 
+                      }))}
+                      placeholder="0"
+                      className="form-input"
+                    />
+                  </div>
+                  <div className="form-group flex-1">
+                    <label htmlFor="unit">Unité</label>
+                    <select
+                      id="unit"
+                      value={lotData.unit}
+                      onChange={(e) => setLotData(prev => ({ 
+                        ...prev, 
+                        unit: e.target.value 
+                      }))}
+                      className="form-select"
+                    >
+                      <option value="g">g</option>
+                      <option value="kg">kg</option>
+                      <option value="ml">ml</option>
+                      <option value="l">l</option>
+                      <option value="u">pièce</option>
+                      <option value="pièce">pièce</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Méthode de stockage */}
+                <div className="form-group">
+                  <label>Méthode de stockage</label>
+                  <div className="storage-grid">
+                    {[
+                      { value: 'fridge', label: 'Frigo', icon: '❄️' },
+                      { value: 'pantry', label: 'Placard', icon: '🏠' },
+                      { value: 'freezer', label: 'Congélateur', icon: '🧊' },
+                      { value: 'counter', label: 'Plan travail', icon: '🏪' }
+                    ].map(method => (
+                      <button
+                        key={method.value}
+                        type="button"
+                        onClick={() => handleStorageMethodChange(method.value)}
+                        className={`storage-btn ${
+                          lotData.storage_method === method.value ? 'active' : ''
+                        }`}
+                      >
+                        <span className="method-icon">{method.icon}</span>
+                        <span className="method-label">{method.label}</span>
+                      </button>
                     ))}
                   </div>
-                )}
-
-                {searchQuery && !searchLoading && searchResults.length === 0 && (
-                  <div className="no-results">
-                    <p>Recherche en cours...</p>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Étape 2: Détails du lot */}
-            {step === 2 && selectedProduct && (
-              <div className="lot-details-step">
-                {/* Récap produit sélectionné */}
-                <div className="selected-product-summary">
-                  <div className="product-icon">{selectedProduct.icon}</div>
-                  <div className="product-info">
-                    <div className="product-name">{selectedProduct.display_name}</div>
-                    <div className="product-source">{selectedProduct.source}</div>
-                  </div>
-
-                  <div className={`confidence-badge tone-${confidence.tone}`}>
-                    <ShieldCheck size={14} />
-                    <span>{confidence.label} ({confidence.percent}%)</span>
-                  </div>
-
-                  <button onClick={() => setStep(1)} className="btn-change">
-                    Changer
-                  </button>
                 </div>
 
-                {/* Formulaire du lot */}
-                <div className="lot-form">
-                  <div className="form-row">
-                    <div className="form-group flex-2">
-                      <label htmlFor="qty">Quantité *</label>
-                      <input
-                        ref={qtyInputRef}
-                        id="qty"
-                        type="number"
-                        step="0.1"
-                        min="0"
-                        required
-                        value={lotData.qty}
-                        onChange={(e) => setLotData(prev => ({ 
-                          ...prev, 
-                          qty: e.target.value 
-                        }))}
-                        placeholder="0"
-                        className="form-input"
-                      />
-                    </div>
-                    <div className="form-group flex-1">
-                      <label htmlFor="unit">Unité</label>
-                      <select
-                        id="unit"
-                        value={lotData.unit}
-                        onChange={(e) => setLotData(prev => ({ 
-                          ...prev, 
-                          unit: e.target.value 
-                        }))}
-                        className="form-select"
-                      >
-                        <option value="g">g</option>
-                        <option value="kg">kg</option>
-                        <option value="ml">ml</option>
-                        <option value="l">l</option>
-                        <option value="u">pièce</option>
-                        <option value="pièce">pièce</option>
-                        <option value="barquette">barquette</option>
-                        <option value="pot">pot</option>
-                        <option value="sachet">sachet</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Méthode de stockage */}
-                  <div className="form-group">
-                    <label>Méthode de stockage</label>
-                    <div className="storage-methods">
-                      {[
-                        { value: 'fridge', label: 'Frigo', icon: '❄️' },
-                        { value: 'pantry', label: 'Placard', icon: '🏠' },
-                        { value: 'freezer', label: 'Congélateur', icon: '🧊' },
-                        { value: 'counter', label: 'Plan travail', icon: '🏪' }
-                      ].map(method => (
-                        <button
-                          key={method.value}
-                          type="button"
-                          onClick={() => handleStorageMethodChange(method.value)}
-                          className={`storage-method ${
-                            lotData.storage_method === method.value ? 'active' : ''
-                          }`}
-                        >
-                          <span className="method-icon">{method.icon}</span>
-                          <span className="method-label">{method.label}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Date d'expiration */}
-                  <div className="form-group">
-                    <label htmlFor="expiration_date">
-                      <Calendar size={16} />Date d'expiration
-                    </label>
-                    <input
-                      id="expiration_date"
-                      type="date"
-                      value={lotData.expiration_date}
-                      onChange={(e) => setLotData(prev => ({ 
-                        ...prev, 
-                        expiration_date: e.target.value 
-                      }))}
-                      className="form-input"
-                    />
-                  </div>
-
-                  {/* Lieu spécifique */}
-                  <div className="form-group">
-                    <label htmlFor="storage_place">
-                      <MapPin size={16} />Lieu (optionnel)
-                    </label>
-                    <input
-                      id="storage_place"
-                      type="text"
-                      value={lotData.storage_place}
-                      onChange={(e) => setLotData(prev => ({ 
-                        ...prev, 
-                        storage_place: e.target.value 
-                      }))}
-                      placeholder="ex: étagère du haut, tiroir légumes..."
-                      className="form-input"
-                    />
-                  </div>
-
-                  {/* Notes */}
-                  <div className="form-group">
-                    <label htmlFor="notes">Notes (optionnel)</label>
-                    <textarea
-                      id="notes"
-                      value={lotData.notes}
-                      onChange={(e) => setLotData(prev => ({ 
-                        ...prev, 
-                        notes: e.target.value 
-                      }))}
-                      placeholder="Marque, origine, particularités..."
-                      className="form-textarea"
-                      rows="2"
-                    />
-                  </div>
+                {/* Date d'expiration */}
+                <div className="form-group">
+                  <label htmlFor="expiration_date">
+                    <Calendar size={16} />Date d'expiration
+                  </label>
+                  <input
+                    id="expiration_date"
+                    type="date"
+                    value={lotData.expiration_date}
+                    onChange={(e) => setLotData(prev => ({ 
+                      ...prev, 
+                      expiration_date: e.target.value 
+                    }))}
+                    className="form-input"
+                  />
                 </div>
 
-                {/* Actions */}
-                <div className="form-actions">
-                  <button 
-                    onClick={() => setStep(1)} 
-                    className="btn-secondary" 
-                    disabled={loading}
-                  >
-                    Retour
-                  </button>
-                  <button 
-                    onClick={handleCreateLot} 
-                    className="btn-primary" 
-                    disabled={loading || !lotData.qty}
-                  >
-                    {loading ? 'Création...' : 'Créer le lot'}
-                  </button>
+                {/* Lieu spécifique */}
+                <div className="form-group">
+                  <label htmlFor="storage_place">
+                    <MapPin size={16} />Lieu (optionnel)
+                  </label>
+                  <input
+                    id="storage_place"
+                    type="text"
+                    value={lotData.storage_place}
+                    onChange={(e) => setLotData(prev => ({ 
+                      ...prev, 
+                      storage_place: e.target.value 
+                    }))}
+                    placeholder="ex: étagère du haut, tiroir légumes..."
+                    className="form-input"
+                  />
+                </div>
+
+                {/* Notes */}
+                <div className="form-group">
+                  <label htmlFor="notes">Notes (optionnel)</label>
+                  <textarea
+                    id="notes"
+                    value={lotData.notes}
+                    onChange={(e) => setLotData(prev => ({ 
+                      ...prev, 
+                      notes: e.target.value 
+                    }))}
+                    placeholder="Marque, origine, particularités..."
+                    className="form-textarea"
+                    rows="2"
+                  />
                 </div>
               </div>
-            )}
-          </div>
+
+              {/* Actions */}
+              <div className="form-actions">
+                <button 
+                  onClick={() => setStep(1)} 
+                  className="btn-secondary" 
+                  disabled={loading}
+                >
+                  Retour
+                </button>
+                <button 
+                  onClick={handleCreateLot} 
+                  className="btn-primary" 
+                  disabled={loading || !lotData.qty}
+                >
+                  {loading ? 'Création...' : 'Créer le lot'}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
       <style jsx>{`
-        .smart-add-overlay {
+        .modal-overlay {
           position: fixed;
           top: 0;
           left: 0;
@@ -549,7 +536,7 @@ export default function SmartAddForm({
           padding: 1rem;
         }
 
-        .smart-add-modal {
+        .modal-container {
           background: white;
           border-radius: 16px;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -574,159 +561,12 @@ export default function SmartAddForm({
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          font-size: 14px;
-        }
-
-        .form-input, .form-select, .form-textarea {
-          padding: 0.75rem;
-          border: 1px solid #d1d5db;
-          border-radius: 6px;
-          font-size: 14px;
-          transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-          outline: none;
-          border-color: #a8c5a8;
-          box-shadow: 0 0 0 3px rgba(168, 197, 168, 0.1);
-        }
-
-        .storage-methods {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 0.75rem;
-        }
-
-        .storage-method {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 1rem;
-          border: 2px solid #e5e7eb;
-          border-radius: 8px;
-          background: white;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-
-        .storage-method:hover {
-          border-color: #c8d8c8;
-        }
-
-        .storage-method.active {
-          border-color: #8bb58b;
-          background: #f8fdf8;
-        }
-
-        .method-icon {
-          font-size: 1.25rem;
-        }
-
-        .method-label {
-          font-size: 0.875rem;
-          font-weight: 500;
-          color: #374151;
-          text-align: center;
-        }
-
-        .form-actions {
-          display: flex;
-          gap: 1rem;
-          margin-top: 1.5rem;
-          padding-top: 1.5rem;
-          border-top: 1px solid #e5e7eb;
-        }
-
-        .btn-secondary, .btn-primary {
-          flex: 1;
-          padding: 0.75rem 1.5rem;
-          border-radius: 8px;
-          font-weight: 500;
-          cursor: pointer;
-          transition: all 0.2s;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: none;
-        }
-
-        .btn-secondary {
-          background: #f9fafb;
-          border: 1px solid #d1d5db;
-          color: #374151;
-        }
-
-        .btn-secondary:hover:not(:disabled) {
-          background: #f3f4f6;
-        }
-
-        .btn-primary {
-          background: #8bb58b;
-          color: white;
-        }
-
-        .btn-primary:hover:not(:disabled) {
-          background: #6b9d6b;
-        }
-
-        .btn-primary:disabled, .btn-secondary:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        @media (max-width: 768px) {
-          .smart-add-modal {
-            margin: 0;
-            max-height: 100vh;
-            border-radius: 0;
-          }
-
-          .modal-content {
-            padding: 1rem;
-          }
-
-          .form-row {
-            flex-direction: column;
-            gap: 0.75rem;
-          }
-
-          .storage-methods {
-            grid-template-columns: 1fr;
-            gap: 0.5rem;
-          }
-
-          .storage-method {
-            flex-direction: row;
-            padding: 0.75rem;
-            justify-content: flex-start;
-          }
-
-          .selected-product-summary {
-            flex-wrap: wrap;
-            gap: 0.75rem;
-          }
-
-          .form-actions {
-            flex-direction: column;
-          }
-
-          .result-meta {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.25rem;
-          }
-        }
-      `}</style>
-    </>
-  );
-}rem;
           font-size: 1.25rem;
           font-weight: 600;
           color: #1a3a1a;
         }
 
-        .close-button {
+        .close-btn {
           background: none;
           border: none;
           cursor: pointer;
@@ -736,7 +576,7 @@ export default function SmartAddForm({
           transition: all 0.2s;
         }
 
-        .close-button:hover {
+        .close-btn:hover {
           background: #f3f4f6;
           color: #374151;
         }
@@ -755,22 +595,10 @@ export default function SmartAddForm({
           font-size: 0.875rem;
           font-weight: 500;
           color: #9ca3af;
-          position: relative;
         }
 
         .progress-step.active {
           color: #6b9d6b;
-        }
-
-        .progress-step:not(:last-child)::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          right: -50%;
-          transform: translateY(-50%);
-          width: 100%;
-          height: 1px;
-          background: #e5e7eb;
         }
 
         .modal-content {
@@ -779,7 +607,7 @@ export default function SmartAddForm({
           padding: 1.5rem;
         }
 
-        .search-input-wrapper {
+        .search-wrapper {
           position: relative;
           margin-bottom: 1rem;
         }
@@ -808,7 +636,7 @@ export default function SmartAddForm({
           box-shadow: 0 0 0 3px rgba(168, 197, 168, 0.1);
         }
 
-        .loading-spinner {
+        .loading {
           position: absolute;
           right: 1rem;
           top: 50%;
@@ -821,7 +649,7 @@ export default function SmartAddForm({
           to { transform: translateY(-50%) rotate(360deg); }
         }
 
-        .search-results {
+        .results-list {
           display: flex;
           flex-direction: column;
           gap: 0.5rem;
@@ -829,7 +657,7 @@ export default function SmartAddForm({
           overflow-y: auto;
         }
 
-        .search-result {
+        .result-item {
           display: flex;
           align-items: center;
           gap: 1rem;
@@ -841,14 +669,14 @@ export default function SmartAddForm({
           background: white;
         }
 
-        .search-result:hover {
+        .result-item:hover {
           border-color: #c8d8c8;
           background: #f8fdf8;
           transform: translateY(-1px);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .search-result.create-new {
+        .result-item.new-item {
           border-style: dashed;
           border-color: #a8c5a8;
           background: rgba(139, 181, 139, 0.05);
@@ -866,7 +694,7 @@ export default function SmartAddForm({
           flex-shrink: 0;
         }
 
-        .result-info {
+        .result-content {
           flex: 1;
           min-width: 0;
         }
@@ -878,7 +706,6 @@ export default function SmartAddForm({
           align-items: center;
           gap: 0.5rem;
           margin-bottom: 0.25rem;
-          line-height: 1.3;
         }
 
         .new-badge {
@@ -888,7 +715,6 @@ export default function SmartAddForm({
           border-radius: 4px;
           font-size: 0.75rem;
           font-weight: 500;
-          flex-shrink: 0;
         }
 
         .result-meta {
@@ -897,30 +723,23 @@ export default function SmartAddForm({
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          flex-wrap: wrap;
         }
 
-        .product-source {
+        .source, .category, .subcategory {
           background: #f3f4f6;
           padding: 1px 6px;
           border-radius: 4px;
           font-size: 0.75rem;
         }
 
-        .product-category {
+        .category {
           background: #eff6ff;
           color: #1d4ed8;
-          padding: 1px 6px;
-          border-radius: 4px;
-          font-size: 0.75rem;
         }
 
-        .product-subcategory {
+        .subcategory {
           background: #f0fdf4;
           color: #047857;
-          padding: 1px 6px;
-          border-radius: 4px;
-          font-size: 0.75rem;
         }
 
         .no-results {
@@ -929,7 +748,7 @@ export default function SmartAddForm({
           color: #6b7280;
         }
 
-        .selected-product-summary {
+        .product-summary {
           display: flex;
           align-items: center;
           gap: 1rem;
@@ -949,19 +768,16 @@ export default function SmartAddForm({
           justify-content: center;
           background: white;
           border-radius: 8px;
-          flex-shrink: 0;
         }
 
         .product-info {
           flex: 1;
-          min-width: 0;
         }
 
         .product-name {
           font-weight: 600;
           color: #1a3a1a;
           margin-bottom: 0.25rem;
-          line-height: 1.3;
         }
 
         .product-source {
@@ -977,28 +793,27 @@ export default function SmartAddForm({
           font-weight: 600;
           padding: 6px 10px;
           border-radius: 999px;
-          flex-shrink: 0;
         }
 
-        .tone-good {
+        .confidence-badge.good {
           background: #ecfdf5;
           color: #047857;
           border: 1px solid #a7f3d0;
         }
 
-        .tone-neutral {
+        .confidence-badge.neutral {
           background: #eff6ff;
           color: #1d4ed8;
           border: 1px solid #bfdbfe;
         }
 
-        .tone-warning {
+        .confidence-badge.warning {
           background: #fff7ed;
           color: #c2410c;
           border: 1px solid #fed7aa;
         }
 
-        .btn-change {
+        .change-btn {
           background: none;
           border: 1px solid #d1d5db;
           padding: 4px 12px;
@@ -1006,13 +821,10 @@ export default function SmartAddForm({
           cursor: pointer;
           font-size: 12px;
           color: #6b7280;
-          transition: all 0.2s;
-          flex-shrink: 0;
         }
 
-        .btn-change:hover {
+        .change-btn:hover {
           background: #f9fafb;
-          border-color: #9ca3af;
         }
 
         .lot-form {
@@ -1045,4 +857,147 @@ export default function SmartAddForm({
           color: #374151;
           display: flex;
           align-items: center;
-          gap: 0.5
+          gap: 0.5rem;
+          font-size: 14px;
+        }
+
+        .form-input, .form-select, .form-textarea {
+          padding: 0.75rem;
+          border: 1px solid #d1d5db;
+          border-radius: 6px;
+          font-size: 14px;
+          transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+          outline: none;
+          border-color: #a8c5a8;
+          box-shadow: 0 0 0 3px rgba(168, 197, 168, 0.1);
+        }
+
+        .storage-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem;
+        }
+
+        .storage-btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 1rem;
+          border: 2px solid #e5e7eb;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .storage-btn:hover {
+          border-color: #c8d8c8;
+        }
+
+        .storage-btn.active {
+          border-color: #8bb58b;
+          background: #f8fdf8;
+        }
+
+        .method-icon {
+          font-size: 1.25rem;
+        }
+
+        .method-label {
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: #374151;
+        }
+
+        .form-actions {
+          display: flex;
+          gap: 1rem;
+          margin-top: 1.5rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid #e5e7eb;
+        }
+
+        .btn-secondary, .btn-primary {
+          flex: 1;
+          padding: 0.75rem 1.5rem;
+          border-radius: 8px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s;
+          border: none;
+        }
+
+        .btn-secondary {
+          background: #f9fafb;
+          border: 1px solid #d1d5db;
+          color: #374151;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+          background: #f3f4f6;
+        }
+
+        .btn-primary {
+          background: #8bb58b;
+          color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+          background: #6b9d6b;
+        }
+
+        .btn-primary:disabled, .btn-secondary:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+          .modal-container {
+            margin: 0;
+            max-height: 100vh;
+            border-radius: 0;
+          }
+
+          .modal-content {
+            padding: 1rem;
+          }
+
+          .form-row {
+            flex-direction: column;
+            gap: 0.75rem;
+          }
+
+          .storage-grid {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+          }
+
+          .storage-btn {
+            flex-direction: row;
+            padding: 0.75rem;
+            justify-content: flex-start;
+          }
+
+          .product-summary {
+            flex-wrap: wrap;
+            gap: 0.75rem;
+          }
+
+          .form-actions {
+            flex-direction: column;
+          }
+
+          .result-meta {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.25rem;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
