@@ -2,153 +2,171 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Package } from 'lucide-react';
-import LifespanBadge from './LifespanBadge';
-import { daysUntil, formatDate, getCategoryIcon } from './pantryUtils';
+import { ChevronDown, Package2 } from 'lucide-react';
+import { daysUntil, getExpirationStatus, formatQuantity } from './pantryUtils';
 
-// Composant principal ProductCard
-export function ProductCard({ 
-  product, 
-  lots = [], 
-  onUpdateLot, 
-  onDeleteLot,
-  onConsumeProduct,
-  expanded = false,
-  onToggleExpand
-}) {
-  const [isExpanded, setIsExpanded] = useState(expanded);
+export default function ProductCard({ product, onOpen }) {
+  // Protection contre product undefined
+  if (!product) {
+    return (
+      <div className="product-card error">
+        <p>Erreur: Produit non défini</p>
+      </div>
+    );
+  }
 
-  // Quantité totale (addition simple des lots)
-  const totalQuantity = lots.reduce((sum, lot) => {
-    const qty = lot.qty ?? lot.qty_remaining ?? 0;
-    return sum + Number(qty || 0);
-  }, 0);
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Données sécurisées du produit
+  const productName = product.productName || 'Produit sans nom';
+  const productId = product.productId || 'unknown';
+  const category = product.category || 'Sans catégorie';
+  const lots = product.lots || [];
+  const totalQuantity = product.totalQuantity || 0;
+  const primaryUnit = product.primaryUnit || 'unité';
+  const nextExpiry = product.nextExpiry;
 
-  // Lot le plus proche de l'expiration
-  const nextExpiringLot = lots
-    .filter(lot => lot.dlc || lot.expiration_date || lot.effective_expiration)
-    .sort((a, b) => {
-      const dateA = new Date(a.dlc || a.expiration_date || a.effective_expiration);
-      const dateB = new Date(b.dlc || b.expiration_date || b.effective_expiration);
-      return dateA - dateB;
-    })[0];
+  // Calcul du statut d'expiration
+  const daysLeft = daysUntil(nextExpiry);
+  const expirationStatus = getExpirationStatus(daysLeft);
 
-  const nextExpiryDate = nextExpiringLot?.dlc || nextExpiringLot?.expiration_date || nextExpiringLot?.effective_expiration;
-
-  const toggleExpanded = () => {
-    const newExpanded = !isExpanded;
-    setIsExpanded(newExpanded);
-    onToggleExpand && onToggleExpand(newExpanded);
+  // Formatage de la quantité
+  const quantityDisplay = formatQuantity(totalQuantity, primaryUnit, 1);
+  
+  const handleToggleExpand = (e) => {
+    e.stopPropagation();
+    setIsExpanded(!isExpanded);
   };
 
-  const categoryName = product?.category?.name || product?.category || '';
-  const icon = getCategoryIcon(categoryName);
+  const handleCardClick = () => {
+    if (onOpen && typeof onOpen === 'function') {
+      onOpen(product);
+    }
+  };
 
   return (
-    <div className={`product-card ${isExpanded ? 'expanded' : ''}`}>
-      {/* En-tête principal */}
-      <div className="product-header" onClick={toggleExpanded}>
+    <div className="product-card">
+      <div className="product-header" onClick={handleCardClick}>
         <div className="product-main-info">
           <div className="product-icon">
-            {icon}
+            📦
           </div>
-          
           <div className="product-details">
-            <h3 className="product-name">
-              {product?.name || product?.display_name || 'Produit'}
-            </h3>
-            
+            <h3 className="product-name">{productName}</h3>
             <div className="product-meta">
-              {categoryName && (
-                <span className="product-category">
-                  {categoryName}
-                </span>
-              )}
-              
+              <span className="product-category">{category}</span>
               <span className="product-quantity">
-                {totalQuantity.toFixed(1)} {product?.default_unit || 'unité'}
-                {!!lots.length && lots.length > 1 && (
-                  <span className="lots-count">
-                    ({lots.length} lot{lots.length > 1 ? 's' : ''})
-                  </span>
-                )}
+                {quantityDisplay}
+                <span className="lots-count">({lots.length} lot{lots.length > 1 ? 's' : ''})</span>
               </span>
             </div>
           </div>
         </div>
-
+        
         {/* Statut d'expiration */}
-        <div className="expiration-status" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}>
-          <LifespanBadge date={nextExpiryDate} />
-          {nextExpiryDate && (
-            <div className="expiry-date">
-              {formatDate(nextExpiryDate)}
-            </div>
-          )}
-        </div>
-
+        {nextExpiry && (
+          <div 
+            className="expiration-badge"
+            style={{ 
+              backgroundColor: expirationStatus.bgColor,
+              color: expirationStatus.color,
+              border: `1px solid ${expirationStatus.color}20`
+            }}
+          >
+            {expirationStatus.label}
+          </div>
+        )}
+        
         {/* Indicateur d'expansion */}
-        <div className={`expand-indicator ${isExpanded ? 'expanded' : ''}`}>
-          ▼
-        </div>
+        <button 
+          onClick={handleToggleExpand}
+          className={`expand-indicator ${isExpanded ? 'expanded' : ''}`}
+        >
+          <ChevronDown size={16} />
+        </button>
       </div>
 
-      {/* Détails étendus */}
+      {/* Section étendue */}
       {isExpanded && (
         <div className="product-expanded">
+          <div className="lots-title">Détail des lots:</div>
+          
           {lots.length === 0 ? (
             <div className="no-lots">
-              <Package size={24} />
-              <p>Aucun lot en stock</p>
+              <Package2 size={24} />
+              <span>Aucun lot disponible</span>
             </div>
           ) : (
             <div className="lots-list">
-              <h4 className="lots-title">
-                Lots en stock ({lots.length})
-              </h4>
+              {lots.slice(0, 3).map((lot, index) => {
+                const lotDays = daysUntil(lot.effective_expiration);
+                const lotStatus = getExpirationStatus(lotDays);
+                
+                return (
+                  <div key={lot.id || index} className="lot-item">
+                    <div className="lot-info">
+                      <span className="lot-quantity">
+                        {formatQuantity(lot.qty_remaining, lot.unit, 1)}
+                      </span>
+                      {lot.location_name && (
+                        <span className="lot-location">📍 {lot.location_name}</span>
+                      )}
+                    </div>
+                    {lot.effective_expiration && (
+                      <div 
+                        className="lot-expiry"
+                        style={{ 
+                          color: lotStatus.color,
+                          fontWeight: '600'
+                        }}
+                      >
+                        {lotStatus.label}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
               
-              {lots.map((lot) => (
-                <LotCard
-                  key={lot.id}
-                  lot={lot}
-                  onUpdate={onUpdateLot}
-                  onDelete={onDeleteLot}
-                />
-              ))}
+              {lots.length > 3 && (
+                <div className="more-lots">
+                  +{lots.length - 3} autres lots
+                </div>
+              )}
             </div>
           )}
-
-          {/* Actions sur le produit */}
+          
           <div className="product-actions">
-            {onConsumeProduct && totalQuantity > 0 && (
-              <button 
-                onClick={() => onConsumeProduct(product)}
-                className="btn-consume"
-              >
-                Consommer
-              </button>
-            )}
+            <button 
+              onClick={handleCardClick}
+              className="btn-manage"
+            >
+              Gérer les lots
+            </button>
           </div>
         </div>
       )}
 
       <style jsx>{`
         .product-card {
-          background: white;
-          border: 1px solid #e5e7eb;
-          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.9);
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          border-radius: 16px;
           overflow: hidden;
-          transition: all 0.2s ease;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
         .product-card:hover {
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-          border-color: #d1d5db;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+          border-color: var(--forest-300, #c8d8c8);
         }
 
-        .product-card.expanded {
-          box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        .product-card.error {
+          background: #fef2f2;
+          border-color: #fecaca;
+          padding: 1rem;
+          color: #dc2626;
         }
 
         .product-header {
@@ -161,7 +179,7 @@ export function ProductCard({
         }
 
         .product-header:hover {
-          background: #f9fafb;
+          background: rgba(248, 250, 252, 0.8);
         }
 
         .product-main-info {
@@ -178,8 +196,9 @@ export function ProductCard({
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #f3f4f6;
+          background: var(--forest-100, #f0f9f0);
           border-radius: 8px;
+          border: 1px solid var(--forest-200, #dcf4dc);
         }
 
         .product-details {
@@ -189,8 +208,9 @@ export function ProductCard({
         .product-name {
           font-size: 16px;
           font-weight: 600;
-          color: #111827;
+          color: var(--forest-800, #1a3a1a);
           margin: 0 0 4px 0;
+          line-height: 1.3;
         }
 
         .product-meta {
@@ -201,17 +221,18 @@ export function ProductCard({
         }
 
         .product-category {
-          background: #ddd6fe;
-          color: #7c3aed;
+          background: var(--forest-100, #f0f9f0);
+          color: var(--forest-700, #2d5a2d);
           padding: 2px 8px;
           border-radius: 12px;
           font-size: 11px;
           font-weight: 500;
+          border: 1px solid var(--forest-200, #dcf4dc);
         }
 
         .product-quantity {
           font-size: 14px;
-          color: #6b7280;
+          color: var(--earth-600, #8b7a5d);
           font-weight: 500;
         }
 
@@ -221,10 +242,26 @@ export function ProductCard({
           margin-left: 4px;
         }
 
+        .expiration-badge {
+          padding: 4px 8px;
+          border-radius: 12px;
+          font-size: 11px;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+
         .expand-indicator {
           color: #9ca3af;
+          background: none;
+          border: none;
+          cursor: pointer;
           transition: transform 0.2s;
-          font-size: 12px;
+          padding: 4px;
+          border-radius: 4px;
+        }
+
+        .expand-indicator:hover {
+          background: rgba(0, 0, 0, 0.05);
         }
 
         .expand-indicator.expanded {
@@ -232,9 +269,9 @@ export function ProductCard({
         }
 
         .product-expanded {
-          border-top: 1px solid #f3f4f6;
+          border-top: 1px solid rgba(0, 0, 0, 0.08);
           padding: 16px;
-          background: #fafafa;
+          background: rgba(248, 250, 252, 0.5);
         }
 
         .no-lots {
@@ -250,7 +287,7 @@ export function ProductCard({
         .lots-title {
           font-size: 14px;
           font-weight: 600;
-          color: #374151;
+          color: var(--forest-700, #2d5a2d);
           margin: 0 0 12px 0;
         }
 
@@ -258,16 +295,55 @@ export function ProductCard({
           display: flex;
           flex-direction: column;
           gap: 8px;
+          margin-bottom: 16px;
+        }
+
+        .lot-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 8px 12px;
+          background: rgba(255, 255, 255, 0.7);
+          border-radius: 8px;
+          border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .lot-info {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .lot-quantity {
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--forest-700, #2d5a2d);
+        }
+
+        .lot-location {
+          font-size: 12px;
+          color: #6b7280;
+        }
+
+        .lot-expiry {
+          font-size: 12px;
+        }
+
+        .more-lots {
+          text-align: center;
+          color: #6b7280;
+          font-size: 12px;
+          padding: 8px;
+          font-style: italic;
         }
 
         .product-actions {
-          margin-top: 16px;
           display: flex;
           gap: 8px;
         }
 
-        .btn-consume {
-          background: #059669;
+        .btn-manage {
+          background: var(--forest-500, #8bb58b);
           color: white;
           border: none;
           padding: 8px 16px;
@@ -276,252 +352,27 @@ export function ProductCard({
           font-weight: 500;
           cursor: pointer;
           transition: background-color 0.2s;
+          flex: 1;
         }
 
-        .btn-consume:hover {
-          background: #047857;
-        }
-      `}</style>
-    </div>
-  );
-}
-
-// Composant pour un lot individuel
-function LotCard({ lot, onUpdate, onDelete }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editData, setEditData] = useState({
-    qty: lot.qty ?? lot.qty_remaining ?? 0,
-    expiration_date: lot.dlc || lot.expiration_date || lot.effective_expiration || '',
-    notes: lot.notes || lot.note || ''
-  });
-
-  const currentExpiry = editData.expiration_date || lot.dlc || lot.expiration_date || lot.effective_expiration;
-
-  const handleSave = async () => {
-    if (onUpdate) {
-      const success = await onUpdate(lot.id, editData);
-      if (success) {
-        setIsEditing(false);
-      }
-    }
-  };
-
-  const handleDelete = () => {
-    if (confirm('Supprimer ce lot ?')) {
-      onDelete?.(lot.id);
-    }
-  };
-
-  return (
-    <div className="lot-card">
-      <div className="lot-header">
-        <div className="lot-info">
-          <div className="lot-quantity">
-            {isEditing ? (
-              <input
-                type="number"
-                step="0.1"
-                value={editData.qty}
-                onChange={(e) => setEditData(prev => ({ ...prev, qty: e.target.value }))}
-                className="qty-input"
-              />
-            ) : (
-              <span>{Number(lot.qty ?? lot.qty_remaining ?? 0).toFixed(1)}</span>
-            )}
-            <span className="unit">{lot.unit}</span>
-          </div>
-          
-          <div className="lot-storage">
-            <MapPin size={12} />
-            <span>
-              {lot.storage_method === 'fridge' ? 'Frigo' :
-               lot.storage_method === 'pantry' ? 'Placard' :
-               lot.storage_method === 'freezer' ? 'Congélateur' :
-               lot.storage_method === 'counter' ? 'Plan de travail' :
-               lot.storage_method || 'Non spécifié'}
-            </span>
-            {(lot.storage_place || lot.location?.name) && (
-              <span className="storage-place">
-                • {lot.storage_place || lot.location?.name}
-              </span>
-            )}
-          </div>
-        </div>
-
-        <div className="lot-expiry" style={{ display: 'flex', alignItems: 'center' }}>
-          {isEditing ? (
-            <input
-              type="date"
-              value={editData.expiration_date}
-              onChange={(e) => setEditData(prev => ({ ...prev, expiration_date: e.target.value }))}
-              className="date-input"
-            />
-          ) : (
-            <LifespanBadge date={currentExpiry} size="sm" />
-          )}
-        </div>
-      </div>
-
-      {(lot.notes || lot.note || isEditing) && (
-        <div className="lot-notes">
-          {isEditing ? (
-            <textarea
-              value={editData.notes}
-              onChange={(e) => setEditData(prev => ({ ...prev, notes: e.target.value }))}
-              placeholder="Notes..."
-              className="notes-input"
-              rows="2"
-            />
-          ) : (
-            <p>{lot.notes || lot.note}</p>
-          )}
-        </div>
-      )}
-
-      <div className="lot-actions">
-        {isEditing ? (
-          <>
-            <button onClick={handleSave} className="btn-save">
-              Sauver
-            </button>
-            <button onClick={() => setIsEditing(false)} className="btn-cancel">
-              Annuler
-            </button>
-          </>
-        ) : (
-          <>
-            <button onClick={() => setIsEditing(true)} className="btn-edit">
-              Modifier
-            </button>
-            <button onClick={handleDelete} className="btn-delete">
-              Supprimer
-            </button>
-          </>
-        )}
-      </div>
-
-      <style jsx>{`
-        .lot-card {
-          background: white;
-          border: 1px solid #e5e7eb;
-          border-radius: 8px;
-          padding: 12px;
-          transition: all 0.2s;
+        .btn-manage:hover {
+          background: var(--forest-600, #6b9d6b);
         }
 
-        .lot-card:hover {
-          border-color: #d1d5db;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+        @media (max-width: 768px) {
+          .product-header {
+            padding: 12px;
+          }
 
-        .lot-header {
-          display: flex;
-          justifyContent: space-between;
-          align-items: flex-start;
-          margin-bottom: 8px;
-        }
+          .product-expanded {
+            padding: 12px;
+          }
 
-        .lot-info {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
-
-        .lot-quantity {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          font-weight: 600;
-          color: #111827;
-        }
-
-        .unit {
-          color: #6b7280;
-          font-weight: normal;
-          font-size: 14px;
-        }
-
-        .lot-storage {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          font-size: 12px;
-          color: #6b7280;
-        }
-
-        .storage-place {
-          color: #9ca3af;
-        }
-
-        .lot-expiry {
-          text-align: right;
-        }
-
-        .lot-notes {
-          margin: 8px 0;
-          padding: 8px;
-          background: #f9fafb;
-          border-radius: 6px;
-          font-size: 12px;
-          color: #6b7280;
-        }
-
-        .lot-notes p {
-          margin: 0;
-          font-style: italic;
-        }
-
-        .lot-actions {
-          display: flex;
-          gap: 6px;
-          margin-top: 8px;
-        }
-
-        .lot-actions button {
-          padding: 4px 8px;
-          border-radius: 4px;
-          font-size: 11px;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-
-        .btn-edit, .btn-save {
-          background: #e0f2fe;
-          color: #0369a1;
-          border: 1px solid #0369a1;
-        }
-
-        .btn-edit:hover, .btn-save:hover {
-          background: #0369a1;
-          color: white;
-        }
-
-        .btn-delete, .btn-cancel {
-          background: #fef2f2;
-          color: #dc2626;
-          border: 1px solid #dc2626;
-        }
-
-        .btn-delete:hover, .btn-cancel:hover {
-          background: #dc2626;
-          color: white;
-        }
-
-        .qty-input, .date-input {
-          padding: 2px 6px;
-          border: 1px solid #d1d5db;
-          border-radius: 4px;
-          font-size: 12px;
-          width: 120px;
-        }
-
-        .notes-input {
-          width: 100%;
-          padding: 6px;
-          border: 1px solid #d1d5db;
-          border-radius: 4px;
-          font-size: 12px;
-          resize: vertical;
+          .product-meta {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+          }
         }
       `}</style>
     </div>
