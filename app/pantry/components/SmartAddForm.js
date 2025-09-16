@@ -102,6 +102,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         setSearchResults([]);
         return;
       }
+      const escaped = q.replace(/[,{}"]/g, '');
       setSearchLoading(true);
       try {
         // Recherche principale: canonical_name ILIKE + keywords array contains
@@ -117,7 +118,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_fridge,
             shelf_life_days_freezer
           `)
-          .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}}`)
+          .or(`canonical_name.ilike.%${escaped}%,keywords.cs.{"${escaped}"}`)
           .limit(12);
 
         if (error) throw error;
