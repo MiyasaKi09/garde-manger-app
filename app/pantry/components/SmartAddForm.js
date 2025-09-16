@@ -1,7 +1,7 @@
 // app/pantry/components/SmartAddForm.js
 'use client';
 
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { Search, Plus, X, Calendar, MapPin, ShieldCheck } from 'lucide-react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
@@ -19,6 +19,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
+  const [searchError, setSearchError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [confidence, setConfidence] = useState({ percent: 0, label: 'Faible', tone: 'warning' });
   const [loading, setLoading] = useState(false);
@@ -34,7 +35,16 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   const searchInputRef = useRef(null);
   const qtyInputRef = useRef(null);
-  const supabase = createClientComponentClient();
+
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      return createClientComponentClient();
+    } catch (error) {
+      console.error('Supabase client init error', error);
+      return null;
+    }
+  }, []);
 
   // Reset form when opened
   useEffect(() => {
@@ -45,6 +55,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       setSelectedProduct(null);
       setConfidence({ percent: 0, label: 'Faible', tone: 'warning' });
       setLotData({ qty: '', unit: 'g', storage_method: 'pantry', storage_place: '', expiration_date: '', notes: '' });
+      setSearchError(null);
       setTimeout(() => searchInputRef.current?.focus(), 100);
     }
   }, [open]);
@@ -100,18 +111,21 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       const q = query.trim();
       if (!q) {
         setSearchResults([]);
+        setSearchError(null);
         return;
       }
       setSearchLoading(true);
- codex/update-pantry-page-styling-x4u3ry
       setSearchError(null);
+
       try {
+        if (!supabase) {
+          throw new Error('Service de recherche indisponible');
+        }
+
         const escaped = q.replace(/[%_]/g, '\\$&');
 
         // 1) recherche sur le nom canonique
         const { data: nameMatches, error: nameError } = await supabase
-
- main
           .from('canonical_foods')
           .select(`
             id,
@@ -123,7 +137,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_fridge,
             shelf_life_days_freezer
           `)
- codex/update-pantry-page-styling-x4u3ry
           .ilike('canonical_name', `%${escaped}%`)
           .limit(15);
 
@@ -167,8 +180,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         }
 
         const normalized = combined.map((row) => ({
-
- main
           id: row.id,
           type: 'canonical',
           name: row.canonical_name,
@@ -194,9 +205,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
         // Toujours offrir la création d'un nouveau produit (basée sur la saisie)
         const results = [
-codex/update-pantry-page-styling-x4u3ry
           ...normalized.slice(0, 11),
- main
           {
             id: 'new-product',
             type: 'new',
@@ -211,10 +220,7 @@ codex/update-pantry-page-styling-x4u3ry
         setSearchResults(results);
       } catch (e) {
         console.error('search error', e);
- codex/update-pantry-page-styling-x4u3ry
-        setSearchError('Erreur lors de la recherche');
-
-main
+        setSearchError(e?.message || 'Erreur lors de la recherche');
         setSearchResults([
           {
             id: 'new-product',
@@ -227,11 +233,11 @@ main
           }
         ]);
       } finally {
-      setSearchLoading(false);
-    }
-  },
-  [supabase]
-);
+        setSearchLoading(false);
+      }
+    },
+    [supabase]
+  );
 
   // Debounce
   useEffect(() => {
@@ -276,6 +282,7 @@ main
   // Création du produit canonique minimal si nécessaire
   const ensureCanonicalExists = useCallback(
     async (name) => {
+      if (!supabase) throw new Error('Service Supabase indisponible');
       const clean = name.trim();
       if (!clean) throw new Error('Nom de produit vide');
 
@@ -307,6 +314,10 @@ main
   // Création du lot -> insertion directe Supabase
   const handleCreateLot = useCallback(async () => {
     if (!selectedProduct || !lotData.qty) return;
+    if (!supabase) {
+      alert('Service Supabase indisponible. Vérifiez la configuration.');
+      return;
+    }
     setLoading(true);
     try {
       // Auth (utile si RLS utilise user_id)
@@ -340,7 +351,7 @@ main
       if (lotErr) throw lotErr;
 
       // callback parent si fourni
-      if (onLotCreated) onLotCreated(lot?.id ?? null);
+      onLotCreated?.(lot?.id ?? null);
 
       // reset & close
       setLoading(false);
@@ -401,15 +412,12 @@ main
                   <small>
                     🔍 Recherche: "{searchQuery}" • {searchResults.length} résultats
                   </small>
- codex/update-pantry-page-styling-x4u3ry
                 </div>
               )}
 
               {searchError && (
                 <div className="error-info">
                   <small>⚠️ {searchError}</small>
-
-main
                 </div>
               )}
 
@@ -452,7 +460,9 @@ main
                 <div className="product-icon">{selectedProduct.icon}</div>
                 <div className="product-info">
                   <div className="product-name">{selectedProduct.display_name}</div>
-                  <div className="product-source">{selectedProduct.type === 'canonical' ? 'Base de données' : 'Nouveau produit'}</div>
+                  <div className="product-source">
+                    {selectedProduct.type === 'canonical' ? 'Base de données' : 'Nouveau produit'}
+                  </div>
                 </div>
                 <div className={`confidence-badge ${confidence.tone}`}>
                   <ShieldCheck size={14} />
@@ -524,7 +534,8 @@ main
 
                 <div className="form-group">
                   <label htmlFor="expiration_date">
-                    <Calendar size={16} />Date d'expiration
+                    <Calendar size={16} />
+                    Date d'expiration
                   </label>
                   <input
                     id="expiration_date"
@@ -537,7 +548,8 @@ main
 
                 <div className="form-group">
                   <label htmlFor="storage_place">
-                    <MapPin size={16} />Lieu (optionnel)
+                    <MapPin size={16} />
+                    Lieu (optionnel)
                   </label>
                   <input
                     id="storage_place"
@@ -592,10 +604,7 @@ main
         .loading { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); animation: spin 1s linear infinite; }
         @keyframes spin { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
         .debug-info { margin-bottom: 1rem; padding: .5rem; background: #f0f9ff; border-radius: 6px; color: #1d4ed8; }
- codex/update-pantry-page-styling-x4u3ry
         .error-info { margin-bottom: 1rem; padding: .5rem; background: #fef2f2; border-radius: 6px; color: #b91c1c; }
-
- main
         .results-list { display: flex; flex-direction: column; gap: .5rem; max-height: 300px; overflow-y: auto; }
         .result-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 12px; cursor: pointer; background: white; }
         .result-item:hover { border-color: #c8d8c8; background: #f8fdf8; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.1); }
