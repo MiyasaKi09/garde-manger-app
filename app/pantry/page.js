@@ -1,318 +1,525 @@
 'use client';
 
-import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
-import { Search, Plus, X, Calendar, MapPin, ShieldCheck } from 'lucide-react';
-import { supabase as supabaseClient } from '@/lib/supabaseClient';
+import { useEffect, useState, useCallback, useMemo } from 'react';
+import { RefreshCw, Leaf, Package, Droplets, Sun } from 'lucide-react';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
-export default function SmartAddForm({ open, onClose, onLotCreated }) {
-  const [step, setStep] = useState(1);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchLoading, setSearchLoading] = useState(false);
-  const [searchError, setSearchError] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [confidence, setConfidence] = useState({ percent: 0, label: 'Faible', tone: 'warning' });
-  const [loading, setLoading] = useState(false);
+import PantryStats from './components/PantryStats';
+import ProductCard from './components/ProductCard';
+import LotsView from './components/LotsView';
+import SmartAddForm from './components/SmartAddForm';
 
-  const [lotData, setLotData] = useState({
-    qty: '',
-    unit: 'g',
-    storage_method: 'pantry',
-    storage_place: '',
-    expiration_date: '',
-    notes: ''
-  });
+import { daysUntil, getExpirationStatus, formatQuantity, groupLotsByProduct } from './components/pantryUtils';
 
-  const searchInputRef = useRef(null);
-  const qtyInputRef = useRef(null);
+/* ===========================
+   Hook données Supabase - Version corrigée pour la vraie DB
+   =========================== */
+function usePantryData() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [lots, setLots] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const supabase = createClientComponentClient();
 
-  const supabase = useMemo(() => supabaseClient, []);
-
-  // Reset form when open
-  useEffect(() => {
-    if (open) {
-      setStep(1);
-      setSearchQuery('');
-      setSearchResults([]);
-      setSelectedProduct(null);
-      setConfidence({ percent: 0, label: 'Faible', tone: 'warning' });
-      setLotData({ qty: '', unit: 'g', storage_method: 'pantry', storage_place: '', expiration_date: '', notes: '' });
-      setSearchError(null);
-      setTimeout(() => searchInputRef.current?.focus(), 100);
-    }
-  }, [open]);
-
-  useEffect(() => {
-    if (step === 2) setTimeout(() => qtyInputRef.current?.focus(), 100);
-  }, [step]);
-
-  // --- Helpers ---
-  const calcConfidence = useCallback((query, name) => {
-    if (!query || !name) return { percent: 0, label: 'Faible', tone: 'warning' };
-    const q = query.trim().toLowerCase();
-    const n = name.trim().toLowerCase();
-    let score = 0;
-    if (n === q) score = 1.0;
-    else if (n.startsWith(q)) score = 0.85;
-    else if (n.includes(q)) score = 0.6;
-    else score = 0.3;
-    const percent = Math.round(score * 100);
-    const label = percent >= 80 ? 'Élevée' : percent >= 50 ? 'Moyenne' : 'Faible';
-    const tone = percent >= 80 ? 'good' : percent >= 50 ? 'neutral' : 'warning';
-    return { percent, label, tone };
-  }, []);
-
-  const estimateExpiry = useCallback((product, method) => {
-    if (!product) return '';
-    const map = {
-      fridge: product.shelf_life_days_fridge,
-      pantry: product.shelf_life_days_pantry,
-      freezer: product.shelf_life_days_freezer,
-      counter: product.shelf_life_days_pantry ?? product.shelf_life_days_fridge
-    };
-    const days = map[method] ?? map.pantry ?? 7;
-    if (!days || Number.isNaN(days)) return '';
-    const d = new Date();
-    d.setDate(d.getDate() + Number(days));
-    return d.toISOString().slice(0, 10);
-  }, []);
-
-  const defaultQtyForUnit = useCallback((unit) => {
-    if (!unit) return '';
-    const u = unit.toLowerCase();
-    if (u === 'u' || u === 'pièce') return 1;
-    if (u === 'kg' || u === 'l') return 1;
-    if (u === 'g' || u === 'ml') return 250;
-    return '';
-  }, []);
-
-  // --- Recherche produits ---
-  const searchProducts = useCallback(async (query) => {
-    const q = query.trim();
-    if (!q) {
-      setSearchResults([]);
-      setSearchError(null);
-      return;
-    }
-    setSearchLoading(true);
-    setSearchError(null);
-
+  const load = useCallback(async () => {
     try {
+      setLoading(true);
+      setError('');
+
+      // Charger les catégories depuis reference_categories
+      const { data: categoriesData } = await supabase
+        .from('reference_categories')
+        .select('*')
+        .order('sort_priority');
+
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) { 
+        setLots([]);
+        setLoading(false);
+        return;
+      }
+
+      // ✅ CORRECTION: Adapter à la vraie structure de DB
+      // On utilise inventory_lots qui peut référencer canonical_foods, cultivars ou generic_products
       const { data, error } = await supabase
-        .from('canonical_foods')
+        .from('inventory_lots')
         .select(`
-          id,
-          canonical_name,
-          category_id,
-          subcategory,
-          primary_unit,
-          shelf_life_days_pantry,
-          shelf_life_days_fridge,
-          shelf_life_days_freezer
+          *,
+          canonical_food:canonical_foods (
+            id,
+            canonical_name,
+            category_id,
+            subcategory,
+            primary_unit,
+            shelf_life_days_pantry,
+            shelf_life_days_fridge,
+            shelf_life_days_freezer,
+            category:reference_categories(name, icon, color_hex)
+          ),
+          cultivar:cultivars (
+            id,
+            cultivar_name,
+            canonical_food:canonical_foods (
+              id,
+              canonical_name,
+              category_id,
+              primary_unit,
+              shelf_life_days_pantry,
+              shelf_life_days_fridge,
+              shelf_life_days_freezer,
+              category:reference_categories(name, icon, color_hex)
+            )
+          ),
+          generic_product:generic_products (
+            id,
+            name,
+            category_id,
+            primary_unit,
+            category:reference_categories(name, icon, color_hex)
+          ),
+          location:locations (name, icon)
         `)
-        .ilike('canonical_name', `%${q}%`)
-        .limit(15);
+        .eq('user_id', user.id)
+        .order('expiration_date', { ascending: true });
 
       if (error) throw error;
 
-      const normalized = (data || []).map((row) => ({
-        id: row.id,
-        type: 'canonical',
-        name: row.canonical_name,
-        display_name: row.canonical_name,
-        subcategory: row.subcategory,
-        category: { name: row.subcategory || 'Aliment', icon: '🥬' },
-        primary_unit: row.primary_unit || 'g',
-        shelf_life_days_fridge: row.shelf_life_days_fridge,
-        shelf_life_days_pantry: row.shelf_life_days_pantry,
-        shelf_life_days_freezer: row.shelf_life_days_freezer,
-        icon: '🥬'
-      }));
+      // Transformer les données pour les adapter à l'interface
+      const transformed = (data || []).map(item => {
+        let productInfo = null;
+        let categoryInfo = null;
 
-      setSearchResults([
-        ...normalized,
-        {
-          id: 'new-product',
-          type: 'new',
-          name: q,
-          display_name: q,
-          category: { name: 'À définir', icon: '📦' },
-          primary_unit: 'g',
-          icon: '➕'
+        // Déterminer le type de produit et extraire les infos
+        if (item.canonical_food) {
+          productInfo = {
+            id: item.canonical_food.id,
+            name: item.canonical_food.canonical_name,
+            type: 'canonical',
+            primary_unit: item.canonical_food.primary_unit,
+            shelf_life: {
+              pantry: item.canonical_food.shelf_life_days_pantry,
+              fridge: item.canonical_food.shelf_life_days_fridge,
+              freezer: item.canonical_food.shelf_life_days_freezer
+            }
+          };
+          categoryInfo = item.canonical_food.category;
+        } else if (item.cultivar) {
+          productInfo = {
+            id: item.cultivar.id,
+            name: item.cultivar.cultivar_name,
+            type: 'cultivar',
+            canonical_food_id: item.cultivar.canonical_food?.id,
+            primary_unit: item.cultivar.canonical_food?.primary_unit,
+            shelf_life: {
+              pantry: item.cultivar.canonical_food?.shelf_life_days_pantry,
+              fridge: item.cultivar.canonical_food?.shelf_life_days_fridge,
+              freezer: item.cultivar.canonical_food?.shelf_life_days_freezer
+            }
+          };
+          categoryInfo = item.cultivar.canonical_food?.category;
+        } else if (item.generic_product) {
+          productInfo = {
+            id: item.generic_product.id,
+            name: item.generic_product.name,
+            type: 'generic',
+            primary_unit: item.generic_product.primary_unit
+          };
+          categoryInfo = item.generic_product.category;
         }
-      ]);
+
+        return {
+          id: item.id,
+          canonical_food_id: productInfo?.canonical_food_id || productInfo?.id,
+          display_name: item.display_name || productInfo?.name || 'Produit inconnu',
+          category_name: categoryInfo?.name || 'Autre',
+          category_icon: categoryInfo?.icon || '📦',
+          category_color: categoryInfo?.color_hex || '#808080',
+          qty_remaining: item.qty_remaining || 0,
+          unit: item.unit || productInfo?.primary_unit || 'unité',
+          effective_expiration: item.expiration_date,
+          location_name: item.location?.name || 'Non spécifié',
+          location_id: item.location_id || null,
+          storage_method: item.storage_method || 'pantry',
+          notes: item.notes,
+          meta: {
+            shelf: productInfo?.shelf_life || { pantry: null, fridge: null, freezer: null },
+            primary_unit: productInfo?.primary_unit || null,
+            product_type: productInfo?.type || 'unknown'
+          }
+        };
+      });
+
+      setCategories(categoriesData || []);
+      setLots(transformed);
     } catch (e) {
-      console.error('search error', e);
-      setSearchError(e?.message || 'Erreur lors de la recherche');
-    } finally {
-      setSearchLoading(false);
-    }
-  }, [supabase]);
-
-  useEffect(() => {
-    if (!searchQuery.trim()) {
-      setSearchResults([]);
-      return;
-    }
-    const t = setTimeout(() => searchProducts(searchQuery), 300);
-    return () => clearTimeout(t);
-  }, [searchQuery, searchProducts]);
-
-  // Sélection d’un produit
-  const handleSelectProduct = useCallback((product) => {
-    setSelectedProduct(product);
-    const conf = calcConfidence(searchQuery, product.name || product.display_name);
-    setConfidence(conf);
-
-    const unit = product.primary_unit || 'g';
-    const expiry = product.type === 'canonical' ? estimateExpiry(product, 'pantry') : '';
-    const qty = defaultQtyForUnit(unit);
-
-    setLotData((prev) => ({ ...prev, unit, qty: prev.qty || qty, expiration_date: expiry }));
-    setStep(2);
-  }, [searchQuery, calcConfidence, estimateExpiry, defaultQtyForUnit]);
-
-  // Création d’un lot
-  const handleCreateLot = useCallback(async () => {
-    if (!selectedProduct || !lotData.qty) return;
-    setLoading(true);
-    try {
-      const { data: auth } = await supabase.auth.getUser();
-      const userId = auth?.user?.id || null;
-
-      let canonical = null;
-      if (selectedProduct.type === 'canonical') {
-        canonical = { id: selectedProduct.id, primary_unit: selectedProduct.primary_unit };
-      } else {
-        const { data: inserted, error } = await supabase
-          .from('canonical_foods')
-          .insert({ canonical_name: selectedProduct.name, primary_unit: 'g' })
-          .select('id, canonical_name, primary_unit')
-          .single();
-        if (error) throw error;
-        canonical = inserted;
-      }
-
-      const payload = {
-        canonical_food_id: canonical?.id ?? null,
-        display_name: selectedProduct.display_name || selectedProduct.name,
-        qty_remaining: Number(lotData.qty),
-        unit: lotData.unit,
-        effective_expiration: lotData.expiration_date || null,
-        location_name: lotData.storage_place || null,
-        notes: lotData.notes || null,
-        storage_method: lotData.storage_method,
-        created_by: userId
-      };
-
-      const { data: lot, error: lotErr } = await supabase
-        .from('inventory_lots')
-        .insert(payload)
-        .select('id')
-        .single();
-      if (lotErr) throw lotErr;
-
-      onLotCreated?.(lot?.id ?? null);
-      onClose?.();
-    } catch (e) {
-      console.error('create lot error', e);
-      alert(e?.message || 'Erreur lors de la création du lot');
+      console.error('Erreur chargement pantry:', e);
+      setError('Impossible de charger les données du garde-manger.');
     } finally {
       setLoading(false);
     }
-  }, [selectedProduct, lotData, supabase, onLotCreated, onClose]);
+  }, [supabase]);
 
-  if (!open) return null;
+  useEffect(() => { load(); }, [load]);
+
+  const refresh = useCallback(() => load(), [load]);
+
+  // ✅ CORRECTION: Adapter addLot pour la vraie structure
+  const addLot = useCallback(async (payload) => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    try {
+      // Construire l'objet d'insertion pour inventory_lots
+      const insertData = {
+        user_id: user.id,
+        qty_remaining: payload.qty_remaining,
+        unit: payload.unit,
+        expiration_date: payload.effective_expiration,
+        storage_method: payload.storage_method || 'pantry',
+        storage_place: payload.location_name,
+        notes: payload.notes,
+        display_name: payload.display_name,
+        source: 'manual'
+      };
+
+      // Ajouter la référence au produit selon le type
+      if (payload.canonical_food_id) {
+        insertData.canonical_food_id = payload.canonical_food_id;
+      } else if (payload.cultivar_id) {
+        insertData.cultivar_id = payload.cultivar_id;
+      } else if (payload.generic_product_id) {
+        insertData.generic_product_id = payload.generic_product_id;
+      }
+
+      const { error } = await supabase
+        .from('inventory_lots')
+        .insert(insertData)
+        .select()
+        .single();
+
+      if (error) throw error;
+      await load(); // Recharger les données
+    } catch (error) {
+      console.error('Erreur ajout lot:', error);
+      setError('Erreur lors de l\'ajout du lot');
+    }
+  }, [supabase, load]);
+
+  const updateLot = useCallback(async (id, patch) => {
+    try {
+      const { error } = await supabase
+        .from('inventory_lots')
+        .update({
+          qty_remaining: patch.qty_remaining,
+          unit: patch.unit,
+          expiration_date: patch.effective_expiration,
+          display_name: patch.display_name,
+          notes: patch.notes
+        })
+        .eq('id', id);
+
+      if (error) throw error;
+      await load();
+    } catch (error) {
+      console.error('Erreur mise à jour lot:', error);
+      setError('Erreur lors de la mise à jour');
+    }
+  }, [supabase, load]);
+
+  const deleteLot = useCallback(async (id) => {
+    try {
+      const { error } = await supabase
+        .from('inventory_lots')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+      await load();
+    } catch (error) {
+      console.error('Erreur suppression lot:', error);
+      setError('Erreur lors de la suppression');
+    }
+  }, [supabase, load]);
+
+  return { loading, error, lots, categories, refresh, addLot, updateLot, deleteLot };
+}
+
+/* ============================
+   Page principale garde-manger
+   ============================ */
+export default function PantryPage() {
+  const { loading, error, lots, categories, refresh, addLot, updateLot, deleteLot } = usePantryData();
+  
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('all');
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [activeProduct, setActiveProduct] = useState(null);
+
+  // Grouper lots par produit
+  const groupedProducts = useMemo(() => {
+    return groupLotsByProduct(lots);
+  }, [lots]);
+
+  // Produits filtrés selon recherche + filtre
+  const filteredProducts = useMemo(() => {
+    let arr = [...groupedProducts];
+    
+    // Filtre recherche
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      arr = arr.filter(p => p.productName.toLowerCase().includes(q));
+    }
+    
+    // Filtre état
+    if (selectedFilter !== 'all') {
+      arr = arr.filter(p => {
+        const d = daysUntil(p.nextExpiry);
+        if (selectedFilter === 'expiring') return d !== null && d <= 7;
+        if (selectedFilter === 'fresh') return d === null || d > 7;
+        return true;
+      });
+    }
+    
+    // Tri par urgence
+    return arr.sort((a, b) => {
+      const da = daysUntil(a.nextExpiry);
+      const db = daysUntil(b.nextExpiry);
+      if (da === null && db === null) return a.productName.localeCompare(b.productName);
+      if (da === null) return 1;
+      if (db === null) return -1;
+      return da - db;
+    });
+  }, [groupedProducts, searchQuery, selectedFilter]);
+
+  // Stats
+  const stats = useMemo(() => {
+    const total = groupedProducts.length;
+    let expiring = 0, fresh = 0;
+    groupedProducts.forEach(p => {
+      const d = daysUntil(p.nextExpiry);
+      if (d !== null && d <= 7) expiring++; 
+      else fresh++;
+    });
+    return { totalProducts: total, expiringCount: expiring, freshCount: fresh };
+  }, [groupedProducts]);
+
+  // ✅ PROTECTION: Vérifier que tous les composants sont définis
+  const componentsReady = useMemo(() => {
+    const components = { PantryStats, ProductCard, LotsView, SmartAddForm, Leaf };
+    const missing = Object.entries(components)
+      .filter(([name, component]) => !component)
+      .map(([name]) => name);
+    
+    if (missing.length > 0) {
+      console.error('❌ Composants manquants:', missing);
+      return false;
+    }
+    return true;
+  }, []);
+
+  if (!componentsReady) {
+    return (
+      <div className="pantry-container">
+        <div className="error-text">
+          Erreur: Certains composants ne sont pas disponibles. Vérifiez la console pour plus de détails.
+        </div>
+        <style jsx>{styles}</style>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner">
+          <Leaf className="spin" size={32}/>
+        </div>
+        <p>Chargement du garde-manger...</p>
+        <style jsx>{styles}</style>
+      </div>
+    );
+  }
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-container">
-        <div className="modal-header">
-          <div className="header-title">
-            <Plus size={20} />
-            <span>Ajouter un produit</span>
+    <div className="pantry-container">
+      {/* En-tête + stats */}
+      <header className="pantry-header glass-card">
+        <div className="header-main">
+          <div className="title-section">
+            <h1>
+              <Leaf className="title-icon"/> Mon garde-manger vivant
+            </h1>
+            <p>Cultivez l'harmonie entre vos réserves et la nature</p>
           </div>
-          <button onClick={() => onClose?.()} className="close-btn"><X size={20} /></button>
+          <PantryStats
+            stats={stats}
+            onAll={()=>setSelectedFilter('all')}
+            onFresh={()=>setSelectedFilter('fresh')}
+            onExpiring={()=>setSelectedFilter('expiring')}
+          />
         </div>
-
-        <div className="progress-bar">
-          <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>1. Produit</div>
-          <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>2. Quantité</div>
+        <div className="header-actions">
+          <button onClick={refresh} className="btn-organic secondary">
+            <RefreshCw size={16}/> Actualiser
+          </button>
+          <button onClick={()=>setShowAddForm(true)} className="btn-organic primary">
+            <Package size={16}/> Ajouter
+          </button>
         </div>
+      </header>
 
-        <div className="modal-content">
-          {step === 1 && (
-            <div className="search-step">
-              <div className="search-wrapper">
-                <Search size={20} className="search-icon" />
-                <input
-                  ref={searchInputRef}
-                  type="text"
-                  placeholder="Rechercher un produit..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="search-input"
-                />
-                {searchLoading && <div className="loading">🔄</div>}
-              </div>
-
-              {searchError && <div className="error-info"><small>⚠️ {searchError}</small></div>}
-
-              <div className="results-list">
-                {searchResults.map((p) => (
-                  <div key={`${p.type}-${p.id}`} className="result-item" onClick={() => handleSelectProduct(p)}>
-                    <div className="result-icon">{p.icon}</div>
-                    <div>{p.display_name}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {step === 2 && selectedProduct && (
-            <div className="form-step">
-              <div className="product-summary">
-                <div className="product-icon">{selectedProduct.icon}</div>
-                <div>{selectedProduct.display_name}</div>
-              </div>
-
-              <div className="lot-form">
-                <label>Quantité *</label>
-                <input ref={qtyInputRef} type="number" value={lotData.qty}
-                  onChange={(e) => setLotData({ ...lotData, qty: e.target.value })} />
-
-                <label>Unité</label>
-                <select value={lotData.unit} onChange={(e) => setLotData({ ...lotData, unit: e.target.value })}>
-                  <option value="g">g</option>
-                  <option value="kg">kg</option>
-                  <option value="ml">ml</option>
-                  <option value="l">l</option>
-                  <option value="u">pièce</option>
-                </select>
-
-                <label>Date d'expiration</label>
-                <input type="date" value={lotData.expiration_date}
-                  onChange={(e) => setLotData({ ...lotData, expiration_date: e.target.value })} />
-
-                <label>Lieu</label>
-                <input type="text" value={lotData.storage_place}
-                  onChange={(e) => setLotData({ ...lotData, storage_place: e.target.value })} />
-
-                <label>Notes</label>
-                <textarea value={lotData.notes}
-                  onChange={(e) => setLotData({ ...lotData, notes: e.target.value })}></textarea>
-              </div>
-
-              <div className="form-actions">
-                <button onClick={() => setStep(1)} disabled={loading}>Retour</button>
-                <button onClick={handleCreateLot} disabled={loading || !lotData.qty}>
-                  {loading ? 'Création...' : 'Créer le lot'}
-                </button>
-              </div>
-            </div>
-          )}
+      {/* Recherche + filtres */}
+      <div className="search-bar glass-card">
+        <div className="search-input-wrapper">
+          <input
+            type="text"
+            placeholder="Rechercher dans le garde-manger..."
+            value={searchQuery}
+            onChange={(e)=>setSearchQuery(e.target.value)}
+            className="search-input"
+          />
+        </div>
+        <div className="filter-pills">
+          {[
+            {key:'all', label:'Tous'},
+            {key:'expiring', label:'À consommer'},
+            {key:'fresh', label:'Longue conservation'},
+          ].map(f=>(
+            <button
+              key={f.key}
+              className={`filter-pill ${selectedFilter===f.key?'active':''}`}
+              onClick={()=>setSelectedFilter(f.key)}
+            >
+              {f.label}
+            </button>
+          ))}
         </div>
       </div>
+
+      {/* Grille produits */}
+      <div className="products-garden">
+        {filteredProducts.length === 0 ? (
+          <div className="empty-state glass-card">
+            <Package size={48} style={{opacity:0.3}}/>
+            <h3>Votre garde-manger attend ses premières réserves</h3>
+            <p>Commencez à cultiver votre autonomie alimentaire</p>
+            <button onClick={()=>setShowAddForm(true)} className="btn-organic primary">
+              <Package size={16}/> Ajouter un premier produit
+            </button>
+          </div>
+        ) : (
+          filteredProducts.map(p => (
+            <ProductCard 
+              key={p.productId} 
+              product={p} 
+              onOpen={()=>setActiveProduct(p)} 
+            />
+          ))
+        )}
+      </div>
+
+      {/* Sheet lots */}
+      {activeProduct && (
+        <LotsView
+          product={activeProduct}
+          onClose={()=>setActiveProduct(null)}
+          onUpdateLot={updateLot}
+          onDeleteLot={deleteLot}
+          onAddLot={(payload)=>{
+            if (!activeProduct) return;
+            addLot({
+              ...payload,
+              canonical_food_id: activeProduct.productId,
+              display_name: activeProduct.productName,
+              category_name: activeProduct.category
+            });
+          }}
+        />
+      )}
+
+      {/* Modal ajout intelligent - Version simplifiée */}
+      <SmartAddForm
+        open={showAddForm}
+        onClose={()=>setShowAddForm(false)}
+        onLotCreated={() => {
+          refresh();
+        }}
+      />
+
+      {error && <p className="error-text">{error}</p>}
+      <style jsx>{styles}</style>
     </div>
   );
 }
+
+/* ================
+   Styles (JSX CSS)
+   ================ */
+const styles = `
+.pantry-container{min-height:100vh;padding:1.5rem;max-width:1200px;margin:0 auto;font-family:'Inter',-apple-system,sans-serif}
+.glass-card{background:rgba(255,255,255,.75);backdrop-filter:blur(6px) saturate(110%);-webkit-backdrop-filter:blur(6px) saturate(110%);border:1px solid rgba(0,0,0,.08);box-shadow:0 6px 20px rgba(0,0,0,.12);border-radius:20px;position:relative;overflow:hidden}
+.pantry-header{margin-bottom:1.5rem;padding:1.5rem;animation:float-in .6s ease-out}
+.header-main{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.title-section h1{font-size:1.8rem;font-weight:750;color:var(--forest-700,#2d5a2d);display:flex;align-items:center;gap:.6rem;margin:0 0 .4rem}
+.title-icon{animation:sway 3s ease-in-out infinite}
+.title-section p{color:var(--earth-600,#8b7a5d);margin:0}
+.header-actions{display:flex;gap:.75rem}
+.btn-organic{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.2rem;border:none;border-radius:999px;font-weight:650;font-size:.9rem;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.btn-organic.primary{background:linear-gradient(135deg,var(--forest-500,#8bb58b),var(--forest-600,#6b9d6b));color:#fff;box-shadow:0 4px 12px rgba(139,181,139,.3)}
+.btn-organic.primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(139,181,139,.4)}
+.btn-organic.secondary{background:rgba(255,255,255,.85);color:var(--forest-700,#2d5a2d);border:2px solid var(--forest-300,#c8d8c8)}
+.btn-organic.secondary:hover{background:#fff;transform:translateY(-1px)}
+.search-bar{margin-bottom:1.5rem;padding:1rem;animation:float-in .7s ease-out .05s both}
+.search-input-wrapper{position:relative;margin-bottom:.75rem}
+.search-input{width:100%;padding:.8rem 1rem;border:2px solid transparent;border-radius:999px;background:rgba(255,255,255,.85);font-size:1rem;transition:all .25s}
+.search-input:focus{outline:none;border-color:var(--forest-400,#a8c5a8);background:#fff;box-shadow:0 0 0 3px rgba(168,197,168,.2)}
+.filter-pills{display:flex;gap:.6rem;flex-wrap:wrap}
+.filter-pill{padding:.45rem 1.1rem;border:2px solid var(--earth-200,#ebe5da);border-radius:999px;background:rgba(255,255,255,.75);color:var(--earth-700,#8b7a5d);font-size:.85rem;font-weight:550;cursor:pointer;transition:all .2s}
+.filter-pill.active{background:var(--forest-500,#8bb58b);color:#fff;border-color:var(--forest-500,#8bb58b)}
+.filter-pill:hover:not(.active){background:rgba(255,255,255,.9);border-color:var(--forest-400,#a8c5a8)}
+.products-garden{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;animation:float-in .8s ease-out .1s both}
+.empty-state{grid-column:1 / -1;padding:3rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.empty-state h3{color:var(--forest-700,#2d5a2d);margin:0;font-size:1.25rem}
+.empty-state p{color:var(--earth-600,#8b7a5d);margin:0}
+.loading-container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:1rem;color:var(--forest-600,#4a7c4a)}
+.loading-spinner{animation:spin 2s linear infinite}
+.error-text{margin-top:1rem;color:#dc2626;padding:1rem;background:#fef2f2;border-radius:8px;border:1px solid #fecaca;display:flex;align-items:center;gap:0.5rem}
+.error-text::before{content:'⚠️';font-size:1.1em}
+
+/* Animations */
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Variables CSS pour cohérence */
+:root {
+  --forest-50: #f8fdf8;
+  --forest-100: #f0f9f0;
+  --forest-200: #dcf4dc;
+  --forest-300: #c8d8c8;
+  --forest-400: #a8c5a8;
+  --forest-500: #8bb58b;
+  --forest-600: #6b9d6b;
+  --forest-700: #2d5a2d;
+  --forest-800: #1a3a1a;
+  --earth-200: #ebe5da;
+  --earth-600: #8b7a5d;
+  --earth-700: #6d5d42;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pantry-container { padding: 1rem; }
+  .header-main { flex-direction: column; gap: 1rem; }
+  .header-actions { width: 100%; justify-content: center; }
+  .products-garden { grid-template-columns: 1fr; }
+  .filter-pills { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .title-section h1 { font-size: 1.5rem; }
+  .btn-organic { padding: 0.6rem 1rem; font-size: 0.8rem; }
+  .search-input { padding: 0.7rem; }
+  .filter-pill { padding: 0.4rem 1rem; font-size: 0.8rem; }
+}
+`;
