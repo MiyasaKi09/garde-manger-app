@@ -441,9 +441,8 @@ export default function PantryPage() {
       <SmartAddForm
         open={showAddForm}
         onClose={()=>setShowAddForm(false)}
-        onCreate={(payload) => { 
-          addLot(payload); 
-          setShowAddForm(false); 
+        onLotCreated={() => {
+          refresh();
         }}
       />
 
