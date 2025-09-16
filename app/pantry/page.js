@@ -1,173 +1,4 @@
-</label>
-
-        <label>
-          <span className="label">Quantité</span>
-          <input className="field" type="number" step="0.01" value={qty} onChange={e=>setQty(e.target.value)} />
-        </label>
-        <label>
-          <span className="label">Unité</span>
-          <input className="field" value={unit} onChange={e=>setUnit(e.target.value)} />
-        </label>
-        <label>
-          <span className="label">Date limite</span>
-          <input className="field" type="date" value={exp} onChange={e=>setExp(e.target.value)} />
-        </label>
-        <label>
-          <span className="label">Lieu de stockage</span>
-          <input className="field" placeholder="Frigo, Placard…" value={loc} onChange={e=>setLoc(e.target.value)} />
-        </label>
-      </div>
-
-      <div className="modal-footer">
-        <button className="btn-organic secondary" onClick={onClose}><X size={16}/> Annuler</button>
-        <button className="btn-organic primary" onClick={submit}><Plus size={16}/> Créer le lot</button>
-      </div>
-    </Modal>
-  );
-}
-
-/* ================
-   Styles (JSX CSS) - Améliorations minimales
-   ================ */
-const styles = `
-.pantry-container{min-height:100vh;padding:1.5rem;max-width:1200px;margin:0 auto;font-family:'Inter',-apple-system,sans-serif}
-.glass-card{background:rgba(255,255,255,.75);backdrop-filter:blur(6px) saturate(110%);-webkit-backdrop-filter:blur(6px) saturate(110%);border:1px solid rgba(0,0,0,.08);box-shadow:0 6px 20px rgba(0,0,0,.12);border-radius:20px;position:relative;overflow:hidden}
-.pantry-header{margin-bottom:1.5rem;padding:1.5rem;animation:float-in .6s ease-out}
-.header-main{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
-.title-section h1{font-size:1.8rem;font-weight:750;color:var(--forest-700,#2d5a2d);display:flex;align-items:center;gap:.6rem;margin:0 0 .4rem}
-.title-icon{animation:sway 3s ease-in-out infinite}
-.title-section p{color:var(--earth-600,#8b7a5d);margin:0}
-.stats-bubbles{display:flex;gap:1rem}
-.stat-bubble{display:flex;align-items:center;gap:.7rem;padding:.8rem 1.2rem;background:rgba(255,255,255,.9);border-radius:999px;border:2px solid;transition:all .25s cubic-bezier(.4,0,.2,1)}
-.stat-bubble:hover{transform:translateY(-2px) scale(1.03)}
-.stat-bubble.clickable{cursor:pointer}
-.stat-bubble.clickable:hover{box-shadow:0 4px 12px rgba(0,0,0,.1)}
-.stat-bubble.fresh{border-color:var(--forest-300,#c8d8c8);color:var(--forest-600,#4a7c4a)}
-.stat-bubble.warning{border-color:var(--mushroom,#d4a574);color:var(--autumn-orange,#e67e22)}
-.stat-bubble.total{border-color:var(--earth-300,#ddd4c4);color:var(--earth-700,#8b7a5d)}
-.stat-content{display:flex;flex-direction:column}
-.stat-value{font-size:1.35rem;font-weight:800;line-height:1}
-.stat-label{font-size:.75rem;opacity:.85}
-.header-actions{display:flex;gap:.75rem}
-.btn-organic{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.2rem;border:none;border-radius:999px;font-weight:650;font-size:.9rem;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1)}
-.btn-organic.primary{background:linear-gradient(135deg,var(--forest-500,#8bb58b),var(--forest-600,#6b9d6b));color:#fff;box-shadow:0 4px 12px rgba(139,181,139,.3)}
-.btn-organic.primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(139,181,139,.4)}
-.btn-organic.secondary{background:rgba(255,255,255,.85);color:var(--forest-700,#2d5a2d);border:2px solid var(--forest-300,#c8d8c8)}
-.btn-organic.secondary:hover{background:#fff;transform:scale(1.03)}
-.search-bar{margin-bottom:1.5rem;padding:1rem;animation:float-in .7s ease-out .05s both}
-.search-input-wrapper{position:relative;margin-bottom:.75rem}
-.search-input-wrapper svg{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--earth-500,#b8a98e)}
-.search-input{width:100%;padding:.8rem 1rem .8rem 2.8rem;border:2px solid transparent;border-radius:999px;background:rgba(255,255,255,.85);font-size:1rem;transition:all .25s}
-.search-input:focus{outline:none;border-color:var(--forest-400,#a8c5a8);background:#fff;box-shadow:0 0 0 3px rgba(168,197,168,.2)}
-.filter-pills{display:flex;gap:.6rem;flex-wrap:wrap}
-.filter-pill{padding:.45rem 1.1rem;border:2px solid var(--earth-200,#ebe5da);border-radius:999px;background:rgba(255,255,255,.75);color:var(--earth-700,#8b7a5d);font-size:.85rem;font-weight:550;cursor:pointer;transition:all .2s}
-.filter-pill:hover{background:#fff;transform:scale(1.04)}
-.filter-pill.active{background:var(--forest-500,#8bb58b);color:#fff;border-color:var(--forest-500,#8bb58b)}
-.products-garden{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;animation:float-in .8s ease-out .1s both}
-
-/* Carte produit avec icône catégorie */
-.product-card{padding:0;cursor:pointer;border:none;text-align:left;transition:all .3s ease}
-.product-card:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 32px rgba(0,0,0,.15)}
-.card-content{padding:1.2rem}
-.product-row{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1rem}
-.main{flex:1;min-width:0}
-.product-name{font-size:1.05rem;font-weight:700;color:var(--forest-800,#1e3a1e);margin:.1rem 0 .35rem}
-.meta{display:flex;align-items:center;gap:.5rem;color:var(--earth-700,#7a6a4f);font-size:.85rem;flex-wrap:wrap}
-.quantity{font-weight:600;display:flex;align-items:center;gap:.25rem}
-.location{display:flex;align-items:center;gap:.25rem}
-.dot{opacity:.6}
-
-/* Icône de catégorie à droite */
-.category-icon-badge{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;border:2px solid rgba(255,255,255,.5);box-shadow:0 2px 8px rgba(0,0,0,.08)}
-
-/* Barre de fraîcheur organique améliorée */
-.organic-freshness-container{position:relative;margin-top:.5rem}
-.organic-freshness-track{height:28px;border-radius:999px;background:linear-gradient(90deg, rgba(0,0,0,.04), rgba(0,0,0,.08));overflow:hidden;position:relative}
-.organic-freshness-fill{height:100%;border-radius:999px;position:relative;transition:width .6s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
-.freshness-bubble{position:absolute;right:-8px;width:40px;height:40px;background:inherit;border-radius:50%;animation:organic-pulse 2.5s ease-in-out infinite;filter:blur(8px);opacity:.6}
-.freshness-label{position:absolute;top:50%;left:12px;transform:translateY(-50%);font-size:.82rem;font-weight:650;display:flex;align-items:center;gap:.3rem}
-
-@keyframes organic-pulse{
-  0%,100%{transform:scale(1) translateX(0);opacity:.6}
-  50%{transform:scale(1.3) translateX(-5px);opacity:.3}
-}
-
-.category-badge{padding:.15rem .6rem;background:rgba(168,197,168,.22);color:var(--forest-700,#2d5a2d);border-radius:999px;font-size:.72rem;font-weight:600;display:inline-flex;align-items:center;gap:.25rem}
-.expiry-info{display:flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;margin-top:.65rem}
-.expiry-label{margin-left:auto}
-
-/* Sheet (panneau latéral) */
-.sheet-root{position:fixed;inset:0;pointer-events:none;z-index:40}
-.sheet-root.open{pointer-events:auto}
-.sheet-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.2);opacity:0;transition:opacity .25s}
-.sheet-root.open .sheet-backdrop{opacity:1}
-.sheet-panel{position:absolute;top:0;right:-520px;width:520px;max-width:100vw;height:100%;display:flex;flex-direction:column;transform:translateX(0);transition:right .3s ease}
-.sheet-root.open .sheet-panel{right:0}
-.sheet-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1rem;border-bottom:1px solid rgba(0,0,0,.06)}
-.sheet-body{padding:1rem;overflow:auto;flex:1}
-.sheet-footer{padding:1rem;border-top:1px solid rgba(0,0,0,.06)}
-.sheet-section{display:grid;gap:1rem}
-.sheet-tags{display:flex;gap:.5rem;align-items:center}
-.pill{display:inline-flex;gap:.3rem;align-items:center;padding:.2rem .55rem;border:1px solid rgba(0,0,0,.08);border-radius:999px;font-size:.78rem;color:var(--earth-700,#7a6a4f);background:rgba(255,255,255,.7)}
-.sheet-total{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.6);border:1px dashed rgba(0,0,0,.08);border-radius:14px;padding:.8rem 1rem}
-.total-label{font-size:.8rem;color:var(--earth-600,#8b7a5d)}
-.total-value{font-size:1.2rem;font-weight:800;color:var(--forest-800,#1e3a1e)}
-.lots-list{display:grid;gap:.6rem;margin:0;padding:0;list-style:none}
-.lot-row{display:flex;align-items:center;justify-content:space-between;padding:.7rem .7rem;border:1px solid rgba(0,0,0,.06);border-radius:12px;background:rgba(255,255,255,.85)}
-.lot-left{display:flex;gap:.7rem;align-items:flex-start}
-.lot-emoji{font-size:1.1rem}
-.lot-info{display:grid;gap:.25rem}
-.lot-title{display:flex;gap:.6rem;align-items:center}
-.lot-location{font-size:.85rem;color:var(--earth-700,#7a6a4f);opacity:.9}
-.lot-sub{display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:var(--earth-700,#7a6a4f)}
-.lot-date.danger{color:#dc2626}
-.lot-chip{font-weight:700}
-.lot-actions{display:flex;gap:.4rem}
-.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;border:1px solid rgba(0,0,0,.06);background:#fff;cursor:pointer}
-.icon-btn:hover{transform:translateY(-1px)}
-.icon-btn.danger{color:#b42318;border-color:rgba(180,35,24,.2);background:rgba(255,245,245,.9)}
-.icon-btn.success{color:#14532d;border-color:rgba(20,83,45,.2);background:rgba(236,253,245,.9)}
-.inline-add{margin-top:.5rem;padding:1rem;border:1px dashed rgba(0,0,0,.1);border-radius:14px;background:rgba(255,255,255,.6)}
-.inline-title{font-weight:700;margin-bottom:.6rem;color:var(--forest-800,#1e3a1e)}
-.inline-grid{display:grid;grid-template-columns:1fr 110px 1fr 1fr auto;gap:.5rem}
-
-/* Modal */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.25);display:grid;place-items:center;padding:1rem;z-index:50}
-.modal{width:min(680px,100%);max-height:90vh;display:flex;flex-direction:column}
-.modal-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1rem;border-bottom:1px solid rgba(0,0,0,.06)}
-.modal-body{padding:1rem;overflow:auto}
-.modal-footer{padding:1rem;border-top:1px solid rgba(0,0,0,.06);display:flex;justify-content:flex-end;gap:.5rem}
-.form-grid{display:grid;grid-template-columns:1fr 60px 1fr;gap:.8rem;align-items:end}
-.label{display:block;font-size:.8rem;color:var(--earth-700,#7a6a4f);margin-bottom:.25rem}
-.field{width:100%;padding:.6rem .7rem;border:1.5px solid rgba(0,0,0,.08);border-radius:10px;background:#fff}
-.field.sm{padding:.45rem .55rem}
-.or{display:grid;place-items:center;color:var(--earth-600,#8b7a5d)}
-
-/* Vide & chargement */
-.empty-state{grid-column:1 / -1;padding:3rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem}
-.empty-state h3{color:var(--forest-700,#2d5a2d);margin:.2rem 0}
-.empty-state p{color:var(--earth-600,#8b7a5d);max-width:420px;margin:0}
-.loading-container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:1rem;color:var(--forest-600,#4a7c4a)}
-.loading-spinner{animation:spin 2s linear infinite}
-.error-text{margin-top:1rem;color:#b42318}
-
-/* Animations */
-@keyframes float-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* Responsive */
-@media (max-width: 768px){
-  .pantry-container{padding:1rem}
-  .title-section h1{font-size:1.5rem}
-  .header-main{flex-direction:column;gap:1rem}
-  .stats-bubbles{width:100%;justify-content:space-between}
-  .products-garden{grid-template-columns:1fr}
-  .inline-grid{grid-template-columns:1fr 100px 1fr;gap:.5rem}
-  .sheet-panel{width:100%}
-  .category-icon-badge{width:44px;height:44px;font-size:24px}
-}
-`;'use client';
+'use client';
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import {
@@ -182,7 +13,6 @@ import {
   X,
   Edit3,
   Trash2,
-  ChevronRight,
   Check,
   Layers3
 } from 'lucide-react';
@@ -202,18 +32,15 @@ function usePantryData() {
     try {
       setLoading(true);
       setError('');
-      
-      // Charger les catégories pour avoir les icônes
+
       const { data: categoriesData } = await supabase
         .from('categories')
         .select('*')
         .order('sort_priority');
-      
+
       setCategories(categoriesData || []);
 
-      // Charger les produits de l'utilisateur
       const { data: { user } } = await supabase.auth.getUser();
-      
       if (user) {
         const { data, error } = await supabase
           .from('user_food_items')
@@ -239,7 +66,6 @@ function usePantryData() {
 
         if (error) throw error;
 
-        // Transformer les données pour matcher le format attendu
         const transformedLots = (data || []).map(item => {
           const category = categoriesData?.find(c => c.id === item.canonical_food?.category_id);
           return {
@@ -252,7 +78,8 @@ function usePantryData() {
             qty_remaining: item.quantity,
             unit: item.unit || item.canonical_food?.primary_unit || 'unité',
             effective_expiration: item.expiry_date,
-            location_name: item.location?.name || 'Non spécifié'
+            location_name: item.location?.name || 'Non spécifié',
+            location_id: item.location_id || null,
           };
         });
 
@@ -272,7 +99,6 @@ function usePantryData() {
     load();
   }, [load]);
 
-  // Mutations avec Supabase
   const addLot = useCallback(async (newLot) => {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
@@ -292,7 +118,7 @@ function usePantryData() {
       .single();
 
     if (!error && data) {
-      await load(); // Recharger pour avoir les données complètes
+      await load();
     }
   }, [supabase, load]);
 
@@ -329,7 +155,6 @@ function usePantryData() {
 /* =============
    Utilitaires
    ============= */
-const addDaysISO = (d) => new Date(Date.now() + d * 86400000).toISOString().slice(0, 10);
 const daysUntil = (date) => {
   if (!date) return null;
   const today = new Date(); today.setHours(0,0,0,0);
@@ -347,6 +172,15 @@ const getExpirationStatus = (days) => {
   if (days <= 7) return { emoji: '🌾', label: `${days}j`, color: 'var(--mushroom)' };
   return { emoji: '🌱', label: `${days}j`, color: 'var(--forest-500)' };
 };
+
+function formatQty(q) {
+  if (q == null || q === '') return '0';
+  const n = Number(q);
+  if (!Number.isFinite(n)) return String(q);
+  if (n >= 1000) return (n/1000).toFixed(1).replace('.', ',');
+  if (!Number.isInteger(n)) return n.toFixed(2).replace(/\.00$/,'').replace('.', ',');
+  return String(n);
+}
 
 /* ======================
    Composants UI généraux
@@ -391,11 +225,9 @@ export default function PantryPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
 
-  // États UI
   const [activeProduct, setActiveProduct] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
 
-  // Groupement produits
   const groupedProducts = useMemo(() => {
     const groups = new Map();
     lots.forEach(lot => {
@@ -425,7 +257,6 @@ export default function PantryPage() {
     return Array.from(groups.values());
   }, [lots]);
 
-  // Filtrage + tri
   const filteredProducts = useMemo(() => {
     let filtered = groupedProducts;
     if (searchQuery.trim()) {
@@ -452,7 +283,6 @@ export default function PantryPage() {
     });
   }, [groupedProducts, searchQuery, selectedFilter]);
 
-  // Stats
   const stats = useMemo(() => {
     const totalProducts = groupedProducts.length;
     let expiringCount = 0;
@@ -464,15 +294,10 @@ export default function PantryPage() {
     return { totalProducts, expiringCount, freshCount };
   }, [groupedProducts]);
 
-  // Fonction pour filtrer par fraîcheur (stats cliquables)
   const filterByFreshness = useCallback((type) => {
-    if (type === 'fresh') {
-      setSelectedFilter('fresh');
-    } else if (type === 'expiring') {
-      setSelectedFilter('expiring');
-    } else {
-      setSelectedFilter('all');
-    }
+    if (type === 'fresh') setSelectedFilter('fresh');
+    else if (type === 'expiring') setSelectedFilter('expiring');
+    else setSelectedFilter('all');
   }, []);
 
   if (loading) {
@@ -585,6 +410,7 @@ export default function PantryPage() {
         onUpdateLot={updateLot}
         onDeleteLot={deleteLot}
         onAddLot={(payload)=>{
+          if (!activeProduct) return;
           addLot({
             canonical_food_id: activeProduct.productId,
             display_name: activeProduct.productName,
@@ -603,7 +429,7 @@ export default function PantryPage() {
           if (payload.canonical_food_id) {
             addLot(payload);
           } else {
-            // Créer avec un nouveau produit
+            // Génère un id temporaire côté client si besoin (sera remplacé côté DB si structure différente)
             addLot({ ...payload, canonical_food_id: cryptoId() });
           }
           setShowAddForm(false);
@@ -618,25 +444,18 @@ export default function PantryPage() {
 }
 
 /* =========================
-   Carte produit avec icône de catégorie
+   Carte produit
    ========================= */
 function ProductCard({ product, onOpen }) {
   const d = daysUntil(product.nextExpiry);
   const status = getExpirationStatus(d);
 
-  // Calculer le pourcentage pour la barre organique
   let percentage = 100;
-  if (d === null) {
-    percentage = 100; // Longue conservation
-  } else if (d <= 0) {
-    percentage = 5; // Périmé
-  } else if (d <= 3) {
-    percentage = 25; // Urgent
-  } else if (d <= 7) {
-    percentage = 50; // Bientôt
-  } else {
-    percentage = 75 + Math.min(25, d/2); // Frais
-  }
+  if (d === null) percentage = 100;
+  else if (d <= 0) percentage = 5;
+  else if (d <= 3) percentage = 25;
+  else if (d <= 7) percentage = 50;
+  else percentage = 75 + Math.min(25, d/2);
 
   return (
     <button className="product-card glass-card" onClick={onOpen} aria-label={`Ouvrir ${product.productName}`}>
@@ -654,22 +473,19 @@ function ProductCard({ product, onOpen }) {
               </span>
             </div>
           </div>
-
-          {/* Icône de catégorie à droite */}
-          <div 
-            className="category-icon-badge" 
+          <div
+            className="category-icon-badge"
             style={{ background: `linear-gradient(135deg, ${product.categoryColor}22, ${product.categoryColor}44)` }}
           >
             <span>{product.categoryIcon}</span>
           </div>
         </div>
 
-        {/* Barre de fraîcheur organique */}
         <div className="organic-freshness-container">
           <div className="organic-freshness-track">
-            <div 
-              className="organic-freshness-fill" 
-              style={{ 
+            <div
+              className="organic-freshness-fill"
+              style={{
                 width: `${percentage}%`,
                 background: d === null ? 'var(--forest-500)' :
                            d <= 3 ? 'var(--autumn-orange)' :
@@ -691,12 +507,6 @@ function ProductCard({ product, onOpen }) {
   );
 }
 
-function formatQty(q) {
-  if (q >= 1000 && Number.isFinite(q)) return (q/1000).toFixed(1).replace('.', ',');
-  if ((q+'').includes('.')) return Number(q).toFixed(2).replace(/\.00$/,'').replace('.', ',');
-  return q;
-}
-
 /* =============================
    Panneau latéral produit (lots)
    ============================= */
@@ -704,9 +514,7 @@ function ProductSheet({ product, onClose, onUpdateLot, onDeleteLot, onAddLot }) 
   const [editLotId, setEditLotId] = useState(null);
   const [form, setForm] = useState({ qty_remaining:'', unit:'', effective_expiration:'', location_name:'' });
 
-  useEffect(()=>{
-    setEditLotId(null);
-  },[product]);
+  useEffect(()=>{ setEditLotId(null); },[product]);
 
   if (!product) return null;
 
@@ -761,7 +569,6 @@ function ProductSheet({ product, onClose, onUpdateLot, onDeleteLot, onAddLot }) 
           </button>
         </div>
 
-        {/* Liste des lots */}
         <ul className="lots-list">
           {product.lots
             .slice()
@@ -844,7 +651,6 @@ function ProductSheet({ product, onClose, onUpdateLot, onDeleteLot, onAddLot }) 
             })}
         </ul>
 
-        {/* Ajout rapide d'un lot pour ce produit */}
         <AddInlineLot
           defaultUnit={product.unit}
           onAdd={(payload)=>{
@@ -906,7 +712,10 @@ function AddLotModal({ open, onClose, productsCatalog, onCreate }) {
   const [loc, setLoc] = useState('');
 
   useEffect(()=>{
-    if (!open) { setProductId(''); setProductName(''); setQty(''); setUnit('g'); setExp(''); setLoc(''); }
+    if (!open) {
+      setProductId(''); setProductName('');
+      setQty(''); setUnit('g'); setExp(''); setLoc('');
+    }
   },[open]);
 
   const submit = () => {
@@ -924,11 +733,25 @@ function AddLotModal({ open, onClose, productsCatalog, onCreate }) {
   };
 
   return (
-    <Modal open={open} onClose={onClose} title="Ajouter un lot">
+    <Modal
+      open={open}
+      onClose={onClose}
+      title="Ajouter un lot"
+      footer={
+        <>
+          <button className="btn-organic secondary" onClick={onClose}><X size={16}/> Annuler</button>
+          <button className="btn-organic primary" onClick={submit}><Plus size={16}/> Créer le lot</button>
+        </>
+      }
+    >
       <div className="form-grid">
         <label>
           <span className="label">Produit existant</span>
-          <select className="field" value={productId} onChange={e=>{ setProductId(e.target.value); if (e.target.value) setProductName(''); }}>
+          <select
+            className="field"
+            value={productId}
+            onChange={e=>{ setProductId(e.target.value); if (e.target.value) setProductName(''); }}
+          >
             <option value="">— Choisir —</option>
             {productsCatalog.map(p=>(
               <option key={p.id} value={p.id}>{p.name}</option>
@@ -938,4 +761,173 @@ function AddLotModal({ open, onClose, productsCatalog, onCreate }) {
         <div className="or">ou</div>
         <label>
           <span className="label">Nouveau produit</span>
-          <input className="field" placeholder="Nom du produit" value={productName} onChange={e=>{ setProductName(e.target.value); if (e.target.value) setProductId(''); }} />
+          <input
+            className="field"
+            placeholder="Nom du produit"
+            value={productName}
+            onChange={e=>{ setProductName(e.target.value); if (e.target.value) setProductId(''); }}
+          />
+        </label>
+
+        <label>
+          <span className="label">Quantité</span>
+          <input
+            className="field"
+            type="number"
+            step="0.01"
+            value={qty}
+            onChange={e=>setQty(e.target.value)}
+          />
+        </label>
+        <label>
+          <span className="label">Unité</span>
+          <input
+            className="field"
+            value={unit}
+            onChange={e=>setUnit(e.target.value)}
+          />
+        </label>
+        <label>
+          <span className="label">Date limite</span>
+          <input
+            className="field"
+            type="date"
+            value={exp}
+            onChange={e=>setExp(e.target.value)}
+          />
+        </label>
+        <label>
+          <span className="label">Lieu de stockage</span>
+          <input
+            className="field"
+            placeholder="Frigo, Placard…"
+            value={loc}
+            onChange={e=>setLoc(e.target.value)}
+          />
+        </label>
+      </div>
+    </Modal>
+  );
+}
+
+/* ================
+   Styles (JSX CSS)
+   ================ */
+const styles = `
+.pantry-container{min-height:100vh;padding:1.5rem;max-width:1200px;margin:0 auto;font-family:'Inter',-apple-system,sans-serif}
+.glass-card{background:rgba(255,255,255,.75);backdrop-filter:blur(6px) saturate(110%);-webkit-backdrop-filter:blur(6px) saturate(110%);border:1px solid rgba(0,0,0,.08);box-shadow:0 6px 20px rgba(0,0,0,.12);border-radius:20px;position:relative;overflow:hidden}
+.pantry-header{margin-bottom:1.5rem;padding:1.5rem;animation:float-in .6s ease-out}
+.header-main{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.title-section h1{font-size:1.8rem;font-weight:750;color:var(--forest-700,#2d5a2d);display:flex;align-items:center;gap:.6rem;margin:0 0 .4rem}
+.title-icon{animation:sway 3s ease-in-out infinite}
+.title-section p{color:var(--earth-600,#8b7a5d);margin:0}
+.stats-bubbles{display:flex;gap:1rem}
+.stat-bubble{display:flex;align-items:center;gap:.7rem;padding:.8rem 1.2rem;background:rgba(255,255,255,.9);border-radius:999px;border:2px solid;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.stat-bubble:hover{transform:translateY(-2px) scale(1.03)}
+.stat-bubble.clickable{cursor:pointer}
+.stat-bubble.clickable:hover{box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.stat-bubble.fresh{border-color:var(--forest-300,#c8d8c8);color:var(--forest-600,#4a7c4a)}
+.stat-bubble.warning{border-color:var(--mushroom,#d4a574);color:var(--autumn-orange,#e67e22)}
+.stat-bubble.total{border-color:var(--earth-300,#ddd4c4);color:var(--earth-700,#8b7a5d)}
+.stat-content{display:flex;flex-direction:column}
+.stat-value{font-size:1.35rem;font-weight:800;line-height:1}
+.stat-label{font-size:.75rem;opacity:.85}
+.header-actions{display:flex;gap:.75rem}
+.btn-organic{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.2rem;border:none;border-radius:999px;font-weight:650;font-size:.9rem;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.btn-organic.primary{background:linear-gradient(135deg,var(--forest-500,#8bb58b),var(--forest-600,#6b9d6b));color:#fff;box-shadow:0 4px 12px rgba(139,181,139,.3)}
+.btn-organic.primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(139,181,139,.4)}
+.btn-organic.secondary{background:rgba(255,255,255,.85);color:var(--forest-700,#2d5a2d);border:2px solid var(--forest-300,#c8d8c8)}
+.btn-organic.secondary:hover{background:#fff;transform:scale(1.03)}
+.search-bar{margin-bottom:1.5rem;padding:1rem;animation:float-in .7s ease-out .05s both}
+.search-input-wrapper{position:relative;margin-bottom:.75rem}
+.search-input-wrapper svg{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--earth-500,#b8a98e)}
+.search-input{width:100%;padding:.8rem 1rem .8rem 2.8rem;border:2px solid transparent;border-radius:999px;background:rgba(255,255,255,.85);font-size:1rem;transition:all .25s}
+.search-input:focus{outline:none;border-color:var(--forest-400,#a8c5a8);background:#fff;box-shadow:0 0 0 3px rgba(168,197,168,.2)}
+.filter-pills{display:flex;gap:.6rem;flex-wrap:wrap}
+.filter-pill{padding:.45rem 1.1rem;border:2px solid var(--earth-200,#ebe5da);border-radius:999px;background:rgba(255,255,255,.75);color:var(--earth-700,#8b7a5d);font-size:.85rem;font-weight:550;cursor:pointer;transition:all .2s}
+.filter-pill:hover{background:#fff;transform:scale(1.04)}
+.filter-pill.active{background:var(--forest-500,#8bb58b);color:#fff;border-color:var(--forest-500,#8bb58b)}
+.products-garden{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;animation:float-in .8s ease-out .1s both}
+.product-card{padding:0;cursor:pointer;border:none;text-align:left;transition:all .3s ease}
+.product-card:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 32px rgba(0,0,0,.15)}
+.card-content{padding:1.2rem}
+.product-row{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1rem}
+.main{flex:1;min-width:0}
+.product-name{font-size:1.05rem;font-weight:700;color:var(--forest-800,#1e3a1e);margin:.1rem 0 .35rem}
+.meta{display:flex;align-items:center;gap:.5rem;color:var(--earth-700,#7a6a4f);font-size:.85rem;flex-wrap:wrap}
+.quantity{font-weight:600;display:flex;align-items:center;gap:.25rem}
+.location{display:flex;align-items:center;gap:.25rem}
+.dot{opacity:.6}
+.category-icon-badge{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;border:2px solid rgba(255,255,255,.5);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.organic-freshness-container{position:relative;margin-top:.5rem}
+.organic-freshness-track{height:28px;border-radius:999px;background:linear-gradient(90deg, rgba(0,0,0,.04), rgba(0,0,0,.08));overflow:hidden;position:relative}
+.organic-freshness-fill{height:100%;border-radius:999px;position:relative;transition:width .6s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+.freshness-bubble{position:absolute;right:-8px;width:40px;height:40px;background:inherit;border-radius:50%;animation:organic-pulse 2.5s ease-in-out infinite;filter:blur(8px);opacity:.6}
+.freshness-label{position:absolute;top:50%;left:12px;transform:translateY(-50%);font-size:.82rem;font-weight:650;display:flex;align-items:center;gap:.3rem}
+@keyframes organic-pulse{0%,100%{transform:scale(1) translateX(0);opacity:.6}50%{transform:scale(1.3) translateX(-5px);opacity:.3}}
+.category-badge{padding:.15rem .6rem;background:rgba(168,197,168,.22);color:var(--forest-700,#2d5a2d);border-radius:999px;font-size:.72rem;font-weight:600;display:inline-flex;align-items:center;gap:.25rem}
+.expiry-info{display:flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;margin-top:.65rem}
+.expiry-label{margin-left:auto}
+.sheet-root{position:fixed;inset:0;pointer-events:none;z-index:40}
+.sheet-root.open{pointer-events:auto}
+.sheet-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.2);opacity:0;transition:opacity .25s}
+.sheet-root.open .sheet-backdrop{opacity:1}
+.sheet-panel{position:absolute;top:0;right:-520px;width:520px;max-width:100vw;height:100%;display:flex;flex-direction:column;transform:translateX(0);transition:right .3s ease}
+.sheet-root.open .sheet-panel{right:0}
+.sheet-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1rem;border-bottom:1px solid rgba(0,0,0,.06)}
+.sheet-body{padding:1rem;overflow:auto;flex:1}
+.sheet-footer{padding:1rem;border-top:1px solid rgba(0,0,0,.06)}
+.sheet-section{display:grid;gap:1rem}
+.sheet-tags{display:flex;gap:.5rem;align-items:center}
+.pill{display:inline-flex;gap:.3rem;align-items:center;padding:.2rem .55rem;border:1px solid rgba(0,0,0,.08);border-radius:999px;font-size:.78rem;color:var(--earth-700,#7a6a4f);background:rgba(255,255,255,.7)}
+.sheet-total{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.6);border:1px dashed rgba(0,0,0,.08);border-radius:14px;padding:.8rem 1rem}
+.total-label{font-size:.8rem;color:var(--earth-600,#8b7a5d)}
+.total-value{font-size:1.2rem;font-weight:800;color:var(--forest-800,#1e3a1e)}
+.lots-list{display:grid;gap:.6rem;margin:0;padding:0;list-style:none}
+.lot-row{display:flex;align-items:center;justify-content:space-between;padding:.7rem .7rem;border:1px solid rgba(0,0,0,.06);border-radius:12px;background:rgba(255,255,255,.85)}
+.lot-left{display:flex;gap:.7rem;align-items:flex-start}
+.lot-emoji{font-size:1.1rem}
+.lot-info{display:grid;gap:.25rem}
+.lot-title{display:flex;gap:.6rem;align-items:center}
+.lot-location{font-size:.85rem;color:var(--earth-700,#7a6a4f);opacity:.9}
+.lot-sub{display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:var(--earth-700,#7a6a4f)}
+.lot-date.danger{color:#dc2626}
+.lot-chip{font-weight:700}
+.lot-actions{display:flex;gap:.4rem}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;border:1px solid rgba(0,0,0,.06);background:#fff;cursor:pointer}
+.icon-btn:hover{transform:translateY(-1px)}
+.icon-btn.danger{color:#b42318;border-color:rgba(180,35,24,.2);background:rgba(255,245,245,.9)}
+.icon-btn.success{color:#14532d;border-color:rgba(20,83,45,.2);background:rgba(236,253,245,.9)}
+.inline-add{margin-top:.5rem;padding:1rem;border:1px dashed rgba(0,0,0,.1);border-radius:14px;background:rgba(255,255,255,.6)}
+.inline-title{font-weight:700;margin-bottom:.6rem;color:var(--forest-800,#1e3a1e)}
+.inline-grid{display:grid;grid-template-columns:1fr 110px 1fr 1fr auto;gap:.5rem}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.25);display:grid;place-items:center;padding:1rem;z-index:50}
+.modal{width:min(680px,100%);max-height:90vh;display:flex;flex-direction:column}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1rem;border-bottom:1px solid rgba(0,0,0,.06)}
+.modal-body{padding:1rem;overflow:auto}
+.modal-footer{padding:1rem;border-top:1px solid rgba(0,0,0,.06);display:flex;justify-content:flex-end;gap:.5rem}
+.form-grid{display:grid;grid-template-columns:1fr 60px 1fr;gap:.8rem;align-items:end}
+.label{display:block;font-size:.8rem;color:var(--earth-700,#7a6a4f);margin-bottom:.25rem}
+.field{width:100%;padding:.6rem .7rem;border:1.5px solid rgba(0,0,0,.08);border-radius:10px;background:#fff}
+.field.sm{padding:.45rem .55rem}
+.or{display:grid;place-items:center;color:var(--earth-600,#8b7a5d)}
+.empty-state{grid-column:1 / -1;padding:3rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.empty-state h3{color:var(--forest-700,#2d5a2d);margin:.2rem 0}
+.empty-state p{color:var(--earth-600,#8b7a5d);max-width:420px;margin:0}
+.loading-container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:1rem;color:var(--forest-600,#4a7c4a)}
+.loading-spinner{animation:spin 2s linear infinite}
+.error-text{margin-top:1rem;color:#b42318}
+@keyframes float-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width: 768px){
+  .pantry-container{padding:1rem}
+  .title-section h1{font-size:1.5rem}
+  .header-main{flex-direction:column;gap:1rem}
+  .stats-bubbles{width:100%;justify-content:space-between}
+  .products-garden{grid-template-columns:1fr}
+  .inline-grid{grid-template-columns:1fr 100px 1fr;gap:.5rem}
+  .sheet-panel{width:100%}
+  .category-icon-badge{width:44px;height:44px;font-size:24px}
+}
+`;
