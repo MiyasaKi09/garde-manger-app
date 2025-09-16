@@ -9,11 +9,10 @@ import ProductCard from './components/ProductCard';
 import LotsView from './components/LotsView';
 import SmartAddForm from './components/SmartAddForm';
 
-// ✅ CORRECTION: formatQty → formatQuantity
 import { daysUntil, getExpirationStatus, formatQuantity, groupLotsByProduct } from './components/pantryUtils';
 
 /* ===========================
-   Hook données Supabase
+   Hook données Supabase - Version corrigée pour la vraie DB
    =========================== */
 function usePantryData() {
   const [loading, setLoading] = useState(true);
@@ -27,8 +26,9 @@ function usePantryData() {
       setLoading(true);
       setError('');
 
+      // Charger les catégories depuis reference_categories
       const { data: categoriesData } = await supabase
-        .from('categories')
+        .from('reference_categories')
         .select('*')
         .order('sort_priority');
 
@@ -39,11 +39,13 @@ function usePantryData() {
         return;
       }
 
+      // ✅ CORRECTION: Adapter à la vraie structure de DB
+      // On utilise inventory_lots qui peut référencer canonical_foods, cultivars ou generic_products
       const { data, error } = await supabase
-        .from('user_food_items')
+        .from('inventory_lots')
         .select(`
           *,
-          canonical_food:canonical_food_item_id (
+          canonical_food:canonical_foods (
             id,
             canonical_name,
             category_id,
@@ -51,37 +53,98 @@ function usePantryData() {
             primary_unit,
             shelf_life_days_pantry,
             shelf_life_days_fridge,
-            shelf_life_days_freezer
+            shelf_life_days_freezer,
+            category:reference_categories(name, icon, color_hex)
           ),
-          location:location_id ( name, icon )
+          cultivar:cultivars (
+            id,
+            cultivar_name,
+            canonical_food:canonical_foods (
+              id,
+              canonical_name,
+              category_id,
+              primary_unit,
+              shelf_life_days_pantry,
+              shelf_life_days_fridge,
+              shelf_life_days_freezer,
+              category:reference_categories(name, icon, color_hex)
+            )
+          ),
+          generic_product:generic_products (
+            id,
+            name,
+            category_id,
+            primary_unit,
+            category:reference_categories(name, icon, color_hex)
+          ),
+          location:locations (name, icon)
         `)
         .eq('user_id', user.id)
-        .order('expiry_date', { ascending: true });
+        .order('expiration_date', { ascending: true });
 
       if (error) throw error;
 
+      // Transformer les données pour les adapter à l'interface
       const transformed = (data || []).map(item => {
-        const cat = categoriesData?.find(c => c.id === item.canonical_food?.category_id);
+        let productInfo = null;
+        let categoryInfo = null;
+
+        // Déterminer le type de produit et extraire les infos
+        if (item.canonical_food) {
+          productInfo = {
+            id: item.canonical_food.id,
+            name: item.canonical_food.canonical_name,
+            type: 'canonical',
+            primary_unit: item.canonical_food.primary_unit,
+            shelf_life: {
+              pantry: item.canonical_food.shelf_life_days_pantry,
+              fridge: item.canonical_food.shelf_life_days_fridge,
+              freezer: item.canonical_food.shelf_life_days_freezer
+            }
+          };
+          categoryInfo = item.canonical_food.category;
+        } else if (item.cultivar) {
+          productInfo = {
+            id: item.cultivar.id,
+            name: item.cultivar.cultivar_name,
+            type: 'cultivar',
+            canonical_food_id: item.cultivar.canonical_food?.id,
+            primary_unit: item.cultivar.canonical_food?.primary_unit,
+            shelf_life: {
+              pantry: item.cultivar.canonical_food?.shelf_life_days_pantry,
+              fridge: item.cultivar.canonical_food?.shelf_life_days_fridge,
+              freezer: item.cultivar.canonical_food?.shelf_life_days_freezer
+            }
+          };
+          categoryInfo = item.cultivar.canonical_food?.category;
+        } else if (item.generic_product) {
+          productInfo = {
+            id: item.generic_product.id,
+            name: item.generic_product.name,
+            type: 'generic',
+            primary_unit: item.generic_product.primary_unit
+          };
+          categoryInfo = item.generic_product.category;
+        }
+
         return {
           id: item.id,
-          canonical_food_id: item.canonical_food_item_id,
-          display_name: item.custom_name || item.canonical_food?.canonical_name || 'Produit',
-          category_name: cat?.name || 'Autre',
-          category_icon: cat?.icon || '📦',
-          category_color: cat?.color_hex || '#808080',
-          qty_remaining: item.quantity,
-          unit: item.unit || item.canonical_food?.primary_unit || 'unité',
-          effective_expiration: item.expiry_date,
+          canonical_food_id: productInfo?.canonical_food_id || productInfo?.id,
+          display_name: item.display_name || productInfo?.name || 'Produit inconnu',
+          category_name: categoryInfo?.name || 'Autre',
+          category_icon: categoryInfo?.icon || '📦',
+          category_color: categoryInfo?.color_hex || '#808080',
+          qty_remaining: item.qty_remaining || 0,
+          unit: item.unit || productInfo?.primary_unit || 'unité',
+          effective_expiration: item.expiration_date,
           location_name: item.location?.name || 'Non spécifié',
           location_id: item.location_id || null,
+          storage_method: item.storage_method || 'pantry',
+          notes: item.notes,
           meta: {
-            shelf: {
-              pantry: item.canonical_food?.shelf_life_days_pantry ?? null,
-              fridge: item.canonical_food?.shelf_life_days_fridge ?? null,
-              freezer: item.canonical_food?.shelf_life_days_freezer ?? null,
-            },
-            primary_unit: item.canonical_food?.primary_unit ?? null,
-            category_id: item.canonical_food?.category_id ?? null,
+            shelf: productInfo?.shelf_life || { pantry: null, fridge: null, freezer: null },
+            primary_unit: productInfo?.primary_unit || null,
+            product_type: productInfo?.type || 'unknown'
           }
         };
       });
@@ -89,8 +152,8 @@ function usePantryData() {
       setCategories(categoriesData || []);
       setLots(transformed);
     } catch (e) {
-      console.error(e);
-      setError('Impossible de charger les données.');
+      console.error('Erreur chargement pantry:', e);
+      setError('Impossible de charger les données du garde-manger.');
     } finally {
       setLoading(false);
     }
@@ -100,43 +163,82 @@ function usePantryData() {
 
   const refresh = useCallback(() => load(), [load]);
 
+  // ✅ CORRECTION: Adapter addLot pour la vraie structure
   const addLot = useCallback(async (payload) => {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
-    const { error } = await supabase
-      .from('user_food_items')
-      .insert({
+    try {
+      // Construire l'objet d'insertion pour inventory_lots
+      const insertData = {
         user_id: user.id,
-        canonical_food_item_id: payload.canonical_food_id,
-        custom_name: payload.display_name,
-        quantity: payload.qty_remaining,
+        qty_remaining: payload.qty_remaining,
         unit: payload.unit,
-        expiry_date: payload.effective_expiration,
-        location_id: payload.location_id || null
-      })
-      .select()
-      .single();
+        expiration_date: payload.effective_expiration,
+        storage_method: payload.storage_method || 'pantry',
+        storage_place: payload.location_name,
+        notes: payload.notes,
+        display_name: payload.display_name,
+        source: 'manual'
+      };
 
-    if (!error) await load();
+      // Ajouter la référence au produit selon le type
+      if (payload.canonical_food_id) {
+        insertData.canonical_food_id = payload.canonical_food_id;
+      } else if (payload.cultivar_id) {
+        insertData.cultivar_id = payload.cultivar_id;
+      } else if (payload.generic_product_id) {
+        insertData.generic_product_id = payload.generic_product_id;
+      }
+
+      const { error } = await supabase
+        .from('inventory_lots')
+        .insert(insertData)
+        .select()
+        .single();
+
+      if (error) throw error;
+      await load(); // Recharger les données
+    } catch (error) {
+      console.error('Erreur ajout lot:', error);
+      setError('Erreur lors de l\'ajout du lot');
+    }
   }, [supabase, load]);
 
   const updateLot = useCallback(async (id, patch) => {
-    const { error } = await supabase
-      .from('user_food_items')
-      .update({
-        quantity: patch.qty_remaining,
-        unit: patch.unit,
-        expiry_date: patch.effective_expiration,
-        custom_name: patch.display_name
-      })
-      .eq('id', id);
-    if (!error) await load();
+    try {
+      const { error } = await supabase
+        .from('inventory_lots')
+        .update({
+          qty_remaining: patch.qty_remaining,
+          unit: patch.unit,
+          expiration_date: patch.effective_expiration,
+          display_name: patch.display_name,
+          notes: patch.notes
+        })
+        .eq('id', id);
+
+      if (error) throw error;
+      await load();
+    } catch (error) {
+      console.error('Erreur mise à jour lot:', error);
+      setError('Erreur lors de la mise à jour');
+    }
   }, [supabase, load]);
 
   const deleteLot = useCallback(async (id) => {
-    const { error } = await supabase.from('user_food_items').delete().eq('id', id);
-    if (!error) await load();
+    try {
+      const { error } = await supabase
+        .from('inventory_lots')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+      await load();
+    } catch (error) {
+      console.error('Erreur suppression lot:', error);
+      setError('Erreur lors de la suppression');
+    }
   }, [supabase, load]);
 
   return { loading, error, lots, categories, refresh, addLot, updateLot, deleteLot };
@@ -326,33 +428,24 @@ export default function PantryPage() {
           onAddLot={(payload)=>{
             if (!activeProduct) return;
             addLot({
+              ...payload,
               canonical_food_id: activeProduct.productId,
               display_name: activeProduct.productName,
-              category_name: activeProduct.category,
-              ...payload
+              category_name: activeProduct.category
             });
           }}
         />
       )}
 
-      {/* Modal ajout intelligent */}
-      {showAddForm && (
-        <SmartAddForm
-          open={showAddForm}
-          onClose={()=>setShowAddForm(false)}
-          productsCatalog={groupedProducts.map(p=>({
-            id: p.productId,
-            name: p.productName,
-            unit: p.primaryUnit,
-            category: p.category
-          }))}
-          categories={categories}
-          onCreate={(payload)=>{ 
-            addLot(payload); 
-            setShowAddForm(false); 
-          }}
-        />
-      )}
+      {/* Modal ajout intelligent - Version simplifiée */}
+      <SmartAddForm
+        open={showAddForm}
+        onClose={()=>setShowAddForm(false)}
+        onCreate={(payload) => { 
+          addLot(payload); 
+          setShowAddForm(false); 
+        }}
+      />
 
       {error && <p className="error-text">{error}</p>}
       <style jsx>{styles}</style>
@@ -376,6 +469,7 @@ const styles = `
 .btn-organic.primary{background:linear-gradient(135deg,var(--forest-500,#8bb58b),var(--forest-600,#6b9d6b));color:#fff;box-shadow:0 4px 12px rgba(139,181,139,.3)}
 .btn-organic.primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(139,181,139,.4)}
 .btn-organic.secondary{background:rgba(255,255,255,.85);color:var(--forest-700,#2d5a2d);border:2px solid var(--forest-300,#c8d8c8)}
+.btn-organic.secondary:hover{background:#fff;transform:translateY(-1px)}
 .search-bar{margin-bottom:1.5rem;padding:1rem;animation:float-in .7s ease-out .05s both}
 .search-input-wrapper{position:relative;margin-bottom:.75rem}
 .search-input{width:100%;padding:.8rem 1rem;border:2px solid transparent;border-radius:999px;background:rgba(255,255,255,.85);font-size:1rem;transition:all .25s}
@@ -383,13 +477,50 @@ const styles = `
 .filter-pills{display:flex;gap:.6rem;flex-wrap:wrap}
 .filter-pill{padding:.45rem 1.1rem;border:2px solid var(--earth-200,#ebe5da);border-radius:999px;background:rgba(255,255,255,.75);color:var(--earth-700,#8b7a5d);font-size:.85rem;font-weight:550;cursor:pointer;transition:all .2s}
 .filter-pill.active{background:var(--forest-500,#8bb58b);color:#fff;border-color:var(--forest-500,#8bb58b)}
+.filter-pill:hover:not(.active){background:rgba(255,255,255,.9);border-color:var(--forest-400,#a8c5a8)}
 .products-garden{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;animation:float-in .8s ease-out .1s both}
-.empty-state{grid-column:1 / -1;padding:3rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem}
-.empty-state h3{color:var(--forest-700,#2d5a2d)}
+.empty-state{grid-column:1 / -1;padding:3rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.empty-state h3{color:var(--forest-700,#2d5a2d);margin:0;font-size:1.25rem}
+.empty-state p{color:var(--earth-600,#8b7a5d);margin:0}
 .loading-container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:1rem;color:var(--forest-600,#4a7c4a)}
 .loading-spinner{animation:spin 2s linear infinite}
-.error-text{margin-top:1rem;color:#b42318;padding:1rem;background:#fef2f2;border-radius:8px;border:1px solid #fecaca}
+.error-text{margin-top:1rem;color:#dc2626;padding:1rem;background:#fef2f2;border-radius:8px;border:1px solid #fecaca;display:flex;align-items:center;gap:0.5rem}
+.error-text::before{content:'⚠️';font-size:1.1em}
+
+/* Animations */
 @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes float-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Variables CSS pour cohérence */
+:root {
+  --forest-50: #f8fdf8;
+  --forest-100: #f0f9f0;
+  --forest-200: #dcf4dc;
+  --forest-300: #c8d8c8;
+  --forest-400: #a8c5a8;
+  --forest-500: #8bb58b;
+  --forest-600: #6b9d6b;
+  --forest-700: #2d5a2d;
+  --forest-800: #1a3a1a;
+  --earth-200: #ebe5da;
+  --earth-600: #8b7a5d;
+  --earth-700: #6d5d42;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pantry-container { padding: 1rem; }
+  .header-main { flex-direction: column; gap: 1rem; }
+  .header-actions { width: 100%; justify-content: center; }
+  .products-garden { grid-template-columns: 1fr; }
+  .filter-pills { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .title-section h1 { font-size: 1.5rem; }
+  .btn-organic { padding: 0.6rem 1rem; font-size: 0.8rem; }
+  .search-input { padding: 0.7rem; }
+  .filter-pill { padding: 0.4rem 1rem; font-size: 0.8rem; }
+}
 `;
