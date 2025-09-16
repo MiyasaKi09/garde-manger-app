@@ -9,7 +9,7 @@ import ProductCard from './components/ProductCard';
 import LotsView from './components/LotsView';
 import SmartAddForm from './components/SmartAddForm';
 
-import { daysUntil, getExpirationStatus, formatQty } from './components/pantryUtils';
+import { daysUntil, getExpirationStatus, formatQuantity } from './components/pantryUtils';
 
 /* ===========================
    Hook données Supabase
