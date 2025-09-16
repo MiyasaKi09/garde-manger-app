@@ -1,10 +1,11 @@
 // app/pantry/components/ProductCard.js
 'use client';
 
-import { useState } from 'react';
+import { Calendar, MapPin, Package, AlertTriangle, CheckCircle, Clock } from 'lucide-react';
 import { Package } from 'lucide-react';
+import LifespanBadge from './LifespanBadge';
 import { daysUntil, formatDate, getCategoryIcon } from './pantryUtils';
-import { LifespanBadge } from './LifespanBadge';
+
 
 export function ProductCard({
   product,
