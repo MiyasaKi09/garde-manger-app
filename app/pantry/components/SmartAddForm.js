@@ -106,13 +106,16 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         return;
       }
       const escaped = q.replace(/[,{}"]/g, '');
+      const searchTerm = (escaped || q).replace(/[%]/g, '');
+      if (!searchTerm) {
+        setSearchResults([]);
+        return;
+      }
       setSearchLoading(true);
       setSearchError(null);
       try {
-        // Recherche principale: canonical_name ILIKE + keywords array contains
-        const { data, error } = await supabase
-          .from('canonical_foods')
-          .select(`
+        // Recherche principale: canonical_name ILIKE + correspondance via keywords (text[])
+        const selectColumns = `
             id,
             canonical_name,
             category_id,
@@ -121,13 +124,45 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_pantry,
             shelf_life_days_fridge,
             shelf_life_days_freezer
-          `)
-          .or(`canonical_name.ilike.%${escaped}%,keywords.cs.{"${escaped}"}`)
+          `;
+
+        const { data: nameMatches, error: nameError } = await supabase
+          .from('canonical_foods')
+          .select(selectColumns)
+          .ilike('canonical_name', `%${searchTerm}%`)
           .limit(12);
 
-        if (error) throw error;
+        if (nameError) throw nameError;
 
-        const normalized = (data || []).map((row) => ({
+        let combined = [...(nameMatches || [])];
+        const seen = new Set(combined.map((row) => row.id));
+
+        const keywordTerms = searchTerm
+          .toLowerCase()
+          .split(/\s+/)
+          .map((term) => term.trim())
+          .filter(Boolean);
+
+        if (keywordTerms.length > 0) {
+          const { data: keywordMatches, error: keywordError } = await supabase
+            .from('canonical_foods')
+            .select(selectColumns)
+            .overlaps('keywords', keywordTerms)
+            .limit(12);
+
+          if (!keywordError) {
+            for (const row of keywordMatches || []) {
+              if (seen.has(row.id)) continue;
+              combined.push(row);
+              seen.add(row.id);
+              if (combined.length >= 12) break;
+            }
+          } else {
+            console.warn('keyword search error', keywordError);
+          }
+        }
+
+        const normalized = combined.map((row) => ({
           id: row.id,
           type: 'canonical',
           name: row.canonical_name,
