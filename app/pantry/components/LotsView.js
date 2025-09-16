@@ -1,13 +1,11 @@
 // app/pantry/components/LotsView.js
 'use client';
 
-import { useMemo } from 'react';
-import {
-  daysUntil,
-  formatDate,
-  getExpirationStatus,
-} from './pantryUtils';
+import { daysUntil, formatDate } from '@/lib/dates';
 import { LifespanBadge } from './LifespanBadge';
+import { daysUntil, formatDate } from './pantryUtils';
+import LifespanBadge from './LifespanBadge';
+
 
 // Helper: résout la date d'expiration d'un lot (tous alias pris en charge)
 const getLotExpiry = (lot) =>
