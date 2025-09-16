@@ -37,7 +37,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const qtyInputRef = useRef(null);
 
   const supabase = useMemo(() => {
-    if (typeof window === 'undefined') return null;
     try {
       return createClientComponentClient();
     } catch (error) {
