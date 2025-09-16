@@ -69,7 +69,7 @@ export default function SmartAddForm({
     }
   }, [step]);
 
-  // Recherche dans la base de données
+  // RECHERCHE AMÉLIORÉE avec plus de debug et de fallbacks
   const searchProducts = useCallback(async (query) => {
     if (!query.trim()) {
       setSearchResults([]);
@@ -77,94 +77,194 @@ export default function SmartAddForm({
     }
 
     setSearchLoading(true);
+    console.log('🔍 Recherche pour:', query);
     
     try {
       const searchTerm = query.trim().toLowerCase();
+      const results = [];
 
-      // Recherche dans canonical_foods
-      const { data: canonicalResults, error: canonicalError } = await supabase
-        .from('canonical_foods')
-        .select(`
-          id,
-          canonical_name,
-          category_id,
-          subcategory,
-          keywords,
-          primary_unit,
-          unit_weight_grams,
-          density_g_per_ml,
-          calories_per_100g,
-          shelf_life_days_pantry,
-          shelf_life_days_fridge,
-          shelf_life_days_freezer,
-          category:reference_categories(name, icon, color_hex)
-        `)
-        .or(`canonical_name.ilike.%${query}%,keywords.cs.{${query}}`)
-        .limit(15);
+      // ===== MÉTHODE 1: Recherche standard =====
+      try {
+        console.log('📊 Test 1: Recherche standard...');
+        const { data: canonicalResults, error: canonicalError } = await supabase
+          .from('canonical_foods')
+          .select(`
+            id,
+            canonical_name,
+            category_id,
+            subcategory,
+            keywords,
+            primary_unit,
+            shelf_life_days_pantry,
+            shelf_life_days_fridge,
+            shelf_life_days_freezer
+          `)
+          .or(`canonical_name.ilike.%${query}%,keywords.cs.{${query}}`)
+          .limit(10);
 
-      if (canonicalError) {
-        console.error('Erreur recherche canonical_foods:', canonicalError);
+        if (canonicalError) {
+          console.error('❌ Erreur recherche standard:', canonicalError);
+        } else {
+          console.log('✅ Résultats recherche standard:', canonicalResults?.length || 0);
+          console.log('📋 Exemples:', canonicalResults?.slice(0, 3));
+        }
+
+        // Traiter les résultats
+        (canonicalResults || []).forEach(item => {
+          const score = scoreResult(item.canonical_name, searchTerm);
+          results.push({
+            id: item.id,
+            type: 'canonical',
+            name: item.canonical_name,
+            display_name: item.canonical_name,
+            subcategory: item.subcategory,
+            category: { name: item.subcategory || 'Aliment', icon: '🥬' },
+            primary_unit: item.primary_unit || 'g',
+            shelf_life_days: {
+              fridge: item.shelf_life_days_fridge,
+              pantry: item.shelf_life_days_pantry,
+              freezer: item.shelf_life_days_freezer
+            },
+            source: 'Base de données',
+            icon: '🥬',
+            score
+          });
+        });
+      } catch (error) {
+        console.error('❌ Erreur dans recherche standard:', error);
       }
 
+      // ===== MÉTHODE 2: Recherche simple (fallback) =====
+      if (results.length === 0) {
+        try {
+          console.log('📊 Test 2: Recherche simple...');
+          const { data: simpleResults, error: simpleError } = await supabase
+            .from('canonical_foods')
+            .select('id, canonical_name, primary_unit')
+            .ilike('canonical_name', `%${query}%`)
+            .limit(10);
+
+          if (simpleError) {
+            console.error('❌ Erreur recherche simple:', simpleError);
+          } else {
+            console.log('✅ Résultats recherche simple:', simpleResults?.length || 0);
+          }
+
+          (simpleResults || []).forEach(item => {
+            const score = scoreResult(item.canonical_name, searchTerm);
+            results.push({
+              id: item.id,
+              type: 'canonical',
+              name: item.canonical_name,
+              display_name: item.canonical_name,
+              category: { name: 'Aliment', icon: '🥬' },
+              primary_unit: item.primary_unit || 'g',
+              source: 'Base simple',
+              icon: '🥬',
+              score
+            });
+          });
+        } catch (error) {
+          console.error('❌ Erreur dans recherche simple:', error);
+        }
+      }
+
+      // ===== MÉTHODE 3: Quelques suggestions par défaut =====
+      if (results.length === 0) {
+        console.log('📊 Test 3: Ajout de suggestions par défaut...');
+        const defaultSuggestions = [
+          { name: 'Tomate', icon: '🍅', category: 'Légumes' },
+          { name: 'Pomme', icon: '🍎', category: 'Fruits' },
+          { name: 'Riz', icon: '🍚', category: 'Céréales' },
+          { name: 'Lait', icon: '🥛', category: 'Produits laitiers' },
+          { name: 'Pain', icon: '🍞', category: 'Boulangerie' }
+        ];
+
+        defaultSuggestions.forEach((item, index) => {
+          if (item.name.toLowerCase().includes(searchTerm)) {
+            results.push({
+              id: `default-${index}`,
+              type: 'default',
+              name: item.name,
+              display_name: item.name,
+              category: { name: item.category, icon: '📦' },
+              primary_unit: 'g',
+              source: 'Suggestion',
+              icon: item.icon,
+              score: scoreResult(item.name, searchTerm)
+            });
+          }
+        });
+      }
+
+      // ===== TOUJOURS ajouter quelques suggestions génériques =====
+      const genericSuggestions = [
+        { name: searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1), icon: '🥬' },
+        { name: `${searchTerm} bio`, icon: '🌱' },
+        { name: `${searchTerm} frais`, icon: '✨' }
+      ].slice(0, Math.max(0, 5 - results.length)); // Compléter jusqu'à 5
+
+      genericSuggestions.forEach((item, index) => {
+        results.push({
+          id: `generic-${index}`,
+          type: 'generic',
+          name: item.name,
+          display_name: item.name,
+          category: { name: 'À définir', icon: '📦' },
+          primary_unit: defaultUnitForName(item.name),
+          source: 'Suggestion générique',
+          icon: item.icon,
+          score: 5 + index
+        });
+      });
+
+      // ===== Toujours proposer "Nouveau produit" =====
+      results.push({
+        id: 'new-product',
+        type: 'new',
+        name: query.trim(),
+        display_name: query.trim(),
+        category: { name: 'À définir', icon: '📦' },
+        primary_unit: defaultUnitForName(query),
+        source: 'Nouveau produit',
+        icon: '➕',
+        score: 10
+      });
+
       // Score de pertinence
-      const scoreResult = (name, searchTerm) => {
+      function scoreResult(name, searchTerm) {
         const n = name.toLowerCase();
         if (n === searchTerm) return 0;
         if (n.startsWith(searchTerm)) return 1;
         if (n.includes(' ' + searchTerm)) return 2;
         if (n.includes(searchTerm)) return 3;
-        return 10;
-      };
-
-      const results = [];
-
-      // Traiter les résultats canonical_foods
-      (canonicalResults || []).forEach(item => {
-        const score = scoreResult(item.canonical_name, searchTerm);
-        results.push({
-          id: item.id,
-          type: 'canonical',
-          name: item.canonical_name,
-          display_name: item.canonical_name,
-          subcategory: item.subcategory,
-          category: item.category,
-          primary_unit: item.primary_unit || 'g',
-          unit_weight_grams: item.unit_weight_grams,
-          density_g_per_ml: item.density_g_per_ml,
-          calories_per_100g: item.calories_per_100g,
-          shelf_life_days: {
-            fridge: item.shelf_life_days_fridge,
-            pantry: item.shelf_life_days_pantry,
-            freezer: item.shelf_life_days_freezer
-          },
-          source: 'Aliment de base',
-          icon: item.category?.icon || '🥬',
-          score
-        });
-      });
-
-      // Trier par score
-      results.sort((a, b) => a.score - b.score);
-      setSearchResults(results.slice(0, 12));
-
-      // Si pas de résultats, proposer de créer un nouveau produit
-      if (results.length === 0) {
-        setSearchResults([{
-          id: 'new-product',
-          type: 'new',
-          name: query.trim(),
-          display_name: query.trim(),
-          category: { name: 'À définir' },
-          primary_unit: defaultUnitForName(query),
-          source: 'Nouveau produit',
-          icon: '➕',
-          score: 0
-        }]);
+        return 5;
       }
 
+      // Trier par score et prendre les 8 meilleurs
+      results.sort((a, b) => a.score - b.score);
+      const finalResults = results.slice(0, 8);
+
+      console.log('🎯 Résultats finaux:', finalResults.length);
+      console.log('📝 Détail:', finalResults.map(r => ({ name: r.display_name, source: r.source, score: r.score })));
+
+      setSearchResults(finalResults);
+
     } catch (error) {
-      console.error('Erreur recherche produits:', error);
-      setSearchResults([]);
+      console.error('❌ Erreur globale recherche:', error);
+      
+      // En cas d'erreur, au moins proposer quelque chose
+      setSearchResults([{
+        id: 'fallback',
+        type: 'new',
+        name: query.trim(),
+        display_name: `${query.trim()} (création)`,
+        category: { name: 'À définir', icon: '📦' },
+        primary_unit: defaultUnitForName(query),
+        source: 'Création manuelle',
+        icon: '➕',
+        score: 0
+      }]);
     } finally {
       setSearchLoading(false);
     }
@@ -212,6 +312,7 @@ export default function SmartAddForm({
 
   // Sélection d'un produit
   const handleSelectProduct = useCallback((product) => {
+    console.log('✅ Produit sélectionné:', product);
     setSelectedProduct(product);
 
     const sim = similarity(searchQuery || '', product.name || '');
@@ -249,6 +350,7 @@ export default function SmartAddForm({
     if (!selectedProduct || !lotData.qty) return;
 
     setLoading(true);
+    console.log('💾 Création lot:', { selectedProduct, lotData });
     
     try {
       const payload = {
@@ -263,11 +365,14 @@ export default function SmartAddForm({
         category_name: selectedProduct.category?.name
       };
 
+      console.log('📤 Payload envoyé:', payload);
+
       if (onCreate && typeof onCreate === 'function') {
         await onCreate(payload);
+        console.log('✅ Lot créé avec succès');
       }
     } catch (error) {
-      console.error('Erreur lors de la création du lot:', error);
+      console.error('❌ Erreur lors de la création du lot:', error);
     } finally {
       setLoading(false);
     }
@@ -322,6 +427,13 @@ export default function SmartAddForm({
                 />
                 {searchLoading && <div className="loading">🔄</div>}
               </div>
+
+              {/* Debug info */}
+              {searchQuery && (
+                <div className="debug-info">
+                  <small>🔍 Recherche: "{searchQuery}" • {searchResults.length} résultats • Ouvrez la console F12 pour plus de détails</small>
+                </div>
+              )}
 
               {/* Résultats de recherche */}
               {searchResults.length > 0 && (
@@ -647,6 +759,14 @@ export default function SmartAddForm({
         @keyframes spin {
           from { transform: translateY(-50%) rotate(0deg); }
           to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .debug-info {
+          margin-bottom: 1rem;
+          padding: 0.5rem;
+          background: #f0f9ff;
+          border-radius: 6px;
+          color: #1d4ed8;
         }
 
         .results-list {
