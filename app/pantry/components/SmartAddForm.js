@@ -36,7 +36,17 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const searchInputRef = useRef(null);
   const qtyInputRef = useRef(null);
 
-  const supabase = supabaseClient;
+
+
+  const supabase = useMemo(() => {
+    try {
+      return createClientComponentClient();
+    } catch (error) {
+      console.error('Supabase client init error', error);
+      return null;
+    }
+  }, []);
+
 
   // Reset form when opened
   useEffect(() => {
