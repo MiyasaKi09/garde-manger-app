@@ -642,4 +642,159 @@
             } else if (percentage <= 40) {
                 expiryClass = 'expiry-soon';
                 expiryText = `À consommer bientôt (${product.daysLeft}j)`;
-                expi
+                expiryIcon = '⏰';
+            }
+            
+            if (product.daysLeft > 365) {
+                expiryText = 'Longue conservation';
+                expiryIcon = '🌟';
+            }
+
+            return `
+                <div class="product-card" onclick="openProductDetails(${product.id})">
+                    <div class="product-header">
+                        <div class="product-info">
+                            <h3 class="product-name">${product.name}</h3>
+                            <div class="product-details">
+                                <span class="product-detail">
+                                    <span>📦</span> ${product.quantity}
+                                </span>
+                                <span class="product-detail">
+                                    <span>📍</span> ${product.storage}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="product-category-icon category-${product.category}">
+                            <span>${product.categoryIcon}</span>
+                        </div>
+                    </div>
+                    <div class="expiry-container">
+                        <div class="expiry-visual">
+                            <div class="expiry-fill ${expiryClass}" style="width: ${Math.max(10, Math.min(100, percentage))}%">
+                                <span class="expiry-text">${expiryText}</span>
+                            </div>
+                            <span class="expiry-icon">${expiryIcon}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Fonction pour afficher les produits
+        function displayProducts(productsToShow = products) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = productsToShow.map(product => generateProductCard(product)).join('');
+            
+            // Mettre à jour les statistiques
+            updateStats(productsToShow);
+        }
+
+        // Fonction pour mettre à jour les statistiques
+        function updateStats(productsToShow) {
+            const fresh = productsToShow.filter(p => (p.daysLeft / p.maxDays) > 0.4).length;
+            const soon = productsToShow.filter(p => (p.daysLeft / p.maxDays) <= 0.4).length;
+            const total = productsToShow.length;
+            
+            document.querySelectorAll('.stat-number')[0].textContent = fresh;
+            document.querySelectorAll('.stat-number')[1].textContent = soon;
+            document.querySelectorAll('.stat-number')[2].textContent = total;
+        }
+
+        // Fonction de filtrage par catégorie
+        function filterByCategory(category) {
+            currentFilter = category;
+            
+            // Mettre à jour les boutons actifs
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.filter-btn').classList.add('active');
+            
+            // Filtrer les produits
+            let filtered = products;
+            if (category !== 'all') {
+                filtered = products.filter(p => p.category === category);
+            }
+            
+            // Appliquer aussi la recherche si elle existe
+            if (currentSearch) {
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(currentSearch.toLowerCase())
+                );
+            }
+            
+            displayProducts(filtered);
+        }
+
+        // Fonction de filtrage par fraîcheur
+        function filterByFreshness(freshness) {
+            let filtered = products;
+            
+            if (freshness === 'fresh') {
+                filtered = products.filter(p => (p.daysLeft / p.maxDays) > 0.4);
+            } else if (freshness === 'soon') {
+                filtered = products.filter(p => (p.daysLeft / p.maxDays) <= 0.4);
+            }
+            
+            displayProducts(filtered);
+        }
+
+        // Fonction de filtrage par stockage
+        function filterByStorage(storage) {
+            let filtered = products;
+            
+            if (storage === 'long') {
+                filtered = products.filter(p => p.daysLeft > 30);
+            }
+            
+            displayProducts(filtered);
+        }
+
+        // Fonction de recherche
+        function searchProducts(searchTerm) {
+            currentSearch = searchTerm;
+            
+            let filtered = products.filter(p => 
+                p.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            
+            // Appliquer aussi le filtre de catégorie si actif
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(p => p.category === currentFilter);
+            }
+            
+            displayProducts(filtered);
+        }
+
+        // Fonction pour actualiser le garde-manger
+        function refreshPantry() {
+            // Animation de rotation sur le bouton
+            event.target.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                event.target.style.transform = 'rotate(0deg)';
+            }, 500);
+            
+            // Simuler un rechargement des données
+            displayProducts();
+        }
+
+        // Fonction pour ajouter un produit
+        function addProduct() {
+            alert('Fonctionnalité d\'ajout de produit à implémenter');
+        }
+
+        // Fonction pour ouvrir les détails d'un produit
+        function openProductDetails(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                alert(`Détails de ${product.name}\nQuantité: ${product.quantity}\nStockage: ${product.storage}\nJours restants: ${product.daysLeft}`);
+            }
+        }
+
+        // Initialisation au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            displayProducts();
+        });
+    </script>
+</body>
+</html>
