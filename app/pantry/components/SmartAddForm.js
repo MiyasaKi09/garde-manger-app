@@ -11,6 +11,168 @@ import {
   estimateExpiryFromShelfLife
 } from './pantryUtils';
 
+// 🔧 UTILITAIRES POUR RECHERCHE INTELLIGENTE
+const normalizeText = (text) => {
+  if (!text) return '';
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Enlever les accents
+    .replace(/[^\w\s]/g, ' ') // Remplacer la ponctuation par des espaces
+    .replace(/\s+/g, ' ') // Normaliser les espaces multiples
+    .trim();
+};
+
+const capitalizeWords = (text) => {
+  if (!text) return '';
+  return text
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+};
+
+// Distance de Levenshtein simplifiée pour correction orthographique
+const levenshteinDistance = (str1, str2) => {
+  const matrix = Array(str2.length + 1).fill(null).map(() => Array(str1.length + 1).fill(null));
+  
+  for (let i = 0; i <= str1.length; i += 1) {
+    matrix[0][i] = i;
+  }
+  
+  for (let j = 0; j <= str2.length; j += 1) {
+    matrix[j][0] = j;
+  }
+  
+  for (let j = 1; j <= str2.length; j += 1) {
+    for (let i = 1; i <= str1.length; i += 1) {
+      const indicator = str1[i - 1] === str2[j - 1] ? 0 : 1;
+      matrix[j][i] = Math.min(
+        matrix[j][i - 1] + 1, // deletion
+        matrix[j - 1][i] + 1, // insertion
+        matrix[j - 1][i - 1] + indicator // substitution
+      );
+    }
+  }
+  
+  return matrix[str2.length][str1.length];
+};
+
+// Score de similarité avancé
+const calculateSimilarity = (query, target) => {
+  const normalizedQuery = normalizeText(query);
+  const normalizedTarget = normalizeText(target);
+  
+  // 1. Correspondance exacte
+  if (normalizedQuery === normalizedTarget) return 100;
+  
+  // 2. Le target commence par la query
+  if (normalizedTarget.startsWith(normalizedQuery)) return 95;
+  
+  // 3. Le target contient la query
+  if (normalizedTarget.includes(normalizedQuery)) return 85;
+  
+  // 4. Mots inversés (tomate sauce = sauce tomate)
+  const queryWords = normalizedQuery.split(' ').filter(Boolean);
+  const targetWords = normalizedTarget.split(' ').filter(Boolean);
+  
+  if (queryWords.length > 1 && targetWords.length > 1) {
+    const reversedQuery = queryWords.reverse().join(' ');
+    if (normalizedTarget.includes(reversedQuery)) return 80;
+    
+    // Vérifier si tous les mots de la query sont dans le target
+    const allWordsMatch = queryWords.every(word => 
+      targetWords.some(targetWord => targetWord.includes(word) || word.includes(targetWord))
+    );
+    if (allWordsMatch) return 75;
+  }
+  
+  // 5. Correction orthographique (pour mots simples)
+  if (normalizedQuery.length >= 3) {
+    const distance = levenshteinDistance(normalizedQuery, normalizedTarget);
+    const maxLen = Math.max(normalizedQuery.length, normalizedTarget.length);
+    const similarity = (maxLen - distance) / maxLen;
+    
+    if (similarity >= 0.7) return Math.floor(similarity * 70); // 0-70 points
+  }
+  
+  // 6. Correspondance partielle des mots
+  const partialMatches = queryWords.filter(qWord => 
+    targetWords.some(tWord => 
+      tWord.includes(qWord) || qWord.includes(tWord) || 
+      levenshteinDistance(qWord, tWord) <= 1
+    )
+  ).length;
+  
+  if (partialMatches > 0) {
+    return Math.floor((partialMatches / queryWords.length) * 60);
+  }
+  
+  return 0;
+};
+
+// Suggestions intelligentes basées sur des patterns courants
+const generateSmartSuggestions = (query) => {
+  const normalized = normalizeText(query);
+  const words = normalized.split(' ').filter(Boolean);
+  
+  const suggestions = [];
+  
+  // Patterns courants français
+  const patterns = [
+    // Inversion de mots
+    ...(words.length > 1 ? [words.reverse().join(' ')] : []),
+    // Ajouts courants
+    `${normalized} frais`,
+    `${normalized} bio`,
+    `${normalized} en conserve`,
+    `${normalized} surgelé`,
+    // Variations
+    `pâte de ${normalized}`,
+    `sauce ${normalized}`,
+    `jus de ${normalized}`,
+    `purée de ${normalized}`,
+    // Corrections orthographiques courantes
+    ...(generateSpellingVariants(normalized))
+  ];
+  
+  return patterns
+    .filter(Boolean)
+    .filter(p => p !== normalized)
+    .slice(0, 5)
+    .map(suggestion => ({
+      name: capitalizeWords(suggestion),
+      score: 50,
+      type: 'smart'
+    }));
+};
+
+// Génère des variantes orthographiques courantes
+const generateSpellingVariants = (word) => {
+  const variants = [];
+  
+  // Corrections courantes en français
+  const corrections = {
+    'timate': 'tomate',
+    'pomm': 'pomme',
+    'banan': 'banane',
+    'orang': 'orange',
+    'citro': 'citron',
+    'poir': 'poire',
+    'peche': 'pêche',
+    'fraise': 'fraise',
+    'ceris': 'cerise'
+  };
+  
+  // Vérifier si le mot ressemble à une correction connue
+  for (const [incorrect, correct] of Object.entries(corrections)) {
+    if (word.includes(incorrect) || levenshteinDistance(word, incorrect) <= 1) {
+      variants.push(correct);
+    }
+  }
+  
+  return variants;
+};
+
 export default function SmartAddForm({ 
   open, 
   onClose, 
@@ -69,7 +231,7 @@ export default function SmartAddForm({
     }
   }, [step]);
 
-  // RECHERCHE AMÉLIORÉE avec plus de debug et de fallbacks
+  // 🧠 RECHERCHE INTELLIGENTE AMÉLIORÉE
   const searchProducts = useCallback(async (query) => {
     if (!query.trim()) {
       setSearchResults([]);
@@ -77,15 +239,30 @@ export default function SmartAddForm({
     }
 
     setSearchLoading(true);
-    console.log('🔍 Recherche pour:', query);
+    console.log('🔍 Recherche intelligente pour:', query);
     
     try {
-      const searchTerm = query.trim().toLowerCase();
+      const normalizedQuery = normalizeText(query);
+      const queryWords = normalizedQuery.split(' ').filter(Boolean);
       const results = [];
 
-      // ===== MÉTHODE 1: Recherche standard =====
+      // ===== MÉTHODE 1: Recherche dans la base de données =====
       try {
-        console.log('📊 Test 1: Recherche standard...');
+        console.log('📊 Recherche DB pour:', normalizedQuery);
+        
+        // Construire une requête flexible
+        const searchPatterns = [
+          query, // Requête originale
+          normalizedQuery, // Version normalisée
+          ...queryWords, // Mots individuels
+          ...generateSpellingVariants(normalizedQuery) // Corrections orthographiques
+        ].filter(Boolean);
+
+        // Recherche avec OR sur tous les patterns
+        const orConditions = searchPatterns.map(pattern => 
+          `canonical_name.ilike.%${pattern}%`
+        ).join(',');
+
         const { data: canonicalResults, error: canonicalError } = await supabase
           .from('canonical_foods')
           .select(`
@@ -99,167 +276,146 @@ export default function SmartAddForm({
             shelf_life_days_fridge,
             shelf_life_days_freezer
           `)
-          .or(`canonical_name.ilike.%${query}%,keywords.cs.{${query}}`)
-          .limit(10);
+          .or(orConditions)
+          .limit(20);
 
         if (canonicalError) {
-          console.error('❌ Erreur recherche standard:', canonicalError);
+          console.error('❌ Erreur DB:', canonicalError);
         } else {
-          console.log('✅ Résultats recherche standard:', canonicalResults?.length || 0);
-          console.log('📋 Exemples:', canonicalResults?.slice(0, 3));
-        }
-
-        // Traiter les résultats
-        (canonicalResults || []).forEach(item => {
-          const score = scoreResult(item.canonical_name, searchTerm);
-          results.push({
-            id: item.id,
-            type: 'canonical',
-            name: item.canonical_name,
-            display_name: item.canonical_name,
-            subcategory: item.subcategory,
-            category: { name: item.subcategory || 'Aliment', icon: '🥬' },
-            primary_unit: item.primary_unit || 'g',
-            shelf_life_days: {
-              fridge: item.shelf_life_days_fridge,
-              pantry: item.shelf_life_days_pantry,
-              freezer: item.shelf_life_days_freezer
-            },
-            source: 'Base de données',
-            icon: '🥬',
-            score
+          console.log('✅ Résultats DB:', canonicalResults?.length || 0);
+          
+          // Traiter et scorer les résultats
+          (canonicalResults || []).forEach(item => {
+            const similarity = calculateSimilarity(query, item.canonical_name);
+            
+            if (similarity >= 30) { // Seuil minimum de pertinence
+              results.push({
+                id: item.id,
+                type: 'canonical',
+                name: item.canonical_name,
+                display_name: capitalizeWords(item.canonical_name),
+                subcategory: item.subcategory,
+                category: { 
+                  name: capitalizeWords(item.subcategory || 'Aliment'), 
+                  icon: getCategoryIcon(item.subcategory) 
+                },
+                primary_unit: item.primary_unit || 'g',
+                shelf_life_days: {
+                  fridge: item.shelf_life_days_fridge,
+                  pantry: item.shelf_life_days_pantry,
+                  freezer: item.shelf_life_days_freezer
+                },
+                source: 'Base de données',
+                icon: getCategoryIcon(item.subcategory),
+                score: similarity
+              });
+            }
           });
-        });
+        }
       } catch (error) {
-        console.error('❌ Erreur dans recherche standard:', error);
+        console.error('❌ Erreur recherche DB:', error);
       }
 
-      // ===== MÉTHODE 2: Recherche simple (fallback) =====
-      if (results.length === 0) {
-        try {
-          console.log('📊 Test 2: Recherche simple...');
-          const { data: simpleResults, error: simpleError } = await supabase
-            .from('canonical_foods')
-            .select('id, canonical_name, primary_unit')
-            .ilike('canonical_name', `%${query}%`)
-            .limit(10);
-
-          if (simpleError) {
-            console.error('❌ Erreur recherche simple:', simpleError);
-          } else {
-            console.log('✅ Résultats recherche simple:', simpleResults?.length || 0);
-          }
-
-          (simpleResults || []).forEach(item => {
-            const score = scoreResult(item.canonical_name, searchTerm);
-            results.push({
-              id: item.id,
-              type: 'canonical',
-              name: item.canonical_name,
-              display_name: item.canonical_name,
-              category: { name: 'Aliment', icon: '🥬' },
-              primary_unit: item.primary_unit || 'g',
-              source: 'Base simple',
-              icon: '🥬',
-              score
-            });
-          });
-        } catch (error) {
-          console.error('❌ Erreur dans recherche simple:', error);
-        }
-      }
-
-      // ===== MÉTHODE 3: Quelques suggestions par défaut =====
-      if (results.length === 0) {
-        console.log('📊 Test 3: Ajout de suggestions par défaut...');
-        const defaultSuggestions = [
-          { name: 'Tomate', icon: '🍅', category: 'Légumes' },
-          { name: 'Pomme', icon: '🍎', category: 'Fruits' },
-          { name: 'Riz', icon: '🍚', category: 'Céréales' },
-          { name: 'Lait', icon: '🥛', category: 'Produits laitiers' },
-          { name: 'Pain', icon: '🍞', category: 'Boulangerie' }
-        ];
-
-        defaultSuggestions.forEach((item, index) => {
-          if (item.name.toLowerCase().includes(searchTerm)) {
-            results.push({
-              id: `default-${index}`,
-              type: 'default',
-              name: item.name,
-              display_name: item.name,
-              category: { name: item.category, icon: '📦' },
-              primary_unit: 'g',
-              source: 'Suggestion',
-              icon: item.icon,
-              score: scoreResult(item.name, searchTerm)
-            });
-          }
-        });
-      }
-
-      // ===== TOUJOURS ajouter quelques suggestions génériques =====
-      const genericSuggestions = [
-        { name: searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1), icon: '🥬' },
-        { name: `${searchTerm} bio`, icon: '🌱' },
-        { name: `${searchTerm} frais`, icon: '✨' }
-      ].slice(0, Math.max(0, 5 - results.length)); // Compléter jusqu'à 5
-
-      genericSuggestions.forEach((item, index) => {
+      // ===== MÉTHODE 2: Suggestions intelligentes =====
+      const smartSuggestions = generateSmartSuggestions(query);
+      smartSuggestions.forEach((suggestion, index) => {
         results.push({
-          id: `generic-${index}`,
-          type: 'generic',
-          name: item.name,
-          display_name: item.name,
-          category: { name: 'À définir', icon: '📦' },
-          primary_unit: defaultUnitForName(item.name),
-          source: 'Suggestion générique',
-          icon: item.icon,
-          score: 5 + index
+          id: `smart-${index}`,
+          type: 'smart',
+          name: suggestion.name,
+          display_name: suggestion.name,
+          category: { name: 'Suggestion intelligente', icon: '💡' },
+          primary_unit: defaultUnitForName(suggestion.name),
+          source: 'Suggestion intelligente',
+          icon: '💡',
+          score: suggestion.score
         });
       });
 
-      // ===== Toujours proposer "Nouveau produit" =====
+      // ===== MÉTHODE 3: Suggestions par défaut enrichies =====
+      const defaultSuggestions = [
+        { name: 'Tomate', icon: '🍅', category: 'Légumes', aliases: ['timate', 'tomato'] },
+        { name: 'Pomme', icon: '🍎', category: 'Fruits', aliases: ['pomm', 'apple'] },
+        { name: 'Riz', icon: '🍚', category: 'Céréales', aliases: ['rice'] },
+        { name: 'Lait', icon: '🥛', category: 'Produits laitiers', aliases: ['milk'] },
+        { name: 'Pain', icon: '🍞', category: 'Boulangerie', aliases: ['bread'] },
+        { name: 'Banane', icon: '🍌', category: 'Fruits', aliases: ['banan', 'banana'] },
+        { name: 'Carotte', icon: '🥕', category: 'Légumes', aliases: ['carot'] },
+        { name: 'Oignon', icon: '🧅', category: 'Légumes', aliases: ['onion'] }
+      ];
+
+      defaultSuggestions.forEach((item, index) => {
+        const similarity = Math.max(
+          calculateSimilarity(query, item.name),
+          ...item.aliases.map(alias => calculateSimilarity(query, alias))
+        );
+        
+        if (similarity >= 40) {
+          results.push({
+            id: `default-${index}`,
+            type: 'default',
+            name: item.name,
+            display_name: item.name,
+            category: { name: item.category, icon: '📦' },
+            primary_unit: 'g',
+            source: 'Suggestion',
+            icon: item.icon,
+            score: similarity + 10 // Bonus pour les suggestions par défaut
+          });
+        }
+      });
+
+      // ===== TOUJOURS ajouter "Créer un nouveau produit" =====
       results.push({
         id: 'new-product',
         type: 'new',
         name: query.trim(),
-        display_name: query.trim(),
-        category: { name: 'À définir', icon: '📦' },
+        display_name: capitalizeWords(query.trim()),
+        category: { name: 'Nouveau produit', icon: '📦' },
         primary_unit: defaultUnitForName(query),
-        source: 'Nouveau produit',
+        source: 'Création',
         icon: '➕',
-        score: 10
+        score: 0 // Toujours en dernier
       });
 
-      // Score de pertinence
-      function scoreResult(name, searchTerm) {
-        const n = name.toLowerCase();
-        if (n === searchTerm) return 0;
-        if (n.startsWith(searchTerm)) return 1;
-        if (n.includes(' ' + searchTerm)) return 2;
-        if (n.includes(searchTerm)) return 3;
-        return 5;
+      // Fonction pour déterminer l'icône selon la catégorie
+      function getCategoryIcon(category) {
+        const icons = {
+          'fruits': '🍎', 'fruits_ete': '🍑', 'fruits_automne': '🍂', 'fruits_hiver': '🍊',
+          'legumes': '🥬', 'legumes_verts': '🥬', 'legumes_racines': '🥕', 'bulbes': '🧅',
+          'viande': '🥩', 'viande_rouge': '🥩', 'volaille': '🐔', 'poisson': '🐟',
+          'cereales': '🌾', 'cereales_completes': '🌾', 'pates': '🍝',
+          'laitier': '🥛', 'fromage': '🧀', 'yaourt': '🥛',
+          'epices': '🌶️', 'herbes': '🌿', 'condiments': '🍯'
+        };
+        
+        if (!category) return '🥬';
+        const normalized = normalizeText(category);
+        return Object.keys(icons).find(key => normalized.includes(key)) ? 
+          icons[Object.keys(icons).find(key => normalized.includes(key))] : '🥬';
       }
 
-      // Trier par score et prendre les 8 meilleurs
-      results.sort((a, b) => a.score - b.score);
+      // Trier par score décroissant et limiter à 8 résultats
+      results.sort((a, b) => b.score - a.score);
       const finalResults = results.slice(0, 8);
 
       console.log('🎯 Résultats finaux:', finalResults.length);
-      console.log('📝 Détail:', finalResults.map(r => ({ name: r.display_name, source: r.source, score: r.score })));
+      console.log('📝 Top résultats:', finalResults.slice(0, 3).map(r => 
+        ({ name: r.display_name, source: r.source, score: r.score }))
+      );
 
       setSearchResults(finalResults);
 
     } catch (error) {
       console.error('❌ Erreur globale recherche:', error);
       
-      // En cas d'erreur, au moins proposer quelque chose
+      // Fallback minimal
       setSearchResults([{
         id: 'fallback',
         type: 'new',
         name: query.trim(),
-        display_name: `${query.trim()} (création)`,
-        category: { name: 'À définir', icon: '📦' },
+        display_name: capitalizeWords(query.trim()),
+        category: { name: 'Création', icon: '📦' },
         primary_unit: defaultUnitForName(query),
         source: 'Création manuelle',
         icon: '➕',
@@ -328,7 +484,7 @@ export default function SmartAddForm({
       unit: autoUnit,
       qty: prev.qty || autoQty,
       expiration_date: autoExpiry,
-      notes: prev.notes || 'Ajouté automatiquement'
+      notes: prev.notes || `Ajouté via ${product.source}`
     }));
 
     setStep(2);
@@ -420,7 +576,7 @@ export default function SmartAddForm({
                 <input
                   ref={searchInputRef}
                   type="text"
-                  placeholder="Rechercher un produit (ex: tomate, yaourt, riz...)"
+                  placeholder="Rechercher un produit (ex: timate, tomate sauce, pomm...)"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="search-input"
@@ -428,10 +584,10 @@ export default function SmartAddForm({
                 {searchLoading && <div className="loading">🔄</div>}
               </div>
 
-              {/* Debug info */}
+              {/* Info de recherche */}
               {searchQuery && (
-                <div className="debug-info">
-                  <small>🔍 Recherche: "{searchQuery}" • {searchResults.length} résultats • Ouvrez la console F12 pour plus de détails</small>
+                <div className="search-info">
+                  <small>💡 Recherche intelligente : corrections orthographiques, mots inversés, suggestions...</small>
                 </div>
               )}
 
@@ -441,7 +597,7 @@ export default function SmartAddForm({
                   {searchResults.map((product) => (
                     <div
                       key={`${product.type}-${product.id}`}
-                      className={`result-item ${product.type === 'new' ? 'new-item' : ''}`}
+                      className={`result-item ${product.type === 'new' ? 'new-item' : ''} ${product.type === 'smart' ? 'smart-item' : ''}`}
                       onClick={() => handleSelectProduct(product)}
                     >
                       <div className="result-icon">{product.icon}</div>
@@ -449,15 +605,15 @@ export default function SmartAddForm({
                         <div className="result-name">
                           {product.display_name}
                           {product.type === 'new' && <span className="new-badge">Nouveau</span>}
+                          {product.type === 'smart' && <span className="smart-badge">Suggestion</span>}
+                          {product.score >= 80 && <span className="match-badge">Très pertinent</span>}
                         </div>
                         <div className="result-meta">
                           <span className="source">{product.source}</span>
                           {product.category?.name && (
                             <span className="category">{product.category.name}</span>
                           )}
-                          {product.subcategory && (
-                            <span className="subcategory">{product.subcategory}</span>
-                          )}
+                          <span className="score">Score: {product.score}%</span>
                         </div>
                       </div>
                     </div>
@@ -467,7 +623,7 @@ export default function SmartAddForm({
 
               {searchQuery && !searchLoading && searchResults.length === 0 && (
                 <div className="no-results">
-                  <p>Recherche en cours...</p>
+                  <p>🔍 Analyse en cours...</p>
                 </div>
               )}
             </div>
@@ -761,19 +917,24 @@ export default function SmartAddForm({
           to { transform: translateY(-50%) rotate(360deg); }
         }
 
-        .debug-info {
+        .search-info {
           margin-bottom: 1rem;
-          padding: 0.5rem;
-          background: #f0f9ff;
-          border-radius: 6px;
-          color: #1d4ed8;
+          padding: 0.75rem;
+          background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+          border-radius: 8px;
+          border-left: 4px solid #0ea5e9;
+        }
+
+        .search-info small {
+          color: #0369a1;
+          font-weight: 500;
         }
 
         .results-list {
           display: flex;
           flex-direction: column;
           gap: 0.5rem;
-          max-height: 300px;
+          max-height: 400px;
           overflow-y: auto;
         }
 
@@ -787,19 +948,25 @@ export default function SmartAddForm({
           cursor: pointer;
           transition: all 0.2s;
           background: white;
+          position: relative;
         }
 
         .result-item:hover {
           border-color: #c8d8c8;
           background: #f8fdf8;
           transform: translateY(-1px);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .result-item.new-item {
           border-style: dashed;
           border-color: #a8c5a8;
           background: rgba(139, 181, 139, 0.05);
+        }
+
+        .result-item.smart-item {
+          border-color: #fbbf24;
+          background: rgba(251, 191, 36, 0.05);
         }
 
         .result-icon {
@@ -826,11 +993,30 @@ export default function SmartAddForm({
           align-items: center;
           gap: 0.5rem;
           margin-bottom: 0.25rem;
+          flex-wrap: wrap;
         }
 
         .new-badge {
           background: #f0f9f0;
           color: #6b9d6b;
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+
+        .smart-badge {
+          background: #fef3c7;
+          color: #d97706;
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+
+        .match-badge {
+          background: #dcfce7;
+          color: #16a34a;
           padding: 2px 6px;
           border-radius: 4px;
           font-size: 0.75rem;
@@ -843,9 +1029,10 @@ export default function SmartAddForm({
           display: flex;
           align-items: center;
           gap: 0.5rem;
+          flex-wrap: wrap;
         }
 
-        .source, .category, .subcategory {
+        .source, .category, .score {
           background: #f3f4f6;
           padding: 1px 6px;
           border-radius: 4px;
@@ -857,9 +1044,10 @@ export default function SmartAddForm({
           color: #1d4ed8;
         }
 
-        .subcategory {
+        .score {
           background: #f0fdf4;
-          color: #047857;
+          color: #16a34a;
+          font-weight: 500;
         }
 
         .no-results {
@@ -1115,6 +1303,11 @@ export default function SmartAddForm({
             flex-direction: column;
             align-items: flex-start;
             gap: 0.25rem;
+          }
+
+          .result-name {
+            flex-direction: column;
+            align-items: flex-start;
           }
         }
       `}</style>
