@@ -118,7 +118,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_freezer
           `)
           .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}}`)
-          .limit(12);
+          .limit(11);
 
         if (error) throw error;
 
@@ -147,8 +147,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         });
 
         // Toujours offrir la création d'un nouveau produit (basée sur la saisie)
+        const limitedResults = normalized.slice(0, 11);
         const results = [
-          ...normalized,
+          ...limitedResults,
           {
             id: 'new-product',
             type: 'new',
@@ -158,7 +159,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             primary_unit: 'g',
             icon: '➕'
           }
-        ].slice(0, 12);
+        ];
 
         setSearchResults(results);
       } catch (e) {
