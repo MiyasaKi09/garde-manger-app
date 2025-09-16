@@ -19,6 +19,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
+  const [searchError, setSearchError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [confidence, setConfidence] = useState({ percent: 0, label: 'Faible', tone: 'warning' });
   const [loading, setLoading] = useState(false);
@@ -42,6 +43,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       setStep(1);
       setSearchQuery('');
       setSearchResults([]);
+      setSearchError(null);
       setSelectedProduct(null);
       setConfidence({ percent: 0, label: 'Faible', tone: 'warning' });
       setLotData({ qty: '', unit: 'g', storage_method: 'pantry', storage_place: '', expiration_date: '', notes: '' });
@@ -100,10 +102,12 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       const q = query.trim();
       if (!q) {
         setSearchResults([]);
+        setSearchError(null);
         return;
       }
       const escaped = q.replace(/[,{}"]/g, '');
       setSearchLoading(true);
+      setSearchError(null);
       try {
         // Recherche principale: canonical_name ILIKE + keywords array contains
         const { data, error } = await supabase
@@ -165,6 +169,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         setSearchResults(results);
       } catch (e) {
         console.error('search error', e);
+        setSearchError(e?.message || 'Erreur de recherche');
         setSearchResults([
           {
             id: 'new-product',
@@ -353,6 +358,12 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 </div>
               )}
 
+              {searchError && (
+                <div className="search-error">
+                  ⚠️ Une erreur est survenue lors de la recherche : {searchError}
+                </div>
+              )}
+
               {searchResults.length > 0 && (
                 <div className="results-list">
                   {searchResults.map((product) => (
@@ -532,6 +543,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .loading { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); animation: spin 1s linear infinite; }
         @keyframes spin { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
         .debug-info { margin-bottom: 1rem; padding: .5rem; background: #f0f9ff; border-radius: 6px; color: #1d4ed8; }
+        .search-error { margin-bottom: 1rem; padding: .75rem 1rem; background: #fff7ed; border: 1px solid #fdba74; border-radius: 8px; color: #c2410c; font-size: .9rem; line-height: 1.4; }
         .results-list { display: flex; flex-direction: column; gap: .5rem; max-height: 300px; overflow-y: auto; }
         .result-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 12px; cursor: pointer; background: white; }
         .result-item:hover { border-color: #c8d8c8; background: #f8fdf8; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.1); }
