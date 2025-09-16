@@ -1,9 +1,18 @@
 // app/pantry/components/SmartAddForm.js
 'use client';
 
-import { useState, useCallback, useRef, useEffect } from 'react';
-import { Search, Plus, X, Calendar, MapPin, Package, ChevronLeft, AlertCircle } from 'lucide-react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
+import { Search, Plus, X, Calendar, MapPin, ShieldCheck } from 'lucide-react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+
+/**
+ * OBJECTIF
+ *  - Ne plus "tricher" avec des données codées en dur.
+ *  - Rechercher dans Supabase (table: canonical_foods) uniquement.
+ *  - Calculer l'unité et la DLC à partir des colonnes de la base.
+ *  - Insérer le lot directement dans Supabase (table: inventory_lots).
+ *  - Option: si l'utilisateur sélectionne un "nouveau produit", créer d'abord un canonical_food minimal.
+ */
 
 export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [step, setStep] = useState(1);
@@ -12,6 +21,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [confidence, setConfidence] = useState({ percent: 0, label: 'Faible', tone: 'warning' });
   const [loading, setLoading] = useState(false);
 
   const [lotData, setLotData] = useState({
@@ -25,7 +35,15 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   const searchInputRef = useRef(null);
   const qtyInputRef = useRef(null);
-  const supabase = createClientComponentClient();
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      return createClientComponentClient();
+    } catch (error) {
+      console.error('Supabase client init error', error);
+      return null;
+    }
+  }, []);
 
   // Reset form when opened
   useEffect(() => {
@@ -35,14 +53,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       setSearchResults([]);
       setSearchError(null);
       setSelectedProduct(null);
-      setLotData({ 
-        qty: '', 
-        unit: 'g', 
-        storage_method: 'pantry', 
-        storage_place: '', 
-        expiration_date: '', 
-        notes: '' 
-      });
+      setConfidence({ percent: 0, label: 'Faible', tone: 'warning' });
+      setLotData({ qty: '', unit: 'g', storage_method: 'pantry', storage_place: '', expiration_date: '', notes: '' });
       setTimeout(() => searchInputRef.current?.focus(), 100);
     }
   }, [open]);
@@ -52,7 +64,22 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     if (step === 2) setTimeout(() => qtyInputRef.current?.focus(), 100);
   }, [step]);
 
-  // Estimate expiry based on shelf life
+  // --- Helpers pure DB (pas de heuristiques codées en dur) ---
+  const calcConfidence = useCallback((query, name) => {
+    if (!query || !name) return { percent: 0, label: 'Faible', tone: 'warning' };
+    const q = query.trim().toLowerCase();
+    const n = name.trim().toLowerCase();
+    let score = 0;
+    if (n === q) score = 1.0;
+    else if (n.startsWith(q)) score = 0.85;
+    else if (n.includes(q)) score = 0.6;
+    else score = 0.3;
+    const percent = Math.round(score * 100);
+    const label = percent >= 80 ? 'Élevée' : percent >= 50 ? 'Moyenne' : 'Faible';
+    const tone = percent >= 80 ? 'good' : percent >= 50 ? 'neutral' : 'warning';
+    return { percent, label, tone };
+  }, []);
+
   const estimateExpiry = useCallback((product, method) => {
     if (!product) return '';
     const map = {
@@ -68,35 +95,47 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return d.toISOString().slice(0, 10);
   }, []);
 
-  // Default quantity based on unit
   const defaultQtyForUnit = useCallback((unit) => {
     if (!unit) return '';
     const u = unit.toLowerCase();
-    if (u === 'u' || u === 'pièce') return '1';
-    if (u === 'kg' || u === 'l') return '1';
-    if (u === 'g' || u === 'ml') return '250';
+    if (u === 'u' || u === 'pièce') return 1;
+    if (u === 'kg' || u === 'l') return 1;
+    if (u === 'g' || u === 'ml') return 250;
     return '';
   }, []);
 
-  // Search products in Supabase
+  // --- SEARCH: uniquement Supabase ---
   const searchProducts = useCallback(
     async (query) => {
       const q = query.trim();
       if (!q) {
         setSearchResults([]);
-        setSearchError(null);
         return;
       }
-      
       setSearchLoading(true);
       setSearchError(null);
-      
+      if (!supabase) {
+        setSearchError('Service de recherche indisponible');
+        setSearchResults([
+          {
+            id: 'new-product',
+            type: 'new',
+            name: q,
+            display_name: q,
+            category: { name: 'À définir', icon: '📦' },
+            primary_unit: 'g',
+            icon: '➕'
+          }
+        ]);
+        setSearchLoading(false);
+        return;
+      }
+
       try {
-        // Escape special characters for the query
         const escaped = q.replace(/[%_]/g, '\\$&');
-        
-        // Search in canonical_foods table
-        const { data, error } = await supabase
+
+        // 1) recherche sur le nom canonique
+        const { data: nameMatches, error: nameError } = await supabase
           .from('canonical_foods')
           .select(`
             id,
@@ -106,46 +145,51 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             primary_unit,
             shelf_life_days_pantry,
             shelf_life_days_fridge,
-            shelf_life_days_freezer,
-            keywords
+            shelf_life_days_freezer
           `)
-          .or(`canonical_name.ilike.%${escaped}%`)
+          .ilike('canonical_name', `%${escaped}%`)
           .limit(15);
 
-        if (error) throw error;
+        if (nameError) throw nameError;
 
-        // Also search in keywords if available
-        let allResults = data || [];
-        
-        // Try to search in keywords array if the column exists
-        if (data && data.length < 10) {
-          const { data: keywordResults } = await supabase
-            .from('canonical_foods')
-            .select(`
-              id,
-              canonical_name,
-              category_id,
-              subcategory,
-              primary_unit,
-              shelf_life_days_pantry,
-              shelf_life_days_fridge,
-              shelf_life_days_freezer
-            `)
-            .contains('keywords', [q.toLowerCase()])
-            .limit(10);
-          
-          if (keywordResults) {
-            // Merge results, avoiding duplicates
-            const existingIds = new Set(allResults.map(r => r.id));
-            keywordResults.forEach(r => {
-              if (!existingIds.has(r.id)) {
-                allResults.push(r);
-              }
-            });
+        let combined = nameMatches || [];
+
+        // 2) recherche complémentaire via les mots-clés (si disponibles)
+        if (q.length > 1) {
+          const keywordTokens = q
+            .toLowerCase()
+            .split(/[\s,]+/)
+            .map((token) => token.trim())
+            .filter(Boolean);
+
+          if (keywordTokens.length > 0) {
+            const { data: keywordMatches, error: keywordError } = await supabase
+              .from('canonical_foods')
+              .select(`
+                id,
+                canonical_name,
+                category_id,
+                subcategory,
+                primary_unit,
+                shelf_life_days_pantry,
+                shelf_life_days_fridge,
+                shelf_life_days_freezer
+              `)
+              .contains('keywords', keywordTokens)
+              .limit(15);
+
+            if (keywordError) {
+              console.warn('keyword search error', keywordError);
+            } else if (keywordMatches?.length) {
+              const existingIds = new Set(combined.map((item) => item.id));
+              keywordMatches.forEach((item) => {
+                if (!existingIds.has(item.id)) combined.push(item);
+              });
+            }
           }
         }
 
-        const normalized = allResults.map((row) => ({
+        const normalized = combined.map((row) => ({
           id: row.id,
           type: 'canonical',
           name: row.canonical_name,
@@ -155,10 +199,11 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           primary_unit: row.primary_unit || 'g',
           shelf_life_days_fridge: row.shelf_life_days_fridge,
           shelf_life_days_pantry: row.shelf_life_days_pantry,
-          shelf_life_days_freezer: row.shelf_life_days_freezer
+          shelf_life_days_freezer: row.shelf_life_days_freezer,
+          icon: '🥬'
         }));
 
-        // Sort by relevance
+        // Tri simple par pertinence sur le nom
         normalized.sort((a, b) => {
           const sa = a.name.toLowerCase();
           const sb = b.name.toLowerCase();
@@ -168,32 +213,33 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           return ra - rb;
         });
 
-        // Add option to create new product
+        // Toujours offrir la création d'un nouveau produit (basée sur la saisie)
         const results = [
-          ...normalized.slice(0, 12),
+          ...normalized.slice(0, 11),
           {
             id: 'new-product',
             type: 'new',
             name: q,
-            display_name: `Créer "${q}"`,
-            category: { name: 'Nouveau produit', icon: '➕' },
-            primary_unit: 'g'
+            display_name: q,
+            category: { name: 'À définir', icon: '📦' },
+            primary_unit: 'g',
+            icon: '➕'
           }
         ];
 
         setSearchResults(results);
       } catch (e) {
-        console.error('Search error:', e);
-        setSearchError('Erreur de recherche');
-        // Still offer to create new product on error
+        console.error('search error', e);
+        setSearchError('Erreur lors de la recherche');
         setSearchResults([
           {
             id: 'new-product',
             type: 'new',
             name: q,
-            display_name: `Créer "${q}"`,
-            category: { name: 'Nouveau produit', icon: '➕' },
-            primary_unit: 'g'
+            display_name: q,
+            category: { name: 'À définir', icon: '📦' },
+            primary_unit: 'g',
+            icon: '➕'
           }
         ]);
       } finally {
@@ -203,112 +249,108 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     [supabase]
   );
 
-  // Debounce search
+  // Debounce
   useEffect(() => {
     if (!searchQuery.trim()) {
       setSearchResults([]);
+      setSearchError(null);
       return;
     }
     const t = setTimeout(() => searchProducts(searchQuery), 300);
     return () => clearTimeout(t);
   }, [searchQuery, searchProducts]);
 
-  // Handle product selection
+  // Sélection
   const handleSelectProduct = useCallback(
     (product) => {
       setSelectedProduct(product);
-      
+      const conf = calcConfidence(searchQuery, product.name || product.display_name);
+      setConfidence(conf);
+
       const unit = product.primary_unit || 'g';
-      const expiry = product.type === 'canonical' ? estimateExpiry(product, lotData.storage_method) : '';
+      const expiry = product.type === 'canonical' ? estimateExpiry(product, 'pantry') : '';
       const qty = defaultQtyForUnit(unit);
 
-      setLotData((prev) => ({ 
-        ...prev, 
-        unit, 
-        qty: qty, 
-        expiration_date: expiry 
-      }));
+      setLotData((prev) => ({ ...prev, unit, qty: prev.qty || qty, expiration_date: expiry }));
       setStep(2);
     },
-    [lotData.storage_method, estimateExpiry, defaultQtyForUnit]
+    [searchQuery, calcConfidence, estimateExpiry, defaultQtyForUnit]
   );
 
-  // Handle storage method change
   const handleStorageMethodChange = useCallback(
     (method) => {
       setLotData((prev) => ({
         ...prev,
         storage_method: method,
-        expiration_date: selectedProduct?.type === 'canonical' 
-          ? estimateExpiry(selectedProduct, method) 
-          : prev.expiration_date
+        expiration_date:
+          selectedProduct?.type === 'canonical' ? estimateExpiry(selectedProduct, method) : prev.expiration_date
       }));
     },
     [selectedProduct, estimateExpiry]
   );
 
-  // Ensure canonical product exists
+  // Création du produit canonique minimal si nécessaire
   const ensureCanonicalExists = useCallback(
     async (name) => {
+      if (!supabase) throw new Error('Service Supabase indisponible');
       const clean = name.trim();
       if (!clean) throw new Error('Nom de produit vide');
 
-      // Check if it already exists
+      // 1) tenter de le retrouver strictement
       const { data: existing, error: exErr } = await supabase
         .from('canonical_foods')
         .select('id, canonical_name, primary_unit')
         .ilike('canonical_name', clean)
         .limit(1)
         .maybeSingle();
-      
       if (exErr) throw exErr;
       if (existing) return existing;
 
-      // Create new canonical food
+      // 2) le créer minimalement
       const { data: inserted, error: insErr } = await supabase
         .from('canonical_foods')
         .insert({
           canonical_name: clean,
-          primary_unit: lotData.unit || 'g'
+          primary_unit: 'g' // valeur par défaut raisonnable si inconnu
         })
         .select('id, canonical_name, primary_unit')
         .single();
-      
       if (insErr) throw insErr;
       return inserted;
     },
-    [supabase, lotData.unit]
+    [supabase]
   );
 
-  // Create inventory lot
+  // Création du lot -> insertion directe Supabase
   const handleCreateLot = useCallback(async () => {
     if (!selectedProduct || !lotData.qty) return;
-    
+    if (!supabase) {
+      alert('Service Supabase indisponible. Vérifiez la configuration.');
+      return;
+    }
     setLoading(true);
     try {
-      // Get user if needed for RLS
+      // Auth (utile si RLS utilise user_id)
       const { data: auth } = await supabase.auth.getUser();
       const userId = auth?.user?.id || null;
 
       let canonical = null;
       if (selectedProduct.type === 'canonical') {
-        canonical = { id: selectedProduct.id };
+        canonical = { id: selectedProduct.id, primary_unit: selectedProduct.primary_unit };
       } else if (selectedProduct.type === 'new') {
         canonical = await ensureCanonicalExists(selectedProduct.name);
       }
 
       const payload = {
         canonical_food_id: canonical?.id ?? null,
-        display_name: selectedProduct.name,
+        display_name: selectedProduct.display_name || selectedProduct.name,
         qty_remaining: Number(lotData.qty),
-        initial_qty: Number(lotData.qty),
         unit: lotData.unit,
-        expiration_date: lotData.expiration_date || null,
-        storage_place: lotData.storage_place || null,
-        storage_method: lotData.storage_method,
+        effective_expiration: lotData.expiration_date || null,
+        location_name: lotData.storage_place || null,
         notes: lotData.notes || null,
-        acquired_on: new Date().toISOString().split('T')[0],
-        user_id: userId
+        storage_method: lotData.storage_method,
+        created_by: userId // optionnel selon votre schéma
       };
 
       const { data: lot, error: lotErr } = await supabase
@@ -316,295 +358,312 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .insert(payload)
         .select('id')
         .single();
-      
       if (lotErr) throw lotErr;
 
-      // Callback parent
+      // callback parent si fourni
       if (onLotCreated) onLotCreated(lot?.id ?? null);
 
-      // Reset and close
+      // reset & close
+      setLoading(false);
+      setStep(1);
+      setSearchQuery('');
+      setSearchResults([]);
+      setSelectedProduct(null);
       onClose?.();
     } catch (e) {
-      console.error('Create lot error:', e);
-      alert(e?.message || 'Erreur lors de la création du lot');
-    } finally {
+      console.error('create lot error', e);
       setLoading(false);
+      alert(e?.message || 'Erreur lors de la création du lot');
     }
   }, [selectedProduct, lotData, supabase, ensureCanonicalExists, onLotCreated, onClose]);
 
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-hidden flex flex-col">
+    <div className="modal-overlay">
+      <div className="modal-container">
         {/* Header */}
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 px-6 py-4 border-b border-green-100">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
-                <Plus className="w-5 h-5 text-green-700" />
-              </div>
-              <div>
-                <h2 className="text-xl font-semibold text-gray-900">Ajouter un produit</h2>
-                <p className="text-sm text-gray-600">
-                  {step === 1 ? 'Rechercher un aliment' : 'Détails du lot'}
-                </p>
-              </div>
-            </div>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-white/50 rounded-lg transition-colors"
-            >
-              <X className="w-5 h-5 text-gray-500" />
-            </button>
+        <div className="modal-header">
+          <div className="header-title">
+            <Plus size={20} />
+            <span>Ajouter un produit</span>
           </div>
+          <button onClick={() => onClose?.()} className="close-btn">
+            <X size={20} />
+          </button>
         </div>
 
-        {/* Progress bar */}
-        <div className="px-6 py-3 bg-gray-50 border-b">
-          <div className="flex items-center gap-2">
-            <div className={`flex-1 h-2 rounded-full ${step >= 1 ? 'bg-green-500' : 'bg-gray-200'}`} />
-            <div className={`flex-1 h-2 rounded-full ${step >= 2 ? 'bg-green-500' : 'bg-gray-200'}`} />
-          </div>
+        {/* Progress */}
+        <div className="progress-bar">
+          <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>1. Produit</div>
+          <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>2. Quantité</div>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6">
-          {/* Step 1: Search */}
+        <div className="modal-content">
+          {/* Étape 1: Recherche */}
           {step === 1 && (
-            <div className="space-y-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <div className="search-step">
+              <div className="search-wrapper">
+                <Search size={20} className="search-icon" />
                 <input
                   ref={searchInputRef}
                   type="text"
+                  placeholder="Rechercher un produit (ex: tomate, yaourt, riz...)"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Rechercher un produit (ex: tomate, lait, riz...)"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  autoFocus
+                  className="search-input"
                 />
-                {searchLoading && (
-                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                    <div className="w-5 h-5 border-2 border-green-500 border-t-transparent rounded-full animate-spin" />
-                  </div>
-                )}
+                {searchLoading && <div className="loading">🔄</div>}
               </div>
 
+              {searchQuery && (
+                <div className="debug-info">
+                  <small>
+                    🔍 Recherche: "{searchQuery}" • {searchResults.length} résultats
+                  </small>
+                </div>
+              )}
+
               {searchError && (
-                <div className="flex items-center gap-2 p-3 bg-red-50 text-red-700 rounded-lg">
-                  <AlertCircle className="w-5 h-5" />
-                  <span className="text-sm">{searchError}</span>
+                <div className="error-info">
+                  <small>⚠️ {searchError}</small>
                 </div>
               )}
 
               {searchResults.length > 0 && (
-                <div className="space-y-2 max-h-[400px] overflow-y-auto">
+                <div className="results-list">
                   {searchResults.map((product) => (
-                    <button
+                    <div
                       key={`${product.type}-${product.id}`}
+                      className={`result-item ${product.type === 'new' ? 'new-item' : ''}`}
                       onClick={() => handleSelectProduct(product)}
-                      className={`w-full text-left p-4 rounded-xl border-2 transition-all hover:shadow-md ${
-                        product.type === 'new' 
-                          ? 'border-dashed border-green-300 bg-green-50 hover:bg-green-100' 
-                          : 'border-gray-200 bg-white hover:border-green-300 hover:bg-green-50'
-                      }`}
                     >
-                      <div className="flex items-center gap-3">
-                        <div className="text-2xl">
-                          {product.type === 'new' ? '➕' : '🥬'}
+                      <div className="result-icon">{product.icon}</div>
+                      <div className="result-content">
+                        <div className="result-name">
+                          {product.display_name}
+                          {product.type === 'new' && <span className="new-badge">Nouveau</span>}
                         </div>
-                        <div className="flex-1">
-                          <div className="font-medium text-gray-900">
-                            {product.display_name}
-                          </div>
-                          <div className="text-sm text-gray-500">
-                            {product.category?.name}
-                            {product.subcategory && ` • ${product.subcategory}`}
-                          </div>
-                        </div>
-                        <div className="text-sm text-gray-400">
-                          {product.primary_unit}
+                        <div className="result-meta">
+                          {product.category?.name && <span className="category">{product.category.name}</span>}
+                          {product.subcategory && <span className="subcategory">{product.subcategory}</span>}
                         </div>
                       </div>
-                    </button>
+                    </div>
                   ))}
                 </div>
               )}
 
               {searchQuery && !searchLoading && searchResults.length === 0 && (
-                <div className="text-center py-8 text-gray-500">
-                  Aucun résultat trouvé
+                <div className="no-results">
+                  <p>Aucun résultat.</p>
                 </div>
               )}
             </div>
           )}
 
-          {/* Step 2: Details */}
+          {/* Étape 2: Détails du lot */}
           {step === 2 && selectedProduct && (
-            <div className="space-y-4">
-              {/* Selected product */}
-              <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
-                <div className="flex items-center gap-3">
-                  <div className="text-2xl">🥬</div>
-                  <div className="flex-1">
-                    <div className="font-semibold text-gray-900">
-                      {selectedProduct.name}
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      {selectedProduct.type === 'canonical' ? 'Produit existant' : 'Nouveau produit'}
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => setStep(1)}
-                    className="text-sm text-green-600 hover:text-green-700 font-medium"
-                  >
-                    Changer
-                  </button>
+            <div className="form-step">
+              <div className="product-summary">
+                <div className="product-icon">{selectedProduct.icon}</div>
+                <div className="product-info">
+                  <div className="product-name">{selectedProduct.display_name}</div>
+                  <div className="product-source">{selectedProduct.type === 'canonical' ? 'Base de données' : 'Nouveau produit'}</div>
                 </div>
+                <div className={`confidence-badge ${confidence.tone}`}>
+                  <ShieldCheck size={14} />
+                  <span>
+                    {confidence.label} ({confidence.percent}%)
+                  </span>
+                </div>
+                <button onClick={() => setStep(1)} className="change-btn">
+                  Changer
+                </button>
               </div>
 
-              {/* Quantity and unit */}
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Quantité *
+              <div className="lot-form">
+                <div className="form-row">
+                  <div className="form-group flex-2">
+                    <label htmlFor="qty">Quantité *</label>
+                    <input
+                      ref={qtyInputRef}
+                      id="qty"
+                      type="number"
+                      step="0.1"
+                      min="0"
+                      required
+                      value={lotData.qty}
+                      onChange={(e) => setLotData((prev) => ({ ...prev, qty: e.target.value }))}
+                      placeholder="0"
+                      className="form-input"
+                    />
+                  </div>
+                  <div className="form-group flex-1">
+                    <label htmlFor="unit">Unité</label>
+                    <select
+                      id="unit"
+                      value={lotData.unit}
+                      onChange={(e) => setLotData((prev) => ({ ...prev, unit: e.target.value }))}
+                      className="form-select"
+                    >
+                      <option value="g">g</option>
+                      <option value="kg">kg</option>
+                      <option value="ml">ml</option>
+                      <option value="l">l</option>
+                      <option value="u">pièce</option>
+                      <option value="pièce">pièce</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label>Méthode de stockage</label>
+                  <div className="storage-grid">
+                    {[
+                      { value: 'fridge', label: 'Frigo', icon: '❄️' },
+                      { value: 'pantry', label: 'Placard', icon: '🏠' },
+                      { value: 'freezer', label: 'Congélateur', icon: '🧊' },
+                      { value: 'counter', label: 'Plan travail', icon: '🏪' }
+                    ].map((m) => (
+                      <button
+                        key={m.value}
+                        type="button"
+                        onClick={() => handleStorageMethodChange(m.value)}
+                        className={`storage-btn ${lotData.storage_method === m.value ? 'active' : ''}`}
+                      >
+                        <span className="method-icon">{m.icon}</span>
+                        <span className="method-label">{m.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="expiration_date">
+                    <Calendar size={16} />Date d'expiration
                   </label>
                   <input
-                    ref={qtyInputRef}
-                    type="number"
-                    step="0.1"
-                    value={lotData.qty}
-                    onChange={(e) => setLotData(prev => ({ ...prev, qty: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    required
-                    autoFocus
+                    id="expiration_date"
+                    type="date"
+                    value={lotData.expiration_date}
+                    onChange={(e) => setLotData((prev) => ({ ...prev, expiration_date: e.target.value }))}
+                    className="form-input"
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Unité
+
+                <div className="form-group">
+                  <label htmlFor="storage_place">
+                    <MapPin size={16} />Lieu (optionnel)
                   </label>
-                  <select
-                    value={lotData.unit}
-                    onChange={(e) => setLotData(prev => ({ ...prev, unit: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  >
-                    <option value="g">g</option>
-                    <option value="kg">kg</option>
-                    <option value="ml">ml</option>
-                    <option value="l">L</option>
-                    <option value="u">pièce</option>
-                  </select>
+                  <input
+                    id="storage_place"
+                    type="text"
+                    value={lotData.storage_place}
+                    onChange={(e) => setLotData((prev) => ({ ...prev, storage_place: e.target.value }))}
+                    placeholder="ex: étagère du haut, tiroir légumes..."
+                    className="form-input"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="notes">Notes (optionnel)</label>
+                  <textarea
+                    id="notes"
+                    value={lotData.notes}
+                    onChange={(e) => setLotData((prev) => ({ ...prev, notes: e.target.value }))}
+                    placeholder="Marque, origine, particularités..."
+                    className="form-textarea"
+                    rows="2"
+                  />
                 </div>
               </div>
 
-              {/* Storage method */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Méthode de stockage
-                </label>
-                <div className="grid grid-cols-2 gap-2">
-                  {[
-                    { value: 'fridge', label: 'Frigo', icon: '❄️' },
-                    { value: 'pantry', label: 'Placard', icon: '🗄️' },
-                    { value: 'freezer', label: 'Congélateur', icon: '🧊' },
-                    { value: 'counter', label: 'Plan de travail', icon: '🍽️' }
-                  ].map((method) => (
-                    <button
-                      key={method.value}
-                      type="button"
-                      onClick={() => handleStorageMethodChange(method.value)}
-                      className={`p-3 rounded-lg border-2 transition-all ${
-                        lotData.storage_method === method.value
-                          ? 'border-green-500 bg-green-50'
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                    >
-                      <div className="text-2xl mb-1">{method.icon}</div>
-                      <div className="text-sm font-medium">{method.label}</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Expiration date */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <Calendar className="inline w-4 h-4 mr-1" />
-                  Date d'expiration
-                </label>
-                <input
-                  type="date"
-                  value={lotData.expiration_date}
-                  onChange={(e) => setLotData(prev => ({ ...prev, expiration_date: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                />
-              </div>
-
-              {/* Storage place */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <MapPin className="inline w-4 h-4 mr-1" />
-                  Emplacement (optionnel)
-                </label>
-                <input
-                  type="text"
-                  value={lotData.storage_place}
-                  onChange={(e) => setLotData(prev => ({ ...prev, storage_place: e.target.value }))}
-                  placeholder="Ex: Étagère du haut, tiroir légumes..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                />
-              </div>
-
-              {/* Notes */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Notes (optionnel)
-                </label>
-                <textarea
-                  value={lotData.notes}
-                  onChange={(e) => setLotData(prev => ({ ...prev, notes: e.target.value }))}
-                  placeholder="Marque, origine, particularités..."
-                  rows={2}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
-                />
+              <div className="form-actions">
+                <button onClick={() => setStep(1)} className="btn-secondary" disabled={loading}>
+                  Retour
+                </button>
+                <button onClick={handleCreateLot} className="btn-primary" disabled={loading || !lotData.qty}>
+                  {loading ? 'Création...' : 'Créer le lot'}
+                </button>
               </div>
             </div>
           )}
         </div>
-
-        {/* Footer actions */}
-        {step === 2 && (
-          <div className="px-6 py-4 bg-gray-50 border-t flex gap-3">
-            <button
-              onClick={() => setStep(1)}
-              className="flex-1 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors font-medium flex items-center justify-center gap-2"
-              disabled={loading}
-            >
-              <ChevronLeft className="w-4 h-4" />
-              Retour
-            </button>
-            <button
-              onClick={handleCreateLot}
-              disabled={loading || !lotData.qty}
-              className="flex-1 px-4 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium flex items-center justify-center gap-2"
-            >
-              {loading ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  <span>Création...</span>
-                </>
-              ) : (
-                <>
-                  <Plus className="w-4 h-4" />
-                  <span>Créer le lot</span>
-                </>
-              )}
-            </button>
-          </div>
-        )}
       </div>
+
+      <style jsx>{`
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; }
+        .modal-container { background: white; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,.2); max-width: 500px; width: 100%; max-height: 90vh; overflow: hidden; display: flex; flex-direction: column; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid #e5e7eb; background: #f8fdf8; }
+        .header-title { display: flex; align-items: center; gap: .5rem; font-size: 1.25rem; font-weight: 600; color: #1a3a1a; }
+        .close-btn { background: none; border: none; cursor: pointer; padding: .5rem; border-radius: 8px; color: #6b7280; }
+        .progress-bar { display: flex; padding: 1rem 1.5rem; background: #f9fafb; border-bottom: 1px solid #e5e7eb; }
+        .progress-step { flex: 1; text-align: center; padding: .5rem; font-size: .875rem; font-weight: 500; color: #9ca3af; }
+        .progress-step.active { color: #6b9d6b; }
+        .modal-content { flex: 1; overflow-y: auto; padding: 1.5rem; }
+        .search-wrapper { position: relative; margin-bottom: 1rem; }
+        .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #9ca3af; pointer-events: none; }
+        .search-input { width: 100%; padding: 1rem 1rem 1rem 3rem; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 1rem; }
+        .search-input:focus { outline: none; border-color: #a8c5a8; box-shadow: 0 0 0 3px rgba(168,197,168,.1); }
+        .loading { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); animation: spin 1s linear infinite; }
+        @keyframes spin { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
+        .debug-info { margin-bottom: 1rem; padding: .5rem; background: #f0f9ff; border-radius: 6px; color: #1d4ed8; }
+        .error-info { margin-bottom: 1rem; padding: .5rem; background: #fef2f2; border-radius: 6px; color: #b91c1c; }
+        .results-list { display: flex; flex-direction: column; gap: .5rem; max-height: 300px; overflow-y: auto; }
+        .result-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 12px; cursor: pointer; background: white; }
+        .result-item:hover { border-color: #c8d8c8; background: #f8fdf8; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+        .result-item.new-item { border-style: dashed; border-color: #a8c5a8; background: rgba(139,181,139,.05); }
+        .result-icon { font-size: 1.5rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #f3f4f6; border-radius: 8px; flex-shrink: 0; }
+        .result-content { flex: 1; min-width: 0; }
+        .result-name { font-weight: 600; color: #111827; display: flex; align-items: center; gap: .5rem; margin-bottom: .25rem; }
+        .new-badge { background: #f0f9f0; color: #6b9d6b; padding: 2px 6px; border-radius: 4px; font-size: .75rem; font-weight: 500; }
+        .result-meta { font-size: .875rem; color: #6b7280; display: flex; align-items: center; gap: .5rem; }
+        .category { background: #eff6ff; color: #1d4ed8; padding: 1px 6px; border-radius: 4px; font-size: .75rem; }
+        .subcategory { background: #f0fdf4; color: #047857; padding: 1px 6px; border-radius: 4px; font-size: .75rem; }
+        .no-results { text-align: center; padding: 2rem 1rem; color: #6b7280; }
+        .product-summary { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8fdf8; border: 1px solid #dcf4dc; border-radius: 12px; margin-bottom: 1.5rem; }
+        .product-icon { font-size: 1.5rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: white; border-radius: 8px; }
+        .product-info { flex: 1; }
+        .product-name { font-weight: 600; color: #1a3a1a; margin-bottom: .25rem; }
+        .product-source { font-size: .875rem; color: #6b7280; }
+        .confidence-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 999px; }
+        .confidence-badge.good { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+        .confidence-badge.neutral { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+        .confidence-badge.warning { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+        .change-btn { background: none; border: 1px solid #d1d5db; padding: 4px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; color: #6b7280; }
+        .change-btn:hover { background: #f9fafb; }
+        .lot-form { display: flex; flex-direction: column; gap: 1rem; }
+        .form-row { display: flex; gap: 1rem; }
+        .form-group { display: flex; flex-direction: column; gap: .5rem; }
+        .form-group.flex-1 { flex: 1; }
+        .form-group.flex-2 { flex: 2; }
+        .form-group label { font-weight: 500; color: #374151; display: flex; align-items: center; gap: .5rem; font-size: 14px; }
+        .form-input, .form-select, .form-textarea { padding: .75rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; }
+        .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: #a8c5a8; box-shadow: 0 0 0 3px rgba(168,197,168,.1); }
+        .storage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+        .storage-btn { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 1rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; cursor: pointer; }
+        .storage-btn:hover { border-color: #c8d8c8; }
+        .storage-btn.active { border-color: #8bb58b; background: #f8fdf8; }
+        .method-icon { font-size: 1.25rem; }
+        .method-label { font-size: .875rem; font-weight: 500; color: #374151; }
+        .form-actions { display: flex; gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; }
+        .btn-secondary, .btn-primary { flex: 1; padding: .75rem 1.5rem; border-radius: 8px; font-weight: 500; cursor: pointer; border: none; }
+        .btn-secondary { background: #f9fafb; border: 1px solid #d1d5db; color: #374151; }
+        .btn-primary { background: #8bb58b; color: white; }
+        .btn-primary:disabled, .btn-secondary:disabled { opacity: .5; cursor: not-allowed; }
+        @media (max-width: 768px){
+          .modal-container { margin: 0; max-height: 100vh; border-radius: 0; }
+          .modal-content { padding: 1rem; }
+          .form-row { flex-direction: column; gap: .75rem; }
+          .storage-grid { grid-template-columns: 1fr; gap: .5rem; }
+          .storage-btn { flex-direction: row; padding: .75rem; justify-content: flex-start; }
+          .product-summary { flex-wrap: wrap; gap: .75rem; }
+          .form-actions { flex-direction: column; }
+          .result-meta { flex-direction: column; align-items: flex-start; gap: .25rem; }
+        }
+      `}</style>
     </div>
   );
 }

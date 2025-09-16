@@ -19,12 +19,28 @@ function usePantryData() {
   const [error, setError] = useState('');
   const [lots, setLots] = useState([]);
   const [categories, setCategories] = useState([]);
-  const supabase = createClientComponentClient();
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      return createClientComponentClient();
+    } catch (err) {
+      console.error('Supabase client init error', err);
+      return null;
+    }
+  }, []);
 
   const load = useCallback(async () => {
     try {
       setLoading(true);
       setError('');
+
+      if (!supabase) {
+        setError('Configuration Supabase manquante.');
+        setCategories([]);
+        setLots([]);
+        setLoading(false);
+        return;
+      }
 
       // Charger les catégories depuis reference_categories
       const { data: categoriesData } = await supabase
@@ -165,6 +181,11 @@ function usePantryData() {
 
   // ✅ CORRECTION: Adapter addLot pour la vraie structure
   const addLot = useCallback(async (payload) => {
+    if (!supabase) {
+      setError('Configuration Supabase manquante.');
+      return;
+    }
+
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
@@ -206,6 +227,10 @@ function usePantryData() {
   }, [supabase, load]);
 
   const updateLot = useCallback(async (id, patch) => {
+    if (!supabase) {
+      setError('Configuration Supabase manquante.');
+      return;
+    }
     try {
       const { error } = await supabase
         .from('inventory_lots')
@@ -227,6 +252,10 @@ function usePantryData() {
   }, [supabase, load]);
 
   const deleteLot = useCallback(async (id) => {
+    if (!supabase) {
+      setError('Configuration Supabase manquante.');
+      return;
+    }
     try {
       const { error } = await supabase
         .from('inventory_lots')
@@ -441,9 +470,8 @@ export default function PantryPage() {
       <SmartAddForm
         open={showAddForm}
         onClose={()=>setShowAddForm(false)}
-        onCreate={(payload) => { 
-          addLot(payload); 
-          setShowAddForm(false); 
+        onLotCreated={() => {
+          refresh();
         }}
       />
 
