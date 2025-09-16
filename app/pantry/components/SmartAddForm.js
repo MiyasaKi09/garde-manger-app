@@ -1,9 +1,9 @@
 // app/pantry/components/SmartAddForm.js
 'use client';
 
-import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { Search, Plus, X, Calendar, MapPin, ShieldCheck } from 'lucide-react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { supabase as supabaseClient } from '@/lib/supabaseClient';
 
 /**
  * OBJECTIF
@@ -36,6 +36,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const searchInputRef = useRef(null);
   const qtyInputRef = useRef(null);
 
+
+
   const supabase = useMemo(() => {
     try {
       return createClientComponentClient();
@@ -44,6 +46,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       return null;
     }
   }, []);
+
 
   // Reset form when opened
   useEffect(() => {
