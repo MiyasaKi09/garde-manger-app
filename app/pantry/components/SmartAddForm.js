@@ -3,9 +3,10 @@ import { createClient } from '@supabase/supabase-js';
 import { Search, X, Plus, Calendar, Package, MapPin, ChevronDown } from 'lucide-react';
 
 // Configuration Supabase - À remplacer par vos vraies clés
-const supabaseUrl = 'YOUR_SUPABASE_URL'; // ex: https://xxxxx.supabase.co
-const supabaseKey = 'YOUR_SUPABASE_ANON_KEY'; // Votre clé publique
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
 const SmartAddForm = ({ onClose, onAdd }) => {
   const [searchTerm, setSearchTerm] = useState('');
