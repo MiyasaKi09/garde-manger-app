@@ -26,7 +26,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [loading, setLoading] = useState(false);
 
   const [lotData, setLotData] = useState({
-    qty: '',
+    qty_remaining: '',
+    initial_qty: '',
     unit: 'g',
     storage_method: 'pantry',
     storage_place: '',
@@ -48,7 +49,15 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       setSearchResults([]);
       setSelectedProduct(null);
       setConfidence({ percent: 0, label: 'Faible', tone: 'warning' });
-      setLotData({ qty: '', unit: 'g', storage_method: 'pantry', storage_place: '', expiration_date: '', notes: '' });
+      setLotData({
+        qty_remaining: '',
+        initial_qty: '',
+        unit: 'g',
+        storage_method: 'pantry',
+        storage_place: '',
+        expiration_date: '',
+        notes: ''
+      });
       setSearchError(null);
       setTimeout(() => searchInputRef.current?.focus(), 100);
     }
@@ -118,89 +127,154 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
         const escaped = q.replace(/[%_]/g, '\\$&');
 
-        // 1) recherche sur le nom canonique
-        const { data: nameMatches, error: nameError } = await supabase
-          .from('canonical_foods')
-          .select(`
-            id,
-            canonical_name,
-            category_id,
+        const normalizeViewRow = (row) => {
+          if (!row) return null;
+          const canonicalId =
+            row.canonical_food_id ?? row.canonical_id ?? row.id ?? row.food_id ?? null;
+          if (!canonicalId) return null;
+
+          const nameCandidates = [
+            row.display_name,
+            row.product_label,
+            row.product_name,
+            row.canonical_name,
+            row.alias_name,
+            row.name
+          ];
+          const baseName = nameCandidates.find(
+            (value) => typeof value === 'string' && value.trim().length > 0
+          );
+          const brandCandidate = [row.product_brand, row.brand].find(
+            (value) => typeof value === 'string' && value.trim().length > 0
+          );
+          const trimmedName = baseName?.trim() ?? '';
+          const resolvedName =
+            trimmedName &&
+            brandCandidate &&
+            !trimmedName.toLowerCase().includes(brandCandidate.toLowerCase())
+              ? `${trimmedName} (${brandCandidate.trim()})`
+              : trimmedName || q;
+          const subcategory =
+            row.subcategory ?? row.canonical_subcategory ?? row.product_subcategory ?? null;
+          const categoryName =
+            row.category_name ?? row.category ?? row.product_category ?? subcategory ?? 'Aliment';
+          const icon = row.icon ?? row.category_icon ?? '🥬';
+
+          return {
+            id: canonicalId,
+            canonical_food_id: canonicalId,
+            type: 'canonical',
+            name: resolvedName,
+            display_name: resolvedName,
             subcategory,
-            primary_unit,
-            shelf_life_days_pantry,
-            shelf_life_days_fridge,
-            shelf_life_days_freezer
-          `)
-          .ilike('canonical_name', `%${escaped}%`)
-          .limit(15);
+            category: { name: categoryName, icon },
+            primary_unit: row.primary_unit ?? row.unit ?? row.default_unit ?? 'g',
+            shelf_life_days_fridge:
+              row.shelf_life_days_fridge ?? row.fridge_life_days ?? row.default_shelf_life_fridge ?? null,
+            shelf_life_days_pantry:
+              row.shelf_life_days_pantry ??
+              row.pantry_life_days ??
+              row.default_shelf_life_pantry ??
+              null,
+            shelf_life_days_freezer:
+              row.shelf_life_days_freezer ??
+              row.freezer_life_days ??
+              row.default_shelf_life_freezer ??
+              null,
+            icon
+          };
+        };
 
-        if (nameError) throw nameError;
+        const normalizeCanonicalRow = (row) => {
+          if (!row) return null;
+          const name = row.canonical_name ?? row.name ?? '';
+          return {
+            id: row.id,
+            canonical_food_id: row.id,
+            type: 'canonical',
+            name,
+            display_name: name,
+            subcategory: row.subcategory ?? null,
+            category: { name: row.subcategory ?? 'Aliment', icon: '🥬' },
+            primary_unit: row.primary_unit ?? 'g',
+            shelf_life_days_fridge: row.shelf_life_days_fridge ?? null,
+            shelf_life_days_pantry: row.shelf_life_days_pantry ?? null,
+            shelf_life_days_freezer: row.shelf_life_days_freezer ?? null,
+            icon: '🥬'
+          };
+        };
 
-        let combined = nameMatches || [];
+        const results = [];
+        const seenCanonicals = new Set();
+        const pushResult = (item) => {
+          if (!item) return;
+          const key = item.canonical_food_id ?? item.id;
+          if (!key || seenCanonicals.has(key)) return;
+          seenCanonicals.add(key);
+          results.push(item);
+        };
+        const viewFilters = ['search_label', 'display_name', 'product_name', 'canonical_name'];
+        let lastViewError = null;
 
-        // 2) recherche complémentaire via les mots-clés (si la colonne keywords existe et est de type text[])
-        if (q.length > 1) {
-          const keywordTokens = q
-            .toLowerCase()
-            .split(/[\s,]+/)
-            .map((token) => token.trim())
-            .filter(Boolean);
+        for (const column of viewFilters) {
+          try {
+            const { data: viewMatches, error: viewError } = await supabase
+              .from('v_products_search')
+              .select('*')
+              .ilike(column, `%${escaped}%`)
+              .limit(20);
 
-          if (keywordTokens.length > 0) {
-            const { data: keywordMatches, error: keywordError } = await supabase
-              .from('canonical_foods')
-              .select(`
-                id,
-                canonical_name,
-                category_id,
-                subcategory,
-                primary_unit,
-                shelf_life_days_pantry,
-                shelf_life_days_fridge,
-                shelf_life_days_freezer
-              `)
-              .contains('keywords', keywordTokens)
-              .limit(15);
-
-            if (keywordError) {
-              // Si la colonne n'existe pas, on ignore proprement
-              console.warn('keyword search error', keywordError?.message ?? keywordError);
-            } else if (keywordMatches?.length) {
-              const existingIds = new Set(combined.map((item) => item.id));
-              keywordMatches.forEach((item) => {
-                if (!existingIds.has(item.id)) combined.push(item);
-              });
+            if (viewError) {
+              lastViewError = viewError;
+              continue;
             }
+
+            if (viewMatches?.length) {
+              viewMatches.forEach((row) => pushResult(normalizeViewRow(row)));
+              break;
+            }
+          } catch (viewCatch) {
+            lastViewError = viewCatch;
           }
         }
 
-        const normalized = combined.map((row) => ({
-          id: row.id,
-          type: 'canonical',
-          name: row.canonical_name,
-          display_name: row.canonical_name,
-          subcategory: row.subcategory,
-          category: { name: row.subcategory || 'Aliment', icon: '🥬' },
-          primary_unit: row.primary_unit || 'g',
-          shelf_life_days_fridge: row.shelf_life_days_fridge,
-          shelf_life_days_pantry: row.shelf_life_days_pantry,
-          shelf_life_days_freezer: row.shelf_life_days_freezer,
-          icon: '🥬'
-        }));
+        if (!results.length && lastViewError) {
+          console.warn(
+            'v_products_search fallback',
+            lastViewError?.message ?? lastViewError
+          );
+        }
 
-        // Tri simple par pertinence sur le nom
-        normalized.sort((a, b) => {
-          const sa = a.name.toLowerCase();
-          const sb = b.name.toLowerCase();
+        if (!results.length) {
+          const { data: canonicalMatches, error: canonicalError } = await supabase
+            .from('canonical_foods')
+            .select(`
+              id,
+              canonical_name,
+              subcategory,
+              primary_unit,
+              shelf_life_days_pantry,
+              shelf_life_days_fridge,
+              shelf_life_days_freezer
+            `)
+            .ilike('canonical_name', `%${escaped}%`)
+            .limit(15);
+
+          if (canonicalError) throw canonicalError;
+          canonicalMatches?.forEach((row) => pushResult(normalizeCanonicalRow(row)));
+        }
+
+        results.sort((a, b) => {
+          const sa = (a.display_name || a.name || '').toLowerCase();
+          const sb = (b.display_name || b.name || '').toLowerCase();
           const ql = q.toLowerCase();
           const ra = sa === ql ? 0 : sa.startsWith(ql) ? 1 : sa.includes(ql) ? 2 : 3;
           const rb = sb === ql ? 0 : sb.startsWith(ql) ? 1 : sb.includes(ql) ? 2 : 3;
           return ra - rb;
         });
 
-        // Toujours offrir la création d'un nouveau produit (basée sur la saisie)
-        const results = [
-          ...normalized.slice(0, 11),
+        const withNewOption = [
+          ...results.slice(0, 11),
           {
             id: 'new-product',
             type: 'new',
@@ -212,7 +286,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           }
         ].slice(0, 12);
 
-        setSearchResults(results);
+        setSearchResults(withNewOption);
       } catch (e) {
         console.error('search error', e);
         setSearchError(e?.message || 'Erreur lors de la recherche');
@@ -256,7 +330,17 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       const expiry = product.type === 'canonical' ? estimateExpiry(product, 'pantry') : '';
       const qty = defaultQtyForUnit(unit);
 
-      setLotData((prev) => ({ ...prev, unit, qty: prev.qty || qty, expiration_date: expiry }));
+      setLotData((prev) => {
+        const resolvedQty = prev.qty_remaining || qty || '';
+        const resolvedQtyString = resolvedQty === '' ? '' : String(resolvedQty);
+        return {
+          ...prev,
+          unit,
+          qty_remaining: resolvedQtyString,
+          initial_qty: resolvedQtyString,
+          expiration_date: expiry
+        };
+      });
       setStep(2);
     },
     [searchQuery, calcConfidence, estimateExpiry, defaultQtyForUnit]
@@ -308,35 +392,34 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   // Création du lot -> insertion directe Supabase
   const handleCreateLot = useCallback(async () => {
-    if (!selectedProduct || !lotData.qty) return;
+    if (!selectedProduct || !lotData.qty_remaining) return;
     if (!supabase) {
       alert('Service Supabase indisponible. Vérifiez la configuration.');
       return;
     }
     setLoading(true);
     try {
-      // Auth (si RLS utilise user_id)
-      const { data: auth, error: authErr } = await supabase.auth.getUser();
-      if (authErr) console.warn('auth error', authErr);
-      const userId = auth?.user?.id || null;
-
       let canonical = null;
-      if (selectedProduct.type === 'canonical') {
-        canonical = { id: selectedProduct.id, primary_unit: selectedProduct.primary_unit };
+      if (selectedProduct.type === 'canonical' || selectedProduct.canonical_food_id) {
+        const canonicalId = selectedProduct.canonical_food_id ?? selectedProduct.id;
+        canonical = { id: canonicalId, primary_unit: selectedProduct.primary_unit };
       } else if (selectedProduct.type === 'new') {
         canonical = await ensureCanonicalExists(selectedProduct.name);
       }
 
+      const qtyRemainingValue = Number(lotData.qty_remaining);
+      const initialQtyValue =
+        lotData.initial_qty !== '' ? Number(lotData.initial_qty) : qtyRemainingValue;
+
       const payload = {
         canonical_food_id: canonical?.id ?? null,
-        display_name: selectedProduct.display_name || selectedProduct.name,
-        qty_remaining: Number(lotData.qty),
-        unit: lotData.unit,
-        effective_expiration: lotData.expiration_date || null,
-        location_name: lotData.storage_place || null,
-        notes: lotData.notes || null,
-        storage_method: lotData.storage_method,
-        created_by: userId
+        qty_remaining: Number.isFinite(qtyRemainingValue) ? qtyRemainingValue : null,
+        initial_qty: Number.isFinite(initialQtyValue) ? initialQtyValue : null,
+        unit: lotData.unit || null,
+        expiration_date: lotData.expiration_date || null,
+        storage_method: lotData.storage_method || null,
+        storage_place: lotData.storage_place || null,
+        notes: lotData.notes || null
       };
 
       const { data: lot, error: lotErr } = await supabase
@@ -456,7 +539,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 <div className="product-info">
                   <div className="product-name">{selectedProduct.display_name}</div>
                   <div className="product-source">
-                    {selectedProduct.type === 'canonical' ? 'Base de données' : 'Nouveau produit'}
+                    {selectedProduct.type === 'new' ? 'Nouveau produit' : 'Base de données'}
                   </div>
                 </div>
                 <div className={`confidence-badge ${confidence.tone}`}>
@@ -481,8 +564,14 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                       step="0.1"
                       min="0"
                       required
-                      value={lotData.qty}
-                      onChange={(e) => setLotData((prev) => ({ ...prev, qty: e.target.value }))}
+                      value={lotData.qty_remaining}
+                      onChange={(e) =>
+                        setLotData((prev) => ({
+                          ...prev,
+                          qty_remaining: e.target.value,
+                          initial_qty: e.target.value
+                        }))
+                      }
                       placeholder="0"
                       className="form-input"
                     />
@@ -573,7 +662,11 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 <button onClick={() => setStep(1)} className="btn-secondary" disabled={loading}>
                   Retour
                 </button>
-                <button onClick={handleCreateLot} className="btn-primary" disabled={loading || !lotData.qty}>
+                <button
+                  onClick={handleCreateLot}
+                  className="btn-primary"
+                  disabled={loading || !lotData.qty_remaining}
+                >
                   {loading ? 'Création...' : 'Créer le lot'}
                 </button>
               </div>
