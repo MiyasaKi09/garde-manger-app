@@ -1,8 +1,9 @@
 // app/pantry/components/SmartAddForm.js
 'use client';
 
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { Search, Plus, X, Calendar, MapPin, ShieldCheck } from 'lucide-react';
+// ⚠️ On importe le client existant et on l'utilise vraiment
 import { supabase as supabaseClient } from '@/lib/supabaseClient';
 
 /**
@@ -36,17 +37,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const searchInputRef = useRef(null);
   const qtyInputRef = useRef(null);
 
-
-
-  const supabase = useMemo(() => {
-    try {
-      return createClientComponentClient();
-    } catch (error) {
-      console.error('Supabase client init error', error);
-      return null;
-    }
-  }, []);
-
+  // ✅ Utilise le client fourni par ta lib (singleton côté client)
+  const supabase = useMemo(() => supabaseClient, []);
 
   // Reset form when opened
   useEffect(() => {
@@ -146,7 +138,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
         let combined = nameMatches || [];
 
-        // 2) recherche complémentaire via les mots-clés (si disponibles)
+        // 2) recherche complémentaire via les mots-clés (si la colonne keywords existe et est de type text[])
         if (q.length > 1) {
           const keywordTokens = q
             .toLowerCase()
@@ -171,7 +163,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
               .limit(15);
 
             if (keywordError) {
-              console.warn('keyword search error', keywordError);
+              // Si la colonne n'existe pas, on ignore proprement
+              console.warn('keyword search error', keywordError?.message ?? keywordError);
             } else if (keywordMatches?.length) {
               const existingIds = new Set(combined.map((item) => item.id));
               keywordMatches.forEach((item) => {
@@ -303,7 +296,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .from('canonical_foods')
         .insert({
           canonical_name: clean,
-          primary_unit: 'g' // valeur par défaut raisonnable si inconnu
+          primary_unit: 'g'
         })
         .select('id, canonical_name, primary_unit')
         .single();
@@ -322,8 +315,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     }
     setLoading(true);
     try {
-      // Auth (utile si RLS utilise user_id)
-      const { data: auth } = await supabase.auth.getUser();
+      // Auth (si RLS utilise user_id)
+      const { data: auth, error: authErr } = await supabase.auth.getUser();
+      if (authErr) console.warn('auth error', authErr);
       const userId = auth?.user?.id || null;
 
       let canonical = null;
@@ -342,7 +336,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         location_name: lotData.storage_place || null,
         notes: lotData.notes || null,
         storage_method: lotData.storage_method,
-        created_by: userId // optionnel selon votre schéma
+        created_by: userId
       };
 
       const { data: lot, error: lotErr } = await supabase
@@ -352,7 +346,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .single();
       if (lotErr) throw lotErr;
 
-      // callback parent si fourni
       onLotCreated?.(lot?.id ?? null);
 
       // reset & close
@@ -589,6 +582,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         </div>
       </div>
 
+      {/* styles identiques à ta version */}
       <style jsx>{`
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; }
         .modal-container { background: white; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,.2); max-width: 500px; width: 100%; max-height: 90vh; overflow: hidden; display: flex; flex-direction: column; }
