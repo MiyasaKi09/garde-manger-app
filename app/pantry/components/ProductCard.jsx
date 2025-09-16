@@ -3,14 +3,9 @@
 
 import { useState } from 'react';
 import { Package } from 'lucide-react';
-import {
-  daysUntil,
-  formatDate,
-  getExpirationStatus,
-  getCategoryIcon
-} from './pantryUtils';
+import { daysUntil, formatDate, getCategoryIcon } from './pantryUtils';
+import { LifespanBadge } from './LifespanBadge';
 
-// Composant principal ProductCard
 export function ProductCard({
   product,
   lots = [],
@@ -22,13 +17,12 @@ export function ProductCard({
 }) {
   const [isExpanded, setIsExpanded] = useState(expanded);
 
-  // Total quantité (somme de tous les lots)
   const totalQuantity = lots.reduce(
     (sum, lot) => sum + Number(lot.qty ?? lot.qty_remaining ?? 0),
     0
   );
 
-  // Lot le plus proche de l’expiration
+  // FEFO: lot le plus proche de l’expiration
   const nextExpiringLot = [...lots]
     .filter(l => l?.dlc || l?.expiration_date || l?.effective_expiration)
     .sort((a, b) => {
@@ -42,9 +36,6 @@ export function ProductCard({
     nextExpiringLot?.expiration_date ||
     nextExpiringLot?.effective_expiration ||
     null;
-
-  const d = daysUntil(nextExpiryDate);
-  const expirationStatus = getExpirationStatus(d);
 
   const toggleExpanded = () => {
     const newExpanded = !isExpanded;
@@ -74,34 +65,18 @@ export function ProductCard({
               )}
 
               <span className="product-quantity">
-                {totalQuantity.toFixed(1)}{' '}
-                {product.default_unit || 'unité'}
+                {totalQuantity.toFixed(1)} {product.default_unit || 'unité'}
                 {lots.length > 1 && (
-                  <span className="lots-count">
-                    ({lots.length} lots)
-                  </span>
+                  <span className="lots-count">({lots.length} lots)</span>
                 )}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Statut expiration */}
+        {/* Statut expiration via Badge */}
         <div className="expiration-status">
-          <div
-            className="status-indicator"
-            style={{ color: expirationStatus.color }}
-          >
-            ⏳ {d === null
-              ? 'Sans date'
-              : d < 0
-              ? 'Expiré'
-              : d === 0
-              ? "Aujourd'hui"
-              : d === 1
-              ? 'Demain'
-              : `${d}j`}
-          </div>
+          <LifespanBadge date={nextExpiryDate} size="md" />
           {nextExpiryDate && (
             <div className="expiry-date">{formatDate(nextExpiryDate)}</div>
           )}
@@ -156,14 +131,14 @@ export function ProductCard({
           border-radius: 12px;
           overflow: hidden;
           transition: all 0.2s ease;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         .product-card:hover {
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
           border-color: #d1d5db;
         }
         .product-card.expanded {
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         .product-header {
           display: flex;
@@ -173,9 +148,7 @@ export function ProductCard({
           cursor: pointer;
           transition: background-color 0.2s;
         }
-        .product-header:hover {
-          background: #f9fafb;
-        }
+        .product-header:hover { background: #f9fafb; }
         .product-main-info {
           display: flex;
           align-items: center;
@@ -192,9 +165,7 @@ export function ProductCard({
           background: #f3f4f6;
           border-radius: 8px;
         }
-        .product-details {
-          flex: 1;
-        }
+        .product-details { flex: 1; }
         .product-name {
           font-size: 16px;
           font-weight: 600;
@@ -220,32 +191,20 @@ export function ProductCard({
           color: #6b7280;
           font-weight: 500;
         }
-        .lots-count {
-          color: #9ca3af;
-          margin-left: 4px;
-        }
+        .lots-count { color: #9ca3af; margin-left: 4px; }
         .expiration-status {
           display: flex;
           flex-direction: column;
           align-items: flex-end;
           gap: 2px;
         }
-        .status-indicator {
-          font-weight: 600;
-          font-size: 14px;
-        }
-        .expiry-date {
-          font-size: 12px;
-          color: #6b7280;
-        }
+        .expiry-date { font-size: 12px; color: #6b7280; }
         .expand-indicator {
           color: #9ca3af;
           transition: transform 0.2s;
           font-size: 12px;
         }
-        .expand-indicator.expanded {
-          transform: rotate(180deg);
-        }
+        .expand-indicator.expanded { transform: rotate(180deg); }
         .product-expanded {
           border-top: 1px solid #f3f4f6;
           padding: 16px;
@@ -266,36 +225,20 @@ export function ProductCard({
           color: #374151;
           margin: 0 0 12px 0;
         }
-        .lots-list {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-        .product-actions {
-          margin-top: 16px;
-          display: flex;
-          gap: 8px;
-        }
+        .lots-list { display: flex; flex-direction: column; gap: 8px; }
+        .product-actions { margin-top: 16px; display: flex; gap: 8px; }
         .btn-consume {
-          background: #059669;
-          color: white;
-          border: none;
-          padding: 8px 16px;
-          border-radius: 6px;
-          font-size: 14px;
-          font-weight: 500;
-          cursor: pointer;
-          transition: background-color 0.2s;
+          background: #059669; color: white; border: none;
+          padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500;
+          cursor: pointer; transition: background-color 0.2s;
         }
-        .btn-consume:hover {
-          background: #047857;
-        }
+        .btn-consume:hover { background: #047857; }
       `}</style>
     </div>
   );
 }
 
-// Carte d’un lot individuel
+// —————————————————————— LotCard ——————————————————————
 function LotCard({ lot, onUpdate, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({
@@ -306,7 +249,6 @@ function LotCard({ lot, onUpdate, onDelete }) {
   });
 
   const d = daysUntil(editData.expiration_date);
-  const status = getExpirationStatus(d);
 
   const handleSave = async () => {
     const success = await onUpdate?.(lot.id, {
@@ -319,9 +261,7 @@ function LotCard({ lot, onUpdate, onDelete }) {
   };
 
   const handleDelete = () => {
-    if (confirm('Supprimer ce lot ?')) {
-      onDelete?.(lot.id);
-    }
+    if (confirm('Supprimer ce lot ?')) onDelete?.(lot.id);
   };
 
   return (
@@ -344,10 +284,14 @@ function LotCard({ lot, onUpdate, onDelete }) {
             )}
             <span className="unit">{lot.unit}</span>
           </div>
+
+          {/* Badge DLC pour chaque lot */}
+          <LifespanBadge date={editData.expiration_date} size="sm" />
         </div>
 
-        <div className="lot-expiry" style={{ color: status.color }}>
-          {isEditing ? (
+        {/* Edition date si besoin */}
+        {isEditing && (
+          <div className="lot-edit-date">
             <input
               type="date"
               value={editData.expiration_date}
@@ -359,12 +303,8 @@ function LotCard({ lot, onUpdate, onDelete }) {
               }
               className="date-input"
             />
-          ) : (
-            <span>
-              {d === null ? 'Sans date' : d < 0 ? 'Expiré' : `${d}j`}
-            </span>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       {(lot.notes || lot.note || isEditing) && (
@@ -398,6 +338,36 @@ function LotCard({ lot, onUpdate, onDelete }) {
           </>
         )}
       </div>
+
+      <style jsx>{`
+        .lot-card {
+          background: white; border: 1px solid #e5e7eb; border-radius: 8px;
+          padding: 12px; transition: all 0.2s;
+        }
+        .lot-card:hover { border-color: #d1d5db; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .lot-header {
+          display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;
+        }
+        .lot-info { display: flex; flex-direction: column; gap: 6px; }
+        .lot-quantity { display: flex; align-items: center; gap: 4px; font-weight: 600; color: #111827; }
+        .unit { color: #6b7280; font-weight: normal; font-size: 14px; }
+        .lot-edit-date { margin-left: 8px; }
+        .lot-notes {
+          margin: 8px 0; padding: 8px; background: #f9fafb; border-radius: 6px;
+          font-size: 12px; color: #6b7280;
+        }
+        .lot-notes p { margin: 0; font-style: italic; }
+        .lot-actions { display: flex; gap: 6px; margin-top: 8px; }
+        .lot-actions button { padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; transition: all 0.2s; }
+        .btn-edit, .btn-save { background: #e0f2fe; color: #0369a1; border: 1px solid #0369a1; }
+        .btn-edit:hover, .btn-save:hover { background: #0369a1; color: white; }
+        .btn-delete, .btn-cancel { background: #fef2f2; color: #dc2626; border: 1px solid #dc2626; }
+        .btn-delete:hover, .btn-cancel:hover { background: #dc2626; color: white; }
+        .qty-input, .date-input {
+          padding: 2px 6px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 12px; width: 100px;
+        }
+        .notes-input { width: 100%; padding: 6px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 12px; resize: vertical; }
+      `}</style>
     </div>
   );
 }
