@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { X, Search, Calendar, Package, MapPin, ChevronDown, Info } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 
 const AddForm = ({ 
   onClose, 
@@ -11,11 +11,10 @@ const AddForm = ({
   const [formData, setFormData] = useState({
     canonical_food_id: null,
     foodItemName: '',
-    qty_remaining: 1,
-    initial_qty: 1,
+    quantity: 1,
     unit: '',
+    storage_method: 'Réfrigérateur',
     storage_place: '',
-    storage_method: 'fridge',
     acquired_on: new Date().toISOString().split('T')[0],
     expiration_date: '',
     notes: ''
@@ -23,8 +22,6 @@ const AddForm = ({
   
   const [searchQuery, setSearchQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [highlightedIndex, setHighlightedIndex] = useState(-1);
-  const [isCustomItem, setIsCustomItem] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
   
   // Traite les données des aliments canoniques pour la recherche
@@ -35,15 +32,12 @@ const AddForm = ({
       
       if (item.keywords) {
         if (Array.isArray(item.keywords)) {
-          // Si c'est déjà un array (depuis Supabase)
           keywordsArray = item.keywords;
         } else if (typeof item.keywords === 'string') {
-          // Si c'est une string JSON (depuis CSV export)
           try {
             if (item.keywords.startsWith('[')) {
               keywordsArray = JSON.parse(item.keywords);
             } else if (item.keywords.startsWith('{')) {
-              // Format PostgreSQL array {mot1,mot2}
               keywordsArray = item.keywords.slice(1, -1).split(',');
             } else {
               keywordsArray = [item.keywords];
@@ -101,57 +95,19 @@ const AddForm = ({
       );
       if (allTermsMatch) score += 30;
       
-      // Recherche floue pour les fautes de frappe (3+ caractères)
-      if (score === 0 && query.length >= 3) {
-        const similarity = calculateSimilarity(name, query.toLowerCase());
-        if (similarity > 0.6) {
-          score += Math.floor(similarity * 20);
-        }
-      }
-      
       return { food, score };
     })
     .filter(({ score }) => score > 0)
     .sort((a, b) => b.score - a.score);
     
-    // Retourne TOUS les résultats trouvés, pas de limite artificielle
+    // Retourne TOUS les résultats trouvés
     return scored.map(({ food }) => food);
   }, [processedFoods]);
 
-  // Calcul de similarité simple (Dice coefficient)
-  const calculateSimilarity = (str1, str2) => {
-    const getBigrams = (str) => {
-      const bigrams = [];
-      for (let i = 0; i < str.length - 1; i++) {
-        bigrams.push(str.slice(i, i + 2));
-      }
-      return bigrams;
-    };
-    
-    const bigrams1 = getBigrams(str1);
-    const bigrams2 = getBigrams(str2);
-    
-    if (bigrams1.length === 0 || bigrams2.length === 0) return 0;
-    
-    let matches = 0;
-    bigrams1.forEach(bigram => {
-      if (bigrams2.includes(bigram)) matches++;
-    });
-    
-    return (2 * matches) / (bigrams1.length + bigrams2.length);
-  };
-
   // Obtenir les suggestions filtrées
   const filteredSuggestions = useMemo(() => {
-    const results = searchFoods(searchQuery);
-    console.log(`Recherche "${searchQuery}": ${results.length} résultats trouvés`);
-    return results;
+    return searchFoods(searchQuery);
   }, [searchQuery, searchFoods]);
-
-  // Obtenir la catégorie d'un aliment
-  const getFoodCategory = (food) => {
-    return categories.find(cat => cat.id === food.category_id);
-  };
 
   // Calculer la date d'expiration par défaut
   const calculateDefaultExpiry = (food, storageMethod) => {
@@ -159,16 +115,13 @@ const AddForm = ({
     let daysToAdd = 7; // Par défaut
     
     if (food) {
-      switch(storageMethod) {
-        case 'pantry':
-          daysToAdd = food.shelf_life_days_pantry || 30;
-          break;
-        case 'fridge':
-          daysToAdd = food.shelf_life_days_fridge || 7;
-          break;
-        case 'freezer':
-          daysToAdd = food.shelf_life_days_freezer || 90;
-          break;
+      const method = storageMethod?.toLowerCase();
+      if (method?.includes('réfrig') || method?.includes('frigo')) {
+        daysToAdd = food.shelf_life_days_fridge || 7;
+      } else if (method?.includes('congél') || method?.includes('freez')) {
+        daysToAdd = food.shelf_life_days_freezer || 90;
+      } else if (method?.includes('garde') || method?.includes('pantry')) {
+        daysToAdd = food.shelf_life_days_pantry || 30;
       }
     }
     
@@ -177,19 +130,8 @@ const AddForm = ({
   };
 
   useEffect(() => {
-    setShowSuggestions(searchQuery.length > 0);
-    setHighlightedIndex(-1);
-  }, [searchQuery]);
-
-  // Mettre à jour la date d'expiration quand on change de méthode de stockage
-  useEffect(() => {
-    if (selectedFood && formData.storage_method) {
-      setFormData(prev => ({
-        ...prev,
-        expiration_date: calculateDefaultExpiry(selectedFood, formData.storage_method)
-      }));
-    }
-  }, [formData.storage_method, selectedFood]);
+    setShowSuggestions(searchQuery.length > 0 && filteredSuggestions.length > 0);
+  }, [searchQuery, filteredSuggestions]);
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
@@ -197,11 +139,9 @@ const AddForm = ({
     setFormData(prev => ({
       ...prev,
       foodItemName: value,
-      canonical_food_id: null,
-      unit: ''
+      canonical_food_id: null
     }));
     setSelectedFood(null);
-    setIsCustomItem(true);
   };
 
   const selectFoodItem = (food) => {
@@ -215,247 +155,188 @@ const AddForm = ({
     setSearchQuery(food.canonical_name);
     setSelectedFood(food);
     setShowSuggestions(false);
-    setIsCustomItem(false);
-  };
-
-  const handleKeyDown = (e) => {
-    if (!showSuggestions || filteredSuggestions.length === 0) return;
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        setHighlightedIndex(prev => 
-          prev < Math.min(filteredSuggestions.length - 1, 19) ? prev + 1 : 0
-        );
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        setHighlightedIndex(prev => 
-          prev > 0 ? prev - 1 : Math.min(filteredSuggestions.length - 1, 19)
-        );
-        break;
-      case 'Enter':
-        e.preventDefault();
-        if (highlightedIndex >= 0 && highlightedIndex < filteredSuggestions.length) {
-          selectFoodItem(filteredSuggestions[highlightedIndex]);
-        } else if (filteredSuggestions.length === 1) {
-          selectFoodItem(filteredSuggestions[0]);
-        }
-        break;
-      case 'Escape':
-        setShowSuggestions(false);
-        setHighlightedIndex(-1);
-        break;
-    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    if (!formData.foodItemName.trim()) {
-      alert('Veuillez entrer un nom d\'aliment');
-      return;
-    }
-    
-    if (!formData.storage_place) {
-      alert('Veuillez sélectionner un emplacement');
-      return;
-    }
-    
-    // Préparer les données pour Supabase
     const submitData = {
       canonical_food_id: formData.canonical_food_id,
-      qty_remaining: parseFloat(formData.qty_remaining),
-      initial_qty: parseFloat(formData.initial_qty || formData.qty_remaining),
+      qty_remaining: parseFloat(formData.quantity),
+      initial_qty: parseFloat(formData.quantity),
       unit: formData.unit || 'unité',
-      storage_method: formData.storage_method,
+      storage_method: formData.storage_method.toLowerCase().replace('é', 'e').replace('î', 'i'),
       storage_place: formData.storage_place,
       acquired_on: formData.acquired_on,
       expiration_date: formData.expiration_date || null,
       notes: formData.notes || null,
-      // Si c'est un article personnalisé, on devra le gérer différemment
-      isCustom: isCustomItem,
-      customName: isCustomItem ? formData.foodItemName : null
+      isCustom: !formData.canonical_food_id,
+      customName: !formData.canonical_food_id ? formData.foodItemName : null
     };
     
     onSubmit(submitData);
   };
 
-  // Fonction pour mettre en surbrillance les termes recherchés
-  const highlightMatch = (text, query) => {
-    if (!query) return text;
-    
-    const terms = query.toLowerCase().split(/\s+/);
-    let result = text;
-    
-    terms.forEach(term => {
-      const regex = new RegExp(`(${term})`, 'gi');
-      result = result.replace(regex, '<mark>$1</mark>');
-    });
-    
-    return <span dangerouslySetInnerHTML={{ __html: result }} />;
-  };
-
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Ajouter à l'inventaire</h2>
+    <>
+      {/* Overlay sombre */}
+      <div 
+        className="fixed inset-0 bg-black/20 z-40"
+        onClick={onClose}
+      />
+      
+      {/* Formulaire avec le style original */}
+      <div 
+        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50"
+        style={{
+          backgroundColor: '#f5e6c8',
+          borderRadius: '20px',
+          padding: '24px',
+          width: '450px',
+          boxShadow: '0 10px 25px rgba(0,0,0,0.1)'
+        }}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold" style={{ color: '#2d3436' }}>
+            Ajouter à l'inventaire
+          </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:opacity-70 transition-opacity"
+            style={{ background: 'none', border: 'none' }}
           >
             <X size={20} />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Recherche d'aliment */}
-          <div className="relative">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              <Search className="inline w-4 h-4 mr-1" />
+        <form onSubmit={handleSubmit}>
+          {/* Champ de recherche avec icône */}
+          <div className="relative mb-4">
+            <Search 
+              size={16} 
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+            />
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Aliment
             </label>
             <input
               type="text"
               value={searchQuery}
               onChange={handleSearchChange}
-              onKeyDown={handleKeyDown}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Rechercher un aliment..."
+              className="w-full pl-10 pr-3 py-2 rounded-lg border-0"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                outline: 'none'
+              }}
               autoFocus
             />
             
-            {/* Suggestions */}
-            {showSuggestions && filteredSuggestions.length > 0 && (
-              <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto">
-                <div className="p-2 text-xs text-gray-500 border-b">
-                  {filteredSuggestions.length} résultat{filteredSuggestions.length > 1 ? 's' : ''} trouvé{filteredSuggestions.length > 1 ? 's' : ''}
-                </div>
-                {filteredSuggestions.slice(0, 20).map((item, index) => {
-                  const category = getFoodCategory(item);
-                  return (
-                    <div
-                      key={item.id}
-                      onClick={() => selectFoodItem(item)}
-                      className={`px-3 py-2 cursor-pointer transition-colors ${
-                        highlightedIndex === index ? 'bg-blue-50' : 'hover:bg-gray-50'
-                      }`}
-                    >
-                      <div className="font-medium">
-                        {highlightMatch(item.canonical_name, searchQuery)}
-                      </div>
-                      <div className="text-xs text-gray-500 mt-1">
-                        {category && (
-                          <span className="inline-block px-2 py-0.5 bg-gray-100 rounded mr-2">
-                            {category.name}
-                          </span>
-                        )}
-                        {item.subcategory && (
-                          <span className="text-gray-400">{item.subcategory}</span>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-                {filteredSuggestions.length > 20 && (
-                  <div className="p-2 text-xs text-gray-500 border-t text-center">
-                    ... et {filteredSuggestions.length - 20} autres résultats
+            {/* Liste des suggestions */}
+            {showSuggestions && (
+              <div 
+                className="absolute w-full mt-1 max-h-48 overflow-y-auto rounded-lg shadow-lg z-10"
+                style={{ backgroundColor: 'white' }}
+              >
+                {filteredSuggestions.slice(0, 50).map(item => (
+                  <div
+                    key={item.id}
+                    onClick={() => selectFoodItem(item)}
+                    className="px-3 py-2 cursor-pointer hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="font-medium text-sm">{item.canonical_name}</div>
+                    {item.subcategory && (
+                      <div className="text-xs text-gray-500">{item.subcategory}</div>
+                    )}
+                  </div>
+                ))}
+                {filteredSuggestions.length > 50 && (
+                  <div className="px-3 py-2 text-xs text-gray-500 text-center border-t">
+                    ... et {filteredSuggestions.length - 50} autres résultats
                   </div>
                 )}
               </div>
             )}
-            
-            {showSuggestions && filteredSuggestions.length === 0 && searchQuery.length >= 2 && (
-              <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg p-3">
-                <p className="text-sm text-gray-500">
-                  Aucun résultat trouvé. L'article sera ajouté comme produit personnalisé.
-                </p>
-              </div>
-            )}
           </div>
 
-          {/* Info sur l'aliment sélectionné */}
-          {selectedFood && (
-            <div className="bg-blue-50 border border-blue-200 rounded-md p-3">
-              <div className="flex items-start">
-                <Info className="w-4 h-4 text-blue-600 mr-2 mt-0.5" />
-                <div className="text-sm">
-                  <p className="font-medium text-blue-900">{selectedFood.canonical_name}</p>
-                  <p className="text-blue-700 mt-1">
-                    Conservation : {selectedFood.shelf_life_days_pantry && `Garde-manger: ${selectedFood.shelf_life_days_pantry}j`}
-                    {selectedFood.shelf_life_days_fridge && ` • Frigo: ${selectedFood.shelf_life_days_fridge}j`}
-                    {selectedFood.shelf_life_days_freezer && ` • Congélateur: ${selectedFood.shelf_life_days_freezer}j`}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* Quantité */}
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Quantité
+            </label>
+            <input
+              type="number"
+              min="0.1"
+              step="0.1"
+              value={formData.quantity}
+              onChange={(e) => setFormData(prev => ({ ...prev, quantity: e.target.value }))}
+              className="w-full px-3 py-2 rounded-lg border-0"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                outline: 'none'
+              }}
+              required
+            />
+          </div>
 
-          {/* Quantité et unité */}
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Quantité
-              </label>
-              <input
-                type="number"
-                min="0.1"
-                step="0.1"
-                value={formData.qty_remaining}
-                onChange={(e) => setFormData(prev => ({ 
-                  ...prev, 
-                  qty_remaining: e.target.value,
-                  initial_qty: e.target.value 
-                }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Unité
-              </label>
-              <input
-                type="text"
-                value={formData.unit}
-                onChange={(e) => setFormData(prev => ({ ...prev, unit: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                placeholder="kg, L, unité..."
-                required
-              />
-            </div>
+          {/* Unité */}
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Unité
+            </label>
+            <input
+              type="text"
+              value={formData.unit}
+              onChange={(e) => setFormData(prev => ({ ...prev, unit: e.target.value }))}
+              placeholder="kg, L, unité..."
+              className="w-full px-3 py-2 rounded-lg border-0"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                outline: 'none'
+              }}
+            />
           </div>
 
           {/* Méthode de stockage */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              <Package className="inline w-4 h-4 mr-1" />
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Méthode de stockage
             </label>
             <select
               value={formData.storage_method}
-              onChange={(e) => setFormData(prev => ({ ...prev, storage_method: e.target.value }))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-              required
+              onChange={(e) => {
+                setFormData(prev => ({ 
+                  ...prev, 
+                  storage_method: e.target.value,
+                  expiration_date: selectedFood ? calculateDefaultExpiry(selectedFood, e.target.value) : prev.expiration_date
+                }));
+              }}
+              className="w-full px-3 py-2 rounded-lg border-0"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                outline: 'none'
+              }}
             >
-              <option value="fridge">Réfrigérateur</option>
-              <option value="freezer">Congélateur</option>
-              <option value="pantry">Garde-manger</option>
+              <option value="Réfrigérateur">Réfrigérateur</option>
+              <option value="Congélateur">Congélateur</option>
+              <option value="Garde-manger">Garde-manger</option>
             </select>
           </div>
 
           {/* Emplacement */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              <MapPin className="inline w-4 h-4 mr-1" />
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Emplacement
             </label>
             <select
               value={formData.storage_place}
               onChange={(e) => setFormData(prev => ({ ...prev, storage_place: e.target.value }))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 rounded-lg border-0"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                outline: 'none'
+              }}
               required
             >
               <option value="">Sélectionner un emplacement</option>
@@ -467,67 +348,88 @@ const AddForm = ({
             </select>
           </div>
 
-          {/* Dates */}
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Date d'acquisition
-              </label>
-              <input
-                type="date"
-                value={formData.acquired_on}
-                onChange={(e) => setFormData(prev => ({ ...prev, acquired_on: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                <Calendar className="inline w-4 h-4 mr-1" />
-                Date d'expiration
-              </label>
-              <input
-                type="date"
-                value={formData.expiration_date}
-                onChange={(e) => setFormData(prev => ({ ...prev, expiration_date: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
+          {/* Date d'acquisition */}
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Date d'acquisition
+            </label>
+            <input
+              type="date"
+              value={formData.acquired_on}
+              onChange={(e) => setFormData(prev => ({ ...prev, acquired_on: e.target.value }))}
+              className="w-full px-3 py-2 rounded-lg border-0"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                outline: 'none'
+              }}
+            />
+          </div>
+
+          {/* Date d'expiration */}
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Date d'expiration
+            </label>
+            <input
+              type="date"
+              value={formData.expiration_date}
+              onChange={(e) => setFormData(prev => ({ ...prev, expiration_date: e.target.value }))}
+              className="w-full px-3 py-2 rounded-lg border-0"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                outline: 'none'
+              }}
+            />
           </div>
 
           {/* Notes */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="mb-6">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Notes (optionnel)
             </label>
             <textarea
               value={formData.notes}
               onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-              rows="2"
               placeholder="Informations supplémentaires..."
+              rows="2"
+              className="w-full px-3 py-2 rounded-lg border-0 resize-none"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                outline: 'none'
+              }}
             />
           </div>
 
           {/* Boutons */}
-          <div className="flex gap-3 pt-4">
+          <div className="flex gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+              className="flex-1 px-4 py-2 rounded-lg font-medium transition-all"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                color: '#2d3436'
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.6)'}
             >
               Annuler
             </button>
             <button
               type="submit"
-              className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              className="flex-1 px-4 py-2 rounded-lg font-medium text-white transition-all"
+              style={{
+                backgroundColor: '#6b9b7b'
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#5a8a6a'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#6b9b7b'}
             >
               Ajouter
             </button>
           </div>
         </form>
       </div>
-    </div>
+    </>
   );
 };
 
