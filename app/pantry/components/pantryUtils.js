@@ -9,25 +9,52 @@
 export const formatDate = (date, options = {}) => {
   if (!date) return '';
   const defaultOptions = { day: 'numeric', month: 'short', year: 'numeric', ...options };
-  return new Date(date).toLocaleDateString('fr-FR', defaultOptions);
+  try {
+    return new Date(date).toLocaleDateString('fr-FR', defaultOptions);
+  } catch (error) {
+    console.error('Erreur formatage date:', error);
+    return '';
+  }
 };
 
 export const daysUntil = (date) => {
   if (!date) return null;
-  const today = new Date(); today.setHours(0, 0, 0, 0);
-  const target = new Date(date); target.setHours(0, 0, 0, 0);
-  return Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+  try {
+    const today = new Date(); 
+    today.setHours(0, 0, 0, 0);
+    const target = new Date(date); 
+    target.setHours(0, 0, 0, 0);
+    return Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+  } catch (error) {
+    console.error('Erreur calcul jours:', error);
+    return null;
+  }
 };
 
 export const addDays = (date, days) => {
-  const d = new Date(date);
-  d.setDate(d.getDate() + Number(days || 0));
-  return d;
+  try {
+    const d = new Date(date);
+    d.setDate(d.getDate() + Number(days || 0));
+    return d;
+  } catch (error) {
+    console.error('Erreur ajout jours:', error);
+    return new Date();
+  }
 };
 
-export const formatDateISO = (date) => new Date(date).toISOString().split('T')[0];
+export const formatDateISO = (date) => {
+  try {
+    return new Date(date).toISOString().split('T')[0];
+  } catch (error) {
+    console.error('Erreur format ISO:', error);
+    return '';
+  }
+};
 
-export const isExpired = (date) => daysUntil(date) < 0;
+export const isExpired = (date) => {
+  const days = daysUntil(date);
+  return days !== null && days < 0;
+};
 
 export const isExpiringSoon = (date, threshold = 3) => {
   const d = daysUntil(date);
@@ -54,7 +81,7 @@ export const convertQuantity = (quantity, fromUnit, toUnit, density = null) => {
   const fromType = getUnitType(fromUnit);
   const toType = getUnitType(toUnit);
 
-  // Même famille d’unités
+  // Même famille d'unités
   if (fromType === toType && fromType !== 'other') {
     const f = UNIT_CONVERSIONS[fromType][(fromUnit || '').toLowerCase()] || 1;
     const t = UNIT_CONVERSIONS[toType][(toUnit || '').toLowerCase()] || 1;
@@ -81,31 +108,131 @@ export const convertQuantity = (quantity, fromUnit, toUnit, density = null) => {
 };
 
 export const formatQuantity = (quantity, unit, precision = 1) => {
-  if (quantity === null || quantity === undefined) return '—';
-  return `${Number(quantity).toFixed(precision)} ${unit ?? ''}`.trim();
+  if (quantity === null || quantity === undefined || isNaN(quantity)) return '—';
+  const num = Number(quantity);
+  if (num === 0) return `0 ${unit || 'unité'}`;
+  
+  // Pour les nombres entiers, pas de décimales
+  if (num === Math.floor(num)) {
+    return `${num} ${unit || 'unité'}`;
+  }
+  
+  return `${num.toFixed(precision)} ${unit || 'unité'}`;
 };
+
+// ✅ AJOUT: Alias pour compatibilité
+export const formatQty = formatQuantity;
 
 /* ============ STATUTS ET PRIORITÉS ============ */
 
-export const getExpirationStatus = (d) => {
-  if (d === null)  return { status: 'unknown',   level: 0, color: '#6b7280', bgColor: '#f9fafb', label: 'Sans date',  priority: 3 };
-  if (d < 0)       return { status: 'expired',   level: 4, color: '#dc2626', bgColor: '#fef2f2', label: 'Expiré',     priority: 1 };
-  if (d === 0)     return { status: 'today',     level: 3, color: '#ea580c', bgColor: '#fff7ed', label: "Aujourd'hui", priority: 2 };
-  if (d <= 3)      return { status: 'critical',  level: 3, color: '#d97706', bgColor: '#fffbeb', label: `${d}j`,      priority: 2 };
-  if (d <= 7)      return { status: 'warning',   level: 2, color: '#ca8a04', bgColor: '#fefce8', label: `${d}j`,      priority: 3 };
-  if (d <= 14)     return { status: 'attention', level: 1, color: '#0891b2', bgColor: '#f0f9ff', label: `${d}j`,      priority: 4 };
-  return {           status: 'good',      level: 0, color: '#059669', bgColor: '#ecfdf5', label: `${d}j`,      priority: 5 };
+export const getExpirationStatus = (daysLeft) => {
+  if (daysLeft === null || daysLeft === undefined) {
+    return { 
+      status: 'unknown', 
+      level: 0, 
+      color: '#6b7280', 
+      bgColor: '#f9fafb', 
+      label: 'Sans date', 
+      priority: 5 
+    };
+  }
+  
+  const d = Number(daysLeft);
+  
+  if (d < 0) return { 
+    status: 'expired', 
+    level: 4, 
+    color: '#dc2626', 
+    bgColor: '#fef2f2', 
+    label: 'Expiré', 
+    priority: 1 
+  };
+  
+  if (d === 0) return { 
+    status: 'today', 
+    level: 3, 
+    color: '#ea580c', 
+    bgColor: '#fff7ed', 
+    label: "Aujourd'hui", 
+    priority: 2 
+  };
+  
+  if (d <= 3) return { 
+    status: 'critical', 
+    level: 3, 
+    color: '#d97706', 
+    bgColor: '#fffbeb', 
+    label: `${d}j`, 
+    priority: 2 
+  };
+  
+  if (d <= 7) return { 
+    status: 'warning', 
+    level: 2, 
+    color: '#ca8a04', 
+    bgColor: '#fefce8', 
+    label: `${d}j`, 
+    priority: 3 
+  };
+  
+  if (d <= 14) return { 
+    status: 'attention', 
+    level: 1, 
+    color: '#0891b2', 
+    bgColor: '#f0f9ff', 
+    label: `${d}j`, 
+    priority: 4 
+  };
+  
+  return { 
+    status: 'good', 
+    level: 0, 
+    color: '#059669', 
+    bgColor: '#ecfdf5', 
+    label: `${d}j`, 
+    priority: 5 
+  };
 };
 
 export const getStorageMethodInfo = (method) => {
   const map = {
-    fridge:  { label: 'Frigo',       icon: '❄️', color: '#0ea5e9', description: 'Conservation au réfrigérateur (2-4°C)' },
-    freezer: { label: 'Congélateur', icon: '🧊', color: '#06b6d4', description: 'Conservation au congélateur (-18°C)' },
-    pantry:  { label: 'Placard',     icon: '🏠', color: '#8b5cf6', description: 'Conservation à température ambiante' },
-    counter: { label: 'Plan de travail', icon: '🏪', color: '#f59e0b', description: 'À consommer rapidement' },
-    cellar:  { label: 'Cave',        icon: '🍷', color: '#7c3aed', description: 'Conservation en cave (10-15°C)' }
+    fridge: { 
+      label: 'Frigo', 
+      icon: '❄️', 
+      color: '#0ea5e9', 
+      description: 'Conservation au réfrigérateur (2-4°C)' 
+    },
+    freezer: { 
+      label: 'Congélateur', 
+      icon: '🧊', 
+      color: '#06b6d4', 
+      description: 'Conservation au congélateur (-18°C)' 
+    },
+    pantry: { 
+      label: 'Placard', 
+      icon: '🏠', 
+      color: '#8b5cf6', 
+      description: 'Conservation à température ambiante' 
+    },
+    counter: { 
+      label: 'Plan de travail', 
+      icon: '🏪', 
+      color: '#f59e0b', 
+      description: 'À consommer rapidement' 
+    },
+    cellar: { 
+      label: 'Cave', 
+      icon: '🍷', 
+      color: '#7c3aed', 
+      description: 'Conservation en cave (10-15°C)' 
+    }
   };
-  return map[method] || { label: method, icon: '📦', color: '#6b7280', description: 'Méthode de conservation' };
+  return map[method] || { 
+    label: method, 
+    icon: '📦', 
+    color: '#6b7280', 
+    description: 'Méthode de conservation' 
+  };
 };
 
 /* ============ CATÉGORISATION ============ */
@@ -118,55 +245,68 @@ export const getCategoryIcon = (categoryName) => {
     'légume': '🥬', 'légumes': '🥬', 'vegetable': '🥬', 'salade': '🥗',
     'fruit': '🍎', 'fruits': '🍎', 'agrume': '🍊', 'agrumes': '🍊', 'baie': '🫐', 'baies': '🫐',
     // Protéines
-    'viande': '🥩', 'viandes': '🥩', 'meat': '🥩', 'poisson': '🐟', 'poissons': '🐟',
-    'œuf': '🥚', 'oeuf': '🥚', 'œufs': '🥚', 'eggs': '🥚',
-    // Laitiers
-    'lait': '🥛', 'laitier': '🥛', 'fromage': '🧀', 'yaourt': '🥛', 'crème': '🥛', 'beurre': '🧈',
+    'viande': '🥩', 'bœuf': '🥩', 'porc': '🥩', 'agneau': '🥩',
+    'volaille': '🐔', 'poulet': '🐔', 'canard': '🦆', 'dinde': '🦃',
+    'poisson': '🐟', 'saumon': '🐟', 'thon': '🐟', 'fruits de mer': '🦐',
+    'œuf': '🥚', 'oeufs': '🥚', 'eggs': '🥚',
+    // Produits laitiers
+    'lait': '🥛', 'yaourt': '🥛', 'fromage': '🧀', 'crème': '🥛', 'beurre': '🧈',
     // Céréales & féculents
-    'céréale': '🌾', 'céréales': '🌾', 'riz': '🍚', 'pâtes': '🍝', 'pain': '🍞', 'farine': '🌾', 'pomme de terre': '🥔',
-    // Légumineuses
-    'légumineuse': '🫘', 'légumineuses': '🫘', 'haricot': '🫘', 'lentille': '🫘', 'pois': '🫘',
+    'céréale': '🌾', 'céréales': '🌾', 'riz': '🍚', 'pâtes': '🍝', 'pain': '🍞',
+    'pomme de terre': '🥔', 'patate': '🍠',
     // Épices & condiments
-    'épice': '🌶️', 'épices': '🌶️', 'aromate': '🌿', 'aromates': '🌿', 'condiment': '🧂',
-    // Huiles
-    'huile': '🫒', 'huiles': '🫒',
+    'épice': '🌶️', 'épices': '🌶️', 'herbe': '🌿', 'herbes': '🌿',
+    'sauce': '🥫', 'condiment': '🥫', 'huile': '🫒', 'vinaigre': '🍶',
     // Boissons
-    'boisson': '🥤', 'boissons': '🥤', 'eau': '💧', 'jus': '🧃', 'café': '☕', 'thé': '🍵', 'vin': '🍷', 'bière': '🍺',
-    // Sucré
-    'sucre': '🍯', 'miel': '🍯', 'confiture': '🍯', 'chocolat': '🍫',
+    'boisson': '🥤', 'jus': '🧃', 'eau': '💧', 'thé': '🍵', 'café': '☕', 'vin': '🍷',
     // Conserves & surgelés
-    'conserve': '🥫', 'conserves': '🥫', 'surgelé': '🧊', 'surgelés': '🧊', 'frozen': '🧊'
+    'conserve': '🥫', 'surgelé': '🧊', 'surgelés': '🧊'
   };
+  
+  // Recherche exacte
   if (icons[name]) return icons[name];
-  const key = Object.keys(icons).find(k => name.includes(k));
-  return key ? icons[key] : '📦';
+  
+  // Recherche partielle
+  for (const [key, icon] of Object.entries(icons)) {
+    if (name.includes(key)) return icon;
+  }
+  
+  return '📦';
 };
 
-/* ============ RECHERCHE & TRI ============ */
+/* ============ RECHERCHE ET FILTRAGE ============ */
 
-export const normalizeString = (str) =>
-  String(str || '')
+export const normalizeString = (str) => {
+  if (!str) return '';
+  return String(str)
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\s]/g, '')
     .trim();
+};
 
-export const scoreSearchMatch = (searchTerm, targetString, options = {}) => {
-  const { exactMatchBonus = 0, startsWithBonus = 1, wordStartBonus = 2, containsBonus = 3, noMatchPenalty = 10 } = options;
-  const s = normalizeString(searchTerm); const t = normalizeString(targetString);
-  if (t === s) return exactMatchBonus;
-  if (t.startsWith(s)) return startsWithBonus;
-  if (t.includes(' ' + s)) return wordStartBonus;
-  if (t.includes(s)) return containsBonus;
-
-  const sw = s.split(/\s+/); const tw = t.split(/\s+/);
-  let partial = 0;
-  for (const a of sw) { if (tw.some(b => b.includes(a) || a.includes(b))) partial++; }
-  return partial > 0 ? containsBonus + (sw.length - partial) : noMatchPenalty;
+export const scoreSearchMatch = (searchTerm, text) => {
+  if (!searchTerm || !text) return 100;
+  
+  const search = normalizeString(searchTerm);
+  const target = normalizeString(text);
+  
+  if (target.includes(search)) {
+    // Bonus si c'est un match exact au début
+    if (target.startsWith(search)) return 0;
+    // Bonus si c'est un match de mot complet
+    if (target.split(/\s+/).some(word => word === search)) return 1;
+    // Match partiel
+    return 2;
+  }
+  
+  return 100; // Pas de match
 };
 
 export const filterAndSortItems = (items, searchTerm, getSearchFields) => {
   if (!String(searchTerm || '').trim()) return items;
+  
   return items
     .map(item => ({
       item,
@@ -180,20 +320,30 @@ export const filterAndSortItems = (items, searchTerm, getSearchFields) => {
 /* ============ GESTION DES LOTS ============ */
 
 export const groupLotsByProduct = (lots) => {
-  const groups = new Map();
-  for (const lot of lots || []) {
-    const productId =
-      lot.canonical_food_id || lot.cultivar_id || lot.generic_product_id ||
-      lot.derived_product_id || lot.product_id;
+  if (!Array.isArray(lots)) {
+    console.warn('groupLotsByProduct: lots doit être un tableau');
+    return [];
+  }
 
-    const productName =
-      lot.display_name ||
-      lot.canonical_food?.canonical_name ||
-      lot.cultivar?.cultivar_name ||
-      lot.generic_product?.name ||
-      lot.derived_product?.derived_name ||
-      lot.product?.name ||
-      'Produit inconnu';
+  const groups = new Map();
+  
+  for (const lot of lots) {
+    if (!lot) continue;
+    
+    const productId = lot.canonical_food_id || 
+                     lot.cultivar_id || 
+                     lot.generic_product_id ||
+                     lot.derived_product_id || 
+                     lot.product_id || 
+                     `unknown-${lot.id}`;
+
+    const productName = lot.display_name ||
+                       lot.canonical_food?.canonical_name ||
+                       lot.cultivar?.cultivar_name ||
+                       lot.generic_product?.name ||
+                       lot.derived_product?.derived_name ||
+                       lot.product?.name ||
+                       'Produit inconnu';
 
     if (!groups.has(productId)) {
       groups.set(productId, {
@@ -201,39 +351,47 @@ export const groupLotsByProduct = (lots) => {
         productName,
         lots: [],
         totalQuantity: 0,
-        primaryUnit: lot.unit,
-        category:
-          lot.category_name ||
-          lot.canonical_food?.category ||
-          lot.cultivar?.canonical_food?.category ||
-          lot.generic_product?.category ||
-          lot.product?.category,
+        primaryUnit: lot.unit || 'unité',
+        category: lot.category_name ||
+                 lot.canonical_food?.category ||
+                 lot.cultivar?.canonical_food?.category ||
+                 lot.generic_product?.category ||
+                 lot.product?.category ||
+                 'Autre',
         nextExpiry: null
       });
     }
-    const g = groups.get(productId);
-    g.lots.push(lot);
-    g.totalQuantity += Number(lot.qty_remaining ?? lot.qty ?? 0);
+    
+    const group = groups.get(productId);
+    group.lots.push(lot);
+    group.totalQuantity += Number(lot.qty_remaining ?? lot.qty ?? 0);
 
     const lotExp = lot.effective_expiration || lot.expiration_date || lot.dlc;
-    if (lotExp && (!g.nextExpiry || new Date(lotExp) < new Date(g.nextExpiry))) {
-      g.nextExpiry = lotExp;
+    if (lotExp && (!group.nextExpiry || new Date(lotExp) < new Date(group.nextExpiry))) {
+      group.nextExpiry = lotExp;
     }
   }
+  
   return Array.from(groups.values());
 };
 
-export const sortLotsByFEFO = (lots) =>
-  [...(lots || [])].sort((a, b) => {
+export const sortLotsByFEFO = (lots) => {
+  if (!Array.isArray(lots)) return [];
+  
+  return [...lots].sort((a, b) => {
     const da = a.effective_expiration || a.expiration_date || a.dlc;
     const db = b.effective_expiration || b.expiration_date || b.dlc;
+    
     if (!da && !db) return 0;
     if (!da) return 1;
     if (!db) return -1;
+    
     const diff = new Date(da) - new Date(db);
     if (diff !== 0) return diff;
+    
     return new Date(a.created_at || 0) - new Date(b.created_at || 0);
   });
+};
 
 /* ============ CALCULS NUTRITIONNELS ============ */
 
@@ -241,21 +399,25 @@ export const calculateNutritionalValue = (quantity, unit, nutritionPer100g, dens
   if (!nutritionPer100g || !quantity) return null;
 
   let grams = null;
-  if (getUnitType(unit) === 'weight') grams = convertQuantity(quantity, unit, 'g');
-  else if (getUnitType(unit) === 'volume' && density) grams = convertQuantity(quantity, unit, 'g', density);
-  else return null;
+  if (getUnitType(unit) === 'weight') {
+    grams = convertQuantity(quantity, unit, 'g');
+  } else if (getUnitType(unit) === 'volume' && density) {
+    grams = convertQuantity(quantity, unit, 'g', density);
+  } else {
+    return null;
+  }
 
   if (!grams || grams <= 0) return null;
 
   const base = grams / 100;
   return {
     calories: Math.round((nutritionPer100g.calories || 0) * base),
-    protein:  Math.round((nutritionPer100g.protein  || 0) * base * 10) / 10,
-    carbs:    Math.round((nutritionPer100g.carbs    || 0) * base * 10) / 10,
-    fat:      Math.round((nutritionPer100g.fat      || 0) * base * 10) / 10,
-    fiber:    Math.round((nutritionPer100g.fiber    || 0) * base * 10) / 10,
-    sugar:    Math.round((nutritionPer100g.sugar    || 0) * base * 10) / 10,
-    sodium:   Math.round((nutritionPer100g.sodium   || 0) * base)
+    protein: Math.round((nutritionPer100g.protein || 0) * base * 10) / 10,
+    carbs: Math.round((nutritionPer100g.carbs || 0) * base * 10) / 10,
+    fat: Math.round((nutritionPer100g.fat || 0) * base * 10) / 10,
+    fiber: Math.round((nutritionPer100g.fiber || 0) * base * 10) / 10,
+    sugar: Math.round((nutritionPer100g.sugar || 0) * base * 10) / 10,
+    sodium: Math.round((nutritionPer100g.sodium || 0) * base)
   };
 };
 
@@ -277,21 +439,36 @@ export const PantryStyles = {
     lg: '0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05)',
     xl: '0 20px 25px -5px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04)'
   },
-  borderRadius: { sm: '0.125rem', base: '0.25rem', md: '0.375rem', lg: '0.5rem', xl: '0.75rem', '2xl': '1rem', full: '9999px' },
-  spacing: { xs: '0.25rem', sm: '0.5rem', base: '1rem', lg: '1.5rem', xl: '2rem', '2xl': '3rem', '3xl': '4rem' }
+  borderRadius: { 
+    sm: '0.125rem', base: '0.25rem', md: '0.375rem', 
+    lg: '0.5rem', xl: '0.75rem', '2xl': '1rem', full: '9999px' 
+  },
+  spacing: { 
+    xs: '0.25rem', sm: '0.5rem', base: '1rem', 
+    lg: '1.5rem', xl: '2rem', '2xl': '3rem', '3xl': '4rem' 
+  }
 };
 
 /* ============ VALIDATIONS ============ */
 
 export const validateLotData = (lotData) => {
   const errors = {};
-  if (!lotData.qty || Number(lotData.qty) <= 0) errors.qty = 'La quantité doit être positive';
-  if (!lotData.unit) errors.unit = "L'unité est requise";
+  
+  if (!lotData.qty || Number(lotData.qty) <= 0) {
+    errors.qty = 'La quantité doit être positive';
+  }
+  
+  if (!lotData.unit) {
+    errors.unit = "L'unité est requise";
+  }
 
   if (lotData.expiration_date) {
     const exp = new Date(lotData.expiration_date);
-    const today = new Date(); today.setHours(0,0,0,0);
-    if (exp < today) errors.expiration_date = "La date d'expiration ne peut pas être dans le passé";
+    const today = new Date(); 
+    today.setHours(0, 0, 0, 0);
+    if (exp < today) {
+      errors.expiration_date = "La date d'expiration ne peut pas être dans le passé";
+    }
   }
 
   return { isValid: Object.keys(errors).length === 0, errors };
@@ -299,13 +476,23 @@ export const validateLotData = (lotData) => {
 
 export const validateProductData = (productData) => {
   const errors = {};
-  if (!productData.name || productData.name.trim().length < 2) errors.name = 'Le nom doit contenir au moins 2 caractères';
-  if (productData.unit_weight_grams && productData.unit_weight_grams <= 0) errors.unit_weight_grams = 'Le poids unitaire doit être positif';
-  if (productData.density_g_per_ml && productData.density_g_per_ml <= 0) errors.density_g_per_ml = 'La densité doit être positive';
+  
+  if (!productData.name || productData.name.trim().length < 2) {
+    errors.name = 'Le nom doit contenir au moins 2 caractères';
+  }
+  
+  if (productData.unit_weight_grams && productData.unit_weight_grams <= 0) {
+    errors.unit_weight_grams = 'Le poids unitaire doit être positif';
+  }
+  
+  if (productData.density_g_per_ml && productData.density_g_per_ml <= 0) {
+    errors.density_g_per_ml = 'La densité doit être positive';
+  }
+  
   return { isValid: Object.keys(errors).length === 0, errors };
 };
 
-/* ============ “INTELLIGENCE” AIDES ============ */
+/* ============ "INTELLIGENCE" AIDES ============ */
 
 // Normalisation simple (tolérante)
 export const normalize = (s = '') =>
@@ -341,9 +528,14 @@ export const suggestLocationByCategory = (cat = '') => {
 // Estimation simple de DLC depuis une durée (en jours)
 export const estimateExpiryFromShelfLife = (days) => {
   if (!days && days !== 0) return null;
-  const d = new Date();
-  d.setDate(d.getDate() + Number(days));
-  return d.toISOString().slice(0, 10);
+  try {
+    const d = new Date();
+    d.setDate(d.getDate() + Number(days));
+    return d.toISOString().slice(0, 10);
+  } catch (error) {
+    console.error('Erreur estimation DLC:', error);
+    return null;
+  }
 };
 
 // Score de confiance (0–100) + libellé/tone
@@ -361,7 +553,7 @@ export default {
   // Dates
   formatDate, daysUntil, addDays, formatDateISO, isExpired, isExpiringSoon,
   // Conversions
-  UNIT_CONVERSIONS, getUnitType, convertQuantity, formatQuantity,
+  UNIT_CONVERSIONS, getUnitType, convertQuantity, formatQuantity, formatQty,
   // Statuts / stockage / catégories
   getExpirationStatus, getStorageMethodInfo, getCategoryIcon,
   // Recherche
