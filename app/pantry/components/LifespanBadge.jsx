@@ -3,14 +3,7 @@
 
 import { daysUntil, formatDate, getExpirationStatus } from './pantryUtils';
 
-/**
- * Badge de durée de vie (DLC/DSD)
- * Props:
- *  - date: string | Date | null
- *  - size: 'sm' | 'md' (par défaut 'md')
- *  - showDate: boolean (affiche la date formatée en plus du badge)
- */
-export function LifespanBadge({ date, size = 'md', showDate = false }) {
+export default function LifespanBadge({ date, size = 'md', showDate = false }) {
   const d = daysUntil(date);
   const s = getExpirationStatus(d);
 
@@ -35,7 +28,6 @@ export function LifespanBadge({ date, size = 'md', showDate = false }) {
           borderRadius: radius,
           lineHeight: 1,
           minWidth: size === 'sm' ? 0 : 44,
-          textTransform: 'none'
         }}
       >
         {s.label}
@@ -49,5 +41,3 @@ export function LifespanBadge({ date, size = 'md', showDate = false }) {
     </div>
   );
 }
-
-export default LifespanBadge;
