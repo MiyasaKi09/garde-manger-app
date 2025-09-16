@@ -118,10 +118,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_fridge,
             shelf_life_days_freezer
           `)
- codex/modify-searchproducts-function-in-smartaddform.js
- .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}}`)
-          .limit(11);
- main
+          .or(`canonical_name.ilike.%${escaped}%,keywords.cs.{"${escaped}"}`)
+          .limit(12);
 
         if (error) throw error;
 
