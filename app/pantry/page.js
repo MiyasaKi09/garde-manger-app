@@ -76,10 +76,8 @@ function usePantryData() {
             category_id,
             primary_unit,
             category:reference_categories(name, icon, color_hex)
-          ),
-          location:locations (name, icon)
+          )
         `)
-        .eq('user_id', user.id)
         .order('expiration_date', { ascending: true });
 
       if (error) throw error;
@@ -137,8 +135,7 @@ function usePantryData() {
           qty_remaining: item.qty_remaining || 0,
           unit: item.unit || productInfo?.primary_unit || 'unité',
           effective_expiration: item.expiration_date,
-          location_name: item.location?.name || 'Non spécifié',
-          location_id: item.location_id || null,
+          location_name: item.storage_place || 'Non spécifié',
           storage_method: item.storage_method || 'pantry',
           notes: item.notes,
           meta: {
@@ -213,6 +210,7 @@ function usePantryData() {
           qty_remaining: patch.qty_remaining,
           unit: patch.unit,
           expiration_date: patch.effective_expiration,
+          ...(patch.location_name !== undefined ? { storage_place: patch.location_name } : {}),
           display_name: patch.display_name,
           notes: patch.notes
         })
