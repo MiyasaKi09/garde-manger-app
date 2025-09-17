@@ -1078,10 +1078,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     </div>
   );
 }
-          text-align: center;
-          font-size: 0.875rem;
-          font-weight: 500;
-          color: #6b7280;
           position: relative;
         }
 
