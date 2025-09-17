@@ -95,6 +95,28 @@ function usePantryData() {
             category_id,
             primary_unit,
             category:reference_categories(name, icon, color_hex)
+          ),
+          derived_product:derived_products (
+            id,
+            derived_name,
+            cultivar_id,
+            expected_shelf_life_days,
+            package_unit,
+            cultivar:cultivars (
+              id,
+              cultivar_name,
+              canonical_food_id,
+              canonical_food:canonical_foods (
+                id,
+                canonical_name,
+                category_id,
+                primary_unit,
+                shelf_life_days_pantry,
+                shelf_life_days_fridge,
+                shelf_life_days_freezer,
+                category:reference_categories(name, icon, color_hex)
+              )
+            )
           )
         `)
         .order('expiration_date', { ascending: true });
@@ -134,6 +156,33 @@ function usePantryData() {
             }
           };
           categoryInfo = item.cultivar.canonical_food?.category;
+        } else if (item.derived_product) {
+          const parentCultivar = item.derived_product.cultivar;
+          const canonical = parentCultivar?.canonical_food;
+          const canonicalShelf = canonical
+            ? {
+                pantry: canonical.shelf_life_days_pantry,
+                fridge: canonical.shelf_life_days_fridge,
+                freezer: canonical.shelf_life_days_freezer
+              }
+            : { pantry: null, fridge: null, freezer: null };
+
+          const expectedShelf = item.derived_product.expected_shelf_life_days;
+
+          productInfo = {
+            id: item.derived_product.id,
+            name: item.derived_product.derived_name,
+            type: 'derived',
+            cultivar_id: parentCultivar?.id,
+            canonical_food_id: canonical?.id || parentCultivar?.canonical_food_id || null,
+            primary_unit: item.derived_product.package_unit || canonical?.primary_unit || 'unité',
+            shelf_life: {
+              pantry: expectedShelf ?? canonicalShelf.pantry,
+              fridge: expectedShelf ?? canonicalShelf.fridge,
+              freezer: expectedShelf ?? canonicalShelf.freezer
+            }
+          };
+          categoryInfo = parentCultivar?.canonical_food?.category || canonical?.category || null;
         } else if (item.generic_product) {
           productInfo = {
             id: item.generic_product.id,
@@ -146,9 +195,24 @@ function usePantryData() {
 
         const locationName = item.location?.name ?? item.storage_place ?? 'Non spécifié';
 
+        const canonicalFoodId = item.canonical_food_id
+          ?? productInfo?.canonical_food_id
+          ?? (productInfo?.type === 'canonical' ? productInfo?.id : null)
+          ?? item.canonical_food?.id
+          ?? item.cultivar?.canonical_food?.id
+          ?? item.derived_product?.cultivar?.canonical_food?.id
+          ?? null;
+
+        const cultivarId = item.cultivar_id ?? item.cultivar?.id ?? null;
+        const genericProductId = item.generic_product_id ?? item.generic_product?.id ?? null;
+        const derivedProductId = item.derived_product_id ?? item.derived_product?.id ?? null;
+
         return {
           id: item.id,
-          canonical_food_id: productInfo?.canonical_food_id || productInfo?.id,
+          canonical_food_id: canonicalFoodId,
+          cultivar_id: cultivarId,
+          generic_product_id: genericProductId,
+          derived_product_id: derivedProductId,
           display_name: item.display_name || productInfo?.name || 'Produit inconnu',
           category_name: categoryInfo?.name || 'Autre',
           category_icon: categoryInfo?.icon || '📦',
@@ -212,12 +276,14 @@ function usePantryData() {
       if (insertData.expiration_date === null) delete insertData.expiration_date;
 
       // Ajouter la référence au produit selon le type
-      if (payload.canonical_food_id) {
-        insertData.canonical_food_id = payload.canonical_food_id;
+      if (payload.derived_product_id) {
+        insertData.derived_product_id = payload.derived_product_id;
       } else if (payload.cultivar_id) {
         insertData.cultivar_id = payload.cultivar_id;
       } else if (payload.generic_product_id) {
         insertData.generic_product_id = payload.generic_product_id;
+      } else if (payload.canonical_food_id) {
+        insertData.canonical_food_id = payload.canonical_food_id;
       }
 
       const { error } = await supabase
@@ -507,12 +573,34 @@ export default function PantryPage() {
           onDeleteLot={deleteLot}
           onAddLot={(payload)=>{
             if (!activeProduct) return;
-            addLot({
-              ...payload,
-              canonical_food_id: activeProduct.productId,
+
+            const sanitizedPayload = { ...payload };
+            delete sanitizedPayload.canonical_food_id;
+            delete sanitizedPayload.cultivar_id;
+            delete sanitizedPayload.generic_product_id;
+            delete sanitizedPayload.derived_product_id;
+
+            const identifiers = {
+              derived_product_id: activeProduct.derived_product_id ?? activeProduct.productIds?.derived_product_id ?? null,
+              cultivar_id: activeProduct.cultivar_id ?? activeProduct.productIds?.cultivar_id ?? null,
+              generic_product_id: activeProduct.generic_product_id ?? activeProduct.productIds?.generic_product_id ?? null,
+              canonical_food_id: activeProduct.canonical_food_id ?? activeProduct.productIds?.canonical_food_id ?? null
+            };
+
+            const selectionOrder = ['derived_product_id', 'cultivar_id', 'generic_product_id', 'canonical_food_id'];
+            const selectedKey = selectionOrder.find(key => identifiers[key] !== null && identifiers[key] !== undefined) || null;
+
+            const payloadWithProduct = {
+              ...sanitizedPayload,
               display_name: activeProduct.productName,
               category_name: activeProduct.category
-            });
+            };
+
+            if (selectedKey) {
+              payloadWithProduct[selectedKey] = identifiers[selectedKey];
+            }
+
+            addLot(payloadWithProduct);
           }}
         />
       )}
