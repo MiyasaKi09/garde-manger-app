@@ -339,6 +339,10 @@ function usePantryData() {
         insertData.derived_product_id = payload.derived_product_id;
       }
 
+      if (payload.derived_product_id) {
+        insertData.derived_product_id = payload.derived_product_id;
+      }
+
       const { error } = await supabase
         .from('inventory_lots')
         .insert(insertData)
@@ -627,12 +631,30 @@ export default function PantryPage() {
           onAddLot={(payload)=>{
             if (!activeProduct) return;
 
-            const lotPayload = {
-              ...payload,
+
+            const sanitizedPayload = { ...payload };
+            delete sanitizedPayload.canonical_food_id;
+            delete sanitizedPayload.cultivar_id;
+            delete sanitizedPayload.generic_product_id;
+            delete sanitizedPayload.derived_product_id;
+
+            const identifiers = {
+              derived_product_id: activeProduct.derived_product_id ?? activeProduct.productIds?.derived_product_id ?? null,
+              cultivar_id: activeProduct.cultivar_id ?? activeProduct.productIds?.cultivar_id ?? null,
+              generic_product_id: activeProduct.generic_product_id ?? activeProduct.productIds?.generic_product_id ?? null,
+              canonical_food_id: activeProduct.canonical_food_id ?? activeProduct.productIds?.canonical_food_id ?? null
+            };
+
+            const selectionOrder = ['derived_product_id', 'cultivar_id', 'generic_product_id', 'canonical_food_id'];
+            const selectedKey = selectionOrder.find(key => identifiers[key] !== null && identifiers[key] !== undefined) || null;
+
+            const payloadWithProduct = {
+              ...sanitizedPayload,
 
               display_name: activeProduct.productName,
               category_name: activeProduct.category
             };
+
 
             switch (activeProduct.productType) {
               case 'canonical':
@@ -660,6 +682,7 @@ export default function PantryPage() {
                   lotPayload.canonical_food_id = activeProduct.productId;
                 }
                 break;
+
             }
 
             addLot(lotPayload);
