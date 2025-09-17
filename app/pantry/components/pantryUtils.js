@@ -185,13 +185,35 @@ export const groupLotsByProduct = (lots) => {
   
   for (const lot of lots) {
     if (!lot) continue;
-    
-    const productId = lot.canonical_food_id || 
-                     lot.cultivar_id || 
-                     lot.generic_product_id ||
-                     lot.derived_product_id || 
-                     lot.product_id || 
-                     `unknown-${lot.id}`;
+
+    const canonicalId = lot.canonical_food_id ?? null;
+    const cultivarId = lot.cultivar_id ?? null;
+    const genericId = lot.generic_product_id ?? null;
+    const derivedId = lot.derived_product_id ?? null;
+
+    const inferredType = derivedId
+      ? 'derived'
+      : cultivarId
+        ? 'cultivar'
+        : genericId
+          ? 'generic'
+          : canonicalId
+            ? 'canonical'
+            : 'unknown';
+
+    const productType = lot.meta?.product_type && lot.meta.product_type !== 'unknown'
+      ? lot.meta.product_type
+      : inferredType;
+
+    const productKey = derivedId
+      ? `derived:${derivedId}`
+      : cultivarId
+        ? `cultivar:${cultivarId}`
+        : genericId
+          ? `generic:${genericId}`
+          : canonicalId
+            ? `canonical:${canonicalId}`
+            : `unknown-${lot.id}`;
 
     const productName = lot.display_name ||
                        lot.canonical_food?.canonical_name ||
@@ -201,9 +223,21 @@ export const groupLotsByProduct = (lots) => {
                        lot.product?.name ||
                        'Produit inconnu';
 
-    if (!groups.has(productId)) {
-      groups.set(productId, {
-        productId,
+    if (!groups.has(productKey)) {
+      groups.set(productKey, {
+        productKey,
+        productId: derivedId || cultivarId || genericId || canonicalId || productKey,
+        productType,
+        productIds: {
+          canonical_food_id: canonicalId,
+          cultivar_id: cultivarId,
+          generic_product_id: genericId,
+          derived_product_id: derivedId
+        },
+        canonical_food_id: canonicalId,
+        cultivar_id: cultivarId,
+        generic_product_id: genericId,
+        derived_product_id: derivedId,
         productName,
         lots: [],
         totalQuantity: 0,
@@ -217,11 +251,11 @@ export const groupLotsByProduct = (lots) => {
         nextExpiry: null
       });
     }
-    
-    const group = groups.get(productId);
+
+    const group = groups.get(productKey);
     group.lots.push(lot);
     group.totalQuantity += Number(lot.qty_remaining ?? lot.qty ?? 0);
-    
+
     // Mettre à jour la prochaine expiration
     if (lot.expiration_date) {
       if (!group.nextExpiry || lot.expiration_date < group.nextExpiry) {
@@ -230,7 +264,7 @@ export const groupLotsByProduct = (lots) => {
     }
   }
   
-  return Array.from(groups.values()).sort((a, b) => 
+  return Array.from(groups.values()).sort((a, b) =>
     a.productName.localeCompare(b.productName, 'fr', { sensitivity: 'base' })
   );
 };
