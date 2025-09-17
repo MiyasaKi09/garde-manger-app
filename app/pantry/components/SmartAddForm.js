@@ -76,334 +76,155 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       counter: product.shelf_life_days_pantry ?? product.shelf_life_days_fridge
     };
     const days = map[method] ?? map.pantry ?? 7;
-    if (!days || Number.isNaN(days)) return '';
-    const d = new Date();
-    d.setDate(d.getDate() + Number(days));
-    return d.toISOString().slice(0, 10);
+    const date = new Date();
+    date.setDate(date.getDate() + days);
+    return date.toISOString().split('T')[0];
   }, []);
 
   const defaultQtyForUnit = useCallback((unit) => {
-    if (!unit) return '';
-    const u = unit.toLowerCase();
-    if (u === 'u' || u === 'pièce') return 1;
-    if (u === 'kg' || u === 'l') return 1;
-    if (u === 'g' || u === 'ml') return 250;
-    return '';
+    const defaults = { g: 100, kg: 1, ml: 250, l: 1, u: 1, pièce: 1 };
+    return defaults[unit] || 1;
   }, []);
 
-  const searchProducts = useCallback(async (query) => {
-    const q = query.trim();
-    if (!q) {
+  const searchProducts = useCallback(async (q) => {
+    if (!q?.trim() || q.length < 2) {
       setSearchResults([]);
-      setSearchError(null);
       return;
     }
+
     setSearchLoading(true);
     setSearchError(null);
 
     try {
-      if (!supabase) {
-        throw new Error('Connexion à la base de données indisponible');
-      }
+      if (!supabase) throw new Error('Connexion indisponible');
 
-      console.log('Début recherche Supabase pour:', q);
-      const searchTerm = `%${q.replace(/[%_]/g, '\\$&')}%`;
-      console.log('Terme de recherche:', searchTerm);
+      const normalizedQuery = normalize(q);
+      const searchTerms = normalizedQuery.split(' ').filter(term => term.length >= 2);
 
-      // RECHERCHE PARALLÈLE DANS TOUTES LES TABLES
-      const searchPromises = [
-        // 1. CANONICAL FOODS
+      const queries = [];
+
+      // Recherche dans les aliments canoniques
+      queries.push(
         supabase
           .from('canonical_foods')
           .select(`
-            id, canonical_name, category_id, subcategory, primary_unit,
-            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
+            id, canonical_name, primary_unit, category_id,
+            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer,
+            reference_categories!inner(name, icon, color_hex)
           `)
-          .ilike('canonical_name', searchTerm)
-          .limit(15),
+          .or(searchTerms.map(term => `canonical_name.ilike.%${term}%`).join(','))
+          .limit(20)
+      );
 
-        // 2. CULTIVARS
+      // Recherche dans les cultivars
+      queries.push(
         supabase
           .from('cultivars')
           .select(`
             id, cultivar_name, canonical_food_id,
-            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
+            canonical_foods!inner(
+              primary_unit, shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer,
+              reference_categories!inner(name, icon, color_hex)
+            )
           `)
-          .ilike('cultivar_name', searchTerm)
-          .limit(10),
+          .or(searchTerms.map(term => `cultivar_name.ilike.%${term}%`).join(','))
+          .limit(10)
+      );
 
-        // 3. GENERIC PRODUCTS
+      // Recherche dans les produits génériques
+      queries.push(
         supabase
           .from('generic_products')
           .select(`
-            id, name, category_id, subcategory, primary_unit,
-            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
+            id, product_name, primary_unit,
+            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer,
+            reference_categories!inner(name, icon, color_hex)
           `)
-          .ilike('name', searchTerm)
-          .limit(10),
+          .or(searchTerms.map(term => `product_name.ilike.%${term}%`).join(','))
+          .limit(10)
+      );
 
-        // 4. DERIVED PRODUCTS
-        supabase
-          .from('derived_products')
-          .select(`
-            id, derived_name, cultivar_id, expected_shelf_life_days
-          `)
-          .ilike('derived_name', searchTerm)
-          .limit(8)
-      ];
+      const results = await Promise.allSettled(queries);
 
-      const searchResults = await Promise.allSettled(searchPromises);
-      console.log('Résultats bruts des recherches:', searchResults);
+      const allProducts = [];
 
-      // Collecter les IDs pour les relations
-      const categoryIds = new Set();
-      const canonicalIds = new Set();
-      const cultivarIds = new Set();
-
-      // Traiter canonical_foods
-      if (searchResults[0].status === 'fulfilled' && searchResults[0].value.data) {
-        searchResults[0].value.data.forEach(item => {
-          if (item.category_id) categoryIds.add(item.category_id);
-        });
-      }
-
-      // Traiter cultivars
-      if (searchResults[1].status === 'fulfilled' && searchResults[1].value.data) {
-        searchResults[1].value.data.forEach(item => {
-          if (item.canonical_food_id) canonicalIds.add(item.canonical_food_id);
-          cultivarIds.add(item.id);
-        });
-      }
-
-      // Traiter generic_products
-      if (searchResults[2].status === 'fulfilled' && searchResults[2].value.data) {
-        searchResults[2].value.data.forEach(item => {
-          if (item.category_id) categoryIds.add(item.category_id);
-        });
-      }
-
-      // Traiter derived_products
-      if (searchResults[3].status === 'fulfilled' && searchResults[3].value.data) {
-        searchResults[3].value.data.forEach(item => {
-          if (item.cultivar_id) cultivarIds.add(item.cultivar_id);
-        });
-      }
-
-      // Récupérer les données de référence
-      const referencePromises = [];
-
-      if (categoryIds.size > 0) {
-        referencePromises.push(
-          supabase
-            .from('reference_categories')
-            .select('id, name, icon, color_hex')
-            .in('id', Array.from(categoryIds))
+      // Traitement des résultats canoniques
+      if (results[0]?.status === 'fulfilled' && results[0].value?.data) {
+        allProducts.push(
+          ...results[0].value.data.map(item => ({
+            id: item.id,
+            type: 'canonical',
+            name: item.canonical_name,
+            display_name: item.canonical_name,
+            primary_unit: item.primary_unit,
+            shelf_life_days_pantry: item.shelf_life_days_pantry,
+            shelf_life_days_fridge: item.shelf_life_days_fridge,
+            shelf_life_days_freezer: item.shelf_life_days_freezer,
+            category: {
+              name: item.reference_categories?.name || 'Autre',
+              icon: item.reference_categories?.icon || '📦',
+              color: item.reference_categories?.color_hex || '#6b7280'
+            },
+            icon: getCategoryIcon(item.reference_categories?.name),
+            matchScore: similarity(normalizedQuery, normalize(item.canonical_name))
+          }))
         );
-      } else {
-        referencePromises.push(Promise.resolve({ data: [] }));
       }
 
-      if (canonicalIds.size > 0) {
-        referencePromises.push(
-          supabase
-            .from('canonical_foods')
-            .select('id, canonical_name, category_id')
-            .in('id', Array.from(canonicalIds))
+      // Traitement des cultivars
+      if (results[1]?.status === 'fulfilled' && results[1].value?.data) {
+        allProducts.push(
+          ...results[1].value.data.map(item => ({
+            id: item.id,
+            type: 'cultivar',
+            name: item.cultivar_name,
+            display_name: item.cultivar_name,
+            primary_unit: item.canonical_foods?.primary_unit,
+            shelf_life_days_pantry: item.canonical_foods?.shelf_life_days_pantry,
+            shelf_life_days_fridge: item.canonical_foods?.shelf_life_days_fridge,
+            shelf_life_days_freezer: item.canonical_foods?.shelf_life_days_freezer,
+            category: {
+              name: item.canonical_foods?.reference_categories?.name || 'Autre',
+              icon: item.canonical_foods?.reference_categories?.icon || '🌿',
+              color: item.canonical_foods?.reference_categories?.color_hex || '#6b7280'
+            },
+            icon: '🌿',
+            matchScore: similarity(normalizedQuery, normalize(item.cultivar_name))
+          }))
         );
-      } else {
-        referencePromises.push(Promise.resolve({ data: [] }));
       }
 
-      if (cultivarIds.size > 0) {
-        referencePromises.push(
-          supabase
-            .from('cultivars')
-            .select('id, cultivar_name, canonical_food_id')
-            .in('id', Array.from(cultivarIds))
+      // Traitement des produits génériques
+      if (results[2]?.status === 'fulfilled' && results[2].value?.data) {
+        allProducts.push(
+          ...results[2].value.data.map(item => ({
+            id: item.id,
+            type: 'generic',
+            name: item.product_name,
+            display_name: item.product_name,
+            primary_unit: item.primary_unit,
+            shelf_life_days_pantry: item.shelf_life_days_pantry,
+            shelf_life_days_fridge: item.shelf_life_days_fridge,
+            shelf_life_days_freezer: item.shelf_life_days_freezer,
+            category: {
+              name: item.reference_categories?.name || 'Autre',
+              icon: item.reference_categories?.icon || '🛍️',
+              color: item.reference_categories?.color_hex || '#6b7280'
+            },
+            icon: '🛍️',
+            matchScore: similarity(normalizedQuery, normalize(item.product_name))
+          }))
         );
-      } else {
-        referencePromises.push(Promise.resolve({ data: [] }));
       }
 
-      const referenceResults = await Promise.allSettled(referencePromises);
-
-      // Créer les maps de référence
-      const categoriesMap = new Map();
-      const canonicalMap = new Map();
-      const cultivarsMap = new Map();
-
-      if (referenceResults[0].status === 'fulfilled' && referenceResults[0].value.data) {
-        referenceResults[0].value.data.forEach(cat => {
-          categoriesMap.set(cat.id, cat);
-        });
-      }
-
-      if (referenceResults[1].status === 'fulfilled' && referenceResults[1].value.data) {
-        referenceResults[1].value.data.forEach(can => {
-          canonicalMap.set(can.id, can);
-        });
-      }
-
-      if (referenceResults[2].status === 'fulfilled' && referenceResults[2].value.data) {
-        referenceResults[2].value.data.forEach(cult => {
-          cultivarsMap.set(cult.id, cult);
-        });
-      }
-
-      // NORMALISATION ET SCORING DES RÉSULTATS
-      const allResults = [];
-
-      // 1. Traiter canonical_foods
-      if (searchResults[0].status === 'fulfilled' && searchResults[0].value.data) {
-        searchResults[0].value.data.forEach(row => {
-          const name = row.canonical_name || '';
-          const score = fuzzyMatch(q, name);
-
-          if (score > 0.3) {
-            const category = categoriesMap.get(row.category_id);
-            const icon = getCategoryIcon(row.category_id, category?.name, name);
-
-            allResults.push({
-              id: row.id,
-              type: 'canonical',
-              name: capitalizeProduct(name),
-              display_name: capitalizeProduct(name),
-              category: {
-                name: category?.name || row.subcategory || 'Aliment',
-                id: row.category_id,
-                icon: category?.icon
-              },
-              category_id: row.category_id,
-              subcategory: row.subcategory,
-              primary_unit: row.primary_unit || 'g',
-              shelf_life_days_pantry: row.shelf_life_days_pantry,
-              shelf_life_days_fridge: row.shelf_life_days_fridge,
-              shelf_life_days_freezer: row.shelf_life_days_freezer,
-              icon,
-              matchScore: score,
-              sourceTable: 'canonical_foods'
-            });
-          }
-        });
-      }
-
-      // 2. Traiter cultivars
-      if (searchResults[1].status === 'fulfilled' && searchResults[1].value.data) {
-        searchResults[1].value.data.forEach(row => {
-          const name = row.cultivar_name || '';
-          const score = fuzzyMatch(q, name);
-
-          if (score > 0.3) {
-            const canonical = canonicalMap.get(row.canonical_food_id);
-            const category = canonical ? categoriesMap.get(canonical.category_id) : null;
-            const icon = getCategoryIcon(canonical?.category_id, category?.name, name);
-
-            allResults.push({
-              id: row.id,
-              type: 'cultivar',
-              name: capitalizeProduct(name),
-              display_name: capitalizeProduct(name),
-              category: {
-                name: category?.name || 'Variété',
-                id: canonical?.category_id,
-                icon: category?.icon
-              },
-              category_id: canonical?.category_id,
-              subcategory: canonical?.canonical_name,
-              primary_unit: 'pièce',
-              shelf_life_days_pantry: row.shelf_life_days_pantry,
-              shelf_life_days_fridge: row.shelf_life_days_fridge,
-              shelf_life_days_freezer: row.shelf_life_days_freezer,
-              icon,
-              matchScore: score,
-              sourceTable: 'cultivars',
-              canonical_food_id: row.canonical_food_id
-            });
-          }
-        });
-      }
-
-      // 3. Traiter generic_products
-      if (searchResults[2].status === 'fulfilled' && searchResults[2].value.data) {
-        searchResults[2].value.data.forEach(row => {
-          const name = row.name || '';
-          const score = fuzzyMatch(q, name);
-
-          if (score > 0.3) {
-            const category = categoriesMap.get(row.category_id);
-            const icon = getCategoryIcon(row.category_id, category?.name, name);
-
-            allResults.push({
-              id: row.id,
-              type: 'generic',
-              name: capitalizeProduct(name),
-              display_name: capitalizeProduct(name),
-              category: {
-                name: category?.name || row.subcategory || 'Produit',
-                id: row.category_id,
-                icon: category?.icon
-              },
-              category_id: row.category_id,
-              subcategory: row.subcategory,
-              primary_unit: row.primary_unit || 'g',
-              shelf_life_days_pantry: row.shelf_life_days_pantry,
-              shelf_life_days_fridge: row.shelf_life_days_fridge,
-              shelf_life_days_freezer: row.shelf_life_days_freezer,
-              icon,
-              matchScore: score,
-              sourceTable: 'generic_products'
-            });
-          }
-        });
-      }
-
-      // 4. Traiter derived_products
-      if (searchResults[3].status === 'fulfilled' && searchResults[3].value.data) {
-        searchResults[3].value.data.forEach(row => {
-          const name = row.derived_name || '';
-          const score = fuzzyMatch(q, name);
-
-          if (score > 0.3) {
-            const cultivar = cultivarsMap.get(row.cultivar_id);
-            const canonical = cultivar ? canonicalMap.get(cultivar.canonical_food_id) : null;
-            const category = canonical ? categoriesMap.get(canonical.category_id) : null;
-            const icon = getCategoryIcon(canonical?.category_id, category?.name, name);
-
-            allResults.push({
-              id: row.id,
-              type: 'derived',
-              name: capitalizeProduct(name),
-              display_name: capitalizeProduct(name),
-              category: {
-                name: category?.name || 'Transformé',
-                id: canonical?.category_id,
-                icon: category?.icon
-              },
-              category_id: canonical?.category_id,
-              subcategory: cultivar?.cultivar_name,
-              primary_unit: 'g',
-              shelf_life_days_pantry: row.expected_shelf_life_days,
-              shelf_life_days_fridge: row.expected_shelf_life_days,
-              shelf_life_days_freezer: row.expected_shelf_life_days * 10,
-              icon,
-              matchScore: score,
-              sourceTable: 'derived_products',
-              cultivar_id: row.cultivar_id
-            });
-          }
-        });
-      }
-
-      // TRI ET FINALISATION
-      const sortedResults = allResults
+      // Tri par score de correspondance
+      const sortedResults = allProducts
+        .filter(p => p.matchScore > 0.1)
         .sort((a, b) => b.matchScore - a.matchScore)
-        .slice(0, 12);
+        .slice(0, 15);
 
-      // Ajouter l'option "nouveau produit" si nécessaire
-      const hasPerfectMatch = sortedResults.some(r => r.matchScore >= 0.9);
-      const shouldShowNewOption = !hasPerfectMatch && q.length >= 2;
-
-      const finalResults = shouldShowNewOption ? [
+      // Ajout de l'option "créer nouveau produit" si pas de résultats parfaits
+      const finalResults = sortedResults.length === 0 || !sortedResults.some(r => r.matchScore > 0.9) ? [
         ...sortedResults,
         {
           id: 'new-product',
@@ -547,7 +368,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       }
 
       // Insertion du lot
-      const { data: createdLot, error: lotError } = await supabase
+      const { data: newLot, error: lotError } = await supabase
         .from('inventory_lots')
         .insert([lotDataToInsert])
         .select()
@@ -557,17 +378,13 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         throw new Error(`Erreur lors de la création du lot: ${lotError.message}`);
       }
 
-      // Callback de succès
-      if (onLotCreated) {
-        onLotCreated(createdLot);
-      }
-      
-      // Fermer le modal
+      // Succès
+      await onLotCreated?.(newLot);
       onClose();
-      
+
     } catch (error) {
       console.error('Erreur lors de la création:', error);
-      setSearchError(error.message || 'Erreur inconnue lors de la création');
+      alert(error.message || 'Erreur lors de la création du lot');
     } finally {
       setLoading(false);
     }
@@ -576,11 +393,11 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   if (!open) return null;
 
   return (
-    <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="modal-container">
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="header-title">
-            <Plus size={24} />
+            <Plus size={20} />
             Ajouter un produit
           </div>
           <button onClick={onClose} className="close-btn">
@@ -589,649 +406,102 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         </div>
 
         <div className="progress-bar">
-          <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>1. Produit</div>
-          <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>2. Quantité</div>
+          <div className={`progress-step ${step === 1 ? 'active' : ''}`}>
+            1. Recherche
+          </div>
+          <div className={`progress-step ${step === 2 ? 'active' : ''}`}>
+            2. Détails du lot
+          </div>
         </div>
 
         <div className="modal-content">
           {step === 1 && (
-            <div className="search-step">
+            <div>
               <div className="search-wrapper">
-                <Search size={20} className="search-icon" />
+                <Search className="search-icon" size={20} />
                 <input
                   ref={searchInputRef}
                   type="text"
-                  placeholder="Rechercher un produit (ex: tomate, yaourt, riz...)"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Chercher un produit (ex: tomate, yaourt nature...)"
                   className="search-input"
                 />
-                {searchLoading && <div className="loading">🔄</div>}
+                {searchLoading && (
+                  <div className="loading">⏳</div>
+                )}
               </div>
-
-              {searchQuery && (
-                <div className="debug-info">
-                  <small>🔍 Recherche: "{searchQuery}" • {searchResults.length} résultats</small>
-                </div>
-              )}
 
               {searchError && (
                 <div className="error-info">
-                  <small>⚠️ {searchError}</small>
+                  ⚠️ {searchError}
                 </div>
               )}
 
-              {searchResults.length > 0 && (
-                <div className="results-list">
-                  {searchResults.map((product) => (
-                    <div
-                      key={`${product.type}-${product.id}`}
-                      className={`result-item ${product.type === 'new' ? 'new-item' : ''}`}
-                      onClick={() => handleSelectProduct(product)}
-                    >
-                      <div className="result-icon">{product.icon}</div>
-                      <div className="result-content">
-                        <div className="result-name">
-                          {product.display_name}
-                          {product.type === 'new' && <span className="new-badge">Nouveau</span>}
-                          {product.matchScore && product.matchScore >= 0.8 && (
-                            <span className="match-badge">Correspondance parfaite</span>
-                          )}
-                          {product.sourceTable && (
-                            <span className={`source-badge source-${product.type}`}>
-                              {product.type === 'canonical' && '📚'}
-                              {product.type === 'cultivar' && '🌱'}
-                              {product.type === 'generic' && '🏪'}
-                              {product.type === 'derived' && '⚗️'}
-                            </span>
-                          )}
-                        </div>
-                        <div className="result-meta">
-                          <span className="category">{product.category?.name || 'Aliment'}</span>
-                          {product.subcategory && (
-                            <span className="subcategory">• {product.subcategory}</span>
-                          )}
-                          <span className="unit">• {product.primary_unit}</span>
-                        </div>
-                      </div>
+              <div className="results-list">
+                {searchResults.map((result) => (
+                  <div
+                    key={`${result.type}-${result.id}`}
+                    className={`result-item ${result.type === 'new' ? 'new-item' : ''}`}
+                    onClick={() => handleSelectProduct(result)}
+                  >
+                    <div className="result-icon">
+                      {result.icon}
                     </div>
-                  ))}
-                </div>
-              )}
-
-              {searchQuery && searchResults.length === 0 && !searchLoading && (
-                <div className="no-results">
-                  <p>Aucun produit trouvé pour "{searchQuery}"</p>
-                  <small>Essayez un terme plus général ou créez un nouveau produit</small>
-                </div>
-              )}
+                    <div className="result-info">
+                      <div className="result-name">
+                        {result.display_name}
+                        {result.type === 'new' && (
+                          <span className="new-badge">Nouveau</span>
+                        )}
+                      </div>
+                      <div className="result-meta">
+                        {result.category?.name} • Unité: {result.primary_unit || 'g'}
+                      </div>
+                      {result.matchScore > 0 && (
+                        <div className={`confidence-badge confidence-${
+                          result.matchScore > 0.8 ? 'good' : 
+                          result.matchScore > 0.5 ? 'neutral' : 'warning'
+                        }`}>
+                          Correspondance: {Math.round(result.matchScore * 100)}%
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
           {step === 2 && selectedProduct && (
-            <div className="quantity-step">
-              <div className="product-summary">
-                <div className="product-icon">{selectedProduct.icon}</div>
-                <div className="product-info">
-                  <div className="product-name">{selectedProduct.display_name}</div>
-                  <div className="product-source">
-                    {selectedProduct.category?.name} • {selectedProduct.primary_unit}
+            <div>
+              <div className="selected-product">
+                <div className="product-header">
+                  <span className="product-icon">{selectedProduct.icon}</span>
+                  <div>
+                    <h3>{selectedProduct.display_name}</h3>
+                    <p className="product-category">
+                      {selectedProduct.category?.name}
+                    </p>
                   </div>
+                  <div className={`confidence-indicator confidence-${confidence.tone}`}>
+                    <ShieldCheck size={16} />
+                    Confiance: {confidence.label} ({confidence.percent}%)
+                  </div>
+                  <button
+                    onClick={() => setStep(1)}
+                    className="change-btn"
+                  >
+                    Changer
+                  </button>
                 </div>
-                <div className={`confidence-badge confidence-${confidence.tone}`}>
-                  <ShieldCheck size={14} />
-                  {confidence.label} ({confidence.percent}%)
-                </div>
-                <button onClick={() => setStep(1)} className="change-btn">
-                  Changer
-                </button>
               </div>
 
               <div className="lot-form">
                 <div className="form-row">
                   <div className="form-group flex-1">
-                    <label htmlFor="qty">
-                      Quantité actuelle
-                    </label>
+                    <label htmlFor="qty">Quantité restante *</label>
                     <input
-                      id="storage_place"
-                      type="text"
-                      value={lotData.storage_place}
-                      onChange={(e) => setLotData(prev => ({ ...prev, storage_place: e.target.value }))}
-                      className="form-input"
-                      placeholder="Ex: Étagère du haut, Bac à légumes..."
-                    />
-                  </div>
-                  <div className="form-group flex-1">
-                    <label htmlFor="expiry">
-                      <Calendar size={16} />
-                      Date de péremption
-                    </label>
-                    <input
-                      id="expiry"
-                      type="date"
-                      value={lotData.expiration_date}
-                      onChange={(e) => setLotData(prev => ({ ...prev, expiration_date: e.target.value }))}
-                      className="form-input"
-                    />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="notes">Notes (optionnel)</label>
-                  <textarea
-                    id="notes"
-                    rows={3}
-                    value={lotData.notes}
-                    onChange={(e) => setLotData(prev => ({ ...prev, notes: e.target.value }))}
-                    className="form-textarea"
-                    placeholder="Marque, provenance, observations..."
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        <div className="modal-footer">
-          {step === 1 && (
-            <button onClick={onClose} className="btn btn-secondary">
-              Annuler
-            </button>
-          )}
-          {step === 2 && (
-            <>
-              <button onClick={() => setStep(1)} className="btn btn-secondary">
-                Retour
-              </button>
-              <button
-                onClick={handleCreateLot}
-                disabled={loading || !lotData.qty_remaining}
-                className="btn btn-primary"
-              >
-                {loading ? 'Création...' : 'Créer le lot'}
-              </button>
-            </>
-          )}
-        </div>
-      </div>
-
-      <style jsx>{`
-        .modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.6);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 1000;
-          padding: 1rem;
-        }
-
-        .modal-container {
-          background: white;
-          border-radius: 12px;
-          width: 100%;
-          max-width: 600px;
-          max-height: 90vh;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-        }
-
-        .modal-header {
-          padding: 1.5rem;
-          border-bottom: 1px solid #e5e7eb;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-
-        .header-title {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: #111827;
-        }
-
-        .close-btn {
-          background: none;
-          border: none;
-          padding: 0.5rem;
-          cursor: pointer;
-          border-radius: 6px;
-          color: #6b7280;
-          transition: all 0.2s;
-        }
-
-        .close-btn:hover {
-          background: #f3f4f6;
-          color: #374151;
-        }
-
-        .progress-bar {
-          display: flex;
-          padding: 0 1.5rem;
-          background: #f9fafb;
-          border-bottom: 1px solid #e5e7eb;
-        }
-
-        .progress-step {
-          flex: 1;
-          padding: 1rem 0;
-          text-align: center;
-          font-size: 0.875rem;
-          font-weight: 500;
-          color: #6b7280;
-          position: relative;
-        }
-
-        .progress-step.active {
-          color: #059669;
-          font-weight: 600;
-        }
-
-        .progress-step.active::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: #059669;
-        }
-
-        .modal-content {
-          flex: 1;
-          overflow-y: auto;
-          padding: 1.5rem;
-        }
-
-        .search-wrapper {
-          position: relative;
-          margin-bottom: 1rem;
-        }
-
-        .search-icon {
-          position: absolute;
-          left: 1rem;
-          top: 50%;
-          transform: translateY(-50%);
-          color: #6b7280;
-          pointer-events: none;
-        }
-
-        .search-input {
-          width: 100%;
-          padding: 0.75rem 1rem 0.75rem 3rem;
-          border: 2px solid #e5e7eb;
-          border-radius: 8px;
-          font-size: 1rem;
-          transition: border-color 0.2s;
-        }
-
-        .search-input:focus {
-          outline: none;
-          border-color: #059669;
-          box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
-        }
-
-        .loading {
-          position: absolute;
-          right: 1rem;
-          top: 50%;
-          transform: translateY(-50%);
-          animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-          from { transform: translateY(-50%) rotate(0deg); }
-          to { transform: translateY(-50%) rotate(360deg); }
-        }
-
-        .debug-info, .error-info {
-          margin-bottom: 1rem;
-          padding: 0.5rem;
-          border-radius: 6px;
-          font-size: 0.75rem;
-        }
-
-        .debug-info {
-          background: #f0f9ff;
-          color: #0369a1;
-        }
-
-        .error-info {
-          background: #fef2f2;
-          color: #dc2626;
-        }
-
-        .results-list {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-          max-height: 400px;
-          overflow-y: auto;
-        }
-
-        .result-item {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          padding: 1rem;
-          border: 1px solid #e5e7eb;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-
-        .result-item:hover {
-          border-color: #059669;
-          background: #f0fdf4;
-        }
-
-        .result-item.new-item {
-          border-color: #3b82f6;
-          background: #eff6ff;
-        }
-
-        .result-item.new-item:hover {
-          border-color: #2563eb;
-          background: #dbeafe;
-        }
-
-        .result-icon {
-          font-size: 1.5rem;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: white;
-          border-radius: 8px;
-          flex-shrink: 0;
-        }
-
-        .result-content {
-          flex: 1;
-          min-width: 0;
-        }
-
-        .result-name {
-          font-weight: 600;
-          color: #111827;
-          margin-bottom: 0.25rem;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          flex-wrap: wrap;
-        }
-
-        .new-badge, .match-badge {
-          background: #3b82f6;
-          color: white;
-          font-size: 0.625rem;
-          font-weight: 700;
-          padding: 2px 6px;
-          border-radius: 999px;
-        }
-
-        .match-badge {
-          background: #059669;
-        }
-
-        .source-badge {
-          font-size: 0.75rem;
-          padding: 2px 4px;
-          border-radius: 4px;
-        }
-
-        .source-canonical { background: #ddd6fe; }
-        .source-cultivar { background: #dcfce7; }
-        .source-generic { background: #fef3c7; }
-        .source-derived { background: #fed7d7; }
-
-        .result-meta {
-          font-size: 0.875rem;
-          color: #6b7280;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        .category {
-          font-weight: 500;
-        }
-
-        .subcategory, .unit {
-          color: #9ca3af;
-        }
-
-        .no-results {
-          text-align: center;
-          padding: 2rem 1rem;
-          color: #6b7280;
-        }
-
-        .product-summary {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          padding: 1rem;
-          background: #f8fdf8;
-          border: 1px solid #dcf4dc;
-          border-radius: 12px;
-          margin-bottom: 1.5rem;
-        }
-
-        .product-info {
-          flex: 1;
-        }
-
-        .product-name {
-          font-weight: 600;
-          color: #1a3a1a;
-          margin-bottom: 0.25rem;
-        }
-
-        .product-source {
-          font-size: 0.875rem;
-          color: #6b7280;
-        }
-
-        .confidence-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 12px;
-          font-weight: 600;
-          padding: 6px 10px;
-          border-radius: 999px;
-        }
-
-        .confidence-good {
-          background: #ecfdf5;
-          color: #047857;
-          border: 1px solid #a7f3d0;
-        }
-
-        .confidence-neutral {
-          background: #eff6ff;
-          color: #1d4ed8;
-          border: 1px solid #bfdbfe;
-        }
-
-        .confidence-warning {
-          background: #fff7ed;
-          color: #c2410c;
-          border: 1px solid #fed7aa;
-        }
-
-        .change-btn {
-          background: none;
-          border: 1px solid #d1d5db;
-          padding: 4px 12px;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 12px;
-          color: #6b7280;
-          transition: all 0.2s;
-        }
-
-        .change-btn:hover {
-          background: #f9fafb;
-        }
-
-        .lot-form {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .form-row {
-          display: flex;
-          gap: 1rem;
-        }
-
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        .form-group.flex-1 {
-          flex: 1;
-        }
-
-        .form-group label {
-          font-weight: 500;
-          color: #374151;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          font-size: 14px;
-        }
-
-        .form-input, .form-select, .form-textarea {
-          padding: 0.75rem;
-          border: 1px solid #d1d5db;
-          border-radius: 6px;
-          font-size: 1rem;
-          transition: border-color 0.2s;
-        }
-
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-          outline: none;
-          border-color: #059669;
-          box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
-        }
-
-        .storage-methods {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 0.5rem;
-        }
-
-        .storage-method {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 1rem;
-          border: 2px solid #e5e7eb;
-          border-radius: 8px;
-          background: white;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-
-        .storage-method:hover {
-          border-color: #9ca3af;
-        }
-
-        .storage-method.active {
-          border-color: #059669;
-          background: #f0fdf4;
-        }
-
-        .method-icon {
-          font-size: 1.5rem;
-        }
-
-        .method-label {
-          font-size: 0.875rem;
-          font-weight: 500;
-          text-align: center;
-        }
-
-        .modal-footer {
-          padding: 1.5rem;
-          border-top: 1px solid #e5e7eb;
-          display: flex;
-          gap: 1rem;
-          justify-content: flex-end;
-        }
-
-        .btn {
-          padding: 0.75rem 1.5rem;
-          border-radius: 6px;
-          font-weight: 500;
-          cursor: pointer;
-          transition: all 0.2s;
-          border: none;
-          font-size: 1rem;
-        }
-
-        .btn-secondary {
-          background: #f9fafb;
-          color: #374151;
-          border: 1px solid #d1d5db;
-        }
-
-        .btn-secondary:hover {
-          background: #f3f4f6;
-        }
-
-        .btn-primary {
-          background: #059669;
-          color: white;
-        }
-
-        .btn-primary:hover:not(:disabled) {
-          background: #047857;
-        }
-
-        .btn-primary:disabled {
-          background: #9ca3af;
-          cursor: not-allowed;
-        }
-
-        @media (max-width: 640px) {
-          .modal-container {
-            margin: 0;
-            border-radius: 0;
-            height: 100vh;
-            max-height: none;
-          }
-
-          .form-row {
-            flex-direction: column;
-          }
-
-          .storage-methods {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
-    </div>
-  );
-}
                       ref={qtyInputRef}
                       id="qty"
                       type="number"
@@ -1314,3 +584,528 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                       Emplacement précis (optionnel)
                     </label>
                     <input
+                      id="storage_place"
+                      type="text"
+                      value={lotData.storage_place}
+                      onChange={(e) => setLotData(prev => ({ ...prev, storage_place: e.target.value }))}
+                      className="form-input"
+                      placeholder="Étagère du haut, tiroir à légumes..."
+                    />
+                  </div>
+                  <div className="form-group flex-1">
+                    <label htmlFor="expiry">
+                      <Calendar size={16} />
+                      Date de péremption
+                    </label>
+                    <input
+                      id="expiry"
+                      type="date"
+                      value={lotData.expiration_date}
+                      onChange={(e) => setLotData(prev => ({ ...prev, expiration_date: e.target.value }))}
+                      className="form-input"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="notes">Notes (optionnel)</label>
+                  <textarea
+                    id="notes"
+                    rows={3}
+                    value={lotData.notes}
+                    onChange={(e) => setLotData(prev => ({ ...prev, notes: e.target.value }))}
+                    className="form-textarea"
+                    placeholder="Marque, provenance, observations..."
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="modal-footer">
+          {step === 1 && (
+            <button onClick={onClose} className="btn btn-secondary">
+              Annuler
+            </button>
+          )}
+          {step === 2 && (
+            <>
+              <button onClick={() => setStep(1)} className="btn btn-secondary">
+                Retour
+              </button>
+              <button
+                onClick={handleCreateLot}
+                disabled={loading || !lotData.qty_remaining}
+                className="btn btn-primary"
+              >
+                {loading ? 'Création...' : 'Créer le lot'}
+              </button>
+            </>
+          )}
+        </div>
+
+        <style jsx>{`
+          .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+          }
+
+          .modal-container {
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+          }
+
+          .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+
+          .header-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+          }
+
+          .close-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 6px;
+            color: #6b7280;
+            transition: all 0.2s;
+          }
+
+          .close-btn:hover {
+            background: #f3f4f6;
+            color: #374151;
+          }
+
+          .progress-bar {
+            display: flex;
+            padding: 0 1.5rem;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+          }
+
+          .progress-step {
+            flex: 1;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6b7280;
+            position: relative;
+          }
+
+          .progress-step.active {
+            color: #059669;
+            font-weight: 600;
+          }
+
+          .progress-step.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #059669;
+          }
+
+          .modal-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+          }
+
+          .search-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+          }
+
+          .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+            pointer-events: none;
+          }
+
+          .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+          }
+
+          .search-input:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+          }
+
+          .loading {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: spin 1s linear infinite;
+          }
+
+          @keyframes spin {
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
+          }
+
+          .debug-info, .error-info {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+          }
+
+          .debug-info {
+            background: #f0f9ff;
+            color: #0369a1;
+          }
+
+          .error-info {
+            background: #fef2f2;
+            color: #dc2626;
+          }
+
+          .results-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+          }
+
+          .result-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+          }
+
+          .result-item:hover {
+            border-color: #059669;
+            background: #f0fdf4;
+          }
+
+          .result-item.new-item {
+            border-color: #3b82f6;
+            background: #eff6ff;
+          }
+
+          .result-item.new-item:hover {
+            border-color: #2563eb;
+            background: #dbeafe;
+          }
+
+          .result-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: #f3f4f6;
+          }
+
+          .result-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+          }
+
+          .result-name {
+            font-weight: 600;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+
+          .new-badge {
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 0.125rem 0.5rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+          }
+
+          .result-meta {
+            font-size: 0.875rem;
+            color: #6b7280;
+          }
+
+          .confidence-badge {
+            font-size: 0.75rem;
+            padding: 0.125rem 0.5rem;
+            border-radius: 999px;
+          }
+
+          .confidence-good {
+            background: #ecfdf5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+          }
+
+          .confidence-neutral {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+          }
+
+          .confidence-warning {
+            background: #fff7ed;
+            color: #c2410c;
+            border: 1px solid #fed7aa;
+          }
+
+          .selected-product {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+          }
+
+          .product-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+          }
+
+          .product-icon {
+            font-size: 2rem;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: white;
+            border: 2px solid #e5e7eb;
+          }
+
+          .product-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: #111827;
+          }
+
+          .product-category {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #6b7280;
+          }
+
+          .confidence-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-left: auto;
+          }
+
+          .change-btn {
+            background: none;
+            border: 1px solid #d1d5db;
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            color: #6b7280;
+            transition: all 0.2s;
+          }
+
+          .change-btn:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+          }
+
+          .lot-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+
+          .form-row {
+            display: flex;
+            gap: 1rem;
+          }
+
+          .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+          }
+
+          .form-group.flex-1 {
+            flex: 1;
+          }
+
+          .form-group label {
+            font-weight: 500;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 14px;
+          }
+
+          .form-input, .form-select, .form-textarea {
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+          }
+
+          .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+          }
+
+          .storage-methods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+          }
+
+          .storage-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+          }
+
+          .storage-method:hover {
+            border-color: #9ca3af;
+          }
+
+          .storage-method.active {
+            border-color: #059669;
+            background: #f0fdf4;
+          }
+
+          .method-icon {
+            font-size: 1.5rem;
+          }
+
+          .method-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-align: center;
+          }
+
+          .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+          }
+
+          .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-size: 1rem;
+          }
+
+          .btn-secondary {
+            background: #f9fafb;
+            color: #374151;
+            border: 1px solid #d1d5db;
+          }
+
+          .btn-secondary:hover {
+            background: #f3f4f6;
+          }
+
+          .btn-primary {
+            background: #059669;
+            color: white;
+          }
+
+          .btn-primary:hover:not(:disabled) {
+            background: #047857;
+          }
+
+          .btn-primary:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+          }
+
+          @media (max-width: 640px) {
+            .modal-container {
+              margin: 0;
+              border-radius: 0;
+              height: 100vh;
+              max-height: none;
+            }
+
+            .form-row {
+              flex-direction: column;
+            }
+
+            .storage-methods {
+              grid-template-columns: 1fr;
+            }
+          }
+        `}</style>
+      </div>
+    );
+  }
+}
