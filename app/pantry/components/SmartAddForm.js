@@ -222,7 +222,18 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         throw new Error('Connexion à la base de données indisponible');
       }
 
-      const searchTerm = `%${q.replace(/[%_]/g, '\\$&')}%`;
+      console.log('Début recherche Supabase pour:', q);
+      const searchTerm = `%${q.replace(/[%_]/g, '\\      console.log('Début recherche Supabase pour:', q);
+      const searchTerm = `%${q.replace(/[%_]/g, '\\    try {
+            console.log('Début recherche Supabase pour:', q);
+      const searchTerm = `%${q.replace(/[%_]/g, '\\if (!supabase) {
+        throw new Error('Connexion à la base de données indisponible');
+      }
+
+      const searchTerm = `%${q.replace(/[%_]/g, '\\$&')}%`;')}%`;
+      console.log('Terme de recherche:', searchTerm);')}%`;
+      console.log('Terme de recherche:', searchTerm);')}%`;
+      console.log('Terme de recherche:', searchTerm);
 
       // RECHERCHE PARALLÈLE DANS TOUTES LES TABLES
       const searchPromises = [
@@ -267,6 +278,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       ];
 
       const searchResults = await Promise.allSettled(searchPromises);
+      console.log('Résultats bruts des recherches:', searchResults);
 
       // Collecter les IDs pour les relations
       const categoryIds = new Set();
