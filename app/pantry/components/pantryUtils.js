@@ -222,8 +222,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         throw new Error('Connexion à la base de données indisponible');
       }
 
-      console.log('Début recherche Supabase pour:', q);
-      const searchTerm = `%${q.replace(/[%_]/g, '\\    try {
+      
       if (!supabase) {
         throw new Error('Connexion à la base de données indisponible');
       }
