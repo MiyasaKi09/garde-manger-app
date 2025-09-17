@@ -222,10 +222,22 @@ export const groupLotsByProduct = (lots) => {
     group.lots.push(lot);
     group.totalQuantity += Number(lot.qty_remaining ?? lot.qty ?? 0);
     
-    // Mettre à jour la prochaine expiration
-    if (lot.expiration_date) {
-      if (!group.nextExpiry || lot.expiration_date < group.nextExpiry) {
-        group.nextExpiry = lot.expiration_date;
+    // Mettre à jour la prochaine expiration en privilégiant effective_expiration
+    const lotExpiry = lot.effective_expiration ?? lot.expiration_date;
+    if (lotExpiry) {
+      if (!group.nextExpiry) {
+        group.nextExpiry = lotExpiry;
+      } else {
+        const candidateTime = new Date(lotExpiry).getTime();
+        const currentTime = new Date(group.nextExpiry).getTime();
+
+        if (Number.isNaN(candidateTime) || Number.isNaN(currentTime)) {
+          if (lotExpiry < group.nextExpiry) {
+            group.nextExpiry = lotExpiry;
+          }
+        } else if (candidateTime < currentTime) {
+          group.nextExpiry = lotExpiry;
+        }
       }
     }
   }
