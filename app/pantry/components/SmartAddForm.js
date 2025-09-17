@@ -720,4 +720,206 @@ export default function SmartAddForm({
             >
               <option value="pièce">Pièce</option>
               <option value="kg">Kg</option>
-              <option value="g">
+              <option value="g">Grammes</option>
+              <option value="L">Litres</option>
+              <option value="mL">mL</option>
+              <option value="boîte">Boîte</option>
+              <option value="sachet">Sachet</option>
+              <option value="bouteille">Bouteille</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Emplacement */}
+        <div className="form-group">
+          <label className="form-label">
+            <MapPin className="inline w-4 h-4 mr-1" />
+            Emplacement
+          </label>
+          <select
+            value={formData.location_id}
+            onChange={(e) => setFormData(prev => ({ 
+              ...prev, 
+              location_id: e.target.value 
+            }))}
+            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-green-500"
+            required
+          >
+            {locations.map(loc => (
+              <option key={loc.id} value={loc.id}>
+                {loc.icon} {loc.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Dates */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="form-group">
+            <label className="form-label">
+              <Calendar className="inline w-4 h-4 mr-1" />
+              Date d'achat
+            </label>
+            <input
+              type="date"
+              value={formData.purchase_date}
+              onChange={(e) => setFormData(prev => ({ 
+                ...prev, 
+                purchase_date: e.target.value 
+              }))}
+              className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">
+              <ShieldCheck className="inline w-4 h-4 mr-1" />
+              Date d'expiration
+            </label>
+            <input
+              type="date"
+              value={formData.expiry_date}
+              onChange={(e) => setFormData(prev => ({ 
+                ...prev, 
+                expiry_date: e.target.value 
+              }))}
+              min={new Date().toISOString().split('T')[0]}
+              className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-green-500"
+              placeholder="Optionnel"
+            />
+          </div>
+        </div>
+
+        {/* Suggestion de durée de conservation */}
+        {formData.product && !formData.expiry_date && (
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+            <p className="text-sm text-blue-700">
+              💡 Durée de conservation suggérée pour {formData.product.name}:
+            </p>
+            <div className="flex gap-4 mt-2 text-xs">
+              {formData.product.shelf_life_days_pantry && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const date = new Date();
+                    date.setDate(date.getDate() + formData.product.shelf_life_days_pantry);
+                    setFormData(prev => ({
+                      ...prev,
+                      expiry_date: date.toISOString().split('T')[0]
+                    }));
+                  }}
+                  className="px-2 py-1 bg-white border border-blue-300 rounded hover:bg-blue-100"
+                >
+                  🏠 Garde-manger: {formData.product.shelf_life_days_pantry}j
+                </button>
+              )}
+              {formData.product.shelf_life_days_fridge && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const date = new Date();
+                    date.setDate(date.getDate() + formData.product.shelf_life_days_fridge);
+                    setFormData(prev => ({
+                      ...prev,
+                      expiry_date: date.toISOString().split('T')[0]
+                    }));
+                  }}
+                  className="px-2 py-1 bg-white border border-blue-300 rounded hover:bg-blue-100"
+                >
+                  ❄️ Frigo: {formData.product.shelf_life_days_fridge}j
+                </button>
+              )}
+              {formData.product.shelf_life_days_freezer && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const date = new Date();
+                    date.setDate(date.getDate() + formData.product.shelf_life_days_freezer);
+                    setFormData(prev => ({
+                      ...prev,
+                      expiry_date: date.toISOString().split('T')[0]
+                    }));
+                  }}
+                  className="px-2 py-1 bg-white border border-blue-300 rounded hover:bg-blue-100"
+                >
+                  🧊 Congélateur: {formData.product.shelf_life_days_freezer}j
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Actions */}
+        <div className="flex gap-3 pt-4">
+          <button
+            type="submit"
+            disabled={!formData.product || isSearching}
+            className="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            <Plus className="w-4 h-4" />
+            Ajouter au stock
+          </button>
+          
+          <button
+            type="button"
+            onClick={onCancel}
+            className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      </form>
+
+      <style jsx>{`
+        .smart-add-form {
+          background: white;
+          border-radius: 12px;
+          padding: 1.5rem;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .form-label {
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: #374151;
+          margin-bottom: 0.5rem;
+          display: flex;
+          align-items: center;
+        }
+
+        .space-y-4 > * + * {
+          margin-top: 1rem;
+        }
+
+        input:focus,
+        select:focus {
+          outline: none;
+        }
+
+        .error-card {
+          background: #fef2f2;
+          border: 1px solid #fecaca;
+          border-radius: 8px;
+          padding: 1rem;
+          color: #991b1b;
+        }
+
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .animate-spin {
+          animation: spin 1s linear infinite;
+        }
+      `}</style>
+    </div>
+  );
+}
