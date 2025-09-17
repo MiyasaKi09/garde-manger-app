@@ -721,19 +721,3 @@ export default function SmartAddForm({
               <option value="pièce">Pièce</option>
               <option value="kg">Kg</option>
               <option value="g">
-
-                useEffect(() => {
-  console.log('🔍 SearchQuery changed:', searchQuery);
-  const performSearch = async () => {
-    if (!searchQuery || searchQuery.trim().length < 2) {
-      console.log('❌ Query too short, clearing results');
-      setSearchResults([]);
-      return;
-    }
-    
-    console.log('✅ Starting search for:', searchQuery);
-    // ... le reste du code de recherche
-  };
-  
-  performSearch();
-}, [searchQuery]);
