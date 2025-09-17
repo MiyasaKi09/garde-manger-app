@@ -185,6 +185,7 @@ export const groupLotsByProduct = (lots) => {
 
   for (const lot of lots) {
     if (!lot) continue;
+
     const productType = lot.product_type || lot.meta?.product_type || 'unknown';
 
     const canonicalId = lot.canonical_food_id
@@ -274,6 +275,7 @@ export const groupLotsByProduct = (lots) => {
       groups.set(productKey, {
         productId,
         productKey,
+
         productName,
         productType,
         canonicalId: canonicalId ?? null,
@@ -294,6 +296,7 @@ export const groupLotsByProduct = (lots) => {
     group.lots.push(lot);
     group.totalQuantity += Number(lot.qty_remaining ?? lot.qty ?? 0);
 
+
     if ((!group.category || group.category === 'Autre') && categoryInfo.name) {
       group.category = categoryInfo.name;
     }
@@ -311,6 +314,7 @@ export const groupLotsByProduct = (lots) => {
       }
     }
   }
+
 
   return Array.from(groups.values()).sort((a, b) =>
     a.productName.localeCompare(b.productName, 'fr', { sensitivity: 'base' })

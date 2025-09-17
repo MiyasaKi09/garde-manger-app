@@ -234,6 +234,18 @@ function usePantryData() {
 
         const locationName = item.location?.name ?? item.storage_place ?? 'Non spécifié';
 
+        const canonicalFoodId = item.canonical_food_id
+          ?? productInfo?.canonical_food_id
+          ?? (productInfo?.type === 'canonical' ? productInfo?.id : null)
+          ?? item.canonical_food?.id
+          ?? item.cultivar?.canonical_food?.id
+          ?? item.derived_product?.cultivar?.canonical_food?.id
+          ?? null;
+
+        const cultivarId = item.cultivar_id ?? item.cultivar?.id ?? null;
+        const genericProductId = item.generic_product_id ?? item.generic_product?.id ?? null;
+        const derivedProductId = item.derived_product_id ?? item.derived_product?.id ?? null;
+
         return {
           id: item.id,
 
@@ -241,8 +253,10 @@ function usePantryData() {
           cultivar_id: cultivarId,
           generic_product_id: genericProductId,
           derived_product_id: derivedProductId,
+
           product_type: productType,
           display_name: item.display_name || productName || 'Produit inconnu',
+
 
           category_name: categoryInfo?.name || 'Autre',
           category_icon: categoryInfo?.icon || '📦',
@@ -305,14 +319,18 @@ function usePantryData() {
       if (insertData.expiration_date === null) delete insertData.expiration_date;
 
       // Ajouter la référence au produit selon le type
+
       if (payload.canonical_food_id) {
         insertData.canonical_food_id = payload.canonical_food_id;
       }
       if (payload.cultivar_id) {
+
         insertData.cultivar_id = payload.cultivar_id;
       }
       if (payload.generic_product_id) {
         insertData.generic_product_id = payload.generic_product_id;
+      } else if (payload.canonical_food_id) {
+        insertData.canonical_food_id = payload.canonical_food_id;
       }
       if (payload.derived_product_id) {
         insertData.derived_product_id = payload.derived_product_id;
@@ -608,6 +626,7 @@ export default function PantryPage() {
 
             const lotPayload = {
               ...payload,
+
               display_name: activeProduct.productName,
               category_name: activeProduct.category
             };
@@ -641,6 +660,7 @@ export default function PantryPage() {
             }
 
             addLot(lotPayload);
+
           }}
         />
       )}
