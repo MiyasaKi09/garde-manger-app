@@ -1077,9 +1077,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       `}</style>
     </div>
   );
-} {
-          flex: 1;
-          padding: 1rem 0;
+}
           text-align: center;
           font-size: 0.875rem;
           font-weight: 500;
