@@ -204,6 +204,21 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     setSearchError(null);
 
     try {
+      if (!supabase) {
+        throw new Error('Connexion à la base de données indisponible');
+      }
+
+      const searchTerm = `%${q.replace(/[%_]/g, '\\  const searchProducts = useCallback(async (query) => {
+    const q = query.trim();
+    if (!q) {
+      setSearchResults([]);
+      setSearchError(null);
+      return;
+    }
+    setSearchLoading(true);
+    setSearchError(null);
+
+    try {
       const searchTerms = [
         q, normalize(q), q.toLowerCase(),
         q.endsWith('s') ? q.slice(0, -1) : q + 's',
@@ -240,195 +255,110 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         supabase.from('derived_products').select(`
           id, derived_name, cultivar_id, expected_shelf_life_days, notes
         `).ilike('derived_name', `%${q.replace(/[%_]/g, '\\$&')}%`).limit(10)
-      ]);
+      ]);')}%`;
 
-      // Collecter les IDs pour les relations
-      const allCategoryIds = new Set();
-      const allCanonicalIds = new Set();
-      const allCultivarIds = new Set();
+      // Recherche simplifiée dans canonical_foods uniquement pour commencer
+      const { data: canonicalFoods, error: canonicalError } = await supabase
+        .from('canonical_foods')
+        .select(`
+          id, canonical_name, category_id, subcategory, primary_unit,
+          shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
+        `)
+        .ilike('canonical_name', searchTerm)
+        .limit(10);
 
-      searches.forEach((result, index) => {
-        if (result.status === 'fulfilled' && result.value.data) {
-          result.value.data.forEach(item => {
-            if (index === 0 && item.category_id) allCategoryIds.add(item.category_id);
-            else if (index === 1) {
-              if (item.canonical_food_id) allCanonicalIds.add(item.canonical_food_id);
-              allCultivarIds.add(item.id);
-            }
-            else if (index === 2 && item.category_id) allCategoryIds.add(item.category_id);
-            else if (index === 3 && item.cultivar_id) allCultivarIds.add(item.cultivar_id);
-          });
+      if (canonicalError) {
+        console.error('Erreur recherche canonical_foods:', canonicalError);
+        throw new Error(`Erreur de recherche: ${canonicalError.message}`);
+      }
+
+      // Récupérer les catégories si nécessaire
+      const categoryIds = [...new Set(canonicalFoods?.map(item => item.category_id).filter(Boolean))];
+      let categoriesMap = new Map();
+
+      if (categoryIds.length > 0) {
+        const { data: categories, error: catError } = await supabase
+          .from('reference_categories')
+          .select('id, name, icon')
+          .in('id', categoryIds);
+
+        if (!catError && categories) {
+          categories.forEach(cat => categoriesMap.set(cat.id, cat));
         }
-      });
-
-      // Récupérer les données de référence
-      const [categoriesResult, canonicalResult, cultivarsResult] = await Promise.allSettled([
-        allCategoryIds.size > 0 ? supabase.from('reference_categories')
-          .select('id, name, icon, color_hex').in('id', Array.from(allCategoryIds)) 
-          : Promise.resolve({ data: [] }),
-        allCanonicalIds.size > 0 ? supabase.from('canonical_foods')
-          .select('id, canonical_name, category_id').in('id', Array.from(allCanonicalIds))
-          : Promise.resolve({ data: [] }),
-        allCultivarIds.size > 0 ? supabase.from('cultivars')
-          .select('id, cultivar_name, canonical_food_id').in('id', Array.from(allCultivarIds))
-          : Promise.resolve({ data: [] })
-      ]);
-
-      const categoriesMap = new Map();
-      const canonicalMap = new Map();
-      const cultivarsMap = new Map();
-
-      if (categoriesResult.status === 'fulfilled' && categoriesResult.value.data) {
-        categoriesResult.value.data.forEach(cat => categoriesMap.set(cat.id, cat));
-      }
-      if (canonicalResult.status === 'fulfilled' && canonicalResult.value.data) {
-        canonicalResult.value.data.forEach(can => canonicalMap.set(can.id, can));
-      }
-      if (cultivarsResult.status === 'fulfilled' && cultivarsResult.value.data) {
-        cultivarsResult.value.data.forEach(cult => cultivarsMap.set(cult.id, cult));
       }
 
-      const allResults = [];
-
-      // Traiter canonical_foods
-      if (searches[0].status === 'fulfilled' && searches[0].value.data) {
-        searches[0].value.data.forEach(row => {
+      // Transformer les résultats
+      const results = [];
+      if (canonicalFoods && canonicalFoods.length > 0) {
+        canonicalFoods.forEach(row => {
           const name = row.canonical_name || '';
-          const score = Math.max(
-            fuzzyMatch(q, name),
-            fuzzyMatch(q, row.subcategory || '') * 0.8,
-            fuzzyMatch(q, (row.keywords || []).join(' ')) * 0.6
-          );
-
-          if (score > 0) {
-            const category = categoriesMap.get(row.category_id);
-            const icon = getCategoryIcon(row.category_id, category?.name, name);
-
-            allResults.push({
-              id: row.id, type: 'canonical', name: capitalizeProduct(name),
-              display_name: capitalizeProduct(name),
-              category: { name: category?.name || 'Aliment', id: row.category_id, icon: category?.icon },
-              category_id: row.category_id, subcategory: row.subcategory,
-              primary_unit: row.primary_unit || 'g',
-              shelf_life_days_pantry: row.shelf_life_days_pantry,
-              shelf_life_days_fridge: row.shelf_life_days_fridge,
-              shelf_life_days_freezer: row.shelf_life_days_freezer,
-              icon, matchScore: score, sourceTable: 'canonical_foods'
-            });
-          }
-        });
-      }
-
-      // Traiter cultivars
-      if (searches[1].status === 'fulfilled' && searches[1].value.data) {
-        searches[1].value.data.forEach(row => {
-          const name = row.cultivar_name || '';
-          const score = Math.max(
-            fuzzyMatch(q, name),
-            fuzzyMatch(q, (row.synonyms || []).join(' ')) * 0.8
-          );
-
-          if (score > 0) {
-            const canonical = canonicalMap.get(row.canonical_food_id);
-            const category = canonical ? categoriesMap.get(canonical.category_id) : null;
-            const icon = getCategoryIcon(canonical?.category_id, category?.name, name);
-
-            allResults.push({
-              id: row.id, type: 'cultivar', name: capitalizeProduct(name),
-              display_name: capitalizeProduct(name),
-              category: { name: category?.name || 'Aliment', id: canonical?.category_id, icon: category?.icon },
-              category_id: canonical?.category_id, subcategory: canonical?.canonical_name,
-              primary_unit: 'pièce',
-              shelf_life_days_pantry: row.shelf_life_days_pantry,
-              shelf_life_days_fridge: row.shelf_life_days_fridge,
-              shelf_life_days_freezer: row.shelf_life_days_freezer,
-              icon, matchScore: score, sourceTable: 'cultivars',
-              canonical_food_id: row.canonical_food_id
-            });
-          }
-        });
-      }
-
-      // Traiter generic_products
-      if (searches[2].status === 'fulfilled' && searches[2].value.data) {
-        searches[2].value.data.forEach(row => {
-          const name = row.name || '';
-          const score = Math.max(
-            fuzzyMatch(q, name),
-            fuzzyMatch(q, row.subcategory || '') * 0.8,
-            fuzzyMatch(q, (row.keywords || []).join(' ')) * 0.6
-          );
-
-          if (score > 0) {
-            const category = categoriesMap.get(row.category_id);
-            const icon = getCategoryIcon(row.category_id, category?.name, name);
-
-            allResults.push({
-              id: row.id, type: 'generic', name: capitalizeProduct(name),
-              display_name: capitalizeProduct(name),
-              category: { name: category?.name || 'Aliment', id: row.category_id, icon: category?.icon },
-              category_id: row.category_id, subcategory: row.subcategory,
-              primary_unit: row.primary_unit || 'g',
-              shelf_life_days_pantry: row.shelf_life_days_pantry,
-              shelf_life_days_fridge: row.shelf_life_days_fridge,
-              shelf_life_days_freezer: row.shelf_life_days_freezer,
-              icon, matchScore: score, sourceTable: 'generic_products'
-            });
-          }
-        });
-      }
-
-      // Traiter derived_products
-      if (searches[3].status === 'fulfilled' && searches[3].value.data) {
-        searches[3].value.data.forEach(row => {
-          const name = row.derived_name || '';
           const score = fuzzyMatch(q, name);
+          
+          if (score > 0.3) {
+            const category = categoriesMap.get(row.category_id);
+            const icon = getCategoryIcon(row.category_id, category?.name, name);
 
-          if (score > 0) {
-            const cultivar = cultivarsMap.get(row.cultivar_id);
-            const canonical = cultivar ? canonicalMap.get(cultivar.canonical_food_id) : null;
-            const category = canonical ? categoriesMap.get(canonical.category_id) : null;
-            const icon = getCategoryIcon(canonical?.category_id, category?.name, name);
-
-            allResults.push({
-              id: row.id, type: 'derived', name: capitalizeProduct(name),
+            results.push({
+              id: row.id,
+              type: 'canonical',
+              name: capitalizeProduct(name),
               display_name: capitalizeProduct(name),
-              category: { name: category?.name || 'Aliment', id: canonical?.category_id, icon: category?.icon },
-              category_id: canonical?.category_id, subcategory: cultivar?.cultivar_name,
-              primary_unit: 'g',
-              shelf_life_days_pantry: row.expected_shelf_life_days,
-              shelf_life_days_fridge: row.expected_shelf_life_days,
-              shelf_life_days_freezer: row.expected_shelf_life_days * 10,
-              icon, matchScore: score, sourceTable: 'derived_products',
-              cultivar_id: row.cultivar_id
+              category: { 
+                name: category?.name || row.subcategory || 'Aliment', 
+                id: row.category_id, 
+                icon: category?.icon 
+              },
+              category_id: row.category_id,
+              subcategory: row.subcategory,
+              primary_unit: row.primary_unit || 'g',
+              shelf_life_days_pantry: row.shelf_life_days_pantry,
+              shelf_life_days_fridge: row.shelf_life_days_fridge,
+              shelf_life_days_freezer: row.shelf_life_days_freezer,
+              icon,
+              matchScore: score,
+              sourceTable: 'canonical_foods'
             });
           }
         });
       }
 
-      const sortedResults = allResults.sort((a, b) => b.matchScore - a.matchScore).slice(0, 10);
+      // Trier par score
+      const sortedResults = results.sort((a, b) => b.matchScore - a.matchScore);
+
+      // Ajouter l'option "nouveau produit" si pas de correspondance parfaite
       const hasPerfectMatch = sortedResults.some(r => r.matchScore >= 0.9);
       const shouldShowNewOption = !hasPerfectMatch && q.length >= 2;
 
       const finalResults = shouldShowNewOption ? [
         ...sortedResults,
         {
-          id: 'new-product', type: 'new', name: capitalizeProduct(q),
+          id: 'new-product',
+          type: 'new',
+          name: capitalizeProduct(q),
           display_name: capitalizeProduct(q),
-          category: { name: 'À définir', icon: '📦' }, primary_unit: 'g',
-          icon: '➕', matchScore: 0
+          category: { name: 'À définir', icon: '📦' },
+          primary_unit: 'g',
+          icon: '➕',
+          matchScore: 0
         }
       ] : sortedResults;
 
       setSearchResults(finalResults);
+
     } catch (e) {
-      console.error('search error', e);
+      console.error('Erreur de recherche:', e);
       setSearchError(e?.message || 'Erreur lors de la recherche');
+      
+      // En cas d'erreur, proposer au moins l'option nouveau produit
       setSearchResults([{
-        id: 'new-product', type: 'new', name: capitalizeProduct(q),
+        id: 'new-product',
+        type: 'new',
+        name: capitalizeProduct(q),
         display_name: capitalizeProduct(q),
-        category: { name: 'À définir', icon: '📦' }, primary_unit: 'g',
-        icon: '➕', matchScore: 0
+        category: { name: 'À définir', icon: '📦' },
+        primary_unit: 'g',
+        icon: '➕',
+        matchScore: 0
       }]);
     } finally {
       setSearchLoading(false);
@@ -478,53 +408,101 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     
     setLoading(true);
     try {
+      if (!supabase) {
+        throw new Error('Connexion à la base de données indisponible');
+      }
+
       let productToUse = selectedProduct;
 
+      // Si c'est un nouveau produit, le créer d'abord
       if (selectedProduct.type === 'new') {
+        console.log('Création d\'un nouveau produit:', selectedProduct.name);
+        
         const { data: newProduct, error: createError } = await supabase
           .from('canonical_foods')
           .insert([{
-            canonical_name: selectedProduct.name, primary_unit: lotData.unit,
-            shelf_life_days_pantry: 7, shelf_life_days_fridge: 14,
+            canonical_name: selectedProduct.name,
+            primary_unit: lotData.unit || 'g',
+            shelf_life_days_pantry: 7,
+            shelf_life_days_fridge: 14,
             shelf_life_days_freezer: 180
           }])
-          .select().single();
+          .select()
+          .single();
 
-        if (createError) throw createError;
+        if (createError) {
+          console.error('Erreur création produit:', createError);
+          throw new Error(`Erreur lors de la création du produit: ${createError.message}`);
+        }
+
+        console.log('Nouveau produit créé:', newProduct);
         productToUse = { ...selectedProduct, id: newProduct.id, type: 'canonical' };
       }
 
+      // Préparation des données du lot
+      const qtyRemaining = parseFloat(lotData.qty_remaining) || 0;
+      const initialQty = parseFloat(lotData.initial_qty || lotData.qty_remaining) || qtyRemaining;
+
+      if (qtyRemaining <= 0) {
+        throw new Error('La quantité doit être supérieure à 0');
+      }
+
       const lotDataToInsert = {
-        qty_remaining: parseFloat(lotData.qty_remaining) || 0,
-        initial_qty: parseFloat(lotData.initial_qty || lotData.qty_remaining) || 0,
-        unit: lotData.unit || 'g', storage_method: lotData.storage_method || 'pantry',
+        qty_remaining: qtyRemaining,
+        initial_qty: initialQty,
+        unit: lotData.unit || 'g',
+        storage_method: lotData.storage_method || 'pantry',
         storage_place: lotData.storage_place || null,
         expiration_date: lotData.expiration_date || null,
         notes: lotData.notes || null,
         acquired_on: new Date().toISOString().split('T')[0]
       };
 
+      // Ajouter l'ID du produit selon son type
       switch (productToUse.type) {
-        case 'canonical': lotDataToInsert.canonical_food_id = productToUse.id; break;
-        case 'cultivar': lotDataToInsert.cultivar_id = productToUse.id; break;
-        case 'generic': lotDataToInsert.generic_product_id = productToUse.id; break;
-        case 'derived': lotDataToInsert.derived_product_id = productToUse.id; break;
-        default: throw new Error('Type de produit non reconnu');
+        case 'canonical':
+          lotDataToInsert.canonical_food_id = productToUse.id;
+          break;
+        case 'cultivar':
+          lotDataToInsert.cultivar_id = productToUse.id;
+          break;
+        case 'generic':
+          lotDataToInsert.generic_product_id = productToUse.id;
+          break;
+        case 'derived':
+          lotDataToInsert.derived_product_id = productToUse.id;
+          break;
+        default:
+          throw new Error(`Type de produit non reconnu: ${productToUse.type}`);
       }
 
-      const { data, error } = await supabase
+      console.log('Données du lot à insérer:', lotDataToInsert);
+
+      // Insertion du lot
+      const { data: createdLot, error: lotError } = await supabase
         .from('inventory_lots')
         .insert([lotDataToInsert])
         .select()
         .single();
 
-      if (error) throw error;
+      if (lotError) {
+        console.error('Erreur création lot:', lotError);
+        throw new Error(`Erreur lors de la création du lot: ${lotError.message}`);
+      }
+
+      console.log('Lot créé avec succès:', createdLot);
       
-      onLotCreated?.(data);
+      // Callback de succès
+      if (onLotCreated) {
+        onLotCreated(createdLot);
+      }
+      
+      // Fermer le modal
       onClose();
+      
     } catch (error) {
-      console.error('Erreur création lot:', error);
-      alert('Erreur lors de la création du lot: ' + (error.message || 'Erreur inconnue'));
+      console.error('Erreur lors de la création:', error);
+      setSearchError(error.message || 'Erreur inconnue lors de la création');
     } finally {
       setLoading(false);
     }
