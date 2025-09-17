@@ -428,7 +428,7 @@ export const daysUntil = (dateStr) => {
  */
 export const formatExpiryDate = (dateStr) => {
   const days = daysUntil(dateStr);
-  
+
   if (days === null) return { text: 'Pas de date', color: 'gray', emoji: '📅' };
   if (days < 0) return { text: `Expiré depuis ${-days}j`, color: 'red', emoji: '❌' };
   if (days === 0) return { text: 'Expire aujourd\'hui', color: 'red', emoji: '⚠️' };
@@ -440,6 +440,46 @@ export const formatExpiryDate = (dateStr) => {
   const months = Math.floor(days / 30);
   if (months === 1) return { text: 'Expire dans 1 mois', color: 'green', emoji: '✅' };
   return { text: `Expire dans ${months} mois`, color: 'green', emoji: '✅' };
+};
+
+/**
+ * Retourne un statut d'expiration basé sur le nombre de jours restants
+ */
+export const getExpirationStatus = (days) => {
+  if (days === null) {
+    return { label: 'Sans date', color: '#6b7280' };
+  }
+
+  if (days < 0) {
+    return { label: `Expiré depuis ${Math.abs(days)}j`, color: '#dc2626' };
+  }
+
+  if (days === 0) {
+    return { label: "Expire aujourd'hui", color: '#dc2626' };
+  }
+
+  if (days === 1) {
+    return { label: 'Expire demain', color: '#f97316' };
+  }
+
+  if (days <= 3) {
+    return { label: `Expire dans ${days}j`, color: '#f97316' };
+  }
+
+  if (days <= 7) {
+    return { label: `Expire dans ${days}j`, color: '#facc15' };
+  }
+
+  if (days <= 30) {
+    return { label: `Expire dans ${days}j`, color: '#22c55e' };
+  }
+
+  const months = Math.floor(days / 30);
+  if (months === 1) {
+    return { label: 'Expire dans 1 mois', color: '#16a34a' };
+  }
+
+  return { label: `Expire dans ${months} mois`, color: '#16a34a' };
 };
 
 /* ============ GROUPEMENT ET TRI ============ */
