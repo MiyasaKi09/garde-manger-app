@@ -1106,6 +1106,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           }
         `}</style>
       </div>
-    );
-  }
+    </div>
+  );
 }
