@@ -4,7 +4,7 @@
 
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { Search, Plus, X, Calendar, MapPin, ShieldCheck } from 'lucide-react';
-import { supabase as supabaseClient } from '@/lib/supabaseClient';
+import { supabase as supabaseClient, supabaseConfigError } from '@/lib/supabaseClient';
 
 // Utilitaires pour normalisation et scoring
 const normalize = (str) => {
@@ -173,7 +173,12 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   const searchInputRef = useRef(null);
   const qtyInputRef = useRef(null);
-  const supabase = useMemo(() => supabaseClient, []);
+  const supabase = useMemo(() => supabaseClient ?? null, []);
+  const supabaseReady = !!supabase;
+  const supabaseUnavailableMessage = supabaseReady
+    ? ''
+    : supabaseConfigError?.message ||
+      'Connexion Supabase indisponible. Vérifiez NEXT_PUBLIC_SUPABASE_URL et NEXT_PUBLIC_SUPABASE_ANON_KEY.';
 
   useEffect(() => {
     if (open) {
@@ -186,10 +191,12 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         qty_remaining: '', initial_qty: '', unit: 'g', storage_method: 'pantry',
         storage_place: '', expiration_date: '', notes: ''
       });
-      setSearchError(null);
-      setTimeout(() => searchInputRef.current?.focus(), 100);
+      setSearchError(supabaseReady ? null : supabaseUnavailableMessage);
+      if (supabaseReady) {
+        setTimeout(() => searchInputRef.current?.focus(), 100);
+      }
     }
-  }, [open]);
+  }, [open, supabaseReady, supabaseUnavailableMessage]);
 
   useEffect(() => {
     if (step === 2) setTimeout(() => qtyInputRef.current?.focus(), 100);
@@ -235,14 +242,16 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       setSearchError(null);
       return;
     }
+    if (!supabase) {
+      setSearchResults([]);
+      setSearchError(supabaseUnavailableMessage);
+      return;
+    }
+
     setSearchLoading(true);
     setSearchError(null);
 
     try {
-      if (!supabase) {
-        throw new Error('Connexion à la base de données indisponible');
-      }
-
       const searchTerm = `%${q.replace(/[%_]/g, '\\$&')}%`;
 
       // RECHERCHE PARALLÈLE DANS TOUTES LES TABLES
@@ -579,17 +588,17 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     } finally {
       setSearchLoading(false);
     }
-  }, [supabase]);
+  }, [supabase, supabaseUnavailableMessage]);
 
   useEffect(() => {
     if (!searchQuery.trim()) {
       setSearchResults([]);
-      setSearchError(null);
+      setSearchError(supabaseReady ? null : supabaseUnavailableMessage);
       return;
     }
     const t = setTimeout(() => searchProducts(searchQuery), 300);
     return () => clearTimeout(t);
-  }, [searchQuery, searchProducts]);
+  }, [searchQuery, searchProducts, supabaseReady, supabaseUnavailableMessage]);
 
   const handleSelectProduct = useCallback((product) => {
     setSelectedProduct(product);
@@ -621,13 +630,14 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   const handleCreateLot = useCallback(async () => {
     if (!selectedProduct) return;
-    
+
+    if (!supabase) {
+      setSearchError(supabaseUnavailableMessage);
+      return;
+    }
+
     setLoading(true);
     try {
-      if (!supabase) {
-        throw new Error('Connexion à la base de données indisponible');
-      }
-
       let productToUse = selectedProduct;
 
       // Si c'est un nouveau produit, le créer d'abord
@@ -713,7 +723,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     } finally {
       setLoading(false);
     }
-  }, [selectedProduct, lotData, supabase, onLotCreated, onClose]);
+  }, [selectedProduct, lotData, supabase, supabaseUnavailableMessage, onLotCreated, onClose]);
 
   if (!open) return null;
 
@@ -953,6 +963,12 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                   />
                 </div>
               </div>
+
+              {!supabaseReady && (
+                <div className="error-info">
+                  <small>⚠️ {supabaseUnavailableMessage}</small>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -970,7 +986,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
               </button>
               <button
                 onClick={handleCreateLot}
-                disabled={loading || !lotData.qty_remaining}
+                disabled={loading || !lotData.qty_remaining || !supabaseReady}
                 className="btn btn-primary"
               >
                 {loading ? 'Création...' : 'Créer le lot'}
