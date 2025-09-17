@@ -4,12 +4,10 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Search, X, Package } from 'lucide-react';
-import { useSupabase } from '@/lib/hooks/useSupabase';
+import { supabase } from '@/lib/supabaseClient';
 import { categoryIconService } from '@/lib/categoryIconService'; // NOUVEAU
 
 export default function SmartAddForm({ isOpen, onClose, onSuccess, locationId }) {
-  const supabase = useSupabase();
-  
   // États
   const [step, setStep] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
@@ -154,7 +152,7 @@ export default function SmartAddForm({ isOpen, onClose, onSuccess, locationId })
       setSearchLoading(true);
       setSearchError(null);
 
-      try {
+              try {
         if (!supabase) {
           throw new Error('Service de recherche indisponible');
         }
@@ -374,11 +372,35 @@ export default function SmartAddForm({ isOpen, onClose, onSuccess, locationId })
     
     setIsCreatingLot(true);
     try {
-      const { data, error } = await supabase.rpc('add_smart_lot', {
-        p_location_id: locationId,
-        p_product_data: selectedProduct,
-        p_lot_data: lotData
-      });
+      // Obtenir l'utilisateur actuel
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      if (userError) throw userError;
+      if (!user) throw new Error('Utilisateur non connecté');
+
+      // Préparer les données du lot
+      const lotDataToInsert = {
+        user_id: user.id,
+        location_id: locationId,
+        canonical_food_id: selectedProduct.type === 'canonical' ? selectedProduct.id : null,
+        display_name: selectedProduct.display_name,
+        qty_remaining: parseFloat(lotData.qty_remaining) || 0,
+        initial_qty: parseFloat(lotData.initial_qty || lotData.qty_remaining) || 0,
+        unit: lotData.unit || 'g',
+        storage_method: lotData.storage_method || 'pantry',
+        storage_place: lotData.storage_place || null,
+        expiration_date: lotData.expiration_date || null,
+        notes: lotData.notes || null,
+        purchase_date: new Date().toISOString().split('T')[0],
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      };
+
+      // Insérer le lot
+      const { data, error } = await supabase
+        .from('inventory_lots')
+        .insert([lotDataToInsert])
+        .select()
+        .single();
 
       if (error) throw error;
       
@@ -386,11 +408,11 @@ export default function SmartAddForm({ isOpen, onClose, onSuccess, locationId })
       onClose();
     } catch (error) {
       console.error('Erreur création lot:', error);
-      alert('Erreur lors de la création du lot');
+      alert('Erreur lors de la création du lot: ' + (error.message || 'Erreur inconnue'));
     } finally {
       setIsCreatingLot(false);
     }
-  }, [selectedProduct, lotData, locationId, supabase, onSuccess, onClose]);
+  }, [selectedProduct, lotData, locationId, onSuccess, onClose]);
 
   if (!isOpen) return null;
 
