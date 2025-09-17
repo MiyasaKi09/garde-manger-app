@@ -182,55 +182,137 @@ export const groupLotsByProduct = (lots) => {
   }
 
   const groups = new Map();
-  
+
   for (const lot of lots) {
     if (!lot) continue;
-    
-    const productId = lot.canonical_food_id || 
-                     lot.cultivar_id || 
-                     lot.generic_product_id ||
-                     lot.derived_product_id || 
-                     lot.product_id || 
-                     `unknown-${lot.id}`;
+    const productType = lot.product_type || lot.meta?.product_type || 'unknown';
 
-    const productName = lot.display_name ||
-                       lot.canonical_food?.canonical_name ||
-                       lot.cultivar?.cultivar_name ||
-                       lot.generic_product?.name ||
-                       lot.derived_product?.derived_name ||
-                       lot.product?.name ||
-                       'Produit inconnu';
+    const canonicalId = lot.canonical_food_id
+      ?? lot.canonical_food?.id
+      ?? lot.cultivar?.canonical_food?.id
+      ?? lot.derived_product?.cultivar?.canonical_food?.id
+      ?? null;
 
-    if (!groups.has(productId)) {
-      groups.set(productId, {
+    const cultivarId = lot.cultivar_id
+      ?? lot.cultivar?.id
+      ?? lot.derived_product?.cultivar?.id
+      ?? null;
+
+    const derivedId = lot.derived_product_id
+      ?? lot.derived_product?.id
+      ?? null;
+
+    const genericId = lot.generic_product_id
+      ?? lot.generic_product?.id
+      ?? null;
+
+    const fallbackId = lot.product_id
+      || canonicalId
+      || cultivarId
+      || derivedId
+      || genericId
+      || `unknown-${lot.id}`;
+
+    let productId;
+    switch (productType) {
+      case 'canonical':
+        productId = canonicalId || fallbackId;
+        break;
+      case 'cultivar':
+        productId = cultivarId || fallbackId;
+        break;
+      case 'derived':
+        productId = derivedId || fallbackId;
+        break;
+      case 'generic':
+        productId = genericId || fallbackId;
+        break;
+      default:
+        productId = fallbackId;
+        break;
+    }
+
+    const productKey = `${productType}-${productId}`;
+
+    const productName = lot.display_name
+      || (productType === 'canonical' && lot.canonical_food?.canonical_name)
+      || (productType === 'cultivar' && lot.cultivar?.cultivar_name)
+      || (productType === 'derived' && lot.derived_product?.derived_name)
+      || (productType === 'generic' && lot.generic_product?.name)
+      || lot.canonical_food?.canonical_name
+      || lot.cultivar?.cultivar_name
+      || lot.generic_product?.name
+      || lot.derived_product?.derived_name
+      || lot.product?.name
+      || 'Produit inconnu';
+
+    const baseCategory = {
+      name: lot.category_name || null,
+      icon: lot.category_icon || null,
+      color: lot.category_color || null
+    };
+
+    const relatedCategory =
+      (productType === 'canonical' && lot.canonical_food?.category)
+      || (productType === 'cultivar' && lot.cultivar?.canonical_food?.category)
+      || (productType === 'derived' && lot.derived_product?.cultivar?.canonical_food?.category)
+      || (productType === 'generic' && lot.generic_product?.category)
+      || lot.canonical_food?.category
+      || lot.cultivar?.canonical_food?.category
+      || lot.generic_product?.category
+      || lot.derived_product?.cultivar?.canonical_food?.category
+      || lot.product?.category
+      || null;
+
+    const categoryInfo = {
+      name: baseCategory.name || relatedCategory?.name || (typeof relatedCategory === 'string' ? relatedCategory : null),
+      icon: baseCategory.icon || relatedCategory?.icon || null,
+      color: baseCategory.color || relatedCategory?.color_hex || relatedCategory?.color || null
+    };
+
+    if (!groups.has(productKey)) {
+      groups.set(productKey, {
         productId,
+        productKey,
         productName,
+        productType,
+        canonicalId: canonicalId ?? null,
+        cultivarId: cultivarId ?? null,
+        derivedId: derivedId ?? null,
+        genericId: genericId ?? null,
         lots: [],
         totalQuantity: 0,
-        primaryUnit: lot.unit || 'unité',
-        category: lot.category_name ||
-                 lot.canonical_food?.category ||
-                 lot.cultivar?.canonical_food?.category ||
-                 lot.generic_product?.category ||
-                 lot.product?.category ||
-                 'Autre',
+        primaryUnit: lot.unit || lot.meta?.primary_unit || 'unité',
+        category: categoryInfo.name || 'Autre',
+        categoryIcon: categoryInfo.icon || '📦',
+        categoryColor: categoryInfo.color || '#808080',
         nextExpiry: null
       });
     }
-    
-    const group = groups.get(productId);
+
+    const group = groups.get(productKey);
     group.lots.push(lot);
     group.totalQuantity += Number(lot.qty_remaining ?? lot.qty ?? 0);
-    
-    // Mettre à jour la prochaine expiration
-    if (lot.expiration_date) {
-      if (!group.nextExpiry || lot.expiration_date < group.nextExpiry) {
-        group.nextExpiry = lot.expiration_date;
+
+    if ((!group.category || group.category === 'Autre') && categoryInfo.name) {
+      group.category = categoryInfo.name;
+    }
+    if ((!group.categoryIcon || group.categoryIcon === '📦') && categoryInfo.icon) {
+      group.categoryIcon = categoryInfo.icon;
+    }
+    if ((!group.categoryColor || group.categoryColor === '#808080') && categoryInfo.color) {
+      group.categoryColor = categoryInfo.color;
+    }
+
+    const lotExpiration = lot.effective_expiration || lot.expiration_date || lot.best_before || null;
+    if (lotExpiration) {
+      if (!group.nextExpiry || lotExpiration < group.nextExpiry) {
+        group.nextExpiry = lotExpiration;
       }
     }
   }
-  
-  return Array.from(groups.values()).sort((a, b) => 
+
+  return Array.from(groups.values()).sort((a, b) =>
     a.productName.localeCompare(b.productName, 'fr', { sensitivity: 'base' })
   );
 };
