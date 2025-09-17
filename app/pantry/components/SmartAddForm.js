@@ -95,11 +95,11 @@ const fuzzyMatch = (query, text, threshold = 0.4) => {
 const calculateLevenshteinSimilarity = (a, b) => {
   if (a.length === 0) return b.length === 0 ? 1 : 0;
   if (b.length === 0) return 0;
-  
+
   const matrix = [];
   for (let i = 0; i <= b.length; i++) matrix[i] = [i];
   for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
-  
+
   for (let i = 1; i <= b.length; i++) {
     for (let j = 1; j <= a.length; j++) {
       if (b.charAt(i - 1) === a.charAt(j - 1)) {
@@ -112,15 +112,36 @@ const calculateLevenshteinSimilarity = (a, b) => {
       }
     }
   }
-  
+
   const maxLength = Math.max(a.length, b.length);
   return (maxLength - matrix[b.length][a.length]) / maxLength;
+};
+
+const toError = (err, fallbackMessage) => {
+  if (err instanceof Error) return err;
+  const message = (typeof err === 'string' ? err : err?.message) || fallbackMessage;
+  return new Error(message);
+};
+
+const assertSupabaseSettledResult = (settledResult, fallbackMessage) => {
+  if (!settledResult) {
+    throw new Error(fallbackMessage);
+  }
+
+  if (settledResult.status === 'rejected') {
+    throw toError(settledResult.reason, fallbackMessage);
+  }
+
+  const { error } = settledResult.value || {};
+  if (error) {
+    throw toError(error, fallbackMessage);
+  }
 };
 
 const capitalizeProduct = (name) => {
   if (!name) return '';
   const lowercaseWords = ['de', 'du', 'des', 'le', 'la', 'les', 'et', 'ou', 'à', 'au', 'aux'];
-  
+
   return name.split(' ').map((word, index) => {
     const lowerWord = word.toLowerCase();
     if (index === 0 || !lowercaseWords.includes(lowerWord)) {
@@ -268,6 +289,10 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
       const searchResults = await Promise.allSettled(searchPromises);
 
+      for (const result of searchResults) {
+        assertSupabaseSettledResult(result, 'Erreur lors de la recherche');
+      }
+
       // Collecter les IDs pour les relations
       const categoryIds = new Set();
       const canonicalIds = new Set();
@@ -339,6 +364,10 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       }
 
       const referenceResults = await Promise.allSettled(referencePromises);
+
+      for (const result of referenceResults) {
+        assertSupabaseSettledResult(result, 'Erreur lors de la récupération des références');
+      }
 
       // Créer les maps de référence
       const categoriesMap = new Map();
