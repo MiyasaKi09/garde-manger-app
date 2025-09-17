@@ -1,11 +1,25 @@
-// app/pantry/components/SmartAddForm.js - Version complète corrigée
+// app/pantry/components/SmartAddForm.js - Version complète multi-tables
 
 'use client';
 
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { Search, Plus, X, Calendar, MapPin, ShieldCheck } from 'lucide-react';
 import { supabase as supabaseClient } from '@/lib/supabaseClient';
-import { normalize, similarity } from './pantryUtils';
+
+// Utilitaires pour normalisation et scoring
+const normalize = (str) => {
+  if (!str) return '';
+  return String(str).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+};
+
+const similarity = (a, b) => {
+  if (!a || !b) return 0;
+  const setA = new Set(normalize(a).split(' '));
+  const setB = new Set(normalize(b).split(' '));
+  const intersection = new Set([...setA].filter(x => setB.has(x)));
+  const union = new Set([...setA, ...setB]);
+  return intersection.size / union.size;
+};
 
 // Fonction pour obtenir l'icône selon category_id ET le nom
 const getCategoryIcon = (categoryId, categoryName, productName) => {
@@ -208,130 +222,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         throw new Error('Connexion à la base de données indisponible');
       }
 
-      const searchTerm = `%${q.replace(/[%_]/g, '\\  const searchProducts = useCallback(async (query) => {
-    const q = query.trim();
-    if (!q) {
-      setSearchResults([]);
-      setSearchError(null);
-      return;
-    }
-    setSearchLoading(true);
-    setSearchError(null);
-
-    try {
-      if (!supabase) {
-        throw new Error('Connexion à la base de données indisponible');
-      }
-
       const searchTerm = `%${q.replace(/[%_]/g, '\\$&')}%`;
-
-      // Recherche simplifiée dans canonical_foods uniquement pour commencer
-      const { data: canonicalFoods, error: canonicalError } = await supabase
-        .from('canonical_foods')
-        .select(`
-          id, canonical_name, category_id, subcategory, primary_unit,
-          shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
-        `)
-        .ilike('canonical_name', searchTerm)
-        .limit(10);
-
-      if (canonicalError) {
-        console.error('Erreur recherche canonical_foods:', canonicalError);
-        throw new Error(`Erreur de recherche: ${canonicalError.message}`);
-      }
-
-      // Récupérer les catégories si nécessaire
-      const categoryIds = [...new Set(canonicalFoods?.map(item => item.category_id).filter(Boolean))];
-      let categoriesMap = new Map();
-
-      if (categoryIds.length > 0) {
-        const { data: categories, error: catError } = await supabase
-          .from('reference_categories')
-          .select('id, name, icon')
-          .in('id', categoryIds);
-
-        if (!catError && categories) {
-          categories.forEach(cat => categoriesMap.set(cat.id, cat));
-        }
-      }
-
-      // Transformer les résultats
-      const results = [];
-      if (canonicalFoods && canonicalFoods.length > 0) {
-        canonicalFoods.forEach(row => {
-          const name = row.canonical_name || '';
-          const score = fuzzyMatch(q, name);
-          
-          if (score > 0.3) {
-            const category = categoriesMap.get(row.category_id);
-            const icon = getCategoryIcon(row.category_id, category?.name, name);
-
-            results.push({
-              id: row.id,
-              type: 'canonical',
-              name: capitalizeProduct(name),
-              display_name: capitalizeProduct(name),
-              category: { 
-                name: category?.name || row.subcategory || 'Aliment', 
-                id: row.category_id, 
-                icon: category?.icon 
-              },
-              category_id: row.category_id,
-              subcategory: row.subcategory,
-              primary_unit: row.primary_unit || 'g',
-              shelf_life_days_pantry: row.shelf_life_days_pantry,
-              shelf_life_days_fridge: row.shelf_life_days_fridge,
-              shelf_life_days_freezer: row.shelf_life_days_freezer,
-              icon,
-              matchScore: score,
-              sourceTable: 'canonical_foods'
-            });
-          }
-        });
-      }
-
-      // Trier par score
-      const sortedResults = results.sort((a, b) => b.matchScore - a.matchScore);
-
-      // Ajouter l'option "nouveau produit" si pas de correspondance parfaite
-      const hasPerfectMatch = sortedResults.some(r => r.matchScore >= 0.9);
-      const shouldShowNewOption = !hasPerfectMatch && q.length >= 2;
-
-      const finalResults = shouldShowNewOption ? [
-        ...sortedResults,
-        {
-          id: 'new-product',
-          type: 'new',
-          name: capitalizeProduct(q),
-          display_name: capitalizeProduct(q),
-          category: { name: 'À définir', icon: '📦' },
-          primary_unit: 'g',
-          icon: '➕',
-          matchScore: 0
-        }
-      ] : sortedResults;
-
-      setSearchResults(finalResults);
-
-    } catch (e) {
-      console.error('Erreur de recherche:', e);
-      setSearchError(e?.message || 'Erreur lors de la recherche');
-      
-      // En cas d'erreur, proposer au moins l'option nouveau produit
-      setSearchResults([{
-        id: 'new-product',
-        type: 'new',
-        name: capitalizeProduct(q),
-        display_name: capitalizeProduct(q),
-        category: { name: 'À définir', icon: '📦' },
-        primary_unit: 'g',
-        icon: '➕',
-        matchScore: 0
-      }]);
-    } finally {
-      setSearchLoading(false);
-    }
-  }, [supabase]);')}%`;
 
       // RECHERCHE PARALLÈLE DANS TOUTES LES TABLES
       const searchPromises = [
@@ -712,8 +603,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
       // Si c'est un nouveau produit, le créer d'abord
       if (selectedProduct.type === 'new') {
-        console.log('Création d\'un nouveau produit:', selectedProduct.name);
-        
         const { data: newProduct, error: createError } = await supabase
           .from('canonical_foods')
           .insert([{
@@ -727,11 +616,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           .single();
 
         if (createError) {
-          console.error('Erreur création produit:', createError);
           throw new Error(`Erreur lors de la création du produit: ${createError.message}`);
         }
 
-        console.log('Nouveau produit créé:', newProduct);
         productToUse = { ...selectedProduct, id: newProduct.id, type: 'canonical' };
       }
 
@@ -772,8 +659,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           throw new Error(`Type de produit non reconnu: ${productToUse.type}`);
       }
 
-      console.log('Données du lot à insérer:', lotDataToInsert);
-
       // Insertion du lot
       const { data: createdLot, error: lotError } = await supabase
         .from('inventory_lots')
@@ -782,12 +667,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .single();
 
       if (lotError) {
-        console.error('Erreur création lot:', lotError);
         throw new Error(`Erreur lors de la création du lot: ${lotError.message}`);
       }
 
-      console.log('Lot créé avec succès:', createdLot);
-      
       // Callback de succès
       if (onLotCreated) {
         onLotCreated(createdLot);
@@ -1011,4 +893,537 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                       type="text"
                       value={lotData.storage_place}
                       onChange={(e) => setLotData(prev => ({ ...prev, storage_place: e.target.value }))}
-                      className="form-
+                      className="form-input"
+                      placeholder="Ex: Étagère du haut, Bac à légumes..."
+                    />
+                  </div>
+                  <div className="form-group flex-1">
+                    <label htmlFor="expiry">
+                      <Calendar size={16} />
+                      Date de péremption
+                    </label>
+                    <input
+                      id="expiry"
+                      type="date"
+                      value={lotData.expiration_date}
+                      onChange={(e) => setLotData(prev => ({ ...prev, expiration_date: e.target.value }))}
+                      className="form-input"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="notes">Notes (optionnel)</label>
+                  <textarea
+                    id="notes"
+                    rows={3}
+                    value={lotData.notes}
+                    onChange={(e) => setLotData(prev => ({ ...prev, notes: e.target.value }))}
+                    className="form-textarea"
+                    placeholder="Marque, provenance, observations..."
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="modal-footer">
+          {step === 1 && (
+            <button onClick={onClose} className="btn btn-secondary">
+              Annuler
+            </button>
+          )}
+          {step === 2 && (
+            <>
+              <button onClick={() => setStep(1)} className="btn btn-secondary">
+                Retour
+              </button>
+              <button
+                onClick={handleCreateLot}
+                disabled={loading || !lotData.qty_remaining}
+                className="btn btn-primary"
+              >
+                {loading ? 'Création...' : 'Créer le lot'}
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+
+      <style jsx>{`
+        .modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.6);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+          padding: 1rem;
+        }
+
+        .modal-container {
+          background: white;
+          border-radius: 12px;
+          width: 100%;
+          max-width: 600px;
+          max-height: 90vh;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-header {
+          padding: 1.5rem;
+          border-bottom: 1px solid #e5e7eb;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .header-title {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #111827;
+        }
+
+        .close-btn {
+          background: none;
+          border: none;
+          padding: 0.5rem;
+          cursor: pointer;
+          border-radius: 6px;
+          color: #6b7280;
+          transition: all 0.2s;
+        }
+
+        .close-btn:hover {
+          background: #f3f4f6;
+          color: #374151;
+        }
+
+        .progress-bar {
+          display: flex;
+          padding: 0 1.5rem;
+          background: #f9fafb;
+          border-bottom: 1px solid #e5e7eb;
+        }
+
+        .progress-step {
+          flex: 1;
+          padding: 1rem 0;
+          text-align: center;
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: #6b7280;
+          position: relative;
+        }
+
+        .progress-step.active {
+          color: #059669;
+          font-weight: 600;
+        }
+
+        .progress-step.active::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: #059669;
+        }
+
+        .modal-content {
+          flex: 1;
+          overflow-y: auto;
+          padding: 1.5rem;
+        }
+
+        .search-wrapper {
+          position: relative;
+          margin-bottom: 1rem;
+        }
+
+        .search-icon {
+          position: absolute;
+          left: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #6b7280;
+          pointer-events: none;
+        }
+
+        .search-input {
+          width: 100%;
+          padding: 0.75rem 1rem 0.75rem 3rem;
+          border: 2px solid #e5e7eb;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+          outline: none;
+          border-color: #059669;
+          box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .loading {
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+          from { transform: translateY(-50%) rotate(0deg); }
+          to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .debug-info, .error-info {
+          margin-bottom: 1rem;
+          padding: 0.5rem;
+          border-radius: 6px;
+          font-size: 0.75rem;
+        }
+
+        .debug-info {
+          background: #f0f9ff;
+          color: #0369a1;
+        }
+
+        .error-info {
+          background: #fef2f2;
+          color: #dc2626;
+        }
+
+        .results-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          max-height: 400px;
+          overflow-y: auto;
+        }
+
+        .result-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .result-item:hover {
+          border-color: #059669;
+          background: #f0fdf4;
+        }
+
+        .result-item.new-item {
+          border-color: #3b82f6;
+          background: #eff6ff;
+        }
+
+        .result-item.new-item:hover {
+          border-color: #2563eb;
+          background: #dbeafe;
+        }
+
+        .result-icon {
+          font-size: 1.5rem;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: white;
+          border-radius: 8px;
+          flex-shrink: 0;
+        }
+
+        .result-content {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .result-name {
+          font-weight: 600;
+          color: #111827;
+          margin-bottom: 0.25rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+        }
+
+        .new-badge, .match-badge {
+          background: #3b82f6;
+          color: white;
+          font-size: 0.625rem;
+          font-weight: 700;
+          padding: 2px 6px;
+          border-radius: 999px;
+        }
+
+        .match-badge {
+          background: #059669;
+        }
+
+        .source-badge {
+          font-size: 0.75rem;
+          padding: 2px 4px;
+          border-radius: 4px;
+        }
+
+        .source-canonical { background: #ddd6fe; }
+        .source-cultivar { background: #dcfce7; }
+        .source-generic { background: #fef3c7; }
+        .source-derived { background: #fed7d7; }
+
+        .result-meta {
+          font-size: 0.875rem;
+          color: #6b7280;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .category {
+          font-weight: 500;
+        }
+
+        .subcategory, .unit {
+          color: #9ca3af;
+        }
+
+        .no-results {
+          text-align: center;
+          padding: 2rem 1rem;
+          color: #6b7280;
+        }
+
+        .product-summary {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          background: #f8fdf8;
+          border: 1px solid #dcf4dc;
+          border-radius: 12px;
+          margin-bottom: 1.5rem;
+        }
+
+        .product-info {
+          flex: 1;
+        }
+
+        .product-name {
+          font-weight: 600;
+          color: #1a3a1a;
+          margin-bottom: 0.25rem;
+        }
+
+        .product-source {
+          font-size: 0.875rem;
+          color: #6b7280;
+        }
+
+        .confidence-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 12px;
+          font-weight: 600;
+          padding: 6px 10px;
+          border-radius: 999px;
+        }
+
+        .confidence-good {
+          background: #ecfdf5;
+          color: #047857;
+          border: 1px solid #a7f3d0;
+        }
+
+        .confidence-neutral {
+          background: #eff6ff;
+          color: #1d4ed8;
+          border: 1px solid #bfdbfe;
+        }
+
+        .confidence-warning {
+          background: #fff7ed;
+          color: #c2410c;
+          border: 1px solid #fed7aa;
+        }
+
+        .change-btn {
+          background: none;
+          border: 1px solid #d1d5db;
+          padding: 4px 12px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 12px;
+          color: #6b7280;
+          transition: all 0.2s;
+        }
+
+        .change-btn:hover {
+          background: #f9fafb;
+        }
+
+        .lot-form {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .form-row {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .form-group.flex-1 {
+          flex: 1;
+        }
+
+        .form-group label {
+          font-weight: 500;
+          color: #374151;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 14px;
+        }
+
+        .form-input, .form-select, .form-textarea {
+          padding: 0.75rem;
+          border: 1px solid #d1d5db;
+          border-radius: 6px;
+          font-size: 1rem;
+          transition: border-color 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+          outline: none;
+          border-color: #059669;
+          box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .storage-methods {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.5rem;
+        }
+
+        .storage-method {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 1rem;
+          border: 2px solid #e5e7eb;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .storage-method:hover {
+          border-color: #9ca3af;
+        }
+
+        .storage-method.active {
+          border-color: #059669;
+          background: #f0fdf4;
+        }
+
+        .method-icon {
+          font-size: 1.5rem;
+        }
+
+        .method-label {
+          font-size: 0.875rem;
+          font-weight: 500;
+          text-align: center;
+        }
+
+        .modal-footer {
+          padding: 1.5rem;
+          border-top: 1px solid #e5e7eb;
+          display: flex;
+          gap: 1rem;
+          justify-content: flex-end;
+        }
+
+        .btn {
+          padding: 0.75rem 1.5rem;
+          border-radius: 6px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s;
+          border: none;
+          font-size: 1rem;
+        }
+
+        .btn-secondary {
+          background: #f9fafb;
+          color: #374151;
+          border: 1px solid #d1d5db;
+        }
+
+        .btn-secondary:hover {
+          background: #f3f4f6;
+        }
+
+        .btn-primary {
+          background: #059669;
+          color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+          background: #047857;
+        }
+
+        .btn-primary:disabled {
+          background: #9ca3af;
+          cursor: not-allowed;
+        }
+
+        @media (max-width: 640px) {
+          .modal-container {
+            margin: 0;
+            border-radius: 0;
+            height: 100vh;
+            max-height: none;
+          }
+
+          .form-row {
+            flex-direction: column;
+          }
+
+          .storage-methods {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
