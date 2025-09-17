@@ -262,7 +262,10 @@ function usePantryData() {
           category_icon: categoryInfo?.icon || '📦',
           category_color: categoryInfo?.color_hex || '#808080',
           qty_remaining: Number(item.qty_remaining ?? 0),
-          unit: item.unit || primaryUnit || 'unité',
+
+          unit: item.unit || productInfo?.primary_unit || 'unité',
+          expiration_date: item.expiration_date,
+
           effective_expiration: item.expiration_date,
 
           location_name: locationName,

@@ -297,20 +297,25 @@ export const groupLotsByProduct = (lots) => {
     group.totalQuantity += Number(lot.qty_remaining ?? lot.qty ?? 0);
 
 
-    if ((!group.category || group.category === 'Autre') && categoryInfo.name) {
-      group.category = categoryInfo.name;
-    }
-    if ((!group.categoryIcon || group.categoryIcon === '📦') && categoryInfo.icon) {
-      group.categoryIcon = categoryInfo.icon;
-    }
-    if ((!group.categoryColor || group.categoryColor === '#808080') && categoryInfo.color) {
-      group.categoryColor = categoryInfo.color;
-    }
+    
+    // Mettre à jour la prochaine expiration en privilégiant effective_expiration
+    const lotExpiry = lot.effective_expiration ?? lot.expiration_date;
+    if (lotExpiry) {
+      if (!group.nextExpiry) {
+        group.nextExpiry = lotExpiry;
+      } else {
+        const candidateTime = new Date(lotExpiry).getTime();
+        const currentTime = new Date(group.nextExpiry).getTime();
 
-    const lotExpiration = lot.effective_expiration || lot.expiration_date || lot.best_before || null;
-    if (lotExpiration) {
-      if (!group.nextExpiry || lotExpiration < group.nextExpiry) {
-        group.nextExpiry = lotExpiration;
+        if (Number.isNaN(candidateTime) || Number.isNaN(currentTime)) {
+          if (lotExpiry < group.nextExpiry) {
+            group.nextExpiry = lotExpiry;
+          }
+        } else if (candidateTime < currentTime) {
+          group.nextExpiry = lotExpiry;
+        }
+
+
       }
     }
   }
