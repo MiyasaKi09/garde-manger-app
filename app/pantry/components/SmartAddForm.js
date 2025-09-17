@@ -1,91 +1,52 @@
-// app/pantry/components/SmartAddForm.js - Version corrigée avec toute l'intelligence
+// app/pantry/components/SmartAddForm.js - Version corrigée pour l'erreur de relations
 
 'use client';
 
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { Search, Plus, X, Calendar, MapPin, ShieldCheck } from 'lucide-react';
 import { supabase as supabaseClient } from '@/lib/supabaseClient';
-import { normalize, similarity } from './pantryUtils'; // Import des utilitaires intelligents
+import { normalize, similarity } from './pantryUtils';
 
-// Fonction pour obtenir l'icône selon category_id ET le nom
+// [Garde toutes les fonctions d'icônes et de fuzzy matching de la version précédente]
 const getCategoryIcon = (categoryId, categoryName, subcategory) => {
-  // Mapping des IDs de catégories vers icônes (basé sur votre CSV)
   const categoryIcons = {
-    1: '🍎',    // Fruits
-    2: '🥕',    // Légumes  
-    3: '🍄',    // Champignons
-    4: '🥚',    // Œufs
-    5: '🌾',    // Céréales
-    6: '🫘',    // Légumineuses
-    7: '🥛',    // Produits laitiers
-    8: '🥩',    // Viandes
-    9: '🐟',    // Poissons
-    10: '🌶️',  // Épices
-    11: '🫒',   // Huiles
-    12: '🥫',   // Conserves
-    13: '🌰',   // Noix et graines
-    14: '🍯',   // Édulcorants
+    1: '🍎', 2: '🥕', 3: '🍄', 4: '🥚', 5: '🌾', 6: '🫘', 7: '🥛', 
+    8: '🥩', 9: '🐟', 10: '🌶️', 11: '🫒', 12: '🥫', 13: '🌰', 14: '🍯'
   };
   
-  // Essayer d'abord par ID
   if (categoryId && categoryIcons[categoryId]) {
     return categoryIcons[categoryId];
   }
   
-  // Icônes spécifiques pour certains produits (plus précis que les catégories)
   const specificIcons = {
-    'tomate': '🍅', 'tomates': '🍅',
-    'pomme': '🍎', 'pommes': '🍎',
-    'banane': '🍌', 'bananes': '🍌',
-    'orange': '🍊', 'oranges': '🍊',
-    'citron': '🍋', 'citrons': '🍋',
-    'fraise': '🍓', 'fraises': '🍓',
-    'raisin': '🍇', 'raisins': '🍇',
-    'pêche': '🍑', 'pêches': '🍑',
-    'cerise': '🍒', 'cerises': '🍒',
-    'ananas': '🍍',
-    'avocat': '🥑', 'avocats': '🥑',
-    'carotte': '🥕', 'carottes': '🥕',
-    'poivron': '🫑', 'poivrons': '🫑',
-    'aubergine': '🍆', 'aubergines': '🍆',
-    'courgette': '🥒', 'courgettes': '🥒',
-    'brocoli': '🥦', 'brocolis': '🥦',
-    'champignon': '🍄', 'champignons': '🍄',
-    'oignon': '🧅', 'oignons': '🧅',
-    'ail': '🧄',
+    'tomate': '🍅', 'tomates': '🍅', 'pomme': '🍎', 'pommes': '🍎',
+    'banane': '🍌', 'bananes': '🍌', 'orange': '🍊', 'oranges': '🍊',
+    'citron': '🍋', 'citrons': '🍋', 'fraise': '🍓', 'fraises': '🍓',
+    'raisin': '🍇', 'raisins': '🍇', 'pêche': '🍑', 'pêches': '🍑',
+    'cerise': '🍒', 'cerises': '🍒', 'ananas': '🍍', 'avocat': '🥑', 'avocats': '🥑',
+    'carotte': '🥕', 'carottes': '🥕', 'poivron': '🫑', 'poivrons': '🫑',
+    'aubergine': '🍆', 'aubergines': '🍆', 'courgette': '🥒', 'courgettes': '🥒',
+    'brocoli': '🥦', 'brocolis': '🥦', 'champignon': '🍄', 'champignons': '🍄',
+    'oignon': '🧅', 'oignons': '🧅', 'ail': '🧄',
     'pomme de terre': '🥔', 'pommes de terre': '🥔', 'patate': '🥔',
-    'pain': '🍞', 'pains': '🍞',
-    'fromage': '🧀', 'fromages': '🧀',
-    'lait': '🥛',
-    'œuf': '🥚', 'oeufs': '🥚', 'œufs': '🥚',
-    'poulet': '🐔',
-    'bœuf': '🐄', 'boeuf': '🐄',
-    'porc': '🐷',
-    'poisson': '🐟', 'poissons': '🐟',
-    'saumon': '🐟',
-    'thon': '🐟',
-    'riz': '🍚',
-    'pâtes': '🍝', 'pates': '🍝',
-    'huile': '🫒', 'huiles': '🫒',
-    'sel': '🧂',
-    'sucre': '🍯',
-    'miel': '🍯',
-    'café': '☕', 'cafe': '☕',
+    'pain': '🍞', 'pains': '🍞', 'fromage': '🧀', 'fromages': '🧀',
+    'lait': '🥛', 'œuf': '🥚', 'oeufs': '🥚', 'œufs': '🥚',
+    'poulet': '🐔', 'bœuf': '🐄', 'boeuf': '🐄', 'porc': '🐷',
+    'poisson': '🐟', 'poissons': '🐟', 'saumon': '🐟', 'thon': '🐟',
+    'riz': '🍚', 'pâtes': '🍝', 'pates': '🍝', 'huile': '🫒', 'huiles': '🫒',
+    'sel': '🧂', 'sucre': '🍯', 'miel': '🍯', 'café': '☕', 'cafe': '☕',
     'thé': '🍵', 'the': '🍵'
   };
   
-  // Chercher d'abord dans les noms spécifiques (normalisés)
   const searchTerms = [categoryName, subcategory].filter(Boolean);
   for (const term of searchTerms) {
     if (!term) continue;
     const normalized = normalize(term);
     
-    // Recherche exacte
     if (specificIcons[normalized]) {
       return specificIcons[normalized];
     }
     
-    // Recherche partielle
     for (const [key, icon] of Object.entries(specificIcons)) {
       if (normalized.includes(key) || key.includes(normalized)) {
         return icon;
@@ -93,22 +54,16 @@ const getCategoryIcon = (categoryId, categoryName, subcategory) => {
     }
   }
   
-  // Fallback sur le nom de catégorie général
   if (categoryName) {
     const name = normalize(categoryName);
     const fallbackIcons = {
-      'fruits': '🍎', 'fruit': '🍎',
-      'légumes': '🥕', 'legumes': '🥕', 'légume': '🥕', 'legume': '🥕',
-      'champignons': '🍄', 'champignon': '🍄',
-      'œufs': '🥚', 'oeufs': '🥚', 'oeuf': '🥚', 'œuf': '🥚',
+      'fruits': '🍎', 'fruit': '🍎', 'légumes': '🥕', 'legumes': '🥕', 'légume': '🥕', 'legume': '🥕',
+      'champignons': '🍄', 'champignon': '🍄', 'œufs': '🥚', 'oeufs': '🥚', 'oeuf': '🥚', 'œuf': '🥚',
       'céréales': '🌾', 'cereales': '🌾', 'céréale': '🌾', 'cereale': '🌾',
-      'légumineuses': '🫘', 'legumineuses': '🫘',
-      'produits laitiers': '🥛', 'laitiers': '🥛', 'laitier': '🥛', 'lait': '🥛',
-      'viandes': '🥩', 'viande': '🥩',
-      'poissons': '🐟', 'poisson': '🐟',
+      'légumineuses': '🫘', 'legumineuses': '🫘', 'produits laitiers': '🥛', 'laitiers': '🥛', 'laitier': '🥛', 'lait': '🥛',
+      'viandes': '🥩', 'viande': '🥩', 'poissons': '🐟', 'poisson': '🐟',
       'épices': '🌶️', 'epices': '🌶️', 'épice': '🌶️', 'epice': '🌶️',
-      'huiles': '🫒', 'huile': '🫒',
-      'conserves': '🥫', 'conserve': '🥫',
+      'huiles': '🫒', 'huile': '🫒', 'conserves': '🥫', 'conserve': '🥫',
       'noix et graines': '🌰', 'noix': '🌰', 'graines': '🌰', 'graine': '🌰',
       'édulcorants': '🍯', 'edulcorants': '🍯', 'sucre': '🍯'
     };
@@ -121,34 +76,25 @@ const getCategoryIcon = (categoryId, categoryName, subcategory) => {
   return '📦';
 };
 
-// Fonction de fuzzy matching avancée
 const fuzzyMatch = (query, text, threshold = 0.4) => {
   if (!query || !text) return 0;
   
   const normalizedQuery = normalize(query);
   const normalizedText = normalize(text);
   
-  // Match exact
   if (normalizedText === normalizedQuery) return 1.0;
-  
-  // Match au début
   if (normalizedText.startsWith(normalizedQuery)) return 0.9;
-  
-  // Match contenu
   if (normalizedText.includes(normalizedQuery)) return 0.8;
   
-  // Similarité Jaccard
   const jaccardSim = similarity(query, text);
   if (jaccardSim >= threshold) return jaccardSim;
   
-  // Distance de Levenshtein simplifiée (pour tolérance aux fautes)
   const levenshteinSim = calculateLevenshteinSimilarity(normalizedQuery, normalizedText);
   if (levenshteinSim >= threshold) return levenshteinSim;
   
   return 0;
 };
 
-// Distance de Levenshtein simplifiée
 const calculateLevenshteinSimilarity = (a, b) => {
   if (a.length === 0) return b.length === 0 ? 1 : 0;
   if (b.length === 0) return 0;
@@ -178,11 +124,9 @@ const calculateLevenshteinSimilarity = (a, b) => {
   return (maxLength - matrix[b.length][a.length]) / maxLength;
 };
 
-// Capitalisation intelligente
 const capitalizeProduct = (name) => {
   if (!name) return '';
   
-  // Mots qui ne doivent pas être capitalisés sauf en début
   const lowercaseWords = ['de', 'du', 'des', 'le', 'la', 'les', 'et', 'ou', 'à', 'au', 'aux', 'avec', 'sans'];
   
   return name
@@ -219,7 +163,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   const searchInputRef = useRef(null);
   const qtyInputRef = useRef(null);
-
   const supabase = useMemo(() => supabaseClient, []);
 
   // Reset form when opened
@@ -244,12 +187,10 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     }
   }, [open]);
 
-  // Focus on qty at step 2
   useEffect(() => {
     if (step === 2) setTimeout(() => qtyInputRef.current?.focus(), 100);
   }, [step]);
 
-  // Calcul de confiance intelligent
   const calcConfidence = useCallback((query, name) => {
     if (!query || !name) return { percent: 0, label: 'Faible', tone: 'warning' };
     
@@ -284,7 +225,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return '';
   }, []);
 
-  // Recherche intelligente avec fuzzy matching
+  // RECHERCHE CORRIGÉE - Solution pour éviter l'erreur de relations multiples
   const searchProducts = useCallback(
     async (query) => {
       const q = query.trim();
@@ -301,16 +242,15 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           throw new Error('Service de recherche indisponible');
         }
 
-        // Recherche élargie pour permettre le fuzzy matching
         const searchTerms = [
           q,
           normalize(q),
           q.toLowerCase(),
-          // Variantes communes
-          q.endsWith('s') ? q.slice(0, -1) : q + 's', // singulier/pluriel
-          q.replace('é', 'e').replace('è', 'e').replace('ê', 'e'), // accents
-        ].filter((term, index, arr) => arr.indexOf(term) === index); // dédoublonnage
+          q.endsWith('s') ? q.slice(0, -1) : q + 's',
+          q.replace('é', 'e').replace('è', 'e').replace('ê', 'e'),
+        ].filter((term, index, arr) => arr.indexOf(term) === index);
 
+        // ÉTAPE 1 : Récupérer les produits sans jointure pour éviter l'erreur
         const { data: canonicalData, error: canonicalError } = await supabase
           .from('canonical_foods')
           .select(`
@@ -322,45 +262,57 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_pantry,
             shelf_life_days_fridge,
             shelf_life_days_freezer,
-            keywords,
-            category:reference_categories(id, name, icon, color_hex)
+            keywords
           `)
           .or(
             searchTerms.map(term => 
               `canonical_name.ilike.%${term.replace(/[%_]/g, '\\$&')}%,keywords.cs.{${term}}`
             ).join(',')
           )
-          .limit(30); // Plus de résultats pour le fuzzy matching
+          .limit(30);
 
         if (canonicalError) throw canonicalError;
 
-        // Application du fuzzy matching et scoring
+        // ÉTAPE 2 : Récupérer les catégories séparément
+        const categoryIds = [...new Set(canonicalData?.map(row => row.category_id).filter(Boolean))];
+        let categoriesMap = new Map();
+
+        if (categoryIds.length > 0) {
+          const { data: categoriesData } = await supabase
+            .from('reference_categories')
+            .select('id, name, icon, color_hex')
+            .in('id', categoryIds);
+            
+          categoriesMap = new Map(categoriesData?.map(cat => [cat.id, cat]) || []);
+        }
+
+        // ÉTAPE 3 : Combiner et scorer les résultats
         const scoredResults = (canonicalData || [])
           .map((row) => {
             const name = row.canonical_name || '';
             const subcategory = row.subcategory || '';
             const keywords = (row.keywords || []).join(' ');
             
-            // Calcul du score de correspondance
             let score = 0;
             score = Math.max(score, fuzzyMatch(q, name));
             score = Math.max(score, fuzzyMatch(q, subcategory));
-            score = Math.max(score, fuzzyMatch(q, keywords) * 0.8); // Moins important
+            score = Math.max(score, fuzzyMatch(q, keywords) * 0.8);
             
-            if (score === 0) return null; // Éliminer les résultats non pertinents
+            if (score === 0) return null;
             
-            // Obtenir l'icône intelligente
-            const icon = getCategoryIcon(row.category_id, row.category?.name, name);
+            // Récupérer la catégorie
+            const category = categoriesMap.get(row.category_id);
+            const icon = getCategoryIcon(row.category_id, category?.name, name);
             
             return {
               id: row.id,
               type: 'canonical',
-              name: capitalizeProduct(name), // Capitalisation intelligente
+              name: capitalizeProduct(name),
               display_name: capitalizeProduct(name),
               category: {
-                name: row.category?.name || 'Aliment',
+                name: category?.name || 'Aliment',
                 id: row.category_id,
-                icon: row.category?.icon
+                icon: category?.icon
               },
               category_id: row.category_id,
               subcategory: row.subcategory,
@@ -373,12 +325,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             };
           })
           .filter(Boolean)
-          .sort((a, b) => b.matchScore - a.matchScore) // Tri par score décroissant
-          .slice(0, 10); // Garder les 10 meilleurs
+          .sort((a, b) => b.matchScore - a.matchScore)
+          .slice(0, 10);
 
-        // Ajouter l'option "nouveau produit" seulement si :
-        // 1. Pas de match parfait (score < 0.9)
-        // 2. Au moins 2 caractères dans la recherche
         const hasPerfectMatch = scoredResults.some(r => r.matchScore >= 0.9);
         const shouldShowNewOption = !hasPerfectMatch && q.length >= 2;
 
@@ -471,7 +420,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     [selectedProduct, estimateExpiry]
   );
 
-  // Création du lot
+  // Création du lot - AUSSI CORRIGÉE pour éviter l'erreur de relations
   const handleCreateLot = useCallback(async () => {
     if (!selectedProduct) return;
     
@@ -479,7 +428,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     try {
       let productToUse = selectedProduct;
 
-      // Si c'est un nouveau produit, le créer d'abord
       if (selectedProduct.type === 'new') {
         const { data: newProduct, error: createError } = await supabase
           .from('canonical_foods')
@@ -497,7 +445,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         productToUse = { ...selectedProduct, id: newProduct.id, type: 'canonical' };
       }
 
-      // Créer le lot
       const lotDataToInsert = {
         canonical_food_id: productToUse.type === 'canonical' ? productToUse.id : null,
         qty_remaining: parseFloat(lotData.qty_remaining) || 0,
@@ -510,18 +457,11 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         acquired_on: new Date().toISOString().split('T')[0]
       };
 
+      // REQUÊTE SIMPLIFIÉE sans jointure complexe
       const { data, error } = await supabase
         .from('inventory_lots')
         .insert([lotDataToInsert])
-        .select(`
-          *,
-          canonical_food:canonical_foods(
-            id,
-            canonical_name,
-            category_id,
-            category:reference_categories(name, icon, color_hex)
-          )
-        `)
+        .select()
         .single();
 
       if (error) throw error;
@@ -768,7 +708,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         </div>
       </div>
 
-      {/* Styles avec ajouts pour les nouvelles fonctionnalités */}
+      {/* Styles identiques à la version précédente */}
       <style jsx>{`
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; }
         .modal-container { background: white; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,.2); max-width: 500px; width: 100%; max-height: 90vh; overflow: hidden; display: flex; flex-direction: column; }
