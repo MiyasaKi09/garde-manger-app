@@ -269,6 +269,10 @@ function usePantryData() {
         insertData.generic_product_id = payload.generic_product_id;
       }
 
+      if (payload.derived_product_id) {
+        insertData.derived_product_id = payload.derived_product_id;
+      }
+
       const { error } = await supabase
         .from('inventory_lots')
         .insert(insertData)
@@ -556,12 +560,26 @@ export default function PantryPage() {
           onDeleteLot={deleteLot}
           onAddLot={(payload)=>{
             if (!activeProduct) return;
-            addLot({
+
+            const productLots = Array.isArray(activeProduct.lots) ? activeProduct.lots : [];
+            const derivedReference = productLots.find((lot) => lot?.derived_product_id);
+            const canonicalFoodId = derivedReference?.canonical_food_id ?? activeProduct.productId ?? null;
+
+            const payloadWithProduct = {
               ...payload,
-              canonical_food_id: activeProduct.productId,
               display_name: activeProduct.productName,
               category_name: activeProduct.category
-            });
+            };
+
+            if (canonicalFoodId) {
+              payloadWithProduct.canonical_food_id = canonicalFoodId;
+            }
+
+            if (derivedReference?.derived_product_id) {
+              payloadWithProduct.derived_product_id = derivedReference.derived_product_id;
+            }
+
+            addLot(payloadWithProduct);
           }}
         />
       )}
