@@ -95,6 +95,28 @@ function usePantryData() {
             category_id,
             primary_unit,
             category:reference_categories(name, icon, color_hex)
+          ),
+          derived_product:derived_products (
+            id,
+            derived_name,
+            cultivar_id,
+            expected_shelf_life_days,
+            package_unit,
+            cultivar:cultivars (
+              id,
+              cultivar_name,
+              canonical_food_id,
+              canonical_food:canonical_foods (
+                id,
+                canonical_name,
+                category_id,
+                primary_unit,
+                shelf_life_days_pantry,
+                shelf_life_days_fridge,
+                shelf_life_days_freezer,
+                category:reference_categories(name, icon, color_hex)
+              )
+            )
           )
         `)
         .order('expiration_date', { ascending: true });
@@ -134,6 +156,33 @@ function usePantryData() {
             }
           };
           categoryInfo = item.cultivar.canonical_food?.category;
+        } else if (item.derived_product) {
+          const parentCultivar = item.derived_product.cultivar;
+          const canonical = parentCultivar?.canonical_food;
+          const canonicalShelf = canonical
+            ? {
+                pantry: canonical.shelf_life_days_pantry,
+                fridge: canonical.shelf_life_days_fridge,
+                freezer: canonical.shelf_life_days_freezer
+              }
+            : { pantry: null, fridge: null, freezer: null };
+
+          const expectedShelf = item.derived_product.expected_shelf_life_days;
+
+          productInfo = {
+            id: item.derived_product.id,
+            name: item.derived_product.derived_name,
+            type: 'derived',
+            cultivar_id: parentCultivar?.id,
+            canonical_food_id: canonical?.id || parentCultivar?.canonical_food_id || null,
+            primary_unit: item.derived_product.package_unit || canonical?.primary_unit || 'unité',
+            shelf_life: {
+              pantry: expectedShelf ?? canonicalShelf.pantry,
+              fridge: expectedShelf ?? canonicalShelf.fridge,
+              freezer: expectedShelf ?? canonicalShelf.freezer
+            }
+          };
+          categoryInfo = parentCultivar?.canonical_food?.category || canonical?.category || null;
         } else if (item.generic_product) {
           productInfo = {
             id: item.generic_product.id,
@@ -149,6 +198,7 @@ function usePantryData() {
         return {
           id: item.id,
           canonical_food_id: productInfo?.canonical_food_id || productInfo?.id,
+          derived_product_id: item.derived_product?.id || null,
           display_name: item.display_name || productInfo?.name || 'Produit inconnu',
           category_name: categoryInfo?.name || 'Autre',
           category_icon: categoryInfo?.icon || '📦',
