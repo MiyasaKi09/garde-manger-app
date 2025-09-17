@@ -1078,7 +1078,3 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     </div>
   );
 }
-          position: relative;
-        }
-
-        .progress-step
