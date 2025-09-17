@@ -208,6 +208,21 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         throw new Error('Connexion à la base de données indisponible');
       }
 
+      const searchTerm = `%${q.replace(/[%_]/g, '\\  const searchProducts = useCallback(async (query) => {
+    const q = query.trim();
+    if (!q) {
+      setSearchResults([]);
+      setSearchError(null);
+      return;
+    }
+    setSearchLoading(true);
+    setSearchError(null);
+
+    try {
+      if (!supabase) {
+        throw new Error('Connexion à la base de données indisponible');
+      }
+
       const searchTerm = `%${q.replace(/[%_]/g, '\\$&')}%`;
 
       // Recherche simplifiée dans canonical_foods uniquement pour commencer
@@ -279,6 +294,334 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       const sortedResults = results.sort((a, b) => b.matchScore - a.matchScore);
 
       // Ajouter l'option "nouveau produit" si pas de correspondance parfaite
+      const hasPerfectMatch = sortedResults.some(r => r.matchScore >= 0.9);
+      const shouldShowNewOption = !hasPerfectMatch && q.length >= 2;
+
+      const finalResults = shouldShowNewOption ? [
+        ...sortedResults,
+        {
+          id: 'new-product',
+          type: 'new',
+          name: capitalizeProduct(q),
+          display_name: capitalizeProduct(q),
+          category: { name: 'À définir', icon: '📦' },
+          primary_unit: 'g',
+          icon: '➕',
+          matchScore: 0
+        }
+      ] : sortedResults;
+
+      setSearchResults(finalResults);
+
+    } catch (e) {
+      console.error('Erreur de recherche:', e);
+      setSearchError(e?.message || 'Erreur lors de la recherche');
+      
+      // En cas d'erreur, proposer au moins l'option nouveau produit
+      setSearchResults([{
+        id: 'new-product',
+        type: 'new',
+        name: capitalizeProduct(q),
+        display_name: capitalizeProduct(q),
+        category: { name: 'À définir', icon: '📦' },
+        primary_unit: 'g',
+        icon: '➕',
+        matchScore: 0
+      }]);
+    } finally {
+      setSearchLoading(false);
+    }
+  }, [supabase]);')}%`;
+
+      // RECHERCHE PARALLÈLE DANS TOUTES LES TABLES
+      const searchPromises = [
+        // 1. CANONICAL FOODS
+        supabase
+          .from('canonical_foods')
+          .select(`
+            id, canonical_name, category_id, subcategory, primary_unit,
+            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
+          `)
+          .ilike('canonical_name', searchTerm)
+          .limit(15),
+
+        // 2. CULTIVARS
+        supabase
+          .from('cultivars')
+          .select(`
+            id, cultivar_name, canonical_food_id,
+            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
+          `)
+          .ilike('cultivar_name', searchTerm)
+          .limit(10),
+
+        // 3. GENERIC PRODUCTS
+        supabase
+          .from('generic_products')
+          .select(`
+            id, name, category_id, subcategory, primary_unit,
+            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
+          `)
+          .ilike('name', searchTerm)
+          .limit(10),
+
+        // 4. DERIVED PRODUCTS
+        supabase
+          .from('derived_products')
+          .select(`
+            id, derived_name, cultivar_id, expected_shelf_life_days
+          `)
+          .ilike('derived_name', searchTerm)
+          .limit(8)
+      ];
+
+      const searchResults = await Promise.allSettled(searchPromises);
+
+      // Collecter les IDs pour les relations
+      const categoryIds = new Set();
+      const canonicalIds = new Set();
+      const cultivarIds = new Set();
+
+      // Traiter canonical_foods
+      if (searchResults[0].status === 'fulfilled' && searchResults[0].value.data) {
+        searchResults[0].value.data.forEach(item => {
+          if (item.category_id) categoryIds.add(item.category_id);
+        });
+      }
+
+      // Traiter cultivars
+      if (searchResults[1].status === 'fulfilled' && searchResults[1].value.data) {
+        searchResults[1].value.data.forEach(item => {
+          if (item.canonical_food_id) canonicalIds.add(item.canonical_food_id);
+          cultivarIds.add(item.id);
+        });
+      }
+
+      // Traiter generic_products
+      if (searchResults[2].status === 'fulfilled' && searchResults[2].value.data) {
+        searchResults[2].value.data.forEach(item => {
+          if (item.category_id) categoryIds.add(item.category_id);
+        });
+      }
+
+      // Traiter derived_products
+      if (searchResults[3].status === 'fulfilled' && searchResults[3].value.data) {
+        searchResults[3].value.data.forEach(item => {
+          if (item.cultivar_id) cultivarIds.add(item.cultivar_id);
+        });
+      }
+
+      // Récupérer les données de référence
+      const referencePromises = [];
+
+      if (categoryIds.size > 0) {
+        referencePromises.push(
+          supabase
+            .from('reference_categories')
+            .select('id, name, icon, color_hex')
+            .in('id', Array.from(categoryIds))
+        );
+      } else {
+        referencePromises.push(Promise.resolve({ data: [] }));
+      }
+
+      if (canonicalIds.size > 0) {
+        referencePromises.push(
+          supabase
+            .from('canonical_foods')
+            .select('id, canonical_name, category_id')
+            .in('id', Array.from(canonicalIds))
+        );
+      } else {
+        referencePromises.push(Promise.resolve({ data: [] }));
+      }
+
+      if (cultivarIds.size > 0) {
+        referencePromises.push(
+          supabase
+            .from('cultivars')
+            .select('id, cultivar_name, canonical_food_id')
+            .in('id', Array.from(cultivarIds))
+        );
+      } else {
+        referencePromises.push(Promise.resolve({ data: [] }));
+      }
+
+      const referenceResults = await Promise.allSettled(referencePromises);
+
+      // Créer les maps de référence
+      const categoriesMap = new Map();
+      const canonicalMap = new Map();
+      const cultivarsMap = new Map();
+
+      if (referenceResults[0].status === 'fulfilled' && referenceResults[0].value.data) {
+        referenceResults[0].value.data.forEach(cat => {
+          categoriesMap.set(cat.id, cat);
+        });
+      }
+
+      if (referenceResults[1].status === 'fulfilled' && referenceResults[1].value.data) {
+        referenceResults[1].value.data.forEach(can => {
+          canonicalMap.set(can.id, can);
+        });
+      }
+
+      if (referenceResults[2].status === 'fulfilled' && referenceResults[2].value.data) {
+        referenceResults[2].value.data.forEach(cult => {
+          cultivarsMap.set(cult.id, cult);
+        });
+      }
+
+      // NORMALISATION ET SCORING DES RÉSULTATS
+      const allResults = [];
+
+      // 1. Traiter canonical_foods
+      if (searchResults[0].status === 'fulfilled' && searchResults[0].value.data) {
+        searchResults[0].value.data.forEach(row => {
+          const name = row.canonical_name || '';
+          const score = fuzzyMatch(q, name);
+
+          if (score > 0.3) {
+            const category = categoriesMap.get(row.category_id);
+            const icon = getCategoryIcon(row.category_id, category?.name, name);
+
+            allResults.push({
+              id: row.id,
+              type: 'canonical',
+              name: capitalizeProduct(name),
+              display_name: capitalizeProduct(name),
+              category: {
+                name: category?.name || row.subcategory || 'Aliment',
+                id: row.category_id,
+                icon: category?.icon
+              },
+              category_id: row.category_id,
+              subcategory: row.subcategory,
+              primary_unit: row.primary_unit || 'g',
+              shelf_life_days_pantry: row.shelf_life_days_pantry,
+              shelf_life_days_fridge: row.shelf_life_days_fridge,
+              shelf_life_days_freezer: row.shelf_life_days_freezer,
+              icon,
+              matchScore: score,
+              sourceTable: 'canonical_foods'
+            });
+          }
+        });
+      }
+
+      // 2. Traiter cultivars
+      if (searchResults[1].status === 'fulfilled' && searchResults[1].value.data) {
+        searchResults[1].value.data.forEach(row => {
+          const name = row.cultivar_name || '';
+          const score = fuzzyMatch(q, name);
+
+          if (score > 0.3) {
+            const canonical = canonicalMap.get(row.canonical_food_id);
+            const category = canonical ? categoriesMap.get(canonical.category_id) : null;
+            const icon = getCategoryIcon(canonical?.category_id, category?.name, name);
+
+            allResults.push({
+              id: row.id,
+              type: 'cultivar',
+              name: capitalizeProduct(name),
+              display_name: capitalizeProduct(name),
+              category: {
+                name: category?.name || 'Variété',
+                id: canonical?.category_id,
+                icon: category?.icon
+              },
+              category_id: canonical?.category_id,
+              subcategory: canonical?.canonical_name,
+              primary_unit: 'pièce',
+              shelf_life_days_pantry: row.shelf_life_days_pantry,
+              shelf_life_days_fridge: row.shelf_life_days_fridge,
+              shelf_life_days_freezer: row.shelf_life_days_freezer,
+              icon,
+              matchScore: score,
+              sourceTable: 'cultivars',
+              canonical_food_id: row.canonical_food_id
+            });
+          }
+        });
+      }
+
+      // 3. Traiter generic_products
+      if (searchResults[2].status === 'fulfilled' && searchResults[2].value.data) {
+        searchResults[2].value.data.forEach(row => {
+          const name = row.name || '';
+          const score = fuzzyMatch(q, name);
+
+          if (score > 0.3) {
+            const category = categoriesMap.get(row.category_id);
+            const icon = getCategoryIcon(row.category_id, category?.name, name);
+
+            allResults.push({
+              id: row.id,
+              type: 'generic',
+              name: capitalizeProduct(name),
+              display_name: capitalizeProduct(name),
+              category: {
+                name: category?.name || row.subcategory || 'Produit',
+                id: row.category_id,
+                icon: category?.icon
+              },
+              category_id: row.category_id,
+              subcategory: row.subcategory,
+              primary_unit: row.primary_unit || 'g',
+              shelf_life_days_pantry: row.shelf_life_days_pantry,
+              shelf_life_days_fridge: row.shelf_life_days_fridge,
+              shelf_life_days_freezer: row.shelf_life_days_freezer,
+              icon,
+              matchScore: score,
+              sourceTable: 'generic_products'
+            });
+          }
+        });
+      }
+
+      // 4. Traiter derived_products
+      if (searchResults[3].status === 'fulfilled' && searchResults[3].value.data) {
+        searchResults[3].value.data.forEach(row => {
+          const name = row.derived_name || '';
+          const score = fuzzyMatch(q, name);
+
+          if (score > 0.3) {
+            const cultivar = cultivarsMap.get(row.cultivar_id);
+            const canonical = cultivar ? canonicalMap.get(cultivar.canonical_food_id) : null;
+            const category = canonical ? categoriesMap.get(canonical.category_id) : null;
+            const icon = getCategoryIcon(canonical?.category_id, category?.name, name);
+
+            allResults.push({
+              id: row.id,
+              type: 'derived',
+              name: capitalizeProduct(name),
+              display_name: capitalizeProduct(name),
+              category: {
+                name: category?.name || 'Transformé',
+                id: canonical?.category_id,
+                icon: category?.icon
+              },
+              category_id: canonical?.category_id,
+              subcategory: cultivar?.cultivar_name,
+              primary_unit: 'g',
+              shelf_life_days_pantry: row.expected_shelf_life_days,
+              shelf_life_days_fridge: row.expected_shelf_life_days,
+              shelf_life_days_freezer: row.expected_shelf_life_days * 10,
+              icon,
+              matchScore: score,
+              sourceTable: 'derived_products',
+              cultivar_id: row.cultivar_id
+            });
+          }
+        });
+      }
+
+      // TRI ET FINALISATION
+      const sortedResults = allResults
+        .sort((a, b) => b.matchScore - a.matchScore)
+        .slice(0, 12);
+
+      // Ajouter l'option "nouveau produit" si nécessaire
       const hasPerfectMatch = sortedResults.some(r => r.matchScore >= 0.9);
       const shouldShowNewOption = !hasPerfectMatch && q.length >= 2;
 
