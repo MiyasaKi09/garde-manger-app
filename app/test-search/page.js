@@ -110,9 +110,86 @@ export default function TestSearchPage() {
     return () => clearTimeout(timeoutId);
   }, [query]);
 
+  // Fonction de test direct
+  const testDirectQuery = async () => {
+    console.log('🔬 Test de requête directe...');
+    
+    try {
+      // Test 1: Récupérer les 5 premiers canonical_foods
+      const { data: testData, error: testError } = await supabase
+        .from('canonical_foods')
+        .select('id, canonical_name')
+        .limit(5);
+      
+      if (testError) {
+        console.error('❌ Erreur test:', testError);
+        alert('Erreur: ' + testError.message);
+      } else {
+        console.log('✅ Données test:', testData);
+        alert(`Succès! ${testData?.length || 0} produits trouvés. Vérifiez la console.`);
+      }
+    } catch (error) {
+      console.error('❌ Erreur:', error);
+      alert('Erreur: ' + error.message);
+    }
+  };
+
   return (
     <div style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto' }}>
       <h1>Test de recherche dans les bases de données</h1>
+      
+      {/* Boutons de test */}
+      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+        <button
+          onClick={testDirectQuery}
+          style={{
+            padding: '0.5rem 1rem',
+            background: '#4CAF50',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          🔬 Tester connexion
+        </button>
+        
+        <button
+          onClick={async () => {
+            const { data, error } = await supabase.from('canonical_foods').select('*').limit(10);
+            console.log('Canonical foods:', data, error);
+            setResults(data ? data.map(d => ({ id: d.id, name: d.canonical_name || 'Sans nom', type: 'test', table: 'canonical_foods' })) : []);
+          }}
+          style={{
+            padding: '0.5rem 1rem',
+            background: '#2196F3',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          📋 Voir 10 canonical
+        </button>
+        
+        <button
+          onClick={async () => {
+            const { data, error } = await supabase.from('generic_products').select('*').limit(10);
+            console.log('Generic products:', data, error);
+            setResults(data ? data.map(d => ({ id: d.id, name: d.name || 'Sans nom', type: 'test', table: 'generic_products' })) : []);
+          }}
+          style={{
+            padding: '0.5rem 1rem',
+            background: '#FF9800',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          📦 Voir 10 generic
+        </button>
+      </div>
       
       <input
         type="text"
