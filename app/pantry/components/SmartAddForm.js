@@ -1,57 +1,11 @@
-// app/pantry/components/SmartAddForm.js - Version fonctionnelle avec icônes
+// app/pantry/components/SmartAddForm.js - Version corrigée avec icônes de catégories
 
 'use client';
 
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { Search, Plus, X, Calendar, MapPin, ShieldCheck } from 'lucide-react';
 import { supabase as supabaseClient } from '@/lib/supabaseClient';
-
-// Mapping des icônes basé sur les IDs de reference_categories
-const getCategoryIcon = (categoryId, categoryName) => {
-  // Mapping des IDs vers les icônes (basé sur votre CSV reference_categories)
-  const categoryIcons = {
-    1: '🍎',    // Fruits
-    2: '🥕',    // Légumes  
-    3: '🍄',    // Champignons
-    4: '🥚',    // Œufs
-    5: '🌾',    // Céréales
-    6: '🫘',    // Légumineuses
-    7: '🥛',    // Produits laitiers
-    8: '🥩',    // Viandes
-    9: '🐟',    // Poissons
-    10: '🌶️',  // Épices
-    11: '🫒',   // Huiles
-    12: '🥫',   // Conserves
-    13: '🌰',   // Noix et graines
-    14: '🍯',   // Édulcorants
-  };
-  
-  // Essayer d'abord par ID
-  if (categoryId && categoryIcons[categoryId]) {
-    return categoryIcons[categoryId];
-  }
-  
-  // Fallback sur le nom
-  if (categoryName) {
-    const name = categoryName.toLowerCase();
-    if (name.includes('fruit')) return '🍎';
-    if (name.includes('légume') || name.includes('legume')) return '🥕';
-    if (name.includes('champignon')) return '🍄';
-    if (name.includes('œuf') || name.includes('oeuf')) return '🥚';
-    if (name.includes('céréale') || name.includes('cereale')) return '🌾';
-    if (name.includes('légumineuse') || name.includes('legumineuse')) return '🫘';
-    if (name.includes('laitier') || name.includes('lait')) return '🥛';
-    if (name.includes('viande')) return '🥩';
-    if (name.includes('poisson')) return '🐟';
-    if (name.includes('épice') || name.includes('epice')) return '🌶️';
-    if (name.includes('huile')) return '🫒';
-    if (name.includes('conserve')) return '🥫';
-    if (name.includes('noix') || name.includes('graine')) return '🌰';
-    if (name.includes('édulcorant') || name.includes('sucre') || name.includes('miel')) return '🍯';
-  }
-  
-  return '📦'; // Icône par défaut
-};
+import { getIcon } from '@/lib/categoryService'; // NOUVEAU : import du service
 
 export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [step, setStep] = useState(1);
@@ -105,7 +59,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     if (step === 2) setTimeout(() => qtyInputRef.current?.focus(), 100);
   }, [step]);
 
-  // Confidence calculation
   const calcConfidence = useCallback((query, name) => {
     if (!query || !name) return { percent: 0, label: 'Faible', tone: 'warning' };
     const q = query.trim().toLowerCase();
@@ -121,7 +74,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return { percent, label, tone };
   }, []);
 
-  // Expiry estimation
   const estimateExpiry = useCallback((product, method) => {
     if (!product) return '';
     const map = {
@@ -137,7 +89,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return d.toISOString().slice(0, 10);
   }, []);
 
-  // Default quantity for unit
   const defaultQtyForUnit = useCallback((unit) => {
     if (!unit) return '';
     const u = unit.toLowerCase();
@@ -147,7 +98,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return '';
   }, []);
 
-  // Search products in database
+  // --- SEARCH: uniquement Supabase ---
   const searchProducts = useCallback(
     async (query) => {
       const q = query.trim();
@@ -166,59 +117,171 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
         const escaped = q.replace(/[%_]/g, '\\$&');
 
-        // Recherche dans canonical_foods avec jointure sur reference_categories
-        const { data: canonicalData, error: canonicalError } = await supabase
-          .from('canonical_foods')
-          .select(`
-            id,
-            canonical_name,
-            category_id,
+        // MODIFICATION : Normaliser les résultats avec les bonnes icônes
+        const normalizeViewRow = async (row) => {
+          if (!row) return null;
+          const canonicalId =
+            row.canonical_food_id ?? row.canonical_id ?? row.id ?? row.food_id ?? null;
+          if (!canonicalId) return null;
+
+          const nameCandidates = [
+            row.display_name,
+            row.product_label,
+            row.product_name,
+            row.canonical_name,
+            row.alias_name,
+            row.name
+          ];
+          const baseName = nameCandidates.find(
+            (value) => typeof value === 'string' && value.trim().length > 0
+          );
+          const brandCandidate = [row.product_brand, row.brand].find(
+            (value) => typeof value === 'string' && value.trim().length > 0
+          );
+          const trimmedName = baseName?.trim() ?? '';
+          const resolvedName =
+            trimmedName &&
+            brandCandidate &&
+            !trimmedName.toLowerCase().includes(brandCandidate.toLowerCase())
+              ? `${trimmedName} (${brandCandidate.trim()})`
+              : trimmedName || q;
+          const subcategory =
+            row.subcategory ?? row.canonical_subcategory ?? row.product_subcategory ?? null;
+          const categoryName =
+            row.category_name ?? row.category ?? row.product_category ?? subcategory ?? 'Aliment';
+          
+          // NOUVEAU : Utiliser le service pour obtenir la bonne icône
+          const icon = await getIcon(row.category_id, categoryName);
+
+          return {
+            id: canonicalId,
+            canonical_food_id: canonicalId,
+            type: 'canonical',
+            name: resolvedName,
+            display_name: resolvedName,
             subcategory,
-            primary_unit,
-            shelf_life_days_pantry,
-            shelf_life_days_fridge,
-            shelf_life_days_freezer,
-            category:reference_categories(id, name, icon, color_hex)
-          `)
-          .or(`canonical_name.ilike.%${escaped}%,keywords.cs.{${escaped}}`)
-          .limit(10);
+            category: { name: categoryName, icon },
+            category_id: row.category_id, // AJOUT : inclure l'ID de catégorie
+            primary_unit: row.primary_unit ?? row.unit ?? row.default_unit ?? 'g',
+            shelf_life_days_fridge:
+              row.shelf_life_days_fridge ?? row.fridge_life_days ?? row.default_shelf_life_fridge ?? null,
+            shelf_life_days_pantry:
+              row.shelf_life_days_pantry ??
+              row.pantry_life_days ??
+              row.default_shelf_life_pantry ??
+              null,
+            shelf_life_days_freezer:
+              row.shelf_life_days_freezer ??
+              row.freezer_life_days ??
+              row.default_shelf_life_freezer ??
+              null,
+            icon
+          };
+        };
 
-        if (canonicalError) throw canonicalError;
+        // MODIFICATION : Normaliser aussi les résultats canoniques avec icônes
+        const normalizeCanonicalRow = async (row) => {
+          if (!row) return null;
+          const name = row.canonical_name ?? row.name ?? '';
+          
+          // NOUVEAU : Utiliser le service pour l'icône
+          const icon = await getIcon(row.category_id, row.subcategory);
+          
+          return {
+            id: row.id,
+            canonical_food_id: row.id,
+            type: 'canonical',
+            name,
+            display_name: name,
+            subcategory: row.subcategory ?? null,
+            category: { name: row.subcategory ?? 'Aliment', icon },
+            category_id: row.category_id, // AJOUT
+            primary_unit: row.primary_unit ?? 'g',
+            shelf_life_days_fridge: row.shelf_life_days_fridge ?? null,
+            shelf_life_days_pantry: row.shelf_life_days_pantry ?? null,
+            shelf_life_days_freezer: row.shelf_life_days_freezer ?? null,
+            icon
+          };
+        };
 
-        // Normaliser les résultats avec les bonnes icônes
-        const canonicalResults = (canonicalData || [])
-          .map((row) => {
-            // Utiliser l'icône de la catégorie ou fallback
-            const icon = row.category?.icon || getCategoryIcon(row.category_id, row.category?.name);
-            
-            return {
-              id: row.id,
-              type: 'canonical',
-              name: row.canonical_name,
-              display_name: row.canonical_name,
-              category: {
-                name: row.category?.name || 'Aliment',
-                id: row.category_id,
-                icon: row.category?.icon
-              },
-              category_id: row.category_id,
-              subcategory: row.subcategory,
-              primary_unit: row.primary_unit || 'g',
-              shelf_life_days_pantry: row.shelf_life_days_pantry,
-              shelf_life_days_fridge: row.shelf_life_days_fridge,
-              shelf_life_days_freezer: row.shelf_life_days_freezer,
-              icon
-            };
-          })
-          .filter(Boolean);
+        const results = [];
+        const seenCanonicals = new Set();
+        const pushResult = (item) => {
+          if (!item) return;
+          const key = item.canonical_food_id ?? item.id;
+          if (!key || seenCanonicals.has(key)) return;
+          seenCanonicals.add(key);
+          results.push(item);
+        };
 
-        // Tri par pertinence
-        const results = canonicalResults.sort((a, b) => {
-          const qa = q.toLowerCase();
-          const sa = a.name.toLowerCase();
-          const sb = b.name.toLowerCase();
-          const ra = sa === qa ? 0 : sa.startsWith(qa) ? 1 : sa.includes(qa) ? 2 : 3;
-          const rb = sb === qa ? 0 : sb.startsWith(qa) ? 1 : sb.includes(qa) ? 2 : 3;
+        // Essayer d'abord la vue de recherche (si elle existe)
+        const viewFilters = ['search_label', 'display_name', 'product_name', 'canonical_name'];
+        let lastViewError = null;
+
+        for (const column of viewFilters) {
+          try {
+            const { data: viewMatches, error: viewError } = await supabase
+              .from('v_products_search')
+              .select('*')
+              .ilike(column, `%${escaped}%`)
+              .limit(20);
+
+            if (viewError) {
+              lastViewError = viewError;
+              continue;
+            }
+
+            if (viewMatches?.length) {
+              // MODIFICATION : Attendre les résultats normalisés avec icônes
+              const normalizedResults = await Promise.all(
+                viewMatches.map(row => normalizeViewRow(row))
+              );
+              normalizedResults.forEach(pushResult);
+              break;
+            }
+          } catch (viewCatch) {
+            lastViewError = viewCatch;
+          }
+        }
+
+        if (!results.length && lastViewError) {
+          console.warn('v_products_search fallback', lastViewError?.message ?? lastViewError);
+        }
+
+        // Fallback sur canonical_foods si pas de résultats
+        if (!results.length) {
+          const { data: canonicalMatches, error: canonicalError } = await supabase
+            .from('canonical_foods')
+            .select(`
+              id,
+              canonical_name,
+              category_id,
+              subcategory,
+              primary_unit,
+              shelf_life_days_pantry,
+              shelf_life_days_fridge,
+              shelf_life_days_freezer
+            `)
+            .ilike('canonical_name', `%${escaped}%`)
+            .limit(15);
+
+          if (canonicalError) throw canonicalError;
+          
+          // MODIFICATION : Attendre les résultats normalisés avec icônes
+          if (canonicalMatches?.length) {
+            const normalizedResults = await Promise.all(
+              canonicalMatches.map(row => normalizeCanonicalRow(row))
+            );
+            normalizedResults.forEach(pushResult);
+          }
+        }
+
+        results.sort((a, b) => {
+          const sa = (a.display_name || a.name || '').toLowerCase();
+          const sb = (b.display_name || b.name || '').toLowerCase();
+          const ql = q.toLowerCase();
+          const ra = sa === ql ? 0 : sa.startsWith(ql) ? 1 : sa.includes(ql) ? 2 : 3;
+          const rb = sb === ql ? 0 : sb.startsWith(ql) ? 1 : sb.includes(ql) ? 2 : 3;
           return ra - rb;
         });
 
@@ -257,7 +320,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     [supabase]
   );
 
-  // Debounce search
+  // Debounce
   useEffect(() => {
     if (!searchQuery.trim()) {
       setSearchResults([]);
@@ -268,7 +331,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return () => clearTimeout(t);
   }, [searchQuery, searchProducts]);
 
-  // Product selection
+  // Sélection
   const handleSelectProduct = useCallback(
     (product) => {
       setSelectedProduct(product);
@@ -295,7 +358,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     [searchQuery, calcConfidence, estimateExpiry, defaultQtyForUnit]
   );
 
-  // Storage method change handler
   const handleStorageMethodChange = useCallback(
     (method) => {
       setLotData((prev) => ({
@@ -310,17 +372,12 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     [selectedProduct, estimateExpiry]
   );
 
-  // Create lot in database
+  // MODIFICATION : Utiliser la vraie structure inventory_lots
   const handleCreateLot = useCallback(async () => {
     if (!selectedProduct) return;
     
     setLoading(true);
     try {
-      // Get current user
-      const { data: { user }, error: userError } = await supabase.auth.getUser();
-      if (userError) throw userError;
-      if (!user) throw new Error('Utilisateur non connecté');
-
       let productToUse = selectedProduct;
 
       // Si c'est un nouveau produit, le créer d'abord
@@ -341,7 +398,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         productToUse = { ...selectedProduct, id: newProduct.id, type: 'canonical' };
       }
 
-      // Préparer les données du lot selon la structure inventory_lots
+      // Créer le lot selon la structure inventory_lots
       const lotDataToInsert = {
         canonical_food_id: productToUse.type === 'canonical' ? productToUse.id : null,
         qty_remaining: parseFloat(lotData.qty_remaining) || 0,
@@ -354,7 +411,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         acquired_on: new Date().toISOString().split('T')[0]
       };
 
-      // Insérer le lot
       const { data, error } = await supabase
         .from('inventory_lots')
         .insert([lotDataToInsert])
@@ -371,7 +427,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
       if (error) throw error;
       
-      // Appeler le callback avec le nouveau lot
       onLotCreated?.(data);
       onClose();
     } catch (error) {
@@ -387,7 +442,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   return (
     <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="modal-container">
-        {/* Header */}
         <div className="modal-header">
           <div className="header-title">
             <Plus size={24} />
@@ -398,15 +452,12 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           </button>
         </div>
 
-        {/* Progress indicator */}
         <div className="progress-bar">
           <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>1. Produit</div>
           <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>2. Quantité</div>
         </div>
 
-        {/* Content */}
         <div className="modal-content">
-          {/* Step 1: Search */}
           {step === 1 && (
             <div className="search-step">
               <div className="search-wrapper">
@@ -424,9 +475,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
               {searchQuery && (
                 <div className="debug-info">
-                  <small>
-                    🔍 Recherche: "{searchQuery}" • {searchResults.length} résultats
-                  </small>
+                  <small>🔍 Recherche: "{searchQuery}" • {searchResults.length} résultats</small>
                 </div>
               )}
 
@@ -462,13 +511,12 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
               {searchQuery && !searchLoading && searchResults.length === 0 && (
                 <div className="no-results">
-                  <p>Aucun résultat trouvé.</p>
+                  <p>Aucun résultat.</p>
                 </div>
               )}
             </div>
           )}
 
-          {/* Step 2: Lot details */}
           {step === 2 && selectedProduct && (
             <div className="form-step">
               <div className="product-summary">
@@ -602,11 +650,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
               </div>
 
               <div className="form-actions">
-                <button 
-                  onClick={() => setStep(1)} 
-                  className="btn-secondary" 
-                  disabled={loading}
-                >
+                <button onClick={() => setStep(1)} className="btn-secondary" disabled={loading}>
                   Retour
                 </button>
                 <button
@@ -622,14 +666,13 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         </div>
       </div>
 
-      {/* Styles */}
+      {/* Styles identiques à votre version qui marche */}
       <style jsx>{`
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; }
         .modal-container { background: white; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,.2); max-width: 500px; width: 100%; max-height: 90vh; overflow: hidden; display: flex; flex-direction: column; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid #e5e7eb; background: #f8fdf8; }
         .header-title { display: flex; align-items: center; gap: .5rem; font-size: 1.25rem; font-weight: 600; color: #1a3a1a; }
         .close-btn { background: none; border: none; cursor: pointer; padding: .5rem; border-radius: 8px; color: #6b7280; }
-        .close-btn:hover { background: #f3f4f6; }
         .progress-bar { display: flex; padding: 1rem 1.5rem; background: #f9fafb; border-bottom: 1px solid #e5e7eb; }
         .progress-step { flex: 1; text-align: center; padding: .5rem; font-size: .875rem; font-weight: 500; color: #9ca3af; }
         .progress-step.active { color: #6b9d6b; }
@@ -658,7 +701,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .product-icon { font-size: 1.5rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: white; border-radius: 8px; }
         .product-info { flex: 1; }
         .product-name { font-weight: 600; color: #1a3a1a; margin-bottom: .25rem; }
-        .product-source { font-size: .875rem; color: #6b7280; display: flex; align-items: center; gap: .5rem; }
+        .product-source { font-size: .875rem; color: #6b7280; }
         .confidence-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 999px; }
         .confidence-badge.good { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
         .confidence-badge.neutral { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
@@ -668,25 +711,23 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .lot-form { display: flex; flex-direction: column; gap: 1rem; }
         .form-row { display: flex; gap: 1rem; }
         .form-group { display: flex; flex-direction: column; gap: .5rem; }
+        .form-group.flex-1 { flex: 1; }
+        .form-group.flex-2 { flex: 2; }
         .form-group label { font-weight: 500; color: #374151; display: flex; align-items: center; gap: .5rem; font-size: 14px; }
         .form-input, .form-select, .form-textarea { padding: .75rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem; }
         .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: #a8c5a8; box-shadow: 0 0 0 3px rgba(168,197,168,.1); }
-        .form-textarea { resize: vertical; min-height: 60px; }
         .storage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
-        .storage-btn { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 1rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; cursor: pointer; transition: all 0.2s; }
+        .storage-btn { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 1rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; cursor: pointer; }
         .storage-btn:hover { border-color: #c8d8c8; }
         .storage-btn.active { border-color: #8bb58b; background: #f8fdf8; }
         .method-icon { font-size: 1.25rem; }
         .method-label { font-size: .875rem; font-weight: 500; color: #374151; }
         .form-actions { display: flex; gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; }
-        .btn-secondary, .btn-primary { flex: 1; padding: .75rem 1.5rem; border-radius: 8px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-secondary, .btn-primary { flex: 1; padding: .75rem 1.5rem; border-radius: 8px; font-weight: 500; cursor: pointer; border: none; }
         .btn-secondary { background: #f9fafb; border: 1px solid #d1d5db; color: #374151; }
-        .btn-secondary:hover:not(:disabled) { background: #f3f4f6; }
-        .btn-primary { background: linear-gradient(135deg, #6ba644 0%, #8bc34a 100%); color: white; }
-        .btn-primary:hover:not(:disabled) { background: linear-gradient(135deg, #5a9439 0%, #7ab239 100%); transform: translateY(-1px); }
+        .btn-primary { background: #8bb58b; color: white; }
         .btn-primary:disabled, .btn-secondary:disabled { opacity: .5; cursor: not-allowed; }
-        
-        @media (max-width: 768px) {
+        @media (max-width: 768px){
           .modal-container { margin: 0; max-height: 100vh; border-radius: 0; }
           .modal-content { padding: 1rem; }
           .form-row { flex-direction: column; gap: .75rem; }
