@@ -186,8 +186,66 @@ export default function TestSearchPage() {
             borderRadius: '4px',
             cursor: 'pointer'
           }}
+        <button
+          onClick={async () => {
+            // Test avec la vue ou table inventory_lots
+            const { data, error } = await supabase.from('inventory_lots').select('*').limit(10);
+            console.log('Inventory lots:', data, error);
+            if (error) alert('Erreur inventory_lots: ' + error.message);
+            else alert(`Trouvé ${data?.length || 0} lots dans inventory_lots`);
+          }}
+          style={{
+            padding: '0.5rem 1rem',
+            background: '#9C27B0',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
         >
-          📦 Voir 10 generic
+          📊 Voir inventory_lots
+        </button>
+        
+        <button
+          onClick={async () => {
+            // Lister toutes les tables
+            const { data, error } = await supabase.from('reference_categories').select('*').limit(10);
+            console.log('Reference categories:', data, error);
+            setResults(data ? data.map(d => ({ id: d.id, name: d.name || 'Sans nom', type: 'category', table: 'reference_categories' })) : []);
+          }}
+          style={{
+            padding: '0.5rem 1rem',
+            background: '#795548',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        <button
+          onClick={async () => {
+            // Compter les lignes dans canonical_foods
+            const { count, error } = await supabase
+              .from('canonical_foods')
+              .select('*', { count: 'exact', head: true });
+            
+            if (error) {
+              console.error('Erreur count:', error);
+              alert(`Erreur: ${error.message}`);
+            } else {
+              console.log(`Nombre de lignes dans canonical_foods: ${count}`);
+              alert(`La table canonical_foods contient ${count} lignes`);
+            }
+          }}
+          style={{
+            padding: '0.5rem 1rem',
+            background: '#E91E63',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          🔢 Compter canonical_foods
         </button>
       </div>
       
