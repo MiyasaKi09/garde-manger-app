@@ -183,64 +183,75 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     const q = query.trim().toLowerCase();
     
     try {
-      // 1. Recherche dans canonical_foods
-      const { data: canonicalFoods } = await supabase
+      // Créer des patterns de recherche pour la requête
+      const searchPatterns = [
+        q, // Recherche exacte
+        `%${q}%`, // Contient
+        `${q}%` // Commence par
+      ];
+      
+      // 1. Recherche dans canonical_foods avec filtres ilike
+      const { data: canonicalFoods, error } = await supabase
         .from('canonical_foods')
         .select(`
           *,
           category:reference_categories(id, name, icon, color_hex)
         `)
+        .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}},subcategory.ilike.%${q}%`)
         .limit(20);
 
-      // 2. Filtrer avec tolérance aux fautes
-      const results = [];
-      
-      if (canonicalFoods) {
-        for (const food of canonicalFoods) {
-          let matchScore = 0;
-          
-          // Vérifier le nom
-          if (searchWithTypo(q, food.canonical_name)) {
-            matchScore += 10;
-            if (food.canonical_name.toLowerCase().startsWith(q)) {
-              matchScore += 5;
+      if (error) {
+        console.error('Erreur requête Supabase:', error);
+        setSearchResults([]);
+        return;
+      }
+
+      // Transformer et scorer les résultats
+      const results = (canonicalFoods || []).map(food => {
+        let matchScore = 0;
+        const nameLower = food.canonical_name.toLowerCase();
+        
+        // Score basé sur la position de la correspondance
+        if (nameLower === q) {
+          matchScore = 100; // Correspondance exacte
+        } else if (nameLower.startsWith(q)) {
+          matchScore = 50; // Commence par
+        } else if (nameLower.includes(q)) {
+          matchScore = 20; // Contient
+        }
+        
+        // Bonus pour les mots-clés
+        if (food.keywords && Array.isArray(food.keywords)) {
+          for (const keyword of food.keywords) {
+            if (keyword.toLowerCase().includes(q)) {
+              matchScore += 10;
+              break;
             }
-          }
-          
-          // Vérifier les mots-clés
-          if (food.keywords && Array.isArray(food.keywords)) {
-            for (const keyword of food.keywords) {
-              if (searchWithTypo(q, keyword)) {
-                matchScore += 3;
-                break;
-              }
-            }
-          }
-          
-          // Vérifier la sous-catégorie
-          if (food.subcategory && searchWithTypo(q, food.subcategory)) {
-            matchScore += 2;
-          }
-          
-          if (matchScore > 0) {
-            results.push({
-              ...food,
-              id: food.id,
-              name: food.canonical_name,
-              type: 'canonical',
-              matchScore,
-              icon: getCategoryIcon(food.category_id, food.canonical_name)
-            });
           }
         }
-      }
+        
+        // Bonus pour la sous-catégorie
+        if (food.subcategory && food.subcategory.toLowerCase().includes(q)) {
+          matchScore += 5;
+        }
+        
+        return {
+          ...food,
+          id: food.id,
+          name: food.canonical_name,
+          type: 'canonical',
+          matchScore,
+          icon: getCategoryIcon(food.category_id, food.canonical_name)
+        };
+      });
       
-      // Trier par score de correspondance
+      // Trier par score et prendre les meilleurs résultats
       results.sort((a, b) => b.matchScore - a.matchScore);
       setSearchResults(results.slice(0, 10));
       
     } catch (error) {
       console.error('Erreur recherche:', error);
+      setSearchResults([]);
     } finally {
       setSearchLoading(false);
     }
