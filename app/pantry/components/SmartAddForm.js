@@ -70,17 +70,11 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     
     // Icônes par défaut basées sur le nom
     const nameIcons = {
-      'tomate': '🍅', 'tomatillo': '🍅', 'pomme': '🍎', 'poire': '🍐',
-      'banane': '🍌', 'fraise': '🍓', 'cerise': '🍒', 'peche': '🍑',
-      'orange': '🍊', 'citron': '🍋', 'ananas': '🍍', 'raisin': '🍇',
-      'pasteque': '🍉', 'melon': '🍈', 'kiwi': '🥝', 'mangue': '🥭',
-      'carotte': '🥕', 'pomme de terre': '🥔', 'patate': '🥔', 'mais': '🌽',
-      'brocoli': '🥦', 'chou': '🥬', 'salade': '🥬', 'concombre': '🥒',
-      'poivron': '🫑', 'aubergine': '🍆', 'champignon': '🍄', 'ail': '🧄',
-      'oignon': '🧅', 'pain': '🍞', 'baguette': '🥖', 'croissant': '🥐',
-      'fromage': '🧀', 'lait': '🥛', 'beurre': '🧈', 'yaourt': '🥛',
-      'oeuf': '🥚', 'viande': '🥩', 'poulet': '🍗', 'poisson': '🐟',
-      'crevette': '🦐', 'riz': '🍚', 'pates': '🍝', 'pizza': '🍕'
+      'tomate': '🍅', 'pomme': '🍎', 'carotte': '🥕', 'pomme de terre': '🥔',
+      'banane': '🍌', 'fraise': '🍓', 'orange': '🍊', 'citron': '🍋',
+      'brocoli': '🥦', 'champignon': '🍄', 'oignon': '🧅', 'ail': '🧄',
+      'pain': '🍞', 'fromage': '🧀', 'lait': '🥛', 'oeuf': '🥚',
+      'viande': '🥩', 'poulet': '🍗', 'poisson': '🐟', 'riz': '🍚'
     };
     
     if (productName) {
@@ -93,14 +87,14 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return '📦';
   };
 
-  // Fonction pour calculer la date d'expiration par défaut
+  // Calculer la date d'expiration par défaut
   const getDefaultExpirationDate = useCallback((product, storageMethod) => {
     let days = 7;
     
     if (product) {
-      if (storageMethod === 'fridge' || storageMethod === 'Réfrigérateur') {
+      if (storageMethod === 'fridge') {
         days = product.shelf_life_days_fridge || 7;
-      } else if (storageMethod === 'freezer' || storageMethod === 'Congélateur') {
+      } else if (storageMethod === 'freezer') {
         days = product.shelf_life_days_freezer || 90;
       } else {
         days = product.shelf_life_days_pantry || 30;
@@ -112,7 +106,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return date.toISOString().split('T')[0];
   }, []);
 
-  // Fonction d'incrémentation intelligente selon l'unité
+  // Incrémentation intelligente
   const getIncrementValue = (unit) => {
     switch(unit) {
       case 'kg': return 0.1;
@@ -121,12 +115,11 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       case 'cl': return 100;
       case 'L': return 0.5;
       case 'unités':
-      case 'pièce':
       default: return 0.5;
     }
   };
 
-  // Fonction pour ajuster la quantité
+  // Ajuster la quantité
   const adjustQuantity = (direction) => {
     const increment = getIncrementValue(lotData.unit);
     const currentQty = parseFloat(lotData.qty_remaining) || 0;
@@ -140,36 +133,11 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     
     if (lotData.unit === 'kg') {
       newQty = Math.round(newQty * 10) / 10;
-    } else if (lotData.unit === 'unités' || lotData.unit === 'pièce') {
+    } else if (lotData.unit === 'unités') {
       newQty = Math.round(newQty * 2) / 2;
     }
     
     setLotData(prev => ({ ...prev, qty_remaining: newQty }));
-  };
-
-  // Fonction de recherche avec gestion des fautes de frappe
-  const searchWithTypo = (searchTerm, targetText) => {
-    const search = searchTerm.toLowerCase();
-    const target = targetText.toLowerCase();
-    
-    // Correspondance exacte
-    if (target.includes(search)) return true;
-    
-    // Tolérance pour les fautes de frappe (distance de Levenshtein simplifiée)
-    if (search.length >= 3) {
-      let differences = 0;
-      const minLength = Math.min(search.length, target.length);
-      
-      for (let i = 0; i < minLength; i++) {
-        if (search[i] !== target[i]) differences++;
-      }
-      
-      // Tolérer 1-2 fautes selon la longueur
-      const tolerance = search.length <= 4 ? 1 : 2;
-      if (differences <= tolerance) return true;
-    }
-    
-    return false;
   };
 
   // Recherche de produits
@@ -348,32 +316,21 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     setLoading(true);
     
     try {
-      // Obtenir l'utilisateur courant
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        throw new Error('Vous devez être connecté pour ajouter des produits');
-      }
-
-      const quantity = parseFloat(lotData.qty_remaining) || 0;
+      const quantity = parseFloat(lotData.qty_remaining) || 1;
       
       // Préparer les données pour inventory_lots
       const lotDataToInsert = {
+        canonical_food_id: selectedProduct.id,
         qty_remaining: quantity,
         initial_qty: quantity,
         unit: lotData.unit,
         storage_method: lotData.storage_method,
         storage_place: lotData.storage_place,
         expiration_date: lotData.expiration_date || null,
-        acquired_on: new Date().toISOString().split('T')[0],
-        notes: ''
+        acquired_on: new Date().toISOString().split('T')[0]
       };
-      
-      // Ajouter l'ID du produit selon le type
-      if (selectedProduct.type === 'canonical') {
-        lotDataToInsert.canonical_food_id = selectedProduct.id;
-      }
 
-      console.log('Création du lot:', lotDataToInsert);
+      console.log('Données à insérer:', lotDataToInsert);
 
       const { data: createdLot, error } = await supabase
         .from('inventory_lots')
@@ -382,11 +339,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .single();
 
       if (error) {
-        console.error('Erreur lors de la création:', error);
-        if (error.message?.includes('violates row-level security policy')) {
-          throw new Error('Erreur de permissions. Assurez-vous d\'être connecté.');
-        }
-        throw error;
+        console.error('Erreur Supabase:', error);
+        alert(`Erreur: ${error.message}`);
+        return;
       }
 
       console.log('Lot créé avec succès:', createdLot);
@@ -397,8 +352,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       
       onClose();
     } catch (error) {
-      console.error('Erreur complète:', error);
-      alert(error.message || 'Une erreur est survenue lors de la création du lot');
+      console.error('Erreur:', error);
+      alert(`Erreur: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -481,7 +436,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 <div className="product-details">
                   <div className="product-name">{selectedProduct.name}</div>
                   <div className="product-category">
-                    {selectedProduct.category?.name || selectedProduct.subcategory || 'Général'}
+                    {selectedProduct.subcategory || 'Général'}
                   </div>
                 </div>
                 <button onClick={() => setStep(1)} className="change-btn">
