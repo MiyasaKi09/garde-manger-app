@@ -13,6 +13,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [searchLoading, setSearchLoading] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([]);
   
   const [lotData, setLotData] = useState({
     qty_remaining: 1,
@@ -22,9 +23,25 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     expiration_date: ''
   });
 
+  const modalRef = useRef(null);
   const searchInputRef = useRef(null);
   const searchTimeoutRef = useRef(null);
   const supabase = createClientComponentClient();
+
+  // Charger les catégories au montage
+  useEffect(() => {
+    const loadCategories = async () => {
+      const { data } = await supabase
+        .from('reference_categories')
+        .select('id, name, icon, color_hex')
+        .order('sort_priority');
+      
+      if (data) {
+        setCategories(data);
+      }
+    };
+    loadCategories();
+  }, [supabase]);
 
   // Reset quand on ouvre le modal
   useEffect(() => {
@@ -44,12 +61,43 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     }
   }, [open]);
 
+  // Obtenir l'icône de la catégorie
+  const getCategoryIcon = (categoryId, productName) => {
+    if (categoryId) {
+      const category = categories.find(cat => cat.id === categoryId);
+      if (category?.icon) return category.icon;
+    }
+    
+    // Icônes par défaut basées sur le nom
+    const nameIcons = {
+      'tomate': '🍅', 'tomatillo': '🍅', 'pomme': '🍎', 'poire': '🍐',
+      'banane': '🍌', 'fraise': '🍓', 'cerise': '🍒', 'peche': '🍑',
+      'orange': '🍊', 'citron': '🍋', 'ananas': '🍍', 'raisin': '🍇',
+      'pasteque': '🍉', 'melon': '🍈', 'kiwi': '🥝', 'mangue': '🥭',
+      'carotte': '🥕', 'pomme de terre': '🥔', 'patate': '🥔', 'mais': '🌽',
+      'brocoli': '🥦', 'chou': '🥬', 'salade': '🥬', 'concombre': '🥒',
+      'poivron': '🫑', 'aubergine': '🍆', 'champignon': '🍄', 'ail': '🧄',
+      'oignon': '🧅', 'pain': '🍞', 'baguette': '🥖', 'croissant': '🥐',
+      'fromage': '🧀', 'lait': '🥛', 'beurre': '🧈', 'yaourt': '🥛',
+      'oeuf': '🥚', 'viande': '🥩', 'poulet': '🍗', 'poisson': '🐟',
+      'crevette': '🦐', 'riz': '🍚', 'pates': '🍝', 'pizza': '🍕'
+    };
+    
+    if (productName) {
+      const nameLower = productName.toLowerCase();
+      for (const [key, icon] of Object.entries(nameIcons)) {
+        if (nameLower.includes(key)) return icon;
+      }
+    }
+    
+    return '📦';
+  };
+
   // Fonction pour calculer la date d'expiration par défaut
   const getDefaultExpirationDate = useCallback((product, storageMethod) => {
-    let days = 7; // Par défaut
+    let days = 7;
     
     if (product) {
-      // Utiliser les données de durée de conservation selon le stockage
       if (storageMethod === 'fridge' || storageMethod === 'Réfrigérateur') {
         days = product.shelf_life_days_fridge || 7;
       } else if (storageMethod === 'freezer' || storageMethod === 'Congélateur') {
@@ -67,19 +115,14 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   // Fonction d'incrémentation intelligente selon l'unité
   const getIncrementValue = (unit) => {
     switch(unit) {
-      case 'kg':
-        return 0.1;
-      case 'g':
-        return 100;
+      case 'kg': return 0.1;
+      case 'g': return 100;
       case 'ml':
-      case 'cl':
-        return 100;
-      case 'L':
-        return 0.5;
+      case 'cl': return 100;
+      case 'L': return 0.5;
       case 'unités':
       case 'pièce':
-      default:
-        return 0.5;
+      default: return 0.5;
     }
   };
 
@@ -95,14 +138,38 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       newQty = Math.max(increment, currentQty - increment);
     }
     
-    // Arrondir selon l'unité
     if (lotData.unit === 'kg') {
       newQty = Math.round(newQty * 10) / 10;
     } else if (lotData.unit === 'unités' || lotData.unit === 'pièce') {
-      newQty = Math.round(newQty * 2) / 2; // Multiples de 0.5
+      newQty = Math.round(newQty * 2) / 2;
     }
     
     setLotData(prev => ({ ...prev, qty_remaining: newQty }));
+  };
+
+  // Fonction de recherche avec gestion des fautes de frappe
+  const searchWithTypo = (searchTerm, targetText) => {
+    const search = searchTerm.toLowerCase();
+    const target = targetText.toLowerCase();
+    
+    // Correspondance exacte
+    if (target.includes(search)) return true;
+    
+    // Tolérance pour les fautes de frappe (distance de Levenshtein simplifiée)
+    if (search.length >= 3) {
+      let differences = 0;
+      const minLength = Math.min(search.length, target.length);
+      
+      for (let i = 0; i < minLength; i++) {
+        if (search[i] !== target[i]) differences++;
+      }
+      
+      // Tolérer 1-2 fautes selon la longueur
+      const tolerance = search.length <= 4 ? 1 : 2;
+      if (differences <= tolerance) return true;
+    }
+    
+    return false;
   };
 
   // Recherche de produits
@@ -116,34 +183,68 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     const q = query.trim().toLowerCase();
     
     try {
-      // Rechercher dans les aliments canoniques
-      const { data: canonicalFoods, error: canonicalError } = await supabase
+      // 1. Recherche dans canonical_foods
+      const { data: canonicalFoods } = await supabase
         .from('canonical_foods')
-        .select('*')
-        .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}}`)
-        .limit(10);
+        .select(`
+          *,
+          category:reference_categories(id, name, icon, color_hex)
+        `)
+        .limit(20);
 
-      if (canonicalError) throw canonicalError;
-
-      const results = (canonicalFoods || []).map(food => ({
-        id: food.id,
-        name: food.canonical_name,
-        type: 'canonical',
-        category_id: food.category_id,
-        primary_unit: food.primary_unit || 'unités',
-        shelf_life_days_pantry: food.shelf_life_days_pantry,
-        shelf_life_days_fridge: food.shelf_life_days_fridge,
-        shelf_life_days_freezer: food.shelf_life_days_freezer,
-        ...food
-      }));
-
-      setSearchResults(results);
+      // 2. Filtrer avec tolérance aux fautes
+      const results = [];
+      
+      if (canonicalFoods) {
+        for (const food of canonicalFoods) {
+          let matchScore = 0;
+          
+          // Vérifier le nom
+          if (searchWithTypo(q, food.canonical_name)) {
+            matchScore += 10;
+            if (food.canonical_name.toLowerCase().startsWith(q)) {
+              matchScore += 5;
+            }
+          }
+          
+          // Vérifier les mots-clés
+          if (food.keywords && Array.isArray(food.keywords)) {
+            for (const keyword of food.keywords) {
+              if (searchWithTypo(q, keyword)) {
+                matchScore += 3;
+                break;
+              }
+            }
+          }
+          
+          // Vérifier la sous-catégorie
+          if (food.subcategory && searchWithTypo(q, food.subcategory)) {
+            matchScore += 2;
+          }
+          
+          if (matchScore > 0) {
+            results.push({
+              ...food,
+              id: food.id,
+              name: food.canonical_name,
+              type: 'canonical',
+              matchScore,
+              icon: getCategoryIcon(food.category_id, food.canonical_name)
+            });
+          }
+        }
+      }
+      
+      // Trier par score de correspondance
+      results.sort((a, b) => b.matchScore - a.matchScore);
+      setSearchResults(results.slice(0, 10));
+      
     } catch (error) {
       console.error('Erreur recherche:', error);
     } finally {
       setSearchLoading(false);
     }
-  }, [supabase]);
+  }, [supabase, getCategoryIcon]);
 
   // Debounce de la recherche
   useEffect(() => {
@@ -164,11 +265,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   const handleProductSelect = (product) => {
     setSelectedProduct(product);
-    
-    // Mettre à jour avec l'unité préférée du produit
     const preferredUnit = product.primary_unit || 'unités';
-    
-    // Calculer la date d'expiration par défaut
     const defaultExpiration = getDefaultExpirationDate(product, lotData.storage_method);
     
     setLotData(prev => ({
@@ -186,7 +283,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     if (method === 'fridge') place = 'Réfrigérateur';
     if (method === 'freezer') place = 'Congélateur';
     
-    // Recalculer la date d'expiration selon le nouveau mode de stockage
     const newExpiration = getDefaultExpirationDate(selectedProduct, method);
     
     setLotData(prev => ({
@@ -209,7 +305,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       // Obtenir l'utilisateur courant
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
-        throw new Error('Utilisateur non connecté');
+        throw new Error('Vous devez être connecté pour ajouter des produits');
       }
 
       const quantity = parseFloat(lotData.qty_remaining) || 0;
@@ -223,11 +319,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         storage_place: lotData.storage_place,
         expiration_date: lotData.expiration_date || null,
         acquired_on: new Date().toISOString().split('T')[0],
-        opened_on: null,
-        produced_on: null,
-        notes: '',
-        source: 'manual',
-        owner_id: user.id // Utiliser l'ID de l'utilisateur connecté
+        notes: ''
       };
       
       // Ajouter l'ID du produit selon le type
@@ -235,7 +327,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         lotDataToInsert.canonical_food_id = selectedProduct.id;
       }
 
-      console.log('Création du lot avec owner_id:', lotDataToInsert);
+      console.log('Création du lot:', lotDataToInsert);
 
       const { data: createdLot, error } = await supabase
         .from('inventory_lots')
@@ -244,27 +336,23 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .single();
 
       if (error) {
-        console.error('Erreur création:', error);
-        // Message d'erreur plus spécifique selon le type d'erreur
-        if (error.message.includes('row-level security')) {
-          alert('Erreur de sécurité: Assurez-vous d\'être connecté pour ajouter des produits.');
-        } else {
-          alert(`Erreur: ${error.message}`);
+        console.error('Erreur lors de la création:', error);
+        if (error.message?.includes('violates row-level security policy')) {
+          throw new Error('Erreur de permissions. Assurez-vous d\'être connecté.');
         }
-      } else {
-        console.log('Lot créé avec succès:', createdLot);
-        
-        // Appeler la callback
-        if (onLotCreated) {
-          onLotCreated(createdLot);
-        }
-        
-        // Fermer le modal
-        onClose();
+        throw error;
       }
+
+      console.log('Lot créé avec succès:', createdLot);
+      
+      if (onLotCreated) {
+        onLotCreated(createdLot);
+      }
+      
+      onClose();
     } catch (error) {
-      console.error('Erreur:', error);
-      alert(`Erreur: ${error.message}`);
+      console.error('Erreur complète:', error);
+      alert(error.message || 'Une erreur est survenue lors de la création du lot');
     } finally {
       setLoading(false);
     }
@@ -273,8 +361,12 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   if (!open) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlay">
+      <div 
+        ref={modalRef}
+        className="modal-container"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="modal-header">
           <div className="header-title">
             <Plus size={20} />
@@ -290,15 +382,15 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>2. Quantité</div>
         </div>
 
-        {step === 1 && (
-          <div className="modal-body">
-            <div className="search-section">
-              <div className="search-input-wrapper">
+        <div className="modal-content">
+          {step === 1 && (
+            <>
+              <div className="search-wrapper">
                 <Search size={18} />
                 <input
                   ref={searchInputRef}
                   type="text"
-                  placeholder="Rechercher un produit..."
+                  placeholder="tomate, pomme, carotte..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="search-input"
@@ -316,145 +408,149 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                     className="product-item"
                     onClick={() => handleProductSelect(product)}
                   >
-                    <Package size={16} />
-                    <span>{product.name}</span>
-                    <span className="product-category">
-                      {product.subcategory || 'Général'}
-                    </span>
+                    <span className="product-icon">{product.icon}</span>
+                    <div className="product-info">
+                      <span className="product-name">{product.name}</span>
+                      {product.subcategory && (
+                        <span className="product-subcategory">{product.subcategory}</span>
+                      )}
+                    </div>
                   </div>
                 ))}
+                {searchQuery && !searchLoading && searchResults.length === 0 && (
+                  <div className="no-results">
+                    Aucun produit trouvé pour "{searchQuery}"
+                  </div>
+                )}
               </div>
-            </div>
-          </div>
-        )}
+            </>
+          )}
 
-        {step === 2 && selectedProduct && (
-          <div className="modal-body">
-            <div className="selected-product-card">
-              <Package size={20} />
-              <div>
-                <div className="product-name">{selectedProduct.name}</div>
-                <div className="product-category">
-                  {selectedProduct.subcategory || 'Général'}
+          {step === 2 && selectedProduct && (
+            <>
+              <div className="selected-product-card">
+                <span className="product-icon-large">
+                  {getCategoryIcon(selectedProduct.category_id, selectedProduct.name)}
+                </span>
+                <div className="product-details">
+                  <div className="product-name">{selectedProduct.name}</div>
+                  <div className="product-category">
+                    {selectedProduct.category?.name || selectedProduct.subcategory || 'Général'}
+                  </div>
+                </div>
+                <button onClick={() => setStep(1)} className="change-btn">
+                  Changer
+                </button>
+              </div>
+
+              <div className="form-section">
+                <label className="form-label">Quantité actuelle</label>
+                <div className="quantity-controls">
+                  <button 
+                    onClick={() => adjustQuantity('down')}
+                    className="qty-btn"
+                    type="button"
+                  >
+                    −
+                  </button>
+                  <input
+                    type="number"
+                    value={lotData.qty_remaining}
+                    onChange={(e) => setLotData(prev => ({
+                      ...prev,
+                      qty_remaining: parseFloat(e.target.value) || 0
+                    }))}
+                    className="qty-input"
+                    step={getIncrementValue(lotData.unit)}
+                    min={getIncrementValue(lotData.unit)}
+                  />
+                  <button 
+                    onClick={() => adjustQuantity('up')}
+                    className="qty-btn"
+                    type="button"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-              <button onClick={() => setStep(1)} className="change-btn">
-                Changer
-              </button>
-            </div>
 
-            <div className="form-group">
-              <label>Quantité actuelle</label>
-              <div className="quantity-input-group">
-                <button 
-                  onClick={() => adjustQuantity('down')}
-                  className="qty-btn"
-                  type="button"
-                >
-                  −
-                </button>
-                <input
-                  type="number"
-                  value={lotData.qty_remaining}
+              <div className="form-section">
+                <label className="form-label">Unité</label>
+                <select
+                  value={lotData.unit}
                   onChange={(e) => setLotData(prev => ({
                     ...prev,
-                    qty_remaining: parseFloat(e.target.value) || 0
+                    unit: e.target.value,
+                    qty_remaining: 1
                   }))}
-                  className="qty-input"
-                  step={getIncrementValue(lotData.unit)}
-                  min={getIncrementValue(lotData.unit)}
+                  className="unit-select"
+                >
+                  <option value="unités">Unités</option>
+                  <option value="kg">Kilogrammes</option>
+                  <option value="g">Grammes</option>
+                  <option value="L">Litres</option>
+                  <option value="ml">Millilitres</option>
+                </select>
+              </div>
+
+              <div className="form-section">
+                <label className="form-label">📍 Méthode de stockage</label>
+                <div className="storage-buttons">
+                  <button
+                    type="button"
+                    className={`storage-btn ${lotData.storage_method === 'pantry' ? 'active' : ''}`}
+                    onClick={() => handleStorageMethodChange('pantry')}
+                  >
+                    <Home size={20} />
+                    <span>Garde-manger</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`storage-btn ${lotData.storage_method === 'fridge' ? 'active' : ''}`}
+                    onClick={() => handleStorageMethodChange('fridge')}
+                  >
+                    <Archive size={20} />
+                    <span>Réfrigérateur</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`storage-btn ${lotData.storage_method === 'freezer' ? 'active' : ''}`}
+                    onClick={() => handleStorageMethodChange('freezer')}
+                  >
+                    <Snowflake size={20} />
+                    <span>Congélateur</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="form-section">
+                <label className="form-label">
+                  <Calendar size={14} />
+                  Date de péremption
+                </label>
+                <input
+                  type="date"
+                  value={lotData.expiration_date}
+                  onChange={(e) => setLotData(prev => ({
+                    ...prev,
+                    expiration_date: e.target.value
+                  }))}
+                  className="date-input"
                 />
+              </div>
+
+              <div className="modal-actions">
+                <button onClick={() => setStep(1)} className="btn-secondary">
+                  Retour
+                </button>
                 <button 
-                  onClick={() => adjustQuantity('up')}
-                  className="qty-btn"
-                  type="button"
+                  onClick={handleCreateLot} 
+                  disabled={loading}
+                  className="btn-primary"
                 >
-                  +
+                  {loading ? 'Création...' : 'Créer le lot'}
                 </button>
               </div>
-            </div>
-
-            <div className="form-group">
-              <label>Unité</label>
-              <select
-                value={lotData.unit}
-                onChange={(e) => setLotData(prev => ({
-                  ...prev,
-                  unit: e.target.value,
-                  qty_remaining: 1
-                }))}
-                className="unit-select"
-              >
-                <option value="unités">Unités</option>
-                <option value="kg">Kilogrammes</option>
-                <option value="g">Grammes</option>
-                <option value="L">Litres</option>
-                <option value="ml">Millilitres</option>
-                <option value="cl">Centilitres</option>
-              </select>
-            </div>
-
-            <div className="form-group">
-              <label>📍 Méthode de stockage</label>
-              <div className="storage-methods">
-                <button
-                  type="button"
-                  className={`storage-btn ${lotData.storage_method === 'pantry' ? 'active' : ''}`}
-                  onClick={() => handleStorageMethodChange('pantry')}
-                >
-                  <Home size={18} />
-                  Garde-manger
-                </button>
-                <button
-                  type="button"
-                  className={`storage-btn ${lotData.storage_method === 'fridge' ? 'active' : ''}`}
-                  onClick={() => handleStorageMethodChange('fridge')}
-                >
-                  <Archive size={18} />
-                  Réfrigérateur
-                </button>
-                <button
-                  type="button"
-                  className={`storage-btn ${lotData.storage_method === 'freezer' ? 'active' : ''}`}
-                  onClick={() => handleStorageMethodChange('freezer')}
-                >
-                  <Snowflake size={18} />
-                  Congélateur
-                </button>
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label>
-                <Calendar size={16} />
-                Date de péremption
-              </label>
-              <input
-                type="date"
-                value={lotData.expiration_date}
-                onChange={(e) => setLotData(prev => ({
-                  ...prev,
-                  expiration_date: e.target.value
-                }))}
-                className="date-input"
-              />
-            </div>
-          </div>
-        )}
-
-        <div className="modal-footer">
-          {step === 2 && (
-            <>
-              <button onClick={() => setStep(1)} className="btn-secondary">
-                Retour
-              </button>
-              <button 
-                onClick={handleCreateLot} 
-                disabled={loading}
-                className="btn-primary"
-              >
-                {loading ? 'Création...' : 'Créer le lot'}
-              </button>
             </>
           )}
         </div>
@@ -462,4 +558,3 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     </div>
   );
 }
-
