@@ -363,3 +363,94 @@
 }
 
 .storage-btn svg {
+  color: inherit;
+}
+
+.storage-btn span {
+  display: block;
+}
+
+/* Date input */
+.date-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+/* Actions du modal */
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn-secondary {
+  flex: 1;
+  padding: 9px 16px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #f9fafb;
+}
+
+.btn-primary {
+  flex: 2;
+  padding: 9px 16px;
+  border: none;
+  background: #059669;
+  color: white;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: #047857;
+}
+
+.btn-primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .modal-container {
+    max-width: 100%;
+    margin: 10px;
+  }
+  
+  .storage-buttons {
+    grid-template-columns: 1fr;
+  }
+  
+  .storage-btn {
+    flex-direction: row;
+    justify-content: center;
+    padding: 8px;
+  }
+  
+  .storage-btn span {
+    margin-left: 8px;
+  }
+}
