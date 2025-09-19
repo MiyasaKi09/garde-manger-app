@@ -1,173 +1,153 @@
 // ========================================
-// FICHIER: src/components/PantryPage.jsx
-// OÙ: Dans votre projet → src → components → PantryPage.jsx
-// QUOI: Composant React pour afficher le garde-manger
+// FICHIER: app/pantry/page.js
+// OÙ: app → pantry → page.js
 // ========================================
 
-import React, { useState, useEffect } from 'react';
-import { pantryService } from '../config/supabase';
-import PantryCard from './PantryCard';
-import PantryFilters from './PantryFilters';
-import PantryStats from './PantryStats';
-import './PantryPage.css';
+'use client';
 
-const PantryPage = () => {
-  // États
+import { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
+import './pantry.css';
+
+export default function PantryPage() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [stats, setStats] = useState({
-    total: 0,
-    expiring: 0,
-    categories: 0,
-    locations: 0
-  });
-  
-  // Filtres
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [locationFilter, setLocationFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
 
-  // Charger les données au montage du composant
+  // Charger les données
   useEffect(() => {
-    loadPantryData();
+    loadPantryItems();
   }, []);
 
-  // Appliquer les filtres quand ils changent
+  // Filtrer les items
   useEffect(() => {
-    applyFilters();
-  }, [items, searchTerm, categoryFilter, locationFilter, statusFilter]);
-
-  // Fonction pour charger les données depuis Supabase
-  const loadPantryData = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      // Charger les articles
-      const data = await pantryService.getAll();
-      setItems(data || []);
-      
-      // Charger les statistiques
-      const statsData = await pantryService.getStats();
-      setStats(statsData);
-      
-    } catch (err) {
-      console.error('Erreur lors du chargement:', err);
-      setError('Impossible de charger les données. Vérifiez votre connexion.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Fonction pour appliquer les filtres
-  const applyFilters = () => {
     let filtered = [...items];
 
-    // Filtre par recherche
     if (searchTerm) {
       filtered = filtered.filter(item =>
         item.product_name?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
-    // Filtre par catégorie
     if (categoryFilter) {
-      filtered = filtered.filter(item =>
-        item.category_name === categoryFilter
-      );
+      filtered = filtered.filter(item => item.category_name === categoryFilter);
     }
 
-    // Filtre par emplacement
     if (locationFilter) {
-      filtered = filtered.filter(item =>
-        item.storage_place === locationFilter
-      );
+      filtered = filtered.filter(item => item.storage_place === locationFilter);
     }
 
-    // Filtre par statut
     if (statusFilter) {
-      filtered = filtered.filter(item =>
-        item.expiration_status === statusFilter
-      );
+      filtered = filtered.filter(item => item.expiration_status === statusFilter);
     }
 
     setFilteredItems(filtered);
-  };
+  }, [items, searchTerm, categoryFilter, locationFilter, statusFilter]);
 
-  // Fonction pour consommer un article
-  const handleConsume = async (id, currentQty) => {
-    const quantityToConsume = prompt(`Quantité à consommer ? (Max: ${currentQty})`);
-    
-    if (quantityToConsume && !isNaN(quantityToConsume)) {
-      try {
-        await pantryService.consumeItem(id, parseFloat(quantityToConsume));
-        await loadPantryData(); // Recharger les données
-        alert('Article mis à jour avec succès !');
-      } catch (err) {
-        console.error('Erreur:', err);
-        alert('Erreur lors de la mise à jour');
-      }
+  async function loadPantryItems() {
+    try {
+      const { data, error } = await supabase
+        .from('pantry')
+        .select('*')
+        .order('expiration_date', { ascending: true });
+
+      if (error) throw error;
+      setItems(data || []);
+    } catch (error) {
+      console.error('Erreur:', error);
+      alert('Erreur lors du chargement des données');
+    } finally {
+      setLoading(false);
     }
-  };
+  }
 
-  // Fonction pour éditer un article
-  const handleEdit = async (id) => {
-    // Vous pouvez remplacer ceci par un modal ou une page d'édition
+  async function handleConsume(id, currentQty) {
+    const qty = prompt(`Quantité à consommer ? (Max: ${currentQty})`);
+    if (!qty) return;
+
+    try {
+      const newQty = Math.max(0, currentQty - parseFloat(qty));
+      
+      const { error } = await supabase
+        .from('inventory_lots')
+        .update({ qty_remaining: newQty })
+        .eq('id', id);
+
+      if (error) throw error;
+      
+      await loadPantryItems();
+      alert('Article mis à jour !');
+    } catch (error) {
+      console.error('Erreur:', error);
+      alert('Erreur lors de la mise à jour');
+    }
+  }
+
+  async function handleEdit(id) {
     const item = items.find(i => i.id === id);
     if (!item) return;
 
     const newQty = prompt(`Nouvelle quantité pour ${item.product_name} ?`, item.qty_remaining);
-    
-    if (newQty && !isNaN(newQty)) {
-      try {
-        await pantryService.updateQuantity(id, parseFloat(newQty));
-        await loadPantryData();
-        alert('Quantité mise à jour !');
-      } catch (err) {
-        console.error('Erreur:', err);
-        alert('Erreur lors de la mise à jour');
-      }
+    if (!newQty) return;
+
+    try {
+      const { error } = await supabase
+        .from('inventory_lots')
+        .update({ qty_remaining: parseFloat(newQty) })
+        .eq('id', id);
+
+      if (error) throw error;
+      
+      await loadPantryItems();
+      alert('Quantité mise à jour !');
+    } catch (error) {
+      console.error('Erreur:', error);
+      alert('Erreur lors de la mise à jour');
     }
+  }
+
+  async function handleDelete(id) {
+    if (!confirm('Supprimer cet article ?')) return;
+
+    try {
+      const { error } = await supabase
+        .from('inventory_lots')
+        .update({ qty_remaining: 0 })
+        .eq('id', id);
+
+      if (error) throw error;
+      
+      await loadPantryItems();
+      alert('Article supprimé');
+    } catch (error) {
+      console.error('Erreur:', error);
+      alert('Erreur lors de la suppression');
+    }
+  }
+
+  // Obtenir les valeurs uniques pour les filtres
+  const categories = [...new Set(items.map(i => i.category_name))].filter(Boolean);
+  const locations = [...new Set(items.map(i => i.storage_place))].filter(Boolean);
+
+  // Calculer les statistiques
+  const stats = {
+    total: filteredItems.length,
+    expiring: filteredItems.filter(i => 
+      i.expiration_status === 'expiring_soon' || i.expiration_status === 'expired'
+    ).length,
+    categories: categories.length,
+    locations: locations.length
   };
 
-  // Fonction pour supprimer un article
-  const handleDelete = async (id) => {
-    if (confirm('Êtes-vous sûr de vouloir supprimer cet article ?')) {
-      try {
-        await pantryService.deleteItem(id);
-        await loadPantryData();
-        alert('Article supprimé');
-      } catch (err) {
-        console.error('Erreur:', err);
-        alert('Erreur lors de la suppression');
-      }
-    }
-  };
-
-  // Obtenir les listes uniques pour les filtres
-  const categories = [...new Set(items.map(i => i.category_name))].filter(Boolean).sort();
-  const locations = [...new Set(items.map(i => i.storage_place))].filter(Boolean).sort();
-
-  // Affichage du chargement
   if (loading) {
     return (
       <div className="pantry-loading">
         <div className="loading-spinner"></div>
-        <p>Chargement de votre garde-manger...</p>
-      </div>
-    );
-  }
-
-  // Affichage de l'erreur
-  if (error) {
-    return (
-      <div className="pantry-error">
-        <h2>⚠️ Erreur</h2>
-        <p>{error}</p>
-        <button onClick={loadPantryData}>Réessayer</button>
+        <p>Chargement...</p>
       </div>
     );
   }
@@ -176,60 +156,150 @@ const PantryPage = () => {
     <div className="pantry-container">
       {/* Header */}
       <header className="pantry-header">
-        <h1>
-          <span className="leaf-icon">🌿</span>
-          Mon Garde-Manger Nature
-          <span className="leaf-icon">🌿</span>
-        </h1>
+        <h1>🌿 Mon Garde-Manger Nature 🌿</h1>
       </header>
 
       {/* Statistiques */}
-      <PantryStats stats={stats} />
+      <div className="stats-container">
+        <div className="stat-card">
+          <div className="stat-number">{stats.total}</div>
+          <div className="stat-label">Articles</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-number">{stats.expiring}</div>
+          <div className="stat-label">Expirent bientôt</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-number">{stats.categories}</div>
+          <div className="stat-label">Catégories</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-number">{stats.locations}</div>
+          <div className="stat-label">Emplacements</div>
+        </div>
+      </div>
 
       {/* Filtres */}
-      <PantryFilters
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        categoryFilter={categoryFilter}
-        setCategoryFilter={setCategoryFilter}
-        categories={categories}
-        locationFilter={locationFilter}
-        setLocationFilter={setLocationFilter}
-        locations={locations}
-        statusFilter={statusFilter}
-        setStatusFilter={setStatusFilter}
-      />
+      <div className="filters">
+        <div className="filter-group">
+          <input
+            type="text"
+            placeholder="🔍 Rechercher..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="filter-input"
+          />
+        </div>
 
-      {/* Grille d'articles */}
+        <div className="filter-group">
+          <select 
+            value={categoryFilter} 
+            onChange={(e) => setCategoryFilter(e.target.value)}
+            className="filter-select"
+          >
+            <option value="">📁 Toutes catégories</option>
+            {categories.map(cat => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="filter-group">
+          <select 
+            value={locationFilter} 
+            onChange={(e) => setLocationFilter(e.target.value)}
+            className="filter-select"
+          >
+            <option value="">📍 Tous emplacements</option>
+            {locations.map(loc => (
+              <option key={loc} value={loc}>{loc}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="filter-group">
+          <select 
+            value={statusFilter} 
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="filter-select"
+          >
+            <option value="">⏰ Tous statuts</option>
+            <option value="good">✅ Bon état</option>
+            <option value="expiring_soon">⚠️ Expire bientôt</option>
+            <option value="expired">❌ Expiré</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Grille de produits */}
       <div className="pantry-grid">
         {filteredItems.length === 0 ? (
-          <div className="pantry-empty">
+          <div className="empty-state">
             <h2>Aucun article trouvé</h2>
-            <p>Ajustez vos filtres ou ajoutez de nouveaux articles</p>
+            <p>Ajustez vos filtres ou ajoutez des articles</p>
           </div>
         ) : (
           filteredItems.map(item => (
-            <PantryCard
-              key={item.id}
+            <ProductCard 
+              key={item.id} 
               item={item}
-              onConsume={handleConsume}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
+              onConsume={() => handleConsume(item.id, item.qty_remaining)}
+              onEdit={() => handleEdit(item.id)}
+              onDelete={() => handleDelete(item.id)}
             />
           ))
         )}
       </div>
-
-      {/* Bouton flottant pour ajouter */}
-      <button 
-        className="pantry-fab"
-        onClick={() => alert('Fonction d\'ajout à implémenter')}
-        title="Ajouter un article"
-      >
-        +
-      </button>
     </div>
   );
-};
+}
 
-export default PantryPage;
+// Composant ProductCard
+function ProductCard({ item, onConsume, onEdit, onDelete }) {
+  const getStatusClass = (status) => {
+    switch(status) {
+      case 'expired': return 'status-expired';
+      case 'expiring_soon': return 'status-expiring';
+      default: return 'status-good';
+    }
+  };
+
+  const getStatusText = (status, days) => {
+    if (!status || status === 'no_date') return 'Pas de date';
+    if (status === 'expired') return `Expiré depuis ${Math.abs(days)}j`;
+    if (status === 'expiring_soon') return `Expire dans ${days}j`;
+    return `${days}j restants`;
+  };
+
+  return (
+    <div className="product-card">
+      <div className="card-header">
+        <h3>{item.product_name || 'Sans nom'}</h3>
+        {item.category_name && (
+          <span className="category-badge">{item.category_name}</span>
+        )}
+      </div>
+
+      <div className="card-body">
+        <div className="info-row">
+          <span>📦 {item.qty_remaining} {item.unit}</span>
+        </div>
+        <div className="info-row">
+          <span>📍 {item.storage_place || 'Non spécifié'}</span>
+        </div>
+
+        {item.expiration_date && (
+          <div className={`expiration-status ${getStatusClass(item.expiration_status)}`}>
+            {getStatusText(item.expiration_status, item.days_until_expiration)}
+          </div>
+        )}
+      </div>
+
+      <div className="card-actions">
+        <button onClick={onConsume} className="btn-action">🍽️</button>
+        <button onClick={onEdit} className="btn-action">✏️</button>
+        <button onClick={onDelete} className="btn-action btn-delete">🗑️</button>
+      </div>
+    </div>
+  );
+}
