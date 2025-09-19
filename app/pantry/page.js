@@ -1,837 +1,850 @@
-'use client';
-
-import { useEffect, useState, useCallback, useMemo } from 'react';
-import { RefreshCw, Leaf, Package } from 'lucide-react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-
-import PantryStats from './components/PantryStats';
-import ProductCard from './components/ProductCard';
-import LotsView from './components/LotsView';
-import SmartAddForm from './components/SmartAddForm';
-
-import { daysUntil, getCategoryIcon, groupLotsByProduct } from './components/pantryUtils';
-
-/* ===========================
-   Hook données Supabase - Version corrigée pour la vraie DB
-   =========================== */
-function usePantryData() {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [lots, setLots] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const supabase = createClientComponentClient();
-
-  const parseNullableNumber = (value) => {
-    if (value === null || value === undefined) return null;
-    if (typeof value === 'string' && value.trim() === '') return null;
-    const num = Number(value);
-    return Number.isFinite(num) ? num : null;
-  };
-
-  const sanitizeText = (value) => {
-    if (value === null || value === undefined) return null;
-    if (value instanceof Date && !Number.isNaN(value.valueOf())) {
-      return value.toISOString().split('T')[0];
-    }
-    if (typeof value === 'string') {
-      const trimmed = value.trim();
-      return trimmed.length > 0 ? trimmed : null;
-    }
-    return value;
-  };
-
-  const load = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError('');
-
-      // Charger les catégories depuis reference_categories
-      const { data: categoriesData } = await supabase
-        .from('reference_categories')
-        .select('*')
-        .order('sort_priority');
-
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) { 
-        setLots([]);
-        setLoading(false);
-        return;
-      }
-
-      // ✅ CORRECTION: Adapter à la vraie structure de DB
-      // On utilise inventory_lots qui peut référencer canonical_foods, cultivars ou generic_products
-      const { data, error } = await supabase
-        .from('inventory_lots')
-        .select(`
-          *,
-          canonical_food:canonical_foods (
-            id,
-            canonical_name,
-            category_id,
-            subcategory,
-            primary_unit,
-            shelf_life_days_pantry,
-            shelf_life_days_fridge,
-            shelf_life_days_freezer,
-            category:reference_categories(name, icon, color_hex)
-          ),
-          cultivar:cultivars (
-            id,
-            cultivar_name,
-            canonical_food:canonical_foods (
-              id,
-              canonical_name,
-              category_id,
-              primary_unit,
-              shelf_life_days_pantry,
-              shelf_life_days_fridge,
-              shelf_life_days_freezer,
-              category:reference_categories(name, icon, color_hex)
-            )
-          ),
-          derived_product:derived_products (
-            id,
-            derived_name,
-            cultivar:cultivars (
-              id,
-              cultivar_name,
-              canonical_food:canonical_foods (
-                id,
-                canonical_name,
-                category_id,
-                primary_unit,
-                shelf_life_days_pantry,
-                shelf_life_days_fridge,
-                shelf_life_days_freezer,
-                category:reference_categories(name, icon, color_hex)
-              )
-            )
-          ),
-          generic_product:generic_products (
-            id,
-            name,
-            category_id,
-            primary_unit,
-            category:reference_categories(name, icon, color_hex)
-          ),
-          derived_product:derived_products (
-            id,
-            derived_name,
-            cultivar_id,
-            expected_shelf_life_days,
-            package_unit,
-            cultivar:cultivars (
-              id,
-              cultivar_name,
-              canonical_food_id,
-              canonical_food:canonical_foods (
-                id,
-                canonical_name,
-                category_id,
-                primary_unit,
-                shelf_life_days_pantry,
-                shelf_life_days_fridge,
-                shelf_life_days_freezer,
-                category:reference_categories(name, icon, color_hex)
-              )
-            )
-          )
-        `)
-        .order('expiration_date', { ascending: true });
-
-      if (error) throw error;
-
-      // Transformer les données pour les adapter à l'interface
-      const transformed = (data || []).map(item => {
-        let productType = 'unknown';
-        let productName = item.display_name || 'Produit inconnu';
-        let primaryUnit = item.unit || null;
-        let shelfLife = { pantry: null, fridge: null, freezer: null };
-        let categoryInfo = null;
-        let productInfo = null;
-
-        if (item.canonical_food) {
-          productType = 'canonical';
-          productName = item.canonical_food.canonical_name;
-          primaryUnit = item.canonical_food.primary_unit || primaryUnit;
-          shelfLife = {
-            pantry: item.canonical_food.shelf_life_days_pantry,
-            fridge: item.canonical_food.shelf_life_days_fridge,
-            freezer: item.canonical_food.shelf_life_days_freezer
-          };
-          categoryInfo = item.canonical_food.category;
-          productInfo = {
-            id: item.canonical_food.id,
-            type: 'canonical',
-            canonical_food_id: item.canonical_food.id,
-            primary_unit: item.canonical_food.primary_unit || null,
-            shelf_life: shelfLife
-          };
-        } else if (item.cultivar) {
-          productType = 'cultivar';
-          productName = item.cultivar.cultivar_name;
-          primaryUnit = item.cultivar.canonical_food?.primary_unit || primaryUnit;
-          shelfLife = {
-            pantry: item.cultivar.canonical_food?.shelf_life_days_pantry ?? null,
-            fridge: item.cultivar.canonical_food?.shelf_life_days_fridge ?? null,
-            freezer: item.cultivar.canonical_food?.shelf_life_days_freezer ?? null
-          };
-          categoryInfo = item.cultivar.canonical_food?.category;
-          productInfo = {
-            id: item.cultivar.id,
-            type: 'cultivar',
-            cultivar_id: item.cultivar.id,
-            canonical_food_id: item.cultivar.canonical_food?.id ?? null,
-            primary_unit: primaryUnit,
-            shelf_life: shelfLife
-          };
-        } else if (item.derived_product) {
-          const parentCultivar = item.derived_product.cultivar;
-          const canonical = parentCultivar?.canonical_food;
-          const canonicalShelf = canonical
-            ? {
-                pantry: canonical.shelf_life_days_pantry,
-                fridge: canonical.shelf_life_days_fridge,
-                freezer: canonical.shelf_life_days_freezer
-              }
-            : { pantry: null, fridge: null, freezer: null };
-
-          const expectedShelf = item.derived_product.expected_shelf_life_days ?? null;
-
-          shelfLife = {
-            pantry: expectedShelf ?? canonicalShelf.pantry,
-            fridge: expectedShelf ?? canonicalShelf.fridge,
-            freezer: expectedShelf ?? canonicalShelf.freezer
-          };
-
-          primaryUnit = item.derived_product.package_unit
-            || canonical?.primary_unit
-            || primaryUnit;
-
-          categoryInfo = parentCultivar?.canonical_food?.category || canonical?.category || null;
-
-          productType = 'derived';
-          productName = item.derived_product.derived_name;
-          productInfo = {
-            id: item.derived_product.id,
-            type: 'derived',
-            cultivar_id: parentCultivar?.id ?? null,
-            canonical_food_id: canonical?.id ?? parentCultivar?.canonical_food_id ?? null,
-            primary_unit: primaryUnit,
-            shelf_life: shelfLife
-          };
-        } else if (item.generic_product) {
-          productType = 'generic';
-          productName = item.generic_product.name;
-          primaryUnit = item.generic_product.primary_unit || primaryUnit;
-          shelfLife = {
-            pantry: item.generic_product.shelf_life_days_pantry ?? null,
-            fridge: item.generic_product.shelf_life_days_fridge ?? null,
-            freezer: item.generic_product.shelf_life_days_freezer ?? null
-          };
-          categoryInfo = item.generic_product.category;
-          productInfo = {
-            id: item.generic_product.id,
-            type: 'generic',
-            primary_unit: primaryUnit,
-            shelf_life: shelfLife
-          };
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Garde-Manger - Nature & Glass</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        const locationName = item.location?.name ?? item.storage_place ?? 'Non spécifié';
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #c2e9fb 75%, #a8edea 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-        const canonicalFoodId = item.canonical_food_id
-          ?? productInfo?.canonical_food_id
-          ?? (productType === 'canonical' ? productInfo?.id : null)
-          ?? item.canonical_food?.id
-          ?? item.cultivar?.canonical_food?.id
-          ?? item.derived_product?.cultivar?.canonical_food?.id
-          ?? null;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-        const cultivarId = item.cultivar_id
-          ?? productInfo?.cultivar_id
-          ?? (productType === 'cultivar' ? productInfo?.id : null)
-          ?? item.cultivar?.id
-          ?? item.derived_product?.cultivar?.id
-          ?? null;
+        /* Nature overlay pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(120, 255, 154, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(173, 216, 230, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
 
-        const genericProductId = item.generic_product_id
-          ?? (productType === 'generic' ? productInfo?.id : null)
-          ?? item.generic_product?.id
-          ?? null;
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
 
-        const derivedProductId = item.derived_product_id
-          ?? (productType === 'derived' ? productInfo?.id : null)
-          ?? item.derived_product?.id
-          ?? null;
+        /* Header glassmorphism */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            animation: slideDown 0.6s ease-out;
+        }
 
-        const productId = derivedProductId
-          ?? cultivarId
-          ?? genericProductId
-          ?? canonicalFoodId
-          ?? null;
+        @keyframes slideDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-        const qtyRemainingValue = parseNullableNumber(item.qty_remaining ?? item.quantity);
-        const quantity = qtyRemainingValue ?? 0;
-        const initialQty = parseNullableNumber(item.initial_qty);
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
 
-        const expirationDate = item.expiration_date
-          ?? item.expiry_date
-          ?? item.effective_expiration
-          ?? null;
+        .leaf-icon {
+            width: 40px;
+            height: 40px;
+            fill: rgba(144, 238, 144, 0.9);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            animation: sway 3s ease-in-out infinite;
+        }
 
-        const categoryIcon = getCategoryIcon(
-          categoryInfo?.id,
-          categoryInfo?.name,
-          productName
-        );
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
 
-        return {
-          id: item.id,
-          user_id: item.user_id ?? null,
-          product_id: productId,
-          canonical_food_id: canonicalFoodId,
-          cultivar_id: cultivarId,
-          generic_product_id: genericProductId,
-          derived_product_id: derivedProductId,
-          product_type: productType,
-          display_name: productName,
-          product: {
-            id: productId,
-            name: productName,
-            type: productType,
-            category_id: categoryInfo?.id ?? null,
-            category: categoryInfo ?? null,
-            shelf_life: shelfLife,
-            primary_unit: primaryUnit || item.unit || null,
-            icon: categoryIcon
-          },
-          category_name: categoryInfo?.name || 'Autre',
-          category_icon: categoryIcon || '📦',
-          category_color: categoryInfo?.color_hex || '#808080',
-          quantity,
-          qty_remaining: quantity,
-          initial_qty: initialQty ?? null,
-          unit: primaryUnit || item.unit || productInfo?.primary_unit || 'unité',
-          expiration_date: expirationDate,
-          expiry_date: expirationDate,
-          effective_expiration: expirationDate,
-          location: item.location || (locationName ? { id: item.location_id ?? null, name: locationName } : null),
-          location_id: item.location_id ?? item.location?.id ?? null,
-          location_name: locationName,
-          storage_place: item.storage_place ?? null,
-          storage_method: item.storage_method || 'pantry',
-          notes: item.notes ?? null,
-          purchase_date: item.purchase_date ?? item.acquired_on ?? null,
-          created_at: item.created_at ?? null,
-          updated_at: item.updated_at ?? null,
-          opened_on: item.opened_on ?? null,
-          acquired_on: item.acquired_on ?? null,
-          produced_on: item.produced_on ?? null,
-          meta: {
-            shelf: shelfLife,
-            primary_unit: primaryUnit || item.unit || null,
-            product_type: productType
-          },
-          canonical_food: item.canonical_food ?? null,
-          cultivar: item.cultivar ?? null,
-          generic_product: item.generic_product ?? null,
-          derived_product: item.derived_product ?? null
-        };
-      });
+        /* Filter Section */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
 
-      setCategories(categoriesData || []);
-      setLots(transformed);
-    } catch (e) {
-      console.error('Erreur chargement pantry:', e);
-      setError('Impossible de charger les données du garde-manger.');
-    } finally {
-      setLoading(false);
-    }
-  }, [supabase]);
+        .filter-group {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
 
-  useEffect(() => { load(); }, [load]);
+        .filter-group:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
 
-  const refresh = useCallback(() => load(), [load]);
+        .filter-group label {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
 
-  // ✅ CORRECTION: Adapter addLot pour la vraie structure
-  const addLot = useCallback(async (payload) => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
+        .filter-group select,
+        .filter-group input {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 0.3rem 0.8rem;
+            color: white;
+            outline: none;
+            transition: all 0.3s ease;
+        }
 
-    try {
-      // Construire l'objet d'insertion pour inventory_lots
-      const insertData = {
-        qty_remaining: parseNullableNumber(payload.qty_remaining ?? payload.qty),
-        initial_qty: parseNullableNumber(payload.initial_qty ?? payload.qty_remaining ?? payload.qty),
-        unit: sanitizeText(payload.unit),
-        expiration_date: sanitizeText(payload.effective_expiration ?? payload.expiration_date),
-        storage_method: sanitizeText(payload.storage_method) || 'pantry',
-        storage_place: sanitizeText(payload.location_name ?? payload.storage_place),
-        notes: payload.notes ?? null
-      };
+        .filter-group select option {
+            background: rgba(70, 70, 70, 0.95);
+        }
 
-      if (!insertData.unit) delete insertData.unit;
-      if (!insertData.storage_method) delete insertData.storage_method;
-      if (!insertData.storage_place) delete insertData.storage_place;
-      if (insertData.notes === undefined) delete insertData.notes;
-      if (insertData.initial_qty === null) delete insertData.initial_qty;
-      if (insertData.qty_remaining === null) delete insertData.qty_remaining;
-      if (insertData.expiration_date === null) delete insertData.expiration_date;
+        .filter-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
 
-      // Ajouter la référence au produit selon le type
+        .filter-group select:focus,
+        .filter-group input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
 
-      if (payload.canonical_food_id) {
-        insertData.canonical_food_id = payload.canonical_food_id;
-      }
-      if (payload.cultivar_id) {
+        /* Stats Cards */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
 
-        insertData.cultivar_id = payload.cultivar_id;
-      }
-      if (payload.generic_product_id) {
-        insertData.generic_product_id = payload.generic_product_id;
-      } else if (payload.canonical_food_id) {
-        insertData.canonical_food_id = payload.canonical_food_id;
-      }
-      if (payload.derived_product_id) {
-        insertData.derived_product_id = payload.derived_product_id;
-      }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-      if (payload.derived_product_id) {
-        insertData.derived_product_id = payload.derived_product_id;
-      }
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
 
-      const { error } = await supabase
-        .from('inventory_lots')
-        .insert(insertData)
-        .select()
-        .single();
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
 
-      if (error) throw error;
-      await load(); // Recharger les données
-    } catch (error) {
-      console.error('Erreur ajout lot:', error);
-      setError('Erreur lors de l\'ajout du lot');
-    }
-  }, [supabase, load]);
+        .stat-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
 
-  const updateLot = useCallback(async (id, patch) => {
-    try {
-      const updatePayload = {};
+        /* Grid Layout */
+        .pantry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
 
-      if (patch.qty_remaining !== undefined || patch.qty !== undefined) {
-        const qty = parseNullableNumber(patch.qty_remaining ?? patch.qty);
-        updatePayload.qty_remaining = qty;
-      }
+        /* Product Cards */
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
 
-      if (patch.unit !== undefined) {
-        const unit = sanitizeText(patch.unit);
-        updatePayload.unit = unit;
-      }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-      if (patch.effective_expiration !== undefined || patch.expiration_date !== undefined) {
-        updatePayload.expiration_date = sanitizeText(patch.effective_expiration ?? patch.expiration_date);
-      }
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
 
-      if (patch.location_name !== undefined || patch.storage_place !== undefined) {
-        updatePayload.storage_place = sanitizeText(patch.location_name ?? patch.storage_place);
-      }
+        .product-card:hover::before {
+            opacity: 1;
+        }
 
-      if (patch.storage_method !== undefined) {
-        updatePayload.storage_method = sanitizeText(patch.storage_method);
-      }
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.2),
+                0 5px 15px rgba(255, 255, 255, 0.1) inset;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
 
-      if (patch.notes !== undefined) {
-        updatePayload.notes = patch.notes ?? null;
-      }
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
 
-      if (patch.initial_qty !== undefined) {
-        updatePayload.initial_qty = parseNullableNumber(patch.initial_qty);
-      }
+        .product-name {
+            font-size: 1.3rem;
+            color: white;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            flex: 1;
+        }
 
-      if (patch.opened_on !== undefined) {
-        updatePayload.opened_on = sanitizeText(patch.opened_on);
-      }
+        .category-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
 
-      if (patch.acquired_on !== undefined) {
-        updatePayload.acquired_on = sanitizeText(patch.acquired_on);
-      }
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
 
-      if (patch.produced_on !== undefined) {
-        updatePayload.produced_on = sanitizeText(patch.produced_on);
-      }
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
 
-      if (Object.keys(updatePayload).length === 0) {
-        return;
-      }
+        .info-icon {
+            width: 20px;
+            height: 20px;
+            fill: rgba(255, 255, 255, 0.7);
+        }
 
-      const { error } = await supabase
-        .from('inventory_lots')
+        .quantity-badge {
+            background: rgba(144, 238, 144, 0.2);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 10px;
+            font-weight: 500;
+            border: 1px solid rgba(144, 238, 144, 0.4);
+            display: inline-block;
+        }
 
-        .update({
-          qty_remaining: patch.qty_remaining,
-          unit: patch.unit,
-          expiration_date: patch.effective_expiration,
-          ...(patch.location_name !== undefined ? { storage_place: patch.location_name } : {}),
-          display_name: patch.display_name,
-          notes: patch.notes
-        })
+        .location-badge {
+            background: rgba(135, 206, 235, 0.2);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 10px;
+            font-weight: 500;
+            border: 1px solid rgba(135, 206, 235, 0.4);
+            display: inline-block;
+        }
 
-        .eq('id', id);
+        /* Expiration Status */
+        .expiration-status {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
 
-      if (error) throw error;
-      await load();
-    } catch (error) {
-      console.error('Erreur mise à jour lot:', error);
-      setError('Erreur lors de la mise à jour');
-    }
-  }, [supabase, load]);
+        .status-good {
+            background: rgba(144, 238, 144, 0.2);
+            border: 1px solid rgba(144, 238, 144, 0.4);
+            color: #90EE90;
+        }
 
-  const deleteLot = useCallback(async (id) => {
-    try {
-      const { error } = await supabase
-        .from('inventory_lots')
-        .delete()
-        .eq('id', id);
+        .status-expiring-soon {
+            background: rgba(255, 165, 0, 0.2);
+            border: 1px solid rgba(255, 165, 0, 0.4);
+            color: #FFB347;
+            animation: pulse 2s infinite;
+        }
 
-      if (error) throw error;
-      await load();
-    } catch (error) {
-      console.error('Erreur suppression lot:', error);
-      setError('Erreur lors de la suppression');
-    }
-  }, [supabase, load]);
+        .status-expired {
+            background: rgba(255, 69, 0, 0.2);
+            border: 1px solid rgba(255, 69, 0, 0.4);
+            color: #FF6B6B;
+            animation: pulse 1s infinite;
+        }
 
-  return { loading, error, lots, categories, refresh, addLot, updateLot, deleteLot };
-}
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
 
-/* ============================
-   Page principale garde-manger
-   ============================ */
-export default function PantryPage() {
-  const { loading, error, lots, categories, refresh, addLot, updateLot, deleteLot } = usePantryData();
-  
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedFilter, setSelectedFilter] = useState('all');
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [activeProduct, setActiveProduct] = useState(null);
+        /* Action Buttons */
+        .card-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
 
-  // Grouper lots par produit
-  const groupedProducts = useMemo(() => {
-    return groupLotsByProduct(lots);
-  }, [lots]);
+        .action-btn {
+            flex: 1;
+            padding: 0.6rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
 
-  // Produits filtrés selon recherche + filtre
-  const filteredProducts = useMemo(() => {
-    let arr = [...groupedProducts];
-    
-    // Filtre recherche
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      arr = arr.filter(p => p.productName.toLowerCase().includes(q));
-    }
-    
-    // Filtre état
-    if (selectedFilter !== 'all') {
-      arr = arr.filter(p => {
-        const d = daysUntil(p.nextExpiry);
-        if (selectedFilter === 'expiring') return d !== null && d <= 7;
-        if (selectedFilter === 'fresh') return d === null || d > 7;
-        return true;
-      });
-    }
-    
-    // Tri par urgence
-    return arr.sort((a, b) => {
-      const da = daysUntil(a.nextExpiry);
-      const db = daysUntil(b.nextExpiry);
-      if (da === null && db === null) return a.productName.localeCompare(b.productName);
-      if (da === null) return 1;
-      if (db === null) return -1;
-      return da - db;
-    });
-  }, [groupedProducts, searchQuery, selectedFilter]);
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
 
-  // Stats
-  const stats = useMemo(() => {
-    const total = groupedProducts.length;
-    let expiring = 0, fresh = 0;
-    groupedProducts.forEach(p => {
-      const d = daysUntil(p.nextExpiry);
-      if (d !== null && d <= 7) expiring++; 
-      else fresh++;
-    });
-    return { totalProducts: total, expiringCount: expiring, freshCount: fresh };
-  }, [groupedProducts]);
+        /* Loading Animation */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: white;
+        }
 
-  // ✅ PROTECTION: Vérifier que tous les composants sont définis
-  const componentsReady = useMemo(() => {
-    const components = { PantryStats, ProductCard, LotsView, SmartAddForm, Leaf };
-    const missing = Object.entries(components)
-      .filter(([name, component]) => !component)
-      .map(([name]) => name);
-    
-    if (missing.length > 0) {
-      console.error('❌ Composants manquants:', missing);
-      return false;
-    }
-    return true;
-  }, []);
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
 
-  if (!componentsReady) {
-    return (
-      <div className="pantry-container">
-        <div className="error-text">
-          Erreur: Certains composants ne sont pas disponibles. Vérifiez la console pour plus de détails.
-        </div>
-        <style jsx>{styles}</style>
-      </div>
-    );
-  }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
-  if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner">
-          <Leaf className="spin" size={32}/>
-        </div>
-        <p>Chargement du garde-manger...</p>
-        <style jsx>{styles}</style>
-      </div>
-    );
-  }
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
 
-  return (
-    <div className="pantry-container">
-      {/* En-tête + stats */}
-      <header className="pantry-header glass-card">
-        <div className="header-main">
-          <div className="title-section">
-            <h1>
-              <Leaf className="title-icon"/> Mon garde-manger vivant
-            </h1>
-            <p>Cultivez l'harmonie entre vos réserves et la nature</p>
-          </div>
-          <PantryStats
-            stats={stats}
-            onAll={()=>setSelectedFilter('all')}
-            onFresh={()=>setSelectedFilter('fresh')}
-            onExpiring={()=>setSelectedFilter('expiring')}
-          />
-        </div>
-        <div className="header-actions">
-          <button onClick={refresh} className="btn-organic secondary">
-            <RefreshCw size={16}/> Actualiser
-          </button>
-          <button onClick={()=>setShowAddForm(true)} className="btn-organic primary">
-            <Package size={16}/> Ajouter
-          </button>
-        </div>
-      </header>
+        .empty-state h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
 
-      {/* Recherche + filtres */}
-      <div className="search-bar glass-card">
-        <div className="search-input-wrapper">
-          <input
-            type="text"
-            placeholder="Rechercher dans le garde-manger..."
-            value={searchQuery}
-            onChange={(e)=>setSearchQuery(e.target.value)}
-            className="search-input"
-          />
-        </div>
-        <div className="filter-pills">
-          {[
-            {key:'all', label:'Tous'},
-            {key:'expiring', label:'À consommer'},
-            {key:'fresh', label:'Longue conservation'},
-          ].map(f=>(
-            <button
-              key={f.key}
-              className={`filter-pill ${selectedFilter===f.key?'active':''}`}
-              onClick={()=>setSelectedFilter(f.key)}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-      </div>
+        .empty-state p {
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
 
-      {/* Grille produits */}
-      <div className="products-garden">
-        {filteredProducts.length === 0 ? (
-          <div className="empty-state glass-card">
-            <Package size={48} style={{opacity:0.3}}/>
-            <h3>Votre garde-manger attend ses premières réserves</h3>
-            <p>Commencez à cultiver votre autonomie alimentaire</p>
-            <button onClick={()=>setShowAddForm(true)} className="btn-organic primary">
-              <Package size={16}/> Ajouter un premier produit
-            </button>
-          </div>
-        ) : (
-          filteredProducts.map(p => (
-            <ProductCard 
-              key={p.productId} 
-              product={p} 
-              onOpen={()=>setActiveProduct(p)} 
-            />
-          ))
-        )}
-      </div>
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
 
-      {/* Sheet lots */}
-      {activeProduct && (
-        <LotsView
-          product={activeProduct}
-          onClose={()=>setActiveProduct(null)}
-          onUpdateLot={updateLot}
-          onDeleteLot={deleteLot}
-          onAddLot={(payload)=>{
-            if (!activeProduct) return;
+        .fab:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
 
-
-            const sanitizedPayload = { ...payload };
-            delete sanitizedPayload.canonical_food_id;
-            delete sanitizedPayload.cultivar_id;
-            delete sanitizedPayload.generic_product_id;
-            delete sanitizedPayload.derived_product_id;
-
-            const identifiers = {
-              derived_product_id: activeProduct.derived_product_id ?? activeProduct.productIds?.derived_product_id ?? null,
-              cultivar_id: activeProduct.cultivar_id ?? activeProduct.productIds?.cultivar_id ?? null,
-              generic_product_id: activeProduct.generic_product_id ?? activeProduct.productIds?.generic_product_id ?? null,
-              canonical_food_id: activeProduct.canonical_food_id ?? activeProduct.productIds?.canonical_food_id ?? null
-            };
-
-            const selectionOrder = ['derived_product_id', 'cultivar_id', 'generic_product_id', 'canonical_food_id'];
-            const selectedKey = selectionOrder.find(key => identifiers[key] !== null && identifiers[key] !== undefined) || null;
-
-            const payloadWithProduct = {
-              ...sanitizedPayload,
-
-              display_name: activeProduct.productName,
-              category_name: activeProduct.category
-            };
-
-
-            switch (activeProduct.productType) {
-              case 'canonical':
-                lotPayload.canonical_food_id = activeProduct.canonicalId ?? activeProduct.productId;
-                break;
-              case 'cultivar':
-                lotPayload.cultivar_id = activeProduct.cultivarId ?? activeProduct.productId;
-                break;
-              case 'derived':
-                lotPayload.derived_product_id = activeProduct.derivedId ?? activeProduct.productId;
-                break;
-              case 'generic':
-                lotPayload.generic_product_id = activeProduct.genericId ?? activeProduct.productId;
-                break;
-              default:
-                if (activeProduct.canonicalId) {
-                  lotPayload.canonical_food_id = activeProduct.canonicalId;
-                } else if (activeProduct.cultivarId) {
-                  lotPayload.cultivar_id = activeProduct.cultivarId;
-                } else if (activeProduct.derivedId) {
-                  lotPayload.derived_product_id = activeProduct.derivedId;
-                } else if (activeProduct.genericId) {
-                  lotPayload.generic_product_id = activeProduct.genericId;
-                } else {
-                  lotPayload.canonical_food_id = activeProduct.productId;
-                }
-                break;
-
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
             }
 
-            addLot(lotPayload);
+            h1 {
+                font-size: 1.8rem;
+            }
 
-          }}
-        />
-      )}
+            .pantry-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
 
-      {/* Modal ajout intelligent - Version simplifiée */}
-      <SmartAddForm
-        open={showAddForm}
-        onClose={()=>setShowAddForm(false)}
-        onLotCreated={() => {
-          refresh();
-        }}
-      />
+            .filters {
+                flex-direction: column;
+            }
 
-      {error && <p className="error-text">{error}</p>}
-      <style jsx>{styles}</style>
+            .filter-group {
+                width: 100%;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>
+                <svg class="leaf-icon" viewBox="0 0 24 24">
+                    <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+                Mon Garde-Manger Nature
+                <svg class="leaf-icon" viewBox="0 0 24 24" style="transform: scaleX(-1);">
+                    <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+            </h1>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number" id="totalItems">0</div>
+                <div class="stat-label">Articles Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="expiringCount">0</div>
+                <div class="stat-label">Expirent Bientôt</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="categoryCount">0</div>
+                <div class="stat-label">Catégories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="locationCount">0</div>
+                <div class="stat-label">Emplacements</div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <div class="filter-group">
+                <label for="searchFilter">🔍</label>
+                <input type="text" id="searchFilter" placeholder="Rechercher...">
+            </div>
+            <div class="filter-group">
+                <label for="categoryFilter">📁</label>
+                <select id="categoryFilter">
+                    <option value="">Toutes les catégories</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="locationFilter">📍</label>
+                <select id="locationFilter">
+                    <option value="">Tous les emplacements</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="statusFilter">⏰</label>
+                <select id="statusFilter">
+                    <option value="">Tous les statuts</option>
+                    <option value="good">En bon état</option>
+                    <option value="expiring_soon">Expire bientôt</option>
+                    <option value="expired">Expiré</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="pantryGrid" class="pantry-grid">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Chargement de votre garde-manger...</p>
+            </div>
+        </div>
     </div>
-  );
-}
 
-/* ================
-   Styles (JSX CSS)
-   ================ */
-const styles = `
-.pantry-container{min-height:100vh;padding:1.5rem;max-width:1200px;margin:0 auto;font-family:'Inter',-apple-system,sans-serif}
-.glass-card{background:rgba(255,255,255,.75);backdrop-filter:blur(6px) saturate(110%);-webkit-backdrop-filter:blur(6px) saturate(110%);border:1px solid rgba(0,0,0,.08);box-shadow:0 6px 20px rgba(0,0,0,.12);border-radius:20px;position:relative;overflow:hidden}
-.pantry-header{margin-bottom:1.5rem;padding:1.5rem;animation:float-in .6s ease-out}
-.header-main{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
-.title-section h1{font-size:1.8rem;font-weight:750;color:var(--forest-700,#2d5a2d);display:flex;align-items:center;gap:.6rem;margin:0 0 .4rem}
-.title-icon{animation:sway 3s ease-in-out infinite}
-.title-section p{color:var(--earth-600,#8b7a5d);margin:0}
-.header-actions{display:flex;gap:.75rem}
-.btn-organic{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.2rem;border:none;border-radius:999px;font-weight:650;font-size:.9rem;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1)}
-.btn-organic.primary{background:linear-gradient(135deg,var(--forest-500,#8bb58b),var(--forest-600,#6b9d6b));color:#fff;box-shadow:0 4px 12px rgba(139,181,139,.3)}
-.btn-organic.primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(139,181,139,.4)}
-.btn-organic.secondary{background:rgba(255,255,255,.85);color:var(--forest-700,#2d5a2d);border:2px solid var(--forest-300,#c8d8c8)}
-.btn-organic.secondary:hover{background:#fff;transform:translateY(-1px)}
-.search-bar{margin-bottom:1.5rem;padding:1rem;animation:float-in .7s ease-out .05s both}
-.search-input-wrapper{position:relative;margin-bottom:.75rem}
-.search-input{width:100%;padding:.8rem 1rem;border:2px solid transparent;border-radius:999px;background:rgba(255,255,255,.85);font-size:1rem;transition:all .25s}
-.search-input:focus{outline:none;border-color:var(--forest-400,#a8c5a8);background:#fff;box-shadow:0 0 0 3px rgba(168,197,168,.2)}
-.filter-pills{display:flex;gap:.6rem;flex-wrap:wrap}
-.filter-pill{padding:.45rem 1.1rem;border:2px solid var(--earth-200,#ebe5da);border-radius:999px;background:rgba(255,255,255,.75);color:var(--earth-700,#8b7a5d);font-size:.85rem;font-weight:550;cursor:pointer;transition:all .2s}
-.filter-pill.active{background:var(--forest-500,#8bb58b);color:#fff;border-color:var(--forest-500,#8bb58b)}
-.filter-pill:hover:not(.active){background:rgba(255,255,255,.9);border-color:var(--forest-400,#a8c5a8)}
-.products-garden{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;animation:float-in .8s ease-out .1s both}
-.empty-state{grid-column:1 / -1;padding:3rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1rem}
-.empty-state h3{color:var(--forest-700,#2d5a2d);margin:0;font-size:1.25rem}
-.empty-state p{color:var(--earth-600,#8b7a5d);margin:0}
-.loading-container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:1rem;color:var(--forest-600,#4a7c4a)}
-.loading-spinner{animation:spin 2s linear infinite}
-.error-text{margin-top:1rem;color:#dc2626;padding:1rem;background:#fef2f2;border-radius:8px;border:1px solid #fecaca;display:flex;align-items:center;gap:0.5rem}
-.error-text::before{content:'⚠️';font-size:1.1em}
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="addNewItem()">
+        +
+    </div>
 
-/* Animations */
-@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes float-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    <script>
+        // Supabase configuration
+        const SUPABASE_URL = 'YOUR_SUPABASE_URL'; // Remplacez par votre URL
+        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'; // Remplacez par votre clé
 
-/* Variables CSS pour cohérence */
-:root {
-  --forest-50: #f8fdf8;
-  --forest-100: #f0f9f0;
-  --forest-200: #dcf4dc;
-  --forest-300: #c8d8c8;
-  --forest-400: #a8c5a8;
-  --forest-500: #8bb58b;
-  --forest-600: #6b9d6b;
-  --forest-700: #2d5a2d;
-  --forest-800: #1a3a1a;
-  --earth-200: #ebe5da;
-  --earth-600: #8b7a5d;
-  --earth-700: #6d5d42;
-}
+        let pantryItems = [];
+        let filteredItems = [];
 
-/* Responsive */
-@media (max-width: 768px) {
-  .pantry-container { padding: 1rem; }
-  .header-main { flex-direction: column; gap: 1rem; }
-  .header-actions { width: 100%; justify-content: center; }
-  .products-garden { grid-template-columns: 1fr; }
-  .filter-pills { justify-content: center; }
-}
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadPantryItems();
+            setupFilters();
+            setupSearch();
+        });
 
-@media (max-width: 480px) {
-  .title-section h1 { font-size: 1.5rem; }
-  .btn-organic { padding: 0.6rem 1rem; font-size: 0.8rem; }
-  .search-input { padding: 0.7rem; }
-  .filter-pill { padding: 0.4rem 1rem; font-size: 0.8rem; }
-}
-`;
+        // Load pantry items from Supabase
+        async function loadPantryItems() {
+            try {
+                // Simulation de données pour la démo
+                // Remplacez ceci par un vrai appel à Supabase
+                pantryItems = generateDemoData();
+                filteredItems = [...pantryItems];
+                
+                updateStatistics();
+                populateFilters();
+                renderPantryGrid();
+            } catch (error) {
+                console.error('Erreur lors du chargement:', error);
+                showEmptyState('Erreur de chargement des données');
+            }
+        }
+
+        // Generate demo data (remplacez par de vraies données Supabase)
+        function generateDemoData() {
+            return [
+                {
+                    id: 1,
+                    product_name: 'Tomates Cerises Bio',
+                    category_name: 'Légumes',
+                    qty_remaining: 500,
+                    unit: 'g',
+                    storage_place: 'Frigo',
+                    expiration_date: '2025-09-25',
+                    expiration_status: 'expiring_soon',
+                    days_until_expiration: 6
+                },
+                {
+                    id: 2,
+                    product_name: 'Farine de Blé T55',
+                    category_name: 'Céréales',
+                    qty_remaining: 2,
+                    unit: 'kg',
+                    storage_place: 'Garde-manger',
+                    expiration_date: '2026-03-15',
+                    expiration_status: 'good',
+                    days_until_expiration: 177
+                },
+                {
+                    id: 3,
+                    product_name: 'Haricots Verts',
+                    category_name: 'Légumes',
+                    qty_remaining: 300,
+                    unit: 'g',
+                    storage_place: 'Congélateur',
+                    expiration_date: '2026-01-15',
+                    expiration_status: 'good',
+                    days_until_expiration: 118
+                },
+                {
+                    id: 4,
+                    product_name: 'Confiture de Fraises Maison',
+                    category_name: 'Conserves',
+                    qty_remaining: 2,
+                    unit: 'bocaux',
+                    storage_place: 'Cave',
+                    expiration_date: '2026-06-01',
+                    expiration_status: 'good',
+                    days_until_expiration: 255
+                },
+                {
+                    id: 5,
+                    product_name: 'Pommes Golden',
+                    category_name: 'Fruits',
+                    qty_remaining: 1.5,
+                    unit: 'kg',
+                    storage_place: 'Frigo',
+                    expiration_date: '2025-09-30',
+                    expiration_status: 'good',
+                    days_until_expiration: 11
+                },
+                {
+                    id: 6,
+                    product_name: 'Yaourt Nature',
+                    category_name: 'Produits Laitiers',
+                    qty_remaining: 4,
+                    unit: 'pots',
+                    storage_place: 'Frigo',
+                    expiration_date: '2025-09-22',
+                    expiration_status: 'expiring_soon',
+                    days_until_expiration: 3
+                }
+            ];
+        }
+
+        // Update statistics
+        function updateStatistics() {
+            document.getElementById('totalItems').textContent = filteredItems.length;
+            
+            const expiring = filteredItems.filter(item => 
+                item.expiration_status === 'expiring_soon' || 
+                item.expiration_status === 'expired'
+            ).length;
+            document.getElementById('expiringCount').textContent = expiring;
+            
+            const categories = [...new Set(filteredItems.map(item => item.category_name))].length;
+            document.getElementById('categoryCount').textContent = categories;
+            
+            const locations = [...new Set(filteredItems.map(item => item.storage_place))].length;
+            document.getElementById('locationCount').textContent = locations;
+        }
+
+        // Populate filter dropdowns
+        function populateFilters() {
+            // Categories
+            const categories = [...new Set(pantryItems.map(item => item.category_name))].filter(Boolean);
+            const categorySelect = document.getElementById('categoryFilter');
+            categorySelect.innerHTML = '<option value="">Toutes les catégories</option>';
+            categories.forEach(cat => {
+                categorySelect.innerHTML += `<option value="${cat}">${cat}</option>`;
+            });
+
+            // Locations
+            const locations = [...new Set(pantryItems.map(item => item.storage_place))].filter(Boolean);
+            const locationSelect = document.getElementById('locationFilter');
+            locationSelect.innerHTML = '<option value="">Tous les emplacements</option>';
+            locations.forEach(loc => {
+                locationSelect.innerHTML += `<option value="${loc}">${loc}</option>`;
+            });
+        }
+
+        // Render the pantry grid
+        function renderPantryGrid() {
+            const grid = document.getElementById('pantryGrid');
+            
+            if (filteredItems.length === 0) {
+                showEmptyState('Aucun article trouvé');
+                return;
+            }
+
+            grid.innerHTML = filteredItems.map(item => createProductCard(item)).join('');
+        }
+
+        // Create a product card
+        function createProductCard(item) {
+            const statusClass = `status-${item.expiration_status || 'good'}`;
+            const statusText = getStatusText(item.expiration_status, item.days_until_expiration);
+            
+            return `
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-name">${item.product_name}</div>
+                        ${item.category_name ? `<div class="category-badge">${item.category_name}</div>` : ''}
+                    </div>
+                    
+                    <div class="product-info">
+                        <div class="info-row">
+                            <svg class="info-icon" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                            </svg>
+                            <span class="quantity-badge">${item.qty_remaining} ${item.unit}</span>
+                        </div>
+                        
+                        <div class="info-row">
+                            <svg class="info-icon" viewBox="0 0 24 24">
+                                <path d="M12,2C15.31,2 18,4.66 18,7.95C18,12.41 12,19 12,19C12,19 6,12.41 6,7.95C6,4.66 8.69,2 12,2Z"/>
+                            </svg>
+                            <span class="location-badge">${item.storage_place || 'Non spécifié'}</span>
+                        </div>
+                    </div>
+                    
+                    ${item.expiration_date ? `
+                        <div class="expiration-status ${statusClass}">
+                            ${statusText}
+                        </div>
+                    ` : ''}
+                    
+                    <div class="card-actions">
+                        <button class="action-btn" onclick="editItem(${item.id})">✏️ Modifier</button>
+                        <button class="action-btn" onclick="consumeItem(${item.id})">🍽️ Consommer</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get status text
+        function getStatusText(status, days) {
+            if (!status || status === 'no_date') return 'Pas de date d\'expiration';
+            if (status === 'expired') return `⚠️ Expiré depuis ${Math.abs(days)} jours`;
+            if (status === 'expiring_soon') return `⏰ Expire dans ${days} jours`;
+            return `✅ ${days} jours restants`;
+        }
+
+        // Show empty state
+        function showEmptyState(message) {
+            const grid = document.getElementById('pantryGrid');
+            grid.innerHTML = `
+                <div class="empty-state">
+                    <h2>🌿</h2>
+                    <h2>${message}</h2>
+                    <p>Commencez par ajouter des articles à votre garde-manger</p>
+                </div>
+            `;
+        }
+
+        // Setup filters
+        function setupFilters() {
+            document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+            document.getElementById('locationFilter').addEventListener('change', applyFilters);
+            document.getElementById('statusFilter').addEventListener('change', applyFilters);
+        }
+
+        // Setup search
+        function setupSearch() {
+            const searchInput = document.getElementById('searchFilter');
+            searchInput.addEventListener('input', (e) => {
+                applyFilters();
+            });
+        }
+
+        // Apply all filters
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchFilter').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const locationFilter = document.getElementById('locationFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            filteredItems = pantryItems.filter(item => {
+                const matchesSearch = !searchTerm || 
+                    item.product_name.toLowerCase().includes(searchTerm);
+                const matchesCategory = !categoryFilter || 
+                    item.category_name === categoryFilter;
+                const matchesLocation = !locationFilter || 
+                    item.storage_place === locationFilter;
+                const matchesStatus = !statusFilter || 
+                    item.expiration_status === statusFilter;
+
+                return matchesSearch && matchesCategory && matchesLocation && matchesStatus;
+            });
+
+            updateStatistics();
+            renderPantryGrid();
+        }
+
+        // Action functions
+        function addNewItem() {
+            alert('Fonction d\'ajout d\'article - À implémenter avec Supabase');
+            // Rediriger vers un formulaire d'ajout ou ouvrir un modal
+        }
+
+        function editItem(id) {
+            alert(`Éditer l\'article ${id} - À implémenter avec Supabase`);
+            // Ouvrir un formulaire d'édition
+        }
+
+        function consumeItem(id) {
+            if (confirm('Marquer cet article comme consommé ?')) {
+                alert(`Article ${id} consommé - À implémenter avec Supabase`);
+                // Mettre à jour la quantité dans Supabase
+            }
+        }
+
+        // Fonction réelle pour charger depuis Supabase (à décommenter et configurer)
+        async function loadFromSupabase() {
+            const response = await fetch(`${SUPABASE_URL}/rest/v1/pantry?select=*`, {
+                headers: {
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Erreur lors du chargement des données');
+            }
+
+            return await response.json();
+        }
+    </script>
+</body>
+</html>
