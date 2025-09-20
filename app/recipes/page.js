@@ -473,28 +473,17 @@ function RecipeModal({ recipe, onClose }) {
           >
             🍳 Cuisiner cette recette
           </button>
-         // Dans le RecipeModal, trouvez le bouton Modifier et remplacez par :
           <button 
             className="modal-btn secondary"
             onClick={() => window.location.href = `/recipes/edit/${recipe.id}`}
           >
             ✏️ Modifier
           </button>
-
-          // Et pour créer une nouvelle recette (bouton +) :
           <button 
             className="recipes-fab"
             onClick={() => window.location.href = '/recipes/edit/new'}
             title="Ajouter une recette"
-          >
-            +
-          </button>
-          <button 
-            className="modal-btn danger"
-            onClick={() => {
-              if (confirm('Supprimer cette recette ?')) {
-                onClose();
-                handleDelete(recipe.id);
+ 
               }
             }}
           >
