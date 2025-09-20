@@ -1,4 +1,14 @@
-  // ========================================
+{ingredients.map((ing, index) => (
+                <li key={ing.id || index} className={ing.is_optional ? 'optional' : ''}>
+                  <span className="ingredient-qty">{ing.qty} {ing.unit}</span>
+                  <span className="ingredient-name">
+                    {ing.note || 'Ingrédient'}
+                    {ing.preparation && (
+                      <span className="ingredient-prep"> ({ing.preparation})</span>
+                    )}
+                  </span>
+                  {ing.is_optional && (
+                    <span className="optional// ========================================
 // FICHIER: app/recipes/page.js
 // Page Recettes avec style glassmorphisme nature
 // ========================================
@@ -243,7 +253,7 @@ export default function RecipesPage() {
       {/* Bouton flottant pour ajouter */}
       <button 
         className="recipes-fab"
-        onClick={() => setShowAddModal(true)}
+        onClick={() => window.location.href = '/recipes/edit/new'}
         title="Ajouter une recette"
       >
         +
@@ -332,6 +342,7 @@ function RecipeCard({ recipe, onDelete, onOpenModal }) {
 // Composant Modal pour afficher les détails
 function RecipeModal({ recipe, onClose }) {
   const [ingredients, setIngredients] = useState([]);
+  const [utensils, setUtensils] = useState([]);
   const [steps, setSteps] = useState([]);
   const [loadingDetails, setLoadingDetails] = useState(true);
 
@@ -346,16 +357,25 @@ function RecipeModal({ recipe, onClose }) {
     
     setLoadingDetails(true);
     try {
-      // Charger les ingrédients
+      // Charger les ingrédients (note contient le nom du produit)
       const { data: ingredientsData } = await supabase
         .from('recipe_ingredients')
-        .select('*, product:products_catalog(name)')
+        .select('*')
         .eq('recipe_id', recipe.id)
         .order('position');
       
       setIngredients(ingredientsData || []);
 
-      // Charger les étapes si elles existent dans une table séparée
+      // Charger les ustensiles
+      const { data: utensilsData } = await supabase
+        .from('recipe_utensils')
+        .select('*')
+        .eq('recipe_id', recipe.id)
+        .order('id');
+      
+      setUtensils(utensilsData || []);
+
+      // Charger les étapes détaillées
       const { data: stepsData } = await supabase
         .from('recipe_steps')
         .select('*')
@@ -423,21 +443,45 @@ function RecipeModal({ recipe, onClose }) {
           </div>
         )}
 
-        {/* Ingrédients */}
+        {/* Ustensiles nécessaires */}
+        {!loadingDetails && utensils.length > 0 && (
+          <div className="modal-section">
+            <h3>🔧 Ustensiles nécessaires</h3>
+            <div className="utensils-grid">
+              {utensils.map((utensil, index) => (
+                <div key={utensil.id || index} className="utensil-item">
+                  <span className="utensil-icon">🥄</span>
+                  <span className="utensil-name">{utensil.utensil_name}</span>
+                  {utensil.quantity > 1 && (
+                    <span className="utensil-qty">x{utensil.quantity}</span>
+                  )}
+                  {utensil.is_optional && (
+                    <span className="optional-badge">Optionnel</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Ingrédients avec détails */}
         <div className="modal-section">
-          <h3>Ingrédients</h3>
+          <h3>📝 Ingrédients</h3>
           {loadingDetails ? (
             <p className="loading-text">Chargement des ingrédients...</p>
           ) : ingredients.length > 0 ? (
             <ul className="ingredients-list-modal">
               {ingredients.map((ing, index) => (
-                <li key={ing.id || index}>
+                <li key={ing.id || index} className={ing.is_optional ? 'optional' : ''}>
                   <span className="ingredient-qty">{ing.qty} {ing.unit}</span>
                   <span className="ingredient-name">
                     {ing.product?.name || ing.note || 'Ingrédient'}
+                    {ing.preparation && (
+                      <span className="ingredient-prep"> ({ing.preparation})</span>
+                    )}
                   </span>
-                  {ing.note && ing.product?.name && (
-                    <span className="ingredient-note">({ing.note})</span>
+                  {ing.is_optional && (
+                    <span className="optional-badge">Optionnel</span>
                   )}
                 </li>
               ))}
@@ -447,17 +491,29 @@ function RecipeModal({ recipe, onClose }) {
           )}
         </div>
 
-        {/* Étapes de préparation */}
+        {/* Étapes de préparation détaillées */}
         {(recipe.steps || steps.length > 0) && (
           <div className="modal-section">
-            <h3>Préparation</h3>
+            <h3>👨‍🍳 Préparation</h3>
             {recipe.steps ? (
               <div className="recipe-steps-text">{recipe.steps}</div>
             ) : steps.length > 0 ? (
               <ol className="recipe-steps-list">
                 {steps.map((step, index) => (
                   <li key={step.id || index}>
-                    {step.instruction}
+                    <div className="step-content">
+                      <p>{step.instruction}</p>
+                      {(step.duration_min || step.temperature) && (
+                        <div className="step-meta">
+                          {step.duration_min && (
+                            <span className="step-duration">⏱️ {step.duration_min} min</span>
+                          )}
+                          {step.temperature && (
+                            <span className="step-temp">🌡️ {step.temperature}{step.temperature_unit || '°C'}</span>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </li>
                 ))}
               </ol>
@@ -480,10 +536,11 @@ function RecipeModal({ recipe, onClose }) {
             ✏️ Modifier
           </button>
           <button 
-            className="recipes-fab"
-            onClick={() => window.location.href = '/recipes/edit/new'}
-            title="Ajouter une recette"
-          >
+            className="modal-btn danger"
+            onClick={() => {
+              if (confirm('Supprimer cette recette ?')) {
+                onClose();
+                // TODO: Implémenter la suppression
               }
             }}
           >
