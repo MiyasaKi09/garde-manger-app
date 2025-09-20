@@ -1,4 +1,4 @@
-// ========================================
+  // ========================================
 // FICHIER: app/recipes/page.js
 // Page Recettes avec style glassmorphisme nature
 // ========================================
@@ -483,7 +483,7 @@ function RecipeModal({ recipe, onClose }) {
             className="recipes-fab"
             onClick={() => window.location.href = '/recipes/edit/new'}
             title="Ajouter une recette"
- 
+          >
               }
             }}
           >
