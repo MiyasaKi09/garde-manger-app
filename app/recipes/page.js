@@ -18,7 +18,6 @@ export default function RecipesPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('Tous');
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-  const [showIngredients, setShowIngredients] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
   
   // Charger les recettes
@@ -227,11 +226,19 @@ export default function RecipesPage() {
               key={recipe.id} 
               recipe={recipe}
               onDelete={() => handleDelete(recipe.id)}
-              onShowIngredients={() => setShowIngredients(recipe.id)}
+              onOpenModal={setSelectedRecipe}
             />
           ))
         )}
       </div>
+
+      {/* Modal de détails de recette */}
+      {selectedRecipe && (
+        <RecipeModal 
+          recipe={selectedRecipe}
+          onClose={() => setSelectedRecipe(null)}
+        />
+      )}
 
       {/* Bouton flottant pour ajouter */}
       <button 
@@ -245,37 +252,10 @@ export default function RecipesPage() {
   );
 }
 
-// Composant RecipeCard
-function RecipeCard({ recipe, onDelete, onShowIngredients }) {
-  const [expanded, setExpanded] = useState(false);
-  const [ingredients, setIngredients] = useState([]);
-  const [loadingIngredients, setLoadingIngredients] = useState(false);
-
+// Composant RecipeCard (simplifié, sans expansion)
+function RecipeCard({ recipe, onDelete, onOpenModal }) {
   const displayTitle = recipe.title || recipe.name || 'Recette sans nom';
   const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0);
-
-  // Charger les ingrédients au clic
-  const handleCardClick = async () => {
-    if (!expanded && ingredients.length === 0) {
-      setLoadingIngredients(true);
-      try {
-        const { data, error } = await supabase
-          .from('recipe_ingredients')
-          .select('*, product:products_catalog(name)')
-          .eq('recipe_id', recipe.id)
-          .order('position');
-        
-        if (!error) {
-          setIngredients(data || []);
-        }
-      } catch (error) {
-        console.error('Erreur chargement ingrédients:', error);
-      } finally {
-        setLoadingIngredients(false);
-      }
-    }
-    setExpanded(!expanded);
-  };
 
   const getDifficultyColor = (difficulty) => {
     switch(difficulty) {
@@ -295,10 +275,15 @@ function RecipeCard({ recipe, onDelete, onShowIngredients }) {
 
   return (
     <div 
-      className={`recipe-card ${expanded ? 'expanded' : ''}`}
-      onClick={handleCardClick}
+      className="recipe-card"
+      onClick={() => onOpenModal(recipe)}
       style={{cursor: 'pointer'}}
     >
+      {/* Badge recette rapide */}
+      {totalTime <= 30 && (
+        <span className="quick-recipe">Rapide</span>
+      )}
+
       {/* En-tête */}
       <div className="card-header">
         <h3>{displayTitle}</h3>
@@ -331,73 +316,181 @@ function RecipeCard({ recipe, onDelete, onShowIngredients }) {
         )}
       </div>
 
-      {/* Description (si présente) */}
-      {recipe.description && !expanded && (
+      {/* Description courte */}
+      {recipe.description && (
         <p className="recipe-description">{recipe.description}</p>
       )}
 
-      {/* Section expandée */}
-      {expanded && (
-        <div className="card-expanded" onClick={(e) => e.stopPropagation()}>
-          {recipe.description && (
-            <p className="recipe-description-full">{recipe.description}</p>
-          )}
-          
-          {/* Ingrédients */}
-          {loadingIngredients ? (
-            <p className="loading-text">Chargement des ingrédients...</p>
-          ) : ingredients.length > 0 ? (
-            <div className="ingredients-section">
-              <h4>Ingrédients</h4>
-              <ul className="ingredients-list">
-                {ingredients.map(ing => (
-                  <li key={ing.id}>
-                    <span className="ingredient-qty">{ing.qty} {ing.unit}</span>
-                    <span className="ingredient-name">
-                      {ing.product?.name || ing.note || 'Ingrédient'}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
+      {/* Indicateur de clic */}
+      <div className="card-click-indicator">
+        Cliquez pour voir la recette
+      </div>
+    </div>
+  );
+}
 
-          {/* Actions */}
-          <div className="card-actions">
-            <button 
-              className="action-btn cook"
-              onClick={(e) => {
-                e.stopPropagation();
-                window.location.href = `/cook/${recipe.id}`;
-              }}
-            >
-              🍳 Cuisiner
-            </button>
-            <button 
-              className="action-btn edit"
-              onClick={(e) => {
-                e.stopPropagation();
-                window.location.href = `/recettes/editer/${recipe.id}`;
-              }}
-            >
-              ✏️ Éditer
-            </button>
-            <button 
-              className="action-btn delete"
-              onClick={(e) => {
-                e.stopPropagation();
-                onDelete();
-              }}
-            >
-              🗑️
-            </button>
+// Composant Modal pour afficher les détails
+function RecipeModal({ recipe, onClose }) {
+  const [ingredients, setIngredients] = useState([]);
+  const [steps, setSteps] = useState([]);
+  const [loadingDetails, setLoadingDetails] = useState(true);
+
+  useEffect(() => {
+    if (recipe) {
+      loadRecipeDetails();
+    }
+  }, [recipe]);
+
+  async function loadRecipeDetails() {
+    if (!recipe) return;
+    
+    setLoadingDetails(true);
+    try {
+      // Charger les ingrédients
+      const { data: ingredientsData } = await supabase
+        .from('recipe_ingredients')
+        .select('*, product:products_catalog(name)')
+        .eq('recipe_id', recipe.id)
+        .order('position');
+      
+      setIngredients(ingredientsData || []);
+
+      // Charger les étapes si elles existent dans une table séparée
+      const { data: stepsData } = await supabase
+        .from('recipe_steps')
+        .select('*')
+        .eq('recipe_id', recipe.id)
+        .order('step_no');
+      
+      setSteps(stepsData || []);
+    } catch (error) {
+      console.error('Erreur chargement détails:', error);
+    } finally {
+      setLoadingDetails(false);
+    }
+  }
+
+  if (!recipe) return null;
+
+  const displayTitle = recipe.title || recipe.name || 'Recette';
+  const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0);
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content recipe-modal" onClick={(e) => e.stopPropagation()}>
+        {/* Header du modal */}
+        <div className="modal-header">
+          <div>
+            <h2>{displayTitle}</h2>
+            <div className="modal-badges">
+              {recipe.is_veg && <span className="badge-vege">🌱 Végétarien</span>}
+              {recipe.category && <span className="category-badge">{recipe.category}</span>}
+              {recipe.difficulty && <span className="difficulty-badge">{recipe.difficulty}</span>}
+            </div>
+          </div>
+          <button className="modal-close-btn" onClick={onClose}>✕</button>
+        </div>
+
+        {/* Infos de base */}
+        <div className="modal-info-grid">
+          <div className="modal-info-item">
+            <span className="info-icon">👥</span>
+            <span className="info-label">Portions:</span>
+            <span className="info-value">{recipe.servings || 2} personnes</span>
+          </div>
+          <div className="modal-info-item">
+            <span className="info-icon">⏱️</span>
+            <span className="info-label">Préparation:</span>
+            <span className="info-value">{recipe.prep_min || 0} minutes</span>
+          </div>
+          <div className="modal-info-item">
+            <span className="info-icon">🍳</span>
+            <span className="info-label">Cuisson:</span>
+            <span className="info-value">{recipe.cook_min || 0} minutes</span>
+          </div>
+          <div className="modal-info-item">
+            <span className="info-icon">⏰</span>
+            <span className="info-label">Total:</span>
+            <span className="info-value">{totalTime} minutes</span>
           </div>
         </div>
-      )}
 
-      {/* Indicateur d'expansion */}
-      <div className="expand-indicator">
-        {expanded ? '▲ Réduire' : '▼ Voir plus'}
+        {/* Description */}
+        {recipe.description && (
+          <div className="modal-section">
+            <h3>Description</h3>
+            <p className="recipe-full-description">{recipe.description}</p>
+          </div>
+        )}
+
+        {/* Ingrédients */}
+        <div className="modal-section">
+          <h3>Ingrédients</h3>
+          {loadingDetails ? (
+            <p className="loading-text">Chargement des ingrédients...</p>
+          ) : ingredients.length > 0 ? (
+            <ul className="ingredients-list-modal">
+              {ingredients.map((ing, index) => (
+                <li key={ing.id || index}>
+                  <span className="ingredient-qty">{ing.qty} {ing.unit}</span>
+                  <span className="ingredient-name">
+                    {ing.product?.name || ing.note || 'Ingrédient'}
+                  </span>
+                  {ing.note && ing.product?.name && (
+                    <span className="ingredient-note">({ing.note})</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="empty-text">Aucun ingrédient renseigné</p>
+          )}
+        </div>
+
+        {/* Étapes de préparation */}
+        {(recipe.steps || steps.length > 0) && (
+          <div className="modal-section">
+            <h3>Préparation</h3>
+            {recipe.steps ? (
+              <div className="recipe-steps-text">{recipe.steps}</div>
+            ) : steps.length > 0 ? (
+              <ol className="recipe-steps-list">
+                {steps.map((step, index) => (
+                  <li key={step.id || index}>
+                    {step.instruction}
+                  </li>
+                ))}
+              </ol>
+            ) : null}
+          </div>
+        )}
+
+        {/* Actions */}
+        <div className="modal-actions">
+          <button 
+            className="modal-btn primary"
+            onClick={() => window.location.href = `/cook/${recipe.id}`}
+          >
+            🍳 Cuisiner cette recette
+          </button>
+          <button 
+            className="modal-btn secondary"
+            onClick={() => window.location.href = `/recettes/editer/${recipe.id}`}
+          >
+            ✏️ Modifier
+          </button>
+          <button 
+            className="modal-btn danger"
+            onClick={() => {
+              if (confirm('Supprimer cette recette ?')) {
+                onClose();
+                handleDelete(recipe.id);
+              }
+            }}
+          >
+            🗑️ Supprimer
+          </button>
+        </div>
       </div>
     </div>
   );
