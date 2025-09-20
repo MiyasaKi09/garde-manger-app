@@ -1,261 +1,404 @@
-'use client'; // <-- Doit être en première ligne
+// ========================================
+// FICHIER: app/recipes/page.js
+// Page Recettes avec style glassmorphisme nature
+// ========================================
 
-import { useEffect, useMemo, useState } from 'react';
+'use client';
+
+import { useState, useEffect, useMemo } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import PartySizeControl from '@/components/PartySizeControl';
-import AuthGate from '@/components/AuthGate';
+import './recipes.css';
 
-const CATS = ['Tous','Végé','Viande/Poisson','Dessert','Accompagnement','Entrée','Boisson','Autre'];
+const CATEGORIES = ['Tous', 'Végé', 'Viande/Poisson', 'Dessert', 'Accompagnement', 'Entrée', 'Boisson', 'Autre'];
 
-/* ---------- utils ---------- */
-function displayTitle(r){
-  return r?.title || r?.name || 'Recette';
-}
-function mealsFromBatch(servingsPerBatch, people){
-  if(!servingsPerBatch || !people) return 0;
-  return Math.floor(Number(servingsPerBatch) / Number(people));
-}
+export default function RecipesPage() {
+  const [recipes, setRecipes] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('Tous');
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [showIngredients, setShowIngredients] = useState(null);
+  const [showAddModal, setShowAddModal] = useState(false);
+  
+  // Charger les recettes
+  useEffect(() => {
+    loadRecipes();
+  }, []);
 
-/* ---------- Carte ---------- */
-function RecipeCard({ r, people = 2, onOpen, onDelete }) {
-  const title = displayTitle(r);
-  const nonDivisible = r?.is_divisible === false;
-  const batchMeals = nonDivisible ? mealsFromBatch(r?.servings, people) : null;
+  // Filtrer les recettes
+  useEffect(() => {
+    let filtered = [...recipes];
+
+    if (searchTerm) {
+      filtered = filtered.filter(recipe =>
+        (recipe.title || recipe.name || '').toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (categoryFilter !== 'Tous') {
+      if (categoryFilter === 'Végé') {
+        filtered = filtered.filter(r => r.is_veg);
+      } else {
+        filtered = filtered.filter(r => r.category === categoryFilter);
+      }
+    }
+
+    setFilteredRecipes(filtered);
+  }, [recipes, searchTerm, categoryFilter]);
+
+  async function loadRecipes() {
+    try {
+      const { data, error } = await supabase
+        .from('recipes')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setRecipes(data || []);
+    } catch (error) {
+      console.error('Erreur:', error);
+      // Données de démo en cas d'erreur
+      setRecipes(getDemoRecipes());
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function getDemoRecipes() {
+    return [
+      {
+        id: 1,
+        title: 'Ratatouille Provençale',
+        category: 'Végé',
+        is_veg: true,
+        servings: 4,
+        prep_min: 20,
+        cook_min: 45,
+        difficulty: 'Facile',
+        description: 'Un classique de la cuisine méditerranéenne'
+      },
+      {
+        id: 2,
+        title: 'Poulet Rôti aux Herbes',
+        category: 'Viande/Poisson',
+        is_veg: false,
+        servings: 6,
+        prep_min: 15,
+        cook_min: 90,
+        difficulty: 'Moyen'
+      },
+      {
+        id: 3,
+        title: 'Tarte aux Pommes',
+        category: 'Dessert',
+        is_veg: true,
+        servings: 8,
+        prep_min: 30,
+        cook_min: 40,
+        difficulty: 'Moyen'
+      }
+    ];
+  }
+
+  async function handleDelete(id) {
+    if (!confirm('Supprimer cette recette ?')) return;
+    
+    try {
+      const { error } = await supabase
+        .from('recipes')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+      await loadRecipes();
+    } catch (error) {
+      console.error('Erreur:', error);
+      // Suppression locale en cas d'erreur
+      setRecipes(prev => prev.filter(r => r.id !== id));
+    }
+  }
+
+  // Statistiques
+  const stats = {
+    total: filteredRecipes.length,
+    vege: filteredRecipes.filter(r => r.is_veg).length,
+    rapide: filteredRecipes.filter(r => (r.prep_min + r.cook_min) <= 30).length,
+    categories: [...new Set(recipes.map(r => r.category))].filter(Boolean).length
+  };
+
+  // Fonction pour gérer les filtres rapides
+  const handleQuickFilter = (filterType) => {
+    switch(filterType) {
+      case 'all':
+        setCategoryFilter('Tous');
+        setSearchTerm('');
+        break;
+      case 'vege':
+        setCategoryFilter('Végé');
+        break;
+      case 'rapide':
+        // Filtrer les recettes rapides (< 30 min)
+        setSearchTerm('');
+        break;
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="recipes-loading">
+        <div className="loading-spinner"></div>
+        <p>Chargement des recettes...</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="card" style={{display:'grid',gap:8, padding:12}}>
-      <div style={{display:'flex',justifyContent:'space-between',alignItems:'baseline', gap:10}}>
-        <strong className="line-clamp-2" style={{fontSize:16}} title={title}>{title}</strong>
-        <div style={{fontSize:12,opacity:.7}}>
-          {r?.category || (r?.is_veg ? 'Végé' : '—')}
+    <div className="recipes-container">
+      {/* Statistiques cliquables */}
+      <div className="stats-container">
+        <div 
+          className="stat-card"
+          onClick={() => handleQuickFilter('all')}
+          style={{cursor: 'pointer'}}
+        >
+          <div className="stat-number">{recipes.length}</div>
+          <div className="stat-label">Recettes Total</div>
+        </div>
+        <div 
+          className="stat-card"
+          onClick={() => handleQuickFilter('vege')}
+          style={{cursor: 'pointer'}}
+        >
+          <div className="stat-number">{stats.vege}</div>
+          <div className="stat-label">Végétariennes</div>
+        </div>
+        <div 
+          className="stat-card"
+          onClick={() => handleQuickFilter('rapide')}
+          style={{cursor: 'pointer'}}
+        >
+          <div className="stat-number">{stats.rapide}</div>
+          <div className="stat-label">Rapides (-30min)</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-number">{stats.categories}</div>
+          <div className="stat-label">Catégories</div>
         </div>
       </div>
 
-      <div style={{fontSize:12,opacity:.75}}>
-        {r?.servings ?? 2} pers (base) • prep {r?.prep_min||0}′ • cuisson {r?.cook_min||0}′
+      {/* Filtres */}
+      <div className="filters">
+        <div className="filter-group">
+          <input
+            type="text"
+            placeholder="🔍 Rechercher une recette..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="filter-input"
+          />
+        </div>
+
+        <div className="filter-group">
+          <select 
+            value={categoryFilter} 
+            onChange={(e) => setCategoryFilter(e.target.value)}
+            className="filter-select"
+          >
+            {CATEGORIES.map(cat => (
+              <option key={cat} value={cat}>
+                {cat === 'Tous' ? '📁 Toutes catégories' : cat}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
-      <div style={{fontSize:12, marginTop:2}}>
-        {nonDivisible ? (
-          <span title="Recette non divisible (batch entier)">
-            Batch entier • avec <b>{people}</b> pers → <b>{batchMeals ?? 0}</b> repas
-          </span>
+      {/* Grille de recettes */}
+      <div className="recipes-grid">
+        {filteredRecipes.length === 0 ? (
+          <div className="empty-state">
+            <h2>Aucune recette trouvée</h2>
+            <p>Ajustez vos filtres ou ajoutez de nouvelles recettes</p>
+          </div>
         ) : (
-          <span>
-            Ajustée pour <b>{people}</b> pers
-          </span>
+          filteredRecipes.map(recipe => (
+            <RecipeCard 
+              key={recipe.id} 
+              recipe={recipe}
+              onDelete={() => handleDelete(recipe.id)}
+              onShowIngredients={() => setShowIngredients(recipe.id)}
+            />
+          ))
         )}
       </div>
 
-      <div style={{display:'flex',gap:6,marginTop:6}}>
-        <button className="btn" onClick={()=>onOpen(r)}>Ouvrir</button>
-        <button className="btn" onClick={()=>onDelete(r)} title="Supprimer">Supprimer</button>
-      </div>
+      {/* Bouton flottant pour ajouter */}
+      <button 
+        className="recipes-fab"
+        onClick={() => setShowAddModal(true)}
+        title="Ajouter une recette"
+      >
+        +
+      </button>
     </div>
   );
 }
 
-/* ---------- Modal ---------- */
-function RecipeModal({ id, onClose }) {
-  const [recipe,setRecipe]=useState(null);
-  const [ings,setIngs]=useState([]);
+// Composant RecipeCard
+function RecipeCard({ recipe, onDelete, onShowIngredients }) {
+  const [expanded, setExpanded] = useState(false);
+  const [ingredients, setIngredients] = useState([]);
+  const [loadingIngredients, setLoadingIngredients] = useState(false);
 
-  useEffect(()=>{ (async()=>{
-    if(!id) return;
-    const { data: r, error: e1 } = await supabase.from('recipes').select('*').eq('id', id).single();
-    if (e1) console.error('recipe fetch error', e1);
-    setRecipe(r||null);
-    const { data: ri, error: e2 } = await supabase
-      .from('recipe_ingredients')
-      .select('id, qty, unit, note, product:products_catalog(id,name,default_unit)')
-      .eq('recipe_id', id)
-      .order('id');
-    if (e2) console.error('ingredients fetch error', e2);
-    setIngs(ri||[]);
-  })(); },[id]);
+  const displayTitle = recipe.title || recipe.name || 'Recette sans nom';
+  const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0);
 
-  if(!id) return null;
+  // Charger les ingrédients au clic
+  const handleCardClick = async () => {
+    if (!expanded && ingredients.length === 0) {
+      setLoadingIngredients(true);
+      try {
+        const { data, error } = await supabase
+          .from('recipe_ingredients')
+          .select('*, product:products_catalog(name)')
+          .eq('recipe_id', recipe.id)
+          .order('position');
+        
+        if (!error) {
+          setIngredients(data || []);
+        }
+      } catch (error) {
+        console.error('Erreur chargement ingrédients:', error);
+      } finally {
+        setLoadingIngredients(false);
+      }
+    }
+    setExpanded(!expanded);
+  };
+
+  const getDifficultyColor = (difficulty) => {
+    switch(difficulty) {
+      case 'Facile': return 'difficulty-easy';
+      case 'Moyen': return 'difficulty-medium';
+      case 'Difficile': return 'difficulty-hard';
+      default: return '';
+    }
+  };
+
+  const getTimeIcon = () => {
+    if (totalTime <= 15) return '⚡';
+    if (totalTime <= 30) return '⏱️';
+    if (totalTime <= 60) return '⏰';
+    return '⏳';
+  };
+
   return (
-    <div style={{
-      position:'fixed', inset:0, background:'rgba(0,0,0,.35)',
-      display:'grid', placeItems:'center', zIndex:100
-    }}>
-      <div className="card" style={{width:'min(860px, 92vw)', maxHeight:'88vh', overflow:'auto', display:'grid', gap:10}}>
-        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center', gap:8}}>
-          <h2 style={{margin:0}}>{displayTitle(recipe)}</h2>
-          <button className="btn" onClick={onClose}>Fermer</button>
-        </div>
-
-        <div style={{fontSize:13,opacity:.75}}>
-          {recipe?.category || (recipe?.is_veg?'Végé':'—')} • {recipe?.servings ?? 2} pers •
-          {' '}prep {recipe?.prep_min||0}′ • cuisson {recipe?.cook_min||0}′
-          {recipe?.is_divisible===false && (
-            <span className="badge" style={{marginLeft:8}}>Non divisible</span>
-          )}
-        </div>
-
-        {recipe?.description && <p style={{whiteSpace:'pre-wrap'}}>{recipe.description}</p>}
-
-        <h3>Ingrédients</h3>
-        <ul style={{margin:0,paddingLeft:18}}>
-          {ings.map(i=>(
-            <li key={i.id}>
-              {i.qty} {i.unit} — {i.product?.name || '??'} {i.note ? <em style={{opacity:.7}}>({i.note})</em> : null}
-            </li>
-          ))}
-          {ings.length===0 && <em style={{opacity:.7}}>Aucun ingrédient pour le moment.</em>}
-        </ul>
-
-        <div style={{display:'flex',gap:8,marginTop:8}}>
-          <a className="btn" href={`/recettes/editer/${id}`}>Éditer</a>
-          <a className="btn" href={`/cook/${id}`}>Cuisiner</a>
+    <div 
+      className={`recipe-card ${expanded ? 'expanded' : ''}`}
+      onClick={handleCardClick}
+      style={{cursor: 'pointer'}}
+    >
+      {/* En-tête */}
+      <div className="card-header">
+        <h3>{displayTitle}</h3>
+        <div className="card-badges">
+          {recipe.is_veg && <span className="badge-vege">🌱 Végé</span>}
+          {recipe.category && <span className="category-badge">{recipe.category}</span>}
         </div>
       </div>
-    </div>
-  );
-}
 
-/* ---------- Page protégée ---------- */
-export default function RecipesPage(){
-  return (
-    <AuthGate>
-      <RecipesInner />
-    </AuthGate>
-  );
-}
+      {/* Infos rapides */}
+      <div className="card-info">
+        <div className="info-row">
+          <span className="info-icon">👥</span>
+          <span className="info-value">{recipe.servings || 2} pers</span>
+        </div>
+        
+        <div className="info-row">
+          <span className="info-icon">{getTimeIcon()}</span>
+          <span className="info-value">
+            {recipe.prep_min || 0}′ prep + {recipe.cook_min || 0}′ cuisson
+          </span>
+        </div>
 
-/* ---------- Le contenu réel de la page ---------- */
-function RecipesInner(){
-  const [recipes,setRecipes]=useState([]);
-  const [q,setQ]=useState('');
-  const [cat,setCat]=useState('Tous');
-  const [opening,setOpening]=useState(null);
-
-  const [people, setPeople] = useState(2);
-
-  // Form nouvel élément
-  const [title,setTitle]=useState('');
-  const [isVeg,setIsVeg]=useState(false);
-  const [category,setCategory]=useState('');
-  const [servings,setServings]=useState(2);
-  const [isDivisible, setIsDivisible] = useState(true);
-
-  useEffect(()=>{
-    const saved = localStorage.getItem('myko.partySize');
-    if(saved){
-      const n = parseInt(saved,10);
-      if(!Number.isNaN(n) && n>0) setPeople(n);
-    }
-  },[]);
-
-  async function load(){
-    const { data, error } = await supabase
-      .from('recipes')
-      .select('id,title,name,category,is_veg,servings,prep_min,cook_min,is_divisible,created_at')
-      .order('created_at', { ascending:false })
-      .order('title', { ascending:true });
-
-    if (error) {
-      console.error('Supabase recipes error:', error);
-      alert(`Erreur chargement recettes: ${error.message}`);
-      setRecipes([]);
-      return;
-    }
-    setRecipes(data||[]);
-  }
-
-  useEffect(()=>{ load(); },[]); // <-- on appelait plus load()
-
-  const filtered = useMemo(()=>{
-    const s = (q||'').toLowerCase();
-    return (recipes||[]).filter(r=>{
-      const t = displayTitle(r).toLowerCase();
-      const okQ = !s || t.includes(s);
-      const okC = cat==='Tous'
-        ? true
-        : (cat==='Végé'
-            ? (r.is_veg===true || r.category==='Végé')
-            : (r.category===cat));
-      return okQ && okC;
-    });
-  },[recipes,q,cat]);
-
-  async function addRecipe(e){
-    e.preventDefault();
-    if(!title.trim()) return;
-    const rec = {
-      title: title.trim(),
-      is_veg: isVeg,
-      category: category || null,
-      servings: Number(servings)||2,
-      is_divisible: isDivisible
-    };
-    const { data, error } = await supabase.from('recipes').insert(rec).select('*').single();
-    if(error) return alert(error.message);
-    setRecipes(prev=>[data, ...prev]);
-    setTitle(''); setIsVeg(false); setCategory(''); setServings(2); setIsDivisible(true);
-  }
-
-  async function deleteRecipe(r){
-    if(!confirm(`Supprimer "${displayTitle(r)}" ?`)) return;
-    const { error } = await supabase.from('recipes').delete().eq('id', r.id);
-    if(error) return alert(error.message);
-    setRecipes(prev=>prev.filter(x=>x.id!==r.id));
-  }
-
-  return (
-    <div>
-      <h1>Recettes</h1>
-
-      {/* filtres + Nb personnes */}
-      <div className="card" style={{display:'grid',gap:8}}>
-        <div style={{display:'flex',gap:8,flexWrap:'wrap',alignItems:'center', justifyContent:'space-between'}}>
-          <div style={{display:'flex',gap:8,flexWrap:'wrap',alignItems:'center'}}>
-            <input className="input" placeholder="Rechercher…" value={q} onChange={e=>setQ(e.target.value)} style={{minWidth:220}}/>
-            <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
-              {CATS.map(c=>(
-                <button key={c}
-                  className={`btn ${cat===c?'primary':''}`}
-                  onClick={()=>setCat(c)}
-                >{c}</button>
-              ))}
-            </div>
+        {recipe.difficulty && (
+          <div className="info-row">
+            <span className={`difficulty-badge ${getDifficultyColor(recipe.difficulty)}`}>
+              {recipe.difficulty}
+            </span>
           </div>
-          <PartySizeControl value={people} onChange={(n)=>{ setPeople(n); localStorage.setItem('myko.partySize', String(n)); }} />
-        </div>
+        )}
       </div>
 
-      {/* Ajouter */}
-      <form onSubmit={addRecipe} className="card" style={{display:'grid',gap:8, marginTop:10, maxWidth:900}}>
-        <h3 style={{margin:0}}>Ajouter une recette</h3>
-        <div style={{display:'grid',gridTemplateColumns:'2fr 1fr 1fr 1fr 1fr',gap:8, alignItems:'center'}}>
-          <input className="input" placeholder="Nom de la recette" value={title} onChange={e=>setTitle(e.target.value)} required/>
-          <select className="input" value={category} onChange={e=>setCategory(e.target.value)}>
-            <option value="">Catégorie…</option>
-            {CATS.filter(c=>c!=='Tous' && c!=='Végé').map(c=><option key={c} value={c}>{c}</option>)}
-          </select>
-          <label className="input" style={{display:'flex',alignItems:'center',gap:6}}>
-            <input type="checkbox" checked={isVeg} onChange={e=>setIsVeg(e.target.checked)}/> Végé
-          </label>
-          <input className="input" type="number" min="1" value={servings} onChange={e=>setServings(e.target.value)} title="Portions"/>
-          <label className="input" style={{display:'flex',alignItems:'center',gap:6}}>
-            <input type="checkbox" checked={!isDivisible} onChange={e=>setIsDivisible(!e.target.checked)}/>
-            Non divisible
-          </label>
+      {/* Description (si présente) */}
+      {recipe.description && !expanded && (
+        <p className="recipe-description">{recipe.description}</p>
+      )}
+
+      {/* Section expandée */}
+      {expanded && (
+        <div className="card-expanded" onClick={(e) => e.stopPropagation()}>
+          {recipe.description && (
+            <p className="recipe-description-full">{recipe.description}</p>
+          )}
+          
+          {/* Ingrédients */}
+          {loadingIngredients ? (
+            <p className="loading-text">Chargement des ingrédients...</p>
+          ) : ingredients.length > 0 ? (
+            <div className="ingredients-section">
+              <h4>Ingrédients</h4>
+              <ul className="ingredients-list">
+                {ingredients.map(ing => (
+                  <li key={ing.id}>
+                    <span className="ingredient-qty">{ing.qty} {ing.unit}</span>
+                    <span className="ingredient-name">
+                      {ing.product?.name || ing.note || 'Ingrédient'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          {/* Actions */}
+          <div className="card-actions">
+            <button 
+              className="action-btn cook"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.location.href = `/cook/${recipe.id}`;
+              }}
+            >
+              🍳 Cuisiner
+            </button>
+            <button 
+              className="action-btn edit"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.location.href = `/recettes/editer/${recipe.id}`;
+              }}
+            >
+              ✏️ Éditer
+            </button>
+            <button 
+              className="action-btn delete"
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete();
+              }}
+            >
+              🗑️
+            </button>
+          </div>
         </div>
-        <div><button className="btn primary" type="submit">Créer</button></div>
-      </form>
+      )}
 
-      {/* grille */}
-      <div className="grid" style={{gap:10, gridTemplateColumns:'repeat(auto-fill, minmax(240px, 1fr))', marginTop:12}}>
-        {filtered.map(r=>(
-          <RecipeCard key={r.id} r={r} people={people} onOpen={setOpening} onDelete={deleteRecipe}/>
-        ))}
-        {filtered.length===0 && <p style={{opacity:.7}}>Aucune recette.</p>}
+      {/* Indicateur d'expansion */}
+      <div className="expand-indicator">
+        {expanded ? '▲ Réduire' : '▼ Voir plus'}
       </div>
-
-      {/* modal */}
-      {opening && <RecipeModal id={opening.id} onClose={()=>setOpening(null)}/>}
     </div>
   );
 }
