@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import './pantry.css';
 // ⬇️ Choisis UN des deux imports selon l'emplacement réel du fichier :
-import SmartAddForm from '@/components/SmartAddForm.js'; 
+import SmartAddForm from './components/SmartAddForm.js'; 
 // import SmartAddForm from './components/SmartAddForm';
 
 
