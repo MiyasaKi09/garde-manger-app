@@ -7,6 +7,8 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient'; // ← Import corrigé
 import './pantry.css';
+import { useState } from "react";
+import SmartAddForm from "./components/SmartAddForm";
 
 export default function PantryPage() {
   const [items, setItems] = useState([]);
@@ -372,9 +374,9 @@ export default function PantryPage() {
       </div>
 
       {/* Bouton flottant pour ajouter */}
-      <button 
+       <button
         className="pantry-fab"
-        onClick={() => alert('Fonction d\'ajout à implémenter')}
+        onClick={() => setShowForm(true)}
         title="Ajouter un article"
       >
         +
