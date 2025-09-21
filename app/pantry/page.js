@@ -5,10 +5,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabaseClient'; // ← Import corrigé
+import { supabase } from '@/lib/supabaseClient';
 import './pantry.css';
-import { useState } from "react";
-import SmartAddForm from "./components/SmartAddForm";
+// ⬇️ Choisis UN des deux imports selon l'emplacement réel du fichier :
+import SmartAddForm from '@/components/SmartAddForm'; 
+// import SmartAddForm from './components/SmartAddForm';
+
 
 export default function PantryPage() {
   const [items, setItems] = useState([]);
@@ -373,14 +375,20 @@ export default function PantryPage() {
         )}
       </div>
 
+           {/* Modal d’ajout (glassmorphisme) */}
+      {showForm && (
+        <SmartAddForm onClose={() => setShowForm(false)} />
+      )}
+
       {/* Bouton flottant pour ajouter */}
-       <button
+      <button
         className="pantry-fab"
         onClick={() => setShowForm(true)}
         title="Ajouter un article"
       >
         +
       </button>
+
     </div>
   );
 }
