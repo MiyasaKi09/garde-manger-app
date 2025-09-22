@@ -21,6 +21,10 @@ export default function PantryPage() {
   const [locationFilter, setLocationFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
 
+ // ✅ AJOUT DU STATE MANQUANT
+  const [showForm, setShowForm] = useState(false);
+
+  
   // Charger les données au montage
   useEffect(() => {
     loadPantryItems();
