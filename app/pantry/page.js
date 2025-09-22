@@ -281,11 +281,11 @@ export default function PantryPage() {
         </div>
       </div>
 
-      {/* Barre de recherche et filtres */}
+      {/* Barre de recherche et filtres harmonisés */}
       <div className="search-filters">
         <input
           type="text"
-          placeholder="Rechercher un produit..."
+          placeholder="🔍 Rechercher un produit..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
@@ -296,7 +296,7 @@ export default function PantryPage() {
           onChange={(e) => setCategoryFilter(e.target.value)}
           className="filter-select"
         >
-          <option value="">Toutes catégories</option>
+          <option value="">📦 Toutes catégories</option>
           {categories.map(cat => (
             <option key={cat} value={cat}>{cat}</option>
           ))}
@@ -307,7 +307,7 @@ export default function PantryPage() {
           onChange={(e) => setLocationFilter(e.target.value)}
           className="filter-select"
         >
-          <option value="">Tous emplacements</option>
+          <option value="">📍 Tous emplacements</option>
           {locations.map(loc => (
             <option key={loc} value={loc}>{loc}</option>
           ))}
@@ -318,10 +318,10 @@ export default function PantryPage() {
           onChange={(e) => setStatusFilter(e.target.value)}
           className="filter-select"
         >
-          <option value="">Tous statuts</option>
-          <option value="good">Bon</option>
-          <option value="expiring_soon">Expire bientôt</option>
-          <option value="expired">Expiré</option>
+          <option value="">⏰ Tous statuts</option>
+          <option value="good">✅ Bon</option>
+          <option value="expiring_soon">⚠️ Expire bientôt</option>
+          <option value="expired">❌ Expiré</option>
         </select>
       </div>
 
