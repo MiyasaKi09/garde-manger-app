@@ -2,7 +2,190 @@
    FICHIER: app/pantry/pantry.css
    THÈME: Glassmorphisme nature (sans fond)
    ======================================== */
+/* Ajout à pantry.css - Styles harmonisés pour la recherche et filtres */
 
+/* Barre de recherche et filtres redessinés */
+.search-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Input de recherche principal */
+.search-input {
+  flex: 1;
+  min-width: 280px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  color: #2e7d32;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.search-input::placeholder {
+  color: rgba(46, 125, 50, 0.6);
+  font-weight: 400;
+}
+
+.search-input:focus {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(102, 187, 106, 0.4);
+  box-shadow: 
+    0 8px 24px rgba(102, 187, 106, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Selects de filtrage */
+.filter-select {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  padding: 0.8rem 1.2rem;
+  color: #2e7d32;
+  font-size: 0.95rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23388e3c' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.8rem center;
+  background-repeat: no-repeat;
+  background-size: 1.2em 1.2em;
+  padding-right: 2.5rem;
+  min-width: 140px;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.filter-select:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.filter-select:focus {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(102, 187, 106, 0.4);
+  box-shadow: 
+    0 6px 20px rgba(102, 187, 106, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Options du select */
+.filter-select option {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  color: #2e7d32;
+  font-weight: 500;
+  padding: 0.5rem;
+}
+
+/* Version mobile optimisée */
+@media (max-width: 768px) {
+  .search-filters {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .search-input {
+    min-width: 100%;
+    padding: 0.9rem 1.2rem;
+  }
+
+  .filter-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-right: 2.2rem;
+  }
+}
+
+/* Animation d'apparition pour les filtres */
+.search-filters > * {
+  animation: filterSlideIn 0.4s ease-out;
+}
+
+@keyframes filterSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Amélioration des cartes de stats pour s'harmoniser */
+.stat-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  user-select: none;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.stat-card.active {
+  background: rgba(102, 187, 106, 0.22);
+  border-color: rgba(102, 187, 106, 0.4);
+  box-shadow: 
+    0 6px 20px rgba(102, 187, 106, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Grille des produits harmonisée */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  animation: gridFadeIn 0.6s ease-out;
+}
+
+@keyframes gridFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* Container principal SANS FOND et SANS TITRE */
 .pantry-container {
   min-height: 100vh;
