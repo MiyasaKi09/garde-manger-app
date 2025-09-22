@@ -1,16 +1,10 @@
-// ========================================
-// FICHIER: app/pantry/page.js
-// ========================================
-
+// app/pantry/page.js
 'use client';
 
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import './pantry.css';
-// ⬇️ Choisis UN des deux imports selon l'emplacement réel du fichier :
 import SmartAddForm from './components/SmartAddForm.js'; 
-// import SmartAddForm from './components/SmartAddForm';
-
 
 export default function PantryPage() {
   const [items, setItems] = useState([]);
@@ -20,11 +14,10 @@ export default function PantryPage() {
   const [categoryFilter, setCategoryFilter] = useState('');
   const [locationFilter, setLocationFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
-
- // ✅ AJOUT DU STATE MANQUANT
+  
+  // ✅ AJOUT DU STATE MANQUANT
   const [showForm, setShowForm] = useState(false);
 
-  
   // Charger les données au montage
   useEffect(() => {
     loadPantryItems();
@@ -95,91 +88,58 @@ export default function PantryPage() {
     }
   }
 
-  function getExpirationStatus(date) {
-    if (!date) return 'no_date';
-    const days = getDaysUntilExpiration(date);
-    if (days < 0) return 'expired';
-    if (days <= 7) return 'expiring_soon';
+  function getExpirationStatus(dateString) {
+    if (!dateString) return 'no_date';
+    
+    const today = new Date();
+    const expirationDate = new Date(dateString);
+    const diffTime = expirationDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays < 0) return 'expired';
+    if (diffDays <= 3) return 'expiring_soon';
     return 'good';
   }
 
-  function getDaysUntilExpiration(date) {
-    if (!date) return null;
-    const expDate = new Date(date);
+  function getDaysUntilExpiration(dateString) {
+    if (!dateString) return null;
+    
     const today = new Date();
-    const diffTime = expDate - today;
+    const expirationDate = new Date(dateString);
+    const diffTime = expirationDate - today;
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   }
 
   function getDemoData() {
     return [
       {
-        id: 1,
-        product_name: 'Tomates Cerises Bio',
+        id: 'demo-1',
+        product_name: 'Tomates',
         category_name: 'Légumes',
+        qty_remaining: 5,
+        unit: 'pièces',
+        storage_place: 'Réfrigérateur',
+        expiration_date: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+        expiration_status: 'expiring_soon',
+        days_until_expiration: 2
+      },
+      {
+        id: 'demo-2',
+        product_name: 'Pâtes',
+        category_name: 'Féculents',
         qty_remaining: 500,
         unit: 'g',
-        storage_place: 'Frigo',
-        expiration_date: '2025-09-25',
-        expiration_status: 'expiring_soon',
-        days_until_expiration: 6
-      },
-      {
-        id: 2,
-        product_name: 'Farine de Blé T55',
-        category_name: 'Céréales',
-        qty_remaining: 2,
-        unit: 'kg',
-        storage_place: 'Garde-manger',
-        expiration_date: '2026-03-15',
+        storage_place: 'Placard',
+        expiration_date: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         expiration_status: 'good',
-        days_until_expiration: 177
-      },
-      {
-        id: 3,
-        product_name: 'Haricots Verts',
-        category_name: 'Légumes',
-        qty_remaining: 300,
-        unit: 'g',
-        storage_place: 'Congélateur',
-        expiration_date: '2026-01-15',
-        expiration_status: 'good',
-        days_until_expiration: 118
+        days_until_expiration: 180
       }
     ];
   }
 
   async function handleConsume(id, currentQty) {
-    const qty = prompt(`Quantité à consommer ? (Max: ${currentQty})`);
-    if (!qty || isNaN(qty)) return;
-
-    try {
-      const newQty = Math.max(0, currentQty - parseFloat(qty));
-      
-      const { error } = await supabase
-        .from('inventory_lots')
-        .update({ qty_remaining: newQty })
-        .eq('id', id);
-
-      if (error) throw error;
-      
-      await loadPantryItems();
-      alert('Article mis à jour !');
-    } catch (error) {
-      console.error('Erreur:', error);
-      // Mise à jour locale en cas d'erreur
-      setItems(prev => prev.map(item => 
-        item.id === id ? { ...item, qty_remaining: Math.max(0, currentQty - parseFloat(qty)) } : item
-      ));
-    }
-  }
-
-  async function handleEdit(id) {
-    const item = items.find(i => i.id === id);
-    if (!item) return;
-
-    const newQty = prompt(`Nouvelle quantité pour ${item.product_name} ?`, item.qty_remaining);
-    if (!newQty || isNaN(newQty)) return;
+    const newQty = prompt(`Nouvelle quantité (actuel: ${currentQty}):`, currentQty);
+    if (newQty === null) return;
 
     try {
       const { error } = await supabase
@@ -190,13 +150,21 @@ export default function PantryPage() {
       if (error) throw error;
       
       await loadPantryItems();
-      alert('Quantité mise à jour !');
+      alert('Quantité mise à jour');
     } catch (error) {
       console.error('Erreur:', error);
       // Mise à jour locale en cas d'erreur
       setItems(prev => prev.map(i => 
         i.id === id ? { ...i, qty_remaining: parseFloat(newQty) } : i
       ));
+    }
+  }
+
+  async function handleEdit(id) {
+    // Pour l'instant, rediriger vers la consommation
+    const item = items.find(i => i.id === id);
+    if (item) {
+      handleConsume(id, item.qty_remaining);
     }
   }
 
@@ -251,14 +219,19 @@ export default function PantryPage() {
         setQuickFilter('expiring');
         break;
       case 'categories':
-        // Afficher un modal ou dropdown pour choisir une catégorie
         setQuickFilter('categories');
         break;
       case 'locations':
-        // Afficher un modal ou dropdown pour choisir un emplacement
         setQuickFilter('locations');
         break;
     }
+  };
+
+  // ✅ FONCTION POUR GÉRER LA FERMETURE DU FORMULAIRE
+  const handleFormClose = () => {
+    setShowForm(false);
+    // Recharger les données après ajout
+    loadPantryItems();
   };
 
   if (loading) {
@@ -288,17 +261,19 @@ export default function PantryPage() {
           style={{cursor: 'pointer'}}
         >
           <div className="stat-number">{stats.expiring}</div>
-          <div className="stat-label">Expirent bientôt</div>
+          <div className="stat-label">À consommer</div>
         </div>
         <div 
-          className="stat-card"
+          className={`stat-card ${quickFilter === 'categories' ? 'active' : ''}`}
+          onClick={() => handleQuickFilter('categories')}
           style={{cursor: 'pointer'}}
         >
           <div className="stat-number">{stats.categories}</div>
           <div className="stat-label">Catégories</div>
         </div>
         <div 
-          className="stat-card"
+          className={`stat-card ${quickFilter === 'locations' ? 'active' : ''}`}
+          onClick={() => handleQuickFilter('locations')}
           style={{cursor: 'pointer'}}
         >
           <div className="stat-number">{stats.locations}</div>
@@ -306,61 +281,52 @@ export default function PantryPage() {
         </div>
       </div>
 
-      {/* Filtres */}
-      <div className="filters">
-        <div className="filter-group">
-          <input
-            type="text"
-            placeholder="🔍 Rechercher..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="filter-input"
-          />
-        </div>
-
-        <div className="filter-group">
-          <select 
-            value={categoryFilter} 
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            className="filter-select"
-          >
-            <option value="">📁 Toutes catégories</option>
-            {categories.map(cat => (
-              <option key={cat} value={cat}>{cat}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="filter-group">
-          <select 
-            value={locationFilter} 
-            onChange={(e) => setLocationFilter(e.target.value)}
-            className="filter-select"
-          >
-            <option value="">📍 Tous emplacements</option>
-            {locations.map(loc => (
-              <option key={loc} value={loc}>{loc}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="filter-group">
-          <select 
-            value={statusFilter} 
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="filter-select"
-          >
-            <option value="">⏰ Tous statuts</option>
-            <option value="good">✅ Bon état</option>
-            <option value="expiring_soon">⚠️ Expire bientôt</option>
-            <option value="expired">❌ Expiré</option>
-            <option value="no_date">📅 Sans date</option>
-          </select>
-        </div>
+      {/* Barre de recherche et filtres */}
+      <div className="search-filters">
+        <input
+          type="text"
+          placeholder="Rechercher un produit..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+        
+        <select
+          value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}
+          className="filter-select"
+        >
+          <option value="">Toutes catégories</option>
+          {categories.map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
+        
+        <select
+          value={locationFilter}
+          onChange={(e) => setLocationFilter(e.target.value)}
+          className="filter-select"
+        >
+          <option value="">Tous emplacements</option>
+          {locations.map(loc => (
+            <option key={loc} value={loc}>{loc}</option>
+          ))}
+        </select>
+        
+        <select
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+          className="filter-select"
+        >
+          <option value="">Tous statuts</option>
+          <option value="good">Bon</option>
+          <option value="expiring_soon">Expire bientôt</option>
+          <option value="expired">Expiré</option>
+        </select>
       </div>
 
-      {/* Grille de produits */}
-      <div className="pantry-grid">
+      {/* Grille des produits */}
+      <div className="products-grid">
         {filteredItems.length === 0 ? (
           <div className="empty-state">
             <h2>Aucun article trouvé</h2>
@@ -379,9 +345,13 @@ export default function PantryPage() {
         )}
       </div>
 
-           {/* Modal d’ajout (glassmorphisme) */}
+      {/* Modal d'ajout (glassmorphisme) */}
       {showForm && (
-        <SmartAddForm onClose={() => setShowForm(false)} />
+        <SmartAddForm 
+          open={showForm}
+          onClose={handleFormClose}
+          onLotCreated={handleFormClose}
+        />
       )}
 
       {/* Bouton flottant pour ajouter */}
@@ -392,7 +362,6 @@ export default function PantryPage() {
       >
         +
       </button>
-
     </div>
   );
 }
@@ -461,49 +430,39 @@ function ProductCard({ item, onConsume, onEdit, onDelete }) {
           )}
 
           {item.expiration_date && (
-            <div className={`expiration-status ${getStatusClass(item.expiration_status)}`}>
+            <div className={`status-badge ${getStatusClass(item.expiration_status)}`}>
               {getStatusText(item.expiration_status, item.days_until_expiration)}
             </div>
           )}
         </div>
 
-        {/* Indicateur visuel qu'on peut cliquer */}
-        <div className="card-click-indicator">
-          <span>Cliquez pour actions</span>
-        </div>
-      </div>
-
-      {/* Modal d'actions */}
-      {showActions && (
-        <div className="action-modal-overlay" onClick={() => setShowActions(false)}>
-          <div className="action-modal" onClick={(e) => e.stopPropagation()}>
-            <h4>{item.product_name}</h4>
-            <div className="modal-actions">
-              <button 
-                className="modal-btn consume" 
-                onClick={(e) => handleAction(onConsume, e)}
-              >
-                🍽️ Consommer
-              </button>
-              <button 
-                className="modal-btn edit" 
-                onClick={(e) => handleAction(onEdit, e)}
-              >
-                ✏️ Modifier
-              </button>
-              <button 
-                className="modal-btn delete" 
-                onClick={(e) => handleAction(onDelete, e)}
-              >
-                🗑️ Supprimer
-              </button>
-            </div>
-            <button className="modal-close" onClick={() => setShowActions(false)}>
-              Fermer
+        {/* Actions au clic */}
+        {showActions && (
+          <div className="card-actions">
+            <button 
+              onClick={(e) => handleAction(onConsume, e)}
+              className="action-btn consume-btn"
+              title="Modifier quantité"
+            >
+              📝 Quantité
+            </button>
+            <button 
+              onClick={(e) => handleAction(onEdit, e)}
+              className="action-btn edit-btn"
+              title="Modifier"
+            >
+              ✏️ Modifier
+            </button>
+            <button 
+              onClick={(e) => handleAction(onDelete, e)}
+              className="action-btn delete-btn"
+              title="Supprimer"
+            >
+              🗑️ Supprimer
             </button>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 }
