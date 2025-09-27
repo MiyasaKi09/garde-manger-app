@@ -44,61 +44,59 @@ function ProductCard({ item, onConsume, onEdit, onDelete }) {
   };
 
   return (
-    <>
-      <div className="product-card" onClick={handleCardClick} style={{cursor: 'pointer'}}>
-        <div className="card-header">
-          <h3>{item.product_name || 'Sans nom'}</h3>
-          {item.category_name && (
-            <span className="category-badge">{item.category_name}</span>
-          )}
-        </div>
+    <div className="product-card" onClick={handleCardClick} style={{cursor: 'pointer'}}>
+      <div className="card-header">
+        <h3>{item.product_name || 'Sans nom'}</h3>
+        {item.category_name && (
+          <span className="category-badge">{item.category_name}</span>
+        )}
+      </div>
 
-        <div className="card-body">
-          <div className="info-row">
-            <span className="info-icon">📦</span>
-            <span className="info-value">{item.qty_remaining || 0} {item.unit || 'unité'}</span>
-          </div>
-          <div className="info-row">
-            <span className="info-icon">📍</span>
-            <span className="info-value">{item.storage_place || 'Non spécifié'}</span>
-          </div>
-          <div className="info-row">
-            <span className={`status-badge ${getStatusClass(item.expiration_status)}`}>
-              {getStatusText(item.expiration_status, item.days_until_expiration)}
-            </span>
-          </div>
-          {item.expiration_date && (
-            <div className="info-row">
-              <span className="info-icon">🗓️</span>
-              <span className="info-value">{formatDate(item.expiration_date)}</span>
-            </div>
-          )}
+      <div className="card-body">
+        <div className="info-row">
+          <span className="info-icon">📦</span>
+          <span className="info-value">{item.qty_remaining || 0} {item.unit || 'unité'}</span>
         </div>
-
-        {showActions && (
-          <div className="card-actions">
-            <button 
-              className="action-btn consume"
-              onClick={(e) => handleAction(onConsume, e)}
-            >
-              ✓ Consommer
-            </button>
-            <button 
-              className="action-btn edit"
-              onClick={(e) => handleAction(onEdit, e)}
-            >
-              ✏️ Modifier
-            </button>
-            <button 
-              className="action-btn delete"
-              onClick={(e) => handleAction(onDelete, e)}
-            >
-              🗑️ Supprimer
-            </button>
+        <div className="info-row">
+          <span className="info-icon">📍</span>
+          <span className="info-value">{item.storage_place || 'Non spécifié'}</span>
+        </div>
+        <div className="info-row">
+          <span className={`status-badge ${getStatusClass(item.expiration_status)}`}>
+            {getStatusText(item.expiration_status, item.days_until_expiration)}
+          </span>
+        </div>
+        {item.expiration_date && (
+          <div className="info-row">
+            <span className="info-icon">🗓️</span>
+            <span className="info-value">{formatDate(item.expiration_date)}</span>
           </div>
         )}
       </div>
-    </>
+
+      {showActions && (
+        <div className="card-actions">
+          <button 
+            className="action-btn consume"
+            onClick={(e) => handleAction(onConsume, e)}
+          >
+            ✓ Consommer
+          </button>
+          <button 
+            className="action-btn edit"
+            onClick={(e) => handleAction(onEdit, e)}
+          >
+            ✏️ Modifier
+          </button>
+          <button 
+            className="action-btn delete"
+            onClick={(e) => handleAction(onDelete, e)}
+          >
+            🗑️ Supprimer
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -289,61 +287,52 @@ export default function PantryPage() {
 
   if (loading) {
     return (
-      <div className="pantry-container">
-        <div className="loading-state">
-          <h2>Chargement du garde-manger...</h2>
-        </div>
+      <div className="pantry-loading">
+        <div className="loading-spinner"></div>
+        <p>Chargement du garde-manger...</p>
       </div>
     );
   }
 
   return (
     <div className="pantry-container">
-      {/* En-tête */}
-      <div className="pantry-header">
-        <h1>🏠 Garde-Manger</h1>
-        <p>Gérez vos stocks et dates de péremption</p>
-      </div>
-
-      {/* Filtres */}
-      <div className="pantry-filters">
-        <input
-          type="text"
-          placeholder="Rechercher un produit..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
-        
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-          className="filter-select"
-        >
-          <option value="all">Tous les statuts</option>
-          <option value="expired">Expirés</option>
-          <option value="expiring_soon">Expire bientôt</option>
-          <option value="good">En bon état</option>
-        </select>
-      </div>
-
-      {/* Statistiques rapides */}
-      <div className="pantry-stats">
-        <div className="stat-card">
-          <span className="stat-number">{items.length}</span>
-          <span className="stat-label">Articles</span>
+      {/* Filtres et stats sur une ligne compacte */}
+      <div className="top-controls">
+        <div className="search-filters">
+          <input
+            type="text"
+            placeholder="Rechercher un produit..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+          
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="filter-select"
+          >
+            <option value="all">Tous les statuts</option>
+            <option value="expired">Expirés</option>
+            <option value="expiring_soon">Expire bientôt</option>
+            <option value="good">En bon état</option>
+          </select>
         </div>
-        <div className="stat-card danger">
-          <span className="stat-number">
-            {items.filter(i => i.expiration_status === 'expired').length}
-          </span>
-          <span className="stat-label">Expirés</span>
-        </div>
-        <div className="stat-card warning">
-          <span className="stat-number">
-            {items.filter(i => i.expiration_status === 'expiring_soon').length}
-          </span>
-          <span className="stat-label">Expire bientôt</span>
+
+        {/* Stats inline compactes */}
+        <div className="stats-inline">
+          <div className="stat-item">
+            <span className="stat-number">{items.length}</span>
+            <span className="stat-label">ARTICLES</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-number">{items.filter(i => i.expiration_status === 'expired').length}</span>
+            <span className="stat-label">EXPIRÉS</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-number">{items.filter(i => i.expiration_status === 'expiring_soon').length}</span>
+            <span className="stat-label">EXPIRE BIENTÔT</span>
+          </div>
         </div>
       </div>
 
@@ -367,7 +356,7 @@ export default function PantryPage() {
         )}
       </div>
 
-      {/* Modal d'ajout (glassmorphisme) */}
+      {/* Modal d'ajout */}
       {showForm && (
         <SmartAddForm 
           open={showForm}
