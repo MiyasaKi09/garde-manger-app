@@ -14,6 +14,10 @@ export default function RecipesPage() {
   const [categoryFilter, setCategoryFilter] = useState('Tous');
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
+ useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) router.push('/login');
+  
   // Charger les recettes
   useEffect(() => {
     loadRecipes();
