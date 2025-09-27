@@ -1,58 +1,140 @@
-// app/pantry/page.js
 'use client';
 
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import SmartAddForm from '@/components/SmartAddForm';
 import './pantry.css';
-import SmartAddForm from './components/SmartAddForm.js'; 
+
+// Composant ProductCard amélioré - CLIQUABLE
+function ProductCard({ item, onConsume, onEdit, onDelete }) {
+  const [showActions, setShowActions] = useState(false);
+
+  const getStatusClass = (status) => {
+    switch(status) {
+      case 'expired': return 'status-expired';
+      case 'expiring_soon': return 'status-expiring';
+      default: return 'status-good';
+    }
+  };
+
+  const getStatusText = (status, days) => {
+    if (!status || status === 'no_date') return '📅 Pas de date';
+    if (status === 'expired') return `Expiré depuis ${Math.abs(days)}j`;
+    if (status === 'expiring_soon') return `Expire dans ${days}j`;
+    return `${days}j restants`;
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return null;
+    return new Date(dateString).toLocaleDateString('fr-FR', {
+      day: 'numeric',
+      month: 'short'
+    });
+  };
+
+  const handleCardClick = () => {
+    setShowActions(!showActions);
+  };
+
+  const handleAction = (action, e) => {
+    e.stopPropagation();
+    action();
+    setShowActions(false);
+  };
+
+  return (
+    <>
+      <div className="product-card" onClick={handleCardClick} style={{cursor: 'pointer'}}>
+        <div className="card-header">
+          <h3>{item.product_name || 'Sans nom'}</h3>
+          {item.category_name && (
+            <span className="category-badge">{item.category_name}</span>
+          )}
+        </div>
+
+        <div className="card-body">
+          <div className="info-row">
+            <span className="info-icon">📦</span>
+            <span className="info-value">{item.qty_remaining || 0} {item.unit || 'unité'}</span>
+          </div>
+          <div className="info-row">
+            <span className="info-icon">📍</span>
+            <span className="info-value">{item.storage_place || 'Non spécifié'}</span>
+          </div>
+          <div className="info-row">
+            <span className={`status-badge ${getStatusClass(item.expiration_status)}`}>
+              {getStatusText(item.expiration_status, item.days_until_expiration)}
+            </span>
+          </div>
+          {item.expiration_date && (
+            <div className="info-row">
+              <span className="info-icon">🗓️</span>
+              <span className="info-value">{formatDate(item.expiration_date)}</span>
+            </div>
+          )}
+        </div>
+
+        {showActions && (
+          <div className="card-actions">
+            <button 
+              className="action-btn consume"
+              onClick={(e) => handleAction(onConsume, e)}
+            >
+              ✓ Consommer
+            </button>
+            <button 
+              className="action-btn edit"
+              onClick={(e) => handleAction(onEdit, e)}
+            >
+              ✏️ Modifier
+            </button>
+            <button 
+              className="action-btn delete"
+              onClick={(e) => handleAction(onDelete, e)}
+            >
+              🗑️ Supprimer
+            </button>
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
 
 export default function PantryPage() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('');
-  const [locationFilter, setLocationFilter] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
-  
-  // ✅ AJOUT DU STATE MANQUANT
   const [showForm, setShowForm] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all');
 
-
-   useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (!user) router.push('/login');
-  // Charger les données au montage
   useEffect(() => {
     loadPantryItems();
   }, []);
 
-  // Filtrer les items
   useEffect(() => {
+    filterItems();
+  }, [items, searchTerm, statusFilter]);
+
+  function filterItems() {
     let filtered = [...items];
 
     if (searchTerm) {
       filtered = filtered.filter(item =>
-        item.product_name?.toLowerCase().includes(searchTerm.toLowerCase())
+        (item.product_name || '').toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
-    if (categoryFilter) {
-      filtered = filtered.filter(item => item.category_name === categoryFilter);
-    }
-
-    if (locationFilter) {
-      filtered = filtered.filter(item => item.storage_place === locationFilter);
-    }
-
-    if (statusFilter) {
+    if (statusFilter !== 'all') {
       filtered = filtered.filter(item => item.expiration_status === statusFilter);
     }
 
     setFilteredItems(filtered);
-  }, [items, searchTerm, categoryFilter, locationFilter, statusFilter]);
+  }
 
   async function loadPantryItems() {
+    setLoading(true);
     try {
       // Essayer d'abord avec la vue pantry
       let { data, error } = await supabase
@@ -178,7 +260,7 @@ export default function PantryPage() {
     try {
       const { error } = await supabase
         .from('inventory_lots')
-        .update({ qty_remaining: 0 })
+        .delete()
         .eq('id', id);
 
       if (error) throw error;
@@ -188,149 +270,77 @@ export default function PantryPage() {
     } catch (error) {
       console.error('Erreur:', error);
       // Suppression locale en cas d'erreur
-      setItems(prev => prev.filter(item => item.id !== id));
+      setItems(prev => prev.filter(i => i.id !== id));
     }
   }
 
-  // Obtenir les valeurs uniques pour les filtres
-  const categories = [...new Set(items.map(i => i.category_name))].filter(Boolean);
-  const locations = [...new Set(items.map(i => i.storage_place))].filter(Boolean);
-
-  // État pour gérer le filtre rapide depuis les stats
-  const [quickFilter, setQuickFilter] = useState('');
-
-  // Calculer les statistiques
-  const stats = {
-    total: filteredItems.length,
-    expiring: filteredItems.filter(i => 
-      i.expiration_status === 'expiring_soon' || i.expiration_status === 'expired'
-    ).length,
-    categories: categories.length,
-    locations: locations.length
-  };
-
-  // Fonction pour les filtres rapides via les cartes de stats
-  const handleQuickFilter = (filterType) => {
-    switch(filterType) {
-      case 'all':
-        setStatusFilter('');
-        setCategoryFilter('');
-        setLocationFilter('');
-        setQuickFilter('all');
-        break;
-      case 'expiring':
-        setStatusFilter('expiring_soon');
-        setQuickFilter('expiring');
-        break;
-      case 'categories':
-        setQuickFilter('categories');
-        break;
-      case 'locations':
-        setQuickFilter('locations');
-        break;
-    }
-  };
-
-  // ✅ FONCTION POUR GÉRER LA FERMETURE DU FORMULAIRE
-  const handleFormClose = () => {
+  function handleFormClose() {
     setShowForm(false);
-    // Recharger les données après ajout
     loadPantryItems();
-  };
+  }
 
   if (loading) {
     return (
-      <div className="pantry-loading">
-        <div className="loading-spinner"></div>
-        <p>Chargement de votre garde-manger...</p>
+      <div className="pantry-container">
+        <div className="loading-state">
+          <h2>Chargement du garde-manger...</h2>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="pantry-container">
-      {/* Statistiques CLIQUABLES */}
-      <div className="stats-container">
-        <div 
-          className={`stat-card ${quickFilter === 'all' ? 'active' : ''}`}
-          onClick={() => handleQuickFilter('all')}
-          style={{cursor: 'pointer'}}
-        >
-          <div className="stat-number">{items.length}</div>
-          <div className="stat-label">Articles Total</div>
-        </div>
-        <div 
-          className={`stat-card ${quickFilter === 'expiring' ? 'active' : ''}`}
-          onClick={() => handleQuickFilter('expiring')}
-          style={{cursor: 'pointer'}}
-        >
-          <div className="stat-number">{stats.expiring}</div>
-          <div className="stat-label">À consommer</div>
-        </div>
-        <div 
-          className={`stat-card ${quickFilter === 'categories' ? 'active' : ''}`}
-          onClick={() => handleQuickFilter('categories')}
-          style={{cursor: 'pointer'}}
-        >
-          <div className="stat-number">{stats.categories}</div>
-          <div className="stat-label">Catégories</div>
-        </div>
-        <div 
-          className={`stat-card ${quickFilter === 'locations' ? 'active' : ''}`}
-          onClick={() => handleQuickFilter('locations')}
-          style={{cursor: 'pointer'}}
-        >
-          <div className="stat-number">{stats.locations}</div>
-          <div className="stat-label">Emplacements</div>
-        </div>
+      {/* En-tête */}
+      <div className="pantry-header">
+        <h1>🏠 Garde-Manger</h1>
+        <p>Gérez vos stocks et dates de péremption</p>
       </div>
 
-      {/* Barre de recherche et filtres harmonisés */}
-      <div className="search-filters">
+      {/* Filtres */}
+      <div className="pantry-filters">
         <input
           type="text"
-          placeholder="🔍 Rechercher un produit..."
+          placeholder="Rechercher un produit..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
         />
         
         <select
-          value={categoryFilter}
-          onChange={(e) => setCategoryFilter(e.target.value)}
-          className="filter-select"
-        >
-          <option value="">📦 Toutes catégories</option>
-          {categories.map(cat => (
-            <option key={cat} value={cat}>{cat}</option>
-          ))}
-        </select>
-        
-        <select
-          value={locationFilter}
-          onChange={(e) => setLocationFilter(e.target.value)}
-          className="filter-select"
-        >
-          <option value="">📍 Tous emplacements</option>
-          {locations.map(loc => (
-            <option key={loc} value={loc}>{loc}</option>
-          ))}
-        </select>
-        
-        <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
           className="filter-select"
         >
-          <option value="">⏰ Tous statuts</option>
-          <option value="good">✅ Bon</option>
-          <option value="expiring_soon">⚠️ Expire bientôt</option>
-          <option value="expired">❌ Expiré</option>
+          <option value="all">Tous les statuts</option>
+          <option value="expired">Expirés</option>
+          <option value="expiring_soon">Expire bientôt</option>
+          <option value="good">En bon état</option>
         </select>
       </div>
 
+      {/* Statistiques rapides */}
+      <div className="pantry-stats">
+        <div className="stat-card">
+          <span className="stat-number">{items.length}</span>
+          <span className="stat-label">Articles</span>
+        </div>
+        <div className="stat-card danger">
+          <span className="stat-number">
+            {items.filter(i => i.expiration_status === 'expired').length}
+          </span>
+          <span className="stat-label">Expirés</span>
+        </div>
+        <div className="stat-card warning">
+          <span className="stat-number">
+            {items.filter(i => i.expiration_status === 'expiring_soon').length}
+          </span>
+          <span className="stat-label">Expire bientôt</span>
+        </div>
+      </div>
+
       {/* Grille des produits */}
-      <div className="products-grid">
+      <div className="pantry-grid">
         {filteredItems.length === 0 ? (
           <div className="empty-state">
             <h2>Aucun article trouvé</h2>
@@ -367,106 +377,5 @@ export default function PantryPage() {
         +
       </button>
     </div>
-  );
-}
-
-// Composant ProductCard amélioré - CLIQUABLE
-function ProductCard({ item, onConsume, onEdit, onDelete }) {
-  const [showActions, setShowActions] = useState(false);
-
-  const getStatusClass = (status) => {
-    switch(status) {
-      case 'expired': return 'status-expired';
-      case 'expiring_soon': return 'status-expiring';
-      default: return 'status-good';
-    }
-  };
-
-  const getStatusText = (status, days) => {
-    if (!status || status === 'no_date') return '📅 Pas de date';
-    if (status === 'expired') return `Expiré depuis ${Math.abs(days)}j`;
-    if (status === 'expiring_soon') return `Expire dans ${days}j`;
-    return `${days}j restants`;
-  };
-
-  const formatDate = (dateString) => {
-    if (!dateString) return null;
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      day: 'numeric',
-      month: 'short'
-    });
-  };
-
-  const handleCardClick = () => {
-    setShowActions(!showActions);
-  };
-
-  const handleAction = (action, e) => {
-    e.stopPropagation();
-    action();
-    setShowActions(false);
-  };
-
-  return (
-    <>
-      <div className="product-card" onClick={handleCardClick} style={{cursor: 'pointer'}}>
-        <div className="card-header">
-          <h3>{item.product_name || 'Sans nom'}</h3>
-          {item.category_name && (
-            <span className="category-badge">{item.category_name}</span>
-          )}
-        </div>
-
-        <div className="card-body">
-          <div className="info-row">
-            <span className="info-icon">📦</span>
-            <span className="info-value">{item.qty_remaining || 0} {item.unit || 'unité'}</span>
-          </div>
-          <div className="info-row">
-            <span className="info-icon">📍</span>
-            <span className="info-value">{item.storage_place || 'Non spécifié'}</span>
-          </div>
-          {item.expiration_date && (
-            <div className="info-row">
-              <span className="info-icon">📅</span>
-              <span className="info-value">{formatDate(item.expiration_date)}</span>
-            </div>
-          )}
-
-          {item.expiration_date && (
-            <div className={`status-badge ${getStatusClass(item.expiration_status)}`}>
-              {getStatusText(item.expiration_status, item.days_until_expiration)}
-            </div>
-          )}
-        </div>
-
-        {/* Actions au clic */}
-        {showActions && (
-          <div className="card-actions">
-            <button 
-              onClick={(e) => handleAction(onConsume, e)}
-              className="action-btn consume-btn"
-              title="Modifier quantité"
-            >
-              📝 Quantité
-            </button>
-            <button 
-              onClick={(e) => handleAction(onEdit, e)}
-              className="action-btn edit-btn"
-              title="Modifier"
-            >
-              ✏️ Modifier
-            </button>
-            <button 
-              onClick={(e) => handleAction(onDelete, e)}
-              className="action-btn delete-btn"
-              title="Supprimer"
-            >
-              🗑️ Supprimer
-            </button>
-          </div>
-        )}
-      </div>
-    </>
   );
 }
