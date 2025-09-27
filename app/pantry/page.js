@@ -18,6 +18,10 @@ export default function PantryPage() {
   // ✅ AJOUT DU STATE MANQUANT
   const [showForm, setShowForm] = useState(false);
 
+
+   useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) router.push('/login');
   // Charger les données au montage
   useEffect(() => {
     loadPantryItems();
