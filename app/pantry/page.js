@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
-import SmartAddForm from '@/components/SmartAddForm';
+import SmartAddForm from './components/SmartAddForm';
 import './pantry.css';
 
 // Composant ProductCard amélioré - CLIQUABLE
@@ -102,12 +103,19 @@ function ProductCard({ item, onConsume, onEdit, onDelete }) {
 }
 
 export default function PantryPage() {
+  const router = useRouter();
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) router.push('/login');
+    });
+  }, [router]);
 
   useEffect(() => {
     loadPantryItems();
