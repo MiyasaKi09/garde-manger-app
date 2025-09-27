@@ -1,378 +1,532 @@
-'use client';
+/* ========================================
+   FICHIER: app/pantry/pantry.css
+   THÈME: Glassmorphisme nature (sans fond)
+   ======================================== */
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabaseClient';
-import SmartAddForm from './components/SmartAddForm';
-import './pantry.css';
-
-// Composant ProductCard amélioré - CLIQUABLE
-function ProductCard({ item, onConsume, onEdit, onDelete }) {
-  const [showActions, setShowActions] = useState(false);
-
-  const getStatusClass = (status) => {
-    switch(status) {
-      case 'expired': return 'status-expired';
-      case 'expiring_soon': return 'status-expiring';
-      default: return 'status-good';
-    }
-  };
-
-  const getStatusText = (status, days) => {
-    if (!status || status === 'no_date') return '📅 Pas de date';
-    if (status === 'expired') return `Expiré depuis ${Math.abs(days)}j`;
-    if (status === 'expiring_soon') return `Expire dans ${days}j`;
-    return `${days}j restants`;
-  };
-
-  const formatDate = (dateString) => {
-    if (!dateString) return null;
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      day: 'numeric',
-      month: 'short'
-    });
-  };
-
-  const handleCardClick = () => {
-    setShowActions(!showActions);
-  };
-
-  const handleAction = (action, e) => {
-    e.stopPropagation();
-    action();
-    setShowActions(false);
-  };
-
-  return (
-    <div className="product-card" onClick={handleCardClick} style={{cursor: 'pointer'}}>
-      <div className="card-header">
-        <h3>{item.product_name || 'Sans nom'}</h3>
-        {item.category_name && (
-          <span className="category-badge">{item.category_name}</span>
-        )}
-      </div>
-
-      <div className="card-body">
-        <div className="info-row">
-          <span className="info-icon">📦</span>
-          <span className="info-value">{item.qty_remaining || 0} {item.unit || 'unité'}</span>
-        </div>
-        <div className="info-row">
-          <span className="info-icon">📍</span>
-          <span className="info-value">{item.storage_place || 'Non spécifié'}</span>
-        </div>
-        <div className="info-row">
-          <span className={`status-badge ${getStatusClass(item.expiration_status)}`}>
-            {getStatusText(item.expiration_status, item.days_until_expiration)}
-          </span>
-        </div>
-        {item.expiration_date && (
-          <div className="info-row">
-            <span className="info-icon">🗓️</span>
-            <span className="info-value">{formatDate(item.expiration_date)}</span>
-          </div>
-        )}
-      </div>
-
-      {showActions && (
-        <div className="card-actions">
-          <button 
-            className="action-btn consume"
-            onClick={(e) => handleAction(onConsume, e)}
-          >
-            ✓ Consommer
-          </button>
-          <button 
-            className="action-btn edit"
-            onClick={(e) => handleAction(onEdit, e)}
-          >
-            ✏️ Modifier
-          </button>
-          <button 
-            className="action-btn delete"
-            onClick={(e) => handleAction(onDelete, e)}
-          >
-            🗑️ Supprimer
-          </button>
-        </div>
-      )}
-    </div>
-  );
+/* Container principal SANS FOND et SANS TITRE */
+.pantry-container {
+  min-height: 100vh;
+  padding: 2rem;
+  padding-top: 2rem; /* Plus d'espace en haut */
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-export default function PantryPage() {
-  const router = useRouter();
-  const [items, setItems] = useState([]);
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [showForm, setShowForm] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState('all');
+/* Contrôles du haut - Tout sur une ligne avec espacements */
+.top-controls {
+  margin-bottom: 3rem; /* Plus d'espace vertical */
+}
 
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (!user) router.push('/login');
-    });
-  }, [router]);
+/* Barre de recherche et filtres redessinés - COMPACTE */
+.search-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem; /* Espace entre filtres et stats */
+  flex-wrap: wrap;
+  align-items: center;
+}
 
-  useEffect(() => {
-    loadPantryItems();
-  }, []);
+/* Input de recherche principal */
+.search-input {
+  flex: 1;
+  min-width: 280px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 0.8rem 1.2rem; /* Réduit le padding */
+  font-size: 0.95rem; /* Légèrement plus petit */
+  color: #2e7d32;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
 
-  useEffect(() => {
-    filterItems();
-  }, [items, searchTerm, statusFilter]);
+.search-input::placeholder {
+  color: rgba(46, 125, 50, 0.6);
+  font-weight: 400;
+}
 
-  function filterItems() {
-    let filtered = [...items];
+.search-input:focus {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(102, 187, 106, 0.4);
+  box-shadow: 
+    0 8px 24px rgba(102, 187, 106, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
 
-    if (searchTerm) {
-      filtered = filtered.filter(item =>
-        (item.product_name || '').toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
+/* Selects de filtrage */
+.filter-select {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  padding: 0.8rem 1.2rem;
+  color: #2e7d32;
+  font-size: 0.9rem; /* Légèrement plus petit */
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23388e3c' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.8rem center;
+  background-repeat: no-repeat;
+  background-size: 1.2em 1.2em;
+  padding-right: 2.5rem;
+  min-width: 140px;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
 
-    if (statusFilter !== 'all') {
-      filtered = filtered.filter(item => item.expiration_status === statusFilter);
-    }
+.filter-select:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
 
-    setFilteredItems(filtered);
+.filter-select:focus {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(102, 187, 106, 0.4);
+  box-shadow: 
+    0 6px 20px rgba(102, 187, 106, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Options du select */
+.filter-select option {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  color: #2e7d32;
+  font-weight: 500;
+  padding: 0.5rem;
+}
+
+/* Stats inline - sur une seule ligne */
+.stats-inline {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.8rem 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  user-select: none;
+  min-width: 80px;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px) scale(1.005);
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.stat-item .stat-number {
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #43a047, #66bb6a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  line-height: 1;
+}
+
+.stat-item .stat-label {
+  color: rgba(46, 125, 50, 0.9);
+  font-size: 0.65rem;
+  margin-top: 0.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+/* Grille de produits - PLUS D'ESPACE ENTRE LES CARTES */
+.pantry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 300px au lieu de 320px */
+  gap: 1.5rem; /* Gap augmenté pour plus d'espace */
+  animation: gridFadeIn 0.6s ease-out;
+}
+
+@keyframes gridFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Carte produit SANS BOUTONS, CLIQUABLE */
+.product-card {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px; /* Bordures légèrement moins arrondies */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 1.2rem; /* Padding légèrement réduit */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.5s ease-out;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  position: relative;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card:hover {
+  transform: translateY(-6px) scale(1.01); /* Effet légèrement réduit */
+  box-shadow: 
+    0 10px 24px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem; /* Margin réduite */
+  padding-bottom: 0.8rem; /* Padding réduit */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-header h3 {
+  color: #2e7d32;
+  font-size: 1.1rem; /* Taille réduite */
+  margin: 0;
+  flex: 1;
+  font-weight: 600; /* Légèrement plus gras */
+  line-height: 1.3;
+}
+
+.category-badge {
+  background: rgba(76, 175, 80, 0.15);
+  backdrop-filter: blur(8px);
+  color: #2e7d32;
+  padding: 0.25rem 0.5rem; /* Padding réduit */
+  border-radius: 8px; /* Bordures moins arrondies */
+  font-size: 0.65rem; /* Plus petit */
+  border: 1px solid rgba(76, 175, 80, 0.25);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-left: 0.5rem;
+}
+
+.card-body {
+  margin-bottom: 0.5rem;
+}
+
+.info-row {
+  color: #424242;
+  margin-bottom: 0.5rem; /* Margin réduite */
+  font-size: 0.85rem; /* Taille réduite */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Gap réduit */
+}
+
+.info-icon {
+  font-size: 0.9rem; /* Taille réduite */
+  opacity: 0.8;
+  width: 16px;
+  flex-shrink: 0;
+}
+
+.info-value {
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+/* Statut d'expiration avec glassmorphism - PLUS COMPACT */
+.status-badge {
+  padding: 0.4rem 0.8rem; /* Padding réduit */
+  border-radius: 10px; /* Bordures moins arrondies */
+  font-weight: 600;
+  font-size: 0.75rem; /* Taille réduite */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.status-good {
+  background: rgba(102, 187, 106, 0.15);
+  border: 1px solid rgba(102, 187, 106, 0.3);
+  color: #2e7d32;
+}
+
+.status-expiring {
+  background: rgba(255, 183, 77, 0.15);
+  border: 1px solid rgba(255, 183, 77, 0.3);
+  color: #e65100;
+}
+
+.status-expired {
+  background: rgba(239, 83, 80, 0.15);
+  border: 1px solid rgba(239, 83, 80, 0.3);
+  color: #c62828;
+}
+
+/* Actions de la carte - COMPACTES */
+.card-actions {
+  display: flex;
+  gap: 0.4rem; /* Gap réduit */
+  margin-top: 0.8rem; /* Margin réduite */
+  padding-top: 0.8rem; /* Padding réduit */
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.action-btn {
+  flex: 1;
+  padding: 0.4rem 0.6rem; /* Padding réduit */
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 8px; /* Bordures moins arrondies */
+  color: #2e7d32;
+  font-size: 0.7rem; /* Taille réduite */
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px); /* Effet réduit */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn.consume:hover {
+  background: rgba(102, 187, 106, 0.3);
+  border-color: rgba(102, 187, 106, 0.5);
+}
+
+.action-btn.edit:hover {
+  background: rgba(66, 165, 245, 0.3);
+  border-color: rgba(66, 165, 245, 0.5);
+}
+
+.action-btn.delete:hover {
+  background: rgba(239, 83, 80, 0.3);
+  border-color: rgba(239, 83, 80, 0.5);
+  color: #c62828;
+}
+
+/* État vide */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 2rem; /* Padding réduit */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px; /* Bordures moins arrondies */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #2e7d32;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.empty-state h2 {
+  font-size: 1.5rem; /* Taille réduite */
+  margin-bottom: 0.8rem; /* Margin réduite */
+  color: #388e3c;
+}
+
+.empty-state p {
+  color: #558b2f;
+  font-size: 1rem; /* Taille réduite */
+}
+
+/* Loading */
+.pantry-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(102, 187, 106, 0.2);
+  border-top-color: #66bb6a;
+  border-radius: 50%;
+  animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.pantry-loading p {
+  color: #388e3c;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Bouton flottant */
+.pantry-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #66bb6a, #43a047);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 
+    0 4px 16px rgba(76, 175, 80, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.pantry-fab:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 
+    0 8px 24px rgba(76, 175, 80, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Version mobile optimisée */
+@media (max-width: 768px) {
+  .pantry-container {
+    padding: 1rem;
   }
 
-  async function loadPantryItems() {
-    setLoading(true);
-    try {
-      // Essayer d'abord avec la vue pantry
-      let { data, error } = await supabase
-        .from('pantry')
-        .select('*')
-        .order('expiration_date', { ascending: true });
-
-      // Si la vue n'existe pas, essayer avec inventory_lots
-      if (error && error.code === '42P01') {
-        console.log('Vue pantry non trouvée, utilisation de inventory_lots');
-        const result = await supabase
-          .from('inventory_lots')
-          .select('*')
-          .order('expiration_date', { ascending: true });
-        
-        data = result.data;
-        error = result.error;
-      }
-
-      if (error) throw error;
-      
-      // Transformer les données si nécessaire
-      const transformedData = (data || []).map(item => ({
-        ...item,
-        product_name: item.product_name || item.notes || 'Produit sans nom',
-        expiration_status: getExpirationStatus(item.expiration_date),
-        days_until_expiration: getDaysUntilExpiration(item.expiration_date)
-      }));
-      
-      setItems(transformedData);
-    } catch (error) {
-      console.error('Erreur lors du chargement:', error);
-      // Utiliser des données de démo en cas d'erreur
-      setItems(getDemoData());
-    } finally {
-      setLoading(false);
-    }
+  .search-filters {
+    flex-direction: column;
+    gap: 0.8rem;
   }
 
-  function getExpirationStatus(dateString) {
-    if (!dateString) return 'no_date';
-    
-    const today = new Date();
-    const expirationDate = new Date(dateString);
-    const diffTime = expirationDate - today;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
-    if (diffDays < 0) return 'expired';
-    if (diffDays <= 3) return 'expiring_soon';
-    return 'good';
+  .search-input {
+    min-width: 100%;
+    padding: 0.9rem 1.2rem;
   }
 
-  function getDaysUntilExpiration(dateString) {
-    if (!dateString) return null;
-    
-    const today = new Date();
-    const expirationDate = new Date(dateString);
-    const diffTime = expirationDate - today;
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  .filter-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-right: 2.2rem;
   }
 
-  function getDemoData() {
-    return [
-      {
-        id: 'demo-1',
-        product_name: 'Tomates',
-        category_name: 'Légumes',
-        qty_remaining: 5,
-        unit: 'pièces',
-        storage_place: 'Réfrigérateur',
-        expiration_date: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        expiration_status: 'expiring_soon',
-        days_until_expiration: 2
-      },
-      {
-        id: 'demo-2',
-        product_name: 'Pâtes',
-        category_name: 'Féculents',
-        qty_remaining: 500,
-        unit: 'g',
-        storage_place: 'Placard',
-        expiration_date: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        expiration_status: 'good',
-        days_until_expiration: 180
-      }
-    ];
+  .top-controls {
+    margin-bottom: 2rem;
   }
 
-  async function handleConsume(id, currentQty) {
-    const newQty = prompt(`Nouvelle quantité (actuel: ${currentQty}):`, currentQty);
-    if (newQty === null) return;
-
-    try {
-      const { error } = await supabase
-        .from('inventory_lots')
-        .update({ qty_remaining: parseFloat(newQty) })
-        .eq('id', id);
-
-      if (error) throw error;
-      
-      await loadPantryItems();
-      alert('Quantité mise à jour');
-    } catch (error) {
-      console.error('Erreur:', error);
-      // Mise à jour locale en cas d'erreur
-      setItems(prev => prev.map(i => 
-        i.id === id ? { ...i, qty_remaining: parseFloat(newQty) } : i
-      ));
-    }
+  .search-filters {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
   }
 
-  async function handleEdit(id) {
-    // Pour l'instant, rediriger vers la consommation
-    const item = items.find(i => i.id === id);
-    if (item) {
-      handleConsume(id, item.qty_remaining);
-    }
+  .search-input {
+    min-width: 100%;
+    padding: 0.9rem 1.2rem;
   }
 
-  async function handleDelete(id) {
-    if (!confirm('Supprimer cet article ?')) return;
-
-    try {
-      const { error } = await supabase
-        .from('inventory_lots')
-        .delete()
-        .eq('id', id);
-
-      if (error) throw error;
-      
-      await loadPantryItems();
-      alert('Article supprimé');
-    } catch (error) {
-      console.error('Erreur:', error);
-      // Suppression locale en cas d'erreur
-      setItems(prev => prev.filter(i => i.id !== id));
-    }
+  .filter-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-right: 2.2rem;
   }
 
-  function handleFormClose() {
-    setShowForm(false);
-    loadPantryItems();
+  .stats-cards {
+    margin-left: 0;
+    gap: 0.8rem;
+    justify-content: space-between;
+    margin-top: 1rem;
   }
 
-  if (loading) {
-    return (
-      <div className="pantry-loading">
-        <div className="loading-spinner"></div>
-        <p>Chargement du garde-manger...</p>
-      </div>
-    );
+  .stat-card {
+    padding: 0.6rem 0.8rem;
+    min-width: 70px;
+    flex: 1;
   }
 
-  return (
-    <div className="pantry-container">
-      {/* Filtres et stats sur une ligne compacte */}
-      <div className="top-controls">
-        <div className="search-filters">
-          <input
-            type="text"
-            placeholder="Rechercher un produit..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
-          />
-          
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="filter-select"
-          >
-            <option value="all">Tous les statuts</option>
-            <option value="expired">Expirés</option>
-            <option value="expiring_soon">Expire bientôt</option>
-            <option value="good">En bon état</option>
-          </select>
-        </div>
+  .stat-number {
+    font-size: 1.2rem;
+  }
 
-        {/* Stats inline compactes */}
-        <div className="stats-inline">
-          <div className="stat-item">
-            <span className="stat-number">{items.length}</span>
-            <span className="stat-label">ARTICLES</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">{items.filter(i => i.expiration_status === 'expired').length}</span>
-            <span className="stat-label">EXPIRÉS</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">{items.filter(i => i.expiration_status === 'expiring_soon').length}</span>
-            <span className="stat-label">EXPIRE BIENTÔT</span>
-          </div>
-        </div>
-      </div>
+  .stat-label {
+    font-size: 0.6rem;
+  }
 
-      {/* Grille des produits */}
-      <div className="pantry-grid">
-        {filteredItems.length === 0 ? (
-          <div className="empty-state">
-            <h2>Aucun article trouvé</h2>
-            <p>Ajustez vos filtres ou ajoutez des articles</p>
-          </div>
-        ) : (
-          filteredItems.map(item => (
-            <ProductCard 
-              key={item.id} 
-              item={item}
-              onConsume={() => handleConsume(item.id, item.qty_remaining)}
-              onEdit={() => handleEdit(item.id)}
-              onDelete={() => handleDelete(item.id)}
-            />
-          ))
-        )}
-      </div>
+  .pantry-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem; /* Gap normal sur mobile */
+  }
 
-      {/* Modal d'ajout */}
-      {showForm && (
-        <SmartAddForm 
-          open={showForm}
-          onClose={handleFormClose}
-          onLotCreated={handleFormClose}
-        />
-      )}
+  .product-card {
+    padding: 1rem;
+  }
 
-      {/* Bouton flottant pour ajouter */}
-      <button
-        className="pantry-fab"
-        onClick={() => setShowForm(true)}
-        title="Ajouter un article"
-      >
-        +
-      </button>
-    </div>
-  );
+  .card-header h3 {
+    font-size: 1rem;
+  }
+
+  .action-btn {
+    font-size: 0.65rem;
+    padding: 0.35rem 0.5rem;
+  }
 }
