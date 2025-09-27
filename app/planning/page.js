@@ -4,6 +4,10 @@ import { supabase } from '@/lib/supabaseClient';
 
 const SLOTS = ['midi','soir'];
 
+ useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) router.push('/login');
+
 function startOfWeek(d=new Date()){
   const dt = new Date(d);
   const day = (dt.getDay()+6)%7; // lundi=0
