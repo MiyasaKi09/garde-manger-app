@@ -1,0 +1,41 @@
+id,category_id,code,label,icon
+1,1,agrumes,Agrumes,🍊
+2,1,fruits_noyau,Fruits à noyau,🍑
+3,1,fruits_pome,Fruits à pépins,🍏
+4,1,fruits_rouges,Fruits rouges & baies,🍓
+5,1,fruits_exotiques,Fruits exotiques & tropicaux,🥭
+6,1,fruits_frais,Fruits du quotidien,🍌
+7,2,legumes_feuilles,Légumes feuilles & herbes,🥬
+8,2,legumes_fruits,"Légumes fruits (tomate, courgette, etc.)",🍅
+9,2,legumes_racines,Légumes racines & tubercules,🥕
+10,2,legumes_bulbes,"Bulbes, tiges & alliacés",🧅
+11,2,legumes_courges,Courges & cucurbitacées,🎃
+12,3,champignons_cultives,Champignons cultivés,🍄
+13,3,champignons_sauvages,Champignons sauvages & séchés,🍂
+14,4,oeufs_coquille,Œufs coquille,🥚
+15,4,ovoproduits,Ovoproduits & préparations,🍳
+16,5,cereales_grains,Grains & céréales entières,🌾
+17,5,farines_semoules,"Farines, semoules & flocons",🥣
+18,5,produits_cerealiers,Pâtes & autres produits céréaliers,🍝
+19,6,legumineuses_seches,Légumineuses sèches,🫘
+20,6,produits_soja,Soja & dérivés,🌱
+21,7,lait_liquide,Laits & boissons lactées,🥛
+22,7,lait_creme,"Crèmes, beurres & laits concentrés",🧈
+23,7,fromages_affines,Fromages & spécialités affinées,🧀
+24,7,yaourts_desserts,Yaourts & desserts lactés,🍨
+25,8,viandes_rouges,Viandes rouges & porc,🥩
+26,8,volailles,Volailles,🍗
+27,8,viandes_specialites,"Gibier, charcuteries & viandes exotiques",🍖
+28,9,poissons_mer,Poissons de mer,🐟
+29,9,poissons_eau_douce,Poissons d’eau douce,🐠
+30,9,fruits_de_mer,Crustacés & mollusques,🦐
+31,10,epices_seches,Épices sèches,🌶️
+32,10,herbes_aromatiques,Herbes & aromates fraîches,🌿
+33,11,huiles_vegetales,Huiles végétales,🫒
+34,11,condiments_liquides,Vinaigres & autres condiments liquides,🍶
+35,12,conserves_vegetales,Conserves végétales & sauces,🥫
+36,12,conserves_proteines,Conserves de poissons & viandes,🍱
+37,13,fruits_a_coque,Fruits à coque,🌰
+38,13,graines_oleagineuses,Graines & mélanges oléagineux,🌻
+39,14,sucres,Sucres & édulcorants classiques,🍬
+40,14,miels_sirops,"Miels, sirops & édulcorants naturels",🍯
