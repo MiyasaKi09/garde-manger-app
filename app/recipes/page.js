@@ -1,296 +1,78 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabaseClient';
+import Link from 'next/link';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import './recipes.css';
 
-const CATEGORIES = ['Tous', 'Végé', 'Viande/Poisson', 'Dessert', 'Accompagnement', 'Entrée', 'Boisson', 'Autre'];
-
-// Composant RecipeCard (simplifié, sans expansion)
-function RecipeCard({ recipe, onDelete, onOpenModal }) {
-  const displayTitle = recipe.title || recipe.name || 'Recette sans nom';
-  const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0);
-
-  const getDifficultyColor = (difficulty) => {
-    switch(difficulty) {
-      case 'Facile': return 'difficulty-easy';
-      case 'Moyen': return 'difficulty-medium';
-      case 'Difficile': return 'difficulty-hard';
-      default: return '';
-    }
-  };
-
-  const getTimeIcon = () => {
-    if (totalTime <= 15) return '⚡';
-    if (totalTime <= 30) return '⏱️';
-    if (totalTime <= 60) return '⏰';
-    return '⏳';
-  };
-
-  return (
-    <div 
-      className="recipe-card"
-      onClick={() => onOpenModal(recipe)}
-      style={{cursor: 'pointer'}}
-    >
-      {/* Badge recette rapide */}
-      {totalTime <= 30 && (
-        <span className="quick-recipe">Rapide</span>
-      )}
-
-      {/* En-tête */}
-      <div className="card-header">
-        <h3>{displayTitle}</h3>
-        <div className="card-badges">
-          {recipe.is_veg && <span className="badge-vege">🌱 Végé</span>}
-          {recipe.category && <span className="category-badge">{recipe.category}</span>}
-        </div>
-      </div>
-
-      {/* Infos rapides */}
-      <div className="card-info">
-        <div className="info-row">
-          <span className="info-icon">👥</span>
-          <span className="info-value">{recipe.servings || 2} pers</span>
-        </div>
-        
-        <div className="info-row">
-          <span className="info-icon">{getTimeIcon()}</span>
-          <span className="info-value">
-            {recipe.prep_min || 0}′ prep + {recipe.cook_min || 0}′ cuisson
-          </span>
-        </div>
-
-        {recipe.difficulty && (
-          <div className="info-row">
-            <span className={`difficulty-badge ${getDifficultyColor(recipe.difficulty)}`}>
-              {recipe.difficulty}
-            </span>
-          </div>
-        )}
-      </div>
-
-      {/* Description courte */}
-      {recipe.description && (
-        <p className="recipe-description">{recipe.description}</p>
-      )}
-
-      {/* Indicateur de clic */}
-      <div className="card-click-indicator">
-        Cliquez pour voir la recette
-      </div>
-    </div>
-  );
-}
-
-// Composant Modal pour afficher les détails
-function RecipeModal({ recipe, onClose }) {
-  const [ingredients, setIngredients] = useState([]);
-  const [utensils, setUtensils] = useState([]);
-  const [steps, setSteps] = useState([]);
-  const [loadingDetails, setLoadingDetails] = useState(true);
-
-  useEffect(() => {
-    if (recipe) {
-      loadRecipeDetails();
-    }
-  }, [recipe]);
-
-  async function loadRecipeDetails() {
-    if (!recipe) return;
-    
-    setLoadingDetails(true);
-    try {
-      // Charger les ingrédients
-      const { data: ingredientsData } = await supabase
-        .from('recipe_ingredients')
-        .select('*, product:products_catalog(name)')
-        .eq('recipe_id', recipe.id)
-        .order('position');
-      
-      setIngredients(ingredientsData || []);
-
-      // Charger les ustensiles
-      const { data: utensilsData } = await supabase
-        .from('recipe_utensils')
-        .select('*, utensil:utensils(name)')
-        .eq('recipe_id', recipe.id);
-      
-      setUtensils(utensilsData || []);
-
-      // Parser les étapes depuis le champ steps (JSON ou texte)
-      if (recipe.steps) {
-        try {
-          const parsedSteps = typeof recipe.steps === 'string' 
-            ? JSON.parse(recipe.steps) 
-            : recipe.steps;
-          setSteps(Array.isArray(parsedSteps) ? parsedSteps : []);
-        } catch (e) {
-          // Si ce n'est pas du JSON, traiter comme du texte
-          const textSteps = recipe.steps.split('\n').filter(step => step.trim());
-          setSteps(textSteps.map((step, index) => ({ id: index, text: step.trim() })));
-        }
-      } else {
-        setSteps([]);
-      }
-    } catch (error) {
-      console.error('Erreur lors du chargement des détails:', error);
-    } finally {
-      setLoadingDetails(false);
-    }
-  }
-
-  if (!recipe) return null;
-
-  return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-          <h2>{recipe.title || recipe.name}</h2>
-          <button className="modal-close" onClick={onClose}>×</button>
-        </div>
-
-        <div className="modal-body">
-          {loadingDetails ? (
-            <div className="loading">Chargement des détails...</div>
-          ) : (
-            <>
-              {/* Informations générales */}
-              <div className="recipe-meta">
-                <span>👥 {recipe.servings || 2} personnes</span>
-                <span>⏱️ {recipe.prep_min || 0}′ prep</span>
-                <span>🔥 {recipe.cook_min || 0}′ cuisson</span>
-                {recipe.difficulty && <span>📊 {recipe.difficulty}</span>}
-              </div>
-
-              {recipe.description && (
-                <div className="recipe-description-full">
-                  <p>{recipe.description}</p>
-                </div>
-              )}
-
-              {/* Ingrédients */}
-              {ingredients.length > 0 && (
-                <div className="recipe-section">
-                  <h3>🛒 Ingrédients</h3>
-                  <ul className="ingredients-list">
-                    {ingredients.map((ing, index) => (
-                      <li key={index} className={ing.optional ? 'optional' : ''}>
-                        <span className="quantity">{ing.qty} {ing.unit}</span>
-                        <span className="ingredient-name">
-                          {ing.product?.name || ing.note || 'Ingrédient'}
-                        </span>
-                        {ing.optional && <span className="optional-badge">Optionnel</span>}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Ustensiles */}
-              {utensils.length > 0 && (
-                <div className="recipe-section">
-                  <h3>🔧 Ustensiles</h3>
-                  <ul className="utensils-list">
-                    {utensils.map((ut, index) => (
-                      <li key={index}>{ut.utensil?.name}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Étapes */}
-              {steps.length > 0 && (
-                <div className="recipe-section">
-                  <h3>👨‍🍳 Préparation</h3>
-                  <ol className="steps-list">
-                    {steps.map((step, index) => (
-                      <li key={index}>
-                        {typeof step === 'string' ? step : step.text || step.description}
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              )}
-            </>
-          )}
-        </div>
-
-        <div className="modal-footer">
-          <button className="btn secondary" onClick={onClose}>Fermer</button>
-          <button 
-            className="btn primary"
-            onClick={() => window.location.href = `/recipes/edit/${recipe.id}`}
-          >
-            Modifier
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function RecipesPage() {
-  const router = useRouter();
   const [recipes, setRecipes] = useState([]);
-  const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('Tous');
+  const [filterCategory, setFilterCategory] = useState('all');
+  const [filterDifficulty, setFilterDifficulty] = useState('all');
+  const [sortBy, setSortBy] = useState('title');
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [inventoryStatus, setInventoryStatus] = useState({});
+  
+  const supabase = createClientComponentClient();
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (!user) router.push('/login');
-    });
-  }, [router]);
-  
-  // Charger les recettes
-  useEffect(() => {
-    loadRecipes();
+    fetchRecipes();
+    checkInventoryAvailability();
   }, []);
 
-  // Filtrer les recettes
-  useEffect(() => {
-    let filtered = [...recipes];
-
-    if (searchTerm) {
-      filtered = filtered.filter(recipe =>
-        (recipe.title || recipe.name || '').toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    if (categoryFilter !== 'Tous') {
-      if (categoryFilter === 'Végé') {
-        filtered = filtered.filter(r => r.is_veg);
-      } else {
-        filtered = filtered.filter(r => r.category === categoryFilter);
-      }
-    }
-
-    setFilteredRecipes(filtered);
-  }, [recipes, searchTerm, categoryFilter]);
-
-  async function loadRecipes() {
+  async function fetchRecipes() {
     try {
       const { data, error } = await supabase
         .from('recipes')
-        .select('*')
-        .order('created_at', { ascending: false });
+        .select(`
+          *,
+          recipe_ingredients (
+            id,
+            qty,
+            unit,
+            note,
+            is_optional,
+            canonical_food_id,
+            generic_product_id,
+            cultivar_id,
+            derived_product_id
+          )
+        `)
+        .order('title');
 
       if (error) throw error;
       setRecipes(data || []);
     } catch (error) {
-      console.error('Erreur:', error);
-      setRecipes([]);
+      console.error('Erreur lors du chargement des recettes:', error);
     } finally {
       setLoading(false);
     }
   }
 
-  async function handleDelete(id) {
-    if (!confirm('Supprimer cette recette ?')) return;
+  async function checkInventoryAvailability() {
+    try {
+      const { data, error } = await supabase.rpc('get_recipes_availability');
+      
+      if (!error && data) {
+        const statusMap = {};
+        data.forEach(item => {
+          statusMap[item.recipe_id] = {
+            totalIngredients: item.total_ingredients,
+            availableIngredients: item.available_ingredients,
+            availabilityPercent: item.availability_percent
+          };
+        });
+        setInventoryStatus(statusMap);
+      }
+    } catch (error) {
+      console.error('Erreur vérification stocks:', error);
+    }
+  }
+
+  async function deleteRecipe(id) {
+    if (!confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')) return;
 
     try {
       const { error } = await supabase
@@ -300,35 +82,82 @@ export default function RecipesPage() {
 
       if (error) throw error;
       
-      await loadRecipes();
-      alert('Recette supprimée');
+      setRecipes(recipes.filter(r => r.id !== id));
+      alert('Recette supprimée avec succès');
     } catch (error) {
       console.error('Erreur:', error);
       alert('Erreur lors de la suppression');
     }
   }
 
+  async function duplicateRecipe(recipe) {
+    try {
+      const { data: newRecipe, error } = await supabase.rpc('duplicate_recipe', {
+        source_recipe_id: recipe.id
+      });
+
+      if (error) throw error;
+      
+      alert('Recette dupliquée avec succès');
+      fetchRecipes();
+    } catch (error) {
+      console.error('Erreur:', error);
+      alert('Erreur lors de la duplication');
+    }
+  }
+
+  // Filtrage et tri
+  const filteredRecipes = recipes
+    .filter(recipe => {
+      const matchSearch = recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         (recipe.description && recipe.description.toLowerCase().includes(searchTerm.toLowerCase()));
+      const matchCategory = filterCategory === 'all' || recipe.category === filterCategory;
+      const matchDifficulty = filterDifficulty === 'all' || recipe.difficulty === filterDifficulty;
+      
+      return matchSearch && matchCategory && matchDifficulty;
+    })
+    .sort((a, b) => {
+      switch (sortBy) {
+        case 'title':
+          return a.title.localeCompare(b.title);
+        case 'time':
+          return (a.total_min || 0) - (b.total_min || 0);
+        case 'difficulty':
+          const diffOrder = { 'facile': 1, 'moyen': 2, 'difficile': 3 };
+          return (diffOrder[a.difficulty] || 0) - (diffOrder[b.difficulty] || 0);
+        case 'availability':
+          const aAvail = inventoryStatus[a.id]?.availabilityPercent || 0;
+          const bAvail = inventoryStatus[b.id]?.availabilityPercent || 0;
+          return bAvail - aAvail;
+        default:
+          return 0;
+      }
+    });
+
+  // Catégories uniques pour le filtre
+  const categories = [...new Set(recipes.map(r => r.category).filter(Boolean))];
+
   if (loading) {
     return (
       <div className="recipes-container">
-        <div className="loading-state">
-          <h2>Chargement des recettes...</h2>
-        </div>
+        <div className="loading-spinner">⏳ Chargement des recettes...</div>
       </div>
     );
   }
 
   return (
     <div className="recipes-container">
-      {/* En-tête */}
       <div className="recipes-header">
-        <h1>👨‍🍳 Mes Recettes</h1>
-        <p>Organisez et partagez vos créations culinaires</p>
+        <h1>📖 Mes Recettes</h1>
+        <Link href="/recipes/new" className="btn-primary">
+          ➕ Nouvelle recette
+        </Link>
       </div>
 
-      {/* Barre de recherche et filtres */}
-      <div className="recipes-controls">
-        <div className="search-section">
+      {/* Barre de filtres */}
+      <div className="filters-bar">
+        <div className="search-box">
+          <span className="search-icon">🔍</span>
           <input
             type="text"
             placeholder="Rechercher une recette..."
@@ -337,57 +166,413 @@ export default function RecipesPage() {
             className="search-input"
           />
         </div>
-        
-        <div className="filter-section">
-          <select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            className="filter-select"
-          >
-            {CATEGORIES.map(cat => (
-              <option key={cat} value={cat}>
-                {cat === 'Tous' ? '📁 Toutes catégories' : cat}
-              </option>
-            ))}
-          </select>
+
+        <select 
+          value={filterCategory} 
+          onChange={(e) => setFilterCategory(e.target.value)}
+          className="filter-select"
+        >
+          <option value="all">Toutes catégories</option>
+          {categories.map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
+
+        <select 
+          value={filterDifficulty} 
+          onChange={(e) => setFilterDifficulty(e.target.value)}
+          className="filter-select"
+        >
+          <option value="all">Toutes difficultés</option>
+          <option value="facile">Facile</option>
+          <option value="moyen">Moyen</option>
+          <option value="difficile">Difficile</option>
+        </select>
+
+        <select 
+          value={sortBy} 
+          onChange={(e) => setSortBy(e.target.value)}
+          className="filter-select"
+        >
+          <option value="title">Trier par nom</option>
+          <option value="time">Trier par temps</option>
+          <option value="difficulty">Trier par difficulté</option>
+          <option value="availability">Trier par disponibilité</option>
+        </select>
+      </div>
+
+      {/* Stats rapides */}
+      <div className="recipes-stats">
+        <div className="stat-card">
+          <span className="stat-number">{recipes.length}</span>
+          <span className="stat-label">Recettes totales</span>
+        </div>
+        <div className="stat-card">
+          <span className="stat-number">
+            {recipes.filter(r => inventoryStatus[r.id]?.availabilityPercent >= 90).length}
+          </span>
+          <span className="stat-label">Réalisables (≥90%)</span>
+        </div>
+        <div className="stat-card">
+          <span className="stat-number">
+            {recipes.filter(r => r.is_veg).length}
+          </span>
+          <span className="stat-label">Végétariennes</span>
         </div>
       </div>
 
       {/* Grille de recettes */}
       <div className="recipes-grid">
-        {filteredRecipes.length === 0 ? (
-          <div className="empty-state">
-            <h2>Aucune recette trouvée</h2>
-            <p>Ajustez vos filtres ou ajoutez de nouvelles recettes</p>
-          </div>
-        ) : (
-          filteredRecipes.map(recipe => (
-            <RecipeCard 
-              key={recipe.id} 
-              recipe={recipe}
-              onDelete={() => handleDelete(recipe.id)}
-              onOpenModal={setSelectedRecipe}
-            />
-          ))
-        )}
+        {filteredRecipes.map(recipe => {
+          const status = inventoryStatus[recipe.id] || {};
+          const availabilityClass = 
+            status.availabilityPercent >= 90 ? 'high' :
+            status.availabilityPercent >= 50 ? 'medium' : 'low';
+          
+          return (
+            <div key={recipe.id} className="recipe-card">
+              {recipe.image_url && (
+                <div className="recipe-image">
+                  <img src={recipe.image_url} alt={recipe.title} />
+                  {recipe.is_veg && <span className="badge veg">🌱 Végé</span>}
+                </div>
+              )}
+              
+              <div className="recipe-content">
+                <h3>{recipe.title}</h3>
+                
+                {recipe.description && (
+                  <p className="recipe-description">{recipe.description}</p>
+                )}
+
+                <div className="recipe-meta">
+                  <span className="meta-item">
+                    ⏱ {recipe.total_min || recipe.prep_min + recipe.cook_min || '?'} min
+                  </span>
+                  <span className="meta-item">
+                    👥 {recipe.servings || 2} portions
+                  </span>
+                  {recipe.difficulty && (
+                    <span className={`meta-item difficulty-${recipe.difficulty}`}>
+                      {recipe.difficulty === 'facile' ? '👶' : 
+                       recipe.difficulty === 'moyen' ? '👨‍🍳' : '👨‍🍳👨‍🍳'}
+                      {recipe.difficulty}
+                    </span>
+                  )}
+                </div>
+
+                {status.availabilityPercent !== undefined && (
+                  <div className={`availability-bar ${availabilityClass}`}>
+                    <div 
+                      className="availability-fill" 
+                      style={{ width: `${status.availabilityPercent}%` }}
+                    />
+                    <span className="availability-text">
+                      {status.availableIngredients}/{status.totalIngredients} ingrédients disponibles
+                    </span>
+                  </div>
+                )}
+
+                <div className="recipe-actions">
+                  <button 
+                    onClick={() => setSelectedRecipe(recipe)}
+                    className="btn-secondary"
+                    title="Voir détails"
+                  >
+                    👁 Voir
+                  </button>
+                  <Link 
+                    href={`/recipes/edit/${recipe.id}`}
+                    className="btn-secondary"
+                    title="Modifier"
+                  >
+                    ✏️ Modifier
+                  </Link>
+                  <button 
+                    onClick={() => duplicateRecipe(recipe)}
+                    className="btn-secondary"
+                    title="Dupliquer"
+                  >
+                    📑 Dupliquer
+                  </button>
+                  <button 
+                    onClick={() => deleteRecipe(recipe.id)}
+                    className="btn-danger"
+                    title="Supprimer"
+                  >
+                    🗑
+                  </button>
+                </div>
+
+                {recipe.tags && recipe.tags.length > 0 && (
+                  <div className="recipe-tags">
+                    {recipe.tags.map((tag, idx) => (
+                      <span key={idx} className="tag">#{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
       </div>
+
+      {filteredRecipes.length === 0 && (
+        <div className="no-results">
+          <p>Aucune recette trouvée</p>
+          <Link href="/recipes/new" className="btn-primary">
+            Créer votre première recette
+          </Link>
+        </div>
+      )}
 
       {/* Modal de détails de recette */}
       {selectedRecipe && (
         <RecipeModal 
-          recipe={selectedRecipe}
+          recipe={selectedRecipe} 
           onClose={() => setSelectedRecipe(null)}
+          inventoryStatus={inventoryStatus[selectedRecipe.id]}
         />
       )}
+    </div>
+  );
+}
 
-      {/* Bouton flottant pour ajouter */}
-      <button 
-        className="recipes-fab"
-        onClick={() => window.location.href = '/recipes/edit/new'}
-        title="Ajouter une recette"
-      >
-        +
-      </button>
+// Composant Modal pour les détails de recette
+function RecipeModal({ recipe, onClose, inventoryStatus }) {
+  const [activeTab, setActiveTab] = useState('ingredients');
+  const [ingredients, setIngredients] = useState([]);
+  const [steps, setSteps] = useState([]);
+  const [tools, setTools] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  const supabase = createClientComponentClient();
+
+  useEffect(() => {
+    fetchRecipeDetails();
+  }, [recipe.id]);
+
+  async function fetchRecipeDetails() {
+    try {
+      // Charger les ingrédients détaillés
+      const { data: ingredientsData } = await supabase
+        .from('recipe_ingredients_detailed')
+        .select('*')
+        .eq('recipe_id', recipe.id)
+        .order('position');
+      
+      // Charger les étapes
+      const { data: stepsData } = await supabase
+        .from('recipe_steps')
+        .select('*')
+        .eq('recipe_id', recipe.id)
+        .order('step_no');
+      
+      // Charger les ustensiles
+      const { data: utensilsData } = await supabase
+        .from('recipe_utensils')
+        .select('*')
+        .eq('recipe_id', recipe.id);
+
+      setIngredients(ingredientsData || []);
+      setSteps(stepsData || []);
+      setTools(utensilsData || []);
+    } catch (error) {
+      console.error('Erreur chargement détails:', error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="recipe-modal">
+          <div className="modal-header">
+            <div>
+              <h2>{recipe.title}</h2>
+              <div className="modal-badges">
+                {recipe.is_veg && <span className="badge veg">🌱 Végétarien</span>}
+                {recipe.difficulty && (
+                  <span className={`badge difficulty-${recipe.difficulty}`}>
+                    {recipe.difficulty}
+                  </span>
+                )}
+                {recipe.category && (
+                  <span className="badge category">{recipe.category}</span>
+                )}
+              </div>
+            </div>
+            <button onClick={onClose} className="modal-close-btn">✕</button>
+          </div>
+
+          <div className="modal-info-grid">
+            <div className="modal-info-item">
+              <span className="info-label">⏱ Préparation:</span>
+              <span className="info-value">{recipe.prep_min || '?'} min</span>
+            </div>
+            <div className="modal-info-item">
+              <span className="info-label">🔥 Cuisson:</span>
+              <span className="info-value">{recipe.cook_min || '?'} min</span>
+            </div>
+            <div className="modal-info-item">
+              <span className="info-label">👥 Portions:</span>
+              <span className="info-value">{recipe.servings || 2}</span>
+            </div>
+            {inventoryStatus && (
+              <div className="modal-info-item">
+                <span className="info-label">📦 Disponibilité:</span>
+                <span className="info-value">{inventoryStatus.availabilityPercent}%</span>
+              </div>
+            )}
+          </div>
+
+          {recipe.description && (
+            <div className="modal-section">
+              <h3>Description</h3>
+              <p className="recipe-full-description">{recipe.description}</p>
+            </div>
+          )}
+
+          {/* Tabs de navigation */}
+          <div className="modal-tabs">
+            <button 
+              className={`tab-btn ${activeTab === 'ingredients' ? 'active' : ''}`}
+              onClick={() => setActiveTab('ingredients')}
+            >
+              🥕 Ingrédients
+            </button>
+            <button 
+              className={`tab-btn ${activeTab === 'steps' ? 'active' : ''}`}
+              onClick={() => setActiveTab('steps')}
+            >
+              📝 Instructions
+            </button>
+            <button 
+              className={`tab-btn ${activeTab === 'tools' ? 'active' : ''}`}
+              onClick={() => setActiveTab('tools')}
+            >
+              🔧 Ustensiles
+            </button>
+            {recipe.nutrition && (
+              <button 
+                className={`tab-btn ${activeTab === 'nutrition' ? 'active' : ''}`}
+                onClick={() => setActiveTab('nutrition')}
+              >
+                📊 Nutrition
+              </button>
+            )}
+          </div>
+
+          {/* Contenu des tabs */}
+          <div className="modal-tab-content">
+            {loading ? (
+              <div className="loading">Chargement...</div>
+            ) : (
+              <>
+                {activeTab === 'ingredients' && (
+                  <div className="modal-section">
+                    {ingredients.length > 0 ? (
+                      <ul className="ingredients-list-modal">
+                        {ingredients.map((ing, idx) => (
+                          <li key={ing.id || idx}>
+                            <span className="ingredient-qty">
+                              {ing.qty} {ing.unit}
+                            </span>
+                            <span className="ingredient-name">
+                              {ing.display_name}
+                              {ing.is_optional && ' (optionnel)'}
+                            </span>
+                            {ing.note && (
+                              <span className="ingredient-note">{ing.note}</span>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="empty-text">Aucun ingrédient défini</p>
+                    )}
+                  </div>
+                )}
+
+                {activeTab === 'steps' && (
+                  <div className="modal-section">
+                    {steps.length > 0 ? (
+                      recipe.steps ? (
+                        <div className="recipe-steps-text">{recipe.steps}</div>
+                      ) : (
+                        <ol className="recipe-steps-list">
+                          {steps.map((step, idx) => (
+                            <li key={step.id || idx}>
+                              {step.instruction}
+                              {step.duration_min && (
+                                <span className="step-duration"> ({step.duration_min} min)</span>
+                              )}
+                              {step.temperature && (
+                                <span className="step-temp">
+                                  {' '}à {step.temperature}{step.temperature_unit || '°C'}
+                                </span>
+                              )}
+                            </li>
+                          ))}
+                        </ol>
+                      )
+                    ) : recipe.steps ? (
+                      <div className="recipe-steps-text">{recipe.steps}</div>
+                    ) : (
+                      <p className="empty-text">Aucune instruction définie</p>
+                    )}
+                  </div>
+                )}
+
+                {activeTab === 'tools' && (
+                  <div className="modal-section">
+                    {tools.length > 0 ? (
+                      <ul className="tools-list">
+                        {tools.map((tool, idx) => (
+                          <li key={tool.id || idx}>
+                            {tool.quantity > 1 && `${tool.quantity}× `}
+                            {tool.utensil_name}
+                            {tool.is_optional && ' (optionnel)'}
+                            {tool.notes && <span className="tool-note"> - {tool.notes}</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="empty-text">Aucun ustensile défini</p>
+                    )}
+                  </div>
+                )}
+
+                {activeTab === 'nutrition' && recipe.nutrition && (
+                  <div className="modal-section">
+                    <div className="nutrition-grid">
+                      {Object.entries(recipe.nutrition).map(([key, value]) => (
+                        <div key={key} className="nutrition-item">
+                          <span className="nutrition-label">{key}:</span>
+                          <span className="nutrition-value">{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+
+          <div className="modal-actions">
+            <Link href={`/recipes/edit/${recipe.id}`} className="modal-btn primary">
+              ✏️ Modifier la recette
+            </Link>
+            <Link href={`/meal-planning?recipe=${recipe.id}`} className="modal-btn secondary">
+              📅 Planifier ce repas
+            </Link>
+            <button onClick={onClose} className="modal-btn">
+              Fermer
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
