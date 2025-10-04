@@ -304,7 +304,7 @@ export default function RecipesPage() {
                   </button>
                 </div>
 
-                {recipe.tags && recipe.tags.length > 0 && (
+          {recipe.tags && recipe.tags.length > 0 && (
                   <div className="recipe-tags">
                     {recipe.tags.map((tag, idx) => (
                       <span key={idx} className="tag">#{tag}</span>
