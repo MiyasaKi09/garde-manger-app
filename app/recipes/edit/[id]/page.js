@@ -34,7 +34,15 @@ export default function RecipeEditPage() {
     image_url: '',
     source_canonical_url: '',
     author: '',
-    nutrition: {}
+    nutrition: {
+      macros: {
+        calories: '',
+        proteins: '',
+        carbs: '',
+        fats: ''
+      },
+      micros: {}
+    }
   });
   
   // Ingrédients
@@ -65,6 +73,72 @@ export default function RecipeEditPage() {
   const [productSuggestions, setProductSuggestions] = useState([]);
   const [searchingProducts, setSearchingProducts] = useState(false);
 
+  // État pour les micronutriments
+  const [selectedMicronutrient, setSelectedMicronutrient] = useState('');
+  const [microValue, setMicroValue] = useState('');
+  const [microUnit, setMicroUnit] = useState('mg');
+  const [showMicroSuggestions, setShowMicroSuggestions] = useState(false);
+
+  // Liste prédéfinie de micronutriments courants
+  const micronutrientSuggestions = [
+    // Vitamines liposolubles
+    { name: 'Vitamine A', defaultUnit: 'µg', category: 'Vitamines' },
+    { name: 'Vitamine D', defaultUnit: 'µg', category: 'Vitamines' },
+    { name: 'Vitamine E', defaultUnit: 'mg', category: 'Vitamines' },
+    { name: 'Vitamine K', defaultUnit: 'µg', category: 'Vitamines' },
+    // Vitamines hydrosolubles
+    { name: 'Vitamine C', defaultUnit: 'mg', category: 'Vitamines' },
+    { name: 'Vitamine B1 (Thiamine)', defaultUnit: 'mg', category: 'Vitamines' },
+    { name: 'Vitamine B2 (Riboflavine)', defaultUnit: 'mg', category: 'Vitamines' },
+    { name: 'Vitamine B3 (Niacine)', defaultUnit: 'mg', category: 'Vitamines' },
+    { name: 'Vitamine B5 (Acide pantothénique)', defaultUnit: 'mg', category: 'Vitamines' },
+    { name: 'Vitamine B6', defaultUnit: 'mg', category: 'Vitamines' },
+    { name: 'Vitamine B9 (Folate)', defaultUnit: 'µg', category: 'Vitamines' },
+    { name: 'Vitamine B12', defaultUnit: 'µg', category: 'Vitamines' },
+    { name: 'Biotine (B8)', defaultUnit: 'µg', category: 'Vitamines' },
+    // Minéraux majeurs
+    { name: 'Calcium', defaultUnit: 'mg', category: 'Minéraux' },
+    { name: 'Phosphore', defaultUnit: 'mg', category: 'Minéraux' },
+    { name: 'Magnésium', defaultUnit: 'mg', category: 'Minéraux' },
+    { name: 'Sodium', defaultUnit: 'mg', category: 'Minéraux' },
+    { name: 'Potassium', defaultUnit: 'mg', category: 'Minéraux' },
+    { name: 'Chlorure', defaultUnit: 'mg', category: 'Minéraux' },
+    // Oligo-éléments
+    { name: 'Fer', defaultUnit: 'mg', category: 'Oligo-éléments' },
+    { name: 'Zinc', defaultUnit: 'mg', category: 'Oligo-éléments' },
+    { name: 'Cuivre', defaultUnit: 'mg', category: 'Oligo-éléments' },
+    { name: 'Manganèse', defaultUnit: 'mg', category: 'Oligo-éléments' },
+    { name: 'Sélénium', defaultUnit: 'µg', category: 'Oligo-éléments' },
+    { name: 'Iode', defaultUnit: 'µg', category: 'Oligo-éléments' },
+    { name: 'Chrome', defaultUnit: 'µg', category: 'Oligo-éléments' },
+    { name: 'Molybdène', defaultUnit: 'µg', category: 'Oligo-éléments' },
+    // Autres composés nutritionnels
+    { name: 'Fibres alimentaires', defaultUnit: 'g', category: 'Autres' },
+    { name: 'Fibres solubles', defaultUnit: 'g', category: 'Autres' },
+    { name: 'Fibres insolubles', defaultUnit: 'g', category: 'Autres' },
+    { name: 'Sucres totaux', defaultUnit: 'g', category: 'Autres' },
+    { name: 'Sucres ajoutés', defaultUnit: 'g', category: 'Autres' },
+    { name: 'Amidon', defaultUnit: 'g', category: 'Autres' },
+    { name: 'Cholestérol', defaultUnit: 'mg', category: 'Autres' },
+    // Acides gras
+    { name: 'Acides gras saturés', defaultUnit: 'g', category: 'Acides gras' },
+    { name: 'Acides gras monoinsaturés', defaultUnit: 'g', category: 'Acides gras' },
+    { name: 'Acides gras polyinsaturés', defaultUnit: 'g', category: 'Acides gras' },
+    { name: 'Acides gras trans', defaultUnit: 'g', category: 'Acides gras' },
+    { name: 'Oméga 3 (EPA+DHA)', defaultUnit: 'mg', category: 'Acides gras' },
+    { name: 'Oméga 6', defaultUnit: 'mg', category: 'Acides gras' },
+    { name: 'Oméga 9', defaultUnit: 'mg', category: 'Acides gras' },
+    // Composés bioactifs
+    { name: 'Polyphénols', defaultUnit: 'mg', category: 'Antioxydants' },
+    { name: 'Flavonoïdes', defaultUnit: 'mg', category: 'Antioxydants' },
+    { name: 'Caroténoïdes', defaultUnit: 'µg', category: 'Antioxydants' },
+    { name: 'Lycopène', defaultUnit: 'mg', category: 'Antioxydants' },
+    { name: 'Bêta-carotène', defaultUnit: 'µg', category: 'Antioxydants' },
+    { name: 'Lutéine', defaultUnit: 'µg', category: 'Antioxydants' },
+    { name: 'Resvératrol', defaultUnit: 'mg', category: 'Antioxydants' },
+    { name: 'Coenzyme Q10', defaultUnit: 'mg', category: 'Antioxydants' }
+  ];
+
   useEffect(() => {
     if (!isNew && recipeId) {
       loadRecipe();
@@ -76,6 +150,19 @@ export default function RecipeEditPage() {
     const total = (parseInt(recipe.prep_min) || 0) + (parseInt(recipe.cook_min) || 0);
     setRecipe(prev => ({ ...prev, total_min: total }));
   }, [recipe.prep_min, recipe.cook_min]);
+
+  // Fermer le dropdown quand on clique en dehors
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (showMicroSuggestions && !event.target.closest('.micro-suggestions-dropdown') && 
+          !event.target.closest('.form-group')) {
+        setShowMicroSuggestions(false);
+      }
+    }
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showMicroSuggestions]);
 
   async function loadRecipe() {
     try {
@@ -108,9 +195,37 @@ export default function RecipeEditPage() {
         .select('*')
         .eq('recipe_id', recipeId);
 
+      // Assurer la bonne structure pour nutrition
+      let nutritionData = recipeData.nutrition || { macros: {}, micros: {} };
+      
+      // Si l'ancien format est détecté, le convertir
+      if (nutritionData && !nutritionData.macros && !nutritionData.micros) {
+        const oldNutrition = { ...nutritionData };
+        nutritionData = {
+          macros: {
+            calories: oldNutrition.calories || '',
+            proteins: oldNutrition.proteins || '',
+            carbs: oldNutrition.carbs || '',
+            fats: oldNutrition.fats || ''
+          },
+          micros: {}
+        };
+        
+        // Transférer les autres nutriments vers micros
+        Object.keys(oldNutrition).forEach(key => {
+          if (!['calories', 'proteins', 'carbs', 'fats'].includes(key)) {
+            nutritionData.micros[key] = {
+              value: oldNutrition[key],
+              unit: key === 'fibers' ? 'g' : 'mg'
+            };
+          }
+        });
+      }
+
       setRecipe({
         ...recipeData,
-        tags: recipeData.tags || []
+        tags: recipeData.tags || [],
+        nutrition: nutritionData
       });
 
       if (recipeData.steps && (!stepsData || stepsData.length === 0)) {
@@ -246,6 +361,43 @@ export default function RecipeEditPage() {
     setUtensils(utensils.filter((_, i) => i !== index));
   }
 
+  function addMicronutrient() {
+    if (!selectedMicronutrient || !microValue) {
+      alert('Veuillez sélectionner un nutriment et entrer une valeur');
+      return;
+    }
+
+    const newNutrition = { ...recipe.nutrition };
+    if (!newNutrition.micros) {
+      newNutrition.micros = {};
+    }
+    
+    newNutrition.micros[selectedMicronutrient] = {
+      value: parseFloat(microValue),
+      unit: microUnit
+    };
+
+    setRecipe({ ...recipe, nutrition: newNutrition });
+    setSelectedMicronutrient('');
+    setMicroValue('');
+    setMicroUnit('mg');
+    setShowMicroSuggestions(false);
+  }
+
+  function removeMicronutrient(name) {
+    const newNutrition = { ...recipe.nutrition };
+    if (newNutrition.micros) {
+      delete newNutrition.micros[name];
+    }
+    setRecipe({ ...recipe, nutrition: newNutrition });
+  }
+
+  function selectMicronutrientSuggestion(suggestion) {
+    setSelectedMicronutrient(suggestion.name);
+    setMicroUnit(suggestion.defaultUnit);
+    setShowMicroSuggestions(false);
+  }
+
   async function saveRecipe() {
     if (!recipe.title) {
       alert('Le titre est obligatoire');
@@ -256,11 +408,41 @@ export default function RecipeEditPage() {
     try {
       let savedRecipeId = recipeId;
 
+      // Nettoyer les données nutrition (enlever les valeurs vides)
+      let cleanedNutrition = null;
+      if (recipe.nutrition) {
+        const macros = {};
+        const micros = {};
+        
+        // Nettoyer les macros
+        if (recipe.nutrition.macros) {
+          Object.entries(recipe.nutrition.macros).forEach(([key, value]) => {
+            if (value && value !== '') {
+              macros[key] = value;
+            }
+          });
+        }
+        
+        // Nettoyer les micros
+        if (recipe.nutrition.micros) {
+          Object.entries(recipe.nutrition.micros).forEach(([key, data]) => {
+            if (data && data.value && data.value !== '') {
+              micros[key] = data;
+            }
+          });
+        }
+        
+        if (Object.keys(macros).length > 0 || Object.keys(micros).length > 0) {
+          cleanedNutrition = { macros, micros };
+        }
+      }
+
       // Sauvegarder la recette principale
       const recipeData = {
         ...recipe,
         steps: useTextSteps ? textSteps : null,
-        tags: recipe.tags.length > 0 ? recipe.tags : null
+        tags: recipe.tags.length > 0 ? recipe.tags : null,
+        nutrition: cleanedNutrition
       };
 
       if (isNew) {
@@ -916,90 +1098,222 @@ export default function RecipeEditPage() {
             <h2>Informations nutritionnelles</h2>
             <p className="info-text">
               Les informations nutritionnelles peuvent être calculées automatiquement 
-              à partir des ingrédients ou saisies manuellement.
+              à partir des ingrédients ou saisies manuellement. Toutes les valeurs sont par portion.
             </p>
             
-            <div className="form-grid">
-              <div className="form-group">
-                <label>Calories (kcal)</label>
-                <input
-                  type="number"
-                  value={recipe.nutrition?.calories || ''}
-                  onChange={(e) => setRecipe({
-                    ...recipe,
-                    nutrition: {...recipe.nutrition, calories: e.target.value}
-                  })}
-                  className="form-input"
-                />
-              </div>
+            {/* Macronutriments */}
+            <div className="nutrition-section">
+              <h3>Macronutriments (par portion)</h3>
+              <div className="form-grid">
+                <div className="form-group">
+                  <label>Calories (kcal)</label>
+                  <input
+                    type="number"
+                    value={recipe.nutrition?.macros?.calories || ''}
+                    onChange={(e) => setRecipe({
+                      ...recipe,
+                      nutrition: {
+                        ...recipe.nutrition,
+                        macros: { ...recipe.nutrition?.macros, calories: e.target.value }
+                      }
+                    })}
+                    className="form-input"
+                  />
+                </div>
 
-              <div className="form-group">
-                <label>Protéines (g)</label>
-                <input
-                  type="number"
-                  value={recipe.nutrition?.proteins || ''}
-                  onChange={(e) => setRecipe({
-                    ...recipe,
-                    nutrition: {...recipe.nutrition, proteins: e.target.value}
-                  })}
-                  className="form-input"
-                  step="0.1"
-                />
-              </div>
+                <div className="form-group">
+                  <label>Protéines (g)</label>
+                  <input
+                    type="number"
+                    value={recipe.nutrition?.macros?.proteins || ''}
+                    onChange={(e) => setRecipe({
+                      ...recipe,
+                      nutrition: {
+                        ...recipe.nutrition,
+                        macros: { ...recipe.nutrition?.macros, proteins: e.target.value }
+                      }
+                    })}
+                    className="form-input"
+                    step="0.1"
+                  />
+                </div>
 
-              <div className="form-group">
-                <label>Glucides (g)</label>
-                <input
-                  type="number"
-                  value={recipe.nutrition?.carbs || ''}
-                  onChange={(e) => setRecipe({
-                    ...recipe,
-                    nutrition: {...recipe.nutrition, carbs: e.target.value}
-                  })}
-                  className="form-input"
-                  step="0.1"
-                />
-              </div>
+                <div className="form-group">
+                  <label>Glucides (g)</label>
+                  <input
+                    type="number"
+                    value={recipe.nutrition?.macros?.carbs || ''}
+                    onChange={(e) => setRecipe({
+                      ...recipe,
+                      nutrition: {
+                        ...recipe.nutrition,
+                        macros: { ...recipe.nutrition?.macros, carbs: e.target.value }
+                      }
+                    })}
+                    className="form-input"
+                    step="0.1"
+                  />
+                </div>
 
-              <div className="form-group">
-                <label>Lipides (g)</label>
-                <input
-                  type="number"
-                  value={recipe.nutrition?.fats || ''}
-                  onChange={(e) => setRecipe({
-                    ...recipe,
-                    nutrition: {...recipe.nutrition, fats: e.target.value}
-                  })}
-                  className="form-input"
-                  step="0.1"
-                />
+                <div className="form-group">
+                  <label>Lipides (g)</label>
+                  <input
+                    type="number"
+                    value={recipe.nutrition?.macros?.fats || ''}
+                    onChange={(e) => setRecipe({
+                      ...recipe,
+                      nutrition: {
+                        ...recipe.nutrition,
+                        macros: { ...recipe.nutrition?.macros, fats: e.target.value }
+                      }
+                    })}
+                    className="form-input"
+                    step="0.1"
+                  />
+                </div>
               </div>
+            </div>
 
-              <div className="form-group">
-                <label>Fibres (g)</label>
-                <input
-                  type="number"
-                  value={recipe.nutrition?.fibers || ''}
-                  onChange={(e) => setRecipe({
-                    ...recipe,
-                    nutrition: {...recipe.nutrition, fibers: e.target.value}
-                  })}
-                  className="form-input"
-                  step="0.1"
-                />
-              </div>
+            {/* Micronutriments */}
+            <div className="nutrition-section">
+              <h3>Micronutriments (par portion)</h3>
+              
+              {/* Liste des micronutriments ajoutés */}
+              {recipe.nutrition?.micros && Object.keys(recipe.nutrition.micros).length > 0 && (
+                <div className="micros-list">
+                  {Object.entries(recipe.nutrition.micros).map(([name, data]) => (
+                    <div key={name} className="micro-item">
+                      <span className="micro-name">{name}</span>
+                      <span className="micro-value">
+                        {data.value} {data.unit}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => removeMicronutrient(name)}
+                        className="btn-remove-micro"
+                        title="Supprimer"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
 
-              <div className="form-group">
-                <label>Sodium (mg)</label>
-                <input
-                  type="number"
-                  value={recipe.nutrition?.sodium || ''}
-                  onChange={(e) => setRecipe({
-                    ...recipe,
-                    nutrition: {...recipe.nutrition, sodium: e.target.value}
-                  })}
-                  className="form-input"
-                />
+              {/* Formulaire d'ajout de micronutriment */}
+              <div className="add-micro-form">
+                <h4>Ajouter un micronutriment</h4>
+                <div className="form-grid">
+                  <div className="form-group span-2" style={{ position: 'relative' }}>
+                    <label>Nom du nutriment</label>
+                    <input
+                      type="text"
+                      value={selectedMicronutrient}
+                      onChange={(e) => {
+                        setSelectedMicronutrient(e.target.value);
+                        setShowMicroSuggestions(true);
+                      }}
+                      onFocus={() => setShowMicroSuggestions(true)}
+                      placeholder="Ex: Vitamine C, Fer, Calcium..."
+                      className="form-input"
+                    />
+                    
+                    {showMicroSuggestions && (
+                      <div className="micro-suggestions-dropdown">
+                        <div className="suggestions-header">
+                          <small>Suggestions courantes (cliquez pour sélectionner)</small>
+                          <button
+                            type="button"
+                            onClick={() => setShowMicroSuggestions(false)}
+                            className="close-suggestions"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                        <div className="suggestions-content">
+                          {['Vitamines', 'Minéraux', 'Oligo-éléments', 'Acides gras', 'Antioxydants', 'Autres'].map(category => {
+                            const categorySuggestions = micronutrientSuggestions
+                              .filter(s => s.category === category)
+                              .filter(s => 
+                                !selectedMicronutrient || 
+                                s.name.toLowerCase().includes(selectedMicronutrient.toLowerCase())
+                              )
+                              .filter(s => 
+                                !recipe.nutrition?.micros || 
+                                !recipe.nutrition.micros[s.name]
+                              );
+                            
+                            if (categorySuggestions.length === 0) return null;
+                            
+                            return (
+                              <div key={category} className="suggestion-category">
+                                <div className="category-header">{category}</div>
+                                <div className="suggestions-grid">
+                                  {categorySuggestions.map(suggestion => (
+                                    <button
+                                      key={suggestion.name}
+                                      type="button"
+                                      className="micro-suggestion-btn"
+                                      onClick={() => selectMicronutrientSuggestion(suggestion)}
+                                    >
+                                      <span className="suggestion-name">{suggestion.name}</span>
+                                      <span className="suggestion-unit">{suggestion.defaultUnit}</span>
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <label>Valeur</label>
+                    <input
+                      type="number"
+                      value={microValue}
+                      onChange={(e) => setMicroValue(e.target.value)}
+                      placeholder="0"
+                      className="form-input"
+                      step="0.01"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label>Unité</label>
+                    <select
+                      value={microUnit}
+                      onChange={(e) => setMicroUnit(e.target.value)}
+                      className="form-select"
+                    >
+                      <option value="g">g</option>
+                      <option value="mg">mg</option>
+                      <option value="µg">µg (mcg)</option>
+                      <option value="UI">UI</option>
+                      <option value="%">% AJR</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label>&nbsp;</label>
+                    <button
+                      type="button"
+                      onClick={addMicronutrient}
+                      className="btn-primary"
+                    >
+                      ➕ Ajouter
+                    </button>
+                  </div>
+                </div>
+
+                <div className="micro-info">
+                  <small>
+                    💡 Astuce : Vous pouvez ajouter n'importe quel nutriment ou composé nutritionnel 
+                    (vitamines, minéraux, acides aminés, antioxydants, etc.)
+                  </small>
+                </div>
               </div>
             </div>
           </div>
