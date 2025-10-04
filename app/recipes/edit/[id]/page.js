@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import Link from 'next/link';
-import '../recipes.css';
+import '../../recipes.css';
 
 export default function RecipeEditPage() {
   const router = useRouter();
