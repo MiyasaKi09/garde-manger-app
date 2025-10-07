@@ -57,9 +57,13 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         storage_place: 'Garde-manger',
         expiration_date: ''
       });
-      setTimeout(() => searchInputRef.current?.focus(), 100);
+      setTimeout(() => {
+        searchInputRef.current?.focus();
+        // Charger les suggestions initiales
+        performSearch('');
+      }, 100);
     }
-  }, [open]);
+  }, [open, performSearch]);
 
   // Obtenir l'icône de la catégorie
   const getCategoryIcon = (categoryId, productName) => {
@@ -140,127 +144,280 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     setLotData(prev => ({ ...prev, qty_remaining: newQty }));
   };
 
-  // Recherche de produits
-  const performSearch = useCallback(async (query) => {
-    if (!query || query.trim().length < 2) {
-      setSearchResults([]);
-      return;
+  // Fonction pour calculer la distance de Levenshtein (détection des fautes de frappe)
+  const levenshteinDistance = (str1, str2) => {
+    const matrix = [];
+    for (let i = 0; i <= str2.length; i++) {
+      matrix[i] = [i];
     }
+    for (let j = 0; j <= str1.length; j++) {
+      matrix[0][j] = j;
+    }
+    for (let i = 1; i <= str2.length; i++) {
+      for (let j = 1; j <= str1.length; j++) {
+        if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+          matrix[i][j] = matrix[i - 1][j - 1];
+        } else {
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j - 1] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j] + 1
+          );
+        }
+      }
+    }
+    return matrix[str2.length][str1.length];
+  };
 
+  // Recherche de produits améliorée
+  const performSearch = useCallback(async (query) => {
     setSearchLoading(true);
-    const q = query.trim();
+    const q = (query || '').trim().toLowerCase();
     
     try {
-      // Recherche simple avec ilike sur le nom canonique
-      const { data: canonicalFoods, error } = await supabase
-        .from('canonical_foods')
-        .select(`
-          id,
-          canonical_name,
-          category_id,
-          subcategory,
-          keywords,
-          primary_unit,
-          shelf_life_days_pantry,
-          shelf_life_days_fridge,
-          shelf_life_days_freezer
-        `)
-        .ilike('canonical_name', `%${q}%`)
-        .limit(50);
+      // Si pas de query, prendre les 5 produits les plus populaires
+      if (!q || q.length === 0) {
+        const { data: topProducts } = await supabase
+          .from('canonical_foods')
+          .select(`
+            id, canonical_name, category_id, keywords, primary_unit,
+            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
+          `)
+          .order('id')
+          .limit(5);
 
-      if (error) {
-        console.error('Erreur requête Supabase:', error);
-        setSearchResults([]);
+        if (topProducts) {
+          const results = topProducts.map(food => ({
+            id: food.id,
+            name: food.canonical_name,
+            type: 'canonical',
+            category_id: food.category_id,
+            matchScore: 50,
+            primary_unit: food.primary_unit || 'unités',
+            shelf_life_days_pantry: food.shelf_life_days_pantry,
+            shelf_life_days_fridge: food.shelf_life_days_fridge,
+            shelf_life_days_freezer: food.shelf_life_days_freezer,
+            icon: getCategoryIcon(food.category_id, food.canonical_name)
+          }));
+          setSearchResults(results);
+        }
+        setSearchLoading(false);
         return;
       }
 
-      // Ajouter une recherche secondaire sur la sous-catégorie
-      const { data: subcategoryResults } = await supabase
+      const allResults = [];
+      const seenNames = new Set();
+
+      // 1. Recherche dans canonical_foods
+      const { data: canonicalFoods } = await supabase
         .from('canonical_foods')
         .select(`
-          id,
-          canonical_name,
-          category_id,
-          subcategory,
-          keywords,
-          primary_unit,
-          shelf_life_days_pantry,
-          shelf_life_days_fridge,
-          shelf_life_days_freezer
+          id, canonical_name, category_id, keywords, primary_unit,
+          shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
         `)
-        .ilike('subcategory', `%${q}%`)
-        .limit(20);
+        .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}}`)
+        .limit(30);
 
-      // Combiner les résultats uniques
-      const allResults = [...(canonicalFoods || [])];
-      const seenIds = new Set(allResults.map(f => f.id));
-      
-      if (subcategoryResults) {
-        subcategoryResults.forEach(food => {
-          if (!seenIds.has(food.id)) {
-            allResults.push(food);
-            seenIds.add(food.id);
+      if (canonicalFoods) {
+        canonicalFoods.forEach(food => {
+          if (!seenNames.has(food.canonical_name.toLowerCase())) {
+            allResults.push({
+              ...food,
+              type: 'canonical',
+              source_name: food.canonical_name
+            });
+            seenNames.add(food.canonical_name.toLowerCase());
           }
         });
       }
 
-      // Filtrer et scorer les résultats
-      const results = allResults.map(food => {
-        const nameLower = food.canonical_name.toLowerCase();
-        const qLower = q.toLowerCase();
-        
-        // Calculer le score de pertinence
+      // 2. Recherche dans archetypes
+      const { data: archetypes } = await supabase
+        .from('archetypes')
+        .select(`
+          id, name, canonical_food_id, shelf_life_days,
+          canonical_foods!inner(canonical_name, category_id, primary_unit, keywords)
+        `)
+        .ilike('name', `%${q}%`)
+        .limit(20);
+
+      if (archetypes) {
+        archetypes.forEach(archetype => {
+          const name = archetype.name.toLowerCase();
+          if (!seenNames.has(name)) {
+            allResults.push({
+              id: `arch_${archetype.id}`,
+              canonical_name: archetype.name,
+              category_id: archetype.canonical_foods?.category_id,
+              primary_unit: archetype.canonical_foods?.primary_unit || 'unités',
+              shelf_life_days_pantry: archetype.shelf_life_days,
+              shelf_life_days_fridge: archetype.shelf_life_days,
+              shelf_life_days_freezer: archetype.shelf_life_days * 10,
+              keywords: archetype.canonical_foods?.keywords,
+              type: 'archetype',
+              source_name: archetype.name
+            });
+            seenNames.add(name);
+          }
+        });
+      }
+
+      // 3. Recherche dans cultivars
+      const { data: cultivars } = await supabase
+        .from('cultivars')
+        .select(`
+          id, name, canonical_food_id,
+          canonical_foods!inner(canonical_name, category_id, primary_unit, keywords,
+            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer)
+        `)
+        .ilike('name', `%${q}%`)
+        .limit(20);
+
+      if (cultivars) {
+        cultivars.forEach(cultivar => {
+          const name = cultivar.name.toLowerCase();
+          if (!seenNames.has(name)) {
+            allResults.push({
+              id: `cult_${cultivar.id}`,
+              canonical_name: cultivar.name,
+              category_id: cultivar.canonical_foods?.category_id,
+              primary_unit: cultivar.canonical_foods?.primary_unit || 'unités',
+              shelf_life_days_pantry: cultivar.canonical_foods?.shelf_life_days_pantry,
+              shelf_life_days_fridge: cultivar.canonical_foods?.shelf_life_days_fridge,
+              shelf_life_days_freezer: cultivar.canonical_foods?.shelf_life_days_freezer,
+              keywords: cultivar.canonical_foods?.keywords,
+              type: 'cultivar',
+              source_name: cultivar.name
+            });
+            seenNames.add(name);
+          }
+        });
+      }
+
+      // 4. Scorer les résultats avec recherche floue
+      const scoredResults = allResults.map(item => {
+        const nameLower = item.source_name.toLowerCase();
         let matchScore = 0;
-        
-        if (nameLower === qLower) {
+
+        // Score exact
+        if (nameLower === q) {
           matchScore = 100;
-        } else if (nameLower.startsWith(qLower)) {
-          matchScore = 80;
-        } else if (nameLower.includes(qLower)) {
-          matchScore = 60;
+        } 
+        // Score de début
+        else if (nameLower.startsWith(q)) {
+          matchScore = 90;
         }
-        
-        // Bonus pour les mots-clés
-        if (food.keywords && Array.isArray(food.keywords)) {
-          const hasKeyword = food.keywords.some(keyword => 
-            keyword.toLowerCase().includes(qLower)
+        // Score d'inclusion
+        else if (nameLower.includes(q)) {
+          matchScore = 70;
+        }
+        // Score de recherche floue (tolérance aux fautes)
+        else {
+          const distance = levenshteinDistance(q, nameLower);
+          const maxLength = Math.max(q.length, nameLower.length);
+          const similarity = (maxLength - distance) / maxLength;
+          
+          if (similarity > 0.6) { // Seuil de 60% de similarité
+            matchScore = Math.floor(similarity * 60);
+          }
+        }
+
+        // Bonus pour mots-clés
+        if (item.keywords && Array.isArray(item.keywords)) {
+          const hasKeyword = item.keywords.some(keyword => 
+            keyword.toLowerCase().includes(q) || 
+            levenshteinDistance(q, keyword.toLowerCase()) <= 2
           );
-          if (hasKeyword) matchScore += 20;
+          if (hasKeyword) matchScore += 15;
         }
-        
-        // Bonus pour la sous-catégorie
-        if (food.subcategory && food.subcategory.toLowerCase().includes(qLower)) {
-          matchScore += 15;
-        }
-        
+
+        // Bonus par type
+        if (item.type === 'canonical') matchScore += 5;
+        else if (item.type === 'cultivar') matchScore += 3;
+
         return {
+          id: item.id,
+          name: item.source_name,
+          type: item.type,
+          category_id: item.category_id,
+          matchScore,
+          primary_unit: item.primary_unit || 'unités',
+          shelf_life_days_pantry: item.shelf_life_days_pantry || 30,
+          shelf_life_days_fridge: item.shelf_life_days_fridge || 7,
+          shelf_life_days_freezer: item.shelf_life_days_freezer || 90,
+          icon: getCategoryIcon(item.category_id, item.source_name)
+        };
+      });
+
+      // Filtrer les résultats avec score > 0 et trier
+      let finalResults = scoredResults
+        .filter(r => r.matchScore > 0)
+        .sort((a, b) => b.matchScore - a.matchScore)
+        .slice(0, 5);
+
+      // Si moins de 5 résultats, compléter avec les plus populaires
+      if (finalResults.length < 5) {
+        const { data: topProducts } = await supabase
+          .from('canonical_foods')
+          .select(`
+            id, canonical_name, category_id, primary_unit,
+            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
+          `)
+          .order('id')
+          .limit(5 - finalResults.length);
+
+        if (topProducts) {
+          const existingNames = new Set(finalResults.map(r => r.name.toLowerCase()));
+          topProducts.forEach(food => {
+            if (!existingNames.has(food.canonical_name.toLowerCase())) {
+              finalResults.push({
+                id: food.id,
+                name: food.canonical_name,
+                type: 'canonical',
+                category_id: food.category_id,
+                matchScore: 25,
+                primary_unit: food.primary_unit || 'unités',
+                shelf_life_days_pantry: food.shelf_life_days_pantry || 30,
+                shelf_life_days_fridge: food.shelf_life_days_fridge || 7,
+                shelf_life_days_freezer: food.shelf_life_days_freezer || 90,
+                icon: getCategoryIcon(food.category_id, food.canonical_name)
+              });
+            }
+          });
+        }
+      }
+
+      setSearchResults(finalResults.slice(0, 5));
+      
+    } catch (error) {
+      console.error('Erreur recherche:', error);
+      // En cas d'erreur, afficher au moins quelques produits par défaut
+      const { data: fallbackProducts } = await supabase
+        .from('canonical_foods')
+        .select('id, canonical_name, category_id, primary_unit')
+        .limit(5);
+      
+      if (fallbackProducts) {
+        const results = fallbackProducts.map(food => ({
           id: food.id,
           name: food.canonical_name,
           type: 'canonical',
           category_id: food.category_id,
-          subcategory: food.subcategory,
-          matchScore,
+          matchScore: 20,
           primary_unit: food.primary_unit || 'unités',
-          shelf_life_days_pantry: food.shelf_life_days_pantry,
-          shelf_life_days_fridge: food.shelf_life_days_fridge,
-          shelf_life_days_freezer: food.shelf_life_days_freezer,
+          shelf_life_days_pantry: 30,
+          shelf_life_days_fridge: 7,
+          shelf_life_days_freezer: 90,
           icon: getCategoryIcon(food.category_id, food.canonical_name)
-        };
-      });
-      
-      // Trier par score et limiter à 10 résultats
-      results.sort((a, b) => b.matchScore - a.matchScore);
-      setSearchResults(results.slice(0, 10));
-      
-    } catch (error) {
-      console.error('Erreur recherche:', error);
-      setSearchResults([]);
+        }));
+        setSearchResults(results);
+      }
     } finally {
       setSearchLoading(false);
     }
   }, [supabase, categories]);
 
-  // Debounce de la recherche
+  // Debounce de la recherche - se déclenche toujours, même avec chaîne vide
   useEffect(() => {
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
@@ -268,7 +425,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
     searchTimeoutRef.current = setTimeout(() => {
       performSearch(searchQuery);
-    }, 300);
+    }, searchQuery.length === 0 ? 0 : 300); // Pas de délai pour chaîne vide
 
     return () => {
       if (searchTimeoutRef.current) {
@@ -391,7 +548,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 <input
                   ref={searchInputRef}
                   type="text"
-                  placeholder="tomate, pomme, carotte..."
+                  placeholder="Tapez le nom d'un produit (tomate, pomme, carotte...) ou laissez vide pour voir les suggestions"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="search-input"
@@ -412,15 +569,21 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                     <span className="product-icon">{product.icon}</span>
                     <div className="product-info">
                       <span className="product-name">{product.name}</span>
-                      {product.subcategory && (
-                        <span className="product-subcategory">{product.subcategory}</span>
-                      )}
+                      <div className="product-meta">
+                        <span className={`product-type-badge type-${product.type}`}>
+                          {product.type === 'canonical' ? 'Base' : 
+                           product.type === 'cultivar' ? 'Variété' : 'Produit'}
+                        </span>
+                        {product.subcategory && (
+                          <span className="product-subcategory">{product.subcategory}</span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
-                {searchQuery && !searchLoading && searchResults.length === 0 && (
+                {!searchLoading && searchResults.length === 0 && (
                   <div className="no-results">
-                    Aucun produit trouvé pour "{searchQuery}"
+                    {searchQuery ? `Aucun produit trouvé pour "${searchQuery}"` : 'Chargement des suggestions...'}
                   </div>
                 )}
               </div>
