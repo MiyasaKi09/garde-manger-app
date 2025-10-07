@@ -54,7 +54,7 @@ export default function PantryPage() {
       // Utiliser la vue pantry_view qui fonctionne déjà
       let { data, error } = await supabase
         .from('pantry_view')
-        .select('*')
+        .select('*, unit_weight_grams, density_g_per_ml')
         .order('expiration_date', { ascending: true, nullsLast: true });
 
       // Fallback vers inventory_lots si pantry_view n'existe pas
@@ -62,7 +62,7 @@ export default function PantryPage() {
         console.log('Vue pantry_view non trouvée, utilisation de inventory_lots');
         const result = await supabase
           .from('inventory_lots')
-          .select('*')
+          .select('*, unit_weight_grams, density_g_per_ml')
           .order('expiration_date', { ascending: true, nullsLast: true });
         
         data = result.data;
@@ -127,7 +127,8 @@ export default function PantryPage() {
       if (error) throw error;
       
       // Debug : voir les données brutes
-      console.log('Données brutes:', data?.[0]);
+      console.log('Nombre de produits trouvés:', data?.length);
+      console.log('Données brutes (première):', data?.[0]);
       
       // Transformer les données si nécessaire
       const transformedData = (data || []).map(item => {
@@ -146,19 +147,21 @@ export default function PantryPage() {
           product_name: productName,
           expiration_status: getExpirationStatus(item.expiration_date),
           days_until_expiration: getDaysUntilExpiration(item.expiration_date),
-          // Ajouter les métadonnées du produit au niveau principal
-          grams_per_unit: item.grams_per_unit || item.canonical_foods?.grams_per_unit,
+          // Utiliser les vraies colonnes de la base de données
+          grams_per_unit: item.unit_weight_grams || item.grams_per_unit || item.canonical_foods?.grams_per_unit,
           density_g_per_ml: item.density_g_per_ml || item.canonical_foods?.density_g_per_ml,
-          primary_unit: item.primary_unit || item.canonical_foods?.primary_unit
+          primary_unit: item.primary_unit || item.canonical_foods?.primary_unit || item.unit
         };
         
-        // Debug simple
-        if (transformed.grams_per_unit || transformed.density_g_per_ml) {
-          console.log('Produit avec métadonnées:', transformed.product_name, {
-            grams_per_unit: transformed.grams_per_unit,
-            density_g_per_ml: transformed.density_g_per_ml
-          });
-        }
+        // Debug détaillé des métadonnées
+        console.log(`Produit: "${transformed.product_name}"`, {
+          unit_weight_grams: item.unit_weight_grams,
+          density_g_per_ml: item.density_g_per_ml,
+          unit: item.unit,
+          qty_remaining: item.qty_remaining,
+          final_grams_per_unit: transformed.grams_per_unit,
+          final_density: transformed.density_g_per_ml
+        });
         
         return transformed;
       });
@@ -166,8 +169,7 @@ export default function PantryPage() {
       setItems(transformedData);
     } catch (error) {
       console.error('Erreur lors du chargement:', error);
-      // Utiliser des données de démo en cas d'erreur
-      setItems(getDemoData());
+      setItems([]);
     } finally {
       setLoading(false);
     }
@@ -195,46 +197,7 @@ export default function PantryPage() {
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   }
 
-  function getDemoData() {
-    return [
-      {
-        id: 'demo-1',
-        product_name: 'Bananes',
-        category_name: 'Fruits',
-        qty_remaining: 5,
-        unit: 'u',
-        grams_per_unit: 120,
-        storage_place: 'Garde-manger',
-        expiration_date: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        expiration_status: 'expiring_soon',
-        days_until_expiration: 3
-      },
-      {
-        id: 'demo-2',
-        product_name: 'Pommes',
-        category_name: 'Fruits',
-        qty_remaining: 3,
-        unit: 'u',
-        grams_per_unit: 150,
-        storage_place: 'Réfrigérateur',
-        expiration_date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        expiration_status: 'good',
-        days_until_expiration: 7
-      },
-      {
-        id: 'demo-3',
-        product_name: 'Lait',
-        category_name: 'Produits laitiers',
-        qty_remaining: 500,
-        unit: 'ml',
-        density_g_per_ml: 1.03,
-        storage_place: 'Réfrigérateur',
-        expiration_date: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        expiration_status: 'expiring_soon',
-        days_until_expiration: 2
-      }
-    ];
-  }
+
 
   async function handleConsume(id, currentQty) {
     const newQty = prompt(`Nouvelle quantité (actuel: ${currentQty}):`, currentQty);
