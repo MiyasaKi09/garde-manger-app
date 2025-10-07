@@ -137,6 +137,26 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return '📦';
   }, [categories]);
 
+  // Obtenir le nom de la catégorie
+  const getCategoryName = useCallback((categoryId) => {
+    if (categoryId && categories.length > 0) {
+      const category = categories.find(cat => cat.id === categoryId);
+      if (category?.name) return category.name;
+    }
+    
+    // Catégories par défaut basées sur l'ID
+    const defaultCategories = {
+      1: 'Fruits',
+      2: 'Légumes', 
+      3: 'Produits laitiers',
+      4: 'Viandes et poissons',
+      5: 'Céréales et féculents',
+      6: 'Épices et condiments'
+    };
+    
+    return defaultCategories[categoryId] || 'Alimentation';
+  }, [categories]);
+
   // Calculer la date d'expiration par défaut
   const getDefaultExpirationDate = useCallback((product, storageMethod) => {
     let days = 7;
@@ -171,7 +191,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
           `)
           .order('id')
-          .limit(5);
+          .limit(3);
 
         if (topProducts) {
           const results = topProducts.map(food => ({
@@ -185,7 +205,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_fridge: food.shelf_life_days_fridge,
             shelf_life_days_freezer: food.shelf_life_days_freezer,
             icon: getCategoryIcon(food.category_id, food.canonical_name)
-          }));
+          })).slice(0, 3); // Limiter à 3 suggestions
           setSearchResults(results);
         }
         setSearchLoading(false);
@@ -195,7 +215,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       const allResults = [];
       const seenNames = new Set();
 
-      // 1. Recherche dans canonical_foods (plus permissive)
+      // 1. Recherche dans canonical_foods avec plusieurs techniques
+      
+      // Recherche directe
       const { data: canonicalFoods } = await supabase
         .from('canonical_foods')
         .select(`
@@ -203,10 +225,34 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
         `)
         .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}}`)
-        .limit(50); // Augmenté pour plus de résultats
+        .limit(20);
 
-      if (canonicalFoods) {
-        canonicalFoods.forEach(food => {
+      // Si recherche directe échoue, essayer recherche par caractères
+      let extraResults = [];
+      if (!canonicalFoods || canonicalFoods.length === 0) {
+        // Recherche floue sur tous les produits pour correspondances partielles
+        const { data: fuzzyResults } = await supabase
+          .from('canonical_foods')
+          .select(`
+            id, canonical_name, category_id, keywords, primary_unit,
+            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
+          `)
+          .limit(100); // Récupérer plus pour analyse locale
+        
+        if (fuzzyResults) {
+          extraResults = fuzzyResults.filter(food => {
+            const distance = levenshteinDistance(q, food.canonical_name.toLowerCase());
+            const maxLength = Math.max(q.length, food.canonical_name.length);
+            const similarity = (maxLength - distance) / maxLength;
+            return similarity > 0.4; // Seuil très permissif
+          });
+        }
+      }
+      
+      const allCanonical = [...(canonicalFoods || []), ...extraResults];
+
+      if (allCanonical) {
+        allCanonical.forEach(food => {
           if (!seenNames.has(food.canonical_name.toLowerCase())) {
             allResults.push({
               ...food,
@@ -386,10 +432,10 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       let finalResults = scoredResults
         .filter(r => r.matchScore > 0)
         .sort((a, b) => b.matchScore - a.matchScore)
-        .slice(0, 5);
+        .slice(0, 3); // Réduire à 3 suggestions
 
-      // Si moins de 5 résultats, compléter avec les plus populaires
-      if (finalResults.length < 5) {
+      // Si moins de 3 résultats, compléter avec les plus populaires
+      if (finalResults.length < 3) {
         const { data: topProducts } = await supabase
           .from('canonical_foods')
           .select(`
@@ -397,7 +443,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
           `)
           .order('id')
-          .limit(5 - finalResults.length);
+          .limit(3 - finalResults.length);
 
         if (topProducts) {
           const existingNames = new Set(finalResults.map(r => r.name.toLowerCase()));
@@ -420,7 +466,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         }
       }
 
-      setSearchResults(finalResults.slice(0, 5));
+      setSearchResults(finalResults.slice(0, 3));
       
     } catch (error) {
       console.error('Erreur recherche:', error);
@@ -429,7 +475,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         const { data: fallbackProducts } = await supabase
           .from('canonical_foods')
           .select('id, canonical_name, category_id, primary_unit')
-          .limit(5);
+          .limit(3);
         
         if (fallbackProducts) {
           const results = fallbackProducts.map(food => ({
@@ -643,21 +689,39 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                       <span className="product-icon">{product.icon}</span>
                       <div className="product-info">
                         <span className="product-name">{product.name}</span>
-                        <div className="product-meta">
-                          <span className={`product-type-badge type-${product.type}`}>
-                            {product.type === 'canonical' ? 'Base' : 
-                             product.type === 'cultivar' ? 'Variété' : 'Produit'}
-                          </span>
-                          {product.subcategory && (
-                            <span className="product-subcategory">{product.subcategory}</span>
-                          )}
+                        <div className="product-category-text">
+                          {getCategoryName(product.category_id) || 'Produit alimentaire'}
                         </div>
                       </div>
                     </div>
                   ))}
-                  {!searchLoading && searchResults.length === 0 && (
+                  {!searchLoading && searchResults.length === 0 && searchQuery && (
                     <div className="no-results">
-                      {searchQuery ? `Aucun produit trouvé pour "${searchQuery}"` : 'Chargement des suggestions...'}
+                      <div>Aucun produit trouvé pour "{searchQuery}"</div>
+                      <div className="no-results-tip">
+                        Voulez-vous créer ce produit ?
+                      </div>
+                      <button 
+                        onClick={() => handleProductSelect({
+                          id: 'custom',
+                          name: searchQuery,
+                          type: 'custom',
+                          category_id: null,
+                          primary_unit: 'unités',
+                          shelf_life_days_pantry: 7,
+                          shelf_life_days_fridge: 7,
+                          shelf_life_days_freezer: 90,
+                          icon: '📦'
+                        })}
+                        className="create-custom-btn"
+                      >
+                        ✨ Créer "{searchQuery}"
+                      </button>
+                    </div>
+                  )}
+                  {!searchLoading && searchResults.length === 0 && !searchQuery && (
+                    <div className="no-results">
+                      Chargement des suggestions...
                     </div>
                   )}
                 </div>
@@ -770,11 +834,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         </div>
 
         <div className="modal-footer">
-          {step === 1 && (
-            <button onClick={onClose} className="cancel-btn">
-              Annuler
-            </button>
-          )}
           {step === 2 && (
             <>
               <button onClick={() => setStep(1)} className="back-btn">
