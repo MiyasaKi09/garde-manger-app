@@ -4,138 +4,10 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import SmartAddForm from './components/SmartAddForm';
-import { getQuickConversions } from '../../lib/quickConversions';
+import ProductCard from './components/PantryProductCard';
 import { capitalizeProduct } from './components/pantryUtils';
 import './pantry.css';
 
-// Composant ProductCard amélioré - CLIQUABLE
-function ProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity }) {
-  const [showActions, setShowActions] = useState(false);
-  
-  // Calculer les conversions rapides possibles
-  const productMeta = { 
-    productName: item.product_name || item.canonical_foods?.canonical_name,
-    grams_per_unit: item.grams_per_unit || item.canonical_foods?.grams_per_unit,
-    density_g_per_ml: item.density_g_per_ml || item.canonical_foods?.density_g_per_ml,
-    primary_unit: item.primary_unit || item.canonical_foods?.primary_unit
-  };
-  const quickConversions = getQuickConversions(item.qty_remaining, item.unit, productMeta);
-  
-  // Debug conversions
-  if (showActions && quickConversions.length === 0) {
-    console.log('Aucune conversion pour', item.product_name, 'meta:', productMeta);
-  }
-
-  const getStatusClass = (status) => {
-    switch(status) {
-      case 'expired': return 'status-expired';
-      case 'expiring_soon': return 'status-expiring';
-      default: return 'status-good';
-    }
-  };
-
-  const getStatusText = (status, days) => {
-    if (!status || status === 'no_date') return '📅 Pas de date';
-    if (status === 'expired') return `Expiré depuis ${Math.abs(days)}j`;
-    if (status === 'expiring_soon') return `Expire dans ${days}j`;
-    return `${days}j restants`;
-  };
-
-  const formatDate = (dateString) => {
-    if (!dateString) return null;
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      day: 'numeric',
-      month: 'short'
-    });
-  };
-
-  const handleCardClick = () => {
-    setShowActions(!showActions);
-  };
-
-  const handleAction = (action, e) => {
-    e.stopPropagation();
-    action();
-    setShowActions(false);
-  };
-
-  return (
-    <div className="product-card" onClick={handleCardClick} style={{cursor: 'pointer'}}>
-      <div className="card-header">
-        <h3>{capitalizeProduct(item.product_name) || 'Sans nom'}</h3>
-        {item.category_name && (
-          <span className="category-badge">{item.category_name}</span>
-        )}
-      </div>
-
-      <div className="card-body">
-        <div className="info-row">
-          <span className="info-icon">📦</span>
-          <div className="quantity-section">
-            <span className="info-value">{item.qty_remaining || 0} {item.unit || 'unité'}</span>
-            {showActions && quickConversions.length > 0 && (
-              <div className="quick-conversions">
-                {quickConversions.map((conversion, index) => (
-                  <button
-                    key={index}
-                    className="conversion-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (onUpdateQuantity && typeof onUpdateQuantity === 'function') {
-                        onUpdateQuantity(item.id, conversion.qty, conversion.unit);
-                      }
-                    }}
-                    title={`Convertir en ${conversion.label}`}
-                  >
-                    ↔ {conversion.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="info-row">
-          <span className="info-icon">📍</span>
-          <span className="info-value">{item.storage_place || 'Non spécifié'}</span>
-        </div>
-        <div className="info-row">
-          <span className={`status-badge ${getStatusClass(item.expiration_status)}`}>
-            {getStatusText(item.expiration_status, item.days_until_expiration)}
-          </span>
-        </div>
-        {item.expiration_date && (
-          <div className="info-row">
-            <span className="info-icon">🗓️</span>
-            <span className="info-value">{formatDate(item.expiration_date)}</span>
-          </div>
-        )}
-      </div>
-
-      {showActions && (
-        <div className="card-actions">
-          <button 
-            className="action-btn consume"
-            onClick={(e) => handleAction(onConsume, e)}
-          >
-            ✓ Consommer
-          </button>
-          <button 
-            className="action-btn edit"
-            onClick={(e) => handleAction(onEdit, e)}
-          >
-            ✏️ Modifier
-          </button>
-          <button 
-            className="action-btn delete"
-            onClick={(e) => handleAction(onDelete, e)}
-          >
-            🗑️ Supprimer
-          </button>
-        </div>
-      )}
-    </div>
-  );
-}
 
 export default function PantryPage() {
   const router = useRouter();
@@ -252,34 +124,7 @@ export default function PantryPage() {
         error = result.error;
       }
 
-      if (error) {
-        console.log('Erreur Supabase, utilisation des données de test');
-        // Données de test en cas d'erreur
-        data = [
-          {
-            id: 'demo-1',
-            product_name: 'Bananes',
-            category_name: 'Fruits',
-            qty_remaining: 5,
-            unit: 'u',
-            grams_per_unit: 120,
-            storage_place: 'Garde-manger',
-            expiration_date: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-            product_type: 'test'
-          },
-          {
-            id: 'demo-2',
-            product_name: 'Riz',
-            category_name: 'Féculents',
-            qty_remaining: 500,
-            unit: 'g',
-            storage_place: 'Placard',
-            expiration_date: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-            product_type: 'test'
-          }
-        ];
-        error = null;
-      }
+      if (error) throw error;
       
       // Debug : voir les données brutes
       console.log('Données brutes:', data?.[0]);
