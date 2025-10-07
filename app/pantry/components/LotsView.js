@@ -5,6 +5,7 @@ import { useState, useMemo } from 'react';
 import { X, Edit2, Trash2, Plus, Package } from 'lucide-react';
 import { daysUntil, getExpirationStatus, formatQuantity, capitalizeProduct } from './pantryUtils';
 import { getPossibleUnitsForProduct } from '../../../lib/possibleUnits';
+import { getQuickConversions } from '../../../lib/quickConversions';
 
 export default function LotsView({ 
   product, 
@@ -307,6 +308,9 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, produ
   
   // Récupérer dynamiquement les unités possibles pour ce produit
   const possibleUnits = getPossibleUnitsForProduct(product?.meta || product || {});
+  
+  // Récupérer les conversions rapides possibles
+  const quickConversions = getQuickConversions(lot.qty_remaining, lot.unit, product?.meta || product || {});
 
   // Protection contre lot undefined
   if (!lot) {
@@ -412,6 +416,30 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, produ
           <div className="lot-main-info">
             <div className="lot-quantity">
               {formatQuantity(lot.qty_remaining, lot.unit, 1)}
+              {quickConversions.length > 0 && (
+                <div className="quick-conversions">
+                  {quickConversions.map((conversion, index) => (
+                    <button
+                      key={index}
+                      className="conversion-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (onSave && typeof onSave === 'function') {
+                          onSave({
+                            qty_remaining: conversion.qty,
+                            unit: conversion.unit,
+                            effective_expiration: lot.effective_expiration,
+                            location_name: lot.location_name
+                          });
+                        }
+                      }}
+                      title={`Convertir en ${conversion.label}`}
+                    >
+                      ↔ {conversion.label}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="lot-details">
               {lot.location_name && (
@@ -477,6 +505,33 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, produ
           font-size: 1.125rem;
           font-weight: 600;
           color: var(--forest-800, #1a3a1a);
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .quick-conversions {
+          display: flex;
+          gap: 0.25rem;
+          flex-wrap: wrap;
+        }
+
+        .conversion-btn {
+          background: rgba(var(--forest-500-rgb, 139, 181, 139), 0.1);
+          border: 1px solid var(--forest-300, #c8d8c8);
+          color: var(--forest-700, #2d5a2d);
+          font-size: 0.75rem;
+          padding: 2px 6px;
+          border-radius: 12px;
+          cursor: pointer;
+          transition: all 0.2s;
+          font-weight: 500;
+        }
+
+        .conversion-btn:hover {
+          background: var(--forest-500, #8bb58b);
+          color: white;
+          transform: translateY(-1px);
         }
 
         .lot-details {
