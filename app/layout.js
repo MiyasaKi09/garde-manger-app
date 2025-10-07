@@ -3,6 +3,8 @@ import "./globals.css";
 import { Suspense } from "react";
 import MinimalistHeader from "@/components/MinimalistHeader";
 import MatisseWallpaperRandom from "@/components/MatisseWallpaperRandom";
+import ToastContainer from "@/components/Toast";
+import "../components/Toast.css";
 
 export const metadata = {
   title: "Myko — Réseau mycorhizien",
@@ -54,6 +56,9 @@ export default function RootLayout({ children }) {
             {children}
           </Suspense>
         </main>
+        
+        {/* Système de notifications toast */}
+        <ToastContainer />
       </body>
     </html>
   );

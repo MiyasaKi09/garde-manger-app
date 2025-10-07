@@ -4,6 +4,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { Search, Plus, X, Package, Home, Snowflake, Archive, Calendar } from 'lucide-react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { toast } from '../../../components/Toast';
 import './SmartAddForm.css';
 
 // Fonction pour calculer la distance de Levenshtein (détection des fautes de frappe)
@@ -692,7 +693,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   const handleCreateLot = async () => {
     if (!selectedProduct || !lotData.qty_remaining) {
-      alert('Veuillez sélectionner un produit et entrer une quantité');
+      toast.warning('Veuillez sélectionner un produit et entrer une quantité');
       return;
     }
 
@@ -701,19 +702,27 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     try {
       const quantity = parseFloat(lotData.qty_remaining) || 1;
       
-      // Déterminer le type de produit
+      // Déterminer le type de produit et convertir l'ID en entier
       let productType = 'canonical';
-      let productId = selectedProduct.id;
+      let productId = null;
       
       if (selectedProduct.type === 'cultivar') {
         productType = 'cultivar';
-        productId = selectedProduct.id.replace('cult_', '');
+        // Extraire l'ID numérique du format "cult_123"
+        const idStr = selectedProduct.id.toString().replace('cult_', '');
+        productId = parseInt(idStr, 10);
       } else if (selectedProduct.type === 'archetype') {
         productType = 'archetype';
-        productId = selectedProduct.id.replace('arch_', '');
+        // Extraire l'ID numérique du format "arch_123"
+        const idStr = selectedProduct.id.toString().replace('arch_', '');
+        productId = parseInt(idStr, 10);
       } else if (selectedProduct.type === 'custom') {
         productType = 'custom';
         productId = null; // Pour les produits custom, on utilisera les notes
+      } else {
+        // Type 'canonical' - convertir l'ID en entier
+        productType = 'canonical';
+        productId = parseInt(selectedProduct.id, 10);
       }
       
       // Préparer les données pour la nouvelle structure inventory_lots
@@ -740,17 +749,18 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
       if (error) {
         console.error('Erreur Supabase:', error);
-        alert(`Erreur: ${error.message}`);
+        toast.error(`Erreur lors de la création: ${error.message}`);
         return;
       }
 
       console.log('Lot créé:', createdLot);
+      toast.success(`${formatProductName(selectedProduct.name)} ajouté au garde-manger !`);
       onLotCreated?.(createdLot);
       onClose();
       
     } catch (error) {
       console.error('Erreur création lot:', error);
-      alert('Erreur lors de la création du lot');
+      toast.error('Erreur lors de la création du lot');
     } finally {
       setLoading(false);
     }
