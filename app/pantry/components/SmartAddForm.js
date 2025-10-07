@@ -161,8 +161,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return '📦';
   }, [categories]);
 
-  // Obtenir le nom de la catégorie
-  const getCategoryName = useCallback((categoryId, subcategoryId = null, productName = null) => {
+  // Obtenir le nom et la classe CSS de la catégorie
+  const getCategoryInfo = useCallback((categoryId, subcategoryId = null, productName = null) => {
     // PRIORITÉ AU NOM DU PRODUIT pour corriger les erreurs de catégorisation
     if (productName) {
       const nameLower = productName.toLowerCase();
@@ -172,18 +172,26 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           nameLower.includes('roquefort') || nameLower.includes('rocamadour') || 
           nameLower.includes('gruyère') || nameLower.includes('emmental') || 
           nameLower.includes('fromage')) {
-        return 'Fromages';
+        return { name: 'Fromages', class: 'category-fromages' };
       }
       
       // Champignons
       if (nameLower.includes('champignon') || nameLower.includes('shiitake') || 
           nameLower.includes('cèpe') || nameLower.includes('mousseron')) {
-        return 'Champignons';
+        return { name: 'Champignons', class: 'category-champignons' };
       }
       
       // Viandes
-      if (nameLower.includes('camomille')) {
-        return 'Viandes'; // camomille est probablement mal catégorisé
+      if (nameLower.includes('camomille') || nameLower.includes('viande') ||
+          nameLower.includes('poulet') || nameLower.includes('boeuf')) {
+        return { name: 'Viandes', class: 'category-viandes' };
+      }
+      
+      // Féculents
+      if (nameLower.includes('pâtes') || nameLower.includes('riz') || 
+          nameLower.includes('pain') || nameLower.includes('pomme de terre') ||
+          nameLower.includes('quinoa') || nameLower.includes('blé')) {
+        return { name: 'Féculents', class: 'category-feculents' };
       }
     }
     
@@ -191,18 +199,28 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     if (subcategoryId && subcategories.length > 0) {
       const subcategory = subcategories.find(sub => sub.id === subcategoryId);
       if (subcategory?.label) {
-        return subcategory.label;
+        return { name: subcategory.label, class: 'category-default' };
       }
     }
     
     if (categoryId && categories.length > 0) {
       const category = categories.find(cat => cat.id === categoryId);
       if (category?.name) {
-        return category.name;
+        // Mapping des catégories principales vers les classes CSS
+        const categoryMapping = {
+          'Fruits': 'category-fruits',
+          'Légumes': 'category-legumes',
+          'Champignons': 'category-champignons'
+        };
+        
+        return { 
+          name: category.name, 
+          class: categoryMapping[category.name] || 'category-default' 
+        };
       }
     }
     
-    return 'Alimentation';
+    return { name: 'Alimentation', class: 'category-default' };
   }, [categories, subcategories]);
 
   // Calculer la date d'expiration par défaut
@@ -688,9 +706,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                       <span className="product-icon">{product.icon}</span>
                       <div className="product-info">
                         <span className="product-name">{product.name}</span>
-                        <div className="product-category-text">
-                          {getCategoryName(product.category_id, product.subcategory_id, product.name) || 'Produit alimentaire'}
-                        </div>
+                        <span className={`product-category-badge ${getCategoryInfo(product.category_id, product.subcategory_id, product.name).class}`}>
+                          {getCategoryInfo(product.category_id, product.subcategory_id, product.name).name}
+                        </span>
                       </div>
                     </div>
                   ))}
