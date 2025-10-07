@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { ChevronDown, Package2 } from 'lucide-react';
-import { daysUntil, getExpirationStatus, formatQuantity } from './pantryUtils';
+import { daysUntil, getExpirationStatus, formatQuantity, capitalizeProduct } from './pantryUtils';
 
 export default function ProductCard({ product, onOpen }) {
   // Protection contre product undefined
@@ -18,7 +18,7 @@ export default function ProductCard({ product, onOpen }) {
   const [isExpanded, setIsExpanded] = useState(false);
   
   // Données sécurisées du produit
-  const productName = product.productName || 'Produit sans nom';
+  const productName = capitalizeProduct(product.productName || 'Produit sans nom');
   const productId = product.productId || 'unknown';
   const category = product.category || 'Sans catégorie';
   const lots = product.lots || [];

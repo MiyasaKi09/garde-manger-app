@@ -3,7 +3,7 @@
 
 import { useState, useMemo } from 'react';
 import { X, Edit2, Trash2, Plus, Package } from 'lucide-react';
-import { daysUntil, getExpirationStatus, formatQuantity } from './pantryUtils';
+import { daysUntil, getExpirationStatus, formatQuantity, capitalizeProduct } from './pantryUtils';
 
 export default function LotsView({ 
   product, 
@@ -21,7 +21,7 @@ export default function LotsView({
   }
 
   const lots = product.lots || [];
-  const productName = product.productName || 'Produit';
+  const productName = capitalizeProduct(product.productName || 'Produit');
 
   // Tri des lots par urgence d'expiration
   const sortedLots = useMemo(() => {
