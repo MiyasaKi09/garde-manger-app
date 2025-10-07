@@ -99,13 +99,32 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       if (category?.icon) return category.icon;
     }
     
-    // Icônes par défaut basées sur le nom
+    // Icônes par défaut basées sur le nom avec priorité aux fromages
     const nameIcons = {
+      // Fromages (priorité)
+      'camembert': '🧀', 'brie': '🧀', 'roquefort': '🧀', 'gruyère': '🧀', 
+      'emmental': '🧀', 'cheddar': '🧀', 'mozzarella': '🧀', 'parmesan': '🧀',
+      'chèvre': '🧀', 'feta': '🧀', 'bleu': '🧀', 'comté': '🧀', 'fromage': '🧀',
+      
+      // Fruits et légumes
       'tomate': '🍅', 'pomme': '🍎', 'carotte': '🥕', 'pomme de terre': '🥔',
       'banane': '🍌', 'fraise': '🍓', 'orange': '🍊', 'citron': '🍋',
-      'brocoli': '🥦', 'champignon': '🍄', 'oignon': '🧅', 'ail': '🧄',
-      'pain': '🍞', 'fromage': '🧀', 'lait': '🥛', 'oeuf': '🥚',
-      'viande': '🥩', 'poulet': '🍗', 'poisson': '🐟', 'riz': '🍚'
+      'brocoli': '🥦', 'oignon': '🧅', 'ail': '�', 'salade': '�',
+      'courgette': '🥒', 'aubergine': '�', 'poivron': '🫑', 'radis': '🥕',
+      
+      // Champignons (séparés des fromages)
+      'champignon': '🍄', 'shiitake': '🍄', 'cèpe': '🍄', 'mousseron': '🍄',
+      
+      // Produits laitiers
+      'lait': '🥛', 'yaourt': '🥛', 'crème': '🥛', 'beurre': '�',
+      
+      // Protéines
+      'oeuf': '🥚', 'viande': '🥩', 'boeuf': '🥩', 'porc': '🥩',
+      'poulet': '🍗', 'poisson': '🐟', 'saumon': '🐟', 'thon': '🐟',
+      
+      // Féculents et céréales
+      'pain': '🍞', 'riz': '🍚', 'pâtes': '🍝', 'blé': '🌾', 
+      'quinoa': '🌾', 'avoine': '🌾', 'orge': '🌾'
     };
     
     if (productName) {
@@ -176,7 +195,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       const allResults = [];
       const seenNames = new Set();
 
-      // 1. Recherche dans canonical_foods
+      // 1. Recherche dans canonical_foods (plus permissive)
       const { data: canonicalFoods } = await supabase
         .from('canonical_foods')
         .select(`
@@ -184,7 +203,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
         `)
         .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}}`)
-        .limit(30);
+        .limit(50); // Augmenté pour plus de résultats
 
       if (canonicalFoods) {
         canonicalFoods.forEach(food => {
@@ -293,8 +312,46 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           const maxLength = Math.max(q.length, nameLower.length);
           const similarity = (maxLength - distance) / maxLength;
           
-          if (similarity > 0.6) { // Seuil de 60% de similarité
-            matchScore = Math.floor(similarity * 60);
+          // Seuil plus permissif pour les fautes de frappe courantes
+          if (similarity > 0.5) { // Abaissé de 60% à 50%
+            matchScore = Math.floor(similarity * 70); // Score augmenté
+          }
+          
+          // Bonus spécial pour les transpositions courantes
+          const commonTypos = [
+            { from: 'mamb', to: 'memb' }, // camambert → camembert
+            { from: 'aman', to: 'amen' },
+            { from: 'omat', to: 'omate' }, // tmate → tomate  
+            { from: 'gruy', to: 'gruy' }, // gruyere variations
+            { from: 'roque', to: 'roque' }, // roquefort
+            { from: 'moza', to: 'mozza' }, // mozzarella
+          ];
+          
+          for (const typo of commonTypos) {
+            if (q.includes(typo.from) && nameLower.includes(typo.to)) {
+              matchScore = Math.max(matchScore, 85);
+              break;
+            }
+          }
+          
+          // Bonus pour sous-chaînes communes (camembert/camambert partagent "cam" + "bert")
+          if (q.length >= 4 && nameLower.length >= 4) {
+            let commonChars = 0;
+            const qChars = q.split('');
+            const nameChars = nameLower.split('');
+            
+            for (const char of qChars) {
+              const index = nameChars.indexOf(char);
+              if (index !== -1) {
+                commonChars++;
+                nameChars.splice(index, 1); // Éviter de compter le même caractère plusieurs fois
+              }
+            }
+            
+            const charSimilarity = commonChars / Math.max(q.length, nameLower.length);
+            if (charSimilarity > 0.7) {
+              matchScore = Math.max(matchScore, Math.floor(charSimilarity * 75));
+            }
           }
         }
 
