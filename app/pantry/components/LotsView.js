@@ -297,13 +297,16 @@ export default function LotsView({
 }
 
 // Composant pour un lot individuel
-function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete }) {
+function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, product }) {
   const [editData, setEditData] = useState({
     qty_remaining: lot.qty_remaining || 0,
     unit: lot.unit || 'g',
     effective_expiration: lot.effective_expiration || '',
     location_name: lot.location_name || ''
   });
+  
+  // Récupérer dynamiquement les unités possibles pour ce produit
+  const possibleUnits = getPossibleUnitsForProduct(product?.meta || product || {});
 
   // Protection contre lot undefined
   if (!lot) {
@@ -360,14 +363,9 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete }) {
                 }))}
                 className="form-select"
               >
-                <option value="g">g</option>
-                <option value="kg">kg</option>
-                <option value="ml">ml</option>
-                <option value="l">l</option>
-                <option value="pièce">pièce</option>
-                  {possibleUnits.map(u => (
-                    <option key={u.value} value={u.value}>{u.label}</option>
-                  ))}
+                {possibleUnits.map(u => (
+                  <option key={u.value} value={u.value}>{u.label}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -612,13 +610,16 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete }) {
 }
 
 // Formulaire d'ajout de lot
-function AddLotForm({ productName, onSubmit, onCancel }) {
+function AddLotForm({ productName, onSubmit, onCancel, product }) {
   const [formData, setFormData] = useState({
     qty_remaining: '',
     unit: 'g',
     effective_expiration: '',
     location_name: ''
   });
+  
+  // Récupérer dynamiquement les unités possibles pour ce produit
+  const possibleUnits = getPossibleUnitsForProduct(product?.meta || product || {});
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -658,14 +659,9 @@ function AddLotForm({ productName, onSubmit, onCancel }) {
                 }))}
                 className="form-select"
               >
-                <option value="g">g</option>
-                <option value="kg">kg</option>
-                <option value="ml">ml</option>
-                <option value="l">l</option>
-                <option value="pièce">pièce</option>
-                  {possibleUnits.map(u => (
-                    <option key={u.value} value={u.value}>{u.label}</option>
-                  ))}
+                {possibleUnits.map(u => (
+                  <option key={u.value} value={u.value}>{u.label}</option>
+                ))}
               </select>
             </div>
           </div>

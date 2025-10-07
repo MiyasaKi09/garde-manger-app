@@ -5,6 +5,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { Search, Plus, X, Package, Home, Snowflake, Archive, Calendar } from 'lucide-react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { toast } from '../../../components/Toast';
+import { getPossibleUnitsForProduct } from '../../../lib/possibleUnits';
 import './SmartAddForm.css';
 
 // Fonction pour calculer la distance de Levenshtein (détection des fautes de frappe)
@@ -854,24 +855,28 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             </>
           )}
 
-          {step === 2 && selectedProduct && (
-            <>
-              <div className="selected-product-card">
-                <span className="product-icon-large">
-                  {getCategoryIcon(selectedProduct.category_id, selectedProduct.name)}
-                </span>
-                <div className="product-details">
-                  <div className="product-name">{formatProductName(selectedProduct.name)}</div>
-                  <div className="product-category">
-                    {selectedProduct.subcategory || 'Général'}
+          {step === 2 && selectedProduct && (() => {
+            // Calculer les unités possibles pour le produit sélectionné
+            const possibleUnits = getPossibleUnitsForProduct(selectedProduct);
+            
+            return (
+              <>
+                <div className="selected-product-card">
+                  <span className="product-icon-large">
+                    {getCategoryIcon(selectedProduct.category_id, selectedProduct.name)}
+                  </span>
+                  <div className="product-details">
+                    <div className="product-name">{formatProductName(selectedProduct.name)}</div>
+                    <div className="product-category">
+                      {selectedProduct.subcategory || 'Général'}
+                    </div>
                   </div>
+                  <button onClick={() => setStep(1)} className="change-btn">
+                    Changer
+                  </button>
                 </div>
-                <button onClick={() => setStep(1)} className="change-btn">
-                  Changer
-                </button>
-              </div>
 
-              <div className="form-section">
+                <div className="form-section">
                 <div className="quantity-section">
                   <label>Quantité</label>
                   <div className="quantity-controls">
@@ -905,12 +910,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                     onChange={(e) => setLotData(prev => ({ ...prev, unit: e.target.value }))}
                     className="unit-select"
                   >
-                    <option value="unités">Unités</option>
-                    <option value="kg">Kilogrammes</option>
-                    <option value="g">Grammes</option>
-                    <option value="L">Litres</option>
-                    <option value="ml">Millilitres</option>
-                    <option value="cl">Centilitres</option>
+                    {possibleUnits.map(u => (
+                      <option key={u.value} value={u.value}>{u.label}</option>
+                    ))}
                   </select>
                 </div>
 
@@ -955,7 +957,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 </div>
               </div>
             </>
-          )}
+          );
+        })()}
         </div>
 
         <div className="modal-footer">
