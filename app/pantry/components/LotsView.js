@@ -4,6 +4,7 @@
 import { useState, useMemo } from 'react';
 import { X, Edit2, Trash2, Plus, Package } from 'lucide-react';
 import { daysUntil, getExpirationStatus, formatQuantity, capitalizeProduct } from './pantryUtils';
+import { getPossibleUnitsForProduct } from '../../../lib/possibleUnits';
 
 export default function LotsView({ 
   product, 
@@ -113,6 +114,7 @@ export default function LotsView({
                       onCancelEdit={() => setEditingLot(null)}
                       onSave={(updates) => handleUpdateLot(lot.id, updates)}
                       onDelete={() => handleDeleteLot(lot.id)}
+                      product={product}
                     />
                   ))}
                 </div>
@@ -136,6 +138,7 @@ export default function LotsView({
               productName={productName}
               onSubmit={handleAddLot}
               onCancel={() => setShowAddForm(false)}
+              product={product}
             />
           )}
         </div>
@@ -362,6 +365,9 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete }) {
                 <option value="ml">ml</option>
                 <option value="l">l</option>
                 <option value="pièce">pièce</option>
+                  {possibleUnits.map(u => (
+                    <option key={u.value} value={u.value}>{u.label}</option>
+                  ))}
               </select>
             </div>
           </div>
@@ -657,6 +663,9 @@ function AddLotForm({ productName, onSubmit, onCancel }) {
                 <option value="ml">ml</option>
                 <option value="l">l</option>
                 <option value="pièce">pièce</option>
+                  {possibleUnits.map(u => (
+                    <option key={u.value} value={u.value}>{u.label}</option>
+                  ))}
               </select>
             </div>
           </div>
