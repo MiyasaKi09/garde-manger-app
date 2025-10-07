@@ -182,7 +182,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       }
       
       // Viandes
-      if (nameLower.includes('camomille') || nameLower.includes('viande') ||
+      if (nameLower.includes('viande') ||
           nameLower.includes('poulet') || nameLower.includes('boeuf')) {
         return { name: 'Viandes', class: 'category-viandes' };
       }
