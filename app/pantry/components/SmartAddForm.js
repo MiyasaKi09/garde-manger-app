@@ -56,13 +56,17 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   // Charger les catégories au montage
   useEffect(() => {
     const loadCategories = async () => {
-      const { data } = await supabase
-        .from('reference_categories')
-        .select('id, name, icon, color_hex')
-        .order('sort_priority');
-      
-      if (data) {
-        setCategories(data);
+      try {
+        const { data } = await supabase
+          .from('reference_categories')
+          .select('id, name, icon, color_hex')
+          .order('sort_priority');
+        
+        if (data) {
+          setCategories(data);
+        }
+      } catch (error) {
+        console.log('Erreur chargement catégories:', error);
       }
     };
     loadCategories();
@@ -88,19 +92,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     }
   }, [open]);
 
-  // Charger les suggestions initiales quand le modal s'ouvre
-  useEffect(() => {
-    if (open && step === 1) {
-      // Délai pour s'assurer que performSearch est bien défini
-      setTimeout(() => {
-        performSearch('');
-      }, 200);
-    }
-  }, [open, step, performSearch]);
-
   // Obtenir l'icône de la catégorie
-  const getCategoryIcon = (categoryId, productName) => {
-    if (categoryId) {
+  const getCategoryIcon = useCallback((categoryId, productName) => {
+    if (categoryId && categories.length > 0) {
       const category = categories.find(cat => cat.id === categoryId);
       if (category?.icon) return category.icon;
     }
@@ -122,7 +116,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     }
     
     return '📦';
-  };
+  }, [categories]);
 
   // Calculer la date d'expiration par défaut
   const getDefaultExpirationDate = useCallback((product, storageMethod) => {
@@ -142,40 +136,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     date.setDate(date.getDate() + days);
     return date.toISOString().split('T')[0];
   }, []);
-
-  // Incrémentation intelligente
-  const getIncrementValue = (unit) => {
-    switch(unit) {
-      case 'kg': return 0.1;
-      case 'g': return 100;
-      case 'ml':
-      case 'cl': return 100;
-      case 'L': return 0.5;
-      case 'unités':
-      default: return 0.5;
-    }
-  };
-
-  // Ajuster la quantité
-  const adjustQuantity = (direction) => {
-    const increment = getIncrementValue(lotData.unit);
-    const currentQty = parseFloat(lotData.qty_remaining) || 0;
-    let newQty;
-    
-    if (direction === 'up') {
-      newQty = currentQty + increment;
-    } else {
-      newQty = Math.max(increment, currentQty - increment);
-    }
-    
-    if (lotData.unit === 'kg') {
-      newQty = Math.round(newQty * 10) / 10;
-    } else if (lotData.unit === 'unités') {
-      newQty = Math.round(newQty * 2) / 2;
-    }
-    
-    setLotData(prev => ({ ...prev, qty_remaining: newQty }));
-  };
 
   // Recherche de produits améliorée
   const performSearch = useCallback(async (query) => {
@@ -240,66 +200,74 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       }
 
       // 2. Recherche dans archetypes
-      const { data: archetypes } = await supabase
-        .from('archetypes')
-        .select(`
-          id, name, canonical_food_id, shelf_life_days,
-          canonical_foods!inner(canonical_name, category_id, primary_unit, keywords)
-        `)
-        .ilike('name', `%${q}%`)
-        .limit(20);
+      try {
+        const { data: archetypes } = await supabase
+          .from('archetypes')
+          .select(`
+            id, name, canonical_food_id, shelf_life_days,
+            canonical_foods!inner(canonical_name, category_id, primary_unit, keywords)
+          `)
+          .ilike('name', `%${q}%`)
+          .limit(20);
 
-      if (archetypes) {
-        archetypes.forEach(archetype => {
-          const name = archetype.name.toLowerCase();
-          if (!seenNames.has(name)) {
-            allResults.push({
-              id: `arch_${archetype.id}`,
-              canonical_name: archetype.name,
-              category_id: archetype.canonical_foods?.category_id,
-              primary_unit: archetype.canonical_foods?.primary_unit || 'unités',
-              shelf_life_days_pantry: archetype.shelf_life_days,
-              shelf_life_days_fridge: archetype.shelf_life_days,
-              shelf_life_days_freezer: archetype.shelf_life_days * 10,
-              keywords: archetype.canonical_foods?.keywords,
-              type: 'archetype',
-              source_name: archetype.name
-            });
-            seenNames.add(name);
-          }
-        });
+        if (archetypes) {
+          archetypes.forEach(archetype => {
+            const name = archetype.name.toLowerCase();
+            if (!seenNames.has(name)) {
+              allResults.push({
+                id: `arch_${archetype.id}`,
+                canonical_name: archetype.name,
+                category_id: archetype.canonical_foods?.category_id,
+                primary_unit: archetype.canonical_foods?.primary_unit || 'unités',
+                shelf_life_days_pantry: archetype.shelf_life_days,
+                shelf_life_days_fridge: archetype.shelf_life_days,
+                shelf_life_days_freezer: archetype.shelf_life_days * 10,
+                keywords: archetype.canonical_foods?.keywords,
+                type: 'archetype',
+                source_name: archetype.name
+              });
+              seenNames.add(name);
+            }
+          });
+        }
+      } catch (error) {
+        console.log('Pas de table archetypes:', error);
       }
 
       // 3. Recherche dans cultivars
-      const { data: cultivars } = await supabase
-        .from('cultivars')
-        .select(`
-          id, name, canonical_food_id,
-          canonical_foods!inner(canonical_name, category_id, primary_unit, keywords,
-            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer)
-        `)
-        .ilike('name', `%${q}%`)
-        .limit(20);
+      try {
+        const { data: cultivars } = await supabase
+          .from('cultivars')
+          .select(`
+            id, name, canonical_food_id,
+            canonical_foods!inner(canonical_name, category_id, primary_unit, keywords,
+              shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer)
+          `)
+          .ilike('name', `%${q}%`)
+          .limit(20);
 
-      if (cultivars) {
-        cultivars.forEach(cultivar => {
-          const name = cultivar.name.toLowerCase();
-          if (!seenNames.has(name)) {
-            allResults.push({
-              id: `cult_${cultivar.id}`,
-              canonical_name: cultivar.name,
-              category_id: cultivar.canonical_foods?.category_id,
-              primary_unit: cultivar.canonical_foods?.primary_unit || 'unités',
-              shelf_life_days_pantry: cultivar.canonical_foods?.shelf_life_days_pantry,
-              shelf_life_days_fridge: cultivar.canonical_foods?.shelf_life_days_fridge,
-              shelf_life_days_freezer: cultivar.canonical_foods?.shelf_life_days_freezer,
-              keywords: cultivar.canonical_foods?.keywords,
-              type: 'cultivar',
-              source_name: cultivar.name
-            });
-            seenNames.add(name);
-          }
-        });
+        if (cultivars) {
+          cultivars.forEach(cultivar => {
+            const name = cultivar.name.toLowerCase();
+            if (!seenNames.has(name)) {
+              allResults.push({
+                id: `cult_${cultivar.id}`,
+                canonical_name: cultivar.name,
+                category_id: cultivar.canonical_foods?.category_id,
+                primary_unit: cultivar.canonical_foods?.primary_unit || 'unités',
+                shelf_life_days_pantry: cultivar.canonical_foods?.shelf_life_days_pantry,
+                shelf_life_days_fridge: cultivar.canonical_foods?.shelf_life_days_fridge,
+                shelf_life_days_freezer: cultivar.canonical_foods?.shelf_life_days_freezer,
+                keywords: cultivar.canonical_foods?.keywords,
+                type: 'cultivar',
+                source_name: cultivar.name
+              });
+              seenNames.add(name);
+            }
+          });
+        }
+      } catch (error) {
+        console.log('Pas de table cultivars:', error);
       }
 
       // 4. Scorer les résultats avec recherche floue
@@ -399,33 +367,47 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       
     } catch (error) {
       console.error('Erreur recherche:', error);
-      // En cas d'erreur, afficher au moins quelques produits par défaut
-      const { data: fallbackProducts } = await supabase
-        .from('canonical_foods')
-        .select('id, canonical_name, category_id, primary_unit')
-        .limit(5);
-      
-      if (fallbackProducts) {
-        const results = fallbackProducts.map(food => ({
-          id: food.id,
-          name: food.canonical_name,
-          type: 'canonical',
-          category_id: food.category_id,
-          matchScore: 20,
-          primary_unit: food.primary_unit || 'unités',
-          shelf_life_days_pantry: 30,
-          shelf_life_days_fridge: 7,
-          shelf_life_days_freezer: 90,
-          icon: getCategoryIcon(food.category_id, food.canonical_name)
-        }));
-        setSearchResults(results);
+      // En cas d'erreur, essayons une recherche basique
+      try {
+        const { data: fallbackProducts } = await supabase
+          .from('canonical_foods')
+          .select('id, canonical_name, category_id, primary_unit')
+          .limit(5);
+        
+        if (fallbackProducts) {
+          const results = fallbackProducts.map(food => ({
+            id: food.id,
+            name: food.canonical_name,
+            type: 'canonical',
+            category_id: food.category_id,
+            matchScore: 20,
+            primary_unit: food.primary_unit || 'unités',
+            shelf_life_days_pantry: 30,
+            shelf_life_days_fridge: 7,
+            shelf_life_days_freezer: 90,
+            icon: getCategoryIcon(food.category_id, food.canonical_name)
+          }));
+          setSearchResults(results);
+        }
+      } catch (fallbackError) {
+        console.error('Erreur fallback:', fallbackError);
+        setSearchResults([]);
       }
     } finally {
       setSearchLoading(false);
     }
-  }, [supabase, categories]);
+  }, [supabase, getCategoryIcon]);
 
-  // Debounce de la recherche - se déclenche toujours, même avec chaîne vide
+  // Charger les suggestions initiales quand le modal s'ouvre
+  useEffect(() => {
+    if (open && step === 1) {
+      setTimeout(() => {
+        performSearch('');
+      }, 200);
+    }
+  }, [open, step, performSearch]);
+
+  // Debounce de la recherche
   useEffect(() => {
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
@@ -433,7 +415,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
     searchTimeoutRef.current = setTimeout(() => {
       performSearch(searchQuery);
-    }, searchQuery.length === 0 ? 0 : 300); // Pas de délai pour chaîne vide
+    }, searchQuery.length === 0 ? 0 : 300);
 
     return () => {
       if (searchTimeoutRef.current) {
@@ -441,6 +423,40 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       }
     };
   }, [searchQuery, performSearch]);
+
+  // Incrémentation intelligente
+  const getIncrementValue = (unit) => {
+    switch(unit) {
+      case 'kg': return 0.1;
+      case 'g': return 100;
+      case 'ml':
+      case 'cl': return 100;
+      case 'L': return 0.5;
+      case 'unités':
+      default: return 0.5;
+    }
+  };
+
+  // Ajuster la quantité
+  const adjustQuantity = (direction) => {
+    const increment = getIncrementValue(lotData.unit);
+    const currentQty = parseFloat(lotData.qty_remaining) || 0;
+    let newQty;
+    
+    if (direction === 'up') {
+      newQty = currentQty + increment;
+    } else {
+      newQty = Math.max(increment, currentQty - increment);
+    }
+    
+    if (lotData.unit === 'kg') {
+      newQty = Math.round(newQty * 10) / 10;
+    } else if (lotData.unit === 'unités') {
+      newQty = Math.round(newQty * 2) / 2;
+    }
+    
+    setLotData(prev => ({ ...prev, qty_remaining: newQty }));
+  };
 
   const handleProductSelect = (product) => {
     setSelectedProduct(product);
@@ -509,16 +525,13 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         return;
       }
 
-      console.log('Lot créé avec succès:', createdLot);
-      
-      if (onLotCreated) {
-        onLotCreated(createdLot);
-      }
-      
+      console.log('Lot créé:', createdLot);
+      onLotCreated?.(createdLot);
       onClose();
+      
     } catch (error) {
-      console.error('Erreur:', error);
-      alert(`Erreur: ${error.message}`);
+      console.error('Erreur création lot:', error);
+      alert('Erreur lors de la création du lot');
     } finally {
       setLoading(false);
     }
@@ -527,10 +540,10 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   if (!open) return null;
 
   return (
-    <div className="modal-overlay">
+    <div className="modal-overlay" onClick={onClose}>
       <div 
         ref={modalRef}
-        className="modal-container"
+        className="modal-container" 
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-header">
@@ -543,57 +556,54 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           </button>
         </div>
 
-        <div className="progress-bar">
-          <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>1. Produit</div>
-          <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>2. Quantité</div>
-        </div>
-
-        <div className="modal-content">
+        <div className="modal-body">
           {step === 1 && (
             <>
-              <div className="search-wrapper">
-                <Search size={18} />
-                <input
-                  ref={searchInputRef}
-                  type="text"
-                  placeholder="Tapez le nom d'un produit (tomate, pomme, carotte...) ou laissez vide pour voir les suggestions"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="search-input"
-                />
-              </div>
+              <div className="search-section">
+                <div className="search-wrapper">
+                  <Search size={16} className="search-icon" />
+                  <input
+                    ref={searchInputRef}
+                    type="text"
+                    placeholder="Tapez le nom d'un produit (tomate, pomme, carotte...) ou laissez vide pour voir les suggestions"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="search-input"
+                  />
+                </div>
 
-              {searchLoading && (
-                <div className="search-loading">Recherche...</div>
-              )}
+                {searchLoading && (
+                  <div className="search-loading">Recherche...</div>
+                )}
 
-              <div className="search-results">
-                {searchResults.map((product) => (
-                  <div
-                    key={`${product.type}-${product.id}`}
-                    className="product-item"
-                    onClick={() => handleProductSelect(product)}
-                  >
-                    <span className="product-icon">{product.icon}</span>
-                    <div className="product-info">
-                      <span className="product-name">{product.name}</span>
-                      <div className="product-meta">
-                        <span className={`product-type-badge type-${product.type}`}>
-                          {product.type === 'canonical' ? 'Base' : 
-                           product.type === 'cultivar' ? 'Variété' : 'Produit'}
-                        </span>
-                        {product.subcategory && (
-                          <span className="product-subcategory">{product.subcategory}</span>
-                        )}
+                <div className="search-results">
+                  {searchResults.map((product) => (
+                    <div
+                      key={`${product.type}-${product.id}`}
+                      className="product-item"
+                      onClick={() => handleProductSelect(product)}
+                    >
+                      <span className="product-icon">{product.icon}</span>
+                      <div className="product-info">
+                        <span className="product-name">{product.name}</span>
+                        <div className="product-meta">
+                          <span className={`product-type-badge type-${product.type}`}>
+                            {product.type === 'canonical' ? 'Base' : 
+                             product.type === 'cultivar' ? 'Variété' : 'Produit'}
+                          </span>
+                          {product.subcategory && (
+                            <span className="product-subcategory">{product.subcategory}</span>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-                {!searchLoading && searchResults.length === 0 && (
-                  <div className="no-results">
-                    {searchQuery ? `Aucun produit trouvé pour "${searchQuery}"` : 'Chargement des suggestions...'}
-                  </div>
-                )}
+                  ))}
+                  {!searchLoading && searchResults.length === 0 && (
+                    <div className="no-results">
+                      {searchQuery ? `Aucun produit trouvé pour "${searchQuery}"` : 'Chargement des suggestions...'}
+                    </div>
+                  )}
+                </div>
               </div>
             </>
           )}
@@ -616,113 +626,110 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
               </div>
 
               <div className="form-section">
-                <label className="form-label">Quantité actuelle</label>
-                <div className="quantity-controls">
-                  <button 
-                    onClick={() => adjustQuantity('down')}
-                    className="qty-btn"
-                    type="button"
+                <div className="quantity-section">
+                  <label>Quantité</label>
+                  <div className="quantity-controls">
+                    <button 
+                      onClick={() => adjustQuantity('down')}
+                      className="qty-btn"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      value={lotData.qty_remaining}
+                      onChange={(e) => setLotData(prev => ({ ...prev, qty_remaining: parseFloat(e.target.value) || 0 }))}
+                      className="qty-input"
+                      step={getIncrementValue(lotData.unit)}
+                      min="0"
+                    />
+                    <button 
+                      onClick={() => adjustQuantity('up')}
+                      className="qty-btn"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <div className="unit-section">
+                  <label>Unité</label>
+                  <select
+                    value={lotData.unit}
+                    onChange={(e) => setLotData(prev => ({ ...prev, unit: e.target.value }))}
+                    className="unit-select"
                   >
-                    −
-                  </button>
-                  <input
-                    type="number"
-                    value={lotData.qty_remaining}
-                    onChange={(e) => setLotData(prev => ({
-                      ...prev,
-                      qty_remaining: parseFloat(e.target.value) || 0
-                    }))}
-                    className="qty-input"
-                    step={getIncrementValue(lotData.unit)}
-                    min={getIncrementValue(lotData.unit)}
-                  />
-                  <button 
-                    onClick={() => adjustQuantity('up')}
-                    className="qty-btn"
-                    type="button"
-                  >
-                    +
-                  </button>
+                    <option value="unités">Unités</option>
+                    <option value="kg">Kilogrammes</option>
+                    <option value="g">Grammes</option>
+                    <option value="L">Litres</option>
+                    <option value="ml">Millilitres</option>
+                    <option value="cl">Centilitres</option>
+                  </select>
+                </div>
+
+                <div className="storage-section">
+                  <label>Stockage</label>
+                  <div className="storage-methods">
+                    <button
+                      onClick={() => handleStorageMethodChange('pantry')}
+                      className={`storage-btn ${lotData.storage_method === 'pantry' ? 'active' : ''}`}
+                    >
+                      <Archive size={16} />
+                      Garde-manger
+                    </button>
+                    <button
+                      onClick={() => handleStorageMethodChange('fridge')}
+                      className={`storage-btn ${lotData.storage_method === 'fridge' ? 'active' : ''}`}
+                    >
+                      <Home size={16} />
+                      Frigo
+                    </button>
+                    <button
+                      onClick={() => handleStorageMethodChange('freezer')}
+                      className={`storage-btn ${lotData.storage_method === 'freezer' ? 'active' : ''}`}
+                    >
+                      <Snowflake size={16} />
+                      Congélateur
+                    </button>
+                  </div>
+                </div>
+
+                <div className="expiration-section">
+                  <label>Date d'expiration</label>
+                  <div className="expiration-input">
+                    <Calendar size={16} className="calendar-icon" />
+                    <input
+                      type="date"
+                      value={lotData.expiration_date}
+                      onChange={(e) => setLotData(prev => ({ ...prev, expiration_date: e.target.value }))}
+                      className="date-input"
+                    />
+                  </div>
                 </div>
               </div>
+            </>
+          )}
+        </div>
 
-              <div className="form-section">
-                <label className="form-label">Unité</label>
-                <select
-                  value={lotData.unit}
-                  onChange={(e) => setLotData(prev => ({
-                    ...prev,
-                    unit: e.target.value,
-                    qty_remaining: 1
-                  }))}
-                  className="unit-select"
-                >
-                  <option value="unités">Unités</option>
-                  <option value="kg">Kilogrammes</option>
-                  <option value="g">Grammes</option>
-                  <option value="L">Litres</option>
-                  <option value="ml">Millilitres</option>
-                </select>
-              </div>
-
-              <div className="form-section">
-                <label className="form-label">📍 Méthode de stockage</label>
-                <div className="storage-buttons">
-                  <button
-                    type="button"
-                    className={`storage-btn ${lotData.storage_method === 'pantry' ? 'active' : ''}`}
-                    onClick={() => handleStorageMethodChange('pantry')}
-                  >
-                    <Home size={20} />
-                    <span>Garde-manger</span>
-                  </button>
-                  <button
-                    type="button"
-                    className={`storage-btn ${lotData.storage_method === 'fridge' ? 'active' : ''}`}
-                    onClick={() => handleStorageMethodChange('fridge')}
-                  >
-                    <Archive size={20} />
-                    <span>Réfrigérateur</span>
-                  </button>
-                  <button
-                    type="button"
-                    className={`storage-btn ${lotData.storage_method === 'freezer' ? 'active' : ''}`}
-                    onClick={() => handleStorageMethodChange('freezer')}
-                  >
-                    <Snowflake size={20} />
-                    <span>Congélateur</span>
-                  </button>
-                </div>
-              </div>
-
-              <div className="form-section">
-                <label className="form-label">
-                  <Calendar size={14} />
-                  Date de péremption
-                </label>
-                <input
-                  type="date"
-                  value={lotData.expiration_date}
-                  onChange={(e) => setLotData(prev => ({
-                    ...prev,
-                    expiration_date: e.target.value
-                  }))}
-                  className="date-input"
-                />
-              </div>
-
-              <div className="modal-actions">
-                <button onClick={() => setStep(1)} className="btn-secondary">
-                  Retour
-                </button>
-                <button 
-                  onClick={handleCreateLot} 
-                  disabled={loading}
-                  className="btn-primary"
-                >
-                  {loading ? 'Création...' : 'Créer le lot'}
-                </button>
-              </div>
+        <div className="modal-footer">
+          {step === 1 && (
+            <button onClick={onClose} className="cancel-btn">
+              Annuler
+            </button>
+          )}
+          {step === 2 && (
+            <>
+              <button onClick={() => setStep(1)} className="back-btn">
+                Retour
+              </button>
+              <button 
+                onClick={handleCreateLot} 
+                disabled={loading}
+                className="create-btn"
+              >
+                {loading ? 'Création...' : 'Créer le lot'}
+              </button>
             </>
           )}
         </div>
