@@ -6,6 +6,31 @@ import { Search, Plus, X, Package, Home, Snowflake, Archive, Calendar } from 'lu
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import './SmartAddForm.css';
 
+// Fonction pour calculer la distance de Levenshtein (détection des fautes de frappe)
+const levenshteinDistance = (str1, str2) => {
+  const matrix = [];
+  for (let i = 0; i <= str2.length; i++) {
+    matrix[i] = [i];
+  }
+  for (let j = 0; j <= str1.length; j++) {
+    matrix[0][j] = j;
+  }
+  for (let i = 1; i <= str2.length; i++) {
+    for (let j = 1; j <= str1.length; j++) {
+      if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+  return matrix[str2.length][str1.length];
+};
+
 export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [step, setStep] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
@@ -59,11 +84,19 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       });
       setTimeout(() => {
         searchInputRef.current?.focus();
-        // Charger les suggestions initiales
-        performSearch('');
       }, 100);
     }
-  }, [open, performSearch]);
+  }, [open]);
+
+  // Charger les suggestions initiales quand le modal s'ouvre
+  useEffect(() => {
+    if (open && step === 1) {
+      // Délai pour s'assurer que performSearch est bien défini
+      setTimeout(() => {
+        performSearch('');
+      }, 200);
+    }
+  }, [open, step, performSearch]);
 
   // Obtenir l'icône de la catégorie
   const getCategoryIcon = (categoryId, productName) => {
@@ -142,31 +175,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     }
     
     setLotData(prev => ({ ...prev, qty_remaining: newQty }));
-  };
-
-  // Fonction pour calculer la distance de Levenshtein (détection des fautes de frappe)
-  const levenshteinDistance = (str1, str2) => {
-    const matrix = [];
-    for (let i = 0; i <= str2.length; i++) {
-      matrix[i] = [i];
-    }
-    for (let j = 0; j <= str1.length; j++) {
-      matrix[0][j] = j;
-    }
-    for (let i = 1; i <= str2.length; i++) {
-      for (let j = 1; j <= str1.length; j++) {
-        if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
-          matrix[i][j] = matrix[i - 1][j - 1];
-        } else {
-          matrix[i][j] = Math.min(
-            matrix[i - 1][j - 1] + 1,
-            matrix[i][j - 1] + 1,
-            matrix[i - 1][j] + 1
-          );
-        }
-      }
-    }
-    return matrix[str2.length][str1.length];
   };
 
   // Recherche de produits améliorée
