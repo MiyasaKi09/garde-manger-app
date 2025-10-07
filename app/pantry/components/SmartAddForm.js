@@ -664,11 +664,10 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             <>
               <div className="search-section">
                 <div className="search-wrapper">
-                  <Search size={16} className="search-icon" />
                   <input
                     ref={searchInputRef}
                     type="text"
-                    placeholder="Tapez le nom d'un produit (tomate, pomme, carotte...) ou laissez vide pour voir les suggestions"
+                    placeholder="Rechercher un produit..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="search-input"
