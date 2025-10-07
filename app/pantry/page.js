@@ -14,9 +14,10 @@ function ProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity }) {
   
   // Calculer les conversions rapides possibles
   const productMeta = { 
-    productName: item.product_name,
-    grams_per_unit: item.grams_per_unit,
-    density_g_per_ml: item.density_g_per_ml
+    productName: item.product_name || item.canonical_foods?.canonical_name,
+    grams_per_unit: item.grams_per_unit || item.canonical_foods?.grams_per_unit,
+    density_g_per_ml: item.density_g_per_ml || item.canonical_foods?.density_g_per_ml,
+    primary_unit: item.primary_unit || item.canonical_foods?.primary_unit
   };
   const quickConversions = getQuickConversions(item.qty_remaining, item.unit, productMeta);
 
@@ -67,7 +68,7 @@ function ProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity }) {
           <span className="info-icon">📦</span>
           <div className="quantity-section">
             <span className="info-value">{item.qty_remaining || 0} {item.unit || 'unité'}</span>
-            {quickConversions.length > 0 && (
+            {showActions && quickConversions.length > 0 && (
               <div className="quick-conversions">
                 {quickConversions.map((conversion, index) => (
                   <button
@@ -173,12 +174,33 @@ export default function PantryPage() {
   async function loadPantryItems() {
     setLoading(true);
     try {
-      // Utiliser la nouvelle vue pantry_view
+      // Essayer d'abord de récupérer les lots avec les métadonnées des produits
       let { data, error } = await supabase
-        .from('pantry_view')
-        .select('*')
+        .from('inventory_lots')
+        .select(`
+          *,
+          canonical_foods!inner(
+            canonical_name,
+            density_g_per_ml,
+            grams_per_unit,
+            primary_unit
+          )
+        `)
+        .eq('product_type', 'canonical')
         .order('expiration_date', { ascending: true, nullsLast: true });
 
+      if (error) {
+        console.log('Erreur avec canonical_foods, essai avec pantry_view');
+        // Fallback vers pantry_view
+        const result = await supabase
+          .from('pantry_view')
+          .select('*')
+          .order('expiration_date', { ascending: true, nullsLast: true });
+        
+        data = result.data;
+        error = result.error;
+      }
+      
       // Fallback vers l'ancienne vue pantry si elle existe encore
       if (error && error.code === '42P01') {
         console.log('Vue pantry_view non trouvée, essai avec pantry');
@@ -208,9 +230,13 @@ export default function PantryPage() {
       // Transformer les données si nécessaire
       const transformedData = (data || []).map(item => ({
         ...item,
-        product_name: item.product_name || item.notes || 'Produit sans nom',
+        product_name: item.product_name || item.notes || item.canonical_foods?.canonical_name || 'Produit sans nom',
         expiration_status: getExpirationStatus(item.expiration_date),
-        days_until_expiration: getDaysUntilExpiration(item.expiration_date)
+        days_until_expiration: getDaysUntilExpiration(item.expiration_date),
+        // Ajouter les métadonnées du produit au niveau principal
+        grams_per_unit: item.grams_per_unit || item.canonical_foods?.grams_per_unit,
+        density_g_per_ml: item.density_g_per_ml || item.canonical_foods?.density_g_per_ml,
+        primary_unit: item.primary_unit || item.canonical_foods?.primary_unit
       }));
       
       setItems(transformedData);
