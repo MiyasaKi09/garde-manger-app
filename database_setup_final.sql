@@ -1,4 +1,4 @@
--- Nouvelle structure inventory_lots pour le garde-manger (VERSION CORRIGÉE)
+-- Nouvelle structure inventory_lots pour le garde-manger (VERSION FINALE CORRIGÉE)
 -- À exécuter dans Supabase SQL Editor
 
 -- 1. Supprimer l'ancienne table si elle existe (ATTENTION: cela supprime toutes les données)
@@ -105,7 +105,7 @@ SELECT
   END AS days_until_expiration
 
 FROM inventory_lots il
--- Jointures avec conversion explicite BIGINT
+-- Jointures avec les vraies colonnes
 LEFT JOIN canonical_foods cf ON (il.product_type = 'canonical' AND il.product_id = cf.id)
 LEFT JOIN cultivars cv ON (il.product_type = 'cultivar' AND il.product_id = cv.id)
 LEFT JOIN canonical_foods cf_cv ON (il.product_type = 'cultivar' AND cv.canonical_food_id = cf_cv.id)
@@ -166,14 +166,22 @@ GRANT SELECT ON pantry_view TO authenticated;
 GRANT SELECT ON pantry TO authenticated;
 
 -- 10. Ajouter quelques données de test (optionnel)
--- Vous pouvez décommenter ces lignes pour avoir des données de test
+-- Décommentez ces lignes pour avoir des données de test
 /*
 INSERT INTO inventory_lots (product_type, product_id, qty_remaining, initial_qty, unit, storage_method, storage_place, expiration_date, user_id)
 VALUES 
   ('canonical', 1001, 5.0, 5.0, 'unités', 'fridge', 'Réfrigérateur', CURRENT_DATE + INTERVAL '2 days', auth.uid()),
-  ('canonical', 1002, 3.0, 3.0, 'unités', 'pantry', 'Garde-manger', CURRENT_DATE + INTERVAL '5 days', auth.uid());
+  ('canonical', 1002, 3.0, 3.0, 'unités', 'pantry', 'Garde-manger', CURRENT_DATE + INTERVAL '5 days', auth.uid()),
+  ('cultivar', 52, 2.0, 2.0, 'unités', 'pantry', 'Garde-manger', CURRENT_DATE + INTERVAL '3 days', auth.uid());
 */
+
+-- 11. Vérifier que tout fonctionne
+-- Vous pouvez exécuter ces requêtes pour tester :
+-- SELECT * FROM pantry_view LIMIT 5;
+-- SELECT * FROM pantry LIMIT 5;
 
 COMMENT ON TABLE inventory_lots IS 'Table des lots d''inventaire du garde-manger avec support flexible des types de produits (BIGINT compatibility)';
 COMMENT ON VIEW pantry_view IS 'Vue enrichie pour l''affichage du garde-manger avec informations de produit et catégorie';
 COMMENT ON VIEW pantry IS 'Vue simple de fallback pour l''inventaire';
+
+-- Fin du script

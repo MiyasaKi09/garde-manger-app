@@ -422,20 +422,20 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         const { data: cultivars } = await supabase
           .from('cultivars')
           .select(`
-            id, name, canonical_food_id,
+            id, cultivar_name, canonical_food_id,
             canonical_foods!inner(canonical_name, category_id, primary_unit, keywords,
               shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer)
           `)
-          .ilike('name', `%${q}%`)
+          .ilike('cultivar_name', `%${q}%`)
           .limit(20);
 
         if (cultivars) {
           cultivars.forEach(cultivar => {
-            const name = cultivar.name.toLowerCase();
+            const name = cultivar.cultivar_name.toLowerCase();
             if (!seenNames.has(name)) {
               allResults.push({
                 id: `cult_${cultivar.id}`,
-                canonical_name: cultivar.name,
+                canonical_name: cultivar.cultivar_name,
                 category_id: cultivar.canonical_foods?.category_id,
                 primary_unit: cultivar.canonical_foods?.primary_unit || 'unités',
                 shelf_life_days_pantry: cultivar.canonical_foods?.shelf_life_days_pantry,
@@ -443,7 +443,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 shelf_life_days_freezer: cultivar.canonical_foods?.shelf_life_days_freezer,
                 keywords: cultivar.canonical_foods?.keywords,
                 type: 'cultivar',
-                source_name: cultivar.name
+                source_name: cultivar.cultivar_name
               });
               seenNames.add(name);
             }
