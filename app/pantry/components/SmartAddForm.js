@@ -31,6 +31,68 @@ const levenshteinDistance = (str1, str2) => {
   return matrix[str2.length][str1.length];
 };
 
+// Fonction pour formater proprement les noms de produits
+const formatProductName = (name) => {
+  if (!name) return '';
+  
+  // Mots qui doivent rester en minuscules (articles, prépositions, etc.)
+  const lowercaseWords = ['de', 'du', 'des', 'le', 'la', 'les', 'au', 'aux', 'en', 'et', 'ou', 'à', 'avec', 'sans', 'pour', 'sur', 'sous', 'dans', 'par'];
+  
+  // Mots qui doivent avoir une capitalisation spéciale
+  const specialCases = {
+    'aoc': 'AOC',
+    'aop': 'AOP',
+    'igp': 'IGP',
+    'bio': 'Bio',
+    'saint': 'Saint',
+    'sainte': 'Sainte',
+    'st': 'St',
+    'ste': 'Ste'
+  };
+
+  // Nettoyer le nom d'abord (enlever les espaces multiples, etc.)
+  const cleanName = name.trim().replace(/\s+/g, ' ');
+  
+  return cleanName
+    .toLowerCase()
+    .split(' ')
+    .map((word, index) => {
+      // Gérer les mots avec apostrophes (d', l', etc.)
+      if (word.includes("'")) {
+        const parts = word.split("'");
+        return parts.map((part, partIndex) => {
+          if (partIndex === 0 && ['d', 'l', 'c', 'n', 's', 't'].includes(part)) {
+            return part; // garder d', l', etc. en minuscules
+          }
+          if (index === 0 || partIndex > 0) {
+            return specialCases[part] || part.charAt(0).toUpperCase() + part.slice(1);
+          }
+          return lowercaseWords.includes(part) ? part : (specialCases[part] || part.charAt(0).toUpperCase() + part.slice(1));
+        }).join("'");
+      }
+      
+      // Premier mot toujours capitalisé
+      if (index === 0) {
+        return specialCases[word] || word.charAt(0).toUpperCase() + word.slice(1);
+      }
+      
+      // Mots spéciaux (AOC, AOP, Saint, etc.)
+      if (specialCases[word]) {
+        return specialCases[word];
+      }
+      
+      // Mots qui restent en minuscules
+      if (lowercaseWords.includes(word)) {
+        return word;
+      }
+      
+      // Autres mots : première lettre en majuscule
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(' ')
+    .trim();
+};
+
 export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [step, setStep] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
@@ -705,7 +767,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                     >
                       <span className="product-icon">{product.icon}</span>
                       <div className="product-info">
-                        <span className="product-name">{product.name}</span>
+                        <span className="product-name">{formatProductName(product.name)}</span>
                         <span className={`product-category-badge ${getCategoryInfo(product.category_id, product.subcategory_id, product.name).class}`}>
                           {getCategoryInfo(product.category_id, product.subcategory_id, product.name).name}
                         </span>
@@ -753,7 +815,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                   {getCategoryIcon(selectedProduct.category_id, selectedProduct.name)}
                 </span>
                 <div className="product-details">
-                  <div className="product-name">{selectedProduct.name}</div>
+                  <div className="product-name">{formatProductName(selectedProduct.name)}</div>
                   <div className="product-category">
                     {selectedProduct.subcategory || 'Général'}
                   </div>
