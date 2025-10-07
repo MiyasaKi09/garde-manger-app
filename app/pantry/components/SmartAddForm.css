@@ -218,61 +218,65 @@
 }
 
 .product-category-badge {
-  font-size: 9px;
-  font-weight: 700;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.65rem;
+  font-weight: 500;
   text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 12px;
-  letter-spacing: 0.5px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.3px;
+  margin-left: 8px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Couleurs spécifiques par catégorie comme dans garde-manger */
+/* Couleurs par catégorie - Style garde-manger */
 .category-fruits {
-  background: rgba(255, 107, 107, 0.8);
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: rgba(244, 67, 54, 0.15);
+  color: #c62828;
+  border: 1px solid rgba(244, 67, 54, 0.25);
 }
 
 .category-legumes {
-  background: rgba(78, 205, 196, 0.8);
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: rgba(76, 175, 80, 0.15);
+  color: #2e7d32;
+  border: 1px solid rgba(76, 175, 80, 0.25);
 }
 
 .category-feculents {
-  background: rgba(255, 193, 7, 0.8);
-  color: rgba(0, 0, 0, 0.8);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+  background: rgba(255, 152, 0, 0.15);
+  color: #f57c00;
+  border: 1px solid rgba(255, 152, 0, 0.25);
 }
 
 .category-fromages {
-  background: rgba(255, 152, 0, 0.8);
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 235, 59, 0.15);
+  color: #f9a825;
+  border: 1px solid rgba(255, 235, 59, 0.25);
 }
 
 .category-viandes {
-  background: rgba(244, 67, 54, 0.8);
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: rgba(183, 28, 28, 0.15);
+  color: #b71c1c;
+  border: 1px solid rgba(183, 28, 28, 0.25);
 }
 
 .category-champignons {
-  background: rgba(139, 69, 19, 0.8);
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: rgba(121, 85, 72, 0.15);
+  color: #5d4037;
+  border: 1px solid rgba(121, 85, 72, 0.25);
+}
+
+.category-poissons {
+  background: rgba(33, 150, 243, 0.15);
+  color: #1976d2;
+  border: 1px solid rgba(33, 150, 243, 0.25);
 }
 
 .category-default {
-  background: rgba(108, 117, 125, 0.8);
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: rgba(96, 125, 139, 0.15);
+  color: #455a64;
+  border: 1px solid rgba(96, 125, 139, 0.25);
 }
 
 /* Styles supprimés - remplacés par product-category-text */
