@@ -101,6 +101,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
   const [lotData, setLotData] = useState({
     qty_remaining: 1,
@@ -304,9 +305,17 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return date.toISOString().split('T')[0];
   }, []);
 
-  // Recherche de produits améliorée
+  // Recherche de produits améliorée avec transitions smooth
   const performSearch = useCallback(async (query) => {
+    // Démarrer la transition smooth
+    setIsTransitioning(true);
     setSearchLoading(true);
+    
+    // Petit délai pour permettre l'animation de sortie si des résultats existent
+    if (searchResults.length > 0) {
+      await new Promise(resolve => setTimeout(resolve, 150));
+    }
+    
     const q = (query || '').trim().toLowerCase();
     
     try {
@@ -546,7 +555,11 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         }
       }
 
-      setSearchResults(finalResults.slice(0, 3));
+      // Transition smooth pour l'apparition des nouveaux résultats
+      setTimeout(() => {
+        setSearchResults(finalResults.slice(0, 3));
+        setIsTransitioning(false);
+      }, 100);
       
     } catch (error) {
       console.error('Erreur recherche:', error);
@@ -570,16 +583,22 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             shelf_life_days_freezer: 90,
             icon: getCategoryIcon(food.category_id, food.canonical_name)
           }));
-          setSearchResults(results);
+          setTimeout(() => {
+            setSearchResults(results);
+            setIsTransitioning(false);
+          }, 100);
         }
       } catch (fallbackError) {
         console.error('Erreur fallback:', fallbackError);
-        setSearchResults([]);
+        setTimeout(() => {
+          setSearchResults([]);
+          setIsTransitioning(false);
+        }, 100);
       }
     } finally {
       setSearchLoading(false);
     }
-  }, [supabase, getCategoryIcon]);
+  }, [supabase, getCategoryIcon, searchResults.length]);
 
   // Charger les suggestions initiales quand le modal s'ouvre
   useEffect(() => {
@@ -758,7 +777,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                   <div className="search-loading">Recherche...</div>
                 )}
 
-                <div className="search-results">
+                <div className={`search-results ${isTransitioning ? 'transitioning' : ''}`}>
                   {searchResults.map((product) => (
                     <div
                       key={`${product.type}-${product.id}`}
