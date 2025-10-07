@@ -4,11 +4,21 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import SmartAddForm from './components/SmartAddForm';
+import { getQuickConversions } from '../../lib/quickConversions';
+import { capitalizeProduct } from './components/pantryUtils';
 import './pantry.css';
 
 // Composant ProductCard amélioré - CLIQUABLE
-function ProductCard({ item, onConsume, onEdit, onDelete }) {
+function ProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity }) {
   const [showActions, setShowActions] = useState(false);
+  
+  // Calculer les conversions rapides possibles
+  const productMeta = { 
+    productName: item.product_name,
+    grams_per_unit: item.grams_per_unit,
+    density_g_per_ml: item.density_g_per_ml
+  };
+  const quickConversions = getQuickConversions(item.qty_remaining, item.unit, productMeta);
 
   const getStatusClass = (status) => {
     switch(status) {
@@ -46,7 +56,7 @@ function ProductCard({ item, onConsume, onEdit, onDelete }) {
   return (
     <div className="product-card" onClick={handleCardClick} style={{cursor: 'pointer'}}>
       <div className="card-header">
-        <h3>{item.product_name || 'Sans nom'}</h3>
+        <h3>{capitalizeProduct(item.product_name) || 'Sans nom'}</h3>
         {item.category_name && (
           <span className="category-badge">{item.category_name}</span>
         )}
@@ -55,7 +65,28 @@ function ProductCard({ item, onConsume, onEdit, onDelete }) {
       <div className="card-body">
         <div className="info-row">
           <span className="info-icon">📦</span>
-          <span className="info-value">{item.qty_remaining || 0} {item.unit || 'unité'}</span>
+          <div className="quantity-section">
+            <span className="info-value">{item.qty_remaining || 0} {item.unit || 'unité'}</span>
+            {quickConversions.length > 0 && (
+              <div className="quick-conversions">
+                {quickConversions.map((conversion, index) => (
+                  <button
+                    key={index}
+                    className="conversion-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (onUpdateQuantity && typeof onUpdateQuantity === 'function') {
+                        onUpdateQuantity(item.id, conversion.qty, conversion.unit);
+                      }
+                    }}
+                    title={`Convertir en ${conversion.label}`}
+                  >
+                    ↔ {conversion.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         <div className="info-row">
           <span className="info-icon">📍</span>
@@ -218,25 +249,39 @@ export default function PantryPage() {
     return [
       {
         id: 'demo-1',
-        product_name: 'Tomates',
-        category_name: 'Légumes',
+        product_name: 'Bananes',
+        category_name: 'Fruits',
         qty_remaining: 5,
-        unit: 'pièces',
+        unit: 'u',
+        grams_per_unit: 120,
+        storage_place: 'Garde-manger',
+        expiration_date: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+        expiration_status: 'expiring_soon',
+        days_until_expiration: 3
+      },
+      {
+        id: 'demo-2',
+        product_name: 'Pommes',
+        category_name: 'Fruits',
+        qty_remaining: 3,
+        unit: 'u',
+        grams_per_unit: 150,
+        storage_place: 'Réfrigérateur',
+        expiration_date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+        expiration_status: 'good',
+        days_until_expiration: 7
+      },
+      {
+        id: 'demo-3',
+        product_name: 'Lait',
+        category_name: 'Produits laitiers',
+        qty_remaining: 500,
+        unit: 'ml',
+        density_g_per_ml: 1.03,
         storage_place: 'Réfrigérateur',
         expiration_date: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         expiration_status: 'expiring_soon',
         days_until_expiration: 2
-      },
-      {
-        id: 'demo-2',
-        product_name: 'Pâtes',
-        category_name: 'Féculents',
-        qty_remaining: 500,
-        unit: 'g',
-        storage_place: 'Placard',
-        expiration_date: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        expiration_status: 'good',
-        days_until_expiration: 180
       }
     ];
   }
@@ -269,6 +314,28 @@ export default function PantryPage() {
     const item = items.find(i => i.id === id);
     if (item) {
       handleConsume(id, item.qty_remaining);
+    }
+  }
+
+  async function handleUpdateQuantity(id, newQty, newUnit) {
+    try {
+      const { error } = await supabase
+        .from('inventory_lots')
+        .update({ 
+          qty_remaining: parseFloat(newQty),
+          unit: newUnit
+        })
+        .eq('id', id);
+
+      if (error) throw error;
+      
+      await loadPantryItems();
+    } catch (error) {
+      console.error('Erreur lors de la conversion:', error);
+      // Mise à jour locale en cas d'erreur
+      setItems(prev => prev.map(i => 
+        i.id === id ? { ...i, qty_remaining: parseFloat(newQty), unit: newUnit } : i
+      ));
     }
   }
 
@@ -363,6 +430,7 @@ export default function PantryPage() {
               onConsume={() => handleConsume(item.id, item.qty_remaining)}
               onEdit={() => handleEdit(item.id)}
               onDelete={() => handleDelete(item.id)}
+              onUpdateQuantity={handleUpdateQuantity}
             />
           ))
         )}

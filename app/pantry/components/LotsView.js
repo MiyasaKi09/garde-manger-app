@@ -311,6 +311,15 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, produ
   
   // Récupérer les conversions rapides possibles
   const quickConversions = getQuickConversions(lot.qty_remaining, lot.unit, product?.meta || product || {});
+  
+  // Debug : logging pour diagnostiquer
+  console.log('LotCard Debug:', {
+    productName: product?.productName,
+    lotQty: lot.qty_remaining,
+    lotUnit: lot.unit,
+    quickConversions,
+    productMeta: product?.meta || product
+  });
 
   // Protection contre lot undefined
   if (!lot) {

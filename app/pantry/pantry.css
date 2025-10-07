@@ -529,4 +529,51 @@
     font-size: 0.65rem;
     padding: 0.35rem 0.5rem;
   }
+
+  .quick-conversions {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .conversion-btn {
+    font-size: 0.6rem;
+    padding: 2px 4px;
+  }
+}
+
+/* Styles pour les conversions rapides */
+.quantity-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quick-conversions {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.conversion-btn {
+  background: rgba(139, 181, 139, 0.1);
+  border: 1px solid rgba(200, 216, 200, 0.8);
+  color: #2d5a2d;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.conversion-btn:hover {
+  background: #8bb58b;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.conversion-btn:active {
+  transform: translateY(0);
 }
