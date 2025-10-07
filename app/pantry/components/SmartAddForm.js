@@ -105,12 +105,25 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   // Obtenir l'icône de la catégorie
   const getCategoryIcon = useCallback((categoryId, productName) => {
+    // PRIORITÉ AU NOM DU PRODUIT (avant la catégorie)
+    if (productName) {
+      const nameLower = productName.toLowerCase();
+      
+      // Fromages PREMIER (pour éviter confusion avec champignons)
+      if (nameLower.includes('camembert') || nameLower.includes('brie') || 
+          nameLower.includes('roquefort') || nameLower.includes('rocamadour') || 
+          nameLower.includes('gruyère') || nameLower.includes('emmental') || 
+          nameLower.includes('fromage')) {
+        return '🧀';
+      }
+    }
+    
     if (categoryId && categories.length > 0) {
       const category = categories.find(cat => cat.id === categoryId);
       if (category?.icon) return category.icon;
     }
     
-    // Icônes par défaut basées sur le nom avec priorité aux fromages
+    // Icônes par défaut basées sur le nom
     const nameIcons = {
       // Fromages (priorité)
       'camembert': '🧀', 'brie': '🧀', 'roquefort': '🧀', 'gruyère': '🧀', 
@@ -149,19 +162,41 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   }, [categories]);
 
   // Obtenir le nom de la catégorie
-  const getCategoryName = useCallback((categoryId, subcategoryId = null) => {
-    if (categoryId && categories.length > 0) {
-      const category = categories.find(cat => cat.id === categoryId);
+  const getCategoryName = useCallback((categoryId, subcategoryId = null, productName = null) => {
+    // PRIORITÉ AU NOM DU PRODUIT pour corriger les erreurs de catégorisation
+    if (productName) {
+      const nameLower = productName.toLowerCase();
       
-      // Si on a une sous-catégorie, l'utiliser en priorité
-      if (subcategoryId && subcategories.length > 0) {
-        const subcategory = subcategories.find(sub => sub.id === subcategoryId);
-        if (subcategory?.label) {
-          return subcategory.label;
-        }
+      // Fromages
+      if (nameLower.includes('camembert') || nameLower.includes('brie') || 
+          nameLower.includes('roquefort') || nameLower.includes('rocamadour') || 
+          nameLower.includes('gruyère') || nameLower.includes('emmental') || 
+          nameLower.includes('fromage')) {
+        return 'Fromages';
       }
       
-      // Sinon utiliser la catégorie principale
+      // Champignons
+      if (nameLower.includes('champignon') || nameLower.includes('shiitake') || 
+          nameLower.includes('cèpe') || nameLower.includes('mousseron')) {
+        return 'Champignons';
+      }
+      
+      // Viandes
+      if (nameLower.includes('camomille')) {
+        return 'Viandes'; // camomille est probablement mal catégorisé
+      }
+    }
+    
+    // Fallback sur les vraies données de catégorisation
+    if (subcategoryId && subcategories.length > 0) {
+      const subcategory = subcategories.find(sub => sub.id === subcategoryId);
+      if (subcategory?.label) {
+        return subcategory.label;
+      }
+    }
+    
+    if (categoryId && categories.length > 0) {
+      const category = categories.find(cat => cat.id === categoryId);
       if (category?.name) {
         return category.name;
       }
@@ -361,10 +396,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
               matchScore = 90;
             }
             
-            // Debug temporaire
-            if (q === 'camambert') {
-              console.log(`Debug camambert: ${nameLower} -> similarité: ${similarity}, score: ${matchScore}`);
-            }
+
           }
         }
 
@@ -658,7 +690,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                       <div className="product-info">
                         <span className="product-name">{product.name}</span>
                         <div className="product-category-text">
-                          {getCategoryName(product.category_id, product.subcategory_id) || 'Produit alimentaire'}
+                          {getCategoryName(product.category_id, product.subcategory_id, product.name) || 'Produit alimentaire'}
                         </div>
                       </div>
                     </div>
