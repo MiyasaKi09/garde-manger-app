@@ -53,23 +53,34 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const searchTimeoutRef = useRef(null);
   const supabase = createClientComponentClient();
 
-  // Charger les catégories au montage
+  // Charger les catégories et sous-catégories au montage
+  const [subcategories, setSubcategories] = useState([]);
+  
   useEffect(() => {
-    const loadCategories = async () => {
+    const loadCategoriesData = async () => {
       try {
-        const { data } = await supabase
+        // Charger les catégories principales
+        const { data: categoriesData } = await supabase
           .from('reference_categories')
           .select('id, name, icon, color_hex')
           .order('sort_priority');
         
-        if (data) {
-          setCategories(data);
+        // Charger les sous-catégories
+        const { data: subcategoriesData } = await supabase
+          .from('reference_subcategories')
+          .select('id, category_id, code, label, icon');
+        
+        if (categoriesData) {
+          setCategories(categoriesData);
+        }
+        if (subcategoriesData) {
+          setSubcategories(subcategoriesData);
         }
       } catch (error) {
         console.log('Erreur chargement catégories:', error);
       }
     };
-    loadCategories();
+    loadCategoriesData();
   }, [supabase]);
 
   // Reset quand on ouvre le modal
@@ -138,24 +149,26 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   }, [categories]);
 
   // Obtenir le nom de la catégorie
-  const getCategoryName = useCallback((categoryId) => {
+  const getCategoryName = useCallback((categoryId, subcategoryId = null) => {
     if (categoryId && categories.length > 0) {
       const category = categories.find(cat => cat.id === categoryId);
-      if (category?.name) return category.name;
+      
+      // Si on a une sous-catégorie, l'utiliser en priorité
+      if (subcategoryId && subcategories.length > 0) {
+        const subcategory = subcategories.find(sub => sub.id === subcategoryId);
+        if (subcategory?.label) {
+          return subcategory.label;
+        }
+      }
+      
+      // Sinon utiliser la catégorie principale
+      if (category?.name) {
+        return category.name;
+      }
     }
     
-    // Catégories par défaut basées sur l'ID
-    const defaultCategories = {
-      1: 'Fruits',
-      2: 'Légumes', 
-      3: 'Produits laitiers',
-      4: 'Viandes et poissons',
-      5: 'Céréales et féculents',
-      6: 'Épices et condiments'
-    };
-    
-    return defaultCategories[categoryId] || 'Alimentation';
-  }, [categories]);
+    return 'Alimentation';
+  }, [categories, subcategories]);
 
   // Calculer la date d'expiration par défaut
   const getDefaultExpirationDate = useCallback((product, storageMethod) => {
@@ -187,7 +200,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         const { data: topProducts } = await supabase
           .from('canonical_foods')
           .select(`
-            id, canonical_name, category_id, keywords, primary_unit,
+            id, canonical_name, category_id, subcategory_id, keywords, primary_unit,
             shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
           `)
           .order('id')
@@ -199,6 +212,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             name: food.canonical_name,
             type: 'canonical',
             category_id: food.category_id,
+            subcategory_id: food.subcategory_id,
             matchScore: 50,
             primary_unit: food.primary_unit || 'unités',
             shelf_life_days_pantry: food.shelf_life_days_pantry,
@@ -217,39 +231,17 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
       // 1. Recherche dans canonical_foods avec plusieurs techniques
       
-      // Recherche directe
+      // Recherche directe avec informations de sous-catégorie
       const { data: canonicalFoods } = await supabase
         .from('canonical_foods')
         .select(`
-          id, canonical_name, category_id, keywords, primary_unit,
+          id, canonical_name, category_id, subcategory_id, keywords, primary_unit,
           shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
         `)
         .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}}`)
         .limit(20);
 
-      // Si recherche directe échoue, essayer recherche par caractères
-      let extraResults = [];
-      if (!canonicalFoods || canonicalFoods.length === 0) {
-        // Recherche floue sur tous les produits pour correspondances partielles
-        const { data: fuzzyResults } = await supabase
-          .from('canonical_foods')
-          .select(`
-            id, canonical_name, category_id, keywords, primary_unit,
-            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
-          `)
-          .limit(100); // Récupérer plus pour analyse locale
-        
-        if (fuzzyResults) {
-          extraResults = fuzzyResults.filter(food => {
-            const distance = levenshteinDistance(q, food.canonical_name.toLowerCase());
-            const maxLength = Math.max(q.length, food.canonical_name.length);
-            const similarity = (maxLength - distance) / maxLength;
-            return similarity > 0.4; // Seuil très permissif
-          });
-        }
-      }
-      
-      const allCanonical = [...(canonicalFoods || []), ...extraResults];
+      const allCanonical = canonicalFoods || [];
 
       if (allCanonical) {
         allCanonical.forEach(food => {
@@ -257,7 +249,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
             allResults.push({
               ...food,
               type: 'canonical',
-              source_name: food.canonical_name
+              source_name: food.canonical_name,
+              subcategory_id: food.subcategory_id
             });
             seenNames.add(food.canonical_name.toLowerCase());
           }
@@ -356,47 +349,21 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         else {
           const distance = levenshteinDistance(q, nameLower);
           const maxLength = Math.max(q.length, nameLower.length);
+          const minLength = Math.min(q.length, nameLower.length);
           const similarity = (maxLength - distance) / maxLength;
           
-          // Seuil plus permissif pour les fautes de frappe courantes
-          if (similarity > 0.5) { // Abaissé de 60% à 50%
-            matchScore = Math.floor(similarity * 70); // Score augmenté
-          }
-          
-          // Bonus spécial pour les transpositions courantes
-          const commonTypos = [
-            { from: 'mamb', to: 'memb' }, // camambert → camembert
-            { from: 'aman', to: 'amen' },
-            { from: 'omat', to: 'omate' }, // tmate → tomate  
-            { from: 'gruy', to: 'gruy' }, // gruyere variations
-            { from: 'roque', to: 'roque' }, // roquefort
-            { from: 'moza', to: 'mozza' }, // mozzarella
-          ];
-          
-          for (const typo of commonTypos) {
-            if (q.includes(typo.from) && nameLower.includes(typo.to)) {
-              matchScore = Math.max(matchScore, 85);
-              break;
-            }
-          }
-          
-          // Bonus pour sous-chaînes communes (camembert/camambert partagent "cam" + "bert")
-          if (q.length >= 4 && nameLower.length >= 4) {
-            let commonChars = 0;
-            const qChars = q.split('');
-            const nameChars = nameLower.split('');
+          // Plus strict : seuil à 70% et vérification de longueur similaire
+          if (similarity > 0.7 && Math.abs(q.length - nameLower.length) <= 2) {
+            matchScore = Math.floor(similarity * 60);
             
-            for (const char of qChars) {
-              const index = nameChars.indexOf(char);
-              if (index !== -1) {
-                commonChars++;
-                nameChars.splice(index, 1); // Éviter de compter le même caractère plusieurs fois
-              }
+            // Bonus spécial pour "camambert" → "camembert" (substitution m/me)
+            if (q === 'camambert' && nameLower === 'camembert') {
+              matchScore = 90;
             }
             
-            const charSimilarity = commonChars / Math.max(q.length, nameLower.length);
-            if (charSimilarity > 0.7) {
-              matchScore = Math.max(matchScore, Math.floor(charSimilarity * 75));
+            // Debug temporaire
+            if (q === 'camambert') {
+              console.log(`Debug camambert: ${nameLower} -> similarité: ${similarity}, score: ${matchScore}`);
             }
           }
         }
@@ -419,6 +386,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           name: item.source_name,
           type: item.type,
           category_id: item.category_id,
+          subcategory_id: item.subcategory_id,
           matchScore,
           primary_unit: item.primary_unit || 'unités',
           shelf_life_days_pantry: item.shelf_life_days_pantry || 30,
@@ -690,7 +658,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                       <div className="product-info">
                         <span className="product-name">{product.name}</span>
                         <div className="product-category-text">
-                          {getCategoryName(product.category_id) || 'Produit alimentaire'}
+                          {getCategoryName(product.category_id, product.subcategory_id) || 'Produit alimentaire'}
                         </div>
                       </div>
                     </div>
