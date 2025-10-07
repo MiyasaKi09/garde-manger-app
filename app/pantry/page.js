@@ -54,7 +54,7 @@ export default function PantryPage() {
       // Utiliser la vue pantry_view qui fonctionne déjà
       let { data, error } = await supabase
         .from('pantry_view')
-        .select('*, unit_weight_grams, density_g_per_ml')
+        .select('*')
         .order('expiration_date', { ascending: true, nullsLast: true });
 
       // Fallback vers inventory_lots si pantry_view n'existe pas
@@ -62,7 +62,7 @@ export default function PantryPage() {
         console.log('Vue pantry_view non trouvée, utilisation de inventory_lots');
         const result = await supabase
           .from('inventory_lots')
-          .select('*, unit_weight_grams, density_g_per_ml')
+          .select('*')
           .order('expiration_date', { ascending: true, nullsLast: true });
         
         data = result.data;
