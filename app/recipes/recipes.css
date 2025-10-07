@@ -320,6 +320,7 @@
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
@@ -1280,5 +1281,682 @@
   .edit-actions-bar .btn-secondary,
   .edit-actions-bar .btn-primary {
     width: 100%;
+  }
+}
+
+/* ========================================
+   STYLES MYKO POUR MODAL RECETTE
+   ======================================== */
+
+/* Modal style Myko */
+.recipe-modal.myko-style {
+  padding: 0;
+  max-height: 95vh;
+  overflow-y: auto;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,251,248,0.95));
+  backdrop-filter: blur(20px);
+}
+
+/* Header modal Myko */
+.modal-header-myko {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+/* Image héro avec overlay */
+.recipe-hero-image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.recipe-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-placeholder-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #81c784;
+  font-size: 3rem;
+}
+
+.recipe-placeholder-image p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #66bb6a;
+}
+
+.recipe-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  padding: 2rem 1.5rem 1.5rem;
+  color: white;
+}
+
+.recipe-hero-overlay h1 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.recipe-badges {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Infos rapides */
+.recipe-quick-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 0 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.quick-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 10px;
+}
+
+.quick-info-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2e7d32;
+  margin: 0;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Section macros circulaire */
+.macros-section {
+  padding: 0 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.macros-section h3 {
+  color: #2e7d32;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.macros-circle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.macros-circle {
+  position: relative;
+}
+
+.macros-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.calories-main {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.calories-unit {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.macros-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.macro-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #424242;
+}
+
+.macro-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.macro-color.proteins { background: #4caf50; }
+.macro-color.carbs { background: #ff9800; }
+.macro-color.fats { background: #2196f3; }
+
+/* Onglets Myko */
+.myko-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 1.5rem 1.5rem;
+  background: rgba(255,255,255,0.4);
+  border-radius: 15px;
+  padding: 0.25rem;
+  backdrop-filter: blur(10px);
+}
+
+.myko-tab {
+  padding: 0.75rem 0.5rem;
+  background: transparent;
+  border: none;
+  color: #666;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.myko-tab.active {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+}
+
+.myko-tab:hover:not(.active) {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+}
+
+/* Contenu des onglets */
+.myko-tab-content {
+  padding: 0 1.5rem 1.5rem;
+}
+
+/* Onglet Ingrédients */
+.ingredients-tab-myko {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.portions-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.portions-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.portion-btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.portion-btn:hover {
+  background: #4caf50;
+  color: white;
+  transform: scale(1.1);
+}
+
+.portion-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2e7d32;
+  min-width: 30px;
+  text-align: center;
+}
+
+.ingredients-list-myko {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ingredient-item-myko {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  border-left: 4px solid transparent;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.ingredient-item-myko.available {
+  border-left-color: #4caf50;
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.ingredient-item-myko.missing {
+  border-left-color: #f44336;
+  background: rgba(244, 67, 54, 0.05);
+}
+
+.ingredient-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  text-align: center;
+}
+
+.ingredient-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ingredient-name {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.ingredient-qty {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.ingredient-note {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+}
+
+.stock-status {
+  font-size: 1.2rem;
+}
+
+.add-to-shopping-btn {
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.add-to-shopping-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255, 152, 0, 0.4);
+}
+
+/* Onglet Instructions */
+.instructions-tab-myko .recipe-steps-myko {
+  counter-reset: step-counter;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.step-item-myko {
+  counter-increment: step-counter;
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.step-item-myko::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: -10px;
+  top: 1rem;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+}
+
+.step-content {
+  margin-left: 30px;
+  flex: 1;
+}
+
+.step-content p {
+  margin: 0 0 0.5rem 0;
+  color: #424242;
+  line-height: 1.6;
+}
+
+.step-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.step-item-myko-text {
+  counter-increment: step-counter;
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.step-item-myko-text::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: -10px;
+  top: 1rem;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+}
+
+.recipe-steps-text-myko {
+  counter-reset: step-counter;
+}
+
+.step-duration, .step-temp {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 8px;
+}
+
+/* Onglet Ustensiles */
+.utensils-grid-myko {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.utensil-item-myko {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.utensil-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  text-align: center;
+}
+
+.utensil-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.utensil-name {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.utensil-note {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Onglet Nutrition détaillée */
+.nutrition-tab-myko {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.nutrition-detailed h4 {
+  color: #2e7d32;
+  margin-bottom: 1rem;
+}
+
+.macro-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.macro-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.macro-detail-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.macro-name {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.macro-value {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.vitamins-minerals {
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.vitamins-minerals h5 {
+  color: #2e7d32;
+  margin-bottom: 1rem;
+}
+
+.nutrients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.nutrient-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: rgba(76, 175, 80, 0.05);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.daily-needs-impact {
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.daily-needs-impact h5 {
+  color: #2e7d32;
+  margin-bottom: 1rem;
+}
+
+.daily-impact-item {
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(76, 175, 80, 0.05);
+  border-radius: 10px;
+  border-left: 3px solid #4caf50;
+}
+
+.impact-text {
+  color: #424242;
+  line-height: 1.5;
+}
+
+/* Actions du modal Myko */
+.modal-actions-myko {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-top: 2px solid rgba(76, 175, 80, 0.1);
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+}
+
+.modal-btn-myko {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+}
+
+.modal-btn-myko.primary {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.modal-btn-myko.secondary {
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.modal-btn-myko.tertiary {
+  background: rgba(255,255,255,0.8);
+  color: #666;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.modal-btn-myko:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive Myko */
+@media (max-width: 768px) {
+  .recipe-quick-info {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .macros-circle-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .myko-tabs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem;
+  }
+  
+  .modal-actions-myko {
+    flex-direction: column;
+  }
+  
+  .utensils-grid-myko {
+    grid-template-columns: 1fr;
+  }
+  
+  .nutrients-grid {
+    grid-template-columns: 1fr;
   }
 }
