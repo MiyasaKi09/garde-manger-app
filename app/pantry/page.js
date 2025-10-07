@@ -20,6 +20,11 @@ function ProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity }) {
     primary_unit: item.primary_unit || item.canonical_foods?.primary_unit
   };
   const quickConversions = getQuickConversions(item.qty_remaining, item.unit, productMeta);
+  
+  // Debug : voir les conversions disponibles
+  if (showActions && quickConversions.length > 0) {
+    console.log('Conversions disponibles pour', item.product_name, ':', quickConversions);
+  }
 
   const getStatusClass = (status) => {
     switch(status) {
@@ -174,23 +179,55 @@ export default function PantryPage() {
   async function loadPantryItems() {
     setLoading(true);
     try {
-      // Essayer d'abord de récupérer les lots avec les métadonnées des produits
+      // D'abord, récupérer tous les lots sans jointure
       let { data, error } = await supabase
         .from('inventory_lots')
-        .select(`
-          *,
-          canonical_foods!inner(
-            canonical_name,
-            density_g_per_ml,
-            grams_per_unit,
-            primary_unit
-          )
-        `)
-        .eq('product_type', 'canonical')
+        .select('*')
         .order('expiration_date', { ascending: true, nullsLast: true });
 
+      // Si on a des données, essayer d'enrichir avec les métadonnées
+      if (data && data.length > 0) {
+        console.log('Récupéré', data.length, 'lots de inventory_lots');
+        
+        // Récupérer les IDs de produits canoniques
+        const canonicalIds = data
+          .filter(item => item.product_type === 'canonical' && item.product_id)
+          .map(item => item.product_id);
+        
+        if (canonicalIds.length > 0) {
+          console.log('Récupération des métadonnées pour', canonicalIds.length, 'produits canoniques');
+          
+          const { data: canonicalData, error: canonicalError } = await supabase
+            .from('canonical_foods')
+            .select('id, canonical_name, density_g_per_ml, grams_per_unit, primary_unit')
+            .in('id', canonicalIds);
+          
+          if (!canonicalError && canonicalData) {
+            console.log('Métadonnées récupérées pour', canonicalData.length, 'produits');
+            
+            // Créer un map pour un accès rapide
+            const metaMap = {};
+            canonicalData.forEach(item => {
+              metaMap[item.id] = item;
+            });
+            
+            // Enrichir les données
+            data = data.map(item => {
+              if (item.product_type === 'canonical' && item.product_id && metaMap[item.product_id]) {
+                const meta = metaMap[item.product_id];
+                return {
+                  ...item,
+                  canonical_foods: meta
+                };
+              }
+              return item;
+            });
+          }
+        }
+      }
+
       if (error) {
-        console.log('Erreur avec canonical_foods, essai avec pantry_view');
+        console.log('Erreur avec inventory_lots, essai avec pantry_view');
         // Fallback vers pantry_view
         const result = await supabase
           .from('pantry_view')
@@ -227,17 +264,34 @@ export default function PantryPage() {
 
       if (error) throw error;
       
+      // Debug : voir les données brutes
+      console.log('Données brutes de Supabase:', data?.[0]);
+      
       // Transformer les données si nécessaire
-      const transformedData = (data || []).map(item => ({
-        ...item,
-        product_name: item.product_name || item.notes || item.canonical_foods?.canonical_name || 'Produit sans nom',
-        expiration_status: getExpirationStatus(item.expiration_date),
-        days_until_expiration: getDaysUntilExpiration(item.expiration_date),
-        // Ajouter les métadonnées du produit au niveau principal
-        grams_per_unit: item.grams_per_unit || item.canonical_foods?.grams_per_unit,
-        density_g_per_ml: item.density_g_per_ml || item.canonical_foods?.density_g_per_ml,
-        primary_unit: item.primary_unit || item.canonical_foods?.primary_unit
-      }));
+      const transformedData = (data || []).map(item => {
+        const transformed = {
+          ...item,
+          product_name: item.product_name || item.notes || item.canonical_foods?.canonical_name || 'Produit sans nom',
+          expiration_status: getExpirationStatus(item.expiration_date),
+          days_until_expiration: getDaysUntilExpiration(item.expiration_date),
+          // Ajouter les métadonnées du produit au niveau principal
+          grams_per_unit: item.grams_per_unit || item.canonical_foods?.grams_per_unit,
+          density_g_per_ml: item.density_g_per_ml || item.canonical_foods?.density_g_per_ml,
+          primary_unit: item.primary_unit || item.canonical_foods?.primary_unit
+        };
+        
+        // Debug : voir la transformation
+        console.log('Item transformé:', {
+          id: transformed.id,
+          product_name: transformed.product_name,
+          unit: transformed.unit,
+          qty_remaining: transformed.qty_remaining,
+          grams_per_unit: transformed.grams_per_unit,
+          density_g_per_ml: transformed.density_g_per_ml
+        });
+        
+        return transformed;
+      });
       
       setItems(transformedData);
     } catch (error) {
@@ -344,6 +398,8 @@ export default function PantryPage() {
   }
 
   async function handleUpdateQuantity(id, newQty, newUnit) {
+    console.log('Mise à jour quantité:', { id, newQty, newUnit });
+    
     try {
       const { error } = await supabase
         .from('inventory_lots')
@@ -353,11 +409,16 @@ export default function PantryPage() {
         })
         .eq('id', id);
 
-      if (error) throw error;
+      if (error) {
+        console.error('Erreur Supabase lors de la mise à jour:', error);
+        throw error;
+      }
       
+      console.log('Mise à jour réussie, rechargement des données...');
       await loadPantryItems();
     } catch (error) {
       console.error('Erreur lors de la conversion:', error);
+      alert('Erreur lors de la conversion: ' + error.message);
       // Mise à jour locale en cas d'erreur
       setItems(prev => prev.map(i => 
         i.id === id ? { ...i, qty_remaining: parseFloat(newQty), unit: newUnit } : i
