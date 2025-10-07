@@ -142,13 +142,25 @@ export default function PantryPage() {
   async function loadPantryItems() {
     setLoading(true);
     try {
-      // Essayer d'abord avec la vue pantry
+      // Utiliser la nouvelle vue pantry_view
       let { data, error } = await supabase
-        .from('pantry')
+        .from('pantry_view')
         .select('*')
-        .order('expiration_date', { ascending: true });
+        .order('expiration_date', { ascending: true, nullsLast: true });
 
-      // Si la vue n'existe pas, essayer avec inventory_lots
+      // Fallback vers l'ancienne vue pantry si elle existe encore
+      if (error && error.code === '42P01') {
+        console.log('Vue pantry_view non trouvée, essai avec pantry');
+        const result = await supabase
+          .from('pantry')
+          .select('*')
+          .order('expiration_date', { ascending: true });
+        
+        data = result.data;
+        error = result.error;
+      }
+      
+      // Si ça ne marche toujours pas, utiliser inventory_lots directement
       if (error && error.code === '42P01') {
         console.log('Vue pantry non trouvée, utilisation de inventory_lots');
         const result = await supabase

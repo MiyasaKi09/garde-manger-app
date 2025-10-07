@@ -701,16 +701,33 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     try {
       const quantity = parseFloat(lotData.qty_remaining) || 1;
       
-      // Préparer les données pour inventory_lots
+      // Déterminer le type de produit
+      let productType = 'canonical';
+      let productId = selectedProduct.id;
+      
+      if (selectedProduct.type === 'cultivar') {
+        productType = 'cultivar';
+        productId = selectedProduct.id.replace('cult_', '');
+      } else if (selectedProduct.type === 'archetype') {
+        productType = 'archetype';
+        productId = selectedProduct.id.replace('arch_', '');
+      } else if (selectedProduct.type === 'custom') {
+        productType = 'custom';
+        productId = null; // Pour les produits custom, on utilisera les notes
+      }
+      
+      // Préparer les données pour la nouvelle structure inventory_lots
       const lotDataToInsert = {
-        canonical_food_id: selectedProduct.id,
+        product_type: productType,
+        product_id: productId,
         qty_remaining: quantity,
         initial_qty: quantity,
         unit: lotData.unit,
         storage_method: lotData.storage_method,
         storage_place: lotData.storage_place,
         expiration_date: lotData.expiration_date || null,
-        acquired_on: new Date().toISOString().split('T')[0]
+        acquired_on: new Date().toISOString().split('T')[0],
+        notes: selectedProduct.type === 'custom' ? selectedProduct.name : null
       };
 
       console.log('Données à insérer:', lotDataToInsert);
