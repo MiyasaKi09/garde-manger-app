@@ -105,15 +105,6 @@ export default function PlanningPage() {
 
   return (
     <>
-      {/* Formes organiques en arrière-plan */}
-      <div className="organic-shapes">
-        <div className="shape shape-1"></div>
-        <div className="shape shape-2"></div>
-        <div className="shape shape-3"></div>
-        <div className="shape shape-4"></div>
-        <div className="shape shape-5"></div>
-      </div>
-
       <div className="planning-container">
         {/* En-tête */}
         <div className="header-card">
@@ -272,119 +263,21 @@ export default function PlanningPage() {
 
       <style jsx>{`
         .planning-container {
-          min-height: 100vh;
-          background: linear-gradient(135deg, 
-            #f7fef4 0%, 
-            #f0f9ff 25%, 
-            #fef3e2 50%, 
-            #f4f1f0 75%, 
-            #f0fdf4 100%
-          );
           padding: 20px;
           font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-          position: relative;
-        }
-
-        /* Formes organiques Myko */
-        .organic-shapes {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
-          z-index: 1;
-          overflow: hidden;
-        }
-
-        .shape {
-          position: absolute;
-          border-radius: 50% 70% 60% 40%;
-          opacity: 0.6;
-          filter: blur(1px);
-          animation: float 20s infinite ease-in-out;
-        }
-
-        .shape-1 {
-          width: 300px;
-          height: 400px;
-          background: linear-gradient(135deg, rgba(45, 80, 22, 0.15), rgba(139, 149, 109, 0.1));
-          top: -100px;
-          right: -50px;
-          animation-delay: 0s;
-        }
-
-        .shape-2 {
-          width: 250px;
-          height: 350px;
-          background: linear-gradient(45deg, rgba(194, 154, 89, 0.12), rgba(239, 205, 132, 0.08));
-          bottom: -80px;
-          left: -60px;
-          animation-delay: -5s;
-        }
-
-        .shape-3 {
-          width: 200px;
-          height: 280px;
-          background: linear-gradient(225deg, rgba(166, 115, 92, 0.1), rgba(201, 146, 127, 0.08));
-          top: 30%;
-          left: -40px;
-          animation-delay: -10s;
-        }
-
-        .shape-4 {
-          width: 180px;
-          height: 240px;
-          background: linear-gradient(315deg, rgba(139, 149, 109, 0.12), rgba(45, 80, 22, 0.08));
-          top: 20%;
-          right: -30px;
-          animation-delay: -15s;
-        }
-
-        .shape-5 {
-          width: 220px;
-          height: 320px;
-          background: linear-gradient(180deg, rgba(194, 154, 89, 0.1), rgba(239, 205, 132, 0.06));
-          bottom: 20%;
-          right: 10%;
-          animation-delay: -7s;
-        }
-
-        @keyframes float {
-          0%, 100% { 
-            transform: translate(0, 0) rotate(0deg) scale(1); 
-            border-radius: 50% 70% 60% 40%;
-          }
-          25% { 
-            transform: translate(30px, -20px) rotate(5deg) scale(1.05); 
-            border-radius: 60% 50% 70% 50%;
-          }
-          50% { 
-            transform: translate(-20px, -40px) rotate(-3deg) scale(0.95); 
-            border-radius: 70% 60% 50% 60%;
-          }
-          75% { 
-            transform: translate(25px, -10px) rotate(7deg) scale(1.02); 
-            border-radius: 40% 70% 60% 50%;
-          }
         }
 
         .header-card {
-          background: rgba(255, 254, 249, 0.25);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          border-radius: 24px;
-          padding: 32px;
-          margin-bottom: 32px;
+          background: rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 16px;
+          padding: 24px;
+          margin-bottom: 24px;
           max-width: 1200px;
           margin-left: auto;
           margin-right: auto;
-          position: relative;
-          z-index: 10;
-          box-shadow: 
-            0 8px 32px rgba(45, 80, 22, 0.1),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
         .header-content {
@@ -414,23 +307,18 @@ export default function PlanningPage() {
         }
 
         .nav-button {
-          background: rgba(255, 254, 249, 0.3);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          border-radius: 12px;
-          padding: 12px 20px;
+          background: rgba(255, 255, 255, 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 8px;
+          padding: 8px 16px;
           cursor: pointer;
-          transition: all 0.3s ease;
-          color: rgba(45, 80, 22, 0.8);
+          transition: all 0.2s;
+          color: #374151;
           font-weight: 500;
-          box-shadow: 0 2px 12px rgba(45, 80, 22, 0.05);
         }
 
         .nav-button:hover {
-          background: rgba(255, 254, 249, 0.5);
-          transform: translateY(-1px);
-          box-shadow: 0 4px 16px rgba(45, 80, 22, 0.1);
+          background: rgba(255, 255, 255, 0.4);
         }
 
         .week-info {
@@ -440,22 +328,17 @@ export default function PlanningPage() {
         }
 
         .planning-grid {
-          background: rgba(255, 254, 249, 0.2);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.25);
-          border-radius: 24px;
-          padding: 24px;
-          margin-bottom: 32px;
+          background: rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 16px;
+          padding: 20px;
+          margin-bottom: 24px;
           max-width: 1200px;
           margin-left: auto;
           margin-right: auto;
           overflow-x: auto;
-          position: relative;
-          z-index: 10;
-          box-shadow: 
-            0 8px 32px rgba(45, 80, 22, 0.08),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .grid-header {
@@ -475,28 +358,21 @@ export default function PlanningPage() {
         }
 
         .day-header {
-          background: rgba(255, 254, 249, 0.4);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          border-radius: 16px;
-          padding: 12px 8px;
+          background: rgba(255, 255, 255, 0.5);
+          border-radius: 8px;
+          padding: 8px;
           text-align: center;
           cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 16px rgba(45, 80, 22, 0.05);
+          transition: all 0.2s;
         }
 
         .day-header:hover {
-          background: rgba(255, 254, 249, 0.6);
-          transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(45, 80, 22, 0.1);
+          background: rgba(255, 255, 255, 0.7);
         }
 
         .day-header.today {
-          background: rgba(139, 149, 109, 0.2);
-          border: 2px solid rgba(45, 80, 22, 0.4);
-          box-shadow: 0 4px 20px rgba(45, 80, 22, 0.15);
+          background: #dcfce7;
+          border: 2px solid #22c55e;
         }
 
         .day-name {
@@ -525,18 +401,14 @@ export default function PlanningPage() {
         }
 
         .meal-label {
-          background: rgba(255, 254, 249, 0.3);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          border-radius: 16px;
+          background: rgba(255, 255, 255, 0.4);
+          border-radius: 8px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 16px 12px;
-          min-height: 90px;
-          box-shadow: 0 4px 16px rgba(45, 80, 22, 0.05);
+          padding: 12px;
+          min-height: 80px;
         }
 
         .meal-icon {
@@ -564,18 +436,13 @@ export default function PlanningPage() {
         }
 
         .meal-cell.filled {
-          border-color: rgba(45, 80, 22, 0.4);
-          background: rgba(139, 149, 109, 0.15);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          box-shadow: 0 2px 12px rgba(45, 80, 22, 0.1);
+          border-color: #22c55e;
+          background: rgba(34, 197, 94, 0.1);
         }
 
         .meal-cell.empty:hover {
-          border-color: rgba(45, 80, 22, 0.3);
-          background: rgba(139, 149, 109, 0.08);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
+          border-color: #22c55e;
+          background: rgba(34, 197, 94, 0.05);
         }
 
         .meal-cell.selected {
@@ -590,7 +457,7 @@ export default function PlanningPage() {
         .recipe-name {
           font-size: 11px;
           font-weight: 600;
-          color: rgba(45, 80, 22, 0.9);
+          color: #16a34a;
           line-height: 1.2;
           margin-bottom: 4px;
         }
@@ -598,7 +465,7 @@ export default function PlanningPage() {
         .status-dot {
           width: 6px;
           height: 6px;
-          background: rgba(139, 149, 109, 0.8);
+          background: #22c55e;
           border-radius: 50%;
           margin: 0 auto;
         }
@@ -610,21 +477,16 @@ export default function PlanningPage() {
         }
 
         .day-details {
-          background: rgba(255, 254, 249, 0.25);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          border-radius: 24px;
-          padding: 32px;
-          margin-bottom: 32px;
+          background: rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 16px;
+          padding: 24px;
+          margin-bottom: 24px;
           max-width: 1200px;
           margin-left: auto;
           margin-right: auto;
-          position: relative;
-          z-index: 10;
-          box-shadow: 
-            0 8px 32px rgba(45, 80, 22, 0.1),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
         .details-header {
@@ -759,17 +621,12 @@ export default function PlanningPage() {
         }
 
         .stats-card {
-          background: rgba(255, 254, 249, 0.25);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          border-radius: 20px;
-          padding: 24px;
-          position: relative;
-          z-index: 10;
-          box-shadow: 
-            0 8px 32px rgba(45, 80, 22, 0.08),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+          background: rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 12px;
+          padding: 20px;
         }
 
         .stats-card h4 {
