@@ -25,12 +25,15 @@ export default function PantryPage() {
   const [itemToEdit, setItemToEdit] = useState(null);
 
   useEffect(() => {
+    console.log('🔍 Pantry page mounted, checking auth...');
     supabase.auth.getUser().then(({ data: { user } }) => {
+      console.log('👤 User status:', user ? 'authenticated' : 'not authenticated');
       if (!user) router.push('/login');
     });
   }, [router]);
 
   useEffect(() => {
+    console.log('📦 Loading pantry items...');
     loadPantryItems();
   }, []);
 
@@ -55,9 +58,10 @@ export default function PantryPage() {
   }
 
   async function loadPantryItems() {
+    console.log('🔄 loadPantryItems called');
     setLoading(true);
     try {
-      console.log('Début du chargement des données...');
+      console.log('🚀 Début du chargement des données...');
       
       // D'abord, essayons la version simple qui fonctionnait
       let { data, error } = await supabase
