@@ -51,134 +51,91 @@ export default function PantryPage() {
   async function loadPantryItems() {
     setLoading(true);
     try {
-      // Charger tous les lots d'abord
-      const { data: lotsData, error: lotsError } = await supabase
+      console.log('Début du chargement des données...');
+      
+      // D'abord, essayons la version simple qui fonctionnait
+      let { data, error } = await supabase
         .from('inventory_lots')
         .select('*')
         .order('expiration_date', { ascending: true, nullsLast: true });
 
-      if (lotsError) {
-        console.error('Erreur lors du chargement des lots:', lotsError);
-        throw lotsError;
+      if (error) {
+        console.error('Erreur lors du chargement des lots:', error);
+        throw error;
       }
       
-      console.log('Nombre de lots trouvés:', lotsData?.length);
+      console.log('Nombre de lots trouvés:', data?.length);
+      console.log('Premier lot:', data?.[0]);
       
-      let data = lotsData || [];
-      
-      // Enrichir avec les métadonnées selon le type de produit
-      if (data.length > 0) {
-        // Récupérer les IDs par type de produit
-        const canonicalIds = data.filter(item => item.product_type === 'canonical' && item.product_id).map(item => item.product_id);
-        const cultivarIds = data.filter(item => item.product_type === 'cultivar' && item.product_id).map(item => item.product_id);
-        const archetypeIds = data.filter(item => item.product_type === 'archetype' && item.product_id).map(item => item.product_id);
+      // Maintenant essayons d'enrichir avec les canonical_foods seulement
+      if (data && data.length > 0) {
+        const canonicalIds = data
+          .filter(item => item.product_type === 'canonical' && item.product_id)
+          .map(item => item.product_id);
         
-        // Charger les métadonnées sans jointures complexes pour éviter les erreurs
-        const [canonicalData, cultivarData, archetypeData] = await Promise.all([
-          canonicalIds.length > 0 ? supabase
+        console.log('IDs canoniques à récupérer:', canonicalIds);
+        
+        if (canonicalIds.length > 0) {
+          const { data: canonicalData, error: canonicalError } = await supabase
             .from('canonical_foods')
             .select('id, canonical_name, density_g_per_ml, grams_per_unit, primary_unit')
-            .in('id', canonicalIds) : { data: [], error: null },
-          cultivarIds.length > 0 ? supabase
-            .from('cultivars')
-            .select('id, cultivar_name, density_g_per_ml, grams_per_unit, primary_unit, canonical_food_id')
-            .in('id', cultivarIds) : { data: [], error: null },
-          archetypeIds.length > 0 ? supabase
-            .from('archetypes')
-            .select('id, archetype_name, density_g_per_ml, grams_per_unit, primary_unit, canonical_food_id')
-            .in('id', archetypeIds) : { data: [], error: null }
-        ]);
-
-        console.log('Données chargées:', {
-          canonical: canonicalData.data?.length || 0,
-          cultivars: cultivarData.data?.length || 0,  
-          archetypes: archetypeData.data?.length || 0
-        });
-        
-        // Debug: voir les métadonnées disponibles
-        console.log('Exemple canonical_foods:', canonicalData.data?.[0]);
-        console.log('Exemple cultivars:', cultivarData.data?.[0]);
-        console.log('Exemple archetypes:', archetypeData.data?.[0]);
-        
-        // Créer des maps pour un accès rapide
-        const canonicalMap = {};
-        const cultivarMap = {};
-        const archetypeMap = {};
-        
-        (canonicalData.data || []).forEach(item => canonicalMap[item.id] = item);
-        (cultivarData.data || []).forEach(item => cultivarMap[item.id] = item);
-        (archetypeData.data || []).forEach(item => archetypeMap[item.id] = item);
-        
-        // Enrichir les données des lots
-        data = data.map(item => {
-          if (item.product_type === 'canonical' && canonicalMap[item.product_id]) {
-            return { ...item, canonical_foods: canonicalMap[item.product_id] };
-          } else if (item.product_type === 'cultivar' && cultivarMap[item.product_id]) {
-            return { ...item, cultivars: cultivarMap[item.product_id] };
-          } else if (item.product_type === 'archetype' && archetypeMap[item.product_id]) {
-            return { ...item, archetypes: archetypeMap[item.product_id] };
+            .in('id', canonicalIds);
+          
+          console.log('Données canonical_foods:', canonicalData);
+          console.log('Erreur canonical_foods:', canonicalError);
+          
+          if (!canonicalError && canonicalData) {
+            const canonicalMap = {};
+            canonicalData.forEach(item => {
+              canonicalMap[item.id] = item;
+            });
+            
+            data = data.map(item => {
+              if (item.product_type === 'canonical' && canonicalMap[item.product_id]) {
+                return {
+                  ...item,
+                  canonical_foods: canonicalMap[item.product_id]
+                };
+              }
+              return item;
+            });
           }
-          return item;
-        });
+        }
       }
       
-      console.log('Exemple de données enrichies:', data?.[0]);
       
-      // Transformer les données si nécessaire
+      console.log('Données après enrichissement:', data?.[0]);
+      
+      // Transformer les données - version simple d'abord
       const transformedData = (data || []).map(item => {
-        // Récupérer les métadonnées selon le type de produit
         let productName = 'Produit sans nom';
-        let productMeta = null;
         
-        if (item.product_type === 'canonical' && canonicalMap[item.product_id]) {
-          const canonical = canonicalMap[item.product_id];
-          productName = canonical.canonical_name;
-          productMeta = canonical;
-          item.canonical_foods = canonical; // Attacher pour l'affichage
-        } else if (item.product_type === 'cultivar' && cultivarMap[item.product_id]) {
-          const cultivar = cultivarMap[item.product_id];
-          productName = cultivar.cultivar_name;
-          productMeta = cultivar;
-          item.cultivars = cultivar; // Attacher pour l'affichage
-        } else if (item.product_type === 'archetype' && archetypeMap[item.product_id]) {
-          const archetype = archetypeMap[item.product_id];
-          productName = archetype.archetype_name;
-          productMeta = archetype;
-          item.archetypes = archetype; // Attacher pour l'affichage
+        // Déterminer le nom selon le type
+        if (item.product_type === 'canonical' && item.canonical_foods?.canonical_name) {
+          productName = item.canonical_foods.canonical_name;
         } else if (item.product_type === 'custom' && item.notes) {
           productName = item.notes;
         } else if (item.product_name) {
           productName = item.product_name;
         }
         
-        console.log(`Processing item ${item.id}: type=${item.product_type}, product_id=${item.product_id}, name="${productName}"`);
-        
         const transformed = {
           ...item,
           product_name: productName,
           expiration_status: getExpirationStatus(item.expiration_date),
           days_until_expiration: getDaysUntilExpiration(item.expiration_date),
-          // Utiliser UNIQUEMENT les vraies métadonnées de la base
-          grams_per_unit: productMeta?.grams_per_unit || item.unit_weight_grams || item.grams_per_unit || null,
-          density_g_per_ml: productMeta?.density_g_per_ml || item.density_g_per_ml || null,
-          primary_unit: productMeta?.primary_unit || item.primary_unit || item.unit
+          // Métadonnées simples
+          grams_per_unit: item.canonical_foods?.grams_per_unit || null,
+          density_g_per_ml: item.canonical_foods?.density_g_per_ml || null,
+          primary_unit: item.canonical_foods?.primary_unit || item.unit
         };
         
-        // Debug détaillé des métadonnées
-        console.log(`Produit: "${transformed.product_name}"`, {
-          type: item.product_type,
-          product_id: item.product_id,
-          unit: item.unit,
-          qty_remaining: item.qty_remaining,
-          productMeta: productMeta,
-          final_grams_per_unit: transformed.grams_per_unit,
-          final_density: transformed.density_g_per_ml,
-          conversions_possibles: (transformed.grams_per_unit || transformed.density_g_per_ml) ? 'OUI' : 'NON'
-        });
+        console.log(`Produit transformé: "${transformed.product_name}" (${item.product_type})`);
         
         return transformed;
       });
       
+      console.log('Données transformées:', transformedData.length);
       setItems(transformedData);
     } catch (error) {
       console.error('Erreur lors du chargement:', error);
