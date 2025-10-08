@@ -3,24 +3,97 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useRouter } from 'next/navigation';
 import './recipes.css';
 
 export default function RecipesPage() {
+  const router = useRouter();
   const [recipes, setRecipes] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterCategory, setFilterCategory] = useState('all');
-  const [filterDifficulty, setFilterDifficulty] = useState('all');
+  const [availabilityFilter, setAvailabilityFilter] = useState('all');
   const [sortBy, setSortBy] = useState('title');
+  const [sortOrder, setSortOrder] = useState('asc');
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [inventoryStatus, setInventoryStatus] = useState({});
   
   const supabase = createClientComponentClient();
 
   useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) router.push('/login');
+    });
+  }, [router]);
+
+  useEffect(() => {
     fetchRecipes();
     checkInventoryAvailability();
   }, []);
+
+  useEffect(() => {
+    filterAndSortRecipes();
+  }, [recipes, searchTerm, availabilityFilter, sortBy, sortOrder]);
+
+  function filterAndSortRecipes() {
+    let filtered = [...recipes];
+
+    // Filtrage par texte
+    if (searchTerm) {
+      filtered = filtered.filter(recipe =>
+        recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (recipe.description && recipe.description.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+    }
+
+    // Filtrage par disponibilité
+    if (availabilityFilter !== 'all') {
+      filtered = filtered.filter(recipe => {
+        const status = inventoryStatus[recipe.id];
+        if (!status) return availabilityFilter === 'unavailable';
+        
+        switch (availabilityFilter) {
+          case 'available':
+            return status.availabilityPercent >= 90;
+          case 'partial':
+            return status.availabilityPercent >= 50 && status.availabilityPercent < 90;
+          case 'unavailable':
+            return status.availabilityPercent < 50;
+          default:
+            return true;
+        }
+      });
+    }
+
+    // Tri
+    filtered.sort((a, b) => {
+      let comparison = 0;
+      
+      switch (sortBy) {
+        case 'title':
+          comparison = a.title.localeCompare(b.title);
+          break;
+        case 'time':
+          comparison = (a.total_min || 0) - (b.total_min || 0);
+          break;
+        case 'difficulty':
+          const diffOrder = { 'facile': 1, 'moyen': 2, 'difficile': 3 };
+          comparison = (diffOrder[a.difficulty] || 0) - (diffOrder[b.difficulty] || 0);
+          break;
+        case 'availability':
+          const aAvail = inventoryStatus[a.id]?.availabilityPercent || 0;
+          const bAvail = inventoryStatus[b.id]?.availabilityPercent || 0;
+          comparison = bAvail - aAvail;
+          break;
+        default:
+          comparison = 0;
+      }
+      
+      return sortOrder === 'desc' ? -comparison : comparison;
+    });
+
+    setFilteredRecipes(filtered);
+  }
 
   async function fetchRecipes() {
     try {
@@ -106,37 +179,6 @@ export default function RecipesPage() {
     }
   }
 
-  // Filtrage et tri
-  const filteredRecipes = recipes
-    .filter(recipe => {
-      const matchSearch = recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         (recipe.description && recipe.description.toLowerCase().includes(searchTerm.toLowerCase()));
-      const matchCategory = filterCategory === 'all' || recipe.category === filterCategory;
-      const matchDifficulty = filterDifficulty === 'all' || recipe.difficulty === filterDifficulty;
-      
-      return matchSearch && matchCategory && matchDifficulty;
-    })
-    .sort((a, b) => {
-      switch (sortBy) {
-        case 'title':
-          return a.title.localeCompare(b.title);
-        case 'time':
-          return (a.total_min || 0) - (b.total_min || 0);
-        case 'difficulty':
-          const diffOrder = { 'facile': 1, 'moyen': 2, 'difficile': 3 };
-          return (diffOrder[a.difficulty] || 0) - (diffOrder[b.difficulty] || 0);
-        case 'availability':
-          const aAvail = inventoryStatus[a.id]?.availabilityPercent || 0;
-          const bAvail = inventoryStatus[b.id]?.availabilityPercent || 0;
-          return bAvail - aAvail;
-        default:
-          return 0;
-      }
-    });
-
-  // Catégories uniques pour le filtre
-  const categories = [...new Set(recipes.map(r => r.category).filter(Boolean))];
-
   if (loading) {
     return (
       <div className="recipes-container">
@@ -147,17 +189,10 @@ export default function RecipesPage() {
 
   return (
     <div className="recipes-container">
-      <div className="recipes-header">
-        <h1>📖 Mes Recettes</h1>
-        <Link href="/recipes/new" className="btn-primary">
-          ➕ Nouvelle recette
-        </Link>
-      </div>
-
-      {/* Barre de filtres */}
-      <div className="filters-bar">
-        <div className="search-box">
-          <span className="search-icon">🔍</span>
+      {/* Contrôles de recherche et filtrage - style pantry */}
+      <div className="recipes-controls">
+        {/* Barre de recherche et filtres */}
+        <div className="search-filters">
           <input
             type="text"
             placeholder="Rechercher une recette..."
@@ -165,166 +200,275 @@ export default function RecipesPage() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
-        </div>
-
-        <select 
-          value={filterCategory} 
-          onChange={(e) => setFilterCategory(e.target.value)}
-          className="filter-select"
-        >
-          <option value="all">Toutes catégories</option>
-          {categories.map(cat => (
-            <option key={cat} value={cat}>{cat}</option>
-          ))}
-        </select>
-
-        <select 
-          value={filterDifficulty} 
-          onChange={(e) => setFilterDifficulty(e.target.value)}
-          className="filter-select"
-        >
-          <option value="all">Toutes difficultés</option>
-          <option value="facile">Facile</option>
-          <option value="moyen">Moyen</option>
-          <option value="difficile">Difficile</option>
-        </select>
-
-        <select 
-          value={sortBy} 
-          onChange={(e) => setSortBy(e.target.value)}
-          className="filter-select"
-        >
-          <option value="title">Trier par nom</option>
-          <option value="time">Trier par temps</option>
-          <option value="difficulty">Trier par difficulté</option>
-          <option value="availability">Trier par disponibilité</option>
-        </select>
-      </div>
-
-      {/* Stats rapides */}
-      <div className="recipes-stats">
-        <div className="stat-card">
-          <span className="stat-number">{recipes.length}</span>
-          <span className="stat-label">Recettes totales</span>
-        </div>
-        <div className="stat-card">
-          <span className="stat-number">
-            {recipes.filter(r => inventoryStatus[r.id]?.availabilityPercent >= 90).length}
-          </span>
-          <span className="stat-label">Réalisables (≥90%)</span>
-        </div>
-        <div className="stat-card">
-          <span className="stat-number">
-            {recipes.filter(r => r.is_veg).length}
-          </span>
-          <span className="stat-label">Végétariennes</span>
-        </div>
-      </div>
-
-      {/* Grille de recettes */}
-      <div className="recipes-grid">
-        {filteredRecipes.map(recipe => {
-          const status = inventoryStatus[recipe.id] || {};
-          const availabilityClass = 
-            status.availabilityPercent >= 90 ? 'high' :
-            status.availabilityPercent >= 50 ? 'medium' : 'low';
           
-          return (
-            <div key={recipe.id} className="recipe-card">
-              {recipe.image_url && (
-                <div className="recipe-image">
-                  <img src={recipe.image_url} alt={recipe.title} />
-                  {recipe.is_veg && <span className="badge veg">🌱 Végé</span>}
-                </div>
-              )}
-              
-              <div className="recipe-content">
-                <h3>{recipe.title}</h3>
-                
-                {recipe.description && (
-                  <p className="recipe-description">{recipe.description}</p>
-                )}
+          <select 
+            value={availabilityFilter} 
+            onChange={(e) => setAvailabilityFilter(e.target.value)}
+            className="filter-select"
+          >
+            <option value="all">Toutes les recettes</option>
+            <option value="available">Réalisables (≥90%)</option>
+            <option value="partial">Partiellement (50-89%)</option>
+            <option value="unavailable">Non réalisables (&lt;50%)</option>
+          </select>
+        </div>
 
-                <div className="recipe-meta">
-                  <span className="meta-item">
-                    ⏱ {recipe.total_min || recipe.prep_min + recipe.cook_min || '?'} min
-                  </span>
-                  <span className="meta-item">
-                    👥 {recipe.servings || 2} portions
-                  </span>
-                  {recipe.difficulty && (
-                    <span className={`meta-item difficulty-${recipe.difficulty}`}>
-                      {recipe.difficulty === 'facile' ? '👶' : 
-                       recipe.difficulty === 'moyen' ? '👨‍🍳' : '👨‍🍳👨‍🍳'}
-                      {recipe.difficulty}
-                    </span>
+        {/* Stats cliquables inline avec tri */}
+        <div className="stats-controls">
+          <div className="stats-inline">
+            <div 
+              className={`stat-item ${availabilityFilter === 'all' ? 'stat-filter-active' : ''}`}
+              onClick={() => setAvailabilityFilter(availabilityFilter === 'all' ? 'all' : 'all')}
+            >
+              <span className="stat-number">{recipes.length}</span>
+              <span className="stat-label">Total</span>
+            </div>
+            
+            <div 
+              className={`stat-item stat-filter-btn ${availabilityFilter === 'available' ? 'stat-filter-active' : ''}`}
+              onClick={() => setAvailabilityFilter(availabilityFilter === 'available' ? 'all' : 'available')}
+            >
+              <span className="stat-number">
+                {recipes.filter(r => inventoryStatus[r.id]?.availabilityPercent >= 90).length}
+              </span>
+              <span className="stat-label">Réalisables</span>
+            </div>
+            
+            <div 
+              className={`stat-item stat-filter-btn ${availabilityFilter === 'partial' ? 'stat-filter-active' : ''}`}
+              onClick={() => setAvailabilityFilter(availabilityFilter === 'partial' ? 'all' : 'partial')}
+            >
+              <span className="stat-number">
+                {recipes.filter(r => {
+                  const percent = inventoryStatus[r.id]?.availabilityPercent || 0;
+                  return percent >= 50 && percent < 90;
+                }).length}
+              </span>
+              <span className="stat-label">Partielles</span>
+            </div>
+            
+            <div 
+              className={`stat-item ${availabilityFilter === 'all' ? 'stat-filter-active' : ''}`}
+              onClick={() => setAvailabilityFilter(availabilityFilter === 'all' ? 'all' : 'all')}
+            >
+              <span className="stat-number">
+                {recipes.filter(r => r.is_veg).length}
+              </span>
+              <span className="stat-label">Végé</span>
+            </div>
+          </div>
+
+          {/* Boutons de tri */}
+          <div className="sort-controls">
+            <button
+              className={`sort-btn ${sortBy === 'title' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'title') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('title');
+                  setSortOrder('asc');
+                }
+              }}
+            >
+              🔤 Nom {sortBy === 'title' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+            
+            <button
+              className={`sort-btn ${sortBy === 'time' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'time') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('time');
+                  setSortOrder('asc');
+                }
+              }}
+            >
+              ⏱️ Temps {sortBy === 'time' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+            
+            <button
+              className={`sort-btn ${sortBy === 'difficulty' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'difficulty') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('difficulty');
+                  setSortOrder('asc');
+                }
+              }}
+            >
+              👨‍🍳 Difficulté {sortBy === 'difficulty' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+            
+            <button
+              className={`sort-btn ${sortBy === 'availability' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'availability') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('availability');
+                  setSortOrder('asc');
+                }
+              }}
+            >
+              📦 Disponibilité {sortBy === 'availability' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+          </div>
+
+          {/* Indicateur du nombre d'éléments filtrés */}
+          {filteredRecipes.length !== recipes.length && (
+            <span className="filter-count">
+              {filteredRecipes.length} / {recipes.length} recettes
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Grille de recettes - style glassmorphisme */}
+      <div className="recipes-grid">
+        {filteredRecipes.length === 0 ? (
+          <div className="empty-state">
+            <h2>Aucune recette trouvée</h2>
+            <p>Ajustez vos filtres ou créez une nouvelle recette</p>
+          </div>
+        ) : (
+          filteredRecipes.map(recipe => {
+            const status = inventoryStatus[recipe.id] || {};
+            const availabilityPercent = status.availabilityPercent || 0;
+            
+            return (
+              <div 
+                key={recipe.id} 
+                className="recipe-card"
+                onClick={() => setSelectedRecipe(recipe)}
+              >
+                {/* Image de la recette */}
+                <div className="recipe-image">
+                  {recipe.image_url ? (
+                    <img src={recipe.image_url} alt={recipe.title} />
+                  ) : (
+                    <div className="recipe-placeholder">
+                      <span>🍽️</span>
+                    </div>
+                  )}
+                  
+                  {/* Badges */}
+                  <div className="recipe-badges">
+                    {recipe.is_veg && (
+                      <span className="badge veg">🌱</span>
+                    )}
+                    {recipe.difficulty && (
+                      <span className={`badge difficulty-${recipe.difficulty}`}>
+                        {recipe.difficulty === 'facile' ? '👶' : 
+                         recipe.difficulty === 'moyen' ? '👨‍🍳' : '⭐'}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Barre de disponibilité */}
+                  {status.availabilityPercent !== undefined && (
+                    <div className="availability-overlay">
+                      <div 
+                        className={`availability-bar ${
+                          availabilityPercent >= 90 ? 'high' :
+                          availabilityPercent >= 50 ? 'medium' : 'low'
+                        }`}
+                      >
+                        <div 
+                          className="availability-fill" 
+                          style={{ width: `${availabilityPercent}%` }}
+                        />
+                        <span className="availability-percent">
+                          {availabilityPercent}%
+                        </span>
+                      </div>
+                    </div>
                   )}
                 </div>
-
-                {status.availabilityPercent !== undefined && (
-                  <div className={`availability-bar ${availabilityClass}`}>
-                    <div 
-                      className="availability-fill" 
-                      style={{ width: `${status.availabilityPercent}%` }}
-                    />
-                    <span className="availability-text">
-                      {status.availableIngredients}/{status.totalIngredients} ingrédients disponibles
-                    </span>
+                
+                {/* Contenu de la carte */}
+                <div className="recipe-content">
+                  <div className="recipe-header">
+                    <h3 className="recipe-title">{recipe.title}</h3>
+                    
+                    <div className="recipe-quick-meta">
+                      <span className="meta-item time">
+                        ⏱ {recipe.total_min || (recipe.prep_min + recipe.cook_min) || '?'}min
+                      </span>
+                      <span className="meta-item servings">
+                        👥 {recipe.servings || 2}
+                      </span>
+                    </div>
                   </div>
-                )}
 
-                <div className="recipe-actions">
-                  <button 
-                    onClick={() => setSelectedRecipe(recipe)}
-                    className="btn-secondary"
-                    title="Voir détails"
-                  >
-                    👁 Voir
-                  </button>
-                  <Link 
-                    href={`/recipes/edit/${recipe.id}`}
-                    className="btn-secondary"
-                    title="Modifier"
-                  >
-                    ✏️ Modifier
-                  </Link>
-                  <button 
-                    onClick={() => duplicateRecipe(recipe)}
-                    className="btn-secondary"
-                    title="Dupliquer"
-                  >
-                    📑 Dupliquer
-                  </button>
-                  <button 
-                    onClick={() => deleteRecipe(recipe.id)}
-                    className="btn-danger"
-                    title="Supprimer"
-                  >
-                    🗑
-                  </button>
+                  {recipe.description && (
+                    <p className="recipe-description">{recipe.description}</p>
+                  )}
+
+                  {/* Statut des ingrédients */}
+                  {status.availableIngredients !== undefined && (
+                    <div className="ingredients-status">
+                      <span className="ingredients-text">
+                        {status.availableIngredients}/{status.totalIngredients} ingrédients
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Actions rapides */}
+                  <div className="recipe-actions" onClick={(e) => e.stopPropagation()}>
+                    <Link 
+                      href={`/recipes/edit/${recipe.id}`}
+                      className="action-btn edit"
+                      title="Modifier"
+                    >
+                      ✏️
+                    </Link>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        duplicateRecipe(recipe);
+                      }}
+                      className="action-btn duplicate"
+                      title="Dupliquer"
+                    >
+                      📑
+                    </button>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deleteRecipe(recipe.id);
+                      }}
+                      className="action-btn delete"
+                      title="Supprimer"
+                    >
+                      🗑️
+                    </button>
+                  </div>
+
+                  {/* Tags */}
+                  {recipe.tags && recipe.tags.length > 0 && (
+                    <div className="recipe-tags">
+                      {recipe.tags.slice(0, 3).map((tag, idx) => (
+                        <span key={idx} className="tag">#{tag}</span>
+                      ))}
+                      {recipe.tags.length > 3 && (
+                        <span className="tag more">+{recipe.tags.length - 3}</span>
+                      )}
+                    </div>
+                  )}
                 </div>
-
-          {recipe.tags && recipe.tags.length > 0 && (
-                  <div className="recipe-tags">
-                    {recipe.tags.map((tag, idx) => (
-                      <span key={idx} className="tag">#{tag}</span>
-                    ))}
-                  </div>
-                )}
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
 
-      {filteredRecipes.length === 0 && (
-        <div className="no-results">
-          <p>Aucune recette trouvée</p>
-          <Link href="/recipes/new" className="btn-primary">
-            Créer votre première recette
-          </Link>
-        </div>
-      )}
+      {/* Bouton flottant pour ajouter */}
+      <Link href="/recipes/new" className="recipes-fab" title="Nouvelle recette">
+        +
+      </Link>
 
       {/* Modal de détails de recette */}
       {selectedRecipe && (
