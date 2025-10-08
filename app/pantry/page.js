@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/li/supabaseClient';
+import { supabase } from '@/lib/supabaseClient';
 import SmartAddForm from './components/SmartAddForm';
 import ProductCard from './components/PantryProductCard';
 import { capitalizeProduct } from './components/pantryUtils';
