@@ -5,11 +5,11 @@ import { Package, Calendar, MapPin, X } from 'lucide-react';
 import './EditLotForm.css';
 
 const STORAGE_LOCATIONS = [
-  { value: 'garde-manger', label: 'Garde-manger', icon: '🏠' },
-  { value: 'réfrigérateur', label: 'Réfrigérateur', icon: '❄️' },
-  { value: 'congélateur', label: 'Congélateur', icon: '🧊' },
-  { value: 'cave', label: 'Cave', icon: '🏛️' },
-  { value: 'placard', label: 'Placard', icon: '🚪' }
+  { value: 'garde-manger', label: 'Garde-manger', icon: '🏠', factor: 1.0 },
+  { value: 'réfrigérateur', label: 'Réfrigérateur', icon: '❄️', factor: 2.0 },
+  { value: 'congélateur', label: 'Congélateur', icon: '🧊', factor: 10.0 },
+  { value: 'cave', label: 'Cave', icon: '🏛️', factor: 1.5 },
+  { value: 'placard', label: 'Placard', icon: '🚪', factor: 1.0 }
 ];
 
 const POSSIBLE_UNITS = ['u', 'g', 'kg', 'mL', 'cL', 'L'];
@@ -26,10 +26,58 @@ export default function EditLotForm({
     item.expiration_date ? item.expiration_date.split('T')[0] : ''
   );
   const [justConverted, setJustConverted] = useState(false);
+  const [dateAdjusted, setDateAdjusted] = useState(false);
 
   // Métadonnées du produit pour les conversions
   const density = item.density_g_per_ml || 0;
   const gramsPerUnit = item.grams_per_unit || 0;
+
+  // Fonction pour ajuster la date d'expiration selon l'emplacement
+  const adjustExpirationDateForLocation = (newLocation, currentDate) => {
+    if (!currentDate) return '';
+    
+    const currentDateObj = new Date(currentDate);
+    const today = new Date();
+    const daysFromToday = Math.ceil((currentDateObj - today) / (1000 * 60 * 60 * 24));
+    
+    // Facteurs d'ajustement selon l'emplacement
+    const locationFactors = {
+      'garde-manger': 1.0,      // Durée normale
+      'réfrigérateur': 2.0,     // Double la durée
+      'congélateur': 10.0,      // 10x plus long
+      'cave': 1.5,              // 50% plus long
+      'placard': 1.0            // Durée normale
+    };
+    
+    const currentLocationFactor = locationFactors[item.storage_place] || 1.0;
+    const newLocationFactor = locationFactors[newLocation] || 1.0;
+    
+    // Calculer la nouvelle durée ajustée
+    const adjustmentRatio = newLocationFactor / currentLocationFactor;
+    const newDaysFromToday = Math.round(daysFromToday * adjustmentRatio);
+    
+    // Calculer la nouvelle date
+    const newDate = new Date(today);
+    newDate.setDate(today.getDate() + newDaysFromToday);
+    
+    return newDate.toISOString().split('T')[0];
+  };
+
+  const handleLocationChange = (newLocation) => {
+    const willAdjustDate = expirationDate && newLocation !== item.storage_place;
+    
+    setLocation(newLocation);
+    
+    // Ajuster automatiquement la date si elle existe
+    if (willAdjustDate) {
+      const newDate = adjustExpirationDateForLocation(newLocation, expirationDate);
+      setExpirationDate(newDate);
+      
+      // Effet visuel pour indiquer l'ajustement
+      setDateAdjusted(true);
+      setTimeout(() => setDateAdjusted(false), 1500);
+    }
+  };
 
   const handleSave = () => {
     if (quantity > 0) {
@@ -199,17 +247,31 @@ export default function EditLotForm({
             </div>
             
             <div className="location-grid">
-              {STORAGE_LOCATIONS.map(loc => (
-                <button
-                  key={loc.value}
-                  type="button"
-                  className={`location-btn ${location === loc.value ? 'selected' : ''}`}
-                  onClick={() => setLocation(loc.value)}
-                >
-                  <span className="location-icon">{loc.icon}</span>
-                  <span className="location-label">{loc.label}</span>
-                </button>
-              ))}
+              {STORAGE_LOCATIONS.map(loc => {
+                const currentFactor = STORAGE_LOCATIONS.find(l => l.value === item.storage_place)?.factor || 1.0;
+                const willExtend = expirationDate && loc.factor > currentFactor;
+                const willShorten = expirationDate && loc.factor < currentFactor;
+                
+                return (
+                  <button
+                    key={loc.value}
+                    type="button"
+                    className={`location-btn ${location === loc.value ? 'selected' : ''} ${willExtend ? 'extends-life' : ''} ${willShorten ? 'shortens-life' : ''}`}
+                    onClick={() => handleLocationChange(loc.value)}
+                    title={
+                      loc.value === item.storage_place ? 'Emplacement actuel' :
+                      willExtend ? `Prolongera la conservation` :
+                      willShorten ? `Réduira la conservation` :
+                      'Même durée de conservation'
+                    }
+                  >
+                    <span className="location-icon">{loc.icon}</span>
+                    <span className="location-label">{loc.label}</span>
+                    {willExtend && <span className="duration-indicator">+</span>}
+                    {willShorten && <span className="duration-indicator">-</span>}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -224,9 +286,14 @@ export default function EditLotForm({
               type="date"
               value={expirationDate}
               onChange={(e) => setExpirationDate(e.target.value)}
-              className="date-input"
+              className={`date-input ${dateAdjusted ? 'date-adjusted' : ''}`}
               min={new Date().toISOString().split('T')[0]}
             />
+            {dateAdjusted && (
+              <div className="date-adjustment-notice">
+                📅 Date ajustée automatiquement pour {STORAGE_LOCATIONS.find(l => l.value === location)?.label}
+              </div>
+            )}
           </div>
 
           {/* Actions */}

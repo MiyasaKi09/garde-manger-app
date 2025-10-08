@@ -260,6 +260,49 @@
   transform: scale(1.02);
 }
 
+.location-btn.extends-life {
+  border-color: rgba(33, 150, 243, 0.4);
+}
+
+.location-btn.extends-life:hover {
+  background: rgba(33, 150, 243, 0.15);
+}
+
+.location-btn.shortens-life {
+  border-color: rgba(255, 152, 0, 0.4);
+}
+
+.location-btn.shortens-life:hover {
+  background: rgba(255, 152, 0, 0.15);
+}
+
+.location-btn {
+  position: relative;
+}
+
+.duration-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.location-btn.extends-life .duration-indicator {
+  background: rgba(33, 150, 243, 0.8);
+}
+
+.location-btn.shortens-life .duration-indicator {
+  background: rgba(255, 152, 0, 0.8);
+}
+
 .location-icon {
   font-size: 20px;
 }
@@ -286,6 +329,51 @@
 .date-input:focus {
   border-color: rgba(76, 175, 80, 0.5);
   background: rgba(255, 255, 255, 0.5);
+}
+
+.date-input.date-adjusted {
+  animation: dateAdjustmentGlow 1.5s ease-out;
+}
+
+@keyframes dateAdjustmentGlow {
+  0% { 
+    background: rgba(33, 150, 243, 0.3);
+    border-color: rgba(33, 150, 243, 0.5);
+    transform: scale(1.02);
+  }
+  50% {
+    background: rgba(33, 150, 243, 0.2);
+    border-color: rgba(33, 150, 243, 0.4);
+  }
+  100% { 
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1);
+  }
+}
+
+.date-adjustment-notice {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(33, 150, 243, 0.15);
+  border: 1px solid rgba(33, 150, 243, 0.3);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(13, 71, 161, 0.9);
+  text-align: center;
+  animation: noticeSlideIn 0.3s ease-out;
+}
+
+@keyframes noticeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Actions */
