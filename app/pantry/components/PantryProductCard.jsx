@@ -10,15 +10,25 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
   // Calculer les conversions rapides possibles
   const productMeta = { 
     productName: item.product_name || item.canonical_foods?.canonical_name,
-    grams_per_unit: item.grams_per_unit || item.canonical_foods?.grams_per_unit,
+    grams_per_unit: item.unit_weight_grams || item.grams_per_unit || item.canonical_foods?.grams_per_unit,
     density_g_per_ml: item.density_g_per_ml || item.canonical_foods?.density_g_per_ml,
-    primary_unit: item.primary_unit || item.canonical_foods?.primary_unit
+    primary_unit: item.primary_unit || item.canonical_foods?.primary_unit || item.unit
   };
   const quickConversions = getQuickConversions(item.qty_remaining, item.unit, productMeta);
   
   // Debug conversions
-  if (showActions && quickConversions.length > 0) {
-    console.log('Conversions disponibles pour', item.product_name, quickConversions);
+  if (showActions) {
+    console.log(`--- CARD DEBUG pour "${item.product_name}" ---`);
+    console.log('Données item brutes:', {
+      unit_weight_grams: item.unit_weight_grams,
+      grams_per_unit: item.grams_per_unit,
+      density_g_per_ml: item.density_g_per_ml,
+      qty_remaining: item.qty_remaining,
+      unit: item.unit
+    });
+    console.log('ProductMeta calculé:', productMeta);
+    console.log('Conversions trouvées:', quickConversions);
+    console.log('--- FIN DEBUG ---');
   }
 
   const getStatusClass = (status) => {
