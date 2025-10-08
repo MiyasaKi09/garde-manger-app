@@ -7,6 +7,7 @@ import SmartAddForm from './components/SmartAddForm';
 import ProductCard from './components/PantryProductCard';
 import { capitalizeProduct } from './components/pantryUtils';
 import ConfirmDialog from '../../components/ConfirmDialog';
+import InlineEditQuantity from './components/InlineEditQuantity';
 import './pantry.css';
 
 
@@ -20,6 +21,8 @@ export default function PantryPage() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
+  const [showEditQuantity, setShowEditQuantity] = useState(false);
+  const [itemToEdit, setItemToEdit] = useState(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -188,39 +191,57 @@ export default function PantryPage() {
 
 
 
-  async function handleConsume(id, currentQty) {
-    const newQty = prompt(`Nouvelle quantité (actuel: ${currentQty}):`, currentQty);
-    if (newQty === null) return;
-
+  // Fonction de consommation rapide (réduction de quantité)
+  async function handleConsume(id) {
+    const item = items.find(i => i.id === id);
+    if (!item) return;
+    
+    // Réduire d'une unité ou de 0.1 pour les décimaux
+    const reduction = item.unit === 'u' ? 1 : 0.1;
+    const newQty = Math.max(0, item.qty_remaining - reduction);
+    
+    // Si la quantité devient 0, proposer la suppression
+    if (newQty === 0) {
+      handleDeleteClick(id);
+      return;
+    }
+    
+    // Mise à jour optimiste
+    setItems(prev => prev.map(i => 
+      i.id === id ? { ...i, qty_remaining: newQty } : i
+    ));
+    
     try {
       const { error } = await supabase
         .from('inventory_lots')
-        .update({ qty_remaining: parseFloat(newQty) })
+        .update({ qty_remaining: newQty })
         .eq('id', id);
 
-      if (error) throw error;
-      
-      await loadPantryItems();
-      alert('Quantité mise à jour');
+      if (error) {
+        console.error('Erreur lors de la consommation:', error);
+        // Revertir en cas d'erreur
+        await loadPantryItems();
+      }
     } catch (error) {
       console.error('Erreur:', error);
-      // Mise à jour locale en cas d'erreur
-      setItems(prev => prev.map(i => 
-        i.id === id ? { ...i, qty_remaining: parseFloat(newQty) } : i
-      ));
+      await loadPantryItems();
     }
   }
 
-  async function handleEdit(id) {
-    // Pour l'instant, rediriger vers la consommation
+  function handleEdit(id) {
     const item = items.find(i => i.id === id);
     if (item) {
-      handleConsume(id, item.qty_remaining);
+      setItemToEdit(item);
+      setShowEditQuantity(true);
     }
   }
 
   async function handleUpdateQuantity(id, newQty, newUnit) {
     console.log('Mise à jour quantité:', { id, newQty, newUnit });
+    
+    // Fermer le modal d'édition
+    setShowEditQuantity(false);
+    setItemToEdit(null);
     
     // Mise à jour locale immédiate pour une UX fluide
     setItems(prev => prev.map(i => 
@@ -353,7 +374,7 @@ export default function PantryPage() {
             <ProductCard 
               key={item.id} 
               item={item}
-              onConsume={() => handleConsume(item.id, item.qty_remaining)}
+              onConsume={() => handleConsume(item.id)}
               onEdit={() => handleEdit(item.id)}
               onDelete={() => handleDeleteClick(item.id)}
               onUpdateQuantity={handleUpdateQuantity}
@@ -393,6 +414,18 @@ export default function PantryPage() {
         confirmText="Supprimer"
         cancelText="Annuler"
       />
+
+      {/* Modal d'édition inline */}
+      {showEditQuantity && itemToEdit && (
+        <InlineEditQuantity
+          item={itemToEdit}
+          onUpdate={handleUpdateQuantity}
+          onCancel={() => {
+            setShowEditQuantity(false);
+            setItemToEdit(null);
+          }}
+        />
+      )}
     </div>
   );
 }
