@@ -7,7 +7,7 @@ import SmartAddForm from './components/SmartAddForm';
 import ProductCard from './components/PantryProductCard';
 import { capitalizeProduct } from './components/pantryUtils';
 import ConfirmDialog from '../../components/ConfirmDialog';
-import InlineEditQuantity from './components/InlineEditQuantity';
+import EditLotForm from './components/EditLotForm';
 import './pantry.css';
 
 
@@ -21,7 +21,7 @@ export default function PantryPage() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
-  const [showEditQuantity, setShowEditQuantity] = useState(false);
+  const [showEditLot, setShowEditLot] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(null);
 
   useEffect(() => {
@@ -191,14 +191,39 @@ export default function PantryPage() {
 
 
 
-  // Fonction de consommation rapide (réduction de quantité)
+  // Fonction de consommation intelligente
   async function handleConsume(id) {
     const item = items.find(i => i.id === id);
     if (!item) return;
     
-    // Réduire d'une unité ou de 0.1 pour les décimaux
-    const reduction = item.unit === 'u' ? 1 : 0.1;
-    const newQty = Math.max(0, item.qty_remaining - reduction);
+    let reduction;
+    const currentQty = item.qty_remaining;
+    
+    // Logique de réduction intelligente selon l'unité et la quantité
+    if (item.unit === 'u') {
+      reduction = 1;
+    } else if (item.unit === 'kg') {
+      if (currentQty >= 2) reduction = 0.5;      // 500g si on a plus de 2kg
+      else if (currentQty >= 1) reduction = 0.2; // 200g si on a plus de 1kg
+      else reduction = 0.1;                      // 100g sinon
+    } else if (item.unit === 'g') {
+      if (currentQty >= 1000) reduction = 100;   // 100g si on a plus de 1kg
+      else if (currentQty >= 500) reduction = 50; // 50g si on a plus de 500g
+      else if (currentQty >= 100) reduction = 20; // 20g si on a plus de 100g
+      else reduction = 10;                       // 10g sinon
+    } else if (item.unit === 'L') {
+      if (currentQty >= 2) reduction = 0.5;      // 500ml si on a plus de 2L
+      else if (currentQty >= 1) reduction = 0.2; // 200ml si on a plus de 1L
+      else reduction = 0.1;                      // 100ml sinon
+    } else if (item.unit === 'mL') {
+      if (currentQty >= 1000) reduction = 100;   // 100ml si on a plus de 1L
+      else if (currentQty >= 500) reduction = 50; // 50ml si on a plus de 500ml
+      else reduction = 25;                       // 25ml sinon
+    } else {
+      reduction = 0.1; // Défaut
+    }
+    
+    const newQty = Math.max(0, Math.round((currentQty - reduction) * 100) / 100);
     
     // Si la quantité devient 0, proposer la suppression
     if (newQty === 0) {
@@ -232,28 +257,36 @@ export default function PantryPage() {
     const item = items.find(i => i.id === id);
     if (item) {
       setItemToEdit(item);
-      setShowEditQuantity(true);
+      setShowEditLot(true);
     }
   }
 
-  async function handleUpdateQuantity(id, newQty, newUnit) {
-    console.log('Mise à jour quantité:', { id, newQty, newUnit });
+  async function handleUpdateLot(id, updates) {
+    console.log('Mise à jour lot:', { id, updates });
     
     // Fermer le modal d'édition
-    setShowEditQuantity(false);
+    setShowEditLot(false);
     setItemToEdit(null);
     
     // Mise à jour locale immédiate pour une UX fluide
     setItems(prev => prev.map(i => 
-      i.id === id ? { ...i, qty_remaining: parseFloat(newQty), unit: newUnit } : i
+      i.id === id ? { 
+        ...i, 
+        qty_remaining: parseFloat(updates.qty_remaining),
+        unit: updates.unit,
+        storage_place: updates.storage_place,
+        expiration_date: updates.expiration_date
+      } : i
     ));
     
     try {
       const { error } = await supabase
         .from('inventory_lots')
-        .update({ 
-          qty_remaining: parseFloat(newQty),
-          unit: newUnit
+        .update({
+          qty_remaining: parseFloat(updates.qty_remaining),
+          unit: updates.unit,
+          storage_place: updates.storage_place,
+          expiration_date: updates.expiration_date
         })
         .eq('id', id);
 
@@ -264,11 +297,16 @@ export default function PantryPage() {
       
       console.log('Mise à jour réussie en base de données');
     } catch (error) {
-      console.error('Erreur lors de la conversion:', error);
-      alert('Erreur lors de la conversion: ' + error.message);
+      console.error('Erreur lors de la mise à jour:', error);
+      alert('Erreur lors de la mise à jour: ' + error.message);
       // Revertir la mise à jour locale en cas d'erreur
       await loadPantryItems();
     }
+  }
+
+  async function handleUpdateQuantity(id, newQty, newUnit) {
+    // Pour les conversions rapides depuis les boutons
+    return handleUpdateLot(id, { qty_remaining: newQty, unit: newUnit });
   }
 
   function handleDeleteClick(id) {
@@ -415,13 +453,13 @@ export default function PantryPage() {
         cancelText="Annuler"
       />
 
-      {/* Modal d'édition inline */}
-      {showEditQuantity && itemToEdit && (
-        <InlineEditQuantity
+      {/* Modal d'édition complète */}
+      {showEditLot && itemToEdit && (
+        <EditLotForm
           item={itemToEdit}
-          onUpdate={handleUpdateQuantity}
+          onUpdate={handleUpdateLot}
           onCancel={() => {
-            setShowEditQuantity(false);
+            setShowEditLot(false);
             setItemToEdit(null);
           }}
         />
