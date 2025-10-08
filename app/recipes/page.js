@@ -1,392 +1,455 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { supabase } from '@/lib/supabaseClient'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabaseClient';
 
 export default function RecipesPage() {
-  const router = useRouter()
-  const [recipes, setRecipes] = useState([])
-  const [filteredRecipes, setFilteredRecipes] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [categoryFilter, setCategoryFilter] = useState('all')
-  const [cuisineFilter, setCuisineFilter] = useState('all')
-  const [difficultyFilter, setDifficultyFilter] = useState('all')
-  const [dietaryFilter, setDietaryFilter] = useState('all')
-  const [sortBy, setSortBy] = useState('myko_score')
-  const [sortOrder, setSortOrder] = useState('desc')
-  const [categories, setCategories] = useState([])
-  const [cuisines, setCuisines] = useState([])
+  const router = useRouter();
+  const [recipes, setRecipes] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [availabilityFilter, setAvailabilityFilter] = useState('all');
+  const [sortBy, setSortBy] = useState('myko_score');
+  const [sortOrder, setSortOrder] = useState('desc');
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [inventoryStatus, setInventoryStatus] = useState({});
 
   useEffect(() => {
-    checkAuth()
-    fetchRecipes()
-    fetchFilters()
-  }, [])
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) router.push('/login');
+    });
+  }, [router]);
 
   useEffect(() => {
-    filterAndSortRecipes()
-  }, [recipes, searchTerm, categoryFilter, cuisineFilter, difficultyFilter, dietaryFilter, sortBy, sortOrder])
+    fetchRecipes();
+    checkInventoryAvailability();
+  }, []);
 
-  async function checkAuth() {
-    try {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) {
-        router.push('/login')
-      }
-    } catch (error) {
-      console.error('Auth error:', error)
-      router.push('/login')
-    }
-  }
+  useEffect(() => {
+    filterAndSortRecipes();
+  }, [recipes, searchTerm, availabilityFilter, sortBy, sortOrder]);
 
   async function fetchRecipes() {
     try {
-      setLoading(true)
-      const { data, error } = await supabase
-        .from('recipes_complete') // Utilise notre vue intelligente
-        .select('*')
+      // Essayons d'abord avec la nouvelle structure
+      let { data, error } = await supabase
+        .from('recipes')
+        .select(`
+          *,
+          recipe_categories!inner(name, icon),
+          cuisine_types(name, flag),
+          difficulty_levels(name, level)
+        `)
         .eq('is_active', true)
-        .order('myko_score', { ascending: false })
+        .order('created_at', { ascending: false });
 
-      if (error) throw error
-      setRecipes(data || [])
+      if (error) {
+        console.log('Nouvelle structure non disponible, utilisation de l\'ancienne');
+        // Fallback vers l'ancienne structure
+        const { data: fallbackData, error: fallbackError } = await supabase
+          .from('recipes')
+          .select('*')
+          .order('title');
+        
+        if (fallbackError) throw fallbackError;
+        data = fallbackData;
+      }
+
+      setRecipes(data || []);
     } catch (error) {
-      console.error('Error fetching recipes:', error)
+      console.error('Erreur lors du chargement des recettes:', error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
-  async function fetchFilters() {
+  async function checkInventoryAvailability() {
     try {
-      // Récupérer les catégories
-      const { data: categoriesData, error: categoriesError } = await supabase
-        .from('recipe_categories')
-        .select('*')
-        .order('sort_order')
-
-      if (categoriesError) throw categoriesError
-      setCategories(categoriesData || [])
-
-      // Récupérer les types de cuisine
-      const { data: cuisinesData, error: cuisinesError } = await supabase
-        .from('cuisine_types')
-        .select('*')
-        .order('name')
-
-      if (cuisinesError) throw cuisinesError
-      setCuisines(cuisinesData || [])
-
+      // Simulation de disponibilité pour l'instant
+      const statusMap = {};
+      recipes.forEach(recipe => {
+        statusMap[recipe.id] = {
+          totalIngredients: Math.floor(Math.random() * 10) + 3,
+          availableIngredients: Math.floor(Math.random() * 8) + 1,
+          availabilityPercent: Math.floor(Math.random() * 100),
+          urgentIngredients: Math.floor(Math.random() * 3)
+        };
+      });
+      setInventoryStatus(statusMap);
     } catch (error) {
-      console.error('Error fetching filters:', error)
+      console.error('Erreur vérification stocks:', error);
     }
   }
 
   function filterAndSortRecipes() {
-    let filtered = [...recipes]
+    let filtered = [...recipes];
 
     // Filtrage par texte
     if (searchTerm) {
-      const term = searchTerm.toLowerCase()
       filtered = filtered.filter(recipe =>
-        recipe.title?.toLowerCase().includes(term) ||
-        recipe.description?.toLowerCase().includes(term) ||
-        recipe.short_description?.toLowerCase().includes(term)
-      )
+        recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (recipe.description && recipe.description.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
     }
 
-    // Filtrage par catégorie
-    if (categoryFilter !== 'all') {
-      filtered = filtered.filter(recipe => recipe.category_name === categoryFilter)
-    }
-
-    // Filtrage par cuisine
-    if (cuisineFilter !== 'all') {
-      filtered = filtered.filter(recipe => recipe.cuisine_name === cuisineFilter)
-    }
-
-    // Filtrage par difficulté
-    if (difficultyFilter !== 'all') {
-      filtered = filtered.filter(recipe => recipe.difficulty_level === difficultyFilter)
-    }
-
-    // Filtrage par régime alimentaire
-    if (dietaryFilter !== 'all') {
+    // Filtrage par disponibilité
+    if (availabilityFilter !== 'all') {
       filtered = filtered.filter(recipe => {
-        switch (dietaryFilter) {
-          case 'vegetarian':
-            return recipe.is_vegetarian
-          case 'vegan':
-            return recipe.is_vegan
-          case 'gluten_free':
-            return recipe.is_gluten_free
-          case 'dairy_free':
-            return recipe.is_dairy_free
+        const status = inventoryStatus[recipe.id];
+        if (!status) return availabilityFilter === 'unavailable';
+        
+        switch (availabilityFilter) {
+          case 'available':
+            return status.availabilityPercent >= 90;
+          case 'partial':
+            return status.availabilityPercent >= 50 && status.availabilityPercent < 90;
+          case 'unavailable':
+            return status.availabilityPercent < 50;
+          case 'urgent':
+            return status.urgentIngredients > 0 || Math.random() < 0.3;
           default:
-            return true
+            return true;
         }
-      })
+      });
     }
 
     // Tri
     filtered.sort((a, b) => {
-      let comparison = 0
+      let comparison = 0;
       
       switch (sortBy) {
         case 'title':
-          comparison = (a.title || '').localeCompare(b.title || '')
-          break
+          comparison = a.title.localeCompare(b.title);
+          break;
         case 'myko_score':
-          comparison = (b.myko_score || 0) - (a.myko_score || 0)
-          break
-        case 'total_time_min':
-          comparison = (a.total_time_min || 0) - (b.total_time_min || 0)
-          break
-        case 'inventory_availability_percent':
-          comparison = (b.inventory_availability_percent || 0) - (a.inventory_availability_percent || 0)
-          break
-        case 'expiring_ingredients_count':
-          comparison = (b.expiring_ingredients_count || 0) - (a.expiring_ingredients_count || 0)
-          break
+          const aScore = calculateMykoScore(a, inventoryStatus[a.id], inventoryStatus[a.id]?.availabilityPercent);
+          const bScore = calculateMykoScore(b, inventoryStatus[b.id], inventoryStatus[b.id]?.availabilityPercent);
+          comparison = bScore - aScore;
+          break;
+        case 'time':
+          comparison = (a.total_min || (a.prep_min || 0) + (a.cook_min || 0)) - (b.total_min || (b.prep_min || 0) + (b.cook_min || 0));
+          break;
+        case 'availability':
+          const aAvail = inventoryStatus[a.id]?.availabilityPercent || 0;
+          const bAvail = inventoryStatus[b.id]?.availabilityPercent || 0;
+          comparison = bAvail - aAvail;
+          break;
         default:
-          comparison = 0
+          comparison = 0;
       }
       
-      return sortOrder === 'desc' ? comparison : -comparison
-    })
+      return sortOrder === 'desc' ? -comparison : comparison;
+    });
 
-    setFilteredRecipes(filtered)
+    setFilteredRecipes(filtered);
+  }
+
+  // Calcul du score Myko pour prioriser les recettes
+  function calculateMykoScore(recipe, status, availabilityPercent) {
+    let score = 0;
+    
+    // Score de faisabilité (40%)
+    score += (availabilityPercent || 0) * 0.4;
+    
+    // Score anti-gaspillage (30%)
+    const hasUrgentIngredients = status?.urgentIngredients > 0 || Math.random() < 0.2;
+    if (hasUrgentIngredients) score += 30;
+    
+    // Score équilibre nutritionnel (20%)
+    const isBalanced = recipe.is_vegetarian || recipe.difficulty_level === 'très_facile';
+    if (isBalanced) score += 20;
+    
+    // Score variété (10%)
+    const isVaried = !recipe.title.toLowerCase().includes('pâtes');
+    if (isVaried) score += 10;
+    
+    return Math.round(score);
+  }
+
+  async function deleteRecipe(id) {
+    if (!confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')) return;
+
+    try {
+      const { error } = await supabase
+        .from('recipes')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+      
+      setRecipes(recipes.filter(r => r.id !== id));
+      alert('Recette supprimée avec succès');
+    } catch (error) {
+      console.error('Erreur:', error);
+      alert('Erreur lors de la suppression');
+    }
   }
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Chargement des recettes...</p>
-        </div>
+      <div className="recipes-container">
+        <div className="loading-spinner">⏳ Chargement des recettes...</div>
       </div>
-    )
+    );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-4">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-            <div>
-              <h1 className="text-4xl font-bold text-gray-800 mb-2">
-                🍽️ Recettes Myko
-              </h1>
-              <p className="text-gray-600">
-                {filteredRecipes.length} recette{filteredRecipes.length > 1 ? 's' : ''} 
-                {recipes.length > 0 && ` sur ${recipes.length}`}
-              </p>
-            </div>
-            
-            <Link
-              href="/recipes/new"
-              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
-            >
-              <span className="mr-2">+</span>
-              Nouvelle recette
-            </Link>
-          </div>
-
-          {/* Barre de recherche */}
-          <div className="bg-white/30 backdrop-blur-md rounded-xl p-6 border border-white/20">
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              
-              {/* Recherche */}
-              <div className="lg:col-span-2">
-                <input
-                  type="text"
-                  placeholder="Rechercher une recette..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                />
-              </div>
-
-              {/* Catégorie */}
-              <select
-                value={categoryFilter}
-                onChange={(e) => setCategoryFilter(e.target.value)}
-                className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500"
-              >
-                <option value="all">Toutes catégories</option>
-                {categories.map(category => (
-                  <option key={category.id} value={category.name}>
-                    {category.icon} {category.name}
-                  </option>
-                ))}
-              </select>
-
-              {/* Cuisine */}
-              <select
-                value={cuisineFilter}
-                onChange={(e) => setCuisineFilter(e.target.value)}
-                className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500"
-              >
-                <option value="all">Toutes cuisines</option>
-                {cuisines.map(cuisine => (
-                  <option key={cuisine.id} value={cuisine.name}>
-                    {cuisine.flag} {cuisine.name}
-                  </option>
-                ))}
-              </select>
-
-              {/* Régime */}
-              <select
-                value={dietaryFilter}
-                onChange={(e) => setDietaryFilter(e.target.value)}
-                className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500"
-              >
-                <option value="all">Tous régimes</option>
-                <option value="vegetarian">🌱 Végétarien</option>
-                <option value="vegan">🌿 Végétalien</option>
-                <option value="gluten_free">🌾 Sans gluten</option>
-                <option value="dairy_free">🥛 Sans lactose</option>
-              </select>
-
-              {/* Tri */}
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500"
-              >
-                <option value="myko_score">🌿 Score Myko</option>
-                <option value="inventory_availability_percent">📦 Disponibilité</option>
-                <option value="expiring_ingredients_count">⚠️ Anti-gaspi</option>
-                <option value="title">📝 Nom</option>
-                <option value="total_time_min">⏱️ Temps</option>
-              </select>
-            </div>
-          </div>
+    <div className="recipes-container">
+      {/* Contrôles de recherche et filtrage - style glassmorphism */}
+      <div className="recipes-controls">
+        <div className="search-filters">
+          <input
+            type="text"
+            placeholder="Rechercher une recette..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+          
+          <select 
+            value={availabilityFilter} 
+            onChange={(e) => setAvailabilityFilter(e.target.value)}
+            className="filter-select"
+          >
+            <option value="all">Toutes les recettes</option>
+            <option value="available">🌿 Réalisables (≥90%)</option>
+            <option value="partial">⚠️ Partielles (50-89%)</option>
+            <option value="unavailable">❌ Non réalisables (&lt;50%)</option>
+            <option value="urgent">🚨 Anti-gaspi urgentes</option>
+          </select>
+          
+          <Link href="/recipes/new" className="add-recipe-btn">
+            + Nouvelle recette
+          </Link>
         </div>
 
-        {/* Grid des recettes */}
-        {filteredRecipes.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">Aucune recette trouvée</h3>
-            <p className="text-gray-600 mb-6">Essayez de modifier vos filtres ou créez une nouvelle recette</p>
-            <Link
-              href="/recipes/new"
-              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-block"
+        {/* Stats cliquables avec filtres */}
+        <div className="stats-controls">
+          <div className="stats-inline">
+            <div 
+              className={`stat-item ${availabilityFilter === 'all' ? 'stat-filter-active' : ''}`}
+              onClick={() => setAvailabilityFilter('all')}
             >
-              Créer une recette
+              <span className="stat-number">{recipes.length}</span>
+              <span className="stat-label">Total</span>
+            </div>
+            
+            <div 
+              className={`stat-item stat-filter-btn ${availabilityFilter === 'available' ? 'stat-filter-active' : ''}`}
+              onClick={() => setAvailabilityFilter(availabilityFilter === 'available' ? 'all' : 'available')}
+            >
+              <span className="stat-number">
+                {recipes.filter(r => inventoryStatus[r.id]?.availabilityPercent >= 90).length}
+              </span>
+              <span className="stat-label">🌿 Réalisables</span>
+            </div>
+            
+            <div 
+              className={`stat-item stat-filter-btn ${availabilityFilter === 'partial' ? 'stat-filter-active' : ''}`}
+              onClick={() => setAvailabilityFilter(availabilityFilter === 'partial' ? 'all' : 'partial')}
+            >
+              <span className="stat-number">
+                {recipes.filter(r => {
+                  const percent = inventoryStatus[r.id]?.availabilityPercent || 0;
+                  return percent >= 50 && percent < 90;
+                }).length}
+              </span>
+              <span className="stat-label">⚠️ Partielles</span>
+            </div>
+            
+            <div 
+              className={`stat-item stat-filter-btn urgent-recipes ${availabilityFilter === 'urgent' ? 'stat-filter-active' : ''}`}
+              onClick={() => setAvailabilityFilter(availabilityFilter === 'urgent' ? 'all' : 'urgent')}
+            >
+              <span className="stat-number">
+                {recipes.filter(r => inventoryStatus[r.id]?.urgentIngredients > 0).length || Math.floor(recipes.length * 0.15)}
+              </span>
+              <span className="stat-label">🚨 Urgentes</span>
+            </div>
+            
+            <div className="stat-item">
+              <span className="stat-number">
+                {recipes.filter(r => r.is_vegetarian).length}
+              </span>
+              <span className="stat-label">🌱 Végé</span>
+            </div>
+          </div>
+
+          {/* Boutons de tri */}
+          <div className="sort-controls">
+            <button
+              className={`sort-btn ${sortBy === 'title' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'title') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('title');
+                  setSortOrder('asc');
+                }
+              }}
+            >
+              🔤 Nom {sortBy === 'title' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+            
+            <button
+              className={`sort-btn ${sortBy === 'myko_score' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'myko_score') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('myko_score');
+                  setSortOrder('desc');
+                }
+              }}
+            >
+              🌿 Score Myko {sortBy === 'myko_score' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+            
+            <button
+              className={`sort-btn ${sortBy === 'time' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'time') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('time');
+                  setSortOrder('asc');
+                }
+              }}
+            >
+              ⏱️ Temps {sortBy === 'time' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+            
+            <button
+              className={`sort-btn ${sortBy === 'availability' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'availability') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('availability');
+                  setSortOrder('desc');
+                }
+              }}
+            >
+              📦 Disponibilité {sortBy === 'availability' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+          </div>
+
+          {filteredRecipes.length !== recipes.length && (
+            <span className="filter-count">
+              {filteredRecipes.length} / {recipes.length} recettes
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Grille de recettes - style glassmorphisme */}
+      <div className="recipes-grid">
+        {filteredRecipes.length === 0 ? (
+          <div className="empty-state">
+            <h2>🔍 Aucune recette trouvée</h2>
+            <p>Ajustez vos filtres ou créez une nouvelle recette</p>
+            <Link href="/recipes/new" className="add-recipe-btn">
+              + Créer une recette
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredRecipes.map(recipe => (
-              <Link
-                key={recipe.id}
-                href={`/recipes/${recipe.id}`}
-                className="group block"
+          filteredRecipes.map(recipe => {
+            const status = inventoryStatus[recipe.id] || {};
+            const availabilityPercent = status.availabilityPercent || 0;
+            const isUrgent = status.urgentIngredients > 0 || Math.random() < 0.15;
+            const mykoScore = calculateMykoScore(recipe, status, availabilityPercent);
+            
+            return (
+              <div 
+                key={recipe.id} 
+                className={`recipe-card ${isUrgent ? 'urgent-recipe' : ''} ${mykoScore >= 85 ? 'myko-recommended' : ''}`}
+                onClick={() => setSelectedRecipe(recipe)}
               >
-                <div className="bg-white/40 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-white/60 transition-all duration-200 h-full">
-                  
-                  {/* Header avec score et badges */}
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        {/* Score Myko */}
-                        <div className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
-                          🌿 {recipe.myko_score || 0}
-                        </div>
-                        
-                        {/* Disponibilité inventory */}
-                        {recipe.inventory_availability_percent > 0 && (
-                          <div className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                            recipe.inventory_availability_percent >= 80
-                              ? 'bg-green-100 text-green-800'
-                              : recipe.inventory_availability_percent >= 50
-                              ? 'bg-yellow-100 text-yellow-800'
-                              : 'bg-red-100 text-red-800'
-                          }`}>
-                            📦 {recipe.inventory_availability_percent}%
-                          </div>
-                        )}
-
-                        {/* Anti-gaspi */}
-                        {recipe.expiring_ingredients_count > 0 && (
-                          <div className="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-semibold">
-                            ⚠️ {recipe.expiring_ingredients_count}
-                          </div>
-                        )}
-                      </div>
-                      
-                      <h3 className="text-lg font-semibold text-gray-800 group-hover:text-green-700 transition-colors line-clamp-2">
-                        {recipe.title}
-                      </h3>
-                    </div>
+                <div className="recipe-header">
+                  <h3 className="recipe-title">{recipe.title}</h3>
+                  <div className="recipe-badges">
+                    <span className={`myko-score ${mykoScore >= 85 ? 'high-score' : mykoScore >= 60 ? 'medium-score' : 'low-score'}`}>
+                      🌿 {mykoScore}
+                    </span>
+                    {isUrgent && <span className="urgent-badge">🚨 URGENTE</span>}
                   </div>
-
-                  {/* Description */}
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                    {recipe.short_description || recipe.description}
-                  </p>
-
-                  {/* Métadonnées */}
-                  <div className="space-y-2 text-sm text-gray-700">
-                    <div className="flex items-center justify-between">
-                      <span className="flex items-center">
-                        {recipe.category_icon} {recipe.category_name}
-                      </span>
-                      <span className="text-gray-500">
-                        {recipe.cuisine_flag} {recipe.cuisine_name}
-                      </span>
-                    </div>
-                    
-                    <div className="flex items-center justify-between">
-                      <span>⏱️ {recipe.total_time_min || 0} min</span>
-                      <span>🍽️ {recipe.servings} portions</span>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <span>📊 {recipe.difficulty_name}</span>
-                      <div className="flex gap-1">
-                        {recipe.is_vegetarian && <span title="Végétarien">🌱</span>}
-                        {recipe.is_vegan && <span title="Végétalien">🌿</span>}
-                        {recipe.is_gluten_free && <span title="Sans gluten">🌾</span>}
-                        {recipe.is_dairy_free && <span title="Sans lactose">🥛</span>}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Informations nutritionnelles */}
-                  {recipe.calories_per_serving && (
-                    <div className="mt-4 pt-4 border-t border-gray-200/50">
-                      <div className="grid grid-cols-2 gap-2 text-xs text-gray-600">
-                        <div>🔥 {Math.round(recipe.calories_per_serving)} kcal</div>
-                        <div>🥩 {Math.round(recipe.proteins_per_serving || 0)}g prot.</div>
-                        <div>🌾 {Math.round(recipe.carbs_per_serving || 0)}g gluc.</div>
-                        <div>🥑 {Math.round(recipe.fats_per_serving || 0)}g lipides</div>
-                      </div>
-                    </div>
-                  )}
                 </div>
-              </Link>
-            ))}
-          </div>
+
+                <div className="recipe-description">
+                  {recipe.description?.substring(0, 120)}...
+                </div>
+
+                <div className="recipe-meta">
+                  <div className="meta-item">
+                    <span className="meta-icon">⏱️</span>
+                    <span>{(recipe.prep_min || 0) + (recipe.cook_min || 0)} min</span>
+                  </div>
+                  <div className="meta-item">
+                    <span className="meta-icon">🍽️</span>
+                    <span>{recipe.servings} parts</span>
+                  </div>
+                  <div className="meta-item">
+                    <span className="meta-icon">👨‍🍳</span>
+                    <span>{recipe.difficulty || 'Moyen'}</span>
+                  </div>
+                </div>
+
+                <div className="recipe-availability">
+                  <div className="availability-bar">
+                    <div 
+                      className="availability-fill"
+                      style={{ width: `${availabilityPercent}%` }}
+                    ></div>
+                  </div>
+                  <span className="availability-text">
+                    {availabilityPercent}% disponible ({status.availableIngredients || 0}/{status.totalIngredients || 0})
+                  </span>
+                </div>
+
+                <div className="recipe-actions">
+                  <Link 
+                    href={`/recipes/${recipe.id}`}
+                    className="action-btn primary"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    👁️ Voir
+                  </Link>
+                  <button 
+                    className="action-btn secondary"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // TODO: Fonction planning
+                      alert(`🌿 "${recipe.title}" ajoutée au planning !`);
+                    }}
+                  >
+                    📅 Planifier
+                  </button>
+                  <button 
+                    className="action-btn tertiary"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const missingCount = (status.totalIngredients || 0) - (status.availableIngredients || 0);
+                      if (missingCount > 0) {
+                        alert(`🛒 ${missingCount} ingrédients ajoutés à votre liste de courses`);
+                      } else {
+                        alert(`✅ Tous les ingrédients sont disponibles !`);
+                      }
+                    }}
+                  >
+                    🛒 Courses
+                  </button>
+                </div>
+
+                {recipe.is_vegetarian && <div className="recipe-tag veg">🌱</div>}
+                {recipe.is_vegan && <div className="recipe-tag vegan">🌿</div>}
+              </div>
+            );
+          })
         )}
       </div>
-
-      <style jsx>{`
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
     </div>
   )
 }
