@@ -182,8 +182,15 @@ export default function RecipesPage() {
           valueB = inventoryStatus[b.id]?.availabilityPercent || 0;
           break;
         case 'time':
-          valueA = a.total_time_minutes || 0;
-          valueB = b.total_time_minutes || 0;
+          // Calculer le temps total en priorisant total_time_minutes, sinon prep + cook
+          valueA = a.total_time_minutes || 
+                   ((a.prep_time_minutes || 0) + (a.cook_time_minutes || 0)) || 
+                   a.prep_time_minutes || 
+                   a.cook_time_minutes || 0;
+          valueB = b.total_time_minutes || 
+                   ((b.prep_time_minutes || 0) + (b.cook_time_minutes || 0)) || 
+                   b.prep_time_minutes || 
+                   b.cook_time_minutes || 0;
           break;
         case 'name':
           return sortOrder === 'asc' 
@@ -399,11 +406,21 @@ export default function RecipesPage() {
                 <div className="recipe-meta">
                   <div className="meta-item">
                     <span className="meta-icon">⏱️</span>
-                    <span>{recipe.total_time_minutes || 0} min</span>
+                    <span>
+                      {recipe.total_time_minutes && recipe.total_time_minutes > 0 
+                        ? `${recipe.total_time_minutes} min` 
+                        : recipe.prep_time_minutes && recipe.cook_time_minutes 
+                        ? `${(recipe.prep_time_minutes || 0) + (recipe.cook_time_minutes || 0)} min`
+                        : recipe.prep_time_minutes 
+                        ? `${recipe.prep_time_minutes} min (prep)`
+                        : recipe.cook_time_minutes
+                        ? `${recipe.cook_time_minutes} min (cuisson)`
+                        : 'Temps non défini'}
+                    </span>
                   </div>
                   <div className="meta-item">
                     <span className="meta-icon">👥</span>
-                    <span>{recipe.servings} parts</span>
+                    <span>{recipe.servings || recipe.portions || 'Non défini'} parts</span>
                   </div>
                   <div className="meta-item">
                     <span className="meta-icon">📊</span>
