@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabaseClient';
 import './recipes.css';
 
 export default function RecipesPage() {
@@ -17,8 +17,6 @@ export default function RecipesPage() {
   const [sortOrder, setSortOrder] = useState('asc');
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [inventoryStatus, setInventoryStatus] = useState({});
-  
-  const supabase = createClientComponentClient();
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -566,8 +564,6 @@ function RecipeModal({ recipe, onClose, inventoryStatus }) {
   const [loading, setLoading] = useState(true);
   const [servings, setServings] = useState(recipe.servings || 2);
   const [missingIngredients, setMissingIngredients] = useState([]);
-  
-  const supabase = createClientComponentClient();
 
   useEffect(() => {
     fetchRecipeDetails();
