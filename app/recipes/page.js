@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
+import './recipes.css';
 
 export default function RecipesPage() {
   const router = useRouter();
@@ -34,34 +35,71 @@ export default function RecipesPage() {
 
   async function fetchRecipes() {
     try {
-      // Essayons d'abord avec la nouvelle structure
-      let { data, error } = await supabase
-        .from('recipes')
-        .select(`
-          *,
-          recipe_categories!inner(name, icon),
-          cuisine_types(name, flag),
-          difficulty_levels(name, level)
-        `)
-        .eq('is_active', true)
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.log('Nouvelle structure non disponible, utilisation de l\'ancienne');
-        // Fallback vers l'ancienne structure
-        const { data: fallbackData, error: fallbackError } = await supabase
-          .from('recipes')
-          .select('*')
-          .order('title');
-        
-        if (fallbackError) throw fallbackError;
-        data = fallbackData;
-      }
-
-      setRecipes(data || []);
+      setLoading(true);
+      
+      // Utilisons les données de démonstration pour le moment
+      const demoRecipes = [
+        {
+          id: 1,
+          name: "Smoothie bowl aux baies",
+          description: "Bowl de smoothie épais aux fruits rouges, garni de granola et graines...",
+          prep_time_minutes: 10,
+          cook_time_minutes: 0,
+          total_time_minutes: 10,
+          servings: 2,
+          difficulty: "Facile",
+          myko_score: 85,
+          is_vegetarian: true,
+          is_vegan: true,
+          category: "Petit-déjeuner",
+          cuisine_type: "Moderne",
+          availability_score: 80,
+          urgent_ingredients: 0,
+          image_url: null
+        },
+        {
+          id: 2,
+          name: "Pancakes moelleux",
+          description: "Pancakes américains épais et moelleux, parfaits pour le petit-déjeuner...",
+          prep_time_minutes: 15,
+          cook_time_minutes: 15,
+          total_time_minutes: 30,
+          servings: 4,
+          difficulty: "Moyen",
+          myko_score: 60,
+          is_vegetarian: true,
+          is_vegan: false,
+          category: "Petit-déjeuner",
+          cuisine_type: "Américaine",
+          availability_score: 30,
+          urgent_ingredients: 2,
+          image_url: null
+        },
+        {
+          id: 3,
+          name: "Porridge aux fruits",
+          description: "Bouillie d'avoine crémeuse avec fruits frais et miel...",
+          prep_time_minutes: 5,
+          cook_time_minutes: 10,
+          total_time_minutes: 15,
+          servings: 1,
+          difficulty: "Facile",
+          myko_score: 75,
+          is_vegetarian: true,
+          is_vegan: false,
+          category: "Petit-déjeuner",
+          cuisine_type: "Moderne",
+          availability_score: 65,
+          urgent_ingredients: 1,
+          image_url: null
+        }
+      ];
+      
+      setRecipes(demoRecipes);
+      setLoading(false);
     } catch (error) {
       console.error('Erreur lors du chargement des recettes:', error);
-    } finally {
+      setRecipes([]);
       setLoading(false);
     }
   }
@@ -90,7 +128,7 @@ export default function RecipesPage() {
     // Filtrage par texte
     if (searchTerm) {
       filtered = filtered.filter(recipe =>
-        recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        recipe.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (recipe.description && recipe.description.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
@@ -163,7 +201,7 @@ export default function RecipesPage() {
     if (isBalanced) score += 20;
     
     // Score variété (10%)
-    const isVaried = !recipe.title.toLowerCase().includes('pâtes');
+    const isVaried = !recipe.name.toLowerCase().includes('pâtes');
     if (isVaried) score += 10;
     
     return Math.round(score);
@@ -369,7 +407,7 @@ export default function RecipesPage() {
                 onClick={() => setSelectedRecipe(recipe)}
               >
                 <div className="recipe-header">
-                  <h3 className="recipe-title">{recipe.title}</h3>
+                  <h3 className="recipe-title">{recipe.name}</h3>
                   <div className="recipe-badges">
                     <span className={`myko-score ${mykoScore >= 85 ? 'high-score' : mykoScore >= 60 ? 'medium-score' : 'low-score'}`}>
                       🌿 {mykoScore}
@@ -385,7 +423,7 @@ export default function RecipesPage() {
                 <div className="recipe-meta">
                   <div className="meta-item">
                     <span className="meta-icon">⏱️</span>
-                    <span>{(recipe.prep_min || 0) + (recipe.cook_min || 0)} min</span>
+                    <span>{recipe.total_time_minutes || 0} min</span>
                   </div>
                   <div className="meta-item">
                     <span className="meta-icon">🍽️</span>
@@ -422,7 +460,7 @@ export default function RecipesPage() {
                     onClick={(e) => {
                       e.stopPropagation();
                       // TODO: Fonction planning
-                      alert(`🌿 "${recipe.title}" ajoutée au planning !`);
+                      alert(`🌿 "${recipe.name}" ajoutée au planning !`);
                     }}
                   >
                     📅 Planifier
