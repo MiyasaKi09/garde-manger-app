@@ -51,34 +51,114 @@ export default function PantryPage() {
   async function loadPantryItems() {
     setLoading(true);
     try {
-      // Charger les lots avec les métadonnées des produits canoniques
-      const { data, error } = await supabase
+      // Charger tous les lots d'abord
+      const { data: lotsData, error: lotsError } = await supabase
         .from('inventory_lots')
-        .select(`
-          *,
-          canonical_foods!product_id (
-            canonical_name,
-            density_g_per_ml,
-            grams_per_unit,
-            primary_unit
-          )
-        `)
+        .select('*')
         .order('expiration_date', { ascending: true, nullsLast: true });
 
-      if (error) {
-        console.error('Erreur lors du chargement des lots:', error);
-        throw error;
+      if (lotsError) {
+        console.error('Erreur lors du chargement des lots:', lotsError);
+        throw lotsError;
       }
       
-      console.log('Nombre de produits trouvés:', data?.length);
-      console.log('Exemple de données avec métadonnées:', data?.[0]);
+      console.log('Nombre de lots trouvés:', lotsData?.length);
+      
+      let data = lotsData || [];
+      
+      // Enrichir avec les métadonnées selon le type de produit
+      if (data.length > 0) {
+        // Récupérer les IDs par type de produit
+        const canonicalIds = data.filter(item => item.product_type === 'canonical' && item.product_id).map(item => item.product_id);
+        const cultivarIds = data.filter(item => item.product_type === 'cultivar' && item.product_id).map(item => item.product_id);
+        const archetypeIds = data.filter(item => item.product_type === 'archetype' && item.product_id).map(item => item.product_id);
+        
+        // Charger les métadonnées en parallèle avec héritage depuis canonical
+        const [canonicalData, cultivarData, archetypeData] = await Promise.all([
+          canonicalIds.length > 0 ? supabase
+            .from('canonical_foods')
+            .select('id, canonical_name, density_g_per_ml, grams_per_unit, primary_unit')
+            .in('id', canonicalIds) : { data: [], error: null },
+          cultivarIds.length > 0 ? supabase
+            .from('cultivars')
+            .select(`
+              id, cultivar_name, density_g_per_ml, grams_per_unit, primary_unit,
+              canonical_foods!canonical_food_id (
+                canonical_name, density_g_per_ml, grams_per_unit, primary_unit
+              )
+            `)
+            .in('id', cultivarIds) : { data: [], error: null },
+          archetypeIds.length > 0 ? supabase
+            .from('archetypes')
+            .select(`
+              id, archetype_name, density_g_per_ml, grams_per_unit, primary_unit,
+              canonical_foods!canonical_food_id (
+                canonical_name, density_g_per_ml, grams_per_unit, primary_unit
+              )
+            `)
+            .in('id', archetypeIds) : { data: [], error: null }
+        ]);
+        
+        // Créer des maps pour un accès rapide
+        const canonicalMap = {};
+        const cultivarMap = {};
+        const archetypeMap = {};
+        
+        (canonicalData.data || []).forEach(item => canonicalMap[item.id] = item);
+        (cultivarData.data || []).forEach(item => {
+          // Pour les cultivars, fusionner avec les données canonical en héritant
+          const canonical = item.canonical_foods;
+          cultivarMap[item.id] = {
+            ...item,
+            // Utiliser les valeurs du cultivar si présentes, sinon hériter du canonical
+            density_g_per_ml: item.density_g_per_ml || canonical?.density_g_per_ml,
+            grams_per_unit: item.grams_per_unit || canonical?.grams_per_unit,
+            primary_unit: item.primary_unit || canonical?.primary_unit,
+            canonical_foods: canonical
+          };
+        });
+        (archetypeData.data || []).forEach(item => {
+          // Pour les archetypes, même logique d'héritage
+          const canonical = item.canonical_foods;
+          archetypeMap[item.id] = {
+            ...item,
+            density_g_per_ml: item.density_g_per_ml || canonical?.density_g_per_ml,
+            grams_per_unit: item.grams_per_unit || canonical?.grams_per_unit,
+            primary_unit: item.primary_unit || canonical?.primary_unit,
+            canonical_foods: canonical
+          };
+        });
+        
+        // Enrichir les données des lots
+        data = data.map(item => {
+          if (item.product_type === 'canonical' && canonicalMap[item.product_id]) {
+            return { ...item, canonical_foods: canonicalMap[item.product_id] };
+          } else if (item.product_type === 'cultivar' && cultivarMap[item.product_id]) {
+            return { ...item, cultivars: cultivarMap[item.product_id] };
+          } else if (item.product_type === 'archetype' && archetypeMap[item.product_id]) {
+            return { ...item, archetypes: archetypeMap[item.product_id] };
+          }
+          return item;
+        });
+      }
+      
+      console.log('Exemple de données enrichies:', data?.[0]);
       
       // Transformer les données si nécessaire
       const transformedData = (data || []).map(item => {
         // Déterminer le nom du produit selon le type
         let productName = 'Produit sans nom';
+        let productMeta = null;
+        
         if (item.product_type === 'canonical' && item.canonical_foods?.canonical_name) {
           productName = item.canonical_foods.canonical_name;
+          productMeta = item.canonical_foods;
+        } else if (item.product_type === 'cultivar' && item.cultivars?.cultivar_name) {
+          productName = item.cultivars.cultivar_name;
+          productMeta = item.cultivars;
+        } else if (item.product_type === 'archetype' && item.archetypes?.archetype_name) {
+          productName = item.archetypes.archetype_name;
+          productMeta = item.archetypes;
         } else if (item.product_type === 'custom' && item.notes) {
           productName = item.notes;
         } else if (item.product_name) {
@@ -90,10 +170,10 @@ export default function PantryPage() {
           product_name: productName,
           expiration_status: getExpirationStatus(item.expiration_date),
           days_until_expiration: getDaysUntilExpiration(item.expiration_date),
-          // Utiliser les vraies colonnes de la base de données
-          grams_per_unit: item.unit_weight_grams || item.grams_per_unit || item.canonical_foods?.grams_per_unit,
-          density_g_per_ml: item.density_g_per_ml || item.canonical_foods?.density_g_per_ml,
-          primary_unit: item.primary_unit || item.canonical_foods?.primary_unit || item.unit
+          // Utiliser les métadonnées avec héritage
+          grams_per_unit: productMeta?.grams_per_unit || item.unit_weight_grams || item.grams_per_unit,
+          density_g_per_ml: productMeta?.density_g_per_ml || item.density_g_per_ml,
+          primary_unit: productMeta?.primary_unit || item.primary_unit || item.unit
         };
         
         // Debug détaillé des métadonnées
