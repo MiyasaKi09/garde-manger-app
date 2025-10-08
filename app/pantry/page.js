@@ -76,13 +76,23 @@ export default function PantryPage() {
         console.log('IDs canoniques à récupérer:', canonicalIds);
         
         if (canonicalIds.length > 0) {
+          // D'abord, essayons avec seulement les colonnes de base
           const { data: canonicalData, error: canonicalError } = await supabase
             .from('canonical_foods')
-            .select('id, canonical_name, density_g_per_ml, grams_per_unit, primary_unit')
+            .select('id, canonical_name')
             .in('id', canonicalIds);
           
           console.log('Données canonical_foods:', canonicalData);
-          console.log('Erreur canonical_foods:', canonicalError);
+          console.log('Erreur canonical_foods détaillée:', canonicalError);
+          
+          if (canonicalError) {
+            console.error('Détails de l\'erreur:', {
+              message: canonicalError.message,
+              details: canonicalError.details,
+              hint: canonicalError.hint,
+              code: canonicalError.code
+            });
+          }
           
           if (!canonicalError && canonicalData) {
             const canonicalMap = {};
