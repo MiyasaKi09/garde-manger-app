@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabaseClient';
 import SmartAddForm from './components/SmartAddForm';
 import ProductCard from './components/PantryProductCard';
 import { capitalizeProduct } from './components/pantryUtils';
+import ConfirmDialog from '../../components/ConfirmDialog';
 import './pantry.css';
 
 
@@ -17,6 +18,8 @@ export default function PantryPage() {
   const [showForm, setShowForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -247,8 +250,19 @@ export default function PantryPage() {
     }
   }
 
-  async function handleDelete(id) {
-    if (!confirm('Supprimer cet article ?')) return;
+  function handleDeleteClick(id) {
+    const item = items.find(i => i.id === id);
+    setItemToDelete(item);
+    setShowConfirmDelete(true);
+  }
+
+  async function handleDeleteConfirm() {
+    if (!itemToDelete) return;
+
+    const id = itemToDelete.id;
+    
+    // Suppression optimiste immédiate
+    setItems(prev => prev.filter(i => i.id !== id));
 
     try {
       const { error } = await supabase
@@ -256,14 +270,18 @@ export default function PantryPage() {
         .delete()
         .eq('id', id);
 
-      if (error) throw error;
-      
-      await loadPantryItems();
-      alert('Article supprimé');
+      if (error) {
+        console.error('Erreur lors de la suppression:', error);
+        // Revertir la suppression optimiste en cas d'erreur
+        await loadPantryItems();
+        alert('Erreur lors de la suppression: ' + error.message);
+      } else {
+        console.log('Article supprimé avec succès');
+      }
     } catch (error) {
       console.error('Erreur:', error);
-      // Suppression locale en cas d'erreur
-      setItems(prev => prev.filter(i => i.id !== id));
+      // Revertir la suppression optimiste
+      await loadPantryItems();
     }
   }
 
@@ -337,7 +355,7 @@ export default function PantryPage() {
               item={item}
               onConsume={() => handleConsume(item.id, item.qty_remaining)}
               onEdit={() => handleEdit(item.id)}
-              onDelete={() => handleDelete(item.id)}
+              onDelete={() => handleDeleteClick(item.id)}
               onUpdateQuantity={handleUpdateQuantity}
             />
           ))
@@ -361,6 +379,20 @@ export default function PantryPage() {
       >
         +
       </button>
+
+      {/* Dialog de confirmation de suppression */}
+      <ConfirmDialog
+        isOpen={showConfirmDelete}
+        onClose={() => {
+          setShowConfirmDelete(false);
+          setItemToDelete(null);
+        }}
+        onConfirm={handleDeleteConfirm}
+        title="Supprimer l'article"
+        message={`Êtes-vous sûr de vouloir supprimer "${itemToDelete?.product_name}" ?`}
+        confirmText="Supprimer"
+        cancelText="Annuler"
+      />
     </div>
   );
 }
