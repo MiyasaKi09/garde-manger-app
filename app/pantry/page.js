@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabaseClient';
+import { supabase } from '@/li/supabaseClient';
 import SmartAddForm from './components/SmartAddForm';
 import ProductCard from './components/PantryProductCard';
 import { capitalizeProduct } from './components/pantryUtils';
@@ -23,17 +23,15 @@ export default function PantryPage() {
   const [itemToDelete, setItemToDelete] = useState(null);
   const [showEditLot, setShowEditLot] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    console.log('🔍 Pantry page mounted, checking auth...');
     supabase.auth.getUser().then(({ data: { user } }) => {
-      console.log('👤 User status:', user ? 'authenticated' : 'not authenticated');
       if (!user) router.push('/login');
     });
   }, [router]);
 
   useEffect(() => {
-    console.log('📦 Loading pantry items...');
     loadPantryItems();
   }, []);
 
@@ -58,10 +56,11 @@ export default function PantryPage() {
   }
 
   async function loadPantryItems() {
-    console.log('🔄 loadPantryItems called');
+    if (isLoading) return; // Éviter les chargements multiples
+    
+    setIsLoading(true);
     setLoading(true);
     try {
-      console.log('🚀 Début du chargement des données...');
       
       // D'abord, essayons la version simple qui fonctionnait
       let { data, error } = await supabase
@@ -74,8 +73,7 @@ export default function PantryPage() {
         throw error;
       }
       
-      console.log('Nombre de lots trouvés:', data?.length);
-      console.log('Premier lot:', data?.[0]);
+
       
       // Maintenant essayons d'enrichir avec les canonical_foods seulement
       if (data && data.length > 0) {
@@ -83,7 +81,7 @@ export default function PantryPage() {
           .filter(item => item.product_type === 'canonical' && item.product_id)
           .map(item => item.product_id);
         
-        console.log('IDs canoniques à récupérer:', canonicalIds);
+
         
         if (canonicalIds.length > 0) {
           // Utiliser les vrais noms de colonnes de la base
@@ -92,28 +90,12 @@ export default function PantryPage() {
             .select('id, canonical_name, density_g_per_ml, unit_weight_grams, shelf_life_days_pantry')
             .in('id', canonicalIds);
           
-          console.log('Données canonical_foods:', canonicalData);
-          console.log('Erreur canonical_foods détaillée:', canonicalError);
-          
-          if (canonicalError) {
-            console.error('Détails de l\'erreur:', {
-              message: canonicalError.message,
-              details: canonicalError.details,
-              hint: canonicalError.hint,
-              code: canonicalError.code
-            });
-          }
+
           
           if (!canonicalError && canonicalData) {
-            console.log('Détail des données canonical récupérées:', canonicalData);
-            
             const canonicalMap = {};
             canonicalData.forEach(item => {
               canonicalMap[item.id] = item;
-              console.log(`Canonical ${item.id} (${item.canonical_name}):`, {
-                density_g_per_ml: item.density_g_per_ml,
-                unit_weight_grams: item.unit_weight_grams
-              });
             });
             
             data = data.map(item => {
@@ -129,8 +111,7 @@ export default function PantryPage() {
         }
       }
       
-      
-      console.log('Données après enrichissement:', data?.[0]);
+
       
       // Transformer les données - version simple d'abord
       const transformedData = (data || []).map(item => {
@@ -160,14 +141,13 @@ export default function PantryPage() {
         
         return transformed;
       });
-      
-      console.log('Données transformées:', transformedData.length);
       setItems(transformedData);
     } catch (error) {
       console.error('Erreur lors du chargement:', error);
       setItems([]);
     } finally {
       setLoading(false);
+      setIsLoading(false);
     }
   }
 
