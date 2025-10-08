@@ -31,12 +31,8 @@ export default function EditLotForm({
   const [expirationDate, setExpirationDate] = useState(originalExpirationDate);
   const [justConverted, setJustConverted] = useState(false);
   const [dateAdjusted, setDateAdjusted] = useState(false);
-  
-  // Garder en mémoire la date d'origine pour les calculs corrects
-  const originalDate = item.expiration_date ? item.expiration_date.split('T')[0] : '';
-  const originalLocation = item.storage_place || 'garde-manger';
 
-    // Métadonnées du produit pour les conversions
+  // Métadonnées du produit pour les conversions
   const density = item.density_g_per_ml || 0;
   const gramsPerUnit = item.grams_per_unit || 0;
 
