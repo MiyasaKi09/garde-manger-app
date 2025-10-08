@@ -73,7 +73,7 @@ export default function PantryPage() {
         const cultivarIds = data.filter(item => item.product_type === 'cultivar' && item.product_id).map(item => item.product_id);
         const archetypeIds = data.filter(item => item.product_type === 'archetype' && item.product_id).map(item => item.product_id);
         
-        // Charger les métadonnées en parallèle avec héritage depuis canonical
+        // Charger les métadonnées sans jointures complexes pour éviter les erreurs
         const [canonicalData, cultivarData, archetypeData] = await Promise.all([
           canonicalIds.length > 0 ? supabase
             .from('canonical_foods')
@@ -81,23 +81,24 @@ export default function PantryPage() {
             .in('id', canonicalIds) : { data: [], error: null },
           cultivarIds.length > 0 ? supabase
             .from('cultivars')
-            .select(`
-              id, cultivar_name, density_g_per_ml, grams_per_unit, primary_unit,
-              canonical_foods!canonical_food_id (
-                canonical_name, density_g_per_ml, grams_per_unit, primary_unit
-              )
-            `)
+            .select('id, cultivar_name, density_g_per_ml, grams_per_unit, primary_unit, canonical_food_id')
             .in('id', cultivarIds) : { data: [], error: null },
           archetypeIds.length > 0 ? supabase
             .from('archetypes')
-            .select(`
-              id, archetype_name, density_g_per_ml, grams_per_unit, primary_unit,
-              canonical_foods!canonical_food_id (
-                canonical_name, density_g_per_ml, grams_per_unit, primary_unit
-              )
-            `)
+            .select('id, archetype_name, density_g_per_ml, grams_per_unit, primary_unit, canonical_food_id')
             .in('id', archetypeIds) : { data: [], error: null }
         ]);
+
+        console.log('Données chargées:', {
+          canonical: canonicalData.data?.length || 0,
+          cultivars: cultivarData.data?.length || 0,  
+          archetypes: archetypeData.data?.length || 0
+        });
+        
+        // Debug: voir les métadonnées disponibles
+        console.log('Exemple canonical_foods:', canonicalData.data?.[0]);
+        console.log('Exemple cultivars:', cultivarData.data?.[0]);
+        console.log('Exemple archetypes:', archetypeData.data?.[0]);
         
         // Créer des maps pour un accès rapide
         const canonicalMap = {};
@@ -105,29 +106,8 @@ export default function PantryPage() {
         const archetypeMap = {};
         
         (canonicalData.data || []).forEach(item => canonicalMap[item.id] = item);
-        (cultivarData.data || []).forEach(item => {
-          // Pour les cultivars, fusionner avec les données canonical en héritant
-          const canonical = item.canonical_foods;
-          cultivarMap[item.id] = {
-            ...item,
-            // Utiliser les valeurs du cultivar si présentes, sinon hériter du canonical
-            density_g_per_ml: item.density_g_per_ml || canonical?.density_g_per_ml,
-            grams_per_unit: item.grams_per_unit || canonical?.grams_per_unit,
-            primary_unit: item.primary_unit || canonical?.primary_unit,
-            canonical_foods: canonical
-          };
-        });
-        (archetypeData.data || []).forEach(item => {
-          // Pour les archetypes, même logique d'héritage
-          const canonical = item.canonical_foods;
-          archetypeMap[item.id] = {
-            ...item,
-            density_g_per_ml: item.density_g_per_ml || canonical?.density_g_per_ml,
-            grams_per_unit: item.grams_per_unit || canonical?.grams_per_unit,
-            primary_unit: item.primary_unit || canonical?.primary_unit,
-            canonical_foods: canonical
-          };
-        });
+        (cultivarData.data || []).forEach(item => cultivarMap[item.id] = item);
+        (archetypeData.data || []).forEach(item => archetypeMap[item.id] = item);
         
         // Enrichir les données des lots
         data = data.map(item => {
@@ -146,44 +126,54 @@ export default function PantryPage() {
       
       // Transformer les données si nécessaire
       const transformedData = (data || []).map(item => {
-        // Déterminer le nom du produit selon le type
+        // Récupérer les métadonnées selon le type de produit
         let productName = 'Produit sans nom';
         let productMeta = null;
         
-        if (item.product_type === 'canonical' && item.canonical_foods?.canonical_name) {
-          productName = item.canonical_foods.canonical_name;
-          productMeta = item.canonical_foods;
-        } else if (item.product_type === 'cultivar' && item.cultivars?.cultivar_name) {
-          productName = item.cultivars.cultivar_name;
-          productMeta = item.cultivars;
-        } else if (item.product_type === 'archetype' && item.archetypes?.archetype_name) {
-          productName = item.archetypes.archetype_name;
-          productMeta = item.archetypes;
+        if (item.product_type === 'canonical' && canonicalMap[item.product_id]) {
+          const canonical = canonicalMap[item.product_id];
+          productName = canonical.canonical_name;
+          productMeta = canonical;
+          item.canonical_foods = canonical; // Attacher pour l'affichage
+        } else if (item.product_type === 'cultivar' && cultivarMap[item.product_id]) {
+          const cultivar = cultivarMap[item.product_id];
+          productName = cultivar.cultivar_name;
+          productMeta = cultivar;
+          item.cultivars = cultivar; // Attacher pour l'affichage
+        } else if (item.product_type === 'archetype' && archetypeMap[item.product_id]) {
+          const archetype = archetypeMap[item.product_id];
+          productName = archetype.archetype_name;
+          productMeta = archetype;
+          item.archetypes = archetype; // Attacher pour l'affichage
         } else if (item.product_type === 'custom' && item.notes) {
           productName = item.notes;
         } else if (item.product_name) {
           productName = item.product_name;
         }
         
+        console.log(`Processing item ${item.id}: type=${item.product_type}, product_id=${item.product_id}, name="${productName}"`);
+        
         const transformed = {
           ...item,
           product_name: productName,
           expiration_status: getExpirationStatus(item.expiration_date),
           days_until_expiration: getDaysUntilExpiration(item.expiration_date),
-          // Utiliser les métadonnées avec héritage
-          grams_per_unit: productMeta?.grams_per_unit || item.unit_weight_grams || item.grams_per_unit,
-          density_g_per_ml: productMeta?.density_g_per_ml || item.density_g_per_ml,
+          // Utiliser UNIQUEMENT les vraies métadonnées de la base
+          grams_per_unit: productMeta?.grams_per_unit || item.unit_weight_grams || item.grams_per_unit || null,
+          density_g_per_ml: productMeta?.density_g_per_ml || item.density_g_per_ml || null,
           primary_unit: productMeta?.primary_unit || item.primary_unit || item.unit
         };
         
         // Debug détaillé des métadonnées
         console.log(`Produit: "${transformed.product_name}"`, {
-          unit_weight_grams: item.unit_weight_grams,
-          density_g_per_ml: item.density_g_per_ml,
+          type: item.product_type,
+          product_id: item.product_id,
           unit: item.unit,
           qty_remaining: item.qty_remaining,
+          productMeta: productMeta,
           final_grams_per_unit: transformed.grams_per_unit,
-          final_density: transformed.density_g_per_ml
+          final_density: transformed.density_g_per_ml,
+          conversions_possibles: (transformed.grams_per_unit || transformed.density_g_per_ml) ? 'OUI' : 'NON'
         });
         
         return transformed;

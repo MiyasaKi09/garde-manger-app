@@ -8,36 +8,13 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
   const [showActions, setShowActions] = useState(false);
   
   // Calculer les conversions rapides possibles selon le type de produit
-  let productMeta = { 
+  const productMeta = { 
     productName: item.product_name,
+    // Utiliser directement les données transformées du parent
     grams_per_unit: item.grams_per_unit,
     density_g_per_ml: item.density_g_per_ml,
     primary_unit: item.primary_unit
   };
-
-  // Récupérer les métadonnées selon le type de produit
-  if (item.product_type === 'canonical' && item.canonical_foods) {
-    productMeta = {
-      productName: item.canonical_foods.canonical_name,
-      grams_per_unit: item.canonical_foods.grams_per_unit,
-      density_g_per_ml: item.canonical_foods.density_g_per_ml,
-      primary_unit: item.canonical_foods.primary_unit
-    };
-  } else if (item.product_type === 'cultivar' && item.cultivars) {
-    productMeta = {
-      productName: item.cultivars.cultivar_name,
-      grams_per_unit: item.cultivars.grams_per_unit,
-      density_g_per_ml: item.cultivars.density_g_per_ml,
-      primary_unit: item.cultivars.primary_unit
-    };
-  } else if (item.product_type === 'archetype' && item.archetypes) {
-    productMeta = {
-      productName: item.archetypes.archetype_name,
-      grams_per_unit: item.archetypes.grams_per_unit,
-      density_g_per_ml: item.archetypes.density_g_per_ml,
-      primary_unit: item.archetypes.primary_unit
-    };
-  }
 
   const quickConversions = getQuickConversions(item.qty_remaining, item.unit, productMeta);
   
