@@ -85,7 +85,7 @@ export default function PantryPage() {
           // Utiliser les vrais noms de colonnes de la base
           const { data: canonicalData, error: canonicalError } = await supabase
             .from('canonical_foods')
-            .select('id, canonical_name, density_g_per_ml, unit_weight_grams')
+            .select('id, canonical_name, density_g_per_ml, unit_weight_grams, shelf_life_days_pantry')
             .in('id', canonicalIds);
           
           console.log('Données canonical_foods:', canonicalData);

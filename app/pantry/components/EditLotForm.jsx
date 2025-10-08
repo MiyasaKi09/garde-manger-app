@@ -22,60 +22,108 @@ export default function EditLotForm({
   const [quantity, setQuantity] = useState(item.qty_remaining);
   const [unit, setUnit] = useState(item.unit);
   const [location, setLocation] = useState(item.storage_place || 'garde-manger');
-  const [expirationDate, setExpirationDate] = useState(
-    item.expiration_date ? item.expiration_date.split('T')[0] : ''
-  );
+  
+  // Garder la date d'origine et celle de création pour les calculs
+  const originalExpirationDate = item.expiration_date ? item.expiration_date.split('T')[0] : '';
+  const originalLocation = item.storage_place || 'garde-manger';
+  const createdAt = new Date(item.created_at || Date.now());
+  
+  const [expirationDate, setExpirationDate] = useState(originalExpirationDate);
   const [justConverted, setJustConverted] = useState(false);
   const [dateAdjusted, setDateAdjusted] = useState(false);
+  
+  // Garder en mémoire la date d'origine pour les calculs corrects
+  const originalDate = item.expiration_date ? item.expiration_date.split('T')[0] : '';
+  const originalLocation = item.storage_place || 'garde-manger';
 
-  // Métadonnées du produit pour les conversions
+    // Métadonnées du produit pour les conversions
   const density = item.density_g_per_ml || 0;
   const gramsPerUnit = item.grams_per_unit || 0;
 
-  // Fonction pour ajuster la date d'expiration selon l'emplacement
-  const adjustExpirationDateForLocation = (newLocation, currentDate) => {
-    if (!currentDate) return '';
+  // Métadonnées de durée de conservation selon l'emplacement (depuis la base de données)
+  const getShelfLifeDays = (location) => {
+    // Récupérer les métadonnées selon le type de produit et l'emplacement
+    if (item.canonical_foods) {
+      const shelfLife = item.canonical_foods;
+      switch(location) {
+        case 'réfrigérateur': return shelfLife.shelf_life_days_fridge || shelfLife.shelf_life_days_pantry * 2;
+        case 'congélateur': return shelfLife.shelf_life_days_freezer || shelfLife.shelf_life_days_pantry * 30;
+        case 'garde-manger': return shelfLife.shelf_life_days_pantry || 7;
+        case 'cave': return shelfLife.shelf_life_days_pantry * 1.5 || 10;
+        case 'placard': return shelfLife.shelf_life_days_pantry || 7;
+        default: return 7;
+      }
+    } else if (item.cultivars) {
+      const shelfLife = item.cultivars;
+      switch(location) {
+        case 'réfrigérateur': return shelfLife.shelf_life_days_fridge || shelfLife.shelf_life_days_pantry * 2;
+        case 'congélateur': return shelfLife.shelf_life_days_freezer || shelfLife.shelf_life_days_pantry * 30;
+        case 'garde-manger': return shelfLife.shelf_life_days_pantry || 7;
+        case 'cave': return shelfLife.shelf_life_days_pantry * 1.5 || 10;
+        case 'placard': return shelfLife.shelf_life_days_pantry || 7;
+        default: return 7;
+      }
+    } else if (item.archetypes) {
+      const shelfLife = item.archetypes;
+      switch(location) {
+        case 'réfrigérateur': return shelfLife.shelf_life_days_fridge || shelfLife.shelf_life_days_pantry * 2;
+        case 'congélateur': return shelfLife.shelf_life_days_freezer || shelfLife.shelf_life_days_pantry * 30;
+        case 'garde-manger': return shelfLife.shelf_life_days_pantry || 7;
+        case 'cave': return shelfLife.shelf_life_days_pantry * 1.5 || 10;
+        case 'placard': return shelfLife.shelf_life_days_pantry || 7;
+        default: return 7;
+      }
+    }
     
-    const currentDateObj = new Date(currentDate);
-    const today = new Date();
-    const daysFromToday = Math.ceil((currentDateObj - today) / (1000 * 60 * 60 * 24));
-    
-    // Facteurs d'ajustement selon l'emplacement
-    const locationFactors = {
-      'garde-manger': 1.0,      // Durée normale
-      'réfrigérateur': 2.0,     // Double la durée
-      'congélateur': 10.0,      // 10x plus long
-      'cave': 1.5,              // 50% plus long
-      'placard': 1.0            // Durée normale
-    };
-    
-    const currentLocationFactor = locationFactors[item.storage_place] || 1.0;
-    const newLocationFactor = locationFactors[newLocation] || 1.0;
-    
-    // Calculer la nouvelle durée ajustée
-    const adjustmentRatio = newLocationFactor / currentLocationFactor;
-    const newDaysFromToday = Math.round(daysFromToday * adjustmentRatio);
-    
-    // Calculer la nouvelle date
-    const newDate = new Date(today);
-    newDate.setDate(today.getDate() + newDaysFromToday);
-    
-    return newDate.toISOString().split('T')[0];
+    // Valeurs par défaut si pas de métadonnées
+    switch(location) {
+      case 'réfrigérateur': return 14;
+      case 'congélateur': return 365;
+      case 'garde-manger': return 7;
+      case 'cave': return 30;
+      case 'placard': return 7;
+      default: return 7;
+    }
   };
 
-  const handleLocationChange = (newLocation) => {
-    const willAdjustDate = expirationDate && newLocation !== item.storage_place;
+  // Fonction pour calculer la nouvelle date d'expiration basée sur les métadonnées réelles
+  const calculateExpirationDate = (targetLocation) => {
+    const today = new Date();
+    const daysSinceCreation = Math.floor((today - createdAt) / (1000 * 60 * 60 * 24));
+    
+    // Obtenir la durée de conservation pour l'emplacement original et le nouveau
+    const originalShelfLife = getShelfLifeDays(originalLocation);
+    const targetShelfLife = getShelfLifeDays(targetLocation);
+    
+    // Calculer le pourcentage de durée de vie déjà écoulé dans l'emplacement original
+    const percentageUsed = Math.min(daysSinceCreation / originalShelfLife, 1);
+    
+    // Calculer les jours restants dans le nouvel emplacement
+    const remainingDays = Math.max(0, Math.round(targetShelfLife * (1 - percentageUsed)));
+    
+    // Calculer la nouvelle date d'expiration
+    const newExpirationDate = new Date(today);
+    newExpirationDate.setDate(today.getDate() + remainingDays);
+    
+    return newExpirationDate.toISOString().split('T')[0];
+  };
+
+    const handleLocationChange = (newLocation) => {
+    const willAdjustDate = newLocation !== originalLocation;
     
     setLocation(newLocation);
     
-    // Ajuster automatiquement la date si elle existe
+    // Recalculer la date basée sur les métadonnées réelles
     if (willAdjustDate) {
-      const newDate = adjustExpirationDateForLocation(newLocation, expirationDate);
+      const newDate = calculateExpirationDate(newLocation);
       setExpirationDate(newDate);
       
       // Effet visuel pour indiquer l'ajustement
       setDateAdjusted(true);
       setTimeout(() => setDateAdjusted(false), 1500);
+    } else {
+      // Revenir à la date d'origine si on remet l'emplacement original
+      setExpirationDate(originalExpirationDate);
     }
   };
 
@@ -246,29 +294,32 @@ export default function EditLotForm({
               <span>Emplacement</span>
             </div>
             
-            <div className="location-grid">
+                        <div className="location-grid">
               {STORAGE_LOCATIONS.map(loc => {
-                const currentFactor = STORAGE_LOCATIONS.find(l => l.value === item.storage_place)?.factor || 1.0;
-                const willExtend = expirationDate && loc.factor > currentFactor;
-                const willShorten = expirationDate && loc.factor < currentFactor;
+                const originalShelfLife = getShelfLifeDays(originalLocation);
+                const targetShelfLife = getShelfLifeDays(loc.value);
+                const willExtend = targetShelfLife > originalShelfLife;
+                const willShorten = targetShelfLife < originalShelfLife;
+                const isOriginal = loc.value === originalLocation;
                 
                 return (
                   <button
                     key={loc.value}
                     type="button"
-                    className={`location-btn ${location === loc.value ? 'selected' : ''} ${willExtend ? 'extends-life' : ''} ${willShorten ? 'shortens-life' : ''}`}
+                    className={`location-btn ${location === loc.value ? 'selected' : ''} ${willExtend && !isOriginal ? 'extends-life' : ''} ${willShorten && !isOriginal ? 'shortens-life' : ''}`}
                     onClick={() => handleLocationChange(loc.value)}
                     title={
-                      loc.value === item.storage_place ? 'Emplacement actuel' :
-                      willExtend ? `Prolongera la conservation` :
-                      willShorten ? `Réduira la conservation` :
-                      'Même durée de conservation'
+                      isOriginal ? 'Emplacement d\'origine' :
+                      willExtend ? `Conservation plus longue (${Math.round(targetShelfLife)} jours)` :
+                      willShorten ? `Conservation plus courte (${Math.round(targetShelfLife)} jours)` :
+                      `Même durée de conservation (${Math.round(targetShelfLife)} jours)`
                     }
                   >
                     <span className="location-icon">{loc.icon}</span>
                     <span className="location-label">{loc.label}</span>
-                    {willExtend && <span className="duration-indicator">+</span>}
-                    {willShorten && <span className="duration-indicator">-</span>}
+                    <div className="shelf-life-info">{Math.round(targetShelfLife)}j</div>
+                    {willExtend && !isOriginal && <span className="duration-indicator">+</span>}
+                    {willShorten && !isOriginal && <span className="duration-indicator">-</span>}
                   </button>
                 );
               })}
