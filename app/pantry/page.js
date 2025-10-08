@@ -19,6 +19,8 @@ export default function PantryPage() {
   const [showForm, setShowForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [sortBy, setSortBy] = useState('expiration'); // expiration, quantity, name
+  const [sortOrder, setSortOrder] = useState('asc'); // asc, desc
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const [showEditLot, setShowEditLot] = useState(false);
@@ -36,23 +38,87 @@ export default function PantryPage() {
   }, []);
 
   useEffect(() => {
-    filterItems();
-  }, [items, searchTerm, statusFilter]);
+    filterAndSortItems();
+  }, [items, searchTerm, statusFilter, sortBy, sortOrder]);
 
-  function filterItems() {
+  function filterAndSortItems() {
     let filtered = [...items];
 
+    // Filtrage par texte
     if (searchTerm) {
       filtered = filtered.filter(item =>
         (item.product_name || '').toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
+    // Filtrage par statut d'expiration
     if (statusFilter !== 'all') {
       filtered = filtered.filter(item => item.expiration_status === statusFilter);
     }
 
+    // Tri
+    filtered.sort((a, b) => {
+      let comparison = 0;
+      
+      switch (sortBy) {
+        case 'expiration':
+          // Tri par date d'expiration (les sans date à la fin)
+          if (!a.expiration_date && !b.expiration_date) comparison = 0;
+          else if (!a.expiration_date) comparison = 1;
+          else if (!b.expiration_date) comparison = -1;
+          else {
+            const dateA = new Date(a.expiration_date);
+            const dateB = new Date(b.expiration_date);
+            comparison = dateA - dateB;
+          }
+          break;
+          
+        case 'quantity':
+          // Tri par quantité (convertir tout en grammes pour comparer)
+          const qtyA = getQuantityInGrams(a);
+          const qtyB = getQuantityInGrams(b);
+          comparison = qtyA - qtyB;
+          break;
+          
+        case 'name':
+          // Tri alphabétique par nom
+          comparison = (a.product_name || '').localeCompare(b.product_name || '');
+          break;
+          
+        case 'location':
+          // Tri par emplacement
+          comparison = (a.storage_place || '').localeCompare(b.storage_place || '');
+          break;
+          
+        default:
+          comparison = 0;
+      }
+      
+      return sortOrder === 'desc' ? -comparison : comparison;
+    });
+
     setFilteredItems(filtered);
+  }
+
+  // Fonction helper pour convertir les quantités en grammes pour comparaison
+  function getQuantityInGrams(item) {
+    const qty = item.qty_remaining || 0;
+    const unit = (item.unit || '').toLowerCase();
+    
+    // Si on a des métadonnées pour conversion
+    if (item.grams_per_unit && (unit === 'u' || unit === 'pièce' || unit === 'pièces')) {
+      return qty * item.grams_per_unit;
+    }
+    
+    // Conversion standard des unités
+    switch (unit) {
+      case 'kg': return qty * 1000;
+      case 'g': return qty;
+      case 'l': return qty * 1000; // Approximation pour liquides
+      case 'ml': return qty; // Approximation
+      case 'cl': return qty * 10; // Approximation
+      default: return qty; // Unités ou autres
+    }
   }
 
   async function loadPantryItems() {
@@ -344,9 +410,10 @@ export default function PantryPage() {
 
   return (
     <div className="pantry-container">
-      {/* Filtres et stats sur une ligne compacte */}
-      <div className="top-controls">
-        <div className="search-filters">
+      {/* Contrôles améliorés */}
+      <div className="pantry-controls">
+        {/* Ligne 1: Recherche et stats */}
+        <div className="top-row">
           <input
             type="text"
             placeholder="Rechercher un produit..."
@@ -355,32 +422,111 @@ export default function PantryPage() {
             className="search-input"
           />
           
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="filter-select"
-          >
-            <option value="all">Tous les statuts</option>
-            <option value="expired">Expirés</option>
-            <option value="expiring_soon">Expire bientôt</option>
-            <option value="good">En bon état</option>
-          </select>
+          {/* Stats cliquables pour filtrage rapide */}
+          <div className="stats-filter">
+            <button 
+              className={`stat-filter-btn ${statusFilter === 'all' ? 'active' : ''}`}
+              onClick={() => setStatusFilter('all')}
+              title="Afficher tous les articles"
+            >
+              <span className="stat-number">{items.length}</span>
+              <span className="stat-label">TOUT</span>
+            </button>
+            <button 
+              className={`stat-filter-btn expired ${statusFilter === 'expired' ? 'active' : ''}`}
+              onClick={() => setStatusFilter(statusFilter === 'expired' ? 'all' : 'expired')}
+              title="Afficher uniquement les produits expirés"
+            >
+              <span className="stat-number">{items.filter(i => i.expiration_status === 'expired').length}</span>
+              <span className="stat-label">EXPIRÉS</span>
+            </button>
+            <button 
+              className={`stat-filter-btn expiring ${statusFilter === 'expiring_soon' ? 'active' : ''}`}
+              onClick={() => setStatusFilter(statusFilter === 'expiring_soon' ? 'all' : 'expiring_soon')}
+              title="Afficher uniquement les produits qui expirent bientôt"
+            >
+              <span className="stat-number">{items.filter(i => i.expiration_status === 'expiring_soon').length}</span>
+              <span className="stat-label">EXPIRE BIENTÔT</span>
+            </button>
+            <button 
+              className={`stat-filter-btn good ${statusFilter === 'good' ? 'active' : ''}`}
+              onClick={() => setStatusFilter(statusFilter === 'good' ? 'all' : 'good')}
+              title="Afficher uniquement les produits en bon état"
+            >
+              <span className="stat-number">{items.filter(i => i.expiration_status === 'good').length}</span>
+              <span className="stat-label">BON ÉTAT</span>
+            </button>
+          </div>
         </div>
 
-        {/* Stats inline compactes */}
-        <div className="stats-inline">
-          <div className="stat-item">
-            <span className="stat-number">{items.length}</span>
-            <span className="stat-label">ARTICLES</span>
+        {/* Ligne 2: Options de tri */}
+        <div className="sort-controls">
+          <span className="sort-label">Trier par :</span>
+          
+          <div className="sort-options">
+            <button
+              className={`sort-btn ${sortBy === 'expiration' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'expiration') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('expiration');
+                  setSortOrder('asc');
+                }
+              }}
+            >
+              📅 Expiration {sortBy === 'expiration' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+            
+            <button
+              className={`sort-btn ${sortBy === 'quantity' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'quantity') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('quantity');
+                  setSortOrder('desc'); // Par défaut: plus grosse quantité d'abord
+                }
+              }}
+            >
+              📦 Quantité {sortBy === 'quantity' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+            
+            <button
+              className={`sort-btn ${sortBy === 'name' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'name') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('name');
+                  setSortOrder('asc');
+                }
+              }}
+            >
+              🔤 Nom {sortBy === 'name' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
+            
+            <button
+              className={`sort-btn ${sortBy === 'location' ? 'active' : ''}`}
+              onClick={() => {
+                if (sortBy === 'location') {
+                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                } else {
+                  setSortBy('location');
+                  setSortOrder('asc');
+                }
+              }}
+            >
+              📍 Emplacement {sortBy === 'location' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+            </button>
           </div>
-          <div className="stat-item">
-            <span className="stat-number">{items.filter(i => i.expiration_status === 'expired').length}</span>
-            <span className="stat-label">EXPIRÉS</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">{items.filter(i => i.expiration_status === 'expiring_soon').length}</span>
-            <span className="stat-label">EXPIRE BIENTÔT</span>
-          </div>
+
+          {/* Indicateur du nombre d'éléments filtrés */}
+          {filteredItems.length !== items.length && (
+            <span className="filter-count">
+              {filteredItems.length} / {items.length} articles
+            </span>
+          )}
         </div>
       </div>
 

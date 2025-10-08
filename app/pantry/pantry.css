@@ -13,9 +13,9 @@
   margin: 0 auto;
 }
 
-/* Contrôles du haut - Tout sur une ligne avec espacements */
+/* Anciens contrôles - gardés pour compatibilité */
 .top-controls {
-  margin-bottom: 3rem; /* Plus d'espace vertical */
+  margin-bottom: 3rem;
 }
 
 /* Barre de recherche et filtres redessinés - COMPACTE */
@@ -576,4 +576,176 @@
 
 .conversion-btn:active {
   transform: translateY(0);
+}
+
+/* ========================================
+   NOUVEAUX CONTRÔLES FILTRES ET TRIS
+   ======================================== */
+
+.pantry-controls {
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.top-row {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 280px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #2e7d32;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(76, 175, 80, 0.5);
+}
+
+.search-input::placeholder {
+  color: rgba(46, 125, 50, 0.6);
+}
+
+/* Stats cliquables pour filtrage */
+.stats-filter {
+  display: flex;
+  gap: 8px;
+}
+
+.stat-filter-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 70px;
+}
+
+.stat-filter-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.stat-filter-btn.active {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: rgba(76, 175, 80, 0.5);
+  transform: scale(1.05);
+}
+
+.stat-filter-btn.expired.active {
+  background: rgba(244, 67, 54, 0.3);
+  border-color: rgba(244, 67, 54, 0.5);
+}
+
+.stat-filter-btn.expiring.active {
+  background: rgba(255, 152, 0, 0.3);
+  border-color: rgba(255, 152, 0, 0.5);
+}
+
+.stat-filter-btn.good.active {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: rgba(76, 175, 80, 0.5);
+}
+
+.stat-number {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2e7d32;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #4a5d23;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+/* Contrôles de tri */
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sort-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5d23;
+  white-space: nowrap;
+}
+
+.sort-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sort-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4a5d23;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.sort-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.sort-btn.active {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: rgba(76, 175, 80, 0.5);
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.filter-count {
+  margin-left: auto;
+  padding: 4px 8px;
+  background: rgba(33, 150, 243, 0.2);
+  border: 1px solid rgba(33, 150, 243, 0.3);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #1565c0;
+  white-space: nowrap;
 }
