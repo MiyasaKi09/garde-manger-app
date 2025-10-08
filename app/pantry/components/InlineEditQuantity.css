@@ -1,4 +1,4 @@
-/* Styles pour l'édition inline de quantité */
+/* Styles pour l'édition inline de quantité - Style glassmorphisme */
 
 .inline-edit-overlay {
   position: fixed;
@@ -6,22 +6,26 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(139, 195, 74, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(8px);
 }
 
 .inline-edit-card {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  min-width: 320px;
-  max-width: 400px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  animation: slideIn 0.2s ease-out;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 32px;
+  min-width: 360px;
+  max-width: 420px;
+  box-shadow: 
+    0 25px 50px -12px rgba(139, 195, 74, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  animation: slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes slideIn {
@@ -36,125 +40,163 @@
 }
 
 .inline-edit-title {
-  margin: 0 0 20px 0;
-  font-size: 18px;
+  margin: 0 0 28px 0;
+  font-size: 22px;
   font-weight: 600;
-  color: #1f2937;
+  color: #2d5016;
   text-align: center;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
 }
 
 .quantity-controls, .unit-controls {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .quantity-label, .unit-label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: #374151;
-  font-size: 14px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #4a5d23;
+  font-size: 15px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .quantity-input-group {
   display: flex;
   align-items: center;
-  border: 2px solid #e5e7eb;
-  border-radius: 12px;
+  border: 2px solid rgba(139, 195, 74, 0.2);
+  border-radius: 20px;
   overflow: hidden;
-  background: white;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(139, 195, 74, 0.1);
 }
 
 .quantity-btn {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border: none;
-  background: #f9fafb;
-  color: #374151;
-  font-size: 20px;
-  font-weight: 600;
+  background: rgba(139, 195, 74, 0.1);
+  color: #4a5d23;
+  font-size: 24px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(10px);
 }
 
 .quantity-btn:hover:not(:disabled) {
-  background: #e5e7eb;
-  color: #1f2937;
+  background: rgba(139, 195, 74, 0.2);
+  color: #2d5016;
+  transform: scale(1.05);
 }
 
 .quantity-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  transform: none;
 }
 
 .quantity-input {
   flex: 1;
   border: none;
-  padding: 12px 16px;
+  padding: 14px 20px;
   text-align: center;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   outline: none;
-  background: white;
+  background: transparent;
+  color: #2d5016;
 }
 
 .quantity-input:focus {
   outline: none;
 }
 
+.quantity-input.converted {
+  animation: convertedGlow 1s ease-out;
+}
+
+@keyframes convertedGlow {
+  0% { 
+    background: rgba(139, 195, 74, 0.3);
+    transform: scale(1.02);
+  }
+  100% { 
+    background: transparent;
+    transform: scale(1);
+  }
+}
+
 .unit-select {
   width: 100%;
-  padding: 12px 16px;
-  border: 2px solid #e5e7eb;
-  border-radius: 12px;
+  padding: 14px 20px;
+  border: 2px solid rgba(139, 195, 74, 0.2);
+  border-radius: 16px;
   font-size: 16px;
-  background: white;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
   cursor: pointer;
+  color: #2d5016;
+  box-shadow: 0 4px 16px rgba(139, 195, 74, 0.1);
 }
 
 .unit-select:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: rgba(139, 195, 74, 0.5);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .inline-edit-actions {
   display: flex;
-  gap: 12px;
-  justify-content: flex-end;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
 }
 
 .inline-edit-btn {
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 16px;
   border: none;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 100px;
-  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 120px;
+  font-size: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .cancel-btn {
-  background: #f3f4f6;
-  color: #374151;
+  background: rgba(255, 255, 255, 0.7);
+  color: #6b7280;
+  border: 2px solid rgba(139, 195, 74, 0.2);
 }
 
 .cancel-btn:hover {
-  background: #e5e7eb;
+  background: rgba(255, 255, 255, 0.9);
+  color: #4b5563;
+  transform: translateY(-2px);
 }
 
 .save-btn {
-  background: #10b981;
+  background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
   color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .save-btn:hover:not(:disabled) {
-  background: #059669;
+  background: linear-gradient(135deg, #689f38 0%, #558b2f 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 195, 74, 0.4);
 }
 
 .save-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
