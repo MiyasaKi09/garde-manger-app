@@ -10,9 +10,9 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
   // Calculer les conversions rapides possibles
   const productMeta = { 
     productName: item.product_name || item.canonical_foods?.canonical_name,
-    grams_per_unit: item.unit_weight_grams || item.grams_per_unit || item.canonical_foods?.grams_per_unit,
-    density_g_per_ml: item.density_g_per_ml || item.canonical_foods?.density_g_per_ml,
-    primary_unit: item.primary_unit || item.canonical_foods?.primary_unit || item.unit
+    grams_per_unit: item.canonical_foods?.grams_per_unit || item.grams_per_unit || item.unit_weight_grams,
+    density_g_per_ml: item.canonical_foods?.density_g_per_ml || item.density_g_per_ml,
+    primary_unit: item.canonical_foods?.primary_unit || item.primary_unit || item.unit
   };
   const quickConversions = getQuickConversions(item.qty_remaining, item.unit, productMeta);
   

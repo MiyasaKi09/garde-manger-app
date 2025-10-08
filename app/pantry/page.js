@@ -51,84 +51,27 @@ export default function PantryPage() {
   async function loadPantryItems() {
     setLoading(true);
     try {
-      // Utiliser la vue pantry_view qui fonctionne déjà
-      let { data, error } = await supabase
-        .from('pantry_view')
-        .select('*')
+      // Charger les lots avec les métadonnées des produits canoniques
+      const { data, error } = await supabase
+        .from('inventory_lots')
+        .select(`
+          *,
+          canonical_foods!product_id (
+            canonical_name,
+            density_g_per_ml,
+            grams_per_unit,
+            primary_unit
+          )
+        `)
         .order('expiration_date', { ascending: true, nullsLast: true });
 
-      // Fallback vers inventory_lots si pantry_view n'existe pas
-      if (error && error.code === '42P01') {
-        console.log('Vue pantry_view non trouvée, utilisation de inventory_lots');
-        const result = await supabase
-          .from('inventory_lots')
-          .select('*')
-          .order('expiration_date', { ascending: true, nullsLast: true });
-        
-        data = result.data;
-        error = result.error;
-        
-        // Si on a des données, essayer d'enrichir avec les métadonnées
-        if (data && data.length > 0) {
-          const canonicalIds = data
-            .filter(item => item.product_type === 'canonical' && item.product_id)
-            .map(item => item.product_id);
-          
-          if (canonicalIds.length > 0) {
-            const { data: canonicalData, error: canonicalError } = await supabase
-              .from('canonical_foods')
-              .select('id, canonical_name, density_g_per_ml, grams_per_unit, primary_unit')
-              .in('id', canonicalIds);
-            
-            if (!canonicalError && canonicalData) {
-              const metaMap = {};
-              canonicalData.forEach(item => {
-                metaMap[item.id] = item;
-              });
-              
-              data = data.map(item => {
-                if (item.product_type === 'canonical' && item.product_id && metaMap[item.product_id]) {
-                  return {
-                    ...item,
-                    canonical_foods: metaMap[item.product_id]
-                  };
-                }
-                return item;
-              });
-            }
-          }
-        }
+      if (error) {
+        console.error('Erreur lors du chargement des lots:', error);
+        throw error;
       }
       
-      // Fallback vers l'ancienne vue pantry si elle existe encore
-      if (error && error.code === '42P01') {
-        console.log('Vue pantry_view non trouvée, essai avec pantry');
-        const result = await supabase
-          .from('pantry')
-          .select('*')
-          .order('expiration_date', { ascending: true });
-        
-        data = result.data;
-        error = result.error;
-      }
-      
-      // Si ça ne marche toujours pas, utiliser inventory_lots directement
-      if (error && error.code === '42P01') {
-        console.log('Vue pantry non trouvée, utilisation de inventory_lots');
-        const result = await supabase
-          .from('inventory_lots')
-          .select('*')
-          .order('expiration_date', { ascending: true });
-        
-        data = result.data;
-        error = result.error;
-      }
-
-      if (error) throw error;
-      
-      // Debug : voir les données brutes
       console.log('Nombre de produits trouvés:', data?.length);
-      console.log('Données brutes (première):', data?.[0]);
+      console.log('Exemple de données avec métadonnées:', data?.[0]);
       
       // Transformer les données si nécessaire
       const transformedData = (data || []).map(item => {
@@ -233,6 +176,11 @@ export default function PantryPage() {
   async function handleUpdateQuantity(id, newQty, newUnit) {
     console.log('Mise à jour quantité:', { id, newQty, newUnit });
     
+    // Mise à jour locale immédiate pour une UX fluide
+    setItems(prev => prev.map(i => 
+      i.id === id ? { ...i, qty_remaining: parseFloat(newQty), unit: newUnit } : i
+    ));
+    
     try {
       const { error } = await supabase
         .from('inventory_lots')
@@ -247,15 +195,12 @@ export default function PantryPage() {
         throw error;
       }
       
-      console.log('Mise à jour réussie, rechargement des données...');
-      await loadPantryItems();
+      console.log('Mise à jour réussie en base de données');
     } catch (error) {
       console.error('Erreur lors de la conversion:', error);
       alert('Erreur lors de la conversion: ' + error.message);
-      // Mise à jour locale en cas d'erreur
-      setItems(prev => prev.map(i => 
-        i.id === id ? { ...i, qty_remaining: parseFloat(newQty), unit: newUnit } : i
-      ));
+      // Revertir la mise à jour locale en cas d'erreur
+      await loadPantryItems();
     }
   }
 
