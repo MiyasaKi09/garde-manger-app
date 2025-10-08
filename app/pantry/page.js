@@ -76,10 +76,10 @@ export default function PantryPage() {
         console.log('IDs canoniques à récupérer:', canonicalIds);
         
         if (canonicalIds.length > 0) {
-          // D'abord, essayons avec seulement les colonnes de base
+          // Maintenant récupérons toutes les colonnes y compris les métadonnées
           const { data: canonicalData, error: canonicalError } = await supabase
             .from('canonical_foods')
-            .select('id, canonical_name')
+            .select('id, canonical_name, density_g_per_ml, grams_per_unit, primary_unit')
             .in('id', canonicalIds);
           
           console.log('Données canonical_foods:', canonicalData);
@@ -95,9 +95,16 @@ export default function PantryPage() {
           }
           
           if (!canonicalError && canonicalData) {
+            console.log('Détail des données canonical récupérées:', canonicalData);
+            
             const canonicalMap = {};
             canonicalData.forEach(item => {
               canonicalMap[item.id] = item;
+              console.log(`Canonical ${item.id} (${item.canonical_name}):`, {
+                density_g_per_ml: item.density_g_per_ml,
+                grams_per_unit: item.grams_per_unit,
+                primary_unit: item.primary_unit
+              });
             });
             
             data = data.map(item => {
