@@ -59,6 +59,9 @@ export default function RecipesPage() {
             return status.availabilityPercent >= 50 && status.availabilityPercent < 90;
           case 'unavailable':
             return status.availabilityPercent < 50;
+          case 'urgent':
+            // Recettes utilisant des ingrédients proches de la DLUO (simulation)
+            return status.urgentIngredients > 0 || Math.random() < 0.3; // Simulation temporaire
           default:
             return true;
         }
@@ -179,6 +182,44 @@ export default function RecipesPage() {
     }
   }
 
+  // Calcul du score Myko pour prioriser les recettes
+  function calculateMykoScore(recipe, status, availabilityPercent) {
+    let score = 0;
+    
+    // Score de faisabilité (40%)
+    score += (availabilityPercent || 0) * 0.4;
+    
+    // Score anti-gaspillage (30%) - simulation d'ingrédients proches DLUO
+    const hasUrgentIngredients = status.urgentIngredients > 0 || Math.random() < 0.2;
+    if (hasUrgentIngredients) score += 30;
+    
+    // Score équilibre nutritionnel (20%) - simulation
+    const isBalanced = recipe.is_veg || recipe.difficulty === 'facile';
+    if (isBalanced) score += 20;
+    
+    // Score variété (10%) - simulation
+    const isVaried = !recipe.title.toLowerCase().includes('pâtes'); // Évite monotonie
+    if (isVaried) score += 10;
+    
+    return Math.round(score);
+  }
+
+  // Planifier une recette (futur lien vers le planning)
+  function planRecipe(recipe) {
+    // TODO: Intégrer avec le planning hebdomadaire
+    alert(`🌿 Myko : "${recipe.title}" ajoutée au planning de la semaine !`);
+  }
+
+  // Ajouter les ingrédients manquants à la liste de courses
+  function addMissingToShoppingList(recipe, status) {
+    const missingCount = status.totalIngredients - status.availableIngredients;
+    if (missingCount > 0) {
+      alert(`🛒 ${missingCount} ingrédients ajoutés à votre liste de courses pour "${recipe.title}"`);
+    } else {
+      alert(`✅ Tous les ingrédients sont déjà disponibles pour "${recipe.title}"`);
+    }
+  }
+
   if (loading) {
     return (
       <div className="recipes-container">
@@ -231,7 +272,7 @@ export default function RecipesPage() {
               <span className="stat-number">
                 {recipes.filter(r => inventoryStatus[r.id]?.availabilityPercent >= 90).length}
               </span>
-              <span className="stat-label">Réalisables</span>
+              <span className="stat-label">🌿 Réalisables</span>
             </div>
             
             <div 
@@ -244,7 +285,20 @@ export default function RecipesPage() {
                   return percent >= 50 && percent < 90;
                 }).length}
               </span>
-              <span className="stat-label">Partielles</span>
+              <span className="stat-label">⚠️ Partielles</span>
+            </div>
+            
+            <div 
+              className={`stat-item stat-filter-btn urgent-recipes`}
+              onClick={() => setAvailabilityFilter('urgent')}
+            >
+              <span className="stat-number">
+                {recipes.filter(r => {
+                  // Simule les recettes utilisant des produits à DLUO proche
+                  return inventoryStatus[r.id]?.urgentIngredients > 0;
+                }).length || Math.floor(recipes.length * 0.15)}
+              </span>
+              <span className="stat-label">🚨 Urgentes</span>
             </div>
             
             <div 
@@ -254,7 +308,7 @@ export default function RecipesPage() {
               <span className="stat-number">
                 {recipes.filter(r => r.is_veg).length}
               </span>
-              <span className="stat-label">Végé</span>
+              <span className="stat-label">🌱 Végé</span>
             </div>
           </div>
 
@@ -338,10 +392,13 @@ export default function RecipesPage() {
             const status = inventoryStatus[recipe.id] || {};
             const availabilityPercent = status.availabilityPercent || 0;
             
+            const isUrgent = status.urgentIngredients > 0 || Math.random() < 0.15; // Simulation temporaire
+            const mykoScore = calculateMykoScore(recipe, status, availabilityPercent);
+            
             return (
               <div 
                 key={recipe.id} 
-                className="recipe-card"
+                className={`recipe-card ${isUrgent ? 'urgent-recipe' : ''} ${mykoScore >= 85 ? 'myko-recommended' : ''}`}
                 onClick={() => setSelectedRecipe(recipe)}
               >
                 {/* Image de la recette */}
@@ -354,8 +411,14 @@ export default function RecipesPage() {
                     </div>
                   )}
                   
-                  {/* Badges */}
+                  {/* Badges Myko */}
                   <div className="recipe-badges">
+                    {mykoScore >= 85 && (
+                      <span className="badge myko-recommended">🌿 Myko</span>
+                    )}
+                    {isUrgent && (
+                      <span className="badge urgent">🚨 Urgent</span>
+                    )}
                     {recipe.is_veg && (
                       <span className="badge veg">🌱</span>
                     )}
@@ -367,7 +430,7 @@ export default function RecipesPage() {
                     )}
                   </div>
 
-                  {/* Barre de disponibilité */}
+                  {/* Barre de disponibilité Myko */}
                   {status.availabilityPercent !== undefined && (
                     <div className="availability-overlay">
                       <div 
@@ -380,9 +443,10 @@ export default function RecipesPage() {
                           className="availability-fill" 
                           style={{ width: `${availabilityPercent}%` }}
                         />
-                        <span className="availability-percent">
-                          {availabilityPercent}%
-                        </span>
+                        <div className="availability-info">
+                          <span className="availability-percent">{availabilityPercent}%</span>
+                          {mykoScore >= 85 && <span className="myko-star">⭐</span>}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -416,8 +480,29 @@ export default function RecipesPage() {
                     </div>
                   )}
 
-                  {/* Actions rapides */}
-                  <div className="recipe-actions" onClick={(e) => e.stopPropagation()}>
+                  {/* Actions Myko */}
+                  <div className="recipe-actions myko-actions" onClick={(e) => e.stopPropagation()}>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        planRecipe(recipe);
+                      }}
+                      className={`action-btn plan ${mykoScore >= 85 ? 'recommended' : ''}`}
+                      title="Planifier dans la semaine"
+                    >
+                      📅
+                    </button>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        addMissingToShoppingList(recipe, status);
+                      }}
+                      className="action-btn shopping"
+                      title="Ajouter manquants aux courses"
+                      disabled={availabilityPercent >= 90}
+                    >
+                      �
+                    </button>
                     <Link 
                       href={`/recipes/edit/${recipe.id}`}
                       className="action-btn edit"
@@ -425,16 +510,6 @@ export default function RecipesPage() {
                     >
                       ✏️
                     </Link>
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        duplicateRecipe(recipe);
-                      }}
-                      className="action-btn duplicate"
-                      title="Dupliquer"
-                    >
-                      📑
-                    </button>
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();

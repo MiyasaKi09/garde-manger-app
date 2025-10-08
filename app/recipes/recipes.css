@@ -161,6 +161,24 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
+/* Stat spéciale pour les recettes urgentes */
+.stat-item.urgent-recipes {
+  background: rgba(255, 87, 34, 0.15);
+  border-color: rgba(255, 87, 34, 0.3);
+}
+
+.stat-item.urgent-recipes:hover {
+  background: rgba(255, 87, 34, 0.2);
+  border-color: rgba(255, 87, 34, 0.4);
+}
+
+.stat-item.urgent-recipes .stat-number {
+  background: linear-gradient(135deg, #ff5722, #f44336);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .stat-item .stat-number {
   font-size: 1.4rem;
   font-weight: 700;
@@ -308,6 +326,38 @@
   transform: scale(1.05);
 }
 
+/* Cartes recettes spécialisées Myko */
+.recipe-card.urgent-recipe {
+  border-color: rgba(244, 67, 54, 0.4);
+  box-shadow: 
+    0 4px 16px rgba(244, 67, 54, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.recipe-card.myko-recommended {
+  border-color: rgba(102, 187, 106, 0.5);
+  box-shadow: 
+    0 6px 20px rgba(102, 187, 106, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: rgba(102, 187, 106, 0.05);
+}
+
+.recipe-card.urgent-recipe:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(244, 67, 54, 0.6);
+  box-shadow: 
+    0 12px 32px rgba(244, 67, 54, 0.25),
+    0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-card.myko-recommended:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(102, 187, 106, 0.6);
+  box-shadow: 
+    0 12px 32px rgba(102, 187, 106, 0.3),
+    0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
 .recipe-placeholder {
   width: 100%;
   height: 100%;
@@ -329,6 +379,8 @@
   left: 0.8rem;
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  max-width: calc(100% - 1.6rem);
 }
 
 .badge {
@@ -340,10 +392,13 @@
   font-weight: 600;
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
 }
 
 .badge.veg {
   color: #2e7d32;
+  background: rgba(76, 175, 80, 0.9);
+  color: white;
 }
 
 .badge.difficulty-facile {
@@ -356,6 +411,33 @@
 
 .badge.difficulty-difficile {
   color: #f44336;
+}
+
+/* Badges Myko spéciaux */
+.badge.myko-recommended {
+  background: linear-gradient(135deg, #66bb6a, #43a047);
+  color: white;
+  border-color: rgba(102, 187, 106, 0.6);
+  box-shadow: 0 2px 12px rgba(102, 187, 106, 0.4);
+  animation: mykoGlow 2s ease-in-out infinite alternate;
+}
+
+.badge.urgent {
+  background: linear-gradient(135deg, #ff5722, #f44336);
+  color: white;
+  border-color: rgba(244, 67, 54, 0.6);
+  box-shadow: 0 2px 12px rgba(244, 67, 54, 0.4);
+  animation: urgentPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes mykoGlow {
+  0% { box-shadow: 0 2px 12px rgba(102, 187, 106, 0.4); }
+  100% { box-shadow: 0 4px 20px rgba(102, 187, 106, 0.6); }
+}
+
+@keyframes urgentPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 /* Barre de disponibilité sur l'image */
@@ -394,14 +476,32 @@
   background: linear-gradient(90deg, #f44336, #ef5350);
 }
 
-.availability-percent {
+.availability-info {
   position: absolute;
   top: -24px;
   right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.availability-percent {
   color: white;
   font-size: 0.7rem;
   font-weight: 600;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.myko-star {
+  color: #ffd700;
+  font-size: 0.8rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  animation: starTwinkle 2s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
 }
 
 /* Contenu de la carte */
@@ -456,6 +556,7 @@
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -471,13 +572,14 @@
   font-weight: 500;
 }
 
-/* Actions rapides */
-.recipe-actions {
+/* Actions Myko */
+.recipe-actions.myko-actions {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   margin-top: auto;
   padding-top: 0.8rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  flex-wrap: wrap;
 }
 
 .action-btn {
@@ -494,6 +596,8 @@
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
+  min-width: 36px;
+  height: 36px;
 }
 
 .action-btn:hover {
@@ -501,12 +605,38 @@
   transform: translateY(-2px);
 }
 
-.action-btn.edit:hover {
-  background: rgba(33, 150, 243, 0.2);
-  color: #1976d2;
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
 
-.action-btn.duplicate:hover {
+.action-btn:disabled:hover {
+  transform: none;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Actions spécifiques Myko */
+.action-btn.plan:hover {
+  background: rgba(102, 187, 106, 0.2);
+  color: #2e7d32;
+  border-color: rgba(102, 187, 106, 0.4);
+}
+
+.action-btn.plan.recommended {
+  background: rgba(102, 187, 106, 0.15);
+  border-color: rgba(102, 187, 106, 0.4);
+  color: #2e7d32;
+  animation: recommendedPulse 2s ease-in-out infinite;
+}
+
+.action-btn.shopping:hover {
+  background: rgba(33, 150, 243, 0.2);
+  color: #1976d2;
+  border-color: rgba(33, 150, 243, 0.4);
+}
+
+.action-btn.edit:hover {
   background: rgba(255, 193, 7, 0.2);
   color: #f57c00;
 }
@@ -514,6 +644,17 @@
 .action-btn.delete:hover {
   background: rgba(244, 67, 54, 0.2);
   color: #d32f2f;
+}
+
+@keyframes recommendedPulse {
+  0%, 100% { 
+    background: rgba(102, 187, 106, 0.15);
+    box-shadow: 0 2px 8px rgba(102, 187, 106, 0.2);
+  }
+  50% { 
+    background: rgba(102, 187, 106, 0.25);
+    box-shadow: 0 4px 12px rgba(102, 187, 106, 0.3);
+  }
 }
 
 /* Tags */
