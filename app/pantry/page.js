@@ -76,10 +76,10 @@ export default function PantryPage() {
         console.log('IDs canoniques à récupérer:', canonicalIds);
         
         if (canonicalIds.length > 0) {
-          // Maintenant récupérons toutes les colonnes y compris les métadonnées
+          // Utiliser les vrais noms de colonnes de la base
           const { data: canonicalData, error: canonicalError } = await supabase
             .from('canonical_foods')
-            .select('id, canonical_name, density_g_per_ml, grams_per_unit, primary_unit')
+            .select('id, canonical_name, density_g_per_ml, unit_weight_grams')
             .in('id', canonicalIds);
           
           console.log('Données canonical_foods:', canonicalData);
@@ -102,8 +102,7 @@ export default function PantryPage() {
               canonicalMap[item.id] = item;
               console.log(`Canonical ${item.id} (${item.canonical_name}):`, {
                 density_g_per_ml: item.density_g_per_ml,
-                grams_per_unit: item.grams_per_unit,
-                primary_unit: item.primary_unit
+                unit_weight_grams: item.unit_weight_grams
               });
             });
             
@@ -141,10 +140,10 @@ export default function PantryPage() {
           product_name: productName,
           expiration_status: getExpirationStatus(item.expiration_date),
           days_until_expiration: getDaysUntilExpiration(item.expiration_date),
-          // Métadonnées simples
-          grams_per_unit: item.canonical_foods?.grams_per_unit || null,
+          // Métadonnées utilisant les vrais noms de colonnes
+          grams_per_unit: item.canonical_foods?.unit_weight_grams || null,
           density_g_per_ml: item.canonical_foods?.density_g_per_ml || null,
-          primary_unit: item.canonical_foods?.primary_unit || item.unit
+          primary_unit: item.unit
         };
         
         console.log(`Produit transformé: "${transformed.product_name}" (${item.product_type})`);
