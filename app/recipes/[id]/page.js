@@ -82,15 +82,63 @@ export default function RecipeDetail() {
     // 1) recette + ingrédients + meta produit
     const { data: r, error: errR } = await supabase
       .from('recipes')
-      .select(`id, title, time_min, steps, ingredients:recipe_ingredients(
-        product_id, qty, unit, optional,
-        product:products_catalog(id,name,default_unit,density_g_per_ml,grams_per_unit)
-      )`)
+      .select(`
+        id, 
+        title, 
+        name,
+        description,
+        prep_min, 
+        cook_min, 
+        rest_min,
+        servings,
+        instructions,
+        myko_score,
+        recipe_ingredients(
+          id,
+          quantity,
+          unit,
+          notes,
+          optional,
+          canonical_foods(id, name, category, default_unit, density_g_per_ml, grams_per_unit)
+        )
+      `)
       .eq('id', id).single();
-    if (errR) { setError(errR.message); setLoading(false); return; }
+    if (errR) { 
+      console.error('Erreur lors du chargement de la recette:', errR);
+      console.log('ID recherché:', id);
+      setError(`Recette avec l'ID ${id} introuvable. Erreur: ${errR.message}`); 
+      setLoading(false); 
+      return; 
+    }
 
-    setRecipe({ id: r?.id, title: r?.title, time_min: r?.time_min, steps: r?.steps });
-    const ingList = (r?.ingredients || []).map(x => ({ ...x, product: x.product }));
+    if (!r) {
+      console.error('Aucune recette trouvée avec l\'ID:', id);
+      setError(`Aucune recette trouvée avec l'ID ${id}`);
+      setLoading(false);
+      return;
+    }
+
+    console.log('Recette trouvée:', r);
+
+    const totalTime = (r?.prep_min || 0) + (r?.cook_min || 0) + (r?.rest_min || 0);
+    setRecipe({ 
+      id: r?.id, 
+      title: r?.title || r?.name, 
+      description: r?.description,
+      time_min: totalTime, 
+      prep_min: r?.prep_min,
+      cook_min: r?.cook_min,
+      rest_min: r?.rest_min,
+      servings: r?.servings,
+      steps: r?.instructions,
+      myko_score: r?.myko_score 
+    });
+    const ingList = (r?.recipe_ingredients || []).map(x => ({ 
+      ...x, 
+      product_id: x.canonical_foods?.id,
+      qty: x.quantity,
+      product: x.canonical_foods 
+    }));
     setIngs(ingList);
 
     // 2) charger lots par produit
@@ -100,12 +148,18 @@ export default function RecipeDetail() {
       const pid = ing.product_id;
       const { data: lots, error: errL } = await supabase
         .from('inventory_lots')
-        .select('id, product_id, qty, unit, dlc, entered_at')
-        .eq('product_id', pid)
-        .order('dlc', { ascending: true, nullsFirst: false })
-        .order('entered_at', { ascending: true });
+        .select('id, canonical_food_id, quantity_remaining, unit, expiry_date, created_at')
+        .eq('canonical_food_id', pid)
+        .order('expiry_date', { ascending: true, nullsFirst: false })
+        .order('created_at', { ascending: true });
       if (errL) { setError(errL.message); continue; }
-      (lots||[]).forEach(l => l.product_name = ing.product?.name);
+      (lots||[]).forEach(l => {
+        l.product_name = ing.product?.name;
+        l.product_id = l.canonical_food_id;
+        l.qty = l.quantity_remaining;
+        l.dlc = l.expiry_date;
+        l.entered_at = l.created_at;
+      });
       mapLots[pid] = lots || [];
       mapMeta[pid] = {
         density_g_per_ml: Number(ing.product?.density_g_per_ml ?? 1.0),
@@ -267,8 +321,9 @@ export default function RecipeDetail() {
     }
   }
 
-  if (loading) return <div className="container"><p>Chargement…</p></div>;
-  if (!recipe) return <div className="container"><p>Recette introuvable.</p></div>;
+  if (loading) return <div className="container"><p>Chargement de la recette...</p></div>;
+  if (error) return <div className="container"><p style={{color:'red'}}>Erreur: {error}</p><button onClick={() => window.history.back()}>← Retour</button></div>;
+  if (!recipe) return <div className="container"><p>Recette introuvable avec l'ID: {id}</p><button onClick={() => window.history.back()}>← Retour aux recettes</button></div>;
 
   return (
     <div className="container">
