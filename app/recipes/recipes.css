@@ -5,9 +5,10 @@
 
 .recipes-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, rgba(240, 253, 244, 0.8) 0%, rgba(219, 234, 254, 0.8) 100%);
   padding: 20px;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  position: relative;
+  z-index: 1;
 }
 
 .loading-spinner {
