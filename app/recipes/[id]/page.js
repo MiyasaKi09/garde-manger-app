@@ -74,9 +74,163 @@ export default function RecipeDetail() {
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
+  
+  // États pour l'édition
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedRecipe, setEditedRecipe] = useState({});
+  const [editedIngredients, setEditedIngredients] = useState([]);
+  const [availableIngredients, setAvailableIngredients] = useState([]);
 
   // Préférence: ne jamais dépasser (cap l'auto-remplissage)
   const [noOverfill, setNoOverfill] = useState(true);
+
+  // Fonctions pour l'édition
+  async function loadAvailableIngredients() {
+    try {
+      const { data, error } = await supabase
+        .from('canonical_foods')
+        .select('id, name, category, subcategory')
+        .order('category', { ascending: true })
+        .order('name', { ascending: true });
+      
+      if (error) throw error;
+      setAvailableIngredients(data || []);
+    } catch (error) {
+      console.error('Erreur chargement ingrédients:', error);
+    }
+  }
+
+  function startEditing() {
+    setEditedRecipe({
+      name: recipe.title || '',
+      description: recipe.description || '',
+      short_description: recipe.short_description || '',
+      prep_min: recipe.prep_min || 0,
+      cook_min: recipe.cook_min || 0,
+      rest_min: recipe.rest_min || 0,
+      servings: recipe.servings || 4,
+      instructions: recipe.steps || '',
+      chef_tips: recipe.chef_tips || '',
+      is_vegetarian: recipe.is_vegetarian || false,
+      is_vegan: recipe.is_vegan || false,
+      is_gluten_free: recipe.is_gluten_free || false
+    });
+    setEditedIngredients(ings.map(ing => ({
+      id: ing.id || Math.random(),
+      canonical_food_id: ing.canonical_food_id || '',
+      canonical_food_name: ing.canonical_foods?.name || '',
+      quantity: ing.quantity || 0,
+      unit: ing.unit || 'g',
+      notes: ing.notes || ''
+    })));
+    loadAvailableIngredients();
+    setIsEditing(true);
+  }
+
+  function cancelEditing() {
+    setIsEditing(false);
+    setEditedRecipe({});
+    setEditedIngredients([]);
+  }
+
+  function addIngredient() {
+    setEditedIngredients(prev => [...prev, {
+      id: Math.random(),
+      canonical_food_id: '',
+      canonical_food_name: '',
+      quantity: 0,
+      unit: 'g',
+      notes: ''
+    }]);
+  }
+
+  function updateIngredient(index, field, value) {
+    setEditedIngredients(prev => {
+      const updated = [...prev];
+      updated[index] = { ...updated[index], [field]: value };
+      
+      // Si on change l'ingrédient, mettre à jour le nom
+      if (field === 'canonical_food_id') {
+        const ingredient = availableIngredients.find(ing => ing.id === parseInt(value));
+        if (ingredient) {
+          updated[index].canonical_food_name = ingredient.name;
+        }
+      }
+      
+      return updated;
+    });
+  }
+
+  function removeIngredient(index) {
+    setEditedIngredients(prev => prev.filter((_, i) => i !== index));
+  }
+
+  async function saveRecipe() {
+    try {
+      setSending(true);
+      
+      // 1. Sauvegarder la recette principale
+      const recipeUpdate = {
+        name: editedRecipe.name,
+        description: editedRecipe.description,
+        short_description: editedRecipe.short_description,
+        prep_min: parseInt(editedRecipe.prep_min) || 0,
+        cook_min: parseInt(editedRecipe.cook_min) || 0,
+        rest_min: parseInt(editedRecipe.rest_min) || 0,
+        servings: parseInt(editedRecipe.servings) || 4,
+        instructions: editedRecipe.instructions,
+        chef_tips: editedRecipe.chef_tips,
+        is_vegetarian: editedRecipe.is_vegetarian,
+        is_vegan: editedRecipe.is_vegan,
+        is_gluten_free: editedRecipe.is_gluten_free,
+        updated_at: new Date().toISOString()
+      };
+
+      const { error: recipeError } = await supabase
+        .from('recipes')
+        .update(recipeUpdate)
+        .eq('id', id);
+
+      if (recipeError) throw recipeError;
+
+      // 2. Supprimer les anciens ingrédients
+      const { error: deleteError } = await supabase
+        .from('recipe_ingredients')
+        .delete()
+        .eq('recipe_id', id);
+
+      if (deleteError) throw deleteError;
+
+      // 3. Ajouter les nouveaux ingrédients
+      const ingredientsToAdd = editedIngredients
+        .filter(ing => ing.canonical_food_id && ing.quantity > 0)
+        .map(ing => ({
+          recipe_id: parseInt(id),
+          canonical_food_id: parseInt(ing.canonical_food_id),
+          quantity: parseFloat(ing.quantity),
+          unit: ing.unit,
+          notes: ing.notes || null,
+          created_at: new Date().toISOString()
+        }));
+
+      if (ingredientsToAdd.length > 0) {
+        const { error: ingredientsError } = await supabase
+          .from('recipe_ingredients')
+          .insert(ingredientsToAdd);
+
+        if (ingredientsError) throw ingredientsError;
+      }
+
+      // 4. Recharger la recette
+      window.location.reload();
+      
+    } catch (error) {
+      console.error('Erreur sauvegarde:', error);
+      alert(`Erreur lors de la sauvegarde: ${error.message}`);
+    } finally {
+      setSending(false);
+    }
+  }
 
   useEffect(()=>{ (async ()=>{
     setLoading(true);
@@ -123,13 +277,36 @@ export default function RecipeDetail() {
       is_gluten_free: r?.is_gluten_free
     });
     
-    // Pour l'instant, pas d'ingrédients dans les données mock
-    const ingList = [];
-    setIngs(ingList);
+    // Charger les ingrédients de la recette
+    try {
+      const { data: ingredients, error: ingredientsError } = await supabase
+        .from('recipe_ingredients')
+        .select(`
+          id,
+          quantity,
+          unit,
+          notes,
+          canonical_food_id,
+          canonical_foods(id, name, category, subcategory)
+        `)
+        .eq('recipe_id', id);
 
-    // 2) Pour l'instant, pas de chargement d'ingrédients/lots en mode mock
-    setLotsByProduct({});
-    setMetaByProduct({});
+      if (ingredientsError) {
+        console.error('Erreur chargement ingrédients:', ingredientsError);
+      }
+
+      const ingList = ingredients || [];
+      setIngs(ingList);
+      console.log('Ingrédients chargés:', ingList);
+
+      // Pour l'instant, pas de chargement de lots détaillé
+      setLotsByProduct({});
+      setMetaByProduct({});
+    } catch (error) {
+      console.error('Erreur ingrédients:', error);
+      setIngs([]);
+    }
+
     setLoading(false);
   })(); }, [id]);
 
@@ -361,6 +538,237 @@ export default function RecipeDetail() {
 
   const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0) + (recipe.rest_min || 0);
 
+  // Interface d'édition
+  if (isEditing) {
+    return (
+      <div className="recipe-detail-container">
+        <div className="edit-header">
+          <h1>✏️ Édition de la recette</h1>
+          <div className="edit-actions">
+            <button 
+              className="action-btn secondary" 
+              onClick={saveRecipe}
+              disabled={sending}
+            >
+              {sending ? '⏳ Sauvegarde...' : '💾 Sauvegarder'}
+            </button>
+            <button className="action-btn tertiary" onClick={cancelEditing}>
+              ❌ Annuler
+            </button>
+          </div>
+        </div>
+
+        <div className="edit-form">
+          {/* Informations générales */}
+          <div className="edit-section">
+            <h2>📝 Informations générales</h2>
+            
+            <div className="form-grid">
+              <div className="form-group">
+                <label>Nom de la recette *</label>
+                <input
+                  type="text"
+                  value={editedRecipe.name || ''}
+                  onChange={(e) => setEditedRecipe(prev => ({...prev, name: e.target.value}))}
+                  placeholder="Ex: Ratatouille provençale"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Description courte</label>
+                <input
+                  type="text"
+                  value={editedRecipe.short_description || ''}
+                  onChange={(e) => setEditedRecipe(prev => ({...prev, short_description: e.target.value}))}
+                  placeholder="Ex: Mijoté de légumes du soleil"
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label>Description complète</label>
+              <textarea
+                value={editedRecipe.description || ''}
+                onChange={(e) => setEditedRecipe(prev => ({...prev, description: e.target.value}))}
+                placeholder="Décrivez la recette, son origine, ses spécificités..."
+                rows="4"
+              />
+            </div>
+
+            <div className="form-grid">
+              <div className="form-group">
+                <label>Temps de préparation (min)</label>
+                <input
+                  type="number"
+                  min="0"
+                  value={editedRecipe.prep_min || ''}
+                  onChange={(e) => setEditedRecipe(prev => ({...prev, prep_min: e.target.value}))}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Temps de cuisson (min)</label>
+                <input
+                  type="number"
+                  min="0"
+                  value={editedRecipe.cook_min || ''}
+                  onChange={(e) => setEditedRecipe(prev => ({...prev, cook_min: e.target.value}))}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Temps de repos (min)</label>
+                <input
+                  type="number"
+                  min="0"
+                  value={editedRecipe.rest_min || ''}
+                  onChange={(e) => setEditedRecipe(prev => ({...prev, rest_min: e.target.value}))}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Portions</label>
+                <input
+                  type="number"
+                  min="1"
+                  value={editedRecipe.servings || ''}
+                  onChange={(e) => setEditedRecipe(prev => ({...prev, servings: e.target.value}))}
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label>Régimes alimentaires</label>
+              <div className="checkboxes-group">
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={editedRecipe.is_vegetarian || false}
+                    onChange={(e) => setEditedRecipe(prev => ({...prev, is_vegetarian: e.target.checked}))}
+                  />
+                  🥬 Végétarien
+                </label>
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={editedRecipe.is_vegan || false}
+                    onChange={(e) => setEditedRecipe(prev => ({...prev, is_vegan: e.target.checked}))}
+                  />
+                  🌱 Vegan
+                </label>
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={editedRecipe.is_gluten_free || false}
+                    onChange={(e) => setEditedRecipe(prev => ({...prev, is_gluten_free: e.target.checked}))}
+                  />
+                  🌾 Sans gluten
+                </label>
+              </div>
+            </div>
+          </div>
+
+          {/* Ingrédients */}
+          <div className="edit-section">
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+              <h2>🥕 Ingrédients</h2>
+              <button className="add-btn" onClick={addIngredient}>
+                + Ajouter un ingrédient
+              </button>
+            </div>
+
+            <div className="ingredients-list">
+              {editedIngredients.map((ingredient, index) => (
+                <div key={ingredient.id} className="ingredient-row">
+                  <select
+                    value={ingredient.canonical_food_id || ''}
+                    onChange={(e) => updateIngredient(index, 'canonical_food_id', e.target.value)}
+                  >
+                    <option value="">Sélectionner un ingrédient...</option>
+                    {availableIngredients.map(ing => (
+                      <option key={ing.id} value={ing.id}>
+                        {ing.name} ({ing.category})
+                      </option>
+                    ))}
+                  </select>
+
+                  <input
+                    type="number"
+                    step="0.1"
+                    min="0"
+                    value={ingredient.quantity || ''}
+                    onChange={(e) => updateIngredient(index, 'quantity', e.target.value)}
+                    placeholder="Qté"
+                  />
+
+                  <select
+                    value={ingredient.unit || 'g'}
+                    onChange={(e) => updateIngredient(index, 'unit', e.target.value)}
+                  >
+                    <option value="g">g</option>
+                    <option value="kg">kg</option>
+                    <option value="ml">ml</option>
+                    <option value="l">l</option>
+                    <option value="unité">unité</option>
+                    <option value="c.à.s">c.à.s</option>
+                    <option value="c.à.c">c.à.c</option>
+                    <option value="pincée">pincée</option>
+                  </select>
+
+                  <input
+                    type="text"
+                    value={ingredient.notes || ''}
+                    onChange={(e) => updateIngredient(index, 'notes', e.target.value)}
+                    placeholder="Notes (optionnel)"
+                  />
+
+                  <button
+                    className="remove-btn"
+                    onClick={() => removeIngredient(index)}
+                    title="Supprimer cet ingrédient"
+                  >
+                    🗑️
+                  </button>
+                </div>
+              ))}
+
+              {editedIngredients.length === 0 && (
+                <div className="empty-ingredients">
+                  <p>Aucun ingrédient ajouté. Cliquez sur "Ajouter un ingrédient" pour commencer.</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Instructions */}
+          <div className="edit-section">
+            <h2>📋 Instructions</h2>
+            <div className="form-group">
+              <label>Étapes de préparation</label>
+              <textarea
+                value={editedRecipe.instructions || ''}
+                onChange={(e) => setEditedRecipe(prev => ({...prev, instructions: e.target.value}))}
+                placeholder="1. Étape 1 de la recette...&#10;2. Étape 2...&#10;3. Etc."
+                rows="8"
+              />
+            </div>
+
+            <div className="form-group">
+              <label>💡 Conseils du chef (optionnel)</label>
+              <textarea
+                value={editedRecipe.chef_tips || ''}
+                onChange={(e) => setEditedRecipe(prev => ({...prev, chef_tips: e.target.value}))}
+                placeholder="Astuces, variations, conseils de présentation..."
+                rows="3"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="recipe-detail-container">
       <div className="recipe-header">
@@ -465,7 +873,7 @@ export default function RecipeDetail() {
           <button className="action-btn secondary">
             🛒 Ajouter aux courses
           </button>
-          <button className="action-btn tertiary">
+          <button className="action-btn tertiary" onClick={startEditing}>
             📝 Modifier la recette
           </button>
         </div>
