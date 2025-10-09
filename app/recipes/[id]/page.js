@@ -4,7 +4,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { convertWithMeta } from '@/lib/units';
+import IngredientSearchSelector from './IngredientSearchSelector';
 import './recipe-detail.css';
+import './IngredientSearchSelector.css';
 
 function Section({ title, children, right }) {
   return (
@@ -79,6 +81,7 @@ export default function RecipeDetail() {
   const [isEditing, setIsEditing] = useState(false);
   const [editedRecipe, setEditedRecipe] = useState({});
   const [editedIngredients, setEditedIngredients] = useState([]);
+  const [editedInstructions, setEditedInstructions] = useState([]);
   const [availableIngredients, setAvailableIngredients] = useState([]);
 
   // Préférence: ne jamais dépasser (cap l'auto-remplissage)
@@ -109,12 +112,30 @@ export default function RecipeDetail() {
       cook_min: recipe.cook_min || 0,
       rest_min: recipe.rest_min || 0,
       servings: recipe.servings || 4,
-      instructions: recipe.steps || '',
       chef_tips: recipe.chef_tips || '',
       is_vegetarian: recipe.is_vegetarian || false,
       is_vegan: recipe.is_vegan || false,
       is_gluten_free: recipe.is_gluten_free || false
     });
+
+    // Convertir les instructions texte en blocs séparés
+    const instructionsText = recipe.steps || '';
+    const instructionLines = instructionsText.split(/\n+/).filter(line => line.trim());
+    setEditedInstructions(instructionLines.map((line, index) => ({
+      id: Math.random(),
+      text: line.replace(/^\d+\.\s*/, ''), // Retirer la numérotation automatique
+      duration: '',
+      type: 'preparation'
+    })));
+
+    if (instructionLines.length === 0) {
+      setEditedInstructions([{
+        id: Math.random(),
+        text: '',
+        duration: '',
+        type: 'preparation'
+      }]);
+    }
     setEditedIngredients(ings.map(ing => ({
       id: ing.id || Math.random(),
       canonical_food_id: ing.canonical_food_id || '',
@@ -131,6 +152,28 @@ export default function RecipeDetail() {
     setIsEditing(false);
     setEditedRecipe({});
     setEditedIngredients([]);
+    setEditedInstructions([]);
+  }
+
+  function addInstruction() {
+    setEditedInstructions(prev => [...prev, {
+      id: Math.random(),
+      text: '',
+      duration: '',
+      type: 'preparation'
+    }]);
+  }
+
+  function updateInstruction(index, field, value) {
+    setEditedInstructions(prev => {
+      const updated = [...prev];
+      updated[index] = { ...updated[index], [field]: value };
+      return updated;
+    });
+  }
+
+  function removeInstruction(index) {
+    setEditedInstructions(prev => prev.filter((_, i) => i !== index));
   }
 
   function addIngredient() {
@@ -170,6 +213,11 @@ export default function RecipeDetail() {
       setSending(true);
       
       // 1. Sauvegarder la recette principale
+      const instructionsText = editedInstructions
+        .filter(inst => inst.text.trim())
+        .map((inst, index) => `${index + 1}. ${inst.text.trim()}`)
+        .join('\n\n');
+
       const recipeUpdate = {
         name: editedRecipe.name,
         description: editedRecipe.description,
@@ -178,7 +226,7 @@ export default function RecipeDetail() {
         cook_min: parseInt(editedRecipe.cook_min) || 0,
         rest_min: parseInt(editedRecipe.rest_min) || 0,
         servings: parseInt(editedRecipe.servings) || 4,
-        instructions: editedRecipe.instructions,
+        instructions: instructionsText,
         chef_tips: editedRecipe.chef_tips,
         is_vegetarian: editedRecipe.is_vegetarian,
         is_vegan: editedRecipe.is_vegan,
@@ -681,17 +729,12 @@ export default function RecipeDetail() {
             <div className="ingredients-list">
               {editedIngredients.map((ingredient, index) => (
                 <div key={ingredient.id} className="ingredient-row">
-                  <select
-                    value={ingredient.canonical_food_id || ''}
-                    onChange={(e) => updateIngredient(index, 'canonical_food_id', e.target.value)}
-                  >
-                    <option value="">Sélectionner un ingrédient...</option>
-                    {availableIngredients.map(ing => (
-                      <option key={ing.id} value={ing.id}>
-                        {ing.name} ({ing.category})
-                      </option>
-                    ))}
-                  </select>
+                  <IngredientSearchSelector
+                    availableIngredients={availableIngredients}
+                    selectedIngredientId={ingredient.canonical_food_id}
+                    onIngredientSelect={(ingredientId) => updateIngredient(index, 'canonical_food_id', ingredientId)}
+                    placeholder="Rechercher un ingrédient..."
+                  />
 
                   <input
                     type="number"
@@ -743,15 +786,60 @@ export default function RecipeDetail() {
 
           {/* Instructions */}
           <div className="edit-section">
-            <h2>📋 Instructions</h2>
-            <div className="form-group">
-              <label>Étapes de préparation</label>
-              <textarea
-                value={editedRecipe.instructions || ''}
-                onChange={(e) => setEditedRecipe(prev => ({...prev, instructions: e.target.value}))}
-                placeholder="1. Étape 1 de la recette...&#10;2. Étape 2...&#10;3. Etc."
-                rows="8"
-              />
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+              <h2>📋 Instructions</h2>
+              <button className="add-btn" onClick={addInstruction}>
+                + Ajouter une étape
+              </button>
+            </div>
+
+            <div className="instructions-list">
+              {editedInstructions.map((instruction, index) => (
+                <div key={instruction.id} className="instruction-block">
+                  <div className="instruction-header">
+                    <div className="step-number">Étape {index + 1}</div>
+                    <button
+                      className="remove-btn"
+                      onClick={() => removeInstruction(index)}
+                      title="Supprimer cette étape"
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                  <textarea
+                    value={instruction.text || ''}
+                    onChange={(e) => updateInstruction(index, 'text', e.target.value)}
+                    placeholder={`Décrivez l'étape ${index + 1} en détail...`}
+                    rows="3"
+                  />
+                  <div className="instruction-meta">
+                    <input
+                      type="number"
+                      min="0"
+                      value={instruction.duration || ''}
+                      onChange={(e) => updateInstruction(index, 'duration', e.target.value)}
+                      placeholder="Temps (min)"
+                      style={{width: '120px'}}
+                    />
+                    <select
+                      value={instruction.type || 'preparation'}
+                      onChange={(e) => updateInstruction(index, 'type', e.target.value)}
+                      style={{width: '150px'}}
+                    >
+                      <option value="preparation">Préparation</option>
+                      <option value="cooking">Cuisson</option>
+                      <option value="resting">Repos</option>
+                      <option value="assembly">Assemblage</option>
+                    </select>
+                  </div>
+                </div>
+              ))}
+
+              {editedInstructions.length === 0 && (
+                <div className="empty-instructions">
+                  <p>Aucune étape ajoutée. Cliquez sur "Ajouter une étape" pour commencer.</p>
+                </div>
+              )}
             </div>
 
             <div className="form-group">
