@@ -288,7 +288,7 @@ export default function RecipesPage() {
             <option value="urgent">Urgentes</option>
           </select>
           
-          <Link href="/recipes/new" className="add-recipe-btn">
+          <Link href="/recipes/edit/new" className="add-recipe-btn">
             + Nouvelle recette
           </Link>
         </div>
@@ -399,7 +399,7 @@ export default function RecipesPage() {
           <div className="empty-state">
             <h2>Aucune recette trouvée</h2>
             <p>Essayez de modifier vos filtres ou ajoutez de nouvelles recettes.</p>
-            <Link href="/recipes/new" className="add-recipe-btn">
+            <Link href="/recipes/edit/new" className="add-recipe-btn">
               Créer une nouvelle recette
             </Link>
           </div>

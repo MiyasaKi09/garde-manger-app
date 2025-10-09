@@ -79,6 +79,7 @@ export default function RecipeDetail() {
   
   // États pour l'édition
   const [isEditing, setIsEditing] = useState(false);
+  const [activeEditTab, setActiveEditTab] = useState('basic');
   const [editedRecipe, setEditedRecipe] = useState({});
   const [editedIngredients, setEditedIngredients] = useState([]);
   const [editedInstructions, setEditedInstructions] = useState([]);
@@ -90,16 +91,37 @@ export default function RecipeDetail() {
   // Fonctions pour l'édition
   async function loadAvailableIngredients() {
     try {
+      console.log('🔍 Chargement des ingrédients disponibles...');
       const { data, error } = await supabase
         .from('canonical_foods')
         .select('id, name, category, subcategory')
         .order('category', { ascending: true })
         .order('name', { ascending: true });
       
-      if (error) throw error;
+      if (error) {
+        console.error('❌ Erreur Supabase:', error);
+        throw error;
+      }
+      
+      console.log('✅ Ingrédients chargés:', data?.length || 0, 'ingrédients');
+      console.log('📋 Premiers ingrédients:', data?.slice(0, 5));
       setAvailableIngredients(data || []);
     } catch (error) {
-      console.error('Erreur chargement ingrédients:', error);
+      console.error('❌ Erreur chargement ingrédients:', error);
+      // Essayons une requête plus simple en fallback
+      try {
+        const { data: fallbackData, error: fallbackError } = await supabase
+          .from('canonical_foods')
+          .select('*')
+          .limit(10);
+        
+        console.log('🔄 Tentative fallback:', fallbackData);
+        if (!fallbackError && fallbackData) {
+          setAvailableIngredients(fallbackData);
+        }
+      } catch (fallbackErr) {
+        console.error('❌ Fallback échoué:', fallbackErr);
+      }
     }
   }
 
@@ -282,11 +304,30 @@ export default function RecipeDetail() {
 
   useEffect(()=>{ (async ()=>{
     setLoading(true);
+    
+    // Charger les ingrédients disponibles dès le début
+    await loadAvailableIngredients();
+    
     // 1) recette + ingrédients + meta produit
     console.log('Chargement de la recette avec ID:', id);
     const { data: r, error: errR } = await supabase
       .from('recipes')
-      .select('*')
+      .select(`
+        *,
+        recipe_ingredients (
+          id,
+          canonical_food_id,
+          quantity,
+          unit,
+          notes,
+          canonical_foods (
+            id,
+            name,
+            category,
+            subcategory
+          )
+        )
+      `)
       .eq('id', id).single();
     if (errR) { 
       console.error('Erreur lors du chargement de la recette:', errR);
@@ -586,30 +627,71 @@ export default function RecipeDetail() {
 
   const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0) + (recipe.rest_min || 0);
 
-  // Interface d'édition
+  // Interface d'édition avec onglets (style cohérent avec /recipes/edit/new)
   if (isEditing) {
     return (
-      <div className="recipe-detail-container">
-        <div className="edit-header">
-          <h1>✏️ Édition de la recette</h1>
+      <div className="recipes-container">
+        {/* Header */}
+        <div className="edit-header-bar">
+          <h1>✏️ Édition de "{recipe.title}"</h1>
           <div className="edit-actions">
             <button 
-              className="action-btn secondary" 
+              className="btn-tertiary" 
+              onClick={() => {
+                console.log('📊 État actuel:');
+                console.log('- Ingrédients disponibles:', availableIngredients.length);
+                console.log('- Premiers ingrédients:', availableIngredients.slice(0, 3));
+                alert(`${availableIngredients.length} ingrédients chargés (voir console)`);
+              }}
+            >
+              🔍 Test données
+            </button>
+            <button 
+              className="btn-primary" 
               onClick={saveRecipe}
               disabled={sending}
             >
               {sending ? '⏳ Sauvegarde...' : '💾 Sauvegarder'}
             </button>
-            <button className="action-btn tertiary" onClick={cancelEditing}>
+            <button className="btn-secondary" onClick={cancelEditing}>
               ❌ Annuler
             </button>
           </div>
         </div>
 
-        <div className="edit-form">
-          {/* Informations générales */}
-          <div className="edit-section">
-            <h2>📝 Informations générales</h2>
+        {/* Tabs de navigation */}
+        <div className="edit-tabs">
+          <button 
+            className={`tab-btn ${activeEditTab === 'basic' ? 'active' : ''}`}
+            onClick={() => setActiveEditTab('basic')}
+          >
+            📝 Informations
+          </button>
+          <button 
+            className={`tab-btn ${activeEditTab === 'ingredients' ? 'active' : ''}`}
+            onClick={() => setActiveEditTab('ingredients')}
+          >
+            🥕 Ingrédients
+          </button>
+          <button 
+            className={`tab-btn ${activeEditTab === 'instructions' ? 'active' : ''}`}
+            onClick={() => setActiveEditTab('instructions')}
+          >
+            📋 Instructions  
+          </button>
+          <button 
+            className={`tab-btn ${activeEditTab === 'nutrition' ? 'active' : ''}`}
+            onClick={() => setActiveEditTab('nutrition')}
+          >
+            📊 Nutrition
+          </button>
+        </div>
+
+        {/* Contenu des onglets */}
+        <div className="edit-content">
+          {activeEditTab === 'basic' && (
+            <div className="edit-section">
+              <h2>📝 Informations générales</h2>
             
             <div className="form-grid">
               <div className="form-group">
@@ -715,10 +797,11 @@ export default function RecipeDetail() {
                 </label>
               </div>
             </div>
-          </div>
+            </div>
+          )}
 
-          {/* Ingrédients */}
-          <div className="edit-section">
+          {activeEditTab === 'ingredients' && (
+            <div className="edit-section">
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
               <h2>🥕 Ingrédients</h2>
               <button className="add-btn" onClick={addIngredient}>
@@ -782,10 +865,11 @@ export default function RecipeDetail() {
                 </div>
               )}
             </div>
-          </div>
+            </div>
+          )}
 
-          {/* Instructions */}
-          <div className="edit-section">
+          {activeEditTab === 'instructions' && (
+            <div className="edit-section">
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
               <h2>📋 Instructions</h2>
               <button className="add-btn" onClick={addInstruction}>
@@ -851,7 +935,32 @@ export default function RecipeDetail() {
                 rows="3"
               />
             </div>
-          </div>
+            </div>
+          )}
+
+          {activeEditTab === 'nutrition' && (
+            <div className="edit-section">
+              <h2>📊 Informations nutritionnelles</h2>
+              <p style={{color: '#6b7280', fontStyle: 'italic', marginBottom: '20px'}}>
+                Les informations nutritionnelles seront calculées automatiquement selon les ingrédients ajoutés.
+                Cette section sera développée dans une prochaine version.
+              </p>
+              
+              <div className="form-grid">
+                <div className="form-group">
+                  <label>Score Myko estimé</label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={recipe.myko_score || ''}
+                    placeholder="Sera calculé automatiquement"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
