@@ -16,6 +16,7 @@ export default function RecipesPage() {
   const [sortBy, setSortBy] = useState('myko_score');
   const [sortOrder, setSortOrder] = useState('desc');
   const [inventoryStatus, setInventoryStatus] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -41,190 +42,54 @@ export default function RecipesPage() {
     try {
       setLoading(true);
       
-      // Utilisation de la vraie base de données Myko
+      console.log('=== DÉBUT DEBUG SUPABASE ===');
+      console.log('URL Supabase:', process.env.NEXT_PUBLIC_SUPABASE_URL);
+      console.log('Clé définie:', !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+      
+      // Test de connexion le plus basique
       const { data, error } = await supabase
         .from('recipes')
-        .select(`
-          id,
-          title,
-          name,
-          description,
-          short_description,
-          servings,
-          prep_min,
-          cook_min,
-          rest_min,
-          myko_score,
-          difficulty_level_id,
-          category_id,
-          cuisine_type_id,
-          is_active,
-          created_at,
-          recipe_categories(name, icon),
-          cuisine_types(name, flag),
-          difficulty_levels(name, level),
-          recipe_ingredients(
-            id,
-            quantity,
-            unit,
-            notes,
-            canonical_foods(id, name, category)
-          )
-        `)
-        .order('myko_score', { ascending: false });
+        .select('*')
+        .limit(5);
 
+      console.log('Résultat requête Supabase:');
+      console.log('- Données:', data);
+      console.log('- Erreur:', error);
+      console.log('- Nombre de recettes:', data?.length || 0);
+      
       if (error) {
-        console.error('Erreur Supabase:', error);
-        console.log('Message d\'erreur complet:', error);
-        // Ne pas throw, essayer la requête de fallback
+        console.error('ERREUR SUPABASE:', error);
+        setError(`Erreur de connexion: ${error.message}`);
+        setRecipes([]);
+        return;
       }
-
-      console.log('Recettes chargées:', data);
-      console.log('Nombre de recettes:', data?.length || 0);
       
       if (data && data.length > 0) {
-        console.log('Première recette:', data[0]);
-        setRecipes(data || []);
-        return; // Sortir si on a des données
+        console.log('Structure de la première recette:');
+        console.log('Colonnes disponibles:', Object.keys(data[0]));
+        console.log('Première recette complète:', data[0]);
+        
+        // Charger maintenant toutes les recettes
+        const { data: allData, error: allError } = await supabase
+          .from('recipes')
+          .select('*');
+          
+        console.log('Toutes les recettes:', allData?.length);
+        if (allError) {
+          console.error('Erreur chargement complet:', allError);
+          setRecipes(data); // Utiliser les 5 premières au moins
+        } else {
+          setRecipes(allData || []);
+        }
+        return;
       }
       
     } catch (error) {
       console.error('Erreur lors du chargement des recettes:', error);
       
-      // En cas d'erreur ou pas de données, essayer des requêtes plus simples
-      console.log('Essai de requête simple sans relations...');
-      try {
-        const { data: simpleData, error: simpleError } = await supabase
-          .from('recipes')
-          .select('*')
-          .limit(50);
-          
-        console.log('Requête simple - Données:', simpleData);
-        console.log('Requête simple - Erreur:', simpleError);
-        
-        if (simpleError) {
-          console.error('Erreur requête simple:', simpleError);
-          // Essayer sans conditions
-          const { data: basicData, error: basicError } = await supabase
-            .from('recipes')
-            .select('id, title, name, description')
-            .limit(10);
-          
-          console.log('Requête basique - Données:', basicData);
-          console.log('Requête basique - Erreur:', basicError);
-          
-          if (!basicError && basicData) {
-            setRecipes(basicData.map(r => ({ ...r, prep_min: 30, cook_min: 15, myko_score: 75 })));
-            return;
-          }
-        } else {
-          setRecipes(simpleData || []);
-          return;
-        }
-      } catch (fallbackError) {
-        console.error('Erreur fallback:', fallbackError);
-      }
-      
-      // Si tout échoue, créer des recettes de démonstration
-      console.log('Utilisation de recettes de démonstration...');
-      setRecipes([
-        {
-          id: 'demo-1',
-          title: 'Ratatouille Provençale',
-          name: 'Ratatouille Provençale',
-          description: 'Mijoté de légumes du soleil : aubergines, courgettes, tomates, poivrons. Un classique de la cuisine française parfait pour l\'été.',
-          short_description: 'Délicieux plat de légumes du soleil',
-          prep_min: 30,
-          cook_min: 60,
-          rest_min: 0,
-          servings: 6,
-          myko_score: 95,
-          instructions: 'Couper tous les légumes en dés. Faire revenir séparément aubergines, courgettes, poivrons. Ajouter les tomates, l\'ail, les herbes de Provence. Mijoter 45 min.',
-          difficulty: 'Facile',
-          is_vegetarian: true,
-          is_vegan: true
-        },
-        {
-          id: 'demo-2',
-          title: 'Curry de lentilles corail',
-          name: 'Curry de lentilles corail',
-          description: 'Curry végétarien aux lentilles corail, lait de coco et épices indiennes. Riche en protéines et en saveurs.',
-          short_description: 'Curry végétarien aux lentilles corail',
-          prep_min: 20,
-          cook_min: 35,
-          rest_min: 0,
-          servings: 4,
-          myko_score: 88,
-          instructions: 'Faire revenir l\'oignon et les épices. Ajouter les lentilles corail, le lait de coco et les tomates. Cuire 25 min jusqu\'à ce que les lentilles soient tendres.',
-          difficulty: 'Moyen',
-          is_vegetarian: true,
-          is_vegan: true
-        },
-        {
-          id: 'demo-3',
-          title: 'Soupe de potimarron rôti',
-          name: 'Soupe de potimarron rôti',
-          description: 'Velouté onctueux de potimarron rôti avec une pointe de gingembre. Parfait pour les soirées d\'automne.',
-          short_description: 'Velouté onctueux de potimarron rôti',
-          prep_min: 20,
-          cook_min: 45,
-          rest_min: 0,
-          servings: 6,
-          myko_score: 90,
-          instructions: 'Rôtir le potimarron coupé au four. Faire suer l\'oignon, ajouter le potimarron, le bouillon et le gingembre. Mixer jusqu\'à obtenir un velouté lisse.',
-          difficulty: 'Facile',
-          is_vegetarian: true,
-          is_vegan: true
-        },
-        {
-          id: 'demo-4',
-          title: 'Salade de quinoa aux légumes',
-          name: 'Salade de quinoa aux légumes',
-          description: 'Salade complète et nutritive avec quinoa, légumes croquants et vinaigrette aux herbes.',
-          short_description: 'Salade complète au quinoa',
-          prep_min: 25,
-          cook_min: 15,
-          rest_min: 30,
-          servings: 4,
-          myko_score: 82,
-          instructions: 'Cuire le quinoa. Préparer les légumes. Mélanger avec la vinaigrette et laisser mariner 30 min.',
-          difficulty: 'Très facile',
-          is_vegetarian: true,
-          is_vegan: true
-        },
-        {
-          id: 'demo-5',
-          title: 'Risotto aux champignons',
-          name: 'Risotto aux champignons',
-          description: 'Risotto crémeux aux champignons de saison et parmesan. Un classique italien réconfortant.',
-          short_description: 'Risotto italien aux champignons',
-          prep_min: 20,
-          cook_min: 35,
-          rest_min: 0,
-          servings: 4,
-          myko_score: 78,
-          instructions: 'Faire revenir les champignons. Nacrer le riz, ajouter le bouillon louche par louche en remuant. Terminer avec beurre et parmesan.',
-          difficulty: 'Difficile',
-          is_vegetarian: true,
-          is_vegan: false
-        },
-        {
-          id: 'demo-6',
-          title: 'Pad Thaï aux légumes',
-          name: 'Pad Thaï aux légumes',
-          description: 'Nouilles de riz sautées à la thaïlandaise avec légumes croquants et sauce aigre-douce.',
-          short_description: 'Nouilles thaï aux légumes',
-          prep_min: 25,
-          cook_min: 15,
-          rest_min: 0,
-          servings: 4,
-          myko_score: 85,
-          instructions: 'Réhydrater les nouilles. Faire sauter l\'ail, ajouter les légumes, puis les nouilles et la sauce. Terminer avec germes de soja.',
-          difficulty: 'Moyen',
-          is_vegetarian: true,
-          is_vegan: true
-        }
-      ]);
+      // Aucune recette trouvée
+      console.log('Aucune recette trouvée dans la base de données');
+      setRecipes([]);
     } finally {
       setLoading(false);
     }
@@ -363,6 +228,36 @@ export default function RecipesPage() {
       <div className="recipes-container">
         <div className="loading-spinner">
           Chargement des recettes Myko...
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="recipes-container">
+        <div className="error-message" style={{ 
+          background: 'rgba(239, 68, 68, 0.1)', 
+          border: '1px solid rgba(239, 68, 68, 0.3)', 
+          borderRadius: '12px', 
+          padding: '20px', 
+          textAlign: 'center' 
+        }}>
+          <h2 style={{ color: '#dc2626' }}>Erreur de connexion</h2>
+          <p>{error}</p>
+          <button 
+            onClick={() => { setError(null); fetchRecipes(); }}
+            style={{ 
+              padding: '10px 20px', 
+              background: '#dc2626', 
+              color: 'white', 
+              border: 'none', 
+              borderRadius: '8px', 
+              cursor: 'pointer' 
+            }}
+          >
+            Réessayer
+          </button>
         </div>
       </div>
     );

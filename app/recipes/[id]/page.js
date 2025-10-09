@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { convertWithMeta } from '@/lib/units';
+import './recipe-detail.css';
 
 function Section({ title, children, right }) {
   return (
@@ -80,28 +81,10 @@ export default function RecipeDetail() {
   useEffect(()=>{ (async ()=>{
     setLoading(true);
     // 1) recette + ingrédients + meta produit
+    console.log('Chargement de la recette avec ID:', id);
     const { data: r, error: errR } = await supabase
       .from('recipes')
-      .select(`
-        id, 
-        title, 
-        name,
-        description,
-        prep_min, 
-        cook_min, 
-        rest_min,
-        servings,
-        instructions,
-        myko_score,
-        recipe_ingredients(
-          id,
-          quantity,
-          unit,
-          notes,
-          optional,
-          canonical_foods(id, name, category, default_unit, density_g_per_ml, grams_per_unit)
-        )
-      `)
+      .select('*')
       .eq('id', id).single();
     if (errR) { 
       console.error('Erreur lors du chargement de la recette:', errR);
@@ -119,56 +102,34 @@ export default function RecipeDetail() {
     }
 
     console.log('Recette trouvée:', r);
+    console.log('Colonnes disponibles:', Object.keys(r));
 
     const totalTime = (r?.prep_min || 0) + (r?.cook_min || 0) + (r?.rest_min || 0);
     setRecipe({ 
       id: r?.id, 
       title: r?.title || r?.name, 
       description: r?.description,
+      short_description: r?.short_description,
       time_min: totalTime, 
       prep_min: r?.prep_min,
       cook_min: r?.cook_min,
       rest_min: r?.rest_min,
       servings: r?.servings,
       steps: r?.instructions,
-      myko_score: r?.myko_score 
+      myko_score: r?.myko_score,
+      chef_tips: r?.chef_tips,
+      is_vegetarian: r?.is_vegetarian,
+      is_vegan: r?.is_vegan,
+      is_gluten_free: r?.is_gluten_free
     });
-    const ingList = (r?.recipe_ingredients || []).map(x => ({ 
-      ...x, 
-      product_id: x.canonical_foods?.id,
-      qty: x.quantity,
-      product: x.canonical_foods 
-    }));
+    
+    // Pour l'instant, pas d'ingrédients dans les données mock
+    const ingList = [];
     setIngs(ingList);
 
-    // 2) charger lots par produit
-    const mapLots = {};
-    const mapMeta = {};
-    for (const ing of ingList) {
-      const pid = ing.product_id;
-      const { data: lots, error: errL } = await supabase
-        .from('inventory_lots')
-        .select('id, canonical_food_id, quantity_remaining, unit, expiry_date, created_at')
-        .eq('canonical_food_id', pid)
-        .order('expiry_date', { ascending: true, nullsFirst: false })
-        .order('created_at', { ascending: true });
-      if (errL) { setError(errL.message); continue; }
-      (lots||[]).forEach(l => {
-        l.product_name = ing.product?.name;
-        l.product_id = l.canonical_food_id;
-        l.qty = l.quantity_remaining;
-        l.dlc = l.expiry_date;
-        l.entered_at = l.created_at;
-      });
-      mapLots[pid] = lots || [];
-      mapMeta[pid] = {
-        density_g_per_ml: Number(ing.product?.density_g_per_ml ?? 1.0),
-        grams_per_unit: Number(ing.product?.grams_per_unit ?? 0),
-        default_unit: ing.product?.default_unit || 'g'
-      };
-    }
-    setLotsByProduct(mapLots);
-    setMetaByProduct(mapMeta);
+    // 2) Pour l'instant, pas de chargement d'ingrédients/lots en mode mock
+    setLotsByProduct({});
+    setMetaByProduct({});
     setLoading(false);
   })(); }, [id]);
 
@@ -321,87 +282,193 @@ export default function RecipeDetail() {
     }
   }
 
-  if (loading) return <div className="container"><p>Chargement de la recette...</p></div>;
-  if (error) return <div className="container"><p style={{color:'red'}}>Erreur: {error}</p><button onClick={() => window.history.back()}>← Retour</button></div>;
-  if (!recipe) return <div className="container"><p>Recette introuvable avec l'ID: {id}</p><button onClick={() => window.history.back()}>← Retour aux recettes</button></div>;
+  if (loading) {
+    return (
+      <div className="recipe-detail-container">
+        <div className="loading-spinner" style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '60vh',
+          fontSize: '1.2rem',
+          color: '#374151'
+        }}>
+          Chargement de la recette...
+        </div>
+      </div>
+    );
+  }
+  
+  if (error) {
+    return (
+      <div className="recipe-detail-container">
+        <div className="error-message" style={{
+          background: 'rgba(239, 68, 68, 0.1)',
+          border: '1px solid rgba(239, 68, 68, 0.3)',
+          borderRadius: '12px',
+          padding: '20px',
+          textAlign: 'center'
+        }}>
+          <h2 style={{ color: '#dc2626' }}>Erreur</h2>
+          <p>{error}</p>
+          <button 
+            onClick={() => window.history.back()}
+            style={{
+              padding: '10px 20px',
+              background: '#dc2626',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer'
+            }}
+          >
+            ← Retour
+          </button>
+        </div>
+      </div>
+    );
+  }
+  
+  if (!recipe) {
+    return (
+      <div className="recipe-detail-container">
+        <div className="error-message" style={{
+          background: 'rgba(107, 114, 128, 0.1)',
+          border: '1px solid rgba(107, 114, 128, 0.3)',
+          borderRadius: '12px',
+          padding: '20px',
+          textAlign: 'center'
+        }}>
+          <h2>Recette introuvable</h2>
+          <p>Aucune recette trouvée avec l'ID: {id}</p>
+          <button 
+            onClick={() => window.history.back()}
+            style={{
+              padding: '10px 20px',
+              background: '#6b7280',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer'
+            }}
+          >
+            ← Retour aux recettes
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0) + (recipe.rest_min || 0);
 
   return (
-    <div className="container">
-      <h1>{recipe.title}</h1>
-
-      <Section
-        title="Préférences"
-        right={null}
-      >
-        <div className="card" style={{display:'flex',alignItems:'center',gap:12}}>
-          <label style={{display:'flex',alignItems:'center',gap:8,cursor:'pointer'}}>
-            <input
-              type="checkbox"
-              checked={noOverfill}
-              onChange={(e)=>setNoOverfill(e.target.checked)}
-            />
-            <span>Ne jamais dépasser la quantité demandée lors de l’auto-remplissage</span>
-          </label>
+    <div className="recipe-detail-container">
+      <div className="recipe-header">
+        <button 
+          onClick={() => window.history.back()}
+          className="back-button"
+        >
+          ← Retour aux recettes
+        </button>
+        
+        <div className="recipe-title-section">
+          <h1 className="recipe-title">{recipe.title}</h1>
+          <div className="recipe-badges">
+            <span className={`myko-score ${recipe.myko_score >= 80 ? 'high-score' : 'medium-score'}`}>
+              {recipe.myko_score}★ Myko
+            </span>
+          </div>
         </div>
-      </Section>
-
-      <Section title="Ingrédients">
-        {(ings||[]).map(ing => {
-          const pid = ing.product_id;
-          const meta = metaByProduct[pid] || {};
-          const needUnit = (ing.unit || ing.product?.default_unit || 'g').toLowerCase();
-          const needQty = Number(ing.qty || 0);
-
-          return (
-            <div key={pid} className="card" style={{marginBottom:12}}>
-              <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12}}>
-                <div>
-                  <strong>{ing.product?.name || 'Ingrédient'}</strong>
-                  <div style={{opacity:.8}}>
-                    Besoin: {needQty} {needUnit}
-                    {ing.optional ? <span className="badge" style={{marginLeft:8}}>optionnel</span> : null}
-                  </div>
-                </div>
-                <div style={{display:'flex',alignItems:'center',gap:10}}>
-                  <div style={{opacity:.8}}>
-                    Couvert : <strong>{(coverage[pid]?.covered ?? 0).toFixed(2)} {needUnit}</strong>
-                    {!coverage[pid]?.ok && !ing.optional ? <span className="badge" style={{marginLeft:8, borderColor:'#e67', color:'#e67'}}>insuffisant</span> : null}
-                  </div>
-                  <button className="btn" onClick={()=>autoFillForProduct(pid)}>Auto-remplir</button>
-                </div>
-              </div>
-
-              <div className="grid" style={{marginTop:10, gap:10}}>
-                {(lotsByProduct[pid] || []).length === 0 ? (
-                  <div style={{opacity:.7}}>Aucun lot en stock.</div>
-                ) : (
-                  (lotsByProduct[pid] || []).map(lot => (
-                    <LotRow
-                      key={lot.id}
-                      lot={lot}
-                      ing={ing}
-                      meta={meta}
-                      onChange={(p)=> setLotSelection(pid, lot.id, p)}
-                    />
-                  ))
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </Section>
-
-      {error && <p style={{color:'#c00'}}>{error}</p>}
-
-      <div className="toolbar" style={{justifyContent:'flex-end',gap:8}}>
-        <button className="btn" onClick={() => autoFillAll()}>Auto-remplir tout</button>
+        
+        {recipe.description && (
+          <p className="recipe-description">{recipe.description}</p>
+        )}
       </div>
 
-      <div className="toolbar">
-        <button className="btn" onClick={()=>router.back()}>Retour</button>
-        <button className="btn primary" onClick={cook} disabled={sending}>
-          {sending ? 'Cuisiner…' : 'Cuisiner'}
-        </button>
+      <div className="recipe-content">
+        <div className="recipe-info-cards">
+          <div className="info-card">
+            <div className="info-icon">⏱️</div>
+            <div className="info-content">
+              <div className="info-label">Temps total</div>
+              <div className="info-value">{totalTime} min</div>
+              <div className="info-details">
+                {recipe.prep_min > 0 && `Prep: ${recipe.prep_min}min`}
+                {recipe.cook_min > 0 && ` • Cuisson: ${recipe.cook_min}min`}
+                {recipe.rest_min > 0 && ` • Repos: ${recipe.rest_min}min`}
+              </div>
+            </div>
+          </div>
+
+          <div className="info-card">
+            <div className="info-icon">👥</div>
+            <div className="info-content">
+              <div className="info-label">Portions</div>
+              <div className="info-value">{recipe.servings || 'Non défini'}</div>
+            </div>
+          </div>
+
+          <div className="info-card">
+            <div className="info-icon">📊</div>
+            <div className="info-content">
+              <div className="info-label">Score Myko</div>
+              <div className="info-value">{recipe.myko_score}/100</div>
+            </div>
+          </div>
+
+          <div className="info-card">
+            <div className="info-icon">🌱</div>
+            <div className="info-content">
+              <div className="info-label">Régime</div>
+              <div className="info-value">
+                {recipe.is_vegan ? 'Vegan' : recipe.is_vegetarian ? 'Végétarien' : 'Omnivore'}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="recipe-body">
+          <div className="ingredients-section">
+            <h2>Ingrédients</h2>
+            <p className="no-ingredients">
+              Ingrédients non disponibles en mode développement.
+              <br />
+              Configurez une vraie base de données Supabase pour voir les ingrédients.
+            </p>
+          </div>
+
+          <div className="instructions-section">
+            <h2>Instructions</h2>
+            <div className="instructions-content">
+              {recipe.steps ? (
+                <p className="instructions-text">{recipe.steps}</p>
+              ) : (
+                <p style={{ color: '#6b7280', fontStyle: 'italic' }}>
+                  Instructions non disponibles
+                </p>
+              )}
+            </div>
+
+            {recipe.chef_tips && (
+              <div className="chef-tips">
+                <h3>💡 Conseils du chef</h3>
+                <p>{recipe.chef_tips}</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="recipe-actions">
+          <button className="action-btn primary">
+            📅 Planifier cette recette
+          </button>
+          <button className="action-btn secondary">
+            🛒 Ajouter aux courses
+          </button>
+          <button className="action-btn tertiary">
+            📝 Modifier la recette
+          </button>
+        </div>
       </div>
     </div>
   );
