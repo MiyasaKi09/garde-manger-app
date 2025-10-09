@@ -42,15 +42,15 @@ export default function RecipesPage() {
     try {
       setLoading(true);
       
-      console.log('=== DÉBUT DEBUG SUPABASE ===');
+      console.log('=== CHARGEMENT RECETTES ===');
       console.log('URL Supabase:', process.env.NEXT_PUBLIC_SUPABASE_URL);
       console.log('Clé définie:', !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
       
-      // Test de connexion le plus basique
+      // Utiliser la même approche que le pantry qui fonctionne
       const { data, error } = await supabase
         .from('recipes')
         .select('*')
-        .limit(5);
+        .order('created_at', { ascending: false });
 
       console.log('Résultat requête Supabase:');
       console.log('- Données:', data);
@@ -69,26 +69,28 @@ export default function RecipesPage() {
         console.log('Colonnes disponibles:', Object.keys(data[0]));
         console.log('Première recette complète:', data[0]);
         
-        // Charger maintenant toutes les recettes
-        const { data: allData, error: allError } = await supabase
-          .from('recipes')
-          .select('*');
-          
-        console.log('Toutes les recettes:', allData?.length);
-        if (allError) {
-          console.error('Erreur chargement complet:', allError);
-          setRecipes(data); // Utiliser les 5 premières au moins
-        } else {
-          setRecipes(allData || []);
-        }
+        setRecipes(data);
         return;
+      }
+      
+      // Si pas de recettes, vérifier si la table existe
+      console.log('Aucune recette trouvée, test de la table...');
+      const { data: testData, error: testError } = await supabase
+        .from('recipes')
+        .select('id')
+        .limit(1);
+        
+      if (testError) {
+        console.error('Table recipes introuvable:', testError);
+        setError(`Table 'recipes' introuvable. Veuillez vérifier votre base de données.`);
+      } else {
+        console.log('Table recipes existe mais est vide');
+        setRecipes([]);
       }
       
     } catch (error) {
       console.error('Erreur lors du chargement des recettes:', error);
-      
-      // Aucune recette trouvée
-      console.log('Aucune recette trouvée dans la base de données');
+      setError(`Erreur: ${error.message}`);
       setRecipes([]);
     } finally {
       setLoading(false);
@@ -440,12 +442,6 @@ export default function RecipesPage() {
                     <span>
                       {(recipe.prep_min || 0) + (recipe.cook_min || 0) + (recipe.rest_min || 0) > 0 
                         ? `${(recipe.prep_min || 0) + (recipe.cook_min || 0) + (recipe.rest_min || 0)} min` 
-                        : recipe.prep_min && recipe.cook_min 
-                        ? `${(recipe.prep_min || 0) + (recipe.cook_min || 0)} min`
-                        : recipe.prep_min 
-                        ? `${recipe.prep_min} min (prep)`
-                        : recipe.cook_min
-                        ? `${recipe.cook_min} min (cuisson)`
                         : 'Temps non défini'}
                     </span>
                   </div>
