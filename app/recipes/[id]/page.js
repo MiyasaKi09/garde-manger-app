@@ -310,25 +310,31 @@ export default function RecipeDetail() {
     
     // 1) recette + ingrédients + meta produit
     console.log('Chargement de la recette avec ID:', id);
-    const { data: r, error: errR } = await supabase
+    
+    // Essayer d'abord avec les relations
+    let { data: r, error: errR } = await supabase
       .from('recipes')
-      .select(`
-        *,
-        recipe_ingredients (
-          id,
-          canonical_food_id,
-          quantity,
-          unit,
-          notes,
-          canonical_foods (
-            id,
-            name,
-            category,
-            subcategory
-          )
-        )
-      `)
-      .eq('id', id).single();
+      .select('*')
+      .eq('id', id)
+      .single();
+
+    // Si erreur avec les relations, essayer une requête simple
+    if (errR) {
+      console.error('Erreur première requête:', errR);
+      // Essayons une requête de fallback plus simple
+      const { data: fallbackData, error: fallbackError } = await supabase
+        .from('recipes')
+        .select('*')
+        .eq('id', id)
+        .single();
+        
+      if (fallbackError) {
+        console.error('Erreur requête fallback:', fallbackError);
+      } else {
+        r = fallbackData;
+        errR = null;
+      }
+    }
     if (errR) { 
       console.error('Erreur lors du chargement de la recette:', errR);
       console.log('ID recherché:', id);
@@ -366,27 +372,56 @@ export default function RecipeDetail() {
       is_gluten_free: r?.is_gluten_free
     });
     
-    // Charger les ingrédients de la recette
+    // Charger les ingrédients de la recette (requête séparée et robuste)
     try {
-      const { data: ingredients, error: ingredientsError } = await supabase
+      console.log('🥕 Chargement des ingrédients pour la recette:', id);
+      
+      // Essayer d'abord avec les relations
+      let { data: ingredients, error: ingredientsError } = await supabase
         .from('recipe_ingredients')
         .select(`
           id,
           quantity,
           unit,
           notes,
-          canonical_food_id,
-          canonical_foods(id, name, category, subcategory)
+          canonical_food_id
         `)
         .eq('recipe_id', id);
 
       if (ingredientsError) {
-        console.error('Erreur chargement ingrédients:', ingredientsError);
+        console.error('❌ Erreur chargement ingrédients:', ingredientsError);
+        ingredients = [];
       }
 
-      const ingList = ingredients || [];
+      // Pour chaque ingrédient, charger les détails du canonical_food séparément
+      const enrichedIngredients = [];
+      if (ingredients && ingredients.length > 0) {
+        for (const ingredient of ingredients) {
+          const enrichedIngredient = { ...ingredient };
+          
+          if (ingredient.canonical_food_id) {
+            try {
+              const { data: canonicalFood, error: canonicalError } = await supabase
+                .from('canonical_foods')
+                .select('id, name, category, subcategory')
+                .eq('id', ingredient.canonical_food_id)
+                .single();
+                
+              if (!canonicalError && canonicalFood) {
+                enrichedIngredient.canonical_foods = canonicalFood;
+              }
+            } catch (canonicalErr) {
+              console.warn('⚠️ Impossible de charger les détails pour l\'ingrédient:', ingredient.canonical_food_id);
+            }
+          }
+          
+          enrichedIngredients.push(enrichedIngredient);
+        }
+      }
+
+      const ingList = enrichedIngredients;
       setIngs(ingList);
-      console.log('Ingrédients chargés:', ingList);
+      console.log('✅ Ingrédients chargés:', ingList.length, 'ingrédients');
 
       // Pour l'instant, pas de chargement de lots détaillé
       setLotsByProduct({});
