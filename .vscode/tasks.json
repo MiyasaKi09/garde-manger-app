@@ -2,13 +2,16 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Exporter le schéma Supabase",
+      "label": "Exporter le schéma (rapport 6543)",
       "type": "shell",
       "command": "bash",
       "args": [
         "-lc",
-        "set -a; [ -f .env.local ] && source .env.local; set +a; PGCONNECT_TIMEOUT=15 pg_dump --schema-only --no-owner --no-privileges -n public -f schema.sql --dbname=\"$DATABASE_URL_SESSION\""
+        "set -a; [ -f .env.local ] && source .env.local; set +a; PGPASSWORD='${DATABASE_URL_TX##*postgres:}' >/dev/null; psql \"$DATABASE_URL_TX\" -v ON_ERROR_STOP=1 -f tools/schema_report.sql > schema.md"
       ],
+      "options": {
+        "env": {}
+      },
       "problemMatcher": []
     }
   ]
