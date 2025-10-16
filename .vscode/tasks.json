@@ -2,12 +2,14 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Export DB schema (session pooler)",
+      "label": "Exporter le schéma Supabase",
       "type": "shell",
-      "command": "PGCONNECT_TIMEOUT=15 pg_dump --schema-only --no-owner --no-privileges --format=p -n public -f schema.sql \"$DATABASE_URL_SESSION\"",
-      "problemMatcher": [],
-      "options": { "env": { "DATABASE_URL_SESSION": "${env:DATABASE_URL_SESSION}" } }
-      
+      "command": "bash",
+      "args": [
+        "-lc",
+        "set -a; [ -f .env.local ] && source .env.local; set +a; PGCONNECT_TIMEOUT=15 pg_dump --schema-only --no-owner --no-privileges -n public -f schema.sql --dbname=\"$DATABASE_URL_SESSION\""
+      ],
+      "problemMatcher": []
     }
   ]
 }
