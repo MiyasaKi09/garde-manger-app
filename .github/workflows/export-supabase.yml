@@ -161,7 +161,7 @@ jobs:
           name: supabase-data-csv
           path: data-csv.zip
 
-      # --- Commit dans le repo ---
+      # --- Commit + fetch/rebase + push ---
       - name: Commit to repo
         run: |
           git config --global user.name  "github-actions[bot]"
@@ -171,5 +171,7 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "chore(export): update schema.md, data_summary.md and CSVs"
-            git push
+            git fetch origin main
+            git rebase origin/main || git rebase --abort
+            git push origin main
           fi
