@@ -1,4 +1,4 @@
-name: Export Supabase Data (CSV + ZIP via pooler 6543)
+name: Export Supabase Data (CSV + ZIP, same conn as schema)
 
 on:
   workflow_dispatch:
@@ -16,27 +16,24 @@ jobs:
       - name: Install PostgreSQL client & zip
         run: sudo apt-get update && sudo apt-get install -y postgresql-client zip
 
-      - name: Test secrets visibility
+      # === Connexion IDENTIQUE au workflow schema ===
+      - name: Build connection string (same as schema)
+        id: conn
         run: |
-          echo "HOST length: $(echo -n '${{ secrets.SUPABASE_POOLER_HOST }}' | wc -c)"
-          echo "REF length: $(echo -n '${{ secrets.SUPABASE_PROJECT_REF }}' | wc -c)"
-          echo "PWD length: $(echo -n '${{ secrets.SUPABASE_DB_PASSWORD }}' | wc -c)"
+          echo "CONN=host=${{ secrets.SUPABASE_POOLER_HOST }} port=6543 dbname=postgres user=postgres.${{ secrets.SUPABASE_PROJECT_REF }} sslmode=require" >> $GITHUB_OUTPUT
 
-      - name: Test connection to Supabase
+      - name: Test connection (should mirror schema workflow)
         env:
           PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-          SUPABASE_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
-          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          CONN: ${{ steps.conn.outputs.CONN }}
         run: |
           set -e
-          echo "Testing connection to $SUPABASE_HOST:$DB_PORT as postgres.${SUPABASE_PROJECT_REF} ..."
-          psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -c "select version();"
+          psql "$CONN" -Atc "select version();"
 
-      - name: Export all tables to CSV
+      - name: Export all public tables to CSV
         env:
           PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-          SUPABASE_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
-          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          CONN: ${{ steps.conn.outputs.CONN }}
         run: |
           set -e
           rm -rf data_export && mkdir -p data_export
@@ -44,13 +41,15 @@ jobs:
           echo "_Generated: $(date -u)_  " >> data_summary.md
           echo >> data_summary.md
 
-          echo "Listing public tables..."
-          TABLES=$(psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
+          TABLES=$(psql "$CONN" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
+          if [ -z "$TABLES" ]; then
+            echo "No tables in public schema."
+          fi
 
           for T in $TABLES; do
             echo "Exporting $T ..."
-            psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
-            CNT=$(psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -Atc "select count(*) from public.\"$T\";")
+            psql "$CONN" -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
+            CNT=$(psql "$CONN" -Atc "select count(*) from public.\"$T\";")
             echo "- **$T**: \`$CNT\` rows" >> data_summary.md
           done
 
@@ -66,3 +65,16 @@ jobs:
         with:
           name: supabase-data-csv
           path: data-csv.zip
+
+      - name: Commit data_summary.md to repository
+        if: success()
+        run: |
+          git config --global user.name  "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data_summary.md
+          if git diff --cached --quiet; then
+            echo "No changes in data_summary.md, skipping commit."
+          else
+            git commit -m "chore(data): update data_summary.md"
+            git push
+          fi
