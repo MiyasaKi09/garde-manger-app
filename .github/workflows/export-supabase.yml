@@ -12,12 +12,15 @@ jobs:
       DB_NAME: postgres
       DB_PORT: 6543
       DB_SSL: require
+      PGSSLMODE: require   # force SSL côté client psql
+
     steps:
       - uses: actions/checkout@v4
 
       - name: install psql and zip
         run: sudo apt-get update && sudo apt-get install -y postgresql-client zip
 
+      # -------- Detect working connection (verbose) --------
       - name: detect connection mode
         id: pick
         shell: bash
@@ -26,23 +29,38 @@ jobs:
           HOST: "${{ secrets.SUPABASE_POOLER_HOST }}"
           REF: "${{ secrets.SUPABASE_PROJECT_REF }}"
         run: |
-          set -e
-          echo "try A: user=postgres.$REF"
-          if psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.$REF" -Atc "select 1;" >/dev/null 2>&1; then
+          set +e
+
+          echo "---- try A: user=postgres.${REF}, host=$HOST, port=$DB_PORT, ssl=require"
+          psql "host=$HOST port=$DB_PORT dbname=$DB_NAME user=postgres.${REF} sslmode=require" -Atc "select 'A' as mode, current_user;"
+          A_RC=$?
+          echo "A exit code: $A_RC"
+          echo
+
+          echo "---- try B: user=postgres + PGOPTIONS=project=$REF, host=$HOST, port=$DB_PORT, ssl=require"
+          PGOPTIONS="project=$REF" psql "host=$HOST port=$DB_PORT dbname=$DB_NAME user=postgres sslmode=require" -Atc "select 'B' as mode, current_user;"
+          B_RC=$?
+          echo "B exit code: $B_RC"
+          echo
+
+          if [ "$A_RC" -eq 0 ]; then
             echo "MODE=A" >> "$GITHUB_OUTPUT"
             echo "ok=1"    >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          echo "try B: user=postgres + PGOPTIONS=project=$REF"
-          export PGOPTIONS="project=$REF"
-          if psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" -Atc "select 1;" >/dev/null 2>&1; then
+          if [ "$B_RC" -eq 0 ]; then
             echo "MODE=B" >> "$GITHUB_OUTPUT"
             echo "ok=1"   >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          echo "no working mode"
+
+          echo "❌ No working mode. Likely causes:"
+          echo "   - Wrong/missing secrets: SUPABASE_POOLER_HOST / SUPABASE_PROJECT_REF / SUPABASE_DB_PASSWORD"
+          echo "   - Host must look like: aws-1-<region>.pooler.supabase.com"
+          echo "   - DB password must be the Database password (not anon/service key)."
           exit 1
 
+      # -------- Generate schema.md --------
       - name: generate schema.md
         if: steps.pick.outputs.ok == '1'
         shell: bash
@@ -61,6 +79,7 @@ jobs:
             psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" \
               -v ON_ERROR_STOP=1 -f tools/schema_report.sql > schema.md
           fi
+          echo "schema.md generated"
 
       - name: upload schema artifact
         if: steps.pick.outputs.ok == '1'
@@ -69,6 +88,7 @@ jobs:
           name: schema-report
           path: schema.md
 
+      # -------- Export all public tables to CSV --------
       - name: export tables to CSV
         if: steps.pick.outputs.ok == '1'
         shell: bash
@@ -82,21 +102,36 @@ jobs:
           rm -rf data_export data/csv
           mkdir -p data_export data/csv
 
+          echo "# Data export summary" > data_summary.md
+          echo "_Generated: $(date -u)_" >> data_summary.md
+          echo >> data_summary.md
+
           if [ "$MODE" = "MODE=A" ]; then
-            LIST=$(psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.$REF" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
+            LIST=$(psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.$REF" -Atc \
+              "select tablename from pg_tables where schemaname='public' order by tablename;")
             for T in $LIST; do
-              psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.$REF" -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
+              echo "export $T"
+              psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.$REF" \
+                -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
+              CNT=$(psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.$REF" -Atc "select count(*) from public.\"$T\";")
+              echo "- **$T**: \`$CNT\` rows" >> data_summary.md
             done
           else
             export PGOPTIONS="project=$REF"
-            LIST=$(psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
+            LIST=$(psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" -Atc \
+              "select tablename from pg_tables where schemaname='public' order by tablename;")
             for T in $LIST; do
-              psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
+              echo "export $T"
+              psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" \
+                -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
+              CNT=$(psql -h "$HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" -Atc "select count(*) from public.\"$T\";")
+              echo "- **$T**: \`$CNT\` rows" >> data_summary.md
             done
           fi
 
           cp -f data_export/*.csv data/csv/ 2>/dev/null || true
           ( cd data_export && zip -9 -r ../data-csv.zip . )
+          echo "CSV ready"
 
       - name: upload CSV zip
         if: steps.pick.outputs.ok == '1'
@@ -105,15 +140,16 @@ jobs:
           name: supabase-data-csv
           path: data-csv.zip
 
+      # -------- Commit to repo --------
       - name: commit to repo
         if: steps.pick.outputs.ok == '1'
         run: |
           git config --global user.name  "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add schema.md data/csv/
+          git add schema.md data_summary.md data/csv/
           if git diff --cached --quiet; then
             echo "no changes"
           else
-            git commit -m "chore(export): update schema + csv"
+            git commit -m "chore(export): update schema.md, data_summary.md and CSVs"
             git push
           fi
