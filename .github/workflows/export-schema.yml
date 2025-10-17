@@ -41,7 +41,11 @@ jobs:
 
       - name: Upload schema.md as artifact
         uses: actions/upload-artifact@v4
-              - name: Commit schema.md to repository
+        with:
+          name: schema-report
+          path: schema.md
+
+      - name: Commit schema.md to repository
         if: success()
         run: |
           git config --global user.name "github-actions[bot]"
@@ -53,7 +57,3 @@ jobs:
             git commit -m "chore: update schema.md"
             git push
           fi
-
-        with:
-          name: schema-report
-          path: schema.md
