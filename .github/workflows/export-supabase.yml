@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DB_NAME: postgres
-      PGSSLMODE: require   # force SSL côté client psql
+      PGSSLMODE: require   # SSL côté client psql
 
     steps:
       - uses: actions/checkout@v4
@@ -18,7 +18,7 @@ jobs:
       - name: Install psql, zip, dnsutils
         run: sudo apt-get update && sudo apt-get install -y postgresql-client dnsutils zip
 
-      # --- Normaliser les secrets pour éviter "could not translate host name" ---
+      # --- Normaliser les secrets (évite "could not translate host name") ---
       - name: Normalize secrets (host/ref/password)
         id: norm
         shell: bash
@@ -33,7 +33,7 @@ jobs:
           H="${H%%/*}"
           H="${H%%:*}"
           H="$(echo -n "$H" | tr -d '[:space:]')"
-          if [ -z "$H" ]; then echo "Host empty after normalization"; exit 1; fi
+          [ -z "$H" ] && { echo "Host empty after normalization"; exit 1; }
           echo "HOST_CLEAN=$H" >> "$GITHUB_ENV"
           echo "REF_CLEAN=$(echo -n "$RAW_REF" | tr -d '[:space:]')" >> "$GITHUB_ENV"
           echo "Normalized host: $H"
@@ -43,11 +43,10 @@ jobs:
         shell: bash
         run: |
           set -e
-          echo "nslookup $HOST_CLEAN"
           nslookup "$HOST_CLEAN" >/dev/null 2>&1 || { echo "❌ DNS failed for $HOST_CLEAN"; exit 1; }
           echo "✅ DNS ok for $HOST_CLEAN"
 
-      # --- Détection auto : ports 6543 puis 6544, modes A/B/C/D ---
+      # --- Auto-détection : ports 6543/6544 × modes A/B/C/D ---
       - name: Detect working connection (6543/6544, A/B/C/D)
         id: pick
         shell: bash
@@ -161,17 +160,25 @@ jobs:
           name: supabase-data-csv
           path: data-csv.zip
 
-      # --- Commit + fetch/rebase + push ---
-      - name: Commit to repo
+      # --- Commit + overwrite (force push) pour éviter les conflits ---
+      - name: Commit to repo (overwrite)
         run: |
+          set -e
           git config --global user.name  "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Toujours repartir de la dernière remote puis réécrire nos fichiers exportés
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+
+          # Copier/ajouter les fichiers générés
           git add schema.md data_summary.md data/csv/
+
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore(export): update schema.md, data_summary.md and CSVs"
-            git fetch origin main
-            git rebase origin/main || git rebase --abort
-            git push origin main
+            git commit -m "chore(export): overwrite schema.md, data_summary.md and CSVs"
+            # On force pour éviter les conflits de contenu/ordre
+            git push origin main --force
           fi
