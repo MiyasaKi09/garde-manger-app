@@ -1,4 +1,4 @@
-name: Export Supabase Schema
+name: Export Supabase Schema (report via 6543)
 
 on:
   workflow_dispatch:
@@ -6,29 +6,40 @@ on:
 jobs:
   dump:
     runs-on: ubuntu-latest
+    env:
+      SUPABASE_HOST: aws-1-eu-west-3.pooler.supabase.com   # vérifie ta région dans "Connect → Transaction pooler"
+      SUPABASE_DB: postgres
+      SUPABASE_USER: postgres
     steps:
       - uses: actions/checkout@v4
+
       - name: Install PostgreSQL client
         run: sudo apt-get update && sudo apt-get install -y postgresql-client
-      - name: Dump schema from Supabase
+
+      - name: Generate schema.md via psql (IPv4, Transaction Pooler 6543)
         env:
-          DATABASE_URL_SESSION: ${{ secrets.DATABASE_URL_SESSION }}
+          PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
         run: |
-          PGCONNECT_TIMEOUT=20 pg_dump \
-            --schema-only --no-owner --no-privileges \
-            -n public \
-            -f schema.sql \
-            "$DATABASE_URL_SESSION"
-      - name: Upload schema.sql as artifact
+          # test rapide
+          psql "host=$SUPABASE_HOST port=6543 dbname=$SUPABASE_DB user=$SUPABASE_USER sslmode=require options=project=$PROJECT_REF" -Atc "select version();"
+
+          # génère le rapport
+          psql "host=$SUPABASE_HOST port=6543 dbname=$SUPABASE_DB user=$SUPABASE_USER sslmode=require options=project=$PROJECT_REF" \
+            -v ON_ERROR_STOP=1 -f tools/schema_report.sql > schema.md
+
+      - name: Upload schema.md as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: schema-sql
-          path: schema.sql
-      - name: Commit schema.sql to repository
-        if: success()
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add schema.sql
-          git commit -m "chore: update schema.sql"
-          git push
+          name: schema-report
+          path: schema.md
+
+      # (optionnel) commit auto
+      # - name: Commit schema.md to repository
+      #   if: success()
+      #   run: |
+      #     git config --global user.name "github-actions[bot]"
+      #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      #     git add schema.md
+      #     git commit -m "chore: update schema.md"
+      #     git push
