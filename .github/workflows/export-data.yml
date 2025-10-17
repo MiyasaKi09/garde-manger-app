@@ -1,4 +1,4 @@
-name: Export Supabase Data (CSV + ZIP, same conn as schema)
+name: Export Supabase Data (CSV + ZIP, mirror schema connection)
 
 on:
   workflow_dispatch:
@@ -16,18 +16,18 @@ jobs:
       - name: Install PostgreSQL client & zip
         run: sudo apt-get update && sudo apt-get install -y postgresql-client zip
 
-      # === Connexion IDENTIQUE au workflow schema ===
-      - name: Build connection string (same as schema)
+      - name: Build connection string (mirror schema)
         id: conn
         run: |
-          echo "CONN=host=${{ secrets.SUPABASE_POOLER_HOST }} port=6543 dbname=postgres user=postgres.${{ secrets.SUPABASE_PROJECT_REF }} sslmode=require" >> $GITHUB_OUTPUT
+          echo "CONN=host=${{ secrets.SUPABASE_POOLER_HOST }} port=6543 dbname=postgres user=postgres sslmode=require options=project=${{ secrets.SUPABASE_PROJECT_REF }}" >> $GITHUB_OUTPUT
 
-      - name: Test connection (should mirror schema workflow)
+      - name: Test connection (same as schema)
         env:
           PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
           CONN: ${{ steps.conn.outputs.CONN }}
         run: |
           set -e
+          echo "Testing connection..."
           psql "$CONN" -Atc "select version();"
 
       - name: Export all public tables to CSV
@@ -41,10 +41,8 @@ jobs:
           echo "_Generated: $(date -u)_  " >> data_summary.md
           echo >> data_summary.md
 
+          echo "Listing public tables..."
           TABLES=$(psql "$CONN" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
-          if [ -z "$TABLES" ]; then
-            echo "No tables in public schema."
-          fi
 
           for T in $TABLES; do
             echo "Exporting $T ..."
