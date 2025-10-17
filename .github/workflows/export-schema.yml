@@ -41,6 +41,19 @@ jobs:
 
       - name: Upload schema.md as artifact
         uses: actions/upload-artifact@v4
+              - name: Commit schema.md to repository
+        if: success()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add schema.md
+          if git diff --cached --quiet; then
+            echo "No changes in schema.md, skipping commit."
+          else
+            git commit -m "chore: update schema.md"
+            git push
+          fi
+
         with:
           name: schema-report
           path: schema.md
