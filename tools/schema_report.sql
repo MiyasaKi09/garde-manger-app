@@ -6,7 +6,6 @@
 \echo _Généré le : `date`_
 \echo
 
--- Tables
 \echo ## Tables
 SELECT '- ' || table_name
 FROM information_schema.tables
@@ -16,7 +15,6 @@ ORDER BY table_name;
 \echo
 \echo ---
 
--- Colonnes par table
 \echo ## Colonnes
 SELECT E'\n### ' || table_name || E'\n'
      || string_agg(
@@ -32,7 +30,6 @@ ORDER BY table_name;
 \echo
 \echo ---
 
--- Clés primaires
 \echo ## Clés primaires
 SELECT ' - '||rel.relname||' → ('||string_agg(att.attname, ', ')||')'
 FROM pg_index idx
@@ -46,7 +43,6 @@ ORDER BY rel.relname;
 \echo
 \echo ---
 
--- Clés étrangères
 \echo ## Clés étrangères
 SELECT
   ' - '||tc.table_name||'.'||kcu.column_name||
@@ -63,7 +59,6 @@ ORDER BY tc.table_name, kcu.ordinal_position;
 \echo
 \echo ---
 
--- Index
 \echo ## Index
 SELECT ' - '||schemaname||'.'||tablename||' → '||indexname||' : '||indexdef
 FROM pg_indexes
@@ -73,7 +68,6 @@ ORDER BY tablename, indexname;
 \echo
 \echo ---
 
--- Checks
 \echo ## Contraintes CHECK
 SELECT
   ' - '||c.conname||' ON '||rel.relname||' : '||pg_get_constraintdef(c.oid)
@@ -86,7 +80,6 @@ ORDER BY rel.relname, c.conname;
 \echo
 \echo ---
 
--- Vues
 \echo ## Vues
 SELECT ' - '||table_name
 FROM information_schema.views
@@ -96,7 +89,6 @@ ORDER BY table_name;
 \echo
 \echo ---
 
--- Définition des vues
 \echo ## Définition des vues
 SELECT E'\n### '||c.relname||E'\n```sql\n'||pg_get_viewdef(c.oid)||E'\n```\n'
 FROM pg_class c
