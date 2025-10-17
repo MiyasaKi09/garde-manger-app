@@ -1,4 +1,4 @@
-name: Export Supabase (schema + CSV)
+name: Export Supabase (schema + CSV, auto-detect 6543/6544)
 
 on:
   workflow_dispatch:
@@ -10,13 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DB_NAME: postgres
-      DB_PORT: 6543            # on force le transaction pooler
-      PGSSLMODE: require       # SSL côté client
+      PGSSLMODE: require   # force SSL côté client psql
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install psql and zip
+      - name: Install psql, zip, dnsutils
         run: sudo apt-get update && sudo apt-get install -y postgresql-client dnsutils zip
 
       # --- Normaliser les secrets pour éviter "could not translate host name" ---
@@ -26,31 +25,17 @@ jobs:
         env:
           RAW_HOST: "${{ secrets.SUPABASE_POOLER_HOST }}"
           RAW_REF:  "${{ secrets.SUPABASE_PROJECT_REF }}"
-          RAW_PWD:  "${{ secrets.SUPABASE_DB_PASSWORD }}"
         run: |
           set -e
           H="$RAW_HOST"
-          # retire schéma si présent
-          H="${H#postgresql://}"
-          H="${H#postgres://}"
-          # retire éventuels identifiants user:pass@
-          if [[ "$H" == *"@"* ]]; then H="${H#*@}"; fi
-          # retire tout ce qui suit un / (ex: /postgres)
+          H="${H#postgresql://}"; H="${H#postgres://}"
+          [[ "$H" == *"@"* ]] && H="${H#*@}"
           H="${H%%/*}"
-          # retire :port s'il y en a un
           H="${H%%:*}"
-          # trim espaces
           H="$(echo -n "$H" | tr -d '[:space:]')"
-
-          if [ -z "$H" ]; then
-            echo "Host is empty after normalization -> check SUPABASE_POOLER_HOST secret"; exit 1
-          fi
-
+          if [ -z "$H" ]; then echo "Host empty after normalization"; exit 1; fi
           echo "HOST_CLEAN=$H" >> "$GITHUB_ENV"
           echo "REF_CLEAN=$(echo -n "$RAW_REF" | tr -d '[:space:]')" >> "$GITHUB_ENV"
-          # mot de passe tel quel (peut contenir des caractères spéciaux)
-          echo "Has password: YES"
-
           echo "Normalized host: $H"
           echo "Normalized ref:  $RAW_REF"
 
@@ -62,64 +47,64 @@ jobs:
           nslookup "$HOST_CLEAN" >/dev/null 2>&1 || { echo "❌ DNS failed for $HOST_CLEAN"; exit 1; }
           echo "✅ DNS ok for $HOST_CLEAN"
 
-      # --- Détection du mode de connexion (A = user postgres.<ref>, B = user postgres + PGOPTIONS) ---
-      - name: Detect connection mode (verbose)
+      # --- Détection auto : ports 6543 puis 6544, modes A/B/C/D ---
+      - name: Detect working connection (6543/6544, A/B/C/D)
         id: pick
         shell: bash
         env:
           PGPASSWORD: "${{ secrets.SUPABASE_DB_PASSWORD }}"
         run: |
           set +e
-          echo "---- try A: user=postgres.${REF_CLEAN}, host=${HOST_CLEAN}, port=${DB_PORT}, ssl=require"
-          psql "host=${HOST_CLEAN} port=${DB_PORT} dbname=${DB_NAME} user=postgres.${REF_CLEAN} sslmode=require" -Atc "select 'A' as mode, current_user;" 
-          A_RC=$?
-          echo "A exit code: $A_RC"
-          echo
+          try() {
+            local P="$1" U="$2" PGOPT="$3" MODE="$4"
+            echo "---- try $MODE: host=$HOST_CLEAN port=$P user=$U PGOPTIONS=$PGOPT"
+            if [ -n "$PGOPT" ]; then
+              PGOPTIONS="$PGOPT" psql "host=$HOST_CLEAN port=$P dbname=$DB_NAME user=$U sslmode=require" -Atc "select '$MODE' as mode, current_user;"
+            else
+              psql "host=$HOST_CLEAN port=$P dbname=$DB_NAME user=$U sslmode=require" -Atc "select '$MODE' as mode, current_user;"
+            fi
+            RC=$?; echo "$MODE exit code: $RC"; echo; return $RC
+          }
 
-          echo "---- try B: user=postgres + PGOPTIONS=project=${REF_CLEAN}"
-          PGOPTIONS="project=${REF_CLEAN}" psql "host=${HOST_CLEAN} port=${DB_PORT} dbname=${DB_NAME} user=postgres sslmode=require" -Atc "select 'B' as mode, current_user;"
-          B_RC=$?
-          echo "B exit code: $B_RC"
-          echo
+          # A: 6543 + postgres.<ref>
+          try 6543 "postgres.${REF_CLEAN}" "" "A_6543_user_ref"
+          [ $? -eq 0 ] && { echo "MODE=A"; echo "PORT=6543"; echo "USER=postgres.${REF_CLEAN}"; echo "PGOPT=";  } >> "$GITHUB_OUTPUT" && exit 0
 
-          if [ "$A_RC" -eq 0 ]; then
-            echo "MODE=A" >> "$GITHUB_OUTPUT"
-            echo "ok=1"   >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          if [ "$B_RC" -eq 0 ]; then
-            echo "MODE=B" >> "$GITHUB_OUTPUT"
-            echo "ok=1"   >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
+          # B: 6543 + postgres + PGOPTIONS
+          try 6543 "postgres" "project=${REF_CLEAN}" "B_6543_pgopt"
+          [ $? -eq 0 ] && { echo "MODE=B"; echo "PORT=6543"; echo "USER=postgres"; echo "PGOPT=project=${REF_CLEAN}"; } >> "$GITHUB_OUTPUT" && exit 0
 
-          echo "❌ No working mode. Likely causes:"
-          echo "   - Wrong host: '${HOST_CLEAN}' (should look like aws-*-*.pooler.supabase.com)"
-          echo "   - Wrong project ref: '${REF_CLEAN}'"
-          echo "   - Wrong DB password (must be Database Password from Supabase Settings)"
+          # C: 6544 + postgres.<ref>
+          try 6544 "postgres.${REF_CLEAN}" "" "C_6544_user_ref"
+          [ $? -eq 0 ] && { echo "MODE=C"; echo "PORT=6544"; echo "USER=postgres.${REF_CLEAN}"; echo "PGOPT="; } >> "$GITHUB_OUTPUT" && exit 0
+
+          # D: 6544 + postgres + PGOPTIONS
+          try 6544 "postgres" "project=${REF_CLEAN}" "D_6544_pgopt"
+          [ $? -eq 0 ] && { echo "MODE=D"; echo "PORT=6544"; echo "USER=postgres"; echo "PGOPT=project=${REF_CLEAN}"; } >> "$GITHUB_OUTPUT" && exit 0
+
+          echo "❌ No working mode on 6543/6544 (A/B/C/D). Check host/ref/password."
           exit 1
 
       # --- schema.md ---
       - name: Generate schema.md
-        if: steps.pick.outputs.ok == '1'
         shell: bash
         env:
           PGPASSWORD: "${{ secrets.SUPABASE_DB_PASSWORD }}"
-          MODE: "${{ steps.pick.outputs.MODE }}"
+          PORT: "${{ steps.pick.outputs.PORT }}"
+          USER: "${{ steps.pick.outputs.USER }}"
+          PGOPT: "${{ steps.pick.outputs.PGOPT }}"
         run: |
           set -e
-          if [ "$MODE" = "MODE=A" ]; then
-            psql -h "$HOST_CLEAN" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.$REF_CLEAN" \
+          if [ -n "$PGOPT" ]; then
+            PGOPTIONS="$PGOPT" psql "host=$HOST_CLEAN port=$PORT dbname=$DB_NAME user=$USER sslmode=require" \
               -v ON_ERROR_STOP=1 -f tools/schema_report.sql > schema.md
           else
-            export PGOPTIONS="project=$REF_CLEAN"
-            psql -h "$HOST_CLEAN" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" \
+            psql "host=$HOST_CLEAN port=$PORT dbname=$DB_NAME user=$USER sslmode=require" \
               -v ON_ERROR_STOP=1 -f tools/schema_report.sql > schema.md
           fi
           echo "✅ schema.md generated"
 
       - name: Upload schema artifact
-        if: steps.pick.outputs.ok == '1'
         uses: actions/upload-artifact@v4
         with:
           name: schema-report
@@ -127,11 +112,12 @@ jobs:
 
       # --- Export CSV ---
       - name: Export public tables to CSV
-        if: steps.pick.outputs.ok == '1'
         shell: bash
         env:
           PGPASSWORD: "${{ secrets.SUPABASE_DB_PASSWORD }}"
-          MODE: "${{ steps.pick.outputs.MODE }}"
+          PORT: "${{ steps.pick.outputs.PORT }}"
+          USER: "${{ steps.pick.outputs.USER }}"
+          PGOPT: "${{ steps.pick.outputs.PGOPT }}"
         run: |
           set -e
           rm -rf data_export data/csv
@@ -141,25 +127,26 @@ jobs:
           echo "_Generated: $(date -u)_" >> data_summary.md
           echo >> data_summary.md
 
-          if [ "$MODE" = "MODE=A" ]; then
-            LIST=$(psql -h "$HOST_CLEAN" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.$REF_CLEAN" -Atc \
+          if [ -n "$PGOPT" ]; then
+            LIST=$(PGOPTIONS="$PGOPT" psql "host=$HOST_CLEAN port=$PORT dbname=$DB_NAME user=$USER sslmode=require" -Atc \
               "select tablename from pg_tables where schemaname='public' order by tablename;")
             for T in $LIST; do
               echo "Export $T"
-              psql -h "$HOST_CLEAN" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.$REF_CLEAN" \
+              PGOPTIONS="$PGOPT" psql "host=$HOST_CLEAN port=$PORT dbname=$DB_NAME user=$USER sslmode=require" \
                 -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
-              CNT=$(psql -h "$HOST_CLEAN" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.$REF_CLEAN" -Atc "select count(*) from public.\"$T\";")
+              CNT=$(PGOPTIONS="$PGOPT" psql "host=$HOST_CLEAN port=$PORT dbname=$DB_NAME user=$USER sslmode=require" -Atc \
+                "select count(*) from public.\"$T\";")
               echo "- **$T**: \`$CNT\` rows" >> data_summary.md
             done
           else
-            export PGOPTIONS="project=$REF_CLEAN"
-            LIST=$(psql -h "$HOST_CLEAN" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" -Atc \
+            LIST=$(psql "host=$HOST_CLEAN port=$PORT dbname=$DB_NAME user=$USER sslmode=require" -Atc \
               "select tablename from pg_tables where schemaname='public' order by tablename;")
             for T in $LIST; do
               echo "Export $T"
-              psql -h "$HOST_CLEAN" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" \
+              psql "host=$HOST_CLEAN port=$PORT dbname=$DB_NAME user=$USER sslmode=require" \
                 -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
-              CNT=$(psql -h "$HOST_CLEAN" -p "$DB_PORT" -d "$DB_NAME" -U "postgres" -Atc "select count(*) from public.\"$T\";")
+              CNT=$(psql "host=$HOST_CLEAN port=$PORT dbname=$DB_NAME user=$USER sslmode=require" -Atc \
+                "select count(*) from public.\"$T\";")
               echo "- **$T**: \`$CNT\` rows" >> data_summary.md
             done
           fi
@@ -169,7 +156,6 @@ jobs:
           echo "✅ CSV ready"
 
       - name: Upload CSV zip
-        if: steps.pick.outputs.ok == '1'
         uses: actions/upload-artifact@v4
         with:
           name: supabase-data-csv
@@ -177,7 +163,6 @@ jobs:
 
       # --- Commit dans le repo ---
       - name: Commit to repo
-        if: steps.pick.outputs.ok == '1'
         run: |
           git config --global user.name  "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
