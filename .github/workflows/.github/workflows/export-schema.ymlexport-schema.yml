@@ -1,0 +1,20 @@
+name: Export DB Schema
+on:
+  workflow_dispatch:
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PostgreSQL client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+      - name: Dump schema
+        env:
+          DATABASE_URL_SESSION: ${{ secrets.DATABASE_URL_SESSION }}
+        run: |
+          PGCONNECT_TIMEOUT=20 pg_dump --schema-only --no-owner --no-privileges -n public -f schema.sql "$DATABASE_URL_SESSION"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-sql
+          path: schema.sql
