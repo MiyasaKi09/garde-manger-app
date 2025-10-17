@@ -1,17 +1,15 @@
 name: Export Supabase Schema
 
 on:
-  workflow_dispatch:  # permet de le lancer manuellement
+  workflow_dispatch:
 
 jobs:
   dump:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Install PostgreSQL client
         run: sudo apt-get update && sudo apt-get install -y postgresql-client
-
       - name: Dump schema from Supabase
         env:
           DATABASE_URL_SESSION: ${{ secrets.DATABASE_URL_SESSION }}
@@ -21,9 +19,16 @@ jobs:
             -n public \
             -f schema.sql \
             "$DATABASE_URL_SESSION"
-
       - name: Upload schema.sql as artifact
         uses: actions/upload-artifact@v4
         with:
           name: schema-sql
           path: schema.sql
+      - name: Commit schema.sql to repository
+        if: success()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add schema.sql
+          git commit -m "chore: update schema.sql"
+          git push
