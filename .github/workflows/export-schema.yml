@@ -1,38 +1,50 @@
-name: Export Supabase Schema (psql on pooler 6543)
+name: Export Supabase Schema (via pooler 6543)
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:     # <--- rend le bouton "Run workflow" disponible
+  push:
+    branches: [ main ]   # <--- relance automatiquement à chaque push sur main
 
 jobs:
   dump:
     runs-on: ubuntu-latest
+    env:
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PORT: 6543
+      DB_SSL: require
     steps:
+      # Étape 1 — Cloner le dépôt
       - uses: actions/checkout@v4
 
+      # Étape 2 — Installer le client PostgreSQL
       - name: Install PostgreSQL client
         run: sudo apt-get update && sudo apt-get install -y postgresql-client
 
-      - name: Test connection (Mode A: user=postgres + options=project=REF)
+      # Étape 3 — Test de connexion
+      - name: Test connection to Supabase
         env:
           PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-          HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
-          REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          SUPABASE_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
         run: |
-          set -e
-          echo "HOST=$HOST  REF=$REF"
-          psql "host=$HOST port=6543 dbname=postgres user=postgres sslmode=require options=project=$REF" -Atc "select version();"
+          echo "Testing connection to $SUPABASE_HOST:$DB_PORT ..."
+          psql "host=$SUPABASE_HOST port=$DB_PORT dbname=$DB_NAME user=$DB_USER sslmode=$DB_SSL options=project=$SUPABASE_PROJECT_REF" -Atc "select version();"
 
-      - name: Generate schema.md
+      # Étape 4 — Génération du rapport de schéma
+      - name: Generate schema.md from database
         env:
           PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-          HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
-          REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          SUPABASE_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
         run: |
-          psql "host=$HOST port=6543 dbname=postgres user=postgres sslmode=require options=project=$REF" \
-            -v ON_ERROR_STOP=1 \
-            -f tools/schema_report.sql > schema.md
+          echo "Generating schema.md ..."
+          psql "host=$SUPABASE_HOST port=$DB_PORT dbname=$DB_NAME user=$DB_USER sslmode=$DB_SSL options=project=$SUPABASE_PROJECT_REF" \
+            -v ON_ERROR_STOP=1 -f tools/schema_report.sql > schema.md
+          echo "✅ schema.md generated successfully."
 
-      - name: Upload schema.md
+      # Étape 5 — Upload du fichier généré en artifact
+      - name: Upload schema.md as artifact
         uses: actions/upload-artifact@v4
         with:
           name: schema-report
