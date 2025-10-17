@@ -4,8 +4,6 @@ on:
   workflow_dispatch:
   push:
     branches: [ main ]
-    paths:
-      - .github/workflows/export-data.yml
 
 jobs:
   export:
@@ -20,40 +18,21 @@ jobs:
       - name: Install PostgreSQL client & zip
         run: sudo apt-get update && sudo apt-get install -y postgresql-client zip
 
-      # On teste la connexion (mode user=postgres.<ref> D'ABORD, puis fallback user=postgres + options=project)
-      - name: Build connection strings
-        id: build
-        env:
-          HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
-          REF:  ${{ secrets.SUPABASE_PROJECT_REF }}
-          PWD:  ${{ secrets.SUPABASE_DB_PASSWORD }}
-        run: |
-          echo "PGURL_A=host=$HOST port=6543 dbname=postgres user=postgres.$REF sslmode=require" >> $GITHUB_OUTPUT
-          echo "PGURL_B=host=$HOST port=6543 dbname=postgres user=postgres sslmode=require options=project=$REF" >> $GITHUB_OUTPUT
-
-      - name: Pick working connection
-        id: pick
+      - name: Test connection (user=postgres.<ref>)
         env:
           PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-          PGURL_A: ${{ steps.build.outputs.PGURL_A }}
-          PGURL_B: ${{ steps.build.outputs.PGURL_B }}
+          SUPABASE_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
         run: |
           set -e
-          echo "Trying A (user=postgres.<ref>)..."
-          if psql "$PGURL_A" -Atc "select 1;" >/dev/null 2>&1 ; then
-            echo "OK=A" >> $GITHUB_OUTPUT
-            echo "URL=$PGURL_A" >> $GITHUB_OUTPUT
-          else
-            echo "Trying B (user=postgres + options=project=ref)..."
-            psql "$PGURL_B" -Atc "select 1;" >/dev/null
-            echo "OK=B" >> $GITHUB_OUTPUT
-            echo "URL=$PGURL_B" >> $GITHUB_OUTPUT
-          fi
+          echo "Testing connection to $SUPABASE_HOST:$DB_PORT as postgres.${SUPABASE_PROJECT_REF} ..."
+          psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -c "select version();"
 
       - name: Export all tables to CSV
         env:
           PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-          URL: ${{ steps.pick.outputs.URL }}
+          SUPABASE_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
         run: |
           set -e
           rm -rf data_export && mkdir -p data_export
@@ -62,7 +41,7 @@ jobs:
           echo >> data_summary.md
 
           echo "Listing public tables..."
-          TABLES=$(psql "$URL" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
+          TABLES=$(psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
 
           if [ -z "$TABLES" ]; then
             echo "No tables in public schema."
@@ -70,14 +49,11 @@ jobs:
 
           for T in $TABLES; do
             echo "Exporting $T ..."
-            # CSV avec entêtes
-            psql "$URL" -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
-            # Compte des lignes
-            CNT=$(psql "$URL" -Atc "select count(*) from public.\"$T\";")
+            psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
+            CNT=$(psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -Atc "select count(*) from public.\"$T\";")
             echo "- **$T**: \`$CNT\` rows" >> data_summary.md
           done
 
-          # Un petit total
           TOT=$(grep -Eo '[0-9]+' data_summary.md | awk '{s+=$1} END{print s+0}')
           echo >> data_summary.md
           echo "**Total rows (sum)**: \`$TOT\`" >> data_summary.md
@@ -95,7 +71,6 @@ jobs:
           name: supabase-data-csv
           path: data-csv.zip
 
-      # (Option) Committer le résumé dans le repo (sans les CSV)
       - name: Commit data_summary.md to repository
         if: success()
         run: |
