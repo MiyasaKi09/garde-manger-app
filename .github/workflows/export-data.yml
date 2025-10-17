@@ -2,8 +2,6 @@ name: Export Supabase Data (CSV + ZIP via pooler 6543)
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
   export:
@@ -18,7 +16,13 @@ jobs:
       - name: Install PostgreSQL client & zip
         run: sudo apt-get update && sudo apt-get install -y postgresql-client zip
 
-      - name: Test connection (user=postgres.<ref>)
+      - name: Test secrets visibility
+        run: |
+          echo "HOST length: $(echo -n '${{ secrets.SUPABASE_POOLER_HOST }}' | wc -c)"
+          echo "REF length: $(echo -n '${{ secrets.SUPABASE_PROJECT_REF }}' | wc -c)"
+          echo "PWD length: $(echo -n '${{ secrets.SUPABASE_DB_PASSWORD }}' | wc -c)"
+
+      - name: Test connection to Supabase
         env:
           PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
           SUPABASE_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
@@ -43,20 +47,12 @@ jobs:
           echo "Listing public tables..."
           TABLES=$(psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
 
-          if [ -z "$TABLES" ]; then
-            echo "No tables in public schema."
-          fi
-
           for T in $TABLES; do
             echo "Exporting $T ..."
             psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
             CNT=$(psql -h "$SUPABASE_HOST" -p "$DB_PORT" -d "$DB_NAME" -U "postgres.${SUPABASE_PROJECT_REF}" -Atc "select count(*) from public.\"$T\";")
             echo "- **$T**: \`$CNT\` rows" >> data_summary.md
           done
-
-          TOT=$(grep -Eo '[0-9]+' data_summary.md | awk '{s+=$1} END{print s+0}')
-          echo >> data_summary.md
-          echo "**Total rows (sum)**: \`$TOT\`" >> data_summary.md
 
       - name: Zip CSVs
         run: |
@@ -70,16 +66,3 @@ jobs:
         with:
           name: supabase-data-csv
           path: data-csv.zip
-
-      - name: Commit data_summary.md to repository
-        if: success()
-        run: |
-          git config --global user.name  "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data_summary.md
-          if git diff --cached --quiet; then
-            echo "No changes in data_summary.md, skipping commit."
-          else
-            git commit -m "chore(data): update data_summary.md"
-            git push
-          fi
