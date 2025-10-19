@@ -1,47 +1,76 @@
 id,name
-1,cuisine:Française
-2,cuisine:Italienne
-3,cuisine:Espagnole
-4,cuisine:Asiatique
-5,cuisine:Thaïlandaise
-6,cuisine:Japonaise
-7,cuisine:Chinoise
-8,cuisine:Indienne
-9,cuisine:Orientale
-10,cuisine:Mexicaine
-11,cuisine:Américaine
-12,profil:Réconfortant
-13,profil:Léger
-14,profil:Frais
-15,profil:Riche
-16,profil:Crémeux
-17,profil:Épicé
-18,profil:Acide
-19,profil:Sucré-salé
-20,régime:Végétarien
-21,régime:Vegan
-22,régime:Sans gluten
-23,régime:Sans lactose
-24,régime:Faible en glucides
-25,usage:Rapide (-30min)
-26,usage:Facile
-27,usage:Pour recevoir
-28,usage:En famille
-29,usage:Batch cooking
-30,usage:Anti-gaspi
-31,usage:Festif
-32,usage:Pique-nique
-33,difficulté:Facile
-34,difficulté:Moyen
-35,difficulté:Difficile
-36,saison:Printemps
-37,saison:Été
-38,saison:Automne
-39,saison:Hiver
-40,usage:Petit-déjeuner
-41,usage:Apéritif
-42,usage:Fête
-43,usage:Barbecue
-44,profil:Gourmand
-45,profil:Healthy
-46,profil:Rapide
+47,Arôme-Agrumes
+48,Arôme-Caramélisé
+49,Arôme-Floral
+50,Arôme-Fruité
+51,Arôme-Lacté
+52,Arôme-Marin
+53,Arôme-Terreux
+54,Arôme-Végétal
+55,Arôme-Épicé Chaud
+56,Arôme-Épicé Frais
+57,Intensité-Intense
+58,Intensité-Léger
+59,Intensité-Moyen
+60,Intensité-Riche
+61,Long
+62,Luxe
+65,Quotidien
+66,Saveur-Acide
+67,Saveur-Amer
+68,Saveur-Floral
+69,Saveur-Herbacé
+70,Saveur-Salé
+71,Saveur-Sucré
+72,Saveur-Umami
+73,Saveur-Épicé
+74,Texture-Croquant
+75,Texture-Crémeux
+76,Texture-Ferme
+77,Texture-Liquide
+78,Texture-Moelleux
+1,Française
+2,Italienne
+3,Espagnole
+4,Asiatique
+5,Thaïlandaise
+6,Japonaise
+7,Chinoise
+8,Indienne
+9,Orientale
+10,Mexicaine
+11,Américaine
+12,Réconfortant
+13,Léger
+14,Frais
+15,Riche
+16,Crémeux
+17,Épicé
+18,Acide
+19,Sucré-salé
+20,Végétarien
+21,Vegan
+22,Sans gluten
+23,Sans lactose
+24,Faible en glucides
+25,Rapide (-30min)
+26,Facile
+27,Pour recevoir
+28,En famille
+29,Batch cooking
+30,Anti-gaspi
+31,Festif
+32,Pique-nique
+34,Moyen
+35,Difficile
+36,Printemps
+37,Été
+38,Automne
+39,Hiver
+40,Petit-déjeuner
+41,Apéritif
+42,Fête
+43,Barbecue
+44,Gourmand
+45,Healthy
+46,Rapide

@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Sun Oct 19 14:09:12 UTC 2025_
+_Generated: Sun Oct 19 14:50:51 UTC 2025_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -9,34 +9,26 @@ _Generated: Sun Oct 19 14:09:12 UTC 2025_
 - canonical_foods: 196 rows
 - cooking_nutrition_factors: 0 rows
 - countries: 0 rows
-- cuisines: 11 rows
 - cultivars: 1043 rows
-- diets: 0 rows
+- diets: 9 rows
 - instructions: 1800 rows
 - inventory_lots: 1 rows
 - legacy_users: 0 rows
 - locations: 3 rows
 - meal_plans: 0 rows
-- mots_cles: 29 rows
 - nutritional_data: 0 rows
 - pantry_items: 0 rows
 - planned_meals: 0 rows
 - processes: 14 rows
-- products: 1 rows
-- recipe_cuisines: 0 rows
+- products: 0 rows
 - recipe_ingredients: 0 rows
-- recipe_mots_cles: 0 rows
 - recipe_pairings: 0 rows
-- recipe_regime_alimentaires: 0 rows
-- recipe_tags: 276 rows
-- recipe_type_plats: 0 rows
+- recipe_tags: 361 rows
 - recipes: 611 rows
 - reference_categories: 14 rows
 - reference_subcategories: 86 rows
-- regime_alimentaires: 5 rows
 - seasonality: 87 rows
-- tags: 46 rows
-- type_plats: 5 rows
+- tags: 75 rows
 - unit_conversions_generic: 10 rows
 - unit_conversions_product: 0 rows
 - user_allergies: 0 rows
