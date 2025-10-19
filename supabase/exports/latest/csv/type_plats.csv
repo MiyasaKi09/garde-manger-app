@@ -1,0 +1,6 @@
+id,nom,description
+1,Entrée,"Premier plat du repas, généralement léger"
+2,Plat Principal,Plat central du repas
+3,Dessert,Plat sucré servi en fin de repas
+4,Accompagnement,Plat servi en complément d'un plat principal
+5,Boisson,Boisson chaude ou froide

@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Sun Oct 19 14:05:59 UTC 2025_
+_Généré le : Sun Oct 19 14:09:08 UTC 2025_
 
 ## Tables
 - _backup_views
@@ -11,6 +11,7 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
 - canonical_foods
 - cooking_nutrition_factors
 - countries
+- cuisines
 - cultivars
 - diets
 - instructions
@@ -18,19 +19,26 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
 - legacy_users
 - locations
 - meal_plans
+- mots_cles
 - nutritional_data
 - pantry_items
 - planned_meals
 - processes
 - products
+- recipe_cuisines
 - recipe_ingredients
+- recipe_mots_cles
 - recipe_pairings
+- recipe_regime_alimentaires
 - recipe_tags
+- recipe_type_plats
 - recipes
 - reference_categories
 - reference_subcategories
+- regime_alimentaires
 - seasonality
 - tags
+- type_plats
 - unit_conversions_generic
 - unit_conversions_product
 - user_allergies
@@ -103,6 +111,11 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
 ### countries
  - id :: integer default nextval('countries_id_seq'::regclass) NOT NULL
  - name :: text NOT NULL
+
+### cuisines
+ - id :: integer default nextval('cuisines_id_seq'::regclass) NOT NULL
+ - nom :: text NOT NULL
+ - description :: text
 
 ### cultivars
  - id :: bigint default nextval('cultivars_id_seq'::regclass) NOT NULL
@@ -191,6 +204,12 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - user_id :: integer NOT NULL
  - week_start_date :: date NOT NULL
 
+### mots_cles
+ - id :: integer default nextval('mots_cles_id_seq'::regclass) NOT NULL
+ - nom :: text NOT NULL
+ - categorie :: text
+ - description :: text
+
 ### nutritional_data
  - id :: bigint default nextval('nutritional_data_id_seq'::regclass) NOT NULL
  - source_id :: character varying
@@ -254,6 +273,10 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - is_default :: boolean default false
  - is_auto_generated :: boolean default false NOT NULL
 
+### recipe_cuisines
+ - recipe_id :: integer NOT NULL
+ - cuisine_id :: integer NOT NULL
+
 ### recipe_ingredients
  - id :: integer default nextval('recipe_ingredients_id_seq'::regclass) NOT NULL
  - recipe_id :: integer NOT NULL
@@ -264,13 +287,25 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - notes :: text
  - sub_recipe_id :: bigint
 
+### recipe_mots_cles
+ - recipe_id :: integer NOT NULL
+ - mot_cle_id :: integer NOT NULL
+
 ### recipe_pairings
  - main_recipe_id :: integer NOT NULL
  - side_recipe_id :: integer NOT NULL
 
+### recipe_regime_alimentaires
+ - recipe_id :: integer NOT NULL
+ - regime_id :: integer NOT NULL
+
 ### recipe_tags
  - recipe_id :: integer NOT NULL
  - tag_id :: integer NOT NULL
+
+### recipe_type_plats
+ - recipe_id :: integer NOT NULL
+ - type_plat_id :: integer NOT NULL
 
 ### recipes
  - id :: integer default nextval('recipes_id_seq'::regclass) NOT NULL
@@ -299,6 +334,11 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - label :: text NOT NULL
  - icon :: text
 
+### regime_alimentaires
+ - id :: integer default nextval('regime_alimentaires_id_seq'::regclass) NOT NULL
+ - nom :: text NOT NULL
+ - description :: text
+
 ### seasonality
  - id :: integer default nextval('seasonality_id_seq'::regclass) NOT NULL
  - food_id :: bigint NOT NULL
@@ -308,6 +348,11 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
 ### tags
  - id :: integer default nextval('tags_id_seq'::regclass) NOT NULL
  - name :: text NOT NULL
+
+### type_plats
+ - id :: integer default nextval('type_plats_id_seq'::regclass) NOT NULL
+ - nom :: text NOT NULL
+ - description :: text
 
 ### unit_conversions
  - product_id :: uuid
@@ -385,11 +430,12 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
 ## Clés primaires
  - _backup_views → (dropped_at, view_schema, view_name)
  - archetypes → (id)
- - canonical_food_origins → (country_id, food_id)
+ - canonical_food_origins → (food_id, country_id)
  - canonical_food_processes → (id)
  - canonical_foods → (id)
  - cooking_nutrition_factors → (id)
  - countries → (id)
+ - cuisines → (id)
  - cultivars → (id)
  - diets → (id)
  - instructions → (id)
@@ -397,23 +443,30 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - legacy_users → (id)
  - locations → (id)
  - meal_plans → (id)
+ - mots_cles → (id)
  - nutritional_data → (id)
  - pantry_items → (id)
  - planned_meals → (id)
  - processes → (id)
  - products → (id)
+ - recipe_cuisines → (recipe_id, cuisine_id)
  - recipe_ingredients → (id)
+ - recipe_mots_cles → (recipe_id, mot_cle_id)
  - recipe_pairings → (side_recipe_id, main_recipe_id)
- - recipe_tags → (recipe_id, tag_id)
+ - recipe_regime_alimentaires → (regime_id, recipe_id)
+ - recipe_tags → (tag_id, recipe_id)
+ - recipe_type_plats → (recipe_id, type_plat_id)
  - recipes → (id)
  - reference_categories → (id)
  - reference_subcategories → (id)
+ - regime_alimentaires → (id)
  - seasonality → (id)
  - tags → (id)
+ - type_plats → (id)
  - unit_conversions_generic → (id)
  - unit_conversions_product → (id)
- - user_allergies → (user_id, canonical_food_id)
- - user_diets → (user_id, diet_id)
+ - user_allergies → (canonical_food_id, user_id)
+ - user_diets → (diet_id, user_id)
  - user_health_goals → (user_id)
  - user_profiles → (user_id)
  - user_recipe_interactions → (id)
@@ -426,34 +479,42 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - canonical_food_origins.food_id → canonical_foods.id  (constraint canonical_food_origins_food_id_fkey)
  - canonical_food_processes.process_id → processes.id  (constraint canonical_food_processes_process_id_fkey)
  - canonical_food_processes.food_id → canonical_foods.id  (constraint canonical_food_processes_food_id_fkey)
+ - canonical_foods.category_id → reference_categories.id  (constraint canonical_foods_category_id_fkey)
  - canonical_foods.subcategory_id → reference_subcategories.id  (constraint canonical_foods_subcategory_id_fkey)
  - canonical_foods.nutrition_id → nutritional_data.id  (constraint canonical_foods_nutrition_id_fkey)
- - canonical_foods.category_id → reference_categories.id  (constraint canonical_foods_category_id_fkey)
  - cultivars.canonical_food_id → canonical_foods.id  (constraint cultivars_canonical_food_id_fkey)
  - instructions.recipe_id → recipes.id  (constraint instructions_recipe_id_fkey)
- - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fkey)
+ - inventory_lots.canonical_food_id → canonical_foods.id  (constraint inventory_lots_canonical_fk)
  - inventory_lots.canonical_food_id → canonical_foods.id  (constraint inventory_lots_canonical_food_id_fkey)
  - inventory_lots.cultivar_id → cultivars.id  (constraint inventory_lots_cultivar_id_fkey)
  - inventory_lots.archetype_id → archetypes.id  (constraint inventory_lots_archetype_id_fkey)
- - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fk)
- - inventory_lots.canonical_food_id → canonical_foods.id  (constraint inventory_lots_canonical_fk)
- - inventory_lots.cultivar_id → cultivars.id  (constraint inventory_lots_cultivar_fk)
  - inventory_lots.archetype_id → archetypes.id  (constraint inventory_lots_archetype_fk)
+ - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fkey)
+ - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fk)
+ - inventory_lots.cultivar_id → cultivars.id  (constraint inventory_lots_cultivar_fk)
  - meal_plans.user_id → legacy_users.id  (constraint meal_plans_user_id_fkey)
- - pantry_items.user_id → legacy_users.id  (constraint pantry_items_user_id_fkey)
  - pantry_items.product_id → products.id  (constraint pantry_items_product_id_fkey)
- - planned_meals.plan_id → meal_plans.id  (constraint planned_meals_plan_id_fkey)
+ - pantry_items.user_id → legacy_users.id  (constraint pantry_items_user_id_fkey)
  - planned_meals.recipe_id → recipes.id  (constraint planned_meals_recipe_id_fkey)
- - products.archetype_id → archetypes.id  (constraint products_archetype_fk)
+ - planned_meals.plan_id → meal_plans.id  (constraint planned_meals_plan_id_fkey)
  - products.archetype_id → archetypes.id  (constraint products_archetype_id_fkey)
- - recipe_ingredients.recipe_id → recipes.id  (constraint recipe_ingredients_recipe_id_fkey)
+ - products.archetype_id → archetypes.id  (constraint products_archetype_fk)
+ - recipe_cuisines.recipe_id → recipes.id  (constraint recipe_cuisines_recipe_id_fkey)
+ - recipe_cuisines.cuisine_id → cuisines.id  (constraint recipe_cuisines_cuisine_id_fkey)
  - recipe_ingredients.archetype_id → archetypes.id  (constraint recipe_ingredients_archetype_id_fkey)
  - recipe_ingredients.canonical_food_id → canonical_foods.id  (constraint recipe_ingredients_canonical_food_id_fkey)
  - recipe_ingredients.sub_recipe_id → recipes.id  (constraint recipe_ingredients_sub_recipe_fk)
- - recipe_pairings.side_recipe_id → recipes.id  (constraint recipe_pairings_side_recipe_id_fkey)
+ - recipe_ingredients.recipe_id → recipes.id  (constraint recipe_ingredients_recipe_id_fkey)
+ - recipe_mots_cles.mot_cle_id → mots_cles.id  (constraint recipe_mots_cles_mot_cle_id_fkey)
+ - recipe_mots_cles.recipe_id → recipes.id  (constraint recipe_mots_cles_recipe_id_fkey)
  - recipe_pairings.main_recipe_id → recipes.id  (constraint recipe_pairings_main_recipe_id_fkey)
- - recipe_tags.tag_id → tags.id  (constraint recipe_tags_tag_id_fkey)
+ - recipe_pairings.side_recipe_id → recipes.id  (constraint recipe_pairings_side_recipe_id_fkey)
+ - recipe_regime_alimentaires.recipe_id → recipes.id  (constraint recipe_regime_alimentaires_recipe_id_fkey)
+ - recipe_regime_alimentaires.regime_id → regime_alimentaires.id  (constraint recipe_regime_alimentaires_regime_id_fkey)
  - recipe_tags.recipe_id → recipes.id  (constraint recipe_tags_recipe_id_fkey)
+ - recipe_tags.tag_id → tags.id  (constraint recipe_tags_tag_id_fkey)
+ - recipe_type_plats.recipe_id → recipes.id  (constraint recipe_type_plats_recipe_id_fkey)
+ - recipe_type_plats.type_plat_id → type_plats.id  (constraint recipe_type_plats_type_plat_id_fkey)
  - reference_subcategories.category_id → reference_categories.id  (constraint reference_subcategories_category_id_fkey)
  - seasonality.food_id → canonical_foods.id  (constraint seasonality_food_id_fkey)
  - user_allergies.canonical_food_id → canonical_foods.id  (constraint user_allergies_canonical_food_id_fkey)
@@ -477,6 +538,8 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - public.cooking_nutrition_factors → cooking_nutrition_factors_pkey : CREATE UNIQUE INDEX cooking_nutrition_factors_pkey ON public.cooking_nutrition_factors USING btree (id)
  - public.countries → countries_name_key : CREATE UNIQUE INDEX countries_name_key ON public.countries USING btree (name)
  - public.countries → countries_pkey : CREATE UNIQUE INDEX countries_pkey ON public.countries USING btree (id)
+ - public.cuisines → cuisines_nom_key : CREATE UNIQUE INDEX cuisines_nom_key ON public.cuisines USING btree (nom)
+ - public.cuisines → cuisines_pkey : CREATE UNIQUE INDEX cuisines_pkey ON public.cuisines USING btree (id)
  - public.cultivars → cultivars_pkey : CREATE UNIQUE INDEX cultivars_pkey ON public.cultivars USING btree (id)
  - public.cultivars → idx_cultivars_name_ci : CREATE INDEX idx_cultivars_name_ci ON public.cultivars USING btree (lower(cultivar_name))
  - public.cultivars → uq_cultivars_per_species : CREATE UNIQUE INDEX uq_cultivars_per_species ON public.cultivars USING btree (canonical_food_id, lower(cultivar_name))
@@ -498,6 +561,8 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - public.legacy_users → users_username_key : CREATE UNIQUE INDEX users_username_key ON public.legacy_users USING btree (username)
  - public.locations → locations_pkey : CREATE UNIQUE INDEX locations_pkey ON public.locations USING btree (id)
  - public.meal_plans → meal_plans_pkey : CREATE UNIQUE INDEX meal_plans_pkey ON public.meal_plans USING btree (id)
+ - public.mots_cles → mots_cles_nom_key : CREATE UNIQUE INDEX mots_cles_nom_key ON public.mots_cles USING btree (nom)
+ - public.mots_cles → mots_cles_pkey : CREATE UNIQUE INDEX mots_cles_pkey ON public.mots_cles USING btree (id)
  - public.nutritional_data → nutritional_data_pkey : CREATE UNIQUE INDEX nutritional_data_pkey ON public.nutritional_data USING btree (id)
  - public.nutritional_data → nutritional_data_source_id_key : CREATE UNIQUE INDEX nutritional_data_source_id_key ON public.nutritional_data USING btree (source_id)
  - public.pantry_items → pantry_items_pkey : CREATE UNIQUE INDEX pantry_items_pkey ON public.pantry_items USING btree (id)
@@ -509,6 +574,7 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - public.products → products_default_per_archetype : CREATE UNIQUE INDEX products_default_per_archetype ON public.products USING btree (archetype_id) WHERE (is_default IS TRUE)
  - public.products → products_ean_key : CREATE UNIQUE INDEX products_ean_key ON public.products USING btree (ean)
  - public.products → products_pkey : CREATE UNIQUE INDEX products_pkey ON public.products USING btree (id)
+ - public.recipe_cuisines → recipe_cuisines_pkey : CREATE UNIQUE INDEX recipe_cuisines_pkey ON public.recipe_cuisines USING btree (recipe_id, cuisine_id)
  - public.recipe_ingredients → idx_recipe_ingredients_archetype : CREATE INDEX idx_recipe_ingredients_archetype ON public.recipe_ingredients USING btree (archetype_id)
  - public.recipe_ingredients → idx_recipe_ingredients_canonical : CREATE INDEX idx_recipe_ingredients_canonical ON public.recipe_ingredients USING btree (canonical_food_id)
  - public.recipe_ingredients → idx_recipe_ingredients_cfid_arid : CREATE INDEX idx_recipe_ingredients_cfid_arid ON public.recipe_ingredients USING btree (canonical_food_id, archetype_id)
@@ -517,8 +583,11 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - public.recipe_ingredients → idx_recipe_ingredients_sub : CREATE INDEX idx_recipe_ingredients_sub ON public.recipe_ingredients USING btree (sub_recipe_id)
  - public.recipe_ingredients → recipe_ingredients_pkey : CREATE UNIQUE INDEX recipe_ingredients_pkey ON public.recipe_ingredients USING btree (id)
  - public.recipe_ingredients → uq_recipe_ingredients_unique_line_idx : CREATE UNIQUE INDEX uq_recipe_ingredients_unique_line_idx ON public.recipe_ingredients USING btree (recipe_id, COALESCE(canonical_food_id, ('-1'::integer)::bigint), COALESCE(archetype_id, ('-1'::integer)::bigint), COALESCE(unit, ''::character varying), COALESCE(notes, ''::text))
+ - public.recipe_mots_cles → recipe_mots_cles_pkey : CREATE UNIQUE INDEX recipe_mots_cles_pkey ON public.recipe_mots_cles USING btree (recipe_id, mot_cle_id)
  - public.recipe_pairings → recipe_pairings_pkey : CREATE UNIQUE INDEX recipe_pairings_pkey ON public.recipe_pairings USING btree (main_recipe_id, side_recipe_id)
+ - public.recipe_regime_alimentaires → recipe_regime_alimentaires_pkey : CREATE UNIQUE INDEX recipe_regime_alimentaires_pkey ON public.recipe_regime_alimentaires USING btree (recipe_id, regime_id)
  - public.recipe_tags → recipe_tags_pkey : CREATE UNIQUE INDEX recipe_tags_pkey ON public.recipe_tags USING btree (recipe_id, tag_id)
+ - public.recipe_type_plats → recipe_type_plats_pkey : CREATE UNIQUE INDEX recipe_type_plats_pkey ON public.recipe_type_plats USING btree (recipe_id, type_plat_id)
  - public.recipes → recipes_pkey : CREATE UNIQUE INDEX recipes_pkey ON public.recipes USING btree (id)
  - public.reference_categories → reference_categories_name_key : CREATE UNIQUE INDEX reference_categories_name_key ON public.reference_categories USING btree (name)
  - public.reference_categories → reference_categories_pkey : CREATE UNIQUE INDEX reference_categories_pkey ON public.reference_categories USING btree (id)
@@ -526,10 +595,14 @@ _Généré le : Sun Oct 19 14:05:59 UTC 2025_
  - public.reference_subcategories → idx_unique_subcat_label : CREATE UNIQUE INDEX idx_unique_subcat_label ON public.reference_subcategories USING btree (category_id, lower(label))
  - public.reference_subcategories → reference_subcategories_code_key : CREATE UNIQUE INDEX reference_subcategories_code_key ON public.reference_subcategories USING btree (code)
  - public.reference_subcategories → reference_subcategories_pkey : CREATE UNIQUE INDEX reference_subcategories_pkey ON public.reference_subcategories USING btree (id)
+ - public.regime_alimentaires → regime_alimentaires_nom_key : CREATE UNIQUE INDEX regime_alimentaires_nom_key ON public.regime_alimentaires USING btree (nom)
+ - public.regime_alimentaires → regime_alimentaires_pkey : CREATE UNIQUE INDEX regime_alimentaires_pkey ON public.regime_alimentaires USING btree (id)
  - public.seasonality → seasonality_pkey : CREATE UNIQUE INDEX seasonality_pkey ON public.seasonality USING btree (id)
  - public.tags → tags_name_key : CREATE UNIQUE INDEX tags_name_key ON public.tags USING btree (name)
  - public.tags → tags_pkey : CREATE UNIQUE INDEX tags_pkey ON public.tags USING btree (id)
  - public.tags → uq_tags_name : CREATE UNIQUE INDEX uq_tags_name ON public.tags USING btree (name)
+ - public.type_plats → type_plats_nom_key : CREATE UNIQUE INDEX type_plats_nom_key ON public.type_plats USING btree (nom)
+ - public.type_plats → type_plats_pkey : CREATE UNIQUE INDEX type_plats_pkey ON public.type_plats USING btree (id)
  - public.unit_conversions_generic → idx_unit_conv_generic_norm : CREATE UNIQUE INDEX idx_unit_conv_generic_norm ON public.unit_conversions_generic USING btree (lower(from_unit), lower(to_unit))
  - public.unit_conversions_generic → unit_conversions_generic_pkey : CREATE UNIQUE INDEX unit_conversions_generic_pkey ON public.unit_conversions_generic USING btree (id)
  - public.unit_conversions_product → idx_unit_conv_product_norm : CREATE UNIQUE INDEX idx_unit_conv_product_norm ON public.unit_conversions_product USING btree (product_id, lower(from_unit), lower(to_unit))
