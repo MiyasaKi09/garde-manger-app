@@ -211,7 +211,7 @@ jobs:
           echo "Generated supabase/data_summary.md"
 
       # 6) Commit & force-push (overwrite) supabase/ and data-csv.zip
-          - name: Commit and overwrite remote (properly handle deletions)
+      - name: Commit and overwrite remote (properly handle deletions)
         if: steps.pick.outputs.ok == '1'
         shell: bash
         run: |
