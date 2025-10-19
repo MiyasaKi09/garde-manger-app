@@ -1,0 +1,33 @@
+id,name
+1,cuisine:Française
+2,cuisine:Italienne
+3,cuisine:Espagnole
+4,cuisine:Asiatique
+5,cuisine:Thaïlandaise
+6,cuisine:Japonaise
+7,cuisine:Chinoise
+8,cuisine:Indienne
+9,cuisine:Orientale
+10,cuisine:Mexicaine
+11,cuisine:Américaine
+12,profil:Réconfortant
+13,profil:Léger
+14,profil:Frais
+15,profil:Riche
+16,profil:Crémeux
+17,profil:Épicé
+18,profil:Acide
+19,profil:Sucré-salé
+20,régime:Végétarien
+21,régime:Vegan
+22,régime:Sans gluten
+23,régime:Sans lactose
+24,régime:Faible en glucides
+25,usage:Rapide (-30min)
+26,usage:Facile
+27,usage:Pour recevoir
+28,usage:En famille
+29,usage:Batch cooking
+30,usage:Anti-gaspi
+31,usage:Festif
+32,usage:Pique-nique

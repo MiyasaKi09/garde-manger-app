@@ -1,0 +1,2 @@
+id,archetype_id,name,brand,ean,package_size,package_unit,package_count,shelf_life_days,shelf_life_after_opening_days,shelf_life_after_opening_unit,needs_opening_tracking,nutrition_override,created_at,updated_at,is_default,is_auto_generated
+507e5648-0b31-4aa8-b74f-501663f05cab,289,Produit générique « À classer »,Generic,,,,1,,,days,f,,2025-10-16 11:17:29.396632+00,2025-10-16 11:17:29.396632+00,t,f

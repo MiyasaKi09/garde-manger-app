@@ -1,0 +1,79 @@
+view_schema,view_name,definition,dropped_at
+public,pantry," SELECT id,
+    product_type,
+    product_id,
+    qty_remaining,
+    initial_qty,
+    unit,
+    storage_method,
+    storage_place,
+    acquired_on,
+    expiration_date,
+    notes,
+    user_id,
+    created_at,
+    updated_at,
+        CASE
+            WHEN product_type::text = 'custom'::text THEN notes
+            ELSE concat(product_type, '_', product_id)
+        END AS product_name,
+        CASE
+            WHEN expiration_date IS NULL THEN 'no_date'::text
+            WHEN expiration_date < CURRENT_DATE THEN 'expired'::text
+            WHEN expiration_date <= (CURRENT_DATE + '3 days'::interval) THEN 'expiring_soon'::text
+            ELSE 'good'::text
+        END AS expiration_status,
+        CASE
+            WHEN expiration_date IS NULL THEN NULL::integer
+            ELSE expiration_date - CURRENT_DATE
+        END AS days_until_expiration
+   FROM inventory_lots il;",2025-10-15 15:55:04.92405+00
+public,pantry_view," SELECT il.id,
+    il.qty_remaining,
+    il.initial_qty,
+    il.unit,
+    il.storage_method,
+    il.storage_place,
+    il.acquired_on,
+    il.expiration_date,
+    il.notes,
+    il.user_id,
+    il.created_at,
+    il.updated_at,
+        CASE
+            WHEN il.product_type::text = 'canonical'::text THEN cf.canonical_name
+            WHEN il.product_type::text = 'cultivar'::text THEN cv.cultivar_name
+            WHEN il.product_type::text = 'archetype'::text THEN arch.name
+            WHEN il.product_type::text = 'custom'::text THEN il.notes
+            ELSE 'Produit inconnu'::text
+        END AS product_name,
+        CASE
+            WHEN il.product_type::text = 'canonical'::text THEN cf.category_id
+            WHEN il.product_type::text = 'cultivar'::text THEN cf_cv.category_id
+            WHEN il.product_type::text = 'archetype'::text THEN cf_arch.category_id
+            ELSE NULL::bigint
+        END AS category_id,
+    rc.name AS category_name,
+        CASE
+            WHEN il.expiration_date IS NULL THEN 'no_date'::text
+            WHEN il.expiration_date < CURRENT_DATE THEN 'expired'::text
+            WHEN il.expiration_date <= (CURRENT_DATE + '3 days'::interval) THEN 'expiring_soon'::text
+            ELSE 'good'::text
+        END AS expiration_status,
+        CASE
+            WHEN il.expiration_date IS NULL THEN NULL::integer
+            ELSE il.expiration_date - CURRENT_DATE
+        END AS days_until_expiration
+   FROM inventory_lots il
+     LEFT JOIN canonical_foods cf ON il.product_type::text = 'canonical'::text AND il.product_id = cf.id
+     LEFT JOIN cultivars cv ON il.product_type::text = 'cultivar'::text AND il.product_id = cv.id
+     LEFT JOIN canonical_foods cf_cv ON il.product_type::text = 'cultivar'::text AND cv.canonical_food_id = cf_cv.id
+     LEFT JOIN archetypes arch ON il.product_type::text = 'archetype'::text AND il.product_id = arch.id
+     LEFT JOIN canonical_foods cf_arch ON il.product_type::text = 'archetype'::text AND arch.canonical_food_id = cf_arch.id
+     LEFT JOIN reference_categories rc ON
+        CASE
+            WHEN il.product_type::text = 'canonical'::text THEN cf.category_id
+            WHEN il.product_type::text = 'cultivar'::text THEN cf_cv.category_id
+            WHEN il.product_type::text = 'archetype'::text THEN cf_arch.category_id
+            ELSE NULL::bigint
+        END = rc.id;",2025-10-15 15:55:04.92405+00
