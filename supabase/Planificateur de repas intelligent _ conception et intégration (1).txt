@@ -1,0 +1,1210 @@
+ 
+
+La Cuisine Intelligente : Un Cadre 
+Multi-Critères pour la Recommandation 
+Culinaire Personnalisée et la 
+Planification de Repas 
+
+ 
+
+ 
+
+Introduction : Au-delà du Livre de Recettes 
+
+ 
+
+La question quotidienne, « Qu'est-ce qu'on mange ce soir? », représente bien plus qu'une 
+simple interrogation. C'est la verbalisation d'un problème complexe d'optimisation 
+multi-objectifs auquel les foyers sont confrontés chaque jour. Le processus de prise de 
+décision implique d'équilibrer les besoins nutritionnels, de gérer un inventaire périssable 
+d'ingrédients et de restes, de satisfaire un désir psychologique à la fois de nouveauté et de 
+réconfort, et finalement, d'assurer une expérience culinaire agréable.1 Les outils traditionnels, 
+tels que les livres de cuisine ou les sites de recettes statiques, servent de répertoires passifs 
+d'informations, laissant l'entière charge cognitive de l'intégration et de l'optimisation à 
+l'utilisateur. Ils fournissent le « quoi » mais pas le « comment » ni le « pourquoi » de la 
+sélection quotidienne des repas. 
+
+Ce rapport aborde ce défi non pas comme un dilemme culinaire, mais comme un problème de 
+systèmes piloté par les données, qui peut être résolu par la synthèse de domaines distincts : 
+l'art structuré de la gastronomie, la science quantitative de la nutrition, la logistique de la 
+gestion des stocks et les schémas comportementaux de la psychologie de l'utilisateur. La 
+thèse centrale est qu'en construisant un écosystème numérique robuste, nous pouvons créer 
+un système qui va au-delà de la simple recherche de recettes. Un tel système ne se 
+contenterait pas de suggérer des repas, mais gérerait activement l'ensemble du cycle de vie 
+culinaire d'un foyer, de la planification des courses à la réutilisation créative des restes. 
+
+Le cadre suivant détaille l'architecture et la logique d'un tel système intelligent. Il est présenté 
+en trois parties. La Partie I, « Les Fondations Architecturales d'un Écosystème Culinaire 
+Numérique », établit les structures de données fondamentales nécessaires pour modéliser les 
+recettes, les ingrédients, les informations nutritionnelles et les profils utilisateurs. La Partie II, « 
+Le Coeur Algorithmique : Des Données à la Délice », décrit le moteur qui traite ces données, 
+
+
+en utilisant un hybride d'algorithmes d'apprentissage automatique et de principes 
+scientifiques pour générer des recommandations intelligentes et contextuelles. Enfin, la Partie 
+III, « Les Couches Applicatives : Un Système Adapté à la Vie », démontre comment ces 
+concepts abstraits sont appliqués pour résoudre les problèmes concrets du monde réel que 
+sont le respect des objectifs nutritionnels, la réduction du gaspillage et la curation d'un 
+parcours culinaire satisfaisant et varié. 
+
+ 
+
+Partie I : Les Fondations Architecturales d'un 
+Écosystème Culinaire Numérique 
+
+ 
+
+Le prérequis pour tout système culinaire intelligent est une architecture de données robuste 
+et granulaire. La capacité à filtrer, analyser et générer des recommandations est directement 
+proportionnelle à la qualité et à la structure des modèles de données sous-jacents. Cette 
+section décrit les trois piliers de cette fondation : un modèle universel pour les recettes, une 
+base de données complète pour les ingrédients et leurs propriétés nutritionnelles, et un profil 
+dynamique pour capturer l'identité culinaire unique de l'utilisateur. 
+
+ 
+
+Chapitre 1 : Déconstruction de la Recette : Un Modèle de Données 
+Universel 
+
+ 
+
+La recette traditionnelle, souvent présentée comme un bloc de texte monolithique, est 
+algorithmiquement opaque. Pour libérer son potentiel pour un système intelligent, elle doit 
+être déconstruite en un modèle de données standardisé et relationnel. Ce processus 
+transforme un ensemble statique d'instructions en un objet dynamique et interrogeable, 
+formant le socle de l'ensemble du cadre de recommandation. 
+
+ 
+
+1.1 La Nécessité d'un Schéma Standardisé 
+
+ 
+
+Un stockage ad-hoc ou non structuré des recettes limite sévèrement les capacités de tout 
+système de recommandation. La capacité d'un système à filtrer par temps de préparation, 
+type de cuisine, ingrédients disponibles ou adéquation diététique dépend entièrement du fait 
+que ces attributs soient des champs discrets et bien définis dans une base de données. 
+
+
+S'appuyer sur l'analyse de texte pour extraire ces informations est inefficace et sujet aux 
+erreurs. Par conséquent, l'adoption d'un schéma structuré, inspiré de standards tels que 
+schema.org/Recipe, n'est pas une amélioration mais une exigence fondamentale. Cette 
+approche structurée est la différence fondamentale entre un livre de cuisine numérique et un 
+système culinaire intelligent. 
+
+ 
+
+1.2 L'Entité Recette de Base et la Puissance de la Taxonomie 
+
+ 
+
+L'entité centrale de la base de données est la table Recette. Cette table contient les 
+métadonnées primaires de chaque plat. Les champs sont dérivés de schémas établis et sont 
+essentiels pour le filtrage de base, l'affichage et l'interaction avec l'utilisateur. 
+
+● Champs principaux : id_recette (Clé primaire), nom, description, auteur, 
+temps_preparation, temps_cuisson, temps_total (au format de durée ISO 8601), 
+rendement_recette (ex: "4 personnes"), methode_cuisson (ex: "Rôtissage", "Friture"), et 
+url_image. 
+
+
+Pour permettre le filtrage sophistiqué requis pour équilibrer "variabilité", "nouveauté" et 
+"habitude", cette entité de base doit être connectée à une taxonomie multi-facettes. Une 
+taxonomie permet de classer une seule recette selon plusieurs dimensions simultanément, 
+offrant un contexte riche et descriptif. Ceci est mis en oeuvre par une série de tables dédiées 
+liées à la table Recette via des relations plusieurs-à-plusieurs : 
+
+● Table Cuisine : Catégorise les recettes par origine (ex: "Française", "Italienne", 
+"Thaïlandaise"). 
+● Table TypePlat : Définit le type de repas (ex: "Entrée", "Plat Principal", "Dessert", 
+"Boisson"). 
+● Table RegimeAlimentaire : Marque la compatibilité avec des régimes spécifiques (ex: 
+"Végétarien", "Sans Gluten", "Halal"). 
+● Table MotsCles : Permet un étiquetage subjectif ou fonctionnel (ex: "Rapide", "Festif", 
+"Réconfortant", "Économique"). 
+
+
+Cette structure permet à une recette comme les "Lasagnes aux lentilles corail" 2 d'être 
+simultanément classée comme italienne, plat principal, végétarienne et réconfortante, la 
+rendant ainsi découvrable à travers une grande variété de requêtes utilisateur. 
+
+ 
+
+1.3 La Liaison entre Ingrédients et Instructions 
+
+ 
+
+
+Le composant le plus critique du modèle de données de recette est la gestion des ingrédients 
+et des instructions. Un simple champ de texte est insuffisant. Une structure relationnelle est 
+nécessaire pour permettre des recommandations basées sur l'inventaire et des calculs 
+nutritionnels précis. Ceci est réalisé grâce à une structure normalisée à trois tables qui résout 
+élégamment la relation plusieurs-à-plusieurs entre les recettes et les ingrédients. 
+
+1. Table Recette : Comme décrit ci-dessus. 
+2. Table Ingredient : Une liste maîtresse et canonique de tous les ingrédients possibles, 
+chaque ingrédient ayant un id_ingredient unique. 
+3. Table de jonction Recette_Ingredient : Cette table de liaison connecte les recettes à 
+leurs ingrédients. Chaque ligne contient un id_recette, un id_ingredient, et des attributs 
+spécifiques à cette relation, tels que quantite (ex: 200), unite (ex: "g"), et notes (ex: 
+"haché finement"). 
+
+
+Ce modèle transforme une simple liste d'ingrédients en une structure de données puissante. Il 
+permet au système de répondre à des requêtes complexes telles que "Trouver tous les plats 
+principaux qui utilisent du poulet et des tomates mais pas d'oignons", en effectuant de 
+simples jointures de base de données. 
+
+De même, les instructions_recette ne sont pas stockées comme un seul bloc de texte. Elles 
+sont modélisées comme une liste ordonnée d'éléments EtapePreparation, où chaque étape 
+est une entrée discrète. Cette approche granulaire permet une présentation étape par étape à 
+l'utilisateur et ouvre des possibilités pour de futures intégrations avec des appareils de cuisine 
+intelligents ou des assistants de cuisine à commande vocale. 
+
+Le tableau suivant fournit un plan visuel de ce schéma de base de données relationnelle, 
+illustrant les connexions entre les entités principales. 
+
+Table : Recette 
+
+Table : 
+Recette_Ingredient 
+(Jonction) 
+
+Table : Ingredient 
+
+id_recette (CP) 
+
+id_recette (CE) 
+
+id_ingredient (CP) 
+
+nom (TEXTE) 
+
+id_ingredient (CE) 
+
+nom (TEXTE, UNIQUE) 
+
+description (TEXTE) 
+
+quantite (FLOAT) 
+
+categorie (TEXTE) 
+
+temps_preparation 
+(DURÉE) 
+
+unite (TEXTE) 
+
+id_nutrition (CE) 
+
+temps_cuisson (DURÉE) 
+
+notes (TEXTE) 
+
+ 
+
+
+
+
+rendement_recette (TEXTE) 
+
+ 
+
+ 
+
+methode_cuisson (TEXTE) 
+
+Table : Recette_Cuisine 
+(Jonction) 
+
+Table : Cuisine 
+
+url_image (TEXTE) 
+
+id_recette (CE) 
+
+id_cuisine (CP) 
+
+ 
+
+id_cuisine (CE) 
+
+nom (TEXTE, UNIQUE) 
+
+Table : 
+Recette_Instruction 
+
+ 
+
+ 
+
+id_instruction (CP) 
+
+Table : Recette_TypePlat 
+(Jonction) 
+
+Table : TypePlat 
+
+id_recette (CE) 
+
+id_recette (CE) 
+
+id_typeplat (CP) 
+
+numero_etape (ENTIER) 
+
+id_typeplat (CE) 
+
+nom (TEXTE, UNIQUE) 
+
+texte (TEXTE) 
+
+ 
+
+ 
+
+
+
+Tableau 1.1 : Schéma de base de données relationnelle proposé pour les recettes. (CP : Clé 
+Primaire, CE : Clé Étrangère). Des tables de jonction supplémentaires pour RegimeAlimentaire 
+et MotsCles suivraient la même structure que Recette_Cuisine. 
+
+ 
+
+Chapitre 2 : Le Garde-Manger Global et le Registre Nutritionnel 
+
+ 
+
+La capacité du système à fournir des recommandations basées sur la nutrition et l'inventaire 
+existant repose sur une base de données maîtresse d'ingrédients complète et précise. Ce 
+"Garde-Manger Global" sert de source unique de vérité pour tous les produits alimentaires, 
+découplant les données nutritionnelles des recettes individuelles, ce qui rend l'ensemble du 
+système plus évolutif, précis et facile à maintenir. 
+
+ 
+
+2.1 La Base de Données Maîtresse des Ingrédients 
+
+
+ 
+
+La fondation est une liste canonique de tous les produits alimentaires possibles, stockée dans 
+la table Ingredient. Chaque entrée contient un id_ingredient, un nom standardisé, et une 
+categorie (ex: légume, viande, produit laitier, épice). Un élément crucial de cette table est la 
+normalisation des noms d'ingrédients pour éviter la redondance des données ; par exemple, 
+"oignon", "oignons" et "onion" doivent tous se résoudre en une seule entité unique. Chaque 
+ingrédient est ensuite mappé via une clé étrangère (id_nutrition) à un profil nutritionnel 
+détaillé. 
+
+ 
+
+2.2 Intégration de Données Nutritionnelles de Référence 
+
+ 
+
+Pour garantir la validité scientifique, le système doit s'approvisionner en informations 
+nutritionnelles auprès de bases de données établies et faisant autorité, plutôt que de se fier à 
+des données générées par les utilisateurs ou non vérifiées. Les principales sources pour cela 
+sont les organismes gouvernementaux qui maintiennent des tables de composition des 
+aliments complètes. 
+
+● ANSES-CIQUAL (France) : L'Agence nationale de sécurité sanitaire de l'alimentation, de 
+l'environnement et du travail fournit la base de données Ciqual, qui est la référence pour 
+les aliments consommés en France. Elle contient des données pour plus de 3 000 
+aliments et 67 constituants, et est disponible au téléchargement dans des formats 
+structurés comme XML et Excel. Les données sont structurées en fichiers liés pour les 
+aliments (alim), les groupes d'aliments (alim_grp), les constituants (const), et leurs 
+compositions (compo), fournissant un ensemble de données granulaire et relationnel 
+parfait pour l'intégration. 
+● USDA FoodData Central (USA) : Pour une portée plus internationale, le FoodData 
+Central du Département de l'Agriculture des États-Unis offre une API étendue donnant 
+accès à un vaste référentiel de données sur les aliments et les nutriments. 
+
+
+Le processus d'intégration consiste à créer une table Nutrition dans la base de données du 
+système, avec des colonnes pour chaque nutriment clé (ex: calories_kcal, proteines_g, 
+glucides_g, lipides_g, sodium_mg, etc.) pour 100g de portion comestible. Chaque entrée de la 
+table maîtresse Ingredient est ensuite méticuleusement mappée à son entrée correspondante 
+dans la base de données Ciqual ou USDA. 
+
+ 
+
+2.3 L'Algorithme de Calcul Nutritionnel des Recettes 
+
+ 
+
+
+Avec les données nutritionnelles stockées au niveau de l'ingrédient atomique, le système peut 
+calculer dynamiquement le profil de n'importe quelle recette. C'est un avantage significatif par 
+rapport aux systèmes qui stockent des informations nutritionnelles statiques au niveau de la 
+recette, qui seraient invalidées par tout changement de quantité d'ingrédient. 
+
+La méthodologie de calcul est la suivante : 
+
+1. Itération des Ingrédients : Pour une recette donnée, l'algorithme interroge la table de 
+jonction Recette_Ingredient pour récupérer tous les ingrédients constitutifs et leurs 
+quantités spécifiées.3 
+2. Agrégation des Nutriments : Pour chaque ingrédient, il récupère les données 
+nutritionnelles correspondantes (pour 100g) de la table Nutrition. Il met ensuite ces 
+valeurs à l'échelle en fonction de la quantité et de l'unité spécifiées dans la recette (par 
+exemple, convertir "1 tasse de farine" en grammes et calculer sa contribution). Ces 
+valeurs sont additionnées pour tous les ingrédients afin de produire un profil nutritionnel 
+total pour la recette brute. 
+3. Application de Facteurs de Correction Scientifiques : Une simple somme des 
+ingrédients bruts est souvent inexacte. Les processus de cuisson modifient le poids et la 
+teneur en nutriments des aliments. Pour atteindre un plus haut degré de précision, 
+l'algorithme doit appliquer des facteurs de correction tels que décrits dans les 
+méthodologies des sciences de l'alimentation, comme celles de l'Organisation des 
+Nations Unies pour l'alimentation et l'agriculture (FAO). 
+
+
+○ Facteurs de Rendement (FRD) : Tiennent compte des changements de poids dus à 
+la perte d'eau (ex: lors du rôtissage) ou au gain d'eau (ex: cuisson des pâtes). Le 
+poids final du plat cuit est estimé en appliquant ces facteurs à chaque ingrédient. 
+○ Facteurs de Rétention (FRT) : Tiennent compte de la dégradation des nutriments, 
+en particulier des vitamines, due à la chaleur. La quantité totale de chaque nutriment 
+est ajustée en fonction de la méthode de cuisson et de la durée. 
+
+
+
+
+
+En intégrant ces principes scientifiques, le système fournit une estimation nutritionnelle 
+beaucoup plus réaliste qu'une simple somme d'ingrédients bruts, répondant ainsi à l'exigence 
+de l'utilisateur pour une planification précise et basée sur la nutrition. 
+
+ 
+
+Chapitre 3 : Modélisation de l'Élément Humain : Le Profil Utilisateur 
+Dynamique 
+
+ 
+
+L'efficacité d'un système de recommandation se mesure en fin de compte à sa capacité à 
+comprendre et à prédire les préférences d'un individu. Un système réussi doit construire un 
+profil utilisateur complet qui capture non seulement ce que les utilisateurs déclarent 
+explicitement, mais aussi ce que leurs actions révèlent implicitement. Ce profil dynamique est 
+
+
+un modèle vivant de l'identité culinaire de l'utilisateur, en constante évolution à chaque 
+interaction. 
+
+ 
+
+3.1 Le Profil Statique : Capturer les Préférences Explicites 
+
+ 
+
+La construction initiale du profil utilisateur commence par un processus d'accueil où 
+l'utilisateur fournit des informations explicites. Ces données forment la base statique de ses 
+préférences et contraintes. Ces informations sont stockées dans une table ProfilUtilisateur et 
+des tables associées.4 
+
+● Restrictions Alimentaires et Allergies : Les utilisateurs peuvent spécifier des allergies 
+(ex: "arachides", "fruits de mer"), qui sont directement liées à la table maîtresse 
+Ingredient, et des régimes alimentaires (ex: "végétarien", "halal", "sans gluten"), liés à la 
+taxonomie RegimeAlimentaire. Celles-ci agissent comme des contraintes strictes, filtrant 
+toutes les recettes incompatibles. 
+● Objectifs de Santé et Nutritionnels : Les utilisateurs peuvent définir des objectifs tels 
+que la perte de poids, le gain musculaire ou la réduction de sodium. Ces objectifs sont 
+traduits en cibles quotidiennes spécifiques pour les calories et les macronutriments 
+(protéines, glucides, lipides), qui sont stockées dans le profil et utilisées par le module de 
+planification nutritionnelle. 
+● Préférences de Cuisine et d'Ingrédients : Les utilisateurs peuvent indiquer les cuisines 
+préférées (ex: "Marocaine", "Japonaise") et les ingrédients explicitement détestés (ex: 
+"coriandre", "endives"). Cela fournit la direction initiale pour le moteur de 
+recommandation. 
+
+
+ 
+
+3.2 Le Profil Dynamique : Apprendre du Comportement Implicite 
+
+ 
+
+Les véritables préférences d'un utilisateur sont souvent révélées plus précisément par ses 
+actions que par ses déclarations. Un utilisateur peut professer un amour pour la cuisine 
+italienne mais cuisiner constamment des plats thaïlandais. Le système doit capturer et 
+modéliser ce comportement pour fournir des recommandations véritablement personnalisées. 
+
+Ceci est réalisé en enregistrant toutes les interactions de l'utilisateur avec les recettes dans 
+une table Utilisateur_Recette_Interaction. Chaque entrée enregistre l'id_utilisateur, l'id_recette, 
+le type d'interaction (vue, cuisinée, notée, ignorée), et un horodatage. Cela crée un ensemble 
+de données longitudinales riches sur le comportement de l'utilisateur. 
+
+À partir de ces données, le système peut inférer un "profil de goût" dynamique. Celui-ci peut 
+
+
+être représenté comme un vecteur où chaque dimension correspond à un ingrédient, une 
+cuisine ou un attribut de saveur (ex: épicé, sucré, acide). Lorsqu'un utilisateur interagit 
+positivement avec une recette (par exemple, la cuisine ou la note bien), les poids des attributs 
+de cette recette sont augmentés dans le vecteur de profil de goût de l'utilisateur. Par exemple, 
+un utilisateur qui cuisine fréquemment du Poulet Yassa et de la Soupe à l'oignon 6 
+développera un profil avec des poids élevés pour "oignon", "citron" et "poulet", même s'il n'a 
+jamais explicitement déclaré de préférence pour ces ingrédients. Ce profil basé sur les 
+données permet au système de découvrir des préférences latentes et de faire des 
+recommandations qui semblent intuitives et perspicaces. 
+
+ 
+
+3.3 Le Curseur "Habitude vs. Nouveauté" 
+
+ 
+
+Pour répondre directement au désir de l'utilisateur d'un équilibre entre "un peu d’habitude et 
+de plaisir" et "de la variabilité et de la nouveauté", le profil utilisateur intègre un paramètre 
+pour gérer ce compromis. Cela peut être mis en oeuvre comme un réglage ajustable par 
+l'utilisateur, peut-être un curseur allant de "Classiques Réconfortants" à "Découvertes 
+Aventureuses". 
+
+Ce réglage influence directement la stratégie d'exploration/exploitation de l'algorithme de 
+recommandation (détaillée au Chapitre 6). Un utilisateur en quête de réconfort recevra des 
+recommandations avec un haut degré de similarité avec ses favoris passés (exploitation), 
+tandis qu'un utilisateur en quête de nouveauté se verra présenter des suggestions plus 
+diverses et inattendues de différentes cuisines ou avec de nouveaux ingrédients 
+(exploration).7 Ce paramètre peut également être appris implicitement ; un utilisateur qui 
+essaie fréquemment de nouvelles recettes suggérées par le système démontre une plus 
+grande tolérance à l'exploration, et le système peut ajuster sa stratégie en conséquence. Cela 
+transforme une préférence subjective en une variable contrôlable qui affine l'expérience 
+culinaire au fil du temps. 
+
+ 
+
+Partie II : Le Coeur Algorithmique : Des Données à la 
+Délice 
+
+ 
+
+Avec les structures de données fondamentales en place, cette section détaille le moteur de 
+calcul qui transforme les données structurées en recommandations intelligentes. Ce « 
+cerveau » du système est responsable du filtrage, du classement et de la composition de 
+suggestions de repas qui sont non seulement personnalisées, mais aussi contextuellement 
+
+
+pertinentes, culinairement cohérentes et alignées sur les objectifs dynamiques de l'utilisateur. 
+
+ 
+
+Chapitre 4 : Le Moteur de Recommandation - Une Approche Hybride 
+
+ 
+
+Le choix de l'algorithme de recommandation est essentiel au succès du système. Bien que 
+plusieurs approches existent, un modèle unique est souvent insuffisant pour répondre aux 
+demandes complexes de l'utilisateur, qui désire à la fois un réconfort familier et une 
+découverte nouvelle. Par conséquent, un modèle hybride qui combine intelligemment les 
+forces de différentes techniques est la solution optimale. 
+
+ 
+
+4.1 Limites des Modèles Uniques 
+
+ 
+
+● Filtrage Basé sur le Contenu : Cette méthode recommande des articles en fonction de 
+leurs propriétés intrinsèques. Elle fonctionne en créant un profil des préférences d'un 
+utilisateur basé sur les attributs (ex: ingrédients, cuisine, méthode de cuisson) des 
+articles qu'il a précédemment aimés. Elle recommande ensuite de nouveaux articles avec 
+des attributs similaires.8 Par exemple, si un utilisateur aime le Poulet Tandoori 10, un 
+système basé sur le contenu recommanderait le Poulet Tikka Masala 10 car ils partagent 
+de nombreux attributs ("poulet", "indien", "yaourt", "épices"). 
+
+
+○ Avantage : Il peut recommander de nouveaux articles qui n'ont pas encore été notés 
+par aucun utilisateur, tant que leurs attributs sont décrits. Cela résout efficacement le 
+problème du "nouvel article". 
+○ Inconvénient : Il a tendance à créer une "bulle de filtres", se sur-spécialisant dans 
+les préférences connues d'un utilisateur et suggérant rarement des articles en 
+dehors de cette sphère. Cette approche excelle à fournir de l'"habitude" mais échoue 
+à livrer de la "nouveauté". 
+
+
+
+
+
+● Filtrage Collaboratif : Cette méthode fonctionne sur le principe de la preuve sociale : 
+"les utilisateurs qui ont aimé ce que vous avez aimé, ont aussi aimé ceci". Elle analyse la 
+matrice d'interaction utilisateur-article pour trouver des utilisateurs avec des schémas de 
+goût similaires et recommande des articles que ces utilisateurs similaires ont appréciés.11 
+
+
+○ Avantage : Il est excellent pour la découverte fortuite. Il peut recommander un 
+article comme le Tajine d'agneau aux pruneaux 13 à un fan de currys indiens s'il 
+découvre un chevauchement statistiquement significatif dans les bases d'utilisateurs 
+pour les deux, même si les articles eux-mêmes ne partagent aucun attribut commun. 
+C'est un mécanisme puissant pour la "nouveauté". 
+○ Inconvénient : Il souffre du problème du "démarrage à froid" ; il ne peut pas faire de 
+recommandations à de nouveaux utilisateurs qui n'ont pas d'historique d'interaction, 
+
+
+
+
+
+
+ni recommander une nouvelle recette qui n'a pas encore été notée par une masse 
+critique d'utilisateurs.12 
+
+
+
+
+
+ 
+
+4.2 La Synergie d'un Modèle de Recommandation Hybride 
+
+ 
+
+Compte tenu des forces et faiblesses complémentaires de ces deux modèles, un système 
+hybride est la solution la plus robuste.11 Un tel système combine les résultats des algorithmes 
+de filtrage basé sur le contenu et de filtrage collaboratif pour générer une liste de 
+recommandations finale et unifiée. 
+
+L'implémentation fonctionnerait comme suit : 
+
+1. Génération Parallèle : Pour un utilisateur donné, les modèles de filtrage basé sur le 
+contenu et de filtrage collaboratif génèrent indépendamment une liste classée de 
+recommandations de recettes. 
+2. Combinaison Pondérée : Le système combine ensuite ces listes à l'aide d'une fonction 
+de notation pondérée. Le score final d'une recette pourrait être calculé comme suit : . 
+3. Pondération Dynamique () : Le facteur de pondération, , n'est pas statique. Il est ajusté 
+en fonction du contexte de l'utilisateur : 
+
+
+○ Pour les Nouveaux Utilisateurs : Lorsqu'un utilisateur s'inscrit, il n'a pas 
+d'historique d'interaction, donc le modèle collaboratif est inutile. Dans ce scénario de 
+"démarrage à froid", est fixé à 1, ce qui signifie que les recommandations sont 100% 
+basées sur le contenu, en s'appuyant sur les préférences explicites recueillies lors de 
+l'accueil (Chapitre 3). 
+○ Pour les Utilisateurs Établis : Au fur et à mesure que l'utilisateur interagit avec le 
+système, construisant un historique riche, la valeur de est progressivement 
+diminuée. Cela permet à la composante de filtrage collaboratif de contribuer 
+davantage au score final, introduisant de la sérendipité et de la diversité dans les 
+recommandations. 
+○ Pour les Nouvelles Recettes : Lorsqu'une nouvelle recette est ajoutée à la base de 
+données, elle n'a aucune interaction utilisateur. Le score de filtrage collaboratif sera 
+de zéro. Le modèle basé sur le contenu, cependant, peut immédiatement analyser 
+ses attributs et la recommander aux utilisateurs pertinents, résolvant ainsi le 
+problème du "nouvel article". 
+
+
+
+
+
+Cette approche hybride garantit que le système est toujours fonctionnel, fournissant des 
+suggestions pertinentes aux nouveaux utilisateurs tout en offrant des recommandations de 
+plus en plus sophistiquées et diverses aux utilisateurs à long terme, satisfaisant ainsi les 
+doubles exigences de familiarité réconfortante et de découverte excitante. 
+
+
+ 
+
+Chapitre 5 : La Science de la Synergie : Association Algorithmique des 
+Saveurs et Composition de Menus 
+
+ 
+
+Un assistant culinaire véritablement intelligent doit aller au-delà de la suggestion de plats 
+individuels ; il doit être capable de composer un repas complet et harmonieux en 
+recommandant des accompagnements appropriés. Cela nécessite de traduire l'art de l'accord 
+culinaire en un ensemble de règles algorithmiques, combinant des principes scientifiques 
+avec la sagesse gastronomique classique. 
+
+ 
+
+5.1 Les Fondements Scientifiques de l'Association des Saveurs 
+
+ 
+
+Les avancées récentes en gastronomie moléculaire ont fourni une base scientifique pour 
+comprendre pourquoi certains ingrédients se marient bien ensemble. Ces connaissances 
+peuvent être exploitées pour créer un algorithme qui suggère des associations à la fois 
+classiques et innovantes. 
+
+● L'Hypothèse de l'Appariement Alimentaire (Food-Pairing) : Cette théorie postule que 
+les ingrédients partageant des composés aromatiques clés sont susceptibles de former 
+une combinaison agréable. La perception humaine de la saveur est dominée par l'arôme 
+(olfaction), qui peut distinguer des milliers de composés volatils différents. Lorsque deux 
+ingrédients, comme la fraise et le basilic, partagent des molécules aromatiques 
+dominantes, le cerveau les perçoit comme harmonieux. Ce principe explique des 
+associations classiques comme la tomate et la mozzarella, qui contiennent toutes deux le 
+composé acide 4-méthylpentanoïque. 
+● L'Hypothèse du Pont Alimentaire (Food-Bridging) : C'est un concept plus avancé 
+suggérant que deux ingrédients sans lien aromatique direct fort peuvent être associés 
+avec succès en introduisant un ingrédient intermédiaire qui partage des composés avec 
+les deux. Cet ingrédient "pont" adoucit le contraste et crée un profil de saveur cohérent. 
+
+
+ 
+
+5.2 Implémentation d'un Algorithme d'Association 
+
+ 
+
+Pour opérationnaliser ces théories, le système nécessite une base de données spécialisée qui 
+mappe les ingrédients à leurs composés aromatiques constitutifs. L'algorithme d'association 
+fonctionnerait alors comme suit : 
+
+
+1. Analyse du Plat Principal : Lorsqu'un plat principal est sélectionné (ex: Saumon en 
+papillote au citron), le système identifie ses ingrédients clés définissant la saveur : 
+saumon, citron, et peut-être aneth. 
+2. Recherche de Correspondances Aromatiques : L'algorithme interroge la base de 
+données des composés de saveur pour trouver les molécules aromatiques dominantes 
+dans ces ingrédients de base. 
+3. Génération de Candidats d'Accompagnement : Il recherche ensuite d'autres 
+ingrédients (généralement des légumes ou des féculents) qui partagent un nombre 
+significatif de ces mêmes composés dominants. Par exemple, il pourrait identifier que le 
+saumon et les asperges partagent certaines notes aromatiques florales et vertes, ce qui 
+l'amènerait à recommander des Asperges vapeur comme accompagnement. Cette 
+approche scientifique permet de découvrir des associations non évidentes mais 
+délicieuses, comme le chocolat et l'oignon frit ou le saumon et la réglisse, explorées dans 
+des expériences de gastronomie moléculaire. 
+
+
+ 
+
+5.3 Le Rôle Indispensable des Règles Culinaires Classiques 
+
+ 
+
+Une approche purement scientifique est cependant insuffisante. Elle pourrait générer des 
+associations chimiquement saines mais texturalement monotones, culturellement 
+inappropriées ou déséquilibrées. Par conséquent, la liste de candidats générée 
+scientifiquement doit être filtrée et reclassée par un ensemble de règles culinaires classiques 
+codifiées. 
+
+Ces règles peuvent être implémentées comme une couche de filtrage basée sur des 
+heuristiques : 
+
+● Règle de l'Équilibre : Un plat riche et lourd doit être associé à un accompagnement 
+léger, acide ou simple pour nettoyer le palais. Par exemple, un Boeuf Bourguignon gras 15 
+appelle une base neutre comme des pommes de terre vapeur ou du riz pilaf, et non un 
+lourd gratin dauphinois. 
+● Règle du Contraste : Les associations doivent offrir un contraste de texture (ex: 
+croustillant et crémeux, croquant et fondant) pour améliorer l'expérience culinaire. Un 
+steak tendre bénéficie de Pommes de terre rôties croustillantes. 
+● Règle du Terroir : Dans la mesure du possible, privilégier les associations régionales. Un 
+plat d'une région spécifique se marie souvent mieux avec un accompagnement ou un vin 
+de cette même région, car ils ont évolué ensemble. Par exemple, un Poulet Basquaise est 
+naturellement complété par les saveurs du Pays Basque. 
+
+
+En générant d'abord des possibilités innovantes par l'analyse scientifique, puis en les affinant 
+à travers le prisme de la sagesse culinaire traditionnelle, le système peut proposer des menus 
+à la fois excitants et harmonieusement équilibrés, satisfaisant le palais de l'utilisateur à 
+
+
+plusieurs niveaux. 
+
+ 
+
+Chapitre 6 : Organiser l'Expérience Culinaire : Équilibrer Nouveauté et 
+Nostalgie 
+
+ 
+
+L'une des exigences les plus nuancées de la requête de l'utilisateur est le désir d'un système 
+qui offre à la fois "variabilité et de la nouveauté" et "un peu d’habitude et de plaisir". C'est un 
+défi classique dans les systèmes de recommandation connu sous le nom de dilemme 
+"exploration versus exploitation". Le système doit non seulement prédire ce qu'un utilisateur 
+aimera, mais aussi gérer stratégiquement le parcours culinaire de l'utilisateur au fil du temps, 
+en décidant quand fournir un favori réconfortant et quand introduire un nouveau favori 
+potentiel. 
+
+ 
+
+6.1 Le Dilemme Exploration vs. Exploitation 
+
+ 
+
+Ce dilemme peut être formellement défini dans le contexte de la recommandation de recettes 
+: 
+
+● Exploitation : Cette stratégie consiste à recommander des recettes que le système est 
+très confiant que l'utilisateur appréciera, en se basant sur son comportement passé. Si 
+un utilisateur a cuisiné et très bien noté la Quiche Lorraine 6 cinq fois, la recommander à 
+nouveau est un pari sûr pour garantir la satisfaction de l'utilisateur. Cela répond 
+directement au besoin d'"habitude" et de "plaisir". 
+● Exploration : Cette stratégie consiste à recommander des recettes avec un plus grand 
+degré d'incertitude, comme des plats d'une nouvelle cuisine ou contenant des 
+ingrédients peu familiers. Bien que plus risquée (l'utilisateur pourrait ne pas l'aimer), 
+l'exploration est essentielle pour recueillir de nouvelles données sur les préférences de 
+l'utilisateur et éviter que les recommandations ne deviennent fades et répétitives. Cela 
+répond au besoin de "variabilité" et de "nouveauté".7 
+
+
+Un système qui n'exploite que créera une bulle de filtres ennuyeuse. Un système qui n'explore 
+que frustrera fréquemment l'utilisateur avec des suggestions non pertinentes. La clé est de 
+trouver un équilibre optimal. 
+
+ 
+
+6.2 Solutions Algorithmiques : Le Cadre du Bandit Manchot (Multi-Armed Bandit) 
+
+
+ 
+
+Ce problème peut être modélisé efficacement à l'aide d'un cadre de l'apprentissage par 
+renforcement appelé "bandit manchot". Dans cette analogie, chaque recette de la base de 
+données est une machine à sous ("bandit manchot") avec une probabilité inconnue de fournir 
+une récompense (satisfaction de l'utilisateur). L'objectif est de développer une stratégie pour 
+choisir quels bras tirer afin de maximiser la récompense totale au fil du temps. 
+
+Un algorithme simple mais puissant pour cela est la méthode Epsilon-Greedy 7 : 
+
+1. Le système définit un paramètre, epsilon (), qui représente la probabilité d'exploration. 
+Une valeur typique pourrait être 0,1 (soit 10%). 
+2. Lorsqu'une recommandation est nécessaire, le système génère un nombre aléatoire 
+entre 0 et 1. 
+3. Si le nombre est supérieur à (une chance de 90%, dans ce cas), le système exploite. Il 
+calcule le score de satisfaction prédit pour toutes les recettes connues et recommande 
+celle avec le score le plus élevé (le choix "gourmand"). 
+4. Si le nombre est inférieur ou égal à (une chance de 10%), le système explore. Il ignore 
+les scores prédits et sélectionne une recette au hasard dans la base de données pour la 
+présenter à l'utilisateur. 
+
+
+La valeur de peut être directement liée au curseur "Habitude vs. Nouveauté" dans le profil de 
+l'utilisateur (Chapitre 3). Un utilisateur le réglant sur "Aventureux" augmenterait , conduisant à 
+une exploration plus fréquente, tandis qu'un réglage "Réconfortant" le diminuerait. 
+
+ 
+
+6.3 Améliorer la Stratégie avec les Bandits Contextuels 
+
+ 
+
+La méthode Epsilon-Greedy peut être rendue plus intelligente en intégrant le contexte. Au lieu 
+d'explorer de manière purement aléatoire, un algorithme de bandit contextuel explore au 
+sein d'un sous-ensemble d'options pertinentes. Cela augmente la probabilité qu'une 
+recommandation exploratoire soit réussie.7 
+
+Par exemple, le contexte peut inclure des facteurs comme : 
+
+● Heure de la journée : Le système n'explorera pas les recettes de petit-déjeuner à l'heure 
+du dîner. 
+● Météo : Par une soirée froide et pluvieuse, le système comprend que le contexte est 
+"nourriture chaude et réconfortante". S'il décide d'explorer, il ne suggérera pas un 
+Gaspacho froid.16 Au lieu de cela, il pourrait suggérer une soupe nouvelle mais 
+contextuellement appropriée, comme une Soupe de châtaignes 17, comme alternative à la 
+Soupe à l'oignon 6 fréquemment cuisinée par l'utilisateur. 
+
+
+
+● Ingrédients disponibles : L'exploration peut être limitée à de nouvelles recettes qui 
+peuvent être réalisées avec les ingrédients que l'utilisateur possède déjà, réduisant ainsi 
+la barrière pour essayer quelque chose de nouveau. 
+
+
+En mettant en oeuvre ces stratégies d'apprentissage par renforcement, le système transforme 
+le vague désir de "variété" en un paramètre quantifiable et gérable. Il devient un curateur, 
+rythmant intelligemment l'introduction de nouvelles expériences pour élargir les horizons 
+culinaires de l'utilisateur sans le submerger, assurant un engagement à long terme à la fois 
+satisfaisant et enrichissant. 
+
+ 
+
+Partie III : Les Couches Applicatives : Un Système 
+Adapté à la Vie 
+
+ 
+
+Cette dernière partie fait le pont entre les modèles de données et les algorithmes théoriques 
+et les besoins pratiques et quotidiens de l'utilisateur. Elle démontre comment l'architecture et 
+l'intelligence du système sont appliquées pour résoudre les problèmes spécifiques du monde 
+réel décrits dans la requête initiale : gérer l'inventaire de la cuisine pour réduire le gaspillage, 
+respecter les objectifs nutritionnels et synthétiser ces multiples contraintes en un plan de 
+repas hebdomadaire cohérent et réalisable. 
+
+ 
+
+Chapitre 7 : La Cuisine Zéro Déchet : Une Logique de 
+Recommandation Basée sur l'Inventaire 
+
+ 
+
+Une exigence principale de l'utilisateur est de créer des repas à partir "des restes de repas 
+déjà fait" et "des produits dans le garde manger". Cela nécessite un système qui n'est pas 
+simplement un chercheur de recettes mais un outil de gestion d'inventaire dynamique conçu 
+pour lutter contre le gaspillage alimentaire. Le principe de base est un passage d'une logique 
+de recommandation basée sur les préférences à une logique basée sur l'inventaire. 
+
+ 
+
+7.1 Le Garde-Manger Numérique : Modèle de Données et Alimentation 
+
+ 
+
+Pour fonctionner, le système nécessite une représentation numérique du garde-manger, du 
+réfrigérateur et du congélateur physiques de l'utilisateur. Ceci est accompli grâce à une table 
+
+
+Article_GardeManger. 
+
+● Structure des Données : Chaque entrée de cette table représente un article alimentaire 
+spécifique en possession de l'utilisateur. Les champs clés incluent id_article (un 
+identifiant unique pour l'instance de l'article), une clé étrangère vers la table maîtresse 
+Ingredient (id_ingredient), quantite, unite, date_achat, et, plus important encore, une 
+date_peremption calculée ou fournie par l'utilisateur.18 Les restes sont traités comme des 
+articles de garde-manger spéciaux avec une date de péremption très courte. 
+● Méthodes d'Alimentation : L'adoption par l'utilisateur dépend de la facilité du suivi de 
+l'inventaire. Le système peut être alimenté par plusieurs méthodes : 
+
+
+1. Saisie Manuelle : L'utilisateur ajoute les articles au fur et à mesure de ses achats. 
+2. Scan de Code-barres : À l'aide de l'appareil photo d'un smartphone, les utilisateurs 
+peuvent scanner les codes-barres des produits. Le système peut alors utiliser une 
+API comme Open Food Facts pour identifier automatiquement le produit et sa durée 
+de conservation typique. 
+3. Intégration de Liste de Courses : Le système peut s'intégrer avec des services de 
+courses en ligne ou des applications de listes de courses pour importer 
+automatiquement les articles achetés dans le garde-manger après la finalisation 
+d'une commande.19 
+
+
+
+
+
+ 
+
+7.2 L'Algorithme de Classement Anti-Gaspillage 
+
+ 
+
+Les moteurs de recommandation standards demandent "Que voulez-vous cuisiner?" puis 
+génèrent une liste de courses. Un système anti-gaspillage inverse fondamentalement cette 
+logique, en demandant "Que pouvez-vous cuisiner avec ce que vous avez, et que 
+devriez-vous cuisiner pour éviter le gaspillage?". 
+
+Ceci est réalisé grâce à un algorithme de filtrage et de classement en plusieurs étapes : 
+
+1. Filtrage par Disponibilité : La première opération du système est de filtrer l'ensemble 
+de la base de données mondiale de recettes, en ne conservant que celles pour lesquelles 
+l'utilisateur possède un pourcentage significatif (par exemple, > 60%) des ingrédients 
+requis. Cela réduit immédiatement l'espace de recherche de milliers de possibilités à une 
+liste gérable d'options réalisables. 
+2. Notation et Classement : Les recettes filtrées sont ensuite notées selon une formule 
+pondérée conçue pour prioriser la réduction du gaspillage : 
+
+
+○ Score d'Urgence : C'est le facteur le plus fortement pondéré. Les recettes sont 
+notées en fonction de la proximité des dates de péremption de leurs ingrédients. Une 
+recette qui utilise le poulet expirant demain recevra un score d'urgence beaucoup 
+plus élevé qu'une recette qui utilise des haricots en conserve expirant dans six 
+mois.20 
+
+
+
+
+
+
+○ Score de Complétude : Les recettes qui nécessitent le moins d'ingrédients 
+supplémentaires à acheter reçoivent un score plus élevé. Cela encourage l'utilisation 
+de ce qui est déjà disponible. 
+○ Score d'Utilisation des Restes : Le système accorde un bonus significatif aux 
+recettes qui incorporent explicitement des articles étiquetés comme "restes". Par 
+exemple, si "poulet rôti" est dans le garde-manger, des recettes comme la Salade du 
+Périgord 6 ou des Wraps de poulet seront très bien classées. 
+
+
+
+
+
+Les recommandations finales sont ensuite présentées à l'utilisateur dans des catégories 
+clairement étiquetées telles que "À consommer rapidement" ou "Recettes 100% 
+garde-manger", faisant du choix anti-gaspillage le chemin le plus simple. Cette approche axée 
+sur l'inventaire transforme le système d'un simple outil de découverte en un utilitaire essentiel 
+de gestion des ressources. 
+
+ 
+
+Chapitre 8 : Le Nutritionniste Personnel : Planification de Repas Axée 
+sur les Objectifs 
+
+ 
+
+Le désir de l'utilisateur que les choix de repas soient guidés par "la nutrition" exige que le 
+système fonctionne comme un conseiller diététique personnalisé. Cela implique de traduire 
+des objectifs de santé de haut niveau en contraintes concrètes et quantifiables que 
+l'algorithme de recommandation peut appliquer, gérant efficacement un "budget nutritionnel" 
+quotidien pour l'utilisateur. 
+
+ 
+
+8.1 Traduire les Objectifs de Santé en Contraintes Algorithmiques 
+
+ 
+
+Les objectifs de santé définis dans le profil de l'utilisateur (Chapitre 3) sont le point de départ. 
+Ces objectifs qualitatifs sont convertis en contraintes quantitatives et lisibles par machine. 
+
+● Un objectif de "perte de poids" est traduit en une cible calorique quotidienne spécifique 
+(ex: kcal). 
+● Un objectif de "développement musculaire" peut être défini à la fois par une cible 
+calorique et un apport minimum en protéines (ex: g). 
+● Une exigence médicale comme la gestion de l'hypertension se traduirait par une limite 
+stricte de sodium (ex: mg). 
+
+
+Ces contraintes ne sont pas statiques ; elles forment la base d'un budget quotidien 
+dynamique. 
+
+
+ 
+
+8.2 La Couche de Filtrage et de Planification Nutritionnelle 
+
+ 
+
+L'intelligence du système ne réside pas simplement dans l'affichage des informations 
+nutritionnelles, mais dans leur utilisation proactive pour façonner les recommandations. Ceci 
+est accompli grâce à une couche de filtrage nutritionnel qui fonctionne en temps réel. 
+
+● Processus : Le système maintient un décompte courant de la consommation 
+nutritionnelle de l'utilisateur tout au long de la journée en fonction des repas qu'il 
+enregistre. Lorsque l'utilisateur demande une recommandation pour son prochain repas 
+(par exemple, le dîner), l'algorithme calcule d'abord le "budget nutritionnel restant" pour 
+la journée. Il filtre ensuite la base de données de recettes, excluant temporairement 
+toutes les recettes dont le profil nutritionnel (calculé selon le Chapitre 2) ferait dépasser 
+à l'utilisateur ses objectifs quotidiens. 
+● Exemple : Un utilisateur a un objectif quotidien de 2000 kcal. Il a enregistré un 
+petit-déjeuner de 400 kcal et un déjeuner de 600 kcal. Son budget restant pour le dîner 
+et les collations est de 1000 kcal. Lorsqu'il demande des idées de dîner, le système 
+filtrera automatiquement les recettes comme le Cassoulet 15 ou la Tartiflette 15, qui sont 
+susceptibles de dépasser ce budget, et privilégiera plutôt des options plus légères. 
+
+
+ 
+
+8.3 Assembler un Plan Hebdomadaire Équilibré 
+
+ 
+
+Au-delà des recommandations pour un seul repas, le système peut utiliser des algorithmes de 
+satisfaction de contraintes ou d'optimisation pour générer des plans de repas hebdomadaires 
+complets. Ce processus traite le menu hebdomadaire comme un puzzle complexe avec de 
+multiples objectifs : 
+
+1. Satisfaire les Contraintes Strictes : Le plan doit respecter le budget nutritionnel 
+hebdomadaire total et toutes les restrictions alimentaires (allergies, etc.). 
+2. Optimiser les Contraintes Souples : Dans les limites des contraintes strictes, 
+l'algorithme vise à : 
+
+
+○ Maximiser l'utilisation des ingrédients disponibles et proches de leur date de 
+péremption (du module anti-gaspillage). 
+○ Maximiser le score de satisfaction prédit de l'utilisateur pour les recettes 
+sélectionnées (du moteur de recommandation hybride). 
+○ Assurer la variété des cuisines et des ingrédients principaux pour éviter la monotonie. 
+
+
+
+
+
+Ce processus de planification automatisé transforme le système d'un simple suggéreur de 
+recettes réactif en un coach diététique proactif, capable de construire un plan de repas 
+
+
+équilibré, personnalisé et efficace qui s'aligne sur les objectifs de santé à long terme de 
+l'utilisateur. 
+
+ 
+
+Chapitre 9 : La Synthèse - Génération du Menu Hebdomadaire Parfait 
+(Étude de Cas) 
+
+ 
+
+Pour illustrer comment ces modules distincts s'intègrent dans une expérience utilisateur 
+cohérente, ce chapitre présente une étude de cas pour un persona d'utilisateur type. 
+
+ 
+
+9.1 Le Persona : "Sophie" 
+
+ 
+
+● Foyer : Famille de quatre personnes (deux adultes, deux jeunes enfants). 
+● Objectifs & Préférences : 
+
+
+○ Nutrition : Vise une moyenne quotidienne d'environ 2 200 kcal pour les adultes. 
+Souhaite réduire la consommation de viande à trois fois par semaine. 
+○ Cuisine : Apprécie la cuisine italienne et thaïlandaise mais a l'impression de toujours 
+faire les mêmes plats. 
+○ Habitude/Nouveauté : Le profil est réglé sur "Équilibré", indiquant un désir à la fois 
+de repas familiers et de nouvelles découvertes. 
+
+
+
+
+
+● État du Garde-Manger Numérique (Dimanche Soir) : 
+
+
+○ Restes : Une part importante d'un rôti de poulet du déjeuner du dimanche. 
+○ À consommer rapidement (dans les 3 jours) : Une demi-tête de brocoli, une 
+barquette de tomates, de la crème fraîche. 
+○ Produits de base : Oignons, ail, pâtes, riz, huile d'olive, diverses épices. 
+
+
+
+
+
+ 
+
+9.2 Le Plan Hebdomadaire Généré 
+
+ 
+
+Le système traite le profil et l'inventaire de Sophie pour générer le plan suivant : 
+
+Lundi : Priorité Anti-Gaspillage 
+
+● Logique du Système : L'algorithme identifie le reste de poulet rôti comme l'élément le 
+plus urgent. Il recherche des recettes étiquetées "poulet" qui conviennent à l'utilisation 
+de viande déjà cuite. 
+● Plat Suggéré : Salade Landaise.6 Cette salade française classique est un excellent 
+
+
+
+moyen d'utiliser les restes de volaille. Le système note que Sophie a la plupart des 
+ingrédients mais ajoute des gésiers confits et des noix à la liste de courses. Ce choix est 
+rapide, nécessite peu de cuisson et utilise efficacement le principal reste. 
+
+
+Mardi : Objectif Nutritionnel et Utilisation des Stocks 
+
+● Logique du Système : Le brocoli et les tomates sont maintenant la priorité. Le système 
+filtre les plats principaux végétariens qui utilisent ces ingrédients et correspondent aux 
+objectifs caloriques de la famille. 
+● Plat Suggéré : Gratin de brocoli aux cacahuètes sur lit de quinoa.2 Cette recette 
+utilise le brocoli et s'aligne sur l'objectif de réduction de la consommation de viande. Elle 
+est nutritionnellement équilibrée et introduit le quinoa, ajoutant de la variété aux céréales 
+de la famille. Les tomates sont utilisées dans une simple Salade de tomates à la 
+provençale 22 en entrée. 
+
+
+Mercredi : Nouveauté et Préférences Culinaires 
+
+● Logique du Système : Les articles les plus périssables ayant été utilisés, l'algorithme 
+d'exploration (Chapitre 6) s'active. Il reconnaît l'affinité de Sophie pour la cuisine 
+thaïlandaise mais note qu'elle n'a pas cuisiné de curry récemment. 
+● Plat Suggéré : Curry Thaï aux pois chiches & riz.2 Ce plat végétarien introduit une 
+nouvelle recette au sein d'une cuisine préférée. Il est savoureux, respecte les objectifs 
+nutritionnels et satisfait le désir de "nouveauté". 
+
+
+Jeudi : Le Choix Confort 
+
+● Logique du Système : Après une nouvelle recette, l'algorithme d'exploitation suggère un 
+favori familial très bien noté et rapide à préparer. La crème fraîche dans le garde-manger 
+est également signalée. 
+● Plat Suggéré : Quiche Lorraine.6 C'est un plat réconfortant et familier ("habitude"). Il 
+utilise la crème fraîche et d'autres produits de base comme les oeufs et les lardons 
+(ajoutés à la liste de courses). Servie avec une simple salade verte, elle constitue un 
+repas de milieu de semaine satisfaisant et peu contraignant. 
+
+
+Vendredi : Influence Collaborative 
+
+● Logique du Système : Le module de filtrage collaboratif identifie que d'autres 
+utilisateurs ayant un profil similaire à celui de Sophie (aime la cuisine italienne, cuisine 
+des plats végétariens, a de jeunes enfants) ont récemment très bien noté une recette 
+spécifique. 
+● Plat Suggéré : Risotto à la courge.23 Ce plat est italien, végétarien et généralement 
+populaire auprès des familles. Il introduit un ingrédient de saison (la courge butternut) et 
+offre une texture et un profil de saveur différents des repas précédents de la semaine. 
+
+
+Samedi et Dimanche : Flexibilité et Plaisir 
+
+
+● Logique du Système : Pour le week-end, le système pourrait suggérer des plats plus 
+élaborés ou festifs, comme une Pizza maison 11 ou un plat français classique comme le 
+Boeuf Bourguignon 18, laissant plus de temps pour la préparation et s'alignant sur 
+l'aspect "plaisir" de la requête de l'utilisateur. 
+
+
+ 
+
+9.3 Le Résultat Final 
+
+ 
+
+À la fin du processus, le système présente à Sophie un plan de repas complet pour 7 jours. En 
+plus des suggestions quotidiennes, il fournit une liste de courses consolidée pour toute la 
+semaine, excluant automatiquement tous les articles déjà présents dans son garde-manger 
+numérique (oignons, ail, riz, etc.). Ce résultat final est l'aboutissement de l'ensemble du cadre, 
+une synthèse transparente de la science de la nutrition, de la gestion des stocks, des 
+préférences de l'utilisateur et de la variété culinaire, transformant la corvée quotidienne de la 
+planification des repas en une expérience efficace, personnalisée et agréable. 
+
+Sources des citations 
+
+1. FOD1040 : Planification de repas 1 – Document d'appui, consulté le octobre 10, 
+2025, https://education.alberta.ca/media/1477234/fod1040.pdf 
+2. 28 recettes de plats végétaliens pour se régaler tout l'automne - Echos verts, 
+consulté le octobre 9, 2025, 
+https://echosverts.com/2017/10/05/28-recettes-de-plats-vegetaliens-pour-se-regaler-tout-lautomne/ 
+3. Comment comptez-vous les calories des repas que vous préparez ? : 
+r/EatCheapAndHealthy - Reddit, consulté le octobre 10, 2025, 
+https://www.reddit.com/r/EatCheapAndHealthy/comments/16zs0a5/how_do_you_
+count_calories_of_the_meals_you_make/?tl=fr 
+4. 10 recettes naturelles pour vos smoothies détox - d-lab nutricosmetics, consulté 
+le octobre 9, 2025, 
+https://dailylab.com/blogs/dailyblog/smoothies-detox-10-recettes-naturelles 
+5. Découvrez les secrets de la pâtisserie française - MentorShow, consulté le 
+octobre 9, 2025, https://mentorshow.com/blog/patisserie-francaise 
+6. 20 entrées traditionnelles et classiques françaises, consulté le octobre 9, 2025, 
+https://www.france-hotel-guide.com/fr/blog/entrees-traditionnelles-francaises/ 
+7. 10 Mouthwatering Thai Street foods for beginners – deSIAMCuisine ..., consulté le 
+octobre 9, 2025, 
+https://fr.siam.recipes/blogs/news/10-mouthwatering-thai-street-foods-for-beginners 
+8. 10 plats délicieux illustrant la meilleure nourriture de Chine, consulté le octobre 9, 
+2025, 
+https://www.getyourguide.com/fr-fr/explorer/china-ttd169032/food-in-china/ 
+
+
+
+9. 37 recette(s): Amérique du Sud, Végétarien - Migusto, consulté le octobre 9, 2025, 
+https://migusto.migros.ch/fr/apercu-des-recettes/ameriquedusud-vegetarien 
+10. Spécialités indiennes: Naan, Samoussas, poulet Tikka Masala,Jalebi..., consulté le 
+octobre 9, 2025, 
+https://www.bienmanger.com/1C1855_Specialites_Indiennes.html 
+11. Idées recettes : Voyage au coeur de la cuisine italienne - Colruyt, consulté le 
+octobre 9, 2025, 
+https://www.colruyt.fr/fr/inspiration-diy/ateliers-gourmands/cuisine-autour-du-monde/italie 
+12. 35 idées de collations santé - Pratico-Pratiques, consulté le octobre 9, 2025, 
+https://www.pratico-pratiques.com/galeries-thematiques/35-idees-de-collations-
+sante/ 
+13. Recettes algériennes - 165 recettes sur Ptitchef, consulté le octobre 9, 2025, 
+https://www.ptitchef.com/recettes/recettes-algeriennes 
+14. CIQUAL food composition table 2020, French version - Zenodo, consulté le 
+octobre 10, 2025, https://zenodo.org/records/4770600 
+15. Plat Français : Top 20 des meilleures spécialités culinaires ... - LILIGO, consulté le 
+octobre 9, 2025, 
+https://www.liligo.fr/magazine-voyage/20-meilleures-specialites-culinaires-francaises-164709.html 
+16. Plats typiques espagnols : 5 meilleurs plats et boissons populaires, consulté le 
+octobre 9, 2025, 
+https://clic-campus.fr/culture-espagnole/plats-typiques-espagnols-meilleurs-plats-boissons-populaires/ 
+17. 22 recettes de soupes aux légumes | Comment préparer une soupe ..., consulté le 
+octobre 9, 2025, https://www.kitchenaid.fr/blog/recettes-de-soupes-faciles 
+18. 37 plats français typiques et très appréciés (avec photos), consulté le octobre 9, 
+2025, https://www.france-hotel-guide.com/fr/blog/plats-francais-typiques/ 
+19. 12 recettes saines de smoothies | Comment préparer un smoothie avec un 
+blender | KitchenAid FR, consulté le octobre 9, 2025, 
+https://www.kitchenaid.fr/blog/recettes-de-smoothies 
+20. 15 des desserts les plus populaires sur Instagram | TUI Musement ..., consulté le 
+octobre 9, 2025, 
+https://blog.tuimusement.com/fr/15-des-desserts-les-plus-populaires-sur-instagram/ 
+21. MyFitnessPal: compte-calories dans l'App Store - Apple, consulté le octobre 10, 
+2025, https://apps.apple.com/fr/app/myfitnesspal-compte-calories/id341232718 
+22. Accompagnement de Légumes & Féculents Archives ~ 
+www.dietetique-en-ligne.com, consulté le octobre 9, 2025, 
+https://dietetique-en-ligne.com/category/recettes/accompagnements/accompagnement-de-legumes-feculents/ 
+23. 331 recette(s): Italie, Végétarien | Migusto, consulté le octobre 9, 2025, 
+https://migusto.migros.ch/fr/apercu-des-recettes/italie-vegetarien 
+
+
+
