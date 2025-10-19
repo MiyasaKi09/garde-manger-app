@@ -1,0 +1,30 @@
+id,nom,categorie,description
+1,Réconfortant,profil,Mot-clé de catégorie profil
+2,Léger,profil,Mot-clé de catégorie profil
+3,Frais,profil,Mot-clé de catégorie profil
+4,Riche,profil,Mot-clé de catégorie profil
+5,Crémeux,profil,Mot-clé de catégorie profil
+6,Épicé,profil,Mot-clé de catégorie profil
+7,Acide,profil,Mot-clé de catégorie profil
+8,Sucré-salé,profil,Mot-clé de catégorie profil
+9,Rapide (-30min),usage,Mot-clé de catégorie usage
+10,Facile,usage,Mot-clé de catégorie usage
+11,Pour recevoir,usage,Mot-clé de catégorie usage
+12,En famille,usage,Mot-clé de catégorie usage
+13,Batch cooking,usage,Mot-clé de catégorie usage
+14,Anti-gaspi,usage,Mot-clé de catégorie usage
+15,Festif,usage,Mot-clé de catégorie usage
+16,Pique-nique,usage,Mot-clé de catégorie usage
+18,Moyen,difficulté,Mot-clé de catégorie difficulté
+19,Difficile,difficulté,Mot-clé de catégorie difficulté
+20,Printemps,saison,Mot-clé de catégorie saison
+21,Été,saison,Mot-clé de catégorie saison
+22,Automne,saison,Mot-clé de catégorie saison
+23,Hiver,saison,Mot-clé de catégorie saison
+24,Petit-déjeuner,usage,Mot-clé de catégorie usage
+25,Apéritif,usage,Mot-clé de catégorie usage
+26,Fête,usage,Mot-clé de catégorie usage
+27,Barbecue,usage,Mot-clé de catégorie usage
+28,Gourmand,profil,Mot-clé de catégorie profil
+29,Healthy,profil,Mot-clé de catégorie profil
+30,Rapide,profil,Mot-clé de catégorie profil

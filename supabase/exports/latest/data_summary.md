@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Sun Oct 19 14:06:00 UTC 2025_
+_Generated: Sun Oct 19 14:50:51 UTC 2025_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -10,7 +10,7 @@ _Generated: Sun Oct 19 14:06:00 UTC 2025_
 - cooking_nutrition_factors: 0 rows
 - countries: 0 rows
 - cultivars: 1043 rows
-- diets: 0 rows
+- diets: 9 rows
 - instructions: 1800 rows
 - inventory_lots: 1 rows
 - legacy_users: 0 rows
@@ -20,15 +20,15 @@ _Generated: Sun Oct 19 14:06:00 UTC 2025_
 - pantry_items: 0 rows
 - planned_meals: 0 rows
 - processes: 14 rows
-- products: 1 rows
+- products: 0 rows
 - recipe_ingredients: 0 rows
 - recipe_pairings: 0 rows
-- recipe_tags: 276 rows
+- recipe_tags: 361 rows
 - recipes: 611 rows
 - reference_categories: 14 rows
 - reference_subcategories: 86 rows
 - seasonality: 87 rows
-- tags: 46 rows
+- tags: 75 rows
 - unit_conversions_generic: 10 rows
 - unit_conversions_product: 0 rows
 - user_allergies: 0 rows
