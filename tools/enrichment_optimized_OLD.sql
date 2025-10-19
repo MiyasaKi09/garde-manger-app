@@ -327,9 +327,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Yaourt grec, miel et noix
+-- 21. Yaourt grec, miel et noix
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Yaourt grec, miel et noix'
+  SELECT id FROM recipes WHERE name = '21. Yaourt grec, miel et noix'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Sucré', 'Arôme-Lacté', 'Arôme-Caramélisé')
@@ -341,9 +341,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fromage blanc et compote de pommes maison
+-- 22. Fromage blanc et compote de pommes maison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fromage blanc et compote de pommes maison'
+  SELECT id FROM recipes WHERE name = '22. Fromage blanc et compote de pommes maison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche', 'Arôme-Fruité', 'Automne')
@@ -355,9 +355,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Toast de pain complet, avocat et graines de sésame
+-- 23. Toast de pain complet, avocat et graines de sésame
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Toast de pain complet, avocat et graines de sésame'
+  SELECT id FROM recipes WHERE name = '23. Toast de pain complet, avocat et graines de sésame'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Apéritif')
@@ -369,9 +369,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tartine de chèvre frais, miel et thym
+-- 24. Tartine de chèvre frais, miel et thym
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tartine de chèvre frais, miel et thym'
+  SELECT id FROM recipes WHERE name = '24. Tartine de chèvre frais, miel et thym'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Sucré', 'Saveur-Herbacé', 'Arôme-Caramélisé', 'Petit-déjeuner')
@@ -383,9 +383,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Huevos Rotos (œufs cassés sur frites et jambon Serrano)
+-- 25. Huevos Rotos (œufs cassés sur frites et jambon Serrano)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Huevos Rotos (œufs cassés sur frites et jambon Serrano)'
+  SELECT id FROM recipes WHERE name = '25. Huevos Rotos (œufs cassés sur frites et jambon Serrano)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Intensité-Riche')
@@ -397,9 +397,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pan con Tomate (pain grillé à la tomate et ail)
+-- 26. Pan con Tomate (pain grillé à la tomate et ail)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pan con Tomate (pain grillé à la tomate et ail)'
+  SELECT id FROM recipes WHERE name = '26. Pan con Tomate (pain grillé à la tomate et ail)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Texture-Croquant', 'Intensité-Moyen', 'Arôme-Caramélisé', 'Été', 'Barbecue')
@@ -411,9 +411,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Shakshuka (œufs pochés dans une sauce tomate épicée)
+-- 27. Shakshuka (œufs pochés dans une sauce tomate épicée)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Shakshuka (œufs pochés dans une sauce tomate épicée)'
+  SELECT id FROM recipes WHERE name = '27. Shakshuka (œufs pochés dans une sauce tomate épicée)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien', 'Saveur-Acide', 'Saveur-Épicé', 'Texture-Crémeux', 'Intensité-Léger', 'Intensité-Intense', 'Été')
@@ -425,9 +425,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Full English Breakfast complet
+-- 28. Full English Breakfast complet
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Full English Breakfast complet'
+  SELECT id FROM recipes WHERE name = '28. Full English Breakfast complet'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Petit-déjeuner')
@@ -439,9 +439,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Œufs Bénédictine et sauce hollandaise
+-- 29. Œufs Bénédictine et sauce hollandaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Œufs Bénédictine et sauce hollandaise'
+  SELECT id FROM recipes WHERE name = '29. Œufs Bénédictine et sauce hollandaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux')
@@ -453,9 +453,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tamagoyaki (omelette roulée japonaise)
+-- 30. Tamagoyaki (omelette roulée japonaise)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tamagoyaki (omelette roulée japonaise)'
+  SELECT id FROM recipes WHERE name = '30. Tamagoyaki (omelette roulée japonaise)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise', 'Végétarien')
@@ -467,9 +467,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gaspacho Andalou traditionnel
+-- 31. Gaspacho Andalou traditionnel
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gaspacho Andalou traditionnel'
+  SELECT id FROM recipes WHERE name = '31. Gaspacho Andalou traditionnel'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -481,9 +481,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salmorejo de Cordoue et ses garnitures
+-- 32. Salmorejo de Cordoue et ses garnitures
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salmorejo de Cordoue et ses garnitures'
+  SELECT id FROM recipes WHERE name = '32. Salmorejo de Cordoue et ses garnitures'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -495,9 +495,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe froide de concombre à la menthe
+-- 33. Soupe froide de concombre à la menthe
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe froide de concombre à la menthe'
+  SELECT id FROM recipes WHERE name = '33. Soupe froide de concombre à la menthe'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Herbacé', 'Texture-Liquide', 'Arôme-Épicé Frais')
@@ -509,9 +509,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Velouté froid de courgettes au basilic
+-- 34. Velouté froid de courgettes au basilic
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Velouté froid de courgettes au basilic'
+  SELECT id FROM recipes WHERE name = '34. Velouté froid de courgettes au basilic'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Herbacé', 'Texture-Crémeux', 'Texture-Liquide', 'Arôme-Épicé Frais', 'Été', 'Automne')
@@ -523,9 +523,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Verrine avocat, crevette et pamplemousse
+-- 35. Verrine avocat, crevette et pamplemousse
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Verrine avocat, crevette et pamplemousse'
+  SELECT id FROM recipes WHERE name = '35. Verrine avocat, crevette et pamplemousse'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Amer', 'Arôme-Agrumes', 'Apéritif')
@@ -537,9 +537,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade Caprese (tomate, mozzarella, basilic)
+-- 36. Salade Caprese (tomate, mozzarella, basilic)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade Caprese (tomate, mozzarella, basilic)'
+  SELECT id FROM recipes WHERE name = '36. Salade Caprese (tomate, mozzarella, basilic)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Acide', 'Saveur-Herbacé', 'Arôme-Épicé Frais', 'Été')
@@ -551,9 +551,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade Grecque traditionnelle
+-- 37. Salade Grecque traditionnelle
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade Grecque traditionnelle'
+  SELECT id FROM recipes WHERE name = '37. Salade Grecque traditionnelle'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -565,9 +565,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Taboulé libanais (riche en persil)
+-- 38. Taboulé libanais (riche en persil)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Taboulé libanais (riche en persil)'
+  SELECT id FROM recipes WHERE name = '38. Taboulé libanais (riche en persil)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien', 'Saveur-Herbacé', 'Intensité-Riche')
@@ -579,9 +579,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de lentilles vertes du Puy et lardons
+-- 39. Salade de lentilles vertes du Puy et lardons
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de lentilles vertes du Puy et lardons'
+  SELECT id FROM recipes WHERE name = '39. Salade de lentilles vertes du Puy et lardons'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Arôme-Végétal', 'Long')
@@ -593,9 +593,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade César au poulet grillé et copeaux de parmesan
+-- 40. Salade César au poulet grillé et copeaux de parmesan
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade César au poulet grillé et copeaux de parmesan'
+  SELECT id FROM recipes WHERE name = '40. Salade César au poulet grillé et copeaux de parmesan'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Saveur-Umami', 'Texture-Croquant', 'Intensité-Moyen', 'Arôme-Caramélisé', 'Été', 'Barbecue')
@@ -621,9 +621,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade Niçoise classique
+-- 41. Salade Niçoise classique
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade Niçoise classique'
+  SELECT id FROM recipes WHERE name = '41. Salade Niçoise classique'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -635,9 +635,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de chèvre chaud sur toast
+-- 42. Salade de chèvre chaud sur toast
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de chèvre chaud sur toast'
+  SELECT id FROM recipes WHERE name = '42. Salade de chèvre chaud sur toast'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Apéritif')
@@ -649,9 +649,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de pâtes à l''italienne (pesto, tomates séchées)
+-- 43. Salade de pâtes à l''italienne (pesto, tomates séchées)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de pâtes à l''''italienne (pesto, tomates séchées)'
+  SELECT id FROM recipes WHERE name = '43. Salade de pâtes à l''''italienne (pesto, tomates séchées)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Acide', 'Été')
@@ -663,9 +663,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de riz au thon, maïs et poivrons
+-- 44. Salade de riz au thon, maïs et poivrons
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de riz au thon, maïs et poivrons'
+  SELECT id FROM recipes WHERE name = '44. Salade de riz au thon, maïs et poivrons'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Été')
@@ -677,9 +677,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade piémontaise
+-- 45. Salade piémontaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade piémontaise'
+  SELECT id FROM recipes WHERE name = '45. Salade piémontaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -691,9 +691,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Houmous de pois chiches maison
+-- 47. Houmous de pois chiches maison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Houmous de pois chiches maison'
+  SELECT id FROM recipes WHERE name = '47. Houmous de pois chiches maison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien')
@@ -705,9 +705,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Baba Ganoush (caviar d''aubergines fumées)
+-- 48. Baba Ganoush (caviar d''aubergines fumées)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Baba Ganoush (caviar d''''aubergines fumées)'
+  SELECT id FROM recipes WHERE name = '48. Baba Ganoush (caviar d''''aubergines fumées)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Luxe', 'Été')
@@ -719,9 +719,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tzatziki grec au concombre et à l''aneth
+-- 49. Tzatziki grec au concombre et à l''aneth
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tzatziki grec au concombre et à l''''aneth'
+  SELECT id FROM recipes WHERE name = '49. Tzatziki grec au concombre et à l''''aneth'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Épicé Frais')
@@ -733,9 +733,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Moutabal libanais
+-- 50. Moutabal libanais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Moutabal libanais'
+  SELECT id FROM recipes WHERE name = '50. Moutabal libanais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien')
@@ -747,9 +747,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tapenade d''olives noires de Provence
+-- 51. Tapenade d''olives noires de Provence
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tapenade d''''olives noires de Provence'
+  SELECT id FROM recipes WHERE name = '51. Tapenade d''''olives noires de Provence'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé')
@@ -761,9 +761,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Guacamole maison et chips de maïs
+-- 52. Guacamole maison et chips de maïs
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Guacamole maison et chips de maïs'
+  SELECT id FROM recipes WHERE name = '52. Guacamole maison et chips de maïs'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Mexicaine', 'Végétarien', 'Texture-Croquant')
@@ -775,9 +775,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bruschetta à la tomate fraîche et basilic
+-- 53. Bruschetta à la tomate fraîche et basilic
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bruschetta à la tomate fraîche et basilic'
+  SELECT id FROM recipes WHERE name = '53. Bruschetta à la tomate fraîche et basilic'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Saveur-Herbacé', 'Arôme-Épicé Frais', 'Été')
@@ -789,9 +789,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crostinis au chèvre et figues
+-- 54. Crostinis au chèvre et figues
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crostinis au chèvre et figues'
+  SELECT id FROM recipes WHERE name = '54. Crostinis au chèvre et figues'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -803,9 +803,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tortilla de patatas espagnole
+-- 57. Tortilla de patatas espagnole
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tortilla de patatas espagnole'
+  SELECT id FROM recipes WHERE name = '57. Tortilla de patatas espagnole'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Espagnole', 'Végétarien')
@@ -817,9 +817,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Patatas bravas et leur sauce épicée
+-- 58. Patatas bravas et leur sauce épicée
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Patatas bravas et leur sauce épicée'
+  SELECT id FROM recipes WHERE name = '58. Patatas bravas et leur sauce épicée'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Épicé', 'Texture-Crémeux', 'Intensité-Intense')
@@ -831,9 +831,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pimientos de Padrón grillés
+-- 60. Pimientos de Padrón grillés
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pimientos de Padrón grillés'
+  SELECT id FROM recipes WHERE name = '60. Pimientos de Padrón grillés'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Espagnole', 'Végétarien', 'Texture-Croquant', 'Intensité-Moyen', 'Arôme-Caramélisé', 'Été', 'Barbecue')
@@ -859,9 +859,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Falafels de pois chiches, sauce tahini
+-- 62. Falafels de pois chiches, sauce tahini
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Falafels de pois chiches, sauce tahini'
+  SELECT id FROM recipes WHERE name = '62. Falafels de pois chiches, sauce tahini'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien', 'Texture-Crémeux')
@@ -873,9 +873,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Samoussas aux légumes et épices
+-- 63. Samoussas aux légumes et épices
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Samoussas aux légumes et épices'
+  SELECT id FROM recipes WHERE name = '63. Samoussas aux légumes et épices'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -887,9 +887,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Nems au porc et leur sauce
+-- 64. Nems au porc et leur sauce
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Nems au porc et leur sauce'
+  SELECT id FROM recipes WHERE name = '64. Nems au porc et leur sauce'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Crémeux')
@@ -901,9 +901,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Beignets de calamars à la romaine
+-- 67. Beignets de calamars à la romaine
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Beignets de calamars à la romaine'
+  SELECT id FROM recipes WHERE name = '67. Beignets de calamars à la romaine'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -915,9 +915,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Arancini siciliens (boules de risotto frites)
+-- 68. Arancini siciliens (boules de risotto frites)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Arancini siciliens (boules de risotto frites)'
+  SELECT id FROM recipes WHERE name = '68. Arancini siciliens (boules de risotto frites)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Intensité-Riche')
@@ -929,9 +929,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Focaccia au romarin et à la fleur de sel
+-- 69. Focaccia au romarin et à la fleur de sel
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Focaccia au romarin et à la fleur de sel'
+  SELECT id FROM recipes WHERE name = '69. Focaccia au romarin et à la fleur de sel'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Saveur-Herbacé', 'Saveur-Floral', 'Arôme-Floral')
@@ -943,9 +943,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gressins italiens maison
+-- 70. Gressins italiens maison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gressins italiens maison'
+  SELECT id FROM recipes WHERE name = '70. Gressins italiens maison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -957,9 +957,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Légumes grillés marinés à l''italienne (antipasti)
+-- 71. Légumes grillés marinés à l''italienne (antipasti)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Légumes grillés marinés à l''''italienne (antipasti)'
+  SELECT id FROM recipes WHERE name = '71. Légumes grillés marinés à l''''italienne (antipasti)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Texture-Croquant', 'Intensité-Moyen', 'Arôme-Caramélisé', 'Été', 'Barbecue')
@@ -971,9 +971,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Artichauts à la romaine
+-- 72. Artichauts à la romaine
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Artichauts à la romaine'
+  SELECT id FROM recipes WHERE name = '72. Artichauts à la romaine'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Printemps')
@@ -985,9 +985,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poivrons marinés à l''huile d''olive et à l''ail
+-- 73. Poivrons marinés à l''huile d''olive et à l''ail
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poivrons marinés à l''''huile d''''olive et à l''''ail'
+  SELECT id FROM recipes WHERE name = '73. Poivrons marinés à l''''huile d''''olive et à l''''ail'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Été')
@@ -999,9 +999,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Aubergines à la parmesane (Melanzane alla parmigiana)
+-- 74. Aubergines à la parmesane (Melanzane alla parmigiana)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Aubergines à la parmesane (Melanzane alla parmigiana)'
+  SELECT id FROM recipes WHERE name = '74. Aubergines à la parmesane (Melanzane alla parmigiana)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Umami', 'Été')
@@ -1013,9 +1013,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Velouté de potimarron et châtaignes
+-- 75. Velouté de potimarron et châtaignes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Velouté de potimarron et châtaignes'
+  SELECT id FROM recipes WHERE name = '75. Velouté de potimarron et châtaignes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Texture-Liquide', 'Automne')
@@ -1027,9 +1027,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe à l''oignon gratinée
+-- 76. Soupe à l''oignon gratinée
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe à l''''oignon gratinée'
+  SELECT id FROM recipes WHERE name = '76. Soupe à l''''oignon gratinée'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Liquide')
@@ -1041,9 +1041,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crème de lentilles corail au lait de coco
+-- 77. Crème de lentilles corail au lait de coco
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crème de lentilles corail au lait de coco'
+  SELECT id FROM recipes WHERE name = '77. Crème de lentilles corail au lait de coco'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Thaïlandaise', 'Végétarien', 'Texture-Crémeux', 'Arôme-Lacté', 'Long')
@@ -1055,9 +1055,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe de poireaux-pommes de terre
+-- 78. Soupe de poireaux-pommes de terre
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe de poireaux-pommes de terre'
+  SELECT id FROM recipes WHERE name = '78. Soupe de poireaux-pommes de terre'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Liquide', 'Arôme-Fruité', 'Automne')
@@ -1069,9 +1069,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Velouté Dubarry (chou-fleur)
+-- 79. Velouté Dubarry (chou-fleur)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Velouté Dubarry (chou-fleur)'
+  SELECT id FROM recipes WHERE name = '79. Velouté Dubarry (chou-fleur)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Floral', 'Texture-Crémeux', 'Texture-Liquide', 'Arôme-Floral', 'Hiver')
@@ -1083,9 +1083,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Minestrone de légumes italiens
+-- 80. Minestrone de légumes italiens
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Minestrone de légumes italiens'
+  SELECT id FROM recipes WHERE name = '80. Minestrone de légumes italiens'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -1111,9 +1111,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe de poisson et sa rouille
+-- 81. Soupe de poisson et sa rouille
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe de poisson et sa rouille'
+  SELECT id FROM recipes WHERE name = '81. Soupe de poisson et sa rouille'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Liquide', 'Arôme-Marin')
@@ -1125,9 +1125,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bouillon thaï aux crevettes (Tom Yum)
+-- 82. Bouillon thaï aux crevettes (Tom Yum)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bouillon thaï aux crevettes (Tom Yum)'
+  SELECT id FROM recipes WHERE name = '82. Bouillon thaï aux crevettes (Tom Yum)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Thaïlandaise', 'Texture-Liquide')
@@ -1139,9 +1139,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe Phở au bœuf vietnamienne
+-- 83. Soupe Phở au bœuf vietnamienne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe Phở au bœuf vietnamienne'
+  SELECT id FROM recipes WHERE name = '83. Soupe Phở au bœuf vietnamienne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Liquide')
@@ -1153,9 +1153,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe miso japonaise
+-- 84. Soupe miso japonaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe miso japonaise'
+  SELECT id FROM recipes WHERE name = '84. Soupe miso japonaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise', 'Végétarien', 'Saveur-Umami', 'Texture-Liquide')
@@ -1167,9 +1167,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Harira marocaine (soupe de rupture du jeûne)
+-- 85. Harira marocaine (soupe de rupture du jeûne)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Harira marocaine (soupe de rupture du jeûne)'
+  SELECT id FROM recipes WHERE name = '85. Harira marocaine (soupe de rupture du jeûne)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien', 'Texture-Liquide')
@@ -1181,9 +1181,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Chorba algérienne
+-- 86. Chorba algérienne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Chorba algérienne'
+  SELECT id FROM recipes WHERE name = '86. Chorba algérienne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -1195,9 +1195,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Œufs cocotte à la crème et aux lardons
+-- 87. Œufs cocotte à la crème et aux lardons
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Œufs cocotte à la crème et aux lardons'
+  SELECT id FROM recipes WHERE name = '87. Œufs cocotte à la crème et aux lardons'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Crémeux', 'Arôme-Lacté')
@@ -1209,9 +1209,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Feuilletés saucisse à la moutarde
+-- 88. Feuilletés saucisse à la moutarde
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Feuilletés saucisse à la moutarde'
+  SELECT id FROM recipes WHERE name = '88. Feuilletés saucisse à la moutarde'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Arôme-Végétal')
@@ -1223,9 +1223,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Mini-brochettes de poulet mariné au satay
+-- 89. Mini-brochettes de poulet mariné au satay
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Mini-brochettes de poulet mariné au satay'
+  SELECT id FROM recipes WHERE name = '89. Mini-brochettes de poulet mariné au satay'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Barbecue')
@@ -1237,9 +1237,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Mini-brochettes Caprese (tomate cerise, mozzarella, basilic)
+-- 90. Mini-brochettes Caprese (tomate cerise, mozzarella, basilic)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Mini-brochettes Caprese (tomate cerise, mozzarella, basilic)'
+  SELECT id FROM recipes WHERE name = '90. Mini-brochettes Caprese (tomate cerise, mozzarella, basilic)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Acide', 'Saveur-Herbacé', 'Arôme-Épicé Frais', 'Été', 'Barbecue')
@@ -1251,9 +1251,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Roulés de courgette au fromage frais
+-- 91. Roulés de courgette au fromage frais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Roulés de courgette au fromage frais'
+  SELECT id FROM recipes WHERE name = '91. Roulés de courgette au fromage frais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche', 'Arôme-Lacté', 'Été', 'Automne')
@@ -1265,9 +1265,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Blinis au saumon fumé et crème à l''aneth
+-- 92. Blinis au saumon fumé et crème à l''aneth
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Blinis au saumon fumé et crème à l''''aneth'
+  SELECT id FROM recipes WHERE name = '92. Blinis au saumon fumé et crème à l''''aneth'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Crémeux', 'Arôme-Lacté', 'Arôme-Épicé Frais')
@@ -1279,9 +1279,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Champignons farcis à l''ail et au persil
+-- 93. Champignons farcis à l''ail et au persil
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Champignons farcis à l''''ail et au persil'
+  SELECT id FROM recipes WHERE name = '93. Champignons farcis à l''''ail et au persil'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Umami', 'Saveur-Herbacé', 'Arôme-Terreux', 'Automne')
@@ -1293,9 +1293,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tomates provençales au four
+-- 94. Tomates provençales au four
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tomates provençales au four'
+  SELECT id FROM recipes WHERE name = '94. Tomates provençales au four'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien', 'Saveur-Acide', 'Été')
@@ -1307,9 +1307,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarte soleil au pesto et parmesan
+-- 95. Tarte soleil au pesto et parmesan
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarte soleil au pesto et parmesan'
+  SELECT id FROM recipes WHERE name = '95. Tarte soleil au pesto et parmesan'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Umami')
@@ -1321,9 +1321,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gougères au fromage
+-- 96. Gougères au fromage
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gougères au fromage'
+  SELECT id FROM recipes WHERE name = '96. Gougères au fromage'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche')
@@ -1335,9 +1335,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cake salé aux olives et au jambon
+-- 97. Cake salé aux olives et au jambon
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cake salé aux olives et au jambon'
+  SELECT id FROM recipes WHERE name = '97. Cake salé aux olives et au jambon'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Salé')
@@ -1349,9 +1349,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Muffins salés au chorizo et poivron
+-- 98. Muffins salés au chorizo et poivron
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Muffins salés au chorizo et poivron'
+  SELECT id FROM recipes WHERE name = '98. Muffins salés au chorizo et poivron'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Espagnole', 'Végétarien', 'Saveur-Salé', 'Été')
@@ -1363,9 +1363,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Madeleines salées au chèvre et romarin
+-- 99. Madeleines salées au chèvre et romarin
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Madeleines salées au chèvre et romarin'
+  SELECT id FROM recipes WHERE name = '99. Madeleines salées au chèvre et romarin'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Saveur-Herbacé')
@@ -1377,9 +1377,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Quiche Lorraine traditionnelle
+-- 100. Quiche Lorraine traditionnelle
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Quiche Lorraine traditionnelle'
+  SELECT id FROM recipes WHERE name = '100. Quiche Lorraine traditionnelle'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -1405,9 +1405,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarte aux poireaux et lardons
+-- 101. Tarte aux poireaux et lardons
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarte aux poireaux et lardons'
+  SELECT id FROM recipes WHERE name = '101. Tarte aux poireaux et lardons'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Arôme-Fruité', 'Automne')
@@ -1419,9 +1419,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarte à la tomate et à la moutarde
+-- 102. Tarte à la tomate et à la moutarde
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarte à la tomate et à la moutarde'
+  SELECT id FROM recipes WHERE name = '102. Tarte à la tomate et à la moutarde'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Été')
@@ -1433,9 +1433,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarte fine aux légumes du soleil et chèvre
+-- 103. Tarte fine aux légumes du soleil et chèvre
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarte fine aux légumes du soleil et chèvre'
+  SELECT id FROM recipes WHERE name = '103. Tarte fine aux légumes du soleil et chèvre'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -1447,9 +1447,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Quiche sans pâte aux épinards et ricotta
+-- 104. Quiche sans pâte aux épinards et ricotta
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Quiche sans pâte aux épinards et ricotta'
+  SELECT id FROM recipes WHERE name = '104. Quiche sans pâte aux épinards et ricotta'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -1461,9 +1461,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Flammenkueche alsacienne
+-- 105. Flammenkueche alsacienne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Flammenkueche alsacienne'
+  SELECT id FROM recipes WHERE name = '105. Flammenkueche alsacienne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -1475,9 +1475,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pizza Margherita
+-- 106. Pizza Margherita
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pizza Margherita'
+  SELECT id FROM recipes WHERE name = '106. Pizza Margherita'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -1489,9 +1489,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pizza Reine (jambon, champignons)
+-- 107. Pizza Reine (jambon, champignons)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pizza Reine (jambon, champignons)'
+  SELECT id FROM recipes WHERE name = '107. Pizza Reine (jambon, champignons)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Saveur-Umami', 'Arôme-Terreux', 'Automne')
@@ -1503,9 +1503,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pizza 4 fromages
+-- 108. Pizza 4 fromages
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pizza 4 fromages'
+  SELECT id FROM recipes WHERE name = '108. Pizza 4 fromages'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Intensité-Riche')
@@ -1517,9 +1517,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Calzone (pizza soufflée)
+-- 109. Calzone (pizza soufflée)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Calzone (pizza soufflée)'
+  SELECT id FROM recipes WHERE name = '109. Calzone (pizza soufflée)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -1531,9 +1531,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poulet rôti du dimanche aux herbes de Provence
+-- 110. Poulet rôti du dimanche aux herbes de Provence
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poulet rôti du dimanche aux herbes de Provence'
+  SELECT id FROM recipes WHERE name = '110. Poulet rôti du dimanche aux herbes de Provence'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Herbacé', 'Intensité-Moyen', 'Arôme-Végétal')
@@ -1545,9 +1545,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poulet à la crème et aux champignons
+-- 112. Poulet à la crème et aux champignons
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poulet à la crème et aux champignons'
+  SELECT id FROM recipes WHERE name = '112. Poulet à la crème et aux champignons'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Umami', 'Texture-Crémeux', 'Arôme-Terreux', 'Arôme-Lacté', 'Automne')
@@ -1559,9 +1559,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poulet vallée d''Auge (au cidre et à la crème)
+-- 113. Poulet vallée d''Auge (au cidre et à la crème)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poulet vallée d''''Auge (au cidre et à la crème)'
+  SELECT id FROM recipes WHERE name = '113. Poulet vallée d''''Auge (au cidre et à la crème)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Crémeux', 'Arôme-Lacté')
@@ -1573,9 +1573,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Coq au vin
+-- 114. Coq au vin
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Coq au vin'
+  SELECT id FROM recipes WHERE name = '114. Coq au vin'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -1587,9 +1587,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Escalopes de poulet panées au citron
+-- 117. Escalopes de poulet panées au citron
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Escalopes de poulet panées au citron'
+  SELECT id FROM recipes WHERE name = '117. Escalopes de poulet panées au citron'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Acide', 'Arôme-Agrumes')
@@ -1601,9 +1601,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Piccata de veau au citron
+-- 119. Piccata de veau au citron
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Piccata de veau au citron'
+  SELECT id FROM recipes WHERE name = '119. Piccata de veau au citron'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Acide', 'Arôme-Agrumes')
@@ -1615,9 +1615,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Blanquette de veau à l''ancienne
+-- 120. Blanquette de veau à l''ancienne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Blanquette de veau à l''''ancienne'
+  SELECT id FROM recipes WHERE name = '120. Blanquette de veau à l''''ancienne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Hiver')
@@ -1643,9 +1643,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Osso buco à la milanaise
+-- 121. Osso buco à la milanaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Osso buco à la milanaise'
+  SELECT id FROM recipes WHERE name = '121. Osso buco à la milanaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -1657,9 +1657,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Rôti de veau Orloff
+-- 122. Rôti de veau Orloff
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Rôti de veau Orloff'
+  SELECT id FROM recipes WHERE name = '122. Rôti de veau Orloff'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Intensité-Moyen')
@@ -1671,9 +1671,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sauté de veau Marengo
+-- 123. Sauté de veau Marengo
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sauté de veau Marengo'
+  SELECT id FROM recipes WHERE name = '123. Sauté de veau Marengo'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Intensité-Moyen')
@@ -1685,9 +1685,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Paupiettes de veau en sauce
+-- 124. Paupiettes de veau en sauce
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Paupiettes de veau en sauce'
+  SELECT id FROM recipes WHERE name = '124. Paupiettes de veau en sauce'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Crémeux')
@@ -1699,9 +1699,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bœuf bourguignon
+-- 125. Bœuf bourguignon
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bœuf bourguignon'
+  SELECT id FROM recipes WHERE name = '125. Bœuf bourguignon'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Hiver')
@@ -1713,9 +1713,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Daube de bœuf provençale
+-- 126. Daube de bœuf provençale
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Daube de bœuf provençale'
+  SELECT id FROM recipes WHERE name = '126. Daube de bœuf provençale'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française')
@@ -1727,9 +1727,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Carbonnade flamande
+-- 127. Carbonnade flamande
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Carbonnade flamande'
+  SELECT id FROM recipes WHERE name = '127. Carbonnade flamande'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -1741,9 +1741,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pot-au-feu et ses légumes
+-- 128. Pot-au-feu et ses légumes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pot-au-feu et ses légumes'
+  SELECT id FROM recipes WHERE name = '128. Pot-au-feu et ses légumes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Hiver')
@@ -1755,9 +1755,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Hachis Parmentier
+-- 129. Hachis Parmentier
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Hachis Parmentier'
+  SELECT id FROM recipes WHERE name = '129. Hachis Parmentier'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -1769,9 +1769,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Steak frites, sauce au poivre
+-- 130. Steak frites, sauce au poivre
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Steak frites, sauce au poivre'
+  SELECT id FROM recipes WHERE name = '130. Steak frites, sauce au poivre'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Épicé', 'Texture-Crémeux', 'Intensité-Riche')
@@ -1783,9 +1783,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Entrecôte grillée, sauce béarnaise
+-- 131. Entrecôte grillée, sauce béarnaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Entrecôte grillée, sauce béarnaise'
+  SELECT id FROM recipes WHERE name = '131. Entrecôte grillée, sauce béarnaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Texture-Croquant', 'Intensité-Moyen', 'Arôme-Caramélisé', 'Été', 'Barbecue')
@@ -1797,9 +1797,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Carpaccio de bœuf, parmesan et roquette
+-- 133. Carpaccio de bœuf, parmesan et roquette
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Carpaccio de bœuf, parmesan et roquette'
+  SELECT id FROM recipes WHERE name = '133. Carpaccio de bœuf, parmesan et roquette'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Saveur-Umami')
@@ -1811,9 +1811,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Chili con carne
+-- 136. Chili con carne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Chili con carne'
+  SELECT id FROM recipes WHERE name = '136. Chili con carne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -1825,9 +1825,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Boulettes de bœuf à la sauce tomate
+-- 137. Boulettes de bœuf à la sauce tomate
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Boulettes de bœuf à la sauce tomate'
+  SELECT id FROM recipes WHERE name = '137. Boulettes de bœuf à la sauce tomate'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Acide', 'Texture-Crémeux', 'Été')
@@ -1839,9 +1839,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Kefta de bœuf à la marocaine
+-- 138. Kefta de bœuf à la marocaine
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Kefta de bœuf à la marocaine'
+  SELECT id FROM recipes WHERE name = '138. Kefta de bœuf à la marocaine'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale')
@@ -1853,9 +1853,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bœuf sauté aux oignons
+-- 140. Bœuf sauté aux oignons
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bœuf sauté aux oignons'
+  SELECT id FROM recipes WHERE name = '140. Bœuf sauté aux oignons'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Intensité-Moyen')
@@ -1881,9 +1881,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bœuf sauté au gingembre et à la ciboulette
+-- 141. Bœuf sauté au gingembre et à la ciboulette
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bœuf sauté au gingembre et à la ciboulette'
+  SELECT id FROM recipes WHERE name = '141. Bœuf sauté au gingembre et à la ciboulette'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Asiatique', 'Saveur-Épicé', 'Intensité-Moyen', 'Arôme-Épicé Chaud')
@@ -1895,9 +1895,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bulgogi (barbecue coréen)
+-- 143. Bulgogi (barbecue coréen)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bulgogi (barbecue coréen)'
+  SELECT id FROM recipes WHERE name = '143. Bulgogi (barbecue coréen)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien', 'Été', 'Barbecue')
@@ -1909,9 +1909,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gyudon japonais (bol de riz au bœuf)
+-- 144. Gyudon japonais (bol de riz au bœuf)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gyudon japonais (bol de riz au bœuf)'
+  SELECT id FROM recipes WHERE name = '144. Gyudon japonais (bol de riz au bœuf)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise')
@@ -1923,9 +1923,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Rôti de porc à la moutarde
+-- 145. Rôti de porc à la moutarde
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Rôti de porc à la moutarde'
+  SELECT id FROM recipes WHERE name = '145. Rôti de porc à la moutarde'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Intensité-Moyen')
@@ -1937,9 +1937,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sauté de porc au caramel
+-- 147. Sauté de porc au caramel
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sauté de porc au caramel'
+  SELECT id FROM recipes WHERE name = '147. Sauté de porc au caramel'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Sucré', 'Intensité-Moyen', 'Arôme-Caramélisé')
@@ -1951,9 +1951,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Travers de porc (ribs) sauce barbecue
+-- 151. Travers de porc (ribs) sauce barbecue
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Travers de porc (ribs) sauce barbecue'
+  SELECT id FROM recipes WHERE name = '151. Travers de porc (ribs) sauce barbecue'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Texture-Crémeux', 'Été', 'Barbecue')
@@ -1965,9 +1965,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Porc Tonkatsu japonais (escalope panée)
+-- 153. Porc Tonkatsu japonais (escalope panée)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Porc Tonkatsu japonais (escalope panée)'
+  SELECT id FROM recipes WHERE name = '153. Porc Tonkatsu japonais (escalope panée)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise')
@@ -1979,9 +1979,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Souris d''agneau confites au miel et au thym
+-- 157. Souris d''agneau confites au miel et au thym
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Souris d''''agneau confites au miel et au thym'
+  SELECT id FROM recipes WHERE name = '157. Souris d''''agneau confites au miel et au thym'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Saveur-Sucré', 'Saveur-Herbacé', 'Intensité-Riche', 'Arôme-Caramélisé')
@@ -1993,9 +1993,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Curry d''agneau à l''indienne (Rogan Josh)
+-- 158. Curry d''agneau à l''indienne (Rogan Josh)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Curry d''''agneau à l''''indienne (Rogan Josh)'
+  SELECT id FROM recipes WHERE name = '158. Curry d''''agneau à l''''indienne (Rogan Josh)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Saveur-Épicé')
@@ -2007,9 +2007,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Moussaka grecque
+-- 159. Moussaka grecque
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Moussaka grecque'
+  SELECT id FROM recipes WHERE name = '159. Moussaka grecque'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2021,9 +2021,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tajine d''agneau aux pruneaux et amandes
+-- 160. Tajine d''agneau aux pruneaux et amandes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tajine d''''agneau aux pruneaux et amandes'
+  SELECT id FROM recipes WHERE name = '160. Tajine d''''agneau aux pruneaux et amandes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale')
@@ -2049,9 +2049,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Brochettes d''agneau marinées au citron et origan
+-- 161. Brochettes d''agneau marinées au citron et origan
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Brochettes d''''agneau marinées au citron et origan'
+  SELECT id FROM recipes WHERE name = '161. Brochettes d''''agneau marinées au citron et origan'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Acide', 'Arôme-Agrumes', 'Barbecue')
@@ -2063,9 +2063,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Côtelettes d''agneau grillées à l''ail
+-- 162. Côtelettes d''agneau grillées à l''ail
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Côtelettes d''''agneau grillées à l''''ail'
+  SELECT id FROM recipes WHERE name = '162. Côtelettes d''''agneau grillées à l''''ail'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Croquant', 'Intensité-Moyen', 'Arôme-Caramélisé', 'Été', 'Barbecue')
@@ -2077,9 +2077,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Magret de canard, sauce au poivre vert
+-- 165. Magret de canard, sauce au poivre vert
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Magret de canard, sauce au poivre vert'
+  SELECT id FROM recipes WHERE name = '165. Magret de canard, sauce au poivre vert'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Épicé', 'Texture-Crémeux', 'Arôme-Végétal')
@@ -2091,9 +2091,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Confit de canard et pommes de terre sarladaises
+-- 166. Confit de canard et pommes de terre sarladaises
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Confit de canard et pommes de terre sarladaises'
+  SELECT id FROM recipes WHERE name = '166. Confit de canard et pommes de terre sarladaises'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Intensité-Riche', 'Arôme-Fruité', 'Automne')
@@ -2105,9 +2105,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Canard laqué pékinois (version simplifiée)
+-- 167. Canard laqué pékinois (version simplifiée)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Canard laqué pékinois (version simplifiée)'
+  SELECT id FROM recipes WHERE name = '167. Canard laqué pékinois (version simplifiée)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Chinoise')
@@ -2119,9 +2119,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Lapin à la moutarde
+-- 169. Lapin à la moutarde
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Lapin à la moutarde'
+  SELECT id FROM recipes WHERE name = '169. Lapin à la moutarde'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2133,9 +2133,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Lapin chasseur
+-- 170. Lapin chasseur
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Lapin chasseur'
+  SELECT id FROM recipes WHERE name = '170. Lapin chasseur'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2147,9 +2147,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cassoulet de Toulouse
+-- 171. Cassoulet de Toulouse
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cassoulet de Toulouse'
+  SELECT id FROM recipes WHERE name = '171. Cassoulet de Toulouse'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -2161,9 +2161,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Choucroute garnie alsacienne
+-- 172. Choucroute garnie alsacienne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Choucroute garnie alsacienne'
+  SELECT id FROM recipes WHERE name = '172. Choucroute garnie alsacienne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien', 'Hiver')
@@ -2175,9 +2175,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Petit salé aux lentilles
+-- 173. Petit salé aux lentilles
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Petit salé aux lentilles'
+  SELECT id FROM recipes WHERE name = '173. Petit salé aux lentilles'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Long')
@@ -2189,9 +2189,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Andouillette de Troyes, sauce moutarde
+-- 174. Andouillette de Troyes, sauce moutarde
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Andouillette de Troyes, sauce moutarde'
+  SELECT id FROM recipes WHERE name = '174. Andouillette de Troyes, sauce moutarde'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux')
@@ -2203,9 +2203,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Boudin noir aux pommes
+-- 175. Boudin noir aux pommes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Boudin noir aux pommes'
+  SELECT id FROM recipes WHERE name = '175. Boudin noir aux pommes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -2217,9 +2217,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Saucisson de Lyon pistaché en brioche
+-- 176. Saucisson de Lyon pistaché en brioche
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Saucisson de Lyon pistaché en brioche'
+  SELECT id FROM recipes WHERE name = '176. Saucisson de Lyon pistaché en brioche'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2231,9 +2231,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Far breton (version salée aux pruneaux et lard)
+-- 177. Far breton (version salée aux pruneaux et lard)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Far breton (version salée aux pruneaux et lard)'
+  SELECT id FROM recipes WHERE name = '177. Far breton (version salée aux pruneaux et lard)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Saveur-Salé')
@@ -2245,9 +2245,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crêpes salées complètes (jambon, œuf, fromage)
+-- 178. Crêpes salées complètes (jambon, œuf, fromage)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crêpes salées complètes (jambon, œuf, fromage)'
+  SELECT id FROM recipes WHERE name = '178. Crêpes salées complètes (jambon, œuf, fromage)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Salé', 'Intensité-Riche')
@@ -2259,9 +2259,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Galettes de sarrasin bretonnes
+-- 179. Galettes de sarrasin bretonnes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Galettes de sarrasin bretonnes'
+  SELECT id FROM recipes WHERE name = '179. Galettes de sarrasin bretonnes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -2273,9 +2273,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Moules marinières
+-- 180. Moules marinières
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Moules marinières'
+  SELECT id FROM recipes WHERE name = '180. Moules marinières'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2301,9 +2301,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Moules à la crème et aux frites
+-- 181. Moules à la crème et aux frites
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Moules à la crème et aux frites'
+  SELECT id FROM recipes WHERE name = '181. Moules à la crème et aux frites'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Intensité-Riche', 'Arôme-Lacté')
@@ -2315,9 +2315,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Moules au curry
+-- 182. Moules au curry
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Moules au curry'
+  SELECT id FROM recipes WHERE name = '182. Moules au curry'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien', 'Saveur-Épicé')
@@ -2329,9 +2329,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Moules à la provençale
+-- 183. Moules à la provençale
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Moules à la provençale'
+  SELECT id FROM recipes WHERE name = '183. Moules à la provençale'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -2343,9 +2343,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Paella valenciana
+-- 184. Paella valenciana
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Paella valenciana'
+  SELECT id FROM recipes WHERE name = '184. Paella valenciana'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Espagnole', 'Végétarien')
@@ -2357,9 +2357,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Paella aux fruits de mer
+-- 185. Paella aux fruits de mer
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Paella aux fruits de mer'
+  SELECT id FROM recipes WHERE name = '185. Paella aux fruits de mer'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Espagnole', 'Saveur-Sucré', 'Arôme-Marin')
@@ -2371,9 +2371,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Zarzuela de mariscos (cassolette de poissons espagnole)
+-- 186. Zarzuela de mariscos (cassolette de poissons espagnole)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Zarzuela de mariscos (cassolette de poissons espagnole)'
+  SELECT id FROM recipes WHERE name = '186. Zarzuela de mariscos (cassolette de poissons espagnole)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Espagnole', 'Arôme-Marin')
@@ -2385,9 +2385,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fideuà (paella de vermicelles)
+-- 188. Fideuà (paella de vermicelles)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fideuà (paella de vermicelles)'
+  SELECT id FROM recipes WHERE name = '188. Fideuà (paella de vermicelles)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Espagnole', 'Végétarien')
@@ -2399,9 +2399,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Lotte à l''américaine
+-- 189. Lotte à l''américaine
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Lotte à l''''américaine'
+  SELECT id FROM recipes WHERE name = '189. Lotte à l''''américaine'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien')
@@ -2413,9 +2413,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bouillabaisse marseillaise
+-- 190. Bouillabaisse marseillaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bouillabaisse marseillaise'
+  SELECT id FROM recipes WHERE name = '190. Bouillabaisse marseillaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2427,9 +2427,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bourride sétoise
+-- 191. Bourride sétoise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bourride sétoise'
+  SELECT id FROM recipes WHERE name = '191. Bourride sétoise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2441,9 +2441,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Aïoli provençal et ses légumes
+-- 193. Aïoli provençal et ses légumes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Aïoli provençal et ses légumes'
+  SELECT id FROM recipes WHERE name = '193. Aïoli provençal et ses légumes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -2455,9 +2455,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Saumon teriyaki
+-- 196. Saumon teriyaki
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Saumon teriyaki'
+  SELECT id FROM recipes WHERE name = '196. Saumon teriyaki'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise')
@@ -2469,9 +2469,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Saumon à la plancha, sauce vierge
+-- 197. Saumon à la plancha, sauce vierge
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Saumon à la plancha, sauce vierge'
+  SELECT id FROM recipes WHERE name = '197. Saumon à la plancha, sauce vierge'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Crémeux', 'Barbecue')
@@ -2483,9 +2483,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Lasagnes au saumon et épinards
+-- 198. Lasagnes au saumon et épinards
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Lasagnes au saumon et épinards'
+  SELECT id FROM recipes WHERE name = '198. Lasagnes au saumon et épinards'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne')
@@ -2497,9 +2497,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tartare de saumon à l''aneth et au citron vert
+-- 199. Tartare de saumon à l''aneth et au citron vert
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tartare de saumon à l''''aneth et au citron vert'
+  SELECT id FROM recipes WHERE name = '199. Tartare de saumon à l''''aneth et au citron vert'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Acide', 'Arôme-Agrumes', 'Arôme-Végétal', 'Arôme-Épicé Frais')
@@ -2525,9 +2525,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Brochettes de saumon marinées
+-- 201. Brochettes de saumon marinées
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Brochettes de saumon marinées'
+  SELECT id FROM recipes WHERE name = '201. Brochettes de saumon marinées'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Barbecue')
@@ -2539,9 +2539,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Quiche au saumon et poireaux
+-- 202. Quiche au saumon et poireaux
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Quiche au saumon et poireaux'
+  SELECT id FROM recipes WHERE name = '202. Quiche au saumon et poireaux'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Arôme-Fruité', 'Automne')
@@ -2553,9 +2553,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Dos de cabillaud en croûte de chorizo
+-- 203. Dos de cabillaud en croûte de chorizo
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Dos de cabillaud en croûte de chorizo'
+  SELECT id FROM recipes WHERE name = '203. Dos de cabillaud en croûte de chorizo'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Espagnole')
@@ -2567,9 +2567,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fish and chips britannique
+-- 206. Fish and chips britannique
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fish and chips britannique'
+  SELECT id FROM recipes WHERE name = '206. Fish and chips britannique'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Croquant')
@@ -2581,9 +2581,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Waterzooi de poisson
+-- 207. Waterzooi de poisson
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Waterzooi de poisson'
+  SELECT id FROM recipes WHERE name = '207. Waterzooi de poisson'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Arôme-Marin')
@@ -2595,9 +2595,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Curry de poisson au lait de coco
+-- 208. Curry de poisson au lait de coco
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Curry de poisson au lait de coco'
+  SELECT id FROM recipes WHERE name = '208. Curry de poisson au lait de coco'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Thaïlandaise', 'Indienne', 'Saveur-Épicé', 'Arôme-Marin', 'Arôme-Lacté')
@@ -2609,9 +2609,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Steak de thon à la sicilienne (olives, câpres)
+-- 210. Steak de thon à la sicilienne (olives, câpres)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Steak de thon à la sicilienne (olives, câpres)'
+  SELECT id FROM recipes WHERE name = '210. Steak de thon à la sicilienne (olives, câpres)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Salé')
@@ -2623,9 +2623,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bar en croûte de sel
+-- 211. Bar en croûte de sel
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bar en croûte de sel'
+  SELECT id FROM recipes WHERE name = '211. Bar en croûte de sel'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé')
@@ -2637,9 +2637,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Dorade royale au four et fenouil
+-- 212. Dorade royale au four et fenouil
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Dorade royale au four et fenouil'
+  SELECT id FROM recipes WHERE name = '212. Dorade royale au four et fenouil'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2651,9 +2651,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Filet de sole meunière
+-- 213. Filet de sole meunière
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Filet de sole meunière'
+  SELECT id FROM recipes WHERE name = '213. Filet de sole meunière'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2665,9 +2665,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Raie au beurre noir et aux câpres
+-- 214. Raie au beurre noir et aux câpres
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Raie au beurre noir et aux câpres'
+  SELECT id FROM recipes WHERE name = '214. Raie au beurre noir et aux câpres'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Intensité-Riche', 'Arôme-Lacté')
@@ -2679,9 +2679,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Maquereaux marinés au vin blanc
+-- 215. Maquereaux marinés au vin blanc
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Maquereaux marinés au vin blanc'
+  SELECT id FROM recipes WHERE name = '215. Maquereaux marinés au vin blanc'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide')
@@ -2693,9 +2693,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sardines grillées au barbecue
+-- 216. Sardines grillées au barbecue
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sardines grillées au barbecue'
+  SELECT id FROM recipes WHERE name = '216. Sardines grillées au barbecue'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien', 'Texture-Croquant', 'Intensité-Moyen', 'Arôme-Caramélisé', 'Été', 'Barbecue')
@@ -2707,9 +2707,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Coquilles Saint-Jacques poêlées, fondue de poireaux
+-- 217. Coquilles Saint-Jacques poêlées, fondue de poireaux
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Coquilles Saint-Jacques poêlées, fondue de poireaux'
+  SELECT id FROM recipes WHERE name = '217. Coquilles Saint-Jacques poêlées, fondue de poireaux'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Healthy', 'Automne', 'Hiver')
@@ -2721,9 +2721,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Noix de Saint-Jacques snackées, purée de carottes au cumin
+-- 218. Noix de Saint-Jacques snackées, purée de carottes au cumin
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Noix de Saint-Jacques snackées, purée de carottes au cumin'
+  SELECT id FROM recipes WHERE name = '218. Noix de Saint-Jacques snackées, purée de carottes au cumin'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Healthy')
@@ -2735,9 +2735,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Risotto aux Saint-Jacques et asperges
+-- 219. Risotto aux Saint-Jacques et asperges
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Risotto aux Saint-Jacques et asperges'
+  SELECT id FROM recipes WHERE name = '219. Risotto aux Saint-Jacques et asperges'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Healthy', 'Printemps')
@@ -2749,9 +2749,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crevettes sautées à l''ail et au persil
+-- 220. Crevettes sautées à l''ail et au persil
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crevettes sautées à l''''ail et au persil'
+  SELECT id FROM recipes WHERE name = '220. Crevettes sautées à l''''ail et au persil'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Herbacé', 'Intensité-Moyen')
@@ -2777,9 +2777,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Curry de crevettes et lait de coco
+-- 221. Curry de crevettes et lait de coco
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Curry de crevettes et lait de coco'
+  SELECT id FROM recipes WHERE name = '221. Curry de crevettes et lait de coco'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Thaïlandaise', 'Indienne', 'Saveur-Épicé', 'Arôme-Lacté')
@@ -2791,9 +2791,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes aux crevettes, ail, huile et piment
+-- 222. Pâtes aux crevettes, ail, huile et piment
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes aux crevettes, ail, huile et piment'
+  SELECT id FROM recipes WHERE name = '222. Pâtes aux crevettes, ail, huile et piment'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Saveur-Épicé')
@@ -2805,9 +2805,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Wok de crevettes aux légumes croquants
+-- 224. Wok de crevettes aux légumes croquants
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Wok de crevettes aux légumes croquants'
+  SELECT id FROM recipes WHERE name = '224. Wok de crevettes aux légumes croquants'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Asiatique', 'Texture-Croquant', 'Texture-Ferme')
@@ -2819,9 +2819,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pad Thaï aux crevettes
+-- 225. Pad Thaï aux crevettes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pad Thaï aux crevettes'
+  SELECT id FROM recipes WHERE name = '225. Pad Thaï aux crevettes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Thaïlandaise')
@@ -2833,9 +2833,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Brochettes de gambas à la plancha
+-- 226. Brochettes de gambas à la plancha
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Brochettes de gambas à la plancha'
+  SELECT id FROM recipes WHERE name = '226. Brochettes de gambas à la plancha'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Barbecue')
@@ -2847,9 +2847,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Calamars à la romaine
+-- 227. Calamars à la romaine
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Calamars à la romaine'
+  SELECT id FROM recipes WHERE name = '227. Calamars à la romaine'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2861,9 +2861,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Encornets farcis à la sétoise
+-- 228. Encornets farcis à la sétoise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Encornets farcis à la sétoise'
+  SELECT id FROM recipes WHERE name = '228. Encornets farcis à la sétoise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2875,9 +2875,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Seiches à la plancha en persillade
+-- 229. Seiches à la plancha en persillade
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Seiches à la plancha en persillade'
+  SELECT id FROM recipes WHERE name = '229. Seiches à la plancha en persillade'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Herbacé', 'Barbecue')
@@ -2889,9 +2889,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poulpe à la galicienne (Pulpo a la gallega)
+-- 230. Poulpe à la galicienne (Pulpo a la gallega)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poulpe à la galicienne (Pulpo a la gallega)'
+  SELECT id FROM recipes WHERE name = '230. Poulpe à la galicienne (Pulpo a la gallega)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -2903,9 +2903,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe de lentilles corail, carotte et cumin
+-- 231. Soupe de lentilles corail, carotte et cumin
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe de lentilles corail, carotte et cumin'
+  SELECT id FROM recipes WHERE name = '231. Soupe de lentilles corail, carotte et cumin'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Liquide', 'Long')
@@ -2917,9 +2917,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Dahl de lentilles indien
+-- 232. Dahl de lentilles indien
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Dahl de lentilles indien'
+  SELECT id FROM recipes WHERE name = '232. Dahl de lentilles indien'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien', 'Long')
@@ -2931,9 +2931,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de lentilles, carottes et oignons rouges
+-- 233. Salade de lentilles, carottes et oignons rouges
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de lentilles, carottes et oignons rouges'
+  SELECT id FROM recipes WHERE name = '233. Salade de lentilles, carottes et oignons rouges'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Long')
@@ -2945,9 +2945,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bolognaise de lentilles vertes
+-- 234. Bolognaise de lentilles vertes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bolognaise de lentilles vertes'
+  SELECT id FROM recipes WHERE name = '234. Bolognaise de lentilles vertes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Végétal', 'Long')
@@ -2959,9 +2959,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Curry de pois chiches et épinards
+-- 235. Curry de pois chiches et épinards
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Curry de pois chiches et épinards'
+  SELECT id FROM recipes WHERE name = '235. Curry de pois chiches et épinards'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien', 'Saveur-Épicé')
@@ -2973,9 +2973,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pois chiches rôtis aux épices
+-- 236. Pois chiches rôtis aux épices
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pois chiches rôtis aux épices'
+  SELECT id FROM recipes WHERE name = '236. Pois chiches rôtis aux épices'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Moyen')
@@ -2987,9 +2987,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de pois chiches à la méditerranéenne
+-- 237. Salade de pois chiches à la méditerranéenne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de pois chiches à la méditerranéenne'
+  SELECT id FROM recipes WHERE name = '237. Salade de pois chiches à la méditerranéenne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3001,9 +3001,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Chili sin carne
+-- 238. Chili sin carne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Chili sin carne'
+  SELECT id FROM recipes WHERE name = '238. Chili sin carne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3015,9 +3015,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Haricots blancs à la bretonne
+-- 239. Haricots blancs à la bretonne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Haricots blancs à la bretonne'
+  SELECT id FROM recipes WHERE name = '239. Haricots blancs à la bretonne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -3029,9 +3029,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fèves à la catalane
+-- 240. Fèves à la catalane
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fèves à la catalane'
+  SELECT id FROM recipes WHERE name = '240. Fèves à la catalane'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Printemps')
@@ -3057,9 +3057,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Socca niçoise (galette de farine de pois chiches)
+-- 241. Socca niçoise (galette de farine de pois chiches)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Socca niçoise (galette de farine de pois chiches)'
+  SELECT id FROM recipes WHERE name = '241. Socca niçoise (galette de farine de pois chiches)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3071,9 +3071,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Panisses marseillaises
+-- 242. Panisses marseillaises
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Panisses marseillaises'
+  SELECT id FROM recipes WHERE name = '242. Panisses marseillaises'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3085,9 +3085,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Lasagnes végétariennes aux légumes du soleil
+-- 243. Lasagnes végétariennes aux légumes du soleil
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Lasagnes végétariennes aux légumes du soleil'
+  SELECT id FROM recipes WHERE name = '243. Lasagnes végétariennes aux légumes du soleil'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3099,9 +3099,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Lasagnes aux épinards et à la ricotta
+-- 244. Lasagnes aux épinards et à la ricotta
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Lasagnes aux épinards et à la ricotta'
+  SELECT id FROM recipes WHERE name = '244. Lasagnes aux épinards et à la ricotta'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3113,9 +3113,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Risotto aux champignons
+-- 245. Risotto aux champignons
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Risotto aux champignons'
+  SELECT id FROM recipes WHERE name = '245. Risotto aux champignons'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Umami', 'Arôme-Terreux', 'Automne')
@@ -3127,9 +3127,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Risotto aux asperges et parmesan
+-- 246. Risotto aux asperges et parmesan
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Risotto aux asperges et parmesan'
+  SELECT id FROM recipes WHERE name = '246. Risotto aux asperges et parmesan'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Umami', 'Printemps')
@@ -3141,9 +3141,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Risotto à la milanaise (au safran)
+-- 247. Risotto à la milanaise (au safran)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Risotto à la milanaise (au safran)'
+  SELECT id FROM recipes WHERE name = '247. Risotto à la milanaise (au safran)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3155,9 +3155,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Risotto aux courgettes et menthe
+-- 248. Risotto aux courgettes et menthe
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Risotto aux courgettes et menthe'
+  SELECT id FROM recipes WHERE name = '248. Risotto aux courgettes et menthe'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Herbacé', 'Arôme-Épicé Frais', 'Été', 'Automne')
@@ -3169,9 +3169,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Risotto à la tomate et mozzarella
+-- 249. Risotto à la tomate et mozzarella
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Risotto à la tomate et mozzarella'
+  SELECT id FROM recipes WHERE name = '249. Risotto à la tomate et mozzarella'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Acide', 'Été')
@@ -3183,9 +3183,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes à la sauce tomate et basilic frais (al pomodoro)
+-- 250. Pâtes à la sauce tomate et basilic frais (al pomodoro)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes à la sauce tomate et basilic frais (al pomodoro)'
+  SELECT id FROM recipes WHERE name = '250. Pâtes à la sauce tomate et basilic frais (al pomodoro)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Acide', 'Saveur-Herbacé', 'Texture-Crémeux', 'Arôme-Épicé Frais', 'Été')
@@ -3197,9 +3197,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes all''arrabbiata
+-- 251. Pâtes all''arrabbiata
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes all''''arrabbiata'
+  SELECT id FROM recipes WHERE name = '251. Pâtes all''''arrabbiata'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3211,9 +3211,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes alla puttanesca
+-- 252. Pâtes alla puttanesca
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes alla puttanesca'
+  SELECT id FROM recipes WHERE name = '252. Pâtes alla puttanesca'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3225,9 +3225,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes à la carbonara (la vraie, sans crème)
+-- 253. Pâtes à la carbonara (la vraie, sans crème)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes à la carbonara (la vraie, sans crème)'
+  SELECT id FROM recipes WHERE name = '253. Pâtes à la carbonara (la vraie, sans crème)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Texture-Crémeux', 'Arôme-Lacté')
@@ -3239,9 +3239,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes cacio e pepe
+-- 254. Pâtes cacio e pepe
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes cacio e pepe'
+  SELECT id FROM recipes WHERE name = '254. Pâtes cacio e pepe'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3253,9 +3253,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes à l''amatriciana
+-- 255. Pâtes à l''amatriciana
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes à l''''amatriciana'
+  SELECT id FROM recipes WHERE name = '255. Pâtes à l''''amatriciana'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3267,9 +3267,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes au pesto alla genovese
+-- 256. Pâtes au pesto alla genovese
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes au pesto alla genovese'
+  SELECT id FROM recipes WHERE name = '256. Pâtes au pesto alla genovese'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3281,9 +3281,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes aux palourdes (alle vongole)
+-- 257. Pâtes aux palourdes (alle vongole)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes aux palourdes (alle vongole)'
+  SELECT id FROM recipes WHERE name = '257. Pâtes aux palourdes (alle vongole)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3295,9 +3295,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes aux fruits de mer (allo scoglio)
+-- 258. Pâtes aux fruits de mer (allo scoglio)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes aux fruits de mer (allo scoglio)'
+  SELECT id FROM recipes WHERE name = '258. Pâtes aux fruits de mer (allo scoglio)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Saveur-Sucré', 'Arôme-Marin')
@@ -3309,9 +3309,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes alla norma (aubergines, ricotta salata)
+-- 259. Pâtes alla norma (aubergines, ricotta salata)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes alla norma (aubergines, ricotta salata)'
+  SELECT id FROM recipes WHERE name = '259. Pâtes alla norma (aubergines, ricotta salata)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Été')
@@ -3323,9 +3323,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gnocchis de pommes de terre, sauce sauge et beurre
+-- 260. Gnocchis de pommes de terre, sauce sauge et beurre
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gnocchis de pommes de terre, sauce sauge et beurre'
+  SELECT id FROM recipes WHERE name = '260. Gnocchis de pommes de terre, sauce sauge et beurre'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Texture-Crémeux', 'Intensité-Riche', 'Arôme-Fruité', 'Arôme-Lacté', 'Automne')
@@ -3351,9 +3351,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gnocchis à la sorrentina (sauce tomate, mozzarella)
+-- 261. Gnocchis à la sorrentina (sauce tomate, mozzarella)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gnocchis à la sorrentina (sauce tomate, mozzarella)'
+  SELECT id FROM recipes WHERE name = '261. Gnocchis à la sorrentina (sauce tomate, mozzarella)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Acide', 'Texture-Crémeux', 'Été')
@@ -3365,9 +3365,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Raviolis aux épinards et ricotta, sauce tomate
+-- 262. Raviolis aux épinards et ricotta, sauce tomate
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Raviolis aux épinards et ricotta, sauce tomate'
+  SELECT id FROM recipes WHERE name = '262. Raviolis aux épinards et ricotta, sauce tomate'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Texture-Crémeux', 'Été')
@@ -3379,9 +3379,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cannellonis farcis à la bolognaise
+-- 263. Cannellonis farcis à la bolognaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cannellonis farcis à la bolognaise'
+  SELECT id FROM recipes WHERE name = '263. Cannellonis farcis à la bolognaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3393,9 +3393,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Spaghettis aux boulettes de viande (style italo-américain)
+-- 264. Spaghettis aux boulettes de viande (style italo-américain)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Spaghettis aux boulettes de viande (style italo-américain)'
+  SELECT id FROM recipes WHERE name = '264. Spaghettis aux boulettes de viande (style italo-américain)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine')
@@ -3407,9 +3407,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Macaroni and cheese américain (gratin de macaronis)
+-- 265. Macaroni and cheese américain (gratin de macaronis)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Macaroni and cheese américain (gratin de macaronis)'
+  SELECT id FROM recipes WHERE name = '265. Macaroni and cheese américain (gratin de macaronis)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien')
@@ -3421,9 +3421,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gratin de pâtes au jambon et béchamel
+-- 266. Gratin de pâtes au jambon et béchamel
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gratin de pâtes au jambon et béchamel'
+  SELECT id FROM recipes WHERE name = '266. Gratin de pâtes au jambon et béchamel'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne')
@@ -3435,9 +3435,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- One pot pasta tomate, basilic, mozzarella
+-- 267. One pot pasta tomate, basilic, mozzarella
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'One pot pasta tomate, basilic, mozzarella'
+  SELECT id FROM recipes WHERE name = '267. One pot pasta tomate, basilic, mozzarella'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Acide', 'Saveur-Herbacé', 'Arôme-Épicé Frais', 'Été')
@@ -3449,9 +3449,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes au citron et à la crème
+-- 268. Pâtes au citron et à la crème
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes au citron et à la crème'
+  SELECT id FROM recipes WHERE name = '268. Pâtes au citron et à la crème'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Acide', 'Texture-Crémeux', 'Arôme-Agrumes', 'Arôme-Lacté')
@@ -3463,9 +3463,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de pâtes estivale
+-- 269. Salade de pâtes estivale
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de pâtes estivale'
+  SELECT id FROM recipes WHERE name = '269. Salade de pâtes estivale'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3477,9 +3477,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes fraîches maison
+-- 270. Pâtes fraîches maison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes fraîches maison'
+  SELECT id FROM recipes WHERE name = '270. Pâtes fraîches maison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -3491,9 +3491,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tofu sauté aux légumes et sauce soja
+-- 271. Tofu sauté aux légumes et sauce soja
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tofu sauté aux légumes et sauce soja'
+  SELECT id FROM recipes WHERE name = '271. Tofu sauté aux légumes et sauce soja'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Asiatique', 'Végétarien', 'Saveur-Umami', 'Texture-Crémeux', 'Intensité-Moyen')
@@ -3505,9 +3505,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tofu mariné et grillé au sésame
+-- 272. Tofu mariné et grillé au sésame
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tofu mariné et grillé au sésame'
+  SELECT id FROM recipes WHERE name = '272. Tofu mariné et grillé au sésame'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Croquant', 'Intensité-Moyen', 'Arôme-Caramélisé', 'Été', 'Barbecue')
@@ -3519,9 +3519,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tofu général Tao
+-- 273. Tofu général Tao
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tofu général Tao'
+  SELECT id FROM recipes WHERE name = '273. Tofu général Tao'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3533,9 +3533,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tofu Mapo (recette sichuanaise)
+-- 274. Tofu Mapo (recette sichuanaise)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tofu Mapo (recette sichuanaise)'
+  SELECT id FROM recipes WHERE name = '274. Tofu Mapo (recette sichuanaise)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3547,9 +3547,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Curry de tofu et légumes
+-- 275. Curry de tofu et légumes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Curry de tofu et légumes'
+  SELECT id FROM recipes WHERE name = '275. Curry de tofu et légumes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien', 'Saveur-Épicé')
@@ -3561,9 +3561,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tofu brouillé (alternative aux œufs)
+-- 276. Tofu brouillé (alternative aux œufs)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tofu brouillé (alternative aux œufs)'
+  SELECT id FROM recipes WHERE name = '276. Tofu brouillé (alternative aux œufs)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3575,9 +3575,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tofu Katsu (pané et frit)
+-- 277. Tofu Katsu (pané et frit)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tofu Katsu (pané et frit)'
+  SELECT id FROM recipes WHERE name = '277. Tofu Katsu (pané et frit)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche')
@@ -3589,9 +3589,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Seitan bourguignon
+-- 278. Seitan bourguignon
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Seitan bourguignon'
+  SELECT id FROM recipes WHERE name = '278. Seitan bourguignon'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien', 'Hiver')
@@ -3603,9 +3603,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sauté de seitan et brocolis
+-- 279. Sauté de seitan et brocolis
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sauté de seitan et brocolis'
+  SELECT id FROM recipes WHERE name = '279. Sauté de seitan et brocolis'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Moyen')
@@ -3617,9 +3617,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Burger de seitan
+-- 280. Burger de seitan
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Burger de seitan'
+  SELECT id FROM recipes WHERE name = '280. Burger de seitan'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien')
@@ -3645,9 +3645,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tempeh laqué à l''indonésienne
+-- 281. Tempeh laqué à l''indonésienne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tempeh laqué à l''''indonésienne'
+  SELECT id FROM recipes WHERE name = '281. Tempeh laqué à l''''indonésienne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3659,9 +3659,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Buddha bowl au quinoa, patates douces et avocat
+-- 282. Buddha bowl au quinoa, patates douces et avocat
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Buddha bowl au quinoa, patates douces et avocat'
+  SELECT id FROM recipes WHERE name = '282. Buddha bowl au quinoa, patates douces et avocat'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3673,9 +3673,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de quinoa, concombre, feta et menthe
+-- 283. Salade de quinoa, concombre, feta et menthe
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de quinoa, concombre, feta et menthe'
+  SELECT id FROM recipes WHERE name = '283. Salade de quinoa, concombre, feta et menthe'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Herbacé', 'Arôme-Épicé Frais')
@@ -3687,9 +3687,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Quinoa façon taboulé
+-- 284. Quinoa façon taboulé
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Quinoa façon taboulé'
+  SELECT id FROM recipes WHERE name = '284. Quinoa façon taboulé'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien')
@@ -3701,9 +3701,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Galettes de quinoa et carottes
+-- 285. Galettes de quinoa et carottes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Galettes de quinoa et carottes'
+  SELECT id FROM recipes WHERE name = '285. Galettes de quinoa et carottes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3715,9 +3715,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gratin de quinoa aux légumes
+-- 286. Gratin de quinoa aux légumes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gratin de quinoa aux légumes'
+  SELECT id FROM recipes WHERE name = '286. Gratin de quinoa aux légumes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3729,9 +3729,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gratin dauphinois traditionnel
+-- 287. Gratin dauphinois traditionnel
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gratin dauphinois traditionnel'
+  SELECT id FROM recipes WHERE name = '287. Gratin dauphinois traditionnel'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3743,9 +3743,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gratin de courgettes à la menthe
+-- 288. Gratin de courgettes à la menthe
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gratin de courgettes à la menthe'
+  SELECT id FROM recipes WHERE name = '288. Gratin de courgettes à la menthe'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Herbacé', 'Arôme-Épicé Frais', 'Été', 'Automne')
@@ -3757,9 +3757,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gratin de chou-fleur à la béchamel
+-- 289. Gratin de chou-fleur à la béchamel
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gratin de chou-fleur à la béchamel'
+  SELECT id FROM recipes WHERE name = '289. Gratin de chou-fleur à la béchamel'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Floral', 'Arôme-Floral', 'Hiver')
@@ -3771,9 +3771,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gratin de brocolis au parmesan
+-- 290. Gratin de brocolis au parmesan
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gratin de brocolis au parmesan'
+  SELECT id FROM recipes WHERE name = '290. Gratin de brocolis au parmesan'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Umami')
@@ -3785,9 +3785,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tian de légumes provençal
+-- 291. Tian de légumes provençal
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tian de légumes provençal'
+  SELECT id FROM recipes WHERE name = '291. Tian de légumes provençal'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -3799,9 +3799,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Ratatouille niçoise
+-- 292. Ratatouille niçoise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Ratatouille niçoise'
+  SELECT id FROM recipes WHERE name = '292. Ratatouille niçoise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -3813,9 +3813,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Piperade basque
+-- 293. Piperade basque
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Piperade basque'
+  SELECT id FROM recipes WHERE name = '293. Piperade basque'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3827,9 +3827,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poêlée de légumes du soleil
+-- 294. Poêlée de légumes du soleil
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poêlée de légumes du soleil'
+  SELECT id FROM recipes WHERE name = '294. Poêlée de légumes du soleil'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3841,9 +3841,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poêlée de champignons en persillade
+-- 295. Poêlée de champignons en persillade
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poêlée de champignons en persillade'
+  SELECT id FROM recipes WHERE name = '295. Poêlée de champignons en persillade'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Umami', 'Saveur-Herbacé', 'Arôme-Terreux', 'Automne')
@@ -3855,9 +3855,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Wok de légumes sauce aigre-douce
+-- 296. Wok de légumes sauce aigre-douce
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Wok de légumes sauce aigre-douce'
+  SELECT id FROM recipes WHERE name = '296. Wok de légumes sauce aigre-douce'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Asiatique', 'Végétarien', 'Texture-Crémeux')
@@ -3869,9 +3869,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Légumes rôtis au four (carottes, panais, patates douces)
+-- 297. Légumes rôtis au four (carottes, panais, patates douces)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Légumes rôtis au four (carottes, panais, patates douces)'
+  SELECT id FROM recipes WHERE name = '297. Légumes rôtis au four (carottes, panais, patates douces)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Moyen')
@@ -3883,9 +3883,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Frites de patates douces au paprika
+-- 298. Frites de patates douces au paprika
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Frites de patates douces au paprika'
+  SELECT id FROM recipes WHERE name = '298. Frites de patates douces au paprika'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche')
@@ -3897,9 +3897,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Purée de pommes de terre maison
+-- 299. Purée de pommes de terre maison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Purée de pommes de terre maison'
+  SELECT id FROM recipes WHERE name = '299. Purée de pommes de terre maison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -3911,9 +3911,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Purée de carottes au cumin
+-- 300. Purée de carottes au cumin
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Purée de carottes au cumin'
+  SELECT id FROM recipes WHERE name = '300. Purée de carottes au cumin'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3939,9 +3939,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Purée de panais à la noisette
+-- 301. Purée de panais à la noisette
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Purée de panais à la noisette'
+  SELECT id FROM recipes WHERE name = '301. Purée de panais à la noisette'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3953,9 +3953,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Purée de céleri-rave
+-- 302. Purée de céleri-rave
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Purée de céleri-rave'
+  SELECT id FROM recipes WHERE name = '302. Purée de céleri-rave'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -3967,9 +3967,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Écrasé de pommes de terre à l''huile d''olive et ail
+-- 303. Écrasé de pommes de terre à l''huile d''olive et ail
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Écrasé de pommes de terre à l''''huile d''''olive et ail'
+  SELECT id FROM recipes WHERE name = '303. Écrasé de pommes de terre à l''''huile d''''olive et ail'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Arôme-Fruité', 'Automne')
@@ -3981,9 +3981,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pommes de terre suédoises (Hasselback)
+-- 304. Pommes de terre suédoises (Hasselback)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pommes de terre suédoises (Hasselback)'
+  SELECT id FROM recipes WHERE name = '304. Pommes de terre suédoises (Hasselback)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Arôme-Fruité', 'Automne')
@@ -3995,9 +3995,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pommes dauphine maison
+-- 305. Pommes dauphine maison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pommes dauphine maison'
+  SELECT id FROM recipes WHERE name = '305. Pommes dauphine maison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -4009,9 +4009,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Aligot de l''Aubrac
+-- 306. Aligot de l''Aubrac
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Aligot de l''''Aubrac'
+  SELECT id FROM recipes WHERE name = '306. Aligot de l''''Aubrac'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4023,9 +4023,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Truffade auvergnate
+-- 307. Truffade auvergnate
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Truffade auvergnate'
+  SELECT id FROM recipes WHERE name = '307. Truffade auvergnate'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4037,9 +4037,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poêlée de haricots verts à l''ail et persil
+-- 308. Poêlée de haricots verts à l''ail et persil
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poêlée de haricots verts à l''''ail et persil'
+  SELECT id FROM recipes WHERE name = '308. Poêlée de haricots verts à l''''ail et persil'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Herbacé', 'Arôme-Végétal')
@@ -4051,9 +4051,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Frites de polenta au parmesan
+-- 309. Frites de polenta au parmesan
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Frites de polenta au parmesan'
+  SELECT id FROM recipes WHERE name = '309. Frites de polenta au parmesan'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Umami', 'Intensité-Riche', 'Long')
@@ -4065,9 +4065,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Polenta crémeuse
+-- 310. Polenta crémeuse
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Polenta crémeuse'
+  SELECT id FROM recipes WHERE name = '310. Polenta crémeuse'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Long')
@@ -4079,9 +4079,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Endives braisées au jambon
+-- 311. Endives braisées au jambon
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Endives braisées au jambon'
+  SELECT id FROM recipes WHERE name = '311. Endives braisées au jambon'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Amer', 'Hiver')
@@ -4093,9 +4093,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Asperges vertes rôties au parmesan
+-- 312. Asperges vertes rôties au parmesan
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Asperges vertes rôties au parmesan'
+  SELECT id FROM recipes WHERE name = '312. Asperges vertes rôties au parmesan'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Umami', 'Intensité-Moyen', 'Arôme-Végétal', 'Printemps')
@@ -4107,9 +4107,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fondue de poireaux à la crème
+-- 313. Fondue de poireaux à la crème
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fondue de poireaux à la crème'
+  SELECT id FROM recipes WHERE name = '313. Fondue de poireaux à la crème'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Arôme-Fruité', 'Arôme-Lacté', 'Automne', 'Hiver')
@@ -4121,9 +4121,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Épinards frais à la crème
+-- 314. Épinards frais à la crème
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Épinards frais à la crème'
+  SELECT id FROM recipes WHERE name = '314. Épinards frais à la crème'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Arôme-Lacté')
@@ -4135,9 +4135,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Choux de Bruxelles rôtis au lard et sirop d''érable
+-- 315. Choux de Bruxelles rôtis au lard et sirop d''érable
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Choux de Bruxelles rôtis au lard et sirop d''''érable'
+  SELECT id FROM recipes WHERE name = '315. Choux de Bruxelles rôtis au lard et sirop d''''érable'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Sucré', 'Intensité-Moyen', 'Hiver')
@@ -4149,9 +4149,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Carottes glacées à l''orange
+-- 316. Carottes glacées à l''orange
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Carottes glacées à l''''orange'
+  SELECT id FROM recipes WHERE name = '316. Carottes glacées à l''''orange'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Agrumes')
@@ -4163,9 +4163,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Betteraves rôties au miel et au thym
+-- 317. Betteraves rôties au miel et au thym
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Betteraves rôties au miel et au thym'
+  SELECT id FROM recipes WHERE name = '317. Betteraves rôties au miel et au thym'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Sucré', 'Saveur-Herbacé', 'Intensité-Moyen', 'Arôme-Terreux', 'Arôme-Caramélisé')
@@ -4177,9 +4177,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fenouil braisé à l''anis
+-- 318. Fenouil braisé à l''anis
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fenouil braisé à l''''anis'
+  SELECT id FROM recipes WHERE name = '318. Fenouil braisé à l''''anis'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4191,9 +4191,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Riz pilaf aux amandes et raisins secs
+-- 319. Riz pilaf aux amandes et raisins secs
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Riz pilaf aux amandes et raisins secs'
+  SELECT id FROM recipes WHERE name = '319. Riz pilaf aux amandes et raisins secs'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4205,9 +4205,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Semoule aux légumes (accompagnement tajine)
+-- 320. Semoule aux légumes (accompagnement tajine)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Semoule aux légumes (accompagnement tajine)'
+  SELECT id FROM recipes WHERE name = '320. Semoule aux légumes (accompagnement tajine)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien')
@@ -4233,9 +4233,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Curry de légumes thaïlandais au lait de coco
+-- 321. Curry de légumes thaïlandais au lait de coco
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Curry de légumes thaïlandais au lait de coco'
+  SELECT id FROM recipes WHERE name = '321. Curry de légumes thaïlandais au lait de coco'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Thaïlandaise', 'Indienne', 'Végétarien', 'Saveur-Épicé', 'Arôme-Lacté')
@@ -4247,9 +4247,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Palak Paneer (épinards au fromage indien)
+-- 322. Palak Paneer (épinards au fromage indien)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Palak Paneer (épinards au fromage indien)'
+  SELECT id FROM recipes WHERE name = '322. Palak Paneer (épinards au fromage indien)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien', 'Intensité-Riche')
@@ -4261,9 +4261,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Aloo Gobi (curry de chou-fleur et pommes de terre)
+-- 323. Aloo Gobi (curry de chou-fleur et pommes de terre)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Aloo Gobi (curry de chou-fleur et pommes de terre)'
+  SELECT id FROM recipes WHERE name = '323. Aloo Gobi (curry de chou-fleur et pommes de terre)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien', 'Saveur-Épicé', 'Saveur-Floral', 'Arôme-Fruité', 'Arôme-Floral', 'Automne', 'Hiver')
@@ -4275,9 +4275,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Chana Masala (curry de pois chiches épicé)
+-- 324. Chana Masala (curry de pois chiches épicé)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Chana Masala (curry de pois chiches épicé)'
+  SELECT id FROM recipes WHERE name = '324. Chana Masala (curry de pois chiches épicé)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien', 'Saveur-Épicé', 'Intensité-Intense')
@@ -4289,9 +4289,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Baingan Bharta (caviar d''aubergine indien)
+-- 325. Baingan Bharta (caviar d''aubergine indien)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Baingan Bharta (caviar d''''aubergine indien)'
+  SELECT id FROM recipes WHERE name = '325. Baingan Bharta (caviar d''''aubergine indien)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien', 'Luxe', 'Été')
@@ -4303,9 +4303,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Samosas aux légumes
+-- 326. Samosas aux légumes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Samosas aux légumes'
+  SELECT id FROM recipes WHERE name = '326. Samosas aux légumes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien')
@@ -4317,9 +4317,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pakoras d''oignons (beignets indiens)
+-- 327. Pakoras d''oignons (beignets indiens)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pakoras d''''oignons (beignets indiens)'
+  SELECT id FROM recipes WHERE name = '327. Pakoras d''''oignons (beignets indiens)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien')
@@ -4331,9 +4331,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Caponata sicilienne
+-- 328. Caponata sicilienne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Caponata sicilienne'
+  SELECT id FROM recipes WHERE name = '328. Caponata sicilienne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4345,9 +4345,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâtes aux brocolis et anchois
+-- 329. Pâtes aux brocolis et anchois
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâtes aux brocolis et anchois'
+  SELECT id FROM recipes WHERE name = '329. Pâtes aux brocolis et anchois'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Salé')
@@ -4359,9 +4359,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Risotto de petit épeautre aux champignons
+-- 330. Risotto de petit épeautre aux champignons
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Risotto de petit épeautre aux champignons'
+  SELECT id FROM recipes WHERE name = '330. Risotto de petit épeautre aux champignons'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Umami', 'Arôme-Terreux', 'Automne')
@@ -4373,9 +4373,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Galettes de sarrasin aux champignons et crème
+-- 331. Galettes de sarrasin aux champignons et crème
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Galettes de sarrasin aux champignons et crème'
+  SELECT id FROM recipes WHERE name = '331. Galettes de sarrasin aux champignons et crème'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Umami', 'Texture-Crémeux', 'Arôme-Terreux', 'Arôme-Lacté', 'Automne')
@@ -4387,9 +4387,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crozets en gratin au beaufort (croziflette)
+-- 332. Crozets en gratin au beaufort (croziflette)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crozets en gratin au beaufort (croziflette)'
+  SELECT id FROM recipes WHERE name = '332. Crozets en gratin au beaufort (croziflette)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Intense')
@@ -4401,9 +4401,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarte au maroilles
+-- 333. Tarte au maroilles
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarte au maroilles'
+  SELECT id FROM recipes WHERE name = '333. Tarte au maroilles'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4415,9 +4415,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pissaladière niçoise
+-- 334. Pissaladière niçoise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pissaladière niçoise'
+  SELECT id FROM recipes WHERE name = '334. Pissaladière niçoise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4429,9 +4429,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tourte aux blettes sucrée-salée
+-- 335. Tourte aux blettes sucrée-salée
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tourte aux blettes sucrée-salée'
+  SELECT id FROM recipes WHERE name = '335. Tourte aux blettes sucrée-salée'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Saveur-Sucré')
@@ -4443,9 +4443,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gözleme turc aux épinards et feta
+-- 336. Gözleme turc aux épinards et feta
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gözleme turc aux épinards et feta'
+  SELECT id FROM recipes WHERE name = '336. Gözleme turc aux épinards et feta'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4457,9 +4457,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Börek aux épinards
+-- 337. Börek aux épinards
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Börek aux épinards'
+  SELECT id FROM recipes WHERE name = '337. Börek aux épinards'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4471,9 +4471,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fattoush (salade libanaise au pain pita grillé)
+-- 338. Fattoush (salade libanaise au pain pita grillé)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fattoush (salade libanaise au pain pita grillé)'
+  SELECT id FROM recipes WHERE name = '338. Fattoush (salade libanaise au pain pita grillé)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien', 'Texture-Croquant', 'Intensité-Moyen', 'Arôme-Caramélisé', 'Été', 'Barbecue')
@@ -4485,9 +4485,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Koshari égyptien (riz, lentilles, pâtes, sauce tomate)
+-- 339. Koshari égyptien (riz, lentilles, pâtes, sauce tomate)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Koshari égyptien (riz, lentilles, pâtes, sauce tomate)'
+  SELECT id FROM recipes WHERE name = '339. Koshari égyptien (riz, lentilles, pâtes, sauce tomate)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Acide', 'Texture-Crémeux', 'Long', 'Été')
@@ -4499,9 +4499,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Mjadra (riz aux lentilles et oignons frits)
+-- 340. Mjadra (riz aux lentilles et oignons frits)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Mjadra (riz aux lentilles et oignons frits)'
+  SELECT id FROM recipes WHERE name = '340. Mjadra (riz aux lentilles et oignons frits)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche', 'Long')
@@ -4527,9 +4527,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade Waldorf (céleri, pomme, noix)
+-- 341. Salade Waldorf (céleri, pomme, noix)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade Waldorf (céleri, pomme, noix)'
+  SELECT id FROM recipes WHERE name = '341. Salade Waldorf (céleri, pomme, noix)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -4541,9 +4541,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Coleslaw américain
+-- 342. Coleslaw américain
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Coleslaw américain'
+  SELECT id FROM recipes WHERE name = '342. Coleslaw américain'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien')
@@ -4555,9 +4555,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de pommes de terre allemande (Kartoffelsalat)
+-- 343. Salade de pommes de terre allemande (Kartoffelsalat)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de pommes de terre allemande (Kartoffelsalat)'
+  SELECT id FROM recipes WHERE name = '343. Salade de pommes de terre allemande (Kartoffelsalat)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -4569,9 +4569,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de concombre à la danoise (Agurkesalat)
+-- 344. Salade de concombre à la danoise (Agurkesalat)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de concombre à la danoise (Agurkesalat)'
+  SELECT id FROM recipes WHERE name = '344. Salade de concombre à la danoise (Agurkesalat)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4583,9 +4583,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de betteraves crues, pomme verte et noisettes
+-- 345. Salade de betteraves crues, pomme verte et noisettes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de betteraves crues, pomme verte et noisettes'
+  SELECT id FROM recipes WHERE name = '345. Salade de betteraves crues, pomme verte et noisettes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Arôme-Végétal', 'Arôme-Terreux', 'Automne')
@@ -4597,9 +4597,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de fenouil à l''orange et aux olives noires
+-- 346. Salade de fenouil à l''orange et aux olives noires
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de fenouil à l''''orange et aux olives noires'
+  SELECT id FROM recipes WHERE name = '346. Salade de fenouil à l''''orange et aux olives noires'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Arôme-Agrumes')
@@ -4611,9 +4611,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de carottes râpées au citron et cumin
+-- 347. Salade de carottes râpées au citron et cumin
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de carottes râpées au citron et cumin'
+  SELECT id FROM recipes WHERE name = '347. Salade de carottes râpées au citron et cumin'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Arôme-Agrumes')
@@ -4625,9 +4625,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de chou rouge aux pommes et aux noix
+-- 348. Salade de chou rouge aux pommes et aux noix
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de chou rouge aux pommes et aux noix'
+  SELECT id FROM recipes WHERE name = '348. Salade de chou rouge aux pommes et aux noix'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne', 'Hiver')
@@ -4639,9 +4639,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de pâtes grecque (feta, olives, concombre)
+-- 349. Salade de pâtes grecque (feta, olives, concombre)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de pâtes grecque (feta, olives, concombre)'
+  SELECT id FROM recipes WHERE name = '349. Salade de pâtes grecque (feta, olives, concombre)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Salé')
@@ -4653,9 +4653,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de lentilles corail, carottes et coco
+-- 350. Salade de lentilles corail, carottes et coco
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de lentilles corail, carottes et coco'
+  SELECT id FROM recipes WHERE name = '350. Salade de lentilles corail, carottes et coco'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Long')
@@ -4667,9 +4667,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Taboulé de chou-fleur
+-- 351. Taboulé de chou-fleur
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Taboulé de chou-fleur'
+  SELECT id FROM recipes WHERE name = '351. Taboulé de chou-fleur'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien', 'Saveur-Floral', 'Arôme-Floral', 'Hiver')
@@ -4681,9 +4681,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade d''endives, noix et roquefort
+-- 352. Salade d''endives, noix et roquefort
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade d''''endives, noix et roquefort'
+  SELECT id FROM recipes WHERE name = '352. Salade d''''endives, noix et roquefort'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Amer', 'Intensité-Intense', 'Hiver')
@@ -4695,9 +4695,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade lyonnaise (lardons, croûtons, œuf poché)
+-- 353. Salade lyonnaise (lardons, croûtons, œuf poché)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade lyonnaise (lardons, croûtons, œuf poché)'
+  SELECT id FROM recipes WHERE name = '353. Salade lyonnaise (lardons, croûtons, œuf poché)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Intensité-Léger')
@@ -4709,9 +4709,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade landaise (gésiers, magret fumé)
+-- 354. Salade landaise (gésiers, magret fumé)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade landaise (gésiers, magret fumé)'
+  SELECT id FROM recipes WHERE name = '354. Salade landaise (gésiers, magret fumé)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4723,9 +4723,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de haricots verts, tomates et oignons
+-- 355. Salade de haricots verts, tomates et oignons
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de haricots verts, tomates et oignons'
+  SELECT id FROM recipes WHERE name = '355. Salade de haricots verts, tomates et oignons'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Arôme-Végétal', 'Été')
@@ -4737,9 +4737,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Ajo Blanco (soupe froide d''amandes espagnole)
+-- 356. Ajo Blanco (soupe froide d''amandes espagnole)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Ajo Blanco (soupe froide d''''amandes espagnole)'
+  SELECT id FROM recipes WHERE name = '356. Ajo Blanco (soupe froide d''''amandes espagnole)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Espagnole', 'Végétarien', 'Texture-Liquide')
@@ -4751,9 +4751,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Vichyssoise (soupe froide poireaux-pommes de terre)
+-- 357. Vichyssoise (soupe froide poireaux-pommes de terre)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Vichyssoise (soupe froide poireaux-pommes de terre)'
+  SELECT id FROM recipes WHERE name = '357. Vichyssoise (soupe froide poireaux-pommes de terre)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Liquide', 'Arôme-Fruité', 'Automne')
@@ -4765,9 +4765,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe froide de melon à la menthe et au porto
+-- 358. Soupe froide de melon à la menthe et au porto
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe froide de melon à la menthe et au porto'
+  SELECT id FROM recipes WHERE name = '358. Soupe froide de melon à la menthe et au porto'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Herbacé', 'Texture-Liquide', 'Arôme-Épicé Frais', 'Été')
@@ -4779,9 +4779,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Okroshka (soupe froide russe au kvas)
+-- 359. Okroshka (soupe froide russe au kvas)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Okroshka (soupe froide russe au kvas)'
+  SELECT id FROM recipes WHERE name = '359. Okroshka (soupe froide russe au kvas)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Liquide')
@@ -4793,9 +4793,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de poulpe et pommes de terre
+-- 360. Salade de poulpe et pommes de terre
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de poulpe et pommes de terre'
+  SELECT id FROM recipes WHERE name = '360. Salade de poulpe et pommes de terre'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -4821,9 +4821,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Burger de bœuf classique, cheddar et bacon
+-- 361. Burger de bœuf classique, cheddar et bacon
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Burger de bœuf classique, cheddar et bacon'
+  SELECT id FROM recipes WHERE name = '361. Burger de bœuf classique, cheddar et bacon'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine')
@@ -4835,9 +4835,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Burger de poulet croustillant
+-- 362. Burger de poulet croustillant
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Burger de poulet croustillant'
+  SELECT id FROM recipes WHERE name = '362. Burger de poulet croustillant'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Texture-Croquant')
@@ -4849,9 +4849,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Burger végétarien aux haricots noirs
+-- 363. Burger végétarien aux haricots noirs
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Burger végétarien aux haricots noirs'
+  SELECT id FROM recipes WHERE name = '363. Burger végétarien aux haricots noirs'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien')
@@ -4863,9 +4863,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Hot-dog new-yorkais
+-- 364. Hot-dog new-yorkais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Hot-dog new-yorkais'
+  SELECT id FROM recipes WHERE name = '364. Hot-dog new-yorkais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4877,9 +4877,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sandwich Club au poulet et bacon
+-- 365. Sandwich Club au poulet et bacon
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sandwich Club au poulet et bacon'
+  SELECT id FROM recipes WHERE name = '365. Sandwich Club au poulet et bacon'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Pique-nique')
@@ -4891,9 +4891,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sandwich Reuben (pastrami, choucroute)
+-- 366. Sandwich Reuben (pastrami, choucroute)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sandwich Reuben (pastrami, choucroute)'
+  SELECT id FROM recipes WHERE name = '366. Sandwich Reuben (pastrami, choucroute)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Hiver', 'Pique-nique')
@@ -4905,9 +4905,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pan Bagnat niçois
+-- 367. Pan Bagnat niçois
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pan Bagnat niçois'
+  SELECT id FROM recipes WHERE name = '367. Pan Bagnat niçois'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4919,9 +4919,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Croque-Monsieur
+-- 368. Croque-Monsieur
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Croque-Monsieur'
+  SELECT id FROM recipes WHERE name = '368. Croque-Monsieur'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4933,9 +4933,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Croque-Madame
+-- 369. Croque-Madame
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Croque-Madame'
+  SELECT id FROM recipes WHERE name = '369. Croque-Madame'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4947,9 +4947,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Welsh rarebit
+-- 370. Welsh rarebit
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Welsh rarebit'
+  SELECT id FROM recipes WHERE name = '370. Welsh rarebit'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -4961,9 +4961,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Kebab maison (pain pita, viande grillée, sauce blanche)
+-- 371. Kebab maison (pain pita, viande grillée, sauce blanche)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Kebab maison (pain pita, viande grillée, sauce blanche)'
+  SELECT id FROM recipes WHERE name = '371. Kebab maison (pain pita, viande grillée, sauce blanche)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Crémeux', 'Texture-Croquant', 'Intensité-Moyen', 'Arôme-Caramélisé', 'Été', 'Barbecue')
@@ -4975,9 +4975,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Wrap au poulet César
+-- 373. Wrap au poulet César
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Wrap au poulet César'
+  SELECT id FROM recipes WHERE name = '373. Wrap au poulet César'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Pique-nique')
@@ -4989,9 +4989,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Wrap au houmous, falafels et crudités
+-- 374. Wrap au houmous, falafels et crudités
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Wrap au houmous, falafels et crudités'
+  SELECT id FROM recipes WHERE name = '374. Wrap au houmous, falafels et crudités'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien', 'Pique-nique')
@@ -5003,9 +5003,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Focaccia garnie (jambon de parme, roquette, mozzarella)
+-- 376. Focaccia garnie (jambon de parme, roquette, mozzarella)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Focaccia garnie (jambon de parme, roquette, mozzarella)'
+  SELECT id FROM recipes WHERE name = '376. Focaccia garnie (jambon de parme, roquette, mozzarella)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne')
@@ -5017,9 +5017,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Arepas vénézuéliennes
+-- 377. Arepas vénézuéliennes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Arepas vénézuéliennes'
+  SELECT id FROM recipes WHERE name = '377. Arepas vénézuéliennes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5031,9 +5031,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tacos al pastor mexicains
+-- 379. Tacos al pastor mexicains
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tacos al pastor mexicains'
+  SELECT id FROM recipes WHERE name = '379. Tacos al pastor mexicains'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Mexicaine', 'Végétarien')
@@ -5045,9 +5045,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Quesadillas au fromage et poulet
+-- 380. Quesadillas au fromage et poulet
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Quesadillas au fromage et poulet'
+  SELECT id FROM recipes WHERE name = '380. Quesadillas au fromage et poulet'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Mexicaine', 'Intensité-Riche')
@@ -5073,9 +5073,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Ramen japonais au porc chashu
+-- 381. Ramen japonais au porc chashu
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Ramen japonais au porc chashu'
+  SELECT id FROM recipes WHERE name = '381. Ramen japonais au porc chashu'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise')
@@ -5087,9 +5087,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Udon sauté au bœuf
+-- 382. Udon sauté au bœuf
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Udon sauté au bœuf'
+  SELECT id FROM recipes WHERE name = '382. Udon sauté au bœuf'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise', 'Intensité-Moyen')
@@ -5101,9 +5101,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soba froides et leur sauce tsuyu
+-- 383. Soba froides et leur sauce tsuyu
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soba froides et leur sauce tsuyu'
+  SELECT id FROM recipes WHERE name = '383. Soba froides et leur sauce tsuyu'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux')
@@ -5115,9 +5115,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Yaki Soba (nouilles sautées japonaises)
+-- 384. Yaki Soba (nouilles sautées japonaises)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Yaki Soba (nouilles sautées japonaises)'
+  SELECT id FROM recipes WHERE name = '384. Yaki Soba (nouilles sautées japonaises)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise', 'Végétarien', 'Intensité-Moyen')
@@ -5129,9 +5129,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Riz cantonais
+-- 385. Riz cantonais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Riz cantonais'
+  SELECT id FROM recipes WHERE name = '385. Riz cantonais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Chinoise', 'Végétarien')
@@ -5143,9 +5143,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Nasi Goreng indonésien
+-- 386. Nasi Goreng indonésien
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Nasi Goreng indonésien'
+  SELECT id FROM recipes WHERE name = '386. Nasi Goreng indonésien'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5157,9 +5157,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Riz sauté thaï à l''ananas et aux crevettes
+-- 387. Riz sauté thaï à l''ananas et aux crevettes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Riz sauté thaï à l''''ananas et aux crevettes'
+  SELECT id FROM recipes WHERE name = '387. Riz sauté thaï à l''''ananas et aux crevettes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Thaïlandaise', 'Intensité-Moyen')
@@ -5171,9 +5171,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Dan Dan noodles sichuanaises
+-- 388. Dan Dan noodles sichuanaises
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Dan Dan noodles sichuanaises'
+  SELECT id FROM recipes WHERE name = '388. Dan Dan noodles sichuanaises'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5185,9 +5185,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Nouilles sautées au poulet et légumes
+-- 389. Nouilles sautées au poulet et légumes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Nouilles sautées au poulet et légumes'
+  SELECT id FROM recipes WHERE name = '389. Nouilles sautées au poulet et légumes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Intensité-Moyen')
@@ -5199,9 +5199,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Japchae (nouilles de patate douce coréennes)
+-- 390. Japchae (nouilles de patate douce coréennes)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Japchae (nouilles de patate douce coréennes)'
+  SELECT id FROM recipes WHERE name = '390. Japchae (nouilles de patate douce coréennes)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5213,9 +5213,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe de nouilles wonton
+-- 391. Soupe de nouilles wonton
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe de nouilles wonton'
+  SELECT id FROM recipes WHERE name = '391. Soupe de nouilles wonton'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Liquide')
@@ -5227,9 +5227,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Laksa de Singapour (soupe de nouilles épicée)
+-- 392. Laksa de Singapour (soupe de nouilles épicée)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Laksa de Singapour (soupe de nouilles épicée)'
+  SELECT id FROM recipes WHERE name = '392. Laksa de Singapour (soupe de nouilles épicée)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Épicé', 'Texture-Liquide', 'Intensité-Intense')
@@ -5241,9 +5241,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poulet katsu curry japonais
+-- 393. Poulet katsu curry japonais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poulet katsu curry japonais'
+  SELECT id FROM recipes WHERE name = '393. Poulet katsu curry japonais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise', 'Indienne', 'Saveur-Épicé')
@@ -5255,9 +5255,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Katsudon (bol de riz au porc pané)
+-- 395. Katsudon (bol de riz au porc pané)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Katsudon (bol de riz au porc pané)'
+  SELECT id FROM recipes WHERE name = '395. Katsudon (bol de riz au porc pané)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise')
@@ -5269,9 +5269,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Onigiri japonais (boules de riz farcies)
+-- 396. Onigiri japonais (boules de riz farcies)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Onigiri japonais (boules de riz farcies)'
+  SELECT id FROM recipes WHERE name = '396. Onigiri japonais (boules de riz farcies)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise', 'Végétarien')
@@ -5283,9 +5283,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Congee de riz (porridge de riz salé)
+-- 397. Congee de riz (porridge de riz salé)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Congee de riz (porridge de riz salé)'
+  SELECT id FROM recipes WHERE name = '397. Congee de riz (porridge de riz salé)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Petit-déjeuner')
@@ -5297,9 +5297,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Riz gluant à la mangue thaïlandais
+-- 398. Riz gluant à la mangue thaïlandais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Riz gluant à la mangue thaïlandais'
+  SELECT id FROM recipes WHERE name = '398. Riz gluant à la mangue thaïlandais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Thaïlandaise', 'Végétarien')
@@ -5311,9 +5311,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Kimchi Jjigae (ragoût de kimchi coréen)
+-- 399. Kimchi Jjigae (ragoût de kimchi coréen)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Kimchi Jjigae (ragoût de kimchi coréen)'
+  SELECT id FROM recipes WHERE name = '399. Kimchi Jjigae (ragoût de kimchi coréen)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5325,9 +5325,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tteokbokki (gâteaux de riz épicés coréens)
+-- 400. Tteokbokki (gâteaux de riz épicés coréens)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tteokbokki (gâteaux de riz épicés coréens)'
+  SELECT id FROM recipes WHERE name = '400. Tteokbokki (gâteaux de riz épicés coréens)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Épicé', 'Intensité-Intense')
@@ -5353,9 +5353,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crème brûlée à la vanille
+-- 401. Crème brûlée à la vanille
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crème brûlée à la vanille'
+  SELECT id FROM recipes WHERE name = '401. Crème brûlée à la vanille'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Arôme-Lacté')
@@ -5367,9 +5367,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Mousse au chocolat noir
+-- 402. Mousse au chocolat noir
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Mousse au chocolat noir'
+  SELECT id FROM recipes WHERE name = '402. Mousse au chocolat noir'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5381,9 +5381,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Île flottante et sa crème anglaise
+-- 403. Île flottante et sa crème anglaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Île flottante et sa crème anglaise'
+  SELECT id FROM recipes WHERE name = '403. Île flottante et sa crème anglaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Arôme-Lacté')
@@ -5395,9 +5395,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Profiteroles au chocolat chaud
+-- 404. Profiteroles au chocolat chaud
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Profiteroles au chocolat chaud'
+  SELECT id FROM recipes WHERE name = '404. Profiteroles au chocolat chaud'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5409,9 +5409,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarte Tatin aux pommes
+-- 405. Tarte Tatin aux pommes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarte Tatin aux pommes'
+  SELECT id FROM recipes WHERE name = '405. Tarte Tatin aux pommes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -5423,9 +5423,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarte au citron meringuée
+-- 406. Tarte au citron meringuée
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarte au citron meringuée'
+  SELECT id FROM recipes WHERE name = '406. Tarte au citron meringuée'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Arôme-Agrumes')
@@ -5437,9 +5437,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarte Bourdaloue (poires et amandes)
+-- 407. Tarte Bourdaloue (poires et amandes)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarte Bourdaloue (poires et amandes)'
+  SELECT id FROM recipes WHERE name = '407. Tarte Bourdaloue (poires et amandes)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -5451,9 +5451,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Clafoutis aux cerises
+-- 408. Clafoutis aux cerises
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Clafoutis aux cerises'
+  SELECT id FROM recipes WHERE name = '408. Clafoutis aux cerises'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5465,9 +5465,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Far breton aux pruneaux
+-- 409. Far breton aux pruneaux
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Far breton aux pruneaux'
+  SELECT id FROM recipes WHERE name = '409. Far breton aux pruneaux'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -5479,9 +5479,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Canelés de Bordeaux
+-- 410. Canelés de Bordeaux
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Canelés de Bordeaux'
+  SELECT id FROM recipes WHERE name = '410. Canelés de Bordeaux'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5493,9 +5493,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Macarons parisiens (pistache, chocolat, framboise)
+-- 411. Macarons parisiens (pistache, chocolat, framboise)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Macarons parisiens (pistache, chocolat, framboise)'
+  SELECT id FROM recipes WHERE name = '411. Macarons parisiens (pistache, chocolat, framboise)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité')
@@ -5507,9 +5507,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Paris-Brest (pâte à choux, crème pralinée)
+-- 412. Paris-Brest (pâte à choux, crème pralinée)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Paris-Brest (pâte à choux, crème pralinée)'
+  SELECT id FROM recipes WHERE name = '412. Paris-Brest (pâte à choux, crème pralinée)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Arôme-Lacté', 'Hiver')
@@ -5521,9 +5521,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Éclair au café ou au chocolat
+-- 413. Éclair au café ou au chocolat
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Éclair au café ou au chocolat'
+  SELECT id FROM recipes WHERE name = '413. Éclair au café ou au chocolat'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Amer')
@@ -5535,9 +5535,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Religieuse au chocolat
+-- 414. Religieuse au chocolat
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Religieuse au chocolat'
+  SELECT id FROM recipes WHERE name = '414. Religieuse au chocolat'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5549,9 +5549,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Saint-Honoré
+-- 415. Saint-Honoré
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Saint-Honoré'
+  SELECT id FROM recipes WHERE name = '415. Saint-Honoré'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Healthy')
@@ -5563,9 +5563,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fraisier
+-- 416. Fraisier
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fraisier'
+  SELECT id FROM recipes WHERE name = '416. Fraisier'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5577,9 +5577,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Opéra
+-- 417. Opéra
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Opéra'
+  SELECT id FROM recipes WHERE name = '417. Opéra'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5591,9 +5591,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Mille-feuille
+-- 418. Mille-feuille
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Mille-feuille'
+  SELECT id FROM recipes WHERE name = '418. Mille-feuille'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Végétal')
@@ -5605,9 +5605,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soufflé au Grand Marnier
+-- 419. Soufflé au Grand Marnier
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soufflé au Grand Marnier'
+  SELECT id FROM recipes WHERE name = '419. Soufflé au Grand Marnier'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5619,9 +5619,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Riz au lait à la vanille
+-- 420. Riz au lait à la vanille
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Riz au lait à la vanille'
+  SELECT id FROM recipes WHERE name = '420. Riz au lait à la vanille'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Lacté')
@@ -5647,9 +5647,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tiramisu classique au café
+-- 421. Tiramisu classique au café
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tiramisu classique au café'
+  SELECT id FROM recipes WHERE name = '421. Tiramisu classique au café'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Saveur-Amer')
@@ -5661,9 +5661,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Panna Cotta et son coulis de fruits rouges
+-- 422. Panna Cotta et son coulis de fruits rouges
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Panna Cotta et son coulis de fruits rouges'
+  SELECT id FROM recipes WHERE name = '422. Panna Cotta et son coulis de fruits rouges'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Sucré', 'Arôme-Fruité')
@@ -5675,9 +5675,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tiramisu aux fraises
+-- 423. Tiramisu aux fraises
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tiramisu aux fraises'
+  SELECT id FROM recipes WHERE name = '423. Tiramisu aux fraises'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien', 'Arôme-Fruité', 'Printemps')
@@ -5689,9 +5689,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Panna Cotta au caramel beurre salé
+-- 424. Panna Cotta au caramel beurre salé
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Panna Cotta au caramel beurre salé'
+  SELECT id FROM recipes WHERE name = '424. Panna Cotta au caramel beurre salé'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Salé', 'Saveur-Sucré', 'Intensité-Riche', 'Arôme-Lacté', 'Arôme-Caramélisé')
@@ -5703,9 +5703,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Zabaione au Marsala
+-- 425. Zabaione au Marsala
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Zabaione au Marsala'
+  SELECT id FROM recipes WHERE name = '425. Zabaione au Marsala'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5717,9 +5717,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cannoli siciliens à la ricotta
+-- 426. Cannoli siciliens à la ricotta
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cannoli siciliens à la ricotta'
+  SELECT id FROM recipes WHERE name = '426. Cannoli siciliens à la ricotta'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5731,9 +5731,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Torta della nonna (tarte à la crème pâtissière et pignons)
+-- 427. Torta della nonna (tarte à la crème pâtissière et pignons)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Torta della nonna (tarte à la crème pâtissière et pignons)'
+  SELECT id FROM recipes WHERE name = '427. Torta della nonna (tarte à la crème pâtissière et pignons)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Arôme-Lacté')
@@ -5745,9 +5745,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Torta caprese (gâteau au chocolat et amandes)
+-- 428. Torta caprese (gâteau au chocolat et amandes)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Torta caprese (gâteau au chocolat et amandes)'
+  SELECT id FROM recipes WHERE name = '428. Torta caprese (gâteau au chocolat et amandes)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5759,9 +5759,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Semifreddo au nougat
+-- 429. Semifreddo au nougat
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Semifreddo au nougat'
+  SELECT id FROM recipes WHERE name = '429. Semifreddo au nougat'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5773,9 +5773,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gelato à la pistache maison
+-- 430. Gelato à la pistache maison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gelato à la pistache maison'
+  SELECT id FROM recipes WHERE name = '430. Gelato à la pistache maison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5787,9 +5787,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Affogato (glace vanille noyée dans un expresso)
+-- 431. Affogato (glace vanille noyée dans un expresso)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Affogato (glace vanille noyée dans un expresso)'
+  SELECT id FROM recipes WHERE name = '431. Affogato (glace vanille noyée dans un expresso)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Rapide')
@@ -5801,9 +5801,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Panettone (version maison)
+-- 432. Panettone (version maison)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Panettone (version maison)'
+  SELECT id FROM recipes WHERE name = '432. Panettone (version maison)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5815,9 +5815,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cantucci (croquants aux amandes)
+-- 433. Cantucci (croquants aux amandes)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cantucci (croquants aux amandes)'
+  SELECT id FROM recipes WHERE name = '433. Cantucci (croquants aux amandes)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Croquant', 'Texture-Ferme')
@@ -5829,9 +5829,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bonet piémontais (flan au chocolat et amaretti)
+-- 434. Bonet piémontais (flan au chocolat et amaretti)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bonet piémontais (flan au chocolat et amaretti)'
+  SELECT id FROM recipes WHERE name = '434. Bonet piémontais (flan au chocolat et amaretti)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5843,9 +5843,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pêches au vin
+-- 435. Pêches au vin
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pêches au vin'
+  SELECT id FROM recipes WHERE name = '435. Pêches au vin'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Été')
@@ -5857,9 +5857,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sbrisolona (gâteau friable aux amandes)
+-- 436. Sbrisolona (gâteau friable aux amandes)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sbrisolona (gâteau friable aux amandes)'
+  SELECT id FROM recipes WHERE name = '436. Sbrisolona (gâteau friable aux amandes)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5871,9 +5871,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crostata à la confiture d''abricots
+-- 437. Crostata à la confiture d''abricots
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crostata à la confiture d''''abricots'
+  SELECT id FROM recipes WHERE name = '437. Crostata à la confiture d''''abricots'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien', 'Saveur-Sucré', 'Intensité-Riche', 'Arôme-Fruité', 'Été')
@@ -5885,9 +5885,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salame al cioccolato (saucisson au chocolat)
+-- 438. Salame al cioccolato (saucisson au chocolat)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salame al cioccolato (saucisson au chocolat)'
+  SELECT id FROM recipes WHERE name = '438. Salame al cioccolato (saucisson au chocolat)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5899,9 +5899,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sfogliatelle napolitaines
+-- 439. Sfogliatelle napolitaines
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sfogliatelle napolitaines'
+  SELECT id FROM recipes WHERE name = '439. Sfogliatelle napolitaines'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5913,9 +5913,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pastiera napolitaine
+-- 440. Pastiera napolitaine
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pastiera napolitaine'
+  SELECT id FROM recipes WHERE name = '440. Pastiera napolitaine'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5941,9 +5941,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cheesecake new-yorkais
+-- 441. Cheesecake new-yorkais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cheesecake new-yorkais'
+  SELECT id FROM recipes WHERE name = '441. Cheesecake new-yorkais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien')
@@ -5955,9 +5955,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Brownie au chocolat et noix de pécan
+-- 442. Brownie au chocolat et noix de pécan
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Brownie au chocolat et noix de pécan'
+  SELECT id FROM recipes WHERE name = '442. Brownie au chocolat et noix de pécan'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien')
@@ -5969,9 +5969,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cookies aux pépites de chocolat
+-- 443. Cookies aux pépites de chocolat
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cookies aux pépites de chocolat'
+  SELECT id FROM recipes WHERE name = '443. Cookies aux pépites de chocolat'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -5983,9 +5983,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Apple pie américaine
+-- 444. Apple pie américaine
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Apple pie américaine'
+  SELECT id FROM recipes WHERE name = '444. Apple pie américaine'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien')
@@ -5997,9 +5997,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pumpkin pie (tarte à la citrouille)
+-- 445. Pumpkin pie (tarte à la citrouille)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pumpkin pie (tarte à la citrouille)'
+  SELECT id FROM recipes WHERE name = '445. Pumpkin pie (tarte à la citrouille)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Automne')
@@ -6011,9 +6011,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pecan pie (tarte aux noix de pécan)
+-- 446. Pecan pie (tarte aux noix de pécan)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pecan pie (tarte aux noix de pécan)'
+  SELECT id FROM recipes WHERE name = '446. Pecan pie (tarte aux noix de pécan)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6025,9 +6025,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Carrot cake et son glaçage au cream cheese
+-- 447. Carrot cake et son glaçage au cream cheese
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Carrot cake et son glaçage au cream cheese'
+  SELECT id FROM recipes WHERE name = '447. Carrot cake et son glaçage au cream cheese'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6039,9 +6039,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Red velvet cake
+-- 448. Red velvet cake
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Red velvet cake'
+  SELECT id FROM recipes WHERE name = '448. Red velvet cake'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6053,9 +6053,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Muffins aux myrtilles
+-- 449. Muffins aux myrtilles
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Muffins aux myrtilles'
+  SELECT id FROM recipes WHERE name = '449. Muffins aux myrtilles'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6067,9 +6067,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cupcakes à la vanille et glaçage
+-- 450. Cupcakes à la vanille et glaçage
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cupcakes à la vanille et glaçage'
+  SELECT id FROM recipes WHERE name = '450. Cupcakes à la vanille et glaçage'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6081,9 +6081,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Banana bread
+-- 451. Banana bread
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Banana bread'
+  SELECT id FROM recipes WHERE name = '451. Banana bread'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6095,9 +6095,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Key lime pie (tarte au citron vert)
+-- 452. Key lime pie (tarte au citron vert)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Key lime pie (tarte au citron vert)'
+  SELECT id FROM recipes WHERE name = '452. Key lime pie (tarte au citron vert)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Arôme-Agrumes', 'Arôme-Végétal')
@@ -6109,9 +6109,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crumble aux pommes et à la cannelle
+-- 453. Crumble aux pommes et à la cannelle
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crumble aux pommes et à la cannelle'
+  SELECT id FROM recipes WHERE name = '453. Crumble aux pommes et à la cannelle'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Arôme-Épicé Chaud', 'Automne')
@@ -6123,9 +6123,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sticky toffee pudding
+-- 454. Sticky toffee pudding
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sticky toffee pudding'
+  SELECT id FROM recipes WHERE name = '454. Sticky toffee pudding'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6137,9 +6137,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Eton mess (meringue, fraises, crème)
+-- 455. Eton mess (meringue, fraises, crème)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Eton mess (meringue, fraises, crème)'
+  SELECT id FROM recipes WHERE name = '455. Eton mess (meringue, fraises, crème)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Arôme-Fruité', 'Arôme-Lacté', 'Printemps')
@@ -6151,9 +6151,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Scones britanniques, clotted cream et confiture
+-- 456. Scones britanniques, clotted cream et confiture
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Scones britanniques, clotted cream et confiture'
+  SELECT id FROM recipes WHERE name = '456. Scones britanniques, clotted cream et confiture'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien', 'Saveur-Sucré', 'Intensité-Riche')
@@ -6165,9 +6165,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Trifle anglais
+-- 457. Trifle anglais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Trifle anglais'
+  SELECT id FROM recipes WHERE name = '457. Trifle anglais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6179,9 +6179,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Banoffee pie
+-- 458. Banoffee pie
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Banoffee pie'
+  SELECT id FROM recipes WHERE name = '458. Banoffee pie'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6193,9 +6193,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bread and butter pudding
+-- 459. Bread and butter pudding
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bread and butter pudding'
+  SELECT id FROM recipes WHERE name = '459. Bread and butter pudding'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6207,9 +6207,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Shortbread écossais
+-- 460. Shortbread écossais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Shortbread écossais'
+  SELECT id FROM recipes WHERE name = '460. Shortbread écossais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6235,9 +6235,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Forêt-Noire allemande (Schwarzwälder Kirschtorte)
+-- 461. Forêt-Noire allemande (Schwarzwälder Kirschtorte)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Forêt-Noire allemande (Schwarzwälder Kirschtorte)'
+  SELECT id FROM recipes WHERE name = '461. Forêt-Noire allemande (Schwarzwälder Kirschtorte)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6249,9 +6249,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Apfelstrudel autrichien
+-- 462. Apfelstrudel autrichien
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Apfelstrudel autrichien'
+  SELECT id FROM recipes WHERE name = '462. Apfelstrudel autrichien'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6263,9 +6263,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sacher Torte viennoise
+-- 463. Sacher Torte viennoise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sacher Torte viennoise'
+  SELECT id FROM recipes WHERE name = '463. Sacher Torte viennoise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6277,9 +6277,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Linzer Torte
+-- 464. Linzer Torte
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Linzer Torte'
+  SELECT id FROM recipes WHERE name = '464. Linzer Torte'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6291,9 +6291,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Churros espagnols et leur chocolat chaud
+-- 465. Churros espagnols et leur chocolat chaud
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Churros espagnols et leur chocolat chaud'
+  SELECT id FROM recipes WHERE name = '465. Churros espagnols et leur chocolat chaud'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Espagnole', 'Végétarien')
@@ -6305,9 +6305,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crème catalane
+-- 466. Crème catalane
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crème catalane'
+  SELECT id FROM recipes WHERE name = '466. Crème catalane'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Arôme-Lacté')
@@ -6319,9 +6319,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarta de Santiago (gâteau aux amandes)
+-- 467. Tarta de Santiago (gâteau aux amandes)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarta de Santiago (gâteau aux amandes)'
+  SELECT id FROM recipes WHERE name = '467. Tarta de Santiago (gâteau aux amandes)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6333,9 +6333,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Leche frita (lait frit)
+-- 468. Leche frita (lait frit)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Leche frita (lait frit)'
+  SELECT id FROM recipes WHERE name = '468. Leche frita (lait frit)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche', 'Arôme-Lacté')
@@ -6347,9 +6347,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pastel de nata portugais
+-- 469. Pastel de nata portugais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pastel de nata portugais'
+  SELECT id FROM recipes WHERE name = '469. Pastel de nata portugais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6361,9 +6361,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gâteau basque à la crème ou à la cerise
+-- 470. Gâteau basque à la crème ou à la cerise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gâteau basque à la crème ou à la cerise'
+  SELECT id FROM recipes WHERE name = '470. Gâteau basque à la crème ou à la cerise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Arôme-Lacté')
@@ -6375,9 +6375,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Loukoumades grecs (beignets au miel)
+-- 471. Loukoumades grecs (beignets au miel)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Loukoumades grecs (beignets au miel)'
+  SELECT id FROM recipes WHERE name = '471. Loukoumades grecs (beignets au miel)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Sucré', 'Arôme-Caramélisé')
@@ -6389,9 +6389,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Baklava
+-- 472. Baklava
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Baklava'
+  SELECT id FROM recipes WHERE name = '472. Baklava'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6403,9 +6403,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Halva
+-- 473. Halva
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Halva'
+  SELECT id FROM recipes WHERE name = '473. Halva'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6417,9 +6417,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Basboussa (gâteau de semoule)
+-- 474. Basboussa (gâteau de semoule)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Basboussa (gâteau de semoule)'
+  SELECT id FROM recipes WHERE name = '474. Basboussa (gâteau de semoule)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6431,9 +6431,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cornes de gazelle marocaines
+-- 475. Cornes de gazelle marocaines
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cornes de gazelle marocaines'
+  SELECT id FROM recipes WHERE name = '475. Cornes de gazelle marocaines'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien')
@@ -6445,9 +6445,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Mochi japonais
+-- 476. Mochi japonais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Mochi japonais'
+  SELECT id FROM recipes WHERE name = '476. Mochi japonais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise', 'Végétarien')
@@ -6459,9 +6459,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Dorayaki (pancakes japonais fourrés)
+-- 477. Dorayaki (pancakes japonais fourrés)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Dorayaki (pancakes japonais fourrés)'
+  SELECT id FROM recipes WHERE name = '477. Dorayaki (pancakes japonais fourrés)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Japonaise', 'Américaine', 'Végétarien')
@@ -6473,9 +6473,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gâteau de lune chinois
+-- 478. Gâteau de lune chinois
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gâteau de lune chinois'
+  SELECT id FROM recipes WHERE name = '478. Gâteau de lune chinois'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Chinoise', 'Végétarien')
@@ -6487,9 +6487,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Alfajores argentins
+-- 479. Alfajores argentins
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Alfajores argentins'
+  SELECT id FROM recipes WHERE name = '479. Alfajores argentins'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6501,9 +6501,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Brigadeiros brésiliens
+-- 480. Brigadeiros brésiliens
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Brigadeiros brésiliens'
+  SELECT id FROM recipes WHERE name = '480. Brigadeiros brésiliens'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6529,9 +6529,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade de fruits frais de saison
+-- 481. Salade de fruits frais de saison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade de fruits frais de saison'
+  SELECT id FROM recipes WHERE name = '481. Salade de fruits frais de saison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Sucré')
@@ -6543,9 +6543,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Carpaccio d''ananas à la menthe et au citron vert
+-- 482. Carpaccio d''ananas à la menthe et au citron vert
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Carpaccio d''''ananas à la menthe et au citron vert'
+  SELECT id FROM recipes WHERE name = '482. Carpaccio d''''ananas à la menthe et au citron vert'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Saveur-Herbacé', 'Arôme-Agrumes', 'Arôme-Végétal', 'Arôme-Épicé Frais')
@@ -6557,9 +6557,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fraises au sucre et jus de citron
+-- 483. Fraises au sucre et jus de citron
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fraises au sucre et jus de citron'
+  SELECT id FROM recipes WHERE name = '483. Fraises au sucre et jus de citron'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Texture-Liquide', 'Arôme-Fruité', 'Arôme-Agrumes', 'Printemps')
@@ -6571,9 +6571,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe de fraises à la menthe
+-- 484. Soupe de fraises à la menthe
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe de fraises à la menthe'
+  SELECT id FROM recipes WHERE name = '484. Soupe de fraises à la menthe'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Herbacé', 'Texture-Liquide', 'Arôme-Fruité', 'Arôme-Épicé Frais', 'Printemps')
@@ -6585,9 +6585,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poires Belle-Hélène
+-- 485. Poires Belle-Hélène
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poires Belle-Hélène'
+  SELECT id FROM recipes WHERE name = '485. Poires Belle-Hélène'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -6599,9 +6599,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pêches Melba
+-- 486. Pêches Melba
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pêches Melba'
+  SELECT id FROM recipes WHERE name = '486. Pêches Melba'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Été')
@@ -6613,9 +6613,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pommes au four, miel et cannelle
+-- 487. Pommes au four, miel et cannelle
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pommes au four, miel et cannelle'
+  SELECT id FROM recipes WHERE name = '487. Pommes au four, miel et cannelle'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Sucré', 'Arôme-Fruité', 'Arôme-Caramélisé', 'Arôme-Épicé Chaud', 'Automne')
@@ -6627,9 +6627,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bananes flambées au rhum
+-- 488. Bananes flambées au rhum
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bananes flambées au rhum'
+  SELECT id FROM recipes WHERE name = '488. Bananes flambées au rhum'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6641,9 +6641,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salade d''oranges à la cannelle
+-- 489. Salade d''oranges à la cannelle
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salade d''''oranges à la cannelle'
+  SELECT id FROM recipes WHERE name = '489. Salade d''''oranges à la cannelle'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Agrumes', 'Arôme-Épicé Chaud')
@@ -6655,9 +6655,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gratin de fruits rouges
+-- 490. Gratin de fruits rouges
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gratin de fruits rouges'
+  SELECT id FROM recipes WHERE name = '490. Gratin de fruits rouges'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Sucré', 'Arôme-Fruité')
@@ -6669,9 +6669,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarte fine aux pommes sur pâte feuilletée
+-- 491. Tarte fine aux pommes sur pâte feuilletée
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarte fine aux pommes sur pâte feuilletée'
+  SELECT id FROM recipes WHERE name = '491. Tarte fine aux pommes sur pâte feuilletée'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Arôme-Végétal', 'Automne')
@@ -6683,9 +6683,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Compote de pommes maison sans sucre ajouté
+-- 492. Compote de pommes maison sans sucre ajouté
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Compote de pommes maison sans sucre ajouté'
+  SELECT id FROM recipes WHERE name = '492. Compote de pommes maison sans sucre ajouté'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -6697,9 +6697,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crumble aux fruits rouges et flocons d''avoine
+-- 493. Crumble aux fruits rouges et flocons d''avoine
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crumble aux fruits rouges et flocons d''''avoine'
+  SELECT id FROM recipes WHERE name = '493. Crumble aux fruits rouges et flocons d''''avoine'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Sucré', 'Arôme-Fruité')
@@ -6711,9 +6711,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sorbet maison (citron, framboise)
+-- 494. Sorbet maison (citron, framboise)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sorbet maison (citron, framboise)'
+  SELECT id FROM recipes WHERE name = '494. Sorbet maison (citron, framboise)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide', 'Arôme-Fruité', 'Arôme-Agrumes')
@@ -6725,9 +6725,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Nice cream (glace à la banane congelée)
+-- 495. Nice cream (glace à la banane congelée)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Nice cream (glace à la banane congelée)'
+  SELECT id FROM recipes WHERE name = '495. Nice cream (glace à la banane congelée)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6739,9 +6739,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Energy balls aux dattes et noix de cajou
+-- 496. Energy balls aux dattes et noix de cajou
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Energy balls aux dattes et noix de cajou'
+  SELECT id FROM recipes WHERE name = '496. Energy balls aux dattes et noix de cajou'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6753,9 +6753,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Barres de céréales maison
+-- 497. Barres de céréales maison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Barres de céréales maison'
+  SELECT id FROM recipes WHERE name = '497. Barres de céréales maison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6767,9 +6767,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Yaourt glacé (frozen yogurt) aux fruits
+-- 498. Yaourt glacé (frozen yogurt) aux fruits
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Yaourt glacé (frozen yogurt) aux fruits'
+  SELECT id FROM recipes WHERE name = '498. Yaourt glacé (frozen yogurt) aux fruits'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Sucré', 'Arôme-Lacté')
@@ -6781,9 +6781,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Mousse d''avocat au cacao
+-- 499. Mousse d''avocat au cacao
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Mousse d''''avocat au cacao'
+  SELECT id FROM recipes WHERE name = '499. Mousse d''''avocat au cacao'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Amer')
@@ -6795,9 +6795,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pommes en tranches et beurre de cacahuètes
+-- 500. Pommes en tranches et beurre de cacahuètes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pommes en tranches et beurre de cacahuètes'
+  SELECT id FROM recipes WHERE name = '500. Pommes en tranches et beurre de cacahuètes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche', 'Arôme-Fruité', 'Arôme-Lacté', 'Automne')
@@ -6823,9 +6823,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Baguette tradition française
+-- 501. Baguette tradition française
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Baguette tradition française'
+  SELECT id FROM recipes WHERE name = '501. Baguette tradition française'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -6837,9 +6837,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pain de campagne au levain
+-- 502. Pain de campagne au levain
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pain de campagne au levain'
+  SELECT id FROM recipes WHERE name = '502. Pain de campagne au levain'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6851,9 +6851,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pain complet maison
+-- 503. Pain complet maison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pain complet maison'
+  SELECT id FROM recipes WHERE name = '503. Pain complet maison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6865,9 +6865,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pain aux céréales
+-- 504. Pain aux céréales
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pain aux céréales'
+  SELECT id FROM recipes WHERE name = '504. Pain aux céréales'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6879,9 +6879,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pain de seigle
+-- 505. Pain de seigle
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pain de seigle'
+  SELECT id FROM recipes WHERE name = '505. Pain de seigle'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6893,9 +6893,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pain de mie maison
+-- 506. Pain de mie maison
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pain de mie maison'
+  SELECT id FROM recipes WHERE name = '506. Pain de mie maison'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6907,9 +6907,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pains à burger (buns)
+-- 507. Pains à burger (buns)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pains à burger (buns)'
+  SELECT id FROM recipes WHERE name = '507. Pains à burger (buns)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Américaine', 'Végétarien')
@@ -6921,9 +6921,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pains pita
+-- 508. Pains pita
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pains pita'
+  SELECT id FROM recipes WHERE name = '508. Pains pita'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6935,9 +6935,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Naans indiens au fromage
+-- 509. Naans indiens au fromage
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Naans indiens au fromage'
+  SELECT id FROM recipes WHERE name = '509. Naans indiens au fromage'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Indienne', 'Végétarien', 'Intensité-Riche')
@@ -6949,9 +6949,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Chapatis
+-- 510. Chapatis
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Chapatis'
+  SELECT id FROM recipes WHERE name = '510. Chapatis'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6963,9 +6963,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pain à la semoule (khobz)
+-- 511. Pain à la semoule (khobz)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pain à la semoule (khobz)'
+  SELECT id FROM recipes WHERE name = '511. Pain à la semoule (khobz)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -6977,9 +6977,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bretzels alsaciens
+-- 512. Bretzels alsaciens
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bretzels alsaciens'
+  SELECT id FROM recipes WHERE name = '512. Bretzels alsaciens'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -6991,9 +6991,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Ciabatta italienne
+-- 513. Ciabatta italienne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Ciabatta italienne'
+  SELECT id FROM recipes WHERE name = '513. Ciabatta italienne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Végétarien')
@@ -7005,9 +7005,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pain brioché
+-- 514. Pain brioché
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pain brioché'
+  SELECT id FROM recipes WHERE name = '514. Pain brioché'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7019,9 +7019,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Croissants au beurre
+-- 515. Croissants au beurre
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Croissants au beurre'
+  SELECT id FROM recipes WHERE name = '515. Croissants au beurre'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche', 'Arôme-Lacté', 'Petit-déjeuner')
@@ -7033,9 +7033,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pains au chocolat
+-- 516. Pains au chocolat
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pains au chocolat'
+  SELECT id FROM recipes WHERE name = '516. Pains au chocolat'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7047,9 +7047,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pains aux raisins
+-- 517. Pains aux raisins
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pains aux raisins'
+  SELECT id FROM recipes WHERE name = '517. Pains aux raisins'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7061,9 +7061,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Brioche tressée
+-- 518. Brioche tressée
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Brioche tressée'
+  SELECT id FROM recipes WHERE name = '518. Brioche tressée'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7075,9 +7075,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Kouglof alsacien
+-- 519. Kouglof alsacien
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Kouglof alsacien'
+  SELECT id FROM recipes WHERE name = '519. Kouglof alsacien'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -7089,9 +7089,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Chinois (gâteau brioché à la crème)
+-- 520. Chinois (gâteau brioché à la crème)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Chinois (gâteau brioché à la crème)'
+  SELECT id FROM recipes WHERE name = '520. Chinois (gâteau brioché à la crème)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Chinoise', 'Végétarien', 'Texture-Crémeux', 'Arôme-Lacté')
@@ -7117,9 +7117,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Baeckeoffe alsacien
+-- 521. Baeckeoffe alsacien
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Baeckeoffe alsacien'
+  SELECT id FROM recipes WHERE name = '521. Baeckeoffe alsacien'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -7131,9 +7131,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tripes à la mode de Caen
+-- 522. Tripes à la mode de Caen
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tripes à la mode de Caen'
+  SELECT id FROM recipes WHERE name = '522. Tripes à la mode de Caen'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7145,9 +7145,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Potjevleesch flamand
+-- 523. Potjevleesch flamand
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Potjevleesch flamand'
+  SELECT id FROM recipes WHERE name = '523. Potjevleesch flamand'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7159,9 +7159,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Daube niçoise
+-- 525. Daube niçoise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Daube niçoise'
+  SELECT id FROM recipes WHERE name = '525. Daube niçoise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7173,9 +7173,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pieds paquets marseillais
+-- 526. Pieds paquets marseillais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pieds paquets marseillais'
+  SELECT id FROM recipes WHERE name = '526. Pieds paquets marseillais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7187,9 +7187,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Alouettes sans tête provençales
+-- 527. Alouettes sans tête provençales
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Alouettes sans tête provençales'
+  SELECT id FROM recipes WHERE name = '527. Alouettes sans tête provençales'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -7201,9 +7201,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fricassée de volaille à l''angevine
+-- 528. Fricassée de volaille à l''angevine
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fricassée de volaille à l''''angevine'
+  SELECT id FROM recipes WHERE name = '528. Fricassée de volaille à l''''angevine'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7215,9 +7215,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poule au pot
+-- 529. Poule au pot
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poule au pot'
+  SELECT id FROM recipes WHERE name = '529. Poule au pot'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7229,9 +7229,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Coquilles Saint-Jacques à la bretonne
+-- 530. Coquilles Saint-Jacques à la bretonne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Coquilles Saint-Jacques à la bretonne'
+  SELECT id FROM recipes WHERE name = '530. Coquilles Saint-Jacques à la bretonne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien', 'Healthy')
@@ -7243,9 +7243,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cotriade bretonne
+-- 531. Cotriade bretonne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cotriade bretonne'
+  SELECT id FROM recipes WHERE name = '531. Cotriade bretonne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -7257,9 +7257,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Matelote d''anguille
+-- 532. Matelote d''anguille
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Matelote d''''anguille'
+  SELECT id FROM recipes WHERE name = '532. Matelote d''''anguille'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7271,9 +7271,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Lamproie à la bordelaise
+-- 533. Lamproie à la bordelaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Lamproie à la bordelaise'
+  SELECT id FROM recipes WHERE name = '533. Lamproie à la bordelaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7285,9 +7285,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Ttoro (soupe de poisson basque)
+-- 534. Ttoro (soupe de poisson basque)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Ttoro (soupe de poisson basque)'
+  SELECT id FROM recipes WHERE name = '534. Ttoro (soupe de poisson basque)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Texture-Liquide', 'Arôme-Marin')
@@ -7299,9 +7299,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Morue à la lyonnaise
+-- 535. Morue à la lyonnaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Morue à la lyonnaise'
+  SELECT id FROM recipes WHERE name = '535. Morue à la lyonnaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française')
@@ -7313,9 +7313,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Quenelles de brochet sauce Nantua
+-- 536. Quenelles de brochet sauce Nantua
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Quenelles de brochet sauce Nantua'
+  SELECT id FROM recipes WHERE name = '536. Quenelles de brochet sauce Nantua'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux')
@@ -7327,9 +7327,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Grenouilles en persillade
+-- 537. Grenouilles en persillade
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Grenouilles en persillade'
+  SELECT id FROM recipes WHERE name = '537. Grenouilles en persillade'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Herbacé')
@@ -7341,9 +7341,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fricassée d''escargots
+-- 538. Fricassée d''escargots
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fricassée d''''escargots'
+  SELECT id FROM recipes WHERE name = '538. Fricassée d''''escargots'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7355,9 +7355,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Caillettes ardéchoises
+-- 539. Caillettes ardéchoises
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Caillettes ardéchoises'
+  SELECT id FROM recipes WHERE name = '539. Caillettes ardéchoises'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7369,9 +7369,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Diots de Savoie au vin blanc
+-- 540. Diots de Savoie au vin blanc
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Diots de Savoie au vin blanc'
+  SELECT id FROM recipes WHERE name = '540. Diots de Savoie au vin blanc'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Saveur-Acide')
@@ -7397,9 +7397,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pounti auvergnat
+-- 541. Pounti auvergnat
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pounti auvergnat'
+  SELECT id FROM recipes WHERE name = '541. Pounti auvergnat'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7411,9 +7411,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Farçous aveyronnais
+-- 542. Farçous aveyronnais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Farçous aveyronnais'
+  SELECT id FROM recipes WHERE name = '542. Farçous aveyronnais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7425,9 +7425,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Crique ardéchoise (galette de pommes de terre)
+-- 543. Crique ardéchoise (galette de pommes de terre)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Crique ardéchoise (galette de pommes de terre)'
+  SELECT id FROM recipes WHERE name = '543. Crique ardéchoise (galette de pommes de terre)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -7439,9 +7439,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cardons à la moelle lyonnais
+-- 544. Cardons à la moelle lyonnais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cardons à la moelle lyonnais'
+  SELECT id FROM recipes WHERE name = '544. Cardons à la moelle lyonnais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -7453,9 +7453,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gratin de cardons
+-- 545. Gratin de cardons
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gratin de cardons'
+  SELECT id FROM recipes WHERE name = '545. Gratin de cardons'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7467,9 +7467,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tarte à l''oignon alsacienne
+-- 547. Tarte à l''oignon alsacienne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tarte à l''''oignon alsacienne'
+  SELECT id FROM recipes WHERE name = '547. Tarte à l''''oignon alsacienne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Végétarien')
@@ -7481,9 +7481,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Salsifis à la crème
+-- 548. Salsifis à la crème
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Salsifis à la crème'
+  SELECT id FROM recipes WHERE name = '548. Salsifis à la crème'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux', 'Arôme-Lacté')
@@ -7495,9 +7495,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poêlée de cèpes à la bordelaise
+-- 549. Poêlée de cèpes à la bordelaise
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poêlée de cèpes à la bordelaise'
+  SELECT id FROM recipes WHERE name = '549. Poêlée de cèpes à la bordelaise'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7509,9 +7509,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Farcis niçois
+-- 550. Farcis niçois
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Farcis niçois'
+  SELECT id FROM recipes WHERE name = '550. Farcis niçois'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7523,9 +7523,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pan bagnat (le vrai)
+-- 551. Pan bagnat (le vrai)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pan bagnat (le vrai)'
+  SELECT id FROM recipes WHERE name = '551. Pan bagnat (le vrai)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7537,9 +7537,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Soupe au pistou
+-- 552. Soupe au pistou
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Soupe au pistou'
+  SELECT id FROM recipes WHERE name = '552. Soupe au pistou'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Liquide')
@@ -7551,9 +7551,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tourton des Alpes
+-- 553. Tourton des Alpes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tourton des Alpes'
+  SELECT id FROM recipes WHERE name = '553. Tourton des Alpes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7565,9 +7565,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Oreilles d''âne du Valgaudemar (gratin d''épinards)
+-- 554. Oreilles d''âne du Valgaudemar (gratin d''épinards)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Oreilles d''''âne du Valgaudemar (gratin d''''épinards)'
+  SELECT id FROM recipes WHERE name = '554. Oreilles d''''âne du Valgaudemar (gratin d''''épinards)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7579,9 +7579,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pôchouse de Verdun-sur-le-Doubs (version légumes)
+-- 555. Pôchouse de Verdun-sur-le-Doubs (version légumes)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pôchouse de Verdun-sur-le-Doubs (version légumes)'
+  SELECT id FROM recipes WHERE name = '555. Pôchouse de Verdun-sur-le-Doubs (version légumes)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Hiver')
@@ -7593,9 +7593,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pâté de pommes de terre du Limousin
+-- 556. Pâté de pommes de terre du Limousin
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pâté de pommes de terre du Limousin'
+  SELECT id FROM recipes WHERE name = '556. Pâté de pommes de terre du Limousin'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -7607,9 +7607,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Flaugnarde aux pommes
+-- 557. Flaugnarde aux pommes
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Flaugnarde aux pommes'
+  SELECT id FROM recipes WHERE name = '557. Flaugnarde aux pommes'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -7621,9 +7621,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Millassou (galette de pomme de terre)
+-- 558. Millassou (galette de pomme de terre)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Millassou (galette de pomme de terre)'
+  SELECT id FROM recipes WHERE name = '558. Millassou (galette de pomme de terre)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Fruité', 'Automne')
@@ -7635,9 +7635,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Escargots de Bourgogne
+-- 559. Escargots de Bourgogne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Escargots de Bourgogne'
+  SELECT id FROM recipes WHERE name = '559. Escargots de Bourgogne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7649,9 +7649,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Lentilles vertes du Berry en salade
+-- 560. Lentilles vertes du Berry en salade
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Lentilles vertes du Berry en salade'
+  SELECT id FROM recipes WHERE name = '560. Lentilles vertes du Berry en salade'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Arôme-Végétal', 'Long')
@@ -7677,9 +7677,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Ceviche péruvien
+-- 561. Ceviche péruvien
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Ceviche péruvien'
+  SELECT id FROM recipes WHERE name = '561. Ceviche péruvien'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7691,9 +7691,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Lomo saltado (sauté de bœuf péruvien)
+-- 562. Lomo saltado (sauté de bœuf péruvien)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Lomo saltado (sauté de bœuf péruvien)'
+  SELECT id FROM recipes WHERE name = '562. Lomo saltado (sauté de bœuf péruvien)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Intensité-Moyen')
@@ -7705,9 +7705,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Aji de gallina (poulet en sauce pimentée)
+-- 563. Aji de gallina (poulet en sauce pimentée)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Aji de gallina (poulet en sauce pimentée)'
+  SELECT id FROM recipes WHERE name = '563. Aji de gallina (poulet en sauce pimentée)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Saveur-Épicé', 'Texture-Crémeux')
@@ -7719,9 +7719,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Feijoada brésilienne
+-- 564. Feijoada brésilienne
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Feijoada brésilienne'
+  SELECT id FROM recipes WHERE name = '564. Feijoada brésilienne'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7733,9 +7733,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pão de queijo (pains au fromage brésiliens)
+-- 565. Pão de queijo (pains au fromage brésiliens)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pão de queijo (pains au fromage brésiliens)'
+  SELECT id FROM recipes WHERE name = '565. Pão de queijo (pains au fromage brésiliens)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche')
@@ -7747,9 +7747,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Moqueca de peixe (ragoût de poisson brésilien)
+-- 566. Moqueca de peixe (ragoût de poisson brésilien)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Moqueca de peixe (ragoût de poisson brésilien)'
+  SELECT id FROM recipes WHERE name = '566. Moqueca de peixe (ragoût de poisson brésilien)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Arôme-Marin')
@@ -7761,9 +7761,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Picadillo
+-- 568. Picadillo
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Picadillo'
+  SELECT id FROM recipes WHERE name = '568. Picadillo'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7775,9 +7775,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Arroz con pollo
+-- 569. Arroz con pollo
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Arroz con pollo'
+  SELECT id FROM recipes WHERE name = '569. Arroz con pollo'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7789,9 +7789,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Sancocho (soupe colombienne)
+-- 570. Sancocho (soupe colombienne)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Sancocho (soupe colombienne)'
+  SELECT id FROM recipes WHERE name = '570. Sancocho (soupe colombienne)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Liquide')
@@ -7803,9 +7803,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bandeja paisa (plat complet colombien)
+-- 571. Bandeja paisa (plat complet colombien)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bandeja paisa (plat complet colombien)'
+  SELECT id FROM recipes WHERE name = '571. Bandeja paisa (plat complet colombien)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7817,9 +7817,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Chiles rellenos (piments farcis mexicains)
+-- 572. Chiles rellenos (piments farcis mexicains)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Chiles rellenos (piments farcis mexicains)'
+  SELECT id FROM recipes WHERE name = '572. Chiles rellenos (piments farcis mexicains)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Mexicaine', 'Végétarien', 'Saveur-Épicé')
@@ -7831,9 +7831,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Mole poblano
+-- 573. Mole poblano
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Mole poblano'
+  SELECT id FROM recipes WHERE name = '573. Mole poblano'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7845,9 +7845,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Cochinita pibil
+-- 574. Cochinita pibil
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Cochinita pibil'
+  SELECT id FROM recipes WHERE name = '574. Cochinita pibil'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7859,9 +7859,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pozole (soupe mexicaine)
+-- 575. Pozole (soupe mexicaine)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pozole (soupe mexicaine)'
+  SELECT id FROM recipes WHERE name = '575. Pozole (soupe mexicaine)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Mexicaine', 'Végétarien', 'Texture-Liquide')
@@ -7873,9 +7873,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tamales
+-- 576. Tamales
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tamales'
+  SELECT id FROM recipes WHERE name = '576. Tamales'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7887,9 +7887,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Pastel de choclo (gâteau de maïs chilien)
+-- 577. Pastel de choclo (gâteau de maïs chilien)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Pastel de choclo (gâteau de maïs chilien)'
+  SELECT id FROM recipes WHERE name = '577. Pastel de choclo (gâteau de maïs chilien)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7901,9 +7901,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Humitas
+-- 578. Humitas
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Humitas'
+  SELECT id FROM recipes WHERE name = '578. Humitas'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7915,9 +7915,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Gallo pinto (riz et haricots du Costa Rica)
+-- 579. Gallo pinto (riz et haricots du Costa Rica)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Gallo pinto (riz et haricots du Costa Rica)'
+  SELECT id FROM recipes WHERE name = '579. Gallo pinto (riz et haricots du Costa Rica)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -7929,9 +7929,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Patacones (bananes plantain frites)
+-- 580. Patacones (bananes plantain frites)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Patacones (bananes plantain frites)'
+  SELECT id FROM recipes WHERE name = '580. Patacones (bananes plantain frites)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Intensité-Riche')
@@ -7957,9 +7957,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tajine de poulet aux citrons confits et olives
+-- 581. Tajine de poulet aux citrons confits et olives
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tajine de poulet aux citrons confits et olives'
+  SELECT id FROM recipes WHERE name = '581. Tajine de poulet aux citrons confits et olives'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Française', 'Orientale', 'Saveur-Salé', 'Saveur-Acide', 'Intensité-Riche', 'Arôme-Agrumes')
@@ -7971,9 +7971,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tajine de kefta aux œufs
+-- 582. Tajine de kefta aux œufs
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tajine de kefta aux œufs'
+  SELECT id FROM recipes WHERE name = '582. Tajine de kefta aux œufs'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien')
@@ -7985,9 +7985,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Couscous royal (sept légumes, différentes viandes)
+-- 583. Couscous royal (sept légumes, différentes viandes)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Couscous royal (sept légumes, différentes viandes)'
+  SELECT id FROM recipes WHERE name = '583. Couscous royal (sept légumes, différentes viandes)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale')
@@ -7999,9 +7999,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Rfissa marocaine (poulet, lentilles, msemen)
+-- 585. Rfissa marocaine (poulet, lentilles, msemen)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Rfissa marocaine (poulet, lentilles, msemen)'
+  SELECT id FROM recipes WHERE name = '585. Rfissa marocaine (poulet, lentilles, msemen)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Long')
@@ -8013,9 +8013,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Tanjia marrakchia
+-- 586. Tanjia marrakchia
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Tanjia marrakchia'
+  SELECT id FROM recipes WHERE name = '586. Tanjia marrakchia'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -8027,9 +8027,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Bissara (soupe de fèves)
+-- 587. Bissara (soupe de fèves)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Bissara (soupe de fèves)'
+  SELECT id FROM recipes WHERE name = '587. Bissara (soupe de fèves)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Liquide', 'Printemps')
@@ -8041,9 +8041,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Zaalouk (salade d''aubergines cuite)
+-- 588. Zaalouk (salade d''aubergines cuite)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Zaalouk (salade d''''aubergines cuite)'
+  SELECT id FROM recipes WHERE name = '588. Zaalouk (salade d''''aubergines cuite)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Été')
@@ -8055,9 +8055,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Poulet Yassa sénégalais
+-- 589. Poulet Yassa sénégalais
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Poulet Yassa sénégalais'
+  SELECT id FROM recipes WHERE name = '589. Poulet Yassa sénégalais'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Festif')
@@ -8069,9 +8069,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Mafé (sauce à base d''arachide)
+-- 590. Mafé (sauce à base d''arachide)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Mafé (sauce à base d''''arachide)'
+  SELECT id FROM recipes WHERE name = '590. Mafé (sauce à base d''''arachide)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien', 'Texture-Crémeux')
@@ -8083,9 +8083,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Thieboudienne (riz au poisson sénégalais)
+-- 591. Thieboudienne (riz au poisson sénégalais)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Thieboudienne (riz au poisson sénégalais)'
+  SELECT id FROM recipes WHERE name = '591. Thieboudienne (riz au poisson sénégalais)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Arôme-Marin', 'Festif')
@@ -8097,9 +8097,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Injera (crêpe éthiopienne au teff)
+-- 593. Injera (crêpe éthiopienne au teff)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Injera (crêpe éthiopienne au teff)'
+  SELECT id FROM recipes WHERE name = '593. Injera (crêpe éthiopienne au teff)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -8111,9 +8111,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Shish Taouk (brochettes de poulet libanaises)
+-- 594. Shish Taouk (brochettes de poulet libanaises)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Shish Taouk (brochettes de poulet libanaises)'
+  SELECT id FROM recipes WHERE name = '594. Shish Taouk (brochettes de poulet libanaises)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Barbecue')
@@ -8125,9 +8125,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Shawarma
+-- 595. Shawarma
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Shawarma'
+  SELECT id FROM recipes WHERE name = '595. Shawarma'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Végétarien')
@@ -8139,9 +8139,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Manakish au zaatar (pizza libanaise)
+-- 596. Manakish au zaatar (pizza libanaise)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Manakish au zaatar (pizza libanaise)'
+  SELECT id FROM recipes WHERE name = '596. Manakish au zaatar (pizza libanaise)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Italienne', 'Orientale', 'Végétarien')
@@ -8153,9 +8153,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Dolmas (feuilles de vigne farcies)
+-- 598. Dolmas (feuilles de vigne farcies)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Dolmas (feuilles de vigne farcies)'
+  SELECT id FROM recipes WHERE name = '598. Dolmas (feuilles de vigne farcies)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien', 'Arôme-Végétal')
@@ -8167,9 +8167,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Shakshuka (version plus élaborée)
+-- 599. Shakshuka (version plus élaborée)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Shakshuka (version plus élaborée)'
+  SELECT id FROM recipes WHERE name = '599. Shakshuka (version plus élaborée)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien', 'Difficile')
@@ -8181,9 +8181,9 @@ CROSS JOIN tag_refs t
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 
--- Fatteh (plat libanais à base de pain pita)
+-- 600. Fatteh (plat libanais à base de pain pita)
 WITH recipe_ref AS (
-  SELECT id FROM recipes WHERE name = 'Fatteh (plat libanais à base de pain pita)'
+  SELECT id FROM recipes WHERE name = '600. Fatteh (plat libanais à base de pain pita)'
 ),
 tag_refs AS (
   SELECT id, name FROM tags WHERE name IN ('Orientale', 'Végétarien')

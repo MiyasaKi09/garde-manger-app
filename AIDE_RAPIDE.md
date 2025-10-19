@@ -3,9 +3,12 @@
 ## 🎯 Situation Actuelle
 
 Vous avez actuellement :
-- ✅ **253 recettes** enrichies
-- ✅ **361 associations** de tags
-- ❌ **MANQUE 1001 associations** (objectif : 1362)
+- ✅ **261 recettes** enrichies
+- ✅ **711 associations** de tags
+- ❌ **MANQUE 651 associations** (objectif : 1362)
+- ✅ **75 tags créés** (tous les profils gustatifs sont là !)
+
+⚠️ **PROBLÈME TROUVÉ ET CORRIGÉ** : Les noms de recettes dans le SQL contenaient des numéros ("595. Shawarma") mais votre base a juste "Shawarma". Le fichier a été corrigé !
 
 ---
 

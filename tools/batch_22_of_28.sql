@@ -1,42 +1,42 @@
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '437. Crostata à la confiture d''abricots'
+WHERE r.name = 'Crostata à la confiture d''abricots'
   AND t.name = 'Saveur-Sucré'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '437. Crostata à la confiture d''abricots'
+WHERE r.name = 'Crostata à la confiture d''abricots'
   AND t.name = 'Intensité-Riche'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '437. Crostata à la confiture d''abricots'
+WHERE r.name = 'Crostata à la confiture d''abricots'
   AND t.name = 'Arôme-Fruité'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '437. Crostata à la confiture d''abricots'
+WHERE r.name = 'Crostata à la confiture d''abricots'
   AND t.name = 'Été'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '438. Salame al cioccolato (saucisson au chocolat)'
+WHERE r.name = 'Salame al cioccolato (saucisson au chocolat)'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '439. Sfogliatelle napolitaines'
+WHERE r.name = 'Sfogliatelle napolitaines'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '440. Pastiera napolitaine'
+WHERE r.name = 'Pastiera napolitaine'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
@@ -48,223 +48,223 @@ ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '441. Cheesecake new-yorkais'
+WHERE r.name = 'Cheesecake new-yorkais'
   AND t.name = 'Américaine'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '441. Cheesecake new-yorkais'
+WHERE r.name = 'Cheesecake new-yorkais'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '442. Brownie au chocolat et noix de pécan'
+WHERE r.name = 'Brownie au chocolat et noix de pécan'
   AND t.name = 'Américaine'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '442. Brownie au chocolat et noix de pécan'
+WHERE r.name = 'Brownie au chocolat et noix de pécan'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '443. Cookies aux pépites de chocolat'
+WHERE r.name = 'Cookies aux pépites de chocolat'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '444. Apple pie américaine'
+WHERE r.name = 'Apple pie américaine'
   AND t.name = 'Américaine'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '444. Apple pie américaine'
+WHERE r.name = 'Apple pie américaine'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '445. Pumpkin pie (tarte à la citrouille)'
+WHERE r.name = 'Pumpkin pie (tarte à la citrouille)'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '445. Pumpkin pie (tarte à la citrouille)'
+WHERE r.name = 'Pumpkin pie (tarte à la citrouille)'
   AND t.name = 'Automne'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '446. Pecan pie (tarte aux noix de pécan)'
+WHERE r.name = 'Pecan pie (tarte aux noix de pécan)'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '447. Carrot cake et son glaçage au cream cheese'
+WHERE r.name = 'Carrot cake et son glaçage au cream cheese'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '448. Red velvet cake'
+WHERE r.name = 'Red velvet cake'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '449. Muffins aux myrtilles'
+WHERE r.name = 'Muffins aux myrtilles'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '450. Cupcakes à la vanille et glaçage'
+WHERE r.name = 'Cupcakes à la vanille et glaçage'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '451. Banana bread'
+WHERE r.name = 'Banana bread'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '452. Key lime pie (tarte au citron vert)'
+WHERE r.name = 'Key lime pie (tarte au citron vert)'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '452. Key lime pie (tarte au citron vert)'
+WHERE r.name = 'Key lime pie (tarte au citron vert)'
   AND t.name = 'Saveur-Acide'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '452. Key lime pie (tarte au citron vert)'
+WHERE r.name = 'Key lime pie (tarte au citron vert)'
   AND t.name = 'Arôme-Agrumes'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '452. Key lime pie (tarte au citron vert)'
+WHERE r.name = 'Key lime pie (tarte au citron vert)'
   AND t.name = 'Arôme-Végétal'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '453. Crumble aux pommes et à la cannelle'
+WHERE r.name = 'Crumble aux pommes et à la cannelle'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '453. Crumble aux pommes et à la cannelle'
+WHERE r.name = 'Crumble aux pommes et à la cannelle'
   AND t.name = 'Arôme-Fruité'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '453. Crumble aux pommes et à la cannelle'
+WHERE r.name = 'Crumble aux pommes et à la cannelle'
   AND t.name = 'Arôme-Épicé Chaud'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '453. Crumble aux pommes et à la cannelle'
+WHERE r.name = 'Crumble aux pommes et à la cannelle'
   AND t.name = 'Automne'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '454. Sticky toffee pudding'
+WHERE r.name = 'Sticky toffee pudding'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '455. Eton mess (meringue, fraises, crème)'
+WHERE r.name = 'Eton mess (meringue, fraises, crème)'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '455. Eton mess (meringue, fraises, crème)'
+WHERE r.name = 'Eton mess (meringue, fraises, crème)'
   AND t.name = 'Texture-Crémeux'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '455. Eton mess (meringue, fraises, crème)'
+WHERE r.name = 'Eton mess (meringue, fraises, crème)'
   AND t.name = 'Arôme-Fruité'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '455. Eton mess (meringue, fraises, crème)'
+WHERE r.name = 'Eton mess (meringue, fraises, crème)'
   AND t.name = 'Arôme-Lacté'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '455. Eton mess (meringue, fraises, crème)'
+WHERE r.name = 'Eton mess (meringue, fraises, crème)'
   AND t.name = 'Printemps'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '456. Scones britanniques, clotted cream et confiture'
+WHERE r.name = 'Scones britanniques, clotted cream et confiture'
   AND t.name = 'Française'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '456. Scones britanniques, clotted cream et confiture'
+WHERE r.name = 'Scones britanniques, clotted cream et confiture'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '456. Scones britanniques, clotted cream et confiture'
+WHERE r.name = 'Scones britanniques, clotted cream et confiture'
   AND t.name = 'Saveur-Sucré'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '456. Scones britanniques, clotted cream et confiture'
+WHERE r.name = 'Scones britanniques, clotted cream et confiture'
   AND t.name = 'Intensité-Riche'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '457. Trifle anglais'
+WHERE r.name = 'Trifle anglais'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '458. Banoffee pie'
+WHERE r.name = 'Banoffee pie'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '459. Bread and butter pudding'
+WHERE r.name = 'Bread and butter pudding'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '460. Shortbread écossais'
+WHERE r.name = 'Shortbread écossais'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
@@ -276,24 +276,24 @@ ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '461. Forêt-Noire allemande (Schwarzwälder Kirschtorte)'
+WHERE r.name = 'Forêt-Noire allemande (Schwarzwälder Kirschtorte)'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '462. Apfelstrudel autrichien'
+WHERE r.name = 'Apfelstrudel autrichien'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '463. Sacher Torte viennoise'
+WHERE r.name = 'Sacher Torte viennoise'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
 
 INSERT INTO recipe_tags (recipe_id, tag_id)
 SELECT r.id, t.id FROM recipes r, tags t
-WHERE r.name = '464. Linzer Torte'
+WHERE r.name = 'Linzer Torte'
   AND t.name = 'Végétarien'
 ON CONFLICT (recipe_id, tag_id) DO NOTHING;
