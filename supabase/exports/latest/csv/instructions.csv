@@ -1,0 +1,1801 @@
+id,recipe_id,step_number,description
+1,2,1,"Préparer tous les ingrédients pour Porridge d'avoine, pommes et cannelle"
+2,2,2,Suivre les étapes de préparation classiques pour cette recette
+3,2,3,Servir et déguster
+4,3,1,Préparer tous les ingrédients pour Overnight porridge aux graines de chia et fruits rouges
+5,3,2,Suivre les étapes de préparation classiques pour cette recette
+6,3,3,Servir et déguster
+7,4,1,"Préparer tous les ingrédients pour Porridge salé aux épinards, feta et œuf mollet"
+8,4,2,Suivre les étapes de préparation classiques pour cette recette
+9,4,3,Servir et déguster
+10,5,1,Préparer tous les ingrédients pour Smoothie bowl tropical mangue-ananas-coco
+11,5,2,Suivre les étapes de préparation classiques pour cette recette
+12,5,3,Servir et déguster
+13,6,1,"Préparer tous les ingrédients pour Smoothie bowl vert épinards, kiwi et banane"
+14,6,2,Suivre les étapes de préparation classiques pour cette recette
+15,6,3,Servir et déguster
+16,7,1,Préparer tous les ingrédients pour Pudding de chia au lait de coco et coulis de mangue
+17,7,2,Suivre les étapes de préparation classiques pour cette recette
+18,7,3,Servir et déguster
+19,8,1,Préparer tous les ingrédients pour Granola maison aux noix de pécan et sirop d'érable
+20,8,2,Suivre les étapes de préparation classiques pour cette recette
+21,8,3,Servir et déguster
+22,9,1,Préparer tous les ingrédients pour Muesli Bircher aux pommes râpées et noisettes
+23,9,2,Suivre les étapes de préparation classiques pour cette recette
+24,9,3,Servir et déguster
+25,10,1,Préparer tous les ingrédients pour Pancakes américains fluffy au sirop d'érable
+26,10,2,Suivre les étapes de préparation classiques pour cette recette
+27,10,3,Servir et déguster
+28,11,1,Préparer tous les ingrédients pour Pancakes à la banane sans sucre ajouté
+29,11,2,Suivre les étapes de préparation classiques pour cette recette
+30,11,3,Servir et déguster
+31,12,1,Préparer tous les ingrédients pour Pancakes salés au saumon fumé et aneth
+32,12,2,Suivre les étapes de préparation classiques pour cette recette
+33,12,3,Servir et déguster
+34,13,1,Préparer tous les ingrédients pour Crêpes fines au sucre et citron
+35,13,2,Suivre les étapes de préparation classiques pour cette recette
+36,13,3,Servir et déguster
+37,14,1,Préparer tous les ingrédients pour Gaufres de Liège au sucre perlé
+38,14,2,Suivre les étapes de préparation classiques pour cette recette
+39,14,3,Servir et déguster
+40,15,1,Préparer tous les ingrédients pour Gaufres salées au jambon et fromage
+41,15,2,Suivre les étapes de préparation classiques pour cette recette
+42,15,3,Servir et déguster
+43,16,1,Préparer tous les ingrédients pour Œufs brouillés crémeux à la ciboulette
+44,16,2,Suivre les étapes de préparation classiques pour cette recette
+45,16,3,Servir et déguster
+46,17,1,Préparer tous les ingrédients pour Œuf poché sur toast d'avocat
+47,17,2,Suivre les étapes de préparation classiques pour cette recette
+48,17,3,Servir et déguster
+49,18,1,Préparer tous les ingrédients pour Omelette aux champignons de Paris et persil
+50,18,2,Suivre les étapes de préparation classiques pour cette recette
+51,18,3,Servir et déguster
+52,19,1,Préparer tous les ingrédients pour Œufs au plat et bacon grillé (English style)
+53,19,2,Suivre les étapes de préparation classiques pour cette recette
+54,19,3,Servir et déguster
+55,20,1,Préparer tous les ingrédients pour Pain perdu à la cannelle
+56,20,2,Suivre les étapes de préparation classiques pour cette recette
+57,20,3,Servir et déguster
+58,21,1,Préparer tous les ingrédients pour Brioche perdue aux fruits rouges
+59,21,2,Suivre les étapes de préparation classiques pour cette recette
+60,21,3,Servir et déguster
+61,22,1,"Préparer tous les ingrédients pour Yaourt grec, miel et noix"
+62,22,2,Suivre les étapes de préparation classiques pour cette recette
+63,22,3,Servir et déguster
+64,23,1,Préparer tous les ingrédients pour Fromage blanc et compote de pommes maison
+65,23,2,Suivre les étapes de préparation classiques pour cette recette
+66,23,3,Servir et déguster
+67,24,1,"Préparer tous les ingrédients pour Toast de pain complet, avocat et graines de sésame"
+68,24,2,Suivre les étapes de préparation classiques pour cette recette
+69,24,3,Servir et déguster
+70,25,1,"Préparer tous les ingrédients pour Tartine de chèvre frais, miel et thym"
+71,25,2,Suivre les étapes de préparation classiques pour cette recette
+72,25,3,Servir et déguster
+73,26,1,Préparer tous les ingrédients pour Huevos Rotos (œufs cassés sur frites et jambon Serrano)
+74,26,2,Suivre les étapes de préparation classiques pour cette recette
+75,26,3,Servir et déguster
+76,27,1,Préparer tous les ingrédients pour Pan con Tomate (pain grillé à la tomate et ail)
+77,27,2,Suivre les étapes de préparation classiques pour cette recette
+78,27,3,Servir et déguster
+79,28,1,Préparer tous les ingrédients pour Shakshuka (œufs pochés dans une sauce tomate épicée)
+80,28,2,Suivre les étapes de préparation classiques pour cette recette
+81,28,3,Servir et déguster
+82,29,1,Préparer tous les ingrédients pour Full English Breakfast complet
+83,29,2,Suivre les étapes de préparation classiques pour cette recette
+84,29,3,Servir et déguster
+85,30,1,Préparer tous les ingrédients pour Œufs Bénédictine et sauce hollandaise
+86,30,2,Suivre les étapes de préparation classiques pour cette recette
+87,30,3,Servir et déguster
+88,31,1,Préparer tous les ingrédients pour Tamagoyaki (omelette roulée japonaise)
+89,31,2,Suivre les étapes de préparation classiques pour cette recette
+90,31,3,Servir et déguster
+91,32,1,Préparer tous les ingrédients pour Gaspacho Andalou traditionnel
+92,32,2,Suivre les étapes de préparation classiques pour cette recette
+93,32,3,Servir et déguster
+94,33,1,Préparer tous les ingrédients pour Salmorejo de Cordoue et ses garnitures
+95,33,2,Suivre les étapes de préparation classiques pour cette recette
+96,33,3,Servir et déguster
+97,34,1,Préparer tous les ingrédients pour Soupe froide de concombre à la menthe
+98,34,2,Suivre les étapes de préparation classiques pour cette recette
+99,34,3,Servir et déguster
+100,35,1,Préparer tous les ingrédients pour Velouté froid de courgettes au basilic
+101,35,2,Suivre les étapes de préparation classiques pour cette recette
+102,35,3,Servir et déguster
+103,36,1,"Préparer tous les ingrédients pour Verrine avocat, crevette et pamplemousse"
+104,36,2,Suivre les étapes de préparation classiques pour cette recette
+105,36,3,Servir et déguster
+106,37,1,"Préparer tous les ingrédients pour Salade Caprese (tomate, mozzarella, basilic)"
+107,37,2,Suivre les étapes de préparation classiques pour cette recette
+108,37,3,Servir et déguster
+109,38,1,Préparer tous les ingrédients pour Salade Grecque traditionnelle
+110,38,2,Suivre les étapes de préparation classiques pour cette recette
+111,38,3,Servir et déguster
+112,39,1,Préparer tous les ingrédients pour Taboulé libanais (riche en persil)
+113,39,2,Suivre les étapes de préparation classiques pour cette recette
+114,39,3,Servir et déguster
+115,40,1,Préparer tous les ingrédients pour Salade de lentilles vertes du Puy et lardons
+116,40,2,Suivre les étapes de préparation classiques pour cette recette
+117,40,3,Servir et déguster
+118,41,1,Préparer tous les ingrédients pour Salade César au poulet grillé et copeaux de parmesan
+119,41,2,Suivre les étapes de préparation classiques pour cette recette
+120,41,3,Servir et déguster
+121,42,1,Préparer tous les ingrédients pour Salade Niçoise classique
+122,42,2,Suivre les étapes de préparation classiques pour cette recette
+123,42,3,Servir et déguster
+124,43,1,Préparer tous les ingrédients pour Salade de chèvre chaud sur toast
+125,43,2,Suivre les étapes de préparation classiques pour cette recette
+126,43,3,Servir et déguster
+127,44,1,"Préparer tous les ingrédients pour Salade de pâtes à l'italienne (pesto, tomates séchées)"
+128,44,2,Suivre les étapes de préparation classiques pour cette recette
+129,44,3,Servir et déguster
+130,45,1,"Préparer tous les ingrédients pour Salade de riz au thon, maïs et poivrons"
+131,45,2,Suivre les étapes de préparation classiques pour cette recette
+132,45,3,Servir et déguster
+133,46,1,Préparer tous les ingrédients pour Salade piémontaise
+134,46,2,Suivre les étapes de préparation classiques pour cette recette
+135,46,3,Servir et déguster
+136,47,1,Préparer tous les ingrédients pour Bò bún vietnamien au bœuf
+137,47,2,Suivre les étapes de préparation classiques pour cette recette
+138,47,3,Servir et déguster
+139,48,1,Préparer tous les ingrédients pour Houmous de pois chiches maison
+140,48,2,Suivre les étapes de préparation classiques pour cette recette
+141,48,3,Servir et déguster
+142,49,1,Préparer tous les ingrédients pour Baba Ganoush (caviar d'aubergines fumées)
+143,49,2,Suivre les étapes de préparation classiques pour cette recette
+144,49,3,Servir et déguster
+145,50,1,Préparer tous les ingrédients pour Tzatziki grec au concombre et à l'aneth
+146,50,2,Suivre les étapes de préparation classiques pour cette recette
+147,50,3,Servir et déguster
+148,51,1,Préparer tous les ingrédients pour Moutabal libanais
+149,51,2,Suivre les étapes de préparation classiques pour cette recette
+150,51,3,Servir et déguster
+151,52,1,Préparer tous les ingrédients pour Tapenade d'olives noires de Provence
+152,52,2,Suivre les étapes de préparation classiques pour cette recette
+153,52,3,Servir et déguster
+154,53,1,Préparer tous les ingrédients pour Guacamole maison et chips de maïs
+155,53,2,Suivre les étapes de préparation classiques pour cette recette
+156,53,3,Servir et déguster
+157,54,1,Préparer tous les ingrédients pour Bruschetta à la tomate fraîche et basilic
+158,54,2,Suivre les étapes de préparation classiques pour cette recette
+159,54,3,Servir et déguster
+160,55,1,Préparer tous les ingrédients pour Crostinis au chèvre et figues
+161,55,2,Suivre les étapes de préparation classiques pour cette recette
+162,55,3,Servir et déguster
+163,56,1,Préparer tous les ingrédients pour Tartinade de thon et St Môret
+164,56,2,Suivre les étapes de préparation classiques pour cette recette
+165,56,3,Servir et déguster
+166,57,1,Préparer tous les ingrédients pour Rillettes de saumon frais et fumé
+167,57,2,Suivre les étapes de préparation classiques pour cette recette
+168,57,3,Servir et déguster
+169,58,1,Préparer tous les ingrédients pour Tortilla de patatas espagnole
+342,115,3,Servir et déguster
+170,58,2,Suivre les étapes de préparation classiques pour cette recette
+171,58,3,Servir et déguster
+172,59,1,Préparer tous les ingrédients pour Patatas bravas et leur sauce épicée
+173,59,2,Suivre les étapes de préparation classiques pour cette recette
+174,59,3,Servir et déguster
+175,60,1,Préparer tous les ingrédients pour Croquetas de jamón (croquettes de jambon)
+176,60,2,Suivre les étapes de préparation classiques pour cette recette
+177,60,3,Servir et déguster
+178,61,1,Préparer tous les ingrédients pour Pimientos de Padrón grillés
+179,61,2,Suivre les étapes de préparation classiques pour cette recette
+180,61,3,Servir et déguster
+181,62,1,Préparer tous les ingrédients pour Gambas al ajillo (crevettes à l'ail)
+182,62,2,Suivre les étapes de préparation classiques pour cette recette
+183,62,3,Servir et déguster
+184,63,1,"Préparer tous les ingrédients pour Falafels de pois chiches, sauce tahini"
+185,63,2,Suivre les étapes de préparation classiques pour cette recette
+186,63,3,Servir et déguster
+187,64,1,Préparer tous les ingrédients pour Samoussas aux légumes et épices
+188,64,2,Suivre les étapes de préparation classiques pour cette recette
+189,64,3,Servir et déguster
+190,65,1,Préparer tous les ingrédients pour Nems au porc et leur sauce
+191,65,2,Suivre les étapes de préparation classiques pour cette recette
+192,65,3,Servir et déguster
+193,66,1,Préparer tous les ingrédients pour Rouleaux de printemps aux crevettes
+194,66,2,Suivre les étapes de préparation classiques pour cette recette
+195,66,3,Servir et déguster
+196,67,1,Préparer tous les ingrédients pour Accras de morue antillais
+197,67,2,Suivre les étapes de préparation classiques pour cette recette
+198,67,3,Servir et déguster
+199,68,1,Préparer tous les ingrédients pour Beignets de calamars à la romaine
+200,68,2,Suivre les étapes de préparation classiques pour cette recette
+201,68,3,Servir et déguster
+202,69,1,Préparer tous les ingrédients pour Arancini siciliens (boules de risotto frites)
+203,69,2,Suivre les étapes de préparation classiques pour cette recette
+204,69,3,Servir et déguster
+205,70,1,Préparer tous les ingrédients pour Focaccia au romarin et à la fleur de sel
+206,70,2,Suivre les étapes de préparation classiques pour cette recette
+207,70,3,Servir et déguster
+208,71,1,Préparer tous les ingrédients pour Gressins italiens maison
+209,71,2,Suivre les étapes de préparation classiques pour cette recette
+210,71,3,Servir et déguster
+211,72,1,Préparer tous les ingrédients pour Légumes grillés marinés à l'italienne (antipasti)
+212,72,2,Suivre les étapes de préparation classiques pour cette recette
+213,72,3,Servir et déguster
+214,73,1,Préparer tous les ingrédients pour Artichauts à la romaine
+215,73,2,Suivre les étapes de préparation classiques pour cette recette
+216,73,3,Servir et déguster
+217,74,1,Préparer tous les ingrédients pour Poivrons marinés à l'huile d'olive et à l'ail
+218,74,2,Suivre les étapes de préparation classiques pour cette recette
+219,74,3,Servir et déguster
+220,75,1,Préparer tous les ingrédients pour Aubergines à la parmesane (Melanzane alla parmigiana)
+221,75,2,Suivre les étapes de préparation classiques pour cette recette
+222,75,3,Servir et déguster
+223,76,1,Préparer tous les ingrédients pour Velouté de potimarron et châtaignes
+224,76,2,Suivre les étapes de préparation classiques pour cette recette
+225,76,3,Servir et déguster
+226,77,1,Préparer tous les ingrédients pour Soupe à l'oignon gratinée
+227,77,2,Suivre les étapes de préparation classiques pour cette recette
+228,77,3,Servir et déguster
+229,78,1,Préparer tous les ingrédients pour Crème de lentilles corail au lait de coco
+230,78,2,Suivre les étapes de préparation classiques pour cette recette
+231,78,3,Servir et déguster
+232,79,1,Préparer tous les ingrédients pour Soupe de poireaux-pommes de terre
+233,79,2,Suivre les étapes de préparation classiques pour cette recette
+234,79,3,Servir et déguster
+235,80,1,Préparer tous les ingrédients pour Velouté Dubarry (chou-fleur)
+236,80,2,Suivre les étapes de préparation classiques pour cette recette
+237,80,3,Servir et déguster
+238,81,1,Préparer tous les ingrédients pour Minestrone de légumes italiens
+239,81,2,Suivre les étapes de préparation classiques pour cette recette
+240,81,3,Servir et déguster
+241,82,1,Préparer tous les ingrédients pour Soupe de poisson et sa rouille
+242,82,2,Suivre les étapes de préparation classiques pour cette recette
+243,82,3,Servir et déguster
+244,83,1,Préparer tous les ingrédients pour Bouillon thaï aux crevettes (Tom Yum)
+245,83,2,Suivre les étapes de préparation classiques pour cette recette
+246,83,3,Servir et déguster
+247,84,1,Préparer tous les ingrédients pour Soupe Phở au bœuf vietnamienne
+248,84,2,Suivre les étapes de préparation classiques pour cette recette
+249,84,3,Servir et déguster
+250,85,1,Préparer tous les ingrédients pour Soupe miso japonaise
+251,85,2,Suivre les étapes de préparation classiques pour cette recette
+252,85,3,Servir et déguster
+253,86,1,Préparer tous les ingrédients pour Harira marocaine (soupe de rupture du jeûne)
+254,86,2,Suivre les étapes de préparation classiques pour cette recette
+255,86,3,Servir et déguster
+256,87,1,Préparer tous les ingrédients pour Chorba algérienne
+257,87,2,Suivre les étapes de préparation classiques pour cette recette
+258,87,3,Servir et déguster
+259,88,1,Préparer tous les ingrédients pour Œufs cocotte à la crème et aux lardons
+260,88,2,Suivre les étapes de préparation classiques pour cette recette
+261,88,3,Servir et déguster
+262,89,1,Préparer tous les ingrédients pour Feuilletés saucisse à la moutarde
+263,89,2,Suivre les étapes de préparation classiques pour cette recette
+264,89,3,Servir et déguster
+265,90,1,Préparer tous les ingrédients pour Mini-brochettes de poulet mariné au satay
+266,90,2,Suivre les étapes de préparation classiques pour cette recette
+267,90,3,Servir et déguster
+268,91,1,"Préparer tous les ingrédients pour Mini-brochettes Caprese (tomate cerise, mozzarella, basilic)"
+269,91,2,Suivre les étapes de préparation classiques pour cette recette
+270,91,3,Servir et déguster
+271,92,1,Préparer tous les ingrédients pour Roulés de courgette au fromage frais
+272,92,2,Suivre les étapes de préparation classiques pour cette recette
+273,92,3,Servir et déguster
+274,93,1,Préparer tous les ingrédients pour Blinis au saumon fumé et crème à l'aneth
+275,93,2,Suivre les étapes de préparation classiques pour cette recette
+276,93,3,Servir et déguster
+277,94,1,Préparer tous les ingrédients pour Champignons farcis à l'ail et au persil
+278,94,2,Suivre les étapes de préparation classiques pour cette recette
+279,94,3,Servir et déguster
+280,95,1,Préparer tous les ingrédients pour Tomates provençales au four
+281,95,2,Suivre les étapes de préparation classiques pour cette recette
+282,95,3,Servir et déguster
+283,96,1,Préparer tous les ingrédients pour Tarte soleil au pesto et parmesan
+284,96,2,Suivre les étapes de préparation classiques pour cette recette
+285,96,3,Servir et déguster
+286,97,1,Préparer tous les ingrédients pour Gougères au fromage
+287,97,2,Suivre les étapes de préparation classiques pour cette recette
+288,97,3,Servir et déguster
+289,98,1,Préparer tous les ingrédients pour Cake salé aux olives et au jambon
+290,98,2,Suivre les étapes de préparation classiques pour cette recette
+291,98,3,Servir et déguster
+292,99,1,Préparer tous les ingrédients pour Muffins salés au chorizo et poivron
+293,99,2,Suivre les étapes de préparation classiques pour cette recette
+294,99,3,Servir et déguster
+295,100,1,Préparer tous les ingrédients pour Madeleines salées au chèvre et romarin
+296,100,2,Suivre les étapes de préparation classiques pour cette recette
+297,100,3,Servir et déguster
+298,101,1,Préparer tous les ingrédients pour Quiche Lorraine traditionnelle
+299,101,2,Suivre les étapes de préparation classiques pour cette recette
+300,101,3,Servir et déguster
+301,102,1,Préparer tous les ingrédients pour Tarte aux poireaux et lardons
+302,102,2,Suivre les étapes de préparation classiques pour cette recette
+303,102,3,Servir et déguster
+304,103,1,Préparer tous les ingrédients pour Tarte à la tomate et à la moutarde
+305,103,2,Suivre les étapes de préparation classiques pour cette recette
+306,103,3,Servir et déguster
+307,104,1,Préparer tous les ingrédients pour Tarte fine aux légumes du soleil et chèvre
+308,104,2,Suivre les étapes de préparation classiques pour cette recette
+309,104,3,Servir et déguster
+310,105,1,Préparer tous les ingrédients pour Quiche sans pâte aux épinards et ricotta
+311,105,2,Suivre les étapes de préparation classiques pour cette recette
+312,105,3,Servir et déguster
+313,106,1,Préparer tous les ingrédients pour Flammenkueche alsacienne
+314,106,2,Suivre les étapes de préparation classiques pour cette recette
+315,106,3,Servir et déguster
+316,107,1,Préparer tous les ingrédients pour Pizza Margherita
+317,107,2,Suivre les étapes de préparation classiques pour cette recette
+318,107,3,Servir et déguster
+319,108,1,"Préparer tous les ingrédients pour Pizza Reine (jambon, champignons)"
+320,108,2,Suivre les étapes de préparation classiques pour cette recette
+321,108,3,Servir et déguster
+322,109,1,Préparer tous les ingrédients pour Pizza 4 fromages
+323,109,2,Suivre les étapes de préparation classiques pour cette recette
+324,109,3,Servir et déguster
+325,110,1,Préparer tous les ingrédients pour Calzone (pizza soufflée)
+326,110,2,Suivre les étapes de préparation classiques pour cette recette
+327,110,3,Servir et déguster
+328,111,1,Préparer tous les ingrédients pour Poulet rôti du dimanche aux herbes de Provence
+329,111,2,Suivre les étapes de préparation classiques pour cette recette
+330,111,3,Servir et déguster
+331,112,1,Préparer tous les ingrédients pour Poulet basquaise
+332,112,2,Suivre les étapes de préparation classiques pour cette recette
+333,112,3,Servir et déguster
+334,113,1,Préparer tous les ingrédients pour Poulet à la crème et aux champignons
+335,113,2,Suivre les étapes de préparation classiques pour cette recette
+336,113,3,Servir et déguster
+337,114,1,Préparer tous les ingrédients pour Poulet vallée d'Auge (au cidre et à la crème)
+338,114,2,Suivre les étapes de préparation classiques pour cette recette
+339,114,3,Servir et déguster
+340,115,1,Préparer tous les ingrédients pour Coq au vin
+341,115,2,Suivre les étapes de préparation classiques pour cette recette
+343,116,1,Préparer tous les ingrédients pour Waterzooi de poulet à la gantoise
+344,116,2,Suivre les étapes de préparation classiques pour cette recette
+345,116,3,Servir et déguster
+346,117,1,Préparer tous les ingrédients pour Escalopes de poulet à la milanaise
+347,117,2,Suivre les étapes de préparation classiques pour cette recette
+348,117,3,Servir et déguster
+349,118,1,Préparer tous les ingrédients pour Escalopes de poulet panées au citron
+350,118,2,Suivre les étapes de préparation classiques pour cette recette
+351,118,3,Servir et déguster
+352,119,1,"Préparer tous les ingrédients pour Saltimbocca de veau à la romaine (jambon de Parme, sauge)"
+353,119,2,Suivre les étapes de préparation classiques pour cette recette
+354,119,3,Servir et déguster
+355,120,1,Préparer tous les ingrédients pour Piccata de veau au citron
+356,120,2,Suivre les étapes de préparation classiques pour cette recette
+357,120,3,Servir et déguster
+358,121,1,Préparer tous les ingrédients pour Blanquette de veau à l'ancienne
+359,121,2,Suivre les étapes de préparation classiques pour cette recette
+360,121,3,Servir et déguster
+361,122,1,Préparer tous les ingrédients pour Osso buco à la milanaise
+362,122,2,Suivre les étapes de préparation classiques pour cette recette
+363,122,3,Servir et déguster
+364,123,1,Préparer tous les ingrédients pour Rôti de veau Orloff
+365,123,2,Suivre les étapes de préparation classiques pour cette recette
+366,123,3,Servir et déguster
+367,124,1,Préparer tous les ingrédients pour Sauté de veau Marengo
+368,124,2,Suivre les étapes de préparation classiques pour cette recette
+369,124,3,Servir et déguster
+370,125,1,Préparer tous les ingrédients pour Paupiettes de veau en sauce
+371,125,2,Suivre les étapes de préparation classiques pour cette recette
+372,125,3,Servir et déguster
+373,126,1,Préparer tous les ingrédients pour Bœuf bourguignon
+374,126,2,Suivre les étapes de préparation classiques pour cette recette
+375,126,3,Servir et déguster
+376,127,1,Préparer tous les ingrédients pour Daube de bœuf provençale
+377,127,2,Suivre les étapes de préparation classiques pour cette recette
+378,127,3,Servir et déguster
+379,128,1,Préparer tous les ingrédients pour Carbonnade flamande
+380,128,2,Suivre les étapes de préparation classiques pour cette recette
+381,128,3,Servir et déguster
+382,129,1,Préparer tous les ingrédients pour Pot-au-feu et ses légumes
+383,129,2,Suivre les étapes de préparation classiques pour cette recette
+384,129,3,Servir et déguster
+385,130,1,Préparer tous les ingrédients pour Hachis Parmentier
+386,130,2,Suivre les étapes de préparation classiques pour cette recette
+387,130,3,Servir et déguster
+388,131,1,"Préparer tous les ingrédients pour Steak frites, sauce au poivre"
+389,131,2,Suivre les étapes de préparation classiques pour cette recette
+390,131,3,Servir et déguster
+391,132,1,"Préparer tous les ingrédients pour Entrecôte grillée, sauce béarnaise"
+392,132,2,Suivre les étapes de préparation classiques pour cette recette
+393,132,3,Servir et déguster
+394,133,1,Préparer tous les ingrédients pour Tartare de bœuf préparé
+395,133,2,Suivre les étapes de préparation classiques pour cette recette
+396,133,3,Servir et déguster
+397,134,1,"Préparer tous les ingrédients pour Carpaccio de bœuf, parmesan et roquette"
+398,134,2,Suivre les étapes de préparation classiques pour cette recette
+399,134,3,Servir et déguster
+400,135,1,Préparer tous les ingrédients pour Bœuf Stroganoff
+401,135,2,Suivre les étapes de préparation classiques pour cette recette
+402,135,3,Servir et déguster
+403,136,1,Préparer tous les ingrédients pour Goulash de bœuf hongrois
+404,136,2,Suivre les étapes de préparation classiques pour cette recette
+405,136,3,Servir et déguster
+406,137,1,Préparer tous les ingrédients pour Chili con carne
+407,137,2,Suivre les étapes de préparation classiques pour cette recette
+408,137,3,Servir et déguster
+409,138,1,Préparer tous les ingrédients pour Boulettes de bœuf à la sauce tomate
+410,138,2,Suivre les étapes de préparation classiques pour cette recette
+411,138,3,Servir et déguster
+412,139,1,Préparer tous les ingrédients pour Kefta de bœuf à la marocaine
+413,139,2,Suivre les étapes de préparation classiques pour cette recette
+414,139,3,Servir et déguster
+415,140,1,Préparer tous les ingrédients pour Bœuf loc lac cambodgien
+416,140,2,Suivre les étapes de préparation classiques pour cette recette
+417,140,3,Servir et déguster
+418,141,1,Préparer tous les ingrédients pour Bœuf sauté aux oignons
+419,141,2,Suivre les étapes de préparation classiques pour cette recette
+420,141,3,Servir et déguster
+421,142,1,Préparer tous les ingrédients pour Bœuf sauté au gingembre et à la ciboulette
+422,142,2,Suivre les étapes de préparation classiques pour cette recette
+423,142,3,Servir et déguster
+424,143,1,Préparer tous les ingrédients pour Bibimbap coréen au bœuf
+425,143,2,Suivre les étapes de préparation classiques pour cette recette
+426,143,3,Servir et déguster
+427,144,1,Préparer tous les ingrédients pour Bulgogi (barbecue coréen)
+428,144,2,Suivre les étapes de préparation classiques pour cette recette
+429,144,3,Servir et déguster
+690,231,3,Servir et déguster
+430,145,1,Préparer tous les ingrédients pour Gyudon japonais (bol de riz au bœuf)
+431,145,2,Suivre les étapes de préparation classiques pour cette recette
+432,145,3,Servir et déguster
+433,146,1,Préparer tous les ingrédients pour Rôti de porc à la moutarde
+434,146,2,Suivre les étapes de préparation classiques pour cette recette
+435,146,3,Servir et déguster
+436,147,1,Préparer tous les ingrédients pour Filet mignon de porc en croûte
+437,147,2,Suivre les étapes de préparation classiques pour cette recette
+438,147,3,Servir et déguster
+439,148,1,Préparer tous les ingrédients pour Sauté de porc au caramel
+440,148,2,Suivre les étapes de préparation classiques pour cette recette
+441,148,3,Servir et déguster
+442,149,1,Préparer tous les ingrédients pour Porc à l'aigre-douce
+443,149,2,Suivre les étapes de préparation classiques pour cette recette
+444,149,3,Servir et déguster
+445,150,1,Préparer tous les ingrédients pour Rougail saucisse réunionnais
+446,150,2,Suivre les étapes de préparation classiques pour cette recette
+447,150,3,Servir et déguster
+448,151,1,Préparer tous les ingrédients pour Saucisses de Toulouse et purée maison
+449,151,2,Suivre les étapes de préparation classiques pour cette recette
+450,151,3,Servir et déguster
+451,152,1,Préparer tous les ingrédients pour Travers de porc (ribs) sauce barbecue
+452,152,2,Suivre les étapes de préparation classiques pour cette recette
+453,152,3,Servir et déguster
+454,153,1,Préparer tous les ingrédients pour Pulled pork (effiloché de porc)
+455,153,2,Suivre les étapes de préparation classiques pour cette recette
+456,153,3,Servir et déguster
+457,154,1,Préparer tous les ingrédients pour Porc Tonkatsu japonais (escalope panée)
+458,154,2,Suivre les étapes de préparation classiques pour cette recette
+459,154,3,Servir et déguster
+460,155,1,Préparer tous les ingrédients pour Jambon à l'os braisé au madère
+461,155,2,Suivre les étapes de préparation classiques pour cette recette
+462,155,3,Servir et déguster
+463,156,1,Préparer tous les ingrédients pour Gigot d'agneau de sept heures
+464,156,2,Suivre les étapes de préparation classiques pour cette recette
+465,156,3,Servir et déguster
+466,157,1,Préparer tous les ingrédients pour Navarin d'agneau printainier
+467,157,2,Suivre les étapes de préparation classiques pour cette recette
+468,157,3,Servir et déguster
+469,158,1,Préparer tous les ingrédients pour Souris d'agneau confites au miel et au thym
+470,158,2,Suivre les étapes de préparation classiques pour cette recette
+471,158,3,Servir et déguster
+472,159,1,Préparer tous les ingrédients pour Curry d'agneau à l'indienne (Rogan Josh)
+473,159,2,Suivre les étapes de préparation classiques pour cette recette
+474,159,3,Servir et déguster
+475,160,1,Préparer tous les ingrédients pour Moussaka grecque
+476,160,2,Suivre les étapes de préparation classiques pour cette recette
+477,160,3,Servir et déguster
+478,161,1,Préparer tous les ingrédients pour Tajine d'agneau aux pruneaux et amandes
+479,161,2,Suivre les étapes de préparation classiques pour cette recette
+480,161,3,Servir et déguster
+481,162,1,Préparer tous les ingrédients pour Brochettes d'agneau marinées au citron et origan
+482,162,2,Suivre les étapes de préparation classiques pour cette recette
+483,162,3,Servir et déguster
+484,163,1,Préparer tous les ingrédients pour Côtelettes d'agneau grillées à l'ail
+485,163,2,Suivre les étapes de préparation classiques pour cette recette
+486,163,3,Servir et déguster
+487,164,1,Préparer tous les ingrédients pour Shepherd's pie (hachis Parmentier d'agneau)
+488,164,2,Suivre les étapes de préparation classiques pour cette recette
+489,164,3,Servir et déguster
+490,165,1,Préparer tous les ingrédients pour Kefta d'agneau et semoule
+491,165,2,Suivre les étapes de préparation classiques pour cette recette
+492,165,3,Servir et déguster
+493,166,1,"Préparer tous les ingrédients pour Magret de canard, sauce au poivre vert"
+494,166,2,Suivre les étapes de préparation classiques pour cette recette
+495,166,3,Servir et déguster
+496,167,1,Préparer tous les ingrédients pour Confit de canard et pommes de terre sarladaises
+497,167,2,Suivre les étapes de préparation classiques pour cette recette
+498,167,3,Servir et déguster
+499,168,1,Préparer tous les ingrédients pour Canard laqué pékinois (version simplifiée)
+500,168,2,Suivre les étapes de préparation classiques pour cette recette
+501,168,3,Servir et déguster
+502,169,1,Préparer tous les ingrédients pour Parmentier de canard
+503,169,2,Suivre les étapes de préparation classiques pour cette recette
+504,169,3,Servir et déguster
+505,170,1,Préparer tous les ingrédients pour Lapin à la moutarde
+506,170,2,Suivre les étapes de préparation classiques pour cette recette
+507,170,3,Servir et déguster
+508,171,1,Préparer tous les ingrédients pour Lapin chasseur
+509,171,2,Suivre les étapes de préparation classiques pour cette recette
+510,171,3,Servir et déguster
+511,172,1,Préparer tous les ingrédients pour Cassoulet de Toulouse
+512,172,2,Suivre les étapes de préparation classiques pour cette recette
+513,172,3,Servir et déguster
+514,173,1,Préparer tous les ingrédients pour Choucroute garnie alsacienne
+515,173,2,Suivre les étapes de préparation classiques pour cette recette
+516,173,3,Servir et déguster
+517,174,1,Préparer tous les ingrédients pour Petit salé aux lentilles
+518,174,2,Suivre les étapes de préparation classiques pour cette recette
+519,174,3,Servir et déguster
+520,175,1,"Préparer tous les ingrédients pour Andouillette de Troyes, sauce moutarde"
+521,175,2,Suivre les étapes de préparation classiques pour cette recette
+522,175,3,Servir et déguster
+523,176,1,Préparer tous les ingrédients pour Boudin noir aux pommes
+524,176,2,Suivre les étapes de préparation classiques pour cette recette
+525,176,3,Servir et déguster
+526,177,1,Préparer tous les ingrédients pour Saucisson de Lyon pistaché en brioche
+527,177,2,Suivre les étapes de préparation classiques pour cette recette
+528,177,3,Servir et déguster
+529,178,1,Préparer tous les ingrédients pour Far breton (version salée aux pruneaux et lard)
+530,178,2,Suivre les étapes de préparation classiques pour cette recette
+531,178,3,Servir et déguster
+532,179,1,"Préparer tous les ingrédients pour Crêpes salées complètes (jambon, œuf, fromage)"
+533,179,2,Suivre les étapes de préparation classiques pour cette recette
+534,179,3,Servir et déguster
+535,180,1,Préparer tous les ingrédients pour Galettes de sarrasin bretonnes
+536,180,2,Suivre les étapes de préparation classiques pour cette recette
+537,180,3,Servir et déguster
+538,181,1,Préparer tous les ingrédients pour Moules marinières
+539,181,2,Suivre les étapes de préparation classiques pour cette recette
+540,181,3,Servir et déguster
+541,182,1,Préparer tous les ingrédients pour Moules à la crème et aux frites
+542,182,2,Suivre les étapes de préparation classiques pour cette recette
+543,182,3,Servir et déguster
+544,183,1,Préparer tous les ingrédients pour Moules au curry
+545,183,2,Suivre les étapes de préparation classiques pour cette recette
+546,183,3,Servir et déguster
+547,184,1,Préparer tous les ingrédients pour Moules à la provençale
+548,184,2,Suivre les étapes de préparation classiques pour cette recette
+549,184,3,Servir et déguster
+550,185,1,Préparer tous les ingrédients pour Paella valenciana
+551,185,2,Suivre les étapes de préparation classiques pour cette recette
+552,185,3,Servir et déguster
+553,186,1,Préparer tous les ingrédients pour Paella aux fruits de mer
+554,186,2,Suivre les étapes de préparation classiques pour cette recette
+555,186,3,Servir et déguster
+556,187,1,Préparer tous les ingrédients pour Zarzuela de mariscos (cassolette de poissons espagnole)
+557,187,2,Suivre les étapes de préparation classiques pour cette recette
+558,187,3,Servir et déguster
+559,188,1,Préparer tous les ingrédients pour Marmitako (ragoût de thon basque)
+560,188,2,Suivre les étapes de préparation classiques pour cette recette
+561,188,3,Servir et déguster
+562,189,1,Préparer tous les ingrédients pour Fideuà (paella de vermicelles)
+563,189,2,Suivre les étapes de préparation classiques pour cette recette
+564,189,3,Servir et déguster
+565,190,1,Préparer tous les ingrédients pour Lotte à l'américaine
+566,190,2,Suivre les étapes de préparation classiques pour cette recette
+567,190,3,Servir et déguster
+568,191,1,Préparer tous les ingrédients pour Bouillabaisse marseillaise
+569,191,2,Suivre les étapes de préparation classiques pour cette recette
+570,191,3,Servir et déguster
+571,192,1,Préparer tous les ingrédients pour Bourride sétoise
+572,192,2,Suivre les étapes de préparation classiques pour cette recette
+573,192,3,Servir et déguster
+574,193,1,Préparer tous les ingrédients pour Brandade de morue de Nîmes
+575,193,2,Suivre les étapes de préparation classiques pour cette recette
+576,193,3,Servir et déguster
+577,194,1,Préparer tous les ingrédients pour Aïoli provençal et ses légumes
+578,194,2,Suivre les étapes de préparation classiques pour cette recette
+579,194,3,Servir et déguster
+580,195,1,Préparer tous les ingrédients pour Pavé de saumon à l'unilatérale
+581,195,2,Suivre les étapes de préparation classiques pour cette recette
+582,195,3,Servir et déguster
+583,196,1,"Préparer tous les ingrédients pour Saumon en papillote, julienne de légumes"
+584,196,2,Suivre les étapes de préparation classiques pour cette recette
+585,196,3,Servir et déguster
+586,197,1,Préparer tous les ingrédients pour Saumon teriyaki
+587,197,2,Suivre les étapes de préparation classiques pour cette recette
+588,197,3,Servir et déguster
+589,198,1,"Préparer tous les ingrédients pour Saumon à la plancha, sauce vierge"
+590,198,2,Suivre les étapes de préparation classiques pour cette recette
+591,198,3,Servir et déguster
+592,199,1,Préparer tous les ingrédients pour Lasagnes au saumon et épinards
+593,199,2,Suivre les étapes de préparation classiques pour cette recette
+594,199,3,Servir et déguster
+595,200,1,Préparer tous les ingrédients pour Tartare de saumon à l'aneth et au citron vert
+596,200,2,Suivre les étapes de préparation classiques pour cette recette
+597,200,3,Servir et déguster
+598,201,1,Préparer tous les ingrédients pour Gravlax de saumon maison
+599,201,2,Suivre les étapes de préparation classiques pour cette recette
+600,201,3,Servir et déguster
+601,202,1,Préparer tous les ingrédients pour Brochettes de saumon marinées
+602,202,2,Suivre les étapes de préparation classiques pour cette recette
+603,202,3,Servir et déguster
+604,203,1,Préparer tous les ingrédients pour Quiche au saumon et poireaux
+605,203,2,Suivre les étapes de préparation classiques pour cette recette
+606,203,3,Servir et déguster
+607,204,1,Préparer tous les ingrédients pour Dos de cabillaud en croûte de chorizo
+608,204,2,Suivre les étapes de préparation classiques pour cette recette
+609,204,3,Servir et déguster
+610,205,1,Préparer tous les ingrédients pour Cabillaud à la bordelaise
+611,205,2,Suivre les étapes de préparation classiques pour cette recette
+612,205,3,Servir et déguster
+613,206,1,"Préparer tous les ingrédients pour Cabillaud skrei poêlé, purée de panais"
+614,206,2,Suivre les étapes de préparation classiques pour cette recette
+615,206,3,Servir et déguster
+616,207,1,Préparer tous les ingrédients pour Fish and chips britannique
+617,207,2,Suivre les étapes de préparation classiques pour cette recette
+618,207,3,Servir et déguster
+619,208,1,Préparer tous les ingrédients pour Waterzooi de poisson
+620,208,2,Suivre les étapes de préparation classiques pour cette recette
+621,208,3,Servir et déguster
+622,209,1,Préparer tous les ingrédients pour Curry de poisson au lait de coco
+623,209,2,Suivre les étapes de préparation classiques pour cette recette
+624,209,3,Servir et déguster
+625,210,1,Préparer tous les ingrédients pour Thon mi-cuit au sésame
+626,210,2,Suivre les étapes de préparation classiques pour cette recette
+627,210,3,Servir et déguster
+628,211,1,"Préparer tous les ingrédients pour Steak de thon à la sicilienne (olives, câpres)"
+629,211,2,Suivre les étapes de préparation classiques pour cette recette
+630,211,3,Servir et déguster
+631,212,1,Préparer tous les ingrédients pour Bar en croûte de sel
+632,212,2,Suivre les étapes de préparation classiques pour cette recette
+633,212,3,Servir et déguster
+634,213,1,Préparer tous les ingrédients pour Dorade royale au four et fenouil
+635,213,2,Suivre les étapes de préparation classiques pour cette recette
+636,213,3,Servir et déguster
+637,214,1,Préparer tous les ingrédients pour Filet de sole meunière
+638,214,2,Suivre les étapes de préparation classiques pour cette recette
+639,214,3,Servir et déguster
+640,215,1,Préparer tous les ingrédients pour Raie au beurre noir et aux câpres
+641,215,2,Suivre les étapes de préparation classiques pour cette recette
+642,215,3,Servir et déguster
+643,216,1,Préparer tous les ingrédients pour Maquereaux marinés au vin blanc
+644,216,2,Suivre les étapes de préparation classiques pour cette recette
+645,216,3,Servir et déguster
+646,217,1,Préparer tous les ingrédients pour Sardines grillées au barbecue
+647,217,2,Suivre les étapes de préparation classiques pour cette recette
+648,217,3,Servir et déguster
+649,218,1,"Préparer tous les ingrédients pour Coquilles Saint-Jacques poêlées, fondue de poireaux"
+650,218,2,Suivre les étapes de préparation classiques pour cette recette
+651,218,3,Servir et déguster
+652,219,1,"Préparer tous les ingrédients pour Noix de Saint-Jacques snackées, purée de carottes au cumin"
+653,219,2,Suivre les étapes de préparation classiques pour cette recette
+654,219,3,Servir et déguster
+655,220,1,Préparer tous les ingrédients pour Risotto aux Saint-Jacques et asperges
+656,220,2,Suivre les étapes de préparation classiques pour cette recette
+657,220,3,Servir et déguster
+658,221,1,Préparer tous les ingrédients pour Crevettes sautées à l'ail et au persil
+659,221,2,Suivre les étapes de préparation classiques pour cette recette
+660,221,3,Servir et déguster
+661,222,1,Préparer tous les ingrédients pour Curry de crevettes et lait de coco
+662,222,2,Suivre les étapes de préparation classiques pour cette recette
+663,222,3,Servir et déguster
+664,223,1,"Préparer tous les ingrédients pour Pâtes aux crevettes, ail, huile et piment"
+665,223,2,Suivre les étapes de préparation classiques pour cette recette
+666,223,3,Servir et déguster
+667,224,1,Préparer tous les ingrédients pour Crevettes à l'armoricaine
+668,224,2,Suivre les étapes de préparation classiques pour cette recette
+669,224,3,Servir et déguster
+670,225,1,Préparer tous les ingrédients pour Wok de crevettes aux légumes croquants
+671,225,2,Suivre les étapes de préparation classiques pour cette recette
+672,225,3,Servir et déguster
+673,226,1,Préparer tous les ingrédients pour Pad Thaï aux crevettes
+674,226,2,Suivre les étapes de préparation classiques pour cette recette
+675,226,3,Servir et déguster
+676,227,1,Préparer tous les ingrédients pour Brochettes de gambas à la plancha
+677,227,2,Suivre les étapes de préparation classiques pour cette recette
+678,227,3,Servir et déguster
+679,228,1,Préparer tous les ingrédients pour Calamars à la romaine
+680,228,2,Suivre les étapes de préparation classiques pour cette recette
+681,228,3,Servir et déguster
+682,229,1,Préparer tous les ingrédients pour Encornets farcis à la sétoise
+683,229,2,Suivre les étapes de préparation classiques pour cette recette
+684,229,3,Servir et déguster
+685,230,1,Préparer tous les ingrédients pour Seiches à la plancha en persillade
+686,230,2,Suivre les étapes de préparation classiques pour cette recette
+687,230,3,Servir et déguster
+688,231,1,Préparer tous les ingrédients pour Poulpe à la galicienne (Pulpo a la gallega)
+689,231,2,Suivre les étapes de préparation classiques pour cette recette
+691,232,1,"Préparer tous les ingrédients pour Soupe de lentilles corail, carotte et cumin"
+692,232,2,Suivre les étapes de préparation classiques pour cette recette
+693,232,3,Servir et déguster
+694,233,1,Préparer tous les ingrédients pour Dahl de lentilles indien
+695,233,2,Suivre les étapes de préparation classiques pour cette recette
+696,233,3,Servir et déguster
+697,234,1,"Préparer tous les ingrédients pour Salade de lentilles, carottes et oignons rouges"
+698,234,2,Suivre les étapes de préparation classiques pour cette recette
+699,234,3,Servir et déguster
+700,235,1,Préparer tous les ingrédients pour Bolognaise de lentilles vertes
+701,235,2,Suivre les étapes de préparation classiques pour cette recette
+702,235,3,Servir et déguster
+703,236,1,Préparer tous les ingrédients pour Curry de pois chiches et épinards
+704,236,2,Suivre les étapes de préparation classiques pour cette recette
+705,236,3,Servir et déguster
+706,237,1,Préparer tous les ingrédients pour Pois chiches rôtis aux épices
+707,237,2,Suivre les étapes de préparation classiques pour cette recette
+708,237,3,Servir et déguster
+709,238,1,Préparer tous les ingrédients pour Salade de pois chiches à la méditerranéenne
+710,238,2,Suivre les étapes de préparation classiques pour cette recette
+711,238,3,Servir et déguster
+712,239,1,Préparer tous les ingrédients pour Chili sin carne
+713,239,2,Suivre les étapes de préparation classiques pour cette recette
+714,239,3,Servir et déguster
+715,240,1,Préparer tous les ingrédients pour Haricots blancs à la bretonne
+716,240,2,Suivre les étapes de préparation classiques pour cette recette
+717,240,3,Servir et déguster
+718,241,1,Préparer tous les ingrédients pour Fèves à la catalane
+719,241,2,Suivre les étapes de préparation classiques pour cette recette
+720,241,3,Servir et déguster
+721,242,1,Préparer tous les ingrédients pour Socca niçoise (galette de farine de pois chiches)
+722,242,2,Suivre les étapes de préparation classiques pour cette recette
+723,242,3,Servir et déguster
+724,243,1,Préparer tous les ingrédients pour Panisses marseillaises
+725,243,2,Suivre les étapes de préparation classiques pour cette recette
+726,243,3,Servir et déguster
+727,244,1,Préparer tous les ingrédients pour Lasagnes végétariennes aux légumes du soleil
+728,244,2,Suivre les étapes de préparation classiques pour cette recette
+729,244,3,Servir et déguster
+730,245,1,Préparer tous les ingrédients pour Lasagnes aux épinards et à la ricotta
+731,245,2,Suivre les étapes de préparation classiques pour cette recette
+732,245,3,Servir et déguster
+733,246,1,Préparer tous les ingrédients pour Risotto aux champignons
+734,246,2,Suivre les étapes de préparation classiques pour cette recette
+735,246,3,Servir et déguster
+736,247,1,Préparer tous les ingrédients pour Risotto aux asperges et parmesan
+737,247,2,Suivre les étapes de préparation classiques pour cette recette
+738,247,3,Servir et déguster
+739,248,1,Préparer tous les ingrédients pour Risotto à la milanaise (au safran)
+740,248,2,Suivre les étapes de préparation classiques pour cette recette
+741,248,3,Servir et déguster
+742,249,1,Préparer tous les ingrédients pour Risotto aux courgettes et menthe
+743,249,2,Suivre les étapes de préparation classiques pour cette recette
+744,249,3,Servir et déguster
+745,250,1,Préparer tous les ingrédients pour Risotto à la tomate et mozzarella
+746,250,2,Suivre les étapes de préparation classiques pour cette recette
+747,250,3,Servir et déguster
+748,251,1,Préparer tous les ingrédients pour Pâtes à la sauce tomate et basilic frais (al pomodoro)
+749,251,2,Suivre les étapes de préparation classiques pour cette recette
+750,251,3,Servir et déguster
+751,252,1,Préparer tous les ingrédients pour Pâtes all'arrabbiata
+752,252,2,Suivre les étapes de préparation classiques pour cette recette
+753,252,3,Servir et déguster
+754,253,1,Préparer tous les ingrédients pour Pâtes alla puttanesca
+755,253,2,Suivre les étapes de préparation classiques pour cette recette
+756,253,3,Servir et déguster
+757,254,1,"Préparer tous les ingrédients pour Pâtes à la carbonara (la vraie, sans crème)"
+758,254,2,Suivre les étapes de préparation classiques pour cette recette
+759,254,3,Servir et déguster
+760,255,1,Préparer tous les ingrédients pour Pâtes cacio e pepe
+761,255,2,Suivre les étapes de préparation classiques pour cette recette
+762,255,3,Servir et déguster
+763,256,1,Préparer tous les ingrédients pour Pâtes à l'amatriciana
+764,256,2,Suivre les étapes de préparation classiques pour cette recette
+765,256,3,Servir et déguster
+766,257,1,Préparer tous les ingrédients pour Pâtes au pesto alla genovese
+767,257,2,Suivre les étapes de préparation classiques pour cette recette
+768,257,3,Servir et déguster
+769,258,1,Préparer tous les ingrédients pour Pâtes aux palourdes (alle vongole)
+770,258,2,Suivre les étapes de préparation classiques pour cette recette
+771,258,3,Servir et déguster
+772,259,1,Préparer tous les ingrédients pour Pâtes aux fruits de mer (allo scoglio)
+773,259,2,Suivre les étapes de préparation classiques pour cette recette
+774,259,3,Servir et déguster
+775,260,1,"Préparer tous les ingrédients pour Pâtes alla norma (aubergines, ricotta salata)"
+776,260,2,Suivre les étapes de préparation classiques pour cette recette
+777,260,3,Servir et déguster
+778,261,1,"Préparer tous les ingrédients pour Gnocchis de pommes de terre, sauce sauge et beurre"
+779,261,2,Suivre les étapes de préparation classiques pour cette recette
+780,261,3,Servir et déguster
+781,262,1,"Préparer tous les ingrédients pour Gnocchis à la sorrentina (sauce tomate, mozzarella)"
+782,262,2,Suivre les étapes de préparation classiques pour cette recette
+783,262,3,Servir et déguster
+784,263,1,"Préparer tous les ingrédients pour Raviolis aux épinards et ricotta, sauce tomate"
+785,263,2,Suivre les étapes de préparation classiques pour cette recette
+786,263,3,Servir et déguster
+787,264,1,Préparer tous les ingrédients pour Cannellonis farcis à la bolognaise
+788,264,2,Suivre les étapes de préparation classiques pour cette recette
+789,264,3,Servir et déguster
+790,265,1,Préparer tous les ingrédients pour Spaghettis aux boulettes de viande (style italo-américain)
+791,265,2,Suivre les étapes de préparation classiques pour cette recette
+792,265,3,Servir et déguster
+793,266,1,Préparer tous les ingrédients pour Macaroni and cheese américain (gratin de macaronis)
+794,266,2,Suivre les étapes de préparation classiques pour cette recette
+795,266,3,Servir et déguster
+796,267,1,Préparer tous les ingrédients pour Gratin de pâtes au jambon et béchamel
+797,267,2,Suivre les étapes de préparation classiques pour cette recette
+798,267,3,Servir et déguster
+799,268,1,"Préparer tous les ingrédients pour One pot pasta tomate, basilic, mozzarella"
+800,268,2,Suivre les étapes de préparation classiques pour cette recette
+801,268,3,Servir et déguster
+802,269,1,Préparer tous les ingrédients pour Pâtes au citron et à la crème
+803,269,2,Suivre les étapes de préparation classiques pour cette recette
+804,269,3,Servir et déguster
+805,270,1,Préparer tous les ingrédients pour Salade de pâtes estivale
+806,270,2,Suivre les étapes de préparation classiques pour cette recette
+807,270,3,Servir et déguster
+808,271,1,Préparer tous les ingrédients pour Pâtes fraîches maison
+809,271,2,Suivre les étapes de préparation classiques pour cette recette
+810,271,3,Servir et déguster
+811,272,1,Préparer tous les ingrédients pour Tofu sauté aux légumes et sauce soja
+812,272,2,Suivre les étapes de préparation classiques pour cette recette
+813,272,3,Servir et déguster
+814,273,1,Préparer tous les ingrédients pour Tofu mariné et grillé au sésame
+815,273,2,Suivre les étapes de préparation classiques pour cette recette
+816,273,3,Servir et déguster
+817,274,1,Préparer tous les ingrédients pour Tofu général Tao
+818,274,2,Suivre les étapes de préparation classiques pour cette recette
+819,274,3,Servir et déguster
+820,275,1,Préparer tous les ingrédients pour Tofu Mapo (recette sichuanaise)
+821,275,2,Suivre les étapes de préparation classiques pour cette recette
+822,275,3,Servir et déguster
+823,276,1,Préparer tous les ingrédients pour Curry de tofu et légumes
+824,276,2,Suivre les étapes de préparation classiques pour cette recette
+825,276,3,Servir et déguster
+826,277,1,Préparer tous les ingrédients pour Tofu brouillé (alternative aux œufs)
+827,277,2,Suivre les étapes de préparation classiques pour cette recette
+828,277,3,Servir et déguster
+829,278,1,Préparer tous les ingrédients pour Tofu Katsu (pané et frit)
+830,278,2,Suivre les étapes de préparation classiques pour cette recette
+831,278,3,Servir et déguster
+832,279,1,Préparer tous les ingrédients pour Seitan bourguignon
+833,279,2,Suivre les étapes de préparation classiques pour cette recette
+834,279,3,Servir et déguster
+835,280,1,Préparer tous les ingrédients pour Sauté de seitan et brocolis
+836,280,2,Suivre les étapes de préparation classiques pour cette recette
+837,280,3,Servir et déguster
+838,281,1,Préparer tous les ingrédients pour Burger de seitan
+839,281,2,Suivre les étapes de préparation classiques pour cette recette
+840,281,3,Servir et déguster
+841,282,1,Préparer tous les ingrédients pour Tempeh laqué à l'indonésienne
+842,282,2,Suivre les étapes de préparation classiques pour cette recette
+843,282,3,Servir et déguster
+844,283,1,"Préparer tous les ingrédients pour Buddha bowl au quinoa, patates douces et avocat"
+845,283,2,Suivre les étapes de préparation classiques pour cette recette
+846,283,3,Servir et déguster
+847,284,1,"Préparer tous les ingrédients pour Salade de quinoa, concombre, feta et menthe"
+848,284,2,Suivre les étapes de préparation classiques pour cette recette
+849,284,3,Servir et déguster
+850,285,1,Préparer tous les ingrédients pour Quinoa façon taboulé
+851,285,2,Suivre les étapes de préparation classiques pour cette recette
+852,285,3,Servir et déguster
+853,286,1,Préparer tous les ingrédients pour Galettes de quinoa et carottes
+854,286,2,Suivre les étapes de préparation classiques pour cette recette
+855,286,3,Servir et déguster
+856,287,1,Préparer tous les ingrédients pour Gratin de quinoa aux légumes
+857,287,2,Suivre les étapes de préparation classiques pour cette recette
+858,287,3,Servir et déguster
+859,288,1,Préparer tous les ingrédients pour Gratin dauphinois traditionnel
+860,288,2,Suivre les étapes de préparation classiques pour cette recette
+861,288,3,Servir et déguster
+862,289,1,Préparer tous les ingrédients pour Gratin de courgettes à la menthe
+863,289,2,Suivre les étapes de préparation classiques pour cette recette
+864,289,3,Servir et déguster
+865,290,1,Préparer tous les ingrédients pour Gratin de chou-fleur à la béchamel
+866,290,2,Suivre les étapes de préparation classiques pour cette recette
+867,290,3,Servir et déguster
+868,291,1,Préparer tous les ingrédients pour Gratin de brocolis au parmesan
+869,291,2,Suivre les étapes de préparation classiques pour cette recette
+870,291,3,Servir et déguster
+871,292,1,Préparer tous les ingrédients pour Tian de légumes provençal
+872,292,2,Suivre les étapes de préparation classiques pour cette recette
+873,292,3,Servir et déguster
+874,293,1,Préparer tous les ingrédients pour Ratatouille niçoise
+875,293,2,Suivre les étapes de préparation classiques pour cette recette
+876,293,3,Servir et déguster
+877,294,1,Préparer tous les ingrédients pour Piperade basque
+878,294,2,Suivre les étapes de préparation classiques pour cette recette
+879,294,3,Servir et déguster
+880,295,1,Préparer tous les ingrédients pour Poêlée de légumes du soleil
+881,295,2,Suivre les étapes de préparation classiques pour cette recette
+882,295,3,Servir et déguster
+883,296,1,Préparer tous les ingrédients pour Poêlée de champignons en persillade
+884,296,2,Suivre les étapes de préparation classiques pour cette recette
+885,296,3,Servir et déguster
+886,297,1,Préparer tous les ingrédients pour Wok de légumes sauce aigre-douce
+887,297,2,Suivre les étapes de préparation classiques pour cette recette
+888,297,3,Servir et déguster
+889,298,1,"Préparer tous les ingrédients pour Légumes rôtis au four (carottes, panais, patates douces)"
+890,298,2,Suivre les étapes de préparation classiques pour cette recette
+891,298,3,Servir et déguster
+892,299,1,Préparer tous les ingrédients pour Frites de patates douces au paprika
+893,299,2,Suivre les étapes de préparation classiques pour cette recette
+894,299,3,Servir et déguster
+895,300,1,Préparer tous les ingrédients pour Purée de pommes de terre maison
+896,300,2,Suivre les étapes de préparation classiques pour cette recette
+897,300,3,Servir et déguster
+898,301,1,Préparer tous les ingrédients pour Purée de carottes au cumin
+899,301,2,Suivre les étapes de préparation classiques pour cette recette
+900,301,3,Servir et déguster
+901,302,1,Préparer tous les ingrédients pour Purée de panais à la noisette
+902,302,2,Suivre les étapes de préparation classiques pour cette recette
+903,302,3,Servir et déguster
+904,303,1,Préparer tous les ingrédients pour Purée de céleri-rave
+905,303,2,Suivre les étapes de préparation classiques pour cette recette
+906,303,3,Servir et déguster
+907,304,1,Préparer tous les ingrédients pour Écrasé de pommes de terre à l'huile d'olive et ail
+908,304,2,Suivre les étapes de préparation classiques pour cette recette
+909,304,3,Servir et déguster
+910,305,1,Préparer tous les ingrédients pour Pommes de terre suédoises (Hasselback)
+911,305,2,Suivre les étapes de préparation classiques pour cette recette
+912,305,3,Servir et déguster
+913,306,1,Préparer tous les ingrédients pour Pommes dauphine maison
+914,306,2,Suivre les étapes de préparation classiques pour cette recette
+915,306,3,Servir et déguster
+916,307,1,Préparer tous les ingrédients pour Aligot de l'Aubrac
+917,307,2,Suivre les étapes de préparation classiques pour cette recette
+918,307,3,Servir et déguster
+919,308,1,Préparer tous les ingrédients pour Truffade auvergnate
+920,308,2,Suivre les étapes de préparation classiques pour cette recette
+921,308,3,Servir et déguster
+922,309,1,Préparer tous les ingrédients pour Poêlée de haricots verts à l'ail et persil
+923,309,2,Suivre les étapes de préparation classiques pour cette recette
+924,309,3,Servir et déguster
+925,310,1,Préparer tous les ingrédients pour Frites de polenta au parmesan
+926,310,2,Suivre les étapes de préparation classiques pour cette recette
+927,310,3,Servir et déguster
+928,311,1,Préparer tous les ingrédients pour Polenta crémeuse
+929,311,2,Suivre les étapes de préparation classiques pour cette recette
+930,311,3,Servir et déguster
+931,312,1,Préparer tous les ingrédients pour Endives braisées au jambon
+932,312,2,Suivre les étapes de préparation classiques pour cette recette
+933,312,3,Servir et déguster
+934,313,1,Préparer tous les ingrédients pour Asperges vertes rôties au parmesan
+935,313,2,Suivre les étapes de préparation classiques pour cette recette
+936,313,3,Servir et déguster
+937,314,1,Préparer tous les ingrédients pour Fondue de poireaux à la crème
+938,314,2,Suivre les étapes de préparation classiques pour cette recette
+939,314,3,Servir et déguster
+940,315,1,Préparer tous les ingrédients pour Épinards frais à la crème
+941,315,2,Suivre les étapes de préparation classiques pour cette recette
+942,315,3,Servir et déguster
+943,316,1,Préparer tous les ingrédients pour Choux de Bruxelles rôtis au lard et sirop d'érable
+944,316,2,Suivre les étapes de préparation classiques pour cette recette
+945,316,3,Servir et déguster
+946,317,1,Préparer tous les ingrédients pour Carottes glacées à l'orange
+947,317,2,Suivre les étapes de préparation classiques pour cette recette
+948,317,3,Servir et déguster
+949,318,1,Préparer tous les ingrédients pour Betteraves rôties au miel et au thym
+950,318,2,Suivre les étapes de préparation classiques pour cette recette
+951,318,3,Servir et déguster
+952,319,1,Préparer tous les ingrédients pour Fenouil braisé à l'anis
+953,319,2,Suivre les étapes de préparation classiques pour cette recette
+954,319,3,Servir et déguster
+955,320,1,Préparer tous les ingrédients pour Riz pilaf aux amandes et raisins secs
+956,320,2,Suivre les étapes de préparation classiques pour cette recette
+957,320,3,Servir et déguster
+958,321,1,Préparer tous les ingrédients pour Semoule aux légumes (accompagnement tajine)
+959,321,2,Suivre les étapes de préparation classiques pour cette recette
+960,321,3,Servir et déguster
+961,322,1,Préparer tous les ingrédients pour Curry de légumes thaïlandais au lait de coco
+962,322,2,Suivre les étapes de préparation classiques pour cette recette
+963,322,3,Servir et déguster
+964,323,1,Préparer tous les ingrédients pour Palak Paneer (épinards au fromage indien)
+965,323,2,Suivre les étapes de préparation classiques pour cette recette
+966,323,3,Servir et déguster
+967,324,1,Préparer tous les ingrédients pour Aloo Gobi (curry de chou-fleur et pommes de terre)
+968,324,2,Suivre les étapes de préparation classiques pour cette recette
+969,324,3,Servir et déguster
+970,325,1,Préparer tous les ingrédients pour Chana Masala (curry de pois chiches épicé)
+971,325,2,Suivre les étapes de préparation classiques pour cette recette
+972,325,3,Servir et déguster
+973,326,1,Préparer tous les ingrédients pour Baingan Bharta (caviar d'aubergine indien)
+974,326,2,Suivre les étapes de préparation classiques pour cette recette
+975,326,3,Servir et déguster
+976,327,1,Préparer tous les ingrédients pour Samosas aux légumes
+977,327,2,Suivre les étapes de préparation classiques pour cette recette
+978,327,3,Servir et déguster
+979,328,1,Préparer tous les ingrédients pour Pakoras d'oignons (beignets indiens)
+980,328,2,Suivre les étapes de préparation classiques pour cette recette
+981,328,3,Servir et déguster
+982,329,1,Préparer tous les ingrédients pour Caponata sicilienne
+983,329,2,Suivre les étapes de préparation classiques pour cette recette
+984,329,3,Servir et déguster
+985,330,1,Préparer tous les ingrédients pour Pâtes aux brocolis et anchois
+986,330,2,Suivre les étapes de préparation classiques pour cette recette
+987,330,3,Servir et déguster
+988,331,1,Préparer tous les ingrédients pour Risotto de petit épeautre aux champignons
+989,331,2,Suivre les étapes de préparation classiques pour cette recette
+990,331,3,Servir et déguster
+991,332,1,Préparer tous les ingrédients pour Galettes de sarrasin aux champignons et crème
+992,332,2,Suivre les étapes de préparation classiques pour cette recette
+993,332,3,Servir et déguster
+994,333,1,Préparer tous les ingrédients pour Crozets en gratin au beaufort (croziflette)
+995,333,2,Suivre les étapes de préparation classiques pour cette recette
+996,333,3,Servir et déguster
+997,334,1,Préparer tous les ingrédients pour Tarte au maroilles
+998,334,2,Suivre les étapes de préparation classiques pour cette recette
+999,334,3,Servir et déguster
+1000,335,1,Préparer tous les ingrédients pour Pissaladière niçoise
+1001,335,2,Suivre les étapes de préparation classiques pour cette recette
+1002,335,3,Servir et déguster
+1003,336,1,Préparer tous les ingrédients pour Tourte aux blettes sucrée-salée
+1004,336,2,Suivre les étapes de préparation classiques pour cette recette
+1005,336,3,Servir et déguster
+1006,337,1,Préparer tous les ingrédients pour Gözleme turc aux épinards et feta
+1007,337,2,Suivre les étapes de préparation classiques pour cette recette
+1008,337,3,Servir et déguster
+1009,338,1,Préparer tous les ingrédients pour Börek aux épinards
+1010,338,2,Suivre les étapes de préparation classiques pour cette recette
+1011,338,3,Servir et déguster
+1012,339,1,Préparer tous les ingrédients pour Fattoush (salade libanaise au pain pita grillé)
+1013,339,2,Suivre les étapes de préparation classiques pour cette recette
+1014,339,3,Servir et déguster
+1015,340,1,"Préparer tous les ingrédients pour Koshari égyptien (riz, lentilles, pâtes, sauce tomate)"
+1016,340,2,Suivre les étapes de préparation classiques pour cette recette
+1017,340,3,Servir et déguster
+1018,341,1,Préparer tous les ingrédients pour Mjadra (riz aux lentilles et oignons frits)
+1019,341,2,Suivre les étapes de préparation classiques pour cette recette
+1020,341,3,Servir et déguster
+1021,342,1,"Préparer tous les ingrédients pour Salade Waldorf (céleri, pomme, noix)"
+1022,342,2,Suivre les étapes de préparation classiques pour cette recette
+1023,342,3,Servir et déguster
+1024,343,1,Préparer tous les ingrédients pour Coleslaw américain
+1025,343,2,Suivre les étapes de préparation classiques pour cette recette
+1026,343,3,Servir et déguster
+1027,344,1,Préparer tous les ingrédients pour Salade de pommes de terre allemande (Kartoffelsalat)
+1028,344,2,Suivre les étapes de préparation classiques pour cette recette
+1029,344,3,Servir et déguster
+1030,345,1,Préparer tous les ingrédients pour Salade de concombre à la danoise (Agurkesalat)
+1031,345,2,Suivre les étapes de préparation classiques pour cette recette
+1032,345,3,Servir et déguster
+1033,346,1,"Préparer tous les ingrédients pour Salade de betteraves crues, pomme verte et noisettes"
+1034,346,2,Suivre les étapes de préparation classiques pour cette recette
+1035,346,3,Servir et déguster
+1036,347,1,Préparer tous les ingrédients pour Salade de fenouil à l'orange et aux olives noires
+1037,347,2,Suivre les étapes de préparation classiques pour cette recette
+1038,347,3,Servir et déguster
+1039,348,1,Préparer tous les ingrédients pour Salade de carottes râpées au citron et cumin
+1040,348,2,Suivre les étapes de préparation classiques pour cette recette
+1041,348,3,Servir et déguster
+1042,349,1,Préparer tous les ingrédients pour Salade de chou rouge aux pommes et aux noix
+1043,349,2,Suivre les étapes de préparation classiques pour cette recette
+1044,349,3,Servir et déguster
+1045,350,1,"Préparer tous les ingrédients pour Salade de pâtes grecque (feta, olives, concombre)"
+1046,350,2,Suivre les étapes de préparation classiques pour cette recette
+1047,350,3,Servir et déguster
+1048,351,1,"Préparer tous les ingrédients pour Salade de lentilles corail, carottes et coco"
+1049,351,2,Suivre les étapes de préparation classiques pour cette recette
+1050,351,3,Servir et déguster
+1051,352,1,Préparer tous les ingrédients pour Taboulé de chou-fleur
+1052,352,2,Suivre les étapes de préparation classiques pour cette recette
+1053,352,3,Servir et déguster
+1054,353,1,"Préparer tous les ingrédients pour Salade d'endives, noix et roquefort"
+1055,353,2,Suivre les étapes de préparation classiques pour cette recette
+1056,353,3,Servir et déguster
+1057,354,1,"Préparer tous les ingrédients pour Salade lyonnaise (lardons, croûtons, œuf poché)"
+1058,354,2,Suivre les étapes de préparation classiques pour cette recette
+1059,354,3,Servir et déguster
+1060,355,1,"Préparer tous les ingrédients pour Salade landaise (gésiers, magret fumé)"
+1061,355,2,Suivre les étapes de préparation classiques pour cette recette
+1062,355,3,Servir et déguster
+1063,356,1,"Préparer tous les ingrédients pour Salade de haricots verts, tomates et oignons"
+1064,356,2,Suivre les étapes de préparation classiques pour cette recette
+1065,356,3,Servir et déguster
+1066,357,1,Préparer tous les ingrédients pour Ajo Blanco (soupe froide d'amandes espagnole)
+1067,357,2,Suivre les étapes de préparation classiques pour cette recette
+1068,357,3,Servir et déguster
+1069,358,1,Préparer tous les ingrédients pour Vichyssoise (soupe froide poireaux-pommes de terre)
+1070,358,2,Suivre les étapes de préparation classiques pour cette recette
+1071,358,3,Servir et déguster
+1072,359,1,Préparer tous les ingrédients pour Soupe froide de melon à la menthe et au porto
+1073,359,2,Suivre les étapes de préparation classiques pour cette recette
+1074,359,3,Servir et déguster
+1075,360,1,Préparer tous les ingrédients pour Okroshka (soupe froide russe au kvas)
+1076,360,2,Suivre les étapes de préparation classiques pour cette recette
+1077,360,3,Servir et déguster
+1078,361,1,Préparer tous les ingrédients pour Salade de poulpe et pommes de terre
+1079,361,2,Suivre les étapes de préparation classiques pour cette recette
+1080,361,3,Servir et déguster
+1081,362,1,"Préparer tous les ingrédients pour Burger de bœuf classique, cheddar et bacon"
+1082,362,2,Suivre les étapes de préparation classiques pour cette recette
+1083,362,3,Servir et déguster
+1084,363,1,Préparer tous les ingrédients pour Burger de poulet croustillant
+1085,363,2,Suivre les étapes de préparation classiques pour cette recette
+1086,363,3,Servir et déguster
+1087,364,1,Préparer tous les ingrédients pour Burger végétarien aux haricots noirs
+1088,364,2,Suivre les étapes de préparation classiques pour cette recette
+1089,364,3,Servir et déguster
+1090,365,1,Préparer tous les ingrédients pour Hot-dog new-yorkais
+1091,365,2,Suivre les étapes de préparation classiques pour cette recette
+1092,365,3,Servir et déguster
+1093,366,1,Préparer tous les ingrédients pour Sandwich Club au poulet et bacon
+1094,366,2,Suivre les étapes de préparation classiques pour cette recette
+1095,366,3,Servir et déguster
+1096,367,1,"Préparer tous les ingrédients pour Sandwich Reuben (pastrami, choucroute)"
+1097,367,2,Suivre les étapes de préparation classiques pour cette recette
+1098,367,3,Servir et déguster
+1099,368,1,Préparer tous les ingrédients pour Pan Bagnat niçois
+1100,368,2,Suivre les étapes de préparation classiques pour cette recette
+1101,368,3,Servir et déguster
+1102,369,1,Préparer tous les ingrédients pour Croque-Monsieur
+1103,369,2,Suivre les étapes de préparation classiques pour cette recette
+1104,369,3,Servir et déguster
+1105,370,1,Préparer tous les ingrédients pour Croque-Madame
+1106,370,2,Suivre les étapes de préparation classiques pour cette recette
+1107,370,3,Servir et déguster
+1108,371,1,Préparer tous les ingrédients pour Welsh rarebit
+1109,371,2,Suivre les étapes de préparation classiques pour cette recette
+1110,371,3,Servir et déguster
+1111,372,1,"Préparer tous les ingrédients pour Kebab maison (pain pita, viande grillée, sauce blanche)"
+1112,372,2,Suivre les étapes de préparation classiques pour cette recette
+1113,372,3,Servir et déguster
+1114,373,1,Préparer tous les ingrédients pour Gyros grec au porc
+1115,373,2,Suivre les étapes de préparation classiques pour cette recette
+1116,373,3,Servir et déguster
+1117,374,1,Préparer tous les ingrédients pour Wrap au poulet César
+1118,374,2,Suivre les étapes de préparation classiques pour cette recette
+1119,374,3,Servir et déguster
+1120,375,1,"Préparer tous les ingrédients pour Wrap au houmous, falafels et crudités"
+1121,375,2,Suivre les étapes de préparation classiques pour cette recette
+1122,375,3,Servir et déguster
+1123,376,1,Préparer tous les ingrédients pour Bagel au saumon fumé et cream cheese
+1124,376,2,Suivre les étapes de préparation classiques pour cette recette
+1125,376,3,Servir et déguster
+1126,377,1,"Préparer tous les ingrédients pour Focaccia garnie (jambon de parme, roquette, mozzarella)"
+1127,377,2,Suivre les étapes de préparation classiques pour cette recette
+1128,377,3,Servir et déguster
+1129,378,1,Préparer tous les ingrédients pour Arepas vénézuéliennes
+1130,378,2,Suivre les étapes de préparation classiques pour cette recette
+1131,378,3,Servir et déguster
+1132,379,1,Préparer tous les ingrédients pour Empanadas argentines à la viande
+1133,379,2,Suivre les étapes de préparation classiques pour cette recette
+1134,379,3,Servir et déguster
+1135,380,1,Préparer tous les ingrédients pour Tacos al pastor mexicains
+1136,380,2,Suivre les étapes de préparation classiques pour cette recette
+1137,380,3,Servir et déguster
+1138,381,1,Préparer tous les ingrédients pour Quesadillas au fromage et poulet
+1139,381,2,Suivre les étapes de préparation classiques pour cette recette
+1140,381,3,Servir et déguster
+1141,382,1,Préparer tous les ingrédients pour Ramen japonais au porc chashu
+1142,382,2,Suivre les étapes de préparation classiques pour cette recette
+1143,382,3,Servir et déguster
+1144,383,1,Préparer tous les ingrédients pour Udon sauté au bœuf
+1145,383,2,Suivre les étapes de préparation classiques pour cette recette
+1146,383,3,Servir et déguster
+1147,384,1,Préparer tous les ingrédients pour Soba froides et leur sauce tsuyu
+1148,384,2,Suivre les étapes de préparation classiques pour cette recette
+1149,384,3,Servir et déguster
+1150,385,1,Préparer tous les ingrédients pour Yaki Soba (nouilles sautées japonaises)
+1151,385,2,Suivre les étapes de préparation classiques pour cette recette
+1152,385,3,Servir et déguster
+1153,386,1,Préparer tous les ingrédients pour Riz cantonais
+1154,386,2,Suivre les étapes de préparation classiques pour cette recette
+1155,386,3,Servir et déguster
+1156,387,1,Préparer tous les ingrédients pour Nasi Goreng indonésien
+1157,387,2,Suivre les étapes de préparation classiques pour cette recette
+1158,387,3,Servir et déguster
+1159,388,1,Préparer tous les ingrédients pour Riz sauté thaï à l'ananas et aux crevettes
+1160,388,2,Suivre les étapes de préparation classiques pour cette recette
+1161,388,3,Servir et déguster
+1162,389,1,Préparer tous les ingrédients pour Dan Dan noodles sichuanaises
+1163,389,2,Suivre les étapes de préparation classiques pour cette recette
+1164,389,3,Servir et déguster
+1165,390,1,Préparer tous les ingrédients pour Nouilles sautées au poulet et légumes
+1166,390,2,Suivre les étapes de préparation classiques pour cette recette
+1167,390,3,Servir et déguster
+1168,391,1,Préparer tous les ingrédients pour Japchae (nouilles de patate douce coréennes)
+1169,391,2,Suivre les étapes de préparation classiques pour cette recette
+1170,391,3,Servir et déguster
+1171,392,1,Préparer tous les ingrédients pour Soupe de nouilles wonton
+1172,392,2,Suivre les étapes de préparation classiques pour cette recette
+1173,392,3,Servir et déguster
+1174,393,1,Préparer tous les ingrédients pour Laksa de Singapour (soupe de nouilles épicée)
+1175,393,2,Suivre les étapes de préparation classiques pour cette recette
+1176,393,3,Servir et déguster
+1177,394,1,Préparer tous les ingrédients pour Poulet katsu curry japonais
+1178,394,2,Suivre les étapes de préparation classiques pour cette recette
+1179,394,3,Servir et déguster
+1180,395,1,Préparer tous les ingrédients pour Oyakodon (bol de riz au poulet et à l'œuf)
+1181,395,2,Suivre les étapes de préparation classiques pour cette recette
+1182,395,3,Servir et déguster
+1183,396,1,Préparer tous les ingrédients pour Katsudon (bol de riz au porc pané)
+1184,396,2,Suivre les étapes de préparation classiques pour cette recette
+1185,396,3,Servir et déguster
+1186,397,1,Préparer tous les ingrédients pour Onigiri japonais (boules de riz farcies)
+1187,397,2,Suivre les étapes de préparation classiques pour cette recette
+1188,397,3,Servir et déguster
+1189,398,1,Préparer tous les ingrédients pour Congee de riz (porridge de riz salé)
+1190,398,2,Suivre les étapes de préparation classiques pour cette recette
+1191,398,3,Servir et déguster
+1192,399,1,Préparer tous les ingrédients pour Riz gluant à la mangue thaïlandais
+1193,399,2,Suivre les étapes de préparation classiques pour cette recette
+1194,399,3,Servir et déguster
+1195,400,1,Préparer tous les ingrédients pour Kimchi Jjigae (ragoût de kimchi coréen)
+1196,400,2,Suivre les étapes de préparation classiques pour cette recette
+1197,400,3,Servir et déguster
+1198,401,1,Préparer tous les ingrédients pour Tteokbokki (gâteaux de riz épicés coréens)
+1199,401,2,Suivre les étapes de préparation classiques pour cette recette
+1200,401,3,Servir et déguster
+1201,402,1,Préparer tous les ingrédients pour Crème brûlée à la vanille
+1202,402,2,Suivre les étapes de préparation classiques pour cette recette
+1203,402,3,Servir et déguster
+1204,403,1,Préparer tous les ingrédients pour Mousse au chocolat noir
+1205,403,2,Suivre les étapes de préparation classiques pour cette recette
+1206,403,3,Servir et déguster
+1207,404,1,Préparer tous les ingrédients pour Île flottante et sa crème anglaise
+1208,404,2,Suivre les étapes de préparation classiques pour cette recette
+1209,404,3,Servir et déguster
+1210,405,1,Préparer tous les ingrédients pour Profiteroles au chocolat chaud
+1211,405,2,Suivre les étapes de préparation classiques pour cette recette
+1212,405,3,Servir et déguster
+1213,406,1,Préparer tous les ingrédients pour Tarte Tatin aux pommes
+1214,406,2,Suivre les étapes de préparation classiques pour cette recette
+1215,406,3,Servir et déguster
+1216,407,1,Préparer tous les ingrédients pour Tarte au citron meringuée
+1217,407,2,Suivre les étapes de préparation classiques pour cette recette
+1218,407,3,Servir et déguster
+1219,408,1,Préparer tous les ingrédients pour Tarte Bourdaloue (poires et amandes)
+1220,408,2,Suivre les étapes de préparation classiques pour cette recette
+1221,408,3,Servir et déguster
+1222,409,1,Préparer tous les ingrédients pour Clafoutis aux cerises
+1223,409,2,Suivre les étapes de préparation classiques pour cette recette
+1224,409,3,Servir et déguster
+1225,410,1,Préparer tous les ingrédients pour Far breton aux pruneaux
+1226,410,2,Suivre les étapes de préparation classiques pour cette recette
+1227,410,3,Servir et déguster
+1228,411,1,Préparer tous les ingrédients pour Canelés de Bordeaux
+1229,411,2,Suivre les étapes de préparation classiques pour cette recette
+1230,411,3,Servir et déguster
+1231,412,1,"Préparer tous les ingrédients pour Macarons parisiens (pistache, chocolat, framboise)"
+1232,412,2,Suivre les étapes de préparation classiques pour cette recette
+1233,412,3,Servir et déguster
+1234,413,1,"Préparer tous les ingrédients pour Paris-Brest (pâte à choux, crème pralinée)"
+1235,413,2,Suivre les étapes de préparation classiques pour cette recette
+1236,413,3,Servir et déguster
+1237,414,1,Préparer tous les ingrédients pour Éclair au café ou au chocolat
+1238,414,2,Suivre les étapes de préparation classiques pour cette recette
+1239,414,3,Servir et déguster
+1240,415,1,Préparer tous les ingrédients pour Religieuse au chocolat
+1241,415,2,Suivre les étapes de préparation classiques pour cette recette
+1242,415,3,Servir et déguster
+1243,416,1,Préparer tous les ingrédients pour Saint-Honoré
+1244,416,2,Suivre les étapes de préparation classiques pour cette recette
+1245,416,3,Servir et déguster
+1246,417,1,Préparer tous les ingrédients pour Fraisier
+1247,417,2,Suivre les étapes de préparation classiques pour cette recette
+1248,417,3,Servir et déguster
+1249,418,1,Préparer tous les ingrédients pour Opéra
+1250,418,2,Suivre les étapes de préparation classiques pour cette recette
+1251,418,3,Servir et déguster
+1252,419,1,Préparer tous les ingrédients pour Mille-feuille
+1253,419,2,Suivre les étapes de préparation classiques pour cette recette
+1254,419,3,Servir et déguster
+1255,420,1,Préparer tous les ingrédients pour Soufflé au Grand Marnier
+1256,420,2,Suivre les étapes de préparation classiques pour cette recette
+1257,420,3,Servir et déguster
+1258,421,1,Préparer tous les ingrédients pour Riz au lait à la vanille
+1259,421,2,Suivre les étapes de préparation classiques pour cette recette
+1260,421,3,Servir et déguster
+1261,422,1,Préparer tous les ingrédients pour Tiramisu classique au café
+1262,422,2,Suivre les étapes de préparation classiques pour cette recette
+1263,422,3,Servir et déguster
+1264,423,1,Préparer tous les ingrédients pour Panna Cotta et son coulis de fruits rouges
+1265,423,2,Suivre les étapes de préparation classiques pour cette recette
+1266,423,3,Servir et déguster
+1267,424,1,Préparer tous les ingrédients pour Tiramisu aux fraises
+1268,424,2,Suivre les étapes de préparation classiques pour cette recette
+1269,424,3,Servir et déguster
+1270,425,1,Préparer tous les ingrédients pour Panna Cotta au caramel beurre salé
+1271,425,2,Suivre les étapes de préparation classiques pour cette recette
+1272,425,3,Servir et déguster
+1273,426,1,Préparer tous les ingrédients pour Zabaione au Marsala
+1274,426,2,Suivre les étapes de préparation classiques pour cette recette
+1275,426,3,Servir et déguster
+1276,427,1,Préparer tous les ingrédients pour Cannoli siciliens à la ricotta
+1277,427,2,Suivre les étapes de préparation classiques pour cette recette
+1278,427,3,Servir et déguster
+1279,428,1,Préparer tous les ingrédients pour Torta della nonna (tarte à la crème pâtissière et pignons)
+1280,428,2,Suivre les étapes de préparation classiques pour cette recette
+1281,428,3,Servir et déguster
+1282,429,1,Préparer tous les ingrédients pour Torta caprese (gâteau au chocolat et amandes)
+1283,429,2,Suivre les étapes de préparation classiques pour cette recette
+1284,429,3,Servir et déguster
+1285,430,1,Préparer tous les ingrédients pour Semifreddo au nougat
+1286,430,2,Suivre les étapes de préparation classiques pour cette recette
+1287,430,3,Servir et déguster
+1288,431,1,Préparer tous les ingrédients pour Gelato à la pistache maison
+1289,431,2,Suivre les étapes de préparation classiques pour cette recette
+1290,431,3,Servir et déguster
+1291,432,1,Préparer tous les ingrédients pour Affogato (glace vanille noyée dans un expresso)
+1292,432,2,Suivre les étapes de préparation classiques pour cette recette
+1293,432,3,Servir et déguster
+1294,433,1,Préparer tous les ingrédients pour Panettone (version maison)
+1295,433,2,Suivre les étapes de préparation classiques pour cette recette
+1296,433,3,Servir et déguster
+1297,434,1,Préparer tous les ingrédients pour Cantucci (croquants aux amandes)
+1298,434,2,Suivre les étapes de préparation classiques pour cette recette
+1299,434,3,Servir et déguster
+1300,435,1,Préparer tous les ingrédients pour Bonet piémontais (flan au chocolat et amaretti)
+1301,435,2,Suivre les étapes de préparation classiques pour cette recette
+1302,435,3,Servir et déguster
+1303,436,1,Préparer tous les ingrédients pour Pêches au vin
+1304,436,2,Suivre les étapes de préparation classiques pour cette recette
+1305,436,3,Servir et déguster
+1306,437,1,Préparer tous les ingrédients pour Sbrisolona (gâteau friable aux amandes)
+1307,437,2,Suivre les étapes de préparation classiques pour cette recette
+1308,437,3,Servir et déguster
+1309,438,1,Préparer tous les ingrédients pour Crostata à la confiture d'abricots
+1310,438,2,Suivre les étapes de préparation classiques pour cette recette
+1311,438,3,Servir et déguster
+1312,439,1,Préparer tous les ingrédients pour Salame al cioccolato (saucisson au chocolat)
+1313,439,2,Suivre les étapes de préparation classiques pour cette recette
+1314,439,3,Servir et déguster
+1315,440,1,Préparer tous les ingrédients pour Sfogliatelle napolitaines
+1316,440,2,Suivre les étapes de préparation classiques pour cette recette
+1317,440,3,Servir et déguster
+1318,441,1,Préparer tous les ingrédients pour Pastiera napolitaine
+1319,441,2,Suivre les étapes de préparation classiques pour cette recette
+1320,441,3,Servir et déguster
+1321,442,1,Préparer tous les ingrédients pour Cheesecake new-yorkais
+1322,442,2,Suivre les étapes de préparation classiques pour cette recette
+1323,442,3,Servir et déguster
+1324,443,1,Préparer tous les ingrédients pour Brownie au chocolat et noix de pécan
+1325,443,2,Suivre les étapes de préparation classiques pour cette recette
+1326,443,3,Servir et déguster
+1327,444,1,Préparer tous les ingrédients pour Cookies aux pépites de chocolat
+1328,444,2,Suivre les étapes de préparation classiques pour cette recette
+1329,444,3,Servir et déguster
+1330,445,1,Préparer tous les ingrédients pour Apple pie américaine
+1331,445,2,Suivre les étapes de préparation classiques pour cette recette
+1332,445,3,Servir et déguster
+1333,446,1,Préparer tous les ingrédients pour Pumpkin pie (tarte à la citrouille)
+1334,446,2,Suivre les étapes de préparation classiques pour cette recette
+1335,446,3,Servir et déguster
+1336,447,1,Préparer tous les ingrédients pour Pecan pie (tarte aux noix de pécan)
+1337,447,2,Suivre les étapes de préparation classiques pour cette recette
+1338,447,3,Servir et déguster
+1339,448,1,Préparer tous les ingrédients pour Carrot cake et son glaçage au cream cheese
+1340,448,2,Suivre les étapes de préparation classiques pour cette recette
+1341,448,3,Servir et déguster
+1342,449,1,Préparer tous les ingrédients pour Red velvet cake
+1343,449,2,Suivre les étapes de préparation classiques pour cette recette
+1344,449,3,Servir et déguster
+1345,450,1,Préparer tous les ingrédients pour Muffins aux myrtilles
+1346,450,2,Suivre les étapes de préparation classiques pour cette recette
+1347,450,3,Servir et déguster
+1348,451,1,Préparer tous les ingrédients pour Cupcakes à la vanille et glaçage
+1349,451,2,Suivre les étapes de préparation classiques pour cette recette
+1350,451,3,Servir et déguster
+1351,452,1,Préparer tous les ingrédients pour Banana bread
+1352,452,2,Suivre les étapes de préparation classiques pour cette recette
+1353,452,3,Servir et déguster
+1354,453,1,Préparer tous les ingrédients pour Key lime pie (tarte au citron vert)
+1355,453,2,Suivre les étapes de préparation classiques pour cette recette
+1356,453,3,Servir et déguster
+1357,454,1,Préparer tous les ingrédients pour Crumble aux pommes et à la cannelle
+1358,454,2,Suivre les étapes de préparation classiques pour cette recette
+1359,454,3,Servir et déguster
+1360,455,1,Préparer tous les ingrédients pour Sticky toffee pudding
+1361,455,2,Suivre les étapes de préparation classiques pour cette recette
+1362,455,3,Servir et déguster
+1363,456,1,"Préparer tous les ingrédients pour Eton mess (meringue, fraises, crème)"
+1364,456,2,Suivre les étapes de préparation classiques pour cette recette
+1365,456,3,Servir et déguster
+1366,457,1,"Préparer tous les ingrédients pour Scones britanniques, clotted cream et confiture"
+1367,457,2,Suivre les étapes de préparation classiques pour cette recette
+1368,457,3,Servir et déguster
+1369,458,1,Préparer tous les ingrédients pour Trifle anglais
+1370,458,2,Suivre les étapes de préparation classiques pour cette recette
+1371,458,3,Servir et déguster
+1372,459,1,Préparer tous les ingrédients pour Banoffee pie
+1373,459,2,Suivre les étapes de préparation classiques pour cette recette
+1374,459,3,Servir et déguster
+1375,460,1,Préparer tous les ingrédients pour Bread and butter pudding
+1376,460,2,Suivre les étapes de préparation classiques pour cette recette
+1377,460,3,Servir et déguster
+1378,461,1,Préparer tous les ingrédients pour Shortbread écossais
+1379,461,2,Suivre les étapes de préparation classiques pour cette recette
+1380,461,3,Servir et déguster
+1381,462,1,Préparer tous les ingrédients pour Forêt-Noire allemande (Schwarzwälder Kirschtorte)
+1470,491,3,Servir et déguster
+1382,462,2,Suivre les étapes de préparation classiques pour cette recette
+1383,462,3,Servir et déguster
+1384,463,1,Préparer tous les ingrédients pour Apfelstrudel autrichien
+1385,463,2,Suivre les étapes de préparation classiques pour cette recette
+1386,463,3,Servir et déguster
+1387,464,1,Préparer tous les ingrédients pour Sacher Torte viennoise
+1388,464,2,Suivre les étapes de préparation classiques pour cette recette
+1389,464,3,Servir et déguster
+1390,465,1,Préparer tous les ingrédients pour Linzer Torte
+1391,465,2,Suivre les étapes de préparation classiques pour cette recette
+1392,465,3,Servir et déguster
+1393,466,1,Préparer tous les ingrédients pour Churros espagnols et leur chocolat chaud
+1394,466,2,Suivre les étapes de préparation classiques pour cette recette
+1395,466,3,Servir et déguster
+1396,467,1,Préparer tous les ingrédients pour Crème catalane
+1397,467,2,Suivre les étapes de préparation classiques pour cette recette
+1398,467,3,Servir et déguster
+1399,468,1,Préparer tous les ingrédients pour Tarta de Santiago (gâteau aux amandes)
+1400,468,2,Suivre les étapes de préparation classiques pour cette recette
+1401,468,3,Servir et déguster
+1402,469,1,Préparer tous les ingrédients pour Leche frita (lait frit)
+1403,469,2,Suivre les étapes de préparation classiques pour cette recette
+1404,469,3,Servir et déguster
+1405,470,1,Préparer tous les ingrédients pour Pastel de nata portugais
+1406,470,2,Suivre les étapes de préparation classiques pour cette recette
+1407,470,3,Servir et déguster
+1408,471,1,Préparer tous les ingrédients pour Gâteau basque à la crème ou à la cerise
+1409,471,2,Suivre les étapes de préparation classiques pour cette recette
+1410,471,3,Servir et déguster
+1411,472,1,Préparer tous les ingrédients pour Loukoumades grecs (beignets au miel)
+1412,472,2,Suivre les étapes de préparation classiques pour cette recette
+1413,472,3,Servir et déguster
+1414,473,1,Préparer tous les ingrédients pour Baklava
+1415,473,2,Suivre les étapes de préparation classiques pour cette recette
+1416,473,3,Servir et déguster
+1417,474,1,Préparer tous les ingrédients pour Halva
+1418,474,2,Suivre les étapes de préparation classiques pour cette recette
+1419,474,3,Servir et déguster
+1420,475,1,Préparer tous les ingrédients pour Basboussa (gâteau de semoule)
+1421,475,2,Suivre les étapes de préparation classiques pour cette recette
+1422,475,3,Servir et déguster
+1423,476,1,Préparer tous les ingrédients pour Cornes de gazelle marocaines
+1424,476,2,Suivre les étapes de préparation classiques pour cette recette
+1425,476,3,Servir et déguster
+1426,477,1,Préparer tous les ingrédients pour Mochi japonais
+1427,477,2,Suivre les étapes de préparation classiques pour cette recette
+1428,477,3,Servir et déguster
+1429,478,1,Préparer tous les ingrédients pour Dorayaki (pancakes japonais fourrés)
+1430,478,2,Suivre les étapes de préparation classiques pour cette recette
+1431,478,3,Servir et déguster
+1432,479,1,Préparer tous les ingrédients pour Gâteau de lune chinois
+1433,479,2,Suivre les étapes de préparation classiques pour cette recette
+1434,479,3,Servir et déguster
+1435,480,1,Préparer tous les ingrédients pour Alfajores argentins
+1436,480,2,Suivre les étapes de préparation classiques pour cette recette
+1437,480,3,Servir et déguster
+1438,481,1,Préparer tous les ingrédients pour Brigadeiros brésiliens
+1439,481,2,Suivre les étapes de préparation classiques pour cette recette
+1440,481,3,Servir et déguster
+1441,482,1,Préparer tous les ingrédients pour Salade de fruits frais de saison
+1442,482,2,Suivre les étapes de préparation classiques pour cette recette
+1443,482,3,Servir et déguster
+1444,483,1,Préparer tous les ingrédients pour Carpaccio d'ananas à la menthe et au citron vert
+1445,483,2,Suivre les étapes de préparation classiques pour cette recette
+1446,483,3,Servir et déguster
+1447,484,1,Préparer tous les ingrédients pour Fraises au sucre et jus de citron
+1448,484,2,Suivre les étapes de préparation classiques pour cette recette
+1449,484,3,Servir et déguster
+1450,485,1,Préparer tous les ingrédients pour Soupe de fraises à la menthe
+1451,485,2,Suivre les étapes de préparation classiques pour cette recette
+1452,485,3,Servir et déguster
+1453,486,1,Préparer tous les ingrédients pour Poires Belle-Hélène
+1454,486,2,Suivre les étapes de préparation classiques pour cette recette
+1455,486,3,Servir et déguster
+1456,487,1,Préparer tous les ingrédients pour Pêches Melba
+1457,487,2,Suivre les étapes de préparation classiques pour cette recette
+1458,487,3,Servir et déguster
+1459,488,1,"Préparer tous les ingrédients pour Pommes au four, miel et cannelle"
+1460,488,2,Suivre les étapes de préparation classiques pour cette recette
+1461,488,3,Servir et déguster
+1462,489,1,Préparer tous les ingrédients pour Bananes flambées au rhum
+1463,489,2,Suivre les étapes de préparation classiques pour cette recette
+1464,489,3,Servir et déguster
+1465,490,1,Préparer tous les ingrédients pour Salade d'oranges à la cannelle
+1466,490,2,Suivre les étapes de préparation classiques pour cette recette
+1467,490,3,Servir et déguster
+1468,491,1,Préparer tous les ingrédients pour Gratin de fruits rouges
+1469,491,2,Suivre les étapes de préparation classiques pour cette recette
+1471,492,1,Préparer tous les ingrédients pour Tarte fine aux pommes sur pâte feuilletée
+1472,492,2,Suivre les étapes de préparation classiques pour cette recette
+1473,492,3,Servir et déguster
+1474,493,1,Préparer tous les ingrédients pour Compote de pommes maison sans sucre ajouté
+1475,493,2,Suivre les étapes de préparation classiques pour cette recette
+1476,493,3,Servir et déguster
+1477,494,1,Préparer tous les ingrédients pour Crumble aux fruits rouges et flocons d'avoine
+1478,494,2,Suivre les étapes de préparation classiques pour cette recette
+1479,494,3,Servir et déguster
+1480,495,1,"Préparer tous les ingrédients pour Sorbet maison (citron, framboise)"
+1481,495,2,Suivre les étapes de préparation classiques pour cette recette
+1482,495,3,Servir et déguster
+1483,496,1,Préparer tous les ingrédients pour Nice cream (glace à la banane congelée)
+1484,496,2,Suivre les étapes de préparation classiques pour cette recette
+1485,496,3,Servir et déguster
+1486,497,1,Préparer tous les ingrédients pour Energy balls aux dattes et noix de cajou
+1487,497,2,Suivre les étapes de préparation classiques pour cette recette
+1488,497,3,Servir et déguster
+1489,498,1,Préparer tous les ingrédients pour Barres de céréales maison
+1490,498,2,Suivre les étapes de préparation classiques pour cette recette
+1491,498,3,Servir et déguster
+1492,499,1,Préparer tous les ingrédients pour Yaourt glacé (frozen yogurt) aux fruits
+1493,499,2,Suivre les étapes de préparation classiques pour cette recette
+1494,499,3,Servir et déguster
+1495,500,1,Préparer tous les ingrédients pour Mousse d'avocat au cacao
+1496,500,2,Suivre les étapes de préparation classiques pour cette recette
+1497,500,3,Servir et déguster
+1498,501,1,Préparer tous les ingrédients pour Pommes en tranches et beurre de cacahuètes
+1499,501,2,Suivre les étapes de préparation classiques pour cette recette
+1500,501,3,Servir et déguster
+1501,502,1,Préparer tous les ingrédients pour Baguette tradition française
+1502,502,2,Suivre les étapes de préparation classiques pour cette recette
+1503,502,3,Servir et déguster
+1504,503,1,Préparer tous les ingrédients pour Pain de campagne au levain
+1505,503,2,Suivre les étapes de préparation classiques pour cette recette
+1506,503,3,Servir et déguster
+1507,504,1,Préparer tous les ingrédients pour Pain complet maison
+1508,504,2,Suivre les étapes de préparation classiques pour cette recette
+1509,504,3,Servir et déguster
+1510,505,1,Préparer tous les ingrédients pour Pain aux céréales
+1511,505,2,Suivre les étapes de préparation classiques pour cette recette
+1512,505,3,Servir et déguster
+1513,506,1,Préparer tous les ingrédients pour Pain de seigle
+1514,506,2,Suivre les étapes de préparation classiques pour cette recette
+1515,506,3,Servir et déguster
+1516,507,1,Préparer tous les ingrédients pour Pain de mie maison
+1517,507,2,Suivre les étapes de préparation classiques pour cette recette
+1518,507,3,Servir et déguster
+1519,508,1,Préparer tous les ingrédients pour Pains à burger (buns)
+1520,508,2,Suivre les étapes de préparation classiques pour cette recette
+1521,508,3,Servir et déguster
+1522,509,1,Préparer tous les ingrédients pour Pains pita
+1523,509,2,Suivre les étapes de préparation classiques pour cette recette
+1524,509,3,Servir et déguster
+1525,510,1,Préparer tous les ingrédients pour Naans indiens au fromage
+1526,510,2,Suivre les étapes de préparation classiques pour cette recette
+1527,510,3,Servir et déguster
+1528,511,1,Préparer tous les ingrédients pour Chapatis
+1529,511,2,Suivre les étapes de préparation classiques pour cette recette
+1530,511,3,Servir et déguster
+1531,512,1,Préparer tous les ingrédients pour Pain à la semoule (khobz)
+1532,512,2,Suivre les étapes de préparation classiques pour cette recette
+1533,512,3,Servir et déguster
+1534,513,1,Préparer tous les ingrédients pour Bretzels alsaciens
+1535,513,2,Suivre les étapes de préparation classiques pour cette recette
+1536,513,3,Servir et déguster
+1537,514,1,Préparer tous les ingrédients pour Ciabatta italienne
+1538,514,2,Suivre les étapes de préparation classiques pour cette recette
+1539,514,3,Servir et déguster
+1540,515,1,Préparer tous les ingrédients pour Pain brioché
+1541,515,2,Suivre les étapes de préparation classiques pour cette recette
+1542,515,3,Servir et déguster
+1543,516,1,Préparer tous les ingrédients pour Croissants au beurre
+1544,516,2,Suivre les étapes de préparation classiques pour cette recette
+1545,516,3,Servir et déguster
+1546,517,1,Préparer tous les ingrédients pour Pains au chocolat
+1547,517,2,Suivre les étapes de préparation classiques pour cette recette
+1548,517,3,Servir et déguster
+1549,518,1,Préparer tous les ingrédients pour Pains aux raisins
+1550,518,2,Suivre les étapes de préparation classiques pour cette recette
+1551,518,3,Servir et déguster
+1552,519,1,Préparer tous les ingrédients pour Brioche tressée
+1553,519,2,Suivre les étapes de préparation classiques pour cette recette
+1554,519,3,Servir et déguster
+1555,520,1,Préparer tous les ingrédients pour Kouglof alsacien
+1556,520,2,Suivre les étapes de préparation classiques pour cette recette
+1557,520,3,Servir et déguster
+1558,521,1,Préparer tous les ingrédients pour Chinois (gâteau brioché à la crème)
+1559,521,2,Suivre les étapes de préparation classiques pour cette recette
+1560,521,3,Servir et déguster
+1561,522,1,Préparer tous les ingrédients pour Baeckeoffe alsacien
+1562,522,2,Suivre les étapes de préparation classiques pour cette recette
+1563,522,3,Servir et déguster
+1564,523,1,Préparer tous les ingrédients pour Tripes à la mode de Caen
+1565,523,2,Suivre les étapes de préparation classiques pour cette recette
+1566,523,3,Servir et déguster
+1567,524,1,Préparer tous les ingrédients pour Potjevleesch flamand
+1568,524,2,Suivre les étapes de préparation classiques pour cette recette
+1569,524,3,Servir et déguster
+1570,525,1,Préparer tous les ingrédients pour Axoa de veau basque
+1571,525,2,Suivre les étapes de préparation classiques pour cette recette
+1572,525,3,Servir et déguster
+1573,526,1,Préparer tous les ingrédients pour Daube niçoise
+1574,526,2,Suivre les étapes de préparation classiques pour cette recette
+1575,526,3,Servir et déguster
+1576,527,1,Préparer tous les ingrédients pour Pieds paquets marseillais
+1577,527,2,Suivre les étapes de préparation classiques pour cette recette
+1578,527,3,Servir et déguster
+1579,528,1,Préparer tous les ingrédients pour Alouettes sans tête provençales
+1580,528,2,Suivre les étapes de préparation classiques pour cette recette
+1581,528,3,Servir et déguster
+1582,529,1,Préparer tous les ingrédients pour Fricassée de volaille à l'angevine
+1583,529,2,Suivre les étapes de préparation classiques pour cette recette
+1584,529,3,Servir et déguster
+1585,530,1,Préparer tous les ingrédients pour Poule au pot
+1586,530,2,Suivre les étapes de préparation classiques pour cette recette
+1587,530,3,Servir et déguster
+1588,531,1,Préparer tous les ingrédients pour Coquilles Saint-Jacques à la bretonne
+1589,531,2,Suivre les étapes de préparation classiques pour cette recette
+1590,531,3,Servir et déguster
+1591,532,1,Préparer tous les ingrédients pour Cotriade bretonne
+1592,532,2,Suivre les étapes de préparation classiques pour cette recette
+1593,532,3,Servir et déguster
+1594,533,1,Préparer tous les ingrédients pour Matelote d'anguille
+1595,533,2,Suivre les étapes de préparation classiques pour cette recette
+1596,533,3,Servir et déguster
+1597,534,1,Préparer tous les ingrédients pour Lamproie à la bordelaise
+1598,534,2,Suivre les étapes de préparation classiques pour cette recette
+1599,534,3,Servir et déguster
+1600,535,1,Préparer tous les ingrédients pour Ttoro (soupe de poisson basque)
+1601,535,2,Suivre les étapes de préparation classiques pour cette recette
+1602,535,3,Servir et déguster
+1603,536,1,Préparer tous les ingrédients pour Morue à la lyonnaise
+1604,536,2,Suivre les étapes de préparation classiques pour cette recette
+1605,536,3,Servir et déguster
+1606,537,1,Préparer tous les ingrédients pour Quenelles de brochet sauce Nantua
+1607,537,2,Suivre les étapes de préparation classiques pour cette recette
+1608,537,3,Servir et déguster
+1609,538,1,Préparer tous les ingrédients pour Grenouilles en persillade
+1610,538,2,Suivre les étapes de préparation classiques pour cette recette
+1611,538,3,Servir et déguster
+1612,539,1,Préparer tous les ingrédients pour Fricassée d'escargots
+1613,539,2,Suivre les étapes de préparation classiques pour cette recette
+1614,539,3,Servir et déguster
+1615,540,1,Préparer tous les ingrédients pour Caillettes ardéchoises
+1616,540,2,Suivre les étapes de préparation classiques pour cette recette
+1617,540,3,Servir et déguster
+1618,541,1,Préparer tous les ingrédients pour Diots de Savoie au vin blanc
+1619,541,2,Suivre les étapes de préparation classiques pour cette recette
+1620,541,3,Servir et déguster
+1621,542,1,Préparer tous les ingrédients pour Pounti auvergnat
+1622,542,2,Suivre les étapes de préparation classiques pour cette recette
+1623,542,3,Servir et déguster
+1624,543,1,Préparer tous les ingrédients pour Farçous aveyronnais
+1625,543,2,Suivre les étapes de préparation classiques pour cette recette
+1626,543,3,Servir et déguster
+1627,544,1,Préparer tous les ingrédients pour Crique ardéchoise (galette de pommes de terre)
+1628,544,2,Suivre les étapes de préparation classiques pour cette recette
+1629,544,3,Servir et déguster
+1630,545,1,Préparer tous les ingrédients pour Cardons à la moelle lyonnais
+1631,545,2,Suivre les étapes de préparation classiques pour cette recette
+1632,545,3,Servir et déguster
+1633,546,1,Préparer tous les ingrédients pour Gratin de cardons
+1634,546,2,Suivre les étapes de préparation classiques pour cette recette
+1635,546,3,Servir et déguster
+1636,547,1,Préparer tous les ingrédients pour Salade de pissenlits aux lardons
+1637,547,2,Suivre les étapes de préparation classiques pour cette recette
+1638,547,3,Servir et déguster
+1639,548,1,Préparer tous les ingrédients pour Tarte à l'oignon alsacienne
+1640,548,2,Suivre les étapes de préparation classiques pour cette recette
+1641,548,3,Servir et déguster
+1642,549,1,Préparer tous les ingrédients pour Salsifis à la crème
+1643,549,2,Suivre les étapes de préparation classiques pour cette recette
+1644,549,3,Servir et déguster
+1645,550,1,Préparer tous les ingrédients pour Poêlée de cèpes à la bordelaise
+1646,550,2,Suivre les étapes de préparation classiques pour cette recette
+1647,550,3,Servir et déguster
+1648,551,1,Préparer tous les ingrédients pour Farcis niçois
+1649,551,2,Suivre les étapes de préparation classiques pour cette recette
+1650,551,3,Servir et déguster
+1651,552,1,Préparer tous les ingrédients pour Pan bagnat (le vrai)
+1652,552,2,Suivre les étapes de préparation classiques pour cette recette
+1653,552,3,Servir et déguster
+1654,553,1,Préparer tous les ingrédients pour Soupe au pistou
+1655,553,2,Suivre les étapes de préparation classiques pour cette recette
+1656,553,3,Servir et déguster
+1657,554,1,Préparer tous les ingrédients pour Tourton des Alpes
+1658,554,2,Suivre les étapes de préparation classiques pour cette recette
+1659,554,3,Servir et déguster
+1660,555,1,Préparer tous les ingrédients pour Oreilles d'âne du Valgaudemar (gratin d'épinards)
+1661,555,2,Suivre les étapes de préparation classiques pour cette recette
+1662,555,3,Servir et déguster
+1663,556,1,Préparer tous les ingrédients pour Pôchouse de Verdun-sur-le-Doubs (version légumes)
+1664,556,2,Suivre les étapes de préparation classiques pour cette recette
+1665,556,3,Servir et déguster
+1666,557,1,Préparer tous les ingrédients pour Pâté de pommes de terre du Limousin
+1667,557,2,Suivre les étapes de préparation classiques pour cette recette
+1668,557,3,Servir et déguster
+1669,558,1,Préparer tous les ingrédients pour Flaugnarde aux pommes
+1670,558,2,Suivre les étapes de préparation classiques pour cette recette
+1671,558,3,Servir et déguster
+1672,559,1,Préparer tous les ingrédients pour Millassou (galette de pomme de terre)
+1673,559,2,Suivre les étapes de préparation classiques pour cette recette
+1674,559,3,Servir et déguster
+1675,560,1,Préparer tous les ingrédients pour Escargots de Bourgogne
+1676,560,2,Suivre les étapes de préparation classiques pour cette recette
+1677,560,3,Servir et déguster
+1678,561,1,Préparer tous les ingrédients pour Lentilles vertes du Berry en salade
+1679,561,2,Suivre les étapes de préparation classiques pour cette recette
+1680,561,3,Servir et déguster
+1681,562,1,Préparer tous les ingrédients pour Ceviche péruvien
+1682,562,2,Suivre les étapes de préparation classiques pour cette recette
+1683,562,3,Servir et déguster
+1684,563,1,Préparer tous les ingrédients pour Lomo saltado (sauté de bœuf péruvien)
+1685,563,2,Suivre les étapes de préparation classiques pour cette recette
+1686,563,3,Servir et déguster
+1687,564,1,Préparer tous les ingrédients pour Aji de gallina (poulet en sauce pimentée)
+1688,564,2,Suivre les étapes de préparation classiques pour cette recette
+1689,564,3,Servir et déguster
+1690,565,1,Préparer tous les ingrédients pour Feijoada brésilienne
+1691,565,2,Suivre les étapes de préparation classiques pour cette recette
+1692,565,3,Servir et déguster
+1693,566,1,Préparer tous les ingrédients pour Pão de queijo (pains au fromage brésiliens)
+1694,566,2,Suivre les étapes de préparation classiques pour cette recette
+1695,566,3,Servir et déguster
+1696,567,1,Préparer tous les ingrédients pour Moqueca de peixe (ragoût de poisson brésilien)
+1697,567,2,Suivre les étapes de préparation classiques pour cette recette
+1698,567,3,Servir et déguster
+1699,568,1,Préparer tous les ingrédients pour Ropa vieja cubaine (bœuf effiloché)
+1700,568,2,Suivre les étapes de préparation classiques pour cette recette
+1701,568,3,Servir et déguster
+1702,569,1,Préparer tous les ingrédients pour Picadillo
+1703,569,2,Suivre les étapes de préparation classiques pour cette recette
+1704,569,3,Servir et déguster
+1705,570,1,Préparer tous les ingrédients pour Arroz con pollo
+1706,570,2,Suivre les étapes de préparation classiques pour cette recette
+1707,570,3,Servir et déguster
+1708,571,1,Préparer tous les ingrédients pour Sancocho (soupe colombienne)
+1709,571,2,Suivre les étapes de préparation classiques pour cette recette
+1710,571,3,Servir et déguster
+1711,572,1,Préparer tous les ingrédients pour Bandeja paisa (plat complet colombien)
+1712,572,2,Suivre les étapes de préparation classiques pour cette recette
+1713,572,3,Servir et déguster
+1714,573,1,Préparer tous les ingrédients pour Chiles rellenos (piments farcis mexicains)
+1715,573,2,Suivre les étapes de préparation classiques pour cette recette
+1716,573,3,Servir et déguster
+1717,574,1,Préparer tous les ingrédients pour Mole poblano
+1718,574,2,Suivre les étapes de préparation classiques pour cette recette
+1719,574,3,Servir et déguster
+1720,575,1,Préparer tous les ingrédients pour Cochinita pibil
+1721,575,2,Suivre les étapes de préparation classiques pour cette recette
+1722,575,3,Servir et déguster
+1723,576,1,Préparer tous les ingrédients pour Pozole (soupe mexicaine)
+1724,576,2,Suivre les étapes de préparation classiques pour cette recette
+1725,576,3,Servir et déguster
+1726,577,1,Préparer tous les ingrédients pour Tamales
+1727,577,2,Suivre les étapes de préparation classiques pour cette recette
+1728,577,3,Servir et déguster
+1729,578,1,Préparer tous les ingrédients pour Pastel de choclo (gâteau de maïs chilien)
+1730,578,2,Suivre les étapes de préparation classiques pour cette recette
+1731,578,3,Servir et déguster
+1732,579,1,Préparer tous les ingrédients pour Humitas
+1733,579,2,Suivre les étapes de préparation classiques pour cette recette
+1734,579,3,Servir et déguster
+1735,580,1,Préparer tous les ingrédients pour Gallo pinto (riz et haricots du Costa Rica)
+1736,580,2,Suivre les étapes de préparation classiques pour cette recette
+1737,580,3,Servir et déguster
+1738,581,1,Préparer tous les ingrédients pour Patacones (bananes plantain frites)
+1739,581,2,Suivre les étapes de préparation classiques pour cette recette
+1740,581,3,Servir et déguster
+1741,582,1,Préparer tous les ingrédients pour Tajine de poulet aux citrons confits et olives
+1742,582,2,Suivre les étapes de préparation classiques pour cette recette
+1743,582,3,Servir et déguster
+1744,583,1,Préparer tous les ingrédients pour Tajine de kefta aux œufs
+1745,583,2,Suivre les étapes de préparation classiques pour cette recette
+1746,583,3,Servir et déguster
+1747,584,1,"Préparer tous les ingrédients pour Couscous royal (sept légumes, différentes viandes)"
+1748,584,2,Suivre les étapes de préparation classiques pour cette recette
+1749,584,3,Servir et déguster
+1750,585,1,Préparer tous les ingrédients pour Pastilla au poulet et aux amandes
+1751,585,2,Suivre les étapes de préparation classiques pour cette recette
+1752,585,3,Servir et déguster
+1753,586,1,"Préparer tous les ingrédients pour Rfissa marocaine (poulet, lentilles, msemen)"
+1754,586,2,Suivre les étapes de préparation classiques pour cette recette
+1755,586,3,Servir et déguster
+1756,587,1,Préparer tous les ingrédients pour Tanjia marrakchia
+1757,587,2,Suivre les étapes de préparation classiques pour cette recette
+1758,587,3,Servir et déguster
+1759,588,1,Préparer tous les ingrédients pour Bissara (soupe de fèves)
+1760,588,2,Suivre les étapes de préparation classiques pour cette recette
+1761,588,3,Servir et déguster
+1762,589,1,Préparer tous les ingrédients pour Zaalouk (salade d'aubergines cuite)
+1763,589,2,Suivre les étapes de préparation classiques pour cette recette
+1764,589,3,Servir et déguster
+1765,590,1,Préparer tous les ingrédients pour Poulet Yassa sénégalais
+1766,590,2,Suivre les étapes de préparation classiques pour cette recette
+1767,590,3,Servir et déguster
+1768,591,1,Préparer tous les ingrédients pour Mafé (sauce à base d'arachide)
+1769,591,2,Suivre les étapes de préparation classiques pour cette recette
+1770,591,3,Servir et déguster
+1771,592,1,Préparer tous les ingrédients pour Thieboudienne (riz au poisson sénégalais)
+1772,592,2,Suivre les étapes de préparation classiques pour cette recette
+1773,592,3,Servir et déguster
+1774,593,1,Préparer tous les ingrédients pour Doro Wat (ragoût de poulet éthiopien)
+1775,593,2,Suivre les étapes de préparation classiques pour cette recette
+1776,593,3,Servir et déguster
+1777,594,1,Préparer tous les ingrédients pour Injera (crêpe éthiopienne au teff)
+1778,594,2,Suivre les étapes de préparation classiques pour cette recette
+1779,594,3,Servir et déguster
+1780,595,1,Préparer tous les ingrédients pour Shish Taouk (brochettes de poulet libanaises)
+1781,595,2,Suivre les étapes de préparation classiques pour cette recette
+1782,595,3,Servir et déguster
+1783,596,1,Préparer tous les ingrédients pour Shawarma
+1784,596,2,Suivre les étapes de préparation classiques pour cette recette
+1785,596,3,Servir et déguster
+1786,597,1,Préparer tous les ingrédients pour Manakish au zaatar (pizza libanaise)
+1787,597,2,Suivre les étapes de préparation classiques pour cette recette
+1788,597,3,Servir et déguster
+1789,598,1,Préparer tous les ingrédients pour Kibbeh (boulettes de boulgour et viande)
+1790,598,2,Suivre les étapes de préparation classiques pour cette recette
+1791,598,3,Servir et déguster
+1792,599,1,Préparer tous les ingrédients pour Dolmas (feuilles de vigne farcies)
+1793,599,2,Suivre les étapes de préparation classiques pour cette recette
+1794,599,3,Servir et déguster
+1795,600,1,Préparer tous les ingrédients pour Shakshuka (version plus élaborée)
+1796,600,2,Suivre les étapes de préparation classiques pour cette recette
+1797,600,3,Servir et déguster
+1798,601,1,Préparer tous les ingrédients pour Fatteh (plat libanais à base de pain pita)
+1799,601,2,Suivre les étapes de préparation classiques pour cette recette
+1800,601,3,Servir et déguster

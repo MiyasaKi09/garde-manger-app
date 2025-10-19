@@ -1,0 +1,15 @@
+id,name,description
+1,Cru,Consommation sans cuisson.
+2,Mariné,L'aliment a trempé dans un liquide aromatique avant cuisson.
+3,Rôtissage,Cuisson à sec au four avec de la matière grasse.
+4,Grillé,Cuisson par radiation sur un grill ou une plancha.
+5,Sauté,Cuisson rapide à feu vif dans une poêle avec peu de matière grasse.
+6,Friture,Cuisson par immersion dans un bain d'huile chaude.
+7,Mijotage,Cuisson lente et à basse température dans un liquide.
+8,Braisage,"Cuisson lente d'un aliment saisi au préalable, dans un peu de liquide et à couvert."
+9,Cuisson à l'eau,Cuisson par immersion dans de l'eau bouillante.
+10,Cuisson vapeur,"Cuisson par la vapeur d'eau, sans contact direct avec le liquide."
+11,Mise en conserve,Procédé de conservation par stérilisation dans un contenant hermétique.
+12,Séchage,Déshydratation de l'aliment pour la conservation.
+13,Fermentation,Transformation de l'aliment par des micro-organismes.
+14,Congélation,Conservation par le froid à des températures négatives.
