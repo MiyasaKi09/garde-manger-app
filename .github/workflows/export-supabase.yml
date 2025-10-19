@@ -1,4 +1,4 @@
-name: Export Supabase (schema + CSV + summary → /supabase, auto-detect)
+name: Export Supabase (safe write to main → supabase/exports/latest)
 
 on:
   workflow_dispatch:
@@ -14,11 +14,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y postgresql-client dnsutils zip
 
-      # 1) Normalize secrets into HOST_CLEAN and REF_CLEAN
+      # Normalize secrets
       - name: Normalize secrets
         id: norm
         shell: bash
@@ -55,7 +57,7 @@ jobs:
           nslookup "$HOST_CLEAN" >/dev/null 2>&1 || { echo "DNS resolution failed for $HOST_CLEAN"; exit 1; }
           echo "DNS ok"
 
-      # 2) Detect working connection: try ports 6543 then 6544; for each try postgres.<ref> then postgres + PGOPTIONS
+      # Detect connection (6543/6544 × modes)
       - name: Detect working connection (6543/6544 × modes)
         id: pick
         shell: bash
@@ -71,14 +73,13 @@ jobs:
             local PORT="$1" USER="$2" PGOPT="$3" MODE_NAME="$4"
             echo "Trying $MODE_NAME: host=$HOST port=$PORT user=$USER pgopt='$PGOPT'"
             if [ -n "$PGOPT" ]; then
-              PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "select 'OK' as ok, current_user;" 2>&1
+              PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "select 'OK', current_user;" 2>&1
             else
-              psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "select 'OK' as ok, current_user;" 2>&1
+              psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "select 'OK', current_user;" 2>&1
             fi
             return $?
           }
 
-          # try combinations
           if try_conn 6543 "postgres.${REF}" "" "A_6543_user_ref"; then
             echo "PORT=6543" >> "$GITHUB_OUTPUT"
             echo "USER=postgres.${REF}" >> "$GITHUB_OUTPUT"
@@ -114,8 +115,19 @@ jobs:
           echo "No working connection found (tested 6543/6544 × modes). Check secrets and network."
           exit 1
 
-      # 3) Create supabase dir and generate schema.md there
-      - name: Generate schema.md into supabase/
+      # Set variables for export directory
+      - name: Prepare export paths
+        run: |
+          set -e
+          export EXPORT_BASE="supabase/exports"
+          export EXPORT_LATEST="$EXPORT_BASE/latest"
+          mkdir -p "$EXPORT_LATEST" supabase/csv
+          echo "EXPORT_BASE=$EXPORT_BASE" >> "$GITHUB_ENV"
+          echo "EXPORT_LATEST=$EXPORT_LATEST" >> "$GITHUB_ENV"
+          echo "Created $EXPORT_LATEST"
+
+      # Generate schema.md into export folder
+      - name: Generate schema.md into export folder
         if: steps.pick.outputs.ok == '1'
         shell: bash
         env:
@@ -127,23 +139,16 @@ jobs:
           DB: "${{ env.DB_NAME }}"
         run: |
           set -e
-          mkdir -p supabase
+          mkdir -p "$EXPORT_LATEST"
           if [ -n "$PGOPT" ]; then
-            PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -v ON_ERROR_STOP=1 -f tools/schema_report.sql > supabase/schema.md
+            PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -v ON_ERROR_STOP=1 -f tools/schema_report.sql > "$EXPORT_LATEST/schema.md"
           else
-            psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -v ON_ERROR_STOP=1 -f tools/schema_report.sql > supabase/schema.md
+            psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -v ON_ERROR_STOP=1 -f tools/schema_report.sql > "$EXPORT_LATEST/schema.md"
           fi
-          echo "Generated supabase/schema.md"
+          echo "Generated $EXPORT_LATEST/schema.md"
 
-      - name: Upload schema artifact
-        if: steps.pick.outputs.ok == '1'
-        uses: actions/upload-artifact@v4
-        with:
-          name: schema-report
-          path: supabase/schema.md
-
-      # 4) Export tables to CSV then move into supabase/csv/
-      - name: Export public tables to CSV and move to supabase/csv
+      # Export tables to CSV into a temp dir, then move to export latest
+      - name: Export public tables to CSV and move to export folder
         if: steps.pick.outputs.ok == '1'
         shell: bash
         env:
@@ -155,27 +160,38 @@ jobs:
           DB: "${{ env.DB_NAME }}"
         run: |
           set -e
-          rm -rf data_export supabase/csv
-          mkdir -p data_export supabase/csv
+          TMP="data_export"
+          rm -rf "$TMP"
+          mkdir -p "$TMP" "$EXPORT_LATEST/csv"
+          echo "# Data export summary" > "$EXPORT_LATEST/data_summary.md"
+          echo "_Generated: $(date -u)_" >> "$EXPORT_LATEST/data_summary.md"
+          echo >> "$EXPORT_LATEST/data_summary.md"
+          echo "## Tables and counts" >> "$EXPORT_LATEST/data_summary.md"
 
           if [ -n "$PGOPT" ]; then
             LIST=$(PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
             for T in $LIST; do
               echo "Exporting $T..."
-              PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
+              PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -c "\copy public.\"$T\" to '${TMP}/${T}.csv' csv header"
+              CNT=$(PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "select count(*) from public.\"$T\";")
+              echo "- $T: $CNT rows" >> "$EXPORT_LATEST/data_summary.md"
             done
           else
             LIST=$(psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
             for T in $LIST; do
               echo "Exporting $T..."
-              psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -c "\copy public.\"$T\" to 'data_export/${T}.csv' csv header"
+              psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -c "\copy public.\"$T\" to '${TMP}/${T}.csv' csv header"
+              CNT=$(psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "select count(*) from public.\"$T\";")
+              echo "- $T: $CNT rows" >> "$EXPORT_LATEST/data_summary.md"
             done
           fi
 
-          # move into supabase/csv
-          mv data_export/*.csv supabase/csv/ || true
-          ( cd supabase && zip -9 -r ../data-csv.zip csv ) || true
-          echo "CSV export done, files in supabase/csv/"
+          # Move csv to the export folder (overwrite only files under export latest)
+          mkdir -p "$EXPORT_LATEST/csv"
+          mv "$TMP"/*.csv "$EXPORT_LATEST/csv/" || true
+          rm -rf "$TMP"
+          ( cd "$EXPORT_LATEST" && zip -9 -r ../../data-csv.zip csv schema.md data_summary.md ) || true
+          echo "CSV export done, files in $EXPORT_LATEST/csv/"
 
       - name: Upload CSV zip
         if: steps.pick.outputs.ok == '1'
@@ -184,58 +200,32 @@ jobs:
           name: supabase-data-csv
           path: data-csv.zip
 
-      # 5) Generate data_summary.md in supabase/
-      - name: Generate data_summary.md in supabase/
-        if: steps.pick.outputs.ok == '1'
-        shell: bash
-        env:
-          PGPASSWORD: "${{ secrets.SUPABASE_DB_PASSWORD }}"
-          HOST: "${{ env.HOST_CLEAN }}"
-          PORT: "${{ steps.pick.outputs.PORT }}"
-          USER: "${{ steps.pick.outputs.USER }}"
-          PGOPT: "${{ steps.pick.outputs.PGOPT }}"
-          DB: "${{ env.DB_NAME }}"
-        run: |
-          set -e
-          mkdir -p supabase
-          echo "# Data export summary" > supabase/data_summary.md
-          if [ -n "$PGOPT" ]; then
-            PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc \
-              "select tablename, count(*) from pg_tables t left join lateral (select count(*) from public.\"\" || t.tablename || \"\" ) c on true" \
-              >> supabase/data_summary.md 2>/dev/null || true
-          fi
-          # fallback: list files and sizes
-          echo "" >> supabase/data_summary.md
-          echo "### CSV files" >> supabase/data_summary.md
-          ls -lh supabase/csv/ >> supabase/data_summary.md || true
-          echo "Generated supabase/data_summary.md"
-
-      # 6) Commit & force-push (overwrite) supabase/ and data-csv.zip
-      - name: Commit and overwrite remote (properly handle deletions)
+      # Commit only the export folder to main (no force) — handle deletions inside that folder
+      - name: Commit export folder to main (safe, only export folder)
         if: steps.pick.outputs.ok == '1'
         shell: bash
         run: |
           set -e
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Récupère la dernière version distante
+          # Update local main to latest remote
           git fetch origin main
           git checkout main
-          git reset --hard origin/main
+          git reset --soft origin/main
 
-          # Supprime l'ancien dossier suivi (s'il existe) pour forcer la suppression dans l'historique
-          git rm -r --ignore-unmatch supabase || true
+          # Remove tracked files under supabase/exports/latest (so deletions are recorded),
+          # but DO NOT touch any other paths.
+          git rm -r --ignore-unmatch supabase/exports/latest || true
 
-          # Ajoute tout (ajouts, modifications ET suppressions)
-          git add -A
+          # Add the new export folder (adds new files and staged deletions)
+          git add -A supabase/exports/latest
 
-          # Si rien à committer, on stoppe proprement
           if git diff --cached --quiet; then
-            echo "No changes to commit."
+            echo "No changes to commit in supabase/exports/latest."
             exit 0
           fi
 
-          # Commit & push (force pour écraser si nécessaire)
-          git commit -m "chore(export): overwrite supabase schema, csv and summary"
-          git push origin main --force
+          git commit -m "chore(export): update supabase/exports/latest"
+          git push origin main
+
