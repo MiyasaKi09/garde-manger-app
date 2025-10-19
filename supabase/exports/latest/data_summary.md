@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Sun Oct 19 13:51:31 UTC 2025_
+_Generated: Sun Oct 19 14:06:00 UTC 2025_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -28,7 +28,7 @@ _Generated: Sun Oct 19 13:51:31 UTC 2025_
 - reference_categories: 14 rows
 - reference_subcategories: 86 rows
 - seasonality: 87 rows
-- tags: 32 rows
+- tags: 46 rows
 - unit_conversions_generic: 10 rows
 - unit_conversions_product: 0 rows
 - user_allergies: 0 rows

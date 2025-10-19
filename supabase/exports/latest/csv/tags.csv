@@ -31,3 +31,17 @@ id,name
 30,usage:Anti-gaspi
 31,usage:Festif
 32,usage:Pique-nique
+33,difficulté:Facile
+34,difficulté:Moyen
+35,difficulté:Difficile
+36,saison:Printemps
+37,saison:Été
+38,saison:Automne
+39,saison:Hiver
+40,usage:Petit-déjeuner
+41,usage:Apéritif
+42,usage:Fête
+43,usage:Barbecue
+44,profil:Gourmand
+45,profil:Healthy
+46,profil:Rapide
