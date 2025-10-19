@@ -211,7 +211,7 @@ jobs:
           echo "Generated supabase/data_summary.md"
 
       # 6) Commit & force-push (overwrite) supabase/ and data-csv.zip
-      - name: Commit and overwrite remote
+          - name: Commit and overwrite remote (properly handle deletions)
         if: steps.pick.outputs.ok == '1'
         shell: bash
         run: |
@@ -219,14 +219,23 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
+          # Récupère la dernière version distante
           git fetch origin main
           git checkout main
           git reset --hard origin/main
 
-          git add supabase/ data-csv.zip || true
+          # Supprime l'ancien dossier suivi (s'il existe) pour forcer la suppression dans l'historique
+          git rm -r --ignore-unmatch supabase || true
+
+          # Ajoute tout (ajouts, modifications ET suppressions)
+          git add -A
+
+          # Si rien à committer, on stoppe proprement
           if git diff --cached --quiet; then
             echo "No changes to commit."
-          else
-            git commit -m "chore(export): overwrite supabase schema, csv and summary"
-            git push origin main --force
+            exit 0
           fi
+
+          # Commit & push (force pour écraser si nécessaire)
+          git commit -m "chore(export): overwrite supabase schema, csv and summary"
+          git push origin main --force
