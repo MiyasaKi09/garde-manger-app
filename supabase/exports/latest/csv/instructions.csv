@@ -32,36 +32,6 @@ id,recipe_id,step_number,description
 31,12,1,Préparer tous les ingrédients pour Pancakes salés au saumon fumé et aneth
 32,12,2,Suivre les étapes de préparation classiques pour cette recette
 33,12,3,Servir et déguster
-34,13,1,Préparer tous les ingrédients pour Crêpes fines au sucre et citron
-35,13,2,Suivre les étapes de préparation classiques pour cette recette
-36,13,3,Servir et déguster
-37,14,1,Préparer tous les ingrédients pour Gaufres de Liège au sucre perlé
-38,14,2,Suivre les étapes de préparation classiques pour cette recette
-39,14,3,Servir et déguster
-40,15,1,Préparer tous les ingrédients pour Gaufres salées au jambon et fromage
-41,15,2,Suivre les étapes de préparation classiques pour cette recette
-42,15,3,Servir et déguster
-43,16,1,Préparer tous les ingrédients pour Œufs brouillés crémeux à la ciboulette
-44,16,2,Suivre les étapes de préparation classiques pour cette recette
-45,16,3,Servir et déguster
-46,17,1,Préparer tous les ingrédients pour Œuf poché sur toast d'avocat
-47,17,2,Suivre les étapes de préparation classiques pour cette recette
-48,17,3,Servir et déguster
-49,18,1,Préparer tous les ingrédients pour Omelette aux champignons de Paris et persil
-50,18,2,Suivre les étapes de préparation classiques pour cette recette
-51,18,3,Servir et déguster
-52,19,1,Préparer tous les ingrédients pour Œufs au plat et bacon grillé (English style)
-53,19,2,Suivre les étapes de préparation classiques pour cette recette
-54,19,3,Servir et déguster
-55,20,1,Préparer tous les ingrédients pour Pain perdu à la cannelle
-56,20,2,Suivre les étapes de préparation classiques pour cette recette
-57,20,3,Servir et déguster
-58,21,1,Préparer tous les ingrédients pour Brioche perdue aux fruits rouges
-59,21,2,Suivre les étapes de préparation classiques pour cette recette
-60,21,3,Servir et déguster
-61,22,1,"Préparer tous les ingrédients pour Yaourt grec, miel et noix"
-62,22,2,Suivre les étapes de préparation classiques pour cette recette
-63,22,3,Servir et déguster
 64,23,1,Préparer tous les ingrédients pour Fromage blanc et compote de pommes maison
 65,23,2,Suivre les étapes de préparation classiques pour cette recette
 66,23,3,Servir et déguster

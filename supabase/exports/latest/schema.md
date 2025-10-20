@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Mon Oct 20 19:29:09 UTC 2025_
+_Généré le : Mon Oct 20 20:37:09 UTC 2025_
 
 ## Tables
 - _backup_views
@@ -519,6 +519,7 @@ _Généré le : Mon Oct 20 19:29:09 UTC 2025_
  - public.recipe_ingredients → uq_recipe_ingredients_unique_line_idx : CREATE UNIQUE INDEX uq_recipe_ingredients_unique_line_idx ON public.recipe_ingredients USING btree (recipe_id, COALESCE(canonical_food_id, ('-1'::integer)::bigint), COALESCE(archetype_id, ('-1'::integer)::bigint), COALESCE(unit, ''::character varying), COALESCE(notes, ''::text))
  - public.recipe_pairings → recipe_pairings_pkey : CREATE UNIQUE INDEX recipe_pairings_pkey ON public.recipe_pairings USING btree (main_recipe_id, side_recipe_id)
  - public.recipe_tags → recipe_tags_pkey : CREATE UNIQUE INDEX recipe_tags_pkey ON public.recipe_tags USING btree (recipe_id, tag_id)
+ - public.recipes → recipes_name_unique : CREATE UNIQUE INDEX recipes_name_unique ON public.recipes USING btree (name)
  - public.recipes → recipes_pkey : CREATE UNIQUE INDEX recipes_pkey ON public.recipes USING btree (id)
  - public.reference_categories → reference_categories_name_key : CREATE UNIQUE INDEX reference_categories_name_key ON public.reference_categories USING btree (name)
  - public.reference_categories → reference_categories_pkey : CREATE UNIQUE INDEX reference_categories_pkey ON public.reference_categories USING btree (id)

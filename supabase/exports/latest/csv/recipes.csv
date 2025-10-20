@@ -11,16 +11,6 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 10,Pancakes à la banane sans sucre ajouté,Des pancakes naturellement sucrés,10,15,4,Poêle,ENTREE,f
 11,Pancakes salés au saumon fumé et aneth,Une version salée des pancakes,15,20,4,Poêle,PLAT_PRINCIPAL,f
 12,"Porridge d'avoine, pommes et cannelle","Une savoureuse recette de Porridge d'avoine, pommes et cannelle",25,45,4,Mixte,PLAT_PRINCIPAL,f
-13,Overnight porridge aux graines de chia et fruits rouges,Une savoureuse recette de Overnight porridge aux graines de chia et fruits rouges,25,45,4,Mixte,PLAT_PRINCIPAL,f
-14,"Porridge salé aux épinards, feta et œuf mollet","Une savoureuse recette de Porridge salé aux épinards, feta et œuf mollet",25,45,4,Mixte,PLAT_PRINCIPAL,f
-15,Smoothie bowl tropical mangue-ananas-coco,Une savoureuse recette de Smoothie bowl tropical mangue-ananas-coco,25,45,4,Mixte,PLAT_PRINCIPAL,f
-16,"Smoothie bowl vert épinards, kiwi et banane","Une savoureuse recette de Smoothie bowl vert épinards, kiwi et banane",25,45,4,Mixte,PLAT_PRINCIPAL,f
-17,Pudding de chia au lait de coco et coulis de mangue,Une savoureuse recette de Pudding de chia au lait de coco et coulis de mangue,20,40,6,Mixte,DESSERT,f
-18,Granola maison aux noix de pécan et sirop d'érable,Une savoureuse recette de Granola maison aux noix de pécan et sirop d'érable,25,45,4,Mixte,PLAT_PRINCIPAL,f
-19,Muesli Bircher aux pommes râpées et noisettes,Une savoureuse recette de Muesli Bircher aux pommes râpées et noisettes,25,45,4,Mixte,PLAT_PRINCIPAL,f
-20,Pancakes américains fluffy au sirop d'érable,Une délicieuse recette américaine : Pancakes américains fluffy au sirop d'érable,20,40,6,Cuisson au four,DESSERT,f
-21,Pancakes à la banane sans sucre ajouté,Une savoureuse recette de Pancakes à la banane sans sucre ajouté,20,40,6,Cuisson au four,DESSERT,f
-22,Pancakes salés au saumon fumé et aneth,Une savoureuse recette de Pancakes salés au saumon fumé et aneth,20,40,6,Cuisson au four,DESSERT,f
 23,Crêpes fines au sucre et citron,Une savoureuse recette de Crêpes fines au sucre et citron,25,45,4,Mixte,PLAT_PRINCIPAL,f
 24,Gaufres de Liège au sucre perlé,Une savoureuse recette de Gaufres de Liège au sucre perlé,25,45,4,Mixte,PLAT_PRINCIPAL,f
 25,Gaufres salées au jambon et fromage,Une savoureuse recette de Gaufres salées au jambon et fromage,25,45,4,Mixte,PLAT_PRINCIPAL,f
@@ -46,6 +36,24 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 45,Velouté froid de courgettes au basilic,Une savoureuse recette de Velouté froid de courgettes au basilic,15,15,4,Mixte,ENTREE,f
 46,"Verrine avocat, crevette et pamplemousse","Une savoureuse recette de Verrine avocat, crevette et pamplemousse",20,40,6,Mixte,DESSERT,f
 47,"Salade Caprese (tomate, mozzarella, basilic)","Une savoureuse recette de Salade Caprese (tomate, mozzarella, basilic)",15,15,4,Sans cuisson,ENTREE,f
+683,Soupe de tomates,Entrée classique - À compléter,,,,,ENTREE,f
+684,Soupe de champignons,Entrée classique - À compléter,,,,,ENTREE,f
+685,Soupe de courgettes,Entrée classique - À compléter,,,,,ENTREE,f
+686,Soupe de brocoli,Entrée classique - À compléter,,,,,ENTREE,f
+687,Soupe de petits pois,Entrée classique - À compléter,,,,,ENTREE,f
+688,Soupe de potimarron,Entrée classique - À compléter,,,,,ENTREE,f
+689,Soupe de panais,Entrée classique - À compléter,,,,,ENTREE,f
+690,Soupe d’orties,Entrée classique - À compléter,,,,,ENTREE,f
+691,Soupe de topinambours,Entrée classique - À compléter,,,,,ENTREE,f
+692,Velouté de potiron,Entrée classique - À compléter,,,,,ENTREE,f
+693,Velouté de carottes,Entrée classique - À compléter,,,,,ENTREE,f
+694,Velouté de champignons,Entrée classique - À compléter,,,,,ENTREE,f
+695,Velouté de brocoli,Entrée classique - À compléter,,,,,ENTREE,f
+696,Velouté de panais,Entrée classique - À compléter,,,,,ENTREE,f
+697,Velouté de céleri,Entrée classique - À compléter,,,,,ENTREE,f
+698,Velouté de chou-fleur,Entrée classique - À compléter,,,,,ENTREE,f
+699,Velouté de courgettes,Entrée classique - À compléter,,,,,ENTREE,f
+700,Velouté de petits pois,Entrée classique - À compléter,,,,,ENTREE,f
 48,Salade Grecque traditionnelle,Une savoureuse recette de Salade Grecque traditionnelle,15,15,4,Sans cuisson,ENTREE,f
 49,Taboulé libanais (riche en persil),Une délicieuse recette orientale : Taboulé libanais (riche en persil),25,45,4,Mixte,PLAT_PRINCIPAL,f
 50,Salade de lentilles vertes du Puy et lardons,Une savoureuse recette de Salade de lentilles vertes du Puy et lardons,15,15,4,Sans cuisson,ENTREE,f
@@ -248,6 +256,7 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 246,Curry de pois chiches et épinards,Une délicieuse recette indienne : Curry de pois chiches et épinards,25,45,4,Mixte,PLAT_PRINCIPAL,f
 247,Pois chiches rôtis aux épices,Une savoureuse recette de Pois chiches rôtis aux épices,25,45,4,Cuisson au four,PLAT_PRINCIPAL,f
 248,Salade de pois chiches à la méditerranéenne,Une savoureuse recette de Salade de pois chiches à la méditerranéenne,15,15,4,Sans cuisson,ENTREE,f
+957,Risotto au poulet,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
 250,Haricots blancs à la bretonne,Une délicieuse recette française : Haricots blancs à la bretonne,25,45,4,Mixte,PLAT_PRINCIPAL,f
 251,Fèves à la catalane,Une délicieuse recette espagnole : Fèves à la catalane,25,45,4,Mixte,PLAT_PRINCIPAL,f
 252,Socca niçoise (galette de farine de pois chiches),Une délicieuse recette française : Socca niçoise (galette de farine de pois chiches),25,45,4,Mixte,PLAT_PRINCIPAL,f
@@ -446,6 +455,7 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 445,Bonet piémontais (flan au chocolat et amaretti),Une savoureuse recette de Bonet piémontais (flan au chocolat et amaretti),25,45,4,Mixte,PLAT_PRINCIPAL,f
 446,Pêches au vin,Une savoureuse recette de Pêches au vin,25,45,4,Mixte,PLAT_PRINCIPAL,f
 447,Sbrisolona (gâteau friable aux amandes),Une savoureuse recette de Sbrisolona (gâteau friable aux amandes),20,40,6,Cuisson au four,DESSERT,f
+682,Soupe paysanne,Entrée classique - À compléter,,,,,ENTREE,f
 448,Crostata à la confiture d'abricots,Une savoureuse recette de Crostata à la confiture d'abricots,25,120,4,Mixte,PLAT_PRINCIPAL,f
 449,Salame al cioccolato (saucisson au chocolat),Une savoureuse recette de Salame al cioccolato (saucisson au chocolat),25,45,4,Mixte,PLAT_PRINCIPAL,f
 450,Sfogliatelle napolitaines,Une délicieuse recette italienne : Sfogliatelle napolitaines,25,45,4,Mixte,PLAT_PRINCIPAL,f
@@ -610,3 +620,424 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 609,Dolmas (feuilles de vigne farcies),Une savoureuse recette de Dolmas (feuilles de vigne farcies),25,45,4,Mixte,PLAT_PRINCIPAL,f
 610,Shakshuka (version plus élaborée),Une savoureuse recette de Shakshuka (version plus élaborée),25,45,4,Mixte,PLAT_PRINCIPAL,f
 611,Fatteh (plat libanais à base de pain pita),Une délicieuse recette orientale : Fatteh (plat libanais à base de pain pita),25,45,4,Mixte,PLAT_PRINCIPAL,f
+612,Salade niçoise,Entrée classique - À compléter,,,,,ENTREE,f
+614,Salade de lentilles,Entrée classique - À compléter,,,,,ENTREE,f
+615,Salade d'endives aux noix,Entrée classique - À compléter,,,,,ENTREE,f
+616,Salade lyonnaise,Entrée classique - À compléter,,,,,ENTREE,f
+617,Salade de pommes de terre,Entrée classique - À compléter,,,,,ENTREE,f
+618,Salade de haricots verts,Entrée classique - À compléter,,,,,ENTREE,f
+619,Salade de betteraves,Entrée classique - À compléter,,,,,ENTREE,f
+620,Salade de tomates à l’échalote,Entrée classique - À compléter,,,,,ENTREE,f
+621,Salade de carottes râpées,Entrée classique - À compléter,,,,,ENTREE,f
+622,Céleri rémoulade,Entrée classique - À compléter,,,,,ENTREE,f
+623,Salade de chou blanc,Entrée classique - À compléter,,,,,ENTREE,f
+624,Salade de concombre à la crème,Entrée classique - À compléter,,,,,ENTREE,f
+625,Salade de mache aux lardons,Entrée classique - À compléter,,,,,ENTREE,f
+626,Salade de gésiers,Entrée classique - À compléter,,,,,ENTREE,f
+627,Salade campagnarde,Entrée classique - À compléter,,,,,ENTREE,f
+628,Salade d’asperges,Entrée classique - À compléter,,,,,ENTREE,f
+629,Salade de chou-fleur,Entrée classique - À compléter,,,,,ENTREE,f
+630,Salade aux œufs mimosa,Entrée classique - À compléter,,,,,ENTREE,f
+631,Salade composée maison,Entrée classique - À compléter,,,,,ENTREE,f
+632,Taboulé libanais,Entrée classique - À compléter,,,,,ENTREE,f
+633,Salade grecque,Entrée classique - À compléter,,,,,ENTREE,f
+634,Salade fattouche,Entrée classique - À compléter,,,,,ENTREE,f
+635,Salade tunisienne,Entrée classique - À compléter,,,,,ENTREE,f
+636,Salade israélienne,Entrée classique - À compléter,,,,,ENTREE,f
+637,Salade caprese,Entrée classique - À compléter,,,,,ENTREE,f
+638,Salade de pois chiches,Entrée classique - À compléter,,,,,ENTREE,f
+639,Salade de poivrons grillés,Entrée classique - À compléter,,,,,ENTREE,f
+640,Salade d’aubergines rôties,Entrée classique - À compléter,,,,,ENTREE,f
+641,Salade de fèves,Entrée classique - À compléter,,,,,ENTREE,f
+642,Salade de poulpe méditerranéenne,Entrée classique - À compléter,,,,,ENTREE,f
+643,Salade d’oranges à l’oignon,Entrée classique - À compléter,,,,,ENTREE,f
+644,Salade de courgettes marinées,Entrée classique - À compléter,,,,,ENTREE,f
+645,Salade de fenouil à l’orange,Entrée classique - À compléter,,,,,ENTREE,f
+646,Salade de riz méditerranéenne,Entrée classique - À compléter,,,,,ENTREE,f
+647,Salade de semoule aux herbes,Entrée classique - À compléter,,,,,ENTREE,f
+648,Salade de boulgour et légumes grillés,Entrée classique - À compléter,,,,,ENTREE,f
+649,Salade de concombre au yaourt,Entrée classique - À compléter,,,,,ENTREE,f
+650,Salade de tomates et olives,Entrée classique - À compléter,,,,,ENTREE,f
+651,Salade d’artichauts marinés,Entrée classique - À compléter,,,,,ENTREE,f
+652,Salade de lentilles à la moutarde,Entrée classique - À compléter,,,,,ENTREE,f
+653,Salade de pois chiches au cumin,Entrée classique - À compléter,,,,,ENTREE,f
+654,Salade de haricots rouges mexicaine,Entrée classique - À compléter,,,,,ENTREE,f
+655,Salade de fèves à la menthe,Entrée classique - À compléter,,,,,ENTREE,f
+656,Salade de pois cassés,Entrée classique - À compléter,,,,,ENTREE,f
+657,Salade de quinoa et pois chiches,Entrée classique - À compléter,,,,,ENTREE,f
+658,Salade de lentilles corail aux épices,Entrée classique - À compléter,,,,,ENTREE,f
+659,Salade de pois chiches et thon,Entrée classique - À compléter,,,,,ENTREE,f
+660,Salade de haricots blancs au persil,Entrée classique - À compléter,,,,,ENTREE,f
+661,Salade de soja et légumes croquants,Entrée classique - À compléter,,,,,ENTREE,f
+662,Salade de pois gourmands,Entrée classique - À compléter,,,,,ENTREE,f
+663,Salade de lentilles aux œufs durs,Entrée classique - À compléter,,,,,ENTREE,f
+664,Salade de pois chiches à la coriandre,Entrée classique - À compléter,,,,,ENTREE,f
+665,Salade de haricots verts et rouges,Entrée classique - À compléter,,,,,ENTREE,f
+666,Salade de lupins,Entrée classique - À compléter,,,,,ENTREE,f
+667,Salade de lentilles à la feta,Entrée classique - À compléter,,,,,ENTREE,f
+668,Salade de pois chiches et tomates séchées,Entrée classique - À compléter,,,,,ENTREE,f
+669,Salade de haricots noirs façon tex-mex,Entrée classique - À compléter,,,,,ENTREE,f
+670,Salade de pois cassés aux herbes,Entrée classique - À compléter,,,,,ENTREE,f
+671,Salade de lentilles au saumon fumé,Entrée classique - À compléter,,,,,ENTREE,f
+672,Soupe à l’oignon gratinée,Entrée classique - À compléter,,,,,ENTREE,f
+673,Soupe poireaux-pommes de terre,Entrée classique - À compléter,,,,,ENTREE,f
+674,Soupe de légumes anciens,Entrée classique - À compléter,,,,,ENTREE,f
+675,Soupe de chou,Entrée classique - À compléter,,,,,ENTREE,f
+676,Soupe de carottes,Entrée classique - À compléter,,,,,ENTREE,f
+677,Soupe de potiron,Entrée classique - À compléter,,,,,ENTREE,f
+678,Soupe de cresson,Entrée classique - À compléter,,,,,ENTREE,f
+679,Soupe de poireaux,Entrée classique - À compléter,,,,,ENTREE,f
+680,Soupe de céleri,Entrée classique - À compléter,,,,,ENTREE,f
+681,Soupe de navets,Entrée classique - À compléter,,,,,ENTREE,f
+701,Velouté d’asperges,Entrée classique - À compléter,,,,,ENTREE,f
+702,Velouté de patates douces,Entrée classique - À compléter,,,,,ENTREE,f
+703,Velouté de butternut,Entrée classique - À compléter,,,,,ENTREE,f
+704,Velouté de tomates,Entrée classique - À compléter,,,,,ENTREE,f
+705,Velouté de chou kale,Entrée classique - À compléter,,,,,ENTREE,f
+706,Velouté de cresson,Entrée classique - À compléter,,,,,ENTREE,f
+707,Velouté de fenouil,Entrée classique - À compléter,,,,,ENTREE,f
+708,Velouté de navets,Entrée classique - À compléter,,,,,ENTREE,f
+709,Velouté de pois cassés,Entrée classique - À compléter,,,,,ENTREE,f
+710,Velouté de potimarron,Entrée classique - À compléter,,,,,ENTREE,f
+711,Velouté de champignons et truffe,Entrée classique - À compléter,,,,,ENTREE,f
+712,Minestrone italien,Entrée classique - À compléter,,,,,ENTREE,f
+713,Gaspacho andalou,Entrée classique - À compléter,,,,,ENTREE,f
+715,Soupe miso,Entrée classique - À compléter,,,,,ENTREE,f
+716,Soupe pho simplifiée,Entrée classique - À compléter,,,,,ENTREE,f
+717,Soupe tom kha thaï,Entrée classique - À compléter,,,,,ENTREE,f
+718,Soupe ramen maison,Entrée classique - À compléter,,,,,ENTREE,f
+719,Soupe dhal indien,Entrée classique - À compléter,,,,,ENTREE,f
+720,Soupe mexicaine au maïs,Entrée classique - À compléter,,,,,ENTREE,f
+721,Soupe russe bortsch,Entrée classique - À compléter,,,,,ENTREE,f
+722,Soupe polonaise zurek,Entrée classique - À compléter,,,,,ENTREE,f
+723,Soupe grecque avgolemono,Entrée classique - À compléter,,,,,ENTREE,f
+724,Soupe turque aux lentilles,Entrée classique - À compléter,,,,,ENTREE,f
+725,Soupe harira marocaine,Entrée classique - À compléter,,,,,ENTREE,f
+726,Soupe vietnamienne de crevettes,Entrée classique - À compléter,,,,,ENTREE,f
+727,Soupe chinoise aux champignons noirs,Entrée classique - À compléter,,,,,ENTREE,f
+728,Soupe coréenne kimchi jjigae,Entrée classique - À compléter,,,,,ENTREE,f
+729,Soupe égyptienne aux lentilles,Entrée classique - À compléter,,,,,ENTREE,f
+730,Soupe israélienne aux pois chiches,Entrée classique - À compléter,,,,,ENTREE,f
+731,Soupe brésilienne de poisson,Entrée classique - À compléter,,,,,ENTREE,f
+732,Tarte aux poireaux,Entrée classique - À compléter,,,,,ENTREE,f
+733,Tarte aux courgettes,Entrée classique - À compléter,,,,,ENTREE,f
+734,Tarte aux tomates,Entrée classique - À compléter,,,,,ENTREE,f
+735,Tarte aux champignons,Entrée classique - À compléter,,,,,ENTREE,f
+736,Tarte à l’oignon,Entrée classique - À compléter,,,,,ENTREE,f
+737,Tarte épinards-ricotta,Entrée classique - À compléter,,,,,ENTREE,f
+738,Tarte au saumon,Entrée classique - À compléter,,,,,ENTREE,f
+739,Tarte aux asperges,Entrée classique - À compléter,,,,,ENTREE,f
+740,Tarte au chèvre et courgettes,Entrée classique - À compléter,,,,,ENTREE,f
+741,Tarte provençale,Entrée classique - À compléter,,,,,ENTREE,f
+742,Tarte ratatouille,Entrée classique - À compléter,,,,,ENTREE,f
+743,Tarte aux carottes,Entrée classique - À compléter,,,,,ENTREE,f
+744,Tarte aux brocolis,Entrée classique - À compléter,,,,,ENTREE,f
+745,Tarte aux endives,Entrée classique - À compléter,,,,,ENTREE,f
+746,Tarte au chou-fleur,Entrée classique - À compléter,,,,,ENTREE,f
+747,Tarte à la patate douce,Entrée classique - À compléter,,,,,ENTREE,f
+748,Tarte poireaux-saumon,Entrée classique - À compléter,,,,,ENTREE,f
+749,Tarte à la feta et tomates,Entrée classique - À compléter,,,,,ENTREE,f
+750,Tarte aux aubergines,Entrée classique - À compléter,,,,,ENTREE,f
+751,Tarte aux herbes fraîches,Entrée classique - À compléter,,,,,ENTREE,f
+752,Quiche lorraine,Entrée classique - À compléter,,,,,ENTREE,f
+753,Quiche saumon-épinards,Entrée classique - À compléter,,,,,ENTREE,f
+754,Quiche aux poireaux,Entrée classique - À compléter,,,,,ENTREE,f
+755,Quiche aux champignons,Entrée classique - À compléter,,,,,ENTREE,f
+756,Quiche au jambon,Entrée classique - À compléter,,,,,ENTREE,f
+757,Quiche au thon,Entrée classique - À compléter,,,,,ENTREE,f
+758,Quiche tomates-mozzarella,Entrée classique - À compléter,,,,,ENTREE,f
+759,Quiche aux courgettes,Entrée classique - À compléter,,,,,ENTREE,f
+760,Quiche au brocoli,Entrée classique - À compléter,,,,,ENTREE,f
+761,Quiche à la feta et épinards,Entrée classique - À compléter,,,,,ENTREE,f
+863,Daube provençale,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+864,Pot-au-feu,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+865,Steak tartare,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+866,Steak au poivre,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+867,Entrecôte grillée,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+868,Côte de bœuf au four,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+869,Bavette à l’échalote,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+870,Rôti de bœuf,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+871,Bœuf carottes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+872,Langue de bœuf sauce piquante,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+873,Joue de bœuf braisée,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+874,Bœuf aux oignons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+875,Bœuf miroton,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+876,Paleron braisé,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+877,Brochettes de bœuf,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+878,Filet de bœuf Wellington,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+879,Curry de bœuf à la française,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+880,Ragoût de bœuf aux légumes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+881,Hachis parmentier au bœuf,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+882,Blanquette de veau,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+883,Osso buco,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+884,Escalope de veau à la crème,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+885,Grenadins de veau,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+886,Rôti de veau au four,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+887,Sauté de veau marengo,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+888,Navarin de veau,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+889,Tendrons de veau braisés,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+890,Veau aux champignons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+891,Escalope milanaise,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+892,Côtes de veau grillées,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+893,Veau aux olives,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+894,Veau à la provençale,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+895,Veau orloff,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+896,Jarret de veau confit,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+897,Veau au curry doux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+898,Veau aux carottes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+899,Sauté de veau aux légumes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+900,Tête de veau sauce gribiche,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+901,Veau en cocotte aux herbes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+902,Navarin d’agneau,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+903,Gigot d’agneau rôti,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+904,Curry d’agneau doux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+905,Côtes d’agneau grillées,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+906,Souris d’agneau confite,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+907,Agneau à la provençale,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+908,Tajine d’agneau aux pruneaux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+909,Épaule d’agneau au four,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+910,Agneau aux herbes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+911,Agneau à la marocaine,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+912,Spaghetti carbonara,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+913,Spaghetti bolognaise,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+914,Penne all’arrabbiata,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+915,Spaghetti aglio e olio,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+916,Tagliatelles Alfredo,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+917,Penne au pesto,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+918,Rigatoni à la puttanesca,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+919,Spaghetti alle vongole,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+920,Farfalle aux légumes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+921,Pâtes à la Norma,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+922,Fusilli sauce tomate,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+923,Linguine aux palourdes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+924,Pâtes au gorgonzola,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+925,Pâtes au saumon fumé,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+926,Pâtes quatre fromages,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+927,Spaghetti au thon,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+928,Pâtes au jambon et petits pois,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+929,Spaghetti primavera,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+930,Pâtes à la sauce arrabbiata,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+931,Rigatoni au ragoût,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+932,Orecchiette aux brocolis,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+933,Pasta alla genovese,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+934,Pasta alla gricia,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+935,Pasta alla norma,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+936,Trofie au pesto,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+937,Bigoli in salsa,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+938,Cavatelli aux tomates cerises,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+939,Paccheri farcis,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+940,Pici all’aglione,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+941,Strozzapreti à la saucisse,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+942,Pizzoccheri à la valtellina,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+943,Tagliatelle aux cèpes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+944,Mafaldine au ragoût,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+945,Casarecce à la ricotta,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+946,Bucatini all’amatriciana,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+947,Malloreddus à la sarde,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+948,Garganelli à la crème,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+949,Culurgiones sardes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+950,Linguine alle cozze,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+951,Cavatappi au speck,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+953,Risotto milanais au safran,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+954,Risotto aux asperges,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+955,Risotto aux fruits de mer,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+956,Risotto aux courgettes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+958,Risotto aux épinards,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+959,Risotto aux carottes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+960,Risotto au parmesan,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+961,Risotto aux poireaux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+962,Cabillaud au four à la provençale,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+963,Cabillaud au four à l’ail et citron,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+964,Cabillaud au four à la crème,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+965,Cabillaud au four aux herbes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+966,Cabillaud au four aux tomates,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+967,Cabillaud au four aux poivrons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+968,Cabillaud au four aux courgettes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+969,Cabillaud au four aux champignons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+970,Cabillaud au four au curry doux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+971,Cabillaud au four au pesto,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+972,Colin au four au beurre,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+973,Colin au four aux légumes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+974,Colin au four à la moutarde,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+975,Colin au four aux épices,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+976,Merlan au four à l’ail,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+977,Merlan au four aux tomates,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+978,Merlan au four au vin blanc,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+979,Merlan au four aux herbes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+980,Lieu noir au four,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+981,Lieu noir au four au citron,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+982,Cabillaud à la crème,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+983,Cabillaud sauce moutarde,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+984,Cabillaud sauce tomate,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+985,Cabillaud sauce curry doux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+986,Cabillaud sauce au vin blanc,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+987,Cabillaud sauce aux champignons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+988,Colin sauce à l’oseille,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+989,Colin sauce moutarde,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+990,Colin sauce au beurre blanc,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+991,Merlan sauce tomate,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+992,Merlan sauce crème,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+993,Merlan sauce aux herbes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+994,Lieu noir sauce au curry doux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+995,Lieu noir sauce au beurre,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+996,Lieu noir sauce tomate,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+997,Cabillaud sauce aux poireaux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+998,Cabillaud sauce aux carottes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+999,Colin sauce aux oignons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1000,Merlan sauce aux champignons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1001,Cabillaud sauce au citron,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1002,Saumon au four,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1003,Saumon grillé,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1004,Saumon en papillote,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1005,Saumon à la crème,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1006,Saumon au pesto,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1007,Saumon au miel,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1008,Saumon au citron,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1009,Saumon aux herbes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1010,Saumon au curry doux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1011,Saumon sauce soja,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1012,Poulet rôti nature,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1013,Poulet rôti aux herbes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1014,Poulet rôti à l’ail,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1015,Poulet rôti au citron,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1016,Poulet rôti à la moutarde,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1017,Poulet rôti au miel,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1018,Poulet rôti au paprika,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1019,Poulet rôti au curry doux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1020,Poulet rôti aux tomates,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1021,Poulet rôti aux poivrons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1022,Poulet rôti aux courgettes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1023,Poulet rôti aux champignons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1024,Poulet rôti aux carottes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1025,Poulet rôti aux pommes de terre,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1026,Poulet rôti aux oignons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1027,Poulet rôti aux épinards,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1028,Poulet rôti aux aubergines,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1029,Poulet rôti aux herbes de Provence,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1030,Poulet rôti au vin blanc,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1031,Poulet rôti au beurre,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1032,Poulet à la crème,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1033,Poulet à la moutarde,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1035,Poulet au curry doux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1036,Poulet chasseur,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1037,Poulet à la provençale,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1038,Poulet aux champignons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1039,Poulet au vin blanc,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1040,Poulet aux poivrons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1041,Poulet aux carottes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1042,Poulet aux oignons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1043,Poulet au paprika,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1044,Poulet au citron,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1045,Poulet aux olives,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1046,Poulet au lait de coco,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1047,Poulet aux tomates,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1048,Poulet au gingembre,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1049,Poulet aux épinards,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1050,Poulet aux courgettes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1051,Poulet au fromage,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1052,Poulet au cidre,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1053,Poulet à la bière,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1054,Poulet au vin rouge,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1055,Poulet aux pruneaux,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1056,Poulet aux marrons,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1057,Poulet aux pommes,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1058,Poulet aux poires,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1059,Poulet aux raisins secs,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1060,Poulet aux figues,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1061,Poulet au curry et lait de coco,Plat principal - À compléter,,,,,PLAT_PRINCIPAL,f
+1062,Gâteau au yaourt,Dessert - À compléter,,,,,DESSERT,f
+1063,Quatre-quarts,Dessert - À compléter,,,,,DESSERT,f
+1064,Moelleux au chocolat,Dessert - À compléter,,,,,DESSERT,f
+1065,Fondant au chocolat,Dessert - À compléter,,,,,DESSERT,f
+1067,Forêt-Noire,Dessert - À compléter,,,,,DESSERT,f
+1069,Paris-Brest,Dessert - À compléter,,,,,DESSERT,f
+1071,Tarte Tatin,Dessert - À compléter,,,,,DESSERT,f
+1072,Clafoutis,Dessert - À compléter,,,,,DESSERT,f
+1073,Kouign-amann,Dessert - À compléter,,,,,DESSERT,f
+1074,Galette des Rois,Dessert - À compléter,,,,,DESSERT,f
+1075,Gâteau basque,Dessert - À compléter,,,,,DESSERT,f
+1076,Far breton,Dessert - À compléter,,,,,DESSERT,f
+1077,Baba au rhum,Dessert - À compléter,,,,,DESSERT,f
+1078,Savarin,Dessert - À compléter,,,,,DESSERT,f
+1079,Charlotte aux fraises,Dessert - À compléter,,,,,DESSERT,f
+1080,Gâteau aux pommes,Dessert - À compléter,,,,,DESSERT,f
+1081,Gâteau aux poires,Dessert - À compléter,,,,,DESSERT,f
+1082,Tarte aux pommes,Dessert - À compléter,,,,,DESSERT,f
+1083,Tarte aux poires,Dessert - À compléter,,,,,DESSERT,f
+1084,Tarte aux prunes,Dessert - À compléter,,,,,DESSERT,f
+1085,Tarte aux cerises,Dessert - À compléter,,,,,DESSERT,f
+1086,Tarte aux fraises,Dessert - À compléter,,,,,DESSERT,f
+1087,Tarte aux framboises,Dessert - À compléter,,,,,DESSERT,f
+1088,Tarte aux myrtilles,Dessert - À compléter,,,,,DESSERT,f
+1089,Tarte aux mûres,Dessert - À compléter,,,,,DESSERT,f
+1090,Tarte au citron,Dessert - À compléter,,,,,DESSERT,f
+1091,Tarte au chocolat,Dessert - À compléter,,,,,DESSERT,f
+1092,Tarte amandine,Dessert - À compléter,,,,,DESSERT,f
+1093,Tarte bourdaloue,Dessert - À compléter,,,,,DESSERT,f
+1094,Tarte tatin,Dessert - À compléter,,,,,DESSERT,f
+1095,Tarte normande,Dessert - À compléter,,,,,DESSERT,f
+1096,Tarte tropézienne,Dessert - À compléter,,,,,DESSERT,f
+1097,Tarte sablée fruits rouges,Dessert - À compléter,,,,,DESSERT,f
+1098,Tarte exotique mangue,Dessert - À compléter,,,,,DESSERT,f
+1099,Tarte coco,Dessert - À compléter,,,,,DESSERT,f
+1100,Tarte pistache,Dessert - À compléter,,,,,DESSERT,f
+1101,Tarte noisette,Dessert - À compléter,,,,,DESSERT,f
+1102,Bûche de Noël,Dessert - À compléter,,,,,DESSERT,f
+1103,Entremets chocolat,Dessert - À compléter,,,,,DESSERT,f
+1104,Entremets vanille,Dessert - À compléter,,,,,DESSERT,f
+1105,Entremets fruits rouges,Dessert - À compléter,,,,,DESSERT,f
+1106,Entremets exotique,Dessert - À compléter,,,,,DESSERT,f
+1107,Entremets pistache,Dessert - À compléter,,,,,DESSERT,f
+1108,Entremets praliné,Dessert - À compléter,,,,,DESSERT,f
+1109,Entremets café,Dessert - À compléter,,,,,DESSERT,f
+1110,Entremets noisette,Dessert - À compléter,,,,,DESSERT,f
+1111,Entremets caramel,Dessert - À compléter,,,,,DESSERT,f
+1112,Entremets coco,Dessert - À compléter,,,,,DESSERT,f
+1113,Entremets mangue,Dessert - À compléter,,,,,DESSERT,f
+1114,Entremets passion,Dessert - À compléter,,,,,DESSERT,f
+1115,Entremets marron,Dessert - À compléter,,,,,DESSERT,f
+1116,Entremets mousse chocolat blanc,Dessert - À compléter,,,,,DESSERT,f
+1117,Entremets mousse chocolat noir,Dessert - À compléter,,,,,DESSERT,f
+1118,Entremets mousse fraise,Dessert - À compléter,,,,,DESSERT,f
+1119,Entremets mousse framboise,Dessert - À compléter,,,,,DESSERT,f
+1120,Entremets fruits exotiques,Dessert - À compléter,,,,,DESSERT,f
+1121,Entremets signature,Dessert - À compléter,,,,,DESSERT,f
+1122,Sablés,Dessert - À compléter,,,,,DESSERT,f
+1123,Cookies,Dessert - À compléter,,,,,DESSERT,f
+1124,Brownies,Dessert - À compléter,,,,,DESSERT,f
+1125,Madeleines,Dessert - À compléter,,,,,DESSERT,f
+1126,Financiers,Dessert - À compléter,,,,,DESSERT,f
+1127,Tuiles aux amandes,Dessert - À compléter,,,,,DESSERT,f
+1128,Palets bretons,Dessert - À compléter,,,,,DESSERT,f
+1129,Speculoos,Dessert - À compléter,,,,,DESSERT,f
+1130,Canelés,Dessert - À compléter,,,,,DESSERT,f
+1131,Meringues,Dessert - À compléter,,,,,DESSERT,f
+1132,Langues de chat,Dessert - À compléter,,,,,DESSERT,f
+1133,Macarons,Dessert - À compléter,,,,,DESSERT,f
+1134,Chouquettes,Dessert - À compléter,,,,,DESSERT,f
+1135,Navettes,Dessert - À compléter,,,,,DESSERT,f
+1136,Croquants aux amandes,Dessert - À compléter,,,,,DESSERT,f
+1137,Rochers coco,Dessert - À compléter,,,,,DESSERT,f
+1138,Florentins,Dessert - À compléter,,,,,DESSERT,f
+1139,Pain d’épices,Dessert - À compléter,,,,,DESSERT,f
+1140,Biscuits au chocolat,Dessert - À compléter,,,,,DESSERT,f
+1141,Biscuits au citron,Dessert - À compléter,,,,,DESSERT,f
+1142,Mousse au chocolat,Dessert - À compléter,,,,,DESSERT,f
+1143,Mousse au café,Dessert - À compléter,,,,,DESSERT,f
+1144,Mousse à la vanille,Dessert - À compléter,,,,,DESSERT,f
+1145,Mousse aux fruits,Dessert - À compléter,,,,,DESSERT,f
+1146,Mousse au citron,Dessert - À compléter,,,,,DESSERT,f
+1147,Mousse à l’orange,Dessert - À compléter,,,,,DESSERT,f
+1148,Mousse exotique,Dessert - À compléter,,,,,DESSERT,f
+1149,Mousse pistache,Dessert - À compléter,,,,,DESSERT,f
+1150,Crème caramel,Dessert - À compléter,,,,,DESSERT,f
+1151,Crème brûlée,Dessert - À compléter,,,,,DESSERT,f
+1153,Panna cotta,Dessert - À compléter,,,,,DESSERT,f
+1154,Ile flottante,Dessert - À compléter,,,,,DESSERT,f
+1155,Œufs au lait,Dessert - À compléter,,,,,DESSERT,f
+1156,Crème vanille,Dessert - À compléter,,,,,DESSERT,f
+1157,Crème chocolat,Dessert - À compléter,,,,,DESSERT,f
+1158,Crème café,Dessert - À compléter,,,,,DESSERT,f
+1159,Crème pistache,Dessert - À compléter,,,,,DESSERT,f
+1160,Crème coco,Dessert - À compléter,,,,,DESSERT,f
+1161,Crème noisette,Dessert - À compléter,,,,,DESSERT,f
