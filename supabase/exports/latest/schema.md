@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Mon Oct 20 21:28:47 UTC 2025_
+_Généré le : Mon Oct 20 21:43:12 UTC 2025_
 
 ## Tables
 - _backup_views
@@ -282,6 +282,8 @@ _Généré le : Mon Oct 20 21:28:47 UTC 2025_
  - cooking_method :: character varying
  - role :: USER-DEFINED NOT NULL
  - is_scalable_to_main :: boolean default false
+ - is_complete_meal :: boolean default false
+ - needs_side_dish :: boolean
 
 ### reference_categories
  - id :: bigint default nextval('reference_categories_id_seq'::regclass) NOT NULL
@@ -383,7 +385,7 @@ _Généré le : Mon Oct 20 21:28:47 UTC 2025_
 
 ---
 ## Clés primaires
- - _backup_views → (dropped_at, view_schema, view_name)
+ - _backup_views → (view_schema, view_name, dropped_at)
  - archetypes → (id)
  - canonical_food_origins → (country_id, food_id)
  - canonical_food_processes → (id)
