@@ -1,0 +1,440 @@
+Bloc 8 : Poissons & fruits de mer
+  8.1 Poissons blancs au four
+    - Cabillaud au four à la provençale
+    - Cabillaud au four à l’ail et citron
+    - Cabillaud au four à la crème
+    - Cabillaud au four aux herbes
+    - Cabillaud au four aux tomates
+    - Cabillaud au four aux poivrons
+    - Cabillaud au four aux courgettes
+    - Cabillaud au four aux champignons
+    - Cabillaud au four au curry doux
+    - Cabillaud au four au pesto
+    - Colin au four au beurre
+    - Colin au four aux légumes
+    - Colin au four à la moutarde
+    - Colin au four aux épices
+    - Merlan au four à l’ail
+    - Merlan au four aux tomates
+    - Merlan au four au vin blanc
+    - Merlan au four aux herbes
+    - Lieu noir au four
+    - Lieu noir au four au citron
+
+  8.2 Poissons blancs en sauce
+    - Cabillaud à la crème
+    - Cabillaud sauce moutarde
+    - Cabillaud sauce tomate
+    - Cabillaud sauce curry doux
+    - Cabillaud sauce au vin blanc
+    - Cabillaud sauce aux champignons
+    - Colin sauce à l’oseille
+    - Colin sauce moutarde
+    - Colin sauce au beurre blanc
+    - Merlan sauce tomate
+    - Merlan sauce crème
+    - Merlan sauce aux herbes
+    - Lieu noir sauce au curry doux
+    - Lieu noir sauce au beurre
+    - Lieu noir sauce tomate
+    - Cabillaud sauce aux poireaux
+    - Cabillaud sauce aux carottes
+    - Colin sauce aux oignons
+    - Merlan sauce aux champignons
+    - Cabillaud sauce au citron
+
+  8.3 Saumon
+    - Saumon au four
+    - Saumon grillé
+    - Saumon en papillote
+    - Saumon à la crème
+    - Saumon au pesto
+    - Saumon au miel
+    - Saumon au citron
+    - Saumon aux herbes
+    - Saumon au curry doux
+    - Saumon sauce soja
+    - Saumon aux légumes grillés
+    - Saumon à l’aneth
+    - Saumon au beurre blanc
+    - Saumon au four aux tomates
+    - Saumon en croûte d’herbes
+    - Saumon mariné grillé
+    - Saumon poêlé
+    - Saumon au gingembre
+    - Saumon teriyaki
+    - Saumon au vin blanc
+
+  8.4 Truite & autres poissons gras
+    - Truite meunière
+    - Truite au four au citron
+    - Truite en papillote
+    - Truite grillée
+    - Truite au beurre
+    - Truite aux herbes
+    - Truite aux amandes
+    - Truite aux tomates
+    - Truite au curry doux
+    - Truite aux champignons
+    - Maquereau grillé
+    - Maquereau à la moutarde
+    - Maquereau au vin blanc
+    - Maquereau au four
+    - Sardines grillées
+    - Sardines au four
+    - Sardines marinées
+    - Hareng fumé en salade
+    - Saumonette au four
+    - Saumonette aux herbes
+
+  8.5 Thon & espadon
+    - Thon grillé
+    - Thon mi-cuit
+    - Thon mariné au citron
+    - Thon à la tomate
+    - Thon à la provençale
+    - Thon au curry doux
+    - Thon aux oignons
+    - Thon aux poivrons
+    - Thon aux courgettes
+    - Thon aux aubergines
+    - Thon aux champignons
+    - Thon aux herbes
+    - Thon au vin blanc
+    - Thon à l’ail
+    - Thon à la moutarde
+    - Espadon grillé
+    - Espadon au four
+    - Espadon mariné
+    - Espadon au citron
+    - Espadon aux herbes
+
+  8.6 Fruits de mer simples
+    - Moules marinières
+    - Moules à la crème
+    - Moules au curry doux
+    - Moules gratinées
+    - Coques au vin blanc
+    - Palourdes à l’ail
+    - Bulots mayonnaise
+    - Bigorneaux nature
+    - Huîtres nature
+    - Huîtres gratinées
+    - Saint-Jacques poêlées
+    - Saint-Jacques au curry doux
+    - Saint-Jacques au vin blanc
+    - Saint-Jacques à la crème
+    - Crevettes à l’ail
+    - Crevettes au curry doux
+    - Crevettes sautées au persil
+    - Crevettes au citron
+    - Gambas grillées
+    - Langoustines grillées
+
+  8.7 Fruits de mer en sauce
+    - Moules sauce tomate
+    - Moules sauce au roquefort
+    - Moules sauce safran
+    - Moules sauce au vin blanc
+    - Coques sauce crème
+    - Coques sauce tomate
+    - Palourdes sauce au curry doux
+    - Palourdes sauce aux herbes
+    - Saint-Jacques sauce au champagne
+    - Saint-Jacques sauce tomate
+    - Crevettes sauce au curry doux
+    - Crevettes sauce coco
+    - Crevettes sauce à l’ail
+    - Gambas sauce armoricaine
+    - Langoustines sauce à l’ail
+    - Langoustines sauce tomate
+    - Langoustines sauce au vin blanc
+    - Saint-Jacques sauce aux champignons
+    - Crevettes sauce épicée
+    - Crevettes sauce au beurre blanc
+
+  8.8 Soupes & plats mijotés de la mer
+    - Soupe de poisson
+    - Soupe de poisson à la provençale
+    - Soupe de poisson aux légumes
+    - Bouillabaisse
+    - Chaudrée de poisson
+    - Bisque de homard
+    - Bisque de crevettes
+    - Bisque de langoustines
+    - Soupe de moules
+    - Soupe de palourdes
+    - Soupe de coques
+    - Soupe de sardines
+    - Soupe de maquereaux
+    - Soupe de truite
+    - Soupe de cabillaud
+    - Marmite dieppoise
+    - Marmite de poisson au cidre
+    - Ragoût de poisson
+    - Navarin de la mer
+    - Curry de poisson
+
+  8.9 Poissons grillés
+    - Cabillaud grillé
+    - Colin grillé
+    - Merlan grillé
+    - Lieu noir grillé
+    - Saumon grillé à l’aneth
+    - Saumon grillé au citron
+    - Truite grillée aux amandes
+    - Maquereau grillé aux herbes
+    - Sardines grillées au barbecue
+    - Espadon grillé aux épices
+    - Thon grillé au soja
+    - Cabillaud grillé aux tomates
+    - Colin grillé au beurre
+    - Merlan grillé à la moutarde
+    - Lieu noir grillé aux poivrons
+    - Saumon grillé au pesto
+    - Truite grillée au vin blanc
+    - Maquereau grillé au citron
+    - Sardines grillées au four
+    - Thon grillé au curry doux
+
+  8.10 Poissons pochés & vapeur
+    - Cabillaud poché au lait
+    - Cabillaud vapeur au citron
+    - Colin vapeur aux herbes
+    - Colin poché au vin blanc
+    - Merlan vapeur aux légumes
+    - Merlan poché aux champignons
+    - Lieu noir vapeur à la moutarde
+    - Lieu noir poché au beurre
+    - Saumon vapeur à l’aneth
+    - Saumon poché au vin blanc
+    - Truite vapeur aux herbes
+    - Truite poché au cidre
+    - Maquereau vapeur aux oignons
+    - Espadon vapeur aux tomates
+    - Thon vapeur aux courgettes
+    - Thon poché au curry doux
+    - Saumonette vapeur au citron
+    - Cabillaud vapeur aux poireaux
+    - Colin vapeur aux carottes
+    - Merlan vapeur aux brocolis
+
+  8.11 Tartares & ceviches
+    - Tartare de saumon
+    - Tartare de thon
+    - Tartare de bar
+    - Tartare de daurade
+    - Tartare de cabillaud
+    - Tartare de maquereau
+    - Tartare de truite
+    - Tartare de saumon fumé
+    - Ceviche de bar
+    - Ceviche de cabillaud
+    - Ceviche de thon
+    - Ceviche de daurade
+    - Ceviche de saumon
+    - Ceviche de crevettes
+    - Ceviche de Saint-Jacques
+    - Ceviche de maquereau
+    - Tartare de lieu noir
+    - Tartare de saumon-avocat
+    - Tartare de thon-sésame
+    - Ceviche de poisson blanc
+
+  8.12 Poissons farcis
+    - Truite farcie aux herbes
+    - Truite farcie aux champignons
+    - Truite farcie aux épinards
+    - Truite farcie au saumon fumé
+    - Cabillaud farci aux légumes
+    - Cabillaud farci aux crevettes
+    - Cabillaud farci aux champignons
+    - Cabillaud farci au jambon
+    - Saumon farci aux épinards
+    - Saumon farci aux poireaux
+    - Saumon farci au riz
+    - Saumon farci aux légumes
+    - Saumon farci au fromage frais
+    - Merlan farci aux herbes
+    - Merlan farci aux tomates
+    - Merlan farci aux champignons
+    - Maquereau farci aux oignons
+    - Maquereau farci au riz
+    - Maquereau farci aux légumes
+    - Espadon farci aux herbes
+
+  8.13 Recettes de coquillages
+    - Moules farcies
+    - Palourdes farcies
+    - Coques farcies
+    - Bulots farcis
+    - Huîtres farcies
+    - Saint-Jacques gratinées
+    - Saint-Jacques farcies
+    - Coquilles Saint-Jacques à la bretonne
+    - Moules farcies à la tomate
+    - Palourdes farcies au persil
+    - Coques farcies à l’ail
+    - Bulots farcis aux herbes
+    - Huîtres farcies au champagne
+    - Saint-Jacques farcies au vin blanc
+    - Moules farcies au fromage
+    - Palourdes farcies au beurre
+    - Coques farcies au citron
+    - Saint-Jacques farcies au curry doux
+    - Huîtres farcies aux épinards
+    - Saint-Jacques farcies à la crème
+
+  8.14 Recettes de crustacés
+    - Crevettes flambées
+    - Crevettes au whisky
+    - Crevettes à la plancha
+    - Crevettes au paprika
+    - Crevettes au piment doux
+    - Gambas flambées
+    - Gambas grillées au cognac
+    - Langoustines flambées
+    - Langoustines au four
+    - Langoustines à la crème
+    - Homard grillé
+    - Homard à l’américaine
+    - Homard au champagne
+    - Homard au beurre
+    - Crabe farci
+    - Crabe au curry doux
+    - Tourteau mayonnaise
+    - Crabe en salade
+    - Araignée de mer au four
+    - Araignée de mer farcie
+
+  8.15 Recettes festives de la mer
+    - Homard rôti
+    - Homard au four
+    - Langouste grillée
+    - Langouste flambée
+    - Saint-Jacques aux truffes
+    - Saint-Jacques au foie gras
+    - Huîtres au caviar
+    - Huîtres gratinées au champagne
+    - Saumon en croûte feuilletée
+    - Saumon en Bellevue
+    - Turbot au champagne
+    - Sole meunière festive
+    - Sole aux morilles
+    - Bar en croûte de sel
+    - Bar au champagne
+    - Dorade au four festive
+    - Cabillaud aux morilles
+    - Cabillaud au champagne
+    - Marmite de fruits de mer
+    - Bouillabaisse royale
+
+  8.16 Salades de poissons & fruits de mer
+    - Salade de thon
+    - Salade de thon et tomates
+    - Salade de thon et maïs
+    - Salade de thon et œufs
+    - Salade de thon et pommes de terre
+    - Salade de thon et haricots verts
+    - Salade de thon et riz
+    - Salade de saumon fumé
+    - Salade de crevettes
+    - Salade de crevettes et avocat
+    - Salade de crevettes et pamplemousse
+    - Salade de crabe
+    - Salade de crabe et maïs
+    - Salade de crabe et avocat
+    - Salade de sardines
+    - Salade de sardines et pommes de terre
+    - Salade de maquereau
+    - Salade de maquereau et carottes
+    - Salade de truite fumée
+    - Salade de bar grillé
+
+  8.17 Poissons en croûte
+    - Saumon en croûte de pâte feuilletée
+    - Saumon en croûte d’herbes
+    - Cabillaud en croûte de moutarde
+    - Cabillaud en croûte d’herbes
+    - Colin en croûte de parmesan
+    - Colin en croûte de tomates
+    - Merlan en croûte d’ail
+    - Merlan en croûte d’herbes
+    - Lieu noir en croûte de moutarde
+    - Lieu noir en croûte d’herbes
+    - Truite en croûte de noix
+    - Truite en croûte de sésame
+    - Maquereau en croûte de tomates
+    - Maquereau en croûte d’herbes
+    - Sardines en croûte de citron
+    - Sardines en croûte d’herbes
+    - Espadon en croûte de sésame
+    - Espadon en croûte de moutarde
+    - Thon en croûte d’épices
+    - Thon en croûte de parmesan
+
+  8.18 Plats mijotés poisson-crustacés
+    - Ragoût de cabillaud aux légumes
+    - Ragoût de colin aux carottes
+    - Ragoût de merlan aux champignons
+    - Ragoût de lieu noir au vin blanc
+    - Ragoût de saumon aux poireaux
+    - Ragoût de truite aux épinards
+    - Ragoût de maquereau aux tomates
+    - Ragoût de sardines aux courgettes
+    - Ragoût d’espadon au curry doux
+    - Ragoût de thon aux poivrons
+    - Navarin de cabillaud
+    - Navarin de saumon
+    - Navarin de truite
+    - Navarin de maquereau
+    - Navarin de sardines
+    - Navarin de colin
+    - Curry de poisson blanc
+    - Curry de saumon
+    - Curry de crevettes
+    - Curry de fruits de mer
+
+  8.19 Recettes rapides poisson & fruits de mer
+    - Cabillaud poêlé au beurre
+    - Colin poêlé aux herbes
+    - Merlan poêlé aux oignons
+    - Lieu noir poêlé aux tomates
+    - Saumon poêlé au citron
+    - Truite poêlée aux amandes
+    - Maquereau poêlé au curry doux
+    - Sardines poêlées à l’ail
+    - Espadon poêlé aux courgettes
+    - Thon poêlé aux herbes
+    - Crevettes poêlées au persil
+    - Gambas poêlées à l’ail
+    - Langoustines poêlées
+    - Saint-Jacques poêlées au beurre
+    - Moules poêlées à l’ail
+    - Palourdes poêlées aux herbes
+    - Coques poêlées aux tomates
+    - Bulots poêlés aux champignons
+    - Huîtres poêlées au champagne
+    - Tourteau poêlé aux légumes
+
+  8.20 Recettes originales de la mer
+    - Saumon au thé vert
+    - Cabillaud au miso
+    - Colin au lait de coco
+    - Merlan à la coriandre
+    - Lieu noir au sésame
+    - Truite au gingembre
+    - Maquereau au curcuma
+    - Sardines au paprika doux
+    - Espadon au soja
+    - Thon au miel
+    - Crevettes au curry coco
+    - Gambas au gingembre
+    - Langoustines au lait de coco
+    - Saint-Jacques au sésame
+    - Huîtres au saké
+    - Moules au lait de coco
+    - Palourdes au curry doux
+    - Coques au gingembre
+    - Bulots aux épices
+    - Crabe au lait de coco

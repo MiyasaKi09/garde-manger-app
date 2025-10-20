@@ -1,0 +1,440 @@
+Bloc 12 : Street food & sandwiches
+  12.1 Sandwichs classiques
+    - Sandwich jambon beurre
+    - Sandwich jambon fromage
+    - Sandwich poulet crudités
+    - Sandwich thon mayonnaise
+    - Sandwich au fromage
+    - Sandwich au saumon fumé
+    - Sandwich au rôti de bœuf
+    - Sandwich au jambon cru
+    - Sandwich aux légumes grillés
+    - Sandwich au poulet curry
+    - Sandwich au thon crudités
+    - Sandwich au chèvre
+    - Sandwich au bleu
+    - Sandwich au camembert
+    - Sandwich au comté
+    - Sandwich au jambon de pays
+    - Sandwich à la dinde
+    - Sandwich au pastrami
+    - Sandwich au saucisson
+    - Sandwich aux rillettes
+
+  12.2 Sandwichs chauds
+    - Croque-monsieur
+    - Croque-madame
+    - Panini jambon fromage
+    - Panini poulet mozzarella
+    - Panini thon fromage
+    - Panini légumes grillés
+    - Panini au saumon
+    - Panini au chèvre
+    - Sandwich chaud au pastrami
+    - Sandwich chaud au rôti de bœuf
+    - Sandwich chaud au poulet
+    - Sandwich chaud au jambon cru
+    - Sandwich chaud au fromage
+    - Sandwich chaud au saumon
+    - Sandwich chaud au bacon
+    - Sandwich chaud au thon
+    - Sandwich chaud au camembert
+    - Sandwich chaud au comté
+    - Sandwich chaud au bleu
+    - Sandwich chaud aux légumes
+
+  12.3 Burgers
+    - Burger classique
+    - Cheeseburger
+    - Double cheeseburger
+    - Bacon burger
+    - Chicken burger
+    - Fish burger
+    - Veggie burger
+    - Burger au bleu
+    - Burger au roquefort
+    - Burger au chèvre
+    - Burger au camembert
+    - Burger au comté
+    - Burger au reblochon
+    - Burger au gorgonzola
+    - Burger au pesto
+    - Burger au curry doux
+    - Burger au bacon et œuf
+    - Burger au poulet pané
+    - Burger au poisson pané
+    - Burger au tofu
+
+  12.4 Wraps
+    - Wrap poulet crudités
+    - Wrap thon crudités
+    - Wrap saumon crudités
+    - Wrap légumes grillés
+    - Wrap falafel
+    - Wrap au poulet curry
+    - Wrap au poulet barbecue
+    - Wrap au bœuf
+    - Wrap au porc
+    - Wrap au jambon cru
+    - Wrap au jambon blanc
+    - Wrap au fromage
+    - Wrap au chèvre
+    - Wrap au bleu
+    - Wrap au camembert
+    - Wrap au comté
+    - Wrap au pesto
+    - Wrap au thon mayonnaise
+    - Wrap aux crevettes
+    - Wrap au saumon fumé
+
+  12.5 Kebab & dérivés
+    - Kebab classique
+    - Kebab au poulet
+    - Kebab au bœuf
+    - Kebab à l’agneau
+    - Kebab aux légumes
+    - Kebab au poisson
+    - Kebab au falafel
+    - Kebab au fromage
+    - Kebab au curry doux
+    - Kebab au paprika
+    - Kebab à la sauce blanche
+    - Kebab à la sauce piquante
+    - Kebab à la sauce au yaourt
+    - Kebab à la sauce barbecue
+    - Kebab au miel
+    - Kebab au pesto
+    - Kebab au poulet mariné
+    - Kebab au bœuf mariné
+    - Kebab au poisson mariné
+    - Kebab au tofu
+
+  12.6 Tacos français
+    - Tacos au poulet
+    - Tacos au bœuf
+    - Tacos au porc
+    - Tacos au poisson
+    - Tacos au thon
+    - Tacos au jambon
+    - Tacos au fromage
+    - Tacos aux légumes
+    - Tacos au falafel
+    - Tacos au poulet curry
+    - Tacos au poulet barbecue
+    - Tacos au poulet fromage
+    - Tacos au bœuf fromage
+    - Tacos au porc fromage
+    - Tacos au poisson fromage
+    - Tacos au thon fromage
+    - Tacos au jambon fromage
+    - Tacos au bacon
+    - Tacos au saumon
+    - Tacos au tofu
+
+  12.7 Hot-dogs
+    - Hot-dog classique
+    - Hot-dog au fromage
+    - Hot-dog au bacon
+    - Hot-dog au chili
+    - Hot-dog au chou
+    - Hot-dog aux oignons
+    - Hot-dog aux poivrons
+    - Hot-dog aux champignons
+    - Hot-dog au curry doux
+    - Hot-dog au pesto
+    - Hot-dog au camembert
+    - Hot-dog au comté
+    - Hot-dog au bleu
+    - Hot-dog au cheddar
+    - Hot-dog au gorgonzola
+    - Hot-dog au chèvre
+    - Hot-dog au saumon
+    - Hot-dog au thon
+    - Hot-dog au poulet
+    - Hot-dog végétarien
+
+  12.8 Street food asiatique
+    - Banh mi au poulet
+    - Banh mi au porc
+    - Banh mi au bœuf
+    - Banh mi au tofu
+    - Banh mi au saumon
+    - Banh mi aux légumes
+    - Brochettes yakitori
+    - Brochettes teriyaki
+    - Brochettes satay
+    - Brochettes au bœuf
+    - Brochettes au poulet
+    - Brochettes au porc
+    - Brochettes au poisson
+    - Brochettes aux crevettes
+    - Brochettes aux légumes
+    - Baozi au porc
+    - Baozi au poulet
+    - Baozi aux légumes
+    - Baozi au bœuf
+    - Baozi au tofu
+
+  12.9 Street food américaine
+    - Corn dog
+    - Sloppy Joe
+    - Pulled pork sandwich
+    - Philly cheesesteak
+    - Grilled cheese
+    - Club sandwich
+    - BLT sandwich
+    - Reuben sandwich
+    - Lobster roll
+    - Shrimp po’boy
+    - Clam chowder bread bowl
+    - Chili cheese fries
+    - Onion rings
+    - Mac and cheese bites
+    - Buffalo wings
+    - Chicken tenders
+    - Nachos au fromage
+    - Nachos au chili
+    - Loaded fries
+    - Mac and cheese burger
+
+  12.10 Street food latino
+    - Arepas au fromage
+    - Arepas au poulet
+    - Arepas au bœuf
+    - Empanadas au bœuf
+    - Empanadas au poulet
+    - Empanadas au fromage
+    - Empanadas aux légumes
+    - Tostadas
+    - Tacos mexicains
+    - Quesadillas
+    - Burritos
+    - Tamales
+    - Elote (maïs grillé)
+    - Churros salés
+    - Ceviche de poisson
+    - Ceviche de crevettes
+    - Ceviche mixte
+    - Fajitas
+    - Nachos mexicains
+    - Enchiladas
+
+  12.11 Street food indienne
+    - Samosas aux légumes
+    - Samosas au poulet
+    - Pakoras
+    - Bhajis d’oignon
+    - Naan au fromage
+    - Naan à l’ail
+    - Poulet tikka
+    - Paneer tikka
+    - Wrap au poulet tandoori
+    - Wrap au paneer
+    - Wrap aux légumes
+    - Curry puff
+    - Paratha farci
+    - Kathi roll
+    - Bhel puri
+    - Pani puri
+    - Chaat aux pommes de terre
+    - Chaat aux pois chiches
+    - Aloo tikki
+    - Vada pav
+
+  12.12 Street food moyen-orientale
+    - Falafels
+    - Shawarma au poulet
+    - Shawarma au bœuf
+    - Shawarma à l’agneau
+    - Koftas
+    - Manakish au fromage
+    - Manakish au zaatar
+    - Sfiha (mini pizza levantine)
+    - Fatayer aux épinards
+    - Fatayer au fromage
+    - Fatayer à la viande
+    - Arayes
+    - Sabich
+    - Labneh au pain pita
+    - Houmous au pain pita
+    - Baba ganoush pita
+    - Kebbeh frit
+    - Kebbeh au four
+    - Brochettes d’agneau
+    - Brochettes de poulet
+
+  12.13 Street food africaine
+    - Pastels sénégalais
+    - Accras de morue
+    - Beignets de légumes africains
+    - Poulet braisé
+    - Poisson braisé
+    - Brochettes de bœuf africaines
+    - Brochettes de poulet africaines
+    - Brochettes de poisson
+    - Alloco (banane plantain frite)
+    - Foufou et sauce
+    - Yassa au poulet
+    - Yassa au poisson
+    - Mafé au poulet
+    - Mafé au bœuf
+    - Mafé aux légumes
+    - Boulettes de poisson africaines
+    - Chapati africain
+    - Pain broche africain
+    - Beignets de farine africains
+    - Soupou kandja
+
+  12.14 Street food européenne
+    - Crêpe jambon fromage
+    - Crêpe complète
+    - Galette saucisse bretonne
+    - Bretzel au fromage
+    - Bretzel nature
+    - Kartoffelpuffer (galettes de pommes de terre)
+    - Currywurst
+    - Bratwurst
+    - Leberkäse sandwich
+    - Fish and chips
+    - Cornish pasty
+    - Jacket potato
+    - Kebab berlinois
+    - Pizza al taglio
+    - Arancini
+    - Focaccia farcie
+    - Piadina italienne
+    - Gyros grec
+    - Souvlaki grec
+    - Koulouri grec
+
+  12.15 Street food asiatique variée
+    - Dim sum
+    - Dumplings
+    - Gyozas
+    - Shumai
+    - Baozi vapeur
+    - Xiaolongbao
+    - Nouilles sautées
+    - Nouilles froides coréennes
+    - Bibimbap
+    - Kimbap
+    - Okonomiyaki
+    - Takoyaki
+    - Yakisoba
+    - Ramen rapide
+    - Tteokbokki
+    - Satay indonésien
+    - Nasi goreng
+    - Mee goreng
+    - Laksa
+    - Pho rapide
+
+  12.16 Crêpes & galettes street food
+    - Crêpe jambon
+    - Crêpe fromage
+    - Crêpe complète
+    - Crêpe au saumon
+    - Crêpe aux champignons
+    - Crêpe aux légumes
+    - Crêpe au poulet
+    - Crêpe au thon
+    - Galette saucisse
+    - Galette au jambon
+    - Galette aux légumes
+    - Galette au fromage
+    - Galette complète
+    - Galette au poulet
+    - Galette au saumon
+    - Galette aux champignons
+    - Wrap-crêpe
+    - Crêpe roulée fromage
+    - Galette roulée jambon
+    - Crêpe gratinée
+
+  12.17 Snacks frits
+    - Beignets de légumes
+    - Beignets de poulet
+    - Beignets de poisson
+    - Beignets de crevettes
+    - Beignets de calamars
+    - Tempura de légumes
+    - Tempura de crevettes
+    - Tempura de poisson
+    - Nuggets de poulet
+    - Nuggets de poisson
+    - Nuggets de légumes
+    - Onion rings
+    - Frites classiques
+    - Frites de patates douces
+    - Chips maison
+    - Galettes de pommes de terre
+    - Croquettes de pommes de terre
+    - Croquettes de fromage
+    - Accras de légumes
+    - Accras de morue
+
+  12.18 Snacks sains & végétariens
+    - Wrap végétarien
+    - Wrap falafel
+    - Wrap houmous
+    - Sandwich aux crudités
+    - Sandwich aux œufs
+    - Salade de pâtes street food
+    - Salade de riz street food
+    - Salade de pois chiches
+    - Salade de lentilles
+    - Taboulé
+    - Houmous et crudités
+    - Baba ganoush et crudités
+    - Falafels et salade
+    - Légumes grillés pita
+    - Brochettes de légumes
+    - Mini pizzas végétariennes
+    - Crackers maison
+    - Tartinade au fromage frais
+    - Chips de légumes
+    - Soupe froide street food
+
+  12.19 Street food festive
+    - Mini burgers
+    - Mini hot-dogs
+    - Mini pizzas
+    - Mini quiches
+    - Mini tartes salées
+    - Mini sandwichs
+    - Mini wraps
+    - Mini kebabs
+    - Mini tacos
+    - Mini croque-monsieur
+    - Mini paninis
+    - Mini crêpes
+    - Mini galettes
+    - Mini brochettes
+    - Mini samoussas
+    - Mini nems
+    - Mini baozi
+    - Mini arancini
+    - Mini accras
+    - Mini beignets salés
+
+  12.20 Recettes originales street food
+    - Burger sucré-salé
+    - Hot-dog exotique
+    - Pizza sushi
+    - Wrap dessert salé
+    - Sandwich fusion asiatique
+    - Kebab exotique
+    - Tacos sucré-salé
+    - Crêpe fusion
+    - Bao burger
+    - Ramen burger
+    - Sushi burrito
+    - Pizza burger
+    - Croissant sandwich
+    - Donut burger
+    - Pita sucrée-salée
+    - Empanada fusion
+    - Spring roll sucré-salé
+    - Tartine expérimentale
+    - Brochette fusion
+    - Snack hybride surprise
