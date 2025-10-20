@@ -1,0 +1,440 @@
+Bloc 18 : Sauces, condiments & bases liquides
+  18.1 Sauces classiques françaises
+    - Sauce béchamel
+    - Sauce hollandaise
+    - Sauce béarnaise
+    - Sauce bordelaise
+    - Sauce au poivre
+    - Sauce moutarde
+    - Sauce normande
+    - Sauce au beurre blanc
+    - Sauce madère
+    - Sauce périgueux
+    - Sauce gribiche
+    - Sauce ravigote
+    - Sauce charcutière
+    - Sauce marchand de vin
+    - Sauce vin blanc
+    - Sauce vin rouge
+    - Sauce crème
+    - Sauce au citron
+    - Sauce aux herbes
+    - Sauce provençale
+
+  18.2 Sauces à base de tomates
+    - Sauce tomate nature
+    - Sauce tomate au basilic
+    - Sauce tomate à l’origan
+    - Sauce tomate aux herbes
+    - Sauce tomate aux légumes
+    - Sauce tomate aux champignons
+    - Sauce tomate au vin rouge
+    - Sauce tomate au vin blanc
+    - Sauce tomate épicée
+    - Sauce tomate au paprika
+    - Sauce tomate au curry
+    - Sauce tomate à l’ail
+    - Sauce tomate aux oignons
+    - Sauce tomate aux poivrons
+    - Sauce tomate aux aubergines
+    - Sauce tomate aux courgettes
+    - Sauce tomate à la crème
+    - Sauce tomate au fromage
+    - Sauce tomate provençale
+    - Sauce tomate napolitaine
+
+  18.3 Sauces brunes & fonds
+    - Sauce brune classique
+    - Sauce demi-glace
+    - Sauce espagnole
+    - Sauce chasseur
+    - Sauce périgourdine
+    - Sauce forestière
+    - Sauce au vin
+    - Sauce au porto
+    - Sauce au madère
+    - Sauce bordelaise
+    - Fond brun
+    - Fond de veau
+    - Fond de gibier
+    - Fond de volaille
+    - Fond de poisson
+    - Jus de viande
+    - Jus corsé
+    - Jus de rôti
+    - Sauce aux champignons
+    - Sauce à la truffe
+
+  18.4 Sauces froides
+    - Mayonnaise
+    - Aïoli
+    - Rouille
+    - Tzatziki
+    - Houmous
+    - Tarator
+    - Guacamole
+    - Salsa
+    - Pesto
+    - Tapenade
+    - Caviar d’aubergine
+    - Crème ciboulette
+    - Crème moutarde
+    - Crème au fromage blanc
+    - Raita
+    - Vinaigrette classique
+    - Vinaigrette au citron
+    - Vinaigrette aux herbes
+    - Vinaigrette moutarde
+    - Sauce cocktail
+
+  18.5 Vinaigrettes
+    - Vinaigrette classique
+    - Vinaigrette moutarde
+    - Vinaigrette au citron
+    - Vinaigrette aux herbes
+    - Vinaigrette balsamique
+    - Vinaigrette au miel
+    - Vinaigrette au soja
+    - Vinaigrette au sésame
+    - Vinaigrette au curry
+    - Vinaigrette au paprika
+    - Vinaigrette à l’orange
+    - Vinaigrette à la framboise
+    - Vinaigrette à la mangue
+    - Vinaigrette au gingembre
+    - Vinaigrette au yaourt
+    - Vinaigrette au fromage blanc
+    - Vinaigrette au vinaigre de cidre
+    - Vinaigrette au vinaigre de vin
+    - Vinaigrette au vinaigre balsamique blanc
+    - Vinaigrette crémeuse
+
+  18.6 Condiments & chutneys
+    - Chutney de mangue
+    - Chutney de pomme
+    - Chutney de tomate
+    - Chutney d’oignon
+    - Chutney d’ananas
+    - Chutney de figue
+    - Chutney de poire
+    - Chutney de prune
+    - Chutney de courgette
+    - Chutney d’aubergine
+    - Chutney de poivron
+    - Chutney de carotte
+    - Chutney de betterave
+    - Chutney de radis
+    - Chutney de fenouil
+    - Chutney de navet
+    - Chutney de céleri
+    - Chutney de potiron
+    - Chutney aux épices
+    - Chutney sucré-salé
+
+  18.7 Marinades
+    - Marinade au vin rouge
+    - Marinade au vin blanc
+    - Marinade à la bière
+    - Marinade au citron
+    - Marinade au yaourt
+    - Marinade à la moutarde
+    - Marinade au miel
+    - Marinade au soja
+    - Marinade au gingembre
+    - Marinade au curry
+    - Marinade au paprika
+    - Marinade aux herbes
+    - Marinade à l’ail
+    - Marinade au piment
+    - Marinade au vinaigre
+    - Marinade à l’huile d’olive
+    - Marinade exotique
+    - Marinade méditerranéenne
+    - Marinade asiatique
+    - Marinade sucrée-salée
+
+  18.8 Bouillons & fonds clairs
+    - Bouillon de légumes
+    - Bouillon de volaille
+    - Bouillon de bœuf
+    - Bouillon de poisson
+    - Bouillon de crustacés
+    - Bouillon d’herbes
+    - Bouillon aux épices
+    - Bouillon clair de poulet
+    - Bouillon clair de bœuf
+    - Bouillon clair de légumes
+    - Bouillon miso
+    - Bouillon thaï
+    - Bouillon vietnamien
+    - Bouillon chinois
+    - Bouillon japonais
+    - Bouillon au curry doux
+    - Bouillon au gingembre
+    - Bouillon au citronnelle
+    - Bouillon festif
+    - Bouillon créatif
+
+  18.9 Huiles parfumées
+    - Huile d’olive au basilic
+    - Huile d’olive au romarin
+    - Huile d’olive à l’ail
+    - Huile d’olive au piment
+    - Huile d’olive au citron
+    - Huile d’olive à la truffe
+    - Huile de tournesol aux herbes
+    - Huile de sésame grillé
+    - Huile d’arachide parfumée
+    - Huile de noix aromatisée
+    - Huile de noisette parfumée
+    - Huile de colza parfumée
+    - Huile de pépins de raisin parfumée
+    - Huile de lin parfumée
+    - Huile de courge parfumée
+    - Huile au curry
+    - Huile au paprika
+    - Huile au gingembre
+    - Huile exotique
+    - Huile méditerranéenne
+
+  18.10 Beurres composés
+    - Beurre maître d’hôtel
+    - Beurre d’ail
+    - Beurre aux herbes
+    - Beurre au persil
+    - Beurre au citron
+    - Beurre au piment
+    - Beurre au curry
+    - Beurre au paprika
+    - Beurre à la truffe
+    - Beurre à l’estragon
+    - Beurre à la ciboulette
+    - Beurre à la coriandre
+    - Beurre au basilic
+    - Beurre au romarin
+    - Beurre au thym
+    - Beurre à l’aneth
+    - Beurre au fromage
+    - Beurre aux noix
+    - Beurre aux olives
+    - Beurre festif
+
+  18.11 Pestos & dérivés
+    - Pesto alla genovese
+    - Pesto rosso
+    - Pesto de roquette
+    - Pesto de coriandre
+    - Pesto de basilic et noix
+    - Pesto de menthe
+    - Pesto aux herbes variées
+    - Pesto au persil
+    - Pesto d’épinards
+    - Pesto de kale
+    - Pesto de fanes de carottes
+    - Pesto de fanes de radis
+    - Pesto de betterave
+    - Pesto de courgette
+    - Pesto de tomates séchées
+    - Pesto de poivrons
+    - Pesto d’aubergine
+    - Pesto crémeux
+    - Pesto aux agrumes
+    - Pesto original
+
+  18.12 Sauces asiatiques
+    - Sauce soja sucrée
+    - Sauce soja salée
+    - Sauce teriyaki
+    - Sauce yakitori
+    - Sauce nuoc-mâm
+    - Sauce hoisin
+    - Sauce aigre-douce
+    - Sauce pékinoise
+    - Sauce satay
+    - Sauce curry rouge
+    - Sauce curry vert
+    - Sauce curry jaune
+    - Sauce thaï au piment
+    - Sauce thaï sucrée-salée
+    - Sauce ponzu
+    - Sauce sésame
+    - Sauce gingembre
+    - Sauce ail-piment
+    - Sauce miso
+    - Sauce ramen
+
+  18.13 Sauces méditerranéennes
+    - Sauce romesco
+    - Sauce skordalia
+    - Sauce taramasalata
+    - Sauce pistou
+    - Sauce anchoïade
+    - Sauce tzatziki
+    - Sauce tapenade
+    - Sauce muhammara
+    - Sauce chermoula
+    - Sauce zaatar
+    - Sauce au cumin
+    - Sauce au paprika fumé
+    - Sauce au citron confit
+    - Sauce à la coriandre
+    - Sauce au persil
+    - Sauce au basilic
+    - Sauce tomate méditerranéenne
+    - Sauce aux olives
+    - Sauce à l’harissa
+    - Sauce à l’huile d’olive
+
+  18.14 Sauces américaines
+    - Sauce barbecue
+    - Sauce ketchup maison
+    - Sauce ranch
+    - Sauce blue cheese
+    - Sauce Caesar
+    - Sauce honey mustard
+    - Sauce buffalo
+    - Sauce burger
+    - Sauce tartare américaine
+    - Sauce chili con carne
+    - Sauce cajun
+    - Sauce créole
+    - Sauce américaine aux crevettes
+    - Sauce steakhouse
+    - Sauce chipotle
+    - Sauce tex-mex
+    - Sauce au sirop d’érable
+    - Sauce au bourbon
+    - Sauce fumée
+    - Sauce au whisky
+
+  18.15 Sauces africaines
+    - Sauce mafé
+    - Sauce yassa
+    - Sauce gombo
+    - Sauce arachide
+    - Sauce tomate africaine
+    - Sauce piment africaine
+    - Sauce à l’oignon sénégalaise
+    - Sauce épinards nigériane
+    - Sauce aubergine ivoirienne
+    - Sauce poisson camerounaise
+    - Sauce arachide épicée
+    - Sauce chou vert africaine
+    - Sauce patate douce
+    - Sauce banane plantain
+    - Sauce courge africaine
+    - Sauce tomate piquante
+    - Sauce aux herbes africaines
+    - Sauce curry africain
+    - Sauce de fête africaine
+    - Sauce créative africaine
+
+  18.16 Sauces latines & sud-américaines
+    - Sauce chimichurri
+    - Sauce salsa verde
+    - Sauce salsa roja
+    - Sauce mole
+    - Sauce pico de gallo
+    - Sauce guasacaca
+    - Sauce aji amarillo
+    - Sauce aji verde
+    - Sauce criolla
+    - Sauce huancaina
+    - Sauce rocoto
+    - Sauce avocat-lime
+    - Sauce tomate mexicaine
+    - Sauce chili
+    - Sauce tomate péruvienne
+    - Sauce piment chipotle
+    - Sauce coriandre-lime
+    - Sauce mangue-piment
+    - Sauce papaye épicée
+    - Sauce passion sucrée-salée
+
+  18.17 Pickles & lacto-fermentés
+    - Pickles de concombre
+    - Pickles de carottes
+    - Pickles d’oignons rouges
+    - Pickles de radis
+    - Pickles de chou-fleur
+    - Pickles de betteraves
+    - Pickles de courgettes
+    - Pickles de poivrons
+    - Pickles de navets
+    - Pickles de gingembre
+    - Pickles de piment
+    - Pickles de haricots verts
+    - Pickles de cornichons
+    - Pickles de chou
+    - Pickles de céleri
+    - Pickles d’ail
+    - Pickles de fenouil
+    - Pickles de champignons
+    - Pickles de tomates vertes
+    - Pickles originaux
+
+  18.18 Sirop & réductions salées
+    - Réduction balsamique
+    - Sirop d’érable salé
+    - Sirop de grenade
+    - Réduction de vin rouge
+    - Réduction de vin blanc
+    - Réduction de porto
+    - Réduction de madère
+    - Réduction de bière
+    - Réduction de vinaigre
+    - Réduction de cidre
+    - Réduction au miel salé
+    - Réduction aux épices
+    - Sirop d’oignon
+    - Sirop d’ail
+    - Sirop de carotte
+    - Sirop de betterave
+    - Sirop de tomate
+    - Sirop de poivron
+    - Sirop exotique salé
+    - Sirop créatif
+
+  18.19 Bases sucrées utilisées en salé
+    - Caramel salé
+    - Compote de pomme salée
+    - Compote de poire salée
+    - Compote de figue salée
+    - Confiture d’oignon
+    - Confiture de tomate
+    - Confiture de poivron
+    - Confiture de courgette
+    - Confiture d’aubergine
+    - Confiture de carotte
+    - Gelée de vin rouge
+    - Gelée de porto
+    - Gelée de bière
+    - Gelée de cidre
+    - Gelée d’herbes
+    - Gelée au romarin
+    - Gelée au thym
+    - Gelée à la menthe
+    - Gelée au basilic
+    - Gelée festive
+
+  18.20 Bases créatives
+    - Sauce au cacao
+    - Sauce au café
+    - Sauce au thé vert
+    - Sauce aux fleurs comestibles
+    - Sauce aux algues
+    - Sauce au curcuma
+    - Sauce au curry noir
+    - Sauce au charbon végétal
+    - Sauce au miso blanc
+    - Sauce au yaourt fumé
+    - Sauce expérimentale
+    - Sauce aux épices rares
+    - Sauce aux champignons séchés
+    - Sauce au vin orange
+    - Sauce festive créative
+    - Sauce sucrée-salée innovante
+    - Sauce exotique rare
+    - Sauce mixte terre-mer
+    - Sauce expérimentale fusion
+    - Sauce moléculaire

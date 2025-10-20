@@ -1,0 +1,440 @@
+Bloc 4 : Soupes & potages
+  4.1 Soupes de légumes classiques
+    - Soupe de carottes
+    - Soupe de poireaux
+    - Soupe de courgettes
+    - Soupe de brocolis
+    - Soupe de céleri-rave
+    - Soupe de potiron
+    - Soupe de petits pois
+    - Soupe de chou-fleur
+    - Soupe d’épinards
+    - Soupe de navets
+    - Soupe de tomates
+    - Soupe de panais
+    - Soupe de betteraves
+    - Soupe de haricots verts
+    - Soupe de patates douces
+    - Soupe de champignons
+    - Soupe de fenouil
+    - Soupe de chou vert
+    - Soupe de courge musquée
+    - Soupe de rutabaga
+
+  4.2 Veloutés
+    - Velouté de potiron
+    - Velouté de champignons
+    - Velouté de petits pois
+    - Velouté de carottes
+    - Velouté de chou-fleur
+    - Velouté de poireaux
+    - Velouté de panais
+    - Velouté de tomates
+    - Velouté d’asperges
+    - Velouté de courgettes
+    - Velouté de céleri
+    - Velouté de topinambours
+    - Velouté de brocolis
+    - Velouté de patates douces
+    - Velouté de navets
+    - Velouté de cresson
+    - Velouté de betteraves
+    - Velouté de fenouil
+    - Velouté de maïs
+    - Velouté de potimarron
+
+  4.3 Potages traditionnels
+    - Potage julienne
+    - Potage cultivateur
+    - Potage parisien
+    - Potage madrilène
+    - Potage aux légumes variés
+    - Potage de légumes anciens
+    - Potage de légumes racines
+    - Potage crème de champignons
+    - Potage crème de tomates
+    - Potage crème de céleri
+    - Potage crème de poireaux
+    - Potage crème de carottes
+    - Potage crème de chou-fleur
+    - Potage crème de panais
+    - Potage crème de courgettes
+    - Potage crème d’asperges
+    - Potage crème de navets
+    - Potage crème de topinambours
+    - Potage crème de brocolis
+    - Potage crème de potiron
+
+  4.4 Soupes régionales françaises
+    - Soupe à l’oignon
+    - Garbure
+    - Tourin à l’ail
+    - Soupe champenoise
+    - Soupe de poisson provençale
+    - Bouillabaisse simplifiée
+    - Soupe au pistou
+    - Soupe berrichonne
+    - Soupe limousine
+    - Soupe normande
+    - Soupe corse aux légumes
+    - Soupe savoyarde
+    - Soupe au chou d’Alsace
+    - Soupe bretonne aux légumes
+    - Soupe lilloise
+    - Soupe béarnaise
+    - Soupe gasconne
+    - Soupe vosgienne
+    - Soupe au cresson franc-comtoise
+    - Soupe vendéenne
+
+  4.5 Soupes d’Europe de l’Est
+    - Bortsch ukrainien
+    - Soupe de choux russe
+    - Soupe aux champignons polonaise
+    - Soupe de pommes de terre polonaise
+    - Soupe de haricots hongroise
+    - Soupe de lentilles serbe
+    - Soupe aigre-douce roumaine
+    - Soupe de poisson hongroise
+    - Soupe froide lituanienne
+    - Soupe de betteraves polonaise
+    - Soupe aux pois cassés polonaise
+    - Soupe aux légumes slovaque
+    - Soupe de goulash tchèque
+    - Soupe d’ail slovaque
+    - Soupe de champignons hongroise
+    - Soupe de navets polonaise
+    - Soupe aux haricots blancs roumaine
+    - Soupe aux légumes croate
+    - Soupe de pois cassés hongroise
+    - Soupe aux lentilles bulgare
+
+  4.6 Soupes méditerranéennes
+    - Minestrone italien
+    - Ribollita toscane
+    - Zuppa di pesce
+    - Acquacotta
+    - Soupe grecque avgolemono
+    - Soupe de lentilles grecque
+    - Soupe de pois chiches espagnole
+    - Sopa de ajo
+    - Gazpacho andalou
+    - Salmorejo
+    - Soupe portugaise caldo verde
+    - Soupe de haricots à l’espagnole
+    - Soupe aux légumes sicilienne
+    - Soupe de fèves grecque
+    - Soupe au pistou niçoise
+    - Soupe à la tomate italienne
+    - Soupe aux pois chiches turque
+    - Soupe méditerranéenne aux légumes
+    - Soupe de courgettes italienne
+    - Soupe grecque aux épinards
+
+  4.7 Soupes asiatiques adaptées
+    - Soupe miso simple
+    - Soupe pho simplifiée
+    - Soupe ramen maison
+    - Soupe de poulet au gingembre
+    - Soupe chinoise aux nouilles
+    - Soupe wonton
+    - Soupe thaïe au lait de coco
+    - Soupe au curry doux
+    - Soupe de légumes asiatiques
+    - Soupe de poisson à la citronnelle
+    - Soupe aux crevettes thaïe
+    - Soupe aux algues japonaises
+    - Soupe de nouilles sautées
+    - Soupe aigre-douce chinoise
+    - Soupe de tofu au miso
+    - Soupe de porc aux nouilles
+    - Soupe au poulet et champignons noirs
+    - Soupe vietnamienne aux légumes
+    - Soupe japonaise au sésame
+    - Soupe thaïe aux légumes
+
+  4.8 Soupes froides
+    - Soupe froide de concombre
+    - Soupe froide de courgettes
+    - Soupe froide de tomates
+    - Soupe froide de carottes
+    - Soupe froide de betteraves
+    - Soupe froide de poivrons
+    - Soupe froide de fenouil
+    - Soupe froide de petits pois
+    - Soupe froide de céleri
+    - Soupe froide de panais
+    - Soupe froide de brocolis
+    - Soupe froide d’épinards
+    - Soupe froide de chou-fleur
+    - Soupe froide de navets
+    - Soupe froide de patates douces
+    - Soupe froide de champignons
+    - Soupe froide de cresson
+    - Soupe froide de courge
+    - Soupe froide de courgettes au basilic
+    - Soupe froide de laitue
+
+  4.9 Potages de légumineuses
+    - Soupe de lentilles corail
+    - Soupe de lentilles vertes
+    - Soupe de pois cassés
+    - Soupe de pois chiches
+    - Soupe de haricots rouges
+    - Soupe de haricots blancs
+    - Soupe de fèves
+    - Soupe de soja
+    - Soupe de pois mange-tout
+    - Soupe de pois verts
+    - Soupe de haricots noirs
+    - Soupe de pois cassés à la française
+    - Soupe de pois jaunes
+    - Soupe de haricots mungo
+    - Soupe de pois cassés au lard
+    - Soupe de lentilles aux légumes
+    - Soupe de pois cassés aux carottes
+    - Soupe de pois chiches méditerranéenne
+    - Soupe de lentilles au cumin
+    - Soupe de pois cassés à l’oignon
+
+  4.10 Potages aux céréales
+    - Soupe de riz au poulet
+    - Soupe d’orge perlé
+    - Soupe de quinoa
+    - Soupe de boulgour
+    - Soupe de millet
+    - Soupe de seigle
+    - Soupe de sarrasin
+    - Soupe de riz aux légumes
+    - Soupe d’avoine
+    - Soupe de riz aux champignons
+    - Soupe de quinoa aux courgettes
+    - Soupe d’orge aux carottes
+    - Soupe de boulgour aux tomates
+    - Soupe de millet aux herbes
+    - Soupe de riz au curry doux
+    - Soupe de quinoa au citron
+    - Soupe d’avoine salée
+    - Soupe de riz au potiron
+    - Soupe de sarrasin aux poireaux
+    - Soupe de seigle aux légumes
+
+  4.11 Soupes de viandes
+    - Soupe au poulet
+    - Soupe de bœuf
+    - Soupe de veau
+    - Soupe d’agneau
+    - Soupe de porc
+    - Soupe de canard
+    - Soupe de dinde
+    - Soupe de pintade
+    - Soupe de gibier
+    - Soupe de jambon
+    - Soupe au poulet rôti
+    - Soupe de bœuf aux légumes
+    - Soupe d’agneau au cumin
+    - Soupe de porc au chou
+    - Soupe de veau aux carottes
+    - Soupe de canard aux navets
+    - Soupe de dinde aux champignons
+    - Soupe de gibier aux légumes
+    - Soupe au jambon et pois cassés
+    - Soupe de pintade au céleri
+
+  4.12 Soupes de poissons
+    - Soupe de poisson bretonne
+    - Soupe de poisson provençale
+    - Soupe de cabillaud
+    - Soupe de colin
+    - Soupe de saumon
+    - Soupe de truite
+    - Soupe de merlan
+    - Soupe de maquereaux
+    - Soupe de sardines
+    - Soupe de dorade
+    - Soupe de bar
+    - Soupe de lotte
+    - Soupe de perche
+    - Soupe de brochet
+    - Soupe de sole
+    - Soupe de rascasse
+    - Soupe de mulet
+    - Soupe de rouget
+    - Soupe de thon
+    - Soupe de sprats
+
+  4.13 Soupes de fruits de mer
+    - Soupe de moules
+    - Soupe de palourdes
+    - Soupe de coques
+    - Soupe de crevettes
+    - Soupe de langoustines
+    - Soupe de crabes
+    - Soupe d’araignées de mer
+    - Soupe de homard
+    - Soupe d’écrevisses
+    - Soupe de calamars
+    - Soupe de poulpe
+    - Soupe de gambas
+    - Soupe de clams
+    - Soupe de coquilles Saint-Jacques
+    - Soupe de bigorneaux
+    - Soupe de couteaux
+    - Soupe de bulots
+    - Soupe de crevettes grises
+    - Soupe de langoustes
+    - Soupe de seiches
+
+  4.14 Soupes légères & diététiques
+    - Soupe minceur de légumes
+    - Soupe détox poireaux-courgettes
+    - Soupe légère de brocolis
+    - Soupe légère de carottes
+    - Soupe légère de céleri
+    - Soupe légère de champignons
+    - Soupe légère de chou-fleur
+    - Soupe légère de courge
+    - Soupe légère d’épinards
+    - Soupe légère de navets
+    - Soupe légère de tomates
+    - Soupe légère de panais
+    - Soupe légère de fenouil
+    - Soupe légère de courgettes au basilic
+    - Soupe légère de betteraves
+    - Soupe légère de laitue
+    - Soupe légère de patates douces
+    - Soupe légère de topinambours
+    - Soupe légère de cresson
+    - Soupe légère de chou vert
+
+  4.15 Soupes rustiques
+    - Soupe paysanne
+    - Soupe campagnarde
+    - Soupe fermière
+    - Soupe des champs
+    - Soupe rustique aux légumes
+    - Soupe rustique aux pois cassés
+    - Soupe rustique aux lentilles
+    - Soupe rustique aux fèves
+    - Soupe rustique aux pommes de terre
+    - Soupe rustique aux navets
+    - Soupe rustique au chou
+    - Soupe rustique au lard
+    - Soupe rustique aux carottes
+    - Soupe rustique au céleri
+    - Soupe rustique aux courgettes
+    - Soupe rustique aux courges
+    - Soupe rustique aux champignons
+    - Soupe rustique aux oignons
+    - Soupe rustique aux panais
+    - Soupe rustique aux poireaux
+
+  4.16 Soupes festives
+    - Bisque de homard
+    - Bisque de langoustines
+    - Bisque de crabes
+    - Bisque de crevettes
+    - Soupe de foie gras
+    - Soupe aux truffes
+    - Velouté de cèpes
+    - Soupe de Saint-Jacques
+    - Soupe de champagne
+    - Soupe au vin blanc
+    - Soupe au porto
+    - Soupe au cognac
+    - Soupe de gibier festive
+    - Soupe aux huîtres
+    - Soupe de homard à la crème
+    - Soupe de foie gras et cèpes
+    - Soupe aux morilles
+    - Soupe au champagne et saumon
+    - Soupe au vin rouge
+    - Soupe de gibier raffiné
+
+  4.17 Soupes exotiques adaptées
+    - Soupe épicée indienne
+    - Soupe de lentilles au curry
+    - Soupe thaïe au lait de coco
+    - Soupe vietnamienne simplifiée
+    - Soupe chinoise au gingembre
+    - Soupe japonaise miso
+    - Soupe coréenne douce
+    - Soupe mexicaine aux haricots
+    - Soupe créole
+    - Soupe cajun
+    - Soupe marocaine aux pois chiches
+    - Soupe tunisienne harira adaptée
+    - Soupe libanaise aux lentilles
+    - Soupe turque mercimek
+    - Soupe syrienne aux pois cassés
+    - Soupe iranienne aux herbes
+    - Soupe indonésienne au poulet
+    - Soupe thaïe douce
+    - Soupe indienne au lait de coco
+    - Soupe égyptienne de lentilles
+
+  4.18 Soupes de fin de mois
+    - Soupe de restes de légumes
+    - Soupe à l’oignon gratinée
+    - Soupe de pain rassis
+    - Soupe de fanes de radis
+    - Soupe de fanes de carottes
+    - Soupe d’épluchures de légumes
+    - Soupe de restes de pot-au-feu
+    - Soupe au bouillon clair
+    - Soupe de pâtes fines
+    - Soupe de semoule
+    - Soupe de riz nature
+    - Soupe de pois cassés simple
+    - Soupe de carottes et pommes de terre
+    - Soupe d’oignons au vin blanc
+    - Soupe de restes de poulet
+    - Soupe de chou et pommes de terre
+    - Soupe de tomates et riz
+    - Soupe de légumes variés simples
+    - Soupe de navets et pommes de terre
+    - Soupe de pâtes et tomates
+
+  4.19 Soupes rapides
+    - Soupe express aux légumes
+    - Soupe rapide aux tomates
+    - Soupe rapide aux courgettes
+    - Soupe rapide aux champignons
+    - Soupe rapide aux poireaux
+    - Soupe rapide aux carottes
+    - Soupe rapide aux brocolis
+    - Soupe rapide aux céleris
+    - Soupe rapide aux pommes de terre
+    - Soupe rapide aux navets
+    - Soupe rapide aux chou-fleurs
+    - Soupe rapide aux épinards
+    - Soupe rapide aux betteraves
+    - Soupe rapide aux panais
+    - Soupe rapide au fenouil
+    - Soupe rapide au maïs
+    - Soupe rapide au potiron
+    - Soupe rapide aux champignons noirs
+    - Soupe rapide au chou vert
+    - Soupe rapide au potimarron
+
+  4.20 Soupes originales
+    - Soupe au fromage
+    - Soupe à la bière
+    - Soupe au vin
+    - Soupe au cidre
+    - Soupe au lait
+    - Soupe à l’ail noir
+    - Soupe au gingembre
+    - Soupe au curcuma
+    - Soupe au café
+    - Soupe au thé vert
+    - Soupe aux algues
+    - Soupe au miso et fromage
+    - Soupe à la cannelle
+    - Soupe à la muscade
+    - Soupe au poivre
+    - Soupe au chocolat noir salé
+    - Soupe au lait d’amande
+    - Soupe au lait de coco
+    - Soupe au fromage bleu
+    - Soupe à la moutarde
