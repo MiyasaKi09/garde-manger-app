@@ -1,0 +1,440 @@
+Bloc 7 : Pâtes, riz, céréales
+  7.1 Pâtes simples
+    - Spaghetti à l’huile d’olive
+    - Penne à la tomate
+    - Farfalle au pesto
+    - Fusilli à la crème
+    - Tagliatelles au beurre
+    - Linguine à l’ail
+    - Rigatoni aux champignons
+    - Spaghetti au citron
+    - Penne aux courgettes
+    - Fusilli aux poivrons
+    - Tagliatelles aux épinards
+    - Macaronis au fromage
+    - Pâtes aux oignons
+    - Spaghetti au thon
+    - Pâtes aux brocolis
+    - Pâtes aux aubergines
+    - Pâtes aux tomates séchées
+    - Pâtes aux carottes
+    - Pâtes aux petits pois
+    - Pâtes aux herbes
+
+  7.2 Pâtes gourmandes
+    - Pâtes à la carbonara
+    - Pâtes à la bolognaise
+    - Pâtes aux fruits de mer
+    - Pâtes au saumon
+    - Pâtes au jambon et champignons
+    - Pâtes au poulet
+    - Pâtes au gorgonzola
+    - Pâtes au curry doux
+    - Pâtes au bacon et parmesan
+    - Pâtes à la truffe
+    - Pâtes au chorizo
+    - Pâtes aux crevettes
+    - Pâtes au roquefort
+    - Pâtes aux légumes grillés
+    - Pâtes au chèvre frais
+    - Pâtes au pesto rosso
+    - Pâtes au lapin
+    - Pâtes à la saucisse
+    - Pâtes au confit de canard
+    - Pâtes à l’agneau
+
+  7.3 Pâtes au four
+    - Lasagnes bolognaises
+    - Lasagnes saumon-épinards
+    - Lasagnes aux légumes
+    - Cannellonis ricotta-épinards
+    - Cannellonis à la viande
+    - Gratin de pâtes au jambon
+    - Gratin de pâtes aux champignons
+    - Gratin de pâtes au fromage
+    - Gratin de pâtes au poulet
+    - Pâtes gratinées à la crème
+    - Macaroni and cheese
+    - Rigatoni al forno
+    - Penne gratinées au pesto
+    - Gratin de pâtes aux courgettes
+    - Gratin de pâtes aux aubergines
+    - Lasagnes aux champignons
+    - Lasagnes aux poireaux
+    - Lasagnes végétariennes
+    - Lasagnes au thon
+    - Lasagnes au poulet curry
+
+  7.4 Riz simples
+    - Riz nature
+    - Riz au beurre
+    - Riz à la tomate
+    - Riz pilaf
+    - Riz sauté aux légumes
+    - Riz au curry doux
+    - Riz à l’ail
+    - Riz au citron
+    - Riz au persil
+    - Riz aux champignons
+    - Riz aux carottes
+    - Riz aux courgettes
+    - Riz aux épinards
+    - Riz aux poivrons
+    - Riz aux tomates séchées
+    - Riz aux petits pois
+    - Riz au brocolis
+    - Riz au fenouil
+    - Riz aux oignons
+    - Riz aux herbes
+
+  7.5 Riz gourmands
+    - Risotto aux champignons
+    - Risotto au safran
+    - Risotto aux asperges
+    - Risotto aux fruits de mer
+    - Risotto au poulet
+    - Risotto aux épinards
+    - Risotto au potiron
+    - Risotto aux courgettes
+    - Risotto au jambon cru
+    - Risotto aux crevettes
+    - Risotto aux tomates séchées
+    - Risotto aux artichauts
+    - Risotto aux calamars
+    - Risotto aux poireaux
+    - Risotto aux moules
+    - Risotto aux carottes
+    - Risotto aux oignons caramélisés
+    - Risotto aux cèpes
+    - Risotto aux truffes
+    - Risotto aux légumes variés
+
+  7.6 Riz au four & gratins
+    - Gratin de riz aux courgettes
+    - Gratin de riz aux champignons
+    - Gratin de riz au jambon
+    - Gratin de riz aux poireaux
+    - Gratin de riz aux tomates
+    - Gratin de riz aux épinards
+    - Gratin de riz aux aubergines
+    - Gratin de riz aux brocolis
+    - Gratin de riz aux poivrons
+    - Gratin de riz au poulet
+    - Gratin de riz aux carottes
+    - Gratin de riz au fromage
+    - Gratin de riz au saumon
+    - Gratin de riz aux crevettes
+    - Gratin de riz aux lardons
+    - Gratin de riz aux herbes
+    - Gratin de riz aux oignons
+    - Gratin de riz aux légumes variés
+    - Gratin de riz au bacon
+    - Gratin de riz aux champignons et crème
+
+  7.7 Céréales variées
+    - Quinoa nature
+    - Quinoa aux légumes
+    - Quinoa au curry doux
+    - Boulgour aux tomates
+    - Boulgour aux herbes
+    - Boulgour au citron
+    - Millet nature
+    - Millet aux carottes
+    - Millet aux courgettes
+    - Épeautre au beurre
+    - Épeautre aux champignons
+    - Épeautre aux poireaux
+    - Sarrasin nature
+    - Sarrasin aux légumes
+    - Sarrasin aux épinards
+    - Orge perlé nature
+    - Orge perlé aux légumes
+    - Orge perlé aux champignons
+    - Polenta nature
+    - Polenta au fromage
+
+  7.8 Céréales gourmandes
+    - Quinoa aux crevettes
+    - Quinoa au poulet
+    - Quinoa au saumon
+    - Quinoa au bacon
+    - Quinoa aux champignons
+    - Quinoa aux asperges
+    - Boulgour aux légumes grillés
+    - Boulgour au poulet
+    - Boulgour au thon
+    - Boulgour aux crevettes
+    - Millet aux légumes variés
+    - Millet au jambon
+    - Millet aux champignons
+    - Épeautre au saumon
+    - Épeautre aux lardons
+    - Épeautre aux légumes grillés
+    - Sarrasin au poulet
+    - Sarrasin aux crevettes
+    - Polenta aux légumes
+    - Polenta gratinée
+
+  7.9 Pâtes farcies
+    - Raviolis ricotta-épinards
+    - Raviolis à la viande
+    - Raviolis aux champignons
+    - Raviolis au saumon
+    - Raviolis aux herbes
+    - Tortellinis au jambon
+    - Tortellinis aux épinards
+    - Tortellinis au fromage
+    - Tortellinis aux champignons
+    - Cannellonis farcis au poulet
+    - Cannellonis farcis au bœuf
+    - Cannellonis farcis au poisson
+    - Raviolis aux crevettes
+    - Raviolis aux courgettes
+    - Raviolis aux tomates séchées
+    - Raviolis aux poivrons
+    - Raviolis aux aubergines
+    - Raviolis au potiron
+    - Raviolis aux cèpes
+    - Raviolis aux truffes
+
+  7.10 Nouilles asiatiques accessibles
+    - Nouilles sautées aux légumes
+    - Nouilles sautées au poulet
+    - Nouilles sautées aux crevettes
+    - Nouilles sautées au bœuf
+    - Nouilles sautées au porc
+    - Nouilles sautées au tofu
+    - Nouilles sautées aux champignons
+    - Nouilles sautées au curry doux
+    - Nouilles sautées au soja
+    - Nouilles sautées au chou
+    - Nouilles sautées aux carottes
+    - Nouilles sautées aux poivrons
+    - Nouilles sautées aux brocolis
+    - Nouilles sautées aux épinards
+    - Nouilles sautées aux oignons
+    - Nouilles sautées aux cacahuètes
+    - Nouilles sautées aux herbes
+    - Nouilles sautées au sésame
+    - Nouilles sautées au citron
+    - Nouilles sautées au gingembre
+
+  7.11 Couscous
+    - Couscous aux légumes
+    - Couscous au poulet
+    - Couscous à l’agneau
+    - Couscous au poisson
+    - Couscous merguez
+    - Couscous royal
+    - Couscous aux pois chiches
+    - Couscous aux carottes
+    - Couscous aux courgettes
+    - Couscous aux navets
+    - Couscous aux poivrons
+    - Couscous aux tomates
+    - Couscous aux aubergines
+    - Couscous aux oignons
+    - Couscous aux épinards
+    - Couscous aux courges
+    - Couscous aux herbes
+    - Couscous au chou
+    - Couscous au potiron
+    - Couscous aux petits pois
+
+  7.12 Plats de riz du monde accessibles
+    - Paella valenciana
+    - Paella mixte
+    - Paella aux légumes
+    - Paella au poulet
+    - Paella aux fruits de mer
+    - Riz cantonais
+    - Riz sauté thaï
+    - Riz sauté au poulet
+    - Riz sauté aux crevettes
+    - Riz sauté aux légumes
+    - Arroz con pollo
+    - Arroz negro
+    - Biryani de légumes
+    - Biryani au poulet
+    - Biryani aux crevettes
+    - Riz sauté indonésien (nasi goreng)
+    - Riz sauté coréen (bibimbap)
+    - Riz sauté japonais (yakimeshi)
+    - Riz sauté aux champignons
+    - Riz sauté au curry doux
+
+  7.13 Gratins de pâtes originaux
+    - Gratin de pâtes aux légumes grillés
+    - Gratin de pâtes au saumon fumé
+    - Gratin de pâtes aux crevettes
+    - Gratin de pâtes au jambon cru
+    - Gratin de pâtes aux tomates séchées
+    - Gratin de pâtes au roquefort
+    - Gratin de pâtes aux champignons et gorgonzola
+    - Gratin de pâtes au chèvre frais
+    - Gratin de pâtes au curry
+    - Gratin de pâtes aux poireaux
+    - Gratin de pâtes aux asperges
+    - Gratin de pâtes aux artichauts
+    - Gratin de pâtes aux cèpes
+    - Gratin de pâtes aux truffes
+    - Gratin de pâtes au thon
+    - Gratin de pâtes au bacon
+    - Gratin de pâtes aux herbes
+    - Gratin de pâtes aux aubergines
+    - Gratin de pâtes aux courgettes
+    - Gratin de pâtes variées
+
+  7.14 Risottos originaux
+    - Risotto aux champignons et truffes
+    - Risotto au citron
+    - Risotto aux courgettes et chèvre
+    - Risotto aux tomates séchées et basilic
+    - Risotto aux asperges vertes
+    - Risotto aux fruits de mer et safran
+    - Risotto au potiron et parmesan
+    - Risotto aux poireaux et bacon
+    - Risotto aux épinards et ricotta
+    - Risotto aux carottes et cumin
+    - Risotto aux petits pois et menthe
+    - Risotto aux moules et vin blanc
+    - Risotto aux cèpes et persil
+    - Risotto aux oignons rouges
+    - Risotto au curry doux
+    - Risotto aux crevettes et citron vert
+    - Risotto aux calamars
+    - Risotto aux artichauts et parmesan
+    - Risotto aux brocolis et gorgonzola
+    - Risotto aux légumes variés
+
+  7.15 Pâtes froides (salades)
+    - Salade de pâtes aux légumes
+    - Salade de pâtes au thon
+    - Salade de pâtes au poulet
+    - Salade de pâtes au saumon
+    - Salade de pâtes aux crevettes
+    - Salade de pâtes aux tomates séchées
+    - Salade de pâtes au fromage
+    - Salade de pâtes aux champignons
+    - Salade de pâtes aux poivrons
+    - Salade de pâtes aux courgettes
+    - Salade de pâtes aux aubergines
+    - Salade de pâtes aux carottes
+    - Salade de pâtes aux olives
+    - Salade de pâtes au bacon
+    - Salade de pâtes au jambon
+    - Salade de pâtes aux herbes
+    - Salade de pâtes au pesto
+    - Salade de pâtes au curry doux
+    - Salade de pâtes aux brocolis
+    - Salade de pâtes variées
+
+  7.16 Plats complets céréales & légumes
+    - Quinoa aux légumes grillés
+    - Quinoa aux épinards et feta
+    - Quinoa aux carottes et cumin
+    - Boulgour aux tomates et pois chiches
+    - Boulgour aux courgettes et herbes
+    - Boulgour au chou-fleur
+    - Millet aux légumes variés et curry
+    - Millet aux poivrons et tomates
+    - Millet aux champignons et persil
+    - Épeautre aux légumes et parmesan
+    - Épeautre aux asperges et bacon
+    - Épeautre aux courgettes et chèvre
+    - Sarrasin aux légumes racines
+    - Sarrasin aux champignons et oignons
+    - Sarrasin au chou et carottes
+    - Orge perlé aux légumes et lardons
+    - Orge perlé aux champignons et crème
+    - Orge perlé aux poireaux et saumon
+    - Polenta aux légumes grillés
+    - Polenta aux champignons et gorgonzola
+
+  7.17 Galettes de céréales
+    - Galettes de quinoa
+    - Galettes de boulgour
+    - Galettes de millet
+    - Galettes d’épeautre
+    - Galettes de sarrasin
+    - Galettes d’orge
+    - Galettes de polenta
+    - Galettes de riz
+    - Galettes de lentilles
+    - Galettes de pois chiches
+    - Galettes aux légumes
+    - Galettes aux champignons
+    - Galettes aux carottes
+    - Galettes aux courgettes
+    - Galettes aux poivrons
+    - Galettes aux aubergines
+    - Galettes aux brocolis
+    - Galettes aux oignons
+    - Galettes aux épinards
+    - Galettes aux herbes
+
+  7.18 Soupes & bouillons à base de céréales
+    - Soupe de quinoa aux légumes
+    - Soupe de boulgour aux tomates
+    - Soupe de millet aux carottes
+    - Soupe d’épeautre aux poireaux
+    - Soupe de sarrasin aux champignons
+    - Soupe d’orge aux légumes
+    - Soupe de polenta au fromage
+    - Soupe de riz aux légumes
+    - Soupe de lentilles et quinoa
+    - Soupe de pois chiches et boulgour
+    - Soupe aux légumes et millet
+    - Soupe d’épeautre et carottes
+    - Soupe de sarrasin aux oignons
+    - Soupe d’orge aux champignons
+    - Soupe de quinoa aux poivrons
+    - Soupe de boulgour au chou
+    - Soupe de millet aux courgettes
+    - Soupe d’épeautre au céleri
+    - Soupe de sarrasin aux herbes
+    - Soupe de polenta aux épinards
+
+  7.19 Plats festifs à base de pâtes & riz
+    - Lasagnes au foie gras
+    - Risotto aux truffes
+    - Paella royale
+    - Pâtes aux cèpes et truffes
+    - Raviolis au homard
+    - Cannellonis aux langoustines
+    - Risotto au champagne
+    - Gratin de pâtes aux morilles
+    - Paella aux gambas
+    - Risotto aux saint-jacques
+    - Pâtes aux girolles
+    - Raviolis au gibier
+    - Risotto aux langoustines
+    - Lasagnes aux fruits de mer
+    - Risotto au homard
+    - Pâtes aux morilles
+    - Cannellonis aux cèpes
+    - Risotto au vin rouge
+    - Lasagnes festives
+    - Paella aux coquillages variés
+
+  7.20 Recettes originales de céréales
+    - Quinoa aux fruits secs
+    - Boulgour aux épices orientales
+    - Millet au lait de coco
+    - Épeautre aux algues
+    - Sarrasin aux champignons asiatiques
+    - Orge perlé aux herbes
+    - Polenta aux champignons exotiques
+    - Quinoa aux légumes asiatiques
+    - Boulgour aux herbes fraîches
+    - Millet aux légumes exotiques
+    - Épeautre au curry doux
+    - Sarrasin aux légumes asiatiques
+    - Orge perlé au miso
+    - Polenta au parmesan et truffes
+    - Quinoa aux épices indiennes
+    - Boulgour aux fruits secs
+    - Millet aux épinards et fromage
+    - Épeautre aux champignons sauvages
+    - Sarrasin au fromage
+    - Polenta aux légumes variés

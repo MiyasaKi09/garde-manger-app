@@ -1,0 +1,440 @@
+Bloc 10 : Viandes rouges
+  10.1 Bœuf grillé & poêlé
+    - Steak grillé
+    - Entrecôte grillée
+    - Faux-filet grillé
+    - Rumsteck grillé
+    - Bavette grillée
+    - Aloyau grillé
+    - Onglet grillé
+    - Hampe grillée
+    - Tournedos poêlé
+    - Filet de bœuf poêlé
+    - Pavé de bœuf grillé
+    - Steak minute
+    - Côte de bœuf grillée
+    - Araignée de bœuf grillée
+    - Poire de bœuf grillée
+    - Merlan de bœuf grillé
+    - Bavette poêlée aux oignons
+    - Entrecôte au poivre
+    - Steak grillé au beurre maître d’hôtel
+    - Filet grillé aux herbes
+
+  10.2 Bœuf mijoté
+    - Bœuf bourguignon
+    - Daube provençale
+    - Carbonnade flamande
+    - Pot-au-feu
+    - Bœuf carottes
+    - Navarin de bœuf
+    - Bœuf aux oignons
+    - Bœuf aux poivrons
+    - Bœuf aux champignons
+    - Bœuf aux carottes et pommes de terre
+    - Bœuf aux haricots blancs
+    - Bœuf aux pois chiches
+    - Bœuf aux lentilles
+    - Bœuf aux courgettes
+    - Bœuf aux aubergines
+    - Bœuf aux tomates
+    - Bœuf au céleri
+    - Bœuf au chou
+    - Bœuf aux navets
+    - Bœuf aux épices
+
+  10.3 Bœuf en sauce
+    - Bœuf stroganoff
+    - Bœuf à la moutarde
+    - Bœuf à la crème
+    - Bœuf au vin blanc
+    - Bœuf au curry doux
+    - Bœuf au paprika
+    - Bœuf sauce tomate
+    - Bœuf sauce poivre
+    - Bœuf sauce au roquefort
+    - Bœuf sauce au gorgonzola
+    - Bœuf sauce au chèvre
+    - Bœuf sauce aux champignons
+    - Bœuf sauce aux poivrons
+    - Bœuf sauce aux oignons
+    - Bœuf sauce au citron
+    - Bœuf sauce au miel
+    - Bœuf sauce aux herbes
+    - Bœuf sauce aux tomates séchées
+    - Bœuf sauce au pesto
+    - Bœuf sauce au curry coco
+
+  10.4 Veau mijoté
+    - Blanquette de veau
+    - Sauté de veau marengo
+    - Veau aux olives
+    - Veau aux champignons
+    - Veau aux carottes
+    - Veau aux courgettes
+    - Veau aux tomates
+    - Veau aux poivrons
+    - Veau aux aubergines
+    - Veau aux oignons
+    - Veau aux pommes de terre
+    - Veau aux haricots blancs
+    - Veau aux pois chiches
+    - Veau aux lentilles
+    - Veau aux navets
+    - Veau aux épinards
+    - Veau aux herbes
+    - Veau aux champignons sauvages
+    - Veau au vin blanc
+    - Veau au curry doux
+
+  10.5 Veau grillé & poêlé
+    - Escalope de veau grillée
+    - Escalope de veau panée
+    - Escalope de veau à la crème
+    - Escalope de veau à la moutarde
+    - Escalope de veau aux champignons
+    - Escalope de veau au curry doux
+    - Côte de veau grillée
+    - Côte de veau au beurre
+    - Côte de veau aux herbes
+    - Côte de veau aux champignons
+    - Filet de veau grillé
+    - Filet de veau à la crème
+    - Grenadin de veau au poivre
+    - Grenadin de veau aux champignons
+    - Grenadin de veau au miel
+    - Grenadin de veau aux herbes
+    - Escalope de veau milanaise
+    - Escalope de veau cordon bleu
+    - Côte de veau à la moutarde
+    - Filet de veau sauce tomate
+
+  10.6 Agneau rôti & grillé
+    - Gigot d’agneau rôti
+    - Gigot d’agneau aux herbes
+    - Gigot d’agneau au miel
+    - Gigot d’agneau à l’ail
+    - Gigot d’agneau à la moutarde
+    - Gigot d’agneau aux tomates
+    - Carré d’agneau rôti
+    - Carré d’agneau grillé
+    - Carré d’agneau aux herbes
+    - Carré d’agneau au miel
+    - Côtelettes d’agneau grillées
+    - Côtelettes d’agneau aux herbes
+    - Côtelettes d’agneau au curry doux
+    - Côtelettes d’agneau à la provençale
+    - Côtelettes d’agneau au paprika
+    - Épaule d’agneau rôtie
+    - Épaule d’agneau grillée
+    - Épaule d’agneau au miel
+    - Épaule d’agneau aux herbes
+    - Épaule d’agneau à la moutarde
+
+  10.7 Agneau mijoté
+    - Navarin d’agneau
+    - Ragoût d’agneau
+    - Agneau aux carottes
+    - Agneau aux poireaux
+    - Agneau aux champignons
+    - Agneau aux pois chiches
+    - Agneau aux lentilles
+    - Agneau aux haricots blancs
+    - Agneau aux tomates
+    - Agneau aux aubergines
+    - Agneau aux courgettes
+    - Agneau aux poivrons
+    - Agneau au céleri
+    - Agneau aux navets
+    - Agneau aux épinards
+    - Agneau aux pommes de terre
+    - Agneau aux oignons
+    - Agneau aux herbes
+    - Agneau au vin blanc
+    - Agneau au curry doux
+
+  10.8 Agneau en sauce
+    - Agneau korma
+    - Agneau massala
+    - Agneau au curry doux
+    - Agneau à la tomate
+    - Agneau à la moutarde
+    - Agneau à la crème
+    - Agneau au paprika
+    - Agneau au romarin
+    - Agneau au thym
+    - Agneau au miel
+    - Agneau aux épices
+    - Agneau aux pruneaux
+    - Agneau aux figues
+    - Agneau aux abricots
+    - Agneau aux poires
+    - Agneau aux pommes
+    - Agneau au citron
+    - Agneau aux olives
+    - Agneau au vin rouge
+    - Agneau au gingembre
+
+  10.9 Porc rôti & grillé
+    - Rôti de porc aux herbes
+    - Rôti de porc à la moutarde
+    - Rôti de porc au miel
+    - Rôti de porc au paprika
+    - Rôti de porc au curry doux
+    - Rôti de porc à l’ail
+    - Rôti de porc aux pommes
+    - Rôti de porc aux pruneaux
+    - Rôti de porc au cidre
+    - Rôti de porc au vin blanc
+    - Côtes de porc grillées
+    - Côtes de porc marinées
+    - Côtes de porc au barbecue
+    - Côtes de porc au miel
+    - Côtes de porc aux herbes
+    - Côtes de porc au curry doux
+    - Filet mignon grillé
+    - Filet mignon au miel
+    - Filet mignon à la moutarde
+    - Filet mignon au romarin
+
+  10.10 Porc mijoté
+    - Sauté de porc au caramel
+    - Sauté de porc au curry doux
+    - Sauté de porc aux champignons
+    - Sauté de porc aux oignons
+    - Sauté de porc aux poivrons
+    - Sauté de porc aux tomates
+    - Sauté de porc aux carottes
+    - Sauté de porc aux courgettes
+    - Sauté de porc aux aubergines
+    - Sauté de porc au miel
+    - Porc aux pruneaux
+    - Porc aux pommes
+    - Porc aux poires
+    - Porc aux figues
+    - Porc aux raisins secs
+    - Porc aux marrons
+    - Porc au cidre
+    - Porc au vin rouge
+    - Porc aux herbes
+    - Porc au gingembre
+
+  10.11 Porc en sauce
+    - Porc à la moutarde
+    - Porc au curry doux
+    - Porc sauce tomate
+    - Porc sauce soja
+    - Porc sauce au miel
+    - Porc sauce au roquefort
+    - Porc sauce aux champignons
+    - Porc sauce aux oignons
+    - Porc sauce aux poivrons
+    - Porc sauce au paprika
+    - Porc sauce au cidre
+    - Porc sauce au vin blanc
+    - Porc sauce au vin rouge
+    - Porc sauce à la bière
+    - Porc sauce aux herbes
+    - Porc sauce aux tomates séchées
+    - Porc sauce au pesto
+    - Porc sauce au lait de coco
+    - Porc sauce au curry coco
+    - Porc sauce aigre-douce
+
+  10.12 Gibier rôti
+    - Chevreuil rôti
+    - Chevreuil aux herbes
+    - Chevreuil au miel
+    - Chevreuil au vin rouge
+    - Chevreuil au poivre
+    - Chevreuil au romarin
+    - Sanglier rôti
+    - Sanglier au miel
+    - Sanglier au vin rouge
+    - Sanglier aux pruneaux
+    - Cerf rôti
+    - Cerf au poivre
+    - Cerf au vin rouge
+    - Cerf aux champignons
+    - Lièvre rôti
+    - Lièvre aux herbes
+    - Lièvre au vin rouge
+    - Lièvre à la moutarde
+    - Faisan rôti
+    - Faisan aux raisins
+
+  10.13 Gibier mijoté
+    - Civet de sanglier
+    - Civet de chevreuil
+    - Civet de lièvre
+    - Civet de cerf
+    - Sanglier aux carottes
+    - Sanglier aux champignons
+    - Sanglier aux pommes
+    - Chevreuil aux airelles
+    - Chevreuil aux champignons
+    - Chevreuil aux pruneaux
+    - Lièvre aux poires
+    - Lièvre aux figues
+    - Cerf aux marrons
+    - Cerf aux myrtilles
+    - Faisan aux poires
+    - Faisan aux pommes
+    - Faisan aux champignons
+    - Bécasse mijotée
+    - Bécasse aux pruneaux
+    - Bécasse au vin rouge
+
+  10.14 Burgers & sandwichs bœuf
+    - Burger classique
+    - Burger au fromage
+    - Burger au bacon
+    - Burger au bleu
+    - Burger au roquefort
+    - Burger au chèvre
+    - Burger au gorgonzola
+    - Burger au pesto
+    - Burger au curry doux
+    - Burger au poulet et bœuf
+    - Burger aux champignons
+    - Burger aux oignons
+    - Burger aux tomates
+    - Burger aux poivrons
+    - Burger aux aubergines
+    - Burger aux courgettes
+    - Sandwich au steak
+    - Sandwich au rôti de bœuf
+    - Wrap au bœuf grillé
+    - Wrap au bœuf aux herbes
+
+  10.15 Hachés & boulettes
+    - Boulettes de bœuf
+    - Boulettes de veau
+    - Boulettes d’agneau
+    - Boulettes de porc
+    - Boulettes au curry doux
+    - Boulettes à la tomate
+    - Boulettes au fromage
+    - Boulettes aux herbes
+    - Boulettes aux champignons
+    - Boulettes aux oignons
+    - Steak haché poêlé
+    - Steak haché au barbecue
+    - Steak haché au fromage
+    - Steak haché aux herbes
+    - Steak haché aux oignons
+    - Steak haché au poivre
+    - Polpette italiennes
+    - Keftas d’agneau
+    - Keftas de bœuf
+    - Keftas de veau
+
+  10.16 Plats festifs de viandes rouges
+    - Chateaubriand
+    - Tournedos Rossini
+    - Filet de bœuf Wellington
+    - Entrecôte maître d’hôtel
+    - Côte de bœuf XXL
+    - Magret de canard au foie gras
+    - Gigot d’agneau pascal
+    - Carré d’agneau festif
+    - Épaule d’agneau de fête
+    - Navarin d’agneau royal
+    - Cerf aux truffes
+    - Chevreuil au foie gras
+    - Sanglier de fête
+    - Lièvre à la royale
+    - Faisan au champagne
+    - Bécasse truffée
+    - Pâté de gibier festif
+    - Terrine de gibier royale
+    - Filet de bœuf aux morilles
+    - Rôti de veau aux morilles
+
+  10.17 Viandes rouges exotiques
+    - Bœuf teriyaki
+    - Bœuf sauté thaï
+    - Bœuf curry coco
+    - Bœuf au satay
+    - Bœuf bulgogi
+    - Bœuf au soja
+    - Agneau tikka masala
+    - Agneau korma
+    - Agneau curry thaï
+    - Agneau au gingembre
+    - Porc au caramel
+    - Porc au soja
+    - Porc à l’aigre-douce
+    - Porc au satay
+    - Porc au curry japonais
+    - Porc teriyaki
+    - Veau au curry doux
+    - Veau au gingembre
+    - Veau à la citronnelle
+    - Veau à la thaï
+
+  10.18 Viandes rouges froides
+    - Rosbif froid
+    - Rôti de veau froid
+    - Rôti de porc froid
+    - Salade de bœuf froid
+    - Salade de veau froid
+    - Salade de porc froid
+    - Carpaccio de bœuf
+    - Carpaccio de veau
+    - Carpaccio d’agneau
+    - Carpaccio de gibier
+    - Tartare de bœuf
+    - Tartare de veau
+    - Tartare d’agneau
+    - Tartare de gibier
+    - Rillettes de bœuf
+    - Rillettes de porc
+    - Terrine de gibier
+    - Terrine de bœuf
+    - Terrine de veau
+    - Terrine de sanglier
+
+  10.19 Viandes rouges en tourtes & feuilletés
+    - Tourte au bœuf
+    - Tourte au bœuf et champignons
+    - Tourte au bœuf et légumes
+    - Tourte au veau
+    - Tourte au veau et champignons
+    - Tourte au veau et légumes
+    - Tourte à l’agneau
+    - Tourte à l’agneau et légumes
+    - Tourte au porc
+    - Tourte au porc et légumes
+    - Tourte au gibier
+    - Tourte au gibier et champignons
+    - Feuilleté au bœuf
+    - Feuilleté au veau
+    - Feuilleté à l’agneau
+    - Feuilleté au porc
+    - Feuilleté au gibier
+    - Feuilleté au sanglier
+    - Feuilleté au chevreuil
+    - Feuilleté au cerf
+
+  10.20 Recettes originales de viandes rouges
+    - Bœuf au chocolat
+    - Bœuf au café
+    - Bœuf au thé fumé
+    - Bœuf au miso
+    - Bœuf au sésame noir
+    - Bœuf au curry cacao
+    - Bœuf au miel et gingembre
+    - Bœuf au lait de coco
+    - Bœuf aux fruits secs
+    - Bœuf aux fleurs comestibles
+    - Agneau au chocolat
+    - Agneau au café
+    - Agneau au thé fumé
+    - Agneau au miso
+    - Agneau au sésame noir
+    - Agneau au curry cacao
+    - Agneau aux fruits secs
+    - Agneau au lait de coco
+    - Agneau aux fleurs comestibles
+    - Agneau au gingembre confit

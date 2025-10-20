@@ -1,0 +1,440 @@
+Bloc 19 : Tapas, mezzés & petites assiettes
+  19.1 Tapas classiques espagnols
+    - Tortilla de patatas
+    - Patatas bravas
+    - Croquetas de jamón
+    - Pimientos de padrón
+    - Gambas al ajillo
+    - Calamares fritos
+    - Chorizo al vino
+    - Ensaladilla rusa
+    - Boquerones en vinagre
+    - Pulpo a la gallega
+    - Montaditos variés
+    - Champiñones al ajillo
+    - Albondigas en salsa
+    - Queso manchego
+    - Huevos rotos
+    - Empanadillas
+    - Pinchos morunos
+    - Mejillones a la marinera
+    - Jamón ibérico
+    - Aceitunas marinées
+
+  19.2 Mezzés libanais
+    - Houmous
+    - Moutabal
+    - Taboulé libanais
+    - Falafels
+    - Fattouche
+    - Kebbeh
+    - Labneh
+    - Sambousek
+    - Manakish zaatar
+    - Warak enab
+    - Arayes
+    - Batata harra
+    - Shanklish
+    - Makdous
+    - Salade de lentilles
+    - Salade de pois chiches
+    - Salade de betteraves
+    - Salade de chou libanaise
+    - Pain pita maison
+    - Kaak
+
+  19.3 Antipasti italiens
+    - Bruschetta al pomodoro
+    - Bruschetta al funghi
+    - Bruschetta au fromage
+    - Caponata siciliana
+    - Aubergines alla parmigiana
+    - Zucchini fritti
+    - Carpaccio de bœuf
+    - Carpaccio de courgette
+    - Mozzarella in carrozza
+    - Arancini siciliani
+    - Olives ascolane
+    - Frittata aux légumes
+    - Salade caprese
+    - Salade de roquette
+    - Bresaola
+    - Prosciutto
+    - Crostini variés
+    - Insalata di mare
+    - Melanzane grigliate
+    - Peperonata
+
+  19.4 Petits plats grecs
+    - Dolmadakia
+    - Souvlaki
+    - Keftedes
+    - Spanakopita
+    - Tiropita
+    - Kolokithokeftedes
+    - Revithada
+    - Fava
+    - Horta
+    - Gigantes plaki
+    - Loukaniko
+    - Saganaki
+    - Melitzanosalata
+    - Tirokafteri
+    - Taramosalata
+    - Horiatiki
+    - Koulouri
+    - Kalitsounia
+    - Kokkinisto
+    - Fakès
+
+  19.5 Bouchées asiatiques
+    - Dim sum
+    - Gyoza
+    - Shumai
+    - Baozi
+    - Xiao long bao
+    - Nem vietnamiens
+    - Rouleaux de printemps
+    - Rouleaux impériaux
+    - Tempura de légumes
+    - Tempura de crevettes
+    - Takoyaki
+    - Okonomiyaki
+    - Yakitori
+    - Satay
+    - Brochettes teriyaki
+    - Onigiri
+    - Sashimi
+    - Maki variés
+    - Nigiri
+    - Inari sushi
+
+  19.6 Amuse-bouches français
+    - Mini quiches
+    - Mini tartes salées
+    - Mini feuilletés
+    - Mini éclairs salés
+    - Mini choux salés
+    - Canapés variés
+    - Gougères
+    - Mini croissants jambon-fromage
+    - Mini pains garnis
+    - Mini clubs sandwichs
+    - Mini burgers
+    - Mini brochettes
+    - Mini pizzas
+    - Navettes garnies
+    - Bouchées à la reine
+    - Mini toasts au saumon
+    - Mini toasts foie gras
+    - Mini toasts tapenade
+    - Mini wraps
+    - Mini galettes
+
+  19.7 Street food du monde
+    - Empanadas argentines
+    - Pastel brésilien
+    - Arepas vénézuéliennes
+    - Tacos mexicains
+    - Quesadillas
+    - Burritos
+    - Tamales
+    - Hot-dog new-yorkais
+    - Pretzel
+    - Corn dog
+    - Kebab turc
+    - Shawarma libanais
+    - Sfenj marocain
+    - Fatayer
+    - Samosa indien
+    - Pakora
+    - Bhel puri
+    - Banh mi vietnamien
+    - Jianbing chinois
+    - Khachapuri géorgien
+
+  19.8 Petites salades composées
+    - Salade grecque
+    - Salade niçoise
+    - Salade césar
+    - Salade piémontaise
+    - Salade de pommes de terre
+    - Salade de lentilles
+    - Salade de pois chiches
+    - Salade de quinoa
+    - Salade de pâtes
+    - Salade de riz
+    - Salade de carottes râpées
+    - Salade de chou blanc
+    - Salade de chou rouge
+    - Salade de concombre
+    - Salade de tomates
+    - Salade de betteraves
+    - Salade de jeunes pousses
+    - Salade de roquette
+    - Salade de mâche
+    - Salade d’endives
+
+  19.9 Plats apéritifs nord-africains
+    - Briouates marocaines
+    - Pastilla au poulet
+    - Maakouda
+    - Zaalouk
+    - Harira en mini-portion
+    - Chorba algérienne
+    - Salade méchouia
+    - Salade taktouka
+    - Pain msemen garni
+    - Baghrir farcis
+    - Brick à l’œuf
+    - Brick à la viande
+    - Brick au thon
+    - Cigares aux légumes
+    - Couscous en verrine
+    - Mini tajines
+    - Salade carottes cumin
+    - Salade de fèves
+    - Olives épicées
+    - Pois chiches grillés
+
+  19.10 Tapas modernes & fusion
+    - Mini burger fusion
+    - Mini wrap fusion
+    - Mini tacos fusion
+    - Brochettes fusion
+    - Crostini fusion
+    - Gyoza fusion
+    - Sushi fusion
+    - Nem fusion
+    - Arancini fusion
+    - Empanadas fusion
+    - Quesadillas fusion
+    - Hot-dog fusion
+    - Mini pizza fusion
+    - Boulettes fusion
+    - Falafels fusion
+    - Croquettes fusion
+    - Toast fusion
+    - Tempura fusion
+    - Bao fusion
+    - Invention créative
+
+  19.11 Bouchées végétariennes
+    - Mini quiches aux légumes
+    - Mini tartes aux légumes
+    - Falafels
+    - Houmous en verrine
+    - Salade de quinoa en verrine
+    - Salade de pois chiches en verrine
+    - Mini burgers végétariens
+    - Mini wraps végétariens
+    - Mini pizzas végétariennes
+    - Brochettes de légumes grillés
+    - Tempura de légumes
+    - Pakoras
+    - Samossas végétariens
+    - Empanadas végétariennes
+    - Croquettes de légumes
+    - Tartare de légumes
+    - Caviar d’aubergine en verrine
+    - Salade de betteraves
+    - Rouleaux de printemps végétariens
+    - Ratatouille en verrine
+
+  19.12 Bouchées carnées
+    - Mini burgers au bœuf
+    - Mini burgers au poulet
+    - Mini burgers au porc
+    - Mini brochettes de bœuf
+    - Mini brochettes de poulet
+    - Mini brochettes d’agneau
+    - Mini brochettes de porc
+    - Mini quiches au jambon
+    - Mini pizzas au chorizo
+    - Croquettes de poulet
+    - Croquettes de jambon
+    - Croquettes de bœuf
+    - Saucisses cocktail
+    - Mini hot-dogs
+    - Mini kebabs
+    - Tacos au bœuf mini
+    - Mini wraps au poulet
+    - Mini wraps au jambon
+    - Mini wraps au bœuf
+    - Mini nuggets
+
+  19.13 Bouchées marines
+    - Mini toasts au saumon fumé
+    - Mini toasts aux crevettes
+    - Mini toasts au crabe
+    - Mini toasts aux sardines
+    - Mini toasts aux anchois
+    - Mini toasts au maquereau
+    - Mini brochettes de crevettes
+    - Mini brochettes de poisson
+    - Mini quiches au saumon
+    - Mini pizzas aux fruits de mer
+    - Croquettes de poisson
+    - Accras de morue
+    - Beignets de crevettes
+    - Tempura de poisson
+    - Tartare de saumon en verrine
+    - Tartare de thon en verrine
+    - Ceviche en mini-portion
+    - Huîtres gratinées
+    - Mini coquilles Saint-Jacques
+    - Rillettes de poisson
+
+  19.14 Mini-sandwichs & navettes
+    - Navettes au jambon
+    - Navettes au fromage
+    - Navettes au saumon
+    - Navettes au poulet
+    - Mini clubs sandwichs
+    - Mini sandwichs thon
+    - Mini sandwichs crudités
+    - Mini sandwichs œufs mimosa
+    - Mini sandwichs au jambon cru
+    - Mini sandwichs au pâté
+    - Mini sandwichs rillettes
+    - Mini sandwichs végétariens
+    - Mini sandwichs à l’avocat
+    - Mini sandwichs à la dinde
+    - Mini sandwichs au rôti de bœuf
+    - Mini sandwichs saumon-avocat
+    - Mini sandwichs tomates-mozza
+    - Mini sandwichs chèvre-miel
+    - Mini sandwichs tapenade
+    - Mini sandwichs jambon-beurre
+
+  19.15 Verrines salées
+    - Verrine avocat-saumon
+    - Verrine betterave-fromage frais
+    - Verrine tomate-mozzarella
+    - Verrine concombre-menthe
+    - Verrine chèvre-courgette
+    - Verrine houmous
+    - Verrine tzatziki
+    - Verrine tarama
+    - Verrine guacamole
+    - Verrine tapenade
+    - Verrine caviar d’aubergine
+    - Verrine ratatouille
+    - Verrine lentilles
+    - Verrine quinoa
+    - Verrine pois chiches
+    - Verrine saumon-fromage frais
+    - Verrine crevettes-mangue
+    - Verrine jambon-fromage
+    - Verrine bœuf-poivrons
+    - Verrine légumes grillés
+
+  19.16 Mini-brochettes
+    - Brochettes tomates-mozza
+    - Brochettes melon-jambon
+    - Brochettes crevettes-ananas
+    - Brochettes poulet-curry
+    - Brochettes bœuf-teriyaki
+    - Brochettes légumes grillés
+    - Brochettes fromage-raisin
+    - Brochettes saumon-concombre
+    - Brochettes porc-miel
+    - Brochettes agneau-romarin
+    - Brochettes dinde-moutarde
+    - Brochettes tofu-légumes
+    - Brochettes halloumi
+    - Brochettes champignons
+    - Brochettes poivrons
+    - Brochettes courgettes
+    - Brochettes aubergines
+    - Brochettes œufs de caille
+    - Brochettes mini-saucisses
+    - Brochettes festives
+
+  19.17 Petits beignets & fritures
+    - Beignets de courgettes
+    - Beignets de chou-fleur
+    - Beignets d’aubergine
+    - Beignets de carottes
+    - Beignets de brocoli
+    - Beignets de champignons
+    - Beignets de poivrons
+    - Beignets de pommes de terre
+    - Beignets de morue
+    - Beignets de crevettes
+    - Beignets de calamar
+    - Beignets de poulet
+    - Beignets de fromage
+    - Beignets de riz
+    - Beignets sucrés-salés
+    - Beignets indiens
+    - Pakoras
+    - Samosas frits
+    - Pastels
+    - Accras
+
+  19.18 Bouchées festives
+    - Mini toasts foie gras
+    - Mini toasts saumon
+    - Mini toasts caviar
+    - Mini toasts tarama
+    - Mini blinis au saumon
+    - Mini blinis au tarama
+    - Mini feuilletés festifs
+    - Mini quiches festives
+    - Mini burgers festifs
+    - Mini wraps festifs
+    - Mini pizzas festives
+    - Mini croissants festifs
+    - Mini navettes festives
+    - Mini verrines festives
+    - Mini brochettes festives
+    - Mini bouchées festives
+    - Mini amuse-bouches festifs
+    - Mini apéritifs festifs
+    - Mini bouchées luxe
+    - Mini créations originales
+
+  19.19 Planches apéritives
+    - Planche de fromages
+    - Planche de charcuterie
+    - Planche mixte
+    - Planche marine
+    - Planche végétarienne
+    - Planche méditerranéenne
+    - Planche espagnole
+    - Planche italienne
+    - Planche française
+    - Planche nordique
+    - Planche exotique
+    - Planche festive
+    - Planche terroir
+    - Planche montagne
+    - Planche de saison
+    - Planche fusion
+    - Planche gastronomique
+    - Planche créative
+    - Planche luxe
+    - Planche originale
+
+  19.20 Petites créations originales
+    - Bouchées moléculaires
+    - Bouchées aux fleurs comestibles
+    - Bouchées aux algues
+    - Bouchées au chocolat salé
+    - Bouchées au café salé
+    - Bouchées au thé vert
+    - Bouchées aux épices rares
+    - Bouchées au curcuma
+    - Bouchées au charbon végétal
+    - Bouchées au miso
+    - Bouchées à la truffe
+    - Bouchées aux herbes sauvages
+    - Bouchées aux champignons rares
+    - Bouchées aux fruits secs salés
+    - Bouchées festives créatives
+    - Bouchées sucrées-salées innovantes
+    - Bouchées fusion originales
+    - Bouchées terre-mer
+    - Bouchées expérimentales
+    - Bouchées inédites

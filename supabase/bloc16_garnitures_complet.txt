@@ -1,0 +1,440 @@
+Bloc 16 : Garnitures & accompagnements
+  16.1 Pommes de terre
+    - Purée de pommes de terre
+    - Pommes dauphine
+    - Pommes duchesse
+    - Pommes noisettes
+    - Frites classiques
+    - Frites de patates douces
+    - Pommes de terre sautées
+    - Pommes de terre rissolées
+    - Pommes de terre au four
+    - Pommes de terre à la vapeur
+    - Gratin dauphinois
+    - Gratin de pommes de terre
+    - Pommes Anna
+    - Rösti de pommes de terre
+    - Galettes de pommes de terre
+    - Croquettes de pommes de terre
+    - Salade de pommes de terre
+    - Écrasé de pommes de terre
+    - Pommes boulangères
+    - Aligot
+
+  16.2 Riz
+    - Riz blanc nature
+    - Riz pilaf
+    - Riz basmati
+    - Riz thaï
+    - Riz cantonais
+    - Riz sauté aux légumes
+    - Riz au curry
+    - Riz aux champignons
+    - Riz aux carottes
+    - Riz aux poivrons
+    - Riz aux courgettes
+    - Riz aux aubergines
+    - Riz aux tomates
+    - Riz aux herbes
+    - Riz au safran
+    - Riz à la provençale
+    - Riz aux épices
+    - Riz au lait salé
+    - Riz complet
+    - Riz sauvage
+
+  16.3 Pâtes
+    - Spaghetti nature
+    - Penne nature
+    - Fusilli nature
+    - Tagliatelles nature
+    - Macaronis au beurre
+    - Spaghetti à l’ail et huile d’olive
+    - Pâtes aux légumes
+    - Pâtes aux champignons
+    - Pâtes aux poivrons
+    - Pâtes aux courgettes
+    - Pâtes aux aubergines
+    - Pâtes aux tomates
+    - Pâtes aux épinards
+    - Pâtes au fromage
+    - Pâtes au pesto
+    - Pâtes au curry doux
+    - Pâtes aux herbes
+    - Pâtes gratinées
+    - Pâtes au beurre
+    - Pâtes aux olives
+
+  16.4 Légumes rôtis
+    - Carottes rôties
+    - Courgettes rôties
+    - Aubergines rôties
+    - Poivrons rôtis
+    - Tomates rôties
+    - Chou-fleur rôti
+    - Brocolis rôtis
+    - Chou kale rôti
+    - Patates douces rôties
+    - Panais rôtis
+    - Céleri-rave rôti
+    - Betteraves rôties
+    - Oignons rôtis
+    - Fenouil rôti
+    - Courges rôties
+    - Champignons rôtis
+    - Asperges rôties
+    - Haricots verts rôtis
+    - Choux de Bruxelles rôtis
+    - Pommes de terre rôties
+
+  16.5 Légumes vapeur
+    - Carottes vapeur
+    - Courgettes vapeur
+    - Aubergines vapeur
+    - Poivrons vapeur
+    - Tomates vapeur
+    - Chou-fleur vapeur
+    - Brocolis vapeur
+    - Chou kale vapeur
+    - Patates douces vapeur
+    - Panais vapeur
+    - Céleri-rave vapeur
+    - Betteraves vapeur
+    - Oignons vapeur
+    - Fenouil vapeur
+    - Courges vapeur
+    - Champignons vapeur
+    - Asperges vapeur
+    - Haricots verts vapeur
+    - Choux de Bruxelles vapeur
+    - Pommes de terre vapeur
+
+  16.6 Légumes sautés
+    - Carottes sautées
+    - Courgettes sautées
+    - Aubergines sautées
+    - Poivrons sautés
+    - Tomates sautées
+    - Chou-fleur sauté
+    - Brocolis sautés
+    - Chou kale sauté
+    - Patates douces sautées
+    - Panais sautés
+    - Céleri-rave sauté
+    - Betteraves sautées
+    - Oignons sautés
+    - Fenouil sauté
+    - Courges sautées
+    - Champignons sautés
+    - Asperges sautées
+    - Haricots verts sautés
+    - Choux de Bruxelles sautés
+    - Pommes de terre sautées
+
+  16.7 Légumes grillés
+    - Carottes grillées
+    - Courgettes grillées
+    - Aubergines grillées
+    - Poivrons grillés
+    - Tomates grillées
+    - Chou-fleur grillé
+    - Brocolis grillés
+    - Chou kale grillé
+    - Patates douces grillées
+    - Panais grillés
+    - Céleri-rave grillé
+    - Betteraves grillées
+    - Oignons grillés
+    - Fenouil grillé
+    - Courges grillées
+    - Champignons grillés
+    - Asperges grillées
+    - Haricots verts grillés
+    - Choux de Bruxelles grillés
+    - Pommes de terre grillées
+
+  16.8 Légumes farcis
+    - Tomates farcies
+    - Courgettes farcies
+    - Aubergines farcies
+    - Poivrons farcis
+    - Champignons farcis
+    - Pommes de terre farcies
+    - Oignons farcis
+    - Courges farcies
+    - Panais farcis
+    - Betteraves farcies
+    - Fenouil farci
+    - Chou farci
+    - Choux de Bruxelles farcis
+    - Poivrons farcis au fromage
+    - Courgettes farcies végétariennes
+    - Aubergines farcies végétariennes
+    - Tomates farcies au riz
+    - Courgettes farcies au quinoa
+    - Poivrons farcis au boulgour
+    - Champignons farcis au fromage
+
+  16.9 Purées de légumes
+    - Purée de carottes
+    - Purée de courgettes
+    - Purée d’aubergines
+    - Purée de poivrons
+    - Purée de tomates
+    - Purée de chou-fleur
+    - Purée de brocolis
+    - Purée de chou kale
+    - Purée de patates douces
+    - Purée de panais
+    - Purée de céleri-rave
+    - Purée de betteraves
+    - Purée d’oignons
+    - Purée de fenouil
+    - Purée de courges
+    - Purée de champignons
+    - Purée d’asperges
+    - Purée de haricots verts
+    - Purée de choux de Bruxelles
+    - Purée de pois cassés
+
+  16.10 Gratins de légumes
+    - Gratin de courgettes
+    - Gratin d’aubergines
+    - Gratin de poivrons
+    - Gratin de tomates
+    - Gratin de chou-fleur
+    - Gratin de brocolis
+    - Gratin de chou kale
+    - Gratin de patates douces
+    - Gratin de panais
+    - Gratin de céleri-rave
+    - Gratin de betteraves
+    - Gratin d’oignons
+    - Gratin de fenouil
+    - Gratin de courges
+    - Gratin de champignons
+    - Gratin d’asperges
+    - Gratin de haricots verts
+    - Gratin de choux de Bruxelles
+    - Gratin de carottes
+    - Gratin de blettes
+
+  16.11 Poêlées de légumes
+    - Poêlée de carottes
+    - Poêlée de courgettes
+    - Poêlée d’aubergines
+    - Poêlée de poivrons
+    - Poêlée de tomates
+    - Poêlée de chou-fleur
+    - Poêlée de brocolis
+    - Poêlée de chou kale
+    - Poêlée de patates douces
+    - Poêlée de panais
+    - Poêlée de céleri-rave
+    - Poêlée de betteraves
+    - Poêlée d’oignons
+    - Poêlée de fenouil
+    - Poêlée de courges
+    - Poêlée de champignons
+    - Poêlée d’asperges
+    - Poêlée de haricots verts
+    - Poêlée de choux de Bruxelles
+    - Poêlée de blettes
+
+  16.12 Salades de légumes cuits
+    - Salade de pommes de terre
+    - Salade de carottes cuites
+    - Salade de courgettes cuites
+    - Salade d’aubergines cuites
+    - Salade de poivrons grillés
+    - Salade de tomates cuites
+    - Salade de chou-fleur cuit
+    - Salade de brocolis cuits
+    - Salade de patates douces cuites
+    - Salade de panais cuits
+    - Salade de céleri-rave cuit
+    - Salade de betteraves cuites
+    - Salade d’oignons cuits
+    - Salade de fenouil cuit
+    - Salade de courges cuites
+    - Salade de champignons cuits
+    - Salade d’asperges cuites
+    - Salade de haricots verts cuits
+    - Salade de choux de Bruxelles cuits
+    - Salade de blettes cuites
+
+  16.13 Céréales & graines
+    - Quinoa nature
+    - Quinoa aux légumes
+    - Quinoa aux herbes
+    - Quinoa aux épices
+    - Boulgour nature
+    - Boulgour aux légumes
+    - Boulgour aux champignons
+    - Boulgour aux tomates
+    - Millet nature
+    - Millet aux légumes
+    - Millet aux herbes
+    - Millet aux épices
+    - Épeautre nature
+    - Épeautre aux légumes
+    - Épeautre aux champignons
+    - Épeautre aux tomates
+    - Orge perlé nature
+    - Orge aux légumes
+    - Orge aux herbes
+    - Orge aux épices
+
+  16.14 Légumineuses
+    - Lentilles vertes nature
+    - Lentilles corail nature
+    - Lentilles aux légumes
+    - Lentilles aux champignons
+    - Pois chiches nature
+    - Pois chiches aux légumes
+    - Pois chiches aux tomates
+    - Pois chiches aux herbes
+    - Haricots rouges nature
+    - Haricots rouges aux légumes
+    - Haricots rouges aux champignons
+    - Haricots blancs nature
+    - Haricots blancs aux légumes
+    - Haricots blancs aux tomates
+    - Haricots blancs aux herbes
+    - Flageolets nature
+    - Flageolets aux légumes
+    - Fèves nature
+    - Fèves aux légumes
+    - Fèves aux champignons
+
+  16.15 Légumes marinés & pickles
+    - Cornichons
+    - Pickles de carottes
+    - Pickles de concombres
+    - Pickles de chou-fleur
+    - Pickles d’oignons
+    - Pickles de radis
+    - Pickles de betteraves
+    - Pickles de courgettes
+    - Pickles d’aubergines
+    - Pickles de poivrons
+    - Pickles de tomates
+    - Pickles de piments doux
+    - Pickles de champignons
+    - Pickles d’asperges
+    - Pickles de haricots verts
+    - Pickles de chou rouge
+    - Pickles de choux de Bruxelles
+    - Pickles de céleri-rave
+    - Pickles de navets
+    - Pickles de panais
+
+  16.16 Sauces d’accompagnement
+    - Sauce béarnaise
+    - Sauce hollandaise
+    - Sauce au poivre
+    - Sauce moutarde
+    - Sauce au vin rouge
+    - Sauce au vin blanc
+    - Sauce aux champignons
+    - Sauce à la crème
+    - Sauce tomate
+    - Sauce provençale
+    - Sauce basquaise
+    - Sauce aux herbes
+    - Sauce au curry
+    - Sauce au paprika
+    - Sauce au fromage
+    - Sauce au beurre blanc
+    - Sauce bordelaise
+    - Sauce normande
+    - Sauce au citron
+    - Sauce pesto
+
+  16.17 Condiments & chutneys
+    - Chutney de mangue
+    - Chutney de tomates
+    - Chutney d’oignons
+    - Chutney de carottes
+    - Chutney de pommes
+    - Chutney d’ananas
+    - Chutney de poires
+    - Chutney de figues
+    - Chutney de prunes
+    - Chutney de courgettes
+    - Chutney d’aubergines
+    - Chutney de poivrons
+    - Chutney de courges
+    - Chutney de betteraves
+    - Chutney de navets
+    - Chutney de radis
+    - Chutney de fenouil
+    - Chutney de céleri
+    - Chutney de chou rouge
+    - Chutney de blettes
+
+  16.18 Garnitures festives
+    - Pommes dauphines festives
+    - Gratin dauphinois festif
+    - Purée truffée
+    - Pommes de terre sarladaises
+    - Pommes Anna festives
+    - Riz aux champignons festif
+    - Riz au safran festif
+    - Pâtes au foie gras
+    - Pâtes à la truffe
+    - Légumes rôtis festifs
+    - Légumes grillés festifs
+    - Légumes sautés festifs
+    - Purée festive
+    - Gratin de légumes festif
+    - Céréales festives
+    - Légumineuses festives
+    - Sauce festive
+    - Chutney festif
+    - Pickles festifs
+    - Condiment festif
+
+  16.19 Garnitures du monde
+    - Naan nature
+    - Naan au fromage
+    - Riz basmati épicé
+    - Riz au curry indien
+    - Pâtes italiennes simples
+    - Polenta italienne
+    - Risotto italien
+    - Focaccia italienne
+    - Couscous marocain
+    - Légumes rôtis marocains
+    - Tzatziki grec
+    - Houmous libanais
+    - Falafels libanais
+    - Taboulé libanais
+    - Dolmas turcs
+    - Chou mariné coréen (kimchi)
+    - Riz sauté chinois
+    - Nouilles sautées chinoises
+    - Tempura japonais
+    - Pickles japonais
+
+  16.20 Recettes originales d’accompagnement
+    - Purée au cacao
+    - Riz sucré-salé
+    - Pâtes aux fruits
+    - Légumes rôtis au miel et chocolat
+    - Légumes vapeur aux épices sucrées
+    - Légumes sautés au café
+    - Légumes grillés au thé vert
+    - Légumes farcis aux fruits secs
+    - Purée expérimentale
+    - Gratin créatif
+    - Poêlée exotique
+    - Salade de légumes surprenante
+    - Céréales hybrides
+    - Légumineuses revisitées
+    - Pickles originaux
+    - Sauce expérimentale
+    - Chutney créatif
+    - Garniture festive originale
+    - Garniture fusion
+    - Accompagnement hybride
