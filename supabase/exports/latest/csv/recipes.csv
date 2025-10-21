@@ -1,9 +1,6 @@
 id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,role,is_scalable_to_main,is_complete_meal,needs_side_dish
-8998,Potage aux tomates,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
 2,Overnight porridge aux graines de chia et fruits rouges,Une savoureuse recette de petit-déjeuner nutritif,10,480,2,Sans cuisson,ENTREE,f,t,f
 3,"Porridge salé aux épinards, feta et œuf mollet",Une recette originale de porridge salé,10,15,2,Mijotage,PLAT_PRINCIPAL,f,t,f
-8999,Potage aux champignons,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9000,Potage aux aubergines,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
 6,Pudding de chia au lait de coco et coulis de mangue,Un dessert léger aux graines de chia,10,240,2,Sans cuisson,DESSERT,f,t,f
 7,Granola maison aux noix de pécan et sirop d'érable,Un granola croustillant fait maison,10,30,8,Cuisson au four,ENTREE,f,f,
 8,Muesli Bircher aux pommes râpées et noisettes,Le classique muesli suisse,10,0,4,Sans cuisson,ENTREE,f,t,f
@@ -11,15 +8,7 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 10,Pancakes à la banane sans sucre ajouté,Des pancakes naturellement sucrés,10,15,4,Poêle,ENTREE,f,t,f
 11,Pancakes salés au saumon fumé et aneth,Une version salée des pancakes,15,20,2,Poêle,PLAT_PRINCIPAL,f,t,f
 12,"Porridge d'avoine, pommes et cannelle","Une savoureuse recette de Porridge d'avoine, pommes et cannelle",5,10,2,Mijotage,PLAT_PRINCIPAL,f,t,f
-9001,Potage aux poivrons,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9002,Potage au chou-fleur,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9003,Potage aux brocolis,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9004,Potage aux navets,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9005,Potage aux blettes,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9006,Potage au panais,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
 9007,Potage au potiron,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9008,Potage au chou rouge,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9009,Potage aux artichauts,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
 9010,Potage méditerranéen,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
 9011,Crème de champignons,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
 9012,Crème de poireaux,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
@@ -38,13 +27,9 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 43,Salmorejo de Cordoue et ses garnitures,Une savoureuse recette de Salmorejo de Cordoue et ses garnitures,15,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,
 9015,Crème de céleri,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
 9016,Crème de brocolis,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9018,Entrecôte grillée,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
 9019,Faux-filet grillé,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Grillade,PLAT_PRINCIPAL,f,f,t
 9020,Rumsteck grillé,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,10,2,Grillade,PLAT_PRINCIPAL,f,f,t
 9021,Bavette grillée,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9022,Aloyau grillé,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,12,4,Grillade,PLAT_PRINCIPAL,f,f,t
-9023,Onglet grillé,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Grillade,PLAT_PRINCIPAL,f,f,t
-9024,Hampe grillée,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Grillade,PLAT_PRINCIPAL,f,f,t
 45,Velouté froid de courgettes au basilic,Une savoureuse recette de Velouté froid de courgettes au basilic,15,25,4,Mijotage,ENTREE,f,f,
 57,Bò bún vietnamien au bœuf,Une savoureuse recette de Bò bún vietnamien au bœuf,30,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 58,Houmous de pois chiches maison,Une délicieuse recette orientale : Houmous de pois chiches maison,10,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
@@ -65,7 +50,6 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 73,"Falafels de pois chiches, sauce tahini","Une délicieuse recette orientale : Falafels de pois chiches, sauce tahini",20,15,4,Friture,PLAT_PRINCIPAL,f,f,
 74,Samoussas aux légumes et épices,Une savoureuse recette de Samoussas aux légumes et épices,40,12,8,Friture,PLAT_PRINCIPAL,f,f,
 75,Nems au porc et leur sauce,Une savoureuse recette de Nems au porc et leur sauce,40,12,8,Friture,PLAT_PRINCIPAL,f,f,
-9026,Filet de bœuf poêlé,Savoureuse préparation de viande poêlé avec soin. Parfait pour un repas convivial.,5,12,2,Poêle,PLAT_PRINCIPAL,f,f,t
 76,Rouleaux de printemps aux crevettes,Une savoureuse recette de Rouleaux de printemps aux crevettes,30,0,8,Sans cuisson,PLAT_PRINCIPAL,f,f,
 77,Accras de morue antillais,Une savoureuse recette de Accras de morue antillais,25,18,8,Friture,PLAT_PRINCIPAL,f,f,
 79,Arancini siciliens (boules de risotto frites),Une délicieuse recette italienne : Arancini siciliens (boules de risotto frites),30,18,8,Friture,ACCOMPAGNEMENT,t,f,
@@ -80,7 +64,6 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 88,Crème de lentilles corail au lait de coco,Une savoureuse recette de Crème de lentilles corail au lait de coco,15,25,4,Mijotage,DESSERT,f,f,
 506,Nice cream (glace à la banane congelée),Une savoureuse recette de Nice cream (glace à la banane congelée),15,0,8,Sans cuisson,DESSERT,f,f,
 9027,Pavé de bœuf grillé,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,5,12,2,Grillade,PLAT_PRINCIPAL,f,f,t
-9028,Steak minute,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,2,4,2,Poêle,PLAT_PRINCIPAL,f,f,t
 9029,Côte de bœuf grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,10,20,4,Grillade,PLAT_PRINCIPAL,f,t,f
 9030,Araignée de bœuf grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Grillade,PLAT_PRINCIPAL,f,f,t
 9031,Poire de bœuf grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Grillade,PLAT_PRINCIPAL,f,f,t
@@ -94,7 +77,6 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 102,Roulés de courgette au fromage frais,Une savoureuse recette de Roulés de courgette au fromage frais,25,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
 103,Blinis au saumon fumé et crème à l'aneth,Une savoureuse recette de Blinis au saumon fumé et crème à l'aneth,10,15,4,Cuisson au four,DESSERT,f,f,t
 104,Champignons farcis à l'ail et au persil,Une savoureuse recette de Champignons farcis à l'ail et au persil,20,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9033,Bavette poêlée aux oignons,Plat principal savoureux poêlé avec soin. Parfait pour un repas convivial.,5,8,2,Poêle,PLAT_PRINCIPAL,f,f,t
 9034,Entrecôte au poivre,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
 9035,Steak grillé au beurre maître d’hôtel,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
 105,Tomates provençales au four,Une savoureuse recette de Tomates provençales au four,15,25,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
@@ -162,13 +144,10 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 164,Porc Tonkatsu japonais (escalope panée),Une délicieuse recette japonaise : Porc Tonkatsu japonais (escalope panée),15,10,4,Friture,PLAT_PRINCIPAL,f,f,t
 165,Jambon à l'os braisé au madère,Une savoureuse recette de Jambon à l'os braisé au madère,20,120,8,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9050,Bœuf aux courgettes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9051,Bœuf aux aubergines,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9052,Bœuf aux tomates,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 166,Gigot d'agneau de sept heures,Une savoureuse recette de Gigot d'agneau de sept heures,20,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 167,Navarin d'agneau printainier,Une savoureuse recette de Navarin d'agneau printainier,30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 170,Moussaka grecque,Une savoureuse recette de Moussaka grecque,40,60,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 173,Côtelettes d'agneau grillées à l'ail,Une savoureuse recette de Côtelettes d'agneau grillées à l'ail,10,12,4,Grillade,PLAT_PRINCIPAL,f,f,t
-9053,Bœuf au céleri,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 174,Shepherd's pie (hachis Parmentier d'agneau),Une savoureuse recette de Shepherd's pie (hachis Parmentier d'agneau),30,35,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 175,Kefta d'agneau et semoule,Une savoureuse recette de Kefta d'agneau et semoule,20,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
 176,"Magret de canard, sauce au poivre vert","Une savoureuse recette de Magret de canard, sauce au poivre vert",10,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
@@ -187,41 +166,28 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 192,Moules à la crème et aux frites,Une savoureuse recette de Moules à la crème et aux frites,15,10,4,Mijotage,DESSERT,f,t,f
 194,Moules à la provençale,Une savoureuse recette de Moules à la provençale,20,15,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 195,Paella valenciana,Une délicieuse recette espagnole : Paella valenciana,30,40,6,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9054,Bœuf au chou,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 196,Paella aux fruits de mer,Une délicieuse recette espagnole : Paella aux fruits de mer,30,40,6,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9055,Bœuf aux navets,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9056,Bœuf aux épices,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9057,Bœuf stroganoff,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,25,4,Poêle,PLAT_PRINCIPAL,f,t,f
 197,Zarzuela de mariscos (cassolette de poissons espagnole),Une délicieuse recette espagnole : Zarzuela de mariscos (cassolette de poissons espagnole),10,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9058,Bœuf à la moutarde,"Savoureuse préparation de viande préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",20,30,4,Mijotage,PLAT_PRINCIPAL,f,f,t
 198,Marmitako (ragoût de thon basque),Une délicieuse recette espagnole : Marmitako (ragoût de thon basque),30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 199,Fideuà (paella de vermicelles),Une délicieuse recette espagnole : Fideuà (paella de vermicelles),30,40,6,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9059,Bœuf à la crème,"Savoureuse préparation de viande préparé avec attention, agrémenté d'une sauce crémeuse. Parfait pour un repas convivial.",20,30,4,Mijotage,PLAT_PRINCIPAL,f,f,t
 200,Lotte à l'américaine,Une délicieuse recette américaine : Lotte à l'américaine,25,30,4,Mijotage,PLAT_PRINCIPAL,f,f,t
 201,Bouillabaisse marseillaise,Une savoureuse recette de Bouillabaisse marseillaise,30,40,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9060,Bœuf au curry doux,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 202,Bourride sétoise,Une savoureuse recette de Bourride sétoise,30,40,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 203,Brandade de morue de Nîmes,Une savoureuse recette de Brandade de morue de Nîmes,30,30,6,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 204,Aïoli provençal et ses légumes,Une savoureuse recette de Aïoli provençal et ses légumes,30,40,6,Cuisson vapeur,PLAT_PRINCIPAL,f,t,f
 205,Pavé de saumon à l'unilatérale,Une savoureuse recette de Pavé de saumon à l'unilatérale,10,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
 206,"Saumon en papillote, julienne de légumes","Une savoureuse recette de Saumon en papillote, julienne de légumes",15,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9061,Bœuf au paprika,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,35,4,Mijotage,PLAT_PRINCIPAL,f,f,t
 207,Saumon teriyaki,Une délicieuse recette japonaise : Saumon teriyaki,15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9062,Bœuf sauce tomate,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Mijotage,PLAT_PRINCIPAL,f,f,t
 208,"Saumon à la plancha, sauce vierge","Une savoureuse recette de Saumon à la plancha, sauce vierge",10,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9063,Bœuf sauce poivre,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
 209,Lasagnes au saumon et épinards,Une savoureuse recette de Lasagnes au saumon et épinards,10,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
 211,Gravlax de saumon maison,Une savoureuse recette de Gravlax de saumon maison,20,0,8,Marinade,PLAT_PRINCIPAL,f,f,
 215,Cabillaud à la bordelaise,Une savoureuse recette de Cabillaud à la bordelaise,10,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
 217,Fish and chips britannique,Une savoureuse recette de Fish and chips britannique,25,20,4,Friture,PLAT_PRINCIPAL,f,t,f
-9064,Bœuf sauce au roquefort,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
 218,Waterzooi de poisson,Une savoureuse recette de Waterzooi de poisson,25,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 220,Thon mi-cuit au sésame,Une savoureuse recette de Thon mi-cuit au sésame,10,3,4,Poêle,PLAT_PRINCIPAL,f,f,t
 221,"Steak de thon à la sicilienne (olives, câpres)","Une délicieuse recette italienne : Steak de thon à la sicilienne (olives, câpres)",10,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
 223,Dorade royale au four et fenouil,Une savoureuse recette de Dorade royale au four et fenouil,15,30,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9065,Bœuf sauce au gorgonzola,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
 224,Filet de sole meunière,Une savoureuse recette de Filet de sole meunière,10,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9066,Bœuf sauce au chèvre,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
 225,Raie au beurre noir et aux câpres,Une savoureuse recette de Raie au beurre noir et aux câpres,10,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
 226,Maquereaux marinés au vin blanc,Une savoureuse recette de Maquereaux marinés au vin blanc,20,10,6,Marinade,PLAT_PRINCIPAL,f,f,
 520,Naans indiens au fromage,Une délicieuse recette indienne : Naans indiens au fromage,90,20,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
@@ -230,10 +196,6 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 227,Sardines grillées au barbecue,Une délicieuse recette américaine : Sardines grillées au barbecue,15,10,4,Grillade,PLAT_PRINCIPAL,f,f,t
 229,"Noix de Saint-Jacques snackées, purée de carottes au cumin","Une savoureuse recette de Noix de Saint-Jacques snackées, purée de carottes au cumin",10,5,4,Poêle,ACCOMPAGNEMENT,t,f,t
 231,Crevettes sautées à l'ail et au persil,Une délicieuse recette asiatique : Crevettes sautées à l'ail et au persil,10,8,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9067,Bœuf sauce aux champignons,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,20,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-9068,Bœuf sauce aux poivrons,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,20,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9069,Bœuf sauce aux oignons,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,20,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9070,Bœuf sauce au citron,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,20,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
 233,"Pâtes aux crevettes, ail, huile et piment","Une délicieuse recette italienne : Pâtes aux crevettes, ail, huile et piment",10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
 234,Crevettes à l'armoricaine,Une savoureuse recette de Crevettes à l'armoricaine,20,15,4,Mijotage,PLAT_PRINCIPAL,f,f,t
 235,Wok de crevettes aux légumes croquants,Une délicieuse recette asiatique : Wok de crevettes aux légumes croquants,15,8,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
@@ -246,12 +208,9 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 245,Bolognaise de lentilles vertes,Une savoureuse recette de Bolognaise de lentilles vertes,20,40,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 247,Pois chiches rôtis aux épices,Une savoureuse recette de Pois chiches rôtis aux épices,10,25,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
 249,Chili sin carne,Une délicieuse recette mexicaine : Chili sin carne,20,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9071,Bœuf sauce au miel,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,20,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
 250,Haricots blancs à la bretonne,Une délicieuse recette française : Haricots blancs à la bretonne,20,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9072,Bœuf sauce aux herbes,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,20,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
 251,Fèves à la catalane,Une délicieuse recette espagnole : Fèves à la catalane,20,35,4,Mijotage,PLAT_PRINCIPAL,f,f,t
 252,Socca niçoise (galette de farine de pois chiches),Une délicieuse recette française : Socca niçoise (galette de farine de pois chiches),10,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9073,Bœuf sauce aux tomates séchées,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Mijotage,PLAT_PRINCIPAL,f,f,t
 253,Panisses marseillaises,Une savoureuse recette de Panisses marseillaises,60,15,6,Friture,PLAT_PRINCIPAL,f,f,
 254,Lasagnes végétariennes aux légumes du soleil,Une savoureuse recette de Lasagnes végétariennes aux légumes du soleil,10,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
 255,Lasagnes aux épinards et à la ricotta,Une savoureuse recette de Lasagnes aux épinards et à la ricotta,35,40,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
@@ -272,26 +231,17 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 534,Potjevleesch flamand,Une savoureuse recette de Potjevleesch flamand,30,180,8,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 536,Daube niçoise,Une délicieuse recette française : Daube niçoise,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 537,Pieds paquets marseillais,Une savoureuse recette de Pieds paquets marseillais,40,240,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9074,Bœuf sauce au pesto,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,20,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9075,Bœuf sauce au curry coco,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,20,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
 9076,Blanquette de veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9077,Sauté de veau marengo,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 9078,Veau aux olives,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 9079,Veau aux champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9080,Veau aux carottes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9081,Veau aux courgettes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 270,"Pâtes alla norma (aubergines, ricotta salata)","Une délicieuse recette italienne : Pâtes alla norma (aubergines, ricotta salata)",10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
 271,"Gnocchis de pommes de terre, sauce sauge et beurre","Une délicieuse recette italienne : Gnocchis de pommes de terre, sauce sauge et beurre",15,30,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,
-9082,Veau aux tomates,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 9083,Veau aux poivrons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9084,Veau aux aubergines,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9085,Veau aux oignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 272,"Gnocchis à la sorrentina (sauce tomate, mozzarella)","Une délicieuse recette italienne : Gnocchis à la sorrentina (sauce tomate, mozzarella)",60,20,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 273,"Raviolis aux épinards et ricotta, sauce tomate","Une savoureuse recette de Raviolis aux épinards et ricotta, sauce tomate",90,8,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,t,f
 538,Alouettes sans tête provençales,Une savoureuse recette de Alouettes sans tête provençales,30,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 274,Cannellonis farcis à la bolognaise,Une savoureuse recette de Cannellonis farcis à la bolognaise,45,35,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 276,Macaroni and cheese américain (gratin de macaronis),Une délicieuse recette américaine : Macaroni and cheese américain (gratin de macaronis),40,15,24,Cuisson au four,ACCOMPAGNEMENT,t,f,
-9086,Veau aux pommes de terre,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,30,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,
 278,"One pot pasta tomate, basilic, mozzarella","Une savoureuse recette de One pot pasta tomate, basilic, mozzarella",10,15,4,Cuisson unique,PLAT_PRINCIPAL,f,t,f
 279,Pâtes au citron et à la crème,Une délicieuse recette italienne : Pâtes au citron et à la crème,10,12,4,Cuisson à l'eau,DESSERT,f,f,
 281,Pâtes fraîches maison,Une délicieuse recette italienne : Pâtes fraîches maison,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
@@ -304,9 +254,7 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 288,Tofu Katsu (pané et frit),Une délicieuse recette japonaise : Tofu Katsu (pané et frit),15,10,4,Friture,PLAT_PRINCIPAL,f,f,t
 539,Fricassée de volaille à l'angevine,Une savoureuse recette de Fricassée de volaille à l'angevine,20,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 289,Seitan bourguignon,Une délicieuse recette française : Seitan bourguignon,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9088,Veau aux pois chiches,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,50,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 290,Sauté de seitan et brocolis,Une délicieuse recette asiatique : Sauté de seitan et brocolis,20,12,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9089,Veau aux lentilles,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,50,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 291,Burger de seitan,Une délicieuse recette américaine : Burger de seitan,30,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 292,Tempeh laqué à l'indonésienne,Une savoureuse recette de Tempeh laqué à l'indonésienne,20,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
 293,"Buddha bowl au quinoa, patates douces et avocat","Une savoureuse recette de Buddha bowl au quinoa, patates douces et avocat",30,25,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
@@ -321,20 +269,14 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 543,Matelote d'anguille,Une savoureuse recette de Matelote d'anguille,30,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 544,Lamproie à la bordelaise,Une savoureuse recette de Lamproie à la bordelaise,40,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 545,Ttoro (soupe de poisson basque),Une délicieuse recette espagnole : Ttoro (soupe de poisson basque),20,30,4,Mijotage,ENTREE,f,f,
-9090,Veau aux navets,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 546,Morue à la lyonnaise,Une délicieuse recette française : Morue à la lyonnaise,10,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9091,Veau aux épinards,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9092,Veau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9093,Veau aux champignons sauvages,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 9094,Veau au curry doux,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 9095,Escalope de veau grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,10,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9096,Escalope de veau panée,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
 9097,Escalope de veau à la crème,"Savoureuse préparation de viande préparé avec attention, agrémenté d'une sauce crémeuse. Parfait pour un repas convivial.",10,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
 9098,Escalope de veau à la moutarde,"Savoureuse préparation de viande préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",10,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
 9099,Escalope de veau aux champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,18,4,Poêle,PLAT_PRINCIPAL,f,f,t
 9100,Escalope de veau au curry doux,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",15,18,4,Poêle,PLAT_PRINCIPAL,f,f,t
 9101,Côte de veau grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,5,12,2,Grillade,PLAT_PRINCIPAL,f,f,t
-9102,Côte de veau au beurre,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,5,15,2,Poêle,PLAT_PRINCIPAL,f,f,t
 9103,Côte de veau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,5,15,2,Poêle,PLAT_PRINCIPAL,f,f,t
 547,Quenelles de brochet sauce Nantua,Une savoureuse recette de Quenelles de brochet sauce Nantua,40,20,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,t,f
 548,Grenouilles en persillade,Une savoureuse recette de Grenouilles en persillade,20,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
@@ -347,7 +289,6 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 315,Pommes de terre suédoises (Hasselback),Une savoureuse recette de Pommes de terre suédoises (Hasselback),15,30,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,
 9106,Filet de veau à la crème,"Savoureuse préparation de viande préparé avec attention, agrémenté d'une sauce crémeuse. Parfait pour un repas convivial.",10,15,2,Poêle,PLAT_PRINCIPAL,f,f,t
 9107,Grenadin de veau au poivre,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,5,12,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9108,Grenadin de veau aux champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,10,15,2,Poêle,PLAT_PRINCIPAL,f,f,t
 316,Pommes dauphine maison,Une savoureuse recette de Pommes dauphine maison,40,15,6,Friture,PLAT_PRINCIPAL,f,f,
 317,Aligot de l'Aubrac,Une savoureuse recette de Aligot de l'Aubrac,20,30,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,
 318,Truffade auvergnate,Une savoureuse recette de Truffade auvergnate,20,25,4,Poêle,PLAT_PRINCIPAL,f,t,f
@@ -468,115 +409,52 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 9123,Carré d’agneau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,25,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
 9124,Carré d’agneau au miel,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,30,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
 9125,Côtelettes d’agneau grillées,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,10,12,4,Grillade,PLAT_PRINCIPAL,f,f,t
-9126,Côtelettes d’agneau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,10,12,4,Grillade,PLAT_PRINCIPAL,f,f,t
 9127,Côtelettes d’agneau au curry doux,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",25,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 9128,Côtelettes d’agneau à la provençale,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,10,12,4,Grillade,PLAT_PRINCIPAL,f,f,t
 9129,Côtelettes d’agneau au paprika,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,10,12,4,Grillade,PLAT_PRINCIPAL,f,f,t
 9130,Épaule d’agneau rôtie,Savoureuse préparation de viande rôti au four. Parfait pour un repas convivial.,20,120,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9131,Épaule d’agneau grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,20,120,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9132,Épaule d’agneau au miel,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,130,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9133,Épaule d’agneau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,120,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9134,Épaule d’agneau à la moutarde,"Savoureuse préparation de viande préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",20,120,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9135,Navarin d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9136,Ragoût d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9137,Agneau aux carottes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9138,Agneau aux poireaux,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9139,Agneau aux champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9140,Agneau aux pois chiches,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9141,Agneau aux lentilles,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9142,Agneau aux haricots blancs,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9143,Agneau aux tomates,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9144,Agneau aux aubergines,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9145,Agneau aux courgettes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9146,Agneau aux poivrons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9147,Agneau au céleri,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9148,Agneau aux navets,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9149,Agneau aux épinards,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9150,Agneau aux pommes de terre,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,30,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,
-9151,Agneau aux oignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9152,Agneau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9153,Agneau au curry doux,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",25,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 9154,Agneau korma,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,50,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9155,Agneau massala,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,50,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9156,Agneau à la tomate,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9157,Agneau à la moutarde,"Savoureuse préparation de viande préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",20,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9158,Agneau à la crème,"Savoureuse préparation de viande préparé avec attention, agrémenté d'une sauce crémeuse. Parfait pour un repas convivial.",20,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9159,Agneau au paprika,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9160,Agneau au romarin,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,80,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9161,Agneau au thym,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,80,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9162,Agneau au miel,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,80,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9163,Agneau aux épices,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9164,Agneau aux pruneaux,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9165,Agneau aux figues,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9166,Agneau aux abricots,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9167,Agneau aux poires,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9168,Agneau aux pommes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,80,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9169,Agneau au citron,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,80,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9170,Agneau aux olives,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,80,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9171,Agneau au gingembre,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9172,Rôti de porc aux herbes,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9174,Rôti de porc au miel,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9175,Rôti de porc au paprika,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9176,Rôti de porc au curry doux,"Plat principal savoureux rôti au four, relevé d'épices curry. Parfait pour un repas convivial.",15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9177,Rôti de porc à l’ail,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9178,Rôti de porc aux pommes,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9179,Rôti de porc aux pruneaux,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9180,Côtes de porc grillées,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,15,4,Grillade,PLAT_PRINCIPAL,f,f,t
 9181,Côtes de porc marinées,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
 9182,Côtes de porc au barbecue,Recette de poisson préparé avec attention. Parfait pour un repas convivial.,10,20,4,Grillade,PLAT_PRINCIPAL,f,f,t
-9183,Côtes de porc au miel,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,10,18,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9184,Côtes de porc aux herbes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9185,Côtes de porc au curry doux,"Plat principal savoureux préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",5,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
 9186,Filet mignon grillé,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,12,2,Grillade,PLAT_PRINCIPAL,f,f,t
 9187,Filet mignon au miel,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,15,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
 9188,Filet mignon à la moutarde,"Plat principal savoureux préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",15,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
 9191,Sauté de porc au curry doux,"Plat principal savoureux préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9192,Sauté de porc aux champignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9193,Sauté de porc aux oignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9194,Sauté de porc aux poivrons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9195,Sauté de porc aux tomates,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9196,Sauté de porc aux carottes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,20,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
 421,Canelés de Bordeaux,Une savoureuse recette de Canelés de Bordeaux,20,60,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9197,Sauté de porc aux courgettes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9198,Sauté de porc aux aubergines,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,20,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
 9199,Sauté de porc au miel,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,18,4,Sauté au wok,PLAT_PRINCIPAL,f,f,t
-9200,Porc aux pruneaux,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9201,Porc aux pommes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9202,Porc aux poires,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9203,Porc aux figues,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9204,Porc aux raisins secs,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 558,Tarte à l'oignon alsacienne,Une délicieuse recette française : Tarte à l'oignon alsacienne,30,40,8,Cuisson au four,DESSERT,f,f,
 9205,Porc aux marrons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9206,Porc aux herbes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,35,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-9207,Porc au gingembre,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,35,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 9208,Porc à la moutarde,"Plat principal savoureux préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",20,35,4,Mijotage,PLAT_PRINCIPAL,f,f,t
 9209,Porc au curry doux,"Plat principal savoureux préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9210,Porc sauce tomate,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,35,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-9211,Porc sauce soja,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9212,Porc sauce au miel,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9213,Porc sauce au roquefort,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",15,20,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9214,Porc sauce aux champignons,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9215,Porc sauce aux oignons,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9216,Porc sauce aux poivrons,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9217,Porc sauce au paprika,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-9218,Porc sauce à la bière,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",25,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9219,Porc sauce aux herbes,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-9220,Porc sauce aux tomates séchées,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,35,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-9221,Porc sauce au pesto,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-9222,Porc sauce au lait de coco,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-9223,Porc sauce au curry coco,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,30,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9224,Porc sauce aigre-douce,"Plat principal savoureux préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",20,20,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
 9225,Chevreuil rôti,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,25,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9226,Chevreuil aux herbes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9227,Chevreuil au miel,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9228,Chevreuil au poivre,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9229,Chevreuil au romarin,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9230,Sanglier rôti,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,25,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9231,Sanglier au miel,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9232,Sanglier aux pruneaux,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9233,Cerf rôti,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,25,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9234,Cerf au poivre,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9235,Cerf aux champignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9236,Lièvre rôti,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,25,60,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9237,Lièvre aux herbes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9238,Lièvre à la moutarde,"Plat principal savoureux préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
@@ -586,10 +464,6 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 9242,Civet de chevreuil,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9243,Civet de lièvre,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,40,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9244,Civet de cerf,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9245,Sanglier aux carottes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9246,Sanglier aux champignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9247,Sanglier aux pommes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9248,Chevreuil aux airelles,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 422,"Macarons parisiens (pistache, chocolat, framboise)","Une délicieuse recette française : Macarons parisiens (pistache, chocolat, framboise)",40,15,24,Cuisson au four,PLAT_PRINCIPAL,f,f,
 423,"Paris-Brest (pâte à choux, crème pralinée)","Une savoureuse recette de Paris-Brest (pâte à choux, crème pralinée)",40,25,8,Cuisson au four,DESSERT,f,f,
 424,Éclair au café ou au chocolat,Une savoureuse recette de Éclair au café ou au chocolat,45,25,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
@@ -888,35 +762,19 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 8995,Potage aux poireaux,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
 8996,Potage aux pommes de terre,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
 8997,Potage au céleri,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9249,Chevreuil aux champignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9250,Chevreuil aux pruneaux,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9251,Lièvre aux poires,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9252,Lièvre aux figues,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9253,Cerf aux marrons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9254,Cerf aux myrtilles,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9255,Faisan aux poires,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,50,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9256,Faisan aux pommes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,45,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9257,Faisan aux champignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,45,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9258,Bécasse mijotée,Plat principal savoureux mijoté longuement pour plus de tendreté. Parfait pour un repas convivial.,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9259,Bécasse aux pruneaux,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,50,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9260,Burger classique,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 9261,Burger au fromage,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 9262,Burger au bacon,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9263,Burger au bleu,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9264,Burger au roquefort,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9265,Burger au chèvre,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9266,Burger au gorgonzola,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9267,Burger au pesto,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9268,Burger au curry doux,"Plat principal savoureux préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 9269,Burger au poulet et bœuf,Délicieux plat de volaille préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 9270,Burger aux champignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 9271,Burger aux oignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 9272,Burger aux tomates,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9273,Burger aux poivrons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9274,Burger aux aubergines,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9275,Burger aux courgettes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9276,Sandwich au steak,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,15,10,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9277,Sandwich au rôti de bœuf,Savoureuse préparation de viande rôti au four. Parfait pour un repas convivial.,10,0,2,Sans cuisson,PLAT_PRINCIPAL,f,t,f
 9278,Wrap au bœuf grillé,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,15,10,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 9279,Wrap au bœuf aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,10,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 9280,Boulettes de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
@@ -924,17 +782,8 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 9282,Boulettes d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
 9283,Boulettes de porc,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
 9284,Boulettes au curry doux,"Plat principal savoureux préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9285,Boulettes à la tomate,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9286,Boulettes au fromage,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9287,Boulettes aux herbes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9288,Boulettes aux champignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9289,Boulettes aux oignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
 9290,Steak haché poêlé,Plat principal savoureux poêlé avec soin. Parfait pour un repas convivial.,5,10,2,Poêle,PLAT_PRINCIPAL,f,f,t
 9291,Steak haché au barbecue,Recette de poisson préparé avec attention. Parfait pour un repas convivial.,5,10,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9292,Steak haché au fromage,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,10,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9293,Steak haché aux herbes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,10,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9294,Steak haché aux oignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,10,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9295,Steak haché au poivre,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,10,2,Poêle,PLAT_PRINCIPAL,f,f,t
 9296,Polpette italiennes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
 9297,Keftas d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
 9298,Keftas de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
@@ -965,7 +814,6 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 498,"Pommes au four, miel et cannelle","Une savoureuse recette de Pommes au four, miel et cannelle",15,35,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
 499,Bananes flambées au rhum,Une savoureuse recette de Bananes flambées au rhum,10,8,4,Poêle,PLAT_PRINCIPAL,f,f,
 504,Crumble aux fruits rouges et flocons d'avoine,Une savoureuse recette de Crumble aux fruits rouges et flocons d'avoine,20,35,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9309,Cerf aux truffes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9310,Chevreuil au foie gras,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9311,Sanglier de fête,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9312,Lièvre à la royale,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,60,180,8,Mijotage,PLAT_PRINCIPAL,f,t,f
@@ -976,26 +824,12 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 9317,Bœuf teriyaki,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
 9318,Bœuf sauté thaï,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,12,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
 9319,Bœuf curry coco,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9320,Bœuf au satay,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,15,4,Grillade,PLAT_PRINCIPAL,f,f,t
 9321,Bœuf bulgogi,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9322,Bœuf au soja,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
 9323,Agneau tikka masala,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,40,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9324,Agneau curry thaï,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",25,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 9325,Porc au caramel,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,30,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9326,Porc au soja,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,35,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
 9327,Porc à l’aigre-douce,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,20,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9328,Porc au satay,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,35,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9329,Porc au curry japonais,"Plat principal savoureux préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 9330,Porc teriyaki,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9331,Veau au gingembre,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,20,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9332,Veau à la citronnelle,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,20,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9333,Veau à la thaï,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,20,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9334,Rosbif froid,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,15,30,6,Cuisson au four,PLAT_PRINCIPAL,f,f,f
-9335,Rôti de veau froid,Savoureuse préparation de viande rôti au four. Parfait pour un repas convivial.,25,90,8,Cuisson au four,PLAT_PRINCIPAL,f,f,f
-9336,Rôti de porc froid,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9337,Salade de bœuf froid,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
-9338,Salade de veau froid,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
-9339,Salade de porc froid,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
 9340,Carpaccio de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
 9341,Carpaccio de veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
 9342,Carpaccio d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
@@ -1010,29 +844,15 @@ id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,
 9351,Terrine de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,40,90,8,Cuisson au four,PLAT_PRINCIPAL,f,f,f
 9352,Terrine de veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,40,90,8,Cuisson au four,PLAT_PRINCIPAL,f,f,f
 9353,Terrine de sanglier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9354,Tourte au bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9355,Tourte au bœuf et champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9356,Tourte au bœuf et légumes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9357,Tourte au veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9358,Tourte au veau et champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9359,Tourte au veau et légumes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9360,Tourte à l’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9361,Tourte à l’agneau et légumes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9362,Tourte au porc,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9363,Tourte au porc et légumes,Plat végétarien équilibré préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9364,Tourte au gibier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9365,Tourte au gibier et champignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
 9366,Feuilleté au bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,35,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9367,Feuilleté au veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,35,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9368,Feuilleté à l’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,35,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9369,Feuilleté au porc,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,35,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
 9370,Feuilleté au gibier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,35,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9371,Feuilleté au sanglier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9372,Feuilleté au chevreuil,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9373,Feuilleté au cerf,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9374,Bœuf au miso,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9375,Bœuf au sésame noir,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9376,Bœuf au curry cacao,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
 9377,Sauce béchamel,"Sauce blanche onctueuse à base de beurre, farine et lait. Base de nombreuses recettes comme les lasagnes, gratins et croque-monsieur.",5,10,6,Cuisson douce,SAUCE,f,,
 9378,Sauce hollandaise,Sauce émulsionnée riche à base de jaunes d'œufs et beurre clarifié. Parfaite pour les asperges et œufs bénédictine.,10,8,4,Cuisson douce,SAUCE,f,,
 9379,Sauce béarnaise,"Sauce émulsionnée à l'estragon, variante de la hollandaise. Accompagnement idéal pour les viandes grillées.",15,8,4,Cuisson douce,SAUCE,f,,
