@@ -1,0 +1,399 @@
+id,name,role
+8998,Potage aux tomates,ENTREE
+8999,Potage aux champignons,ENTREE
+9000,Potage aux aubergines,ENTREE
+9001,Potage aux poivrons,ENTREE
+9002,Potage au chou-fleur,ENTREE
+9003,Potage aux brocolis,ENTREE
+9004,Potage aux navets,ENTREE
+9005,Potage aux blettes,ENTREE
+9006,Potage au panais,ENTREE
+9007,Potage au potiron,ENTREE
+9008,Potage au chou rouge,ENTREE
+9009,Potage aux artichauts,ENTREE
+9010,Potage méditerranéen,ENTREE
+9011,Crème de champignons,ENTREE
+9012,Crème de poireaux,ENTREE
+9013,Crème de courgettes,ENTREE
+9014,Crème de carottes,ENTREE
+9015,Crème de céleri,ENTREE
+9016,Crème de brocolis,ENTREE
+9018,Entrecôte grillée,PLAT_PRINCIPAL
+9019,Faux-filet grillé,PLAT_PRINCIPAL
+9020,Rumsteck grillé,PLAT_PRINCIPAL
+9021,Bavette grillée,PLAT_PRINCIPAL
+9022,Aloyau grillé,PLAT_PRINCIPAL
+9023,Onglet grillé,PLAT_PRINCIPAL
+9024,Hampe grillée,PLAT_PRINCIPAL
+9025,Tournedos poêlé,PLAT_PRINCIPAL
+9026,Filet de bœuf poêlé,PLAT_PRINCIPAL
+9027,Pavé de bœuf grillé,PLAT_PRINCIPAL
+9028,Steak minute,PLAT_PRINCIPAL
+9029,Côte de bœuf grillée,PLAT_PRINCIPAL
+9030,Araignée de bœuf grillée,PLAT_PRINCIPAL
+9031,Poire de bœuf grillée,PLAT_PRINCIPAL
+9032,Merlan de bœuf grillé,PLAT_PRINCIPAL
+9033,Bavette poêlée aux oignons,PLAT_PRINCIPAL
+9034,Entrecôte au poivre,PLAT_PRINCIPAL
+9035,Steak grillé au beurre maître d’hôtel,PLAT_PRINCIPAL
+9036,Filet grillé aux herbes,PLAT_PRINCIPAL
+9038,Daube provençale,PLAT_PRINCIPAL
+9040,Pot-au-feu,PLAT_PRINCIPAL
+9041,Bœuf carottes,PLAT_PRINCIPAL
+9042,Navarin de bœuf,PLAT_PRINCIPAL
+9043,Bœuf aux oignons,PLAT_PRINCIPAL
+9044,Bœuf aux poivrons,PLAT_PRINCIPAL
+9045,Bœuf aux champignons,PLAT_PRINCIPAL
+9046,Bœuf aux carottes et pommes de terre,PLAT_PRINCIPAL
+9047,Bœuf aux haricots blancs,PLAT_PRINCIPAL
+9048,Bœuf aux pois chiches,PLAT_PRINCIPAL
+9049,Bœuf aux lentilles,PLAT_PRINCIPAL
+9050,Bœuf aux courgettes,PLAT_PRINCIPAL
+9051,Bœuf aux aubergines,PLAT_PRINCIPAL
+9052,Bœuf aux tomates,PLAT_PRINCIPAL
+9053,Bœuf au céleri,PLAT_PRINCIPAL
+9054,Bœuf au chou,PLAT_PRINCIPAL
+9055,Bœuf aux navets,PLAT_PRINCIPAL
+9056,Bœuf aux épices,PLAT_PRINCIPAL
+9057,Bœuf stroganoff,PLAT_PRINCIPAL
+9058,Bœuf à la moutarde,PLAT_PRINCIPAL
+9059,Bœuf à la crème,PLAT_PRINCIPAL
+9060,Bœuf au curry doux,PLAT_PRINCIPAL
+9061,Bœuf au paprika,PLAT_PRINCIPAL
+9062,Bœuf sauce tomate,PLAT_PRINCIPAL
+9063,Bœuf sauce poivre,PLAT_PRINCIPAL
+9064,Bœuf sauce au roquefort,PLAT_PRINCIPAL
+9065,Bœuf sauce au gorgonzola,PLAT_PRINCIPAL
+9066,Bœuf sauce au chèvre,PLAT_PRINCIPAL
+9067,Bœuf sauce aux champignons,PLAT_PRINCIPAL
+9068,Bœuf sauce aux poivrons,PLAT_PRINCIPAL
+9069,Bœuf sauce aux oignons,PLAT_PRINCIPAL
+9070,Bœuf sauce au citron,PLAT_PRINCIPAL
+9071,Bœuf sauce au miel,PLAT_PRINCIPAL
+9072,Bœuf sauce aux herbes,PLAT_PRINCIPAL
+9073,Bœuf sauce aux tomates séchées,PLAT_PRINCIPAL
+9074,Bœuf sauce au pesto,PLAT_PRINCIPAL
+9075,Bœuf sauce au curry coco,PLAT_PRINCIPAL
+9076,Blanquette de veau,PLAT_PRINCIPAL
+9077,Sauté de veau marengo,PLAT_PRINCIPAL
+9078,Veau aux olives,PLAT_PRINCIPAL
+9079,Veau aux champignons,PLAT_PRINCIPAL
+9080,Veau aux carottes,PLAT_PRINCIPAL
+9081,Veau aux courgettes,PLAT_PRINCIPAL
+9082,Veau aux tomates,PLAT_PRINCIPAL
+9083,Veau aux poivrons,PLAT_PRINCIPAL
+9084,Veau aux aubergines,PLAT_PRINCIPAL
+9085,Veau aux oignons,PLAT_PRINCIPAL
+9086,Veau aux pommes de terre,PLAT_PRINCIPAL
+9087,Veau aux haricots blancs,PLAT_PRINCIPAL
+9088,Veau aux pois chiches,PLAT_PRINCIPAL
+9089,Veau aux lentilles,PLAT_PRINCIPAL
+9090,Veau aux navets,PLAT_PRINCIPAL
+9091,Veau aux épinards,PLAT_PRINCIPAL
+9092,Veau aux herbes,PLAT_PRINCIPAL
+9093,Veau aux champignons sauvages,PLAT_PRINCIPAL
+9094,Veau au curry doux,PLAT_PRINCIPAL
+9095,Escalope de veau grillée,PLAT_PRINCIPAL
+9096,Escalope de veau panée,PLAT_PRINCIPAL
+9097,Escalope de veau à la crème,PLAT_PRINCIPAL
+9098,Escalope de veau à la moutarde,PLAT_PRINCIPAL
+9099,Escalope de veau aux champignons,PLAT_PRINCIPAL
+9100,Escalope de veau au curry doux,PLAT_PRINCIPAL
+9101,Côte de veau grillée,PLAT_PRINCIPAL
+9102,Côte de veau au beurre,PLAT_PRINCIPAL
+9103,Côte de veau aux herbes,PLAT_PRINCIPAL
+9104,Côte de veau aux champignons,PLAT_PRINCIPAL
+9105,Filet de veau grillé,PLAT_PRINCIPAL
+9106,Filet de veau à la crème,PLAT_PRINCIPAL
+9107,Grenadin de veau au poivre,PLAT_PRINCIPAL
+9108,Grenadin de veau aux champignons,PLAT_PRINCIPAL
+9109,Grenadin de veau au miel,PLAT_PRINCIPAL
+9110,Grenadin de veau aux herbes,PLAT_PRINCIPAL
+9111,Escalope de veau milanaise,PLAT_PRINCIPAL
+9112,Escalope de veau cordon bleu,PLAT_PRINCIPAL
+9113,Côte de veau à la moutarde,PLAT_PRINCIPAL
+9114,Filet de veau sauce tomate,PLAT_PRINCIPAL
+9115,Gigot d’agneau rôti,PLAT_PRINCIPAL
+9116,Gigot d’agneau aux herbes,PLAT_PRINCIPAL
+9117,Gigot d’agneau au miel,PLAT_PRINCIPAL
+9118,Gigot d’agneau à l’ail,PLAT_PRINCIPAL
+9119,Gigot d’agneau à la moutarde,PLAT_PRINCIPAL
+9120,Gigot d’agneau aux tomates,PLAT_PRINCIPAL
+9121,Carré d’agneau rôti,PLAT_PRINCIPAL
+9122,Carré d’agneau grillé,PLAT_PRINCIPAL
+9123,Carré d’agneau aux herbes,PLAT_PRINCIPAL
+9124,Carré d’agneau au miel,PLAT_PRINCIPAL
+9125,Côtelettes d’agneau grillées,PLAT_PRINCIPAL
+9126,Côtelettes d’agneau aux herbes,PLAT_PRINCIPAL
+9127,Côtelettes d’agneau au curry doux,PLAT_PRINCIPAL
+9128,Côtelettes d’agneau à la provençale,PLAT_PRINCIPAL
+9129,Côtelettes d’agneau au paprika,PLAT_PRINCIPAL
+9130,Épaule d’agneau rôtie,PLAT_PRINCIPAL
+9131,Épaule d’agneau grillée,PLAT_PRINCIPAL
+9132,Épaule d’agneau au miel,PLAT_PRINCIPAL
+9133,Épaule d’agneau aux herbes,PLAT_PRINCIPAL
+9134,Épaule d’agneau à la moutarde,PLAT_PRINCIPAL
+9135,Navarin d’agneau,PLAT_PRINCIPAL
+9136,Ragoût d’agneau,PLAT_PRINCIPAL
+9137,Agneau aux carottes,PLAT_PRINCIPAL
+9138,Agneau aux poireaux,PLAT_PRINCIPAL
+9139,Agneau aux champignons,PLAT_PRINCIPAL
+9140,Agneau aux pois chiches,PLAT_PRINCIPAL
+9141,Agneau aux lentilles,PLAT_PRINCIPAL
+9142,Agneau aux haricots blancs,PLAT_PRINCIPAL
+9143,Agneau aux tomates,PLAT_PRINCIPAL
+9144,Agneau aux aubergines,PLAT_PRINCIPAL
+9145,Agneau aux courgettes,PLAT_PRINCIPAL
+9146,Agneau aux poivrons,PLAT_PRINCIPAL
+9147,Agneau au céleri,PLAT_PRINCIPAL
+9148,Agneau aux navets,PLAT_PRINCIPAL
+9149,Agneau aux épinards,PLAT_PRINCIPAL
+9150,Agneau aux pommes de terre,PLAT_PRINCIPAL
+9151,Agneau aux oignons,PLAT_PRINCIPAL
+9152,Agneau aux herbes,PLAT_PRINCIPAL
+9153,Agneau au curry doux,PLAT_PRINCIPAL
+9154,Agneau korma,PLAT_PRINCIPAL
+9155,Agneau massala,PLAT_PRINCIPAL
+9156,Agneau à la tomate,PLAT_PRINCIPAL
+9157,Agneau à la moutarde,PLAT_PRINCIPAL
+9158,Agneau à la crème,PLAT_PRINCIPAL
+9159,Agneau au paprika,PLAT_PRINCIPAL
+9160,Agneau au romarin,PLAT_PRINCIPAL
+9161,Agneau au thym,PLAT_PRINCIPAL
+9162,Agneau au miel,PLAT_PRINCIPAL
+9163,Agneau aux épices,PLAT_PRINCIPAL
+9164,Agneau aux pruneaux,PLAT_PRINCIPAL
+9165,Agneau aux figues,PLAT_PRINCIPAL
+9166,Agneau aux abricots,PLAT_PRINCIPAL
+9167,Agneau aux poires,PLAT_PRINCIPAL
+9168,Agneau aux pommes,PLAT_PRINCIPAL
+9169,Agneau au citron,PLAT_PRINCIPAL
+9170,Agneau aux olives,PLAT_PRINCIPAL
+9171,Agneau au gingembre,PLAT_PRINCIPAL
+9172,Rôti de porc aux herbes,PLAT_PRINCIPAL
+9174,Rôti de porc au miel,PLAT_PRINCIPAL
+9175,Rôti de porc au paprika,PLAT_PRINCIPAL
+9176,Rôti de porc au curry doux,PLAT_PRINCIPAL
+9177,Rôti de porc à l’ail,PLAT_PRINCIPAL
+9178,Rôti de porc aux pommes,PLAT_PRINCIPAL
+9179,Rôti de porc aux pruneaux,PLAT_PRINCIPAL
+9180,Côtes de porc grillées,PLAT_PRINCIPAL
+9181,Côtes de porc marinées,PLAT_PRINCIPAL
+9182,Côtes de porc au barbecue,PLAT_PRINCIPAL
+9183,Côtes de porc au miel,PLAT_PRINCIPAL
+9184,Côtes de porc aux herbes,PLAT_PRINCIPAL
+9185,Côtes de porc au curry doux,PLAT_PRINCIPAL
+9186,Filet mignon grillé,PLAT_PRINCIPAL
+9187,Filet mignon au miel,PLAT_PRINCIPAL
+9188,Filet mignon à la moutarde,PLAT_PRINCIPAL
+9189,Filet mignon au romarin,PLAT_PRINCIPAL
+9191,Sauté de porc au curry doux,PLAT_PRINCIPAL
+9192,Sauté de porc aux champignons,PLAT_PRINCIPAL
+9193,Sauté de porc aux oignons,PLAT_PRINCIPAL
+9194,Sauté de porc aux poivrons,PLAT_PRINCIPAL
+9195,Sauté de porc aux tomates,PLAT_PRINCIPAL
+9196,Sauté de porc aux carottes,PLAT_PRINCIPAL
+9197,Sauté de porc aux courgettes,PLAT_PRINCIPAL
+9198,Sauté de porc aux aubergines,PLAT_PRINCIPAL
+9199,Sauté de porc au miel,PLAT_PRINCIPAL
+9200,Porc aux pruneaux,PLAT_PRINCIPAL
+9201,Porc aux pommes,PLAT_PRINCIPAL
+9202,Porc aux poires,PLAT_PRINCIPAL
+9203,Porc aux figues,PLAT_PRINCIPAL
+9204,Porc aux raisins secs,PLAT_PRINCIPAL
+9205,Porc aux marrons,PLAT_PRINCIPAL
+9206,Porc aux herbes,PLAT_PRINCIPAL
+9207,Porc au gingembre,PLAT_PRINCIPAL
+9208,Porc à la moutarde,PLAT_PRINCIPAL
+9209,Porc au curry doux,PLAT_PRINCIPAL
+9210,Porc sauce tomate,PLAT_PRINCIPAL
+9211,Porc sauce soja,PLAT_PRINCIPAL
+9212,Porc sauce au miel,PLAT_PRINCIPAL
+9213,Porc sauce au roquefort,PLAT_PRINCIPAL
+9214,Porc sauce aux champignons,PLAT_PRINCIPAL
+9215,Porc sauce aux oignons,PLAT_PRINCIPAL
+9216,Porc sauce aux poivrons,PLAT_PRINCIPAL
+9217,Porc sauce au paprika,PLAT_PRINCIPAL
+9218,Porc sauce à la bière,PLAT_PRINCIPAL
+9219,Porc sauce aux herbes,PLAT_PRINCIPAL
+9220,Porc sauce aux tomates séchées,PLAT_PRINCIPAL
+9221,Porc sauce au pesto,PLAT_PRINCIPAL
+9222,Porc sauce au lait de coco,PLAT_PRINCIPAL
+9223,Porc sauce au curry coco,PLAT_PRINCIPAL
+9224,Porc sauce aigre-douce,PLAT_PRINCIPAL
+9225,Chevreuil rôti,PLAT_PRINCIPAL
+9226,Chevreuil aux herbes,PLAT_PRINCIPAL
+9227,Chevreuil au miel,PLAT_PRINCIPAL
+9228,Chevreuil au poivre,PLAT_PRINCIPAL
+9229,Chevreuil au romarin,PLAT_PRINCIPAL
+9230,Sanglier rôti,PLAT_PRINCIPAL
+9231,Sanglier au miel,PLAT_PRINCIPAL
+9232,Sanglier aux pruneaux,PLAT_PRINCIPAL
+9233,Cerf rôti,PLAT_PRINCIPAL
+9234,Cerf au poivre,PLAT_PRINCIPAL
+9235,Cerf aux champignons,PLAT_PRINCIPAL
+9236,Lièvre rôti,PLAT_PRINCIPAL
+9237,Lièvre aux herbes,PLAT_PRINCIPAL
+9238,Lièvre à la moutarde,PLAT_PRINCIPAL
+9239,Faisan rôti,PLAT_PRINCIPAL
+9240,Faisan aux raisins,PLAT_PRINCIPAL
+9241,Civet de sanglier,PLAT_PRINCIPAL
+9242,Civet de chevreuil,PLAT_PRINCIPAL
+9243,Civet de lièvre,PLAT_PRINCIPAL
+9244,Civet de cerf,PLAT_PRINCIPAL
+9245,Sanglier aux carottes,PLAT_PRINCIPAL
+9246,Sanglier aux champignons,PLAT_PRINCIPAL
+9247,Sanglier aux pommes,PLAT_PRINCIPAL
+9248,Chevreuil aux airelles,PLAT_PRINCIPAL
+9249,Chevreuil aux champignons,PLAT_PRINCIPAL
+9250,Chevreuil aux pruneaux,PLAT_PRINCIPAL
+9251,Lièvre aux poires,PLAT_PRINCIPAL
+9252,Lièvre aux figues,PLAT_PRINCIPAL
+9253,Cerf aux marrons,PLAT_PRINCIPAL
+9254,Cerf aux myrtilles,PLAT_PRINCIPAL
+9255,Faisan aux poires,PLAT_PRINCIPAL
+9256,Faisan aux pommes,PLAT_PRINCIPAL
+9257,Faisan aux champignons,PLAT_PRINCIPAL
+9258,Bécasse mijotée,PLAT_PRINCIPAL
+9259,Bécasse aux pruneaux,PLAT_PRINCIPAL
+9260,Burger classique,PLAT_PRINCIPAL
+9261,Burger au fromage,PLAT_PRINCIPAL
+9262,Burger au bacon,PLAT_PRINCIPAL
+9263,Burger au bleu,PLAT_PRINCIPAL
+9264,Burger au roquefort,PLAT_PRINCIPAL
+9265,Burger au chèvre,PLAT_PRINCIPAL
+9266,Burger au gorgonzola,PLAT_PRINCIPAL
+9267,Burger au pesto,PLAT_PRINCIPAL
+9268,Burger au curry doux,PLAT_PRINCIPAL
+9269,Burger au poulet et bœuf,PLAT_PRINCIPAL
+9270,Burger aux champignons,PLAT_PRINCIPAL
+9271,Burger aux oignons,PLAT_PRINCIPAL
+9272,Burger aux tomates,PLAT_PRINCIPAL
+9273,Burger aux poivrons,PLAT_PRINCIPAL
+9274,Burger aux aubergines,PLAT_PRINCIPAL
+9275,Burger aux courgettes,PLAT_PRINCIPAL
+9276,Sandwich au steak,PLAT_PRINCIPAL
+9277,Sandwich au rôti de bœuf,PLAT_PRINCIPAL
+9278,Wrap au bœuf grillé,PLAT_PRINCIPAL
+9279,Wrap au bœuf aux herbes,PLAT_PRINCIPAL
+9280,Boulettes de bœuf,PLAT_PRINCIPAL
+9281,Boulettes de veau,PLAT_PRINCIPAL
+9282,Boulettes d’agneau,PLAT_PRINCIPAL
+9283,Boulettes de porc,PLAT_PRINCIPAL
+9284,Boulettes au curry doux,PLAT_PRINCIPAL
+9285,Boulettes à la tomate,PLAT_PRINCIPAL
+9286,Boulettes au fromage,PLAT_PRINCIPAL
+9287,Boulettes aux herbes,PLAT_PRINCIPAL
+9288,Boulettes aux champignons,PLAT_PRINCIPAL
+9289,Boulettes aux oignons,PLAT_PRINCIPAL
+9290,Steak haché poêlé,PLAT_PRINCIPAL
+9291,Steak haché au barbecue,PLAT_PRINCIPAL
+9292,Steak haché au fromage,PLAT_PRINCIPAL
+9293,Steak haché aux herbes,PLAT_PRINCIPAL
+9294,Steak haché aux oignons,PLAT_PRINCIPAL
+9295,Steak haché au poivre,PLAT_PRINCIPAL
+9296,Polpette italiennes,PLAT_PRINCIPAL
+9297,Keftas d’agneau,PLAT_PRINCIPAL
+9298,Keftas de bœuf,PLAT_PRINCIPAL
+9299,Keftas de veau,PLAT_PRINCIPAL
+9300,Chateaubriand,PLAT_PRINCIPAL
+9301,Tournedos Rossini,PLAT_PRINCIPAL
+9302,Filet de bœuf Wellington,PLAT_PRINCIPAL
+9303,Entrecôte maître d’hôtel,PLAT_PRINCIPAL
+9304,Côte de bœuf XXL,PLAT_PRINCIPAL
+9305,Magret de canard au foie gras,PLAT_PRINCIPAL
+9306,Gigot d’agneau pascal,PLAT_PRINCIPAL
+9307,Épaule d’agneau de fête,PLAT_PRINCIPAL
+9308,Navarin d’agneau royal,PLAT_PRINCIPAL
+9309,Cerf aux truffes,PLAT_PRINCIPAL
+9310,Chevreuil au foie gras,PLAT_PRINCIPAL
+9311,Sanglier de fête,PLAT_PRINCIPAL
+9312,Lièvre à la royale,PLAT_PRINCIPAL
+9313,Bécasse truffée,PLAT_PRINCIPAL
+9314,Terrine de gibier royale,PLAT_PRINCIPAL
+9315,Filet de bœuf aux morilles,PLAT_PRINCIPAL
+9316,Rôti de veau aux morilles,PLAT_PRINCIPAL
+9317,Bœuf teriyaki,PLAT_PRINCIPAL
+9318,Bœuf sauté thaï,PLAT_PRINCIPAL
+9319,Bœuf curry coco,PLAT_PRINCIPAL
+9320,Bœuf au satay,PLAT_PRINCIPAL
+9321,Bœuf bulgogi,PLAT_PRINCIPAL
+9322,Bœuf au soja,PLAT_PRINCIPAL
+9323,Agneau tikka masala,PLAT_PRINCIPAL
+9324,Agneau curry thaï,PLAT_PRINCIPAL
+9325,Porc au caramel,PLAT_PRINCIPAL
+9326,Porc au soja,PLAT_PRINCIPAL
+9327,Porc à l’aigre-douce,PLAT_PRINCIPAL
+9328,Porc au satay,PLAT_PRINCIPAL
+9329,Porc au curry japonais,PLAT_PRINCIPAL
+9330,Porc teriyaki,PLAT_PRINCIPAL
+9331,Veau au gingembre,PLAT_PRINCIPAL
+9332,Veau à la citronnelle,PLAT_PRINCIPAL
+9333,Veau à la thaï,PLAT_PRINCIPAL
+9334,Rosbif froid,PLAT_PRINCIPAL
+9335,Rôti de veau froid,PLAT_PRINCIPAL
+9336,Rôti de porc froid,PLAT_PRINCIPAL
+9337,Salade de bœuf froid,PLAT_PRINCIPAL
+9338,Salade de veau froid,PLAT_PRINCIPAL
+9339,Salade de porc froid,PLAT_PRINCIPAL
+9340,Carpaccio de bœuf,PLAT_PRINCIPAL
+9341,Carpaccio de veau,PLAT_PRINCIPAL
+9342,Carpaccio d’agneau,PLAT_PRINCIPAL
+9343,Carpaccio de gibier,PLAT_PRINCIPAL
+9344,Tartare de bœuf,PLAT_PRINCIPAL
+9345,Tartare de veau,PLAT_PRINCIPAL
+9346,Tartare d’agneau,PLAT_PRINCIPAL
+9347,Tartare de gibier,PLAT_PRINCIPAL
+9348,Rillettes de bœuf,PLAT_PRINCIPAL
+9349,Rillettes de porc,PLAT_PRINCIPAL
+9350,Terrine de gibier,PLAT_PRINCIPAL
+9351,Terrine de bœuf,PLAT_PRINCIPAL
+9352,Terrine de veau,PLAT_PRINCIPAL
+9353,Terrine de sanglier,PLAT_PRINCIPAL
+9354,Tourte au bœuf,PLAT_PRINCIPAL
+9355,Tourte au bœuf et champignons,PLAT_PRINCIPAL
+9356,Tourte au bœuf et légumes,PLAT_PRINCIPAL
+9357,Tourte au veau,PLAT_PRINCIPAL
+9358,Tourte au veau et champignons,PLAT_PRINCIPAL
+9359,Tourte au veau et légumes,PLAT_PRINCIPAL
+9360,Tourte à l’agneau,PLAT_PRINCIPAL
+9361,Tourte à l’agneau et légumes,PLAT_PRINCIPAL
+9362,Tourte au porc,PLAT_PRINCIPAL
+9363,Tourte au porc et légumes,PLAT_PRINCIPAL
+9364,Tourte au gibier,PLAT_PRINCIPAL
+9365,Tourte au gibier et champignons,PLAT_PRINCIPAL
+9366,Feuilleté au bœuf,PLAT_PRINCIPAL
+9367,Feuilleté au veau,PLAT_PRINCIPAL
+9368,Feuilleté à l’agneau,PLAT_PRINCIPAL
+9369,Feuilleté au porc,PLAT_PRINCIPAL
+9370,Feuilleté au gibier,PLAT_PRINCIPAL
+9371,Feuilleté au sanglier,PLAT_PRINCIPAL
+9372,Feuilleté au chevreuil,PLAT_PRINCIPAL
+9373,Feuilleté au cerf,PLAT_PRINCIPAL
+9374,Bœuf au miso,PLAT_PRINCIPAL
+9375,Bœuf au sésame noir,PLAT_PRINCIPAL
+9376,Bœuf au curry cacao,PLAT_PRINCIPAL
+9377,Sauce béchamel,SAUCE
+9378,Sauce hollandaise,SAUCE
+9379,Sauce béarnaise,SAUCE
+9380,Sauce au poivre,SAUCE
+9381,Sauce moutarde,SAUCE
+9382,Sauce au beurre blanc,SAUCE
+9383,Sauce tomate nature,SAUCE
+9384,Sauce tomate au basilic,SAUCE
+9385,Sauce bolognaise,SAUCE
+9386,Mayonnaise,SAUCE
+9387,Aïoli,SAUCE
+9388,Pesto,SAUCE
+9389,Tapenade,SAUCE
+9390,Guacamole,SAUCE
+9391,Tzatziki,SAUCE
+9392,Salsa,SAUCE
+9393,Vinaigrette classique,SAUCE
+9394,Sauce soja sucrée,SAUCE
+9395,Sauce curry,SAUCE
+9396,Sauce barbecue,SAUCE
+9397,Bouillon de légumes,SAUCE
+9398,Bouillon de volaille,SAUCE
+9399,Fond de veau,SAUCE
+9400,Fumet de poisson,SAUCE

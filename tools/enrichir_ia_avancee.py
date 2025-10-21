@@ -1549,6 +1549,481 @@ def analyze_recipe_individually(recipe_id, name, role):
         return 10, 8, 4, 'Poêle', False, None, "Bananes flambées : caramélisées rhum flambé"
     
     # --------------------------------------------------
+    # PIÈCES DE BŒUF GRILLÉES/POÊLÉES
+    # --------------------------------------------------
+    
+    if 'faux-filet' in name_lower or 'faux filet' in name_lower:
+        return 5, 8, 2, 'Grillade', False, True, "Faux-filet : pièce noble grillée rapide"
+    
+    if 'rumsteck' in name_lower or 'rumsteack' in name_lower:
+        return 5, 10, 2, 'Grillade', False, True, "Rumsteck : viande grillée tendre"
+    
+    if 'bavette' in name_lower and ('bœuf' in name_lower or 'grillée' in name_lower or 'poêlée' in name_lower or 'oignons' in name_lower):
+        return 5, 8, 2, 'Poêle', False, True, "Bavette : pièce grillée/poêlée savoureuse"
+    
+    if 'aloyau' in name_lower:
+        return 5, 12, 4, 'Grillade', False, True, "Aloyau : pièce noble dos bœuf"
+    
+    if 'onglet' in name_lower:
+        return 5, 8, 2, 'Grillade', False, True, "Onglet : bavette grillée rapide"
+    
+    if 'hampe' in name_lower:
+        return 5, 8, 2, 'Grillade', False, True, "Hampe : pièce grillée persillée"
+    
+    if 'tournedos' in name_lower:
+        return 5, 10, 2, 'Poêle', False, True, "Tournedos : médaillon filet poêlé"
+    
+    if 'chateaubriand' in name_lower or 'châteaubriand' in name_lower:
+        return 10, 15, 2, 'Grillade', False, True, "Chateaubriand : cœur filet bœuf noble"
+    
+    if 'filet de bœuf' in name_lower or 'filet de boeuf' in name_lower:
+        if 'wellington' in name_lower:
+            return 60, 40, 6, 'Cuisson au four', True, False, "Bœuf Wellington : filet pâte feuilletée luxe"
+        elif 'morilles' in name_lower:
+            return 15, 20, 4, 'Poêle', False, True, "Filet bœuf morilles : poêlé sauce champignons luxe"
+        elif 'poêlé' in name_lower:
+            return 5, 12, 2, 'Poêle', False, True, "Filet bœuf poêlé : pièce noble tendre"
+        elif 'grillé' in name_lower:
+            return 5, 12, 2, 'Grillade', False, True, "Filet bœuf grillé : pièce noble tendre"
+        else:
+            return 5, 12, 2, 'Poêle', False, True, "Filet bœuf : pièce la plus noble"
+    
+    if 'rosbif' in name_lower:
+        if 'froid' in name_lower:
+            return 15, 30, 6, 'Cuisson au four', False, False, "Rosbif froid : rôti refroidi tranché"
+        else:
+            return 15, 30, 6, 'Cuisson au four', True, False, "Rosbif : bœuf rôti saignant rosé"
+    
+    if 'araignée' in name_lower and 'bœuf' in name_lower:
+        return 5, 8, 2, 'Grillade', False, True, "Araignée bœuf : pièce grillée rare"
+    
+    if 'poire' in name_lower and 'bœuf' in name_lower:
+        return 5, 8, 2, 'Grillade', False, True, "Poire bœuf : muscle grillé tendre"
+    
+    if 'merlan' in name_lower and 'bœuf' in name_lower:
+        return 5, 8, 2, 'Grillade', False, True, "Merlan bœuf : muscle grillé savoureux"
+    
+    if 'pavé de bœuf' in name_lower or 'pavé de boeuf' in name_lower:
+        return 5, 12, 2, 'Grillade', False, True, "Pavé bœuf : grosse pièce grillée"
+    
+    if 'côte de bœuf' in name_lower or 'côte de boeuf' in name_lower:
+        return 10, 20, 4, 'Grillade', True, False, "Côte bœuf : pièce XXL grillée partagée"
+    
+    if 'steak minute' in name_lower:
+        return 2, 4, 2, 'Poêle', False, True, "Steak minute : ultra rapide poêlé"
+    
+    if 'steak haché' in name_lower:
+        return 5, 10, 2, 'Poêle', False, True, "Steak haché : rapide polyvalent"
+    
+    if 'filet' in name_lower and ('grillé' in name_lower or 'herbes' in name_lower) and role == 'PLAT_PRINCIPAL':
+        return 5, 12, 2, 'Grillade', False, True, "Filet grillé : pièce noble tendre"
+    
+    if 'sandwich' in name_lower and 'steak' in name_lower:
+        return 15, 10, 2, 'Cuisson mixte', True, False, "Sandwich steak : pain garni steak poêlé"
+    
+    # --------------------------------------------------
+    # BŒUF MIJOTÉ ET SAUCES
+    # --------------------------------------------------
+    
+    if 'pot-au-feu' in name_lower:
+        return 30, 180, 8, 'Mijotage', True, False, "Pot-au-feu : bœuf légumes bouillon long"
+    
+    if 'bœuf carottes' in name_lower or 'boeuf carottes' in name_lower:
+        return 25, 120, 6, 'Mijotage', True, False, "Bœuf carottes : mijoté classique familial"
+    
+    if ('bœuf' in name_lower or 'boeuf' in name_lower) and 'sauce' in name_lower:
+        if 'poivre' in name_lower:
+            return 15, 15, 4, 'Poêle', False, True, "Bœuf sauce poivre : poêlé crème poivre"
+        elif 'roquefort' in name_lower or 'gorgonzola' in name_lower or 'chèvre' in name_lower:
+            return 15, 15, 4, 'Poêle', False, True, "Bœuf sauce fromage : poêlé crème fromagée"
+        elif 'champignons' in name_lower:
+            return 20, 20, 4, 'Mijotage', False, True, "Bœuf sauce champignons : poêlé crème champignons"
+        elif 'tomate' in name_lower:
+            return 20, 30, 4, 'Mijotage', False, True, "Bœuf sauce tomate : mijoté tomates"
+        else:
+            return 15, 20, 4, 'Cuisson mixte', False, True, "Bœuf sauce : viande sauce variée"
+    
+    if ('bœuf' in name_lower or 'boeuf' in name_lower) and role == 'PLAT_PRINCIPAL':
+        if 'carpaccio' in name_lower or 'tartare' in name_lower:
+            return 20, 0, 4, 'Sans cuisson', False, False, "Bœuf cru : tranché fin ou haché assaisonné"
+        elif 'salade' in name_lower and 'froid' in name_lower:
+            return 20, 0, 4, 'Sans cuisson', False, False, "Salade bœuf froid : bœuf cuit refroidi salade"
+        elif 'terrine' in name_lower:
+            return 40, 90, 8, 'Cuisson au four', False, False, "Terrine bœuf : farce four pâté"
+        elif 'feuilleté' in name_lower:
+            return 30, 35, 4, 'Cuisson au four', True, False, "Feuilleté bœuf : pâte feuilletée garnie"
+        elif 'sandwich' in name_lower:
+            if 'steak' in name_lower:
+                return 15, 10, 2, 'Cuisson mixte', True, False, "Sandwich steak : pain garni steak"
+            else:
+                return 10, 0, 2, 'Sans cuisson', True, False, "Sandwich bœuf : pain garni viande froide"
+        elif 'sauté' in name_lower and 'thaï' in name_lower:
+            return 20, 12, 4, 'Sauté au wok', True, False, "Bœuf sauté thaï : wok épices asiatiques"
+        elif 'satay' in name_lower:
+            return 25, 15, 4, 'Grillade', False, True, "Bœuf satay : brochettes sauce cacahuète"
+        elif 'soja' in name_lower:
+            return 20, 15, 4, 'Sauté au wok', True, False, "Bœuf soja : sauté sauce soja"
+        elif 'miso' in name_lower:
+            return 25, 15, 4, 'Sauté au wok', True, False, "Bœuf miso : sauté pâte miso japonais"
+        elif 'sésame' in name_lower:
+            return 20, 15, 4, 'Sauté au wok', True, False, "Bœuf sésame : sauté graines sésame"
+        elif 'curry' in name_lower:
+            return 20, 40, 4, 'Mijotage', True, False, "Bœuf curry : mijoté épices asiatique"
+        elif 'crème' in name_lower:
+            return 20, 30, 4, 'Mijotage', False, True, "Bœuf crème : mijoté sauce crémeuse"
+        elif 'moutarde' in name_lower:
+            return 20, 30, 4, 'Mijotage', False, True, "Bœuf moutarde : viande crème moutarde"
+        elif 'tomates' in name_lower or 'tomate' in name_lower:
+            return 20, 45, 4, 'Mijotage', True, False, "Bœuf tomates : mijoté sauce tomate"
+        elif 'épices' in name_lower:
+            return 25, 40, 4, 'Mijotage', True, False, "Bœuf épices : mijoté parfumé"
+        elif 'paprika' in name_lower:
+            return 20, 35, 4, 'Mijotage', False, True, "Bœuf paprika : mijoté hongrois"
+        elif any(word in name_lower for word in ['oignons', 'poivrons', 'courgettes', 'aubergines', 'champignons', 'navets', 'céleri', 'chou']):
+            return 20, 45, 4, 'Mijotage', True, False, "Bœuf légumes : mijoté familial complet"
+        elif any(word in name_lower for word in ['haricots', 'lentilles', 'pois chiches']):
+            return 20, 60, 6, 'Mijotage', True, False, "Bœuf légumineuses : mijoté nourrissant complet"
+    
+    if 'boulettes de bœuf' in name_lower or 'boulettes de boeuf' in name_lower:
+        return 20, 25, 4, 'Cuisson mixte', False, True, "Boulettes bœuf : façonnées poêlées sauce"
+    
+    if 'polpette' in name_lower:
+        return 20, 25, 4, 'Cuisson mixte', False, True, "Polpette : boulettes italiennes sauce tomate"
+    
+    # --------------------------------------------------
+    # VEAU - PIÈCES ET ESCALOPES
+    # --------------------------------------------------
+    
+    if 'escalope' in name_lower and 'veau' in name_lower:
+        if 'milanaise' in name_lower:
+            return 15, 12, 4, 'Poêle', False, True, "Escalope milanaise : panée italienne citron"
+        elif 'cordon bleu' in name_lower:
+            return 20, 15, 4, 'Poêle', True, False, "Cordon bleu : escalope farcie jambon fromage"
+        elif 'panée' in name_lower:
+            return 15, 12, 4, 'Poêle', False, True, "Escalope panée : classique croustillant"
+        elif 'crème' in name_lower:
+            return 10, 15, 4, 'Poêle', False, True, "Escalope crème : poêlée sauce crémeuse"
+        elif 'moutarde' in name_lower:
+            return 10, 12, 4, 'Poêle', False, True, "Escalope moutarde : poêlée sauce piquante"
+        elif 'champignons' in name_lower:
+            return 15, 18, 4, 'Poêle', False, True, "Escalope champignons : poêlée crème champignons"
+        elif 'curry' in name_lower:
+            return 15, 18, 4, 'Poêle', False, True, "Escalope curry : poêlée épices douces"
+        else:
+            return 10, 12, 4, 'Poêle', False, True, "Escalope veau : poêlée tendre rapide"
+    
+    if 'côte de veau' in name_lower:
+        if 'grillée' in name_lower:
+            return 5, 12, 2, 'Grillade', False, True, "Côte veau grillée : pièce noble grillée"
+        elif 'champignons' in name_lower:
+            return 15, 18, 2, 'Poêle', False, True, "Côte veau champignons : poêlée crème champignons"
+        elif 'moutarde' in name_lower:
+            return 10, 15, 2, 'Poêle', False, True, "Côte veau moutarde : poêlée sauce piquante"
+        else:
+            return 5, 15, 2, 'Poêle', False, True, "Côte veau : pièce noble poêlée"
+    
+    if 'filet de veau' in name_lower:
+        if 'grillé' in name_lower:
+            return 5, 12, 2, 'Grillade', False, True, "Filet veau grillé : pièce tendre grillée"
+        elif 'crème' in name_lower:
+            return 10, 15, 2, 'Poêle', False, True, "Filet veau crème : poêlé sauce crémeuse"
+        else:
+            return 5, 15, 2, 'Poêle', False, True, "Filet veau : pièce noble poêlée"
+    
+    if 'grenadin' in name_lower:
+        if 'champignons' in name_lower:
+            return 10, 15, 2, 'Poêle', False, True, "Grenadin champignons : médaillon crème champignons"
+        else:
+            return 5, 12, 2, 'Poêle', False, True, "Grenadin veau : médaillon épais poêlé"
+    
+    # --------------------------------------------------
+    # VEAU MIJOTÉ
+    # --------------------------------------------------
+    
+    if 'veau' in name_lower and role == 'PLAT_PRINCIPAL':
+        if 'rôti' in name_lower:
+            if 'morilles' in name_lower:
+                return 20, 90, 6, 'Cuisson au four', True, False, "Rôti veau morilles : four sauce luxueuse"
+            elif 'froid' in name_lower:
+                return 25, 90, 8, 'Cuisson au four', False, False, "Rôti veau froid : four refroidi tranché"
+            else:
+                return 20, 80, 6, 'Cuisson au four', True, False, "Rôti veau : four tendre familial"
+        elif 'tartare' in name_lower or 'carpaccio' in name_lower:
+            return 20, 0, 4, 'Sans cuisson', False, False, "Veau cru : préparation raffinée froide"
+        elif 'salade' in name_lower and 'froid' in name_lower:
+            return 20, 0, 4, 'Sans cuisson', False, False, "Salade veau froid : veau cuit refroidi salade"
+        elif 'terrine' in name_lower:
+            return 40, 90, 8, 'Cuisson au four', False, False, "Terrine veau : farce four entrée"
+        elif 'feuilleté' in name_lower:
+            return 30, 35, 4, 'Cuisson au four', True, False, "Feuilleté veau : pâte feuilletée garnie"
+        elif 'tourte' in name_lower:
+            return 35, 45, 6, 'Cuisson au four', True, False, "Tourte veau : pâte brisée garnie four"
+        elif 'boulettes' in name_lower:
+            return 20, 25, 4, 'Cuisson mixte', False, True, "Boulettes veau : façonnées sauce tomate"
+        elif 'gingembre' in name_lower or 'citronnelle' in name_lower or 'thaï' in name_lower:
+            return 20, 20, 4, 'Sauté au wok', True, False, "Veau asiatique : wok épices"
+        elif any(word in name_lower for word in ['navets', 'épinards', 'herbes', 'champignons', 'carottes', 'courgettes', 'tomates', 'poivrons', 'aubergines', 'oignons']):
+            return 20, 40, 4, 'Mijotage', True, False, "Veau légumes : mijoté tendre familial"
+        elif any(word in name_lower for word in ['haricots', 'lentilles', 'pois chiches']):
+            return 20, 50, 6, 'Mijotage', True, False, "Veau légumineuses : mijoté complet nourrissant"
+        elif 'olives' in name_lower:
+            return 20, 45, 4, 'Mijotage', True, False, "Veau olives : mijoté méditerranéen"
+        elif 'curry' in name_lower:
+            return 20, 40, 4, 'Mijotage', True, False, "Veau curry : mijoté épices douces"
+    
+    # --------------------------------------------------
+    # AGNEAU - PIÈCES
+    # --------------------------------------------------
+    
+    if 'carré' in name_lower and 'agneau' in name_lower:
+        if 'rôti' in name_lower or 'grillé' in name_lower:
+            return 15, 25, 4, 'Cuisson au four', False, True, "Carré agneau : côtes rôties four noble"
+        elif 'miel' in name_lower:
+            return 20, 30, 4, 'Cuisson au four', False, True, "Carré agneau miel : rôti glaçage sucré"
+        else:
+            return 15, 25, 4, 'Cuisson au four', False, True, "Carré agneau : pièce noble rôtie"
+    
+    if 'épaule' in name_lower and 'agneau' in name_lower:
+        if 'rôtie' in name_lower or 'grillée' in name_lower:
+            return 20, 120, 6, 'Cuisson au four', True, False, "Épaule agneau : rôtie four longue familial"
+        elif 'miel' in name_lower:
+            return 25, 130, 6, 'Cuisson au four', True, False, "Épaule agneau miel : rôtie glaçage sucré"
+        elif 'fête' in name_lower:
+            return 30, 150, 8, 'Cuisson au four', True, False, "Épaule agneau fête : rôtie farcie festive"
+        else:
+            return 20, 120, 6, 'Cuisson au four', True, False, "Épaule agneau : rôtie four familial"
+    
+    # --------------------------------------------------
+    # AGNEAU MIJOTÉ
+    # --------------------------------------------------
+    
+    if 'agneau' in name_lower and role == 'PLAT_PRINCIPAL':
+        if 'carpaccio' in name_lower or 'tartare' in name_lower:
+            return 20, 0, 4, 'Sans cuisson', False, False, "Agneau cru : tranché fin ou haché raffiné"
+        elif 'feuilleté' in name_lower:
+            return 30, 35, 4, 'Cuisson au four', True, False, "Feuilleté agneau : pâte feuilletée garnie"
+        elif 'tourte' in name_lower:
+            return 35, 45, 6, 'Cuisson au four', True, False, "Tourte agneau : pâte brisée garnie four"
+        elif 'korma' in name_lower:
+            return 30, 50, 6, 'Mijotage', True, False, "Agneau korma : curry doux crémeux amandes"
+        elif 'massala' in name_lower or 'masala' in name_lower:
+            if 'tikka' in name_lower:
+                return 30, 40, 6, 'Cuisson au four', True, False, "Agneau tikka masala : tandoori sauce épicée"
+            else:
+                return 25, 50, 6, 'Mijotage', True, False, "Agneau massala : curry épices complexes"
+        elif any(word in name_lower for word in ['moutarde', 'crème', 'gingembre']):
+            return 20, 45, 6, 'Mijotage', True, False, "Agneau sauce : mijoté sauce savoureuse"
+        elif any(word in name_lower for word in ['tomate', 'champignons', 'poivrons', 'navets', 'épinards', 'herbes', 'carottes', 'poireaux', 'oignons', 'tomates', 'courgettes', 'aubergines', 'céleri']):
+            return 25, 90, 6, 'Mijotage', True, False, "Agneau légumes : mijoté savoureux complet"
+        elif any(word in name_lower for word in ['olives', 'pommes']):
+            return 25, 80, 6, 'Mijotage', True, False, "Agneau accompagnement : mijoté savoureux"
+        elif any(word in name_lower for word in ['pois chiches', 'lentilles', 'haricots']):
+            return 25, 100, 6, 'Mijotage', True, False, "Agneau légumineuses : mijoté complet méditerranéen"
+        elif any(word in name_lower for word in ['abricots', 'pruneaux', 'dattes', 'raisins', 'figues', 'poires']):
+            return 25, 90, 6, 'Mijotage', True, False, "Agneau fruits : mijoté sucré-salé oriental"
+        elif any(word in name_lower for word in ['miel', 'citron', 'romarin', 'thym', 'menthe']):
+            return 20, 80, 6, 'Mijotage', True, False, "Agneau aromatisé : mijoté parfumé"
+        elif any(word in name_lower for word in ['épices', 'curry', 'paprika', 'cumin', 'coriandre', 'ras el hanout']):
+            return 25, 90, 6, 'Mijotage', True, False, "Agneau épices : mijoté oriental épicé"
+    
+    # --------------------------------------------------
+    # PORC - PIÈCES
+    # --------------------------------------------------
+    
+    if 'côtes de porc' in name_lower or 'côte de porc' in name_lower:
+        if 'grillées' in name_lower or 'grillée' in name_lower:
+            return 5, 15, 4, 'Grillade', False, True, "Côtes porc grillées : rapide savoureux"
+        elif 'barbecue' in name_lower:
+            return 10, 20, 4, 'Grillade', False, True, "Côtes porc BBQ : marinées grillées sauce"
+        elif 'miel' in name_lower:
+            return 10, 18, 4, 'Cuisson au four', False, True, "Côtes porc miel : glacées four sucrées"
+        else:
+            return 5, 15, 4, 'Poêle', False, True, "Côtes porc : poêlées rapide économique"
+    
+    # --------------------------------------------------
+    # PORC MIJOTÉ
+    # --------------------------------------------------
+    
+    if 'filet mignon' in name_lower and 'porc' not in name_lower:
+        if 'grillé' in name_lower:
+            return 5, 15, 4, 'Grillade', False, True, "Filet mignon grillé : pièce noble tendre"
+        elif 'miel' in name_lower:
+            return 15, 20, 4, 'Cuisson au four', False, True, "Filet mignon miel : rôti glaçage sucré"
+        elif 'moutarde' in name_lower:
+            return 15, 20, 4, 'Cuisson au four', False, True, "Filet mignon moutarde : rôti croûte"
+        elif 'romarin' in name_lower or 'herbes' in name_lower:
+            return 10, 18, 4, 'Cuisson au four', False, True, "Filet mignon herbes : rôti aromatisé"
+        else:
+            return 10, 18, 4, 'Cuisson au four', False, True, "Filet mignon : pièce noble porc rôtie"
+    
+    if 'porc' in name_lower and role == 'PLAT_PRINCIPAL':
+        if 'salade' in name_lower and 'froid' in name_lower:
+            return 20, 0, 4, 'Sans cuisson', False, False, "Salade porc froid : porc cuit refroidi salade"
+        elif 'tourte' in name_lower:
+            return 35, 45, 6, 'Cuisson au four', True, False, "Tourte porc : pâte brisée garnie four"
+        elif 'feuilleté' in name_lower:
+            return 30, 35, 4, 'Cuisson au four', True, False, "Feuilleté porc : pâte feuilletée garnie"
+        elif 'boulettes' in name_lower:
+            return 20, 25, 4, 'Cuisson mixte', False, True, "Boulettes porc : façonnées sauce tomate"
+        elif 'sauté' in name_lower:
+            if 'carottes' in name_lower or 'aubergines' in name_lower:
+                return 20, 20, 4, 'Sauté au wok', True, False, "Sauté porc légumes : wok rapide"
+            elif 'miel' in name_lower:
+                return 20, 18, 4, 'Sauté au wok', False, True, "Sauté porc miel : wok sucré-salé"
+            else:
+                return 20, 15, 4, 'Sauté au wok', True, False, "Sauté porc : wok rapide asiatique"
+        elif 'sauce' in name_lower:
+            if 'tomate' in name_lower:
+                return 20, 35, 4, 'Mijotage', False, True, "Porc sauce tomate : mijoté italien"
+            elif 'miel' in name_lower:
+                return 15, 25, 4, 'Cuisson mixte', False, True, "Porc sauce miel : glacé sucré-salé"
+            elif 'roquefort' in name_lower or 'fromage' in name_lower:
+                return 15, 20, 4, 'Poêle', False, True, "Porc sauce fromage : poêlé crème fromagée"
+            elif 'paprika' in name_lower:
+                return 20, 30, 4, 'Mijotage', False, True, "Porc sauce paprika : mijoté épicé"
+            elif 'bière' in name_lower:
+                return 25, 60, 6, 'Mijotage', True, False, "Porc sauce bière : mijoté flamand"
+            elif 'herbes' in name_lower or 'pesto' in name_lower or 'lait de coco' in name_lower:
+                return 20, 30, 4, 'Mijotage', False, True, "Porc sauce : mijoté sauce variée"
+            else:
+                return 20, 30, 4, 'Cuisson mixte', False, True, "Porc sauce : viande sauce"
+        elif 'moutarde' in name_lower or 'herbes' in name_lower:
+            return 20, 35, 4, 'Mijotage', False, True, "Porc aromatisé : mijoté savoureux"
+        elif 'curry' in name_lower:
+            return 20, 40, 4, 'Mijotage', True, False, "Porc curry : mijoté épices asiatique"
+        elif any(word in name_lower for word in ['gingembre', 'soja', 'satay', 'miso', 'thaï', 'citronnelle']):
+            return 20, 35, 4, 'Cuisson mixte', True, False, "Porc asiatique : wok ou mijoté épices"
+        elif any(word in name_lower for word in ['figues', 'pruneaux', 'pommes', 'poires', 'marrons', 'raisins']):
+            return 25, 60, 6, 'Mijotage', True, False, "Porc fruits : mijoté sucré-salé automnal"
+        elif any(word in name_lower for word in ['champignons', 'oignons', 'tomates', 'poivrons', 'courgettes']):
+            return 20, 45, 4, 'Mijotage', True, False, "Porc légumes : mijoté familial complet"
+    
+    # --------------------------------------------------
+    # GIBIER (CERF, CHEVREUIL, SANGLIER, FAISAN, BÉCASSE...)
+    # --------------------------------------------------
+    
+    if 'gibier' in name_lower:
+        if 'carpaccio' in name_lower or 'tartare' in name_lower:
+            return 20, 0, 4, 'Sans cuisson', False, False, "Carpaccio/tartare gibier : cru tranché raffiné"
+        elif 'terrine' in name_lower:
+            return 45, 90, 10, 'Cuisson au four', False, False, "Terrine gibier : farce four pâté"
+        elif 'feuilleté' in name_lower:
+            return 30, 35, 4, 'Cuisson au four', True, False, "Feuilleté gibier : pâte feuilletée garnie"
+        else:
+            return 30, 100, 6, 'Mijotage', True, False, "Gibier : mijoté mariné sauce puissante"
+    
+    if any(word in name_lower for word in ['cerf', 'chevreuil', 'sanglier', 'biche']):
+        if 'carpaccio' in name_lower:
+            return 20, 0, 4, 'Sans cuisson', False, False, "Carpaccio gibier : cru tranché fin raffiné"
+        elif 'sauce' in name_lower and ('grand veneur' in name_lower or 'poivrade' in name_lower):
+            return 30, 120, 6, 'Mijotage', True, False, "Gibier sauce grand veneur : mijoté sauce classique"
+        elif 'rôti' in name_lower:
+            return 25, 90, 6, 'Cuisson au four', True, False, "Gibier rôti : four mariné sauce fruits"
+        elif any(word in name_lower for word in ['champignons', 'châtaignes', 'marrons', 'airelles', 'myrtilles']):
+            return 30, 100, 6, 'Mijotage', True, False, "Gibier accompagnement : mijoté sauce forestière"
+        else:
+            return 25, 90, 6, 'Mijotage', True, False, "Gibier : mijoté mariné sauce puissante"
+    
+    if any(word in name_lower for word in ['faisan', 'bécasse', 'perdrix', 'caille']):
+        if 'rôti' in name_lower or 'rôtie' in name_lower:
+            return 20, 40, 4, 'Cuisson au four', True, False, "Volaille gibier rôtie : four noble festive"
+        elif any(word in name_lower for word in ['pruneaux', 'raisins', 'figues', 'poires']):
+            return 25, 50, 4, 'Cuisson au four', True, False, "Volaille gibier fruits : rôtie four sucré-salé"
+        elif 'truffée' in name_lower or 'truffé' in name_lower:
+            return 30, 50, 4, 'Cuisson au four', True, False, "Volaille gibier truffée : rôtie luxueuse"
+        else:
+            return 20, 45, 4, 'Cuisson au four', True, False, "Volaille gibier : rôtie four savoureuse"
+    
+    if 'lièvre' in name_lower or 'lievre' in name_lower:
+        if 'civet' in name_lower:
+            return 40, 150, 6, 'Mijotage', True, False, "Civet lièvre : mariné sang vin rouge long"
+        elif 'royale' in name_lower or 'à la royale' in name_lower:
+            return 60, 180, 8, 'Mijotage', True, False, "Lièvre à la royale : farci mijoté luxe"
+        elif 'rôti' in name_lower:
+            return 25, 60, 6, 'Cuisson au four', True, False, "Lièvre rôti : four mariné"
+        elif any(word in name_lower for word in ['herbes', 'moutarde']):
+            return 30, 90, 6, 'Mijotage', True, False, "Lièvre aromatisé : mijoté sauce"
+        elif any(word in name_lower for word in ['poires', 'figues', 'pruneaux']):
+            return 30, 100, 6, 'Mijotage', True, False, "Lièvre fruits : mijoté sucré-salé"
+        else:
+            return 30, 90, 6, 'Mijotage', True, False, "Lièvre : gibier mijoté fort"
+    
+    if 'terrine' in name_lower and 'gibier' in name_lower:
+        if 'royale' in name_lower:
+            return 60, 120, 12, 'Cuisson au four', False, False, "Terrine gibier royale : farce luxe complexe"
+        else:
+            return 45, 90, 10, 'Cuisson au four', False, False, "Terrine gibier : farce four pâté"
+    
+    # --------------------------------------------------
+    # SAUCES, VINAIGRETTES, BOUILLONS
+    # --------------------------------------------------
+    
+    if role == 'SAUCE':
+        if 'vinaigrette' in name_lower:
+            if 'classique' in name_lower:
+                return 5, 0, 6, 'Sans cuisson', None, None, "Vinaigrette classique : huile vinaigre moutarde"
+            else:
+                return 5, 0, 6, 'Sans cuisson', None, None, "Vinaigrette : émulsion huile vinaigre"
+        elif 'aïoli' in name_lower:
+            return 15, 0, 6, 'Sans cuisson', None, None, "Aïoli : mayonnaise ail provençale"
+        elif 'béchamel' in name_lower:
+            return 5, 10, 6, 'Cuisson douce', None, None, "Béchamel : sauce blanche roux lait"
+        elif 'hollandaise' in name_lower:
+            return 10, 8, 4, 'Cuisson douce', None, None, "Hollandaise : sauce beurre jaunes œufs"
+        elif 'béarnaise' in name_lower:
+            return 15, 8, 4, 'Cuisson douce', None, None, "Béarnaise : sauce estragon échalotes"
+        elif 'beurre blanc' in name_lower:
+            return 10, 10, 4, 'Cuisson douce', None, None, "Beurre blanc : réduction vin blanc beurre"
+        elif 'poivre' in name_lower:
+            return 5, 10, 4, 'Cuisson douce', None, None, "Sauce poivre : crème poivre concassé"
+        elif 'moutarde' in name_lower:
+            return 5, 8, 4, 'Cuisson douce', None, None, "Sauce moutarde : crème moutarde"
+        elif 'curry' in name_lower:
+            return 5, 10, 4, 'Cuisson douce', None, None, "Sauce curry : épices crème"
+        elif 'bolognaise' in name_lower:
+            return 20, 90, 8, 'Mijotage', None, None, "Sauce bolognaise : viande tomate longue"
+        elif 'tomate' in name_lower:
+            return 10, 30, 6, 'Mijotage', None, None, "Sauce tomate : tomates mijotées herbes"
+        elif 'barbecue' in name_lower:
+            return 10, 20, 6, 'Cuisson douce', None, None, "Sauce BBQ : tomate fumée sucrée"
+        elif 'soja' in name_lower:
+            return 5, 5, 4, 'Cuisson douce', None, None, "Sauce soja : soja sucré réduit"
+        elif 'bouillon' in name_lower:
+            if 'légumes' in name_lower:
+                return 15, 60, 10, 'Mijotage', None, None, "Bouillon légumes : mijotéclarifier base"
+            elif 'volaille' in name_lower or 'poulet' in name_lower:
+                return 15, 120, 10, 'Mijotage', None, None, "Bouillon volaille : carcasse mijoté fond"
+        elif 'fond' in name_lower:
+            if 'veau' in name_lower:
+                return 20, 240, 10, 'Mijotage', None, None, "Fond veau : os mijotés long réduit"
+        elif 'fumet' in name_lower:
+            if 'poisson' in name_lower:
+                return 15, 30, 8, 'Mijotage', None, None, "Fumet poisson : arêtes têtes court"
+        else:
+            return 10, 15, 6, 'Cuisson douce', None, None, "Sauce : préparation liquide accompagnement"
+    
+    # --------------------------------------------------
+    # TOURTES (si pas attrapées avant)
+    # --------------------------------------------------
+    
+    if 'tourte' in name_lower:
+        return 35, 45, 6, 'Cuisson au four', True, False, "Tourte : pâte brisée garnie four"
+    
+    # --------------------------------------------------
+    # BOULETTES GÉNÉRIQUES
+    # --------------------------------------------------
+    
+    if 'boulettes' in name_lower:
+        return 20, 25, 4, 'Cuisson mixte', False, True, "Boulettes : façonnées poêlées sauce"
+    
+    # --------------------------------------------------
+    # POTAGES (si beaucoup restent)
+    # --------------------------------------------------
+    
+    if 'potage' in name_lower and role == 'ENTREE':
+        return 15, 30, 6, 'Mijotage', False, False, "Potage : soupe mixée légumes"
+    
+    # --------------------------------------------------
     # DÉFAUT - Pas reconnu
     # --------------------------------------------------
     
