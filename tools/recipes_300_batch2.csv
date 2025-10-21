@@ -1,0 +1,301 @@
+id,name,role
+505,Sorbet maison (citron, framboise),DESSERT
+506,Nice cream (glace à la banane congelée),DESSERT
+507,Energy balls aux dattes et noix de cajou,PLAT_PRINCIPAL
+508,Barres de céréales maison,PLAT_PRINCIPAL
+509,Yaourt glacé (frozen yogurt) aux fruits,PLAT_PRINCIPAL
+510,Mousse d'avocat au cacao,DESSERT
+511,Pommes en tranches et beurre de cacahuètes,PLAT_PRINCIPAL
+512,Baguette tradition française,PLAT_PRINCIPAL
+520,Naans indiens au fromage,PLAT_PRINCIPAL
+521,Chapatis,PLAT_PRINCIPAL
+523,Bretzels alsaciens,PLAT_PRINCIPAL
+524,Ciabatta italienne,PLAT_PRINCIPAL
+526,Croissants au beurre,PLAT_PRINCIPAL
+531,Chinois (gâteau brioché à la crème),DESSERT
+533,Tripes à la mode de Caen,PLAT_PRINCIPAL
+534,Potjevleesch flamand,PLAT_PRINCIPAL
+536,Daube niçoise,PLAT_PRINCIPAL
+537,Pieds paquets marseillais,PLAT_PRINCIPAL
+538,Alouettes sans tête provençales,PLAT_PRINCIPAL
+539,Fricassée de volaille à l'angevine,PLAT_PRINCIPAL
+540,Poule au pot,PLAT_PRINCIPAL
+541,Coquilles Saint-Jacques à la bretonne,PLAT_PRINCIPAL
+542,Cotriade bretonne,PLAT_PRINCIPAL
+543,Matelote d'anguille,PLAT_PRINCIPAL
+544,Lamproie à la bordelaise,PLAT_PRINCIPAL
+545,Ttoro (soupe de poisson basque),ENTREE
+546,Morue à la lyonnaise,PLAT_PRINCIPAL
+547,Quenelles de brochet sauce Nantua,PLAT_PRINCIPAL
+548,Grenouilles en persillade,PLAT_PRINCIPAL
+549,Fricassée d'escargots,PLAT_PRINCIPAL
+550,Caillettes ardéchoises,PLAT_PRINCIPAL
+551,Diots de Savoie au vin blanc,PLAT_PRINCIPAL
+553,Farçous aveyronnais,PLAT_PRINCIPAL
+554,Crique ardéchoise (galette de pommes de terre),PLAT_PRINCIPAL
+558,Tarte à l'oignon alsacienne,DESSERT
+559,Salsifis à la crème,DESSERT
+562,Pan bagnat (le vrai),PLAT_PRINCIPAL
+563,Soupe au pistou,ENTREE
+564,Tourton des Alpes,PLAT_PRINCIPAL
+565,Oreilles d'âne du Valgaudemar (gratin d'épinards),ACCOMPAGNEMENT
+566,Pôchouse de Verdun-sur-le-Doubs (version légumes),PLAT_PRINCIPAL
+568,Flaugnarde aux pommes,PLAT_PRINCIPAL
+569,Millassou (galette de pomme de terre),PLAT_PRINCIPAL
+570,Escargots de Bourgogne,PLAT_PRINCIPAL
+571,Lentilles vertes du Berry en salade,ENTREE
+572,Ceviche péruvien,PLAT_PRINCIPAL
+573,Lomo saltado (sauté de bœuf péruvien),PLAT_PRINCIPAL
+574,Aji de gallina (poulet en sauce pimentée),PLAT_PRINCIPAL
+575,Feijoada brésilienne,PLAT_PRINCIPAL
+576,Pão de queijo (pains au fromage brésiliens),PLAT_PRINCIPAL
+577,Moqueca de peixe (ragoût de poisson brésilien),PLAT_PRINCIPAL
+578,Ropa vieja cubaine (bœuf effiloché),PLAT_PRINCIPAL
+579,Picadillo,PLAT_PRINCIPAL
+580,Arroz con pollo,PLAT_PRINCIPAL
+581,Sancocho (soupe colombienne),ENTREE
+582,Bandeja paisa (plat complet colombien),PLAT_PRINCIPAL
+583,Chiles rellenos (piments farcis mexicains),PLAT_PRINCIPAL
+584,Mole poblano,PLAT_PRINCIPAL
+585,Cochinita pibil,PLAT_PRINCIPAL
+586,Pozole (soupe mexicaine),ENTREE
+587,Tamales,PLAT_PRINCIPAL
+588,Pastel de choclo (gâteau de maïs chilien),DESSERT
+589,Humitas,PLAT_PRINCIPAL
+590,Gallo pinto (riz et haricots du Costa Rica),ACCOMPAGNEMENT
+591,Patacones (bananes plantain frites),ACCOMPAGNEMENT
+595,Pastilla au poulet et aux amandes,PLAT_PRINCIPAL
+596,Rfissa marocaine (poulet, lentilles, msemen),PLAT_PRINCIPAL
+597,Tanjia marrakchia,PLAT_PRINCIPAL
+598,Bissara (soupe de fèves),ENTREE
+599,Zaalouk (salade d'aubergines cuite),ENTREE
+600,Poulet Yassa sénégalais,PLAT_PRINCIPAL
+601,Mafé (sauce à base d'arachide),PLAT_PRINCIPAL
+602,Thieboudienne (riz au poisson sénégalais),ACCOMPAGNEMENT
+603,Doro Wat (ragoût de poulet éthiopien),PLAT_PRINCIPAL
+604,Injera (crêpe éthiopienne au teff),PLAT_PRINCIPAL
+605,Shish Taouk (brochettes de poulet libanaises),PLAT_PRINCIPAL
+606,Shawarma,PLAT_PRINCIPAL
+607,Manakish au zaatar (pizza libanaise),PLAT_PRINCIPAL
+608,Kibbeh (boulettes de boulgour et viande),PLAT_PRINCIPAL
+609,Dolmas (feuilles de vigne farcies),PLAT_PRINCIPAL
+610,Shakshuka (version plus élaborée),PLAT_PRINCIPAL
+611,Fatteh (plat libanais à base de pain pita),PLAT_PRINCIPAL
+8772,Pommes noisettes,ACCOMPAGNEMENT
+8773,Riz basmati,ACCOMPAGNEMENT
+8774,Velouté de potiron,ENTREE
+8775,Steak grillé,PLAT_PRINCIPAL
+8776,Gâteau au yaourt,DESSERT
+8778,Pommes de terre rissolées,ACCOMPAGNEMENT
+8779,Pommes de terre à la vapeur,ACCOMPAGNEMENT
+8780,Pommes Anna,ACCOMPAGNEMENT
+8781,Rösti de pommes de terre,ACCOMPAGNEMENT
+8782,Écrasé de pommes de terre,ACCOMPAGNEMENT
+8783,Pommes boulangères,ACCOMPAGNEMENT
+8784,Aligot,ACCOMPAGNEMENT
+8785,Riz blanc nature,ACCOMPAGNEMENT
+8787,Riz thaï,ACCOMPAGNEMENT
+8788,Riz au curry,ACCOMPAGNEMENT
+8789,Riz au safran,ACCOMPAGNEMENT
+8790,Riz aux épices,ACCOMPAGNEMENT
+8791,Riz au lait salé,ACCOMPAGNEMENT
+8792,Riz complet,ACCOMPAGNEMENT
+8793,Spaghetti nature,ACCOMPAGNEMENT
+8794,Penne nature,ACCOMPAGNEMENT
+8795,Fusilli nature,ACCOMPAGNEMENT
+8796,Tagliatelles nature,ACCOMPAGNEMENT
+8797,Macaronis au beurre,ACCOMPAGNEMENT
+8798,Spaghetti à l'ail et huile d'olive,ACCOMPAGNEMENT
+8799,Pâtes aux poivrons,ACCOMPAGNEMENT
+8800,Pâtes aux tomates,ACCOMPAGNEMENT
+8801,Pâtes gratinées,ACCOMPAGNEMENT
+8802,Pâtes aux olives,ACCOMPAGNEMENT
+8803,Carottes rôties,ACCOMPAGNEMENT
+8804,Courgettes rôties,ACCOMPAGNEMENT
+8805,Aubergines rôties,ACCOMPAGNEMENT
+8806,Tomates rôties,ACCOMPAGNEMENT
+8807,Chou-fleur rôti,ACCOMPAGNEMENT
+8808,Brocolis rôtis,ACCOMPAGNEMENT
+8809,Chou kale rôti,ACCOMPAGNEMENT
+8810,Panais rôtis,ACCOMPAGNEMENT
+8811,Betteraves rôties,ACCOMPAGNEMENT
+8812,Courges rôties,ACCOMPAGNEMENT
+8813,Choux de Bruxelles rôtis,ACCOMPAGNEMENT
+8814,Aubergines vapeur,ACCOMPAGNEMENT
+8815,Poivrons vapeur,ACCOMPAGNEMENT
+8816,Tomates vapeur,ACCOMPAGNEMENT
+8817,Patates douces vapeur,ACCOMPAGNEMENT
+8818,Betteraves vapeur,ACCOMPAGNEMENT
+8819,Oignons vapeur,ACCOMPAGNEMENT
+8820,Courges vapeur,ACCOMPAGNEMENT
+8821,Champignons vapeur,ACCOMPAGNEMENT
+8822,Carottes sautées,ACCOMPAGNEMENT
+8823,Courgettes sautées,ACCOMPAGNEMENT
+8824,Aubergines sautées,ACCOMPAGNEMENT
+8825,Poivrons sautés,ACCOMPAGNEMENT
+8826,Tomates sautées,ACCOMPAGNEMENT
+8827,Chou-fleur sauté,ACCOMPAGNEMENT
+8828,Brocolis sautés,ACCOMPAGNEMENT
+8829,Chou kale sauté,ACCOMPAGNEMENT
+8830,Patates douces sautées,ACCOMPAGNEMENT
+8831,Panais sautés,ACCOMPAGNEMENT
+8832,Céleri-rave sauté,ACCOMPAGNEMENT
+8833,Betteraves sautées,ACCOMPAGNEMENT
+8834,Oignons sautés,ACCOMPAGNEMENT
+8835,Fenouil sauté,ACCOMPAGNEMENT
+8836,Courges sautées,ACCOMPAGNEMENT
+8838,Quatre-quarts,DESSERT
+8840,Forêt-Noire,DESSERT
+8842,Paris-Brest,DESSERT
+8844,Clafoutis,DESSERT
+8845,Galette des Rois,DESSERT
+8846,Gâteau basque,DESSERT
+8847,Far breton,DESSERT
+8848,Baba au rhum,DESSERT
+8849,Savarin,DESSERT
+8850,Charlotte aux fraises,DESSERT
+8851,Gâteau aux pommes,DESSERT
+8852,Gâteau aux poires,DESSERT
+8853,Bûche de Noël,DESSERT
+8854,Entremets vanille,DESSERT
+8855,Entremets fruits rouges,DESSERT
+8856,Entremets exotique,DESSERT
+8857,Entremets pistache,DESSERT
+8858,Entremets praliné,DESSERT
+8859,Entremets noisette,DESSERT
+8860,Entremets caramel,DESSERT
+8861,Entremets coco,DESSERT
+8862,Entremets mangue,DESSERT
+8863,Entremets passion,DESSERT
+8864,Entremets marron,DESSERT
+8865,Entremets mousse fraise,DESSERT
+8866,Entremets mousse framboise,DESSERT
+8867,Entremets fruits exotiques,DESSERT
+8868,Entremets signature,DESSERT
+8869,Sablés,DESSERT
+8870,Cookies,DESSERT
+8871,Brownies,DESSERT
+8872,Madeleines,DESSERT
+8873,Financiers,DESSERT
+8874,Tuiles aux amandes,DESSERT
+8875,Palets bretons,DESSERT
+8876,Speculoos,DESSERT
+8877,Canelés,DESSERT
+8878,Meringues,DESSERT
+8879,Langues de chat,DESSERT
+8880,Macarons,DESSERT
+8881,Navettes,DESSERT
+8882,Croquants aux amandes,DESSERT
+8883,Rochers coco,DESSERT
+8884,Florentins,DESSERT
+8885,Pain d'épices,DESSERT
+8886,Biscuits au citron,DESSERT
+8887,Mousse à la vanille,DESSERT
+8888,Mousse aux fruits,DESSERT
+8889,Mousse au citron,DESSERT
+8890,Mousse à l'orange,DESSERT
+8891,Mousse exotique,DESSERT
+8892,Mousse pistache,DESSERT
+8893,Crème caramel,DESSERT
+8894,Crème brûlée,DESSERT
+8896,Panna cotta,DESSERT
+8897,Ile flottante,DESSERT
+8898,Œufs au lait,DESSERT
+8899,Crème vanille,DESSERT
+8900,Crème pistache,DESSERT
+8901,Crème coco,DESSERT
+8902,Crème noisette,DESSERT
+8903,Glace vanille,DESSERT
+8904,Glace fraise,DESSERT
+8905,Glace pistache,DESSERT
+8906,Glace caramel,DESSERT
+8907,Glace coco,DESSERT
+8908,Glace mangue,DESSERT
+8909,Glace passion,DESSERT
+8910,Glace citron,DESSERT
+8911,Glace framboise,DESSERT
+8912,Glace myrtille,DESSERT
+8913,Sorbet fraise,DESSERT
+8914,Sorbet framboise,DESSERT
+8915,Sorbet citron,DESSERT
+8916,Sorbet mangue,DESSERT
+8917,Parfait glacé,DESSERT
+8918,Semifreddo,DESSERT
+8919,Profiteroles glacées,DESSERT
+8920,Bûche glacée,DESSERT
+8921,Brochettes de fruits,DESSERT
+8922,Compote de pommes,DESSERT
+8923,Compote de poires,DESSERT
+8924,Compote de pêches,DESSERT
+8925,Compote d'abricots,DESSERT
+8926,Compote de fruits rouges,DESSERT
+8928,Velouté de champignons,ENTREE
+8929,Velouté de petits pois,ENTREE
+8930,Velouté de carottes,ENTREE
+8931,Velouté de chou-fleur,ENTREE
+8932,Velouté de poireaux,ENTREE
+8933,Velouté de panais,ENTREE
+8934,Velouté de tomates,ENTREE
+8935,Velouté d'asperges,ENTREE
+8936,Velouté de courgettes,ENTREE
+8937,Velouté de céleri,ENTREE
+8938,Velouté de topinambours,ENTREE
+8939,Velouté de brocolis,ENTREE
+8940,Velouté de patates douces,ENTREE
+8941,Velouté de navets,ENTREE
+8942,Velouté de cresson,ENTREE
+8943,Velouté de betteraves,ENTREE
+8944,Velouté de fenouil,ENTREE
+8945,Velouté de maïs,ENTREE
+8946,Velouté de potimarron,ENTREE
+8947,Potage julienne,ENTREE
+8948,Potage cultivateur,ENTREE
+8949,Potage parisien,ENTREE
+8950,Potage madrilène,ENTREE
+8951,Potage aux légumes variés,ENTREE
+8952,Potage de légumes anciens,ENTREE
+8953,Potage de légumes racines,ENTREE
+8954,Potage crème de champignons,ENTREE
+8955,Potage crème de tomates,ENTREE
+8956,Potage crème de céleri,ENTREE
+8957,Potage crème de poireaux,ENTREE
+8958,Potage crème de carottes,ENTREE
+8959,Potage crème de chou-fleur,ENTREE
+8960,Potage crème de panais,ENTREE
+8961,Potage crème de courgettes,ENTREE
+8962,Potage crème d'asperges,ENTREE
+8963,Potage crème de navets,ENTREE
+8964,Potage crème de topinambours,ENTREE
+8965,Potage crème de brocolis,ENTREE
+8966,Potage crème de potiron,ENTREE
+8967,Garbure,ENTREE
+8968,Tourin à l'ail,ENTREE
+8969,Bouillabaisse simplifiée,ENTREE
+8970,Bortsch ukrainien,ENTREE
+8971,Minestrone italien,ENTREE
+8972,Ribollita toscane,ENTREE
+8973,Zuppa di pesce,ENTREE
+8974,Acquacotta,ENTREE
+8975,Sopa de ajo,ENTREE
+8976,Salmorejo,ENTREE
+8977,Bisque de homard,ENTREE
+8978,Bisque de langoustines,ENTREE
+8979,Bisque de crabes,ENTREE
+8980,Bisque de crevettes,ENTREE
+8981,Velouté de cèpes,ENTREE
+8982,Velouté de lentilles corail,ENTREE
+8983,Velouté de haricots blancs,ENTREE
+8984,Velouté de pois chiches,ENTREE
+8985,Velouté d'épinards,ENTREE
+8986,Velouté de courges,ENTREE
+8987,Velouté de chou vert,ENTREE
+8988,Velouté de poivrons,ENTREE
+8989,Velouté d'aubergines,ENTREE
+8990,Velouté aux herbes,ENTREE
+8991,Potage de légumes variés,ENTREE
+8992,Potage au chou,ENTREE
+8993,Potage aux carottes,ENTREE
+8994,Potage aux courgettes,ENTREE
+8995,Potage aux poireaux,ENTREE
+8996,Potage aux pommes de terre,ENTREE
+8997,Potage au céleri,ENTREE
