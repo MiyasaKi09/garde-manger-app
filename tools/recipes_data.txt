@@ -1,0 +1,2 @@
+# Cette fois, je vais utiliser directement les résultats pour éviter la limite de token
+# Le fichier SQL sera généré en utilisant le script d'enrichissement
