@@ -9,29 +9,19 @@ BEGIN;
 -- CANONICAL FOODS (aliments bruts)
 -- ========================================
 
--- amaretto (1x) | Liqueur
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('amaretto', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
 -- bicarbonate (4x) | Produit chimique
 INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('bicarbonate', 14)
 ON CONFLICT (canonical_name) DO NOTHING;
 
--- bière (1x) | Type inutile | de: bière ambrée
+-- blanc de poulet (1x) | Partie naturelle | de: blancs de poulet
 INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('bière', 14)
+VALUES ('blanc de poulet', 9)
 ON CONFLICT (canonical_name) DO NOTHING;
 
 -- bouquet garni (9x) | Assemblage standard
 INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('bouquet garni', 10)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- calvados (1x) | Eau-de-vie
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('calvados', 14)
 ON CONFLICT (canonical_name) DO NOTHING;
 
 -- cassonade (3x) | Type différent
@@ -49,24 +39,9 @@ INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('champignon', 3)
 ON CONFLICT (canonical_name) DO NOTHING;
 
--- chocolat noir (3x) | Base
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('chocolat noir', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
 -- chèvre frais (1x) | Fromage frais
 INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('chèvre frais', 7)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- cidre (1x) | Boisson fermentée | de: cidre brut
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('cidre', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- cognac (3x) | Eau-de-vie
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('cognac', 14)
 ON CONFLICT (canonical_name) DO NOTHING;
 
 -- cumin (17x) | Graine brute
@@ -129,11 +104,6 @@ INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('garrofó', 5)
 ON CONFLICT (canonical_name) DO NOTHING;
 
--- girofle (2x) | Bouton de fleur séché | de: clou de girofle
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('girofle', 10)
-ON CONFLICT (canonical_name) DO NOTHING;
-
 -- graine de chia (2x) | Singulariser | de: graines de chia
 INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('graine de chia', 14)
@@ -179,19 +149,9 @@ INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('levure chimique', 14)
 ON CONFLICT (canonical_name) DO NOTHING;
 
--- madère (1x) | Vin fortifié
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('madère', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
 -- magret de canard (1x) | Découpe | de: magrets de canard
 INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('magret de canard', 9)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- mirin (5x) | Vin de riz doux
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('mirin', 14)
 ON CONFLICT (canonical_name) DO NOTHING;
 
 -- moutarde de Dijon (2x) | Condiment
@@ -207,11 +167,6 @@ ON CONFLICT (canonical_name) DO NOTHING;
 -- noisette (1x) | Singulariser | de: noisettes
 INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('noisette', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- nuoc mam (1x) | Sauce poisson fermentée
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('nuoc mam', 14)
 ON CONFLICT (canonical_name) DO NOTHING;
 
 -- oignon grelot (1x) | Variété | de: petits oignons grelots
@@ -294,26 +249,6 @@ INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('pousse de soja', 14)
 ON CONFLICT (canonical_name) DO NOTHING;
 
--- pruneau (1x) | Singulariser | de: pruneaux
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('pruneau', 1)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- pépite de chocolat (1x) | Forme | de: pépites de chocolat
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('pépite de chocolat', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- raisin sec (1x) | Fruit séché | de: raisins secs
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('raisin sec', 1)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- rhum (3x) | Alcool
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('rhum', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
 -- riz basmati (2x) | Variété de riz
 INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('riz basmati', 5)
@@ -324,29 +259,14 @@ INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('riz bomba', 5)
 ON CONFLICT (canonical_name) DO NOTHING;
 
--- saké (1x) | Alcool de riz
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('saké', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
 -- salade (3x) | Base
 INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('salade', 2)
 ON CONFLICT (canonical_name) DO NOTHING;
 
--- sirop d'agave (2x) | Sève concentrée
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('sirop d'agave', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
 -- sucre (39x) | Aliment brut
 INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('sucre', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- sucre glace (4x) | Forme différente
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('sucre glace', 14)
 ON CONFLICT (canonical_name) DO NOTHING;
 
 -- tofu (1x) | Caillé de soja | de: tofu ferme
@@ -362,21 +282,6 @@ ON CONFLICT (canonical_name) DO NOTHING;
 -- tomme fraîche (1x) | Fromage frais
 INSERT INTO canonical_foods (canonical_name, category_id)
 VALUES ('tomme fraîche', 7)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- vin blanc (11x) | Boisson fermentée
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('vin blanc', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- vin rouge (3x) | Boisson fermentée
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('vin rouge', 14)
-ON CONFLICT (canonical_name) DO NOTHING;
-
--- xérès (1x) | Synonyme anglais | de: sherry
-INSERT INTO canonical_foods (canonical_name, category_id)
-VALUES ('xérès', 14)
 ON CONFLICT (canonical_name) DO NOTHING;
 
 -- yaourt (2x) | Produit laitier | de: yaourt nature
@@ -407,6 +312,11 @@ ON CONFLICT (name) DO NOTHING;
 -- amande effilée (2x) | Transformation | de: amandes effilées
 INSERT INTO archetypes (name, category_id)
 VALUES ('amande effilée', 14)
+ON CONFLICT (name) DO NOTHING;
+
+-- amaretto (1x) | Liqueur distillée
+INSERT INTO archetypes (name, category_id)
+VALUES ('amaretto', 14)
 ON CONFLICT (name) DO NOTHING;
 
 -- andouillette (1x) | Charcuterie | de: andouillettes de Troyes
@@ -444,14 +354,14 @@ INSERT INTO archetypes (name, category_id)
 VALUES ('biscuit Graham', 14)
 ON CONFLICT (name) DO NOTHING;
 
+-- bière (1x) | Type inutile | de: bière ambrée
+INSERT INTO archetypes (name, category_id)
+VALUES ('bière', 14)
+ON CONFLICT (name) DO NOTHING;
+
 -- blanc d'oeuf (3x) | Partie séparée | de: blancs d'oeufs
 INSERT INTO archetypes (name, category_id)
 VALUES ('blanc d'oeuf', 7)
-ON CONFLICT (name) DO NOTHING;
-
--- blanc de poulet (1x) | Partie spécifique | de: blancs de poulet
-INSERT INTO archetypes (name, category_id)
-VALUES ('blanc de poulet', 9)
 ON CONFLICT (name) DO NOTHING;
 
 -- boeuf haché (6x) | Hachage
@@ -484,6 +394,11 @@ INSERT INTO archetypes (name, category_id)
 VALUES ('bouillon de volaille', 9)
 ON CONFLICT (name) DO NOTHING;
 
+-- calvados (1x) | Eau-de-vie distillée
+INSERT INTO archetypes (name, category_id)
+VALUES ('calvados', 14)
+ON CONFLICT (name) DO NOTHING;
+
 -- cannelle (13x) | Écorce séchée
 INSERT INTO archetypes (name, category_id)
 VALUES ('cannelle', 10)
@@ -509,14 +424,29 @@ INSERT INTO archetypes (name, category_id)
 VALUES ('chip de maïs', 5)
 ON CONFLICT (name) DO NOTHING;
 
+-- chocolat noir (3x) | Fève torréfiée et transformée
+INSERT INTO archetypes (name, category_id)
+VALUES ('chocolat noir', 14)
+ON CONFLICT (name) DO NOTHING;
+
 -- chorizo (1x) | Charcuterie
 INSERT INTO archetypes (name, category_id)
 VALUES ('chorizo', 9)
 ON CONFLICT (name) DO NOTHING;
 
+-- cidre (1x) | Boisson fermentée | de: cidre brut
+INSERT INTO archetypes (name, category_id)
+VALUES ('cidre', 14)
+ON CONFLICT (name) DO NOTHING;
+
 -- cinq épices (1x) | Mélange
 INSERT INTO archetypes (name, category_id)
 VALUES ('cinq épices', 10)
+ON CONFLICT (name) DO NOTHING;
+
+-- cognac (3x) | Eau-de-vie distillée
+INSERT INTO archetypes (name, category_id)
+VALUES ('cognac', 14)
 ON CONFLICT (name) DO NOTHING;
 
 -- coleslaw (1x) | Salade préparée
@@ -649,6 +579,11 @@ INSERT INTO archetypes (name, category_id)
 VALUES ('garam masala', 10)
 ON CONFLICT (name) DO NOTHING;
 
+-- girofle (2x) | Bouton de fleur séché | de: clou de girofle
+INSERT INTO archetypes (name, category_id)
+VALUES ('girofle', 10)
+ON CONFLICT (name) DO NOTHING;
+
 -- gruyère râpé (4x) | Transformation
 INSERT INTO archetypes (name, category_id)
 VALUES ('gruyère râpé', 7)
@@ -764,6 +699,11 @@ INSERT INTO archetypes (name, category_id)
 VALUES ('lasagne', 5)
 ON CONFLICT (name) DO NOTHING;
 
+-- madère (1x) | Vin fortifié
+INSERT INTO archetypes (name, category_id)
+VALUES ('madère', 14)
+ON CONFLICT (name) DO NOTHING;
+
 -- mayonnaise (2x) | Émulsion
 INSERT INTO archetypes (name, category_id)
 VALUES ('mayonnaise', 14)
@@ -779,6 +719,11 @@ INSERT INTO archetypes (name, category_id)
 VALUES ('mie de pain', 5)
 ON CONFLICT (name) DO NOTHING;
 
+-- mirin (5x) | Vin de riz doux fermenté
+INSERT INTO archetypes (name, category_id)
+VALUES ('mirin', 14)
+ON CONFLICT (name) DO NOTHING;
+
 -- morue dessalée (1x) | Dessalage
 INSERT INTO archetypes (name, category_id)
 VALUES ('morue dessalée', 9)
@@ -792,6 +737,11 @@ ON CONFLICT (name) DO NOTHING;
 -- nouille ramen (1x) | Pâtes | de: nouilles ramen
 INSERT INTO archetypes (name, category_id)
 VALUES ('nouille ramen', 5)
+ON CONFLICT (name) DO NOTHING;
+
+-- nuoc mam (1x) | Sauce poisson fermentée
+INSERT INTO archetypes (name, category_id)
+VALUES ('nuoc mam', 14)
 ON CONFLICT (name) DO NOTHING;
 
 -- oeuf dur (1x) | Cuisson | de: oeufs durs
@@ -889,6 +839,11 @@ INSERT INTO archetypes (name, category_id)
 VALUES ('poudre d'amande', 14)
 ON CONFLICT (name) DO NOTHING;
 
+-- pruneau (1x) | Fruit séché (déshydratation) | de: pruneaux
+INSERT INTO archetypes (name, category_id)
+VALUES ('pruneau', 1)
+ON CONFLICT (name) DO NOTHING;
+
 -- pâte brisée (1x) | Préparation
 INSERT INTO archetypes (name, category_id)
 VALUES ('pâte brisée', 14)
@@ -914,14 +869,34 @@ INSERT INTO archetypes (name, category_id)
 VALUES ('pâtes courtes', 5)
 ON CONFLICT (name) DO NOTHING;
 
+-- pépite de chocolat (1x) | Chocolat solidifié | de: pépites de chocolat
+INSERT INTO archetypes (name, category_id)
+VALUES ('pépite de chocolat', 14)
+ON CONFLICT (name) DO NOTHING;
+
 -- quatre-épices (1x) | Mélange
 INSERT INTO archetypes (name, category_id)
 VALUES ('quatre-épices', 10)
 ON CONFLICT (name) DO NOTHING;
 
+-- raisin sec (1x) | Fruit séché | de: raisins secs
+INSERT INTO archetypes (name, category_id)
+VALUES ('raisin sec', 1)
+ON CONFLICT (name) DO NOTHING;
+
+-- rhum (3x) | Alcool distillé
+INSERT INTO archetypes (name, category_id)
+VALUES ('rhum', 14)
+ON CONFLICT (name) DO NOTHING;
+
 -- riz cuit (1x) | Cuisson | de: riz cuit froid
 INSERT INTO archetypes (name, category_id)
 VALUES ('riz cuit', 5)
+ON CONFLICT (name) DO NOTHING;
+
+-- saké (1x) | Alcool de riz fermenté
+INSERT INTO archetypes (name, category_id)
+VALUES ('saké', 14)
 ON CONFLICT (name) DO NOTHING;
 
 -- sauce barbecue (1x) | Sauce préparée
@@ -1004,9 +979,19 @@ INSERT INTO archetypes (name, category_id)
 VALUES ('semoule', 5)
 ON CONFLICT (name) DO NOTHING;
 
+-- sirop d'agave (2x) | Sève concentrée et cuite
+INSERT INTO archetypes (name, category_id)
+VALUES ('sirop d'agave', 14)
+ON CONFLICT (name) DO NOTHING;
+
 -- spaghetti (3x) | Pâtes
 INSERT INTO archetypes (name, category_id)
 VALUES ('spaghetti', 5)
+ON CONFLICT (name) DO NOTHING;
+
+-- sucre glace (4x) | Sucre broyé finement
+INSERT INTO archetypes (name, category_id)
+VALUES ('sucre glace', 14)
 ON CONFLICT (name) DO NOTHING;
 
 -- tahini (5x) | Pâte de sésame
@@ -1049,6 +1034,16 @@ INSERT INTO archetypes (name, category_id)
 VALUES ('vermicelle de riz', 5)
 ON CONFLICT (name) DO NOTHING;
 
+-- vin blanc (11x) | Boisson fermentée
+INSERT INTO archetypes (name, category_id)
+VALUES ('vin blanc', 14)
+ON CONFLICT (name) DO NOTHING;
+
+-- vin rouge (3x) | Boisson fermentée
+INSERT INTO archetypes (name, category_id)
+VALUES ('vin rouge', 14)
+ON CONFLICT (name) DO NOTHING;
+
 -- vinaigre (3x) | Fermentation acétique
 INSERT INTO archetypes (name, category_id)
 VALUES ('vinaigre', 14)
@@ -1082,6 +1077,11 @@ ON CONFLICT (name) DO NOTHING;
 -- vinaigre de xérès (1x) | Fermentation
 INSERT INTO archetypes (name, category_id)
 VALUES ('vinaigre de xérès', 14)
+ON CONFLICT (name) DO NOTHING;
+
+-- xérès (1x) | Synonyme anglais | de: sherry
+INSERT INTO archetypes (name, category_id)
+VALUES ('xérès', 14)
 ON CONFLICT (name) DO NOTHING;
 
 -- zeste de citron (1x) | Partie râpée
