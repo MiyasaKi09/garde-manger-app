@@ -1,0 +1,97 @@
+\pset format unaligned
+\pset tuples_only on
+\pset pager off
+
+\echo # Schéma PostgreSQL (public)
+\echo _Généré le : `date`_
+\echo
+
+\echo ## Tables
+SELECT '- ' || table_name
+FROM information_schema.tables
+WHERE table_schema='public' AND table_type='BASE TABLE'
+ORDER BY table_name;
+
+\echo
+\echo ---
+
+\echo ## Colonnes
+SELECT E'\n### ' || table_name || E'\n'
+     || string_agg(
+          ' - '||column_name||' :: '||data_type
+          || COALESCE(' default '||column_default,'')
+          || CASE WHEN is_nullable='NO' THEN ' NOT NULL' ELSE '' END
+        , E'\n' ORDER BY ordinal_position)
+FROM information_schema.columns
+WHERE table_schema='public'
+GROUP BY table_name
+ORDER BY table_name;
+
+\echo
+\echo ---
+
+\echo ## Clés primaires
+SELECT ' - '||rel.relname||' → ('||string_agg(att.attname, ', ')||')'
+FROM pg_index idx
+JOIN pg_class rel ON rel.oid = idx.indrelid
+JOIN pg_namespace nsp ON nsp.oid = rel.relnamespace
+JOIN pg_attribute att ON att.attrelid = rel.oid AND att.attnum = ANY(idx.indkey)
+WHERE nsp.nspname='public' AND idx.indisprimary
+GROUP BY rel.relname
+ORDER BY rel.relname;
+
+\echo
+\echo ---
+
+\echo ## Clés étrangères
+SELECT
+  ' - '||tc.table_name||'.'||kcu.column_name||
+  ' → '||ccu.table_name||'.'||ccu.column_name||
+  '  (constraint '||tc.constraint_name||')'
+FROM information_schema.table_constraints tc
+JOIN information_schema.key_column_usage kcu
+  ON tc.constraint_name = kcu.constraint_name
+JOIN information_schema.constraint_column_usage ccu
+  ON ccu.constraint_name = tc.constraint_name
+WHERE tc.table_schema='public' AND tc.constraint_type='FOREIGN KEY'
+ORDER BY tc.table_name, kcu.ordinal_position;
+
+\echo
+\echo ---
+
+\echo ## Index
+SELECT ' - '||schemaname||'.'||tablename||' → '||indexname||' : '||indexdef
+FROM pg_indexes
+WHERE schemaname='public'
+ORDER BY tablename, indexname;
+
+\echo
+\echo ---
+
+\echo ## Contraintes CHECK
+SELECT
+  ' - '||c.conname||' ON '||rel.relname||' : '||pg_get_constraintdef(c.oid)
+FROM pg_constraint c
+JOIN pg_class rel ON rel.oid = c.conrelid
+JOIN pg_namespace nsp ON nsp.oid = rel.relnamespace
+WHERE nsp.nspname='public' AND c.contype='c'
+ORDER BY rel.relname, c.conname;
+
+\echo
+\echo ---
+
+\echo ## Vues
+SELECT ' - '||table_name
+FROM information_schema.views
+WHERE table_schema='public'
+ORDER BY table_name;
+
+\echo
+\echo ---
+
+\echo ## Définition des vues
+SELECT E'\n### '||c.relname||E'\n```sql\n'||pg_get_viewdef(c.oid)||E'\n```\n'
+FROM pg_class c
+JOIN pg_namespace nsp ON nsp.oid = c.relnamespace
+WHERE nsp.nspname='public' AND c.relkind='v'
+ORDER BY c.relname;
