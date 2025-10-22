@@ -1,0 +1,32 @@
+RAPPORT D'ANALYSE DES INGRÉDIENTS V3
+================================================================================
+
+Total ingrédients bruts: 441
+Canonical à créer: 254
+Archetypes à créer: 73
+Déjà existants: 100
+Ignorés: 6
+
+
+================================================================================
+INGRÉDIENTS IGNORÉS
+================================================================================
+
+• eau de cuisson (1x)
+  Raison: Trop vague: eau de cuisson
+
+• malt d'orge ou sucre (1x)
+  Raison: Multiple ingrédients: malt d'orge ou sucre
+
+• bavette ou rumsteck de boeuf (1x)
+  Raison: Multiple ingrédients: bavette ou rumsteck de boeuf
+
+• pomme ou poire (1x)
+  Raison: Multiple ingrédients: pomme ou poire
+
+• ganache ou crème (1x)
+  Raison: Multiple ingrédients: ganache ou crème
+
+• trofie ou linguine (1x)
+  Raison: Multiple ingrédients: trofie ou linguine
+

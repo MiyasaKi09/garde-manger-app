@@ -1,0 +1,1621 @@
+RAPPORT DES INGRÉDIENTS MANQUANTS
+================================================================================
+
+CANONICAL FOODS À CRÉER
+--------------------------------------------------------------------------------
+
+• beurre
+  Catégorie estimée: 7
+  Occurrences: 61
+
+• farine
+  Catégorie estimée: 5
+  Occurrences: 53
+
+• oeufs
+  Catégorie estimée: 14
+  Occurrences: 40
+
+• sucre
+  Catégorie estimée: 14
+  Occurrences: 39
+
+• eau
+  Catégorie estimée: 14
+  Occurrences: 27
+
+• gousses d'ail
+  Catégorie estimée: 2
+  Occurrences: 25
+
+• huile
+  Catégorie estimée: 14
+  Occurrences: 25
+
+• oignons
+  Catégorie estimée: 2
+  Occurrences: 23
+
+• carottes
+  Catégorie estimée: 2
+  Occurrences: 22
+
+• tomates
+  Catégorie estimée: 2
+  Occurrences: 21
+
+• pommes de terre
+  Catégorie estimée: 1
+  Occurrences: 20
+
+• cumin
+  Catégorie estimée: 10
+  Occurrences: 17
+
+• cannelle
+  Catégorie estimée: 14
+  Occurrences: 13
+
+• paprika
+  Catégorie estimée: 10
+  Occurrences: 13
+
+• champignons de Paris
+  Catégorie estimée: 14
+  Occurrences: 13
+
+• vin blanc
+  Catégorie estimée: 14
+  Occurrences: 11
+
+• échalotes
+  Catégorie estimée: 14
+  Occurrences: 10
+
+• bouquet garni
+  Catégorie estimée: 14
+  Occurrences: 9
+
+• jaunes d'oeufs
+  Catégorie estimée: 14
+  Occurrences: 8
+
+• basilic frais
+  Catégorie estimée: 10
+  Occurrences: 8
+
+• vin blanc sec
+  Catégorie estimée: 14
+  Occurrences: 8
+
+• levure chimique
+  Catégorie estimée: 14
+  Occurrences: 6
+
+• poivron rouge
+  Catégorie estimée: 2
+  Occurrences: 6
+
+• courgettes
+  Catégorie estimée: 2
+  Occurrences: 6
+
+• chapelure
+  Catégorie estimée: 14
+  Occurrences: 6
+
+• flocons d'avoine
+  Catégorie estimée: 5
+  Occurrences: 5
+
+• pain de mie
+  Catégorie estimée: 5
+  Occurrences: 5
+
+• persil frais
+  Catégorie estimée: 10
+  Occurrences: 5
+
+• mirin
+  Catégorie estimée: 14
+  Occurrences: 5
+
+• tahini
+  Catégorie estimée: 14
+  Occurrences: 5
+
+• aubergines
+  Catégorie estimée: 2
+  Occurrences: 5
+
+• tomates concassées
+  Catégorie estimée: 2
+  Occurrences: 5
+
+• noix de muscade
+  Catégorie estimée: 14
+  Occurrences: 5
+
+• poireaux
+  Catégorie estimée: 1
+  Occurrences: 5
+
+• poivrons
+  Catégorie estimée: 2
+  Occurrences: 5
+
+• champignons
+  Catégorie estimée: 14
+  Occurrences: 5
+
+• bicarbonate
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• bacon
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• piment d'Espelette
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• céleri
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• concentré de tomates
+  Catégorie estimée: 2
+  Occurrences: 4
+
+• herbes de Provence
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• levure
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• pommes
+  Catégorie estimée: 1
+  Occurrences: 4
+
+• citrons
+  Catégorie estimée: 1
+  Occurrences: 4
+
+• épinards
+  Catégorie estimée: 2
+  Occurrences: 4
+
+• moules
+  Catégorie estimée: 9
+  Occurrences: 4
+
+• sucre glace
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• œuf
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• aneth frais
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• yaourt grec
+  Catégorie estimée: 7
+  Occurrences: 3
+
+• tomates mûres
+  Catégorie estimée: 2
+  Occurrences: 3
+
+• vermicelles de riz
+  Catégorie estimée: 5
+  Occurrences: 3
+
+• salade
+  Catégorie estimée: 2
+  Occurrences: 3
+
+• menthe fraîche
+  Catégorie estimée: 10
+  Occurrences: 3
+
+• câpres
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• coriandre fraîche
+  Catégorie estimée: 10
+  Occurrences: 3
+
+• vinaigre
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• mozzarella
+  Catégorie estimée: 7
+  Occurrences: 3
+
+• petits pois
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• vin rouge
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• pois chiches
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• graines de sésame
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• pignons de pin
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• jambon
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• lardons
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• poulet fermier (1,5 kg)
+  Catégorie estimée: 9
+  Occurrences: 3
+
+• cognac
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• chapelure panko
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• maïzena
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• ketchup
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• navets
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• rhum
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• spaghetti
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• cassonade
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• chocolat noir
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• poudre d'amandes
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• blancs d'oeufs
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• sucre semoule
+  Catégorie estimée: 9
+  Occurrences: 3
+
+• graines de chia
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• lait végétal
+  Catégorie estimée: 7
+  Occurrences: 2
+
+• yaourt nature
+  Catégorie estimée: 7
+  Occurrences: 2
+
+• sirop d'agave
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• épinards frais
+  Catégorie estimée: 2
+  Occurrences: 2
+
+• amandes effilées
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• pain de campagne
+  Catégorie estimée: 5
+  Occurrences: 2
+
+• vinaigre blanc
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• jambon serrano
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• tomates pelées
+  Catégorie estimée: 2
+  Occurrences: 2
+
+• dashi
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• cacahuètes
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• baguette
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• crevettes
+  Catégorie estimée: 9
+  Occurrences: 2
+
+• pousses de soja
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• galettes de riz
+  Catégorie estimée: 5
+  Occurrences: 2
+
+• semoule
+  Catégorie estimée: 9
+  Occurrences: 2
+
+• poivrons rouges
+  Catégorie estimée: 2
+  Occurrences: 2
+
+• persil plat
+  Catégorie estimée: 10
+  Occurrences: 2
+
+• lentilles corail
+  Catégorie estimée: 2
+  Occurrences: 2
+
+• viande d'agneau
+  Catégorie estimée: 9
+  Occurrences: 2
+
+• vermicelle
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• mayonnaise
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• levure boulanger
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• jaune d'oeuf
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• lardons fumés
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• escalopes de poulet
+  Catégorie estimée: 9
+  Occurrences: 2
+
+• branche de céleri
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• gousse d'ail
+  Catégorie estimée: 2
+  Occurrences: 2
+
+• boeuf à braiser
+  Catégorie estimée: 9
+  Occurrences: 2
+
+• branches de thym
+  Catégorie estimée: 10
+  Occurrences: 2
+
+• feuille de laurier
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• moutarde de Dijon
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• haricots rouges
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• haricots verts
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• lapin découpé
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• beurre salé
+  Catégorie estimée: 7
+  Occurrences: 2
+
+• pecorino romano
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• beurre mou
+  Catégorie estimée: 7
+  Occurrences: 2
+
+• sucre blanc
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• jambon blanc
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• pavés saumon 150g
+  Catégorie estimée: 9
+  Occurrences: 2
+
+• riz basmati
+  Catégorie estimée: 5
+  Occurrences: 2
+
+• girofle
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• verts
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• garni
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• fruits rouges mélangés
+  Catégorie estimée: 1
+  Occurrences: 1
+
+• feta
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• noisettes
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• bananes mûres
+  Catégorie estimée: 1
+  Occurrences: 1
+
+• œufs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• cerneaux de noix
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• piment cayenne
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• saucisses porc
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• muffins anglais
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• cayenne
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• huile végétale
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pain rassis
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• jambon ibérique
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• oeufs durs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• nuoc mam
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pois chiches cuits
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• eau de cuisson
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• olives noires dénoyautées
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• avocats
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• chips de maïs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• figues fraîches
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• thon au naturel
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• St Môret
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• saumon frais
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• piment de Cayenne
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• fécule de maïs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pimientos de Padrón
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• fleur de sel
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• ail (facultatif)
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• sherry
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pois chiches secs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• feuilles de brick
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• curry
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• champignons noirs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• nuoc-mâm
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• crevettes cuites
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• morue dessalée
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• cive
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• quatre-épices
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• riz Arborio
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• levure de bière fraîche
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• malt d'orge ou sucre
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• poivrons jaunes
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• tomates cerises
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• vinaigre balsamique
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• artichauts violets moyens
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• châtaignes
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pain
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• jaunes d'œufs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• poivre blanc
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• haricots blancs secs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• lentilles
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• saucisses de Strasbourg
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pesto
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• olives
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• chorizo
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• poudre d'amande
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• chèvre frais
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• eau tiède
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• poulet  fermier (1,5 kg)
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• thym frais
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• blancs de poulet
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• cidre brut
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• calvados
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• poulet fermier (1,8 kg)
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• petits oignons grelots
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• herbes italiennes
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• zeste de citron
+  Catégorie estimée: 1
+  Occurrences: 1
+
+• escalopes de veau (70 g)
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• jambon cru
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• sauge fraîche
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• escalopes de veau
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• veau pour blanquette
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• blanc de poireau
+  Catégorie estimée: 1
+  Occurrences: 1
+
+• petits oignons blancs
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• citron bio
+  Catégorie estimée: 1
+  Occurrences: 1
+
+• rôti de veau sous-noix
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• tranches de bacon
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• tranches d'emmental
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• sauté de veau
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• paupiettes de veau
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• petits oignons
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• vin rouge de Bourgogne
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• paleron de boeuf
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• feuilles de laurier
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• bière ambrée
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pain d'épices
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• brin de thym
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• steaks de boeuf 180g
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• poivre en grains
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• entrecôte de boeuf
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• vinaigre d'estragon
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• estragon frais
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• bavette ou rumsteck de boeuf
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• boeuf à mijoter
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• paprika doux
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• pomme ou poire
+  Catégorie estimée: 1
+  Occurrences: 1
+
+• saké
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• oignon vert
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• rôti de porc
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• saucisses fumées
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• branche de thym
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• saucisses de Toulouse
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• travers de porc
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• échine de porc
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• coleslaw
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• tortillas
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• escalopes de porc
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• jambon à l'os
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• madère
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• gigot d'agneau
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• épaule d'agneau
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• côtelettes d'agneau
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• pignons
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• magrets de canard
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• poivre vert
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• canard entier
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• cinq épices
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• oignons nouveaux
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• galettes chinoises
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• confit de canard
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• andouillettes de Troyes
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• boudins noirs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• saucisson de Lyon pistaché 800g
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• levure de boulanger
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• jaune d'oeuf pour dorure
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pruneaux
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• vanille liquide
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• farine de sarrasin
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• riz bomba
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• poulet découpé
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• garrofó
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• calamars
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• fumet de poisson
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• penne
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• rouge
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• olives noires
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• guanciale
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• tonnarelli
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• poivre noir
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• biscuits Graham
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• sucre brun
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pépites de chocolat
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• farine T65
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• levure boulanger fraîche
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• oeufs (4 gros)
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pépites chocolat
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• beurre noisette
+  Catégorie estimée: 7
+  Occurrences: 1
+
+• jus citron
+  Catégorie estimée: 1
+  Occurrences: 1
+
+• sucre pour caramel
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• burger
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• oignon rouge
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• riz arborio
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• tomme fraîche
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• lait entier
+  Catégorie estimée: 7
+  Occurrences: 1
+
+• pruneaux dénoyautés
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• oeufs entiers
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• rhum ambré
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• blancs d'oeufs vieillis
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• ganache chocolat
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• huile neutre
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pavés saumon
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• graines sésame
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• haricots noirs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• lasagnes
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• trofie ou linguine
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• tofu ferme
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• huile sésame
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pois mange-tout
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• endives
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• paneer
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• garam masala
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• nouilles ramen
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• poitrine de porc
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• sablée
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• oeufs pour meringue
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• sucre pour meringue
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• cerises
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• jaunes oeufs
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• café fort
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• cuillère
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• amaretto
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• brisées
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pour dorure
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• boeuf (gîte, paleron)
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• farine T45
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• beurre de tourage
+  Catégorie estimée: 7
+  Occurrences: 1
+
+• poule
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• chair à saucisse
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• mie de pain
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• escargots
+  Catégorie estimée: 14
+  Occurrences: 1
+
+
+================================================================================
+ARCHETYPES À CRÉER
+--------------------------------------------------------------------------------
+
+• huile d'olive
+  Nom de base: huile d'olive
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 76
+
+• crème fraîche
+  Nom de base: crème
+  Processus: frais
+  Catégorie estimée: 7
+  Occurrences: 17
+
+• jus de citron
+  Nom de base: jus de citron
+  Processus: N/A
+  Catégorie estimée: 1
+  Occurrences: 15
+
+• sauce soja
+  Nom de base: sauce soja
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 14
+
+• bouillon
+  Nom de base: bouillon
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 10
+
+• fromage râpé
+  Nom de base: fromage
+  Processus: râpage
+  Catégorie estimée: 7
+  Occurrences: 9
+
+• boeuf haché
+  Nom de base: boeuf
+  Processus: hachage
+  Catégorie estimée: 9
+  Occurrences: 6
+
+• parmesan râpé
+  Nom de base: parmesan
+  Processus: râpage
+  Catégorie estimée: 14
+  Occurrences: 6
+
+• bouillon de boeuf
+  Nom de base: bouillon de boeuf
+  Processus: N/A
+  Catégorie estimée: 9
+  Occurrences: 5
+
+• crème
+  Nom de base: crème
+  Processus: N/A
+  Catégorie estimée: 7
+  Occurrences: 5
+
+• pâte feuilletée
+  Nom de base: pâte feuilletée
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• gruyère râpé
+  Nom de base: gruyère
+  Processus: râpage
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• crème liquide
+  Nom de base: crème liquide
+  Processus: N/A
+  Catégorie estimée: 7
+  Occurrences: 4
+
+• fond de veau
+  Nom de base: fond de veau
+  Processus: N/A
+  Catégorie estimée: 9
+  Occurrences: 4
+
+• huile de friture
+  Nom de base: huile de friture
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• sauce béchamel
+  Nom de base: sauce béchamel
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 4
+
+• beurre fondu
+  Nom de base: beurre fondu
+  Processus: N/A
+  Catégorie estimée: 7
+  Occurrences: 3
+
+• saumon fumé
+  Nom de base: saumon
+  Processus: fumage
+  Catégorie estimée: 9
+  Occurrences: 3
+
+• persil haché
+  Nom de base: persil
+  Processus: hachage
+  Catégorie estimée: 10
+  Occurrences: 3
+
+• huile de sésame
+  Nom de base: huile de sésame
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 3
+
+• vinaigre de riz
+  Nom de base: vinaigre de riz
+  Processus: N/A
+  Catégorie estimée: 5
+  Occurrences: 3
+
+• jus de citron vert
+  Nom de base: jus de citron vert
+  Processus: N/A
+  Catégorie estimée: 1
+  Occurrences: 2
+
+• fromage frais
+  Nom de base: fromage
+  Processus: frais
+  Catégorie estimée: 7
+  Occurrences: 2
+
+• paprika fumé
+  Nom de base: paprika
+  Processus: fumage
+  Catégorie estimée: 10
+  Occurrences: 2
+
+• coriandre moulue
+  Nom de base: coriandre
+  Processus: broyage
+  Catégorie estimée: 10
+  Occurrences: 2
+
+• bouillon de légumes
+  Nom de base: bouillon de légumes
+  Processus: N/A
+  Catégorie estimée: 2
+  Occurrences: 2
+
+• bouillon de volaille
+  Nom de base: bouillon de volaille
+  Processus: N/A
+  Catégorie estimée: 2
+  Occurrences: 2
+
+• ail en poudre
+  Nom de base: ail
+  Processus: séchage et broyage
+  Catégorie estimée: 2
+  Occurrences: 2
+
+• sauce d'huître
+  Nom de base: sauce d'huître
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• vinaigre de cidre
+  Nom de base: vinaigre de cidre
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 2
+
+• viande d'agneau hachée
+  Nom de base: viande d'agneau
+  Processus: hachage
+  Catégorie estimée: 9
+  Occurrences: 2
+
+• huile de coco
+  Nom de base: huile de coco
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• cumin moulu
+  Nom de base: cumin
+  Processus: broyage
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• haricots blancs sauce tomate
+  Nom de base: haricots blancs sauce tomate
+  Processus: N/A
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• vinaigre de xérès
+  Nom de base: vinaigre de xérès
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• fromage de chèvre
+  Nom de base: fromage de chèvre
+  Processus: N/A
+  Catégorie estimée: 7
+  Occurrences: 1
+
+• porc haché
+  Nom de base: porc
+  Processus: hachage
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• comté râpé
+  Nom de base: comté
+  Processus: râpage
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• pâtes courtes
+  Nom de base: pâtes courtes
+  Processus: N/A
+  Catégorie estimée: 5
+  Occurrences: 1
+
+• pâte brisée
+  Nom de base: pâte brisée
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• fromage blanc
+  Nom de base: fromage blanc
+  Processus: N/A
+  Catégorie estimée: 7
+  Occurrences: 1
+
+• pâte à pizza
+  Nom de base: pâte à pizza
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• sauce tomate
+  Nom de base: sauce tomate
+  Processus: N/A
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• jambon cuit
+  Nom de base: jambon
+  Processus: cuisson
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• poivre moulu
+  Nom de base: poivre
+  Processus: broyage
+  Catégorie estimée: 10
+  Occurrences: 1
+
+• jarret de veau en tranches de 4cm
+  Nom de base: jarret de veau de 4cm
+  Processus: tranchage
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• sauce tomates
+  Nom de base: sauce tomates
+  Processus: N/A
+  Catégorie estimée: 2
+  Occurrences: 1
+
+• poitrine fumée
+  Nom de base: poitrine
+  Processus: fumage
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• sauce soja claire
+  Nom de base: sauce soja claire
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• sauce soja foncée
+  Nom de base: sauce soja foncée
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• sauce barbecue
+  Nom de base: sauce barbecue
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• sauce tonkatsu
+  Nom de base: sauce tonkatsu
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• agneau haché
+  Nom de base: agneau
+  Processus: hachage
+  Catégorie estimée: 9
+  Occurrences: 1
+
+• sauce hoisin
+  Nom de base: sauce hoisin
+  Processus: N/A
+  Catégorie estimée: 14
+  Occurrences: 1
+
+• ganache ou crème
+  Nom de base: ganache ou crème
+  Processus: N/A
+  Catégorie estimée: 7
+  Occurrences: 1
+
+• riz cuit froid
+  Nom de base: riz froid
+  Processus: cuisson
+  Catégorie estimée: 5
+  Occurrences: 1
+
+
+================================================================================
+STATISTIQUES
+================================================================================
+
+Total ingrédients uniques: 441
+Déjà existants: 69
+À créer:
+  - Canonical foods: 316
+  - Archetypes: 56

@@ -1,0 +1,157 @@
+Ingredient_Original|Meilleur_Match|Confidence|Canonical_Food_ID|Occurrences
+biscuits Graham|pois gourmand|42.86%|2050|1
+saucisson de Lyon pistaché 800g|champignon de Paris|44.00%|3001|1
+trofie ou linguine|mandarine|44.44%|1034|1
+pâte à pizza|petit pois|45.45%|2047|1
+nuoc-mâm|pomme|46.15%|1052|1
+herbes de Provence|verveine|46.15%|2067|4
+beurre mou|pousse de bambou|46.15%|2055|2
+vinaigre balsamique|cœur de palmier|47.06%|2021|1
+coleslaw|carambole|47.06%|1014|1
+paprika fumé|fruit de la passion|48.00%|1024|2
+jaunes d'œufs|ail des ours|48.00%|8001|1
+herbes italiennes|tomatillo|48.00%|2065|1
+jambon à l'os|pousse de bambou|48.00%|2055|1
+chair à saucisse|À classer|48.00%|14010|1
+levure chimique|céleri branche|48.28%|2007|6
+chapelure panko|chou romanesco|48.28%|2013|3
+beurre fondu|boeuf|50.00%|2002|3
+jambon ibérique|framboise|50.00%|1023|1
+St Môret|mûre|50.00%|1039|1
+bouquet garni|origan|50.00%|2043|9
+crème liquide|cœur de palmier|50.00%|2021|4
+saké|soja|50.00%|4005|1
+saucisses fumées|chou de Bruxelles|50.00%|2011|1
+sauce tonkatsu|saumon|50.00%|2062|1
+beurre salé|tournesol|50.00%|11009|2
+cream cheese|crevette|50.00%|2029|1
+ganache chocolat|noix de coco|50.00%|1043|1
+huile sésame|calmar|50.00%|9003|1
+garam masala|cardamome|50.00%|6001|1
+vinaigre de cidre|sucre de canne|51.61%|14004|2
+pépites chocolat|pois chiche|51.85%|5008|1
+muffins anglais|sanglier|52.17%|8013|1
+huile végétale|chou kale|52.17%|2012|1
+beurre noisette|crevette|52.17%|2029|1
+morue dessalée|cabillaud|52.63%|2004|1
+lardons fumés|cardon|52.63%|2006|2
+vin blanc sec|boeuf|52.63%|2002|8
+bouillon de légumes|thé|52.94%|8014|2
+nuoc mam|curcuma|53.33%|6003|1
+levure boulanger|céleri branche|53.33%|2007|2
+gruyère râpé|rhubarbe|53.33%|2056|4
+galettes chinoises|chou chinois|53.33%|2010|1
+levure boulanger fraîche|céleri branche|53.33%|2007|1
+fruits rouges mélangés|fruit de la passion|53.66%|1024|1
+jambon serrano|pousse de bambou|53.85%|2055|2
+tranches de bacon|chou romanesco|53.85%|2013|1
+tranches d'emmental|moutarde|54.05%|10003|1
+saucisses de Toulouse|pousse de bambou|54.05%|2055|1
+sucre pour meringue|sucre de betterave|54.05%|14003|1
+yaourt nature|courgette|54.55%|2026|2
+eau de cuisson|fruit de la passion|54.55%|1024|1
+comté râpé|carotte|54.55%|1005|1
+jambon cru|fruit du dragon|54.55%|1025|1
+maïzena|maïs|54.55%|9007|3
+ketchup|chou blanc|54.55%|2009|3
+rhum|rhubarbe|54.55%|2056|3
+vin rouge de Bourgogne|moutarde|55.00%|10003|1
+vinaigre de xérès|ail des ours|55.17%|8001|1
+nouilles ramen|thé|55.17%|8014|1
+quatre-épices|cardamome|55.56%|6001|1
+mozzarella|maquereau|55.56%|9008|3
+pain d'épices|cardamome|55.56%|6001|1
+huile neutre|huître|55.56%|9006|1
+pâtes courtes|patate douce|56.00%|2045|1
+boudins noirs|chou chinois|56.00%|2010|1
+chocolat noir|chou chinois|56.00%|2010|3
+feta|petit pois|57.14%|2047|1
+cidre brut|citron vert|57.14%|1016|1
+poitrine fumée|poireau|57.14%|2049|1
+bière ambrée|gingembre|57.14%|10002|1
+ganache ou crème|patate douce|57.14%|2045|1
+sauce béchamel|sucre de canne|57.14%|14004|4
+pour dorure|chou rouge|57.14%|2014|1
+pimientos de Padrón|champignon de Paris|57.89%|3001|1
+andouillettes de Troyes|thé|57.89%|8014|1
+fromage de chèvre|pomme de terre|58.06%|1053|1
+huile de friture|thé|58.06%|8014|4
+pépites de chocolat|noix de coco|58.06%|1043|1
+vinaigre blanc|haricot vert|58.33%|2037|2
+paprika doux|patate douce|58.33%|2045|1
+noisettes|roquette|58.82%|2058|1
+yaourt grec|citrouille|58.82%|2020|3
+vinaigre|gingembre|58.82%|10002|3
+bouillon|tomatillo|58.82%|2065|10
+pâte brisée|cerise|58.82%|1008|1
+eau tiède|épeautre|58.82%|5003|1
+farine T65|sardine|58.82%|9012|1
+rhum ambré|rhubarbe|58.82%|2056|1
+amaretto|pois gourmand|58.82%|2050|1
+farine T45|sardine|58.82%|9012|1
+beurre|boeuf|60.00%|2002|61
+dashi|basilic|60.00%|1004|2
+crème fraîche|crabe|60.00%|2027|17
+huile|ciboulette|60.00%|2018|25
+tahini|thon|60.00%|2064|5
+pâte feuilletée|thé|60.00%|8014|4
+crème fraîche épaisse|crabe|60.00%|2027|3
+cognac|maïs|60.00%|9007|3
+branche de céleri|café|60.00%|8006|2
+huile de sésame|thé|60.00%|8014|3
+crème|crabe|60.00%|2027|5
+graines sésame|quinoa|60.00%|4002|1
+verts|navet|60.00%|1041|2
+levure de bière fraîche|sucre de betterave|60.61%|14003|1
+levure de boulanger|sucre de canne|60.61%|14004|1
+fromage blanc|chou blanc|60.87%|2009|1
+paprika|papaye|61.54%|1046|13
+câpres|cresson|61.54%|2028|3
+saucisses de Strasbourg|pousse de bambou|61.54%|2055|1
+pesto|estragon|61.54%|2033|1
+levure|laitue|61.54%|1031|4
+calvados|cacao|61.54%|8005|1
+garrofó|carotte|61.54%|1005|1
+brisées|cerise|61.54%|1008|1
+pain de campagne|café|62.07%|8006|2
+pain de mie|moutarde|62.07%|10003|5
+pecorino romano|chou romanesco|62.07%|2013|2
+chapelure|asperge|62.50%|8004|6
+mayonnaise|céleri-rave|62.50%|1007|2
+cinq épices|cardamome|62.50%|6001|1
+guanciale|vanille|62.50%|10007|1
+sucre pour caramel|sucre de canne|62.50%|14004|1
+tofu ferme|café|62.50%|8006|1
+beurre de tourage|sucre de betterave|62.86%|14003|1
+vin rouge|chou rouge|63.16%|2014|3
+vin blanc|chou blanc|63.16%|2009|11
+vermicelle|mirabelle|63.16%|1038|2
+sauce hoisin|anchois|63.16%|9001|1
+mascarpone|mandarine|63.16%|1034|1
+jambon blanc|chou blanc|63.64%|2009|2
+sucre glace|sucre de canne|64.00%|14004|4
+cumin|citrouille|66.67%|2020|17
+bicarbonate|carotte|66.67%|1005|4
+bacon|haricot|66.67%|5004|4
+cumin moulu|citrouille|66.67%|2020|1
+mirin|romarin|66.67%|2057|5
+parmesan râpé|céleri-rave|66.67%|1007|6
+pain|noix de pécan|66.67%|11006|1
+jambon|saumon|66.67%|2062|3
+jambon cuit|saumon|66.67%|2062|1
+tortillas|tomatillo|66.67%|2065|1
+madère|mandarine|66.67%|1034|1
+parmesan|céleri-rave|66.67%|1007|7
+tonnarelli|citronnelle|66.67%|2019|1
+cassonade|canard|66.67%|2005|3
+sucre blanc|chou blanc|66.67%|2009|2
+sucre brun|sucre de betterave|66.67%|14003|1
+burger|citrouille|66.67%|2020|1
+cheddar|blette|66.67%|2001|1
+lasagnes|sauge|66.67%|2061|1
+pecorino|maïs|66.67%|9007|1
+paneer|poivre|66.67%|10005|1
+mie de pain|noix de pécan|66.67%|11006|1
+escargots|carotte|66.67%|1005|1
+graines de sésame|moutarde|68.57%|10003|3
+fumet de poisson|fruit de la passion|68.57%|1024|1

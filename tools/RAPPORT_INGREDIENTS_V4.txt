@@ -1,0 +1,42 @@
+================================================================================
+RAPPORT FINAL - CLASSIFICATION DES INGRÉDIENTS V4
+================================================================================
+
+Total ingrédients bruts: 441
+Canonical à créer: 231
+Archetypes à créer: 82
+Déjà existants: 113
+Ignorés: 9
+
+
+================================================================================
+INGRÉDIENTS IGNORÉS
+================================================================================
+
+• eau de cuisson (1x)
+  → Trop vague: eau de cuisson
+
+• St Môret (1x)
+  → Marque commerciale
+
+• pimientos de Padrón (1x)
+  → Cultivar spécifique à créer manuellement: pimientos de Padrón
+
+• riz Arborio (1x)
+  → Cultivar spécifique à créer manuellement: riz Arborio
+
+• malt d'orge ou sucre (1x)
+  → Multiple ingrédients: malt d'orge ou sucre
+
+• bavette ou rumsteck de boeuf (1x)
+  → Multiple ingrédients: bavette ou rumsteck de boeuf
+
+• pomme ou poire (1x)
+  → Multiple ingrédients: pomme ou poire
+
+• ganache ou crème (1x)
+  → Multiple ingrédients: ganache ou crème
+
+• trofie ou linguine (1x)
+  → Multiple ingrédients: trofie ou linguine
+

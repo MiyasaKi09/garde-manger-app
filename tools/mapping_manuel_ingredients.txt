@@ -1,0 +1,188 @@
+# MAPPING MANUEL COMPLET - ANALYSE INDIVIDUELLE
+# Format: ingredient_brut → ingredient_final | type | category | raison
+
+# === DÉJÀ EXISTANTS (à vérifier dans DB) ===
+sel → EXISTE
+poivre → EXISTE
+ail → EXISTE (canonical)
+oeufs → oeuf | canonical | 7 | singulariser
+oignon → EXISTE
+gousses d'ail → ail | canonical | 2 | retirer unité
+huile → EXISTE
+oignons → oignon | canonical | 2 | singulariser
+carottes → carotte | canonical | 2 | singulariser
+tomates → tomate | canonical | 2 | singulariser
+pommes de terre → pomme de terre | canonical | 2 | singulariser
+persil → EXISTE
+gingembre → EXISTE
+champignons de Paris → champignon de Paris | canonical | 3 | singulariser
+thym → EXISTE
+citron → EXISTE
+vanille → EXISTE
+laurier → EXISTE
+échalotes → échalote | canonical | 2 | singulariser
+
+# === HUILES ET JUS (ARCHETYPE - extraction) ===
+huile d'olive → huile d'olive | archetype | 11 | extraction
+jus de citron → jus de citron | archetype | 1 | extraction
+
+# === SAUCES ET PRÉPARATIONS (ARCHETYPE) ===
+sauce soja → sauce soja | archetype | 14 | préparation
+bouillon → bouillon | archetype | 14 | préparation
+concentré de tomate → concentré de tomate | archetype | 2 | concentration/transformation
+bouillon de boeuf → bouillon de boeuf | archetype | 9 | préparation
+concentré de tomates → concentré de tomate | archetype | 2 | concentration (singulariser)
+fond de veau → fond de veau | archetype | 9 | préparation
+sauce béchamel → sauce béchamel | archetype | 7 | préparation
+
+# === ÉPICES DE BASE (CANONICAL) ===
+cumin → cumin | canonical | 10 | épice brute
+cannelle → cannelle | canonical | 10 | épice brute
+paprika → paprika | canonical | 10 | épice brute
+noix de muscade → noix de muscade | canonical | 10 | épice brute
+muscade → muscade | canonical | 10 | épice brute
+curcuma → curcuma | canonical | 10 | épice brute
+origan → origan | canonical | 10 | épice brute
+
+# === CRÈME (ARCHETYPE car produit laitier transformé) ===
+crème fraîche → crème fraîche | archetype | 7 | produit laitier transformé
+crème → crème | archetype | 7 | produit laitier transformé (générique)
+crème liquide → crème liquide | archetype | 7 | produit laitier transformé
+
+# === FROMAGES RÂPÉS (ARCHETYPE - transformation) ===
+fromage râpé → fromage râpé | archetype | 7 | râpage
+parmesan râpé → parmesan râpé | archetype | 7 | râpage
+gruyère râpé → gruyère râpé | archetype | 7 | râpage
+parmesan → parmesan | canonical | 7 | fromage brut non râpé
+
+# === ŒUFS ET PARTIES (jaune/blanc = ARCHETYPE) ===
+oeuf → oeuf | canonical | 7 | aliment brut
+œuf → oeuf | canonical | 7 | normaliser caractère
+jaunes d'oeufs → jaune d'oeuf | archetype | 7 | partie séparée (singulariser)
+
+# === HERBES FRAÎCHES (retirer "frais") ===
+basilic frais → basilic | canonical | 10 | retirer adjectif
+persil frais → persil | canonical | 10 | retirer adjectif
+
+# === RIZ ET CÉRÉALES ===
+riz → riz | canonical | 5 | céréale brute
+
+# === BEURRE (ATTENTION) ===
+beurre → beurre | canonical | 7 | aliment brut
+beurre fondu → beurre | canonical | 7 | état de préparation, pas transformation permanente
+beurre mou → beurre | canonical | 7 | état temporaire
+beurre salé → beurre salé | canonical | 7 | variété différente (sel ajouté)
+beurre de tourage → beurre | canonical | 7 | trop spécifique, c'est du beurre
+
+# === FARINE ===
+farine → farine | canonical | 5 | céréale transformée de base
+farine T45 → farine | canonical | 5 | type trop précis
+farine T65 → farine | canonical | 5 | type trop précis
+
+# === SUCRE ===
+sucre → sucre | canonical | 14 | aliment brut
+sucre glace → sucre glace | canonical | 14 | forme différente mais commune
+sucre blanc → sucre | canonical | 14 | adjectif couleur inutile
+cassonade → cassonade | canonical | 14 | type de sucre différent
+sucre semoule → sucre | canonical | 14 | granulation
+
+# === FLOCONS (ARCHETYPE - transformation par aplatissement) ===
+flocons d'avoine → flocon d'avoine | archetype | 5 | transformation céréale
+
+# === PAIN (ARCHETYPE - tous sont cuits) ===
+pain de mie → pain de mie | archetype | 5 | pain cuit
+pain → pain | archetype | 5 | pain cuit
+pain de campagne → pain de campagne | archetype | 5 | pain cuit
+baguette → baguette | archetype | 5 | pain cuit
+
+# === CHAPELURE (ARCHETYPE - transformation) ===
+chapelure → chapelure | archetype | 5 | pain transformé
+
+# === VIANDES HACHÉES (ARCHETYPE - transformation) ===
+boeuf haché → boeuf haché | archetype | 9 | hachage
+boeuf → boeuf | canonical | 9 | viande brute
+
+# === CHARCUTERIE (ARCHETYPE - préparation) ===
+bacon → bacon | archetype | 9 | charcuterie
+saumon fumé → saumon fumé | archetype | 9 | fumage
+
+# === MÉLANGES D'ÉPICES (ARCHETYPE) ===
+herbes de Provence → herbes de Provence | archetype | 10 | mélange
+
+# === HUILE DE FRITURE (ARCHETYPE) ===
+huile de friture → huile de friture | archetype | 11 | préparation
+
+# === MIEL (CANONICAL - produit naturel) ===
+miel → miel | canonical | 14 | produit naturel
+
+# === SIROP D'ÉRABLE (CANONICAL - extraction naturelle) ===
+sirop d'érable → sirop d'érable | canonical | 14 | extraction naturelle
+
+# === PÂTE FEUILLETÉE (ARCHETYPE - préparation complexe) ===
+pâte feuilletée → pâte feuilletée | archetype | 14 | préparation pâtissière
+
+# === BICARBONATE (CANONICAL - produit chimique brut) ===
+bicarbonate → bicarbonate | canonical | 14 | produit brut
+
+# === LEVURE (CANONICAL - produit brut) ===
+levure → levure | canonical | 14 | produit brut
+levure chimique → levure chimique | canonical | 14 | produit brut
+
+# === LÉGUMES (CANONICAL - retirer adjectifs et singulariser) ===
+piment d'Espelette → piment d'Espelette | canonical | 2 | variété spécifique
+poireau → poireau | canonical | 2 | légume brut
+poireaux → poireau | canonical | 2 | singulariser
+carotte → carotte | canonical | 2 | légume brut
+céleri → céleri | canonical | 2 | légume brut
+poivron rouge → poivron rouge | canonical | 2 | couleur importante (pas adjectif superflu)
+poivrons → poivron | canonical | 2 | singulariser
+courgettes → courgette | canonical | 2 | singulariser
+concombre → concombre | canonical | 2 | légume brut
+piment → piment | canonical | 2 | légume brut
+aubergines → aubergine | canonical | 2 | singulariser
+champignons → champignon | canonical | 3 | singulariser
+épinards → épinard | canonical | 2 | singulariser
+
+# === TOMATES TRANSFORMÉES (ARCHETYPE) ===
+tomates concassées → tomate concassée | archetype | 2 | concassage
+tomates mûres → tomate | canonical | 2 | adjectif inutile, singulariser
+
+# === MOULES (CANONICAL - animal brut) ===
+moules → moule | canonical | 9 | singulariser
+
+# === POMMES (CANONICAL) ===
+pommes → pomme | canonical | 1 | singulariser
+
+# === CITRONS (CANONICAL) ===
+citrons → citron | canonical | 1 | singulariser
+
+# === LAIT DE COCO (ARCHETYPE - extraction) ===
+lait de coco → lait de coco | archetype | 7 | extraction
+
+# === YAOURT (CANONICAL si nature, ARCHETYPE si transformé) ===
+yaourt grec → yaourt grec | canonical | 7 | produit laitier mais pas transformé
+yaourt nature → yaourt | canonical | 7 | nature = base
+
+# === VERMICELLES (ARCHETYPE - pâtes) ===
+vermicelles de riz → vermicelle de riz | archetype | 5 | pâtes transformées
+
+# === SALADE (CANONICAL) ===
+salade → salade | canonical | 2 | légume brut
+
+# === ANETH (CANONICAL - herbe) ===
+aneth frais → aneth | canonical | 10 | retirer "frais"
+
+# === MOUTARDE (CANONICAL - condiment de base) ===
+moutarde → moutarde | canonical | 14 | condiment brut
+
+# === BOUQUET GARNI (CANONICAL - assemblage d'herbes mais considéré comme produit de base en cuisine) ===
+bouquet garni → bouquet garni | canonical | 10 | assemblage standard d'herbes
+
+# === EAU (CANONICAL) ===
+eau → eau | canonical | 14 | liquide brut
+
+# === LAIT (CANONICAL) ===
+lait → lait | canonical | 7 | produit laitier brut
+
+# === ARTICHAUT (CANONICAL - retirer adjectifs de taille/couleur pour cultivars communs) ===
+artichauts violets moyens → artichaut violet | canonical | 2 | retirer taille, singulariser
