@@ -1,0 +1,181 @@
+ID,Nom,Role,Raison
+8998,Potage aux tomates,ENTREE,REDONDANT - Potage aux tomates
+8999,Potage aux champignons,ENTREE,REDONDANT - Potage aux champignons
+9000,Potage aux aubergines,ENTREE,REDONDANT - Potage aux aubergines
+9001,Potage aux poivrons,ENTREE,REDONDANT - Potage aux poivrons
+9002,Potage au chou-fleur,ENTREE,REDONDANT - Potage au chou-fleur
+9003,Potage aux brocolis,ENTREE,REDONDANT - Potage aux brocolis
+9004,Potage aux navets,ENTREE,REDONDANT - Potage aux navets
+9005,Potage aux blettes,ENTREE,REDONDANT - Potage aux blettes
+9006,Potage au panais,ENTREE,REDONDANT - Potage au panais
+9008,Potage au chou rouge,ENTREE,REDONDANT - Potage au chou rouge
+9009,Potage aux artichauts,ENTREE,REDONDANT - Potage aux artichauts
+9018,Entrecôte grillée,PLAT_PRINCIPAL,DOUBLON - Entrecôte grillée
+9022,Aloyau grillé,PLAT_PRINCIPAL,BASIQUE - Aloyau grillé
+9023,Onglet grillé,PLAT_PRINCIPAL,BASIQUE - Onglet grillé
+9024,Hampe grillée,PLAT_PRINCIPAL,BASIQUE - Hampe grillée
+9026,Filet de bœuf poêlé,PLAT_PRINCIPAL,BASIQUE - Filet de bœuf poêlé
+9028,Steak minute,PLAT_PRINCIPAL,BASIQUE - Steak minute
+9033,Bavette poêlée aux oignons,PLAT_PRINCIPAL,BASIQUE - Merlan de bœuf grillé
+9051,Bœuf aux aubergines,PLAT_PRINCIPAL,MICRO-VAR - Bœuf aux aubergines
+9052,Bœuf aux tomates,PLAT_PRINCIPAL,VAGUE - Bœuf aux tomates
+9053,Bœuf au céleri,PLAT_PRINCIPAL,MICRO-VAR - Bœuf au céleri
+9054,Bœuf au chou,PLAT_PRINCIPAL,MICRO-VAR - Bœuf au chou
+9055,Bœuf aux navets,PLAT_PRINCIPAL,MICRO-VAR - Bœuf aux courgettes
+9056,Bœuf aux épices,PLAT_PRINCIPAL,MICRO-VAR - Bœuf aux haricots blancs
+9057,Bœuf stroganoff,PLAT_PRINCIPAL,DOUBLON - Bœuf Stroganoff
+9058,Bœuf à la moutarde,PLAT_PRINCIPAL,MICRO-VAR - Bœuf aux lentilles
+9059,Bœuf à la crème,PLAT_PRINCIPAL,MICRO-VAR - Bœuf aux navets
+9060,Bœuf au curry doux,PLAT_PRINCIPAL,MICRO-VAR - Bœuf au curry doux
+9061,Bœuf au paprika,PLAT_PRINCIPAL,MICRO-VAR - Bœuf au paprika
+9062,Bœuf sauce tomate,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce tomate
+9063,Bœuf sauce poivre,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce poivre
+9064,Bœuf sauce au roquefort,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce au roquefort
+9065,Bœuf sauce au gorgonzola,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce au gorgonzola
+9066,Bœuf sauce au chèvre,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce au chèvre
+9067,Bœuf sauce aux champignons,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce aux champignons
+9068,Bœuf sauce aux poivrons,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce aux poivrons
+9069,Bœuf sauce aux oignons,PLAT_PRINCIPAL,QUASI-DOUBLON - Bœuf sauce aux oignons
+9070,Bœuf sauce au citron,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce au citron
+9071,Bœuf sauce au miel,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce au miel
+9072,Bœuf sauce aux herbes,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce aux herbes
+9073,Bœuf sauce aux tomates séchées,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce aux tomates séchées
+9074,Bœuf sauce au pesto,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce au pesto
+9075,Bœuf sauce au curry coco,PLAT_PRINCIPAL,GÉNÉRIQUE - Bœuf sauce au curry coco
+9077,Sauté de veau marengo,PLAT_PRINCIPAL,DOUBLON - Sauté de veau Marengo
+9080,Veau aux carottes,PLAT_PRINCIPAL,MICRO-VAR - Veau aux carottes
+9081,Veau aux courgettes,PLAT_PRINCIPAL,MICRO-VAR - Veau aux courgettes
+9082,Veau aux tomates,PLAT_PRINCIPAL,VAGUE - Veau aux tomates
+9084,Veau aux aubergines,PLAT_PRINCIPAL,MICRO-VAR - Veau aux aubergines
+9085,Veau aux oignons,PLAT_PRINCIPAL,MICRO-VAR - Veau aux oignons
+9086,Veau aux pommes de terre,PLAT_PRINCIPAL,MICRO-VAR - Veau aux pommes de terre
+9088,Veau aux pois chiches,PLAT_PRINCIPAL,MICRO-VAR - Veau aux pois chiches
+9089,Veau aux lentilles,PLAT_PRINCIPAL,MICRO-VAR - Veau aux lentilles
+9090,Veau aux navets,PLAT_PRINCIPAL,MICRO-VAR - Veau aux navets
+9091,Veau aux épinards,PLAT_PRINCIPAL,MICRO-VAR - Veau aux épinards
+9092,Veau aux herbes,PLAT_PRINCIPAL,VAGUE - Veau aux herbes
+9093,Veau aux champignons sauvages,PLAT_PRINCIPAL,MICRO-VAR - Veau aux champignons sauvages
+9096,Escalope de veau panée,PLAT_PRINCIPAL,BASIQUE - Escalope de veau grillée
+9102,Côte de veau au beurre,PLAT_PRINCIPAL,BASIQUE - Côte de veau grillée
+9108,Grenadin de veau aux champignons,PLAT_PRINCIPAL,BASIQUE - Filet de veau grillé
+9126,Côtelettes d’agneau aux herbes,PLAT_PRINCIPAL,BASIQUE - Carré d'agneau grillé
+9131,Épaule d’agneau grillée,PLAT_PRINCIPAL,BASIQUE - Épaule d'agneau grillée
+9137,Agneau aux carottes,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux carottes
+9138,Agneau aux poireaux,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux poireaux
+9139,Agneau aux champignons,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux champignons
+9143,Agneau aux tomates,PLAT_PRINCIPAL,VAGUE - Agneau aux tomates
+9144,Agneau aux aubergines,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux aubergines
+9145,Agneau aux courgettes,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux courgettes
+9148,Agneau aux navets,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux navets
+9149,Agneau aux épinards,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux épinards
+9151,Agneau aux oignons,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux oignons
+9152,Agneau aux herbes,PLAT_PRINCIPAL,VAGUE - Agneau aux herbes
+9159,Agneau au paprika,PLAT_PRINCIPAL,MICRO-VAR - Agneau au paprika
+9160,Agneau au romarin,PLAT_PRINCIPAL,MICRO-VAR - Agneau au romarin
+9161,Agneau au thym,PLAT_PRINCIPAL,MICRO-VAR - Agneau au thym
+9162,Agneau au miel,PLAT_PRINCIPAL,MICRO-VAR - Agneau au miel
+9166,Agneau aux abricots,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux abricots
+9167,Agneau aux poires,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux poires
+9168,Agneau aux pommes,PLAT_PRINCIPAL,MICRO-VAR - Agneau à la moutarde
+9169,Agneau au citron,PLAT_PRINCIPAL,MICRO-VAR - Agneau au citron
+9170,Agneau aux olives,PLAT_PRINCIPAL,MICRO-VAR - Agneau aux olives
+9171,Agneau au gingembre,PLAT_PRINCIPAL,MICRO-VAR - Agneau au gingembre
+9174,Rôti de porc au miel,PLAT_PRINCIPAL,MICRO-VAR - Rôti de porc au miel
+9175,Rôti de porc au paprika,PLAT_PRINCIPAL,MICRO-VAR - Rôti de porc au paprika
+9178,Rôti de porc aux pommes,PLAT_PRINCIPAL,MICRO-VAR - Rôti de porc aux pommes
+9179,Rôti de porc aux pruneaux,PLAT_PRINCIPAL,MICRO-VAR - Rôti de porc aux pruneaux
+9180,Côtes de porc grillées,PLAT_PRINCIPAL,BASIQUE - Côtes de porc grillées
+9183,Côtes de porc au miel,PLAT_PRINCIPAL,MICRO-VAR - Côtes de porc au miel
+9184,Côtes de porc aux herbes,PLAT_PRINCIPAL,MICRO-VAR - Côtes de porc aux herbes
+9185,Côtes de porc au curry doux,PLAT_PRINCIPAL,MICRO-VAR - Côtes de porc au curry doux
+9192,Sauté de porc aux champignons,PLAT_PRINCIPAL,MICRO-VAR - Sauté de porc aux champignons
+9193,Sauté de porc aux oignons,PLAT_PRINCIPAL,MICRO-VAR - Sauté de porc aux oignons
+9194,Sauté de porc aux poivrons,PLAT_PRINCIPAL,MICRO-VAR - Sauté de porc aux poivrons
+9195,Sauté de porc aux tomates,PLAT_PRINCIPAL,MICRO-VAR - Sauté de porc aux tomates
+9196,Sauté de porc aux carottes,PLAT_PRINCIPAL,MICRO-VAR - Sauté de porc aux carottes
+9197,Sauté de porc aux courgettes,PLAT_PRINCIPAL,MICRO-VAR - Sauté de porc aux courgettes
+9198,Sauté de porc aux aubergines,PLAT_PRINCIPAL,MICRO-VAR - Sauté de porc aux aubergines
+9200,Porc aux pruneaux,PLAT_PRINCIPAL,MICRO-VAR - Porc aux pommes
+9202,Porc aux poires,PLAT_PRINCIPAL,MICRO-VAR - Porc aux poires
+9204,Porc aux raisins secs,PLAT_PRINCIPAL,MICRO-VAR - Porc aux pommes de terre
+9206,Porc aux herbes,PLAT_PRINCIPAL,VAGUE - Porc aux herbes
+9207,Porc au gingembre,PLAT_PRINCIPAL,MICRO-VAR - Porc au gingembre
+9210,Porc sauce tomate,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce tomate
+9211,Porc sauce soja,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce au poivre
+9212,Porc sauce au miel,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce au miel
+9213,Porc sauce au roquefort,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce au roquefort
+9214,Porc sauce aux champignons,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce aux champignons
+9215,Porc sauce aux oignons,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce aux oignons
+9216,Porc sauce aux poivrons,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce aux poivrons
+9217,Porc sauce au paprika,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce au paprika
+9218,Porc sauce à la bière,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce à la bière
+9219,Porc sauce aux herbes,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce aux herbes
+9220,Porc sauce aux tomates séchées,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce à la moutarde
+9221,Porc sauce au pesto,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce au pesto
+9222,Porc sauce au lait de coco,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce au lait de coco
+9223,Porc sauce au curry coco,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce au curry coco
+9224,Porc sauce aigre-douce,PLAT_PRINCIPAL,GÉNÉRIQUE - Porc sauce aigre-douce
+9227,Chevreuil au miel,PLAT_PRINCIPAL,MICRO-VAR - Chevreuil au miel
+9228,Chevreuil au poivre,PLAT_PRINCIPAL,MICRO-VAR - Chevreuil au poivre
+9229,Chevreuil au romarin,PLAT_PRINCIPAL,MICRO-VAR - Chevreuil au romarin
+9231,Sanglier au miel,PLAT_PRINCIPAL,MICRO-VAR - Sanglier au miel
+9234,Cerf au poivre,PLAT_PRINCIPAL,MICRO-VAR - Cerf au poivre
+9235,Cerf aux champignons,PLAT_PRINCIPAL,MICRO-VAR - Cerf aux champignons
+9245,Sanglier aux carottes,PLAT_PRINCIPAL,MICRO-VAR - Sanglier aux carottes
+9246,Sanglier aux champignons,PLAT_PRINCIPAL,MICRO-VAR - Sanglier aux champignons
+9247,Sanglier aux pommes,PLAT_PRINCIPAL,MICRO-VAR - Sanglier aux pommes
+9248,Chevreuil aux airelles,PLAT_PRINCIPAL,MICRO-VAR - Chevreuil aux airelles
+9249,Chevreuil aux champignons,PLAT_PRINCIPAL,MICRO-VAR - Chevreuil aux champignons
+9253,Cerf aux marrons,PLAT_PRINCIPAL,MICRO-VAR - Cerf aux marrons
+9255,Faisan aux poires,PLAT_PRINCIPAL,MICRO-VAR - Faisan aux poires
+9256,Faisan aux pommes,PLAT_PRINCIPAL,MICRO-VAR - Faisan aux pommes
+9257,Faisan aux champignons,PLAT_PRINCIPAL,MICRO-VAR - Faisan aux champignons
+9263,Burger au bleu,PLAT_PRINCIPAL,MICRO-VAR - Burger au bleu
+9264,Burger au roquefort,PLAT_PRINCIPAL,MICRO-VAR - Burger au roquefort
+9265,Burger au chèvre,PLAT_PRINCIPAL,MICRO-VAR - Burger au chèvre
+9266,Burger au gorgonzola,PLAT_PRINCIPAL,MICRO-VAR - Burger au gorgonzola
+9267,Burger au pesto,PLAT_PRINCIPAL,MICRO-VAR - Burger au pesto
+9268,Burger au curry doux,PLAT_PRINCIPAL,MICRO-VAR - Burger au curry doux
+9273,Burger aux poivrons,PLAT_PRINCIPAL,MICRO-VAR - Burger aux champignons
+9274,Burger aux aubergines,PLAT_PRINCIPAL,MICRO-VAR - Burger aux aubergines
+9275,Burger aux courgettes,PLAT_PRINCIPAL,MICRO-VAR - Burger aux tomates
+9276,Sandwich au steak,PLAT_PRINCIPAL,MICRO-VAR - Burger épicé
+9277,Sandwich au rôti de bœuf,PLAT_PRINCIPAL,MICRO-VAR - Burger méditerranéen
+9285,Boulettes à la tomate,PLAT_PRINCIPAL,MICRO-VAR - Boulettes à la tomate
+9286,Boulettes au fromage,PLAT_PRINCIPAL,MICRO-VAR - Boulettes au fromage
+9287,Boulettes aux herbes,PLAT_PRINCIPAL,MICRO-VAR - Boulettes aux herbes
+9288,Boulettes aux champignons,PLAT_PRINCIPAL,MICRO-VAR - Boulettes aux champignons
+9289,Boulettes aux oignons,PLAT_PRINCIPAL,MICRO-VAR - Boulettes aux oignons
+9292,Steak haché au fromage,PLAT_PRINCIPAL,MICRO-VAR - Steak haché au fromage
+9293,Steak haché aux herbes,PLAT_PRINCIPAL,MICRO-VAR - Steak haché aux herbes
+9294,Steak haché aux oignons,PLAT_PRINCIPAL,MICRO-VAR - Steak haché aux oignons
+9295,Steak haché au poivre,PLAT_PRINCIPAL,MICRO-VAR - Steak haché au poivre
+9309,Cerf aux truffes,PLAT_PRINCIPAL,MICRO-VAR - Cerf aux truffes
+9320,Bœuf au satay,PLAT_PRINCIPAL,MICRO-VAR - Bœuf au satay
+9322,Bœuf au soja,PLAT_PRINCIPAL,MICRO-VAR - Bœuf au soja
+9326,Porc au soja,PLAT_PRINCIPAL,MICRO-VAR - Porc au soja
+9328,Porc au satay,PLAT_PRINCIPAL,MICRO-VAR - Porc au satay
+9329,Porc au curry japonais,PLAT_PRINCIPAL,MICRO-VAR - Porc au curry japonais
+9331,Veau au gingembre,PLAT_PRINCIPAL,MICRO-VAR - Veau au gingembre
+9332,Veau à la citronnelle,PLAT_PRINCIPAL,MICRO-VAR - Veau à la citronnelle
+9333,Veau à la thaï,PLAT_PRINCIPAL,MICRO-VAR - Veau à la thaï
+9334,Rosbif froid,PLAT_PRINCIPAL,REDONDANT - Rosbif froid
+9335,Rôti de veau froid,PLAT_PRINCIPAL,REDONDANT - Rôti de veau froid
+9336,Rôti de porc froid,PLAT_PRINCIPAL,REDONDANT - Rôti de porc froid
+9337,Salade de bœuf froid,PLAT_PRINCIPAL,REDONDANT - Salade de bœuf froid
+9338,Salade de veau froid,PLAT_PRINCIPAL,REDONDANT - Salade de veau froid
+9339,Salade de porc froid,PLAT_PRINCIPAL,REDONDANT - Salade de porc froid
+9354,Tourte au bœuf,PLAT_PRINCIPAL,MICRO-VAR - Tourte au bœuf
+9356,Tourte au bœuf et légumes,PLAT_PRINCIPAL,MICRO-VAR - Tourte au bœuf et légumes
+9357,Tourte au veau,PLAT_PRINCIPAL,MICRO-VAR - Tourte au veau
+9358,Tourte au veau et champignons,PLAT_PRINCIPAL,MICRO-VAR - Tourte au veau et champignons
+9359,Tourte au veau et légumes,PLAT_PRINCIPAL,MICRO-VAR - Tourte au veau et légumes
+9362,Tourte au porc,PLAT_PRINCIPAL,MICRO-VAR - Tourte au porc
+9367,Feuilleté au veau,PLAT_PRINCIPAL,MICRO-VAR - Feuilleté au veau
+9369,Feuilleté au porc,PLAT_PRINCIPAL,MICRO-VAR - Feuilleté au porc
+9371,Feuilleté au sanglier,PLAT_PRINCIPAL,MICRO-VAR - Feuilleté au sanglier
+9372,Feuilleté au chevreuil,PLAT_PRINCIPAL,MICRO-VAR - Feuilleté au chevreuil
+9373,Feuilleté au cerf,PLAT_PRINCIPAL,MICRO-VAR - Feuilleté au cerf
+9374,Bœuf au miso,PLAT_PRINCIPAL,MICRO-VAR - Bœuf au miso
+9375,Bœuf au sésame noir,PLAT_PRINCIPAL,MICRO-VAR - Bœuf au sésame noir
+9376,Bœuf au curry cacao,PLAT_PRINCIPAL,MICRO-VAR - Bœuf au curry cacao
