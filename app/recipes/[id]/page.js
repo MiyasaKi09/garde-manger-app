@@ -376,7 +376,7 @@ export default function RecipeDetail() {
     try {
       console.log('🥕 Chargement des ingrédients pour la recette:', id);
       
-      // Essayer d'abord avec les relations
+      // Charger avec les relations vers canonical_foods ET archetypes
       let { data: ingredients, error: ingredientsError } = await supabase
         .from('recipe_ingredients')
         .select(`
@@ -384,7 +384,21 @@ export default function RecipeDetail() {
           quantity,
           unit,
           notes,
-          canonical_food_id
+          canonical_food_id,
+          archetype_id,
+          canonical_foods (
+            id,
+            canonical_name,
+            category_id,
+            primary_unit
+          ),
+          archetypes (
+            id,
+            name,
+            canonical_food_id,
+            process,
+            primary_unit
+          )
         `)
         .eq('recipe_id', id);
 
@@ -393,31 +407,46 @@ export default function RecipeDetail() {
         ingredients = [];
       }
 
-      // Pour chaque ingrédient, charger les détails du canonical_food séparément
-      const enrichedIngredients = [];
-      if (ingredients && ingredients.length > 0) {
-        for (const ingredient of ingredients) {
-          const enrichedIngredient = { ...ingredient };
-          
-          if (ingredient.canonical_food_id) {
-            try {
-              const { data: canonicalFood, error: canonicalError } = await supabase
-                .from('canonical_foods')
-                .select('id, name, category, subcategory')
-                .eq('id', ingredient.canonical_food_id)
-                .single();
-                
-              if (!canonicalError && canonicalFood) {
-                enrichedIngredient.canonical_foods = canonicalFood;
-              }
-            } catch (canonicalErr) {
-              console.warn('⚠️ Impossible de charger les détails pour l\'ingrédient:', ingredient.canonical_food_id);
-            }
-          }
-          
-          enrichedIngredients.push(enrichedIngredient);
+      console.log(`✅ ${ingredients?.length || 0} ingrédients chargés`);
+
+      // Enrichir les ingrédients avec le nom et l'unité corrects
+      const enrichedIngredients = (ingredients || []).map(ingredient => {
+        // Déterminer le nom et l'unité en fonction de canonical_food ou archetype
+        let name, primary_unit, source_type, source_id;
+        
+        if (ingredient.archetype_id && ingredient.archetypes) {
+          // Si c'est un archetype, utiliser ses infos
+          name = ingredient.archetypes.name;
+          primary_unit = ingredient.archetypes.primary_unit || ingredient.unit;
+          source_type = 'archetype';
+          source_id = ingredient.archetype_id;
+        } else if (ingredient.canonical_food_id && ingredient.canonical_foods) {
+          // Sinon utiliser le canonical_food
+          name = ingredient.canonical_foods.canonical_name;
+          primary_unit = ingredient.canonical_foods.primary_unit || ingredient.unit;
+          source_type = 'canonical_food';
+          source_id = ingredient.canonical_food_id;
+        } else {
+          // Fallback si ni l'un ni l'autre
+          name = 'Ingrédient inconnu';
+          primary_unit = ingredient.unit || 'g';
+          source_type = 'unknown';
+          source_id = null;
         }
-      }
+
+        return {
+          ...ingredient,
+          name,
+          primary_unit,
+          source_type,
+          source_id,
+          // Garder la compatibilité avec l'ancien système
+          canonical_foods: ingredient.canonical_foods || { 
+            id: source_id, 
+            name 
+          }
+        };
+      });
 
       const ingList = enrichedIngredients;
       setIngs(ingList);
@@ -1069,12 +1098,34 @@ export default function RecipeDetail() {
 
         <div className="recipe-body">
           <div className="ingredients-section">
-            <h2>Ingrédients</h2>
-            <p className="no-ingredients">
-              Ingrédients non disponibles en mode développement.
-              <br />
-              Configurez une vraie base de données Supabase pour voir les ingrédients.
-            </p>
+            <h2>Ingrédients ({ings.length})</h2>
+            {ings.length > 0 ? (
+              <ul className="ingredients-list">
+                {ings.map((ing, index) => {
+                  // Déterminer le nom à afficher
+                  const displayName = ing.name || ing.canonical_foods?.name || 'Ingrédient inconnu';
+                  const sourceLabel = ing.source_type === 'archetype' ? '(transformé)' : '';
+                  
+                  return (
+                    <li key={ing.id || index} className="ingredient-item">
+                      <span className="ingredient-quantity">
+                        {roundForUnit(ing.quantity, ing.unit)} {ing.unit}
+                      </span>
+                      <span className="ingredient-name">
+                        {displayName} {sourceLabel}
+                      </span>
+                      {ing.notes && (
+                        <span className="ingredient-notes">({ing.notes})</span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="no-ingredients" style={{ color: '#6b7280', fontStyle: 'italic' }}>
+                Aucun ingrédient défini pour cette recette.
+              </p>
+            )}
           </div>
 
           <div className="instructions-section">

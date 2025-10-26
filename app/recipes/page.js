@@ -46,10 +46,33 @@ export default function RecipesPage() {
       console.log('URL Supabase:', process.env.NEXT_PUBLIC_SUPABASE_URL);
       console.log('Clé définie:', !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
       
-      // Utiliser la même approche que le pantry qui fonctionne
+      // Charger les recettes avec leurs ingrédients (nouveau système)
       const { data, error } = await supabase
         .from('recipes')
-        .select('*')
+        .select(`
+          *,
+          recipe_ingredients (
+            id,
+            quantity,
+            unit,
+            notes,
+            canonical_food_id,
+            archetype_id,
+            canonical_foods (
+              id,
+              canonical_name,
+              category_id,
+              primary_unit
+            ),
+            archetypes (
+              id,
+              name,
+              canonical_food_id,
+              process,
+              primary_unit
+            )
+          )
+        `)
         .order('created_at', { ascending: false });
 
       console.log('Résultat requête Supabase:');
@@ -101,50 +124,68 @@ export default function RecipesPage() {
     try {
       if (recipes.length === 0) return;
       
-      // Calculer la disponibilité réelle des ingrédients pour chaque recette
+      // Charger l'inventaire disponible
+      const { data: inventory, error } = await supabase
+        .from('inventory_lots')
+        .select('canonical_food_id, archetype_id, quantity_remaining')
+        .gt('quantity_remaining', 0)
+        .gt('expiry_date', new Date().toISOString());
+            
+      if (error) {
+        console.error('Erreur chargement inventaire:', error);
+        return;
+      }
+      
+      // Créer des Sets pour les IDs disponibles
+      const availableCanonicalIds = new Set(
+        inventory
+          .filter(item => item.canonical_food_id)
+          .map(item => item.canonical_food_id)
+      );
+      
+      const availableArchetypeIds = new Set(
+        inventory
+          .filter(item => item.archetype_id)
+          .map(item => item.archetype_id)
+      );
+      
+      // Calculer la disponibilité pour chaque recette
       const statusMap = {};
       
       for (const recipe of recipes) {
-        if (recipe.recipe_ingredients && recipe.recipe_ingredients.length > 0) {
-          const totalIngredients = recipe.recipe_ingredients.length;
-          
-          // Vérifier la disponibilité de chaque ingrédient dans l'inventaire
-          const { data: inventory, error } = await supabase
-            .from('inventory_lots')
-            .select('canonical_food_id, quantity_remaining')
-            .gt('quantity_remaining', 0)
-            .gt('expiry_date', new Date().toISOString());
-            
-          let availableIngredients = 0;
-          let urgentIngredients = 0;
-          
-          if (!error && inventory) {
-            const availableFoods = new Set(inventory.map(item => item.canonical_food_id));
-            
-            recipe.recipe_ingredients.forEach(ingredient => {
-              if (ingredient.canonical_foods && availableFoods.has(ingredient.canonical_foods.id)) {
-                availableIngredients++;
-              } else {
-                urgentIngredients++;
-              }
-            });
-          }
-          
-          statusMap[recipe.id] = {
-            totalIngredients,
-            availableIngredients,
-            availabilityPercent: Math.round((availableIngredients / totalIngredients) * 100),
-            urgentIngredients
-          };
-        } else {
-          // Si pas d'ingrédients dans la recette, on met des valeurs par défaut
+        const ingredients = recipe.recipe_ingredients || [];
+        const totalIngredients = ingredients.length;
+        
+        if (totalIngredients === 0) {
           statusMap[recipe.id] = {
             totalIngredients: 0,
             availableIngredients: 0,
             availabilityPercent: 0,
             urgentIngredients: 0
           };
+          continue;
         }
+        
+        let availableIngredients = 0;
+        
+        ingredients.forEach(ingredient => {
+          // Vérifier si l'ingrédient est disponible (canonical_food OU archetype)
+          const isAvailableCanonical = ingredient.canonical_food_id && availableCanonicalIds.has(ingredient.canonical_food_id);
+          const isAvailableArchetype = ingredient.archetype_id && availableArchetypeIds.has(ingredient.archetype_id);
+          
+          if (isAvailableCanonical || isAvailableArchetype) {
+            availableIngredients++;
+          }
+        });
+        
+        const urgentIngredients = totalIngredients - availableIngredients;
+        
+        statusMap[recipe.id] = {
+          totalIngredients,
+          availableIngredients,
+          availabilityPercent: Math.round((availableIngredients / totalIngredients) * 100),
+          urgentIngredients
+        };
       }
       
       setInventoryStatus(statusMap);
