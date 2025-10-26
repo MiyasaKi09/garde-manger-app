@@ -1,15 +1,15 @@
 # Data export summary
-_Generated: Sun Oct 26 12:07:19 UTC 2025_
+_Generated: Sun Oct 26 13:08:00 UTC 2025_
 
 ## Tables and counts
 - _backup_views: 2 rows
-- archetypes: 251 rows
+- archetypes: 289 rows
 - canonical_food_origins: 0 rows
 - canonical_food_processes: 0 rows
-- canonical_foods: 196 rows
+- canonical_foods: 227 rows
 - cooking_nutrition_factors: 0 rows
 - countries: 0 rows
-- cultivars: 1043 rows
+- cultivars: 1057 rows
 - diets: 9 rows
 - instructions: 1296 rows
 - inventory_lots: 1 rows
@@ -21,7 +21,7 @@ _Generated: Sun Oct 26 12:07:19 UTC 2025_
 - planned_meals: 0 rows
 - processes: 14 rows
 - products: 0 rows
-- recipe_ingredients: 0 rows
+- recipe_ingredients: 3487 rows
 - recipe_pairings: 0 rows
 - recipe_tags: 1015 rows
 - recipes: 878 rows
