@@ -52,7 +52,7 @@ export default function RecipesPage() {
       const { data, error } = await supabase
         .from('recipes')
         .select('*')
-        .order('created_at', { ascending: false });
+        .order('id', { ascending: false });
 
       console.log('Résultat requête Supabase:');
       console.log('- Données:', data);
@@ -271,8 +271,9 @@ export default function RecipesPage() {
             ? nameA.localeCompare(nameB)
             : nameB.localeCompare(nameA);
         default:
-          valueA = a.created_at || '';
-          valueB = b.created_at || '';
+          // Tri par ID par défaut (pas de created_at dans la table)
+          valueA = a.id || 0;
+          valueB = b.id || 0;
       }
       
       return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
