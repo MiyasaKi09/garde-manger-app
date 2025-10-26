@@ -47,32 +47,11 @@ export default function RecipesPage() {
       console.log('Clé définie:', !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
       
       // Charger les recettes avec leurs ingrédients (nouveau système)
+      // Note: on charge d'abord les recettes, puis les ingrédients séparément
+      // pour éviter les problèmes de relations multiples
       const { data, error } = await supabase
         .from('recipes')
-        .select(`
-          *,
-          recipe_ingredients (
-            id,
-            quantity,
-            unit,
-            notes,
-            canonical_food_id,
-            archetype_id,
-            canonical_foods (
-              id,
-              canonical_name,
-              category_id,
-              primary_unit
-            ),
-            archetypes (
-              id,
-              name,
-              canonical_food_id,
-              process,
-              primary_unit
-            )
-          )
-        `)
+        .select('*')
         .order('created_at', { ascending: false });
 
       console.log('Résultat requête Supabase:');
@@ -92,7 +71,58 @@ export default function RecipesPage() {
         console.log('Colonnes disponibles:', Object.keys(data[0]));
         console.log('Première recette complète:', data[0]);
         
-        setRecipes(data);
+        // Charger les ingrédients pour toutes les recettes
+        const recipeIds = data.map(r => r.id);
+        
+        const { data: ingredients, error: ingredientsError } = await supabase
+          .from('recipe_ingredients')
+          .select(`
+            recipe_id,
+            id,
+            quantity,
+            unit,
+            notes,
+            canonical_food_id,
+            archetype_id,
+            canonical_foods (
+              id,
+              canonical_name,
+              category_id,
+              primary_unit
+            ),
+            archetypes (
+              id,
+              name,
+              canonical_food_id,
+              process,
+              primary_unit
+            )
+          `)
+          .in('recipe_id', recipeIds);
+        
+        if (ingredientsError) {
+          console.error('Erreur chargement ingrédients:', ingredientsError);
+        }
+        
+        // Regrouper les ingrédients par recipe_id
+        const ingredientsByRecipe = {};
+        if (ingredients) {
+          ingredients.forEach(ing => {
+            if (!ingredientsByRecipe[ing.recipe_id]) {
+              ingredientsByRecipe[ing.recipe_id] = [];
+            }
+            ingredientsByRecipe[ing.recipe_id].push(ing);
+          });
+        }
+        
+        // Ajouter les ingrédients à chaque recette
+        const recipesWithIngredients = data.map(recipe => ({
+          ...recipe,
+          recipe_ingredients: ingredientsByRecipe[recipe.id] || []
+        }));
+        
+        console.log('Recettes enrichies avec ingrédients:', recipesWithIngredients.length);
+        setRecipes(recipesWithIngredients);
         return;
       }
       
