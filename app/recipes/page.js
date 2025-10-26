@@ -118,7 +118,12 @@ export default function RecipesPage() {
         // Ajouter les ingrédients à chaque recette
         const recipesWithIngredients = data.map(recipe => ({
           ...recipe,
-          recipe_ingredients: ingredientsByRecipe[recipe.id] || []
+          recipe_ingredients: ingredientsByRecipe[recipe.id] || [],
+          // Normaliser les noms de colonnes pour compatibilité
+          title: recipe.name,
+          prep_min: recipe.prep_time_minutes,
+          cook_min: recipe.cook_time_minutes,
+          portions: recipe.servings
         }));
         
         console.log('Recettes enrichies avec ingrédients:', recipesWithIngredients.length);

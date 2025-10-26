@@ -353,15 +353,15 @@ export default function RecipeDetail() {
     console.log('Recette trouvée:', r);
     console.log('Colonnes disponibles:', Object.keys(r));
 
-    const totalTime = (r?.prep_min || 0) + (r?.cook_min || 0) + (r?.rest_min || 0);
+    const totalTime = (r?.prep_time_minutes || 0) + (r?.cook_time_minutes || 0) + (r?.rest_min || 0);
     setRecipe({ 
       id: r?.id, 
       title: r?.title || r?.name, 
       description: r?.description,
       short_description: r?.short_description,
       time_min: totalTime, 
-      prep_min: r?.prep_min,
-      cook_min: r?.cook_min,
+      prep_min: r?.prep_time_minutes,
+      cook_min: r?.cook_time_minutes,
       rest_min: r?.rest_min,
       servings: r?.servings,
       steps: r?.instructions,
@@ -451,6 +451,11 @@ export default function RecipeDetail() {
       const ingList = enrichedIngredients;
       setIngs(ingList);
       console.log('✅ Ingrédients chargés:', ingList.length, 'ingrédients');
+      console.log('📋 Détail des ingrédients:', ingList);
+      
+      if (ingList.length > 0) {
+        console.log('📌 Premier ingrédient:', ingList[0]);
+      }
 
       // Pour l'instant, pas de chargement de lots détaillé
       setLotsByProduct({});
