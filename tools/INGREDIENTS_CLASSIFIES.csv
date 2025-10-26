@@ -1,0 +1,668 @@
+Ingrédient,Nombre de recettes,Pourcentage,Classification
+oignon,253,30.8%,canonical
+ail,223,27.1%,canonical
+sucre,174,21.2%,archétype
+œuf,162,19.7%,canonical
+beurre,149,18.1%,archétype
+crème liquide,148,18.0%,archétype
+sel,131,15.9%,canonical
+huile d'olive,120,14.6%,archétype
+farine,112,13.6%,archétype
+tomate,103,12.5%,canonical
+carotte,90,10.9%,canonical
+poivre,83,10.1%,archétype
+bouillon légumes,64,7.8%,archétype
+eau,60,7.3%,canonical
+lait,57,6.9%,canonical
+pomme de terre,56,6.8%,canonical
+huile végétale,56,6.8%,archétype
+vin blanc,50,6.1%,archétype
+bœuf,41,5.0%,canonical
+vanille,40,4.9%,canonical
+jaune d'œuf,38,4.6%,archétype
+sauce soja,33,4.0%,archétype
+gingembre,32,3.9%,canonical
+porc,30,3.6%,canonical
+persil,29,3.5%,canonical
+poireau,29,3.5%,canonical
+citron,28,3.4%,canonical
+champignon,27,3.3%,canonical
+bœuf haché,26,3.2%,archétype
+parmesan,26,3.2%,archétype
+agneau,26,3.2%,canonical
+poivron,26,3.2%,canonical
+cumin,25,3.0%,archétype
+échalote,25,3.0%,canonical
+gélatine,24,2.9%,archétype
+cannelle,22,2.7%,archétype
+courgette,22,2.7%,canonical
+bouillon,22,2.7%,archétype
+poulet,22,2.7%,canonical
+levure,21,2.6%,archétype
+moutarde,20,2.4%,archétype
+riz,20,2.4%,canonical
+crème fraîche,19,2.3%,archétype
+lardon,19,2.3%,archétype
+paprika,18,2.2%,archétype
+vin rouge,16,1.9%,archétype
+pâte feuilletée,16,1.9%,archétype
+jus de citron,15,1.8%,archétype
+thym,15,1.8%,canonical
+crevette,15,1.8%,canonical
+pomme,14,1.7%,canonical
+amande,14,1.7%,canonical
+miel,14,1.7%,canonical
+aubergine,14,1.7%,canonical
+laurier,14,1.7%,canonical
+céleri,14,1.7%,canonical
+biscuit,14,1.7%,archétype
+pain,13,1.6%,archétype
+champignon de Paris,13,1.6%,canonical
+mirin,13,1.6%,archétype
+concombre,13,1.6%,canonical
+vinaigre,13,1.6%,archétype
+cognac,13,1.6%,archétype
+navet,13,1.6%,canonical
+cassonade,13,1.6%,archétype
+chapelure,12,1.5%,archétype
+épinard,12,1.5%,canonical
+chocolat noir,12,1.5%,archétype
+poivron rouge,11,1.3%,canonical
+muscade,11,1.3%,archétype
+concentré de tomate,11,1.3%,archétype
+lait coco,11,1.3%,canonical
+petit pois,10,1.2%,canonical
+haricot vert,10,1.2%,canonical
+sucre glace,10,1.2%,archétype
+pois chiche,9,1.1%,canonical
+bouquet garni,9,1.1%,canonical
+escalope de veau,9,1.1%,archétype
+blanc d'œuf,9,1.1%,archétype
+brocoli,9,1.1%,canonical
+raisin sec,9,1.1%,archétype
+veau,9,1.1%,canonical
+mangue,8,1.0%,canonical
+basilic frais,8,1.0%,canonical
+piment,8,1.0%,archétype
+poudre d'amande,8,1.0%,archétype
+maïzena,8,1.0%,archétype
+gigot d'agneau,8,1.0%,archétype
+pruneau,8,1.0%,canonical
+rhum,8,1.0%,archétype
+oignon rouge,8,1.0%,canonical
+fraise,8,1.0%,canonical
+haricot blanc,8,1.0%,canonical
+coriandre,7,0.9%,canonical
+câpre,7,0.9%,canonical
+noix,7,0.9%,canonical
+curcuma,7,0.9%,archétype
+jambon,7,0.9%,archétype
+sauce béchamel,7,0.9%,archétype
+lard,7,0.9%,archétype
+cacao,7,0.9%,canonical
+lièvre,7,0.9%,canonical
+pain burger,7,0.9%,archétype
+levure chimique,6,0.7%,archétype
+bicarbonate,6,0.7%,archétype
+olive noire,6,0.7%,archétype
+mozzarella,6,0.7%,archétype
+semoule,6,0.7%,archétype
+gruyère,6,0.7%,archétype
+olive,6,0.7%,archétype
+pâte,6,0.7%,archétype
+sauce tomate,6,0.7%,archétype
+moule,6,0.7%,canonical
+maïs,6,0.7%,canonical
+foie gras,6,0.7%,canonical
+flocon d'avoine,5,0.6%,archétype
+lait végétal,5,0.6%,canonical
+fruit rouge,5,0.6%,cultivar
+lait de coco,5,0.6%,archétype
+sirop d'érable,5,0.6%,archétype
+banane,5,0.6%,canonical
+avocat,5,0.6%,canonical
+vinaigre blanc,5,0.6%,archétype
+bacon,5,0.6%,archétype
+yaourt grec,5,0.6%,archétype
+persil frais,5,0.6%,canonical
+dashi,5,0.6%,archétype
+vermicelle de riz,5,0.6%,archétype
+tahini,5,0.6%,archétype
+anchois,5,0.6%,canonical
+porc haché,5,0.6%,archétype
+safran,5,0.6%,archétype
+bouillon de bœuf,5,0.6%,archétype
+lentille,5,0.6%,canonical
+origan,5,0.6%,canonical
+agneau haché,5,0.6%,archétype
+spaghetti,5,0.6%,archétype
+haricot noir,5,0.6%,canonical
+tofu ferme,5,0.6%,archétype
+quinoa,5,0.6%,canonical
+patate douce,5,0.6%,canonical
+sablée,5,0.6%,canonical
+fenouil,5,0.6%,canonical
+pâte pistache,5,0.6%,archétype
+yaourt,5,0.6%,archétype
+framboise,5,0.6%,canonical
+fruit de la passion,5,0.6%,canonical
+filet de bœuf,5,0.6%,archétype
+filet de veau,5,0.6%,archétype
+épaule agneau,5,0.6%,archétype
+chevreuil,5,0.6%,canonical
+sanglier,5,0.6%,canonical
+saumon fumé,4,0.5%,archétype
+aneth frais,4,0.5%,canonical
+salade,4,0.5%,canonical
+cacahuète,4,0.5%,canonical
+piment d'espelette,4,0.5%,canonical
+morue dessalée,4,0.5%,canonical
+tomate cerise,4,0.5%,cultivar
+graine de sésame,4,0.5%,canonical
+levure boulanger,4,0.5%,canonical
+herbes de provence,4,0.5%,canonical
+pignon de pin,4,0.5%,canonical
+fond de veau,4,0.5%,archétype
+huile deure,4,0.5%,archétype
+rôti de porc,4,0.5%,archétype
+ketchup,4,0.5%,archétype
+vinaigre de riz,4,0.5%,archétype
+chou blanc,4,0.5%,cultivar
+basilic,4,0.5%,canonical
+calamar,4,0.5%,canonical
+cream cheese,4,0.5%,archétype
+jus citron,4,0.5%,canonical
+pavé de saumon,4,0.5%,archétype
+ricotta,4,0.5%,archétype
+huile sésame,4,0.5%,archétype
+vert,4,0.5%,cultivar
+brisée,4,0.5%,canonical
+fécule maïs,4,0.5%,canonical
+betterave,4,0.5%,canonical
+pita,4,0.5%,canonical
+poire,4,0.5%,canonical
+caramel,4,0.5%,canonical
+fruit confit,4,0.5%,canonical
+myrtille,4,0.5%,canonical
+flocon avoine,4,0.5%,canonical
+dur,4,0.5%,canonical
+panais,4,0.5%,canonical
+fumet poisson,4,0.5%,archétype
+côte de veau,4,0.5%,archétype
+carré agneau,4,0.5%,archétype
+côtelette agneau,4,0.5%,archétype
+filet mignon porc,4,0.5%,archétype
+foie,4,0.5%,canonical
+épinard frais,3,0.4%,canonical
+feta,3,0.4%,archétype
+lait concentré sucré,3,0.4%,archétype
+menthe fraîche,3,0.4%,canonical
+coriandre fraîche,3,0.4%,canonical
+saumon frais,3,0.4%,canonical
+fromage frais,3,0.4%,archétype
+coriandrelue,3,0.4%,canonical
+lentille corail,3,0.4%,canonical
+chou-fleur,3,0.4%,canonical
+pâte courte,3,0.4%,archétype
+mayonnaise,3,0.4%,archétype
+chorizo,3,0.4%,archétype
+crème fraîche épaisse,3,0.4%,archétype
+chapelure panko,3,0.4%,archétype
+ail en poudre,3,0.4%,archétype
+orange,3,0.4%,canonical
+feuille de laurier,3,0.4%,canonical
+branche de thym,3,0.4%,canonical
+haricot rouge,3,0.4%,canonical
+huile de sésame,3,0.4%,archétype
+ananas,3,0.4%,canonical
+tortilla,3,0.4%,canonical
+menthe,3,0.4%,canonical
+lapin,3,0.4%,canonical
+beurre salé,3,0.4%,archétype
+fumet de poisson,3,0.4%,archétype
+pecorino romano,3,0.4%,archétype
+ganache chocolat,3,0.4%,archétype
+burger,3,0.4%,canonical
+cheddar,3,0.4%,archétype
+graine sésame,3,0.4%,canonical
+lasagne,3,0.4%,archétype
+girofle,3,0.4%,archétype
+chair à saucisse,3,0.4%,archétype
+lotte,3,0.4%,canonical
+seitan,3,0.4%,archétype
+blé,3,0.4%,canonical
+saindoux,3,0.4%,canonical
+glace vanille,3,0.4%,canonical
+crème pâtissière,3,0.4%,archétype
+pistache,3,0.4%,canonical
+chocolat,3,0.4%,archétype
+pêche,3,0.4%,canonical
+sirop sucre,3,0.4%,archétype
+beurre cacahuète,3,0.4%,archétype
+noix de cocoe,3,0.4%,canonical
+topinambour,3,0.4%,canonical
+huile olive,3,0.4%,archétype
+grenadin veau,3,0.4%,canonical
+figue,3,0.4%,canonical
+cerf,3,0.4%,canonical
+bécasse,3,0.4%,canonical
+graine de chia,2,0.2%,canonical
+yaourt nature,2,0.2%,archétype
+sirop d'agave,2,0.2%,archétype
+noix de pécan,2,0.2%,canonical
+pain de campagne,2,0.2%,archétype
+jambon serrano,2,0.2%,archétype
+pain rassi,2,0.2%,canonical
+jus de citron vert,2,0.2%,archétype
+baguette,2,0.2%,archétype
+ciboulette,2,0.2%,canonical
+paprika fumé,2,0.2%,canonical
+sherry,2,0.2%,canonical
+curry,2,0.2%,archétype
+pousse de soja,2,0.2%,canonical
+galette de riz,2,0.2%,canonical
+riz Arborio,2,0.2%,canonical
+coulis de tomate,2,0.2%,archétype
+potimarron,2,0.2%,canonical
+bouillon de légumes,2,0.2%,archétype
+bouillon de volaille,2,0.2%,archétype
+haricot blanc sec,2,0.2%,archétype
+romarin,2,0.2%,canonical
+lardon fumé,2,0.2%,archétype
+blanc de poulet,2,0.2%,archétype
+calvados,2,0.2%,archétype
+escalope de poulet,2,0.2%,archétype
+branche de céleri,2,0.2%,canonical
+clou de girofle,2,0.2%,canonical
+citron bio,2,0.2%,canonical
+moutarde de dijon,2,0.2%,canonical
+sauce d'huître,2,0.2%,archétype
+saucisse fumée,2,0.2%,archétype
+vinaigre de cidre,2,0.2%,archétype
+madère,2,0.2%,canonical
+penne,2,0.2%,archétype
+rouge,2,0.2%,cultivar
+guanciale,2,0.2%,canonical
+jambon blanc,2,0.2%,archétype
+lait entier,2,0.2%,canonical
+huile neutre,2,0.2%,archétype
+pois mange-tout,2,0.2%,canonical
+riz basmati,2,0.2%,cultivar
+garam masala,2,0.2%,archétype
+cerise,2,0.2%,canonical
+mascarpone,2,0.2%,archétype
+garni,2,0.2%,canonical
+escargot,2,0.2%,canonical
+cabillaud,2,0.2%,canonical
+fumet,2,0.2%,archétype
+linguine,2,0.2%,archétype
+sauce huître,2,0.2%,archétype
+nouille de riz,2,0.2%,canonical
+pousse soja,2,0.2%,canonical
+sauce poisson,2,0.2%,archétype
+lentille verte,2,0.2%,canonical
+farine de pois chiche,2,0.2%,archétype
+kecap mani,2,0.2%,canonical
+polenta,2,0.2%,archétype
+jus d'orange,2,0.2%,canonical
+radis,2,0.2%,canonical
+hot-dog,2,0.2%,canonical
+laitue romaine,2,0.2%,canonical
+nouille soba,2,0.2%,archétype
+nori,2,0.2%,canonical
+noix cajou,2,0.2%,canonical
+tofu,2,0.2%,archétype
+gochujang,2,0.2%,archétype
+farine maïs,2,0.2%,archétype
+jus citron vert,2,0.2%,cultivar
+datte,2,0.2%,canonical
+cidre,2,0.2%,canonical
+salade verte,2,0.2%,cultivar
+pâte noisette,2,0.2%,archétype
+zeste,2,0.2%,archétype
+asperge,2,0.2%,canonical
+cresson,2,0.2%,canonical
+potiron,2,0.2%,canonical
+chou vert,2,0.2%,cultivar
+tournedo,2,0.2%,canonical
+côte de bœuf,2,0.2%,archétype
+entrecôte,2,0.2%,archétype
+côte de porc,2,0.2%,archétype
+faisan,2,0.2%,canonical
+veau haché,2,0.2%,archétype
+morille,2,0.2%,canonical
+filet d'agneau,2,0.2%,archétype
+citron vert,2,0.2%,canonical
+huile de coco,1,0.1%,archétype
+noisette,1,0.1%,canonical
+cerneau de noix,1,0.1%,canonical
+piment cayenne,1,0.1%,canonical
+saucisse porc,1,0.1%,archétype
+haricot blanc sauce tomate,1,0.1%,archétype
+muffin anglais,1,0.1%,canonical
+cayenne,1,0.1%,archétype
+vinaigre de xérè,1,0.1%,archétype
+jambon ibérique,1,0.1%,archétype
+nuoc mam,1,0.1%,archétype
+citronnelle,1,0.1%,canonical
+chip de maïs,1,0.1%,canonical
+fromage de chèvre,1,0.1%,archétype
+figue fraîche,1,0.1%,canonical
+thon au naturel,1,0.1%,canonical
+st môret,1,0.1%,canonical
+piment de cayenne,1,0.1%,archétype
+fécule de maïs,1,0.1%,archétype
+pimiento de padrón,1,0.1%,canonical
+fleur de sel,1,0.1%,canonical
+ail (facultatif),1,0.1%,canonical
+pois chiche sec,1,0.1%,archétype
+feuille de brick,1,0.1%,canonical
+champignon noir,1,0.1%,cultivar
+nuoc-mâm,1,0.1%,canonical
+cive,1,0.1%,canonical
+quatre-épices,1,0.1%,canonical
+levure de bière fraîche,1,0.1%,canonical
+malt,1,0.1%,canonical
+poivron jaune,1,0.1%,canonical
+vinaigre balsamique,1,0.1%,archétype
+artichaut violet,1,0.1%,canonical
+origan séché,1,0.1%,archétype
+châtaigne,1,0.1%,canonical
+comté,1,0.1%,archétype
+poivre blanc,1,0.1%,cultivar
+saucisse de strasbourg,1,0.1%,archétype
+aneth,1,0.1%,canonical
+pesto,1,0.1%,archétype
+chèvre frais,1,0.1%,canonical
+pâte brisée,1,0.1%,archétype
+fromage blanc,1,0.1%,archétype
+poivrelu,1,0.1%,canonical
+thym frais,1,0.1%,canonical
+cidre brut,1,0.1%,canonical
+petit oignon grelot,1,0.1%,canonical
+herbes italienne,1,0.1%,canonical
+zeste de citron,1,0.1%,archétype
+jambon cru,1,0.1%,archétype
+sauge fraîche,1,0.1%,canonical
+veau pour blanquette,1,0.1%,canonical
+blanc de poireau,1,0.1%,cultivar
+petit oignon blanc,1,0.1%,cultivar
+jarret de veau,1,0.1%,canonical
+rôti de veau sous-noix,1,0.1%,archétype
+tranche de bacon,1,0.1%,archétype
+tranche d'emmental,1,0.1%,canonical
+sauté de veau,1,0.1%,canonical
+paupiette de veau,1,0.1%,canonical
+petit oignon,1,0.1%,canonical
+vin rouge de bourgogne,1,0.1%,cultivar
+paleron de bœuf,1,0.1%,canonical
+poitrine fumée,1,0.1%,canonical
+bière ambrée,1,0.1%,canonical
+pain d'épices,1,0.1%,canonical
+brin de thym,1,0.1%,canonical
+steak de bœuf,1,0.1%,archétype
+poivre en grain,1,0.1%,canonical
+entrecôte de bœuf,1,0.1%,archétype
+vinaigre à l'estragon,1,0.1%,archétype
+estragon frais,1,0.1%,canonical
+bavette de bœuf,1,0.1%,canonical
+paprika doux,1,0.1%,canonical
+sauce soja claire,1,0.1%,archétype
+sauce soja foncée,1,0.1%,archétype
+saké,1,0.1%,archétype
+oignon vert,1,0.1%,canonical
+saucisse de toulouse,1,0.1%,archétype
+traver de porc,1,0.1%,canonical
+échine de porc,1,0.1%,canonical
+sauce barbecue,1,0.1%,archétype
+coleslaw,1,0.1%,canonical
+escalope de porc,1,0.1%,archétype
+sauce tonkatsu,1,0.1%,archétype
+jambon à l'os,1,0.1%,archétype
+épaule d'agneau,1,0.1%,archétype
+côtelette d'agneau,1,0.1%,archétype
+pignon,1,0.1%,canonical
+magret de canard,1,0.1%,archétype
+poivre vert,1,0.1%,cultivar
+canard,1,0.1%,canonical
+sauce hoisin,1,0.1%,archétype
+cinq épices,1,0.1%,canonical
+oignon nouveu,1,0.1%,canonical
+galette chinoise,1,0.1%,canonical
+confit de canard,1,0.1%,canonical
+andouillette de troye,1,0.1%,canonical
+boudin noir,1,0.1%,archétype
+saucisson de lyon pistaché,1,0.1%,canonical
+levure de boulanger,1,0.1%,archétype
+vanille liquide,1,0.1%,canonical
+farine de sarrasin,1,0.1%,archétype
+riz bomba,1,0.1%,cultivar
+garrofó,1,0.1%,canonical
+tonnarelli,1,0.1%,canonical
+poivre noir,1,0.1%,cultivar
+biscuit graham,1,0.1%,canonical
+pépite de chocolat,1,0.1%,canonical
+farine t65,1,0.1%,archétype
+levure boulanger fraîche,1,0.1%,canonical
+pépite chocolat,1,0.1%,canonical
+tomme fraîche,1,0.1%,canonical
+rhum ambré,1,0.1%,canonical
+trofie,1,0.1%,canonical
+pecorino,1,0.1%,archétype
+endive,1,0.1%,canonical
+paneer,1,0.1%,canonical
+nouille ramen,1,0.1%,canonical
+poitrine de porc,1,0.1%,canonical
+café fort,1,0.1%,canonical
+amaretto,1,0.1%,canonical
+céleri-rave,1,0.1%,canonical
+farine t45,1,0.1%,archétype
+poule,1,0.1%,canonical
+thon frais,1,0.1%,canonical
+fideo,1,0.1%,canonical
+estragon,1,0.1%,canonical
+aïoli,1,0.1%,archétype
+gros sel,1,0.1%,canonical
+aquavit,1,0.1%,canonical
+bière,1,0.1%,canonical
+thon rouge,1,0.1%,cultivar
+steak de thon,1,0.1%,archétype
+dorade,1,0.1%,canonical
+sole,1,0.1%,canonical
+aile de raie,1,0.1%,canonical
+maquereau,1,0.1%,canonical
+sardine,1,0.1%,canonical
+noix saint-jacque,1,0.1%,canonical
+tamarin,1,0.1%,canonical
+encornet,1,0.1%,canonical
+seiche,1,0.1%,canonical
+poulpe,1,0.1%,canonical
+fève fraîche,1,0.1%,canonical
+palourde,1,0.1%,canonical
+ricotta salata,1,0.1%,canonical
+sauge,1,0.1%,canonical
+gnocchi,1,0.1%,canonical
+ravioli frais,1,0.1%,canonical
+cannelloni,1,0.1%,canonical
+sauce bolognaise,1,0.1%,archétype
+macaroni,1,0.1%,canonical
+tagliatelle,1,0.1%,archétype
+tofu soyeux,1,0.1%,archétype
+pâte piment,1,0.1%,archétype
+fécule,1,0.1%,archétype
+levure nutritionnelle,1,0.1%,canonical
+panko,1,0.1%,archétype
+lardon végétal,1,0.1%,archétype
+sauce huître végétale,1,0.1%,archétype
+tempeh,1,0.1%,archétype
+tomme fraîche cantal,1,0.1%,canonical
+asperge verte,1,0.1%,cultivar
+chou de bruxelle,1,0.1%,canonical
+ani,1,0.1%,canonical
+farine pois chiche,1,0.1%,archétype
+orecchiette,1,0.1%,canonical
+sarrasin,1,0.1%,canonical
+crozet,1,0.1%,canonical
+beaufort,1,0.1%,canonical
+maroille,1,0.1%,canonical
+filet anchois,1,0.1%,archétype
+phyllo,1,0.1%,archétype
+sumac,1,0.1%,canonical
+raisin blanc,1,0.1%,cultivar
+kéfir,1,0.1%,canonical
+choucroute,1,0.1%,canonical
+bière brune,1,0.1%,canonical
+tzatziki,1,0.1%,canonical
+sauce césar,1,0.1%,archétype
+falafel,1,0.1%,canonical
+houmous,1,0.1%,archétype
+nature,1,0.1%,canonical
+farine maïs précuite,1,0.1%,archétype
+nouille udon,1,0.1%,archétype
+chou,1,0.1%,canonical
+sauce yakisoba,1,0.1%,archétype
+sambal oelek,1,0.1%,archétype
+nouille chinoise,1,0.1%,canonical
+pâte sésame,1,0.1%,archétype
+vinaigre noir,1,0.1%,archétype
+huile piment,1,0.1%,archétype
+nouille,1,0.1%,archétype
+nouille patate douce,1,0.1%,canonical
+pâte laksa,1,0.1%,archétype
+riz japonais,1,0.1%,canonical
+saumon,1,0.1%,canonical
+umeboshi,1,0.1%,canonical
+furikake,1,0.1%,canonical
+bouillon poulet,1,0.1%,archétype
+œuf century,1,0.1%,canonical
+riz gluant,1,0.1%,cultivar
+kimchi,1,0.1%,canonical
+gâteau de riz,1,0.1%,canonical
+gâteau de poisson,1,0.1%,canonical
+crème d'amande,1,0.1%,archétype
+crèmesseline pralinée,1,0.1%,archétype
+pralin,1,0.1%,canonical
+fondant,1,0.1%,archétype
+crème pâtissière chocolat,1,0.1%,archétype
+fondant chocolat,1,0.1%,archétype
+feuilletée,1,0.1%,canonical
+crème chiboust,1,0.1%,archétype
+crèmesseline,1,0.1%,archétype
+pâte d'amande rose,1,0.1%,archétype
+joconde,1,0.1%,canonical
+crème au beurre café,1,0.1%,archétype
+glaçage chocolat,1,0.1%,canonical
+fondant blanc,1,0.1%,archétype
+grand marnier,1,0.1%,canonical
+caramel beurre salé,1,0.1%,archétype
+marsala,1,0.1%,canonical
+nougat,1,0.1%,canonical
+chaud,1,0.1%,canonical
+farine manitoba,1,0.1%,archétype
+amaretti,1,0.1%,canonical
+biscuit sec,1,0.1%,archétype
+purée potiron,1,0.1%,canonical
+noix pécan,1,0.1%,canonical
+sirop maïs,1,0.1%,archétype
+babeurre,1,0.1%,archétype
+sablée biscuit graham,1,0.1%,canonical
+crème anglaise,1,0.1%,archétype
+biscuit digestive,1,0.1%,canonical
+dulce de leche,1,0.1%,canonical
+brioche,1,0.1%,archétype
+kirsch,1,0.1%,archétype
+confiture abricot,1,0.1%,canonical
+confiture framboise,1,0.1%,canonical
+crème pâtissière ou cerise,1,0.1%,archétype
+pâte phyllo,1,0.1%,archétype
+pâte d'amande,1,0.1%,archétype
+farine de riz gluant,1,0.1%,archétype
+pâte de haricot rouge,1,0.1%,archétype
+sirop doré,1,0.1%,archétype
+graine,1,0.1%,canonical
+avocat mûr,1,0.1%,canonical
+sirop érable,1,0.1%,archétype
+farine complète,1,0.1%,archétype
+tripe,1,0.1%,canonical
+bière blonde,1,0.1%,canonical
+mouton,1,0.1%,canonical
+vin blanc anjou,1,0.1%,cultivar
+saint-jacque,1,0.1%,canonical
+anguille,1,0.1%,canonical
+lamproie,1,0.1%,canonical
+quenelle brochet,1,0.1%,canonical
+sauce nantua,1,0.1%,archétype
+écrevisse,1,0.1%,canonical
+grenouille,1,0.1%,canonical
+foie porc,1,0.1%,canonical
+diot,1,0.1%,canonical
+vin blanc savoie,1,0.1%,cultivar
+blette,1,0.1%,canonical
+chair saucisse,1,0.1%,archétype
+salsifi,1,0.1%,canonical
+rond,1,0.1%,canonical
+thon,1,0.1%,canonical
+lentille verte berry,1,0.1%,cultivar
+piment aji,1,0.1%,canonical
+piment aji amarillo,1,0.1%,canonical
+poitrine porc,1,0.1%,canonical
+fécule manioc,1,0.1%,canonical
+fromage mina,1,0.1%,archétype
+yuca,1,0.1%,canonical
+piment poblano,1,0.1%,canonical
+pâte achiote,1,0.1%,archétype
+hominy,1,0.1%,canonical
+masa harina,1,0.1%,canonical
+plantain vert,1,0.1%,cultivar
+fenugrec,1,0.1%,canonical
+fève sèche,1,0.1%,canonical
+pâte arachide,1,0.1%,archétype
+berbéré épices,1,0.1%,canonical
+farine teff,1,0.1%,archétype
+zaatar,1,0.1%,canonical
+boulghour,1,0.1%,canonical
+salade mélangée,1,0.1%,canonical
+salade frisée,1,0.1%,canonical
+thon au naturel en conserve,1,0.1%,canonical
+riz à sushi,1,0.1%,cultivar
+praliné,1,0.1%,canonical
+crème marron,1,0.1%,archétype
+beurre demi-sel,1,0.1%,archétype
+épices speculoo,1,0.1%,canonical
+eau de fleur d'oranger,1,0.1%,canonical
+épices pain épices,1,0.1%,canonical
+glace chocolat,1,0.1%,canonical
+glace fraise,1,0.1%,canonical
+meringue,1,0.1%,canonical
+abricot,1,0.1%,canonical
+rutabaga,1,0.1%,canonical
+céleri rave,1,0.1%,canonical
+champignon paris,1,0.1%,canonical
+confit canard,1,0.1%,canonical
+chou noir,1,0.1%,cultivar
+homard,1,0.1%,canonical
+langoustine,1,0.1%,canonical
+crabe,1,0.1%,canonical
+cèpe,1,0.1%,canonical
+courge,1,0.1%,canonical
+oseille,1,0.1%,canonical
+faux-filet,1,0.1%,archétype
+rumsteck,1,0.1%,archétype
+bavette,1,0.1%,archétype
+pavé de bœuf,1,0.1%,archétype
+araignée de bœuf,1,0.1%,canonical
+poire de bœuf,1,0.1%,canonical
+steak,1,0.1%,archétype
+olive verte,1,0.1%,archétype
+céleri branche,1,0.1%,canonical
+marron,1,0.1%,canonical
+raisin,1,0.1%,canonical
+poulet haché,1,0.1%,archétype
+chateaubriand,1,0.1%,canonical
+duxelle champignon,1,0.1%,canonical
+magret canard,1,0.1%,archétype
+porto,1,0.1%,archétype
+truffe,1,0.1%,canonical
+rôti de veau,1,0.1%,archétype
+carcasse volaille,1,0.1%,canonical
+os veau,1,0.1%,canonical
