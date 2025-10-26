@@ -123,9 +123,7 @@ export default function RecipesPage() {
           title: recipe.name,
           prep_min: recipe.prep_time_minutes,
           cook_min: recipe.cook_time_minutes,
-          portions: recipe.servings,
-          // Calculer un score Myko basique (sera remplacé par le vrai calcul plus tard)
-          myko_score: Math.min(100, 50 + (ingredientsByRecipe[recipe.id]?.length || 0) * 5)
+          portions: recipe.servings
         }));
         
         console.log('Recettes enrichies avec ingrédients:', recipesWithIngredients.length);
@@ -160,10 +158,6 @@ export default function RecipesPage() {
   async function checkInventoryAvailability() {
     try {
       if (recipes.length === 0) return;
-      
-      console.log('🔍 Vérification disponibilité pour', recipes.length, 'recettes');
-      console.log('📋 Première recette:', recipes[0]);
-      console.log('🥕 Ingrédients première recette:', recipes[0]?.recipe_ingredients?.length || 0);
       
       // Charger l'inventaire disponible
       const { data: inventory, error } = await supabase
@@ -227,17 +221,8 @@ export default function RecipesPage() {
           availabilityPercent: Math.round((availableIngredients / totalIngredients) * 100),
           urgentIngredients
         };
-        
-        if (recipe.id === 142 || recipe.id === 2) {
-          console.log(`📊 Recette #${recipe.id}:`, {
-            total: totalIngredients,
-            available: availableIngredients,
-            percent: Math.round((availableIngredients / totalIngredients) * 100)
-          });
-        }
       }
       
-      console.log('✅ Statuts calculés pour', Object.keys(statusMap).length, 'recettes');
       setInventoryStatus(statusMap);
     } catch (error) {
       console.error('Erreur vérification stocks:', error);
