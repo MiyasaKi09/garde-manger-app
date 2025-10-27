@@ -349,6 +349,12 @@
   border-color: rgba(102, 187, 106, 0.5);
 }
 
+.action-btn.open:hover {
+  background: rgba(255, 152, 0, 0.3);
+  border-color: rgba(255, 152, 0, 0.5);
+  color: #e65100;
+}
+
 .action-btn.edit:hover {
   background: rgba(66, 165, 245, 0.3);
   border-color: rgba(66, 165, 245, 0.5);
@@ -358,6 +364,56 @@
   background: rgba(239, 83, 80, 0.3);
   border-color: rgba(239, 83, 80, 0.5);
   color: #c62828;
+}
+
+/* Badge "Ouvert" */
+.opened-badge {
+  display: inline-block;
+  background: rgba(102, 187, 106, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(102, 187, 106, 0.4);
+  border-radius: 10px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #2e7d32;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* DLC ajustée après ouverture */
+.dlc-adjusted {
+  margin-left: 0.5rem;
+  color: #ff6f00;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background: rgba(255, 152, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  border-radius: 8px;
+  padding: 0.2rem 0.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 /* État vide */

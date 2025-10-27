@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { getQuickConversions } from '../../../lib/quickConversions';
 import { capitalizeProduct } from './pantryUtils';
 
-export default function PantryProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity }) {
+export default function PantryProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity, onOpen }) {
   const [showActions, setShowActions] = useState(false);
+  const [opening, setOpening] = useState(false);
   
   // Calculer les conversions rapides possibles selon le type de produit
   const productMeta = { 
@@ -46,6 +47,17 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
     if (status === 'expired') return `Expiré depuis ${Math.abs(days)}j`;
     if (status === 'expiring_soon') return `Expire dans ${days}j`;
     return `${days}j restants`;
+  };
+
+  const handleOpen = async (e) => {
+    if (!onOpen || opening) return;
+    e.stopPropagation();
+    setOpening(true);
+    try {
+      await onOpen(item.id);
+    } finally {
+      setOpening(false);
+    }
   };
 
   const formatDate = (dateString) => {
@@ -114,12 +126,34 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
           <div className="info-row">
             <span className="info-icon">🗓️</span>
             <span className="info-value">{formatDate(item.expiration_date)}</span>
+            {item.is_opened && item.adjusted_expiration_date && (
+              <span className="dlc-adjusted" title="DLC ajustée après ouverture">
+                → {formatDate(item.adjusted_expiration_date)}
+              </span>
+            )}
+          </div>
+        )}
+        {item.is_opened && (
+          <div className="info-row">
+            <span className="opened-badge">
+              ✅ Ouvert le {formatDate(item.opened_at)}
+            </span>
           </div>
         )}
       </div>
 
       {showActions && (
         <div className="card-actions">
+          {!item.is_opened && onOpen && (
+            <button 
+              className="action-btn open"
+              onClick={handleOpen}
+              disabled={opening}
+              title="Marquer comme ouvert (ajuste la date de péremption)"
+            >
+              {opening ? '⏳' : '📦'} {opening ? 'Ouverture...' : 'Ouvrir'}
+            </button>
+          )}
           <button 
             className="action-btn consume"
             onClick={(e) => handleAction(onConsume, e)}

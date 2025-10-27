@@ -320,6 +320,43 @@ export default function PantryPage() {
     }
   }
 
+  // Fonction pour ouvrir un produit (Phase 1 - DLC après ouverture)
+  async function handleOpen(lotId) {
+    try {
+      const response = await fetch('/api/lots/manage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          action: 'open',
+          lotId: lotId,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        console.error('Erreur lors de l\'ouverture du produit:', result.error);
+        alert(result.error || 'Erreur lors de l\'ouverture du produit');
+        return;
+      }
+
+      if (result.success) {
+        // Recharger les articles pour afficher la DLC ajustée
+        await loadPantryItems();
+        
+        // Message de confirmation optionnel
+        if (result.message) {
+          console.log('✅', result.message);
+        }
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'ouverture:', error);
+      alert('Erreur lors de l\'ouverture du produit');
+    }
+  }
+
   function handleEdit(id) {
     const item = items.find(i => i.id === id);
     if (item) {
@@ -581,6 +618,7 @@ export default function PantryPage() {
                   onEdit={() => handleEdit(item.id)}
                   onDelete={() => handleDeleteClick(item.id)}
                   onUpdateQuantity={handleUpdateQuantity}
+                  onOpen={() => handleOpen(item.id)}
                 />
               ))
             )}
