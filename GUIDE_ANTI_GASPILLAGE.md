@@ -2,13 +2,15 @@
 
 **Date** : 27 octobre 2025  
 **Module** : Gestion des Restes & Prévention du Gaspillage  
-**Statut** : ✅ Système Complet Implémenté
+**Statut** : ✅ Système Complet Implémenté & Intégré au Garde-Manger
 
 ---
 
 ## 🎯 Vue d'Ensemble
 
 Le système anti-gaspillage de Garde-Manger App est une solution intelligente pour réduire le gaspillage alimentaire en identifiant les produits à risque et en proposant des actions concrètes pour les sauver.
+
+**🆕 Intégration** : La gestion des restes est maintenant **intégrée directement dans le garde-manger** via un système d'onglets, pour une expérience utilisateur plus cohérente.
 
 ### Fonctionnalités Principales
 
@@ -34,19 +36,45 @@ components/
 └── RestesManager.css                  (593 lignes) - Styles glassmorphism
 
 app/
+├── pantry/
+│   ├── page.js                        (Mis à jour) - Intégration onglets
+│   └── components/
+│       ├── PantryTabs.jsx             (Nouveau) - Système d'onglets
+│       └── PantryTabs.css             (Nouveau) - Styles tabs
 ├── restes/
-│   └── page.js                        (Mis à jour) - Page de gestion
+│   └── page.js                        (Redirection) - Redirige vers /pantry?tab=waste
 └── api/
     └── restes/
         ├── analyze/route.js           (101 lignes) - API d'analyse
         └── action/route.js            (114 lignes) - API d'actions
 ```
 
-**Total** : ~1830 lignes de code + documentation
+**Total** : ~2000 lignes de code + documentation
 
 ---
 
-## 🧠 Algorithmes
+## 🚀 Utilisation
+
+### Accès au Module Anti-Gaspillage
+
+**Méthode 1** : Via le garde-manger
+1. Aller sur `/pantry`
+2. Cliquer sur l'onglet **"⚠️ À Risque"**
+
+**Méthode 2** : Lien direct
+- Accéder directement à `/pantry?tab=waste`
+- Ou `/restes` (redirige automatiquement)
+
+### Structure des Onglets
+
+```
+/pantry
+├── 📦 Inventaire      - Tous vos produits avec filtres et tri
+├── ⚠️ À Risque        - Gestion anti-gaspillage (RestesManager)
+└── 📊 Statistiques    - Vue d'ensemble du garde-manger
+```
+
+### Onglet "À Risque"
 
 ### 1. Scoring d'Urgence (0-100 points)
 
@@ -115,9 +143,7 @@ Exemple:
 
 ---
 
-## 🚀 Utilisation
-
-### Page /restes
+## 🚀 Utilisation (Suite)
 
 1. **Vue d'ensemble** - Statistiques globales
    - Nombre de produits à risque
@@ -147,6 +173,10 @@ Exemple:
    - Recettes utilisant produits à risque
    - Impact estimé (€ + CO₂)
    - Lien vers recette complète
+
+### Badge de Notification
+
+Un badge orange s'affiche sur l'onglet "À Risque" indiquant le nombre de produits nécessitant attention.
 
 ---
 
@@ -412,11 +442,18 @@ curl -X POST http://localhost:3000/api/restes/action \
 ### Test du Composant
 
 1. Se connecter à l'application
-2. Aller sur `/restes`
-3. Vérifier l'affichage des produits à risque
-4. Tester les filtres (Tous, Critiques, Urgents)
-5. Tester les actions (Congeler, Cuisiner, etc.)
-6. Vérifier les suggestions de recettes
+2. Aller sur `/pantry`
+3. Cliquer sur l'onglet **"⚠️ À Risque"**
+4. Vérifier l'affichage des produits à risque
+5. Tester les filtres (Tous, Critiques, Urgents)
+6. Tester les actions (Congeler, Cuisiner, etc.)
+7. Vérifier les suggestions de recettes
+
+### Accès Direct
+
+Vous pouvez aussi accéder directement via :
+- `/pantry?tab=waste`
+- `/restes` (redirige automatiquement vers `/pantry?tab=waste`)
 
 ---
 

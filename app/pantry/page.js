@@ -1,18 +1,21 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import SmartAddForm from './components/SmartAddForm';
 import ProductCard from './components/PantryProductCard';
 import { capitalizeProduct } from './components/pantryUtils';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import EditLotForm from './components/EditLotForm';
+import PantryTabs from './components/PantryTabs';
+import RestesManager from '@/components/RestesManager';
 import './pantry.css';
 
 
 export default function PantryPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,12 +29,26 @@ export default function PantryPage() {
   const [showEditLot, setShowEditLot] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState('inventory'); // inventory, waste, stats
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
-      if (!user) router.push('/login');
+      if (!user) {
+        router.push('/login');
+      } else {
+        setUserId(user.id);
+      }
     });
   }, [router]);
+
+  useEffect(() => {
+    // Vérifier si on doit ouvrir l'onglet "restes" via URL
+    const tab = searchParams.get('tab');
+    if (tab === 'waste' || tab === 'restes') {
+      setActiveTab('waste');
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     loadPantryItems();
@@ -399,6 +416,14 @@ export default function PantryPage() {
     loadPantryItems();
   }
 
+  // Calculer les stats pour les tabs
+  const tabStats = {
+    totalProducts: items.length,
+    atRiskCount: items.filter(i => 
+      i.expiration_status === 'expired' || i.expiration_status === 'expiring_soon'
+    ).length
+  };
+
   if (loading) {
     return (
       <div className="pantry-loading">
@@ -410,148 +435,223 @@ export default function PantryPage() {
 
   return (
     <div className="pantry-container">
-      {/* Contrôles améliorés */}
-      <div className="pantry-controls">
-        {/* Ligne 1: Recherche et stats */}
-        <div className="top-row">
-          <input
-            type="text"
-            placeholder="Rechercher un produit..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
-          />
-          
-          {/* Stats cliquables pour filtrage rapide */}
-          <div className="stats-filter">
-            <button 
-              className={`stat-filter-btn ${statusFilter === 'all' ? 'active' : ''}`}
-              onClick={() => setStatusFilter('all')}
-              title="Afficher tous les articles"
-            >
-              <span className="stat-number">{items.length}</span>
-              <span className="stat-label">TOUT</span>
-            </button>
-            <button 
-              className={`stat-filter-btn expired ${statusFilter === 'expired' ? 'active' : ''}`}
-              onClick={() => setStatusFilter(statusFilter === 'expired' ? 'all' : 'expired')}
-              title="Afficher uniquement les produits expirés"
-            >
-              <span className="stat-number">{items.filter(i => i.expiration_status === 'expired').length}</span>
-              <span className="stat-label">EXPIRÉS</span>
-            </button>
-            <button 
-              className={`stat-filter-btn expiring ${statusFilter === 'expiring_soon' ? 'active' : ''}`}
-              onClick={() => setStatusFilter(statusFilter === 'expiring_soon' ? 'all' : 'expiring_soon')}
-              title="Afficher uniquement les produits qui expirent bientôt"
-            >
-              <span className="stat-number">{items.filter(i => i.expiration_status === 'expiring_soon').length}</span>
-              <span className="stat-label">EXPIRE BIENTÔT</span>
-            </button>
-            <button 
-              className={`stat-filter-btn good ${statusFilter === 'good' ? 'active' : ''}`}
-              onClick={() => setStatusFilter(statusFilter === 'good' ? 'all' : 'good')}
-              title="Afficher uniquement les produits en bon état"
-            >
-              <span className="stat-number">{items.filter(i => i.expiration_status === 'good').length}</span>
-              <span className="stat-label">BON ÉTAT</span>
-            </button>
+      {/* Onglets de navigation */}
+      <PantryTabs 
+        activeTab={activeTab} 
+        onTabChange={setActiveTab}
+        stats={tabStats}
+      />
+
+      {/* Contenu selon l'onglet actif */}
+      {activeTab === 'inventory' && (
+        <>
+          {/* Contrôles améliorés */}
+          <div className="pantry-controls">
+            {/* Ligne 1: Recherche et stats */}
+            <div className="top-row">
+              <input
+                type="text"
+                placeholder="Rechercher un produit..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+              />
+              
+              {/* Stats cliquables pour filtrage rapide */}
+              <div className="stats-filter">
+                <button 
+                  className={`stat-filter-btn ${statusFilter === 'all' ? 'active' : ''}`}
+                  onClick={() => setStatusFilter('all')}
+                  title="Afficher tous les articles"
+                >
+                  <span className="stat-number">{items.length}</span>
+                  <span className="stat-label">TOUT</span>
+                </button>
+                <button 
+                  className={`stat-filter-btn expired ${statusFilter === 'expired' ? 'active' : ''}`}
+                  onClick={() => setStatusFilter(statusFilter === 'expired' ? 'all' : 'expired')}
+                  title="Afficher uniquement les produits expirés"
+                >
+                  <span className="stat-number">{items.filter(i => i.expiration_status === 'expired').length}</span>
+                  <span className="stat-label">EXPIRÉS</span>
+                </button>
+                <button 
+                  className={`stat-filter-btn expiring ${statusFilter === 'expiring_soon' ? 'active' : ''}`}
+                  onClick={() => setStatusFilter(statusFilter === 'expiring_soon' ? 'all' : 'expiring_soon')}
+                  title="Afficher uniquement les produits qui expirent bientôt"
+                >
+                  <span className="stat-number">{items.filter(i => i.expiration_status === 'expiring_soon').length}</span>
+                  <span className="stat-label">EXPIRE BIENTÔT</span>
+                </button>
+                <button 
+                  className={`stat-filter-btn good ${statusFilter === 'good' ? 'active' : ''}`}
+                  onClick={() => setStatusFilter(statusFilter === 'good' ? 'all' : 'good')}
+                  title="Afficher uniquement les produits en bon état"
+                >
+                  <span className="stat-number">{items.filter(i => i.expiration_status === 'good').length}</span>
+                  <span className="stat-label">BON ÉTAT</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Ligne 2: Options de tri */}
+            <div className="sort-controls">
+              <span className="sort-label">Trier par :</span>
+              
+              <div className="sort-options">
+                <button
+                  className={`sort-btn ${sortBy === 'expiration' ? 'active' : ''}`}
+                  onClick={() => {
+                    if (sortBy === 'expiration') {
+                      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                    } else {
+                      setSortBy('expiration');
+                      setSortOrder('asc');
+                    }
+                  }}
+                >
+                  📅 Expiration {sortBy === 'expiration' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+                </button>
+                
+                <button
+                  className={`sort-btn ${sortBy === 'quantity' ? 'active' : ''}`}
+                  onClick={() => {
+                    if (sortBy === 'quantity') {
+                      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                    } else {
+                      setSortBy('quantity');
+                      setSortOrder('desc'); // Par défaut: plus grosse quantité d'abord
+                    }
+                  }}
+                >
+                  📦 Quantité {sortBy === 'quantity' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+                </button>
+                
+                <button
+                  className={`sort-btn ${sortBy === 'name' ? 'active' : ''}`}
+                  onClick={() => {
+                    if (sortBy === 'name') {
+                      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                    } else {
+                      setSortBy('name');
+                      setSortOrder('asc');
+                    }
+                  }}
+                >
+                  🔤 Nom {sortBy === 'name' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+                </button>
+                
+                <button
+                  className={`sort-btn ${sortBy === 'location' ? 'active' : ''}`}
+                  onClick={() => {
+                    if (sortBy === 'location') {
+                      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+                    } else {
+                      setSortBy('location');
+                      setSortOrder('asc');
+                    }
+                  }}
+                >
+                  📍 Emplacement {sortBy === 'location' && (sortOrder === 'asc' ? '↗️' : '↘️')}
+                </button>
+              </div>
+
+              {/* Indicateur du nombre d'éléments filtrés */}
+              {filteredItems.length !== items.length && (
+                <span className="filter-count">
+                  {filteredItems.length} / {items.length} articles
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Grille des produits */}
+          <div className="pantry-grid">
+            {filteredItems.length === 0 ? (
+              <div className="empty-state">
+                <h2>Aucun article trouvé</h2>
+                <p>Ajustez vos filtres ou ajoutez des articles</p>
+              </div>
+            ) : (
+              filteredItems.map(item => (
+                <ProductCard 
+                  key={item.id} 
+                  item={item}
+                  onConsume={() => handleConsume(item.id)}
+                  onEdit={() => handleEdit(item.id)}
+                  onDelete={() => handleDeleteClick(item.id)}
+                  onUpdateQuantity={handleUpdateQuantity}
+                />
+              ))
+            )}
+          </div>
+        </>
+      )}
+
+      {/* Onglet Gestion des Restes */}
+      {activeTab === 'waste' && userId && (
+        <RestesManager userId={userId} onActionComplete={loadPantryItems} />
+      )}
+
+      {/* Onglet Statistiques */}
+      {activeTab === 'stats' && (
+        <div className="stats-view">
+          <div className="stats-content" style={{
+            background: 'rgba(255, 255, 255, 0.7)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '16px',
+            padding: '2rem',
+            maxWidth: '800px',
+            margin: '0 auto'
+          }}>
+            <h2 style={{ marginBottom: '2rem', color: 'var(--forest-700)' }}>📊 Vue d'ensemble</h2>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+              <div className="stat-box">
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📦</div>
+                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--forest-700)' }}>{items.length}</div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>Produits total</div>
+              </div>
+              
+              <div className="stat-box">
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🔥</div>
+                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#ef4444' }}>
+                  {items.filter(i => i.expiration_status === 'expired').length}
+                </div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>Expirés</div>
+              </div>
+              
+              <div className="stat-box">
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⏰</div>
+                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#f97316' }}>
+                  {items.filter(i => i.expiration_status === 'expiring_soon').length}
+                </div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>Expire bientôt</div>
+              </div>
+              
+              <div className="stat-box">
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>✅</div>
+                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#22c55e' }}>
+                  {items.filter(i => i.expiration_status === 'good').length}
+                </div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>Bon état</div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'rgba(255, 255, 255, 0.5)', borderRadius: '12px' }}>
+              <h3 style={{ marginBottom: '1rem', color: 'var(--forest-700)' }}>💡 Conseil</h3>
+              <p style={{ color: 'var(--earth-700)', lineHeight: '1.6' }}>
+                {tabStats.atRiskCount > 0 
+                  ? `Vous avez ${tabStats.atRiskCount} produit(s) à risque. Consultez l'onglet "À Risque" pour des suggestions anti-gaspillage.`
+                  : 'Excellent ! Aucun produit à risque pour le moment. Continuez comme ça ! 🎉'
+                }
+              </p>
+            </div>
           </div>
         </div>
+      )}
 
-        {/* Ligne 2: Options de tri */}
-        <div className="sort-controls">
-          <span className="sort-label">Trier par :</span>
-          
-          <div className="sort-options">
-            <button
-              className={`sort-btn ${sortBy === 'expiration' ? 'active' : ''}`}
-              onClick={() => {
-                if (sortBy === 'expiration') {
-                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-                } else {
-                  setSortBy('expiration');
-                  setSortOrder('asc');
-                }
-              }}
-            >
-              📅 Expiration {sortBy === 'expiration' && (sortOrder === 'asc' ? '↗️' : '↘️')}
-            </button>
-            
-            <button
-              className={`sort-btn ${sortBy === 'quantity' ? 'active' : ''}`}
-              onClick={() => {
-                if (sortBy === 'quantity') {
-                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-                } else {
-                  setSortBy('quantity');
-                  setSortOrder('desc'); // Par défaut: plus grosse quantité d'abord
-                }
-              }}
-            >
-              📦 Quantité {sortBy === 'quantity' && (sortOrder === 'asc' ? '↗️' : '↘️')}
-            </button>
-            
-            <button
-              className={`sort-btn ${sortBy === 'name' ? 'active' : ''}`}
-              onClick={() => {
-                if (sortBy === 'name') {
-                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-                } else {
-                  setSortBy('name');
-                  setSortOrder('asc');
-                }
-              }}
-            >
-              🔤 Nom {sortBy === 'name' && (sortOrder === 'asc' ? '↗️' : '↘️')}
-            </button>
-            
-            <button
-              className={`sort-btn ${sortBy === 'location' ? 'active' : ''}`}
-              onClick={() => {
-                if (sortBy === 'location') {
-                  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-                } else {
-                  setSortBy('location');
-                  setSortOrder('asc');
-                }
-              }}
-            >
-              📍 Emplacement {sortBy === 'location' && (sortOrder === 'asc' ? '↗️' : '↘️')}
-            </button>
-          </div>
-
-          {/* Indicateur du nombre d'éléments filtrés */}
-          {filteredItems.length !== items.length && (
-            <span className="filter-count">
-              {filteredItems.length} / {items.length} articles
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Grille des produits */}
-      <div className="pantry-grid">
-        {filteredItems.length === 0 ? (
-          <div className="empty-state">
-            <h2>Aucun article trouvé</h2>
-            <p>Ajustez vos filtres ou ajoutez des articles</p>
-          </div>
-        ) : (
-          filteredItems.map(item => (
-            <ProductCard 
-              key={item.id} 
-              item={item}
-              onConsume={() => handleConsume(item.id)}
-              onEdit={() => handleEdit(item.id)}
-              onDelete={() => handleDeleteClick(item.id)}
-              onUpdateQuantity={handleUpdateQuantity}
-            />
-          ))
-        )}
-      </div>
-
-      {/* Modal d'ajout */}
+      {/* Modal d'ajout - disponible sur tous les onglets */}
       {showForm && (
         <SmartAddForm 
           open={showForm}
@@ -560,7 +660,7 @@ export default function PantryPage() {
         />
       )}
 
-      {/* Bouton flottant pour ajouter */}
+      {/* Bouton flottant pour ajouter - disponible sur tous les onglets */}
       <button
         className="pantry-fab"
         onClick={() => setShowForm(true)}

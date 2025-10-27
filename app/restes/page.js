@@ -1,52 +1,46 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
-import RestesManager from '@/components/RestesManager';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function Restes() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+/**
+ * Redirection de /restes vers /pantry?tab=waste
+ * La gestion des restes est maintenant intégrée dans le garde-manger
+ */
+export default function RestesRedirectPage() {
+  const router = useRouter();
 
   useEffect(() => {
-    loadUser();
-  }, []);
+    router.replace('/pantry?tab=waste');
+  }, [router]);
 
-  async function loadUser() {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-    } catch (error) {
-      console.error('Erreur chargement utilisateur:', error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  if (loading) {
-    return (
+  return (
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      padding: '2rem',
+      textAlign: 'center'
+    }}>
       <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '400px'
+        background: 'rgba(255, 255, 255, 0.8)',
+        backdropFilter: 'blur(10px)',
+        borderRadius: '16px',
+        padding: '3rem',
+        maxWidth: '500px'
       }}>
-        <p>Chargement...</p>
+        <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔄</div>
+        <h1 style={{ color: 'var(--forest-700)', marginBottom: '1rem' }}>
+          Redirection en cours...
+        </h1>
+        <p style={{ color: 'var(--earth-600)', lineHeight: '1.6' }}>
+          La gestion des restes est désormais intégrée dans le garde-manger.
+          <br />
+          Vous allez être redirigé automatiquement.
+        </p>
       </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <div style={{
-        padding: '2rem',
-        textAlign: 'center'
-      }}>
-        <h1>🗑️ Gestion Anti-Gaspillage</h1>
-        <p>Connectez-vous pour accéder à la gestion des restes</p>
-      </div>
-    );
-  }
-
-  return <RestesManager userId={user.id} />;
+    </div>
+  );
 }

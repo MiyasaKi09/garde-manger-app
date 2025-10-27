@@ -1,0 +1,158 @@
+/* ========================================
+   Tabs pour Garde-Manger
+   ======================================== */
+
+.pantry-tabs-container {
+  margin-bottom: 2rem;
+}
+
+.pantry-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.pantry-tab {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(100, 80, 60, 0.15);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pantry-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--earth-500), var(--forest-500));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.pantry-tab:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--earth-500);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.pantry-tab.active {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--forest-600);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.pantry-tab.active::before {
+  transform: scaleX(1);
+}
+
+.tab-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+  filter: grayscale(0.3);
+  transition: filter 0.3s ease;
+}
+
+.pantry-tab:hover .tab-icon,
+.pantry-tab.active .tab-icon {
+  filter: grayscale(0);
+}
+
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  text-align: left;
+}
+
+.tab-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--forest-700);
+  transition: color 0.3s ease;
+}
+
+.pantry-tab:hover .tab-label,
+.pantry-tab.active .tab-label {
+  color: var(--forest-800);
+}
+
+.tab-description {
+  font-size: 0.85rem;
+  color: var(--earth-600);
+  opacity: 0.8;
+}
+
+.tab-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  background: var(--earth-300);
+  color: var(--forest-800);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 20px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.tab-badge.warning {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: white;
+  animation: pulse-badge 2s infinite;
+}
+
+.pantry-tab:hover .tab-badge,
+.pantry-tab.active .tab-badge {
+  transform: scale(1.1);
+}
+
+@keyframes pulse-badge {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(251, 146, 60, 0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pantry-tabs {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .pantry-tab {
+    padding: 1rem;
+  }
+
+  .tab-icon {
+    font-size: 1.5rem;
+  }
+
+  .tab-label {
+    font-size: 1rem;
+  }
+
+  .tab-description {
+    font-size: 0.8rem;
+  }
+}
