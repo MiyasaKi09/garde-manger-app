@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Mon Oct 27 21:57:40 UTC 2025_
+_Généré le : Mon Oct 27 22:31:10 UTC 2025_
 
 ## Tables
 - _backup_views
@@ -143,6 +143,9 @@ _Généré le : Mon Oct 27 21:57:40 UTC 2025_
  - canonical_food_id :: bigint
  - cultivar_id :: bigint
  - archetype_id :: bigint
+ - adjusted_expiration_date :: date
+ - is_opened :: boolean default false
+ - opened_at :: timestamp without time zone
 
 ### inventory_lots_effective
  - id :: uuid
@@ -176,6 +179,29 @@ _Généré le : Mon Oct 27 21:57:40 UTC 2025_
  - archetype_id :: bigint
  - resolved_canonical_food_id :: bigint
  - resolved_archetype_id :: bigint
+
+### inventory_lots_with_effective_dlc
+ - id :: uuid
+ - qty_remaining :: numeric
+ - initial_qty :: numeric
+ - unit :: character varying
+ - storage_method :: character varying
+ - storage_place :: character varying
+ - acquired_on :: date
+ - expiration_date :: date
+ - notes :: text
+ - user_id :: uuid
+ - created_at :: timestamp with time zone
+ - updated_at :: timestamp with time zone
+ - product_id :: uuid
+ - canonical_food_id :: bigint
+ - cultivar_id :: bigint
+ - archetype_id :: bigint
+ - adjusted_expiration_date :: date
+ - is_opened :: boolean
+ - opened_at :: timestamp without time zone
+ - effective_expiration_date :: date
+ - days_until_expiration :: integer
 
 ### legacy_users
  - id :: integer default nextval('users_id_seq'::regclass) NOT NULL
@@ -460,8 +486,8 @@ _Généré le : Mon Oct 27 21:57:40 UTC 2025_
  - tags → (id)
  - unit_conversions_generic → (id)
  - unit_conversions_product → (id)
- - user_allergies → (user_id, canonical_food_id)
- - user_diets → (user_id, diet_id)
+ - user_allergies → (canonical_food_id, user_id)
+ - user_diets → (diet_id, user_id)
  - user_health_goals → (user_id)
  - user_profiles → (user_id)
  - user_recipe_interactions → (id)
@@ -537,7 +563,9 @@ _Généré le : Mon Oct 27 21:57:40 UTC 2025_
  - public.inventory_lots → idx_inv_cultivar : CREATE INDEX idx_inv_cultivar ON public.inventory_lots USING btree (cultivar_id)
  - public.inventory_lots → idx_inv_product : CREATE INDEX idx_inv_product ON public.inventory_lots USING btree (product_id)
  - public.inventory_lots → idx_inv_user_exp : CREATE INDEX idx_inv_user_exp ON public.inventory_lots USING btree (user_id, expiration_date)
+ - public.inventory_lots → idx_inventory_lots_adjusted_exp : CREATE INDEX idx_inventory_lots_adjusted_exp ON public.inventory_lots USING btree (adjusted_expiration_date) WHERE (adjusted_expiration_date IS NOT NULL)
  - public.inventory_lots → idx_inventory_lots_expiration : CREATE INDEX idx_inventory_lots_expiration ON public.inventory_lots USING btree (expiration_date)
+ - public.inventory_lots → idx_inventory_lots_is_opened : CREATE INDEX idx_inventory_lots_is_opened ON public.inventory_lots USING btree (is_opened) WHERE (is_opened = true)
  - public.inventory_lots → idx_inventory_lots_storage : CREATE INDEX idx_inventory_lots_storage ON public.inventory_lots USING btree (storage_method)
  - public.inventory_lots → idx_inventory_lots_user_exp : CREATE INDEX idx_inventory_lots_user_exp ON public.inventory_lots USING btree (user_id, expiration_date)
  - public.inventory_lots → idx_inventory_lots_user_id : CREATE INDEX idx_inventory_lots_user_id ON public.inventory_lots USING btree (user_id)
@@ -607,6 +635,7 @@ _Généré le : Mon Oct 27 21:57:40 UTC 2025_
 ## Vues
  - inventory_lots_effective
  - inventory_lots_resolved
+ - inventory_lots_with_effective_dlc
  - pantry_view
  - unit_conversions
  - v_expiring_archetypes
@@ -678,6 +707,37 @@ _Généré le : Mon Oct 27 21:57:40 UTC 2025_
     COALESCE(archetype_id, ( SELECT p.archetype_id
            FROM products p
           WHERE (p.id = il.product_id))) AS resolved_archetype_id
+   FROM inventory_lots il;
+```
+
+
+### inventory_lots_with_effective_dlc
+```sql
+ SELECT id,
+    qty_remaining,
+    initial_qty,
+    unit,
+    storage_method,
+    storage_place,
+    acquired_on,
+    expiration_date,
+    notes,
+    user_id,
+    created_at,
+    updated_at,
+    product_id,
+    canonical_food_id,
+    cultivar_id,
+    archetype_id,
+    adjusted_expiration_date,
+    is_opened,
+    opened_at,
+    COALESCE(adjusted_expiration_date, expiration_date) AS effective_expiration_date,
+        CASE
+            WHEN (adjusted_expiration_date IS NOT NULL) THEN (adjusted_expiration_date - CURRENT_DATE)
+            WHEN (expiration_date IS NOT NULL) THEN (expiration_date - CURRENT_DATE)
+            ELSE NULL::integer
+        END AS days_until_expiration
    FROM inventory_lots il;
 ```
 
