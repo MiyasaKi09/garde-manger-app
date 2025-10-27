@@ -148,6 +148,7 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 132,Ciboulette congelée,2018,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-07 14:22:20.970764+00,Ciboulette fraîche hachée et congelée,,,,,f
 133,Ciboulette lyophilisée,2018,,lyophilisation,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-07 14:22:20.970764+00,Ciboulette lyophilisée conservant couleur et arôme,,,,,f
 24,Chips de butternut séchées,2024,,séchage,90,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-07 14:22:20.970764+00,Butternut tranché et déshydraté,,,,,f
+195,Crème liquide 30%,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-07 14:22:20.970764+00,,,,,,f
 19,Purée de butternut congelée,2024,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-07 14:22:20.970764+00,"Butternut cuit et mixé, congelé",,,,,f
 17,Chips de courgette séchées,2026,,séchage,90,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-07 14:22:20.970764+00,Courgettes tranchées et déshydratées,,,,,f
 22,Courgettes grillées,2026,,grillage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-07 14:22:20.970764+00,Courgettes tranchées et grillées,,,,,f
@@ -196,7 +197,6 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 192,Lait concentré sucré,7001,,,365,7,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-07 14:22:20.970764+00,,,,,,f
 193,Lait en poudre,7001,,,730,30,days,frais et sec,2025-10-04 17:24:01.602539+00,2025-10-07 14:22:20.970764+00,,,,,,f
 194,Lait sans lactose,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-07 14:22:20.970764+00,,,,,,f
-195,Crème liquide 30%,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-07 14:22:20.970764+00,,,,,,f
 196,Crème liquide 15%,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-07 14:22:20.970764+00,,,,,,f
 197,Crème épaisse 35%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-07 14:22:20.970764+00,,,,,,f
 198,Crème fraîche épaisse,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-07 14:22:20.970764+00,,,,,,f
