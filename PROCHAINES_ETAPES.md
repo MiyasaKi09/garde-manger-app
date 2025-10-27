@@ -7,51 +7,76 @@
 
 ## ✅ Accomplissements Récents
 
-### 27 octobre 2025 : Qualité des Données
+### 27 octobre 2025 : Qualité des Données + API d'Assemblage
 - ✅ **2980 calories corrigées** automatiquement (88.6% de réduction des NULL)
 - ✅ **Script import_ciqual.sh** corrigé définitivement
 - ✅ **Formule d'Atwater** validée et documentée
-- ✅ **Documentation complète** créée (5 nouveaux fichiers)
+- ✅ **Documentation complète** créée (8 nouveaux fichiers)
+- ✅ **396 recettes enrichies** avec tags gastronomiques (45%)
+- ✅ **API d'assemblage intelligent** implémentée avec 4 algorithmes
+- ✅ **Service de pairing** créé (lib/pairingService.js)
+- ✅ **Endpoint REST** déployé (POST /api/recipes/suggestions)
 
 ---
 
 ## 🚀 Prochaines Actions Prioritaires
 
-### 1. Enrichissement des Recettes avec Tags ⚠️ EN COURS
+### 1. ✅ API d'Assemblage Intelligent - IMPLÉMENTÉ
+
+**Statut** : ✅ **COMPLÉTÉ** (27 octobre 2025)
+
+**Fichiers créés** :
+- ✅ `lib/pairingService.js` - Service avec 4 algorithmes (Food Pairing, Équilibre, Contraste, Terroir)
+- ✅ `app/api/recipes/suggestions/route.js` - Endpoint API REST
+- ✅ `REQUETES_PAIRING_TEST.md` - Documentation et tests complets
+
+**Algorithmes implémentés** :
+1. 🧬 **Food Pairing** (30 points) - Arômes partagés (gastronomie moléculaire)
+2. ⚖️ **Règle d'Équilibre** (25 points) - Plat riche ↔ Accompagnement léger/acide
+3. 🎭 **Règle de Contraste** (20 points) - Textures opposées (crémeux ↔ croquant)
+4. 🌍 **Règle du Terroir** (15 points) - Cuisine commune (Française, Italienne, etc.)
+5. 🍂 **Bonus Saison** (10 points) - Saison commune
+
+**Utilisation** :
+```bash
+# Suggérer accompagnements pour une recette
+curl -X POST http://localhost:3000/api/recipes/suggestions \
+  -H "Content-Type: application/json" \
+  -d '{"mainRecipeId": 142, "maxSuggestions": 5}'
+
+# Mode debug : analyser pairing spécifique
+curl "http://localhost:3000/api/recipes/suggestions?debug=true&main=142&side=261"
+```
+
+**Tests disponibles** : Voir `REQUETES_PAIRING_TEST.md` pour exemples complets
+
+**Prochaine étape** : Tester l'API avec recettes réelles et affiner les scores
+
+---
+
+### 3. Correction des Recettes Incomplètes
 
 **Statut actuel** :
-- 253/585 recettes enrichies (43%)
-- 361/1362 associations créées (26.5%)
+- 396/878 recettes enrichies (45%)
+- 1016 associations créées
+- **482 recettes sans tags** (55%)
 
-**Action requise** :
+**Action requise** (OPTIONNEL) :
 ```bash
 # Exécuter dans Supabase SQL Editor
 tools/enrichment_optimized.sql
 ```
 
+**Note** : L'API d'assemblage fonctionne déjà avec les 396 recettes enrichies actuelles.
+L'enrichissement complet n'est PAS bloquant pour les tests et la validation.
+
 **Fichiers** :
-- [AIDE_RAPIDE.md](AIDE_RAPIDE.md) - Guide ultra-rapide
-- [FICHIERS_A_EXECUTER.md](FICHIERS_A_EXECUTER.md) - Liste des fichiers
-- [GUIDE_EXECUTION_SUPABASE.md](GUIDE_EXECUTION_SUPABASE.md) - Instructions détaillées
+- [GUIDE_ENRICHISSEMENT_MANUEL.md](GUIDE_ENRICHISSEMENT_MANUEL.md) - Guide Supabase
+- [REQUETES_TEST.md](REQUETES_TEST.md) - Requêtes de vérification
 
-**Vérification** :
-```sql
-SELECT 
-  COUNT(DISTINCT r.id) as recettes_enrichies,
-  COUNT(*) as total_associations
-FROM recipe_tags rt
-JOIN recipes r ON rt.recipe_id = r.id;
-
--- Objectif : recettes_enrichies ≥ 585, total_associations ≥ 1362
-```
-
-**Priorité** : 🔴 HAUTE  
+**Priorité** : � MOYENNE (non bloquant)  
 **Durée estimée** : 30 secondes  
-**Bloquant pour** : API d'assemblage intelligent
-
----
-
-### 2. Correction des Recettes Incomplètes
+**Impact** : Augmentation qualité suggestions
 
 **Problème identifié** :
 - 3 recettes avec <10 kcal/portion détectées
@@ -89,7 +114,7 @@ ORDER BY nb_ingredients_non_lies DESC;
 
 ---
 
-### 3. Enrichissement des 100 Aliments Restants
+### 4. Enrichissement des 100 Aliments Restants
 
 **Contexte** :
 - 100 aliments ont encore `calories_kcal = NULL`
@@ -124,48 +149,45 @@ WHERE source_id IN ('1024', '18064')  -- Aliments avec 0g macros
 
 ---
 
-### 4. Implémentation API d'Assemblage Intelligent
+### 5. Tests et Validation de l'API d'Assemblage
 
 **Contexte** :
-Une fois l'enrichissement des tags terminé, implémenter l'API React pour :
-- Food Pairing (gastronomie moléculaire)
-- Règle d'Équilibre (plats riches ↔ accompagnements légers)
-- Règle de Contraste (textures opposées)
-- Règle du Terroir (cuisines régionales)
+L'API d'assemblage intelligent est implémentée et prête à être testée.
 
 **Documentation** :
-- [ASSEMBLAGE_INTELLIGENT.md](ASSEMBLAGE_INTELLIGENT.md) - Spécifications complètes
-- [REQUETES_TEST.md](REQUETES_TEST.md) - Exemples de requêtes
+- [ASSEMBLAGE_INTELLIGENT.md](ASSEMBLAGE_INTELLIGENT.md) - Spécifications théoriques complètes
+- [REQUETES_PAIRING_TEST.md](REQUETES_PAIRING_TEST.md) - Tests pratiques et exemples
 
-**Endpoints à créer** :
-```javascript
-// API route: /api/recipes/suggestions
-POST /api/recipes/suggestions
-{
-  "mainRecipeId": 123,
-  "maxSuggestions": 5
-}
+**Tests à effectuer** :
+```bash
+# Test 1 : Entrecôte grillée (ID: 142)
+curl -X POST http://localhost:3000/api/recipes/suggestions \
+  -H "Content-Type: application/json" \
+  -d '{"mainRecipeId": 142, "maxSuggestions": 5}'
 
-// Réponse :
-{
-  "suggestions": [
-    {
-      "recipeId": 456,
-      "recipeName": "Salade César",
-      "score": 0.92,
-      "reasons": ["food_pairing", "equilibre", "terroir"]
-    }
-  ]
-}
+# Test 2 : One pot pasta (ID: 278)
+curl -X POST http://localhost:3000/api/recipes/suggestions \
+  -H "Content-Type: application/json" \
+  -d '{"mainRecipeId": 278, "maxSuggestions": 5}'
+
+# Test 3 : Mode debug
+curl "http://localhost:3000/api/recipes/suggestions?debug=true&main=142&side=261"
 ```
 
-**Priorité** : 🟡 MOYENNE  
-**Durée estimée** : 1-2 jours  
-**Dépend de** : Enrichissement tags terminé
+**Validation** :
+- [ ] Scores entre 0 et 100
+- [ ] Raisons cohérentes avec scores
+- [ ] Suggestions triées par score décroissant
+- [ ] Filtres (diet, season) fonctionnent
+- [ ] Mode debug affiche détails complets
+
+**Priorité** : � HAUTE (API implémentée, besoin de validation)  
+**Durée estimée** : 1-2 heures  
+**Impact** : Validation système complet d'assemblage intelligent
 
 ---
 
-### 5. Tests de Non-Régression Nutritionnelle
+### 6. Tests de Non-Régression Nutritionnelle
 
 **Action requise** :
 Créer une suite de tests automatisés pour vérifier :
@@ -211,7 +233,7 @@ describe('Nutritional Data Quality', () => {
 
 ---
 
-### 6. Monitoring et Alertes
+### 7. Monitoring et Alertes
 
 **Action requise** :
 Mettre en place un système de monitoring quotidien :

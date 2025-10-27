@@ -1,29 +1,52 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import RestesManager from '@/components/RestesManager';
 
-export default function Restes(){
-  const [rows,setRows]=useState([]);
-  useEffect(()=>{ (async()=>{
-    const soon = new Date(Date.now()+7*86400000).toISOString().slice(0,10);
-    const { data } = await supabase
-      .from('inventory_lots')
-      .select('id, qty, unit, dlc, opened_at, product:products_catalog(name), location:locations(name)')
-      .or(`opened_at.is.not.null,dlc.lte.${soon}`)
-      .order('dlc',{ascending:true});
-    setRows(data||[]);
-  })() },[]);
-  return (
-    <div>
-      <h1>Restes & bientôt</h1>
-      {rows.length===0 ? <p>Rien de particulier 🎉</p> :
-        rows.map(r=>(
-          <div key={r.id} className="card" style={{borderWidth: r.opened_at ? 2 : 1}}>
-            <strong>{r.product?.name}</strong> — {r.qty} {r.unit} • <em>{r.location?.name}</em>
-            <div style={{opacity:.7}}>Ouvert: {r.opened_at||'non'} — DLC {r.dlc||'—'}</div>
-          </div>
-        ))
-      }
-    </div>
-  );
+export default function Restes() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadUser();
+  }, []);
+
+  async function loadUser() {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    } catch (error) {
+      console.error('Erreur chargement utilisateur:', error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  if (loading) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '400px'
+      }}>
+        <p>Chargement...</p>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div style={{
+        padding: '2rem',
+        textAlign: 'center'
+      }}>
+        <h1>🗑️ Gestion Anti-Gaspillage</h1>
+        <p>Connectez-vous pour accéder à la gestion des restes</p>
+      </div>
+    );
+  }
+
+  return <RestesManager userId={user.id} />;
 }

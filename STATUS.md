@@ -145,16 +145,71 @@ Assemblages par cuisine commune (Italienne, Française, etc.)
 ## 🎯 Prochaines Étapes
 
 1. ✅ Lire **AIDE_RAPIDE.md**
-2. ⏳ Exécuter **tools/enrichment_optimized.sql** dans Supabase
-3. ⏳ Vérifier avec la requête ci-dessus
-4. ⏳ Tester avec les requêtes de **REQUETES_TEST.md**
-5. ⏳ Implémenter l'API d'assemblage intelligent dans l'app
+2. ✅ Exécuter **tools/enrichment_optimized.sql** dans Supabase
+3. ✅ Vérifier avec la requête ci-dessus
+4. ✅ **Implémenter l'API d'assemblage intelligent** (27 oct 2025)
+5. ✅ **Créer composant React PairingSuggestions** (27 oct 2025)
+6. ⏳ **Intégrer dans page de planning** → Voir `INTEGRATION_PLANNING_GUIDE.md`
+7. ⏳ Tester l'intégration complète (API + UI)
+8. ⏳ Enrichir les 482 recettes restantes (optionnel)
 
 ---
 
-**Date de mise à jour** : 27 octobre 2025, 21:30 UTC  
-**Version** : 4.0 - Post-correction calories nutritionnelles  
-**Dernière action** : Correction de 2980 valeurs calories_kcal manquantes (88.6% de réduction)
+## 🆕 API d'Assemblage Intelligent (27 oct 2025)
+
+### ✅ Implémentation Complète - Backend + Frontend
+
+**Fichiers Backend** :
+- ✅ `lib/pairingService.js` - Service de pairing avec 4 algorithmes
+- ✅ `app/api/recipes/suggestions/route.js` - Endpoint API REST
+- ✅ `API_PAIRING_README.md` - Documentation API complète
+- ✅ `REQUETES_PAIRING_TEST.md` - Tests et exemples
+
+**Fichiers Frontend** (NOUVEAU) :
+- ✅ `components/PairingSuggestions.jsx` - Composant React (383 lignes)
+- ✅ `components/PairingSuggestions.css` - Styles glassmorphism (456 lignes)
+- ✅ `components/PairingSuggestions.examples.jsx` - 5 exemples d'intégration (241 lignes)
+
+**Fonctionnalités** :
+- 🧬 **Food Pairing** : Arômes partagés (30 points max)
+- ⚖️ **Équilibre** : Riche ↔ Léger (25 points max)
+- 🎭 **Contraste** : Textures opposées (20 points max)
+- 🌍 **Terroir** : Cuisine commune (15 points max)
+- 🍂 **Bonus Saison** : Saison commune (10 points max)
+
+**Utilisation API** :
+```bash
+# Suggérer accompagnements pour une recette
+curl -X POST http://localhost:3000/api/recipes/suggestions \
+  -H "Content-Type: application/json" \
+  -d '{"mainRecipeId": 142, "maxSuggestions": 5}'
+```
+
+**Utilisation Composant** :
+```jsx
+import PairingSuggestions from '@/components/PairingSuggestions';
+
+<PairingSuggestions
+  mainRecipeId={278}
+  mainRecipeName="One pot pasta"
+  onAddRecipe={async (recipe) => {
+    // Ajouter au planning
+    await supabase.from('meal_plan').insert({...});
+  }}
+  filters={{ diet: "Végétarien", season: "Été" }}
+  maxSuggestions={5}
+/>
+```
+
+**Documentation complète** :
+- Backend : `API_PAIRING_README.md` + `REQUETES_PAIRING_TEST.md`
+- Frontend : `GUIDE_INTEGRATION_PAIRING.md` + `INTEGRATION_PLANNING_GUIDE.md`
+
+---
+
+**Date de mise à jour** : 27 octobre 2025, 23:30 UTC  
+**Version** : 5.1 - API + Composant UI complets  
+**Dernière action** : Création composant React PairingSuggestions avec styles et documentation d'intégration
 
 ---
 
@@ -170,6 +225,16 @@ Assemblages par cuisine commune (Italienne, Française, etc.)
 - **GUIDE_EXECUTION_SUPABASE.md** - Instructions étape par étape
 - **REQUETES_TEST.md** - Requêtes de vérification
 - **ASSEMBLAGE_INTELLIGENT.md** - Documentation théorique complète
+
+### API d'Assemblage Intelligent (NOUVEAU)
+- **API_PAIRING_README.md** - Documentation complète de l'API
+- **REQUETES_PAIRING_TEST.md** - Tests et exemples d'utilisation
+- **RAPPORT_IMPLEMENTATION_API_PAIRING.md** - Détails techniques
+
+### Composant UI PairingSuggestions (NOUVEAU)
+- **GUIDE_INTEGRATION_PAIRING.md** - Guide d'utilisation du composant
+- **INTEGRATION_PLANNING_GUIDE.md** - Intégration dans la page de planning
+- **components/PairingSuggestions.examples.jsx** - 5 exemples de code
 
 ---
 
