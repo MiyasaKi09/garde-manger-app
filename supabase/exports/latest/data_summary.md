@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Sun Oct 26 14:09:24 UTC 2025_
+_Generated: Mon Oct 27 14:52:47 UTC 2025_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -7,7 +7,7 @@ _Generated: Sun Oct 26 14:09:24 UTC 2025_
 - canonical_food_origins: 0 rows
 - canonical_food_processes: 0 rows
 - canonical_foods: 227 rows
-- cooking_nutrition_factors: 0 rows
+- cooking_nutrition_factors: 69 rows
 - countries: 0 rows
 - cultivars: 1057 rows
 - diets: 9 rows
