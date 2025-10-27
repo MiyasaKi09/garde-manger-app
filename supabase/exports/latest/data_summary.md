@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Mon Oct 27 21:43:10 UTC 2025_
+_Generated: Mon Oct 27 21:57:41 UTC 2025_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -22,7 +22,7 @@ _Generated: Mon Oct 27 21:43:10 UTC 2025_
 - processes: 14 rows
 - products: 0 rows
 - recipe_ingredients: 3487 rows
-- recipe_nutrition_cache: 0 rows
+- recipe_nutrition_cache: 1 rows
 - recipe_pairings: 0 rows
 - recipe_tags: 1016 rows
 - recipes: 878 rows
