@@ -609,6 +609,19 @@
   font-size: 1rem;
 }
 
+.ingredient-link {
+  color: #059669;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.ingredient-link:hover {
+  color: #047857;
+  text-decoration: underline;
+}
+
 .ingredient-notes {
   color: #6b7280;
   font-size: 0.875rem;

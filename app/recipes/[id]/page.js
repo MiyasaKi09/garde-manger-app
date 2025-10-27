@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { convertWithMeta } from '@/lib/units';
 import IngredientSearchSelector from './IngredientSearchSelector';
+import NutritionFacts from '@/components/NutritionFacts';
 import './recipe-detail.css';
 import './IngredientSearchSelector.css';
 
@@ -1109,16 +1110,36 @@ export default function RecipeDetail() {
                 {ings.map((ing, index) => {
                   // Déterminer le nom à afficher
                   const displayName = ing.name || ing.canonical_foods?.name || 'Ingrédient inconnu';
-                  const sourceLabel = ing.source_type === 'archetype' ? '(transformé)' : '';
+                  
+                  // Créer le lien vers la page du produit si on a l'ID
+                  const productId = ing.canonical_food_id || ing.archetype_id;
+                  const productUrl = productId ? `/produits/${productId}` : null;
                   
                   return (
                     <li key={ing.id || index} className="ingredient-item">
                       <span className="ingredient-quantity">
                         {roundForUnit(ing.quantity, ing.unit)} {ing.unit}
                       </span>
-                      <span className="ingredient-name">
-                        {displayName} {sourceLabel}
-                      </span>
+                      {productUrl ? (
+                        <a 
+                          href={productUrl} 
+                          className="ingredient-name ingredient-link"
+                          style={{ 
+                            color: '#059669', 
+                            textDecoration: 'none',
+                            cursor: 'pointer',
+                            transition: 'color 0.2s'
+                          }}
+                          onMouseEnter={(e) => e.target.style.color = '#047857'}
+                          onMouseLeave={(e) => e.target.style.color = '#059669'}
+                        >
+                          {displayName}
+                        </a>
+                      ) : (
+                        <span className="ingredient-name">
+                          {displayName}
+                        </span>
+                      )}
                       {ing.notes && (
                         <span className="ingredient-notes">({ing.notes})</span>
                       )}
@@ -1131,6 +1152,9 @@ export default function RecipeDetail() {
                 Aucun ingrédient défini pour cette recette.
               </p>
             )}
+            
+            {/* Informations Nutritionnelles */}
+            <NutritionFacts recipeId={parseInt(id)} servings={1} />
           </div>
 
           <div className="instructions-section">

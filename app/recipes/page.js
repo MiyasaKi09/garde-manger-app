@@ -504,22 +504,17 @@ export default function RecipesPage() {
               urgentIngredients: 0 
             };
             const isUrgent = status.urgentIngredients > 0;
-            const isRecommended = recipe.myko_score >= 80;
 
             return (
-              <div 
-                key={recipe.id} 
-                className={`recipe-card ${isUrgent ? 'urgent-recipe' : ''} ${isRecommended ? 'myko-recommended' : ''}`}
+              <Link 
+                href={`/recipes/${recipe.id}`}
+                key={recipe.id}
+                className={`recipe-card ${isUrgent ? 'urgent-recipe' : ''}`}
+                style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
               >
                 <div className="recipe-header">
                   <h3 className="recipe-title">{recipe.title || recipe.name}</h3>
                   <div className="recipe-badges">
-                    <div className={`myko-score ${
-                      recipe.myko_score >= 80 ? 'high-score' :
-                      recipe.myko_score >= 60 ? 'medium-score' : 'low-score'
-                    }`}>
-                      {recipe.myko_score || 0}★
-                    </div>
                     {isUrgent && <div className="urgent-badge">URGENT</div>}
                   </div>
                 </div>
@@ -560,15 +555,18 @@ export default function RecipesPage() {
                 </div>
                 
                 <div className="recipe-actions">
-                  <Link 
-                    href={`/recipes/${recipe.id}`} 
+                  <button 
                     className="action-btn primary"
+                    onClick={(e) => {
+                      // Le Link parent gère la navigation
+                    }}
                   >
                     👁️ Voir
-                  </Link>
+                  </button>
                   <button 
                     className="action-btn secondary"
                     onClick={(e) => {
+                      e.preventDefault();
                       e.stopPropagation();
                       alert(`🌿 "${recipe.name}" ajoutée au planning !`);
                     }}
@@ -578,6 +576,7 @@ export default function RecipesPage() {
                   <button 
                     className="action-btn tertiary"
                     onClick={(e) => {
+                      e.preventDefault();
                       e.stopPropagation();
                       alert(`🛒 Ingrédients manquants ajoutés aux courses !`);
                     }}
@@ -585,7 +584,7 @@ export default function RecipesPage() {
                     🛒 Courses
                   </button>
                 </div>
-              </div>
+              </Link>
             );
           })
         )}

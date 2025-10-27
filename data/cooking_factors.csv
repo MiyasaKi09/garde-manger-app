@@ -1,0 +1,70 @@
+cooking_method,nutrient_name,factor_type,factor_value,source,notes
+ebullition,vitamine_c,RETENTION,0.50,USDA,Perte importante par dissolution dans l'eau
+ebullition,vitamine_b1,RETENTION,0.60,USDA,Thermosensible et hydrosoluble
+ebullition,vitamine_b6,RETENTION,0.70,USDA,Partiellement hydrosoluble
+ebullition,folates,RETENTION,0.60,USDA,Perte par dissolution
+ebullition,proteines,RETENTION,0.98,USDA,Très stable
+ebullition,glucides,RETENTION,0.99,USDA,Stable
+ebullition,lipides,RETENTION,0.97,USDA,Perte minime
+ebullition,calcium,RETENTION,0.95,ANSES,Perte minime dans l'eau
+ebullition,fer,RETENTION,0.90,ANSES,Légère dissolution
+vapeur,vitamine_c,RETENTION,0.75,ANSES,Meilleure rétention qu'à l'ébullition
+vapeur,vitamine_b1,RETENTION,0.80,ANSES,Bonne rétention
+vapeur,vitamine_b6,RETENTION,0.85,ANSES,Excellente rétention
+vapeur,folates,RETENTION,0.80,ANSES,Bonne rétention
+vapeur,proteines,RETENTION,0.99,USDA,Excellente stabilité
+vapeur,glucides,RETENTION,0.99,USDA,Excellente stabilité
+vapeur,lipides,RETENTION,0.98,USDA,Très stable
+vapeur,calcium,RETENTION,0.98,ANSES,Excellente rétention
+vapeur,fer,RETENTION,0.97,ANSES,Excellente rétention
+friture,vitamine_c,RETENTION,0.30,USDA,Forte dégradation par chaleur
+friture,vitamine_e,RETENTION,0.60,USDA,Dégradation modérée
+friture,proteines,RETENTION,0.95,USDA,Bonne stabilité
+friture,glucides,RETENTION,0.98,USDA,Stable
+friture,lipides,MULTIPLICATION,1.15,ANSES,Absorption d'huile (+15%)
+gril,vitamine_c,RETENTION,0.40,USDA,Dégradation par chaleur intense
+gril,vitamine_b1,RETENTION,0.65,USDA,Thermosensible
+gril,vitamine_b12,RETENTION,0.85,USDA,Assez stable
+gril,proteines,RETENTION,0.95,USDA,Bonne stabilité
+gril,glucides,RETENTION,0.97,USDA,Stable
+gril,lipides,RETENTION,0.90,USDA,Perte par écoulement des graisses
+roti,vitamine_c,RETENTION,0.45,USDA,Dégradation par chaleur prolongée
+roti,vitamine_b1,RETENTION,0.70,USDA,Dégradation modérée
+roti,vitamine_b2,RETENTION,0.85,USDA,Assez stable
+roti,vitamine_e,RETENTION,0.75,USDA,Dégradation modérée
+roti,proteines,RETENTION,0.96,USDA,Très stable
+roti,glucides,RETENTION,0.98,USDA,Stable
+roti,lipides,RETENTION,0.92,USDA,Légère perte
+saute,vitamine_c,RETENTION,0.60,ANSES,Cuisson courte = meilleure rétention
+saute,vitamine_b1,RETENTION,0.75,ANSES,Perte modérée
+saute,vitamine_e,RETENTION,0.80,ANSES,Assez stable
+saute,proteines,RETENTION,0.97,USDA,Excellente stabilité
+saute,glucides,RETENTION,0.98,USDA,Excellente stabilité
+saute,lipides,MULTIPLICATION,1.08,ANSES,Absorption légère d'huile (+8%)
+micro-ondes,vitamine_c,RETENTION,0.80,USDA,Excellente rétention (cuisson rapide)
+micro-ondes,vitamine_b1,RETENTION,0.85,USDA,Bonne rétention
+micro-ondes,vitamine_b6,RETENTION,0.90,USDA,Excellente rétention
+micro-ondes,folates,RETENTION,0.85,USDA,Bonne rétention
+micro-ondes,proteines,RETENTION,0.98,USDA,Excellente stabilité
+micro-ondes,glucides,RETENTION,0.99,USDA,Excellente stabilité
+micro-ondes,lipides,RETENTION,0.98,USDA,Excellente stabilité
+braise,vitamine_c,RETENTION,0.35,USDA,Longue cuisson = forte perte
+braise,vitamine_b1,RETENTION,0.55,USDA,Thermosensible
+braise,vitamine_b6,RETENTION,0.65,USDA,Perte modérée
+braise,proteines,RETENTION,0.94,USDA,Bonne stabilité
+braise,glucides,RETENTION,0.96,USDA,Stable
+braise,lipides,RETENTION,0.95,USDA,Stable
+blanchi,vitamine_c,RETENTION,0.70,ANSES,Cuisson très courte
+blanchi,folates,RETENTION,0.75,ANSES,Perte limitée
+blanchi,proteines,RETENTION,0.99,USDA,Excellente rétention
+blanchi,glucides,RETENTION,0.99,USDA,Excellente rétention
+blanchi,lipides,RETENTION,0.99,USDA,Excellente rétention
+cru,vitamine_c,RETENTION,1.00,Reference,Aucune perte
+cru,vitamine_b1,RETENTION,1.00,Reference,Aucune perte
+cru,vitamine_b6,RETENTION,1.00,Reference,Aucune perte
+cru,folates,RETENTION,1.00,Reference,Aucune perte
+cru,proteines,RETENTION,1.00,Reference,Aucune modification
+cru,glucides,RETENTION,1.00,Reference,Aucune modification
+cru,lipides,RETENTION,1.00,Reference,Aucune modification
+cru,calcium,RETENTION,1.00,Reference,Aucune modification
+cru,fer,RETENTION,1.00,Reference,Aucune modification
