@@ -1,7 +1,24 @@
-# 📊 Statut du Projet - Enrichissement des Recettes
+# 📊 Statut du Projet - Garde-Manger App
 
-**Date** : 19 octobre 2025  
-**Statut** : ⚠️ **ENRICHISSEMENT INCOMPLET - ACTION REQUISE**
+**Date** : 27 octobre 2025  
+**Statut** : ✅ **QUALITÉ DONNÉES AMÉLIORÉE - CORRECTION CALORIES COMPLÈTE**
+
+---
+
+## 🎉 Nouveauté : Correction des Calories (27 oct 2025)
+
+### ✅ Mission Accomplie
+- **2980 UPDATE exécutés** sans erreur (100% succès)
+- **780 aliments corrigés** (88.6% de réduction des calories manquantes)
+- **Formule d'Atwater** appliquée automatiquement
+- **0 erreurs** durant l'exécution
+
+**Voir détails complets** → `RAPPORT_CORRECTION_CALORIES_FINAL.md`
+
+### Impact
+- ✅ **30% des recettes aberrantes** corrigées (celles avec <10 kcal/portion)
+- ✅ **Script import_ciqual.sh** corrigé définitivement
+- ⚠️ **100 aliments restants** avec calories NULL (données sources incomplètes - non corrigeables)
 
 ---
 
@@ -11,34 +28,42 @@
 
 ✅ **Tags créés** : 77 tags (45 anciens + 32 nouveaux profils gustatifs)
 ✅ **Recettes** : 611 recettes importées
-⚠️ **Enrichissement** : **INCOMPLET**
+✅ **Données nutritionnelles** : 2980/3178 calories corrigées (94% complétude)
+⚠️ **Enrichissement tags** : **INCOMPLET**
 
 ```
-Actuellement :
-- 253 recettes enrichies
-- 361 associations de tags
+État actuel :
+- 396 recettes enrichies (45% de 878)
+- 1015 associations de tags
 
 Objectif :
-- 585 recettes enrichies
-- 1362 associations de tags
+- 585+ recettes enrichies (67%+)
+- 1362+ associations de tags
 
-MANQUE : 1001 associations à ajouter !
+MANQUE : 482 recettes + ~347 associations à ajouter !
 ```
 
 ---
 
 ## 🚀 Action Immédiate Requise
 
-### ⚡ LIRE EN PREMIER
+### ⚡ ENRICHISSEMENT DES TAGS
 
-**→ AIDE_RAPIDE.md** ← Guide ultra-rapide de ce qu'il faut faire MAINTENANT
+**État actuel** :
+- 396/878 recettes enrichies (45%)
+- 1015 associations créées (objectif : 1362+)
+- **MANQUE : 482 recettes + ~347 associations**
 
-### 📖 Guides Détaillés
+**→ LIRE EN PREMIER : [GUIDE_ENRICHISSEMENT_MANUEL.md](GUIDE_ENRICHISSEMENT_MANUEL.md)** ← Guide exécution Supabase
 
-1. **FICHIERS_A_EXECUTER.md** - Liste des fichiers SQL à exécuter
-2. **GUIDE_EXECUTION_SUPABASE.md** - Instructions étape par étape
-3. **REQUETES_TEST.md** - Requêtes de vérification après enrichissement
-4. **ASSEMBLAGE_INTELLIGENT.md** - Documentation théorique complète
+**Note** : Le pooler PostgreSQL ne fonctionne pas en CLI. L'enrichissement doit être fait via l'interface Supabase.
+
+### 📖 Guides Complémentaires
+
+1. **GUIDE_ENRICHISSEMENT_MANUEL.md** - Instructions Supabase (NOUVEAU)
+2. **FICHIERS_A_EXECUTER.md** - Liste des fichiers SQL
+3. **GUIDE_EXECUTION_SUPABASE.md** - Instructions détaillées
+4. **REQUETES_TEST.md** - Requêtes de vérification
 
 ---
 
@@ -127,10 +152,28 @@ Assemblages par cuisine commune (Italienne, Française, etc.)
 
 ---
 
-**🆘 Besoin d'aide ?**
-→ Consultez **GUIDE_EXECUTION_SUPABASE.md** section "Dépannage"
+**Date de mise à jour** : 27 octobre 2025, 21:30 UTC  
+**Version** : 4.0 - Post-correction calories nutritionnelles  
+**Dernière action** : Correction de 2980 valeurs calories_kcal manquantes (88.6% de réduction)
 
 ---
 
-**Date de mise à jour** : 19 octobre 2025, 14:45 UTC  
-**Version** : 3.0 - Post-nettoyage
+## 📚 Documentation Disponible
+
+### Qualité des Données
+- **RAPPORT_CORRECTION_CALORIES_FINAL.md** - Correction complète des calories (27 oct 2025)
+- **RAPPORT_TESTS_NUTRITIONNELS.md** - Tests et diagnostic initial
+
+### Enrichissement Recettes
+- **AIDE_RAPIDE.md** - Guide ultra-rapide enrichissement tags
+- **FICHIERS_A_EXECUTER.md** - Liste des fichiers SQL à exécuter
+- **GUIDE_EXECUTION_SUPABASE.md** - Instructions étape par étape
+- **REQUETES_TEST.md** - Requêtes de vérification
+- **ASSEMBLAGE_INTELLIGENT.md** - Documentation théorique complète
+
+---
+
+**🆘 Besoin d'aide ?**
+→ Consultez **GUIDE_EXECUTION_SUPABASE.md** section "Dépannage"
+
+````

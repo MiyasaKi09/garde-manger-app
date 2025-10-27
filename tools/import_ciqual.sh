@@ -76,8 +76,8 @@ with open(input_file, 'r', encoding='iso-8859-1') as f_in, \
             return None
         
         # Macronutriments
-        calories = parse_float(row.get(find_col(['energie', 'kcal', '1169']), ''))
-        proteines = parse_float(row.get(find_col(['proteine', 'prot', 'jones']), ''))
+        calories = parse_float(row.get(find_col(['(kcal/100 g)', 'energie', 'kcal']), ''))
+        proteines = parse_float(row.get(find_col(['proteine', 'prot']), ''))
         glucides = parse_float(row.get(find_col(['glucides (g']), ''))
         lipides = parse_float(row.get(find_col(['lipides (g']), ''))
         
@@ -142,8 +142,8 @@ EOF
 echo ""
 echo "💾 Import dans PostgreSQL..."
 psql "$DATABASE_URL_TX" << 'SQL'
--- Import avec COPY
-\COPY nutritional_data(source, source_id, calories_kcal, proteines_g, glucides_g, lipides_g) FROM 'data/ciqual_nutrition_import.csv' WITH CSV HEADER DELIMITER ',' NULL '';
+-- Import avec COPY (33 colonnes complètes)
+\COPY nutritional_data(source_id, calories_kcal, proteines_g, glucides_g, lipides_g, fibres_g, sucres_g, ag_satures_g, ag_monoinsatures_g, ag_polyinsatures_g, cholesterol_mg, calcium_mg, fer_mg, magnesium_mg, phosphore_mg, potassium_mg, sodium_mg, zinc_mg, cuivre_mg, selenium_ug, iode_ug, vitamine_a_ug, beta_carotene_ug, vitamine_d_ug, vitamine_e_mg, vitamine_k_ug, vitamine_c_mg, vitamine_b1_mg, vitamine_b2_mg, vitamine_b3_mg, vitamine_b5_mg, vitamine_b6_mg, vitamine_b9_ug, vitamine_b12_ug) FROM 'data/ciqual_nutrition_import.csv' WITH CSV HEADER DELIMITER ',' NULL '';
 
 -- Statistiques
 SELECT COUNT(*) AS total_rows FROM nutritional_data;
@@ -151,7 +151,9 @@ SELECT
   COUNT(*) FILTER (WHERE calories_kcal IS NOT NULL) AS with_calories,
   COUNT(*) FILTER (WHERE proteines_g IS NOT NULL) AS with_proteines,
   COUNT(*) FILTER (WHERE glucides_g IS NOT NULL) AS with_glucides,
-  COUNT(*) FILTER (WHERE lipides_g IS NOT NULL) AS with_lipides
+  COUNT(*) FILTER (WHERE lipides_g IS NOT NULL) AS with_lipides,
+  COUNT(*) FILTER (WHERE vitamine_c_mg IS NOT NULL) AS with_vit_c,
+  COUNT(*) FILTER (WHERE calcium_mg IS NOT NULL) AS with_calcium
 FROM nutritional_data;
 SQL
 

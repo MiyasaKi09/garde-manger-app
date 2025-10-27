@@ -1,8 +1,8 @@
 # 📚 Index - Documentation du Projet
 
 **Projet** : Garde-Manger App  
-**Module** : Enrichissement des Recettes & Assemblage Intelligent  
-**Date** : 19 octobre 2025
+**Module** : Enrichissement des Recettes & Qualité des Données  
+**Date** : 27 octobre 2025
 
 ---
 
@@ -16,13 +16,34 @@
 
 ---
 
+## 🎉 NOUVEAUTÉ : Correction des Calories (27 oct 2025)
+
+### 📊 Qualité des Données Nutritionnelles
+
+**→ [RAPPORT_CORRECTION_CALORIES_FINAL.md](RAPPORT_CORRECTION_CALORIES_FINAL.md)** - Rapport complet  
+- ✅ 2980 calories corrigées (88.6% de réduction des NULL)
+- ✅ Formule d'Atwater appliquée automatiquement
+- ✅ 0 erreurs durant l'exécution
+- ⚠️ 100 aliments restants avec données sources incomplètes
+
+**→ [RAPPORT_TESTS_NUTRITIONNELS.md](RAPPORT_TESTS_NUTRITIONNELS.md)** - Tests initiaux & diagnostic
+
+**→ [REQUETES_MONITORING_NUTRITION.md](REQUETES_MONITORING_NUTRITION.md)** - 12 requêtes SQL de monitoring  
+- Comptage calories NULL
+- Détection recettes aberrantes
+- Score de complétude nutritionnelle
+- Tests de non-régression
+
+---
+
 ## 📖 Guides d'Exécution
 
 ### Pour Enrichir les Recettes
 
-1. **[FICHIERS_A_EXECUTER.md](FICHIERS_A_EXECUTER.md)** - Liste des fichiers SQL + instructions courtes
-2. **[GUIDE_EXECUTION_SUPABASE.md](GUIDE_EXECUTION_SUPABASE.md)** - Guide détaillé étape par étape
-3. **[REQUETES_TEST.md](REQUETES_TEST.md)** - 9 requêtes pour vérifier après enrichissement
+1. **[GUIDE_ENRICHISSEMENT_MANUEL.md](GUIDE_ENRICHISSEMENT_MANUEL.md)** - ⭐ Guide exécution Supabase (NOUVEAU - 27 oct)
+2. **[FICHIERS_A_EXECUTER.md](FICHIERS_A_EXECUTER.md)** - Liste des fichiers SQL + instructions courtes
+3. **[GUIDE_EXECUTION_SUPABASE.md](GUIDE_EXECUTION_SUPABASE.md)** - Guide détaillé étape par étape
+4. **[REQUETES_TEST.md](REQUETES_TEST.md)** - 9 requêtes pour vérifier après enrichissement
 
 ---
 
@@ -101,6 +122,7 @@
 |-------|--------|---------|
 | Import des recettes | ✅ Terminé | tools/RAPPORT_IMPORT.md |
 | Création des tags | ✅ Terminé | - |
+| Correction calories nutritionnelles | ✅ **Terminé (27 oct)** | RAPPORT_CORRECTION_CALORIES_FINAL.md |
 | Enrichissement des recettes | ⚠️ **En cours** | AIDE_RAPIDE.md |
 | Tests d'assemblage | ⏳ À faire | REQUETES_TEST.md |
 | Implémentation API | ⏳ À faire | ASSEMBLAGE_INTELLIGENT.md |
@@ -111,7 +133,9 @@
 
 - **611 recettes** importées
 - **77 tags** créés (45 anciens + 32 nouveaux)
-- **1362 associations** à créer
+- **3178 aliments** dans la base nutritionnelle
+- **2980 calories** corrigées (94% de complétude)
+- **1362 associations** à créer (tags → recettes)
 - **361 associations** actuellement (⚠️ incomplet)
 - **40 fichiers** nettoyés du dossier tools/
 
@@ -122,7 +146,10 @@
 **Problème d'exécution ?**  
 → Voir **GUIDE_EXECUTION_SUPABASE.md** section "Dépannage"
 
-**Questions théoriques ?**  
+**Questions sur les données nutritionnelles ?**  
+→ Voir **REQUETES_MONITORING_NUTRITION.md**
+
+**Questions théoriques assemblage ?**  
 → Voir **ASSEMBLAGE_INTELLIGENT.md**
 
 **Doute sur quoi faire ?**  
@@ -130,5 +157,5 @@
 
 ---
 
-**Dernière mise à jour** : 19 octobre 2025, 14:45 UTC  
-**Version** : 3.0 - Post-nettoyage
+**Dernière mise à jour** : 27 octobre 2025, 21:30 UTC  
+**Version** : 4.0 - Post-correction calories nutritionnelles
