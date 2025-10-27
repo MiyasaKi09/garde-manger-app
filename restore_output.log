@@ -1,0 +1,20 @@
+╔════════════════════════════════════════════════════════════════╗
+║  🔄 RESTAURATION COMPLÈTE DU SYSTÈME NUTRITIONNEL             ║
+╚════════════════════════════════════════════════════════════════╝
+
+Ce script va :
+  1️⃣  Restaurer canonical_foods (227) et recipe_ingredients (3487)
+  2️⃣  Réimporter Ciqual (3178 aliments, 33 colonnes)
+  3️⃣  Lier 16 aliments de base aux données Ciqual
+
+
+
+═══════════════════════════════════════════════════════════════
+ÉTAPE 1/3 : Restauration depuis export (27 Oct 2025)
+═══════════════════════════════════════════════════════════════
+
+🔄 Restauration depuis supabase/exports/latest (27 Oct 2025, 14:53 UTC)
+
+📊 État actuel de la base:
+psql: error: invalid connection option ""postgresql://postgres:qnYlPNuhMmHTzcUR@aws-1-eu-west-3.pooler.supabase.com:6543/postgres?sslmode"
+❌ Erreur lors de la restauration

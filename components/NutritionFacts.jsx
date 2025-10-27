@@ -15,38 +15,95 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
         setLoading(true);
         setError(null);
         
-        console.log('🍎 Calcul nutritionnel pour recette', recipeId);
+        console.log('🍎 Chargement nutritionnel pour recette', recipeId);
         
-        // Appeler la fonction PostgreSQL
-        const { data, error: rpcError } = await supabase.rpc(
-          'calculate_recipe_nutrition', 
-          { recipe_id_param: recipeId }
-        );
+        // 1️⃣ Vérifier d'abord si le cache existe
+        const { data: cacheData, error: cacheError } = await supabase
+          .from('recipe_nutrition_cache')
+          .select('*')
+          .eq('recipe_id', recipeId)
+          .maybeSingle();
         
-        if (rpcError) {
-          console.error('❌ Erreur RPC:', rpcError);
-          throw rpcError;
+        if (cacheError) {
+          console.error('❌ Erreur lecture cache:', cacheError);
         }
         
-        if (!data || data.length === 0) {
-          console.warn('⚠️ Aucune donnée nutritionnelle disponible');
-          setError('Données nutritionnelles non disponibles pour cette recette');
-          return;
+        // 2️⃣ Si pas de cache, déclencher le calcul via API
+        if (!cacheData) {
+          console.log('🔄 Pas de cache, déclenchement du calcul...');
+          
+          const response = await fetch(`/api/recipes/${recipeId}/nutrition/calculate`, {
+            method: 'POST',
+          });
+          
+          if (!response.ok) {
+            throw new Error('Erreur lors du calcul nutritionnel');
+          }
+          
+          console.log('✅ Calcul terminé');
+          
+          // Relire le cache après calcul
+          const { data: newCacheData, error: newError } = await supabase
+            .from('recipe_nutrition_cache')
+            .select('*')
+            .eq('recipe_id', recipeId)
+            .single();
+          
+          if (newError || !newCacheData) {
+            setError('Données nutritionnelles non disponibles');
+            return;
+          }
+          
+          setNutrition({
+            Calories: {
+              perServing: newCacheData.calories_per_serving * servings,
+              total: newCacheData.calories_total,
+              unit: 'kcal'
+            },
+            Protéines: {
+              perServing: newCacheData.proteines_per_serving * servings,
+              total: newCacheData.proteines_total,
+              unit: 'g'
+            },
+            Glucides: {
+              perServing: newCacheData.glucides_per_serving * servings,
+              total: newCacheData.glucides_total,
+              unit: 'g'
+            },
+            Lipides: {
+              perServing: newCacheData.lipides_per_serving * servings,
+              total: newCacheData.lipides_total,
+              unit: 'g'
+            }
+          });
+        } else {
+          // 3️⃣ Cache existe, lecture directe
+          console.log('⚡ Chargé depuis le cache');
+          
+          setNutrition({
+            Calories: {
+              perServing: cacheData.calories_per_serving * servings,
+              total: cacheData.calories_total,
+              unit: 'kcal'
+            },
+            Protéines: {
+              perServing: cacheData.proteines_per_serving * servings,
+              total: cacheData.proteines_total,
+              unit: 'g'
+            },
+            Glucides: {
+              perServing: cacheData.glucides_per_serving * servings,
+              total: cacheData.glucides_total,
+              unit: 'g'
+            },
+            Lipides: {
+              perServing: cacheData.lipides_per_serving * servings,
+              total: cacheData.lipides_total,
+              unit: 'g'
+            }
+          });
         }
         
-        console.log('✅ Données nutritionnelles reçues:', data);
-        
-        // Transformer en objet pour faciliter l'accès
-        const nutritionData = {};
-        data.forEach(item => {
-          nutritionData[item.nutrient_name] = {
-            perServing: parseFloat(item.value_per_serving) * servings,
-            total: parseFloat(item.value_total),
-            unit: item.unit
-          };
-        });
-        
-        setNutrition(nutritionData);
       } catch (error) {
         console.error('❌ Erreur chargement nutrition:', error);
         setError(error.message || 'Erreur lors du calcul nutritionnel');
