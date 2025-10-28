@@ -4,24 +4,22 @@ import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public folder
-     */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/((?!_next/|favicon.ico|login|auth/).*)', // ← laisse passer /login et /auth/*
   ],
 };
 
 export async function middleware(req) {
   const res = NextResponse.next();
   const supabase = createMiddlewareClient({ req, res });
-  
-  // Rafraîchir la session (important pour que auth.uid() fonctionne)
-  // Mais NE PAS bloquer les requêtes - juste rafraîchir les cookies
-  await supabase.auth.getSession();
-  
+  const { data: { session } } = await supabase.auth.getSession();
+
+  // Si pas de session → redirige vers /login?redirect=<chemin>
+  if (!session) {
+    const url = req.nextUrl.clone();
+    const path = url.pathname + (url.search || '');
+    url.pathname = '/login';
+    url.search = `?redirect=${encodeURIComponent(path)}`;
+    return NextResponse.redirect(url);
+  }
   return res;
 }
