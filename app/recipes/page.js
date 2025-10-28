@@ -76,6 +76,8 @@ export default function RecipesPage() {
         // Charger les ingrédients pour toutes les recettes
         const recipeIds = data.map(r => r.id);
         
+        console.log('🔍 Chargement des ingrédients pour', recipeIds.length, 'recettes...');
+
         const { data: ingredients, error: ingredientsError } = await supabase
           .from('recipe_ingredients')
           .select(`
@@ -101,9 +103,15 @@ export default function RecipesPage() {
             )
           `)
           .in('recipe_id', recipeIds);
-        
+
+        console.log('📊 Résultat ingrédients:', {
+          count: ingredients?.length || 0,
+          error: ingredientsError,
+          sample: ingredients?.[0]
+        });
+
         if (ingredientsError) {
-          console.error('Erreur chargement ingrédients:', ingredientsError);
+          console.error('❌ Erreur chargement ingrédients:', ingredientsError);
         }
         
         // Regrouper les ingrédients par recipe_id
@@ -129,8 +137,14 @@ export default function RecipesPage() {
           // Calculer un score Myko basique (sera remplacé par le vrai calcul plus tard)
           myko_score: Math.min(100, 50 + (ingredientsByRecipe[recipe.id]?.length || 0) * 5)
         }));
-        
+
         console.log('Recettes enrichies avec ingrédients:', recipesWithIngredients.length);
+        console.log('Exemple de recette avec ingrédients:', {
+          id: recipesWithIngredients[0]?.id,
+          name: recipesWithIngredients[0]?.name,
+          nb_ingredients: recipesWithIngredients[0]?.recipe_ingredients?.length,
+          ingredients: recipesWithIngredients[0]?.recipe_ingredients?.slice(0, 3)
+        });
         setRecipes(recipesWithIngredients);
         return;
       }
