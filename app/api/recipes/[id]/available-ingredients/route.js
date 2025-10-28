@@ -1,4 +1,5 @@
-import { supabase } from '@/lib/supabaseClient';
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 /**
@@ -14,6 +15,8 @@ import { NextResponse } from 'next/server';
  */
 export async function GET(request, { params }) {
   try {
+    const supabase = createRouteHandlerClient({ cookies });
+
     // Vérifier l'authentification
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {

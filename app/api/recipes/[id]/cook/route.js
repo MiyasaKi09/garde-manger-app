@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabaseClient';
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 import { calculateCookedDishExpiration } from '@/lib/shelfLifeRules';
 
 /**
@@ -9,6 +10,7 @@ import { calculateCookedDishExpiration } from '@/lib/shelfLifeRules';
  */
 export async function POST(request, { params }) {
   try {
+    const supabase = createRouteHandlerClient({ cookies });
     
     // Vérifier l'authentification
     const { data: { user }, error: authError } = await supabase.auth.getUser();
