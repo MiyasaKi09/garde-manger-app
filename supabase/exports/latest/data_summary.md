@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Mon Oct 27 22:31:12 UTC 2025_
+_Generated: Tue Oct 28 09:32:56 UTC 2025_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -7,6 +7,8 @@ _Generated: Mon Oct 27 22:31:12 UTC 2025_
 - canonical_food_origins: 0 rows
 - canonical_food_processes: 0 rows
 - canonical_foods: 227 rows
+- cooked_dish_ingredients: 0 rows
+- cooked_dishes: 0 rows
 - cooking_nutrition_factors: 69 rows
 - countries: 0 rows
 - cultivars: 0 rows
@@ -22,7 +24,7 @@ _Generated: Mon Oct 27 22:31:12 UTC 2025_
 - processes: 14 rows
 - products: 0 rows
 - recipe_ingredients: 3487 rows
-- recipe_nutrition_cache: 1 rows
+- recipe_nutrition_cache: 3 rows
 - recipe_pairings: 0 rows
 - recipe_tags: 1016 rows
 - recipes: 878 rows
