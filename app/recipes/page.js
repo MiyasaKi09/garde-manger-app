@@ -242,10 +242,13 @@ export default function RecipesPage() {
         }
 
         let availableIngredients = 0;
+        let ingredientsExpiringSoon = 0; // Ingrédients qui expirent dans les 7 prochains jours
+        const URGENT_DAYS_THRESHOLD = 7;
 
         ingredients.forEach(ingredient => {
           // Additionner la quantité totale disponible pour cet ingrédient
           let totalAvailable = 0;
+          let earliestExpirationDate = null;
 
           // AMÉLIORATION : On cherche par correspondance intelligente :
           // 1. Correspondance directe par canonical_food_id ou archetype_id
@@ -255,13 +258,25 @@ export default function RecipesPage() {
           if (ingredient.canonical_food_id) {
             // L'ingrédient demande un canonical_food
             inventory.forEach(lot => {
+              let matches = false;
               // Correspondance directe avec canonical_food_id
               if (lot.canonical_food_id === ingredient.canonical_food_id) {
-                totalAvailable += lot.qty_remaining || 0;
+                matches = true;
               }
               // Correspondance avec un archetype du même canonical_food (via notre mapping)
               else if (lot.archetype_id && archetypeMapping[lot.archetype_id] === ingredient.canonical_food_id) {
+                matches = true;
+              }
+
+              if (matches) {
                 totalAvailable += lot.qty_remaining || 0;
+                // Suivre la date d'expiration la plus proche
+                if (lot.expiration_date) {
+                  const expDate = new Date(lot.expiration_date);
+                  if (!earliestExpirationDate || expDate < earliestExpirationDate) {
+                    earliestExpirationDate = expDate;
+                  }
+                }
               }
             });
           } else if (ingredient.archetype_id) {
@@ -269,13 +284,25 @@ export default function RecipesPage() {
             const ingredientCanonicalId = ingredient.archetypes?.canonical_food_id;
 
             inventory.forEach(lot => {
+              let matches = false;
               // Correspondance directe avec archetype_id
               if (lot.archetype_id === ingredient.archetype_id) {
-                totalAvailable += lot.qty_remaining || 0;
+                matches = true;
               }
               // Correspondance avec le canonical_food parent (si le lot est au niveau canonical_food)
               else if (lot.canonical_food_id && ingredientCanonicalId && lot.canonical_food_id === ingredientCanonicalId) {
+                matches = true;
+              }
+
+              if (matches) {
                 totalAvailable += lot.qty_remaining || 0;
+                // Suivre la date d'expiration la plus proche
+                if (lot.expiration_date) {
+                  const expDate = new Date(lot.expiration_date);
+                  if (!earliestExpirationDate || expDate < earliestExpirationDate) {
+                    earliestExpirationDate = expDate;
+                  }
+                }
               }
             });
           }
@@ -294,16 +321,49 @@ export default function RecipesPage() {
           const requiredQty = ingredient.quantity || 1;
           if (totalAvailable >= requiredQty) {
             availableIngredients++;
+
+            // Vérifier si cet ingrédient expire bientôt
+            if (earliestExpirationDate) {
+              const now = new Date();
+              const daysUntilExpiration = Math.floor((earliestExpirationDate - now) / (1000 * 60 * 60 * 24));
+              if (daysUntilExpiration <= URGENT_DAYS_THRESHOLD) {
+                ingredientsExpiringSoon++;
+              }
+            }
           }
         });
 
-        const urgentIngredients = totalIngredients - availableIngredients;
+        const availabilityPercent = Math.round((availableIngredients / totalIngredients) * 100);
+
+        // Calcul du score Myko (0-100)
+        // Basé sur : disponibilité (60%), urgence (30%), complexité (10%)
+        let mykoScore = 0;
+
+        // Composante disponibilité (60 points max)
+        mykoScore += (availabilityPercent / 100) * 60;
+
+        // Composante urgence (30 points max) : plus il y a d'ingrédients qui expirent bientôt, plus le score est élevé
+        if (totalIngredients > 0) {
+          const urgencyPercent = (ingredientsExpiringSoon / totalIngredients) * 100;
+          mykoScore += (urgencyPercent / 100) * 30;
+        }
+
+        // Composante complexité (10 points max) : moins c'est complexe, plus le score est élevé
+        const totalTime = (recipe.prep_time_minutes || 0) + (recipe.cook_time_minutes || 0);
+        if (totalTime > 0) {
+          // Score inversé : 10 minutes = 10 points, 120 minutes = 0 points
+          const complexityScore = Math.max(0, 10 - (totalTime / 120) * 10);
+          mykoScore += complexityScore;
+        } else {
+          mykoScore += 5; // Score neutre si pas de temps défini
+        }
 
         statusMap[recipe.id] = {
           totalIngredients,
           availableIngredients,
-          availabilityPercent: Math.round((availableIngredients / totalIngredients) * 100),
-          urgentIngredients
+          availabilityPercent,
+          urgentIngredients: ingredientsExpiringSoon,
+          mykoScore: Math.round(mykoScore)
         };
       }
 
@@ -346,8 +406,9 @@ export default function RecipesPage() {
       
       switch (sortBy) {
         case 'myko_score':
-          valueA = a.myko_score || 0;
-          valueB = b.myko_score || 0;
+          // Utiliser le score Myko calculé avec la disponibilité réelle
+          valueA = inventoryStatus[a.id]?.mykoScore || 0;
+          valueB = inventoryStatus[b.id]?.mykoScore || 0;
           break;
         case 'availability':
           valueA = inventoryStatus[a.id]?.availabilityPercent || 0;
@@ -589,6 +650,14 @@ export default function RecipesPage() {
                 <div className="recipe-header">
                   <h3 className="recipe-title">{recipe.title || recipe.name}</h3>
                   <div className="recipe-badges">
+                    {status.mykoScore !== undefined && (
+                      <div className={`myko-score ${
+                        status.mykoScore >= 80 ? 'high-score' :
+                        status.mykoScore >= 50 ? 'medium-score' : 'low-score'
+                      }`}>
+                        {status.mykoScore}★
+                      </div>
+                    )}
                     {isUrgent && <div className="urgent-badge">URGENT</div>}
                   </div>
                 </div>
