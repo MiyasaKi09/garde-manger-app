@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Tue Oct 28 12:03:36 UTC 2025_
+_Generated: Tue Oct 28 12:13:36 UTC 2025_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -14,7 +14,7 @@ _Generated: Tue Oct 28 12:03:36 UTC 2025_
 - cultivars: 0 rows
 - diets: 9 rows
 - instructions: 1296 rows
-- inventory_lots: 0 rows
+- inventory_lots: 4 rows
 - legacy_users: 0 rows
 - locations: 3 rows
 - meal_plans: 0 rows
@@ -24,7 +24,7 @@ _Generated: Tue Oct 28 12:03:36 UTC 2025_
 - processes: 14 rows
 - products: 0 rows
 - recipe_ingredients: 3487 rows
-- recipe_nutrition_cache: 3 rows
+- recipe_nutrition_cache: 5 rows
 - recipe_pairings: 0 rows
 - recipe_tags: 1016 rows
 - recipes: 878 rows
