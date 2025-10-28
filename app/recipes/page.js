@@ -162,21 +162,36 @@ export default function RecipesPage() {
   async function checkInventoryAvailability() {
     try {
       if (recipes.length === 0) return;
-      
+
       console.log('🔍 Vérification disponibilité pour', recipes.length, 'recettes');
       console.log('📋 Première recette:', recipes[0]);
       console.log('🥕 Ingrédients première recette:', recipes[0]?.recipe_ingredients?.length || 0);
-      
+
       // Charger l'inventaire disponible (lots non expirés, quantité > 0)
+      // IMPORTANT : On charge aussi les archetypes pour pouvoir faire la correspondance avec les canonical_foods
       const { data: inventory, error } = await supabase
         .from('inventory_lots')
-        .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date')
+        .select(`
+          canonical_food_id,
+          archetype_id,
+          qty_remaining,
+          unit,
+          expiration_date,
+          archetypes (
+            canonical_food_id
+          )
+        `)
         .gt('qty_remaining', 0)
         .gt('expiration_date', new Date().toISOString());
 
       if (error) {
         console.error('Erreur chargement inventaire:', error);
         return;
+      }
+
+      console.log('📦 Lots d\'inventaire chargés:', inventory?.length || 0);
+      if (inventory && inventory.length > 0) {
+        console.log('Premier lot:', inventory[0]);
       }
 
       // Calculer la disponibilité pour chaque recette
@@ -202,18 +217,46 @@ export default function RecipesPage() {
           // Additionner la quantité totale disponible pour cet ingrédient
           let totalAvailable = 0;
 
-          // On cherche par canonical_food_id ou archetype_id
+          // AMÉLIORATION : On cherche par correspondance intelligente :
+          // 1. Correspondance directe par canonical_food_id ou archetype_id
+          // 2. Si l'ingrédient demande un archetype, on cherche aussi les lots avec le canonical_food parent
+          // 3. Si l'ingrédient demande un canonical_food, on cherche aussi les lots avec n'importe quel archetype de ce canonical_food
+
           if (ingredient.canonical_food_id) {
+            // L'ingrédient demande un canonical_food
             inventory.forEach(lot => {
+              // Correspondance directe avec canonical_food_id
               if (lot.canonical_food_id === ingredient.canonical_food_id) {
+                totalAvailable += lot.qty_remaining || 0;
+              }
+              // Correspondance avec un archetype du même canonical_food
+              else if (lot.archetype_id && lot.archetypes?.canonical_food_id === ingredient.canonical_food_id) {
                 totalAvailable += lot.qty_remaining || 0;
               }
             });
           } else if (ingredient.archetype_id) {
+            // L'ingrédient demande un archetype spécifique
+            const ingredientCanonicalId = ingredient.archetypes?.canonical_food_id;
+
             inventory.forEach(lot => {
+              // Correspondance directe avec archetype_id
               if (lot.archetype_id === ingredient.archetype_id) {
                 totalAvailable += lot.qty_remaining || 0;
               }
+              // Correspondance avec le canonical_food parent (si le lot est au niveau canonical_food)
+              else if (lot.canonical_food_id && ingredientCanonicalId && lot.canonical_food_id === ingredientCanonicalId) {
+                totalAvailable += lot.qty_remaining || 0;
+              }
+            });
+          }
+
+          // Pour debug : afficher les ingrédients sans correspondance
+          if (totalAvailable === 0 && recipe.id === recipes[0]?.id) {
+            console.log('❌ Pas de correspondance pour ingrédient:', {
+              canonical_food_id: ingredient.canonical_food_id,
+              archetype_id: ingredient.archetype_id,
+              canonical_name: ingredient.canonical_foods?.canonical_name,
+              archetype_name: ingredient.archetypes?.name
             });
           }
 
@@ -233,8 +276,12 @@ export default function RecipesPage() {
           urgentIngredients
         };
       }
-      
+
       console.log('✅ Statuts calculés pour', Object.keys(statusMap).length, 'recettes');
+      if (Object.keys(statusMap).length > 0) {
+        const firstRecipeId = recipes[0]?.id;
+        console.log('Premier statut (recette', firstRecipeId, '):', statusMap[firstRecipeId]);
+      }
       setInventoryStatus(statusMap);
     } catch (error) {
       console.error('Erreur vérification stocks:', error);
