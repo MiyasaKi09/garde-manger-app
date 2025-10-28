@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { supabase } from '@/lib/supabaseClient';
 import Link from 'next/link';
 import '../../recipes.css';
 
@@ -11,8 +11,6 @@ export default function RecipeEditPage() {
   const params = useParams();
   const isNew = params.id === 'new';
   const recipeId = isNew ? null : params.id;
-  
-  const supabase = createClientComponentClient();
   
   const [loading, setLoading] = useState(!isNew);
   const [saving, setSaving] = useState(false);

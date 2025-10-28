@@ -3,7 +3,7 @@
 
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { Search, Plus, X } from 'lucide-react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { supabase } from '@/lib/supabaseClient';
 
 export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [step, setStep] = useState(1);
@@ -12,7 +12,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [searchLoading, setSearchLoading] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [loading, setLoading] = useState(false);
-  
+
   const [lotData, setLotData] = useState({
     qty_remaining: '',
     unit: 'unités',
@@ -23,7 +23,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   const searchInputRef = useRef(null);
   const searchTimeoutRef = useRef(null);
-  const supabase = createClientComponentClient();
 
   // Reset quand on ouvre le modal
   useEffect(() => {

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { supabase } from '@/lib/supabaseClient';
 import Link from 'next/link';
 
 export default function RecipeSuggestions({ mealType = null, onSelectRecipe = null }) {
@@ -13,8 +13,6 @@ export default function RecipeSuggestions({ mealType = null, onSelectRecipe = nu
     difficulty: null,
     isVeg: null
   });
-  
-  const supabase = createClientComponentClient();
 
   useEffect(() => {
     loadSuggestions();

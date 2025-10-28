@@ -3,7 +3,7 @@
 
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { Search, Plus, X, Package, Home, Snowflake, Archive, Calendar } from 'lucide-react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { supabase } from '@/lib/supabaseClient';
 import { toast } from '../../../components/Toast';
 import { getPossibleUnitsForProduct } from '../../../lib/possibleUnits';
 import './SmartAddForm.css';
@@ -116,7 +116,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const modalRef = useRef(null);
   const searchInputRef = useRef(null);
   const searchTimeoutRef = useRef(null);
-  const supabase = createClientComponentClient();
 
   // Charger les catégories et sous-catégories au montage
   const [subcategories, setSubcategories] = useState([]);
