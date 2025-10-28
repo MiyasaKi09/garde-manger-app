@@ -123,6 +123,12 @@ export default function RecipesPage() {
             }
             ingredientsByRecipe[ing.recipe_id].push(ing);
           });
+
+          console.log('🔢 Recettes avec ingrédients:', Object.keys(ingredientsByRecipe).length);
+          console.log('📝 Exemple - Recette ID', data[0]?.id, 'a', ingredientsByRecipe[data[0]?.id]?.length || 0, 'ingrédients');
+          if (ingredientsByRecipe[data[0]?.id]?.[0]) {
+            console.log('Premier ingrédient:', ingredientsByRecipe[data[0]?.id][0]);
+          }
         }
         
         // Ajouter les ingrédients à chaque recette
@@ -182,19 +188,11 @@ export default function RecipesPage() {
       console.log('🥕 Ingrédients première recette:', recipes[0]?.recipe_ingredients?.length || 0);
 
       // Charger l'inventaire disponible (lots non expirés, quantité > 0)
-      // IMPORTANT : On charge aussi les archetypes pour pouvoir faire la correspondance avec les canonical_foods
+      // Note : On ne charge pas les archetypes ici à cause d'une ambiguïté de relation dans la DB
+      // On fera la correspondance différemment
       const { data: inventory, error } = await supabase
         .from('inventory_lots')
-        .select(`
-          canonical_food_id,
-          archetype_id,
-          qty_remaining,
-          unit,
-          expiration_date,
-          archetypes (
-            canonical_food_id
-          )
-        `)
+        .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date')
         .gt('qty_remaining', 0)
         .gt('expiration_date', new Date().toISOString());
 
@@ -206,6 +204,24 @@ export default function RecipesPage() {
       console.log('📦 Lots d\'inventaire chargés:', inventory?.length || 0);
       if (inventory && inventory.length > 0) {
         console.log('Premier lot:', inventory[0]);
+      }
+
+      // Charger les archetypes pour créer un mapping archetype_id -> canonical_food_id
+      const archetypeIds = inventory?.filter(lot => lot.archetype_id).map(lot => lot.archetype_id) || [];
+      let archetypeMapping = {};
+
+      if (archetypeIds.length > 0) {
+        const { data: archetypes, error: archetypesError } = await supabase
+          .from('archetypes')
+          .select('id, canonical_food_id')
+          .in('id', archetypeIds);
+
+        if (!archetypesError && archetypes) {
+          archetypes.forEach(arch => {
+            archetypeMapping[arch.id] = arch.canonical_food_id;
+          });
+          console.log('🗺️ Mapping archetypes créé:', Object.keys(archetypeMapping).length, 'entrées');
+        }
       }
 
       // Calculer la disponibilité pour chaque recette
@@ -243,8 +259,8 @@ export default function RecipesPage() {
               if (lot.canonical_food_id === ingredient.canonical_food_id) {
                 totalAvailable += lot.qty_remaining || 0;
               }
-              // Correspondance avec un archetype du même canonical_food
-              else if (lot.archetype_id && lot.archetypes?.canonical_food_id === ingredient.canonical_food_id) {
+              // Correspondance avec un archetype du même canonical_food (via notre mapping)
+              else if (lot.archetype_id && archetypeMapping[lot.archetype_id] === ingredient.canonical_food_id) {
                 totalAvailable += lot.qty_remaining || 0;
               }
             });
