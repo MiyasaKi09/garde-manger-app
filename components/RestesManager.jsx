@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import CookedDishesManager from '@/app/pantry/components/CookedDishesManager';
 import './RestesManager.css';
 
 const URGENCY_COLORS = {
@@ -234,6 +235,7 @@ export default function RestesManager({ userId }) {
       </div>
 
       {/* Liste des produits à risque */}
+      <h2 className="ingredients-section-title">🥫 Ingrédients à Risque</h2>
       <div className={`restes-list ${view}`}>
         {filteredRisks.map(risk => (
           <RiskCard
@@ -245,6 +247,14 @@ export default function RestesManager({ userId }) {
             isProcessing={actionInProgress === risk.lotId}
           />
         ))}
+      </div>
+
+      {/* Plats cuisinés */}
+      <div className="cooked-dishes-section">
+        <CookedDishesManager 
+          userId={userId} 
+          onActionComplete={loadAnalysis}
+        />
       </div>
 
       {/* Suggestions de recettes */}
