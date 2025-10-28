@@ -22,7 +22,7 @@ export default function LotsView({
     return null;
   }
 
-  const lots = product.lots || [];
+  const lots = mapLotsWithEffectiveExpiration(product.lots || []);
   const productName = capitalizeProduct(product.productName || 'Produit');
 
   // Tri des lots par urgence d'expiration
@@ -30,16 +30,13 @@ export default function LotsView({
     return [...lots].sort((a, b) => {
       const daysA = daysUntil(a.effective_expiration);
       const daysB = daysUntil(b.effective_expiration);
-      
       // Lots expirés ou urgents en premier
       if (daysA !== null && daysB !== null) {
         return daysA - daysB;
       }
-      
       // Lots sans date à la fin
       if (daysA === null) return 1;
       if (daysB === null) return -1;
-      
       return 0;
     });
   }, [lots]);

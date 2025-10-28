@@ -1,3 +1,21 @@
+/**
+ * Retourne la date d'expiration effective d'un lot (ajustée si ouvert, sinon originale)
+ */
+export function getEffectiveExpiration(lot) {
+  if (!lot) return null;
+  return lot.adjusted_expiration_date || lot.expiration_date || null;
+}
+
+/**
+ * Ajoute la propriété effective_expiration à chaque lot d'un tableau
+ */
+export function mapLotsWithEffectiveExpiration(lots) {
+  if (!Array.isArray(lots)) return [];
+  return lots.map(lot => ({
+    ...lot,
+    effective_expiration: getEffectiveExpiration(lot)
+  }));
+}
 // app/pantry/components/pantryUtils.js - Version améliorée
 
 /* ============ NORMALISATION ET MATCHING ============ */

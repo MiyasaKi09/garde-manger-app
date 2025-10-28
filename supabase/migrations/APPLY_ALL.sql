@@ -141,8 +141,8 @@ BEGIN
     -- Mettre à jour le lot original
     UPDATE inventory_lots
     SET
-        qty_remaining = GREATEST(0, qty_remaining - v_full_containers_consumed),
-        updated_at = CURRENT_TIMESTAMP
+      qty_remaining = GREATEST(0, qty_remaining - v_total_in_container_units),
+      updated_at = CURRENT_TIMESTAMP
     WHERE id = p_lot_id;
 
     -- Retourner les résultats
