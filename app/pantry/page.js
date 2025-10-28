@@ -158,40 +158,64 @@ export default function PantryPage() {
       
 
       
-      // Maintenant essayons d'enrichir avec les canonical_foods seulement
+      // Enrichir avec les canonical_foods ET les archetypes
       if (data && data.length > 0) {
+        // Récupérer les canonical_foods
         const canonicalIds = data
           .filter(item => item.canonical_food_id)
           .map(item => item.canonical_food_id);
-        
 
-        
+        // Récupérer les archetypes
+        const archetypeIds = data
+          .filter(item => item.archetype_id)
+          .map(item => item.archetype_id);
+
+        let canonicalMap = {};
+        let archetypeMap = {};
+
+        // Charger canonical_foods
         if (canonicalIds.length > 0) {
-          // Utiliser les vrais noms de colonnes de la base
           const { data: canonicalData, error: canonicalError } = await supabase
             .from('canonical_foods')
             .select('id, canonical_name, density_g_per_ml, unit_weight_grams, shelf_life_days_pantry')
             .in('id', canonicalIds);
-          
 
-          
           if (!canonicalError && canonicalData) {
-            const canonicalMap = {};
             canonicalData.forEach(item => {
               canonicalMap[item.id] = item;
             });
-            
-            data = data.map(item => {
-              if (item.canonical_food_id && canonicalMap[item.canonical_food_id]) {
-                return {
-                  ...item,
-                  canonical_foods: canonicalMap[item.canonical_food_id]
-                };
-              }
-              return item;
+          }
+        }
+
+        // Charger archetypes
+        if (archetypeIds.length > 0) {
+          const { data: archetypeData, error: archetypeError } = await supabase
+            .from('archetypes')
+            .select('id, name, shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer, open_shelf_life_days_pantry, open_shelf_life_days_fridge, open_shelf_life_days_freezer')
+            .in('id', archetypeIds);
+
+          if (!archetypeError && archetypeData) {
+            archetypeData.forEach(item => {
+              archetypeMap[item.id] = item;
             });
           }
         }
+
+        // Enrichir les données
+        data = data.map(item => {
+          if (item.canonical_food_id && canonicalMap[item.canonical_food_id]) {
+            return {
+              ...item,
+              canonical_foods: canonicalMap[item.canonical_food_id]
+            };
+          } else if (item.archetype_id && archetypeMap[item.archetype_id]) {
+            return {
+              ...item,
+              archetypes: archetypeMap[item.archetype_id]
+            };
+          }
+          return item;
+        });
       }
       
 
@@ -199,17 +223,19 @@ export default function PantryPage() {
       // Transformer les données - version simple d'abord
       const transformedData = (data || []).map(item => {
         let productName = 'Produit sans nom';
-        
+
         // Déterminer le nom selon le type
         if (item.canonical_food_id && item.canonical_foods?.canonical_name) {
           productName = item.canonical_foods.canonical_name;
+        } else if (item.archetype_id && item.archetypes?.name) {
+          productName = item.archetypes.name;
         } else if (item.notes) {
           // Produit custom avec notes
           productName = item.notes.split('\n')[0]; // Première ligne des notes
         } else if (item.product_name) {
           productName = item.product_name;
         }
-        
+
         const transformed = {
           ...item,
           product_name: productName,
@@ -220,10 +246,10 @@ export default function PantryPage() {
           density_g_per_ml: item.canonical_foods?.density_g_per_ml || null,
           primary_unit: item.unit
         };
-        
+
         // Log pour debug (optionnel)
         // console.log(`Produit transformé: "${transformed.product_name}"`);
-        
+
         return transformed;
       });
       setItems(transformedData);
@@ -264,10 +290,60 @@ export default function PantryPage() {
   async function handleConsume(id) {
     const item = items.find(i => i.id === id);
     if (!item) return;
-    
+
+    // Si le produit est containerisé, utiliser la fonction de fractionnement
+    if (item.is_containerized && item.container_size && item.container_unit) {
+      try {
+        // Calculer la réduction selon l'unité du contenant
+        let reduction;
+        const containerUnit = item.container_unit.toLowerCase();
+
+        if (containerUnit === 'cl') {
+          reduction = Math.min(item.container_size * 0.3, item.qty_remaining * item.container_size); // 30% d'un contenant
+        } else if (containerUnit === 'ml') {
+          reduction = Math.min(item.container_size * 0.3, item.qty_remaining * item.container_size);
+        } else if (containerUnit === 'l') {
+          reduction = Math.min(item.container_size * 0.3, item.qty_remaining * item.container_size);
+        } else if (containerUnit === 'g') {
+          reduction = Math.min(item.container_size * 0.3, item.qty_remaining * item.container_size);
+        } else if (containerUnit === 'kg') {
+          reduction = Math.min(item.container_size * 0.3, item.qty_remaining * item.container_size);
+        } else {
+          reduction = item.container_size * 0.3; // Par défaut 30% d'un contenant
+        }
+
+        // Appeler la fonction PostgreSQL pour fractionner le lot
+        const { data, error } = await supabase.rpc('split_containerized_lot', {
+          p_lot_id: id,
+          p_quantity_consumed: reduction,
+          p_consumed_unit: containerUnit
+        });
+
+        if (error) {
+          console.error('Erreur lors du fractionnement:', error);
+          alert('Erreur lors de la consommation: ' + error.message);
+          return;
+        }
+
+        // Afficher le message de résultat
+        if (data && data.length > 0 && data[0].message) {
+          console.log('✅ Consommation:', data[0].message);
+        }
+
+        // Recharger les items pour refléter les changements
+        await loadPantryItems();
+
+      } catch (error) {
+        console.error('Erreur:', error);
+        alert('Erreur lors de la consommation');
+      }
+      return;
+    }
+
+    // Logique classique pour produits non-containerisés
     let reduction;
     const currentQty = item.qty_remaining;
-    
+
     // Logique de réduction intelligente selon l'unité et la quantité
     if (item.unit === 'u') {
       reduction = 1;
@@ -288,23 +364,29 @@ export default function PantryPage() {
       if (currentQty >= 1000) reduction = 100;   // 100ml si on a plus de 1L
       else if (currentQty >= 500) reduction = 50; // 50ml si on a plus de 500ml
       else reduction = 25;                       // 25ml sinon
+    } else if (item.unit === 'cL') {
+      if (currentQty >= 100) reduction = 10;     // 10cL si on a plus de 1L
+      else if (currentQty >= 50) reduction = 5;  // 5cL si on a plus de 50cL
+      else reduction = 2.5;                      // 2.5cL sinon
+    } else if (item.unit === 'unités') {
+      reduction = 1;
     } else {
       reduction = 0.1; // Défaut
     }
-    
+
     const newQty = Math.max(0, Math.round((currentQty - reduction) * 100) / 100);
-    
+
     // Si la quantité devient 0, proposer la suppression
     if (newQty === 0) {
       handleDeleteClick(id);
       return;
     }
-    
+
     // Mise à jour optimiste
-    setItems(prev => prev.map(i => 
+    setItems(prev => prev.map(i =>
       i.id === id ? { ...i, qty_remaining: newQty } : i
     ));
-    
+
     try {
       const { error } = await supabase
         .from('inventory_lots')
