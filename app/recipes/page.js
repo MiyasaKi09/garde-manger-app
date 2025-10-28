@@ -54,7 +54,7 @@ export default function RecipesPage() {
       const { data, error } = await supabase
         .from('recipes')
         .select('*')
-        .order('id', { ascending: false });
+        .order('id', { ascending: true }); // Tri croissant pour avoir les recettes avec ingrédients en premier
 
       console.log('Résultat requête Supabase:');
       console.log('- Données:', data);
@@ -117,6 +117,10 @@ export default function RecipesPage() {
         // Regrouper les ingrédients par recipe_id
         const ingredientsByRecipe = {};
         if (ingredients) {
+          console.log('🔍 DEBUG: Premier ingrédient avant regroupement:', ingredients[0]);
+          console.log('🔍 DEBUG: Type de recipe_id:', typeof ingredients[0]?.recipe_id);
+          console.log('🔍 DEBUG: Premier recipe ID:', data[0]?.id, 'Type:', typeof data[0]?.id);
+
           ingredients.forEach(ing => {
             if (!ingredientsByRecipe[ing.recipe_id]) {
               ingredientsByRecipe[ing.recipe_id] = [];
@@ -125,6 +129,8 @@ export default function RecipesPage() {
           });
 
           console.log('🔢 Recettes avec ingrédients:', Object.keys(ingredientsByRecipe).length);
+          console.log('🔍 DEBUG: IDs des recettes avec ingrédients:', Object.keys(ingredientsByRecipe).slice(0, 10));
+          console.log('🔍 DEBUG: IDs des 10 premières recettes chargées:', data.slice(0, 10).map(r => r.id));
           console.log('📝 Exemple - Recette ID', data[0]?.id, 'a', ingredientsByRecipe[data[0]?.id]?.length || 0, 'ingrédients');
           if (ingredientsByRecipe[data[0]?.id]?.[0]) {
             console.log('Premier ingrédient:', ingredientsByRecipe[data[0]?.id][0]);
