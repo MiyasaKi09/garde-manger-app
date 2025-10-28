@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import SmartAddForm from './components/SmartAddForm';
 import ProductCard from './components/PantryProductCard';
+import ConsumeModal from './components/ConsumeModal';
 import { capitalizeProduct } from './components/pantryUtils';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import EditLotForm from './components/EditLotForm';
@@ -28,6 +29,8 @@ export default function PantryPage() {
   const [itemToDelete, setItemToDelete] = useState(null);
   const [showEditLot, setShowEditLot] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(null);
+  const [showConsumeModal, setShowConsumeModal] = useState(false);
+  const [itemToConsume, setItemToConsume] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('inventory'); // inventory, waste, stats
   const [userId, setUserId] = useState(null);
@@ -286,37 +289,27 @@ export default function PantryPage() {
 
 
 
-  // Fonction de consommation intelligente
-  async function handleConsume(id) {
+  // Ouvrir le modal de consommation
+  function handleConsume(id) {
     const item = items.find(i => i.id === id);
+    if (!item) return;
+    setItemToConsume(item);
+    setShowConsumeModal(true);
+  }
+
+  // Fonction de consommation réelle (appelée depuis le modal)
+  async function handleConsumeConfirm(quantity, unit) {
+    const item = itemToConsume;
     if (!item) return;
 
     // Si le produit est containerisé, utiliser la fonction de fractionnement
     if (item.is_containerized && item.container_size && item.container_unit) {
       try {
-        // Calculer la réduction selon l'unité du contenant
-        let reduction;
-        const containerUnit = item.container_unit.toLowerCase();
-
-        if (containerUnit === 'cl') {
-          reduction = Math.min(item.container_size * 0.3, item.qty_remaining * item.container_size); // 30% d'un contenant
-        } else if (containerUnit === 'ml') {
-          reduction = Math.min(item.container_size * 0.3, item.qty_remaining * item.container_size);
-        } else if (containerUnit === 'l') {
-          reduction = Math.min(item.container_size * 0.3, item.qty_remaining * item.container_size);
-        } else if (containerUnit === 'g') {
-          reduction = Math.min(item.container_size * 0.3, item.qty_remaining * item.container_size);
-        } else if (containerUnit === 'kg') {
-          reduction = Math.min(item.container_size * 0.3, item.qty_remaining * item.container_size);
-        } else {
-          reduction = item.container_size * 0.3; // Par défaut 30% d'un contenant
-        }
-
         // Appeler la fonction PostgreSQL pour fractionner le lot
         const { data, error } = await supabase.rpc('split_containerized_lot', {
-          p_lot_id: id,
-          p_quantity_consumed: reduction,
-          p_consumed_unit: containerUnit
+          p_lot_id: item.id,
+          p_quantity_consumed: quantity,
+          p_consumed_unit: unit
         });
 
         if (error) {
@@ -328,6 +321,7 @@ export default function PantryPage() {
         // Afficher le message de résultat
         if (data && data.length > 0 && data[0].message) {
           console.log('✅ Consommation:', data[0].message);
+          alert(data[0].message);
         }
 
         // Recharger les items pour refléter les changements
@@ -341,57 +335,24 @@ export default function PantryPage() {
     }
 
     // Logique classique pour produits non-containerisés
-    let reduction;
-    const currentQty = item.qty_remaining;
-
-    // Logique de réduction intelligente selon l'unité et la quantité
-    if (item.unit === 'u') {
-      reduction = 1;
-    } else if (item.unit === 'kg') {
-      if (currentQty >= 2) reduction = 0.5;      // 500g si on a plus de 2kg
-      else if (currentQty >= 1) reduction = 0.2; // 200g si on a plus de 1kg
-      else reduction = 0.1;                      // 100g sinon
-    } else if (item.unit === 'g') {
-      if (currentQty >= 1000) reduction = 100;   // 100g si on a plus de 1kg
-      else if (currentQty >= 500) reduction = 50; // 50g si on a plus de 500g
-      else if (currentQty >= 100) reduction = 20; // 20g si on a plus de 100g
-      else reduction = 10;                       // 10g sinon
-    } else if (item.unit === 'L') {
-      if (currentQty >= 2) reduction = 0.5;      // 500ml si on a plus de 2L
-      else if (currentQty >= 1) reduction = 0.2; // 200ml si on a plus de 1L
-      else reduction = 0.1;                      // 100ml sinon
-    } else if (item.unit === 'mL') {
-      if (currentQty >= 1000) reduction = 100;   // 100ml si on a plus de 1L
-      else if (currentQty >= 500) reduction = 50; // 50ml si on a plus de 500ml
-      else reduction = 25;                       // 25ml sinon
-    } else if (item.unit === 'cL') {
-      if (currentQty >= 100) reduction = 10;     // 10cL si on a plus de 1L
-      else if (currentQty >= 50) reduction = 5;  // 5cL si on a plus de 50cL
-      else reduction = 2.5;                      // 2.5cL sinon
-    } else if (item.unit === 'unités') {
-      reduction = 1;
-    } else {
-      reduction = 0.1; // Défaut
-    }
-
-    const newQty = Math.max(0, Math.round((currentQty - reduction) * 100) / 100);
+    const newQty = Math.max(0, Math.round((item.qty_remaining - quantity) * 100) / 100);
 
     // Si la quantité devient 0, proposer la suppression
     if (newQty === 0) {
-      handleDeleteClick(id);
+      handleDeleteClick(item.id);
       return;
     }
 
     // Mise à jour optimiste
     setItems(prev => prev.map(i =>
-      i.id === id ? { ...i, qty_remaining: newQty } : i
+      i.id === item.id ? { ...i, qty_remaining: newQty } : i
     ));
 
     try {
       const { error } = await supabase
         .from('inventory_lots')
         .update({ qty_remaining: newQty })
-        .eq('id', id);
+        .eq('id', item.id);
 
       if (error) {
         console.error('Erreur lors de la consommation:', error);
@@ -401,43 +362,6 @@ export default function PantryPage() {
     } catch (error) {
       console.error('Erreur:', error);
       await loadPantryItems();
-    }
-  }
-
-  // Fonction pour ouvrir un produit (Phase 1 - DLC après ouverture)
-  async function handleOpen(lotId) {
-    try {
-      const response = await fetch('/api/lots/manage', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'open',
-          lotId: lotId,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        console.error('Erreur lors de l\'ouverture du produit:', result.error);
-        alert(result.error || 'Erreur lors de l\'ouverture du produit');
-        return;
-      }
-
-      if (result.success) {
-        // Recharger les articles pour afficher la DLC ajustée
-        await loadPantryItems();
-        
-        // Message de confirmation optionnel
-        if (result.message) {
-          console.log('✅', result.message);
-        }
-      }
-    } catch (error) {
-      console.error('Erreur lors de l\'ouverture:', error);
-      alert('Erreur lors de l\'ouverture du produit');
     }
   }
 
@@ -695,14 +619,13 @@ export default function PantryPage() {
               </div>
             ) : (
               filteredItems.map(item => (
-                <ProductCard 
-                  key={item.id} 
+                <ProductCard
+                  key={item.id}
                   item={item}
                   onConsume={() => handleConsume(item.id)}
                   onEdit={() => handleEdit(item.id)}
                   onDelete={() => handleDeleteClick(item.id)}
                   onUpdateQuantity={handleUpdateQuantity}
-                  onOpen={() => handleOpen(item.id)}
                 />
               ))
             )}
@@ -775,12 +698,23 @@ export default function PantryPage() {
 
       {/* Modal d'ajout - disponible sur tous les onglets */}
       {showForm && (
-        <SmartAddForm 
+        <SmartAddForm
           open={showForm}
           onClose={handleFormClose}
           onLotCreated={handleFormClose}
         />
       )}
+
+      {/* Modal de consommation */}
+      <ConsumeModal
+        item={itemToConsume}
+        isOpen={showConsumeModal}
+        onClose={() => {
+          setShowConsumeModal(false);
+          setItemToConsume(null);
+        }}
+        onConfirm={handleConsumeConfirm}
+      />
 
       {/* Bouton flottant pour ajouter - disponible sur tous les onglets */}
       <button

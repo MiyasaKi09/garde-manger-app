@@ -4,9 +4,8 @@ import { useState } from 'react';
 import { getQuickConversions } from '../../../lib/quickConversions';
 import { capitalizeProduct } from './pantryUtils';
 
-export default function PantryProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity, onOpen }) {
+export default function PantryProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity }) {
   const [showActions, setShowActions] = useState(false);
-  const [opening, setOpening] = useState(false);
   
   // Calculer les conversions rapides possibles selon le type de produit
   const productMeta = { 
@@ -47,17 +46,6 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
     if (status === 'expired') return `Expiré depuis ${Math.abs(days)}j`;
     if (status === 'expiring_soon') return `Expire dans ${days}j`;
     return `${days}j restants`;
-  };
-
-  const handleOpen = async (e) => {
-    if (!onOpen || opening) return;
-    e.stopPropagation();
-    setOpening(true);
-    try {
-      await onOpen(item.id);
-    } finally {
-      setOpening(false);
-    }
   };
 
   const formatDate = (dateString) => {
@@ -144,29 +132,19 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
 
       {showActions && (
         <div className="card-actions">
-          {!item.is_opened && onOpen && (
-            <button 
-              className="action-btn open"
-              onClick={handleOpen}
-              disabled={opening}
-              title="Marquer comme ouvert (ajuste la date de péremption)"
-            >
-              {opening ? '⏳' : '📦'} {opening ? 'Ouverture...' : 'Ouvrir'}
-            </button>
-          )}
-          <button 
+          <button
             className="action-btn consume"
             onClick={(e) => handleAction(onConsume, e)}
           >
             ✓ Consommer
           </button>
-          <button 
+          <button
             className="action-btn edit"
             onClick={(e) => handleAction(onEdit, e)}
           >
             ✏️ Modifier
           </button>
-          <button 
+          <button
             className="action-btn delete"
             onClick={(e) => handleAction(onDelete, e)}
           >
