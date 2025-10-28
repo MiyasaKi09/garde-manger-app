@@ -718,18 +718,16 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         const idStr = selectedProduct.id.toString().replace('arch_', '');
         productId = parseInt(idStr, 10);
       } else if (selectedProduct.type === 'custom') {
-        productType = 'custom';
-        productId = null; // Pour les produits custom, on utilisera les notes
+        // Produit custom - on met l'info dans les notes
+        productId = null;
       } else {
-        // Type 'canonical' - convertir l'ID en entier
-        productType = 'canonical';
+        // Type 'canonical' - convertir l'ID en entier et le mettre dans canonical_food_id
         productId = parseInt(selectedProduct.id, 10);
       }
       
       // Préparer les données pour la nouvelle structure inventory_lots
       const lotDataToInsert = {
-        product_type: productType,
-        product_id: productId,
+        canonical_food_id: selectedProduct.type === 'canonical' ? productId : null,
         qty_remaining: quantity,
         initial_qty: quantity,
         unit: lotData.unit,

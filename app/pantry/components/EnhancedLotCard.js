@@ -212,7 +212,7 @@ export function EnhancedLotCard({ lot, onUpdate, onDelete, compact = false }) {
             fontSize: '0.9rem',
             color: 'var(--medium-gray)'
           }}>
-            {lot.product?.category} • Type: {lot.product_type}
+            {lot.product?.category || 'Produit'}
           </p>
           
           {calculations.acquisitionText && (

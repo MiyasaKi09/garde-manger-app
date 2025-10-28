@@ -161,8 +161,8 @@ export default function PantryPage() {
       // Maintenant essayons d'enrichir avec les canonical_foods seulement
       if (data && data.length > 0) {
         const canonicalIds = data
-          .filter(item => item.product_type === 'canonical' && item.product_id)
-          .map(item => item.product_id);
+          .filter(item => item.canonical_food_id)
+          .map(item => item.canonical_food_id);
         
 
         
@@ -182,10 +182,10 @@ export default function PantryPage() {
             });
             
             data = data.map(item => {
-              if (item.product_type === 'canonical' && canonicalMap[item.product_id]) {
+              if (item.canonical_food_id && canonicalMap[item.canonical_food_id]) {
                 return {
                   ...item,
-                  canonical_foods: canonicalMap[item.product_id]
+                  canonical_foods: canonicalMap[item.canonical_food_id]
                 };
               }
               return item;
@@ -201,10 +201,11 @@ export default function PantryPage() {
         let productName = 'Produit sans nom';
         
         // Déterminer le nom selon le type
-        if (item.product_type === 'canonical' && item.canonical_foods?.canonical_name) {
+        if (item.canonical_food_id && item.canonical_foods?.canonical_name) {
           productName = item.canonical_foods.canonical_name;
-        } else if (item.product_type === 'custom' && item.notes) {
-          productName = item.notes;
+        } else if (item.notes) {
+          // Produit custom avec notes
+          productName = item.notes.split('\n')[0]; // Première ligne des notes
         } else if (item.product_name) {
           productName = item.product_name;
         }
@@ -220,7 +221,8 @@ export default function PantryPage() {
           primary_unit: item.unit
         };
         
-        console.log(`Produit transformé: "${transformed.product_name}" (${item.product_type})`);
+        // Log pour debug (optionnel)
+        // console.log(`Produit transformé: "${transformed.product_name}"`);
         
         return transformed;
       });
