@@ -297,13 +297,13 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, produ
   const [editData, setEditData] = useState({
     qty_remaining: lot.qty_remaining || 0,
     unit: lot.unit || 'g',
-    effective_expiration: lot.effective_expiration || '',
+    effective_expiration: getEffectiveExpiration(lot) || '',
     location_name: lot.location_name || ''
   });
-  
+
   // Récupérer dynamiquement les unités possibles pour ce produit
   const possibleUnits = getPossibleUnitsForProduct(product?.meta || product || {});
-  
+
   // Récupérer les conversions rapides possibles
   const quickConversions = getQuickConversions(lot.qty_remaining, lot.unit, product?.meta || product || {});
 
@@ -312,7 +312,9 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, produ
     return null;
   }
 
-  const daysLeft = daysUntil(lot.effective_expiration);
+  // Calcul de la date d'expiration effective et des jours restants
+  const effectiveExpiration = getEffectiveExpiration(lot);
+  const daysLeft = daysUntil(effectiveExpiration);
   const status = getExpirationStatus(daysLeft);
 
   const handleSave = () => {
@@ -440,7 +442,7 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, produ
               {lot.location_name && (
                 <div className="lot-location">📍 {lot.location_name}</div>
               )}
-              {lot.effective_expiration && (
+              {effectiveExpiration && (
                 <div 
                   className="lot-expiry"
                   style={{ 
@@ -452,10 +454,9 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, produ
                     fontWeight: '600'
                   }}
                 >
-                  {status.label}
+                  {status.label} — {new Date(effectiveExpiration).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
                 </div>
               )}
-              {/* Suppression de la bulle doublon DLC après ouverture */}
             </div>
           </div>
           
