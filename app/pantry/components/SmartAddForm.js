@@ -110,7 +110,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     unit: 'unités',
     storage_method: 'pantry',
     storage_place: 'Garde-manger',
-    expiration_date: ''
+    expiration_date: '',
+    container_size: '' // Taille du contenant (ex: "25cL", "1L", "500g")
   });
 
   const modalRef = useRef(null);
@@ -724,9 +725,17 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         productId = parseInt(selectedProduct.id, 10);
       }
       
+      // Construire les notes en incluant la taille du contenant si fournie
+      let notes = selectedProduct.type === 'custom' ? selectedProduct.name : '';
+      if (lotData.container_size) {
+        notes = notes ? `${notes} - Contenant: ${lotData.container_size}` : `Contenant: ${lotData.container_size}`;
+      }
+
       // Préparer les données pour la nouvelle structure inventory_lots
       const lotDataToInsert = {
         canonical_food_id: selectedProduct.type === 'canonical' ? productId : null,
+        cultivar_id: selectedProduct.type === 'cultivar' ? productId : null,
+        archetype_id: selectedProduct.type === 'archetype' ? productId : null,
         qty_remaining: quantity,
         initial_qty: quantity,
         unit: lotData.unit,
@@ -734,7 +743,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         storage_place: lotData.storage_place,
         expiration_date: lotData.expiration_date || null,
         acquired_on: new Date().toISOString().split('T')[0],
-        notes: selectedProduct.type === 'custom' ? selectedProduct.name : null
+        notes: notes || null
       };
 
       console.log('Données à insérer:', lotDataToInsert);
@@ -911,6 +920,17 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                       <option key={u.value} value={u.value}>{u.label}</option>
                     ))}
                   </select>
+                </div>
+
+                <div className="container-size-section">
+                  <label>Taille du contenant (optionnel)</label>
+                  <input
+                    type="text"
+                    value={lotData.container_size}
+                    onChange={(e) => setLotData(prev => ({ ...prev, container_size: e.target.value }))}
+                    placeholder="Ex: 25cL, 1L, 500g..."
+                    className="container-size-input"
+                  />
                 </div>
 
                 <div className="storage-section">
