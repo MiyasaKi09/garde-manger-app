@@ -1,1 +1,1 @@
-id,qty_remaining,initial_qty,unit,storage_method,storage_place,acquired_on,expiration_date,notes,user_id,created_at,updated_at,product_id,canonical_food_id,cultivar_id,archetype_id
+id,qty_remaining,initial_qty,unit,storage_method,storage_place,acquired_on,expiration_date,notes,user_id,created_at,updated_at,product_id,canonical_food_id,cultivar_id,archetype_id,adjusted_expiration_date,is_opened,opened_at
