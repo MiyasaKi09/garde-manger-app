@@ -170,9 +170,9 @@ export default function RecipesPage() {
       // Charger l'inventaire disponible (lots non expirés, quantité > 0)
       const { data: inventory, error } = await supabase
         .from('inventory_lots')
-        .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date')
-        .gt('qty_remaining', 0)
-        .gt('expiration_date', new Date().toISOString());
+        .select('canonical_food_id, archetype_id, quantity_remaining, unit, expiry_date')
+        .gt('quantity_remaining', 0)
+        .gt('expiry_date', new Date().toISOString());
 
       if (error) {
         console.error('Erreur chargement inventaire:', error);
@@ -206,13 +206,13 @@ export default function RecipesPage() {
           if (ingredient.canonical_food_id) {
             inventory.forEach(lot => {
               if (lot.canonical_food_id === ingredient.canonical_food_id) {
-                totalAvailable += lot.qty_remaining || 0;
+                totalAvailable += lot.quantity_remaining || 0;
               }
             });
           } else if (ingredient.archetype_id) {
             inventory.forEach(lot => {
               if (lot.archetype_id === ingredient.archetype_id) {
-                totalAvailable += lot.qty_remaining || 0;
+                totalAvailable += lot.quantity_remaining || 0;
               }
             });
           }
