@@ -701,6 +701,15 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     setLoading(true);
     
     try {
+      // Récupérer l'utilisateur connecté
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      
+      if (authError || !user) {
+        toast.error('Vous devez être connecté pour ajouter un produit');
+        setLoading(false);
+        return;
+      }
+      
       const quantity = parseFloat(lotData.qty_remaining) || 1;
       
       // Déterminer le type de produit et convertir l'ID en entier
@@ -727,6 +736,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       
       // Préparer les données pour la nouvelle structure inventory_lots
       const lotDataToInsert = {
+        user_id: user.id, // Ajouter le user_id pour RLS
         canonical_food_id: selectedProduct.type === 'canonical' ? productId : null,
         qty_remaining: quantity,
         initial_qty: quantity,
