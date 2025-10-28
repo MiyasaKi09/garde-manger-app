@@ -701,14 +701,17 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     setLoading(true);
     
     try {
-      // Récupérer l'utilisateur connecté
-      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      // Récupérer l'utilisateur connecté via la session
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
       
-      if (authError || !user) {
+      if (sessionError || !session?.user) {
+        console.error('Erreur session:', sessionError);
         toast.error('Vous devez être connecté pour ajouter un produit');
         setLoading(false);
         return;
       }
+      
+      const user = session.user;
       
       const quantity = parseFloat(lotData.qty_remaining) || 1;
       
