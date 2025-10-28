@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Tue Oct 28 10:29:06 UTC 2025_
+_Généré le : Tue Oct 28 10:35:05 UTC 2025_
 
 ## Tables
 - _backup_views
@@ -190,7 +190,7 @@ _Généré le : Tue Oct 28 10:29:06 UTC 2025_
  - acquired_on :: date default CURRENT_DATE NOT NULL
  - expiration_date :: date
  - notes :: text
- - user_id :: uuid
+ - user_id :: uuid default auth.uid()
  - created_at :: timestamp with time zone default now()
  - updated_at :: timestamp with time zone default now()
  - product_id :: uuid
