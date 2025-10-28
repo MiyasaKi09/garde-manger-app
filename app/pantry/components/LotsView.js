@@ -3,7 +3,7 @@
 
 import { useState, useMemo } from 'react';
 import { X, Edit2, Trash2, Plus, Package } from 'lucide-react';
-import { daysUntil, getExpirationStatus, formatQuantity, capitalizeProduct } from './pantryUtils';
+import { daysUntil, getExpirationStatus, formatQuantity, capitalizeProduct, getEffectiveExpiration, mapLotsWithEffectiveExpiration } from './pantryUtils';
 import { getPossibleUnitsForProduct } from '../../../lib/possibleUnits';
 import { getQuickConversions } from '../../../lib/quickConversions';
 
@@ -28,13 +28,11 @@ export default function LotsView({
   // Tri des lots par urgence d'expiration
   const sortedLots = useMemo(() => {
     return [...lots].sort((a, b) => {
-      const daysA = daysUntil(a.effective_expiration);
-      const daysB = daysUntil(b.effective_expiration);
-      // Lots expirés ou urgents en premier
+      const daysA = daysUntil(getEffectiveExpiration(a));
+      const daysB = daysUntil(getEffectiveExpiration(b));
       if (daysA !== null && daysB !== null) {
         return daysA - daysB;
       }
-      // Lots sans date à la fin
       if (daysA === null) return 1;
       if (daysB === null) return -1;
       return 0;
@@ -457,6 +455,7 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, produ
                   {status.label}
                 </div>
               )}
+              {/* Suppression de la bulle doublon DLC après ouverture */}
             </div>
           </div>
           
