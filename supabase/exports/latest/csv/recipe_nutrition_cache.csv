@@ -1,2 +1,4 @@
 recipe_id,calories_per_serving,proteines_per_serving,glucides_per_serving,lipides_per_serving,calories_total,proteines_total,glucides_total,lipides_total,servings,cooking_method,calculated_at,ingredients_hash
 133,48.30,0.30,0.40,5.10,289.70,1.60,2.50,30.30,6,Cuisson au four,2025-10-27 21:58:02.07938+00,
+180,132.90,3.60,9.80,8.70,531.70,14.50,39.30,34.90,4,Mijotage,2025-10-28 09:32:32.992004+00,
+170,373.70,23.00,20.60,21.50,2242.30,138.10,123.60,128.90,6,Cuisson au four,2025-10-28 09:33:24.723165+00,
