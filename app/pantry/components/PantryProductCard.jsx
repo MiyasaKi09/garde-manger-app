@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { getQuickConversions } from '../../../lib/quickConversions';
-import { capitalizeProduct } from './pantryUtils';
+import { capitalizeProduct, getEffectiveExpiration, daysUntil } from './pantryUtils';
 
 export default function PantryProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity }) {
   const [showActions, setShowActions] = useState(false);
@@ -33,18 +33,22 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
     console.log('--- FIN DEBUG ---');
   }
 
-  const getStatusClass = (status) => {
-    switch(status) {
-      case 'expired': return 'status-expired';
-      case 'expiring_soon': return 'status-expiring';
-      default: return 'status-good';
-    }
-  };
 
-  const getStatusText = (status, days) => {
-    if (!status || status === 'no_date') return '📅 Pas de date';
-    if (status === 'expired') return `Expiré depuis ${Math.abs(days)}j`;
-    if (status === 'expiring_soon') return `Expire dans ${days}j`;
+  // Calcul de la date d'expiration effective et des jours restants
+  const effectiveExpiration = getEffectiveExpiration(item);
+  const daysLeft = daysUntil(effectiveExpiration);
+  const getStatusClass = (days) => {
+    if (days === null) return 'status-good';
+    if (days < 0) return 'status-expired';
+    if (days <= 3) return 'status-expiring';
+    return 'status-good';
+  };
+  const getStatusText = (days) => {
+    if (days === null) return '📅 Pas de date';
+    if (days < 0) return `Expiré depuis ${Math.abs(days)}j`;
+    if (days === 0) return `Expire aujourd'hui`;
+    if (days === 1) return `Expire demain`;
+    if (days <= 3) return `Expire dans ${days}j`;
     return `${days}j restants`;
   };
 
@@ -106,14 +110,14 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
           <span className="info-value">{item.storage_place || 'Non spécifié'}</span>
         </div>
         <div className="info-row">
-          <span className={`status-badge ${getStatusClass(item.expiration_status)}`}>
-            {getStatusText(item.expiration_status, item.days_until_expiration)}
+          <span className={`status-badge ${getStatusClass(daysLeft)}`}> 
+            {getStatusText(daysLeft)}
           </span>
         </div>
-        {item.expiration_date && (
+        {effectiveExpiration && (
           <div className="info-row">
             <span className="info-icon">🗓️</span>
-            <span className="info-value">{formatDate(item.expiration_date)}</span>
+            <span className="info-value">{formatDate(effectiveExpiration)}</span>
             {item.is_opened && item.adjusted_expiration_date && (
               <span className="dlc-adjusted" title="DLC ajustée après ouverture">
                 → {formatDate(item.adjusted_expiration_date)}
