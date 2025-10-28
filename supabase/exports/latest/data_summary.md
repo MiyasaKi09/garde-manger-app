@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Tue Oct 28 12:30:34 UTC 2025_
+_Generated: Tue Oct 28 12:38:52 UTC 2025_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -14,7 +14,7 @@ _Generated: Tue Oct 28 12:30:34 UTC 2025_
 - cultivars: 0 rows
 - diets: 9 rows
 - instructions: 1296 rows
-- inventory_lots: 4 rows
+- inventory_lots: 5 rows
 - legacy_users: 0 rows
 - locations: 3 rows
 - meal_plans: 0 rows

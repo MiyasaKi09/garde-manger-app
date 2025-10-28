@@ -1,290 +1,290 @@
-id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_days,open_shelf_life_unit,storage_profile,created_at,updated_at,notes,density_g_per_ml,grams_per_unit,primary_unit,nutrition_modifier_id,is_default
-289,Archetype générique « À classer »,14010,,,,,days,,2025-10-16 11:17:29.396632+00,2025-10-16 11:17:29.396632+00,,,,,,t
-78,Pêches séchées,1048,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:12:11.355286+00,Pêches tranchées et déshydratées,,,,3870,f
-79,Compote de pêches,1048,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:12:11.355286+00,Pêches cuites et écrasées,,,,3870,f
-80,Confiture de pêches,1048,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:12:11.355286+00,Pêches cuites avec sucre,,,,3870,f
-81,Jus de pêche,1048,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:12:11.355286+00,Jus extrait de pêches fraîches,,,,3870,f
-82,Pêches au sirop maison,1048,,cuisson et mise en bocal,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:12:11.355286+00,Pêches en morceaux dans sirop stérilisé,,,,3870,f
-149,Verveine séchée,2067,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:12:11.355286+00,Feuilles de verveine déshydratées pour infusion,,,,5520,f
-150,Sirop de verveine,2067,,infusion et cuisson avec sucre,90,30,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-27 18:12:11.355286+00,Sirop concentré à la verveine,,,,5520,f
-298,agneau haché,4001,,hachage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,4404,f
-299,bacon,2051,,salaison et fumage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3419,f
-300,beurre,7001,,barattage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f
-301,beurre salé,7001,,barattage salé,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f
-302,blanc d'œuf,14027,,séparation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,5017,f
-303,blanc de poulet,2054,,découpe,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3403,f
-304,bœuf haché,14011,,hachage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,4256,f
-305,bouillon de bœuf,14011,,infusion,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,4256,f
-306,chapelure,5002,,séchage et broyage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f
-307,chocolat,8005,,torréfaction,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,5563,f
-308,chocolat noir,8005,,torréfaction noir,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,5563,f
-309,cognac,1057,,distillation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3874,f
-310,crème fraîche,7001,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f
-311,crème liquide,7001,,écrémage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f
-312,farine,5002,,mouture,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f
-313,feta,7001,,caillage et saumurage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f
-314,flocon d'avoine,5001,,laminage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,4107,f
-315,fond de veau,8015,,réduction,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,4410,f
-316,fromage blanc,7001,,caillage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f
-317,jambon,2051,,salaison,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3419,f
-318,jaune d'œuf,14027,,séparation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,5017,f
-319,lardon,2051,,découpe et fumage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3419,f
-320,mozzarella,7001,,filage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f
-321,pain,5002,,cuisson levée,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f
-322,pâte,5002,,laminage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f
-323,pâte brisée,5002,,pétrissage court,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f
-324,pâte feuilletée,5002,,feuilletage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f
-325,porc haché,2051,,hachage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3419,f
-326,poudre d'amande,11001,,broyage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,4012,f
-327,sauce tomate,1059,,cuisson,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3474,f
-328,saumon fumé,2062,,fumage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,4803,f
-329,semoule,5002,,mouture grossière,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f
-330,spaghetti,5002,,extrusion,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f
-331,vin blanc,1057,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3874,f
-73,Cerises séchées,1008,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Cerises dénoyautées et déshydratées,,,,3847,f
-332,vin rouge,1057,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3874,f
-333,yaourt,7001,,fermentation lactique,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f
-334,yaourt grec,7001,,fermentation et égouttage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f
-335,yaourt nature,7001,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f
-14,Aubergines confites,1001,,confisage,14,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Aubergines cuites lentement dans l'huile,,,,3476,f
-15,Aubergines grillées,1001,,grillage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Aubergines grillées et marinées,,,,3476,f
-16,Purée d'aubergines,1001,,cuisson et mixage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Aubergines cuites et mixées,,,,3476,f
-101,Basilic séché,1004,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Feuilles de basilic déshydratées,,,,6185,f
-102,Basilic congelé haché,1004,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Basilic frais haché et congelé,,,,6185,f
-103,Basilic en poudre,1004,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Basilic séché réduit en poudre fine,,,,6185,f
-104,Huile de basilic infusée,1004,,infusion dans huile,90,30,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Basilic frais infusé dans huile d'olive,,,,6185,f
-105,Basilic lacto-fermenté,1004,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Basilic fermenté en saumure,,,,6185,f
-25,Carottes lacto-fermentées,1005,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Carottes fermentées en saumure,,,,3584,f
-26,Chips de carotte séchées,1005,,séchage,90,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Carottes tranchées et déshydratées,,,,3584,f
-27,Jus de carotte,1005,,extraction,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Jus extrait de carottes fraîches,,,,3584,f
-28,Purée de carottes congelée,1005,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Carottes cuites et mixées, congelées",,,,3584,f
-29,Carottes râpées sous vide,1005,,râpage et mise sous vide,7,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Carottes râpées fraîches sous vide,,,,3584,f
-74,Compote de cerises,1008,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Cerises cuites et écrasées,,,,3847,f
-75,Confiture de cerises,1008,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Cerises cuites avec sucre,,,,3847,f
-76,Jus de cerise,1008,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Jus extrait de cerises fraîches,,,,3847,f
-77,Cerises au sirop maison,1008,,cuisson et mise en bocal,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Cerises entières dans sirop stérilisé,,,,3847,f
-100,Gelée de cerise,1008,,extraction et cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Gelée transparente à base de jus de cerise,,,,3847,f
-67,Abricots séchés,1009,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Abricots dénoyautés et déshydratés,,,,3843,f
-69,Confiture d'abricots,1009,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Abricots cuits avec sucre,,,,3843,f
-70,Jus d'abricot,1009,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Jus extrait d'abricots frais,,,,3843,f
-71,Abricots au sirop maison,1009,,cuisson et mise en bocal,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Abricots en morceaux dans sirop stérilisé,,,,3843,f
-72,Purée d'abricots congelée,1009,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,"Abricots cuits et mixés, congelés",,,,3843,f
-99,Poudre d'abricot,1009,,séchage et broyage,365,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Abricots déshydratés et réduits en poudre,,,,3843,f
-123,Coriandre séchée (feuilles),1018,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Feuilles de coriandre déshydratées,,,,6160,f
-124,Coriandre en poudre (feuilles),1018,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Coriandre séchée réduite en poudre,,,,6160,f
-88,Fraises séchées,1022,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Fraises tranchées et déshydratées,,,,3851,f
-89,Compote de fraises,1022,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Fraises cuites et écrasées,,,,3851,f
-90,Confiture de fraises,1022,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Fraises cuites avec sucre,,,,3851,f
-91,Fraises congelées,1022,,congélation,270,,days,congélateur,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,"Fraises entières ou coupées, congelées",,,,3851,f
-92,Coulis de fraises,1022,,mixage et filtrage,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Fraises mixées et filtrées en sauce liquide,,,,3851,f
-41,Salade lavée et essorée sous vide,1031,,lavage et emballage sous vide,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Salade lavée, essorée et mise sous vide",,,,3469,f
-42,Salade cuite vapeur,1031,,cuisson vapeur,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Laitue cuite à la vapeur,,,,3469,f
-43,Poudre de laitue séchée,1031,,séchage et broyage,180,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Laitue séchée et réduite en poudre,,,,3469,f
-44,Jus de laitue,1031,,extraction,2,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Jus extrait de laitue fraîche,,,,3469,f
-114,Menthe séchée,1037,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Feuilles de menthe déshydratées,,,,5520,f
-115,Menthe en poudre,1037,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Menthe séchée réduite en poudre,,,,5520,f
-116,Menthe congelée,1037,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Menthe fraîche hachée et congelée,,,,5520,f
-117,Sirop de menthe,1037,,infusion et cuisson avec sucre,90,30,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Sirop concentré à la menthe,,,,5520,f
-118,Infusion de menthe concentrée,1037,,infusion et réduction,7,,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Infusion de menthe réduite,,,,5520,f
-224,Lait de coco,1043,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,4017,f
-237,Bûche de chèvre sec,7001,,,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-119,Persil séché,1049,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Feuilles de persil déshydratées,,,,3236,f
-120,Persil en poudre,1049,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Persil séché réduit en poudre,,,,3236,f
-121,Persil congelé haché,1049,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Persil frais haché et congelé,,,,3236,f
-122,Sel au persil,1049,,séchage et mélange avec sel,365,,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Mélange de persil séché et sel,,,,3236,f
-61,Poires séchées,1050,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Poires tranchées et déshydratées,,,,3470,f
-62,Compote de poires,1050,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Poires cuites et écrasées,,,,3470,f
-63,Confiture de poires,1050,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Poires cuites avec sucre,,,,3470,f
-64,Jus de poire,1050,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Jus extrait de poires fraîches,,,,3470,f
-65,Poires au sirop maison,1050,,cuisson et mise en bocal,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Poires en morceaux dans sirop sucré stérilisé,,,,3470,f
-66,Purée de poires congelée,1050,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,"Poires cuites et mixées, congelées",,,,3470,f
-9,Paprika (poudre de poivron),1051,,séchage et broyage,365,,days,température ambiante,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Poivrons séchés puis réduits en poudre,,,,3518,f
-10,Poivrons grillés,1051,,grillage,7,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Poivrons grillés et pelés, saveur fumée",,,,3518,f
-11,Poivrons séchés,1051,,séchage,180,30,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Poivrons déshydratés en lanières,,,,3518,f
-12,Poivrons lacto-fermentés,1051,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Poivrons fermentés en saumure,,,,3518,f
-13,Purée de poivrons congelée,1051,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Poivrons cuits et mixés, congelés en portions",,,,3518,f
-51,Pommes séchées,1052,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Pommes tranchées et déshydratées,,,,3561,f
-52,Compote de pommes,1052,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Pommes cuites et écrasées,,,,3561,f
-53,Compote de pommes stérilisée,1052,,cuisson et stérilisation,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Compote en bocaux stérilisés,,,,3561,f
-54,Confiture de pommes,1052,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Pommes cuites avec sucre jusqu'à gélification,,,,3561,f
-55,Jus de pomme,1052,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Jus extrait de pommes fraîches,,,,3561,f
-56,Jus de pomme pasteurisé,1052,,extraction et pasteurisation,90,5,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Jus de pomme pasteurisé en bouteille,,,,3561,f
-57,Purée de pommes congelée,1052,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,"Pommes cuites et mixées, congelées",,,,3561,f
-58,Chips de pomme séchées,1052,,séchage fin,120,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Pommes finement tranchées et déshydratées,,,,3561,f
-59,Pommes au four,1052,,cuisson four,3,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Pommes cuites au four,,,,3561,f
-60,Gelée de pommes,1052,,extraction et cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Gelée transparente à base de jus de pomme,,,,3561,f
-98,Poudre de pomme,1052,,séchage et broyage,365,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Pommes déshydratées et réduites en poudre,,,,3561,f
-45,Purée de pommes de terre congelée,1053,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Pommes de terre cuites et mixées, congelées",,,,3756,f
-46,Chips de pommes de terre séchées,1053,,séchage,90,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Pommes de terre tranchées et déshydratées,,,,3756,f
-47,Frites surgelées maison,1053,,pré-cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Pommes de terre pré-cuites et congelées,,,,3756,f
-86,Jus de prune,1054,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Jus extrait de prunes fraîches,,,,3872,f
-68,Compote d'abricots,1009,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Abricots cuits et écrasés,,,,3843,f
-83,Pruneaux (prunes séchées),1054,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Prunes entières déshydratées,,,,3872,f
-84,Compote de prunes,1054,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Prunes cuites et écrasées,,,,3872,f
-85,Confiture de prunes,1054,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Prunes cuites avec sucre,,,,3872,f
-87,Prunes au sirop maison,1054,,cuisson et mise en bocal,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Prunes entières dans sirop stérilisé,,,,3872,f
-93,Raisins secs,1057,,séchage,365,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Raisins déshydratés,,,,3874,f
-94,Confiture de raisin,1057,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Raisins cuits avec sucre,,,,3874,f
-95,Jus de raisin,1057,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Jus extrait de raisins frais,,,,3874,f
-96,Jus de raisin pasteurisé,1057,,extraction et pasteurisation,90,5,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Jus de raisin pasteurisé en bouteille,,,,3874,f
-97,Raisins congelés,1057,,congélation,270,,days,congélateur,2025-10-04 13:07:06.100763+00,2025-10-27 18:01:52.152528+00,Raisins entiers congelés,,,,3874,f
-106,Thym séché,1058,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Branches de thym déshydratées,,,,6188,f
-107,Thym en poudre,1058,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Thym séché réduit en poudre,,,,6188,f
-108,Thym congelé,1058,,congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Branches de thym frais congelées,,,,6188,f
-109,Sel au thym,1058,,séchage et mélange avec sel,365,,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Mélange de thym séché et sel,,,,6188,f
-1,Tomates séchées,1059,,séchage,180,30,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Tomates déshydratées au four ou au soleil, concentrées en saveur",,,,3474,f
-2,Tomates confites,1059,,confisage,90,7,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Tomates cuites lentement à basse température dans l'huile,,,,3474,f
-3,Coulis de tomate,1059,,cuisson et réduction,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Tomates cuites et réduites en sauce lisse,,,,3474,f
-4,Concentré de tomate,1059,,réduction,7,3,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Tomates très réduites, texture concentrée",,,,3474,f
-5,Tomates pelées en bocaux,1059,,stérilisation,730,3,days,température ambiante,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Tomates pelées et stérilisées en bocaux,,,,3474,f
-6,Tomates lacto-fermentées,1059,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Tomates fermentées en saumure, probiotiques",,,,3474,f
-7,Ketchup maison,1059,,cuisson et réduction avec sucre,30,14,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Sauce tomate concentrée sucrée et épicée,,,,3474,f
-8,Jus de tomate,1059,,extraction,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Jus extrait de tomates fraîches,,,,3474,f
-48,Pâte de tomate séchée,1059,,séchage intense et broyage,365,30,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Tomates ultra-séchées et broyées en pâte,,,,3474,f
-32,Purée de brocoli congelée,2003,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Brocoli cuit et mixé, congelé",,,,3456,f
-49,Poudre de brocoli,2003,,séchage et broyage,180,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Brocoli séché et réduit en poudre,,,,3456,f
-34,Jus de chou,2009,,extraction,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Jus extrait de chou frais,,,,3507,f
-30,Choucroute crue,2009,,lacto-fermentation,120,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Chou blanc lacto-fermenté, riche en probiotiques",,,,3507,f
-31,Chou blanc lacto-fermenté,2009,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Chou blanc fermenté en saumure,,,,3507,f
-33,Chips de chou séchées,2009,,séchage,60,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Chou déshydraté et croustillant,,,,3507,f
-131,Ciboulette séchée,2018,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Brins de ciboulette déshydratés,,,,6181,f
-132,Ciboulette congelée,2018,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Ciboulette fraîche hachée et congelée,,,,6181,f
-133,Ciboulette lyophilisée,2018,,lyophilisation,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Ciboulette lyophilisée conservant couleur et arôme,,,,6181,f
-24,Chips de butternut séchées,2024,,séchage,90,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Butternut tranché et déshydraté,,,,3462,f
-195,Crème liquide 30%,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-19,Purée de butternut congelée,2024,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Butternut cuit et mixé, congelé",,,,3462,f
-17,Chips de courgette séchées,2026,,séchage,90,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Courgettes tranchées et déshydratées,,,,3471,f
-22,Courgettes grillées,2026,,grillage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Courgettes tranchées et grillées,,,,3471,f
-23,Courgettes lacto-fermentées,2026,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Courgettes fermentées en saumure,,,,3471,f
-50,Courgettes déshydratées en dés,2026,,séchage,120,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Courgettes coupées en dés et déshydratées,,,,3471,f
-40,Échalotes confites,2031,,confisage,14,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Échalotes confites dans l'huile,,,,3611,f
-140,Estragon séché,2033,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Feuilles d'estragon déshydratées,,,,3246,f
-141,Estragon congelé,2033,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Estragon frais haché et congelé,,,,3246,f
-142,Vinaigre à l'estragon,2033,,infusion dans vinaigre,365,90,days,température ambiante,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Estragon frais infusé dans vinaigre de vin,,,,3246,f
-145,Fenouil séché (herbe),2034,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Feuilles de fenouil déshydratées,,,,3466,f
-146,Fenouil en poudre,2034,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Fenouil séché réduit en poudre,,,,3466,f
-147,Graines de fenouil moulues,2034,,séchage et broyage des graines,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Graines de fenouil réduites en poudre,,,,3466,f
-148,Fenouil congelé,2034,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Fenouil frais haché et congelé,,,,3466,f
-143,Laurier séché,2039,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Feuilles de laurier déshydratées,,,,6166,f
-144,Laurier en poudre,2039,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Laurier séché réduit en poudre,,,,6166,f
-35,Poudre d'oignon,2041,,séchage et broyage,365,,days,température ambiante,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Oignons séchés et réduits en poudre fine,,,,3468,f
-36,Oignons caramélisés,2041,,cuisson lente,7,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Oignons cuits lentement jusqu'à caramélisation,,,,3468,f
-37,Oignons confits,2041,,confisage,14,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Oignons confits dans l'huile,,,,3468,f
-134,Origan séché,2043,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Feuilles d'origan déshydratées,,,,6200,f
-135,Origan en poudre,2043,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Origan séché réduit en poudre,,,,6200,f
-136,Huile d'origan,2043,,infusion dans huile,90,30,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Origan frais infusé dans huile d'olive,,,,6200,f
-20,Purée de potimarron congelée,2052,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Potimarron cuit et mixé, congelé",,,,3512,f
-18,Purée de potiron congelée,2053,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,"Potiron cuit et mixé, congelé",,,,3472,f
-21,Soupe de potiron,2053,,cuisson,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Potiron cuit et mixé en soupe,,,,3472,f
-110,Romarin séché,2057,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Branches de romarin déshydratées,,,,6186,f
-111,Romarin en poudre,2057,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Romarin séché réduit en poudre,,,,6186,f
-112,Romarin congelé,2057,,congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Branches de romarin frais congelées,,,,6186,f
-113,Sel au romarin,2057,,séchage et mélange avec sel,365,,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Mélange de romarin séché et sel,,,,6186,f
-137,Sauge séchée,2061,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Feuilles de sauge déshydratées,,,,6187,f
-138,Sauge en poudre,2061,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Sauge séchée réduite en poudre,,,,6187,f
-139,Sel à la sauge,2061,,séchage et mélange avec sel,365,,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Mélange de sauge séchée et sel,,,,6187,f
-223,Lait de riz,4003,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,4098,f
-220,Lait de soja,4005,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3531,f
-225,Crème de soja,4005,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3531,f
-222,Lait d'avoine,5001,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,4107,f
-226,Crème d'avoine,5001,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,4107,f
-185,Lait entier UHT,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-186,Lait demi-écrémé UHT,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-187,Lait écrémé UHT,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-188,Lait entier frais,7001,,,7,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-189,Lait demi-écrémé frais,7001,,,7,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-190,Lait écrémé frais,7001,,,7,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-191,Lait concentré non sucré,7001,,,365,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-192,Lait concentré sucré,7001,,,365,7,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-193,Lait en poudre,7001,,,730,30,days,frais et sec,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-194,Lait sans lactose,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-196,Crème liquide 15%,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-197,Crème épaisse 35%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-198,Crème fraîche épaisse,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-199,Crème fraîche légère,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-200,Crème UHT liquide,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-201,Crème fouettée en bombe,7001,,,60,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-202,Crème anglaise,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-203,Chantilly,7001,,,60,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-204,Beurre doux,7001,,,60,14,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-205,Yaourt nature entier,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-206,Yaourt nature 0%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-207,Yaourt nature brassé,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-208,Yaourt grec nature,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-209,Yaourt grec 0%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-210,Yaourt lait de brebis,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-211,Yaourt lait de chèvre,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-212,Skyr nature,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-213,Yaourt vanille,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-214,Yaourt aux fruits,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-215,Fromage blanc 0%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-216,Fromage blanc 20%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-217,Fromage blanc 40%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-218,Petit-suisse,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-219,Faisselle,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-227,Kéfir,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-228,Lait fermenté,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-229,Lait ribot,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-230,Cottage cheese,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-231,Ricotta,7001,,,21,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-232,Mascarpone,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-233,Cream cheese,7001,,,60,7,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-234,Fromage à tartiner nature,7001,,,60,7,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-235,Bûche de chèvre fraîche,7001,,,21,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-236,Bûche de chèvre demi-sec,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-238,Crottin de chèvre,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-239,Sainte-Maure,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-240,Camembert,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-241,Brie,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-125,Coriandre congelée,1018,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Coriandre fraîche hachée et congelée,,,,6160,f
-242,Coulommiers,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-243,Chaource,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-244,Saint-Marcellin,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-245,Brillat-Savarin,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-246,Neufchâtel,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-247,Explorateur,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-248,Munster,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-249,Époisses,7001,,,45,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-250,Maroilles,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-251,Pont-l'Évêque,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-252,Livarot,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-253,Reblochon,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-254,Mont d'Or,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-255,Vacherin,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-256,Cantal,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-257,Saint-Nectaire,7001,,,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-258,Morbier,7001,,,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-259,Tomme de Savoie,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-260,Raclette,7001,,,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-261,Cheddar,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-126,Graines de coriandre moulues,1018,,séchage et broyage des graines,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Graines de coriandre réduites en poudre,,,,6160,f
-262,Gouda,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-263,Edam,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-264,Mimolette,7001,,,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-265,Ossau-Iraty,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-266,Provolone,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-267,Manchego,7001,,,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-268,Abondance,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-269,Beaufort,7001,,,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-270,Comté,7001,,,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-271,Gruyère,7001,,,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-272,Emmental,7001,,,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-273,Parmesan,7001,,,365,30,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-274,Pecorino,7001,,,365,30,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-275,Fontina,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-276,Roquefort,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-277,Bleu d'Auvergne,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-127,Aneth séché,8002,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Brins d'aneth déshydratés,,,,6191,f
-128,Aneth congelé,8002,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Aneth frais haché et congelé,,,,6191,f
-129,Aneth en poudre,8002,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Aneth séché réduit en poudre,,,,6191,f
-130,Graines d'aneth moulues,8002,,séchage et broyage des graines,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-27 18:01:52.152528+00,Graines d'aneth réduites en poudre,,,,6191,f
-39,Poudre d'ail,10001,,séchage et broyage,365,,days,température ambiante,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Ail séché et réduit en poudre,,,,6179,f
-38,Ail confit,10001,,confisage,30,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-27 18:01:52.152528+00,Gousses d'ail confites dans l'huile,,,,6179,f
-221,Lait d'amande,11001,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-27 18:01:52.152528+00,,,,,4012,f
-278,Fourme d'Ambert,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-279,Gorgonzola,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-280,Valençay,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-281,Rocamadour,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-282,Pouligny-Saint-Pierre,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-283,Picodon,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
-284,Pélardon,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-27 18:01:52.152528+00,,,,,3467,f
+id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_days,open_shelf_life_unit,storage_profile,created_at,updated_at,notes,density_g_per_ml,grams_per_unit,primary_unit,nutrition_modifier_id,is_default,shelf_life_days_pantry,shelf_life_days_fridge,shelf_life_days_freezer,open_shelf_life_days_pantry,open_shelf_life_days_fridge,open_shelf_life_days_freezer
+289,Archetype générique « À classer »,14010,,,,,days,,2025-10-16 11:17:29.396632+00,2025-10-16 11:17:29.396632+00,,,,,,t,,,,,,
+14,Aubergines confites,1001,,confisage,14,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Aubergines cuites lentement dans l'huile,,,,3476,f,14,14,140,,,
+15,Aubergines grillées,1001,,grillage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Aubergines grillées et marinées,,,,3476,f,5,5,50,,,
+16,Purée d'aubergines,1001,,cuisson et mixage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Aubergines cuites et mixées,,,,3476,f,5,5,50,,,
+105,Basilic lacto-fermenté,1004,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Basilic fermenté en saumure,,,,6185,f,90,90,900,,,
+74,Compote de cerises,1008,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Cerises cuites et écrasées,,,,3847,f,7,7,70,,,
+76,Jus de cerise,1008,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Jus extrait de cerises fraîches,,,,3847,f,5,5,50,,,
+88,Fraises séchées,1022,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Fraises tranchées et déshydratées,,,,3851,f,180,180,1800,,,
+89,Compote de fraises,1022,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Fraises cuites et écrasées,,,,3851,f,7,7,70,,,
+91,Fraises congelées,1022,,congélation,270,,days,congélateur,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,"Fraises entières ou coupées, congelées",,,,3851,f,270,270,2700,,,
+92,Coulis de fraises,1022,,mixage et filtrage,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Fraises mixées et filtrées en sauce liquide,,,,3851,f,5,5,50,,,
+42,Salade cuite vapeur,1031,,cuisson vapeur,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Laitue cuite à la vapeur,,,,3469,f,3,3,30,,,
+116,Menthe congelée,1037,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Menthe fraîche hachée et congelée,,,,5520,f,180,180,1800,,,
+118,Infusion de menthe concentrée,1037,,infusion et réduction,7,,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Infusion de menthe réduite,,,,5520,f,7,7,70,,,
+102,Basilic congelé haché,1004,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Basilic frais haché et congelé,,,,6185,f,,2,120,,1,60
+41,Salade lavée et essorée sous vide,1031,,lavage et emballage sous vide,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Salade lavée, essorée et mise sous vide",,,,3469,f,,5,180,,2,90
+43,Poudre de laitue séchée,1031,,séchage et broyage,180,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Laitue séchée et réduite en poudre,,,,3469,f,,5,180,,2,90
+44,Jus de laitue,1031,,extraction,2,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Jus extrait de laitue fraîche,,,,3469,f,,5,180,,2,90
+25,Carottes lacto-fermentées,1005,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Carottes fermentées en saumure,,,,3584,f,7,21,270,,,
+26,Chips de carotte séchées,1005,,séchage,90,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Carottes tranchées et déshydratées,,,,3584,f,7,21,270,,,
+27,Jus de carotte,1005,,extraction,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Jus extrait de carottes fraîches,,,,3584,f,7,21,270,,,
+28,Purée de carottes congelée,1005,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Carottes cuites et mixées, congelées",,,,3584,f,7,21,270,,,
+29,Carottes râpées sous vide,1005,,râpage et mise sous vide,7,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Carottes râpées fraîches sous vide,,,,3584,f,7,21,270,,,
+67,Abricots séchés,1009,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Abricots dénoyautés et déshydratés,,,,3843,f,5,7,270,,,
+70,Jus d'abricot,1009,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Jus extrait d'abricots frais,,,,3843,f,5,7,270,,,
+72,Purée d'abricots congelée,1009,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,"Abricots cuits et mixés, congelés",,,,3843,f,5,7,270,,,
+224,Lait de coco,1043,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,4017,f,90,7,90,,3,30
+121,Persil congelé haché,1049,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Persil frais haché et congelé,,,,3236,f,,2,120,,1,60
+78,Pêches séchées,1048,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Pêches tranchées et déshydratées,,,,3870,f,5,7,270,,,
+79,Compote de pêches,1048,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Pêches cuites et écrasées,,,,3870,f,5,7,270,,,
+81,Jus de pêche,1048,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Jus extrait de pêches fraîches,,,,3870,f,5,7,270,,,
+80,Confiture de pêches,1048,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Pêches cuites avec sucre,,,,3870,f,5,7,270,,,
+82,Pêches au sirop maison,1048,,cuisson et mise en bocal,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Pêches en morceaux dans sirop stérilisé,,,,3870,f,5,7,270,,,
+122,Sel au persil,1049,,séchage et mélange avec sel,365,,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Mélange de persil séché et sel,,,,3236,f,365,365,3650,,,
+61,Poires séchées,1050,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Poires tranchées et déshydratées,,,,3470,f,180,180,1800,,,
+62,Compote de poires,1050,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Poires cuites et écrasées,,,,3470,f,7,7,70,,,
+64,Jus de poire,1050,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Jus extrait de poires fraîches,,,,3470,f,5,5,50,,,
+66,Purée de poires congelée,1050,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,"Poires cuites et mixées, congelées",,,,3470,f,180,180,1800,,,
+9,Paprika (poudre de poivron),1051,,séchage et broyage,365,,days,température ambiante,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Poivrons séchés puis réduits en poudre,,,,3518,f,365,365,3650,,,
+10,Poivrons grillés,1051,,grillage,7,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Poivrons grillés et pelés, saveur fumée",,,,3518,f,7,7,70,,,
+12,Poivrons lacto-fermentés,1051,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Poivrons fermentés en saumure,,,,3518,f,90,90,900,,,
+13,Purée de poivrons congelée,1051,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Poivrons cuits et mixés, congelés en portions",,,,3518,f,180,180,1800,,,
+51,Pommes séchées,1052,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Pommes tranchées et déshydratées,,,,3561,f,180,180,1800,,,
+52,Compote de pommes,1052,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Pommes cuites et écrasées,,,,3561,f,7,7,70,,,
+55,Jus de pomme,1052,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Jus extrait de pommes fraîches,,,,3561,f,5,5,50,,,
+57,Purée de pommes congelée,1052,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,"Pommes cuites et mixées, congelées",,,,3561,f,180,180,1800,,,
+58,Chips de pomme séchées,1052,,séchage fin,120,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Pommes finement tranchées et déshydratées,,,,3561,f,120,120,1200,,,
+59,Pommes au four,1052,,cuisson four,3,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Pommes cuites au four,,,,3561,f,3,3,30,,,
+237,Bûche de chèvre sec,7001,,,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,10,10,100
+98,Poudre de pomme,1052,,séchage et broyage,365,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Pommes déshydratées et réduites en poudre,,,,3561,f,365,365,3650,,,
+47,Frites surgelées maison,1053,,pré-cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Pommes de terre pré-cuites et congelées,,,,3756,f,180,180,1800,,,
+93,Raisins secs,1057,,séchage,365,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Raisins déshydratés,,,,3874,f,365,365,3650,,,
+95,Jus de raisin,1057,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Jus extrait de raisins frais,,,,3874,f,5,5,50,,,
+97,Raisins congelés,1057,,congélation,270,,days,congélateur,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Raisins entiers congelés,,,,3874,f,270,270,2700,,,
+108,Thym congelé,1058,,congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Branches de thym frais congelées,,,,6188,f,180,180,1800,,,
+109,Sel au thym,1058,,séchage et mélange avec sel,365,,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Mélange de thym séché et sel,,,,6188,f,365,365,3650,,,
+32,Purée de brocoli congelée,2003,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Brocoli cuit et mixé, congelé",,,,3456,f,180,180,1800,,,
+49,Poudre de brocoli,2003,,séchage et broyage,180,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Brocoli séché et réduit en poudre,,,,3456,f,180,180,1800,,,
+34,Jus de chou,2009,,extraction,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Jus extrait de chou frais,,,,3507,f,3,3,30,,,
+30,Choucroute crue,2009,,lacto-fermentation,120,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Chou blanc lacto-fermenté, riche en probiotiques",,,,3507,f,120,120,1200,,,
+31,Chou blanc lacto-fermenté,2009,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Chou blanc fermenté en saumure,,,,3507,f,90,90,900,,,
+33,Chips de chou séchées,2009,,séchage,60,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Chou déshydraté et croustillant,,,,3507,f,60,60,600,,,
+132,Ciboulette congelée,2018,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Ciboulette fraîche hachée et congelée,,,,6181,f,180,180,1800,,,
+24,Chips de butternut séchées,2024,,séchage,90,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Butternut tranché et déshydraté,,,,3462,f,90,90,900,,,
+19,Purée de butternut congelée,2024,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Butternut cuit et mixé, congelé",,,,3462,f,180,180,1800,,,
+17,Chips de courgette séchées,2026,,séchage,90,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Courgettes tranchées et déshydratées,,,,3471,f,90,90,900,,,
+3,Coulis de tomate,1059,,cuisson et réduction,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Tomates cuites et réduites en sauce lisse,,,,3474,f,7,14,180,,,
+6,Tomates lacto-fermentées,1059,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Tomates fermentées en saumure, probiotiques",,,,3474,f,7,14,180,,,
+8,Jus de tomate,1059,,extraction,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Jus extrait de tomates fraîches,,,,3474,f,7,14,180,,,
+45,Purée de pommes de terre congelée,1053,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Pommes de terre cuites et mixées, congelées",,,,3756,f,60,90,270,,,
+46,Chips de pommes de terre séchées,1053,,séchage,90,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Pommes de terre tranchées et déshydratées,,,,3756,f,60,90,270,,,
+86,Jus de prune,1054,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Jus extrait de prunes fraîches,,,,3872,f,5,7,270,,,
+68,Compote d'abricots,1009,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Abricots cuits et écrasés,,,,3843,f,5,7,270,,,
+83,Pruneaux (prunes séchées),1054,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Prunes entières déshydratées,,,,3872,f,5,7,270,,,
+84,Compote de prunes,1054,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Prunes cuites et écrasées,,,,3872,f,5,7,270,,,
+35,Poudre d'oignon,2041,,séchage et broyage,365,,days,température ambiante,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Oignons séchés et réduits en poudre fine,,,,3468,f,90,90,180,,,
+36,Oignons caramélisés,2041,,cuisson lente,7,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Oignons cuits lentement jusqu'à caramélisation,,,,3468,f,90,90,180,,,
+37,Oignons confits,2041,,confisage,14,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Oignons confits dans l'huile,,,,3468,f,90,90,180,,,
+22,Courgettes grillées,2026,,grillage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Courgettes tranchées et grillées,,,,3471,f,5,5,50,,,
+23,Courgettes lacto-fermentées,2026,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Courgettes fermentées en saumure,,,,3471,f,90,90,900,,,
+50,Courgettes déshydratées en dés,2026,,séchage,120,,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Courgettes coupées en dés et déshydratées,,,,3471,f,120,120,1200,,,
+40,Échalotes confites,2031,,confisage,14,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Échalotes confites dans l'huile,,,,3611,f,14,14,140,,,
+141,Estragon congelé,2033,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Estragon frais haché et congelé,,,,3246,f,180,180,1800,,,
+148,Fenouil congelé,2034,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Fenouil frais haché et congelé,,,,3466,f,180,180,1800,,,
+20,Purée de potimarron congelée,2052,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Potimarron cuit et mixé, congelé",,,,3512,f,180,180,1800,,,
+18,Purée de potiron congelée,2053,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Potiron cuit et mixé, congelé",,,,3472,f,180,180,1800,,,
+21,Soupe de potiron,2053,,cuisson,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Potiron cuit et mixé en soupe,,,,3472,f,3,3,30,,,
+112,Romarin congelé,2057,,congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Branches de romarin frais congelées,,,,6186,f,180,180,1800,,,
+113,Sel au romarin,2057,,séchage et mélange avec sel,365,,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Mélange de romarin séché et sel,,,,6186,f,365,365,3650,,,
+139,Sel à la sauge,2061,,séchage et mélange avec sel,365,,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Mélange de sauge séchée et sel,,,,6187,f,365,365,3650,,,
+149,Verveine séchée,2067,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles de verveine déshydratées pour infusion,,,,5520,f,365,365,3650,90,90,900
+150,Sirop de verveine,2067,,infusion et cuisson avec sucre,90,30,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Sirop concentré à la verveine,,,,5520,f,90,90,900,30,30,300
+73,Cerises séchées,1008,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Cerises dénoyautées et déshydratées,,,,3847,f,180,180,1800,,,
+310,crème fraîche,7001,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3467,f,,30,120,,3,60
+311,crème liquide,7001,,écrémage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3467,f,,30,120,,3,60
+299,bacon,2051,,salaison et fumage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3419,f,,,,,,
+306,chapelure,5002,,séchage et broyage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f,,,,,,
+307,chocolat,8005,,torréfaction,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,5563,f,,,,,,
+308,chocolat noir,8005,,torréfaction noir,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,5563,f,,,,,,
+309,cognac,1057,,distillation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3874,f,,,,,,
+313,feta,7001,,caillage et saumurage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f,,,,,,
+314,flocon d'avoine,5001,,laminage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,4107,f,,,,,,
+315,fond de veau,8015,,réduction,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,4410,f,,,,,,
+316,fromage blanc,7001,,caillage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f,,,,,,
+319,lardon,2051,,découpe et fumage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3419,f,,,,,,
+320,mozzarella,7001,,filage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3467,f,,,,,,
+321,pain,5002,,cuisson levée,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f,,,,,,
+322,pâte,5002,,laminage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f,,,,,,
+323,pâte brisée,5002,,pétrissage court,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f,,,,,,
+324,pâte feuilletée,5002,,feuilletage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f,,,,,,
+326,poudre d'amande,11001,,broyage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,4012,f,,,,,,
+327,sauce tomate,1059,,cuisson,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3474,f,,,,,,
+329,semoule,5002,,mouture grossière,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f,,,,,,
+330,spaghetti,5002,,extrusion,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3455,f,,,,,,
+331,vin blanc,1057,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3874,f,,,,,,
+332,vin rouge,1057,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3874,f,,,,,,
+300,beurre,7001,,barattage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3467,f,,90,270,,30,180
+301,beurre salé,7001,,barattage salé,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3467,f,,90,270,,30,180
+303,blanc de poulet,2054,,découpe,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3403,f,,3,270,,1,180
+298,agneau haché,4001,,hachage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,4404,f,,2,120,,1,60
+325,porc haché,2051,,hachage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3419,f,,2,120,,1,60
+317,jambon,2051,,salaison,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3419,f,,7,60,,3,30
+328,saumon fumé,2062,,fumage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,4803,f,,14,60,,3,30
+312,farine,5002,,mouture,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3455,f,365,730,,180,365,
+302,blanc d'œuf,14027,,séparation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,5017,f,28,42,,,2,
+318,jaune d'œuf,14027,,séparation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,5017,f,28,42,,,2,
+305,bouillon de bœuf,14011,,infusion,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,4256,f,28,42,,,2,
+304,bœuf haché,14011,,hachage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,4256,f,28,42,,,2,
+333,yaourt,7001,,fermentation lactique,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3467,f,,21,60,,3,
+334,yaourt grec,7001,,fermentation et égouttage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3467,f,,21,60,,3,
+335,yaourt nature,7001,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 12:31:05.276084+00,,,,g,3467,f,,21,60,,3,
+125,Coriandre congelée,1018,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Coriandre fraîche hachée et congelée,,,,6160,f,180,180,1800,,,
+128,Aneth congelé,8002,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Aneth frais haché et congelé,,,,6191,f,180,180,1800,,,
+101,Basilic séché,1004,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles de basilic déshydratées,,,,6185,f,365,365,3650,90,90,900
+103,Basilic en poudre,1004,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Basilic séché réduit en poudre fine,,,,6185,f,365,365,3650,90,90,900
+104,Huile de basilic infusée,1004,,infusion dans huile,90,30,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Basilic frais infusé dans huile d'olive,,,,6185,f,90,90,900,30,30,300
+75,Confiture de cerises,1008,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Cerises cuites avec sucre,,,,3847,f,365,365,3650,14,14,140
+77,Cerises au sirop maison,1008,,cuisson et mise en bocal,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Cerises entières dans sirop stérilisé,,,,3847,f,365,365,3650,5,5,50
+100,Gelée de cerise,1008,,extraction et cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Gelée transparente à base de jus de cerise,,,,3847,f,365,365,3650,14,14,140
+123,Coriandre séchée (feuilles),1018,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles de coriandre déshydratées,,,,6160,f,365,365,3650,90,90,900
+124,Coriandre en poudre (feuilles),1018,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Coriandre séchée réduite en poudre,,,,6160,f,365,365,3650,90,90,900
+90,Confiture de fraises,1022,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Fraises cuites avec sucre,,,,3851,f,365,365,3650,14,14,140
+114,Menthe séchée,1037,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles de menthe déshydratées,,,,5520,f,365,365,3650,90,90,900
+115,Menthe en poudre,1037,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Menthe séchée réduite en poudre,,,,5520,f,365,365,3650,90,90,900
+117,Sirop de menthe,1037,,infusion et cuisson avec sucre,90,30,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Sirop concentré à la menthe,,,,5520,f,90,90,900,30,30,300
+119,Persil séché,1049,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles de persil déshydratées,,,,3236,f,365,365,3650,90,90,900
+120,Persil en poudre,1049,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Persil séché réduit en poudre,,,,3236,f,365,365,3650,90,90,900
+63,Confiture de poires,1050,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Poires cuites avec sucre,,,,3470,f,365,365,3650,14,14,140
+65,Poires au sirop maison,1050,,cuisson et mise en bocal,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Poires en morceaux dans sirop sucré stérilisé,,,,3470,f,365,365,3650,5,5,50
+11,Poivrons séchés,1051,,séchage,180,30,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Poivrons déshydratés en lanières,,,,3518,f,180,180,1800,30,30,300
+53,Compote de pommes stérilisée,1052,,cuisson et stérilisation,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Compote en bocaux stérilisés,,,,3561,f,365,365,3650,5,5,50
+54,Confiture de pommes,1052,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Pommes cuites avec sucre jusqu'à gélification,,,,3561,f,365,365,3650,14,14,140
+56,Jus de pomme pasteurisé,1052,,extraction et pasteurisation,90,5,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Jus de pomme pasteurisé en bouteille,,,,3561,f,90,90,900,5,5,50
+60,Gelée de pommes,1052,,extraction et cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Gelée transparente à base de jus de pomme,,,,3561,f,365,365,3650,14,14,140
+94,Confiture de raisin,1057,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Raisins cuits avec sucre,,,,3874,f,365,365,3650,14,14,140
+96,Jus de raisin pasteurisé,1057,,extraction et pasteurisation,90,5,days,réfrigéré,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Jus de raisin pasteurisé en bouteille,,,,3874,f,90,90,900,5,5,50
+39,Poudre d'ail,10001,,séchage et broyage,365,,days,température ambiante,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Ail séché et réduit en poudre,,,,6179,f,90,90,180,,,
+38,Ail confit,10001,,confisage,30,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Gousses d'ail confites dans l'huile,,,,6179,f,90,90,180,,,
+69,Confiture d'abricots,1009,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Abricots cuits avec sucre,,,,3843,f,5,7,270,,,
+71,Abricots au sirop maison,1009,,cuisson et mise en bocal,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Abricots en morceaux dans sirop stérilisé,,,,3843,f,5,7,270,,,
+85,Confiture de prunes,1054,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Prunes cuites avec sucre,,,,3872,f,5,7,270,,,
+87,Prunes au sirop maison,1054,,cuisson et mise en bocal,365,5,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Prunes entières dans sirop stérilisé,,,,3872,f,5,7,270,,,
+106,Thym séché,1058,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Branches de thym déshydratées,,,,6188,f,730,730,7300,180,180,1800
+107,Thym en poudre,1058,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Thym séché réduit en poudre,,,,6188,f,730,730,7300,180,180,1800
+4,Concentré de tomate,1059,,réduction,7,3,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Tomates très réduites, texture concentrée",,,,3474,f,7,7,70,3,3,30
+131,Ciboulette séchée,2018,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Brins de ciboulette déshydratés,,,,6181,f,365,365,3650,90,90,900
+133,Ciboulette lyophilisée,2018,,lyophilisation,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Ciboulette lyophilisée conservant couleur et arôme,,,,6181,f,730,730,7300,180,180,1800
+140,Estragon séché,2033,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles d'estragon déshydratées,,,,3246,f,365,365,3650,90,90,900
+145,Fenouil séché (herbe),2034,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles de fenouil déshydratées,,,,3466,f,365,365,3650,90,90,900
+146,Fenouil en poudre,2034,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Fenouil séché réduit en poudre,,,,3466,f,365,365,3650,90,90,900
+147,Graines de fenouil moulues,2034,,séchage et broyage des graines,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Graines de fenouil réduites en poudre,,,,3466,f,730,730,7300,180,180,1800
+143,Laurier séché,2039,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles de laurier déshydratées,,,,6166,f,730,730,7300,180,180,1800
+144,Laurier en poudre,2039,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Laurier séché réduit en poudre,,,,6166,f,730,730,7300,180,180,1800
+134,Origan séché,2043,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles d'origan déshydratées,,,,6200,f,730,730,7300,180,180,1800
+135,Origan en poudre,2043,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Origan séché réduit en poudre,,,,6200,f,730,730,7300,180,180,1800
+136,Huile d'origan,2043,,infusion dans huile,90,30,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Origan frais infusé dans huile d'olive,,,,6200,f,90,90,900,30,30,300
+110,Romarin séché,2057,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Branches de romarin déshydratées,,,,6186,f,730,730,7300,180,180,1800
+111,Romarin en poudre,2057,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Romarin séché réduit en poudre,,,,6186,f,730,730,7300,180,180,1800
+137,Sauge séchée,2061,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles de sauge déshydratées,,,,6187,f,730,730,7300,180,180,1800
+138,Sauge en poudre,2061,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Sauge séchée réduite en poudre,,,,6187,f,730,730,7300,180,180,1800
+225,Crème de soja,4005,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3531,f,90,90,900,5,5,50
+226,Crème d'avoine,5001,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,4107,f,90,90,900,5,5,50
+197,Crème épaisse 35%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+201,Crème fouettée en bombe,7001,,,60,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,3,3,30
+202,Crème anglaise,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,3,3,30
+203,Chantilly,7001,,,60,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,3,3,30
+212,Skyr nature,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+215,Fromage blanc 0%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+216,Fromage blanc 20%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+217,Fromage blanc 40%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+218,Petit-suisse,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,3,3,30
+219,Faisselle,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,3,3,30
+227,Kéfir,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+230,Cottage cheese,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+231,Ricotta,7001,,,21,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,21,21,210,3,3,30
+232,Mascarpone,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,3,3,30
+233,Cream cheese,7001,,,60,7,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,7,7,70
+234,Fromage à tartiner nature,7001,,,60,7,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,7,7,70
+235,Bûche de chèvre fraîche,7001,,,21,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,21,21,210,5,5,50
+236,Bûche de chèvre demi-sec,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+242,Coulommiers,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+243,Chaource,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+244,Saint-Marcellin,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+245,Brillat-Savarin,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+246,Neufchâtel,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+247,Explorateur,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+248,Munster,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+249,Époisses,7001,,,45,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,5,5,50
+250,Maroilles,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,7,7,70
+251,Pont-l'Évêque,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+252,Livarot,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,7,7,70
+253,Reblochon,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+254,Mont d'Or,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+255,Vacherin,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+256,Cantal,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,90,900,14,14,140
+257,Saint-Nectaire,7001,,,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,10,10,100
+258,Morbier,7001,,,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,10,10,100
+259,Tomme de Savoie,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,90,900,14,14,140
+260,Raclette,7001,,,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,10,10,100
+261,Cheddar,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,90,900,14,14,140
+126,Graines de coriandre moulues,1018,,séchage et broyage des graines,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Graines de coriandre réduites en poudre,,,,6160,f,730,730,7300,180,180,1800
+262,Gouda,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,90,900,14,14,140
+263,Edam,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,90,900,14,14,140
+264,Mimolette,7001,,,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,120,120,1200,14,14,140
+265,Ossau-Iraty,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,90,900,14,14,140
+266,Provolone,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,90,900,14,14,140
+267,Manchego,7001,,,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,120,120,1200,14,14,140
+268,Abondance,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,90,900,14,14,140
+269,Beaufort,7001,,,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,120,120,1200,14,14,140
+270,Comté,7001,,,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,180,180,1800,14,14,140
+271,Gruyère,7001,,,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,180,180,1800,14,14,140
+272,Emmental,7001,,,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,180,180,1800,14,14,140
+273,Parmesan,7001,,,365,30,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,365,365,3650,30,30,300
+274,Pecorino,7001,,,365,30,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,365,365,3650,30,30,300
+275,Fontina,7001,,,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,90,900,14,14,140
+276,Roquefort,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,7,7,70
+277,Bleu d'Auvergne,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,7,7,70
+127,Aneth séché,8002,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Brins d'aneth déshydratés,,,,6191,f,365,365,3650,90,90,900
+238,Crottin de chèvre,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+239,Sainte-Maure,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+240,Camembert,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+241,Brie,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+129,Aneth en poudre,8002,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Aneth séché réduit en poudre,,,,6191,f,365,365,3650,90,90,900
+130,Graines d'aneth moulues,8002,,séchage et broyage des graines,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Graines d'aneth réduites en poudre,,,,6191,f,730,730,7300,180,180,1800
+278,Fourme d'Ambert,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,7,7,70
+279,Gorgonzola,7001,,,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,60,60,600,7,7,70
+280,Valençay,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+281,Rocamadour,7001,,,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,30,30,300,5,5,50
+282,Pouligny-Saint-Pierre,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+283,Picodon,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+284,Pélardon,7001,,,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,45,45,450,7,7,70
+195,Crème liquide 30%,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,30,120,,3,60
+196,Crème liquide 15%,7001,,,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,30,120,,3,60
+198,Crème fraîche épaisse,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,30,120,,3,60
+199,Crème fraîche légère,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,30,120,,3,60
+200,Crème UHT liquide,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,30,120,,3,60
+220,Lait de soja,4005,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3531,f,90,7,90,,3,30
+222,Lait d'avoine,5001,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,4107,f,90,7,90,,3,30
+185,Lait entier UHT,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+186,Lait demi-écrémé UHT,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+187,Lait écrémé UHT,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+188,Lait entier frais,7001,,,7,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+189,Lait demi-écrémé frais,7001,,,7,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+190,Lait écrémé frais,7001,,,7,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+191,Lait concentré non sucré,7001,,,365,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+192,Lait concentré sucré,7001,,,365,7,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+193,Lait en poudre,7001,,,730,30,days,frais et sec,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+194,Lait sans lactose,7001,,,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+228,Lait fermenté,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+229,Lait ribot,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,90,7,90,,3,30
+221,Lait d'amande,11001,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,4012,f,90,7,90,,3,30
+205,Yaourt nature entier,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,21,60,,3,
+206,Yaourt nature 0%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,21,60,,3,
+207,Yaourt nature brassé,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,21,60,,3,
+208,Yaourt grec nature,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,21,60,,3,
+209,Yaourt grec 0%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,21,60,,3,
+213,Yaourt vanille,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,21,60,,3,
+214,Yaourt aux fruits,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,21,60,,3,
+210,Yaourt lait de brebis,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,21,60,,3,
+211,Yaourt lait de chèvre,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,21,60,,3,
+204,Beurre doux,7001,,,60,14,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3467,f,,90,270,,30,180
+223,Lait de riz,4003,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,4098,f,730,730,,365,365,
+7,Ketchup maison,1059,,cuisson et réduction avec sucre,30,14,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Sauce tomate concentrée sucrée et épicée,,,,3474,f,365,365,,,60,
+142,Vinaigre à l'estragon,2033,,infusion dans vinaigre,365,90,days,température ambiante,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Estragon frais infusé dans vinaigre de vin,,,,3246,f,1825,,,1825,,
+1,Tomates séchées,1059,,séchage,180,30,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Tomates déshydratées au four ou au soleil, concentrées en saveur",,,,3474,f,7,14,180,,,
+2,Tomates confites,1059,,confisage,90,7,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Tomates cuites lentement à basse température dans l'huile,,,,3474,f,7,14,180,,,
+5,Tomates pelées en bocaux,1059,,stérilisation,730,3,days,température ambiante,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Tomates pelées et stérilisées en bocaux,,,,3474,f,7,14,180,,,
+48,Pâte de tomate séchée,1059,,séchage intense et broyage,365,30,days,frais et sec,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,Tomates ultra-séchées et broyées en pâte,,,,3474,f,7,14,180,,,
+99,Poudre d'abricot,1009,,séchage et broyage,365,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Abricots déshydratés et réduits en poudre,,,,3843,f,5,7,270,,,

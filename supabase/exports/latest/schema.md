@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Tue Oct 28 12:30:33 UTC 2025_
+_Généré le : Tue Oct 28 12:38:51 UTC 2025_
 
 ## Tables
 - _backup_views
@@ -69,6 +69,24 @@ _Généré le : Tue Oct 28 12:30:33 UTC 2025_
  - primary_unit :: character varying
  - nutrition_modifier_id :: integer
  - is_default :: boolean default false
+ - shelf_life_days_pantry :: integer
+ - shelf_life_days_fridge :: integer
+ - shelf_life_days_freezer :: integer
+ - open_shelf_life_days_pantry :: integer
+ - open_shelf_life_days_fridge :: integer
+ - open_shelf_life_days_freezer :: integer
+
+### archetypes_shelf_life
+ - id :: bigint
+ - name :: text
+ - canonical_food_id :: bigint
+ - process :: text
+ - shelf_life_pantry :: integer
+ - shelf_life_fridge :: integer
+ - shelf_life_freezer :: integer
+ - open_shelf_life_pantry :: integer
+ - open_shelf_life_fridge :: integer
+ - open_shelf_life_freezer :: integer
 
 ### canonical_food_origins
  - food_id :: bigint NOT NULL
@@ -200,6 +218,9 @@ _Généré le : Tue Oct 28 12:30:33 UTC 2025_
  - adjusted_expiration_date :: date
  - is_opened :: boolean default false
  - opened_at :: timestamp without time zone
+ - container_size :: numeric
+ - container_unit :: character varying
+ - is_containerized :: boolean default false
 
 ### inventory_lots_effective
  - id :: uuid
@@ -510,7 +531,7 @@ _Généré le : Tue Oct 28 12:30:33 UTC 2025_
 
 ---
 ## Clés primaires
- - _backup_views → (view_schema, view_name, dropped_at)
+ - _backup_views → (dropped_at, view_schema, view_name)
  - archetypes → (id)
  - canonical_food_origins → (food_id, country_id)
  - canonical_food_processes → (id)
@@ -534,7 +555,7 @@ _Généré le : Tue Oct 28 12:30:33 UTC 2025_
  - recipe_ingredients → (id)
  - recipe_nutrition_cache → (recipe_id)
  - recipe_pairings → (main_recipe_id, side_recipe_id)
- - recipe_tags → (recipe_id, tag_id)
+ - recipe_tags → (tag_id, recipe_id)
  - recipes → (id)
  - reference_categories → (id)
  - reference_subcategories → (id)
@@ -631,6 +652,7 @@ _Généré le : Tue Oct 28 12:30:33 UTC 2025_
  - public.inventory_lots → idx_inv_product : CREATE INDEX idx_inv_product ON public.inventory_lots USING btree (product_id)
  - public.inventory_lots → idx_inv_user_exp : CREATE INDEX idx_inv_user_exp ON public.inventory_lots USING btree (user_id, expiration_date)
  - public.inventory_lots → idx_inventory_lots_adjusted_exp : CREATE INDEX idx_inventory_lots_adjusted_exp ON public.inventory_lots USING btree (adjusted_expiration_date) WHERE (adjusted_expiration_date IS NOT NULL)
+ - public.inventory_lots → idx_inventory_lots_containerized : CREATE INDEX idx_inventory_lots_containerized ON public.inventory_lots USING btree (user_id, is_containerized) WHERE (is_containerized = true)
  - public.inventory_lots → idx_inventory_lots_expiration : CREATE INDEX idx_inventory_lots_expiration ON public.inventory_lots USING btree (expiration_date)
  - public.inventory_lots → idx_inventory_lots_is_opened : CREATE INDEX idx_inventory_lots_is_opened ON public.inventory_lots USING btree (is_opened) WHERE (is_opened = true)
  - public.inventory_lots → idx_inventory_lots_storage : CREATE INDEX idx_inventory_lots_storage ON public.inventory_lots USING btree (storage_method)
@@ -704,6 +726,7 @@ _Généré le : Tue Oct 28 12:30:33 UTC 2025_
 
 ---
 ## Vues
+ - archetypes_shelf_life
  - cooked_dishes_active
  - cooked_dishes_stats
  - inventory_lots_effective
@@ -716,6 +739,22 @@ _Généré le : Tue Oct 28 12:30:33 UTC 2025_
 
 ---
 ## Définition des vues
+
+### archetypes_shelf_life
+```sql
+ SELECT id,
+    name,
+    canonical_food_id,
+    process,
+    COALESCE(shelf_life_days_pantry, shelf_life_days) AS shelf_life_pantry,
+    COALESCE(shelf_life_days_fridge, shelf_life_days) AS shelf_life_fridge,
+    COALESCE(shelf_life_days_freezer, (shelf_life_days * 10)) AS shelf_life_freezer,
+    COALESCE(open_shelf_life_days_pantry, open_shelf_life_days) AS open_shelf_life_pantry,
+    COALESCE(open_shelf_life_days_fridge, open_shelf_life_days) AS open_shelf_life_fridge,
+    COALESCE(open_shelf_life_days_freezer, (open_shelf_life_days * 10)) AS open_shelf_life_freezer
+   FROM archetypes a;
+```
+
 
 ### cooked_dishes_active
 ```sql
