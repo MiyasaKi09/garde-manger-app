@@ -2,10 +2,11 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabaseClient';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 export default function AuthCallback() {
   const router = useRouter();
+  const supabase = createClientComponentClient();
 
   useEffect(() => {
     const handleCallback = async () => {
@@ -22,10 +23,14 @@ export default function AuthCallback() {
             router.push('/login?error=auth_failed');
             return;
           }
+          
+          console.log('✅ Session créée avec succès');
         }
         
-        // Rediriger vers la page d'accueil après connexion réussie
-        router.push('/');
+        // Rediriger vers la page demandée ou l'accueil
+        const redirect = new URLSearchParams(window.location.search).get('redirect') || '/';
+        router.push(redirect);
+        router.refresh(); // Force le rafraîchissement pour mettre à jour l'état d'auth
       } catch (error) {
         console.error('Erreur callback:', error);
         router.push('/login?error=callback_error');
@@ -33,7 +38,7 @@ export default function AuthCallback() {
     };
 
     handleCallback();
-  }, [router]);
+  }, [router, supabase]);
 
   return (
     <div style={{
