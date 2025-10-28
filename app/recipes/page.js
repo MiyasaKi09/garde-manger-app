@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
+import CreateDishFromRecipeDialog from '@/components/CreateDishFromRecipeDialog';
 import './recipes.css';
 
 export default function RecipesPage() {
@@ -17,6 +18,7 @@ export default function RecipesPage() {
   const [sortOrder, setSortOrder] = useState('desc');
   const [inventoryStatus, setInventoryStatus] = useState({});
   const [error, setError] = useState(null);
+  const [selectedRecipeToCook, setSelectedRecipeToCook] = useState(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -564,6 +566,16 @@ export default function RecipesPage() {
                     👁️ Voir
                   </button>
                   <button 
+                    className="action-btn cook"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setSelectedRecipeToCook(recipe);
+                    }}
+                  >
+                    🍳 Cuisiner
+                  </button>
+                  <button 
                     className="action-btn secondary"
                     onClick={(e) => {
                       e.preventDefault();
@@ -589,6 +601,18 @@ export default function RecipesPage() {
           })
         )}
       </div>
+
+      {/* Dialog de création de plat cuisiné */}
+      {selectedRecipeToCook && (
+        <CreateDishFromRecipeDialog
+          recipe={selectedRecipeToCook}
+          onClose={() => setSelectedRecipeToCook(null)}
+          onSuccess={(dish) => {
+            alert(`✅ "${dish.name}" ajouté au garde-manger avec ${dish.portions_remaining} portions !`);
+            setSelectedRecipeToCook(null);
+          }}
+        />
+      )}
     </div>
   );
 }

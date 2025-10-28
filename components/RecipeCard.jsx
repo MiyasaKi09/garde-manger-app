@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { mealsFromBatch } from "@/lib/scale";
 
-export default function RecipeCard({ recipe, people = 2, onOpen }) {
+export default function RecipeCard({ recipe, people = 2, onOpen, onCook }) {
   const {
     title,
     image_url,
@@ -68,13 +68,21 @@ export default function RecipeCard({ recipe, people = 2, onOpen }) {
       </div>
 
       {/* Actions */}
-      <div className="mt-auto pt-3">
+      <div className="mt-auto pt-3 flex gap-2">
         <button
           onClick={() => onOpen?.(recipe)}
-          className="w-full rounded-xl border px-3 py-2 hover:bg-gray-50"
+          className="flex-1 rounded-xl border px-3 py-2 hover:bg-gray-50 transition"
         >
-          Ouvrir
+          👁️ Voir
         </button>
+        {onCook && (
+          <button
+            onClick={() => onCook(recipe)}
+            className="flex-1 rounded-xl bg-emerald-600 text-white px-3 py-2 hover:bg-emerald-700 transition font-medium"
+          >
+            🍳 Cuisiner
+          </button>
+        )}
       </div>
     </div>
   );

@@ -451,6 +451,18 @@
   transform: translateY(-1px);
 }
 
+.action-btn.cook {
+  background: linear-gradient(135deg, #059669, #047857);
+  color: white;
+  font-weight: 600;
+}
+
+.action-btn.cook:hover {
+  background: linear-gradient(135deg, #047857, #065f46);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
 .action-btn.secondary {
   background: linear-gradient(135deg, #22c55e, #16a34a);
   color: white;
