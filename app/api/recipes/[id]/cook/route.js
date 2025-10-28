@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createServerClient } from '@/lib/supabaseServer';
+import { supabase } from '@/lib/supabaseClient';
 import { calculateCookedDishExpiration } from '@/lib/shelfLifeRules';
 
 /**
@@ -9,7 +9,6 @@ import { calculateCookedDishExpiration } from '@/lib/shelfLifeRules';
  */
 export async function POST(request, { params }) {
   try {
-    const supabase = createServerClient();
     
     // Vérifier l'authentification
     const { data: { user }, error: authError } = await supabase.auth.getUser();
