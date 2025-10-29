@@ -75,44 +75,65 @@ export default function RecipesPage() {
         
         // Charger les ingrédients pour toutes les recettes
         const recipeIds = data.map(r => r.id);
-        
+
         console.log('🔍 Chargement des ingrédients pour', recipeIds.length, 'recettes...');
 
-        const { data: ingredients, error: ingredientsError } = await supabase
-          .from('recipe_ingredients')
-          .select(`
-            recipe_id,
-            id,
-            quantity,
-            unit,
-            notes,
-            canonical_food_id,
-            archetype_id,
-            canonical_foods (
+        // IMPORTANT: Charger TOUS les ingrédients (pas seulement les 1000 premiers)
+        // Supabase limite par défaut à 1000 résultats, donc on utilise une boucle de pagination
+        let allIngredients = [];
+        const BATCH_SIZE = 1000;
+        let offset = 0;
+        let hasMore = true;
+
+        while (hasMore) {
+          const { data: ingredientsBatch, error: ingredientsError } = await supabase
+            .from('recipe_ingredients')
+            .select(`
+              recipe_id,
               id,
-              canonical_name,
-              category_id,
-              primary_unit
-            ),
-            archetypes (
-              id,
-              name,
+              quantity,
+              unit,
+              notes,
               canonical_food_id,
-              process,
-              primary_unit
-            )
-          `)
-          .in('recipe_id', recipeIds);
+              archetype_id,
+              canonical_foods (
+                id,
+                canonical_name,
+                category_id,
+                primary_unit
+              ),
+              archetypes (
+                id,
+                name,
+                canonical_food_id,
+                process,
+                primary_unit
+              )
+            `)
+            .in('recipe_id', recipeIds)
+            .range(offset, offset + BATCH_SIZE - 1);
+
+          if (ingredientsError) {
+            console.error('❌ Erreur chargement batch ingrédients:', ingredientsError);
+            break;
+          }
+
+          if (ingredientsBatch && ingredientsBatch.length > 0) {
+            allIngredients = allIngredients.concat(ingredientsBatch);
+            offset += BATCH_SIZE;
+            hasMore = ingredientsBatch.length === BATCH_SIZE;
+            console.log(`   📦 Batch chargé: ${ingredientsBatch.length} ingrédients (total: ${allIngredients.length})`);
+          } else {
+            hasMore = false;
+          }
+        }
+
+        const ingredients = allIngredients;
 
         console.log('📊 Résultat ingrédients:', {
           count: ingredients?.length || 0,
-          error: ingredientsError,
           sample: ingredients?.[0]
         });
-
-        if (ingredientsError) {
-          console.error('❌ Erreur chargement ingrédients:', ingredientsError);
-        }
         
         // Regrouper les ingrédients par recipe_id
         const ingredientsByRecipe = {};
