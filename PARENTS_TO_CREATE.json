@@ -1,0 +1,376 @@
+[
+  {
+    "name": "lait",
+    "canonical_id": 7001,
+    "children": [
+      {
+        "id": 191,
+        "name": "Lait concentré non sucré",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 192,
+        "name": "Lait concentré sucré",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 189,
+        "name": "Lait demi-écrémé frais",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 186,
+        "name": "Lait demi-écrémé UHT",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 190,
+        "name": "Lait écrémé frais",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 187,
+        "name": "Lait écrémé UHT",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 193,
+        "name": "Lait en poudre",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 188,
+        "name": "Lait entier frais",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 185,
+        "name": "Lait entier UHT",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 228,
+        "name": "Lait fermenté",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 229,
+        "name": "Lait ribot",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 194,
+        "name": "Lait sans lactose",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 210,
+        "name": "Yaourt lait de brebis",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 211,
+        "name": "Yaourt lait de chèvre",
+        "canonical_food_id": 7001,
+        "process": null
+      }
+    ],
+    "process": "lait",
+    "unit": "ml"
+  },
+  {
+    "name": "crème",
+    "canonical_id": 7001,
+    "children": [
+      {
+        "id": 202,
+        "name": "Crème anglaise",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 197,
+        "name": "Crème épaisse 35%",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 201,
+        "name": "Crème fouettée en bombe",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 310,
+        "name": "crème fraîche",
+        "canonical_food_id": 7001,
+        "process": "fermentation"
+      },
+      {
+        "id": 198,
+        "name": "Crème fraîche épaisse",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 199,
+        "name": "Crème fraîche légère",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 311,
+        "name": "crème liquide",
+        "canonical_food_id": 7001,
+        "process": "écrémage"
+      },
+      {
+        "id": 196,
+        "name": "Crème liquide 15%",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 195,
+        "name": "Crème liquide 30%",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 200,
+        "name": "Crème UHT liquide",
+        "canonical_food_id": 7001,
+        "process": null
+      }
+    ],
+    "process": "crème",
+    "unit": "ml"
+  },
+  {
+    "name": "fromage",
+    "canonical_id": 7001,
+    "children": [
+      {
+        "id": 261,
+        "name": "Cheddar",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 270,
+        "name": "Comté",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 272,
+        "name": "Emmental",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 234,
+        "name": "Fromage à tartiner nature",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 316,
+        "name": "fromage blanc",
+        "canonical_food_id": 7001,
+        "process": "caillage"
+      },
+      {
+        "id": 215,
+        "name": "Fromage blanc 0%",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 216,
+        "name": "Fromage blanc 20%",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 217,
+        "name": "Fromage blanc 40%",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 271,
+        "name": "Gruyère",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 320,
+        "name": "mozzarella",
+        "canonical_food_id": 7001,
+        "process": "filage"
+      },
+      {
+        "id": 273,
+        "name": "Parmesan",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 276,
+        "name": "Roquefort",
+        "canonical_food_id": 7001,
+        "process": null
+      }
+    ],
+    "process": "fromage",
+    "unit": "g"
+  },
+  {
+    "name": "yaourt",
+    "canonical_id": 7001,
+    "children": [
+      {
+        "id": 333,
+        "name": "yaourt",
+        "canonical_food_id": 7001,
+        "process": "fermentation lactique"
+      },
+      {
+        "id": 214,
+        "name": "Yaourt aux fruits",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 334,
+        "name": "yaourt grec",
+        "canonical_food_id": 7001,
+        "process": "fermentation et égouttage"
+      },
+      {
+        "id": 209,
+        "name": "Yaourt grec 0%",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 208,
+        "name": "Yaourt grec nature",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 210,
+        "name": "Yaourt lait de brebis",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 211,
+        "name": "Yaourt lait de chèvre",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 335,
+        "name": "yaourt nature",
+        "canonical_food_id": 7001,
+        "process": "fermentation"
+      },
+      {
+        "id": 206,
+        "name": "Yaourt nature 0%",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 207,
+        "name": "Yaourt nature brassé",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 205,
+        "name": "Yaourt nature entier",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 213,
+        "name": "Yaourt vanille",
+        "canonical_food_id": 7001,
+        "process": null
+      }
+    ],
+    "process": "yaourt",
+    "unit": "g"
+  },
+  {
+    "name": "beurre",
+    "canonical_id": 7001,
+    "children": [
+      {
+        "id": 300,
+        "name": "beurre",
+        "canonical_food_id": 7001,
+        "process": "barattage"
+      },
+      {
+        "id": 204,
+        "name": "Beurre doux",
+        "canonical_food_id": 7001,
+        "process": null
+      },
+      {
+        "id": 301,
+        "name": "beurre salé",
+        "canonical_food_id": 7001,
+        "process": "barattage salé"
+      }
+    ],
+    "process": "beurre",
+    "unit": "g"
+  },
+  {
+    "name": "jambon",
+    "canonical_id": 2051,
+    "children": [
+      {
+        "id": 317,
+        "name": "jambon",
+        "canonical_food_id": 2051,
+        "process": "salaison"
+      }
+    ],
+    "process": "transformation",
+    "unit": "g"
+  },
+  {
+    "name": "lardons",
+    "canonical_id": 2051,
+    "children": [
+      {
+        "id": 319,
+        "name": "lardon",
+        "canonical_food_id": 2051,
+        "process": "découpe et fumage"
+      }
+    ],
+    "process": "transformation",
+    "unit": "g"
+  }
+]

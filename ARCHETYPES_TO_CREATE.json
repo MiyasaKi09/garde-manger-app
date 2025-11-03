@@ -1,0 +1,368 @@
+[
+  {
+    "name": "saucisse",
+    "canonical_food_id": 2051,
+    "process": "saucisse",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "steak de bœuf",
+    "canonical_food_id": 14011,
+    "process": "steak",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "steak de bœuf",
+    "canonical_food_id": 14011,
+    "process": "steak",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "bœuf à braiser",
+    "canonical_food_id": 14011,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "bœuf haché",
+    "canonical_food_id": 14011,
+    "process": "haché",
+    "primary_unit": "g"
+  },
+  {
+    "name": "bœuf haché",
+    "canonical_food_id": 14011,
+    "process": "haché",
+    "primary_unit": "g"
+  },
+  {
+    "name": "bœuf à braiser",
+    "canonical_food_id": 14011,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "bœuf à braiser",
+    "canonical_food_id": 14011,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "boudin noir",
+    "canonical_food_id": 2051,
+    "process": "boudin",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "bouillon de bœuf",
+    "canonical_food_id": 14011,
+    "process": "bouillon",
+    "primary_unit": "ml"
+  },
+  {
+    "name": "bouillon de volaille",
+    "canonical_food_id": 2054,
+    "process": "bouillon",
+    "primary_unit": "ml"
+  },
+  {
+    "name": "bouillon de volaille",
+    "canonical_food_id": 2054,
+    "process": "bouillon",
+    "primary_unit": "ml"
+  },
+  {
+    "name": "chair à saucisse",
+    "canonical_food_id": 2051,
+    "process": "chair à saucisse",
+    "primary_unit": "g"
+  },
+  {
+    "name": "chair à saucisse",
+    "canonical_food_id": 2051,
+    "process": "chair à saucisse",
+    "primary_unit": "g"
+  },
+  {
+    "name": "entrecôte de bœuf",
+    "canonical_food_id": 14011,
+    "process": "entrecôte",
+    "primary_unit": "g"
+  },
+  {
+    "name": "saucisse",
+    "canonical_food_id": 2051,
+    "process": "saucisse",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "entrecôte de bœuf",
+    "canonical_food_id": 14011,
+    "process": "entrecôte",
+    "primary_unit": "g"
+  },
+  {
+    "name": "entrecôte de bœuf",
+    "canonical_food_id": 14011,
+    "process": "entrecôte",
+    "primary_unit": "g"
+  },
+  {
+    "name": "escalope de veau",
+    "canonical_food_id": 8015,
+    "process": "escalope",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "escalope de veau",
+    "canonical_food_id": 8015,
+    "process": "escalope",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "escalope de veau",
+    "canonical_food_id": 8015,
+    "process": "escalope",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "steak de bœuf",
+    "canonical_food_id": 14011,
+    "process": "steak",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "agneau en morceaux",
+    "canonical_food_id": 4001,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "veau à braiser",
+    "canonical_food_id": 8015,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "agneau en morceaux",
+    "canonical_food_id": 4001,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "agneau en morceaux",
+    "canonical_food_id": 4001,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "escalope de veau",
+    "canonical_food_id": 8015,
+    "process": "escalope",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "jambon cru",
+    "canonical_food_id": 2051,
+    "process": "jambon cru",
+    "primary_unit": "g"
+  },
+  {
+    "name": "jambon cuit",
+    "canonical_food_id": 2051,
+    "process": "jambon cuit",
+    "primary_unit": "g"
+  },
+  {
+    "name": "jambon cru",
+    "canonical_food_id": 2051,
+    "process": "jambon cru",
+    "primary_unit": "g"
+  },
+  {
+    "name": "jambon cuit",
+    "canonical_food_id": 2051,
+    "process": "jambon cuit",
+    "primary_unit": "g"
+  },
+  {
+    "name": "jambon cru",
+    "canonical_food_id": 2051,
+    "process": "jambon cru",
+    "primary_unit": "g"
+  },
+  {
+    "name": "jambon cru",
+    "canonical_food_id": 2051,
+    "process": "jambon cru",
+    "primary_unit": "g"
+  },
+  {
+    "name": "jambon cuit",
+    "canonical_food_id": 2051,
+    "process": "jambon cuit",
+    "primary_unit": "g"
+  },
+  {
+    "name": "lardons",
+    "canonical_food_id": 2051,
+    "process": "lardons",
+    "primary_unit": "g"
+  },
+  {
+    "name": "lardons",
+    "canonical_food_id": 2051,
+    "process": "lardons",
+    "primary_unit": "g"
+  },
+  {
+    "name": "lardons",
+    "canonical_food_id": 2051,
+    "process": "lardons",
+    "primary_unit": "g"
+  },
+  {
+    "name": "bœuf à braiser",
+    "canonical_food_id": 14011,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "escalope de veau",
+    "canonical_food_id": 8015,
+    "process": "escalope",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "steak de bœuf",
+    "canonical_food_id": 14011,
+    "process": "steak",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "lardons",
+    "canonical_food_id": 2051,
+    "process": "lardons",
+    "primary_unit": "g"
+  },
+  {
+    "name": "steak de bœuf",
+    "canonical_food_id": 14011,
+    "process": "steak",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "veau à braiser",
+    "canonical_food_id": 8015,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "veau à braiser",
+    "canonical_food_id": 8015,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "saucisse",
+    "canonical_food_id": 2051,
+    "process": "saucisse",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "saucisse",
+    "canonical_food_id": 2051,
+    "process": "saucisse",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "saucisse",
+    "canonical_food_id": 2051,
+    "process": "saucisse",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "veau à braiser",
+    "canonical_food_id": 8015,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "steak de bœuf",
+    "canonical_food_id": 14011,
+    "process": "steak",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "steak de bœuf",
+    "canonical_food_id": 14011,
+    "process": "steak",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "bœuf haché",
+    "canonical_food_id": 14011,
+    "process": "haché",
+    "primary_unit": "g"
+  },
+  {
+    "name": "steak de bœuf",
+    "canonical_food_id": 14011,
+    "process": "steak",
+    "primary_unit": "pièce"
+  },
+  {
+    "name": "bacon",
+    "canonical_food_id": 2051,
+    "process": "bacon",
+    "primary_unit": "tranche"
+  },
+  {
+    "name": "veau haché",
+    "canonical_food_id": 8015,
+    "process": "haché",
+    "primary_unit": "g"
+  },
+  {
+    "name": "veau à braiser",
+    "canonical_food_id": 8015,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "bœuf haché",
+    "canonical_food_id": 14011,
+    "process": "haché",
+    "primary_unit": "g"
+  },
+  {
+    "name": "agneau en morceaux",
+    "canonical_food_id": 4001,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "agneau haché",
+    "canonical_food_id": 4001,
+    "process": "haché",
+    "primary_unit": "g"
+  },
+  {
+    "name": "bœuf haché",
+    "canonical_food_id": 14011,
+    "process": "haché",
+    "primary_unit": "g"
+  },
+  {
+    "name": "agneau en morceaux",
+    "canonical_food_id": 4001,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  },
+  {
+    "name": "agneau en morceaux",
+    "canonical_food_id": 4001,
+    "process": "en morceaux",
+    "primary_unit": "g"
+  }
+]

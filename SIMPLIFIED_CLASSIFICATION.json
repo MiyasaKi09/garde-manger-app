@@ -1,0 +1,480 @@
+{
+  "canonical": [
+    {
+      "name": "Grand Marnier",
+      "unit": "ml"
+    },
+    {
+      "name": "Marsala",
+      "unit": "ml"
+    },
+    {
+      "name": "amaretto",
+      "unit": "ml"
+    },
+    {
+      "name": "calvados",
+      "unit": "ml"
+    },
+    {
+      "name": "kirsch",
+      "unit": "ml"
+    },
+    {
+      "name": "porto",
+      "unit": "ml"
+    },
+    {
+      "name": "rhum",
+      "unit": "ml"
+    },
+    {
+      "name": "bière",
+      "unit": "ml"
+    },
+    {
+      "name": "cidre",
+      "unit": "ml"
+    },
+    {
+      "name": "vin blanc",
+      "unit": "ml"
+    },
+    {
+      "name": "vin rouge",
+      "unit": "ml"
+    },
+    {
+      "name": "farine de blé",
+      "unit": "g"
+    },
+    {
+      "name": "farine complète",
+      "unit": "g"
+    },
+    {
+      "name": "farine de teff",
+      "unit": "g"
+    },
+    {
+      "name": "pain",
+      "unit": "g"
+    },
+    {
+      "name": "baguette",
+      "unit": "g"
+    },
+    {
+      "name": "brioche",
+      "unit": "g"
+    },
+    {
+      "name": "pain de mie",
+      "unit": "g"
+    },
+    {
+      "name": "pain d'épices",
+      "unit": "g"
+    },
+    {
+      "name": "pains burger",
+      "unit": "pièce"
+    },
+    {
+      "name": "mie de pain",
+      "unit": "g"
+    },
+    {
+      "name": "pâtes longues",
+      "unit": "g"
+    },
+    {
+      "name": "pâtes courtes",
+      "unit": "g"
+    },
+    {
+      "name": "nouilles",
+      "unit": "g"
+    },
+    {
+      "name": "gnocchis",
+      "unit": "g"
+    },
+    {
+      "name": "raviolis",
+      "unit": "g"
+    },
+    {
+      "name": "cannelloni",
+      "unit": "g"
+    },
+    {
+      "name": "pâte à pizza",
+      "unit": "g"
+    },
+    {
+      "name": "paprika",
+      "unit": "g"
+    },
+    {
+      "name": "curry",
+      "unit": "g"
+    },
+    {
+      "name": "garam masala",
+      "unit": "g"
+    },
+    {
+      "name": "cinq épices",
+      "unit": "g"
+    },
+    {
+      "name": "quatre-épices",
+      "unit": "g"
+    },
+    {
+      "name": "berbéré",
+      "unit": "g"
+    },
+    {
+      "name": "poisson blanc",
+      "unit": "g"
+    },
+    {
+      "name": "lotte",
+      "unit": "g"
+    },
+    {
+      "name": "sole",
+      "unit": "g"
+    },
+    {
+      "name": "morue",
+      "unit": "g"
+    },
+    {
+      "name": "crevettes",
+      "unit": "g"
+    },
+    {
+      "name": "calamars",
+      "unit": "g"
+    },
+    {
+      "name": "palourdes",
+      "unit": "g"
+    },
+    {
+      "name": "homards",
+      "unit": "g"
+    },
+    {
+      "name": "langoustines",
+      "unit": "g"
+    },
+    {
+      "name": "courgettes",
+      "unit": "g"
+    },
+    {
+      "name": "blettes",
+      "unit": "g"
+    },
+    {
+      "name": "poireaux",
+      "unit": "g"
+    },
+    {
+      "name": "patates douces",
+      "unit": "g"
+    },
+    {
+      "name": "tofu",
+      "unit": "g"
+    },
+    {
+      "name": "tempeh",
+      "unit": "g"
+    },
+    {
+      "name": "seitan",
+      "unit": "g"
+    },
+    {
+      "name": "vinaigre de riz",
+      "unit": "ml"
+    },
+    {
+      "name": "vinaigre d'estragon",
+      "unit": "ml"
+    },
+    {
+      "name": "sauce poisson",
+      "unit": "ml"
+    },
+    {
+      "name": "pâte phyllo",
+      "unit": "g"
+    },
+    {
+      "name": "pâte de sésame",
+      "unit": "g"
+    },
+    {
+      "name": "pâte arachide",
+      "unit": "g"
+    },
+    {
+      "name": "pâte haricot rouge",
+      "unit": "g"
+    },
+    {
+      "name": "pâte achiote",
+      "unit": "g"
+    },
+    {
+      "name": "pâte laksa",
+      "unit": "g"
+    },
+    {
+      "name": "arêtes de poisson",
+      "unit": "g"
+    },
+    {
+      "name": "grenouilles",
+      "unit": "g"
+    }
+  ],
+  "archetypes": [
+    {
+      "name": "fromage",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "unit": "g"
+    },
+    {
+      "name": "fromage râpé",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "unit": "g"
+    },
+    {
+      "name": "fromage frais",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "unit": "g"
+    },
+    {
+      "name": "fromage de chèvre",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "unit": "g"
+    },
+    {
+      "name": "crème fraîche",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "crème",
+      "unit": "ml"
+    },
+    {
+      "name": "crème pâtissière",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "crème",
+      "unit": "g"
+    },
+    {
+      "name": "bœuf haché",
+      "parent_id": 14011,
+      "parent_name": "bœuf",
+      "process": "haché",
+      "unit": "g"
+    },
+    {
+      "name": "bœuf en morceaux",
+      "parent_id": 14011,
+      "parent_name": "bœuf",
+      "process": "en morceaux",
+      "unit": "g"
+    },
+    {
+      "name": "steak de bœuf",
+      "parent_id": 14011,
+      "parent_name": "bœuf",
+      "process": "steak",
+      "unit": "pièce"
+    },
+    {
+      "name": "côte de bœuf",
+      "parent_id": 14011,
+      "parent_name": "bœuf",
+      "process": "côte",
+      "unit": "g"
+    },
+    {
+      "name": "filet de bœuf",
+      "parent_id": 14011,
+      "parent_name": "bœuf",
+      "process": "filet",
+      "unit": "g"
+    },
+    {
+      "name": "veau haché",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "haché",
+      "unit": "g"
+    },
+    {
+      "name": "escalope de veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "escalope",
+      "unit": "pièce"
+    },
+    {
+      "name": "veau en morceaux",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "en morceaux",
+      "unit": "g"
+    },
+    {
+      "name": "côte de veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "côte",
+      "unit": "pièce"
+    },
+    {
+      "name": "rôti de veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "rôti",
+      "unit": "g"
+    },
+    {
+      "name": "agneau haché",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "haché",
+      "unit": "g"
+    },
+    {
+      "name": "agneau en morceaux",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "en morceaux",
+      "unit": "g"
+    },
+    {
+      "name": "côtelette d'agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "côtelette",
+      "unit": "pièce"
+    },
+    {
+      "name": "gigot d'agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "gigot",
+      "unit": "g"
+    },
+    {
+      "name": "épaule d'agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "épaule",
+      "unit": "g"
+    },
+    {
+      "name": "lard",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "unit": "g"
+    },
+    {
+      "name": "lardons",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "unit": "g"
+    },
+    {
+      "name": "jambon",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "unit": "g"
+    },
+    {
+      "name": "saucisse",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "unit": "g"
+    },
+    {
+      "name": "chair à saucisse",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "unit": "g"
+    },
+    {
+      "name": "boudin noir",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "unit": "g"
+    },
+    {
+      "name": "bacon",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "unit": "tranche"
+    },
+    {
+      "name": "bouillon de bœuf",
+      "parent_id": 14011,
+      "parent_name": "bœuf",
+      "process": "bouillon",
+      "unit": "ml"
+    },
+    {
+      "name": "bouillon de poulet",
+      "parent_id": 2054,
+      "parent_name": "poulet",
+      "process": "bouillon",
+      "unit": "ml"
+    },
+    {
+      "name": "fumet de poisson",
+      "parent_name": "poisson",
+      "process": "bouillon",
+      "unit": "ml"
+    }
+  ],
+  "stats": {
+    "before": {
+      "canonical": 98,
+      "archetypes": 76,
+      "ambiguous": 198,
+      "total": 372
+    },
+    "after": {
+      "canonical": 61,
+      "archetypes": 31,
+      "total": 92
+    },
+    "reduction_percent": "47"
+  }
+}

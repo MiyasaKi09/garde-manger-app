@@ -1,0 +1,2847 @@
+{
+  "deja_existe_canonical": [],
+  "deja_existe_archetype": [
+    {
+      "nom": "boeuf haché",
+      "existe_comme": "bœuf haché",
+      "id": 304
+    },
+    {
+      "nom": "bouillon de boeuf",
+      "existe_comme": "bouillon de bœuf",
+      "id": 305
+    }
+  ],
+  "a_creer_canonical": [
+    {
+      "type": "canonical",
+      "nom": "Grand Marnier",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "Marsala",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "amaretto",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "arêtes poisson",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "baguette",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "berbéré épices",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "bière",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "bière ambrée",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "bière blonde",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "bière brune",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "blanc de poireau",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "blettes",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "brioche",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "calamars",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "calvados",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "cannelloni",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "cidre",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "cidre brut",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "cinq épices",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "courgettes",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "curry",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "farine T45",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "farine T65",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "farine complète",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "farine manitoba",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "farine teff",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "farine type 00",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "fideos pâtes",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "garam masala",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "gnocchis",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "grenouilles",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "homards",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "kirsch",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "langoustines",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "linguine",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "lotte",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "légumes variés cuits",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "mie de pain",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "mie pain",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "morue dessalée",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "nouilles",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "nouilles chinoises",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "nouilles ramen",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "nouilles soba",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "nouilles udon",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pain d'épices",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pain de campagne",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pain de mie",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pain rassis",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pains burger",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "palourdes",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "paprika",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "paprika ",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "paprika doux",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "paprika fumé",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "patates douces",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "poireaux",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "poisson",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "poisson blanc",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "poissons blancs variés",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "poissons de roche variés",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "poissons rivière",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "poissons variés",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "porto",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pâte achiote",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pâte arachide",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pâte haricot rouge",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pâte laksa",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pâte phyllo",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pâte sésame",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pâte à pain",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pâte à pizza",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pâtes",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "pâtes courtes",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "quatre-épices",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "raviolis frais",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "rhum",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "rhum ambré",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "sauce poisson",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "seitan",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "seitan haché",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "sole",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "tagliatelles",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "tempeh",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "tofu",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "tofu ferme",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "tofu frit",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "tofu soyeux",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "trofie ou linguine",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "vin blanc Anjou",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "vin blanc sec",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "vin rouge de Bourgogne",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "vinaigre d'estragon",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "vinaigre de riz",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "vinaigre riz",
+      "primary_unit": "ml",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "à pain",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "épices pain épices",
+      "primary_unit": "g",
+      "category_id": null
+    },
+    {
+      "type": "canonical",
+      "nom": "épices speculoos",
+      "primary_unit": "g",
+      "category_id": null
+    }
+  ],
+  "a_creer_archetype": [
+    {
+      "type": "archetype",
+      "nom": "araignée boeuf",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "bavette ou rumsteck de boeuf",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "boeuf (gîte, paleron)",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "boeuf effiloché",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "boeuf fines",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "boeuf à braiser",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "en morceaux",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "boeuf à mijoter",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "en morceaux",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "boudins noirs",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "bouillon de volaille",
+      "parent_id": 2054,
+      "parent_name": "poulet",
+      "process": "bouillon",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "bouillon poulet",
+      "parent_id": 2054,
+      "parent_name": "poulet",
+      "process": "bouillon",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "carrés agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "chair saucisse",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "chair à saucisse",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "chèvre frais",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "crème",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "crème",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "crème chiboust",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "crème",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "crème fouettée",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "crème",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "crème marrons",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "crème",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "crème pâtissière",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "crème",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "crème pâtissière chocolat",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "crème",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "côte boeuf",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "côte",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "côtelettes agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "côte",
+      "primary_unit": "pièce"
+    },
+    {
+      "type": "archetype",
+      "nom": "côtelettes d'agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "côte",
+      "primary_unit": "pièce"
+    },
+    {
+      "type": "archetype",
+      "nom": "côtes veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "côte",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "entrecôte de boeuf",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "entrecôte",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "escalopes de veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "escalope",
+      "primary_unit": "pièce"
+    },
+    {
+      "type": "archetype",
+      "nom": "escalopes de veau (70 g)",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "escalope",
+      "primary_unit": "pièce"
+    },
+    {
+      "type": "archetype",
+      "nom": "escalopes veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "escalope",
+      "primary_unit": "pièce"
+    },
+    {
+      "type": "archetype",
+      "nom": "filet agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "filet boeuf",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "filet veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "fromage",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "fromage Minas",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "fromage de chèvre",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "fromage frais",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "fromage râpé",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "fumet de poisson",
+      "parent_id": 2062,
+      "parent_name": "poisson",
+      "process": "bouillon",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "fumet poisson",
+      "parent_id": 2062,
+      "parent_name": "poisson",
+      "process": "bouillon",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "ganache ou crème",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "crème",
+      "primary_unit": "ml"
+    },
+    {
+      "type": "archetype",
+      "nom": "gigot agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "gigot",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "gigot d'agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "gigot",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "grenadins veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "jambon blanc",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "jambon cru",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "jambon cuit",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "jambon ibérique",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "jambon serrano",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "jambon à l'os",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "jarret de veau en tranches de 4cm",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "transformation",
+      "primary_unit": "tranche"
+    },
+    {
+      "type": "archetype",
+      "nom": "lard",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "lardons",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "lardons fumés",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "fumé",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "lardons végétaux",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "merlan boeuf",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "oignons nouveaux",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "os veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "paleron de boeuf",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "paupiettes de veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "pavé boeuf",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "steak",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "poire boeuf",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "ricotta salata",
+      "parent_id": 7001,
+      "parent_name": "lait",
+      "process": "fromage",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "rôti de veau sous-noix",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "rôti",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "rôti veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "rôti",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "saucisses de Strasbourg",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "saucisses de Toulouse",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "saucisses fumées",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "fumé",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "sauté de veau",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "steaks de boeuf 180g",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "steak",
+      "primary_unit": "pièce"
+    },
+    {
+      "type": "archetype",
+      "nom": "tranches de bacon",
+      "parent_id": 2051,
+      "parent_name": "porc",
+      "process": "transformation",
+      "primary_unit": "tranche"
+    },
+    {
+      "type": "archetype",
+      "nom": "veau haché",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "haché",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "veau pour blanquette",
+      "parent_id": 8015,
+      "parent_name": "veau",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "viande boeuf",
+      "parent_id": 2002,
+      "parent_name": "bœuf",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "viande d'agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "transformation",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "viande d'agneau hachée",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "haché",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "épaule agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "épaule",
+      "primary_unit": "g"
+    },
+    {
+      "type": "archetype",
+      "nom": "épaule d'agneau",
+      "parent_id": 4001,
+      "parent_name": "agneau",
+      "process": "épaule",
+      "primary_unit": "g"
+    }
+  ],
+  "a_ignorer": [
+    {
+      "nom": "burger",
+      "raison": "Element invalide ou trop générique"
+    },
+    {
+      "nom": "chauds",
+      "raison": "Element invalide ou trop générique"
+    },
+    {
+      "nom": "cuillère",
+      "raison": "Element invalide ou trop générique"
+    },
+    {
+      "nom": "durs",
+      "raison": "Element invalide ou trop générique"
+    },
+    {
+      "nom": "graines sésame",
+      "raison": "Element invalide ou trop générique"
+    },
+    {
+      "nom": "huile",
+      "raison": "Element invalide ou trop générique"
+    },
+    {
+      "nom": "nature",
+      "raison": "Element invalide ou trop générique"
+    },
+    {
+      "nom": "pour dorure",
+      "raison": "Element invalide ou trop générique"
+    },
+    {
+      "nom": "rouge",
+      "raison": "Element invalide ou trop générique"
+    },
+    {
+      "nom": "rouges",
+      "raison": "Element invalide ou trop générique"
+    },
+    {
+      "nom": "verts",
+      "raison": "Element invalide ou trop générique"
+    }
+  ],
+  "ambigus": [
+    {
+      "nom": "St Môret",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "St Môret",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "aji",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "aji",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "aji amarillo",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "aji amarillo",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "amaretti",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "amaretti",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "andouillettes de Troyes",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "andouillettes de Troyes",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "anguilles",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "anguilles",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "anis",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "anis",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "aquavit ou vodka",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "aquavit ou vodka",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "aïoli",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "aïoli",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "babeurre",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "babeurre",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "bananes mûres",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "bananes mûres",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "bavette",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "bavette",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "beurre clarifié",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "beurre clarifié",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "beurre de tourage",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "beurre de tourage",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "beurre fondu",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "beurre fondu",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "beurre froid",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "beurre froid",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "beurre manié",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "beurre manié",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "beurre mou",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "beurre mou",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "beurre pour glaçage",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "beurre pour glaçage",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "bicarbonate",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "bicarbonate",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "biscuit",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "biscuit",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "biscuits Graham",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "biscuits Graham",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "biscuits cuillère",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "biscuits cuillère",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "biscuits digestive",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "biscuits digestive",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "biscuits secs",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "biscuits secs",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "boulghour",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "boulghour",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "bouquet garni",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "bouquet garni",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "brisée",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "brisée",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "brisées",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "brisées",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "bécasses",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "bécasses",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "caramel",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "caramel",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "caramel beurre salé",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "caramel beurre salé",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "cassonade",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "cassonade",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "cayenne",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "cayenne",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "cerneaux de noix",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "cerneaux de noix",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "chapelure panko",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "chapelure panko",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "chiles poblano",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "chiles poblano",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "chocolat râpé",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "chocolat râpé",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "cive",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "cive",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "coleslaw",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "coleslaw",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "comté râpé",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "comté râpé",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "crozets",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "crozets",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "câpres",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "câpres",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "dashi",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "dashi",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "dinde ou poulet",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "dinde ou poulet",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "diots",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "diots",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "dulce de leche",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "dulce de leche",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "eau fleur oranger",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "eau fleur oranger",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "encornets moyens",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "encornets moyens",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "entrecôte",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "entrecôte",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "escargots",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "escargots",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "faisan",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "faisan",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "falafels",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "falafels",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "faux-filet",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "faux-filet",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fenugrec",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fenugrec",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "feuilles de brick",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "feuilles de brick",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "feuilletée",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "feuilletée",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "foie porc",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "foie porc",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fondant",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fondant",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fondant blanc",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fondant blanc",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fondant chocolat",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fondant chocolat",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fruit passion",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fruit passion",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fruits",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fruits",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fruits confits",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fruits confits",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fruits de mer variés",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fruits de mer variés",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fruits mer",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fruits mer",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fruits rouges",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fruits rouges",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fruits rouges mélangés",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fruits rouges mélangés",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fruits secs",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fruits secs",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fruits variés",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fruits variés",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fumet",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fumet",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "furikake",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "furikake",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fécule",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fécule",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "fécule manioc",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "fécule manioc",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "galettes chinoises",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "galettes chinoises",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "ganache chocolat",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "ganache chocolat",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "garni",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "garni",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "garrofó",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "garrofó",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "gibier",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "gibier",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "glace chocolat",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "glace chocolat",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "glaçage chocolat",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "glaçage chocolat",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "gochujang",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "gochujang",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "graines",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "graines",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "graines de chia",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "graines de chia",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "graines de sésame",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "graines de sésame",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "gruyère râpé",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "gruyère râpé",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "guanciale",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "guanciale",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "gâteaux de riz",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "gâteaux de riz",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "haricots blancs sauce tomate",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "haricots blancs sauce tomate",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "herbes de Provence",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "herbes de Provence",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "herbes italiennes",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "herbes italiennes",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "hot-dog",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "hot-dog",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "houmous",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "houmous",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "huile de coco",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "huile de coco",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "huile de friture",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "huile de friture",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "huile de sésame",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "huile de sésame",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "huile neutre",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "huile neutre",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "huile sésame",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "huile sésame",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "joconde",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "joconde",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "jus citron vert",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "jus citron vert",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "jus de citron vert",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "jus de citron vert",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "kecap manis",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "kecap manis",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "ketchup",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "ketchup",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "kimchi",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "kimchi",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "laitue romaine",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "laitue romaine",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "lasagnes",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "lasagnes",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "lentilles corail",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "lentilles corail",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "lièvre",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "lièvre",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "macaroni",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "macaroni",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "madère",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "madère",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "malt d'orge ou sucre",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "malt d'orge ou sucre",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "mangues mûres",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "mangues mûres",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "maquereaux",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "maquereaux",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "marrons",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "marrons",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "masa harina",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "masa harina",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "mayonnaise",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "mayonnaise",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "menthe fraîche",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "menthe fraîche",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "meringue",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "meringue",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "mirin",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "mirin",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "mouton",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "mouton",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "muffins anglais",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "muffins anglais",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "noix cajou",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "noix cajou",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "noix de muscade",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "noix de muscade",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "nori",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "nori",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "nougat",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "nougat",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "nuoc mam",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "nuoc mam",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "nuoc-mâm",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "nuoc-mâm",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "orecchiette",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "orecchiette",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "paneer",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "paneer",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "panko",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "panko",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "parmesan râpé",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "parmesan râpé",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pecorino romano",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pecorino romano",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "penne",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "penne",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pesto",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pesto",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "petits pois",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "petits pois",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "phyllo",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "phyllo",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pignons",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pignons",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pignons de pin",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pignons de pin",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pimientos de Padrón",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pimientos de Padrón",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pita",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pita",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "plantains verts",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "plantains verts",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pois mange-tout",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pois mange-tout",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "poitrine fumée",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "poitrine fumée",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "polenta",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "polenta",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pomme ou poire",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pomme ou poire",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pralin",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pralin",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "praliné",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "praliné",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pruneaux",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pruneaux",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pruneaux dénoyautés",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pruneaux dénoyautés",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pépites chocolat",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pépites chocolat",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "pépites de chocolat",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "pépites de chocolat",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "quenelles brochet",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "quenelles brochet",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "ronds",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "ronds",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "rumsteck",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "rumsteck",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "saindoux",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "saindoux",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "saké",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "saké",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sambal oelek",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sambal oelek",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sauce César",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sauce César",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sauce Nantua",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sauce Nantua",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sauce bolognaise",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sauce bolognaise",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sauce béchamel",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sauce béchamel",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sauce hoisin",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sauce hoisin",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sauce soja claire",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sauce soja claire",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sauce soja foncée",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sauce soja foncée",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sauce tonkatsu",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sauce tonkatsu",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sauce yakisoba",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sauce yakisoba",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "secs variés",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "secs variés",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "seiches nettoyées",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "seiches nettoyées",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sherry",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sherry",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sirop d'agave",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sirop d'agave",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sirop doré",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sirop doré",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "steaks",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "steaks",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "steaks hachés",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "steaks hachés",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sucre semoule",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sucre semoule",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sucre vanillé",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sucre vanillé",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "sumac",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "sumac",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tahini",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tahini",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tamarin",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tamarin",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tomates cerises",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tomates cerises",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tomates mûres",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tomates mûres",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tomme fraîche",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tomme fraîche",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tomme fraîche Cantal",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tomme fraîche Cantal",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tonnarelli",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tonnarelli",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tortillas",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tortillas",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tournedos",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tournedos",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tranches d'emmental",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tranches d'emmental",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tripes",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tripes",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "truffe",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "truffe",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "tzatziki",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "tzatziki",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "umeboshi",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "umeboshi",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "vermicelle",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "vermicelle",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "viande",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "viande",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "viande hachée",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "viande hachée",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "viande kebab",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "viande kebab",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "yuca",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "yuca",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "zaatar",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "zaatar",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "zeste",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "zeste",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    },
+    {
+      "nom": "écrevisses",
+      "suggestion": {
+        "type": "ambiguous",
+        "nom": "écrevisses",
+        "raison": "Classification incertaine - à vérifier manuellement"
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "summary": {
+    "canonicals": 227,
+    "cultivars": 0,
+    "archetypes": 289,
+    "recipe_ingredients": 1000
+  },
+  "archetypes_breakdown": {
+    "with_canonical": 289,
+    "with_cultivar": 0,
+    "with_both": 0,
+    "with_neither": 0
+  },
+  "recipe_ingredients_breakdown": {
+    "via_canonical": 852,
+    "via_archetype": 148,
+    "via_both": 0
+  },
+  "problems": {
+    "archetypes_with_both": [],
+    "recipe_ingredients_with_both": 0,
+    "orphan_archetypes": 0,
+    "duplicate_names": 0
+  }
+}
