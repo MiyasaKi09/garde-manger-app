@@ -211,27 +211,17 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 419,fromage frais,7001,,fromage frais,,,days,,2025-10-30 18:14:38.215007+00,2025-10-30 18:14:38.215007+00,,,,g,,f,,,,,,,338
 420,fromage râpé,7001,,râpage,,,days,,2025-10-30 18:14:38.215007+00,2025-10-30 18:14:38.215007+00,,,,g,,f,,,,,,,338
 73,Cerises séchées,1008,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2025-10-28 12:31:05.276084+00,Cerises dénoyautées et déshydratées,,,,3847,f,180,180,1800,,,,
-421,poisson,2004,,poisson générique,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,g,,f,,,,,,,
-422,poisson blanc,2004,,poisson blanc générique,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,g,,f,,,,,,,421
 300,beurre,7001,,barattage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,3467,f,,90,270,,30,180,
-423,poissons variés,2004,,mélange poissons,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,g,,f,,,,,,,421
 303,blanc de poulet,2054,,découpe,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,3403,f,,3,270,,1,180,
 301,beurre salé,7001,,barattage salé,,,days,,2025-10-26 12:28:44.742772+00,2025-10-30 17:19:37.101885+00,,,,g,3467,f,,90,270,,30,180,300
-424,poissons rivière,2004,,poissons eau douce,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,g,,f,,,,,,,421
 298,agneau haché,4001,,hachage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,4404,f,,2,120,,1,60,
 325,porc haché,2051,,hachage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,3419,f,,2,120,,1,60,
-425,poissons blancs variés,2004,,mélange poissons blancs,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,g,,f,,,,,,,422
-426,poissons de roche variés,2004,,poissons de roche,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,g,,f,,,,,,,422
 317,jambon,2051,,salaison,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,3419,f,,7,60,,3,30,
 427,morue dessalée,,3,dessalage,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,g,,f,,,,,,,
 328,saumon fumé,2062,,fumage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,4803,f,,14,60,,3,30,
 312,farine,5002,,mouture,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,3455,f,365,730,,180,365,,
 305,bouillon de bœuf,14011,,infusion,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,4256,f,28,42,,,2,,
 304,bœuf haché,14011,,hachage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,4256,f,28,42,,,2,,
-428,fumet de poisson,2004,,bouillon poisson,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,ml,,f,,,,,,,
-429,fumet poisson,2004,,bouillon poisson,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,ml,,f,,,,,,,428
-430,arêtes poisson,2004,,arêtes pour fumet,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,g,,f,,,,,,,
-431,sauce poisson,2004,,fermentation poisson,,,days,,2025-11-03 15:39:55.629781+00,2025-11-03 15:39:55.629781+00,,,,ml,,f,,,,,,,
 302,blanc d'œuf,14027,,séparation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,5017,f,28,42,,,2,,
 318,jaune d'œuf,14027,,séparation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-28 15:14:11.228694+00,,,,g,5017,f,28,42,,,2,,
 299,bacon,2051,,salaison et fumage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-27 18:01:52.152528+00,,,,g,3419,f,,,,,,,
@@ -303,6 +293,10 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 487,légumes variés cuits,13,,mélange légumes cuits,,,days,,2025-11-03 15:53:10.750804+00,2025-11-03 15:53:10.750804+00,,,,g,,f,,,,,,,
 125,Coriandre congelée,1018,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Coriandre fraîche hachée et congelée,,,,6160,f,180,180,1800,,,,
 128,Aneth congelé,8002,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Aneth frais haché et congelé,,,,6191,f,180,180,1800,,,,
+488,filet de cabillaud,2004,,découpe filet,,,days,,2025-11-03 16:05:40.910278+00,2025-11-03 16:05:40.910278+00,,,,g,,f,,,,,,,
+489,cabillaud fumé,2004,,fumage,,,days,,2025-11-03 16:05:40.910278+00,2025-11-03 16:05:40.910278+00,,,,g,,f,,,,,,,
+490,filet de sole,11,,découpe filet,,,days,,2025-11-03 16:05:40.910278+00,2025-11-03 16:05:40.910278+00,,,,g,,f,,,,,,,
+491,queue de lotte,10,,découpe queue,,,days,,2025-11-03 16:05:40.910278+00,2025-11-03 16:05:40.910278+00,,,,g,,f,,,,,,,
 39,Poudre d'ail,10001,,séchage et broyage,365,,days,température ambiante,2025-10-04 13:05:32.404841+00,2025-10-28 15:14:11.228694+00,Ail séché et réduit en poudre,,,,6179,f,90,90,180,,,,
 38,Ail confit,10001,,confisage,30,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 15:14:11.228694+00,Gousses d'ail confites dans l'huile,,,,6179,f,90,90,180,,,,
 69,Confiture d'abricots,1009,,cuisson avec sucre,365,14,days,température ambiante,2025-10-04 13:07:06.100763+00,2025-10-28 15:14:11.228694+00,Abricots cuits avec sucre,,,,3843,f,5,7,270,,,,
@@ -335,10 +329,16 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 106,Thym séché,1058,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Branches de thym déshydratées,,,,6188,f,730,730,7300,180,180,1800,
 107,Thym en poudre,1058,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Thym séché réduit en poudre,,,,6188,f,730,730,7300,180,180,1800,
 197,Crème épaisse 35%,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-30 17:19:37.101885+00,,,,,3467,f,30,30,300,5,5,50,337
+492,Grand Marnier,14,,liqueur orange cognac,,,days,,2025-11-03 17:35:44.428484+00,2025-11-03 17:35:44.428484+00,,,,ml,,f,,,,,,,
 4,Concentré de tomate,1059,,réduction,7,3,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-10-28 12:31:05.276084+00,"Tomates très réduites, texture concentrée",,,,3474,f,7,7,70,3,3,30,
+493,Marsala,14,,vin fortifié italien,,,days,,2025-11-03 17:35:44.428484+00,2025-11-03 17:35:44.428484+00,,,,ml,,f,,,,,,,
+494,amaretto,14,,liqueur amande,,,days,,2025-11-03 17:35:44.428484+00,2025-11-03 17:35:44.428484+00,,,,ml,,f,,,,,,,
+495,calvados,14,,eau-de-vie pomme normand,,,days,,2025-11-03 17:35:44.428484+00,2025-11-03 17:35:44.428484+00,,,,ml,,f,,,,,,,
 131,Ciboulette séchée,2018,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Brins de ciboulette déshydratés,,,,6181,f,365,365,3650,90,90,900,
 133,Ciboulette lyophilisée,2018,,lyophilisation,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Ciboulette lyophilisée conservant couleur et arôme,,,,6181,f,730,730,7300,180,180,1800,
+496,kirsch,14,,eau-de-vie cerise,,,days,,2025-11-03 17:35:44.428484+00,2025-11-03 17:35:44.428484+00,,,,ml,,f,,,,,,,
 140,Estragon séché,2033,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles d'estragon déshydratées,,,,3246,f,365,365,3650,90,90,900,
+497,porto,14,,vin fortifié portugais,,,days,,2025-11-03 17:35:44.428484+00,2025-11-03 17:35:44.428484+00,,,,ml,,f,,,,,,,
 145,Fenouil séché (herbe),2034,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles de fenouil déshydratées,,,,3466,f,365,365,3650,90,90,900,
 146,Fenouil en poudre,2034,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Fenouil séché réduit en poudre,,,,3466,f,365,365,3650,90,90,900,
 147,Graines de fenouil moulues,2034,,séchage et broyage des graines,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Graines de fenouil réduites en poudre,,,,3466,f,730,730,7300,180,180,1800,
@@ -351,6 +351,7 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 111,Romarin en poudre,2057,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Romarin séché réduit en poudre,,,,6186,f,730,730,7300,180,180,1800,
 137,Sauge séchée,2061,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Feuilles de sauge déshydratées,,,,6187,f,730,730,7300,180,180,1800,
 138,Sauge en poudre,2061,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-10-28 12:31:05.276084+00,Sauge séchée réduite en poudre,,,,6187,f,730,730,7300,180,180,1800,
+498,rhum,14,,eau-de-vie canne à sucre,,,days,,2025-11-03 17:35:44.428484+00,2025-11-03 17:35:44.428484+00,,,,ml,,f,,,,,,,
 225,Crème de soja,4005,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,3531,f,90,90,900,5,5,50,
 226,Crème d'avoine,5001,,,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-28 12:31:05.276084+00,,,,,4107,f,90,90,900,5,5,50,
 227,Kéfir,7001,,,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-10-30 17:19:37.101885+00,,,,,3467,f,30,30,300,5,5,50,336
