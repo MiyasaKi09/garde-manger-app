@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Wed Oct 29 11:51:56 UTC 2025_
+_Généré le : Mon Nov  3 15:54:19 UTC 2025_
 
 ## Tables
 - _backup_views
@@ -75,6 +75,7 @@ _Généré le : Wed Oct 29 11:51:56 UTC 2025_
  - open_shelf_life_days_pantry :: integer
  - open_shelf_life_days_fridge :: integer
  - open_shelf_life_days_freezer :: integer
+ - parent_archetype_id :: bigint
 
 ### archetypes_shelf_life
  - id :: bigint
@@ -571,28 +572,29 @@ _Généré le : Wed Oct 29 11:51:56 UTC 2025_
 
 ---
 ## Clés étrangères
- - archetypes.cultivar_id → cultivars.id  (constraint archetypes_cultivar_id_fkey)
+ - archetypes.parent_archetype_id → archetypes.id  (constraint fk_parent_archetype)
  - archetypes.canonical_food_id → canonical_foods.id  (constraint archetypes_canonical_food_id_fkey)
- - canonical_food_origins.country_id → countries.id  (constraint canonical_food_origins_country_id_fkey)
+ - archetypes.cultivar_id → cultivars.id  (constraint archetypes_cultivar_id_fkey)
  - canonical_food_origins.food_id → canonical_foods.id  (constraint canonical_food_origins_food_id_fkey)
+ - canonical_food_origins.country_id → countries.id  (constraint canonical_food_origins_country_id_fkey)
  - canonical_food_processes.process_id → processes.id  (constraint canonical_food_processes_process_id_fkey)
  - canonical_food_processes.food_id → canonical_foods.id  (constraint canonical_food_processes_food_id_fkey)
- - canonical_foods.category_id → reference_categories.id  (constraint canonical_foods_category_id_fkey)
- - canonical_foods.subcategory_id → reference_subcategories.id  (constraint canonical_foods_subcategory_id_fkey)
  - canonical_foods.nutrition_id → nutritional_data.id  (constraint canonical_foods_nutrition_id_fkey)
+ - canonical_foods.subcategory_id → reference_subcategories.id  (constraint canonical_foods_subcategory_id_fkey)
+ - canonical_foods.category_id → reference_categories.id  (constraint canonical_foods_category_id_fkey)
  - cooked_dish_ingredients.dish_id → cooked_dishes.id  (constraint cooked_dish_ingredients_dish_id_fkey)
  - cooked_dish_ingredients.lot_id → inventory_lots.id  (constraint cooked_dish_ingredients_lot_id_fkey)
  - cooked_dishes.recipe_id → recipes.id  (constraint cooked_dishes_recipe_id_fkey)
  - cultivars.canonical_food_id → canonical_foods.id  (constraint cultivars_canonical_food_id_fkey)
  - instructions.recipe_id → recipes.id  (constraint instructions_recipe_id_fkey)
+ - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fk)
+ - inventory_lots.cultivar_id → cultivars.id  (constraint inventory_lots_cultivar_id_fkey)
+ - inventory_lots.archetype_id → archetypes.id  (constraint inventory_lots_archetype_id_fkey)
+ - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fkey)
  - inventory_lots.archetype_id → archetypes.id  (constraint inventory_lots_archetype_fk)
  - inventory_lots.cultivar_id → cultivars.id  (constraint inventory_lots_cultivar_fk)
  - inventory_lots.canonical_food_id → canonical_foods.id  (constraint inventory_lots_canonical_fk)
- - inventory_lots.archetype_id → archetypes.id  (constraint inventory_lots_archetype_id_fkey)
  - inventory_lots.canonical_food_id → canonical_foods.id  (constraint inventory_lots_canonical_food_id_fkey)
- - inventory_lots.cultivar_id → cultivars.id  (constraint inventory_lots_cultivar_id_fkey)
- - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fk)
- - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fkey)
  - meal_plans.user_id → legacy_users.id  (constraint meal_plans_user_id_fkey)
  - pantry_items.product_id → products.id  (constraint pantry_items_product_id_fkey)
  - pantry_items.user_id → legacy_users.id  (constraint pantry_items_user_id_fkey)
