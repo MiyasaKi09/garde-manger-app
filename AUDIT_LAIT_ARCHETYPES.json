@@ -1,0 +1,482 @@
+{
+  "date": "2025-11-06T13:18:48.620Z",
+  "total": 117,
+  "origines": {
+    "vache": [
+      {
+        "id": 269,
+        "name": "Beaufort"
+      },
+      {
+        "id": 241,
+        "name": "Brie"
+      },
+      {
+        "id": 240,
+        "name": "Camembert"
+      },
+      {
+        "id": 256,
+        "name": "Cantal"
+      },
+      {
+        "id": 261,
+        "name": "Cheddar"
+      },
+      {
+        "id": 270,
+        "name": "Comté"
+      },
+      {
+        "id": 272,
+        "name": "Emmental"
+      },
+      {
+        "id": 271,
+        "name": "Gruyère"
+      },
+      {
+        "id": 258,
+        "name": "Morbier"
+      },
+      {
+        "id": 248,
+        "name": "Munster"
+      },
+      {
+        "id": 253,
+        "name": "Reblochon"
+      },
+      {
+        "id": 255,
+        "name": "Vacherin"
+      }
+    ],
+    "chevre": [
+      {
+        "id": 238,
+        "name": "Crottin de chèvre"
+      },
+      {
+        "id": 418,
+        "name": "fromage de chèvre"
+      },
+      {
+        "id": 283,
+        "name": "Picodon"
+      },
+      {
+        "id": 282,
+        "name": "Pouligny-Saint-Pierre"
+      },
+      {
+        "id": 281,
+        "name": "Rocamadour"
+      },
+      {
+        "id": 239,
+        "name": "Sainte-Maure"
+      },
+      {
+        "id": 280,
+        "name": "Valençay"
+      },
+      {
+        "id": 211,
+        "name": "Yaourt lait de chèvre"
+      }
+    ],
+    "brebis": [
+      {
+        "id": 274,
+        "name": "Pecorino"
+      },
+      {
+        "id": 210,
+        "name": "Yaourt lait de brebis"
+      }
+    ],
+    "mixte_ou_inconnu": [
+      {
+        "id": 268,
+        "name": "Abondance"
+      },
+      {
+        "id": 402,
+        "name": "babeurre"
+      },
+      {
+        "id": 300,
+        "name": "beurre"
+      },
+      {
+        "id": 403,
+        "name": "beurre clarifié"
+      },
+      {
+        "id": 404,
+        "name": "beurre de tourage"
+      },
+      {
+        "id": 204,
+        "name": "Beurre doux"
+      },
+      {
+        "id": 405,
+        "name": "beurre fondu"
+      },
+      {
+        "id": 406,
+        "name": "beurre froid"
+      },
+      {
+        "id": 407,
+        "name": "beurre manié"
+      },
+      {
+        "id": 408,
+        "name": "beurre mou"
+      },
+      {
+        "id": 409,
+        "name": "beurre pour glaçage"
+      },
+      {
+        "id": 301,
+        "name": "beurre salé"
+      },
+      {
+        "id": 277,
+        "name": "Bleu d'Auvergne"
+      },
+      {
+        "id": 245,
+        "name": "Brillat-Savarin"
+      },
+      {
+        "id": 203,
+        "name": "Chantilly"
+      },
+      {
+        "id": 243,
+        "name": "Chaource"
+      },
+      {
+        "id": 230,
+        "name": "Cottage cheese"
+      },
+      {
+        "id": 242,
+        "name": "Coulommiers"
+      },
+      {
+        "id": 233,
+        "name": "Cream cheese"
+      },
+      {
+        "id": 337,
+        "name": "crème"
+      },
+      {
+        "id": 202,
+        "name": "Crème anglaise"
+      },
+      {
+        "id": 411,
+        "name": "crème chiboust"
+      },
+      {
+        "id": 197,
+        "name": "Crème épaisse 35%"
+      },
+      {
+        "id": 412,
+        "name": "crème fouettée"
+      },
+      {
+        "id": 201,
+        "name": "Crème fouettée en bombe"
+      },
+      {
+        "id": 310,
+        "name": "crème fraîche"
+      },
+      {
+        "id": 198,
+        "name": "Crème fraîche épaisse"
+      },
+      {
+        "id": 199,
+        "name": "Crème fraîche légère"
+      },
+      {
+        "id": 311,
+        "name": "crème liquide"
+      },
+      {
+        "id": 196,
+        "name": "Crème liquide 15%"
+      },
+      {
+        "id": 195,
+        "name": "Crème liquide 30%"
+      },
+      {
+        "id": 414,
+        "name": "crème pâtissière"
+      },
+      {
+        "id": 415,
+        "name": "crème pâtissière chocolat"
+      },
+      {
+        "id": 200,
+        "name": "Crème UHT liquide"
+      },
+      {
+        "id": 263,
+        "name": "Edam"
+      },
+      {
+        "id": 249,
+        "name": "Époisses"
+      },
+      {
+        "id": 247,
+        "name": "Explorateur"
+      },
+      {
+        "id": 219,
+        "name": "Faisselle"
+      },
+      {
+        "id": 313,
+        "name": "feta"
+      },
+      {
+        "id": 275,
+        "name": "Fontina"
+      },
+      {
+        "id": 278,
+        "name": "Fourme d'Ambert"
+      },
+      {
+        "id": 338,
+        "name": "fromage"
+      },
+      {
+        "id": 234,
+        "name": "Fromage à tartiner nature"
+      },
+      {
+        "id": 316,
+        "name": "fromage blanc"
+      },
+      {
+        "id": 215,
+        "name": "Fromage blanc 0%"
+      },
+      {
+        "id": 216,
+        "name": "Fromage blanc 20%"
+      },
+      {
+        "id": 217,
+        "name": "Fromage blanc 40%"
+      },
+      {
+        "id": 419,
+        "name": "fromage frais"
+      },
+      {
+        "id": 417,
+        "name": "fromage Minas"
+      },
+      {
+        "id": 420,
+        "name": "fromage râpé"
+      },
+      {
+        "id": 416,
+        "name": "ganache ou crème"
+      },
+      {
+        "id": 279,
+        "name": "Gorgonzola"
+      },
+      {
+        "id": 262,
+        "name": "Gouda"
+      },
+      {
+        "id": 227,
+        "name": "Kéfir"
+      },
+      {
+        "id": 336,
+        "name": "lait"
+      },
+      {
+        "id": 191,
+        "name": "Lait concentré non sucré"
+      },
+      {
+        "id": 192,
+        "name": "Lait concentré sucré"
+      },
+      {
+        "id": 189,
+        "name": "Lait demi-écrémé frais"
+      },
+      {
+        "id": 186,
+        "name": "Lait demi-écrémé UHT"
+      },
+      {
+        "id": 190,
+        "name": "Lait écrémé frais"
+      },
+      {
+        "id": 187,
+        "name": "Lait écrémé UHT"
+      },
+      {
+        "id": 193,
+        "name": "Lait en poudre"
+      },
+      {
+        "id": 188,
+        "name": "Lait entier frais"
+      },
+      {
+        "id": 185,
+        "name": "Lait entier UHT"
+      },
+      {
+        "id": 228,
+        "name": "Lait fermenté"
+      },
+      {
+        "id": 229,
+        "name": "Lait ribot"
+      },
+      {
+        "id": 194,
+        "name": "Lait sans lactose"
+      },
+      {
+        "id": 252,
+        "name": "Livarot"
+      },
+      {
+        "id": 267,
+        "name": "Manchego"
+      },
+      {
+        "id": 250,
+        "name": "Maroilles"
+      },
+      {
+        "id": 232,
+        "name": "Mascarpone"
+      },
+      {
+        "id": 264,
+        "name": "Mimolette"
+      },
+      {
+        "id": 254,
+        "name": "Mont d'Or"
+      },
+      {
+        "id": 320,
+        "name": "mozzarella"
+      },
+      {
+        "id": 246,
+        "name": "Neufchâtel"
+      },
+      {
+        "id": 273,
+        "name": "Parmesan"
+      },
+      {
+        "id": 218,
+        "name": "Petit-suisse"
+      },
+      {
+        "id": 251,
+        "name": "Pont-l'Évêque"
+      },
+      {
+        "id": 266,
+        "name": "Provolone"
+      },
+      {
+        "id": 260,
+        "name": "Raclette"
+      },
+      {
+        "id": 231,
+        "name": "Ricotta"
+      },
+      {
+        "id": 244,
+        "name": "Saint-Marcellin"
+      },
+      {
+        "id": 257,
+        "name": "Saint-Nectaire"
+      },
+      {
+        "id": 212,
+        "name": "Skyr nature"
+      },
+      {
+        "id": 259,
+        "name": "Tomme de Savoie"
+      },
+      {
+        "id": 333,
+        "name": "yaourt"
+      },
+      {
+        "id": 214,
+        "name": "Yaourt aux fruits"
+      },
+      {
+        "id": 334,
+        "name": "yaourt grec"
+      },
+      {
+        "id": 209,
+        "name": "Yaourt grec 0%"
+      },
+      {
+        "id": 208,
+        "name": "Yaourt grec nature"
+      },
+      {
+        "id": 335,
+        "name": "yaourt nature"
+      },
+      {
+        "id": 206,
+        "name": "Yaourt nature 0%"
+      },
+      {
+        "id": 207,
+        "name": "Yaourt nature brassé"
+      },
+      {
+        "id": 205,
+        "name": "Yaourt nature entier"
+      },
+      {
+        "id": 213,
+        "name": "Yaourt vanille"
+      }
+    ]
+  }
+}

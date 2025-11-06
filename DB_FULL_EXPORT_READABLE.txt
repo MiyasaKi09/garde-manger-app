@@ -1,0 +1,1198 @@
+═══════════════════════════════════════════════════════
+   EXPORT COMPLET DE LA BASE DE DONNÉES
+═══════════════════════════════════════════════════════
+
+Exporté le: 2025-11-03T16:10:23.086Z
+
+📊 TOTAUX:
+  - 240 canonical foods
+  - 3 cultivars
+  - 412 archetypes
+
+═══════════════════════════════════════════════════════
+   1. CANONICAL FOODS
+═══════════════════════════════════════════════════════
+
+[1] Grand Marnier (unit: ml)
+[2] Marsala (unit: ml)
+[3] amaretto (unit: ml)
+[4] calvados (unit: ml)
+[5] kirsch (unit: ml)
+[6] porto (unit: ml)
+[7] rhum (unit: ml)
+[8] bière (unit: ml)
+[9] cidre (unit: ml)
+[10] lotte (unit: g)
+[11] sole (unit: g)
+[12] épices (unit: g)
+[13] légume (unit: g)
+[1001] aubergine (unit: u)
+[1002] avocat (unit: u)
+[1003] banane (unit: u)
+[1004] basilic (unit: g)
+[1005] carotte (unit: u)
+[1006] cassis (unit: g)
+[1007] céleri-rave (unit: u)
+[1008] cerise (unit: u)
+[1009] abricot (unit: u)
+[1010] ananas (unit: u)
+[1011] châtaigne (unit: u)
+[1012] betterave (unit: u)
+[1013] brugnon (unit: u)
+[1014] carambole (unit: u)
+[1015] citron (unit: u)
+[1016] citron vert (unit: u)
+[1017] coing (unit: u)
+[1018] coriandre (unit: g)
+[1019] datte (unit: g)
+[1020] épinard (unit: g)
+[1021] figue (unit: u)
+[1022] fraise (unit: g)
+[1023] framboise (unit: g)
+[1024] fruit de la passion (unit: u)
+[1025] fruit du dragon (unit: u)
+[1026] goyave (unit: u)
+[1027] grenade (unit: u)
+[1028] groseille (unit: g)
+[1029] kiwi (unit: u)
+[1030] kumquat (unit: u)
+[1031] laitue (unit: u)
+[1032] litchi (unit: u)
+[1033] mâche (unit: u)
+[1034] mandarine (unit: u)
+[1035] mangue (unit: u)
+[1036] melon (unit: u)
+[1037] menthe (unit: g)
+[1038] mirabelle (unit: u)
+[1039] mûre (unit: g)
+[1040] myrtille (unit: g)
+[1041] navet (unit: u)
+[1042] nectarine (unit: u)
+[1043] noix de coco (unit: u)
+[1044] orange (unit: u)
+[1045] pamplemousse (unit: u)
+[1046] papaye (unit: u)
+[1047] pastèque (unit: u)
+[1048] pêche (unit: u)
+[1049] persil (unit: g)
+[1050] poire (unit: u)
+[1051] poivron (unit: u)
+[1052] pomme (unit: u)
+[1053] pomme de terre (unit: u)
+[1054] prune (unit: u)
+[1055] quetsche (unit: u)
+[1056] radis (unit: u)
+[1057] raisin (unit: g)
+[1058] thym (unit: g)
+[1059] tomate (unit: u)
+[2001] blette (unit: g)
+[2002] boeuf (unit: g)
+[2003] brocoli (unit: u)
+[2004] cabillaud (unit: g)
+[2005] canard (unit: u)
+[2006] cardon (unit: u)
+[2007] céleri branche (unit: u)
+[2008] cerfeuil (unit: g)
+[2009] chou blanc (unit: u)
+[2010] chou chinois (unit: u)
+[2011] chou de Bruxelles (unit: u)
+[2012] chou kale (unit: g)
+[2013] chou romanesco (unit: u)
+[2014] chou rouge (unit: u)
+[2015] chou vert (unit: u)
+[2016] chou-fleur (unit: u)
+[2017] chou-rave (unit: u)
+[2018] ciboulette (unit: g)
+[2019] citronnelle (unit: u)
+[2020] citrouille (unit: u)
+[2021] cœur de palmier (unit: u)
+[2022] concombre (unit: u)
+[2023] cornichon (unit: u)
+[2024] courge (unit: u)
+[2025] courge spaghetti (unit: u)
+[2026] courgette (unit: u)
+[2027] crabe (unit: g)
+[2028] cresson (unit: g)
+[2029] crevette (unit: g)
+[2030] crosne (unit: g)
+[2031] échalote (unit: u)
+[2032] endive (unit: u)
+[2033] estragon (unit: g)
+[2034] fenouil (unit: u)
+[2035] fève (unit: g)
+[2036] gombo (unit: u)
+[2037] haricot vert (unit: g)
+[2038] igname (unit: u)
+[2039] laurier (unit: g)
+[2040] oeuf (unit: u)
+[2041] oignon (unit: u)
+[2042] oignon nouveau (unit: u)
+[2043] origan (unit: g)
+[2044] pak-choï (unit: u)
+[2045] patate douce (unit: u)
+[2046] pâtisson (unit: u)
+[2047] petit pois (unit: g)
+[2048] piment (unit: u)
+[2049] poireau (unit: u)
+[2050] pois gourmand (unit: g)
+[2051] porc (unit: g)
+[2052] potimarron (unit: u)
+[2053] potiron (unit: u)
+[2054] poulet (unit: u)
+[2055] pousse de bambou (unit: g)
+[2056] rhubarbe (unit: u)
+[2057] romarin (unit: g)
+[2058] roquette (unit: g)
+[2059] rutabaga (unit: u)
+[2060] salsifis (unit: u)
+[2061] sauge (unit: g)
+[2062] saumon (unit: g)
+[2063] shiso (unit: g)
+[2064] thon (unit: g)
+[2065] tomatillo (unit: u)
+[2066] topinambour (unit: u)
+[2067] verveine (unit: g)
+[3001] champignon de Paris (unit: g)
+[4001] agneau (unit: g)
+[4002] quinoa (unit: g)
+[4003] riz (unit: g)
+[4004] sarrasin (unit: g)
+[4005] soja (unit: g)
+[5001] avoine (unit: g)
+[5002] blé (unit: g)
+[5003] épeautre (unit: g)
+[5004] haricot (unit: g)
+[5005] lentille (unit: g)
+[5006] millet (unit: g)
+[5007] orge (unit: g)
+[5008] pois chiche (unit: g)
+[6001] cardamome (unit: g)
+[6002] clou de girofle (unit: g)
+[6003] curcuma (unit: g)
+[6004] sel (unit: g)
+[7001] lait (unit: L)
+[8001] ail des ours (unit: g)
+[8002] aneth (unit: g)
+[8003] artichaut (unit: u)
+[8004] asperge (unit: u)
+[8005] cacao (unit: g)
+[8006] café (unit: g)
+[8007] camomille (unit: g)
+[8008] chevreuil (unit: g)
+[8009] dinde (unit: g)
+[8010] lapin (unit: g)
+[8011] oie (unit: g)
+[8012] pintade (unit: g)
+[8013] sanglier (unit: g)
+[8014] thé (unit: g)
+[8015] veau (unit: g)
+[9001] anchois (unit: g)
+[9002] bar (unit: g)
+[9003] calmar (unit: g)
+[9004] coquille Saint-Jacques (unit: g)
+[9005] dorade (unit: g)
+[9006] huître (unit: g)
+[9007] maïs (unit: u)
+[9008] maquereau (unit: g)
+[9009] merlu (unit: g)
+[9010] moule (unit: g)
+[9011] poulpe (unit: g)
+[9012] sardine (unit: g)
+[9013] truite (unit: g)
+[10001] ail (unit: u)
+[10002] gingembre (unit: g)
+[10003] moutarde (unit: g)
+[10004] muscade (unit: g)
+[10005] poivre (unit: g)
+[10006] safran (unit: u)
+[10007] vanille (unit: u)
+[11001] amande (unit: g)
+[11002] cacahuète (unit: g)
+[11003] caille (unit: g)
+[11004] cajou (unit: g)
+[11005] noix (unit: g)
+[11006] noix de pécan (unit: g)
+[11007] olive (unit: g)
+[11008] pistache (unit: g)
+[11009] tournesol (unit: g)
+[13001] macadamia (unit: g)
+[14001] miel (unit: g)
+[14002] sirop d'érable (unit: cL)
+[14003] sucre de betterave (unit: g)
+[14004] sucre de canne (unit: g)
+[14005] courge butternut (unit: u)
+[14010] À classer (unit: u)
+[14011] bœuf (unit: g)
+[14012] cannelle (unit: g)
+[14013] céleri (unit: g)
+[14014] cèpe (unit: g)
+[14015] champignon (unit: g)
+[14016] chou (unit: g)
+[14017] cumin (unit: g)
+[14018] eau (unit: g)
+[14019] graine de chia (unit: g)
+[14020] graine de sésame (unit: g)
+[14021] haricot blanc (unit: g)
+[14022] haricot noir (unit: g)
+[14023] haricot rouge (unit: g)
+[14024] lait végétal (unit: g)
+[14025] morille (unit: g)
+[14026] noisette (unit: g)
+[14027] œuf (unit: g)
+[14028] panais (unit: g)
+[14029] salade (unit: g)
+[14030] huile d'olive (unit: ml)
+[14031] huile végétale (unit: ml)
+[14032] vinaigre (unit: ml)
+[14033] sauce soja (unit: ml)
+[14035] bouillon (unit: ml)
+[14036] bouillon de légumes (unit: ml)
+[14037] sucre (unit: g)
+[14038] sucre glace (unit: g)
+[14040] levure (unit: g)
+[14041] levure chimique (unit: g)
+[14042] gélatine (unit: g)
+[14043] maïzena (unit: g)
+
+═══════════════════════════════════════════════════════
+   2. CULTIVARS
+═══════════════════════════════════════════════════════
+
+[1] lait de chèvre → canonical: lait
+    Notes: Lait de chèvre - Goût différent du lait de vache, utilisé pour fromages spécifiques (bûches, crottins, etc.)
+[2] lait de brebis → canonical: lait
+    Notes: Lait de brebis - Utilisé pour fromages spécifiques comme Roquefort, Ossau-Iraty, Pélardon
+[3] morue → canonical: cabillaud
+    Notes: Morue - Cabillaud salé et séché. Nécessite dessalage avant utilisation. Goût et texture différents du cabillaud frais.
+
+═══════════════════════════════════════════════════════
+   3. ARCHETYPES (grouped by canonical)
+═══════════════════════════════════════════════════════
+
+
+CANONICAL: abricot (7 archetypes):
+────────────────────────────────────────────────────────────
+  [67] Abricots séchés
+      Process: séchage
+  [68] Compote d'abricots
+      Process: cuisson
+  [69] Confiture d'abricots
+      Process: cuisson avec sucre
+  [70] Jus d'abricot
+      Process: extraction
+  [71] Abricots au sirop maison
+      Process: cuisson et mise en bocal
+  [72] Purée d'abricots congelée
+      Process: cuisson et congélation
+  [99] Poudre d'abricot
+      Process: séchage et broyage
+
+CANONICAL: agneau (6 archetypes):
+────────────────────────────────────────────────────────────
+  [298] agneau haché
+      Process: hachage
+  [369] côtelette d'agneau
+      Process: côtelette
+  [370] gigot d'agneau
+      Process: gigot
+  [371] épaule d'agneau
+      Process: épaule
+  [372] filet d'agneau
+      Process: filet
+  [373] carré d'agneau
+      Process: carré
+
+CANONICAL: ail (2 archetypes):
+────────────────────────────────────────────────────────────
+  [38] Ail confit
+      Process: confisage
+  [39] Poudre d'ail
+      Process: séchage et broyage
+
+CANONICAL: amande (2 archetypes):
+────────────────────────────────────────────────────────────
+  [221] Lait d'amande
+  [326] poudre d'amande
+      Process: broyage
+
+CANONICAL: aneth (4 archetypes):
+────────────────────────────────────────────────────────────
+  [127] Aneth séché
+      Process: séchage
+  [128] Aneth congelé
+      Process: hachage et congélation
+  [129] Aneth en poudre
+      Process: séchage et broyage
+  [130] Graines d'aneth moulues
+      Process: séchage et broyage des graines
+
+CANONICAL: aubergine (3 archetypes):
+────────────────────────────────────────────────────────────
+  [14] Aubergines confites
+      Process: confisage
+  [15] Aubergines grillées
+      Process: grillage
+  [16] Purée d'aubergines
+      Process: cuisson et mixage
+
+CANONICAL: avoine (3 archetypes):
+────────────────────────────────────────────────────────────
+  [222] Lait d'avoine
+  [226] Crème d'avoine
+  [314] flocon d'avoine
+      Process: laminage
+
+CANONICAL: basilic (5 archetypes):
+────────────────────────────────────────────────────────────
+  [101] Basilic séché
+      Process: séchage
+  [102] Basilic congelé haché
+      Process: hachage et congélation
+  [103] Basilic en poudre
+      Process: séchage et broyage
+  [104] Huile de basilic infusée
+      Process: infusion dans huile
+  [105] Basilic lacto-fermenté
+      Process: lacto-fermentation
+
+CANONICAL: bière (4 archetypes):
+────────────────────────────────────────────────────────────
+  [339] bière
+      Process: fermentation
+  [340] bière blonde [parent: 339]
+      Process: fermentation
+  [341] bière ambrée [parent: 339]
+      Process: fermentation
+  [342] bière brune [parent: 339]
+      Process: fermentation
+
+CANONICAL: blette (1 archetypes):
+────────────────────────────────────────────────────────────
+  [485] blettes
+      Process: blettes
+
+CANONICAL: blé (31 archetypes):
+────────────────────────────────────────────────────────────
+  [306] chapelure
+      Process: séchage et broyage
+  [312] farine
+      Process: mouture
+  [321] pain
+      Process: cuisson levée
+  [322] pâte
+      Process: laminage
+  [323] pâte brisée
+      Process: pétrissage court
+  [324] pâte feuilletée
+      Process: feuilletage
+  [329] semoule
+      Process: mouture grossière
+  [330] spaghetti
+      Process: extrusion
+  [432] baguette [parent: 321]
+      Process: pain français long
+  [433] pain de campagne [parent: 321]
+      Process: pain rustique
+  [434] pain de mie [parent: 321]
+      Process: pain tranché
+  [435] mie de pain [parent: 434]
+      Process: pain tranché
+  [436] mie pain [parent: 434]
+      Process: pain tranché
+  [437] brioche [parent: 321]
+      Process: pain enrichi beurre
+  [438] pains burger [parent: 321]
+      Process: pain rond burger
+  [439] pain d'épices [parent: 321]
+      Process: pain sucré épicé
+  [440] pain rassis [parent: 321]
+      Process: pain séché
+  [441] pâte à pain
+      Process: pâte avant cuisson
+  [457] pâtes
+      Process: pâtes générique
+  [458] pâtes courtes [parent: 457]
+      Process: pâtes courtes
+  [459] linguine [parent: 457]
+      Process: pâtes longues plates
+  [460] trofie [parent: 458]
+      Process: pâtes courtes torsadées
+  [461] trofie ou linguine [parent: 457]
+      Process: option pâtes
+  [462] raviolis frais [parent: 457]
+      Process: pâtes farcies
+  [463] nouilles [parent: 457]
+      Process: nouilles générique
+  [464] nouilles chinoises [parent: 463]
+      Process: nouilles chinoises
+  [465] nouilles ramen [parent: 463]
+      Process: nouilles japonaises
+  [467] nouilles udon [parent: 463]
+      Process: nouilles épaisses
+  [468] fideos pâtes [parent: 463]
+      Process: pâtes fines espagnoles
+  [469] pâte phyllo
+      Process: pâte feuilletée fine
+  [470] pâte à pizza
+      Process: pâte pizza
+
+CANONICAL: brocoli (2 archetypes):
+────────────────────────────────────────────────────────────
+  [32] Purée de brocoli congelée
+      Process: cuisson et congélation
+  [49] Poudre de brocoli
+      Process: séchage et broyage
+
+CANONICAL: bœuf (14 archetypes):
+────────────────────────────────────────────────────────────
+  [304] bœuf haché
+      Process: hachage
+  [305] bouillon de bœuf
+      Process: infusion
+  [345] steak de bœuf
+      Process: steak
+  [346] entrecôte de bœuf [parent: 345]
+      Process: steak
+  [347] bavette [parent: 345]
+      Process: steak
+  [348] pavé de bœuf [parent: 345]
+      Process: steak
+  [349] bœuf en morceaux
+      Process: en morceaux
+  [350] bœuf à braiser [parent: 349]
+      Process: en morceaux
+  [351] bœuf à mijoter [parent: 349]
+      Process: en morceaux
+  [352] paleron de bœuf [parent: 349]
+      Process: en morceaux
+  [353] côte de bœuf
+      Process: côte
+  [354] filet de bœuf
+      Process: filet
+  [355] araignée de bœuf
+      Process: transformation
+  [356] bœuf effiloché
+      Process: transformation
+
+CANONICAL: cabillaud (6 archetypes):
+────────────────────────────────────────────────────────────
+  [428] fumet de poisson
+      Process: bouillon poisson
+  [429] fumet poisson [parent: 428]
+      Process: bouillon poisson
+  [430] arêtes poisson
+      Process: arêtes pour fumet
+  [431] sauce poisson
+      Process: fermentation poisson
+  [488] filet de cabillaud
+      Process: découpe filet
+  [489] cabillaud fumé
+      Process: fumage
+
+CANONICAL: cacao (2 archetypes):
+────────────────────────────────────────────────────────────
+  [307] chocolat
+      Process: torréfaction
+  [308] chocolat noir
+      Process: torréfaction noir
+
+CANONICAL: carotte (5 archetypes):
+────────────────────────────────────────────────────────────
+  [25] Carottes lacto-fermentées
+      Process: lacto-fermentation
+  [26] Chips de carotte séchées
+      Process: séchage
+  [27] Jus de carotte
+      Process: extraction
+  [28] Purée de carottes congelée
+      Process: cuisson et congélation
+  [29] Carottes râpées sous vide
+      Process: râpage et mise sous vide
+
+CANONICAL: cerise (6 archetypes):
+────────────────────────────────────────────────────────────
+  [73] Cerises séchées
+      Process: séchage
+  [74] Compote de cerises
+      Process: cuisson
+  [75] Confiture de cerises
+      Process: cuisson avec sucre
+  [76] Jus de cerise
+      Process: extraction
+  [77] Cerises au sirop maison
+      Process: cuisson et mise en bocal
+  [100] Gelée de cerise
+      Process: extraction et cuisson avec sucre
+
+CANONICAL: chou blanc (4 archetypes):
+────────────────────────────────────────────────────────────
+  [30] Choucroute crue
+      Process: lacto-fermentation
+  [31] Chou blanc lacto-fermenté
+      Process: lacto-fermentation
+  [33] Chips de chou séchées
+      Process: séchage
+  [34] Jus de chou
+      Process: extraction
+
+CANONICAL: châtaigne (1 archetypes):
+────────────────────────────────────────────────────────────
+  [413] crème marrons
+      Process: transformation marrons
+
+CANONICAL: ciboulette (3 archetypes):
+────────────────────────────────────────────────────────────
+  [131] Ciboulette séchée
+      Process: séchage
+  [132] Ciboulette congelée
+      Process: hachage et congélation
+  [133] Ciboulette lyophilisée
+      Process: lyophilisation
+
+CANONICAL: cidre (2 archetypes):
+────────────────────────────────────────────────────────────
+  [343] cidre
+      Process: fermentation
+  [344] cidre brut [parent: 343]
+      Process: fermentation
+
+CANONICAL: coriandre (4 archetypes):
+────────────────────────────────────────────────────────────
+  [123] Coriandre séchée (feuilles)
+      Process: séchage
+  [124] Coriandre en poudre (feuilles)
+      Process: séchage et broyage
+  [125] Coriandre congelée
+      Process: hachage et congélation
+  [126] Graines de coriandre moulues
+      Process: séchage et broyage des graines
+
+CANONICAL: courge (2 archetypes):
+────────────────────────────────────────────────────────────
+  [19] Purée de butternut congelée
+      Process: cuisson et congélation
+  [24] Chips de butternut séchées
+      Process: séchage
+
+CANONICAL: courgette (5 archetypes):
+────────────────────────────────────────────────────────────
+  [17] Chips de courgette séchées
+      Process: séchage
+  [22] Courgettes grillées
+      Process: grillage
+  [23] Courgettes lacto-fermentées
+      Process: lacto-fermentation
+  [50] Courgettes déshydratées en dés
+      Process: séchage
+  [484] courgettes
+      Process: courgettes
+
+CANONICAL: estragon (3 archetypes):
+────────────────────────────────────────────────────────────
+  [140] Estragon séché
+      Process: séchage
+  [141] Estragon congelé
+      Process: hachage et congélation
+  [142] Vinaigre à l'estragon
+      Process: infusion dans vinaigre
+
+CANONICAL: fenouil (4 archetypes):
+────────────────────────────────────────────────────────────
+  [145] Fenouil séché (herbe)
+      Process: séchage
+  [146] Fenouil en poudre
+      Process: séchage et broyage
+  [147] Graines de fenouil moulues
+      Process: séchage et broyage des graines
+  [148] Fenouil congelé
+      Process: hachage et congélation
+
+CANONICAL: fraise (5 archetypes):
+────────────────────────────────────────────────────────────
+  [88] Fraises séchées
+      Process: séchage
+  [89] Compote de fraises
+      Process: cuisson
+  [90] Confiture de fraises
+      Process: cuisson avec sucre
+  [91] Fraises congelées
+      Process: congélation
+  [92] Coulis de fraises
+      Process: mixage et filtrage
+
+CANONICAL: lait (117 archetypes):
+────────────────────────────────────────────────────────────
+  [185] Lait entier UHT [parent: 336]
+  [186] Lait demi-écrémé UHT [parent: 336]
+  [187] Lait écrémé UHT [parent: 336]
+  [188] Lait entier frais [parent: 336]
+  [189] Lait demi-écrémé frais [parent: 336]
+  [190] Lait écrémé frais [parent: 336]
+  [191] Lait concentré non sucré [parent: 336]
+  [192] Lait concentré sucré [parent: 336]
+  [193] Lait en poudre [parent: 336]
+  [194] Lait sans lactose [parent: 336]
+  [195] Crème liquide 30% [parent: 337]
+  [196] Crème liquide 15% [parent: 337]
+  [197] Crème épaisse 35% [parent: 337]
+  [198] Crème fraîche épaisse [parent: 337]
+  [199] Crème fraîche légère [parent: 337]
+  [200] Crème UHT liquide [parent: 337]
+  [201] Crème fouettée en bombe [parent: 337]
+  [202] Crème anglaise [parent: 337]
+  [203] Chantilly
+  [204] Beurre doux [parent: 300]
+  [205] Yaourt nature entier [parent: 333]
+  [206] Yaourt nature 0% [parent: 333]
+  [207] Yaourt nature brassé [parent: 333]
+  [208] Yaourt grec nature [parent: 333]
+  [209] Yaourt grec 0% [parent: 333]
+  [210] Yaourt lait de brebis [parent: 336]
+  [211] Yaourt lait de chèvre [parent: 336]
+  [212] Skyr nature
+  [213] Yaourt vanille [parent: 333]
+  [214] Yaourt aux fruits [parent: 333]
+  [215] Fromage blanc 0% [parent: 338]
+  [216] Fromage blanc 20% [parent: 338]
+  [217] Fromage blanc 40% [parent: 338]
+  [218] Petit-suisse [parent: 338]
+  [219] Faisselle [parent: 338]
+  [227] Kéfir [parent: 336]
+  [228] Lait fermenté [parent: 336]
+  [229] Lait ribot [parent: 336]
+  [230] Cottage cheese [parent: 338]
+  [231] Ricotta [parent: 338]
+  [232] Mascarpone [parent: 338]
+  [233] Cream cheese [parent: 338]
+  [234] Fromage à tartiner nature [parent: 338]
+  [238] Crottin de chèvre [parent: 338]
+  [239] Sainte-Maure [parent: 338]
+  [240] Camembert [parent: 338]
+  [241] Brie [parent: 338]
+  [242] Coulommiers [parent: 338]
+  [243] Chaource [parent: 338]
+  [244] Saint-Marcellin [parent: 338]
+  [245] Brillat-Savarin [parent: 338]
+  [246] Neufchâtel [parent: 338]
+  [247] Explorateur [parent: 338]
+  [248] Munster [parent: 338]
+  [249] Époisses [parent: 338]
+  [250] Maroilles [parent: 338]
+  [251] Pont-l'Évêque [parent: 338]
+  [252] Livarot [parent: 338]
+  [253] Reblochon [parent: 338]
+  [254] Mont d'Or [parent: 338]
+  [255] Vacherin [parent: 338]
+  [256] Cantal [parent: 338]
+  [257] Saint-Nectaire [parent: 338]
+  [258] Morbier [parent: 338]
+  [259] Tomme de Savoie [parent: 338]
+  [260] Raclette [parent: 338]
+  [261] Cheddar [parent: 338]
+  [262] Gouda [parent: 338]
+  [263] Edam [parent: 338]
+  [264] Mimolette [parent: 338]
+  [266] Provolone [parent: 338]
+  [267] Manchego [parent: 338]
+  [268] Abondance [parent: 338]
+  [269] Beaufort [parent: 338]
+  [270] Comté [parent: 338]
+  [271] Gruyère [parent: 338]
+  [272] Emmental [parent: 338]
+  [273] Parmesan [parent: 338]
+  [274] Pecorino [parent: 338]
+  [275] Fontina [parent: 338]
+  [277] Bleu d'Auvergne [parent: 338]
+  [278] Fourme d'Ambert [parent: 338]
+  [279] Gorgonzola [parent: 338]
+  [280] Valençay [parent: 338]
+  [281] Rocamadour [parent: 338]
+  [282] Pouligny-Saint-Pierre [parent: 338]
+  [283] Picodon [parent: 338]
+  [300] beurre
+      Process: barattage
+  [301] beurre salé [parent: 300]
+      Process: barattage salé
+  [310] crème fraîche [parent: 337]
+      Process: fermentation
+  [311] crème liquide [parent: 337]
+      Process: écrémage
+  [313] feta [parent: 338]
+      Process: caillage et saumurage
+  [316] fromage blanc [parent: 338]
+      Process: caillage
+  [320] mozzarella [parent: 338]
+      Process: filage
+  [333] yaourt
+      Process: fermentation lactique
+  [334] yaourt grec [parent: 333]
+      Process: fermentation et égouttage
+  [335] yaourt nature [parent: 333]
+      Process: fermentation
+  [336] lait
+      Process: lait
+  [337] crème
+      Process: crème
+  [338] fromage
+      Process: fromage
+  [402] babeurre
+      Process: fermentation
+  [403] beurre clarifié [parent: 300]
+      Process: clarification
+  [404] beurre de tourage [parent: 300]
+      Process: préparation
+  [405] beurre fondu [parent: 300]
+      Process: fonte
+  [406] beurre froid [parent: 300]
+      Process: réfrigération
+  [407] beurre manié [parent: 300]
+      Process: mélange avec farine
+  [408] beurre mou [parent: 300]
+      Process: température ambiante
+  [409] beurre pour glaçage [parent: 300]
+      Process: préparation
+  [411] crème chiboust [parent: 337]
+      Process: pâtisserie
+  [412] crème fouettée [parent: 337]
+      Process: fouettage
+  [414] crème pâtissière [parent: 337]
+      Process: cuisson pâtisserie
+  [415] crème pâtissière chocolat [parent: 337]
+      Process: cuisson pâtisserie chocolat
+  [416] ganache ou crème
+      Process: option multiple
+  [417] fromage Minas [parent: 338]
+      Process: fromage brésilien
+  [418] fromage de chèvre [parent: 338]
+      Process: fromage chèvre générique
+  [419] fromage frais [parent: 338]
+      Process: fromage frais
+  [420] fromage râpé [parent: 338]
+      Process: râpage
+
+CANONICAL: laitue (5 archetypes):
+────────────────────────────────────────────────────────────
+  [41] Salade lavée et essorée sous vide
+      Process: lavage et emballage sous vide
+  [42] Salade cuite vapeur
+      Process: cuisson vapeur
+  [43] Poudre de laitue séchée
+      Process: séchage et broyage
+  [44] Jus de laitue
+      Process: extraction
+  [486] laitue romaine
+      Process: laitue romaine
+
+CANONICAL: laurier (2 archetypes):
+────────────────────────────────────────────────────────────
+  [143] Laurier séché
+      Process: séchage
+  [144] Laurier en poudre
+      Process: séchage et broyage
+
+CANONICAL: lotte (1 archetypes):
+────────────────────────────────────────────────────────────
+  [491] queue de lotte
+      Process: découpe queue
+
+CANONICAL: légume (1 archetypes):
+────────────────────────────────────────────────────────────
+  [487] légumes variés cuits
+      Process: mélange légumes cuits
+
+CANONICAL: menthe (5 archetypes):
+────────────────────────────────────────────────────────────
+  [114] Menthe séchée
+      Process: séchage
+  [115] Menthe en poudre
+      Process: séchage et broyage
+  [116] Menthe congelée
+      Process: hachage et congélation
+  [117] Sirop de menthe
+      Process: infusion et cuisson avec sucre
+  [118] Infusion de menthe concentrée
+      Process: infusion et réduction
+
+CANONICAL: noix de coco (1 archetypes):
+────────────────────────────────────────────────────────────
+  [224] Lait de coco
+
+CANONICAL: oignon (3 archetypes):
+────────────────────────────────────────────────────────────
+  [35] Poudre d'oignon
+      Process: séchage et broyage
+  [36] Oignons caramélisés
+      Process: cuisson lente
+  [37] Oignons confits
+      Process: confisage
+
+CANONICAL: origan (3 archetypes):
+────────────────────────────────────────────────────────────
+  [134] Origan séché
+      Process: séchage
+  [135] Origan en poudre
+      Process: séchage et broyage
+  [136] Huile d'origan
+      Process: infusion dans huile
+
+CANONICAL: persil (4 archetypes):
+────────────────────────────────────────────────────────────
+  [119] Persil séché
+      Process: séchage
+  [120] Persil en poudre
+      Process: séchage et broyage
+  [121] Persil congelé haché
+      Process: hachage et congélation
+  [122] Sel au persil
+      Process: séchage et mélange avec sel
+
+CANONICAL: poire (6 archetypes):
+────────────────────────────────────────────────────────────
+  [61] Poires séchées
+      Process: séchage
+  [62] Compote de poires
+      Process: cuisson
+  [63] Confiture de poires
+      Process: cuisson avec sucre
+  [64] Jus de poire
+      Process: extraction
+  [65] Poires au sirop maison
+      Process: cuisson et mise en bocal
+  [66] Purée de poires congelée
+      Process: cuisson et congélation
+
+CANONICAL: poireau (2 archetypes):
+────────────────────────────────────────────────────────────
+  [482] poireaux
+      Process: poireaux entiers
+  [483] blanc de poireau [parent: 482]
+      Process: partie blanche
+
+CANONICAL: poivron (5 archetypes):
+────────────────────────────────────────────────────────────
+  [9] Paprika (poudre de poivron)
+      Process: séchage et broyage
+  [10] Poivrons grillés
+      Process: grillage
+  [11] Poivrons séchés
+      Process: séchage
+  [12] Poivrons lacto-fermentés
+      Process: lacto-fermentation
+  [13] Purée de poivrons congelée
+      Process: cuisson et congélation
+
+CANONICAL: pomme de terre (3 archetypes):
+────────────────────────────────────────────────────────────
+  [45] Purée de pommes de terre congelée
+      Process: cuisson et congélation
+  [46] Chips de pommes de terre séchées
+      Process: séchage
+  [47] Frites surgelées maison
+      Process: pré-cuisson et congélation
+
+CANONICAL: pomme (11 archetypes):
+────────────────────────────────────────────────────────────
+  [51] Pommes séchées
+      Process: séchage
+  [52] Compote de pommes
+      Process: cuisson
+  [53] Compote de pommes stérilisée
+      Process: cuisson et stérilisation
+  [54] Confiture de pommes
+      Process: cuisson avec sucre
+  [55] Jus de pomme
+      Process: extraction
+  [56] Jus de pomme pasteurisé
+      Process: extraction et pasteurisation
+  [57] Purée de pommes congelée
+      Process: cuisson et congélation
+  [58] Chips de pomme séchées
+      Process: séchage fin
+  [59] Pommes au four
+      Process: cuisson four
+  [60] Gelée de pommes
+      Process: extraction et cuisson avec sucre
+  [98] Poudre de pomme
+      Process: séchage et broyage
+
+CANONICAL: porc (18 archetypes):
+────────────────────────────────────────────────────────────
+  [299] bacon
+      Process: salaison et fumage
+  [317] jambon
+      Process: salaison
+  [319] lardon
+      Process: découpe et fumage
+  [325] porc haché
+      Process: hachage
+  [374] jambon blanc [parent: 317]
+      Process: transformation
+  [375] jambon cru [parent: 317]
+      Process: transformation
+  [376] jambon cuit [parent: 317]
+      Process: transformation
+  [377] jambon serrano [parent: 317]
+      Process: transformation
+  [378] jambon ibérique [parent: 317]
+      Process: transformation
+  [379] lardons fumés [parent: 319]
+      Process: fumé
+  [380] saucisse
+      Process: transformation
+  [381] saucisse de Toulouse [parent: 380]
+      Process: transformation
+  [382] saucisse de Strasbourg [parent: 380]
+      Process: transformation
+  [383] saucisse fumée [parent: 380]
+      Process: fumé
+  [384] chair à saucisse
+      Process: transformation
+  [385] lard
+      Process: transformation
+  [386] boudin noir
+      Process: transformation
+  [387] foie de porc
+      Process: abats
+
+CANONICAL: potimarron (1 archetypes):
+────────────────────────────────────────────────────────────
+  [20] Purée de potimarron congelée
+      Process: cuisson et congélation
+
+CANONICAL: potiron (2 archetypes):
+────────────────────────────────────────────────────────────
+  [18] Purée de potiron congelée
+      Process: cuisson et congélation
+  [21] Soupe de potiron
+      Process: cuisson
+
+CANONICAL: poulet (3 archetypes):
+────────────────────────────────────────────────────────────
+  [303] blanc de poulet
+      Process: découpe
+  [388] bouillon de poulet
+      Process: bouillon
+  [389] bouillon de volaille [parent: 388]
+      Process: bouillon
+
+CANONICAL: prune (5 archetypes):
+────────────────────────────────────────────────────────────
+  [83] Pruneaux (prunes séchées)
+      Process: séchage
+  [84] Compote de prunes
+      Process: cuisson
+  [85] Confiture de prunes
+      Process: cuisson avec sucre
+  [86] Jus de prune
+      Process: extraction
+  [87] Prunes au sirop maison
+      Process: cuisson et mise en bocal
+
+CANONICAL: pêche (5 archetypes):
+────────────────────────────────────────────────────────────
+  [78] Pêches séchées
+      Process: séchage
+  [79] Compote de pêches
+      Process: cuisson
+  [80] Confiture de pêches
+      Process: cuisson avec sucre
+  [81] Jus de pêche
+      Process: extraction
+  [82] Pêches au sirop maison
+      Process: cuisson et mise en bocal
+
+CANONICAL: raisin (8 archetypes):
+────────────────────────────────────────────────────────────
+  [93] Raisins secs
+      Process: séchage
+  [94] Confiture de raisin
+      Process: cuisson avec sucre
+  [95] Jus de raisin
+      Process: extraction
+  [96] Jus de raisin pasteurisé
+      Process: extraction et pasteurisation
+  [97] Raisins congelés
+      Process: congélation
+  [309] cognac
+      Process: distillation
+  [331] vin blanc
+      Process: fermentation
+  [332] vin rouge
+      Process: fermentation
+
+CANONICAL: riz (1 archetypes):
+────────────────────────────────────────────────────────────
+  [223] Lait de riz
+
+CANONICAL: romarin (4 archetypes):
+────────────────────────────────────────────────────────────
+  [110] Romarin séché
+      Process: séchage
+  [111] Romarin en poudre
+      Process: séchage et broyage
+  [112] Romarin congelé
+      Process: congélation
+  [113] Sel au romarin
+      Process: séchage et mélange avec sel
+
+CANONICAL: sarrasin (1 archetypes):
+────────────────────────────────────────────────────────────
+  [466] nouilles soba [parent: 463]
+      Process: nouilles sarrasin
+
+CANONICAL: sauge (3 archetypes):
+────────────────────────────────────────────────────────────
+  [137] Sauge séchée
+      Process: séchage
+  [138] Sauge en poudre
+      Process: séchage et broyage
+  [139] Sel à la sauge
+      Process: séchage et mélange avec sel
+
+CANONICAL: saumon (1 archetypes):
+────────────────────────────────────────────────────────────
+  [328] saumon fumé
+      Process: fumage
+
+CANONICAL: soja (2 archetypes):
+────────────────────────────────────────────────────────────
+  [220] Lait de soja
+  [225] Crème de soja
+
+CANONICAL: sole (1 archetypes):
+────────────────────────────────────────────────────────────
+  [490] filet de sole
+      Process: découpe filet
+
+CANONICAL: sucre (1 archetypes):
+────────────────────────────────────────────────────────────
+  [410] caramel beurre salé
+      Process: cuisson caramel
+
+CANONICAL: thym (4 archetypes):
+────────────────────────────────────────────────────────────
+  [106] Thym séché
+      Process: séchage
+  [107] Thym en poudre
+      Process: séchage et broyage
+  [108] Thym congelé
+      Process: congélation
+  [109] Sel au thym
+      Process: séchage et mélange avec sel
+
+CANONICAL: tomate (10 archetypes):
+────────────────────────────────────────────────────────────
+  [1] Tomates séchées
+      Process: séchage
+  [2] Tomates confites
+      Process: confisage
+  [3] Coulis de tomate
+      Process: cuisson et réduction
+  [4] Concentré de tomate
+      Process: réduction
+  [5] Tomates pelées en bocaux
+      Process: stérilisation
+  [6] Tomates lacto-fermentées
+      Process: lacto-fermentation
+  [7] Ketchup maison
+      Process: cuisson et réduction avec sucre
+  [8] Jus de tomate
+      Process: extraction
+  [48] Pâte de tomate séchée
+      Process: séchage intense et broyage
+  [327] sauce tomate
+      Process: cuisson
+
+CANONICAL: veau (13 archetypes):
+────────────────────────────────────────────────────────────
+  [315] fond de veau
+      Process: réduction
+  [357] escalope de veau
+      Process: escalope
+  [358] veau en morceaux
+      Process: en morceaux
+  [359] sauté de veau [parent: 358]
+      Process: en morceaux
+  [360] veau pour blanquette [parent: 358]
+      Process: en morceaux
+  [361] rôti de veau
+      Process: rôti
+  [362] veau haché
+      Process: haché
+  [363] côte de veau
+      Process: côte
+  [364] filet de veau
+      Process: filet
+  [365] jarret de veau
+      Process: jarret
+  [366] paupiettes de veau
+      Process: transformation
+  [367] grenadins de veau
+      Process: transformation
+  [368] os de veau
+      Process: os
+
+CANONICAL: verveine (2 archetypes):
+────────────────────────────────────────────────────────────
+  [149] Verveine séchée
+      Process: séchage
+  [150] Sirop de verveine
+      Process: infusion et cuisson avec sucre
+
+CANONICAL: À classer (1 archetypes):
+────────────────────────────────────────────────────────────
+  [289] Archetype générique « À classer »
+
+CANONICAL: échalote (1 archetypes):
+────────────────────────────────────────────────────────────
+  [40] Échalotes confites
+      Process: confisage
+
+CANONICAL: épices (11 archetypes):
+────────────────────────────────────────────────────────────
+  [471] pâte laksa
+      Process: pâte curry malaisien
+  [472] paprika
+      Process: poudre poivron
+  [473] paprika doux [parent: 472]
+      Process: paprika doux
+  [474] paprika fumé [parent: 472]
+      Process: paprika fumé
+  [475] berbéré épices
+      Process: mélange éthiopien
+  [476] cinq épices
+      Process: mélange chinois
+  [477] curry
+      Process: mélange curry
+  [478] garam masala
+      Process: mélange indien
+  [479] quatre-épices
+      Process: mélange français
+  [480] épices speculoos
+      Process: mélange speculoos
+  [481] épices pain épices
+      Process: mélange pain d'épices
+
+CANONICAL: œuf (2 archetypes):
+────────────────────────────────────────────────────────────
+  [302] blanc d'œuf
+      Process: séparation
+  [318] jaune d'œuf
+      Process: séparation
+
+CULTIVAR: lait de brebis (3 archetypes):
+────────────────────────────────────────────────────────────
+  [265] Ossau-Iraty [parent: 338]
+  [276] Roquefort [parent: 338]
+  [284] Pélardon [parent: 338]
+
+CULTIVAR: lait de chèvre (3 archetypes):
+────────────────────────────────────────────────────────────
+  [235] Bûche de chèvre fraîche
+  [236] Bûche de chèvre demi-sec
+  [237] Bûche de chèvre sec
+
+CULTIVAR: morue (1 archetypes):
+────────────────────────────────────────────────────────────
+  [427] morue dessalée
+      Process: dessalage

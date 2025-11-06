@@ -1,0 +1,311 @@
+{
+  "audit_date": "2025-11-03T16:36:32.709Z",
+  "summary": {
+    "canonical_foods": 240,
+    "cultivars": 3,
+    "archetypes": 412,
+    "problems_found": 11,
+    "problems_by_severity": {
+      "ERROR": 0,
+      "WARNING": 11
+    }
+  },
+  "problems": [
+    {
+      "type": "CANONICAL_TOO_SPECIFIC",
+      "severity": "WARNING",
+      "item": "canonical[1]: Grand Marnier",
+      "reason": "Nom de marque/produit spécifique devrait être en archetype ou product",
+      "suggestion": "Créer canonical \"alcool\" ou \"spiritueux\" et mettre ça en archetype"
+    },
+    {
+      "type": "CANONICAL_TOO_SPECIFIC",
+      "severity": "WARNING",
+      "item": "canonical[2]: Marsala",
+      "reason": "Nom de marque/produit spécifique devrait être en archetype ou product",
+      "suggestion": "Créer canonical \"alcool\" ou \"spiritueux\" et mettre ça en archetype"
+    },
+    {
+      "type": "CANONICAL_TOO_SPECIFIC",
+      "severity": "WARNING",
+      "item": "canonical[3]: amaretto",
+      "reason": "Nom de marque/produit spécifique devrait être en archetype ou product",
+      "suggestion": "Créer canonical \"alcool\" ou \"spiritueux\" et mettre ça en archetype"
+    },
+    {
+      "type": "CANONICAL_TOO_SPECIFIC",
+      "severity": "WARNING",
+      "item": "canonical[4]: calvados",
+      "reason": "Nom de marque/produit spécifique devrait être en archetype ou product",
+      "suggestion": "Créer canonical \"alcool\" ou \"spiritueux\" et mettre ça en archetype"
+    },
+    {
+      "type": "CANONICAL_TOO_SPECIFIC",
+      "severity": "WARNING",
+      "item": "canonical[5]: kirsch",
+      "reason": "Nom de marque/produit spécifique devrait être en archetype ou product",
+      "suggestion": "Créer canonical \"alcool\" ou \"spiritueux\" et mettre ça en archetype"
+    },
+    {
+      "type": "CANONICAL_TOO_SPECIFIC",
+      "severity": "WARNING",
+      "item": "canonical[6]: porto",
+      "reason": "Nom de marque/produit spécifique devrait être en archetype ou product",
+      "suggestion": "Créer canonical \"alcool\" ou \"spiritueux\" et mettre ça en archetype"
+    },
+    {
+      "type": "CANONICAL_TOO_SPECIFIC",
+      "severity": "WARNING",
+      "item": "canonical[7]: rhum",
+      "reason": "Nom de marque/produit spécifique devrait être en archetype ou product",
+      "suggestion": "Créer canonical \"alcool\" ou \"spiritueux\" et mettre ça en archetype"
+    },
+    {
+      "type": "ARCHETYPE_NAMING_MISMATCH",
+      "severity": "WARNING",
+      "item": "archetype[428]: fumet de poisson",
+      "reason": "Nom contient \"poisson\" mais basé sur \"cabillaud\"",
+      "correction": "Renommer en \"filet de cabillaud\" ou lier à canonical \"poisson\""
+    },
+    {
+      "type": "ARCHETYPE_NAMING_MISMATCH",
+      "severity": "WARNING",
+      "item": "archetype[429]: fumet poisson",
+      "reason": "Nom contient \"poisson\" mais basé sur \"cabillaud\"",
+      "correction": "Renommer en \"filet de cabillaud\" ou lier à canonical \"poisson\""
+    },
+    {
+      "type": "ARCHETYPE_NAMING_MISMATCH",
+      "severity": "WARNING",
+      "item": "archetype[430]: arêtes poisson",
+      "reason": "Nom contient \"poisson\" mais basé sur \"cabillaud\"",
+      "correction": "Renommer en \"filet de cabillaud\" ou lier à canonical \"poisson\""
+    },
+    {
+      "type": "ARCHETYPE_NAMING_MISMATCH",
+      "severity": "WARNING",
+      "item": "archetype[431]: sauce poisson",
+      "reason": "Nom contient \"poisson\" mais basé sur \"cabillaud\"",
+      "correction": "Renommer en \"filet de cabillaud\" ou lier à canonical \"poisson\""
+    }
+  ],
+  "statistics": {
+    "archetypes_by_canonical": [
+      {
+        "canonical": "lait",
+        "count": 117
+      },
+      {
+        "canonical": "blé",
+        "count": 31
+      },
+      {
+        "canonical": "porc",
+        "count": 18
+      },
+      {
+        "canonical": "bœuf",
+        "count": 14
+      },
+      {
+        "canonical": "veau",
+        "count": 13
+      },
+      {
+        "canonical": "pomme",
+        "count": 11
+      },
+      {
+        "canonical": "épices",
+        "count": 11
+      },
+      {
+        "canonical": "tomate",
+        "count": 10
+      },
+      {
+        "canonical": "raisin",
+        "count": 8
+      },
+      {
+        "canonical": "abricot",
+        "count": 7
+      },
+      {
+        "canonical": "poire",
+        "count": 6
+      },
+      {
+        "canonical": "cerise",
+        "count": 6
+      },
+      {
+        "canonical": "agneau",
+        "count": 6
+      },
+      {
+        "canonical": "cabillaud",
+        "count": 6
+      },
+      {
+        "canonical": "poivron",
+        "count": 5
+      },
+      {
+        "canonical": "courgette",
+        "count": 5
+      },
+      {
+        "canonical": "carotte",
+        "count": 5
+      },
+      {
+        "canonical": "laitue",
+        "count": 5
+      },
+      {
+        "canonical": "pêche",
+        "count": 5
+      },
+      {
+        "canonical": "prune",
+        "count": 5
+      },
+      {
+        "canonical": "fraise",
+        "count": 5
+      },
+      {
+        "canonical": "basilic",
+        "count": 5
+      },
+      {
+        "canonical": "menthe",
+        "count": 5
+      },
+      {
+        "canonical": "chou blanc",
+        "count": 4
+      },
+      {
+        "canonical": "thym",
+        "count": 4
+      },
+      {
+        "canonical": "romarin",
+        "count": 4
+      },
+      {
+        "canonical": "persil",
+        "count": 4
+      },
+      {
+        "canonical": "coriandre",
+        "count": 4
+      },
+      {
+        "canonical": "aneth",
+        "count": 4
+      },
+      {
+        "canonical": "fenouil",
+        "count": 4
+      },
+      {
+        "canonical": "bière",
+        "count": 4
+      },
+      {
+        "canonical": "aubergine",
+        "count": 3
+      },
+      {
+        "canonical": "oignon",
+        "count": 3
+      },
+      {
+        "canonical": "pomme de terre",
+        "count": 3
+      },
+      {
+        "canonical": "ciboulette",
+        "count": 3
+      },
+      {
+        "canonical": "origan",
+        "count": 3
+      },
+      {
+        "canonical": "sauge",
+        "count": 3
+      },
+      {
+        "canonical": "estragon",
+        "count": 3
+      },
+      {
+        "canonical": "avoine",
+        "count": 3
+      },
+      {
+        "canonical": "poulet",
+        "count": 3
+      },
+      {
+        "canonical": "potiron",
+        "count": 2
+      },
+      {
+        "canonical": "courge",
+        "count": 2
+      },
+      {
+        "canonical": "brocoli",
+        "count": 2
+      },
+      {
+        "canonical": "ail",
+        "count": 2
+      },
+      {
+        "canonical": "laurier",
+        "count": 2
+      },
+      {
+        "canonical": "verveine",
+        "count": 2
+      },
+      {
+        "canonical": "soja",
+        "count": 2
+      },
+      {
+        "canonical": "amande",
+        "count": 2
+      },
+      {
+        "canonical": "œuf",
+        "count": 2
+      },
+      {
+        "canonical": "cacao",
+        "count": 2
+      }
+    ],
+    "archetypes_by_cultivar": [
+      {
+        "cultivar": "lait de chèvre",
+        "count": 3
+      },
+      {
+        "cultivar": "lait de brebis",
+        "count": 3
+      },
+      {
+        "cultivar": "morue",
+        "count": 1
+      }
+    ],
+    "orphan_archetypes": []
+  }
+}

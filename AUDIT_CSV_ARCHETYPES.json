@@ -1,0 +1,1588 @@
+{
+  "date": "2025-11-03T17:46:14.693Z",
+  "total_archetypes": 289,
+  "problems": {
+    "archetype_generique": [
+      {
+        "id": "289",
+        "name": "Archetype générique « À classer »",
+        "canonical_id": "14010",
+        "issue": "Archetype fourre-tout à supprimer"
+      }
+    ],
+    "vins_et_spiritueux_mal_classes": [
+      {
+        "id": "309",
+        "name": "cognac",
+        "canonical_id": "1057 (raisin)",
+        "issue": "Devrait avoir son propre canonical (vin, cognac) ou archetype sous \"alcool\""
+      },
+      {
+        "id": "331",
+        "name": "vin blanc",
+        "canonical_id": "1057 (raisin)",
+        "issue": "Devrait avoir son propre canonical (vin, cognac) ou archetype sous \"alcool\""
+      },
+      {
+        "id": "332",
+        "name": "vin rouge",
+        "canonical_id": "1057 (raisin)",
+        "issue": "Devrait avoir son propre canonical (vin, cognac) ou archetype sous \"alcool\""
+      }
+    ],
+    "yaourts_lait_specifique_mal_lies": [
+      {
+        "id": "210",
+        "name": "Yaourt lait de brebis",
+        "canonical_id": "7001",
+        "cultivar_id": "NULL",
+        "issue": "Devrait être lié au cultivar correspondant (lait de chèvre/brebis)"
+      },
+      {
+        "id": "211",
+        "name": "Yaourt lait de chèvre",
+        "canonical_id": "7001",
+        "cultivar_id": "NULL",
+        "issue": "Devrait être lié au cultivar correspondant (lait de chèvre/brebis)"
+      }
+    ],
+    "fromages_sans_distinction_lait": [
+      {
+        "id": "237",
+        "name": "Bûche de chèvre sec",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "211",
+        "name": "Yaourt lait de chèvre",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "316",
+        "name": "fromage blanc",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "215",
+        "name": "Fromage blanc 0%",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "216",
+        "name": "Fromage blanc 20%",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "217",
+        "name": "Fromage blanc 40%",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "234",
+        "name": "Fromage à tartiner nature",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "235",
+        "name": "Bûche de chèvre fraîche",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "236",
+        "name": "Bûche de chèvre demi-sec",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "270",
+        "name": "Comté",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "272",
+        "name": "Emmental",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "276",
+        "name": "Roquefort",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "238",
+        "name": "Crottin de chèvre",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "240",
+        "name": "Camembert",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      },
+      {
+        "id": "241",
+        "name": "Brie",
+        "canonical_id": "7001 (lait)",
+        "issue": "Fromage sans distinction lait vache/chèvre/brebis"
+      }
+    ],
+    "pains_pates_trop_generiques": [
+      {
+        "id": "312",
+        "name": "farine",
+        "canonical_id": "5002 (blé)",
+        "issue": "Archetype très générique, vérifier si OK ou si besoin plus de spécificité"
+      },
+      {
+        "id": "321",
+        "name": "pain",
+        "canonical_id": "5002 (blé)",
+        "issue": "Archetype très générique, vérifier si OK ou si besoin plus de spécificité"
+      },
+      {
+        "id": "322",
+        "name": "pâte",
+        "canonical_id": "5002 (blé)",
+        "issue": "Archetype très générique, vérifier si OK ou si besoin plus de spécificité"
+      }
+    ],
+    "archetypes_incomplets": [
+      {
+        "id": "289",
+        "name": "Archetype générique « À classer »",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "299",
+        "name": "bacon",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "306",
+        "name": "chapelure",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "307",
+        "name": "chocolat",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "308",
+        "name": "chocolat noir",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "309",
+        "name": "cognac",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "313",
+        "name": "feta",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "314",
+        "name": "flocon d'avoine",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "315",
+        "name": "fond de veau",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "316",
+        "name": "fromage blanc",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "319",
+        "name": "lardon",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "320",
+        "name": "mozzarella",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "321",
+        "name": "pain",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "322",
+        "name": "pâte",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "323",
+        "name": "pâte brisée",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "324",
+        "name": "pâte feuilletée",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "326",
+        "name": "poudre d'amande",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "327",
+        "name": "sauce tomate",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "329",
+        "name": "semoule",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "330",
+        "name": "spaghetti",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "331",
+        "name": "vin blanc",
+        "issue": "Aucune durée de conservation définie"
+      },
+      {
+        "id": "332",
+        "name": "vin rouge",
+        "issue": "Aucune durée de conservation définie"
+      }
+    ],
+    "noms_suspects": [
+      {
+        "id": "289",
+        "name": "Archetype générique « À classer »",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "14",
+        "name": "Aubergines confites",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "15",
+        "name": "Aubergines grillées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "16",
+        "name": "Purée d'aubergines",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "105",
+        "name": "Basilic lacto-fermenté",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "200",
+        "name": "Crème UHT liquide",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "74",
+        "name": "Compote de cerises",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "222",
+        "name": "Lait d'avoine",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "76",
+        "name": "Jus de cerise",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "102",
+        "name": "Basilic congelé haché",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "185",
+        "name": "Lait entier UHT",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "186",
+        "name": "Lait demi-écrémé UHT",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "187",
+        "name": "Lait écrémé UHT",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "41",
+        "name": "Salade lavée et essorée sous vide",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "188",
+        "name": "Lait entier frais",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "88",
+        "name": "Fraises séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "89",
+        "name": "Compote de fraises",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "91",
+        "name": "Fraises congelées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "92",
+        "name": "Coulis de fraises",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "42",
+        "name": "Salade cuite vapeur",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "116",
+        "name": "Menthe congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "118",
+        "name": "Infusion de menthe concentrée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "43",
+        "name": "Poudre de laitue séchée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "44",
+        "name": "Jus de laitue",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "29",
+        "name": "Carottes râpées sous vide",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "189",
+        "name": "Lait demi-écrémé frais",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "190",
+        "name": "Lait écrémé frais",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "191",
+        "name": "Lait concentré non sucré",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "224",
+        "name": "Lait de coco",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "192",
+        "name": "Lait concentré sucré",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "193",
+        "name": "Lait en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "194",
+        "name": "Lait sans lactose",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "214",
+        "name": "Yaourt aux fruits",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "210",
+        "name": "Yaourt lait de brebis",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "80",
+        "name": "Confiture de pêches",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "67",
+        "name": "Abricots séchés",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "70",
+        "name": "Jus d'abricot",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "122",
+        "name": "Sel au persil",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "61",
+        "name": "Poires séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "62",
+        "name": "Compote de poires",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "64",
+        "name": "Jus de poire",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "72",
+        "name": "Purée d'abricots congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "78",
+        "name": "Pêches séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "79",
+        "name": "Compote de pêches",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "81",
+        "name": "Jus de pêche",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "66",
+        "name": "Purée de poires congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "9",
+        "name": "Paprika (poudre de poivron)",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "10",
+        "name": "Poivrons grillés",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "12",
+        "name": "Poivrons lacto-fermentés",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "13",
+        "name": "Purée de poivrons congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "51",
+        "name": "Pommes séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "52",
+        "name": "Compote de pommes",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "55",
+        "name": "Jus de pomme",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "57",
+        "name": "Purée de pommes congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "58",
+        "name": "Chips de pomme séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "59",
+        "name": "Pommes au four",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "237",
+        "name": "Bûche de chèvre sec",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "98",
+        "name": "Poudre de pomme",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "47",
+        "name": "Frites surgelées maison",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "3",
+        "name": "Coulis de tomate",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "93",
+        "name": "Raisins secs",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "6",
+        "name": "Tomates lacto-fermentées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "95",
+        "name": "Jus de raisin",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "8",
+        "name": "Jus de tomate",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "97",
+        "name": "Raisins congelés",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "45",
+        "name": "Purée de pommes de terre congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "108",
+        "name": "Thym congelé",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "109",
+        "name": "Sel au thym",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "46",
+        "name": "Chips de pommes de terre séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "82",
+        "name": "Pêches au sirop maison",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "86",
+        "name": "Jus de prune",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "68",
+        "name": "Compote d'abricots",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "83",
+        "name": "Pruneaux (prunes séchées)",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "32",
+        "name": "Purée de brocoli congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "49",
+        "name": "Poudre de brocoli",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "34",
+        "name": "Jus de chou",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "30",
+        "name": "Choucroute crue",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "31",
+        "name": "Chou blanc lacto-fermenté",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "33",
+        "name": "Chips de chou séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "132",
+        "name": "Ciboulette congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "24",
+        "name": "Chips de butternut séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "19",
+        "name": "Purée de butternut congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "17",
+        "name": "Chips de courgette séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "84",
+        "name": "Compote de prunes",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "22",
+        "name": "Courgettes grillées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "23",
+        "name": "Courgettes lacto-fermentées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "50",
+        "name": "Courgettes déshydratées en dés",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "40",
+        "name": "Échalotes confites",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "211",
+        "name": "Yaourt lait de chèvre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "141",
+        "name": "Estragon congelé",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "121",
+        "name": "Persil congelé haché",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "148",
+        "name": "Fenouil congelé",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "20",
+        "name": "Purée de potimarron congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "18",
+        "name": "Purée de potiron congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "21",
+        "name": "Soupe de potiron",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "112",
+        "name": "Romarin congelé",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "113",
+        "name": "Sel au romarin",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "139",
+        "name": "Sel à la sauge",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "25",
+        "name": "Carottes lacto-fermentées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "26",
+        "name": "Chips de carotte séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "149",
+        "name": "Verveine séchée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "150",
+        "name": "Sirop de verveine",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "27",
+        "name": "Jus de carotte",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "28",
+        "name": "Purée de carottes congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "35",
+        "name": "Poudre d'oignon",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "36",
+        "name": "Oignons caramélisés",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "37",
+        "name": "Oignons confits",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "73",
+        "name": "Cerises séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "125",
+        "name": "Coriandre congelée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "128",
+        "name": "Aneth congelé",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "39",
+        "name": "Poudre d'ail",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "38",
+        "name": "Ail confit",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "69",
+        "name": "Confiture d'abricots",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "71",
+        "name": "Abricots au sirop maison",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "101",
+        "name": "Basilic séché",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "103",
+        "name": "Basilic en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "104",
+        "name": "Huile de basilic infusée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "75",
+        "name": "Confiture de cerises",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "77",
+        "name": "Cerises au sirop maison",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "100",
+        "name": "Gelée de cerise",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "123",
+        "name": "Coriandre séchée (feuilles)",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "124",
+        "name": "Coriandre en poudre (feuilles)",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "90",
+        "name": "Confiture de fraises",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "114",
+        "name": "Menthe séchée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "115",
+        "name": "Menthe en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "117",
+        "name": "Sirop de menthe",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "119",
+        "name": "Persil séché",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "120",
+        "name": "Persil en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "63",
+        "name": "Confiture de poires",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "65",
+        "name": "Poires au sirop maison",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "11",
+        "name": "Poivrons séchés",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "53",
+        "name": "Compote de pommes stérilisée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "54",
+        "name": "Confiture de pommes",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "56",
+        "name": "Jus de pomme pasteurisé",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "60",
+        "name": "Gelée de pommes",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "94",
+        "name": "Confiture de raisin",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "96",
+        "name": "Jus de raisin pasteurisé",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "85",
+        "name": "Confiture de prunes",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "87",
+        "name": "Prunes au sirop maison",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "106",
+        "name": "Thym séché",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "107",
+        "name": "Thym en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "4",
+        "name": "Concentré de tomate",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "131",
+        "name": "Ciboulette séchée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "133",
+        "name": "Ciboulette lyophilisée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "140",
+        "name": "Estragon séché",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "145",
+        "name": "Fenouil séché (herbe)",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "146",
+        "name": "Fenouil en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "147",
+        "name": "Graines de fenouil moulues",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "143",
+        "name": "Laurier séché",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "144",
+        "name": "Laurier en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "134",
+        "name": "Origan séché",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "135",
+        "name": "Origan en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "136",
+        "name": "Huile d'origan",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "110",
+        "name": "Romarin séché",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "111",
+        "name": "Romarin en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "137",
+        "name": "Sauge séchée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "138",
+        "name": "Sauge en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "225",
+        "name": "Crème de soja",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "226",
+        "name": "Crème d'avoine",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "197",
+        "name": "Crème épaisse 35%",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "201",
+        "name": "Crème fouettée en bombe",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "202",
+        "name": "Crème anglaise",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "203",
+        "name": "Chantilly",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "212",
+        "name": "Skyr nature",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "215",
+        "name": "Fromage blanc 0%",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "216",
+        "name": "Fromage blanc 20%",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "217",
+        "name": "Fromage blanc 40%",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "218",
+        "name": "Petit-suisse",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "219",
+        "name": "Faisselle",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "227",
+        "name": "Kéfir",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "230",
+        "name": "Cottage cheese",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "231",
+        "name": "Ricotta",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "232",
+        "name": "Mascarpone",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "233",
+        "name": "Cream cheese",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "234",
+        "name": "Fromage à tartiner nature",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "235",
+        "name": "Bûche de chèvre fraîche",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "236",
+        "name": "Bûche de chèvre demi-sec",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "242",
+        "name": "Coulommiers",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "243",
+        "name": "Chaource",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "244",
+        "name": "Saint-Marcellin",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "245",
+        "name": "Brillat-Savarin",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "246",
+        "name": "Neufchâtel",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "247",
+        "name": "Explorateur",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "248",
+        "name": "Munster",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "249",
+        "name": "Époisses",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "250",
+        "name": "Maroilles",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "251",
+        "name": "Pont-l'Évêque",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "252",
+        "name": "Livarot",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "253",
+        "name": "Reblochon",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "254",
+        "name": "Mont d'Or",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "255",
+        "name": "Vacherin",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "256",
+        "name": "Cantal",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "257",
+        "name": "Saint-Nectaire",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "258",
+        "name": "Morbier",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "259",
+        "name": "Tomme de Savoie",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "260",
+        "name": "Raclette",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "261",
+        "name": "Cheddar",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "126",
+        "name": "Graines de coriandre moulues",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "262",
+        "name": "Gouda",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "263",
+        "name": "Edam",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "264",
+        "name": "Mimolette",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "265",
+        "name": "Ossau-Iraty",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "266",
+        "name": "Provolone",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "267",
+        "name": "Manchego",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "268",
+        "name": "Abondance",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "269",
+        "name": "Beaufort",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "270",
+        "name": "Comté",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "271",
+        "name": "Gruyère",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "272",
+        "name": "Emmental",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "273",
+        "name": "Parmesan",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "274",
+        "name": "Pecorino",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "275",
+        "name": "Fontina",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "276",
+        "name": "Roquefort",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "277",
+        "name": "Bleu d'Auvergne",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "127",
+        "name": "Aneth séché",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "238",
+        "name": "Crottin de chèvre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "239",
+        "name": "Sainte-Maure",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "240",
+        "name": "Camembert",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "241",
+        "name": "Brie",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "129",
+        "name": "Aneth en poudre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "130",
+        "name": "Graines d'aneth moulues",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "278",
+        "name": "Fourme d'Ambert",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "279",
+        "name": "Gorgonzola",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "280",
+        "name": "Valençay",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "281",
+        "name": "Rocamadour",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "282",
+        "name": "Pouligny-Saint-Pierre",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "283",
+        "name": "Picodon",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "284",
+        "name": "Pélardon",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "195",
+        "name": "Crème liquide 30%",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "196",
+        "name": "Crème liquide 15%",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "198",
+        "name": "Crème fraîche épaisse",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "199",
+        "name": "Crème fraîche légère",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "220",
+        "name": "Lait de soja",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "228",
+        "name": "Lait fermenté",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "229",
+        "name": "Lait ribot",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "221",
+        "name": "Lait d'amande",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "205",
+        "name": "Yaourt nature entier",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "206",
+        "name": "Yaourt nature 0%",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "207",
+        "name": "Yaourt nature brassé",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "142",
+        "name": "Vinaigre à l'estragon",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "1",
+        "name": "Tomates séchées",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "2",
+        "name": "Tomates confites",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "5",
+        "name": "Tomates pelées en bocaux",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "48",
+        "name": "Pâte de tomate séchée",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "99",
+        "name": "Poudre d'abricot",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "208",
+        "name": "Yaourt grec nature",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "209",
+        "name": "Yaourt grec 0%",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "213",
+        "name": "Yaourt vanille",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "204",
+        "name": "Beurre doux",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "223",
+        "name": "Lait de riz",
+        "issue": "Nom avec formatage suspect"
+      },
+      {
+        "id": "7",
+        "name": "Ketchup maison",
+        "issue": "Nom avec formatage suspect"
+      }
+    ]
+  },
+  "statistics": {
+    "by_canonical": {
+      "1001": 3,
+      "1004": 5,
+      "1005": 5,
+      "1008": 6,
+      "1009": 7,
+      "1018": 4,
+      "1022": 5,
+      "1031": 4,
+      "1037": 5,
+      "1043": 1,
+      "1048": 5,
+      "1049": 4,
+      "1050": 6,
+      "1051": 5,
+      "1052": 11,
+      "1053": 3,
+      "1054": 5,
+      "1057": 8,
+      "1058": 4,
+      "1059": 10,
+      "2003": 2,
+      "2009": 4,
+      "2018": 3,
+      "2024": 2,
+      "2026": 4,
+      "2031": 1,
+      "2033": 3,
+      "2034": 4,
+      "2039": 2,
+      "2041": 3,
+      "2043": 3,
+      "2051": 4,
+      "2052": 1,
+      "2053": 2,
+      "2054": 1,
+      "2057": 4,
+      "2061": 3,
+      "2062": 1,
+      "2067": 2,
+      "4001": 1,
+      "4003": 1,
+      "4005": 2,
+      "5001": 3,
+      "5002": 8,
+      "7001": 103,
+      "8002": 4,
+      "8005": 2,
+      "8015": 1,
+      "10001": 2,
+      "11001": 2,
+      "14010": 1,
+      "14011": 2,
+      "14027": 2
+    }
+  }
+}
