@@ -1,1 +1,4 @@
 id,canonical_food_id,cultivar_name,synonyms,notes,created_at,updated_at,density_g_per_ml,grams_per_unit
+1,7001,lait de chèvre,,"Lait de chèvre - Goût différent du lait de vache, utilisé pour fromages spécifiques (bûches, crottins, etc.)",2025-10-30 17:26:22.680972+00,2025-10-30 17:26:22.680972+00,,
+2,7001,lait de brebis,,"Lait de brebis - Utilisé pour fromages spécifiques comme Roquefort, Ossau-Iraty, Pélardon",2025-10-30 17:26:22.680972+00,2025-10-30 17:26:22.680972+00,,
+3,2004,morue,,Morue - Cabillaud salé et séché. Nécessite dessalage avant utilisation. Goût et texture différents du cabillaud frais.,2025-10-30 17:26:22.680972+00,2025-10-30 17:26:22.680972+00,,
