@@ -1,0 +1,2206 @@
+{
+  "total": 414,
+  "process_generiques": {
+    "total": 100,
+    "by_category": {
+      "produits_laitiers": [
+        {
+          "id": 185,
+          "name": "Lait entier UHT",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 186,
+          "name": "Lait demi-écrémé UHT",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 187,
+          "name": "Lait écrémé UHT",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 188,
+          "name": "Lait entier frais",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 189,
+          "name": "Lait demi-écrémé frais",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 190,
+          "name": "Lait écrémé frais",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 191,
+          "name": "Lait concentré non sucré",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 192,
+          "name": "Lait concentré sucré",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 193,
+          "name": "Lait en poudre",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 194,
+          "name": "Lait sans lactose",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 195,
+          "name": "Crème liquide 30%",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 196,
+          "name": "Crème liquide 15%",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 197,
+          "name": "Crème épaisse 35%",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 198,
+          "name": "Crème fraîche épaisse",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 199,
+          "name": "Crème fraîche légère",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 200,
+          "name": "Crème UHT liquide",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 201,
+          "name": "Crème fouettée en bombe",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 202,
+          "name": "Crème anglaise",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 203,
+          "name": "Chantilly",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 204,
+          "name": "Beurre doux",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 205,
+          "name": "Yaourt nature entier",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 206,
+          "name": "Yaourt nature 0%",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 207,
+          "name": "Yaourt nature brassé",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 208,
+          "name": "Yaourt grec nature",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 209,
+          "name": "Yaourt grec 0%",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 212,
+          "name": "Skyr nature",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 213,
+          "name": "Yaourt vanille",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 214,
+          "name": "Yaourt aux fruits",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 218,
+          "name": "Petit-suisse",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 219,
+          "name": "Faisselle",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 227,
+          "name": "Kéfir",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 228,
+          "name": "Lait fermenté",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 229,
+          "name": "Lait ribot",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 230,
+          "name": "Cottage cheese",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 231,
+          "name": "Ricotta",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 232,
+          "name": "Mascarpone",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 233,
+          "name": "Cream cheese",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 240,
+          "name": "Camembert",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 241,
+          "name": "Brie",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 242,
+          "name": "Coulommiers",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 243,
+          "name": "Chaource",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 244,
+          "name": "Saint-Marcellin",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 245,
+          "name": "Brillat-Savarin",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 246,
+          "name": "Neufchâtel",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 247,
+          "name": "Explorateur",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 248,
+          "name": "Munster",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 249,
+          "name": "Époisses",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 250,
+          "name": "Maroilles",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 251,
+          "name": "Pont-l'Évêque",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 252,
+          "name": "Livarot",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 253,
+          "name": "Reblochon",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 254,
+          "name": "Mont d'Or",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 255,
+          "name": "Vacherin",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 256,
+          "name": "Cantal",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 257,
+          "name": "Saint-Nectaire",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 258,
+          "name": "Morbier",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 259,
+          "name": "Tomme de Savoie",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 260,
+          "name": "Raclette",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 261,
+          "name": "Cheddar",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 262,
+          "name": "Gouda",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 263,
+          "name": "Edam",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 264,
+          "name": "Mimolette",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 266,
+          "name": "Provolone",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 267,
+          "name": "Manchego",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 268,
+          "name": "Abondance",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 269,
+          "name": "Beaufort",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 270,
+          "name": "Comté",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 271,
+          "name": "Gruyère",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 272,
+          "name": "Emmental",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 273,
+          "name": "Parmesan",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 275,
+          "name": "Fontina",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 277,
+          "name": "Bleu d'Auvergne",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 278,
+          "name": "Fourme d'Ambert",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 279,
+          "name": "Gorgonzola",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        }
+      ],
+      "fromages": [
+        {
+          "id": 215,
+          "name": "Fromage blanc 0%",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 216,
+          "name": "Fromage blanc 20%",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 217,
+          "name": "Fromage blanc 40%",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 234,
+          "name": "Fromage à tartiner nature",
+          "origin": "lait",
+          "current_process": "transformation de base"
+        }
+      ],
+      "cereales": [
+        {
+          "id": 222,
+          "name": "Lait d'avoine",
+          "origin": "avoine",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 223,
+          "name": "Lait de riz",
+          "origin": "riz",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 226,
+          "name": "Crème d'avoine",
+          "origin": "avoine",
+          "current_process": "transformation de base"
+        }
+      ],
+      "autres": [
+        {
+          "id": 210,
+          "name": "Yaourt lait de brebis",
+          "origin": "lait de brebis",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 211,
+          "name": "Yaourt lait de chèvre",
+          "origin": "lait de chèvre",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 220,
+          "name": "Lait de soja",
+          "origin": "soja",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 221,
+          "name": "Lait d'amande",
+          "origin": "amande",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 224,
+          "name": "Lait de coco",
+          "origin": "noix de coco",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 225,
+          "name": "Crème de soja",
+          "origin": "soja",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 235,
+          "name": "Bûche de chèvre fraîche",
+          "origin": "lait de chèvre",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 236,
+          "name": "Bûche de chèvre demi-sec",
+          "origin": "lait de chèvre",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 237,
+          "name": "Bûche de chèvre sec",
+          "origin": "lait de chèvre",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 238,
+          "name": "Crottin de chèvre",
+          "origin": "lait de chèvre",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 239,
+          "name": "Sainte-Maure",
+          "origin": "lait de chèvre",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 265,
+          "name": "Ossau-Iraty",
+          "origin": "lait de brebis",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 274,
+          "name": "Pecorino",
+          "origin": "lait de brebis",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 276,
+          "name": "Roquefort",
+          "origin": "lait de brebis",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 280,
+          "name": "Valençay",
+          "origin": "lait de chèvre",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 281,
+          "name": "Rocamadour",
+          "origin": "lait de chèvre",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 282,
+          "name": "Pouligny-Saint-Pierre",
+          "origin": "lait de chèvre",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 283,
+          "name": "Picodon",
+          "origin": "lait de chèvre",
+          "current_process": "transformation de base"
+        },
+        {
+          "id": 284,
+          "name": "Pélardon",
+          "origin": "lait de brebis",
+          "current_process": "transformation de base"
+        }
+      ]
+    }
+  },
+  "open_shelf_life": {
+    "missing_fridge": {
+      "total": 107,
+      "by_type": {
+        "legumes": [
+          {
+            "id": 1,
+            "name": "Tomates séchées",
+            "origin": "tomate",
+            "shelf_life_fridge": 14
+          },
+          {
+            "id": 2,
+            "name": "Tomates confites",
+            "origin": "tomate",
+            "shelf_life_fridge": 14
+          },
+          {
+            "id": 3,
+            "name": "Coulis de tomate",
+            "origin": "tomate",
+            "shelf_life_fridge": 14
+          },
+          {
+            "id": 5,
+            "name": "Tomates pelées en bocaux",
+            "origin": "tomate",
+            "shelf_life_fridge": 14
+          },
+          {
+            "id": 6,
+            "name": "Tomates lacto-fermentées",
+            "origin": "tomate",
+            "shelf_life_fridge": 14
+          },
+          {
+            "id": 8,
+            "name": "Jus de tomate",
+            "origin": "tomate",
+            "shelf_life_fridge": 14
+          },
+          {
+            "id": 9,
+            "name": "Paprika (poudre de poivron)",
+            "origin": "poivron",
+            "shelf_life_fridge": 365
+          },
+          {
+            "id": 10,
+            "name": "Poivrons grillés",
+            "origin": "poivron",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 12,
+            "name": "Poivrons lacto-fermentés",
+            "origin": "poivron",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 13,
+            "name": "Purée de poivrons congelée",
+            "origin": "poivron",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 14,
+            "name": "Aubergines confites",
+            "origin": "aubergine",
+            "shelf_life_fridge": 14
+          },
+          {
+            "id": 15,
+            "name": "Aubergines grillées",
+            "origin": "aubergine",
+            "shelf_life_fridge": 5
+          },
+          {
+            "id": 16,
+            "name": "Purée d'aubergines",
+            "origin": "aubergine",
+            "shelf_life_fridge": 5
+          },
+          {
+            "id": 17,
+            "name": "Chips de courgette séchées",
+            "origin": "courgette",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 22,
+            "name": "Courgettes grillées",
+            "origin": "courgette",
+            "shelf_life_fridge": 5
+          },
+          {
+            "id": 23,
+            "name": "Courgettes lacto-fermentées",
+            "origin": "courgette",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 25,
+            "name": "Carottes lacto-fermentées",
+            "origin": "carotte",
+            "shelf_life_fridge": 21
+          },
+          {
+            "id": 26,
+            "name": "Chips de carotte séchées",
+            "origin": "carotte",
+            "shelf_life_fridge": 21
+          },
+          {
+            "id": 27,
+            "name": "Jus de carotte",
+            "origin": "carotte",
+            "shelf_life_fridge": 21
+          },
+          {
+            "id": 28,
+            "name": "Purée de carottes congelée",
+            "origin": "carotte",
+            "shelf_life_fridge": 21
+          },
+          {
+            "id": 29,
+            "name": "Carottes râpées sous vide",
+            "origin": "carotte",
+            "shelf_life_fridge": 21
+          },
+          {
+            "id": 35,
+            "name": "Poudre d'oignon",
+            "origin": "oignon",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 36,
+            "name": "Oignons caramélisés",
+            "origin": "oignon",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 37,
+            "name": "Oignons confits",
+            "origin": "oignon",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 45,
+            "name": "Purée de pommes de terre congelée",
+            "origin": "pomme de terre",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 46,
+            "name": "Chips de pommes de terre séchées",
+            "origin": "pomme de terre",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 47,
+            "name": "Frites surgelées maison",
+            "origin": "pomme de terre",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 48,
+            "name": "Pâte de tomate séchée",
+            "origin": "tomate",
+            "shelf_life_fridge": 14
+          },
+          {
+            "id": 50,
+            "name": "Courgettes déshydratées en dés",
+            "origin": "courgette",
+            "shelf_life_fridge": 120
+          }
+        ],
+        "autres": [
+          {
+            "id": 18,
+            "name": "Purée de potiron congelée",
+            "origin": "potiron",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 19,
+            "name": "Purée de butternut congelée",
+            "origin": "courge",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 20,
+            "name": "Purée de potimarron congelée",
+            "origin": "potimarron",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 21,
+            "name": "Soupe de potiron",
+            "origin": "potiron",
+            "shelf_life_fridge": 3
+          },
+          {
+            "id": 24,
+            "name": "Chips de butternut séchées",
+            "origin": "courge",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 30,
+            "name": "Choucroute crue",
+            "origin": "chou blanc",
+            "shelf_life_fridge": 120
+          },
+          {
+            "id": 31,
+            "name": "Chou blanc lacto-fermenté",
+            "origin": "chou blanc",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 32,
+            "name": "Purée de brocoli congelée",
+            "origin": "brocoli",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 33,
+            "name": "Chips de chou séchées",
+            "origin": "chou blanc",
+            "shelf_life_fridge": 60
+          },
+          {
+            "id": 34,
+            "name": "Jus de chou",
+            "origin": "chou blanc",
+            "shelf_life_fridge": 3
+          },
+          {
+            "id": 38,
+            "name": "Ail confit",
+            "origin": "ail",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 39,
+            "name": "Poudre d'ail",
+            "origin": "ail",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 40,
+            "name": "Échalotes confites",
+            "origin": "échalote",
+            "shelf_life_fridge": 14
+          },
+          {
+            "id": 42,
+            "name": "Salade cuite vapeur",
+            "origin": "laitue",
+            "shelf_life_fridge": 3
+          },
+          {
+            "id": 49,
+            "name": "Poudre de brocoli",
+            "origin": "brocoli",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 51,
+            "name": "Pommes séchées",
+            "origin": "pomme",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 52,
+            "name": "Compote de pommes",
+            "origin": "pomme",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 55,
+            "name": "Jus de pomme",
+            "origin": "pomme",
+            "shelf_life_fridge": 5
+          },
+          {
+            "id": 57,
+            "name": "Purée de pommes congelée",
+            "origin": "pomme",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 58,
+            "name": "Chips de pomme séchées",
+            "origin": "pomme",
+            "shelf_life_fridge": 120
+          },
+          {
+            "id": 59,
+            "name": "Pommes au four",
+            "origin": "pomme",
+            "shelf_life_fridge": 3
+          },
+          {
+            "id": 61,
+            "name": "Poires séchées",
+            "origin": "poire",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 62,
+            "name": "Compote de poires",
+            "origin": "poire",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 64,
+            "name": "Jus de poire",
+            "origin": "poire",
+            "shelf_life_fridge": 5
+          },
+          {
+            "id": 66,
+            "name": "Purée de poires congelée",
+            "origin": "poire",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 67,
+            "name": "Abricots séchés",
+            "origin": "abricot",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 68,
+            "name": "Compote d'abricots",
+            "origin": "abricot",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 69,
+            "name": "Confiture d'abricots",
+            "origin": "abricot",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 70,
+            "name": "Jus d'abricot",
+            "origin": "abricot",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 71,
+            "name": "Abricots au sirop maison",
+            "origin": "abricot",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 72,
+            "name": "Purée d'abricots congelée",
+            "origin": "abricot",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 73,
+            "name": "Cerises séchées",
+            "origin": "cerise",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 74,
+            "name": "Compote de cerises",
+            "origin": "cerise",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 76,
+            "name": "Jus de cerise",
+            "origin": "cerise",
+            "shelf_life_fridge": 5
+          },
+          {
+            "id": 78,
+            "name": "Pêches séchées",
+            "origin": "pêche",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 79,
+            "name": "Compote de pêches",
+            "origin": "pêche",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 80,
+            "name": "Confiture de pêches",
+            "origin": "pêche",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 81,
+            "name": "Jus de pêche",
+            "origin": "pêche",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 82,
+            "name": "Pêches au sirop maison",
+            "origin": "pêche",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 83,
+            "name": "Pruneaux (prunes séchées)",
+            "origin": "prune",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 84,
+            "name": "Compote de prunes",
+            "origin": "prune",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 85,
+            "name": "Confiture de prunes",
+            "origin": "prune",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 86,
+            "name": "Jus de prune",
+            "origin": "prune",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 87,
+            "name": "Prunes au sirop maison",
+            "origin": "prune",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 88,
+            "name": "Fraises séchées",
+            "origin": "fraise",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 89,
+            "name": "Compote de fraises",
+            "origin": "fraise",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 91,
+            "name": "Fraises congelées",
+            "origin": "fraise",
+            "shelf_life_fridge": 270
+          },
+          {
+            "id": 92,
+            "name": "Coulis de fraises",
+            "origin": "fraise",
+            "shelf_life_fridge": 5
+          },
+          {
+            "id": 93,
+            "name": "Raisins secs",
+            "origin": "raisin",
+            "shelf_life_fridge": 365
+          },
+          {
+            "id": 95,
+            "name": "Jus de raisin",
+            "origin": "raisin",
+            "shelf_life_fridge": 5
+          },
+          {
+            "id": 97,
+            "name": "Raisins congelés",
+            "origin": "raisin",
+            "shelf_life_fridge": 270
+          },
+          {
+            "id": 98,
+            "name": "Poudre de pomme",
+            "origin": "pomme",
+            "shelf_life_fridge": 365
+          },
+          {
+            "id": 99,
+            "name": "Poudre d'abricot",
+            "origin": "abricot",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 105,
+            "name": "Basilic lacto-fermenté",
+            "origin": "basilic",
+            "shelf_life_fridge": 90
+          },
+          {
+            "id": 108,
+            "name": "Thym congelé",
+            "origin": "thym",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 109,
+            "name": "Sel au thym",
+            "origin": "thym",
+            "shelf_life_fridge": 365
+          },
+          {
+            "id": 112,
+            "name": "Romarin congelé",
+            "origin": "romarin",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 113,
+            "name": "Sel au romarin",
+            "origin": "romarin",
+            "shelf_life_fridge": 365
+          },
+          {
+            "id": 116,
+            "name": "Menthe congelée",
+            "origin": "menthe",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 118,
+            "name": "Infusion de menthe concentrée",
+            "origin": "menthe",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 122,
+            "name": "Sel au persil",
+            "origin": "persil",
+            "shelf_life_fridge": 365
+          },
+          {
+            "id": 125,
+            "name": "Coriandre congelée",
+            "origin": "coriandre",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 128,
+            "name": "Aneth congelé",
+            "origin": "aneth",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 132,
+            "name": "Ciboulette congelée",
+            "origin": "ciboulette",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 139,
+            "name": "Sel à la sauge",
+            "origin": "sauge",
+            "shelf_life_fridge": 365
+          },
+          {
+            "id": 141,
+            "name": "Estragon congelé",
+            "origin": "estragon",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 148,
+            "name": "Fenouil congelé",
+            "origin": "fenouil",
+            "shelf_life_fridge": 180
+          },
+          {
+            "id": 321,
+            "name": "pain",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 432,
+            "name": "baguette",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 433,
+            "name": "pain de campagne",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 434,
+            "name": "pain de mie",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 435,
+            "name": "mie de pain",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 436,
+            "name": "mie pain",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 437,
+            "name": "brioche",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 438,
+            "name": "pains burger",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 439,
+            "name": "pain d'épices",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 440,
+            "name": "pain rassis",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          },
+          {
+            "id": 441,
+            "name": "pâte à pain",
+            "origin": "blé",
+            "shelf_life_fridge": 7
+          }
+        ]
+      }
+    },
+    "missing_pantry": {
+      "total": 154,
+      "by_type": {
+        "secs": [
+          {
+            "id": 222,
+            "name": "Lait d'avoine",
+            "origin": "avoine",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 306,
+            "name": "chapelure",
+            "origin": "blé",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 321,
+            "name": "pain",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 322,
+            "name": "pâte",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 323,
+            "name": "pâte brisée",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 324,
+            "name": "pâte feuilletée",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 329,
+            "name": "semoule",
+            "origin": "blé",
+            "shelf_life_pantry": 365
+          },
+          {
+            "id": 330,
+            "name": "spaghetti",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 432,
+            "name": "baguette",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 433,
+            "name": "pain de campagne",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 434,
+            "name": "pain de mie",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 435,
+            "name": "mie de pain",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 436,
+            "name": "mie pain",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 437,
+            "name": "brioche",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 438,
+            "name": "pains burger",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 439,
+            "name": "pain d'épices",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 440,
+            "name": "pain rassis",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 441,
+            "name": "pâte à pain",
+            "origin": "blé",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 457,
+            "name": "pâtes",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 458,
+            "name": "pâtes courtes",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 459,
+            "name": "linguine",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 460,
+            "name": "trofie",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 461,
+            "name": "trofie ou linguine",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 463,
+            "name": "nouilles",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 464,
+            "name": "nouilles chinoises",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 465,
+            "name": "nouilles ramen",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 466,
+            "name": "nouilles soba",
+            "origin": "sarrasin",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 467,
+            "name": "nouilles udon",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 468,
+            "name": "fideos pâtes",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 469,
+            "name": "pâte phyllo",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          },
+          {
+            "id": 470,
+            "name": "pâte à pizza",
+            "origin": "blé",
+            "shelf_life_pantry": 730
+          }
+        ],
+        "alcools": [
+          {
+            "id": 339,
+            "name": "bière",
+            "origin": "bière",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 340,
+            "name": "bière blonde",
+            "origin": "bière",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 341,
+            "name": "bière ambrée",
+            "origin": "bière",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 342,
+            "name": "bière brune",
+            "origin": "bière",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 343,
+            "name": "cidre",
+            "origin": "cidre",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 344,
+            "name": "cidre brut",
+            "origin": "cidre",
+            "shelf_life_pantry": 180
+          }
+        ],
+        "condiments": [
+          {
+            "id": 327,
+            "name": "sauce tomate",
+            "origin": "tomate",
+            "shelf_life_pantry": 730
+          }
+        ],
+        "autres": [
+          {
+            "id": 1,
+            "name": "Tomates séchées",
+            "origin": "tomate",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 2,
+            "name": "Tomates confites",
+            "origin": "tomate",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 3,
+            "name": "Coulis de tomate",
+            "origin": "tomate",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 5,
+            "name": "Tomates pelées en bocaux",
+            "origin": "tomate",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 6,
+            "name": "Tomates lacto-fermentées",
+            "origin": "tomate",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 7,
+            "name": "Ketchup maison",
+            "origin": "tomate",
+            "shelf_life_pantry": 365
+          },
+          {
+            "id": 8,
+            "name": "Jus de tomate",
+            "origin": "tomate",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 9,
+            "name": "Paprika (poudre de poivron)",
+            "origin": "poivron",
+            "shelf_life_pantry": 365
+          },
+          {
+            "id": 10,
+            "name": "Poivrons grillés",
+            "origin": "poivron",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 12,
+            "name": "Poivrons lacto-fermentés",
+            "origin": "poivron",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 13,
+            "name": "Purée de poivrons congelée",
+            "origin": "poivron",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 14,
+            "name": "Aubergines confites",
+            "origin": "aubergine",
+            "shelf_life_pantry": 14
+          },
+          {
+            "id": 15,
+            "name": "Aubergines grillées",
+            "origin": "aubergine",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 16,
+            "name": "Purée d'aubergines",
+            "origin": "aubergine",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 17,
+            "name": "Chips de courgette séchées",
+            "origin": "courgette",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 18,
+            "name": "Purée de potiron congelée",
+            "origin": "potiron",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 19,
+            "name": "Purée de butternut congelée",
+            "origin": "courge",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 20,
+            "name": "Purée de potimarron congelée",
+            "origin": "potimarron",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 21,
+            "name": "Soupe de potiron",
+            "origin": "potiron",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 22,
+            "name": "Courgettes grillées",
+            "origin": "courgette",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 23,
+            "name": "Courgettes lacto-fermentées",
+            "origin": "courgette",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 24,
+            "name": "Chips de butternut séchées",
+            "origin": "courge",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 25,
+            "name": "Carottes lacto-fermentées",
+            "origin": "carotte",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 26,
+            "name": "Chips de carotte séchées",
+            "origin": "carotte",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 27,
+            "name": "Jus de carotte",
+            "origin": "carotte",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 28,
+            "name": "Purée de carottes congelée",
+            "origin": "carotte",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 29,
+            "name": "Carottes râpées sous vide",
+            "origin": "carotte",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 30,
+            "name": "Choucroute crue",
+            "origin": "chou blanc",
+            "shelf_life_pantry": 120
+          },
+          {
+            "id": 31,
+            "name": "Chou blanc lacto-fermenté",
+            "origin": "chou blanc",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 32,
+            "name": "Purée de brocoli congelée",
+            "origin": "brocoli",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 33,
+            "name": "Chips de chou séchées",
+            "origin": "chou blanc",
+            "shelf_life_pantry": 60
+          },
+          {
+            "id": 34,
+            "name": "Jus de chou",
+            "origin": "chou blanc",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 35,
+            "name": "Poudre d'oignon",
+            "origin": "oignon",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 36,
+            "name": "Oignons caramélisés",
+            "origin": "oignon",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 37,
+            "name": "Oignons confits",
+            "origin": "oignon",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 38,
+            "name": "Ail confit",
+            "origin": "ail",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 39,
+            "name": "Poudre d'ail",
+            "origin": "ail",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 40,
+            "name": "Échalotes confites",
+            "origin": "échalote",
+            "shelf_life_pantry": 14
+          },
+          {
+            "id": 42,
+            "name": "Salade cuite vapeur",
+            "origin": "laitue",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 45,
+            "name": "Purée de pommes de terre congelée",
+            "origin": "pomme de terre",
+            "shelf_life_pantry": 60
+          },
+          {
+            "id": 46,
+            "name": "Chips de pommes de terre séchées",
+            "origin": "pomme de terre",
+            "shelf_life_pantry": 60
+          },
+          {
+            "id": 47,
+            "name": "Frites surgelées maison",
+            "origin": "pomme de terre",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 48,
+            "name": "Pâte de tomate séchée",
+            "origin": "tomate",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 49,
+            "name": "Poudre de brocoli",
+            "origin": "brocoli",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 50,
+            "name": "Courgettes déshydratées en dés",
+            "origin": "courgette",
+            "shelf_life_pantry": 120
+          },
+          {
+            "id": 51,
+            "name": "Pommes séchées",
+            "origin": "pomme",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 52,
+            "name": "Compote de pommes",
+            "origin": "pomme",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 55,
+            "name": "Jus de pomme",
+            "origin": "pomme",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 57,
+            "name": "Purée de pommes congelée",
+            "origin": "pomme",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 58,
+            "name": "Chips de pomme séchées",
+            "origin": "pomme",
+            "shelf_life_pantry": 120
+          },
+          {
+            "id": 59,
+            "name": "Pommes au four",
+            "origin": "pomme",
+            "shelf_life_pantry": 3
+          },
+          {
+            "id": 61,
+            "name": "Poires séchées",
+            "origin": "poire",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 62,
+            "name": "Compote de poires",
+            "origin": "poire",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 64,
+            "name": "Jus de poire",
+            "origin": "poire",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 66,
+            "name": "Purée de poires congelée",
+            "origin": "poire",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 67,
+            "name": "Abricots séchés",
+            "origin": "abricot",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 68,
+            "name": "Compote d'abricots",
+            "origin": "abricot",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 69,
+            "name": "Confiture d'abricots",
+            "origin": "abricot",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 70,
+            "name": "Jus d'abricot",
+            "origin": "abricot",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 71,
+            "name": "Abricots au sirop maison",
+            "origin": "abricot",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 72,
+            "name": "Purée d'abricots congelée",
+            "origin": "abricot",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 73,
+            "name": "Cerises séchées",
+            "origin": "cerise",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 74,
+            "name": "Compote de cerises",
+            "origin": "cerise",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 76,
+            "name": "Jus de cerise",
+            "origin": "cerise",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 78,
+            "name": "Pêches séchées",
+            "origin": "pêche",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 79,
+            "name": "Compote de pêches",
+            "origin": "pêche",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 80,
+            "name": "Confiture de pêches",
+            "origin": "pêche",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 81,
+            "name": "Jus de pêche",
+            "origin": "pêche",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 82,
+            "name": "Pêches au sirop maison",
+            "origin": "pêche",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 83,
+            "name": "Pruneaux (prunes séchées)",
+            "origin": "prune",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 84,
+            "name": "Compote de prunes",
+            "origin": "prune",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 85,
+            "name": "Confiture de prunes",
+            "origin": "prune",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 86,
+            "name": "Jus de prune",
+            "origin": "prune",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 87,
+            "name": "Prunes au sirop maison",
+            "origin": "prune",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 88,
+            "name": "Fraises séchées",
+            "origin": "fraise",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 89,
+            "name": "Compote de fraises",
+            "origin": "fraise",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 91,
+            "name": "Fraises congelées",
+            "origin": "fraise",
+            "shelf_life_pantry": 270
+          },
+          {
+            "id": 92,
+            "name": "Coulis de fraises",
+            "origin": "fraise",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 93,
+            "name": "Raisins secs",
+            "origin": "raisin",
+            "shelf_life_pantry": 365
+          },
+          {
+            "id": 95,
+            "name": "Jus de raisin",
+            "origin": "raisin",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 97,
+            "name": "Raisins congelés",
+            "origin": "raisin",
+            "shelf_life_pantry": 270
+          },
+          {
+            "id": 98,
+            "name": "Poudre de pomme",
+            "origin": "pomme",
+            "shelf_life_pantry": 365
+          },
+          {
+            "id": 99,
+            "name": "Poudre d'abricot",
+            "origin": "abricot",
+            "shelf_life_pantry": 5
+          },
+          {
+            "id": 105,
+            "name": "Basilic lacto-fermenté",
+            "origin": "basilic",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 108,
+            "name": "Thym congelé",
+            "origin": "thym",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 109,
+            "name": "Sel au thym",
+            "origin": "thym",
+            "shelf_life_pantry": 365
+          },
+          {
+            "id": 112,
+            "name": "Romarin congelé",
+            "origin": "romarin",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 113,
+            "name": "Sel au romarin",
+            "origin": "romarin",
+            "shelf_life_pantry": 365
+          },
+          {
+            "id": 116,
+            "name": "Menthe congelée",
+            "origin": "menthe",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 118,
+            "name": "Infusion de menthe concentrée",
+            "origin": "menthe",
+            "shelf_life_pantry": 7
+          },
+          {
+            "id": 122,
+            "name": "Sel au persil",
+            "origin": "persil",
+            "shelf_life_pantry": 365
+          },
+          {
+            "id": 125,
+            "name": "Coriandre congelée",
+            "origin": "coriandre",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 128,
+            "name": "Aneth congelé",
+            "origin": "aneth",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 132,
+            "name": "Ciboulette congelée",
+            "origin": "ciboulette",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 139,
+            "name": "Sel à la sauge",
+            "origin": "sauge",
+            "shelf_life_pantry": 365
+          },
+          {
+            "id": 141,
+            "name": "Estragon congelé",
+            "origin": "estragon",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 148,
+            "name": "Fenouil congelé",
+            "origin": "fenouil",
+            "shelf_life_pantry": 180
+          },
+          {
+            "id": 185,
+            "name": "Lait entier UHT",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 186,
+            "name": "Lait demi-écrémé UHT",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 187,
+            "name": "Lait écrémé UHT",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 188,
+            "name": "Lait entier frais",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 189,
+            "name": "Lait demi-écrémé frais",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 190,
+            "name": "Lait écrémé frais",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 191,
+            "name": "Lait concentré non sucré",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 192,
+            "name": "Lait concentré sucré",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 193,
+            "name": "Lait en poudre",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 194,
+            "name": "Lait sans lactose",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 220,
+            "name": "Lait de soja",
+            "origin": "soja",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 221,
+            "name": "Lait d'amande",
+            "origin": "amande",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 224,
+            "name": "Lait de coco",
+            "origin": "noix de coco",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 228,
+            "name": "Lait fermenté",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 229,
+            "name": "Lait ribot",
+            "origin": "lait",
+            "shelf_life_pantry": 90
+          },
+          {
+            "id": 302,
+            "name": "blanc d'œuf",
+            "origin": "œuf",
+            "shelf_life_pantry": 28
+          },
+          {
+            "id": 304,
+            "name": "bœuf haché",
+            "origin": "bœuf",
+            "shelf_life_pantry": 28
+          },
+          {
+            "id": 305,
+            "name": "bouillon de bœuf",
+            "origin": "bœuf",
+            "shelf_life_pantry": 28
+          },
+          {
+            "id": 318,
+            "name": "jaune d'œuf",
+            "origin": "œuf",
+            "shelf_life_pantry": 28
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,758 @@
+{
+  "total": 147,
+  "categories": {
+    "viandes": [
+      {
+        "id": 345,
+        "name": "steak de bœuf",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 346,
+        "name": "entrecôte de bœuf",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 347,
+        "name": "bavette",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 348,
+        "name": "pavé de bœuf",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 349,
+        "name": "bœuf en morceaux",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 350,
+        "name": "bœuf à braiser",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 351,
+        "name": "bœuf à mijoter",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 352,
+        "name": "paleron de bœuf",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 353,
+        "name": "côte de bœuf",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 360,
+        "name": "veau pour blanquette",
+        "canonical": "veau"
+      },
+      {
+        "id": 354,
+        "name": "filet de bœuf",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 355,
+        "name": "araignée de bœuf",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 356,
+        "name": "bœuf effiloché",
+        "canonical": "bœuf"
+      },
+      {
+        "id": 357,
+        "name": "escalope de veau",
+        "canonical": "veau"
+      },
+      {
+        "id": 358,
+        "name": "veau en morceaux",
+        "canonical": "veau"
+      },
+      {
+        "id": 359,
+        "name": "sauté de veau",
+        "canonical": "veau"
+      },
+      {
+        "id": 361,
+        "name": "rôti de veau",
+        "canonical": "veau"
+      },
+      {
+        "id": 362,
+        "name": "veau haché",
+        "canonical": "veau"
+      },
+      {
+        "id": 363,
+        "name": "côte de veau",
+        "canonical": "veau"
+      },
+      {
+        "id": 364,
+        "name": "filet de veau",
+        "canonical": "veau"
+      },
+      {
+        "id": 365,
+        "name": "jarret de veau",
+        "canonical": "veau"
+      },
+      {
+        "id": 366,
+        "name": "paupiettes de veau",
+        "canonical": "veau"
+      },
+      {
+        "id": 367,
+        "name": "grenadins de veau",
+        "canonical": "veau"
+      },
+      {
+        "id": 368,
+        "name": "os de veau",
+        "canonical": "veau"
+      },
+      {
+        "id": 369,
+        "name": "côtelette d'agneau",
+        "canonical": "agneau"
+      },
+      {
+        "id": 370,
+        "name": "gigot d'agneau",
+        "canonical": "agneau"
+      },
+      {
+        "id": 371,
+        "name": "épaule d'agneau",
+        "canonical": "agneau"
+      },
+      {
+        "id": 372,
+        "name": "filet d'agneau",
+        "canonical": "agneau"
+      },
+      {
+        "id": 373,
+        "name": "carré d'agneau",
+        "canonical": "agneau"
+      },
+      {
+        "id": 374,
+        "name": "jambon blanc",
+        "canonical": "porc"
+      },
+      {
+        "id": 375,
+        "name": "jambon cru",
+        "canonical": "porc"
+      },
+      {
+        "id": 376,
+        "name": "jambon cuit",
+        "canonical": "porc"
+      },
+      {
+        "id": 377,
+        "name": "jambon serrano",
+        "canonical": "porc"
+      },
+      {
+        "id": 378,
+        "name": "jambon ibérique",
+        "canonical": "porc"
+      },
+      {
+        "id": 379,
+        "name": "lardons fumés",
+        "canonical": "porc"
+      },
+      {
+        "id": 380,
+        "name": "saucisse",
+        "canonical": "porc"
+      },
+      {
+        "id": 381,
+        "name": "saucisse de Toulouse",
+        "canonical": "porc"
+      },
+      {
+        "id": 382,
+        "name": "saucisse de Strasbourg",
+        "canonical": "porc"
+      },
+      {
+        "id": 383,
+        "name": "saucisse fumée",
+        "canonical": "porc"
+      },
+      {
+        "id": 384,
+        "name": "chair à saucisse",
+        "canonical": "porc"
+      },
+      {
+        "id": 385,
+        "name": "lard",
+        "canonical": "porc"
+      },
+      {
+        "id": 386,
+        "name": "boudin noir",
+        "canonical": "porc"
+      },
+      {
+        "id": 387,
+        "name": "foie de porc",
+        "canonical": "porc"
+      },
+      {
+        "id": 388,
+        "name": "bouillon de poulet",
+        "canonical": "poulet"
+      },
+      {
+        "id": 299,
+        "name": "bacon",
+        "canonical": "porc"
+      },
+      {
+        "id": 315,
+        "name": "fond de veau",
+        "canonical": "veau"
+      },
+      {
+        "id": 319,
+        "name": "lardon",
+        "canonical": "porc"
+      }
+    ],
+    "poissons": [
+      {
+        "id": 488,
+        "name": "filet de cabillaud",
+        "canonical": "cabillaud"
+      },
+      {
+        "id": 489,
+        "name": "cabillaud fumé",
+        "canonical": "cabillaud"
+      },
+      {
+        "id": 490,
+        "name": "filet de sole",
+        "canonical": "sole"
+      }
+    ],
+    "alcools": [
+      {
+        "id": 331,
+        "name": "vin blanc",
+        "canonical": "alcool"
+      },
+      {
+        "id": 332,
+        "name": "vin rouge",
+        "canonical": "alcool"
+      },
+      {
+        "id": 309,
+        "name": "cognac",
+        "canonical": "alcool"
+      },
+      {
+        "id": 492,
+        "name": "Grand Marnier",
+        "canonical": "alcool"
+      },
+      {
+        "id": 493,
+        "name": "Marsala",
+        "canonical": "alcool"
+      },
+      {
+        "id": 494,
+        "name": "amaretto",
+        "canonical": "alcool"
+      },
+      {
+        "id": 495,
+        "name": "calvados",
+        "canonical": "alcool"
+      },
+      {
+        "id": 496,
+        "name": "kirsch",
+        "canonical": "alcool"
+      },
+      {
+        "id": 497,
+        "name": "porto",
+        "canonical": "alcool"
+      },
+      {
+        "id": 498,
+        "name": "rhum",
+        "canonical": "alcool"
+      }
+    ],
+    "fromages": [
+      {
+        "id": 338,
+        "name": "fromage",
+        "canonical": "lait"
+      },
+      {
+        "id": 417,
+        "name": "fromage Minas",
+        "canonical": "lait"
+      },
+      {
+        "id": 419,
+        "name": "fromage frais",
+        "canonical": "lait"
+      },
+      {
+        "id": 420,
+        "name": "fromage râpé",
+        "canonical": "lait"
+      },
+      {
+        "id": 316,
+        "name": "fromage blanc",
+        "canonical": "lait"
+      },
+      {
+        "id": 418,
+        "name": "fromage de chèvre",
+        "canonical": "lait de chèvre"
+      }
+    ],
+    "produits_laitiers": [
+      {
+        "id": 336,
+        "name": "lait",
+        "canonical": "lait"
+      },
+      {
+        "id": 337,
+        "name": "crème",
+        "canonical": "lait"
+      },
+      {
+        "id": 402,
+        "name": "babeurre",
+        "canonical": "lait"
+      },
+      {
+        "id": 403,
+        "name": "beurre clarifié",
+        "canonical": "lait"
+      },
+      {
+        "id": 404,
+        "name": "beurre de tourage",
+        "canonical": "lait"
+      },
+      {
+        "id": 405,
+        "name": "beurre fondu",
+        "canonical": "lait"
+      },
+      {
+        "id": 406,
+        "name": "beurre froid",
+        "canonical": "lait"
+      },
+      {
+        "id": 407,
+        "name": "beurre manié",
+        "canonical": "lait"
+      },
+      {
+        "id": 408,
+        "name": "beurre mou",
+        "canonical": "lait"
+      },
+      {
+        "id": 409,
+        "name": "beurre pour glaçage",
+        "canonical": "lait"
+      },
+      {
+        "id": 410,
+        "name": "caramel beurre salé",
+        "canonical": "sucre"
+      },
+      {
+        "id": 411,
+        "name": "crème chiboust",
+        "canonical": "lait"
+      },
+      {
+        "id": 412,
+        "name": "crème fouettée",
+        "canonical": "lait"
+      },
+      {
+        "id": 413,
+        "name": "crème marrons",
+        "canonical": "châtaigne"
+      },
+      {
+        "id": 414,
+        "name": "crème pâtissière",
+        "canonical": "lait"
+      },
+      {
+        "id": 415,
+        "name": "crème pâtissière chocolat",
+        "canonical": "lait"
+      },
+      {
+        "id": 416,
+        "name": "ganache ou crème",
+        "canonical": "lait"
+      },
+      {
+        "id": 313,
+        "name": "feta",
+        "canonical": "lait"
+      },
+      {
+        "id": 320,
+        "name": "mozzarella",
+        "canonical": "lait"
+      },
+      {
+        "id": 486,
+        "name": "laitue romaine",
+        "canonical": "laitue"
+      }
+    ],
+    "pains": [
+      {
+        "id": 321,
+        "name": "pain",
+        "canonical": "blé"
+      },
+      {
+        "id": 432,
+        "name": "baguette",
+        "canonical": "blé"
+      },
+      {
+        "id": 433,
+        "name": "pain de campagne",
+        "canonical": "blé"
+      },
+      {
+        "id": 434,
+        "name": "pain de mie",
+        "canonical": "blé"
+      },
+      {
+        "id": 435,
+        "name": "mie de pain",
+        "canonical": "blé"
+      },
+      {
+        "id": 436,
+        "name": "mie pain",
+        "canonical": "blé"
+      },
+      {
+        "id": 437,
+        "name": "brioche",
+        "canonical": "blé"
+      },
+      {
+        "id": 438,
+        "name": "pains burger",
+        "canonical": "blé"
+      },
+      {
+        "id": 439,
+        "name": "pain d'épices",
+        "canonical": "blé"
+      },
+      {
+        "id": 440,
+        "name": "pain rassis",
+        "canonical": "blé"
+      },
+      {
+        "id": 441,
+        "name": "pâte à pain",
+        "canonical": "blé"
+      },
+      {
+        "id": 481,
+        "name": "épices pain épices",
+        "canonical": "épices"
+      }
+    ],
+    "pates": [
+      {
+        "id": 322,
+        "name": "pâte",
+        "canonical": "blé"
+      },
+      {
+        "id": 323,
+        "name": "pâte brisée",
+        "canonical": "blé"
+      },
+      {
+        "id": 324,
+        "name": "pâte feuilletée",
+        "canonical": "blé"
+      },
+      {
+        "id": 330,
+        "name": "spaghetti",
+        "canonical": "blé"
+      },
+      {
+        "id": 457,
+        "name": "pâtes",
+        "canonical": "blé"
+      },
+      {
+        "id": 458,
+        "name": "pâtes courtes",
+        "canonical": "blé"
+      },
+      {
+        "id": 463,
+        "name": "nouilles",
+        "canonical": "blé"
+      },
+      {
+        "id": 464,
+        "name": "nouilles chinoises",
+        "canonical": "blé"
+      },
+      {
+        "id": 465,
+        "name": "nouilles ramen",
+        "canonical": "blé"
+      },
+      {
+        "id": 466,
+        "name": "nouilles soba",
+        "canonical": "sarrasin"
+      },
+      {
+        "id": 467,
+        "name": "nouilles udon",
+        "canonical": "blé"
+      },
+      {
+        "id": 468,
+        "name": "fideos pâtes",
+        "canonical": "blé"
+      },
+      {
+        "id": 469,
+        "name": "pâte phyllo",
+        "canonical": "blé"
+      },
+      {
+        "id": 470,
+        "name": "pâte à pizza",
+        "canonical": "blé"
+      },
+      {
+        "id": 471,
+        "name": "pâte laksa",
+        "canonical": "épices"
+      }
+    ],
+    "epices": [
+      {
+        "id": 472,
+        "name": "paprika",
+        "canonical": "épices"
+      },
+      {
+        "id": 473,
+        "name": "paprika doux",
+        "canonical": "épices"
+      },
+      {
+        "id": 474,
+        "name": "paprika fumé",
+        "canonical": "épices"
+      },
+      {
+        "id": 475,
+        "name": "berbéré épices",
+        "canonical": "épices"
+      },
+      {
+        "id": 476,
+        "name": "cinq épices",
+        "canonical": "épices"
+      },
+      {
+        "id": 479,
+        "name": "quatre-épices",
+        "canonical": "épices"
+      },
+      {
+        "id": 480,
+        "name": "épices speculoos",
+        "canonical": "épices"
+      }
+    ],
+    "autres": [
+      {
+        "id": 339,
+        "name": "bière",
+        "canonical": "bière"
+      },
+      {
+        "id": 340,
+        "name": "bière blonde",
+        "canonical": "bière"
+      },
+      {
+        "id": 341,
+        "name": "bière ambrée",
+        "canonical": "bière"
+      },
+      {
+        "id": 342,
+        "name": "bière brune",
+        "canonical": "bière"
+      },
+      {
+        "id": 343,
+        "name": "cidre",
+        "canonical": "cidre"
+      },
+      {
+        "id": 344,
+        "name": "cidre brut",
+        "canonical": "cidre"
+      },
+      {
+        "id": 389,
+        "name": "bouillon de volaille",
+        "canonical": "poulet"
+      },
+      {
+        "id": 427,
+        "name": "morue dessalée",
+        "canonical": "morue"
+      },
+      {
+        "id": 306,
+        "name": "chapelure",
+        "canonical": "blé"
+      },
+      {
+        "id": 307,
+        "name": "chocolat",
+        "canonical": "cacao"
+      },
+      {
+        "id": 308,
+        "name": "chocolat noir",
+        "canonical": "cacao"
+      },
+      {
+        "id": 314,
+        "name": "flocon d'avoine",
+        "canonical": "avoine"
+      },
+      {
+        "id": 326,
+        "name": "poudre d'amande",
+        "canonical": "amande"
+      },
+      {
+        "id": 327,
+        "name": "sauce tomate",
+        "canonical": "tomate"
+      },
+      {
+        "id": 329,
+        "name": "semoule",
+        "canonical": "blé"
+      },
+      {
+        "id": 459,
+        "name": "linguine",
+        "canonical": "blé"
+      },
+      {
+        "id": 460,
+        "name": "trofie",
+        "canonical": "blé"
+      },
+      {
+        "id": 461,
+        "name": "trofie ou linguine",
+        "canonical": "blé"
+      },
+      {
+        "id": 462,
+        "name": "raviolis frais",
+        "canonical": "blé"
+      },
+      {
+        "id": 477,
+        "name": "curry",
+        "canonical": "épices"
+      },
+      {
+        "id": 478,
+        "name": "garam masala",
+        "canonical": "épices"
+      },
+      {
+        "id": 482,
+        "name": "poireaux",
+        "canonical": "poireau"
+      },
+      {
+        "id": 483,
+        "name": "blanc de poireau",
+        "canonical": "poireau"
+      },
+      {
+        "id": 484,
+        "name": "courgettes",
+        "canonical": "courgette"
+      },
+      {
+        "id": 485,
+        "name": "blettes",
+        "canonical": "blette"
+      },
+      {
+        "id": 487,
+        "name": "légumes variés cuits",
+        "canonical": "légume"
+      },
+      {
+        "id": 491,
+        "name": "queue de lotte",
+        "canonical": "lotte"
+      }
+    ]
+  }
+}

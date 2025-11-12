@@ -1,0 +1,2007 @@
+{
+  "date": "2025-11-06T13:31:16.998Z",
+  "statistics": {
+    "total": 414,
+    "no_shelf_life": 147,
+    "no_process": 100,
+    "no_primary_unit": 250,
+    "all_missing": 0
+  },
+  "archetypes": {
+    "no_shelf_life": [
+      {
+        "id": 494,
+        "name": "amaretto"
+      },
+      {
+        "id": 355,
+        "name": "araignée de bœuf"
+      },
+      {
+        "id": 402,
+        "name": "babeurre"
+      },
+      {
+        "id": 299,
+        "name": "bacon"
+      },
+      {
+        "id": 432,
+        "name": "baguette"
+      },
+      {
+        "id": 347,
+        "name": "bavette"
+      },
+      {
+        "id": 475,
+        "name": "berbéré épices"
+      },
+      {
+        "id": 403,
+        "name": "beurre clarifié"
+      },
+      {
+        "id": 404,
+        "name": "beurre de tourage"
+      },
+      {
+        "id": 405,
+        "name": "beurre fondu"
+      },
+      {
+        "id": 406,
+        "name": "beurre froid"
+      },
+      {
+        "id": 407,
+        "name": "beurre manié"
+      },
+      {
+        "id": 408,
+        "name": "beurre mou"
+      },
+      {
+        "id": 409,
+        "name": "beurre pour glaçage"
+      },
+      {
+        "id": 339,
+        "name": "bière"
+      },
+      {
+        "id": 341,
+        "name": "bière ambrée"
+      },
+      {
+        "id": 340,
+        "name": "bière blonde"
+      },
+      {
+        "id": 342,
+        "name": "bière brune"
+      },
+      {
+        "id": 483,
+        "name": "blanc de poireau"
+      },
+      {
+        "id": 485,
+        "name": "blettes"
+      },
+      {
+        "id": 350,
+        "name": "bœuf à braiser"
+      },
+      {
+        "id": 351,
+        "name": "bœuf à mijoter"
+      },
+      {
+        "id": 356,
+        "name": "bœuf effiloché"
+      },
+      {
+        "id": 349,
+        "name": "bœuf en morceaux"
+      },
+      {
+        "id": 386,
+        "name": "boudin noir"
+      },
+      {
+        "id": 388,
+        "name": "bouillon de poulet"
+      },
+      {
+        "id": 389,
+        "name": "bouillon de volaille"
+      },
+      {
+        "id": 437,
+        "name": "brioche"
+      },
+      {
+        "id": 489,
+        "name": "cabillaud fumé"
+      },
+      {
+        "id": 495,
+        "name": "calvados"
+      },
+      {
+        "id": 410,
+        "name": "caramel beurre salé"
+      },
+      {
+        "id": 373,
+        "name": "carré d'agneau"
+      },
+      {
+        "id": 384,
+        "name": "chair à saucisse"
+      },
+      {
+        "id": 306,
+        "name": "chapelure"
+      },
+      {
+        "id": 307,
+        "name": "chocolat"
+      },
+      {
+        "id": 308,
+        "name": "chocolat noir"
+      },
+      {
+        "id": 343,
+        "name": "cidre"
+      },
+      {
+        "id": 344,
+        "name": "cidre brut"
+      },
+      {
+        "id": 476,
+        "name": "cinq épices"
+      },
+      {
+        "id": 309,
+        "name": "cognac"
+      },
+      {
+        "id": 353,
+        "name": "côte de bœuf"
+      },
+      {
+        "id": 363,
+        "name": "côte de veau"
+      },
+      {
+        "id": 369,
+        "name": "côtelette d'agneau"
+      },
+      {
+        "id": 484,
+        "name": "courgettes"
+      },
+      {
+        "id": 337,
+        "name": "crème"
+      },
+      {
+        "id": 411,
+        "name": "crème chiboust"
+      },
+      {
+        "id": 412,
+        "name": "crème fouettée"
+      },
+      {
+        "id": 413,
+        "name": "crème marrons"
+      },
+      {
+        "id": 414,
+        "name": "crème pâtissière"
+      },
+      {
+        "id": 415,
+        "name": "crème pâtissière chocolat"
+      },
+      {
+        "id": 477,
+        "name": "curry"
+      },
+      {
+        "id": 346,
+        "name": "entrecôte de bœuf"
+      },
+      {
+        "id": 371,
+        "name": "épaule d'agneau"
+      },
+      {
+        "id": 481,
+        "name": "épices pain épices"
+      },
+      {
+        "id": 480,
+        "name": "épices speculoos"
+      },
+      {
+        "id": 357,
+        "name": "escalope de veau"
+      },
+      {
+        "id": 313,
+        "name": "feta"
+      },
+      {
+        "id": 468,
+        "name": "fideos pâtes"
+      },
+      {
+        "id": 372,
+        "name": "filet d'agneau"
+      },
+      {
+        "id": 354,
+        "name": "filet de bœuf"
+      },
+      {
+        "id": 488,
+        "name": "filet de cabillaud"
+      },
+      {
+        "id": 490,
+        "name": "filet de sole"
+      },
+      {
+        "id": 364,
+        "name": "filet de veau"
+      },
+      {
+        "id": 314,
+        "name": "flocon d'avoine"
+      },
+      {
+        "id": 387,
+        "name": "foie de porc"
+      },
+      {
+        "id": 315,
+        "name": "fond de veau"
+      },
+      {
+        "id": 338,
+        "name": "fromage"
+      },
+      {
+        "id": 316,
+        "name": "fromage blanc"
+      },
+      {
+        "id": 418,
+        "name": "fromage de chèvre"
+      },
+      {
+        "id": 419,
+        "name": "fromage frais"
+      },
+      {
+        "id": 417,
+        "name": "fromage Minas"
+      },
+      {
+        "id": 420,
+        "name": "fromage râpé"
+      },
+      {
+        "id": 416,
+        "name": "ganache ou crème"
+      },
+      {
+        "id": 478,
+        "name": "garam masala"
+      },
+      {
+        "id": 370,
+        "name": "gigot d'agneau"
+      },
+      {
+        "id": 492,
+        "name": "Grand Marnier"
+      },
+      {
+        "id": 367,
+        "name": "grenadins de veau"
+      },
+      {
+        "id": 374,
+        "name": "jambon blanc"
+      },
+      {
+        "id": 375,
+        "name": "jambon cru"
+      },
+      {
+        "id": 376,
+        "name": "jambon cuit"
+      },
+      {
+        "id": 378,
+        "name": "jambon ibérique"
+      },
+      {
+        "id": 377,
+        "name": "jambon serrano"
+      },
+      {
+        "id": 365,
+        "name": "jarret de veau"
+      },
+      {
+        "id": 496,
+        "name": "kirsch"
+      },
+      {
+        "id": 336,
+        "name": "lait"
+      },
+      {
+        "id": 486,
+        "name": "laitue romaine"
+      },
+      {
+        "id": 385,
+        "name": "lard"
+      },
+      {
+        "id": 319,
+        "name": "lardon"
+      },
+      {
+        "id": 379,
+        "name": "lardons fumés"
+      },
+      {
+        "id": 487,
+        "name": "légumes variés cuits"
+      },
+      {
+        "id": 459,
+        "name": "linguine"
+      },
+      {
+        "id": 493,
+        "name": "Marsala"
+      },
+      {
+        "id": 435,
+        "name": "mie de pain"
+      },
+      {
+        "id": 436,
+        "name": "mie pain"
+      },
+      {
+        "id": 427,
+        "name": "morue dessalée"
+      },
+      {
+        "id": 320,
+        "name": "mozzarella"
+      },
+      {
+        "id": 463,
+        "name": "nouilles"
+      },
+      {
+        "id": 464,
+        "name": "nouilles chinoises"
+      },
+      {
+        "id": 465,
+        "name": "nouilles ramen"
+      },
+      {
+        "id": 466,
+        "name": "nouilles soba"
+      },
+      {
+        "id": 467,
+        "name": "nouilles udon"
+      },
+      {
+        "id": 368,
+        "name": "os de veau"
+      },
+      {
+        "id": 321,
+        "name": "pain"
+      },
+      {
+        "id": 439,
+        "name": "pain d'épices"
+      },
+      {
+        "id": 433,
+        "name": "pain de campagne"
+      },
+      {
+        "id": 434,
+        "name": "pain de mie"
+      },
+      {
+        "id": 440,
+        "name": "pain rassis"
+      },
+      {
+        "id": 438,
+        "name": "pains burger"
+      },
+      {
+        "id": 352,
+        "name": "paleron de bœuf"
+      },
+      {
+        "id": 472,
+        "name": "paprika"
+      },
+      {
+        "id": 473,
+        "name": "paprika doux"
+      },
+      {
+        "id": 474,
+        "name": "paprika fumé"
+      },
+      {
+        "id": 322,
+        "name": "pâte"
+      },
+      {
+        "id": 441,
+        "name": "pâte à pain"
+      },
+      {
+        "id": 470,
+        "name": "pâte à pizza"
+      },
+      {
+        "id": 323,
+        "name": "pâte brisée"
+      },
+      {
+        "id": 324,
+        "name": "pâte feuilletée"
+      },
+      {
+        "id": 471,
+        "name": "pâte laksa"
+      },
+      {
+        "id": 469,
+        "name": "pâte phyllo"
+      },
+      {
+        "id": 457,
+        "name": "pâtes"
+      },
+      {
+        "id": 458,
+        "name": "pâtes courtes"
+      },
+      {
+        "id": 366,
+        "name": "paupiettes de veau"
+      },
+      {
+        "id": 348,
+        "name": "pavé de bœuf"
+      },
+      {
+        "id": 482,
+        "name": "poireaux"
+      },
+      {
+        "id": 497,
+        "name": "porto"
+      },
+      {
+        "id": 326,
+        "name": "poudre d'amande"
+      },
+      {
+        "id": 479,
+        "name": "quatre-épices"
+      },
+      {
+        "id": 491,
+        "name": "queue de lotte"
+      },
+      {
+        "id": 462,
+        "name": "raviolis frais"
+      },
+      {
+        "id": 498,
+        "name": "rhum"
+      },
+      {
+        "id": 361,
+        "name": "rôti de veau"
+      },
+      {
+        "id": 327,
+        "name": "sauce tomate"
+      },
+      {
+        "id": 380,
+        "name": "saucisse"
+      },
+      {
+        "id": 382,
+        "name": "saucisse de Strasbourg"
+      },
+      {
+        "id": 381,
+        "name": "saucisse de Toulouse"
+      },
+      {
+        "id": 383,
+        "name": "saucisse fumée"
+      },
+      {
+        "id": 359,
+        "name": "sauté de veau"
+      },
+      {
+        "id": 329,
+        "name": "semoule"
+      },
+      {
+        "id": 330,
+        "name": "spaghetti"
+      },
+      {
+        "id": 345,
+        "name": "steak de bœuf"
+      },
+      {
+        "id": 460,
+        "name": "trofie"
+      },
+      {
+        "id": 461,
+        "name": "trofie ou linguine"
+      },
+      {
+        "id": 358,
+        "name": "veau en morceaux"
+      },
+      {
+        "id": 362,
+        "name": "veau haché"
+      },
+      {
+        "id": 360,
+        "name": "veau pour blanquette"
+      },
+      {
+        "id": 331,
+        "name": "vin blanc"
+      },
+      {
+        "id": 332,
+        "name": "vin rouge"
+      }
+    ],
+    "no_process": [
+      {
+        "id": 268,
+        "name": "Abondance"
+      },
+      {
+        "id": 269,
+        "name": "Beaufort"
+      },
+      {
+        "id": 204,
+        "name": "Beurre doux"
+      },
+      {
+        "id": 277,
+        "name": "Bleu d'Auvergne"
+      },
+      {
+        "id": 241,
+        "name": "Brie"
+      },
+      {
+        "id": 245,
+        "name": "Brillat-Savarin"
+      },
+      {
+        "id": 236,
+        "name": "Bûche de chèvre demi-sec"
+      },
+      {
+        "id": 235,
+        "name": "Bûche de chèvre fraîche"
+      },
+      {
+        "id": 237,
+        "name": "Bûche de chèvre sec"
+      },
+      {
+        "id": 240,
+        "name": "Camembert"
+      },
+      {
+        "id": 256,
+        "name": "Cantal"
+      },
+      {
+        "id": 203,
+        "name": "Chantilly"
+      },
+      {
+        "id": 243,
+        "name": "Chaource"
+      },
+      {
+        "id": 261,
+        "name": "Cheddar"
+      },
+      {
+        "id": 270,
+        "name": "Comté"
+      },
+      {
+        "id": 230,
+        "name": "Cottage cheese"
+      },
+      {
+        "id": 242,
+        "name": "Coulommiers"
+      },
+      {
+        "id": 233,
+        "name": "Cream cheese"
+      },
+      {
+        "id": 202,
+        "name": "Crème anglaise"
+      },
+      {
+        "id": 226,
+        "name": "Crème d'avoine"
+      },
+      {
+        "id": 225,
+        "name": "Crème de soja"
+      },
+      {
+        "id": 197,
+        "name": "Crème épaisse 35%"
+      },
+      {
+        "id": 201,
+        "name": "Crème fouettée en bombe"
+      },
+      {
+        "id": 198,
+        "name": "Crème fraîche épaisse"
+      },
+      {
+        "id": 199,
+        "name": "Crème fraîche légère"
+      },
+      {
+        "id": 196,
+        "name": "Crème liquide 15%"
+      },
+      {
+        "id": 195,
+        "name": "Crème liquide 30%"
+      },
+      {
+        "id": 200,
+        "name": "Crème UHT liquide"
+      },
+      {
+        "id": 238,
+        "name": "Crottin de chèvre"
+      },
+      {
+        "id": 263,
+        "name": "Edam"
+      },
+      {
+        "id": 272,
+        "name": "Emmental"
+      },
+      {
+        "id": 249,
+        "name": "Époisses"
+      },
+      {
+        "id": 247,
+        "name": "Explorateur"
+      },
+      {
+        "id": 219,
+        "name": "Faisselle"
+      },
+      {
+        "id": 275,
+        "name": "Fontina"
+      },
+      {
+        "id": 278,
+        "name": "Fourme d'Ambert"
+      },
+      {
+        "id": 234,
+        "name": "Fromage à tartiner nature"
+      },
+      {
+        "id": 215,
+        "name": "Fromage blanc 0%"
+      },
+      {
+        "id": 216,
+        "name": "Fromage blanc 20%"
+      },
+      {
+        "id": 217,
+        "name": "Fromage blanc 40%"
+      },
+      {
+        "id": 279,
+        "name": "Gorgonzola"
+      },
+      {
+        "id": 262,
+        "name": "Gouda"
+      },
+      {
+        "id": 271,
+        "name": "Gruyère"
+      },
+      {
+        "id": 227,
+        "name": "Kéfir"
+      },
+      {
+        "id": 191,
+        "name": "Lait concentré non sucré"
+      },
+      {
+        "id": 192,
+        "name": "Lait concentré sucré"
+      },
+      {
+        "id": 221,
+        "name": "Lait d'amande"
+      },
+      {
+        "id": 222,
+        "name": "Lait d'avoine"
+      },
+      {
+        "id": 224,
+        "name": "Lait de coco"
+      },
+      {
+        "id": 223,
+        "name": "Lait de riz"
+      },
+      {
+        "id": 220,
+        "name": "Lait de soja"
+      },
+      {
+        "id": 189,
+        "name": "Lait demi-écrémé frais"
+      },
+      {
+        "id": 186,
+        "name": "Lait demi-écrémé UHT"
+      },
+      {
+        "id": 190,
+        "name": "Lait écrémé frais"
+      },
+      {
+        "id": 187,
+        "name": "Lait écrémé UHT"
+      },
+      {
+        "id": 193,
+        "name": "Lait en poudre"
+      },
+      {
+        "id": 188,
+        "name": "Lait entier frais"
+      },
+      {
+        "id": 185,
+        "name": "Lait entier UHT"
+      },
+      {
+        "id": 228,
+        "name": "Lait fermenté"
+      },
+      {
+        "id": 229,
+        "name": "Lait ribot"
+      },
+      {
+        "id": 194,
+        "name": "Lait sans lactose"
+      },
+      {
+        "id": 252,
+        "name": "Livarot"
+      },
+      {
+        "id": 267,
+        "name": "Manchego"
+      },
+      {
+        "id": 250,
+        "name": "Maroilles"
+      },
+      {
+        "id": 232,
+        "name": "Mascarpone"
+      },
+      {
+        "id": 264,
+        "name": "Mimolette"
+      },
+      {
+        "id": 254,
+        "name": "Mont d'Or"
+      },
+      {
+        "id": 258,
+        "name": "Morbier"
+      },
+      {
+        "id": 248,
+        "name": "Munster"
+      },
+      {
+        "id": 246,
+        "name": "Neufchâtel"
+      },
+      {
+        "id": 265,
+        "name": "Ossau-Iraty"
+      },
+      {
+        "id": 273,
+        "name": "Parmesan"
+      },
+      {
+        "id": 274,
+        "name": "Pecorino"
+      },
+      {
+        "id": 284,
+        "name": "Pélardon"
+      },
+      {
+        "id": 218,
+        "name": "Petit-suisse"
+      },
+      {
+        "id": 283,
+        "name": "Picodon"
+      },
+      {
+        "id": 251,
+        "name": "Pont-l'Évêque"
+      },
+      {
+        "id": 282,
+        "name": "Pouligny-Saint-Pierre"
+      },
+      {
+        "id": 266,
+        "name": "Provolone"
+      },
+      {
+        "id": 260,
+        "name": "Raclette"
+      },
+      {
+        "id": 253,
+        "name": "Reblochon"
+      },
+      {
+        "id": 231,
+        "name": "Ricotta"
+      },
+      {
+        "id": 281,
+        "name": "Rocamadour"
+      },
+      {
+        "id": 276,
+        "name": "Roquefort"
+      },
+      {
+        "id": 244,
+        "name": "Saint-Marcellin"
+      },
+      {
+        "id": 257,
+        "name": "Saint-Nectaire"
+      },
+      {
+        "id": 239,
+        "name": "Sainte-Maure"
+      },
+      {
+        "id": 212,
+        "name": "Skyr nature"
+      },
+      {
+        "id": 259,
+        "name": "Tomme de Savoie"
+      },
+      {
+        "id": 255,
+        "name": "Vacherin"
+      },
+      {
+        "id": 280,
+        "name": "Valençay"
+      },
+      {
+        "id": 214,
+        "name": "Yaourt aux fruits"
+      },
+      {
+        "id": 209,
+        "name": "Yaourt grec 0%"
+      },
+      {
+        "id": 208,
+        "name": "Yaourt grec nature"
+      },
+      {
+        "id": 210,
+        "name": "Yaourt lait de brebis"
+      },
+      {
+        "id": 211,
+        "name": "Yaourt lait de chèvre"
+      },
+      {
+        "id": 206,
+        "name": "Yaourt nature 0%"
+      },
+      {
+        "id": 207,
+        "name": "Yaourt nature brassé"
+      },
+      {
+        "id": 205,
+        "name": "Yaourt nature entier"
+      },
+      {
+        "id": 213,
+        "name": "Yaourt vanille"
+      }
+    ],
+    "no_primary_unit": [
+      {
+        "id": 268,
+        "name": "Abondance"
+      },
+      {
+        "id": 71,
+        "name": "Abricots au sirop maison"
+      },
+      {
+        "id": 67,
+        "name": "Abricots séchés"
+      },
+      {
+        "id": 38,
+        "name": "Ail confit"
+      },
+      {
+        "id": 128,
+        "name": "Aneth congelé"
+      },
+      {
+        "id": 129,
+        "name": "Aneth en poudre"
+      },
+      {
+        "id": 127,
+        "name": "Aneth séché"
+      },
+      {
+        "id": 14,
+        "name": "Aubergines confites"
+      },
+      {
+        "id": 15,
+        "name": "Aubergines grillées"
+      },
+      {
+        "id": 102,
+        "name": "Basilic congelé haché"
+      },
+      {
+        "id": 103,
+        "name": "Basilic en poudre"
+      },
+      {
+        "id": 105,
+        "name": "Basilic lacto-fermenté"
+      },
+      {
+        "id": 101,
+        "name": "Basilic séché"
+      },
+      {
+        "id": 269,
+        "name": "Beaufort"
+      },
+      {
+        "id": 204,
+        "name": "Beurre doux"
+      },
+      {
+        "id": 277,
+        "name": "Bleu d'Auvergne"
+      },
+      {
+        "id": 241,
+        "name": "Brie"
+      },
+      {
+        "id": 245,
+        "name": "Brillat-Savarin"
+      },
+      {
+        "id": 236,
+        "name": "Bûche de chèvre demi-sec"
+      },
+      {
+        "id": 235,
+        "name": "Bûche de chèvre fraîche"
+      },
+      {
+        "id": 237,
+        "name": "Bûche de chèvre sec"
+      },
+      {
+        "id": 240,
+        "name": "Camembert"
+      },
+      {
+        "id": 256,
+        "name": "Cantal"
+      },
+      {
+        "id": 25,
+        "name": "Carottes lacto-fermentées"
+      },
+      {
+        "id": 29,
+        "name": "Carottes râpées sous vide"
+      },
+      {
+        "id": 77,
+        "name": "Cerises au sirop maison"
+      },
+      {
+        "id": 73,
+        "name": "Cerises séchées"
+      },
+      {
+        "id": 203,
+        "name": "Chantilly"
+      },
+      {
+        "id": 243,
+        "name": "Chaource"
+      },
+      {
+        "id": 261,
+        "name": "Cheddar"
+      },
+      {
+        "id": 24,
+        "name": "Chips de butternut séchées"
+      },
+      {
+        "id": 26,
+        "name": "Chips de carotte séchées"
+      },
+      {
+        "id": 33,
+        "name": "Chips de chou séchées"
+      },
+      {
+        "id": 17,
+        "name": "Chips de courgette séchées"
+      },
+      {
+        "id": 58,
+        "name": "Chips de pomme séchées"
+      },
+      {
+        "id": 46,
+        "name": "Chips de pommes de terre séchées"
+      },
+      {
+        "id": 31,
+        "name": "Chou blanc lacto-fermenté"
+      },
+      {
+        "id": 30,
+        "name": "Choucroute crue"
+      },
+      {
+        "id": 132,
+        "name": "Ciboulette congelée"
+      },
+      {
+        "id": 133,
+        "name": "Ciboulette lyophilisée"
+      },
+      {
+        "id": 131,
+        "name": "Ciboulette séchée"
+      },
+      {
+        "id": 68,
+        "name": "Compote d'abricots"
+      },
+      {
+        "id": 74,
+        "name": "Compote de cerises"
+      },
+      {
+        "id": 89,
+        "name": "Compote de fraises"
+      },
+      {
+        "id": 79,
+        "name": "Compote de pêches"
+      },
+      {
+        "id": 62,
+        "name": "Compote de poires"
+      },
+      {
+        "id": 52,
+        "name": "Compote de pommes"
+      },
+      {
+        "id": 53,
+        "name": "Compote de pommes stérilisée"
+      },
+      {
+        "id": 84,
+        "name": "Compote de prunes"
+      },
+      {
+        "id": 270,
+        "name": "Comté"
+      },
+      {
+        "id": 4,
+        "name": "Concentré de tomate"
+      },
+      {
+        "id": 69,
+        "name": "Confiture d'abricots"
+      },
+      {
+        "id": 75,
+        "name": "Confiture de cerises"
+      },
+      {
+        "id": 90,
+        "name": "Confiture de fraises"
+      },
+      {
+        "id": 80,
+        "name": "Confiture de pêches"
+      },
+      {
+        "id": 63,
+        "name": "Confiture de poires"
+      },
+      {
+        "id": 54,
+        "name": "Confiture de pommes"
+      },
+      {
+        "id": 85,
+        "name": "Confiture de prunes"
+      },
+      {
+        "id": 94,
+        "name": "Confiture de raisin"
+      },
+      {
+        "id": 125,
+        "name": "Coriandre congelée"
+      },
+      {
+        "id": 124,
+        "name": "Coriandre en poudre (feuilles)"
+      },
+      {
+        "id": 123,
+        "name": "Coriandre séchée (feuilles)"
+      },
+      {
+        "id": 230,
+        "name": "Cottage cheese"
+      },
+      {
+        "id": 92,
+        "name": "Coulis de fraises"
+      },
+      {
+        "id": 3,
+        "name": "Coulis de tomate"
+      },
+      {
+        "id": 242,
+        "name": "Coulommiers"
+      },
+      {
+        "id": 50,
+        "name": "Courgettes déshydratées en dés"
+      },
+      {
+        "id": 22,
+        "name": "Courgettes grillées"
+      },
+      {
+        "id": 23,
+        "name": "Courgettes lacto-fermentées"
+      },
+      {
+        "id": 233,
+        "name": "Cream cheese"
+      },
+      {
+        "id": 202,
+        "name": "Crème anglaise"
+      },
+      {
+        "id": 226,
+        "name": "Crème d'avoine"
+      },
+      {
+        "id": 225,
+        "name": "Crème de soja"
+      },
+      {
+        "id": 197,
+        "name": "Crème épaisse 35%"
+      },
+      {
+        "id": 201,
+        "name": "Crème fouettée en bombe"
+      },
+      {
+        "id": 198,
+        "name": "Crème fraîche épaisse"
+      },
+      {
+        "id": 199,
+        "name": "Crème fraîche légère"
+      },
+      {
+        "id": 196,
+        "name": "Crème liquide 15%"
+      },
+      {
+        "id": 195,
+        "name": "Crème liquide 30%"
+      },
+      {
+        "id": 200,
+        "name": "Crème UHT liquide"
+      },
+      {
+        "id": 238,
+        "name": "Crottin de chèvre"
+      },
+      {
+        "id": 40,
+        "name": "Échalotes confites"
+      },
+      {
+        "id": 263,
+        "name": "Edam"
+      },
+      {
+        "id": 272,
+        "name": "Emmental"
+      },
+      {
+        "id": 249,
+        "name": "Époisses"
+      },
+      {
+        "id": 141,
+        "name": "Estragon congelé"
+      },
+      {
+        "id": 140,
+        "name": "Estragon séché"
+      },
+      {
+        "id": 247,
+        "name": "Explorateur"
+      },
+      {
+        "id": 219,
+        "name": "Faisselle"
+      },
+      {
+        "id": 148,
+        "name": "Fenouil congelé"
+      },
+      {
+        "id": 146,
+        "name": "Fenouil en poudre"
+      },
+      {
+        "id": 145,
+        "name": "Fenouil séché (herbe)"
+      },
+      {
+        "id": 275,
+        "name": "Fontina"
+      },
+      {
+        "id": 278,
+        "name": "Fourme d'Ambert"
+      },
+      {
+        "id": 91,
+        "name": "Fraises congelées"
+      },
+      {
+        "id": 88,
+        "name": "Fraises séchées"
+      },
+      {
+        "id": 47,
+        "name": "Frites surgelées maison"
+      },
+      {
+        "id": 234,
+        "name": "Fromage à tartiner nature"
+      },
+      {
+        "id": 215,
+        "name": "Fromage blanc 0%"
+      },
+      {
+        "id": 216,
+        "name": "Fromage blanc 20%"
+      },
+      {
+        "id": 217,
+        "name": "Fromage blanc 40%"
+      },
+      {
+        "id": 100,
+        "name": "Gelée de cerise"
+      },
+      {
+        "id": 60,
+        "name": "Gelée de pommes"
+      },
+      {
+        "id": 279,
+        "name": "Gorgonzola"
+      },
+      {
+        "id": 262,
+        "name": "Gouda"
+      },
+      {
+        "id": 130,
+        "name": "Graines d'aneth moulues"
+      },
+      {
+        "id": 126,
+        "name": "Graines de coriandre moulues"
+      },
+      {
+        "id": 147,
+        "name": "Graines de fenouil moulues"
+      },
+      {
+        "id": 271,
+        "name": "Gruyère"
+      },
+      {
+        "id": 136,
+        "name": "Huile d'origan"
+      },
+      {
+        "id": 104,
+        "name": "Huile de basilic infusée"
+      },
+      {
+        "id": 118,
+        "name": "Infusion de menthe concentrée"
+      },
+      {
+        "id": 70,
+        "name": "Jus d'abricot"
+      },
+      {
+        "id": 27,
+        "name": "Jus de carotte"
+      },
+      {
+        "id": 76,
+        "name": "Jus de cerise"
+      },
+      {
+        "id": 34,
+        "name": "Jus de chou"
+      },
+      {
+        "id": 44,
+        "name": "Jus de laitue"
+      },
+      {
+        "id": 81,
+        "name": "Jus de pêche"
+      },
+      {
+        "id": 64,
+        "name": "Jus de poire"
+      },
+      {
+        "id": 55,
+        "name": "Jus de pomme"
+      },
+      {
+        "id": 56,
+        "name": "Jus de pomme pasteurisé"
+      },
+      {
+        "id": 86,
+        "name": "Jus de prune"
+      },
+      {
+        "id": 95,
+        "name": "Jus de raisin"
+      },
+      {
+        "id": 96,
+        "name": "Jus de raisin pasteurisé"
+      },
+      {
+        "id": 8,
+        "name": "Jus de tomate"
+      },
+      {
+        "id": 227,
+        "name": "Kéfir"
+      },
+      {
+        "id": 7,
+        "name": "Ketchup maison"
+      },
+      {
+        "id": 191,
+        "name": "Lait concentré non sucré"
+      },
+      {
+        "id": 192,
+        "name": "Lait concentré sucré"
+      },
+      {
+        "id": 221,
+        "name": "Lait d'amande"
+      },
+      {
+        "id": 222,
+        "name": "Lait d'avoine"
+      },
+      {
+        "id": 224,
+        "name": "Lait de coco"
+      },
+      {
+        "id": 223,
+        "name": "Lait de riz"
+      },
+      {
+        "id": 220,
+        "name": "Lait de soja"
+      },
+      {
+        "id": 189,
+        "name": "Lait demi-écrémé frais"
+      },
+      {
+        "id": 186,
+        "name": "Lait demi-écrémé UHT"
+      },
+      {
+        "id": 190,
+        "name": "Lait écrémé frais"
+      },
+      {
+        "id": 187,
+        "name": "Lait écrémé UHT"
+      },
+      {
+        "id": 193,
+        "name": "Lait en poudre"
+      },
+      {
+        "id": 188,
+        "name": "Lait entier frais"
+      },
+      {
+        "id": 185,
+        "name": "Lait entier UHT"
+      },
+      {
+        "id": 228,
+        "name": "Lait fermenté"
+      },
+      {
+        "id": 229,
+        "name": "Lait ribot"
+      },
+      {
+        "id": 194,
+        "name": "Lait sans lactose"
+      },
+      {
+        "id": 144,
+        "name": "Laurier en poudre"
+      },
+      {
+        "id": 143,
+        "name": "Laurier séché"
+      },
+      {
+        "id": 252,
+        "name": "Livarot"
+      },
+      {
+        "id": 267,
+        "name": "Manchego"
+      },
+      {
+        "id": 250,
+        "name": "Maroilles"
+      },
+      {
+        "id": 232,
+        "name": "Mascarpone"
+      },
+      {
+        "id": 116,
+        "name": "Menthe congelée"
+      },
+      {
+        "id": 115,
+        "name": "Menthe en poudre"
+      },
+      {
+        "id": 114,
+        "name": "Menthe séchée"
+      },
+      {
+        "id": 264,
+        "name": "Mimolette"
+      },
+      {
+        "id": 254,
+        "name": "Mont d'Or"
+      },
+      {
+        "id": 258,
+        "name": "Morbier"
+      },
+      {
+        "id": 248,
+        "name": "Munster"
+      },
+      {
+        "id": 246,
+        "name": "Neufchâtel"
+      },
+      {
+        "id": 36,
+        "name": "Oignons caramélisés"
+      },
+      {
+        "id": 37,
+        "name": "Oignons confits"
+      },
+      {
+        "id": 135,
+        "name": "Origan en poudre"
+      },
+      {
+        "id": 134,
+        "name": "Origan séché"
+      },
+      {
+        "id": 265,
+        "name": "Ossau-Iraty"
+      },
+      {
+        "id": 9,
+        "name": "Paprika (poudre de poivron)"
+      },
+      {
+        "id": 273,
+        "name": "Parmesan"
+      },
+      {
+        "id": 48,
+        "name": "Pâte de tomate séchée"
+      },
+      {
+        "id": 82,
+        "name": "Pêches au sirop maison"
+      },
+      {
+        "id": 78,
+        "name": "Pêches séchées"
+      },
+      {
+        "id": 274,
+        "name": "Pecorino"
+      },
+      {
+        "id": 284,
+        "name": "Pélardon"
+      },
+      {
+        "id": 121,
+        "name": "Persil congelé haché"
+      },
+      {
+        "id": 120,
+        "name": "Persil en poudre"
+      },
+      {
+        "id": 119,
+        "name": "Persil séché"
+      },
+      {
+        "id": 218,
+        "name": "Petit-suisse"
+      },
+      {
+        "id": 283,
+        "name": "Picodon"
+      },
+      {
+        "id": 65,
+        "name": "Poires au sirop maison"
+      },
+      {
+        "id": 61,
+        "name": "Poires séchées"
+      },
+      {
+        "id": 10,
+        "name": "Poivrons grillés"
+      },
+      {
+        "id": 12,
+        "name": "Poivrons lacto-fermentés"
+      },
+      {
+        "id": 11,
+        "name": "Poivrons séchés"
+      },
+      {
+        "id": 59,
+        "name": "Pommes au four"
+      },
+      {
+        "id": 51,
+        "name": "Pommes séchées"
+      },
+      {
+        "id": 251,
+        "name": "Pont-l'Évêque"
+      },
+      {
+        "id": 99,
+        "name": "Poudre d'abricot"
+      },
+      {
+        "id": 39,
+        "name": "Poudre d'ail"
+      },
+      {
+        "id": 35,
+        "name": "Poudre d'oignon"
+      },
+      {
+        "id": 49,
+        "name": "Poudre de brocoli"
+      },
+      {
+        "id": 43,
+        "name": "Poudre de laitue séchée"
+      },
+      {
+        "id": 98,
+        "name": "Poudre de pomme"
+      },
+      {
+        "id": 282,
+        "name": "Pouligny-Saint-Pierre"
+      },
+      {
+        "id": 266,
+        "name": "Provolone"
+      },
+      {
+        "id": 83,
+        "name": "Pruneaux (prunes séchées)"
+      },
+      {
+        "id": 87,
+        "name": "Prunes au sirop maison"
+      },
+      {
+        "id": 72,
+        "name": "Purée d'abricots congelée"
+      },
+      {
+        "id": 16,
+        "name": "Purée d'aubergines"
+      },
+      {
+        "id": 32,
+        "name": "Purée de brocoli congelée"
+      },
+      {
+        "id": 19,
+        "name": "Purée de butternut congelée"
+      },
+      {
+        "id": 28,
+        "name": "Purée de carottes congelée"
+      },
+      {
+        "id": 66,
+        "name": "Purée de poires congelée"
+      },
+      {
+        "id": 13,
+        "name": "Purée de poivrons congelée"
+      },
+      {
+        "id": 57,
+        "name": "Purée de pommes congelée"
+      },
+      {
+        "id": 45,
+        "name": "Purée de pommes de terre congelée"
+      },
+      {
+        "id": 20,
+        "name": "Purée de potimarron congelée"
+      },
+      {
+        "id": 18,
+        "name": "Purée de potiron congelée"
+      },
+      {
+        "id": 260,
+        "name": "Raclette"
+      },
+      {
+        "id": 97,
+        "name": "Raisins congelés"
+      },
+      {
+        "id": 93,
+        "name": "Raisins secs"
+      },
+      {
+        "id": 253,
+        "name": "Reblochon"
+      },
+      {
+        "id": 231,
+        "name": "Ricotta"
+      },
+      {
+        "id": 281,
+        "name": "Rocamadour"
+      },
+      {
+        "id": 112,
+        "name": "Romarin congelé"
+      },
+      {
+        "id": 111,
+        "name": "Romarin en poudre"
+      },
+      {
+        "id": 110,
+        "name": "Romarin séché"
+      },
+      {
+        "id": 276,
+        "name": "Roquefort"
+      },
+      {
+        "id": 244,
+        "name": "Saint-Marcellin"
+      },
+      {
+        "id": 257,
+        "name": "Saint-Nectaire"
+      },
+      {
+        "id": 239,
+        "name": "Sainte-Maure"
+      },
+      {
+        "id": 42,
+        "name": "Salade cuite vapeur"
+      },
+      {
+        "id": 41,
+        "name": "Salade lavée et essorée sous vide"
+      },
+      {
+        "id": 138,
+        "name": "Sauge en poudre"
+      },
+      {
+        "id": 137,
+        "name": "Sauge séchée"
+      },
+      {
+        "id": 139,
+        "name": "Sel à la sauge"
+      },
+      {
+        "id": 122,
+        "name": "Sel au persil"
+      },
+      {
+        "id": 113,
+        "name": "Sel au romarin"
+      },
+      {
+        "id": 109,
+        "name": "Sel au thym"
+      },
+      {
+        "id": 117,
+        "name": "Sirop de menthe"
+      },
+      {
+        "id": 150,
+        "name": "Sirop de verveine"
+      },
+      {
+        "id": 212,
+        "name": "Skyr nature"
+      },
+      {
+        "id": 21,
+        "name": "Soupe de potiron"
+      },
+      {
+        "id": 108,
+        "name": "Thym congelé"
+      },
+      {
+        "id": 107,
+        "name": "Thym en poudre"
+      },
+      {
+        "id": 106,
+        "name": "Thym séché"
+      },
+      {
+        "id": 2,
+        "name": "Tomates confites"
+      },
+      {
+        "id": 6,
+        "name": "Tomates lacto-fermentées"
+      },
+      {
+        "id": 5,
+        "name": "Tomates pelées en bocaux"
+      },
+      {
+        "id": 1,
+        "name": "Tomates séchées"
+      },
+      {
+        "id": 259,
+        "name": "Tomme de Savoie"
+      },
+      {
+        "id": 255,
+        "name": "Vacherin"
+      },
+      {
+        "id": 280,
+        "name": "Valençay"
+      },
+      {
+        "id": 149,
+        "name": "Verveine séchée"
+      },
+      {
+        "id": 142,
+        "name": "Vinaigre à l'estragon"
+      },
+      {
+        "id": 214,
+        "name": "Yaourt aux fruits"
+      },
+      {
+        "id": 209,
+        "name": "Yaourt grec 0%"
+      },
+      {
+        "id": 208,
+        "name": "Yaourt grec nature"
+      },
+      {
+        "id": 210,
+        "name": "Yaourt lait de brebis"
+      },
+      {
+        "id": 211,
+        "name": "Yaourt lait de chèvre"
+      },
+      {
+        "id": 206,
+        "name": "Yaourt nature 0%"
+      },
+      {
+        "id": 207,
+        "name": "Yaourt nature brassé"
+      },
+      {
+        "id": 205,
+        "name": "Yaourt nature entier"
+      },
+      {
+        "id": 213,
+        "name": "Yaourt vanille"
+      }
+    ],
+    "all_missing": []
+  }
+}

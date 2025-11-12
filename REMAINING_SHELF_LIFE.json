@@ -1,0 +1,568 @@
+{
+  "total": 31,
+  "byCanonical": {
+    "bière": [
+      {
+        "id": 339,
+        "name": "bière",
+        "canonical_food_id": 8,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "bière"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 340,
+        "name": "bière blonde",
+        "canonical_food_id": 8,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "bière"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 341,
+        "name": "bière ambrée",
+        "canonical_food_id": 8,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "bière"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 342,
+        "name": "bière brune",
+        "canonical_food_id": 8,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "bière"
+        },
+        "cultivars": null
+      }
+    ],
+    "cidre": [
+      {
+        "id": 343,
+        "name": "cidre",
+        "canonical_food_id": 9,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "cidre"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 344,
+        "name": "cidre brut",
+        "canonical_food_id": 9,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "cidre"
+        },
+        "cultivars": null
+      }
+    ],
+    "lait": [
+      {
+        "id": 338,
+        "name": "fromage",
+        "canonical_food_id": 7001,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "lait"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 417,
+        "name": "fromage Minas",
+        "canonical_food_id": 7001,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "lait"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 420,
+        "name": "fromage râpé",
+        "canonical_food_id": 7001,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "lait"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 313,
+        "name": "feta",
+        "canonical_food_id": 7001,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "lait"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 320,
+        "name": "mozzarella",
+        "canonical_food_id": 7001,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "lait"
+        },
+        "cultivars": null
+      }
+    ],
+    "blé": [
+      {
+        "id": 306,
+        "name": "chapelure",
+        "canonical_food_id": 5002,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "blé"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 329,
+        "name": "semoule",
+        "canonical_food_id": 5002,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "blé"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 432,
+        "name": "baguette",
+        "canonical_food_id": 5002,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "blé"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 437,
+        "name": "brioche",
+        "canonical_food_id": 5002,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "blé"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 459,
+        "name": "linguine",
+        "canonical_food_id": 5002,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "blé"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 460,
+        "name": "trofie",
+        "canonical_food_id": 5002,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "blé"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 461,
+        "name": "trofie ou linguine",
+        "canonical_food_id": 5002,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "blé"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 462,
+        "name": "raviolis frais",
+        "canonical_food_id": 5002,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "blé"
+        },
+        "cultivars": null
+      }
+    ],
+    "cacao": [
+      {
+        "id": 307,
+        "name": "chocolat",
+        "canonical_food_id": 8005,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "cacao"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 308,
+        "name": "chocolat noir",
+        "canonical_food_id": 8005,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "cacao"
+        },
+        "cultivars": null
+      }
+    ],
+    "avoine": [
+      {
+        "id": 314,
+        "name": "flocon d'avoine",
+        "canonical_food_id": 5001,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "avoine"
+        },
+        "cultivars": null
+      }
+    ],
+    "amande": [
+      {
+        "id": 326,
+        "name": "poudre d'amande",
+        "canonical_food_id": 11001,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "amande"
+        },
+        "cultivars": null
+      }
+    ],
+    "tomate": [
+      {
+        "id": 327,
+        "name": "sauce tomate",
+        "canonical_food_id": 1059,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "tomate"
+        },
+        "cultivars": null
+      }
+    ],
+    "sarrasin": [
+      {
+        "id": 466,
+        "name": "nouilles soba",
+        "canonical_food_id": 4004,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "sarrasin"
+        },
+        "cultivars": null
+      }
+    ],
+    "poireau": [
+      {
+        "id": 482,
+        "name": "poireaux",
+        "canonical_food_id": 2049,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "poireau"
+        },
+        "cultivars": null
+      },
+      {
+        "id": 483,
+        "name": "blanc de poireau",
+        "canonical_food_id": 2049,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "poireau"
+        },
+        "cultivars": null
+      }
+    ],
+    "courgette": [
+      {
+        "id": 484,
+        "name": "courgettes",
+        "canonical_food_id": 2026,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "courgette"
+        },
+        "cultivars": null
+      }
+    ],
+    "blette": [
+      {
+        "id": 485,
+        "name": "blettes",
+        "canonical_food_id": 2001,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "blette"
+        },
+        "cultivars": null
+      }
+    ],
+    "légume": [
+      {
+        "id": 487,
+        "name": "légumes variés cuits",
+        "canonical_food_id": 13,
+        "cultivar_id": null,
+        "canonical_foods": {
+          "canonical_name": "légume"
+        },
+        "cultivars": null
+      }
+    ]
+  },
+  "byCultivar": {
+    "morue": [
+      {
+        "id": 427,
+        "name": "morue dessalée",
+        "canonical_food_id": null,
+        "cultivar_id": 3,
+        "canonical_foods": null,
+        "cultivars": {
+          "cultivar_name": "morue",
+          "canonical_foods": {
+            "canonical_name": "cabillaud"
+          }
+        }
+      }
+    ]
+  },
+  "orphans": [],
+  "details": [
+    {
+      "id": 339,
+      "name": "bière",
+      "canonical": "bière",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 340,
+      "name": "bière blonde",
+      "canonical": "bière",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 341,
+      "name": "bière ambrée",
+      "canonical": "bière",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 342,
+      "name": "bière brune",
+      "canonical": "bière",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 343,
+      "name": "cidre",
+      "canonical": "cidre",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 344,
+      "name": "cidre brut",
+      "canonical": "cidre",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 338,
+      "name": "fromage",
+      "canonical": "lait",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 417,
+      "name": "fromage Minas",
+      "canonical": "lait",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 420,
+      "name": "fromage râpé",
+      "canonical": "lait",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 427,
+      "name": "morue dessalée",
+      "canonical": null,
+      "cultivar": "morue",
+      "cultivar_canonical": "cabillaud"
+    },
+    {
+      "id": 306,
+      "name": "chapelure",
+      "canonical": "blé",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 307,
+      "name": "chocolat",
+      "canonical": "cacao",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 308,
+      "name": "chocolat noir",
+      "canonical": "cacao",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 314,
+      "name": "flocon d'avoine",
+      "canonical": "avoine",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 326,
+      "name": "poudre d'amande",
+      "canonical": "amande",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 327,
+      "name": "sauce tomate",
+      "canonical": "tomate",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 329,
+      "name": "semoule",
+      "canonical": "blé",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 313,
+      "name": "feta",
+      "canonical": "lait",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 320,
+      "name": "mozzarella",
+      "canonical": "lait",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 432,
+      "name": "baguette",
+      "canonical": "blé",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 437,
+      "name": "brioche",
+      "canonical": "blé",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 459,
+      "name": "linguine",
+      "canonical": "blé",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 460,
+      "name": "trofie",
+      "canonical": "blé",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 461,
+      "name": "trofie ou linguine",
+      "canonical": "blé",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 462,
+      "name": "raviolis frais",
+      "canonical": "blé",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 466,
+      "name": "nouilles soba",
+      "canonical": "sarrasin",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 482,
+      "name": "poireaux",
+      "canonical": "poireau",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 483,
+      "name": "blanc de poireau",
+      "canonical": "poireau",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 484,
+      "name": "courgettes",
+      "canonical": "courgette",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 485,
+      "name": "blettes",
+      "canonical": "blette",
+      "cultivar": null,
+      "cultivar_canonical": null
+    },
+    {
+      "id": 487,
+      "name": "légumes variés cuits",
+      "canonical": "légume",
+      "cultivar": null,
+      "cultivar_canonical": null
+    }
+  ]
+}
