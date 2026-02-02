@@ -1142,43 +1142,74 @@ export default function RecipeDetail() {
       </div>
 
       <div className="recipe-content">
-        <div className="recipe-info-cards">
-          <div className="info-card">
-            <div className="info-icon">⏱️</div>
-            <div className="info-content">
-              <div className="info-label">Temps total</div>
-              <div className="info-value">{totalTime} min</div>
-            </div>
+        {/* Cartes d'information condensées */}
+        <div style={{
+          display: 'flex',
+          gap: '12px',
+          marginBottom: '24px',
+          flexWrap: 'wrap'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '8px 16px',
+            background: '#f3f4f6',
+            borderRadius: '8px',
+            fontSize: '0.95rem'
+          }}>
+            <span>⏱️</span>
+            <span style={{ fontWeight: '600' }}>{totalTime} min</span>
           </div>
 
-          <div className="info-card">
-            <div className="info-icon">👥</div>
-            <div className="info-content">
-              <div className="info-label">Portions</div>
-              <div className="info-value">{recipe.servings || 'Non défini'}</div>
-            </div>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '8px 16px',
+            background: '#f3f4f6',
+            borderRadius: '8px',
+            fontSize: '0.95rem'
+          }}>
+            <span>👥</span>
+            <span style={{ fontWeight: '600' }}>{recipe.servings || 4} portions</span>
           </div>
 
-          <div className="info-card">
-            <div className="info-icon">📊</div>
-            <div className="info-content">
-              <div className="info-label">Score Myko</div>
-              <div className="info-value">{recipe.myko_score}/100</div>
-            </div>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '8px 16px',
+            background: '#f3f4f6',
+            borderRadius: '8px',
+            fontSize: '0.95rem'
+          }}>
+            <span>📊</span>
+            <span style={{ fontWeight: '600' }}>{recipe.myko_score}/100</span>
           </div>
 
-          <div className="info-card">
-            <div className="info-icon">🌱</div>
-            <div className="info-content">
-              <div className="info-label">Régime</div>
-              <div className="info-value">
-                {recipe.is_vegan ? 'Vegan' : recipe.is_vegetarian ? 'Végétarien' : 'Omnivore'}
-              </div>
-            </div>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '8px 16px',
+            background: '#f3f4f6',
+            borderRadius: '8px',
+            fontSize: '0.95rem'
+          }}>
+            <span>🌱</span>
+            <span style={{ fontWeight: '600' }}>
+              {recipe.is_vegan ? 'Vegan' : recipe.is_vegetarian ? 'Végétarien' : 'Omnivore'}
+            </span>
           </div>
         </div>
 
-        <div className="recipe-body">
+        <div className="recipe-body" style={{
+          display: 'grid',
+          gridTemplateColumns: '350px 1fr',
+          gap: '32px',
+          alignItems: 'start'
+        }}>
           <div className="ingredients-section">
             <h2>Ingrédients ({ings.length})</h2>
             {ings.length > 0 ? (
