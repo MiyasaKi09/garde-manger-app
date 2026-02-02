@@ -556,6 +556,18 @@ export default function RecipeDetail() {
     return out;
   }, [ings, plan, lotsByProduct, metaByProduct]);
 
+  // Calculer le temps total à partir de la somme des durées des étapes
+  const totalTime = useMemo(() => {
+    if (recipeSteps && recipeSteps.length > 0) {
+      return recipeSteps.reduce((sum, step) => {
+        const duration = parseInt(step.duration) || 0;
+        return sum + duration;
+      }, 0);
+    }
+    // Fallback sur les valeurs de la recette si pas d'étapes
+    return (recipe?.prep_min || 0) + (recipe?.cook_min || 0) + (recipe?.rest_min || 0);
+  }, [recipeSteps, recipe]);
+
   // Auto-remplit pour UN ingrédient (respecte la préférence noOverfill)
   function autoFillForProduct(pid) {
     const ing = (ings || []).find(x => x.product_id === pid);
@@ -749,18 +761,6 @@ export default function RecipeDetail() {
       </div>
     );
   }
-
-  // Calculer le temps total à partir de la somme des durées des étapes
-  const totalTime = useMemo(() => {
-    if (recipeSteps && recipeSteps.length > 0) {
-      return recipeSteps.reduce((sum, step) => {
-        const duration = parseInt(step.duration) || 0;
-        return sum + duration;
-      }, 0);
-    }
-    // Fallback sur les valeurs de la recette si pas d'étapes
-    return (recipe?.prep_min || 0) + (recipe?.cook_min || 0) + (recipe?.rest_min || 0);
-  }, [recipeSteps, recipe]);
 
   // Interface d'édition avec onglets (style cohérent avec /recipes/edit/new)
   if (isEditing) {
