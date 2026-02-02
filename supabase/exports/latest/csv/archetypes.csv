@@ -187,6 +187,7 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 334,yaourt grec,7001,,fermentation et égouttage,,,days,,2025-10-26 12:28:44.742772+00,2025-10-30 17:19:37.101885+00,,,,g,3467,f,,21,60,,3,,333
 335,yaourt nature,7001,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2025-10-30 17:19:37.101885+00,,,,g,3467,f,,21,60,,3,,333
 37,Oignons confits,2041,,confisage,14,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-11-14 11:45:37.127079+00,Oignons confits dans l'huile,,,u,3468,f,90,90,180,14,7,,
+529,Vinaigre de cidre,1001,,fermentation acétique,,,days,température ambiante,2026-02-02 15:17:08.627481+00,2026-02-02 15:17:08.627481+00,,,,ml,,f,1095,,,365,,,
 149,Verveine séchée,2067,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-11-06 13:32:31.375497+00,Feuilles de verveine déshydratées pour infusion,,,g,5520,f,365,365,3650,90,90,900,
 150,Sirop de verveine,2067,,infusion et cuisson avec sucre,90,30,days,réfrigéré,2025-10-04 13:10:13.5716+00,2025-11-06 13:32:31.375497+00,Sirop concentré à la verveine,,,g,5520,f,90,90,900,30,30,300,
 3,Coulis de tomate,1059,,cuisson et réduction,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-11-12 09:11:21.259514+00,Tomates cuites et réduites en sauce lisse,,,u,3474,f,7,14,180,3,7,,
@@ -224,6 +225,7 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 111,Romarin en poudre,2057,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-11-06 13:32:31.375497+00,Romarin séché réduit en poudre,,,g,6186,f,730,730,7300,180,180,1800,
 137,Sauge séchée,2061,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-11-06 13:32:31.375497+00,Feuilles de sauge déshydratées,,,g,6187,f,730,730,7300,180,180,1800,
 138,Sauge en poudre,2061,,séchage et broyage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-11-06 13:32:31.375497+00,Sauge séchée réduite en poudre,,,g,6187,f,730,730,7300,180,180,1800,
+531,Thon en conserve,2064,,appertisation,,,days,température ambiante,2026-02-02 15:45:24.024876+00,2026-02-02 15:45:24.024876+00,,,,g,,f,1825,,,,3,,
 130,Graines d'aneth moulues,8002,,séchage et broyage des graines,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2025-11-06 13:32:31.375497+00,Graines d'aneth réduites en poudre,,,g,6191,f,730,730,7300,180,180,1800,
 471,pâte laksa,12,,pâte curry malaisien,,,days,,2025-11-03 15:53:00.22738+00,2025-11-06 13:38:42.573119+00,,,,g,,f,730,,,365,,,
 462,raviolis frais,5002,,pâtes farcies,,,days,,2025-11-03 15:53:00.22738+00,2025-11-06 13:47:18.422295+00,,,,g,,f,,7,90,,3,,457
@@ -246,6 +248,7 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 5,Tomates pelées en bocaux,1059,,stérilisation,730,3,days,température ambiante,2025-10-04 13:05:32.404841+00,2025-11-12 09:11:21.259514+00,Tomates pelées et stérilisées en bocaux,,,u,3474,f,7,14,180,3,7,,
 16,Purée d'aubergines,1001,,cuisson et mixage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-11-12 09:11:21.259514+00,Aubergines cuites et mixées,,,u,3476,f,5,5,50,3,5,,
 22,Courgettes grillées,2026,,grillage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-11-12 09:11:21.259514+00,Courgettes tranchées et grillées,,,u,3471,f,5,5,50,3,3,,
+532,Olives noires,11007,,saumure et maturation,,,days,température ambiante,2026-02-02 15:45:31.920389+00,2026-02-02 15:45:31.920389+00,,,,g,,f,730,,,,14,,
 472,paprika,12,,poudre poivron,,,days,,2025-11-03 15:53:05.422197+00,2025-11-06 13:38:42.573119+00,,,,g,,f,730,,,365,,,
 211,Yaourt lait de chèvre,,1,fermentation lactique 43°C lait chèvre,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-11-12 09:10:10.303005+00,,,,L,3467,f,,21,60,,3,,336
 186,Lait demi-écrémé UHT,7001,,pasteurisation UHT 140°C écrémage partiel,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2025-11-14 11:45:37.127079+00,,,,L,3467,f,90,7,90,0,3,30,336
@@ -284,6 +287,7 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 196,Crème liquide 15%,7001,,écrémage centrifugation 15% MG,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-11-12 09:10:10.303005+00,,,,L,3467,f,,30,120,,3,60,337
 198,Crème fraîche épaisse,7001,,fermentation lactique ensemencement 35% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2025-11-12 09:10:10.303005+00,,,,L,3467,f,,30,120,,3,60,337
 21,Soupe de potiron,2053,,cuisson,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2025-11-14 11:45:37.127079+00,Potiron cuit et mixé en soupe,,,u,3472,f,3,3,30,0,3,,
+533,Anchois marinés,9001,,salaison et huile,,,days,réfrigéré,2026-02-02 15:45:38.296702+00,2026-02-02 15:45:38.296702+00,,,,g,,f,,365,,,14,,
 486,laitue romaine,1031,,laitue romaine,,,days,,2025-11-03 15:53:10.750804+00,2025-11-06 13:38:42.573119+00,,,,g,,f,,21,60,,3,,
 485,blettes,2001,,blettes,,,days,,2025-11-03 15:53:10.750804+00,2025-11-06 13:47:18.422295+00,,,,g,,f,,7,180,,3,,
 482,poireaux,2049,,poireaux entiers,,,days,,2025-11-03 15:53:10.750804+00,2025-11-06 13:47:18.422295+00,,,,g,,f,,7,180,,3,,

@@ -1,1 +1,13 @@
 id,recipe_id,archetype_id,canonical_food_id,quantity,unit,notes,sub_recipe_id
+5990,9401,531,,200,g,égoutté,
+5991,9401,,2040,4,u,durs,
+5992,9401,,1059,4,u,en quartiers,
+5993,9401,,2037,200,g,cuits al dente,
+5994,9401,532,,100,g,dénoyautées,
+5995,9401,533,,50,g,,
+5996,9401,,2041,1,u,"rouge, émincé",
+5997,9401,,1031,1,u,cœur de laitue,
+5998,9401,,14030,60,ml,,
+5999,9401,529,,20,ml,,
+6000,9401,,6004,1,pincée,,
+6001,9401,,10005,1,pincée,,

@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Mon Feb  2 14:45:54 UTC 2026_
+_Généré le : Mon Feb  2 16:21:57 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -28,6 +28,7 @@ _Généré le : Mon Feb  2 14:45:54 UTC 2026_
 - recipe_ingredients
 - recipe_nutrition_cache
 - recipe_pairings
+- recipe_steps
 - recipe_tags
 - recipes
 - reference_categories
@@ -415,6 +416,16 @@ _Généré le : Mon Feb  2 14:45:54 UTC 2026_
  - main_recipe_id :: integer NOT NULL
  - side_recipe_id :: integer NOT NULL
 
+### recipe_steps
+ - id :: integer default nextval('recipe_steps_id_seq'::regclass) NOT NULL
+ - recipe_id :: integer NOT NULL
+ - step_no :: integer NOT NULL
+ - instruction :: text NOT NULL
+ - duration_min :: integer
+ - temperature :: integer
+ - temperature_unit :: character varying default '°C'::character varying
+ - created_at :: timestamp without time zone default now()
+
 ### recipe_tags
  - recipe_id :: integer NOT NULL
  - tag_id :: integer NOT NULL
@@ -555,7 +566,8 @@ _Généré le : Mon Feb  2 14:45:54 UTC 2026_
  - products → (id)
  - recipe_ingredients → (id)
  - recipe_nutrition_cache → (recipe_id)
- - recipe_pairings → (main_recipe_id, side_recipe_id)
+ - recipe_pairings → (side_recipe_id, main_recipe_id)
+ - recipe_steps → (id)
  - recipe_tags → (tag_id, recipe_id)
  - recipes → (id)
  - reference_categories → (id)
@@ -602,13 +614,14 @@ _Généré le : Mon Feb  2 14:45:54 UTC 2026_
  - planned_meals.plan_id → meal_plans.id  (constraint planned_meals_plan_id_fkey)
  - products.archetype_id → archetypes.id  (constraint products_archetype_id_fkey)
  - products.archetype_id → archetypes.id  (constraint products_archetype_fk)
- - recipe_ingredients.archetype_id → archetypes.id  (constraint recipe_ingredients_archetype_id_fkey)
- - recipe_ingredients.recipe_id → recipes.id  (constraint recipe_ingredients_recipe_id_fkey)
  - recipe_ingredients.sub_recipe_id → recipes.id  (constraint recipe_ingredients_sub_recipe_fk)
+ - recipe_ingredients.recipe_id → recipes.id  (constraint recipe_ingredients_recipe_id_fkey)
+ - recipe_ingredients.archetype_id → archetypes.id  (constraint recipe_ingredients_archetype_id_fkey)
  - recipe_ingredients.canonical_food_id → canonical_foods.id  (constraint recipe_ingredients_canonical_food_id_fkey)
  - recipe_nutrition_cache.recipe_id → recipes.id  (constraint recipe_nutrition_cache_recipe_id_fkey)
- - recipe_pairings.main_recipe_id → recipes.id  (constraint recipe_pairings_main_recipe_id_fkey)
  - recipe_pairings.side_recipe_id → recipes.id  (constraint recipe_pairings_side_recipe_id_fkey)
+ - recipe_pairings.main_recipe_id → recipes.id  (constraint recipe_pairings_main_recipe_id_fkey)
+ - recipe_steps.recipe_id → recipes.id  (constraint recipe_steps_recipe_id_fkey)
  - recipe_tags.recipe_id → recipes.id  (constraint recipe_tags_recipe_id_fkey)
  - recipe_tags.tag_id → tags.id  (constraint recipe_tags_tag_id_fkey)
  - reference_subcategories.category_id → reference_categories.id  (constraint reference_subcategories_category_id_fkey)
@@ -688,6 +701,8 @@ _Généré le : Mon Feb  2 14:45:54 UTC 2026_
  - public.recipe_nutrition_cache → idx_recipe_nutrition_cache_calculated : CREATE INDEX idx_recipe_nutrition_cache_calculated ON public.recipe_nutrition_cache USING btree (calculated_at)
  - public.recipe_nutrition_cache → recipe_nutrition_cache_pkey : CREATE UNIQUE INDEX recipe_nutrition_cache_pkey ON public.recipe_nutrition_cache USING btree (recipe_id)
  - public.recipe_pairings → recipe_pairings_pkey : CREATE UNIQUE INDEX recipe_pairings_pkey ON public.recipe_pairings USING btree (main_recipe_id, side_recipe_id)
+ - public.recipe_steps → idx_recipe_steps_recipe : CREATE INDEX idx_recipe_steps_recipe ON public.recipe_steps USING btree (recipe_id)
+ - public.recipe_steps → recipe_steps_pkey : CREATE UNIQUE INDEX recipe_steps_pkey ON public.recipe_steps USING btree (id)
  - public.recipe_tags → recipe_tags_pkey : CREATE UNIQUE INDEX recipe_tags_pkey ON public.recipe_tags USING btree (recipe_id, tag_id)
  - public.recipes → recipes_name_unique : CREATE UNIQUE INDEX recipes_name_unique ON public.recipes USING btree (name)
  - public.recipes → recipes_pkey : CREATE UNIQUE INDEX recipes_pkey ON public.recipes USING btree (id)
