@@ -1,879 +1,261 @@
 id,name,description,prep_time_minutes,cook_time_minutes,servings,cooking_method,role,is_scalable_to_main,is_complete_meal,needs_side_dish
-574,Aji de gallina,Une savoureuse recette de Aji de gallina (poulet en sauce pimentée),30,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-2,Overnight porridge aux graines de chia et fruits rouges,Une savoureuse recette de petit-déjeuner nutritif,10,480,2,Sans cuisson,ENTREE,f,t,f
-3,"Porridge salé aux épinards, feta et œuf mollet",Une recette originale de porridge salé,10,15,2,Mijotage,PLAT_PRINCIPAL,f,t,f
-367,Ajo Blanco,Une délicieuse recette espagnole : Ajo Blanco (soupe froide d'amandes espagnole),20,30,4,Mijotage,ENTREE,f,f,
-336,Baingan Bharta,Une délicieuse recette indienne : Baingan Bharta (caviar d'aubergine indien),20,35,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-6,Pudding de chia au lait de coco et coulis de mangue,Un dessert léger aux graines de chia,10,240,2,Sans cuisson,DESSERT,f,t,f
-8,Muesli Bircher aux pommes râpées et noisettes,Le classique muesli suisse,10,0,4,Sans cuisson,ENTREE,f,t,f
-9,Pancakes américains fluffy au sirop d'érable,Des pancakes moelleux et aériens,10,15,4,Poêle,DESSERT,f,t,f
-10,Pancakes à la banane sans sucre ajouté,Des pancakes naturellement sucrés,10,15,4,Poêle,ENTREE,f,t,f
-11,Pancakes salés au saumon fumé et aneth,Une version salée des pancakes,15,20,2,Poêle,PLAT_PRINCIPAL,f,t,f
-12,"Porridge d'avoine, pommes et cannelle","Une savoureuse recette de Porridge d'avoine, pommes et cannelle",5,10,2,Mijotage,PLAT_PRINCIPAL,f,t,f
-582,Bandeja paisa,Une savoureuse recette de Bandeja paisa (plat complet colombien),40,60,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-372,"Burger de bœuf , cheddar et bacon","Une délicieuse recette américaine : Burger de bœuf classique, cheddar et bacon",20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-583,Chiles rellenos,Une délicieuse recette mexicaine : Chiles rellenos (piments farcis mexicains),35,25,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-408,Congee de riz,Une savoureuse recette de Congee de riz (porridge de riz salé),5,10,2,Mijotage,ACCOMPAGNEMENT,t,t,f
-554,Crique ardéchoise,Une savoureuse recette de Crique ardéchoise (galette de pommes de terre),20,20,4,Poêle,PLAT_PRINCIPAL,f,t,f
-343,Crozets en gratin au beaufort,Une savoureuse recette de Crozets en gratin au beaufort (croziflette),20,30,6,Cuisson au four,ACCOMPAGNEMENT,t,t,f
-9007,Potage au potiron,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-609,Dolmas,Une savoureuse recette de Dolmas (feuilles de vigne farcies),60,40,8,Mijotage,PLAT_PRINCIPAL,f,f,
-603,Doro Wat,Une savoureuse recette de Doro Wat (ragoût de poulet éthiopien),30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9010,Potage méditerranéen,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9011,Crème de champignons,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9012,Crème de poireaux,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9013,Crème de courgettes,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9014,Crème de carottes,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-27,Œuf poché sur toast d'avocat,Une savoureuse recette de Œuf poché sur toast d'avocat,10,10,2,Cuisson à l'eau,ENTREE,f,t,f
-611,Fatteh,Une délicieuse recette orientale : Fatteh (plat libanais à base de pain pita),90,20,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
-349,Fattoush,Une délicieuse recette orientale : Fattoush (salade libanaise au pain pita grillé),90,20,1,Cuisson au four,ENTREE,f,f,
-39,Full English Breakfast,Une savoureuse recette de Full English Breakfast complet,20,30,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-32,"Yaourt grec, miel et noix","Une savoureuse recette de Yaourt grec, miel et noix",5,0,2,Sans cuisson,PLAT_PRINCIPAL,f,f,
-42,Gaspacho Andalou,Une savoureuse recette de Gaspacho Andalou traditionnel,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,
-7,Granola aux noix de pécan et sirop d'érable,Un granola croustillant fait maison,10,30,8,Cuisson au four,ENTREE,f,f,
-63,Guacamole et chips de maïs,Une délicieuse recette mexicaine : Guacamole maison et chips de maïs,10,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,
-40,Œufs Bénédictine et sauce hollandaise,Une délicieuse recette française : Œufs Bénédictine et sauce hollandaise,20,15,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-43,Salmorejo de Cordoue et ses garnitures,Une savoureuse recette de Salmorejo de Cordoue et ses garnitures,15,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,
-96,Harira marocaine,Une délicieuse recette orientale : Harira marocaine (soupe de rupture du jeûne),20,40,6,Mijotage,ENTREE,f,t,f
-58,Houmous de pois chiches,Une délicieuse recette orientale : Houmous de pois chiches maison,10,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-36,Huevos Rotos,Une savoureuse recette de Huevos Rotos (œufs cassés sur frites et jambon Serrano),15,20,2,Poêle,ACCOMPAGNEMENT,t,t,f
-604,Injera,Une savoureuse recette de Injera (crêpe éthiopienne au teff),72,0,8,Fermentation,PLAT_PRINCIPAL,f,f,
-401,Japchae,Une savoureuse recette de Japchae (nouilles de patate douce coréennes),25,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-406,Katsudon,Une délicieuse recette japonaise : Katsudon (bol de riz au porc pané),20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9015,Crème de céleri,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9016,Crème de brocolis,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-79,Arancini siciliens,Une délicieuse recette italienne : Arancini siciliens (boules de risotto frites),30,18,8,Friture,ACCOMPAGNEMENT,t,f,
-9019,Faux-filet grillé,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Grillade,PLAT_PRINCIPAL,f,f,t
-9020,Rumsteck grillé,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,10,2,Grillade,PLAT_PRINCIPAL,f,f,t
-9021,Bavette grillée,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Poêle,PLAT_PRINCIPAL,f,f,t
-85,Aubergines à la parmesane,Une savoureuse recette de Aubergines à la parmesane (Melanzane alla parmigiana),30,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-59,Baba Ganoush,Une savoureuse recette de Baba Ganoush (caviar d'aubergines fumées),15,30,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-70,Croquetas de jamón,Une savoureuse recette de Croquetas de jamón (croquettes de jambon),30,20,8,Friture,PLAT_PRINCIPAL,f,f,
-45,Velouté froid de courgettes au basilic,Une savoureuse recette de Velouté froid de courgettes au basilic,15,25,4,Mijotage,ENTREE,f,f,
-57,Bò bún vietnamien au bœuf,Une savoureuse recette de Bò bún vietnamien au bœuf,30,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-60,Tzatziki grec au concombre et à l'aneth,Une savoureuse recette de Tzatziki grec au concombre et à l'aneth,15,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-61,Moutabal libanais,Une délicieuse recette orientale : Moutabal libanais,15,30,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-62,Tapenade d'olives noires de Provence,Une délicieuse recette française : Tapenade d'olives noires de Provence,10,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-64,Bruschetta à la tomate fraîche et basilic,Une savoureuse recette de Bruschetta à la tomate fraîche et basilic,10,5,4,Grillage,ENTREE,f,f,
-65,Crostinis au chèvre et figues,Une savoureuse recette de Crostinis au chèvre et figues,15,10,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9025,Tournedos poêlé,Plat principal savoureux poêlé avec soin. Parfait pour un repas convivial.,5,10,2,Poêle,PLAT_PRINCIPAL,f,f,t
-66,Tartinade de thon et St Môret,Une savoureuse recette de Tartinade de thon et St Môret,10,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-67,Rillettes de saumon frais et fumé,Une savoureuse recette de Rillettes de saumon frais et fumé,15,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-69,Patatas bravas et leur sauce épicée,Une savoureuse recette de Patatas bravas et leur sauce épicée,15,30,4,Friture,PLAT_PRINCIPAL,f,f,
-71,Pimientos de Padrón grillés,Une savoureuse recette de Pimientos de Padrón grillés,5,10,4,Poêle,PLAT_PRINCIPAL,f,f,
-73,"Falafels de pois chiches, sauce tahini","Une délicieuse recette orientale : Falafels de pois chiches, sauce tahini",20,15,4,Friture,PLAT_PRINCIPAL,f,f,
-74,Samoussas aux légumes et épices,Une savoureuse recette de Samoussas aux légumes et épices,40,12,8,Friture,PLAT_PRINCIPAL,f,f,
-75,Nems au porc et leur sauce,Une savoureuse recette de Nems au porc et leur sauce,40,12,8,Friture,PLAT_PRINCIPAL,f,f,
-72,Gambas al ajillo,Une savoureuse recette de Gambas al ajillo (crevettes à l'ail),10,5,4,Poêle,PLAT_PRINCIPAL,f,f,
-76,Rouleaux de printemps aux crevettes,Une savoureuse recette de Rouleaux de printemps aux crevettes,30,0,8,Sans cuisson,PLAT_PRINCIPAL,f,f,
-77,Accras de morue antillais,Une savoureuse recette de Accras de morue antillais,25,18,8,Friture,PLAT_PRINCIPAL,f,f,
-83,Artichauts à la romaine,Une délicieuse recette italienne : Artichauts à la romaine,20,40,4,Mijotage,PLAT_PRINCIPAL,f,f,
-84,Poivrons marinés à l'huile d'olive et à l'ail,Une savoureuse recette de Poivrons marinés à l'huile d'olive et à l'ail,15,25,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-86,Velouté de potimarron et châtaignes,Une savoureuse recette de Velouté de potimarron et châtaignes,15,25,4,Mijotage,ENTREE,f,f,
-87,Soupe à l'oignon gratinée,Une savoureuse recette de Soupe à l'oignon gratinée,20,45,4,Cuisson au four,ENTREE,f,f,
-88,Crème de lentilles corail au lait de coco,Une savoureuse recette de Crème de lentilles corail au lait de coco,15,25,4,Mijotage,DESSERT,f,f,
-9027,Pavé de bœuf grillé,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,5,12,2,Grillade,PLAT_PRINCIPAL,f,f,t
-81,Gressins italiens,Une délicieuse recette italienne : Gressins italiens maison,15,20,20,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9029,Côte de bœuf grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,10,20,4,Grillade,PLAT_PRINCIPAL,f,t,f
-9030,Araignée de bœuf grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Grillade,PLAT_PRINCIPAL,f,f,t
-9031,Poire de bœuf grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Grillade,PLAT_PRINCIPAL,f,f,t
-9032,Merlan de bœuf grillé,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,5,8,2,Grillade,PLAT_PRINCIPAL,f,f,t
-89,Soupe de poireaux-pommes de terre,Une savoureuse recette de Soupe de poireaux-pommes de terre,20,30,4,Mijotage,ENTREE,f,f,
-91,Minestrone de légumes italiens,Une délicieuse recette italienne : Minestrone de légumes italiens,20,40,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-97,Chorba algérienne,Une savoureuse recette de Chorba algérienne,20,50,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-99,Feuilletés saucisse à la moutarde,Une savoureuse recette de Feuilletés saucisse à la moutarde,20,25,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-102,Roulés de courgette au fromage frais,Une savoureuse recette de Roulés de courgette au fromage frais,25,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-103,Blinis au saumon fumé et crème à l'aneth,Une savoureuse recette de Blinis au saumon fumé et crème à l'aneth,10,15,4,Cuisson au four,DESSERT,f,f,t
-104,Champignons farcis à l'ail et au persil,Une savoureuse recette de Champignons farcis à l'ail et au persil,20,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-508,Barres de céréales,Une savoureuse recette de Barres de céréales maison,15,20,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9034,Entrecôte au poivre,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9035,Steak grillé au beurre maître d’hôtel,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-105,Tomates provençales au four,Une savoureuse recette de Tomates provençales au four,15,25,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9036,Filet grillé aux herbes,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,12,2,Grillade,PLAT_PRINCIPAL,f,f,t
-9038,Daube provençale,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9041,Bœuf carottes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,120,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-106,Tarte soleil au pesto et parmesan,Une savoureuse recette de Tarte soleil au pesto et parmesan,30,40,8,Cuisson au four,DESSERT,f,f,
-107,Gougères au fromage,Une savoureuse recette de Gougères au fromage,20,25,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-108,Cake salé aux olives et au jambon,Une savoureuse recette de Cake salé aux olives et au jambon,15,35,8,Cuisson au four,DESSERT,f,f,
-109,Muffins salés au chorizo et poivron,Une savoureuse recette de Muffins salés au chorizo et poivron,15,25,12,Cuisson au four,DESSERT,f,f,
-110,Madeleines salées au chèvre et romarin,Une savoureuse recette de Madeleines salées au chèvre et romarin,15,12,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-112,Tarte aux poireaux et lardons,Une savoureuse recette de Tarte aux poireaux et lardons,30,40,8,Cuisson au four,DESSERT,f,f,
-113,Tarte à la tomate et à la moutarde,Une savoureuse recette de Tarte à la tomate et à la moutarde,30,40,8,Cuisson au four,DESSERT,f,f,
-116,Flammenkueche alsacienne,Une délicieuse recette française : Flammenkueche alsacienne,30,15,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-121,Poulet rôti du dimanche aux herbes de Provence,Une délicieuse recette française : Poulet rôti du dimanche aux herbes de Provence,15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-122,Poulet basquaise,Une savoureuse recette de Poulet basquaise,25,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-123,Poulet à la crème et aux champignons,Une savoureuse recette de Poulet à la crème et aux champignons,20,35,4,Mijotage,DESSERT,f,t,f
-125,Coq au vin,Une savoureuse recette de Coq au vin,30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-126,Waterzooi de poulet à la gantoise,Une savoureuse recette de Waterzooi de poulet à la gantoise,25,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-127,Escalopes de poulet à la milanaise,Une délicieuse recette italienne : Escalopes de poulet à la milanaise,15,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-128,Escalopes de poulet panées au citron,Une savoureuse recette de Escalopes de poulet panées au citron,15,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-130,Piccata de veau au citron,Une savoureuse recette de Piccata de veau au citron,15,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
-131,Blanquette de veau à l'ancienne,Une savoureuse recette de Blanquette de veau à l'ancienne,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9042,Navarin de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-132,Osso buco à la milanaise,Une délicieuse recette italienne : Osso buco à la milanaise,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-133,Rôti de veau Orloff,Une savoureuse recette de Rôti de veau Orloff,40,60,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-134,Sauté de veau Marengo,Une délicieuse recette asiatique : Sauté de veau Marengo,25,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-90,Velouté Dubarry,Une savoureuse recette de Velouté Dubarry (chou-fleur),15,25,4,Mijotage,ENTREE,f,f,
-135,Paupiettes de veau en sauce,Une savoureuse recette de Paupiettes de veau en sauce,30,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-507,Energy balls aux dattes et noix de cajou,Une savoureuse recette de Energy balls aux dattes et noix de cajou,15,0,12,Sans cuisson,PLAT_PRINCIPAL,f,f,
-510,Mousse d'avocat au cacao,Une savoureuse recette de Mousse d'avocat au cacao,15,0,4,Sans cuisson,DESSERT,f,f,
-136,Bœuf bourguignon,Une délicieuse recette française : Bœuf bourguignon,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-137,Daube de bœuf provençale,Une savoureuse recette de Daube de bœuf provençale,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9043,Bœuf aux oignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-138,Carbonnade flamande,Une savoureuse recette de Carbonnade flamande,25,120,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-140,Hachis Parmentier,Une savoureuse recette de Hachis Parmentier,30,35,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-141,"Steak frites, sauce au poivre","Une savoureuse recette de Steak frites, sauce au poivre",15,15,2,Poêle,ACCOMPAGNEMENT,t,t,f
-142,"Entrecôte grillée, sauce béarnaise","Une savoureuse recette de Entrecôte grillée, sauce béarnaise",5,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9044,Bœuf aux poivrons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-145,Bœuf Stroganoff,Une savoureuse recette de Bœuf Stroganoff,20,25,4,Poêle,PLAT_PRINCIPAL,f,t,f
-146,Goulash de bœuf hongrois,Une savoureuse recette de Goulash de bœuf hongrois,25,120,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-147,Chili con carne,Une délicieuse recette mexicaine : Chili con carne,20,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-148,Boulettes de bœuf à la sauce tomate,Une savoureuse recette de Boulettes de bœuf à la sauce tomate,25,35,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-149,Kefta de bœuf à la marocaine,Une délicieuse recette orientale : Kefta de bœuf à la marocaine,20,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-150,Bœuf loc lac cambodgien,Une savoureuse recette de Bœuf loc lac cambodgien,120,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-151,Bœuf sauté aux oignons,Une délicieuse recette asiatique : Bœuf sauté aux oignons,15,10,4,Sauté au wok,PLAT_PRINCIPAL,f,f,t
-153,Bibimbap coréen au bœuf,Une savoureuse recette de Bibimbap coréen au bœuf,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9045,Bœuf aux champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9046,Bœuf aux carottes et pommes de terre,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,30,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,
-156,Rôti de porc à la moutarde,Une savoureuse recette de Rôti de porc à la moutarde,15,60,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9047,Bœuf aux haricots blancs,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9048,Bœuf aux pois chiches,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-158,Sauté de porc au caramel,Une délicieuse recette asiatique : Sauté de porc au caramel,20,30,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-159,Porc à l'aigre-douce,Une savoureuse recette de Porc à l'aigre-douce,20,20,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-160,Rougail saucisse réunionnais,Une savoureuse recette de Rougail saucisse réunionnais,20,35,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9049,Bœuf aux lentilles,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-165,Jambon à l'os braisé au madère,Une savoureuse recette de Jambon à l'os braisé au madère,20,120,8,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9050,Bœuf aux courgettes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-154,Bulgogi,Une délicieuse recette américaine : Bulgogi (barbecue coréen),15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-178,Canard laqué pékinois,Une savoureuse recette de Canard laqué pékinois (version simplifiée),45,120,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-166,Gigot d'agneau de sept heures,Une savoureuse recette de Gigot d'agneau de sept heures,20,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-167,Navarin d'agneau printainier,Une savoureuse recette de Navarin d'agneau printainier,30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-170,Moussaka grecque,Une savoureuse recette de Moussaka grecque,40,60,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-173,Côtelettes d'agneau grillées à l'ail,Une savoureuse recette de Côtelettes d'agneau grillées à l'ail,10,12,4,Grillade,PLAT_PRINCIPAL,f,f,t
-155,Gyudon japonais,Une délicieuse recette japonaise : Gyudon japonais (bol de riz au bœuf),20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-175,Kefta d'agneau et semoule,Une savoureuse recette de Kefta d'agneau et semoule,20,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-176,"Magret de canard, sauce au poivre vert","Une savoureuse recette de Magret de canard, sauce au poivre vert",10,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
-179,Parmentier de canard,Une savoureuse recette de Parmentier de canard,30,35,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-180,Lapin à la moutarde,Une savoureuse recette de Lapin à la moutarde,20,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-181,Lapin chasseur,Une savoureuse recette de Lapin chasseur,25,75,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-185,"Andouillette de Troyes, sauce moutarde","Une savoureuse recette de Andouillette de Troyes, sauce moutarde",5,20,2,Grillade,PLAT_PRINCIPAL,f,f,t
-511,Pommes en tranches et beurre de cacahuètes,Une savoureuse recette de Pommes en tranches et beurre de cacahuètes,5,0,2,Sans cuisson,PLAT_PRINCIPAL,f,f,
-512,Baguette tradition française,Une délicieuse recette française : Baguette tradition française,120,25,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
-186,Boudin noir aux pommes,Une savoureuse recette de Boudin noir aux pommes,15,20,2,Poêle,PLAT_PRINCIPAL,f,t,f
-187,Saucisson de Lyon pistaché en brioche,Une savoureuse recette de Saucisson de Lyon pistaché en brioche,120,35,8,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-190,Galettes de sarrasin bretonnes,Une délicieuse recette française : Galettes de sarrasin bretonnes,90,3,8,Poêle,PLAT_PRINCIPAL,f,t,f
-191,Moules marinières,Une savoureuse recette de Moules marinières,15,10,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-192,Moules à la crème et aux frites,Une savoureuse recette de Moules à la crème et aux frites,15,10,4,Mijotage,DESSERT,f,t,f
-194,Moules à la provençale,Une savoureuse recette de Moules à la provençale,20,15,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-195,Paella valenciana,Une délicieuse recette espagnole : Paella valenciana,30,40,6,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-188,Far breton (version salée aux pruneaux),Une délicieuse recette française : Far breton (version salée aux pruneaux et lard),20,45,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-196,Paella aux fruits de mer,Une délicieuse recette espagnole : Paella aux fruits de mer,30,40,6,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-199,Fideuà,Une délicieuse recette espagnole : Fideuà (paella de vermicelles),30,40,6,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-211,Gravlax de saumon,Une savoureuse recette de Gravlax de saumon maison,20,0,8,Marinade,PLAT_PRINCIPAL,f,f,
-382,Kebab,"Une délicieuse recette orientale : Kebab maison (pain pita, viande grillée, sauce blanche)",90,20,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
-608,Kibbeh,Une savoureuse recette de Kibbeh (boulettes de boulgour et viande),45,20,6,Friture,PLAT_PRINCIPAL,f,f,
-410,Kimchi Jjigae,Une savoureuse recette de Kimchi Jjigae (ragoût de kimchi coréen),30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-200,Lotte à l'américaine,Une délicieuse recette américaine : Lotte à l'américaine,25,30,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-201,Bouillabaisse marseillaise,Une savoureuse recette de Bouillabaisse marseillaise,30,40,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-350,Koshari égyptien,"Une délicieuse recette italienne : Koshari égyptien (riz, lentilles, pâtes, sauce tomate)",30,30,6,Cuisson mixte,ACCOMPAGNEMENT,t,t,f
-202,Bourride sétoise,Une savoureuse recette de Bourride sétoise,30,40,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-203,Brandade de morue de Nîmes,Une savoureuse recette de Brandade de morue de Nîmes,30,30,6,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-204,Aïoli provençal et ses légumes,Une savoureuse recette de Aïoli provençal et ses légumes,30,40,6,Cuisson vapeur,PLAT_PRINCIPAL,f,t,f
-205,Pavé de saumon à l'unilatérale,Une savoureuse recette de Pavé de saumon à l'unilatérale,10,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-206,"Saumon en papillote, julienne de légumes","Une savoureuse recette de Saumon en papillote, julienne de légumes",15,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-403,Laksa de Singapour,Une savoureuse recette de Laksa de Singapour (soupe de nouilles épicée),20,30,4,Mijotage,ENTREE,f,f,
-207,Saumon teriyaki,Une délicieuse recette japonaise : Saumon teriyaki,15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-82,Légumes grillés marinés à l'italienne,Une délicieuse recette italienne : Légumes grillés marinés à l'italienne (antipasti),20,15,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-208,"Saumon à la plancha, sauce vierge","Une savoureuse recette de Saumon à la plancha, sauce vierge",10,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-573,Lomo saltado,Une délicieuse recette asiatique : Lomo saltado (sauté de bœuf péruvien),20,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-209,Lasagnes au saumon et épinards,Une savoureuse recette de Lasagnes au saumon et épinards,10,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-215,Cabillaud à la bordelaise,Une savoureuse recette de Cabillaud à la bordelaise,10,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-217,Fish and chips britannique,Une savoureuse recette de Fish and chips britannique,25,20,4,Friture,PLAT_PRINCIPAL,f,t,f
-198,Marmitako,Une délicieuse recette espagnole : Marmitako (ragoût de thon basque),30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-218,Waterzooi de poisson,Une savoureuse recette de Waterzooi de poisson,25,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-220,Thon mi-cuit au sésame,Une savoureuse recette de Thon mi-cuit au sésame,10,3,4,Poêle,PLAT_PRINCIPAL,f,f,t
-223,Dorade royale au four et fenouil,Une savoureuse recette de Dorade royale au four et fenouil,15,30,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-569,Millassou,Une savoureuse recette de Millassou (galette de pomme de terre),20,20,4,Poêle,PLAT_PRINCIPAL,f,t,f
-224,Filet de sole meunière,Une savoureuse recette de Filet de sole meunière,10,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-351,Mjadra,Une savoureuse recette de Mjadra (riz aux lentilles et oignons frits),20,35,4,Cuisson mixte,ACCOMPAGNEMENT,t,f,t
-225,Raie au beurre noir et aux câpres,Une savoureuse recette de Raie au beurre noir et aux câpres,10,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
-577,Moqueca de peixe,Une savoureuse recette de Moqueca de peixe (ragoût de poisson brésilien),30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-226,Maquereaux marinés au vin blanc,Une savoureuse recette de Maquereaux marinés au vin blanc,20,10,6,Marinade,PLAT_PRINCIPAL,f,f,
-506,Nice cream,Une savoureuse recette de Nice cream (glace à la banane congelée),15,0,8,Sans cuisson,DESSERT,f,f,
-370,Okroshka,Une savoureuse recette de Okroshka (soupe froide russe au kvas),20,30,4,Mijotage,ENTREE,f,f,
-520,Naans indiens au fromage,Une délicieuse recette indienne : Naans indiens au fromage,90,20,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
-521,Chapatis,Une délicieuse recette indienne : Chapatis,90,20,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
-523,Bretzels alsaciens,Une délicieuse recette française : Bretzels alsaciens,90,20,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
-227,Sardines grillées au barbecue,Une délicieuse recette américaine : Sardines grillées au barbecue,15,10,4,Grillade,PLAT_PRINCIPAL,f,f,t
-229,"Noix de Saint-Jacques snackées, purée de carottes au cumin","Une savoureuse recette de Noix de Saint-Jacques snackées, purée de carottes au cumin",10,5,4,Poêle,ACCOMPAGNEMENT,t,f,t
-231,Crevettes sautées à l'ail et au persil,Une délicieuse recette asiatique : Crevettes sautées à l'ail et au persil,10,8,4,Poêle,PLAT_PRINCIPAL,f,f,t
-531,Chinois,Une délicieuse recette chinoise : Chinois (gâteau brioché à la crème),25,35,8,Cuisson au four,DESSERT,f,f,
-407,Onigiri japonais,Une délicieuse recette japonaise : Onigiri japonais (boules de riz farcies),20,0,4,Sans cuisson,ACCOMPAGNEMENT,t,f,
-565,Oreilles d'âne du Valgaudemar,Une savoureuse recette de Oreilles d'âne du Valgaudemar (gratin d'épinards),20,45,6,Cuisson au four,ACCOMPAGNEMENT,t,f,
-405,Oyakodon,Une savoureuse recette de Oyakodon (bol de riz au poulet et à l'œuf),20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-233,"Pâtes aux crevettes, ail, huile et piment","Une délicieuse recette italienne : Pâtes aux crevettes, ail, huile et piment",10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-234,Crevettes à l'armoricaine,Une savoureuse recette de Crevettes à l'armoricaine,20,15,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-235,Wok de crevettes aux légumes croquants,Une délicieuse recette asiatique : Wok de crevettes aux légumes croquants,15,8,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-236,Pad Thaï aux crevettes,Une délicieuse recette thaïlandaise : Pad Thaï aux crevettes,30,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-238,Calamars à la romaine,Une délicieuse recette italienne : Calamars à la romaine,15,12,4,Friture,PLAT_PRINCIPAL,f,f,t
-239,Encornets farcis à la sétoise,Une savoureuse recette de Encornets farcis à la sétoise,40,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-240,Seiches à la plancha en persillade,Une savoureuse recette de Seiches à la plancha en persillade,15,5,4,Poêle,PLAT_PRINCIPAL,f,f,t
-243,Dahl de lentilles indien,Une délicieuse recette indienne : Dahl de lentilles indien,15,30,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-245,Bolognaise de lentilles vertes,Une savoureuse recette de Bolognaise de lentilles vertes,20,40,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-247,Pois chiches rôtis aux épices,Une savoureuse recette de Pois chiches rôtis aux épices,10,25,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-249,Chili sin carne,Une délicieuse recette mexicaine : Chili sin carne,20,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-576,Pão de queijo,Une savoureuse recette de Pão de queijo (pains au fromage brésiliens),90,20,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
-250,Haricots blancs à la bretonne,Une délicieuse recette française : Haricots blancs à la bretonne,20,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-338,Pakoras d'oignons,Une délicieuse recette indienne : Pakoras d'oignons (beignets indiens),20,15,8,Friture,PLAT_PRINCIPAL,f,f,
-251,Fèves à la catalane,Une délicieuse recette espagnole : Fèves à la catalane,20,35,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-333,Palak Paneer,Une délicieuse recette indienne : Palak Paneer (épinards au fromage indien),25,25,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-253,Panisses marseillaises,Une savoureuse recette de Panisses marseillaises,60,15,6,Friture,PLAT_PRINCIPAL,f,f,
-254,Lasagnes végétariennes aux légumes du soleil,Une savoureuse recette de Lasagnes végétariennes aux légumes du soleil,10,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-255,Lasagnes aux épinards et à la ricotta,Une savoureuse recette de Lasagnes aux épinards et à la ricotta,35,40,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-256,Risotto aux champignons,Une délicieuse recette italienne : Risotto aux champignons,10,25,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-562,Pan bagnat,Une savoureuse recette de Pan bagnat (le vrai),15,0,4,Sans cuisson,PLAT_PRINCIPAL,f,t,f
-262,Pâtes all'arrabbiata,Une délicieuse recette italienne : Pâtes all'arrabbiata,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-263,Pâtes alla puttanesca,Une délicieuse recette italienne : Pâtes alla puttanesca,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-265,Pâtes cacio e pepe,Une délicieuse recette italienne : Pâtes cacio e pepe,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-266,Pâtes à l'amatriciana,Une délicieuse recette italienne : Pâtes à l'amatriciana,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-267,Pâtes au pesto alla genovese,Une délicieuse recette italienne : Pâtes au pesto alla genovese,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-37,Pan con Tomate,Une savoureuse recette de Pan con Tomate (pain grillé à la tomate et ail),90,20,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
-524,Ciabatta italienne,Une délicieuse recette italienne : Ciabatta italienne,120,25,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
-264,Pâtes à la carbonara,"Une délicieuse recette italienne : Pâtes à la carbonara (la vraie, sans crème)",10,12,4,Cuisson à l'eau,DESSERT,f,f,
-526,Croissants au beurre,Une savoureuse recette de Croissants au beurre,180,20,1,Cuisson au four,PLAT_PRINCIPAL,f,f,
-533,Tripes à la mode de Caen,Une savoureuse recette de Tripes à la mode de Caen,30,180,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-534,Potjevleesch flamand,Une savoureuse recette de Potjevleesch flamand,30,180,8,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-536,Daube niçoise,Une délicieuse recette française : Daube niçoise,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-537,Pieds paquets marseillais,Une savoureuse recette de Pieds paquets marseillais,40,240,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-272,Gnocchis à la sorrentina,"Une délicieuse recette italienne : Gnocchis à la sorrentina (sauce tomate, mozzarella)",60,20,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-276,Macaroni and cheese américain,Une délicieuse recette américaine : Macaroni and cheese américain (gratin de macaronis),40,15,24,Cuisson au four,ACCOMPAGNEMENT,t,f,
-9076,Blanquette de veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-261,Pâtes à la sauce tomate et basilic frais,Une délicieuse recette italienne : Pâtes à la sauce tomate et basilic frais (al pomodoro),10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-9078,Veau aux olives,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9079,Veau aux champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-270,Pâtes alla norma,"Une délicieuse recette italienne : Pâtes alla norma (aubergines, ricotta salata)",10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-269,Pâtes aux fruits de mer,Une délicieuse recette italienne : Pâtes aux fruits de mer (allo scoglio),10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-271,"Gnocchis de pommes de terre, sauce sauge et beurre","Une délicieuse recette italienne : Gnocchis de pommes de terre, sauce sauge et beurre",15,30,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,
-268,Pâtes aux palourdes,Une délicieuse recette italienne : Pâtes aux palourdes (alle vongole),10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-9083,Veau aux poivrons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-281,Pâtes fraîches,Une délicieuse recette italienne : Pâtes fraîches maison,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-566,Pôchouse de Verdun-sur-le-Doubs,Une savoureuse recette de Pôchouse de Verdun-sur-le-Doubs (version légumes),25,40,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-273,"Raviolis aux épinards et ricotta, sauce tomate","Une savoureuse recette de Raviolis aux épinards et ricotta, sauce tomate",90,8,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,t,f
-538,Alouettes sans tête provençales,Une savoureuse recette de Alouettes sans tête provençales,30,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-274,Cannellonis farcis à la bolognaise,Une savoureuse recette de Cannellonis farcis à la bolognaise,45,35,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-164,Porc Tonkatsu japonais,Une délicieuse recette japonaise : Porc Tonkatsu japonais (escalope panée),15,10,4,Friture,PLAT_PRINCIPAL,f,f,t
-278,"One pot pasta tomate, basilic, mozzarella","Une savoureuse recette de One pot pasta tomate, basilic, mozzarella",10,15,4,Cuisson unique,PLAT_PRINCIPAL,f,t,f
-279,Pâtes au citron et à la crème,Une délicieuse recette italienne : Pâtes au citron et à la crème,10,12,4,Cuisson à l'eau,DESSERT,f,f,
-282,Tofu sauté aux légumes et sauce soja,Une délicieuse recette asiatique : Tofu sauté aux légumes et sauce soja,15,10,4,Sauté au wok,PLAT_PRINCIPAL,f,f,t
-9087,Veau aux haricots blancs,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,50,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-283,Tofu mariné et grillé au sésame,Une savoureuse recette de Tofu mariné et grillé au sésame,120,10,4,Grillade,PLAT_PRINCIPAL,f,f,t
-284,Tofu général Tao,Une savoureuse recette de Tofu général Tao,20,15,4,Friture,PLAT_PRINCIPAL,f,t,f
-539,Fricassée de volaille à l'angevine,Une savoureuse recette de Fricassée de volaille à l'angevine,20,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-289,Seitan bourguignon,Une délicieuse recette française : Seitan bourguignon,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-124,Poulet vallée d'Auge,Une savoureuse recette de Poulet vallée d'Auge (au cidre et à la crème),20,40,4,Mijotage,DESSERT,f,t,f
-290,Sauté de seitan et brocolis,Une délicieuse recette asiatique : Sauté de seitan et brocolis,20,12,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-241,Poulpe à la galicienne,Une savoureuse recette de Poulpe à la galicienne (Pulpo a la gallega),15,60,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,t
-291,Burger de seitan,Une délicieuse recette américaine : Burger de seitan,30,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-292,Tempeh laqué à l'indonésienne,Une savoureuse recette de Tempeh laqué à l'indonésienne,20,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
-293,"Buddha bowl au quinoa, patates douces et avocat","Une savoureuse recette de Buddha bowl au quinoa, patates douces et avocat",30,25,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-296,Galettes de quinoa et carottes,Une savoureuse recette de Galettes de quinoa et carottes,25,15,6,Poêle,PLAT_PRINCIPAL,f,t,f
-303,Ratatouille niçoise,Une délicieuse recette française : Ratatouille niçoise,25,45,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-307,Wok de légumes sauce aigre-douce,Une délicieuse recette asiatique : Wok de légumes sauce aigre-douce,15,10,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-540,Poule au pot,Une savoureuse recette de Poule au pot,30,180,8,Mijotage,PLAT_PRINCIPAL,f,t,f
-309,Frites de patates douces au paprika,Une savoureuse recette de Frites de patates douces au paprika,15,25,4,Cuisson au four,ACCOMPAGNEMENT,t,f,
-541,Coquilles Saint-Jacques à la bretonne,Une délicieuse recette française : Coquilles Saint-Jacques à la bretonne,10,5,4,Poêle,PLAT_PRINCIPAL,f,f,t
-542,Cotriade bretonne,Une délicieuse recette française : Cotriade bretonne,30,40,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-543,Matelote d'anguille,Une savoureuse recette de Matelote d'anguille,30,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-544,Lamproie à la bordelaise,Une savoureuse recette de Lamproie à la bordelaise,40,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-308,Légumes rôtis au four,"Une savoureuse recette de Légumes rôtis au four (carottes, panais, patates douces)",20,40,6,Cuisson au four,ACCOMPAGNEMENT,t,f,t
-546,Morue à la lyonnaise,Une délicieuse recette française : Morue à la lyonnaise,10,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-316,Pommes dauphine,Une savoureuse recette de Pommes dauphine maison,40,15,6,Friture,PLAT_PRINCIPAL,f,f,
-315,Pommes de terre suédoises,Une savoureuse recette de Pommes de terre suédoises (Hasselback),15,30,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,
-586,Pozole,Une délicieuse recette mexicaine : Pozole (soupe mexicaine),20,30,4,Mijotage,ENTREE,f,f,
-9094,Veau au curry doux,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9095,Escalope de veau grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,10,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-163,Pulled pork,Une délicieuse recette américaine : Pulled pork (effiloché de porc),30,240,8,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9097,Escalope de veau à la crème,"Savoureuse préparation de viande préparé avec attention, agrémenté d'une sauce crémeuse. Parfait pour un repas convivial.",10,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9098,Escalope de veau à la moutarde,"Savoureuse préparation de viande préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",10,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9099,Escalope de veau aux champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,18,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9100,Escalope de veau au curry doux,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",15,18,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9101,Côte de veau grillée,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,5,12,2,Grillade,PLAT_PRINCIPAL,f,f,t
-295,Quinoa taboulé,Une savoureuse recette de Quinoa façon taboulé,15,15,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,
-9103,Côte de veau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,5,15,2,Poêle,PLAT_PRINCIPAL,f,f,t
-547,Quenelles de brochet sauce Nantua,Une savoureuse recette de Quenelles de brochet sauce Nantua,40,20,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,t,f
-548,Grenouilles en persillade,Une savoureuse recette de Grenouilles en persillade,20,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9104,Côte de veau aux champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,18,2,Poêle,PLAT_PRINCIPAL,f,f,t
-549,Fricassée d'escargots,Une savoureuse recette de Fricassée d'escargots,30,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9105,Filet de veau grillé,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,5,12,2,Grillade,PLAT_PRINCIPAL,f,f,t
-550,Caillettes ardéchoises,Une savoureuse recette de Caillettes ardéchoises,30,60,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-314,Écrasé de pommes de terre à l'huile d'olive et ail,Une savoureuse recette de Écrasé de pommes de terre à l'huile d'olive et ail,15,25,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,
-9106,Filet de veau à la crème,"Savoureuse préparation de viande préparé avec attention, agrémenté d'une sauce crémeuse. Parfait pour un repas convivial.",10,15,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9107,Grenadin de veau au poivre,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,5,12,2,Poêle,PLAT_PRINCIPAL,f,f,t
-8792,Riz,Accompagnement de féculents pour compléter votre plat principal.,5,45,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-317,Aligot de l'Aubrac,Une savoureuse recette de Aligot de l'Aubrac,20,30,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,
-318,Truffade auvergnate,Une savoureuse recette de Truffade auvergnate,20,25,4,Poêle,PLAT_PRINCIPAL,f,t,f
-320,Frites de polenta au parmesan,Une savoureuse recette de Frites de polenta au parmesan,60,15,4,Friture,ACCOMPAGNEMENT,t,f,
-321,Polenta crémeuse,Une savoureuse recette de Polenta crémeuse,10,25,4,Mijotage,PLAT_PRINCIPAL,f,f,
-322,Endives braisées au jambon,Une savoureuse recette de Endives braisées au jambon,20,120,8,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-323,Asperges vertes rôties au parmesan,Une savoureuse recette de Asperges vertes rôties au parmesan,10,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-325,Épinards frais à la crème,Une savoureuse recette de Épinards frais à la crème,15,20,4,Mijotage,DESSERT,f,f,
-326,Choux de Bruxelles rôtis au lard et sirop d'érable,Une savoureuse recette de Choux de Bruxelles rôtis au lard et sirop d'érable,15,25,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-327,Carottes glacées à l'orange,Une savoureuse recette de Carottes glacées à l'orange,10,20,4,Mijotage,PLAT_PRINCIPAL,f,f,
-328,Betteraves rôties au miel et au thym,Une savoureuse recette de Betteraves rôties au miel et au thym,15,60,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-578,Ropa vieja cubaine,Une savoureuse recette de Ropa vieja cubaine (bœuf effiloché),30,120,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-329,Fenouil braisé à l'anis,Une savoureuse recette de Fenouil braisé à l'anis,15,35,4,Mijotage,PLAT_PRINCIPAL,f,f,
-330,Riz pilaf aux amandes et raisins secs,Une savoureuse recette de Riz pilaf aux amandes et raisins secs,5,20,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-551,Diots de Savoie au vin blanc,Une savoureuse recette de Diots de Savoie au vin blanc,10,30,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-553,Farçous aveyronnais,Une savoureuse recette de Farçous aveyronnais,25,35,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-337,Samosas aux légumes,Une savoureuse recette de Samosas aux légumes,40,12,8,Friture,PLAT_PRINCIPAL,f,f,
-9109,Grenadin de veau au miel,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,5,12,2,Poêle,PLAT_PRINCIPAL,f,f,t
-339,Caponata sicilienne,Une délicieuse recette italienne : Caponata sicilienne,20,30,6,Mijotage,PLAT_PRINCIPAL,f,f,
-9110,Grenadin de veau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,5,12,2,Poêle,PLAT_PRINCIPAL,f,f,t
-340,Pâtes aux brocolis et anchois,Une délicieuse recette italienne : Pâtes aux brocolis et anchois,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-342,Galettes de sarrasin aux champignons et crème,Une savoureuse recette de Galettes de sarrasin aux champignons et crème,90,3,8,Poêle,DESSERT,f,t,f
-344,Tarte au maroilles,Une savoureuse recette de Tarte au maroilles,30,40,8,Cuisson au four,DESSERT,f,f,
-559,Salsifis à la crème,Une savoureuse recette de Salsifis à la crème,20,35,4,Mijotage,DESSERT,f,f,
-345,Pissaladière niçoise,Une délicieuse recette française : Pissaladière niçoise,120,30,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-347,Gözleme turc aux épinards et feta,Une savoureuse recette de Gözleme turc aux épinards et feta,90,15,4,Poêle,PLAT_PRINCIPAL,f,t,f
-563,Soupe au pistou,Une savoureuse recette de Soupe au pistou,25,40,6,Mijotage,ENTREE,f,t,f
-348,Börek aux épinards,Une savoureuse recette de Börek aux épinards,40,30,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-564,Tourton des Alpes,Une savoureuse recette de Tourton des Alpes,30,15,6,Poêle,PLAT_PRINCIPAL,f,f,t
-353,Coleslaw américain,Une délicieuse recette américaine : Coleslaw américain,15,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-373,Burger de poulet croustillant,Une délicieuse recette américaine : Burger de poulet croustillant,20,20,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-374,Burger végétarien aux haricots noirs,Une délicieuse recette américaine : Burger végétarien aux haricots noirs,25,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-375,Hot-dog new-yorkais,Une délicieuse recette américaine : Hot-dog new-yorkais,10,10,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-379,Croque-Monsieur,Une savoureuse recette de Croque-Monsieur,10,10,2,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-380,Croque-Madame,Une savoureuse recette de Croque-Madame,12,12,2,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-381,Welsh rarebit,Une savoureuse recette de Welsh rarebit,15,15,2,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9111,Escalope de veau milanaise,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-568,Flaugnarde aux pommes,Une savoureuse recette de Flaugnarde aux pommes,15,35,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-383,Gyros grec au porc,Une savoureuse recette de Gyros grec au porc,120,15,4,Grillade,PLAT_PRINCIPAL,f,t,f
-384,Wrap au poulet César,Une savoureuse recette de Wrap au poulet César,15,10,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-385,"Wrap au houmous, falafels et crudités","Une délicieuse recette orientale : Wrap au houmous, falafels et crudités",10,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-570,Escargots de Bourgogne,Une savoureuse recette de Escargots de Bourgogne,30,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-386,Bagel au saumon fumé et cream cheese,Une savoureuse recette de Bagel au saumon fumé et cream cheese,10,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-388,Arepas vénézuéliennes,Une savoureuse recette de Arepas vénézuéliennes,20,15,4,Poêle,PLAT_PRINCIPAL,f,t,f
-571,Lentilles vertes du Berry en salade,Une savoureuse recette de Lentilles vertes du Berry en salade,20,25,4,Cuisson simple,ENTREE,f,f,f
-572,Ceviche péruvien,Une savoureuse recette de Ceviche péruvien,20,0,4,Marinade,PLAT_PRINCIPAL,f,f,
-9112,Escalope de veau cordon bleu,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,15,4,Poêle,PLAT_PRINCIPAL,f,t,f
-389,Empanadas argentines à la viande,Une savoureuse recette de Empanadas argentines à la viande,40,25,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-392,Ramen japonais au porc chashu,Une délicieuse recette japonaise : Ramen japonais au porc chashu,30,120,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-393,Udon sauté au bœuf,Une délicieuse recette asiatique : Udon sauté au bœuf,10,12,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,t,f
-575,Feijoada brésilienne,Une savoureuse recette de Feijoada brésilienne,30,120,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-394,Soba froides et leur sauce tsuyu,Une délicieuse recette japonaise : Soba froides et leur sauce tsuyu,10,12,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,t,f
-579,Picadillo,Une savoureuse recette de Picadillo,20,30,4,Poêle,PLAT_PRINCIPAL,f,t,f
-580,Arroz con pollo,Une savoureuse recette de Arroz con pollo,25,45,6,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-396,Riz cantonais,Une délicieuse recette chinoise : Riz cantonais,15,10,4,Sauté au wok,ACCOMPAGNEMENT,t,t,f
-397,Nasi Goreng indonésien,Une savoureuse recette de Nasi Goreng indonésien,15,10,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-398,Riz sauté thaï à l'ananas et aux crevettes,Une délicieuse recette asiatique : Riz sauté thaï à l'ananas et aux crevettes,5,20,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-9113,Côte de veau à la moutarde,"Savoureuse préparation de viande préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",10,15,2,Poêle,PLAT_PRINCIPAL,f,f,t
-399,Dan Dan noodles sichuanaises,Une délicieuse recette chinoise : Dan Dan noodles sichuanaises,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-400,Nouilles sautées au poulet et légumes,Une délicieuse recette asiatique : Nouilles sautées au poulet et légumes,20,12,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-409,Riz gluant à la mangue thaïlandais,Une délicieuse recette thaïlandaise : Riz gluant à la mangue thaïlandais,5,20,4,Cuisson à l'eau,ACCOMPAGNEMENT,t,f,
-584,Mole poblano,Une délicieuse recette mexicaine : Mole poblano,40,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-412,Crème brûlée à la vanille,Une savoureuse recette de Crème brûlée à la vanille,20,40,6,Cuisson au four,DESSERT,f,f,
-585,Cochinita pibil,Une savoureuse recette de Cochinita pibil,30,180,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-413,Mousse au chocolat noir,Une savoureuse recette de Mousse au chocolat noir,20,0,6,Sans cuisson,DESSERT,f,f,
-414,Île flottante et sa crème anglaise,Une savoureuse recette de Île flottante et sa crème anglaise,30,15,6,Cuisson mixte,DESSERT,f,f,
-415,Profiteroles au chocolat chaud,Une savoureuse recette de Profiteroles au chocolat chaud,50,25,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-416,Tarte Tatin aux pommes,Une savoureuse recette de Tarte Tatin aux pommes,30,40,8,Cuisson au four,DESSERT,f,f,
-417,Tarte au citron meringuée,Une savoureuse recette de Tarte au citron meringuée,30,40,8,Cuisson au four,DESSERT,f,f,
-587,Tamales,Une savoureuse recette de Tamales,60,45,8,Cuisson vapeur,PLAT_PRINCIPAL,f,t,f
-419,Clafoutis aux cerises,Une savoureuse recette de Clafoutis aux cerises,15,35,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9114,Filet de veau sauce tomate,"Savoureuse préparation de viande préparé avec attention, accompagné de sa sauce signature. Parfait pour un repas convivial.",5,15,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9115,Gigot d’agneau rôti,Savoureuse préparation de viande rôti au four. Parfait pour un repas convivial.,20,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9116,Gigot d’agneau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9117,Gigot d’agneau au miel,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9118,Gigot d’agneau à l’ail,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9119,Gigot d’agneau à la moutarde,"Savoureuse préparation de viande préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",20,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-420,Far breton aux pruneaux,Une délicieuse recette française : Far breton aux pruneaux,20,45,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9120,Gigot d’agneau aux tomates,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9121,Carré d’agneau rôti,Savoureuse préparation de viande rôti au four. Parfait pour un repas convivial.,15,25,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9122,Carré d’agneau grillé,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,15,25,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9123,Carré d’agneau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,25,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9124,Carré d’agneau au miel,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,30,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9125,Côtelettes d’agneau grillées,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,10,12,4,Grillade,PLAT_PRINCIPAL,f,f,t
-129,Saltimbocca de veau à la romaine,"Une délicieuse recette italienne : Saltimbocca de veau à la romaine (jambon de Parme, sauge)",15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9127,Côtelettes d’agneau au curry doux,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",25,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9128,Côtelettes d’agneau à la provençale,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,10,12,4,Grillade,PLAT_PRINCIPAL,f,f,t
-9129,Côtelettes d’agneau au paprika,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,10,12,4,Grillade,PLAT_PRINCIPAL,f,f,t
-9130,Épaule d’agneau rôtie,Savoureuse préparation de viande rôti au four. Parfait pour un repas convivial.,20,120,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-581,Sancocho,Une savoureuse recette de Sancocho (soupe colombienne),20,30,4,Mijotage,ENTREE,f,f,
-9132,Épaule d’agneau au miel,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,130,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9133,Épaule d’agneau aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,120,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9134,Épaule d’agneau à la moutarde,"Savoureuse préparation de viande préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",20,120,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9135,Navarin d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9136,Ragoût d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-161,Saucisses de Toulouse et purée,Une savoureuse recette de Saucisses de Toulouse et purée maison,20,25,4,Cuisson mixte,ACCOMPAGNEMENT,t,t,f
-331,Semoule aux légumes,Une délicieuse recette orientale : Semoule aux légumes (accompagnement tajine),40,12,8,Friture,PLAT_PRINCIPAL,f,f,
-610,Shakshuka,Une savoureuse recette de Shakshuka (version plus élaborée),15,25,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9140,Agneau aux pois chiches,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9141,Agneau aux lentilles,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9142,Agneau aux haricots blancs,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-38,Shakshuka (œufs pochés dans une),Une savoureuse recette de Shakshuka (œufs pochés dans une sauce tomate épicée),15,25,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-174,Shepherd's pie,Une savoureuse recette de Shepherd's pie (hachis Parmentier d'agneau),30,35,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-605,Shish Taouk,Une délicieuse recette orientale : Shish Taouk (brochettes de poulet libanaises),120,15,4,Grillade,PLAT_PRINCIPAL,f,f,t
-9146,Agneau aux poivrons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9147,Agneau au céleri,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-252,Socca niçoise,Une délicieuse recette française : Socca niçoise (galette de farine de pois chiches),10,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-505,Sorbet,"Une savoureuse recette de Sorbet maison (citron, framboise)",15,0,8,Sans cuisson,DESSERT,f,f,
-9150,Agneau aux pommes de terre,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,30,4,Cuisson à l'eau,PLAT_PRINCIPAL,f,f,
-221,Steak de thon à la sicilienne,"Une délicieuse recette italienne : Steak de thon à la sicilienne (olives, câpres)",10,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-41,Tamagoyaki,Une délicieuse recette japonaise : Tamagoyaki (omelette roulée japonaise),10,10,2,Poêle,PLAT_PRINCIPAL,f,f,
-9153,Agneau au curry doux,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",25,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9154,Agneau korma,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,50,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9155,Agneau massala,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,50,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9156,Agneau à la tomate,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9157,Agneau à la moutarde,"Savoureuse préparation de viande préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",20,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9158,Agneau à la crème,"Savoureuse préparation de viande préparé avec attention, agrémenté d'une sauce crémeuse. Parfait pour un repas convivial.",20,45,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-418,Tarte Bourdaloue,Une savoureuse recette de Tarte Bourdaloue (poires et amandes),30,40,8,Cuisson au four,DESSERT,f,f,
-602,Thieboudienne,Une savoureuse recette de Thieboudienne (riz au poisson sénégalais),40,60,6,Mijotage,ACCOMPAGNEMENT,t,t,f
-287,Tofu brouillé,Une savoureuse recette de Tofu brouillé (alternative aux œufs),10,8,2,Poêle,PLAT_PRINCIPAL,f,t,f
-288,Tofu Katsu,Une délicieuse recette japonaise : Tofu Katsu (pané et frit),15,10,4,Friture,PLAT_PRINCIPAL,f,f,t
-285,Tofu Mapo,Une délicieuse recette chinoise : Tofu Mapo (recette sichuanaise),20,20,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-162,Travers de porc sauce barbecue,Une délicieuse recette américaine : Travers de porc (ribs) sauce barbecue,20,120,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9163,Agneau aux épices,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9164,Agneau aux pruneaux,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9165,Agneau aux figues,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-411,Tteokbokki,Une savoureuse recette de Tteokbokki (gâteaux de riz épicés coréens),25,35,8,Cuisson au four,DESSERT,f,f,
-545,Ttoro,Une délicieuse recette espagnole : Ttoro (soupe de poisson basque),20,30,4,Mijotage,ENTREE,f,f,
-368,Vichyssoise,Une savoureuse recette de Vichyssoise (soupe froide poireaux-pommes de terre),20,30,4,Mijotage,ENTREE,f,f,
-395,Yaki Soba,Une délicieuse recette asiatique : Yaki Soba (nouilles sautées japonaises),15,10,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-509,Yaourt glacé aux fruits,Une savoureuse recette de Yaourt glacé (frozen yogurt) aux fruits,15,0,8,Sans cuisson,PLAT_PRINCIPAL,f,f,
-197,Zarzuela de mariscos,Une délicieuse recette espagnole : Zarzuela de mariscos (cassolette de poissons espagnole),10,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9172,Rôti de porc aux herbes,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-29,Œufs au plat et bacon grillé,Une savoureuse recette de Œufs au plat et bacon grillé (English style),10,15,2,Poêle,PLAT_PRINCIPAL,f,t,f
-9176,Rôti de porc au curry doux,"Plat principal savoureux rôti au four, relevé d'épices curry. Parfait pour un repas convivial.",15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9177,Rôti de porc à l’ail,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,15,75,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9181,Côtes de porc marinées,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9182,Côtes de porc au barbecue,Recette de poisson préparé avec attention. Parfait pour un repas convivial.,10,20,4,Grillade,PLAT_PRINCIPAL,f,f,t
-9186,Filet mignon grillé,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,12,2,Grillade,PLAT_PRINCIPAL,f,f,t
-9187,Filet mignon au miel,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,15,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9188,Filet mignon à la moutarde,"Plat principal savoureux préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",15,20,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9191,Sauté de porc au curry doux,"Plat principal savoureux préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,15,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-421,Canelés de Bordeaux,Une savoureuse recette de Canelés de Bordeaux,20,60,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9199,Sauté de porc au miel,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,18,4,Sauté au wok,PLAT_PRINCIPAL,f,f,t
-9201,Porc aux pommes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9203,Porc aux figues,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-558,Tarte à l'oignon alsacienne,Une délicieuse recette française : Tarte à l'oignon alsacienne,30,40,8,Cuisson au four,DESSERT,f,f,
-9205,Porc aux marrons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9208,Porc à la moutarde,"Plat principal savoureux préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",20,35,4,Mijotage,PLAT_PRINCIPAL,f,f,t
-9209,Porc au curry doux,"Plat principal savoureux préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9225,Chevreuil rôti,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,25,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9226,Chevreuil aux herbes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9230,Sanglier rôti,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,25,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9232,Sanglier aux pruneaux,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9233,Cerf rôti,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,25,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9236,Lièvre rôti,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,25,60,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9237,Lièvre aux herbes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9238,Lièvre à la moutarde,"Plat principal savoureux préparé avec attention, nappé d'une sauce à la moutarde. Parfait pour un repas convivial.",30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9239,Faisan rôti,Plat principal savoureux rôti au four. Parfait pour un repas convivial.,20,40,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9240,Faisan aux raisins,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,50,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9241,Civet de sanglier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9242,Civet de chevreuil,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9243,Civet de lièvre,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,40,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9244,Civet de cerf,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-422,Macarons parisiens,"Une délicieuse recette française : Macarons parisiens (pistache, chocolat, framboise)",40,15,24,Cuisson au four,PLAT_PRINCIPAL,f,f,
-423,"Paris-Brest (pâte à choux, crème)","Une savoureuse recette de Paris-Brest (pâte à choux, crème pralinée)",40,25,8,Cuisson au four,DESSERT,f,f,
-424,Éclair au café ou au chocolat,Une savoureuse recette de Éclair au café ou au chocolat,45,25,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-425,Religieuse au chocolat,Une savoureuse recette de Religieuse au chocolat,60,25,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-426,Saint-Honoré,Une savoureuse recette de Saint-Honoré,90,30,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-427,Fraisier,Une savoureuse recette de Fraisier,60,25,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-428,Opéra,Une savoureuse recette de Opéra,120,15,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-432,Tiramisu au café,Une délicieuse recette italienne : Tiramisu classique au café,30,0,6,Sans cuisson,DESSERT,f,f,
-429,Mille-feuille,Une savoureuse recette de Mille-feuille,60,30,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-430,Soufflé au Grand Marnier,Une savoureuse recette de Soufflé au Grand Marnier,25,25,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-433,Panna Cotta et son coulis de fruits rouges,Une délicieuse recette italienne : Panna Cotta et son coulis de fruits rouges,15,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-434,Tiramisu aux fraises,Une délicieuse recette italienne : Tiramisu aux fraises,30,0,6,Sans cuisson,DESSERT,f,f,
-435,Panna Cotta au caramel beurre salé,Une délicieuse recette italienne : Panna Cotta au caramel beurre salé,15,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-436,Zabaione au Marsala,Une savoureuse recette de Zabaione au Marsala,15,10,4,Cuisson douce,PLAT_PRINCIPAL,f,f,
-438,Torta della nonna,Une savoureuse recette de Torta della nonna (tarte à la crème pâtissière et pignons),30,40,8,Cuisson au four,DESSERT,f,f,
-437,Cannoli siciliens à la ricotta,Une délicieuse recette italienne : Cannoli siciliens à la ricotta,60,12,12,Friture,PLAT_PRINCIPAL,f,f,
-9189,Filet mignon au romarin,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,10,18,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-442,Affogato,Une savoureuse recette de Affogato (glace vanille noyée dans un expresso),15,0,8,Sans cuisson,DESSERT,f,f,
-445,Bonet piémontais,Une savoureuse recette de Bonet piémontais (flan au chocolat et amaretti),20,50,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-444,Cantucci,Une savoureuse recette de Cantucci (croquants aux amandes),20,30,20,Cuisson au four,PLAT_PRINCIPAL,f,f,
-441,Gelato à la pistache,Une savoureuse recette de Gelato à la pistache maison,20,0,8,Sans cuisson,PLAT_PRINCIPAL,f,f,
-443,Panettone,Une savoureuse recette de Panettone (version maison),180,45,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-457,Pecan pie,Une savoureuse recette de Pecan pie (tarte aux noix de pécan),30,40,8,Cuisson au four,DESSERT,f,f,
-456,Pumpkin pie,Une savoureuse recette de Pumpkin pie (tarte à la citrouille),30,40,8,Cuisson au four,DESSERT,f,f,
-449,Salame al cioccolato,Une savoureuse recette de Salame al cioccolato (saucisson au chocolat),30,0,12,Sans cuisson,PLAT_PRINCIPAL,f,f,
-447,Sbrisolona,Une savoureuse recette de Sbrisolona (gâteau friable aux amandes),25,35,8,Cuisson au four,DESSERT,f,f,
-439,Torta caprese,Une savoureuse recette de Torta caprese (gâteau au chocolat et amandes),25,35,8,Cuisson au four,DESSERT,f,f,
-440,Semifreddo au nougat,Une savoureuse recette de Semifreddo au nougat,20,0,8,Sans cuisson,PLAT_PRINCIPAL,f,f,
-446,Pêches au vin,Une savoureuse recette de Pêches au vin,10,20,4,Mijotage,PLAT_PRINCIPAL,f,f,
-450,Sfogliatelle napolitaines,Une délicieuse recette italienne : Sfogliatelle napolitaines,120,30,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-451,Pastiera napolitaine,Une délicieuse recette italienne : Pastiera napolitaine,60,90,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-452,Cheesecake new-yorkais,Une délicieuse recette américaine : Cheesecake new-yorkais,30,60,12,Cuisson au four,DESSERT,f,f,
-453,Brownie au chocolat et noix de pécan,Une savoureuse recette de Brownie au chocolat et noix de pécan,15,25,12,Cuisson au four,DESSERT,f,f,
-454,Cookies aux pépites de chocolat,Une savoureuse recette de Cookies aux pépites de chocolat,15,15,12,Cuisson au four,DESSERT,f,f,
-455,Apple pie américaine,Une délicieuse recette américaine : Apple pie américaine,40,50,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-458,Carrot cake et son glaçage au cream cheese,Une savoureuse recette de Carrot cake et son glaçage au cream cheese,30,40,12,Cuisson au four,DESSERT,f,f,
-459,Red velvet cake,Une savoureuse recette de Red velvet cake,30,30,12,Cuisson au four,DESSERT,f,f,
-460,Muffins aux myrtilles,Une savoureuse recette de Muffins aux myrtilles,15,25,12,Cuisson au four,DESSERT,f,f,
-461,Cupcakes à la vanille et glaçage,Une savoureuse recette de Cupcakes à la vanille et glaçage,25,20,12,Cuisson au four,DESSERT,f,f,
-462,Banana bread,Une savoureuse recette de Banana bread,20,55,10,Cuisson au four,PLAT_PRINCIPAL,f,f,
-463,Key lime pie,Une savoureuse recette de Key lime pie (tarte au citron vert),30,40,8,Cuisson au four,DESSERT,f,f,
-120,Calzone,Une délicieuse recette italienne : Calzone (pizza soufflée),90,25,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-466,Eton mess,"Une savoureuse recette de Eton mess (meringue, fraises, crème)",15,90,12,Cuisson au four,DESSERT,f,f,
-472,Forêt-Noire allemande,Une savoureuse recette de Forêt-Noire allemande (Schwarzwälder Kirschtorte),40,30,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-479,Leche frita,Une savoureuse recette de Leche frita (lait frit),120,15,8,Friture,PLAT_PRINCIPAL,f,f,
-607,Manakish au zaatar,Une délicieuse recette italienne : Manakish au zaatar (pizza libanaise),90,15,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-478,Tarta de Santiago,Une savoureuse recette de Tarta de Santiago (gâteau aux amandes),25,35,8,Cuisson au four,DESSERT,f,f,
-464,Crumble aux pommes et à la cannelle,Une savoureuse recette de Crumble aux pommes et à la cannelle,20,35,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-465,Sticky toffee pudding,Une savoureuse recette de Sticky toffee pudding,25,40,8,Cuisson au four,DESSERT,f,f,
-468,Trifle anglais,Une savoureuse recette de Trifle anglais,45,0,8,Sans cuisson,PLAT_PRINCIPAL,f,f,
-469,Banoffee pie,Une savoureuse recette de Banoffee pie,30,0,8,Sans cuisson,PLAT_PRINCIPAL,f,f,
-470,Bread and butter pudding,Une savoureuse recette de Bread and butter pudding,25,40,6,Cuisson au four,DESSERT,f,f,
-471,Shortbread écossais,Une savoureuse recette de Shortbread écossais,20,20,16,Cuisson au four,PLAT_PRINCIPAL,f,f,
-473,Apfelstrudel autrichien,Une savoureuse recette de Apfelstrudel autrichien,40,40,8,Cuisson au four,PLAT_PRINCIPAL,f,f,
-474,Sacher Torte viennoise,Une savoureuse recette de Sacher Torte viennoise,45,50,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-475,Linzer Torte,Une savoureuse recette de Linzer Torte,40,40,10,Cuisson au four,PLAT_PRINCIPAL,f,f,
-476,Churros espagnols et leur chocolat chaud,Une délicieuse recette espagnole : Churros espagnols et leur chocolat chaud,20,12,8,Friture,PLAT_PRINCIPAL,f,f,
-477,Crème catalane,Une délicieuse recette espagnole : Crème catalane,20,15,6,Cuisson douce,DESSERT,f,f,
-480,Pastel de nata portugais,Une savoureuse recette de Pastel de nata portugais,30,25,12,Cuisson au four,PLAT_PRINCIPAL,f,f,
-9040,Pot-au-feu,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,180,8,Mijotage,PLAT_PRINCIPAL,f,t,f
-598,Bissara,Une savoureuse recette de Bissara (soupe de fèves),20,30,4,Mijotage,ENTREE,f,f,
-590,Gallo pinto,Une savoureuse recette de Gallo pinto (riz et haricots du Costa Rica),15,15,4,Poêle,ACCOMPAGNEMENT,t,f,
-601,Mafé,Une savoureuse recette de Mafé (sauce à base d'arachide),25,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-588,Pastel de choclo,Une délicieuse recette mexicaine : Pastel de choclo (gâteau de maïs chilien),25,35,8,Cuisson au four,DESSERT,f,f,
-591,Patacones,Une savoureuse recette de Patacones (bananes plantain frites),15,10,4,Friture,ACCOMPAGNEMENT,t,f,
-596,Rfissa marocaine,"Une délicieuse recette orientale : Rfissa marocaine (poulet, lentilles, msemen)",40,60,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-599,Zaalouk,Une savoureuse recette de Zaalouk (salade d'aubergines cuite),20,30,6,Mijotage,ENTREE,f,f,
-589,Humitas,Une savoureuse recette de Humitas,40,45,6,Cuisson vapeur,PLAT_PRINCIPAL,f,t,f
-595,Pastilla au poulet et aux amandes,Une savoureuse recette de Pastilla au poulet et aux amandes,50,45,8,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-597,Tanjia marrakchia,Une savoureuse recette de Tanjia marrakchia,30,240,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-600,Poulet Yassa sénégalais,Une savoureuse recette de Poulet Yassa sénégalais,20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-606,Shawarma,Une savoureuse recette de Shawarma,180,20,4,Cuisson verticale,PLAT_PRINCIPAL,f,t,f
-8772,Pommes noisettes,Accompagnement savoureux pour sublimer votre plat principal.,15,20,6,Friture,ACCOMPAGNEMENT,f,f,
-8773,Riz basmati,Accompagnement de féculents pour compléter votre plat principal.,5,20,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8774,Velouté de potiron,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8775,Steak grillé,Plat principal savoureux grillé à la perfection. Parfait pour un repas convivial.,5,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-8776,Gâteau au yaourt,Gâteau moelleux et savoureux. Idéal pour le goûter ou un dessert gourmand.,15,35,8,Cuisson au four,DESSERT,f,f,
-8778,Pommes de terre rissolées,Accompagnement savoureux pour sublimer votre plat principal.,15,25,4,Poêle,ACCOMPAGNEMENT,f,f,
-8779,Pommes de terre à la vapeur,Accompagnement savoureux pour sublimer votre plat principal.,10,15,4,Cuisson vapeur,ACCOMPAGNEMENT,f,f,
-8780,Pommes Anna,Accompagnement savoureux pour sublimer votre plat principal.,20,50,6,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8781,Rösti de pommes de terre,Accompagnement savoureux pour sublimer votre plat principal.,20,20,4,Poêle,ACCOMPAGNEMENT,f,f,
-8782,Écrasé de pommes de terre,Accompagnement savoureux pour sublimer votre plat principal.,15,25,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8783,Pommes boulangères,Accompagnement savoureux pour sublimer votre plat principal.,15,60,6,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8784,Aligot,Accompagnement savoureux pour sublimer votre plat principal.,20,30,4,Cuisson mixte,ACCOMPAGNEMENT,f,f,
-8785,Riz blanc nature,Accompagnement de féculents pour compléter votre plat principal.,5,20,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8787,Riz thaï,Accompagnement de féculents pour compléter votre plat principal.,5,20,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8788,Riz au curry,Accompagnement de féculents pour compléter votre plat principal.,10,25,4,Mijotage,ACCOMPAGNEMENT,f,f,
-8789,Riz au safran,Accompagnement de féculents pour compléter votre plat principal.,10,25,4,Mijotage,ACCOMPAGNEMENT,f,f,
-8790,Riz aux épices,Accompagnement de féculents pour compléter votre plat principal.,10,25,4,Mijotage,ACCOMPAGNEMENT,f,f,
-8791,Riz au lait salé,Accompagnement de féculents pour compléter votre plat principal.,5,20,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8793,Spaghetti nature,Accompagnement savoureux pour sublimer votre plat principal.,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8794,Penne nature,Accompagnement savoureux pour sublimer votre plat principal.,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8795,Fusilli nature,Accompagnement savoureux pour sublimer votre plat principal.,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8796,Tagliatelles nature,Accompagnement savoureux pour sublimer votre plat principal.,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8797,Macaronis au beurre,Accompagnement savoureux pour sublimer votre plat principal.,40,15,24,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8798,Spaghetti à l’ail et huile d’olive,Accompagnement savoureux pour sublimer votre plat principal.,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8799,Pâtes aux poivrons,Accompagnement de féculents pour compléter votre plat principal.,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8800,Pâtes aux tomates,Accompagnement de féculents pour compléter votre plat principal.,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8801,Pâtes gratinées,"Accompagnement gratinéau four, doré et croustillant. Idéal avec un plat principal.",30,40,6,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8802,Pâtes aux olives,Accompagnement de féculents pour compléter votre plat principal.,10,12,4,Cuisson à l'eau,ACCOMPAGNEMENT,f,f,
-8803,Carottes rôties,Accompagnement savoureux pour sublimer votre plat principal.,10,25,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8804,Courgettes rôties,Accompagnement savoureux pour sublimer votre plat principal.,15,45,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8805,Aubergines rôties,Accompagnement savoureux pour sublimer votre plat principal.,10,25,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8806,Tomates rôties,Accompagnement savoureux pour sublimer votre plat principal.,10,25,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8807,Chou-fleur rôti,Accompagnement savoureux pour sublimer votre plat principal.,10,25,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8808,Brocolis rôtis,Accompagnement savoureux pour sublimer votre plat principal.,10,25,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8809,Chou kale rôti,Accompagnement savoureux pour sublimer votre plat principal.,10,25,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8810,Panais rôtis,Accompagnement savoureux pour sublimer votre plat principal.,10,25,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8811,Betteraves rôties,Accompagnement savoureux pour sublimer votre plat principal.,15,45,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8812,Courges rôties,Accompagnement savoureux pour sublimer votre plat principal.,15,45,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8813,Choux de Bruxelles rôtis,Accompagnement savoureux pour sublimer votre plat principal.,10,25,4,Cuisson au four,ACCOMPAGNEMENT,f,f,
-8814,Aubergines vapeur,Accompagnement savoureux pour sublimer votre plat principal.,10,15,4,Cuisson vapeur,ACCOMPAGNEMENT,f,f,
-8815,Poivrons vapeur,Accompagnement savoureux pour sublimer votre plat principal.,10,15,4,Cuisson vapeur,ACCOMPAGNEMENT,f,f,
-8816,Tomates vapeur,Accompagnement savoureux pour sublimer votre plat principal.,10,15,4,Cuisson vapeur,ACCOMPAGNEMENT,f,f,
-8817,Patates douces vapeur,Accompagnement savoureux pour sublimer votre plat principal.,10,15,4,Cuisson vapeur,ACCOMPAGNEMENT,f,f,
-8818,Betteraves vapeur,Accompagnement savoureux pour sublimer votre plat principal.,10,15,4,Cuisson vapeur,ACCOMPAGNEMENT,f,f,
-8819,Oignons vapeur,Accompagnement savoureux pour sublimer votre plat principal.,10,15,4,Cuisson vapeur,ACCOMPAGNEMENT,f,f,
-8820,Courges vapeur,Accompagnement savoureux pour sublimer votre plat principal.,10,15,4,Cuisson vapeur,ACCOMPAGNEMENT,f,f,
-8821,Champignons vapeur,Accompagnement savoureux pour sublimer votre plat principal.,10,15,4,Cuisson vapeur,ACCOMPAGNEMENT,f,f,
-8822,Carottes sautées,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8823,Courgettes sautées,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8824,Aubergines sautées,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8825,Poivrons sautés,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8826,Tomates sautées,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8827,Chou-fleur sauté,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8828,Brocolis sautés,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8829,Chou kale sauté,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8830,Patates douces sautées,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8831,Panais sautés,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8832,Céleri-rave sauté,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8833,Betteraves sautées,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8834,Oignons sautés,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8835,Fenouil sauté,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8836,Courges sautées,Accompagnement savoureux pour sublimer votre plat principal.,10,10,4,Poêle,ACCOMPAGNEMENT,f,f,
-8838,Quatre-quarts,Dessert délicieux pour conclure le repas sur une note sucrée.,15,45,8,Cuisson au four,DESSERT,f,f,
-8840,Forêt-Noire,Dessert délicieux pour conclure le repas sur une note sucrée.,40,30,12,Cuisson au four,DESSERT,f,f,
-8842,Paris-Brest,Dessert délicieux pour conclure le repas sur une note sucrée.,40,25,8,Cuisson au four,DESSERT,f,f,
-8844,Clafoutis,Dessert délicieux pour conclure le repas sur une note sucrée.,15,35,6,Cuisson au four,DESSERT,f,f,
-8845,Galette des Rois,Dessert délicieux pour conclure le repas sur une note sucrée.,40,35,8,Cuisson au four,DESSERT,f,f,
-8846,Gâteau basque,Gâteau moelleux et savoureux. Idéal pour le goûter ou un dessert gourmand.,30,45,8,Cuisson au four,DESSERT,f,f,
-8847,Far breton,Dessert délicieux pour conclure le repas sur une note sucrée.,20,45,8,Cuisson au four,DESSERT,f,f,
-8848,Baba au rhum,Dessert délicieux pour conclure le repas sur une note sucrée.,30,20,8,Cuisson au four,DESSERT,f,f,
-8849,Savarin,Dessert délicieux pour conclure le repas sur une note sucrée.,30,25,8,Cuisson au four,DESSERT,f,f,
-8850,Charlotte aux fraises,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8851,Gâteau aux pommes,Gâteau moelleux et savoureux. Idéal pour le goûter ou un dessert gourmand.,25,40,8,Cuisson au four,DESSERT,f,f,
-8852,Gâteau aux poires,Gâteau moelleux et savoureux. Idéal pour le goûter ou un dessert gourmand.,25,40,8,Cuisson au four,DESSERT,f,f,
-8853,Bûche de Noël,Dessert délicieux pour conclure le repas sur une note sucrée.,60,20,8,Cuisson au four,DESSERT,f,f,
-8854,Entremets vanille,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8855,Entremets fruits rouges,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8856,Entremets exotique,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8857,Entremets pistache,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8858,Entremets praliné,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8859,Entremets noisette,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8860,Entremets caramel,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8861,Entremets coco,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8862,Entremets mangue,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8863,Entremets passion,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8864,Entremets marron,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8865,Entremets mousse fraise,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,0,6,Sans cuisson,DESSERT,f,f,
-8866,Entremets mousse framboise,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,0,6,Sans cuisson,DESSERT,f,f,
-8867,Entremets fruits exotiques,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8868,Entremets signature,Dessert délicieux pour conclure le repas sur une note sucrée.,45,0,8,Sans cuisson,DESSERT,f,f,
-8869,Sablés,Dessert délicieux pour conclure le repas sur une note sucrée.,20,15,20,Cuisson au four,DESSERT,f,f,
-8870,Cookies,Dessert délicieux pour conclure le repas sur une note sucrée.,15,15,12,Cuisson au four,DESSERT,f,f,
-8871,Brownies,Dessert délicieux pour conclure le repas sur une note sucrée.,15,25,12,Cuisson au four,DESSERT,f,f,
-8872,Madeleines,Dessert délicieux pour conclure le repas sur une note sucrée.,15,12,12,Cuisson au four,DESSERT,f,f,
-8873,Financiers,Dessert délicieux pour conclure le repas sur une note sucrée.,15,15,12,Cuisson au four,DESSERT,f,f,
-8874,Tuiles aux amandes,Dessert délicieux pour conclure le repas sur une note sucrée.,20,12,24,Cuisson au four,DESSERT,f,f,
-8875,Palets bretons,Dessert délicieux pour conclure le repas sur une note sucrée.,20,15,16,Cuisson au four,DESSERT,f,f,
-8876,Speculoos,Dessert délicieux pour conclure le repas sur une note sucrée.,25,12,30,Cuisson au four,DESSERT,f,f,
-8877,Canelés,Dessert délicieux pour conclure le repas sur une note sucrée.,20,60,12,Cuisson au four,DESSERT,f,f,
-8878,Meringues,Dessert délicieux pour conclure le repas sur une note sucrée.,15,90,12,Cuisson au four,DESSERT,f,f,
-8879,Langues de chat,Dessert délicieux pour conclure le repas sur une note sucrée.,20,10,30,Cuisson au four,DESSERT,f,f,
-8880,Macarons,Dessert délicieux pour conclure le repas sur une note sucrée.,40,15,24,Cuisson au four,DESSERT,f,f,
-8881,Navettes,Dessert délicieux pour conclure le repas sur une note sucrée.,20,15,20,Cuisson au four,DESSERT,f,f,
-8882,Croquants aux amandes,Dessert délicieux pour conclure le repas sur une note sucrée.,20,20,24,Cuisson au four,DESSERT,f,f,
-8883,Rochers coco,Dessert délicieux pour conclure le repas sur une note sucrée.,15,18,20,Cuisson au four,DESSERT,f,f,
-8884,Florentins,Dessert délicieux pour conclure le repas sur une note sucrée.,30,12,20,Cuisson au four,DESSERT,f,f,
-8885,Pain d’épices,Dessert délicieux pour conclure le repas sur une note sucrée.,90,20,1,Cuisson au four,DESSERT,f,f,
-8886,Biscuits au citron,Dessert délicieux pour conclure le repas sur une note sucrée.,20,15,24,Cuisson au four,DESSERT,f,f,
-8887,Mousse à la vanille,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,0,6,Sans cuisson,DESSERT,f,f,
-8888,Mousse aux fruits,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,0,6,Sans cuisson,DESSERT,f,f,
-8889,Mousse au citron,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,0,6,Sans cuisson,DESSERT,f,f,
-8890,Mousse à l’orange,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,0,6,Sans cuisson,DESSERT,f,f,
-8891,Mousse exotique,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,0,6,Sans cuisson,DESSERT,f,f,
-8892,Mousse pistache,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,0,6,Sans cuisson,DESSERT,f,f,
-8893,Crème caramel,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,45,6,Cuisson au four,DESSERT,f,f,
-8894,Crème brûlée,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,40,6,Cuisson au four,DESSERT,f,f,
-8896,Panna cotta,Dessert délicieux pour conclure le repas sur une note sucrée.,15,0,6,Sans cuisson,DESSERT,f,f,
-8897,Ile flottante,Dessert délicieux pour conclure le repas sur une note sucrée.,30,15,6,Cuisson mixte,DESSERT,f,f,
-8898,Œufs au lait,Dessert délicieux pour conclure le repas sur une note sucrée.,15,45,6,Cuisson au four,DESSERT,f,f,
-8899,Crème vanille,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,15,10,6,Cuisson douce,DESSERT,f,f,
-8900,Crème pistache,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,12,6,Cuisson douce,DESSERT,f,f,
-8901,Crème coco,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,15,10,6,Cuisson douce,DESSERT,f,f,
-8902,Crème noisette,Dessert léger et onctueux. Une touche de douceur pour finir le repas.,20,12,6,Cuisson douce,DESSERT,f,f,
-8903,Glace vanille,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8904,Glace fraise,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8905,Glace pistache,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8906,Glace caramel,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8907,Glace coco,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8908,Glace mangue,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8909,Glace passion,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8910,Glace citron,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8911,Glace framboise,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8912,Glace myrtille,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8913,Sorbet fraise,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8914,Sorbet framboise,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8915,Sorbet citron,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8916,Sorbet mangue,Dessert glacé rafraîchissant. Parfait pour les beaux jours.,15,0,8,Sans cuisson,DESSERT,f,f,
-8917,Parfait glacé,Dessert délicieux pour conclure le repas sur une note sucrée.,25,0,8,Sans cuisson,DESSERT,f,f,
-8918,Semifreddo,Dessert délicieux pour conclure le repas sur une note sucrée.,20,0,8,Sans cuisson,DESSERT,f,f,
-8919,Profiteroles glacées,Dessert délicieux pour conclure le repas sur une note sucrée.,50,25,6,Cuisson au four,DESSERT,f,f,
-8920,Bûche glacée,Dessert délicieux pour conclure le repas sur une note sucrée.,60,20,8,Cuisson au four,DESSERT,f,f,
-8921,Brochettes de fruits,Dessert délicieux pour conclure le repas sur une note sucrée.,15,0,4,Sans cuisson,DESSERT,f,f,
-8922,Compote de pommes,Dessert délicieux pour conclure le repas sur une note sucrée.,10,20,4,Mijotage,DESSERT,f,f,
-8923,Compote de poires,Dessert délicieux pour conclure le repas sur une note sucrée.,10,20,4,Mijotage,DESSERT,f,f,
-8924,Compote de pêches,Dessert délicieux pour conclure le repas sur une note sucrée.,10,20,4,Mijotage,DESSERT,f,f,
-8925,Compote d’abricots,Dessert délicieux pour conclure le repas sur une note sucrée.,10,20,4,Mijotage,DESSERT,f,f,
-8926,Compote de fruits rouges,Dessert délicieux pour conclure le repas sur une note sucrée.,10,20,4,Mijotage,DESSERT,f,f,
-8928,Velouté de champignons,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8929,Velouté de petits pois,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8930,Velouté de carottes,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8931,Velouté de chou-fleur,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8932,Velouté de poireaux,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8933,Velouté de panais,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8934,Velouté de tomates,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8935,Velouté d’asperges,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8936,Velouté de courgettes,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8937,Velouté de céleri,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8938,Velouté de topinambours,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8939,Velouté de brocolis,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8940,Velouté de patates douces,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8941,Velouté de navets,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8942,Velouté de cresson,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8943,Velouté de betteraves,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8944,Velouté de fenouil,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8945,Velouté de maïs,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8946,Velouté de potimarron,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8947,Potage julienne,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8948,Potage cultivateur,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8949,Potage parisien,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8950,Potage madrilène,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8951,Potage aux légumes variés,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8952,Potage de légumes anciens,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8953,Potage de légumes racines,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8954,Potage crème de champignons,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8955,Potage crème de tomates,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8956,Potage crème de céleri,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8957,Potage crème de poireaux,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8958,Potage crème de carottes,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8959,Potage crème de chou-fleur,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8960,Potage crème de panais,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8961,Potage crème de courgettes,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8962,Potage crème d’asperges,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8963,Potage crème de navets,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8964,Potage crème de topinambours,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8965,Potage crème de brocolis,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8966,Potage crème de potiron,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8967,Garbure,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,25,120,8,Mijotage,ENTREE,f,t,f
-8968,Tourin à l’ail,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,10,30,4,Mijotage,ENTREE,f,f,f
-8969,Bouillabaisse simplifiée,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,30,40,6,Mijotage,ENTREE,f,t,f
-8970,Bortsch ukrainien,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,20,40,6,Mijotage,ENTREE,f,t,f
-8971,Minestrone italien,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,20,40,6,Mijotage,ENTREE,f,t,f
-8972,Ribollita toscane,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,20,45,6,Mijotage,ENTREE,f,t,f
-8973,Zuppa di pesce,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,30,40,6,Mijotage,ENTREE,f,t,f
-8974,Acquacotta,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,30,4,Mijotage,ENTREE,f,f,f
-8975,Sopa de ajo,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,10,20,4,Mijotage,ENTREE,f,f,f
-8976,Salmorejo,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,0,4,Sans cuisson,ENTREE,f,f,
-8977,Bisque de homard,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,45,60,6,Mijotage,ENTREE,f,f,f
-8978,Bisque de langoustines,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,40,50,6,Mijotage,ENTREE,f,f,f
-8979,Bisque de crabes,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,40,50,6,Mijotage,ENTREE,f,f,f
-8980,Bisque de crevettes,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,10,8,4,Poêle,ENTREE,f,f,t
-8981,Velouté de cèpes,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8982,Velouté de lentilles corail,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8983,Velouté de haricots blancs,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8984,Velouté de pois chiches,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8985,Velouté d’épinards,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8986,Velouté de courges,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8987,Velouté de chou vert,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8988,Velouté de poivrons,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8989,Velouté d’aubergines,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8990,Velouté aux herbes,Entrée réconfortante à base de légumes frais. Idéale pour débuter un repas en douceur.,15,25,4,Mijotage,ENTREE,f,f,
-8991,Potage de légumes variés,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8992,Potage au chou,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8993,Potage aux carottes,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8994,Potage aux courgettes,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8995,Potage aux poireaux,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8996,Potage aux pommes de terre,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-8997,Potage au céleri,Entrée savoureuse pour bien commencer le repas. Préparation simple et rapide.,15,25,4,Mijotage,ENTREE,f,f,
-9260,Burger,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9250,Chevreuil aux pruneaux,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9251,Lièvre aux poires,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9252,Lièvre aux figues,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9254,Cerf aux myrtilles,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9258,Bécasse mijotée,Plat principal savoureux mijoté longuement pour plus de tendreté. Parfait pour un repas convivial.,30,150,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9259,Bécasse aux pruneaux,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,50,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9261,Burger au fromage,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9262,Burger au bacon,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9269,Burger au poulet et bœuf,Délicieux plat de volaille préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9270,Burger aux champignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9271,Burger aux oignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9272,Burger aux tomates,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9278,Wrap au bœuf grillé,Savoureuse préparation de viande grillé à la perfection. Parfait pour un repas convivial.,15,10,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9279,Wrap au bœuf aux herbes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,10,2,Cuisson mixte,PLAT_PRINCIPAL,f,t,f
-9280,Boulettes de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9281,Boulettes de veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9282,Boulettes d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9283,Boulettes de porc,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9284,Boulettes au curry doux,"Plat principal savoureux préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9290,Steak haché poêlé,Plat principal savoureux poêlé avec soin. Parfait pour un repas convivial.,5,10,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9291,Steak haché au barbecue,Recette de poisson préparé avec attention. Parfait pour un repas convivial.,5,10,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9296,Polpette italiennes,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,25,4,Cuisson mixte,PLAT_PRINCIPAL,f,f,t
-9297,Keftas d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9298,Keftas de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9299,Keftas de veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,15,4,Cuisson au four,PLAT_PRINCIPAL,f,f,t
-9300,Chateaubriand,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,10,15,2,Grillade,PLAT_PRINCIPAL,f,f,t
-9301,Tournedos Rossini,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,10,2,Poêle,PLAT_PRINCIPAL,f,f,t
-9302,Filet de bœuf Wellington,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,60,40,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9303,Entrecôte maître d’hôtel,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,5,10,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9304,Côte de bœuf XXL,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,10,20,4,Grillade,PLAT_PRINCIPAL,f,t,f
-9305,Magret de canard au foie gras,Délicieux plat de volaille préparé avec attention. Parfait pour un repas convivial.,10,15,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9306,Gigot d’agneau pascal,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9307,Épaule d’agneau de fête,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,150,8,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9308,Navarin d’agneau royal,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-481,Gâteau basque à la crème ou à la cerise,Une délicieuse recette espagnole : Gâteau basque à la crème ou à la cerise,30,45,8,Cuisson au four,DESSERT,f,f,
-483,Baklava,Une savoureuse recette de Baklava,45,40,16,Cuisson au four,PLAT_PRINCIPAL,f,f,
-484,Halva,Une savoureuse recette de Halva,30,15,8,Cuisson douce,PLAT_PRINCIPAL,f,f,
-486,Cornes de gazelle marocaines,Une délicieuse recette orientale : Cornes de gazelle marocaines,60,20,16,Cuisson au four,PLAT_PRINCIPAL,f,f,
-487,Mochi japonais,Une délicieuse recette japonaise : Mochi japonais,30,10,8,Cuisson vapeur,PLAT_PRINCIPAL,f,f,
-489,Gâteau de lune chinois,Une délicieuse recette chinoise : Gâteau de lune chinois,25,35,8,Cuisson au four,DESSERT,f,f,
-490,Alfajores argentins,Une savoureuse recette de Alfajores argentins,30,15,16,Cuisson au four,PLAT_PRINCIPAL,f,f,
-491,Brigadeiros brésiliens,Une savoureuse recette de Brigadeiros brésiliens,20,15,24,Cuisson douce,PLAT_PRINCIPAL,f,f,
-494,Fraises au sucre et jus de citron,Une savoureuse recette de Fraises au sucre et jus de citron,5,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,
-496,Poires Belle-Hélène,Une savoureuse recette de Poires Belle-Hélène,20,20,4,Cuisson douce,PLAT_PRINCIPAL,f,f,
-497,Pêches Melba,Une savoureuse recette de Pêches Melba,15,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,
-498,"Pommes au four, miel et cannelle","Une savoureuse recette de Pommes au four, miel et cannelle",15,35,4,Cuisson au four,PLAT_PRINCIPAL,f,f,
-499,Bananes flambées au rhum,Une savoureuse recette de Bananes flambées au rhum,10,8,4,Poêle,PLAT_PRINCIPAL,f,f,
-504,Crumble aux fruits rouges et flocons d'avoine,Une savoureuse recette de Crumble aux fruits rouges et flocons d'avoine,20,35,6,Cuisson au four,PLAT_PRINCIPAL,f,f,
-485,Basboussa,Une savoureuse recette de Basboussa (gâteau de semoule),25,35,8,Cuisson au four,DESSERT,f,f,
-9310,Chevreuil au foie gras,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9311,Sanglier de fête,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9312,Lièvre à la royale,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,60,180,8,Mijotage,PLAT_PRINCIPAL,f,t,f
-9313,Bécasse truffée,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,50,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9314,Terrine de gibier royale,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,45,90,10,Cuisson au four,PLAT_PRINCIPAL,f,f,f
-9315,Filet de bœuf aux morilles,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,20,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9316,Rôti de veau aux morilles,Savoureuse préparation de viande rôti au four. Parfait pour un repas convivial.,20,90,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9317,Bœuf teriyaki,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9318,Bœuf sauté thaï,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,12,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9319,Bœuf curry coco,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",20,40,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-488,Dorayaki,Une délicieuse recette japonaise : Dorayaki (pancakes japonais fourrés),10,15,4,Poêle,DESSERT,f,t,f
-9321,Bœuf bulgogi,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-482,Loukoumades grecs,Une savoureuse recette de Loukoumades grecs (beignets au miel),90,15,12,Friture,PLAT_PRINCIPAL,f,f,
-9323,Agneau tikka masala,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,40,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9324,Agneau curry thaï,"Savoureuse préparation de viande préparé avec attention, relevé d'épices curry. Parfait pour un repas convivial.",25,60,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9325,Porc au caramel,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,30,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9327,Porc à l’aigre-douce,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,20,4,Sauté au wok,PLAT_PRINCIPAL,f,t,f
-9330,Porc teriyaki,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,15,12,4,Poêle,PLAT_PRINCIPAL,f,f,t
-9340,Carpaccio de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
-9341,Carpaccio de veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
-9342,Carpaccio d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
-9343,Carpaccio de gibier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
-9344,Tartare de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
-9345,Tartare de veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
-9346,Tartare d’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
-9347,Tartare de gibier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,20,0,4,Sans cuisson,PLAT_PRINCIPAL,f,f,f
-9348,Rillettes de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,15,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-9349,Rillettes de porc,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,15,0,6,Sans cuisson,PLAT_PRINCIPAL,f,f,
-9350,Terrine de gibier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,45,90,10,Cuisson au four,PLAT_PRINCIPAL,f,f,f
-9351,Terrine de bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,40,90,8,Cuisson au four,PLAT_PRINCIPAL,f,f,f
-9352,Terrine de veau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,40,90,8,Cuisson au four,PLAT_PRINCIPAL,f,f,f
-9353,Terrine de sanglier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,25,90,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9355,Tourte au bœuf et champignons,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,20,45,4,Mijotage,PLAT_PRINCIPAL,f,t,f
-9360,Tourte à l’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9361,Tourte à l’agneau et légumes,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9363,Tourte au porc et légumes,Plat végétarien équilibré préparé avec attention. Parfait pour un repas convivial.,35,45,6,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9364,Tourte au gibier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9365,Tourte au gibier et champignons,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,100,6,Mijotage,PLAT_PRINCIPAL,f,t,f
-9366,Feuilleté au bœuf,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,35,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9368,Feuilleté à l’agneau,Savoureuse préparation de viande préparé avec attention. Parfait pour un repas convivial.,30,35,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9370,Feuilleté au gibier,Plat principal savoureux préparé avec attention. Parfait pour un repas convivial.,30,35,4,Cuisson au four,PLAT_PRINCIPAL,f,t,f
-9377,Sauce béchamel,"Sauce blanche onctueuse à base de beurre, farine et lait. Base de nombreuses recettes comme les lasagnes, gratins et croque-monsieur.",5,10,6,Cuisson douce,SAUCE,f,,
-9378,Sauce hollandaise,Sauce émulsionnée riche à base de jaunes d'œufs et beurre clarifié. Parfaite pour les asperges et œufs bénédictine.,10,8,4,Cuisson douce,SAUCE,f,,
-9379,Sauce béarnaise,"Sauce émulsionnée à l'estragon, variante de la hollandaise. Accompagnement idéal pour les viandes grillées.",15,8,4,Cuisson douce,SAUCE,f,,
-9380,Sauce au poivre,Sauce crémeuse au poivre concassé et cognac. Classique pour accompagner les steaks et entrecôtes.,5,10,4,Cuisson douce,SAUCE,f,,
-9381,Sauce moutarde,Sauce crémeuse à la moutarde de Dijon. Parfaite pour les viandes blanches et le lapin.,5,8,4,Cuisson douce,SAUCE,f,,
-9382,Sauce au beurre blanc,Sauce émulsionnée au vin blanc et échalotes. Accompagnement raffiné pour les poissons.,10,10,4,Cuisson douce,SAUCE,f,,
-9383,Sauce tomate nature,"Sauce tomate simple aux oignons et herbes aromatiques. Base polyvalente pour pâtes, pizzas et plats mijotés.",10,30,6,Mijotage,SAUCE,f,,
-9384,Sauce tomate au basilic,Sauce tomate parfumée au basilic frais. Idéale pour les pâtes et lasagnes.,10,30,6,Mijotage,SAUCE,f,,
-9385,Sauce bolognaise,Sauce tomate à la viande hachée mijotée longuement. Base traditionnelle des spaghetti bolognaise et lasagnes.,20,90,8,Mijotage,SAUCE,f,,
-9386,Mayonnaise,Sauce froide émulsionnée à base de jaunes d'œufs et huile. Base de nombreuses sauces froides et accompagnement polyvalent.,10,15,6,Cuisson douce,SAUCE,f,,
-9387,Aïoli,Mayonnaise provençale à l'ail. Accompagnement traditionnel de la bouillabaisse et légumes crus.,15,0,6,Sans cuisson,SAUCE,f,,
-9388,Pesto,"Sauce italienne au basilic, pignons, parmesan et huile d'olive. Parfaite pour les pâtes et bruschetta.",10,15,6,Cuisson douce,SAUCE,f,,
-9389,Tapenade,Pâte d'olives noires provençale aux câpres et anchois. Délicieuse en apéritif sur du pain grillé.,10,0,6,Sans cuisson,SAUCE,f,f,
-9390,Guacamole,"Sauce mexicaine crémeuse à base d'avocats écrasés, citron vert et coriandre. Accompagnement des tacos et nachos.",10,0,4,Sans cuisson,SAUCE,f,f,
-9391,Tzatziki,"Sauce grecque au yaourt, concombre et menthe. Rafraîchissante avec les grillades et mezze.",15,0,6,Sans cuisson,SAUCE,f,f,
-9392,Salsa,"Sauce mexicaine fraîche aux tomates, oignons, piment et coriandre. Accompagnement des tacos et fajitas.",10,15,6,Cuisson douce,SAUCE,f,,
-9394,Sauce soja sucrée,"Sauce asiatique à base de sauce soja, miel et gingembre. Parfaite pour les woks et marinades.",5,5,4,Cuisson douce,SAUCE,f,,
-9395,Sauce curry,Sauce crémeuse aux épices curry et lait de coco. Base des plats indiens et thaïlandais.,5,10,4,Cuisson douce,SAUCE,f,,
-9396,Sauce barbecue,"Sauce sucrée-salée à base de tomate, vinaigre et épices. Idéale pour les grillades et burgers.",10,20,6,Cuisson douce,SAUCE,f,,
-9397,Bouillon de légumes,Bouillon aromatique à base de légumes mijotés. Base de nombreuses soupes et sauces.,15,60,10,Mijotage,SAUCE,f,,
-9398,Bouillon de volaille,Bouillon riche préparé avec une carcasse de poulet. Base des soupes et risottos.,15,120,10,Mijotage,SAUCE,f,,
-9399,Fond de veau,Fond brun concentré à base d'os de veau rôtis. Base noble des grandes sauces françaises.,20,240,10,Mijotage,SAUCE,f,,
-9400,Fumet de poisson,Bouillon délicat à base d'arêtes de poisson. Base des sauces pour fruits de mer.,15,30,8,Mijotage,SAUCE,f,,
-9393,Vinaigrette,"Assaisonnement simple à base d'huile, vinaigre et moutarde. Pour toutes les salades vertes.",5,0,6,Sans cuisson,SAUCE,f,,
+9401,Salade niçoise,"Salade provençale au thon, œufs, olives et anchois",25,10,4,cru,ENTREE,t,f,f
+9402,Salade César,"Laitue romaine, croûtons, parmesan et sauce crémeuse",20,5,4,cru,ENTREE,t,f,f
+9403,Salade grecque,"Concombre, tomates, feta, olives et origan",15,0,4,cru,ENTREE,t,f,f
+9404,Salade thaï au bœuf,"Bœuf grillé sur lit de crudités, sauce citronnée",20,10,4,poêle,ENTREE,t,f,f
+9405,Salade de lentilles,"Lentilles vertes tièdes, échalotes et vinaigrette",15,25,4,casserole,ENTREE,t,f,f
+9406,Salade de chèvre chaud,"Mesclun, toasts de chèvre gratinés, miel et noix",15,10,4,four,ENTREE,t,f,f
+9407,Fattoush,Salade libanaise au pain pita grillé et sumac,20,5,4,cru,ENTREE,t,f,f
+9408,Salade Waldorf,"Pommes, céleri, noix et mayonnaise légère",20,0,4,cru,ENTREE,f,f,f
+9409,Caprese,"Tomates, mozzarella di bufala, basilic et huile d'olive",10,0,4,cru,ENTREE,f,f,f
+9410,Salade quinoa légumes,"Quinoa, légumes croquants et herbes fraîches",15,15,4,casserole,ENTREE,t,f,f
+9411,Velouté de potimarron,Soupe onctueuse au potimarron et crème,15,30,4,casserole,ENTREE,t,f,f
+9412,Minestrone,Soupe italienne aux légumes et pâtes,20,40,6,casserole,ENTREE,t,t,f
+9413,Pho,Bouillon vietnamien au bœuf et nouilles de riz,30,180,4,mijotage,ENTREE,t,t,f
+9414,Soupe miso,"Bouillon japonais au miso, tofu et algues",10,10,4,casserole,ENTREE,f,f,f
+9415,Gaspacho,Soupe froide de tomates et poivrons,20,0,4,cru,ENTREE,t,f,f
+9416,Soupe à l'oignon,"Oignons caramélisés, bouillon et gratin de fromage",20,45,4,four,ENTREE,t,f,f
+9417,Harira,"Soupe marocaine aux lentilles, pois chiches et agneau",25,60,6,mijotage,ENTREE,t,t,f
+9418,Tom Yum,Soupe thaï épicée aux crevettes et citronnelle,20,20,4,casserole,ENTREE,t,f,f
+9419,Velouté butternut-coco,"Courge butternut, lait de coco et gingembre",15,30,4,casserole,ENTREE,t,f,f
+9420,Soupe poireaux-pommes de terre,"Classique française, simple et réconfortante",15,30,4,casserole,ENTREE,t,f,f
+9421,Tartare de saumon,"Saumon cru mariné, câpres et aneth",20,0,4,cru,ENTREE,t,f,f
+9422,Tartare de bœuf,"Bœuf cru assaisonné, jaune d'œuf et condiments",20,0,4,cru,ENTREE,t,f,f
+9423,Ceviche,Poisson cru mariné au citron vert et piment,25,0,4,cru,ENTREE,t,f,f
+9424,Carpaccio de bœuf,"Fines tranches de bœuf cru, roquette et parmesan",15,0,4,cru,ENTREE,f,f,f
+9425,Carpaccio de Saint-Jacques,"Saint-Jacques crues en fines lamelles, agrumes",20,0,4,cru,ENTREE,f,f,f
+9426,Tartare de thon,Thon cru au sésame et sauce soja,15,0,4,cru,ENTREE,t,f,f
+9427,Tartare de légumes,"Légumes crus finement coupés, vinaigrette acidulée",25,0,4,cru,ENTREE,f,f,f
+9428,Sashimi,Assortiment de poissons crus à la japonaise,30,0,4,cru,ENTREE,t,f,f
+9429,Tataki de thon,"Thon snacké, cœur cru, croûte de sésame",15,5,4,poêle,ENTREE,t,f,f
+9430,Gravlax,Saumon mariné à l'aneth et baies roses,20,0,4,cru,ENTREE,t,f,f
+9431,Œuf cocotte,"Œuf cuit au four en ramequin, crème et herbes",10,12,4,four,ENTREE,f,f,f
+9432,Soufflé au fromage,Soufflé aérien au gruyère,20,25,4,four,ENTREE,f,f,f
+9433,Brick chèvre-miel,"Feuille de brick croustillante, chèvre et miel",15,10,4,four,ENTREE,f,f,f
+9434,Samossas,Beignets indiens farcis aux légumes épicés,30,15,4,friture,ENTREE,f,f,f
+9435,Nems,Rouleaux vietnamiens frits au porc et crevettes,45,15,4,friture,ENTREE,f,f,f
+9436,Tempura de légumes,Légumes en beignets légers à la japonaise,25,15,4,friture,ENTREE,f,f,f
+9437,Accras de morue,Beignets antillais à la morue,30,15,4,friture,ENTREE,f,f,f
+9438,Champignons farcis,Champignons garnis de farce aux herbes,20,20,4,four,ENTREE,f,f,f
+9439,Feuilleté aux épinards,"Pâte feuilletée, épinards et feta",20,25,4,four,ENTREE,f,f,f
+9440,Blinis au saumon,"Petites crêpes russes, saumon fumé et crème",20,15,4,poêle,ENTREE,f,f,f
+9441,Bœuf bourguignon,"Ragoût de bœuf au vin rouge, champignons et lardons",30,180,6,mijotage,PLAT_PRINCIPAL,f,f,t
+9442,Steak frites,Entrecôte poêlée et frites maison,15,20,4,poêle,PLAT_PRINCIPAL,f,t,f
+9443,Tataki de bœuf,"Bœuf saisi, cœur cru, sauce ponzu",15,5,4,poêle,PLAT_PRINCIPAL,f,f,t
+9444,Bò bún,Salade vietnamienne au bœuf grillé et vermicelles,30,15,4,poêle,PLAT_PRINCIPAL,f,t,f
+9445,Chili con carne,"Ragoût texan au bœuf, haricots rouges et épices",20,90,6,mijotage,PLAT_PRINCIPAL,f,t,f
+9446,Bibimbap,"Bol coréen au bœuf, légumes et œuf",30,20,4,poêle,PLAT_PRINCIPAL,f,t,f
+9447,Carbonnade flamande,Bœuf braisé à la bière et pain d'épices,25,180,6,mijotage,PLAT_PRINCIPAL,f,f,t
+9448,Bœuf Stroganoff,Émincé de bœuf à la crème et champignons,20,25,4,poêle,PLAT_PRINCIPAL,f,f,t
+9449,Tacos carne asada,Tacos mexicains au bœuf grillé mariné,25,15,4,grill,PLAT_PRINCIPAL,f,t,f
+9450,Pot-au-feu,Bouilli de bœuf aux légumes d'hiver,30,240,8,mijotage,PLAT_PRINCIPAL,f,t,f
+9451,Poulet rôti,"Poulet entier rôti au four, jus de cuisson",15,75,4,four,PLAT_PRINCIPAL,f,f,t
+9452,Coq au vin,"Poulet mijoté au vin rouge, lardons et champignons",30,120,6,mijotage,PLAT_PRINCIPAL,f,f,t
+9453,Poulet tikka masala,"Poulet mariné, sauce tomate épicée et crème",25,30,4,poêle,PLAT_PRINCIPAL,f,f,t
+9454,Tajine poulet citron-olives,Tajine marocain aux citrons confits,20,60,4,mijotage,PLAT_PRINCIPAL,f,t,f
+9455,Pad thaï poulet,Nouilles de riz sautées au poulet et cacahuètes,25,15,4,wok,PLAT_PRINCIPAL,f,t,f
+9456,Yakitori,"Brochettes de poulet grillées, sauce teriyaki",25,15,4,grill,PLAT_PRINCIPAL,f,f,t
+9457,Escalope milanaise,Escalope panée à l'italienne,20,10,4,poêle,PLAT_PRINCIPAL,f,f,t
+9458,Poulet basquaise,Poulet aux poivrons et tomates du Pays Basque,25,45,4,mijotage,PLAT_PRINCIPAL,f,t,f
+9459,Poulet Kung Pao,"Poulet sauté au piment et cacahuètes, recette Sichuan",20,15,4,wok,PLAT_PRINCIPAL,f,f,t
+9460,Cordon bleu maison,"Escalope farcie jambon-fromage, panée",30,20,4,poêle,PLAT_PRINCIPAL,f,f,t
+9461,Pulled pork,"Épaule de porc effilochée, cuisson lente",20,360,8,four,PLAT_PRINCIPAL,f,t,f
+9462,Travers de porc caramélisés,Ribs glacés au miel et sauce barbecue,15,120,4,four,PLAT_PRINCIPAL,f,f,t
+9463,Tonkatsu,Côtelette de porc panée japonaise,20,15,4,friture,PLAT_PRINCIPAL,f,f,t
+9464,Filet mignon à la moutarde,Filet de porc rôti en croûte de moutarde,15,35,4,four,PLAT_PRINCIPAL,f,f,t
+9465,Porc au caramel vietnamien,Poitrine de porc braisée au caramel et nuoc-mâm,20,60,4,mijotage,PLAT_PRINCIPAL,f,f,t
+9466,Char siu,Porc laqué cantonais au miel,20,45,4,four,PLAT_PRINCIPAL,f,f,t
+9467,Côtes échine BBQ,Côtes de porc grillées sauce barbecue,15,25,4,grill,PLAT_PRINCIPAL,f,f,t
+9468,Rôti de porc orloff,"Rôti farci aux oignons, champignons et béchamel",30,75,6,four,PLAT_PRINCIPAL,f,f,t
+9469,Sauté de porc au basilic thaï,Porc émincé sauté au basilic et piment,15,10,4,wok,PLAT_PRINCIPAL,f,f,t
+9470,Cassoulet,Ragoût du Sud-Ouest aux haricots et viandes confites,45,180,8,four,PLAT_PRINCIPAL,f,t,f
+9471,Souris d'agneau braisée,Souris confite aux herbes de Provence,20,180,4,four,PLAT_PRINCIPAL,f,f,t
+9472,Navarin d'agneau,Ragoût printanier aux petits légumes,30,90,6,mijotage,PLAT_PRINCIPAL,f,t,f
+9473,Gigot de 7 heures,"Gigot confit longuement, fondant à la cuillère",20,420,8,four,PLAT_PRINCIPAL,f,f,t
+9474,Kefta,Boulettes d'agneau épicées grillées,25,15,4,grill,PLAT_PRINCIPAL,f,f,t
+9475,Curry d'agneau,Agneau mijoté au curry et lait de coco,25,90,4,mijotage,PLAT_PRINCIPAL,f,f,t
+9476,Côtelettes d'agneau grillées,"Côtelettes marinées, cuisson rosée",15,10,4,grill,PLAT_PRINCIPAL,f,f,t
+9477,Irish stew,Ragoût irlandais à l'agneau et pommes de terre,20,120,6,mijotage,PLAT_PRINCIPAL,f,t,f
+9478,Tajine agneau-pruneaux,Tajine sucré-salé aux amandes,25,90,4,mijotage,PLAT_PRINCIPAL,f,t,f
+9479,Méchoui,Épaule d'agneau rôtie aux épices,20,240,8,four,PLAT_PRINCIPAL,f,f,t
+9480,Carré d'agneau rôti,"Carré en croûte d'herbes, cuisson rosée",20,25,4,four,PLAT_PRINCIPAL,f,f,t
+9481,Saumon teriyaki,Pavé de saumon glacé à la sauce teriyaki,15,15,4,poêle,PLAT_PRINCIPAL,f,f,t
+9482,Dos de cabillaud rôti,"Cabillaud au four, croûte de chapelure aux herbes",15,20,4,four,PLAT_PRINCIPAL,f,f,t
+9483,Brandade de morue,Purée de morue à l'huile d'olive et ail,30,30,4,casserole,PLAT_PRINCIPAL,f,f,t
+9484,Fish and chips,Poisson pané en beignet et frites épaisses,25,20,4,friture,PLAT_PRINCIPAL,f,t,f
+9485,Daurade en croûte de sel,Daurade entière cuite en croûte de sel,15,35,4,four,PLAT_PRINCIPAL,f,f,t
+9486,Sole meunière,Sole poêlée au beurre noisette et citron,15,10,4,poêle,PLAT_PRINCIPAL,f,f,t
+9487,Pavé de thon mi-cuit,"Thon snacké, cœur rosé, sésame",10,5,4,poêle,PLAT_PRINCIPAL,f,f,t
+9488,Bouillabaisse,"Soupe de poissons marseillaise, rouille et croûtons",45,45,6,mijotage,PLAT_PRINCIPAL,f,t,f
+9489,Lotte à l'armoricaine,Lotte en sauce tomate au cognac et estragon,25,30,4,poêle,PLAT_PRINCIPAL,f,f,t
+9490,Curry de poisson,Poisson blanc mijoté au curry et lait de coco,20,25,4,mijotage,PLAT_PRINCIPAL,f,f,t
+9491,Moules marinières,"Moules au vin blanc, échalotes et persil",20,15,4,casserole,PLAT_PRINCIPAL,f,f,t
+9492,Paella,Riz espagnol aux fruits de mer et safran,40,45,6,poêle,PLAT_PRINCIPAL,f,t,f
+9493,Risotto aux fruits de mer,"Risotto crémeux, crevettes, moules et calamars",25,30,4,casserole,PLAT_PRINCIPAL,f,t,f
+9494,Linguine alle vongole,"Pâtes aux palourdes, ail et vin blanc",20,15,4,poêle,PLAT_PRINCIPAL,f,t,f
+9495,Coquilles Saint-Jacques poêlées,"Saint-Jacques snackées, beurre noisette",15,5,4,poêle,PLAT_PRINCIPAL,f,f,t
+9496,Calamars farcis,"Calamars garnis de farce aux herbes, braisés",30,45,4,four,PLAT_PRINCIPAL,f,f,t
+9497,Poulpe grillé,"Poulpe attendri puis grillé, huile d'olive et citron",20,60,4,grill,PLAT_PRINCIPAL,f,f,t
+9498,Gambas à l'ail,Crevettes sautées à l'ail et piment,10,10,4,poêle,PLAT_PRINCIPAL,f,f,t
+9499,Pad thaï aux crevettes,Nouilles sautées aux crevettes et cacahuètes,25,15,4,wok,PLAT_PRINCIPAL,f,t,f
+9500,Bisque de homard,Velouté onctueux aux carapaces de homard,30,60,4,mijotage,PLAT_PRINCIPAL,f,f,t
+9501,Ratatouille,Légumes du soleil mijotés à la provençale,30,45,6,mijotage,PLAT_PRINCIPAL,f,f,t
+9502,Gratin dauphinois,"Pommes de terre en couches, crème et ail",20,60,6,four,PLAT_PRINCIPAL,f,f,t
+9503,Tian provençal,Légumes en tranches gratinés aux herbes,25,50,4,four,PLAT_PRINCIPAL,f,f,t
+9504,Moussaka végétarienne,"Aubergines, tomates et béchamel gratinées",35,45,6,four,PLAT_PRINCIPAL,f,t,f
+9505,Légumes rôtis au four,"Légumes de saison caramélisés, huile d'olive",20,40,4,four,PLAT_PRINCIPAL,f,f,t
+9506,Shakshuka,Œufs pochés dans une sauce tomate épicée,15,25,4,poêle,PLAT_PRINCIPAL,f,t,f
+9507,Imam bayildi,"Aubergines farcies à la turque, tomates et oignons",30,60,4,four,PLAT_PRINCIPAL,f,f,t
+9508,Poivrons farcis végétariens,Poivrons garnis de riz et légumes,25,45,4,four,PLAT_PRINCIPAL,f,t,f
+9509,Caponata,Ragoût sicilien d'aubergines aigre-doux,25,35,4,poêle,PLAT_PRINCIPAL,f,f,t
+9510,Chakchouka aux légumes,"Poêlée de légumes épicés, œufs fondants",20,25,4,poêle,PLAT_PRINCIPAL,f,t,f
+9511,Dhal de lentilles corail,"Lentilles épicées à l'indienne, lait de coco",15,30,4,casserole,PLAT_PRINCIPAL,f,t,f
+9512,Houmous maison,Purée de pois chiches au tahini et citron,15,0,6,cru,PLAT_PRINCIPAL,f,f,t
+9513,Falafels,Boulettes de pois chiches frites aux herbes,30,15,4,friture,PLAT_PRINCIPAL,f,f,t
+9514,Curry de pois chiches,Pois chiches mijotés au curry et tomates,15,30,4,mijotage,PLAT_PRINCIPAL,f,t,f
+9515,Chili sin carne,Chili végétarien aux haricots et protéines de soja,20,45,6,mijotage,PLAT_PRINCIPAL,f,t,f
+9516,Cassoulet végétarien,"Haricots blancs gratinés, saucisses végétales",30,90,6,four,PLAT_PRINCIPAL,f,t,f
+9517,Salade de lentilles du Puy,"Lentilles vertes, légumes croquants et vinaigrette",15,25,4,casserole,PLAT_PRINCIPAL,f,t,f
+9518,Haricots blancs à la tomate,Haricots mijotés à la tomate et herbes,15,40,4,mijotage,PLAT_PRINCIPAL,f,f,t
+9519,Cocido végétarien,Ragoût espagnol aux pois chiches et légumes,25,60,6,mijotage,PLAT_PRINCIPAL,f,t,f
+9520,Buddha bowl,"Bol complet : céréales, légumineuses et légumes",25,20,4,mixte,PLAT_PRINCIPAL,f,t,f
+9521,Risotto aux champignons,Riz crémeux aux champignons et parmesan,15,30,4,casserole,PLAT_PRINCIPAL,f,t,f
+9522,Pasta e fagioli,Soupe italienne aux pâtes et haricots,20,35,4,casserole,PLAT_PRINCIPAL,f,t,f
+9523,Gnocchi maison,"Gnocchi de pommes de terre, sauce au choix",45,15,4,casserole,PLAT_PRINCIPAL,f,f,t
+9524,Polenta crémeuse,Semoule de maïs onctueuse au parmesan,10,30,4,casserole,PLAT_PRINCIPAL,f,f,t
+9525,Riz cantonais végétarien,Riz sauté aux légumes et œufs,20,15,4,wok,PLAT_PRINCIPAL,f,t,f
+9526,Taboulé libanais,"Boulgour, persil, menthe, tomates et citron",25,0,4,cru,PLAT_PRINCIPAL,f,t,f
+9527,Riz pilaf,Riz parfumé aux oignons et épices douces,10,20,4,casserole,PLAT_PRINCIPAL,f,f,t
+9528,Orzo aux légumes grillés,"Pâtes orzo, légumes rôtis et feta",20,25,4,four,PLAT_PRINCIPAL,f,t,f
+9529,Spätzle au fromage,Pâtes alsaciennes gratinées au gruyère,25,20,4,four,PLAT_PRINCIPAL,f,f,t
+9530,Couscous aux légumes,Semoule et légumes en bouillon parfumé,30,45,6,mijotage,PLAT_PRINCIPAL,f,t,f
+9531,Purée maison,Pommes de terre écrasées au beurre et lait,15,25,4,casserole,ACCOMPAGNEMENT,f,f,f
+9532,Riz pilaf classique,Riz nacré puis cuit au bouillon,10,18,4,casserole,ACCOMPAGNEMENT,f,f,f
+9533,Pommes sarladaises,Pommes de terre sautées à la graisse de canard,20,40,4,poêle,ACCOMPAGNEMENT,f,f,f
+9534,Gratin de pommes de terre,Pommes de terre en couches gratinées,20,50,6,four,ACCOMPAGNEMENT,f,f,f
+9535,Frites maison,Frites croustillantes en double cuisson,30,15,4,friture,ACCOMPAGNEMENT,f,f,f
+9536,Polenta grillée,Tranches de polenta dorées à la poêle,10,40,4,poêle,ACCOMPAGNEMENT,f,f,f
+9537,Écrasé de pommes de terre,Pommes de terre écrasées rustiques à l'huile d'olive,15,20,4,casserole,ACCOMPAGNEMENT,f,f,f
+9538,Riz basmati parfumé,Riz basmati cuit à la cardamome et cannelle,5,15,4,casserole,ACCOMPAGNEMENT,f,f,f
+9539,Gnocchi à la romaine,Gnocchi de semoule gratinés au parmesan,20,25,4,four,ACCOMPAGNEMENT,f,f,f
+9540,Pommes duchesse,Rosaces de purée dorées au four,30,20,4,four,ACCOMPAGNEMENT,f,f,f
+9541,Haricots verts persillés,Haricots verts sautés au beurre et persil,10,15,4,poêle,ACCOMPAGNEMENT,f,f,f
+9542,Carottes glacées,"Carottes cuites au beurre et sucre, brillantes",10,25,4,casserole,ACCOMPAGNEMENT,f,f,f
+9543,Épinards à la crème,Épinards frais fondus à la crème,15,15,4,poêle,ACCOMPAGNEMENT,f,f,f
+9544,Poêlée de champignons,Champignons sautés à l'ail et persil,10,15,4,poêle,ACCOMPAGNEMENT,f,f,f
+9545,Petits pois à la française,Petits pois braisés avec laitue et oignons,15,25,4,casserole,ACCOMPAGNEMENT,f,f,f
+9546,Fenouil braisé,"Fenouil confit au four, fondant et anisé",10,45,4,four,ACCOMPAGNEMENT,f,f,f
+9547,Endives caramélisées,Endives braisées au beurre et sucre,10,40,4,poêle,ACCOMPAGNEMENT,f,f,f
+9548,Courgettes sautées,Courgettes en rondelles dorées aux herbes,10,15,4,poêle,ACCOMPAGNEMENT,f,f,f
+9549,Brocoli rôti,"Brocoli au four, croustillant et caramélisé",10,25,4,four,ACCOMPAGNEMENT,f,f,f
+9550,Chou rouge braisé,Chou rouge mijoté aux pommes et vinaigre,15,60,4,mijotage,ACCOMPAGNEMENT,f,f,f
+9551,Sauce béchamel,"Sauce blanche au lait, beurre et farine",5,10,4,casserole,SAUCE,f,f,f
+9552,Sauce tomate maison,"Coulis de tomates fraîches, ail et basilic",15,30,6,mijotage,SAUCE,f,f,f
+9553,Sauce bolognaise,Ragù italien à la viande et tomates,20,120,6,mijotage,SAUCE,f,f,f
+9554,Pesto alla genovese,"Basilic, pignons, parmesan et huile d'olive",15,0,4,cru,SAUCE,f,f,f
+9555,Aïoli,Mayonnaise provençale à l'ail,15,0,6,cru,SAUCE,f,f,f
+9556,Sauce béarnaise,"Émulsion au beurre, estragon et échalotes",15,15,4,bain-marie,SAUCE,f,f,f
+9557,Sauce hollandaise,"Émulsion au beurre et jaunes d'œufs, citron",10,10,4,bain-marie,SAUCE,f,f,f
+9558,Sauce vierge,"Tomates concassées crues, huile d'olive et herbes",15,0,4,cru,SAUCE,f,f,f
+9559,Chimichurri,"Sauce argentine au persil, ail et vinaigre",15,0,6,cru,SAUCE,f,f,f
+9560,Sauce teriyaki,Sauce japonaise sucrée-salée au soja et mirin,5,10,4,casserole,SAUCE,f,f,f
+9561,Fond de veau,Fond brun aux os de veau rôtis,30,480,8,mijotage,SAUCE,f,f,f
+9562,Fond de volaille,Bouillon clair aux carcasses de poulet,20,180,8,mijotage,SAUCE,f,f,f
+9563,Fumet de poisson,Bouillon léger aux arêtes et parures de poisson,15,30,6,mijotage,SAUCE,f,f,f
+9564,Bouillon de légumes,Bouillon parfumé aux légumes et aromates,15,45,8,mijotage,SAUCE,f,f,f
+9565,Dashi,Bouillon japonais au kombu et bonite séchée,10,15,4,casserole,SAUCE,f,f,f
+9566,Court-bouillon,Bouillon aromatique pour pocher poissons et crustacés,10,20,6,casserole,SAUCE,f,f,f
+9567,Fond brun,Fond aux os de bœuf caramélisés,30,360,8,mijotage,SAUCE,f,f,f
+9568,Consommé,"Bouillon clarifié, limpide et concentré",30,120,6,mijotage,SAUCE,f,f,f
+9569,Bouillon pho,Bouillon vietnamien aux épices et os de bœuf,20,360,8,mijotage,SAUCE,f,f,f
+9570,Fond d'agneau,Fond aux os d'agneau rôtis,30,300,6,mijotage,SAUCE,f,f,f
+9571,Pâte brisée,Pâte classique pour tartes salées et sucrées,15,0,6,cru,BASE,f,f,f
+9572,Pâte feuilletée,"Pâte levée au beurre, croustillante et aérée",45,0,8,cru,BASE,f,f,f
+9573,Pâte à pizza,Pâte levée à l'huile d'olive,20,0,4,cru,BASE,f,f,f
+9574,Pâte à crêpes,Pâte fluide pour crêpes fines,10,0,8,cru,BASE,f,f,f
+9575,Pâte à choux,"Pâte cuite pour éclairs, choux et gougères",15,10,6,casserole,BASE,f,f,f
+9576,Pâte sablée,Pâte friable et sucrée pour tartes,15,0,6,cru,BASE,f,f,f
+9577,Pâte à pain,Pâte levée basique pour pain maison,20,0,8,cru,BASE,f,f,f
+9578,Pâte à brioche,Pâte levée enrichie au beurre et œufs,30,0,8,cru,BASE,f,f,f
+9579,Pâte à nouilles fraîches,Pâtes aux œufs faites maison,30,0,4,cru,BASE,f,f,f
+9580,Pâte à gnocchi,Base pommes de terre et farine pour gnocchi,30,20,4,casserole,BASE,f,f,f
+9581,Marinade asiatique,"Soja, gingembre, ail et huile de sésame",10,0,4,cru,SAUCE,f,f,f
+9582,Marinade BBQ,Sauce sucrée-fumée pour grillades,15,15,6,casserole,SAUCE,f,f,f
+9583,Pickles de légumes,Légumes marinés au vinaigre,20,10,8,casserole,SAUCE,f,f,f
+9584,Confit d'oignons,Oignons caramélisés longuement au beurre,15,45,6,poêle,SAUCE,f,f,f
+9585,Tapenade,"Purée d'olives noires, câpres et anchois",15,0,6,cru,SAUCE,f,f,f
+9586,Anchoïade,Purée d'anchois à l'ail et huile d'olive,15,0,6,cru,SAUCE,f,f,f
+9587,Rouille,"Sauce provençale à l'ail, safran et piment",20,0,6,cru,SAUCE,f,f,f
+9588,Gremolata,"Condiment italien : persil, ail et zeste de citron",10,0,4,cru,SAUCE,f,f,f
+9589,Dukkah,Mélange égyptien de noix et épices torréfiées,15,10,8,poêle,SAUCE,f,f,f
+9590,Za'atar maison,Mélange d'herbes moyen-oriental au sumac,10,5,8,poêle,SAUCE,f,f,f
+9591,Fondant au chocolat,Gâteau au cœur coulant intensément chocolaté,20,12,6,four,DESSERT,f,f,f
+9592,Quatre-quarts,Gâteau breton classique aux proportions égales,15,45,8,four,DESSERT,f,f,f
+9593,Cheesecake,Gâteau crémeux au fromage frais sur biscuit,30,60,8,four,DESSERT,f,f,f
+9594,Carrot cake,Gâteau moelleux aux carottes et glaçage cream cheese,25,45,8,four,DESSERT,f,f,f
+9595,Brownie,Gâteau dense au chocolat et noix,15,25,9,four,DESSERT,f,f,f
+9596,Tiramisu,Dessert italien au mascarpone et café,30,0,8,cru,DESSERT,f,f,f
+9597,Opéra,"Gâteau aux couches de biscuit, café et chocolat",60,15,10,four,DESSERT,f,f,f
+9598,Fraisier,Gâteau aux fraises et crème mousseline,45,20,8,four,DESSERT,f,f,f
+9599,Forêt noire,"Gâteau chocolat, cerises et chantilly",45,30,10,four,DESSERT,f,f,f
+9600,Marbré,Gâteau bicolore vanille et chocolat,20,50,8,four,DESSERT,f,f,f
+9601,Tarte au citron meringuée,"Tarte acidulée au citron, meringue dorée",30,35,8,four,DESSERT,f,f,f
+9602,Tarte Tatin,Tarte renversée aux pommes caramélisées,25,45,8,four,DESSERT,f,f,f
+9603,Tarte aux fraises,"Pâte sablée, crème pâtissière et fraises fraîches",30,20,8,four,DESSERT,f,f,f
+9604,Tarte au chocolat,Ganache onctueuse sur pâte sablée,25,25,8,four,DESSERT,f,f,f
+9605,Tarte amandine aux poires,Crème d'amande et poires pochées,25,40,8,four,DESSERT,f,f,f
+9606,Tarte Bourdaloue,Tarte classique aux poires et crème d'amande,30,45,8,four,DESSERT,f,f,f
+9607,Clafoutis aux cerises,Flan aux cerises du Limousin,15,40,6,four,DESSERT,f,f,f
+9608,Flan pâtissier,Crème prise à la vanille sur pâte feuilletée,20,45,8,four,DESSERT,f,f,f
+9609,Far breton,Flan breton aux pruneaux,15,50,8,four,DESSERT,f,f,f
+9610,Tarte alsacienne aux pommes,Pommes sur appareil crémeux à la cannelle,25,45,8,four,DESSERT,f,f,f
+9611,Crème brûlée,"Crème vanille, croûte de caramel craquant",20,45,6,four,DESSERT,f,f,f
+9612,Panna cotta,Crème italienne gélifiée à la vanille,15,5,6,casserole,DESSERT,f,f,f
+9613,Mousse au chocolat,Mousse aérienne au chocolat noir,25,0,6,cru,DESSERT,f,f,f
+9614,Île flottante,Meringue pochée sur crème anglaise,25,15,6,casserole,DESSERT,f,f,f
+9615,Riz au lait,Riz crémeux cuit dans le lait vanillé,10,45,6,casserole,DESSERT,f,f,f
+9616,Crème caramel,Flan renversé au caramel,20,50,6,four,DESSERT,f,f,f
+9617,Pots de crème au chocolat,Petits pots onctueux au chocolat,15,25,6,four,DESSERT,f,f,f
+9618,Parfait glacé,Dessert glacé crémeux sans sorbetière,25,0,8,cru,DESSERT,f,f,f
+9619,Bavarois aux fruits rouges,Mousse gélifiée aux fruits rouges,35,10,8,casserole,DESSERT,f,f,f
+9620,Blanc-manger,Dessert gélifié au lait d'amande,20,10,6,casserole,DESSERT,f,f,f
+9621,Salade de fruits frais,"Fruits de saison en morceaux, sirop léger",20,0,6,cru,DESSERT,f,f,f
+9622,Compote de pommes,Pommes fondues à la cannelle,15,25,6,casserole,DESSERT,f,f,f
+9623,Fruits rôtis au miel,Fruits de saison caramélisés au four,15,25,4,four,DESSERT,f,f,f
+9624,Poêlée de fruits au beurre,Fruits sautés au beurre et sucre,10,10,4,poêle,DESSERT,f,f,f
+9625,Gratin de fruits rouges,Fruits rouges gratinés au sabayon,15,10,4,four,DESSERT,f,f,f
+9626,Carpaccio d'ananas,"Ananas en fines tranches, vanille et menthe",15,0,4,cru,DESSERT,f,f,f
+9627,Soupe de fraises,Fraises en soupe froide au basilic,15,0,4,cru,DESSERT,f,f,f
+9628,Pommes au four,Pommes farcies aux fruits secs et miel,15,35,4,four,DESSERT,f,f,f
+9629,Poires pochées au vin rouge,Poires cuites dans un sirop au vin épicé,15,30,4,casserole,DESSERT,f,f,f
+9630,Crumble aux pommes,Pommes fondantes sous une pâte sablée émiettée,20,40,6,four,DESSERT,f,f,f
+9631,Croissants,Viennoiserie feuilletée au beurre,45,18,8,four,PETIT_DEJEUNER,f,f,f
+9632,Pains au chocolat,Viennoiserie feuilletée aux barres de chocolat,45,18,8,four,PETIT_DEJEUNER,f,f,f
+9633,Chouquettes,Petits choux au sucre perlé,20,25,30,four,PETIT_DEJEUNER,f,f,f
+9634,Brioche moelleuse,Brioche tressée au beurre,30,30,8,four,PETIT_DEJEUNER,f,f,f
+9635,Pains aux raisins,Escargots feuilletés à la crème pâtissière,45,20,8,four,PETIT_DEJEUNER,f,f,f
+9636,Kouign-amann,Gâteau breton feuilleté au beurre et sucre,40,35,8,four,PETIT_DEJEUNER,f,f,f
+9637,Palmiers,Feuilletés caramélisés en forme de cœur,20,15,12,four,PETIT_DEJEUNER,f,f,f
+9638,Chaussons aux pommes,Feuilletés fourrés à la compote de pommes,30,25,8,four,PETIT_DEJEUNER,f,f,f
+9639,Oranais,Viennoiserie à la crème pâtissière et abricot,40,20,8,four,PETIT_DEJEUNER,f,f,f
+9640,Pains au lait,Petits pains moelleux au lait,25,15,10,four,PETIT_DEJEUNER,f,f,f
+9641,Œufs brouillés crémeux,Œufs brouillés cuits lentement au beurre,5,10,4,poêle,PETIT_DEJEUNER,f,f,f
+9642,Pancakes salés,Pancakes aux herbes et fromage,15,15,4,poêle,PETIT_DEJEUNER,f,f,f
+9643,Omelette aux fines herbes,Omelette baveuse aux herbes fraîches,5,5,2,poêle,PETIT_DEJEUNER,f,f,f
+9644,Avocado toast,Toast à l'avocat écrasé et œuf poché,10,5,2,poêle,PETIT_DEJEUNER,f,f,f
+9645,Shakshuka du matin,Œufs pochés dans une sauce tomate épicée,15,20,4,poêle,PETIT_DEJEUNER,f,t,f
+9646,Croque-monsieur,Sandwich gratiné jambon-fromage,10,10,2,four,PETIT_DEJEUNER,f,f,f
+9647,Gaufres salées,Gaufres au fromage et bacon,15,20,4,gaufrier,PETIT_DEJEUNER,f,f,f
+9648,Eggs Benedict,"Muffin anglais, bacon, œuf poché et hollandaise",20,15,4,poêle,PETIT_DEJEUNER,f,t,f
+9649,Tortilla espagnole,Omelette épaisse aux pommes de terre,20,25,6,poêle,PETIT_DEJEUNER,f,t,f
+9650,Muffins bacon-cheddar,Muffins salés au bacon et fromage,15,25,12,four,PETIT_DEJEUNER,f,f,f
+9651,Pancakes moelleux,Pancakes épais au sirop d'érable,15,15,4,poêle,PETIT_DEJEUNER,f,f,f
+9652,Gaufres de Liège,Gaufres briochées au sucre perlé,25,20,8,gaufrier,PETIT_DEJEUNER,f,f,f
+9653,French toast,Pain perdu à la cannelle,10,15,4,poêle,PETIT_DEJEUNER,f,f,f
+9654,Granola maison,"Flocons d'avoine, miel et fruits secs torréfiés",15,30,10,four,PETIT_DEJEUNER,f,f,f
+9655,Overnight oats,Flocons d'avoine trempés aux fruits,10,0,2,cru,PETIT_DEJEUNER,f,f,f
+9656,Smoothie bowl,Bol de fruits mixés garni de toppings,15,0,2,cru,PETIT_DEJEUNER,f,f,f
+9657,Muffins aux myrtilles,Muffins moelleux aux myrtilles fraîches,15,25,12,four,PETIT_DEJEUNER,f,f,f
+9658,Porridge,"Flocons d'avoine cuits au lait, miel et fruits",5,10,2,casserole,PETIT_DEJEUNER,f,f,f
+9659,Banana bread,Gâteau moelleux aux bananes écrasées,15,55,8,four,PETIT_DEJEUNER,f,f,f
+9660,Açaí bowl,Bol glacé à l'açaí et fruits frais,15,0,2,cru,PETIT_DEJEUNER,f,f,f
