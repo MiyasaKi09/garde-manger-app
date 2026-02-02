@@ -71,6 +71,7 @@ export default function RecipeDetail() {
 
   const [recipe, setRecipe] = useState(null);
   const [ings, setIngs] = useState([]);
+  const [recipeSteps, setRecipeSteps] = useState([]);       // Étapes de la recette depuis recipe_steps
   const [lotsByProduct, setLotsByProduct] = useState({});   // product_id -> lots[]
   const [metaByProduct, setMetaByProduct] = useState({});   // product_id -> meta
   const [plan, setPlan] = useState({});                     // product_id -> { lot_id -> {checked, qty, unit} }
@@ -141,21 +142,26 @@ export default function RecipeDetail() {
       is_gluten_free: recipe.is_gluten_free || false
     });
 
-    // Convertir les instructions texte en blocs séparés
-    const instructionsText = recipe.steps || '';
-    const instructionLines = instructionsText.split(/\n+/).filter(line => line.trim());
-    setEditedInstructions(instructionLines.map((line, index) => ({
-      id: Math.random(),
-      text: line.replace(/^\d+\.\s*/, ''), // Retirer la numérotation automatique
-      duration: '',
-      type: 'preparation'
-    })));
-
-    if (instructionLines.length === 0) {
+    // Charger les étapes depuis recipeSteps
+    if (recipeSteps && recipeSteps.length > 0) {
+      setEditedInstructions(recipeSteps.map(step => ({
+        id: step.id || Math.random(),
+        step_no: step.step_no,
+        text: step.description || step.instruction || '',
+        duration: step.duration || '',
+        temperature: step.temperature || '',
+        temperature_unit: step.temperature_unit || '°C',
+        type: step.type || 'preparation'
+      })));
+    } else {
+      // Si pas d'étapes, créer une étape vide
       setEditedInstructions([{
         id: Math.random(),
+        step_no: 1,
         text: '',
         duration: '',
+        temperature: '',
+        temperature_unit: '°C',
         type: 'preparation'
       }]);
     }
@@ -181,8 +187,11 @@ export default function RecipeDetail() {
   function addInstruction() {
     setEditedInstructions(prev => [...prev, {
       id: Math.random(),
+      step_no: prev.length + 1,
       text: '',
       duration: '',
+      temperature: '',
+      temperature_unit: '°C',
       type: 'preparation'
     }]);
   }
@@ -234,13 +243,8 @@ export default function RecipeDetail() {
   async function saveRecipe() {
     try {
       setSending(true);
-      
-      // 1. Sauvegarder la recette principale
-      const instructionsText = editedInstructions
-        .filter(inst => inst.text.trim())
-        .map((inst, index) => `${index + 1}. ${inst.text.trim()}`)
-        .join('\n\n');
 
+      // 1. Sauvegarder la recette principale (sans instructions dans le champ texte)
       const recipeUpdate = {
         name: editedRecipe.name,
         description: editedRecipe.description,
@@ -249,7 +253,6 @@ export default function RecipeDetail() {
         cook_min: parseInt(editedRecipe.cook_min) || 0,
         rest_min: parseInt(editedRecipe.rest_min) || 0,
         servings: parseInt(editedRecipe.servings) || 4,
-        instructions: instructionsText,
         chef_tips: editedRecipe.chef_tips,
         is_vegetarian: editedRecipe.is_vegetarian,
         is_vegan: editedRecipe.is_vegan,
@@ -265,12 +268,12 @@ export default function RecipeDetail() {
       if (recipeError) throw recipeError;
 
       // 2. Supprimer les anciens ingrédients
-      const { error: deleteError } = await supabase
+      const { error: deleteIngredientsError } = await supabase
         .from('recipe_ingredients')
         .delete()
         .eq('recipe_id', id);
 
-      if (deleteError) throw deleteError;
+      if (deleteIngredientsError) throw deleteIngredientsError;
 
       // 3. Ajouter les nouveaux ingrédients
       const ingredientsToAdd = editedIngredients
@@ -292,9 +295,39 @@ export default function RecipeDetail() {
         if (ingredientsError) throw ingredientsError;
       }
 
-      // 4. Recharger la recette
+      // 4. Supprimer les anciennes étapes
+      const { error: deleteStepsError } = await supabase
+        .from('recipe_steps')
+        .delete()
+        .eq('recipe_id', id);
+
+      if (deleteStepsError) throw deleteStepsError;
+
+      // 5. Ajouter les nouvelles étapes
+      const stepsToAdd = editedInstructions
+        .filter(inst => inst.text && inst.text.trim())
+        .map((inst, index) => ({
+          recipe_id: parseInt(id),
+          step_no: index + 1,
+          description: inst.text.trim(),
+          duration: inst.duration ? parseInt(inst.duration) : null,
+          temperature: inst.temperature ? parseFloat(inst.temperature) : null,
+          temperature_unit: inst.temperature_unit || '°C',
+          type: inst.type || 'preparation',
+          created_at: new Date().toISOString()
+        }));
+
+      if (stepsToAdd.length > 0) {
+        const { error: stepsError } = await supabase
+          .from('recipe_steps')
+          .insert(stepsToAdd);
+
+        if (stepsError) throw stepsError;
+      }
+
+      // 6. Recharger la recette
       window.location.reload();
-      
+
     } catch (error) {
       console.error('Erreur sauvegarde:', error);
       alert(`Erreur lors de la sauvegarde: ${error.message}`);
@@ -464,6 +497,28 @@ export default function RecipeDetail() {
     } catch (error) {
       console.error('Erreur ingrédients:', error);
       setIngs([]);
+    }
+
+    // Charger les étapes de la recette depuis recipe_steps
+    try {
+      console.log('📋 Chargement des étapes pour la recette:', id);
+
+      const { data: steps, error: stepsError } = await supabase
+        .from('recipe_steps')
+        .select('*')
+        .eq('recipe_id', id)
+        .order('step_no', { ascending: true });
+
+      if (stepsError) {
+        console.error('❌ Erreur chargement étapes:', stepsError);
+        setRecipeSteps([]);
+      } else {
+        console.log(`✅ ${steps?.length || 0} étapes chargées`);
+        setRecipeSteps(steps || []);
+      }
+    } catch (error) {
+      console.error('Erreur étapes:', error);
+      setRecipeSteps([]);
     }
 
     setLoading(false);
@@ -966,7 +1021,7 @@ export default function RecipeDetail() {
                     placeholder={`Décrivez l'étape ${index + 1} en détail...`}
                     rows="3"
                   />
-                  <div className="instruction-meta">
+                  <div className="instruction-meta" style={{display: 'flex', gap: '8px', alignItems: 'center'}}>
                     <input
                       type="number"
                       min="0"
@@ -975,6 +1030,22 @@ export default function RecipeDetail() {
                       placeholder="Temps (min)"
                       style={{width: '120px'}}
                     />
+                    <input
+                      type="number"
+                      min="0"
+                      value={instruction.temperature || ''}
+                      onChange={(e) => updateInstruction(index, 'temperature', e.target.value)}
+                      placeholder="Temp."
+                      style={{width: '80px'}}
+                    />
+                    <select
+                      value={instruction.temperature_unit || '°C'}
+                      onChange={(e) => updateInstruction(index, 'temperature_unit', e.target.value)}
+                      style={{width: '60px'}}
+                    >
+                      <option value="°C">°C</option>
+                      <option value="°F">°F</option>
+                    </select>
                     <select
                       value={instruction.type || 'preparation'}
                       onChange={(e) => updateInstruction(index, 'type', e.target.value)}
@@ -1160,8 +1231,61 @@ export default function RecipeDetail() {
           <div className="instructions-section">
             <h2>Instructions</h2>
             <div className="instructions-content">
-              {recipe.steps ? (
-                <p className="instructions-text">{recipe.steps}</p>
+              {recipeSteps && recipeSteps.length > 0 ? (
+                <ol className="recipe-steps-list" style={{
+                  listStyle: 'none',
+                  padding: 0,
+                  counterReset: 'step-counter'
+                }}>
+                  {recipeSteps.map((step, index) => (
+                    <li key={step.id || index} style={{
+                      marginBottom: '20px',
+                      paddingLeft: '50px',
+                      position: 'relative',
+                      counterIncrement: 'step-counter'
+                    }}>
+                      <div style={{
+                        position: 'absolute',
+                        left: 0,
+                        top: 0,
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: '50%',
+                        background: '#059669',
+                        color: 'white',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: '700',
+                        fontSize: '0.9rem'
+                      }}>
+                        {step.step_no || index + 1}
+                      </div>
+                      <div style={{ lineHeight: '1.6' }}>
+                        <p style={{ margin: 0 }}>{step.description || step.instruction}</p>
+                        {step.duration && (
+                          <span style={{
+                            fontSize: '0.85rem',
+                            color: '#6b7280',
+                            marginTop: '4px',
+                            display: 'inline-block'
+                          }}>
+                            ⏱️ {step.duration} min
+                          </span>
+                        )}
+                        {step.temperature && (
+                          <span style={{
+                            fontSize: '0.85rem',
+                            color: '#6b7280',
+                            marginLeft: '12px'
+                          }}>
+                            🌡️ {step.temperature}{step.temperature_unit || '°C'}
+                          </span>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               ) : (
                 <p style={{ color: '#6b7280', fontStyle: 'italic' }}>
                   Instructions non disponibles
