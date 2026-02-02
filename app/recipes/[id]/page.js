@@ -750,7 +750,17 @@ export default function RecipeDetail() {
     );
   }
 
-  const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0) + (recipe.rest_min || 0);
+  // Calculer le temps total à partir de la somme des durées des étapes
+  const totalTime = useMemo(() => {
+    if (recipeSteps && recipeSteps.length > 0) {
+      return recipeSteps.reduce((sum, step) => {
+        const duration = parseInt(step.duration) || 0;
+        return sum + duration;
+      }, 0);
+    }
+    // Fallback sur les valeurs de la recette si pas d'étapes
+    return (recipe?.prep_min || 0) + (recipe?.cook_min || 0) + (recipe?.rest_min || 0);
+  }, [recipeSteps, recipe]);
 
   // Interface d'édition avec onglets (style cohérent avec /recipes/edit/new)
   if (isEditing) {
@@ -1138,11 +1148,6 @@ export default function RecipeDetail() {
             <div className="info-content">
               <div className="info-label">Temps total</div>
               <div className="info-value">{totalTime} min</div>
-              <div className="info-details">
-                {recipe.prep_min > 0 && `Prep: ${recipe.prep_min}min`}
-                {recipe.cook_min > 0 && ` • Cuisson: ${recipe.cook_min}min`}
-                {recipe.rest_min > 0 && ` • Repos: ${recipe.rest_min}min`}
-              </div>
             </div>
           </div>
 
@@ -1263,25 +1268,6 @@ export default function RecipeDetail() {
                       </div>
                       <div style={{ lineHeight: '1.6' }}>
                         <p style={{ margin: 0 }}>{step.description || step.instruction}</p>
-                        {step.duration && (
-                          <span style={{
-                            fontSize: '0.85rem',
-                            color: '#6b7280',
-                            marginTop: '4px',
-                            display: 'inline-block'
-                          }}>
-                            ⏱️ {step.duration} min
-                          </span>
-                        )}
-                        {step.temperature && (
-                          <span style={{
-                            fontSize: '0.85rem',
-                            color: '#6b7280',
-                            marginLeft: '12px'
-                          }}>
-                            🌡️ {step.temperature}{step.temperature_unit || '°C'}
-                          </span>
-                        )}
                       </div>
                     </li>
                   ))}
