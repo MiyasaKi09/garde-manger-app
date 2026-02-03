@@ -606,6 +606,8 @@ export default function RecipeDetail() {
           unit,
           canonical_food_id,
           canonical_foods (
+            id,
+            canonical_name,
             nutrition_id,
             nutritional_data (
               fibres_g,
