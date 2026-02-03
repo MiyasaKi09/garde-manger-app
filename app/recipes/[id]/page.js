@@ -605,6 +605,7 @@ export default function RecipeDetail() {
           quantity,
           unit,
           canonical_food_id,
+          archetype_id,
           canonical_foods (
             id,
             canonical_name,
@@ -630,6 +631,36 @@ export default function RecipeDetail() {
               vitamine_b6_mg,
               vitamine_b9_ug,
               vitamine_b12_ug
+            )
+          ),
+          archetypes (
+            canonical_food_id,
+            canonical_foods (
+              id,
+              canonical_name,
+              nutrition_id,
+              nutritional_data (
+                fibres_g,
+                sucres_g,
+                ag_satures_g,
+                calcium_mg,
+                fer_mg,
+                magnesium_mg,
+                potassium_mg,
+                sodium_mg,
+                zinc_mg,
+                vitamine_a_ug,
+                vitamine_c_mg,
+                vitamine_d_ug,
+                vitamine_e_mg,
+                vitamine_k_ug,
+                vitamine_b1_mg,
+                vitamine_b2_mg,
+                vitamine_b3_mg,
+                vitamine_b6_mg,
+                vitamine_b9_ug,
+                vitamine_b12_ug
+              )
             )
           )
         `)
@@ -663,11 +694,13 @@ export default function RecipeDetail() {
         let ingredientsWithoutNutrition = 0;
 
         ingredients.forEach((ing, index) => {
-          const canonicalFood = ing.canonical_foods;
+          // Priorité: canonical_foods direct, sinon archetype's canonical_foods
+          const canonicalFood = ing.canonical_foods || ing.archetypes?.canonical_foods;
           const nutritionData = canonicalFood?.nutritional_data;
 
           console.log(`\n🥕 Ingrédient #${index + 1}:`);
-          console.log(`   ID canonical_food: ${ing.canonical_food_id}`);
+          console.log(`   ID canonical_food: ${ing.canonical_food_id || 'via archetype'}`);
+          console.log(`   ID archetype: ${ing.archetype_id || 'n/a'}`);
           console.log(`   Quantité: ${ing.quantity} ${ing.unit}`);
           console.log(`   Canonical food trouvé: ${canonicalFood ? '✓' : '✗'}`);
           console.log(`   Données nutritionnelles: ${nutritionData ? '✓' : '✗'}`);
