@@ -128,7 +128,7 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
             unit,
             canonical_food_id,
             archetype_id,
-            canonical_foods (
+            canonical_foods!recipe_ingredients_canonical_food_id_fkey (
               nutrition_id,
               nutritional_data (
                 fibres_g,
@@ -154,7 +154,32 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
               )
             ),
             archetypes (
-              canonical_food_id
+              canonical_food_id,
+              canonical_foods (
+                nutrition_id,
+                nutritional_data (
+                  fibres_g,
+                  sucres_g,
+                  ag_satures_g,
+                  calcium_mg,
+                  fer_mg,
+                  magnesium_mg,
+                  potassium_mg,
+                  sodium_mg,
+                  zinc_mg,
+                  vitamine_a_ug,
+                  vitamine_c_mg,
+                  vitamine_d_ug,
+                  vitamine_e_mg,
+                  vitamine_k_ug,
+                  vitamine_b1_mg,
+                  vitamine_b2_mg,
+                  vitamine_b3_mg,
+                  vitamine_b6_mg,
+                  vitamine_b9_ug,
+                  vitamine_b12_ug
+                )
+              )
             )
           `)
           .eq('recipe_id', recipeId);
@@ -196,7 +221,10 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
         let ingredientsWithNutrition = 0;
 
         ingredients.forEach(ing => {
-          const nutritionData = ing.canonical_foods?.nutritional_data;
+          // Priorité: canonical_foods direct, sinon archetype's canonical_foods
+          const nutritionData = ing.canonical_foods?.nutritional_data
+            || ing.archetypes?.canonical_foods?.nutritional_data;
+
           if (nutritionData) {
             ingredientsWithNutrition++;
             // Quantité de l'ingrédient (on suppose que c'est en grammes ou on normalise)
