@@ -5,7 +5,6 @@ import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { convertWithMeta } from '@/lib/units';
 import IngredientSearchSelector from './IngredientSearchSelector';
-import NutritionFacts from '@/components/NutritionFacts';
 import './recipe-detail.css';
 import './IngredientSearchSelector.css';
 
@@ -89,6 +88,9 @@ export default function RecipeDetail() {
 
   // État pour le carrousel d'instructions
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
+
+  // État pour les données nutritionnelles
+  const [nutrition, setNutrition] = useState(null);
 
   // Préférence: ne jamais dépasser (cap l'auto-remplissage)
   const [noOverfill, setNoOverfill] = useState(true);
@@ -522,6 +524,31 @@ export default function RecipeDetail() {
     } catch (error) {
       console.error('Erreur étapes:', error);
       setRecipeSteps([]);
+    }
+
+    // Charger les données nutritionnelles
+    try {
+      console.log('🍎 Chargement des données nutritionnelles...');
+
+      const { data: nutritionData, error: nutritionError } = await supabase
+        .from('recipe_nutrition_cache')
+        .select('*')
+        .eq('recipe_id', id)
+        .maybeSingle();
+
+      if (nutritionError) {
+        console.error('❌ Erreur nutrition:', nutritionError);
+      } else if (nutritionData) {
+        console.log('✅ Données nutritionnelles chargées');
+        setNutrition({
+          calories: nutritionData.calories_per_serving,
+          proteines: nutritionData.proteines_per_serving,
+          glucides: nutritionData.glucides_per_serving,
+          lipides: nutritionData.lipides_per_serving
+        });
+      }
+    } catch (error) {
+      console.error('Erreur nutrition:', error);
     }
 
     setLoading(false);
@@ -1148,18 +1175,18 @@ export default function RecipeDetail() {
         {/* Cartes d'information condensées */}
         <div style={{
           display: 'flex',
-          gap: '12px',
-          marginBottom: '24px',
+          gap: '10px',
+          marginBottom: '16px',
           flexWrap: 'wrap'
         }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            padding: '8px 16px',
+            gap: '6px',
+            padding: '6px 12px',
             background: '#f3f4f6',
             borderRadius: '8px',
-            fontSize: '0.95rem'
+            fontSize: '0.9rem'
           }}>
             <span>⏱️</span>
             <span style={{ fontWeight: '600' }}>{totalTime} min</span>
@@ -1168,11 +1195,11 @@ export default function RecipeDetail() {
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            padding: '8px 16px',
+            gap: '6px',
+            padding: '6px 12px',
             background: '#f3f4f6',
             borderRadius: '8px',
-            fontSize: '0.95rem'
+            fontSize: '0.9rem'
           }}>
             <span>👥</span>
             <span style={{ fontWeight: '600' }}>{recipe.servings || 4} portions</span>
@@ -1181,11 +1208,11 @@ export default function RecipeDetail() {
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            padding: '8px 16px',
+            gap: '6px',
+            padding: '6px 12px',
             background: '#f3f4f6',
             borderRadius: '8px',
-            fontSize: '0.95rem'
+            fontSize: '0.9rem'
           }}>
             <span>📊</span>
             <span style={{ fontWeight: '600' }}>{recipe.myko_score}/100</span>
@@ -1194,17 +1221,74 @@ export default function RecipeDetail() {
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            padding: '8px 16px',
+            gap: '6px',
+            padding: '6px 12px',
             background: '#f3f4f6',
             borderRadius: '8px',
-            fontSize: '0.95rem'
+            fontSize: '0.9rem'
           }}>
             <span>🌱</span>
             <span style={{ fontWeight: '600' }}>
               {recipe.is_vegan ? 'Vegan' : recipe.is_vegetarian ? 'Végétarien' : 'Omnivore'}
             </span>
           </div>
+
+          {/* Badges nutritionnels */}
+          {nutrition && (
+            <>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '6px 12px',
+                background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+                borderRadius: '8px',
+                fontSize: '0.9rem'
+              }}>
+                <span>🔥</span>
+                <span style={{ fontWeight: '600' }}>{Math.round(nutrition.calories)} kcal</span>
+              </div>
+
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '6px 12px',
+                background: 'linear-gradient(135deg, #fecaca 0%, #fca5a5 100%)',
+                borderRadius: '8px',
+                fontSize: '0.9rem'
+              }}>
+                <span>🥩</span>
+                <span style={{ fontWeight: '600' }}>{nutrition.proteines.toFixed(1)}g prot.</span>
+              </div>
+
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '6px 12px',
+                background: 'linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%)',
+                borderRadius: '8px',
+                fontSize: '0.9rem'
+              }}>
+                <span>🌾</span>
+                <span style={{ fontWeight: '600' }}>{nutrition.glucides.toFixed(1)}g gluc.</span>
+              </div>
+
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '6px 12px',
+                background: 'linear-gradient(135deg, #fde047 0%, #facc15 100%)',
+                borderRadius: '8px',
+                fontSize: '0.9rem'
+              }}>
+                <span>🧈</span>
+                <span style={{ fontWeight: '600' }}>{nutrition.lipides.toFixed(1)}g lip.</span>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="recipe-body" style={{
@@ -1217,7 +1301,7 @@ export default function RecipeDetail() {
             <h2>Ingrédients ({ings.length})</h2>
             {ings.length > 0 ? (
               <ul className="ingredients-list" style={{
-                maxHeight: '400px',
+                maxHeight: '320px',
                 overflowY: 'auto',
                 paddingRight: '8px'
               }}>
@@ -1266,9 +1350,6 @@ export default function RecipeDetail() {
                 Aucun ingrédient défini pour cette recette.
               </p>
             )}
-            
-            {/* Informations Nutritionnelles */}
-            <NutritionFacts recipeId={parseInt(id)} servings={1} />
           </div>
 
           <div className="instructions-section">
@@ -1277,15 +1358,15 @@ export default function RecipeDetail() {
               {recipeSteps && recipeSteps.length > 0 ? (
                 <div className="steps-carousel" style={{
                   position: 'relative',
-                  padding: '20px 0'
+                  padding: '10px 0'
                 }}>
                   {/* Carte de l'étape actuelle */}
                   <div style={{
                     background: 'white',
                     borderRadius: '16px',
                     boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                    padding: '32px',
-                    minHeight: '200px',
+                    padding: '24px',
+                    minHeight: '140px',
                     position: 'relative',
                     border: '2px solid #f3f4f6'
                   }}>
@@ -1325,7 +1406,7 @@ export default function RecipeDetail() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    marginTop: '24px'
+                    marginTop: '16px'
                   }}>
                     <button
                       onClick={() => setCurrentStepIndex(Math.max(0, currentStepIndex - 1))}
@@ -1394,9 +1475,9 @@ export default function RecipeDetail() {
                   {/* Compteur d'étapes */}
                   <div style={{
                     textAlign: 'center',
-                    marginTop: '16px',
+                    marginTop: '12px',
                     color: '#6b7280',
-                    fontSize: '0.9rem',
+                    fontSize: '0.85rem',
                     fontWeight: '500'
                   }}>
                     Étape {currentStepIndex + 1} sur {recipeSteps.length}
