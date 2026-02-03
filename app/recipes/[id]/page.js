@@ -1,6 +1,6 @@
 // app/recipes/[id]/page.js
 'use client';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { convertWithMeta } from '@/lib/units';
@@ -91,9 +91,52 @@ export default function RecipeDetail() {
 
   // État pour les données nutritionnelles
   const [nutrition, setNutrition] = useState(null);
+  const [showDetailedNutrition, setShowDetailedNutrition] = useState(false);
+
+  // Ref pour le drag-to-scroll des ingrédients
+  const ingredientsListRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startY, setStartY] = useState(0);
+  const [scrollTop, setScrollTop] = useState(0);
 
   // Préférence: ne jamais dépasser (cap l'auto-remplissage)
   const [noOverfill, setNoOverfill] = useState(true);
+
+  // Handlers pour le drag-to-scroll des ingrédients
+  const handleMouseDown = (e) => {
+    if (!ingredientsListRef.current) return;
+    setIsDragging(true);
+    setStartY(e.pageY - ingredientsListRef.current.offsetTop);
+    setScrollTop(ingredientsListRef.current.scrollTop);
+    ingredientsListRef.current.style.cursor = 'grabbing';
+    ingredientsListRef.current.style.userSelect = 'none';
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging || !ingredientsListRef.current) return;
+    e.preventDefault();
+    const y = e.pageY - ingredientsListRef.current.offsetTop;
+    const walk = (y - startY) * 2;
+    ingredientsListRef.current.scrollTop = scrollTop - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    if (ingredientsListRef.current) {
+      ingredientsListRef.current.style.cursor = 'grab';
+      ingredientsListRef.current.style.userSelect = 'auto';
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      if (ingredientsListRef.current) {
+        ingredientsListRef.current.style.cursor = 'grab';
+        ingredientsListRef.current.style.userSelect = 'auto';
+      }
+    }
+  };
 
   // Fonctions pour l'édition
   async function loadAvailableIngredients() {
@@ -1289,7 +1332,107 @@ export default function RecipeDetail() {
               </div>
             </>
           )}
+
+          {/* Bouton pour afficher les détails nutritionnels */}
+          {nutrition && (
+            <button
+              onClick={() => setShowDetailedNutrition(!showDetailedNutrition)}
+              style={{
+                background: 'transparent',
+                border: '1px solid #d1d5db',
+                borderRadius: '8px',
+                padding: '6px 12px',
+                fontSize: '0.85rem',
+                color: '#6b7280',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                transition: 'all 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.borderColor = '#059669';
+                e.target.style.color = '#059669';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.borderColor = '#d1d5db';
+                e.target.style.color = '#6b7280';
+              }}
+            >
+              {showDetailedNutrition ? '▼' : '▶'} Détails nutritionnels
+            </button>
+          )}
         </div>
+
+        {/* Section détails nutritionnels */}
+        {nutrition && showDetailedNutrition && (
+          <div style={{
+            background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
+            borderRadius: '12px',
+            padding: '20px',
+            marginBottom: '16px',
+            border: '1px solid #bbf7d0'
+          }}>
+            <h3 style={{
+              margin: '0 0 16px 0',
+              fontSize: '1rem',
+              fontWeight: '600',
+              color: '#047857'
+            }}>
+              📊 Valeurs nutritionnelles détaillées (par portion)
+            </h3>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '12px'
+            }}>
+              <div style={{
+                background: 'white',
+                padding: '12px',
+                borderRadius: '8px',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+              }}>
+                <div style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '4px' }}>Énergie</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: '700', color: '#059669' }}>
+                  {Math.round(nutrition.calories)} <span style={{ fontSize: '0.9rem', fontWeight: '400' }}>kcal</span>
+                </div>
+              </div>
+              <div style={{
+                background: 'white',
+                padding: '12px',
+                borderRadius: '8px',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+              }}>
+                <div style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '4px' }}>Protéines</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: '700', color: '#dc2626' }}>
+                  {nutrition.proteines.toFixed(1)} <span style={{ fontSize: '0.9rem', fontWeight: '400' }}>g</span>
+                </div>
+              </div>
+              <div style={{
+                background: 'white',
+                padding: '12px',
+                borderRadius: '8px',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+              }}>
+                <div style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '4px' }}>Glucides</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: '700', color: '#7c3aed' }}>
+                  {nutrition.glucides.toFixed(1)} <span style={{ fontSize: '0.9rem', fontWeight: '400' }}>g</span>
+                </div>
+              </div>
+              <div style={{
+                background: 'white',
+                padding: '12px',
+                borderRadius: '8px',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+              }}>
+                <div style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '4px' }}>Lipides</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: '700', color: '#ca8a04' }}>
+                  {nutrition.lipides.toFixed(1)} <span style={{ fontSize: '0.9rem', fontWeight: '400' }}>g</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="recipe-body" style={{
           display: 'grid',
@@ -1300,11 +1443,25 @@ export default function RecipeDetail() {
           <div className="ingredients-section">
             <h2>Ingrédients ({ings.length})</h2>
             {ings.length > 0 ? (
-              <ul className="ingredients-list" style={{
-                maxHeight: '320px',
-                overflowY: 'auto',
-                paddingRight: '8px'
-              }}>
+              <div style={{ position: 'relative' }}>
+                <ul
+                  ref={ingredientsListRef}
+                  className="ingredients-list hide-scrollbar"
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseLeave}
+                  style={{
+                    maxHeight: '320px',
+                    overflowY: 'scroll',
+                    paddingRight: '8px',
+                    cursor: 'grab',
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none',
+                    position: 'relative',
+                    WebkitOverflowScrolling: 'touch'
+                  }}
+                >
                 {ings.map((ing, index) => {
                   // Déterminer le nom à afficher
                   const displayName = ing.name || ing.canonical_foods?.name || 'Ingrédient inconnu';
@@ -1345,6 +1502,17 @@ export default function RecipeDetail() {
                   );
                 })}
               </ul>
+              {/* Gradient pour indiquer qu'il y a plus de contenu */}
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: '40px',
+                background: 'linear-gradient(to bottom, transparent, white)',
+                pointerEvents: 'none'
+              }} />
+            </div>
             ) : (
               <p className="no-ingredients" style={{ color: '#6b7280', fontStyle: 'italic' }}>
                 Aucun ingrédient défini pour cette recette.

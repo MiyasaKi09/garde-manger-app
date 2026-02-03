@@ -634,3 +634,13 @@
   color: #6b7280;
   font-style: italic;
 }
+
+/* Masquer la scrollbar pour WebKit */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE et Edge */
+  scrollbar-width: none;  /* Firefox */
+}
