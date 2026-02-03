@@ -1,12 +1,12 @@
 # Data export summary
-_Generated: Tue Feb  3 10:57:37 UTC 2026_
+_Generated: Tue Feb  3 12:27:14 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
 - archetypes: 418 rows
 - canonical_food_origins: 0 rows
 - canonical_food_processes: 0 rows
-- canonical_foods: 234 rows
+- canonical_foods: 233 rows
 - cooked_dish_ingredients: 0 rows
 - cooked_dishes: 0 rows
 - cooking_nutrition_factors: 69 rows
