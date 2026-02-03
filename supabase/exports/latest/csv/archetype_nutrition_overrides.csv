@@ -1,0 +1,6 @@
+archetype_id,nutrition_id,reason,created_at,updated_at
+204,5970,"Beurre doux - Transformation trop complexe, utilise code CIQUAL beurre direct",2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+205,5039,Yaourt nature entier - Code CIQUAL yaourt entier spécifique,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+206,5042,"Yaourt nature 0% - Profil lipidique spécifique, code CIQUAL yaourt 0% MG",2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+207,5040,"Yaourt nature brassé - Texture différente, code CIQUAL spécifique",2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+199,5332,"Crème fraîche légère 15% MG - % MG spécifique, code CIQUAL crème 15% MG",2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00

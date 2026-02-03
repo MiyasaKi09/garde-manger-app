@@ -1,8 +1,9 @@
 # Data export summary
-_Generated: Tue Feb  3 12:27:14 UTC 2026_
+_Generated: Tue Feb  3 13:08:58 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
+- archetype_nutrition_overrides: 5 rows
 - archetypes: 418 rows
 - canonical_food_origins: 0 rows
 - canonical_food_processes: 0 rows
@@ -21,6 +22,7 @@ _Generated: Tue Feb  3 12:27:14 UTC 2026_
 - nutritional_data: 3178 rows
 - pantry_items: 0 rows
 - planned_meals: 0 rows
+- process_nutrition_modifiers: 28 rows
 - processes: 14 rows
 - products: 0 rows
 - recipe_ingredients: 12 rows

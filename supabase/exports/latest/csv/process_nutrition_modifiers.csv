@@ -1,0 +1,29 @@
+id,process_pattern,category,nutrient_name,factor_type,factor_value,description,priority,created_at,updated_at
+1,séchage|déshydrat|poudre|atomis,DRYING,calories,MULTIPLICATION,8.0,Déshydratation complète concentre calories 8x,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+2,séchage|déshydrat|poudre|atomis,DRYING,proteines,MULTIPLICATION,8.0,Déshydratation complète concentre protéines 8x,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+3,séchage|déshydrat|poudre|atomis,DRYING,glucides,MULTIPLICATION,8.0,Déshydratation complète concentre glucides 8x,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+4,séchage|déshydrat|poudre|atomis,DRYING,lipides,MULTIPLICATION,8.0,Déshydratation complète concentre lipides 8x,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+5,séchage|déshydrat|poudre|atomis,DRYING,fibres,MULTIPLICATION,8.0,Déshydratation complète concentre fibres 8x,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+6,séchage|déshydrat|poudre|atomis,DRYING,calcium,MULTIPLICATION,8.0,Minéraux concentrés par déshydratation,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+7,séchage|déshydrat|poudre|atomis,DRYING,fer,MULTIPLICATION,8.0,Minéraux concentrés par déshydratation,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+8,évaporation.*60.*eau|évaporation 60,CONCENTRATION,calories,MULTIPLICATION,2.5,Évaporation 60% eau concentre 2.5x,110,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+9,évaporation.*60.*eau|évaporation 60,CONCENTRATION,proteines,MULTIPLICATION,2.5,Évaporation 60% eau concentre 2.5x,110,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+10,évaporation.*60.*eau|évaporation 60,CONCENTRATION,glucides,MULTIPLICATION,2.5,Évaporation 60% eau concentre 2.5x,110,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+11,évaporation.*60.*eau|évaporation 60,CONCENTRATION,lipides,MULTIPLICATION,2.5,Évaporation 60% eau concentre 2.5x,110,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+12,évaporation.*60.*eau|évaporation 60,CONCENTRATION,calcium,MULTIPLICATION,2.5,Évaporation 60% eau concentre minéraux 2.5x,110,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+13,réduction|concentration|épaississement,CONCENTRATION,calories,MULTIPLICATION,2.0,Concentration générique 2x,90,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+14,réduction|concentration|épaississement,CONCENTRATION,proteines,MULTIPLICATION,2.0,Concentration générique 2x,90,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+15,réduction|concentration|épaississement,CONCENTRATION,glucides,MULTIPLICATION,2.0,Concentration générique 2x,90,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+16,réduction|concentration|épaississement,CONCENTRATION,lipides,MULTIPLICATION,2.0,Concentration générique 2x,90,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+17,fermentation lactique,FERMENTATION,proteines,MULTIPLICATION,1.05,Fermentation - légère perte eau concentre protéines 5%,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+18,fermentation lactique,FERMENTATION,glucides,MULTIPLICATION,0.95,Fermentation - consommation lactose réduit glucides 5%,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+19,fermentation lactique,FERMENTATION,calories,MULTIPLICATION,1.02,Fermentation - légère augmentation calorique nette,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+20,fermentation lactique,FERMENTATION,calcium,MULTIPLICATION,1.10,Fermentation améliore biodisponibilité calcium 10%,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+21,affinage.*\d+.*semaines|affinage.*\d+.*mois,AGING,calories,MULTIPLICATION,3.5,Affinage concentre calories 3.5x par perte eau,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+22,affinage.*\d+.*semaines|affinage.*\d+.*mois,AGING,proteines,MULTIPLICATION,3.5,Affinage concentre protéines 3.5x,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+23,affinage.*\d+.*semaines|affinage.*\d+.*mois,AGING,lipides,MULTIPLICATION,3.5,Affinage concentre matière grasse 3.5x,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+24,affinage.*\d+.*semaines|affinage.*\d+.*mois,AGING,glucides,MULTIPLICATION,3.5,Affinage concentre glucides résiduels,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+25,affinage.*\d+.*semaines|affinage.*\d+.*mois,AGING,calcium,MULTIPLICATION,8.0,Calcium très concentré dans fromages affinés,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+26,fumage|fumé,PRESERVATION,vitamine_c,RETENTION,0.85,Fumage - perte vitamine C 15%,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+27,fumage|fumé,PRESERVATION,vitamine_b1,RETENTION,0.90,Fumage - perte vitamine B1 10%,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+28,congélation|congelé|surgelé,PRESERVATION,vitamine_c,RETENTION,0.95,Congélation - perte vitamine C minimale 5%,100,2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00

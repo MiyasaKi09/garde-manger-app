@@ -1,10 +1,11 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Tue Feb  3 12:27:13 UTC 2026_
+_Généré le : Tue Feb  3 13:08:57 UTC 2026_
 
 ## Tables
 - _backup_views
+- archetype_nutrition_overrides
 - archetypes
 - canonical_food_origins
 - canonical_food_processes
@@ -23,6 +24,7 @@ _Généré le : Tue Feb  3 12:27:13 UTC 2026_
 - nutritional_data
 - pantry_items
 - planned_meals
+- process_nutrition_modifiers
 - processes
 - products
 - recipe_ingredients
@@ -51,6 +53,13 @@ _Généré le : Tue Feb  3 12:27:13 UTC 2026_
  - view_name :: text NOT NULL
  - definition :: text NOT NULL
  - dropped_at :: timestamp with time zone default now() NOT NULL
+
+### archetype_nutrition_overrides
+ - archetype_id :: bigint NOT NULL
+ - nutrition_id :: bigint NOT NULL
+ - reason :: text
+ - created_at :: timestamp with time zone default now()
+ - updated_at :: timestamp with time zone default now()
 
 ### archetypes
  - id :: bigint default nextval('archetypes_id_seq'::regclass) NOT NULL
@@ -363,6 +372,18 @@ _Généré le : Tue Feb  3 12:27:13 UTC 2026_
  - meal_date :: date NOT NULL
  - meal_type :: USER-DEFINED NOT NULL
 
+### process_nutrition_modifiers
+ - id :: bigint default nextval('process_nutrition_modifiers_id_seq'::regclass) NOT NULL
+ - process_pattern :: text NOT NULL
+ - category :: text NOT NULL
+ - nutrient_name :: text NOT NULL
+ - factor_type :: text NOT NULL
+ - factor_value :: numeric NOT NULL
+ - description :: text
+ - priority :: integer default 100
+ - created_at :: timestamp with time zone default now()
+ - updated_at :: timestamp with time zone default now()
+
 ### processes
  - id :: integer default nextval('processes_id_seq'::regclass) NOT NULL
  - name :: text NOT NULL
@@ -544,8 +565,9 @@ _Généré le : Tue Feb  3 12:27:13 UTC 2026_
 ---
 ## Clés primaires
  - _backup_views → (dropped_at, view_schema, view_name)
+ - archetype_nutrition_overrides → (archetype_id)
  - archetypes → (id)
- - canonical_food_origins → (food_id, country_id)
+ - canonical_food_origins → (country_id, food_id)
  - canonical_food_processes → (id)
  - canonical_foods → (id)
  - cooked_dish_ingredients → (id)
@@ -562,13 +584,14 @@ _Généré le : Tue Feb  3 12:27:13 UTC 2026_
  - nutritional_data → (id)
  - pantry_items → (id)
  - planned_meals → (id)
+ - process_nutrition_modifiers → (id)
  - processes → (id)
  - products → (id)
  - recipe_ingredients → (id)
  - recipe_nutrition_cache → (recipe_id)
- - recipe_pairings → (side_recipe_id, main_recipe_id)
+ - recipe_pairings → (main_recipe_id, side_recipe_id)
  - recipe_steps → (id)
- - recipe_tags → (tag_id, recipe_id)
+ - recipe_tags → (recipe_id, tag_id)
  - recipes → (id)
  - reference_categories → (id)
  - reference_subcategories → (id)
@@ -577,63 +600,67 @@ _Généré le : Tue Feb  3 12:27:13 UTC 2026_
  - unit_conversions_generic → (id)
  - unit_conversions_product → (id)
  - user_allergies → (canonical_food_id, user_id)
- - user_diets → (diet_id, user_id)
+ - user_diets → (user_id, diet_id)
  - user_health_goals → (user_id)
  - user_profiles → (user_id)
  - user_recipe_interactions → (id)
 
 ---
 ## Clés étrangères
- - archetypes.parent_archetype_id → archetypes.id  (constraint fk_parent_archetype)
+ - archetype_nutrition_overrides.nutrition_id → nutritional_data.id  (constraint archetype_nutrition_overrides_nutrition_id_fkey)
+ - archetype_nutrition_overrides.archetype_id → archetypes.id  (constraint archetype_nutrition_overrides_archetype_id_fkey)
  - archetypes.canonical_food_id → canonical_foods.id  (constraint archetypes_canonical_food_id_fkey)
+ - archetypes.parent_archetype_id → archetypes.id  (constraint fk_parent_archetype)
  - archetypes.cultivar_id → cultivars.id  (constraint archetypes_cultivar_id_fkey)
  - canonical_food_origins.food_id → canonical_foods.id  (constraint canonical_food_origins_food_id_fkey)
  - canonical_food_origins.country_id → countries.id  (constraint canonical_food_origins_country_id_fkey)
  - canonical_food_processes.process_id → processes.id  (constraint canonical_food_processes_process_id_fkey)
  - canonical_food_processes.food_id → canonical_foods.id  (constraint canonical_food_processes_food_id_fkey)
- - canonical_foods.nutrition_id → nutritional_data.id  (constraint canonical_foods_nutrition_id_fkey)
  - canonical_foods.subcategory_id → reference_subcategories.id  (constraint canonical_foods_subcategory_id_fkey)
  - canonical_foods.category_id → reference_categories.id  (constraint canonical_foods_category_id_fkey)
+ - canonical_foods.nutrition_id → nutritional_data.id  (constraint canonical_foods_nutrition_id_fkey)
  - cooked_dish_ingredients.dish_id → cooked_dishes.id  (constraint cooked_dish_ingredients_dish_id_fkey)
  - cooked_dish_ingredients.lot_id → inventory_lots.id  (constraint cooked_dish_ingredients_lot_id_fkey)
  - cooked_dishes.recipe_id → recipes.id  (constraint cooked_dishes_recipe_id_fkey)
  - cultivars.canonical_food_id → canonical_foods.id  (constraint cultivars_canonical_food_id_fkey)
  - instructions.recipe_id → recipes.id  (constraint instructions_recipe_id_fkey)
- - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fk)
- - inventory_lots.cultivar_id → cultivars.id  (constraint inventory_lots_cultivar_id_fkey)
- - inventory_lots.archetype_id → archetypes.id  (constraint inventory_lots_archetype_id_fkey)
- - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fkey)
- - inventory_lots.archetype_id → archetypes.id  (constraint inventory_lots_archetype_fk)
  - inventory_lots.cultivar_id → cultivars.id  (constraint inventory_lots_cultivar_fk)
  - inventory_lots.canonical_food_id → canonical_foods.id  (constraint inventory_lots_canonical_fk)
  - inventory_lots.canonical_food_id → canonical_foods.id  (constraint inventory_lots_canonical_food_id_fkey)
+ - inventory_lots.archetype_id → archetypes.id  (constraint inventory_lots_archetype_fk)
+ - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fkey)
+ - inventory_lots.archetype_id → archetypes.id  (constraint inventory_lots_archetype_id_fkey)
+ - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fk)
+ - inventory_lots.cultivar_id → cultivars.id  (constraint inventory_lots_cultivar_id_fkey)
  - meal_plans.user_id → legacy_users.id  (constraint meal_plans_user_id_fkey)
  - pantry_items.product_id → products.id  (constraint pantry_items_product_id_fkey)
  - pantry_items.user_id → legacy_users.id  (constraint pantry_items_user_id_fkey)
- - planned_meals.recipe_id → recipes.id  (constraint planned_meals_recipe_id_fkey)
  - planned_meals.plan_id → meal_plans.id  (constraint planned_meals_plan_id_fkey)
- - products.archetype_id → archetypes.id  (constraint products_archetype_id_fkey)
+ - planned_meals.recipe_id → recipes.id  (constraint planned_meals_recipe_id_fkey)
  - products.archetype_id → archetypes.id  (constraint products_archetype_fk)
- - recipe_ingredients.sub_recipe_id → recipes.id  (constraint recipe_ingredients_sub_recipe_fk)
+ - products.archetype_id → archetypes.id  (constraint products_archetype_id_fkey)
  - recipe_ingredients.recipe_id → recipes.id  (constraint recipe_ingredients_recipe_id_fkey)
  - recipe_ingredients.archetype_id → archetypes.id  (constraint recipe_ingredients_archetype_id_fkey)
  - recipe_ingredients.canonical_food_id → canonical_foods.id  (constraint recipe_ingredients_canonical_food_id_fkey)
+ - recipe_ingredients.sub_recipe_id → recipes.id  (constraint recipe_ingredients_sub_recipe_fk)
  - recipe_nutrition_cache.recipe_id → recipes.id  (constraint recipe_nutrition_cache_recipe_id_fkey)
  - recipe_pairings.side_recipe_id → recipes.id  (constraint recipe_pairings_side_recipe_id_fkey)
  - recipe_pairings.main_recipe_id → recipes.id  (constraint recipe_pairings_main_recipe_id_fkey)
  - recipe_steps.recipe_id → recipes.id  (constraint recipe_steps_recipe_id_fkey)
- - recipe_tags.recipe_id → recipes.id  (constraint recipe_tags_recipe_id_fkey)
  - recipe_tags.tag_id → tags.id  (constraint recipe_tags_tag_id_fkey)
+ - recipe_tags.recipe_id → recipes.id  (constraint recipe_tags_recipe_id_fkey)
  - reference_subcategories.category_id → reference_categories.id  (constraint reference_subcategories_category_id_fkey)
  - seasonality.food_id → canonical_foods.id  (constraint seasonality_food_id_fkey)
  - user_allergies.canonical_food_id → canonical_foods.id  (constraint user_allergies_canonical_food_id_fkey)
  - user_diets.diet_id → diets.id  (constraint user_diets_diet_id_fkey)
- - user_recipe_interactions.recipe_id → recipes.id  (constraint user_recipe_interactions_recipe_id_fkey)
  - user_recipe_interactions.user_id → legacy_users.id  (constraint user_recipe_interactions_user_id_fkey)
+ - user_recipe_interactions.recipe_id → recipes.id  (constraint user_recipe_interactions_recipe_id_fkey)
 
 ---
 ## Index
  - public._backup_views → _backup_views_pkey : CREATE UNIQUE INDEX _backup_views_pkey ON public._backup_views USING btree (view_schema, view_name, dropped_at)
+ - public.archetype_nutrition_overrides → archetype_nutrition_overrides_pkey : CREATE UNIQUE INDEX archetype_nutrition_overrides_pkey ON public.archetype_nutrition_overrides USING btree (archetype_id)
+ - public.archetype_nutrition_overrides → idx_archetype_nutrition_overrides_nutrition_id : CREATE INDEX idx_archetype_nutrition_overrides_nutrition_id ON public.archetype_nutrition_overrides USING btree (nutrition_id)
  - public.archetypes → archetypes_default_per_canonical : CREATE UNIQUE INDEX archetypes_default_per_canonical ON public.archetypes USING btree (canonical_food_id) WHERE ((is_default IS TRUE) AND (cultivar_id IS NULL))
  - public.archetypes → archetypes_default_per_cultivar : CREATE UNIQUE INDEX archetypes_default_per_cultivar ON public.archetypes USING btree (cultivar_id) WHERE (is_default IS TRUE)
  - public.archetypes → archetypes_pkey : CREATE UNIQUE INDEX archetypes_pkey ON public.archetypes USING btree (id)
@@ -683,6 +710,11 @@ _Généré le : Tue Feb  3 12:27:13 UTC 2026_
  - public.nutritional_data → nutritional_data_source_id_key : CREATE UNIQUE INDEX nutritional_data_source_id_key ON public.nutritional_data USING btree (source_id)
  - public.pantry_items → pantry_items_pkey : CREATE UNIQUE INDEX pantry_items_pkey ON public.pantry_items USING btree (id)
  - public.planned_meals → planned_meals_pkey : CREATE UNIQUE INDEX planned_meals_pkey ON public.planned_meals USING btree (id)
+ - public.process_nutrition_modifiers → idx_process_nutrition_modifiers_category : CREATE INDEX idx_process_nutrition_modifiers_category ON public.process_nutrition_modifiers USING btree (category)
+ - public.process_nutrition_modifiers → idx_process_nutrition_modifiers_nutrient : CREATE INDEX idx_process_nutrition_modifiers_nutrient ON public.process_nutrition_modifiers USING btree (nutrient_name)
+ - public.process_nutrition_modifiers → idx_process_nutrition_modifiers_pattern : CREATE INDEX idx_process_nutrition_modifiers_pattern ON public.process_nutrition_modifiers USING btree (process_pattern)
+ - public.process_nutrition_modifiers → process_nutrition_modifiers_pkey : CREATE UNIQUE INDEX process_nutrition_modifiers_pkey ON public.process_nutrition_modifiers USING btree (id)
+ - public.process_nutrition_modifiers → unique_pattern_nutrient : CREATE UNIQUE INDEX unique_pattern_nutrient ON public.process_nutrition_modifiers USING btree (process_pattern, nutrient_name)
  - public.processes → processes_name_key : CREATE UNIQUE INDEX processes_name_key ON public.processes USING btree (name)
  - public.processes → processes_pkey : CREATE UNIQUE INDEX processes_pkey ON public.processes USING btree (id)
  - public.products → idx_products_archetype : CREATE INDEX idx_products_archetype ON public.products USING btree (archetype_id)
@@ -737,6 +769,9 @@ _Généré le : Tue Feb  3 12:27:13 UTC 2026_
  - cooked_dishes_storage_method_check ON cooked_dishes : CHECK ((storage_method = ANY (ARRAY['fridge'::text, 'freezer'::text, 'counter'::text])))
  - inventory_lots_one_of ON inventory_lots : CHECK (((((((canonical_food_id IS NOT NULL))::integer + ((cultivar_id IS NOT NULL))::integer) + ((archetype_id IS NOT NULL))::integer) + ((product_id IS NOT NULL))::integer) = 1))
  - inventory_lots_storage_method_check ON inventory_lots : CHECK (((storage_method)::text = ANY ((ARRAY['pantry'::character varying, 'fridge'::character varying, 'freezer'::character varying])::text[])))
+ - process_nutrition_modifiers_category_check ON process_nutrition_modifiers : CHECK ((category = ANY (ARRAY['DRYING'::text, 'CONCENTRATION'::text, 'FERMENTATION'::text, 'AGING'::text, 'MECHANICAL'::text, 'PRESERVATION'::text, 'FAT_SEPARATION'::text])))
+ - process_nutrition_modifiers_factor_type_check ON process_nutrition_modifiers : CHECK ((factor_type = ANY (ARRAY['RETENTION'::text, 'MULTIPLICATION'::text, 'CONCENTRATION'::text])))
+ - process_nutrition_modifiers_factor_value_check ON process_nutrition_modifiers : CHECK ((factor_value >= (0)::numeric))
  - chk_ingredient_source ON recipe_ingredients : CHECK ((((archetype_id IS NOT NULL) AND (canonical_food_id IS NULL)) OR ((archetype_id IS NULL) AND (canonical_food_id IS NOT NULL))))
  - recipe_ing_oneof_exactly_one ON recipe_ingredients : CHECK ((((((canonical_food_id IS NOT NULL))::integer + ((archetype_id IS NOT NULL))::integer) + ((sub_recipe_id IS NOT NULL))::integer) = 1))
  - reference_categories_typical_storage_check ON reference_categories : CHECK ((typical_storage = ANY (ARRAY['fridge'::text, 'pantry'::text, 'freezer'::text, 'cellar'::text, 'varied'::text])))
