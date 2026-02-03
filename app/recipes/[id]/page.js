@@ -657,11 +657,29 @@ export default function RecipeDetail() {
           vitamine_b12: 0,
         };
 
-        ingredients.forEach(ing => {
-          const nutritionData = ing.canonical_foods?.nutritional_data;
+        let ingredientsWithNutrition = 0;
+        let ingredientsWithoutNutrition = 0;
+
+        ingredients.forEach((ing, index) => {
+          const canonicalFood = ing.canonical_foods;
+          const nutritionData = canonicalFood?.nutritional_data;
+
+          console.log(`\n🥕 Ingrédient #${index + 1}:`);
+          console.log(`   ID canonical_food: ${ing.canonical_food_id}`);
+          console.log(`   Quantité: ${ing.quantity} ${ing.unit}`);
+          console.log(`   Canonical food trouvé: ${canonicalFood ? '✓' : '✗'}`);
+          console.log(`   Données nutritionnelles: ${nutritionData ? '✓' : '✗'}`);
+
           if (nutritionData) {
+            ingredientsWithNutrition++;
             const qty = parseFloat(ing.quantity) || 100;
             const factor = qty / 100;
+
+            console.log(`   📊 Calculs nutritionnels:`);
+            console.log(`      - Facteur multiplicateur: ${factor.toFixed(2)} (${qty}g / 100g)`);
+            console.log(`      - Fibres: ${nutritionData.fibres_g || 0}g × ${factor.toFixed(2)} = ${((nutritionData.fibres_g || 0) * factor).toFixed(2)}g`);
+            console.log(`      - Calcium: ${nutritionData.calcium_mg || 0}mg × ${factor.toFixed(2)} = ${((nutritionData.calcium_mg || 0) * factor).toFixed(2)}mg`);
+            console.log(`      - Vitamine C: ${nutritionData.vitamine_c_mg || 0}mg × ${factor.toFixed(2)} = ${((nutritionData.vitamine_c_mg || 0) * factor).toFixed(2)}mg`);
 
             micro.fibres += (nutritionData.fibres_g || 0) * factor;
             micro.sucres += (nutritionData.sucres_g || 0) * factor;
@@ -683,8 +701,24 @@ export default function RecipeDetail() {
             micro.vitamine_b6 += (nutritionData.vitamine_b6_mg || 0) * factor;
             micro.vitamine_b9 += (nutritionData.vitamine_b9_ug || 0) * factor;
             micro.vitamine_b12 += (nutritionData.vitamine_b12_ug || 0) * factor;
+          } else {
+            ingredientsWithoutNutrition++;
+            console.log(`   ⚠️  Pas de données nutritionnelles disponibles`);
+            if (!canonicalFood) {
+              console.log(`   ❌ Canonical food non trouvé - vérifier la relation dans recipe_ingredients`);
+            } else if (!canonicalFood.nutrition_id) {
+              console.log(`   ❌ nutrition_id manquant dans canonical_foods`);
+            }
           }
         });
+
+        console.log(`\n📊 Résumé du calcul nutritionnel:`);
+        console.log(`   ✅ Ingrédients avec données: ${ingredientsWithNutrition}`);
+        console.log(`   ❌ Ingrédients sans données: ${ingredientsWithoutNutrition}`);
+        console.log(`   📈 Totaux calculés:`);
+        console.log(`      - Fibres: ${micro.fibres.toFixed(1)}g`);
+        console.log(`      - Calcium: ${micro.calcium.toFixed(1)}mg`);
+        console.log(`      - Vitamine C: ${micro.vitamine_c.toFixed(1)}mg`);
 
         console.log('✅ Micronutriments calculés');
         setMicronutrients(micro);
