@@ -91,6 +91,7 @@ export default function RecipeDetail() {
 
   // État pour les données nutritionnelles
   const [nutrition, setNutrition] = useState(null);
+  const [micronutrients, setMicronutrients] = useState(null);
   const [showDetailedNutrition, setShowDetailedNutrition] = useState(false);
 
   // Ref pour le drag-to-scroll des ingrédients
@@ -592,6 +593,104 @@ export default function RecipeDetail() {
       }
     } catch (error) {
       console.error('Erreur nutrition:', error);
+    }
+
+    // Charger les micronutriments depuis les ingrédients
+    try {
+      console.log('🥕 Chargement des micronutriments...');
+
+      const { data: ingredients, error: ingError } = await supabase
+        .from('recipe_ingredients')
+        .select(`
+          quantity,
+          unit,
+          canonical_food_id,
+          canonical_foods (
+            nutrition_id,
+            nutritional_data (
+              fibres_g,
+              sucres_g,
+              ag_satures_g,
+              calcium_mg,
+              fer_mg,
+              magnesium_mg,
+              potassium_mg,
+              sodium_mg,
+              zinc_mg,
+              vitamine_a_ug,
+              vitamine_c_mg,
+              vitamine_d_ug,
+              vitamine_e_mg,
+              vitamine_k_ug,
+              vitamine_b1_mg,
+              vitamine_b2_mg,
+              vitamine_b3_mg,
+              vitamine_b6_mg,
+              vitamine_b9_ug,
+              vitamine_b12_ug
+            )
+          )
+        `)
+        .eq('recipe_id', id);
+
+      if (!ingError && ingredients && ingredients.length > 0) {
+        const micro = {
+          fibres: 0,
+          sucres: 0,
+          ag_satures: 0,
+          calcium: 0,
+          fer: 0,
+          magnesium: 0,
+          potassium: 0,
+          sodium: 0,
+          zinc: 0,
+          vitamine_a: 0,
+          vitamine_c: 0,
+          vitamine_d: 0,
+          vitamine_e: 0,
+          vitamine_k: 0,
+          vitamine_b1: 0,
+          vitamine_b2: 0,
+          vitamine_b3: 0,
+          vitamine_b6: 0,
+          vitamine_b9: 0,
+          vitamine_b12: 0,
+        };
+
+        ingredients.forEach(ing => {
+          const nutritionData = ing.canonical_foods?.nutritional_data;
+          if (nutritionData) {
+            const qty = parseFloat(ing.quantity) || 100;
+            const factor = qty / 100;
+
+            micro.fibres += (nutritionData.fibres_g || 0) * factor;
+            micro.sucres += (nutritionData.sucres_g || 0) * factor;
+            micro.ag_satures += (nutritionData.ag_satures_g || 0) * factor;
+            micro.calcium += (nutritionData.calcium_mg || 0) * factor;
+            micro.fer += (nutritionData.fer_mg || 0) * factor;
+            micro.magnesium += (nutritionData.magnesium_mg || 0) * factor;
+            micro.potassium += (nutritionData.potassium_mg || 0) * factor;
+            micro.sodium += (nutritionData.sodium_mg || 0) * factor;
+            micro.zinc += (nutritionData.zinc_mg || 0) * factor;
+            micro.vitamine_a += (nutritionData.vitamine_a_ug || 0) * factor;
+            micro.vitamine_c += (nutritionData.vitamine_c_mg || 0) * factor;
+            micro.vitamine_d += (nutritionData.vitamine_d_ug || 0) * factor;
+            micro.vitamine_e += (nutritionData.vitamine_e_mg || 0) * factor;
+            micro.vitamine_k += (nutritionData.vitamine_k_ug || 0) * factor;
+            micro.vitamine_b1 += (nutritionData.vitamine_b1_mg || 0) * factor;
+            micro.vitamine_b2 += (nutritionData.vitamine_b2_mg || 0) * factor;
+            micro.vitamine_b3 += (nutritionData.vitamine_b3_mg || 0) * factor;
+            micro.vitamine_b6 += (nutritionData.vitamine_b6_mg || 0) * factor;
+            micro.vitamine_b9 += (nutritionData.vitamine_b9_ug || 0) * factor;
+            micro.vitamine_b12 += (nutritionData.vitamine_b12_ug || 0) * factor;
+          }
+        });
+
+        console.log('✅ Micronutriments calculés');
+        setMicronutrients(micro);
+      }
+    } catch (error) {
+      console.error('Erreur micronutriments:', error);
     }
 
     setLoading(false);
@@ -1371,7 +1470,9 @@ export default function RecipeDetail() {
             borderRadius: '12px',
             padding: '20px',
             marginBottom: '16px',
-            border: '1px solid #bbf7d0'
+            border: '1px solid #bbf7d0',
+            maxHeight: '70vh',
+            overflowY: 'auto'
           }}>
             <h3 style={{
               margin: '0 0 16px 0',
@@ -1381,10 +1482,13 @@ export default function RecipeDetail() {
             }}>
               📊 Valeurs nutritionnelles détaillées (par portion)
             </h3>
+
+            {/* Macronutriments principaux */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '12px'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: '12px',
+              marginBottom: '20px'
             }}>
               <div style={{
                 background: 'white',
@@ -1431,6 +1535,381 @@ export default function RecipeDetail() {
                 </div>
               </div>
             </div>
+
+            {/* Micronutriments */}
+            {micronutrients && (
+              <>
+                {/* Autres nutriments */}
+                {(micronutrients.fibres > 0 || micronutrients.sucres > 0 || micronutrients.ag_satures > 0) && (
+                  <div style={{ marginBottom: '20px' }}>
+                    <h4 style={{
+                      fontSize: '0.9rem',
+                      fontWeight: '600',
+                      color: '#047857',
+                      marginBottom: '12px',
+                      borderBottom: '1px solid #bbf7d0',
+                      paddingBottom: '8px'
+                    }}>
+                      Autres nutriments
+                    </h4>
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+                      gap: '8px'
+                    }}>
+                      {micronutrients.fibres > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Fibres</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.fibres.toFixed(1)} g
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.sucres > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Sucres</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.sucres.toFixed(1)} g
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.ag_satures > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>AG saturés</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.ag_satures.toFixed(1)} g
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Minéraux */}
+                {(micronutrients.calcium > 0 || micronutrients.fer > 0 || micronutrients.magnesium > 0 ||
+                  micronutrients.potassium > 0 || micronutrients.sodium > 0 || micronutrients.zinc > 0) && (
+                  <div style={{ marginBottom: '20px' }}>
+                    <h4 style={{
+                      fontSize: '0.9rem',
+                      fontWeight: '600',
+                      color: '#047857',
+                      marginBottom: '12px',
+                      borderBottom: '1px solid #bbf7d0',
+                      paddingBottom: '8px'
+                    }}>
+                      ⚡ Minéraux
+                    </h4>
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+                      gap: '8px'
+                    }}>
+                      {micronutrients.calcium > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Calcium</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.calcium.toFixed(1)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.fer > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Fer</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.fer.toFixed(2)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.magnesium > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Magnésium</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.magnesium.toFixed(1)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.potassium > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Potassium</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.potassium.toFixed(1)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.sodium > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Sodium</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.sodium.toFixed(1)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.zinc > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Zinc</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.zinc.toFixed(2)} mg
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Vitamines */}
+                {(micronutrients.vitamine_a > 0 || micronutrients.vitamine_c > 0 || micronutrients.vitamine_d > 0 ||
+                  micronutrients.vitamine_e > 0 || micronutrients.vitamine_k > 0 || micronutrients.vitamine_b1 > 0 ||
+                  micronutrients.vitamine_b2 > 0 || micronutrients.vitamine_b3 > 0 || micronutrients.vitamine_b6 > 0 ||
+                  micronutrients.vitamine_b9 > 0 || micronutrients.vitamine_b12 > 0) && (
+                  <div style={{ marginBottom: '20px' }}>
+                    <h4 style={{
+                      fontSize: '0.9rem',
+                      fontWeight: '600',
+                      color: '#047857',
+                      marginBottom: '12px',
+                      borderBottom: '1px solid #bbf7d0',
+                      paddingBottom: '8px'
+                    }}>
+                      🌈 Vitamines
+                    </h4>
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+                      gap: '8px'
+                    }}>
+                      {micronutrients.vitamine_a > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine A</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_a.toFixed(1)} µg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.vitamine_c > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine C</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_c.toFixed(1)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.vitamine_d > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine D</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_d.toFixed(1)} µg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.vitamine_e > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine E</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_e.toFixed(1)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.vitamine_k > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine K</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_k.toFixed(1)} µg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.vitamine_b1 > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B1</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_b1.toFixed(2)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.vitamine_b2 > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B2</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_b2.toFixed(2)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.vitamine_b3 > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B3</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_b3.toFixed(2)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.vitamine_b6 > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B6</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_b6.toFixed(2)} mg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.vitamine_b9 > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B9</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_b9.toFixed(1)} µg
+                          </span>
+                        </div>
+                      )}
+                      {micronutrients.vitamine_b12 > 0 && (
+                        <div style={{
+                          background: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '6px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B12</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                            {micronutrients.vitamine_b12.toFixed(2)} µg
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         )}
 
