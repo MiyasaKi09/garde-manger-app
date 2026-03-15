@@ -3,43 +3,21 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { useRouter } from 'next/navigation'
+import { Upload, FileSpreadsheet, Trash2, Calendar, ChevronRight } from 'lucide-react'
 
 export default function PlanningPage() {
   const router = useRouter()
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [currentWeek, setCurrentWeek] = useState(new Date())
-  const [weekDates, setWeekDates] = useState([])
-  const [planning, setPlanning] = useState({})
-  const [selectedDay, setSelectedDay] = useState(null)
+  const [imports, setImports] = useState([])
 
-  const mealTypes = [
-    { id: 'petit-dejeuner', name: 'P-déj', icon: '🌅' },
-    { id: 'dejeuner', name: 'Déj', icon: '☀️' },
-    { id: 'diner', name: 'Dîner', icon: '🌙' }
-  ]
-
-  useEffect(() => {
-    checkAuth()
-  }, [])
-
-  useEffect(() => {
-    generateWeekDates()
-  }, [currentWeek])
-
-  useEffect(() => {
-    if (user && weekDates.length > 0) {
-      loadPlanning()
-    }
-  }, [user, weekDates])
+  useEffect(() => { checkAuth() }, [])
+  useEffect(() => { if (user) loadImports() }, [user])
 
   async function checkAuth() {
     try {
       const { data: { session } } = await supabase.auth.getSession()
-      if (!session) {
-        router.push('/login')
-        return
-      }
+      if (!session) { router.push('/login'); return }
       setUser(session.user)
     } catch (error) {
       console.error('Erreur auth:', error)
@@ -49,56 +27,39 @@ export default function PlanningPage() {
     }
   }
 
-  function generateWeekDates() {
-    const dates = []
-    const startOfWeek = new Date(currentWeek)
-    startOfWeek.setDate(currentWeek.getDate() - currentWeek.getDay() + 1)
-
-    for (let i = 0; i < 7; i++) {
-      const date = new Date(startOfWeek)
-      date.setDate(startOfWeek.getDate() + i)
-      dates.push(date)
+  async function loadImports() {
+    try {
+      const res = await fetch('/api/planning/imports')
+      const data = await res.json()
+      if (data.imports) setImports(data.imports)
+    } catch (err) {
+      console.error('Erreur chargement imports:', err)
     }
-    setWeekDates(dates)
   }
 
-  async function loadPlanning() {
-    // Simuler des données
-    const mockPlanning = {}
-    weekDates.forEach(date => {
-      const dateKey = date.toISOString().split('T')[0]
-      mockPlanning[dateKey] = {
-        'petit-dejeuner': Math.random() > 0.7 ? { recipe: 'Porridge' } : null,
-        'dejeuner': Math.random() > 0.4 ? { recipe: 'Salade César' } : null,
-        'diner': Math.random() > 0.3 ? { recipe: 'Pâtes bolognaise' } : null
-      }
-    })
-    setPlanning(mockPlanning)
-  }
-
-  function navigateWeek(direction) {
-    const newWeek = new Date(currentWeek)
-    newWeek.setDate(newWeek.getDate() + (direction * 7))
-    setCurrentWeek(newWeek)
-  }
-
-  function getDayPlanning(date) {
-    const dateKey = date.toISOString().split('T')[0]
-    return planning[dateKey] || {}
-  }
-
-  function isToday(date) {
-    const today = new Date()
-    return date.toDateString() === today.toDateString()
+  async function handleDelete(importId, e) {
+    e.stopPropagation()
+    if (!confirm('Supprimer ce plan importé ?')) return
+    try {
+      await fetch(`/api/planning/imports/${importId}`, { method: 'DELETE' })
+      setImports(prev => prev.filter(i => i.id !== importId))
+    } catch (err) {
+      console.error('Erreur suppression:', err)
+    }
   }
 
   if (loading) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ textAlign: 'center' }}>
-          <div className="spinner"></div>
+          <div className="spinner" style={{
+            width: 40, height: 40, border: '3px solid #e5e7eb',
+            borderTop: '3px solid #22c55e', borderRadius: '50%',
+            animation: 'spin 1s linear infinite', margin: '0 auto 16px'
+          }}></div>
           <p>Chargement...</p>
         </div>
+        <style jsx>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
       </div>
     )
   }
@@ -106,178 +67,83 @@ export default function PlanningPage() {
   return (
     <>
       <div className="planning-container">
-        {/* En-tête */}
         <div className="header-card">
           <div className="header-content">
             <div className="header-title">
-              <h1>🗓️ Planning de la semaine</h1>
-              <p>Organisez vos repas selon vos préférences</p>
+              <h1>Planning nutritionnel</h1>
+              <p>Importez et consultez vos plans repas</p>
             </div>
-            <div className="week-navigation">
-              <button onClick={() => navigateWeek(-1)} className="nav-button">
-                ← Précédente
-              </button>
-              <div className="week-info">
-                <strong>
-                  {weekDates[0]?.getDate()} - {weekDates[6]?.getDate()}/
-                  {weekDates[6]?.getMonth() + 1}/{weekDates[6]?.getFullYear()}
-                </strong>
-              </div>
-              <button onClick={() => navigateWeek(1)} className="nav-button">
-                Suivante →
-              </button>
-            </div>
+            <button className="import-button" onClick={() => router.push('/planning/import')}>
+              <Upload size={18} />
+              Importer un plan .xlsx
+            </button>
           </div>
         </div>
 
-        {/* Grille planning */}
-        <div className="planning-grid">
-          
-          {/* En-têtes jours */}
-          <div className="grid-header">
-            <div className="meal-label-header">Repas</div>
-            {weekDates.map((date, index) => (
-              <div 
-                key={index} 
-                className={`day-header ${isToday(date) ? 'today' : ''}`}
-                onClick={() => setSelectedDay(selectedDay === date.getTime() ? null : date.getTime())}
+        {imports.length === 0 ? (
+          <div className="empty-state">
+            <FileSpreadsheet size={64} color="#d1d5db" />
+            <h3>Aucun plan importe</h3>
+            <p>Importez votre premier fichier .xlsx pour commencer</p>
+            <button className="import-button-lg" onClick={() => router.push('/planning/import')}>
+              <Upload size={20} />
+              Importer un plan
+            </button>
+          </div>
+        ) : (
+          <div className="imports-grid">
+            {imports.map(imp => (
+              <div
+                key={imp.id}
+                className="import-card"
+                onClick={() => router.push(`/planning/${imp.id}`)}
               >
-                <div className="day-name">
-                  {date.toLocaleDateString('fr-FR', { weekday: 'short' })}
+                <div className="import-icon">
+                  <Calendar size={28} color="#16a34a" />
                 </div>
-                <div className="day-number">{date.getDate()}</div>
-                {isToday(date) && <div className="today-label">Aujourd'hui</div>}
+                <div className="import-info">
+                  <div className="import-month">{imp.month_label || imp.file_name}</div>
+                  <div className="import-dates">
+                    {imp.date_range_start && imp.date_range_end
+                      ? `${new Date(imp.date_range_start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })} — ${new Date(imp.date_range_end).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}`
+                      : imp.file_name
+                    }
+                  </div>
+                  <div className="import-date">
+                    Importe le {new Date(imp.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
+                  </div>
+                </div>
+                <div className="import-actions">
+                  <button
+                    className="delete-btn"
+                    onClick={(e) => handleDelete(imp.id, e)}
+                    title="Supprimer"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                  <ChevronRight size={20} color="#9ca3af" />
+                </div>
               </div>
             ))}
           </div>
-
-          {/* Lignes des repas */}
-          {mealTypes.map(meal => (
-            <div key={meal.id} className="meal-row">
-              <div className="meal-label">
-                <div className="meal-icon">{meal.icon}</div>
-                <div className="meal-name">{meal.name}</div>
-              </div>
-
-              {weekDates.map(date => {
-                const dayPlan = getDayPlanning(date)
-                const mealPlan = dayPlan[meal.id]
-                const isSelected = selectedDay === date.getTime()
-                
-                return (
-                  <div 
-                    key={`${meal.id}-${date.getTime()}`}
-                    className={`meal-cell ${mealPlan ? 'filled' : 'empty'} ${isSelected ? 'selected' : ''}`}
-                    onClick={() => setSelectedDay(selectedDay === date.getTime() ? null : date.getTime())}
-                  >
-                    {mealPlan ? (
-                      <div className="meal-content">
-                        <div className="recipe-name">{mealPlan.recipe}</div>
-                        <div className="status-dot"></div>
-                      </div>
-                    ) : (
-                      <div className="empty-meal">+ Ajouter</div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-          ))}
-        </div>
-
-        {/* Détails jour sélectionné */}
-        {selectedDay && (
-          <div className="day-details">
-            <div className="details-header">
-              <h3>
-                📅 {new Date(selectedDay).toLocaleDateString('fr-FR', { 
-                  weekday: 'long', 
-                  day: 'numeric', 
-                  month: 'long' 
-                })}
-              </h3>
-              <button onClick={() => setSelectedDay(null)} className="close-button">
-                ✕
-              </button>
-            </div>
-
-            <div className="meals-detail-grid">
-              {mealTypes.map(meal => {
-                const dayPlan = getDayPlanning(new Date(selectedDay))
-                const mealPlan = dayPlan[meal.id]
-                
-                return (
-                  <div key={meal.id} className={`meal-detail-card ${mealPlan ? 'has-recipe' : 'no-recipe'}`}>
-                    <div className="meal-detail-header">
-                      <span className="meal-detail-icon">{meal.icon}</span>
-                      <span className="meal-detail-name">{meal.name}</span>
-                    </div>
-                    
-                    {mealPlan ? (
-                      <div className="recipe-details">
-                        <div className="recipe-title">{mealPlan.recipe}</div>
-                        <div className="recipe-actions">
-                          <button className="action-button modify">Modifier</button>
-                          <button className="action-button remove">Retirer</button>
-                        </div>
-                      </div>
-                    ) : (
-                      <button className="add-recipe-button">
-                        + Choisir une recette
-                      </button>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-          </div>
         )}
-
-        {/* Statistiques */}
-        <div className="stats-grid">
-          <div className="stats-card">
-            <h4>📊 Cette semaine</h4>
-            <div className="stat-item">
-              <span>Repas planifiés :</span>
-              <span className="stat-value">
-                {Object.values(planning).reduce((total, day) => 
-                  total + Object.values(day).filter(meal => meal?.recipe).length, 0
-                )} / 21
-              </span>
-            </div>
-          </div>
-
-          <div className="stats-card">
-            <h4>🎯 Actions</h4>
-            <button className="action-button-full">Planifier automatiquement</button>
-            <button className="action-button-full">Générer liste courses</button>
-          </div>
-
-          <div className="stats-card">
-            <h4>🌿 Score Myko</h4>
-            <div className="score">85/100</div>
-            <div className="score-details">Excellent équilibre</div>
-          </div>
-        </div>
       </div>
 
       <style jsx>{`
         .planning-container {
           padding: 20px;
+          max-width: 800px;
+          margin: 0 auto;
           font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         .header-card {
           background: rgba(255, 255, 255, 0.25);
           backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
           border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 16px;
           padding: 24px;
           margin-bottom: 24px;
-          max-width: 1200px;
-          margin-left: auto;
-          margin-right: auto;
         }
 
         .header-content {
@@ -285,446 +151,158 @@ export default function PlanningPage() {
           justify-content: space-between;
           align-items: center;
           flex-wrap: wrap;
-          gap: 20px;
+          gap: 16px;
         }
 
         .header-title h1 {
           font-size: 28px;
           font-weight: bold;
           color: #1f2937;
-          margin: 0 0 8px 0;
+          margin: 0 0 4px;
         }
 
         .header-title p {
           color: #6b7280;
           margin: 0;
+          font-size: 14px;
         }
 
-        .week-navigation {
+        .import-button {
           display: flex;
           align-items: center;
-          gap: 16px;
-        }
-
-        .nav-button {
-          background: rgba(255, 255, 255, 0.2);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          border-radius: 8px;
-          padding: 8px 16px;
-          cursor: pointer;
-          transition: all 0.2s;
-          color: #374151;
-          font-weight: 500;
-        }
-
-        .nav-button:hover {
-          background: rgba(255, 255, 255, 0.4);
-        }
-
-        .week-info {
-          text-align: center;
-          color: #374151;
-          font-size: 16px;
-        }
-
-        .planning-grid {
-          background: rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 16px;
-          padding: 20px;
-          margin-bottom: 24px;
-          max-width: 1200px;
-          margin-left: auto;
-          margin-right: auto;
-          overflow-x: auto;
-        }
-
-        .grid-header {
-          display: grid;
-          grid-template-columns: 120px repeat(7, 1fr);
           gap: 8px;
-          margin-bottom: 16px;
-        }
-
-        .meal-label-header {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 12px;
-          font-weight: 600;
-          color: #374151;
-        }
-
-        .day-header {
-          background: rgba(255, 255, 255, 0.5);
-          border-radius: 8px;
-          padding: 8px;
-          text-align: center;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-
-        .day-header:hover {
-          background: rgba(255, 255, 255, 0.7);
-        }
-
-        .day-header.today {
-          background: #dcfce7;
-          border: 2px solid #22c55e;
-        }
-
-        .day-name {
-          font-size: 12px;
-          color: #6b7280;
-          font-weight: 500;
-        }
-
-        .day-number {
-          font-size: 18px;
-          font-weight: bold;
-          color: #1f2937;
-        }
-
-        .today-label {
-          font-size: 10px;
-          color: #16a34a;
-          font-weight: 600;
-        }
-
-        .meal-row {
-          display: grid;
-          grid-template-columns: 120px repeat(7, 1fr);
-          gap: 8px;
-          margin-bottom: 8px;
-        }
-
-        .meal-label {
-          background: rgba(255, 255, 255, 0.4);
-          border-radius: 8px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 12px;
-          min-height: 80px;
-        }
-
-        .meal-icon {
-          font-size: 20px;
-          margin-bottom: 4px;
-        }
-
-        .meal-name {
-          font-size: 12px;
-          font-weight: 600;
-          color: #374151;
-          text-align: center;
-        }
-
-        .meal-cell {
-          border: 2px dashed #d1d5db;
-          border-radius: 8px;
-          min-height: 80px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.2s;
-          padding: 8px;
-        }
-
-        .meal-cell.filled {
-          border-color: #22c55e;
-          background: rgba(34, 197, 94, 0.1);
-        }
-
-        .meal-cell.empty:hover {
-          border-color: #22c55e;
-          background: rgba(34, 197, 94, 0.05);
-        }
-
-        .meal-cell.selected {
-          box-shadow: 0 0 0 2px #3b82f6;
-        }
-
-        .meal-content {
-          text-align: center;
-          width: 100%;
-        }
-
-        .recipe-name {
-          font-size: 11px;
-          font-weight: 600;
-          color: #16a34a;
-          line-height: 1.2;
-          margin-bottom: 4px;
-        }
-
-        .status-dot {
-          width: 6px;
-          height: 6px;
-          background: #22c55e;
-          border-radius: 50%;
-          margin: 0 auto;
-        }
-
-        .empty-meal {
-          color: #9ca3af;
-          font-size: 12px;
-          font-weight: 500;
-        }
-
-        .day-details {
-          background: rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 16px;
-          padding: 24px;
-          margin-bottom: 24px;
-          max-width: 1200px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        .details-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 20px;
-        }
-
-        .details-header h3 {
-          font-size: 20px;
-          font-weight: bold;
-          color: #1f2937;
-          margin: 0;
-        }
-
-        .close-button {
-          background: none;
+          padding: 10px 20px;
+          background: #16a34a;
+          color: white;
           border: none;
-          font-size: 20px;
-          color: #6b7280;
+          border-radius: 10px;
+          font-size: 14px;
+          font-weight: 600;
           cursor: pointer;
-          padding: 8px;
-          border-radius: 4px;
+          transition: background 0.2s;
         }
 
-        .close-button:hover {
-          background: rgba(0, 0, 0, 0.05);
-          color: #374151;
-        }
+        .import-button:hover { background: #15803d; }
 
-        .meals-detail-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 16px;
-        }
-
-        .meal-detail-card {
-          border: 2px dashed #d1d5db;
-          border-radius: 12px;
-          padding: 16px;
+        .empty-state {
+          background: rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 16px;
+          padding: 60px 24px;
           text-align: center;
         }
 
-        .meal-detail-card.has-recipe {
-          border-color: #22c55e;
-          background: rgba(34, 197, 94, 0.05);
-        }
-
-        .meal-detail-header {
-          margin-bottom: 16px;
-        }
-
-        .meal-detail-icon {
-          font-size: 24px;
-          margin-right: 8px;
-        }
-
-        .meal-detail-name {
-          font-weight: 600;
+        .empty-state h3 {
+          font-size: 20px;
           color: #374151;
+          margin: 16px 0 8px;
         }
 
-        .recipe-details {
+        .empty-state p {
+          color: #9ca3af;
+          margin: 0 0 24px;
+        }
+
+        .import-button-lg {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 14px 28px;
+          background: #16a34a;
+          color: white;
+          border: none;
+          border-radius: 12px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+        }
+
+        .import-button-lg:hover { background: #15803d; }
+
+        .imports-grid {
           display: flex;
           flex-direction: column;
           gap: 12px;
         }
 
-        .recipe-title {
-          font-weight: 600;
-          color: #16a34a;
-          font-size: 16px;
-        }
-
-        .recipe-actions {
+        .import-card {
           display: flex;
-          gap: 8px;
-        }
-
-        .action-button {
-          flex: 1;
-          padding: 8px 12px;
-          border: none;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 12px;
-          font-weight: 500;
-          transition: all 0.2s;
-        }
-
-        .action-button.modify {
-          background: #dbeafe;
-          color: #1d4ed8;
-        }
-
-        .action-button.modify:hover {
-          background: #bfdbfe;
-        }
-
-        .action-button.remove {
-          background: #fee2e2;
-          color: #dc2626;
-        }
-
-        .action-button.remove:hover {
-          background: #fecaca;
-        }
-
-        .add-recipe-button {
-          width: 100%;
-          padding: 12px 16px;
-          background: rgba(255, 255, 255, 0.6);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          border-radius: 8px;
-          cursor: pointer;
-          font-weight: 500;
-          transition: all 0.2s;
-          color: #374151;
-        }
-
-        .add-recipe-button:hover {
-          background: rgba(255, 255, 255, 0.8);
-        }
-
-        .stats-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 20px;
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        .stats-card {
+          align-items: center;
+          gap: 16px;
           background: rgba(255, 255, 255, 0.25);
           backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
           border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 12px;
-          padding: 20px;
-        }
-
-        .stats-card h4 {
-          margin: 0 0 16px 0;
-          font-weight: 600;
-          color: #374151;
-        }
-
-        .stat-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          font-size: 14px;
-          color: #6b7280;
-        }
-
-        .stat-value {
-          font-weight: 600;
-          color: #16a34a;
-        }
-
-        .action-button-full {
-          width: 100%;
-          padding: 8px 12px;
-          margin-bottom: 8px;
-          background: #f0f9ff;
-          border: 1px solid #0ea5e9;
-          color: #0ea5e9;
-          border-radius: 6px;
+          padding: 16px 20px;
           cursor: pointer;
-          font-weight: 500;
           transition: all 0.2s;
         }
 
-        .action-button-full:hover {
-          background: #e0f7fa;
+        .import-card:hover {
+          background: rgba(255, 255, 255, 0.4);
+          border-color: #16a34a;
         }
 
-        .score {
-          font-size: 32px;
-          font-weight: bold;
+        .import-icon {
+          flex-shrink: 0;
+          width: 48px;
+          height: 48px;
+          background: rgba(34, 197, 94, 0.1);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .import-info {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .import-month {
+          font-size: 18px;
+          font-weight: 600;
+          color: #1f2937;
+        }
+
+        .import-dates {
+          font-size: 14px;
           color: #16a34a;
-          text-align: center;
-          margin-bottom: 8px;
+          margin-top: 2px;
         }
 
-        .score-details {
-          text-align: center;
+        .import-date {
           font-size: 12px;
-          color: #16a34a;
+          color: #9ca3af;
+          margin-top: 4px;
         }
 
-        .spinner {
-          width: 40px;
-          height: 40px;
-          border: 3px solid #e5e7eb;
-          border-top: 3px solid #22c55e;
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
-          margin: 0 auto 16px;
+        .import-actions {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-shrink: 0;
         }
 
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+        .delete-btn {
+          background: none;
+          border: none;
+          color: #d1d5db;
+          cursor: pointer;
+          padding: 6px;
+          border-radius: 6px;
+          transition: all 0.2s;
+        }
+
+        .delete-btn:hover {
+          color: #dc2626;
+          background: rgba(220, 38, 38, 0.1);
         }
 
         @media (max-width: 768px) {
-          .planning-container {
-            padding: 10px;
-          }
-
-          .grid-header, .meal-row {
-            grid-template-columns: 80px repeat(7, minmax(60px, 1fr));
-          }
-
-          .meal-label {
-            padding: 8px 4px;
-            min-height: 60px;
-          }
-
-          .meal-cell {
-            min-height: 60px;
-            padding: 4px;
-          }
-
-          .recipe-name {
-            font-size: 10px;
-          }
-
-          .header-content {
-            flex-direction: column;
-            text-align: center;
-          }
-
-          .meals-detail-grid {
-            grid-template-columns: 1fr;
-          }
+          .header-content { flex-direction: column; text-align: center; }
+          .import-card { flex-wrap: wrap; }
         }
       `}</style>
     </>
