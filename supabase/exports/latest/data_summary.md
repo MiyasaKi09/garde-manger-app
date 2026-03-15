@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Sun Mar 15 18:15:30 UTC 2026_
+_Generated: Sun Mar 15 19:28:16 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -19,6 +19,12 @@ _Generated: Sun Mar 15 18:15:30 UTC 2026_
 - legacy_users: 0 rows
 - locations: 3 rows
 - meal_plans: 0 rows
+- nutrition_plan_batch_recipes: 0 rows
+- nutrition_plan_daily_totals: 0 rows
+- nutrition_plan_imports: 0 rows
+- nutrition_plan_meals: 0 rows
+- nutrition_plan_prep_tasks: 0 rows
+- nutrition_plan_shopping_items: 0 rows
 - nutritional_data: 3178 rows
 - pantry_items: 0 rows
 - planned_meals: 0 rows
