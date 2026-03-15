@@ -1,148 +1,148 @@
 id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g,carbs_g,fat_g,fiber_g
-409,3,Zoé,2026-03-26,dejeuner,,Chili con carne + riz basmati,478.0,30.0,66.0,8.0,5.0
-295,3,Julien,2026-03-16,dejeuner,Séance A (Poussée),Bolognaise + pâtes + lentilles + pain complet + 50g poulet grillé,765.0,60.0,86.0,16.0,12.0
-296,3,Julien,2026-03-16,diner,Séance A (Poussée),Cabillaud + PDT vapeur + poireaux + pain complet,618.0,57.0,64.0,12.0,10.0
-297,3,Julien,2026-03-16,pdj,Séance A (Poussée),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-298,3,Julien,2026-03-16,collation,Séance A (Poussée),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
-299,3,Julien,2026-03-17,dejeuner,Marche active,Lasagnes bolognaise (bolo+pâtes+emmental) + 50g poulet grillé,654.0,56.0,52.0,21.0,6.0
-300,3,Julien,2026-03-17,diner,Marche active,Omelette champignons-emmental + mâche + pain complet,610.0,44.0,25.0,35.0,6.0
-301,3,Julien,2026-03-17,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-302,3,Julien,2026-03-17,collation,Marche active,樂 Collation (B): 2 œufs durs + 170g poire + 20g amandes,383.0,20.0,21.0,23.0,8.0
-303,3,Julien,2026-03-18,dejeuner,Séance B (Bas du corps),Salade lentilles + poulet grillé + carottes + pain complet + 50g poulet grillé,654.0,68.0,50.0,17.0,12.0
-304,3,Julien,2026-03-18,diner,Séance B (Bas du corps),Escalope de dinde + purée + brocoli + pain complet,741.0,73.0,57.0,22.0,10.0
-305,3,Julien,2026-03-18,pdj,Séance B (Bas du corps),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-306,3,Julien,2026-03-18,collation,Séance B (Bas du corps),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
-307,3,Julien,2026-03-19,dejeuner,Marche active,Tikka masala poulet + riz basmati + naan + 50g poulet grillé,703.0,54.0,80.0,17.0,4.0
-308,3,Julien,2026-03-19,diner,Marche active,Pavé de saumon + PDT rôties + endives braisées + pain complet,814.0,49.0,62.0,39.0,10.0
-309,3,Julien,2026-03-19,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-310,3,Julien,2026-03-19,collation,Marche active,樂 Collation (B): 2 œufs durs + 130g kiwi + 20g amandes,374.0,21.0,16.0,23.0,6.0
-311,3,Julien,2026-03-20,dejeuner,Séance C (Tirage+Core),Tikka masala poulet + semoule + 50g poulet grillé,537.0,51.0,48.0,13.0,4.0
-312,3,Julien,2026-03-20,diner,Séance C (Tirage+Core),Steak haché 5% + PDT sautées + mâche + pain complet,708.0,59.0,58.0,25.0,7.0
-313,3,Julien,2026-03-20,pdj,Séance C (Tirage+Core),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-314,3,Julien,2026-03-20,collation,Séance C (Tirage+Core),樂 Collation (C): 180g pomme + 15g amandes,189.0,4.0,23.0,8.0,5.0
-315,3,Julien,2026-03-21,dejeuner,Activité libre,Burger maison (steak+pain+salade+ketchup+emmental) + frites four,832.0,51.0,91.0,28.0,7.0
-316,3,Julien,2026-03-21,diner,Activité libre,Carbonara (pâtes+lardons dinde+parmesan+œuf),635.0,47.0,52.0,26.0,4.0
-317,3,Julien,2026-03-21,pdj,Activité libre,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-318,3,Julien,2026-03-21,collation,Activité libre,樂 Collation (B): 2 œufs durs + 200g orange + 20g amandes,388.0,21.0,20.0,23.0,6.0
-319,3,Julien,2026-03-22,dejeuner,Repos actif,Croque-monsieur (pain mie+jambon+emmental) + salade,524.0,30.0,41.0,25.0,3.0
-320,3,Julien,2026-03-22,diner,Repos actif,Soupe poireaux-PDT + tartines jambon-gruyère,524.0,30.0,61.0,16.0,10.0
-321,3,Julien,2026-03-22,pdj,Repos actif,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-322,3,Julien,2026-03-22,collation,Repos actif,樂 Collation (DIM): 30g noix + 1 pomme + 30g beurre cacahuète + 30g pain complet,542.0,15.0,37.0,36.0,8.0
-323,3,Julien,2026-03-23,dejeuner,Séance A (Poussée),Blanquette de poulet + riz basmati + pain complet + 50g poulet grillé,710.0,51.0,75.0,21.0,7.0
-324,3,Julien,2026-03-23,diner,Séance A (Poussée),Lieu noir poêlé + PDT vapeur + haricots verts + pain complet,624.0,60.0,66.0,12.0,11.0
-325,3,Julien,2026-03-23,pdj,Séance A (Poussée),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-326,3,Julien,2026-03-23,collation,Séance A (Poussée),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
-327,3,Julien,2026-03-24,dejeuner,Marche active,Blanquette de poulet + pâtes complètes + 50g poulet grillé,650.0,53.0,59.0,22.0,9.0
-328,3,Julien,2026-03-24,diner,Marche active,Bœuf émincé + carottes Vichy + mâche + pain complet,635.0,63.0,37.0,25.0,9.0
-329,3,Julien,2026-03-24,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-330,3,Julien,2026-03-24,collation,Marche active,樂 Collation (B): 2 œufs durs + 150g clementine + 20g amandes,369.0,20.0,17.0,23.0,5.0
-331,3,Julien,2026-03-25,dejeuner,Séance B (Bas du corps),Salade pois chiches + poulet + betteraves + pain complet + 50g poulet grillé,713.0,69.0,53.0,21.0,12.0
-332,3,Julien,2026-03-25,diner,Séance B (Bas du corps),Escalope dinde + PDT grenaille rôties + chou-fleur + pain complet,748.0,71.0,63.0,22.0,10.0
-333,3,Julien,2026-03-25,pdj,Séance B (Bas du corps),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-334,3,Julien,2026-03-25,collation,Séance B (Bas du corps),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
-335,3,Julien,2026-03-26,dejeuner,Marche active,Chili con carne + riz basmati + pain complet + 50g poulet grillé,690.0,51.0,82.0,14.0,9.0
-336,3,Julien,2026-03-26,diner,Marche active,Pavé de saumon + purée + navets glacés + pain complet,774.0,48.0,55.0,37.0,7.0
-337,3,Julien,2026-03-26,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-338,3,Julien,2026-03-26,collation,Marche active,樂 Collation (B): 2 œufs durs + 170g poire + 20g amandes,383.0,20.0,21.0,23.0,8.0
-339,3,Julien,2026-03-27,dejeuner,Séance C (Tirage+Core),Chili con carne + PDT rôties + 50g poulet grillé,590.0,47.0,53.0,19.0,10.0
-340,3,Julien,2026-03-27,diner,Séance C (Tirage+Core),Poulet grillé + endives braisées + mâche + pain complet,517.0,62.0,23.0,17.0,6.0
-341,3,Julien,2026-03-27,pdj,Séance C (Tirage+Core),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-342,3,Julien,2026-03-27,collation,Séance C (Tirage+Core),樂 Collation (C): 130g kiwi + 15g amandes,170.0,4.0,15.0,9.0,6.0
-343,3,Julien,2026-03-28,dejeuner,Activité libre,Fish & chips au four (cabillaud pané + frites),731.0,48.0,78.0,24.0,7.0
-344,3,Julien,2026-03-28,diner,Activité libre,Galettes sarrasin jambon-gruyère-œuf,508.0,40.0,32.0,24.0,3.0
-345,3,Julien,2026-03-28,pdj,Activité libre,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-346,3,Julien,2026-03-28,collation,Activité libre,樂 Collation (B): 2 œufs durs + 180g pomme + 20g amandes,392.0,20.0,24.0,23.0,6.0
-347,3,Julien,2026-03-29,dejeuner,Repos actif,"Pizza maison (pâte, passata, mozzarella, jambon, champignons)",603.0,33.0,63.0,23.0,4.0
-348,3,Julien,2026-03-29,diner,Repos actif,"Wraps poulet + crudités (carottes, mâche)",506.0,46.0,41.0,16.0,4.0
-349,3,Julien,2026-03-29,pdj,Repos actif,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-350,3,Julien,2026-03-29,collation,Repos actif,樂 Collation (DIM): 30g noix + 1 pomme + 30g beurre cacahuète + 30g pain complet,542.0,15.0,37.0,36.0,8.0
-351,3,Julien,2026-03-30,dejeuner,Séance A (Poussée),Tajine poulet + semoule + pois chiches + pain complet + 50g poulet grillé,744.0,54.0,78.0,21.0,12.0
-352,3,Julien,2026-03-30,diner,Séance A (Poussée),Cabillaud + PDT vapeur + brocoli + pain complet,627.0,60.0,64.0,12.0,11.0
-353,3,Julien,2026-03-30,pdj,Séance A (Poussée),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-354,3,Julien,2026-03-30,collation,Séance A (Poussée),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
-355,3,Julien,2026-03-31,dejeuner,Marche active,Tajine poulet + riz basmati + 50g poulet grillé,601.0,45.0,63.0,18.0,5.0
-356,3,Julien,2026-03-31,diner,Marche active,Filet de porc grillé + chou vert sauté + PDT rôties + pain complet,737.0,66.0,61.0,24.0,11.0
-357,3,Julien,2026-03-31,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-358,3,Julien,2026-03-31,collation,Marche active,樂 Collation (B): 2 œufs durs + 200g orange + 20g amandes,388.0,21.0,20.0,23.0,6.0
-359,3,Julien,2026-04-01,dejeuner,Séance B (Bas du corps),Taboulé semoule + poulet + carottes + lentilles + pain complet + 50g poulet grillé,745.0,67.0,72.0,17.0,10.0
-360,3,Julien,2026-04-01,diner,Séance B (Bas du corps),Escalope dinde + PDT sautées + haricots verts + pain complet,803.0,72.0,66.0,26.0,11.0
-361,3,Julien,2026-04-01,pdj,Séance B (Bas du corps),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-362,3,Julien,2026-04-01,collation,Séance B (Bas du corps),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
-363,3,Julien,2026-04-02,dejeuner,Marche active,Curry chou-fleur pois chiches + riz basmati + naan + 50g poulet grillé,671.0,30.0,94.0,18.0,9.0
-364,3,Julien,2026-04-02,diner,Marche active,Pavé de saumon + PDT grenaille rôties + poireaux + pain complet,835.0,50.0,64.0,39.0,11.0
-365,3,Julien,2026-04-02,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-366,3,Julien,2026-04-02,collation,Marche active,樂 Collation (B): 2 œufs durs + 150g clementine + 20g amandes,369.0,20.0,17.0,23.0,5.0
-367,3,Julien,2026-04-03,dejeuner,Séance C (Tirage+Core),Curry chou-fleur pois chiches + pâtes complètes + 50g poulet grillé,579.0,32.0,72.0,16.0,13.0
-368,3,Julien,2026-04-03,diner,Séance C (Tirage+Core),Steak haché 5% + frites four + endives braisées + pain complet,822.0,59.0,78.0,29.0,10.0
-369,3,Julien,2026-04-03,pdj,Séance C (Tirage+Core),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-370,3,Julien,2026-04-03,collation,Séance C (Tirage+Core),樂 Collation (C): 170g poire + 15g amandes,180.0,4.0,20.0,8.0,7.0
-371,3,Julien,2026-04-04,dejeuner,Activité libre,Gratin dauphinois + jambon + salade verte,479.0,29.0,47.0,19.0,4.0
-372,3,Julien,2026-04-04,diner,Activité libre,Croque-monsieur (pain mie+jambon+emmental) + salade,530.0,34.0,41.0,24.0,3.0
-373,3,Julien,2026-04-04,pdj,Activité libre,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-374,3,Julien,2026-04-04,collation,Activité libre,樂 Collation (B): 2 œufs durs + 130g kiwi + 20g amandes,374.0,21.0,16.0,23.0,6.0
-375,3,Julien,2026-04-05,dejeuner,Repos actif,Galettes sarrasin œuf-jambon-gruyère + salade,516.0,34.0,33.0,27.0,4.0
-376,3,Julien,2026-04-05,diner,Repos actif,Soupe carottes-poireaux + tartines jambon-emmental,503.0,30.0,56.0,15.0,12.0
-377,3,Julien,2026-04-05,pdj,Repos actif,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
-378,3,Julien,2026-04-05,collation,Repos actif,樂 Collation (DIM): 30g noix + 1 pomme + 30g beurre cacahuète + 30g pain complet,542.0,15.0,37.0,36.0,8.0
-379,3,Zoé,2026-03-16,dejeuner,,Bolognaise + pâtes + lentilles,530.0,36.0,68.0,10.0,8.0
-380,3,Zoé,2026-03-16,diner,,Cabillaud + PDT vapeur + poireaux,545.0,47.0,61.0,11.0,9.0
-381,3,Zoé,2026-03-16,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
-382,3,Zoé,2026-03-17,dejeuner,,Lasagnes bolognaise (bolo+pâtes+emmental),516.0,35.0,56.0,15.0,5.0
-383,3,Zoé,2026-03-17,diner,,Omelette champignons + mâche,462.0,33.0,24.0,25.0,4.0
-384,3,Zoé,2026-03-17,collation,,樂 Collation: 2 œufs durs + 170g poire,257.0,16.0,20.0,12.0,5.0
-385,3,Zoé,2026-03-18,dejeuner,,Salade lentilles + poulet grillé + carottes,461.0,43.0,40.0,12.0,8.0
-386,3,Zoé,2026-03-18,diner,,Escalope de dinde + purée + brocoli,633.0,57.0,55.0,19.0,9.0
-387,3,Zoé,2026-03-18,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
-388,3,Zoé,2026-03-19,dejeuner,,Tikka masala poulet + riz basmati,448.0,31.0,58.0,9.0,3.0
-389,3,Zoé,2026-03-19,diner,,Pavé de saumon + PDT rôties + endives,681.0,40.0,57.0,31.0,8.0
-390,3,Zoé,2026-03-19,collation,,樂 Collation: 2 œufs durs + 130g kiwi,247.0,16.0,15.0,13.0,4.0
-391,3,Zoé,2026-03-20,dejeuner,,Tikka masala poulet + semoule,433.0,32.0,53.0,9.0,3.0
-392,3,Zoé,2026-03-20,diner,,Steak haché 5% + PDT sautées + mâche,594.0,47.0,54.0,20.0,6.0
-393,3,Zoé,2026-03-20,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
-394,3,Zoé,2026-03-21,dejeuner,,Burger maison + frites four,709.0,40.0,85.0,22.0,6.0
-395,3,Zoé,2026-03-21,diner,,Carbonara (pâtes+lardons dinde+parmesan+œuf),610.0,41.0,63.0,21.0,6.0
-396,3,Zoé,2026-03-21,collation,,樂 Collation: 2 œufs durs + 180g pomme,265.0,16.0,22.0,12.0,4.0
-397,3,Zoé,2026-03-22,dejeuner,,Croque-monsieur + salade,457.0,24.0,45.0,19.0,3.0
-398,3,Zoé,2026-03-22,diner,,Soupe poireaux-PDT + tartines jambon-gruyère,543.0,29.0,71.0,14.0,11.0
-399,3,Zoé,2026-03-22,collation,,樂 Collation: 200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
-400,3,Zoé,2026-03-23,dejeuner,,Blanquette de poulet + riz basmati,490.0,29.0,60.0,14.0,3.0
-401,3,Zoé,2026-03-23,diner,,Lieu noir + PDT vapeur + haricots verts,550.0,49.0,63.0,10.0,10.0
-402,3,Zoé,2026-03-23,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
-403,3,Zoé,2026-03-24,dejeuner,,Blanquette de poulet + pâtes complètes,525.0,34.0,62.0,16.0,7.0
-404,3,Zoé,2026-03-24,diner,,Bœuf émincé + carottes Vichy + mâche,515.0,50.0,34.0,19.0,8.0
-405,3,Zoé,2026-03-24,collation,,樂 Collation: 2 œufs durs + 150g clementine,242.0,16.0,16.0,12.0,2.0
-406,3,Zoé,2026-03-25,dejeuner,,Salade pois chiches + poulet + betteraves,507.0,44.0,42.0,15.0,8.0
-407,3,Zoé,2026-03-25,diner,,Escalope dinde + PDT grenaille + chou-fleur,628.0,55.0,58.0,18.0,9.0
-408,3,Zoé,2026-03-25,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
-410,3,Zoé,2026-03-26,diner,,Pavé de saumon + purée + navets,640.0,39.0,52.0,29.0,6.0
-411,3,Zoé,2026-03-26,collation,,樂 Collation: 2 œufs durs + 170g poire,257.0,16.0,20.0,12.0,5.0
-412,3,Zoé,2026-03-27,dejeuner,,Chili con carne + PDT rôties,483.0,29.0,58.0,14.0,8.0
-413,3,Zoé,2026-03-27,diner,,Poulet grillé + endives + mâche,448.0,50.0,26.0,14.0,6.0
-414,3,Zoé,2026-03-27,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
-415,3,Zoé,2026-03-28,dejeuner,,Fish & chips au four (cabillaud pané + frites),631.0,38.0,76.0,19.0,6.0
-416,3,Zoé,2026-03-28,diner,,Galettes sarrasin jambon-gruyère-œuf,501.0,35.0,45.0,19.0,5.0
-417,3,Zoé,2026-03-28,collation,,樂 Collation: 2 œufs durs + 200g orange,262.0,17.0,19.0,12.0,4.0
-418,3,Zoé,2026-03-29,dejeuner,,Pizza maison,529.0,26.0,63.0,18.0,3.0
-419,3,Zoé,2026-03-29,diner,,Wraps poulet + crudités,505.0,40.0,53.0,14.0,6.0
-420,3,Zoé,2026-03-29,collation,,樂 Collation: 200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
-421,3,Zoé,2026-03-30,dejeuner,,Tajine poulet + semoule + pois chiches,510.0,31.0,62.0,13.0,7.0
-422,3,Zoé,2026-03-30,diner,,Cabillaud + PDT vapeur + brocoli,552.0,49.0,61.0,11.0,10.0
-423,3,Zoé,2026-03-30,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
-424,3,Zoé,2026-03-31,dejeuner,,Tajine poulet + riz basmati,483.0,27.0,66.0,12.0,4.0
-425,3,Zoé,2026-03-31,diner,,Filet de porc grillé + chou vert + PDT rôties,636.0,53.0,58.0,20.0,10.0
-426,3,Zoé,2026-03-31,collation,,樂 Collation: 2 œufs durs + 180g pomme,265.0,16.0,22.0,12.0,4.0
-427,3,Zoé,2026-04-01,dejeuner,,Taboulé semoule + poulet + carottes + lentilles,529.0,42.0,57.0,12.0,6.0
-428,3,Zoé,2026-04-01,diner,,Escalope dinde + PDT sautées + haricots verts,672.0,56.0,61.0,21.0,10.0
-429,3,Zoé,2026-04-01,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
-430,3,Zoé,2026-04-02,dejeuner,,Curry chou-fleur pois chiches + riz basmati,429.0,13.0,69.0,10.0,6.0
-431,3,Zoé,2026-04-02,diner,,Pavé de saumon + PDT grenaille + poireaux,699.0,40.0,60.0,31.0,10.0
-432,3,Zoé,2026-04-02,collation,,樂 Collation: 2 œufs durs + 130g kiwi,247.0,16.0,15.0,13.0,4.0
-433,3,Zoé,2026-04-03,dejeuner,,Curry chou-fleur pois chiches + pâtes complètes,477.0,18.0,73.0,11.0,10.0
-434,3,Zoé,2026-04-03,diner,,Steak haché 5% + frites four + endives,681.0,47.0,69.0,23.0,8.0
-435,3,Zoé,2026-04-03,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
-436,3,Zoé,2026-04-04,dejeuner,,Gratin dauphinois + jambon + salade,437.0,24.0,52.0,14.0,4.0
-437,3,Zoé,2026-04-04,diner,,Croque-monsieur + salade,516.0,30.0,52.0,19.0,5.0
-438,3,Zoé,2026-04-04,collation,,樂 Collation: 2 œufs durs + 150g clementine,242.0,16.0,16.0,12.0,2.0
-439,3,Zoé,2026-04-05,dejeuner,,Galettes sarrasin œuf-jambon-gruyère,455.0,27.0,39.0,20.0,3.0
-440,3,Zoé,2026-04-05,diner,,Soupe carottes-poireaux + tartines jambon-emmental,520.0,29.0,66.0,14.0,12.0
-441,3,Zoé,2026-04-05,collation,,樂 Collation: 200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
+442,4,Julien,2026-03-16,dejeuner,Séance A (Poussée),Bolognaise + pâtes + lentilles + pain complet + 50g poulet grillé,765.0,60.0,86.0,16.0,12.0
+443,4,Julien,2026-03-16,diner,Séance A (Poussée),Cabillaud + PDT vapeur + poireaux + pain complet,618.0,57.0,64.0,12.0,10.0
+444,4,Julien,2026-03-16,pdj,Séance A (Poussée),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+445,4,Julien,2026-03-16,collation,Séance A (Poussée),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+446,4,Julien,2026-03-17,dejeuner,Marche active,Lasagnes bolognaise (bolo+pâtes+emmental) + 50g poulet grillé,654.0,56.0,52.0,21.0,6.0
+447,4,Julien,2026-03-17,diner,Marche active,Omelette champignons-emmental + mâche + pain complet,610.0,44.0,25.0,35.0,6.0
+448,4,Julien,2026-03-17,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+449,4,Julien,2026-03-17,collation,Marche active,樂 Collation (B): 2 œufs durs + 170g poire + 20g amandes,383.0,20.0,21.0,23.0,8.0
+450,4,Julien,2026-03-18,dejeuner,Séance B (Bas du corps),Salade lentilles + poulet grillé + carottes + pain complet + 50g poulet grillé,654.0,68.0,50.0,17.0,12.0
+451,4,Julien,2026-03-18,diner,Séance B (Bas du corps),Escalope de dinde + purée + brocoli + pain complet,741.0,73.0,57.0,22.0,10.0
+452,4,Julien,2026-03-18,pdj,Séance B (Bas du corps),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+453,4,Julien,2026-03-18,collation,Séance B (Bas du corps),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+454,4,Julien,2026-03-19,dejeuner,Marche active,Tikka masala poulet + riz basmati + naan + 50g poulet grillé,703.0,54.0,80.0,17.0,4.0
+455,4,Julien,2026-03-19,diner,Marche active,Pavé de saumon + PDT rôties + endives braisées + pain complet,814.0,49.0,62.0,39.0,10.0
+456,4,Julien,2026-03-19,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+457,4,Julien,2026-03-19,collation,Marche active,樂 Collation (B): 2 œufs durs + 130g kiwi + 20g amandes,374.0,21.0,16.0,23.0,6.0
+458,4,Julien,2026-03-20,dejeuner,Séance C (Tirage+Core),Tikka masala poulet + semoule + 50g poulet grillé,537.0,51.0,48.0,13.0,4.0
+459,4,Julien,2026-03-20,diner,Séance C (Tirage+Core),Steak haché 5% + PDT sautées + mâche + pain complet,708.0,59.0,58.0,25.0,7.0
+460,4,Julien,2026-03-20,pdj,Séance C (Tirage+Core),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+461,4,Julien,2026-03-20,collation,Séance C (Tirage+Core),樂 Collation (C): 180g pomme + 15g amandes,189.0,4.0,23.0,8.0,5.0
+462,4,Julien,2026-03-21,dejeuner,Activité libre,Burger maison (steak+pain+salade+ketchup+emmental) + frites four,832.0,51.0,91.0,28.0,7.0
+463,4,Julien,2026-03-21,diner,Activité libre,Carbonara (pâtes+lardons dinde+parmesan+œuf),635.0,47.0,52.0,26.0,4.0
+464,4,Julien,2026-03-21,pdj,Activité libre,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+465,4,Julien,2026-03-21,collation,Activité libre,樂 Collation (B): 2 œufs durs + 200g orange + 20g amandes,388.0,21.0,20.0,23.0,6.0
+466,4,Julien,2026-03-22,dejeuner,Repos actif,Croque-monsieur (pain mie+jambon+emmental) + salade,524.0,30.0,41.0,25.0,3.0
+467,4,Julien,2026-03-22,diner,Repos actif,Soupe poireaux-PDT + tartines jambon-gruyère,524.0,30.0,61.0,16.0,10.0
+468,4,Julien,2026-03-22,pdj,Repos actif,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+469,4,Julien,2026-03-22,collation,Repos actif,樂 Collation (DIM): 30g noix + 1 pomme + 30g beurre cacahuète + 30g pain complet,542.0,15.0,37.0,36.0,8.0
+470,4,Julien,2026-03-23,dejeuner,Séance A (Poussée),Blanquette de poulet + riz basmati + pain complet + 50g poulet grillé,710.0,51.0,75.0,21.0,7.0
+471,4,Julien,2026-03-23,diner,Séance A (Poussée),Lieu noir poêlé + PDT vapeur + haricots verts + pain complet,624.0,60.0,66.0,12.0,11.0
+472,4,Julien,2026-03-23,pdj,Séance A (Poussée),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+473,4,Julien,2026-03-23,collation,Séance A (Poussée),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+474,4,Julien,2026-03-24,dejeuner,Marche active,Blanquette de poulet + pâtes complètes + 50g poulet grillé,650.0,53.0,59.0,22.0,9.0
+475,4,Julien,2026-03-24,diner,Marche active,Bœuf émincé + carottes Vichy + mâche + pain complet,635.0,63.0,37.0,25.0,9.0
+476,4,Julien,2026-03-24,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+477,4,Julien,2026-03-24,collation,Marche active,樂 Collation (B): 2 œufs durs + 150g clementine + 20g amandes,369.0,20.0,17.0,23.0,5.0
+478,4,Julien,2026-03-25,dejeuner,Séance B (Bas du corps),Salade pois chiches + poulet + betteraves + pain complet + 50g poulet grillé,713.0,69.0,53.0,21.0,12.0
+479,4,Julien,2026-03-25,diner,Séance B (Bas du corps),Escalope dinde + PDT grenaille rôties + chou-fleur + pain complet,748.0,71.0,63.0,22.0,10.0
+480,4,Julien,2026-03-25,pdj,Séance B (Bas du corps),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+481,4,Julien,2026-03-25,collation,Séance B (Bas du corps),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+482,4,Julien,2026-03-26,dejeuner,Marche active,Chili con carne + riz basmati + pain complet + 50g poulet grillé,690.0,51.0,82.0,14.0,9.0
+483,4,Julien,2026-03-26,diner,Marche active,Pavé de saumon + purée + navets glacés + pain complet,774.0,48.0,55.0,37.0,7.0
+484,4,Julien,2026-03-26,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+485,4,Julien,2026-03-26,collation,Marche active,樂 Collation (B): 2 œufs durs + 170g poire + 20g amandes,383.0,20.0,21.0,23.0,8.0
+486,4,Julien,2026-03-27,dejeuner,Séance C (Tirage+Core),Chili con carne + PDT rôties + 50g poulet grillé,590.0,47.0,53.0,19.0,10.0
+487,4,Julien,2026-03-27,diner,Séance C (Tirage+Core),Poulet grillé + endives braisées + mâche + pain complet,517.0,62.0,23.0,17.0,6.0
+488,4,Julien,2026-03-27,pdj,Séance C (Tirage+Core),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+489,4,Julien,2026-03-27,collation,Séance C (Tirage+Core),樂 Collation (C): 130g kiwi + 15g amandes,170.0,4.0,15.0,9.0,6.0
+490,4,Julien,2026-03-28,dejeuner,Activité libre,Fish & chips au four (cabillaud pané + frites),731.0,48.0,78.0,24.0,7.0
+491,4,Julien,2026-03-28,diner,Activité libre,Galettes sarrasin jambon-gruyère-œuf,508.0,40.0,32.0,24.0,3.0
+492,4,Julien,2026-03-28,pdj,Activité libre,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+493,4,Julien,2026-03-28,collation,Activité libre,樂 Collation (B): 2 œufs durs + 180g pomme + 20g amandes,392.0,20.0,24.0,23.0,6.0
+494,4,Julien,2026-03-29,dejeuner,Repos actif,"Pizza maison (pâte, passata, mozzarella, jambon, champignons)",603.0,33.0,63.0,23.0,4.0
+495,4,Julien,2026-03-29,diner,Repos actif,"Wraps poulet + crudités (carottes, mâche)",506.0,46.0,41.0,16.0,4.0
+496,4,Julien,2026-03-29,pdj,Repos actif,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+497,4,Julien,2026-03-29,collation,Repos actif,樂 Collation (DIM): 30g noix + 1 pomme + 30g beurre cacahuète + 30g pain complet,542.0,15.0,37.0,36.0,8.0
+498,4,Julien,2026-03-30,dejeuner,Séance A (Poussée),Tajine poulet + semoule + pois chiches + pain complet + 50g poulet grillé,744.0,54.0,78.0,21.0,12.0
+499,4,Julien,2026-03-30,diner,Séance A (Poussée),Cabillaud + PDT vapeur + brocoli + pain complet,627.0,60.0,64.0,12.0,11.0
+500,4,Julien,2026-03-30,pdj,Séance A (Poussée),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+501,4,Julien,2026-03-30,collation,Séance A (Poussée),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+502,4,Julien,2026-03-31,dejeuner,Marche active,Tajine poulet + riz basmati + 50g poulet grillé,601.0,45.0,63.0,18.0,5.0
+503,4,Julien,2026-03-31,diner,Marche active,Filet de porc grillé + chou vert sauté + PDT rôties + pain complet,737.0,66.0,61.0,24.0,11.0
+504,4,Julien,2026-03-31,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+505,4,Julien,2026-03-31,collation,Marche active,樂 Collation (B): 2 œufs durs + 200g orange + 20g amandes,388.0,21.0,20.0,23.0,6.0
+506,4,Julien,2026-04-01,dejeuner,Séance B (Bas du corps),Taboulé semoule + poulet + carottes + lentilles + pain complet + 50g poulet grillé,745.0,67.0,72.0,17.0,10.0
+507,4,Julien,2026-04-01,diner,Séance B (Bas du corps),Escalope dinde + PDT sautées + haricots verts + pain complet,803.0,72.0,66.0,26.0,11.0
+508,4,Julien,2026-04-01,pdj,Séance B (Bas du corps),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+509,4,Julien,2026-04-01,collation,Séance B (Bas du corps),樂 Collation (A): 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+510,4,Julien,2026-04-02,dejeuner,Marche active,Curry chou-fleur pois chiches + riz basmati + naan + 50g poulet grillé,671.0,30.0,94.0,18.0,9.0
+511,4,Julien,2026-04-02,diner,Marche active,Pavé de saumon + PDT grenaille rôties + poireaux + pain complet,835.0,50.0,64.0,39.0,11.0
+512,4,Julien,2026-04-02,pdj,Marche active,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+513,4,Julien,2026-04-02,collation,Marche active,樂 Collation (B): 2 œufs durs + 150g clementine + 20g amandes,369.0,20.0,17.0,23.0,5.0
+514,4,Julien,2026-04-03,dejeuner,Séance C (Tirage+Core),Curry chou-fleur pois chiches + pâtes complètes + 50g poulet grillé,579.0,32.0,72.0,16.0,13.0
+515,4,Julien,2026-04-03,diner,Séance C (Tirage+Core),Steak haché 5% + frites four + endives braisées + pain complet,822.0,59.0,78.0,29.0,10.0
+516,4,Julien,2026-04-03,pdj,Séance C (Tirage+Core),200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+517,4,Julien,2026-04-03,collation,Séance C (Tirage+Core),樂 Collation (C): 170g poire + 15g amandes,180.0,4.0,20.0,8.0,7.0
+518,4,Julien,2026-04-04,dejeuner,Activité libre,Gratin dauphinois + jambon + salade verte,479.0,29.0,47.0,19.0,4.0
+519,4,Julien,2026-04-04,diner,Activité libre,Croque-monsieur (pain mie+jambon+emmental) + salade,530.0,34.0,41.0,24.0,3.0
+520,4,Julien,2026-04-04,pdj,Activité libre,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+521,4,Julien,2026-04-04,collation,Activité libre,樂 Collation (B): 2 œufs durs + 130g kiwi + 20g amandes,374.0,21.0,16.0,23.0,6.0
+522,4,Julien,2026-04-05,dejeuner,Repos actif,Galettes sarrasin œuf-jambon-gruyère + salade,516.0,34.0,33.0,27.0,4.0
+523,4,Julien,2026-04-05,diner,Repos actif,Soupe carottes-poireaux + tartines jambon-emmental,503.0,30.0,56.0,15.0,12.0
+524,4,Julien,2026-04-05,pdj,Repos actif,200g skyr + 3 œufs durs (180g),383.0,44.0,9.0,18.0,
+525,4,Julien,2026-04-05,collation,Repos actif,樂 Collation (DIM): 30g noix + 1 pomme + 30g beurre cacahuète + 30g pain complet,542.0,15.0,37.0,36.0,8.0
+526,4,Zoé,2026-03-16,dejeuner,,Bolognaise + pâtes + lentilles,530.0,36.0,68.0,10.0,8.0
+527,4,Zoé,2026-03-16,diner,,Cabillaud + PDT vapeur + poireaux,545.0,47.0,61.0,11.0,9.0
+528,4,Zoé,2026-03-16,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+529,4,Zoé,2026-03-17,dejeuner,,Lasagnes bolognaise (bolo+pâtes+emmental),516.0,35.0,56.0,15.0,5.0
+530,4,Zoé,2026-03-17,diner,,Omelette champignons + mâche,462.0,33.0,24.0,25.0,4.0
+531,4,Zoé,2026-03-17,collation,,樂 Collation: 2 œufs durs + 170g poire,257.0,16.0,20.0,12.0,5.0
+532,4,Zoé,2026-03-18,dejeuner,,Salade lentilles + poulet grillé + carottes,461.0,43.0,40.0,12.0,8.0
+533,4,Zoé,2026-03-18,diner,,Escalope de dinde + purée + brocoli,633.0,57.0,55.0,19.0,9.0
+534,4,Zoé,2026-03-18,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+535,4,Zoé,2026-03-19,dejeuner,,Tikka masala poulet + riz basmati,448.0,31.0,58.0,9.0,3.0
+536,4,Zoé,2026-03-19,diner,,Pavé de saumon + PDT rôties + endives,681.0,40.0,57.0,31.0,8.0
+537,4,Zoé,2026-03-19,collation,,樂 Collation: 2 œufs durs + 130g kiwi,247.0,16.0,15.0,13.0,4.0
+538,4,Zoé,2026-03-20,dejeuner,,Tikka masala poulet + semoule,433.0,32.0,53.0,9.0,3.0
+539,4,Zoé,2026-03-20,diner,,Steak haché 5% + PDT sautées + mâche,594.0,47.0,54.0,20.0,6.0
+540,4,Zoé,2026-03-20,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+541,4,Zoé,2026-03-21,dejeuner,,Burger maison + frites four,709.0,40.0,85.0,22.0,6.0
+542,4,Zoé,2026-03-21,diner,,Carbonara (pâtes+lardons dinde+parmesan+œuf),610.0,41.0,63.0,21.0,6.0
+543,4,Zoé,2026-03-21,collation,,樂 Collation: 2 œufs durs + 180g pomme,265.0,16.0,22.0,12.0,4.0
+544,4,Zoé,2026-03-22,dejeuner,,Croque-monsieur + salade,457.0,24.0,45.0,19.0,3.0
+545,4,Zoé,2026-03-22,diner,,Soupe poireaux-PDT + tartines jambon-gruyère,543.0,29.0,71.0,14.0,11.0
+546,4,Zoé,2026-03-22,collation,,樂 Collation: 200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
+547,4,Zoé,2026-03-23,dejeuner,,Blanquette de poulet + riz basmati,490.0,29.0,60.0,14.0,3.0
+548,4,Zoé,2026-03-23,diner,,Lieu noir + PDT vapeur + haricots verts,550.0,49.0,63.0,10.0,10.0
+549,4,Zoé,2026-03-23,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+550,4,Zoé,2026-03-24,dejeuner,,Blanquette de poulet + pâtes complètes,525.0,34.0,62.0,16.0,7.0
+551,4,Zoé,2026-03-24,diner,,Bœuf émincé + carottes Vichy + mâche,515.0,50.0,34.0,19.0,8.0
+552,4,Zoé,2026-03-24,collation,,樂 Collation: 2 œufs durs + 150g clementine,242.0,16.0,16.0,12.0,2.0
+553,4,Zoé,2026-03-25,dejeuner,,Salade pois chiches + poulet + betteraves,507.0,44.0,42.0,15.0,8.0
+554,4,Zoé,2026-03-25,diner,,Escalope dinde + PDT grenaille + chou-fleur,628.0,55.0,58.0,18.0,9.0
+555,4,Zoé,2026-03-25,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+556,4,Zoé,2026-03-26,dejeuner,,Chili con carne + riz basmati,478.0,30.0,66.0,8.0,5.0
+557,4,Zoé,2026-03-26,diner,,Pavé de saumon + purée + navets,640.0,39.0,52.0,29.0,6.0
+558,4,Zoé,2026-03-26,collation,,樂 Collation: 2 œufs durs + 170g poire,257.0,16.0,20.0,12.0,5.0
+559,4,Zoé,2026-03-27,dejeuner,,Chili con carne + PDT rôties,483.0,29.0,58.0,14.0,8.0
+560,4,Zoé,2026-03-27,diner,,Poulet grillé + endives + mâche,448.0,50.0,26.0,14.0,6.0
+561,4,Zoé,2026-03-27,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+562,4,Zoé,2026-03-28,dejeuner,,Fish & chips au four (cabillaud pané + frites),631.0,38.0,76.0,19.0,6.0
+563,4,Zoé,2026-03-28,diner,,Galettes sarrasin jambon-gruyère-œuf,501.0,35.0,45.0,19.0,5.0
+564,4,Zoé,2026-03-28,collation,,樂 Collation: 2 œufs durs + 200g orange,262.0,17.0,19.0,12.0,4.0
+565,4,Zoé,2026-03-29,dejeuner,,Pizza maison,529.0,26.0,63.0,18.0,3.0
+566,4,Zoé,2026-03-29,diner,,Wraps poulet + crudités,505.0,40.0,53.0,14.0,6.0
+567,4,Zoé,2026-03-29,collation,,樂 Collation: 200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
+568,4,Zoé,2026-03-30,dejeuner,,Tajine poulet + semoule + pois chiches,510.0,31.0,62.0,13.0,7.0
+569,4,Zoé,2026-03-30,diner,,Cabillaud + PDT vapeur + brocoli,552.0,49.0,61.0,11.0,10.0
+570,4,Zoé,2026-03-30,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+571,4,Zoé,2026-03-31,dejeuner,,Tajine poulet + riz basmati,483.0,27.0,66.0,12.0,4.0
+572,4,Zoé,2026-03-31,diner,,Filet de porc grillé + chou vert + PDT rôties,636.0,53.0,58.0,20.0,10.0
+573,4,Zoé,2026-03-31,collation,,樂 Collation: 2 œufs durs + 180g pomme,265.0,16.0,22.0,12.0,4.0
+574,4,Zoé,2026-04-01,dejeuner,,Taboulé semoule + poulet + carottes + lentilles,529.0,42.0,57.0,12.0,6.0
+575,4,Zoé,2026-04-01,diner,,Escalope dinde + PDT sautées + haricots verts,672.0,56.0,61.0,21.0,10.0
+576,4,Zoé,2026-04-01,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+577,4,Zoé,2026-04-02,dejeuner,,Curry chou-fleur pois chiches + riz basmati,429.0,13.0,69.0,10.0,6.0
+578,4,Zoé,2026-04-02,diner,,Pavé de saumon + PDT grenaille + poireaux,699.0,40.0,60.0,31.0,10.0
+579,4,Zoé,2026-04-02,collation,,樂 Collation: 2 œufs durs + 130g kiwi,247.0,16.0,15.0,13.0,4.0
+580,4,Zoé,2026-04-03,dejeuner,,Curry chou-fleur pois chiches + pâtes complètes,477.0,18.0,73.0,11.0,10.0
+581,4,Zoé,2026-04-03,diner,,Steak haché 5% + frites four + endives,681.0,47.0,69.0,23.0,8.0
+582,4,Zoé,2026-04-03,collation,,樂 Collation: 200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+583,4,Zoé,2026-04-04,dejeuner,,Gratin dauphinois + jambon + salade,437.0,24.0,52.0,14.0,4.0
+584,4,Zoé,2026-04-04,diner,,Croque-monsieur + salade,516.0,30.0,52.0,19.0,5.0
+585,4,Zoé,2026-04-04,collation,,樂 Collation: 2 œufs durs + 150g clementine,242.0,16.0,16.0,12.0,2.0
+586,4,Zoé,2026-04-05,dejeuner,,Galettes sarrasin œuf-jambon-gruyère,455.0,27.0,39.0,20.0,3.0
+587,4,Zoé,2026-04-05,diner,,Soupe carottes-poireaux + tartines jambon-emmental,520.0,29.0,66.0,14.0,12.0
+588,4,Zoé,2026-04-05,collation,,樂 Collation: 200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0

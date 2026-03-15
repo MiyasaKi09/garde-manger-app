@@ -1,151 +1,151 @@
 id,import_id,week_label,category,product_name,quantity,checked
-301,3,S1,數 VIANDES & POISSONS,Bœuf haché 5%,500g (batch bolo),f
-302,3,S1,數 VIANDES & POISSONS,Filets de poulet,550g (batch tikka) + 180g (salade mer) + 300g extra (boost déjeuners),f
-303,3,S1,數 VIANDES & POISSONS,Cabillaud (frais/surgelé),230g J + 190g Z (lun dîner),f
-304,3,S1,數 VIANDES & POISSONS,Saumon (pavé),170g J + 140g Z (jeu dîner),f
-305,3,S1,數 VIANDES & POISSONS,Steak haché 5%,200g J + 160g Z (ven dîner) + 160g J + 120g Z (sam burger),f
-306,3,S1,數 VIANDES & POISSONS,Escalope de dinde,230g J + 180g Z (mer dîner),f
-307,3,S1,數 VIANDES & POISSONS,Lardons de dinde,90g J + 70g Z (sam carbonara),f
-308,3,S1,數 VIANDES & POISSONS,Jambon blanc,80g+70g (dim croque) + 50g+40g (dim soupe),f
-309,3,S1,數 VIANDES & POISSONS,燎 PRODUITS LAITIERS,,f
-310,3,S1,數 VIANDES & POISSONS,Skyr nature,~2.5kg (PDJ Julien + collations),f
-311,3,S1,數 VIANDES & POISSONS,Œufs,~30 (PDJ + collations + plats),f
-312,3,S1,數 VIANDES & POISSONS,Emmental râpé,80g (lasagnes+burger),f
-313,3,S1,數 VIANDES & POISSONS,Parmesan,20g (carbonara),f
-314,3,S1,數 VIANDES & POISSONS,Gruyère râpé,15g (dim soupe),f
-315,3,S1,數 VIANDES & POISSONS,Crème 15%,100ml (batch tikka),f
-316,3,S1,數 VIANDES & POISSONS,Beurre,10g,f
-317,3,S1, FÉCULENTS,Pâtes,~300g cru (bolo+lasagnes+carbonara),f
-318,3,S1, FÉCULENTS,Riz basmati,~300g cru,f
-319,3,S1, FÉCULENTS,Semoule,~200g cru,f
-320,3,S1, FÉCULENTS,Naan,100g (2 pièces),f
-321,3,S1, FÉCULENTS,Pain complet,1 paquet (~700g),f
-322,3,S1, FÉCULENTS,Pain de mie,80g (dim croque),f
-323,3,S1, FÉCULENTS,Pain burger,2 pains,f
-324,3,S1, FÉCULENTS,Lentilles (conserve),~250g égouttées,f
-325,3,S1, FÉCULENTS,Frites surgelées,~600g,f
-326,3,S1,塞 LÉGUMES DE SAISON,Poireaux,~350g (lun dîner) + 180g (dim soupe),f
-327,3,S1,塞 LÉGUMES DE SAISON,Champignons,~300g (mar omelette),f
-328,3,S1,塞 LÉGUMES DE SAISON,Brocoli,~370g (mer dîner),f
-329,3,S1,塞 LÉGUMES DE SAISON,Endives,~350g (jeu dîner),f
-330,3,S1,塞 LÉGUMES DE SAISON,Carottes,~300g (batch bolo+salade mer),f
-331,3,S1,塞 LÉGUMES DE SAISON,Mâche,~300g,f
-332,3,S1,塞 LÉGUMES DE SAISON,Salade verte,~200g,f
-333,3,S1,參 CONSERVES & ÉPICERIE,Passata,1L (batches),f
-334,3,S1,參 CONSERVES & ÉPICERIE,Concentré tomate,40g,f
-335,3,S1,參 CONSERVES & ÉPICERIE,Vin rouge (cuisine),120ml,f
-336,3,S1,參 CONSERVES & ÉPICERIE,Ketchup,1 flacon,f
-337,3,S1,參 CONSERVES & ÉPICERIE,Vinaigrette,1 flacon,f
-338,3,S1,參 CONSERVES & ÉPICERIE,Huile d'olive,1 bouteille,f
-339,3,S1,參 CONSERVES & ÉPICERIE,"Épices: cumin, coriandre, curcuma, garam masala, paprika",pots,f
-340,3,S1, FRUITS & OLÉAGINEUX,Amandes,~300g,f
-341,3,S1, FRUITS & OLÉAGINEUX,Noix,30g,f
-342,3,S1, FRUITS & OLÉAGINEUX,Beurre cacahuète,30g,f
-343,3,S1, FRUITS & OLÉAGINEUX,Poires,2,f
-344,3,S1, FRUITS & OLÉAGINEUX,Kiwis,2,f
-345,3,S1, FRUITS & OLÉAGINEUX,Pommes,2,f
-346,3,S1, FRUITS & OLÉAGINEUX,Oranges,2,f
-347,3,S2,數 VIANDES & POISSONS,Cuisses poulet désossées,550g (batch blanquette),f
-348,3,S2,數 VIANDES & POISSONS,Bœuf haché 5%,500g (batch chili),f
-349,3,S2,數 VIANDES & POISSONS,Filets de poulet,180g (salade mer) + 220g (ven dîner) + 300g extra,f
-350,3,S2,數 VIANDES & POISSONS,Lieu noir,230g J + 180g Z (lun dîner),f
-351,3,S2,數 VIANDES & POISSONS,Saumon (pavé),170g J + 140g Z (jeu dîner),f
-352,3,S2,數 VIANDES & POISSONS,Bœuf à émincer,230g J + 180g Z (mar dîner),f
-353,3,S2,數 VIANDES & POISSONS,Escalope de dinde,230g J + 180g Z (mer dîner),f
-354,3,S2,數 VIANDES & POISSONS,Cabillaud,200g J + 170g Z (sam fish&chips),f
-355,3,S2,數 VIANDES & POISSONS,Jambon blanc,70g+55g (sam galettes) + 55g+40g (dim pizza) + 50g+40g (dim wrap),f
-356,3,S2,數 VIANDES & POISSONS,燎 PRODUITS LAITIERS,,f
-357,3,S2,數 VIANDES & POISSONS,Skyr nature,~2.5kg,f
-358,3,S2,數 VIANDES & POISSONS,Œufs,~30,f
-359,3,S2,數 VIANDES & POISSONS,Emmental,—,f
-360,3,S2,數 VIANDES & POISSONS,Gruyère,25g (galettes),f
-361,3,S2,數 VIANDES & POISSONS,Mozzarella,85g (pizza dim),f
-362,3,S2,數 VIANDES & POISSONS,Crème 15%,100ml (batch blanquette),f
-363,3,S2,數 VIANDES & POISSONS,Beurre,15g,f
-364,3,S2, FÉCULENTS,Riz basmati,~350g cru,f
-365,3,S2, FÉCULENTS,Pâtes complètes,~300g cru,f
-366,3,S2, FÉCULENTS,PDT,~1kg (dîners),f
-367,3,S2, FÉCULENTS,Pain complet,1 paquet,f
-368,3,S2, FÉCULENTS,Galettes sarrasin,4-5,f
-369,3,S2, FÉCULENTS,Tortillas/wraps,135g,f
-370,3,S2, FÉCULENTS,Pâte pizza,230g,f
-371,3,S2, FÉCULENTS,Frites surgelées,~600g,f
-372,3,S2, FÉCULENTS,Chapelure,35g,f
-373,3,S2, FÉCULENTS,Farine,18g,f
-374,3,S2, FÉCULENTS,Haricots rouges (conserve),~200g égouttées (batch chili),f
-375,3,S2, FÉCULENTS,Pois chiches (conserve),~250g égouttées (salade mer),f
-376,3,S2,塞 LÉGUMES DE SAISON,Carottes,~500g (batch blanquette+salade),f
-377,3,S2,塞 LÉGUMES DE SAISON,Champignons,~300g (batch blanquette),f
-378,3,S2,塞 LÉGUMES DE SAISON,Poireaux,~200g (batch blanquette),f
-379,3,S2,塞 LÉGUMES DE SAISON,Haricots verts (frais/surgelés),~350g (lun),f
-380,3,S2,塞 LÉGUMES DE SAISON,Chou-fleur,~350g (mer dîner),f
-381,3,S2,塞 LÉGUMES DE SAISON,Navets,~350g (jeu dîner),f
-382,3,S2,塞 LÉGUMES DE SAISON,Endives,~350g (ven),f
-383,3,S2,塞 LÉGUMES DE SAISON,Betteraves cuites,~180g (salade mer),f
-384,3,S2,塞 LÉGUMES DE SAISON,Mâche,~300g,f
-385,3,S2,塞 LÉGUMES DE SAISON,Salade verte,~200g,f
-386,3,S2,參 CONSERVES & ÉPICERIE,Passata,650ml (batches),f
-387,3,S2,參 CONSERVES & ÉPICERIE,Concentré tomate,25g,f
-388,3,S2,參 CONSERVES & ÉPICERIE,"Épices: cumin, paprika, piment",pots,f
-389,3,S2,參 CONSERVES & ÉPICERIE,Vinaigrette,—,f
-390,3,S2,參 CONSERVES & ÉPICERIE,Huile olive,—,f
-391,3,S2, FRUITS & OLÉAGINEUX,Amandes,~250g,f
-392,3,S2, FRUITS & OLÉAGINEUX,Noix,30g,f
-393,3,S2, FRUITS & OLÉAGINEUX,Beurre cacahuète,30g,f
-394,3,S2, FRUITS & OLÉAGINEUX,Clémentines,3,f
-395,3,S2, FRUITS & OLÉAGINEUX,Poires,2,f
-396,3,S2, FRUITS & OLÉAGINEUX,Pommes,2,f
-397,3,S2, FRUITS & OLÉAGINEUX,Kiwis,2,f
-398,3,S2, FRUITS & OLÉAGINEUX,Oranges,2,f
-399,3,S3,數 VIANDES & POISSONS,Cuisses poulet désossées,550g (batch tajine),f
-400,3,S3,數 VIANDES & POISSONS,Filets de poulet,180g (taboulé mer) + 300g extra (boost),f
-401,3,S3,數 VIANDES & POISSONS,Cabillaud,230g J + 190g Z (lun),f
-402,3,S3,數 VIANDES & POISSONS,Saumon (pavé),170g J + 140g Z (jeu),f
-403,3,S3,數 VIANDES & POISSONS,Filet de porc,230g J + 180g Z (mar dîner),f
-404,3,S3,數 VIANDES & POISSONS,Escalope de dinde,230g J + 180g Z (mer dîner),f
-405,3,S3,數 VIANDES & POISSONS,Steak haché 5%,200g J + 160g Z (ven),f
-406,3,S3,數 VIANDES & POISSONS,Jambon blanc,80g+60g (sam gratin) + 70g+55g (sam croque) + 70g+55g (dim galettes) + 50g+40g (dim soupe),f
-407,3,S3,數 VIANDES & POISSONS,燎 PRODUITS LAITIERS,,f
-408,3,S3,數 VIANDES & POISSONS,Skyr nature,~2.5kg,f
-409,3,S3,數 VIANDES & POISSONS,Œufs,~30,f
-410,3,S3,數 VIANDES & POISSONS,Emmental,50g (sam gratin+croque+soupe),f
-411,3,S3,數 VIANDES & POISSONS,Gruyère,25g (dim galettes),f
-412,3,S3,數 VIANDES & POISSONS,Crème 15%,30g (sam gratin),f
-413,3,S3,數 VIANDES & POISSONS,Lait,40ml,f
-414,3,S3,數 VIANDES & POISSONS,Beurre,15g,f
-415,3,S3, FÉCULENTS,Semoule,~350g cru,f
-416,3,S3, FÉCULENTS,Riz basmati,~350g cru,f
-417,3,S3, FÉCULENTS,Pâtes complètes,~250g cru,f
-418,3,S3, FÉCULENTS,Naan,100g,f
-419,3,S3, FÉCULENTS,PDT,~2.5kg (dîners+gratin),f
-420,3,S3, FÉCULENTS,Pain complet,1 paquet,f
-421,3,S3, FÉCULENTS,Galettes sarrasin,4,f
-422,3,S3, FÉCULENTS,Pain de mie,120g,f
-423,3,S3, FÉCULENTS,Frites surgelées,~600g,f
-424,3,S3, FÉCULENTS,Pois chiches (conserve),~350g égouttées (batch curry+salade),f
-425,3,S3, FÉCULENTS,Lentilles (conserve),~150g (taboulé),f
-426,3,S3,塞 LÉGUMES DE SAISON,Carottes,~500g (batch tajine+taboulé+soupe),f
-427,3,S3,塞 LÉGUMES DE SAISON,Navets,~250g (batch tajine),f
-428,3,S3,塞 LÉGUMES DE SAISON,Brocoli,~350g (lun),f
-429,3,S3,塞 LÉGUMES DE SAISON,Chou vert,~350g (mar),f
-430,3,S3,塞 LÉGUMES DE SAISON,Chou-fleur,~450g (batch curry),f
-431,3,S3,塞 LÉGUMES DE SAISON,Haricots verts,~350g (mer),f
-432,3,S3,塞 LÉGUMES DE SAISON,Endives,~350g (ven),f
-433,3,S3,塞 LÉGUMES DE SAISON,Poireaux,~300g (jeu+dim soupe),f
-434,3,S3,塞 LÉGUMES DE SAISON,Salade verte,~250g,f
-435,3,S3,塞 LÉGUMES DE SAISON,Mâche,—,f
-436,3,S3,塞 LÉGUMES DE SAISON,Olives noires,50g (batch tajine),f
-437,3,S3,參 CONSERVES & ÉPICERIE,Passata,700ml (batches),f
-438,3,S3,參 CONSERVES & ÉPICERIE,Lait de coco,150ml (batch curry),f
-439,3,S3,參 CONSERVES & ÉPICERIE,"Épices: cumin, cannelle, gingembre, curry, curcuma",pots,f
-440,3,S3,參 CONSERVES & ÉPICERIE,Vinaigrette,—,f
-441,3,S3,參 CONSERVES & ÉPICERIE,Huile olive,—,f
-442,3,S3,參 CONSERVES & ÉPICERIE,Ketchup,—,f
-443,3,S3, FRUITS & OLÉAGINEUX,Amandes,~250g,f
-444,3,S3, FRUITS & OLÉAGINEUX,Noix,30g,f
-445,3,S3, FRUITS & OLÉAGINEUX,Beurre cacahuète,30g,f
-446,3,S3, FRUITS & OLÉAGINEUX,Oranges,2,f
-447,3,S3, FRUITS & OLÉAGINEUX,Poires,2,f
-448,3,S3, FRUITS & OLÉAGINEUX,Clémentines,3,f
-449,3,S3, FRUITS & OLÉAGINEUX,Kiwis,2,f
-450,3,S3, FRUITS & OLÉAGINEUX,Pommes,2,f
+451,4,S1,數 VIANDES & POISSONS,Bœuf haché 5%,500g (batch bolo),f
+452,4,S1,數 VIANDES & POISSONS,Filets de poulet,550g (batch tikka) + 180g (salade mer) + 300g extra (boost déjeuners),f
+453,4,S1,數 VIANDES & POISSONS,Cabillaud (frais/surgelé),230g J + 190g Z (lun dîner),f
+454,4,S1,數 VIANDES & POISSONS,Saumon (pavé),170g J + 140g Z (jeu dîner),f
+455,4,S1,數 VIANDES & POISSONS,Steak haché 5%,200g J + 160g Z (ven dîner) + 160g J + 120g Z (sam burger),f
+456,4,S1,數 VIANDES & POISSONS,Escalope de dinde,230g J + 180g Z (mer dîner),f
+457,4,S1,數 VIANDES & POISSONS,Lardons de dinde,90g J + 70g Z (sam carbonara),f
+458,4,S1,數 VIANDES & POISSONS,Jambon blanc,80g+70g (dim croque) + 50g+40g (dim soupe),f
+459,4,S1,數 VIANDES & POISSONS,燎 PRODUITS LAITIERS,,f
+460,4,S1,數 VIANDES & POISSONS,Skyr nature,~2.5kg (PDJ Julien + collations),f
+461,4,S1,數 VIANDES & POISSONS,Œufs,~30 (PDJ + collations + plats),f
+462,4,S1,數 VIANDES & POISSONS,Emmental râpé,80g (lasagnes+burger),f
+463,4,S1,數 VIANDES & POISSONS,Parmesan,20g (carbonara),f
+464,4,S1,數 VIANDES & POISSONS,Gruyère râpé,15g (dim soupe),f
+465,4,S1,數 VIANDES & POISSONS,Crème 15%,100ml (batch tikka),f
+466,4,S1,數 VIANDES & POISSONS,Beurre,10g,f
+467,4,S1, FÉCULENTS,Pâtes,~300g cru (bolo+lasagnes+carbonara),f
+468,4,S1, FÉCULENTS,Riz basmati,~300g cru,f
+469,4,S1, FÉCULENTS,Semoule,~200g cru,f
+470,4,S1, FÉCULENTS,Naan,100g (2 pièces),f
+471,4,S1, FÉCULENTS,Pain complet,1 paquet (~700g),f
+472,4,S1, FÉCULENTS,Pain de mie,80g (dim croque),f
+473,4,S1, FÉCULENTS,Pain burger,2 pains,f
+474,4,S1, FÉCULENTS,Lentilles (conserve),~250g égouttées,f
+475,4,S1, FÉCULENTS,Frites surgelées,~600g,f
+476,4,S1,塞 LÉGUMES DE SAISON,Poireaux,~350g (lun dîner) + 180g (dim soupe),f
+477,4,S1,塞 LÉGUMES DE SAISON,Champignons,~300g (mar omelette),f
+478,4,S1,塞 LÉGUMES DE SAISON,Brocoli,~370g (mer dîner),f
+479,4,S1,塞 LÉGUMES DE SAISON,Endives,~350g (jeu dîner),f
+480,4,S1,塞 LÉGUMES DE SAISON,Carottes,~300g (batch bolo+salade mer),f
+481,4,S1,塞 LÉGUMES DE SAISON,Mâche,~300g,f
+482,4,S1,塞 LÉGUMES DE SAISON,Salade verte,~200g,f
+483,4,S1,參 CONSERVES & ÉPICERIE,Passata,1L (batches),f
+484,4,S1,參 CONSERVES & ÉPICERIE,Concentré tomate,40g,f
+485,4,S1,參 CONSERVES & ÉPICERIE,Vin rouge (cuisine),120ml,f
+486,4,S1,參 CONSERVES & ÉPICERIE,Ketchup,1 flacon,f
+487,4,S1,參 CONSERVES & ÉPICERIE,Vinaigrette,1 flacon,f
+488,4,S1,參 CONSERVES & ÉPICERIE,Huile d'olive,1 bouteille,f
+489,4,S1,參 CONSERVES & ÉPICERIE,"Épices: cumin, coriandre, curcuma, garam masala, paprika",pots,f
+490,4,S1, FRUITS & OLÉAGINEUX,Amandes,~300g,f
+491,4,S1, FRUITS & OLÉAGINEUX,Noix,30g,f
+492,4,S1, FRUITS & OLÉAGINEUX,Beurre cacahuète,30g,f
+493,4,S1, FRUITS & OLÉAGINEUX,Poires,2,f
+494,4,S1, FRUITS & OLÉAGINEUX,Kiwis,2,f
+495,4,S1, FRUITS & OLÉAGINEUX,Pommes,2,f
+496,4,S1, FRUITS & OLÉAGINEUX,Oranges,2,f
+497,4,S2,數 VIANDES & POISSONS,Cuisses poulet désossées,550g (batch blanquette),f
+498,4,S2,數 VIANDES & POISSONS,Bœuf haché 5%,500g (batch chili),f
+499,4,S2,數 VIANDES & POISSONS,Filets de poulet,180g (salade mer) + 220g (ven dîner) + 300g extra,f
+500,4,S2,數 VIANDES & POISSONS,Lieu noir,230g J + 180g Z (lun dîner),f
+501,4,S2,數 VIANDES & POISSONS,Saumon (pavé),170g J + 140g Z (jeu dîner),f
+502,4,S2,數 VIANDES & POISSONS,Bœuf à émincer,230g J + 180g Z (mar dîner),f
+503,4,S2,數 VIANDES & POISSONS,Escalope de dinde,230g J + 180g Z (mer dîner),f
+504,4,S2,數 VIANDES & POISSONS,Cabillaud,200g J + 170g Z (sam fish&chips),f
+505,4,S2,數 VIANDES & POISSONS,Jambon blanc,70g+55g (sam galettes) + 55g+40g (dim pizza) + 50g+40g (dim wrap),f
+506,4,S2,數 VIANDES & POISSONS,燎 PRODUITS LAITIERS,,f
+507,4,S2,數 VIANDES & POISSONS,Skyr nature,~2.5kg,f
+508,4,S2,數 VIANDES & POISSONS,Œufs,~30,f
+509,4,S2,數 VIANDES & POISSONS,Emmental,—,f
+510,4,S2,數 VIANDES & POISSONS,Gruyère,25g (galettes),f
+511,4,S2,數 VIANDES & POISSONS,Mozzarella,85g (pizza dim),f
+512,4,S2,數 VIANDES & POISSONS,Crème 15%,100ml (batch blanquette),f
+513,4,S2,數 VIANDES & POISSONS,Beurre,15g,f
+514,4,S2, FÉCULENTS,Riz basmati,~350g cru,f
+515,4,S2, FÉCULENTS,Pâtes complètes,~300g cru,f
+516,4,S2, FÉCULENTS,PDT,~1kg (dîners),f
+517,4,S2, FÉCULENTS,Pain complet,1 paquet,f
+518,4,S2, FÉCULENTS,Galettes sarrasin,4-5,f
+519,4,S2, FÉCULENTS,Tortillas/wraps,135g,f
+520,4,S2, FÉCULENTS,Pâte pizza,230g,f
+521,4,S2, FÉCULENTS,Frites surgelées,~600g,f
+522,4,S2, FÉCULENTS,Chapelure,35g,f
+523,4,S2, FÉCULENTS,Farine,18g,f
+524,4,S2, FÉCULENTS,Haricots rouges (conserve),~200g égouttées (batch chili),f
+525,4,S2, FÉCULENTS,Pois chiches (conserve),~250g égouttées (salade mer),f
+526,4,S2,塞 LÉGUMES DE SAISON,Carottes,~500g (batch blanquette+salade),f
+527,4,S2,塞 LÉGUMES DE SAISON,Champignons,~300g (batch blanquette),f
+528,4,S2,塞 LÉGUMES DE SAISON,Poireaux,~200g (batch blanquette),f
+529,4,S2,塞 LÉGUMES DE SAISON,Haricots verts (frais/surgelés),~350g (lun),f
+530,4,S2,塞 LÉGUMES DE SAISON,Chou-fleur,~350g (mer dîner),f
+531,4,S2,塞 LÉGUMES DE SAISON,Navets,~350g (jeu dîner),f
+532,4,S2,塞 LÉGUMES DE SAISON,Endives,~350g (ven),f
+533,4,S2,塞 LÉGUMES DE SAISON,Betteraves cuites,~180g (salade mer),f
+534,4,S2,塞 LÉGUMES DE SAISON,Mâche,~300g,f
+535,4,S2,塞 LÉGUMES DE SAISON,Salade verte,~200g,f
+536,4,S2,參 CONSERVES & ÉPICERIE,Passata,650ml (batches),f
+537,4,S2,參 CONSERVES & ÉPICERIE,Concentré tomate,25g,f
+538,4,S2,參 CONSERVES & ÉPICERIE,"Épices: cumin, paprika, piment",pots,f
+539,4,S2,參 CONSERVES & ÉPICERIE,Vinaigrette,—,f
+540,4,S2,參 CONSERVES & ÉPICERIE,Huile olive,—,f
+541,4,S2, FRUITS & OLÉAGINEUX,Amandes,~250g,f
+542,4,S2, FRUITS & OLÉAGINEUX,Noix,30g,f
+543,4,S2, FRUITS & OLÉAGINEUX,Beurre cacahuète,30g,f
+544,4,S2, FRUITS & OLÉAGINEUX,Clémentines,3,f
+545,4,S2, FRUITS & OLÉAGINEUX,Poires,2,f
+546,4,S2, FRUITS & OLÉAGINEUX,Pommes,2,f
+547,4,S2, FRUITS & OLÉAGINEUX,Kiwis,2,f
+548,4,S2, FRUITS & OLÉAGINEUX,Oranges,2,f
+549,4,S3,數 VIANDES & POISSONS,Cuisses poulet désossées,550g (batch tajine),f
+550,4,S3,數 VIANDES & POISSONS,Filets de poulet,180g (taboulé mer) + 300g extra (boost),f
+551,4,S3,數 VIANDES & POISSONS,Cabillaud,230g J + 190g Z (lun),f
+552,4,S3,數 VIANDES & POISSONS,Saumon (pavé),170g J + 140g Z (jeu),f
+553,4,S3,數 VIANDES & POISSONS,Filet de porc,230g J + 180g Z (mar dîner),f
+554,4,S3,數 VIANDES & POISSONS,Escalope de dinde,230g J + 180g Z (mer dîner),f
+555,4,S3,數 VIANDES & POISSONS,Steak haché 5%,200g J + 160g Z (ven),f
+556,4,S3,數 VIANDES & POISSONS,Jambon blanc,80g+60g (sam gratin) + 70g+55g (sam croque) + 70g+55g (dim galettes) + 50g+40g (dim soupe),f
+557,4,S3,數 VIANDES & POISSONS,燎 PRODUITS LAITIERS,,f
+558,4,S3,數 VIANDES & POISSONS,Skyr nature,~2.5kg,f
+559,4,S3,數 VIANDES & POISSONS,Œufs,~30,f
+560,4,S3,數 VIANDES & POISSONS,Emmental,50g (sam gratin+croque+soupe),f
+561,4,S3,數 VIANDES & POISSONS,Gruyère,25g (dim galettes),f
+562,4,S3,數 VIANDES & POISSONS,Crème 15%,30g (sam gratin),f
+563,4,S3,數 VIANDES & POISSONS,Lait,40ml,f
+564,4,S3,數 VIANDES & POISSONS,Beurre,15g,f
+565,4,S3, FÉCULENTS,Semoule,~350g cru,f
+566,4,S3, FÉCULENTS,Riz basmati,~350g cru,f
+567,4,S3, FÉCULENTS,Pâtes complètes,~250g cru,f
+568,4,S3, FÉCULENTS,Naan,100g,f
+569,4,S3, FÉCULENTS,PDT,~2.5kg (dîners+gratin),f
+570,4,S3, FÉCULENTS,Pain complet,1 paquet,f
+571,4,S3, FÉCULENTS,Galettes sarrasin,4,f
+572,4,S3, FÉCULENTS,Pain de mie,120g,f
+573,4,S3, FÉCULENTS,Frites surgelées,~600g,f
+574,4,S3, FÉCULENTS,Pois chiches (conserve),~350g égouttées (batch curry+salade),f
+575,4,S3, FÉCULENTS,Lentilles (conserve),~150g (taboulé),f
+576,4,S3,塞 LÉGUMES DE SAISON,Carottes,~500g (batch tajine+taboulé+soupe),f
+577,4,S3,塞 LÉGUMES DE SAISON,Navets,~250g (batch tajine),f
+578,4,S3,塞 LÉGUMES DE SAISON,Brocoli,~350g (lun),f
+579,4,S3,塞 LÉGUMES DE SAISON,Chou vert,~350g (mar),f
+580,4,S3,塞 LÉGUMES DE SAISON,Chou-fleur,~450g (batch curry),f
+581,4,S3,塞 LÉGUMES DE SAISON,Haricots verts,~350g (mer),f
+582,4,S3,塞 LÉGUMES DE SAISON,Endives,~350g (ven),f
+583,4,S3,塞 LÉGUMES DE SAISON,Poireaux,~300g (jeu+dim soupe),f
+584,4,S3,塞 LÉGUMES DE SAISON,Salade verte,~250g,f
+585,4,S3,塞 LÉGUMES DE SAISON,Mâche,—,f
+586,4,S3,塞 LÉGUMES DE SAISON,Olives noires,50g (batch tajine),f
+587,4,S3,參 CONSERVES & ÉPICERIE,Passata,700ml (batches),f
+588,4,S3,參 CONSERVES & ÉPICERIE,Lait de coco,150ml (batch curry),f
+589,4,S3,參 CONSERVES & ÉPICERIE,"Épices: cumin, cannelle, gingembre, curry, curcuma",pots,f
+590,4,S3,參 CONSERVES & ÉPICERIE,Vinaigrette,—,f
+591,4,S3,參 CONSERVES & ÉPICERIE,Huile olive,—,f
+592,4,S3,參 CONSERVES & ÉPICERIE,Ketchup,—,f
+593,4,S3, FRUITS & OLÉAGINEUX,Amandes,~250g,f
+594,4,S3, FRUITS & OLÉAGINEUX,Noix,30g,f
+595,4,S3, FRUITS & OLÉAGINEUX,Beurre cacahuète,30g,f
+596,4,S3, FRUITS & OLÉAGINEUX,Oranges,2,f
+597,4,S3, FRUITS & OLÉAGINEUX,Poires,2,f
+598,4,S3, FRUITS & OLÉAGINEUX,Clémentines,3,f
+599,4,S3, FRUITS & OLÉAGINEUX,Kiwis,2,f
+600,4,S3, FRUITS & OLÉAGINEUX,Pommes,2,f
