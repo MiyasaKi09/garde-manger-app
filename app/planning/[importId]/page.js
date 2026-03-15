@@ -1,106 +1,60 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 
-// ── Type config ──
-const TYPES = {
-  "Séance A":{ emoji:"💪", color:"#D4634B", label:"Push" },
-  "Séance B":{ emoji:"🦵", color:"#D4634B", label:"Legs" },
-  "Séance C":{ emoji:"🏋️", color:"#D4634B", label:"Pull" },
-  "Séance":{ emoji:"💪", color:"#D4634B", label:"Séance" },
-  "Marche":{ emoji:"🚶", color:"#6B8F71", label:"Walk" },
-  "Activité libre":{ emoji:"🌊", color:"#7BA7BC", label:"Free" },
-  "Repos actif":{ emoji:"🧘", color:"#C4956A", label:"Rest" },
-  "Repos":{ emoji:"🧘", color:"#C4956A", label:"Repos" },
-  "WE":{ emoji:"🌊", color:"#7BA7BC", label:"WE" },
-}
-const getT = t => { for(const[k,v] of Object.entries(TYPES)) if(t?.includes(k)) return v; return {emoji:"📅",color:"#999",label:""}; }
+// ── Constants ──
+const PDJ_J = { d: "200g skyr + 3 œufs durs", k: 383, p: 44, g: 9, l: 18, f: 0 }
+const EMOJIS = { "Séance": "🏋️", "Repos": "😴", "WE": "🌴", "Marche": "🚶", "Activité libre": "🌊", "Repos actif": "🧘" }
+const MEAL_ICONS = { pdj: "🌅", dej: "🥡", din: "🍳", col: "🥜" }
 
-// ── Data transformation ──
-function macroArr(m) {
-  if (!m) return [0,0,0,0,0]
-  return [m.kcal||0, m.p||0, m.g||0, m.l||0, m.f||0]
-}
-
-function totalArr(t) {
-  if (!t) return [0,0,0,0,0]
-  return [t.kcal||0, t.p||0, t.g||0, t.l||0, t.f||0]
+// ── Data transformation (JSON → flat format) ──
+function transformMeal(m) {
+  if (!m) return { d: "", k: 0, p: 0, g: 0, l: 0, f: 0 }
+  return { d: m.desc || "", k: m.kcal || 0, p: m.p || 0, g: m.g || 0, l: m.l || 0, f: m.f || 0 }
 }
 
 function transformData(raw) {
   const data = typeof raw === 'string' ? JSON.parse(raw) : raw
 
-  const days = (data.days || []).map(day => ({
-    d: day.date,
-    dn: day.dayName,
-    t: day.type,
-    w: day.weekNum,
-    jd: day.dej?.j?.desc || "",
-    jdm: macroArr(day.dej?.j),
-    jn: day.din?.j?.desc || "",
-    jnm: macroArr(day.din?.j),
-    jc: day.col?.j?.desc || "",
-    jcm: macroArr(day.col?.j),
-    jco: day.col?.j?.option || "",
-    zd: day.dej?.z?.desc || "",
-    zdm: macroArr(day.dej?.z),
-    zn: day.din?.z?.desc || "",
-    znm: macroArr(day.din?.z),
-    zc: day.col?.z?.desc || "",
-    zcm: macroArr(day.col?.z),
-    jt: totalArr(day.total?.j),
-    zt: totalArr(day.total?.z),
-    jo: day.total?.j?.ok || false,
-    zo: day.total?.z?.ok || false,
-    prep: (() => {
-      const cp = day.cooking?.prep
-      if (!cp || cp.isFree) return "LIBRE"
-      const names = (cp.dishes || []).map(d => d.name)
-      return names.length ? names.join(". ") + "." : (cp.steps || []).map(s => s.action).join(". ") + "."
-    })(),
-    pt: day.cooking?.prep?.totalTime || "0 min",
-    pf: day.cooking?.prep?.isFree || !day.cooking?.prep,
+  const DATA = (data.days || []).map(day => ({
+    date: day.date,
+    day: day.dayName,
+    type: day.type,
+    wk: day.weekNum,
+    dej: { j: transformMeal(day.dej?.j), z: transformMeal(day.dej?.z) },
+    din: { j: transformMeal(day.din?.j), z: transformMeal(day.din?.z) },
+    col: { j: transformMeal(day.col?.j), z: transformMeal(day.col?.z) },
+    tot: {
+      j: { k: day.total?.j?.kcal||0, p: day.total?.j?.p||0, g: day.total?.j?.g||0, l: day.total?.j?.l||0, f: day.total?.j?.f||0, ok: day.total?.j?.ok ? 1 : 0 },
+      z: { k: day.total?.z?.kcal||0, p: day.total?.z?.p||0, g: day.total?.z?.g||0, l: day.total?.z?.l||0, f: day.total?.z?.f||0, ok: day.total?.z?.ok ? 1 : 0 },
+    },
+    ck_din: day.cooking?.dinner ? {
+      name: day.cooking.dinner.name,
+      time: day.cooking.dinner.totalTime,
+      pJ: day.cooking.dinner.portionsJ || day.din?.j?.desc || "",
+      pZ: day.cooking.dinner.portionsZ || day.din?.z?.desc || "",
+      steps: (day.cooking.dinner.steps || []).map(s => ({ t: s.duration, a: s.action, dt: s.detail })),
+    } : null,
+    ck_prep: day.cooking?.prep && !day.cooking.prep.isFree ? {
+      time: day.cooking.prep.totalTime,
+      dishes: (day.cooking.prep.dishes || []).map(d => ({ n: d.name, f: d.for })),
+      steps: (day.cooking.prep.steps || []).map(s => ({ t: s.duration, a: s.action, dt: s.detail })),
+    } : null,
     batch: day.batch || "",
-    cooking: day.cooking || null,
   }))
 
-  const groceries = (data.groceries || []).map((g, i) => ({
-    week: i + 1,
-    label: g.weekLabel || g.week || `S${i+1}`,
+  const GROC = (data.groceries || []).map((g, i) => ({
+    wk: `S${i + 1}`,
+    label: g.weekLabel || g.week || `S${i + 1}`,
     cats: (g.categories || []).map(cat => ({
       name: cat.name,
-      items: (cat.items || []).map(item => ({
-        p: item.product,
-        q: item.quantity || "",
-        u: item.usage || "",
-      }))
+      items: (cat.items || []).map(item => ({ p: item.product, q: item.quantity || "", u: item.usage || "" })),
     }))
   }))
 
-  const prepData = {}
-  for (const day of (data.days || [])) {
-    if (day.cooking) {
-      prepData[day.date] = {}
-      if (day.cooking.dinner) {
-        prepData[day.date].dinner = {
-          name: day.cooking.dinner.name,
-          steps: day.cooking.dinner.steps || [],
-          totalTime: day.cooking.dinner.totalTime,
-        }
-      }
-      if (day.cooking.prep && !day.cooking.prep.isFree) {
-        prepData[day.date].prep = {
-          dishes: day.cooking.prep.dishes || [],
-          steps: day.cooking.prep.steps || [],
-          totalTime: day.cooking.prep.totalTime,
-        }
-      }
-    }
-  }
-
-  return { days, groceries, prepData }
+  return { DATA, GROC }
 }
 
 function reconstructFromNormalized(importData) {
@@ -115,24 +69,23 @@ function reconstructFromNormalized(importData) {
     dateMap[total.meal_date].totals.push(total)
   }
   const dayNames = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi']
-  const mToA = m => m ? [m.kcal||0, m.protein_g||0, m.carbs_g||0, m.fat_g||0, m.fiber_g||0] : [0,0,0,0,0]
-  const tToA = t => t ? [t.kcal||0, t.protein_g||0, t.carbs_g||0, t.fat_g||0, t.fiber_g||0] : [0,0,0,0,0]
+  const mTo = m => m ? { d: m.description||"", k: m.kcal||0, p: m.protein_g||0, g: m.carbs_g||0, l: m.fat_g||0, f: m.fiber_g||0 } : { d:"", k:0, p:0, g:0, l:0, f:0 }
 
-  const days = Object.entries(dateMap).sort(([a],[b]) => a.localeCompare(b)).map(([date, { meals: dm, totals }]) => {
+  const DATA = Object.entries(dateMap).sort(([a],[b]) => a.localeCompare(b)).map(([date, { meals: dm, totals }]) => {
     const dt = new Date(date)
     const find = (p, t) => dm.find(m => m.person_name === p && m.meal_type === t)
-    const jD = find('Julien','dejeuner'), jN = find('Julien','diner'), jC = find('Julien','collation')
-    const zD = find('Zoé','dejeuner'), zN = find('Zoé','diner'), zC = find('Zoé','collation')
     const jT = totals.find(t => t.person_name === 'Julien'), zT = totals.find(t => t.person_name === 'Zoé')
     return {
-      d: `${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}`,
-      dn: dayNames[dt.getDay()], t: jD?.day_type || '', w: 0,
-      jd: jD?.description||'', jdm: mToA(jD), jn: jN?.description||'', jnm: mToA(jN),
-      jc: jC?.description||'', jcm: mToA(jC), jco: '',
-      zd: zD?.description||'', zdm: mToA(zD), zn: zN?.description||'', znm: mToA(zN),
-      zc: zC?.description||'', zcm: mToA(zC),
-      jt: tToA(jT), zt: tToA(zT), jo: jT?.validated||false, zo: zT?.validated||false,
-      prep: '', pt: '0 min', pf: true, batch: '', cooking: null,
+      date: `${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}`,
+      day: dayNames[dt.getDay()], type: find('Julien','dejeuner')?.day_type || '', wk: 0,
+      dej: { j: mTo(find('Julien','dejeuner')), z: mTo(find('Zoé','dejeuner')) },
+      din: { j: mTo(find('Julien','diner')), z: mTo(find('Zoé','diner')) },
+      col: { j: mTo(find('Julien','collation')), z: mTo(find('Zoé','collation')) },
+      tot: {
+        j: { k: jT?.kcal||0, p: jT?.protein_g||0, g: jT?.carbs_g||0, l: jT?.fat_g||0, f: jT?.fiber_g||0, ok: jT?.validated ? 1 : 0 },
+        z: { k: zT?.kcal||0, p: zT?.protein_g||0, g: zT?.carbs_g||0, l: zT?.fat_g||0, f: zT?.fiber_g||0, ok: zT?.validated ? 1 : 0 },
+      },
+      ck_din: null, ck_prep: null, batch: "",
     }
   })
 
@@ -144,112 +97,38 @@ function reconstructFromNormalized(importData) {
     if (!weekMap[wl][cat]) weekMap[wl][cat] = []
     weekMap[wl][cat].push({ p: item.product_name, q: item.quantity || '', u: '' })
   }
-  const groceries = Object.entries(weekMap).map(([label, cats], i) => ({
-    week: i + 1, label,
+  const GROC = Object.entries(weekMap).map(([label, cats], i) => ({
+    wk: `S${i + 1}`, label,
     cats: Object.entries(cats).map(([name, items]) => ({ name, items }))
   }))
 
-  return { days, groceries, prepData: {} }
+  return { DATA, GROC }
 }
-
-// ── Components ──
-
-const MealCard = ({ emoji, label, descJ, macrosJ, descZ, macrosZ, person }) => {
-  const desc = person === "j" ? descJ : descZ
-  const m = person === "j" ? macrosJ : macrosZ
-  if (!desc) return null
-  return (
-    <div style={{ background:"#fff", borderRadius:16, padding:"16px 18px", marginBottom:10, boxShadow:"0 1px 4px rgba(0,0,0,0.04)" }}>
-      <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:8 }}>
-        <span style={{ fontSize:18 }}>{emoji}</span>
-        <span style={{ fontSize:12, fontWeight:700, color:"#8B7355", letterSpacing:1, textTransform:"uppercase" }}>{label}</span>
-      </div>
-      <div style={{ fontSize:14, color:"#2D2A26", lineHeight:1.5, marginBottom:8 }}>{desc}</div>
-      {m && m[0] > 0 && (
-        <div style={{ display:"flex", gap:12, fontSize:12 }}>
-          <span style={{ fontWeight:700, color:"#2D2A26" }}>{m[0]} kcal</span>
-          <span style={{ color:"#D4634B" }}>P {m[1]}g</span>
-          <span style={{ color:"#8B7355" }}>G {m[2]}g</span>
-          <span style={{ color:"#7BA7BC" }}>L {m[3]}g</span>
-          <span style={{ color:"#6B8F71" }}>F {m[4]}g</span>
-        </div>
-      )}
-    </div>
-  )
-}
-
-const MacroRing = ({ value, max, color, label }) => {
-  const pct = Math.min(value / max, 1)
-  const r = 28, c = 2 * Math.PI * r
-  return (
-    <div style={{ textAlign:"center" }}>
-      <svg width="64" height="64" viewBox="0 0 64 64">
-        <circle cx="32" cy="32" r={r} fill="none" stroke="#EDEAE5" strokeWidth="5" />
-        <circle cx="32" cy="32" r={r} fill="none" stroke={color} strokeWidth="5"
-          strokeDasharray={`${c * pct} ${c * (1 - pct)}`}
-          strokeLinecap="round" transform="rotate(-90 32 32)"
-          style={{ transition: "stroke-dasharray 0.6s ease" }} />
-        <text x="32" y="35" textAnchor="middle" style={{ fontSize:13, fontWeight:700, fill:"#2D2A26" }}>{value}</text>
-      </svg>
-      <div style={{ fontSize:10, color:"#999", marginTop:2 }}>{label}</div>
-    </div>
-  )
-}
-
-const GroceryItem = ({ item, checked, onToggle }) => (
-  <div onClick={onToggle} style={{ display:"flex", alignItems:"center", gap:12, padding:"12px 0", borderBottom:"1px solid #F0EDE8", cursor:"pointer" }}>
-    <div style={{ width:22, height:22, borderRadius:6, border:`2px solid ${checked?"#6B8F71":"#D0C9BE"}`, background:checked?"#6B8F71":"transparent", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, transition:"all 0.15s" }}>
-      {checked && <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>}
-    </div>
-    <div style={{ flex:1 }}>
-      <div style={{ fontSize:14, color:checked?"#BBB":"#2D2A26", textDecoration:checked?"line-through":"none", fontWeight:500, transition:"all 0.15s" }}>{item.p}</div>
-      <div style={{ fontSize:11, color:checked?"#CCC":"#999", marginTop:1 }}>{item.q}{item.u ? ` — ${item.u}` : ''}</div>
-    </div>
-  </div>
-)
-
-const StepTimeline = ({ steps }) => (
-  <div>
-    {steps.map((step, i) => (
-      <div key={i} style={{ display:"flex", gap:12, marginBottom:2 }}>
-        <div style={{ display:"flex", flexDirection:"column", alignItems:"center", width:20, flexShrink:0 }}>
-          <div style={{ width:10, height:10, borderRadius:5, background:"#C4956A", marginTop:6 }} />
-          {i < steps.length - 1 && <div style={{ width:2, flex:1, background:"#E8E4DD", marginTop:2 }} />}
-        </div>
-        <div style={{ flex:1, background:"#fff", borderRadius:12, padding:"12px 14px", marginBottom:6, boxShadow:"0 1px 3px rgba(0,0,0,0.04)" }}>
-          <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:step.detail?4:0 }}>
-            <div style={{ fontSize:13, fontWeight:700, color:"#2D2A26" }}>{step.action}</div>
-            {step.duration && step.duration !== "—" && (
-              <span style={{ fontSize:10, color:"#C4956A", fontWeight:600, fontFamily:"'Outfit',sans-serif", background:"#C4956A10", padding:"2px 6px", borderRadius:4 }}>{step.duration}</span>
-            )}
-          </div>
-          {step.detail && <div style={{ fontSize:12, color:"#777", lineHeight:1.5, marginTop:2 }}>{step.detail}</div>}
-        </div>
-      </div>
-    ))}
-  </div>
-)
 
 // ── Main App ──
 export default function PlanningView() {
   const { importId } = useParams()
   const router = useRouter()
+  const scrollRef = useRef(null)
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [DAYS, setDAYS] = useState([])
-  const [GROCERIES, setGROCERIES] = useState([])
-  const [PREP_DATA, setPREP_DATA] = useState({})
-  const [planLabel, setPlanLabel] = useState('')
+  const [DATA, setDATA] = useState([])
+  const [GROC, setGROC] = useState([])
 
-  const [view, setView] = useState("today")
   const [dayIdx, setDayIdx] = useState(0)
   const [person, setPerson] = useState("j")
-  const [weekIdx, setWeekIdx] = useState(0)
+  const [expandedSection, setExpandedSection] = useState(null)
+  const [activeStep, setActiveStep] = useState(-1)
+  const [tab, setTab] = useState("today")
   const [checked, setChecked] = useState({})
-  const [touchStart, setTouchStart] = useState(null)
+  const [grocWeek, setGrocWeek] = useState(0)
 
   useEffect(() => { loadData() }, [importId])
+
+  useEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollTop = 0
+  }, [dayIdx])
 
   async function loadData() {
     try {
@@ -263,17 +142,14 @@ export default function PlanningView() {
       const result = await res.json()
 
       if (result.import?.raw_json) {
-        const { days, groceries, prepData } = transformData(result.import.raw_json)
-        setDAYS(days)
-        setGROCERIES(groceries)
-        setPREP_DATA(prepData)
+        const { DATA: d, GROC: g } = transformData(result.import.raw_json)
+        setDATA(d)
+        setGROC(g)
       } else {
-        const { days, groceries, prepData } = reconstructFromNormalized(result)
-        setDAYS(days)
-        setGROCERIES(groceries)
-        setPREP_DATA(prepData)
+        const { DATA: d, GROC: g } = reconstructFromNormalized(result)
+        setDATA(d)
+        setGROC(g)
       }
-      setPlanLabel(result.import?.month_label || '')
     } catch (err) {
       setError(err.message)
     } finally {
@@ -281,34 +157,130 @@ export default function PlanningView() {
     }
   }
 
-  const day = DAYS[dayIdx]
-  const total = person === "j" ? day?.jt : day?.zt
-  const tgtK = person === "j" ? 2050 : 1350
-  const tgtP = person === "j" ? 170 : 90
+  const day = DATA[dayIdx]
+  const p = person
+  const tot = day?.tot?.[p]
 
-  const prevDay = () => setDayIdx(i => Math.max(0, i - 1))
-  const nextDay = () => setDayIdx(i => Math.min(DAYS.length - 1, i + 1))
+  const prev = () => { setDayIdx(Math.max(0, dayIdx - 1)); setExpandedSection(null); setActiveStep(-1) }
+  const next = () => { setDayIdx(Math.min(DATA.length - 1, dayIdx + 1)); setExpandedSection(null); setActiveStep(-1) }
+  const toggle = (section) => { setExpandedSection(expandedSection === section ? null : section); setActiveStep(-1) }
 
-  const handleTouchStart = e => setTouchStart(e.touches[0].clientX)
-  const handleTouchEnd = e => {
-    if (!touchStart) return
-    const diff = touchStart - e.changedTouches[0].clientX
-    if (Math.abs(diff) > 50) { diff > 0 ? nextDay() : prevDay() }
-    setTouchStart(null)
+  // ── Inner Components ──
+
+  const MacroBar = ({ k, p: pr, g, l, f, target }) => {
+    const pct = target ? Math.min((k / target) * 100, 100) : 100
+    return (
+      <div style={{ display: "flex", gap: 8, alignItems: "center", fontSize: 12, flexWrap: "wrap" }}>
+        <div style={{ flex: 1, minWidth: 80 }}>
+          <div style={{ background: "#1a1a2e", borderRadius: 6, height: 6, overflow: "hidden" }}>
+            <div style={{ width: `${pct}%`, height: "100%", borderRadius: 6,
+              background: pct > 102 ? "linear-gradient(90deg,#e74c3c,#ff6b6b)" : "linear-gradient(90deg,#f39c12,#f1c40f)",
+              transition: "width 0.4s ease" }} />
+          </div>
+        </div>
+        <span style={{ color: "#f1c40f", fontWeight: 700 }}>{k}</span>
+        <span style={{ color: "#3498db" }}>{pr}P</span>
+        <span style={{ color: "#e67e22" }}>{g}G</span>
+        <span style={{ color: "#9b59b6" }}>{l}L</span>
+        <span style={{ color: "#2ecc71" }}>{f}F</span>
+      </div>
+    )
   }
 
-  const toggleCheck = (key) => setChecked(p => ({ ...p, [key]: !p[key] }))
+  const MealCard = ({ icon, label, desc, macros, onClick, expandable, expanded }) => (
+    <div
+      onClick={expandable ? onClick : undefined}
+      style={{
+        background: expanded ? "#1e2a4a" : "#16213e",
+        borderRadius: 16, padding: "14px 16px", cursor: expandable ? "pointer" : "default",
+        border: expanded ? "1px solid #3498db44" : "1px solid #ffffff08",
+        transition: "all 0.2s ease",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 8 }}>
+        <span style={{ fontSize: 20, lineHeight: 1 }}>{icon}</span>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 1.5, color: "#8899aa", fontWeight: 600 }}>{label}</span>
+            {expandable && (
+              <span style={{ fontSize: 10, color: "#3498db", background: "#3498db22", padding: "2px 8px", borderRadius: 10, fontWeight: 600 }}>
+                {expanded ? "▲ fermer" : "▼ étapes"}
+              </span>
+            )}
+          </div>
+          <p style={{ margin: "4px 0 0", fontSize: 14, color: "#e8e8f0", lineHeight: 1.4, fontWeight: 500 }}>{desc}</p>
+        </div>
+      </div>
+      <MacroBar {...macros} />
+    </div>
+  )
 
-  const groceryWeek = GROCERIES[weekIdx] || GROCERIES[0]
-  const allItems = groceryWeek?.cats?.flatMap(c => c.items) || []
-  const checkedCount = allItems.filter((_, i) => checked[`${weekIdx}-${i}`]).length
+  const StepsList = ({ steps, title, time, portions, alwaysExpand = false }) => (
+    <div style={{ background: "#0d1b2a", borderRadius: 14, padding: 16, margin: "0 0 4px", border: "1px solid #ffffff08" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+        <span style={{ fontSize: 13, fontWeight: 700, color: "#f1c40f" }}>{title}</span>
+        <span style={{ fontSize: 12, color: "#3498db", background: "#3498db18", padding: "3px 10px", borderRadius: 8 }}>⏱ {time}</span>
+      </div>
+      {portions && (
+        <div style={{ marginBottom: 10, display: "flex", flexDirection: "column", gap: 4 }}>
+          <div style={{ fontSize: 12, color: "#e8e8f0", padding: "8px 12px", background: "#1e3a5f22", borderRadius: 8, lineHeight: 1.5, border: "1px solid #3498db22" }}>
+            <span style={{ color: "#f39c12", fontWeight: 700, fontSize: 11, textTransform: "uppercase", letterSpacing: 1 }}>Julien</span>
+            <span style={{ color: "#8899aa", margin: "0 6px" }}>·</span>
+            <span>{portions.pJ}</span>
+          </div>
+          <div style={{ fontSize: 12, color: "#e8e8f0", padding: "8px 12px", background: "#e74c3c0a", borderRadius: 8, lineHeight: 1.5, border: "1px solid #e74c3c18" }}>
+            <span style={{ color: "#e74c3c", fontWeight: 700, fontSize: 11, textTransform: "uppercase", letterSpacing: 1 }}>Zoé</span>
+            <span style={{ color: "#8899aa", margin: "0 6px" }}>·</span>
+            <span>{portions.pZ}</span>
+          </div>
+        </div>
+      )}
+      {steps.map((s, i) => {
+        const isOpen = alwaysExpand || activeStep === i
+        return (
+          <div
+            key={i}
+            onClick={() => !alwaysExpand && setActiveStep(activeStep === i ? -1 : i)}
+            style={{
+              display: "flex", gap: 10, padding: "10px 0",
+              borderTop: i > 0 ? "1px solid #ffffff08" : "none",
+              cursor: alwaysExpand ? "default" : "pointer",
+              opacity: !alwaysExpand && activeStep >= 0 && activeStep !== i ? 0.4 : 1,
+              transition: "opacity 0.2s",
+            }}
+          >
+            <div style={{
+              width: 28, height: 28, borderRadius: "50%", flexShrink: 0,
+              background: isOpen ? "#f39c12" : "#1e3a5f",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: 12, fontWeight: 700, color: isOpen ? "#000" : "#88aacc",
+              transition: "all 0.2s",
+            }}>
+              {i + 1}
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: "#e8e8f0" }}>{s.a}</span>
+                <span style={{ fontSize: 11, color: "#f39c12", fontWeight: 500 }}>{s.t}</span>
+              </div>
+              {isOpen && (
+                <p style={{ margin: "6px 0 0", fontSize: 12, color: "#aabbcc", lineHeight: 1.6 }}>{s.dt}</p>
+              )}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+
+  // ── Loading / Error states ──
 
   if (loading) {
     return (
-      <div style={{ minHeight:"100vh", background:"#F7F4EF", display:"flex", alignItems:"center", justifyContent:"center" }}>
-        <div style={{ textAlign:"center", color:"#8B7355" }}>
-          <div style={{ width:40, height:40, border:"3px solid #E8E4DD", borderTop:"3px solid #C4956A", borderRadius:"50%", animation:"spin 1s linear infinite", margin:"0 auto 16px" }} />
-          <div style={{ fontFamily:"'Outfit',sans-serif", fontSize:14 }}>Chargement...</div>
+      <div style={{ minHeight: "100vh", background: "#0a0f1e", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ textAlign: "center", color: "#667788" }}>
+          <div style={{ width: 40, height: 40, border: "3px solid #1e3a5f", borderTop: "3px solid #f39c12", borderRadius: "50%", animation: "spin 1s linear infinite", margin: "0 auto 16px" }} />
+          <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14 }}>Chargement...</div>
         </div>
         <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
       </div>
@@ -317,11 +289,11 @@ export default function PlanningView() {
 
   if (error) {
     return (
-      <div style={{ minHeight:"100vh", background:"#F7F4EF", display:"flex", alignItems:"center", justifyContent:"center", padding:24 }}>
-        <div style={{ textAlign:"center", color:"#D4634B" }}>
-          <div style={{ fontSize:40, marginBottom:12 }}>!</div>
-          <div style={{ fontSize:16, fontWeight:600 }}>{error}</div>
-          <button onClick={() => router.push('/planning')} style={{ marginTop:16, padding:"10px 24px", borderRadius:10, border:"none", background:"#C4956A", color:"#fff", fontWeight:600, cursor:"pointer" }}>
+      <div style={{ minHeight: "100vh", background: "#0a0f1e", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+        <div style={{ textAlign: "center", color: "#e74c3c" }}>
+          <div style={{ fontSize: 40, marginBottom: 12 }}>!</div>
+          <div style={{ fontSize: 16, fontWeight: 600 }}>{error}</div>
+          <button onClick={() => router.push('/planning')} style={{ marginTop: 16, padding: "10px 24px", borderRadius: 10, border: "none", background: "#f39c12", color: "#000", fontWeight: 600, cursor: "pointer" }}>
             Retour
           </button>
         </div>
@@ -331,283 +303,266 @@ export default function PlanningView() {
 
   if (!day) return null
 
+  const emojiKey = Object.keys(EMOJIS).find(k => day.type?.includes(k))
+
+  // ── Render ──
   return (
-    <div style={{ minHeight:"100vh", background:"#F7F4EF", fontFamily:"'Source Serif 4','Georgia',serif", maxWidth:480, margin:"0 auto", position:"relative", overflow:"hidden" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <div style={{
+      maxWidth: 430, margin: "0 auto", minHeight: "100vh",
+      background: "#0a0f1e", color: "#e8e8f0",
+      fontFamily: "'DM Sans', 'Nunito', -apple-system, sans-serif",
+      display: "flex", flexDirection: "column",
+    }}>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Organic bg shapes */}
-      <div style={{ position:"fixed", top:-80, right:-60, width:220, height:220, borderRadius:"50%", background:"#6B8F7118", zIndex:0 }} />
-      <div style={{ position:"fixed", top:200, left:-80, width:180, height:180, borderRadius:"50%", background:"#C4956A12", zIndex:0 }} />
-      <div style={{ position:"fixed", bottom:40, right:-40, width:160, height:160, borderRadius:"50%", background:"#D4634B08", zIndex:0 }} />
-
-      {/* Person toggle */}
-      <div style={{ position:"relative", zIndex:2, display:"flex", justifyContent:"center", paddingTop:16 }}>
-        <div style={{ display:"flex", background:"#EDEAE5", borderRadius:20, padding:3 }}>
-          {[["j","Julien"],["z","Zoé"]].map(([id,n]) => (
-            <button key={id} onClick={() => setPerson(id)}
-              style={{ padding:"6px 20px", borderRadius:17, border:"none", background:person===id?"#fff":"transparent",
-                color:person===id?"#2D2A26":"#999", fontSize:13, fontWeight:600, cursor:"pointer",
-                fontFamily:"'Outfit',sans-serif", boxShadow:person===id?"0 1px 3px rgba(0,0,0,0.08)":"none", transition:"all 0.2s" }}>
-              {n}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Nav tabs */}
-      <div style={{ position:"relative", zIndex:2, display:"flex", justifyContent:"center", gap:4, padding:"12px 16px 8px" }}>
-        {[["today","Aujourd'hui","🍽️"],["prep","Ce soir","🔪"],["courses","Courses","🛒"]].map(([id,label,ico]) => (
-          <button key={id} onClick={() => setView(id)}
-            style={{ padding:"8px 16px", borderRadius:12, border:view===id?"2px solid #C4956A":"2px solid transparent",
-              background:view===id?"#C4956A12":"transparent", color:view===id?"#8B7355":"#AAA",
-              fontSize:13, fontWeight:600, cursor:"pointer", fontFamily:"'Outfit',sans-serif", transition:"all 0.2s" }}>
-            {ico} {label}
-          </button>
-        ))}
-      </div>
-
-      {/* ── VIEW: TODAY ── */}
-      {view === "today" && (
-        <div style={{ position:"relative", zIndex:1, padding:"0 16px 100px" }}
-          onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-
-          {/* Day header */}
-          <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"12px 0 16px" }}>
-            <button onClick={prevDay} disabled={dayIdx===0}
-              style={{ width:36, height:36, borderRadius:18, border:"none", background:dayIdx===0?"transparent":"#EDEAE5",
-                color:"#8B7355", fontSize:18, cursor:dayIdx===0?"default":"pointer", opacity:dayIdx===0?0.3:1 }}>&#8249;</button>
-            <div style={{ textAlign:"center" }}>
-              <div style={{ fontSize:24, fontWeight:800, color:"#2D2A26" }}>{day.dn} {day.d}</div>
-            </div>
-            <button onClick={nextDay} disabled={dayIdx===DAYS.length-1}
-              style={{ width:36, height:36, borderRadius:18, border:"none", background:dayIdx===DAYS.length-1?"transparent":"#EDEAE5",
-                color:"#8B7355", fontSize:18, cursor:dayIdx===DAYS.length-1?"default":"pointer", opacity:dayIdx===DAYS.length-1?0.3:1 }}>&#8250;</button>
+      {/* Header */}
+      <div style={{ padding: "16px 16px 0", background: "linear-gradient(180deg, #0f1a30 0%, #0a0f1e 100%)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+          <div>
+            <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, letterSpacing: -0.5 }}>
+              myko<span style={{ color: "#f39c12" }}>.</span>
+            </h1>
           </div>
-
-          {/* Macro summary rings */}
-          {total && (
-            <div style={{ background:"#fff", borderRadius:20, padding:"16px 12px", marginBottom:14, boxShadow:"0 2px 8px rgba(0,0,0,0.04)", display:"flex", justifyContent:"space-around", alignItems:"center" }}>
-              <MacroRing value={total[0]} max={tgtK} color={total[0]>tgtK+100?"#D4634B":total[0]<tgtK-100?"#C4956A":"#6B8F71"} label="kcal" />
-              <MacroRing value={total[1]} max={tgtP} color="#D4634B" label="Prot" />
-              <MacroRing value={total[2]} max={person==="j"?170:120} color="#C4956A" label="Gluc" />
-              <MacroRing value={total[3]} max={person==="j"?70:55} color="#7BA7BC" label="Lip" />
-              <MacroRing value={total[4]} max={person==="j"?27:20} color="#6B8F71" label="Fib" />
-            </div>
-          )}
-
-          {/* PDJ (Julien only) */}
-          {person === "j" && (
-            <MealCard emoji="🌅" label="Petit-déjeuner" descJ="200g skyr + 3 œufs durs (180g)" macrosJ={[383,44,9,18,0]} person="j" />
-          )}
-
-          {/* Meals */}
-          <MealCard emoji="🌤️" label="Déjeuner" descJ={day.jd} macrosJ={day.jdm} descZ={day.zd} macrosZ={day.zdm} person={person} />
-          <MealCard emoji="🌙" label="Dîner" descJ={day.jn} macrosJ={day.jnm} descZ={day.zn} macrosZ={day.znm} person={person} />
-          <MealCard emoji="🥜" label="Collation" descJ={day.jc} macrosJ={day.jcm} descZ={day.zc} macrosZ={day.zcm} person={person} />
-
-          {/* Batch info */}
-          {day.batch && (
-            <div style={{ background:"#FAF3E8", borderRadius:12, padding:"10px 14px", marginTop:4, borderLeft:"3px solid #C4956A" }}>
-              <div style={{ fontSize:11, fontWeight:700, color:"#C4956A", fontFamily:"'Outfit',sans-serif", letterSpacing:0.5 }}>📦 BATCH</div>
-              <div style={{ fontSize:12, color:"#8B7355", marginTop:2 }}>{day.batch}</div>
-            </div>
-          )}
-
-          {/* Day dots */}
-          <div style={{ display:"flex", justifyContent:"center", gap:4, marginTop:16, flexWrap:"wrap" }}>
-            {DAYS.map((_, i) => (
-              <div key={i} onClick={() => setDayIdx(i)}
-                style={{ width:i===dayIdx?20:8, height:8, borderRadius:4, background:i===dayIdx?"#C4956A":"#D0C9BE", cursor:"pointer", transition:"all 0.2s" }} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── VIEW: PREP ── */}
-      {view === "prep" && (() => {
-        const data = PREP_DATA[day.d]
-        const tmr = dayIdx < DAYS.length - 1 ? DAYS[dayIdx + 1] : null
-
-        return (
-          <div style={{ position:"relative", zIndex:1, padding:"0 16px 100px" }}>
-
-            {/* Header with nav */}
-            <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"16px 0" }}>
-              <button onClick={prevDay} disabled={dayIdx===0}
-                style={{ width:36, height:36, borderRadius:18, border:"none", background:dayIdx===0?"transparent":"#EDEAE5",
-                  color:"#8B7355", fontSize:18, cursor:dayIdx===0?"default":"pointer", opacity:dayIdx===0?0.3:1 }}>&#8249;</button>
-              <div style={{ textAlign:"center" }}>
-                <div style={{ fontSize:11, fontWeight:600, color:"#999", fontFamily:"'Outfit',sans-serif", letterSpacing:1 }}>CE SOIR</div>
-                <div style={{ fontSize:22, fontWeight:800, color:"#2D2A26" }}>{day.dn} {day.d}</div>
-              </div>
-              <button onClick={nextDay} disabled={dayIdx===DAYS.length-1}
-                style={{ width:36, height:36, borderRadius:18, border:"none", background:dayIdx===DAYS.length-1?"transparent":"#EDEAE5",
-                  color:"#8B7355", fontSize:18, cursor:dayIdx===DAYS.length-1?"default":"pointer", opacity:dayIdx===DAYS.length-1?0.3:1 }}>&#8250;</button>
-            </div>
-
-            {/* SECTION 1: DÎNER CE SOIR */}
-            {data?.dinner && (
-              <div style={{ marginBottom:24 }}>
-                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:10, padding:"0 2px" }}>
-                  <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                    <span style={{ fontSize:20 }}>🍽️</span>
-                    <div>
-                      <div style={{ fontSize:14, fontWeight:800, color:"#2D2A26" }}>Dîner ce soir</div>
-                      <div style={{ fontSize:12, color:"#8B7355" }}>{data.dinner.name}</div>
-                    </div>
-                  </div>
-                  <div style={{ fontSize:12, fontWeight:600, color:"#D4634B", background:"#D4634B12", padding:"4px 10px", borderRadius:8, fontFamily:"'Outfit',sans-serif" }}>
-                    ⏱️ {data.dinner.totalTime}
-                  </div>
-                </div>
-
-                {/* Portions J + Z */}
-                <div style={{ background:"#fff", borderRadius:12, padding:"10px 14px", marginBottom:10, boxShadow:"0 1px 3px rgba(0,0,0,0.04)", display:"flex", gap:12 }}>
-                  <div style={{ flex:1, paddingLeft:4, borderLeft:"3px solid #D4634B30" }}>
-                    <div style={{ fontSize:9, fontWeight:700, color:"#D4634B", fontFamily:"'Outfit',sans-serif" }}>JULIEN</div>
-                    <div style={{ fontSize:11, color:"#555", lineHeight:1.4 }}>{day.jn}</div>
-                  </div>
-                  <div style={{ flex:1, paddingLeft:4, borderLeft:"3px solid #6B8F7130" }}>
-                    <div style={{ fontSize:9, fontWeight:700, color:"#6B8F71", fontFamily:"'Outfit',sans-serif" }}>ZOÉ</div>
-                    <div style={{ fontSize:11, color:"#555", lineHeight:1.4 }}>{day.zn}</div>
-                  </div>
-                </div>
-
-                <StepTimeline steps={data.dinner.steps} />
-              </div>
-            )}
-
-            {/* SECTION 2: PREP DEMAIN */}
-            {data?.prep ? (
-              <div style={{ marginBottom:20 }}>
-                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:10, padding:"0 2px" }}>
-                  <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                    <span style={{ fontSize:20 }}>📦</span>
-                    <div>
-                      <div style={{ fontSize:14, fontWeight:800, color:"#2D2A26" }}>Prep pour demain</div>
-                      <div style={{ fontSize:12, color:"#8B7355" }}>Après le dîner ou en parallèle</div>
-                    </div>
-                  </div>
-                  <div style={{ fontSize:12, fontWeight:600, color:"#C4956A", background:"#C4956A12", padding:"4px 10px", borderRadius:8, fontFamily:"'Outfit',sans-serif" }}>
-                    ⏱️ {data.prep.totalTime}
-                  </div>
-                </div>
-
-                {/* Dish recap */}
-                <div style={{ background:"#fff", borderRadius:12, padding:"12px 14px", marginBottom:10, boxShadow:"0 1px 3px rgba(0,0,0,0.04)" }}>
-                  {data.prep.dishes.map((dish, i) => (
-                    <div key={i} style={{ display:"flex", alignItems:"center", gap:10, padding:"6px 0", borderBottom:i<data.prep.dishes.length-1?"1px solid #F0EDE8":"none" }}>
-                      <span style={{ fontSize:16 }}>{dish.type==="batch"?"🍲":"📦"}</span>
-                      <div>
-                        <div style={{ fontSize:13, fontWeight:600, color:"#2D2A26" }}>{dish.name}</div>
-                        <div style={{ fontSize:10, color:"#999" }}>→ {dish.for}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <StepTimeline steps={data.prep.steps} />
-              </div>
-            ) : !data?.dinner ? (
-              <div style={{ background:"#EDF7EF", borderRadius:20, padding:"32px 24px", textAlign:"center", marginBottom:20 }}>
-                <div style={{ fontSize:40, marginBottom:8 }}>🎉</div>
-                <div style={{ fontSize:18, fontWeight:700, color:"#6B8F71" }}>Soir libre !</div>
-                <div style={{ fontSize:13, color:"#6B8F71", marginTop:4, opacity:0.8 }}>Pas de prep. Tout se cuisine frais demain.</div>
-              </div>
-            ) : (
-              <div style={{ background:"#EDF7EF", borderRadius:14, padding:"14px 18px", marginBottom:20, display:"flex", alignItems:"center", gap:10 }}>
-                <span style={{ fontSize:22 }}>✅</span>
-                <div>
-                  <div style={{ fontSize:13, fontWeight:700, color:"#6B8F71" }}>Pas de prep ce soir</div>
-                  <div style={{ fontSize:11, color:"#6B8F71", opacity:0.8 }}>Après le dîner : repos !</div>
-                </div>
-              </div>
-            )}
-
-            {/* Tomorrow preview */}
-            {tmr && (
-              <div>
-                <div style={{ fontSize:13, fontWeight:700, color:"#999", fontFamily:"'Outfit',sans-serif", marginBottom:10, paddingLeft:4 }}>
-                  DEMAIN — {tmr.dn} {tmr.d}
-                </div>
-                <div style={{ background:"#fff", borderRadius:14, padding:"14px 16px", marginBottom:8, boxShadow:"0 1px 3px rgba(0,0,0,0.04)" }}>
-                  <div style={{ display:"flex", gap:12 }}>
-                    <div style={{ flex:1 }}>
-                      <div style={{ fontSize:10, fontWeight:700, color:"#8B7355", letterSpacing:1, marginBottom:4 }}>🌤️ MIDI</div>
-                      <div style={{ fontSize:11, color:"#2D2A26", lineHeight:1.4 }}>{tmr.jd?.slice(0, 60)}</div>
-                    </div>
-                    <div style={{ flex:1 }}>
-                      <div style={{ fontSize:10, fontWeight:700, color:"#8B7355", letterSpacing:1, marginBottom:4 }}>🌙 SOIR</div>
-                      <div style={{ fontSize:11, color:"#2D2A26", lineHeight:1.4 }}>{tmr.jn?.slice(0, 60)}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Day dots */}
-            <div style={{ display:"flex", justifyContent:"center", gap:4, marginTop:16, flexWrap:"wrap" }}>
-              {DAYS.map((_, i) => (
-                <div key={i} onClick={() => setDayIdx(i)}
-                  style={{ width:i===dayIdx?20:8, height:8, borderRadius:4, background:i===dayIdx?"#C4956A":"#D0C9BE", cursor:"pointer", transition:"all 0.2s" }} />
-              ))}
-            </div>
-          </div>
-        )
-      })()}
-
-      {/* ── VIEW: COURSES ── */}
-      {view === "courses" && groceryWeek && (
-        <div style={{ position:"relative", zIndex:1, padding:"0 16px 100px" }}>
-          <div style={{ textAlign:"center", padding:"16px 0 8px" }}>
-            <div style={{ fontSize:20, fontWeight:800, color:"#2D2A26" }}>Listes de courses</div>
-          </div>
-
-          {/* Week selector */}
-          <div style={{ display:"flex", gap:6, marginBottom:12, justifyContent:"center" }}>
-            {GROCERIES.map((g, i) => (
-              <button key={i} onClick={() => setWeekIdx(i)}
-                style={{ padding:"6px 16px", borderRadius:10, border:`2px solid ${weekIdx===i?"#6B8F71":"#E0DCD5"}`,
-                  background:weekIdx===i?"#6B8F71":"transparent", color:weekIdx===i?"#fff":"#999",
-                  fontSize:12, fontWeight:600, cursor:"pointer", fontFamily:"'Outfit',sans-serif" }}>
-                S{g.week}
+          <div style={{
+            display: "flex", background: "#16213e", borderRadius: 10, overflow: "hidden", border: "1px solid #ffffff10",
+          }}>
+            {["j", "z"].map(pp => (
+              <button key={pp} onClick={() => setPerson(pp)} style={{
+                padding: "6px 16px", border: "none", cursor: "pointer", fontSize: 13, fontWeight: 600,
+                background: person === pp ? "#1e3a5f" : "transparent",
+                color: person === pp ? "#f1c40f" : "#667788",
+                transition: "all 0.2s",
+              }}>
+                {pp === "j" ? "Julien" : "Zoé"}
               </button>
             ))}
           </div>
+        </div>
 
-          {/* Progress */}
-          <div style={{ background:"#fff", borderRadius:12, padding:"12px 16px", marginBottom:14, boxShadow:"0 1px 4px rgba(0,0,0,0.04)" }}>
-            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:6 }}>
-              <span style={{ fontSize:13, fontWeight:600, color:"#2D2A26", fontFamily:"'Outfit',sans-serif" }}>{groceryWeek.label}</span>
-              <span style={{ fontSize:12, color:checkedCount===allItems.length?"#6B8F71":"#999", fontWeight:600, fontFamily:"'Outfit',sans-serif" }}>
-                {checkedCount}/{allItems.length}
-              </span>
+        {/* Day Nav */}
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+          <button onClick={prev} disabled={dayIdx === 0} style={{
+            width: 36, height: 36, borderRadius: 10, border: "none", cursor: "pointer",
+            background: "#16213e", color: "#88aacc", fontSize: 16, opacity: dayIdx === 0 ? 0.3 : 1,
+          }}>&#8592;</button>
+          <div style={{ flex: 1, textAlign: "center" }}>
+            <div style={{ fontSize: 18, fontWeight: 700 }}>
+              {day.day} {day.date}
+              <span style={{ marginLeft: 6 }}>{emojiKey ? EMOJIS[emojiKey] : ""}</span>
             </div>
-            <div style={{ height:4, borderRadius:2, background:"#EDEAE5", overflow:"hidden" }}>
-              <div style={{ height:"100%", width:`${allItems.length ? (checkedCount/allItems.length)*100 : 0}%`, background:"#6B8F71", borderRadius:2, transition:"width 0.3s" }} />
+            <div style={{ fontSize: 11, color: "#667788", marginTop: 2 }}>Semaine {day.wk} · {day.type}</div>
+          </div>
+          <button onClick={next} disabled={dayIdx === DATA.length - 1} style={{
+            width: 36, height: 36, borderRadius: 10, border: "none", cursor: "pointer",
+            background: "#16213e", color: "#88aacc", fontSize: 16, opacity: dayIdx === DATA.length - 1 ? 0.3 : 1,
+          }}>&#8594;</button>
+        </div>
+
+        {/* Total bar */}
+        {tot && (
+          <div style={{
+            background: tot.ok ? "linear-gradient(135deg, #1b4332, #0d2818)" : "linear-gradient(135deg, #4a1a1a, #2a0e0e)",
+            borderRadius: 12, padding: "10px 14px", marginBottom: 14,
+            border: tot.ok ? "1px solid #2ecc7133" : "1px solid #e74c3c33",
+          }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+              <span style={{ fontSize: 12, fontWeight: 600, color: tot.ok ? "#2ecc71" : "#e74c3c" }}>
+                {tot.ok ? "✅ Dans la cible" : "⚠️ Hors cible"}
+              </span>
+              <span style={{ fontSize: 18, fontWeight: 800, color: "#f1c40f" }}>{tot.k} kcal</span>
+            </div>
+            <MacroBar k={tot.k} p={tot.p} g={tot.g} l={tot.l} f={tot.f} target={p === "j" ? 2050 : 1350} />
+          </div>
+        )}
+      </div>
+
+      {/* ── TAB: TODAY ── */}
+      {tab === "today" && (
+        <>
+          <div ref={scrollRef} style={{ flex: 1, overflow: "auto", padding: "0 16px 24px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+
+              {/* PDJ (Julien only) */}
+              {p === "j" && (
+                <MealCard icon={MEAL_ICONS.pdj} label="Petit-déjeuner" desc={PDJ_J.d}
+                  macros={{ k: PDJ_J.k, p: PDJ_J.p, g: PDJ_J.g, l: PDJ_J.l, f: PDJ_J.f }} />
+              )}
+
+              {/* Déjeuner */}
+              <MealCard icon={MEAL_ICONS.dej} label="Déjeuner" desc={day.dej[p].d}
+                macros={{ k: day.dej[p].k, p: day.dej[p].p, g: day.dej[p].g, l: day.dej[p].l, f: day.dej[p].f }} />
+
+              {/* Dîner — expandable */}
+              <MealCard icon={MEAL_ICONS.din} label="Dîner" desc={day.din[p].d}
+                macros={{ k: day.din[p].k, p: day.din[p].p, g: day.din[p].g, l: day.din[p].l, f: day.din[p].f }}
+                expandable={!!day.ck_din} expanded={expandedSection === "din"} onClick={() => toggle("din")} />
+
+              {expandedSection === "din" && day.ck_din && (
+                <StepsList steps={day.ck_din.steps} title={day.ck_din.name} time={day.ck_din.time}
+                  portions={{ pJ: day.ck_din.pJ, pZ: day.ck_din.pZ }} />
+              )}
+
+              {/* Collation */}
+              <MealCard icon={MEAL_ICONS.col} label="Collation" desc={day.col[p].d}
+                macros={{ k: day.col[p].k, p: day.col[p].p, g: day.col[p].g, l: day.col[p].l, f: day.col[p].f }} />
+
+              {/* Batch note */}
+              {day.batch && (
+                <div style={{ fontSize: 12, color: "#667788", padding: "6px 12px", background: "#ffffff04", borderRadius: 10, textAlign: "center" }}>
+                  📦 {day.batch}
+                </div>
+              )}
+
+              {/* Separator */}
+              <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #ffffff15, transparent)", margin: "8px 0" }} />
+
+              {/* Prep section */}
+              {day.ck_prep ? (
+                <>
+                  <div
+                    onClick={() => toggle("prep")}
+                    style={{
+                      background: expandedSection === "prep" ? "#1a2a1a" : "#16213e",
+                      borderRadius: 16, padding: "14px 16px", cursor: "pointer",
+                      border: expandedSection === "prep" ? "1px solid #2ecc7133" : "1px solid #ffffff08",
+                      transition: "all 0.2s",
+                    }}
+                  >
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{ fontSize: 18 }}>👨‍🍳</span>
+                        <div>
+                          <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 1.5, color: "#2ecc71", fontWeight: 600 }}>
+                            À préparer ce soir
+                          </div>
+                          <div style={{ fontSize: 13, color: "#e8e8f0", fontWeight: 500, marginTop: 2 }}>
+                            {day.ck_prep.dishes.map(d => d.n).join(" + ")}
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ textAlign: "right" }}>
+                        <div style={{ fontSize: 14, fontWeight: 700, color: "#f39c12" }}>⏱ {day.ck_prep.time}</div>
+                        <span style={{ fontSize: 10, color: "#3498db", fontWeight: 600 }}>
+                          {expandedSection === "prep" ? "▲" : "▼ voir"}
+                        </span>
+                      </div>
+                    </div>
+                    {day.ck_prep.dishes.length > 0 && (
+                      <div style={{ display: "flex", gap: 6, marginTop: 8, flexWrap: "wrap" }}>
+                        {day.ck_prep.dishes.map((d, i) => (
+                          <span key={i} style={{
+                            fontSize: 11, padding: "3px 10px", borderRadius: 8,
+                            background: "#2ecc7118", color: "#2ecc71", fontWeight: 500,
+                          }}>
+                            → {d.f}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {expandedSection === "prep" && (
+                    <StepsList steps={day.ck_prep.steps} title="Préparation" time={day.ck_prep.time} alwaysExpand={true} />
+                  )}
+                </>
+              ) : (
+                <div style={{
+                  background: "#16213e", borderRadius: 16, padding: "14px 16px",
+                  border: "1px solid #ffffff08", textAlign: "center",
+                }}>
+                  <span style={{ fontSize: 18 }}>🎉</span>
+                  <div style={{ fontSize: 13, color: "#667788", marginTop: 4 }}>Rien à préparer ce soir</div>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Categories */}
-          {groceryWeek.cats.map((cat, ci) => {
-            let globalStart = 0
-            for (let k = 0; k < ci; k++) globalStart += groceryWeek.cats[k].items.length
-            return (
-              <div key={ci} style={{ marginBottom:16 }}>
-                <div style={{ fontSize:11, fontWeight:700, color:"#C4956A", letterSpacing:1, textTransform:"uppercase",
-                  fontFamily:"'Outfit',sans-serif", padding:"8px 0 4px" }}>{cat.name}</div>
-                <div style={{ background:"#fff", borderRadius:14, padding:"4px 16px", boxShadow:"0 1px 4px rgba(0,0,0,0.04)" }}>
-                  {cat.items.map((item, ii) => (
-                    <GroceryItem key={ii} item={item}
-                      checked={!!checked[`${weekIdx}-${globalStart + ii}`]}
-                      onToggle={() => toggleCheck(`${weekIdx}-${globalStart + ii}`)} />
-                  ))}
-                </div>
+          {/* Day dots */}
+          <div style={{
+            padding: "10px 16px 8px", display: "flex", justifyContent: "center", gap: 4, flexWrap: "wrap",
+          }}>
+            {DATA.map((d, i) => (
+              <button key={i} onClick={() => { setDayIdx(i); setExpandedSection(null); setActiveStep(-1) }} style={{
+                width: i === dayIdx ? 20 : 8, height: 8, borderRadius: 4, border: "none", cursor: "pointer",
+                background: i === dayIdx ? "#f39c12" : d.wk === day.wk ? "#1e3a5f" : "#0d1b2a",
+                transition: "all 0.3s ease",
+              }} />
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* ── TAB: COURSES ── */}
+      {tab === "courses" && (
+        <div style={{ flex: 1, overflow: "auto", padding: "0 16px 24px" }}>
+          {/* Week selector */}
+          <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
+            {GROC.map((g, i) => (
+              <button key={i} onClick={() => setGrocWeek(i)} style={{
+                flex: 1, padding: "8px 4px", borderRadius: 10, border: "none", cursor: "pointer",
+                background: grocWeek === i ? "#1e3a5f" : "#16213e",
+                color: grocWeek === i ? "#f1c40f" : "#667788",
+                fontSize: 12, fontWeight: 600, transition: "all 0.2s",
+              }}>{g.wk}</button>
+            ))}
+          </div>
+          <div style={{ fontSize: 11, color: "#667788", textAlign: "center", marginBottom: 12 }}>
+            {GROC[grocWeek]?.label}
+          </div>
+          {GROC[grocWeek]?.cats.map((cat, ci) => (
+            <div key={ci} style={{ marginBottom: 12 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#e8e8f0", marginBottom: 6, padding: "6px 10px", background: "#1e3a5f", borderRadius: 8 }}>
+                {cat.name}
               </div>
-            )
-          })}
+              {cat.items.map((item, ii) => {
+                const key = `${grocWeek}-${ci}-${ii}`
+                const isDone = checked[key]
+                return (
+                  <div key={ii} onClick={() => setChecked(prev => ({ ...prev, [key]: !prev[key] }))}
+                    style={{
+                      display: "flex", alignItems: "center", gap: 10, padding: "8px 10px",
+                      borderBottom: "1px solid #ffffff06", cursor: "pointer",
+                      opacity: isDone ? 0.4 : 1, transition: "opacity 0.2s",
+                    }}>
+                    <div style={{
+                      width: 20, height: 20, borderRadius: 6, flexShrink: 0,
+                      border: isDone ? "2px solid #2ecc71" : "2px solid #334455",
+                      background: isDone ? "#2ecc7133" : "transparent",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 12, color: "#2ecc71",
+                    }}>{isDone ? "✓" : ""}</div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 13, color: "#e8e8f0", fontWeight: 500, textDecoration: isDone ? "line-through" : "none" }}>
+                        {item.p}
+                      </div>
+                      <div style={{ fontSize: 11, color: "#667788" }}>{item.u}</div>
+                    </div>
+                    <div style={{ fontSize: 12, color: "#f39c12", fontWeight: 600, flexShrink: 0 }}>{item.q}</div>
+                  </div>
+                )
+              })}
+            </div>
+          ))}
         </div>
       )}
+
+      {/* Bottom Tab Bar */}
+      <div style={{
+        display: "flex", borderTop: "1px solid #ffffff10",
+        background: "#0d1225",
+      }}>
+        {[{ id: "today", icon: "📋", label: "Aujourd'hui" }, { id: "courses", icon: "🛒", label: "Courses" }].map(t => (
+          <button key={t.id} onClick={() => setTab(t.id)} style={{
+            flex: 1, padding: "10px 0 12px", border: "none", cursor: "pointer",
+            background: "transparent", display: "flex", flexDirection: "column", alignItems: "center", gap: 2,
+          }}>
+            <span style={{ fontSize: 18 }}>{t.icon}</span>
+            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: 0.5,
+              color: tab === t.id ? "#f39c12" : "#556677",
+            }}>{t.label}</span>
+          </button>
+        ))}
+      </div>
     </div>
   )
 }
