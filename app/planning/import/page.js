@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { supabase } from '@/lib/supabaseClient'
 import { Upload, FileSpreadsheet, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react'
 
 export default function ImportPage() {
@@ -12,6 +13,7 @@ export default function ImportPage() {
   const [uploading, setUploading] = useState(false)
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
+  // Auth is handled by ProtectedShell, no need to double-check here
 
   function handleDragOver(e) {
     e.preventDefault()
@@ -49,13 +51,20 @@ export default function ImportPage() {
     setError(null)
 
     try {
+      const { data: { session } } = await supabase.auth.getSession()
+
       const formData = new FormData()
       formData.append('file', file)
 
-      const res = await fetch('/api/planning/import', {
-        method: 'POST',
-        body: formData
-      })
+      const fetchOptions = { method: 'POST', body: formData }
+      if (session?.access_token) {
+        fetchOptions.headers = { 'Authorization': `Bearer ${session.access_token}` }
+      } else {
+        // Pas de session localStorage, essayer via cookies
+        fetchOptions.credentials = 'include'
+      }
+
+      const res = await fetch('/api/planning/import', fetchOptions)
 
       const data = await res.json()
 

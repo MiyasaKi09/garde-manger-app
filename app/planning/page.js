@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
+import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
 import { Upload, FileSpreadsheet, Trash2, Calendar, ChevronRight } from 'lucide-react'
 
@@ -29,7 +30,7 @@ export default function PlanningPage() {
 
   async function loadImports() {
     try {
-      const res = await fetch('/api/planning/imports')
+      const res = await authFetch('/api/planning/imports')
       const data = await res.json()
       if (data.imports) setImports(data.imports)
     } catch (err) {
@@ -41,7 +42,7 @@ export default function PlanningPage() {
     e.stopPropagation()
     if (!confirm('Supprimer ce plan importé ?')) return
     try {
-      await fetch(`/api/planning/imports/${importId}`, { method: 'DELETE' })
+      await authFetch(`/api/planning/imports/${importId}`, { method: 'DELETE' })
       setImports(prev => prev.filter(i => i.id !== importId))
     } catch (err) {
       console.error('Erreur suppression:', err)
