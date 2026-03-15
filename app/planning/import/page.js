@@ -13,19 +13,7 @@ export default function ImportPage() {
   const [uploading, setUploading] = useState(false)
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
-  const [authChecked, setAuthChecked] = useState(false)
-
-  useEffect(() => {
-    async function checkAuth() {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session) {
-        router.push('/login')
-        return
-      }
-      setAuthChecked(true)
-    }
-    checkAuth()
-  }, [])
+  // Auth is handled by ProtectedShell, no need to double-check here
 
   function handleDragOver(e) {
     e.preventDefault()
@@ -63,28 +51,22 @@ export default function ImportPage() {
     setError(null)
 
     try {
-      const { data: { session }, error: sessionError } = await supabase.auth.getSession()
-      console.log('[Import] Session:', { hasSession: !!session, hasToken: !!session?.access_token, error: sessionError?.message })
-      if (!session) {
-        setError('Session expirée, veuillez vous reconnecter')
-        router.push('/login')
-        return
-      }
+      const { data: { session } } = await supabase.auth.getSession()
 
       const formData = new FormData()
       formData.append('file', file)
 
-      console.log('[Import] Envoi avec token:', session.access_token?.substring(0, 20) + '...')
-      const res = await fetch('/api/planning/import', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Authorization': `Bearer ${session.access_token}`
-        }
-      })
+      const fetchOptions = { method: 'POST', body: formData }
+      if (session?.access_token) {
+        fetchOptions.headers = { 'Authorization': `Bearer ${session.access_token}` }
+      } else {
+        // Pas de session localStorage, essayer via cookies
+        fetchOptions.credentials = 'include'
+      }
+
+      const res = await fetch('/api/planning/import', fetchOptions)
 
       const data = await res.json()
-      console.log('[Import] Réponse:', res.status, data)
 
       if (!res.ok) {
         setError(data.error || 'Erreur lors de l\'import')
@@ -97,10 +79,6 @@ export default function ImportPage() {
     } finally {
       setUploading(false)
     }
-  }
-
-  if (!authChecked) {
-    return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p>Chargement...</p></div>
   }
 
   return (
