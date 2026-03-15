@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { supabase } from '@/lib/supabaseClient'
 import { Upload, FileSpreadsheet, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react'
 
 export default function ImportPage() {
@@ -12,6 +13,19 @@ export default function ImportPage() {
   const [uploading, setUploading] = useState(false)
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
+  const [authChecked, setAuthChecked] = useState(false)
+
+  useEffect(() => {
+    async function checkAuth() {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) {
+        router.push('/login')
+        return
+      }
+      setAuthChecked(true)
+    }
+    checkAuth()
+  }, [])
 
   function handleDragOver(e) {
     e.preventDefault()
@@ -54,7 +68,8 @@ export default function ImportPage() {
 
       const res = await fetch('/api/planning/import', {
         method: 'POST',
-        body: formData
+        body: formData,
+        credentials: 'include'
       })
 
       const data = await res.json()
@@ -70,6 +85,10 @@ export default function ImportPage() {
     } finally {
       setUploading(false)
     }
+  }
+
+  if (!authChecked) {
+    return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p>Chargement...</p></div>
   }
 
   return (
