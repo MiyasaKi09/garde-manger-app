@@ -63,7 +63,8 @@ export default function ImportPage() {
     setError(null)
 
     try {
-      const { data: { session } } = await supabase.auth.getSession()
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+      console.log('[Import] Session:', { hasSession: !!session, hasToken: !!session?.access_token, error: sessionError?.message })
       if (!session) {
         setError('Session expirée, veuillez vous reconnecter')
         router.push('/login')
@@ -73,6 +74,7 @@ export default function ImportPage() {
       const formData = new FormData()
       formData.append('file', file)
 
+      console.log('[Import] Envoi avec token:', session.access_token?.substring(0, 20) + '...')
       const res = await fetch('/api/planning/import', {
         method: 'POST',
         body: formData,
@@ -82,6 +84,7 @@ export default function ImportPage() {
       })
 
       const data = await res.json()
+      console.log('[Import] Réponse:', res.status, data)
 
       if (!res.ok) {
         setError(data.error || 'Erreur lors de l\'import')
