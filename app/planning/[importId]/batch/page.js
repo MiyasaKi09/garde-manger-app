@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
+import { authFetch } from '@/lib/authFetch'
 import { useRouter, useParams } from 'next/navigation'
 import { ArrowLeft, Clock, ChefHat, Flame, Users } from 'lucide-react'
 
@@ -15,7 +16,7 @@ export default function BatchPage() {
     async function load() {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) { router.push('/login'); return }
-      const res = await fetch(`/api/planning/imports/${importId}`)
+      const res = await authFetch(`/api/planning/imports/${importId}`)
       if (!res.ok) { router.push('/planning'); return }
       setData(await res.json())
       setLoading(false)

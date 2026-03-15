@@ -63,13 +63,22 @@ export default function ImportPage() {
     setError(null)
 
     try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) {
+        setError('Session expirée, veuillez vous reconnecter')
+        router.push('/login')
+        return
+      }
+
       const formData = new FormData()
       formData.append('file', file)
 
       const res = await fetch('/api/planning/import', {
         method: 'POST',
         body: formData,
-        credentials: 'include'
+        headers: {
+          'Authorization': `Bearer ${session.access_token}`
+        }
       })
 
       const data = await res.json()

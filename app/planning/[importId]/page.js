@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '@/lib/supabaseClient'
+import { authFetch } from '@/lib/authFetch'
 import { useRouter, useParams } from 'next/navigation'
 import { ArrowLeft, Users, ChefHat, ShoppingCart, Calendar } from 'lucide-react'
 
@@ -22,7 +23,7 @@ export default function ImportDetailPage() {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) { router.push('/login'); return }
 
-      const res = await fetch(`/api/planning/imports/${importId}`)
+      const res = await authFetch(`/api/planning/imports/${importId}`)
       if (!res.ok) { router.push('/planning'); return }
       const d = await res.json()
       setData(d)
