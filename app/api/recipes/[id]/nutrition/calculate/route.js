@@ -1,15 +1,18 @@
 // app/api/recipes/[id]/nutrition/calculate/route.js
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY // Clé service pour écriture
-);
+function getSupabase() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+}
 
 export async function POST(request, { params }) {
   try {
     const { id } = params;
     const recipeId = parseInt(id);
+    const supabase = getSupabase();
 
     if (!recipeId) {
       return Response.json({ error: 'Recipe ID invalide' }, { status: 400 });
