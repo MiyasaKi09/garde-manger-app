@@ -1,2 +1,3665 @@
 id,user_id,file_name,month_label,date_range_start,date_range_end,created_at,raw_json
-4,9055926b-ed29-49f1-96b8-fc717973b333,plan mars 2026.xlsx,Mars 2026,2026-03-16,2026-04-05,2026-03-15 20:26:27.927135+00,
+8,9055926b-ed29-49f1-96b8-fc717973b333,mars-2026-v2.json,Mars 2026 (16/03 — 05/04),2026-03-16,2026-04-05,2026-03-15 23:10:08.247635+00,"{
+  ""id"": ""mars-2026-v2"",
+  ""label"": ""Mars 2026 (16/03 — 05/04)"",
+  ""days"": [
+    {
+      ""date"": ""16/03"",
+      ""dayName"": ""Lundi"",
+      ""type"": ""Séance"",
+      ""weekNum"": 1,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Rougail saucisses 330g + 200g riz"",
+          ""kcal"": 814,
+          ""p"": 30,
+          ""g"": 79,
+          ""l"": 41,
+          ""f"": 6
+        },
+        ""z"": {
+          ""desc"": ""Rougail saucisses 260g + 160g riz"",
+          ""kcal"": 644,
+          ""p"": 24,
+          ""g"": 63,
+          ""l"": 32,
+          ""f"": 5
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Chakchouka: 3 œufs + 200g passata épicée + 80g poivrons + 80g oignon + 45g pain complet"",
+          ""kcal"": 581,
+          ""p"": 31,
+          ""g"": 42,
+          ""l"": 31,
+          ""f"": 8
+        },
+        ""z"": {
+          ""desc"": ""Chakchouka: 2 œufs + 160g passata + 60g poivrons + 60g oignon + 30g pain complet"",
+          ""kcal"": 411,
+          ""p"": 22,
+          ""g"": 30,
+          ""l"": 22,
+          ""f"": 6
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes"",
+          ""kcal"": 253,
+          ""p"": 26,
+          ""g"": 9,
+          ""l"": 11,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2094,
+          ""p"": 135,
+          ""g"": 140,
+          ""l"": 106,
+          ""f"": 18,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1309,
+          ""p"": 72,
+          ""g"": 102,
+          ""l"": 65,
+          ""f"": 14,
+          ""ok"": 0
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Chakchouka"",
+          ""totalTime"": ""20 min"",
+          ""portionsJ"": ""3 œufs, passata 200g, poivrons 80g, pain 45g"",
+          ""portionsZ"": ""2 œufs, passata 160g, poivrons 60g, pain 30g"",
+          ""steps"": [
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Faire revenir la base"",
+              ""dt"": ""Poêle profonde, huile 18ml. Oignon 140g émincé + poivrons 140g, feu moyen 3min.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Sauce tomate épicée"",
+              ""dt"": ""Passata 360g + cumin 5g + sel + poivre. Mélanger, laisser frémir 5min.""
+            },
+            {
+              ""t"": ""8 min"",
+              ""a"": ""Pocher les œufs"",
+              ""dt"": ""Faire 5 puits dans la sauce. Casser 3 œufs (J) + 2 œufs (Z). Couvrir, feu doux 6-8min.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Servir dans la poêle. Pain complet à côté. Julien 45g, Zoé 30g.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": false,
+          ""totalTime"": ""10 min"",
+          ""dishes"": [
+            {
+              ""n"": ""Portionner rougail J2"",
+              ""f"": ""Mardi midi""
+            }
+          ],
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Portionner rougail"",
+              ""dt"": ""Tupperware: J 330g + semoule 180g, Z 260g + semoule 150g.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Cuire semoule"",
+              ""dt"": ""330g semoule → eau bouillante, couvrir 5min. Répartir.""
+            }
+          ]
+        }
+      },
+      ""batch"": ""Rougail J1/2""
+    },
+    {
+      ""date"": ""17/03"",
+      ""dayName"": ""Mardi"",
+      ""type"": ""Séance"",
+      ""weekNum"": 1,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Rougail 330g + 180g semoule + 80g carottes râpées"",
+          ""kcal"": 781,
+          ""p"": 31,
+          ""g"": 68,
+          ""l"": 40,
+          ""f"": 9
+        },
+        ""z"": {
+          ""desc"": ""Rougail 260g + 150g semoule + 60g carottes râpées"",
+          ""kcal"": 623,
+          ""p"": 25,
+          ""g"": 55,
+          ""l"": 32,
+          ""f"": 7
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Saumon teriyaki: 180g saumon laqué soja-miel + 200g riz + 150g brocoli sauté"",
+          ""kcal"": 797,
+          ""p"": 47,
+          ""g"": 70,
+          ""l"": 33,
+          ""f"": 6
+        },
+        ""z"": {
+          ""desc"": ""Saumon teriyaki: 150g saumon laqué + 160g riz + 130g brocoli sauté"",
+          ""kcal"": 650,
+          ""p"": 39,
+          ""g"": 57,
+          ""l"": 27,
+          ""f"": 5
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""2 œufs durs + 1 poire (160g)"",
+          ""kcal"": 252,
+          ""p"": 16,
+          ""g"": 18,
+          ""l"": 12,
+          ""f"": 5
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2277,
+          ""p"": 151,
+          ""g"": 158,
+          ""l"": 108,
+          ""f"": 18,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1524,
+          ""p"": 80,
+          ""g"": 130,
+          ""l"": 71,
+          ""f"": 17,
+          ""ok"": 0
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Saumon teriyaki + brocoli sauté"",
+          ""totalTime"": ""20 min"",
+          ""portionsJ"": ""Saumon 180g, riz 200g, brocoli 150g"",
+          ""portionsZ"": ""Saumon 150g, riz 160g, brocoli 130g"",
+          ""steps"": [
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Lancer le riz"",
+              ""dt"": ""360g riz cuit à réchauffer ou riz express. Casserole 12min.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Préparer la laque"",
+              ""dt"": ""Sauce soja 27ml + miel 18g + ail râpé. Mélanger.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Saisir le saumon"",
+              ""dt"": ""Pavés (180g+150g) côté peau dans poêle chaude huile 8ml. 3min peau, retourner.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Laquer"",
+              ""dt"": ""Verser la sauce sur le saumon, laisser caraméliser 2min à feu vif. Réserver.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Sauter le brocoli"",
+              ""dt"": ""Même poêle, 280g fleurettes + huile 6ml. Feu vif 4min, saler.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Riz + saumon laqué + brocoli. Arroser du jus de cuisson.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": false,
+          ""totalTime"": ""25 min"",
+          ""dishes"": [
+            {
+              ""n"": ""Salade poulet-lentilles"",
+              ""f"": ""Mercredi midi""
+            }
+          ],
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Lentilles"",
+              ""dt"": ""200g lentilles vertes rincer → eau froide → ébullition → 20min.""
+            },
+            {
+              ""t"": ""10 min"",
+              ""a"": ""Poulet"",
+              ""dt"": ""380g filet en morceaux, poêle + 10ml huile, 8min. Saler.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Assembler"",
+              ""dt"": ""2 tupperware: lentilles + poulet + carottes râpées 100g. Vinaigrette à part.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Frigo"",
+              ""dt"": ""Couvrir, réfrigérer.""
+            }
+          ]
+        }
+      },
+      ""batch"": ""Rougail J2/2 semoule""
+    },
+    {
+      ""date"": ""18/03"",
+      ""dayName"": ""Mercredi"",
+      ""type"": ""Repos"",
+      ""weekNum"": 1,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Salade poulet-lentilles: 190g poulet + 180g lentilles + 80g carottes + 45g pain complet + vinaigrette"",
+          ""kcal"": 663,
+          ""p"": 62,
+          ""g"": 56,
+          ""l"": 18,
+          ""f"": 13
+        },
+        ""z"": {
+          ""desc"": ""Salade poulet-lentilles: 150g poulet + 150g lentilles + 70g carottes + vinaigrette"",
+          ""kcal"": 447,
+          ""p"": 46,
+          ""g"": 30,
+          ""l"": 13,
+          ""f"": 9
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Huevos rotos: 3 œufs + 280g PDT sautées + 80g jambon + 80g salade verte"",
+          ""kcal"": 815,
+          ""p"": 45,
+          ""g"": 54,
+          ""l"": 46,
+          ""f"": 5
+        },
+        ""z"": {
+          ""desc"": ""Huevos rotos: 2 œufs + 220g PDT sautées + 60g jambon + 60g salade verte"",
+          ""kcal"": 608,
+          ""p"": 32,
+          ""g"": 42,
+          ""l"": 34,
+          ""f"": 4
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option B: 2 œufs durs + 1 pomme (150g) + 20g amandes"",
+          ""option"": ""B"",
+          ""kcal"": 376,
+          ""p"": 20,
+          ""g"": 20,
+          ""l"": 23,
+          ""f"": 5
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes"",
+          ""kcal"": 253,
+          ""p"": 26,
+          ""g"": 9,
+          ""l"": 11,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2238,
+          ""p"": 171,
+          ""g"": 140,
+          ""l"": 106,
+          ""f"": 24,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1307,
+          ""p"": 105,
+          ""g"": 82,
+          ""l"": 59,
+          ""f"": 15,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Huevos rotos"",
+          ""totalTime"": ""20 min"",
+          ""portionsJ"": ""3 œufs, PDT 280g, jambon 80g, salade 80g"",
+          ""portionsZ"": ""2 œufs, PDT 220g, jambon 60g, salade 60g"",
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Couper les PDT"",
+              ""dt"": ""500g PDT en cubes irréguliers 1.5cm. Sécher au torchon.""
+            },
+            {
+              ""t"": ""12 min"",
+              ""a"": ""Frire les PDT"",
+              ""dt"": ""Poêle large, huile 18ml, feu vif. 12min sans trop toucher, doré croustillant. Saler.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Jambon + œufs"",
+              ""dt"": ""Ajouter jambon 140g en morceaux 1min. Casser 5 œufs par-dessus. Couvrir 2min, jaune coulant.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Servir directement, casser les œufs dans les PDT. Salade à côté. Poivre.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": false,
+          ""totalTime"": ""10 min"",
+          ""dishes"": [
+            {
+              ""n"": ""Cuire 15 œufs durs"",
+              ""f"": ""Semaine""
+            }
+          ],
+          ""steps"": [
+            {
+              ""t"": ""10 min"",
+              ""a"": ""Œufs durs"",
+              ""dt"": ""15 œufs, eau froide → ébullition → 10min. Refroidir. Frigo.""
+            }
+          ]
+        }
+      },
+      ""batch"": """"
+    },
+    {
+      ""date"": ""19/03"",
+      ""dayName"": ""Jeudi"",
+      ""type"": ""Séance"",
+      ""weekNum"": 1,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Basquaise 370g + 200g riz"",
+          ""kcal"": 707,
+          ""p"": 47,
+          ""g"": 70,
+          ""l"": 26,
+          ""f"": 5
+        },
+        ""z"": {
+          ""desc"": ""Basquaise 290g + 160g riz"",
+          ""kcal"": 558,
+          ""p"": 37,
+          ""g"": 56,
+          ""l"": 20,
+          ""f"": 4
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Gratin endives au jambon: 4 endives + 120g jambon + béchamel (30g beurre + 20g farine + 150ml lait + 40g gruyère)"",
+          ""kcal"": 701,
+          ""p"": 42,
+          ""g"": 30,
+          ""l"": 44,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""Gratin endives au jambon: 3 endives + 90g jambon + béchamel légère + 30g gruyère"",
+          ""kcal"": 528,
+          ""p"": 32,
+          ""g"": 23,
+          ""l"": 33,
+          ""f"": 3
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""2 œufs durs + 1 kiwi (100g)"",
+          ""kcal"": 230,
+          ""p"": 16,
+          ""g"": 12,
+          ""l"": 12,
+          ""f"": 3
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2107,
+          ""p"": 162,
+          ""g"": 119,
+          ""l"": 105,
+          ""f"": 13,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1315,
+          ""p"": 85,
+          ""g"": 90,
+          ""l"": 66,
+          ""f"": 10,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Gratin endives au jambon"",
+          ""totalTime"": ""25 min"",
+          ""portionsJ"": ""4 endives, jambon 120g, béchamel, gruyère 40g"",
+          ""portionsZ"": ""3 endives, jambon 90g, béchamel, gruyère 30g"",
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Braiser les endives"",
+              ""dt"": ""7 endives coupées en 2. Poêle + beurre 10g, dorer 3min/face. Saler.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Rouler jambon"",
+              ""dt"": ""Enrouler chaque demi-endive dans 1 tranche jambon. Placer dans plat à gratin.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Béchamel express"",
+              ""dt"": ""Casserole: beurre 42g fondu, farine 35g, fouetter. Lait 270ml progressivement. Sel, muscade.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Gratiner"",
+              ""dt"": ""Napper de béchamel, gruyère 70g. Grill four 5min ou four 200°C 10min.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Servir"",
+              ""dt"": ""Sortir du four. J: 4 endives roulées, Z: 3.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Basquaise J1/2""
+    },
+    {
+      ""date"": ""20/03"",
+      ""dayName"": ""Vendredi"",
+      ""type"": ""Repos"",
+      ""weekNum"": 1,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Gratin basquaise: 370g basquaise + 200g PDT + 25g emmental"",
+          ""kcal"": 693,
+          ""p"": 52,
+          ""g"": 48,
+          ""l"": 32,
+          ""f"": 7
+        },
+        ""z"": {
+          ""desc"": ""Gratin basquaise: 290g basquaise + 160g PDT + 20g emmental"",
+          ""kcal"": 547,
+          ""p"": 41,
+          ""g"": 38,
+          ""l"": 25,
+          ""f"": 5
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Poêlée montagnarde: 250g grenaille + 80g lardons dinde + 80g oignon + 30g emmental + 100g mâche"",
+          ""kcal"": 609,
+          ""p"": 31,
+          ""g"": 52,
+          ""l"": 30,
+          ""f"": 8
+        },
+        ""z"": {
+          ""desc"": ""Poêlée montagnarde: 200g grenaille + 60g lardons dinde + 60g oignon + 25g emmental + 80g mâche"",
+          ""kcal"": 480,
+          ""p"": 24,
+          ""g"": 41,
+          ""l"": 24,
+          ""f"": 6
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes"",
+          ""kcal"": 253,
+          ""p"": 26,
+          ""g"": 9,
+          ""l"": 11,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2002,
+          ""p"": 156,
+          ""g"": 119,
+          ""l"": 97,
+          ""f"": 18,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1280,
+          ""p"": 92,
+          ""g"": 89,
+          ""l"": 60,
+          ""f"": 14,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Poêlée montagnarde"",
+          ""totalTime"": ""25 min"",
+          ""portionsJ"": ""Grenaille 250g, lardons 80g, oignon 80g, emmental 30g, mâche 100g"",
+          ""portionsZ"": ""Grenaille 200g, lardons 60g, oignon 60g, emmental 25g, mâche 80g"",
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Couper grenaille"",
+              ""dt"": ""450g grenaille en 2 ou 4. Eau bouillante 8min pour pré-cuire.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Rissoler lardons"",
+              ""dt"": ""Poêle large, lardons dinde 140g, 3min sans matière grasse. Réserver.""
+            },
+            {
+              ""t"": ""10 min"",
+              ""a"": ""Sauter les PDT"",
+              ""dt"": ""Même poêle + huile 14ml, grenaille égouttées. Feu vif 8min. Ajouter oignon 140g émincé.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Assembler + fromage"",
+              ""dt"": ""Remettre lardons. Emmental 55g râpé dessus. Couvrir 2min pour fondre.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Poêlée + mâche à côté. J: 250g PDT + 80g lardons. Z: 200g + 60g.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Basquaise J2/2 gratin""
+    },
+    {
+      ""date"": ""21/03"",
+      ""dayName"": ""Samedi"",
+      ""type"": ""WE"",
+      ""weekNum"": 1,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Burger maison: 200g steak + pain burger 80g + 30g cheddar + salade + tomate"",
+          ""kcal"": 653,
+          ""p"": 58,
+          ""g"": 45,
+          ""l"": 25,
+          ""f"": 3
+        },
+        ""z"": {
+          ""desc"": ""Burger maison: 150g steak + pain 70g + 25g cheddar + salade"",
+          ""kcal"": 527,
+          ""p"": 45,
+          ""g"": 38,
+          ""l"": 20,
+          ""f"": 3
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Carbonara: 220g pâtes + 80g lardons dinde + 30g parmesan + 1 œuf + poivre"",
+          ""kcal"": 624,
+          ""p"": 45,
+          ""g"": 58,
+          ""l"": 23,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""Carbonara: 180g pâtes + 60g lardons dinde + 20g parmesan + 1 œuf"",
+          ""kcal"": 500,
+          ""p"": 35,
+          ""g"": 47,
+          ""l"": 18,
+          ""f"": 4
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""2 œufs durs + 1 clémentine (140g)"",
+          ""kcal"": 237,
+          ""p"": 16,
+          ""g"": 15,
+          ""l"": 12,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 1977,
+          ""p"": 175,
+          ""g"": 122,
+          ""l"": 83,
+          ""f"": 11,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1264,
+          ""p"": 96,
+          ""g"": 100,
+          ""l"": 51,
+          ""f"": 8,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": """",
+          ""totalTime"": """",
+          ""portionsJ"": """",
+          ""portionsZ"": """",
+          ""steps"": []
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": """"
+    },
+    {
+      ""date"": ""22/03"",
+      ""dayName"": ""Dimanche"",
+      ""type"": ""WE"",
+      ""weekNum"": 1,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Croque-monsieur x2: pain 100g + 80g jambon + 40g emmental + beurre + salade"",
+          ""kcal"": 574,
+          ""p"": 36,
+          ""g"": 47,
+          ""l"": 25,
+          ""f"": 7
+        },
+        ""z"": {
+          ""desc"": ""Croque-monsieur x1.5: pain 75g + 60g jambon + 30g emmental + salade"",
+          ""kcal"": 435,
+          ""p"": 27,
+          ""g"": 35,
+          ""l"": 19,
+          ""f"": 5
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Poulet moutarde-miel: 200g poulet + 250g grenaille + 150g haricots verts"",
+          ""kcal"": 691,
+          ""p"": 53,
+          ""g"": 60,
+          ""l"": 26,
+          ""f"": 10
+        },
+        ""z"": {
+          ""desc"": ""Poulet moutarde-miel: 170g poulet + 200g grenaille + 130g haricots verts"",
+          ""kcal"": 568,
+          ""p"": 44,
+          ""g"": 49,
+          ""l"": 21,
+          ""f"": 8
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Dimanche: 30g noix + 1 pomme + 30g beurre cacahuète + 30g pain"",
+          ""option"": ""DIM"",
+          ""kcal"": 542,
+          ""p"": 15,
+          ""g"": 37,
+          ""l"": 36,
+          ""f"": 8
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes + 1 pomme"",
+          ""kcal"": 331,
+          ""p"": 27,
+          ""g"": 27,
+          ""l"": 11,
+          ""f"": 5
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2190,
+          ""p"": 148,
+          ""g"": 153,
+          ""l"": 105,
+          ""f"": 25,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1333,
+          ""p"": 98,
+          ""g"": 111,
+          ""l"": 51,
+          ""f"": 19,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Poulet moutarde-miel + grenaille"",
+          ""totalTime"": ""25 min"",
+          ""portionsJ"": ""Poulet 200g, grenaille 250g, HV 150g"",
+          ""portionsZ"": ""Poulet 170g, grenaille 200g, HV 130g"",
+          ""steps"": [
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Grenaille au four"",
+              ""dt"": ""450g grenaille coupées en 2, huile 10ml, sel. Four 200°C 25min.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Préparer la laque moutarde"",
+              ""dt"": ""Moutarde 18g + miel 18g + huile 8ml. Mélanger.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Lancer les HV"",
+              ""dt"": ""280g haricots verts, eau bouillante salée, 10min.""
+            },
+            {
+              ""t"": ""10 min"",
+              ""a"": ""Cuire le poulet"",
+              ""dt"": ""370g filets, poêle chaude. 5min/face. En fin de cuisson, badigeonner la laque, caraméliser 1min.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Poulet laqué + grenaille + HV égouttés.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": false,
+          ""totalTime"": ""40 min"",
+          ""dishes"": [
+            {
+              ""n"": ""Batch stroganoff"",
+              ""f"": ""Lun+Mar midi""
+            },
+            {
+              ""n"": ""Cuire 15 œufs"",
+              ""f"": ""Semaine""
+            }
+          ],
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Émincer"",
+              ""dt"": ""150g oignons, 300g champignons lamelles.""
+            },
+            {
+              ""t"": ""10 min"",
+              ""a"": ""Bœuf"",
+              ""dt"": ""500g bœuf haché 5% + 15ml huile, feu vif. Émietter.""
+            },
+            {
+              ""t"": ""15 min"",
+              ""a"": ""Mijoter"",
+              ""dt"": ""Oignons 5min, champignons 5min. Crème 100g + moutarde 15g. 10min.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Portionner"",
+              ""dt"": ""4 tupperware: 2×330g J + 2×260g Z. Frigo.""
+            },
+            {
+              ""t"": ""10 min"",
+              ""a"": ""Œufs"",
+              ""dt"": ""15 œufs, eau froide → ébullition → 10min. Frigo.""
+            }
+          ]
+        }
+      },
+      ""batch"": ""Prep batch stroganoff + œufs""
+    },
+    {
+      ""date"": ""23/03"",
+      ""dayName"": ""Lundi"",
+      ""type"": ""Séance"",
+      ""weekNum"": 2,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Stroganoff 330g + 200g pâtes"",
+          ""kcal"": 688,
+          ""p"": 54,
+          ""g"": 59,
+          ""l"": 25,
+          ""f"": 6
+        },
+        ""z"": {
+          ""desc"": ""Stroganoff 260g + 160g pâtes"",
+          ""kcal"": 545,
+          ""p"": 43,
+          ""g"": 47,
+          ""l"": 20,
+          ""f"": 5
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Porc laqué soja-gingembre: 200g filet porc + 200g riz + 120g carottes sautées + gingembre"",
+          ""kcal"": 670,
+          ""p"": 52,
+          ""g"": 72,
+          ""l"": 17,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""Porc laqué soja-gingembre: 170g filet + 160g riz + 100g carottes sautées"",
+          ""kcal"": 549,
+          ""p"": 44,
+          ""g"": 58,
+          ""l"": 14,
+          ""f"": 3
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes"",
+          ""kcal"": 253,
+          ""p"": 26,
+          ""g"": 9,
+          ""l"": 11,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2058,
+          ""p"": 179,
+          ""g"": 150,
+          ""l"": 77,
+          ""f"": 14,
+          ""ok"": 1
+        },
+        ""z"": {
+          ""kcal"": 1346,
+          ""p"": 112,
+          ""g"": 114,
+          ""l"": 45,
+          ""f"": 11,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Porc laqué soja-gingembre + riz sauté"",
+          ""totalTime"": ""20 min"",
+          ""portionsJ"": ""Porc 200g, riz 200g, carottes 120g"",
+          ""portionsZ"": ""Porc 170g, riz 160g, carottes 100g"",
+          ""steps"": [
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Lancer le riz"",
+              ""dt"": ""360g riz, casserole eau, 12min couvert.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Préparer la laque"",
+              ""dt"": ""Soja 27ml + miel 14g + gingembre 9g râpé + ail. Mélanger.""
+            },
+            {
+              ""t"": ""8 min"",
+              ""a"": ""Cuire le porc"",
+              ""dt"": ""370g filet en médaillons 1.5cm. Poêle chaude huile 10ml. 3min/face.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Laquer + carottes"",
+              ""dt"": ""Verser la laque, caraméliser 1min. Retirer. Même poêle: carottes 220g en julienne, 3min feu vif.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Riz + porc laqué + carottes. Arroser du jus.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Stroganoff J1/2""
+    },
+    {
+      ""date"": ""24/03"",
+      ""dayName"": ""Mardi"",
+      ""type"": ""Séance"",
+      ""weekNum"": 2,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Gratin stroganoff: 330g + 200g PDT + 25g emmental"",
+          ""kcal"": 654,
+          ""p"": 54,
+          ""g"": 41,
+          ""l"": 29,
+          ""f"": 5
+        },
+        ""z"": {
+          ""desc"": ""Gratin stroganoff: 260g + 160g PDT + 20g emmental"",
+          ""kcal"": 518,
+          ""p"": 43,
+          ""g"": 33,
+          ""l"": 23,
+          ""f"": 4
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Cabillaud croûte parmesan: 200g cabillaud + 20g parmesan + 250g purée + 150g poireaux fondus"",
+          ""kcal"": 642,
+          ""p"": 52,
+          ""g"": 48,
+          ""l"": 25,
+          ""f"": 7
+        },
+        ""z"": {
+          ""desc"": ""Cabillaud croûte parmesan: 170g cabillaud + 15g parmesan + 200g purée + 120g poireaux"",
+          ""kcal"": 517,
+          ""p"": 43,
+          ""g"": 39,
+          ""l"": 20,
+          ""f"": 5
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""2 œufs durs + 1 pomme (150g)"",
+          ""kcal"": 250,
+          ""p"": 15,
+          ""g"": 19,
+          ""l"": 12,
+          ""f"": 3
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 1995,
+          ""p"": 178,
+          ""g"": 109,
+          ""l"": 89,
+          ""f"": 15,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1285,
+          ""p"": 101,
+          ""g"": 90,
+          ""l"": 55,
+          ""f"": 12,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Cabillaud croûte parmesan + purée + poireaux"",
+          ""totalTime"": ""25 min"",
+          ""portionsJ"": ""Cabillaud 200g, purée 250g, poireaux 150g"",
+          ""portionsZ"": ""Cabillaud 170g, purée 200g, poireaux 120g"",
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Lancer PDT pour purée"",
+              ""dt"": ""350g PDT pelées morceaux, eau bouillante salée, 15min.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Poireaux fondus"",
+              ""dt"": ""270g poireaux rondelles, poêle beurre 18g, feu doux 12min. Saler.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Préparer croûte"",
+              ""dt"": ""Parmesan 35g râpé + chapelure 18g + herbes. Mélanger.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Purée"",
+              ""dt"": ""Égoutter PDT, écraser + lait 30ml + beurre. Saler.""
+            },
+            {
+              ""t"": ""6 min"",
+              ""a"": ""Cuire cabillaud"",
+              ""dt"": ""Pavés 370g côté peau poêle 3min. Retourner, couvrir de croûte parmesan. Grill 3min ou couvrir.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Cabillaud gratiné + purée + poireaux. J: 200g cab + 250g purée. Z: 170g + 200g.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Stroganoff J2/2 gratin""
+    },
+    {
+      ""date"": ""25/03"",
+      ""dayName"": ""Mercredi"",
+      ""type"": ""Repos"",
+      ""weekNum"": 2,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Salade poulet-betteraves-lentilles: 190g poulet + 150g lentilles + 100g betteraves + 45g pain + vinaigrette"",
+          ""kcal"": 645,
+          ""p"": 60,
+          ""g"": 53,
+          ""l"": 18,
+          ""f"": 12
+        },
+        ""z"": {
+          ""desc"": ""Salade poulet-betteraves-lentilles: 150g poulet + 130g lentilles + 80g betteraves + vinaigrette"",
+          ""kcal"": 435,
+          ""p"": 46,
+          ""g"": 28,
+          ""l"": 13,
+          ""f"": 8
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Steak au poivre: 200g steak + sauce crème 30g + 250g frites four + 80g mâche"",
+          ""kcal"": 802,
+          ""p"": 50,
+          ""g"": 72,
+          ""l"": 34,
+          ""f"": 7
+        },
+        ""z"": {
+          ""desc"": ""Steak au poivre: 160g steak + sauce crème 20g + 200g frites four + 60g mâche"",
+          ""kcal"": 635,
+          ""p"": 40,
+          ""g"": 57,
+          ""l"": 27,
+          ""f"": 6
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option B: 2 œufs durs + 1 kiwi (100g) + 20g amandes"",
+          ""option"": ""B"",
+          ""kcal"": 356,
+          ""p"": 20,
+          ""g"": 13,
+          ""l"": 23,
+          ""f"": 5
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes"",
+          ""kcal"": 253,
+          ""p"": 26,
+          ""g"": 9,
+          ""l"": 11,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2188,
+          ""p"": 176,
+          ""g"": 148,
+          ""l"": 94,
+          ""f"": 24,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1323,
+          ""p"": 112,
+          ""g"": 95,
+          ""l"": 51,
+          ""f"": 16,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Steak au poivre + frites four"",
+          ""totalTime"": ""25 min"",
+          ""portionsJ"": ""Steak 200g, frites 250g, sauce crème 30g, mâche 80g"",
+          ""portionsZ"": ""Steak 160g, frites 200g, sauce crème 20g, mâche 60g"",
+          ""steps"": [
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Enfourner frites"",
+              ""dt"": ""450g frites coupées, huile 9ml, sel. Four 220°C 20min, retourner mi-cuisson.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Concasser poivre"",
+              ""dt"": ""Poivre noir au mortier ou sous casserole. Quantité généreuse.""
+            },
+            {
+              ""t"": ""6 min"",
+              ""a"": ""Cuire steaks"",
+              ""dt"": ""360g steaks, poêle très chaude. 3min/face pour saignant. Presser poivre sur la viande. Réserver.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Sauce au poivre"",
+              ""dt"": ""Même poêle: crème 50g + jus de viande + poivre. Réduire 2min feu vif.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Steak nappé de sauce + frites + mâche. J: steak 200g + frites 250g. Z: 160g + 200g.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": """"
+    },
+    {
+      ""date"": ""26/03"",
+      ""dayName"": ""Jeudi"",
+      ""type"": ""Séance"",
+      ""weekNum"": 2,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Butter chicken 350g + 200g riz"",
+          ""kcal"": 693,
+          ""p"": 50,
+          ""g"": 71,
+          ""l"": 22,
+          ""f"": 5
+        },
+        ""z"": {
+          ""desc"": ""Butter chicken 280g + 160g riz"",
+          ""kcal"": 555,
+          ""p"": 40,
+          ""g"": 57,
+          ""l"": 17,
+          ""f"": 4
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Tortilla española: 4 œufs + 250g PDT + 80g oignon + 100g salade verte + 40g pain complet"",
+          ""kcal"": 923,
+          ""p"": 42,
+          ""g"": 72,
+          ""l"": 51,
+          ""f"": 9
+        },
+        ""z"": {
+          ""desc"": ""Tortilla española: 3 œufs + 200g PDT + 60g oignon + 80g salade verte"",
+          ""kcal"": 643,
+          ""p"": 29,
+          ""g"": 43,
+          ""l"": 39,
+          ""f"": 5
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""2 œufs durs + 1 poire (160g)"",
+          ""kcal"": 252,
+          ""p"": 16,
+          ""g"": 18,
+          ""l"": 12,
+          ""f"": 5
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2316,
+          ""p"": 165,
+          ""g"": 162,
+          ""l"": 108,
+          ""f"": 17,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1450,
+          ""p"": 85,
+          ""g"": 118,
+          ""l"": 69,
+          ""f"": 14,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Tortilla española"",
+          ""totalTime"": ""25 min"",
+          ""portionsJ"": ""4 œufs, PDT 250g, oignon 80g, salade 100g, pain 40g"",
+          ""portionsZ"": ""3 œufs, PDT 200g, oignon 60g, salade 80g"",
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Cuire PDT + oignon"",
+              ""dt"": ""450g PDT cubes 1cm + oignon 140g émincé. Poêle huile 22ml, feu moyen 10min. Saler.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Mélanger les œufs"",
+              ""dt"": ""7 œufs battus + sel + poivre. Verser sur les PDT dans la poêle.""
+            },
+            {
+              ""t"": ""8 min"",
+              ""a"": ""Cuire la tortilla"",
+              ""dt"": ""Feu doux, couvrir 5min. Retourner avec assiette, recuire 3min. Doit rester moelleuse.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Couper en parts. J: 4/7 de la tortilla + salade + pain. Z: 3/7 + salade.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Butter chicken J1/2""
+    },
+    {
+      ""date"": ""27/03"",
+      ""dayName"": ""Vendredi"",
+      ""type"": ""Repos"",
+      ""weekNum"": 2,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Butter chicken 350g + naan 80g + 100g riz"",
+          ""kcal"": 795,
+          ""p"": 55,
+          ""g"": 83,
+          ""l"": 26,
+          ""f"": 6
+        },
+        ""z"": {
+          ""desc"": ""Butter chicken 280g + naan 70g + 80g riz"",
+          ""kcal"": 654,
+          ""p"": 44,
+          ""g"": 69,
+          ""l"": 21,
+          ""f"": 5
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Gratin chou-fleur poulet: 180g poulet + 200g chou-fleur + béchamel (20g beurre + 15g farine + 120ml lait + 30g gruyère)"",
+          ""kcal"": 643,
+          ""p"": 57,
+          ""g"": 22,
+          ""l"": 34,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""Gratin chou-fleur poulet: 150g poulet + 170g chou-fleur + béchamel + 25g gruyère"",
+          ""kcal"": 523,
+          ""p"": 48,
+          ""g"": 18,
+          ""l"": 27,
+          ""f"": 4
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option B: 2 œufs durs + 1 clémentine (140g) + 20g amandes"",
+          ""option"": ""B"",
+          ""kcal"": 364,
+          ""p"": 20,
+          ""g"": 16,
+          ""l"": 23,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes"",
+          ""kcal"": 253,
+          ""p"": 26,
+          ""g"": 9,
+          ""l"": 11,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2186,
+          ""p"": 177,
+          ""g"": 131,
+          ""l"": 101,
+          ""f"": 15,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1429,
+          ""p"": 118,
+          ""g"": 97,
+          ""l"": 59,
+          ""f"": 11,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Gratin chou-fleur au poulet"",
+          ""totalTime"": ""25 min"",
+          ""portionsJ"": ""Poulet 180g, chou-fleur 200g, béchamel, gruyère 30g"",
+          ""portionsZ"": ""Poulet 150g, chou-fleur 170g, béchamel, gruyère 25g"",
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Chou-fleur vapeur"",
+              ""dt"": ""370g fleurettes, micro-ondes 5min ou vapeur 8min. Réserver.""
+            },
+            {
+              ""t"": ""8 min"",
+              ""a"": ""Cuire le poulet"",
+              ""dt"": ""330g filet en dés 2cm, poêle huile 8ml, 6min feu vif. Saler.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Béchamel express"",
+              ""dt"": ""Casserole: beurre 35g fondu + farine 27g, fouetter. Lait 220ml progressivement. Muscade, sel.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Assembler + gratiner"",
+              ""dt"": ""Plat à gratin: chou-fleur + poulet. Napper béchamel + gruyère 55g. Four grill 5min.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Servir"",
+              ""dt"": ""J: 2/3 du gratin. Z: 1/3.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Butter chicken J2/2 naan""
+    },
+    {
+      ""date"": ""28/03"",
+      ""dayName"": ""Samedi"",
+      ""type"": ""WE"",
+      ""weekNum"": 2,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Fish & chips four: cabillaud 200g pané + 260g frites four + salade + citron"",
+          ""kcal"": 842,
+          ""p"": 50,
+          ""g"": 92,
+          ""l"": 29,
+          ""f"": 9
+        },
+        ""z"": {
+          ""desc"": ""Fish & chips: cabillaud 170g pané + 200g frites four + salade"",
+          ""kcal"": 668,
+          ""p"": 42,
+          ""g"": 72,
+          ""l"": 23,
+          ""f"": 7
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Cacio e pepe brocolis: 220g pâtes + 35g parmesan + 30g pecorino/parmesan + 150g brocoli + poivre noir"",
+          ""kcal"": 677,
+          ""p"": 40,
+          ""g"": 63,
+          ""l"": 28,
+          ""f"": 9
+        },
+        ""z"": {
+          ""desc"": ""Cacio e pepe brocolis: 180g pâtes + 25g parmesan + 20g pecorino + 120g brocoli"",
+          ""kcal"": 518,
+          ""p"": 30,
+          ""g"": 52,
+          ""l"": 21,
+          ""f"": 7
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""2 œufs durs + 1 orange (180g)"",
+          ""kcal"": 253,
+          ""p"": 17,
+          ""g"": 17,
+          ""l"": 12,
+          ""f"": 4
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2218,
+          ""p"": 163,
+          ""g"": 175,
+          ""l"": 92,
+          ""f"": 21,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1438,
+          ""p"": 88,
+          ""g"": 140,
+          ""l"": 56,
+          ""f"": 18,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Cacio e pepe aux brocolis"",
+          ""totalTime"": ""15 min"",
+          ""portionsJ"": ""Pâtes 220g, parmesan 65g, brocoli 150g"",
+          ""portionsZ"": ""Pâtes 180g, parmesan 45g, brocoli 120g"",
+          ""steps"": [
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Eau bouillante"",
+              ""dt"": ""Grande casserole, eau salée. Lancer les pâtes.""
+            },
+            {
+              ""t"": ""8 min"",
+              ""a"": ""Pâtes + brocoli"",
+              ""dt"": ""Pâtes 8min. Ajouter 270g brocoli fleurettes 3min avant la fin.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Crème de fromage"",
+              ""dt"": ""Bol: parmesan 110g râpé + poivre noir concassé + 2 louches eau de cuisson. Mélanger en crème.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Assembler"",
+              ""dt"": ""Égoutter pâtes+brocoli (garder eau!). Mélanger hors feu avec crème fromage. Ajouter eau si besoin. Servir.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": """"
+    },
+    {
+      ""date"": ""29/03"",
+      ""dayName"": ""Dimanche"",
+      ""type"": ""WE"",
+      ""weekNum"": 2,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Galettes complètes x2: galettes 90g + 2 œufs + 70g jambon + 35g emmental + salade"",
+          ""kcal"": 637,
+          ""p"": 44,
+          ""g"": 42,
+          ""l"": 32,
+          ""f"": 3
+        },
+        ""z"": {
+          ""desc"": ""Galettes complètes x1.5: 70g + 1.5 œufs + 55g jambon + 25g emmental + salade"",
+          ""kcal"": 480,
+          ""p"": 33,
+          ""g"": 32,
+          ""l"": 23,
+          ""f"": 2
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Bœuf sauce provençale: 200g bœuf haché + 150g passata + olives 20g + 200g polenta crémeuse"",
+          ""kcal"": 626,
+          ""p"": 52,
+          ""g"": 42,
+          ""l"": 26,
+          ""f"": 5
+        },
+        ""z"": {
+          ""desc"": ""Bœuf sauce provençale: 160g bœuf haché + 120g passata + olives 15g + 160g polenta"",
+          ""kcal"": 497,
+          ""p"": 41,
+          ""g"": 34,
+          ""l"": 20,
+          ""f"": 4
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Dimanche: 30g noix + 1 pomme + 30g beurre cacahuète + 30g pain"",
+          ""option"": ""DIM"",
+          ""kcal"": 542,
+          ""p"": 15,
+          ""g"": 37,
+          ""l"": 36,
+          ""f"": 8
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes + 1 pomme"",
+          ""kcal"": 331,
+          ""p"": 27,
+          ""g"": 27,
+          ""l"": 11,
+          ""f"": 5
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2189,
+          ""p"": 155,
+          ""g"": 130,
+          ""l"": 112,
+          ""f"": 16,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1307,
+          ""p"": 101,
+          ""g"": 93,
+          ""l"": 55,
+          ""f"": 11,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Bœuf sauce provençale + polenta"",
+          ""totalTime"": ""20 min"",
+          ""portionsJ"": ""Bœuf 200g, passata 150g, polenta 200g, olives 20g"",
+          ""portionsZ"": ""Bœuf 160g, passata 120g, polenta 160g, olives 15g"",
+          ""steps"": [
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Lancer polenta"",
+              ""dt"": ""360g polenta → eau bouillante salée 2.5× volume. Remuer 5min feu doux.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Rissoler bœuf"",
+              ""dt"": ""360g bœuf haché, poêle huile 14ml. Émietter, feu vif 5min.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Sauce provençale"",
+              ""dt"": ""Ajouter oignon 110g émincé 2min, passata 270g, olives 35g concassées. Mijoter 5min. Saler, herbes.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Finir polenta"",
+              ""dt"": ""Hors feu: parmesan 18g + beurre optionnel. Crémeuse.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Polenta en lit, bœuf sauce par-dessus.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": false,
+          ""totalTime"": ""55 min"",
+          ""dishes"": [
+            {
+              ""n"": ""Batch chili con carne"",
+              ""f"": ""Lun+Mar midi""
+            },
+            {
+              ""n"": ""Cuire 15 œufs"",
+              ""f"": ""Semaine""
+            }
+          ],
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Émincer"",
+              ""dt"": ""150g oignons.""
+            },
+            {
+              ""t"": ""10 min"",
+              ""a"": ""Bœuf"",
+              ""dt"": ""500g bœuf haché 5% + 10ml huile, feu vif.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Légumes+épices"",
+              ""dt"": ""Oignons 5min, poivrons 150g, ail 10g.""
+            },
+            {
+              ""t"": ""25 min"",
+              ""a"": ""Mijoter"",
+              ""dt"": ""Passata 400g + concentré 20g + haricots rouges 250g. 25min feu doux.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Portionner"",
+              ""dt"": ""4 tupperware: 2×380g J + 2×300g Z. Frigo.""
+            },
+            {
+              ""t"": ""10 min"",
+              ""a"": ""Œufs"",
+              ""dt"": ""15 œufs. Frigo.""
+            }
+          ]
+        }
+      },
+      ""batch"": ""Prep batch chili + œufs""
+    },
+    {
+      ""date"": ""30/03"",
+      ""dayName"": ""Lundi"",
+      ""type"": ""Séance"",
+      ""weekNum"": 3,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Chili con carne 380g + 200g riz"",
+          ""kcal"": 650,
+          ""p"": 46,
+          ""g"": 80,
+          ""l"": 13,
+          ""f"": 9
+        },
+        ""z"": {
+          ""desc"": ""Chili con carne 300g + 160g riz"",
+          ""kcal"": 516,
+          ""p"": 36,
+          ""g"": 63,
+          ""l"": 10,
+          ""f"": 7
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Poulet piccata: 200g poulet + 180g pâtes + 150g brocoli + jus citron + câpres"",
+          ""kcal"": 719,
+          ""p"": 59,
+          ""g"": 56,
+          ""l"": 27,
+          ""f"": 8
+        },
+        ""z"": {
+          ""desc"": ""Poulet piccata: 170g poulet + 150g pâtes + 130g brocoli + citron + câpres"",
+          ""kcal"": 599,
+          ""p"": 50,
+          ""g"": 47,
+          ""l"": 22,
+          ""f"": 7
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes"",
+          ""kcal"": 253,
+          ""p"": 26,
+          ""g"": 9,
+          ""l"": 11,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2069,
+          ""p"": 178,
+          ""g"": 155,
+          ""l"": 74,
+          ""f"": 21,
+          ""ok"": 1
+        },
+        ""z"": {
+          ""kcal"": 1368,
+          ""p"": 112,
+          ""g"": 120,
+          ""l"": 43,
+          ""f"": 16,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Poulet piccata citron + pâtes + brocoli"",
+          ""totalTime"": ""20 min"",
+          ""portionsJ"": ""Poulet 200g, pâtes 180g, brocoli 150g"",
+          ""portionsZ"": ""Poulet 170g, pâtes 150g, brocoli 130g"",
+          ""steps"": [
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Eau + pâtes"",
+              ""dt"": ""Casserole eau salée. Pâtes 10min. Brocoli 280g ajouté 3min avant fin.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Fariner le poulet"",
+              ""dt"": ""370g filets aplatis 1cm. Fariner légèrement (9g farine).""
+            },
+            {
+              ""t"": ""8 min"",
+              ""a"": ""Cuire le poulet"",
+              ""dt"": ""Poêle beurre 27g + huile 9ml. 4min/face doré. Réserver au chaud.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Sauce piccata"",
+              ""dt"": ""Même poêle: jus citron + bouillon 50ml + câpres 15g. Réduire 2min. Remettre poulet, napper.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Pâtes + brocoli + poulet nappé sauce. J: poulet 200g + pâtes 180g. Z: 170g + 150g.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Chili J1/2""
+    },
+    {
+      ""date"": ""31/03"",
+      ""dayName"": ""Mardi"",
+      ""type"": ""Séance"",
+      ""weekNum"": 3,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Burrito bowl: chili 380g + 150g riz + 40g guacamole"",
+          ""kcal"": 641,
+          ""p"": 45,
+          ""g"": 68,
+          ""l"": 17,
+          ""f"": 10
+        },
+        ""z"": {
+          ""desc"": ""Burrito bowl: chili 300g + 120g riz + 30g guacamole"",
+          ""kcal"": 506,
+          ""p"": 36,
+          ""g"": 54,
+          ""l"": 14,
+          ""f"": 8
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Gratin poireaux-jambon: 250g poireaux + 100g jambon + béchamel (20g beurre + 15g farine + 120ml lait) + 30g gruyère"",
+          ""kcal"": 563,
+          ""p"": 35,
+          ""g"": 28,
+          ""l"": 32,
+          ""f"": 7
+        },
+        ""z"": {
+          ""desc"": ""Gratin poireaux-jambon: 200g poireaux + 80g jambon + béchamel + 25g gruyère"",
+          ""kcal"": 449,
+          ""p"": 29,
+          ""g"": 23,
+          ""l"": 25,
+          ""f"": 5
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""2 œufs durs + 1 clémentine (140g)"",
+          ""kcal"": 237,
+          ""p"": 16,
+          ""g"": 15,
+          ""l"": 12,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 1904,
+          ""p"": 153,
+          ""g"": 115,
+          ""l"": 84,
+          ""f"": 21,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1192,
+          ""p"": 80,
+          ""g"": 91,
+          ""l"": 51,
+          ""f"": 16,
+          ""ok"": 0
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Gratin poireaux-jambon"",
+          ""totalTime"": ""25 min"",
+          ""portionsJ"": ""Poireaux 250g, jambon 100g, béchamel, gruyère 30g"",
+          ""portionsZ"": ""Poireaux 200g, jambon 80g, béchamel, gruyère 25g"",
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Fondre les poireaux"",
+              ""dt"": ""450g poireaux rondelles, poêle beurre, feu moyen 10min. Saler.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Rouler dans jambon"",
+              ""dt"": ""180g jambon: enrouler les poireaux dans les tranches. Plat à gratin.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Béchamel"",
+              ""dt"": ""Casserole: beurre 35g + farine 27g. Lait 220ml progressivement. Muscade, sel.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Gratiner"",
+              ""dt"": ""Napper de béchamel + gruyère 55g. Four grill 5-7min.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Servir"",
+              ""dt"": ""J: 250g poireaux-jambon + béchamel. Z: 200g.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Chili J2/2 burrito bowl""
+    },
+    {
+      ""date"": ""01/04"",
+      ""dayName"": ""Mercredi"",
+      ""type"": ""Repos"",
+      ""weekNum"": 3,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Wrap poulet: 2 tortillas (100g) + 190g poulet + 40g emmental + salade + carottes"",
+          ""kcal"": 715,
+          ""p"": 62,
+          ""g"": 56,
+          ""l"": 25,
+          ""f"": 5
+        },
+        ""z"": {
+          ""desc"": ""Wrap poulet: 1.5 tortillas (75g) + 150g poulet + 30g emmental + salade + carottes"",
+          ""kcal"": 547,
+          ""p"": 48,
+          ""g"": 43,
+          ""l"": 19,
+          ""f"": 4
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Dinde moutarde ancienne: 200g dinde + sauce moutarde-crème + 250g écrasé PDT + 150g navets glacés"",
+          ""kcal"": 644,
+          ""p"": 56,
+          ""g"": 50,
+          ""l"": 23,
+          ""f"": 6
+        },
+        ""z"": {
+          ""desc"": ""Dinde moutarde ancienne: 170g dinde + sauce moutarde + 200g écrasé PDT + 120g navets"",
+          ""kcal"": 531,
+          ""p"": 47,
+          ""g"": 40,
+          ""l"": 19,
+          ""f"": 5
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes"",
+          ""kcal"": 253,
+          ""p"": 26,
+          ""g"": 9,
+          ""l"": 11,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2058,
+          ""p"": 191,
+          ""g"": 125,
+          ""l"": 83,
+          ""f"": 15,
+          ""ok"": 1
+        },
+        ""z"": {
+          ""kcal"": 1331,
+          ""p"": 122,
+          ""g"": 92,
+          ""l"": 49,
+          ""f"": 12,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Dinde moutarde ancienne + écrasé PDT + navets"",
+          ""totalTime"": ""25 min"",
+          ""portionsJ"": ""Dinde 200g, PDT 250g, navets 150g, sauce moutarde-crème"",
+          ""portionsZ"": ""Dinde 170g, PDT 200g, navets 120g"",
+          ""steps"": [
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Lancer PDT + navets"",
+              ""dt"": ""450g PDT en morceaux + 270g navets en cubes, eau bouillante salée, 15min.""
+            },
+            {
+              ""t"": ""8 min"",
+              ""a"": ""Cuire la dinde"",
+              ""dt"": ""370g escalopes, poêle huile 9ml + beurre 10g. 4min/face. Réserver au chaud.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Sauce moutarde"",
+              ""dt"": ""Même poêle: moutarde ancienne 27g + crème 55g + jus citron. Chauffer 2min. Remettre dinde, napper.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Écrasé + navets glacés"",
+              ""dt"": ""Égoutter PDT, écraser grossièrement + beurre 12g. Navets: poêle beurre 5g, dorer 3min.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Écrasé + dinde sauce moutarde + navets glacés.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": false,
+          ""totalTime"": ""10 min"",
+          ""dishes"": [
+            {
+              ""n"": ""Cuire 15 œufs"",
+              ""f"": ""Semaine""
+            }
+          ],
+          ""steps"": [
+            {
+              ""t"": ""10 min"",
+              ""a"": ""Œufs"",
+              ""dt"": ""15 œufs, eau froide → ébullition → 10min. Frigo.""
+            }
+          ]
+        }
+      },
+      ""batch"": """"
+    },
+    {
+      ""date"": ""02/04"",
+      ""dayName"": ""Jeudi"",
+      ""type"": ""Séance"",
+      ""weekNum"": 3,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Émincé porc moutarde 340g + 200g pâtes complètes"",
+          ""kcal"": 688,
+          ""p"": 60,
+          ""g"": 60,
+          ""l"": 21,
+          ""f"": 8
+        },
+        ""z"": {
+          ""desc"": ""Émincé porc moutarde 270g + 160g pâtes complètes"",
+          ""kcal"": 548,
+          ""p"": 48,
+          ""g"": 48,
+          ""l"": 17,
+          ""f"": 6
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Saumon papillote citron-herbes: 180g saumon + 200g riz + 150g haricots verts + poireaux 50g"",
+          ""kcal"": 755,
+          ""p"": 46,
+          ""g"": 66,
+          ""l"": 31,
+          ""f"": 7
+        },
+        ""z"": {
+          ""desc"": ""Saumon papillote: 150g saumon + 160g riz + 130g haricots verts + poireaux 40g"",
+          ""kcal"": 617,
+          ""p"": 38,
+          ""g"": 53,
+          ""l"": 26,
+          ""f"": 6
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option B: 2 œufs durs + 1 pomme (150g) + 20g amandes"",
+          ""option"": ""B"",
+          ""kcal"": 376,
+          ""p"": 20,
+          ""g"": 20,
+          ""l"": 23,
+          ""f"": 5
+        },
+        ""z"": {
+          ""desc"": ""2 œufs durs + 1 pomme (150g)"",
+          ""kcal"": 250,
+          ""p"": 15,
+          ""g"": 19,
+          ""l"": 12,
+          ""f"": 3
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2203,
+          ""p"": 170,
+          ""g"": 156,
+          ""l"": 94,
+          ""f"": 20,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1414,
+          ""p"": 101,
+          ""g"": 120,
+          ""l"": 55,
+          ""f"": 15,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Saumon en papillote + riz + HV"",
+          ""totalTime"": ""25 min"",
+          ""portionsJ"": ""Saumon 180g, riz 200g, HV 150g"",
+          ""portionsZ"": ""Saumon 150g, riz 160g, HV 130g"",
+          ""steps"": [
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Préparer papillotes"",
+              ""dt"": ""2 feuilles papier cuisson. Saumon (180g+150g) + poireaux émincés (50g+40g) + rondelle citron + beurre 14g + sel. Fermer.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Lancer riz + HV"",
+              ""dt"": ""Riz 360g casserole 12min. HV 280g eau bouillante 10min.""
+            },
+            {
+              ""t"": ""15 min"",
+              ""a"": ""Enfourner papillotes"",
+              ""dt"": ""Four 200°C, 12-15min. Le saumon cuit à la vapeur dans la papillote.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Ouvrir papillotes, servir avec riz + HV. Arroser du jus de cuisson.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Émincé porc J1/2""
+    },
+    {
+      ""date"": ""03/04"",
+      ""dayName"": ""Vendredi"",
+      ""type"": ""Repos"",
+      ""weekNum"": 3,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Émincé porc 340g + 180g pâtes complètes + 80g mâche"",
+          ""kcal"": 671,
+          ""p"": 60,
+          ""g"": 56,
+          ""l"": 21,
+          ""f"": 9
+        },
+        ""z"": {
+          ""desc"": ""Émincé porc 270g + 150g pâtes complètes + 60g mâche"",
+          ""kcal"": 543,
+          ""p"": 48,
+          ""g"": 46,
+          ""l"": 17,
+          ""f"": 7
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Croque-madame: 2 tr pain complet (60g) + 60g jambon + 30g emmental + 1 œuf + 100g salade verte"",
+          ""kcal"": 490,
+          ""p"": 34,
+          ""g"": 30,
+          ""l"": 25,
+          ""f"": 5
+        },
+        ""z"": {
+          ""desc"": ""Croque-madame: 2 tr pain (50g) + 50g jambon + 25g emmental + 1 œuf + 80g salade"",
+          ""kcal"": 418,
+          ""p"": 29,
+          ""g"": 25,
+          ""l"": 21,
+          ""f"": 4
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes"",
+          ""kcal"": 253,
+          ""p"": 26,
+          ""g"": 9,
+          ""l"": 11,
+          ""f"": 2
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 1861,
+          ""p"": 166,
+          ""g"": 105,
+          ""l"": 81,
+          ""f"": 17,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1213,
+          ""p"": 103,
+          ""g"": 80,
+          ""l"": 49,
+          ""f"": 14,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Croque-madame + salade"",
+          ""totalTime"": ""15 min"",
+          ""portionsJ"": ""Pain 60g, jambon 60g, emmental 30g, 1 œuf, salade 100g"",
+          ""portionsZ"": ""Pain 50g, jambon 50g, emmental 25g, 1 œuf, salade 80g"",
+          ""steps"": [
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Assembler croques"",
+              ""dt"": ""4 tranches pain (60g+50g), beurrer un côté. Jambon 110g + emmental 55g entre les tranches.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Griller"",
+              ""dt"": ""Poêle beurre 14g, croques 3min/face. Ou croque-monsieur grill.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Œuf au plat"",
+              ""dt"": ""2 œufs au plat, même poêle, 2min. Jaune coulant.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Croque + œuf par-dessus = croque-madame. Salade assaisonnée à côté.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Émincé porc J2/2 + mâche""
+    },
+    {
+      ""date"": ""04/04"",
+      ""dayName"": ""Samedi"",
+      ""type"": ""WE"",
+      ""weekNum"": 3,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Pizza maison: pâte 130g + passata 70g + mozza 80g + jambon 50g + champignons"",
+          ""kcal"": 661,
+          ""p"": 38,
+          ""g"": 66,
+          ""l"": 25,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""Pizza maison: pâte 100g + passata 60g + mozza 60g + jambon 40g + champignons"",
+          ""kcal"": 511,
+          ""p"": 29,
+          ""g"": 50,
+          ""l"": 19,
+          ""f"": 4
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Wok poulet teriyaki: 200g poulet + 200g pâtes + 100g carottes + 80g chou vert + soja + gingembre"",
+          ""kcal"": 681,
+          ""p"": 58,
+          ""g"": 64,
+          ""l"": 19,
+          ""f"": 9
+        },
+        ""z"": {
+          ""desc"": ""Wok poulet teriyaki: 160g poulet + 160g pâtes + 80g carottes + 60g chou vert + soja"",
+          ""kcal"": 544,
+          ""p"": 46,
+          ""g"": 51,
+          ""l"": 16,
+          ""f"": 7
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Option A: 200g skyr + 30g amandes"",
+          ""option"": ""A"",
+          ""kcal"": 316,
+          ""p"": 28,
+          ""g"": 10,
+          ""l"": 16,
+          ""f"": 4
+        },
+        ""z"": {
+          ""desc"": ""2 œufs durs + 1 kiwi (100g)"",
+          ""kcal"": 230,
+          ""p"": 16,
+          ""g"": 12,
+          ""l"": 12,
+          ""f"": 3
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2042,
+          ""p"": 169,
+          ""g"": 149,
+          ""l"": 79,
+          ""f"": 16,
+          ""ok"": 1
+        },
+        ""z"": {
+          ""kcal"": 1285,
+          ""p"": 92,
+          ""g"": 113,
+          ""l"": 48,
+          ""f"": 13,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Wok poulet teriyaki + nouilles sautées"",
+          ""totalTime"": ""20 min"",
+          ""portionsJ"": ""Poulet 200g, pâtes 200g, carottes 100g, chou 80g"",
+          ""portionsZ"": ""Poulet 160g, pâtes 160g, carottes 80g, chou 60g"",
+          ""steps"": [
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Pâtes al dente"",
+              ""dt"": ""360g pâtes, eau bouillante, 8min. Égoutter, huiler légèrement.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Préparer légumes"",
+              ""dt"": ""Carottes 180g en julienne, chou 140g émincé fin.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Saisir le poulet"",
+              ""dt"": ""360g poulet en lamelles fines. Wok/poêle huile 10ml, feu très vif, 4min. Réserver.""
+            },
+            {
+              ""t"": ""5 min"",
+              ""a"": ""Sauter les légumes"",
+              ""dt"": ""Même wok: carottes 2min, chou 2min. Remettre poulet + pâtes.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Sauce + dresser"",
+              ""dt"": ""Soja 27ml + gingembre 9g + miel optionnel. Mélanger 1min feu vif. Servir fumant.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": """"
+    },
+    {
+      ""date"": ""05/04"",
+      ""dayName"": ""Dimanche"",
+      ""type"": ""WE"",
+      ""weekNum"": 3,
+      ""dej"": {
+        ""j"": {
+          ""desc"": ""Quiche lorraine: pâte 80g + œufs + lardons 50g + crème + gruyère + salade"",
+          ""kcal"": 692,
+          ""p"": 30,
+          ""g"": 37,
+          ""l"": 47,
+          ""f"": 2
+        },
+        ""z"": {
+          ""desc"": ""Quiche lorraine: pâte 60g + œufs + lardons 38g + crème + gruyère + salade"",
+          ""kcal"": 522,
+          ""p"": 23,
+          ""g"": 28,
+          ""l"": 36,
+          ""f"": 2
+        }
+      },
+      ""din"": {
+        ""j"": {
+          ""desc"": ""Kefta bœuf: 200g bœuf haché épicé + 200g semoule + 150g carottes + menthe"",
+          ""kcal"": 671,
+          ""p"": 51,
+          ""g"": 60,
+          ""l"": 23,
+          ""f"": 7
+        },
+        ""z"": {
+          ""desc"": ""Kefta bœuf: 160g bœuf haché épicé + 160g semoule + 120g carottes"",
+          ""kcal"": 534,
+          ""p"": 41,
+          ""g"": 48,
+          ""l"": 18,
+          ""f"": 6
+        }
+      },
+      ""col"": {
+        ""j"": {
+          ""desc"": ""Dimanche: 30g noix + 1 pomme + 30g beurre cacahuète + 30g pain"",
+          ""option"": ""DIM"",
+          ""kcal"": 542,
+          ""p"": 15,
+          ""g"": 37,
+          ""l"": 36,
+          ""f"": 8
+        },
+        ""z"": {
+          ""desc"": ""200g skyr + 20g amandes + 1 pomme"",
+          ""kcal"": 331,
+          ""p"": 27,
+          ""g"": 27,
+          ""l"": 11,
+          ""f"": 5
+        }
+      },
+      ""total"": {
+        ""j"": {
+          ""kcal"": 2288,
+          ""p"": 141,
+          ""g"": 143,
+          ""l"": 124,
+          ""f"": 18,
+          ""ok"": 0
+        },
+        ""z"": {
+          ""kcal"": 1386,
+          ""p"": 91,
+          ""g"": 103,
+          ""l"": 65,
+          ""f"": 13,
+          ""ok"": 1
+        }
+      },
+      ""cooking"": {
+        ""dinner"": {
+          ""name"": ""Kefta bœuf + semoule + carottes"",
+          ""totalTime"": ""20 min"",
+          ""portionsJ"": ""Bœuf 200g, semoule 200g, carottes 150g"",
+          ""portionsZ"": ""Bœuf 160g, semoule 160g, carottes 120g"",
+          ""steps"": [
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Semoule"",
+              ""dt"": ""360g semoule → eau bouillante, couvrir 5min.""
+            },
+            {
+              ""t"": ""3 min"",
+              ""a"": ""Former les kefta"",
+              ""dt"": ""360g bœuf + oignon 70g râpé + cumin 5g + paprika 3.5g + sel. Former boulettes allongées.""
+            },
+            {
+              ""t"": ""8 min"",
+              ""a"": ""Griller les kefta"",
+              ""dt"": ""Poêle huile 18ml, feu vif. 3min/face, bien dorées.""
+            },
+            {
+              ""t"": ""4 min"",
+              ""a"": ""Carottes vichy"",
+              ""dt"": ""270g carottes rondelles, casserole eau + beurre, 4min. Égoutter, persil.""
+            },
+            {
+              ""t"": ""2 min"",
+              ""a"": ""Dresser"",
+              ""dt"": ""Semoule + kefta + carottes vichy. Menthe fraîche si dispo.""
+            }
+          ]
+        },
+        ""prep"": {
+          ""isFree"": true,
+          ""totalTime"": ""0 min"",
+          ""dishes"": [],
+          ""steps"": []
+        }
+      },
+      ""batch"": ""Prep batch mai + œufs""
+    }
+  ],
+  ""weeks"": [
+    {
+      ""label"": ""S1"",
+      ""startDate"": ""16/03"",
+      ""endDate"": ""22/03"",
+      ""dayIndices"": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      ""label"": ""S2"",
+      ""startDate"": ""23/03"",
+      ""endDate"": ""29/03"",
+      ""dayIndices"": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      ""label"": ""S3"",
+      ""startDate"": ""30/03"",
+      ""endDate"": ""05/04"",
+      ""dayIndices"": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    }
+  ],
+  ""groceries"": [
+    {
+      ""week"": ""S1"",
+      ""weekLabel"": ""S1 — 16-22 mars"",
+      ""categories"": [
+        {
+          ""name"": ""🥩 Viandes & Poissons"",
+          ""items"": [
+            {
+              ""product"": ""Saucisses de porc"",
+              ""quantity"": ""400g"",
+              ""usage"": ""batch rougail""
+            },
+            {
+              ""product"": ""Cuisses de poulet"",
+              ""quantity"": ""600g"",
+              ""usage"": ""batch basquaise (prep dim 15 soir)""
+            },
+            {
+              ""product"": ""Filet de poulet"",
+              ""quantity"": ""580g"",
+              ""usage"": ""salade mer 380g + poulet moutarde dim 370g""
+            },
+            {
+              ""product"": ""Saumon"",
+              ""quantity"": ""330g (180+150)"",
+              ""usage"": ""teriyaki mar soir""
+            },
+            {
+              ""product"": ""Cabillaud"",
+              ""quantity"": ""370g (200+170)"",
+              ""usage"": ""gratin endives jeu → non, purée jeu → non c'est endives""
+            },
+            {
+              ""product"": ""Steak haché 5%"",
+              ""quantity"": ""710g"",
+              ""usage"": ""huevos rotos mer 300g + burger sam 350g""
+            },
+            {
+              ""product"": ""Jambon"",
+              ""quantity"": ""290g"",
+              ""usage"": ""huevos rotos 140g + croque dim 140g""
+            },
+            {
+              ""product"": ""Lardons dinde"",
+              ""quantity"": ""280g"",
+              ""usage"": ""poêlée ven 140g + carbonara sam 140g""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥛 Produits laitiers"",
+          ""items"": [
+            {
+              ""product"": ""Skyr"",
+              ""quantity"": ""2kg"",
+              ""usage"": ""PDJ + collations""
+            },
+            {
+              ""product"": ""Emmental"",
+              ""quantity"": ""160g"",
+              ""usage"": ""basquaise gratin 45g + croque 70g + poêlée 55g""
+            },
+            {
+              ""product"": ""Cheddar"",
+              ""quantity"": ""55g"",
+              ""usage"": ""burger sam""
+            },
+            {
+              ""product"": ""Parmesan"",
+              ""quantity"": ""50g"",
+              ""usage"": ""carbonara""
+            },
+            {
+              ""product"": ""Gruyère"",
+              ""quantity"": ""40g"",
+              ""usage"": ""endives jeu""
+            },
+            {
+              ""product"": ""Beurre"",
+              ""quantity"": ""70g"",
+              ""usage"": ""béchamel endives + cuisson""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥔 Féculents"",
+          ""items"": [
+            {
+              ""product"": ""Riz"",
+              ""quantity"": ""360g cuit"",
+              ""usage"": ""rougail J1""
+            },
+            {
+              ""product"": ""Semoule"",
+              ""quantity"": ""330g cuite"",
+              ""usage"": ""rougail J2""
+            },
+            {
+              ""product"": ""Pâtes"",
+              ""quantity"": ""400g cuites"",
+              ""usage"": ""carbonara""
+            },
+            {
+              ""product"": ""PDT"",
+              ""quantity"": ""1.2kg"",
+              ""usage"": ""huevos rotos 500g + basquaise gratin 360g""
+            },
+            {
+              ""product"": ""Grenaille"",
+              ""quantity"": ""700g"",
+              ""usage"": ""poêlée 450g + poulet dim 450g""
+            },
+            {
+              ""product"": ""Pain complet"",
+              ""quantity"": ""200g"",
+              ""usage"": ""chakchouka + accompagnement""
+            },
+            {
+              ""product"": ""Pain burger"",
+              ""quantity"": ""150g"",
+              ""usage"": ""burger sam""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥬 Légumes de saison"",
+          ""items"": [
+            {
+              ""product"": ""Poivrons conserve"",
+              ""quantity"": ""330g"",
+              ""usage"": ""chakchouka 140g + basquaise 250g""
+            },
+            {
+              ""product"": ""Oignon"",
+              ""quantity"": ""400g"",
+              ""usage"": ""chakchouka 140g + rougail 150g + basquaise 150g""
+            },
+            {
+              ""product"": ""Carottes"",
+              ""quantity"": ""180g"",
+              ""usage"": ""rougail J2 + salade mer""
+            },
+            {
+              ""product"": ""Brocoli"",
+              ""quantity"": ""280g"",
+              ""usage"": ""teriyaki mar""
+            },
+            {
+              ""product"": ""Endives"",
+              ""quantity"": ""450g (7)"",
+              ""usage"": ""gratin jeu""
+            },
+            {
+              ""product"": ""Mâche"",
+              ""quantity"": ""180g"",
+              ""usage"": ""poêlée ven""
+            },
+            {
+              ""product"": ""Haricots verts"",
+              ""quantity"": ""280g"",
+              ""usage"": ""poulet dim""
+            },
+            {
+              ""product"": ""Salade verte"",
+              ""quantity"": ""230g"",
+              ""usage"": ""huevos + burger + croque""
+            },
+            {
+              ""product"": ""Tomates cerise"",
+              ""quantity"": ""90g"",
+              ""usage"": ""burger sam""
+            },
+            {
+              ""product"": ""Lentilles vertes"",
+              ""quantity"": ""200g sèches"",
+              ""usage"": ""salade mer""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥫 Conserves & épicerie"",
+          ""items"": [
+            {
+              ""product"": ""Passata"",
+              ""quantity"": ""960g"",
+              ""usage"": ""rougail 400g + basquaise 350g + chakchouka 360g""
+            },
+            {
+              ""product"": ""Concentré de tomate"",
+              ""quantity"": ""20g"",
+              ""usage"": ""rougail""
+            },
+            {
+              ""product"": ""Gingembre frais"",
+              ""quantity"": ""15g"",
+              ""usage"": ""rougail""
+            },
+            {
+              ""product"": ""Sauce soja"",
+              ""quantity"": ""27ml"",
+              ""usage"": ""saumon teriyaki""
+            },
+            {
+              ""product"": ""Miel"",
+              ""quantity"": ""18g"",
+              ""usage"": ""teriyaki + moutarde-miel""
+            },
+            {
+              ""product"": ""Moutarde"",
+              ""quantity"": ""18g"",
+              ""usage"": ""moutarde-miel dim""
+            },
+            {
+              ""product"": ""Cornichons"",
+              ""quantity"": ""35g"",
+              ""usage"": ""burger""
+            },
+            {
+              ""product"": ""Ketchup"",
+              ""quantity"": ""25g"",
+              ""usage"": ""burger""
+            },
+            {
+              ""product"": ""Cumin"",
+              ""quantity"": ""5g"",
+              ""usage"": ""chakchouka""
+            }
+          ]
+        },
+        {
+          ""name"": ""🍎 Fruits & oléagineux"",
+          ""items"": [
+            {
+              ""product"": ""Amandes"",
+              ""quantity"": ""150g"",
+              ""usage"": ""collations""
+            },
+            {
+              ""product"": ""Noix"",
+              ""quantity"": ""30g"",
+              ""usage"": ""dim""
+            },
+            {
+              ""product"": ""Beurre de cacahuète"",
+              ""quantity"": ""30g"",
+              ""usage"": ""dim""
+            },
+            {
+              ""product"": ""Pommes"",
+              ""quantity"": ""300g"",
+              ""usage"": ""collations + dim""
+            },
+            {
+              ""product"": ""Poires"",
+              ""quantity"": ""320g"",
+              ""usage"": ""collations""
+            },
+            {
+              ""product"": ""Kiwis"",
+              ""quantity"": ""200g"",
+              ""usage"": ""collations""
+            },
+            {
+              ""product"": ""Clémentines"",
+              ""quantity"": ""280g"",
+              ""usage"": ""collations""
+            },
+            {
+              ""product"": ""Oranges"",
+              ""quantity"": ""180g"",
+              ""usage"": ""collations""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      ""week"": ""S2"",
+      ""weekLabel"": ""S2 — 23-29 mars"",
+      ""categories"": [
+        {
+          ""name"": ""🥩 Viandes & Poissons"",
+          ""items"": [
+            {
+              ""product"": ""Bœuf haché 5%"",
+              ""quantity"": ""1120g"",
+              ""usage"": ""stroganoff 500g + steak poivre 360g + bœuf provençal 360g""
+            },
+            {
+              ""product"": ""Filet de porc"",
+              ""quantity"": ""370g"",
+              ""usage"": ""porc laqué lun""
+            },
+            {
+              ""product"": ""Cabillaud"",
+              ""quantity"": ""570g"",
+              ""usage"": ""croûte parmesan mar 370g + fish&chips sam 370g""
+            },
+            {
+              ""product"": ""Filet de poulet"",
+              ""quantity"": ""690g"",
+              ""usage"": ""butter chicken 550g + gratin CF ven 330g""
+            },
+            {
+              ""product"": ""Jambon"",
+              ""quantity"": ""125g"",
+              ""usage"": ""galettes dim""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥛 Produits laitiers"",
+          ""items"": [
+            {
+              ""product"": ""Skyr"",
+              ""quantity"": ""2kg"",
+              ""usage"": ""PDJ + collations""
+            },
+            {
+              ""product"": ""Emmental"",
+              ""quantity"": ""45g"",
+              ""usage"": ""gratin stroganoff""
+            },
+            {
+              ""product"": ""Parmesan"",
+              ""quantity"": ""55g"",
+              ""usage"": ""cabillaud croûte + cacio e pepe""
+            },
+            {
+              ""product"": ""Gruyère"",
+              ""quantity"": ""55g"",
+              ""usage"": ""gratin CF ven""
+            },
+            {
+              ""product"": ""Crème 15%"",
+              ""quantity"": ""200g"",
+              ""usage"": ""stroganoff 100g + butter chicken 50g + steak poivre 50g""
+            },
+            {
+              ""product"": ""Beurre"",
+              ""quantity"": ""50g"",
+              ""usage"": ""cuisson + butter chicken + béchamel""
+            },
+            {
+              ""product"": ""Lait coco"",
+              ""quantity"": ""100g"",
+              ""usage"": ""butter chicken""
+            },
+            {
+              ""product"": ""Lait"",
+              ""quantity"": ""220ml"",
+              ""usage"": ""béchamel gratin CF""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥔 Féculents"",
+          ""items"": [
+            {
+              ""product"": ""Pâtes"",
+              ""quantity"": ""400g cuites"",
+              ""usage"": ""stroganoff + cacio e pepe sam""
+            },
+            {
+              ""product"": ""PDT"",
+              ""quantity"": ""560g"",
+              ""usage"": ""gratin stroganoff 360g + tortilla 450g → 810g""
+            },
+            {
+              ""product"": ""Riz"",
+              ""quantity"": ""560g cuit"",
+              ""usage"": ""butter chicken + porc laqué""
+            },
+            {
+              ""product"": ""Frites four"",
+              ""quantity"": ""450g"",
+              ""usage"": ""steak poivre mer + fish&chips sam""
+            },
+            {
+              ""product"": ""Naan"",
+              ""quantity"": ""150g"",
+              ""usage"": ""butter chicken J2""
+            },
+            {
+              ""product"": ""Pain complet"",
+              ""quantity"": ""220g"",
+              ""usage"": ""tortilla + accompagnement""
+            },
+            {
+              ""product"": ""Farine"",
+              ""quantity"": ""55g"",
+              ""usage"": ""galettes dim + poulet piccata""
+            },
+            {
+              ""product"": ""Polenta"",
+              ""quantity"": ""360g cuite"",
+              ""usage"": ""bœuf provençal dim""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥬 Légumes de saison"",
+          ""items"": [
+            {
+              ""product"": ""Carottes"",
+              ""quantity"": ""340g"",
+              ""usage"": ""porc laqué 220g + salade 100g""
+            },
+            {
+              ""product"": ""Champignons"",
+              ""quantity"": ""300g"",
+              ""usage"": ""stroganoff""
+            },
+            {
+              ""product"": ""Poireaux"",
+              ""quantity"": ""270g"",
+              ""usage"": ""cabillaud mar""
+            },
+            {
+              ""product"": ""Betteraves"",
+              ""quantity"": ""180g"",
+              ""usage"": ""salade mer""
+            },
+            {
+              ""product"": ""Mâche"",
+              ""quantity"": ""140g"",
+              ""usage"": ""steak poivre + fish&chips""
+            },
+            {
+              ""product"": ""Brocoli"",
+              ""quantity"": ""420g"",
+              ""usage"": ""gratin CF + cacio e pepe""
+            },
+            {
+              ""product"": ""Chou-fleur"",
+              ""quantity"": ""370g"",
+              ""usage"": ""gratin CF ven""
+            },
+            {
+              ""product"": ""Endives"",
+              ""quantity"": ""280g"",
+              ""usage"": ""butter chicken → non, dinde → non cette semaine tortilla""
+            },
+            {
+              ""product"": ""Oignon"",
+              ""quantity"": ""380g"",
+              ""usage"": ""stroganoff 150g + butter chicken 150g + tortilla 140g""
+            },
+            {
+              ""product"": ""Salade verte"",
+              ""quantity"": ""260g"",
+              ""usage"": ""tortilla + galettes + fish&chips""
+            },
+            {
+              ""product"": ""Lentilles vertes"",
+              ""quantity"": ""130g sèches"",
+              ""usage"": ""salade mer""
+            },
+            {
+              ""product"": ""Olives"",
+              ""quantity"": ""35g"",
+              ""usage"": ""bœuf provençal dim""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥫 Conserves & épicerie"",
+          ""items"": [
+            {
+              ""product"": ""Passata"",
+              ""quantity"": ""620g"",
+              ""usage"": ""butter chicken 350g + bœuf provençal 270g""
+            },
+            {
+              ""product"": ""Concentré tomate"",
+              ""quantity"": ""15g"",
+              ""usage"": ""butter chicken""
+            },
+            {
+              ""product"": ""Sauce soja"",
+              ""quantity"": ""27ml"",
+              ""usage"": ""porc laqué""
+            },
+            {
+              ""product"": ""Miel"",
+              ""quantity"": ""14g"",
+              ""usage"": ""porc laqué""
+            },
+            {
+              ""product"": ""Gingembre"",
+              ""quantity"": ""9g"",
+              ""usage"": ""porc laqué""
+            },
+            {
+              ""product"": ""Moutarde"",
+              ""quantity"": ""15g"",
+              ""usage"": ""stroganoff""
+            },
+            {
+              ""product"": ""Curry"",
+              ""quantity"": ""10g"",
+              ""usage"": ""butter chicken""
+            },
+            {
+              ""product"": ""Chapelure"",
+              ""quantity"": ""73g"",
+              ""usage"": ""cabillaud croûte + fish&chips + poulet pané""
+            }
+          ]
+        },
+        {
+          ""name"": ""🍎 Fruits & oléagineux"",
+          ""items"": [
+            {
+              ""product"": ""Amandes"",
+              ""quantity"": ""150g"",
+              ""usage"": ""collations""
+            },
+            {
+              ""product"": ""Noix"",
+              ""quantity"": ""30g"",
+              ""usage"": ""dim""
+            },
+            {
+              ""product"": ""Beurre de cacahuète"",
+              ""quantity"": ""30g"",
+              ""usage"": ""dim""
+            },
+            {
+              ""product"": ""Pommes"",
+              ""quantity"": ""450g"",
+              ""usage"": ""collations + dim""
+            },
+            {
+              ""product"": ""Poires"",
+              ""quantity"": ""320g"",
+              ""usage"": ""collations""
+            },
+            {
+              ""product"": ""Kiwis"",
+              ""quantity"": ""100g"",
+              ""usage"": ""collation""
+            },
+            {
+              ""product"": ""Oranges"",
+              ""quantity"": ""360g"",
+              ""usage"": ""collations""
+            },
+            {
+              ""product"": ""Clémentines"",
+              ""quantity"": ""140g"",
+              ""usage"": ""collation""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      ""week"": ""S3"",
+      ""weekLabel"": ""S3 — 30 mars - 5 avril"",
+      ""categories"": [
+        {
+          ""name"": ""🥩 Viandes & Poissons"",
+          ""items"": [
+            {
+              ""product"": ""Filet de poulet"",
+              ""quantity"": ""1090g"",
+              ""usage"": ""chili→non, poulet piccata 370g + wrap 340g + wok sam 360g""
+            },
+            {
+              ""product"": ""Cabillaud"",
+              ""quantity"": ""370g"",
+              ""usage"": ""gratin poireaux→non, purée→non, c'est cabillaud mar gratin poireaux""
+            },
+            {
+              ""product"": ""Filet de dinde"",
+              ""quantity"": ""370g"",
+              ""usage"": ""dinde moutarde mer""
+            },
+            {
+              ""product"": ""Saumon"",
+              ""quantity"": ""330g"",
+              ""usage"": ""papillote jeu""
+            },
+            {
+              ""product"": ""Jambon"",
+              ""quantity"": ""370g"",
+              ""usage"": ""gratin poireaux 180g + croque-madame 110g + pizza 90g""
+            },
+            {
+              ""product"": ""Bœuf haché 5%"",
+              ""quantity"": ""360g"",
+              ""usage"": ""kefta dim""
+            },
+            {
+              ""product"": ""Lardon fumé"",
+              ""quantity"": ""50g"",
+              ""usage"": ""quiche dim""
+            },
+            {
+              ""product"": ""Filet de porc"",
+              ""quantity"": ""550g"",
+              ""usage"": ""batch émincé (prep mar soir)""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥛 Produits laitiers"",
+          ""items"": [
+            {
+              ""product"": ""Skyr"",
+              ""quantity"": ""2kg"",
+              ""usage"": ""PDJ + collations""
+            },
+            {
+              ""product"": ""Emmental"",
+              ""quantity"": ""95g"",
+              ""usage"": ""wrap + croque-madame""
+            },
+            {
+              ""product"": ""Mozzarella"",
+              ""quantity"": ""140g"",
+              ""usage"": ""pizza sam""
+            },
+            {
+              ""product"": ""Gruyère"",
+              ""quantity"": ""99g"",
+              ""usage"": ""gratin poireaux 55g + quiche 44g""
+            },
+            {
+              ""product"": ""Parmesan"",
+              ""quantity"": ""18g"",
+              ""usage"": ""kefta polenta""
+            },
+            {
+              ""product"": ""Crème 15%"",
+              ""quantity"": ""175g"",
+              ""usage"": ""émincé porc 120g + dinde moutarde 55g""
+            },
+            {
+              ""product"": ""Beurre"",
+              ""quantity"": ""60g"",
+              ""usage"": ""cuisson + piccata + béchamel""
+            },
+            {
+              ""product"": ""Lait"",
+              ""quantity"": ""220ml"",
+              ""usage"": ""béchamel gratin poireaux""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥔 Féculents"",
+          ""items"": [
+            {
+              ""product"": ""Riz"",
+              ""quantity"": ""710g cuit"",
+              ""usage"": ""chili + saumon""
+            },
+            {
+              ""product"": ""Pâtes"",
+              ""quantity"": ""330g cuites"",
+              ""usage"": ""piccata lun""
+            },
+            {
+              ""product"": ""Pâtes complètes"",
+              ""quantity"": ""530g cuites"",
+              ""usage"": ""émincé porc""
+            },
+            {
+              ""product"": ""PDT"",
+              ""quantity"": ""650g"",
+              ""usage"": ""dinde écrasé + PDT → 450g""
+            },
+            {
+              ""product"": ""Semoule"",
+              ""quantity"": ""360g cuite"",
+              ""usage"": ""kefta dim""
+            },
+            {
+              ""product"": ""Tortilla wrap"",
+              ""quantity"": ""175g"",
+              ""usage"": ""wrap mer""
+            },
+            {
+              ""product"": ""Pain complet"",
+              ""quantity"": ""220g"",
+              ""usage"": ""croque-madame + accompagnement""
+            },
+            {
+              ""product"": ""Farine"",
+              ""quantity"": ""85g"",
+              ""usage"": ""pizza sam""
+            },
+            {
+              ""product"": ""Pâte brisée"",
+              ""quantity"": ""140g"",
+              ""usage"": ""quiche dim""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥬 Légumes de saison"",
+          ""items"": [
+            {
+              ""product"": ""Brocoli"",
+              ""quantity"": ""280g"",
+              ""usage"": ""piccata lun""
+            },
+            {
+              ""product"": ""Poireaux"",
+              ""quantity"": ""540g"",
+              ""usage"": ""gratin mar 450g + papillote jeu 90g""
+            },
+            {
+              ""product"": ""Navets"",
+              ""quantity"": ""270g"",
+              ""usage"": ""dinde mer""
+            },
+            {
+              ""product"": ""Haricots verts"",
+              ""quantity"": ""280g"",
+              ""usage"": ""saumon jeu""
+            },
+            {
+              ""product"": ""Champignons"",
+              ""quantity"": ""370g"",
+              ""usage"": ""émincé 300g + pizza 70g""
+            },
+            {
+              ""product"": ""Mâche"",
+              ""quantity"": ""140g"",
+              ""usage"": ""émincé J2""
+            },
+            {
+              ""product"": ""Carottes"",
+              ""quantity"": ""360g"",
+              ""usage"": ""wrap + wok sam + kefta dim""
+            },
+            {
+              ""product"": ""Chou vert"",
+              ""quantity"": ""200g"",
+              ""usage"": ""wok sam + poulet dim""
+            },
+            {
+              ""product"": ""Salade verte"",
+              ""quantity"": ""340g"",
+              ""usage"": ""croque-madame + pizza + quiche""
+            },
+            {
+              ""product"": ""Oignon"",
+              ""quantity"": ""190g"",
+              ""usage"": ""émincé 120g + kefta 70g""
+            }
+          ]
+        },
+        {
+          ""name"": ""🥫 Conserves & épicerie"",
+          ""items"": [
+            {
+              ""product"": ""Passata"",
+              ""quantity"": ""130g"",
+              ""usage"": ""pizza""
+            },
+            {
+              ""product"": ""Guacamole"",
+              ""quantity"": ""70g"",
+              ""usage"": ""burrito bowl mar""
+            },
+            {
+              ""product"": ""Moutarde"",
+              ""quantity"": ""52g"",
+              ""usage"": ""émincé 25g + dinde 27g""
+            },
+            {
+              ""product"": ""Sauce soja"",
+              ""quantity"": ""27ml"",
+              ""usage"": ""wok sam""
+            },
+            {
+              ""product"": ""Gingembre"",
+              ""quantity"": ""9g"",
+              ""usage"": ""wok sam""
+            },
+            {
+              ""product"": ""Cumin"",
+              ""quantity"": ""5g"",
+              ""usage"": ""kefta""
+            },
+            {
+              ""product"": ""Paprika"",
+              ""quantity"": ""3.5g"",
+              ""usage"": ""kefta""
+            }
+          ]
+        },
+        {
+          ""name"": ""🍎 Fruits & oléagineux"",
+          ""items"": [
+            {
+              ""product"": ""Amandes"",
+              ""quantity"": ""150g"",
+              ""usage"": ""collations""
+            },
+            {
+              ""product"": ""Noix"",
+              ""quantity"": ""30g"",
+              ""usage"": ""dim""
+            },
+            {
+              ""product"": ""Beurre de cacahuète"",
+              ""quantity"": ""30g"",
+              ""usage"": ""dim""
+            },
+            {
+              ""product"": ""Pommes"",
+              ""quantity"": ""450g"",
+              ""usage"": ""collations + dim""
+            },
+            {
+              ""product"": ""Poires"",
+              ""quantity"": ""320g"",
+              ""usage"": ""collations""
+            },
+            {
+              ""product"": ""Clémentines"",
+              ""quantity"": ""280g"",
+              ""usage"": ""collations""
+            },
+            {
+              ""product"": ""Kiwis"",
+              ""quantity"": ""200g"",
+              ""usage"": ""collations""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  ""recipes"": [
+    {
+      ""name"": ""Rougail saucisses"",
+      ""batchId"": ""B1"",
+      ""timing"": {
+        ""actif"": ""15min"",
+        ""total"": ""45min""
+      },
+      ""ingredients"": ""400g saucisses porc · 150g lentilles cuites · 400g passata · 150g oignon · 10g ail · 15g gingembre · 20g concentré tomate · 10ml huile"",
+      ""rendement"": ""1000g"",
+      ""macros100g"": {
+        ""kcal"": 168,
+        ""p"": 7.4,
+        ""g"": 6.9,
+        ""l"": 12.0,
+        ""f"": 1.6
+      },
+      ""portions"": {
+        ""j"": ""330g"",
+        ""z"": ""260g""
+      },
+      ""reheat"": ""Micro-ondes 3-4min"",
+      ""jour2"": ""Avec semoule et carottes râpées""
+    },
+    {
+      ""name"": ""Poulet basquaise"",
+      ""batchId"": ""B2"",
+      ""timing"": {
+        ""actif"": ""15min"",
+        ""total"": ""50min""
+      },
+      ""ingredients"": ""600g cuisses poulet · 250g poivrons conserve · 350g passata · 150g oignon · 10g ail · 15ml huile"",
+      ""rendement"": ""1150g"",
+      ""macros100g"": {
+        ""kcal"": 121,
+        ""p"": 11.2,
+        ""g"": 3.7,
+        ""l"": 6.7,
+        ""f"": 1.0
+      },
+      ""portions"": {
+        ""j"": ""370g"",
+        ""z"": ""290g""
+      },
+      ""reheat"": ""Micro-ondes 3-4min"",
+      ""jour2"": ""En gratin PDT fondantes + emmental""
+    },
+    {
+      ""name"": ""Bœuf stroganoff"",
+      ""batchId"": ""B3"",
+      ""timing"": {
+        ""actif"": ""20min"",
+        ""total"": ""35min""
+      },
+      ""ingredients"": ""500g bœuf haché 5% · 300g champignons · 150g oignon · 100g crème 15% · 15g moutarde · 15ml huile"",
+      ""rendement"": ""900g"",
+      ""macros100g"": {
+        ""kcal"": 124,
+        ""p"": 13.0,
+        ""g"": 2.1,
+        ""l"": 6.6,
+        ""f"": 0.6
+      },
+      ""portions"": {
+        ""j"": ""330g"",
+        ""z"": ""260g""
+      },
+      ""reheat"": ""Micro-ondes 3-4min"",
+      ""jour2"": ""En gratin PDT + emmental""
+    },
+    {
+      ""name"": ""Butter chicken"",
+      ""batchId"": ""B4"",
+      ""timing"": {
+        ""actif"": ""20min"",
+        ""total"": ""40min""
+      },
+      ""ingredients"": ""550g poulet · 350g passata · 100g lait coco · 150g oignon · 20g beurre · 50g crème · 10g ail · 10g curry · 15g concentré tomate"",
+      ""rendement"": ""1050g"",
+      ""macros100g"": {
+        ""kcal"": 124,
+        ""p"": 12.7,
+        ""g"": 4.2,
+        ""l"": 5.9,
+        ""f"": 1.1
+      },
+      ""portions"": {
+        ""j"": ""350g"",
+        ""z"": ""280g""
+      },
+      ""reheat"": ""Micro-ondes 3-4min"",
+      ""jour2"": ""Avec naan et riz""
+    },
+    {
+      ""name"": ""Chili con carne"",
+      ""batchId"": ""B5"",
+      ""timing"": {
+        ""actif"": ""15min"",
+        ""total"": ""50min""
+      },
+      ""ingredients"": ""500g bœuf haché 5% · 250g haricots rouges · 400g passata · 150g oignon · 150g poivrons conserve · 20g concentré tomate · 10g ail · 10ml huile"",
+      ""rendement"": ""1300g"",
+      ""macros100g"": {
+        ""kcal"": 103,
+        ""p"": 10.5,
+        ""g"": 6.2,
+        ""l"": 3.1,
+        ""f"": 2.1
+      },
+      ""portions"": {
+        ""j"": ""380g"",
+        ""z"": ""300g""
+      },
+      ""reheat"": ""Micro-ondes 3-4min"",
+      ""jour2"": ""En burrito bowl avec riz et guacamole""
+    },
+    {
+      ""name"": ""Émincé porc moutarde-champignons"",
+      ""batchId"": ""B6"",
+      ""timing"": {
+        ""actif"": ""20min"",
+        ""total"": ""30min""
+      },
+      ""ingredients"": ""550g filet porc · 300g champignons · 120g oignon · 120g crème 15% · 25g moutarde · 15ml huile"",
+      ""rendement"": ""950g"",
+      ""macros100g"": {
+        ""kcal"": 117,
+        ""p"": 14.1,
+        ""g"": 1.9,
+        ""l"": 5.4,
+        ""f"": 0.6
+      },
+      ""portions"": {
+        ""j"": ""340g"",
+        ""z"": ""270g""
+      },
+      ""reheat"": ""Micro-ondes 3-4min"",
+      ""jour2"": ""Avec pâtes complètes et mâche""
+    }
+  ]
+}"
