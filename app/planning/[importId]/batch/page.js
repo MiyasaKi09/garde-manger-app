@@ -4,14 +4,14 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter, useParams } from 'next/navigation'
-import { ArrowLeft, Clock, ChefHat, ChevronDown, ChevronUp, Flame, Users, UtensilsCrossed } from 'lucide-react'
+import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react'
 
 export default function BatchPage() {
   const router = useRouter()
   const { importId } = useParams()
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState(null)
-  const [expandedRecipes, setExpandedRecipes] = useState({})
+  const [expandedRecipe, setExpandedRecipe] = useState(null)
 
   useEffect(() => {
     async function load() {
@@ -25,57 +25,42 @@ export default function BatchPage() {
     load()
   }, [importId])
 
-  // Group prep tasks by date, and attach meals for that day
-  const dailyPlan = useMemo(() => {
+  // Build a day-by-day view: prep tasks + meals to cook that day
+  const days = useMemo(() => {
     if (!data) return []
     const prepTasks = data.prepTasks || []
     const meals = data.meals || []
-    const days = {}
+    const map = {}
 
-    // Add prep tasks grouped by date
+    // Group prep tasks by date
     for (const task of prepTasks) {
-      const key = task.prep_date || task.prep_label || 'other'
-      if (!days[key]) days[key] = { date: task.prep_date, label: task.prep_label, tasks: [], meals: [] }
-      days[key].tasks.push(task)
-      if (!days[key].label) days[key].label = task.prep_label
+      const key = task.prep_date || 'unknown'
+      if (!map[key]) map[key] = { date: task.prep_date, label: task.prep_label, prep: [], meals: [] }
+      map[key].prep.push(task)
+      if (task.prep_label && !map[key].label) map[key].label = task.prep_label
     }
 
-    // Add meals for days that have prep tasks
-    for (const key of Object.keys(days)) {
-      if (!days[key].date) continue
-      const dayMeals = meals.filter(m => m.meal_date === days[key].date)
-      // Group by person
-      const byPerson = {}
-      for (const m of dayMeals) {
-        if (!byPerson[m.person_name]) byPerson[m.person_name] = []
-        byPerson[m.person_name].push(m)
-      }
-      days[key].meals = byPerson
+    // Add meals for each prep day (dejeuner + diner only)
+    for (const key of Object.keys(map)) {
+      if (!map[key].date) continue
+      const dayMeals = meals
+        .filter(m => m.meal_date === map[key].date && (m.meal_type === 'dejeuner' || m.meal_type === 'diner'))
+        .sort((a, b) => (a.meal_type === 'dejeuner' ? 0 : 1) - (b.meal_type === 'dejeuner' ? 0 : 1))
+      map[key].meals = dayMeals
     }
 
-    // Sort by date
-    return Object.values(days).sort((a, b) => {
-      if (!a.date && !b.date) return 0
-      if (!a.date) return 1
-      if (!b.date) return -1
-      return a.date.localeCompare(b.date)
-    })
+    return Object.values(map).sort((a, b) => (a.date || '').localeCompare(b.date || ''))
   }, [data])
 
   const batchRecipes = data?.batchRecipes || []
 
-  function toggleRecipe(idx) {
-    setExpandedRecipes(prev => ({ ...prev, [idx]: !prev[idx] }))
-  }
-
-  function formatDate(dateStr, label) {
+  function formatDate(date, label) {
     if (label) return label
-    if (!dateStr) return '—'
-    const d = new Date(dateStr + 'T00:00:00')
-    return d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
+    if (!date) return '—'
+    return new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
   }
 
-  const mealLabels = { pdj: 'P-dej', dejeuner: 'Dej', diner: 'Dîner', collation: 'Coll' }
+  const mealLabels = { dejeuner: 'Midi', diner: 'Soir' }
 
   if (loading) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p>Chargement...</p></div>
   if (!data) return null
@@ -83,188 +68,147 @@ export default function BatchPage() {
   return (
     <>
       <div className="container">
-        <div className="header-card">
+        <div className="header">
           <button className="back-btn" onClick={() => router.push(`/planning/${importId}`)}>
-            <ArrowLeft size={18} /> Retour au calendrier
+            <ArrowLeft size={18} />
           </button>
-          <h1><ChefHat size={22} /> Cuisine & Préparations</h1>
-          <p>{data.import?.month_label}</p>
+          <h1>Cuisine du jour</h1>
         </div>
 
-        {/* Daily Plan */}
-        <div className="section">
-          <h2><Clock size={20} /> Jour par jour</h2>
-          <div className="daily-list">
-            {dailyPlan.map((day, i) => {
-              const isFree = day.tasks.every(t => /libre|🎉|0\s*min/i.test(t.task) || /🎉/.test(t.estimated_time))
-              const totalTime = day.tasks.reduce((sum, t) => {
-                const m = (t.estimated_time || '').match(/(\d+)\s*min/i)
-                return sum + (m ? parseInt(m[1]) : 0)
-              }, 0)
+        {/* Day by day */}
+        {days.map((day, i) => {
+          const isFree = day.prep.every(t => /libre|🎉|0\s*min/i.test(t.task))
+          const totalMin = day.prep.reduce((s, t) => {
+            const m = (t.estimated_time || '').match(/(\d+)\s*min/i)
+            return s + (m ? parseInt(m[1]) : 0)
+          }, 0)
+
+          return (
+            <div key={i} className={`day ${isFree ? 'free' : ''}`}>
+              <div className="day-date">
+                <span>{formatDate(day.date, day.label)}</span>
+                {totalMin > 0 && <span className="day-time">{totalMin} min</span>}
+                {isFree && <span className="day-badge-free">Repos</span>}
+              </div>
+
+              <div className="day-content">
+                {/* Prep tasks */}
+                {day.prep.map((task, j) => {
+                  const isBatch = /batch/i.test(task.task)
+                  const isPortionner = /portionner|restes/i.test(task.task)
+                  return (
+                    <div key={j} className={`task ${isBatch ? 'batch' : ''} ${isFree ? 'task-free' : ''}`}>
+                      <div className="task-label">{isBatch ? '🍳 Batch' : isPortionner ? '📦 Prep' : isFree ? '🎉' : '🔪 Prep'}</div>
+                      <div className="task-text">{task.task}</div>
+                      {task.estimated_time && !/🎉/.test(task.estimated_time) && (
+                        <div className="task-time">{task.estimated_time}</div>
+                      )}
+                    </div>
+                  )
+                })}
+
+                {/* Meals to serve */}
+                {day.meals.length > 0 && (
+                  <div className="day-meals">
+                    {['dejeuner', 'diner'].map(mt => {
+                      const mealsForType = day.meals.filter(m => m.meal_type === mt)
+                      if (mealsForType.length === 0) return null
+                      return (
+                        <div key={mt} className="serve-block">
+                          <div className="serve-label">{mt === 'dejeuner' ? '☀️ Midi' : '🌙 Soir'}</div>
+                          {mealsForType.map((m, k) => (
+                            <div key={k} className="serve-item">
+                              <span className="serve-person">{m.person_name}</span>
+                              <span className="serve-desc">{m.description}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+          )
+        })}
+
+        {/* Recipes reference */}
+        {batchRecipes.length > 0 && (
+          <div className="recipes-section">
+            <h2>Recettes ({batchRecipes.length})</h2>
+            {batchRecipes.map((recipe, i) => {
+              const name = recipe.name.split('\n')[0].replace(/^B\d+\s*[—–-]\s*/, '')
+              const expanded = expandedRecipe === i
 
               return (
-                <div key={i} className={`day-card ${isFree ? 'free' : ''}`}>
-                  <div className="day-header">
-                    <div className="day-date">{formatDate(day.date, day.label)}</div>
-                    {totalTime > 0 && <div className="day-time">{totalTime} min</div>}
-                    {isFree && <div className="day-free">Repos</div>}
+                <div key={i} className="recipe">
+                  <div className="recipe-head" onClick={() => setExpandedRecipe(expanded ? null : i)}>
+                    <div className="recipe-name">{name}</div>
+                    <div className="recipe-meta">
+                      {recipe.rendement && <span>{recipe.rendement.split('\n')[0]}</span>}
+                      {recipe.macros_per_100g && <span>{recipe.macros_per_100g}</span>}
+                    </div>
+                    {expanded ? <ChevronUp size={18} color="#9ca3af" /> : <ChevronDown size={18} color="#9ca3af" />}
                   </div>
-
-                  <div className="day-tasks">
-                    {day.tasks.map((task, j) => (
-                      <div key={j} className="task-row">
-                        <div className="task-icon">{/batch/i.test(task.task) ? '🍳' : /portionner|restes/i.test(task.task) ? '📦' : /libre|🎉/i.test(task.task) ? '🎉' : '🔪'}</div>
-                        <div className="task-content">
-                          <div className="task-text">{task.task}</div>
-                          {task.estimated_time && !/🎉/.test(task.estimated_time) && (
-                            <div className="task-time"><Clock size={12} /> {task.estimated_time}</div>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {Object.keys(day.meals).length > 0 && (
-                    <div className="day-meals">
-                      <div className="meals-label"><UtensilsCrossed size={13} /> Repas du jour</div>
-                      {Object.entries(day.meals).map(([person, personMeals]) => (
-                        <div key={person} className="person-meals">
-                          <span className="person-tag">{person}</span>
-                          {personMeals
-                            .filter(m => m.meal_type === 'dejeuner' || m.meal_type === 'diner')
-                            .sort((a, b) => (a.meal_type === 'dejeuner' ? 0 : 1) - (b.meal_type === 'dejeuner' ? 0 : 1))
-                            .map((m, k) => (
-                              <span key={k} className="meal-chip">
-                                {mealLabels[m.meal_type]}: {m.description?.substring(0, 40)}{m.description?.length > 40 ? '...' : ''}
-                              </span>
-                            ))
-                          }
-                        </div>
-                      ))}
+                  {expanded && (
+                    <div className="recipe-detail">
+                      {recipe.ingredients && <div className="r-block"><div className="r-label">Ingrédients</div><div className="r-text">{recipe.ingredients.replace(/\|/g, '\n')}</div></div>}
+                      {recipe.portions && <div className="r-block"><div className="r-label">Portions</div><div className="r-text">{recipe.portions}</div></div>}
+                      {recipe.instructions && <div className="r-block"><div className="r-label">Préparation</div><div className="r-text">{recipe.instructions}</div></div>}
+                      {recipe.reheat && <div className="r-reheat">{recipe.reheat}</div>}
                     </div>
                   )}
                 </div>
               )
             })}
           </div>
-        </div>
-
-        {/* Batch Recipes */}
-        {batchRecipes.length > 0 && (
-          <div className="section">
-            <h2><ChefHat size={20} /> Recettes batch ({batchRecipes.length})</h2>
-            <div className="recipes-list">
-              {batchRecipes.map((recipe, i) => {
-                const expanded = expandedRecipes[i]
-                const recipeName = recipe.name.split('\n')[0].replace(/^B\d+\s*[—–-]\s*/, '')
-                const timing = recipe.name.includes('\n') ? recipe.name.split('\n')[1].replace(/[()]/g, '').trim() : recipe.timing
-
-                return (
-                  <div key={i} className="recipe-card">
-                    <div className="recipe-header" onClick={() => toggleRecipe(i)}>
-                      <div className="recipe-title">
-                        <h3>{recipeName}</h3>
-                        <div className="recipe-badges">
-                          {timing && <span className="timing-badge"><Clock size={12} /> {timing}</span>}
-                          {recipe.rendement && <span className="yield-badge"><Flame size={12} /> {recipe.rendement.split('\n')[0]}</span>}
-                          {recipe.macros_per_100g && <span className="macro-badge">{recipe.macros_per_100g}</span>}
-                        </div>
-                      </div>
-                      {expanded ? <ChevronUp size={20} color="#6b7280" /> : <ChevronDown size={20} color="#6b7280" />}
-                    </div>
-
-                    {expanded && (
-                      <div className="recipe-body">
-                        {recipe.ingredients && (
-                          <div className="recipe-section">
-                            <div className="section-label">Ingrédients</div>
-                            <div className="detail-text">{recipe.ingredients.replace(/\|/g, '\n').replace(/•/g, '•')}</div>
-                          </div>
-                        )}
-
-                        {recipe.portions && (
-                          <div className="recipe-section">
-                            <div className="section-label"><Users size={13} /> Portions par personne</div>
-                            <div className="detail-text">{recipe.portions}</div>
-                          </div>
-                        )}
-
-                        {recipe.instructions && (
-                          <div className="recipe-section">
-                            <div className="section-label">Préparation</div>
-                            <div className="detail-text">{recipe.instructions}</div>
-                          </div>
-                        )}
-
-                        {recipe.reheat && recipe.reheat !== recipe.instructions && (
-                          <div className="reheat-box">
-                            {recipe.reheat}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-          </div>
         )}
       </div>
 
       <style jsx>{`
-        .container { padding: 16px; max-width: 800px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-        .header-card { background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 20px; margin-bottom: 20px; }
-        .back-btn { display: inline-flex; align-items: center; gap: 6px; background: none; border: none; color: #6b7280; cursor: pointer; font-size: 14px; padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; }
-        .back-btn:hover { background: rgba(0,0,0,0.05); }
-        .header-card h1 { display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: bold; color: #1f2937; margin: 0 0 4px; }
-        .header-card p { color: #6b7280; margin: 0; font-size: 14px; }
+        .container { padding: 16px; max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
 
-        .section { margin-bottom: 28px; }
-        .section h2 { display: flex; align-items: center; gap: 8px; font-size: 18px; color: #1f2937; margin: 0 0 14px; }
+        .header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .back-btn { background: none; border: none; color: #6b7280; cursor: pointer; padding: 6px; border-radius: 8px; display: flex; }
+        .header h1 { font-size: 20px; font-weight: 700; color: #1f2937; margin: 0; }
 
-        .daily-list { display: flex; flex-direction: column; gap: 12px; }
-        .day-card { background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 16px; }
-        .day-card.free { background: rgba(34,197,94,0.04); border-color: rgba(34,197,94,0.15); }
+        .day { margin-bottom: 20px; }
+        .day.free { opacity: 0.6; }
+        .day-date { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; text-transform: capitalize; }
+        .day-date span:first-child { font-size: 15px; font-weight: 700; color: #1f2937; }
+        .day-time { font-size: 12px; font-weight: 600; color: #2563eb; background: rgba(59,130,246,0.08); padding: 2px 8px; border-radius: 5px; }
+        .day-badge-free { font-size: 12px; font-weight: 600; color: #16a34a; background: rgba(34,197,94,0.08); padding: 2px 8px; border-radius: 5px; }
 
-        .day-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .day-date { font-size: 15px; font-weight: 700; color: #1f2937; text-transform: capitalize; flex: 1; }
-        .day-time { font-size: 13px; font-weight: 600; color: #2563eb; background: rgba(59,130,246,0.08); padding: 2px 10px; border-radius: 6px; }
-        .day-free { font-size: 13px; font-weight: 600; color: #16a34a; background: rgba(34,197,94,0.08); padding: 2px 10px; border-radius: 6px; }
+        .day-content { background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; overflow: hidden; }
 
-        .day-tasks { display: flex; flex-direction: column; gap: 6px; }
-        .task-row { display: flex; gap: 10px; align-items: flex-start; }
-        .task-icon { font-size: 18px; flex-shrink: 0; width: 28px; text-align: center; }
-        .task-content { flex: 1; }
-        .task-text { font-size: 14px; color: #374151; line-height: 1.4; }
-        .task-time { font-size: 12px; color: #6b7280; margin-top: 2px; display: flex; align-items: center; gap: 4px; }
+        .task { display: flex; align-items: baseline; gap: 8px; padding: 10px 14px; border-bottom: 1px solid rgba(0,0,0,0.03); }
+        .task.batch { background: rgba(234,179,8,0.04); }
+        .task-label { font-size: 12px; font-weight: 600; color: #6b7280; white-space: nowrap; min-width: 70px; }
+        .task-text { font-size: 14px; color: #374151; line-height: 1.4; flex: 1; }
+        .task-time { font-size: 12px; color: #6b7280; white-space: nowrap; }
 
-        .day-meals { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.06); }
-        .meals-label { font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
-        .person-meals { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 4px; }
-        .person-tag { font-size: 11px; font-weight: 700; color: #16a34a; background: rgba(34,197,94,0.08); padding: 2px 8px; border-radius: 4px; }
-        .meal-chip { font-size: 12px; color: #374151; background: rgba(0,0,0,0.03); padding: 3px 8px; border-radius: 6px; }
+        .day-meals { padding: 8px 14px 10px; border-top: 1px solid rgba(0,0,0,0.06); }
+        .serve-block { margin-bottom: 6px; }
+        .serve-block:last-child { margin-bottom: 0; }
+        .serve-label { font-size: 13px; font-weight: 700; color: #374151; margin-bottom: 4px; }
+        .serve-item { display: flex; gap: 8px; padding: 2px 0; font-size: 13px; }
+        .serve-person { font-weight: 600; color: #16a34a; min-width: 50px; }
+        .serve-desc { color: #374151; }
 
-        .recipes-list { display: flex; flex-direction: column; gap: 10px; }
-        .recipe-card { background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; overflow: hidden; }
-        .recipe-header { display: flex; justify-content: space-between; align-items: center; padding: 16px; cursor: pointer; gap: 12px; }
-        .recipe-header:hover { background: rgba(255,255,255,0.15); }
-        .recipe-title { flex: 1; }
-        .recipe-title h3 { font-size: 16px; font-weight: 700; color: #1f2937; margin: 0 0 6px; }
-        .recipe-badges { display: flex; flex-wrap: wrap; gap: 6px; }
-        .timing-badge { display: inline-flex; align-items: center; gap: 3px; padding: 2px 8px; background: rgba(59,130,246,0.08); color: #2563eb; border-radius: 5px; font-size: 11px; font-weight: 500; }
-        .yield-badge { display: inline-flex; align-items: center; gap: 3px; padding: 2px 8px; background: rgba(234,179,8,0.08); color: #92400e; border-radius: 5px; font-size: 11px; font-weight: 500; }
-        .macro-badge { padding: 2px 8px; background: rgba(34,197,94,0.08); color: #16a34a; border-radius: 5px; font-size: 11px; font-weight: 500; }
+        .recipes-section { margin-top: 32px; padding-top: 20px; border-top: 2px solid rgba(0,0,0,0.06); }
+        .recipes-section h2 { font-size: 17px; font-weight: 700; color: #1f2937; margin: 0 0 12px; }
 
-        .recipe-body { padding: 0 16px 16px; }
-        .recipe-section { margin-bottom: 12px; }
-        .section-label { display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-        .detail-text { font-size: 13px; color: #374151; line-height: 1.6; white-space: pre-line; }
-        .reheat-box { background: rgba(234,179,8,0.06); border: 1px solid rgba(234,179,8,0.15); padding: 8px 12px; border-radius: 8px; font-size: 12px; color: #92400e; line-height: 1.4; }
+        .recipe { background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+        .recipe-head { display: flex; align-items: center; padding: 12px 14px; cursor: pointer; gap: 10px; }
+        .recipe-head:hover { background: rgba(255,255,255,0.2); }
+        .recipe-name { font-size: 15px; font-weight: 600; color: #1f2937; flex: 1; }
+        .recipe-meta { display: flex; gap: 8px; font-size: 11px; color: #6b7280; }
 
-        @media (max-width: 768px) {
-          .recipe-badges { gap: 4px; }
-          .day-header { flex-wrap: wrap; }
-        }
+        .recipe-detail { padding: 0 14px 14px; }
+        .r-block { margin-bottom: 10px; }
+        .r-label { font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+        .r-text { font-size: 13px; color: #374151; line-height: 1.6; white-space: pre-line; }
+        .r-reheat { font-size: 12px; color: #92400e; background: rgba(234,179,8,0.06); padding: 6px 10px; border-radius: 6px; }
       `}</style>
     </>
   )
