@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
-import { Upload, FileSpreadsheet, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react'
+import { Upload, FileSpreadsheet, FileJson, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react'
 
 export default function ImportPage() {
   const router = useRouter()
@@ -29,11 +29,11 @@ export default function ImportPage() {
     e.preventDefault()
     setDragging(false)
     const f = e.dataTransfer.files[0]
-    if (f && f.name.endsWith('.xlsx')) {
+    if (f && (f.name.endsWith('.xlsx') || f.name.endsWith('.json'))) {
       setFile(f)
       setError(null)
     } else {
-      setError('Format invalide. Seuls les fichiers .xlsx sont acceptés.')
+      setError('Format invalide. Fichiers .xlsx ou .json acceptés.')
     }
   }
 
@@ -89,7 +89,7 @@ export default function ImportPage() {
             <ArrowLeft size={18} /> Retour au planning
           </button>
           <h1>Importer un plan nutritionnel</h1>
-          <p>Déposez le fichier .xlsx généré par votre nutritionniste</p>
+          <p>Déposez le fichier .xlsx ou .json généré par votre nutritionniste</p>
         </div>
 
         {!result ? (
@@ -104,21 +104,25 @@ export default function ImportPage() {
               <input
                 ref={fileInputRef}
                 type="file"
-                accept=".xlsx"
+                accept=".xlsx,.json"
                 onChange={handleFileSelect}
                 style={{ display: 'none' }}
               />
 
               {file ? (
                 <div className="file-info">
-                  <FileSpreadsheet size={48} color="#16a34a" />
+                  {file.name.endsWith('.json') ? (
+                    <FileJson size={48} color="#16a34a" />
+                  ) : (
+                    <FileSpreadsheet size={48} color="#16a34a" />
+                  )}
                   <div className="file-name">{file.name}</div>
                   <div className="file-size">{(file.size / 1024).toFixed(1)} KB</div>
                 </div>
               ) : (
                 <div className="drop-prompt">
                   <Upload size={48} color="#9ca3af" />
-                  <div className="drop-text">Glissez votre fichier .xlsx ici</div>
+                  <div className="drop-text">Glissez votre fichier .xlsx ou .json ici</div>
                   <div className="drop-hint">ou cliquez pour parcourir</div>
                 </div>
               )}
