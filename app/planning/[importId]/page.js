@@ -58,7 +58,7 @@ function transformData(raw) {
 }
 
 function reconstructFromNormalized(importData) {
-  const { meals, dailyTotals, shoppingItems } = importData
+  const { meals, dailyTotals, shoppingItems, prepTasks } = importData
   const dateMap = {}
   for (const meal of meals) {
     if (!dateMap[meal.meal_date]) dateMap[meal.meal_date] = { meals: [], totals: [] }
@@ -68,6 +68,23 @@ function reconstructFromNormalized(importData) {
     if (!dateMap[total.meal_date]) dateMap[total.meal_date] = { meals: [], totals: [] }
     dateMap[total.meal_date].totals.push(total)
   }
+
+  // Group prep tasks by date, split dinner vs prep steps
+  const prepByDate = {}
+  for (const task of (prepTasks || [])) {
+    const d = task.prep_date
+    if (!d) continue
+    if (!prepByDate[d]) prepByDate[d] = { dinner: [], prep: [] }
+    const isPrep = task.task?.startsWith('[Prep] ')
+    const rawTask = isPrep ? task.task.slice(7) : task.task || ''
+    const colonIdx = rawTask.indexOf(': ')
+    const action = colonIdx >= 0 ? rawTask.slice(0, colonIdx) : rawTask
+    const detail = colonIdx >= 0 ? rawTask.slice(colonIdx + 2) : ''
+    const step = { t: task.estimated_time || '', a: action, dt: detail }
+    if (isPrep) prepByDate[d].prep.push(step)
+    else prepByDate[d].dinner.push(step)
+  }
+
   const dayNames = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi']
   const mTo = m => m ? { d: m.description||"", k: m.kcal||0, p: m.protein_g||0, g: m.carbs_g||0, l: m.fat_g||0, f: m.fiber_g||0 } : { d:"", k:0, p:0, g:0, l:0, f:0 }
 
@@ -75,17 +92,35 @@ function reconstructFromNormalized(importData) {
     const dt = new Date(date)
     const find = (p, t) => dm.find(m => m.person_name === p && m.meal_type === t)
     const jT = totals.find(t => t.person_name === 'Julien'), zT = totals.find(t => t.person_name === 'Zoé')
+    const dinJ = find('Julien','diner'), dinZ = find('Zoé','diner')
+    const dayPrep = prepByDate[date]
+    const dinSteps = dayPrep?.dinner || []
+    const prepSteps = dayPrep?.prep || []
+    const totalDinTime = dinSteps.map(s => parseInt(s.t) || 0).reduce((a, b) => a + b, 0)
+    const totalPrepTime = prepSteps.map(s => parseInt(s.t) || 0).reduce((a, b) => a + b, 0)
     return {
       date: `${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}`,
       day: dayNames[dt.getDay()], type: find('Julien','dejeuner')?.day_type || '', wk: 0,
       dej: { j: mTo(find('Julien','dejeuner')), z: mTo(find('Zoé','dejeuner')) },
-      din: { j: mTo(find('Julien','diner')), z: mTo(find('Zoé','diner')) },
+      din: { j: mTo(dinJ), z: mTo(dinZ) },
       col: { j: mTo(find('Julien','collation')), z: mTo(find('Zoé','collation')) },
       tot: {
         j: { k: jT?.kcal||0, p: jT?.protein_g||0, g: jT?.carbs_g||0, l: jT?.fat_g||0, f: jT?.fiber_g||0, ok: jT?.validated ? 1 : 0 },
         z: { k: zT?.kcal||0, p: zT?.protein_g||0, g: zT?.carbs_g||0, l: zT?.fat_g||0, f: zT?.fiber_g||0, ok: zT?.validated ? 1 : 0 },
       },
-      ck_din: null, ck_prep: null, batch: "",
+      ck_din: dinSteps.length > 0 ? {
+        name: dinJ?.description || dinZ?.description || 'Dîner',
+        time: totalDinTime > 0 ? `${totalDinTime} min` : '',
+        pJ: dinJ?.description || '',
+        pZ: dinZ?.description || '',
+        steps: dinSteps,
+      } : null,
+      ck_prep: prepSteps.length > 0 ? {
+        time: totalPrepTime > 0 ? `${totalPrepTime} min` : '',
+        dishes: [],
+        steps: prepSteps,
+      } : null,
+      batch: "",
     }
   })
 
