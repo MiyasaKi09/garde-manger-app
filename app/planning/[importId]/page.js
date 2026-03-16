@@ -30,18 +30,34 @@ function transformData(raw) {
       j: { k: day.total?.j?.kcal||0, p: day.total?.j?.p||0, g: day.total?.j?.g||0, l: day.total?.j?.l||0, f: day.total?.j?.f||0, ok: day.total?.j?.ok ? 1 : 0 },
       z: { k: day.total?.z?.kcal||0, p: day.total?.z?.p||0, g: day.total?.z?.g||0, l: day.total?.z?.l||0, f: day.total?.z?.f||0, ok: day.total?.z?.ok ? 1 : 0 },
     },
-    ck_din: day.cooking?.dinner ? {
-      name: day.cooking.dinner.name,
-      time: day.cooking.dinner.totalTime,
-      pJ: day.cooking.dinner.portionsJ || day.din?.j?.desc || "",
-      pZ: day.cooking.dinner.portionsZ || day.din?.z?.desc || "",
-      steps: (day.cooking.dinner.steps || []).map(s => ({ t: s.duration, a: s.action, dt: s.detail })),
-    } : null,
-    ck_prep: day.cooking?.prep && !day.cooking.prep.isFree ? {
-      time: day.cooking.prep.totalTime,
-      dishes: (day.cooking.prep.dishes || []).map(d => ({ n: d.name, f: d.for })),
-      steps: (day.cooking.prep.steps || []).map(s => ({ t: s.duration, a: s.action, dt: s.detail })),
-    } : null,
+    ck_din: day.cooking?.dinner?.steps?.length ? (() => {
+      const din = day.cooking.dinner
+      const steps = din.steps.map(s => ({
+        t: typeof s.duration === 'number' ? `${s.duration} min` : (s.duration || ''),
+        a: s.action || '', dt: s.detail || ''
+      }))
+      const computedTime = din.totalTime || (din.steps.reduce((sum, s) => sum + (parseInt(s.duration) || 0), 0) + ' min')
+      return {
+        name: din.name || day.din?.j?.desc || 'Dîner',
+        time: computedTime,
+        pJ: din.portionsJ || day.din?.j?.desc || "",
+        pZ: din.portionsZ || day.din?.z?.desc || "",
+        steps,
+      }
+    })() : null,
+    ck_prep: day.cooking?.prep?.steps?.length && !day.cooking.prep.isFree ? (() => {
+      const prep = day.cooking.prep
+      const steps = prep.steps.map(s => ({
+        t: typeof s.duration === 'number' ? `${s.duration} min` : (s.duration || ''),
+        a: s.action || '', dt: s.detail || ''
+      }))
+      const computedTime = prep.totalTime || (prep.steps.reduce((sum, s) => sum + (parseInt(s.duration) || 0), 0) + ' min')
+      return {
+        time: computedTime,
+        dishes: (prep.dishes || []).map(d => ({ n: d.name, f: d.for })),
+        steps,
+      }
+    })() : null,
     batch: day.batch || "",
   }))
 
@@ -70,19 +86,32 @@ function reconstructFromNormalized(importData) {
   }
 
   // Group prep tasks by date, split dinner vs prep steps
+  // JSON parser stores: "Action: Detail" (dinner) and "[Prep] Action: Detail" (prep)
+  // XLSX parser stores: plain text tasks (all from "Planning Prep" sheet)
+  const allTasks = prepTasks || []
+  const hasJsonFormat = allTasks.some(t => t.task?.startsWith('[Prep] '))
   const prepByDate = {}
-  for (const task of (prepTasks || [])) {
+  for (const task of allTasks) {
     const d = task.prep_date
     if (!d) continue
     if (!prepByDate[d]) prepByDate[d] = { dinner: [], prep: [] }
-    const isPrep = task.task?.startsWith('[Prep] ')
-    const rawTask = isPrep ? task.task.slice(7) : task.task || ''
-    const colonIdx = rawTask.indexOf(': ')
-    const action = colonIdx >= 0 ? rawTask.slice(0, colonIdx) : rawTask
-    const detail = colonIdx >= 0 ? rawTask.slice(colonIdx + 2) : ''
-    const step = { t: task.estimated_time || '', a: action, dt: detail }
-    if (isPrep) prepByDate[d].prep.push(step)
-    else prepByDate[d].dinner.push(step)
+    const taskText = task.task || ''
+
+    if (hasJsonFormat) {
+      // JSON-style: split by [Prep] prefix
+      const isPrep = taskText.startsWith('[Prep] ')
+      const rawTask = isPrep ? taskText.slice(7) : taskText
+      const colonIdx = rawTask.indexOf(': ')
+      const action = colonIdx >= 0 ? rawTask.slice(0, colonIdx) : rawTask
+      const detail = colonIdx >= 0 ? rawTask.slice(colonIdx + 2) : ''
+      const step = { t: task.estimated_time || '', a: action, dt: detail }
+      if (isPrep) prepByDate[d].prep.push(step)
+      else prepByDate[d].dinner.push(step)
+    } else {
+      // XLSX-style: all tasks are prep steps, plain text
+      const step = { t: task.estimated_time || '', a: taskText, dt: '' }
+      prepByDate[d].prep.push(step)
+    }
   }
 
   const dayNames = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi']
@@ -176,11 +205,15 @@ export default function PlanningView() {
       const result = await res.json()
 
       if (result.import?.raw_json) {
+        console.log('[planning] Using raw_json path')
         const { DATA: d, GROC: g } = transformData(result.import.raw_json)
+        console.log('[planning] Day 0 ck_din:', d[0]?.ck_din, 'ck_prep:', d[0]?.ck_prep)
         setDATA(d)
         setGROC(g)
       } else {
+        console.log('[planning] Using reconstructFromNormalized, prepTasks count:', result.prepTasks?.length)
         const { DATA: d, GROC: g } = reconstructFromNormalized(result)
+        console.log('[planning] Day 0 ck_din:', d[0]?.ck_din, 'ck_prep:', d[0]?.ck_prep)
         setDATA(d)
         setGROC(g)
       }
