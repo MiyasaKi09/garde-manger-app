@@ -303,3 +303,307 @@ id,import_id,week_label,category,product_name,quantity,checked
 1321,11,S3,🍎 Fruits & oléagineux,Poires,320g,f
 1322,11,S3,🍎 Fruits & oléagineux,Clémentines,280g,f
 1323,11,S3,🍎 Fruits & oléagineux,Kiwis,200g,f
+1324,12,S1,🥩 Viandes & Poissons,Saucisses de porc,400g,f
+1325,12,S1,🥩 Viandes & Poissons,Cuisses de poulet,600g,f
+1326,12,S1,🥩 Viandes & Poissons,Filet de poulet,540g,f
+1327,12,S1,🥩 Viandes & Poissons,Saumon,360g (200+160),f
+1328,12,S1,🥩 Viandes & Poissons,Steak haché 5%,560g,f
+1329,12,S1,🥩 Viandes & Poissons,Jambon,280g,f
+1330,12,S1,🥩 Viandes & Poissons,Lardons dinde,280g,f
+1331,12,S1,🥛 Produits laitiers,Skyr,2kg,f
+1332,12,S1,🥛 Produits laitiers,Emmental,75g,f
+1333,12,S1,🥛 Produits laitiers,Cheddar,45g,f
+1334,12,S1,🥛 Produits laitiers,Parmesan,40g,f
+1335,12,S1,🥛 Produits laitiers,Gruyère,40g,f
+1336,12,S1,🥛 Produits laitiers,Beurre,30g,f
+1337,12,S1,🥛 Produits laitiers,Lait,80ml,f
+1338,12,S1,🥔 Féculents,Riz,440g cuit,f
+1339,12,S1,🥔 Féculents,Semoule,370g cuite,f
+1340,12,S1,🥔 Féculents,Pâtes,200g cuites,f
+1341,12,S1,🥔 Féculents,PDT,1.2kg,f
+1342,12,S1,🥔 Féculents,Grenaille,600g,f
+1343,12,S1,🥔 Féculents,Pain complet,350g,f
+1344,12,S1,🥔 Féculents,Pain burger,150g,f
+1345,12,S1,🥬 Légumes de saison,Poivrons conserve,300g,f
+1346,12,S1,🥬 Légumes de saison,Oignon,450g,f
+1347,12,S1,🥬 Légumes de saison,Carottes,180g,f
+1348,12,S1,🥬 Légumes de saison,Brocoli,440g,f
+1349,12,S1,🥬 Légumes de saison,Endives,450g (7),f
+1350,12,S1,🥬 Légumes de saison,Mâche,160g,f
+1351,12,S1,🥬 Légumes de saison,Haricots verts,540g,f
+1352,12,S1,🥬 Légumes de saison,Salade verte,200g,f
+1353,12,S1,🥬 Légumes de saison,Tomates cerise,90g,f
+1354,12,S1,🥬 Légumes de saison,Lentilles vertes,250g sèches,f
+1355,12,S1,🥬 Légumes de saison,Lentilles cuites,200g,f
+1356,12,S1,🥫 Conserves & épicerie,Passata,950g,f
+1357,12,S1,🥫 Conserves & épicerie,Concentré tomate,20g,f
+1358,12,S1,🥫 Conserves & épicerie,Gingembre frais,15g,f
+1359,12,S1,🥫 Conserves & épicerie,Sauce soja,22ml,f
+1360,12,S1,🥫 Conserves & épicerie,Miel,22g,f
+1361,12,S1,🥫 Conserves & épicerie,Moutarde,18g,f
+1362,12,S1,🥫 Conserves & épicerie,Cornichons,35g,f
+1363,12,S1,🥫 Conserves & épicerie,Ketchup,18g,f
+1364,12,S1,🥫 Conserves & épicerie,Cumin,5g,f
+1365,12,S1,🍎 Fruits & oléagineux,Amandes,180g,f
+1366,12,S1,🍎 Fruits & oléagineux,Noix,20g,f
+1367,12,S1,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
+1368,12,S1,🍎 Fruits & oléagineux,Pommes,300g,f
+1369,12,S1,🍎 Fruits & oléagineux,Poires,320g,f
+1370,12,S1,🍎 Fruits & oléagineux,Kiwis,200g,f
+1371,12,S1,🍎 Fruits & oléagineux,Clémentines,280g,f
+1372,12,S1,🍎 Fruits & oléagineux,Oranges,180g,f
+1373,12,S2,🥩 Viandes & Poissons,Bœuf haché 5%,860g,f
+1374,12,S2,🥩 Viandes & Poissons,Filet de porc,370g,f
+1375,12,S2,🥩 Viandes & Poissons,Cabillaud,370g,f
+1376,12,S2,🥩 Viandes & Poissons,Filet de poulet,990g,f
+1377,12,S2,🥩 Viandes & Poissons,Jambon,205g,f
+1378,12,S2,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
+1379,12,S2,🥛 Produits laitiers,Skyr,2kg,f
+1380,12,S2,🥛 Produits laitiers,Emmental,35g,f
+1381,12,S2,🥛 Produits laitiers,Parmesan,62g,f
+1382,12,S2,🥛 Produits laitiers,Gruyère,65g,f
+1383,12,S2,🥛 Produits laitiers,Crème 15%,125g,f
+1384,12,S2,🥛 Produits laitiers,Beurre,30g,f
+1385,12,S2,🥛 Produits laitiers,Lait coco,100g,f
+1386,12,S2,🥛 Produits laitiers,Lait,140ml,f
+1387,12,S2,🥔 Féculents,Pâtes complètes,400g cuites,f
+1388,12,S2,🥔 Féculents,PDT,740g,f
+1389,12,S2,🥔 Féculents,Riz,640g cuit,f
+1390,12,S2,🥔 Féculents,Frites four,400g,f
+1391,12,S2,🥔 Féculents,Naan,150g,f
+1392,12,S2,🥔 Féculents,Pâtes,340g cuites,f
+1393,12,S2,🥔 Féculents,Polenta,360g cuite,f
+1394,12,S2,🥔 Féculents,Pain complet,300g,f
+1395,12,S2,🥔 Féculents,Farine,55g,f
+1396,12,S2,🥬 Légumes de saison,Carottes,330g,f
+1397,12,S2,🥬 Légumes de saison,Champignons,300g,f
+1398,12,S2,🥬 Légumes de saison,Poireaux,270g,f
+1399,12,S2,🥬 Légumes de saison,Betteraves,180g,f
+1400,12,S2,🥬 Légumes de saison,Mâche,140g,f
+1401,12,S2,🥬 Légumes de saison,Brocoli,270g,f
+1402,12,S2,🥬 Légumes de saison,Chou-fleur,370g,f
+1403,12,S2,🥬 Légumes de saison,Oignon,350g,f
+1404,12,S2,🥬 Légumes de saison,Salade verte,200g,f
+1405,12,S2,🥬 Légumes de saison,Lentilles vertes,130g sèches,f
+1406,12,S2,🥬 Légumes de saison,Haricots verts,140g,f
+1407,12,S2,🥬 Légumes de saison,Olives,25g,f
+1408,12,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f
+1409,12,S2,🥬 Légumes de saison,Petits pois,80g,f
+1410,12,S2,🥫 Conserves & épicerie,Passata,470g,f
+1411,12,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f
+1412,12,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f
+1413,12,S2,🥫 Conserves & épicerie,Miel,11g,f
+1414,12,S2,🥫 Conserves & épicerie,Gingembre,9g,f
+1415,12,S2,🥫 Conserves & épicerie,Moutarde,15g,f
+1416,12,S2,🥫 Conserves & épicerie,Curry,10g,f
+1417,12,S2,🥫 Conserves & épicerie,Chapelure,34g,f
+1418,12,S2,🍎 Fruits & oléagineux,Amandes,180g,f
+1419,12,S2,🍎 Fruits & oléagineux,Noix,20g,f
+1420,12,S2,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
+1421,12,S2,🍎 Fruits & oléagineux,Pommes,450g,f
+1422,12,S2,🍎 Fruits & oléagineux,Poires,320g,f
+1423,12,S2,🍎 Fruits & oléagineux,Kiwis,100g,f
+1424,12,S2,🍎 Fruits & oléagineux,Oranges,180g,f
+1425,12,S2,🍎 Fruits & oléagineux,Clémentines,140g,f
+1426,12,S3,🥩 Viandes & Poissons,Filet de poulet,730g,f
+1427,12,S3,🥩 Viandes & Poissons,Saumon,360g,f
+1428,12,S3,🥩 Viandes & Poissons,Filet de dinde,370g,f
+1429,12,S3,🥩 Viandes & Poissons,Jambon,320g,f
+1430,12,S3,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
+1431,12,S3,🥩 Viandes & Poissons,Filet de porc,550g,f
+1432,12,S3,🥩 Viandes & Poissons,Lardon fumé,45g,f
+1433,12,S3,🥛 Produits laitiers,Skyr,2kg,f
+1434,12,S3,🥛 Produits laitiers,Emmental,85g,f
+1435,12,S3,🥛 Produits laitiers,Gruyère,45g,f
+1436,12,S3,🥛 Produits laitiers,Mozzarella,115g,f
+1437,12,S3,🥛 Produits laitiers,Parmesan,14g,f
+1438,12,S3,🥛 Produits laitiers,Crème 15%,135g,f
+1439,12,S3,🥛 Produits laitiers,Beurre,40g,f
+1440,12,S3,🥛 Produits laitiers,Lait,140ml,f
+1441,12,S3,🥔 Féculents,Riz,620g cuit,f
+1442,12,S3,🥔 Féculents,Pâtes,380g cuites,f
+1443,12,S3,🥔 Féculents,Pâtes complètes,580g cuites,f
+1444,12,S3,🥔 Féculents,PDT,620g,f
+1445,12,S3,🥔 Féculents,Semoule,380g cuite,f
+1446,12,S3,🥔 Féculents,Tortilla wrap,175g,f
+1447,12,S3,🥔 Féculents,Pain complet,300g,f
+1448,12,S3,🥔 Féculents,Farine,80g,f
+1449,12,S3,🥔 Féculents,Pâte brisée,130g,f
+1450,12,S3,🥬 Légumes de saison,Brocoli,280g,f
+1451,12,S3,🥬 Légumes de saison,Poireaux,540g,f
+1452,12,S3,🥬 Légumes de saison,Navets,220g,f
+1453,12,S3,🥬 Légumes de saison,Haricots verts,440g,f
+1454,12,S3,🥬 Légumes de saison,Champignons,360g,f
+1455,12,S3,🥬 Légumes de saison,Mâche,140g,f
+1456,12,S3,🥬 Légumes de saison,Carottes,230g,f
+1457,12,S3,🥬 Légumes de saison,Chou vert,140g,f
+1458,12,S3,🥬 Légumes de saison,Salade verte,320g,f
+1459,12,S3,🥬 Légumes de saison,Oignon,190g,f
+1460,12,S3,🥬 Légumes de saison,Lentilles cuites,430g,f
+1461,12,S3,🥬 Légumes de saison,Pois chiches conserve,180g,f
+1462,12,S3,🥫 Conserves & épicerie,Passata,130g,f
+1463,12,S3,🥫 Conserves & épicerie,Guacamole,55g,f
+1464,12,S3,🥫 Conserves & épicerie,Moutarde,47g,f
+1465,12,S3,🥫 Conserves & épicerie,Sauce soja,22ml,f
+1466,12,S3,🥫 Conserves & épicerie,Gingembre,9g,f
+1467,12,S3,🥫 Conserves & épicerie,Cumin,5g,f
+1468,12,S3,🥫 Conserves & épicerie,Paprika,3.5g,f
+1469,12,S3,🍎 Fruits & oléagineux,Amandes,180g,f
+1470,12,S3,🍎 Fruits & oléagineux,Noix,20g,f
+1471,12,S3,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
+1472,12,S3,🍎 Fruits & oléagineux,Pommes,450g,f
+1473,12,S3,🍎 Fruits & oléagineux,Poires,320g,f
+1474,12,S3,🍎 Fruits & oléagineux,Clémentines,280g,f
+1475,12,S3,🍎 Fruits & oléagineux,Kiwis,200g,f
+1476,13,S1,🥩 Viandes & Poissons,Saucisses de porc,400g,f
+1477,13,S1,🥩 Viandes & Poissons,Cuisses de poulet,600g,f
+1478,13,S1,🥩 Viandes & Poissons,Filet de poulet,540g,f
+1479,13,S1,🥩 Viandes & Poissons,Saumon,360g (200+160),f
+1480,13,S1,🥩 Viandes & Poissons,Steak haché 5%,560g,f
+1481,13,S1,🥩 Viandes & Poissons,Jambon,280g,f
+1482,13,S1,🥩 Viandes & Poissons,Lardons dinde,280g,f
+1483,13,S1,🥛 Produits laitiers,Skyr,2kg,f
+1484,13,S1,🥛 Produits laitiers,Emmental,75g,f
+1485,13,S1,🥛 Produits laitiers,Cheddar,45g,f
+1486,13,S1,🥛 Produits laitiers,Parmesan,40g,f
+1487,13,S1,🥛 Produits laitiers,Gruyère,40g,f
+1488,13,S1,🥛 Produits laitiers,Beurre,30g,f
+1489,13,S1,🥛 Produits laitiers,Lait,80ml,f
+1490,13,S1,🥔 Féculents,Riz,440g cuit,f
+1491,13,S1,🥔 Féculents,Semoule,370g cuite,f
+1492,13,S1,🥔 Féculents,Pâtes,200g cuites,f
+1493,13,S1,🥔 Féculents,PDT,1.2kg,f
+1494,13,S1,🥔 Féculents,Grenaille,600g,f
+1495,13,S1,🥔 Féculents,Pain complet,350g,f
+1496,13,S1,🥔 Féculents,Pain burger,150g,f
+1497,13,S1,🥬 Légumes de saison,Poivrons conserve,300g,f
+1498,13,S1,🥬 Légumes de saison,Oignon,450g,f
+1499,13,S1,🥬 Légumes de saison,Carottes,180g,f
+1500,13,S1,🥬 Légumes de saison,Brocoli,440g,f
+1501,13,S1,🥬 Légumes de saison,Endives,450g (7),f
+1502,13,S1,🥬 Légumes de saison,Mâche,160g,f
+1503,13,S1,🥬 Légumes de saison,Haricots verts,540g,f
+1504,13,S1,🥬 Légumes de saison,Salade verte,200g,f
+1505,13,S1,🥬 Légumes de saison,Tomates cerise,90g,f
+1506,13,S1,🥬 Légumes de saison,Lentilles vertes,250g sèches,f
+1507,13,S1,🥬 Légumes de saison,Lentilles cuites,200g,f
+1508,13,S1,🥫 Conserves & épicerie,Passata,950g,f
+1509,13,S1,🥫 Conserves & épicerie,Concentré tomate,20g,f
+1510,13,S1,🥫 Conserves & épicerie,Gingembre frais,15g,f
+1511,13,S1,🥫 Conserves & épicerie,Sauce soja,22ml,f
+1512,13,S1,🥫 Conserves & épicerie,Miel,22g,f
+1513,13,S1,🥫 Conserves & épicerie,Moutarde,18g,f
+1514,13,S1,🥫 Conserves & épicerie,Cornichons,35g,f
+1515,13,S1,🥫 Conserves & épicerie,Ketchup,18g,f
+1516,13,S1,🥫 Conserves & épicerie,Cumin,5g,f
+1517,13,S1,🍎 Fruits & oléagineux,Amandes,180g,f
+1518,13,S1,🍎 Fruits & oléagineux,Noix,20g,f
+1519,13,S1,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
+1520,13,S1,🍎 Fruits & oléagineux,Pommes,300g,f
+1521,13,S1,🍎 Fruits & oléagineux,Poires,320g,f
+1522,13,S1,🍎 Fruits & oléagineux,Kiwis,200g,f
+1523,13,S1,🍎 Fruits & oléagineux,Clémentines,280g,f
+1524,13,S1,🍎 Fruits & oléagineux,Oranges,180g,f
+1525,13,S2,🥩 Viandes & Poissons,Bœuf haché 5%,860g,f
+1526,13,S2,🥩 Viandes & Poissons,Filet de porc,370g,f
+1527,13,S2,🥩 Viandes & Poissons,Cabillaud,370g,f
+1528,13,S2,🥩 Viandes & Poissons,Filet de poulet,990g,f
+1529,13,S2,🥩 Viandes & Poissons,Jambon,205g,f
+1530,13,S2,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
+1531,13,S2,🥛 Produits laitiers,Skyr,2kg,f
+1532,13,S2,🥛 Produits laitiers,Emmental,35g,f
+1533,13,S2,🥛 Produits laitiers,Parmesan,62g,f
+1534,13,S2,🥛 Produits laitiers,Gruyère,65g,f
+1535,13,S2,🥛 Produits laitiers,Crème 15%,125g,f
+1536,13,S2,🥛 Produits laitiers,Beurre,30g,f
+1537,13,S2,🥛 Produits laitiers,Lait coco,100g,f
+1538,13,S2,🥛 Produits laitiers,Lait,140ml,f
+1539,13,S2,🥔 Féculents,Pâtes complètes,400g cuites,f
+1540,13,S2,🥔 Féculents,PDT,740g,f
+1541,13,S2,🥔 Féculents,Riz,640g cuit,f
+1542,13,S2,🥔 Féculents,Frites four,400g,f
+1543,13,S2,🥔 Féculents,Naan,150g,f
+1544,13,S2,🥔 Féculents,Pâtes,340g cuites,f
+1545,13,S2,🥔 Féculents,Polenta,360g cuite,f
+1546,13,S2,🥔 Féculents,Pain complet,300g,f
+1547,13,S2,🥔 Féculents,Farine,55g,f
+1548,13,S2,🥬 Légumes de saison,Carottes,330g,f
+1549,13,S2,🥬 Légumes de saison,Champignons,300g,f
+1550,13,S2,🥬 Légumes de saison,Poireaux,270g,f
+1551,13,S2,🥬 Légumes de saison,Betteraves,180g,f
+1552,13,S2,🥬 Légumes de saison,Mâche,140g,f
+1553,13,S2,🥬 Légumes de saison,Brocoli,270g,f
+1554,13,S2,🥬 Légumes de saison,Chou-fleur,370g,f
+1555,13,S2,🥬 Légumes de saison,Oignon,350g,f
+1556,13,S2,🥬 Légumes de saison,Salade verte,200g,f
+1557,13,S2,🥬 Légumes de saison,Lentilles vertes,130g sèches,f
+1558,13,S2,🥬 Légumes de saison,Haricots verts,140g,f
+1559,13,S2,🥬 Légumes de saison,Olives,25g,f
+1560,13,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f
+1561,13,S2,🥬 Légumes de saison,Petits pois,80g,f
+1562,13,S2,🥫 Conserves & épicerie,Passata,470g,f
+1563,13,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f
+1564,13,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f
+1565,13,S2,🥫 Conserves & épicerie,Miel,11g,f
+1566,13,S2,🥫 Conserves & épicerie,Gingembre,9g,f
+1567,13,S2,🥫 Conserves & épicerie,Moutarde,15g,f
+1568,13,S2,🥫 Conserves & épicerie,Curry,10g,f
+1569,13,S2,🥫 Conserves & épicerie,Chapelure,34g,f
+1570,13,S2,🍎 Fruits & oléagineux,Amandes,180g,f
+1571,13,S2,🍎 Fruits & oléagineux,Noix,20g,f
+1572,13,S2,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
+1573,13,S2,🍎 Fruits & oléagineux,Pommes,450g,f
+1574,13,S2,🍎 Fruits & oléagineux,Poires,320g,f
+1575,13,S2,🍎 Fruits & oléagineux,Kiwis,100g,f
+1576,13,S2,🍎 Fruits & oléagineux,Oranges,180g,f
+1577,13,S2,🍎 Fruits & oléagineux,Clémentines,140g,f
+1578,13,S3,🥩 Viandes & Poissons,Filet de poulet,730g,f
+1579,13,S3,🥩 Viandes & Poissons,Saumon,360g,f
+1580,13,S3,🥩 Viandes & Poissons,Filet de dinde,370g,f
+1581,13,S3,🥩 Viandes & Poissons,Jambon,320g,f
+1582,13,S3,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
+1583,13,S3,🥩 Viandes & Poissons,Filet de porc,550g,f
+1584,13,S3,🥩 Viandes & Poissons,Lardon fumé,45g,f
+1585,13,S3,🥛 Produits laitiers,Skyr,2kg,f
+1586,13,S3,🥛 Produits laitiers,Emmental,85g,f
+1587,13,S3,🥛 Produits laitiers,Gruyère,45g,f
+1588,13,S3,🥛 Produits laitiers,Mozzarella,115g,f
+1589,13,S3,🥛 Produits laitiers,Parmesan,14g,f
+1590,13,S3,🥛 Produits laitiers,Crème 15%,135g,f
+1591,13,S3,🥛 Produits laitiers,Beurre,40g,f
+1592,13,S3,🥛 Produits laitiers,Lait,140ml,f
+1593,13,S3,🥔 Féculents,Riz,620g cuit,f
+1594,13,S3,🥔 Féculents,Pâtes,380g cuites,f
+1595,13,S3,🥔 Féculents,Pâtes complètes,580g cuites,f
+1596,13,S3,🥔 Féculents,PDT,620g,f
+1597,13,S3,🥔 Féculents,Semoule,380g cuite,f
+1598,13,S3,🥔 Féculents,Tortilla wrap,175g,f
+1599,13,S3,🥔 Féculents,Pain complet,300g,f
+1600,13,S3,🥔 Féculents,Farine,80g,f
+1601,13,S3,🥔 Féculents,Pâte brisée,130g,f
+1602,13,S3,🥬 Légumes de saison,Brocoli,280g,f
+1603,13,S3,🥬 Légumes de saison,Poireaux,540g,f
+1604,13,S3,🥬 Légumes de saison,Navets,220g,f
+1605,13,S3,🥬 Légumes de saison,Haricots verts,440g,f
+1606,13,S3,🥬 Légumes de saison,Champignons,360g,f
+1607,13,S3,🥬 Légumes de saison,Mâche,140g,f
+1608,13,S3,🥬 Légumes de saison,Carottes,230g,f
+1609,13,S3,🥬 Légumes de saison,Chou vert,140g,f
+1610,13,S3,🥬 Légumes de saison,Salade verte,320g,f
+1611,13,S3,🥬 Légumes de saison,Oignon,190g,f
+1612,13,S3,🥬 Légumes de saison,Lentilles cuites,430g,f
+1613,13,S3,🥬 Légumes de saison,Pois chiches conserve,180g,f
+1614,13,S3,🥫 Conserves & épicerie,Passata,130g,f
+1615,13,S3,🥫 Conserves & épicerie,Guacamole,55g,f
+1616,13,S3,🥫 Conserves & épicerie,Moutarde,47g,f
+1617,13,S3,🥫 Conserves & épicerie,Sauce soja,22ml,f
+1618,13,S3,🥫 Conserves & épicerie,Gingembre,9g,f
+1619,13,S3,🥫 Conserves & épicerie,Cumin,5g,f
+1620,13,S3,🥫 Conserves & épicerie,Paprika,3.5g,f
+1621,13,S3,🍎 Fruits & oléagineux,Amandes,180g,f
+1622,13,S3,🍎 Fruits & oléagineux,Noix,20g,f
+1623,13,S3,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
+1624,13,S3,🍎 Fruits & oléagineux,Pommes,450g,f
+1625,13,S3,🍎 Fruits & oléagineux,Poires,320g,f
+1626,13,S3,🍎 Fruits & oléagineux,Clémentines,280g,f
+1627,13,S3,🍎 Fruits & oléagineux,Kiwis,200g,f

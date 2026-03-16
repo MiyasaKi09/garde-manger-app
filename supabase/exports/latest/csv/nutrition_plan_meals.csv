@@ -377,3 +377,255 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 1468,11,Zoé,2026-04-05,dejeuner,WE,Quiche lorraine: pâte 60g + œufs + lardons 38g + crème + gruyère + salade,499.0,22.0,27.0,34.0,2.0
 1469,11,Zoé,2026-04-05,diner,WE,Kefta bœuf: 160g bœuf + 160g semoule + 120g carottes + 80g pois chiches,614.0,48.0,62.0,16.0,10.0
 1470,11,Zoé,2026-04-05,collation,WE,200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
+1471,12,Julien,2026-03-16,dejeuner,Séance,Rougail saucisses 340g + 220g riz,848.0,32.0,87.0,40.0,7.0
+1472,12,Julien,2026-03-16,diner,Séance,Chakchouka au poulet: 170g poulet + 3 œufs + 150g passata + poivrons + oignon + 40g pain complet,695.0,67.0,34.0,30.0,6.0
+1473,12,Julien,2026-03-16,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1474,12,Zoé,2026-03-16,dejeuner,Séance,Rougail saucisses 270g + 180g riz,680.0,25.0,70.0,32.0,6.0
+1475,12,Zoé,2026-03-16,diner,Séance,Chakchouka au poulet: 140g poulet + 2 œufs + 130g passata + poivrons + oignon + 30g pain complet,523.0,52.0,26.0,22.0,5.0
+1476,12,Zoé,2026-03-16,collation,Séance,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1477,12,Julien,2026-03-17,dejeuner,Séance,Rougail 340g + 200g semoule + 80g carottes,811.0,33.0,75.0,40.0,10.0
+1478,12,Julien,2026-03-17,diner,Séance,Saumon teriyaki: 200g saumon laqué soja-miel + 180g riz complet + 150g brocoli sauté + 40g pain complet,886.0,55.0,81.0,34.0,10.0
+1479,12,Julien,2026-03-17,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1480,12,Zoé,2026-03-17,dejeuner,Séance,Rougail 270g + 170g semoule + 60g carottes,655.0,26.0,62.0,32.0,8.0
+1481,12,Zoé,2026-03-17,diner,Séance,Saumon teriyaki: 160g saumon laqué + 150g riz complet + 130g brocoli sauté,656.0,42.0,52.0,28.0,7.0
+1482,12,Zoé,2026-03-17,collation,Séance,2 œufs durs + 1 poire (160g),252.0,16.0,18.0,12.0,5.0
+1483,12,Julien,2026-03-18,dejeuner,Repos,Salade poulet-lentilles: 200g poulet + 200g lentilles + 80g carottes + 40g pain complet + vinaigrette,640.0,65.0,57.0,13.0,13.0
+1484,12,Julien,2026-03-18,diner,Repos,Huevos rotos: 3 œufs + 80g jambon + 250g PDT sautées + 100g salade + 40g pain complet,834.0,48.0,67.0,41.0,8.0
+1485,12,Julien,2026-03-18,collation,Repos,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1486,12,Zoé,2026-03-18,dejeuner,Repos,Salade poulet-lentilles: 160g poulet + 160g lentilles + 70g carottes + vinaigrette,434.0,49.0,32.0,10.0,9.0
+1487,12,Zoé,2026-03-18,diner,Repos,Huevos rotos: 2 œufs + 60g jambon + 200g PDT sautées + 80g salade,549.0,32.0,39.0,29.0,4.0
+1488,12,Zoé,2026-03-18,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1489,12,Julien,2026-03-19,dejeuner,Séance,Basquaise 370g + 220g riz,733.0,48.0,75.0,26.0,5.0
+1490,12,Julien,2026-03-19,diner,Séance,Gratin endives-jambon: 4 endives + 120g jambon + béchamel légère + 20g gruyère + 220g PDT vapeur + 100g HV,584.0,39.0,60.0,19.0,10.0
+1491,12,Julien,2026-03-19,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1492,12,Zoé,2026-03-19,dejeuner,Séance,Basquaise 290g + 180g riz,584.0,38.0,61.0,20.0,4.0
+1493,12,Zoé,2026-03-19,diner,Séance,Gratin endives-jambon: 3 endives + 90g jambon + béchamel + 20g gruyère + 160g PDT vapeur,464.0,30.0,43.0,18.0,6.0
+1494,12,Zoé,2026-03-19,collation,Séance,2 œufs durs + 1 kiwi (100g),230.0,16.0,12.0,12.0,3.0
+1495,12,Julien,2026-03-20,dejeuner,Repos,Gratin basquaise: 370g + 180g PDT + 25g emmental,678.0,52.0,44.0,32.0,6.0
+1496,12,Julien,2026-03-20,diner,Repos,Poêlée montagnarde: 220g grenaille + 100g lardons dinde + 80g oignon + 25g emmental + 80g mâche + 100g haricots verts,576.0,34.0,52.0,25.0,10.0
+1497,12,Julien,2026-03-20,collation,Repos,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1498,12,Zoé,2026-03-20,dejeuner,Repos,Gratin basquaise: 290g + 150g PDT + 20g emmental,540.0,41.0,36.0,25.0,5.0
+1499,12,Zoé,2026-03-20,diner,Repos,Poêlée montagnarde: 180g grenaille + 80g lardons dinde + 60g oignon + 20g emmental + 60g mâche + 80g HV,479.0,27.0,42.0,22.0,8.0
+1500,12,Zoé,2026-03-20,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1501,12,Julien,2026-03-21,dejeuner,WE,Burger maison: 200g steak + pain burger 80g + 25g cheddar + salade + tomate,628.0,56.0,44.0,23.0,3.0
+1502,12,Julien,2026-03-21,diner,WE,Carbonara: 200g pâtes + 80g lardons dinde + 20g parmesan + 1 œuf + 150g brocoli + 30g pain complet,680.0,47.0,72.0,21.0,10.0
+1503,12,Julien,2026-03-21,collation,WE,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1504,12,Zoé,2026-03-21,dejeuner,WE,Burger: 150g steak + pain 70g + 20g cheddar + salade,505.0,44.0,38.0,18.0,3.0
+1505,12,Zoé,2026-03-21,diner,WE,Carbonara: 170g pâtes + 60g lardons dinde + 20g parmesan + 1 œuf + 80g brocoli,513.0,37.0,48.0,18.0,6.0
+1506,12,Zoé,2026-03-21,collation,WE,2 œufs durs + 1 clémentine (140g),237.0,16.0,15.0,12.0,2.0
+1507,12,Julien,2026-03-22,dejeuner,WE,Croque-monsieur x2: pain 100g + 100g jambon + 30g emmental + salade,522.0,36.0,47.0,19.0,7.0
+1508,12,Julien,2026-03-22,diner,WE,Poulet moutarde-miel: 200g poulet laqué + 250g grenaille + 150g haricots verts,640.0,53.0,59.0,20.0,10.0
+1509,12,Julien,2026-03-22,collation,WE,Dimanche: 20g noix + 1 pomme + 20g beurre cacahuète + 40g pain,438.0,12.0,39.0,24.0,8.0
+1510,12,Zoé,2026-03-22,dejeuner,WE,Croque-monsieur x1.5: pain 75g + 80g jambon + 25g emmental + salade,409.0,29.0,35.0,15.0,5.0
+1511,12,Zoé,2026-03-22,diner,WE,Poulet moutarde-miel: 170g poulet + 200g grenaille + 130g haricots verts,526.0,44.0,47.0,17.0,8.0
+1512,12,Zoé,2026-03-22,collation,WE,200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
+1513,12,Julien,2026-03-23,dejeuner,Séance,Stroganoff 330g + 200g pâtes complètes,664.0,56.0,61.0,20.0,8.0
+1514,12,Julien,2026-03-23,diner,Séance,Porc laqué soja-gingembre: 200g filet + 200g riz + 130g carottes + 40g pain complet,721.0,55.0,89.0,14.0,7.0
+1515,12,Julien,2026-03-23,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1516,12,Zoé,2026-03-23,dejeuner,Séance,Stroganoff 260g + 160g pâtes complètes,527.0,44.0,48.0,16.0,6.0
+1517,12,Zoé,2026-03-23,diner,Séance,Porc laqué soja-gingembre: 170g filet + 160g riz + 100g carottes,508.0,44.0,57.0,10.0,3.0
+1518,12,Zoé,2026-03-23,collation,Séance,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1519,12,Julien,2026-03-24,dejeuner,Séance,Gratin stroganoff: 330g + 180g PDT + 20g emmental,587.0,53.0,37.0,23.0,5.0
+1520,12,Julien,2026-03-24,diner,Séance,Cabillaud croûte parmesan: 200g cabillaud + 15g parmesan + 250g purée + 150g poireaux fondus + 40g pain complet,698.0,53.0,64.0,23.0,9.0
+1521,12,Julien,2026-03-24,collation,Séance,Option B: 2 œufs durs + 1 pomme (150g) + 20g amandes,376.0,20.0,20.0,23.0,5.0
+1522,12,Zoé,2026-03-24,dejeuner,Séance,Gratin stroganoff: 260g + 150g PDT + 15g emmental,466.0,42.0,31.0,18.0,4.0
+1523,12,Zoé,2026-03-24,diner,Séance,Cabillaud croûte parmesan: 170g cabillaud + 12g parmesan + 200g purée + 120g poireaux,482.0,41.0,37.0,17.0,5.0
+1524,12,Zoé,2026-03-24,collation,Séance,2 œufs durs + 1 pomme (150g),250.0,15.0,19.0,12.0,3.0
+1525,12,Julien,2026-03-25,dejeuner,Repos,Salade poulet-betteraves: 200g poulet + 160g lentilles + 100g betteraves + 40g pain complet + vinaigrette,611.0,63.0,53.0,13.0,12.0
+1526,12,Julien,2026-03-25,diner,Repos,Steak au poivre: 200g steak + sauce crème 20g + 200g frites four + 80g mâche + 80g HV + 35g pain complet,805.0,53.0,77.0,30.0,11.0
+1527,12,Julien,2026-03-25,collation,Repos,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1528,12,Zoé,2026-03-25,dejeuner,Repos,Salade poulet-betteraves: 160g poulet + 130g lentilles + 80g betteraves + vinaigrette,411.0,48.0,28.0,10.0,8.0
+1529,12,Zoé,2026-03-25,diner,Repos,Steak au poivre: 160g steak + sauce crème 15g + 160g frites four + 60g mâche + 60g HV,569.0,40.0,49.0,23.0,7.0
+1530,12,Zoé,2026-03-25,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1531,12,Julien,2026-03-26,dejeuner,Séance,Butter chicken 350g + 220g riz,702.0,51.0,76.0,20.0,5.0
+1532,12,Julien,2026-03-26,diner,Séance,Tortilla poulet-PDT: 150g poulet + 3 œufs + 220g PDT + 80g oignon + 80g salade + 40g pain complet,914.0,66.0,66.0,41.0,8.0
+1533,12,Julien,2026-03-26,collation,Séance,Option C: 1 poire (160g) + 15g amandes,175.0,4.0,19.0,8.0,7.0
+1534,12,Zoé,2026-03-26,dejeuner,Séance,Butter chicken 280g + 180g riz,567.0,41.0,62.0,16.0,4.0
+1535,12,Zoé,2026-03-26,diner,Séance,Tortilla poulet-PDT: 120g poulet + 2 œufs + 180g PDT + 60g oignon + 60g salade,620.0,47.0,39.0,30.0,4.0
+1536,12,Zoé,2026-03-26,collation,Séance,2 œufs durs + 1 poire (160g),252.0,16.0,18.0,12.0,5.0
+1537,12,Julien,2026-03-27,dejeuner,Repos,Butter chicken 350g + naan 80g + 100g riz,778.0,55.0,83.0,24.0,6.0
+1538,12,Julien,2026-03-27,diner,Repos,Gratin chou-fleur poulet: 200g poulet + 200g chou-fleur + béchamel légère + 20g gruyère + 180g PDT vapeur,634.0,60.0,46.0,21.0,7.0
+1539,12,Julien,2026-03-27,collation,Repos,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1540,12,Zoé,2026-03-27,dejeuner,Repos,Butter chicken 280g + naan 70g + 80g riz,640.0,44.0,69.0,20.0,5.0
+1541,12,Zoé,2026-03-27,diner,Repos,Gratin chou-fleur poulet: 170g poulet + 170g chou-fleur + béchamel + 18g gruyère + 150g PDT,547.0,51.0,38.0,19.0,6.0
+1542,12,Zoé,2026-03-27,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1543,12,Julien,2026-03-28,dejeuner,WE,Fish & chips four: cabillaud 200g pané + 230g frites four + 100g salade,720.0,48.0,80.0,22.0,8.0
+1544,12,Julien,2026-03-28,diner,WE,Cacio e pepe poulet-brocolis: 180g pâtes + 120g poulet + 35g parmesan + 150g brocoli,631.0,53.0,53.0,21.0,8.0
+1545,12,Julien,2026-03-28,collation,WE,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1546,12,Zoé,2026-03-28,dejeuner,WE,Fish & chips: cabillaud 170g pané + 180g frites four + 80g salade,577.0,40.0,63.0,18.0,6.0
+1547,12,Zoé,2026-03-28,diner,WE,Cacio e pepe poulet-brocolis: 160g pâtes + 100g poulet + 28g parmesan + 120g brocoli,530.0,44.0,46.0,17.0,7.0
+1548,12,Zoé,2026-03-28,collation,WE,2 œufs durs + 1 orange (180g),253.0,17.0,17.0,12.0,4.0
+1549,12,Julien,2026-03-29,dejeuner,WE,Galettes complètes x2: 90g + 2 œufs + 80g jambon + 25g emmental + salade,582.0,43.0,42.0,26.0,3.0
+1550,12,Julien,2026-03-29,diner,WE,Bœuf sauce provençale: 200g bœuf + 120g passata + 15g olives + 200g polenta + 100g carottes + 80g pois chiches,722.0,58.0,62.0,24.0,10.0
+1551,12,Julien,2026-03-29,collation,WE,Dimanche: 20g noix + 1 pomme + 20g beurre cacahuète + 40g pain,438.0,12.0,39.0,24.0,8.0
+1552,12,Zoé,2026-03-29,dejeuner,WE,Galettes x1.5: 70g + 1.5 œufs + 55g jambon + 22g emmental + salade,461.0,32.0,32.0,22.0,2.0
+1553,12,Zoé,2026-03-29,diner,WE,Bœuf provençale: 160g bœuf + 100g passata + 10g olives + 160g polenta + 80g carottes + 60g pois chiches,569.0,46.0,49.0,19.0,8.0
+1554,12,Zoé,2026-03-29,collation,WE,200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
+1555,12,Julien,2026-03-30,dejeuner,Séance,Chili con carne 380g + 220g riz,676.0,46.0,85.0,13.0,9.0
+1556,12,Julien,2026-03-30,diner,Séance,Poulet piccata citron: 200g poulet + 220g pâtes + 150g brocoli + sauce citron-câpres,728.0,61.0,67.0,22.0,9.0
+1557,12,Julien,2026-03-30,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1558,12,Zoé,2026-03-30,dejeuner,Séance,Chili con carne 300g + 180g riz,542.0,37.0,69.0,10.0,7.0
+1559,12,Zoé,2026-03-30,diner,Séance,Poulet piccata: 170g poulet + 160g pâtes + 130g brocoli + sauce citron,598.0,51.0,50.0,20.0,7.0
+1560,12,Zoé,2026-03-30,collation,Séance,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1561,12,Julien,2026-03-31,dejeuner,Séance,Burrito bowl: chili 380g + 150g riz + 30g guacamole,627.0,45.0,67.0,16.0,10.0
+1562,12,Julien,2026-03-31,diner,Séance,Gratin poireaux-jambon: 250g poireaux + 100g jambon + béchamel légère + 25g gruyère + 180g PDT vapeur,550.0,36.0,52.0,20.0,9.0
+1563,12,Julien,2026-03-31,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1564,12,Zoé,2026-03-31,dejeuner,Séance,Burrito bowl: chili 300g + 120g riz + 25g guacamole,499.0,36.0,53.0,13.0,8.0
+1565,12,Zoé,2026-03-31,diner,Séance,Gratin poireaux-jambon: 200g poireaux + 80g jambon + béchamel + 20g gruyère + 150g PDT,475.0,29.0,44.0,19.0,7.0
+1566,12,Zoé,2026-03-31,collation,Séance,2 œufs durs + 1 clémentine (140g),237.0,16.0,15.0,12.0,2.0
+1567,12,Julien,2026-04-01,dejeuner,Repos,Wrap poulet: 2 tortillas (100g) + 190g poulet + 30g emmental + salade + carottes,676.0,59.0,56.0,22.0,5.0
+1568,12,Julien,2026-04-01,diner,Repos,Dinde moutarde ancienne: 200g dinde + sauce moutarde-crème + 220g écrasé PDT + 120g navets + 80g lentilles + 35g pain complet,736.0,64.0,72.0,19.0,11.0
+1569,12,Julien,2026-04-01,collation,Repos,Option C: 1 kiwi (100g) + 15g amandes,153.0,4.0,12.0,8.0,5.0
+1570,12,Zoé,2026-04-01,dejeuner,Repos,Wrap poulet: 1.5 tortillas (75g) + 150g poulet + 25g emmental + salade,527.0,47.0,42.0,18.0,4.0
+1571,12,Zoé,2026-04-01,diner,Repos,Dinde moutarde ancienne: 170g dinde + sauce moutarde + 180g PDT + 100g navets + 60g lentilles,523.0,51.0,45.0,14.0,7.0
+1572,12,Zoé,2026-04-01,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1573,12,Julien,2026-04-02,dejeuner,Séance,Émincé porc moutarde 340g + 220g pâtes complètes,694.0,62.0,66.0,19.0,9.0
+1574,12,Julien,2026-04-02,diner,Séance,Saumon papillote citron-herbes: 200g saumon + 200g riz + 160g haricots verts + 50g poireaux,785.0,50.0,66.0,32.0,7.0
+1575,12,Julien,2026-04-02,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1576,12,Zoé,2026-04-02,dejeuner,Séance,Émincé porc moutarde 270g + 180g pâtes complètes,559.0,49.0,54.0,15.0,7.0
+1577,12,Zoé,2026-04-02,diner,Séance,Saumon papillote: 160g saumon + 150g riz + 130g HV + 40g poireaux,624.0,39.0,50.0,27.0,6.0
+1578,12,Zoé,2026-04-02,collation,Séance,2 œufs durs + 1 pomme (150g),250.0,15.0,19.0,12.0,3.0
+1579,12,Julien,2026-04-03,dejeuner,Repos,Émincé porc 340g + 180g pâtes complètes + 80g mâche,648.0,60.0,55.0,18.0,9.0
+1580,12,Julien,2026-04-03,diner,Repos,Croque-madame: pain 70g + 80g jambon + 30g emmental + 1 œuf + 100g salade + 150g lentilles en soupe,692.0,51.0,60.0,25.0,12.0
+1581,12,Julien,2026-04-03,collation,Repos,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1582,12,Zoé,2026-04-03,dejeuner,Repos,Émincé porc 270g + 150g pâtes complètes + 60g mâche,524.0,48.0,46.0,15.0,7.0
+1583,12,Zoé,2026-04-03,diner,Repos,Croque-madame: pain 55g + 60g jambon + 25g emmental + 1 œuf + 80g salade + 120g lentilles,568.0,42.0,47.0,22.0,10.0
+1584,12,Zoé,2026-04-03,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1585,12,Julien,2026-04-04,dejeuner,WE,Pizza maison: pâte 120g + passata 70g + mozza 60g + 60g jambon + champignons + salade,588.0,35.0,63.0,19.0,5.0
+1586,12,Julien,2026-04-04,diner,WE,Wok poulet teriyaki: 200g poulet + 180g pâtes + 100g carottes + 80g chou vert + soja + gingembre,606.0,57.0,58.0,14.0,8.0
+1587,12,Julien,2026-04-04,collation,WE,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1588,12,Zoé,2026-04-04,dejeuner,WE,Pizza: pâte 95g + passata 60g + mozza 55g + 40g jambon + champignons + salade,483.0,28.0,49.0,17.0,4.0
+1589,12,Zoé,2026-04-04,diner,WE,Wok poulet: 160g poulet + 150g pâtes + 80g carottes + 60g chou vert + soja,493.0,46.0,48.0,11.0,7.0
+1590,12,Zoé,2026-04-04,collation,WE,2 œufs durs + 1 kiwi (100g),230.0,16.0,12.0,12.0,3.0
+1591,12,Julien,2026-04-05,dejeuner,WE,Quiche lorraine: pâte 70g + œufs + lardons 45g + crème + gruyère + salade,598.0,27.0,32.0,40.0,2.0
+1592,12,Julien,2026-04-05,diner,WE,Kefta bœuf épicé: 200g bœuf haché + 200g semoule + 150g carottes vichy + 100g pois chiches,771.0,60.0,78.0,21.0,12.0
+1593,12,Julien,2026-04-05,collation,WE,Dimanche: 20g noix + 1 pomme + 20g beurre cacahuète + 40g pain,438.0,12.0,39.0,24.0,8.0
+1594,12,Zoé,2026-04-05,dejeuner,WE,Quiche lorraine: pâte 60g + œufs + lardons 38g + crème + gruyère + salade,499.0,22.0,27.0,34.0,2.0
+1595,12,Zoé,2026-04-05,diner,WE,Kefta bœuf: 160g bœuf + 160g semoule + 120g carottes + 80g pois chiches,614.0,48.0,62.0,16.0,10.0
+1596,12,Zoé,2026-04-05,collation,WE,200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
+1597,13,Julien,2026-03-16,dejeuner,Séance,Rougail saucisses 340g + 220g riz,848.0,32.0,87.0,40.0,7.0
+1598,13,Julien,2026-03-16,diner,Séance,Chakchouka au poulet: 170g poulet + 3 œufs + 150g passata + poivrons + oignon + 40g pain complet,695.0,67.0,34.0,30.0,6.0
+1599,13,Julien,2026-03-16,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1600,13,Zoé,2026-03-16,dejeuner,Séance,Rougail saucisses 270g + 180g riz,680.0,25.0,70.0,32.0,6.0
+1601,13,Zoé,2026-03-16,diner,Séance,Chakchouka au poulet: 140g poulet + 2 œufs + 130g passata + poivrons + oignon + 30g pain complet,523.0,52.0,26.0,22.0,5.0
+1602,13,Zoé,2026-03-16,collation,Séance,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1603,13,Julien,2026-03-17,dejeuner,Séance,Rougail 340g + 200g semoule + 80g carottes,811.0,33.0,75.0,40.0,10.0
+1604,13,Julien,2026-03-17,diner,Séance,Saumon teriyaki: 200g saumon laqué soja-miel + 180g riz complet + 150g brocoli sauté + 40g pain complet,886.0,55.0,81.0,34.0,10.0
+1605,13,Julien,2026-03-17,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1606,13,Zoé,2026-03-17,dejeuner,Séance,Rougail 270g + 170g semoule + 60g carottes,655.0,26.0,62.0,32.0,8.0
+1607,13,Zoé,2026-03-17,diner,Séance,Saumon teriyaki: 160g saumon laqué + 150g riz complet + 130g brocoli sauté,656.0,42.0,52.0,28.0,7.0
+1608,13,Zoé,2026-03-17,collation,Séance,2 œufs durs + 1 poire (160g),252.0,16.0,18.0,12.0,5.0
+1609,13,Julien,2026-03-18,dejeuner,Repos,Salade poulet-lentilles: 200g poulet + 200g lentilles + 80g carottes + 40g pain complet + vinaigrette,640.0,65.0,57.0,13.0,13.0
+1610,13,Julien,2026-03-18,diner,Repos,Huevos rotos: 3 œufs + 80g jambon + 250g PDT sautées + 100g salade + 40g pain complet,834.0,48.0,67.0,41.0,8.0
+1611,13,Julien,2026-03-18,collation,Repos,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1612,13,Zoé,2026-03-18,dejeuner,Repos,Salade poulet-lentilles: 160g poulet + 160g lentilles + 70g carottes + vinaigrette,434.0,49.0,32.0,10.0,9.0
+1613,13,Zoé,2026-03-18,diner,Repos,Huevos rotos: 2 œufs + 60g jambon + 200g PDT sautées + 80g salade,549.0,32.0,39.0,29.0,4.0
+1614,13,Zoé,2026-03-18,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1615,13,Julien,2026-03-19,dejeuner,Séance,Basquaise 370g + 220g riz,733.0,48.0,75.0,26.0,5.0
+1616,13,Julien,2026-03-19,diner,Séance,Gratin endives-jambon: 4 endives + 120g jambon + béchamel légère + 20g gruyère + 220g PDT vapeur + 100g HV,584.0,39.0,60.0,19.0,10.0
+1617,13,Julien,2026-03-19,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1618,13,Zoé,2026-03-19,dejeuner,Séance,Basquaise 290g + 180g riz,584.0,38.0,61.0,20.0,4.0
+1619,13,Zoé,2026-03-19,diner,Séance,Gratin endives-jambon: 3 endives + 90g jambon + béchamel + 20g gruyère + 160g PDT vapeur,464.0,30.0,43.0,18.0,6.0
+1620,13,Zoé,2026-03-19,collation,Séance,2 œufs durs + 1 kiwi (100g),230.0,16.0,12.0,12.0,3.0
+1621,13,Julien,2026-03-20,dejeuner,Repos,Gratin basquaise: 370g + 180g PDT + 25g emmental,678.0,52.0,44.0,32.0,6.0
+1622,13,Julien,2026-03-20,diner,Repos,Poêlée montagnarde: 220g grenaille + 100g lardons dinde + 80g oignon + 25g emmental + 80g mâche + 100g haricots verts,576.0,34.0,52.0,25.0,10.0
+1623,13,Julien,2026-03-20,collation,Repos,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1624,13,Zoé,2026-03-20,dejeuner,Repos,Gratin basquaise: 290g + 150g PDT + 20g emmental,540.0,41.0,36.0,25.0,5.0
+1625,13,Zoé,2026-03-20,diner,Repos,Poêlée montagnarde: 180g grenaille + 80g lardons dinde + 60g oignon + 20g emmental + 60g mâche + 80g HV,479.0,27.0,42.0,22.0,8.0
+1626,13,Zoé,2026-03-20,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1627,13,Julien,2026-03-21,dejeuner,WE,Burger maison: 200g steak + pain burger 80g + 25g cheddar + salade + tomate,628.0,56.0,44.0,23.0,3.0
+1628,13,Julien,2026-03-21,diner,WE,Carbonara: 200g pâtes + 80g lardons dinde + 20g parmesan + 1 œuf + 150g brocoli + 30g pain complet,680.0,47.0,72.0,21.0,10.0
+1629,13,Julien,2026-03-21,collation,WE,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1630,13,Zoé,2026-03-21,dejeuner,WE,Burger: 150g steak + pain 70g + 20g cheddar + salade,505.0,44.0,38.0,18.0,3.0
+1631,13,Zoé,2026-03-21,diner,WE,Carbonara: 170g pâtes + 60g lardons dinde + 20g parmesan + 1 œuf + 80g brocoli,513.0,37.0,48.0,18.0,6.0
+1632,13,Zoé,2026-03-21,collation,WE,2 œufs durs + 1 clémentine (140g),237.0,16.0,15.0,12.0,2.0
+1633,13,Julien,2026-03-22,dejeuner,WE,Croque-monsieur x2: pain 100g + 100g jambon + 30g emmental + salade,522.0,36.0,47.0,19.0,7.0
+1634,13,Julien,2026-03-22,diner,WE,Poulet moutarde-miel: 200g poulet laqué + 250g grenaille + 150g haricots verts,640.0,53.0,59.0,20.0,10.0
+1635,13,Julien,2026-03-22,collation,WE,Dimanche: 20g noix + 1 pomme + 20g beurre cacahuète + 40g pain,438.0,12.0,39.0,24.0,8.0
+1636,13,Zoé,2026-03-22,dejeuner,WE,Croque-monsieur x1.5: pain 75g + 80g jambon + 25g emmental + salade,409.0,29.0,35.0,15.0,5.0
+1637,13,Zoé,2026-03-22,diner,WE,Poulet moutarde-miel: 170g poulet + 200g grenaille + 130g haricots verts,526.0,44.0,47.0,17.0,8.0
+1638,13,Zoé,2026-03-22,collation,WE,200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
+1639,13,Julien,2026-03-23,dejeuner,Séance,Stroganoff 330g + 200g pâtes complètes,664.0,56.0,61.0,20.0,8.0
+1640,13,Julien,2026-03-23,diner,Séance,Porc laqué soja-gingembre: 200g filet + 200g riz + 130g carottes + 40g pain complet,721.0,55.0,89.0,14.0,7.0
+1641,13,Julien,2026-03-23,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1642,13,Zoé,2026-03-23,dejeuner,Séance,Stroganoff 260g + 160g pâtes complètes,527.0,44.0,48.0,16.0,6.0
+1643,13,Zoé,2026-03-23,diner,Séance,Porc laqué soja-gingembre: 170g filet + 160g riz + 100g carottes,508.0,44.0,57.0,10.0,3.0
+1644,13,Zoé,2026-03-23,collation,Séance,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1645,13,Julien,2026-03-24,dejeuner,Séance,Gratin stroganoff: 330g + 180g PDT + 20g emmental,587.0,53.0,37.0,23.0,5.0
+1646,13,Julien,2026-03-24,diner,Séance,Cabillaud croûte parmesan: 200g cabillaud + 15g parmesan + 250g purée + 150g poireaux fondus + 40g pain complet,698.0,53.0,64.0,23.0,9.0
+1647,13,Julien,2026-03-24,collation,Séance,Option B: 2 œufs durs + 1 pomme (150g) + 20g amandes,376.0,20.0,20.0,23.0,5.0
+1648,13,Zoé,2026-03-24,dejeuner,Séance,Gratin stroganoff: 260g + 150g PDT + 15g emmental,466.0,42.0,31.0,18.0,4.0
+1649,13,Zoé,2026-03-24,diner,Séance,Cabillaud croûte parmesan: 170g cabillaud + 12g parmesan + 200g purée + 120g poireaux,482.0,41.0,37.0,17.0,5.0
+1650,13,Zoé,2026-03-24,collation,Séance,2 œufs durs + 1 pomme (150g),250.0,15.0,19.0,12.0,3.0
+1651,13,Julien,2026-03-25,dejeuner,Repos,Salade poulet-betteraves: 200g poulet + 160g lentilles + 100g betteraves + 40g pain complet + vinaigrette,611.0,63.0,53.0,13.0,12.0
+1652,13,Julien,2026-03-25,diner,Repos,Steak au poivre: 200g steak + sauce crème 20g + 200g frites four + 80g mâche + 80g HV + 35g pain complet,805.0,53.0,77.0,30.0,11.0
+1653,13,Julien,2026-03-25,collation,Repos,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1654,13,Zoé,2026-03-25,dejeuner,Repos,Salade poulet-betteraves: 160g poulet + 130g lentilles + 80g betteraves + vinaigrette,411.0,48.0,28.0,10.0,8.0
+1655,13,Zoé,2026-03-25,diner,Repos,Steak au poivre: 160g steak + sauce crème 15g + 160g frites four + 60g mâche + 60g HV,569.0,40.0,49.0,23.0,7.0
+1656,13,Zoé,2026-03-25,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1657,13,Julien,2026-03-26,dejeuner,Séance,Butter chicken 350g + 220g riz,702.0,51.0,76.0,20.0,5.0
+1658,13,Julien,2026-03-26,diner,Séance,Tortilla poulet-PDT: 150g poulet + 3 œufs + 220g PDT + 80g oignon + 80g salade + 40g pain complet,914.0,66.0,66.0,41.0,8.0
+1659,13,Julien,2026-03-26,collation,Séance,Option C: 1 poire (160g) + 15g amandes,175.0,4.0,19.0,8.0,7.0
+1660,13,Zoé,2026-03-26,dejeuner,Séance,Butter chicken 280g + 180g riz,567.0,41.0,62.0,16.0,4.0
+1661,13,Zoé,2026-03-26,diner,Séance,Tortilla poulet-PDT: 120g poulet + 2 œufs + 180g PDT + 60g oignon + 60g salade,620.0,47.0,39.0,30.0,4.0
+1662,13,Zoé,2026-03-26,collation,Séance,2 œufs durs + 1 poire (160g),252.0,16.0,18.0,12.0,5.0
+1663,13,Julien,2026-03-27,dejeuner,Repos,Butter chicken 350g + naan 80g + 100g riz,778.0,55.0,83.0,24.0,6.0
+1664,13,Julien,2026-03-27,diner,Repos,Gratin chou-fleur poulet: 200g poulet + 200g chou-fleur + béchamel légère + 20g gruyère + 180g PDT vapeur,634.0,60.0,46.0,21.0,7.0
+1665,13,Julien,2026-03-27,collation,Repos,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1666,13,Zoé,2026-03-27,dejeuner,Repos,Butter chicken 280g + naan 70g + 80g riz,640.0,44.0,69.0,20.0,5.0
+1667,13,Zoé,2026-03-27,diner,Repos,Gratin chou-fleur poulet: 170g poulet + 170g chou-fleur + béchamel + 18g gruyère + 150g PDT,547.0,51.0,38.0,19.0,6.0
+1668,13,Zoé,2026-03-27,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1669,13,Julien,2026-03-28,dejeuner,WE,Fish & chips four: cabillaud 200g pané + 230g frites four + 100g salade,720.0,48.0,80.0,22.0,8.0
+1670,13,Julien,2026-03-28,diner,WE,Cacio e pepe poulet-brocolis: 180g pâtes + 120g poulet + 35g parmesan + 150g brocoli,631.0,53.0,53.0,21.0,8.0
+1671,13,Julien,2026-03-28,collation,WE,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1672,13,Zoé,2026-03-28,dejeuner,WE,Fish & chips: cabillaud 170g pané + 180g frites four + 80g salade,577.0,40.0,63.0,18.0,6.0
+1673,13,Zoé,2026-03-28,diner,WE,Cacio e pepe poulet-brocolis: 160g pâtes + 100g poulet + 28g parmesan + 120g brocoli,530.0,44.0,46.0,17.0,7.0
+1674,13,Zoé,2026-03-28,collation,WE,2 œufs durs + 1 orange (180g),253.0,17.0,17.0,12.0,4.0
+1675,13,Julien,2026-03-29,dejeuner,WE,Galettes complètes x2: 90g + 2 œufs + 80g jambon + 25g emmental + salade,582.0,43.0,42.0,26.0,3.0
+1676,13,Julien,2026-03-29,diner,WE,Bœuf sauce provençale: 200g bœuf + 120g passata + 15g olives + 200g polenta + 100g carottes + 80g pois chiches,722.0,58.0,62.0,24.0,10.0
+1677,13,Julien,2026-03-29,collation,WE,Dimanche: 20g noix + 1 pomme + 20g beurre cacahuète + 40g pain,438.0,12.0,39.0,24.0,8.0
+1678,13,Zoé,2026-03-29,dejeuner,WE,Galettes x1.5: 70g + 1.5 œufs + 55g jambon + 22g emmental + salade,461.0,32.0,32.0,22.0,2.0
+1679,13,Zoé,2026-03-29,diner,WE,Bœuf provençale: 160g bœuf + 100g passata + 10g olives + 160g polenta + 80g carottes + 60g pois chiches,569.0,46.0,49.0,19.0,8.0
+1680,13,Zoé,2026-03-29,collation,WE,200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
+1681,13,Julien,2026-03-30,dejeuner,Séance,Chili con carne 380g + 220g riz,676.0,46.0,85.0,13.0,9.0
+1682,13,Julien,2026-03-30,diner,Séance,Poulet piccata citron: 200g poulet + 220g pâtes + 150g brocoli + sauce citron-câpres,728.0,61.0,67.0,22.0,9.0
+1683,13,Julien,2026-03-30,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1684,13,Zoé,2026-03-30,dejeuner,Séance,Chili con carne 300g + 180g riz,542.0,37.0,69.0,10.0,7.0
+1685,13,Zoé,2026-03-30,diner,Séance,Poulet piccata: 170g poulet + 160g pâtes + 130g brocoli + sauce citron,598.0,51.0,50.0,20.0,7.0
+1686,13,Zoé,2026-03-30,collation,Séance,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1687,13,Julien,2026-03-31,dejeuner,Séance,Burrito bowl: chili 380g + 150g riz + 30g guacamole,627.0,45.0,67.0,16.0,10.0
+1688,13,Julien,2026-03-31,diner,Séance,Gratin poireaux-jambon: 250g poireaux + 100g jambon + béchamel légère + 25g gruyère + 180g PDT vapeur,550.0,36.0,52.0,20.0,9.0
+1689,13,Julien,2026-03-31,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1690,13,Zoé,2026-03-31,dejeuner,Séance,Burrito bowl: chili 300g + 120g riz + 25g guacamole,499.0,36.0,53.0,13.0,8.0
+1691,13,Zoé,2026-03-31,diner,Séance,Gratin poireaux-jambon: 200g poireaux + 80g jambon + béchamel + 20g gruyère + 150g PDT,475.0,29.0,44.0,19.0,7.0
+1692,13,Zoé,2026-03-31,collation,Séance,2 œufs durs + 1 clémentine (140g),237.0,16.0,15.0,12.0,2.0
+1693,13,Julien,2026-04-01,dejeuner,Repos,Wrap poulet: 2 tortillas (100g) + 190g poulet + 30g emmental + salade + carottes,676.0,59.0,56.0,22.0,5.0
+1694,13,Julien,2026-04-01,diner,Repos,Dinde moutarde ancienne: 200g dinde + sauce moutarde-crème + 220g écrasé PDT + 120g navets + 80g lentilles + 35g pain complet,736.0,64.0,72.0,19.0,11.0
+1695,13,Julien,2026-04-01,collation,Repos,Option C: 1 kiwi (100g) + 15g amandes,153.0,4.0,12.0,8.0,5.0
+1696,13,Zoé,2026-04-01,dejeuner,Repos,Wrap poulet: 1.5 tortillas (75g) + 150g poulet + 25g emmental + salade,527.0,47.0,42.0,18.0,4.0
+1697,13,Zoé,2026-04-01,diner,Repos,Dinde moutarde ancienne: 170g dinde + sauce moutarde + 180g PDT + 100g navets + 60g lentilles,523.0,51.0,45.0,14.0,7.0
+1698,13,Zoé,2026-04-01,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1699,13,Julien,2026-04-02,dejeuner,Séance,Émincé porc moutarde 340g + 220g pâtes complètes,694.0,62.0,66.0,19.0,9.0
+1700,13,Julien,2026-04-02,diner,Séance,Saumon papillote citron-herbes: 200g saumon + 200g riz + 160g haricots verts + 50g poireaux,785.0,50.0,66.0,32.0,7.0
+1701,13,Julien,2026-04-02,collation,Séance,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1702,13,Zoé,2026-04-02,dejeuner,Séance,Émincé porc moutarde 270g + 180g pâtes complètes,559.0,49.0,54.0,15.0,7.0
+1703,13,Zoé,2026-04-02,diner,Séance,Saumon papillote: 160g saumon + 150g riz + 130g HV + 40g poireaux,624.0,39.0,50.0,27.0,6.0
+1704,13,Zoé,2026-04-02,collation,Séance,2 œufs durs + 1 pomme (150g),250.0,15.0,19.0,12.0,3.0
+1705,13,Julien,2026-04-03,dejeuner,Repos,Émincé porc 340g + 180g pâtes complètes + 80g mâche,648.0,60.0,55.0,18.0,9.0
+1706,13,Julien,2026-04-03,diner,Repos,Croque-madame: pain 70g + 80g jambon + 30g emmental + 1 œuf + 100g salade + 150g lentilles en soupe,692.0,51.0,60.0,25.0,12.0
+1707,13,Julien,2026-04-03,collation,Repos,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1708,13,Zoé,2026-04-03,dejeuner,Repos,Émincé porc 270g + 150g pâtes complètes + 60g mâche,524.0,48.0,46.0,15.0,7.0
+1709,13,Zoé,2026-04-03,diner,Repos,Croque-madame: pain 55g + 60g jambon + 25g emmental + 1 œuf + 80g salade + 120g lentilles,568.0,42.0,47.0,22.0,10.0
+1710,13,Zoé,2026-04-03,collation,Repos,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1711,13,Julien,2026-04-04,dejeuner,WE,Pizza maison: pâte 120g + passata 70g + mozza 60g + 60g jambon + champignons + salade,588.0,35.0,63.0,19.0,5.0
+1712,13,Julien,2026-04-04,diner,WE,Wok poulet teriyaki: 200g poulet + 180g pâtes + 100g carottes + 80g chou vert + soja + gingembre,606.0,57.0,58.0,14.0,8.0
+1713,13,Julien,2026-04-04,collation,WE,Option A: 200g skyr + 30g amandes,316.0,28.0,10.0,16.0,4.0
+1714,13,Zoé,2026-04-04,dejeuner,WE,Pizza: pâte 95g + passata 60g + mozza 55g + 40g jambon + champignons + salade,483.0,28.0,49.0,17.0,4.0
+1715,13,Zoé,2026-04-04,diner,WE,Wok poulet: 160g poulet + 150g pâtes + 80g carottes + 60g chou vert + soja,493.0,46.0,48.0,11.0,7.0
+1716,13,Zoé,2026-04-04,collation,WE,2 œufs durs + 1 kiwi (100g),230.0,16.0,12.0,12.0,3.0
+1717,13,Julien,2026-04-05,dejeuner,WE,Quiche lorraine: pâte 70g + œufs + lardons 45g + crème + gruyère + salade,598.0,27.0,32.0,40.0,2.0
+1718,13,Julien,2026-04-05,diner,WE,Kefta bœuf épicé: 200g bœuf haché + 200g semoule + 150g carottes vichy + 100g pois chiches,771.0,60.0,78.0,21.0,12.0
+1719,13,Julien,2026-04-05,collation,WE,Dimanche: 20g noix + 1 pomme + 20g beurre cacahuète + 40g pain,438.0,12.0,39.0,24.0,8.0
+1720,13,Zoé,2026-04-05,dejeuner,WE,Quiche lorraine: pâte 60g + œufs + lardons 38g + crème + gruyère + salade,499.0,22.0,27.0,34.0,2.0
+1721,13,Zoé,2026-04-05,diner,WE,Kefta bœuf: 160g bœuf + 160g semoule + 120g carottes + 80g pois chiches,614.0,48.0,62.0,16.0,10.0
+1722,13,Zoé,2026-04-05,collation,WE,200g skyr + 20g amandes + 1 pomme,331.0,27.0,27.0,11.0,5.0
