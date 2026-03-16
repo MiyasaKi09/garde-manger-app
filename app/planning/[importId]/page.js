@@ -119,7 +119,6 @@ export default function PlanningView() {
   const [dayIdx, setDayIdx] = useState(0)
   const [person, setPerson] = useState("j")
   const [expandedSection, setExpandedSection] = useState(null)
-  const [activeStep, setActiveStep] = useState(-1)
   const [tab, setTab] = useState("today")
   const [checked, setChecked] = useState({})
   const [grocWeek, setGrocWeek] = useState(0)
@@ -161,9 +160,9 @@ export default function PlanningView() {
   const p = person
   const tot = day?.tot?.[p]
 
-  const prev = () => { setDayIdx(Math.max(0, dayIdx - 1)); setExpandedSection(null); setActiveStep(-1) }
-  const next = () => { setDayIdx(Math.min(DATA.length - 1, dayIdx + 1)); setExpandedSection(null); setActiveStep(-1) }
-  const toggle = (section) => { setExpandedSection(expandedSection === section ? null : section); setActiveStep(-1) }
+  const prev = () => { setDayIdx(Math.max(0, dayIdx - 1)); setExpandedSection(null) }
+  const next = () => { setDayIdx(Math.min(DATA.length - 1, dayIdx + 1)); setExpandedSection(null) }
+  const toggle = (section) => { setExpandedSection(expandedSection === section ? null : section) }
 
   // ── Inner Components ──
 
@@ -215,7 +214,7 @@ export default function PlanningView() {
     </div>
   )
 
-  const StepsList = ({ steps, title, time, portions, alwaysExpand = false }) => (
+  const StepsList = ({ steps, title, time, portions }) => (
     <div style={{ background: "#0d1b2a", borderRadius: 14, padding: 16, margin: "0 0 4px", border: "1px solid #ffffff08" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <span style={{ fontSize: 13, fontWeight: 700, color: "#f1c40f" }}>{title}</span>
@@ -235,41 +234,31 @@ export default function PlanningView() {
           </div>
         </div>
       )}
-      {steps.map((s, i) => {
-        const isOpen = alwaysExpand || activeStep === i
-        return (
-          <div
-            key={i}
-            onClick={() => !alwaysExpand && setActiveStep(activeStep === i ? -1 : i)}
-            style={{
-              display: "flex", gap: 10, padding: "10px 0",
-              borderTop: i > 0 ? "1px solid #ffffff08" : "none",
-              cursor: alwaysExpand ? "default" : "pointer",
-              opacity: !alwaysExpand && activeStep >= 0 && activeStep !== i ? 0.4 : 1,
-              transition: "opacity 0.2s",
-            }}
-          >
-            <div style={{
-              width: 28, height: 28, borderRadius: "50%", flexShrink: 0,
-              background: isOpen ? "#f39c12" : "#1e3a5f",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 12, fontWeight: 700, color: isOpen ? "#000" : "#88aacc",
-              transition: "all 0.2s",
-            }}>
-              {i + 1}
-            </div>
-            <div style={{ flex: 1 }}>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <span style={{ fontSize: 13, fontWeight: 600, color: "#e8e8f0" }}>{s.a}</span>
-                <span style={{ fontSize: 11, color: "#f39c12", fontWeight: 500 }}>{s.t}</span>
-              </div>
-              {isOpen && (
-                <p style={{ margin: "6px 0 0", fontSize: 12, color: "#aabbcc", lineHeight: 1.6 }}>{s.dt}</p>
-              )}
-            </div>
+      {steps.map((s, i) => (
+        <div
+          key={i}
+          style={{
+            display: "flex", gap: 10, padding: "10px 0",
+            borderTop: i > 0 ? "1px solid #ffffff08" : "none",
+          }}
+        >
+          <div style={{
+            width: 28, height: 28, borderRadius: "50%", flexShrink: 0,
+            background: "#f39c12",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 12, fontWeight: 700, color: "#000",
+          }}>
+            {i + 1}
           </div>
-        )
-      })}
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+              <span style={{ fontSize: 13, fontWeight: 600, color: "#e8e8f0" }}>{s.a}</span>
+              <span style={{ fontSize: 11, color: "#f39c12", fontWeight: 500, flexShrink: 0 }}>{s.t}</span>
+            </div>
+            <p style={{ margin: "4px 0 0", fontSize: 12, color: "#aabbcc", lineHeight: 1.6 }}>{s.dt}</p>
+          </div>
+        </div>
+      ))}
     </div>
   )
 
@@ -462,7 +451,7 @@ export default function PlanningView() {
                   </div>
 
                   {expandedSection === "prep" && (
-                    <StepsList steps={day.ck_prep.steps} title="Préparation" time={day.ck_prep.time} alwaysExpand={true} />
+                    <StepsList steps={day.ck_prep.steps} title="Préparation" time={day.ck_prep.time} />
                   )}
                 </>
               ) : (
@@ -482,7 +471,7 @@ export default function PlanningView() {
             padding: "10px 16px 8px", display: "flex", justifyContent: "center", gap: 4, flexWrap: "wrap",
           }}>
             {DATA.map((d, i) => (
-              <button key={i} onClick={() => { setDayIdx(i); setExpandedSection(null); setActiveStep(-1) }} style={{
+              <button key={i} onClick={() => { setDayIdx(i); setExpandedSection(null) }} style={{
                 width: i === dayIdx ? 20 : 8, height: 8, borderRadius: 4, border: "none", cursor: "pointer",
                 background: i === dayIdx ? "#f39c12" : d.wk === day.wk ? "#1e3a5f" : "#0d1b2a",
                 transition: "all 0.3s ease",
