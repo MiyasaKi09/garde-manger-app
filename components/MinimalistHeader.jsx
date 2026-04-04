@@ -78,6 +78,20 @@ export default function MinimalistHeader() {
           }}
           className="desktop-nav"
         >
+          <Link
+            href="/"
+            style={{
+              textDecoration: 'none',
+              fontFamily: "'Crimson Text', Georgia, serif",
+              fontSize: '1.25rem',
+              fontWeight: '700',
+              color: '#16a34a',
+              letterSpacing: '-0.02em',
+              marginRight: '0.5rem',
+            }}
+          >
+            myko.
+          </Link>
           {navItems.map((item) => {
             const active = pathname === item.href;
             return (
@@ -154,7 +168,24 @@ export default function MinimalistHeader() {
           )}
         </div>
 
-        {/* Menu burger mobile - nouveau */}
+        {/* Logo mobile */}
+        <Link
+          href="/"
+          style={{
+            display: 'none',
+            textDecoration: 'none',
+            fontFamily: "'Crimson Text', Georgia, serif",
+            fontSize: '1.25rem',
+            fontWeight: '700',
+            color: '#16a34a',
+            letterSpacing: '-0.02em',
+          }}
+          className="mobile-logo"
+        >
+          myko.
+        </Link>
+
+        {/* Menu burger mobile */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           style={{
@@ -324,7 +355,11 @@ export default function MinimalistHeader() {
           .desktop-nav {
             display: none !important;
           }
-          
+
+          .mobile-logo {
+            display: block !important;
+          }
+
           .mobile-menu-btn {
             display: flex !important;
             align-items: center;

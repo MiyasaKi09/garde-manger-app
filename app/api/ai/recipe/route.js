@@ -40,7 +40,8 @@ export async function POST(request) {
       .limit(1)
       .single()
 
-    if (cached) {
+    if (cached && cached.steps?.length > 0) {
+      // Cache hit with complete recipe (has steps)
       console.log(`[AI Recipe] Cache hit: "${normalized}"`)
       return NextResponse.json({
         recipeDbId: cached.id,
@@ -58,6 +59,8 @@ export async function POST(request) {
         cached: true,
       })
     }
+    // If cached but steps empty → we'll regenerate and update below
+    var existingCacheId = cached?.id || null
   } catch {
     // No cache hit, continue to generation
   }
@@ -124,12 +127,10 @@ FORMAT JSON attendu :
       return NextResponse.json({ error: 'Impossible de générer la recette', raw: text }, { status: 500 })
     }
 
-    // 3. Save to cache
-    let recipeDbId = null
+    // 3. Save to cache (update if exists with empty steps, insert if new)
+    let recipeDbId = existingCacheId || null
     try {
-      const { data: inserted } = await supabase.from('generated_recipes').insert({
-        user_id: user.id,
-        name_normalized: normalized,
+      const recipeData = {
         title: recipe.title || description,
         description: recipe.description || null,
         servings: recipe.servings || servings || 2,
@@ -139,10 +140,25 @@ FORMAT JSON attendu :
         steps: recipe.steps || [],
         chef_tips: recipe.chef_tips || null,
         nutrition_per_serving: recipe.nutrition_per_serving || null,
-        source: 'ai',
-      }).select('id').single()
-      recipeDbId = inserted?.id || null
-      console.log(`[AI Recipe] Cached: "${normalized}" (id: ${recipeDbId})`)
+      }
+
+      if (existingCacheId) {
+        // Update existing entry that had empty steps
+        await supabase.from('generated_recipes')
+          .update(recipeData)
+          .eq('id', existingCacheId)
+        console.log(`[AI Recipe] Updated cache: "${normalized}" (id: ${existingCacheId})`)
+      } else {
+        // Insert new
+        const { data: inserted } = await supabase.from('generated_recipes').insert({
+          user_id: user.id,
+          name_normalized: normalized,
+          ...recipeData,
+          source: 'ai',
+        }).select('id').single()
+        recipeDbId = inserted?.id || null
+        console.log(`[AI Recipe] Cached: "${normalized}" (id: ${recipeDbId})`)
+      }
     } catch (cacheErr) {
       console.warn('[AI Recipe] Cache save failed:', cacheErr.message)
     }

@@ -125,7 +125,7 @@ export default function PlanningAssistantPage() {
 
       // Redirect after short delay
       setTimeout(() => {
-        router.push(`/planning/${saveData.importId}`)
+        router.push('/planning')
       }, 800)
 
     } catch (err) {
