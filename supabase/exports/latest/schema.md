@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Sat Apr  4 18:03:11 UTC 2026_
+_Généré le : Sat Apr  4 20:27:47 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -227,6 +227,8 @@ _Généré le : Sat Apr  4 18:03:11 UTC 2026_
  - nutrition_per_serving :: jsonb
  - source :: text default 'ai'::text
  - created_at :: timestamp with time zone default now()
+ - rating :: integer
+ - cook_count :: integer default 0
 
 ### instructions
  - id :: integer default nextval('instructions_id_seq'::regclass) NOT NULL
@@ -725,7 +727,7 @@ _Généré le : Sat Apr  4 18:03:11 UTC 2026_
  - products → (id)
  - recipe_ingredients → (id)
  - recipe_nutrition_cache → (recipe_id)
- - recipe_pairings → (side_recipe_id, main_recipe_id)
+ - recipe_pairings → (main_recipe_id, side_recipe_id)
  - recipe_steps → (id)
  - recipe_tags → (recipe_id, tag_id)
  - recipes → (id)
@@ -736,7 +738,7 @@ _Généré le : Sat Apr  4 18:03:11 UTC 2026_
  - unit_conversions_generic → (id)
  - unit_conversions_product → (id)
  - user_allergies → (canonical_food_id, user_id)
- - user_diets → (user_id, diet_id)
+ - user_diets → (diet_id, user_id)
  - user_health_goals → (person_name, user_id)
  - user_profiles → (user_id)
  - user_recipe_interactions → (id)
@@ -930,6 +932,7 @@ _Généré le : Sat Apr  4 18:03:11 UTC 2026_
  - cooked_dishes_check ON cooked_dishes : CHECK (((portions_remaining >= 0) AND (portions_remaining <= portions_cooked)))
  - cooked_dishes_portions_cooked_check ON cooked_dishes : CHECK ((portions_cooked > 0))
  - cooked_dishes_storage_method_check ON cooked_dishes : CHECK ((storage_method = ANY (ARRAY['fridge'::text, 'freezer'::text, 'counter'::text])))
+ - generated_recipes_rating_check ON generated_recipes : CHECK (((rating >= 1) AND (rating <= 5)))
  - inventory_lots_one_of ON inventory_lots : CHECK (((((((canonical_food_id IS NOT NULL))::integer + ((cultivar_id IS NOT NULL))::integer) + ((archetype_id IS NOT NULL))::integer) + ((product_id IS NOT NULL))::integer) = 1))
  - inventory_lots_storage_method_check ON inventory_lots : CHECK (((storage_method)::text = ANY ((ARRAY['pantry'::character varying, 'fridge'::character varying, 'freezer'::character varying])::text[])))
  - meal_log_meal_type_check ON meal_log : CHECK ((meal_type = ANY (ARRAY['pdj'::text, 'dejeuner'::text, 'diner'::text, 'collation'::text])))
