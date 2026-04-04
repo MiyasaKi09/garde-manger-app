@@ -91,6 +91,8 @@ export default function TodayMeals({ importId }) {
     }
   }
 
+  const [cachedRecipeId, setCachedRecipeId] = useState(null)
+
   async function handleMealClick(meal) {
     if (!meal.description || generatingFor) return
     setGeneratingFor(meal.description)
@@ -107,11 +109,25 @@ export default function TodayMeals({ importId }) {
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
       setGeneratedRecipe(data.recipe)
+      setCachedRecipeId(data.recipeDbId || null)
       setCookModeOpen(true)
     } catch (err) {
       console.error('Error generating recipe:', err)
     } finally {
       setGeneratingFor(null)
+    }
+  }
+
+  async function handleRate(rating) {
+    if (!cachedRecipeId || !rating) return
+    try {
+      await authFetch('/api/ai/recipe/rate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ recipeId: cachedRecipeId, rating, cooked: true }),
+      })
+    } catch (err) {
+      console.error('Error rating recipe:', err)
     }
   }
 
@@ -194,6 +210,8 @@ export default function TodayMeals({ importId }) {
         recipe={generatedRecipe}
         steps={generatedRecipe?.steps || []}
         ingredients={generatedRecipe?.ingredients || []}
+        recipeId={cachedRecipeId}
+        onRate={handleRate}
       />
     </>
   )

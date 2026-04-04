@@ -59,6 +59,10 @@ CREATE TABLE IF NOT EXISTS generated_recipes (
   source TEXT DEFAULT 'ai',
   created_at TIMESTAMPTZ DEFAULT now()
 );
+-- Rating et nombre de fois cuisiné
+ALTER TABLE generated_recipes ADD COLUMN IF NOT EXISTS rating INT CHECK (rating BETWEEN 1 AND 5);
+ALTER TABLE generated_recipes ADD COLUMN IF NOT EXISTS cook_count INT DEFAULT 0;
+
 CREATE INDEX IF NOT EXISTS idx_generated_recipes_name ON generated_recipes(user_id, name_normalized);
 ALTER TABLE generated_recipes ENABLE ROW LEVEL SECURITY;
 DO $$ BEGIN

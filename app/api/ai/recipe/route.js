@@ -43,6 +43,7 @@ export async function POST(request) {
     if (cached) {
       console.log(`[AI Recipe] Cache hit: "${normalized}"`)
       return NextResponse.json({
+        recipeDbId: cached.id,
         recipe: {
           title: cached.title,
           description: cached.description,
@@ -124,8 +125,9 @@ FORMAT JSON attendu :
     }
 
     // 3. Save to cache
+    let recipeDbId = null
     try {
-      await supabase.from('generated_recipes').insert({
+      const { data: inserted } = await supabase.from('generated_recipes').insert({
         user_id: user.id,
         name_normalized: normalized,
         title: recipe.title || description,
@@ -138,13 +140,14 @@ FORMAT JSON attendu :
         chef_tips: recipe.chef_tips || null,
         nutrition_per_serving: recipe.nutrition_per_serving || null,
         source: 'ai',
-      })
-      console.log(`[AI Recipe] Cached: "${normalized}"`)
+      }).select('id').single()
+      recipeDbId = inserted?.id || null
+      console.log(`[AI Recipe] Cached: "${normalized}" (id: ${recipeDbId})`)
     } catch (cacheErr) {
       console.warn('[AI Recipe] Cache save failed:', cacheErr.message)
     }
 
-    return NextResponse.json({ recipe, cached: false })
+    return NextResponse.json({ recipe, recipeDbId, cached: false })
   } catch (err) {
     console.error('[AI Recipe] Error:', err)
     return NextResponse.json({ error: err.message }, { status: 500 })

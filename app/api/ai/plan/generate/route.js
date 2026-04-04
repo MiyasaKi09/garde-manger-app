@@ -2,11 +2,12 @@ import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { createImport } from '@/lib/nutritionPlanService'
 import { parseJsonPlan } from '@/lib/jsonPlanParser'
+import { normalizeRecipeName } from '@/lib/recipeNormalizer'
 
 /**
  * POST /api/ai/plan/generate
- * Saves an AI-generated plan using the same infrastructure as JSON/XLSX imports.
- * Accepts: { plan: { label, days, groceries, recipes } }
+ * 1. Saves the plan to nutrition_plan_* tables
+ * 2. Auto-saves all unique recipes to generated_recipes (for future reuse)
  */
 export async function POST(request) {
   const { supabase, user, error: authError } = await authenticateRequest(request)
@@ -27,18 +28,20 @@ export async function POST(request) {
   }
 
   try {
-    // Re-use the jsonPlanParser by stringifying the plan and parsing it back
-    // This ensures consistent format with all existing import infrastructure
     const jsonString = JSON.stringify(plan)
     const parsed = parseJsonPlan(jsonString, `myko-ai-${new Date().toISOString().slice(0, 10)}.json`)
-
-    // Override meta to flag as AI-generated
     parsed.meta.fileName = `Planning Myko IA - ${plan.label || new Date().toLocaleDateString('fr-FR')}`
 
     const result = await createImport(supabase, user.id, {
       ...parsed,
       rawJson: jsonString,
     })
+
+    // ── Auto-save recipes to generated_recipes ──
+    if (plan.recipes?.length) {
+      const savedCount = await autoSaveRecipes(supabase, user.id, plan.recipes)
+      console.log(`[Plan Generate] ${savedCount}/${plan.recipes.length} recettes sauvegardées`)
+    }
 
     return NextResponse.json({
       success: true,
@@ -52,4 +55,82 @@ export async function POST(request) {
       { status: 500 }
     )
   }
+}
+
+/**
+ * Save all recipes from the plan to generated_recipes,
+ * skipping any that already exist (by normalized name).
+ */
+async function autoSaveRecipes(supabase, userId, recipes) {
+  let saved = 0
+
+  for (const recipe of recipes) {
+    const normalized = normalizeRecipeName(recipe.name)
+    if (!normalized) continue
+
+    // Check if already exists
+    const { data: existing } = await supabase
+      .from('generated_recipes')
+      .select('id')
+      .eq('user_id', userId)
+      .eq('name_normalized', normalized)
+      .limit(1)
+
+    if (existing?.length > 0) continue // Already saved
+
+    // Parse ingredients from string to array if needed
+    let ingredients = []
+    if (typeof recipe.ingredients === 'string') {
+      ingredients = recipe.ingredients.split(',').map(s => {
+        const trimmed = s.trim()
+        const match = trimmed.match(/^(\d+[.,]?\d*)\s*(g|kg|ml|L|cl)?\s*(.+)$/)
+        if (match) return { quantity: parseFloat(match[1]), unit: match[2] || '', name: match[3].trim() }
+        return { name: trimmed, quantity: null, unit: '' }
+      })
+    } else if (Array.isArray(recipe.ingredients)) {
+      ingredients = recipe.ingredients
+    }
+
+    // Parse macros
+    let nutrition = null
+    if (recipe.macros100g) {
+      nutrition = {
+        kcal: recipe.macros100g.kcal,
+        protein_g: recipe.macros100g.p,
+        carbs_g: recipe.macros100g.g,
+        fat_g: recipe.macros100g.l,
+        fiber_g: recipe.macros100g.f,
+      }
+    }
+
+    // Parse timing
+    let prep_min = null, cook_min = null
+    if (recipe.timing) {
+      const actifMatch = (recipe.timing.actif || '').match(/(\d+)/)
+      const totalMatch = (recipe.timing.total || '').match(/(\d+)/)
+      if (actifMatch) prep_min = parseInt(actifMatch[1])
+      if (totalMatch) cook_min = Math.max(0, parseInt(totalMatch[1]) - (prep_min || 0))
+    }
+
+    const { error } = await supabase
+      .from('generated_recipes')
+      .insert({
+        user_id: userId,
+        name_normalized: normalized,
+        title: recipe.name,
+        description: null,
+        servings: 2,
+        prep_min,
+        cook_min,
+        ingredients: ingredients,
+        steps: [], // Steps will be generated on-demand when cooking
+        chef_tips: null,
+        nutrition_per_serving: nutrition,
+        source: 'plan',
+      })
+
+    if (!error) saved++
+  }
+
+  return saved
 }

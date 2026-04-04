@@ -8,13 +8,15 @@ import { X, ChevronLeft, ChevronRight, Play, Pause, RotateCcw } from 'lucide-rea
  * Fond sombre, étapes une par une, timers intégrés, navigation simple.
  * Inspiré du mode cuisine de Claude.
  */
-export default function CookMode({ open, onClose, recipe, steps, ingredients }) {
-  // -1 = landing, 0+ = step index
+export default function CookMode({ open, onClose, recipe, steps, ingredients, recipeId, onRate }) {
+  // -1 = landing, 0+ = step index, 'done' = finished
   const [currentStep, setCurrentStep] = useState(-1)
+  const [rating, setRating] = useState(0)
 
   useEffect(() => {
     if (open) {
       setCurrentStep(-1)
+      setRating(0)
       document.body.style.overflow = 'hidden'
     }
     return () => { document.body.style.overflow = '' }
@@ -25,19 +27,23 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients }) 
     if (!open) return
     const maxStep = (steps?.length || 1) - 1
     const handleKey = (e) => {
+      if (currentStep === 'done') return
       if (e.key === 'ArrowRight' || e.key === ' ') {
         e.preventDefault()
-        setCurrentStep(s => Math.min(s + 1, maxStep))
+        setCurrentStep(s => {
+          if (s === maxStep) return 'done'
+          return Math.min(s + 1, maxStep)
+        })
       }
       if (e.key === 'ArrowLeft') {
         e.preventDefault()
-        setCurrentStep(s => Math.max(s - 1, -1))
+        setCurrentStep(s => s === 'done' ? maxStep : Math.max(s - 1, -1))
       }
       if (e.key === 'Escape') onClose?.()
     }
     document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
-  }, [open, steps, onClose])
+  }, [open, steps, onClose, currentStep])
 
   if (!open || !recipe) return null
 
@@ -78,6 +84,51 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients }) 
               disabled={!steps?.length}
             >
               Commencer
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // ---- DONE SCREEN (rating) ----
+  if (currentStep === 'done') {
+    return (
+      <div style={styles.overlay}>
+        <div style={styles.content}>
+          <div style={{ textAlign: 'center', maxWidth: 400 }}>
+            <div style={{ fontSize: 56, marginBottom: 16 }}>👨‍🍳</div>
+            <h2 style={{ ...styles.stepTitle, marginBottom: 8 }}>Bon appétit !</h2>
+            <p style={{ color: 'rgba(255,255,255,0.5)', marginBottom: 32 }}>
+              Comment c'était ?
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 32 }}>
+              {[1, 2, 3, 4, 5].map(star => (
+                <button
+                  key={star}
+                  onClick={() => setRating(star)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    fontSize: 36,
+                    cursor: 'pointer',
+                    opacity: star <= rating ? 1 : 0.3,
+                    transition: 'opacity 0.15s, transform 0.15s',
+                    transform: star <= rating ? 'scale(1.1)' : 'scale(1)',
+                  }}
+                >
+                  ★
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => {
+                if (rating > 0) onRate?.(rating)
+                onClose?.()
+              }}
+              style={styles.startBtn}
+            >
+              {rating > 0 ? 'Enregistrer & fermer' : 'Fermer'}
             </button>
           </div>
         </div>
@@ -135,9 +186,8 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients }) 
         </span>
 
         <button
-          onClick={() => setCurrentStep(s => Math.min(steps.length - 1, s + 1))}
-          disabled={isLast}
-          style={{ ...styles.navBtn, opacity: isLast ? 0.3 : 1 }}
+          onClick={() => setCurrentStep(s => isLast ? 'done' : Math.min(steps.length - 1, s + 1))}
+          style={styles.navBtn}
         >
           <ChevronRight size={24} />
         </button>
