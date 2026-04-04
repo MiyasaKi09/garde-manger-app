@@ -1,163 +1,128 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabaseClient';
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { supabase } from '@/lib/supabaseClient'
+
+// Email hardcodé — app perso, on simplifie
+const ACCOUNT_EMAIL = process.env.NEXT_PUBLIC_LOGIN_EMAIL || 'julien@myko.app'
 
 export default function LoginPage() {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
+  const router = useRouter()
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
+    e.preventDefault()
+    setLoading(true)
+    setError('')
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
+      const { error } = await supabase.auth.signInWithPassword({
+        email: ACCOUNT_EMAIL,
         password,
-      });
+      })
 
       if (error) {
-        setError(error.message);
+        setError('Mauvais mot de passe')
       } else {
-        router.push('/');
+        router.push('/')
       }
-    } catch (err) {
-      setError('Une erreur est survenue');
+    } catch {
+      setError('Erreur de connexion')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
-
-  const handleMagicLink = async () => {
-    setLoading(true);
-    setError('');
-    setMessage('');
-
-    try {
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
-        },
-      });
-
-      if (error) {
-        setError(error.message);
-      } else {
-        setMessage('Vérifiez votre email pour le lien de connexion !');
-      }
-    } catch (err) {
-      setError('Une erreur est survenue');
-    } finally {
-      setLoading(false);
-    }
-  };
+  }
 
   return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: 'calc(100vh - 100px)',
-      padding: '2rem'
-    }}>
-      <div className="card" style={{
-        width: '100%',
-        maxWidth: '400px',
-        padding: '2rem'
-      }}>
-        <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          🍄 Connexion à Myko
-        </h1>
+    <div style={S.page}>
+      <div style={S.card}>
+        <div style={S.logo}>🥬</div>
+        <h1 style={S.title}>Myko</h1>
 
-        {error && (
-          <div style={{
-            padding: '1rem',
-            background: '#fee',
-            color: '#c00',
-            borderRadius: '4px',
-            marginBottom: '1rem'
-          }}>
-            {error}
-          </div>
-        )}
-
-        {message && (
-          <div style={{
-            padding: '1rem',
-            background: '#efe',
-            color: '#060',
-            borderRadius: '4px',
-            marginBottom: '1rem'
-          }}>
-            {message}
-          </div>
-        )}
+        {error && <p style={S.error}>{error}</p>}
 
         <form onSubmit={handleLogin}>
-          <div style={{ marginBottom: '1rem' }}>
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              className="input"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="votre@email.com"
-            />
-          </div>
-
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label htmlFor="password">Mot de passe</label>
-            <input
-              id="password"
-              type="password"
-              className="input"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="••••••••"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="btn"
-            disabled={loading}
-            style={{ width: '100%', marginBottom: '1rem' }}
-          >
-            {loading ? 'Connexion...' : 'Se connecter'}
-          </button>
-
-          <button
-            type="button"
-            className="btn secondary"
-            onClick={handleMagicLink}
-            disabled={loading || !email}
-            style={{ width: '100%' }}
-          >
-            Envoyer un lien magique
+          <input
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            placeholder="Mot de passe"
+            style={S.input}
+            autoFocus
+            required
+          />
+          <button type="submit" disabled={loading} style={S.btn}>
+            {loading ? '...' : 'Entrer'}
           </button>
         </form>
-
-        <p style={{
-          textAlign: 'center',
-          marginTop: '2rem',
-          fontSize: '0.9rem',
-          color: '#666'
-        }}>
-          Pas encore de compte ?<br />
-          Contactez l'administrateur
-        </p>
       </div>
     </div>
-  );
+  )
+}
+
+const S = {
+  page: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 'calc(100vh - 100px)',
+    padding: 24,
+  },
+  card: {
+    width: '100%',
+    maxWidth: 320,
+    textAlign: 'center',
+    background: 'rgba(255,255,255,0.6)',
+    backdropFilter: 'blur(12px)',
+    WebkitBackdropFilter: 'blur(12px)',
+    borderRadius: 24,
+    padding: '40px 28px',
+    border: '1px solid rgba(255,255,255,0.3)',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+  },
+  logo: { fontSize: 48, marginBottom: 8 },
+  title: {
+    fontFamily: "'Crimson Text', Georgia, serif",
+    fontSize: 28,
+    fontWeight: 600,
+    color: 'var(--ink, #1f281f)',
+    marginBottom: 28,
+  },
+  error: {
+    color: '#dc2626',
+    fontSize: 13,
+    marginBottom: 12,
+    padding: '8px 12px',
+    background: 'rgba(220,38,38,0.06)',
+    borderRadius: 10,
+  },
+  input: {
+    width: '100%',
+    padding: '14px 16px',
+    border: '1px solid rgba(0,0,0,0.08)',
+    borderRadius: 14,
+    fontSize: 16,
+    fontFamily: 'inherit',
+    background: 'rgba(255,255,255,0.7)',
+    textAlign: 'center',
+    marginBottom: 12,
+    boxSizing: 'border-box',
+    outline: 'none',
+  },
+  btn: {
+    width: '100%',
+    padding: '14px',
+    border: 'none',
+    borderRadius: 14,
+    background: 'linear-gradient(135deg, #16a34a, #059669)',
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+    boxShadow: '0 2px 8px rgba(22,163,74,0.3)',
+  },
 }

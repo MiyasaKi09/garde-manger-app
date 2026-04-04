@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { supabase } from '@/lib/supabaseClient'
 import GlassCard from '@/components/ui/GlassCard'
 import { calculateFullProfile, ACTIVITY_LABELS } from '@/lib/nutritionCalculator'
+import { savePersonGoals } from '@/lib/goalsStore'
 import { ArrowLeft, ArrowRight, Check, User, Target, Activity, Utensils } from 'lucide-react'
 
 const STEPS = [
@@ -70,50 +70,28 @@ export default function NutritionOnboarding() {
     }
   }
 
-  const handleSave = async () => {
+  const handleSave = () => {
     setSaving(true)
-    try {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) throw new Error('Non authentifié')
-
-      // Delete existing goals for this user, then insert fresh
-      await supabase
-        .from('user_health_goals')
-        .delete()
-        .eq('user_id', user.id)
-
-      for (const r of results) {
-        const { error } = await supabase
-          .from('user_health_goals')
-          .insert({
-            user_id: user.id,
-            person_name: r.person_name,
-            target_calories: r.target_calories,
-            target_protein_g: r.target_protein_g,
-            target_fat_g: r.target_fat_g,
-            target_carbs_g: r.target_carbs_g,
-            target_fiber_g: r.target_fiber_g,
-            target_weight_kg: parseFloat(r.target_weight_kg) || null,
-            age: parseInt(r.age) || null,
-            sex: r.sex || null,
-            height_cm: parseFloat(r.height_cm) || null,
-            current_weight_kg: parseFloat(r.current_weight_kg) || null,
-            activity_level: r.activity_level || null,
-            weight_loss_rate: parseFloat(r.weight_loss_rate) || null,
-            bmr: r.bmr || null,
-            tdee: r.tdee || null,
-          })
-
-        if (error) console.error(`Error saving ${r.person_name}:`, error)
-      }
-
-      router.push('/nutrition')
-    } catch (err) {
-      console.error('Save error:', err)
-      alert('Erreur lors de la sauvegarde')
-    } finally {
-      setSaving(false)
+    for (const r of results) {
+      savePersonGoals(r.person_name, {
+        target_calories: r.target_calories,
+        target_protein_g: r.target_protein_g,
+        target_fat_g: r.target_fat_g,
+        target_carbs_g: r.target_carbs_g,
+        target_fiber_g: r.target_fiber_g,
+        target_weight_kg: parseFloat(r.target_weight_kg) || null,
+        age: parseInt(r.age) || null,
+        sex: r.sex || null,
+        height_cm: parseFloat(r.height_cm) || null,
+        current_weight_kg: parseFloat(r.current_weight_kg) || null,
+        activity_level: r.activity_level || null,
+        weight_loss_rate: parseFloat(r.weight_loss_rate) || null,
+        bmr: r.bmr || null,
+        tdee: r.tdee || null,
+      })
     }
+    setSaving(false)
+    router.push('/nutrition')
   }
 
   return (
