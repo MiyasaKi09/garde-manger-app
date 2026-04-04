@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { authFetch } from '@/lib/authFetch'
 import GlassCard from '@/components/ui/GlassCard'
 import { calculateFullProfile, ACTIVITY_LABELS } from '@/lib/nutritionCalculator'
-import { savePersonGoals } from '@/lib/goalsStore'
 import { ArrowLeft, ArrowRight, Check, User, Target, Activity, Utensils } from 'lucide-react'
 
 const STEPS = [
@@ -70,10 +70,11 @@ export default function NutritionOnboarding() {
     }
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
     setSaving(true)
-    for (const r of results) {
-      savePersonGoals(r.person_name, {
+    try {
+      const goalsPayload = results.map(r => ({
+        person_name: r.person_name,
         target_calories: r.target_calories,
         target_protein_g: r.target_protein_g,
         target_fat_g: r.target_fat_g,
@@ -88,10 +89,21 @@ export default function NutritionOnboarding() {
         weight_loss_rate: parseFloat(r.weight_loss_rate) || null,
         bmr: r.bmr || null,
         tdee: r.tdee || null,
+      }))
+
+      const res = await authFetch('/api/nutrition/goals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ goals: goalsPayload }),
       })
+      if (!res.ok) throw new Error('Erreur sauvegarde')
+      router.push('/nutrition')
+    } catch (err) {
+      console.error('Save error:', err)
+      alert('Erreur — vérifie que la migration SQL a été appliquée')
+    } finally {
+      setSaving(false)
     }
-    setSaving(false)
-    router.push('/nutrition')
   }
 
   return (

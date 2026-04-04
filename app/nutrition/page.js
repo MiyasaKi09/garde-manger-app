@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
-import { getPersonGoals } from '@/lib/goalsStore'
 import GlassCard from '@/components/ui/GlassCard'
 import NutritionBar from '@/components/ui/NutritionBar'
 import PersonSelector from '@/components/ui/PersonSelector'
@@ -43,16 +42,18 @@ export default function NutritionPage() {
   async function loadData() {
     setLoading(true)
     try {
-      const [mealsRes, weightRes] = await Promise.all([
+      const [mealsRes, goalsRes, weightRes] = await Promise.all([
         authFetch(`/api/nutrition/log?from=${date}&to=${date}&person=${person}`),
+        authFetch('/api/nutrition/goals'),
         authFetch(`/api/nutrition/weight?person=${person}&limit=30`),
       ])
 
       const mealsData = await mealsRes.json()
       setMeals(mealsData.entries || [])
 
-      // Goals from localStorage — instant, no API call
-      setGoals(getPersonGoals(person))
+      const goalsData = await goalsRes.json()
+      const allGoals = goalsData.goals || []
+      setGoals(allGoals.find(g => g.person_name === person) || allGoals[0] || null)
 
       const weightData = await weightRes.json()
       setWeights(weightData.entries || [])

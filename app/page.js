@@ -10,7 +10,6 @@ import PersonSelector from '@/components/ui/PersonSelector'
 import TodayMeals from './planning/components/TodayMeals'
 import OcrReviewList from './pantry/components/OcrReviewList'
 import SmartAddForm from './pantry/components/SmartAddForm'
-import { getPersonGoals } from '@/lib/goalsStore'
 import { Sparkles, Package, Camera, Plus, AlertTriangle, Scale, ChevronRight, Settings, CalendarDays, BarChart3 } from 'lucide-react'
 
 const daysUntil = (d) => d ? Math.ceil((new Date(d) - new Date()) / 86400000) : null
@@ -83,13 +82,11 @@ export default function Home() {
   }
 
   async function loadGoals() {
-    // Goals from localStorage — instant, no API
-    const j = getPersonGoals('Julien')
-    const z = getPersonGoals('Zoé')
-    const all = []
-    if (j) all.push({ ...j, person_name: 'Julien' })
-    if (z) all.push({ ...z, person_name: 'Zoé' })
-    setGoals(all)
+    try {
+      const res = await authFetch('/api/nutrition/goals')
+      const data = await res.json()
+      if (data.goals) setGoals(data.goals)
+    } catch {}
   }
 
   async function loadWeight() {
