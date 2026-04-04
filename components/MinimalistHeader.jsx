@@ -41,6 +41,7 @@ export default function MinimalistHeader() {
     { href: '/recipes', label: 'Recettes' },
     { href: '/garden', label: 'Potager' },
     { href: '/planning', label: 'Planning' },
+    { href: '/nutrition', label: 'Nutrition' },
     { href: '/shopping', label: 'Courses' },
   ]), []);
 

@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabaseClient';
 import SmartAddForm from './components/SmartAddForm';
 import ProductCard from './components/PantryProductCard';
 import ConsumeModal from './components/ConsumeModal';
+import OcrReviewList from './components/OcrReviewList';
 import { capitalizeProduct } from './components/pantryUtils';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import EditLotForm from './components/EditLotForm';
@@ -34,6 +35,7 @@ export default function PantryPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('inventory'); // inventory, waste, stats
   const [userId, setUserId] = useState(null);
+  const [showOcr, setShowOcr] = useState(false);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -716,14 +718,34 @@ export default function PantryPage() {
         onConfirm={handleConsumeConfirm}
       />
 
-      {/* Bouton flottant pour ajouter - disponible sur tous les onglets */}
-      <button
-        className="pantry-fab"
-        onClick={() => setShowForm(true)}
-        title="Ajouter un article"
-      >
-        +
-      </button>
+      {/* Boutons flottants */}
+      <div className="pantry-fab-group">
+        <button
+          className="pantry-fab pantry-fab-secondary"
+          onClick={() => setShowOcr(true)}
+          title="Scanner une liste (OCR)"
+        >
+          📷
+        </button>
+        <button
+          className="pantry-fab"
+          onClick={() => setShowForm(true)}
+          title="Ajouter un article"
+        >
+          +
+        </button>
+      </div>
+
+      {/* Modal OCR */}
+      {showOcr && (
+        <OcrReviewList
+          onClose={() => setShowOcr(false)}
+          onItemsAdded={(count) => {
+            setShowOcr(false);
+            loadPantryItems();
+          }}
+        />
+      )}
 
       {/* Dialog de confirmation de suppression */}
       <ConfirmDialog

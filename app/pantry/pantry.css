@@ -473,10 +473,18 @@
 }
 
 /* Bouton flottant */
-.pantry-fab {
+.pantry-fab-group {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  z-index: 1000;
+}
+
+.pantry-fab {
   width: 60px;
   height: 60px;
   background: linear-gradient(135deg, #66bb6a, #43a047);
@@ -488,20 +496,34 @@
   font-size: 2rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  box-shadow: 
+  box-shadow:
     0 4px 16px rgba(76, 175, 80, 0.3),
     0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+}
+
+.pantry-fab-secondary {
+  width: 48px;
+  height: 48px;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #374151;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .pantry-fab:hover {
   transform: scale(1.1) rotate(90deg);
-  box-shadow: 
+  box-shadow:
     0 8px 24px rgba(76, 175, 80, 0.4),
     0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pantry-fab-secondary:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 /* Version mobile optimisée */

@@ -5,6 +5,8 @@ import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { convertWithMeta } from '@/lib/units';
 import IngredientSearchSelector from './IngredientSearchSelector';
+import InstructionsCarousel from './components/InstructionsCarousel';
+import CookWizard from '@/components/CookWizard';
 import './recipe-detail.css';
 import './IngredientSearchSelector.css';
 
@@ -88,6 +90,7 @@ export default function RecipeDetail() {
 
   // État pour le carrousel d'instructions
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [showCookWizard, setShowCookWizard] = useState(false);
 
   // État pour les données nutritionnelles
   const [nutrition, setNutrition] = useState(null);
@@ -2068,164 +2071,27 @@ export default function RecipeDetail() {
             )}
           </div>
 
-          <div className="instructions-section">
-            <h2>Instructions</h2>
-            <div className="instructions-content">
-              {recipeSteps && recipeSteps.length > 0 ? (
-                <div className="steps-carousel" style={{
-                  position: 'relative',
-                  padding: '10px 0'
-                }}>
-                  {/* Carte de l'étape actuelle */}
-                  <div style={{
-                    background: 'white',
-                    borderRadius: '16px',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                    padding: '24px',
-                    minHeight: '140px',
-                    position: 'relative',
-                    border: '2px solid #f3f4f6'
-                  }}>
-                    {/* Numéro de l'étape */}
-                    <div style={{
-                      position: 'absolute',
-                      top: '-20px',
-                      left: '32px',
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-                      color: 'white',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontWeight: '700',
-                      fontSize: '1.2rem',
-                      boxShadow: '0 4px 12px rgba(5,150,105,0.3)'
-                    }}>
-                      {recipeSteps[currentStepIndex].step_no || currentStepIndex + 1}
-                    </div>
-
-                    {/* Description de l'étape */}
-                    <div style={{
-                      marginTop: '16px',
-                      fontSize: '1.05rem',
-                      lineHeight: '1.7',
-                      color: '#1f2937'
-                    }}>
-                      {recipeSteps[currentStepIndex].instruction || recipeSteps[currentStepIndex].description}
-                    </div>
-                  </div>
-
-                  {/* Boutons de navigation */}
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginTop: '16px'
-                  }}>
-                    <button
-                      onClick={() => setCurrentStepIndex(Math.max(0, currentStepIndex - 1))}
-                      disabled={currentStepIndex === 0}
-                      style={{
-                        background: currentStepIndex === 0 ? '#e5e7eb' : '#059669',
-                        color: currentStepIndex === 0 ? '#9ca3af' : 'white',
-                        border: 'none',
-                        borderRadius: '12px',
-                        padding: '12px 24px',
-                        fontSize: '1rem',
-                        fontWeight: '600',
-                        cursor: currentStepIndex === 0 ? 'not-allowed' : 'pointer',
-                        transition: 'all 0.2s',
-                        boxShadow: currentStepIndex === 0 ? 'none' : '0 2px 8px rgba(5,150,105,0.2)'
-                      }}
-                    >
-                      ← Précédent
-                    </button>
-
-                    {/* Indicateurs de points */}
-                    <div style={{
-                      display: 'flex',
-                      gap: '8px',
-                      alignItems: 'center'
-                    }}>
-                      {recipeSteps.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setCurrentStepIndex(index)}
-                          style={{
-                            width: index === currentStepIndex ? '32px' : '10px',
-                            height: '10px',
-                            borderRadius: '5px',
-                            background: index === currentStepIndex ? '#059669' : '#d1d5db',
-                            border: 'none',
-                            cursor: 'pointer',
-                            transition: 'all 0.3s',
-                            padding: 0
-                          }}
-                          aria-label={`Aller à l'étape ${index + 1}`}
-                        />
-                      ))}
-                    </div>
-
-                    <button
-                      onClick={() => setCurrentStepIndex(Math.min(recipeSteps.length - 1, currentStepIndex + 1))}
-                      disabled={currentStepIndex === recipeSteps.length - 1}
-                      style={{
-                        background: currentStepIndex === recipeSteps.length - 1 ? '#e5e7eb' : '#059669',
-                        color: currentStepIndex === recipeSteps.length - 1 ? '#9ca3af' : 'white',
-                        border: 'none',
-                        borderRadius: '12px',
-                        padding: '12px 24px',
-                        fontSize: '1rem',
-                        fontWeight: '600',
-                        cursor: currentStepIndex === recipeSteps.length - 1 ? 'not-allowed' : 'pointer',
-                        transition: 'all 0.2s',
-                        boxShadow: currentStepIndex === recipeSteps.length - 1 ? 'none' : '0 2px 8px rgba(5,150,105,0.2)'
-                      }}
-                    >
-                      Suivant →
-                    </button>
-                  </div>
-
-                  {/* Compteur d'étapes */}
-                  <div style={{
-                    textAlign: 'center',
-                    marginTop: '12px',
-                    color: '#6b7280',
-                    fontSize: '0.85rem',
-                    fontWeight: '500'
-                  }}>
-                    Étape {currentStepIndex + 1} sur {recipeSteps.length}
-                  </div>
-                </div>
-              ) : (
-                <p style={{ color: '#6b7280', fontStyle: 'italic' }}>
-                  Instructions non disponibles
-                </p>
-              )}
-            </div>
-
-            {recipe.chef_tips && (
-              <div className="chef-tips">
-                <h3>💡 Conseils du chef</h3>
-                <p>{recipe.chef_tips}</p>
-              </div>
-            )}
-          </div>
+          <InstructionsCarousel steps={recipeSteps} chefTips={recipe.chef_tips} />
         </div>
 
         <div className="recipe-actions">
-          <button className="action-btn primary">
-            📅 Planifier cette recette
+          <button className="action-btn primary" onClick={() => setShowCookWizard(true)}>
+            👨‍🍳 Cuisiner
           </button>
           <button className="action-btn secondary">
-            🛒 Ajouter aux courses
+            📅 Planifier
           </button>
           <button className="action-btn tertiary" onClick={startEditing}>
-            📝 Modifier la recette
+            📝 Modifier
           </button>
         </div>
+
+        <CookWizard
+          open={showCookWizard}
+          onClose={() => setShowCookWizard(false)}
+          recipe={recipe}
+          onComplete={() => setShowCookWizard(false)}
+        />
       </div>
     </div>
   );

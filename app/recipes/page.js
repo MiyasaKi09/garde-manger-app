@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
-import CreateDishFromRecipeDialog from '@/components/CreateDishFromRecipeDialog';
+import CookWizard from '@/components/CookWizard';
+import RecipeListCard from './components/RecipeListCard';
 import './recipes.css';
 
 export default function RecipesPage() {
@@ -659,128 +660,32 @@ export default function RecipesPage() {
           </div>
         ) : (
           filteredRecipes.map(recipe => {
-            const status = inventoryStatus[recipe.id] || { 
-              totalIngredients: 0, 
-              availableIngredients: 0, 
-              availabilityPercent: 0, 
-              urgentIngredients: 0 
+            const status = inventoryStatus[recipe.id] || {
+              totalIngredients: 0,
+              availableIngredients: 0,
+              availabilityPercent: 0,
+              urgentIngredients: 0
             };
-            const isUrgent = status.urgentIngredients > 0;
 
             return (
-              <Link 
-                href={`/recipes/${recipe.id}`}
+              <RecipeListCard
                 key={recipe.id}
-                className={`recipe-card ${isUrgent ? 'urgent-recipe' : ''}`}
-                style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
-              >
-                <div className="recipe-header">
-                  <h3 className="recipe-title">{recipe.title || recipe.name}</h3>
-                  <div className="recipe-badges">
-                    {status.mykoScore !== undefined && (
-                      <div className={`myko-score ${
-                        status.mykoScore >= 80 ? 'high-score' :
-                        status.mykoScore >= 50 ? 'medium-score' : 'low-score'
-                      }`}>
-                        {status.mykoScore}★
-                      </div>
-                    )}
-                    {isUrgent && <div className="urgent-badge">URGENT</div>}
-                  </div>
-                </div>
-                
-                {recipe.description && (
-                  <p className="recipe-description">{recipe.description}</p>
-                )}
-                
-                <div className="recipe-meta">
-                  <div className="meta-item">
-                    <span className="meta-icon">⏱️</span>
-                    <span>
-                      {(recipe.prep_min || 0) + (recipe.cook_min || 0) + (recipe.rest_min || 0) > 0 
-                        ? `${(recipe.prep_min || 0) + (recipe.cook_min || 0) + (recipe.rest_min || 0)} min` 
-                        : 'Temps non défini'}
-                    </span>
-                  </div>
-                  <div className="meta-item">
-                    <span className="meta-icon">👥</span>
-                    <span>{recipe.servings || recipe.portions || 'Non défini'} parts</span>
-                  </div>
-                  <div className="meta-item">
-                    <span className="meta-icon">📊</span>
-                    <span>{recipe.difficulty_levels?.name || recipe.difficulty || 'Non défini'}</span>
-                  </div>
-                </div>
-                
-                <div className="recipe-availability">
-                  <div className="availability-bar">
-                    <div 
-                      className="availability-fill" 
-                      style={{ width: `${status.availabilityPercent}%` }}
-                    />
-                  </div>
-                  <div className="availability-text">
-                    {status.availabilityPercent}% disponible ({status.availableIngredients}/{status.totalIngredients})
-                  </div>
-                </div>
-                
-                <div className="recipe-actions">
-                  <button 
-                    className="action-btn primary"
-                    onClick={(e) => {
-                      // Le Link parent gère la navigation
-                    }}
-                  >
-                    👁️ Voir
-                  </button>
-                  <button 
-                    className="action-btn cook"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setSelectedRecipeToCook(recipe);
-                    }}
-                  >
-                    🍳 Cuisiner
-                  </button>
-                  <button 
-                    className="action-btn secondary"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      alert(`🌿 "${recipe.name}" ajoutée au planning !`);
-                    }}
-                  >
-                    📅 Planifier
-                  </button>
-                  <button 
-                    className="action-btn tertiary"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      alert(`🛒 Ingrédients manquants ajoutés aux courses !`);
-                    }}
-                  >
-                    🛒 Courses
-                  </button>
-                </div>
-              </Link>
+                recipe={recipe}
+                status={status}
+                onCook={setSelectedRecipeToCook}
+              />
             );
           })
         )}
       </div>
 
-      {/* Dialog de création de plat cuisiné */}
-      {selectedRecipeToCook && (
-        <CreateDishFromRecipeDialog
-          recipe={selectedRecipeToCook}
-          onClose={() => setSelectedRecipeToCook(null)}
-          onSuccess={(dish) => {
-            alert(`✅ "${dish.name}" ajouté au garde-manger avec ${dish.portions_remaining} portions !`);
-            setSelectedRecipeToCook(null);
-          }}
-        />
-      )}
+      {/* CookWizard */}
+      <CookWizard
+        open={!!selectedRecipeToCook}
+        onClose={() => setSelectedRecipeToCook(null)}
+        recipe={selectedRecipeToCook}
+        onComplete={() => setSelectedRecipeToCook(null)}
+      />
     </div>
   );
 }
