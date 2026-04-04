@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabaseClient';
 import { convertWithMeta } from '@/lib/units';
 import IngredientSearchSelector from './IngredientSearchSelector';
 import InstructionsCarousel from './components/InstructionsCarousel';
+import CookMode from './components/CookMode';
 import CookWizard from '@/components/CookWizard';
 import './recipe-detail.css';
 import './IngredientSearchSelector.css';
@@ -91,6 +92,7 @@ export default function RecipeDetail() {
   // État pour le carrousel d'instructions
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [showCookWizard, setShowCookWizard] = useState(false);
+  const [showCookMode, setShowCookMode] = useState(false);
 
   // État pour les données nutritionnelles
   const [nutrition, setNutrition] = useState(null);
@@ -2071,20 +2073,28 @@ export default function RecipeDetail() {
             )}
           </div>
 
-          <InstructionsCarousel steps={recipeSteps} chefTips={recipe.chef_tips} />
+          <InstructionsCarousel steps={recipeSteps} chefTips={recipe.chef_tips} onStartCookMode={() => setShowCookMode(true)} />
         </div>
 
         <div className="recipe-actions">
-          <button className="action-btn primary" onClick={() => setShowCookWizard(true)}>
-            👨‍🍳 Cuisiner
+          <button className="action-btn primary" onClick={() => setShowCookMode(true)}>
+            👨‍🍳 Commencer la cuisine
           </button>
-          <button className="action-btn secondary">
-            📅 Planifier
+          <button className="action-btn secondary" onClick={() => setShowCookWizard(true)}>
+            📦 Préparer & déduire le stock
           </button>
           <button className="action-btn tertiary" onClick={startEditing}>
             📝 Modifier
           </button>
         </div>
+
+        <CookMode
+          open={showCookMode}
+          onClose={() => setShowCookMode(false)}
+          recipe={recipe}
+          steps={recipeSteps}
+          ingredients={ings}
+        />
 
         <CookWizard
           open={showCookWizard}

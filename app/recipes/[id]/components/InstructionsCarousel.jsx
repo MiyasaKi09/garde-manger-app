@@ -6,7 +6,7 @@ import { useState } from 'react'
  * Carousel d'instructions pas-à-pas avec navigation.
  * Extrait de recipes/[id]/page.js pour simplifier le JSX.
  */
-export default function InstructionsCarousel({ steps, chefTips }) {
+export default function InstructionsCarousel({ steps, chefTips, onStartCookMode }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   if (!steps || steps.length === 0) {
@@ -28,7 +28,14 @@ export default function InstructionsCarousel({ steps, chefTips }) {
 
   return (
     <div className="instructions-section">
-      <h2>Instructions</h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2>Instructions</h2>
+        {onStartCookMode && (
+          <button onClick={onStartCookMode} style={styles.cookModeBtn}>
+            Commencer la cuisine
+          </button>
+        )}
+      </div>
       <div className="instructions-content">
         <div className="steps-carousel" style={{ position: 'relative', padding: '10px 0' }}>
           {/* Step card */}
@@ -109,6 +116,19 @@ export default function InstructionsCarousel({ steps, chefTips }) {
 }
 
 const styles = {
+  cookModeBtn: {
+    padding: '8px 16px',
+    border: 'none',
+    borderRadius: 10,
+    background: 'linear-gradient(135deg, #1f2937, #111827)',
+    color: 'white',
+    fontSize: 13,
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+    transition: 'all 0.2s',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+  },
   card: {
     background: 'white',
     borderRadius: 16,
