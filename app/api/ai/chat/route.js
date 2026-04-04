@@ -51,10 +51,12 @@ export async function POST(request) {
       content: m.content,
     }))
 
-    // Stream response
+    // Stream response — planning needs more tokens for full JSON with cooking steps
+    const maxTokens = intent === 'planning' ? 16384 : 4096
+
     const stream = anthropic.messages.stream({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 4096,
+      max_tokens: maxTokens,
       system: systemPrompt,
       messages: apiMessages,
     })
