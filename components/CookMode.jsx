@@ -9,11 +9,12 @@ import { X, ChevronLeft, ChevronRight, Play, Pause, RotateCcw } from 'lucide-rea
  * Inspiré du mode cuisine de Claude.
  */
 export default function CookMode({ open, onClose, recipe, steps, ingredients }) {
-  const [currentStep, setCurrentStep] = useState(0)
+  // -1 = landing, 0+ = step index
+  const [currentStep, setCurrentStep] = useState(-1)
 
   useEffect(() => {
     if (open) {
-      setCurrentStep(0)
+      setCurrentStep(-1)
       document.body.style.overflow = 'hidden'
     }
     return () => { document.body.style.overflow = '' }
@@ -22,14 +23,15 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients }) 
   // Keyboard navigation
   useEffect(() => {
     if (!open) return
+    const maxStep = (steps?.length || 1) - 1
     const handleKey = (e) => {
       if (e.key === 'ArrowRight' || e.key === ' ') {
         e.preventDefault()
-        setCurrentStep(s => Math.min(s + 1, (steps?.length || 1) - 1))
+        setCurrentStep(s => Math.min(s + 1, maxStep))
       }
       if (e.key === 'ArrowLeft') {
         e.preventDefault()
-        setCurrentStep(s => Math.max(s - 1, 0))
+        setCurrentStep(s => Math.max(s - 1, -1))
       }
       if (e.key === 'Escape') onClose?.()
     }
@@ -39,28 +41,58 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients }) 
 
   if (!open || !recipe) return null
 
-  // Landing screen (before steps)
-  if (!steps?.length) {
+  const recipeName = recipe.title || recipe.name
+  const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0)
+
+  // ---- LANDING SCREEN ----
+  if (currentStep === -1) {
     return (
       <div style={styles.overlay}>
-        <button onClick={onClose} style={styles.closeBtn}><X size={24} /></button>
-        <div style={styles.landing}>
-          <h1 style={styles.landingTitle}>{recipe.title || recipe.name}</h1>
-          <p style={styles.landingDesc}>{recipe.description}</p>
-          <p style={styles.noSteps}>Aucune étape disponible pour cette recette.</p>
+        <button onClick={onClose} style={styles.closeBtnAbsolute}><X size={24} /></button>
+        <div style={styles.content}>
+          <div style={styles.landingContainer}>
+            <h1 style={styles.landingTitle}>{recipeName}</h1>
+            {recipe.description && (
+              <p style={styles.landingDesc}>{recipe.description}</p>
+            )}
+            {totalTime > 0 && (
+              <p style={styles.landingMeta}>{steps?.length || 0} étapes{totalTime ? ` · ${totalTime} min` : ''}</p>
+            )}
+
+            {/* Ingredients */}
+            {ingredients?.length > 0 && (
+              <div style={styles.ingredientsList}>
+                <h3 style={styles.ingredientsTitle}>INGRÉDIENTS</h3>
+                {ingredients.map((ing, i) => (
+                  <p key={i} style={styles.ingredientItem}>
+                    {ing.quantity && <span style={styles.ingredientQty}>{ing.quantity} {ing.unit}</span>}
+                    {' '}{ing.name}{ing.notes ? ` (${ing.notes})` : ''}
+                  </p>
+                ))}
+              </div>
+            )}
+
+            <button
+              onClick={() => setCurrentStep(0)}
+              style={styles.startBtn}
+              disabled={!steps?.length}
+            >
+              Commencer
+            </button>
+          </div>
         </div>
       </div>
     )
   }
 
+  // ---- STEP SCREEN ----
+  if (!steps?.length) return null
+
   const step = steps[currentStep]
   const isFirst = currentStep === 0
   const isLast = currentStep === steps.length - 1
 
-  // Extract timer from step (look for duration_min or time patterns in text)
   const timerMinutes = step.duration_min || extractTimerFromText(step.instruction || step.description || '')
-
-  // Extract step title (first sentence or before ":")
   const fullText = step.instruction || step.description || ''
   const { title: stepTitle, body: stepBody } = splitStepText(fullText)
 
@@ -69,14 +101,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients }) 
       {/* Header */}
       <div style={styles.header}>
         <div style={styles.headerLeft}>
-          <div style={styles.recipeIcon}>
-            <img
-              src={recipe.image_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(recipe.title || recipe.name)}&background=1a1a1a&color=fff&size=32`}
-              alt=""
-              style={styles.headerImg}
-            />
-          </div>
-          <span style={styles.headerTitle}>{recipe.title || recipe.name}</span>
+          <span style={styles.headerTitle}>{recipeName}</span>
         </div>
         <button onClick={onClose} style={styles.closeBtn}><X size={24} /></button>
       </div>
@@ -99,9 +124,8 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients }) 
       {/* Footer navigation */}
       <div style={styles.footer}>
         <button
-          onClick={() => setCurrentStep(s => Math.max(0, s - 1))}
-          disabled={isFirst}
-          style={{ ...styles.navBtn, opacity: isFirst ? 0.3 : 1 }}
+          onClick={() => setCurrentStep(s => Math.max(-1, s - 1))}
+          style={styles.navBtn}
         >
           <ChevronLeft size={24} />
         </button>
@@ -338,27 +362,77 @@ const styles = {
     textAlign: 'center',
   },
 
+  // Close button absolute (for landing)
+  closeBtnAbsolute: {
+    position: 'absolute',
+    top: 16,
+    right: 16,
+    border: 'none',
+    background: 'none',
+    color: 'rgba(255,255,255,0.6)',
+    cursor: 'pointer',
+    padding: 8,
+    display: 'flex',
+    borderRadius: 8,
+    zIndex: 10,
+  },
+
   // Landing
-  landing: {
+  landingContainer: {
     textAlign: 'center',
-    padding: 40,
-    maxWidth: 600,
-    margin: 'auto',
+    maxWidth: 520,
+    width: '100%',
   },
   landingTitle: {
     fontSize: 32,
     fontWeight: 700,
-    marginBottom: 16,
+    marginBottom: 12,
+    lineHeight: 1.2,
   },
   landingDesc: {
     fontSize: 16,
     color: 'rgba(255,255,255,0.6)',
     lineHeight: 1.6,
+    marginBottom: 8,
+  },
+  landingMeta: {
+    fontSize: 14,
+    color: 'rgba(255,255,255,0.35)',
     marginBottom: 32,
   },
-  noSteps: {
+  ingredientsList: {
+    textAlign: 'left',
+    marginBottom: 32,
+  },
+  ingredientsTitle: {
+    fontSize: 12,
+    fontWeight: 600,
+    letterSpacing: 1.5,
     color: 'rgba(255,255,255,0.4)',
-    fontStyle: 'italic',
+    marginBottom: 12,
+  },
+  ingredientItem: {
+    fontSize: 15,
+    color: 'rgba(255,255,255,0.8)',
+    margin: '6px 0',
+    lineHeight: 1.4,
+  },
+  ingredientQty: {
+    fontWeight: 600,
+    color: 'white',
+  },
+  startBtn: {
+    padding: '14px 48px',
+    border: '1px solid rgba(255,255,255,0.2)',
+    borderRadius: 28,
+    background: 'transparent',
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 500,
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+    transition: 'all 0.2s',
+    letterSpacing: 0.5,
   },
 
   // Timer

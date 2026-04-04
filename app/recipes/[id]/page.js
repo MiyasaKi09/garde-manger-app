@@ -6,7 +6,7 @@ import { supabase } from '@/lib/supabaseClient';
 import { convertWithMeta } from '@/lib/units';
 import IngredientSearchSelector from './IngredientSearchSelector';
 import InstructionsCarousel from './components/InstructionsCarousel';
-import CookMode from './components/CookMode';
+import CookMode from '@/components/CookMode';
 import CookWizard from '@/components/CookWizard';
 import './recipe-detail.css';
 import './IngredientSearchSelector.css';
