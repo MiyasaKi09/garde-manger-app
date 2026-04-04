@@ -1,1 +1,3 @@
 user_id,target_calories,target_protein_g,target_fat_g,target_carbs_g,created_at,updated_at,person_name,target_weight_kg,target_fiber_g,age,sex,height_cm,current_weight_kg,activity_level,weight_loss_rate,bmr,tdee
+9055926b-ed29-49f1-96b8-fc717973b333,2050,170,70,170,2026-04-04 22:00:05.911875+00,2026-04-04 22:00:05.911875+00,Julien,100.00,28.0,30,M,188.0,122.00,light,1.00,2250.0,3094.0
+9055926b-ed29-49f1-96b8-fc717973b333,1350,90,55,120,2026-04-04 22:00:06.078311+00,2026-04-04 22:00:06.078311+00,Zoé,47.00,19.0,27,F,159.0,49.00,light,0.25,1188.0,1633.0

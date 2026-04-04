@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Sat Apr  4 21:58:40 UTC 2026_
+_Generated: Sat Apr  4 22:10:13 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -47,7 +47,7 @@ _Generated: Sat Apr  4 21:58:40 UTC 2026_
 - unit_conversions_product: 0 rows
 - user_allergies: 0 rows
 - user_diets: 0 rows
-- user_health_goals: 0 rows
+- user_health_goals: 2 rows
 - user_profiles: 0 rows
 - user_recipe_interactions: 0 rows
 - weight_entries: 0 rows
