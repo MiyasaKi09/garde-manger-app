@@ -255,28 +255,72 @@ export default function NutritionOnboarding() {
         </GlassCard>
       )}
 
-      {/* Step 3: Results */}
+      {/* Step 3: Results — EDITABLE */}
       {step === 3 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <p style={{ fontSize: 13, color: '#6b7280', textAlign: 'center', margin: 0 }}>
+            Valeurs calculées — ajuste-les si ton nutritionniste recommande d'autres cibles.
+          </p>
           {results.map((r, i) => (
             <GlassCard key={i} padding={24} radius={16}>
               <h2 style={styles.stepTitle}>{r.person_name}</h2>
 
               <div style={styles.resultGrid}>
                 <div style={styles.resultCard}>
-                  <span style={styles.resultValue}>{r.target_calories}</span>
+                  <input
+                    type="number"
+                    value={r.target_calories}
+                    onChange={e => {
+                      const v = parseInt(e.target.value) || 0
+                      setResults(prev => prev.map((p, j) => j === i ? { ...p, target_calories: v } : p))
+                    }}
+                    style={styles.resultInput}
+                  />
                   <span style={styles.resultLabel}>kcal/jour</span>
                 </div>
                 <div style={styles.resultCard}>
-                  <span style={styles.resultValue}>{r.target_protein_g}g</span>
+                  <div style={styles.resultInputRow}>
+                    <input
+                      type="number"
+                      value={r.target_protein_g}
+                      onChange={e => {
+                        const v = parseInt(e.target.value) || 0
+                        setResults(prev => prev.map((p, j) => j === i ? { ...p, target_protein_g: v } : p))
+                      }}
+                      style={styles.resultInput}
+                    />
+                    <span style={styles.resultUnit}>g</span>
+                  </div>
                   <span style={styles.resultLabel}>Protéines</span>
                 </div>
                 <div style={styles.resultCard}>
-                  <span style={styles.resultValue}>{r.target_carbs_g}g</span>
+                  <div style={styles.resultInputRow}>
+                    <input
+                      type="number"
+                      value={r.target_carbs_g}
+                      onChange={e => {
+                        const v = parseInt(e.target.value) || 0
+                        setResults(prev => prev.map((p, j) => j === i ? { ...p, target_carbs_g: v } : p))
+                      }}
+                      style={styles.resultInput}
+                    />
+                    <span style={styles.resultUnit}>g</span>
+                  </div>
                   <span style={styles.resultLabel}>Glucides</span>
                 </div>
                 <div style={styles.resultCard}>
-                  <span style={styles.resultValue}>{r.target_fat_g}g</span>
+                  <div style={styles.resultInputRow}>
+                    <input
+                      type="number"
+                      value={r.target_fat_g}
+                      onChange={e => {
+                        const v = parseInt(e.target.value) || 0
+                        setResults(prev => prev.map((p, j) => j === i ? { ...p, target_fat_g: v } : p))
+                      }}
+                      style={styles.resultInput}
+                    />
+                    <span style={styles.resultUnit}>g</span>
+                  </div>
                   <span style={styles.resultLabel}>Lipides</span>
                 </div>
               </div>
@@ -284,7 +328,7 @@ export default function NutritionOnboarding() {
               <div style={styles.metaRow}>
                 <span>BMR : {r.bmr} kcal</span>
                 <span>TDEE : {r.tdee} kcal</span>
-                {r.weeks_to_goal && <span>Objectif en ~{r.weeks_to_goal} semaines</span>}
+                {r.weeks_to_goal && <span>~{r.weeks_to_goal} sem.</span>}
               </div>
             </GlassCard>
           ))}
@@ -340,6 +384,9 @@ const styles = {
   resultGrid: { display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 16 },
   resultCard: { padding: 16, background: 'rgba(22,163,74,0.06)', borderRadius: 12, textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 2 },
   resultValue: { fontSize: 24, fontWeight: 700, color: '#16a34a' },
+  resultInput: { width: '100%', border: 'none', background: 'transparent', fontSize: 24, fontWeight: 700, color: '#16a34a', textAlign: 'center', fontFamily: 'inherit', outline: 'none', padding: 0 },
+  resultInputRow: { display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 2 },
+  resultUnit: { fontSize: 16, fontWeight: 600, color: '#16a34a', opacity: 0.7 },
   resultLabel: { fontSize: 12, color: '#6b7280', fontWeight: 600, textTransform: 'uppercase' },
   metaRow: { display: 'flex', gap: 16, fontSize: 12, color: '#9ca3af', flexWrap: 'wrap' },
   navRow: { display: 'flex', gap: 8, marginTop: 20 },
