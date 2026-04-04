@@ -27,11 +27,18 @@ export async function POST(request) {
     return NextResponse.json({ error: 'description requis' }, { status: 400 })
   }
 
-  const normalized = normalizeRecipeName(description)
+  // Clean description: extract dish name (before ":")
+  const cleanDesc = description.indexOf(':') > 0 && description.indexOf(':') < 60
+    ? description.substring(0, description.indexOf(':')).trim()
+    : description.trim()
+  const normalized = normalizeRecipeName(cleanDesc)
 
-  // 1. Check cache
+  // 1. Check cache — try exact match first, then fuzzy (ilike prefix)
   try {
-    const { data: cached } = await supabase
+    let cached = null
+
+    // Exact match
+    const { data: exactMatch } = await supabase
       .from('generated_recipes')
       .select('*')
       .eq('user_id', user.id)
@@ -39,6 +46,21 @@ export async function POST(request) {
       .order('created_at', { ascending: false })
       .limit(1)
       .single()
+
+    if (exactMatch) {
+      cached = exactMatch
+    } else {
+      // Fuzzy: try prefix match (handles cases where plan saved full desc)
+      const { data: fuzzyMatches } = await supabase
+        .from('generated_recipes')
+        .select('*')
+        .eq('user_id', user.id)
+        .ilike('name_normalized', `${normalized}%`)
+        .order('created_at', { ascending: false })
+        .limit(1)
+
+      if (fuzzyMatches?.length) cached = fuzzyMatches[0]
+    }
 
     if (cached && cached.steps?.length > 0) {
       // Cache hit with complete recipe (has steps)
