@@ -7,7 +7,7 @@ import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import NutritionBar from '@/components/ui/NutritionBar'
 import PersonSelector from '@/components/ui/PersonSelector'
-import WeeklyPlanView from './planning/components/WeeklyPlanView'
+import TodayMeals from './planning/components/TodayMeals'
 import OcrReviewList from './pantry/components/OcrReviewList'
 import SmartAddForm from './pantry/components/SmartAddForm'
 import { Sparkles, Package, Camera, Plus, AlertTriangle, Scale, ChevronRight, Settings, CalendarDays, BarChart3 } from 'lucide-react'
@@ -126,7 +126,7 @@ export default function Home() {
             <Link href="/planning" style={S.cellLink}>Semaine <ChevronRight size={12} /></Link>
           </div>
           {latestImportId ? (
-            <WeeklyPlanView importId={latestImportId} />
+            <TodayMeals importId={latestImportId} />
           ) : (
             <div style={{ textAlign: 'center', padding: '20px 0' }}>
               <p style={{ color: '#9ca3af', fontSize: 13, marginBottom: 10 }}>Pas encore de planning</p>
