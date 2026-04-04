@@ -5,6 +5,43 @@ import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import { Loader2 } from 'lucide-react'
 
+/**
+ * Extrait le nom du plat à partir des descriptions de plusieurs personnes.
+ * "Pizza maison: pâte 120g + passata 70g..." → "Pizza maison"
+ * "Wok poulet teriyaki: 200g poulet..." → "Wok poulet teriyaki"
+ * Si pas de ":", trouve le préfixe commun entre les descriptions.
+ */
+function extractDishName(descriptions) {
+  if (!descriptions.length) return ''
+  if (descriptions.length === 1) {
+    const d = descriptions[0] || ''
+    const colonIdx = d.indexOf(':')
+    return colonIdx > 0 && colonIdx < 60 ? d.substring(0, colonIdx).trim() : d.trim()
+  }
+
+  // Try extracting before ":" from the first one
+  const first = descriptions[0] || ''
+  const colonIdx = first.indexOf(':')
+  if (colonIdx > 0 && colonIdx < 60) {
+    return first.substring(0, colonIdx).trim()
+  }
+
+  // Find common prefix between all descriptions
+  let prefix = first
+  for (let i = 1; i < descriptions.length; i++) {
+    const other = descriptions[i] || ''
+    let j = 0
+    while (j < prefix.length && j < other.length && prefix[j] === other[j]) j++
+    prefix = prefix.substring(0, j)
+  }
+
+  // Trim to last space to avoid cutting a word
+  const lastSpace = prefix.lastIndexOf(' ')
+  if (lastSpace > 5) prefix = prefix.substring(0, lastSpace)
+
+  return prefix.trim() || first.substring(0, 40).trim()
+}
+
 const MEAL_LABELS = {
   pdj: 'Petit-déj',
   dejeuner: 'Déjeuner',
@@ -81,7 +118,7 @@ export default function TodayMeals({ importId }) {
   if (loading) return <p style={{ color: '#9ca3af', fontSize: 13, textAlign: 'center' }}>...</p>
   if (!importId || meals.length === 0) return null
 
-  // Group: today then tomorrow, by meal type
+  // Group: today then tomorrow
   const groups = [
     { date: todayStr, label: "Aujourd'hui", meals: meals.filter(m => m.meal_date === todayStr) },
     { date: tomorrowStr, label: 'Demain', meals: meals.filter(m => m.meal_date === tomorrowStr) },
@@ -91,50 +128,49 @@ export default function TodayMeals({ importId }) {
     <>
       <div style={S.container}>
         {groups.map(group => {
-          // Deduplicate by meal_type + description
+          // Group by meal_type → ONE row per plat (not per person)
           const byType = {}
           for (const m of group.meals) {
-            const key = `${m.meal_type}|${m.description}`
-            if (!byType[key]) byType[key] = { ...m, persons: [] }
-            byType[key].persons.push(m.person_name?.charAt(0) || '?')
+            if (!byType[m.meal_type]) byType[m.meal_type] = []
+            byType[m.meal_type].push(m)
           }
-          const uniqueMeals = Object.values(byType).sort(
-            (a, b) => MEAL_ORDER.indexOf(a.meal_type) - MEAL_ORDER.indexOf(b.meal_type)
-          )
 
-          // Find next upcoming meal (first today meal not yet past, or first tomorrow)
+          const mergedMeals = Object.entries(byType)
+            .sort(([a], [b]) => MEAL_ORDER.indexOf(a) - MEAL_ORDER.indexOf(b))
+            .map(([type, entries]) => {
+              // Extract dish name: part before ":" or the common prefix
+              const dishName = extractDishName(entries.map(e => e.description))
+              const persons = entries.map(e => e.person_name?.charAt(0) || '?')
+              return { type, dishName, entries, persons: [...new Set(persons)] }
+            })
+
+          // Find next upcoming meal
           const now = new Date()
-          const currentHour = now.getHours()
-          const isNextMeal = (m) => {
-            if (group.date === tomorrowStr) return false
-            if (m.meal_type === 'pdj' && currentHour < 10) return true
-            if (m.meal_type === 'dejeuner' && currentHour < 14) return true
-            if (m.meal_type === 'diner' && currentHour < 21) return true
-            return false
-          }
+          const h = now.getHours()
+          const nextType = group.date === todayStr
+            ? (h < 10 ? 'pdj' : h < 14 ? 'dejeuner' : h < 21 ? 'diner' : null)
+            : null
 
           return (
             <div key={group.date}>
-              {groups.length > 1 && (
-                <p style={S.dayLabel}>{group.label}</p>
-              )}
-              {uniqueMeals.map((meal, i) => {
-                const isGenerating = generatingFor === meal.description
-                const next = isNextMeal(meal) && i === uniqueMeals.findIndex(m => isNextMeal(m))
+              {groups.length > 1 && <p style={S.dayLabel}>{group.label}</p>}
+              {mergedMeals.map((meal, i) => {
+                const isGenerating = generatingFor === meal.dishName
+                const isNext = meal.type === nextType
 
                 return (
                   <button
                     key={i}
-                    onClick={() => handleMealClick(meal)}
+                    onClick={() => handleMealClick({ ...meal.entries[0], description: meal.dishName })}
                     disabled={!!generatingFor}
                     style={{
                       ...S.mealRow,
-                      ...(next ? S.mealRowNext : {}),
+                      ...(isNext ? S.mealRowNext : {}),
                       opacity: generatingFor && !isGenerating ? 0.5 : 1,
                     }}
                   >
-                    <span style={S.mealType}>{MEAL_LABELS[meal.meal_type] || meal.meal_type}</span>
-                    <span style={S.mealDesc}>{meal.description}</span>
+                    <span style={S.mealType}>{MEAL_LABELS[meal.type] || meal.type}</span>
+                    <span style={S.mealDesc}>{meal.dishName}</span>
                     {isGenerating ? (
                       <Loader2 size={14} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: '#16a34a' }} />
                     ) : (
