@@ -37,12 +37,9 @@ export default function MinimalistHeader() {
 
   const navItems = useMemo(() => ([
     { href: '/', label: 'Accueil' },
-    { href: '/pantry', label: 'Garde-manger' },
-    { href: '/recipes', label: 'Recettes' },
-    { href: '/garden', label: 'Potager' },
+    { href: '/pantry', label: 'Stock' },
     { href: '/planning', label: 'Planning' },
     { href: '/nutrition', label: 'Nutrition' },
-    { href: '/shopping', label: 'Courses' },
   ]), []);
 
   const headerHeight = elevated ? 64 : 80;

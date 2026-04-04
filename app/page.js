@@ -1,423 +1,474 @@
-'use client';
+'use client'
 
-import { useEffect, useState, useMemo } from 'react';
-import Link from 'next/link';
-import { supabase } from '@/lib/supabaseClient';
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { supabase } from '@/lib/supabaseClient'
+import { authFetch } from '@/lib/authFetch'
+import NutritionBar from '@/components/ui/NutritionBar'
+import PersonSelector from '@/components/ui/PersonSelector'
+import WeeklyPlanView from './planning/components/WeeklyPlanView'
+import OcrReviewList from './pantry/components/OcrReviewList'
+import SmartAddForm from './pantry/components/SmartAddForm'
+import { Sparkles, Package, Camera, Plus, AlertTriangle, Scale, ChevronRight, Settings, CalendarDays, BarChart3 } from 'lucide-react'
 
-/* ----------------- Helpers ----------------- */
-const todayISO = () => new Date().toISOString().slice(0, 10);
-const daysUntil = (date) => {
-  if (!date) return null;
-  const diff = new Date(date) - new Date();
-  return Math.ceil(diff / 86400000);
-};
+const daysUntil = (d) => d ? Math.ceil((new Date(d) - new Date()) / 86400000) : null
 
-/* ----------------- Composants UI (glass) ----------------- */
-const glassBase = {
-  background: 'rgba(255,255,255,0.55)',
-  backdropFilter: 'blur(10px) saturate(120%)',
-  WebkitBackdropFilter: 'blur(10px) saturate(120%)',
-  border: '1px solid rgba(0,0,0,0.06)',
-  boxShadow: '0 8px 28px rgba(0,0,0,0.08)',
-  color: 'var(--ink, #1f281f)',
-};
+export default function Home() {
+  const router = useRouter()
+  const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [latestImportId, setLatestImportId] = useState(null)
+  const [stockStats, setStockStats] = useState({ total: 0, expiring: 0, expired: 0, urgentItems: [] })
+  const [nutritionToday, setNutritionToday] = useState({})
+  const [goals, setGoals] = useState([])
+  const [person, setPerson] = useState('Julien')
+  const [latestWeight, setLatestWeight] = useState(null)
+  const [showAddForm, setShowAddForm] = useState(false)
+  const [showOcr, setShowOcr] = useState(false)
 
-function StatCard({ icon, value, label, color, trend }) {
-  const [hover, setHover] = useState(false);
-  return (
-    <div
-      className="glass-card"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      style={{
-        ...glassBase,
-        borderRadius: 'var(--radius-lg)',
-        padding: '1.25rem',
-        textAlign: 'center',
-        transition: 'transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), border-color var(--transition-base)',
-        transform: hover ? 'translateY(-2px)' : 'none',
-        boxShadow: hover ? '0 12px 34px rgba(0,0,0,0.12)' : glassBase.boxShadow,
-      }}
-    >
-      <div style={{ fontSize: '2rem', marginBottom: '.25rem' }}>{icon}</div>
-      <div style={{ fontSize: '2rem', fontWeight: 700, color, lineHeight: 1 }}>{value}</div>
-      <div style={{ fontSize: '.9rem', color: 'var(--earth-600)' }}>{label}</div>
-      {typeof trend === 'number' && (
-        <div
-          style={{
-            fontSize: '.8rem',
-            color: trend > 0 ? 'var(--success)' : 'var(--danger)',
-            marginTop: '.5rem',
-            fontWeight: 600,
-          }}
-        >
-          {trend > 0 ? '↑' : '↓'} {Math.abs(trend)}% cette semaine
-        </div>
-      )}
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) { router.push('/login'); return }
+      setUser(user)
+      loadAll()
+    })
+  }, [])
+
+  async function loadAll() {
+    setLoading(true)
+    await Promise.all([loadPlan(), loadStock(), loadNutrition(), loadGoals(), loadWeight()])
+    setLoading(false)
+  }
+
+  async function loadPlan() {
+    try {
+      const r = await authFetch('/api/planning/imports')
+      const d = await r.json()
+      if (d.imports?.length) setLatestImportId(d.imports[0].id)
+    } catch {}
+  }
+
+  async function loadStock() {
+    try {
+      const { data } = await supabase.from('inventory_lots').select('id, qty_remaining, expiration_date, notes').gt('qty_remaining', 0)
+      if (!data) return
+      const urgent = []
+      let expiring = 0, expired = 0
+      for (const lot of data) {
+        const d = daysUntil(lot.expiration_date)
+        if (d !== null && d < 0) expired++
+        if (d !== null && d >= 0 && d <= 3) { expiring++; if (urgent.length < 4) urgent.push({ ...lot, days: d, name: lot.notes || `#${lot.id}` }) }
+      }
+      setStockStats({ total: data.length, expiring, expired, urgentItems: urgent })
+    } catch {}
+  }
+
+  async function loadNutrition() {
+    try {
+      const today = new Date().toISOString().split('T')[0]
+      const r = await authFetch(`/api/nutrition/log?from=${today}&to=${today}`)
+      const d = await r.json()
+      if (!d.entries) return
+      const bp = {}
+      for (const e of d.entries) {
+        const p = e.person_name || 'Julien'
+        if (!bp[p]) bp[p] = { kcal: 0, protein_g: 0, carbs_g: 0, fat_g: 0 }
+        bp[p].kcal += e.kcal || 0; bp[p].protein_g += e.protein_g || 0
+        bp[p].carbs_g += e.carbs_g || 0; bp[p].fat_g += e.fat_g || 0
+      }
+      setNutritionToday(bp)
+    } catch {}
+  }
+
+  async function loadGoals() {
+    try { const { data } = await supabase.from('user_health_goals').select('*'); if (data) setGoals(data) } catch {}
+  }
+
+  async function loadWeight() {
+    try { const r = await authFetch('/api/nutrition/weight?limit=1'); const d = await r.json(); if (d.entries?.length) setLatestWeight(d.entries[0]) } catch {}
+  }
+
+  const pg = goals.find(g => g.person_name === person) || {}
+  const pn = nutritionToday[person] || { kcal: 0, protein_g: 0, carbs_g: 0, fat_g: 0 }
+  const today = new Date()
+  const greeting = today.getHours() < 12 ? 'Bonjour' : today.getHours() < 18 ? 'Bon après-midi' : 'Bonsoir'
+
+  if (loading) return (
+    <div style={{ height: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <span style={{ fontSize: 40 }}>🥬</span>
+      <p style={{ color: '#7f8c7f', marginTop: 12 }}>Chargement...</p>
     </div>
-  );
-}
-
-function QuickActionCard({ icon, title, description, href, color = 'var(--forest-500)' }) {
-  const [hover, setHover] = useState(false);
-  return (
-    <Link href={href} style={{ textDecoration: 'none' }}>
-      <div
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        className="glass-card"
-        style={{
-          ...glassBase,
-          borderRadius: 'var(--radius-lg)',
-          padding: '1.25rem',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          textAlign: 'center',
-          gap: '.6rem',
-          transition: 'transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base)',
-          transform: hover ? 'translateY(-2px)' : 'none',
-          boxShadow: hover ? '0 12px 34px rgba(0,0,0,0.12)' : glassBase.boxShadow,
-          borderColor: hover ? 'rgba(0,0,0,0.10)' : glassBase.borderColor,
-        }}
-      >
-        <div
-          style={{
-            fontSize: '2.2rem',
-            transform: hover ? 'scale(1.05) rotate(3deg)' : 'scale(1)',
-            transition: 'transform var(--transition-slow)',
-          }}
-        >
-          {icon}
-        </div>
-        <h3 style={{ margin: 0, color: 'var(--forest-700)', fontSize: '1.05rem' }}>{title}</h3>
-        {description && (
-          <p style={{ margin: 0, color: 'var(--earth-600)', fontSize: '.86rem', opacity: .9 }}>
-            {description}
-          </p>
-        )}
-      </div>
-    </Link>
-  );
-}
-
-function AlertCard({ item, type = 'expiring' }) {
-  const days = daysUntil(item.dlc || item.best_before);
-  const status = (() => {
-    if (type === 'expired' || days < 0) return { color: 'var(--danger)', label: 'Périmé', icon: '🍂' };
-    if (days === 0) return { color: 'var(--autumn-orange)', label: "Aujourd'hui", icon: '⚡' };
-    if (days <= 3) return { color: 'var(--autumn-yellow)', label: `${days}j`, icon: '⏰' };
-    if (days <= 7) return { color: 'var(--forest-500)', label: `${days}j`, icon: '📅' };
-    return { color: 'var(--success)', label: `${days}j`, icon: '🌿' };
-  })();
+  )
 
   return (
-    <div
-      className="glass-card"
-      style={{
-        ...glassBase,
-        borderRadius: 'var(--radius-md)',
-        padding: '1rem',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        borderLeft: `4px solid ${getComputedStyleColor(status.color)}`,
-      }}
-    >
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontWeight: 600, color: 'var(--forest-700)', marginBottom: '.25rem' }}>
-          {item.product?.name || 'Produit'}
+    <div style={S.page}>
+      <div style={S.bento}>
+
+        {/* ═══ HERO — span full width ═══ */}
+        <div style={{ ...S.cell, ...S.hero, gridColumn: '1 / -1' }}>
+          <div>
+            <p style={S.heroGreeting}>{greeting}</p>
+            <h1 style={S.heroTitle}>Qu'est-ce qu'on<br />mange ?</h1>
+          </div>
+          <Link href="/planning/assistant" style={S.heroCta}>
+            <Sparkles size={18} />
+            <span>Demander à Myko</span>
+          </Link>
         </div>
-        <div style={{ fontSize: '.9rem', color: 'var(--earth-600)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-          {item.qty} {item.unit}
-          {item.location?.name && (
-            <span style={{ marginLeft: '.5rem', color: 'var(--earth-500)' }}>
-              📍 {item.location.name}
+
+        {/* ═══ PLANNING DU JOUR — large cell ═══ */}
+        <div style={{ ...S.cell, gridColumn: '1 / -1', minHeight: 0 }}>
+          <div style={S.cellHeader}>
+            <span style={S.cellLabel}>
+              <CalendarDays size={14} /> Aujourd'hui
             </span>
+            <Link href="/planning" style={S.cellLink}>Semaine <ChevronRight size={12} /></Link>
+          </div>
+          {latestImportId ? (
+            <WeeklyPlanView importId={latestImportId} />
+          ) : (
+            <div style={{ textAlign: 'center', padding: '20px 0' }}>
+              <p style={{ color: '#9ca3af', fontSize: 13, marginBottom: 10 }}>Pas encore de planning</p>
+              <Link href="/planning/assistant" style={S.emptyBtn}>
+                <Sparkles size={14} /> Créer un planning
+              </Link>
+            </div>
           )}
         </div>
+
+        {/* ═══ STOCK — left cell ═══ */}
+        <div style={{ ...S.cell, gridColumn: 'span 1', gridRow: 'span 2' }}>
+          <Link href="/pantry" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <div style={S.cellHeader}>
+              <span style={S.cellLabel}><Package size={14} /> Stock</span>
+            </div>
+            <div style={S.bigNumber}>{stockStats.total}</div>
+            <p style={S.bigLabel}>produits</p>
+
+            {(stockStats.expiring > 0 || stockStats.expired > 0) && (
+              <div style={S.alertPill}>
+                <AlertTriangle size={12} />
+                {stockStats.expired > 0 && <span style={{ color: '#ef4444' }}>{stockStats.expired} !</span>}
+                {stockStats.expiring > 0 && <span style={{ color: '#f59e0b' }}>{stockStats.expiring} bientôt</span>}
+              </div>
+            )}
+          </Link>
+
+          {stockStats.urgentItems.length > 0 && (
+            <div style={S.urgentList}>
+              {stockStats.urgentItems.map((it, i) => (
+                <div key={i} style={S.urgentRow}>
+                  <span style={S.urgentName}>{it.name}</span>
+                  <span style={{ ...S.urgentBadge, color: it.days <= 0 ? '#ef4444' : '#f59e0b' }}>
+                    {it.days <= 0 ? '!' : `${it.days}j`}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* ═══ AJOUTER — top-right small ═══ */}
+        <button onClick={() => setShowAddForm(true)} style={{ ...S.cell, ...S.actionCell }}>
+          <Plus size={24} color="#16a34a" />
+          <span style={S.actionLabel}>Ajouter</span>
+        </button>
+
+        {/* ═══ SCANNER — bottom-right small ═══ */}
+        <button onClick={() => setShowOcr(true)} style={{ ...S.cell, ...S.actionCell }}>
+          <Camera size={24} color="#3b82f6" />
+          <span style={S.actionLabel}>Scanner</span>
+        </button>
+
+        {/* ═══ POIDS — small left ═══ */}
+        <Link href="/nutrition" style={{ ...S.cell, ...S.weightCell, textDecoration: 'none', color: 'inherit' }}>
+          <Scale size={20} color="#6b7280" />
+          {latestWeight ? (
+            <>
+              <span style={S.weightValue}>{latestWeight.weight_kg}</span>
+              <span style={S.weightUnit}>kg</span>
+              {pg.target_weight_kg && (
+                <span style={S.weightTarget}>→ {pg.target_weight_kg}</span>
+              )}
+            </>
+          ) : (
+            <span style={{ fontSize: 12, color: '#9ca3af' }}>Pas de mesure</span>
+          )}
+        </Link>
+
+        {/* ═══ MACROS — large right ═══ */}
+        <div style={{ ...S.cell, gridColumn: '2 / -1' }}>
+          <div style={S.cellHeader}>
+            <span style={S.cellLabel}><BarChart3 size={14} /> Nutrition</span>
+            <PersonSelector selected={person} onChange={setPerson} />
+          </div>
+
+          {pg.target_calories ? (
+            <div style={{ marginTop: 4 }}>
+              <NutritionBar label="kcal" value={pn.kcal} target={pg.target_calories} color="#16a34a" />
+              <NutritionBar label="Prot" value={pn.protein_g} target={pg.target_protein_g} unit="g" color="#3b82f6" />
+              <NutritionBar label="Gluc" value={pn.carbs_g} target={pg.target_carbs_g} unit="g" color="#f59e0b" />
+              <NutritionBar label="Lip" value={pn.fat_g} target={pg.target_fat_g} unit="g" color="#ef4444" />
+            </div>
+          ) : (
+            <Link href="/nutrition/onboarding" style={{ ...S.emptyBtn, marginTop: 12 }}>
+              <Settings size={14} /> Configurer
+            </Link>
+          )}
+        </div>
+
+        {/* ═══ QUICK NAV — 4 cols at bottom ═══ */}
+        <Link href="/planning/assistant" style={{ ...S.cell, ...S.navCell }}>
+          <Sparkles size={18} color="#16a34a" />
+          <span>Myko</span>
+        </Link>
+        <Link href="/pantry" style={{ ...S.cell, ...S.navCell }}>
+          <Package size={18} color="#6b9d6b" />
+          <span>Stock</span>
+        </Link>
+        <Link href="/planning" style={{ ...S.cell, ...S.navCell }}>
+          <CalendarDays size={18} color="#3b82f6" />
+          <span>Planning</span>
+        </Link>
+        <Link href="/nutrition" style={{ ...S.cell, ...S.navCell }}>
+          <BarChart3 size={18} color="#f59e0b" />
+          <span>Nutrition</span>
+        </Link>
       </div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '.5rem',
-          padding: '.4rem .8rem',
-          background: 'rgba(255,255,255,0.7)',
-          border: '1px solid rgba(0,0,0,0.06)',
-          borderRadius: 'var(--radius-full)',
-          color: status.color,
-          fontWeight: 600,
-          fontSize: '.9rem',
-        }}
-      >
-        <span>{status.icon}</span>
-        <span>{status.label}</span>
-      </div>
+
+      {/* Modals */}
+      {showAddForm && <SmartAddForm open onClose={() => { setShowAddForm(false); loadStock() }} onLotCreated={() => { setShowAddForm(false); loadStock() }} />}
+      {showOcr && <OcrReviewList onClose={() => setShowOcr(false)} onItemsAdded={() => { setShowOcr(false); loadStock() }} />}
     </div>
-  );
+  )
 }
 
-/* Convertit une var CSS en valeur RGBA lisible quand utilisée inline */
-function getComputedStyleColor(cssVar) {
-  if (typeof window === 'undefined') return 'currentColor';
-  try {
-    const name = cssVar.replace('var(', '').replace(')', '').trim();
-    const val = getComputedStyle(document.documentElement).getPropertyValue(name);
-    return val || cssVar;
-  } catch {
-    return cssVar;
-  }
+/* ───── Styles ───── */
+
+const glass = {
+  background: 'rgba(255,255,255,0.6)',
+  backdropFilter: 'blur(12px) saturate(120%)',
+  WebkitBackdropFilter: 'blur(12px) saturate(120%)',
+  border: '1px solid rgba(255,255,255,0.35)',
+  boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
 }
 
-/* ----------------- Hero ----------------- */
-function HeroSection({ user }) {
-  const [timeOfDay, setTimeOfDay] = useState('');
-  useEffect(() => {
-    const hour = new Date().getHours();
-    if (hour < 12) setTimeOfDay('Bonjour');
-    else if (hour < 18) setTimeOfDay('Bon après-midi');
-    else setTimeOfDay('Bonsoir');
-  }, []);
+const S = {
+  page: {
+    padding: '12px',
+    maxWidth: 640,
+    margin: '0 auto',
+    paddingBottom: 40,
+  },
+  bento: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: 10,
+  },
 
-  // Hero en “verre” pour une lisibilité parfaite sur le papier peint
-  return (
-    <section
-      className="glass-card"
-      style={{
-        ...glassBase,
-        borderRadius: 'var(--radius-xl)',
-        padding: '2rem',
-        marginBottom: '2rem',
-      }}
-    >
-      <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.2rem)', marginBottom: '.5rem' }}>
-        {timeOfDay}{user ? `, ${user.email?.split('@')[0]}` : ''} 🌿
-      </h1>
-      <p style={{ fontSize: '1.1rem', color: 'var(--earth-700)', marginBottom: user ? '0' : '1.25rem', maxWidth: 700 }}>
-        Bienvenue dans <strong>Myko</strong>, votre réseau mycorhizien qui connecte
-        <span style={{ color: 'var(--forest-600)', fontWeight: 600 }}> garde-manger</span>,
-        <span style={{ color: 'var(--autumn-orange)', fontWeight: 600 }}> recettes</span> et
-        <span style={{ color: 'var(--earth-700)', fontWeight: 600 }}> potager</span>.
-      </p>
+  // Base cell
+  cell: {
+    ...glass,
+    borderRadius: 20,
+    padding: 16,
+    overflow: 'hidden',
+    position: 'relative',
+  },
 
-      {!user && (
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <Link href="/login" className="btn primary" style={{ fontSize: '1.05rem', padding: '.7rem 1.6rem' }}>
-            Se connecter
-          </Link>
-          <Link href="/recipes" className="btn secondary" style={{ fontSize: '1.05rem', padding: '.7rem 1.6rem' }}>
-            Explorer les recettes
-          </Link>
-        </div>
-      )}
-    </section>
-  );
-}
+  // Hero
+  hero: {
+    background: 'linear-gradient(135deg, rgba(22,163,74,0.08), rgba(5,150,105,0.04))',
+    padding: '28px 20px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    gap: 16,
+    minHeight: 120,
+  },
+  heroGreeting: {
+    fontSize: 13,
+    color: '#6b9d6b',
+    fontWeight: 500,
+    margin: '0 0 4px',
+    letterSpacing: 0.5,
+  },
+  heroTitle: {
+    fontFamily: "'Crimson Text', Georgia, serif",
+    fontSize: 28,
+    fontWeight: 600,
+    color: 'var(--ink, #1f281f)',
+    margin: 0,
+    lineHeight: 1.2,
+  },
+  heroCta: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 6,
+    padding: '10px 18px',
+    background: 'linear-gradient(135deg, #16a34a, #059669)',
+    color: 'white',
+    borderRadius: 16,
+    fontSize: 14,
+    fontWeight: 600,
+    textDecoration: 'none',
+    boxShadow: '0 4px 14px rgba(22,163,74,0.3)',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
+  },
 
-/* ----------------- Page ----------------- */
-export default function HomePage() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState({
-    lots: [],
-    recipes: [],
-    tasks: [],
-    plantings: [],
-    harvests: [],
-  });
+  // Cell header
+  cellHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  cellLabel: {
+    fontSize: 11,
+    fontWeight: 700,
+    color: '#6b7280',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    display: 'flex',
+    alignItems: 'center',
+    gap: 5,
+  },
+  cellLink: {
+    fontSize: 11,
+    color: '#16a34a',
+    textDecoration: 'none',
+    fontWeight: 600,
+    display: 'flex',
+    alignItems: 'center',
+    gap: 2,
+  },
 
-  /* Auth */
-  useEffect(() => {
-    let mounted = true;
-    supabase.auth.getSession().then(({ data }) => {
-      if (mounted) setUser(data?.session?.user || null);
-    });
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (mounted) setUser(session?.user || null);
-    });
-    return () => {
-      mounted = false;
-      sub?.subscription?.unsubscribe();
-    };
-  }, []);
+  // Stock big number
+  bigNumber: {
+    fontSize: 40,
+    fontWeight: 700,
+    color: 'var(--ink, #1f281f)',
+    lineHeight: 1,
+    marginTop: 4,
+  },
+  bigLabel: {
+    fontSize: 12,
+    color: '#9ca3af',
+    margin: '2px 0 8px',
+  },
+  alertPill: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 6,
+    fontSize: 11,
+    fontWeight: 600,
+    padding: '4px 8px',
+    background: 'rgba(245,158,11,0.08)',
+    borderRadius: 8,
+    marginBottom: 8,
+  },
+  urgentList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 3,
+    marginTop: 8,
+    borderTop: '1px solid rgba(0,0,0,0.04)',
+    paddingTop: 8,
+  },
+  urgentRow: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontSize: 11,
+  },
+  urgentName: {
+    color: '#374151',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    maxWidth: '70%',
+  },
+  urgentBadge: {
+    fontWeight: 700,
+    fontSize: 10,
+  },
 
-  /* Data */
-  useEffect(() => {
-    if (!user) {
-      setLoading(false);
-      return;
-    }
-    async function loadData() {
-      try {
-        const today = todayISO();
-        const [lotsRes, recipesRes, tasksRes, plantingsRes, harvestsRes] = await Promise.all([
-          supabase
-            .from('inventory_lots')
-            .select('*, product:products_catalog(name), location:locations(name)')
-            .order('dlc', { ascending: true })
-            .limit(20),
-          supabase.from('recipes').select('*').limit(10),
-          supabase
-            .from('care_tasks')
-            .select('*, planting:plantings(*, variety:plant_varieties(*))')
-            .is('done_at', null)
-            .lte('due_date', today)
-            .limit(10),
-          supabase
-            .from('plantings')
-            .select('*, variety:plant_varieties(*), bed:garden_beds(name)')
-            .eq('status', 'en_cours')
-            .limit(10),
-          supabase
-            .from('harvests')
-            .select('*, planting:plantings(variety:plant_varieties(*))')
-            .order('date', { ascending: false })
-            .limit(5),
-        ]);
+  // Action cells (Ajouter / Scanner)
+  actionCell: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+    transition: 'transform 0.15s, box-shadow 0.15s',
+    gridColumn: 'span 1',
+  },
+  actionLabel: {
+    fontSize: 11,
+    fontWeight: 600,
+    color: '#6b7280',
+  },
 
-        setData({
-          lots: lotsRes.data || [],
-          recipes: recipesRes.data || [],
-          tasks: tasksRes.data || [],
-          plantings: plantingsRes.data || [],
-          harvests: harvestsRes.data || [],
-        });
-      } catch (error) {
-        console.error('Error loading data:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadData();
-  }, [user]);
+  // Weight cell
+  weightCell: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 2,
+    gridColumn: 'span 1',
+  },
+  weightValue: {
+    fontSize: 28,
+    fontWeight: 700,
+    color: 'var(--ink, #1f281f)',
+    lineHeight: 1,
+  },
+  weightUnit: {
+    fontSize: 13,
+    color: '#9ca3af',
+    fontWeight: 500,
+  },
+  weightTarget: {
+    fontSize: 11,
+    color: '#16a34a',
+    fontWeight: 600,
+    marginTop: 2,
+  },
 
-  /* Stats */
-  const stats = useMemo(() => {
-    const expired = data.lots.filter(l => daysUntil(l.dlc) < 0).length;
-    const expiring = data.lots.filter(l => {
-      const d = daysUntil(l.dlc);
-      return d !== null && d >= 0 && d <= 7;
-    }).length;
-    const totalLots = data.lots.length;
-    const activePlants = data.plantings.length;
-    const pendingTasks = data.tasks.length;
-    const totalRecipes = data.recipes.length;
-    return { expired, expiring, totalLots, activePlants, pendingTasks, totalRecipes };
-  }, [data]);
+  // Nav cells
+  navCell: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+    padding: '14px 8px',
+    textDecoration: 'none',
+    color: 'var(--ink, #1f281f)',
+    fontSize: 11,
+    fontWeight: 600,
+    gridColumn: 'span 1',
+    transition: 'transform 0.15s',
+  },
 
-  const urgentItems = useMemo(() => {
-    return data.lots
-      .filter(l => {
-        const d = daysUntil(l.dlc);
-        return d !== null && d <= 3;
-      })
-      .slice(0, 5);
-  }, [data.lots]);
-
-  return (
-    <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-      {/* HERO (verre) */}
-      <HeroSection user={user} />
-
-      {/* Stats Dashboard (verre) */}
-      {user && !loading && (
-        <section style={{ marginBottom: '2rem' }}>
-          <h2 style={{ marginBottom: '1rem' }}>📊 Vue d'ensemble</h2>
-          <div className="grid cols-4">
-            <StatCard icon="🏺" value={stats.totalLots} label="Lots en stock" color="var(--forest-600)" trend={5} />
-            <StatCard icon="⚠️" value={stats.expiring} label="À consommer" color="var(--autumn-orange)" trend={-10} />
-            <StatCard icon="🌱" value={stats.activePlants} label="Plantations actives" color="var(--earth-700)" trend={15} />
-            <StatCard icon="📖" value={stats.totalRecipes} label="Recettes disponibles" color="var(--mushroom)" />
-          </div>
-        </section>
-      )}
-
-      {/* Actions rapides (verre) */}
-      <section style={{ marginBottom: '2rem' }}>
-        <h2 style={{ marginBottom: '1rem' }}>⚡ Actions rapides</h2>
-        <div className="grid cols-4">
-          <QuickActionCard icon="➕" title="Ajouter un lot" description="Nouveau produit" href="/pantry" color="var(--forest-500)" />
-          <QuickActionCard icon="🥘" title="Cuisiner" description="Lancer une recette" href="/recipes" color="var(--autumn-orange)" />
-          <QuickActionCard icon="🌱" title="Planter" description="Nouveau semis" href="/garden" color="var(--earth-600)" />
-          <QuickActionCard icon="📅" title="Planning" description="Voir les tâches" href="/planning" color="var(--mushroom)" />
-        </div>
-      </section>
-
-      {/* Alertes (verre) */}
-      {user && urgentItems.length > 0 && (
-        <section style={{ marginBottom: '2rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-            <h2 style={{ margin: 0 }}>🔔 Produits à consommer rapidement</h2>
-            <Link href="/pantry" className="btn secondary small">Voir tout →</Link>
-          </div>
-          <div className="grid cols-2">
-            {urgentItems.map(item => (
-              <AlertCard key={item.id} item={item} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Section réseau mycorhizien (verre, lisible) */}
-      <section
-        className="glass-card"
-        style={{
-          ...glassBase,
-          borderRadius: 'var(--radius-xl)',
-          padding: '2rem',
-          marginBottom: '2rem',
-          textAlign: 'center',
-        }}
-      >
-        <h2 style={{ marginBottom: '.75rem' }}>🍄 Le Réseau Mycorhizien</h2>
-        <p style={{ maxWidth: 700, margin: '0 auto 1.25rem', color: 'var(--earth-700)' }}>
-          Comme les champignons connectent les arbres dans la forêt, Myko relie vos aliments,
-          recettes et cultures pour créer un écosystème alimentaire harmonieux et durable.
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '2.4rem', marginBottom: '.25rem' }}>🏺</div>
-            <div style={{ fontWeight: 600, color: 'var(--forest-700)' }}>Garde-manger</div>
-            <div style={{ fontSize: '.85rem', color: 'var(--earth-700)' }}>Gérez vos stocks</div>
-          </div>
-          <div style={{ fontSize: '1.6rem', alignSelf: 'center', color: 'var(--mushroom)' }}>↔️</div>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '2.4rem', marginBottom: '.25rem' }}>📖</div>
-            <div style={{ fontWeight: 600, color: 'var(--forest-700)' }}>Recettes</div>
-            <div style={{ fontSize: '.85rem', color: 'var(--earth-700)' }}>Cuisinez malin</div>
-          </div>
-          <div style={{ fontSize: '1.6rem', alignSelf: 'center', color: 'var(--mushroom)' }}>↔️</div>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '2.4rem', marginBottom: '.25rem' }}>🌱</div>
-            <div style={{ fontWeight: 600, color: 'var(--forest-700)' }}>Potager</div>
-            <div style={{ fontSize: '.85rem', color: 'var(--earth-700)' }}>Cultivez local</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Message de bienvenue (verre) */}
-      {!user && (
-        <section
-          className="glass-card"
-          style={{
-            ...glassBase,
-            borderRadius: 'var(--radius-xl)',
-            padding: '2rem',
-            textAlign: 'center',
-          }}
-        >
-          <h2 style={{ marginBottom: '.75rem' }}>🌿 Rejoignez le réseau</h2>
-          <p style={{ maxWidth: 560, margin: '0 auto 1.25rem', color: 'var(--earth-700)' }}>
-            Connectez-vous pour accéder à toutes les fonctionnalités et commencer à gérer
-            votre écosystème alimentaire de manière intelligente et durable.
-          </p>
-          <Link href="/login" className="btn primary" style={{ fontSize: '1.05rem', padding: '.7rem 1.6rem' }}>
-            Commencer maintenant →
-          </Link>
-        </section>
-      )}
-    </div>
-  );
+  // Empty state
+  emptyBtn: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 6,
+    padding: '8px 16px',
+    background: 'rgba(22,163,74,0.08)',
+    color: '#16a34a',
+    borderRadius: 12,
+    fontSize: 13,
+    fontWeight: 600,
+    textDecoration: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+  },
 }
