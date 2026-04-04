@@ -32,3 +32,6 @@ id,import_id,name,timing,ingredients,macros_per_100g,rendement,portions,reheat,i
 79,14,Rougail saucisses,15min / 40min,"800g saucisses créoles, 400g passata, 200g haricots rouges, oignons, ail, épices créoles, riz",145 kcal | 8P | 12G | 7L | 3F,1200g,Julien: 350g — Zoé: 280g,,En gratin avec PDT gratinées et gruyère
 80,14,Curry de pois chiches,25min / 40min,"400g pois chiches, 400ml lait coco, épinards, tomates, épices indiennes, oignons, ail, gingembre",126 kcal | 5P | 15G | 6L | 4F,1000g,Julien: 370g — Zoé: 300g,,En bol avec riz basmati et coriandre fraîche
 81,14,Daube provençale,20min / 50min,"600g bœuf à braiser, carottes, oignons, ail, vin rouge, tomates, herbes de Provence, olives noires",188 kcal | 24P | 8G | 7L | 2F,900g,Julien: 350g — Zoé: 280g,,Servi tel quel avec PDT
+82,15,Poulet basquaise,20min / 55min,"600g poulet, 400g poivrons, 500g passata, 2 oignons, 800g PDT, huile olive",95 kcal | 14P | 8G | 2.5L | 1.2F,1900g,Julien: 350g — Zoé: 280g,,En gratin avec gruyère
+83,15,Bœuf stroganoff,15min / 45min,"500g émincé bœuf, 400g champignons, crème fraîche, oignons, semoule/riz",108 kcal | 15P | 7G | 3.2L | 1F,1700g,Julien: 340g — Zoé: 270g,,Avec riz au lieu de semoule
+84,15,Émincé porc au curry,20min / 50min,"500g émincé porc, lait coco, légumes variés, curry, riz",97 kcal | 14P | 9G | 2.5L | 1.2F,1850g,Julien: 350g — Zoé: 280g,,Même présentation

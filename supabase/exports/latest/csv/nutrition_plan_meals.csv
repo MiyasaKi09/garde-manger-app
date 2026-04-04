@@ -657,6 +657,7 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 1748,14,Zoé,2026-04-09,dejeuner,normal,Bol curry: 260g curry + 120g riz basmati + coriandre,543.0,21.0,82.0,16.0,11.0
 1749,14,Zoé,2026-04-09,diner,normal,Saumon miel-soja: 160g saumon + 180g PDT grenaille + 120g haricots verts,572.0,42.0,46.0,19.0,6.0
 1750,14,Zoé,2026-04-09,collation,normal,2 œufs durs + 1 kiwi (100g),230.0,12.0,10.0,10.0,3.0
+1803,15,Julien,2026-04-04,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
 1751,14,Julien,2026-04-10,dejeuner,normal,Daube provençale: 350g (180g bœuf + carottes + olives + herbes + PDT),658.0,48.0,52.0,24.0,9.0
 1752,14,Julien,2026-04-10,diner,normal,Omelette aux fines herbes: 3 œufs + 220g PDT sautées + 120g mâche + 40g pain,674.0,28.0,56.0,37.0,6.0
 1753,14,Julien,2026-04-10,collation,normal,Option A: 200g skyr + 30g amandes,316.0,31.0,9.0,18.0,4.0
@@ -678,3 +679,51 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 1769,14,Zoé,2026-04-12,dejeuner,weekend,Burger maison: pain 70g + 120g steak + 25g cheddar + frites 150g + salade,578.0,34.0,50.0,23.0,6.0
 1770,14,Zoé,2026-04-12,diner,weekend,Gratin artichauts: 160g artichauts + 60g jambon + béchamel + 20g gruyère + 150g riz,512.0,30.0,59.0,15.0,8.0
 1771,14,Zoé,2026-04-12,collation,weekend,200g skyr + 20g amandes + 1 pomme (150g),331.0,26.0,21.0,11.0,6.0
+1772,15,Julien,2026-03-31,dejeuner,normal,Poulet basquaise: 350g (160g poulet + poivrons + passata + PDT),665.0,48.0,55.0,18.0,8.0
+1773,15,Julien,2026-03-31,diner,normal,Escalope dinde aux asperges: 180g dinde + 240g PDT rôties + 150g asperges,720.0,58.0,48.0,18.0,9.0
+1774,15,Julien,2026-03-31,collation,normal,Option B: 2 œufs durs + 1 pomme (150g) + 20g amandes,281.0,18.0,20.0,14.0,5.0
+1775,15,Julien,2026-03-31,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1776,15,Zoé,2026-03-31,dejeuner,normal,Poulet basquaise: 280g (130g poulet + poivrons + passata + PDT),532.0,38.0,44.0,14.0,6.0
+1777,15,Zoé,2026-03-31,diner,normal,Escalope dinde aux asperges: 140g dinde + 180g PDT rôties + 120g asperges,540.0,44.0,36.0,14.0,7.0
+1778,15,Zoé,2026-03-31,collation,normal,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1779,15,Julien,2026-04-01,dejeuner,normal,Gratin poulet basquaise: 350g poulet + 50g gruyère,695.0,52.0,55.0,22.0,8.0
+1780,15,Julien,2026-04-01,diner,normal,Saumon aux radis sautés: 200g saumon + 200g riz + 120g radis + 80g petits pois,740.0,48.0,72.0,18.0,8.0
+1781,15,Julien,2026-04-01,collation,normal,Option A: 200g skyr + 30g amandes,316.0,28.0,11.0,17.0,4.0
+1782,15,Julien,2026-04-01,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1783,15,Zoé,2026-04-01,dejeuner,normal,Gratin poulet basquaise: 280g poulet + 40g gruyère,556.0,42.0,44.0,18.0,6.0
+1784,15,Zoé,2026-04-01,diner,normal,Saumon aux radis sautés: 150g saumon + 150g riz + 90g radis + 60g petits pois,550.0,36.0,54.0,13.0,6.0
+1785,15,Zoé,2026-04-01,collation,normal,2 œufs durs + 1 fraise (150g),186.0,13.0,12.0,11.0,2.0
+1786,15,Julien,2026-04-02,dejeuner,normal,Bœuf stroganoff: 340g (170g bœuf + champignons + crème + semoule),655.0,52.0,48.0,22.0,7.0
+1787,15,Julien,2026-04-02,diner,normal,Tortilla artichaut: 3 œufs + 180g PDT + 150g artichauts + 30g pain,685.0,35.0,55.0,26.0,12.0
+1788,15,Julien,2026-04-02,collation,normal,Option C: 1 kiwi (100g) + 15g amandes,147.0,4.0,12.0,8.0,4.0
+1789,15,Julien,2026-04-02,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1790,15,Zoé,2026-04-02,dejeuner,normal,Bœuf stroganoff: 270g (135g bœuf + champignons + crème + semoule),520.0,41.0,38.0,17.0,5.0
+1791,15,Zoé,2026-04-02,diner,normal,Tortilla artichaut: 2 œufs + 140g PDT + 120g artichauts + 20g pain,520.0,25.0,42.0,21.0,10.0
+1792,15,Zoé,2026-04-02,collation,normal,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1793,15,Julien,2026-04-03,dejeuner,normal,Bœuf stroganoff riz: 340g (170g bœuf + champignons + crème + 120g riz),675.0,52.0,58.0,22.0,6.0
+1794,15,Julien,2026-04-03,diner,normal,Côte porc moutarde: 180g porc + 220g PDT grenaille + 120g épinards,720.0,50.0,44.0,28.0,8.0
+1795,15,Julien,2026-04-03,collation,normal,Option B: 2 œufs durs + 1 poire (150g) + 20g amandes,298.0,18.0,24.0,14.0,8.0
+1796,15,Julien,2026-04-03,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1797,15,Zoé,2026-04-03,dejeuner,normal,Bœuf stroganoff riz: 270g (135g bœuf + champignons + crème + 90g riz),535.0,41.0,43.0,17.0,4.0
+1798,15,Zoé,2026-04-03,diner,normal,Côte porc moutarde: 140g porc + 170g PDT grenaille + 100g épinards,550.0,38.0,34.0,22.0,6.0
+1799,15,Zoé,2026-04-03,collation,normal,2 œufs durs + 1 poire (150g),167.0,13.0,19.0,11.0,5.0
+1800,15,Julien,2026-04-04,dejeuner,normal,Émincé porc au curry: 350g (160g porc + lait coco + légumes + riz),680.0,48.0,65.0,18.0,8.0
+1801,15,Julien,2026-04-04,diner,normal,Cabillaud aux carottes: 200g cabillaud + 200g riz + 150g carottes nouvelles,695.0,48.0,72.0,12.0,6.0
+1802,15,Julien,2026-04-04,collation,normal,Option A: 200g skyr + 30g amandes,316.0,28.0,11.0,17.0,4.0
+1804,15,Zoé,2026-04-04,dejeuner,normal,Émincé porc au curry: 280g (130g porc + lait coco + légumes + riz),545.0,38.0,52.0,14.0,6.0
+1805,15,Zoé,2026-04-04,diner,normal,Cabillaud aux carottes: 160g cabillaud + 150g riz + 120g carottes nouvelles,520.0,38.0,54.0,9.0,5.0
+1806,15,Zoé,2026-04-04,collation,normal,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1807,15,Julien,2026-04-05,dejeuner,weekend,Émincé porc au curry: 350g (160g porc + lait coco + légumes + riz),680.0,48.0,65.0,18.0,8.0
+1808,15,Julien,2026-04-05,diner,weekend,Croque-monsieur: 2 tranches pain + 60g jambon + 40g gruyère + béchamel + salade verte,720.0,42.0,45.0,35.0,6.0
+1809,15,Julien,2026-04-05,collation,weekend,Option B: 2 œufs durs + 1 orange (180g) + 20g amandes,276.0,18.0,17.0,14.0,5.0
+1810,15,Julien,2026-04-05,pdj,weekend,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1811,15,Zoé,2026-04-05,dejeuner,weekend,Émincé porc au curry: 280g (130g porc + lait coco + légumes + riz),545.0,38.0,52.0,14.0,6.0
+1812,15,Zoé,2026-04-05,diner,weekend,Croque-monsieur: 1.5 tranches pain + 45g jambon + 30g gruyère + béchamel + salade,540.0,32.0,34.0,26.0,4.0
+1813,15,Zoé,2026-04-05,collation,weekend,2 œufs durs + 1 orange (180g),166.0,13.0,15.0,11.0,3.0
+1814,15,Julien,2026-04-06,dejeuner,weekend,Galettes complètes: 2 galettes + 2 œufs + 80g jambon + 60g gruyère + salade,745.0,48.0,52.0,28.0,8.0
+1815,15,Julien,2026-04-06,diner,weekend,Gigot agneau rôti: 180g agneau + 250g PDT rôties + 120g haricots verts,760.0,52.0,50.0,28.0,8.0
+1816,15,Julien,2026-04-06,collation,weekend,30g noix + 1 pomme (150g) + 30g beurre cacahuète + 30g pain,515.0,15.0,35.0,35.0,8.0
+1817,15,Julien,2026-04-06,pdj,weekend,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1818,15,Zoé,2026-04-06,dejeuner,weekend,Galettes complètes: 1.5 galettes + 1 œuf + 60g jambon + 45g gruyère + salade,555.0,35.0,38.0,22.0,6.0
+1819,15,Zoé,2026-04-06,diner,weekend,Gigot agneau rôti: 140g agneau + 190g PDT rôties + 100g haricots verts,575.0,40.0,38.0,21.0,6.0
+1820,15,Zoé,2026-04-06,collation,weekend,200g skyr + 20g amandes + 1 pomme (150g),333.0,26.0,21.0,11.0,5.0

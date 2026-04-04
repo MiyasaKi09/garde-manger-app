@@ -605,3 +605,31 @@ id,import_id,prep_date,prep_label,task,estimated_time
 1070,14,2026-04-12,Dimanche 12/04,"Gratiner: Four 200°C, gratiner 8min jusqu'à doré",8min
 1071,14,2026-04-12,Dimanche 12/04,"[Prep] Cuire œufs: 15 œufs durs 10min eau bouillante, refroidir",15min
 1072,14,2026-04-12,Dimanche 12/04,[Prep] Préparer batch: Choisir recette semaine suivante selon planning,45min
+1073,15,2026-03-31,Lundi 31/03,"PDT rôties: Couper 420g PDT en quartiers, huile d'olive, sel, four 200°C",5min
+1074,15,2026-03-31,Lundi 31/03,"Asperges: Éplucher 270g asperges, cuisson vapeur ou poêle",8min
+1075,15,2026-03-31,Lundi 31/03,"Escalopes: Saisir 320g escalopes dinde à la poêle, sel, poivre",12min
+1076,15,2026-03-31,Lundi 31/03,[Prep] Batch poulet basquaise: Faire revenir 600g poulet + 2 oignons + 400g poivrons + 500g passata + 800g PDT,55min
+1077,15,2026-04-01,Mardi 01/04,Riz: Cuire 350g riz basmati à l'eau salée,3min
+1078,15,2026-04-01,Mardi 01/04,Radis sautés: Faire sauter 210g radis coupés en rondelles à la poêle,8min
+1079,15,2026-04-01,Mardi 01/04,Petits pois: Cuire 140g petits pois surgelés à la poêle,5min
+1080,15,2026-04-01,Mardi 01/04,"Saumon: Cuire 350g pavés saumon à la poêle, sel, poivre",4min
+1081,15,2026-04-02,Mercredi 02/04,PDT cuites: Cuire 320g PDT en dés à l'eau salée,15min
+1082,15,2026-04-02,Mercredi 02/04,Artichauts: Réchauffer 270g cœurs artichauts en conserve,3min
+1083,15,2026-04-02,Mercredi 02/04,"Tortilla: Battre 5 œufs, mélanger PDT + artichauts, cuire à la poêle",7min
+1084,15,2026-04-02,Mercredi 02/04,[Prep] Batch bœuf stroganoff: Faire revenir 500g émincé bœuf + champignons + crème + semoule,30min
+1085,15,2026-04-02,Mercredi 02/04,[Prep] Œufs durs: Cuire 15 œufs durs pour la semaine,15min
+1086,15,2026-04-03,Jeudi 03/04,PDT grenaille: Cuire 390g PDT grenaille à l'eau puis poêler avec herbes,15min
+1087,15,2026-04-03,Jeudi 03/04,Épinards: Faire sauter 220g épinards frais à la poêle,3min
+1088,15,2026-04-03,Jeudi 03/04,"Côtes porc: Cuire 320g côtes porc à la poêle, déglacé moutarde",4min
+1089,15,2026-04-04,Vendredi 04/04,Riz: Cuire 350g riz basmati à l'eau salée,3min
+1090,15,2026-04-04,Vendredi 04/04,Carottes: Cuire 270g carottes nouvelles en rondelles à la poêle,10min
+1091,15,2026-04-04,Vendredi 04/04,"Cabillaud: Cuire 360g filets cabillaud à la poêle, citron",7min
+1092,15,2026-04-04,Vendredi 04/04,[Prep] Batch émincé porc curry: Faire revenir 500g émincé porc + curry + lait coco + légumes + riz,50min
+1093,15,2026-04-05,Samedi 05/04,Béchamel: Préparer béchamel avec 30g beurre + farine + lait,5min
+1094,15,2026-04-05,Samedi 05/04,"Montage: Tartiner pain, jambon, gruyère, béchamel dessus",5min
+1095,15,2026-04-05,Samedi 05/04,Cuisson: Gratiner au four 200°C jusqu'à doré,5min
+1096,15,2026-04-06,Dimanche 06/04,"PDT rôties: Couper 440g PDT en quartiers, huile, herbes, four 200°C",5min
+1097,15,2026-04-06,Dimanche 06/04,Haricots verts: Cuire 220g haricots verts à la vapeur,8min
+1098,15,2026-04-06,Dimanche 06/04,"Gigot: Saisir 320g tranches gigot à la poêle, ail, romarin",12min
+1099,15,2026-04-06,Dimanche 06/04,[Prep] Cuire œufs durs: Préparer 15 œufs durs pour la semaine,15min
+1100,15,2026-04-06,Dimanche 06/04,[Prep] Batch lundi: Préparer batch pour lundi-mardi,45min
