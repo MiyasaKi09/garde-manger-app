@@ -39,6 +39,7 @@ export default function MinimalistHeader() {
     { href: '/', label: 'Accueil' },
     { href: '/pantry', label: 'Stock' },
     { href: '/planning', label: 'Planning' },
+    { href: '/courses', label: 'Courses' },
     { href: '/nutrition', label: 'Nutrition' },
   ]), []);
 

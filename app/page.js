@@ -10,7 +10,7 @@ import PersonSelector from '@/components/ui/PersonSelector'
 import TodayMeals from './planning/components/TodayMeals'
 import OcrReviewList from './pantry/components/OcrReviewList'
 import SmartAddForm from './pantry/components/SmartAddForm'
-import { Sparkles, Package, Camera, Plus, AlertTriangle, Scale, ChevronRight, Settings, CalendarDays, BarChart3 } from 'lucide-react'
+import { Sparkles, Package, Camera, Plus, AlertTriangle, Scale, ChevronRight, Settings, CalendarDays, BarChart3, ShoppingCart, Check } from 'lucide-react'
 
 const daysUntil = (d) => d ? Math.ceil((new Date(d) - new Date()) / 86400000) : null
 
@@ -26,6 +26,7 @@ export default function Home() {
   const [latestWeight, setLatestWeight] = useState(null)
   const [showAddForm, setShowAddForm] = useState(false)
   const [showOcr, setShowOcr] = useState(false)
+  const [shoppingStats, setShoppingStats] = useState({ total: 0, checked: 0, uncheckedByCategory: [] })
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -37,7 +38,7 @@ export default function Home() {
 
   async function loadAll() {
     setLoading(true)
-    await Promise.all([loadPlan(), loadStock(), loadNutrition(), loadGoals(), loadWeight()])
+    await Promise.all([loadPlan(), loadStock(), loadNutrition(), loadGoals(), loadWeight(), loadShopping()])
     setLoading(false)
   }
 
@@ -91,6 +92,31 @@ export default function Home() {
 
   async function loadWeight() {
     try { const r = await authFetch('/api/nutrition/weight?limit=1'); const d = await r.json(); if (d.entries?.length) setLatestWeight(d.entries[0]) } catch {}
+  }
+
+  async function loadShopping() {
+    try {
+      const r = await authFetch('/api/planning/imports')
+      const d = await r.json()
+      if (!d.imports?.length) return
+      const r2 = await authFetch(`/api/planning/imports/${d.imports[0].id}`)
+      const d2 = await r2.json()
+      const items = d2.shoppingItems || []
+      if (!items.length) return
+      const checked = items.filter(i => i.checked).length
+      // Top unchecked categories
+      const byCat = {}
+      for (const it of items) {
+        if (it.checked) continue
+        const c = it.category || 'Autres'
+        byCat[c] = (byCat[c] || 0) + 1
+      }
+      const uncheckedByCategory = Object.entries(byCat)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 4)
+        .map(([name, count]) => ({ name, count }))
+      setShoppingStats({ total: items.length, checked, uncheckedByCategory })
+    } catch {}
   }
 
   const pg = goals.find(g => g.person_name === person) || {}
@@ -185,6 +211,41 @@ export default function Home() {
           <span style={S.actionLabel}>Scanner</span>
         </button>
 
+        {/* ═══ COURSES — full width ═══ */}
+        <Link href="/courses" style={{ ...S.cell, gridColumn: '1 / -1', textDecoration: 'none', color: 'inherit' }}>
+          <div style={S.cellHeader}>
+            <span style={S.cellLabel}><ShoppingCart size={14} /> Courses</span>
+            {shoppingStats.total > 0 && (
+              <span style={S.cellLink}>
+                {shoppingStats.total - shoppingStats.checked} restants <ChevronRight size={12} />
+              </span>
+            )}
+          </div>
+          {shoppingStats.total > 0 ? (
+            <>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+                <div style={{ flex: 1, height: 6, background: 'rgba(0,0,0,0.06)', borderRadius: 3, overflow: 'hidden' }}>
+                  <div style={{ height: '100%', width: `${(shoppingStats.checked / shoppingStats.total) * 100}%`, background: '#16a34a', borderRadius: 3, transition: 'width 0.3s' }} />
+                </div>
+                <span style={{ fontSize: 12, fontWeight: 700, color: '#16a34a', flexShrink: 0 }}>
+                  {shoppingStats.checked}/{shoppingStats.total}
+                </span>
+              </div>
+              {shoppingStats.uncheckedByCategory.length > 0 && (
+                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                  {shoppingStats.uncheckedByCategory.map(c => (
+                    <span key={c.name} style={S.coursePill}>
+                      {c.name} ({c.count})
+                    </span>
+                  ))}
+                </div>
+              )}
+            </>
+          ) : (
+            <p style={{ color: '#9ca3af', fontSize: 13, margin: '4px 0 0' }}>Pas de liste en cours</p>
+          )}
+        </Link>
+
         {/* ═══ POIDS — small left ═══ */}
         <Link href="/nutrition" style={{ ...S.cell, ...S.weightCell, textDecoration: 'none', color: 'inherit' }}>
           <Scale size={20} color="#6b7280" />
@@ -222,23 +283,29 @@ export default function Home() {
           )}
         </div>
 
-        {/* ═══ QUICK NAV — 4 cols at bottom ═══ */}
-        <Link href="/planning/assistant" style={{ ...S.cell, ...S.navCell }}>
-          <Sparkles size={18} color="#16a34a" />
-          <span>Myko</span>
-        </Link>
-        <Link href="/pantry" style={{ ...S.cell, ...S.navCell }}>
-          <Package size={18} color="#6b9d6b" />
-          <span>Stock</span>
-        </Link>
-        <Link href="/planning" style={{ ...S.cell, ...S.navCell }}>
-          <CalendarDays size={18} color="#3b82f6" />
-          <span>Planning</span>
-        </Link>
-        <Link href="/nutrition" style={{ ...S.cell, ...S.navCell }}>
-          <BarChart3 size={18} color="#f59e0b" />
-          <span>Nutrition</span>
-        </Link>
+        {/* ═══ QUICK NAV — 5 items in sub-grid ═══ */}
+        <div style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 10 }}>
+          <Link href="/planning/assistant" style={{ ...S.cell, ...S.navCell }}>
+            <Sparkles size={18} color="#16a34a" />
+            <span>Myko</span>
+          </Link>
+          <Link href="/pantry" style={{ ...S.cell, ...S.navCell }}>
+            <Package size={18} color="#6b9d6b" />
+            <span>Stock</span>
+          </Link>
+          <Link href="/planning" style={{ ...S.cell, ...S.navCell }}>
+            <CalendarDays size={18} color="#3b82f6" />
+            <span>Planning</span>
+          </Link>
+          <Link href="/courses" style={{ ...S.cell, ...S.navCell }}>
+            <ShoppingCart size={18} color="#f97316" />
+            <span>Courses</span>
+          </Link>
+          <Link href="/nutrition" style={{ ...S.cell, ...S.navCell }}>
+            <BarChart3 size={18} color="#f59e0b" />
+            <span>Nutrition</span>
+          </Link>
+        </div>
       </div>
 
       {/* Modals */}
@@ -455,8 +522,17 @@ const S = {
     color: 'var(--ink, #1f281f)',
     fontSize: 11,
     fontWeight: 600,
-    gridColumn: 'span 1',
     transition: 'transform 0.15s',
+  },
+
+  // Course pills
+  coursePill: {
+    fontSize: 11,
+    fontWeight: 600,
+    color: '#6b7280',
+    background: 'rgba(0,0,0,0.04)',
+    padding: '3px 8px',
+    borderRadius: 6,
   },
 
   // Empty state
