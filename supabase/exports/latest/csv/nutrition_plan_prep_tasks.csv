@@ -574,3 +574,34 @@ id,import_id,prep_date,prep_label,task,estimated_time
 1039,13,2026-04-05,Dimanche 05/04,undefined: undefined,
 1040,13,2026-04-05,Dimanche 05/04,undefined: undefined,
 1041,13,2026-04-05,Dimanche 05/04,undefined: undefined,
+1042,14,2026-04-06,Lundi 06/04,"Préchauffer four et préparer PDT: Four 200°C. Couper 400g PDT en cubes, huile + sel + thym, enfourner",5min
+1043,14,2026-04-06,Lundi 06/04,"Cuire bœuf et oignons: 360g émincé bœuf poêlé 3min/face. Ajouter 2 oignons émincés, cuire 8min",12min
+1044,14,2026-04-06,Lundi 06/04,Cuire asperges: 270g asperges à la vapeur 8min ou poêlées 5min,8min
+1045,14,2026-04-06,Lundi 06/04,[Prep] Préparer base: Faire revenir 1 oignon + 2 gousses ail hachées 5min,10min
+1046,14,2026-04-06,Lundi 06/04,"[Prep] Mijoter: Ajouter 800g saucisses coupées + 400g passata + 200g haricots rouges + épices créoles, mijoter 25min",30min
+1047,14,2026-04-06,Lundi 06/04,[Prep] Conditionner: Répartir en 2 portions avec 150g/120g riz cuit par personne,5min
+1048,14,2026-04-07,Mardi 07/04,"Cuire riz: 360g riz basmati, eau bouillante salée 12min",12min
+1049,14,2026-04-07,Mardi 07/04,"Cuire dinde: 360g escalopes dinde coupées, poêlées 4min/face",8min
+1050,14,2026-04-07,Mardi 07/04,"Champignons et sauce: 330g champignons de Paris poêlés 5min, ajouter 100ml crème fraîche",5min
+1051,14,2026-04-08,Mercredi 08/04,"Cuire riz: 360g riz jasmin, eau bouillante 15min",15min
+1052,14,2026-04-08,Mercredi 08/04,"Caraméliser porc: 330g émincé porc + 30g sucre brun caramélisé + nuoc-mam + sauce soja, cuire 8min",10min
+1053,14,2026-04-08,Mercredi 08/04,Légumes sautés: 220g radis roses + 140g petits pois surgelés sautés 5min,5min
+1054,14,2026-04-08,Mercredi 08/04,"[Prep] Cuire œufs: 15 œufs durs 10min, refroidir à l'eau froide",15min
+1055,14,2026-04-08,Mercredi 08/04,"[Prep] Base curry: Oignon + ail + gingembre + épices (curcuma, coriandre, cumin) 5min",10min
+1056,14,2026-04-08,Mercredi 08/04,"[Prep] Mijoter curry: 400g pois chiches + 400ml lait coco + 200g tomates + épinards, mijoter 15min",15min
+1057,14,2026-04-09,Jeudi 09/04,"Cuire PDT grenaille: 400g PDT grenaille lavées, bouillies 15min puis rissolées 5min",20min
+1058,14,2026-04-09,Jeudi 09/04,"Cuire saumon: 360g pavés saumon + marinade miel-soja-gingembre, grillés 4min/face",8min
+1059,14,2026-04-09,Jeudi 09/04,Haricots verts: 270g haricots verts vapeur 6min ou surgelés poêlés 4min,6min
+1060,14,2026-04-10,Vendredi 10/04,"Cuire PDT sautées: 400g PDT coupées en rondelles, cuites vapeur 10min puis sautées 8min",18min
+1061,14,2026-04-10,Vendredi 10/04,"Omelette: 5 œufs battus + persil/ciboulette/estragon, cuire 3min/face",6min
+1062,14,2026-04-10,Vendredi 10/04,Servir: Mâche assaisonnée + pain complet grillé,2min
+1063,14,2026-04-10,Vendredi 10/04,"[Prep] Préparer viande: 600g bœuf à braiser coupé en cubes, fariné et doré 10min",15min
+1064,14,2026-04-10,Vendredi 10/04,"[Prep] Mijoter daube: Ajouter 300g carottes + oignons + ail + vin rouge + tomates + herbes de Provence + olives, mijoter 30min",35min
+1065,14,2026-04-11,Samedi 11/04,Cuire pâtes: 360g pâtes fraîches ou spaghetti al dente selon paquet,10min
+1066,14,2026-04-11,Samedi 11/04,Lardons et œufs: 140g lardons dorés 5min. Mélanger 3 œufs + 70g parmesan râpé,5min
+1067,14,2026-04-11,Samedi 11/04,Assembler: Mélanger pâtes chaudes + lardons + mélange œufs hors du feu + poivre,3min
+1068,14,2026-04-12,Dimanche 12/04,Cuire riz: 330g riz basmati 12min eau bouillante salée,12min
+1069,14,2026-04-12,Dimanche 12/04,Préparer gratin: 360g cœurs artichauts + 140g jambon + béchamel légère + 45g gruyère,10min
+1070,14,2026-04-12,Dimanche 12/04,"Gratiner: Four 200°C, gratiner 8min jusqu'à doré",8min
+1071,14,2026-04-12,Dimanche 12/04,"[Prep] Cuire œufs: 15 œufs durs 10min eau bouillante, refroidir",15min
+1072,14,2026-04-12,Dimanche 12/04,[Prep] Préparer batch: Choisir recette semaine suivante selon planning,45min

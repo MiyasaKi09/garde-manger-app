@@ -89,6 +89,7 @@ id,import_id,week_label,category,product_name,quantity,checked
 1107,10,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f
 1108,10,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f
 1109,10,S2,🥫 Conserves & épicerie,Miel,11g,f
+1656,14,S1,Fruits,Kiwis,200g,f
 1110,10,S2,🥫 Conserves & épicerie,Gingembre,9g,f
 1111,10,S2,🥫 Conserves & épicerie,Moutarde,15g,f
 1112,10,S2,🥫 Conserves & épicerie,Curry,10g,f
@@ -541,6 +542,7 @@ id,import_id,week_label,category,product_name,quantity,checked
 1559,13,S2,🥬 Légumes de saison,Olives,25g,f
 1560,13,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f
 1561,13,S2,🥬 Légumes de saison,Petits pois,80g,f
+1657,14,S1,Fruits,Oranges,180g,f
 1562,13,S2,🥫 Conserves & épicerie,Passata,470g,f
 1563,13,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f
 1564,13,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f
@@ -607,3 +609,57 @@ id,import_id,week_label,category,product_name,quantity,checked
 1625,13,S3,🍎 Fruits & oléagineux,Poires,320g,f
 1626,13,S3,🍎 Fruits & oléagineux,Clémentines,280g,f
 1627,13,S3,🍎 Fruits & oléagineux,Kiwis,200g,f
+1628,14,S1,Protéines,Skyr nature,2.8kg,f
+1629,14,S1,Protéines,Œufs,30 pièces,f
+1630,14,S1,Protéines,Saucisses créoles,800g,f
+1631,14,S1,Protéines,Bœuf à braiser,960g,f
+1632,14,S1,Protéines,Escalopes de dinde,360g,f
+1633,14,S1,Protéines,Émincé de porc,330g,f
+1634,14,S1,Protéines,Pavés de saumon,360g,f
+1635,14,S1,Protéines,Filets de cabillaud,360g,f
+1636,14,S1,Protéines,Steaks hachés,270g,f
+1637,14,S1,Protéines,Lardons,140g,f
+1638,14,S1,Protéines,Jambon blanc,140g,f
+1639,14,S1,Protéines,Amandes,200g,f
+1640,14,S1,Protéines,Noix,30g,f
+1641,14,S1,Légumes,Asperges vertes,270g,f
+1642,14,S1,Légumes,Radis roses,220g,f
+1643,14,S1,Légumes,Petit pois frais/surgelés,320g,f
+1644,14,S1,Légumes,Artichauts,360g,f
+1645,14,S1,Légumes,Champignons de Paris,330g,f
+1646,14,S1,Légumes,Haricots verts,270g,f
+1647,14,S1,Légumes,Mâche,220g,f
+1648,14,S1,Légumes,Salade verte,1 pièce,f
+1649,14,S1,Légumes,Oignons,1kg,f
+1650,14,S1,Légumes,Ail,2 têtes,f
+1651,14,S1,Légumes,Gingembre,50g,f
+1652,14,S1,Légumes,Pommes de terre,2kg,f
+1653,14,S1,Légumes,Carottes,500g,f
+1654,14,S1,Fruits,Pommes,300g,f
+1655,14,S1,Fruits,Poires,150g,f
+1658,14,S1,Crémerie,Crème fraîche,200ml,f
+1659,14,S1,Crémerie,Lait,500ml,f
+1660,14,S1,Crémerie,Gruyère râpé,100g,f
+1661,14,S1,Crémerie,Parmesan,100g,f
+1662,14,S1,Crémerie,Cheddar,55g,f
+1663,14,S1,Crémerie,Beurre,250g,f
+1664,14,S1,Féculents,Riz basmati,1kg,f
+1665,14,S1,Féculents,Riz jasmin,500g,f
+1666,14,S1,Féculents,Pâtes,560g,f
+1667,14,S1,Féculents,Pain complet,1 pain,f
+1668,14,S1,Féculents,Pain burger,4 pains,f
+1669,14,S1,Conserves,Haricots rouges,2 boîtes 400g,f
+1670,14,S1,Conserves,Pois chiches,2 boîtes 400g,f
+1671,14,S1,Conserves,Passata,800ml,f
+1672,14,S1,Conserves,Lait de coco,400ml,f
+1673,14,S1,Conserves,Tomates concassées,400g,f
+1674,14,S1,Conserves,Olives noires,100g,f
+1675,14,S1,Condiments/Épicerie,Huile d'olive,500ml,f
+1676,14,S1,Condiments/Épicerie,Beurre de cacahuète,30g,f
+1677,14,S1,Condiments/Épicerie,Miel,50g,f
+1678,14,S1,Condiments/Épicerie,Sauce soja,200ml,f
+1679,14,S1,Condiments/Épicerie,Nuoc-mam,100ml,f
+1680,14,S1,Condiments/Épicerie,Épices créoles,mélange,f
+1681,14,S1,Condiments/Épicerie,Curcuma,poudre,f
+1682,14,S1,Condiments/Épicerie,Farine,500g,f
+1683,14,S1,Condiments/Épicerie,Herbes fraîches,"persil, ciboulette",f
