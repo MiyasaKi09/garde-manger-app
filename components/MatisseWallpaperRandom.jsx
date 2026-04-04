@@ -12,9 +12,9 @@ const CONFIG = {
 
   // Tailles (plages)
   sizes: {
-    olive: { min: 80, max: 120 },
-    terra: { min: 70, max: 100 },
-    sable: { min: 90, max: 140 },
+    olive: { min: 80, max: 130 },
+    terra: { min: 70, max: 110 },
+    sable: { min: 90, max: 150 },
   },
 
   // Couverture
@@ -22,40 +22,49 @@ const CONFIG = {
     min: 0.30,
     max: 0.60,
     target: 0.45,
-    checkInterval: 2000, // ms
+    checkInterval: 2000,
   },
 
   initialCount: 10,
   minCells: 8,
   maxCells: 25,
 
-  // Physique organique (toutes les constantes nécessaires)
+  // Physique organique — vivante, type lampe à lave
   physics: {
-    baseSpeed: 0.8,
-    maxSpeed: 1.5,
+    baseSpeed: 2.0,
+    maxSpeed: 3.5,
 
-    // amortissements
-    deceleration: 0.98,
-    rotationDamping: 0.98,
+    deceleration: 0.97,
+    rotationDamping: 0.97,
 
-    // accélérations / forces
-    acceleration: 0.015,
-    wanderRadius: 120,
-    wanderStrength: 0.8,
-    rotationMaxSpeed: 0.03,
-    rotationAcceleration: 0.04,
-    repulsionSoftness: 6.0,
-    attractionForce: 2.0,
+    acceleration: 0.02,
+    wanderRadius: 200,
+    wanderStrength: 1.5,
+    rotationMaxSpeed: 0.04,
+    rotationAcceleration: 0.05,
+    repulsionSoftness: 5.0,
+    attractionForce: 5.0,
+
+    // Fission (séparation des gros blobs)
+    fissionThreshold: 2.2, // se scinde si size > baseSize * ce ratio
+    fissionSpeed: 0.01,
   },
 
   // Animation
   animation: {
     fps: 30,
-    breathingSpeed: 0.0008,
-    morphSmoothness: 0.015,
-    tensionRelaxation: 0.02,
-    pointCount: 12,
-  }
+    breathingSpeed: 0.002,
+    morphSmoothness: 0.04,
+    tensionRelaxation: 0.03,
+    pointCount: 16,
+  },
+
+  // Filtre gooey — fort pour fusion organique realiste
+  gooey: {
+    blur: 18,
+    matrixThreshold: 30,
+    matrixOffset: -12,
+  },
 };
 
 /* ================= UTILS ================= */
@@ -135,10 +144,10 @@ class OrganicCell {
     this.rotationSpeed = 0;
     this.targetRotationSpeed = (rnd() - 0.5) * 0.02;
 
-    // Respiration
+    // Respiration — plus ample, plus vivante
     this.breathPhase = rnd() * Math.PI * 2;
-    this.breathRate = 0.5 + rnd() * 0.5;
-    this.breathAmplitude = 0.03 + rnd() * 0.02;
+    this.breathRate = 0.6 + rnd() * 0.6;
+    this.breathAmplitude = 0.06 + rnd() * 0.04;
 
     // Apparition
     this.scale = fromEdge ? 0.1 : 1;
@@ -258,11 +267,21 @@ class OrganicCell {
       this.ay += (wanderDy / wanderDist) * wanderForce;
     }
 
-    // Bruit organique léger
-    const noiseX = noise2D(this.x * 0.005, this.age * 0.00005, 0) * 0.2;
-    const noiseY = noise2D(this.y * 0.005, this.age * 0.00005, 100) * 0.2;
+    // Bruit organique + courants de convection (lampe à lave)
+    const noiseX = noise2D(this.x * 0.003, this.age * 0.00008, 0) * 0.5;
+    const noiseY = noise2D(this.y * 0.003, this.age * 0.00008, 100) * 0.5;
     this.ax += noiseX;
     this.ay += noiseY;
+
+    // Convection : les cellules en haut redescendent, celles en bas remontent
+    if (this.bounds) {
+      const normalizedY = this.y / this.bounds.height; // 0=haut, 1=bas
+      const convectionForce = (0.5 - normalizedY) * 0.3; // pousse vers le milieu
+      this.ay += convectionForce;
+      // Légère dérive sinusoidale horizontale
+      const drift = Math.sin(this.age * 0.0001 + this.x * 0.005) * 0.15;
+      this.ax += drift;
+    }
 
     // === INTERACTIONS ===
     if (Array.isArray(allCells)) {
@@ -348,43 +367,61 @@ class OrganicCell {
       this.skew *= 0.99;
     }
 
-    // Animation des points (irrégularité)
+    // Animation des points — ondulations vivantes le long du contour
     for (let i = 0; i < this.points.length; i++) {
       const point = this.points[i];
       const velocity = this.pointVelocities[i];
-      const wavePhase = this.age * 0.001 + i * 0.5;
-      const wave = Math.sin(wavePhase) * 0.05;
-      const movementInfluence = realSpeed * 0.02;
 
-      point.targetR = point.baseR * (1 + breathing + wave) + (this.rnd() - 0.5) * 0.05 * (1 + movementInfluence);
-      point.targetA = (this.rnd() - 0.5) * 0.2 * (1 + movementInfluence);
+      // Vagues multiples qui se propagent le long du contour
+      const wave1 = Math.sin(this.age * 0.0015 + i * 0.8) * 0.08;
+      const wave2 = Math.sin(this.age * 0.0008 + i * 1.3 + 2.0) * 0.05;
+      const wave3 = Math.sin(this.age * 0.003 + i * 0.4) * 0.03;
+      const wave = wave1 + wave2 + wave3;
 
-      velocity.r += (point.targetR - point.r) * 0.008;
-      velocity.a += (point.targetA - point.a) * 0.008;
-      velocity.r *= 0.92;
-      velocity.a *= 0.92;
+      const movementInfluence = realSpeed * 0.04;
+      const turbulence = (this.rnd() - 0.5) * 0.06 * (1 + movementInfluence);
+
+      point.targetR = point.baseR * (1 + breathing + wave) + turbulence;
+      point.targetA = (this.rnd() - 0.5) * 0.25 * (1 + movementInfluence);
+
+      // Spring physics pour un mouvement fluide
+      velocity.r += (point.targetR - point.r) * 0.015;
+      velocity.a += (point.targetA - point.a) * 0.012;
+      velocity.r *= 0.90;
+      velocity.a *= 0.90;
 
       point.r += velocity.r;
       point.a += velocity.a;
 
-      point.r = Math.max(0.3, Math.min(1.7, point.r));
-      point.a = Math.max(-0.5, Math.min(0.5, point.a));
+      point.r = Math.max(0.3, Math.min(1.8, point.r));
+      point.a = Math.max(-0.6, Math.min(0.6, point.a));
     }
 
-    // Fusion
+    // Fusion — pont progressif entre les deux cellules
     if (this.isFusing && this.fusionPartner) {
-      this.fusionProgress += dt * 2;
+      this.fusionProgress += dt * 1.2; // plus lent, plus realiste
       if (this.fusionProgress >= 1) {
         this.completeFusion();
       } else {
         const t = smoothstep(this.fusionProgress);
         const dx = this.fusionPartner.x - this.x;
         const dy = this.fusionPartner.y - this.y;
-        this.vx += dx * t * 0.1;
-        this.vy += dy * t * 0.1;
-        this.stretchX = 1 + dx * 0.001 * t;
-        this.stretchY = 1 + dy * 0.001 * t;
+        // S'attirent lentement avec etirement
+        this.vx += dx * t * 0.08;
+        this.vy += dy * t * 0.08;
+        // Etirement directionnel (pont entre les deux)
+        const dist = Math.hypot(dx, dy);
+        if (dist > 1) {
+          const angle = Math.atan2(dy, dx);
+          this.stretchX = 1 + Math.cos(angle) * 0.15 * t;
+          this.stretchY = 1 + Math.sin(angle) * 0.15 * t;
+        }
       }
+    }
+
+    // Fission — les gros blobs se scindent en 2 (lampe à lave)
+    if (!this.isFusing && this.size > this.baseSize * CONFIG.physics.fissionThreshold) {
+      this.fissionReady = true;
     }
 
     // Mort hors limites
@@ -524,21 +561,29 @@ export default function MatisseWallpaper() {
     const bounds = { width: docW, height: docH };
     const newCells = [];
     const colors = ['olive', 'terra', 'sable'];
-    const cols = 4, rows = 3;
-    const cellWidth = docW / cols;
-    const cellHeight = docH / rows;
+    const margin = 80;
+
+    // Placement pseudo-aleatoire avec Poisson disc sampling simplifie
+    // (evite les chevauchements tout en etant organique)
+    const placed = [];
     for (let i = 0; i < CONFIG.initialCount; i++) {
-      const row = Math.floor(i / cols);
-      const col = i % cols;
       const color = colors[i % colors.length];
       const { min, max } = CONFIG.sizes[color];
       const size = min + rnd() * (max - min);
-      const x = (col + 0.5) * cellWidth + (rnd() - 0.5) * cellWidth * 0.4;
-      const y = (row + 0.5) * cellHeight + (rnd() - 0.5) * cellHeight * 0.4;
+
+      let x, y, attempts = 0;
+      do {
+        x = margin + rnd() * (docW - margin * 2);
+        y = margin + rnd() * (docH - margin * 2);
+        attempts++;
+      } while (
+        attempts < 30 &&
+        placed.some(p => Math.hypot(p.x - x, p.y - y) < (p.size + size) * 0.8)
+      );
+
+      placed.push({ x, y, size });
       newCells.push(new OrganicCell({
-        x: Math.max(100, Math.min(docW - 100, x)),
-        y: Math.max(100, Math.min(docH - 100, y)),
-        color, size, rnd,
+        x, y, color, size, rnd,
         id: `cell_${Date.now()}_${i}`,
         bounds, fromEdge: false
       }));
@@ -590,6 +635,39 @@ export default function MatisseWallpaper() {
             }
           }
           newCells = newCells.filter((_, idx) => !toRemove.has(idx));
+
+          // fission — gros blobs se scindent en 2
+          const toAdd = [];
+          for (const cell of newCells) {
+            if (cell.fissionReady && newCells.length < CONFIG.maxCells) {
+              cell.fissionReady = false;
+              const area = Math.PI * cell.size * cell.size;
+              const newSize = Math.sqrt(area / 2 / Math.PI);
+              cell.size = newSize;
+              // Ejecter la nouvelle cellule dans une direction aleatoire
+              const angle = cell.rnd() * Math.PI * 2;
+              const ejectDist = newSize * 1.5;
+              const child = new OrganicCell({
+                x: cell.x + Math.cos(angle) * ejectDist,
+                y: cell.y + Math.sin(angle) * ejectDist,
+                color: cell.color,
+                size: newSize,
+                rnd: cell.rnd,
+                id: `cell_${Date.now()}_fiss_${Math.random()}`,
+                bounds,
+                fromEdge: false,
+              });
+              child.vx = Math.cos(angle) * 3;
+              child.vy = Math.sin(angle) * 3;
+              child.scale = 0.6;
+              child.opacity = 0.8;
+              toAdd.push(child);
+              // Pousser le parent dans l'autre direction
+              cell.vx -= Math.cos(angle) * 3;
+              cell.vy -= Math.sin(angle) * 3;
+            }
+          }
+          newCells.push(...toAdd);
 
           // couverture (toutes les X ms simulées)
           coverageCheckRef.current += frameInterval;
@@ -665,11 +743,11 @@ export default function MatisseWallpaper() {
       >
         <defs>
           <filter id="organic" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation={CONFIG.gooey.blur} result="blur" />
             <feColorMatrix
               in="blur"
               type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              values={`1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${CONFIG.gooey.matrixThreshold} ${CONFIG.gooey.matrixOffset}`}
               result="goo"
             />
             <feComposite in="SourceGraphic" in2="goo" operator="atop" />
