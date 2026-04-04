@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { Upload, FileSpreadsheet, Trash2, Calendar, ChevronRight } from 'lucide-react'
+import { Upload, FileSpreadsheet, Trash2, Calendar, ChevronRight, Sparkles } from 'lucide-react'
+import WeeklyPlanView from './components/WeeklyPlanView'
 
 export default function PlanningPage() {
   const router = useRouter()
@@ -65,6 +66,9 @@ export default function PlanningPage() {
     )
   }
 
+  // Most recent import for weekly view
+  const latestImport = imports[0] || null
+
   return (
     <>
       <div className="planning-container">
@@ -72,23 +76,40 @@ export default function PlanningPage() {
           <div className="header-content">
             <div className="header-title">
               <h1>Planning nutritionnel</h1>
-              <p>Importez et consultez vos plans repas</p>
+              <p>Planifiez vos repas avec l'IA ou importez un fichier</p>
             </div>
-            <button className="import-button" onClick={() => router.push('/planning/import')}>
-              <Upload size={18} />
-              Importer un plan .xlsx
-            </button>
+            <div className="header-actions">
+              <button className="ai-button" onClick={() => router.push('/planning/assistant')}>
+                <Sparkles size={18} />
+                Demander à Myko
+              </button>
+              <button className="import-button" onClick={() => router.push('/planning/import')}>
+                <Upload size={18} />
+                Importer .xlsx
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Current week view */}
+        {latestImport && (
+          <div style={{ marginBottom: 24 }}>
+            <h2 className="section-title">Semaine en cours</h2>
+            <WeeklyPlanView importId={latestImport.id} />
+          </div>
+        )}
+
+        {/* Imports list */}
+        <h2 className="section-title">Plans importés</h2>
 
         {imports.length === 0 ? (
           <div className="empty-state">
             <FileSpreadsheet size={64} color="#d1d5db" />
-            <h3>Aucun plan importe</h3>
-            <p>Importez votre premier fichier .xlsx pour commencer</p>
-            <button className="import-button-lg" onClick={() => router.push('/planning/import')}>
-              <Upload size={20} />
-              Importer un plan
+            <h3>Aucun plan encore</h3>
+            <p>Demande à Myko de créer un planning ou importe un fichier .xlsx</p>
+            <button className="ai-button-lg" onClick={() => router.push('/planning/assistant')}>
+              <Sparkles size={20} />
+              Créer un planning avec l'IA
             </button>
           </div>
         ) : (
@@ -111,7 +132,7 @@ export default function PlanningPage() {
                     }
                   </div>
                   <div className="import-date">
-                    Importe le {new Date(imp.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
+                    Importé le {new Date(imp.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
                   </div>
                 </div>
                 <div className="import-actions">
@@ -168,14 +189,38 @@ export default function PlanningPage() {
           font-size: 14px;
         }
 
+        .header-actions {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+
+        .ai-button {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 20px;
+          background: linear-gradient(135deg, #16a34a, #059669);
+          color: white;
+          border: none;
+          border-radius: 10px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+          box-shadow: 0 2px 8px rgba(22,163,74,0.3);
+        }
+
+        .ai-button:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(22,163,74,0.4); }
+
         .import-button {
           display: flex;
           align-items: center;
           gap: 8px;
           padding: 10px 20px;
-          background: #16a34a;
-          color: white;
-          border: none;
+          background: rgba(255,255,255,0.6);
+          color: #374151;
+          border: 1px solid rgba(0,0,0,0.08);
           border-radius: 10px;
           font-size: 14px;
           font-weight: 600;
@@ -183,7 +228,14 @@ export default function PlanningPage() {
           transition: background 0.2s;
         }
 
-        .import-button:hover { background: #15803d; }
+        .import-button:hover { background: rgba(255,255,255,0.8); }
+
+        .section-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #374151;
+          margin: 0 0 12px;
+        }
 
         .empty-state {
           background: rgba(255, 255, 255, 0.25);
@@ -205,21 +257,22 @@ export default function PlanningPage() {
           margin: 0 0 24px;
         }
 
-        .import-button-lg {
+        .ai-button-lg {
           display: inline-flex;
           align-items: center;
           gap: 8px;
           padding: 14px 28px;
-          background: #16a34a;
+          background: linear-gradient(135deg, #16a34a, #059669);
           color: white;
           border: none;
           border-radius: 12px;
           font-size: 16px;
           font-weight: 600;
           cursor: pointer;
+          box-shadow: 0 2px 8px rgba(22,163,74,0.3);
         }
 
-        .import-button-lg:hover { background: #15803d; }
+        .ai-button-lg:hover { transform: translateY(-1px); }
 
         .imports-grid {
           display: flex;
@@ -303,6 +356,7 @@ export default function PlanningPage() {
 
         @media (max-width: 768px) {
           .header-content { flex-direction: column; text-align: center; }
+          .header-actions { justify-content: center; }
           .import-card { flex-wrap: wrap; }
         }
       `}</style>
