@@ -76,11 +76,16 @@ export default function NutritionOnboarding() {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) throw new Error('Non authentifié')
 
+      // Delete existing goals for this user, then insert fresh
+      await supabase
+        .from('user_health_goals')
+        .delete()
+        .eq('user_id', user.id)
+
       for (const r of results) {
-        // Upsert per person
         const { error } = await supabase
           .from('user_health_goals')
-          .upsert({
+          .insert({
             user_id: user.id,
             person_name: r.person_name,
             target_calories: r.target_calories,
@@ -88,16 +93,16 @@ export default function NutritionOnboarding() {
             target_fat_g: r.target_fat_g,
             target_carbs_g: r.target_carbs_g,
             target_fiber_g: r.target_fiber_g,
-            target_weight_kg: parseFloat(r.target_weight_kg),
-            age: parseInt(r.age),
-            sex: r.sex,
-            height_cm: parseFloat(r.height_cm),
-            current_weight_kg: parseFloat(r.current_weight_kg),
-            activity_level: r.activity_level,
-            weight_loss_rate: parseFloat(r.weight_loss_rate),
-            bmr: r.bmr,
-            tdee: r.tdee,
-          }, { onConflict: 'user_id,person_name' })
+            target_weight_kg: parseFloat(r.target_weight_kg) || null,
+            age: parseInt(r.age) || null,
+            sex: r.sex || null,
+            height_cm: parseFloat(r.height_cm) || null,
+            current_weight_kg: parseFloat(r.current_weight_kg) || null,
+            activity_level: r.activity_level || null,
+            weight_loss_rate: parseFloat(r.weight_loss_rate) || null,
+            bmr: r.bmr || null,
+            tdee: r.tdee || null,
+          })
 
         if (error) console.error(`Error saving ${r.person_name}:`, error)
       }
