@@ -727,3 +727,52 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 1818,15,Zoé,2026-04-06,dejeuner,weekend,Galettes complètes: 1.5 galettes + 1 œuf + 60g jambon + 45g gruyère + salade,555.0,35.0,38.0,22.0,6.0
 1819,15,Zoé,2026-04-06,diner,weekend,Gigot agneau rôti: 140g agneau + 190g PDT rôties + 100g haricots verts,575.0,40.0,38.0,21.0,6.0
 1820,15,Zoé,2026-04-06,collation,weekend,200g skyr + 20g amandes + 1 pomme (150g),333.0,26.0,21.0,11.0,5.0
+1821,16,Julien,2026-04-07,dejeuner,normal,Tajine agneau: 350g (170g agneau + PDT + courgettes + olives),665.0,52.0,58.0,22.0,9.0
+1822,16,Julien,2026-04-07,diner,normal,Pavé saumon aux asperges: 200g saumon + 220g PDT vapeur + 150g asperges,720.0,48.0,52.0,28.0,8.0
+1823,16,Julien,2026-04-07,collation,normal,Option B: 2 œufs durs + 1 fraise (150g) + 20g amandes,276.0,17.0,12.0,18.0,4.0
+1824,16,Julien,2026-04-07,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1825,16,Zoé,2026-04-07,dejeuner,normal,Tajine agneau: 280g (135g agneau + PDT + courgettes + olives),532.0,41.0,46.0,18.0,7.0
+1826,16,Zoé,2026-04-07,diner,normal,Pavé saumon aux asperges: 150g saumon + 170g PDT vapeur + 120g asperges,540.0,36.0,40.0,21.0,6.0
+1827,16,Zoé,2026-04-07,collation,normal,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1828,16,Julien,2026-04-08,dejeuner,normal,Tajine agneau riz: 350g (170g agneau + riz + courgettes + olives),680.0,52.0,65.0,20.0,8.0
+1829,16,Julien,2026-04-08,diner,normal,Blanquette de dinde: 180g dinde + 200g riz + 120g carottes + champignons,695.0,50.0,68.0,18.0,6.0
+1830,16,Julien,2026-04-08,collation,normal,Option A: 200g skyr + 30g amandes,316.0,32.0,11.0,15.0,4.0
+1831,16,Julien,2026-04-08,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1832,16,Zoé,2026-04-08,dejeuner,normal,Tajine agneau riz: 280g (135g agneau + riz + courgettes + olives),545.0,41.0,52.0,16.0,6.0
+1833,16,Zoé,2026-04-08,diner,normal,Blanquette de dinde: 140g dinde + 150g riz + 100g carottes + champignons,520.0,38.0,52.0,14.0,5.0
+1834,16,Zoé,2026-04-08,collation,normal,2 œufs durs + 1 fraise (150g),186.0,13.0,11.0,10.0,3.0
+1835,16,Julien,2026-04-09,dejeuner,normal,Mijoté bœuf provençal: 350g (175g bœuf + tomates + aubergines + PDT),672.0,58.0,45.0,26.0,10.0
+1836,16,Julien,2026-04-09,diner,normal,Tortilla épinards: 3 œufs + 180g PDT + 150g épinards + 30g pain,685.0,32.0,68.0,28.0,12.0
+1837,16,Julien,2026-04-09,collation,normal,Option C: 1 pomme (150g) + 15g amandes,167.0,4.0,22.0,7.0,5.0
+1838,16,Julien,2026-04-09,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1839,16,Zoé,2026-04-09,dejeuner,normal,Mijoté bœuf provençal: 280g (140g bœuf + tomates + aubergines + PDT),538.0,46.0,36.0,21.0,8.0
+1840,16,Zoé,2026-04-09,diner,normal,Tortilla épinards: 2 œufs + 140g PDT + 120g épinards + 20g pain,515.0,24.0,52.0,21.0,10.0
+1841,16,Zoé,2026-04-09,collation,normal,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1842,16,Julien,2026-04-10,dejeuner,normal,Bœuf provençal gratinéé: 350g bœuf + 50g gruyère + PDT gratinées,695.0,58.0,48.0,28.0,9.0
+1843,16,Julien,2026-04-10,diner,normal,Côte porc moutarde: 180g porc + 220g PDT grenaille + 120g radis sautés,715.0,48.0,58.0,25.0,8.0
+1844,16,Julien,2026-04-10,collation,normal,Option B: 2 œufs durs + 1 kiwi (100g) + 20g amandes,267.0,17.0,15.0,18.0,5.0
+1845,16,Julien,2026-04-10,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1846,16,Zoé,2026-04-10,dejeuner,normal,Bœuf provençal gratinéé: 280g bœuf + 40g gruyère + PDT gratinées,556.0,46.0,38.0,22.0,7.0
+1847,16,Zoé,2026-04-10,diner,normal,Côte porc moutarde: 140g porc + 170g PDT grenaille + 100g radis sautés,535.0,37.0,45.0,19.0,6.0
+1848,16,Zoé,2026-04-10,collation,normal,2 œufs durs + 1 kiwi (100g),147.0,13.0,15.0,10.0,3.0
+1849,16,Julien,2026-04-11,dejeuner,normal,Chili con carne: 350g (150g bœuf haché + haricots rouges + riz + tomates),668.0,52.0,62.0,20.0,15.0
+1850,16,Julien,2026-04-11,diner,normal,Filet cabillaud petit pois: 200g cabillaud + 200g riz + 150g petits pois,698.0,50.0,72.0,18.0,8.0
+1851,16,Julien,2026-04-11,collation,normal,Option A: 200g skyr + 30g amandes,316.0,32.0,11.0,15.0,4.0
+1852,16,Julien,2026-04-11,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1853,16,Zoé,2026-04-11,dejeuner,normal,Chili con carne: 280g (120g bœuf haché + haricots rouges + riz + tomates),534.0,42.0,50.0,16.0,12.0
+1854,16,Zoé,2026-04-11,diner,normal,Filet cabillaud petit pois: 160g cabillaud + 150g riz + 120g petits pois,526.0,40.0,54.0,14.0,6.0
+1855,16,Zoé,2026-04-11,collation,normal,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1856,16,Julien,2026-04-12,dejeuner,weekend,Chili con carne gratinéé: 350g chili + 50g cheddar + nachos,685.0,52.0,65.0,22.0,14.0
+1857,16,Julien,2026-04-12,diner,weekend,Wrap poulet crudités: 2 tortillas + 160g poulet + crudités + fromage + frites,720.0,45.0,68.0,28.0,10.0
+1858,16,Julien,2026-04-12,collation,weekend,Option B: 2 œufs durs + 1 poire (150g) + 20g amandes,298.0,17.0,24.0,18.0,6.0
+1859,16,Julien,2026-04-12,pdj,weekend,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1860,16,Zoé,2026-04-12,dejeuner,weekend,Chili con carne gratinéé: 280g chili + 40g cheddar + nachos,548.0,42.0,52.0,18.0,11.0
+1861,16,Zoé,2026-04-12,diner,weekend,Wrap poulet crudités: 1.5 tortillas + 120g poulet + crudités + fromage + frites,540.0,34.0,52.0,21.0,8.0
+1862,16,Zoé,2026-04-12,collation,weekend,2 œufs durs + 1 poire (150g),167.0,13.0,24.0,10.0,4.0
+1863,16,Julien,2026-04-13,dejeuner,weekend,Pâtes carbonara: 200g pâtes + 80g lardons + 2 œufs + 40g parmesan + crème,695.0,38.0,72.0,28.0,6.0
+1864,16,Julien,2026-04-13,diner,weekend,Rôti porc aux carottes: 180g porc + 240g PDT rôties + 150g carottes nouvelles,715.0,48.0,58.0,25.0,12.0
+1865,16,Julien,2026-04-13,collation,weekend,Dimanche: 30g noix + 1 pomme (150g) + 30g beurre cacahuète + 30g pain,481.0,14.0,32.0,35.0,8.0
+1866,16,Julien,2026-04-13,pdj,weekend,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1867,16,Zoé,2026-04-13,dejeuner,weekend,Pâtes carbonara: 150g pâtes + 60g lardons + 1 œuf + 30g parmesan + crème,520.0,28.0,54.0,21.0,4.0
+1868,16,Zoé,2026-04-13,diner,weekend,Rôti porc aux carottes: 140g porc + 180g PDT rôties + 120g carottes nouvelles,535.0,37.0,45.0,19.0,10.0
+1869,16,Zoé,2026-04-13,collation,weekend,200g skyr + 20g amandes + 1 pomme (150g),331.0,26.0,32.0,11.0,6.0

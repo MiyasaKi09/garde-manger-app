@@ -35,3 +35,6 @@ id,import_id,name,timing,ingredients,macros_per_100g,rendement,portions,reheat,i
 82,15,Poulet basquaise,20min / 55min,"600g poulet, 400g poivrons, 500g passata, 2 oignons, 800g PDT, huile olive",95 kcal | 14P | 8G | 2.5L | 1.2F,1900g,Julien: 350g — Zoé: 280g,,En gratin avec gruyère
 83,15,Bœuf stroganoff,15min / 45min,"500g émincé bœuf, 400g champignons, crème fraîche, oignons, semoule/riz",108 kcal | 15P | 7G | 3.2L | 1F,1700g,Julien: 340g — Zoé: 270g,,Avec riz au lieu de semoule
 84,15,Émincé porc au curry,20min / 50min,"500g émincé porc, lait coco, légumes variés, curry, riz",97 kcal | 14P | 9G | 2.5L | 1.2F,1850g,Julien: 350g — Zoé: 280g,,Même présentation
+85,16,Tajine agneau aux légumes,20min / 60min,"305g agneau, 300g courgettes, 200g PDT, oignons, olives, épices, bouillon",95 kcal | 15P | 8G | 3L | 2F,980g,Julien: 350g — Zoé: 280g,,Avec riz basmati au lieu des PDT
+86,16,Mijoté bœuf provençal,15min / 50min,"315g bœuf, 250g aubergines, 200g tomates, 180g PDT, herbes de Provence, huile",96 kcal | 16P | 6G | 4L | 3F,945g,Julien: 350g — Zoé: 280g,,En gratin avec fromage râpé
+87,16,Chili con carne,10min / 45min,"270g bœuf haché, 400g haricots rouges, 300g tomates concassées, 180g riz, oignons, épices",95 kcal | 15P | 9G | 3L | 4F,1050g,Julien: 350g — Zoé: 280g,,En gratin avec fromage cheddar

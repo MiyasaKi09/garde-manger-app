@@ -633,3 +633,33 @@ id,import_id,prep_date,prep_label,task,estimated_time
 1098,15,2026-04-06,Dimanche 06/04,"Gigot: Saisir 320g tranches gigot à la poêle, ail, romarin",12min
 1099,15,2026-04-06,Dimanche 06/04,[Prep] Cuire œufs durs: Préparer 15 œufs durs pour la semaine,15min
 1100,15,2026-04-06,Dimanche 06/04,[Prep] Batch lundi: Préparer batch pour lundi-mardi,45min
+1101,16,2026-04-07,Lundi 07/04,Cuire PDT vapeur: Laver et cuire 390g PDT à la vapeur 15min,15min
+1102,16,2026-04-07,Lundi 07/04,"Préparer asperges: Éplucher 270g asperges, les cuire vapeur 8min",8min
+1103,16,2026-04-07,Lundi 07/04,Cuire saumon: Saisir 350g pavé saumon huile olive 4min/côté,8min
+1104,16,2026-04-07,Lundi 07/04,"[Prep] Préparer tajine agneau: Découper 305g agneau, émincer oignons, courgettes",20min
+1105,16,2026-04-07,Lundi 07/04,"[Prep] Mijoter tajine: Faire revenir agneau, ajouter légumes, épices, 400ml bouillon",40min
+1106,16,2026-04-08,Mardi 08/04,Cuire riz: Cuire 350g riz basmati dans 700ml eau salée 12min,12min
+1107,16,2026-04-08,Mardi 08/04,"Dinde et légumes: Faire revenir 320g dinde, ajouter 220g carottes, 150g champignons",8min
+1108,16,2026-04-08,Mardi 08/04,"Sauce blanche: Ajouter crème fraîche, bouillon, herbes, mijoter 5min",5min
+1109,16,2026-04-09,Mercredi 09/04,Cuire épinards: Faire revenir 270g épinards frais à l'huile 5min,5min
+1110,16,2026-04-09,Mercredi 09/04,PDT sautées: Cuire 320g PDT coupées à la poêle 10min,10min
+1111,16,2026-04-09,Mercredi 09/04,"Tortilla: Battre 5 œufs, mélanger PDT-épinards, cuire 8min",8min
+1112,16,2026-04-09,Mercredi 09/04,"[Prep] Préparer bœuf provençal: Découper 315g bœuf, émincer aubergines, tomates",15min
+1113,16,2026-04-09,Mercredi 09/04,"[Prep] Mijoter: Faire revenir bœuf, ajouter légumes, herbes de Provence",35min
+1114,16,2026-04-09,Mercredi 09/04,[Prep] Œufs durs: Cuire 15 œufs pour les 3 prochains jours,15min
+1115,16,2026-04-10,Jeudi 10/04,"PDT grenaille: Laver 390g PDT grenaille, les rôtir au four 20min à 200°C",20min
+1116,16,2026-04-10,Jeudi 10/04,"Radis sautés: Couper 220g radis, les faire sauter 8min à la poêle",8min
+1117,16,2026-04-10,Jeudi 10/04,"Côte porc: Cuire 320g côte porc 6min/côté, déglacer moutarde-crème",12min
+1118,16,2026-04-11,Vendredi 11/04,Cuire riz: Cuire 350g riz basmati dans eau bouillante salée 12min,12min
+1119,16,2026-04-11,Vendredi 11/04,Petits pois: Cuire 270g petits pois surgelés 6min vapeur,6min
+1120,16,2026-04-11,Vendredi 11/04,Cabillaud: Cuire 360g cabillaud à la poêle huile olive 4min/côté,8min
+1121,16,2026-04-11,Vendredi 11/04,"[Prep] Chili con carne: Faire revenir 270g bœuf haché, ajouter oignons, épices",10min
+1122,16,2026-04-11,Vendredi 11/04,"[Prep] Mijoter chili: Ajouter 400g haricots rouges, tomates concassées, mijoter 35min",35min
+1123,16,2026-04-12,Samedi 12/04,"Frites four: Couper PDT en frites, enfourner 200°C 18min avec huile",18min
+1124,16,2026-04-12,Samedi 12/04,Poulet grillé: Cuire 280g blanc poulet coupé en lamelles 8min,8min
+1125,16,2026-04-12,Samedi 12/04,"Assembler wraps: Garnir tortillas avec poulet, salade, tomates, fromage",5min
+1126,16,2026-04-13,Dimanche 13/04,"PDT rôties: Couper 420g PDT, les rôtir au four 200°C avec huile 22min",22min
+1127,16,2026-04-13,Dimanche 13/04,"Rôti porc: Saisir 320g rôti porc 12min, finir au four 10min",15min
+1128,16,2026-04-13,Dimanche 13/04,Carottes nouvelles: Cuire 270g carottes nouvelles entières vapeur 12min,12min
+1129,16,2026-04-13,Dimanche 13/04,[Prep] Œufs durs: Cuire 15 œufs durs pour la semaine prochaine,15min
+1130,16,2026-04-13,Dimanche 13/04,[Prep] Préparer ingrédients: Découper légumes pour le batch de lundi,15min
