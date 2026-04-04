@@ -12,6 +12,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   // -1 = landing, 0+ = step index, 'done' = finished
   const [currentStep, setCurrentStep] = useState(-1)
   const [rating, setRating] = useState(0)
+  const isLanding = currentStep === -1
 
   useEffect(() => {
     if (open) {
@@ -50,12 +51,12 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   const recipeName = recipe.title || recipe.name
   const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0)
 
-  // ---- LANDING SCREEN ----
+  // ---- LANDING SCREEN (glass-morphism style) ----
   if (currentStep === -1) {
     return (
-      <div style={styles.overlay}>
-        <button onClick={onClose} style={styles.closeBtnAbsolute}><X size={24} /></button>
-        <div style={styles.content}>
+      <div style={styles.landingOverlay}>
+        <button onClick={onClose} style={styles.landingCloseBtn}><X size={24} /></button>
+        <div style={styles.landingScroll}>
           <div style={styles.landingContainer}>
             <h1 style={styles.landingTitle}>{recipeName}</h1>
             {recipe.description && (
@@ -68,10 +69,10 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
             {/* Ingredients */}
             {ingredients?.length > 0 && (
               <div style={styles.ingredientsList}>
-                <h3 style={styles.ingredientsTitle}>INGRÉDIENTS</h3>
+                <h3 style={styles.landingIngTitle}>INGRÉDIENTS</h3>
                 {ingredients.map((ing, i) => (
-                  <p key={i} style={styles.ingredientItem}>
-                    {ing.quantity && <span style={styles.ingredientQty}>{ing.quantity} {ing.unit}</span>}
+                  <p key={i} style={styles.landingIngItem}>
+                    {ing.quantity && <span style={styles.landingIngQty}>{ing.quantity} {ing.unit}</span>}
                     {' '}{ing.name}{ing.notes ? ` (${ing.notes})` : ''}
                   </p>
                 ))}
@@ -80,7 +81,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
             <button
               onClick={() => setCurrentStep(0)}
-              style={styles.startBtn}
+              style={styles.landingStartBtn}
               disabled={!steps?.length}
             >
               Commencer
@@ -126,7 +127,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
                 if (rating > 0) onRate?.(rating)
                 onClose?.()
               }}
-              style={styles.startBtn}
+              style={styles.doneBtn}
             >
               {rating > 0 ? 'Enregistrer & fermer' : 'Fermer'}
             </button>
@@ -412,66 +413,104 @@ const styles = {
     textAlign: 'center',
   },
 
-  // Close button absolute (for landing)
-  closeBtnAbsolute: {
+  // ── Landing screen (light glass-morphism) ──
+  landingOverlay: {
+    position: 'fixed',
+    inset: 0,
+    background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 30%, #fefce8 100%)',
+    zIndex: 2000,
+    display: 'flex',
+    flexDirection: 'column',
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+  },
+  landingCloseBtn: {
     position: 'absolute',
     top: 16,
     right: 16,
     border: 'none',
-    background: 'none',
-    color: 'rgba(255,255,255,0.6)',
+    background: 'rgba(0,0,0,0.05)',
+    color: '#6b7280',
     cursor: 'pointer',
     padding: 8,
     display: 'flex',
-    borderRadius: 8,
+    borderRadius: 10,
     zIndex: 10,
   },
-
-  // Landing
+  landingScroll: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    padding: '60px 24px 40px',
+    overflowY: 'auto',
+  },
   landingContainer: {
     textAlign: 'center',
     maxWidth: 520,
     width: '100%',
   },
   landingTitle: {
+    fontFamily: "'Crimson Text', Georgia, serif",
     fontSize: 32,
     fontWeight: 700,
+    color: '#16a34a',
     marginBottom: 12,
     lineHeight: 1.2,
   },
   landingDesc: {
-    fontSize: 16,
-    color: 'rgba(255,255,255,0.6)',
+    fontSize: 15,
+    color: '#6b7280',
     lineHeight: 1.6,
     marginBottom: 8,
   },
   landingMeta: {
-    fontSize: 14,
-    color: 'rgba(255,255,255,0.35)',
+    fontSize: 13,
+    color: '#9ca3af',
     marginBottom: 32,
   },
   ingredientsList: {
     textAlign: 'left',
     marginBottom: 32,
+    background: 'rgba(255,255,255,0.6)',
+    backdropFilter: 'blur(12px)',
+    border: '1px solid rgba(255,255,255,0.35)',
+    borderRadius: 16,
+    padding: '16px 20px',
   },
-  ingredientsTitle: {
-    fontSize: 12,
-    fontWeight: 600,
+  landingIngTitle: {
+    fontSize: 11,
+    fontWeight: 700,
     letterSpacing: 1.5,
-    color: 'rgba(255,255,255,0.4)',
+    color: '#9ca3af',
     marginBottom: 12,
+    textTransform: 'uppercase',
   },
-  ingredientItem: {
-    fontSize: 15,
-    color: 'rgba(255,255,255,0.8)',
+  landingIngItem: {
+    fontSize: 14,
+    color: '#374151',
     margin: '6px 0',
     lineHeight: 1.4,
   },
-  ingredientQty: {
-    fontWeight: 600,
-    color: 'white',
+  landingIngQty: {
+    fontWeight: 700,
+    color: 'var(--ink, #1f281f)',
   },
-  startBtn: {
+  landingStartBtn: {
+    padding: '14px 48px',
+    border: 'none',
+    borderRadius: 16,
+    background: 'linear-gradient(135deg, #16a34a, #059669)',
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+    transition: 'all 0.2s',
+    boxShadow: '0 4px 14px rgba(22,163,74,0.3)',
+  },
+
+  // Done screen button (dark theme)
+  doneBtn: {
     padding: '14px 48px',
     border: '1px solid rgba(255,255,255,0.2)',
     borderRadius: 28,
@@ -484,6 +523,8 @@ const styles = {
     transition: 'all 0.2s',
     letterSpacing: 0.5,
   },
+
+  // ── Dark theme styles (step-by-step + rating — kept dark for cooking) ──
 
   // Timer
   timerContainer: {

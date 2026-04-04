@@ -6,6 +6,27 @@ import GlassCard from '@/components/ui/GlassCard'
 import CookMode from '@/components/CookMode'
 import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 
+/**
+ * Extrait le nom du plat (avant ":") à partir des descriptions.
+ */
+function extractDishName(descriptions) {
+  if (!descriptions.length) return ''
+  const first = descriptions[0] || ''
+  const colonIdx = first.indexOf(':')
+  if (colonIdx > 0 && colonIdx < 60) return first.substring(0, colonIdx).trim()
+  // Find common prefix
+  let prefix = first
+  for (let i = 1; i < descriptions.length; i++) {
+    const other = descriptions[i] || ''
+    let j = 0
+    while (j < prefix.length && j < other.length && prefix[j] === other[j]) j++
+    prefix = prefix.substring(0, j)
+  }
+  const lastSpace = prefix.lastIndexOf(' ')
+  if (lastSpace > 5) prefix = prefix.substring(0, lastSpace)
+  return prefix.trim() || first.substring(0, 40).trim()
+}
+
 const MEAL_LABELS = {
   pdj: 'Petit-déj',
   dejeuner: 'Déjeuner',
@@ -148,37 +169,30 @@ export default function WeeklyPlanView({ importId }) {
               {dayMeals.length === 0 ? (
                 <p style={styles.noMeal}>—</p>
               ) : (
-                // Group meals by type, show unique descriptions
+                // Group meals by type, show dish name only (not quantities)
                 [...new Set(dayMeals.map(m => m.meal_type))].map(type => {
                   const typeMeals = dayMeals.filter(m => m.meal_type === type)
-                  // Deduplicate descriptions (same meal for Julien & Zoé)
-                  const uniqueDescs = [...new Set(typeMeals.map(m => m.description))]
-                  const persons = typeMeals.map(m => m.person_name?.charAt(0)).join('')
+                  // Extract dish name (before ":" or common prefix)
+                  const descriptions = typeMeals.map(m => m.description)
+                  const dishName = extractDishName(descriptions)
+                  const isGenerating = generatingFor === dishName
 
                   return (
                     <div key={type} style={styles.mealBlock}>
                       <span style={styles.mealType}>{MEAL_LABELS[type] || type}</span>
-                      {uniqueDescs.map((desc, i) => {
-                        const isGenerating = generatingFor === desc
-                        return (
-                          <button
-                            key={i}
-                            onClick={() => handleMealClick(typeMeals.find(m => m.description === desc))}
-                            disabled={!!generatingFor}
-                            style={{
-                              ...styles.mealBtn,
-                              opacity: generatingFor && !isGenerating ? 0.5 : 1,
-                            }}
-                          >
-                            {isGenerating ? (
-                              <Loader2 size={12} style={{ animation: 'spin 1s linear infinite', flexShrink: 0 }} />
-                            ) : (
-                              <span style={styles.personTag}>{persons}</span>
-                            )}
-                            <span style={styles.mealDescText}>{desc}</span>
-                          </button>
-                        )
-                      })}
+                      <button
+                        onClick={() => handleMealClick({ ...typeMeals[0], description: dishName })}
+                        disabled={!!generatingFor}
+                        style={{
+                          ...styles.mealBtn,
+                          opacity: generatingFor && !isGenerating ? 0.5 : 1,
+                        }}
+                      >
+                        {isGenerating ? (
+                          <Loader2 size={12} style={{ animation: 'spin 1s linear infinite', flexShrink: 0 }} />
+                        ) : null}
+                        <span style={styles.mealDescText}>{dishName}</span>
+                      </button>
                     </div>
                   )
                 })
@@ -232,8 +246,9 @@ const styles = {
   },
   daysGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
-    gap: 8,
+    gridTemplateColumns: 'repeat(7, 1fr)',
+    gap: 6,
+    overflowX: 'auto',
   },
   dayCard: {
     minHeight: 100,
