@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Sat Apr  4 17:47:32 UTC 2026_
+_Généré le : Sat Apr  4 18:03:11 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -16,6 +16,7 @@ _Généré le : Sat Apr  4 17:47:32 UTC 2026_
 - countries
 - cultivars
 - diets
+- generated_recipes
 - instructions
 - inventory_lots
 - legacy_users
@@ -210,6 +211,22 @@ _Généré le : Sat Apr  4 17:47:32 UTC 2026_
 ### diets
  - id :: bigint default nextval('diets_id_seq'::regclass) NOT NULL
  - name :: text NOT NULL
+
+### generated_recipes
+ - id :: bigint default nextval('generated_recipes_id_seq'::regclass) NOT NULL
+ - user_id :: uuid NOT NULL
+ - name_normalized :: text NOT NULL
+ - title :: text NOT NULL
+ - description :: text
+ - servings :: integer default 2
+ - prep_min :: integer
+ - cook_min :: integer
+ - ingredients :: jsonb default '[]'::jsonb NOT NULL
+ - steps :: jsonb default '[]'::jsonb NOT NULL
+ - chef_tips :: text
+ - nutrition_per_serving :: jsonb
+ - source :: text default 'ai'::text
+ - created_at :: timestamp with time zone default now()
 
 ### instructions
  - id :: integer default nextval('instructions_id_seq'::regclass) NOT NULL
@@ -619,9 +636,17 @@ _Généré le : Sat Apr  4 17:47:32 UTC 2026_
  - target_carbs_g :: numeric
  - created_at :: timestamp with time zone default now() NOT NULL
  - updated_at :: timestamp with time zone default now() NOT NULL
- - person_name :: text default 'Julien'::text
+ - person_name :: text default 'Julien'::text NOT NULL
  - target_weight_kg :: numeric
  - target_fiber_g :: numeric
+ - age :: integer
+ - sex :: text
+ - height_cm :: numeric
+ - current_weight_kg :: numeric
+ - activity_level :: text
+ - weight_loss_rate :: numeric
+ - bmr :: numeric
+ - tdee :: numeric
 
 ### user_profiles
  - user_id :: uuid NOT NULL
@@ -667,7 +692,7 @@ _Généré le : Sat Apr  4 17:47:32 UTC 2026_
 
 ---
 ## Clés primaires
- - _backup_views → (view_name, dropped_at, view_schema)
+ - _backup_views → (dropped_at, view_schema, view_name)
  - archetype_nutrition_overrides → (archetype_id)
  - archetypes → (id)
  - canonical_food_origins → (country_id, food_id)
@@ -679,6 +704,7 @@ _Généré le : Sat Apr  4 17:47:32 UTC 2026_
  - countries → (id)
  - cultivars → (id)
  - diets → (id)
+ - generated_recipes → (id)
  - instructions → (id)
  - inventory_lots → (id)
  - legacy_users → (id)
@@ -699,7 +725,7 @@ _Généré le : Sat Apr  4 17:47:32 UTC 2026_
  - products → (id)
  - recipe_ingredients → (id)
  - recipe_nutrition_cache → (recipe_id)
- - recipe_pairings → (main_recipe_id, side_recipe_id)
+ - recipe_pairings → (side_recipe_id, main_recipe_id)
  - recipe_steps → (id)
  - recipe_tags → (recipe_id, tag_id)
  - recipes → (id)
@@ -711,7 +737,7 @@ _Généré le : Sat Apr  4 17:47:32 UTC 2026_
  - unit_conversions_product → (id)
  - user_allergies → (canonical_food_id, user_id)
  - user_diets → (user_id, diet_id)
- - user_health_goals → (user_id)
+ - user_health_goals → (person_name, user_id)
  - user_profiles → (user_id)
  - user_recipe_interactions → (id)
  - weight_entries → (id)
@@ -805,6 +831,8 @@ _Généré le : Sat Apr  4 17:47:32 UTC 2026_
  - public.cultivars → uq_cultivars_per_species : CREATE UNIQUE INDEX uq_cultivars_per_species ON public.cultivars USING btree (canonical_food_id, lower(cultivar_name))
  - public.diets → diets_name_key : CREATE UNIQUE INDEX diets_name_key ON public.diets USING btree (name)
  - public.diets → diets_pkey : CREATE UNIQUE INDEX diets_pkey ON public.diets USING btree (id)
+ - public.generated_recipes → generated_recipes_pkey : CREATE UNIQUE INDEX generated_recipes_pkey ON public.generated_recipes USING btree (id)
+ - public.generated_recipes → idx_generated_recipes_name : CREATE INDEX idx_generated_recipes_name ON public.generated_recipes USING btree (user_id, name_normalized)
  - public.instructions → instructions_pkey : CREATE UNIQUE INDEX instructions_pkey ON public.instructions USING btree (id)
  - public.inventory_lots → idx_inv_archetype : CREATE INDEX idx_inv_archetype ON public.inventory_lots USING btree (archetype_id)
  - public.inventory_lots → idx_inv_canonical : CREATE INDEX idx_inv_canonical ON public.inventory_lots USING btree (canonical_food_id)
@@ -887,7 +915,7 @@ _Généré le : Sat Apr  4 17:47:32 UTC 2026_
  - public.unit_conversions_product → unit_conversions_product_pkey : CREATE UNIQUE INDEX unit_conversions_product_pkey ON public.unit_conversions_product USING btree (id)
  - public.user_allergies → user_allergies_pkey : CREATE UNIQUE INDEX user_allergies_pkey ON public.user_allergies USING btree (user_id, canonical_food_id)
  - public.user_diets → user_diets_pkey : CREATE UNIQUE INDEX user_diets_pkey ON public.user_diets USING btree (user_id, diet_id)
- - public.user_health_goals → user_health_goals_pkey : CREATE UNIQUE INDEX user_health_goals_pkey ON public.user_health_goals USING btree (user_id)
+ - public.user_health_goals → user_health_goals_pkey : CREATE UNIQUE INDEX user_health_goals_pkey ON public.user_health_goals USING btree (user_id, person_name)
  - public.user_profiles → user_profiles_pkey : CREATE UNIQUE INDEX user_profiles_pkey ON public.user_profiles USING btree (user_id)
  - public.user_recipe_interactions → user_recipe_interactions_pkey : CREATE UNIQUE INDEX user_recipe_interactions_pkey ON public.user_recipe_interactions USING btree (id)
  - public.user_recipe_interactions → user_recipe_interactions_user_id_recipe_id_key : CREATE UNIQUE INDEX user_recipe_interactions_user_id_recipe_id_key ON public.user_recipe_interactions USING btree (user_id, recipe_id)
