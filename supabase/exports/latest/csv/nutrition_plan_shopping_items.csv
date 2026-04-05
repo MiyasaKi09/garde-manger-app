@@ -1149,7 +1149,6 @@ id,import_id,week_label,category,product_name,quantity,checked
 2167,20,S1,Épicerie,Amandes,210 g,f
 2170,21,S1,Légumes,Carottes nouvelles,1100 g,f
 2171,21,S1,Légumes,Oignon jaune,271 pièce,f
-2174,21,S1,Épicerie,Huile d'olive,373 ml,f
 2175,21,S1,Épicerie,Cumin moulu,6 g,f
 2176,21,S1,Épicerie,Coriandre moulue,5 g,f
 2177,21,S1,Épicerie,Cannelle,2 g,f
@@ -1220,7 +1219,8 @@ id,import_id,week_label,category,product_name,quantity,checked
 2242,21,S1,Crémerie,Skyr,2200 g,f
 2243,21,S1,Crémerie,Oeufs,27 pièces,f
 2244,21,S1,Épicerie,Amandes,210 g,f
-2169,21,S1,Épicerie,Artichauts,6 pièces,t
 2173,21,S1,Épicerie,Gingembre frais,30 g,t
-2172,21,S1,Épicerie,Ail,50 gousses,t
 2168,21,S1,Épicerie,Épaule d'agneau,850 g,t
+2169,21,S1,Épicerie,Artichauts,6 pièces,t
+2172,21,S1,Épicerie,Ail,50 gousses,t
+2174,21,S1,Épicerie,Huile d'olive,373 ml,t
