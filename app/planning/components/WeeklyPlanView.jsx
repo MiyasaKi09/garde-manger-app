@@ -31,8 +31,9 @@ function extractDishName(descriptions) {
   const lastSpace = prefix.lastIndexOf(' ')
   if (lastSpace > 5) prefix = prefix.substring(0, lastSpace)
   prefix = prefix.trim()
-  // If common prefix is too short or ends with '+', use first person's full description
-  if (prefix.length < 10 || prefix.endsWith('+')) return first.substring(0, 80).trim()
+  // If common prefix is too short, ends with '+', or seems truncated (ends with number/quantity),
+  // just show the first person's full description
+  if (prefix.length < 15 || prefix.endsWith('+') || /\d$/.test(prefix)) return first.trim()
   return prefix
 }
 
