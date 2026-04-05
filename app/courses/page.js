@@ -72,15 +72,18 @@ export default function CoursesPage() {
       const storage = guessStorage(productName)
 
       // 4. Compute expiration date from product shelf life
-      let shelfDays = 7 // default
+      const DEFAULT_SHELF = { pantry: 30, fridge: 7, freezer: 90 }
+      let shelfDays = DEFAULT_SHELF[storage.method] || 7
       if (match) {
-        if (storage.method === 'fridge') shelfDays = match.shelf_life_days_fridge || 7
-        else if (storage.method === 'freezer') shelfDays = match.shelf_life_days_freezer || 90
-        else shelfDays = match.shelf_life_days_pantry || 30
+        const fromProduct = storage.method === 'fridge' ? match.shelf_life_days_fridge
+          : storage.method === 'freezer' ? match.shelf_life_days_freezer
+          : match.shelf_life_days_pantry
+        if (fromProduct && fromProduct > 0) shelfDays = fromProduct
       }
       const expDate = new Date()
       expDate.setDate(expDate.getDate() + shelfDays)
       const expirationDate = expDate.toISOString().split('T')[0]
+      console.log('addToStock expiration:', shelfDays, 'days →', expirationDate)
 
       // 5. Build lot data exactly like SmartAddForm does
       const lotData = {
@@ -100,6 +103,8 @@ export default function CoursesPage() {
         container_unit: null,
       }
 
+      console.log('addToStock match:', JSON.stringify(match))
+      console.log('addToStock storage:', storage.method, '→ shelfDays:', shelfDays, '→ expDate:', expirationDate)
       console.log('addToStock inserting:', JSON.stringify(lotData))
 
       const { data: lot, error } = await supabase
