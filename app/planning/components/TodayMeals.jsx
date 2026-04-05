@@ -408,6 +408,7 @@ export default function TodayMeals({ importId }) {
         ingredients={generatedRecipe?.ingredients || []}
         recipeId={cachedRecipeId}
         onRate={handleRate}
+        mealEntries={selectedMeal?.entries || []}
       />
     </>
   )

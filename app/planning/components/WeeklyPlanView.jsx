@@ -66,6 +66,7 @@ export default function WeeklyPlanView({ importId }) {
   const [cookModeOpen, setCookModeOpen] = useState(false)
   const [generatedRecipe, setGeneratedRecipe] = useState(null)
   const [generatingFor, setGeneratingFor] = useState(null)
+  const [currentMealEntries, setCurrentMealEntries] = useState([])
 
   const getWeekDates = (offset) => {
     const today = new Date()
@@ -100,11 +101,12 @@ export default function WeeklyPlanView({ importId }) {
     }
   }
 
-  async function handleMealClick(meal) {
+  async function handleMealClick(meal, mealEntries) {
     const desc = meal.description
     if (!desc) return
 
     setGeneratingFor(desc)
+    setCurrentMealEntries(mealEntries || [])
 
     try {
       const res = await authFetch('/api/ai/recipe', {
@@ -214,7 +216,7 @@ export default function WeeklyPlanView({ importId }) {
                           {MEAL_LABELS[type] || type}
                         </span>
                         <button
-                          onClick={() => handleMealClick({ ...typeMeals[0], description: dishName })}
+                          onClick={() => handleMealClick({ ...typeMeals[0], description: dishName }, typeMeals)}
                           disabled={!!generatingFor}
                           style={{
                             ...styles.mealBtn,
@@ -251,6 +253,7 @@ export default function WeeklyPlanView({ importId }) {
         recipe={generatedRecipe}
         steps={generatedRecipe?.steps || []}
         ingredients={generatedRecipe?.ingredients || []}
+        mealEntries={currentMealEntries}
       />
     </div>
   )

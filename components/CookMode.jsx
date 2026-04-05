@@ -8,7 +8,7 @@ import { X, ChevronLeft, ChevronRight, Play, Pause, RotateCcw } from 'lucide-rea
  * Fond sombre, étapes une par une, timers intégrés, navigation simple.
  * Inspiré du mode cuisine de Claude.
  */
-export default function CookMode({ open, onClose, recipe, steps, ingredients, recipeId, onRate }) {
+export default function CookMode({ open, onClose, recipe, steps, ingredients, recipeId, onRate, mealEntries }) {
   // -1 = landing, 0+ = step index, 'done' = finished
   const [currentStep, setCurrentStep] = useState(-1)
   const [rating, setRating] = useState(0)
@@ -64,6 +64,78 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
             )}
             {totalTime > 0 && (
               <p style={styles.landingMeta}>{steps?.length || 0} étapes{totalTime ? ` · ${totalTime} min` : ''}</p>
+            )}
+
+            {/* Per-person nutrition from meal plan */}
+            {mealEntries?.length > 0 && (
+              <div style={styles.nutritionSection}>
+                <h3 style={styles.landingIngTitle}>NUTRITION PAR PERSONNE</h3>
+                <div style={styles.personsGrid}>
+                  {mealEntries.map((entry, i) => (
+                    <div key={i} style={styles.personCard}>
+                      <span style={styles.personName}>{entry.person_name || '?'}</span>
+                      <div style={styles.macrosRow}>
+                        <div style={styles.macroItem}>
+                          <span style={styles.macroValue}>{Math.round(entry.kcal || 0)}</span>
+                          <span style={styles.macroLabel}>kcal</span>
+                        </div>
+                        <div style={styles.macroDivider} />
+                        <div style={styles.macroItem}>
+                          <span style={styles.macroValue}>{Math.round(entry.protein_g || 0)}g</span>
+                          <span style={styles.macroLabel}>prot</span>
+                        </div>
+                        <div style={styles.macroDivider} />
+                        <div style={styles.macroItem}>
+                          <span style={styles.macroValue}>{Math.round(entry.carbs_g || 0)}g</span>
+                          <span style={styles.macroLabel}>gluc</span>
+                        </div>
+                        <div style={styles.macroDivider} />
+                        <div style={styles.macroItem}>
+                          <span style={styles.macroValue}>{Math.round(entry.fat_g || 0)}g</span>
+                          <span style={styles.macroLabel}>lip</span>
+                        </div>
+                      </div>
+                      {entry.description && (
+                        <p style={styles.personPortions}>{entry.description}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                {recipe?.nutrition_source === 'ciqual' && (
+                  <p style={styles.nutritionBadge}>Valeurs calculées (CIQUAL)</p>
+                )}
+              </div>
+            )}
+
+            {/* Recipe-level nutrition fallback (when no mealEntries) */}
+            {(!mealEntries?.length) && recipe?.nutrition_per_serving && (
+              <div style={styles.nutritionSection}>
+                <h3 style={styles.landingIngTitle}>NUTRITION PAR PORTION</h3>
+                <div style={styles.macrosRow}>
+                  <div style={styles.macroItem}>
+                    <span style={styles.macroValue}>{recipe.nutrition_per_serving.kcal || '—'}</span>
+                    <span style={styles.macroLabel}>kcal</span>
+                  </div>
+                  <div style={styles.macroDivider} />
+                  <div style={styles.macroItem}>
+                    <span style={styles.macroValue}>{recipe.nutrition_per_serving.protein_g || '—'}g</span>
+                    <span style={styles.macroLabel}>prot</span>
+                  </div>
+                  <div style={styles.macroDivider} />
+                  <div style={styles.macroItem}>
+                    <span style={styles.macroValue}>{recipe.nutrition_per_serving.carbs_g || '—'}g</span>
+                    <span style={styles.macroLabel}>gluc</span>
+                  </div>
+                  <div style={styles.macroDivider} />
+                  <div style={styles.macroItem}>
+                    <span style={styles.macroValue}>{recipe.nutrition_per_serving.fat_g || '—'}g</span>
+                    <span style={styles.macroLabel}>lip</span>
+                  </div>
+                </div>
+                {recipe.nutrition_source === 'ciqual' && (
+                  <p style={styles.nutritionBadge}>Valeurs calculées (CIQUAL)</p>
+                )}
+              </div>
             )}
 
             {/* Ingredients */}
@@ -329,6 +401,19 @@ const styles = {
   landingIngItem: { fontSize: 14, color: '#374151', margin: '6px 0', lineHeight: 1.4 },
   landingIngQty: { fontWeight: 700, color: 'var(--ink, #1f281f)' },
   landingStartBtn: { padding: '14px 48px', border: 'none', borderRadius: 16, background: 'linear-gradient(135deg, #16a34a, #059669)', color: 'white', fontSize: 16, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 14px rgba(22,163,74,0.3)' },
+
+  // Nutrition section
+  nutritionSection: { textAlign: 'left', marginBottom: 24, ...GLASS, borderRadius: 16, padding: '16px 20px' },
+  personsGrid: { display: 'flex', gap: 12, flexWrap: 'wrap' },
+  personCard: { flex: 1, minWidth: 180, background: 'rgba(255,255,255,0.5)', borderRadius: 12, padding: '12px 14px', border: '1px solid rgba(0,0,0,0.04)' },
+  personName: { display: 'inline-block', fontSize: 12, fontWeight: 700, color: '#16a34a', background: 'rgba(22,163,74,0.08)', padding: '2px 10px', borderRadius: 6, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 10 },
+  macrosRow: { display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center', flexWrap: 'wrap' },
+  macroItem: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 },
+  macroValue: { fontSize: 18, fontWeight: 700, color: 'var(--ink, #1f281f)', fontVariantNumeric: 'tabular-nums' },
+  macroLabel: { fontSize: 10, fontWeight: 600, color: '#9ca3af', textTransform: 'uppercase', letterSpacing: 0.5 },
+  macroDivider: { width: 1, height: 24, background: 'rgba(0,0,0,0.08)', flexShrink: 0 },
+  personPortions: { fontSize: 12, color: '#6b7280', marginTop: 8, lineHeight: 1.4, textAlign: 'center' },
+  nutritionBadge: { fontSize: 10, color: '#16a34a', fontWeight: 600, textAlign: 'center', marginTop: 10, letterSpacing: 0.3 },
 }
 
 // Steps + Done screens (also glass-morphism)
