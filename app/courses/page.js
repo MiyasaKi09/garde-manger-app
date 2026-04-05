@@ -60,6 +60,140 @@ export default function CoursesPage() {
     return groups
   }, [filteredItems])
 
+  async function addToStock(productName, quantityStr) {
+    try {
+      // 1. Parse quantity
+      const parsed = parseQty(quantityStr)
+
+      // 2. Find matching product
+      const match = await findProduct(productName)
+
+      // 3. Guess storage
+      const storage = guessStorage(productName)
+
+      // 4. Build lot data exactly like SmartAddForm does
+      const lotData = {
+        canonical_food_id: match?.type === 'canonical' ? match.id : null,
+        archetype_id: match?.type === 'archetype' ? match.id : null,
+        cultivar_id: null,
+        qty_remaining: parsed.qty,
+        initial_qty: parsed.qty,
+        unit: parsed.unit,
+        storage_method: storage.method,
+        storage_place: storage.place,
+        expiration_date: null,
+        acquired_on: new Date().toISOString().split('T')[0],
+        notes: match ? null : productName,
+        is_containerized: false,
+        container_size: null,
+        container_unit: null,
+      }
+
+      console.log('addToStock inserting:', JSON.stringify(lotData))
+
+      const { data: lot, error } = await supabase
+        .from('inventory_lots')
+        .insert([lotData])
+        .select()
+        .single()
+
+      if (error) {
+        console.error('Insert lot error:', JSON.stringify(error))
+        return { success: false, error: `${error.message} (code: ${error.code}, details: ${error.details})` }
+      }
+      console.log('Lot created:', lot?.id)
+      return { success: true, lot }
+    } catch (err) {
+      console.error('addToStock error:', err)
+      return { success: false, error: err.message }
+    }
+  }
+
+  async function findProduct(name) {
+    const n = name.trim().toLowerCase()
+    // Generate search variants: singular, plural, without accents
+    const variants = getSearchVariants(n)
+
+    for (const variant of variants) {
+      // Try archetype
+      const { data: archs } = await supabase
+        .from('archetypes')
+        .select('id, name')
+        .ilike('name', `%${variant}%`)
+        .limit(5)
+
+      if (archs?.length) {
+        const exact = archs.find(a => a.name.toLowerCase() === variant)
+        return { type: 'archetype', id: (exact || archs[0]).id }
+      }
+
+      // Try canonical_food
+      const { data: cans } = await supabase
+        .from('canonical_foods')
+        .select('id, canonical_name')
+        .ilike('canonical_name', `%${variant}%`)
+        .limit(5)
+
+      if (cans?.length) {
+        const exact = cans.find(c => c.canonical_name?.toLowerCase() === variant)
+        return { type: 'canonical', id: (exact || cans[0]).id }
+      }
+    }
+
+    return null
+  }
+
+  function getSearchVariants(name) {
+    const variants = [name]
+    // Singular: remove trailing s/x
+    if (name.endsWith('s') || name.endsWith('x')) {
+      variants.push(name.slice(0, -1))
+    }
+    // Plural: add s
+    if (!name.endsWith('s') && !name.endsWith('x')) {
+      variants.push(name + 's')
+    }
+    // Remove accents
+    const noAccents = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    if (noAccents !== name) variants.push(noAccents)
+    // First meaningful word only (for compound names like "Huile d'olive")
+    const words = name.split(/\s+/).filter(w => w.length > 2 && !['de','du','des','le','la','les','au','aux','en',"d'","l'"].includes(w))
+    if (words[0] && words[0] !== name) {
+      variants.push(words[0])
+      if (words[0].endsWith('s')) variants.push(words[0].slice(0, -1))
+    }
+    return [...new Set(variants)]
+  }
+
+  function parseQty(str) {
+    if (!str) return { qty: 1, unit: 'unités' }
+    const s = str.trim().toLowerCase()
+    const m = s.match(/^(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|l|unités?|pièces?|gousses?|boîtes?|paquets?|bouteilles?|sachets?|tranches?|feuilles?)/)
+    if (m) {
+      const num = parseFloat(m[1].replace(',', '.'))
+      const u = m[2]
+      if (u === 'kg') return { qty: num * 1000, unit: 'g' }
+      if (u === 'l') return { qty: num * 1000, unit: 'ml' }
+      if (u === 'cl') return { qty: num * 10, unit: 'ml' }
+      if (u === 'g') return { qty: num, unit: 'g' }
+      if (u === 'ml') return { qty: num, unit: 'ml' }
+      return { qty: num, unit: 'unités' }
+    }
+    const numOnly = s.match(/^(\d+(?:[.,]\d+)?)/)
+    if (numOnly) return { qty: parseFloat(numOnly[1].replace(',', '.')), unit: 'unités' }
+    return { qty: 1, unit: 'unités' }
+  }
+
+  function guessStorage(name) {
+    if (/lait|yaourt|skyr|fromage|crème|beurre|œuf|oeuf|poulet|viande|bœuf|boeuf|porc|veau|agneau|dinde|saumon|cabillaud|truite|poisson|jambon|lardons|saucisse/i.test(name)) {
+      return { method: 'fridge', place: 'Frigo' }
+    }
+    if (/surgelé|congelé|glace/i.test(name)) {
+      return { method: 'freezer', place: 'Congélateur' }
+    }
+    return { method: 'pantry', place: 'Garde-manger' }
+  }
+
   async function toggleItem(itemId) {
     const item = items.find(i => i.id === itemId)
     if (!item) return
@@ -76,25 +210,16 @@ export default function CoursesPage() {
       // Add to stock when checking
       if (newChecked) {
         try {
-          const res = await authFetch('/api/courses/add-to-stock', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              itemId: item.id,
-              productName: item.product_name,
-              quantity: item.quantity,
-            }),
-          })
-          const data = await res.json()
-          if (res.ok && data.success) {
+          const result = await addToStock(item.product_name, item.quantity)
+          if (result.success) {
             setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: true, stocking: false } : i))
           } else {
-            console.error('Erreur ajout stock:', data.error)
-            setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false, stockError: true } : i))
+            console.error('Erreur ajout stock:', result.error)
+            setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false, stockError: true, stockErrorMsg: result.error } : i))
           }
         } catch (stockErr) {
           console.error('Erreur ajout stock:', stockErr)
-          setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false } : i))
+          setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false, stockError: true, stockErrorMsg: stockErr.message } : i))
         }
       } else {
         setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: false, stocking: false, stockError: false } : i))
@@ -212,7 +337,7 @@ export default function CoursesPage() {
                   <span style={S.stockedBadge}><Package size={11} /> rangé</span>
                 )}
                 {item.stockError && !item.stocking && (
-                  <span style={S.stockErrorBadge}>non rangé</span>
+                  <span style={S.stockErrorBadge} title={item.stockErrorMsg || ''}>non rangé</span>
                 )}
               </button>
             ))}
