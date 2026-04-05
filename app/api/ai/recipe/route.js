@@ -122,7 +122,7 @@ FORMAT JSON attendu :
   "prep_min": 15,
   "cook_min": 30,
   "ingredients": [
-    { "name": "Poulet", "quantity": 500, "unit": "g", "notes": "" }
+    { "name": "Poulet", "quantity": 500, "unit": "g", "notes": "", "per100g": { "kcal": 165, "p": 31, "g": 0, "l": 3.6, "f": 0 } }
   ],
   "steps": [
     { "step_no": 1, "instruction": "Titre de l'étape: Description détaillée...", "duration_min": null },
@@ -130,7 +130,15 @@ FORMAT JSON attendu :
   ],
   "chef_tips": "Conseil du chef optionnel",
   "nutrition_per_serving": { "kcal": 450, "protein_g": 35, "carbs_g": 40, "fat_g": 15, "fiber_g": 6 }
-}`,
+}
+
+IMPORTANT pour "per100g" : donne les valeurs nutritionnelles POUR 100g de chaque ingrédient CRU.
+Utilise les valeurs CIQUAL/table de composition des aliments, pas des estimations. Exemples courants :
+- Poulet (blanc) : kcal 121, p 26.2, g 0, l 1.8, f 0
+- Riz cuit : kcal 130, p 2.7, g 28, l 0.3, f 0.4
+- Huile d'olive : kcal 884, p 0, g 0, l 100, f 0
+- Oignon : kcal 40, p 1.1, g 9.3, l 0.1, f 1.7
+- Tomate : kcal 18, p 0.9, g 3.9, l 0.2, f 1.2`,
       messages: [
         {
           role: 'user',
