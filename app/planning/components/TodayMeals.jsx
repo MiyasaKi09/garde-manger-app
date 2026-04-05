@@ -38,6 +38,14 @@ const MEAL_LABELS = {
   diner: 'Dîner',
   collation: 'Collation',
 }
+
+const MEAL_COLORS = {
+  pdj: { bg: '#fef3c7', text: '#92400e', border: 'rgba(245, 158, 11, 0.2)' },
+  dejeuner: { bg: '#dbeafe', text: '#1e40af', border: 'rgba(59, 130, 246, 0.2)' },
+  diner: { bg: '#ede9fe', text: '#5b21b6', border: 'rgba(139, 92, 246, 0.2)' },
+  collation: { bg: '#fce7f3', text: '#9d174d', border: 'rgba(236, 72, 153, 0.2)' },
+}
+
 const MEAL_ORDER = ['pdj', 'dejeuner', 'diner', 'collation']
 
 /**
@@ -185,7 +193,6 @@ export default function TodayMeals({ importId }) {
   }
 
   async function confirmSwap() {
-    // The swap is already saved by the API — just close and reload
     setSwapSuccess(true)
     setTimeout(() => {
       closeModal()
@@ -232,6 +239,7 @@ export default function TodayMeals({ importId }) {
               {mergedMeals.map((meal, i) => {
                 const isGenerating = generatingRecipe && selectedMeal?.dishName === meal.dishName
                 const isNext = meal.type === nextType
+                const colors = MEAL_COLORS[meal.type] || MEAL_COLORS.dejeuner
 
                 return (
                   <button
@@ -240,14 +248,24 @@ export default function TodayMeals({ importId }) {
                     disabled={generatingRecipe}
                     style={{
                       ...S.mealRow,
-                      ...(isNext ? S.mealRowNext : {}),
+                      ...(isNext ? {
+                        ...S.mealRowNext,
+                        borderColor: colors.border,
+                        background: `linear-gradient(135deg, ${colors.bg}44, rgba(255,255,255,0.5))`,
+                      } : {}),
                       opacity: generatingRecipe && !isGenerating ? 0.5 : 1,
                     }}
                   >
-                    <span style={S.mealType}>{MEAL_LABELS[meal.type] || meal.type}</span>
+                    <span style={{
+                      ...S.mealType,
+                      background: colors.bg,
+                      color: colors.text,
+                    }}>
+                      {MEAL_LABELS[meal.type] || meal.type}
+                    </span>
                     <span style={S.mealDesc}>{meal.dishName}</span>
                     {isGenerating ? (
-                      <Loader2 size={14} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: '#16a34a' }} />
+                      <Loader2 size={14} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: '#4a7c4a' }} />
                     ) : (
                       <span style={S.mealPersons}>{meal.persons.join('')}</span>
                     )}
@@ -268,10 +286,19 @@ export default function TodayMeals({ importId }) {
         <>
           <div style={S.overlay} onClick={closeModal} />
           <div style={S.modal}>
+            {/* Decorative top bar */}
+            <div style={S.modalTopBar} />
+
             {/* Header */}
             <div style={S.modalHeader}>
               <div>
-                <span style={S.modalMealType}>{MEAL_LABELS[selectedMeal.type] || selectedMeal.type}</span>
+                <span style={{
+                  ...S.modalMealType,
+                  background: (MEAL_COLORS[selectedMeal.type] || MEAL_COLORS.dejeuner).bg,
+                  color: (MEAL_COLORS[selectedMeal.type] || MEAL_COLORS.dejeuner).text,
+                }}>
+                  {MEAL_LABELS[selectedMeal.type] || selectedMeal.type}
+                </span>
                 <h3 style={S.modalTitle}>{selectedMeal.dishName}</h3>
                 {selectedMeal.entries[0]?.kcal && (
                   <p style={S.modalMacros}>
@@ -354,9 +381,13 @@ export default function TodayMeals({ importId }) {
 
             {/* ── SWAP SUCCESS ── */}
             {swapSuccess && (
-              <div style={{ textAlign: 'center', padding: '16px 0' }}>
-                <Check size={32} color="#16a34a" />
-                <p style={{ color: '#16a34a', fontWeight: 600, marginTop: 8 }}>Plat changé !</p>
+              <div style={{ textAlign: 'center', padding: '20px 0' }}>
+                <div style={S.successIcon}>
+                  <Check size={28} color="white" />
+                </div>
+                <p style={{ color: '#4a7c4a', fontWeight: 600, marginTop: 12, fontFamily: "'Crimson Text', Georgia, serif", fontSize: 18 }}>
+                  Plat changé !
+                </p>
               </div>
             )}
           </div>
@@ -381,48 +412,49 @@ const S = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 4,
+    gap: 6,
   },
   dayLabel: {
-    fontSize: 11,
-    fontWeight: 700,
-    color: '#9ca3af',
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-    margin: '8px 0 4px',
+    fontFamily: "'Crimson Text', Georgia, serif",
+    fontSize: 15,
+    fontWeight: 600,
+    color: '#2d5a2d',
+    letterSpacing: 0.5,
+    margin: '12px 0 6px',
   },
   mealRow: {
     display: 'flex',
     alignItems: 'center',
-    gap: 8,
+    gap: 10,
     width: '100%',
-    padding: '10px 12px',
-    border: '1px solid transparent',
-    borderRadius: 12,
-    background: 'rgba(255,255,255,0.4)',
+    padding: '12px 14px',
+    border: '1px solid rgba(0, 0, 0, 0.05)',
+    borderRadius: 14,
+    background: 'rgba(255,255,255,0.55)',
+    backdropFilter: 'blur(6px)',
     cursor: 'pointer',
-    fontFamily: 'inherit',
+    fontFamily: "'Inter', sans-serif",
     textAlign: 'left',
-    transition: 'all 0.15s',
+    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     fontSize: 14,
     color: 'var(--ink, #1f281f)',
+    marginBottom: 2,
   },
   mealRowNext: {
-    background: 'rgba(22,163,74,0.06)',
-    borderColor: 'rgba(22,163,74,0.2)',
+    borderWidth: '1.5px',
+    boxShadow: '0 2px 12px rgba(74, 124, 74, 0.08)',
   },
   mealType: {
     fontSize: 10,
     fontWeight: 700,
-    color: '#16a34a',
-    background: 'rgba(22,163,74,0.08)',
-    padding: '2px 8px',
-    borderRadius: 6,
+    padding: '3px 10px',
+    borderRadius: 8,
     textTransform: 'uppercase',
-    letterSpacing: 0.3,
+    letterSpacing: 0.4,
     flexShrink: 0,
-    minWidth: 52,
+    minWidth: 56,
     textAlign: 'center',
+    fontFamily: "'Inter', sans-serif",
   },
   mealDesc: {
     flex: 1,
@@ -434,76 +466,89 @@ const S = {
   mealPersons: {
     fontSize: 10,
     fontWeight: 700,
-    color: '#6b9d6b',
-    background: 'rgba(22,163,74,0.08)',
-    borderRadius: 4,
-    padding: '1px 5px',
+    color: '#4a7c4a',
+    background: 'rgba(74, 124, 74, 0.08)',
+    borderRadius: 6,
+    padding: '2px 6px',
     flexShrink: 0,
+    fontFamily: "'Inter', sans-serif",
   },
 
   // Overlay + Modal
   overlay: {
     position: 'fixed',
     top: 0, left: 0, right: 0, bottom: 0,
-    background: 'rgba(0,0,0,0.4)',
-    backdropFilter: 'blur(4px)',
+    background: 'rgba(0,0,0,0.45)',
+    backdropFilter: 'blur(6px)',
     zIndex: 1100,
   },
   modal: {
     position: 'fixed',
     bottom: 0, left: 0, right: 0,
-    background: 'rgba(255,255,255,0.95)',
-    backdropFilter: 'blur(20px)',
-    WebkitBackdropFilter: 'blur(20px)',
-    borderRadius: '24px 24px 0 0',
-    padding: '20px 20px 32px',
+    background: 'rgba(255,255,255,0.97)',
+    backdropFilter: 'blur(24px)',
+    WebkitBackdropFilter: 'blur(24px)',
+    borderRadius: '28px 28px 0 0',
+    padding: '0 24px 36px',
     zIndex: 1101,
     maxHeight: '80vh',
     overflowY: 'auto',
-    boxShadow: '0 -4px 30px rgba(0,0,0,0.15)',
+    boxShadow: '0 -8px 40px rgba(0,0,0,0.15)',
+  },
+  modalTopBar: {
+    width: 40,
+    height: 4,
+    background: '#d1d5db',
+    borderRadius: 4,
+    margin: '12px auto 16px',
   },
   modalHeader: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginBottom: 16,
+    marginBottom: 20,
   },
   modalMealType: {
+    display: 'inline-block',
     fontSize: 10,
     fontWeight: 700,
-    color: '#16a34a',
-    background: 'rgba(22,163,74,0.08)',
-    padding: '2px 8px',
-    borderRadius: 6,
+    padding: '3px 10px',
+    borderRadius: 8,
     textTransform: 'uppercase',
-    letterSpacing: 0.3,
+    letterSpacing: 0.4,
+    fontFamily: "'Inter', sans-serif",
   },
   modalTitle: {
-    fontSize: 20,
+    fontFamily: "'Crimson Text', Georgia, serif",
+    fontSize: 24,
     fontWeight: 700,
-    color: 'var(--ink, #1f281f)',
-    margin: '6px 0 4px',
+    color: 'var(--forest-800, #2d5a2d)',
+    margin: '8px 0 4px',
+    letterSpacing: -0.02,
+    lineHeight: 1.2,
   },
   modalMacros: {
     fontSize: 12,
     color: '#6b7280',
     margin: 0,
+    fontFamily: "'Inter', sans-serif",
   },
   closeBtn: {
     border: 'none',
-    background: 'rgba(0,0,0,0.05)',
-    borderRadius: 10,
-    padding: 8,
+    background: 'rgba(0,0,0,0.04)',
+    borderRadius: 12,
+    padding: 10,
     cursor: 'pointer',
     color: '#6b7280',
     display: 'flex',
     flexShrink: 0,
+    transition: 'all 0.15s',
   },
 
   // Choice buttons
   choiceButtons: {
     display: 'flex',
-    gap: 10,
+    gap: 12,
   },
   cookBtn: {
     flex: 1,
@@ -511,16 +556,17 @@ const S = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    padding: '14px 0',
-    background: '#16a34a',
+    padding: '16px 0',
+    background: 'linear-gradient(135deg, #2d5a2d, #4a7c4a)',
     color: 'white',
     border: 'none',
-    borderRadius: 14,
+    borderRadius: 16,
     fontSize: 15,
     fontWeight: 600,
     cursor: 'pointer',
-    fontFamily: 'inherit',
-    boxShadow: '0 4px 14px rgba(22,163,74,0.25)',
+    fontFamily: "'Inter', sans-serif",
+    boxShadow: '0 4px 16px rgba(45, 90, 45, 0.25)',
+    transition: 'all 0.2s',
   },
   swapBtn: {
     flex: 1,
@@ -528,49 +574,52 @@ const S = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    padding: '14px 0',
+    padding: '16px 0',
     background: 'transparent',
     color: '#374151',
-    border: '1.5px solid rgba(0,0,0,0.12)',
-    borderRadius: 14,
+    border: '1.5px solid rgba(0,0,0,0.1)',
+    borderRadius: 16,
     fontSize: 15,
     fontWeight: 600,
     cursor: 'pointer',
-    fontFamily: 'inherit',
+    fontFamily: "'Inter', sans-serif",
+    transition: 'all 0.2s',
   },
 
   // Swap section
   swapSection: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 10,
+    gap: 12,
   },
   swapInput: {
     width: '100%',
-    padding: '12px 14px',
-    border: '1.5px solid rgba(0,0,0,0.1)',
-    borderRadius: 12,
+    padding: '14px 16px',
+    border: '1.5px solid rgba(74, 124, 74, 0.15)',
+    borderRadius: 14,
     fontSize: 14,
-    fontFamily: 'inherit',
+    fontFamily: "'Inter', sans-serif",
     color: 'var(--ink, #1f281f)',
     outline: 'none',
     background: 'rgba(255,255,255,0.8)',
     boxSizing: 'border-box',
+    transition: 'border-color 0.2s',
   },
   generateBtn: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    padding: '14px 0',
-    background: '#16a34a',
+    padding: '16px 0',
+    background: 'linear-gradient(135deg, #2d5a2d, #4a7c4a)',
     color: 'white',
     border: 'none',
-    borderRadius: 14,
+    borderRadius: 16,
     fontSize: 15,
     fontWeight: 600,
     cursor: 'pointer',
-    fontFamily: 'inherit',
+    fontFamily: "'Inter', sans-serif",
+    boxShadow: '0 4px 16px rgba(45, 90, 45, 0.25)',
   },
   swapError: {
     color: '#dc2626',
@@ -584,7 +633,7 @@ const S = {
     color: '#6b7280',
     fontSize: 13,
     cursor: 'pointer',
-    fontFamily: 'inherit',
+    fontFamily: "'Inter', sans-serif",
     padding: '4px 0',
     textAlign: 'center',
   },
@@ -602,11 +651,13 @@ const S = {
     textTransform: 'uppercase',
     letterSpacing: 0.5,
     margin: 0,
+    fontFamily: "'Inter', sans-serif",
   },
   swapResultName: {
-    fontSize: 18,
+    fontFamily: "'Crimson Text', Georgia, serif",
+    fontSize: 22,
     fontWeight: 700,
-    color: 'var(--ink, #1f281f)',
+    color: 'var(--forest-800, #2d5a2d)',
     margin: '0 0 4px',
   },
   swapResultMacro: {
@@ -614,11 +665,12 @@ const S = {
     color: '#374151',
     margin: '2px 0',
     lineHeight: 1.4,
+    fontFamily: "'Inter', sans-serif",
   },
   swapResultButtons: {
     display: 'flex',
-    gap: 10,
-    marginTop: 12,
+    gap: 12,
+    marginTop: 14,
   },
   confirmBtn: {
     flex: 1,
@@ -626,26 +678,37 @@ const S = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 6,
-    padding: '14px 0',
-    background: '#16a34a',
+    padding: '16px 0',
+    background: 'linear-gradient(135deg, #2d5a2d, #4a7c4a)',
     color: 'white',
     border: 'none',
-    borderRadius: 14,
+    borderRadius: 16,
     fontSize: 15,
     fontWeight: 600,
     cursor: 'pointer',
-    fontFamily: 'inherit',
+    fontFamily: "'Inter', sans-serif",
+    boxShadow: '0 4px 16px rgba(45, 90, 45, 0.25)',
   },
   retrySwapBtn: {
     flex: 1,
-    padding: '14px 0',
+    padding: '16px 0',
     background: 'transparent',
     color: '#6b7280',
-    border: '1.5px solid rgba(0,0,0,0.1)',
-    borderRadius: 14,
+    border: '1.5px solid rgba(0,0,0,0.08)',
+    borderRadius: 16,
     fontSize: 14,
     cursor: 'pointer',
-    fontFamily: 'inherit',
+    fontFamily: "'Inter', sans-serif",
     textAlign: 'center',
+  },
+  successIcon: {
+    width: 52,
+    height: 52,
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, #2d5a2d, #4a7c4a)',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 4px 16px rgba(45, 90, 45, 0.25)',
   },
 }

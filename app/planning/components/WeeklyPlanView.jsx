@@ -34,7 +34,15 @@ const MEAL_LABELS = {
   collation: 'Collation',
 }
 
+const MEAL_COLORS = {
+  pdj: { bg: '#fef3c7', text: '#92400e', accent: '#f59e0b' },
+  dejeuner: { bg: '#dbeafe', text: '#1e40af', accent: '#3b82f6' },
+  diner: { bg: '#ede9fe', text: '#5b21b6', accent: '#8b5cf6' },
+  collation: { bg: '#fce7f3', text: '#9d174d', accent: '#ec4899' },
+}
+
 const DAY_NAMES = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
+const DAY_NAMES_FULL = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
 
 /**
  * Vue hebdomadaire du planning.
@@ -48,7 +56,7 @@ export default function WeeklyPlanView({ importId }) {
   // Cook mode state
   const [cookModeOpen, setCookModeOpen] = useState(false)
   const [generatedRecipe, setGeneratedRecipe] = useState(null)
-  const [generatingFor, setGeneratingFor] = useState(null) // meal description being generated
+  const [generatingFor, setGeneratingFor] = useState(null)
 
   const getWeekDates = (offset) => {
     const today = new Date()
@@ -84,7 +92,6 @@ export default function WeeklyPlanView({ importId }) {
   }
 
   async function handleMealClick(meal) {
-    // Deduplicate: get unique descriptions for this meal type + date
     const desc = meal.description
     if (!desc) return
 
@@ -133,11 +140,15 @@ export default function WeeklyPlanView({ importId }) {
         <button onClick={() => setWeekOffset(w => w - 1)} style={styles.navArrow}>
           <ChevronLeft size={18} />
         </button>
-        <span style={styles.weekLabel}>
-          {weekDates[0].toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
-          {' — '}
-          {weekDates[6].toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
-        </span>
+        <div style={styles.weekLabelWrap}>
+          <span style={styles.weekLabel}>
+            {weekDates[0].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}
+          </span>
+          <span style={styles.weekSep}>—</span>
+          <span style={styles.weekLabel}>
+            {weekDates[6].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}
+          </span>
+        </div>
         <button onClick={() => setWeekOffset(w => w + 1)} style={styles.navArrow}>
           <ChevronRight size={18} />
         </button>
@@ -153,51 +164,65 @@ export default function WeeklyPlanView({ importId }) {
           const dayNum = date.getDate()
 
           return (
-            <GlassCard
+            <div
               key={dateStr}
-              padding={10}
-              radius={12}
               style={{
                 ...styles.dayCard,
                 ...(isToday ? styles.todayCard : {}),
               }}
             >
-              <div style={{ ...styles.dayHeader, ...(isToday ? { color: '#16a34a' } : {}) }}>
+              {/* Day header */}
+              <div style={{
+                ...styles.dayHeader,
+                ...(isToday ? styles.todayHeader : {}),
+              }}>
                 <span style={styles.dayName}>{dayName}</span>
-                <span style={styles.dayNum}>{dayNum}</span>
+                <span style={{
+                  ...styles.dayNum,
+                  ...(isToday ? styles.todayNum : {}),
+                }}>{dayNum}</span>
               </div>
-              {dayMeals.length === 0 ? (
-                <p style={styles.noMeal}>—</p>
-              ) : (
-                // Group meals by type, show dish name only (not quantities)
-                [...new Set(dayMeals.map(m => m.meal_type))].map(type => {
-                  const typeMeals = dayMeals.filter(m => m.meal_type === type)
-                  // Extract dish name (before ":" or common prefix)
-                  const descriptions = typeMeals.map(m => m.description)
-                  const dishName = extractDishName(descriptions)
-                  const isGenerating = generatingFor === dishName
 
-                  return (
-                    <div key={type} style={styles.mealBlock}>
-                      <span style={styles.mealType}>{MEAL_LABELS[type] || type}</span>
-                      <button
-                        onClick={() => handleMealClick({ ...typeMeals[0], description: dishName })}
-                        disabled={!!generatingFor}
-                        style={{
-                          ...styles.mealBtn,
-                          opacity: generatingFor && !isGenerating ? 0.5 : 1,
-                        }}
-                      >
-                        {isGenerating ? (
-                          <Loader2 size={12} style={{ animation: 'spin 1s linear infinite', flexShrink: 0 }} />
-                        ) : null}
-                        <span style={styles.mealDescText}>{dishName}</span>
-                      </button>
-                    </div>
-                  )
-                })
-              )}
-            </GlassCard>
+              {/* Meals */}
+              <div style={styles.mealsWrap}>
+                {dayMeals.length === 0 ? (
+                  <p style={styles.noMeal}>—</p>
+                ) : (
+                  [...new Set(dayMeals.map(m => m.meal_type))].map(type => {
+                    const typeMeals = dayMeals.filter(m => m.meal_type === type)
+                    const descriptions = typeMeals.map(m => m.description)
+                    const dishName = extractDishName(descriptions)
+                    const isGenerating = generatingFor === dishName
+                    const colors = MEAL_COLORS[type] || MEAL_COLORS.dejeuner
+
+                    return (
+                      <div key={type} style={styles.mealBlock}>
+                        <span style={{
+                          ...styles.mealType,
+                          background: colors.bg,
+                          color: colors.text,
+                        }}>
+                          {MEAL_LABELS[type] || type}
+                        </span>
+                        <button
+                          onClick={() => handleMealClick({ ...typeMeals[0], description: dishName })}
+                          disabled={!!generatingFor}
+                          style={{
+                            ...styles.mealBtn,
+                            opacity: generatingFor && !isGenerating ? 0.4 : 1,
+                          }}
+                        >
+                          {isGenerating ? (
+                            <Loader2 size={11} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: colors.accent }} />
+                          ) : null}
+                          <span style={styles.mealDescText}>{dishName}</span>
+                        </button>
+                      </div>
+                    )
+                  })
+                )}
+              </div>
+            </div>
           )
         })}
       </div>
@@ -228,83 +253,126 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 16,
-    marginBottom: 12,
+    marginBottom: 16,
+    padding: '8px 0',
   },
   navArrow: {
     border: 'none',
-    background: 'rgba(0,0,0,0.04)',
-    borderRadius: 8,
-    padding: 6,
+    background: 'rgba(74, 124, 74, 0.08)',
+    borderRadius: 10,
+    padding: 8,
     cursor: 'pointer',
-    color: '#6b7280',
+    color: '#4a7c4a',
     display: 'flex',
+    transition: 'all 0.2s',
+  },
+  weekLabelWrap: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
   },
   weekLabel: {
-    fontSize: 14,
+    fontFamily: "'Crimson Text', Georgia, serif",
+    fontSize: 17,
     fontWeight: 600,
-    color: 'var(--ink, #1f281f)',
+    color: 'var(--forest-800, #2d5a2d)',
+  },
+  weekSep: {
+    color: '#9ca3af',
+    fontSize: 14,
   },
   daysGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(7, 1fr)',
-    gap: 6,
+    gap: 8,
     overflowX: 'auto',
   },
   dayCard: {
-    minHeight: 100,
+    background: 'rgba(255, 255, 255, 0.6)',
+    backdropFilter: 'blur(8px)',
+    border: '1px solid rgba(0, 0, 0, 0.06)',
+    borderRadius: 14,
+    minHeight: 120,
+    overflow: 'hidden',
+    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
   todayCard: {
-    border: '2px solid rgba(22,163,74,0.4)',
-    background: 'rgba(22,163,74,0.06)',
+    border: '2px solid rgba(74, 124, 74, 0.35)',
+    background: 'rgba(255, 255, 255, 0.8)',
+    boxShadow: '0 4px 16px rgba(74, 124, 74, 0.1)',
   },
   dayHeader: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'baseline',
-    marginBottom: 6,
-    color: '#6b7280',
+    alignItems: 'center',
+    padding: '8px 10px 6px',
+    borderBottom: '1px solid rgba(0, 0, 0, 0.04)',
+  },
+  todayHeader: {
+    background: 'linear-gradient(135deg, rgba(74, 124, 74, 0.06), rgba(139, 181, 139, 0.08))',
+    borderBottom: '1px solid rgba(74, 124, 74, 0.1)',
   },
   dayName: {
-    fontSize: 11,
-    fontWeight: 600,
+    fontFamily: "'Inter', sans-serif",
+    fontSize: 10,
+    fontWeight: 700,
     textTransform: 'uppercase',
-    letterSpacing: 0.5,
+    letterSpacing: 0.8,
+    color: '#9ca3af',
   },
   dayNum: {
-    fontSize: 16,
+    fontFamily: "'Crimson Text', Georgia, serif",
+    fontSize: 18,
     fontWeight: 700,
+    color: '#6b7280',
+  },
+  todayNum: {
+    color: '#4a7c4a',
+    background: 'rgba(74, 124, 74, 0.1)',
+    width: 28,
+    height: 28,
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  mealsWrap: {
+    padding: '6px 8px 8px',
   },
   noMeal: {
     fontSize: 12,
     color: '#d1d5db',
     textAlign: 'center',
-    margin: '8px 0',
+    margin: '12px 0',
   },
   mealBlock: {
     marginBottom: 6,
   },
   mealType: {
-    fontSize: 10,
-    fontWeight: 600,
-    color: '#9ca3af',
+    display: 'inline-block',
+    fontSize: 9,
+    fontWeight: 700,
+    padding: '2px 6px',
+    borderRadius: 5,
     textTransform: 'uppercase',
     letterSpacing: 0.3,
+    fontFamily: "'Inter', sans-serif",
   },
   mealBtn: {
     display: 'flex',
     alignItems: 'center',
     gap: 4,
     width: '100%',
-    padding: '4px 6px',
-    margin: '2px 0',
-    border: '1px solid transparent',
+    padding: '3px 4px',
+    margin: '2px 0 0',
+    border: 'none',
     borderRadius: 6,
     background: 'transparent',
     cursor: 'pointer',
-    fontFamily: 'inherit',
+    fontFamily: "'Inter', sans-serif",
     textAlign: 'left',
     transition: 'all 0.15s',
-    fontSize: 12,
+    fontSize: 11.5,
     lineHeight: 1.3,
     color: 'var(--ink, #1f281f)',
   },
@@ -313,14 +381,6 @@ const styles = {
     minWidth: 0,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-  },
-  personTag: {
-    fontSize: 9,
-    fontWeight: 700,
-    background: 'rgba(22,163,74,0.12)',
-    color: '#16a34a',
-    borderRadius: 4,
-    padding: '1px 4px',
-    flexShrink: 0,
+    fontWeight: 500,
   },
 }
