@@ -86,11 +86,18 @@ export default function CoursesPage() {
             }),
           })
           const data = await res.json()
-          setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: true, stocking: false } : i))
+          if (res.ok && data.success) {
+            setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: true, stocking: false } : i))
+          } else {
+            console.error('Erreur ajout stock:', data.error)
+            setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false, stockError: true } : i))
+          }
         } catch (stockErr) {
           console.error('Erreur ajout stock:', stockErr)
           setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false } : i))
         }
+      } else {
+        setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: false, stocking: false, stockError: false } : i))
       }
     } catch {
       setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: !newChecked, stocking: false } : i))
@@ -203,6 +210,9 @@ export default function CoursesPage() {
                 )}
                 {item.stocked && !item.stocking && (
                   <span style={S.stockedBadge}><Package size={11} /> rangé</span>
+                )}
+                {item.stockError && !item.stocking && (
+                  <span style={S.stockErrorBadge}>non rangé</span>
                 )}
               </button>
             ))}
@@ -387,6 +397,15 @@ const S = {
     fontWeight: 600,
     color: '#16a34a',
     background: 'rgba(22, 163, 74, 0.08)',
+    padding: '2px 7px',
+    borderRadius: 6,
+    flexShrink: 0,
+  },
+  stockErrorBadge: {
+    fontSize: 10,
+    fontWeight: 600,
+    color: '#ef4444',
+    background: 'rgba(239, 68, 68, 0.08)',
     padding: '2px 7px',
     borderRadius: 6,
     flexShrink: 0,
