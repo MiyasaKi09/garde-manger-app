@@ -663,3 +663,42 @@ id,import_id,prep_date,prep_label,task,estimated_time
 1128,16,2026-04-13,Dimanche 13/04,Carottes nouvelles: Cuire 270g carottes nouvelles entières vapeur 12min,12min
 1129,16,2026-04-13,Dimanche 13/04,[Prep] Œufs durs: Cuire 15 œufs durs pour la semaine prochaine,15min
 1130,16,2026-04-13,Dimanche 13/04,[Prep] Préparer ingrédients: Découper légumes pour le batch de lundi,15min
+1131,17,2026-04-07,Lundi 07/04,Préparer les PDT: Laver et couper 350g PDT grenaille en deux. Les faire rôtir au four à 200°C avec un filet d'huile d'olive et du sel,20min
+1132,17,2026-04-07,Lundi 07/04,"Paner les escalopes: Passer 320g escalopes de dinde dans farine, œuf battu, puis chapelure. Les cuire à la poêle 3-4min/côté",8min
+1133,17,2026-04-07,Lundi 07/04,Cuire les asperges: Faire cuire 220g asperges à la vapeur pendant 6-8min,8min
+1134,17,2026-04-08,Mardi 08/04,Cuire le riz: Faire cuire 160g riz basmati dans 320ml d'eau salée pendant 15min,15min
+1135,17,2026-04-08,Mardi 08/04,"Préparer la sauce teriyaki: Mélanger 2 c.s. sauce soja, 1 c.s. miel, 1 c.c. vinaigre de riz, 1 gousse ail hachée",2min
+1136,17,2026-04-08,Mardi 08/04,"Cuire le saumon: Cuire 310g filets de saumon à la poêle 4min/côté, badigeonner de sauce teriyaki",8min
+1137,17,2026-04-08,Mardi 08/04,Faire sauter les petit pois: Faire revenir 270g petit pois surgelés à la poêle avec un peu d'huile et d'ail 5min,5min
+1138,17,2026-04-08,Mardi 08/04,"[Prep] Préparer les légumes: Éplucher et couper 400g carottes nouvelles, nettoyer 6 artichauts",20min
+1139,17,2026-04-08,Mardi 08/04,[Prep] Faire revenir la viande: Faire dorer 600g épaule d'agneau coupée en morceaux dans un faitout avec huile d'olive,10min
+1140,17,2026-04-08,Mardi 08/04,"[Prep] Mijoter le curry: Ajouter 400ml lait de coco, 2 c.s. pâte curry rouge, légumes, laisser mijoter 30min",30min
+1141,17,2026-04-09,Mercredi 09/04,Cuire les PDT: Faire cuire 350g PDT épluchées à la vapeur pendant 20min,20min
+1142,17,2026-04-09,Mercredi 09/04,Préparer les radis: Nettoyer et couper 220g radis en quartiers,5min
+1143,17,2026-04-09,Mercredi 09/04,"Cuire le porc: Saisir 300g côtes de porc à la poêle 4min/côté, réserver",8min
+1144,17,2026-04-09,Mercredi 09/04,"Confire les radis: Dans la même poêle, faire revenir les radis avec 2 c.s. miel, sel, poivre 8min",8min
+1145,17,2026-04-09,Mercredi 09/04,"[Prep] Cuire les œufs: Faire bouillir 15 œufs pendant 10min, les refroidir dans l'eau glacée",15min
+1146,17,2026-04-10,Jeudi 10/04,"Préparer les PDT: Couper 320g PDT en dés, les faire sauter à la poêle avec huile d'olive 12min",12min
+1147,17,2026-04-10,Jeudi 10/04,Cuire les épinards: Faire revenir 220g épinards frais à la poêle 3min jusqu'à ce qu'ils flétrissent,3min
+1148,17,2026-04-10,Jeudi 10/04,"Préparer l'omelette: Battre 5 œufs, verser dans une poêle chaude, ajouter épinards et 45g gruyère râpé",5min
+1149,17,2026-04-10,Jeudi 10/04,"Finaliser: Plier l'omelette en deux, laisser cuire 2min supplémentaires",2min
+1150,17,2026-04-10,Jeudi 10/04,[Prep] Faire revenir la viande: Faire dorer 600g bœuf à braiser coupé en morceaux dans un faitout,15min
+1151,17,2026-04-10,Jeudi 10/04,"[Prep] Ajouter les légumes: Ajouter 300g carottes nouvelles, 200g petit pois, 2 oignons émincés",10min
+1152,17,2026-04-10,Jeudi 10/04,"[Prep] Mijoter: Ajouter 400ml bouillon bœuf, herbes de Provence, laisser mijoter à feu doux 45min",45min
+1153,17,2026-04-11,Vendredi 11/04,"Préparer les PDT: Laver et couper 340g PDT grenaille, les faire rôtir au four à 200°C avec huile d'olive 20min",20min
+1154,17,2026-04-11,Vendredi 11/04,Cuire les asperges: Faire cuire 270g asperges à la vapeur 8min,8min
+1155,17,2026-04-11,Vendredi 11/04,Cuire le saumon: Saisir 310g pavés de saumon à la poêle 4min/côté,8min
+1156,17,2026-04-11,Vendredi 11/04,Préparer le beurre à l'ail: Faire fondre 30g beurre avec 2 gousses ail hachées et persil,3min
+1157,17,2026-04-12,Samedi 12/04,"Préparer les frites: Couper 350g PDT en frites, les faire au four à 220°C avec huile d'olive 25min",25min
+1158,17,2026-04-12,Samedi 12/04,"Paner le cabillaud: Passer 350g filets de cabillaud dans farine, œuf battu, chapelure",8min
+1159,17,2026-04-12,Samedi 12/04,Cuire le poisson: Faire frire le cabillaud pané à la poêle 4min/côté,8min
+1160,17,2026-04-12,Samedi 12/04,Cuire les petit pois: Faire cuire 220g petit pois surgelés 5min,5min
+1161,17,2026-04-12,Samedi 12/04,"Préparer la sauce: Mélanger mayonnaise, câpres, cornichons hachés, citron",3min
+1162,17,2026-04-12,Samedi 12/04,"[Prep] Faire la purée: Éplucher et cuire 400g PDT, les écraser avec lait et beurre",20min
+1163,17,2026-04-12,Samedi 12/04,"[Prep] Assembler: Dans un plat, disposer le bœuf mijoté, recouvrir de purée, gratiner 15min",15min
+1164,17,2026-04-13,Dimanche 13/04,Préparer le rôti: Saisir 800g rôti de porc dans un faitout avec huile d'olive 8min de tous côtés,8min
+1165,17,2026-04-13,Dimanche 13/04,Ajouter les légumes: Ajouter 270g carottes nouvelles entières et 2 oignons émincés autour du rôti,5min
+1166,17,2026-04-13,Dimanche 13/04,"Cuire au four: Enfourner à 180°C pendant 60min, arroser régulièrement",60min
+1167,17,2026-04-13,Dimanche 13/04,Préparer les PDT: Faire rôtir 340g PDT coupées avec huile et romarin 45min,45min
+1168,17,2026-04-13,Dimanche 13/04,Repos et découpe: Laisser reposer le rôti 10min avant de découper,10min
+1169,17,2026-04-13,Dimanche 13/04,"[Prep] Cuire les œufs: Faire bouillir 15 œufs pendant 10min, les refroidir dans l'eau glacée",15min
