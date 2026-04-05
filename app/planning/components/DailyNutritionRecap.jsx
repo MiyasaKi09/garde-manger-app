@@ -16,8 +16,8 @@ function pct(value, target) {
 }
 
 function statusColor(percent) {
-  if (percent >= 95 && percent <= 105) return '#16a34a' // on target
-  if (percent >= 85 && percent <= 115) return '#f59e0b' // close
+  if (percent >= 90 && percent <= 110) return '#16a34a' // on target
+  if (percent >= 75 && percent <= 125) return '#f59e0b' // close
   return '#ef4444' // off
 }
 
@@ -95,6 +95,7 @@ export default function DailyNutritionRecap({ importId }) {
                       <span style={{ ...S.microValue, color: statusColor(protPct) }}>{Math.round(p.protein_g || 0)}P</span>
                       <span style={{ ...S.microValue, color: statusColor(carbsPct) }}>{Math.round(p.carbs_g || 0)}G</span>
                       <span style={{ ...S.microValue, color: statusColor(fatPct) }}>{Math.round(p.fat_g || 0)}L</span>
+                      {p.fiber_g > 0 && <span style={S.microValue}>{Math.round(p.fiber_g)}F</span>}
                     </div>
                   </div>
                 )
