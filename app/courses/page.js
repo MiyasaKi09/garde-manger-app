@@ -111,42 +111,58 @@ export default function CoursesPage() {
 
   async function findProduct(name) {
     const n = name.trim().toLowerCase()
+    // Generate search variants: singular, plural, without accents
+    const variants = getSearchVariants(n)
 
-    // Try archetype
-    const { data: archs } = await supabase
-      .from('archetypes')
-      .select('id, name')
-      .ilike('name', `%${n}%`)
-      .limit(5)
+    for (const variant of variants) {
+      // Try archetype
+      const { data: archs } = await supabase
+        .from('archetypes')
+        .select('id, name')
+        .ilike('name', `%${variant}%`)
+        .limit(5)
 
-    if (archs?.length) {
-      const exact = archs.find(a => a.name.toLowerCase() === n)
-      return { type: 'archetype', id: (exact || archs[0]).id }
-    }
+      if (archs?.length) {
+        const exact = archs.find(a => a.name.toLowerCase() === variant)
+        return { type: 'archetype', id: (exact || archs[0]).id }
+      }
 
-    // Try canonical_food
-    const { data: cans } = await supabase
-      .from('canonical_foods')
-      .select('id, canonical_name')
-      .ilike('canonical_name', `%${n}%`)
-      .limit(5)
+      // Try canonical_food
+      const { data: cans } = await supabase
+        .from('canonical_foods')
+        .select('id, canonical_name')
+        .ilike('canonical_name', `%${variant}%`)
+        .limit(5)
 
-    if (cans?.length) {
-      const exact = cans.find(c => c.canonical_name.toLowerCase() === n)
-      return { type: 'canonical', id: (exact || cans[0]).id }
-    }
-
-    // Fuzzy: try first meaningful word
-    const words = n.split(/\s+/).filter(w => w.length > 2 && !['de','du','des','le','la','les','au','aux','en'].includes(w))
-    if (words[0]) {
-      const { data: fa } = await supabase.from('archetypes').select('id, name').ilike('name', `%${words[0]}%`).limit(3)
-      if (fa?.length) return { type: 'archetype', id: fa[0].id }
-
-      const { data: fc } = await supabase.from('canonical_foods').select('id, canonical_name').ilike('canonical_name', `%${words[0]}%`).limit(3)
-      if (fc?.length) return { type: 'canonical', id: fc[0].id }
+      if (cans?.length) {
+        const exact = cans.find(c => c.canonical_name?.toLowerCase() === variant)
+        return { type: 'canonical', id: (exact || cans[0]).id }
+      }
     }
 
     return null
+  }
+
+  function getSearchVariants(name) {
+    const variants = [name]
+    // Singular: remove trailing s/x
+    if (name.endsWith('s') || name.endsWith('x')) {
+      variants.push(name.slice(0, -1))
+    }
+    // Plural: add s
+    if (!name.endsWith('s') && !name.endsWith('x')) {
+      variants.push(name + 's')
+    }
+    // Remove accents
+    const noAccents = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    if (noAccents !== name) variants.push(noAccents)
+    // First meaningful word only (for compound names like "Huile d'olive")
+    const words = name.split(/\s+/).filter(w => w.length > 2 && !['de','du','des','le','la','les','au','aux','en',"d'","l'"].includes(w))
+    if (words[0] && words[0] !== name) {
+      variants.push(words[0])
+      if (words[0].endsWith('s')) variants.push(words[0].slice(0, -1))
+    }
+    return [...new Set(variants)]
   }
 
   function parseQty(str) {
