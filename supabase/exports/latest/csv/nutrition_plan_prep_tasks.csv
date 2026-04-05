@@ -764,3 +764,42 @@ id,import_id,prep_date,prep_label,task,estimated_time
 1229,19,2026-04-13,Dimanche 13/04,Préparer la liaison: Battre 3 œufs entiers avec 70g pecorino romano râpé et poivre noir,3min
 1230,19,2026-04-13,Dimanche 13/04,"Assembler: Égoutter pâtes en gardant un peu d'eau de cuisson, mélanger hors feu avec œufs et guanciale",7min
 1231,19,2026-04-13,Dimanche 13/04,"[Prep] Cuire œufs durs: Mettre 15 œufs dans eau froide, porter à ébullition puis 10min de cuisson",15min
+1232,20,2026-04-06,Lundi 06/04,"Précuisson PDT: Laver et couper 350g PDT grenaille en deux, cuire 12min eau bouillante salée",12min
+1233,20,2026-04-06,Lundi 06/04,"Préparation asperges: Éplucher 270g asperges, couper les extrémités dures",3min
+1234,20,2026-04-06,Lundi 06/04,"Cuisson saumon: Saler/poivrer 320g pavés saumon, cuire 4min chaque côté à la poêle huile d'olive",8min
+1235,20,2026-04-06,Lundi 06/04,"Finition: Égoutter PDT, les faire dorer 2min. Cuire asperges 3min vapeur. Beurre à l'ail fondu",5min
+1236,20,2026-04-06,Lundi 06/04,"[Prep] Préparation légumes: Éplucher 500g artichauts, couper 400g carottes nouvelles en rondelles, émincer 2 oignons",20min
+1237,20,2026-04-06,Lundi 06/04,[Prep] Cuisson agneau: Faire revenir 600g épaule d'agneau coupée en cubes dans huile d'olive 8min,8min
+1238,20,2026-04-06,Lundi 06/04,"[Prep] Mijoté: Ajouter légumes, épices tajine, 400ml bouillon, couvrir et mijoter 90min feu doux",90min
+1239,20,2026-04-07,Mardi 07/04,"Préparation frites: Couper 350g PDT en frites, les badigeonner d'huile, enfourner 20min à 220°C",5min
+1240,20,2026-04-07,Mardi 07/04,"Panure escalopes: Aplatir 280g escalopes, les paner: farine, œuf battu, chapelure",8min
+1241,20,2026-04-07,Mardi 07/04,Préparation radis: Laver et couper 220g radis en quartiers,3min
+1242,20,2026-04-07,Mardi 07/04,"Cuisson finale: Cuire escalopes 3min chaque côté, radis sautés 4min au beurre avec herbes",10min
+1243,20,2026-04-08,Mercredi 08/04,"Préparation PDT: Éplucher et couper 350g PDT en cubes, les faire cuire 15min eau bouillante",5min
+1244,20,2026-04-08,Mercredi 08/04,"Cuisson côtes: Saler/poivrer 320g côtes de porc, les griller 4min chaque côté à la poêle",8min
+1245,20,2026-04-08,Mercredi 08/04,Petits pois: Faire revenir 270g petits pois avec oignon émincé et lardons 5min,5min
+1246,20,2026-04-08,Mercredi 08/04,"Finition: Égoutter PDT, les faire sauter au beurre avec persil 3min",7min
+1247,20,2026-04-08,Mercredi 08/04,"[Prep] Base curry: Faire revenir oignon, gingembre, ail, épices curry 5min",5min
+1248,20,2026-04-08,Mercredi 08/04,"[Prep] Mijoté: Ajouter 400g pois chiches égouttés, 200ml lait coco, tomates concassées, mijoter 30min",30min
+1249,20,2026-04-08,Mercredi 08/04,"[Prep] Œufs durs: Cuire 15 œufs 9min eau bouillante, refroidir eau froide",15min
+1250,20,2026-04-09,Jeudi 09/04,"PDT sautées: Éplucher et couper 350g PDT en cubes, les cuire 12min eau bouillante puis les sauter au beurre",15min
+1251,20,2026-04-09,Jeudi 09/04,"Radis: Laver et couper 270g radis en lamelles, les faire sauter 5min au beurre",5min
+1252,20,2026-04-09,Jeudi 09/04,"Omelette: Battre 5 œufs, cuire omelette 3min, ajouter radis et 55g gruyère râpé, plier",5min
+1253,20,2026-04-09,Jeudi 09/04,"[Prep] Préparation: Couper 650g bœuf à braiser en cubes, éplucher 300g carottes et 400g PDT",15min
+1254,20,2026-04-09,Jeudi 09/04,[Prep] Coloration: Faire revenir la viande dans huile d'olive jusqu'à coloration dorée,10min
+1255,20,2026-04-09,Jeudi 09/04,"[Prep] Mijoté: Ajouter légumes, herbes de Provence, vin rouge, bouillon, mijoter 90min couvert",95min
+1256,20,2026-04-10,Vendredi 10/04,"Cuisson riz: Rincer 350g riz basmati, le cuire 15min dans 700ml eau bouillante salée",15min
+1257,20,2026-04-10,Vendredi 10/04,"Petits pois: Cuire 270g petits pois 8min eau bouillante, les égoutter et les poêler avec menthe",8min
+1258,20,2026-04-10,Vendredi 10/04,"Cabillaud: Saler/poivrer 360g filets cabillaud, les cuire 4min chaque côté à la poêle huile d'olive",8min
+1259,20,2026-04-10,Vendredi 10/04,"[Prep] Purée: Éplucher 500g PDT, les cuire 20min, les écraser avec lait et beurre",25min
+1260,20,2026-04-10,Vendredi 10/04,"[Prep] Assemblage: Dans plats: étaler le bœuf de la daube, recouvrir de purée, gratiner 15min",5min
+1261,20,2026-04-11,Samedi 11/04,"Préparation: Couper 140g guanciale en lardons, battre 3 œufs avec 70g pecorino râpé",5min
+1262,20,2026-04-11,Samedi 11/04,Cuisson pâtes: Cuire 350g spaghettis dans eau bouillante salée selon temps paquet,10min
+1263,20,2026-04-11,Samedi 11/04,Guanciale: Faire revenir les lardons jusqu'à dorés et croustillants,5min
+1264,20,2026-04-11,Samedi 11/04,"Finalisation: Mélanger pâtes chaudes avec œufs-fromage hors feu, ajouter guanciale et eau de cuisson",5min
+1265,20,2026-04-12,Dimanche 12/04,"Préparation: Saler/poivrer 800g rôti filet porc, éplucher 270g carottes nouvelles entières",10min
+1266,20,2026-04-12,Dimanche 12/04,Coloration: Faire dorer le rôti sur toutes faces dans cocotte avec huile d'olive,8min
+1267,20,2026-04-12,Dimanche 12/04,"Cuisson four: Ajouter carottes, thym, laurier, enfourner 60min à 180°C en arrosant",60min
+1268,20,2026-04-12,Dimanche 12/04,"PDT rôties: Éplucher 380g PDT, les faire rôtir avec rôti les 40 dernières minutes",12min
+1269,20,2026-04-12,Dimanche 12/04,"[Prep] Œufs durs: Cuire 15 œufs 9min eau bouillante, refroidir eau glacée, écaler",15min
+1270,20,2026-04-12,Dimanche 12/04,"[Prep] Préparation batch: Sortir ingrédients pour le batch de lundi, découper légumes",15min

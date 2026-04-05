@@ -1064,3 +1064,86 @@ id,import_id,week_label,category,product_name,quantity,checked
 2082,19,S1,Crémerie,Skyr,2200 g,f
 2083,19,S1,Crémerie,Oeufs,27 pièces,f
 2084,19,S1,Épicerie,Amandes,210 g,f
+2085,20,S1,Épicerie,Épaule d'agneau,850 g,f
+2086,20,S1,Épicerie,Artichauts,6 pièces,f
+2087,20,S1,Légumes,Carottes nouvelles,1150 g,f
+2088,20,S1,Légumes,Oignon jaune,151 pièce,f
+2089,20,S1,Épicerie,Ail,54 gousses,f
+2090,20,S1,Épicerie,Gingembre frais,40 g,f
+2091,20,S1,Épicerie,Huile d'olive,348 ml,f
+2092,20,S1,Épicerie,Cumin moulu,6 g,f
+2093,20,S1,Épicerie,Coriandre moulue,7 g,f
+2094,20,S1,Épicerie,Cannelle,2 g,f
+2095,20,S1,Épicerie,Bouillon de légumes,600 ml,f
+2096,20,S1,Épicerie,Citron,5 pièce,f
+2097,20,S1,Épicerie,Coriandre fraîche,50 g,f
+2098,20,S1,Épicerie,Sel,64 g,f
+2099,20,S1,Épicerie,Poivre noir,23 g,f
+2100,20,S1,Féculents,Riz basmati,485 g,f
+2101,20,S1,Crémerie,Beurre,295 g,f
+2102,20,S1,Protéines,Pavé de saumon,310 g,f
+2103,20,S1,Légumes,Asperges vertes,270 g,f
+2104,20,S1,Féculents,Pommes de terre grenaille,1770 g,f
+2105,20,S1,Épicerie,Persil plat,45 g,f
+2106,20,S1,Féculents,Semoule de couscous,150 g,f
+2107,20,S1,Légumes,Courgettes,500 g,f
+2108,20,S1,Légumes,Oignon,273 pièce,f
+2109,20,S1,Légumes,Tomates,1200 g,f
+2110,20,S1,Épicerie,Bouillon de bœuf,1300 ml,f
+2111,20,S1,Légumes,Concentré de tomate,82 c. à soupe,f
+2112,20,S1,Épicerie,Ras-el-hanout,2 c. à café,f
+2113,20,S1,Protéines,Escalope de dinde,320 g,f
+2114,20,S1,Épicerie,Chapelure,140 g,f
+2115,20,S1,Épicerie,Œufs,12 pièces,f
+2116,20,S1,Épicerie,Farine,130 g,f
+2117,20,S1,Épicerie,Parmesan râpé,30 g,f
+2118,20,S1,Légumes,Radis roses,200 g,f
+2119,20,S1,Épicerie,Herbes de Provence,6 g,f
+2120,20,S1,Conserves,Pois chiches en conserve,400 g,f
+2121,20,S1,Crémerie,Lait de coco,200 ml,f
+2122,20,S1,Légumes,Tomates pelées en dés,200 g,f
+2123,20,S1,Épicerie,Curry en poudre,8 g,f
+2124,20,S1,Épicerie,Cumin en poudre,3 g,f
+2125,20,S1,Épicerie,Paprika,2 g,f
+2126,20,S1,Épicerie,Yaourt grec,80 g,f
+2127,20,S1,Protéines,Côtes de porc,400 g,f
+2128,20,S1,Conserves,Petits pois frais,300 g,f
+2129,20,S1,Épicerie,Bouillon de volaille,200 ml,f
+2130,20,S1,Épicerie,Thym frais,13 branches,f
+2131,20,S1,Épicerie,Bœuf à braiser (paleron ou joue),600 g,f
+2132,20,S1,Légumes,Oignons,200 g,f
+2133,20,S1,Épicerie,Vin rouge,400 ml,f
+2134,20,S1,Épicerie,Olives noires,80 g,f
+2135,20,S1,Épicerie,Laurier,3 feuilles,f
+2136,20,S1,Épicerie,Romarin,5 branches,f
+2137,20,S1,Épicerie,Orange,1 pièce,f
+2138,20,S1,Féculents,Pommes de terre,2040 g,f
+2139,20,S1,Légumes,Radis,270 g,f
+2140,20,S1,Crémerie,Gruyère râpé,95 g,f
+2141,20,S1,Épicerie,Ciboulette,10 g,f
+2142,20,S1,Épicerie,Bœuf à mijoter (paleron ou gîte),400 g,f
+2143,20,S1,Crémerie,Lait entier,120 ml,f
+2144,20,S1,Épicerie,Muscade,1 g,f
+2145,20,S1,Protéines,Filet de cabillaud,720 g,f
+2146,20,S1,Conserves,Petits pois surgelés,470 g,f
+2147,20,S1,Épicerie,Thym,2 g,f
+2148,20,S1,Féculents,Pains burger,2 pièces,f
+2149,20,S1,Protéines,Steak haché 15% MG,270 g,f
+2150,20,S1,Épicerie,Cheddar en tranches,55 g,f
+2151,20,S1,Légumes,Salade iceberg,80 g,f
+2152,20,S1,Légumes,Tomate,1 pièce,f
+2153,20,S1,Légumes,Oignon rouge,50 g,f
+2154,20,S1,Épicerie,Cornichons,50 g,f
+2155,20,S1,Épicerie,Mayonnaise,50 g,f
+2156,20,S1,Épicerie,Ketchup,15 g,f
+2157,20,S1,Épicerie,Spaghettis,350 g,f
+2158,20,S1,Épicerie,Guanciale,140 g,f
+2159,20,S1,Épicerie,Pecorino Romano,70 g,f
+2160,20,S1,Épicerie,Gros sel,15 g,f
+2161,20,S1,Épicerie,Câpres,10 g,f
+2162,20,S1,Protéines,Rôti de porc (filet ou échine),500 g,f
+2163,20,S1,Épicerie,Vin blanc sec,100 ml,f
+2164,20,S1,Épicerie,Moutarde de Dijon,15 g,f
+2165,20,S1,Crémerie,Skyr,2200 g,f
+2166,20,S1,Crémerie,Oeufs,27 pièces,f
+2167,20,S1,Épicerie,Amandes,210 g,f
