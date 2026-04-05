@@ -891,3 +891,95 @@ id,import_id,week_label,category,product_name,quantity,checked
 1909,17,S1,Crémerie,Skyr,2200 g,f
 1910,17,S1,Crémerie,Oeufs,27 pièces,f
 1911,17,S1,Épicerie,Amandes,210 g,f
+1912,18,S1,Épicerie,Épaule d'agneau,400 g,f
+1913,18,S1,Féculents,Riz basmati,665 g,f
+1914,18,S1,Légumes,Carottes nouvelles,400 g,f
+1915,18,S1,Conserves,Petits pois frais,150 g,f
+1916,18,S1,Épicerie,Artichauts,2 pièces,f
+1917,18,S1,Légumes,Oignon,124 pièce,f
+1918,18,S1,Épicerie,Ail,33 gousses,f
+1919,18,S1,Épicerie,Gingembre frais,15 g,f
+1920,18,S1,Légumes,Tomates,2 pièces,f
+1921,18,S1,Épicerie,Bouillon d'agneau,400 ml,f
+1922,18,S1,Épicerie,Huile d'olive,293 ml,f
+1923,18,S1,Épicerie,Ras el hanout,8 g,f
+1924,18,S1,Épicerie,Curcuma,3 g,f
+1925,18,S1,Épicerie,Cannelle,2 g,f
+1926,18,S1,Épicerie,Sel,56 g,f
+1927,18,S1,Épicerie,Poivre noir,20 g,f
+1928,18,S1,Épicerie,Coriandre fraîche,20 g,f
+1929,18,S1,Épicerie,Citron confit,30 g,f
+1930,18,S1,Crémerie,Beurre,290 g,f
+1931,18,S1,Protéines,Pavé de saumon,310 g,f
+1932,18,S1,Légumes,Asperges vertes,270 g,f
+1933,18,S1,Féculents,Pommes de terre grenaille,770 g,f
+1934,18,S1,Épicerie,Persil plat,45 g,f
+1935,18,S1,Épicerie,Citron,4 pièce,f
+1936,18,S1,Protéines,Escalope de dinde,320 g,f
+1937,18,S1,Épicerie,Chapelure,140 g,f
+1938,18,S1,Épicerie,Œufs,12 pièces,f
+1939,18,S1,Épicerie,Farine,130 g,f
+1940,18,S1,Épicerie,Parmesan râpé,30 g,f
+1941,18,S1,Légumes,Radis roses,420 g,f
+1942,18,S1,Épicerie,Herbes de Provence,3 g,f
+1943,18,S1,Protéines,Blanc de poulet,400 g,f
+1944,18,S1,Légumes,Poivron rouge,351 g,f
+1945,18,S1,Légumes,Poivron vert,150 g,f
+1946,18,S1,Légumes,Tomates pelées en dés,300 g,f
+1947,18,S1,Protéines,Jambon de Bayonne,60 g,f
+1948,18,S1,Épicerie,Vin blanc sec,80 ml,f
+1949,18,S1,Légumes,Concentré de tomate,75 g,f
+1950,18,S1,Épicerie,Piment d'Espelette,2 g,f
+1951,18,S1,Épicerie,Thym séché,1 g,f
+1952,18,S1,Épicerie,Laurier,4 feuilles,f
+1953,18,S1,Protéines,Côtes de porc,310 g,f
+1954,18,S1,Féculents,Pommes de terre,2560 g,f
+1955,18,S1,Épicerie,Miel,25 g,f
+1956,18,S1,Épicerie,Thym frais,2 branches,f
+1957,18,S1,Épicerie,Bouillon de légumes,100 ml,f
+1958,18,S1,Protéines,Filets de poulet,300 g,f
+1959,18,S1,Féculents,Tortillas de blé,3 pièces,f
+1960,18,S1,Légumes,Poivron jaune,1 pièce,f
+1961,18,S1,Légumes,Salade iceberg,230 g,f
+1962,18,S1,Légumes,Tomates cerises,200 g,f
+1963,18,S1,Légumes,Concombre,1 pièce,f
+1964,18,S1,Crémerie,Fromage râpé,60 g,f
+1965,18,S1,Épicerie,Huile de tournesol,500 ml,f
+1966,18,S1,Épicerie,Paprika doux,9 cuillère à café,f
+1967,18,S1,Épicerie,Cumin moulu,5 cuillère à café,f
+1968,18,S1,Épicerie,Poivre,1 pincée,f
+1969,18,S1,Protéines,Filet de cabillaud,720 g,f
+1970,18,S1,Conserves,Petits pois surgelés,620 g,f
+1971,18,S1,Épicerie,Thym,4 g,f
+1972,18,S1,Épicerie,Bœuf haché 5% MG,265 g,f
+1973,18,S1,Légumes,Haricots rouges en conserve,400 g,f
+1974,18,S1,Légumes,Tomates concassées en conserve,400 g,f
+1975,18,S1,Légumes,Oignon jaune,180 g,f
+1976,18,S1,Épicerie,Piment de Cayenne,2 g,f
+1977,18,S1,Épicerie,Origan séché,2 g,f
+1978,18,S1,Épicerie,Poivre noir moulu,2 g,f
+1979,18,S1,Épicerie,Bouillon de bœuf,600 ml,f
+1980,18,S1,Épicerie,Chocolat noir 70%,15 g,f
+1981,18,S1,Épicerie,Épinards frais,220 g,f
+1982,18,S1,Crémerie,Gruyère râpé,105 g,f
+1983,18,S1,Crémerie,Crème fraîche,30 ml,f
+1984,18,S1,Épicerie,Muscade,1 pincée,f
+1985,18,S1,Épicerie,Mayonnaise,50 g,f
+1986,18,S1,Épicerie,Cornichons,50 g,f
+1987,18,S1,Épicerie,Câpres,10 g,f
+1988,18,S1,Féculents,Pains burger,2 pièces,f
+1989,18,S1,Protéines,Steak haché 15% MG,270 g,f
+1990,18,S1,Épicerie,Cheddar en tranches,55 g,f
+1991,18,S1,Légumes,Tomate,1 pièce,f
+1992,18,S1,Légumes,Oignon rouge,50 g,f
+1993,18,S1,Épicerie,Ketchup,15 g,f
+1994,18,S1,Épicerie,Bœuf à braiser,400 g,f
+1995,18,S1,Épicerie,Vin rouge,150 ml,f
+1996,18,S1,Crémerie,Lait,100 ml,f
+1997,18,S1,Épicerie,Spaghettis,350 g,f
+1998,18,S1,Épicerie,Guanciale,140 g,f
+1999,18,S1,Épicerie,Pecorino Romano,70 g,f
+2000,18,S1,Épicerie,Gros sel,15 g,f
+2001,18,S1,Crémerie,Skyr,2200 g,f
+2002,18,S1,Crémerie,Oeufs,27 pièces,f
+2003,18,S1,Épicerie,Amandes,210 g,f

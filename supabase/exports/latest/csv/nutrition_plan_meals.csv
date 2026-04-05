@@ -825,3 +825,52 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 1916,17,Zoé,2026-04-13,dejeuner,weekend,Carbonara authentique: 150g spaghettis + 60g guanciale + 1 œuf + 30g pecorino romano,540.0,24.0,54.0,24.0,2.0
 1917,17,Zoé,2026-04-13,diner,weekend,Rôti de porc aux carottes nouvelles: 130g porc + 140g PDT rôties + 120g carottes nouvelles + jus,485.0,39.0,41.0,16.0,8.0
 1918,17,Zoé,2026-04-13,collation,weekend,200g skyr + 20g amandes + 1 pomme (150g),328.0,26.0,27.0,11.0,5.0
+1919,18,Julien,2026-04-07,dejeuner,normal,Tajine d'agneau aux légumes de printemps et riz basmati: 220g tajine + 130g riz basmati,680.0,58.0,65.0,18.0,12.0
+1920,18,Julien,2026-04-07,diner,normal,Pavé de saumon aux asperges: 180g saumon + 200g PDT grenaille + 150g asperges + beurre à l'ail,720.0,48.0,55.0,28.0,8.0
+1921,18,Julien,2026-04-07,collation,normal,200g skyr + 30g amandes,316.0,21.0,11.0,29.0,4.0
+1922,18,Julien,2026-04-07,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1923,18,Zoé,2026-04-07,dejeuner,normal,Tajine d'agneau aux légumes de printemps et riz basmati: 180g tajine + 100g riz basmati,520.0,42.0,50.0,14.0,10.0
+1924,18,Zoé,2026-04-07,diner,normal,Pavé de saumon aux asperges: 140g saumon + 150g PDT grenaille + 120g asperges + beurre à l'ail,520.0,36.0,40.0,22.0,6.0
+1925,18,Zoé,2026-04-07,collation,normal,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1926,18,Julien,2026-04-08,dejeuner,normal,Tajine d'agneau aux légumes de printemps et riz basmati: 220g tajine + 130g riz basmati,680.0,58.0,65.0,18.0,12.0
+1927,18,Julien,2026-04-08,diner,normal,Escalope de dinde milanaise: 160g escalope panée + 200g frites four + 120g radis sautés,750.0,52.0,68.0,24.0,9.0
+1928,18,Julien,2026-04-08,collation,normal,2 œufs durs + 1 pomme + 20g amandes,230.0,15.0,18.0,12.0,5.0
+1929,18,Julien,2026-04-08,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1930,18,Zoé,2026-04-08,dejeuner,normal,Tajine d'agneau aux légumes de printemps et riz basmati: 180g tajine + 100g riz basmati,520.0,42.0,50.0,14.0,10.0
+1931,18,Zoé,2026-04-08,diner,normal,Escalope de dinde milanaise: 120g escalope panée + 150g frites four + 100g radis sautés,550.0,38.0,50.0,18.0,7.0
+1932,18,Zoé,2026-04-08,collation,normal,2 œufs durs + 1 poire,225.0,12.0,15.0,10.0,4.0
+1933,18,Julien,2026-04-09,dejeuner,normal,Poulet basquaise: 320g (180g poulet + poivrons + tomates + riz),690.0,56.0,58.0,22.0,8.0
+1934,18,Julien,2026-04-09,diner,normal,Côte de porc aux radis confits: 180g porc + 200g PDT vapeur + 120g radis confits au miel,720.0,48.0,65.0,25.0,8.0
+1935,18,Julien,2026-04-09,collation,normal,1 orange + 15g amandes,130.0,4.0,15.0,8.0,4.0
+1936,18,Julien,2026-04-09,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1937,18,Zoé,2026-04-09,dejeuner,normal,Poulet basquaise: 260g (140g poulet + poivrons + tomates + riz),520.0,42.0,45.0,18.0,6.0
+1938,18,Zoé,2026-04-09,diner,normal,Côte de porc aux radis confits: 140g porc + 150g PDT vapeur + 100g radis confits au miel,540.0,36.0,48.0,20.0,6.0
+1939,18,Zoé,2026-04-09,collation,normal,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1940,18,Julien,2026-04-10,dejeuner,normal,Wraps poulet-poivrons: 2 wraps + 180g poulet effiloché aux poivrons + crudités + frites,720.0,58.0,62.0,24.0,8.0
+1941,18,Julien,2026-04-10,diner,normal,Filet de cabillaud aux petits pois: 200g cabillaud + 200g riz + 150g petits pois,680.0,52.0,85.0,8.0,12.0
+1942,18,Julien,2026-04-10,collation,normal,200g skyr + 30g amandes,316.0,21.0,11.0,29.0,4.0
+1943,18,Julien,2026-04-10,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1944,18,Zoé,2026-04-10,dejeuner,normal,Wraps poulet-poivrons: 1.5 wraps + 140g poulet effiloché aux poivrons + crudités + frites,520.0,42.0,45.0,18.0,6.0
+1945,18,Zoé,2026-04-10,diner,normal,Filet de cabillaud aux petits pois: 150g cabillaud + 150g riz + 120g petits pois,500.0,38.0,62.0,6.0,10.0
+1946,18,Zoé,2026-04-10,collation,normal,2 œufs durs + 1 kiwi,205.0,12.0,12.0,10.0,3.0
+1947,18,Julien,2026-04-11,dejeuner,normal,Chili con carne: 350g (180g bœuf haché + haricots rouges + riz + tomates),720.0,58.0,62.0,22.0,15.0
+1948,18,Julien,2026-04-11,diner,normal,Omelette aux épinards et gruyère: 3 œufs + 150g épinards + 25g gruyère + 200g PDT sautées,750.0,48.0,55.0,32.0,8.0
+1949,18,Julien,2026-04-11,collation,normal,2 œufs durs + 1 poire + 20g amandes,245.0,15.0,20.0,13.0,6.0
+1950,18,Julien,2026-04-11,pdj,normal,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1951,18,Zoé,2026-04-11,dejeuner,normal,Chili con carne: 280g (140g bœuf haché + haricots rouges + riz + tomates),550.0,42.0,48.0,18.0,12.0
+1952,18,Zoé,2026-04-11,diner,normal,Omelette aux épinards et gruyère: 2 œufs + 120g épinards + 20g gruyère + 150g PDT sautées,520.0,32.0,40.0,25.0,6.0
+1953,18,Zoé,2026-04-11,collation,normal,200g skyr + 20g amandes,253.0,26.0,9.0,11.0,2.0
+1954,18,Julien,2026-04-12,dejeuner,weekend,Fish & chips maison: 200g cabillaud pané + 200g frites four + 120g petits pois + sauce tartare,750.0,52.0,68.0,28.0,8.0
+1955,18,Julien,2026-04-12,diner,weekend,Burger maison: pain 90g + 150g steak haché + 30g cheddar + 180g frites PDT + salade,850.0,52.0,72.0,35.0,9.0
+1956,18,Julien,2026-04-12,collation,weekend,1 banane + 15g amandes,165.0,4.0,22.0,8.0,4.0
+1957,18,Julien,2026-04-12,pdj,weekend,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1958,18,Zoé,2026-04-12,dejeuner,weekend,Fish & chips maison: 150g cabillaud pané + 150g frites four + 100g petits pois + sauce tartare,550.0,38.0,50.0,22.0,6.0
+1959,18,Zoé,2026-04-12,diner,weekend,Burger maison: pain 70g + 120g steak haché + 25g cheddar + 150g frites PDT + salade,650.0,40.0,55.0,28.0,7.0
+1960,18,Zoé,2026-04-12,collation,weekend,2 œufs durs + 1 orange,215.0,12.0,15.0,10.0,4.0
+1961,18,Julien,2026-04-13,dejeuner,weekend,Parmentier de bœuf aux légumes: 400g (220g purée PDT + 180g bœuf mijoté aux légumes),720.0,55.0,65.0,22.0,10.0
+1962,18,Julien,2026-04-13,diner,weekend,Carbonara authentique: 200g spaghettis + 80g guanciale + 2 œufs + 40g pecorino romano,820.0,48.0,80.0,32.0,8.0
+1963,18,Julien,2026-04-13,collation,weekend,30g noix + 1 pomme + 30g beurre cacahuète + 30g pain,410.0,12.0,35.0,28.0,8.0
+1964,18,Julien,2026-04-13,pdj,weekend,200g skyr + 3 œufs durs,383.0,44.0,9.0,18.0,0.0
+1965,18,Zoé,2026-04-13,dejeuner,weekend,Parmentier de bœuf aux légumes: 320g (180g purée PDT + 140g bœuf mijoté aux légumes),550.0,42.0,50.0,18.0,8.0
+1966,18,Zoé,2026-04-13,diner,weekend,Carbonara authentique: 150g spaghettis + 60g guanciale + 1 œuf + 30g pecorino romano,600.0,35.0,60.0,24.0,6.0
+1967,18,Zoé,2026-04-13,collation,weekend,200g skyr + 1 pomme + 20g amandes,320.0,26.0,28.0,11.0,6.0
