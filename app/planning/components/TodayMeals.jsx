@@ -7,6 +7,7 @@ import { Loader2, ChefHat, RefreshCw, X, Check } from 'lucide-react'
 
 /**
  * Extrait le nom du plat à partir des descriptions de plusieurs personnes.
+ * Si le préfixe commun est trop court (< 10 chars), utilise la première description.
  */
 function extractDishName(descriptions) {
   if (!descriptions.length) return ''
@@ -29,7 +30,11 @@ function extractDishName(descriptions) {
   }
   const lastSpace = prefix.lastIndexOf(' ')
   if (lastSpace > 5) prefix = prefix.substring(0, lastSpace)
-  return prefix.trim() || first.substring(0, 40).trim()
+  prefix = prefix.trim()
+  // If common prefix is too short (e.g. collations differ between persons),
+  // show the first person's full description instead
+  if (prefix.length < 10) return first.substring(0, 60).trim()
+  return prefix
 }
 
 const MEAL_LABELS = {

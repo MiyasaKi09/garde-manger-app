@@ -7,11 +7,17 @@ import CookMode from '@/components/CookMode'
 import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 
 /**
- * Extrait le nom du plat (avant ":") à partir des descriptions.
+ * Extrait le nom du plat à partir des descriptions.
+ * Si le préfixe commun est trop court (< 10 chars), utilise la première description.
  */
 function extractDishName(descriptions) {
   if (!descriptions.length) return ''
   const first = descriptions[0] || ''
+  if (descriptions.length === 1) {
+    const colonIdx = first.indexOf(':')
+    return colonIdx > 0 && colonIdx < 60 ? first.substring(0, colonIdx).trim() : first.trim()
+  }
+  // Try colon-based extraction on first description
   const colonIdx = first.indexOf(':')
   if (colonIdx > 0 && colonIdx < 60) return first.substring(0, colonIdx).trim()
   // Find common prefix
@@ -24,7 +30,10 @@ function extractDishName(descriptions) {
   }
   const lastSpace = prefix.lastIndexOf(' ')
   if (lastSpace > 5) prefix = prefix.substring(0, lastSpace)
-  return prefix.trim() || first.substring(0, 40).trim()
+  prefix = prefix.trim()
+  // If common prefix is too short, just use the first person's full description
+  if (prefix.length < 10) return first.substring(0, 60).trim()
+  return prefix
 }
 
 const MEAL_LABELS = {
