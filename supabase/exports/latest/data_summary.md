@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Sun Apr  5 15:15:37 UTC 2026_
+_Generated: Sun Apr  5 15:27:24 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -14,19 +14,19 @@ _Generated: Sun Apr  5 15:15:37 UTC 2026_
 - countries: 0 rows
 - cultivars: 3 rows
 - diets: 9 rows
-- generated_recipes: 42 rows
+- generated_recipes: 46 rows
 - instructions: 0 rows
 - inventory_lots: 1 rows
 - legacy_users: 0 rows
 - locations: 3 rows
 - meal_log: 0 rows
 - meal_plans: 0 rows
-- nutrition_plan_batch_recipes: 45 rows
-- nutrition_plan_daily_totals: 280 rows
-- nutrition_plan_imports: 10 rows
-- nutrition_plan_meals: 875 rows
-- nutrition_plan_prep_tasks: 736 rows
-- nutrition_plan_shopping_items: 984 rows
+- nutrition_plan_batch_recipes: 47 rows
+- nutrition_plan_daily_totals: 294 rows
+- nutrition_plan_imports: 11 rows
+- nutrition_plan_meals: 924 rows
+- nutrition_plan_prep_tasks: 765 rows
+- nutrition_plan_shopping_items: 1065 rows
 - nutritional_data: 3178 rows
 - pantry_items: 0 rows
 - planned_meals: 0 rows

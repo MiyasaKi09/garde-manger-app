@@ -735,3 +735,32 @@ id,import_id,prep_date,prep_label,task,estimated_time
 1200,18,2026-04-13,Dimanche 13/04,"Mélanger: Égoutter les pâtes, les mélanger au guanciale et aux œufs hors du feu en remuant vivement",2min
 1201,18,2026-04-13,Dimanche 13/04,[Prep] Cuire œufs durs S2: Mettre 15 œufs à cuire 10 min dans l'eau bouillante pour la semaine,15min
 1202,18,2026-04-13,Dimanche 13/04,[Prep] Planifier courses: Vérifier la liste de courses et organiser les batches de la semaine suivante,15min
+1203,19,2026-04-07,Lundi 07/04,Cuire les PDT grenaille: Faire bouillir 340g PDT grenaille lavées avec peau dans eau salée 15min,15min
+1204,19,2026-04-07,Lundi 07/04,"Préparer les asperges: Casser le pied de 270g asperges, les cuire 8min à l'eau bouillante salée",8min
+1205,19,2026-04-07,Lundi 07/04,"Cuire le saumon: Saler/poivrer 310g pavé saumon, cuire 4min peau côté poêle puis retourner 3min",7min
+1206,19,2026-04-07,Lundi 07/04,"Finir les accompagnements: Égoutter PDT et asperges, faire fondre 20g beurre avec 1 gousse ail haché",3min
+1207,19,2026-04-07,Lundi 07/04,"[Prep] Mijoter le tajine d'agneau: Couper 600g épaule agneau en cubes, faire revenir avec oignon. Ajouter épices, 400g artichauts, 300g carottes nouvelles, bouillon. Mijoter 75min",90min
+1208,19,2026-04-08,Mardi 08/04,"Paner les escalopes: Aplatir 320g escalopes dinde, passer dans farine, œuf battu, chapelure",8min
+1209,19,2026-04-08,Mardi 08/04,"Cuire les PDT: Couper 350g PDT en cubes, les faire sauter à la poêle avec huile 15min",15min
+1210,19,2026-04-08,Mardi 08/04,Cuire la dinde: Faire dorer les escalopes panées 4min de chaque côté dans l'huile,8min
+1211,19,2026-04-08,Mardi 08/04,Préparer les épinards: Faire revenir 220g épinards frais avec 30ml crème fraîche,5min
+1212,19,2026-04-09,Mercredi 09/04,Cuire les PDT: Faire sauter 320g PDT coupées en cubes avec huile 15min jusqu'à dorées,15min
+1213,19,2026-04-09,Mercredi 09/04,"Préparer les radis: Couper 220g radis en rondelles, les faire sauter 5min avec beurre",5min
+1214,19,2026-04-09,Mercredi 09/04,"Faire l'omelette: Battre 5 œufs, cuire en omelette, ajouter radis et 45g gruyère râpé",8min
+1215,19,2026-04-09,Mercredi 09/04,"[Prep] Préparer le bœuf stroganoff: Couper 500g bœuf en lamelles, faire revenir avec oignons et champignons. Ajouter crème et moutarde, mijoter 30min",45min
+1216,19,2026-04-09,Mercredi 09/04,"[Prep] Cuire œufs durs: Cuire 15 œufs 10min, refroidir à l'eau froide",15min
+1217,19,2026-04-10,Jeudi 10/04,Cuire les PDT: Faire bouillir 350g PDT grenaille avec peau 15min dans eau salée,15min
+1218,19,2026-04-10,Jeudi 10/04,"Cuire le porc: Saler/poivrer 320g côtes de porc, les cuire 4min de chaque côté",8min
+1219,19,2026-04-10,Jeudi 10/04,Préparer les petits pois: Faire revenir 270g petits pois avec lardons et oignons à la française,10min
+1220,19,2026-04-10,Jeudi 10/04,"[Prep] Préparer le poulet basquaise: Couper 600g poulet en morceaux, faire revenir avec poivrons, tomates, oignons et épices. Mijoter 40min",55min
+1221,19,2026-04-11,Vendredi 11/04,"Cuire le riz: Rincer 350g riz basmati, le cuire dans 525ml eau salée 15min",15min
+1222,19,2026-04-11,Vendredi 11/04,Cuire les petits pois: Faire cuire 270g petits pois 8min dans eau bouillante salée,8min
+1223,19,2026-04-11,Vendredi 11/04,"Cuire le cabillaud: Saler/poivrer 360g filets de cabillaud, les cuire 4min de chaque côté",8min
+1224,19,2026-04-12,Samedi 12/04,"Réchauffer le rôti: Sortir le rôti de porc du frigo, le réchauffer au four 180°C 15min",15min
+1225,19,2026-04-12,Samedi 12/04,Réchauffer les accompagnements: Réchauffer PDT et carottes à la poêle 8min avec un peu d'huile,8min
+1226,19,2026-04-12,Samedi 12/04,Préparer le jus: Réchauffer le jus de cuisson et rectifier l'assaisonnement,3min
+1227,19,2026-04-13,Dimanche 13/04,"Cuire les pâtes: Porter à ébullition une grande casserole d'eau salée, cuire 350g spaghettis selon temps paquet",10min
+1228,19,2026-04-13,Dimanche 13/04,"Faire le guanciale: Couper 140g guanciale en lardons, les faire dorer sans matière grasse 5min",5min
+1229,19,2026-04-13,Dimanche 13/04,Préparer la liaison: Battre 3 œufs entiers avec 70g pecorino romano râpé et poivre noir,3min
+1230,19,2026-04-13,Dimanche 13/04,"Assembler: Égoutter pâtes en gardant un peu d'eau de cuisson, mélanger hors feu avec œufs et guanciale",7min
+1231,19,2026-04-13,Dimanche 13/04,"[Prep] Cuire œufs durs: Mettre 15 œufs dans eau froide, porter à ébullition puis 10min de cuisson",15min
