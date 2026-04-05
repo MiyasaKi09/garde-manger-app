@@ -72,15 +72,21 @@ export default function CoursesPage() {
       const storage = guessStorage(productName)
 
       // 4. Compute expiration date from product shelf life
-      let shelfDays = 7 // default
+      // Use product data if available, otherwise smart defaults by category
+      let shelfDays = null
       if (match) {
-        if (storage.method === 'fridge') shelfDays = match.shelf_life_days_fridge || 7
-        else if (storage.method === 'freezer') shelfDays = match.shelf_life_days_freezer || 90
-        else shelfDays = match.shelf_life_days_pantry || 30
+        const fromProduct = storage.method === 'fridge' ? match.shelf_life_days_fridge
+          : storage.method === 'freezer' ? match.shelf_life_days_freezer
+          : match.shelf_life_days_pantry
+        if (fromProduct && fromProduct > 0) shelfDays = fromProduct
       }
+      // Smart defaults if no product data
+      if (!shelfDays) shelfDays = guessShelfLife(productName, storage.method)
+
       const expDate = new Date()
       expDate.setDate(expDate.getDate() + shelfDays)
       const expirationDate = expDate.toISOString().split('T')[0]
+      console.log('addToStock expiration:', shelfDays, 'days →', expirationDate)
 
       // 5. Build lot data exactly like SmartAddForm does
       const lotData = {
@@ -100,6 +106,8 @@ export default function CoursesPage() {
         container_unit: null,
       }
 
+      console.log('addToStock match:', JSON.stringify(match))
+      console.log('addToStock storage:', storage.method, '→ shelfDays:', shelfDays, '→ expDate:', expirationDate)
       console.log('addToStock inserting:', JSON.stringify(lotData))
 
       const { data: lot, error } = await supabase
@@ -207,13 +215,81 @@ export default function CoursesPage() {
   }
 
   function guessStorage(name) {
-    if (/lait|yaourt|skyr|fromage|crème|beurre|œuf|oeuf|poulet|viande|bœuf|boeuf|porc|veau|agneau|dinde|saumon|cabillaud|truite|poisson|jambon|lardons|saucisse/i.test(name)) {
-      return { method: 'fridge', place: 'Frigo' }
-    }
-    if (/surgelé|congelé|glace/i.test(name)) {
+    const n = name.toLowerCase()
+
+    // Surgelés → congélateur
+    if (/surgelé|congelé|glace/i.test(n)) {
       return { method: 'freezer', place: 'Congélateur' }
     }
+
+    // Protéines animales, produits laitiers → frigo
+    if (/lait|yaourt|skyr|fromage|crème|beurre|œuf|oeuf|poulet|viande|bœuf|boeuf|porc|veau|agneau|dinde|saumon|cabillaud|truite|poisson|jambon|lardons|saucisse|merguez|chorizo|magret|canard|guanciale|pancetta|bacon/i.test(n)) {
+      return { method: 'fridge', place: 'Frigo' }
+    }
+
+    // Légumes et fruits frais → frigo
+    if (/artichaut|salade|laitue|tomate|concombre|courgette|aubergine|poivron|brocoli|chou|fenouil|navet|radis|carotte|poireau|champignon|épinard|haricot.?vert|asperge|céleri|betterave|endive|mâche|roquette|persil|coriandre|menthe|basilic|ciboulette|aneth|estragon|cerfeuil/i.test(n)) {
+      return { method: 'fridge', place: 'Frigo' }
+    }
+    if (/frais|fraîche/i.test(n)) {
+      return { method: 'fridge', place: 'Frigo' }
+    }
+
+    // Fruits frais → frigo (sauf bananes, agrumes)
+    if (/fraise|framboise|myrtille|cerise|pêche|nectarine|abricot|prune|raisin|mangue|kiwi|melon|pastèque|figue|pomme|poire/i.test(n)) {
+      return { method: 'fridge', place: 'Frigo' }
+    }
+
+    // Tout le reste → garde-manger (épices, huiles, conserves, féculents, etc.)
     return { method: 'pantry', place: 'Garde-manger' }
+  }
+
+  function guessShelfLife(name, storageMethod) {
+    const n = name.toLowerCase()
+
+    if (storageMethod === 'freezer') return 180
+
+    // Huiles, vinaigres, condiments secs → très longue conservation
+    if (/huile|vinaigre/i.test(n)) return 365
+    // Épices, herbes séchées
+    if (/cumin|coriandre moulue|cannelle|paprika|curcuma|curry|poivre|muscade|thym séché|origan|herbes de provence|piment|gingembre moulu|ras el hanout|quatre.?épices/i.test(n)) return 365
+    // Conserves, passata, concentré
+    if (/conserve|passata|concentré|boîte|bocal/i.test(n)) return 365
+    // Féculents secs
+    if (/pâtes|riz|semoule|quinoa|lentilles|pois chiche|haricot.?sec|farine|sucre|sel|maïzena|fécule|polenta/i.test(n)) return 365
+    // Sauces, moutarde, ketchup
+    if (/moutarde|ketchup|sauce soja|tabasco|worcestershire|sriracha/i.test(n)) return 180
+    // Bouillon, fond
+    if (/bouillon|fond/i.test(n)) return 365
+    // Amandes, noix, fruits secs
+    if (/amande|noix|noisette|cacahuète|beurre de cacahuète|fruit.?sec|raisin sec/i.test(n)) return 180
+
+    // Frigo defaults
+    if (storageMethod === 'fridge') {
+      // Viandes fraîches
+      if (/poulet|viande|bœuf|boeuf|porc|veau|agneau|dinde|magret|canard|saucisse|merguez|lardons|guanciale|pancetta|bacon/i.test(n)) return 4
+      // Poissons
+      if (/saumon|cabillaud|truite|poisson/i.test(n)) return 3
+      // Produits laitiers
+      if (/lait/i.test(n)) return 7
+      if (/yaourt|skyr/i.test(n)) return 14
+      if (/fromage|beurre|crème/i.test(n)) return 21
+      // Œufs
+      if (/œuf|oeuf/i.test(n)) return 28
+      // Légumes frais
+      if (/salade|laitue|mâche|roquette|épinard/i.test(n)) return 5
+      if (/champignon/i.test(n)) return 5
+      if (/tomate|concombre|courgette|aubergine|poivron|artichaut/i.test(n)) return 7
+      if (/carotte|navet|poireau|chou|fenouil|brocoli|betterave/i.test(n)) return 14
+      if (/herbe|persil|coriandre|menthe|basilic|ciboulette/i.test(n)) return 7
+      if (/gingembre/i.test(n)) return 21
+      // Fruit frais
+      if (/pomme|poire|agrume|orange|citron|clémentine/i.test(n)) return 14
+      return 7 // frigo default
+    }
+
+    // Pantry default
+    return 90
   }
 
   async function toggleItem(itemId) {
