@@ -497,9 +497,7 @@ const S = {
   },
   mealDesc: {
     flex: 1,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
+    wordBreak: 'break-word',
     fontWeight: 500,
   },
   mealPersons: {
