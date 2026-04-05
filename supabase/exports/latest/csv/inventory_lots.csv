@@ -1,5 +1,1 @@
 id,qty_remaining,initial_qty,unit,storage_method,storage_place,acquired_on,expiration_date,notes,user_id,created_at,updated_at,product_id,canonical_food_id,cultivar_id,archetype_id,adjusted_expiration_date,is_opened,opened_at,container_size,container_unit,is_containerized
-4013bd00-23cd-47b3-a990-b6437748cc58,850.000,850.000,g,fridge,Frigo,2026-04-05,2026-04-08,,9055926b-ed29-49f1-96b8-fc717973b333,2026-04-05 19:19:25.723312+00,2026-04-05 19:19:25.723312+00,,,,371,,f,,,,f
-88a4e313-ebbc-4a06-b886-30362be9a932,6.000,6.000,unités,fridge,Frigo,2026-04-05,2026-04-12,,9055926b-ed29-49f1-96b8-fc717973b333,2026-04-05 19:19:26.647365+00,2026-04-05 19:19:26.647365+00,,8003,,,,f,,,,f
-ebccda20-f547-4e49-b452-e4aac3a6bc2c,373.000,373.000,ml,pantry,Garde-manger,2026-04-05,2026-05-05,,9055926b-ed29-49f1-96b8-fc717973b333,2026-04-05 19:19:27.456942+00,2026-04-05 19:19:27.456942+00,,14030,,,,f,,,,f
-80080fbe-11ea-4bbf-aba4-1bced9a18fa9,600.000,600.000,ml,pantry,Garde-manger,2026-04-05,2026-05-05,,9055926b-ed29-49f1-96b8-fc717973b333,2026-04-05 19:19:32.005796+00,2026-04-05 19:19:32.005796+00,,14036,,,,f,,,,f
