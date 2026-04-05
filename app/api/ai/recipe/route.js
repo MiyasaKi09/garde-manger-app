@@ -3,6 +3,7 @@ import Anthropic from '@anthropic-ai/sdk'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { buildAiContext, formatContextForPrompt } from '@/lib/aiContextBuilder'
 import { normalizeRecipeName } from '@/lib/recipeNormalizer'
+import { calculatePreciseNutrition } from '@/lib/recipePreciseNutrition'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -107,7 +108,10 @@ RÈGLES :
 - Donne le titre de chaque étape avant les deux-points, puis le détail.
 - Adapte les quantités au nombre de personnes demandé.
 - Utilise les ingrédients du stock en priorité quand ils correspondent.
-- Donne les quantités en unités métriques (g, kg, mL, L).
+- IMPORTANT pour les ingrédients :
+  - Donne les quantités en GRAMMES (g) autant que possible, pas en "pièces" ou "poignées".
+  - Utilise des noms d'ingrédients SIMPLES et courants (ex: "poulet" pas "suprême de volaille fermière").
+  - Sépare chaque ingrédient individuellement (pas "sel et poivre" mais 2 lignes séparées).
 - Inclus une estimation nutritionnelle par portion dans "nutrition_per_serving".
 
 FORMAT JSON attendu :
@@ -183,6 +187,30 @@ FORMAT JSON attendu :
       }
     } catch (cacheErr) {
       console.warn('[AI Recipe] Cache save failed:', cacheErr.message)
+    }
+
+    // 4. Calculate precise nutrition from CIQUAL (ingredients → canonical_foods → nutritional_data)
+    try {
+      const preciseResult = await calculatePreciseNutrition(supabase, user.id, recipe)
+      if (preciseResult) {
+        recipe.nutrition_per_serving = preciseResult.nutrition_per_serving
+        recipe.nutrition_source = 'ciqual'
+        recipe.nutrition_matched = `${preciseResult.matched_ingredients}/${preciseResult.total_ingredients}`
+
+        // Update cache with precise values
+        if (recipeDbId) {
+          await supabase.from('generated_recipes')
+            .update({ nutrition_per_serving: preciseResult.nutrition_per_serving })
+            .eq('id', recipeDbId)
+          console.log(`[AI Recipe] Nutrition CIQUAL mise à jour pour "${normalized}"`)
+        }
+      } else {
+        recipe.nutrition_source = 'estimate'
+        console.log(`[AI Recipe] Fallback estimation IA pour "${normalized}"`)
+      }
+    } catch (nutritionErr) {
+      recipe.nutrition_source = 'estimate'
+      console.warn('[AI Recipe] Calcul nutrition précis échoué, fallback estimation:', nutritionErr.message)
     }
 
     return NextResponse.json({ recipe, recipeDbId, cached: false })
