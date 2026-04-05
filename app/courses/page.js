@@ -71,7 +71,18 @@ export default function CoursesPage() {
       // 3. Guess storage
       const storage = guessStorage(productName)
 
-      // 4. Build lot data exactly like SmartAddForm does
+      // 4. Compute expiration date from product shelf life
+      let shelfDays = 7 // default
+      if (match) {
+        if (storage.method === 'fridge') shelfDays = match.shelf_life_days_fridge || 7
+        else if (storage.method === 'freezer') shelfDays = match.shelf_life_days_freezer || 90
+        else shelfDays = match.shelf_life_days_pantry || 30
+      }
+      const expDate = new Date()
+      expDate.setDate(expDate.getDate() + shelfDays)
+      const expirationDate = expDate.toISOString().split('T')[0]
+
+      // 5. Build lot data exactly like SmartAddForm does
       const lotData = {
         canonical_food_id: match?.type === 'canonical' ? match.id : null,
         archetype_id: match?.type === 'archetype' ? match.id : null,
@@ -81,7 +92,7 @@ export default function CoursesPage() {
         unit: parsed.unit,
         storage_method: storage.method,
         storage_place: storage.place,
-        expiration_date: null,
+        expiration_date: expirationDate,
         acquired_on: new Date().toISOString().split('T')[0],
         notes: match ? null : productName,
         is_containerized: false,
@@ -111,32 +122,43 @@ export default function CoursesPage() {
 
   async function findProduct(name) {
     const n = name.trim().toLowerCase()
-    // Generate search variants: singular, plural, without accents
     const variants = getSearchVariants(n)
 
     for (const variant of variants) {
-      // Try archetype
+      // Try archetype (with shelf life from canonical parent)
       const { data: archs } = await supabase
         .from('archetypes')
-        .select('id, name')
+        .select('id, name, shelf_life_days, canonical_food_id, canonical_foods(shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer)')
         .ilike('name', `%${variant}%`)
         .limit(5)
 
       if (archs?.length) {
-        const exact = archs.find(a => a.name.toLowerCase() === variant)
-        return { type: 'archetype', id: (exact || archs[0]).id }
+        const best = archs.find(a => a.name.toLowerCase() === variant) || archs[0]
+        return {
+          type: 'archetype',
+          id: best.id,
+          shelf_life_days_pantry: best.shelf_life_days || best.canonical_foods?.shelf_life_days_pantry || 30,
+          shelf_life_days_fridge: best.shelf_life_days || best.canonical_foods?.shelf_life_days_fridge || 7,
+          shelf_life_days_freezer: (best.shelf_life_days || 30) * 10 || best.canonical_foods?.shelf_life_days_freezer || 90,
+        }
       }
 
       // Try canonical_food
       const { data: cans } = await supabase
         .from('canonical_foods')
-        .select('id, canonical_name')
+        .select('id, canonical_name, shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer')
         .ilike('canonical_name', `%${variant}%`)
         .limit(5)
 
       if (cans?.length) {
-        const exact = cans.find(c => c.canonical_name?.toLowerCase() === variant)
-        return { type: 'canonical', id: (exact || cans[0]).id }
+        const best = cans.find(c => c.canonical_name?.toLowerCase() === variant) || cans[0]
+        return {
+          type: 'canonical',
+          id: best.id,
+          shelf_life_days_pantry: best.shelf_life_days_pantry || 30,
+          shelf_life_days_fridge: best.shelf_life_days_fridge || 7,
+          shelf_life_days_freezer: best.shelf_life_days_freezer || 90,
+        }
       }
     }
 
