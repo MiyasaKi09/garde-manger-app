@@ -1,1 +1,2 @@
 id,qty_remaining,initial_qty,unit,storage_method,storage_place,acquired_on,expiration_date,notes,user_id,created_at,updated_at,product_id,canonical_food_id,cultivar_id,archetype_id,adjusted_expiration_date,is_opened,opened_at,container_size,container_unit,is_containerized
+16193249-8817-454c-ac38-b56512776c31,4.000,4.000,u,pantry,Garde-manger,2026-04-04,2026-05-04,,9055926b-ed29-49f1-96b8-fc717973b333,2026-04-04 22:41:45.60153+00,2026-04-04 22:41:45.60153+00,,2041,,,,f,,,,

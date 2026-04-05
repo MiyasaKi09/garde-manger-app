@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Sat Apr  4 22:39:06 UTC 2026_
+_Generated: Sun Apr  5 08:01:07 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -16,7 +16,7 @@ _Generated: Sat Apr  4 22:39:06 UTC 2026_
 - diets: 9 rows
 - generated_recipes: 24 rows
 - instructions: 0 rows
-- inventory_lots: 0 rows
+- inventory_lots: 1 rows
 - legacy_users: 0 rows
 - locations: 3 rows
 - meal_log: 0 rows
