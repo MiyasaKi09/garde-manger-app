@@ -71,28 +71,37 @@ export default function CoursesPage() {
       // 3. Guess storage
       const storage = guessStorage(productName)
 
-      // 4. Insert lot directly via supabase client (same pattern as SmartAddForm)
+      // 4. Build lot data exactly like SmartAddForm does
+      const lotData = {
+        canonical_food_id: match?.type === 'canonical' ? match.id : null,
+        archetype_id: match?.type === 'archetype' ? match.id : null,
+        cultivar_id: null,
+        qty_remaining: parsed.qty,
+        initial_qty: parsed.qty,
+        unit: parsed.unit,
+        storage_method: storage.method,
+        storage_place: storage.place,
+        expiration_date: null,
+        acquired_on: new Date().toISOString().split('T')[0],
+        notes: match ? null : productName,
+        is_containerized: false,
+        container_size: null,
+        container_unit: null,
+      }
+
+      console.log('addToStock inserting:', JSON.stringify(lotData))
+
       const { data: lot, error } = await supabase
         .from('inventory_lots')
-        .insert([{
-          canonical_food_id: match?.type === 'canonical' ? match.id : null,
-          archetype_id: match?.type === 'archetype' ? match.id : null,
-          cultivar_id: null,
-          qty_remaining: parsed.qty,
-          initial_qty: parsed.qty,
-          unit: parsed.unit,
-          storage_method: storage.method,
-          storage_place: storage.place,
-          acquired_on: new Date().toISOString().split('T')[0],
-          notes: match ? null : productName,
-        }])
+        .insert([lotData])
         .select()
         .single()
 
       if (error) {
-        console.error('Insert lot error:', error)
-        return { success: false, error: error.message }
+        console.error('Insert lot error:', JSON.stringify(error))
+        return { success: false, error: `${error.message} (code: ${error.code}, details: ${error.details})` }
       }
+      console.log('Lot created:', lot?.id)
       return { success: true, lot }
     } catch (err) {
       console.error('addToStock error:', err)
@@ -190,11 +199,11 @@ export default function CoursesPage() {
             setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: true, stocking: false } : i))
           } else {
             console.error('Erreur ajout stock:', result.error)
-            setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false, stockError: true } : i))
+            setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false, stockError: true, stockErrorMsg: result.error } : i))
           }
         } catch (stockErr) {
           console.error('Erreur ajout stock:', stockErr)
-          setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false, stockError: true } : i))
+          setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false, stockError: true, stockErrorMsg: stockErr.message } : i))
         }
       } else {
         setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: false, stocking: false, stockError: false } : i))
@@ -312,7 +321,7 @@ export default function CoursesPage() {
                   <span style={S.stockedBadge}><Package size={11} /> rangé</span>
                 )}
                 {item.stockError && !item.stocking && (
-                  <span style={S.stockErrorBadge}>non rangé</span>
+                  <span style={S.stockErrorBadge} title={item.stockErrorMsg || ''}>non rangé</span>
                 )}
               </button>
             ))}
