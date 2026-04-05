@@ -6,6 +6,7 @@ import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
 import { Upload, FileSpreadsheet, Trash2, Calendar, ChevronRight, Sparkles, Leaf } from 'lucide-react'
 import WeeklyPlanView from './components/WeeklyPlanView'
+import DailyNutritionRecap from './components/DailyNutritionRecap'
 
 export default function PlanningPage() {
   const router = useRouter()
@@ -106,14 +107,20 @@ export default function PlanningPage() {
           </section>
         )}
 
-        {/* ═══ IMPORTS LIST ═══ */}
-        <section className="planning-section">
-          <div className="section-header">
-            <div className="section-accent"></div>
-            <h2 className="section-title">Plans importés</h2>
-          </div>
+        {/* ═══ DAILY NUTRITION RECAP ═══ */}
+        {latestImport && (
+          <section className="planning-section">
+            <div className="section-header">
+              <div className="section-accent"></div>
+              <h2 className="section-title">Suivi nutritionnel</h2>
+            </div>
+            <DailyNutritionRecap importId={latestImport.id} />
+          </section>
+        )}
 
-          {imports.length === 0 ? (
+        {/* ═══ EMPTY STATE ═══ */}
+        {imports.length === 0 && (
+          <section className="planning-section">
             <div className="empty-state-card">
               <div className="empty-icon">
                 <FileSpreadsheet size={48} strokeWidth={1.2} />
@@ -125,45 +132,35 @@ export default function PlanningPage() {
                 Créer un planning avec l'IA
               </button>
             </div>
-          ) : (
-            <div className="imports-grid">
-              {imports.map((imp, index) => (
-                <div
-                  key={imp.id}
-                  className="import-card"
-                  onClick={() => router.push(`/planning/${imp.id}`)}
-                  style={{ animationDelay: `${index * 60}ms` }}
-                >
-                  <div className="import-icon-wrap">
-                    <Calendar size={24} strokeWidth={1.5} />
-                  </div>
-                  <div className="import-info">
-                    <div className="import-month">{imp.month_label || imp.file_name}</div>
-                    <div className="import-dates">
-                      {imp.date_range_start && imp.date_range_end
-                        ? `${new Date(imp.date_range_start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })} — ${new Date(imp.date_range_end).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}`
-                        : imp.file_name
-                      }
-                    </div>
-                    <div className="import-meta">
-                      Importé le {new Date(imp.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
-                    </div>
-                  </div>
-                  <div className="import-actions">
-                    <button
-                      className="delete-btn"
-                      onClick={(e) => handleDelete(imp.id, e)}
-                      title="Supprimer"
-                    >
-                      <Trash2 size={15} />
+          </section>
+        )}
+
+        {/* ═══ MANAGE IMPORTS (compact) ═══ */}
+        {imports.length > 0 && (
+          <section className="planning-section">
+            <details className="imports-details">
+              <summary className="imports-summary">
+                <Calendar size={14} />
+                {imports.length} plan{imports.length > 1 ? 's' : ''} importé{imports.length > 1 ? 's' : ''}
+              </summary>
+              <div className="imports-compact">
+                {imports.map(imp => (
+                  <div key={imp.id} className="import-row">
+                    <span className="import-row-name" onClick={() => router.push(`/planning/${imp.id}`)}>
+                      {imp.month_label || imp.file_name}
+                    </span>
+                    <span className="import-row-date">
+                      {new Date(imp.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
+                    </span>
+                    <button className="delete-btn" onClick={(e) => handleDelete(imp.id, e)} title="Supprimer">
+                      <Trash2 size={13} />
                     </button>
-                    <ChevronRight size={18} className="chevron-icon" />
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
+                ))}
+              </div>
+            </details>
+          </section>
+        )}
       </div>
 
       <style jsx>{`
@@ -478,6 +475,81 @@ export default function PlanningPage() {
             opacity: 1;
             transform: translateY(0);
           }
+        }
+
+        /* ═══ COMPACT IMPORTS ═══ */
+        .imports-details {
+          background: rgba(255, 255, 255, 0.5);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          border-radius: 14px;
+          overflow: hidden;
+        }
+
+        .imports-summary {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 16px;
+          font-size: 13px;
+          font-weight: 600;
+          color: #6b7280;
+          cursor: pointer;
+          font-family: 'Inter', sans-serif;
+          list-style: none;
+          transition: background 0.2s;
+        }
+
+        .imports-summary::-webkit-details-marker { display: none; }
+
+        .imports-summary:hover {
+          background: rgba(74, 124, 74, 0.04);
+          color: #4a7c4a;
+        }
+
+        .imports-compact {
+          padding: 4px 16px 12px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .import-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px 10px;
+          border-radius: 10px;
+          transition: background 0.15s;
+        }
+
+        .import-row:hover {
+          background: rgba(74, 124, 74, 0.04);
+        }
+
+        .import-row-name {
+          flex: 1;
+          min-width: 0;
+          font-size: 13px;
+          font-weight: 500;
+          color: var(--forest-800, #2d5a2d);
+          cursor: pointer;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-family: 'Crimson Text', Georgia, serif;
+        }
+
+        .import-row-name:hover {
+          text-decoration: underline;
+        }
+
+        .import-row-date {
+          font-size: 11px;
+          color: #9ca3af;
+          font-weight: 500;
+          flex-shrink: 0;
+          font-family: 'Inter', sans-serif;
         }
 
         /* ═══ RESPONSIVE ═══ */
