@@ -40,8 +40,7 @@ export async function POST(request) {
       storage_method: storage.method,
       storage_place: storage.place,
       acquired_on: new Date().toISOString().split('T')[0],
-      source: 'courses',
-      notes: match ? null : productName,
+      notes: match ? `Ajouté depuis courses` : `${productName} (ajouté depuis courses)`,
     }
 
     const { data: lot, error } = await supabase
@@ -51,8 +50,27 @@ export async function POST(request) {
       .single()
 
     if (error) {
-      console.error('Erreur création lot:', error)
-      return NextResponse.json({ error: error.message }, { status: 500 })
+      // Retry without optional fields in case of schema mismatch
+      console.error('Erreur création lot (tentative 1):', error)
+      const { data: lot2, error: error2 } = await supabase
+        .from('inventory_lots')
+        .insert([{
+          canonical_food_id: lotData.canonical_food_id,
+          archetype_id: lotData.archetype_id,
+          qty_remaining: lotData.qty_remaining,
+          initial_qty: lotData.initial_qty,
+          unit: lotData.unit,
+          notes: lotData.notes,
+        }])
+        .select()
+        .single()
+
+      if (error2) {
+        console.error('Erreur création lot (tentative 2):', error2)
+        return NextResponse.json({ error: error2.message }, { status: 500 })
+      }
+
+      return NextResponse.json({ success: true, lot: lot2, matched: !!match })
     }
 
     return NextResponse.json({ success: true, lot, matched: !!match })
@@ -85,7 +103,7 @@ function parseQuantity(qtyStr) {
   }
 
   // Try number + unit pattern
-  const match = clean.match(/^(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|l|unités?|pièces?|boîtes?|paquets?|bouteilles?|sachets?|tranches?)/)
+  const match = clean.match(/^(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|l|unités?|pièces?|boîtes?|paquets?|bouteilles?|sachets?|tranches?|gousses?|feuilles?)/)
   if (match) {
     const num = parseFloat(match[1].replace(',', '.'))
     const unit = match[2]
