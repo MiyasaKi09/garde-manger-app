@@ -803,3 +803,61 @@ id,import_id,prep_date,prep_label,task,estimated_time
 1268,20,2026-04-12,Dimanche 12/04,"PDT rôties: Éplucher 380g PDT, les faire rôtir avec rôti les 40 dernières minutes",12min
 1269,20,2026-04-12,Dimanche 12/04,"[Prep] Œufs durs: Cuire 15 œufs 9min eau bouillante, refroidir eau glacée, écaler",15min
 1270,20,2026-04-12,Dimanche 12/04,"[Prep] Préparation batch: Sortir ingrédients pour le batch de lundi, découper légumes",15min
+1271,21,2026-04-06,Lundi 06/04,Préchauffer le four: Préchauffer à 200°C,5min
+1272,21,2026-04-06,Lundi 06/04,"Préparer les PDT grenaille: Laver 430g PDT grenaille, couper en deux, mélanger avec huile d'olive, sel, poivre, enfourner",10min
+1273,21,2026-04-06,Lundi 06/04,"Préparer les asperges: Éplucher 270g asperges, couper les pieds",5min
+1274,21,2026-04-06,Lundi 06/04,"Cuire le saumon: Cuire 320g pavés de saumon à la poêle, 4min de chaque côté",10min
+1275,21,2026-04-06,Lundi 06/04,Cuire les asperges: Sauter les asperges 8min avec beurre à l'ail,10min
+1276,21,2026-04-06,Lundi 06/04,[Prep] Couper l'agneau: Découper 600g épaule d'agneau en cubes de 3cm,15min
+1277,21,2026-04-06,Lundi 06/04,"[Prep] Faire revenir l'agneau: Faire dorer les cubes d'agneau dans huile d'olive, réserver",15min
+1278,21,2026-04-06,Lundi 06/04,"[Prep] Préparer les légumes: Éplucher et couper 300g artichauts, 250g carottes nouvelles, 2 oignons",20min
+1279,21,2026-04-06,Lundi 06/04,"[Prep] Mijoter le tajine: Ajouter légumes, épices (cumin, coriandre, cannelle, gingembre), bouillon, laisser mijoter 1h30",70min
+1280,21,2026-04-07,Mardi 07/04,"Cuire les PDT: Éplucher et cuire 480g PDT à l'eau 20min, égoutter",25min
+1281,21,2026-04-07,Mardi 07/04,Préparer les radis: Laver et couper 220g radis en rondelles,5min
+1282,21,2026-04-07,Mardi 07/04,Sauter les PDT: Faire sauter les PDT cuites dans l'huile d'olive jusqu'à dorées,8min
+1283,21,2026-04-07,Mardi 07/04,Cuire les radis: Sauter les radis 5min avec un peu d'huile,5min
+1284,21,2026-04-07,Mardi 07/04,"Faire l'omelette: Battre 5 œufs, cuire à la poêle, ajouter radis et 55g gruyère râpé",8min
+1285,21,2026-04-08,Mercredi 08/04,Préchauffer le four: Préchauffer à 220°C pour les frites,5min
+1286,21,2026-04-08,Mercredi 08/04,"Préparer les frites: Couper 430g PDT en frites, huiler, saler, enfourner 20min",10min
+1287,21,2026-04-08,Mercredi 08/04,"Paner les escalopes: Passer 320g escalopes dans farine, œuf battu, chapelure",5min
+1288,21,2026-04-08,Mercredi 08/04,Cuire les escalopes: Cuire les escalopes panées 3min de chaque côté,8min
+1289,21,2026-04-08,Mercredi 08/04,"Préparer la salade: Émincer 220g radis, assaisonner vinaigrette",5min
+1290,21,2026-04-08,Mercredi 08/04,"[Prep] Cuire le porc: Griller 520g côtes de porc, réserver au frais",15min
+1291,21,2026-04-08,Mercredi 08/04,"[Prep] Préparer le riz pilaf: Faire revenir 250g riz avec oignon, ajouter bouillon, cuire 18min",25min
+1292,21,2026-04-08,Mercredi 08/04,"[Prep] Cuire les petits pois: Cuire 350g petits pois surgelés à la française avec laitue, oignon",15min
+1293,21,2026-04-08,Mercredi 08/04,"[Prep] Cuire les œufs durs: Cuire 15 œufs durs pour la semaine, écaler",15min
+1294,21,2026-04-09,Jeudi 09/04,Cuire le riz: Rincer et cuire 270g riz basmati dans 2x son volume d'eau salée,18min
+1295,21,2026-04-09,Jeudi 09/04,Préparer le cabillaud: Saler et poivrer 350g filets de cabillaud,2min
+1296,21,2026-04-09,Jeudi 09/04,"Cuire les petits pois: Cuire 270g petits pois surgelés à l'eau bouillante 5min, égoutter",8min
+1297,21,2026-04-09,Jeudi 09/04,Poêler le cabillaud: Cuire le cabillaud à la poêle 4min de chaque côté,8min
+1298,21,2026-04-09,Jeudi 09/04,Finir les petits pois: Sauter les petits pois avec beurre et persil,3min
+1299,21,2026-04-09,Jeudi 09/04,[Prep] Couper le bœuf: Découper 600g paleron de bœuf en cubes de 4cm,10min
+1300,21,2026-04-09,Jeudi 09/04,"[Prep] Faire revenir le bœuf: Faire dorer les cubes dans huile, réserver",15min
+1301,21,2026-04-09,Jeudi 09/04,"[Prep] Préparer les légumes: Éplucher 300g carottes nouvelles, 200g navets, 1 oignon",15min
+1302,21,2026-04-09,Jeudi 09/04,"[Prep] Mijoter: Remettre le bœuf, ajouter légumes, bouillon, herbes, mijoter 45min",50min
+1303,21,2026-04-10,Vendredi 10/04,Préchauffer le four: Préchauffer à 180°C,10min
+1304,21,2026-04-10,Vendredi 10/04,Saisir le rôti: Saisir 520g rôti de porc dans une cocotte sur tous les côtés,10min
+1305,21,2026-04-10,Vendredi 10/04,Préparer les légumes: Éplucher 430g PDT et 270g carottes nouvelles,15min
+1306,21,2026-04-10,Vendredi 10/04,"Cuire au four: Ajouter légumes autour du rôti, arroser d'huile, enfourner 60min",60min
+1307,21,2026-04-10,Vendredi 10/04,Finir les carottes: Glacer les carottes avec miel et beurre,5min
+1308,21,2026-04-10,Vendredi 10/04,"[Prep] Préparer la purée: Cuire 600g PDT, écraser avec lait et beurre",25min
+1309,21,2026-04-10,Vendredi 10/04,"[Prep] Assembler le parmentier: Disposer le bœuf mijoté dans un plat, recouvrir de purée, râper gruyère",10min
+1310,21,2026-04-10,Vendredi 10/04,[Prep] Gratiner: Enfourner 15min à 200°C pour gratiner,15min
+1311,21,2026-04-11,Samedi 11/04,Préchauffer le four: Préchauffer à 220°C pour les frites,5min
+1312,21,2026-04-11,Samedi 11/04,"Préparer les frites: Couper 380g PDT en frites, huiler, saler, enfourner 25min",10min
+1313,21,2026-04-11,Samedi 11/04,"Former les steaks: Former 2 steaks avec 270g viande hachée, saler, poivrer",5min
+1314,21,2026-04-11,Samedi 11/04,Cuire les steaks: Cuire les steaks à la poêle 4min de chaque côté,10min
+1315,21,2026-04-11,Samedi 11/04,"Assembler les burgers: Griller les pains, assembler avec cheddar fondu et salade",5min
+1316,21,2026-04-11,Samedi 11/04,[Prep] Cuire les pâtes: Cuire 350g spaghettis al dente dans eau salée,11min
+1317,21,2026-04-11,Samedi 11/04,"[Prep] Préparer la sauce: Faire revenir 140g guanciale, battre 3 œufs avec 70g pecorino",5min
+1318,21,2026-04-11,Samedi 11/04,[Prep] Mélanger: Mélanger pâtes chaudes avec œufs-fromage hors du feu,3min
+1319,21,2026-04-12,Dimanche 12/04,"Cuire les PDT: Éplucher et cuire 430g PDT à l'eau, couper en rondelles",20min
+1320,21,2026-04-12,Dimanche 12/04,"Préparer les épinards: Nettoyer 270g épinards frais, les faire tomber à la poêle",8min
+1321,21,2026-04-12,Dimanche 12/04,Faire revenir l'oignon: Émincer et faire revenir 1 oignon dans l'huile d'olive,5min
+1322,21,2026-04-12,Dimanche 12/04,Battre les œufs: Battre 5 œufs avec sel et poivre,2min
+1323,21,2026-04-12,Dimanche 12/04,"Cuire la tortilla: Mélanger tous les ingrédients, cuire dans grande poêle, retourner",15min
+1324,21,2026-04-12,Dimanche 12/04,"[Prep] Paner le cabillaud: Passer 350g filets dans farine, œuf, chapelure",15min
+1325,21,2026-04-12,Dimanche 12/04,[Prep] Cuire le fish & chips: Cuire cabillaud pané et 380g frites au four 25min à 200°C,30min
+1326,21,2026-04-12,Dimanche 12/04,"[Prep] Préparer sauce tartare: Mélanger mayo, cornichons, câpres, persil, citron",10min
+1327,21,2026-04-12,Dimanche 12/04,[Prep] Cuire petits pois: Cuire 220g petits pois surgelés,8min
+1328,21,2026-04-12,Dimanche 12/04,[Prep] Cuire œufs semaine: Cuire 15 œufs durs pour la semaine prochaine,15min
