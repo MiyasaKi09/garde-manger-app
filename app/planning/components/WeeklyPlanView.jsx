@@ -379,8 +379,7 @@ const styles = {
   mealDescText: {
     flex: 1,
     minWidth: 0,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
+    wordBreak: 'break-word',
     fontWeight: 500,
   },
 }
