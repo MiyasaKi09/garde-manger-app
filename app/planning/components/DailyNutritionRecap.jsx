@@ -6,8 +6,8 @@ import { authFetch } from '@/lib/authFetch'
 const DAY_NAMES = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
 
 const TARGETS = {
-  Julien: { kcal: 2050, p: 170 },
-  Zoé: { kcal: 1350, p: 90 },
+  Julien: { kcal: 2050, p: 170, g: 170, l: 70 },
+  Zoé: { kcal: 1350, p: 90, g: 120, l: 55 },
 }
 
 function pct(value, target) {
@@ -76,6 +76,8 @@ export default function DailyNutritionRecap({ importId }) {
                 const target = TARGETS[name] || {}
                 const kcalPct = pct(p.kcal, target.kcal)
                 const protPct = pct(p.protein_g, target.p)
+                const carbsPct = pct(p.carbs_g, target.g)
+                const fatPct = pct(p.fat_g, target.l)
 
                 return (
                   <div key={name} style={S.personBlock}>
@@ -91,9 +93,8 @@ export default function DailyNutritionRecap({ importId }) {
                     </div>
                     <div style={S.microRow}>
                       <span style={{ ...S.microValue, color: statusColor(protPct) }}>{Math.round(p.protein_g || 0)}P</span>
-                      <span style={S.microValue}>{Math.round(p.carbs_g || 0)}G</span>
-                      <span style={S.microValue}>{Math.round(p.fat_g || 0)}L</span>
-                      {p.fiber_g > 0 && <span style={S.microValue}>{Math.round(p.fiber_g)}F</span>}
+                      <span style={{ ...S.microValue, color: statusColor(carbsPct) }}>{Math.round(p.carbs_g || 0)}G</span>
+                      <span style={{ ...S.microValue, color: statusColor(fatPct) }}>{Math.round(p.fat_g || 0)}L</span>
                     </div>
                   </div>
                 )
