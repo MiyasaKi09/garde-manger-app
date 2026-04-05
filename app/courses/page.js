@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { ShoppingCart, Check, ChevronLeft } from 'lucide-react'
+import { ShoppingCart, Check, ChevronLeft, Package } from 'lucide-react'
 import Link from 'next/link'
 
 export default function CoursesPage() {
@@ -64,14 +64,36 @@ export default function CoursesPage() {
     const item = items.find(i => i.id === itemId)
     if (!item) return
     const newChecked = !item.checked
-    setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: newChecked } : i))
+    setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: newChecked, stocking: newChecked } : i))
+
     try {
+      // Update checked status
       await supabase
         .from('nutrition_plan_shopping_items')
         .update({ checked: newChecked })
         .eq('id', itemId)
+
+      // Add to stock when checking
+      if (newChecked) {
+        try {
+          const res = await authFetch('/api/courses/add-to-stock', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              itemId: item.id,
+              productName: item.product_name,
+              quantity: item.quantity,
+            }),
+          })
+          const data = await res.json()
+          setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: true, stocking: false } : i))
+        } catch (stockErr) {
+          console.error('Erreur ajout stock:', stockErr)
+          setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false } : i))
+        }
+      }
     } catch {
-      setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: !newChecked } : i))
+      setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: !newChecked, stocking: false } : i))
     }
   }
 
@@ -175,6 +197,12 @@ export default function CoursesPage() {
                 </span>
                 {item.quantity && (
                   <span style={S.itemQty}>{item.quantity}</span>
+                )}
+                {item.stocking && (
+                  <span style={S.stockingBadge}>...</span>
+                )}
+                {item.stocked && !item.stocking && (
+                  <span style={S.stockedBadge}><Package size={11} /> rangé</span>
                 )}
               </button>
             ))}
@@ -344,6 +372,24 @@ const S = {
     padding: '40px 20px',
     textAlign: 'center',
     marginTop: 20,
+  },
+  stockingBadge: {
+    fontSize: 10,
+    fontWeight: 600,
+    color: '#9ca3af',
+    flexShrink: 0,
+  },
+  stockedBadge: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 3,
+    fontSize: 10,
+    fontWeight: 600,
+    color: '#16a34a',
+    background: 'rgba(22, 163, 74, 0.08)',
+    padding: '2px 7px',
+    borderRadius: 6,
+    flexShrink: 0,
   },
   ctaBtn: {
     display: 'inline-flex',
