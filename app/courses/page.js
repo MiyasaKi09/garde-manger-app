@@ -142,12 +142,13 @@ export default function CoursesPage() {
 
       if (archs?.length) {
         const best = archs.find(a => a.name.toLowerCase() === variant) || archs[0]
+        const cf = best.canonical_foods
         return {
           type: 'archetype',
           id: best.id,
-          shelf_life_days_pantry: best.shelf_life_days || best.canonical_foods?.shelf_life_days_pantry || 30,
-          shelf_life_days_fridge: best.shelf_life_days || best.canonical_foods?.shelf_life_days_fridge || 7,
-          shelf_life_days_freezer: (best.shelf_life_days || 30) * 10 || best.canonical_foods?.shelf_life_days_freezer || 90,
+          shelf_life_days_pantry: cf?.shelf_life_days_pantry || best.shelf_life_days || 0,
+          shelf_life_days_fridge: cf?.shelf_life_days_fridge || 0,
+          shelf_life_days_freezer: cf?.shelf_life_days_freezer || 0,
         }
       }
 
@@ -163,9 +164,9 @@ export default function CoursesPage() {
         return {
           type: 'canonical',
           id: best.id,
-          shelf_life_days_pantry: best.shelf_life_days_pantry || 30,
-          shelf_life_days_fridge: best.shelf_life_days_fridge || 7,
-          shelf_life_days_freezer: best.shelf_life_days_freezer || 90,
+          shelf_life_days_pantry: best.shelf_life_days_pantry || 0,
+          shelf_life_days_fridge: best.shelf_life_days_fridge || 0,
+          shelf_life_days_freezer: best.shelf_life_days_freezer || 0,
         }
       }
     }
