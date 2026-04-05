@@ -51,14 +51,62 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   const recipeName = recipe.title || recipe.name
   const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0)
 
+  const responsiveStyles = (
+    <style jsx global>{`
+      .cook-landing-scroll { flex: 1; display: flex; align-items: flex-start; justify-content: center; padding: 60px 24px 40px; overflow-y: auto; }
+      .cook-landing-container { text-align: center; max-width: 520px; width: 100%; }
+      .cook-landing-title { font-family: 'Crimson Text', Georgia, serif; font-size: 32px; font-weight: 700; color: #16a34a; margin-bottom: 12px; line-height: 1.2; }
+      .cook-step-content { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
+      .cook-step-card { max-width: 560px; width: 100%; background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; padding: 32px 28px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+      .cook-step-title { font-size: 24px; font-weight: 700; color: var(--ink, #1f281f); margin-bottom: 16px; line-height: 1.3; }
+      .cook-step-text { font-size: 16px; line-height: 1.7; color: #374151; margin: 0; }
+      .cook-timer-text { font-size: 48px; font-weight: 300; font-variant-numeric: tabular-nums; letter-spacing: 2px; color: var(--ink, #1f281f); }
+      .cook-footer { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 16px 24px 28px; flex-shrink: 0; }
+      .cook-nutrition-section { text-align: left; margin-bottom: 24px; background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.35); border-radius: 16px; padding: 16px 20px; }
+      .cook-persons-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+      .cook-person-card { flex: 1; min-width: 180px; background: rgba(255,255,255,0.5); border-radius: 12px; padding: 12px 14px; border: 1px solid rgba(0,0,0,0.04); }
+      .cook-macros-row { display: flex; align-items: center; gap: 8px; justify-content: center; flex-wrap: wrap; }
+      .cook-macro-value { font-size: 18px; font-weight: 700; color: var(--ink, #1f281f); font-variant-numeric: tabular-nums; }
+      .cook-ingredients-list { text-align: left; margin-bottom: 32px; background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.35); border-radius: 16px; padding: 16px 20px; }
+      .cook-start-btn { padding: 14px 48px; border: none; border-radius: 16px; background: linear-gradient(135deg, #16a34a, #059669); color: white; font-size: 16px; font-weight: 600; cursor: pointer; font-family: inherit; box-shadow: 0 4px 14px rgba(22,163,74,0.3); }
+
+      @media (max-width: 768px) {
+        .cook-landing-scroll { padding: 48px 16px 32px; }
+        .cook-landing-title { font-size: 24px; }
+        .cook-step-content { padding: 16px; }
+        .cook-step-card { padding: 24px 18px; border-radius: 16px; }
+        .cook-step-title { font-size: 20px; }
+        .cook-step-text { font-size: 15px; }
+        .cook-timer-text { font-size: 36px; }
+        .cook-footer { padding: 12px 16px 20px; gap: 12px; }
+        .cook-nutrition-section { padding: 12px 14px; }
+        .cook-persons-grid { flex-direction: column; }
+        .cook-person-card { min-width: 0; }
+        .cook-macro-value { font-size: 16px; }
+        .cook-ingredients-list { padding: 12px 14px; margin-bottom: 24px; }
+        .cook-start-btn { padding: 12px 36px; font-size: 15px; width: 100%; }
+      }
+
+      @media (max-width: 480px) {
+        .cook-landing-scroll { padding: 40px 12px 24px; }
+        .cook-landing-title { font-size: 22px; }
+        .cook-step-card { padding: 20px 14px; }
+        .cook-step-title { font-size: 18px; }
+        .cook-timer-text { font-size: 32px; }
+        .cook-footer { padding: 10px 12px 16px; }
+      }
+    `}</style>
+  )
+
   // ---- LANDING SCREEN (glass-morphism style) ----
   if (currentStep === -1) {
     return (
       <div style={styles.landingOverlay}>
+        {responsiveStyles}
         <button onClick={onClose} style={styles.landingCloseBtn}><X size={24} /></button>
-        <div style={styles.landingScroll}>
-          <div style={styles.landingContainer}>
-            <h1 style={styles.landingTitle}>{recipeName}</h1>
+        <div className="cook-landing-scroll">
+          <div className="cook-landing-container">
+            <h1 className="cook-landing-title">{recipeName}</h1>
             {recipe.description && (
               <p style={styles.landingDesc}>{recipe.description}</p>
             )}
@@ -68,30 +116,30 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
             {/* Per-person nutrition from meal plan */}
             {mealEntries?.length > 0 && (
-              <div style={styles.nutritionSection}>
+              <div className="cook-nutrition-section">
                 <h3 style={styles.landingIngTitle}>NUTRITION PAR PERSONNE</h3>
-                <div style={styles.personsGrid}>
+                <div className="cook-persons-grid">
                   {mealEntries.map((entry, i) => (
-                    <div key={i} style={styles.personCard}>
+                    <div key={i} className="cook-person-card">
                       <span style={styles.personName}>{entry.person_name || '?'}</span>
-                      <div style={styles.macrosRow}>
+                      <div className="cook-macros-row">
                         <div style={styles.macroItem}>
-                          <span style={styles.macroValue}>{Math.round(entry.kcal || 0)}</span>
+                          <span className="cook-macro-value">{Math.round(entry.kcal || 0)}</span>
                           <span style={styles.macroLabel}>kcal</span>
                         </div>
                         <div style={styles.macroDivider} />
                         <div style={styles.macroItem}>
-                          <span style={styles.macroValue}>{Math.round(entry.protein_g || 0)}g</span>
+                          <span className="cook-macro-value">{Math.round(entry.protein_g || 0)}g</span>
                           <span style={styles.macroLabel}>prot</span>
                         </div>
                         <div style={styles.macroDivider} />
                         <div style={styles.macroItem}>
-                          <span style={styles.macroValue}>{Math.round(entry.carbs_g || 0)}g</span>
+                          <span className="cook-macro-value">{Math.round(entry.carbs_g || 0)}g</span>
                           <span style={styles.macroLabel}>gluc</span>
                         </div>
                         <div style={styles.macroDivider} />
                         <div style={styles.macroItem}>
-                          <span style={styles.macroValue}>{Math.round(entry.fat_g || 0)}g</span>
+                          <span className="cook-macro-value">{Math.round(entry.fat_g || 0)}g</span>
                           <span style={styles.macroLabel}>lip</span>
                         </div>
                       </div>
@@ -109,26 +157,26 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
             {/* Recipe-level nutrition fallback (when no mealEntries) */}
             {(!mealEntries?.length) && recipe?.nutrition_per_serving && (
-              <div style={styles.nutritionSection}>
+              <div className="cook-nutrition-section">
                 <h3 style={styles.landingIngTitle}>NUTRITION PAR PORTION</h3>
-                <div style={styles.macrosRow}>
+                <div className="cook-macros-row">
                   <div style={styles.macroItem}>
-                    <span style={styles.macroValue}>{recipe.nutrition_per_serving.kcal || '—'}</span>
+                    <span className="cook-macro-value">{recipe.nutrition_per_serving.kcal || '—'}</span>
                     <span style={styles.macroLabel}>kcal</span>
                   </div>
                   <div style={styles.macroDivider} />
                   <div style={styles.macroItem}>
-                    <span style={styles.macroValue}>{recipe.nutrition_per_serving.protein_g || '—'}g</span>
+                    <span className="cook-macro-value">{recipe.nutrition_per_serving.protein_g || '—'}g</span>
                     <span style={styles.macroLabel}>prot</span>
                   </div>
                   <div style={styles.macroDivider} />
                   <div style={styles.macroItem}>
-                    <span style={styles.macroValue}>{recipe.nutrition_per_serving.carbs_g || '—'}g</span>
+                    <span className="cook-macro-value">{recipe.nutrition_per_serving.carbs_g || '—'}g</span>
                     <span style={styles.macroLabel}>gluc</span>
                   </div>
                   <div style={styles.macroDivider} />
                   <div style={styles.macroItem}>
-                    <span style={styles.macroValue}>{recipe.nutrition_per_serving.fat_g || '—'}g</span>
+                    <span className="cook-macro-value">{recipe.nutrition_per_serving.fat_g || '—'}g</span>
                     <span style={styles.macroLabel}>lip</span>
                   </div>
                 </div>
@@ -140,7 +188,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
             {/* Ingredients */}
             {ingredients?.length > 0 && (
-              <div style={styles.ingredientsList}>
+              <div className="cook-ingredients-list">
                 <h3 style={styles.landingIngTitle}>INGRÉDIENTS</h3>
                 {ingredients.map((ing, i) => (
                   <p key={i} style={styles.landingIngItem}>
@@ -153,7 +201,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
             <button
               onClick={() => setCurrentStep(0)}
-              style={styles.landingStartBtn}
+              className="cook-start-btn"
               disabled={!steps?.length}
             >
               Commencer
@@ -168,7 +216,8 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   if (currentStep === 'done') {
     return (
       <div style={S.overlay}>
-        <div style={S.content}>
+        {responsiveStyles}
+        <div className="cook-step-content">
           <div style={{ textAlign: 'center', maxWidth: 400 }}>
             <div style={{ fontSize: 56, marginBottom: 16 }}>👨‍🍳</div>
             <h2 style={{ ...S.stepTitle, marginBottom: 8 }}>Bon appétit !</h2>
@@ -229,14 +278,16 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
         <button onClick={onClose} style={S.closeBtn}><X size={24} /></button>
       </div>
 
+      {responsiveStyles}
+
       {/* Step content */}
-      <div style={S.content}>
-        <div style={S.stepCard}>
+      <div className="cook-step-content">
+        <div className="cook-step-card">
           <div style={S.stepBadge}>Étape {currentStep + 1}/{steps.length}</div>
           {stepTitle && (
-            <h2 style={S.stepTitle}>{stepTitle}</h2>
+            <h2 className="cook-step-title">{stepTitle}</h2>
           )}
-          <p style={S.stepText}>{stepBody || fullText}</p>
+          <p className="cook-step-text">{stepBody || fullText}</p>
 
           {/* Timer */}
           {timerMinutes > 0 && (
@@ -246,7 +297,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
       </div>
 
       {/* Footer navigation */}
-      <div style={S.footer}>
+      <div className="cook-footer">
         <button
           onClick={() => setCurrentStep(s => Math.max(-1, s - 1))}
           style={S.navBtn}
@@ -303,8 +354,7 @@ function Timer({ minutes }) {
   return (
     <div style={S.timerContainer}>
       <div style={S.timerDisplay}>
-        <span style={{
-          ...S.timerText,
+        <span className="cook-timer-text" style={{
           color: remaining === 0 ? '#ef4444' : 'var(--ink, #1f281f)',
         }}>
           {String(mins).padStart(2, '0')}:{String(secs).padStart(2, '0')}

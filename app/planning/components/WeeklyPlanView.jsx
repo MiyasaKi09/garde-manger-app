@@ -166,7 +166,7 @@ export default function WeeklyPlanView({ importId }) {
       </div>
 
       {/* Days */}
-      <div style={styles.daysGrid}>
+      <div className="weekly-days-grid">
         {weekDates.map(date => {
           const dateStr = date.toISOString().split('T')[0]
           const isToday = dateStr === todayStr
@@ -177,25 +177,16 @@ export default function WeeklyPlanView({ importId }) {
           return (
             <div
               key={dateStr}
-              style={{
-                ...styles.dayCard,
-                ...(isToday ? styles.todayCard : {}),
-              }}
+              className={`weekly-day-card${isToday ? ' weekly-day-today' : ''}`}
             >
               {/* Day header */}
-              <div style={{
-                ...styles.dayHeader,
-                ...(isToday ? styles.todayHeader : {}),
-              }}>
-                <span style={styles.dayName}>{dayName}</span>
-                <span style={{
-                  ...styles.dayNum,
-                  ...(isToday ? styles.todayNum : {}),
-                }}>{dayNum}</span>
+              <div className={`weekly-day-header${isToday ? ' weekly-day-header-today' : ''}`}>
+                <span className="weekly-day-name">{dayName}</span>
+                <span className={`weekly-day-num${isToday ? ' weekly-day-num-today' : ''}`}>{dayNum}</span>
               </div>
 
               {/* Meals */}
-              <div style={styles.mealsWrap}>
+              <div className="weekly-meals-wrap">
                 {dayMeals.length === 0 ? (
                   <p style={styles.noMeal}>—</p>
                 ) : (
@@ -207,26 +198,23 @@ export default function WeeklyPlanView({ importId }) {
                     const colors = MEAL_COLORS[type] || MEAL_COLORS.dejeuner
 
                     return (
-                      <div key={type} style={styles.mealBlock}>
-                        <span style={{
-                          ...styles.mealType,
-                          background: colors.bg,
-                          color: colors.text,
-                        }}>
+                      <div key={type} className="weekly-meal-block">
+                        <span
+                          className="weekly-meal-type"
+                          style={{ background: colors.bg, color: colors.text }}
+                        >
                           {MEAL_LABELS[type] || type}
                         </span>
                         <button
                           onClick={() => handleMealClick({ ...typeMeals[0], description: dishName }, typeMeals)}
                           disabled={!!generatingFor}
-                          style={{
-                            ...styles.mealBtn,
-                            opacity: generatingFor && !isGenerating ? 0.4 : 1,
-                          }}
+                          className="weekly-meal-btn"
+                          style={{ opacity: generatingFor && !isGenerating ? 0.4 : 1 }}
                         >
                           {isGenerating ? (
                             <Loader2 size={11} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: colors.accent }} />
                           ) : null}
-                          <span style={styles.mealDescText}>{dishName}</span>
+                          <span className="weekly-meal-desc">{dishName}</span>
                         </button>
                       </div>
                     )
@@ -242,6 +230,146 @@ export default function WeeklyPlanView({ importId }) {
       {generatingFor && (
         <style>{`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
       )}
+
+      {/* Responsive styles */}
+      <style jsx>{`
+        .weekly-days-grid {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          gap: 8px;
+        }
+        .weekly-day-card {
+          background: rgba(255, 255, 255, 0.6);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(0, 0, 0, 0.06);
+          border-radius: 14px;
+          min-height: 120px;
+          overflow: hidden;
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .weekly-day-today {
+          border: 2px solid rgba(74, 124, 74, 0.35);
+          background: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 4px 16px rgba(74, 124, 74, 0.1);
+        }
+        .weekly-day-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 8px 10px 6px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        .weekly-day-header-today {
+          background: linear-gradient(135deg, rgba(74, 124, 74, 0.06), rgba(139, 181, 139, 0.08));
+          border-bottom: 1px solid rgba(74, 124, 74, 0.1);
+        }
+        .weekly-day-name {
+          font-family: 'Inter', sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+          color: #9ca3af;
+        }
+        .weekly-day-num {
+          font-family: 'Crimson Text', Georgia, serif;
+          font-size: 18px;
+          font-weight: 700;
+          color: #6b7280;
+        }
+        .weekly-day-num-today {
+          color: #4a7c4a;
+          background: rgba(74, 124, 74, 0.1);
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .weekly-meals-wrap {
+          padding: 6px 8px 8px;
+        }
+        .weekly-meal-block {
+          margin-bottom: 6px;
+        }
+        .weekly-meal-type {
+          display: inline-block;
+          font-size: 9px;
+          font-weight: 700;
+          padding: 2px 6px;
+          border-radius: 5px;
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
+          font-family: 'Inter', sans-serif;
+        }
+        .weekly-meal-btn {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          width: 100%;
+          padding: 3px 4px;
+          margin: 2px 0 0;
+          border: none;
+          border-radius: 6px;
+          background: transparent;
+          cursor: pointer;
+          font-family: 'Inter', sans-serif;
+          text-align: left;
+          transition: all 0.15s;
+          font-size: 11.5px;
+          line-height: 1.3;
+          color: var(--ink, #1f281f);
+        }
+        .weekly-meal-desc {
+          flex: 1;
+          min-width: 0;
+          word-break: break-word;
+          font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+          .weekly-days-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+          }
+          .weekly-day-card {
+            min-height: 90px;
+          }
+          .weekly-meal-type {
+            font-size: 8px;
+            padding: 1px 5px;
+          }
+          .weekly-meal-btn {
+            font-size: 11px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .weekly-days-grid {
+            grid-template-columns: 1fr;
+            gap: 4px;
+          }
+          .weekly-day-card {
+            min-height: auto;
+            border-radius: 12px;
+          }
+          .weekly-meals-wrap {
+            padding: 4px 8px 6px;
+          }
+          .weekly-day-header {
+            padding: 6px 10px 4px;
+          }
+          .weekly-meal-btn {
+            font-size: 12px;
+            padding: 4px 6px;
+          }
+          .weekly-meal-type {
+            font-size: 9px;
+            padding: 2px 8px;
+          }
+        }
+      `}</style>
 
       {/* Cook Mode */}
       <CookMode

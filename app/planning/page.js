@@ -555,11 +555,26 @@ export default function PlanningPage() {
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 768px) {
           .planning-container { padding: 8px 12px 32px; }
-          .hero-header { padding: 28px 20px; border-radius: 20px; }
+          .hero-header { padding: 24px 16px; border-radius: 18px; }
           .hero-content { flex-direction: column; text-align: center; }
-          .hero-actions { justify-content: center; }
-          .hero-title { font-size: 26px; }
+          .hero-actions { justify-content: center; flex-wrap: wrap; }
+          .hero-title { font-size: 24px; }
+          .hero-subtitle { font-size: 13px; }
+          .section-title { font-size: 18px; }
           .import-card { flex-wrap: wrap; }
+          .imports-summary { font-size: 12px; padding: 10px 14px; }
+          .imports-compact { padding: 4px 12px 10px; }
+        }
+
+        @media (max-width: 480px) {
+          .planning-container { padding: 6px 8px 24px; }
+          .hero-header { padding: 20px 14px; border-radius: 16px; }
+          .hero-title { font-size: 22px; }
+          .hero-subtitle { font-size: 12px; }
+          .hero-actions { gap: 8px; }
+          .section-title { font-size: 16px; }
+          .planning-section { margin-bottom: 16px; }
+          .section-header { margin-bottom: 10px; }
         }
       `}</style>
     </>
