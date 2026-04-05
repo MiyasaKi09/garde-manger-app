@@ -39,7 +39,7 @@ export default function InstructionsCarousel({ steps, chefTips, onStartCookMode 
       <div className="instructions-content">
         <div className="steps-carousel" style={{ position: 'relative', padding: '10px 0' }}>
           {/* Step card */}
-          <div style={styles.card}>
+          <div className="carousel-card" style={styles.card}>
             <div style={styles.stepNumber}>
               {step.step_no || currentIndex + 1}
             </div>
@@ -51,6 +51,7 @@ export default function InstructionsCarousel({ steps, chefTips, onStartCookMode 
           {/* Navigation */}
           <div style={styles.nav}>
             <button
+              className="carousel-nav-btn"
               onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
               disabled={isFirst}
               style={{
@@ -64,7 +65,7 @@ export default function InstructionsCarousel({ steps, chefTips, onStartCookMode 
               ← Précédent
             </button>
 
-            <div style={styles.dots}>
+            <div className="carousel-dots" style={styles.dots}>
               {steps.map((_, i) => (
                 <button
                   key={i}
@@ -85,6 +86,7 @@ export default function InstructionsCarousel({ steps, chefTips, onStartCookMode 
             </div>
 
             <button
+              className="carousel-nav-btn"
               onClick={() => setCurrentIndex(Math.min(steps.length - 1, currentIndex + 1))}
               disabled={isLast}
               style={{
@@ -111,6 +113,32 @@ export default function InstructionsCarousel({ steps, chefTips, onStartCookMode 
           <p>{chefTips}</p>
         </div>
       )}
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .carousel-nav-btn {
+            padding: 10px 16px !important;
+            font-size: 0.85rem !important;
+          }
+          .carousel-card {
+            padding: 18px !important;
+            min-height: 100px !important;
+          }
+          .carousel-dots {
+            gap: 4px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .carousel-nav-btn {
+            padding: 8px 12px !important;
+            font-size: 0.8rem !important;
+            border-radius: 10px !important;
+          }
+          .carousel-card {
+            padding: 14px !important;
+          }
+        }
+      `}</style>
     </div>
   )
 }

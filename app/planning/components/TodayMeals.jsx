@@ -290,7 +290,7 @@ export default function TodayMeals({ importId }) {
       {showChoice && selectedMeal && (
         <>
           <div style={S.overlay} onClick={closeModal} />
-          <div style={S.modal}>
+          <div className="today-modal">
             {/* Decorative top bar */}
             <div style={S.modalTopBar} />
 
@@ -399,6 +399,39 @@ export default function TodayMeals({ importId }) {
           <style>{`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
         </>
       )}
+
+      <style jsx>{`
+        .today-modal {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(255,255,255,0.97);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          border-radius: 28px 28px 0 0;
+          padding: 0 24px 36px;
+          z-index: 1101;
+          max-height: 80vh;
+          overflow-y: auto;
+          box-shadow: 0 -8px 40px rgba(0,0,0,0.15);
+        }
+
+        @media (max-width: 768px) {
+          .today-modal {
+            padding: 0 16px 28px;
+            border-radius: 22px 22px 0 0;
+            max-height: 85vh;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .today-modal {
+            padding: 0 14px 24px;
+            border-radius: 18px 18px 0 0;
+          }
+        }
+      `}</style>
 
       <CookMode
         open={cookModeOpen}

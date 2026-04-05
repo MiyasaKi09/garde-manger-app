@@ -64,12 +64,12 @@ export default function DailyNutritionRecap({ importId }) {
         const persons = byDate[date]
 
         return (
-          <div key={date} style={S.dayRow}>
-            <div style={S.dayLabel}>
+          <div key={date} className="nutri-day-row">
+            <div className="nutri-day-label">
               <span style={S.dayName}>{dayName}</span>
               <span style={S.dayDate}>{dayNum} {month}</span>
             </div>
-            <div style={S.personsWrap}>
+            <div className="nutri-persons-wrap">
               {['Julien', 'Zoé'].map(name => {
                 const p = persons[name]
                 if (!p) return null
@@ -80,7 +80,7 @@ export default function DailyNutritionRecap({ importId }) {
                 const fatPct = pct(p.fat_g, target.l)
 
                 return (
-                  <div key={name} style={S.personBlock}>
+                  <div key={name} className="nutri-person-block">
                     <span style={S.personTag}>{name.charAt(0)}</span>
                     <div style={S.macros}>
                       <span style={{ ...S.macroMain, color: statusColor(kcalPct) }}>
@@ -88,10 +88,10 @@ export default function DailyNutritionRecap({ importId }) {
                       </span>
                       <span style={S.macroUnit}>kcal</span>
                     </div>
-                    <div style={S.macroBar}>
-                      <div style={{ ...S.macroBarFill, width: `${Math.min(kcalPct, 100)}%`, background: statusColor(kcalPct) }} />
+                    <div className="nutri-macro-bar">
+                      <div style={{ height: '100%', borderRadius: 2, transition: 'width 0.3s', width: `${Math.min(kcalPct, 100)}%`, background: statusColor(kcalPct) }} />
                     </div>
-                    <div style={S.microRow}>
+                    <div className="nutri-micro-row">
                       <span style={{ ...S.microValue, color: statusColor(protPct) }}>{Math.round(p.protein_g || 0)}P</span>
                       <span style={{ ...S.microValue, color: statusColor(carbsPct) }}>{Math.round(p.carbs_g || 0)}G</span>
                       <span style={{ ...S.microValue, color: statusColor(fatPct) }}>{Math.round(p.fat_g || 0)}L</span>
@@ -111,6 +111,86 @@ export default function DailyNutritionRecap({ importId }) {
         <span style={S.legendItem}><span style={{ ...S.legendDot, background: '#f59e0b' }} /> Proche (±15%)</span>
         <span style={S.legendItem}><span style={{ ...S.legendDot, background: '#ef4444' }} /> Hors cible</span>
       </div>
+
+      <style jsx>{`
+        .nutri-day-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 10px 14px;
+          background: rgba(255, 255, 255, 0.6);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(0, 0, 0, 0.04);
+          border-radius: 14px;
+        }
+        .nutri-day-label {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          min-width: 52px;
+          flex-shrink: 0;
+        }
+        .nutri-persons-wrap {
+          display: flex;
+          gap: 16px;
+          flex: 1;
+          min-width: 0;
+        }
+        .nutri-person-block {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          min-width: 0;
+        }
+        .nutri-macro-bar {
+          width: 40px;
+          height: 3px;
+          background: rgba(0, 0, 0, 0.06);
+          border-radius: 2px;
+          overflow: hidden;
+          flex-shrink: 0;
+        }
+        .nutri-micro-row {
+          display: flex;
+          gap: 6px;
+          flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+          .nutri-day-row {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 6px;
+            padding: 10px 12px;
+          }
+          .nutri-day-label {
+            flex-direction: row;
+            gap: 8px;
+            min-width: 0;
+          }
+          .nutri-persons-wrap {
+            flex-direction: column;
+            gap: 6px;
+          }
+          .nutri-person-block {
+            gap: 6px;
+          }
+          .nutri-macro-bar {
+            width: 32px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .nutri-day-row {
+            padding: 8px 10px;
+            border-radius: 12px;
+          }
+          .nutri-micro-row {
+            gap: 4px;
+          }
+        }
+      `}</style>
     </div>
   )
 }
@@ -120,23 +200,6 @@ const S = {
     display: 'flex',
     flexDirection: 'column',
     gap: 6,
-  },
-  dayRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 12,
-    padding: '10px 14px',
-    background: 'rgba(255, 255, 255, 0.6)',
-    backdropFilter: 'blur(8px)',
-    border: '1px solid rgba(0, 0, 0, 0.04)',
-    borderRadius: 14,
-  },
-  dayLabel: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    minWidth: 52,
-    flexShrink: 0,
   },
   dayName: {
     fontSize: 10,
@@ -151,19 +214,6 @@ const S = {
     fontWeight: 600,
     color: 'var(--forest-800, #2d5a2d)',
     fontFamily: "'Crimson Text', Georgia, serif",
-  },
-  personsWrap: {
-    display: 'flex',
-    gap: 16,
-    flex: 1,
-    minWidth: 0,
-  },
-  personBlock: {
-    flex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    gap: 8,
-    minWidth: 0,
   },
   personTag: {
     fontSize: 10,
@@ -190,24 +240,6 @@ const S = {
     fontSize: 10,
     color: '#9ca3af',
     fontWeight: 600,
-  },
-  macroBar: {
-    width: 40,
-    height: 3,
-    background: 'rgba(0, 0, 0, 0.06)',
-    borderRadius: 2,
-    overflow: 'hidden',
-    flexShrink: 0,
-  },
-  macroBarFill: {
-    height: '100%',
-    borderRadius: 2,
-    transition: 'width 0.3s',
-  },
-  microRow: {
-    display: 'flex',
-    gap: 6,
-    flexShrink: 0,
   },
   microValue: {
     fontSize: 10,
