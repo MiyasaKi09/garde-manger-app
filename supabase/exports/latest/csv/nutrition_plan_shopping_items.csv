@@ -1219,8 +1219,87 @@ id,import_id,week_label,category,product_name,quantity,checked
 2243,21,S1,Crémerie,Oeufs,27 pièces,f
 2244,21,S1,Épicerie,Amandes,210 g,f
 2168,21,S1,Épicerie,Épaule d'agneau,850 g,t
+2245,22,S1,Épicerie,Épaule d'agneau,1250 g,f
 2178,21,S1,Épicerie,Bouillon de légumes,600 ml,t
 2172,21,S1,Épicerie,Ail,50 gousses,f
 2173,21,S1,Épicerie,Gingembre frais,30 g,f
 2174,21,S1,Épicerie,Huile d'olive,373 ml,t
 2169,21,S1,Épicerie,Artichauts,6 pièces,t
+2246,22,S1,Épicerie,Artichauts,154 pièces,f
+2247,22,S1,Légumes,Carottes nouvelles,1100 g,f
+2248,22,S1,Légumes,Oignon jaune,151 pièce,f
+2249,22,S1,Épicerie,Ail,50 gousses,f
+2250,22,S1,Épicerie,Gingembre frais,40 g,f
+2251,22,S1,Épicerie,Huile d'olive,295 ml,f
+2252,22,S1,Épicerie,Cumin moulu,7 g,f
+2253,22,S1,Épicerie,Coriandre moulue,5 g,f
+2254,22,S1,Épicerie,Cannelle,2 g,f
+2255,22,S1,Épicerie,Bouillon de légumes,900 ml,f
+2256,22,S1,Épicerie,Citron,3 pièce,f
+2257,22,S1,Épicerie,Coriandre fraîche,40 g,f
+2258,22,S1,Épicerie,Sel,59 g,f
+2259,22,S1,Épicerie,Poivre noir,22 g,f
+2260,22,S1,Féculents,Riz basmati,455 g,f
+2261,22,S1,Crémerie,Beurre,260 g,f
+2262,22,S1,Épicerie,Œufs,13 pièces,f
+2263,22,S1,Légumes,Radis,270 g,f
+2264,22,S1,Crémerie,Gruyère râpé,155 g,f
+2265,22,S1,Féculents,Pommes de terre,2250 g,f
+2266,22,S1,Épicerie,Ciboulette,10 g,f
+2267,22,S1,Épicerie,Naan nature,3 pièces,f
+2268,22,S1,Légumes,Oignon,662 g,f
+2269,22,S1,Crémerie,Lait de coco,400 ml,f
+2270,22,S1,Légumes,Tomates concassées,200 g,f
+2271,22,S1,Épicerie,Curry en poudre,27 g,f
+2272,22,S1,Épicerie,Curcuma,3 g,f
+2273,22,S1,Protéines,Pavé de saumon,310 g,f
+2274,22,S1,Légumes,Asperges vertes,570 g,f
+2275,22,S1,Féculents,Pommes de terre grenaille,1370 g,f
+2276,22,S1,Épicerie,Persil plat,20 g,f
+2277,22,S1,Épicerie,Cœurs d'artichaut,180 g,f
+2278,22,S1,Épicerie,Cumin en poudre,3 g,f
+2279,22,S1,Épicerie,Coriandre en poudre,3 g,f
+2280,22,S1,Légumes,Concentré de tomate,40 g,f
+2281,22,S1,Épicerie,Épinards frais,270 g,f
+2282,22,S1,Épicerie,Vinaigre balsamique,15 ml,f
+2283,22,S1,Épicerie,Moutarde de Dijon,35 g,f
+2284,22,S1,Protéines,Côtes de porc,400 g,f
+2285,22,S1,Conserves,Petits pois frais,300 g,f
+2286,22,S1,Épicerie,Bouillon de volaille,200 ml,f
+2287,22,S1,Épicerie,Thym frais,9 branches,f
+2288,22,S1,Épicerie,Bœuf à mijoter (paleron ou gîte),400 g,f
+2289,22,S1,Légumes,Courgettes,300 g,f
+2290,22,S1,Légumes,Tomates,400 g,f
+2291,22,S1,Crémerie,Lait entier,200 ml,f
+2292,22,S1,Épicerie,Herbes de Provence,3 g,f
+2293,22,S1,Épicerie,Laurier,1 feuille,f
+2294,22,S1,Épicerie,Bouillon de bœuf,300 ml,f
+2295,22,S1,Épicerie,Vin rouge,100 ml,f
+2296,22,S1,Épicerie,Muscade,1 g,f
+2297,22,S1,Protéines,Filet de cabillaud,360 g,f
+2298,22,S1,Conserves,Petits pois surgelés,270 g,f
+2299,22,S1,Épicerie,Thym,2 g,f
+2300,22,S1,Féculents,Pains burger,2 pièces,f
+2301,22,S1,Protéines,Steak haché 15% MG,270 g,f
+2302,22,S1,Épicerie,Cheddar en tranches,55 g,f
+2303,22,S1,Légumes,Salade iceberg,80 g,f
+2304,22,S1,Légumes,Tomate,1 pièce,f
+2305,22,S1,Légumes,Oignon rouge,50 g,f
+2306,22,S1,Épicerie,Cornichons,30 g,f
+2307,22,S1,Épicerie,Mayonnaise,20 g,f
+2308,22,S1,Épicerie,Ketchup,15 g,f
+2309,22,S1,Épicerie,Spaghettis,350 g,f
+2310,22,S1,Épicerie,Guanciale,140 g,f
+2311,22,S1,Épicerie,Pecorino Romano,70 g,f
+2312,22,S1,Épicerie,Gros sel,15 g,f
+2313,22,S1,Protéines,Rôti de porc (filet ou échine),500 g,f
+2314,22,S1,Épicerie,Romarin,3 g,f
+2315,22,S1,Épicerie,Vin blanc sec,100 ml,f
+2316,22,S1,Épicerie,Émincé de bœuf,300 g,f
+2317,22,S1,Légumes,Champignons de Paris,200 g,f
+2318,22,S1,Crémerie,Crème fraîche épaisse,100 ml,f
+2319,22,S1,Épicerie,Paprika doux,5 g,f
+2320,22,S1,Épicerie,Huile de tournesol,15 ml,f
+2321,22,S1,Crémerie,Skyr,2200 g,f
+2322,22,S1,Crémerie,Oeufs,27 pièces,f
+2323,22,S1,Épicerie,Amandes,210 g,f
