@@ -1,23 +1,36 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { X, ChevronLeft, ChevronRight, Play, Pause, RotateCcw } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Play, Pause, RotateCcw, RefreshCw, Loader2 } from 'lucide-react'
+import { authFetch } from '@/lib/authFetch'
 
 /**
  * Mode cuisine immersif plein écran.
  * Fond sombre, étapes une par une, timers intégrés, navigation simple.
  * Inspiré du mode cuisine de Claude.
  */
-export default function CookMode({ open, onClose, recipe, steps, ingredients, recipeId, onRate, mealEntries }) {
+export default function CookMode({ open, onClose, recipe, steps, ingredients, recipeId, onRate, mealEntries, onRegenerated }) {
   // -1 = landing, 0+ = step index, 'done' = finished
   const [currentStep, setCurrentStep] = useState(-1)
   const [rating, setRating] = useState(0)
   const isLanding = currentStep === -1
 
+  // Régénération de la recette via la routine Claude (écriture Supabase côté routine)
+  const [regenOpen, setRegenOpen] = useState(false)
+  const [regenDir, setRegenDir] = useState('')
+  const [regenLoading, setRegenLoading] = useState(false)
+  const [regenError, setRegenError] = useState('')
+  const [regenDone, setRegenDone] = useState(false)
+
   useEffect(() => {
     if (open) {
       setCurrentStep(-1)
       setRating(0)
+      setRegenOpen(false)
+      setRegenDir('')
+      setRegenError('')
+      setRegenDone(false)
+      setRegenLoading(false)
       document.body.style.overflow = 'hidden'
     }
     return () => { document.body.style.overflow = '' }
@@ -50,6 +63,31 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
   const recipeName = recipe.title || recipe.name
   const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0)
+
+  async function handleRegenerate() {
+    if (regenLoading) return
+    setRegenLoading(true)
+    setRegenError('')
+    try {
+      const res = await authFetch('/api/routine/regenerate-recipe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          recipe_id: recipeId || undefined,
+          recipe_name: recipeId ? undefined : recipeName,
+          direction: regenDir || '',
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Erreur lors de la régénération')
+      setRegenDone(true)
+      onRegenerated?.()
+    } catch (e) {
+      setRegenError(e.message)
+    } finally {
+      setRegenLoading(false)
+    }
+  }
 
   const responsiveStyles = (
     <style jsx global>{`
@@ -206,6 +244,53 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
             >
               Commencer
             </button>
+
+            {/* ── RÉGÉNÉRER (routine Claude) ── */}
+            <div style={styles.regenWrap}>
+              {regenDone ? (
+                <p style={styles.regenDoneText}>
+                  Recette régénérée. Ferme et relance la cuisine pour voir la nouvelle version.
+                </p>
+              ) : !regenOpen ? (
+                <button onClick={() => setRegenOpen(true)} style={styles.regenToggle}>
+                  <RefreshCw size={15} />
+                  Régénérer cette recette
+                </button>
+              ) : (
+                <div style={styles.regenPanel}>
+                  <input
+                    type="text"
+                    value={regenDir}
+                    onChange={e => setRegenDir(e.target.value)}
+                    placeholder="Ex : version plus light, moins de beurre… (optionnel)"
+                    style={styles.regenInput}
+                    onKeyDown={e => e.key === 'Enter' && handleRegenerate()}
+                    disabled={regenLoading}
+                    autoFocus
+                  />
+                  <button onClick={handleRegenerate} disabled={regenLoading} style={styles.regenConfirm}>
+                    {regenLoading ? (
+                      <>
+                        <Loader2 size={15} style={{ animation: 'cm-spin 1s linear infinite' }} />
+                        Claude réfléchit… (30–60s)
+                      </>
+                    ) : (
+                      <>
+                        <RefreshCw size={15} />
+                        Régénérer
+                      </>
+                    )}
+                  </button>
+                  {regenError && <p style={styles.regenError}>{regenError}</p>}
+                  {!regenLoading && (
+                    <button onClick={() => setRegenOpen(false)} style={styles.regenCancel}>
+                      Annuler
+                    </button>
+                  )}
+                  <style jsx global>{`@keyframes cm-spin { from { transform: rotate(0) } to { transform: rotate(360deg) } }`}</style>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -464,6 +549,16 @@ const styles = {
   macroDivider: { width: 1, height: 24, background: 'rgba(0,0,0,0.08)', flexShrink: 0 },
   personPortions: { fontSize: 12, color: '#6b7280', marginTop: 8, lineHeight: 1.4, textAlign: 'center' },
   nutritionBadge: { fontSize: 10, color: '#16a34a', fontWeight: 600, textAlign: 'center', marginTop: 10, letterSpacing: 0.3 },
+
+  // Régénérer
+  regenWrap: { marginTop: 16, display: 'flex', justifyContent: 'center' },
+  regenToggle: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 16px', border: 'none', background: 'none', color: '#6b7280', fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' },
+  regenPanel: { display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 360 },
+  regenInput: { width: '100%', padding: '12px 14px', border: '1px solid rgba(0,0,0,0.12)', borderRadius: 12, fontSize: 14, fontFamily: 'inherit', outline: 'none', background: 'rgba(255,255,255,0.8)', boxSizing: 'border-box' },
+  regenConfirm: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 0', border: 'none', borderRadius: 14, background: 'linear-gradient(135deg, #16a34a, #059669)', color: 'white', fontSize: 14, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' },
+  regenError: { color: '#dc2626', fontSize: 12, margin: 0, textAlign: 'center' },
+  regenCancel: { background: 'none', border: 'none', color: '#9ca3af', fontSize: 12, cursor: 'pointer', fontFamily: 'inherit', padding: '2px 0' },
+  regenDoneText: { fontSize: 13, color: '#16a34a', fontWeight: 600, textAlign: 'center', margin: 0, lineHeight: 1.5, maxWidth: 360 },
 }
 
 // Steps + Done screens (also glass-morphism)

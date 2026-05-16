@@ -71,11 +71,10 @@ export default function TodayMeals({ importId }) {
   const [selectedMeal, setSelectedMeal] = useState(null)
   const [showChoice, setShowChoice] = useState(false)
 
-  // Swap mode
+  // Modify-meal mode — déclenche la routine Claude (écritures Supabase côté routine)
   const [swapMode, setSwapMode] = useState(false)
-  const [swapPreference, setSwapPreference] = useState('')
+  const [swapDirection, setSwapDirection] = useState('')
   const [swapping, setSwapping] = useState(false)
-  const [swapResult, setSwapResult] = useState(null)
   const [swapError, setSwapError] = useState('')
   const [swapSuccess, setSwapSuccess] = useState(false)
 
@@ -112,9 +111,8 @@ export default function TodayMeals({ importId }) {
     setSelectedMeal(meal)
     setShowChoice(true)
     setSwapMode(false)
-    setSwapResult(null)
     setSwapError('')
-    setSwapPreference('')
+    setSwapDirection('')
     setSwapSuccess(false)
   }
 
@@ -122,9 +120,8 @@ export default function TodayMeals({ importId }) {
     setShowChoice(false)
     setSelectedMeal(null)
     setSwapMode(false)
-    setSwapResult(null)
     setSwapError('')
-    setSwapPreference('')
+    setSwapDirection('')
   }
 
   // ── COOK FLOW ──
@@ -168,41 +165,38 @@ export default function TodayMeals({ importId }) {
     }
   }
 
-  // ── SWAP FLOW ──
-  async function handleSwap() {
+  // ── MODIFY FLOW ──
+  // Déclenche la routine Claude "Modifier un repas". La routine écrit
+  // elle-même en Supabase (Julien + Zoé) ; on recharge ensuite les repas.
+  async function handleModify() {
     if (!selectedMeal || swapping) return
     setSwapping(true)
     setSwapError('')
-    setSwapResult(null)
 
     try {
-      const res = await authFetch('/api/ai/plan/swap', {
+      const res = await authFetch('/api/routine/modify-meal', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          importId,
-          mealDate: selectedMeal.entries[0].meal_date,
-          mealType: selectedMeal.type,
-          currentDescription: selectedMeal.dishName,
-          preference: swapPreference || undefined,
+          import_id: importId,
+          meal_date: selectedMeal.entries[0].meal_date,
+          meal_type: selectedMeal.type,
+          person_name: 'Julien',
+          direction: swapDirection || '',
         }),
       })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Erreur swap')
-      setSwapResult(data.replacement)
+      if (!res.ok) throw new Error(data.error || 'Erreur lors de la modification')
+      setSwapSuccess(true)
+      setTimeout(() => {
+        closeModal()
+        loadMeals()
+      }, 1400)
     } catch (err) {
       setSwapError(err.message)
     } finally {
       setSwapping(false)
     }
-  }
-
-  async function confirmSwap() {
-    setSwapSuccess(true)
-    setTimeout(() => {
-      closeModal()
-      loadMeals()
-    }, 600)
   }
 
   if (loading) return <p style={{ color: '#9ca3af', fontSize: 13, textAlign: 'center' }}>...</p>
@@ -315,7 +309,7 @@ export default function TodayMeals({ importId }) {
             </div>
 
             {/* ── DEFAULT: choice buttons ── */}
-            {!swapMode && !swapResult && (
+            {!swapMode && !swapSuccess && (
               <div style={S.choiceButtons}>
                 <button onClick={handleCook} style={S.cookBtn}>
                   <ChefHat size={18} />
@@ -328,70 +322,47 @@ export default function TodayMeals({ importId }) {
               </div>
             )}
 
-            {/* ── SWAP MODE: input + generate ── */}
-            {swapMode && !swapResult && (
+            {/* ── MODIFY MODE: direction libre → déclenche la routine Claude ── */}
+            {swapMode && !swapSuccess && (
               <div style={S.swapSection}>
                 <input
                   type="text"
-                  value={swapPreference}
-                  onChange={e => setSwapPreference(e.target.value)}
-                  placeholder="Qu'est-ce que tu préfères ? (optionnel)"
+                  value={swapDirection}
+                  onChange={e => setSwapDirection(e.target.value)}
+                  placeholder="Ex : plus végétarien, moins gras, j'ai du saumon… (optionnel)"
                   style={S.swapInput}
-                  onKeyDown={e => e.key === 'Enter' && handleSwap()}
+                  onKeyDown={e => e.key === 'Enter' && handleModify()}
                   autoFocus
+                  disabled={swapping}
                 />
-                <button onClick={handleSwap} disabled={swapping} style={S.generateBtn}>
+                <button onClick={handleModify} disabled={swapping} style={S.generateBtn}>
                   {swapping ? (
                     <>
                       <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} />
-                      Myko cherche...
+                      Claude réfléchit à un nouveau repas… (30–60s)
                     </>
                   ) : (
                     <>
                       <RefreshCw size={16} />
-                      Trouver une alternative
+                      Régénérer le repas
                     </>
                   )}
                 </button>
                 {swapError && <p style={S.swapError}>{swapError}</p>}
-                <button onClick={() => setSwapMode(false)} style={S.cancelLink}>Annuler</button>
+                {!swapping && (
+                  <button onClick={() => setSwapMode(false)} style={S.cancelLink}>Annuler</button>
+                )}
               </div>
             )}
 
-            {/* ── SWAP RESULT: show replacement ── */}
-            {swapResult && !swapSuccess && (
-              <div style={S.swapResultSection}>
-                <p style={S.swapResultLabel}>Nouveau plat :</p>
-                <h4 style={S.swapResultName}>{swapResult.name || extractDishName([swapResult.j?.desc, swapResult.z?.desc].filter(Boolean))}</h4>
-                {swapResult.j && (
-                  <p style={S.swapResultMacro}>
-                    Julien : {swapResult.j.desc} — {swapResult.j.kcal} kcal
-                  </p>
-                )}
-                {swapResult.z && (
-                  <p style={S.swapResultMacro}>
-                    Zoé : {swapResult.z.desc} — {swapResult.z.kcal} kcal
-                  </p>
-                )}
-                <div style={S.swapResultButtons}>
-                  <button onClick={confirmSwap} style={S.confirmBtn}>
-                    <Check size={16} /> Confirmer
-                  </button>
-                  <button onClick={() => { setSwapResult(null); setSwapMode(true) }} style={S.retrySwapBtn}>
-                    Autre choix
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* ── SWAP SUCCESS ── */}
+            {/* ── SUCCESS ── */}
             {swapSuccess && (
               <div style={{ textAlign: 'center', padding: '20px 0' }}>
                 <div style={S.successIcon}>
                   <Check size={28} color="white" />
                 </div>
                 <p style={{ color: '#4a7c4a', fontWeight: 600, marginTop: 12, fontFamily: "'Crimson Text', Georgia, serif", fontSize: 18 }}>
-                  Plat changé !
+                  Repas modifié !
                 </p>
               </div>
             )}
@@ -675,69 +646,6 @@ const S = {
     textAlign: 'center',
   },
 
-  // Swap result
-  swapResultSection: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 6,
-  },
-  swapResultLabel: {
-    fontSize: 11,
-    fontWeight: 700,
-    color: '#6b7280',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-    margin: 0,
-    fontFamily: "'Inter', sans-serif",
-  },
-  swapResultName: {
-    fontFamily: "'Crimson Text', Georgia, serif",
-    fontSize: 22,
-    fontWeight: 700,
-    color: 'var(--forest-800, #2d5a2d)',
-    margin: '0 0 4px',
-  },
-  swapResultMacro: {
-    fontSize: 13,
-    color: '#374151',
-    margin: '2px 0',
-    lineHeight: 1.4,
-    fontFamily: "'Inter', sans-serif",
-  },
-  swapResultButtons: {
-    display: 'flex',
-    gap: 12,
-    marginTop: 14,
-  },
-  confirmBtn: {
-    flex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 6,
-    padding: '16px 0',
-    background: 'linear-gradient(135deg, #2d5a2d, #4a7c4a)',
-    color: 'white',
-    border: 'none',
-    borderRadius: 16,
-    fontSize: 15,
-    fontWeight: 600,
-    cursor: 'pointer',
-    fontFamily: "'Inter', sans-serif",
-    boxShadow: '0 4px 16px rgba(45, 90, 45, 0.25)',
-  },
-  retrySwapBtn: {
-    flex: 1,
-    padding: '16px 0',
-    background: 'transparent',
-    color: '#6b7280',
-    border: '1.5px solid rgba(0,0,0,0.08)',
-    borderRadius: 16,
-    fontSize: 14,
-    cursor: 'pointer',
-    fontFamily: "'Inter', sans-serif",
-    textAlign: 'center',
-  },
   successIcon: {
     width: 52,
     height: 52,
