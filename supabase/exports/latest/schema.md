@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Sun Apr  5 21:15:14 UTC 2026_
+_Généré le : Sat May 16 16:57:29 UTC 2026_
 
 ## Tables
 - _backup_views

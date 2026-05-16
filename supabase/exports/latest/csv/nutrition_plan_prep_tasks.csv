@@ -918,3 +918,78 @@ id,import_id,prep_date,prep_label,task,estimated_time
 1383,23,2026-04-11,Dimanche 11/04,[Prep] Préparer batch poulet: Lancer batch poulet basquaise pour lundi-mardi,60min
 1384,23,2026-04-11,Dimanche 11/04,[Prep] Cuire œufs: Cuire 15 œufs durs pour la semaine,15min
 1385,23,2026-04-11,Dimanche 11/04,[Prep] Prep légumes: Laver et préparer légumes pour la semaine,45min
+1386,24,2026-04-07,Lundi 07/04,Préparer légumes: Réchauffer 200g/150g ratatouille. Cuire 250g/180g PDT vapeur 15min,15min
+1387,24,2026-04-07,Lundi 07/04,"Cuire œufs: Casser 3/2 œufs dans la ratatouille chaude, couvrir 8min",8min
+1388,24,2026-04-07,Lundi 07/04,Servir: Accompagner des PDT vapeur et pain grillé,2min
+1389,24,2026-04-07,Lundi 07/04,"[Prep] Curry pois chiches: Faire revenir oignon, ail, épices. Ajouter 400g pois chiches, 400ml lait coco, légumes. Mijoter 30min",45min
+1390,24,2026-04-08,Mardi 08/04,Cuire PDT: Faire rôtir 250g/180g PDT grenaille avec huile et thym 20min à 200°C,20min
+1391,24,2026-04-08,Mardi 08/04,"Cuire saumon: Saler, poivrer, cuire 180g/140g saumon 4min/côté dans poêle chaude",8min
+1392,24,2026-04-08,Mardi 08/04,Cuire asperges: Faire sauter 200g/150g asperges 5min avec ail et huile,5min
+1393,24,2026-04-08,Mardi 08/04,"[Prep] Croque-madame: Préparer béchamel, monter croques avec jambon-gruyère, enfourner avec œuf au plat",35min
+1394,24,2026-04-09,Mercredi 09/04,Cuire riz: Faire cuire 250g/180g riz basmati dans eau bouillante salée 15min,15min
+1395,24,2026-04-09,Mercredi 09/04,Cuire cabillaud: Faire cuire 200g/150g cabillaud à la poêle 4min/côté avec beurre,8min
+1396,24,2026-04-09,Mercredi 09/04,Réchauffer petits pois: Faire sauter 150g/120g petits pois avec beurre et menthe 3min,3min
+1397,24,2026-04-09,Mercredi 09/04,"[Prep] Émincé porc curry: Faire revenir émincé de porc, oignon, curry, lait coco, légumes. Mijoter 45min",60min
+1398,24,2026-04-10,Jeudi 10/04,"Préparer pâte: Mélanger 100g farine sarrasin, eau, sel. Laisser reposer 10min",12min
+1399,24,2026-04-10,Jeudi 10/04,"Cuire galettes: Étaler pâte, garnir jambon-emmental, casser œuf au centre, plier",10min
+1400,24,2026-04-10,Jeudi 10/04,Servir: Accompagner de salade verte vinaigrette,3min
+1401,24,2026-04-10,Jeudi 10/04,"[Prep] Poulet basquaise: Faire revenir poulet, poivrons, oignons, ail, tomates. Mijoter 35min avec épices",50min
+1402,24,2026-04-11,Vendredi 11/04,Cuire PDT: Faire cuire 250g/180g PDT en rondelles dans poêle avec huile 10min,10min
+1403,24,2026-04-11,Vendredi 11/04,"Ajouter épinards: Ajouter 150g/120g épinards, oignon émincé, cuire 3min",3min
+1404,24,2026-04-11,Vendredi 11/04,"Finir tortilla: Verser œufs battus, cuire 6min dessous, 4min dessus",10min
+1405,24,2026-04-12,Samedi 12/04,Cuire riz: Faire cuire 200g/150g riz dans eau bouillante salée 15min,15min
+1406,24,2026-04-12,Samedi 12/04,"Faire rougail: Faire revenir oignons, tomates, gingembre, piment 8min",8min
+1407,24,2026-04-12,Samedi 12/04,"Ajouter saucisses: Ajouter 200g/150g saucisses grillées, mijoter 2min",2min
+1408,24,2026-04-13,Dimanche 13/04,Cuire PDT: Faire rôtir 250g/180g PDT grenaille avec huile et herbes 20min,20min
+1409,24,2026-04-13,Dimanche 13/04,Préparer radis: Faire revenir 150g/120g radis émincés 3min à la poêle,3min
+1410,24,2026-04-13,Dimanche 13/04,"Cuire omelette: Battre œufs, verser sur radis, ajouter gruyère, plier",5min
+1411,24,2026-04-13,Dimanche 13/04,"[Prep] Couscous agneau: Mijoter agneau avec légumes 60min, préparer semoule",60min
+1412,24,2026-04-13,Dimanche 13/04,[Prep] Cuire œufs: Faire durcir 15 œufs pour la semaine,15min
+1413,25,2026-04-07,Lundi 07/04,"Préparer les pommes de terre: Laver et couper 430g PDT grenaille en 2. Préchauffer four 220°C. Rôtir 20min avec huile d'olive, sel, romarin",5min
+1414,25,2026-04-07,Lundi 07/04,"Préparer les artichauts: Égoutter 270g cœurs d'artichauts en bocal. Couper en quartiers, faire revenir 3min à la poêle",5min
+1415,25,2026-04-07,Lundi 07/04,"Cuire l'omelette: Battre 5 œufs avec sel/poivre. Verser sur artichauts, ajouter 55g gruyère râpé. Cuire 3min puis finir 2min au four",8min
+1416,25,2026-04-07,Lundi 07/04,Dresser: Servir avec PDT rôties et salade verte vinaigrette,2min
+1417,25,2026-04-07,Lundi 07/04,[Prep] Préparer le bœuf: Couper 400g émincé de bœuf en lanières. Faire revenir par petites quantités dans poêle chaude 2min,8min
+1418,25,2026-04-07,Lundi 07/04,[Prep] Cuire les champignons: Émincer 300g champignons de Paris. Cuire 5min jusqu'à évaporation de l'eau,8min
+1419,25,2026-04-07,Lundi 07/04,"[Prep] Mijoter la sauce: Ajouter bœuf, 200ml crème fraîche, 1 CS moutarde, sel/poivre. Mijoter 15min à feu doux",20min
+1420,25,2026-04-07,Lundi 07/04,[Prep] Cuire le riz: Cuire 360g riz basmati selon paquet. Mélanger avec le stroganoff,15min
+1421,25,2026-04-08,Mardi 08/04,Cuire le riz: Cuire 350g riz basmati selon paquet. Réserver au chaud,12min
+1422,25,2026-04-08,Mardi 08/04,"Préparer la sauce teriyaki: Mélanger 3 CS sauce soja, 2 CS miel, 1 CS vinaigre de riz, 1 cc gingembre râpé",2min
+1423,25,2026-04-08,Mardi 08/04,"Cuire le saumon: Poêler 320g filets saumon 3min côté peau, retourner 2min. Napper de sauce teriyaki",6min
+1424,25,2026-04-08,Mardi 08/04,Préparer les petits pois: Faire sauter 270g petits pois surgelés avec 2 gousses ail émincé 3min,4min
+1425,25,2026-04-08,Mardi 08/04,Dresser: Servir saumon glacé sur riz avec petits pois,1min
+1426,25,2026-04-08,Mardi 08/04,[Prep] Cuire les lentilles: Rincer 200g lentilles corail. Cuire 15min dans 600ml bouillon légumes,20min
+1427,25,2026-04-08,Mardi 08/04,"[Prep] Préparer les épices: Faire revenir 1 oignon émincé, 2 gousses ail, 1 cc curcuma, 1 cc cumin, 1 cc coriandre 3min",5min
+1428,25,2026-04-08,Mardi 08/04,"[Prep] Mijoter le dhal: Ajouter lentilles, 200ml lait coco, 200g épinards surgelés. Mijoter 10min",12min
+1429,25,2026-04-08,Mardi 08/04,[Prep] Cuire le riz: Cuire 300g riz basmati selon paquet,15min
+1430,25,2026-04-09,Mercredi 09/04,Préparer les pommes de terre: Éplucher et couper 430g PDT en rondelles 5mm. Cuire 10min à l'eau bouillante salée,12min
+1431,25,2026-04-09,Mercredi 09/04,Cuire les épinards: Faire fondre 270g épinards frais avec 1 oignon émincé dans poêle avec huile 3min,5min
+1432,25,2026-04-09,Mercredi 09/04,"Assembler la tortilla: Battre 5 œufs. Mélanger PDT égouttées, épinards, œufs. Cuire poêle 5min puis retourner 3min",8min
+1433,25,2026-04-09,Mercredi 09/04,"Préparer la salade: Couper 200g asperges en tronçons, blanchir 2min. Assaisonner vinaigrette",5min
+1434,25,2026-04-09,Mercredi 09/04,"[Prep] Préparer la pâte à quiche: Mélanger 250g farine, 125g beurre, 1 œuf, pincée sel. Fraiser, réserver 30min au frais",10min
+1435,25,2026-04-09,Mercredi 09/04,[Prep] Cuire les lardons: Faire revenir 150g lardons fumés jusqu'à doré. Égoutter sur papier,5min
+1436,25,2026-04-09,Mercredi 09/04,"[Prep] Préparer l'appareil: Battre 4 œufs, 200ml crème fraîche, 100ml lait, muscade, sel, poivre",5min
+1437,25,2026-04-09,Mercredi 09/04,"[Prep] Monter et cuire: Étaler pâte dans moule, piquer. Répartir lardons, verser appareil. Cuire 35min 180°C",40min
+1438,25,2026-04-10,Jeudi 10/04,Cuire les pommes de terre: Éplucher et cuire 430g PDT à l'eau bouillante salée 15-20min,20min
+1439,25,2026-04-10,Jeudi 10/04,"Préparer la croûte: Mélanger 50g chapelure, 2 CS persil haché, 1 CS huile d'olive, ail, sel, poivre",3min
+1440,25,2026-04-10,Jeudi 10/04,"Cuire le cabillaud: Poêler 350g dos de cabillaud 2min côté peau. Retourner, napper de croûte, finir 3min au four 200°C",6min
+1441,25,2026-04-10,Jeudi 10/04,Glacer les carottes: Cuire 270g carottes nouvelles 8min eau bouillante. Glacer 2min beurre + sucre,10min
+1442,25,2026-04-10,Jeudi 10/04,[Prep] Cuire les pâtes: Cuire 300g penne selon paquet. Égoutter en gardant 100ml eau de cuisson,12min
+1443,25,2026-04-10,Jeudi 10/04,"[Prep] Préparer la sauce: Faire revenir 100g guanciale coupé fin jusqu'à croustillant. Ajouter 400g passata, mijoter 15min",18min
+1444,25,2026-04-10,Jeudi 10/04,"[Prep] Finaliser: Mélanger pâtes, sauce, eau de cuisson, 60g pecorino râpé, poivre noir",3min
+1445,25,2026-04-10,Jeudi 10/04,[Prep] Refroidir: Laisser tiédir avant de réfrigérer,5min
+1446,25,2026-04-11,Vendredi 11/04,Cuire les pommes de terre: Éplucher et cuire 430g PDT à l'eau bouillante salée 15-20min,20min
+1447,25,2026-04-11,Vendredi 11/04,Préparer la ratatouille: Réchauffer 350g ratatouille tomates-poivrons dans poêle 5min,5min
+1448,25,2026-04-11,Vendredi 11/04,"Cuire les œufs: Faire des puits dans la ratatouille, casser 5 œufs dedans. Couvrir, cuire 3-4min",5min
+1449,25,2026-04-11,Vendredi 11/04,Servir: Servir chaud avec PDT vapeur et pain grillé,2min
+1450,25,2026-04-12,Samedi 12/04,"Préparer le bouillon: Chauffer 1L bouillon légumes dans casserole, maintenir chaud",5min
+1451,25,2026-04-12,Samedi 12/04,"Nacrer le riz: Faire revenir 1 oignon émincé, ajouter 450g riz arborio. Nacrer 2min",4min
+1452,25,2026-04-12,Samedi 12/04,Cuire les champignons: Poêler 180g champignons de Paris émincés 5min. Réserver,5min
+1453,25,2026-04-12,Samedi 12/04,Cuire le risotto: Ajouter bouillon louche par louche en remuant. Cuire 18min total,18min
+1454,25,2026-04-12,Samedi 12/04,"Finaliser: Ajouter champignons, 80g parmesan, 30g beurre. Mélanger hors feu",2min
+1455,25,2026-04-13,Dimanche 13/04,"Préparer la pâte: Mélanger 200g farine sarrasin, 400ml eau, pincée sel. Laisser reposer 10min",12min
+1456,25,2026-04-13,Dimanche 13/04,Cuire les galettes: Cuire 3.5 galettes fines à la crêpière ou poêle anti-adhésive,8min
+1457,25,2026-04-13,Dimanche 13/04,"Garnir: Sur chaque galette: jambon, œuf cassé au centre, fromage râpé. Plier en carré",4min
+1458,25,2026-04-13,Dimanche 13/04,Servir: Accompagner de salade verte vinaigrette,1min
+1459,25,2026-04-13,Dimanche 13/04,[Prep] Cuire les œufs: Mettre 15 œufs dans casserole d'eau froide. Porter à ébullition puis 9min,12min
+1460,25,2026-04-13,Dimanche 13/04,"[Prep] Refroidir: Plonger dans eau glacée, écaler quand tièdes",5min
