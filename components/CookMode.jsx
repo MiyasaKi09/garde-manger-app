@@ -64,6 +64,15 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   const recipeName = recipe.title || recipe.name
   const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0)
 
+  // Tolérance de forme : la routine peut écrire ingredients/steps comme un
+  // tableau de chaînes ("200 g lentilles") OU d'objets ({name,quantity,...}).
+  const ingList = (ingredients || []).map(i =>
+    i && typeof i === 'object' ? i : { name: String(i ?? '') }
+  )
+  const stepList = (steps || []).map(s =>
+    s && typeof s === 'object' ? s : { instruction: String(s ?? '') }
+  )
+
   async function handleRegenerate() {
     if (regenLoading) return
     setRegenLoading(true)
@@ -149,7 +158,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
               <p style={styles.landingDesc}>{recipe.description}</p>
             )}
             {totalTime > 0 && (
-              <p style={styles.landingMeta}>{steps?.length || 0} étapes{totalTime ? ` · ${totalTime} min` : ''}</p>
+              <p style={styles.landingMeta}>{stepList.length} étapes{totalTime ? ` · ${totalTime} min` : ''}</p>
             )}
 
             {/* Per-person nutrition from meal plan */}
@@ -225,10 +234,10 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
             )}
 
             {/* Ingredients */}
-            {ingredients?.length > 0 && (
+            {ingList.length > 0 && (
               <div className="cook-ingredients-list">
                 <h3 style={styles.landingIngTitle}>INGRÉDIENTS</h3>
-                {ingredients.map((ing, i) => (
+                {ingList.map((ing, i) => (
                   <p key={i} style={styles.landingIngItem}>
                     {ing.quantity && <span style={styles.landingIngQty}>{ing.quantity} {ing.unit}</span>}
                     {' '}{ing.name}{ing.notes ? ` (${ing.notes})` : ''}
@@ -240,7 +249,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
             <button
               onClick={() => setCurrentStep(0)}
               className="cook-start-btn"
-              disabled={!steps?.length}
+              disabled={!stepList.length}
             >
               Commencer
             </button>
@@ -345,11 +354,11 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   }
 
   // ---- STEP SCREEN ----
-  if (!steps?.length) return null
+  if (!stepList.length) return null
 
-  const step = steps[currentStep]
+  const step = stepList[currentStep]
   const isFirst = currentStep === 0
-  const isLast = currentStep === steps.length - 1
+  const isLast = currentStep === stepList.length - 1
 
   const timerMinutes = step.duration_min || extractTimerFromText(step.instruction || step.description || '')
   const fullText = step.instruction || step.description || ''
@@ -368,7 +377,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
       {/* Step content */}
       <div className="cook-step-content">
         <div className="cook-step-card">
-          <div style={S.stepBadge}>Étape {currentStep + 1}/{steps.length}</div>
+          <div style={S.stepBadge}>Étape {currentStep + 1}/{stepList.length}</div>
           {stepTitle && (
             <h2 className="cook-step-title">{stepTitle}</h2>
           )}
@@ -391,7 +400,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
         </button>
 
         <button
-          onClick={() => setCurrentStep(s => isLast ? 'done' : Math.min(steps.length - 1, s + 1))}
+          onClick={() => setCurrentStep(s => isLast ? 'done' : Math.min(stepList.length - 1, s + 1))}
           style={S.navBtnPrimary}
         >
           {isLast ? 'Terminer' : 'Suivant'}
