@@ -100,25 +100,41 @@ supprimer une fois la routine 1 autonome sur ces deux points.
 
 ## Hypothèses & limites connues (à valider en test bout-en-bout)
 
-1. **Sémantique du webhook supposée synchrone** : l'endpoint `await` la réponse
-   du webhook (~30-60 s) puis le client recharge les données. Si le webhook
-   répond immédiatement (202) et que la routine continue en arrière-plan, le
-   rechargement arrivera **trop tôt** et l'UI montrera l'ancien repas un moment.
-   À confirmer lors du 1er test réel ; si async, ajouter un polling Supabase
-   côté client.
-2. **Régénération recette** : pas de re-fetch live de la recette dans CookMode
-   (il n'existe pas d'endpoint GET pour une `generated_recipes` unique). Après
-   succès, l'utilisateur doit fermer/rouvrir la cuisine pour voir la nouvelle
-   version. Un endpoint de relecture est un chantier séparé.
+0. **Header `anthropic-version` OBLIGATOIRE** : le endpoint de fire
+   (`api.anthropic.com/v1/claude_code/routines/<trig>/fire`) refuse l'appel
+   (`400 anthropic-version: header is required`) sans ce header. Les 3 routes
+   l'envoient désormais (`anthropic-version: 2023-06-01`). Vérifié en test réel.
+1. **Webhook ASYNCHRONE — confirmé en test réel** : le fire répond en ~1,5 s
+   avec `{claude_code_session_id, claude_code_session_url, type:"routine_fire"}`
+   puis la routine tourne en arrière-plan (écrit en Supabase ~1-2 min après).
+   Donc : `generate-plan`, `modify-meal` et `regenerate-recipe` déclenchent puis
+   le **client poll** le résultat (pas d'attente synchrone). Modify-meal poll la
+   description du repas (max 4 min) ; generate-plan poll un nouvel import
+   (max 6 min).
+2. **Régénération recette** : pas de re-fetch live dans CookMode (pas d'endpoint
+   GET pour une `generated_recipes` unique). Message « lancée », l'utilisateur
+   ferme/rouvre la cuisine ~1-2 min après. Endpoint de relecture = chantier
+   séparé.
 3. **`person_name` = ancre** : l'UI envoie toujours `Julien` ; la routine 2 met
    à jour Julien **et** Zoé (même plat, portions différentes).
 4. **Plan Vercel** : `maxDuration = 60` suppose un plan autorisant 60 s. Sur
    Hobby, 60 s est le max ; si la routine dépasse, augmenter le plan ou rendre
    l'appel asynchrone (cf. point 1).
-5. **generate-plan = polling client** : si l'utilisateur ferme l'onglet pendant
-   la génération, le planning s'écrit quand même (routine async) mais l'UI ne
-   redirige pas — il le verra dans `/planning` au prochain passage. Délai max
-   de polling : 6 min (au-delà, message « apparaîtra quand prêt »).
+5. **generate-plan TRÈS LONG (~15-20 min observé)** : la Routine 1 (prompt
+   v2.6.2 ~1018 lignes, semaine complète + validation, sur Opus « Très élevé »)
+   prend ~15-20 min en test réel — bien plus que les 1-3 min estimés. L'UI poll
+   jusqu'à **25 min** (toutes les 20 s) ; au-delà, message calme « apparaîtra
+   d'ici quelques minutes » et redirection vers `/planning` — **pas d'état
+   d'erreur ni de bouton retry** (un retry relancerait un 2e run de 20 min).
+   Si l'utilisateur ferme l'onglet, le planning s'écrit quand même (async) et
+   apparaîtra dans `/planning`. **Levier produit** : si 20 min est trop long,
+   baisser l'effort de raisonnement / le modèle de la Routine 1, ou alléger le
+   prompt — décision côté Julien (qualité vs latence).
+   **Contrat de complétude** : avec le pipeline checkpointé v3, l'import est
+   créé tôt (CP1) puis rempli jour par jour. Le polling ne considère le
+   planning prêt que lorsque `nutrition_plan_meals` atteint **49 lignes**
+   (7 j × 7) pour cet import — sinon il afficherait un planning partiel.
+   Feedback UI : « Génération en cours… N/49 repas ».
 6. **Sélection de jours non honorée** : la page assistant envoie `days/from/to`,
    mais la routine 1 (instructions actuelles = « semaine type ») les ignore tant
    qu'on ne l'a pas étendue pour lire ce body. Génère la semaine standard.
