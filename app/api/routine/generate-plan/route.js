@@ -47,6 +47,7 @@ export async function POST(request) {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
+        'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
         days: Array.isArray(days) ? days : undefined,

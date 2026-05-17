@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import { Loader2, ChefHat, RefreshCw, X, Check } from 'lucide-react'
@@ -77,6 +77,10 @@ export default function TodayMeals({ importId }) {
   const [swapping, setSwapping] = useState(false)
   const [swapError, setSwapError] = useState('')
   const [swapSuccess, setSwapSuccess] = useState(false)
+  // true = arrêter tout polling en cours (fermeture modale / démontage)
+  const pollCancelRef = useRef(false)
+
+  useEffect(() => () => { pollCancelRef.current = true }, [])
 
   const today = new Date()
   const tomorrow = new Date(today)
@@ -117,6 +121,7 @@ export default function TodayMeals({ importId }) {
   }
 
   function closeModal() {
+    pollCancelRef.current = true
     setShowChoice(false)
     setSelectedMeal(null)
     setSwapMode(false)
@@ -166,12 +171,21 @@ export default function TodayMeals({ importId }) {
   }
 
   // ── MODIFY FLOW ──
-  // Déclenche la routine Claude "Modifier un repas". La routine écrit
-  // elle-même en Supabase (Julien + Zoé) ; on recharge ensuite les repas.
+  // Le webhook de la routine est ASYNCHRONE : il accepte le déclenchement
+  // (~2s) puis la routine réécrit le repas en Supabase ~1-2 min plus tard.
+  // On déclenche, puis on poll jusqu'à voir la description changer.
   async function handleModify() {
     if (!selectedMeal || swapping) return
     setSwapping(true)
     setSwapError('')
+    pollCancelRef.current = false
+
+    const mealDate = selectedMeal.entries[0].meal_date
+    const mealType = selectedMeal.type
+    const baselineDesc =
+      (selectedMeal.entries.find(e => e.person_name === 'Julien') || selectedMeal.entries[0])
+        ?.description || ''
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms))
 
     try {
       const res = await authFetch('/api/routine/modify-meal', {
@@ -179,20 +193,33 @@ export default function TodayMeals({ importId }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           import_id: importId,
-          meal_date: selectedMeal.entries[0].meal_date,
-          meal_type: selectedMeal.type,
+          meal_date: mealDate,
+          meal_type: mealType,
           person_name: 'Julien',
           direction: swapDirection || '',
         }),
       })
-      const data = await res.json()
+      const data = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(data.error || 'Erreur lors de la modification')
-      setSwapSuccess(true)
-      setTimeout(() => {
-        closeModal()
-        loadMeals()
-      }, 1400)
+
+      const deadline = Date.now() + 4 * 60 * 1000
+      while (Date.now() < deadline) {
+        await sleep(12000)
+        if (pollCancelRef.current) return
+        const r = await authFetch(`/api/planning/imports/${importId}`)
+        const d = await r.json()
+        const updated = (d.meals || []).find(m =>
+          m.meal_date === mealDate && m.meal_type === mealType && m.person_name === 'Julien'
+        )
+        if (updated && (updated.description || '') !== baselineDesc) {
+          setSwapSuccess(true)
+          setTimeout(() => { closeModal(); loadMeals() }, 1400)
+          return
+        }
+      }
+      throw new Error("La routine prend plus de temps que prévu. Le repas se mettra à jour tout seul — rouvre cet écran dans une minute.")
     } catch (err) {
+      if (pollCancelRef.current) return
       setSwapError(err.message)
     } finally {
       setSwapping(false)
@@ -339,7 +366,7 @@ export default function TodayMeals({ importId }) {
                   {swapping ? (
                     <>
                       <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} />
-                      Claude réfléchit à un nouveau repas… (30–60s)
+                      Claude prépare un nouveau repas… (~1-2 min)
                     </>
                   ) : (
                     <>

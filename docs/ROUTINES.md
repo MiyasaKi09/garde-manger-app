@@ -100,16 +100,21 @@ supprimer une fois la routine 1 autonome sur ces deux points.
 
 ## Hypothèses & limites connues (à valider en test bout-en-bout)
 
-1. **Sémantique du webhook supposée synchrone** : l'endpoint `await` la réponse
-   du webhook (~30-60 s) puis le client recharge les données. Si le webhook
-   répond immédiatement (202) et que la routine continue en arrière-plan, le
-   rechargement arrivera **trop tôt** et l'UI montrera l'ancien repas un moment.
-   À confirmer lors du 1er test réel ; si async, ajouter un polling Supabase
-   côté client.
-2. **Régénération recette** : pas de re-fetch live de la recette dans CookMode
-   (il n'existe pas d'endpoint GET pour une `generated_recipes` unique). Après
-   succès, l'utilisateur doit fermer/rouvrir la cuisine pour voir la nouvelle
-   version. Un endpoint de relecture est un chantier séparé.
+0. **Header `anthropic-version` OBLIGATOIRE** : le endpoint de fire
+   (`api.anthropic.com/v1/claude_code/routines/<trig>/fire`) refuse l'appel
+   (`400 anthropic-version: header is required`) sans ce header. Les 3 routes
+   l'envoient désormais (`anthropic-version: 2023-06-01`). Vérifié en test réel.
+1. **Webhook ASYNCHRONE — confirmé en test réel** : le fire répond en ~1,5 s
+   avec `{claude_code_session_id, claude_code_session_url, type:"routine_fire"}`
+   puis la routine tourne en arrière-plan (écrit en Supabase ~1-2 min après).
+   Donc : `generate-plan`, `modify-meal` et `regenerate-recipe` déclenchent puis
+   le **client poll** le résultat (pas d'attente synchrone). Modify-meal poll la
+   description du repas (max 4 min) ; generate-plan poll un nouvel import
+   (max 6 min).
+2. **Régénération recette** : pas de re-fetch live dans CookMode (pas d'endpoint
+   GET pour une `generated_recipes` unique). Message « lancée », l'utilisateur
+   ferme/rouvre la cuisine ~1-2 min après. Endpoint de relecture = chantier
+   séparé.
 3. **`person_name` = ancre** : l'UI envoie toujours `Julien` ; la routine 2 met
    à jour Julien **et** Zoé (même plat, portions différentes).
 4. **Plan Vercel** : `maxDuration = 60` suppose un plan autorisant 60 s. Sur
