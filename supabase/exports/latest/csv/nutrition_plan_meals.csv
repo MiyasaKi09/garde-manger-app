@@ -1217,3 +1217,52 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 2308,25,Zoé,2026-04-13,dejeuner,weekend,Côte de porc aux radis confits: 140g côte de porc + 150g PDT rôties + 120g radis confits au miel,550.0,38.0,36.0,28.0,6.0
 2309,25,Zoé,2026-04-13,diner,weekend,Galette complète jambon-œuf: 1.5 galette + 60g jambon + 1 œuf + 30g emmental + salade,520.0,32.0,42.0,24.0,6.0
 2310,25,Zoé,2026-04-13,collation,weekend,200g skyr + 1 pomme + 20g amandes,280.0,20.0,20.0,16.0,6.0
+2311,26,Julien,2026-05-18,pdj,léger,"PDJ (variante B) — 250 g skyr 0 %, 80 g jambon de Paris, 1 pomme",330.0,42.0,31.0,4.0,3.0
+2312,26,Julien,2026-05-18,dejeuner,léger,"Salade tiède de lentilles vertes, œufs mollets, asperges vertes & radis croquants, vinaigrette moutarde-citron",680.0,52.0,80.0,22.0,16.0
+2313,26,Julien,2026-05-18,diner,léger,"Dos de cabillaud rôti en croûte d'herbes, fenouil braisé au citron & quinoa",680.0,55.0,46.0,24.0,14.0
+2314,26,Julien,2026-05-18,collation,léger,Collation — 200 g skyr 0 % & 1 poire,210.0,18.0,33.0,2.0,3.0
+2315,26,Zoé,2026-05-18,dejeuner,léger,"Salade tiède de lentilles vertes, œufs mollets, asperges & radis, vinaigrette moutarde-citron (portion Zoé)",560.0,38.0,50.0,20.0,9.0
+2316,26,Zoé,2026-05-18,diner,léger,"Dos de cabillaud rôti en croûte d'herbes, fenouil braisé au citron & quinoa (portion Zoé)",540.0,36.0,42.0,22.0,8.0
+2317,26,Zoé,2026-05-18,collation,léger,"Collation — 150 g skyr 0 %, 1 poire & 10 g amandes",180.0,14.0,18.0,6.0,3.0
+2318,26,Julien,2026-05-19,pdj,standard,PDJ (variante A) — 200 g skyr 0 % & 3 œufs durs,360.0,41.0,9.0,17.0,0.0
+2319,26,Julien,2026-05-19,dejeuner,standard,"Buddha bowl quinoa, pois chiches rôtis au cumin, feta, radis, concombre & menthe, sauce yaourt-citron",720.0,55.0,70.0,22.0,15.0
+2320,26,Julien,2026-05-19,diner,standard,"Poulet fermier rôti au citron & thym, pommes de terre nouvelles & jus, haricots verts",720.0,60.0,77.0,22.0,16.0
+2321,26,Julien,2026-05-19,collation,standard,Collation — 1 banane & 25 g noix de cajou,250.0,12.0,20.0,14.0,4.0
+2322,26,Zoé,2026-05-19,dejeuner,standard,"Buddha bowl quinoa, pois chiches rôtis au cumin, feta, radis & menthe (portion Zoé)",600.0,40.0,55.0,24.0,9.0
+2323,26,Zoé,2026-05-19,diner,standard,"Poulet fermier rôti au citron & thym, pommes de terre nouvelles & haricots verts (portion Zoé)",580.0,38.0,50.0,24.0,8.0
+2324,26,Zoé,2026-05-19,collation,standard,Collation — 1 banane & 15 g noix de cajou,200.0,14.0,20.0,8.0,3.0
+2325,26,Julien,2026-05-20,pdj,standard,PDJ (variante A) — 200 g skyr 0 % & 3 œufs durs,360.0,41.0,9.0,17.0,0.0
+2326,26,Julien,2026-05-20,dejeuner,standard,"Risotto primavera — asperges vertes, petits pois, parmesan & zeste de citron",720.0,55.0,70.0,22.0,15.0
+2327,26,Julien,2026-05-20,diner,standard,"Sauté de bœuf aux carottes & navets nouveaux, sauce au vin rouge, polenta crémeuse (batch)",720.0,60.0,77.0,22.0,16.0
+2328,26,Julien,2026-05-20,collation,standard,Collation — 2 œufs durs & 1 pomme,250.0,14.0,20.0,14.0,4.0
+2329,26,Zoé,2026-05-20,dejeuner,standard,"Risotto primavera — asperges, petits pois & parmesan (portion Zoé)",600.0,40.0,55.0,24.0,9.0
+2330,26,Zoé,2026-05-20,diner,standard,"Sauté de bœuf aux carottes & navets nouveaux, sauce vin rouge & polenta (portion Zoé)",580.0,38.0,50.0,24.0,8.0
+2331,26,Zoé,2026-05-20,collation,standard,Collation — 1 œuf dur & 1 pomme,200.0,14.0,20.0,8.0,3.0
+2332,26,Julien,2026-05-21,pdj,standard,PDJ (variante A) — 200 g skyr 0 % & 3 œufs durs,360.0,41.0,9.0,17.0,0.0
+2333,26,Julien,2026-05-21,dejeuner,standard,"Dahl de lentilles corail au lait de coco, gingembre & coriandre, riz basmati",720.0,55.0,70.0,22.0,15.0
+2334,26,Julien,2026-05-21,diner,standard,"Tarte fine courgettes-chèvre frais, roquette, pignons & filet d'huile d'olive",720.0,60.0,77.0,22.0,16.0
+2335,26,Julien,2026-05-21,collation,standard,Collation — 200 g skyr 0 % & 20 g amandes,250.0,12.0,20.0,14.0,4.0
+2336,26,Zoé,2026-05-21,dejeuner,standard,"Dahl de lentilles corail au lait de coco & coriandre, riz basmati (portion Zoé)",600.0,40.0,55.0,24.0,9.0
+2337,26,Zoé,2026-05-21,diner,standard,"Tarte fine courgettes-chèvre frais, roquette & pignons (portion Zoé)",580.0,38.0,50.0,24.0,8.0
+2338,26,Zoé,2026-05-21,collation,standard,Collation — 150 g skyr 0 % & 15 g amandes,200.0,14.0,20.0,8.0,3.0
+2339,26,Julien,2026-05-22,pdj,léger,"PDJ (variante B) — 250 g skyr 0 %, 80 g jambon de Paris, 1 orange",330.0,42.0,31.0,4.0,3.0
+2340,26,Julien,2026-05-22,dejeuner,léger,"Velouté de petits pois à la menthe, omelette fines herbes & radis, pain de seigle",680.0,52.0,80.0,22.0,16.0
+2341,26,Julien,2026-05-22,diner,léger,"Pavé de saumon teriyaki, riz vinaigré & edamame, salade de concombre au sésame",680.0,55.0,46.0,24.0,14.0
+2342,26,Julien,2026-05-22,collation,léger,Collation — 200 g skyr 0 % & 1 kiwi,210.0,18.0,33.0,2.0,3.0
+2343,26,Zoé,2026-05-22,dejeuner,léger,Velouté de petits pois à la menthe & omelette fines herbes-radis (portion Zoé),560.0,38.0,50.0,20.0,9.0
+2344,26,Zoé,2026-05-22,diner,léger,"Pavé de saumon teriyaki, riz vinaigré & edamame (portion Zoé)",540.0,36.0,42.0,22.0,8.0
+2345,26,Zoé,2026-05-22,collation,léger,"Collation — 150 g skyr 0 %, 1 kiwi & 10 g amandes",180.0,14.0,18.0,6.0,3.0
+2346,26,Julien,2026-05-23,pdj,gourmand,PDJ (variante A) — 200 g skyr 0 % & 3 œufs durs,360.0,41.0,9.0,17.0,0.0
+2347,26,Julien,2026-05-23,dejeuner,gourmand,"Burger maison façon bistrot — steak haché, cheddar affiné, oignons confits, frites de patate douce au four & salade",800.0,55.0,58.0,38.0,10.0
+2348,26,Julien,2026-05-23,diner,gourmand,"Côte de porc grillée au romarin, gratin de pommes de terre & haricots verts à l'ail",730.0,54.0,52.0,34.0,12.0
+2349,26,Julien,2026-05-23,collation,gourmand,Collation — 1 pomme & 30 g amandes,260.0,10.0,22.0,16.0,4.0
+2350,26,Zoé,2026-05-23,dejeuner,gourmand,"Burger maison façon bistrot, cheddar, oignons confits & frites de patate douce au four (portion Zoé)",650.0,42.0,54.0,30.0,8.0
+2351,26,Zoé,2026-05-23,diner,gourmand,"Côte de porc grillée au romarin, gratin de pommes de terre & haricots verts à l'ail (portion Zoé)",590.0,38.0,48.0,26.0,7.0
+2352,26,Zoé,2026-05-23,collation,gourmand,Collation — 1 pomme & 25 g amandes,210.0,10.0,18.0,12.0,3.0
+2353,26,Julien,2026-05-24,pdj,gourmand,PDJ (variante A) — 200 g skyr 0 % & 3 œufs durs,360.0,41.0,9.0,17.0,0.0
+2354,26,Julien,2026-05-24,dejeuner,gourmand,"Gnocchi à la crème de petits pois & menthe, asperges vertes rôties, burrata & huile de basilic",800.0,55.0,58.0,38.0,10.0
+2355,26,Julien,2026-05-24,diner,gourmand,"Tian provençal de légumes (courgette, tomate, aubergine), œuf poché & pistou, semoule",730.0,54.0,52.0,34.0,12.0
+2356,26,Julien,2026-05-24,collation,gourmand,Collation — 200 g skyr 0 % & 25 g noix,260.0,10.0,22.0,16.0,4.0
+2357,26,Zoé,2026-05-24,dejeuner,gourmand,"Gnocchi à la crème de petits pois & menthe, asperges rôties & burrata (portion Zoé)",650.0,42.0,54.0,30.0,8.0
+2358,26,Zoé,2026-05-24,diner,gourmand,"Tian provençal de légumes, œuf poché & pistou, semoule (portion Zoé)",590.0,38.0,48.0,26.0,7.0
+2359,26,Zoé,2026-05-24,collation,gourmand,Collation — 150 g skyr 0 % & 20 g noix,210.0,10.0,18.0,12.0,3.0
