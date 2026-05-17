@@ -8,7 +8,7 @@ Le site `my-ko.fr` ne fait que **déclencher** les routines via leurs webhooks.
 
 | # | Nom | Déclencheur | Connecteur | Écrit dans |
 |---|-----|-------------|------------|-----------|
-| 1 | `Myko - Planning hebdo` | Planification (dim. 18h) | Supabase MCP | `nutrition_plan_imports`, `nutrition_plan_meals` |
+| 1 | `Myko - Planning hebdo` | Planification (dim. 18h) **+ Appel via API** | Supabase MCP | `nutrition_plan_imports`, `nutrition_plan_meals` |
 | 2 | `Myko - Modifier un repas` | Appel via API (webhook) | Supabase MCP | `nutrition_plan_meals` (Julien + Zoé) |
 | 3 | `Myko - Régénérer une recette` | Appel via API (webhook) | Supabase MCP | `generated_recipes` |
 
@@ -33,6 +33,8 @@ hors-dépôt (voir le message de mise en place / la PR). Points clés :
 
 | Variable | Valeur |
 |----------|--------|
+| `CLAUDE_ROUTINE_GENERATE_PLAN_URL`  | URL webhook de la routine 1 (trigger API) |
+| `CLAUDE_ROUTINE_GENERATE_PLAN_TOKEN`| Token de la routine 1 (trigger API) |
 | `CLAUDE_ROUTINE_MODIFY_MEAL_URL`   | URL webhook de la routine 2 |
 | `CLAUDE_ROUTINE_MODIFY_MEAL_TOKEN` | Token de la routine 2 |
 | `CLAUDE_ROUTINE_REGEN_RECIPE_URL`  | URL webhook de la routine 3 |
@@ -52,9 +54,16 @@ URL + token sont fournis par claude.ai/code lors de la création d'une routine
   Body : `{ recipe_id?, recipe_name?, direction? }` (au moins un id).
   Vérifie que la recette appartient à l'utilisateur, puis relaie au webhook
   routine 3.
+- `POST /api/routine/generate-plan`
+  Body optionnel : `{ days?: string[], from?, to? }`. Auth seule (pas de
+  ressource à vérifier). **Fire-and-forget** : déclenche la routine 1 et rend
+  la main (`202`) — n'attend PAS la génération (trop longue). Le client poll
+  ensuite `GET /api/planning/imports` jusqu'à voir un nouvel import.
 
-Les deux : `maxDuration = 60`, timeout interne 55 s (→ `504` propre si la
-routine traîne), `502` si le webhook renvoie une erreur.
+modify-meal / regenerate-recipe : `maxDuration = 60`, timeout interne 55 s
+(→ `504` propre), `502` si le webhook renvoie une erreur.
+generate-plan : timeout déclenchement 20 s ; un timeout est traité comme
+« routine acceptée, tourne en asynchrone » (`202 pending`).
 
 ## Câblage UI
 
@@ -64,6 +73,30 @@ routine traîne), `502` si le webhook renvoie une erreur.
   **supprimé**.
 - **Régénérer une recette** : `components/CookMode.jsx` (écran d'accueil de la
   cuisine — seul endroit où une `generated_recipes` est affichée aujourd'hui).
+- **Générer le planning** : `app/planning/assistant/page.js`. Plus aucun appel
+  facturé : on déclenche `/api/routine/generate-plan` puis on poll
+  `/api/planning/imports` (12 s, max 6 min) avant de rediriger vers `/planning`.
+  Les anciens appels facturés `/api/ai/chat` (intent planning) et
+  `/api/ai/plan/generate` ont été **retirés de ce flux**.
+
+### ⚠️ Régressions connues à résoudre (générer le planning)
+
+L'ancien `/api/ai/plan/generate` faisait, après la sauvegarde du plan, deux
+choses que **la routine 1 ne fait pas (encore)** :
+
+1. **Reconstruction de la liste de courses** (`nutrition_plan_shopping_items`
+   recalculée depuis les ingrédients réels − stock). Tant que la routine 1
+   n'écrit pas cette table, la liste de courses sera **vide** après un planning
+   généré par routine. → Étendre les instructions de la routine 1 pour produire
+   `nutrition_plan_shopping_items`, OU prévoir un post-traitement non facturé.
+2. **Génération des fiches recettes manquantes** (`generated_recipes` avec
+   `steps`). Sans ça, « Cuisiner » devra générer la fiche à la volée (toujours
+   facturé via `/api/ai/recipe`, hors scope). → idéalement la routine 1 peuple
+   aussi `generated_recipes`.
+
+Le fichier `app/api/ai/plan/generate/route.js` n'est **plus appelé par l'UI**
+mais conservé (il contient cette logique courses/recettes encore utile). À
+supprimer une fois la routine 1 autonome sur ces deux points.
 
 ## Hypothèses & limites connues (à valider en test bout-en-bout)
 
@@ -82,6 +115,13 @@ routine traîne), `502` si le webhook renvoie une erreur.
 4. **Plan Vercel** : `maxDuration = 60` suppose un plan autorisant 60 s. Sur
    Hobby, 60 s est le max ; si la routine dépasse, augmenter le plan ou rendre
    l'appel asynchrone (cf. point 1).
+5. **generate-plan = polling client** : si l'utilisateur ferme l'onglet pendant
+   la génération, le planning s'écrit quand même (routine async) mais l'UI ne
+   redirige pas — il le verra dans `/planning` au prochain passage. Délai max
+   de polling : 6 min (au-delà, message « apparaîtra quand prêt »).
+6. **Sélection de jours non honorée** : la page assistant envoie `days/from/to`,
+   mais la routine 1 (instructions actuelles = « semaine type ») les ignore tant
+   qu'on ne l'a pas étendue pour lire ce body. Génère la semaine standard.
 
 ## Chantier futur (hors scope de cette PR)
 
