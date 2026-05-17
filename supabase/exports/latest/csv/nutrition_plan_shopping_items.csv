@@ -1596,7 +1596,6 @@ id,import_id,week_label,category,product_name,quantity,checked
 2614,26,Semaine du 18 au 24 mai,Fruits,Bananes,3 pièces,f
 2615,26,Semaine du 18 au 24 mai,Fruits,Oranges,2 pièces,f
 2616,26,Semaine du 18 au 24 mai,Fruits,Kiwis,3 pièces,f
-2617,26,Semaine du 18 au 24 mai,Viandes,Poulet fermier (cuisses/découpe),"1,2 kg",f
 2618,26,Semaine du 18 au 24 mai,Viandes,Sauté de bœuf (paleron/macreuse),600 g,f
 2619,26,Semaine du 18 au 24 mai,Viandes,Steak haché 15% (burger),400 g,f
 2620,26,Semaine du 18 au 24 mai,Viandes,Côtes de porc,2 pièces,f
@@ -1634,3 +1633,4 @@ id,import_id,week_label,category,product_name,quantity,checked
 2652,26,Semaine du 18 au 24 mai,Épicerie,Huile d'olive,1 bouteille,f
 2653,26,Semaine du 18 au 24 mai,Boulangerie,Pain de seigle,1 pièce,f
 2654,26,Semaine du 18 au 24 mai,Boulangerie,Pains à burger,2 pièces,f
+2617,26,Semaine du 18 au 24 mai,Viandes,Poulet fermier (cuisses/découpe),"1,2 kg",f
