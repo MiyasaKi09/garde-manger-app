@@ -120,10 +120,16 @@ supprimer une fois la routine 1 autonome sur ces deux points.
 4. **Plan Vercel** : `maxDuration = 60` suppose un plan autorisant 60 s. Sur
    Hobby, 60 s est le max ; si la routine dépasse, augmenter le plan ou rendre
    l'appel asynchrone (cf. point 1).
-5. **generate-plan = polling client** : si l'utilisateur ferme l'onglet pendant
-   la génération, le planning s'écrit quand même (routine async) mais l'UI ne
-   redirige pas — il le verra dans `/planning` au prochain passage. Délai max
-   de polling : 6 min (au-delà, message « apparaîtra quand prêt »).
+5. **generate-plan TRÈS LONG (~15-20 min observé)** : la Routine 1 (prompt
+   v2.6.2 ~1018 lignes, semaine complète + validation, sur Opus « Très élevé »)
+   prend ~15-20 min en test réel — bien plus que les 1-3 min estimés. L'UI poll
+   jusqu'à **25 min** (toutes les 20 s) ; au-delà, message calme « apparaîtra
+   d'ici quelques minutes » et redirection vers `/planning` — **pas d'état
+   d'erreur ni de bouton retry** (un retry relancerait un 2e run de 20 min).
+   Si l'utilisateur ferme l'onglet, le planning s'écrit quand même (async) et
+   apparaîtra dans `/planning`. **Levier produit** : si 20 min est trop long,
+   baisser l'effort de raisonnement / le modèle de la Routine 1, ou alléger le
+   prompt — décision côté Julien (qualité vs latence).
 6. **Sélection de jours non honorée** : la page assistant envoie `days/from/to`,
    mais la routine 1 (instructions actuelles = « semaine type ») les ignore tant
    qu'on ne l'a pas étendue pour lire ce body. Génère la semaine standard.

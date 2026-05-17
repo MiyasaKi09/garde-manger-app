@@ -12,7 +12,9 @@ const PROGRESS_MESSAGES = [
   { delay: 25000, text: 'Calcul des macros par personne...' },
   { delay: 35000, text: 'Optimisation de la liste de courses...' },
   { delay: 50000, text: 'Finalisation du planning...' },
-  { delay: 70000, text: 'Ça prend un peu plus longtemps que prévu...' },
+  { delay: 90000, text: 'Génération approfondie en cours (ça peut prendre 15-20 min)...' },
+  { delay: 300000, text: 'Toujours en cours — tu peux laisser tourner, le planning arrivera tout seul.' },
+  { delay: 900000, text: 'Génération longue côté Claude, presque là...' },
 ]
 
 const DAY_NAMES = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
@@ -134,10 +136,12 @@ export default function PlanningAssistantPage() {
         throw new Error(trigData.error || `Erreur déclenchement (${trigRes.status})`)
       }
 
-      // La routine génère côté cloud (souvent 1-3 min) : on poll Supabase
-      // jusqu'à voir un nouvel import apparaître.
-      const MAX_WAIT_MS = 6 * 60 * 1000
-      const POLL_MS = 12_000
+      // La routine tourne côté cloud et est LONGUE (~15-20 min observé avec le
+      // prompt v2.6.2 sur Opus « Très élevé »). On poll tant que la page reste
+      // ouverte ; au-delà on informe calmement — surtout PAS d'état d'erreur
+      // avec retry, qui relancerait une 2e génération de ~20 min inutile.
+      const MAX_WAIT_MS = 25 * 60 * 1000
+      const POLL_MS = 20_000
       const deadline = Date.now() + MAX_WAIT_MS
       while (Date.now() < deadline) {
         await abortableSleep(POLL_MS, signal)
@@ -151,7 +155,12 @@ export default function PlanningAssistantPage() {
           return
         }
       }
-      throw new Error("La routine prend plus de temps que prévu. Ton planning apparaîtra dans l'onglet Planning dès qu'il sera prêt.")
+      // Délai dépassé mais la routine continue côté Claude : on informe sans
+      // erreur (pas de bouton retry → éviter un second run de 20 min).
+      setStatus('success')
+      setProgressText("Génération lancée. Ton planning apparaîtra dans l'onglet Planning d'ici quelques minutes (la routine continue côté Claude).")
+      setTimeout(() => router.push('/planning'), 2500)
+      return
 
     } catch (err) {
       if (err.name === 'AbortError') return
