@@ -12,9 +12,7 @@ const PROGRESS_MESSAGES = [
   { delay: 25000, text: 'Calcul des macros par personne...' },
   { delay: 35000, text: 'Optimisation de la liste de courses...' },
   { delay: 50000, text: 'Finalisation du planning...' },
-  { delay: 90000, text: 'Génération approfondie en cours (ça peut prendre 15-20 min)...' },
-  { delay: 300000, text: 'Toujours en cours — tu peux laisser tourner, le planning arrivera tout seul.' },
-  { delay: 900000, text: 'Génération longue côté Claude, presque là...' },
+  { delay: 70000, text: 'Ça prend un peu plus longtemps que prévu...' },
 ]
 
 const DAY_NAMES = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
@@ -136,46 +134,24 @@ export default function PlanningAssistantPage() {
         throw new Error(trigData.error || `Erreur déclenchement (${trigRes.status})`)
       }
 
-      // La routine tourne côté cloud et est LONGUE (~15-20 min observé avec le
-      // prompt v2.6.2 sur Opus « Très élevé »). On poll tant que la page reste
-      // ouverte ; au-delà on informe calmement — surtout PAS d'état d'erreur
-      // avec retry, qui relancerait une 2e génération de ~20 min inutile.
-      const MAX_WAIT_MS = 25 * 60 * 1000
-      const POLL_MS = 20_000
-      // Le pipeline routine crée l'import TÔT (CP1) puis remplit les repas
-      // jour par jour. On ne considère le planning prêt que lorsque les
-      // 49 lignes de repas existent (7 jours × 7). Sinon on afficherait un
-      // planning vide/partiel.
-      const EXPECTED_MEALS = 49
+      // La routine génère côté cloud (souvent 1-3 min) : on poll Supabase
+      // jusqu'à voir un nouvel import apparaître.
+      const MAX_WAIT_MS = 6 * 60 * 1000
+      const POLL_MS = 12_000
       const deadline = Date.now() + MAX_WAIT_MS
-      let foundId = null
       while (Date.now() < deadline) {
         await abortableSleep(POLL_MS, signal)
-        if (!foundId) {
-          const res = await authFetch('/api/planning/imports', { signal })
-          const data = await res.json()
-          const fresh = (data.imports || []).find(imp => Number(imp.id) > baselineId)
-          if (fresh) foundId = fresh.id
-        }
-        if (foundId) {
-          const dres = await authFetch(`/api/planning/imports/${foundId}`, { signal })
-          const ddata = await dres.json()
-          const mealCount = (ddata.meals || []).length
-          if (mealCount >= EXPECTED_MEALS) {
-            setStatus('success')
-            setProgressText('Planning généré !')
-            setTimeout(() => router.push('/planning'), 800)
-            return
-          }
-          setProgressText(`Génération en cours… ${mealCount}/${EXPECTED_MEALS} repas`)
+        const res = await authFetch('/api/planning/imports', { signal })
+        const data = await res.json()
+        const fresh = (data.imports || []).find(imp => Number(imp.id) > baselineId)
+        if (fresh) {
+          setStatus('success')
+          setProgressText('Planning généré !')
+          setTimeout(() => router.push('/planning'), 800)
+          return
         }
       }
-      // Délai dépassé mais la routine continue côté Claude : on informe sans
-      // erreur (pas de bouton retry → éviter un second run de 20 min).
-      setStatus('success')
-      setProgressText("Génération lancée. Ton planning apparaîtra dans l'onglet Planning d'ici quelques minutes (la routine continue côté Claude).")
-      setTimeout(() => router.push('/planning'), 2500)
-      return
+      throw new Error("La routine prend plus de temps que prévu. Ton planning apparaîtra dans l'onglet Planning dès qu'il sera prêt.")
 
     } catch (err) {
       if (err.name === 'AbortError') return

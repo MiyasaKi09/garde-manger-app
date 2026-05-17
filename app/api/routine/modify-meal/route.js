@@ -68,7 +68,6 @@ export async function POST(request) {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
-        'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
         import_id,
@@ -88,9 +87,7 @@ export async function POST(request) {
       )
     }
 
-    // Webhook asynchrone : la routine a été acceptée et tourne en arrière-plan
-    // (elle écrit en Supabase ~1-2 min plus tard). Le client poll le résultat.
-    return NextResponse.json({ triggered: true }, { status: 202 })
+    return NextResponse.json({ success: true, message: 'Repas modifié.' })
   } catch (e) {
     if (e.name === 'AbortError') {
       return NextResponse.json(

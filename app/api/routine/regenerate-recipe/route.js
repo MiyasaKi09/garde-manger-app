@@ -67,7 +67,6 @@ export async function POST(request) {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
-        'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
         recipe_id: recipe_id || undefined,
@@ -85,8 +84,7 @@ export async function POST(request) {
       )
     }
 
-    // Webhook asynchrone : routine acceptée, régénération en arrière-plan.
-    return NextResponse.json({ triggered: true }, { status: 202 })
+    return NextResponse.json({ success: true, message: 'Recette régénérée.' })
   } catch (e) {
     if (e.name === 'AbortError') {
       return NextResponse.json(

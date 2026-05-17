@@ -249,8 +249,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
             <div style={styles.regenWrap}>
               {regenDone ? (
                 <p style={styles.regenDoneText}>
-                  Régénération lancée. Claude réécrit la recette en arrière-plan
-                  (~1-2 min) — ferme et rouvre la cuisine pour voir la nouvelle version.
+                  Recette régénérée. Ferme et relance la cuisine pour voir la nouvelle version.
                 </p>
               ) : !regenOpen ? (
                 <button onClick={() => setRegenOpen(true)} style={styles.regenToggle}>
@@ -273,7 +272,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
                     {regenLoading ? (
                       <>
                         <Loader2 size={15} style={{ animation: 'cm-spin 1s linear infinite' }} />
-                        Claude lance la régénération…
+                        Claude réfléchit… (30–60s)
                       </>
                     ) : (
                       <>
