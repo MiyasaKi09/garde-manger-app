@@ -12,28 +12,15 @@ import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
  */
 function extractDishName(descriptions) {
   if (!descriptions.length) return ''
-  const first = descriptions[0] || ''
-  if (descriptions.length === 1) {
-    const colonIdx = first.indexOf(':')
-    return colonIdx > 0 && colonIdx < 60 ? first.substring(0, colonIdx).trim() : first.trim()
-  }
-  // Try colon-based extraction on first description
-  const colonIdx = first.indexOf(':')
-  if (colonIdx > 0 && colonIdx < 60) return first.substring(0, colonIdx).trim()
-  // Find common prefix
-  let prefix = first
-  for (let i = 1; i < descriptions.length; i++) {
-    const other = descriptions[i] || ''
-    let j = 0
-    while (j < prefix.length && j < other.length && prefix[j] === other[j]) j++
-    prefix = prefix.substring(0, j)
-  }
-  const lastSpace = prefix.lastIndexOf(' ')
-  if (lastSpace > 5) prefix = prefix.substring(0, lastSpace)
-  prefix = prefix.trim()
-  // If common prefix is too short or ends with '+', use first person's full description
-  if (prefix.length < 10 || prefix.endsWith('+')) return first.substring(0, 80).trim()
-  return prefix
+  // On affiche la description complète (Julien si dispo). Le calcul de
+  // préfixe commun coupait le nom dès que la version de Zoé divergeait
+  // (« Risotto primavera — », « Collation — »). On ne fait plus ça.
+  let s = (descriptions[0] || '').trim()
+  // Ancien format .xlsx : "Nom du plat: 380g de ..." → garder avant ':'
+  const colonIdx = s.indexOf(':')
+  if (colonIdx > 0 && colonIdx < 60) return s.substring(0, colonIdx).trim()
+  // Retirer un éventuel suffixe "(portion Zoé)" / "(portion …)"
+  return s.replace(/\s*\((?:portion|part)[^)]*\)\s*$/i, '').trim()
 }
 
 const MEAL_LABELS = {
@@ -49,6 +36,8 @@ const MEAL_COLORS = {
   diner: { bg: '#ede9fe', text: '#5b21b6', accent: '#8b5cf6' },
   collation: { bg: '#fce7f3', text: '#9d174d', accent: '#ec4899' },
 }
+
+const MEAL_ORDER = ['pdj', 'dejeuner', 'diner', 'collation']
 
 const DAY_NAMES = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
 const DAY_NAMES_FULL = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
@@ -101,32 +90,29 @@ export default function WeeklyPlanView({ importId }) {
     }
   }
 
-  async function handleMealClick(meal, mealEntries) {
-    const desc = meal.description
-    if (!desc) return
+  // Lecture de la fiche déjà générée par la routine (zéro API facturée).
+  async function handleMealClick(typeMeals, dishName) {
+    const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
+    const query = julien?.description
+    if (!query) return
 
-    setGeneratingFor(desc)
-    setCurrentMealEntries(mealEntries || [])
+    setGeneratingFor(dishName)
+    setCurrentMealEntries(typeMeals || [])
 
     try {
-      const res = await authFetch('/api/ai/recipe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          description: desc,
-          persons: ['Julien', 'Zoé'],
-          servings: 2,
-        }),
-      })
-
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Erreur génération')
-
+      const res = await authFetch(`/api/recipes/generated?q=${encodeURIComponent(query)}`)
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        alert(res.status === 404
+          ? "Pas encore de fiche recette pour ce plat. Elle est créée par la routine lors de la génération du planning."
+          : (data.error || 'Erreur lors du chargement de la recette.'))
+        return
+      }
       setGeneratedRecipe(data.recipe)
       setCookModeOpen(true)
     } catch (err) {
-      console.error('Error generating recipe:', err)
-      alert('Erreur lors de la génération de la recette. Réessaie.')
+      console.error('Erreur recette:', err)
+      alert('Erreur lors du chargement de la recette. Réessaie.')
     } finally {
       setGeneratingFor(null)
     }
@@ -190,12 +176,16 @@ export default function WeeklyPlanView({ importId }) {
                 {dayMeals.length === 0 ? (
                   <p style={styles.noMeal}>—</p>
                 ) : (
-                  [...new Set(dayMeals.map(m => m.meal_type))].map(type => {
+                  [...new Set(dayMeals.map(m => m.meal_type))]
+                    .sort((a, b) => MEAL_ORDER.indexOf(a) - MEAL_ORDER.indexOf(b))
+                    .map(type => {
                     const typeMeals = dayMeals.filter(m => m.meal_type === type)
                     const descriptions = typeMeals.map(m => m.description)
                     const dishName = extractDishName(descriptions)
                     const isGenerating = generatingFor === dishName
                     const colors = MEAL_COLORS[type] || MEAL_COLORS.dejeuner
+                    // Seuls déjeuner/dîner ont une fiche recette (pas pdj/collation).
+                    const clickable = type === 'dejeuner' || type === 'diner'
 
                     return (
                       <div key={type} className="weekly-meal-block">
@@ -205,17 +195,24 @@ export default function WeeklyPlanView({ importId }) {
                         >
                           {MEAL_LABELS[type] || type}
                         </span>
-                        <button
-                          onClick={() => handleMealClick({ ...typeMeals[0], description: dishName }, typeMeals)}
-                          disabled={!!generatingFor}
-                          className="weekly-meal-btn"
-                          style={{ opacity: generatingFor && !isGenerating ? 0.4 : 1 }}
-                        >
-                          {isGenerating ? (
-                            <Loader2 size={11} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: colors.accent }} />
-                          ) : null}
-                          <span className="weekly-meal-desc">{dishName}</span>
-                        </button>
+                        {clickable ? (
+                          <button
+                            onClick={() => handleMealClick(typeMeals, dishName)}
+                            disabled={!!generatingFor}
+                            className="weekly-meal-btn"
+                            style={{ opacity: generatingFor && !isGenerating ? 0.4 : 1 }}
+                            title="Voir la recette"
+                          >
+                            {isGenerating ? (
+                              <Loader2 size={11} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: colors.accent }} />
+                            ) : null}
+                            <span className="weekly-meal-desc">{dishName}</span>
+                          </button>
+                        ) : (
+                          <div className="weekly-meal-btn" style={{ cursor: 'default' }}>
+                            <span className="weekly-meal-desc">{dishName}</span>
+                          </div>
+                        )}
                       </div>
                     )
                   })
