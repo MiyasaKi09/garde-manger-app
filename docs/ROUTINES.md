@@ -130,6 +130,11 @@ supprimer une fois la routine 1 autonome sur ces deux points.
    apparaîtra dans `/planning`. **Levier produit** : si 20 min est trop long,
    baisser l'effort de raisonnement / le modèle de la Routine 1, ou alléger le
    prompt — décision côté Julien (qualité vs latence).
+   **Contrat de complétude** : avec le pipeline checkpointé v3, l'import est
+   créé tôt (CP1) puis rempli jour par jour. Le polling ne considère le
+   planning prêt que lorsque `nutrition_plan_meals` atteint **49 lignes**
+   (7 j × 7) pour cet import — sinon il afficherait un planning partiel.
+   Feedback UI : « Génération en cours… N/49 repas ».
 6. **Sélection de jours non honorée** : la page assistant envoie `days/from/to`,
    mais la routine 1 (instructions actuelles = « semaine type ») les ignore tant
    qu'on ne l'a pas étendue pour lire ce body. Génère la semaine standard.
