@@ -44,7 +44,6 @@ export default function PlanningAssistantPage() {
   const [status, setStatus] = useState('pick') // pick | generating | saving | success | error
   const [progressText, setProgressText] = useState(PROGRESS_MESSAGES[0].text)
   const [errorMsg, setErrorMsg] = useState('')
-  const [planJson, setPlanJson] = useState(null)
   const abortRef = useRef(null)
   const timersRef = useRef([])
 
@@ -91,94 +90,72 @@ export default function PlanningAssistantPage() {
     if (!selectedDays.length) return
     setStatus('generating')
     setErrorMsg('')
-    setPlanJson(null)
     startProgressMessages()
+
+    // Pause interruptible par l'AbortController (annulation / démontage).
+    const abortableSleep = (ms, signal) => new Promise((resolve, reject) => {
+      const t = setTimeout(resolve, ms)
+      signal?.addEventListener('abort', () => {
+        clearTimeout(t)
+        reject(new DOMException('Aborted', 'AbortError'))
+      }, { once: true })
+    })
 
     try {
       abortRef.current = new AbortController()
+      const signal = abortRef.current.signal
 
-      // Build date range description for Claude
       const sortedDays = [...selectedDays].sort()
-      const firstDate = new Date(sortedDays[0])
-      const lastDate = new Date(sortedDays[sortedDays.length - 1])
-      const fromStr = formatDateFR(firstDate)
-      const toStr = formatDateFR(lastDate)
+      const from = sortedDays[0]
+      const to = sortedDays[sortedDays.length - 1]
 
-      let prompt
-      if (selectedDays.length === 7) {
-        prompt = `Génère le planning complet de la semaine du ${fromStr} au ${toStr}.`
-      } else {
-        const dayNames = sortedDays.map(d => {
-          const date = new Date(d)
-          return `${DAY_NAMES[(date.getDay() + 6) % 7]} ${date.getDate()}`
-        }).join(', ')
-        prompt = `Génère le planning pour les jours suivants uniquement : ${dayNames} (du ${fromStr} au ${toStr}).`
+      // Référence : id max des imports existants, pour détecter le nouveau.
+      let baselineId = 0
+      try {
+        const baseRes = await authFetch('/api/planning/imports', { signal })
+        const baseData = await baseRes.json()
+        for (const imp of (baseData.imports || [])) {
+          if (Number(imp.id) > baselineId) baselineId = Number(imp.id)
+        }
+      } catch (e) {
+        if (e.name === 'AbortError') return
+        // non bloquant : baseline reste 0
       }
 
-      const response = await authFetch('/api/ai/chat', {
+      // Déclenche la Routine 1 (zéro API Anthropic facturée).
+      const trigRes = await authFetch('/api/routine/generate-plan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          intent: 'planning',
-          messages: [{ role: 'user', content: prompt }],
-        }),
-        signal: abortRef.current.signal,
+        body: JSON.stringify({ days: sortedDays, from, to }),
+        signal,
       })
-
-      if (!response.ok) {
-        throw new Error(`Erreur ${response.status}`)
+      const trigData = await trigRes.json().catch(() => ({}))
+      if (!trigRes.ok && trigRes.status !== 202) {
+        throw new Error(trigData.error || `Erreur déclenchement (${trigRes.status})`)
       }
 
-      const reader = response.body.getReader()
-      const decoder = new TextDecoder()
-      let fullText = ''
-      let buffer = ''
-
-      while (true) {
-        const { done, value } = await reader.read()
-        if (done) break
-
-        buffer += decoder.decode(value, { stream: true })
-        const lines = buffer.split('\n')
-        buffer = lines.pop() || ''
-
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue
-          try {
-            const data = JSON.parse(line.slice(6))
-            if (data.text) fullText += data.text
-            if (data.error) throw new Error(data.error)
-          } catch (e) {
-            if (e.message && !e.message.includes('JSON')) throw e
-          }
+      // La routine génère côté cloud (souvent 1-3 min) : on poll Supabase
+      // jusqu'à voir un nouvel import apparaître.
+      const MAX_WAIT_MS = 6 * 60 * 1000
+      const POLL_MS = 12_000
+      const deadline = Date.now() + MAX_WAIT_MS
+      while (Date.now() < deadline) {
+        await abortableSleep(POLL_MS, signal)
+        const res = await authFetch('/api/planning/imports', { signal })
+        const data = await res.json()
+        const fresh = (data.imports || []).find(imp => Number(imp.id) > baselineId)
+        if (fresh) {
+          setStatus('success')
+          setProgressText('Planning généré !')
+          setTimeout(() => router.push('/planning'), 800)
+          return
         }
       }
-
-      const parsed = extractJson(fullText)
-      if (!parsed || !parsed.days || !Array.isArray(parsed.days)) {
-        throw new Error('Le planning généré est invalide.')
-      }
-
-      setPlanJson(parsed)
-      setStatus('saving')
-      setProgressText('Sauvegarde du planning...')
-
-      const saveRes = await authFetch('/api/ai/plan/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: parsed }),
-      })
-
-      const saveData = await saveRes.json()
-      if (!saveRes.ok) throw new Error(saveData.error || 'Erreur de sauvegarde')
-
-      setStatus('success')
-      setProgressText('Planning sauvegardé !')
-      setTimeout(() => router.push('/planning'), 800)
+      throw new Error("La routine prend plus de temps que prévu. Ton planning apparaîtra dans l'onglet Planning dès qu'il sera prêt.")
 
     } catch (err) {
       if (err.name === 'AbortError') return
-      console.error('[Planning Auto-Gen] Error:', err)
+      console.error('[Planning Routine] Error:', err)
       setStatus('error')
       setErrorMsg(err.message || 'Erreur inconnue')
     } finally {
@@ -194,34 +171,7 @@ export default function PlanningAssistantPage() {
     }
   }, [])
 
-  const handleRetry = () => {
-    if (planJson && status === 'error' && errorMsg.includes('sauvegarde')) {
-      retrySave()
-    } else {
-      generatePlan()
-    }
-  }
-
-  const retrySave = async () => {
-    if (!planJson) return
-    setStatus('saving')
-    setProgressText('Sauvegarde du planning...')
-    setErrorMsg('')
-    try {
-      const saveRes = await authFetch('/api/ai/plan/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: planJson }),
-      })
-      const saveData = await saveRes.json()
-      if (!saveRes.ok) throw new Error(saveData.error || 'Erreur de sauvegarde')
-      setStatus('success')
-      setTimeout(() => router.push('/planning'), 800)
-    } catch (err) {
-      setStatus('error')
-      setErrorMsg(err.message)
-    }
-  }
+  const handleRetry = () => { generatePlan() }
 
   const todayStr = today.toISOString().split('T')[0]
 
@@ -346,19 +296,6 @@ export default function PlanningAssistantPage() {
       `}</style>
     </div>
   )
-}
-
-function extractJson(text) {
-  const jsonBlockMatch = text.match(/```json\s*([\s\S]*?)```/)
-  if (jsonBlockMatch) {
-    try { return JSON.parse(jsonBlockMatch[1]) } catch {}
-  }
-  const firstBrace = text.indexOf('{')
-  const lastBrace = text.lastIndexOf('}')
-  if (firstBrace !== -1 && lastBrace > firstBrace) {
-    try { return JSON.parse(text.substring(firstBrace, lastBrace + 1)) } catch {}
-  }
-  return null
 }
 
 const S = {
