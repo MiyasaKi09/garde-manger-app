@@ -45,6 +45,54 @@
 
   /* Transitions */
   --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ===================================================================
+     REFONTE « MYCÉLIUM » — couche sémantique éditoriale (2026-05)
+     Additif : ne remplace aucun token existant (rollout page par page).
+     =================================================================== */
+  --paper: #F3EFE4;
+  --paper-2: #EBE5D6;
+  --surface: #FFFDF7;
+  --surface-soft: #FBF7EC;
+  --line: rgba(24, 28, 22, 0.12);
+  --line-strong: rgba(24, 28, 22, 0.22);
+  --ink-1: #181C16;
+  --ink-2: #4B4F45;
+  --ink-3: #8A8C7E;
+
+  --brand: #2F5D3A;
+  --brand-strong: #1E3F27;
+  --brand-soft: #E7EEE4;
+  --accent: #DE8A2C;
+  --accent-soft: #F7E6CE;
+  --sprout: #6FB05A;
+
+  --m-pdj: #C98A2E;  --m-pdj-bg: #F6EAD4;
+  --m-dej: #3F7D52;  --m-dej-bg: #E4EFE3;
+  --m-din: #7A5AA6;  --m-din-bg: #ECE6F4;
+  --m-col: #B5587E;  --m-col-bg: #F7E4EC;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-text: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --fs-display: clamp(34px, 5vw, 52px);
+  --fs-h1: clamp(26px, 3.4vw, 36px);
+  --fs-h2: 21px;
+  --fs-body: 15px;
+  --fs-sm: 13px;
+  --fs-xs: 11px;
+
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px;
+
+  --r-card: 18px; --r-sm: 12px; --r-pill: 999px;
+  --sh-1: 0 1px 2px rgba(24, 28, 22, 0.06);
+  --sh-2: 0 6px 22px rgba(24, 28, 22, 0.08);
+  --sh-3: 0 18px 48px rgba(24, 28, 22, 0.12);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);   /* rebond organique */
+  --spring-soft: cubic-bezier(0.5, 1.3, 0.5, 1);
+  --dur: 0.45s;
+  --dur-fast: 0.28s;
 }
 
 /* Reset et base */
