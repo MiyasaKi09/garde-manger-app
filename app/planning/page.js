@@ -7,11 +7,13 @@ import { useRouter } from 'next/navigation'
 import { Upload, FileSpreadsheet, Trash2, Calendar, ChevronRight, Sparkles, Leaf } from 'lucide-react'
 import WeeklyPlanView from './components/WeeklyPlanView'
 import DailyNutritionRecap from './components/DailyNutritionRecap'
+import GlassCard from '@/components/ui/GlassCard'
 
 export default function PlanningPage() {
   const router = useRouter()
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [importsLoaded, setImportsLoaded] = useState(false)
   const [imports, setImports] = useState([])
 
   useEffect(() => { checkAuth() }, [])
@@ -37,6 +39,8 @@ export default function PlanningPage() {
       if (data.imports) setImports(data.imports)
     } catch (err) {
       console.error('Erreur chargement imports:', err)
+    } finally {
+      setImportsLoaded(true)
     }
   }
 
@@ -51,23 +55,11 @@ export default function PlanningPage() {
     }
   }
 
-  if (loading) {
-    return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ textAlign: 'center' }}>
-          <div className="spinner" style={{
-            width: 40, height: 40, border: '3px solid #e5e7eb',
-            borderTop: '3px solid #4a7c4a', borderRadius: '50%',
-            animation: 'spin 1s linear infinite', margin: '0 auto 16px'
-          }}></div>
-          <p style={{ color: '#6b7280', fontFamily: 'Inter, sans-serif' }}>Chargement...</p>
-        </div>
-        <style jsx>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
-      </div>
-    )
-  }
-
   const latestImport = imports[0] || null
+  // Le hero reste toujours visible ; un SEUL élément de chargement (même
+  // style que WeeklyPlanView) jusqu'à ce que auth + imports soient prêts.
+  // Évite le flash "Aucun plan encore" puis "Chargement…".
+  const planningReady = !loading && importsLoaded
 
   return (
     <>
@@ -96,30 +88,18 @@ export default function PlanningPage() {
           </div>
         </div>
 
-        {/* ═══ WEEKLY VIEW ═══ */}
-        {latestImport && (
+        {/* ═══ CONTENU : un seul état de chargement, pas de flash ═══ */}
+        {!planningReady ? (
           <section className="planning-section">
             <div className="section-header">
               <div className="section-accent"></div>
               <h2 className="section-title">Semaine en cours</h2>
             </div>
-            <WeeklyPlanView imports={imports} />
+            <GlassCard padding={24} style={{ textAlign: 'center', color: '#9ca3af' }}>
+              Chargement du planning...
+            </GlassCard>
           </section>
-        )}
-
-        {/* ═══ DAILY NUTRITION RECAP ═══ */}
-        {latestImport && (
-          <section className="planning-section">
-            <div className="section-header">
-              <div className="section-accent"></div>
-              <h2 className="section-title">Suivi nutritionnel</h2>
-            </div>
-            <DailyNutritionRecap importId={latestImport.id} />
-          </section>
-        )}
-
-        {/* ═══ EMPTY STATE ═══ */}
-        {imports.length === 0 && (
+        ) : imports.length === 0 ? (
           <section className="planning-section">
             <div className="empty-state-card">
               <div className="empty-icon">
@@ -133,10 +113,28 @@ export default function PlanningPage() {
               </button>
             </div>
           </section>
+        ) : (
+          <>
+            <section className="planning-section">
+              <div className="section-header">
+                <div className="section-accent"></div>
+                <h2 className="section-title">Semaine en cours</h2>
+              </div>
+              <WeeklyPlanView imports={imports} />
+            </section>
+
+            <section className="planning-section">
+              <div className="section-header">
+                <div className="section-accent"></div>
+                <h2 className="section-title">Suivi nutritionnel</h2>
+              </div>
+              <DailyNutritionRecap importId={latestImport.id} />
+            </section>
+          </>
         )}
 
         {/* ═══ MANAGE IMPORTS (compact) ═══ */}
-        {imports.length > 0 && (
+        {planningReady && imports.length > 0 && (
           <section className="planning-section">
             <details className="imports-details">
               <summary className="imports-summary">
