@@ -3,11 +3,12 @@ import { useEffect, useMemo, useState, useRef } from "react";
 
 /* ================= CONFIGURATION ================= */
 const CONFIG = {
+  // Réharmonisé « Mycélium » : amibes vivantes dans la palette éditoriale.
   colors: {
-    bg: "var(--cream-100, #f4efe6)",
-    olive: "var(--olive-500, #6e8b5e)",
-    terra: "var(--terra-500, #c08a5a)",
-    sable: "var(--sable-300, #e2c98f)",
+    bg: "var(--paper, #f3efe4)",
+    olive: "var(--brand, #2f5d3a)",
+    terra: "var(--accent, #de8a2c)",
+    sable: "var(--sprout, #6fb05a)",
   },
 
   // Tailles (plages)

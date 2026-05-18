@@ -161,10 +161,15 @@ export default function PlanningPage() {
 
       <style jsx>{`
 /* ===== REFONTE « MYCÉLIUM » — Planning (pilote) ===== */
+/* Voile papier TRANSLUCIDE : laisse vivre les amibes animées en fond
+   (signature Mycélium) tout en gardant le texte lisible. */
 .planning-canvas {
   position: fixed; inset: 0; z-index: 0;
-  background:
-    radial-gradient(120% 90% at 12% -10%, #FAF6EC 0%, var(--paper) 46%, var(--paper-2) 100%);
+  background: var(--paper);
+  opacity: 0.46;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(120% 95% at 50% 0%, #000 55%, rgba(0,0,0,0.78) 100%);
+          mask-image: radial-gradient(120% 95% at 50% 0%, #000 55%, rgba(0,0,0,0.78) 100%);
 }
 .planning-container {
   position: relative; z-index: 1;
@@ -223,18 +228,19 @@ export default function PlanningPage() {
   padding: 13px 22px; border-radius: var(--r-pill);
   font-family: var(--font-text); font-size: var(--fs-sm);
   font-weight: 600; cursor: pointer;
-  transition: transform var(--dur) var(--ease),
-              background var(--dur) var(--ease),
-              box-shadow var(--dur) var(--ease),
-              border-color var(--dur) var(--ease);
+  transition: transform var(--dur) var(--spring),
+              background var(--dur-fast) var(--ease),
+              box-shadow var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease);
 }
+.btn-primary:active, .btn-secondary:active { transform: scale(0.96); }
 .btn-primary {
   background: var(--brand); color: #fff; border: 1px solid var(--brand);
   box-shadow: var(--sh-1);
 }
 .btn-primary:hover {
   background: var(--brand-strong); border-color: var(--brand-strong);
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.035);
   box-shadow: var(--sh-2), 0 0 0 4px var(--accent-soft);
 }
 .btn-secondary {
@@ -243,15 +249,18 @@ export default function PlanningPage() {
 }
 .btn-secondary:hover {
   background: var(--surface); border-color: var(--ink-2);
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.035);
 }
 .btn-lg { padding: 15px 28px; font-size: var(--fs-body); }
 
 /* ── Sections ── */
 .planning-section {
   margin-bottom: var(--s-7);
-  animation: mykoReveal var(--dur) var(--ease) both;
+  animation: mykoReveal 0.62s var(--spring) both;
 }
+.planning-section:nth-of-type(2) { animation-delay: 0.07s; }
+.planning-section:nth-of-type(3) { animation-delay: 0.14s; }
+.planning-section:nth-of-type(4) { animation-delay: 0.2s; }
 .section-header {
   display: flex; align-items: center; gap: 12px;
   margin-bottom: var(--s-5);
@@ -362,8 +371,8 @@ export default function PlanningPage() {
 
 /* ── Motion ── */
 @keyframes mykoReveal {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+  0%   { opacity: 0; transform: translateY(20px) scale(0.985); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 @keyframes mykoPulse {
   0%, 100% { opacity: 1; }

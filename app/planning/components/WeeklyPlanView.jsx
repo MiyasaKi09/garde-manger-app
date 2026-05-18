@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
@@ -57,6 +57,10 @@ export default function WeeklyPlanView({ imports = [] }) {
   const [generatingFor, setGeneratingFor] = useState(null)
   const [currentMealEntries, setCurrentMealEntries] = useState([])
 
+  // Préchargement invisible : caches mémoire (semaines + fiches recettes).
+  const mealsCacheRef = useRef({})   // importId -> meals[]
+  const recipeCacheRef = useRef({})  // description -> recipe | false (absent) | null (en cours)
+
   const getWeekDates = (offset) => {
     const today = new Date()
     const monday = new Date(today)
@@ -84,17 +88,27 @@ export default function WeeklyPlanView({ imports = [] }) {
     null
   const selectedImportId = selectedImport?.id || null
 
-  useEffect(() => {
-    if (!selectedImportId) { setMeals([]); setLoading(false); return }
-    loadMeals(selectedImportId)
-  }, [selectedImportId])
+  // Résout l'import couvrant une semaine donnée (offset relatif).
+  const importIdForOffset = (offset) => {
+    const wd = getWeekDates(offset)
+    const s = fmt(wd[0]); const e = fmt(wd[6])
+    const imp = imports.find(i => i.date_range_start === s) ||
+      imports.find(i => i.date_range_start <= e && i.date_range_end >= s)
+    return imp?.id || null
+  }
 
+  // Charge depuis le cache si dispo (instantané), sinon réseau puis cache.
   async function loadMeals(id) {
+    if (mealsCacheRef.current[id]) {
+      setMeals(mealsCacheRef.current[id]); setLoading(false); return
+    }
     setLoading(true)
     try {
       const res = await authFetch(`/api/planning/imports/${id}`)
       const data = await res.json()
-      setMeals(data.meals || [])
+      const m = data.meals || []
+      mealsCacheRef.current[id] = m
+      setMeals(m)
     } catch (err) {
       console.error('Erreur chargement meals:', err)
       setMeals([])
@@ -103,24 +117,70 @@ export default function WeeklyPlanView({ imports = [] }) {
     }
   }
 
+  // Prefetch silencieux (aucun rendu) — anticipe sans bloquer.
+  async function prefetchImport(id) {
+    if (!id || mealsCacheRef.current[id]) return
+    try {
+      const res = await authFetch(`/api/planning/imports/${id}`)
+      const data = await res.json()
+      mealsCacheRef.current[id] = data.meals || []
+    } catch {}
+  }
+
+  async function prefetchRecipe(typeMeals) {
+    const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
+    const q = julien?.description
+    if (!q || recipeCacheRef.current[q] !== undefined) return
+    recipeCacheRef.current[q] = null // en cours
+    try {
+      const res = await authFetch(`/api/recipes/generated?q=${encodeURIComponent(q)}`)
+      recipeCacheRef.current[q] = res.ok ? ((await res.json()).recipe || false) : false
+    } catch { recipeCacheRef.current[q] = false }
+  }
+
+  useEffect(() => {
+    if (!selectedImportId) { setMeals([]); setLoading(false); return }
+    loadMeals(selectedImportId)
+  }, [selectedImportId])
+
+  // Précharge les semaines adjacentes → navigation ‹ › instantanée.
+  useEffect(() => {
+    prefetchImport(importIdForOffset(weekOffset - 1))
+    prefetchImport(importIdForOffset(weekOffset + 1))
+  }, [weekOffset, imports]) // eslint-disable-line react-hooks/exhaustive-deps
+
   // Lecture de la fiche déjà générée par la routine (zéro API facturée).
   async function handleMealClick(typeMeals, dishName) {
     const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
     const query = julien?.description
     if (!query) return
 
-    setGeneratingFor(dishName)
     setCurrentMealEntries(typeMeals || [])
 
+    // Préchargé au survol → ouverture instantanée.
+    const cached = recipeCacheRef.current[query]
+    if (cached) {
+      setGeneratedRecipe(cached)
+      setCookModeOpen(true)
+      return
+    }
+    if (cached === false) {
+      alert("Pas encore de fiche recette pour ce plat. Elle est créée par la routine lors de la génération du planning.")
+      return
+    }
+
+    setGeneratingFor(dishName)
     try {
       const res = await authFetch(`/api/recipes/generated?q=${encodeURIComponent(query)}`)
       const data = await res.json().catch(() => ({}))
       if (!res.ok) {
+        recipeCacheRef.current[query] = false
         alert(res.status === 404
           ? "Pas encore de fiche recette pour ce plat. Elle est créée par la routine lors de la génération du planning."
           : (data.error || 'Erreur lors du chargement de la recette.'))
         return
       }
+      recipeCacheRef.current[query] = data.recipe || false
       setGeneratedRecipe(data.recipe)
       setCookModeOpen(true)
     } catch (err) {
@@ -226,6 +286,8 @@ export default function WeeklyPlanView({ imports = [] }) {
                         {clickable ? (
                           <button
                             onClick={() => handleMealClick(typeMeals, dishName)}
+                            onMouseEnter={() => prefetchRecipe(typeMeals)}
+                            onFocus={() => prefetchRecipe(typeMeals)}
                             disabled={!!generatingFor}
                             className="weekly-meal-btn"
                             style={{ opacity: generatingFor && !isGenerating ? 0.4 : 1 }}
@@ -269,14 +331,29 @@ export default function WeeklyPlanView({ imports = [] }) {
   border: 1px solid var(--line);
   border-radius: var(--r-card);
   overflow: hidden;
-  transition: transform var(--dur) var(--ease),
+  transition: transform var(--dur) var(--spring),
               box-shadow var(--dur) var(--ease),
               border-color var(--dur) var(--ease);
+  animation: cardPop 0.55s var(--spring) both;
 }
+.weekly-day-card:nth-child(1) { animation-delay: 0.02s; }
+.weekly-day-card:nth-child(2) { animation-delay: 0.06s; }
+.weekly-day-card:nth-child(3) { animation-delay: 0.10s; }
+.weekly-day-card:nth-child(4) { animation-delay: 0.14s; }
+.weekly-day-card:nth-child(5) { animation-delay: 0.18s; }
+.weekly-day-card:nth-child(6) { animation-delay: 0.22s; }
+.weekly-day-card:nth-child(7) { animation-delay: 0.26s; }
 .weekly-day-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.012);
   box-shadow: var(--sh-2);
   border-color: var(--line-strong);
+}
+@keyframes cardPop {
+  0%   { opacity: 0; transform: translateY(16px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .weekly-day-card { animation: none; }
 }
 .weekly-day-today {
   border-color: var(--brand);
@@ -333,9 +410,14 @@ export default function WeeklyPlanView({ imports = [] }) {
   border: none; background: transparent;
   cursor: pointer; text-align: left;
   border-radius: var(--r-sm);
-  transition: background var(--dur) var(--ease);
+  transition: background var(--dur-fast) var(--ease),
+              transform var(--dur) var(--spring);
 }
-button.weekly-meal-btn:hover { background: var(--surface-soft); }
+button.weekly-meal-btn:hover {
+  background: var(--surface-soft);
+  transform: translateX(3px);
+}
+button.weekly-meal-btn:active { transform: scale(0.97); }
 button.weekly-meal-btn:disabled { cursor: default; }
 .weekly-meal-desc {
   flex: 1; min-width: 0;
