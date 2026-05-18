@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Sun May 17 20:57:15 UTC 2026_
+_Généré le : Mon May 18 16:25:27 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -409,6 +409,7 @@ _Généré le : Sun May 17 20:57:15 UTC 2026_
  - carbs_g :: numeric
  - fat_g :: numeric
  - fiber_g :: numeric
+ - short_label :: text
 
 ### nutrition_plan_prep_tasks
  - id :: bigint default nextval('nutrition_plan_prep_tasks_id_seq'::regclass) NOT NULL
