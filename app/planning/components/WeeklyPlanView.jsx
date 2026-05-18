@@ -46,7 +46,7 @@ const DAY_NAMES_FULL = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vend
  * Vue hebdomadaire du planning.
  * Clic sur un repas → Claude génère la recette → mode cuisine immersif.
  */
-export default function WeeklyPlanView({ importId }) {
+export default function WeeklyPlanView({ imports = [] }) {
   const [meals, setMeals] = useState([])
   const [loading, setLoading] = useState(true)
   const [weekOffset, setWeekOffset] = useState(0)
@@ -72,19 +72,32 @@ export default function WeeklyPlanView({ importId }) {
 
   const weekDates = getWeekDates(weekOffset)
   const todayStr = new Date().toISOString().split('T')[0]
+  const fmt = d => d.toISOString().split('T')[0]
+  const weekStart = fmt(weekDates[0])
+  const weekEnd = fmt(weekDates[6])
+
+  // L'import qui COUVRE la semaine affichée (pas juste le dernier généré).
+  // Sinon, générer une semaine future masque le planning de la semaine en cours.
+  const selectedImport =
+    imports.find(i => i.date_range_start === weekStart) ||
+    imports.find(i => i.date_range_start <= weekEnd && i.date_range_end >= weekStart) ||
+    null
+  const selectedImportId = selectedImport?.id || null
 
   useEffect(() => {
-    if (!importId) { setLoading(false); return }
-    loadMeals()
-  }, [importId])
+    if (!selectedImportId) { setMeals([]); setLoading(false); return }
+    loadMeals(selectedImportId)
+  }, [selectedImportId])
 
-  async function loadMeals() {
+  async function loadMeals(id) {
+    setLoading(true)
     try {
-      const res = await authFetch(`/api/planning/imports/${importId}`)
+      const res = await authFetch(`/api/planning/imports/${id}`)
       const data = await res.json()
-      if (data.meals) setMeals(data.meals)
+      setMeals(data.meals || [])
     } catch (err) {
       console.error('Erreur chargement meals:', err)
+      setMeals([])
     } finally {
       setLoading(false)
     }
@@ -122,7 +135,7 @@ export default function WeeklyPlanView({ importId }) {
     return <GlassCard padding={24} style={{ textAlign: 'center', color: '#9ca3af' }}>Chargement du planning...</GlassCard>
   }
 
-  if (!importId) return null
+  if (!imports.length) return null
 
   const mealsByDate = {}
   for (const m of meals) {
@@ -150,6 +163,12 @@ export default function WeeklyPlanView({ importId }) {
           <ChevronRight size={18} />
         </button>
       </div>
+
+      {!selectedImport && (
+        <p style={{ ...styles.noMeal, margin: '4px 0 14px', fontSize: 13 }}>
+          Aucun planning pour cette semaine — navigue avec ‹ › ou clique « Demander à Myko ».
+        </p>
+      )}
 
       {/* Days */}
       <div className="weekly-days-grid">

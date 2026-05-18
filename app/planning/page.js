@@ -103,7 +103,7 @@ export default function PlanningPage() {
               <div className="section-accent"></div>
               <h2 className="section-title">Semaine en cours</h2>
             </div>
-            <WeeklyPlanView importId={latestImport.id} />
+            <WeeklyPlanView imports={imports} />
           </section>
         )}
 
