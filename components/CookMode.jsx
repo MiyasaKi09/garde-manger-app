@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { X, ChevronLeft, ChevronRight, Play, Pause, RotateCcw, RefreshCw, Loader2 } from 'lucide-react'
 import { authFetch } from '@/lib/authFetch'
 
@@ -13,7 +14,16 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   // -1 = landing, 0+ = step index, 'done' = finished
   const [currentStep, setCurrentStep] = useState(-1)
   const [rating, setRating] = useState(0)
+  const [mounted, setMounted] = useState(false)
   const isLanding = currentStep === -1
+
+  useEffect(() => { setMounted(true) }, [])
+  // Portail vers <body> : indispensable pour que position:fixed soit
+  // relatif à l'écran (sinon un ancêtre transformé/animé casse la modale).
+  const portal = (node) =>
+    mounted && typeof document !== 'undefined'
+      ? createPortal(node, document.body)
+      : null
 
   // Régénération de la recette via la routine Claude (écriture Supabase côté routine)
   const [regenOpen, setRegenOpen] = useState(false)
@@ -64,6 +74,12 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   const recipeName = recipe.title || recipe.name
   const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0)
 
+  // Tolérance de forme : la routine peut écrire des chaînes OU des objets.
+  const ingList = (ingredients || []).map(i =>
+    i && typeof i === 'object' ? i : { name: String(i ?? '') })
+  const stepList = (steps || []).map(s =>
+    s && typeof s === 'object' ? s : { instruction: String(s ?? '') })
+
   async function handleRegenerate() {
     if (regenLoading) return
     setRegenLoading(true)
@@ -91,9 +107,9 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
   const responsiveStyles = (
     <style jsx global>{`
-      .cook-landing-scroll { flex: 1; display: flex; align-items: flex-start; justify-content: center; padding: 60px 24px 40px; overflow-y: auto; }
-      .cook-landing-container { text-align: center; max-width: 520px; width: 100%; }
-      .cook-landing-title { font-family: 'Crimson Text', Georgia, serif; font-size: 32px; font-weight: 700; color: #16a34a; margin-bottom: 12px; line-height: 1.2; }
+      .cook-landing-scroll { max-height: 86vh; overflow-y: auto; padding: 46px 30px 34px; }
+      .cook-landing-container { text-align: center; max-width: 100%; width: 100%; }
+      .cook-landing-title { font-family: var(--font-display, 'Crimson Text', Georgia, serif); font-size: clamp(26px, 4.4vw, 36px); font-weight: 600; letter-spacing: -0.02em; color: var(--ink-1, #181c16); margin-bottom: 10px; line-height: 1.12; }
       .cook-step-content { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
       .cook-step-card { max-width: 560px; width: 100%; background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; padding: 32px 28px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
       .cook-step-title { font-size: 24px; font-weight: 700; color: var(--ink, #1f281f); margin-bottom: 16px; line-height: 1.3; }
@@ -126,30 +142,41 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
       }
 
       @media (max-width: 480px) {
-        .cook-landing-scroll { padding: 40px 12px 24px; }
+        .cook-landing-scroll { padding: 36px 16px 24px; max-height: 90vh; }
         .cook-landing-title { font-size: 22px; }
         .cook-step-card { padding: 20px 14px; }
         .cook-step-title { font-size: 18px; }
         .cook-timer-text { font-size: 32px; }
         .cook-footer { padding: 10px 12px 16px; }
       }
+      @keyframes cmScrim { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes cmCardIn {
+        0%   { opacity: 0; transform: translateY(24px) scale(0.96); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cook-landing-scroll { scroll-behavior: auto; }
+      }
     `}</style>
   )
 
   // ---- LANDING SCREEN (glass-morphism style) ----
   if (currentStep === -1) {
-    return (
-      <div style={styles.landingOverlay}>
+    return portal(
+      <div style={styles.scrim} onClick={onClose}>
         {responsiveStyles}
-        <button onClick={onClose} style={styles.landingCloseBtn}><X size={24} /></button>
-        <div className="cook-landing-scroll">
-          <div className="cook-landing-container">
+        <div style={styles.card} onClick={(e) => e.stopPropagation()}>
+          <button onClick={onClose} style={styles.cardClose} aria-label="Fermer la recette">
+            <X size={20} />
+          </button>
+          <div className="cook-landing-scroll">
+            <div className="cook-landing-container">
             <h1 className="cook-landing-title">{recipeName}</h1>
             {recipe.description && (
               <p style={styles.landingDesc}>{recipe.description}</p>
             )}
             {totalTime > 0 && (
-              <p style={styles.landingMeta}>{steps?.length || 0} étapes{totalTime ? ` · ${totalTime} min` : ''}</p>
+              <p style={styles.landingMeta}>{stepList.length} étapes{totalTime ? ` · ${totalTime} min` : ''}</p>
             )}
 
             {/* Per-person nutrition from meal plan */}
@@ -225,10 +252,10 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
             )}
 
             {/* Ingredients */}
-            {ingredients?.length > 0 && (
+            {ingList.length > 0 && (
               <div className="cook-ingredients-list">
                 <h3 style={styles.landingIngTitle}>INGRÉDIENTS</h3>
-                {ingredients.map((ing, i) => (
+                {ingList.map((ing, i) => (
                   <p key={i} style={styles.landingIngItem}>
                     {ing.quantity && <span style={styles.landingIngQty}>{ing.quantity} {ing.unit}</span>}
                     {' '}{ing.name}{ing.notes ? ` (${ing.notes})` : ''}
@@ -240,7 +267,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
             <button
               onClick={() => setCurrentStep(0)}
               className="cook-start-btn"
-              disabled={!steps?.length}
+              disabled={!stepList.length}
             >
               Commencer
             </button>
@@ -291,6 +318,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
                 </div>
               )}
             </div>
+            </div>
           </div>
         </div>
       </div>
@@ -299,7 +327,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
   // ---- DONE SCREEN (rating) ----
   if (currentStep === 'done') {
-    return (
+    return portal(
       <div style={S.overlay}>
         {responsiveStyles}
         <div className="cook-step-content">
@@ -345,17 +373,17 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   }
 
   // ---- STEP SCREEN ----
-  if (!steps?.length) return null
+  if (!stepList.length) return null
 
-  const step = steps[currentStep]
+  const step = stepList[currentStep]
   const isFirst = currentStep === 0
-  const isLast = currentStep === steps.length - 1
+  const isLast = currentStep === stepList.length - 1
 
   const timerMinutes = step.duration_min || extractTimerFromText(step.instruction || step.description || '')
   const fullText = step.instruction || step.description || ''
   const { title: stepTitle, body: stepBody } = splitStepText(fullText)
 
-  return (
+  return portal(
     <div style={S.overlay}>
       {/* Header */}
       <div style={S.header}>
@@ -368,7 +396,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
       {/* Step content */}
       <div className="cook-step-content">
         <div className="cook-step-card">
-          <div style={S.stepBadge}>Étape {currentStep + 1}/{steps.length}</div>
+          <div style={S.stepBadge}>Étape {currentStep + 1}/{stepList.length}</div>
           {stepTitle && (
             <h2 className="cook-step-title">{stepTitle}</h2>
           )}
@@ -391,7 +419,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
         </button>
 
         <button
-          onClick={() => setCurrentStep(s => isLast ? 'done' : Math.min(steps.length - 1, s + 1))}
+          onClick={() => setCurrentStep(s => isLast ? 'done' : Math.min(stepList.length - 1, s + 1))}
           style={S.navBtnPrimary}
         >
           {isLast ? 'Terminer' : 'Suivant'}
@@ -524,8 +552,34 @@ const GLASS = {
 
 // Landing screen uses `styles.xxx`, steps/done use `S.xxx`
 const styles = {
-  landingOverlay: { position: 'fixed', inset: 0, background: BG, zIndex: 2000, display: 'flex', flexDirection: 'column', fontFamily: 'inherit' },
-  landingCloseBtn: { position: 'absolute', top: 16, right: 16, border: 'none', background: 'rgba(0,0,0,0.05)', color: '#6b7280', cursor: 'pointer', padding: 8, display: 'flex', borderRadius: 10, zIndex: 10 },
+  // Vraie modale éditoriale : scrim sombre + carte centrée.
+  scrim: {
+    position: 'fixed', inset: 0, zIndex: 3000,
+    background: 'rgba(24,28,22,0.55)',
+    backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    padding: '24px', fontFamily: "var(--font-text, 'Inter', sans-serif)",
+    animation: 'cmScrim 0.25s ease both',
+  },
+  card: {
+    position: 'relative',
+    width: '100%', maxWidth: 620,
+    background: 'var(--surface, #fffdf7)',
+    border: '1px solid var(--line, rgba(24,28,22,0.12))',
+    borderRadius: 'var(--r-card, 18px)',
+    boxShadow: 'var(--sh-3, 0 18px 48px rgba(24,28,22,0.12))',
+    overflow: 'hidden',
+    animation: 'cmCardIn 0.42s cubic-bezier(0.34,1.56,0.64,1) both',
+  },
+  cardClose: {
+    position: 'absolute', top: 14, right: 14, zIndex: 5,
+    border: '1px solid var(--line, rgba(24,28,22,0.12))',
+    background: 'var(--surface, #fffdf7)',
+    color: 'var(--ink-2, #4b4f45)',
+    cursor: 'pointer', padding: 9, display: 'flex',
+    borderRadius: 'var(--r-pill, 999px)',
+    transition: 'transform 0.2s cubic-bezier(0.34,1.56,0.64,1), background 0.2s, color 0.2s',
+  },
   landingScroll: { flex: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '60px 24px 40px', overflowY: 'auto' },
   landingContainer: { textAlign: 'center', maxWidth: 520, width: '100%' },
   landingTitle: { fontFamily: "'Crimson Text', Georgia, serif", fontSize: 32, fontWeight: 700, color: '#16a34a', marginBottom: 12, lineHeight: 1.2 },
