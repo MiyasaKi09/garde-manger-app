@@ -1634,7 +1634,6 @@ id,import_id,week_label,category,product_name,quantity,checked
 2653,26,Semaine du 18 au 24 mai,Boulangerie,Pain de seigle,1 pièce,f
 2654,26,Semaine du 18 au 24 mai,Boulangerie,Pains à burger,2 pièces,f
 2617,26,Semaine du 18 au 24 mai,Viandes,Poulet fermier (cuisses/découpe),"1,2 kg",f
-2655,27,Semaine du 25 au 31 mai,Viandes & poissons,Bavette d'aloyau (bœuf),450 g,f
 2656,27,Semaine du 25 au 31 mai,Viandes & poissons,Escalopes de volaille (blanquette),400 g,f
 2657,27,Semaine du 25 au 31 mai,Viandes & poissons,Suprêmes de pintade,2 pièces,f
 2658,27,Semaine du 25 au 31 mai,Viandes & poissons,Cuisses de poulet (tajine),500 g,f
@@ -1652,19 +1651,16 @@ id,import_id,week_label,category,product_name,quantity,checked
 2671,27,Semaine du 25 au 31 mai,Fruits & légumes,Pommes de terre rattes,500 g,f
 2672,27,Semaine du 25 au 31 mai,Fruits & légumes,Champignons de Paris,400 g,f
 2673,27,Semaine du 25 au 31 mai,Fruits & légumes,Radis,2 bottes,f
-2674,27,Semaine du 25 au 31 mai,Fruits & légumes,Oignons,6 pièces,f
 2675,27,Semaine du 25 au 31 mai,Fruits & légumes,Échalotes,8 pièces,f
 2676,27,Semaine du 25 au 31 mai,Fruits & légumes,Ail,2 têtes,f
 2677,27,Semaine du 25 au 31 mai,Fruits & légumes,Gingembre frais,1 morceau,f
 2678,27,Semaine du 25 au 31 mai,Fruits & légumes,Citrons jaunes,4 pièces,f
 2679,27,Semaine du 25 au 31 mai,Fruits & légumes,Citrons verts,3 pièces,f
-2680,27,Semaine du 25 au 31 mai,Fruits & légumes,Tomates,6 pièces,f
 2681,27,Semaine du 25 au 31 mai,Fruits & légumes,Coriandre fraîche,2 bottes,f
 2682,27,Semaine du 25 au 31 mai,Fruits & légumes,Basilic frais,2 bottes,f
 2683,27,Semaine du 25 au 31 mai,Fruits & légumes,Persil plat,1 botte,f
 2684,27,Semaine du 25 au 31 mai,Fruits & légumes,Pommes & bananes (collations/pdj),8 pièces,f
 2685,27,Semaine du 25 au 31 mai,Crémerie & œufs,Œufs,24 pièces,f
-2686,27,Semaine du 25 au 31 mai,Crémerie & œufs,Skyr 0%,2 kg,f
 2687,27,Semaine du 25 au 31 mai,Crémerie & œufs,Crème fraîche épaisse,25 cl,f
 2688,27,Semaine du 25 au 31 mai,Crémerie & œufs,Beurre,250 g,f
 2689,27,Semaine du 25 au 31 mai,Crémerie & œufs,Parmesan,200 g,f
@@ -1686,7 +1682,10 @@ id,import_id,week_label,category,product_name,quantity,checked
 2705,27,Semaine du 25 au 31 mai,Épicerie,Citrons confits,1 bocal,f
 2706,27,Semaine du 25 au 31 mai,Épicerie,Olives vertes,150 g,f
 2707,27,Semaine du 25 au 31 mai,Épicerie,Pesto basilic,1 pot,f
+2686,27,Semaine du 25 au 31 mai,Crémerie & œufs,Skyr 0%,2 kg,t
 2664,27,Semaine du 25 au 31 mai,Fruits & légumes,Aubergines,3 pièces,f
+2674,27,Semaine du 25 au 31 mai,Fruits & légumes,Oignons,6 pièces,f
+2680,27,Semaine du 25 au 31 mai,Fruits & légumes,Tomates,6 pièces,f
 2708,27,Semaine du 25 au 31 mai,Épicerie,Vin rouge (cuisine),25 cl,f
 2709,27,Semaine du 25 au 31 mai,Épicerie,Vin blanc sec (cuisine),25 cl,f
 2710,27,Semaine du 25 au 31 mai,Épicerie,"Pâte de curry / épices (ras el hanout, curcuma, garam masala)",assortiment,f
@@ -1694,3 +1693,4 @@ id,import_id,week_label,category,product_name,quantity,checked
 2712,27,Semaine du 25 au 31 mai,Épicerie,Huile d'olive,1 bouteille,f
 2713,27,Semaine du 25 au 31 mai,Épicerie,Amandes & noix (collations),300 g,f
 2714,27,Semaine du 25 au 31 mai,Boulangerie,Pain de campagne,1 pièce,f
+2655,27,Semaine du 25 au 31 mai,Viandes & poissons,Bavette d'aloyau (bœuf),450 g,t
