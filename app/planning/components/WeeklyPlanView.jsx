@@ -181,7 +181,9 @@ export default function WeeklyPlanView({ importId }) {
                     .map(type => {
                     const typeMeals = dayMeals.filter(m => m.meal_type === type)
                     const descriptions = typeMeals.map(m => m.description)
-                    const dishName = extractDishName(descriptions)
+                    // Surnom court écrit par la routine si dispo, sinon extraction.
+                    const julienRow = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
+                    const dishName = (julienRow?.short_label || '').trim() || extractDishName(descriptions)
                     const isGenerating = generatingFor === dishName
                     const colors = MEAL_COLORS[type] || MEAL_COLORS.dejeuner
                     // Seuls déjeuner/dîner ont une fiche recette (pas pdj/collation).
