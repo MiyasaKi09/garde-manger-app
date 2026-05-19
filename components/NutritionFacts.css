@@ -1,13 +1,12 @@
 /* components/NutritionFacts.css */
 
 .nutrition-facts {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(240, 253, 244, 0.4));
-  border-radius: 16px;
+  background: var(--surface);
+  border-radius: var(--r-card);
   padding: 24px;
   margin: 24px 0;
-  border: 2px solid rgba(34, 197, 94, 0.2);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  box-shadow: var(--sh-1);
 }
 
 .nutrition-header {
@@ -16,7 +15,7 @@
 
 .nutrition-header h3 {
   margin: 0 0 4px 0;
-  color: #1f2937;
+  color: var(--ink-1);
   font-size: 1.25rem;
   font-weight: 600;
   display: flex;
@@ -25,7 +24,7 @@
 }
 
 .servings-info {
-  color: #6b7280;
+  color: var(--ink-3);
   font-size: 0.875rem;
   margin: 0;
   font-style: italic;
@@ -44,16 +43,16 @@
   align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: var(--surface-soft);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
   transition: all 0.2s ease;
 }
 
 .nutrient-row:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--surface);
   transform: translateX(4px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--sh-1);
 }
 
 .nutrient-icon {
@@ -61,7 +60,7 @@
 }
 
 .nutrient-name {
-  color: #374151;
+  color: var(--ink-2);
   font-weight: 500;
   font-size: 0.95rem;
 }
@@ -96,7 +95,7 @@
 
 .unit {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--ink-3);
   font-weight: 400;
 }
 
@@ -104,7 +103,7 @@
 .nutrition-total {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--line);
 }
 
 .nutrition-total details {
@@ -112,7 +111,7 @@
 }
 
 .nutrition-total summary {
-  color: #059669;
+  color: var(--brand);
   font-size: 0.875rem;
   font-weight: 500;
   padding: 8px 0;
@@ -138,7 +137,7 @@
 }
 
 .nutrition-total summary:hover {
-  color: #047857;
+  color: var(--brand-strong);
 }
 
 .total-grid {
@@ -147,8 +146,8 @@
   gap: 8px;
   margin-top: 12px;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 8px;
+  background: var(--surface-soft);
+  border-radius: var(--r-sm);
 }
 
 .total-item {
@@ -156,27 +155,27 @@
   justify-content: space-between;
   padding: 6px 0;
   font-size: 0.875rem;
-  color: #374151;
+  color: var(--ink-2);
 }
 
 .total-item span:first-child {
-  color: #6b7280;
+  color: var(--ink-3);
 }
 
 .total-item span:last-child {
   font-weight: 600;
-  color: #059669;
+  color: var(--brand);
 }
 
 /* Disclaimer */
 .nutrition-disclaimer {
   margin-top: 16px;
   padding-top: 12px;
-  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  border-top: 1px dashed var(--line);
 }
 
 .nutrition-disclaimer small {
-  color: #6b7280;
+  color: var(--ink-3);
   font-size: 0.75rem;
   line-height: 1.4;
   display: block;
@@ -214,14 +213,14 @@
 }
 
 .error-hint {
-  color: #6b7280;
+  color: var(--ink-3);
   font-size: 0.875rem;
   margin: 0;
   line-height: 1.5;
 }
 
 .nutrition-facts.empty p {
-  color: #6b7280;
+  color: var(--ink-3);
   font-style: italic;
   margin: 0;
 }
@@ -252,7 +251,7 @@
 .micronutrients-section {
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 2px solid rgba(34, 197, 94, 0.2);
+  border-top: 1px solid var(--line);
 }
 
 .micronutrients-section details {
@@ -260,7 +259,7 @@
 }
 
 .micronutrients-section summary {
-  color: #059669;
+  color: var(--brand);
   font-size: 1rem;
   font-weight: 600;
   padding: 12px 0;
@@ -287,7 +286,7 @@
 }
 
 .micronutrients-section summary:hover {
-  color: #047857;
+  color: var(--brand-strong);
 }
 
 .micronutrients-grid {
@@ -298,15 +297,15 @@
 }
 
 .micronutrient-category {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
+  background: var(--surface-soft);
+  border-radius: var(--r-sm);
   padding: 16px;
-  border: 1px solid rgba(34, 197, 94, 0.15);
+  border: 1px solid var(--line);
 }
 
 .micronutrient-category h4 {
   margin: 0 0 12px 0;
-  color: #047857;
+  color: var(--brand);
   font-size: 0.95rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -324,24 +323,24 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 8px;
+  background: var(--surface);
+  border-radius: var(--r-sm);
   transition: all 0.2s ease;
 }
 
 .micronutrient-item:hover {
-  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--sh-1);
   transform: translateX(2px);
 }
 
 .micro-name {
-  color: #374151;
+  color: var(--ink-2);
   font-size: 0.875rem;
   font-weight: 500;
 }
 
 .micro-value {
-  color: #059669;
+  color: var(--brand);
   font-size: 0.875rem;
   font-weight: 600;
   font-family: 'Courier New', monospace;
@@ -350,11 +349,11 @@
 .micronutrients-disclaimer {
   margin-top: 16px;
   padding-top: 12px;
-  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  border-top: 1px dashed var(--line);
 }
 
 .micronutrients-disclaimer small {
-  color: #6b7280;
+  color: var(--ink-3);
   font-size: 0.75rem;
   line-height: 1.4;
   display: block;

@@ -82,10 +82,10 @@ export default function MinimalistHeader() {
             href="/"
             style={{
               textDecoration: 'none',
-              fontFamily: "'Crimson Text', Georgia, serif",
+              fontFamily: 'var(--font-display)',
               fontSize: '1.25rem',
               fontWeight: '700',
-              color: '#16a34a',
+              color: 'var(--brand)',
               letterSpacing: '-0.02em',
               marginRight: '0.5rem',
             }}
@@ -103,9 +103,9 @@ export default function MinimalistHeader() {
                   textDecoration: 'none',
                   fontSize: '0.95rem',
                   fontWeight: active ? '600' : '500',
-                  color: '#fff',
+                  color: active ? 'var(--brand)' : '#fff',
                   opacity: active ? 1 : 0.85,
-                  transition: 'opacity .2s ease',
+                  transition: 'opacity .2s ease, color .2s ease',
                   padding: '0.5rem 0'
                 }}
                 onMouseEnter={(e) => e.target.style.opacity = '1'}
@@ -174,10 +174,10 @@ export default function MinimalistHeader() {
           style={{
             display: 'none',
             textDecoration: 'none',
-            fontFamily: "'Crimson Text', Georgia, serif",
+            fontFamily: 'var(--font-display)',
             fontSize: '1.25rem',
             fontWeight: '700',
-            color: '#16a34a',
+            color: 'var(--brand)',
             letterSpacing: '-0.02em',
           }}
           className="mobile-logo"

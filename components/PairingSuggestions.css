@@ -1,11 +1,9 @@
-/* 🧪 Styles pour le composant PairingSuggestions */
+/* components/PairingSuggestions.css */
 
 .pairing-suggestions {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
   padding: 24px;
   margin: 24px 0;
 }
@@ -22,29 +20,29 @@
 .pairing-title h3 {
   font-size: 22px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--ink-1);
   margin: 0 0 4px 0;
 }
 
 .pairing-subtitle {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--ink-3);
   margin: 0;
 }
 
 .pairing-subtitle strong {
-  color: #059669;
+  color: var(--brand);
   font-weight: 600;
 }
 
 .pairing-count {
-  background: rgba(5, 150, 105, 0.1);
-  border: 1px solid rgba(5, 150, 105, 0.3);
-  border-radius: 8px;
+  background: var(--brand-soft);
+  border: 1px solid var(--brand);
+  border-radius: var(--r-sm);
   padding: 6px 12px;
   font-size: 13px;
   font-weight: 600;
-  color: #059669;
+  color: var(--brand);
 }
 
 /* États */
@@ -58,8 +56,8 @@
 .pairing-loading .spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid rgba(5, 150, 105, 0.2);
-  border-top-color: #059669;
+  border: 3px solid var(--line);
+  border-top-color: var(--brand);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin: 0 auto 16px;
@@ -72,21 +70,21 @@
 }
 
 .pairing-loading p {
-  color: #374151;
+  color: var(--ink-2);
   margin: 8px 0;
   font-weight: 500;
 }
 
 .loading-detail {
   font-size: 13px !important;
-  color: #6b7280 !important;
+  color: var(--ink-3) !important;
   font-weight: 400 !important;
 }
 
 .pairing-error {
   background: rgba(239, 68, 68, 0.05);
   border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: 12px;
+  border-radius: var(--r-sm);
 }
 
 .error-icon {
@@ -100,7 +98,7 @@
 }
 
 .pairing-error p {
-  color: #6b7280;
+  color: var(--ink-3);
   margin: 0 0 16px 0;
 }
 
@@ -108,7 +106,7 @@
   background: #dc2626;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   padding: 10px 20px;
   font-weight: 600;
   cursor: pointer;
@@ -120,9 +118,9 @@
 }
 
 .pairing-empty {
-  background: rgba(107, 114, 128, 0.05);
-  border: 1px solid rgba(107, 114, 128, 0.2);
-  border-radius: 12px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
 }
 
 .empty-icon {
@@ -131,12 +129,12 @@
 }
 
 .pairing-empty h4 {
-  color: #374151;
+  color: var(--ink-2);
   margin: 0 0 8px 0;
 }
 
 .pairing-empty p {
-  color: #6b7280;
+  color: var(--ink-3);
   margin: 0 0 8px 0;
 }
 
@@ -154,17 +152,18 @@
 
 /* Carte de suggestion */
 .suggestion-card {
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
   padding: 16px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .suggestion-card:hover {
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background: var(--surface);
+  box-shadow: var(--sh-2);
   transform: translateY(-2px);
+  border-color: var(--line-strong);
 }
 
 .suggestion-header {
@@ -182,13 +181,13 @@
 .suggestion-title {
   font-size: 17px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--ink-1);
   margin: 0 0 4px 0;
 }
 
 .suggestion-description {
   font-size: 13px;
-  color: #6b7280;
+  color: var(--ink-3);
   margin: 0;
   line-height: 1.4;
 }
@@ -199,7 +198,7 @@
   align-items: baseline;
   gap: 2px;
   padding: 6px 12px;
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   font-weight: 700;
   white-space: nowrap;
 }
@@ -225,12 +224,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(107, 114, 128, 0.2);
-  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
   padding: 6px 12px;
   font-size: 13px;
-  color: #374151;
+  color: var(--ink-2);
 }
 
 .reason-icon {
@@ -243,7 +242,7 @@
 
 .reason-score {
   font-weight: 600;
-  color: #059669;
+  color: var(--brand);
   font-size: 12px;
 }
 
@@ -251,7 +250,7 @@
 .expand-button {
   background: none;
   border: none;
-  color: #059669;
+  color: var(--brand);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
@@ -263,7 +262,7 @@
 }
 
 .expand-button:hover {
-  color: #047857;
+  color: var(--brand-strong);
 }
 
 /* Actions */
@@ -278,7 +277,7 @@
   flex: 1;
   min-width: 140px;
   padding: 10px 16px;
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -289,42 +288,43 @@
 }
 
 .add-button {
-  background: #059669;
+  background: var(--brand);
   color: white;
   border: none;
 }
 
 .add-button:hover:not(:disabled) {
-  background: #047857;
+  background: var(--brand-strong);
 }
 
 .add-button:disabled {
-  background: #9ca3af;
+  background: var(--ink-3);
   cursor: not-allowed;
 }
 
 .view-button {
-  background: rgba(255, 255, 255, 0.6);
-  color: #374151;
-  border: 1px solid rgba(107, 114, 128, 0.3);
+  background: var(--surface-soft);
+  color: var(--ink-2);
+  border: 1px solid var(--line-strong);
 }
 
 .view-button:hover {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(107, 114, 128, 0.5);
+  background: var(--surface);
+  border-color: var(--line-strong);
+  box-shadow: var(--sh-1);
 }
 
 /* Info algorithmes */
 .pairing-info {
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid rgba(107, 114, 128, 0.2);
+  border-top: 1px solid var(--line);
 }
 
 .pairing-details summary {
   cursor: pointer;
   font-weight: 600;
-  color: #374151;
+  color: var(--ink-2);
   padding: 8px 0;
   list-style: none;
   user-select: none;
@@ -339,11 +339,11 @@
 }
 
 .pairing-explanation {
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 8px;
+  background: var(--surface-soft);
+  border-radius: var(--r-sm);
   padding: 16px;
   font-size: 14px;
-  color: #374151;
+  color: var(--ink-2);
 }
 
 .pairing-explanation p {
@@ -363,9 +363,9 @@
 .score-interpretation {
   font-size: 13px !important;
   padding: 12px;
-  background: rgba(5, 150, 105, 0.05);
-  border-radius: 6px;
-  border-left: 3px solid #059669;
+  background: var(--brand-soft);
+  border-radius: var(--r-sm);
+  border-left: 3px solid var(--brand);
 }
 
 /* Responsive */

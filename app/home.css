@@ -1,0 +1,297 @@
+/* app/home.css — Page d'accueil Mycélium */
+
+.home-page {
+  padding: 12px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.home-bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Cellule de base */
+.home-cell {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: var(--s-4);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--sh-1);
+  transition: box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+  animation: cardPop 0.4s var(--spring) both;
+}
+
+/* Hero cell */
+.home-hero {
+  grid-column: 1 / -1;
+  background: var(--brand-soft);
+  border-color: rgba(47, 93, 58, 0.18);
+  padding: 28px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  min-height: 120px;
+}
+
+.home-greeting {
+  font-size: var(--fs-xs);
+  color: var(--brand);
+  font-weight: 600;
+  margin: 0 0 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.home-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--ink-1);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Cellules utilitaires */
+.home-cell-full { grid-column: 1 / -1; }
+.home-cell-stock { grid-column: span 1; grid-row: span 2; }
+.home-cell-macros { grid-column: 2 / -1; }
+.home-cell-link-block { text-decoration: none; color: inherit; }
+.home-weight-cell {
+  grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header des cellules */
+.home-cell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--s-2);
+}
+.home-cell-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.home-cell-link {
+  font-size: var(--fs-xs);
+  color: var(--brand);
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Grands chiffres (stock) */
+.home-big-number {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--ink-1);
+  line-height: 1;
+  margin-top: 4px;
+}
+.home-big-label {
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  margin: 2px 0 8px;
+}
+
+/* Alerte DLC */
+.home-alert-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: 4px 8px;
+  background: var(--accent-soft);
+  border-radius: var(--r-sm);
+  margin-bottom: 8px;
+  color: var(--ink-2);
+}
+.home-alert-expired { color: #ef4444; }
+.home-alert-expiring { color: #f59e0b; }
+.home-urgent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+.home-urgent-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--fs-xs);
+}
+.home-urgent-name {
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 70%;
+}
+.home-urgent-badge { font-weight: 700; font-size: 10px; }
+.home-urgent-expired { color: #ef4444; }
+.home-urgent-warning { color: #f59e0b; }
+
+/* Actions (Ajouter / Scanner) */
+.home-action-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  transition: box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.home-action-cell:hover {
+  box-shadow: var(--sh-2);
+  transform: translateY(-2px);
+}
+.home-action-icon-green { color: var(--brand); }
+.home-action-icon-blue { color: #3b82f6; }
+.home-action-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+/* Cours progress */
+.home-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.home-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.home-progress-fill {
+  height: 100%;
+  background: var(--brand);
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+.home-progress-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--brand);
+  flex-shrink: 0;
+}
+.home-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.home-pill {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  padding: 3px 8px;
+  border-radius: var(--r-sm);
+}
+
+/* Poids */
+.home-weight-icon { color: var(--ink-3); }
+.home-weight-value {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink-1);
+  line-height: 1;
+}
+.home-weight-unit {
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  font-weight: 500;
+}
+.home-weight-target {
+  font-size: var(--fs-xs);
+  color: var(--brand);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Empty hints */
+.home-empty-hint {
+  color: var(--ink-3);
+  font-size: var(--fs-sm);
+  margin: 0;
+}
+.home-empty-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Quick nav */
+.home-nav-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.home-nav-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 14px 8px;
+  text-decoration: none;
+  color: var(--ink-1);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .home-bento { grid-template-columns: repeat(2, 1fr); }
+  .home-hero { min-height: 100px; padding: 20px 16px; }
+  .home-hero, .home-cell-full { grid-column: 1 / -1; }
+  .home-cell-stock { grid-row: span 1; }
+  .home-cell-macros { grid-column: 1 / -1; }
+  .home-nav-grid { grid-template-columns: repeat(3, 1fr); }
+}

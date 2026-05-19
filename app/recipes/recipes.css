@@ -1,14 +1,15 @@
 /* ============================================
-   MYKO RECIPES - STYLE GLASSMORPHISM
+   MYKO RECIPES - DESIGN SYSTÈME MYCÉLIUM
    Compatible avec le design système Myko
    ============================================ */
 
 .recipes-container {
   min-height: 100vh;
   padding: 20px;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-text, 'Inter', system-ui, -apple-system, sans-serif);
   position: relative;
   z-index: 1;
+  max-width: none;
 }
 
 .loading-spinner {
@@ -17,14 +18,14 @@
   align-items: center;
   min-height: 60vh;
   font-size: 1.2rem;
-  color: #374151;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--ink-2);
+  background: var(--surface);
+  border-radius: var(--r-card);
+  border: 1px solid var(--line);
   margin: 20px auto;
   max-width: 400px;
   padding: 40px;
+  box-shadow: var(--sh-1);
 }
 
 /* ============================================
@@ -32,13 +33,12 @@
    ============================================ */
 
 .recipes-controls {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--surface);
+  border-radius: var(--r-card);
+  border: 1px solid var(--line);
   padding: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--sh-1);
 }
 
 .search-filters {
@@ -53,44 +53,42 @@
   flex: 1;
   min-width: 250px;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
   font-size: 14px;
-  color: #374151;
-  backdrop-filter: blur(5px);
+  color: var(--ink-1);
   transition: all 0.3s ease;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #22c55e;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+  border-color: var(--brand);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px var(--brand-soft);
 }
 
 .search-input::placeholder {
-  color: rgba(55, 65, 81, 0.6);
+  color: var(--ink-3);
 }
 
 .filter-select {
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
   font-size: 14px;
-  color: #374151;
-  backdrop-filter: blur(5px);
+  color: var(--ink-1);
   cursor: pointer;
   min-width: 180px;
 }
 
 .add-recipe-btn {
   padding: 12px 20px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: var(--brand);
   color: white;
   text-decoration: none;
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   font-weight: 500;
   font-size: 14px;
   transition: all 0.3s ease;
@@ -100,9 +98,9 @@
 }
 
 .add-recipe-btn:hover {
-  background: linear-gradient(135deg, #16a34a, #15803d);
+  background: var(--brand-strong, #1e3d26);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 8px 25px rgba(47, 93, 58, 0.3);
 }
 
 /* ============================================
@@ -128,11 +126,12 @@
   flex-direction: column;
   align-items: center;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--surface-soft);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
   min-width: 70px;
   transition: all 0.3s ease;
+  box-shadow: var(--sh-1);
 }
 
 .stat-filter-btn {
@@ -140,25 +139,26 @@
 }
 
 .stat-filter-btn:hover, .stat-filter-active {
-  background: rgba(34, 197, 94, 0.2);
-  border-color: rgba(34, 197, 94, 0.3);
+  background: var(--brand-soft);
+  border-color: var(--brand);
+  color: var(--brand);
   transform: translateY(-2px);
 }
 
 .urgent-recipes {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+  background: rgba(239, 68, 68, 0.08);
   border-color: rgba(239, 68, 68, 0.3);
 }
 
 .stat-number {
   font-size: 1.25rem;
   font-weight: bold;
-  color: #1f2937;
+  color: var(--ink-1);
 }
 
 .stat-label {
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--ink-2);
   text-align: center;
 }
 
@@ -170,27 +170,28 @@
 
 .sort-btn {
   padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
   font-size: 13px;
-  color: #374151;
+  color: var(--ink-2);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .sort-btn:hover, .sort-btn.active {
-  background: rgba(34, 197, 94, 0.2);
-  border-color: rgba(34, 197, 94, 0.3);
-  color: #16a34a;
+  background: var(--brand-soft);
+  border-color: var(--brand);
+  color: var(--brand);
 }
 
 .filter-count {
   font-size: 14px;
-  color: #6b7280;
-  background: rgba(255, 255, 255, 0.3);
+  color: var(--ink-2);
+  background: var(--surface-soft);
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
 }
 
 /* ============================================
@@ -219,58 +220,58 @@
   grid-column: 1 / -1;
   text-align: center;
   padding: 60px 20px;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--surface);
+  border-radius: var(--r-card);
+  border: 1px solid var(--line);
+  box-shadow: var(--sh-1);
 }
 
 .empty-state h2 {
   font-size: 1.5rem;
-  color: #374151;
+  color: var(--ink-1);
   margin-bottom: 8px;
 }
 
 .empty-state p {
-  color: #6b7280;
+  color: var(--ink-2);
   margin-bottom: 20px;
 }
 
 /* ============================================
-   CARTES DE RECETTES - GLASSMORPHISM
+   CARTES DE RECETTES - DESIGN MYCÉLIUM
    ============================================ */
 
 .recipe-card {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
   padding: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--sh-1);
+  animation: fadeIn 0.5s ease-out;
 }
 
 .recipe-card:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--surface-soft);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: var(--sh-2);
+  border-color: var(--line-strong);
 }
 
 .myko-recommended {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.1));
-  border: 2px solid rgba(34, 197, 94, 0.3);
+  background: var(--brand-soft);
+  border: 2px solid rgba(47, 93, 58, 0.3);
 }
 
 .myko-recommended::before {
-  content: "🌿 MYKO";
+  content: "MYKO";
   position: absolute;
   top: 12px;
   right: 12px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: var(--brand);
   color: white;
   padding: 4px 8px;
   border-radius: 6px;
@@ -280,7 +281,7 @@
 }
 
 .urgent-recipe {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+  background: rgba(239, 68, 68, 0.06);
   border: 2px solid rgba(239, 68, 68, 0.4);
   animation: pulse-urgent 2s infinite;
 }
@@ -305,12 +306,12 @@
 .recipe-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--ink-1);
   margin: 0;
   flex: 1;
   line-height: 1.3;
   word-break: break-word;
-  min-width: 0; /* Permet au texte de se réduire */
+  min-width: 0;
 }
 
 .recipe-badges {
@@ -318,7 +319,7 @@
   flex-direction: column;
   gap: 4px;
   align-items: flex-end;
-  flex-shrink: 0; /* Empêche les badges de se réduire */
+  flex-shrink: 0;
   min-width: fit-content;
 }
 
@@ -331,22 +332,23 @@
 }
 
 .high-score {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: var(--brand);
   color: white;
 }
 
 .medium-score {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: var(--accent);
   color: white;
 }
 
 .low-score {
-  background: rgba(107, 114, 128, 0.3);
-  color: #374151;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
 }
 
 .urgent-badge {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: rgba(239, 68, 68, 0.9);
   color: white;
   padding: 3px 6px;
   border-radius: 8px;
@@ -356,7 +358,7 @@
 }
 
 .recipe-description {
-  color: #6b7280;
+  color: var(--ink-2);
   font-size: 14px;
   line-height: 1.4;
   margin-bottom: 16px;
@@ -372,8 +374,9 @@
   justify-content: space-between;
   margin-bottom: 16px;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
   gap: 8px;
   flex-wrap: wrap;
 }
@@ -382,7 +385,7 @@
   display: flex;
   align-items: center;
   font-size: 13px;
-  color: #374151;
+  color: var(--ink-2);
   min-width: fit-content;
   flex: 1;
   justify-content: center;
@@ -403,7 +406,7 @@
 .availability-bar {
   width: 100%;
   height: 6px;
-  background: rgba(107, 114, 128, 0.2);
+  background: var(--line);
   border-radius: 3px;
   overflow: hidden;
   margin-bottom: 6px;
@@ -411,14 +414,14 @@
 
 .availability-fill {
   height: 100%;
-  background: linear-gradient(90deg, #ef4444, #f59e0b, #22c55e);
+  background: linear-gradient(90deg, #ef4444, var(--accent), var(--brand));
   border-radius: 3px;
   transition: width 0.3s ease;
 }
 
 .availability-text {
   font-size: 12px;
-  color: #6b7280;
+  color: var(--ink-2);
 }
 
 .recipe-actions {
@@ -431,7 +434,7 @@
   flex: 1;
   padding: 8px 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
@@ -442,45 +445,49 @@
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: white;
+  background: rgba(59, 130, 246, 0.15);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .action-btn.primary:hover {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: rgba(59, 130, 246, 0.25);
   transform: translateY(-1px);
 }
 
 .action-btn.cook {
-  background: linear-gradient(135deg, #059669, #047857);
+  background: var(--brand);
   color: white;
   font-weight: 600;
 }
 
 .action-btn.cook:hover {
-  background: linear-gradient(135deg, #047857, #065f46);
+  background: var(--brand-strong, #1e3d26);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+  box-shadow: 0 4px 12px rgba(47, 93, 58, 0.3);
 }
 
 .action-btn.secondary {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: white;
+  background: var(--brand-soft);
+  color: var(--brand);
+  border: 1px solid rgba(47, 93, 58, 0.3);
 }
 
 .action-btn.secondary:hover {
-  background: linear-gradient(135deg, #16a34a, #15803d);
+  background: var(--brand);
+  color: white;
   transform: translateY(-1px);
 }
 
 .action-btn.tertiary {
-  background: rgba(255, 255, 255, 0.4);
-  color: #374151;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--surface-soft);
+  color: var(--ink-2);
+  border: 1px solid var(--line);
 }
 
 .action-btn.tertiary:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--surface);
+  border-color: var(--line-strong);
   transform: translateY(-1px);
 }
 
@@ -492,57 +499,57 @@
   .recipes-container {
     padding: 12px;
   }
-  
+
   .recipes-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   .search-filters {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .stats-inline {
     justify-content: center;
   }
-  
+
   .sort-controls {
     justify-content: center;
     flex-wrap: wrap;
   }
-  
+
   .recipe-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
-  
+
   .recipe-badges {
     flex-direction: row;
     align-items: center;
     align-self: flex-end;
     gap: 8px;
   }
-  
+
   .recipe-title {
     font-size: 1rem;
     margin-bottom: 0;
   }
-  
+
   .recipe-meta {
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .meta-item {
     justify-content: flex-start;
   }
-  
+
   .recipe-actions {
     flex-direction: column;
   }
-  
+
   .action-btn {
     flex: none;
   }
@@ -553,33 +560,33 @@
     flex-wrap: wrap;
     gap: 8px;
   }
-  
+
   .stat-item {
     min-width: 60px;
     padding: 8px 12px;
   }
-  
+
   .sort-controls {
     flex-wrap: wrap;
   }
-  
+
   .recipe-header {
     gap: 6px;
   }
-  
+
   .recipe-title {
     font-size: 0.95rem;
   }
-  
+
   .myko-score, .urgent-badge {
     font-size: 11px;
     padding: 3px 6px;
   }
-  
+
   .recipes-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .recipe-card {
     padding: 16px;
   }
@@ -600,10 +607,6 @@
   }
 }
 
-.recipe-card {
-  animation: fadeIn 0.5s ease-out;
-}
-
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -621,18 +624,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--surface);
+  border-radius: var(--r-card);
+  border: 1px solid var(--line);
   padding: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--sh-1);
 }
 
 .edit-header-bar h1 {
   margin: 0;
-  color: #1f2937;
+  color: var(--ink-1);
   font-size: 1.5rem;
 }
 
@@ -646,7 +648,7 @@
 .btn-tertiary {
   padding: 10px 20px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -658,34 +660,35 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: var(--brand);
   color: white;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #16a34a, #15803d);
+  background: var(--brand-strong, #1e3d26);
   transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background: rgba(107, 114, 128, 0.2);
-  color: #374151;
-  border: 1px solid rgba(107, 114, 128, 0.3);
+  background: var(--surface-soft);
+  color: var(--ink-2);
+  border: 1px solid var(--line);
 }
 
 .btn-secondary:hover {
-  background: rgba(107, 114, 128, 0.3);
+  background: var(--surface);
+  border-color: var(--line-strong);
   transform: translateY(-1px);
 }
 
 .btn-tertiary {
-  background: rgba(59, 130, 246, 0.2);
+  background: rgba(59, 130, 246, 0.1);
   color: #2563eb;
   border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .btn-tertiary:hover {
-  background: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.2);
   transform: translateY(-1px);
 }
 
@@ -693,13 +696,12 @@
 .edit-tabs {
   display: flex;
   gap: 4px;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--surface);
+  border-radius: var(--r-card);
+  border: 1px solid var(--line);
   padding: 8px;
   margin-bottom: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--sh-1);
 }
 
 .tab-btn {
@@ -707,8 +709,8 @@
   padding: 12px 16px;
   background: transparent;
   border: none;
-  border-radius: 12px;
-  color: #6b7280;
+  border-radius: var(--r-sm);
+  color: var(--ink-2);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -717,25 +719,24 @@
 }
 
 .tab-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  color: #374151;
+  background: var(--surface-soft);
+  color: var(--ink-1);
 }
 
 .tab-btn.active {
-  background: rgba(255, 255, 255, 0.6);
-  color: #1f2937;
+  background: var(--brand-soft);
+  color: var(--brand);
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--sh-1);
 }
 
 /* Contenu des onglets */
 .edit-content {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--surface);
+  border-radius: var(--r-card);
+  border: 1px solid var(--line);
   padding: 32px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--sh-1);
   min-height: 400px;
 }
 
@@ -755,7 +756,7 @@
     flex: none;
     min-width: 120px;
   }
-  
+
   .edit-content {
     padding: 20px;
   }

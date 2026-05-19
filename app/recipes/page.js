@@ -521,7 +521,23 @@ export default function RecipesPage() {
   }
 
   return (
-    <div className="recipes-container">
+    <>
+      <div className="myko-canvas" aria-hidden="true" />
+      <div className="myko-page-container">
+        <div className="hero-header">
+          <div className="hero-content">
+            <div className="hero-text">
+              <span className="hero-eyebrow">Recettes</span>
+              <h1 className="hero-title">Cuisiner avec votre stock</h1>
+              <p className="hero-subtitle">{recipes.length} recette{recipes.length !== 1 ? 's' : ''} disponible{recipes.length !== 1 ? 's' : ''}</p>
+            </div>
+            <div className="hero-actions">
+              <Link href="/recipes/edit/new" className="btn-primary">+ Nouvelle recette</Link>
+            </div>
+          </div>
+        </div>
+
+      <div className="recipes-container">
       <div className="recipes-controls">
         <div className="search-filters">
           <input
@@ -531,21 +547,6 @@ export default function RecipesPage() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
-          
-          <select
-            value={availabilityFilter}
-            onChange={(e) => setAvailabilityFilter(e.target.value)}
-            className="filter-select"
-          >
-            <option value="all">Toutes les recettes</option>
-            <option value="available">Réalisables</option>
-            <option value="partial">Partielles</option>
-            <option value="urgent">Urgentes</option>
-          </select>
-          
-          <Link href="/recipes/edit/new" className="add-recipe-btn">
-            + Nouvelle recette
-          </Link>
         </div>
 
         <div className="stats-controls">
@@ -687,5 +688,7 @@ export default function RecipesPage() {
         onComplete={() => setSelectedRecipeToCook(null)}
       />
     </div>
+      </div>
+    </>
   );
 }

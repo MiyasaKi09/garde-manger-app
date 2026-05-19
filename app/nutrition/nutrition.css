@@ -1,0 +1,55 @@
+.nutrition-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 40px);
+  padding-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+.nutrition-date-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-4);
+  margin-bottom: var(--s-5);
+}
+.nutrition-date-btn {
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  border-radius: var(--r-sm);
+  padding: var(--s-1);
+  cursor: pointer;
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--dur-fast) var(--ease);
+}
+.nutrition-date-btn:hover {
+  background: var(--surface-soft);
+  color: var(--ink-1);
+}
+.nutrition-date-label {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--ink-1);
+  min-width: 160px;
+  text-align: center;
+  text-transform: capitalize;
+}
+.nutrition-section-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-1);
+  padding: var(--s-5);
+  margin-bottom: var(--s-4);
+  animation: mykoReveal 0.4s var(--spring) both;
+}
+.nutrition-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  color: var(--ink-1);
+  margin: 0 0 var(--s-3);
+}

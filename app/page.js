@@ -10,7 +10,8 @@ import PersonSelector from '@/components/ui/PersonSelector'
 import TodayMeals from './planning/components/TodayMeals'
 import OcrReviewList from './pantry/components/OcrReviewList'
 import SmartAddForm from './pantry/components/SmartAddForm'
-import { Sparkles, Package, Camera, Plus, AlertTriangle, Scale, ChevronRight, Settings, CalendarDays, BarChart3, ShoppingCart, Check } from 'lucide-react'
+import { Sparkles, Package, Camera, Plus, AlertTriangle, Scale, ChevronRight, Settings, CalendarDays, BarChart3, ShoppingCart } from 'lucide-react'
+import './home.css'
 
 const daysUntil = (d) => d ? Math.ceil((new Date(d) - new Date()) / 86400000) : null
 
@@ -104,7 +105,6 @@ export default function Home() {
       const items = d2.shoppingItems || []
       if (!items.length) return
       const checked = items.filter(i => i.checked).length
-      // Top unchecked categories
       const byCat = {}
       for (const it of items) {
         if (it.checked) continue
@@ -125,430 +125,181 @@ export default function Home() {
   const greeting = today.getHours() < 12 ? 'Bonjour' : today.getHours() < 18 ? 'Bon après-midi' : 'Bonsoir'
 
   if (loading) return (
-    <div style={{ height: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-      <span style={{ fontSize: 40 }}>🥬</span>
-      <p style={{ color: '#7f8c7f', marginTop: 12 }}>Chargement...</p>
+    <div className="myko-loading" style={{ margin: '20vh auto', maxWidth: 400 }}>
+      Chargement de Myko…
     </div>
   )
 
   return (
-    <div style={S.page}>
-      <div style={S.bento}>
+    <>
+      <div className="myko-canvas" aria-hidden="true" />
+      <div className="home-page">
+        <div className="home-bento">
 
-        {/* ═══ HERO — span full width ═══ */}
-        <div style={{ ...S.cell, ...S.hero, gridColumn: '1 / -1' }}>
-          <div>
-            <p style={S.heroGreeting}>{greeting}</p>
-            <h1 style={S.heroTitle}>Qu'est-ce qu'on<br />mange ?</h1>
-          </div>
-          <Link href="/planning/assistant" style={S.heroCta}>
-            <Sparkles size={18} />
-            <span>Demander à Myko</span>
-          </Link>
-        </div>
-
-        {/* ═══ PLANNING DU JOUR — large cell ═══ */}
-        <div style={{ ...S.cell, gridColumn: '1 / -1', minHeight: 0 }}>
-          <div style={S.cellHeader}>
-            <span style={S.cellLabel}>
-              <CalendarDays size={14} /> Aujourd'hui
-            </span>
-            <Link href="/planning" style={S.cellLink}>Semaine <ChevronRight size={12} /></Link>
-          </div>
-          {latestImportId ? (
-            <TodayMeals importId={latestImportId} />
-          ) : (
-            <div style={{ textAlign: 'center', padding: '20px 0' }}>
-              <p style={{ color: '#9ca3af', fontSize: 13, marginBottom: 10 }}>Pas encore de planning</p>
-              <Link href="/planning/assistant" style={S.emptyBtn}>
-                <Sparkles size={14} /> Créer un planning
-              </Link>
+          {/* HERO — pleine largeur */}
+          <div className="home-cell home-hero">
+            <div>
+              <p className="home-greeting">{greeting}</p>
+              <h1 className="home-title">Qu'est-ce qu'on<br />mange ?</h1>
             </div>
-          )}
-        </div>
-
-        {/* ═══ STOCK — left cell ═══ */}
-        <div style={{ ...S.cell, gridColumn: 'span 1', gridRow: 'span 2' }}>
-          <Link href="/pantry" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <div style={S.cellHeader}>
-              <span style={S.cellLabel}><Package size={14} /> Stock</span>
-            </div>
-            <div style={S.bigNumber}>{stockStats.total}</div>
-            <p style={S.bigLabel}>produits</p>
-
-            {(stockStats.expiring > 0 || stockStats.expired > 0) && (
-              <div style={S.alertPill}>
-                <AlertTriangle size={12} />
-                {stockStats.expired > 0 && <span style={{ color: '#ef4444' }}>{stockStats.expired} !</span>}
-                {stockStats.expiring > 0 && <span style={{ color: '#f59e0b' }}>{stockStats.expiring} bientôt</span>}
-              </div>
-            )}
-          </Link>
-
-          {stockStats.urgentItems.length > 0 && (
-            <div style={S.urgentList}>
-              {stockStats.urgentItems.map((it, i) => (
-                <div key={i} style={S.urgentRow}>
-                  <span style={S.urgentName}>{it.name}</span>
-                  <span style={{ ...S.urgentBadge, color: it.days <= 0 ? '#ef4444' : '#f59e0b' }}>
-                    {it.days <= 0 ? '!' : `${it.days}j`}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* ═══ AJOUTER — top-right small ═══ */}
-        <button onClick={() => setShowAddForm(true)} style={{ ...S.cell, ...S.actionCell }}>
-          <Plus size={24} color="#16a34a" />
-          <span style={S.actionLabel}>Ajouter</span>
-        </button>
-
-        {/* ═══ SCANNER — bottom-right small ═══ */}
-        <button onClick={() => setShowOcr(true)} style={{ ...S.cell, ...S.actionCell }}>
-          <Camera size={24} color="#3b82f6" />
-          <span style={S.actionLabel}>Scanner</span>
-        </button>
-
-        {/* ═══ COURSES — full width ═══ */}
-        <Link href="/courses" style={{ ...S.cell, gridColumn: '1 / -1', textDecoration: 'none', color: 'inherit' }}>
-          <div style={S.cellHeader}>
-            <span style={S.cellLabel}><ShoppingCart size={14} /> Courses</span>
-            {shoppingStats.total > 0 && (
-              <span style={S.cellLink}>
-                {shoppingStats.total - shoppingStats.checked} restants <ChevronRight size={12} />
-              </span>
-            )}
-          </div>
-          {shoppingStats.total > 0 ? (
-            <>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-                <div style={{ flex: 1, height: 6, background: 'rgba(0,0,0,0.06)', borderRadius: 3, overflow: 'hidden' }}>
-                  <div style={{ height: '100%', width: `${(shoppingStats.checked / shoppingStats.total) * 100}%`, background: '#16a34a', borderRadius: 3, transition: 'width 0.3s' }} />
-                </div>
-                <span style={{ fontSize: 12, fontWeight: 700, color: '#16a34a', flexShrink: 0 }}>
-                  {shoppingStats.checked}/{shoppingStats.total}
-                </span>
-              </div>
-              {shoppingStats.uncheckedByCategory.length > 0 && (
-                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                  {shoppingStats.uncheckedByCategory.map(c => (
-                    <span key={c.name} style={S.coursePill}>
-                      {c.name} ({c.count})
-                    </span>
-                  ))}
-                </div>
-              )}
-            </>
-          ) : (
-            <p style={{ color: '#9ca3af', fontSize: 13, margin: '4px 0 0' }}>Pas de liste en cours</p>
-          )}
-        </Link>
-
-        {/* ═══ POIDS — small left ═══ */}
-        <Link href="/nutrition" style={{ ...S.cell, ...S.weightCell, textDecoration: 'none', color: 'inherit' }}>
-          <Scale size={20} color="#6b7280" />
-          {latestWeight ? (
-            <>
-              <span style={S.weightValue}>{latestWeight.weight_kg}</span>
-              <span style={S.weightUnit}>kg</span>
-              {pg.target_weight_kg && (
-                <span style={S.weightTarget}>→ {pg.target_weight_kg}</span>
-              )}
-            </>
-          ) : (
-            <span style={{ fontSize: 12, color: '#9ca3af' }}>Pas de mesure</span>
-          )}
-        </Link>
-
-        {/* ═══ MACROS — large right ═══ */}
-        <div style={{ ...S.cell, gridColumn: '2 / -1' }}>
-          <div style={S.cellHeader}>
-            <span style={S.cellLabel}><BarChart3 size={14} /> Nutrition</span>
-            <PersonSelector selected={person} onChange={setPerson} />
-          </div>
-
-          {pg.target_calories ? (
-            <div style={{ marginTop: 4 }}>
-              <NutritionBar label="kcal" value={pn.kcal} target={pg.target_calories} color="#16a34a" />
-              <NutritionBar label="Prot" value={pn.protein_g} target={pg.target_protein_g} unit="g" color="#3b82f6" />
-              <NutritionBar label="Gluc" value={pn.carbs_g} target={pg.target_carbs_g} unit="g" color="#f59e0b" />
-              <NutritionBar label="Lip" value={pn.fat_g} target={pg.target_fat_g} unit="g" color="#ef4444" />
-            </div>
-          ) : (
-            <Link href="/nutrition/onboarding" style={{ ...S.emptyBtn, marginTop: 12 }}>
-              <Settings size={14} /> Configurer
+            <Link href="/planning/assistant" className="btn-primary">
+              <Sparkles size={18} />
+              <span>Demander à Myko</span>
             </Link>
-          )}
-        </div>
+          </div>
 
-        {/* ═══ QUICK NAV — 5 items in sub-grid ═══ */}
-        <div style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 10 }}>
-          <Link href="/planning/assistant" style={{ ...S.cell, ...S.navCell }}>
-            <Sparkles size={18} color="#16a34a" />
-            <span>Myko</span>
+          {/* PLANNING DU JOUR — pleine largeur */}
+          <div className="home-cell home-cell-full">
+            <div className="home-cell-header">
+              <span className="home-cell-label"><CalendarDays size={14} /> Aujourd'hui</span>
+              <Link href="/planning" className="home-cell-link">Semaine <ChevronRight size={12} /></Link>
+            </div>
+            {latestImportId ? (
+              <TodayMeals importId={latestImportId} />
+            ) : (
+              <div style={{ textAlign: 'center', padding: '20px 0' }}>
+                <p className="home-empty-hint">Pas encore de planning</p>
+                <Link href="/planning/assistant" className="home-empty-btn">
+                  <Sparkles size={14} /> Créer un planning
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* STOCK — cellule gauche grande */}
+          <div className="home-cell home-cell-stock">
+            <Link href="/pantry" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <div className="home-cell-header">
+                <span className="home-cell-label"><Package size={14} /> Stock</span>
+              </div>
+              <div className="home-big-number">{stockStats.total}</div>
+              <p className="home-big-label">produits</p>
+              {(stockStats.expiring > 0 || stockStats.expired > 0) && (
+                <div className="home-alert-pill">
+                  <AlertTriangle size={12} />
+                  {stockStats.expired > 0 && <span className="home-alert-expired">{stockStats.expired} !</span>}
+                  {stockStats.expiring > 0 && <span className="home-alert-expiring">{stockStats.expiring} bientôt</span>}
+                </div>
+              )}
+            </Link>
+            {stockStats.urgentItems.length > 0 && (
+              <div className="home-urgent-list">
+                {stockStats.urgentItems.map((it, i) => (
+                  <div key={i} className="home-urgent-row">
+                    <span className="home-urgent-name">{it.name}</span>
+                    <span className={`home-urgent-badge ${it.days <= 0 ? 'home-urgent-expired' : 'home-urgent-warning'}`}>
+                      {it.days <= 0 ? '!' : `${it.days}j`}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* AJOUTER */}
+          <button onClick={() => setShowAddForm(true)} className="home-cell home-action-cell">
+            <Plus size={24} className="home-action-icon-green" />
+            <span className="home-action-label">Ajouter</span>
+          </button>
+
+          {/* SCANNER */}
+          <button onClick={() => setShowOcr(true)} className="home-cell home-action-cell">
+            <Camera size={24} className="home-action-icon-blue" />
+            <span className="home-action-label">Scanner</span>
+          </button>
+
+          {/* COURSES — pleine largeur */}
+          <Link href="/courses" className="home-cell home-cell-full home-cell-link-block">
+            <div className="home-cell-header">
+              <span className="home-cell-label"><ShoppingCart size={14} /> Courses</span>
+              {shoppingStats.total > 0 && (
+                <span className="home-cell-link">{shoppingStats.total - shoppingStats.checked} restants <ChevronRight size={12} /></span>
+              )}
+            </div>
+            {shoppingStats.total > 0 ? (
+              <>
+                <div className="home-progress-row">
+                  <div className="home-progress-bar">
+                    <div className="home-progress-fill" style={{ width: `${(shoppingStats.checked / shoppingStats.total) * 100}%` }} />
+                  </div>
+                  <span className="home-progress-label">{shoppingStats.checked}/{shoppingStats.total}</span>
+                </div>
+                {shoppingStats.uncheckedByCategory.length > 0 && (
+                  <div className="home-pills">
+                    {shoppingStats.uncheckedByCategory.map(c => (
+                      <span key={c.name} className="home-pill">{c.name} ({c.count})</span>
+                    ))}
+                  </div>
+                )}
+              </>
+            ) : (
+              <p className="home-empty-hint">Pas de liste en cours</p>
+            )}
           </Link>
-          <Link href="/pantry" style={{ ...S.cell, ...S.navCell }}>
-            <Package size={18} color="#6b9d6b" />
-            <span>Stock</span>
+
+          {/* POIDS */}
+          <Link href="/nutrition" className="home-cell home-weight-cell">
+            <Scale size={20} className="home-weight-icon" />
+            {latestWeight ? (
+              <>
+                <span className="home-weight-value">{latestWeight.weight_kg}</span>
+                <span className="home-weight-unit">kg</span>
+                {pg.target_weight_kg && <span className="home-weight-target">→ {pg.target_weight_kg}</span>}
+              </>
+            ) : (
+              <span className="home-empty-hint" style={{ fontSize: 12 }}>Pas de mesure</span>
+            )}
           </Link>
-          <Link href="/planning" style={{ ...S.cell, ...S.navCell }}>
-            <CalendarDays size={18} color="#3b82f6" />
-            <span>Planning</span>
-          </Link>
-          <Link href="/courses" style={{ ...S.cell, ...S.navCell }}>
-            <ShoppingCart size={18} color="#f97316" />
-            <span>Courses</span>
-          </Link>
-          <Link href="/nutrition" style={{ ...S.cell, ...S.navCell }}>
-            <BarChart3 size={18} color="#f59e0b" />
-            <span>Nutrition</span>
-          </Link>
+
+          {/* MACROS */}
+          <div className="home-cell home-cell-macros">
+            <div className="home-cell-header">
+              <span className="home-cell-label"><BarChart3 size={14} /> Nutrition</span>
+              <PersonSelector selected={person} onChange={setPerson} />
+            </div>
+            {pg.target_calories ? (
+              <div style={{ marginTop: 4 }}>
+                <NutritionBar label="kcal" value={pn.kcal} target={pg.target_calories} color="var(--brand)" />
+                <NutritionBar label="Prot" value={pn.protein_g} target={pg.target_protein_g} unit="g" color="#3b82f6" />
+                <NutritionBar label="Gluc" value={pn.carbs_g} target={pg.target_carbs_g} unit="g" color="#f59e0b" />
+                <NutritionBar label="Lip" value={pn.fat_g} target={pg.target_fat_g} unit="g" color="#ef4444" />
+              </div>
+            ) : (
+              <Link href="/nutrition/onboarding" className="home-empty-btn" style={{ marginTop: 12 }}>
+                <Settings size={14} /> Configurer
+              </Link>
+            )}
+          </div>
+
+          {/* QUICK NAV */}
+          <div className="home-nav-grid">
+            <Link href="/planning/assistant" className="home-cell home-nav-cell">
+              <Sparkles size={18} style={{ color: 'var(--brand)' }} />
+              <span>Myko</span>
+            </Link>
+            <Link href="/pantry" className="home-cell home-nav-cell">
+              <Package size={18} style={{ color: 'var(--brand)' }} />
+              <span>Stock</span>
+            </Link>
+            <Link href="/planning" className="home-cell home-nav-cell">
+              <CalendarDays size={18} style={{ color: 'var(--ink-2)' }} />
+              <span>Planning</span>
+            </Link>
+            <Link href="/courses" className="home-cell home-nav-cell">
+              <ShoppingCart size={18} style={{ color: 'var(--accent)' }} />
+              <span>Courses</span>
+            </Link>
+            <Link href="/nutrition" className="home-cell home-nav-cell">
+              <BarChart3 size={18} style={{ color: 'var(--ink-2)' }} />
+              <span>Nutrition</span>
+            </Link>
+          </div>
+
         </div>
       </div>
 
-      {/* Modals */}
       {showAddForm && <SmartAddForm open onClose={() => { setShowAddForm(false); loadStock() }} onLotCreated={() => { setShowAddForm(false); loadStock() }} />}
       {showOcr && <OcrReviewList onClose={() => setShowOcr(false)} onItemsAdded={() => { setShowOcr(false); loadStock() }} />}
-    </div>
+    </>
   )
-}
-
-/* ───── Styles ───── */
-
-const glass = {
-  background: 'rgba(255,255,255,0.6)',
-  backdropFilter: 'blur(12px) saturate(120%)',
-  WebkitBackdropFilter: 'blur(12px) saturate(120%)',
-  border: '1px solid rgba(255,255,255,0.35)',
-  boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-}
-
-const S = {
-  page: {
-    padding: '12px',
-    maxWidth: 640,
-    margin: '0 auto',
-    paddingBottom: 40,
-  },
-  bento: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: 10,
-  },
-
-  // Base cell
-  cell: {
-    ...glass,
-    borderRadius: 20,
-    padding: 16,
-    overflow: 'hidden',
-    position: 'relative',
-  },
-
-  // Hero
-  hero: {
-    background: 'linear-gradient(135deg, rgba(22,163,74,0.08), rgba(5,150,105,0.04))',
-    padding: '28px 20px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    gap: 16,
-    minHeight: 120,
-  },
-  heroGreeting: {
-    fontSize: 13,
-    color: '#6b9d6b',
-    fontWeight: 500,
-    margin: '0 0 4px',
-    letterSpacing: 0.5,
-  },
-  heroTitle: {
-    fontFamily: "'Crimson Text', Georgia, serif",
-    fontSize: 28,
-    fontWeight: 600,
-    color: 'var(--ink, #1f281f)',
-    margin: 0,
-    lineHeight: 1.2,
-  },
-  heroCta: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 6,
-    padding: '10px 18px',
-    background: 'linear-gradient(135deg, #16a34a, #059669)',
-    color: 'white',
-    borderRadius: 16,
-    fontSize: 14,
-    fontWeight: 600,
-    textDecoration: 'none',
-    boxShadow: '0 4px 14px rgba(22,163,74,0.3)',
-    whiteSpace: 'nowrap',
-    flexShrink: 0,
-  },
-
-  // Cell header
-  cellHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  cellLabel: {
-    fontSize: 11,
-    fontWeight: 700,
-    color: '#6b7280',
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-    display: 'flex',
-    alignItems: 'center',
-    gap: 5,
-  },
-  cellLink: {
-    fontSize: 11,
-    color: '#16a34a',
-    textDecoration: 'none',
-    fontWeight: 600,
-    display: 'flex',
-    alignItems: 'center',
-    gap: 2,
-  },
-
-  // Stock big number
-  bigNumber: {
-    fontSize: 40,
-    fontWeight: 700,
-    color: 'var(--ink, #1f281f)',
-    lineHeight: 1,
-    marginTop: 4,
-  },
-  bigLabel: {
-    fontSize: 12,
-    color: '#9ca3af',
-    margin: '2px 0 8px',
-  },
-  alertPill: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 6,
-    fontSize: 11,
-    fontWeight: 600,
-    padding: '4px 8px',
-    background: 'rgba(245,158,11,0.08)',
-    borderRadius: 8,
-    marginBottom: 8,
-  },
-  urgentList: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 3,
-    marginTop: 8,
-    borderTop: '1px solid rgba(0,0,0,0.04)',
-    paddingTop: 8,
-  },
-  urgentRow: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    fontSize: 11,
-  },
-  urgentName: {
-    color: '#374151',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    maxWidth: '70%',
-  },
-  urgentBadge: {
-    fontWeight: 700,
-    fontSize: 10,
-  },
-
-  // Action cells (Ajouter / Scanner)
-  actionCell: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 6,
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    transition: 'transform 0.15s, box-shadow 0.15s',
-    gridColumn: 'span 1',
-  },
-  actionLabel: {
-    fontSize: 11,
-    fontWeight: 600,
-    color: '#6b7280',
-  },
-
-  // Weight cell
-  weightCell: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 2,
-    gridColumn: 'span 1',
-  },
-  weightValue: {
-    fontSize: 28,
-    fontWeight: 700,
-    color: 'var(--ink, #1f281f)',
-    lineHeight: 1,
-  },
-  weightUnit: {
-    fontSize: 13,
-    color: '#9ca3af',
-    fontWeight: 500,
-  },
-  weightTarget: {
-    fontSize: 11,
-    color: '#16a34a',
-    fontWeight: 600,
-    marginTop: 2,
-  },
-
-  // Nav cells
-  navCell: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 4,
-    padding: '14px 8px',
-    textDecoration: 'none',
-    color: 'var(--ink, #1f281f)',
-    fontSize: 11,
-    fontWeight: 600,
-    transition: 'transform 0.15s',
-  },
-
-  // Course pills
-  coursePill: {
-    fontSize: 11,
-    fontWeight: 600,
-    color: '#6b7280',
-    background: 'rgba(0,0,0,0.04)',
-    padding: '3px 8px',
-    borderRadius: 6,
-  },
-
-  // Empty state
-  emptyBtn: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 6,
-    padding: '8px 16px',
-    background: 'rgba(22,163,74,0.08)',
-    color: '#16a34a',
-    borderRadius: 12,
-    fontSize: 13,
-    fontWeight: 600,
-    textDecoration: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-  },
 }
