@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Sun May 24 14:14:22 UTC 2026_
+_Generated: Sun May 24 14:35:49 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -30,6 +30,7 @@ _Generated: Sun May 24 14:14:22 UTC 2026_
 - nutrition_plan_shopping_items: 1695 rows
 - nutritional_data: 3178 rows
 - pantry_items: 0 rows
+- plan_regen_requests: 0 rows
 - planned_meals: 0 rows
 - process_nutrition_modifiers: 28 rows
 - processes: 14 rows
