@@ -93,17 +93,26 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
     <style jsx global>{`
       /* ── CookMode Landing ── */
       .cook-landing-scroll {
-        flex: 1; display: flex; align-items: flex-start; justify-content: center;
-        padding: 32px 20px 48px; overflow-y: auto;
+        flex: 1; display: flex; align-items: center; justify-content: center;
+        padding: 32px 20px; overflow-y: auto;
+        scrollbar-width: none;
       }
+      .cook-landing-scroll::-webkit-scrollbar { display: none; }
       .cook-landing-card {
         background: #FFFDF7;
         border-radius: 28px;
-        box-shadow: 0 24px 60px rgba(24,28,22,0.13), 0 4px 16px rgba(24,28,22,0.06);
+        box-shadow: 0 32px 80px rgba(24,28,22,0.35), 0 4px 16px rgba(24,28,22,0.15);
         padding: 40px 36px;
         width: 100%; max-width: 560px;
+        max-height: calc(100vh - 64px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(24,28,22,0.15) transparent;
         position: relative;
       }
+      .cook-landing-card::-webkit-scrollbar { width: 4px; }
+      .cook-landing-card::-webkit-scrollbar-track { background: transparent; }
+      .cook-landing-card::-webkit-scrollbar-thumb { background: rgba(24,28,22,0.15); border-radius: 4px; }
       .cook-landing-close {
         position: absolute; top: 18px; right: 18px;
         border: none; background: rgba(24,28,22,0.06); color: #8A8C7E;
@@ -619,7 +628,7 @@ const GLASS = {
 
 // Landing screen uses `styles.xxx`, steps/done use `S.xxx`
 const styles = {
-  landingOverlay: { position: 'fixed', inset: 0, background: 'linear-gradient(160deg, #eef5eb 0%, #f5f0e6 45%, #ede8db 100%)', zIndex: 2000, display: 'flex', flexDirection: 'column', fontFamily: 'inherit' },
+  landingOverlay: { position: 'fixed', inset: 0, background: 'rgba(24,28,22,0.55)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)', zIndex: 2000, display: 'flex', flexDirection: 'column', fontFamily: 'inherit' },
 
   // Nutrition section (inline styles still used for these)
   macroItem: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 },
