@@ -13,7 +13,12 @@ import SmartAddForm from './pantry/components/SmartAddForm'
 import { Sparkles, Package, Camera, Plus, AlertTriangle, Scale, ChevronRight, Settings, CalendarDays, BarChart3, ShoppingCart } from 'lucide-react'
 import './home.css'
 
-const daysUntil = (d) => d ? Math.ceil((new Date(d) - new Date()) / 86400000) : null
+const daysUntil = (d) => {
+  if (!d) return null;
+  const todayISO = new Date().toISOString().split('T')[0];
+  const targetISO = String(d).split('T')[0];
+  return Math.round((new Date(targetISO) - new Date(todayISO)) / 86400000);
+}
 
 export default function Home() {
   const router = useRouter()
@@ -23,7 +28,7 @@ export default function Home() {
   const [stockStats, setStockStats] = useState({ total: 0, expiring: 0, expired: 0, urgentItems: [] })
   const [nutritionToday, setNutritionToday] = useState({})
   const [goals, setGoals] = useState([])
-  const [person, setPerson] = useState('Julien')
+  const [person, setPerson] = useState('')
   const [latestWeight, setLatestWeight] = useState(null)
   const [showAddForm, setShowAddForm] = useState(false)
   const [showOcr, setShowOcr] = useState(false)

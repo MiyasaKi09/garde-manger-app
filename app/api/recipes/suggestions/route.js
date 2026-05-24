@@ -72,13 +72,6 @@ export async function POST(request) {
       );
     }
 
-    console.log('🔍 Requête de pairing:', {
-      mainRecipeId,
-      diet,
-      season,
-      maxSuggestions,
-    });
-
     // Appeler le service de pairing
     const suggestions = await suggestPairings(mainRecipeId, {
       diet,
@@ -144,8 +137,6 @@ export async function GET(request) {
     const sideId = parseInt(searchParams.get('side') || '0');
 
     if (debug === 'true' && mainId && sideId) {
-      console.log(`🔬 Mode debug: Analyse pairing entre ${mainId} et ${sideId}`);
-
       const debugInfo = await debugPairing(mainId, sideId);
 
       return NextResponse.json({

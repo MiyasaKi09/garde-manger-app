@@ -193,8 +193,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         lotDataToInsert.canonical_food_id = selectedProduct.id;
       }
 
-      console.log('Création du lot:', lotDataToInsert);
-
       const { data: createdLot, error } = await supabase
         .from('inventory_lots')
         .insert([lotDataToInsert])
@@ -205,8 +203,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         console.error('Erreur création:', error);
         alert(`Erreur: ${error.message}`);
       } else {
-        console.log('Lot créé avec succès:', createdLot);
-        
         // Appeler la callback
         if (onLotCreated) {
           onLotCreated(createdLot);

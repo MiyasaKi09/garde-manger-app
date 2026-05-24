@@ -322,7 +322,6 @@ export default function PantryPage() {
 
         // Afficher le message de résultat
         if (data && data.length > 0 && data[0].message) {
-          console.log('✅ Consommation:', data[0].message);
           alert(data[0].message);
         }
 
@@ -376,8 +375,6 @@ export default function PantryPage() {
   }
 
   async function handleUpdateLot(id, updates) {
-    console.log('Mise à jour lot:', { id, updates });
-    
     // Fermer le modal d'édition
     setShowEditLot(false);
     setItemToEdit(null);
@@ -408,8 +405,6 @@ export default function PantryPage() {
         console.error('Erreur Supabase lors de la mise à jour:', error);
         throw error;
       }
-      
-      console.log('Mise à jour réussie en base de données');
     } catch (error) {
       console.error('Erreur lors de la mise à jour:', error);
       alert('Erreur lors de la mise à jour: ' + error.message);
@@ -448,8 +443,6 @@ export default function PantryPage() {
         // Revertir la suppression optimiste en cas d'erreur
         await loadPantryItems();
         alert('Erreur lors de la suppression: ' + error.message);
-      } else {
-        console.log('Article supprimé avec succès');
       }
     } catch (error) {
       console.error('Erreur:', error);

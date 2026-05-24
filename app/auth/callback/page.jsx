@@ -23,7 +23,6 @@ export default function AuthCallback() {
             return;
           }
 
-          console.log('✅ Session créée avec succès');
         }
 
         // Rediriger vers la page demandée ou l'accueil

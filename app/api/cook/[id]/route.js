@@ -63,14 +63,15 @@ export default function CookPage() {
         if (ei) throw ei;
         setIngredients(ri || []);
 
-        // 3) Lots pour les produits concernés, tri FEFO (DLC croissante)
+        // 3) Lots pour les produits concernés, tri FEFO (expiration croissante)
         const productIds = (ri || []).map(x => x.product?.id).filter(Boolean);
         if (productIds.length) {
           const { data: pl, error: el } = await supabase
-            .from('pantry_lots')
-            .select('id, product_id, qty, unit, dlc, location_id')
+            .from('inventory_lots')
+            .select('id, product_id, qty_remaining, unit, expiration_date, storage_place')
             .in('product_id', Array.from(new Set(productIds)))
-            .order('dlc', { ascending: true, nullsFirst: false });
+            .gt('qty_remaining', 0)
+            .order('expiration_date', { ascending: true, nullsFirst: false });
           if (el) throw el;
           setLots(pl || []);
         } else {
@@ -105,7 +106,7 @@ export default function CookPage() {
       const baseUnit = (ing.unit || '').trim();
       const needed = baseQty * factor;
 
-      const lotsForProduct = (lots || []).filter(l => l.product_id === productId); // FEFO déjà trié
+      const lotsForProduct = (lots || []).filter(l => l.product_id === productId); // FEFO (expiration) déjà trié
 
       if (!productId) {
         missing.push({ label: productName, reason: 'Produit inconnu (pas de product_id)' });
@@ -134,15 +135,13 @@ export default function CookPage() {
           p_to_unit: lot.unit,
           p_qty: remainingInRecipeUnit
         });
-        if (error) {
-          console.error('convert_qty error', error);
-        }
+        if (error) { /* conversion indisponible pour cette unité */ }
         if (convLotQty == null) {
           // Pas de conversion vers l’unité de ce lot : on ignore ce lot
           continue;
         }
 
-        const canTakeLotUnit = Math.min(Number(lot.qty || 0), Number(convLotQty));
+        const canTakeLotUnit = Math.min(Number(lot.qty_remaining || 0), Number(convLotQty));
         if (canTakeLotUnit > 0) {
           allocations.push({
             lotId: lot.id,
@@ -214,18 +213,18 @@ export default function CookPage() {
       for (const line of p.lines) {
         for (const al of line.allocations) {
           if (al.takeQty > 0) {
-            // re-lire qty courante par sécurité
+            // re-lire qty_remaining courante par sécurité
             const { data: lotRow, error: er } = await supabase
-              .from('pantry_lots')
-              .select('qty')
+              .from('inventory_lots')
+              .select('qty_remaining')
               .eq('id', al.lotId)
               .single();
             if (er) throw er;
 
-            const newQty = Math.max(0, Number(lotRow?.qty || 0) - Number(al.takeQty));
+            const newQty = Math.max(0, Number(lotRow?.qty_remaining || 0) - Number(al.takeQty));
             const { error: eu } = await supabase
-              .from('pantry_lots')
-              .update({ qty: newQty })
+              .from('inventory_lots')
+              .update({ qty_remaining: newQty })
               .eq('id', al.lotId);
             if (eu) throw eu;
           }
@@ -235,7 +234,6 @@ export default function CookPage() {
       alert('✅ Déduction effectuée !');
       router.push('/pantry'); // redirige où tu préfères
     } catch (e) {
-      console.error(e);
       alert('Erreur pendant la déduction: ' + (e?.message || e));
     }
   }

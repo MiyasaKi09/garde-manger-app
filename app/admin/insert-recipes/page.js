@@ -12,8 +12,6 @@ export default function AdminInsertRecipes() {
     setMessage('');
     
     try {
-      console.log('Début insertion des recettes de test...');
-      
       // 1. Insérer les catégories
       const { error: categoryError } = await supabase
         .from('recipe_categories')
@@ -186,7 +184,6 @@ export default function AdminInsertRecipes() {
         throw recipesError;
       }
 
-      console.log('Recettes insérées:', insertedRecipes);
       setMessage(`✅ ${insertedRecipes.length} recettes insérées avec succès !`);
       
     } catch (error) {

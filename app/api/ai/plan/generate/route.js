@@ -44,18 +44,13 @@ export async function POST(request) {
     // ── Auto-save recipes to generated_recipes (with steps from cooking data) ──
     if (plan.recipes?.length) {
       const savedCount = await autoSaveRecipes(supabase, user.id, plan.recipes, plan.days || [])
-      console.log(`[Plan Generate] ${savedCount}/${plan.recipes.length} recettes sauvegardées`)
     }
 
     // ── Generate complete recipe cards for dishes missing steps ──
-    const generatedCount = await generateMissingRecipes(supabase, user.id, plan.days || [])
-    if (generatedCount > 0) {
-      console.log(`[Plan Generate] ${generatedCount} fiches recettes générées via Claude`)
-    }
+    await generateMissingRecipes(supabase, user.id, plan.days || [])
 
     // ── Rebuild shopping list from REAL recipe ingredients - stock ──
-    const shoppingCount = await rebuildShoppingList(supabase, user.id, result.importId, plan.days || [])
-    console.log(`[Plan Generate] Liste de courses recalculée: ${shoppingCount} articles`)
+    await rebuildShoppingList(supabase, user.id, result.importId, plan.days || [])
 
     return NextResponse.json({
       success: true,
@@ -542,9 +537,8 @@ FORMAT JSON :
       }
 
       generated++
-      console.log(`[Plan Generate] Fiche recette générée: "${name}"`)
     } catch (err) {
-      console.warn(`[Plan Generate] Erreur génération recette "${name}":`, err.message)
+      console.error(`[Plan Generate] Erreur génération recette "${name}":`, err.message)
     }
   }
 

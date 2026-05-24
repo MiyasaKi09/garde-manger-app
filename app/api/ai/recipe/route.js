@@ -65,7 +65,6 @@ export async function POST(request) {
 
     if (cached && cached.steps?.length > 0) {
       // Cache hit with complete recipe (has steps)
-      console.log(`[AI Recipe] Cache hit: "${normalized}"`)
       return NextResponse.json({
         recipeDbId: cached.id,
         recipe: {
@@ -90,7 +89,6 @@ export async function POST(request) {
 
   // 2. Generate via Claude
   try {
-    console.log(`[AI Recipe] Generating: "${description}"`)
     const ctx = await buildAiContext(supabase, user.id)
     const context = formatContextForPrompt(ctx)
 
@@ -181,7 +179,6 @@ Utilise les valeurs CIQUAL/table de composition des aliments, pas des estimation
         await supabase.from('generated_recipes')
           .update(recipeData)
           .eq('id', existingCacheId)
-        console.log(`[AI Recipe] Updated cache: "${normalized}" (id: ${existingCacheId})`)
       } else {
         // Insert new
         const { data: inserted } = await supabase.from('generated_recipes').insert({
@@ -191,10 +188,9 @@ Utilise les valeurs CIQUAL/table de composition des aliments, pas des estimation
           source: 'ai',
         }).select('id').single()
         recipeDbId = inserted?.id || null
-        console.log(`[AI Recipe] Cached: "${normalized}" (id: ${recipeDbId})`)
       }
     } catch (cacheErr) {
-      console.warn('[AI Recipe] Cache save failed:', cacheErr.message)
+      console.error('[AI Recipe] Cache save failed:', cacheErr.message)
     }
 
     // 4. Calculate precise nutrition from CIQUAL (ingredients → canonical_foods → nutritional_data)
@@ -210,15 +206,13 @@ Utilise les valeurs CIQUAL/table de composition des aliments, pas des estimation
           await supabase.from('generated_recipes')
             .update({ nutrition_per_serving: preciseResult.nutrition_per_serving })
             .eq('id', recipeDbId)
-          console.log(`[AI Recipe] Nutrition CIQUAL mise à jour pour "${normalized}"`)
         }
       } else {
         recipe.nutrition_source = 'estimate'
-        console.log(`[AI Recipe] Fallback estimation IA pour "${normalized}"`)
       }
     } catch (nutritionErr) {
       recipe.nutrition_source = 'estimate'
-      console.warn('[AI Recipe] Calcul nutrition précis échoué, fallback estimation:', nutritionErr.message)
+      console.error('[AI Recipe] Calcul nutrition précis échoué, fallback estimation:', nutritionErr.message)
     }
 
     return NextResponse.json({ recipe, recipeDbId, cached: false })

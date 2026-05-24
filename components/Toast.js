@@ -78,12 +78,12 @@ export default function ToastContainer() {
   if (toasts.length === 0) return null;
 
   return (
-    <div className="toast-container">
+    <div className="toast-container" role="region" aria-live="polite" aria-label="Notifications">
       {toasts.map(toast => (
-        <ToastItem 
-          key={toast.id} 
-          toast={toast} 
-          onRemove={removeToast} 
+        <ToastItem
+          key={toast.id}
+          toast={toast}
+          onRemove={removeToast}
         />
       ))}
     </div>

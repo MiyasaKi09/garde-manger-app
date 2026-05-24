@@ -18,8 +18,6 @@ export async function POST(request, { params }) {
       return Response.json({ error: 'Recipe ID invalide' }, { status: 400 });
     }
 
-    console.log(`🔄 Calcul nutritionnel pour recette ${recipeId}...`);
-
     // Appeler calculate_and_cache_nutrition avec service role
     const { data, error } = await supabase.rpc(
       'calculate_and_cache_nutrition',
@@ -30,8 +28,6 @@ export async function POST(request, { params }) {
       console.error('❌ Erreur:', error);
       return Response.json({ error: error.message }, { status: 500 });
     }
-
-    console.log('✅ Calcul terminé et mis en cache');
 
     return Response.json({ 
       success: true, 

@@ -91,75 +91,169 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
   const responsiveStyles = (
     <style jsx global>{`
-      .cook-landing-scroll { flex: 1; display: flex; align-items: flex-start; justify-content: center; padding: 60px 24px 40px; overflow-y: auto; }
-      .cook-landing-container { text-align: center; max-width: 520px; width: 100%; }
-      .cook-landing-title { font-family: 'Crimson Text', Georgia, serif; font-size: 32px; font-weight: 700; color: #16a34a; margin-bottom: 12px; line-height: 1.2; }
+      /* ── CookMode Landing ── */
+      .cook-landing-scroll {
+        flex: 1; display: flex; align-items: flex-start; justify-content: center;
+        padding: 32px 20px 48px; overflow-y: auto;
+      }
+      .cook-landing-card {
+        background: #FFFDF7;
+        border-radius: 28px;
+        box-shadow: 0 24px 60px rgba(24,28,22,0.13), 0 4px 16px rgba(24,28,22,0.06);
+        padding: 40px 36px;
+        width: 100%; max-width: 560px;
+        position: relative;
+      }
+      .cook-landing-close {
+        position: absolute; top: 18px; right: 18px;
+        border: none; background: rgba(24,28,22,0.06); color: #8A8C7E;
+        cursor: pointer; padding: 8px; display: flex; border-radius: 50%;
+        transition: background 0.15s;
+      }
+      .cook-landing-close:hover { background: rgba(24,28,22,0.12); }
+      .cook-landing-title {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 30px; font-weight: 700;
+        color: #181C16; line-height: 1.15;
+        letter-spacing: -0.02em; margin-bottom: 12px;
+        padding-right: 40px;
+      }
+      .cook-landing-accent {
+        width: 36px; height: 3px; background: #2F5D3A;
+        border-radius: 2px; margin-bottom: 14px;
+      }
+      .cook-landing-desc {
+        font-family: 'Crimson Text', Georgia, serif;
+        font-size: 17px; color: #4B4F45; line-height: 1.6;
+        font-style: italic; margin-bottom: 16px;
+      }
+      .cook-meta-pill {
+        display: inline-flex; align-items: center; gap: 6px;
+        background: #E7EEE4; color: #2F5D3A;
+        border-radius: 999px; padding: 5px 14px;
+        font-size: 13px; font-weight: 600; margin-bottom: 28px;
+      }
+      .cook-meta-sep { opacity: 0.5; }
+      .cook-section-label {
+        font-size: 10px; font-weight: 700; letter-spacing: 2px;
+        color: #8A8C7E; text-transform: uppercase;
+        border-left: 2px solid #2F5D3A; padding-left: 8px;
+        margin-bottom: 14px; display: block;
+      }
+      .cook-nutrition-block {
+        background: #F3EFE4; border-radius: 18px;
+        padding: 20px 22px; margin-bottom: 20px; text-align: left;
+      }
+      .cook-persons-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+      .cook-person-card {
+        flex: 1; min-width: 170px;
+        background: #FFFDF7; border-radius: 14px;
+        padding: 14px 16px; border: 1px solid rgba(24,28,22,0.07);
+        box-shadow: 0 1px 4px rgba(24,28,22,0.04);
+      }
+      .cook-person-name {
+        display: inline-block; font-size: 11px; font-weight: 700;
+        color: #2F5D3A; background: #E7EEE4;
+        padding: 3px 10px; border-radius: 6px;
+        text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 12px;
+      }
+      .cook-macros-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+      .cook-macro-value { font-size: 20px; font-weight: 700; color: #181C16; font-variant-numeric: tabular-nums; }
+      .cook-ingredients-block {
+        background: #F3EFE4; border-radius: 18px;
+        padding: 20px 22px; margin-bottom: 28px; text-align: left;
+      }
+      .cook-ing-item {
+        display: flex; align-items: baseline; gap: 8px;
+        font-size: 14px; color: #4B4F45; padding: 5px 0;
+        border-bottom: 1px solid rgba(24,28,22,0.06);
+      }
+      .cook-ing-item:last-child { border-bottom: none; }
+      .cook-ing-dot { width: 6px; height: 6px; border-radius: 50%; background: #6FB05A; flex-shrink: 0; margin-top: 6px; }
+      .cook-ing-qty { font-weight: 700; color: #181C16; white-space: nowrap; }
+      .cook-start-btn {
+        width: 100%; padding: 17px; border: none; border-radius: 999px;
+        background: #2F5D3A; color: white;
+        font-size: 16px; font-weight: 700; cursor: pointer;
+        font-family: inherit; letter-spacing: 0.03em;
+        box-shadow: 0 6px 24px rgba(47,93,58,0.3);
+        transition: transform 0.15s, box-shadow 0.15s;
+      }
+      .cook-start-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(47,93,58,0.38); }
+      .cook-start-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+      /* ── Step & timer ── */
       .cook-step-content { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
       .cook-step-card { max-width: 560px; width: 100%; background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; padding: 32px 28px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
       .cook-step-title { font-size: 24px; font-weight: 700; color: var(--ink, #1f281f); margin-bottom: 16px; line-height: 1.3; }
       .cook-step-text { font-size: 16px; line-height: 1.7; color: #374151; margin: 0; }
       .cook-timer-text { font-size: 48px; font-weight: 300; font-variant-numeric: tabular-nums; letter-spacing: 2px; color: var(--ink, #1f281f); }
       .cook-footer { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 16px 24px 28px; flex-shrink: 0; }
-      .cook-nutrition-section { text-align: left; margin-bottom: 24px; background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.35); border-radius: 16px; padding: 16px 20px; }
-      .cook-persons-grid { display: flex; gap: 12px; flex-wrap: wrap; }
-      .cook-person-card { flex: 1; min-width: 180px; background: rgba(255,255,255,0.5); border-radius: 12px; padding: 12px 14px; border: 1px solid rgba(0,0,0,0.04); }
-      .cook-macros-row { display: flex; align-items: center; gap: 8px; justify-content: center; flex-wrap: wrap; }
-      .cook-macro-value { font-size: 18px; font-weight: 700; color: var(--ink, #1f281f); font-variant-numeric: tabular-nums; }
-      .cook-ingredients-list { text-align: left; margin-bottom: 32px; background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.35); border-radius: 16px; padding: 16px 20px; }
-      .cook-start-btn { padding: 14px 48px; border: none; border-radius: 16px; background: linear-gradient(135deg, #16a34a, #059669); color: white; font-size: 16px; font-weight: 600; cursor: pointer; font-family: inherit; box-shadow: 0 4px 14px rgba(22,163,74,0.3); }
 
       @media (max-width: 768px) {
-        .cook-landing-scroll { padding: 48px 16px 32px; }
+        .cook-landing-scroll { padding: 20px 12px 40px; }
+        .cook-landing-card { padding: 28px 22px; border-radius: 22px; }
         .cook-landing-title { font-size: 24px; }
+        .cook-persons-grid { flex-direction: column; }
+        .cook-person-card { min-width: 0; }
+        .cook-macro-value { font-size: 18px; }
         .cook-step-content { padding: 16px; }
         .cook-step-card { padding: 24px 18px; border-radius: 16px; }
         .cook-step-title { font-size: 20px; }
         .cook-step-text { font-size: 15px; }
         .cook-timer-text { font-size: 36px; }
         .cook-footer { padding: 12px 16px 20px; gap: 12px; }
-        .cook-nutrition-section { padding: 12px 14px; }
-        .cook-persons-grid { flex-direction: column; }
-        .cook-person-card { min-width: 0; }
-        .cook-macro-value { font-size: 16px; }
-        .cook-ingredients-list { padding: 12px 14px; margin-bottom: 24px; }
-        .cook-start-btn { padding: 12px 36px; font-size: 15px; width: 100%; }
       }
 
       @media (max-width: 480px) {
-        .cook-landing-scroll { padding: 40px 12px 24px; }
+        .cook-landing-card { padding: 24px 16px; border-radius: 18px; }
         .cook-landing-title { font-size: 22px; }
-        .cook-step-card { padding: 20px 14px; }
-        .cook-step-title { font-size: 18px; }
         .cook-timer-text { font-size: 32px; }
         .cook-footer { padding: 10px 12px 16px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cook-start-btn { transition: none; }
       }
     `}</style>
   )
 
-  // ---- LANDING SCREEN (glass-morphism style) ----
+  // ---- LANDING SCREEN ----
   if (currentStep === -1) {
     return (
       <div style={styles.landingOverlay}>
         {responsiveStyles}
-        <button onClick={onClose} style={styles.landingCloseBtn}><X size={24} /></button>
         <div className="cook-landing-scroll">
-          <div className="cook-landing-container">
+          <div className="cook-landing-card">
+            {/* Close */}
+            <button onClick={onClose} className="cook-landing-close" aria-label="Fermer">
+              <X size={20} />
+            </button>
+
+            {/* Header */}
             <h1 className="cook-landing-title">{recipeName}</h1>
+            <div className="cook-landing-accent" />
+
             {recipe.description && (
-              <p style={styles.landingDesc}>{recipe.description}</p>
+              <p className="cook-landing-desc">{recipe.description}</p>
             )}
-            {totalTime > 0 && (
-              <p style={styles.landingMeta}>{steps?.length || 0} étapes{totalTime ? ` · ${totalTime} min` : ''}</p>
+
+            {(steps?.length > 0 || totalTime > 0) && (
+              <div className="cook-meta-pill">
+                {steps?.length > 0 && <span>{steps.length} étape{steps.length > 1 ? 's' : ''}</span>}
+                {steps?.length > 0 && totalTime > 0 && <span className="cook-meta-sep">·</span>}
+                {totalTime > 0 && <span>{totalTime} min</span>}
+              </div>
             )}
 
             {/* Per-person nutrition from meal plan */}
             {mealEntries?.length > 0 && (
-              <div className="cook-nutrition-section">
-                <h3 style={styles.landingIngTitle}>NUTRITION PAR PERSONNE</h3>
+              <div className="cook-nutrition-block">
+                <span className="cook-section-label">Nutrition par personne</span>
                 <div className="cook-persons-grid">
                   {mealEntries.map((entry, i) => (
                     <div key={i} className="cook-person-card">
-                      <span style={styles.personName}>{entry.person_name || '?'}</span>
+                      <span className="cook-person-name">{entry.person_name || '?'}</span>
                       <div className="cook-macros-row">
                         <div style={styles.macroItem}>
                           <span className="cook-macro-value">{Math.round(entry.kcal || 0)}</span>
@@ -188,15 +282,15 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
                   ))}
                 </div>
                 {recipe?.nutrition_source === 'ciqual' && (
-                  <p style={styles.nutritionBadge}>Valeurs calculées (CIQUAL)</p>
+                  <p style={styles.nutritionBadge}>Valeurs calculées · CIQUAL</p>
                 )}
               </div>
             )}
 
-            {/* Recipe-level nutrition fallback (when no mealEntries) */}
+            {/* Recipe-level nutrition fallback */}
             {(!mealEntries?.length) && recipe?.nutrition_per_serving && (
-              <div className="cook-nutrition-section">
-                <h3 style={styles.landingIngTitle}>NUTRITION PAR PORTION</h3>
+              <div className="cook-nutrition-block">
+                <span className="cook-section-label">Nutrition par portion</span>
                 <div className="cook-macros-row">
                   <div style={styles.macroItem}>
                     <span className="cook-macro-value">{recipe.nutrition_per_serving.kcal || '—'}</span>
@@ -219,20 +313,21 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
                   </div>
                 </div>
                 {recipe.nutrition_source === 'ciqual' && (
-                  <p style={styles.nutritionBadge}>Valeurs calculées (CIQUAL)</p>
+                  <p style={styles.nutritionBadge}>Valeurs calculées · CIQUAL</p>
                 )}
               </div>
             )}
 
             {/* Ingredients */}
             {ingredients?.length > 0 && (
-              <div className="cook-ingredients-list">
-                <h3 style={styles.landingIngTitle}>INGRÉDIENTS</h3>
+              <div className="cook-ingredients-block">
+                <span className="cook-section-label">Ingrédients</span>
                 {ingredients.map((ing, i) => (
-                  <p key={i} style={styles.landingIngItem}>
-                    {ing.quantity && <span style={styles.landingIngQty}>{ing.quantity} {ing.unit}</span>}
-                    {' '}{ing.name}{ing.notes ? ` (${ing.notes})` : ''}
-                  </p>
+                  <div key={i} className="cook-ing-item">
+                    <span className="cook-ing-dot" />
+                    {ing.quantity && <span className="cook-ing-qty">{ing.quantity} {ing.unit}</span>}
+                    <span>{ing.name}{ing.notes ? ` — ${ing.notes}` : ''}</span>
+                  </div>
                 ))}
               </div>
             )}
@@ -242,7 +337,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
               className="cook-start-btn"
               disabled={!steps?.length}
             >
-              Commencer
+              Commencer la recette
             </button>
 
             {/* ── RÉGÉNÉRER (routine Claude) ── */}
@@ -524,31 +619,14 @@ const GLASS = {
 
 // Landing screen uses `styles.xxx`, steps/done use `S.xxx`
 const styles = {
-  landingOverlay: { position: 'fixed', inset: 0, background: BG, zIndex: 2000, display: 'flex', flexDirection: 'column', fontFamily: 'inherit' },
-  landingCloseBtn: { position: 'absolute', top: 16, right: 16, border: 'none', background: 'rgba(0,0,0,0.05)', color: '#6b7280', cursor: 'pointer', padding: 8, display: 'flex', borderRadius: 10, zIndex: 10 },
-  landingScroll: { flex: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '60px 24px 40px', overflowY: 'auto' },
-  landingContainer: { textAlign: 'center', maxWidth: 520, width: '100%' },
-  landingTitle: { fontFamily: "'Crimson Text', Georgia, serif", fontSize: 32, fontWeight: 700, color: '#16a34a', marginBottom: 12, lineHeight: 1.2 },
-  landingDesc: { fontSize: 15, color: '#6b7280', lineHeight: 1.6, marginBottom: 8 },
-  landingMeta: { fontSize: 13, color: '#9ca3af', marginBottom: 32 },
-  ingredientsList: { textAlign: 'left', marginBottom: 32, ...GLASS, borderRadius: 16, padding: '16px 20px' },
-  landingIngTitle: { fontSize: 11, fontWeight: 700, letterSpacing: 1.5, color: '#9ca3af', marginBottom: 12, textTransform: 'uppercase' },
-  landingIngItem: { fontSize: 14, color: '#374151', margin: '6px 0', lineHeight: 1.4 },
-  landingIngQty: { fontWeight: 700, color: 'var(--ink, #1f281f)' },
-  landingStartBtn: { padding: '14px 48px', border: 'none', borderRadius: 16, background: 'linear-gradient(135deg, #16a34a, #059669)', color: 'white', fontSize: 16, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 14px rgba(22,163,74,0.3)' },
+  landingOverlay: { position: 'fixed', inset: 0, background: 'linear-gradient(160deg, #eef5eb 0%, #f5f0e6 45%, #ede8db 100%)', zIndex: 2000, display: 'flex', flexDirection: 'column', fontFamily: 'inherit' },
 
-  // Nutrition section
-  nutritionSection: { textAlign: 'left', marginBottom: 24, ...GLASS, borderRadius: 16, padding: '16px 20px' },
-  personsGrid: { display: 'flex', gap: 12, flexWrap: 'wrap' },
-  personCard: { flex: 1, minWidth: 180, background: 'rgba(255,255,255,0.5)', borderRadius: 12, padding: '12px 14px', border: '1px solid rgba(0,0,0,0.04)' },
-  personName: { display: 'inline-block', fontSize: 12, fontWeight: 700, color: '#16a34a', background: 'rgba(22,163,74,0.08)', padding: '2px 10px', borderRadius: 6, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 10 },
-  macrosRow: { display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center', flexWrap: 'wrap' },
+  // Nutrition section (inline styles still used for these)
   macroItem: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 },
-  macroValue: { fontSize: 18, fontWeight: 700, color: 'var(--ink, #1f281f)', fontVariantNumeric: 'tabular-nums' },
-  macroLabel: { fontSize: 10, fontWeight: 600, color: '#9ca3af', textTransform: 'uppercase', letterSpacing: 0.5 },
-  macroDivider: { width: 1, height: 24, background: 'rgba(0,0,0,0.08)', flexShrink: 0 },
+  macroLabel: { fontSize: 10, fontWeight: 600, color: '#8A8C7E', textTransform: 'uppercase', letterSpacing: 0.5 },
+  macroDivider: { width: 1, height: 24, background: 'rgba(24,28,22,0.1)', flexShrink: 0 },
   personPortions: { fontSize: 12, color: '#6b7280', marginTop: 8, lineHeight: 1.4, textAlign: 'center' },
-  nutritionBadge: { fontSize: 10, color: '#16a34a', fontWeight: 600, textAlign: 'center', marginTop: 10, letterSpacing: 0.3 },
+  nutritionBadge: { fontSize: 10, color: '#2F5D3A', fontWeight: 600, textAlign: 'right', marginTop: 10, letterSpacing: 0.3, opacity: 0.7 },
 
   // Régénérer
   regenWrap: { marginTop: 16, display: 'flex', justifyContent: 'center' },

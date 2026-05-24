@@ -102,8 +102,14 @@ export default function OcrReviewList({ onClose, onItemsAdded }) {
   const selectedCount = items.filter(i => i.selected).length
 
   return (
-    <div style={styles.overlay} onClick={onClose}>
-      <div style={styles.panel} onClick={e => e.stopPropagation()}>
+    <div style={styles.overlay} onClick={onClose} aria-hidden="true">
+      <div
+        style={styles.panel}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Scanner une liste de produits"
+        onClick={e => e.stopPropagation()}
+      >
         {/* Header */}
         <div style={styles.header}>
           <h3 style={styles.title}>
@@ -112,7 +118,7 @@ export default function OcrReviewList({ onClose, onItemsAdded }) {
             {step === 'review' && `${items.length} produits détectés`}
             {step === 'done' && 'Ajoutés !'}
           </h3>
-          <button onClick={onClose} style={styles.closeBtn}><X size={18} /></button>
+          <button onClick={onClose} style={styles.closeBtn} aria-label="Fermer"><X size={18} /></button>
         </div>
 
         <div style={styles.body}>

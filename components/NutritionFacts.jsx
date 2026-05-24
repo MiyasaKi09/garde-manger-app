@@ -16,8 +16,6 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
         setLoading(true);
         setError(null);
         
-        console.log('🍎 Chargement nutritionnel pour recette', recipeId);
-        
         // 1️⃣ Vérifier d'abord si le cache existe
         const { data: cacheData, error: cacheError } = await supabase
           .from('recipe_nutrition_cache')
@@ -31,8 +29,6 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
         
         // 2️⃣ Si pas de cache, déclencher le calcul via API
         if (!cacheData) {
-          console.log('🔄 Pas de cache, déclenchement du calcul...');
-          
           const response = await fetch(`/api/recipes/${recipeId}/nutrition/calculate`, {
             method: 'POST',
           });
@@ -40,8 +36,6 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
           if (!response.ok) {
             throw new Error('Erreur lors du calcul nutritionnel');
           }
-          
-          console.log('✅ Calcul terminé');
           
           // Relire le cache après calcul
           const { data: newCacheData, error: newError } = await supabase
@@ -79,8 +73,6 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
           });
         } else {
           // 3️⃣ Cache existe, lecture directe
-          console.log('⚡ Chargé depuis le cache');
-          
           setNutrition({
             Calories: {
               perServing: cacheData.calories_per_serving * servings,
@@ -118,8 +110,6 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
 
     async function fetchMicronutrients() {
       try {
-        console.log('🥕 Chargement des micronutriments...');
-
         // Charger les ingrédients de la recette avec leurs données nutritionnelles
         const { data: ingredients, error: ingError } = await supabase
           .from('recipe_ingredients')
@@ -190,7 +180,6 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
         }
 
         if (!ingredients || ingredients.length === 0) {
-          console.log('⚠️ Aucun ingrédient trouvé');
           return;
         }
 
@@ -253,8 +242,6 @@ export default function NutritionFacts({ recipeId, servings = 1 }) {
             micro.vitamine_b12 += (nutritionData.vitamine_b12_ug || 0) * factor;
           }
         });
-
-        console.log(`✅ Micronutriments calculés depuis ${ingredientsWithNutrition} ingrédients`);
 
         if (ingredientsWithNutrition > 0) {
           setMicronutrients(micro);

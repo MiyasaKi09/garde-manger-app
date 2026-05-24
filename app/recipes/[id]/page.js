@@ -147,7 +147,6 @@ export default function RecipeDetail() {
   // Fonctions pour l'édition
   async function loadAvailableIngredients() {
     try {
-      console.log('🔍 Chargement des ingrédients disponibles...');
       const { data, error } = await supabase
         .from('canonical_foods')
         .select('id, name, category, subcategory')
@@ -159,8 +158,6 @@ export default function RecipeDetail() {
         throw error;
       }
       
-      console.log('✅ Ingrédients chargés:', data?.length || 0, 'ingrédients');
-      console.log('📋 Premiers ingrédients:', data?.slice(0, 5));
       setAvailableIngredients(data || []);
     } catch (error) {
       console.error('❌ Erreur chargement ingrédients:', error);
@@ -170,8 +167,7 @@ export default function RecipeDetail() {
           .from('canonical_foods')
           .select('*')
           .limit(10);
-        
-        console.log('🔄 Tentative fallback:', fallbackData);
+
         if (!fallbackError && fallbackData) {
           setAvailableIngredients(fallbackData);
         }
@@ -397,8 +393,6 @@ export default function RecipeDetail() {
     await loadAvailableIngredients();
     
     // 1) recette + ingrédients + meta produit
-    console.log('Chargement de la recette avec ID:', id);
-    
     // Essayer d'abord avec les relations
     let { data: r, error: errR } = await supabase
       .from('recipes')
@@ -423,10 +417,9 @@ export default function RecipeDetail() {
         errR = null;
       }
     }
-    if (errR) { 
+    if (errR) {
       console.error('Erreur lors du chargement de la recette:', errR);
-      console.log('ID recherché:', id);
-      setError(`Recette avec l'ID ${id} introuvable. Erreur: ${errR.message}`); 
+      setError(`Recette avec l'ID ${id} introuvable. Erreur: ${errR.message}`);
       setLoading(false); 
       return; 
     }
@@ -437,9 +430,6 @@ export default function RecipeDetail() {
       setLoading(false);
       return;
     }
-
-    console.log('Recette trouvée:', r);
-    console.log('Colonnes disponibles:', Object.keys(r));
 
     const totalTime = (r?.prep_time_minutes || 0) + (r?.cook_time_minutes || 0) + (r?.rest_min || 0);
     setRecipe({ 
@@ -462,8 +452,6 @@ export default function RecipeDetail() {
     
     // Charger les ingrédients de la recette (requête séparée et robuste)
     try {
-      console.log('🥕 Chargement des ingrédients pour la recette:', id);
-      
       // Charger avec les relations vers canonical_foods ET archetypes
       let { data: ingredients, error: ingredientsError } = await supabase
         .from('recipe_ingredients')
@@ -494,8 +482,6 @@ export default function RecipeDetail() {
         console.error('❌ Erreur chargement ingrédients:', ingredientsError);
         ingredients = [];
       }
-
-      console.log(`✅ ${ingredients?.length || 0} ingrédients chargés`);
 
       // Enrichir les ingrédients avec le nom et l'unité corrects
       const enrichedIngredients = (ingredients || []).map(ingredient => {
@@ -538,12 +524,6 @@ export default function RecipeDetail() {
 
       const ingList = enrichedIngredients;
       setIngs(ingList);
-      console.log('✅ Ingrédients chargés:', ingList.length, 'ingrédients');
-      console.log('📋 Détail des ingrédients:', ingList);
-      
-      if (ingList.length > 0) {
-        console.log('📌 Premier ingrédient:', ingList[0]);
-      }
 
       // Pour l'instant, pas de chargement de lots détaillé
       setLotsByProduct({});
@@ -555,8 +535,6 @@ export default function RecipeDetail() {
 
     // Charger les étapes de la recette depuis recipe_steps
     try {
-      console.log('📋 Chargement des étapes pour la recette:', id);
-
       const { data: steps, error: stepsError } = await supabase
         .from('recipe_steps')
         .select('*')
@@ -567,7 +545,6 @@ export default function RecipeDetail() {
         console.error('❌ Erreur chargement étapes:', stepsError);
         setRecipeSteps([]);
       } else {
-        console.log(`✅ ${steps?.length || 0} étapes chargées`);
         setRecipeSteps(steps || []);
       }
     } catch (error) {
@@ -577,8 +554,6 @@ export default function RecipeDetail() {
 
     // Charger les données nutritionnelles
     try {
-      console.log('🍎 Chargement des données nutritionnelles...');
-
       const { data: nutritionData, error: nutritionError } = await supabase
         .from('recipe_nutrition_cache')
         .select('*')
@@ -588,7 +563,6 @@ export default function RecipeDetail() {
       if (nutritionError) {
         console.error('❌ Erreur nutrition:', nutritionError);
       } else if (nutritionData) {
-        console.log('✅ Données nutritionnelles chargées');
         setNutrition({
           calories: nutritionData.calories_per_serving,
           proteines: nutritionData.proteines_per_serving,
@@ -602,8 +576,6 @@ export default function RecipeDetail() {
 
     // Charger les micronutriments depuis les ingrédients
     try {
-      console.log('🥕 Chargement des micronutriments...');
-
       const { data: ingredients, error: ingError } = await supabase
         .from('recipe_ingredients')
         .select(`
@@ -703,23 +675,10 @@ export default function RecipeDetail() {
           const canonicalFood = ing.canonical_foods || ing.archetypes?.canonical_foods;
           const nutritionData = canonicalFood?.nutritional_data;
 
-          console.log(`\n🥕 Ingrédient #${index + 1}:`);
-          console.log(`   ID canonical_food: ${ing.canonical_food_id || 'via archetype'}`);
-          console.log(`   ID archetype: ${ing.archetype_id || 'n/a'}`);
-          console.log(`   Quantité: ${ing.quantity} ${ing.unit}`);
-          console.log(`   Canonical food trouvé: ${canonicalFood ? '✓' : '✗'}`);
-          console.log(`   Données nutritionnelles: ${nutritionData ? '✓' : '✗'}`);
-
           if (nutritionData) {
             ingredientsWithNutrition++;
             const qty = parseFloat(ing.quantity) || 100;
             const factor = qty / 100;
-
-            console.log(`   📊 Calculs nutritionnels:`);
-            console.log(`      - Facteur multiplicateur: ${factor.toFixed(2)} (${qty}g / 100g)`);
-            console.log(`      - Fibres: ${nutritionData.fibres_g || 0}g × ${factor.toFixed(2)} = ${((nutritionData.fibres_g || 0) * factor).toFixed(2)}g`);
-            console.log(`      - Calcium: ${nutritionData.calcium_mg || 0}mg × ${factor.toFixed(2)} = ${((nutritionData.calcium_mg || 0) * factor).toFixed(2)}mg`);
-            console.log(`      - Vitamine C: ${nutritionData.vitamine_c_mg || 0}mg × ${factor.toFixed(2)} = ${((nutritionData.vitamine_c_mg || 0) * factor).toFixed(2)}mg`);
 
             micro.fibres += (nutritionData.fibres_g || 0) * factor;
             micro.sucres += (nutritionData.sucres_g || 0) * factor;
@@ -743,24 +702,9 @@ export default function RecipeDetail() {
             micro.vitamine_b12 += (nutritionData.vitamine_b12_ug || 0) * factor;
           } else {
             ingredientsWithoutNutrition++;
-            console.log(`   ⚠️  Pas de données nutritionnelles disponibles`);
-            if (!canonicalFood) {
-              console.log(`   ❌ Canonical food non trouvé - vérifier la relation dans recipe_ingredients`);
-            } else if (!canonicalFood.nutrition_id) {
-              console.log(`   ❌ nutrition_id manquant dans canonical_foods`);
-            }
           }
         });
 
-        console.log(`\n📊 Résumé du calcul nutritionnel:`);
-        console.log(`   ✅ Ingrédients avec données: ${ingredientsWithNutrition}`);
-        console.log(`   ❌ Ingrédients sans données: ${ingredientsWithoutNutrition}`);
-        console.log(`   📈 Totaux calculés:`);
-        console.log(`      - Fibres: ${micro.fibres.toFixed(1)}g`);
-        console.log(`      - Calcium: ${micro.calcium.toFixed(1)}mg`);
-        console.log(`      - Vitamine C: ${micro.vitamine_c.toFixed(1)}mg`);
-
-        console.log('✅ Micronutriments calculés');
         setMicronutrients(micro);
       }
     } catch (error) {
@@ -1019,10 +963,7 @@ export default function RecipeDetail() {
             <button 
               className="btn-tertiary" 
               onClick={() => {
-                console.log('📊 État actuel:');
-                console.log('- Ingrédients disponibles:', availableIngredients.length);
-                console.log('- Premiers ingrédients:', availableIngredients.slice(0, 3));
-                alert(`${availableIngredients.length} ingrédients chargés (voir console)`);
+                alert(`${availableIngredients.length} ingrédients chargés`);
               }}
             >
               🔍 Test données

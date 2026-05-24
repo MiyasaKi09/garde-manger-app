@@ -18,22 +18,6 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
 
   const quickConversions = getQuickConversions(item.qty_remaining, item.unit, productMeta);
   
-  // Debug conversions
-  if (showActions) {
-    console.log(`--- CARD DEBUG pour "${item.product_name}" ---`);
-    console.log('Données item brutes:', {
-      unit_weight_grams: item.unit_weight_grams,
-      grams_per_unit: item.grams_per_unit,
-      density_g_per_ml: item.density_g_per_ml,
-      qty_remaining: item.qty_remaining,
-      unit: item.unit
-    });
-    console.log('ProductMeta calculé:', productMeta);
-    console.log('Conversions trouvées:', quickConversions);
-    console.log('--- FIN DEBUG ---');
-  }
-
-
   // Calcul de la date d'expiration effective et des jours restants
   const effectiveExpiration = getEffectiveExpiration(item);
   const daysLeft = daysUntil(effectiveExpiration);

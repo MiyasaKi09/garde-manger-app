@@ -145,7 +145,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           setSubcategories(subcategoriesData);
         }
       } catch (error) {
-        console.log('Erreur chargement catégories:', error);
+        // Ignore category loading errors
       }
     };
     loadCategoriesData();
@@ -418,7 +418,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           });
         }
       } catch (error) {
-        console.log('Pas de table archetypes:', error);
+        // Table archetypes absente, on continue
       }
 
       // 3. Recherche dans cultivars
@@ -454,7 +454,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           });
         }
       } catch (error) {
-        console.log('Pas de table cultivars:', error);
+        // Table cultivars absente, on continue
       }
 
       // 4. Scorer les résultats avec recherche floue
@@ -701,8 +701,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         container_unit: lotData.is_containerized && lotData.container_unit ? lotData.container_unit : null
       };
 
-      console.log('Données à insérer:', lotDataToInsert);
-
       const { data: createdLot, error } = await supabase
         .from('inventory_lots')
         .insert([lotDataToInsert])
@@ -715,7 +713,6 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         return;
       }
 
-      console.log('Lot créé:', createdLot);
       toast.success(`${formatProductName(selectedProduct.name)} ajouté au garde-manger !`);
       onLotCreated?.(createdLot);
       onClose();

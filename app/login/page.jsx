@@ -4,8 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 
-// Email hardcodé — app perso, on simplifie
-const ACCOUNT_EMAIL = process.env.NEXT_PUBLIC_LOGIN_EMAIL || 'julien@myko.app'
+const ACCOUNT_EMAIL = process.env.NEXT_PUBLIC_LOGIN_EMAIL || ''
 
 export default function LoginPage() {
   const router = useRouter()

@@ -103,7 +103,6 @@ export async function POST(request, { params }) {
           .single();
 
         if (lotError || !lot) {
-          console.warn(`Lot ${lot_id} non trouvé, ignoré`);
           continue;
         }
 

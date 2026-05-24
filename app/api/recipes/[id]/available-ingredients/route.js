@@ -4,20 +4,14 @@ import { NextResponse } from 'next/server';
 
 /**
  * GET /api/recipes/[id]/available-ingredients
- * 
- * Retourne les ingrédients de la recette avec les lots d'inventaire disponibles
- * pour chaque ingrédient, permettant à l'utilisateur de sélectionner quels lots utiliser.
- * 
- * Logique de matching :
- * 1. Si recipe_ingredient a canonical_food_id → chercher lots avec même canonical_food_id
- * 2. Si recipe_ingredient a archetype_id → chercher lots avec même archetype_id
- * 3. Matching intelligent par nom si pas d'IDs (fuzzy matching)
+ *
+ * Retourne les ingrédients de la recette avec les lots d'inventaire disponibles.
+ * Utilise 2 requêtes (recette + lots batch) au lieu d'une boucle N+1.
  */
 export async function GET(request, { params }) {
   try {
     const supabase = createRouteHandlerClient({ cookies });
 
-    // Vérifier l'authentification
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
@@ -25,7 +19,7 @@ export async function GET(request, { params }) {
 
     const recipeId = params.id;
 
-    // 1. Récupérer les ingrédients de la recette avec leurs IDs
+    // 1. Ingrédients de la recette
     const { data: recipeIngredients, error: ingredientsError } = await supabase
       .from('recipe_ingredients')
       .select(`
@@ -43,7 +37,6 @@ export async function GET(request, { params }) {
       .order('id');
 
     if (ingredientsError) {
-      console.error('Erreur récupération ingrédients:', ingredientsError);
       return NextResponse.json(
         { error: 'Erreur lors de la récupération des ingrédients' },
         { status: 500 }
@@ -54,124 +47,98 @@ export async function GET(request, { params }) {
       return NextResponse.json({ ingredients: [] });
     }
 
-    // 2. Pour chaque ingrédient, trouver les lots disponibles
-    const ingredientsWithLots = await Promise.all(
-      recipeIngredients.map(async (ingredient) => {
-        let availableLots = [];
+    // 2. Collecter les IDs pour le batch
+    const canonicalIds = recipeIngredients
+      .map(i => i.canonical_food_id)
+      .filter(Boolean);
+    const archetypeIds = recipeIngredients
+      .map(i => i.archetype_id)
+      .filter(Boolean);
 
-        // Cas 1: Matching par canonical_food_id
-        if (ingredient.canonical_food_id) {
-          const { data: lots } = await supabase
-            .from('inventory_lots')
-            .select(`
-              id,
-              product_name,
-              quantity,
-              unit,
-              expiration_date,
-              opened_at,
-              products(id, canonical_food_id)
-            `)
-            .eq('user_id', user.id)
-            .gt('quantity', 0)
-            .or(`canonical_food_id.eq.${ingredient.canonical_food_id}`)
-            .order('expiration_date', { ascending: true });
+    // 3. Une seule requête batch pour tous les lots pertinents
+    let lotsQuery = supabase
+      .from('inventory_lots')
+      .select(`
+        id,
+        canonical_food_id,
+        archetype_id,
+        qty_remaining,
+        unit,
+        expiration_date,
+        opened_at,
+        canonical_foods(canonical_name),
+        archetypes(name)
+      `)
+      .eq('user_id', user.id)
+      .gt('qty_remaining', 0)
+      .order('expiration_date', { ascending: true, nullsFirst: false });
 
-          if (lots && lots.length > 0) {
-            availableLots = lots;
-          }
-        }
-
-        // Cas 2: Si pas de lots trouvés, essayer par archetype_id
-        if (availableLots.length === 0 && ingredient.archetype_id) {
-          const { data: lots } = await supabase
-            .from('inventory_lots')
-            .select(`
-              id,
-              product_name,
-              quantity,
-              unit,
-              expiration_date,
-              opened_at,
-              products(id, archetype_id)
-            `)
-            .eq('user_id', user.id)
-            .gt('quantity', 0)
-            .order('expiration_date', { ascending: true });
-
-          if (lots && lots.length > 0) {
-            // Filtrer les lots qui matchent l'archetype
-            availableLots = lots.filter(lot => 
-              lot.products?.archetype_id === ingredient.archetype_id
-            );
-          }
-        }
-
-        // Cas 3: Matching intelligent par nom (fuzzy)
-        if (availableLots.length === 0) {
-          const ingredientName = ingredient.canonical_foods?.canonical_name || 
-                                 ingredient.archetypes?.name || '';
-          
-          if (ingredientName) {
-            const { data: lots } = await supabase
-              .from('inventory_lots')
-              .select(`
-                id,
-                product_name,
-                quantity,
-                unit,
-                expiration_date,
-                opened_at
-              `)
-              .eq('user_id', user.id)
-              .gt('quantity', 0)
-              .ilike('product_name', `%${ingredientName}%`)
-              .order('expiration_date', { ascending: true })
-              .limit(5);
-
-            if (lots && lots.length > 0) {
-              availableLots = lots;
-            }
-          }
-        }
-
-        return {
+    if (canonicalIds.length > 0 && archetypeIds.length > 0) {
+      lotsQuery = lotsQuery.or(
+        `canonical_food_id.in.(${canonicalIds.join(',')}),archetype_id.in.(${archetypeIds.join(',')})`
+      );
+    } else if (canonicalIds.length > 0) {
+      lotsQuery = lotsQuery.in('canonical_food_id', canonicalIds);
+    } else if (archetypeIds.length > 0) {
+      lotsQuery = lotsQuery.in('archetype_id', archetypeIds);
+    } else {
+      // Aucun ID connu → pas de lots
+      return NextResponse.json({
+        recipe_id: parseInt(recipeId),
+        ingredients: recipeIngredients.map(ingredient => ({
           ingredient_id: ingredient.id,
-          name: ingredient.canonical_foods?.canonical_name || 
-                ingredient.archetypes?.name || 
-                'Ingrédient inconnu',
+          name: ingredient.canonical_foods?.canonical_name || ingredient.archetypes?.name || 'Ingrédient inconnu',
           quantity_needed: ingredient.quantity,
           unit_needed: ingredient.unit,
           notes: ingredient.notes,
           canonical_food_id: ingredient.canonical_food_id,
           archetype_id: ingredient.archetype_id,
-          available_lots: availableLots.map(lot => ({
-            lot_id: lot.id,
-            product_name: lot.product_name,
-            quantity_available: lot.quantity,
-            unit: lot.unit,
-            expiration_date: lot.expiration_date,
-            opened_at: lot.opened_at,
-            // Calculer les jours avant expiration
-            days_until_expiry: lot.expiration_date 
-              ? Math.ceil((new Date(lot.expiration_date) - new Date()) / (1000 * 60 * 60 * 24))
-              : null
-          })),
-          has_enough: availableLots.some(lot => lot.quantity >= ingredient.quantity)
-        };
-      })
-    );
+          available_lots: [],
+          has_enough: false,
+        }))
+      });
+    }
+
+    const { data: allLots } = await lotsQuery;
+
+    const todayISO = new Date().toISOString().split('T')[0];
+
+    // 4. Regrouper en mémoire
+    const ingredientsWithLots = recipeIngredients.map(ingredient => {
+      const matchingLots = (allLots || []).filter(lot =>
+        (ingredient.canonical_food_id && lot.canonical_food_id === ingredient.canonical_food_id) ||
+        (ingredient.archetype_id && lot.archetype_id === ingredient.archetype_id)
+      );
+
+      return {
+        ingredient_id: ingredient.id,
+        name: ingredient.canonical_foods?.canonical_name || ingredient.archetypes?.name || 'Ingrédient inconnu',
+        quantity_needed: ingredient.quantity,
+        unit_needed: ingredient.unit,
+        notes: ingredient.notes,
+        canonical_food_id: ingredient.canonical_food_id,
+        archetype_id: ingredient.archetype_id,
+        available_lots: matchingLots.map(lot => ({
+          lot_id: lot.id,
+          product_name: lot.canonical_foods?.canonical_name || lot.archetypes?.name || 'Produit',
+          quantity_available: lot.qty_remaining,
+          unit: lot.unit,
+          expiration_date: lot.expiration_date,
+          opened_at: lot.opened_at,
+          days_until_expiry: lot.expiration_date
+            ? Math.round((new Date(String(lot.expiration_date).split('T')[0]) - new Date(todayISO)) / 86400000)
+            : null,
+        })),
+        has_enough: matchingLots.some(lot => lot.qty_remaining >= ingredient.quantity),
+      };
+    });
 
     return NextResponse.json({
       recipe_id: parseInt(recipeId),
-      ingredients: ingredientsWithLots
+      ingredients: ingredientsWithLots,
     });
 
   } catch (error) {
-    console.error('Erreur API available-ingredients:', error);
-    return NextResponse.json(
-      { error: 'Erreur serveur interne' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Erreur serveur interne' }, { status: 500 });
   }
 }

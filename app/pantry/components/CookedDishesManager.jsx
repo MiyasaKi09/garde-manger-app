@@ -57,10 +57,8 @@ export default function CookedDishesManager({ userId, onActionComplete }) {
         await loadDishes();
         if (onActionComplete) onActionComplete();
         
-        // Message de succès
-        if (data.fullyConsumed) {
-          console.log('🎉', data.message);
-        }
+
+
       } else {
         alert(data.error || 'Erreur lors de la consommation');
       }
@@ -83,7 +81,6 @@ export default function CookedDishesManager({ userId, onActionComplete }) {
       if (data.success) {
         await loadDishes();
         if (onActionComplete) onActionComplete();
-        console.log('✅', data.message);
       } else {
         alert(data.error || 'Erreur lors du changement de stockage');
       }
@@ -104,7 +101,6 @@ export default function CookedDishesManager({ userId, onActionComplete }) {
       if (data.success) {
         await loadDishes();
         if (onActionComplete) onActionComplete();
-        console.log('✅', data.message);
       } else {
         alert(data.error || 'Erreur lors de la suppression');
       }

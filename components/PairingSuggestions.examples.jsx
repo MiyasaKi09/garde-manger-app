@@ -17,8 +17,6 @@ export function RecipeDetailWithPairing({ recipeId, recipeName }) {
   const [selectedRecipes, setSelectedRecipes] = useState([]);
 
   async function handleAddToPlanning(recipe) {
-    console.log('Ajout au planning:', recipe);
-    
     // Exemple : ajouter à la liste des recettes sélectionnées
     setSelectedRecipes(prev => [...prev, recipe]);
     
@@ -73,7 +71,6 @@ export function PlanningPageWithPairing() {
   const [seasonFilter, setSeasonFilter] = useState(null);
 
   async function handleAddToPlanning(recipe) {
-    console.log('Ajout au planning:', recipe);
     // Implémenter l'ajout au planning ici
   }
 
@@ -134,7 +131,6 @@ export function MinimalPairingExample() {
       mainRecipeId={278}
       mainRecipeName="One pot pasta tomate, basilic, mozzarella"
       onAddRecipe={async (recipe) => {
-        console.log('Recette ajoutée:', recipe);
         alert(`${recipe.name} ajouté au planning !`);
       }}
     />
@@ -158,13 +154,6 @@ export function AdvancedPairingExample() {
       [key]: recipe
     }));
 
-    // Ici, sauvegarder dans Supabase
-    console.log('Sauvegarde:', {
-      date: selectedDate,
-      mealType: selectedMealType,
-      mainRecipe: mainRecipe,
-      sideRecipe: recipe
-    });
   }
 
   return (
@@ -228,7 +217,6 @@ export function CompactPairingExample({ recipeId, recipeName }) {
         mainRecipeId={recipeId}
         mainRecipeName={recipeName}
         onAddRecipe={async (recipe) => {
-          console.log('Quick add:', recipe);
         }}
         maxSuggestions={3}
       />

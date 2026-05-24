@@ -15,9 +15,6 @@ export default function DebugDatabase() {
 
   async function checkDatabase() {
     try {
-      // Tester la connexion en listant les tables disponibles
-      console.log('Test de connexion à Supabase...');
-      
       // Essayer de récupérer des recettes avec différentes requêtes
       const tests = [
         { name: 'Toutes colonnes', query: supabase.from('recipes').select('*').limit(5) },
@@ -26,14 +23,12 @@ export default function DebugDatabase() {
       ];
 
       for (const test of tests) {
-        console.log(`Test: ${test.name}`);
         const { data, error } = await test.query;
-        
+
         if (error) {
           console.error(`Erreur ${test.name}:`, error);
           setRecipesError(error.message);
         } else {
-          console.log(`Succès ${test.name}:`, data);
           if (data && data.length > 0) {
             setRecipes(data);
             setRecipeColumns(Object.keys(data[0]));
@@ -87,7 +82,6 @@ export default function DebugDatabase() {
         console.error('Erreur insertion:', error);
         alert(`Erreur: ${error.message}`);
       } else {
-        console.log('Recette insérée:', data);
         alert('Recette insérée avec succès!');
         checkDatabase(); // Recharger
       }

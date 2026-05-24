@@ -95,11 +95,17 @@ export default function CreateDishFromRecipeDialog({ recipe, onClose, onSuccess 
   if (!recipe) return null;
 
   return (
-    <div className="dialog-overlay" onClick={onClose}>
-      <div className="dialog-content" onClick={(e) => e.stopPropagation()}>
+    <div className="dialog-overlay" onClick={onClose} aria-hidden="true">
+      <div
+        className="dialog-content"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Cuisiner ${recipe.name}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="dialog-header">
           <h2>🍳 Cuisiner "{recipe.name}"</h2>
-          <button className="close-btn" onClick={onClose}>✕</button>
+          <button className="close-btn" onClick={onClose} aria-label="Fermer">✕</button>
         </div>
 
         <form onSubmit={handleSubmit} className="cook-form">

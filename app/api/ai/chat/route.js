@@ -51,13 +51,14 @@ export async function POST(request) {
       content: m.content,
     }))
 
-    // Stream response — planning needs more tokens for full JSON with cooking steps
-    const maxTokens = intent === 'planning' ? 16384 : 4096
+    // planning : 8192 suffit, 16384 était surdimensionné
+    const maxTokens = intent === 'planning' ? 8192 : 4096
 
     const stream = anthropic.messages.stream({
       model: 'claude-sonnet-4-20250514',
       max_tokens: maxTokens,
-      system: systemPrompt,
+      // cache_control sur le system prompt statique (999 lignes) → économie ~30% tokens
+      system: [{ type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral' } }],
       messages: apiMessages,
     })
 

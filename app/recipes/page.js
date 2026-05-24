@@ -45,10 +45,6 @@ export default function RecipesPage() {
     try {
       setLoading(true);
       
-      console.log('=== CHARGEMENT RECETTES ===');
-      console.log('URL Supabase:', process.env.NEXT_PUBLIC_SUPABASE_URL);
-      console.log('Clé définie:', !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-      
       // Charger les recettes avec leurs ingrédients (nouveau système)
       // Note: on charge d'abord les recettes, puis les ingrédients séparément
       // pour éviter les problèmes de relations multiples
@@ -57,11 +53,6 @@ export default function RecipesPage() {
         .select('*')
         .order('id', { ascending: true }); // Tri croissant pour avoir les recettes avec ingrédients en premier
 
-      console.log('Résultat requête Supabase:');
-      console.log('- Données:', data);
-      console.log('- Erreur:', error);
-      console.log('- Nombre de recettes:', data?.length || 0);
-      
       if (error) {
         console.error('ERREUR SUPABASE:', error);
         setError(`Erreur de connexion: ${error.message}`);
@@ -70,14 +61,8 @@ export default function RecipesPage() {
       }
       
       if (data && data.length > 0) {
-        console.log('Structure de la première recette:');
-        console.log('Colonnes disponibles:', Object.keys(data[0]));
-        console.log('Première recette complète:', data[0]);
-        
         // Charger les ingrédients pour toutes les recettes
         const recipeIds = data.map(r => r.id);
-
-        console.log('🔍 Chargement des ingrédients pour', recipeIds.length, 'recettes...');
 
         // IMPORTANT: Charger TOUS les ingrédients (pas seulement les 1000 premiers)
         // Supabase limite par défaut à 1000 résultats, donc on utilise une boucle de pagination
@@ -123,7 +108,6 @@ export default function RecipesPage() {
             allIngredients = allIngredients.concat(ingredientsBatch);
             offset += BATCH_SIZE;
             hasMore = ingredientsBatch.length === BATCH_SIZE;
-            console.log(`   📦 Batch chargé: ${ingredientsBatch.length} ingrédients (total: ${allIngredients.length})`);
           } else {
             hasMore = false;
           }
@@ -131,32 +115,15 @@ export default function RecipesPage() {
 
         const ingredients = allIngredients;
 
-        console.log('📊 Résultat ingrédients:', {
-          count: ingredients?.length || 0,
-          sample: ingredients?.[0]
-        });
-        
         // Regrouper les ingrédients par recipe_id
         const ingredientsByRecipe = {};
         if (ingredients) {
-          console.log('🔍 DEBUG: Premier ingrédient avant regroupement:', ingredients[0]);
-          console.log('🔍 DEBUG: Type de recipe_id:', typeof ingredients[0]?.recipe_id);
-          console.log('🔍 DEBUG: Premier recipe ID:', data[0]?.id, 'Type:', typeof data[0]?.id);
-
           ingredients.forEach(ing => {
             if (!ingredientsByRecipe[ing.recipe_id]) {
               ingredientsByRecipe[ing.recipe_id] = [];
             }
             ingredientsByRecipe[ing.recipe_id].push(ing);
           });
-
-          console.log('🔢 Recettes avec ingrédients:', Object.keys(ingredientsByRecipe).length);
-          console.log('🔍 DEBUG: IDs des recettes avec ingrédients:', Object.keys(ingredientsByRecipe).slice(0, 10));
-          console.log('🔍 DEBUG: IDs des 10 premières recettes chargées:', data.slice(0, 10).map(r => r.id));
-          console.log('📝 Exemple - Recette ID', data[0]?.id, 'a', ingredientsByRecipe[data[0]?.id]?.length || 0, 'ingrédients');
-          if (ingredientsByRecipe[data[0]?.id]?.[0]) {
-            console.log('Premier ingrédient:', ingredientsByRecipe[data[0]?.id][0]);
-          }
         }
         
         // Ajouter les ingrédients à chaque recette
@@ -172,19 +139,11 @@ export default function RecipesPage() {
           myko_score: Math.min(100, 50 + (ingredientsByRecipe[recipe.id]?.length || 0) * 5)
         }));
 
-        console.log('Recettes enrichies avec ingrédients:', recipesWithIngredients.length);
-        console.log('Exemple de recette avec ingrédients:', {
-          id: recipesWithIngredients[0]?.id,
-          name: recipesWithIngredients[0]?.name,
-          nb_ingredients: recipesWithIngredients[0]?.recipe_ingredients?.length,
-          ingredients: recipesWithIngredients[0]?.recipe_ingredients?.slice(0, 3)
-        });
         setRecipes(recipesWithIngredients);
         return;
       }
       
       // Si pas de recettes, vérifier si la table existe
-      console.log('Aucune recette trouvée, test de la table...');
       const { data: testData, error: testError } = await supabase
         .from('recipes')
         .select('id')
@@ -194,7 +153,6 @@ export default function RecipesPage() {
         console.error('Table recipes introuvable:', testError);
         setError(`Table 'recipes' introuvable. Veuillez vérifier votre base de données.`);
       } else {
-        console.log('Table recipes existe mais est vide');
         setRecipes([]);
       }
       
@@ -211,10 +169,6 @@ export default function RecipesPage() {
     try {
       if (recipes.length === 0) return;
 
-      console.log('🔍 Vérification disponibilité pour', recipes.length, 'recettes');
-      console.log('📋 Première recette:', recipes[0]);
-      console.log('🥕 Ingrédients première recette:', recipes[0]?.recipe_ingredients?.length || 0);
-
       // Charger l'inventaire disponible (lots non expirés, quantité > 0)
       // Note : On ne charge pas les archetypes ici à cause d'une ambiguïté de relation dans la DB
       // On fera la correspondance différemment
@@ -227,11 +181,6 @@ export default function RecipesPage() {
       if (error) {
         console.error('Erreur chargement inventaire:', error);
         return;
-      }
-
-      console.log('📦 Lots d\'inventaire chargés:', inventory?.length || 0);
-      if (inventory && inventory.length > 0) {
-        console.log('Premier lot:', inventory[0]);
       }
 
       // Charger les archetypes pour créer un mapping archetype_id -> canonical_food_id
@@ -248,7 +197,6 @@ export default function RecipesPage() {
           archetypes.forEach(arch => {
             archetypeMapping[arch.id] = arch.canonical_food_id;
           });
-          console.log('🗺️ Mapping archetypes créé:', Object.keys(archetypeMapping).length, 'entrées');
         }
       }
 
@@ -335,16 +283,6 @@ export default function RecipesPage() {
             });
           }
 
-          // Pour debug : afficher les ingrédients sans correspondance
-          if (totalAvailable === 0 && recipe.id === recipes[0]?.id) {
-            console.log('❌ Pas de correspondance pour ingrédient:', {
-              canonical_food_id: ingredient.canonical_food_id,
-              archetype_id: ingredient.archetype_id,
-              canonical_name: ingredient.canonical_foods?.canonical_name,
-              archetype_name: ingredient.archetypes?.name
-            });
-          }
-
           // Comparer à la quantité requise (si disponible)
           const requiredQty = ingredient.quantity || 1;
           if (totalAvailable >= requiredQty) {
@@ -395,11 +333,6 @@ export default function RecipesPage() {
         };
       }
 
-      console.log('✅ Statuts calculés pour', Object.keys(statusMap).length, 'recettes');
-      if (Object.keys(statusMap).length > 0) {
-        const firstRecipeId = recipes[0]?.id;
-        console.log('Premier statut (recette', firstRecipeId, '):', statusMap[firstRecipeId]);
-      }
       setInventoryStatus(statusMap);
     } catch (error) {
       console.error('Erreur vérification stocks:', error);
