@@ -131,7 +131,8 @@ export default function PlanningAssistantPage() {
       })
       const trigData = await trigRes.json().catch(() => ({}))
       if (!trigRes.ok && trigRes.status !== 202) {
-        throw new Error(trigData.error || `Erreur déclenchement (${trigRes.status})`)
+        const hint = trigData.hint ? `\n${trigData.hint}` : ''
+        throw new Error((trigData.error || `Erreur déclenchement (${trigRes.status})`) + hint)
       }
 
       // La routine génère côté cloud (souvent 1-3 min) : on poll Supabase

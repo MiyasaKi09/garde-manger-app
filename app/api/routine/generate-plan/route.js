@@ -34,7 +34,10 @@ export async function POST(request) {
   const token = process.env.CLAUDE_ROUTINE_GENERATE_PLAN_TOKEN
   if (!url || !token) {
     return NextResponse.json(
-      { error: 'Routine non configurée (variables d’environnement manquantes)' },
+      {
+        error: 'Routine non configurée',
+        hint: 'Configurer CLAUDE_ROUTINE_GENERATE_PLAN_URL et CLAUDE_ROUTINE_GENERATE_PLAN_TOKEN dans les variables d\'environnement Vercel.',
+      },
       { status: 503 },
     )
   }
