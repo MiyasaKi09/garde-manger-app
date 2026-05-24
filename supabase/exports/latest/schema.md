@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Sun May 24 15:46:30 UTC 2026_
+_Généré le : Sun May 24 18:59:27 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -499,6 +499,8 @@ _Généré le : Sun May 24 15:46:30 UTC 2026_
  - target_end :: date NOT NULL
  - status :: text default 'pending'::text NOT NULL
  - created_at :: timestamp with time zone default now() NOT NULL
+ - target_meals :: jsonb
+ - user_instructions :: text
 
 ### planned_meals
  - id :: integer default nextval('planned_meals_id_seq'::regclass) NOT NULL
