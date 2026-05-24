@@ -63,6 +63,8 @@ export default function PlanningPage() {
   const [regenDays, setRegenDays] = useState([])
   const [regenStatus, setRegenStatus] = useState('idle') // idle | submitting | waiting | done | error
   const [regenError, setRegenError] = useState('')
+  const [regenMeals, setRegenMeals] = useState([]) // [{date, type}]
+  const [regenInstructions, setRegenInstructions] = useState('')
 
   const weekDaysFromImport = latestImport ? (() => {
     const days = []
@@ -81,9 +83,18 @@ export default function PlanningPage() {
     setRegenDays(prev => prev.includes(iso) ? prev.filter(d => d !== iso) : [...prev, iso].sort())
   }
 
+  function toggleRegenMeal(date, type) {
+    setRegenMeals(prev => {
+      const exists = prev.find(m => m.date === date && m.type === type)
+      if (exists) return prev.filter(m => !(m.date === date && m.type === type))
+      return [...prev, { date, type }]
+    })
+  }
+
   async function submitRegen() {
     if (!latestImport) return
     if (regenMode === 'days' && !regenDays.length) return
+    if (regenMode === 'meals' && !regenMeals.length) return
     setRegenStatus('submitting')
     setRegenError('')
 
@@ -99,6 +110,8 @@ export default function PlanningPage() {
           targetStart,
           targetEnd,
           days: regenMode === 'days' ? regenDays : null,
+          meals: regenMode === 'meals' ? regenMeals : null,
+          instructions: regenInstructions.trim() || null,
         }),
       })
       const data = await res.json().catch(() => ({}))
@@ -187,7 +200,7 @@ export default function PlanningPage() {
             <section className="planning-section">
               <div className="section-header">
                 <div className="section-accent"></div>
-                <button className="btn-regen" onClick={() => { setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMode('week') }}>
+                <button className="btn-regen" onClick={() => { setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMeals([]); setRegenInstructions(''); setRegenMode('week') }}>
                   <RefreshCw size={14} />
                   Modifier
                 </button>
@@ -223,13 +236,19 @@ export default function PlanningPage() {
                   className={`regen-mode-btn${regenMode === 'week' ? ' active' : ''}`}
                   onClick={() => setRegenMode('week')}
                 >
-                  Toute la semaine
+                  Semaine entière
                 </button>
                 <button
                   className={`regen-mode-btn${regenMode === 'days' ? ' active' : ''}`}
                   onClick={() => setRegenMode('days')}
                 >
                   Jours précis
+                </button>
+                <button
+                  className={`regen-mode-btn${regenMode === 'meals' ? ' active' : ''}`}
+                  onClick={() => setRegenMode('meals')}
+                >
+                  Un repas
                 </button>
               </div>
 
@@ -253,19 +272,51 @@ export default function PlanningPage() {
                 </div>
               )}
 
+              {/* Meal picker */}
+              {regenMode === 'meals' && (
+                <div className="regen-meals-list">
+                  {weekDaysFromImport.map((d, i) => {
+                    const iso = d.toISOString().split('T')[0]
+                    const midiSel = regenMeals.some(m => m.date === iso && m.type === 'dejeuner')
+                    const soirSel = regenMeals.some(m => m.date === iso && m.type === 'diner')
+                    return (
+                      <div key={iso} className="regen-meal-row">
+                        <span className="regen-meal-day">
+                          <span className="regen-meal-day-name">{DAY_LABELS_SHORT[i]}</span>
+                          <span className="regen-meal-day-num">{d.getDate()}</span>
+                        </span>
+                        <button onClick={() => toggleRegenMeal(iso, 'dejeuner')} className={`regen-meal-btn${midiSel ? ' active' : ''}`}>Midi</button>
+                        <button onClick={() => toggleRegenMeal(iso, 'diner')} className={`regen-meal-btn${soirSel ? ' active' : ''}`}>Soir</button>
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
+
               {regenStatus === 'error' && <p className="regen-error">{regenError}</p>}
+
+              {/* Instructions libres */}
+              <div className="regen-instructions-wrap">
+                <textarea
+                  className="regen-instructions"
+                  placeholder="Instructions pour Myko (optionnel) — ex : cuisine inspirée nikkei pour jeudi midi, végétarien vendredi soir…"
+                  value={regenInstructions}
+                  onChange={e => setRegenInstructions(e.target.value)}
+                  rows={2}
+                />
+              </div>
 
               <button
                 className="regen-submit"
                 onClick={submitRegen}
-                disabled={regenMode === 'days' && !regenDays.length}
+                disabled={(regenMode === 'days' && !regenDays.length) || (regenMode === 'meals' && !regenMeals.length)}
               >
                 <RefreshCw size={16} />
                 {regenMode === 'week'
                   ? 'Régénérer la semaine entière'
-                  : regenDays.length
-                    ? `Régénérer ${regenDays.length} jour${regenDays.length > 1 ? 's' : ''}`
-                    : 'Sélectionne des jours'}
+                  : regenMode === 'days'
+                    ? regenDays.length ? `Régénérer ${regenDays.length} jour${regenDays.length > 1 ? 's' : ''}` : 'Sélectionne des jours'
+                    : regenMeals.length ? `Régénérer ${regenMeals.length} repas` : 'Sélectionne des repas'}
               </button>
               <p className="regen-note">Myko régénère en 2–4 min et écrit directement dans Supabase.</p>
             </>) : regenStatus === 'submitting' ? (
@@ -654,6 +705,55 @@ export default function PlanningPage() {
   transition: var(--transition-base);
 }
 .regen-cancel:hover { background: var(--surface-soft); color: var(--ink-1); }
+
+/* ── Grille repas (midi/soir par jour) ── */
+.regen-meals-list {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.regen-meal-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.regen-meal-day {
+  display: flex; align-items: baseline; gap: 5px;
+  width: 62px; flex-shrink: 0;
+}
+.regen-meal-day-name {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+.regen-meal-day-num {
+  font-size: var(--fs-sm); font-weight: 700; color: var(--ink-1);
+}
+.regen-meal-btn {
+  flex: 1; padding: 9px 0;
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: transparent; cursor: pointer;
+  font-family: var(--font-text); font-size: var(--fs-sm);
+  font-weight: 600; color: var(--ink-2);
+  transition: var(--transition-base);
+}
+.regen-meal-btn:hover { border-color: var(--brand); color: var(--brand); }
+.regen-meal-btn.active {
+  background: var(--brand-soft); border-color: var(--brand); color: var(--brand);
+}
+
+/* ── Champ instructions ── */
+.regen-instructions-wrap { width: 100%; }
+.regen-instructions {
+  width: 100%; box-sizing: border-box;
+  padding: 10px 13px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  font-family: var(--font-text); font-size: var(--fs-sm);
+  color: var(--ink-1); line-height: 1.5;
+  resize: vertical; outline: none;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+.regen-instructions:focus { border-color: var(--brand); }
+.regen-instructions::placeholder { color: var(--ink-3); }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {

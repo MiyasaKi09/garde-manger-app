@@ -23,7 +23,7 @@ export async function POST(request) {
   let body = {}
   try { body = await request.json() } catch { /* body optionnel */ }
 
-  const { importId, targetStart, targetEnd, days } = body || {}
+  const { importId, targetStart, targetEnd, days, meals, instructions } = body || {}
 
   // ── Mode régénération : écrire la requête en DB avant de déclencher ──
   if (targetStart && targetEnd) {
@@ -33,6 +33,8 @@ export async function POST(request) {
         user_id: user.id,
         import_id: importId || null,
         target_days: Array.isArray(days) && days.length ? days : null,
+        target_meals: Array.isArray(meals) && meals.length ? meals : null,
+        user_instructions: instructions || null,
         target_start: targetStart,
         target_end: targetEnd,
         status: 'pending',
