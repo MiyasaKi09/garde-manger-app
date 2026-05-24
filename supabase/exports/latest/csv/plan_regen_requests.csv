@@ -1,1 +1,2 @@
 id,user_id,import_id,target_days,target_start,target_end,status,created_at
+1,9055926b-ed29-49f1-96b8-fc717973b333,27,"{2026-05-25,2026-05-27}",2026-05-25,2026-05-31,processing,2026-05-24 14:55:52.337536+00

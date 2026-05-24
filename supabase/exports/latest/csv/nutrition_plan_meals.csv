@@ -1266,13 +1266,6 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 2357,26,Zoé,2026-05-24,dejeuner,gourmand,"Gnocchi à la crème de petits pois & menthe, asperges rôties & burrata (portion Zoé)",650.0,42.0,54.0,30.0,8.0,
 2358,26,Zoé,2026-05-24,diner,gourmand,"Tian provençal de légumes, œuf poché & pistou, semoule (portion Zoé)",590.0,38.0,48.0,26.0,7.0,
 2359,26,Zoé,2026-05-24,collation,gourmand,Collation — 150 g skyr 0 % & 20 g noix,210.0,10.0,18.0,12.0,3.0,
-2360,27,Julien,2026-05-25,pdj,standard,200g skyr 0% + 3 œufs durs,350.0,39.0,9.0,16.0,0.0,
-2361,27,Julien,2026-05-25,dejeuner,standard,"Tajine de pois chiches aux légumes printaniers (carotte nouvelle, courgette, navet), citron confit & coriandre, semoule",700.0,35.0,92.0,20.0,16.0,Tajine pois chiches
-2362,27,Julien,2026-05-25,diner,standard,"Bavette d'aloyau grillée, échalotes confites au vin rouge, écrasé de pommes de terre à l'huile d'olive & haricots verts à l'ail",730.0,58.0,52.0,30.0,10.0,Bavette échalotes
-2363,27,Julien,2026-05-25,collation,standard,250g skyr 0% + 20g amandes,270.0,30.0,14.0,10.0,3.0,
-2364,27,Zoé,2026-05-25,dejeuner,standard,"Tajine de pois chiches aux légumes printaniers, citron confit & coriandre, semoule (portion Zoé)",500.0,26.0,64.0,14.0,12.0,Tajine pois chiches
-2365,27,Zoé,2026-05-25,diner,standard,"Bavette d'aloyau grillée, échalotes au vin rouge, écrasé de pommes de terre & haricots verts (portion Zoé)",540.0,42.0,40.0,22.0,8.0,Bavette échalotes
-2366,27,Zoé,2026-05-25,collation,standard,150g skyr 0% + 1 banane,200.0,18.0,16.0,7.0,3.0,
 2367,27,Julien,2026-05-26,pdj,gourmand,200g skyr 0% + 3 œufs durs,350.0,39.0,9.0,16.0,0.0,
 2368,27,Julien,2026-05-26,dejeuner,gourmand,"Blanquette de volaille à l'ancienne (champignons, carottes nouvelles, crème), riz pilaf",770.0,64.0,70.0,26.0,6.0,Blanquette volaille
 2369,27,Julien,2026-05-26,diner,gourmand,"Risotto crémeux au citron, courgettes & basilic, copeaux de parmesan & huile d'olive",770.0,24.0,93.0,34.0,8.0,Risotto citron courgette
@@ -1280,13 +1273,6 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 2371,27,Zoé,2026-05-26,dejeuner,gourmand,"Blanquette de volaille à l'ancienne, riz pilaf (portion Zoé)",480.0,40.0,45.0,16.0,4.0,Blanquette volaille
 2372,27,Zoé,2026-05-26,diner,gourmand,"Risotto crémeux au citron, courgettes & basilic, parmesan (portion Zoé)",500.0,16.0,62.0,22.0,5.0,Risotto citron courgette
 2373,27,Zoé,2026-05-26,collation,gourmand,150g skyr 0% + 20g noix + 1 fruit,230.0,18.0,20.0,9.0,4.0,
-2374,27,Julien,2026-05-27,pdj,léger,250g skyr 0% + 80g jambon de Paris + 1 fruit,320.0,41.0,30.0,4.0,3.0,
-2375,27,Julien,2026-05-27,dejeuner,léger,"Curry de saumon au lait de coco léger, citron vert & coriandre, riz basmati",640.0,46.0,70.0,18.0,6.0,Curry de saumon
-2376,27,Julien,2026-05-27,diner,léger,"Bowl tiède de quinoa, fèves fraîches, asperges vertes & œuf poché, vinaigrette aux herbes",630.0,42.0,55.0,22.0,12.0,Bowl quinoa fèves
-2377,27,Julien,2026-05-27,collation,léger,200g skyr 0% + 1 pomme + 12g amandes,250.0,27.0,24.0,7.0,4.0,
-2378,27,Zoé,2026-05-27,dejeuner,léger,"Curry de saumon au lait de coco léger, citron vert & coriandre, riz basmati (portion Zoé)",470.0,32.0,50.0,14.0,5.0,Curry de saumon
-2379,27,Zoé,2026-05-27,diner,léger,"Bowl tiède de quinoa, fèves, asperges & œuf poché, vinaigrette aux herbes (portion Zoé)",460.0,30.0,42.0,16.0,9.0,Bowl quinoa fèves
-2380,27,Zoé,2026-05-27,collation,léger,150g skyr 0% + 1 pomme,200.0,18.0,16.0,6.0,3.0,
 2381,27,Julien,2026-05-28,pdj,standard,200g skyr 0% + 3 œufs durs,350.0,39.0,9.0,16.0,0.0,
 2382,27,Julien,2026-05-28,dejeuner,standard,"Chana masala — curry de pois chiches & aubergines à la tomate, gingembre & coriandre, riz basmati",700.0,34.0,95.0,18.0,16.0,Chana masala
 2383,27,Julien,2026-05-28,diner,standard,"Suprême de pintade rôti au thym, jus corsé, pommes de terre sautées à l'ail & persil, fèves fraîches",720.0,58.0,48.0,30.0,9.0,Pintade rôtie
@@ -1315,3 +1301,17 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 2406,27,Zoé,2026-05-31,dejeuner,léger,"Salade tiède de pommes de terre rattes, haricots verts, pois chiches, œufs durs & radis, vinaigrette moutarde-herbes (portion Zoé)",460.0,32.0,44.0,17.0,6.0,Salade rattes & œufs
 2407,27,Zoé,2026-05-31,diner,léger,"Minestrone printanier aux haricots blancs & pesto, parmesan, pain grillé (portion Zoé)",470.0,26.0,50.0,14.0,10.0,Minestrone printanier
 2408,27,Zoé,2026-05-31,collation,léger,150g skyr 0% + 1 fruit + 8g amandes,210.0,18.0,18.0,6.0,4.0,
+2409,27,Julien,2026-05-25,pdj,standard,200g skyr 0% + 3 œufs durs,350.0,39.0,9.0,16.0,0.0,
+2410,27,Julien,2026-05-25,dejeuner,standard,"Chili sin carne — haricots rouges, maïs, tomate, cumin, paprika fumé, coriandre, riz basmati (batch préparé dimanche soir)",700.0,32.0,105.0,18.0,20.0,Chili sin carne
+2411,27,Julien,2026-05-25,diner,standard,"Bavette d'aloyau grillée, sauce au poivre vert crémée, pommes grenailles rôties au thym & haricots verts à l'ail",720.0,60.0,55.0,35.0,8.0,Bavette poivre grenailles
+2412,27,Julien,2026-05-25,collation,standard,250g skyr 0% + 20g amandes,270.0,30.0,14.0,10.0,3.0,
+2413,27,Zoé,2026-05-25,dejeuner,standard,"Chili sin carne — haricots rouges, maïs, tomate, cumin, coriandre, riz basmati (portion Zoé)",480.0,22.0,72.0,12.0,14.0,Chili sin carne
+2414,27,Zoé,2026-05-25,diner,standard,"Bavette d'aloyau, sauce au poivre vert, pommes grenailles rôties au thym & haricots verts à l'ail (portion Zoé)",540.0,42.0,40.0,22.0,6.0,Bavette poivre grenailles
+2415,27,Zoé,2026-05-25,collation,standard,150g skyr 0% + 1 banane,200.0,18.0,16.0,7.0,3.0,
+2416,27,Julien,2026-05-27,pdj,léger,250g skyr 0% + 80g jambon de Paris + 1 fruit,320.0,41.0,30.0,4.0,3.0,
+2417,27,Julien,2026-05-27,dejeuner,léger,"Saumon poché froid, sauce verte yaourt-aneth-câpres, taboulé de boulgour aux herbes fraîches & concombre (batch préparé mardi soir)",700.0,46.0,65.0,26.0,8.0,Saumon poché froid
+2418,27,Julien,2026-05-27,diner,léger,"Œufs cocotte aux asperges vertes, ricotta & ciboulette, mouillettes de pain de campagne grillé",600.0,40.0,48.0,25.0,6.0,Œufs cocotte asperges
+2419,27,Julien,2026-05-27,collation,léger,200g skyr 0% + 1 pomme + 12g amandes,250.0,27.0,24.0,7.0,4.0,
+2420,27,Zoé,2026-05-27,dejeuner,léger,"Saumon poché froid, sauce verte yaourt-aneth-câpres, taboulé de boulgour aux herbes & concombre (portion Zoé)",490.0,32.0,50.0,18.0,6.0,Saumon poché froid
+2421,27,Zoé,2026-05-27,diner,léger,"Œufs cocotte aux asperges vertes, ricotta & ciboulette, mouillettes de pain grillé (portion Zoé)",450.0,28.0,36.0,20.0,5.0,Œufs cocotte asperges
+2422,27,Zoé,2026-05-27,collation,léger,150g skyr 0% + 1 pomme,200.0,18.0,16.0,6.0,3.0,
