@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { Upload, FileSpreadsheet, Trash2, Calendar, ChevronRight, Sparkles, Leaf } from 'lucide-react'
+import { Upload, FileSpreadsheet, Trash2, Calendar, Sparkles, Leaf, RefreshCw, X } from 'lucide-react'
 import WeeklyPlanView from './components/WeeklyPlanView'
 import DailyNutritionRecap from './components/DailyNutritionRecap'
 
@@ -55,10 +55,89 @@ export default function PlanningPage() {
   }
 
   const latestImport = imports[0] || null
-  // Le hero reste toujours visible ; un SEUL élément de chargement (même
-  // style que WeeklyPlanView) jusqu'à ce que auth + imports soient prêts.
-  // Évite le flash "Aucun plan encore" puis "Chargement…".
   const planningReady = !loading && importsLoaded
+
+  // ── Régénération ──
+  const [regenOpen, setRegenOpen] = useState(false)
+  const [regenMode, setRegenMode] = useState('week') // 'week' | 'days'
+  const [regenDays, setRegenDays] = useState([])
+  const [regenStatus, setRegenStatus] = useState('idle') // idle | submitting | waiting | done | error
+  const [regenError, setRegenError] = useState('')
+
+  const weekDaysFromImport = latestImport ? (() => {
+    const days = []
+    const start = new Date(latestImport.date_range_start)
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(start)
+      d.setDate(start.getDate() + i)
+      days.push(d)
+    }
+    return days
+  })() : []
+
+  const DAY_LABELS_SHORT = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+
+  function toggleRegenDay(iso) {
+    setRegenDays(prev => prev.includes(iso) ? prev.filter(d => d !== iso) : [...prev, iso].sort())
+  }
+
+  async function submitRegen() {
+    if (!latestImport) return
+    if (regenMode === 'days' && !regenDays.length) return
+    setRegenStatus('submitting')
+    setRegenError('')
+
+    const targetStart = latestImport.date_range_start
+    const targetEnd = latestImport.date_range_end
+
+    try {
+      const res = await authFetch('/api/routine/generate-plan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          importId: latestImport.id,
+          targetStart,
+          targetEnd,
+          days: regenMode === 'days' ? regenDays : null,
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok && res.status !== 202) {
+        throw new Error(data.error || `Erreur (${res.status})`)
+      }
+      setRegenStatus('waiting')
+
+      // Poll plan_regen_requests jusqu'à status='done'
+      const MAX_WAIT = 6 * 60 * 1000
+      const POLL = 8000
+      const deadline = Date.now() + MAX_WAIT
+      while (Date.now() < deadline) {
+        await new Promise(r => setTimeout(r, POLL))
+        const { data: rows } = await supabase
+          .from('plan_regen_requests')
+          .select('status')
+          .eq('user_id', user?.id)
+          .order('created_at', { ascending: false })
+          .limit(1)
+        const latest = rows?.[0]
+        if (latest?.status === 'done') {
+          setRegenStatus('done')
+          setRegenOpen(false)
+          await loadImports()
+          return
+        }
+        if (latest?.status === 'error') {
+          throw new Error('La routine a rencontré une erreur. Réessaie.')
+        }
+      }
+      setRegenStatus('done')
+      setRegenOpen(false)
+      await loadImports()
+    } catch (err) {
+      setRegenStatus('error')
+      setRegenError(err.message)
+    }
+  }
 
   return (
     <>
@@ -117,6 +196,10 @@ export default function PlanningPage() {
               <div className="section-header">
                 <div className="section-accent"></div>
                 <h2 className="section-title">Semaine en cours</h2>
+                <button className="btn-regen" onClick={() => { setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMode('week') }}>
+                  <RefreshCw size={14} />
+                  Modifier
+                </button>
               </div>
               <WeeklyPlanView imports={imports} />
             </section>
@@ -158,6 +241,87 @@ export default function PlanningPage() {
           </section>
         )}
       </div>
+
+      {/* ═══ MODAL RÉGÉNÉRATION ═══ */}
+      {regenOpen && (
+        <div className="regen-overlay" onClick={() => regenStatus === 'idle' || regenStatus === 'error' ? setRegenOpen(false) : null}>
+          <div className="regen-card" onClick={e => e.stopPropagation()}>
+            {/* Header */}
+            <div className="regen-header">
+              <span className="regen-title">Modifier le planning</span>
+              {(regenStatus === 'idle' || regenStatus === 'error') && (
+                <button className="regen-close" onClick={() => setRegenOpen(false)}><X size={18} /></button>
+              )}
+            </div>
+
+            {regenStatus === 'idle' || regenStatus === 'error' ? (<>
+              {/* Mode selector */}
+              <div className="regen-modes">
+                <button
+                  className={`regen-mode-btn${regenMode === 'week' ? ' active' : ''}`}
+                  onClick={() => setRegenMode('week')}
+                >
+                  Toute la semaine
+                </button>
+                <button
+                  className={`regen-mode-btn${regenMode === 'days' ? ' active' : ''}`}
+                  onClick={() => setRegenMode('days')}
+                >
+                  Jours précis
+                </button>
+              </div>
+
+              {/* Day picker */}
+              {regenMode === 'days' && (
+                <div className="regen-days-grid">
+                  {weekDaysFromImport.map((d, i) => {
+                    const iso = d.toISOString().split('T')[0]
+                    const sel = regenDays.includes(iso)
+                    return (
+                      <button
+                        key={iso}
+                        onClick={() => toggleRegenDay(iso)}
+                        className={`regen-day-btn${sel ? ' active' : ''}`}
+                      >
+                        <span className="regen-day-name">{DAY_LABELS_SHORT[i]}</span>
+                        <span className="regen-day-num">{d.getDate()}</span>
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
+
+              {regenStatus === 'error' && <p className="regen-error">{regenError}</p>}
+
+              <button
+                className="regen-submit"
+                onClick={submitRegen}
+                disabled={regenMode === 'days' && !regenDays.length}
+              >
+                <RefreshCw size={16} />
+                {regenMode === 'week'
+                  ? 'Régénérer la semaine entière'
+                  : regenDays.length
+                    ? `Régénérer ${regenDays.length} jour${regenDays.length > 1 ? 's' : ''}`
+                    : 'Sélectionne des jours'}
+              </button>
+              <p className="regen-note">Myko régénère en 2–4 min et écrit directement dans Supabase.</p>
+            </>) : regenStatus === 'submitting' ? (
+              <div className="regen-waiting">
+                <div className="regen-spinner" />
+                <p>Déclenchement de la routine…</p>
+              </div>
+            ) : regenStatus === 'waiting' ? (
+              <div className="regen-waiting">
+                <div className="regen-spinner" />
+                <p>Myko régénère ton planning…</p>
+                <p className="regen-note">Tu peux fermer cette fenêtre, le résultat apparaîtra automatiquement.</p>
+                <button className="regen-cancel" onClick={() => setRegenOpen(false)}>Fermer et revenir plus tard</button>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
 /* ===== REFONTE « MYCÉLIUM » — Planning (pilote) ===== */
@@ -382,6 +546,153 @@ export default function PlanningPage() {
   .planning-section, .planning-loading { animation: none; }
 }
 
+/* ── Bouton "Modifier" dans le section-header ── */
+.btn-regen {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: var(--r-pill);
+  font-family: var(--font-text); font-size: var(--fs-xs);
+  font-weight: 600; cursor: pointer;
+  background: var(--surface); color: var(--ink-2);
+  border: 1px solid var(--line-strong);
+  transition: var(--transition-base);
+}
+.btn-regen:hover { background: var(--surface-soft); color: var(--brand); border-color: var(--brand); }
+
+/* ── Modal régénération ── */
+.regen-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(24, 28, 22, 0.52);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  animation: mykoReveal 0.22s var(--ease) both;
+}
+.regen-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-2);
+  width: 100%; max-width: 440px;
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.regen-header {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.regen-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3); font-weight: 600;
+  color: var(--ink-1); letter-spacing: -0.015em;
+}
+.regen-close {
+  background: none; border: none; cursor: pointer;
+  color: var(--ink-3); padding: 6px;
+  border-radius: var(--r-sm); display: flex;
+  transition: var(--transition-base);
+}
+.regen-close:hover { background: var(--surface-soft); color: var(--ink-1); }
+
+.regen-modes {
+  display: flex; gap: 8px;
+}
+.regen-mode-btn {
+  flex: 1; padding: 10px 12px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: transparent; cursor: pointer;
+  font-family: var(--font-text); font-size: var(--fs-sm);
+  font-weight: 600; color: var(--ink-2);
+  transition: var(--transition-base);
+}
+.regen-mode-btn:hover { border-color: var(--brand); color: var(--brand); }
+.regen-mode-btn.active {
+  background: var(--brand-soft); border-color: var(--brand);
+  color: var(--brand);
+}
+
+.regen-days-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
+}
+.regen-day-btn {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 3px; padding: 10px 0;
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: transparent; cursor: pointer;
+  transition: var(--transition-base);
+}
+.regen-day-btn:hover { border-color: var(--brand); }
+.regen-day-btn.active {
+  background: var(--brand-soft); border-color: var(--brand);
+}
+.regen-day-name {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.regen-day-btn.active .regen-day-name { color: var(--brand); }
+.regen-day-num {
+  font-size: var(--fs-sm); font-weight: 700;
+  color: var(--ink-1);
+}
+.regen-day-btn.active .regen-day-num { color: var(--brand); }
+
+.regen-error {
+  font-size: var(--fs-sm); color: #dc2626;
+  background: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.18);
+  border-radius: var(--r-sm); padding: 10px 14px;
+  margin: 0; line-height: 1.45;
+}
+
+.regen-submit {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 14px;
+  background: linear-gradient(135deg, var(--brand), #059669);
+  color: #fff; border: none;
+  border-radius: var(--r-pill); cursor: pointer;
+  font-family: var(--font-text); font-size: var(--fs-body);
+  font-weight: 600; box-shadow: var(--sh-1);
+  transition: var(--transition-base);
+}
+.regen-submit:hover:not(:disabled) { filter: brightness(1.08); transform: translateY(-2px); }
+.regen-submit:disabled {
+  opacity: 0.45; cursor: not-allowed; filter: none; transform: none;
+}
+
+.regen-note {
+  font-size: var(--fs-xs); color: var(--ink-3);
+  text-align: center; margin: -6px 0 0; line-height: 1.5;
+}
+
+.regen-waiting {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  padding: 8px 0 4px;
+}
+.regen-waiting p {
+  font-size: var(--fs-body); font-weight: 600; color: var(--ink-1);
+  margin: 0; text-align: center;
+}
+.regen-waiting .regen-note { font-size: var(--fs-xs); color: var(--ink-3); }
+.regen-spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--line-strong);
+  border-top-color: var(--brand);
+  border-radius: 50%;
+  animation: regenSpin 0.8s linear infinite;
+}
+@keyframes regenSpin { to { transform: rotate(360deg); } }
+
+.regen-cancel {
+  background: none; border: 1px solid var(--line-strong);
+  border-radius: var(--r-pill); padding: 10px 22px;
+  font-family: var(--font-text); font-size: var(--fs-sm);
+  font-weight: 600; color: var(--ink-2); cursor: pointer;
+  transition: var(--transition-base);
+}
+.regen-cancel:hover { background: var(--surface-soft); color: var(--ink-1); }
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .planning-container { padding: 20px 16px 64px; }
@@ -390,11 +701,13 @@ export default function PlanningPage() {
   .hero-actions { width: 100%; }
   .hero-actions .btn-primary, .hero-actions .btn-secondary { flex: 1; justify-content: center; }
   .section-title { font-size: 18px; }
+  .regen-days-grid { grid-template-columns: repeat(4, 1fr); }
 }
 @media (max-width: 480px) {
   .planning-container { padding: 16px 12px 48px; }
   .hero-actions { flex-direction: column; }
   .planning-section { margin-bottom: var(--s-6); }
+  .regen-days-grid { grid-template-columns: repeat(4, 1fr); }
 }
       `}</style>
     </>

@@ -4,31 +4,47 @@ import { authenticateRequest } from '@/lib/apiAuth'
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
 
-// La génération d'une semaine complète par la Routine 1 est longue (souvent
-// > 60s). On NE l'attend PAS : on déclenche le webhook puis on rend la main.
-// Le client poll ensuite Supabase (nouvel import) — voir docs/ROUTINES.md.
 const TRIGGER_TIMEOUT_MS = 20_000
 
 /**
  * POST /api/routine/generate-plan
- * Déclenche la Routine 1 "Myko - Planning hebdo" (webhook). Fire-and-forget :
- * la routine lit Supabase, génère le planning et écrit nutrition_plan_*.
- * Body optionnel : { days?: string[], from?: string, to?: string }
- *   (transmis à la routine ; ignoré tant que ses instructions ne le lisent pas)
+ * Deux modes :
+ *   - Sans body (ou body vide) : déclenche la génération de la semaine suivante.
+ *   - Avec { importId, targetStart, targetEnd, days? } : crée une requête de
+ *     régénération dans plan_regen_requests puis déclenche la routine.
+ *     La routine lit la requête au CP0 et régénère les jours demandés.
  */
 export async function POST(request) {
-  const { user, error: authError } = await authenticateRequest(request)
+  const { supabase, user, error: authError } = await authenticateRequest(request)
   if (authError || !user) {
     return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
   }
 
   let body = {}
-  try {
-    body = await request.json()
-  } catch {
-    // body optionnel : pas d'erreur si vide
+  try { body = await request.json() } catch { /* body optionnel */ }
+
+  const { importId, targetStart, targetEnd, days } = body || {}
+
+  // ── Mode régénération : écrire la requête en DB avant de déclencher ──
+  if (targetStart && targetEnd) {
+    const { error: insertErr } = await supabase
+      .from('plan_regen_requests')
+      .insert({
+        user_id: user.id,
+        import_id: importId || null,
+        target_days: Array.isArray(days) && days.length ? days : null,
+        target_start: targetStart,
+        target_end: targetEnd,
+        status: 'pending',
+      })
+
+    if (insertErr) {
+      return NextResponse.json(
+        { error: `Erreur création requête régénération : ${insertErr.message}` },
+        { status: 500 },
+      )
+    }
   }
-  const { days, from, to } = body || {}
 
   const url = process.env.CLAUDE_ROUTINE_GENERATE_PLAN_URL
   const token = process.env.CLAUDE_ROUTINE_GENERATE_PLAN_TOKEN
@@ -36,7 +52,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         error: 'Routine non configurée',
-        hint: 'Configurer CLAUDE_ROUTINE_GENERATE_PLAN_URL et CLAUDE_ROUTINE_GENERATE_PLAN_TOKEN dans les variables d\'environnement Vercel.',
+        hint: 'Configurer CLAUDE_ROUTINE_GENERATE_PLAN_URL et CLAUDE_ROUTINE_GENERATE_PLAN_TOKEN dans Vercel.',
       },
       { status: 503 },
     )
@@ -64,12 +80,9 @@ export async function POST(request) {
       )
     }
 
-    // 202 : déclenchée. La génération continue côté routine ; le client poll.
     return NextResponse.json({ triggered: true }, { status: 202 })
   } catch (e) {
     if (e.name === 'AbortError') {
-      // Le webhook n'a pas répondu dans le délai : la routine a très
-      // probablement été acceptée et tourne en asynchrone. Le client poll.
       return NextResponse.json({ triggered: true, pending: true }, { status: 202 })
     }
     return NextResponse.json({ error: e.message }, { status: 500 })
