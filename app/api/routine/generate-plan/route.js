@@ -49,13 +49,7 @@ export async function POST(request) {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        days: Array.isArray(days) ? days : undefined,
-        from: from || undefined,
-        to: to || undefined,
-      }),
       signal: controller.signal,
     })
 

@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Sparkles, RefreshCw, CalendarDays, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowLeft, Sparkles, RefreshCw } from 'lucide-react'
 import { authFetch } from '@/lib/authFetch'
 
 const PROGRESS_MESSAGES = [
-  { delay: 0, text: 'Myko prépare ton planning...' },
-  { delay: 8000, text: 'Analyse du stock et des objectifs...' },
+  { delay: 0,     text: 'Myko prépare ton planning...' },
+  { delay: 8000,  text: 'Analyse du stock et des objectifs...' },
   { delay: 16000, text: 'Sélection des recettes de la semaine...' },
   { delay: 25000, text: 'Calcul des macros par personne...' },
   { delay: 35000, text: 'Optimisation de la liste de courses...' },
@@ -15,67 +15,32 @@ const PROGRESS_MESSAGES = [
   { delay: 70000, text: 'Ça prend un peu plus longtemps que prévu...' },
 ]
 
-const DAY_NAMES = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
-
-function getMonday(date) {
-  const d = new Date(date)
-  const day = d.getDay()
-  d.setDate(d.getDate() - ((day + 6) % 7))
+function getNextMonday() {
+  const d = new Date()
+  const day = d.getDay() // 0=dim, 1=lun…
+  const daysUntilMonday = day === 0 ? 1 : 8 - day
+  d.setDate(d.getDate() + daysUntilMonday)
   d.setHours(0, 0, 0, 0)
   return d
 }
 
-function getWeekDays(monday) {
-  const days = []
-  for (let i = 0; i < 7; i++) {
-    const d = new Date(monday)
-    d.setDate(monday.getDate() + i)
-    days.push(d)
-  }
-  return days
-}
-
-function formatDateFR(date) {
-  return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })
+function formatWeekLabel(monday) {
+  const sunday = new Date(monday)
+  sunday.setDate(monday.getDate() + 6)
+  const opts = { day: 'numeric', month: 'long' }
+  return `${monday.toLocaleDateString('fr-FR', opts)} — ${sunday.toLocaleDateString('fr-FR', opts)}`
 }
 
 export default function PlanningAssistantPage() {
   const router = useRouter()
-  const [status, setStatus] = useState('pick') // pick | generating | saving | success | error
+  const [status, setStatus] = useState('pick') // pick | generating | success | error
   const [progressText, setProgressText] = useState(PROGRESS_MESSAGES[0].text)
   const [errorMsg, setErrorMsg] = useState('')
   const abortRef = useRef(null)
   const timersRef = useRef([])
 
-  // Date picker state
-  const today = new Date()
-  const [weekOffset, setWeekOffset] = useState(0)
-  const monday = getMonday(today)
-  monday.setDate(monday.getDate() + weekOffset * 7)
-  const weekDays = getWeekDays(monday)
-
-  // Selected days (default: full week)
-  const [selectedDays, setSelectedDays] = useState(() => {
-    const m = getMonday(today)
-    return getWeekDays(m).map(d => d.toISOString().split('T')[0])
-  })
-
-  // Update selected days when week changes
-  useEffect(() => {
-    setSelectedDays(weekDays.map(d => d.toISOString().split('T')[0]))
-  }, [weekOffset])
-
-  function toggleDay(dateStr) {
-    setSelectedDays(prev =>
-      prev.includes(dateStr)
-        ? prev.filter(d => d !== dateStr)
-        : [...prev, dateStr].sort()
-    )
-  }
-
-  function selectAll() {
-    setSelectedDays(weekDays.map(d => d.toISOString().split('T')[0]))
-  }
+  const nextMonday = getNextMonday()
+  const weekLabel = formatWeekLabel(nextMonday)
 
   const startProgressMessages = useCallback(() => {
     timersRef.current.forEach(t => clearTimeout(t))
@@ -87,12 +52,10 @@ export default function PlanningAssistantPage() {
   }, [])
 
   const generatePlan = useCallback(async () => {
-    if (!selectedDays.length) return
     setStatus('generating')
     setErrorMsg('')
     startProgressMessages()
 
-    // Pause interruptible par l'AbortController (annulation / démontage).
     const abortableSleep = (ms, signal) => new Promise((resolve, reject) => {
       const t = setTimeout(resolve, ms)
       signal?.addEventListener('abort', () => {
@@ -105,10 +68,6 @@ export default function PlanningAssistantPage() {
       abortRef.current = new AbortController()
       const signal = abortRef.current.signal
 
-      const sortedDays = [...selectedDays].sort()
-      const from = sortedDays[0]
-      const to = sortedDays[sortedDays.length - 1]
-
       // Référence : id max des imports existants, pour détecter le nouveau.
       let baselineId = 0
       try {
@@ -119,24 +78,21 @@ export default function PlanningAssistantPage() {
         }
       } catch (e) {
         if (e.name === 'AbortError') return
-        // non bloquant : baseline reste 0
       }
 
-      // Déclenche la Routine 1 (zéro API Anthropic facturée).
+      // Déclenche la routine (zéro coût API direct).
       const trigRes = await authFetch('/api/routine/generate-plan', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ days: sortedDays, from, to }),
         signal,
       })
       const trigData = await trigRes.json().catch(() => ({}))
       if (!trigRes.ok && trigRes.status !== 202) {
+        const detail = trigData.detail ? ` — ${trigData.detail}` : ''
         const hint = trigData.hint ? `\n${trigData.hint}` : ''
-        throw new Error((trigData.error || `Erreur déclenchement (${trigRes.status})`) + hint)
+        throw new Error((trigData.error || `Erreur déclenchement (${trigRes.status})`) + detail + hint)
       }
 
-      // La routine génère côté cloud (souvent 1-3 min) : on poll Supabase
-      // jusqu'à voir un nouvel import apparaître.
+      // Poll Supabase jusqu'à voir le nouvel import (la routine écrit directement).
       const MAX_WAIT_MS = 6 * 60 * 1000
       const POLL_MS = 12_000
       const deadline = Date.now() + MAX_WAIT_MS
@@ -156,14 +112,13 @@ export default function PlanningAssistantPage() {
 
     } catch (err) {
       if (err.name === 'AbortError') return
-      console.error('[Planning Routine] Error:', err)
       setStatus('error')
       setErrorMsg(err.message || 'Erreur inconnue')
     } finally {
       timersRef.current.forEach(t => clearTimeout(t))
       abortRef.current = null
     }
-  }, [router, startProgressMessages, selectedDays])
+  }, [router, startProgressMessages])
 
   useEffect(() => {
     return () => {
@@ -172,84 +127,41 @@ export default function PlanningAssistantPage() {
     }
   }, [])
 
-  const handleRetry = () => { generatePlan() }
-
-  const todayStr = today.toISOString().split('T')[0]
-
   return (
     <div style={S.page}>
-      {/* Back button */}
-      <button onClick={() => { abortRef.current?.abort(); router.push('/') }} style={S.backBtn}>
+      <button onClick={() => { abortRef.current?.abort(); router.push('/planning') }} style={S.backBtn}>
         <ArrowLeft size={18} />
       </button>
 
-      {/* ═══ PICK DATES ═══ */}
+      {/* ═══ PICK ═══ */}
       {status === 'pick' && (
         <div style={S.center}>
           <div style={S.iconWrap}>
             <Sparkles size={40} color="#16a34a" />
           </div>
-          <h2 style={S.pickTitle}>Quel planning générer ?</h2>
-          <p style={S.pickSubtitle}>Sélectionne les jours</p>
+          <h2 style={S.title}>Générer le planning</h2>
+          <p style={S.subtitle}>
+            Myko va créer le planning complet de la semaine prochaine en tenant compte de ton stock, de tes objectifs et de l'anti-répétition.
+          </p>
 
-          {/* Week nav */}
-          <div style={S.weekNav}>
-            <button onClick={() => setWeekOffset(w => w - 1)} style={S.weekNavBtn}>
-              <ChevronLeft size={16} />
-            </button>
-            <span style={S.weekLabel}>
-              {formatDateFR(weekDays[0])} — {formatDateFR(weekDays[6])}
-            </span>
-            <button onClick={() => setWeekOffset(w => w + 1)} style={S.weekNavBtn}>
-              <ChevronRight size={16} />
-            </button>
+          <div style={S.weekCard}>
+            <span style={S.weekLabel}>Semaine générée</span>
+            <span style={S.weekDates}>{weekLabel}</span>
           </div>
 
-          {/* Day buttons */}
-          <div style={S.daysRow}>
-            {weekDays.map((d, i) => {
-              const dateStr = d.toISOString().split('T')[0]
-              const selected = selectedDays.includes(dateStr)
-              const isToday = dateStr === todayStr
-              return (
-                <button
-                  key={dateStr}
-                  onClick={() => toggleDay(dateStr)}
-                  style={{
-                    ...S.dayBtn,
-                    ...(selected ? S.dayBtnSelected : {}),
-                    ...(isToday && !selected ? S.dayBtnToday : {}),
-                  }}
-                >
-                  <span style={S.dayName}>{DAY_NAMES[i]}</span>
-                  <span style={S.dayNum}>{d.getDate()}</span>
-                </button>
-              )
-            })}
-          </div>
-
-          {/* Select all link */}
-          {selectedDays.length < 7 && (
-            <button onClick={selectAll} style={S.selectAllBtn}>Toute la semaine</button>
-          )}
-
-          {/* Generate button */}
-          <button
-            onClick={generatePlan}
-            disabled={!selectedDays.length}
-            style={{
-              ...S.generateBtn,
-              opacity: selectedDays.length ? 1 : 0.5,
-            }}
-          >
+          <button onClick={generatePlan} style={S.generateBtn}>
             <Sparkles size={18} />
-            Générer {selectedDays.length === 7 ? 'la semaine' : `${selectedDays.length} jour${selectedDays.length > 1 ? 's' : ''}`}
+            Générer avec Myko
           </button>
+
+          <p style={S.note}>
+            La génération dure 2–4 minutes. Tu peux quitter la page — le planning apparaîtra dans l'onglet Planning.
+          </p>
         </div>
       )}
 
-      {/* ═══ GENERATING / SAVING ═══ */}
-      {(status === 'generating' || status === 'saving') && (
+      {/* ═══ GENERATING ═══ */}
+      {status === 'generating' && (
         <div style={S.center}>
           <div style={S.iconWrap}>
             <Sparkles size={40} color="#16a34a" style={{ animation: 'pulse 2s ease-in-out infinite' }} />
@@ -258,6 +170,7 @@ export default function PlanningAssistantPage() {
           <div style={S.progressBarOuter}>
             <div style={S.progressBarInner} />
           </div>
+          <p style={S.note}>Myko écrit directement dans Supabase au fur et à mesure.</p>
         </div>
       )}
 
@@ -267,7 +180,7 @@ export default function PlanningAssistantPage() {
           <span style={{ fontSize: 48 }}>😕</span>
           <p style={S.progressText}>Oups...</p>
           <p style={S.errorText}>{errorMsg}</p>
-          <button onClick={handleRetry} style={S.retryBtn}>
+          <button onClick={generatePlan} style={S.retryBtn}>
             <RefreshCw size={16} />
             Réessayer
           </button>
@@ -281,7 +194,7 @@ export default function PlanningAssistantPage() {
             <Sparkles size={40} color="#16a34a" />
           </div>
           <p style={S.progressText}>Planning sauvegardé !</p>
-          <p style={S.successText}>Redirection...</p>
+          <p style={S.note}>Redirection...</p>
         </div>
       )}
 
@@ -310,8 +223,7 @@ const S = {
   },
   backBtn: {
     position: 'absolute',
-    top: 12,
-    left: 12,
+    top: 12, left: 12,
     border: 'none',
     background: 'rgba(0,0,0,0.04)',
     borderRadius: 12,
@@ -326,14 +238,13 @@ const S = {
     flexDirection: 'column',
     alignItems: 'center',
     gap: 14,
-    padding: '0 20px',
+    padding: '0 24px',
     textAlign: 'center',
     maxWidth: 440,
     width: '100%',
   },
   iconWrap: {
-    width: 90,
-    height: 90,
+    width: 90, height: 90,
     borderRadius: '50%',
     background: 'rgba(22,163,74,0.06)',
     display: 'flex',
@@ -341,87 +252,41 @@ const S = {
     justifyContent: 'center',
     marginBottom: 4,
   },
-
-  // ── Pick dates ──
-  pickTitle: {
+  title: {
     fontSize: 22,
     fontWeight: 700,
     color: 'var(--ink, #1f281f)',
     margin: 0,
   },
-  pickSubtitle: {
-    fontSize: 14,
-    color: '#9ca3af',
+  subtitle: {
+    fontSize: 15,
+    color: '#6b7280',
     margin: 0,
+    lineHeight: 1.55,
+    maxWidth: 360,
   },
-  weekNav: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 12,
-    marginTop: 4,
-  },
-  weekNavBtn: {
-    border: 'none',
-    background: 'rgba(0,0,0,0.04)',
-    borderRadius: 8,
-    padding: 6,
-    cursor: 'pointer',
-    color: '#6b7280',
-    display: 'flex',
-  },
-  weekLabel: {
-    fontSize: 13,
-    fontWeight: 600,
-    color: '#6b7280',
-  },
-  daysRow: {
-    display: 'flex',
-    gap: 6,
+  weekCard: {
     width: '100%',
-    justifyContent: 'center',
-  },
-  dayBtn: {
+    background: 'rgba(22,163,74,0.05)',
+    border: '1.5px solid rgba(22,163,74,0.18)',
+    borderRadius: 16,
+    padding: '16px 20px',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    gap: 2,
-    padding: '10px 0',
-    width: 48,
-    border: '1.5px solid rgba(0,0,0,0.08)',
-    borderRadius: 12,
-    background: 'rgba(255,255,255,0.5)',
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    transition: 'all 0.15s',
+    gap: 4,
+    marginTop: 4,
   },
-  dayBtnSelected: {
-    background: '#16a34a',
-    borderColor: '#16a34a',
-    color: 'white',
-  },
-  dayBtnToday: {
-    borderColor: 'rgba(22,163,74,0.4)',
-  },
-  dayName: {
+  weekLabel: {
     fontSize: 10,
     fontWeight: 700,
+    letterSpacing: '0.15em',
     textTransform: 'uppercase',
-    letterSpacing: 0.3,
-    opacity: 0.7,
-  },
-  dayNum: {
-    fontSize: 16,
-    fontWeight: 700,
-  },
-  selectAllBtn: {
-    background: 'none',
-    border: 'none',
     color: '#16a34a',
-    fontSize: 13,
+  },
+  weekDates: {
+    fontSize: 16,
     fontWeight: 600,
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    padding: '2px 0',
+    color: 'var(--ink, #1f281f)',
   },
   generateBtn: {
     display: 'flex',
@@ -439,10 +304,14 @@ const S = {
     cursor: 'pointer',
     fontFamily: 'inherit',
     boxShadow: '0 4px 14px rgba(22,163,74,0.3)',
-    marginTop: 4,
   },
-
-  // ── Generating ──
+  note: {
+    fontSize: 12,
+    color: '#9ca3af',
+    margin: 0,
+    lineHeight: 1.5,
+    maxWidth: 340,
+  },
   progressText: {
     fontSize: 17,
     fontWeight: 600,
@@ -450,8 +319,7 @@ const S = {
     margin: 0,
   },
   progressBarOuter: {
-    width: 180,
-    height: 3,
+    width: 180, height: 3,
     background: 'rgba(22,163,74,0.08)',
     borderRadius: 2,
     overflow: 'hidden',
@@ -459,22 +327,19 @@ const S = {
   },
   progressBarInner: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '50%',
-    height: '100%',
+    top: 0, left: 0,
+    width: '50%', height: '100%',
     background: 'linear-gradient(90deg, transparent, #16a34a, transparent)',
     borderRadius: 2,
     animation: 'shimmer 1.5s ease-in-out infinite',
   },
-
-  // ── Error ──
   errorText: {
     fontSize: 14,
     color: '#dc2626',
     margin: 0,
     maxWidth: 400,
     lineHeight: 1.4,
+    whiteSpace: 'pre-line',
   },
   retryBtn: {
     display: 'flex',
@@ -490,11 +355,5 @@ const S = {
     cursor: 'pointer',
     fontFamily: 'inherit',
     boxShadow: '0 4px 14px rgba(22,163,74,0.3)',
-  },
-  successText: {
-    fontSize: 14,
-    color: '#16a34a',
-    margin: 0,
-    fontWeight: 500,
   },
 }
