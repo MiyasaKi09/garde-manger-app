@@ -40,7 +40,7 @@ const CONFIG = {
     fps: 30,
     breathingSpeed: 0.002,
     pointCount: 16,
-    pointCountMobile: 12,
+    pointCountMobile: 8,
   },
   gooey: {
     blur: 18,
@@ -688,7 +688,11 @@ export default function MatisseWallpaper() {
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const pointCount = isMobile ? CONFIG.animation.pointCountMobile : CONFIG.animation.pointCount;
-  const blurValue = isMobile ? CONFIG.gooey.blurMobile : CONFIG.gooey.blur;
+  const blurValue = isMobile ? 0 : CONFIG.gooey.blur;
+  const initialCount = isMobile ? 6 : CONFIG.initialCount;
+  const maxCells = isMobile ? 12 : CONFIG.maxCells;
+  const minCells = isMobile ? 5 : CONFIG.minCells;
+  const fpsTarget = isMobile ? 20 : CONFIG.animation.fps;
 
   const rnd = useMemo(() => {
     if (typeof crypto !== "undefined" && crypto.getRandomValues) {
@@ -715,7 +719,7 @@ export default function MatisseWallpaper() {
       if (!el) {
         el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         el.setAttribute('fill', CONFIG.colors[cell.color]);
-        el.style.willChange = 'd';
+        if (!isMobile) el.style.willChange = 'd';
         g.appendChild(el);
         map.set(cell.id, el);
       }
@@ -758,7 +762,7 @@ export default function MatisseWallpaper() {
     const margin = 80;
     const placed = [];
 
-    for (let i = 0; i < CONFIG.initialCount; i++) {
+    for (let i = 0; i < initialCount; i++) {
       const color = colors[i % colors.length];
       const { min, max } = CONFIG.sizes[color];
       const size = min + rnd() * (max - min);
@@ -781,7 +785,7 @@ export default function MatisseWallpaper() {
     cellsRef.current = cells;
 
     // Animation loop
-    const frameInterval = 1000 / CONFIG.animation.fps;
+    const frameInterval = 1000 / fpsTarget;
     let last = 0;
     let acc = 0;
 
@@ -794,6 +798,7 @@ export default function MatisseWallpaper() {
       while (acc >= frameInterval) {
         const cells = cellsRef.current;
         const bounds = sizeRef.current;
+        const isMobileFrame = isMobile;
 
         // Update all cells
         for (const cell of cells) {
@@ -826,7 +831,7 @@ export default function MatisseWallpaper() {
               cell.fusionState === 'none' &&
               cell.size > cell.baseSize * CONFIG.physics.fissionThreshold &&
               (cell.age - cell.lastFissionTime) > CONFIG.cooldown &&
-              cellsRef.current.length < CONFIG.maxCells) {
+              cellsRef.current.length < maxCells) {
             cell.startFission();
           }
           // Create child at split point
@@ -847,7 +852,7 @@ export default function MatisseWallpaper() {
           for (const c of cur2) area += Math.PI * (c.size * c.scale) ** 2;
           const coverage = area / Math.max(1, bounds.width * bounds.height);
 
-          if (coverage < CONFIG.coverage.min && cur2.length < CONFIG.maxCells) {
+          if (coverage < CONFIG.coverage.min && cur2.length < maxCells) {
             const color = colors[Math.floor(rnd() * colors.length)];
             const { min, max } = CONFIG.sizes[color];
             const size = min + rnd() * (max - min);
@@ -856,7 +861,7 @@ export default function MatisseWallpaper() {
               id: `cell_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
               bounds, fromEdge: true, pointCount,
             }));
-          } else if (coverage > CONFIG.coverage.max && cur2.length > CONFIG.minCells) {
+          } else if (coverage > CONFIG.coverage.max && cur2.length > minCells) {
             for (const c of cur2) {
               if (c.x < 100 || c.x > bounds.width - 100 || c.y < 100 || c.y > bounds.height - 100) {
                 c.opacity *= 0.98;
@@ -870,6 +875,7 @@ export default function MatisseWallpaper() {
         // Sync DOM
         syncDOM(cellsRef.current);
         acc -= frameInterval;
+        if (isMobileFrame) { acc = 0; break; }
       }
 
       rafRef.current = requestAnimationFrame(animate);
@@ -923,7 +929,7 @@ export default function MatisseWallpaper() {
             <feComposite in="SourceGraphic" in2="goo" operator="atop" />
           </filter>
         </defs>
-        <g ref={gRef} filter="url(#organic)" />
+        <g ref={gRef} filter={blurValue > 0 ? "url(#organic)" : undefined} />
       </svg>
     </div>
   );
