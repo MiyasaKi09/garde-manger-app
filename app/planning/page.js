@@ -170,10 +170,6 @@ export default function PlanningPage() {
         {/* ═══ CONTENU : un seul état de chargement, pas de flash ═══ */}
         {!planningReady ? (
           <section className="planning-section">
-            <div className="section-header">
-              <div className="section-accent"></div>
-              <h2 className="section-title">Semaine en cours</h2>
-            </div>
             <div className="planning-loading">Chargement du planning…</div>
           </section>
         ) : imports.length === 0 ? (
@@ -193,53 +189,16 @@ export default function PlanningPage() {
         ) : (
           <>
             <section className="planning-section">
-              <div className="section-header">
-                <div className="section-accent"></div>
-                <h2 className="section-title">Semaine en cours</h2>
-                <button className="btn-regen" onClick={() => { setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMode('week') }}>
-                  <RefreshCw size={14} />
-                  Modifier
-                </button>
-              </div>
               <WeeklyPlanView imports={imports} />
             </section>
 
             <section className="planning-section">
-              <div className="section-header">
-                <div className="section-accent"></div>
-                <h2 className="section-title">Suivi nutritionnel</h2>
-              </div>
               <DailyNutritionRecap importId={latestImport.id} />
             </section>
           </>
         )}
 
-        {/* ═══ MANAGE IMPORTS (compact) ═══ */}
-        {planningReady && imports.length > 0 && (
-          <section className="planning-section">
-            <details className="imports-details">
-              <summary className="imports-summary">
-                <Calendar size={14} />
-                {imports.length} plan{imports.length > 1 ? 's' : ''} importé{imports.length > 1 ? 's' : ''}
-              </summary>
-              <div className="imports-compact">
-                {imports.map(imp => (
-                  <div key={imp.id} className="import-row">
-                    <span className="import-row-name" onClick={() => router.push(`/planning/${imp.id}`)}>
-                      {imp.month_label || imp.file_name}
-                    </span>
-                    <span className="import-row-date">
-                      {new Date(imp.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
-                    </span>
-                    <button className="delete-btn" onClick={(e) => handleDelete(imp.id, e)} title="Supprimer">
-                      <Trash2 size={13} />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </details>
-          </section>
-        )}
+        {/* ═══ MANAGE IMPORTS (compact) supprimé selon demande UI ═══ */}
       </div>
 
       {/* ═══ MODAL RÉGÉNÉRATION ═══ */}
