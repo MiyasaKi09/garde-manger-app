@@ -159,10 +159,6 @@ export default function PlanningPage() {
                 <Sparkles size={18} />
                 Demander à Myko
               </button>
-              <button className="btn-secondary" onClick={() => router.push('/planning/import')}>
-                <Upload size={18} />
-                Importer .xlsx
-              </button>
             </div>
           </div>
         </div>
@@ -189,6 +185,13 @@ export default function PlanningPage() {
         ) : (
           <>
             <section className="planning-section">
+              <div className="section-header">
+                <div className="section-accent"></div>
+                <button className="btn-regen" onClick={() => { setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMode('week') }}>
+                  <RefreshCw size={14} />
+                  Modifier
+                </button>
+              </div>
               <WeeklyPlanView imports={imports} />
             </section>
 
