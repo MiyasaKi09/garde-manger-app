@@ -49,7 +49,9 @@ export async function POST(request) {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
+      body: '{}',
       signal: controller.signal,
     })
 
