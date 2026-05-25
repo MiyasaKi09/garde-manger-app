@@ -14,6 +14,11 @@ const CONFIG = {
     terra: { min: 70, max: 110 },
     sable: { min: 90, max: 150 },
   },
+  sizesMobile: {
+    olive: { min: 40, max: 65 },
+    terra: { min: 35, max: 55 },
+    sable: { min: 45, max: 70 },
+  },
   coverage: {
     min: 0.30,
     max: 0.60,
@@ -764,7 +769,7 @@ export default function MatisseWallpaper() {
 
     for (let i = 0; i < initialCount; i++) {
       const color = colors[i % colors.length];
-      const { min, max } = CONFIG.sizes[color];
+      const { min, max } = (isMobile ? CONFIG.sizesMobile : CONFIG.sizes)[color];
       const size = min + rnd() * (max - min);
       let x, y, attempts = 0;
       do {
@@ -854,7 +859,7 @@ export default function MatisseWallpaper() {
 
           if (coverage < CONFIG.coverage.min && cur2.length < maxCells) {
             const color = colors[Math.floor(rnd() * colors.length)];
-            const { min, max } = CONFIG.sizes[color];
+            const { min, max } = (isMobile ? CONFIG.sizesMobile : CONFIG.sizes)[color];
             const size = min + rnd() * (max - min);
             cur2.push(new OrganicCell({
               x: 0, y: 0, color, size, rnd,
