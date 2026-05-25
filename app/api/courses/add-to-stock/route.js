@@ -1,6 +1,5 @@
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
+import { authenticateRequest } from '@/lib/apiAuth'
 
 /**
  * POST /api/courses/add-to-stock
@@ -17,9 +16,8 @@ import { NextResponse } from 'next/server'
  */
 export async function POST(request) {
   try {
-    const supabase = createRouteHandlerClient({ cookies })
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) {
+    const { supabase, user, error: authError } = await authenticateRequest(request)
+    if (authError || !user) {
       return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
     }
 
