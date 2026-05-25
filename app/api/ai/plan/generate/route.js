@@ -252,9 +252,16 @@ function parseDuration(str) {
 /**
  * Rebuild the shopping list from REAL recipe ingredients in the database,
  * deducting what's available in stock. Replaces Claude's guessed groceries.
+ *
+ * Linking strategy:
+ *   1. For each recipe, try generated_recipe_ingredients (linked IDs) first.
+ *      Fall back to generated_recipes.ingredients (raw JSONB) if none linked yet.
+ *   2. Aggregate by canonical_food_id (resolves variants: Charlotte+Monalisa → Pomme de terre).
+ *   3. Deduct stock using inventory_lots_resolved.resolved_canonical_food_id (ID-based, not string).
+ *   4. Store canonical_food_id + archetype_id on shopping items for reliable add-to-stock later.
  */
 async function rebuildShoppingList(supabase, userId, importId, days) {
-  // 1. Collect unique dish names from the plan (dej + din only, not pdj/col which are fixed)
+  // 1. Collect unique dish names from the plan (dej + din only)
   const dishNames = new Map() // normalized → { name, count }
   for (const day of days) {
     for (const mealKey of ['dej', 'din']) {
@@ -271,13 +278,10 @@ async function rebuildShoppingList(supabase, userId, importId, days) {
         if (!dishNames.has(norm)) {
           dishNames.set(norm, { name, count: 0 })
         }
-        // Only count once per day per dish (batch = same dish, counted once)
-        break // j is enough to count the dish once
+        break // count the dish once per meal slot
       }
     }
   }
-
-  // Count how many DAYS each dish appears (for batch sizing)
   for (const day of days) {
     for (const mealKey of ['dej', 'din']) {
       const meal = day[mealKey]
@@ -293,71 +297,123 @@ async function rebuildShoppingList(supabase, userId, importId, days) {
     }
   }
 
-  // 2. Get recipe ingredients from the database
-  const allIngredients = [] // { name, quantity, unit }
+  // 2. Collect ingredients with IDs from each recipe
+  // allIngredients: { canonicalFoodId, archetypeId, canonicalName, archetypeName, quantity, unit }
+  const allIngredients = []
   for (const [norm, { name, count }] of dishNames) {
-    const { data } = await supabase
+    const { data: recipeRows } = await supabase
       .from('generated_recipes')
-      .select('ingredients, servings')
+      .select('id, ingredients, servings')
       .eq('user_id', userId)
       .eq('name_normalized', norm)
       .limit(1)
 
-    if (!data?.length || !data[0].ingredients?.length) continue
-
-    const recipe = data[0]
+    if (!recipeRows?.length) continue
+    const recipe = recipeRows[0]
     const recipeServings = recipe.servings || 2
-    // A batch serves 2 days (count=2) with 2 people = recipe ingredients × 1
-    // A single day dish (count=1) with 2 people = recipe ingredients × 1
-    // (recipes are already sized for 2 servings)
-    // If batch spans 2 days, ingredients are for the full batch already
     const multiplier = count > recipeServings ? Math.ceil(count / recipeServings) : 1
 
-    for (const ing of recipe.ingredients) {
-      if (!ing.name) continue
-      allIngredients.push({
-        name: ing.name,
-        quantity: (ing.quantity || 0) * multiplier,
-        unit: ing.unit || '',
-      })
+    // Try linked ingredients first
+    const { data: linked } = await supabase
+      .from('generated_recipe_ingredients')
+      .select(`
+        raw_name, quantity, unit, canonical_food_id, archetype_id,
+        archetype:archetypes(name, canonical_food_id),
+        canonical_food:canonical_foods(canonical_name)
+      `)
+      .eq('generated_recipe_id', recipe.id)
+      .neq('match_status', 'unmatched')
+
+    if (linked?.length) {
+      for (const ing of linked) {
+        const cfId = ing.canonical_food_id ?? ing.archetype?.canonical_food_id ?? null
+        const cfName = ing.canonical_food?.canonical_name ?? ing.archetype?.name ?? ing.raw_name
+        allIngredients.push({
+          canonicalFoodId: cfId,
+          archetypeId: ing.archetype_id ?? null,
+          canonicalName: cfName,
+          archetypeName: ing.archetype?.name ?? null,
+          quantity: (ing.quantity || 0) * multiplier,
+          unit: ing.unit || '',
+        })
+      }
+    } else {
+      // Fallback: raw JSONB ingredients (no IDs — string-only)
+      for (const ing of (recipe.ingredients || [])) {
+        if (!ing.name) continue
+        allIngredients.push({
+          canonicalFoodId: null,
+          archetypeId: null,
+          canonicalName: ing.name,
+          archetypeName: null,
+          quantity: (ing.quantity || 0) * multiplier,
+          unit: ing.unit || '',
+        })
+      }
     }
   }
 
-  // 3. Add fixed ingredients (PDJ skyr + oeufs, collations)
-  // Count days in the plan
+  // 3. Add fixed ingredients (PDJ + collations) — no IDs available
   const numDays = days.length
   allIngredients.push(
-    { name: 'Skyr', quantity: 200 * numDays + 200 * Math.ceil(numDays * 4 / 7), unit: 'g' }, // Julien PDJ + ~4 collations/week
-    { name: 'Oeufs', quantity: 3 * numDays + Math.ceil(numDays * 3 / 7) * 2, unit: 'pièces' }, // 3/jour PDJ + ~3 collations oeufs/sem
-    { name: 'Amandes', quantity: 30 * numDays, unit: 'g' }, // collations
+    { canonicalFoodId: null, archetypeId: null, canonicalName: 'Skyr',   archetypeName: null, quantity: 200 * numDays + 200 * Math.ceil(numDays * 4 / 7), unit: 'g' },
+    { canonicalFoodId: null, archetypeId: null, canonicalName: 'Oeufs',  archetypeName: null, quantity: 3 * numDays + Math.ceil(numDays * 3 / 7) * 2,     unit: 'pièces' },
+    { canonicalFoodId: null, archetypeId: null, canonicalName: 'Amandes', archetypeName: null, quantity: 30 * numDays, unit: 'g' },
   )
 
-  // 4. Aggregate by ingredient name (merge quantities)
-  const aggregated = new Map() // lowercase name → { name, totalQty, unit }
+  // 4. Aggregate by canonical_food_id (or lowercase name as fallback)
+  // Map key: `id:${canonicalFoodId}` | `name:${lowerName}`
+  // Value: { canonicalFoodId, archetypeId (first seen), canonicalName, archetypeNames (set), totalQty, unit }
+  const aggregated = new Map()
   for (const ing of allIngredients) {
-    const key = ing.name.toLowerCase().trim()
+    const key = ing.canonicalFoodId != null
+      ? `id:${ing.canonicalFoodId}`
+      : `name:${ing.canonicalName.toLowerCase().trim()}`
+
     if (!aggregated.has(key)) {
-      aggregated.set(key, { name: ing.name, totalQty: 0, unit: ing.unit })
+      aggregated.set(key, {
+        canonicalFoodId: ing.canonicalFoodId,
+        archetypeId: ing.archetypeId,
+        canonicalName: ing.canonicalName,
+        archetypeNames: new Set(),
+        totalQty: 0,
+        unit: ing.unit,
+      })
     }
-    aggregated.get(key).totalQty += ing.quantity || 0
+    const agg = aggregated.get(key)
+    agg.totalQty += ing.quantity || 0
+    if (ing.archetypeName) agg.archetypeNames.add(ing.archetypeName)
   }
 
-  // 5. Get current stock
+  // 5. Fetch current stock by resolved_canonical_food_id (ID-based, accurate)
   const { data: stockData } = await supabase
-    .from('inventory_lots')
-    .select(`qty_remaining, unit, archetype:archetypes(name), canonical_food:canonical_foods(canonical_name), product:products(name)`)
+    .from('inventory_lots_resolved')
+    .select('resolved_canonical_food_id, qty_remaining, unit')
     .eq('user_id', userId)
     .gt('qty_remaining', 0)
 
-  const stock = new Map() // lowercase name → qty
+  const stockById = new Map() // canonical_food_id → qty
   for (const lot of (stockData || [])) {
-    const name = (lot.product?.name || lot.archetype?.name || lot.canonical_food?.canonical_name || '').toLowerCase()
-    if (!name) continue
-    stock.set(name, (stock.get(name) || 0) + (lot.qty_remaining || 0))
+    const cfId = lot.resolved_canonical_food_id
+    if (!cfId) continue
+    stockById.set(cfId, (stockById.get(cfId) || 0) + (lot.qty_remaining || 0))
   }
 
-  // 6. Calculate what's needed (ingredients - stock)
-  const shoppingItems = []
+  // String-based stock fallback for items without canonical_food_id
+  const { data: stockFallbackData } = await supabase
+    .from('inventory_lots')
+    .select('qty_remaining, unit, archetype:archetypes(name), canonical_food:canonical_foods(canonical_name), product:products(name)')
+    .eq('user_id', userId)
+    .gt('qty_remaining', 0)
+
+  const stockByName = new Map() // lowercase name → qty
+  for (const lot of (stockFallbackData || [])) {
+    const name = (lot.product?.name || lot.archetype?.name || lot.canonical_food?.canonical_name || '').toLowerCase()
+    if (!name) continue
+    stockByName.set(name, (stockByName.get(name) || 0) + (lot.qty_remaining || 0))
+  }
+
+  // 6. Build shopping items
   const CATEGORIES = {
     poulet: 'Protéines', dinde: 'Protéines', boeuf: 'Protéines', porc: 'Protéines',
     saumon: 'Protéines', cabillaud: 'Protéines', saucisse: 'Protéines', steak: 'Protéines',
@@ -374,30 +430,39 @@ async function rebuildShoppingList(supabase, userId, importId, days) {
     concentré: 'Conserves', conserve: 'Conserves', lentille: 'Conserves', pois: 'Conserves',
   }
 
-  for (const [key, { name, totalQty, unit }] of aggregated) {
-    if (totalQty <= 0) continue
+  const shoppingItems = []
+  for (const [, agg] of aggregated) {
+    if (agg.totalQty <= 0) continue
 
-    // Check stock
-    const inStock = stock.get(key) || 0
-    const needed = Math.max(0, totalQty - inStock)
+    const inStock = agg.canonicalFoodId != null
+      ? (stockById.get(agg.canonicalFoodId) || 0)
+      : (stockByName.get(agg.canonicalName.toLowerCase().trim()) || 0)
+
+    const needed = Math.max(0, agg.totalQty - inStock)
     if (needed <= 0) continue
 
-    // Guess category
+    const nameLower = agg.canonicalName.toLowerCase()
     let category = 'Épicerie'
     for (const [keyword, cat] of Object.entries(CATEGORIES)) {
-      if (key.includes(keyword)) { category = cat; break }
+      if (nameLower.includes(keyword)) { category = cat; break }
     }
 
-    const qtyStr = needed > 0 ? `${Math.round(needed)}${unit ? ' ' + unit : ''}` : null
-    const note = inStock > 0 ? `${Math.round(inStock)}${unit ? ' ' + unit : ''} en stock` : null
+    const qtyStr = `${Math.round(needed)}${agg.unit ? ' ' + agg.unit : ''}`
+    const stockNote = inStock > 0 ? `${Math.round(inStock)}${agg.unit ? ' ' + agg.unit : ''} en stock` : null
+    const variantNote = agg.archetypeNames.size > 0
+      ? [...agg.archetypeNames].join(', ')
+      : null
 
     shoppingItems.push({
       import_id: importId,
       week_label: 'S1',
       category,
-      product_name: name,
-      quantity: note ? `${qtyStr} (${note})` : qtyStr,
+      product_name: agg.canonicalName,
+      quantity: stockNote ? `${qtyStr} (${stockNote})` : qtyStr,
       checked: false,
+      canonical_food_id: agg.canonicalFoodId ?? null,
+      archetype_id: agg.archetypeId ?? null,
+      notes: variantNote,
     })
   }
 

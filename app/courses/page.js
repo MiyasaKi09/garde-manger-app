@@ -15,6 +15,8 @@ export default function CoursesPage() {
   const [importId, setImportId] = useState(null)
   const [importLabel, setImportLabel] = useState('')
   const [activeWeek, setActiveWeek] = useState(null)
+  const [expandedItems, setExpandedItems] = useState(new Set())
+  const [containerEdits, setContainerEdits] = useState({})
 
   useEffect(() => {
     async function load() {
@@ -59,55 +61,63 @@ export default function CoursesPage() {
     return groups
   }, [filteredItems])
 
-  async function addToStock(productName, quantityStr) {
+  async function addToStock(item) {
     try {
-      const parsed = parseQty(quantityStr)
-      const match = await findProduct(productName)
-      const storage = guessStorage(productName)
-
-      let shelfDays = null
-      if (match) {
-        const fromProduct = storage.method === 'fridge' ? match.shelf_life_days_fridge
-          : storage.method === 'freezer' ? match.shelf_life_days_freezer
-          : match.shelf_life_days_pantry
-        if (fromProduct && fromProduct > 0) shelfDays = fromProduct
+      const res = await authFetch('/api/courses/add-to-stock', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          itemId: item.id,
+          productName: item.product_name,
+          quantity: item.quantity,
+          canonicalFoodId: item.canonical_food_id ?? null,
+          archetypeId: item.archetype_id ?? null,
+          containerQty: item.container_qty ?? null,
+          containerSize: item.container_size ?? null,
+          containerUnit: item.container_unit ?? null,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok || !data.success) {
+        return { success: false, error: data.error || 'Erreur inconnue' }
       }
-      if (!shelfDays) shelfDays = guessShelfLife(productName, storage.method)
-
-      const expDate = new Date()
-      expDate.setDate(expDate.getDate() + shelfDays)
-      const expirationDate = expDate.toISOString().split('T')[0]
-
-      const lotData = {
-        canonical_food_id: match?.type === 'canonical' ? match.id : null,
-        archetype_id: match?.type === 'archetype' ? match.id : null,
-        cultivar_id: null,
-        qty_remaining: parsed.qty,
-        initial_qty: parsed.qty,
-        unit: parsed.unit,
-        storage_method: storage.method,
-        storage_place: storage.place,
-        expiration_date: expirationDate,
-        acquired_on: new Date().toISOString().split('T')[0],
-        notes: match ? null : productName,
-        is_containerized: false,
-        container_size: null,
-        container_unit: null,
-      }
-
-      const { data: lot, error } = await supabase
-        .from('inventory_lots')
-        .insert([lotData])
-        .select()
-        .single()
-
-      if (error) {
-        return { success: false, error: `${error.message} (code: ${error.code}, details: ${error.details})` }
-      }
-      return { success: true, lot }
+      return { success: true, lotsCreated: data.lotsCreated }
     } catch (err) {
       return { success: false, error: err.message }
     }
+  }
+
+  async function updateContainer(itemId, containerQty, containerSize, containerUnit) {
+    try {
+      await authFetch(`/api/courses/shopping-items/${itemId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ container_qty: containerQty, container_size: containerSize, container_unit: containerUnit }),
+      })
+      setItems(prev => prev.map(i =>
+        i.id === itemId ? { ...i, container_qty: containerQty, container_size: containerSize, container_unit: containerUnit } : i
+      ))
+    } catch {
+      // silent — UI already reflects the edit via containerEdits state
+    }
+  }
+
+  function setContainerField(itemId, field, value) {
+    setContainerEdits(prev => ({ ...prev, [itemId]: { ...(prev[itemId] || {}), [field]: value } }))
+  }
+
+  function getContainerEdit(item, field) {
+    const edits = containerEdits[item.id]
+    if (edits && field in edits) return edits[field]
+    return item[field] ?? ''
+  }
+
+  function saveContainerEdits(item) {
+    const edits = containerEdits[item.id] || {}
+    const qty = parseInt(edits.container_qty ?? item.container_qty) || null
+    const size = parseFloat(String(edits.container_size ?? item.container_size).replace(',', '.')) || null
+    const unit = edits.container_unit ?? item.container_unit ?? null
+    updateContainer(item.id, qty, size, unit)
   }
 
   async function findProduct(name) {
@@ -254,7 +264,7 @@ export default function CoursesPage() {
 
       if (newChecked) {
         try {
-          const result = await addToStock(item.product_name, item.quantity)
+          const result = await addToStock(item)
           if (result.success) {
             setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: true, stocking: false } : i))
           } else {
@@ -361,32 +371,107 @@ export default function CoursesPage() {
                 <span>{category}</span>
                 <span>{catChecked}/{catItems.length}</span>
               </div>
-              {catItems.map(item => (
-                <button
-                  key={item.id}
-                  onClick={() => toggleItem(item.id)}
-                  className={`courses-item-row${item.checked ? ' checked' : ''}`}
-                >
-                  <div className={`courses-checkbox${item.checked ? ' checked' : ''}`}>
-                    {item.checked && <Check size={13} color="#fff" />}
+              {catItems.map(item => {
+                const isExpanded = expandedItems.has(item.id)
+                const hasContainer = !!(item.container_qty && item.container_size)
+                return (
+                  <div key={item.id} className="courses-item-wrapper">
+                    <div
+                      onClick={() => toggleItem(item.id)}
+                      className={`courses-item-row${item.checked ? ' checked' : ''}`}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={e => e.key === 'Enter' && toggleItem(item.id)}
+                    >
+                      <div className={`courses-checkbox${item.checked ? ' checked' : ''}`}>
+                        {item.checked && <Check size={13} color="#fff" />}
+                      </div>
+                      <div className="courses-item-label">
+                        <span className={`courses-item-name${item.checked ? ' checked' : ''}`}>
+                          {item.product_name}
+                        </span>
+                        {item.notes && (
+                          <span className="courses-item-notes">{item.notes}</span>
+                        )}
+                      </div>
+                      {item.quantity && (
+                        <span className="courses-item-qty">{item.quantity}</span>
+                      )}
+                      {item.stocking && (
+                        <span className="courses-badge-stocking">...</span>
+                      )}
+                      {item.stocked && !item.stocking && (
+                        <span className="courses-badge-stocked"><Package size={11} /> rangé</span>
+                      )}
+                      {item.stockError && !item.stocking && (
+                        <span className="courses-badge-error" title={item.stockErrorMsg || ''}>non rangé</span>
+                      )}
+                    </div>
+                    <button
+                      className={`courses-container-toggle${hasContainer ? ' has-container' : ''}${isExpanded ? ' active' : ''}`}
+                      onClick={e => {
+                        e.stopPropagation()
+                        setExpandedItems(prev => {
+                          const next = new Set(prev)
+                          next.has(item.id) ? next.delete(item.id) : next.add(item.id)
+                          return next
+                        })
+                      }}
+                      title="Conditionnement (nb de contenants)"
+                      aria-label="Configurer le conditionnement"
+                    >
+                      <Package size={13} />
+                    </button>
+                    {isExpanded && (
+                      <div className="container-picker" onClick={e => e.stopPropagation()}>
+                        <span className="container-picker-label">Conditionnement</span>
+                        <div className="container-picker-fields">
+                          <input
+                            type="number"
+                            min="1"
+                            placeholder="Nb"
+                            className="container-input container-input-qty"
+                            value={getContainerEdit(item, 'container_qty')}
+                            onChange={e => setContainerField(item.id, 'container_qty', e.target.value)}
+                            onBlur={() => saveContainerEdits(item)}
+                          />
+                          <span className="container-times">×</span>
+                          <input
+                            type="number"
+                            min="0.01"
+                            step="0.01"
+                            placeholder="Taille"
+                            className="container-input container-input-size"
+                            value={getContainerEdit(item, 'container_size')}
+                            onChange={e => setContainerField(item.id, 'container_size', e.target.value)}
+                            onBlur={() => saveContainerEdits(item)}
+                          />
+                          <select
+                            className="container-unit-select"
+                            value={getContainerEdit(item, 'container_unit') || 'L'}
+                            onChange={e => {
+                              setContainerField(item.id, 'container_unit', e.target.value)
+                              saveContainerEdits(item)
+                            }}
+                          >
+                            <option value="L">L</option>
+                            <option value="ml">ml</option>
+                            <option value="cl">cl</option>
+                            <option value="g">g</option>
+                            <option value="kg">kg</option>
+                            <option value="unités">unités</option>
+                          </select>
+                        </div>
+                        {item.container_qty && item.container_size && (
+                          <span className="container-picker-summary">
+                            {item.container_qty} × {item.container_size} {item.container_unit}
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
-                  <span className={`courses-item-name${item.checked ? ' checked' : ''}`}>
-                    {item.product_name}
-                  </span>
-                  {item.quantity && (
-                    <span className="courses-item-qty">{item.quantity}</span>
-                  )}
-                  {item.stocking && (
-                    <span className="courses-badge-stocking">...</span>
-                  )}
-                  {item.stocked && !item.stocking && (
-                    <span className="courses-badge-stocked"><Package size={11} /> rangé</span>
-                  )}
-                  {item.stockError && !item.stocking && (
-                    <span className="courses-badge-error" title={item.stockErrorMsg || ''}>non rangé</span>
-                  )}
-                </button>
-              ))}
+                )
+              })}
             </div>
           )
         })}

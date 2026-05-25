@@ -5,7 +5,15 @@ import { NextResponse } from 'next/server'
 /**
  * POST /api/courses/add-to-stock
  * Quand un article de courses est coché, on l'ajoute au stock (inventory_lots).
- * Body: { itemId, productName, quantity }
+ *
+ * Body:
+ *   { itemId, productName, quantity,
+ *     canonicalFoodId?, archetypeId?,        ← IDs directs depuis nutrition_plan_shopping_items
+ *     containerQty?, containerSize?, containerUnit?  ← conditionnement (ex: 3 bouteilles de 1L)
+ *   }
+ *
+ * Si containerQty > 1 → crée containerQty lots distincts de taille containerSize.
+ * Si IDs présents → skip la recherche par nom.
  */
 export async function POST(request) {
   try {
@@ -15,67 +23,104 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
     }
 
-    const { itemId, productName, quantity } = await request.json()
+    const {
+      itemId,
+      productName,
+      quantity,
+      canonicalFoodId = null,
+      archetypeId = null,
+      containerQty = null,
+      containerSize = null,
+      containerUnit = null,
+    } = await request.json()
+
     if (!productName) {
       return NextResponse.json({ error: 'productName requis' }, { status: 400 })
     }
 
-    // 1. Parse quantity string → number + unit
-    const parsed = parseQuantity(quantity)
+    // 1. Resolve ingredient IDs — use provided IDs directly, fallback to name search
+    let resolvedCanonicalFoodId = canonicalFoodId
+    let resolvedArchetypeId = archetypeId
 
-    // 2. Find matching product (archetype first, then canonical_food)
-    const match = await findProduct(supabase, productName)
+    if (!resolvedCanonicalFoodId && !resolvedArchetypeId) {
+      const match = await findProduct(supabase, productName)
+      if (match?.type === 'canonical') resolvedCanonicalFoodId = match.id
+      if (match?.type === 'archetype') resolvedArchetypeId = match.id
+    }
 
-    // 3. Determine storage based on category
-    const storage = guessStorage(productName, match)
+    const matched = !!(resolvedCanonicalFoodId || resolvedArchetypeId)
 
-    // 4. Create inventory lot
-    const lotData = {
-      canonical_food_id: match?.type === 'canonical' ? match.id : null,
-      archetype_id: match?.type === 'archetype' ? match.id : null,
+    // 2. Determine storage
+    const storage = guessStorage(productName, matched ? { type: resolvedArchetypeId ? 'archetype' : 'canonical' } : null)
+
+    // 3. Build base lot template
+    const today = new Date().toISOString().split('T')[0]
+    const baseLot = {
+      canonical_food_id: resolvedCanonicalFoodId ?? null,
+      archetype_id: resolvedArchetypeId ?? null,
       cultivar_id: null,
-      qty_remaining: parsed.qty,
-      initial_qty: parsed.qty,
-      unit: parsed.unit,
       storage_method: storage.method,
       storage_place: storage.place,
-      acquired_on: new Date().toISOString().split('T')[0],
-      notes: match ? `Ajouté depuis courses` : `${productName} (ajouté depuis courses)`,
+      acquired_on: today,
+      notes: matched ? 'Ajouté depuis courses' : `${productName} (ajouté depuis courses)`,
     }
 
-    const { data: lot, error } = await supabase
+    // 4. Determine qty + unit per lot
+    const useContainerized = containerQty != null && containerQty > 1 && containerSize != null
+
+    let lotsToCreate
+    if (useContainerized) {
+      // Create N separate lots, one per container
+      const perUnit = normalizeUnit(containerSize, (containerUnit || 'unités').toLowerCase())
+      lotsToCreate = Array.from({ length: containerQty }, () => ({
+        ...baseLot,
+        qty_remaining: perUnit.qty,
+        initial_qty: perUnit.qty,
+        unit: perUnit.unit,
+        is_containerized: true,
+        container_size: containerSize,
+        container_unit: containerUnit,
+      }))
+    } else {
+      // Single lot with total quantity
+      const parsed = parseQuantity(quantity)
+      lotsToCreate = [{
+        ...baseLot,
+        qty_remaining: parsed.qty,
+        initial_qty: parsed.qty,
+        unit: parsed.unit,
+      }]
+    }
+
+    // 5. Insert lots
+    const { data: lots, error } = await supabase
       .from('inventory_lots')
-      .insert([lotData])
+      .insert(lotsToCreate)
       .select()
-      .single()
 
     if (error) {
-      // Retry without optional fields in case of schema mismatch
-      console.error('Erreur création lot (tentative 1):', error)
-      const { data: lot2, error: error2 } = await supabase
+      // Retry with minimal fields
+      const minimalLots = lotsToCreate.map(l => ({
+        canonical_food_id: l.canonical_food_id,
+        archetype_id: l.archetype_id,
+        qty_remaining: l.qty_remaining,
+        initial_qty: l.initial_qty,
+        unit: l.unit,
+        notes: l.notes,
+      }))
+      const { data: lots2, error: error2 } = await supabase
         .from('inventory_lots')
-        .insert([{
-          canonical_food_id: lotData.canonical_food_id,
-          archetype_id: lotData.archetype_id,
-          qty_remaining: lotData.qty_remaining,
-          initial_qty: lotData.initial_qty,
-          unit: lotData.unit,
-          notes: lotData.notes,
-        }])
+        .insert(minimalLots)
         .select()
-        .single()
 
       if (error2) {
-        console.error('Erreur création lot (tentative 2):', error2)
         return NextResponse.json({ error: error2.message }, { status: 500 })
       }
-
-      return NextResponse.json({ success: true, lot: lot2, matched: !!match })
+      return NextResponse.json({ success: true, lots: lots2, matched, lotsCreated: lots2.length })
     }
 
-    return NextResponse.json({ success: true, lot, matched: !!match })
+    return NextResponse.json({ success: true, lots, matched, lotsCreated: lots.length })
   } catch (err) {
-    console.error('Erreur API add-to-stock:', err)
     return NextResponse.json({ error: err.message }, { status: 500 })
   }
 }
