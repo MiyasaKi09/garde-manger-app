@@ -1,1716 +1,1715 @@
-id,import_id,week_label,category,product_name,quantity,checked
-1020,10,S1,🥩 Viandes & Poissons,Saucisses de porc,400g,f
-1021,10,S1,🥩 Viandes & Poissons,Cuisses de poulet,600g,f
-1022,10,S1,🥩 Viandes & Poissons,Filet de poulet,540g,f
-1023,10,S1,🥩 Viandes & Poissons,Saumon,360g (200+160),f
-1024,10,S1,🥩 Viandes & Poissons,Steak haché 5%,560g,f
-1025,10,S1,🥩 Viandes & Poissons,Jambon,280g,f
-1026,10,S1,🥩 Viandes & Poissons,Lardons dinde,280g,f
-1027,10,S1,🥛 Produits laitiers,Skyr,2kg,f
-1028,10,S1,🥛 Produits laitiers,Emmental,75g,f
-1029,10,S1,🥛 Produits laitiers,Cheddar,45g,f
-1030,10,S1,🥛 Produits laitiers,Parmesan,40g,f
-1031,10,S1,🥛 Produits laitiers,Gruyère,40g,f
-1032,10,S1,🥛 Produits laitiers,Beurre,30g,f
-1033,10,S1,🥛 Produits laitiers,Lait,80ml,f
-1034,10,S1,🥔 Féculents,Riz,440g cuit,f
-1035,10,S1,🥔 Féculents,Semoule,370g cuite,f
-1036,10,S1,🥔 Féculents,Pâtes,200g cuites,f
-1037,10,S1,🥔 Féculents,PDT,1.2kg,f
-1038,10,S1,🥔 Féculents,Grenaille,600g,f
-1039,10,S1,🥔 Féculents,Pain complet,350g,f
-1040,10,S1,🥔 Féculents,Pain burger,150g,f
-1041,10,S1,🥬 Légumes de saison,Poivrons conserve,300g,f
-1042,10,S1,🥬 Légumes de saison,Oignon,450g,f
-1043,10,S1,🥬 Légumes de saison,Carottes,180g,f
-1044,10,S1,🥬 Légumes de saison,Brocoli,440g,f
-1045,10,S1,🥬 Légumes de saison,Endives,450g (7),f
-1046,10,S1,🥬 Légumes de saison,Mâche,160g,f
-1047,10,S1,🥬 Légumes de saison,Haricots verts,540g,f
-1048,10,S1,🥬 Légumes de saison,Salade verte,200g,f
-1049,10,S1,🥬 Légumes de saison,Tomates cerise,90g,f
-1050,10,S1,🥬 Légumes de saison,Lentilles vertes,250g sèches,f
-1051,10,S1,🥬 Légumes de saison,Lentilles cuites,200g,f
-1052,10,S1,🥫 Conserves & épicerie,Passata,950g,f
-1053,10,S1,🥫 Conserves & épicerie,Concentré tomate,20g,f
-1054,10,S1,🥫 Conserves & épicerie,Gingembre frais,15g,f
-1055,10,S1,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1056,10,S1,🥫 Conserves & épicerie,Miel,22g,f
-1057,10,S1,🥫 Conserves & épicerie,Moutarde,18g,f
-1058,10,S1,🥫 Conserves & épicerie,Cornichons,35g,f
-1059,10,S1,🥫 Conserves & épicerie,Ketchup,18g,f
-1060,10,S1,🥫 Conserves & épicerie,Cumin,5g,f
-1061,10,S1,🍎 Fruits & oléagineux,Amandes,180g,f
-1062,10,S1,🍎 Fruits & oléagineux,Noix,20g,f
-1063,10,S1,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1064,10,S1,🍎 Fruits & oléagineux,Pommes,300g,f
-1065,10,S1,🍎 Fruits & oléagineux,Poires,320g,f
-1066,10,S1,🍎 Fruits & oléagineux,Kiwis,200g,f
-1067,10,S1,🍎 Fruits & oléagineux,Clémentines,280g,f
-1068,10,S1,🍎 Fruits & oléagineux,Oranges,180g,f
-1069,10,S2,🥩 Viandes & Poissons,Bœuf haché 5%,860g,f
-1070,10,S2,🥩 Viandes & Poissons,Filet de porc,370g,f
-1071,10,S2,🥩 Viandes & Poissons,Cabillaud,370g,f
-1072,10,S2,🥩 Viandes & Poissons,Filet de poulet,990g,f
-1073,10,S2,🥩 Viandes & Poissons,Jambon,205g,f
-1074,10,S2,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
-1075,10,S2,🥛 Produits laitiers,Skyr,2kg,f
-1076,10,S2,🥛 Produits laitiers,Emmental,35g,f
-1077,10,S2,🥛 Produits laitiers,Parmesan,62g,f
-1078,10,S2,🥛 Produits laitiers,Gruyère,65g,f
-1079,10,S2,🥛 Produits laitiers,Crème 15%,125g,f
-1080,10,S2,🥛 Produits laitiers,Beurre,30g,f
-1081,10,S2,🥛 Produits laitiers,Lait coco,100g,f
-1082,10,S2,🥛 Produits laitiers,Lait,140ml,f
-1083,10,S2,🥔 Féculents,Pâtes complètes,400g cuites,f
-1084,10,S2,🥔 Féculents,PDT,740g,f
-1085,10,S2,🥔 Féculents,Riz,640g cuit,f
-1086,10,S2,🥔 Féculents,Frites four,400g,f
-1087,10,S2,🥔 Féculents,Naan,150g,f
-1088,10,S2,🥔 Féculents,Pâtes,340g cuites,f
-1089,10,S2,🥔 Féculents,Polenta,360g cuite,f
-1090,10,S2,🥔 Féculents,Pain complet,300g,f
-1091,10,S2,🥔 Féculents,Farine,55g,f
-1092,10,S2,🥬 Légumes de saison,Carottes,330g,f
-1093,10,S2,🥬 Légumes de saison,Champignons,300g,f
-1094,10,S2,🥬 Légumes de saison,Poireaux,270g,f
-1095,10,S2,🥬 Légumes de saison,Betteraves,180g,f
-1096,10,S2,🥬 Légumes de saison,Mâche,140g,f
-1097,10,S2,🥬 Légumes de saison,Brocoli,270g,f
-1098,10,S2,🥬 Légumes de saison,Chou-fleur,370g,f
-1099,10,S2,🥬 Légumes de saison,Oignon,350g,f
-1100,10,S2,🥬 Légumes de saison,Salade verte,200g,f
-1101,10,S2,🥬 Légumes de saison,Lentilles vertes,130g sèches,f
-1102,10,S2,🥬 Légumes de saison,Haricots verts,140g,f
-1103,10,S2,🥬 Légumes de saison,Olives,25g,f
-1104,10,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f
-1105,10,S2,🥬 Légumes de saison,Petits pois,80g,f
-1106,10,S2,🥫 Conserves & épicerie,Passata,470g,f
-1107,10,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f
-1108,10,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1109,10,S2,🥫 Conserves & épicerie,Miel,11g,f
-1656,14,S1,Fruits,Kiwis,200g,f
-1110,10,S2,🥫 Conserves & épicerie,Gingembre,9g,f
-1111,10,S2,🥫 Conserves & épicerie,Moutarde,15g,f
-1112,10,S2,🥫 Conserves & épicerie,Curry,10g,f
-1113,10,S2,🥫 Conserves & épicerie,Chapelure,34g,f
-1114,10,S2,🍎 Fruits & oléagineux,Amandes,180g,f
-1115,10,S2,🍎 Fruits & oléagineux,Noix,20g,f
-1116,10,S2,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1117,10,S2,🍎 Fruits & oléagineux,Pommes,450g,f
-1118,10,S2,🍎 Fruits & oléagineux,Poires,320g,f
-1119,10,S2,🍎 Fruits & oléagineux,Kiwis,100g,f
-1120,10,S2,🍎 Fruits & oléagineux,Oranges,180g,f
-1121,10,S2,🍎 Fruits & oléagineux,Clémentines,140g,f
-1122,10,S3,🥩 Viandes & Poissons,Filet de poulet,730g,f
-1123,10,S3,🥩 Viandes & Poissons,Saumon,360g,f
-1124,10,S3,🥩 Viandes & Poissons,Filet de dinde,370g,f
-1125,10,S3,🥩 Viandes & Poissons,Jambon,320g,f
-1126,10,S3,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
-1127,10,S3,🥩 Viandes & Poissons,Filet de porc,550g,f
-1128,10,S3,🥩 Viandes & Poissons,Lardon fumé,45g,f
-1129,10,S3,🥛 Produits laitiers,Skyr,2kg,f
-1130,10,S3,🥛 Produits laitiers,Emmental,85g,f
-1131,10,S3,🥛 Produits laitiers,Gruyère,45g,f
-1132,10,S3,🥛 Produits laitiers,Mozzarella,115g,f
-1133,10,S3,🥛 Produits laitiers,Parmesan,14g,f
-1134,10,S3,🥛 Produits laitiers,Crème 15%,135g,f
-1135,10,S3,🥛 Produits laitiers,Beurre,40g,f
-1136,10,S3,🥛 Produits laitiers,Lait,140ml,f
-1137,10,S3,🥔 Féculents,Riz,620g cuit,f
-1138,10,S3,🥔 Féculents,Pâtes,380g cuites,f
-1139,10,S3,🥔 Féculents,Pâtes complètes,580g cuites,f
-1140,10,S3,🥔 Féculents,PDT,620g,f
-1141,10,S3,🥔 Féculents,Semoule,380g cuite,f
-1142,10,S3,🥔 Féculents,Tortilla wrap,175g,f
-1143,10,S3,🥔 Féculents,Pain complet,300g,f
-1144,10,S3,🥔 Féculents,Farine,80g,f
-1145,10,S3,🥔 Féculents,Pâte brisée,130g,f
-1146,10,S3,🥬 Légumes de saison,Brocoli,280g,f
-1147,10,S3,🥬 Légumes de saison,Poireaux,540g,f
-1148,10,S3,🥬 Légumes de saison,Navets,220g,f
-1149,10,S3,🥬 Légumes de saison,Haricots verts,440g,f
-1150,10,S3,🥬 Légumes de saison,Champignons,360g,f
-1151,10,S3,🥬 Légumes de saison,Mâche,140g,f
-1152,10,S3,🥬 Légumes de saison,Carottes,230g,f
-1153,10,S3,🥬 Légumes de saison,Chou vert,140g,f
-1154,10,S3,🥬 Légumes de saison,Salade verte,320g,f
-1155,10,S3,🥬 Légumes de saison,Oignon,190g,f
-1156,10,S3,🥬 Légumes de saison,Lentilles cuites,430g,f
-1157,10,S3,🥬 Légumes de saison,Pois chiches conserve,180g,f
-1158,10,S3,🥫 Conserves & épicerie,Passata,130g,f
-1159,10,S3,🥫 Conserves & épicerie,Guacamole,55g,f
-1160,10,S3,🥫 Conserves & épicerie,Moutarde,47g,f
-1161,10,S3,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1162,10,S3,🥫 Conserves & épicerie,Gingembre,9g,f
-1163,10,S3,🥫 Conserves & épicerie,Cumin,5g,f
-1164,10,S3,🥫 Conserves & épicerie,Paprika,3.5g,f
-1165,10,S3,🍎 Fruits & oléagineux,Amandes,180g,f
-1166,10,S3,🍎 Fruits & oléagineux,Noix,20g,f
-1167,10,S3,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1168,10,S3,🍎 Fruits & oléagineux,Pommes,450g,f
-1169,10,S3,🍎 Fruits & oléagineux,Poires,320g,f
-1170,10,S3,🍎 Fruits & oléagineux,Clémentines,280g,f
-1171,10,S3,🍎 Fruits & oléagineux,Kiwis,200g,f
-1172,11,S1,🥩 Viandes & Poissons,Saucisses de porc,400g,f
-1173,11,S1,🥩 Viandes & Poissons,Cuisses de poulet,600g,f
-1174,11,S1,🥩 Viandes & Poissons,Filet de poulet,540g,f
-1175,11,S1,🥩 Viandes & Poissons,Saumon,360g (200+160),f
-1176,11,S1,🥩 Viandes & Poissons,Steak haché 5%,560g,f
-1177,11,S1,🥩 Viandes & Poissons,Jambon,280g,f
-1178,11,S1,🥩 Viandes & Poissons,Lardons dinde,280g,f
-1179,11,S1,🥛 Produits laitiers,Skyr,2kg,f
-1180,11,S1,🥛 Produits laitiers,Emmental,75g,f
-1181,11,S1,🥛 Produits laitiers,Cheddar,45g,f
-1182,11,S1,🥛 Produits laitiers,Parmesan,40g,f
-1183,11,S1,🥛 Produits laitiers,Gruyère,40g,f
-1184,11,S1,🥛 Produits laitiers,Beurre,30g,f
-1185,11,S1,🥛 Produits laitiers,Lait,80ml,f
-1186,11,S1,🥔 Féculents,Riz,440g cuit,f
-1187,11,S1,🥔 Féculents,Semoule,370g cuite,f
-1188,11,S1,🥔 Féculents,Pâtes,200g cuites,f
-1189,11,S1,🥔 Féculents,PDT,1.2kg,f
-1190,11,S1,🥔 Féculents,Grenaille,600g,f
-1191,11,S1,🥔 Féculents,Pain complet,350g,f
-1192,11,S1,🥔 Féculents,Pain burger,150g,f
-1193,11,S1,🥬 Légumes de saison,Poivrons conserve,300g,f
-1194,11,S1,🥬 Légumes de saison,Oignon,450g,f
-1195,11,S1,🥬 Légumes de saison,Carottes,180g,f
-1196,11,S1,🥬 Légumes de saison,Brocoli,440g,f
-1197,11,S1,🥬 Légumes de saison,Endives,450g (7),f
-1198,11,S1,🥬 Légumes de saison,Mâche,160g,f
-1199,11,S1,🥬 Légumes de saison,Haricots verts,540g,f
-1200,11,S1,🥬 Légumes de saison,Salade verte,200g,f
-1201,11,S1,🥬 Légumes de saison,Tomates cerise,90g,f
-1202,11,S1,🥬 Légumes de saison,Lentilles vertes,250g sèches,f
-1203,11,S1,🥬 Légumes de saison,Lentilles cuites,200g,f
-1204,11,S1,🥫 Conserves & épicerie,Passata,950g,f
-1205,11,S1,🥫 Conserves & épicerie,Concentré tomate,20g,f
-1206,11,S1,🥫 Conserves & épicerie,Gingembre frais,15g,f
-1207,11,S1,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1208,11,S1,🥫 Conserves & épicerie,Miel,22g,f
-1209,11,S1,🥫 Conserves & épicerie,Moutarde,18g,f
-1210,11,S1,🥫 Conserves & épicerie,Cornichons,35g,f
-1211,11,S1,🥫 Conserves & épicerie,Ketchup,18g,f
-1212,11,S1,🥫 Conserves & épicerie,Cumin,5g,f
-1213,11,S1,🍎 Fruits & oléagineux,Amandes,180g,f
-1214,11,S1,🍎 Fruits & oléagineux,Noix,20g,f
-1215,11,S1,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1216,11,S1,🍎 Fruits & oléagineux,Pommes,300g,f
-1217,11,S1,🍎 Fruits & oléagineux,Poires,320g,f
-1218,11,S1,🍎 Fruits & oléagineux,Kiwis,200g,f
-1219,11,S1,🍎 Fruits & oléagineux,Clémentines,280g,f
-1220,11,S1,🍎 Fruits & oléagineux,Oranges,180g,f
-1221,11,S2,🥩 Viandes & Poissons,Bœuf haché 5%,860g,f
-1222,11,S2,🥩 Viandes & Poissons,Filet de porc,370g,f
-1223,11,S2,🥩 Viandes & Poissons,Cabillaud,370g,f
-1224,11,S2,🥩 Viandes & Poissons,Filet de poulet,990g,f
-1225,11,S2,🥩 Viandes & Poissons,Jambon,205g,f
-1226,11,S2,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
-1227,11,S2,🥛 Produits laitiers,Skyr,2kg,f
-1228,11,S2,🥛 Produits laitiers,Emmental,35g,f
-1229,11,S2,🥛 Produits laitiers,Parmesan,62g,f
-1230,11,S2,🥛 Produits laitiers,Gruyère,65g,f
-1231,11,S2,🥛 Produits laitiers,Crème 15%,125g,f
-1232,11,S2,🥛 Produits laitiers,Beurre,30g,f
-1233,11,S2,🥛 Produits laitiers,Lait coco,100g,f
-1234,11,S2,🥛 Produits laitiers,Lait,140ml,f
-1235,11,S2,🥔 Féculents,Pâtes complètes,400g cuites,f
-1236,11,S2,🥔 Féculents,PDT,740g,f
-1237,11,S2,🥔 Féculents,Riz,640g cuit,f
-1238,11,S2,🥔 Féculents,Frites four,400g,f
-1239,11,S2,🥔 Féculents,Naan,150g,f
-1240,11,S2,🥔 Féculents,Pâtes,340g cuites,f
-1241,11,S2,🥔 Féculents,Polenta,360g cuite,f
-1242,11,S2,🥔 Féculents,Pain complet,300g,f
-1243,11,S2,🥔 Féculents,Farine,55g,f
-1244,11,S2,🥬 Légumes de saison,Carottes,330g,f
-1245,11,S2,🥬 Légumes de saison,Champignons,300g,f
-1246,11,S2,🥬 Légumes de saison,Poireaux,270g,f
-1247,11,S2,🥬 Légumes de saison,Betteraves,180g,f
-1248,11,S2,🥬 Légumes de saison,Mâche,140g,f
-1249,11,S2,🥬 Légumes de saison,Brocoli,270g,f
-1250,11,S2,🥬 Légumes de saison,Chou-fleur,370g,f
-1251,11,S2,🥬 Légumes de saison,Oignon,350g,f
-1252,11,S2,🥬 Légumes de saison,Salade verte,200g,f
-1253,11,S2,🥬 Légumes de saison,Lentilles vertes,130g sèches,f
-1254,11,S2,🥬 Légumes de saison,Haricots verts,140g,f
-1255,11,S2,🥬 Légumes de saison,Olives,25g,f
-1256,11,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f
-1257,11,S2,🥬 Légumes de saison,Petits pois,80g,f
-1258,11,S2,🥫 Conserves & épicerie,Passata,470g,f
-1259,11,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f
-1260,11,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1261,11,S2,🥫 Conserves & épicerie,Miel,11g,f
-1262,11,S2,🥫 Conserves & épicerie,Gingembre,9g,f
-1263,11,S2,🥫 Conserves & épicerie,Moutarde,15g,f
-1264,11,S2,🥫 Conserves & épicerie,Curry,10g,f
-1265,11,S2,🥫 Conserves & épicerie,Chapelure,34g,f
-1266,11,S2,🍎 Fruits & oléagineux,Amandes,180g,f
-1267,11,S2,🍎 Fruits & oléagineux,Noix,20g,f
-1268,11,S2,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1269,11,S2,🍎 Fruits & oléagineux,Pommes,450g,f
-1270,11,S2,🍎 Fruits & oléagineux,Poires,320g,f
-1271,11,S2,🍎 Fruits & oléagineux,Kiwis,100g,f
-1272,11,S2,🍎 Fruits & oléagineux,Oranges,180g,f
-1273,11,S2,🍎 Fruits & oléagineux,Clémentines,140g,f
-1274,11,S3,🥩 Viandes & Poissons,Filet de poulet,730g,f
-1275,11,S3,🥩 Viandes & Poissons,Saumon,360g,f
-1276,11,S3,🥩 Viandes & Poissons,Filet de dinde,370g,f
-1277,11,S3,🥩 Viandes & Poissons,Jambon,320g,f
-1278,11,S3,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
-1279,11,S3,🥩 Viandes & Poissons,Filet de porc,550g,f
-1280,11,S3,🥩 Viandes & Poissons,Lardon fumé,45g,f
-1281,11,S3,🥛 Produits laitiers,Skyr,2kg,f
-1282,11,S3,🥛 Produits laitiers,Emmental,85g,f
-1283,11,S3,🥛 Produits laitiers,Gruyère,45g,f
-1284,11,S3,🥛 Produits laitiers,Mozzarella,115g,f
-1285,11,S3,🥛 Produits laitiers,Parmesan,14g,f
-1286,11,S3,🥛 Produits laitiers,Crème 15%,135g,f
-1287,11,S3,🥛 Produits laitiers,Beurre,40g,f
-1288,11,S3,🥛 Produits laitiers,Lait,140ml,f
-1289,11,S3,🥔 Féculents,Riz,620g cuit,f
-1290,11,S3,🥔 Féculents,Pâtes,380g cuites,f
-1291,11,S3,🥔 Féculents,Pâtes complètes,580g cuites,f
-1292,11,S3,🥔 Féculents,PDT,620g,f
-1293,11,S3,🥔 Féculents,Semoule,380g cuite,f
-1294,11,S3,🥔 Féculents,Tortilla wrap,175g,f
-1295,11,S3,🥔 Féculents,Pain complet,300g,f
-1296,11,S3,🥔 Féculents,Farine,80g,f
-1297,11,S3,🥔 Féculents,Pâte brisée,130g,f
-1298,11,S3,🥬 Légumes de saison,Brocoli,280g,f
-1299,11,S3,🥬 Légumes de saison,Poireaux,540g,f
-1300,11,S3,🥬 Légumes de saison,Navets,220g,f
-1301,11,S3,🥬 Légumes de saison,Haricots verts,440g,f
-1302,11,S3,🥬 Légumes de saison,Champignons,360g,f
-1303,11,S3,🥬 Légumes de saison,Mâche,140g,f
-1304,11,S3,🥬 Légumes de saison,Carottes,230g,f
-1305,11,S3,🥬 Légumes de saison,Chou vert,140g,f
-1306,11,S3,🥬 Légumes de saison,Salade verte,320g,f
-1307,11,S3,🥬 Légumes de saison,Oignon,190g,f
-1308,11,S3,🥬 Légumes de saison,Lentilles cuites,430g,f
-1309,11,S3,🥬 Légumes de saison,Pois chiches conserve,180g,f
-1310,11,S3,🥫 Conserves & épicerie,Passata,130g,f
-1311,11,S3,🥫 Conserves & épicerie,Guacamole,55g,f
-1312,11,S3,🥫 Conserves & épicerie,Moutarde,47g,f
-1313,11,S3,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1314,11,S3,🥫 Conserves & épicerie,Gingembre,9g,f
-1315,11,S3,🥫 Conserves & épicerie,Cumin,5g,f
-1316,11,S3,🥫 Conserves & épicerie,Paprika,3.5g,f
-1317,11,S3,🍎 Fruits & oléagineux,Amandes,180g,f
-1318,11,S3,🍎 Fruits & oléagineux,Noix,20g,f
-1319,11,S3,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1320,11,S3,🍎 Fruits & oléagineux,Pommes,450g,f
-1321,11,S3,🍎 Fruits & oléagineux,Poires,320g,f
-1322,11,S3,🍎 Fruits & oléagineux,Clémentines,280g,f
-1323,11,S3,🍎 Fruits & oléagineux,Kiwis,200g,f
-1324,12,S1,🥩 Viandes & Poissons,Saucisses de porc,400g,f
-1325,12,S1,🥩 Viandes & Poissons,Cuisses de poulet,600g,f
-1326,12,S1,🥩 Viandes & Poissons,Filet de poulet,540g,f
-1327,12,S1,🥩 Viandes & Poissons,Saumon,360g (200+160),f
-1328,12,S1,🥩 Viandes & Poissons,Steak haché 5%,560g,f
-1329,12,S1,🥩 Viandes & Poissons,Jambon,280g,f
-1330,12,S1,🥩 Viandes & Poissons,Lardons dinde,280g,f
-1331,12,S1,🥛 Produits laitiers,Skyr,2kg,f
-1332,12,S1,🥛 Produits laitiers,Emmental,75g,f
-1333,12,S1,🥛 Produits laitiers,Cheddar,45g,f
-1334,12,S1,🥛 Produits laitiers,Parmesan,40g,f
-1335,12,S1,🥛 Produits laitiers,Gruyère,40g,f
-1336,12,S1,🥛 Produits laitiers,Beurre,30g,f
-1337,12,S1,🥛 Produits laitiers,Lait,80ml,f
-1338,12,S1,🥔 Féculents,Riz,440g cuit,f
-1339,12,S1,🥔 Féculents,Semoule,370g cuite,f
-1340,12,S1,🥔 Féculents,Pâtes,200g cuites,f
-1341,12,S1,🥔 Féculents,PDT,1.2kg,f
-1342,12,S1,🥔 Féculents,Grenaille,600g,f
-1343,12,S1,🥔 Féculents,Pain complet,350g,f
-1344,12,S1,🥔 Féculents,Pain burger,150g,f
-1345,12,S1,🥬 Légumes de saison,Poivrons conserve,300g,f
-1346,12,S1,🥬 Légumes de saison,Oignon,450g,f
-1347,12,S1,🥬 Légumes de saison,Carottes,180g,f
-1348,12,S1,🥬 Légumes de saison,Brocoli,440g,f
-1349,12,S1,🥬 Légumes de saison,Endives,450g (7),f
-1350,12,S1,🥬 Légumes de saison,Mâche,160g,f
-1351,12,S1,🥬 Légumes de saison,Haricots verts,540g,f
-1352,12,S1,🥬 Légumes de saison,Salade verte,200g,f
-1353,12,S1,🥬 Légumes de saison,Tomates cerise,90g,f
-1354,12,S1,🥬 Légumes de saison,Lentilles vertes,250g sèches,f
-1355,12,S1,🥬 Légumes de saison,Lentilles cuites,200g,f
-1356,12,S1,🥫 Conserves & épicerie,Passata,950g,f
-1357,12,S1,🥫 Conserves & épicerie,Concentré tomate,20g,f
-1358,12,S1,🥫 Conserves & épicerie,Gingembre frais,15g,f
-1359,12,S1,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1360,12,S1,🥫 Conserves & épicerie,Miel,22g,f
-1361,12,S1,🥫 Conserves & épicerie,Moutarde,18g,f
-1362,12,S1,🥫 Conserves & épicerie,Cornichons,35g,f
-1363,12,S1,🥫 Conserves & épicerie,Ketchup,18g,f
-1364,12,S1,🥫 Conserves & épicerie,Cumin,5g,f
-1365,12,S1,🍎 Fruits & oléagineux,Amandes,180g,f
-1366,12,S1,🍎 Fruits & oléagineux,Noix,20g,f
-1367,12,S1,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1368,12,S1,🍎 Fruits & oléagineux,Pommes,300g,f
-1369,12,S1,🍎 Fruits & oléagineux,Poires,320g,f
-1370,12,S1,🍎 Fruits & oléagineux,Kiwis,200g,f
-1371,12,S1,🍎 Fruits & oléagineux,Clémentines,280g,f
-1372,12,S1,🍎 Fruits & oléagineux,Oranges,180g,f
-1373,12,S2,🥩 Viandes & Poissons,Bœuf haché 5%,860g,f
-1374,12,S2,🥩 Viandes & Poissons,Filet de porc,370g,f
-1375,12,S2,🥩 Viandes & Poissons,Cabillaud,370g,f
-1376,12,S2,🥩 Viandes & Poissons,Filet de poulet,990g,f
-1377,12,S2,🥩 Viandes & Poissons,Jambon,205g,f
-1378,12,S2,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
-1379,12,S2,🥛 Produits laitiers,Skyr,2kg,f
-1380,12,S2,🥛 Produits laitiers,Emmental,35g,f
-1381,12,S2,🥛 Produits laitiers,Parmesan,62g,f
-1382,12,S2,🥛 Produits laitiers,Gruyère,65g,f
-1383,12,S2,🥛 Produits laitiers,Crème 15%,125g,f
-1384,12,S2,🥛 Produits laitiers,Beurre,30g,f
-1385,12,S2,🥛 Produits laitiers,Lait coco,100g,f
-1386,12,S2,🥛 Produits laitiers,Lait,140ml,f
-1387,12,S2,🥔 Féculents,Pâtes complètes,400g cuites,f
-1388,12,S2,🥔 Féculents,PDT,740g,f
-1389,12,S2,🥔 Féculents,Riz,640g cuit,f
-1390,12,S2,🥔 Féculents,Frites four,400g,f
-1391,12,S2,🥔 Féculents,Naan,150g,f
-1392,12,S2,🥔 Féculents,Pâtes,340g cuites,f
-1393,12,S2,🥔 Féculents,Polenta,360g cuite,f
-1394,12,S2,🥔 Féculents,Pain complet,300g,f
-1395,12,S2,🥔 Féculents,Farine,55g,f
-1396,12,S2,🥬 Légumes de saison,Carottes,330g,f
-1397,12,S2,🥬 Légumes de saison,Champignons,300g,f
-1398,12,S2,🥬 Légumes de saison,Poireaux,270g,f
-1399,12,S2,🥬 Légumes de saison,Betteraves,180g,f
-1400,12,S2,🥬 Légumes de saison,Mâche,140g,f
-1401,12,S2,🥬 Légumes de saison,Brocoli,270g,f
-1402,12,S2,🥬 Légumes de saison,Chou-fleur,370g,f
-1403,12,S2,🥬 Légumes de saison,Oignon,350g,f
-1404,12,S2,🥬 Légumes de saison,Salade verte,200g,f
-1405,12,S2,🥬 Légumes de saison,Lentilles vertes,130g sèches,f
-1406,12,S2,🥬 Légumes de saison,Haricots verts,140g,f
-1407,12,S2,🥬 Légumes de saison,Olives,25g,f
-1408,12,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f
-1409,12,S2,🥬 Légumes de saison,Petits pois,80g,f
-1410,12,S2,🥫 Conserves & épicerie,Passata,470g,f
-1411,12,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f
-1412,12,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1413,12,S2,🥫 Conserves & épicerie,Miel,11g,f
-1414,12,S2,🥫 Conserves & épicerie,Gingembre,9g,f
-1415,12,S2,🥫 Conserves & épicerie,Moutarde,15g,f
-1416,12,S2,🥫 Conserves & épicerie,Curry,10g,f
-1417,12,S2,🥫 Conserves & épicerie,Chapelure,34g,f
-1418,12,S2,🍎 Fruits & oléagineux,Amandes,180g,f
-1419,12,S2,🍎 Fruits & oléagineux,Noix,20g,f
-1420,12,S2,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1421,12,S2,🍎 Fruits & oléagineux,Pommes,450g,f
-1422,12,S2,🍎 Fruits & oléagineux,Poires,320g,f
-1423,12,S2,🍎 Fruits & oléagineux,Kiwis,100g,f
-1424,12,S2,🍎 Fruits & oléagineux,Oranges,180g,f
-1425,12,S2,🍎 Fruits & oléagineux,Clémentines,140g,f
-1426,12,S3,🥩 Viandes & Poissons,Filet de poulet,730g,f
-1427,12,S3,🥩 Viandes & Poissons,Saumon,360g,f
-1428,12,S3,🥩 Viandes & Poissons,Filet de dinde,370g,f
-1429,12,S3,🥩 Viandes & Poissons,Jambon,320g,f
-1430,12,S3,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
-1431,12,S3,🥩 Viandes & Poissons,Filet de porc,550g,f
-1432,12,S3,🥩 Viandes & Poissons,Lardon fumé,45g,f
-1433,12,S3,🥛 Produits laitiers,Skyr,2kg,f
-1434,12,S3,🥛 Produits laitiers,Emmental,85g,f
-1435,12,S3,🥛 Produits laitiers,Gruyère,45g,f
-1436,12,S3,🥛 Produits laitiers,Mozzarella,115g,f
-1437,12,S3,🥛 Produits laitiers,Parmesan,14g,f
-1438,12,S3,🥛 Produits laitiers,Crème 15%,135g,f
-1439,12,S3,🥛 Produits laitiers,Beurre,40g,f
-1440,12,S3,🥛 Produits laitiers,Lait,140ml,f
-1441,12,S3,🥔 Féculents,Riz,620g cuit,f
-1442,12,S3,🥔 Féculents,Pâtes,380g cuites,f
-1443,12,S3,🥔 Féculents,Pâtes complètes,580g cuites,f
-1444,12,S3,🥔 Féculents,PDT,620g,f
-1445,12,S3,🥔 Féculents,Semoule,380g cuite,f
-1446,12,S3,🥔 Féculents,Tortilla wrap,175g,f
-1447,12,S3,🥔 Féculents,Pain complet,300g,f
-1448,12,S3,🥔 Féculents,Farine,80g,f
-1449,12,S3,🥔 Féculents,Pâte brisée,130g,f
-1450,12,S3,🥬 Légumes de saison,Brocoli,280g,f
-1451,12,S3,🥬 Légumes de saison,Poireaux,540g,f
-1452,12,S3,🥬 Légumes de saison,Navets,220g,f
-1453,12,S3,🥬 Légumes de saison,Haricots verts,440g,f
-1454,12,S3,🥬 Légumes de saison,Champignons,360g,f
-1455,12,S3,🥬 Légumes de saison,Mâche,140g,f
-1456,12,S3,🥬 Légumes de saison,Carottes,230g,f
-1457,12,S3,🥬 Légumes de saison,Chou vert,140g,f
-1458,12,S3,🥬 Légumes de saison,Salade verte,320g,f
-1459,12,S3,🥬 Légumes de saison,Oignon,190g,f
-1460,12,S3,🥬 Légumes de saison,Lentilles cuites,430g,f
-1461,12,S3,🥬 Légumes de saison,Pois chiches conserve,180g,f
-1462,12,S3,🥫 Conserves & épicerie,Passata,130g,f
-1463,12,S3,🥫 Conserves & épicerie,Guacamole,55g,f
-1464,12,S3,🥫 Conserves & épicerie,Moutarde,47g,f
-1465,12,S3,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1466,12,S3,🥫 Conserves & épicerie,Gingembre,9g,f
-1467,12,S3,🥫 Conserves & épicerie,Cumin,5g,f
-1468,12,S3,🥫 Conserves & épicerie,Paprika,3.5g,f
-1469,12,S3,🍎 Fruits & oléagineux,Amandes,180g,f
-1470,12,S3,🍎 Fruits & oléagineux,Noix,20g,f
-1471,12,S3,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1472,12,S3,🍎 Fruits & oléagineux,Pommes,450g,f
-1473,12,S3,🍎 Fruits & oléagineux,Poires,320g,f
-1474,12,S3,🍎 Fruits & oléagineux,Clémentines,280g,f
-1475,12,S3,🍎 Fruits & oléagineux,Kiwis,200g,f
-1476,13,S1,🥩 Viandes & Poissons,Saucisses de porc,400g,f
-1477,13,S1,🥩 Viandes & Poissons,Cuisses de poulet,600g,f
-1478,13,S1,🥩 Viandes & Poissons,Filet de poulet,540g,f
-1479,13,S1,🥩 Viandes & Poissons,Saumon,360g (200+160),f
-1480,13,S1,🥩 Viandes & Poissons,Steak haché 5%,560g,f
-1481,13,S1,🥩 Viandes & Poissons,Jambon,280g,f
-1482,13,S1,🥩 Viandes & Poissons,Lardons dinde,280g,f
-1483,13,S1,🥛 Produits laitiers,Skyr,2kg,f
-1484,13,S1,🥛 Produits laitiers,Emmental,75g,f
-1485,13,S1,🥛 Produits laitiers,Cheddar,45g,f
-1486,13,S1,🥛 Produits laitiers,Parmesan,40g,f
-1487,13,S1,🥛 Produits laitiers,Gruyère,40g,f
-1488,13,S1,🥛 Produits laitiers,Beurre,30g,f
-1489,13,S1,🥛 Produits laitiers,Lait,80ml,f
-1490,13,S1,🥔 Féculents,Riz,440g cuit,f
-1491,13,S1,🥔 Féculents,Semoule,370g cuite,f
-1492,13,S1,🥔 Féculents,Pâtes,200g cuites,f
-1493,13,S1,🥔 Féculents,PDT,1.2kg,f
-1494,13,S1,🥔 Féculents,Grenaille,600g,f
-1495,13,S1,🥔 Féculents,Pain complet,350g,f
-1496,13,S1,🥔 Féculents,Pain burger,150g,f
-1497,13,S1,🥬 Légumes de saison,Poivrons conserve,300g,f
-1498,13,S1,🥬 Légumes de saison,Oignon,450g,f
-1499,13,S1,🥬 Légumes de saison,Carottes,180g,f
-1500,13,S1,🥬 Légumes de saison,Brocoli,440g,f
-1501,13,S1,🥬 Légumes de saison,Endives,450g (7),f
-1502,13,S1,🥬 Légumes de saison,Mâche,160g,f
-1503,13,S1,🥬 Légumes de saison,Haricots verts,540g,f
-1504,13,S1,🥬 Légumes de saison,Salade verte,200g,f
-1505,13,S1,🥬 Légumes de saison,Tomates cerise,90g,f
-1506,13,S1,🥬 Légumes de saison,Lentilles vertes,250g sèches,f
-1507,13,S1,🥬 Légumes de saison,Lentilles cuites,200g,f
-1508,13,S1,🥫 Conserves & épicerie,Passata,950g,f
-1509,13,S1,🥫 Conserves & épicerie,Concentré tomate,20g,f
-1510,13,S1,🥫 Conserves & épicerie,Gingembre frais,15g,f
-1511,13,S1,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1512,13,S1,🥫 Conserves & épicerie,Miel,22g,f
-1513,13,S1,🥫 Conserves & épicerie,Moutarde,18g,f
-1514,13,S1,🥫 Conserves & épicerie,Cornichons,35g,f
-1515,13,S1,🥫 Conserves & épicerie,Ketchup,18g,f
-1516,13,S1,🥫 Conserves & épicerie,Cumin,5g,f
-1517,13,S1,🍎 Fruits & oléagineux,Amandes,180g,f
-1518,13,S1,🍎 Fruits & oléagineux,Noix,20g,f
-1519,13,S1,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1520,13,S1,🍎 Fruits & oléagineux,Pommes,300g,f
-1521,13,S1,🍎 Fruits & oléagineux,Poires,320g,f
-1522,13,S1,🍎 Fruits & oléagineux,Kiwis,200g,f
-1523,13,S1,🍎 Fruits & oléagineux,Clémentines,280g,f
-1524,13,S1,🍎 Fruits & oléagineux,Oranges,180g,f
-1525,13,S2,🥩 Viandes & Poissons,Bœuf haché 5%,860g,f
-1526,13,S2,🥩 Viandes & Poissons,Filet de porc,370g,f
-1527,13,S2,🥩 Viandes & Poissons,Cabillaud,370g,f
-1528,13,S2,🥩 Viandes & Poissons,Filet de poulet,990g,f
-1529,13,S2,🥩 Viandes & Poissons,Jambon,205g,f
-1530,13,S2,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
-1531,13,S2,🥛 Produits laitiers,Skyr,2kg,f
-1532,13,S2,🥛 Produits laitiers,Emmental,35g,f
-1533,13,S2,🥛 Produits laitiers,Parmesan,62g,f
-1534,13,S2,🥛 Produits laitiers,Gruyère,65g,f
-1535,13,S2,🥛 Produits laitiers,Crème 15%,125g,f
-1536,13,S2,🥛 Produits laitiers,Beurre,30g,f
-1537,13,S2,🥛 Produits laitiers,Lait coco,100g,f
-1538,13,S2,🥛 Produits laitiers,Lait,140ml,f
-1539,13,S2,🥔 Féculents,Pâtes complètes,400g cuites,f
-1540,13,S2,🥔 Féculents,PDT,740g,f
-1541,13,S2,🥔 Féculents,Riz,640g cuit,f
-1542,13,S2,🥔 Féculents,Frites four,400g,f
-1543,13,S2,🥔 Féculents,Naan,150g,f
-1544,13,S2,🥔 Féculents,Pâtes,340g cuites,f
-1545,13,S2,🥔 Féculents,Polenta,360g cuite,f
-1546,13,S2,🥔 Féculents,Pain complet,300g,f
-1547,13,S2,🥔 Féculents,Farine,55g,f
-1548,13,S2,🥬 Légumes de saison,Carottes,330g,f
-1549,13,S2,🥬 Légumes de saison,Champignons,300g,f
-1550,13,S2,🥬 Légumes de saison,Poireaux,270g,f
-1551,13,S2,🥬 Légumes de saison,Betteraves,180g,f
-1552,13,S2,🥬 Légumes de saison,Mâche,140g,f
-1553,13,S2,🥬 Légumes de saison,Brocoli,270g,f
-1554,13,S2,🥬 Légumes de saison,Chou-fleur,370g,f
-1555,13,S2,🥬 Légumes de saison,Oignon,350g,f
-1556,13,S2,🥬 Légumes de saison,Salade verte,200g,f
-1557,13,S2,🥬 Légumes de saison,Lentilles vertes,130g sèches,f
-1558,13,S2,🥬 Légumes de saison,Haricots verts,140g,f
-1559,13,S2,🥬 Légumes de saison,Olives,25g,f
-1560,13,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f
-1561,13,S2,🥬 Légumes de saison,Petits pois,80g,f
-1657,14,S1,Fruits,Oranges,180g,f
-1562,13,S2,🥫 Conserves & épicerie,Passata,470g,f
-1563,13,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f
-1564,13,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1565,13,S2,🥫 Conserves & épicerie,Miel,11g,f
-1566,13,S2,🥫 Conserves & épicerie,Gingembre,9g,f
-1567,13,S2,🥫 Conserves & épicerie,Moutarde,15g,f
-1568,13,S2,🥫 Conserves & épicerie,Curry,10g,f
-1569,13,S2,🥫 Conserves & épicerie,Chapelure,34g,f
-1570,13,S2,🍎 Fruits & oléagineux,Amandes,180g,f
-1571,13,S2,🍎 Fruits & oléagineux,Noix,20g,f
-1572,13,S2,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1573,13,S2,🍎 Fruits & oléagineux,Pommes,450g,f
-1574,13,S2,🍎 Fruits & oléagineux,Poires,320g,f
-1575,13,S2,🍎 Fruits & oléagineux,Kiwis,100g,f
-1576,13,S2,🍎 Fruits & oléagineux,Oranges,180g,f
-1577,13,S2,🍎 Fruits & oléagineux,Clémentines,140g,f
-1578,13,S3,🥩 Viandes & Poissons,Filet de poulet,730g,f
-1579,13,S3,🥩 Viandes & Poissons,Saumon,360g,f
-1580,13,S3,🥩 Viandes & Poissons,Filet de dinde,370g,f
-1581,13,S3,🥩 Viandes & Poissons,Jambon,320g,f
-1582,13,S3,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f
-1583,13,S3,🥩 Viandes & Poissons,Filet de porc,550g,f
-1584,13,S3,🥩 Viandes & Poissons,Lardon fumé,45g,f
-1585,13,S3,🥛 Produits laitiers,Skyr,2kg,f
-1586,13,S3,🥛 Produits laitiers,Emmental,85g,f
-1587,13,S3,🥛 Produits laitiers,Gruyère,45g,f
-1588,13,S3,🥛 Produits laitiers,Mozzarella,115g,f
-1589,13,S3,🥛 Produits laitiers,Parmesan,14g,f
-1590,13,S3,🥛 Produits laitiers,Crème 15%,135g,f
-1591,13,S3,🥛 Produits laitiers,Beurre,40g,f
-1592,13,S3,🥛 Produits laitiers,Lait,140ml,f
-1593,13,S3,🥔 Féculents,Riz,620g cuit,f
-1594,13,S3,🥔 Féculents,Pâtes,380g cuites,f
-1595,13,S3,🥔 Féculents,Pâtes complètes,580g cuites,f
-1596,13,S3,🥔 Féculents,PDT,620g,f
-1597,13,S3,🥔 Féculents,Semoule,380g cuite,f
-1598,13,S3,🥔 Féculents,Tortilla wrap,175g,f
-1599,13,S3,🥔 Féculents,Pain complet,300g,f
-1600,13,S3,🥔 Féculents,Farine,80g,f
-1601,13,S3,🥔 Féculents,Pâte brisée,130g,f
-1602,13,S3,🥬 Légumes de saison,Brocoli,280g,f
-1603,13,S3,🥬 Légumes de saison,Poireaux,540g,f
-1604,13,S3,🥬 Légumes de saison,Navets,220g,f
-1605,13,S3,🥬 Légumes de saison,Haricots verts,440g,f
-1606,13,S3,🥬 Légumes de saison,Champignons,360g,f
-1607,13,S3,🥬 Légumes de saison,Mâche,140g,f
-1608,13,S3,🥬 Légumes de saison,Carottes,230g,f
-1609,13,S3,🥬 Légumes de saison,Chou vert,140g,f
-1610,13,S3,🥬 Légumes de saison,Salade verte,320g,f
-1611,13,S3,🥬 Légumes de saison,Oignon,190g,f
-1612,13,S3,🥬 Légumes de saison,Lentilles cuites,430g,f
-1613,13,S3,🥬 Légumes de saison,Pois chiches conserve,180g,f
-1614,13,S3,🥫 Conserves & épicerie,Passata,130g,f
-1615,13,S3,🥫 Conserves & épicerie,Guacamole,55g,f
-1616,13,S3,🥫 Conserves & épicerie,Moutarde,47g,f
-1617,13,S3,🥫 Conserves & épicerie,Sauce soja,22ml,f
-1618,13,S3,🥫 Conserves & épicerie,Gingembre,9g,f
-1619,13,S3,🥫 Conserves & épicerie,Cumin,5g,f
-1620,13,S3,🥫 Conserves & épicerie,Paprika,3.5g,f
-1621,13,S3,🍎 Fruits & oléagineux,Amandes,180g,f
-1622,13,S3,🍎 Fruits & oléagineux,Noix,20g,f
-1623,13,S3,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f
-1624,13,S3,🍎 Fruits & oléagineux,Pommes,450g,f
-1625,13,S3,🍎 Fruits & oléagineux,Poires,320g,f
-1626,13,S3,🍎 Fruits & oléagineux,Clémentines,280g,f
-1627,13,S3,🍎 Fruits & oléagineux,Kiwis,200g,f
-1628,14,S1,Protéines,Skyr nature,2.8kg,f
-1629,14,S1,Protéines,Œufs,30 pièces,f
-1630,14,S1,Protéines,Saucisses créoles,800g,f
-1631,14,S1,Protéines,Bœuf à braiser,960g,f
-1632,14,S1,Protéines,Escalopes de dinde,360g,f
-1633,14,S1,Protéines,Émincé de porc,330g,f
-1634,14,S1,Protéines,Pavés de saumon,360g,f
-1635,14,S1,Protéines,Filets de cabillaud,360g,f
-1636,14,S1,Protéines,Steaks hachés,270g,f
-1637,14,S1,Protéines,Lardons,140g,f
-1638,14,S1,Protéines,Jambon blanc,140g,f
-1639,14,S1,Protéines,Amandes,200g,f
-1640,14,S1,Protéines,Noix,30g,f
-1641,14,S1,Légumes,Asperges vertes,270g,f
-1642,14,S1,Légumes,Radis roses,220g,f
-1643,14,S1,Légumes,Petit pois frais/surgelés,320g,f
-1644,14,S1,Légumes,Artichauts,360g,f
-1645,14,S1,Légumes,Champignons de Paris,330g,f
-1646,14,S1,Légumes,Haricots verts,270g,f
-1647,14,S1,Légumes,Mâche,220g,f
-1648,14,S1,Légumes,Salade verte,1 pièce,f
-1649,14,S1,Légumes,Oignons,1kg,f
-1650,14,S1,Légumes,Ail,2 têtes,f
-1651,14,S1,Légumes,Gingembre,50g,f
-1652,14,S1,Légumes,Pommes de terre,2kg,f
-1653,14,S1,Légumes,Carottes,500g,f
-1654,14,S1,Fruits,Pommes,300g,f
-1655,14,S1,Fruits,Poires,150g,f
-1658,14,S1,Crémerie,Crème fraîche,200ml,f
-1659,14,S1,Crémerie,Lait,500ml,f
-1660,14,S1,Crémerie,Gruyère râpé,100g,f
-1661,14,S1,Crémerie,Parmesan,100g,f
-1662,14,S1,Crémerie,Cheddar,55g,f
-1663,14,S1,Crémerie,Beurre,250g,f
-1664,14,S1,Féculents,Riz basmati,1kg,f
-1665,14,S1,Féculents,Riz jasmin,500g,f
-1666,14,S1,Féculents,Pâtes,560g,f
-1667,14,S1,Féculents,Pain complet,1 pain,f
-1668,14,S1,Féculents,Pain burger,4 pains,f
-1669,14,S1,Conserves,Haricots rouges,2 boîtes 400g,f
-1670,14,S1,Conserves,Pois chiches,2 boîtes 400g,f
-1671,14,S1,Conserves,Passata,800ml,f
-1672,14,S1,Conserves,Lait de coco,400ml,f
-1673,14,S1,Conserves,Tomates concassées,400g,f
-1674,14,S1,Conserves,Olives noires,100g,f
-1675,14,S1,Condiments/Épicerie,Huile d'olive,500ml,f
-1676,14,S1,Condiments/Épicerie,Beurre de cacahuète,30g,f
-1677,14,S1,Condiments/Épicerie,Miel,50g,f
-1678,14,S1,Condiments/Épicerie,Sauce soja,200ml,f
-1679,14,S1,Condiments/Épicerie,Nuoc-mam,100ml,f
-1680,14,S1,Condiments/Épicerie,Épices créoles,mélange,f
-1681,14,S1,Condiments/Épicerie,Curcuma,poudre,f
-1682,14,S1,Condiments/Épicerie,Farine,500g,f
-1683,14,S1,Condiments/Épicerie,Herbes fraîches,"persil, ciboulette",f
-1684,15,S1,Protéines,Skyr nature,3.5kg,f
-1685,15,S1,Protéines,Œufs,30 unités,f
-1686,15,S1,Protéines,Poulet fermier,600g,f
-1687,15,S1,Protéines,Escalope dinde,320g,f
-1688,15,S1,Protéines,Pavé saumon,350g,f
-1689,15,S1,Protéines,Émincé bœuf,500g,f
-1690,15,S1,Protéines,Côte porc,320g,f
-1691,15,S1,Protéines,Émincé porc,500g,f
-1692,15,S1,Protéines,Filet cabillaud,360g,f
-1693,15,S1,Protéines,Jambon blanc,200g,f
-1694,15,S1,Protéines,Gigot agneau,320g,f
-1695,15,S1,Protéines,Amandes,200g,f
-1696,15,S1,Protéines,Noix,100g,f
-1697,15,S1,Légumes,Asperges,270g,f
-1698,15,S1,Légumes,Poivrons,400g,f
-1699,15,S1,Légumes,Radis,210g,f
-1700,15,S1,Légumes,Petits pois surgelés,300g,f
-1701,15,S1,Légumes,Cœurs artichauts conserve,2 boîtes,f
-1702,15,S1,Légumes,Champignons Paris,400g,f
-1703,15,S1,Légumes,Épinards frais,500g,f
-1704,15,S1,Légumes,Carottes nouvelles,270g,f
-1705,15,S1,Légumes,Salade verte,2 pièces,f
-1706,15,S1,Légumes,Haricots verts,220g,f
-1707,15,S1,Légumes,Oignons,1kg,f
-1708,15,S1,Fruits,Pommes,500g,f
-1709,15,S1,Fruits,Fraises,300g,f
-1710,15,S1,Fruits,Poires,300g,f
-1711,15,S1,Fruits,Kiwis,200g,f
-1712,15,S1,Fruits,Oranges,400g,f
-1713,15,S1,Crémerie,Gruyère râpé,300g,f
-1714,15,S1,Crémerie,Crème fraîche,50cl,f
-1715,15,S1,Crémerie,Lait,1L,f
-1716,15,S1,Crémerie,Beurre,500g,f
-1717,15,S1,Féculents,Pommes de terre,2kg,f
-1718,15,S1,Féculents,PDT grenaille,500g,f
-1719,15,S1,Féculents,Riz basmati,1kg,f
-1720,15,S1,Féculents,Semoule,500g,f
-1721,15,S1,Féculents,Pain de mie,1 paquet,f
-1722,15,S1,Féculents,Pain complet,400g,f
-1723,15,S1,Féculents,Farine sarrasin,500g,f
-1724,15,S1,Épicerie,Huile olive,50cl,f
-1725,15,S1,Épicerie,Passata tomate,1kg,f
-1726,15,S1,Épicerie,Lait coco,400ml,f
-1727,15,S1,Épicerie,Moutarde,1 pot,f
-1728,15,S1,Épicerie,Beurre cacahuète,500g,f
-1729,15,S1,Condiments,"Sel, poivre",selon besoin,f
-1730,15,S1,Condiments,Herbes Provence,1 pot,f
-1731,15,S1,Condiments,Curry poudre,1 pot,f
-1732,15,S1,Condiments,Ail,1 tête,f
-1733,15,S1,Condiments,Romarin,frais,f
-1734,16,S1,Épicerie,Épaule d'agneau,705 g,f
-1735,16,S1,Féculents,Pommes de terre nouvelles,890 g,f
-1736,16,S1,Épicerie,Artichauts,300 g,f
-1737,16,S1,Légumes,Carottes nouvelles,600 g,f
-1738,16,S1,Légumes,Oignon jaune,580 g,f
-1739,16,S1,Épicerie,Ail,77 g,f
-1740,16,S1,Légumes,Tomates concassées,600 g,f
-1741,16,S1,Épicerie,Olives vertes,140 g,f
-1742,16,S1,Épicerie,Bouillon de bœuf,1500 ml,f
-1743,16,S1,Épicerie,Huile d'olive,320 ml,f
-1744,16,S1,Épicerie,Gingembre frais,10 g,f
-1745,16,S1,Épicerie,Cumin moulu,12 g,f
-1746,16,S1,Épicerie,Coriandre moulue,5 g,f
-1747,16,S1,Épicerie,Cannelle,3 g,f
-1748,16,S1,Épicerie,Paprika doux,15 g,f
-1749,16,S1,Épicerie,Safran,0 g,f
-1750,16,S1,Épicerie,Sel,51 g,f
-1751,16,S1,Épicerie,Poivre noir,19 g,f
-1752,16,S1,Épicerie,Citron,102 g,f
-1753,16,S1,Épicerie,Coriandre fraîche,30 g,f
-1754,16,S1,Protéines,Pavé de saumon,350 g,f
-1755,16,S1,Légumes,Asperges vertes,270 g,f
-1756,16,S1,Crémerie,Beurre,145 g,f
-1757,16,S1,Épicerie,Persil plat,30 g,f
-1758,16,S1,Épicerie,Sel fin,10 g,f
-1759,16,S1,Féculents,Riz basmati,860 g,f
-1760,16,S1,Légumes,Courgettes,300 g,f
-1761,16,S1,Épicerie,Cœurs d'artichaut,200 g,f
-1762,16,S1,Légumes,Tomates,1150 g,f
-1763,16,S1,Légumes,Oignon,151 g,f
-1764,16,S1,Épicerie,Bouillon de légumes,450 ml,f
-1765,16,S1,Épicerie,Gingembre moulu,1 g,f
-1766,16,S1,Protéines,Escalope de dinde,320 g,f
-1767,16,S1,Légumes,Carottes,220 g,f
-1768,16,S1,Légumes,Champignons de Paris,200 g,f
-1769,16,S1,Crémerie,Crème fraîche épaisse,200 ml,f
-1770,16,S1,Épicerie,Bouillon de volaille,800 ml,f
-1771,16,S1,Épicerie,Farine,20 g,f
-1772,16,S1,Épicerie,Vin blanc sec,260 ml,f
-1773,16,S1,Épicerie,Thym frais,12 branches,f
-1774,16,S1,Épicerie,Laurier,8 feuilles,f
-1775,16,S1,Épicerie,Bœuf à mijoter (paleron ou joue),315 g,f
-1776,16,S1,Épicerie,Aubergines,680 g,f
-1777,16,S1,Féculents,Pommes de terre,2000 g,f
-1778,16,S1,Légumes,Tomates pelées en dés,400 g,f
-1779,16,S1,Légumes,Oignons,320 g,f
-1780,16,S1,Légumes,Concentré de tomates,20 g,f
-1781,16,S1,Épicerie,Herbes de Provence,11 g,f
-1782,16,S1,Épicerie,Œufs,5 pièces,f
-1783,16,S1,Épicerie,Épinards frais,270 g,f
-1784,16,S1,Féculents,Pain de campagne,50 g,f
-1785,16,S1,Épicerie,Bœuf à braiser (macreuse ou paleron),525 g,f
-1786,16,S1,Crémerie,Gruyère râpé,90 g,f
-1787,16,S1,Légumes,Concentré de tomate,90 g,f
-1788,16,S1,Épicerie,Vin rouge,150 ml,f
-1789,16,S1,Protéines,Côtes de porc,320 g,f
-1790,16,S1,Féculents,Pommes de terre grenaille,390 g,f
-1791,16,S1,Légumes,Radis,260 g,f
-1792,16,S1,Épicerie,Moutarde à l'ancienne,30 g,f
-1793,16,S1,Épicerie,Échalote,41 g,f
-1794,16,S1,Épicerie,Bœuf haché 5% MG,565 g,f
-1795,16,S1,Légumes,Haricots rouges en conserve,800 g,f
-1796,16,S1,Légumes,Tomates concassées en conserve,400 g,f
-1797,16,S1,Légumes,Poivron rouge,270 g,f
-1798,16,S1,Épicerie,Piment de Cayenne,3 g,f
-1799,16,S1,Épicerie,Origan séché,2 g,f
-1800,16,S1,Épicerie,Poivre noir moulu,4 g,f
-1801,16,S1,Épicerie,Chocolat noir 70%,15 g,f
-1802,16,S1,Protéines,Filet de cabillaud,360 g,f
-1803,16,S1,Conserves,Petits pois surgelés,270 g,f
-1804,16,S1,Épicerie,Cheddar râpé,90 g,f
-1805,16,S1,Épicerie,Nachos,60 g,f
-1806,16,S1,Épicerie,Cumin en poudre,3 g,f
-1807,16,S1,Épicerie,Paprika,3 g,f
-1808,16,S1,Féculents,Tortillas de blé,3 pièces,f
-1809,16,S1,Protéines,Escalopes de poulet,280 g,f
-1810,16,S1,Épicerie,Cheddar,55 g,f
-1811,16,S1,Légumes,Salade iceberg,100 g,f
-1812,16,S1,Légumes,Concombre,80 g,f
-1813,16,S1,Légumes,Carotte,60 g,f
-1814,16,S1,Épicerie,Mayonnaise,30 g,f
-1815,16,S1,Épicerie,Spaghettis,300 g,f
-1816,16,S1,Épicerie,Pancetta ou lardons,120 g,f
-1817,16,S1,Épicerie,Œufs entiers,2 pièces,f
-1818,16,S1,Épicerie,Jaunes d'œufs,1 pièce,f
-1819,16,S1,Épicerie,Parmesan râpé,80 g,f
-1820,16,S1,Épicerie,Gros sel,15 g,f
-1821,16,S1,Protéines,Rôti de porc dans l'épaule,600 g,f
-1822,16,S1,Légumes,Oignons jaunes,200 g,f
-1823,16,S1,Crémerie,Skyr,2200 g,f
-1824,16,S1,Crémerie,Oeufs,27 pièces,f
-1825,16,S1,Épicerie,Amandes,210 g,f
-1826,17,S1,Épicerie,Épaule d'agneau,1600 g,f
-1827,17,S1,Épicerie,Artichauts,155 pièces,f
-1828,17,S1,Légumes,Carottes nouvelles,1650 g,f
-1829,17,S1,Conserves,Petits pois,150 g,f
-1830,17,S1,Légumes,Oignon jaune,121 pièce,f
-1831,17,S1,Épicerie,Ail,48 gousses,f
-1832,17,S1,Épicerie,Gingembre frais,70 g,f
-1833,17,S1,Épicerie,Huile d'olive,318 ml,f
-1834,17,S1,Épicerie,Curcuma,8 g,f
-1835,17,S1,Épicerie,Cannelle,2 g,f
-1836,17,S1,Épicerie,Gingembre moulu,2 g,f
-1837,17,S1,Épicerie,Coriandre moulue,3 g,f
-1838,17,S1,Épicerie,Bouillon de légumes,1000 ml,f
-1839,17,S1,Légumes,Tomates concassées,400 g,f
-1840,17,S1,Épicerie,Olives vertes,60 g,f
-1841,17,S1,Épicerie,Coriandre fraîche,55 g,f
-1842,17,S1,Épicerie,Citron,4 pièce,f
-1843,17,S1,Épicerie,Sel,59 g,f
-1844,17,S1,Épicerie,Poivre noir,25 g,f
-1845,17,S1,Féculents,Riz basmati,430 g,f
-1846,17,S1,Protéines,Escalope de dinde,320 g,f
-1847,17,S1,Épicerie,Chapelure,140 g,f
-1848,17,S1,Épicerie,Œufs,12 pièces,f
-1849,17,S1,Épicerie,Farine,145 g,f
-1850,17,S1,Épicerie,Parmesan râpé,30 g,f
-1851,17,S1,Féculents,Pommes de terre grenaille,1370 g,f
-1852,17,S1,Légumes,Radis roses,570 g,f
-1853,17,S1,Crémerie,Beurre,285 g,f
-1854,17,S1,Épicerie,Persil plat,40 g,f
-1855,17,S1,Épicerie,Herbes de Provence,3 g,f
-1856,17,S1,Féculents,Semoule de couscous,150 g,f
-1857,17,S1,Légumes,Courgettes,200 g,f
-1858,17,S1,Légumes,Oignon,392 pièce,f
-1859,17,S1,Légumes,Tomates,400 g,f
-1860,17,S1,Épicerie,Bouillon de bœuf,1600 ml,f
-1861,17,S1,Légumes,Concentré de tomate,67 c. à soupe,f
-1862,17,S1,Épicerie,Ras-el-hanout,2 c. à café,f
-1863,17,S1,Épicerie,Cumin moulu,3 c. à café,f
-1864,17,S1,Protéines,Filet de saumon,380 g,f
-1865,17,S1,Légumes,Asperges vertes,470 g,f
-1866,17,S1,Légumes,Carotte nouvelle,120 g,f
-1867,17,S1,Épicerie,Sauce soja,60 ml,f
-1868,17,S1,Épicerie,Miel,55 g,f
-1869,17,S1,Épicerie,Mirin,30 ml,f
-1870,17,S1,Féculents,Vinaigre de riz,15 ml,f
-1871,17,S1,Épicerie,Huile de sésame,15 ml,f
-1872,17,S1,Épicerie,Graines de sésame,10 g,f
-1873,17,S1,Épicerie,Ciboulette fraîche,5 g,f
-1874,17,S1,Épicerie,Cœurs d'artichaut,180 g,f
-1875,17,S1,Crémerie,Lait de coco,400 ml,f
-1876,17,S1,Épicerie,Curry en poudre,27 g,f
-1877,17,S1,Épicerie,Cumin en poudre,3 g,f
-1878,17,S1,Épicerie,Coriandre en poudre,3 g,f
-1879,17,S1,Protéines,Côtes de porc,310 g,f
-1880,17,S1,Féculents,Pommes de terre,1830 g,f
-1881,17,S1,Épicerie,Thym frais,10 branches,f
-1882,17,S1,Épicerie,Naan nature,3 pièces,f
-1883,17,S1,Épicerie,Épinards frais,220 g,f
-1884,17,S1,Crémerie,Gruyère râpé,105 g,f
-1885,17,S1,Crémerie,Crème fraîche,30 ml,f
-1886,17,S1,Épicerie,Muscade,1 pincée,f
-1887,17,S1,Épicerie,Bœuf à braiser (paleron ou macreuse),285 g,f
-1888,17,S1,Conserves,Petits pois frais ou surgelés,150 g,f
-1889,17,S1,Féculents,Pommes de terre nouvelles,300 g,f
-1890,17,S1,Épicerie,Vin blanc sec,200 ml,f
-1891,17,S1,Épicerie,Laurier,4 feuilles,f
-1892,17,S1,Protéines,Pavé de saumon,310 g,f
-1893,17,S1,Épicerie,Bœuf à braiser,400 g,f
-1894,17,S1,Conserves,Petits pois surgelés,350 g,f
-1895,17,S1,Épicerie,Vin rouge,150 ml,f
-1896,17,S1,Crémerie,Lait,100 ml,f
-1897,17,S1,Épicerie,Thym,2 branches,f
-1898,17,S1,Protéines,Filet de cabillaud,360 g,f
-1899,17,S1,Épicerie,Mayonnaise,30 g,f
-1900,17,S1,Épicerie,Cornichons,20 g,f
-1901,17,S1,Épicerie,Câpres,10 g,f
-1902,17,S1,Épicerie,Spaghettis,350 g,f
-1903,17,S1,Épicerie,Guanciale,140 g,f
-1904,17,S1,Épicerie,Pecorino Romano,70 g,f
-1905,17,S1,Épicerie,Gros sel,15 g,f
-1906,17,S1,Protéines,Rôti de porc (filet ou échine),500 g,f
-1907,17,S1,Épicerie,Romarin,3 g,f
-1908,17,S1,Épicerie,Moutarde de Dijon,15 g,f
-1909,17,S1,Crémerie,Skyr,2200 g,f
-1910,17,S1,Crémerie,Oeufs,27 pièces,f
-1911,17,S1,Épicerie,Amandes,210 g,f
-1912,18,S1,Épicerie,Épaule d'agneau,400 g,f
-1913,18,S1,Féculents,Riz basmati,665 g,f
-1914,18,S1,Légumes,Carottes nouvelles,400 g,f
-1915,18,S1,Conserves,Petits pois frais,150 g,f
-1916,18,S1,Épicerie,Artichauts,2 pièces,f
-1917,18,S1,Légumes,Oignon,124 pièce,f
-1918,18,S1,Épicerie,Ail,33 gousses,f
-1919,18,S1,Épicerie,Gingembre frais,15 g,f
-1920,18,S1,Légumes,Tomates,2 pièces,f
-1921,18,S1,Épicerie,Bouillon d'agneau,400 ml,f
-1922,18,S1,Épicerie,Huile d'olive,293 ml,f
-1923,18,S1,Épicerie,Ras el hanout,8 g,f
-1924,18,S1,Épicerie,Curcuma,3 g,f
-1925,18,S1,Épicerie,Cannelle,2 g,f
-1926,18,S1,Épicerie,Sel,56 g,f
-1927,18,S1,Épicerie,Poivre noir,20 g,f
-1928,18,S1,Épicerie,Coriandre fraîche,20 g,f
-1929,18,S1,Épicerie,Citron confit,30 g,f
-1930,18,S1,Crémerie,Beurre,290 g,f
-1931,18,S1,Protéines,Pavé de saumon,310 g,f
-1932,18,S1,Légumes,Asperges vertes,270 g,f
-1933,18,S1,Féculents,Pommes de terre grenaille,770 g,f
-1934,18,S1,Épicerie,Persil plat,45 g,f
-1935,18,S1,Épicerie,Citron,4 pièce,f
-1936,18,S1,Protéines,Escalope de dinde,320 g,f
-1937,18,S1,Épicerie,Chapelure,140 g,f
-1938,18,S1,Épicerie,Œufs,12 pièces,f
-1939,18,S1,Épicerie,Farine,130 g,f
-1940,18,S1,Épicerie,Parmesan râpé,30 g,f
-1941,18,S1,Légumes,Radis roses,420 g,f
-1942,18,S1,Épicerie,Herbes de Provence,3 g,f
-1943,18,S1,Protéines,Blanc de poulet,400 g,f
-1944,18,S1,Légumes,Poivron rouge,351 g,f
-1945,18,S1,Légumes,Poivron vert,150 g,f
-1946,18,S1,Légumes,Tomates pelées en dés,300 g,f
-1947,18,S1,Protéines,Jambon de Bayonne,60 g,f
-1948,18,S1,Épicerie,Vin blanc sec,80 ml,f
-1949,18,S1,Légumes,Concentré de tomate,75 g,f
-1950,18,S1,Épicerie,Piment d'Espelette,2 g,f
-1951,18,S1,Épicerie,Thym séché,1 g,f
-1952,18,S1,Épicerie,Laurier,4 feuilles,f
-1953,18,S1,Protéines,Côtes de porc,310 g,f
-1954,18,S1,Féculents,Pommes de terre,2560 g,f
-1955,18,S1,Épicerie,Miel,25 g,f
-1956,18,S1,Épicerie,Thym frais,2 branches,f
-1957,18,S1,Épicerie,Bouillon de légumes,100 ml,f
-1958,18,S1,Protéines,Filets de poulet,300 g,f
-1959,18,S1,Féculents,Tortillas de blé,3 pièces,f
-1960,18,S1,Légumes,Poivron jaune,1 pièce,f
-1961,18,S1,Légumes,Salade iceberg,230 g,f
-1962,18,S1,Légumes,Tomates cerises,200 g,f
-1963,18,S1,Légumes,Concombre,1 pièce,f
-1964,18,S1,Crémerie,Fromage râpé,60 g,f
-1965,18,S1,Épicerie,Huile de tournesol,500 ml,f
-1966,18,S1,Épicerie,Paprika doux,9 cuillère à café,f
-1967,18,S1,Épicerie,Cumin moulu,5 cuillère à café,f
-1968,18,S1,Épicerie,Poivre,1 pincée,f
-1969,18,S1,Protéines,Filet de cabillaud,720 g,f
-1970,18,S1,Conserves,Petits pois surgelés,620 g,f
-1971,18,S1,Épicerie,Thym,4 g,f
-1972,18,S1,Épicerie,Bœuf haché 5% MG,265 g,f
-1973,18,S1,Légumes,Haricots rouges en conserve,400 g,f
-1974,18,S1,Légumes,Tomates concassées en conserve,400 g,f
-1975,18,S1,Légumes,Oignon jaune,180 g,f
-1976,18,S1,Épicerie,Piment de Cayenne,2 g,f
-1977,18,S1,Épicerie,Origan séché,2 g,f
-1978,18,S1,Épicerie,Poivre noir moulu,2 g,f
-1979,18,S1,Épicerie,Bouillon de bœuf,600 ml,f
-1980,18,S1,Épicerie,Chocolat noir 70%,15 g,f
-1981,18,S1,Épicerie,Épinards frais,220 g,f
-1982,18,S1,Crémerie,Gruyère râpé,105 g,f
-1983,18,S1,Crémerie,Crème fraîche,30 ml,f
-1984,18,S1,Épicerie,Muscade,1 pincée,f
-1985,18,S1,Épicerie,Mayonnaise,50 g,f
-1986,18,S1,Épicerie,Cornichons,50 g,f
-1987,18,S1,Épicerie,Câpres,10 g,f
-1988,18,S1,Féculents,Pains burger,2 pièces,f
-1989,18,S1,Protéines,Steak haché 15% MG,270 g,f
-1990,18,S1,Épicerie,Cheddar en tranches,55 g,f
-1991,18,S1,Légumes,Tomate,1 pièce,f
-1992,18,S1,Légumes,Oignon rouge,50 g,f
-1993,18,S1,Épicerie,Ketchup,15 g,f
-1994,18,S1,Épicerie,Bœuf à braiser,400 g,f
-1995,18,S1,Épicerie,Vin rouge,150 ml,f
-1996,18,S1,Crémerie,Lait,100 ml,f
-1997,18,S1,Épicerie,Spaghettis,350 g,f
-1998,18,S1,Épicerie,Guanciale,140 g,f
-1999,18,S1,Épicerie,Pecorino Romano,70 g,f
-2000,18,S1,Épicerie,Gros sel,15 g,f
-2001,18,S1,Crémerie,Skyr,2200 g,f
-2002,18,S1,Crémerie,Oeufs,27 pièces,f
-2003,18,S1,Épicerie,Amandes,210 g,f
-2004,19,S1,Épicerie,Épaule d'agneau,850 g,f
-2005,19,S1,Épicerie,Artichauts,6 pièces,f
-2006,19,S1,Légumes,Carottes nouvelles,900 g,f
-2007,19,S1,Légumes,Oignon jaune,1 pièce,f
-2008,19,S1,Épicerie,Ail,29 gousses,f
-2009,19,S1,Épicerie,Gingembre frais,30 g,f
-2010,19,S1,Épicerie,Huile d'olive,286 ml,f
-2011,19,S1,Épicerie,Cumin moulu,7 g,f
-2012,19,S1,Épicerie,Coriandre moulue,5 g,f
-2013,19,S1,Épicerie,Cannelle,2 g,f
-2014,19,S1,Épicerie,Bouillon de légumes,600 ml,f
-2015,19,S1,Épicerie,Citron,5 pièce,f
-2016,19,S1,Épicerie,Coriandre fraîche,40 g,f
-2017,19,S1,Épicerie,Sel,56 g,f
-2018,19,S1,Épicerie,Poivre noir,22 g,f
-2019,19,S1,Féculents,Riz basmati,535 g,f
-2020,19,S1,Crémerie,Beurre,325 g,f
-2021,19,S1,Protéines,Pavé de saumon,310 g,f
-2022,19,S1,Légumes,Asperges vertes,270 g,f
-2023,19,S1,Féculents,Pommes de terre grenaille,1770 g,f
-2024,19,S1,Épicerie,Persil plat,55 g,f
-2025,19,S1,Féculents,Semoule de couscous,150 g,f
-2026,19,S1,Légumes,Courgettes,200 g,f
-2027,19,S1,Légumes,Oignon,394 pièce,f
-2028,19,S1,Légumes,Tomates,400 g,f
-2029,19,S1,Épicerie,Bouillon de bœuf,1000 ml,f
-2030,19,S1,Légumes,Concentré de tomate,22 c. à soupe,f
-2031,19,S1,Épicerie,Ras-el-hanout,2 c. à café,f
-2032,19,S1,Protéines,Escalope de dinde,320 g,f
-2033,19,S1,Épicerie,Chapelure,140 g,f
-2034,19,S1,Épicerie,Œufs,12 pièces,f
-2035,19,S1,Épicerie,Farine,130 g,f
-2036,19,S1,Épicerie,Parmesan râpé,30 g,f
-2037,19,S1,Légumes,Radis roses,200 g,f
-2038,19,S1,Épicerie,Herbes de Provence,3 g,f
-2039,19,S1,Épicerie,Émincé de bœuf,700 g,f
-2040,19,S1,Légumes,Champignons de Paris,400 g,f
-2041,19,S1,Crémerie,Crème fraîche épaisse,250 ml,f
-2042,19,S1,Épicerie,Moutarde de Dijon,40 g,f
-2043,19,S1,Épicerie,Paprika doux,11 g,f
-2044,19,S1,Légumes,Radis,270 g,f
-2045,19,S1,Crémerie,Gruyère râpé,105 g,f
-2046,19,S1,Féculents,Pommes de terre,1940 g,f
-2047,19,S1,Épicerie,Ciboulette,10 g,f
-2048,19,S1,Crémerie,Lait entier,80 ml,f
-2049,19,S1,Épicerie,Huile de tournesol,515 ml,f
-2050,19,S1,Protéines,Côtes de porc,400 g,f
-2051,19,S1,Conserves,Petits pois frais,300 g,f
-2052,19,S1,Épicerie,Bouillon de volaille,200 ml,f
-2053,19,S1,Épicerie,Thym frais,7 branches,f
-2054,19,S1,Protéines,Filets de poulet,300 g,f
-2055,19,S1,Féculents,Tortillas de blé,3 pièces,f
-2056,19,S1,Légumes,Poivron rouge,1 pièce,f
-2057,19,S1,Légumes,Poivron jaune,1 pièce,f
-2058,19,S1,Légumes,Salade iceberg,230 g,f
-2059,19,S1,Légumes,Tomates cerises,200 g,f
-2060,19,S1,Légumes,Concombre,1 pièce,f
-2061,19,S1,Crémerie,Fromage râpé,60 g,f
-2062,19,S1,Épicerie,Poivre,1 pincée,f
-2063,19,S1,Protéines,Filet de cabillaud,720 g,f
-2064,19,S1,Conserves,Petits pois surgelés,470 g,f
-2065,19,S1,Épicerie,Thym,2 g,f
-2066,19,S1,Épicerie,Mayonnaise,50 g,f
-2067,19,S1,Épicerie,Cornichons,50 g,f
-2068,19,S1,Épicerie,Câpres,10 g,f
-2069,19,S1,Protéines,Rôti de porc (filet ou échine),500 g,f
-2070,19,S1,Épicerie,Romarin,3 g,f
-2071,19,S1,Épicerie,Vin blanc sec,100 ml,f
-2072,19,S1,Féculents,Pains burger,2 pièces,f
-2073,19,S1,Protéines,Steak haché 15% MG,270 g,f
-2074,19,S1,Épicerie,Cheddar en tranches,55 g,f
-2075,19,S1,Légumes,Tomate,1 pièce,f
-2076,19,S1,Légumes,Oignon rouge,50 g,f
-2077,19,S1,Épicerie,Ketchup,15 g,f
-2078,19,S1,Épicerie,Spaghettis,350 g,f
-2079,19,S1,Épicerie,Guanciale,140 g,f
-2080,19,S1,Épicerie,Pecorino Romano,70 g,f
-2081,19,S1,Épicerie,Gros sel,15 g,f
-2082,19,S1,Crémerie,Skyr,2200 g,f
-2083,19,S1,Crémerie,Oeufs,27 pièces,f
-2084,19,S1,Épicerie,Amandes,210 g,f
-2085,20,S1,Épicerie,Épaule d'agneau,850 g,f
-2086,20,S1,Épicerie,Artichauts,6 pièces,f
-2087,20,S1,Légumes,Carottes nouvelles,1150 g,f
-2088,20,S1,Légumes,Oignon jaune,151 pièce,f
-2089,20,S1,Épicerie,Ail,54 gousses,f
-2090,20,S1,Épicerie,Gingembre frais,40 g,f
-2091,20,S1,Épicerie,Huile d'olive,348 ml,f
-2092,20,S1,Épicerie,Cumin moulu,6 g,f
-2093,20,S1,Épicerie,Coriandre moulue,7 g,f
-2094,20,S1,Épicerie,Cannelle,2 g,f
-2095,20,S1,Épicerie,Bouillon de légumes,600 ml,f
-2096,20,S1,Épicerie,Citron,5 pièce,f
-2097,20,S1,Épicerie,Coriandre fraîche,50 g,f
-2098,20,S1,Épicerie,Sel,64 g,f
-2099,20,S1,Épicerie,Poivre noir,23 g,f
-2100,20,S1,Féculents,Riz basmati,485 g,f
-2101,20,S1,Crémerie,Beurre,295 g,f
-2102,20,S1,Protéines,Pavé de saumon,310 g,f
-2103,20,S1,Légumes,Asperges vertes,270 g,f
-2104,20,S1,Féculents,Pommes de terre grenaille,1770 g,f
-2105,20,S1,Épicerie,Persil plat,45 g,f
-2106,20,S1,Féculents,Semoule de couscous,150 g,f
-2107,20,S1,Légumes,Courgettes,500 g,f
-2108,20,S1,Légumes,Oignon,273 pièce,f
-2109,20,S1,Légumes,Tomates,1200 g,f
-2110,20,S1,Épicerie,Bouillon de bœuf,1300 ml,f
-2111,20,S1,Légumes,Concentré de tomate,82 c. à soupe,f
-2112,20,S1,Épicerie,Ras-el-hanout,2 c. à café,f
-2113,20,S1,Protéines,Escalope de dinde,320 g,f
-2114,20,S1,Épicerie,Chapelure,140 g,f
-2115,20,S1,Épicerie,Œufs,12 pièces,f
-2116,20,S1,Épicerie,Farine,130 g,f
-2117,20,S1,Épicerie,Parmesan râpé,30 g,f
-2118,20,S1,Légumes,Radis roses,200 g,f
-2119,20,S1,Épicerie,Herbes de Provence,6 g,f
-2120,20,S1,Conserves,Pois chiches en conserve,400 g,f
-2121,20,S1,Crémerie,Lait de coco,200 ml,f
-2122,20,S1,Légumes,Tomates pelées en dés,200 g,f
-2123,20,S1,Épicerie,Curry en poudre,8 g,f
-2124,20,S1,Épicerie,Cumin en poudre,3 g,f
-2125,20,S1,Épicerie,Paprika,2 g,f
-2126,20,S1,Épicerie,Yaourt grec,80 g,f
-2127,20,S1,Protéines,Côtes de porc,400 g,f
-2128,20,S1,Conserves,Petits pois frais,300 g,f
-2129,20,S1,Épicerie,Bouillon de volaille,200 ml,f
-2130,20,S1,Épicerie,Thym frais,13 branches,f
-2131,20,S1,Épicerie,Bœuf à braiser (paleron ou joue),600 g,f
-2132,20,S1,Légumes,Oignons,200 g,f
-2133,20,S1,Épicerie,Vin rouge,400 ml,f
-2134,20,S1,Épicerie,Olives noires,80 g,f
-2135,20,S1,Épicerie,Laurier,3 feuilles,f
-2136,20,S1,Épicerie,Romarin,5 branches,f
-2137,20,S1,Épicerie,Orange,1 pièce,f
-2138,20,S1,Féculents,Pommes de terre,2040 g,f
-2139,20,S1,Légumes,Radis,270 g,f
-2140,20,S1,Crémerie,Gruyère râpé,95 g,f
-2141,20,S1,Épicerie,Ciboulette,10 g,f
-2142,20,S1,Épicerie,Bœuf à mijoter (paleron ou gîte),400 g,f
-2143,20,S1,Crémerie,Lait entier,120 ml,f
-2144,20,S1,Épicerie,Muscade,1 g,f
-2145,20,S1,Protéines,Filet de cabillaud,720 g,f
-2146,20,S1,Conserves,Petits pois surgelés,470 g,f
-2147,20,S1,Épicerie,Thym,2 g,f
-2148,20,S1,Féculents,Pains burger,2 pièces,f
-2149,20,S1,Protéines,Steak haché 15% MG,270 g,f
-2150,20,S1,Épicerie,Cheddar en tranches,55 g,f
-2151,20,S1,Légumes,Salade iceberg,80 g,f
-2152,20,S1,Légumes,Tomate,1 pièce,f
-2153,20,S1,Légumes,Oignon rouge,50 g,f
-2154,20,S1,Épicerie,Cornichons,50 g,f
-2155,20,S1,Épicerie,Mayonnaise,50 g,f
-2156,20,S1,Épicerie,Ketchup,15 g,f
-2157,20,S1,Épicerie,Spaghettis,350 g,f
-2158,20,S1,Épicerie,Guanciale,140 g,f
-2159,20,S1,Épicerie,Pecorino Romano,70 g,f
-2160,20,S1,Épicerie,Gros sel,15 g,f
-2161,20,S1,Épicerie,Câpres,10 g,f
-2162,20,S1,Protéines,Rôti de porc (filet ou échine),500 g,f
-2163,20,S1,Épicerie,Vin blanc sec,100 ml,f
-2164,20,S1,Épicerie,Moutarde de Dijon,15 g,f
-2165,20,S1,Crémerie,Skyr,2200 g,f
-2166,20,S1,Crémerie,Oeufs,27 pièces,f
-2167,20,S1,Épicerie,Amandes,210 g,f
-2170,21,S1,Légumes,Carottes nouvelles,1100 g,f
-2171,21,S1,Légumes,Oignon jaune,271 pièce,f
-2175,21,S1,Épicerie,Cumin moulu,6 g,f
-2176,21,S1,Épicerie,Coriandre moulue,5 g,f
-2177,21,S1,Épicerie,Cannelle,2 g,f
-2179,21,S1,Épicerie,Citron,5 pièce,f
-2180,21,S1,Épicerie,Coriandre fraîche,40 g,f
-2181,21,S1,Épicerie,Sel,62 g,f
-2182,21,S1,Épicerie,Poivre noir,23 g,f
-2183,21,S1,Féculents,Riz basmati,335 g,f
-2184,21,S1,Crémerie,Beurre,305 g,f
-2185,21,S1,Protéines,Pavé de saumon,310 g,f
-2186,21,S1,Légumes,Asperges vertes,570 g,f
-2187,21,S1,Féculents,Pommes de terre grenaille,1770 g,f
-2188,21,S1,Épicerie,Persil plat,50 g,f
-2189,21,S1,Féculents,Semoule de couscous,150 g,f
-2190,21,S1,Légumes,Courgettes,500 g,f
-2191,21,S1,Légumes,Oignon,303 pièce,f
-2192,21,S1,Légumes,Tomates,800 g,f
-2193,21,S1,Épicerie,Bouillon de bœuf,1500 ml,f
-2194,21,S1,Légumes,Concentré de tomate,37 c. à soupe,f
-2195,21,S1,Épicerie,Ras-el-hanout,2 c. à café,f
-2196,21,S1,Épicerie,Œufs,17 pièces,f
-2197,21,S1,Légumes,Radis,270 g,f
-2198,21,S1,Crémerie,Gruyère râpé,95 g,f
-2199,21,S1,Féculents,Pommes de terre,2110 g,f
-2200,21,S1,Épicerie,Ciboulette,10 g,f
-2201,21,S1,Protéines,Côtes de porc,400 g,f
-2202,21,S1,Conserves,Petits pois frais,300 g,f
-2203,21,S1,Épicerie,Bouillon de volaille,200 ml,f
-2204,21,S1,Épicerie,Thym frais,12 branches,f
-2205,21,S1,Protéines,Escalope de dinde,320 g,f
-2206,21,S1,Épicerie,Chapelure,140 g,f
-2207,21,S1,Épicerie,Farine,145 g,f
-2208,21,S1,Épicerie,Parmesan râpé,30 g,f
-2209,21,S1,Légumes,Radis roses,200 g,f
-2210,21,S1,Épicerie,Herbes de Provence,6 g,f
-2211,21,S1,Épicerie,Bœuf à braiser (paleron ou macreuse),285 g,f
-2212,21,S1,Conserves,Petits pois frais ou surgelés,150 g,f
-2213,21,S1,Féculents,Pommes de terre nouvelles,300 g,f
-2214,21,S1,Épicerie,Vin blanc sec,200 ml,f
-2215,21,S1,Épicerie,Laurier,3 feuilles,f
-2216,21,S1,Protéines,Filet de cabillaud,720 g,f
-2217,21,S1,Conserves,Petits pois surgelés,470 g,f
-2218,21,S1,Épicerie,Thym,2 g,f
-2219,21,S1,Épicerie,Bœuf à mijoter (paleron ou gîte),400 g,f
-2220,21,S1,Crémerie,Lait entier,120 ml,f
-2221,21,S1,Épicerie,Vin rouge,100 ml,f
-2222,21,S1,Épicerie,Muscade,1 g,f
-2223,21,S1,Protéines,Rôti de porc (filet ou échine),500 g,f
-2224,21,S1,Épicerie,Romarin,3 g,f
-2225,21,S1,Épicerie,Moutarde de Dijon,25 g,f
-2226,21,S1,Épicerie,Spaghettis,350 g,f
-2227,21,S1,Épicerie,Guanciale,140 g,f
-2228,21,S1,Épicerie,Pecorino Romano,70 g,f
-2229,21,S1,Épicerie,Gros sel,15 g,f
-2230,21,S1,Féculents,Pains burger,2 pièces,f
-2231,21,S1,Protéines,Steak haché 15% MG,270 g,f
-2232,21,S1,Épicerie,Cheddar en tranches,55 g,f
-2233,21,S1,Légumes,Salade iceberg,80 g,f
-2234,21,S1,Légumes,Tomate,1 pièce,f
-2235,21,S1,Légumes,Oignon rouge,50 g,f
-2236,21,S1,Épicerie,Cornichons,50 g,f
-2237,21,S1,Épicerie,Mayonnaise,50 g,f
-2238,21,S1,Épicerie,Ketchup,15 g,f
-2239,21,S1,Épicerie,Câpres,10 g,f
-2240,21,S1,Épicerie,Épinards frais,270 g,f
-2241,21,S1,Épicerie,Vinaigre balsamique,15 ml,f
-2242,21,S1,Crémerie,Skyr,2200 g,f
-2243,21,S1,Crémerie,Oeufs,27 pièces,f
-2244,21,S1,Épicerie,Amandes,210 g,f
-2168,21,S1,Épicerie,Épaule d'agneau,850 g,t
-2245,22,S1,Épicerie,Épaule d'agneau,1250 g,f
-2178,21,S1,Épicerie,Bouillon de légumes,600 ml,t
-2172,21,S1,Épicerie,Ail,50 gousses,f
-2173,21,S1,Épicerie,Gingembre frais,30 g,f
-2174,21,S1,Épicerie,Huile d'olive,373 ml,t
-2169,21,S1,Épicerie,Artichauts,6 pièces,t
-2246,22,S1,Épicerie,Artichauts,154 pièces,f
-2247,22,S1,Légumes,Carottes nouvelles,1100 g,f
-2248,22,S1,Légumes,Oignon jaune,151 pièce,f
-2249,22,S1,Épicerie,Ail,50 gousses,f
-2250,22,S1,Épicerie,Gingembre frais,40 g,f
-2251,22,S1,Épicerie,Huile d'olive,295 ml,f
-2252,22,S1,Épicerie,Cumin moulu,7 g,f
-2253,22,S1,Épicerie,Coriandre moulue,5 g,f
-2254,22,S1,Épicerie,Cannelle,2 g,f
-2255,22,S1,Épicerie,Bouillon de légumes,900 ml,f
-2256,22,S1,Épicerie,Citron,3 pièce,f
-2257,22,S1,Épicerie,Coriandre fraîche,40 g,f
-2258,22,S1,Épicerie,Sel,59 g,f
-2259,22,S1,Épicerie,Poivre noir,22 g,f
-2260,22,S1,Féculents,Riz basmati,455 g,f
-2261,22,S1,Crémerie,Beurre,260 g,f
-2262,22,S1,Épicerie,Œufs,13 pièces,f
-2263,22,S1,Légumes,Radis,270 g,f
-2264,22,S1,Crémerie,Gruyère râpé,155 g,f
-2265,22,S1,Féculents,Pommes de terre,2250 g,f
-2266,22,S1,Épicerie,Ciboulette,10 g,f
-2267,22,S1,Épicerie,Naan nature,3 pièces,f
-2268,22,S1,Légumes,Oignon,662 g,f
-2269,22,S1,Crémerie,Lait de coco,400 ml,f
-2270,22,S1,Légumes,Tomates concassées,200 g,f
-2271,22,S1,Épicerie,Curry en poudre,27 g,f
-2272,22,S1,Épicerie,Curcuma,3 g,f
-2273,22,S1,Protéines,Pavé de saumon,310 g,f
-2274,22,S1,Légumes,Asperges vertes,570 g,f
-2275,22,S1,Féculents,Pommes de terre grenaille,1370 g,f
-2276,22,S1,Épicerie,Persil plat,20 g,f
-2277,22,S1,Épicerie,Cœurs d'artichaut,180 g,f
-2278,22,S1,Épicerie,Cumin en poudre,3 g,f
-2279,22,S1,Épicerie,Coriandre en poudre,3 g,f
-2280,22,S1,Légumes,Concentré de tomate,40 g,f
-2281,22,S1,Épicerie,Épinards frais,270 g,f
-2282,22,S1,Épicerie,Vinaigre balsamique,15 ml,f
-2283,22,S1,Épicerie,Moutarde de Dijon,35 g,f
-2284,22,S1,Protéines,Côtes de porc,400 g,f
-2285,22,S1,Conserves,Petits pois frais,300 g,f
-2286,22,S1,Épicerie,Bouillon de volaille,200 ml,f
-2287,22,S1,Épicerie,Thym frais,9 branches,f
-2288,22,S1,Épicerie,Bœuf à mijoter (paleron ou gîte),400 g,f
-2289,22,S1,Légumes,Courgettes,300 g,f
-2290,22,S1,Légumes,Tomates,400 g,f
-2291,22,S1,Crémerie,Lait entier,200 ml,f
-2292,22,S1,Épicerie,Herbes de Provence,3 g,f
-2293,22,S1,Épicerie,Laurier,1 feuille,f
-2294,22,S1,Épicerie,Bouillon de bœuf,300 ml,f
-2295,22,S1,Épicerie,Vin rouge,100 ml,f
-2296,22,S1,Épicerie,Muscade,1 g,f
-2297,22,S1,Protéines,Filet de cabillaud,360 g,f
-2298,22,S1,Conserves,Petits pois surgelés,270 g,f
-2299,22,S1,Épicerie,Thym,2 g,f
-2300,22,S1,Féculents,Pains burger,2 pièces,f
-2301,22,S1,Protéines,Steak haché 15% MG,270 g,f
-2302,22,S1,Épicerie,Cheddar en tranches,55 g,f
-2303,22,S1,Légumes,Salade iceberg,80 g,f
-2304,22,S1,Légumes,Tomate,1 pièce,f
-2305,22,S1,Légumes,Oignon rouge,50 g,f
-2306,22,S1,Épicerie,Cornichons,30 g,f
-2307,22,S1,Épicerie,Mayonnaise,20 g,f
-2308,22,S1,Épicerie,Ketchup,15 g,f
-2309,22,S1,Épicerie,Spaghettis,350 g,f
-2310,22,S1,Épicerie,Guanciale,140 g,f
-2311,22,S1,Épicerie,Pecorino Romano,70 g,f
-2312,22,S1,Épicerie,Gros sel,15 g,f
-2313,22,S1,Protéines,Rôti de porc (filet ou échine),500 g,f
-2314,22,S1,Épicerie,Romarin,3 g,f
-2315,22,S1,Épicerie,Vin blanc sec,100 ml,f
-2316,22,S1,Épicerie,Émincé de bœuf,300 g,f
-2317,22,S1,Légumes,Champignons de Paris,200 g,f
-2318,22,S1,Crémerie,Crème fraîche épaisse,100 ml,f
-2319,22,S1,Épicerie,Paprika doux,5 g,f
-2320,22,S1,Épicerie,Huile de tournesol,15 ml,f
-2321,22,S1,Crémerie,Skyr,2200 g,f
-2322,22,S1,Crémerie,Oeufs,27 pièces,f
-2323,22,S1,Épicerie,Amandes,210 g,f
-2324,23,S1,Protéines,Escalope de dinde,680 g,f
-2325,23,S1,Féculents,Riz basmati,805 g,f
-2326,23,S1,Légumes,Carottes,220 g,f
-2327,23,S1,Légumes,Champignons de Paris,400 g,f
-2328,23,S1,Légumes,Oignon jaune,101 g,f
-2329,23,S1,Crémerie,Crème fraîche épaisse,240 ml,f
-2330,23,S1,Épicerie,Bouillon de volaille,800 ml,f
-2331,23,S1,Crémerie,Beurre,270 g,f
-2332,23,S1,Épicerie,Farine,80 g,f
-2333,23,S1,Épicerie,Vin blanc sec,200 ml,f
-2334,23,S1,Épicerie,Thym frais,5 branches,f
-2335,23,S1,Épicerie,Laurier,4 feuilles,f
-2336,23,S1,Épicerie,Persil plat,65 g,f
-2337,23,S1,Épicerie,Huile d'olive,305 ml,f
-2338,23,S1,Épicerie,Sel,66 g,f
-2339,23,S1,Épicerie,Poivre noir,21 g,f
-2340,23,S1,Épicerie,Œufs,25 pièces,f
-2341,23,S1,Légumes,Radis,420 g,f
-2342,23,S1,Crémerie,Gruyère râpé,225 g,f
-2343,23,S1,Féculents,Pommes de terre,1150 g,f
-2344,23,S1,Épicerie,Ciboulette,10 g,f
-2345,23,S1,Épicerie,Vol-au-vent surgelés,4 pièces,f
-2346,23,S1,Légumes,Carottes nouvelles,1100 g,f
-2347,23,S1,Légumes,Oignon blanc,1 pièce,f
-2348,23,S1,Conserves,Petits pois frais,150 g,f
-2349,23,S1,Protéines,Pavé de saumon,310 g,f
-2350,23,S1,Légumes,Asperges vertes,570 g,f
-2351,23,S1,Féculents,Pommes de terre grenaille,370 g,f
-2352,23,S1,Épicerie,Ail,32 gousses,f
-2353,23,S1,Épicerie,Citron,3 pièce,f
-2354,23,S1,Conserves,Lentilles vertes,200 g,f
-2355,23,S1,Légumes,Oignon rouge,130 g,f
-2356,23,S1,Épicerie,Vinaigre de vin rouge,20 ml,f
-2357,23,S1,Épicerie,Moutarde à l'ancienne,15 g,f
-2358,23,S1,Épicerie,Épinards frais,270 g,f
-2359,23,S1,Légumes,Oignon,541 g,f
-2360,23,S1,Épicerie,Vinaigre balsamique,15 ml,f
-2361,23,S1,Épicerie,Moutarde de Dijon,10 g,f
-2362,23,S1,Épicerie,Épaule d'agneau,1250 g,f
-2363,23,S1,Épicerie,Cœurs d'artichaut,180 g,f
-2364,23,S1,Crémerie,Lait de coco,400 ml,f
-2365,23,S1,Épicerie,Gingembre frais,40 g,f
-2366,23,S1,Épicerie,Curry en poudre,27 g,f
-2367,23,S1,Épicerie,Cumin en poudre,3 g,f
-2368,23,S1,Épicerie,Coriandre en poudre,3 g,f
-2369,23,S1,Légumes,Concentré de tomate,50 g,f
-2370,23,S1,Épicerie,Bouillon de légumes,700 ml,f
-2371,23,S1,Épicerie,Coriandre fraîche,40 g,f
-2372,23,S1,Féculents,Pain de mie,8 tranches,f
-2373,23,S1,Protéines,Jambon blanc,320 g,f
-2374,23,S1,Crémerie,Lait,300 ml,f
-2375,23,S1,Épicerie,Muscade,1 pincée,f
-2376,23,S1,Épicerie,Poivre,1 pincée,f
-2377,23,S1,Épicerie,Naan nature,3 pièces,f
-2378,23,S1,Épicerie,Artichauts,154 g,f
-2379,23,S1,Légumes,Tomates concassées,200 g,f
-2380,23,S1,Épicerie,Curcuma,3 g,f
-2381,23,S1,Épicerie,Cumin moulu,11 g,f
-2382,23,S1,Protéines,Filet de cabillaud,360 g,f
-2383,23,S1,Conserves,Petits pois surgelés,270 g,f
-2384,23,S1,Épicerie,Thym,2 g,f
-2385,23,S1,Féculents,Pains burger,2 pièces,f
-2386,23,S1,Protéines,Steak haché 15% MG,270 g,f
-2387,23,S1,Épicerie,Cheddar en tranches,55 g,f
-2388,23,S1,Légumes,Salade iceberg,80 g,f
-2389,23,S1,Légumes,Tomate,1 pièce,f
-2390,23,S1,Épicerie,Cornichons,30 g,f
-2391,23,S1,Épicerie,Mayonnaise,20 g,f
-2392,23,S1,Épicerie,Ketchup,15 g,f
-2393,23,S1,Légumes,Tomates,600 g,f
-2394,23,S1,Légumes,Poivrons rouges,300 g,f
-2395,23,S1,Épicerie,Paprika doux,8 g,f
-2396,23,S1,Épicerie,Harissa,8 g,f
-2397,23,S1,Épicerie,Sucre,5 g,f
-2398,23,S1,Féculents,Pain pita,120 g,f
-2399,23,S1,Épicerie,Coriandre moulue,5 g,f
-2400,23,S1,Épicerie,Cannelle,2 g,f
-2401,23,S1,Épicerie,Farine de sarrasin,120 g,f
-2402,23,S1,Crémerie,Lait demi-écrémé,250 ml,f
-2403,23,S1,Épicerie,Eau,100 ml,f
-2404,23,S1,Épicerie,Huile de tournesol,15 ml,f
-2405,23,S1,Légumes,Salade verte mélangée,120 g,f
-2406,23,S1,Épicerie,Vinaigrette,15 ml,f
-2407,23,S1,Crémerie,Skyr,2200 g,f
-2408,23,S1,Crémerie,Oeufs,27 pièces,f
-2409,23,S1,Épicerie,Amandes,210 g,f
-2410,24,S1,Épicerie,Épaule d'agneau,400 g,f
-2411,24,S1,Féculents,Semoule de couscous,150 g,f
-2412,24,S1,Légumes,Carottes nouvelles,400 g,f
-2413,24,S1,Épicerie,Artichauts,2 pièces,f
-2414,24,S1,Légumes,Courgettes,200 g,f
-2415,24,S1,Légumes,Oignon,544 pièce,f
-2416,24,S1,Légumes,Tomates,1400 g,f
-2417,24,S1,Épicerie,Bouillon de bœuf,800 ml,f
-2418,24,S1,Légumes,Concentré de tomate,77 c. à soupe,f
-2419,24,S1,Épicerie,Ras-el-hanout,2 c. à café,f
-2420,24,S1,Épicerie,Cumin moulu,5 c. à café,f
-2421,24,S1,Épicerie,Gingembre frais,40 g,f
-2422,24,S1,Épicerie,Ail,42 gousses,f
-2423,24,S1,Épicerie,Huile d'olive,243 c. à soupe,f
-2424,24,S1,Crémerie,Beurre,220 g,f
-2425,24,S1,Épicerie,Coriandre fraîche,30 g,f
-2426,24,S1,Épicerie,Sel,56 c. à café,f
-2427,24,S1,Épicerie,Poivre noir,18 c. à café,f
-2428,24,S1,Légumes,Poivrons rouges,300 g,f
-2429,24,S1,Épicerie,Œufs,24 pièces,f
-2430,24,S1,Épicerie,Paprika doux,8 g,f
-2431,24,S1,Épicerie,Harissa,8 g,f
-2432,24,S1,Épicerie,Sucre,5 g,f
-2433,24,S1,Épicerie,Persil plat,35 g,f
-2434,24,S1,Féculents,Pain pita,120 g,f
-2435,24,S1,Conserves,Pois chiches en conserve,400 g,f
-2436,24,S1,Féculents,Riz basmati,785 g,f
-2437,24,S1,Crémerie,Lait de coco,400 ml,f
-2438,24,S1,Légumes,Tomates pelées en dés,500 g,f
-2439,24,S1,Épicerie,Curry en poudre,23 g,f
-2440,24,S1,Épicerie,Cumin en poudre,3 g,f
-2441,24,S1,Épicerie,Coriandre moulue,2 g,f
-2442,24,S1,Épicerie,Paprika,2 g,f
-2443,24,S1,Épicerie,Yaourt grec,80 g,f
-2444,24,S1,Protéines,Pavé de saumon,310 g,f
-2445,24,S1,Légumes,Asperges vertes,570 g,f
-2446,24,S1,Féculents,Pommes de terre grenaille,770 g,f
-2447,24,S1,Épicerie,Citron,2 pièce,f
-2448,24,S1,Féculents,Pain de mie,8 tranches,f
-2449,24,S1,Protéines,Jambon blanc,320 g,f
-2450,24,S1,Crémerie,Gruyère râpé,225 g,f
-2451,24,S1,Épicerie,Farine,30 g,f
-2452,24,S1,Crémerie,Lait,300 ml,f
-2453,24,S1,Épicerie,Muscade,1 pincée,f
-2454,24,S1,Épicerie,Poivre,3 pincée,f
-2455,24,S1,Protéines,Filet de cabillaud,360 g,f
-2456,24,S1,Conserves,Petits pois surgelés,270 g,f
-2457,24,S1,Épicerie,Thym,4 g,f
-2458,24,S1,Protéines,Filet de porc,320 g,f
-2459,24,S1,Crémerie,Crème fraîche,60 ml,f
-2460,24,S1,Conserves,Petits pois,150 g,f
-2461,24,S1,Épicerie,Bouillon de volaille,350 ml,f
-2462,24,S1,Épicerie,Farine de sarrasin,120 g,f
-2463,24,S1,Crémerie,Lait demi-écrémé,250 ml,f
-2464,24,S1,Épicerie,Eau,100 ml,f
-2465,24,S1,Épicerie,Huile de tournesol,15 ml,f
-2466,24,S1,Légumes,Salade verte mélangée,120 g,f
-2467,24,S1,Épicerie,Vinaigrette,15 ml,f
-2468,24,S1,Protéines,Blanc de poulet,400 g,f
-2469,24,S1,Légumes,Poivron rouge,200 g,f
-2470,24,S1,Légumes,Poivron vert,150 g,f
-2471,24,S1,Protéines,Jambon de Bayonne,60 g,f
-2472,24,S1,Épicerie,Vin blanc sec,80 ml,f
-2473,24,S1,Épicerie,Piment d'Espelette,2 g,f
-2474,24,S1,Épicerie,Thym séché,1 g,f
-2475,24,S1,Épicerie,Laurier,2 feuilles,f
-2476,24,S1,Féculents,Pommes de terre,820 g,f
-2477,24,S1,Épicerie,Épinards frais,270 g,f
-2478,24,S1,Épicerie,Vinaigre balsamique,15 ml,f
-2479,24,S1,Épicerie,Moutarde de Dijon,10 g,f
-2480,24,S1,Épicerie,Spaghettis,350 g,f
-2481,24,S1,Épicerie,Guanciale,140 g,f
-2482,24,S1,Épicerie,Pecorino Romano,70 g,f
-2483,24,S1,Épicerie,Gros sel,15 g,f
-2484,24,S1,Protéines,Saucisses fumées,300 g,f
-2485,24,S1,Légumes,Haricots rouges,200 g,f
-2486,24,S1,Légumes,Oignons,2 pièces,f
-2487,24,S1,Épicerie,Piment de Cayenne,1 pincée,f
-2488,24,S1,Épicerie,Curcuma en poudre,5 g,f
-2489,24,S1,Épicerie,Huile végétale,30 mL,f
-2490,24,S1,Épicerie,Feuilles de laurier,2 pièces,f
-2491,24,S1,Protéines,Côtes de porc,400 g,f
-2492,24,S1,Conserves,Petits pois frais,300 g,f
-2493,24,S1,Épicerie,Thym frais,2 branches,f
-2494,24,S1,Légumes,Radis,270 g,f
-2495,24,S1,Épicerie,Ciboulette,10 g,f
-2496,24,S1,Crémerie,Skyr,2200 g,f
-2497,24,S1,Crémerie,Oeufs,27 pièces,f
-2498,24,S1,Épicerie,Amandes,210 g,f
-2499,25,S1,Épicerie,Émincé de bœuf,400 g,f
-2500,25,S1,Légumes,Champignons de Paris,380 g,f
-2501,25,S1,Légumes,Oignon,570 g,f
-2502,25,S1,Crémerie,Crème fraîche épaisse,350 ml,f
-2503,25,S1,Épicerie,Moutarde de Dijon,25 g,f
-2504,25,S1,Légumes,Concentré de tomate,50 g,f
-2505,25,S1,Épicerie,Bouillon de bœuf,200 ml,f
-2506,25,S1,Féculents,Riz basmati,650 g,f
-2507,25,S1,Crémerie,Beurre,315 g,f
-2508,25,S1,Épicerie,Huile d'olive,265 ml,f
-2509,25,S1,Épicerie,Paprika doux,13 g,f
-2510,25,S1,Épicerie,Persil plat,35 g,f
-2511,25,S1,Épicerie,Sel,61 g,f
-2512,25,S1,Épicerie,Poivre noir,15 g,f
-2513,25,S1,Épicerie,Œufs,23 pièces,f
-2514,25,S1,Épicerie,Cœurs d'artichauts,270 g,f
-2515,25,S1,Crémerie,Gruyère râpé,315 g,f
-2516,25,S1,Féculents,Pommes de terre grenaille,430 g,f
-2517,25,S1,Légumes,Salade verte mélangée,220 g,f
-2518,25,S1,Épicerie,Vinaigrette,70 ml,f
-2519,25,S1,Épicerie,Poivre noir moulu,2 g,f
-2520,25,S1,Épicerie,Herbes de Provence,3 g,f
-2521,25,S1,Protéines,Filet de saumon,380 g,f
-2522,25,S1,Légumes,Asperges vertes,500 g,f
-2523,25,S1,Légumes,Radis roses,370 g,f
-2524,25,S1,Légumes,Carotte nouvelle,120 g,f
-2525,25,S1,Épicerie,Sauce soja,60 ml,f
-2526,25,S1,Épicerie,Miel,55 g,f
-2527,25,S1,Épicerie,Mirin,30 ml,f
-2528,25,S1,Féculents,Vinaigre de riz,15 ml,f
-2529,25,S1,Épicerie,Gingembre frais,30 g,f
-2530,25,S1,Épicerie,Ail,22 gousses,f
-2531,25,S1,Épicerie,Huile de sésame,15 ml,f
-2532,25,S1,Épicerie,Graines de sésame,10 g,f
-2533,25,S1,Épicerie,Ciboulette fraîche,15 g,f
-2534,25,S1,Conserves,Lentilles corail,200 g,f
-2535,25,S1,Crémerie,Lait de coco,200 ml,f
-2536,25,S1,Épicerie,Bouillon de légumes,500 ml,f
-2537,25,S1,Légumes,Tomates,800 g,f
-2538,25,S1,Légumes,Carottes nouvelles,370 g,f
-2539,25,S1,Épicerie,Épinards frais,370 g,f
-2540,25,S1,Épicerie,Curcuma en poudre,5 g,f
-2541,25,S1,Épicerie,Cumin en poudre,3 g,f
-2542,25,S1,Épicerie,Coriandre en poudre,3 g,f
-2543,25,S1,Épicerie,Garam masala,2 g,f
-2544,25,S1,Épicerie,Coriandre fraîche,10 g,f
-2545,25,S1,Féculents,Pommes de terre,1250 g,f
-2546,25,S1,Épicerie,Vinaigre balsamique,15 ml,f
-2547,25,S1,Épicerie,Farine,180 g,f
-2548,25,S1,Épicerie,Eau froide,30 ml,f
-2549,25,S1,Épicerie,Lardons,150 g,f
-2550,25,S1,Crémerie,Lait entier,100 ml,f
-2551,25,S1,Épicerie,Noix de muscade,2 pincée,f
-2552,25,S1,Légumes,Salade verte,280 g,f
-2553,25,S1,Protéines,Dos de cabillaud,350 g,f
-2554,25,S1,Épicerie,Chapelure,60 g,f
-2555,25,S1,Épicerie,Persil plat frais,20 g,f
-2556,25,S1,Épicerie,Parmesan râpé,30 g,f
-2557,25,S1,Épicerie,Citron,1 pièce,f
-2558,25,S1,Épicerie,Sucre,15 g,f
-2559,25,S1,Épicerie,Penne rigate,540 g,f
-2560,25,S1,Épicerie,Guanciale,120 g,f
-2561,25,S1,Légumes,Tomates pelées,400 g,f
-2562,25,S1,Épicerie,Pecorino Romano,80 g,f
-2563,25,S1,Épicerie,Piment rouge,1 pièce,f
-2564,25,S1,Épicerie,Vin blanc sec,210 ml,f
-2565,25,S1,Légumes,Poivrons rouges,300 g,f
-2566,25,S1,Épicerie,Cumin moulu,4 g,f
-2567,25,S1,Épicerie,Harissa,8 g,f
-2568,25,S1,Féculents,Pain pita,120 g,f
-2569,25,S1,Féculents,Pain de mie,8 tranches,f
-2570,25,S1,Protéines,Jambon blanc,320 g,f
-2571,25,S1,Crémerie,Lait,300 ml,f
-2572,25,S1,Épicerie,Poivre blanc,1 pincée,f
-2573,25,S1,Épicerie,Vinaigre de vin,5 ml,f
-2574,25,S1,Féculents,Riz arborio,450 g,f
-2575,25,S1,Épicerie,Parmesan AOP,80 g,f
-2576,25,S1,Épicerie,Bouillon de volaille,1200 ml,f
-2577,25,S1,Épicerie,Échalote,1 pièce,f
-2578,25,S1,Protéines,Côtes de porc,310 g,f
-2579,25,S1,Épicerie,Thym frais,2 branches,f
-2580,25,S1,Épicerie,Farine de sarrasin,120 g,f
-2581,25,S1,Crémerie,Lait demi-écrémé,250 ml,f
-2582,25,S1,Épicerie,Eau,100 ml,f
-2583,25,S1,Épicerie,Huile de tournesol,15 ml,f
-2584,25,S1,Crémerie,Skyr,2200 g,f
-2585,25,S1,Crémerie,Oeufs,27 pièces,f
-2586,25,S1,Épicerie,Amandes,210 g,f
-2587,26,Semaine du 18 au 24 mai,Légumes,Asperges vertes,3 bottes,f
-2588,26,Semaine du 18 au 24 mai,Légumes,Radis roses,3 bottes,f
-2589,26,Semaine du 18 au 24 mai,Légumes,Fenouil,2 bulbes,f
-2590,26,Semaine du 18 au 24 mai,Légumes,Petits pois frais (ou surgelés),"1,2 kg",f
-2591,26,Semaine du 18 au 24 mai,Légumes,Pommes de terre nouvelles,"1,5 kg",f
-2592,26,Semaine du 18 au 24 mai,Légumes,Haricots verts,800 g,f
-2593,26,Semaine du 18 au 24 mai,Légumes,Carottes nouvelles,1 botte,f
-2594,26,Semaine du 18 au 24 mai,Légumes,Navets nouveaux,1 botte,f
-2595,26,Semaine du 18 au 24 mai,Légumes,Courgettes,5 pièces,f
-2596,26,Semaine du 18 au 24 mai,Légumes,Aubergine,1 pièce,f
-2597,26,Semaine du 18 au 24 mai,Légumes,Tomates,4 pièces,f
-2598,26,Semaine du 18 au 24 mai,Légumes,Concombre,2 pièces,f
-2599,26,Semaine du 18 au 24 mai,Légumes,Roquette,1 sachet,f
-2600,26,Semaine du 18 au 24 mai,Légumes,Salade verte,1 pièce,f
-2601,26,Semaine du 18 au 24 mai,Légumes,Patate douce,600 g,f
-2602,26,Semaine du 18 au 24 mai,Légumes,Oignons,4 pièces,f
-2603,26,Semaine du 18 au 24 mai,Légumes,Ail,1 tête,f
-2604,26,Semaine du 18 au 24 mai,Légumes,Edamame (surgelé),300 g,f
-2605,26,Semaine du 18 au 24 mai,Légumes,Gingembre frais,1 morceau,f
-2606,26,Semaine du 18 au 24 mai,Herbes,Menthe fraîche,2 bottes,f
-2607,26,Semaine du 18 au 24 mai,Herbes,Coriandre fraîche,1 botte,f
-2608,26,Semaine du 18 au 24 mai,Herbes,Persil & ciboulette,1 botte chacun,f
-2609,26,Semaine du 18 au 24 mai,Herbes,Basilic,1 botte,f
-2610,26,Semaine du 18 au 24 mai,Herbes,Thym & romarin frais,1 botte,f
-2611,26,Semaine du 18 au 24 mai,Fruits,Citrons,5 pièces,f
-2612,26,Semaine du 18 au 24 mai,Fruits,Pommes,5 pièces,f
-2613,26,Semaine du 18 au 24 mai,Fruits,Poires,3 pièces,f
-2614,26,Semaine du 18 au 24 mai,Fruits,Bananes,3 pièces,f
-2615,26,Semaine du 18 au 24 mai,Fruits,Oranges,2 pièces,f
-2616,26,Semaine du 18 au 24 mai,Fruits,Kiwis,3 pièces,f
-2618,26,Semaine du 18 au 24 mai,Viandes,Sauté de bœuf (paleron/macreuse),600 g,f
-2619,26,Semaine du 18 au 24 mai,Viandes,Steak haché 15% (burger),400 g,f
-2620,26,Semaine du 18 au 24 mai,Viandes,Côtes de porc,2 pièces,f
-2621,26,Semaine du 18 au 24 mai,Charcuterie,Jambon de Paris,250 g,f
-2622,26,Semaine du 18 au 24 mai,Poissons,Dos de cabillaud,400 g,f
-2623,26,Semaine du 18 au 24 mai,Poissons,Pavé de saumon,400 g,f
-2624,26,Semaine du 18 au 24 mai,Crémerie & œufs,Œufs,x18,f
-2625,26,Semaine du 18 au 24 mai,Crémerie & œufs,Skyr 0%,2 kg,f
-2626,26,Semaine du 18 au 24 mai,Crémerie & œufs,Feta,200 g,f
-2627,26,Semaine du 18 au 24 mai,Crémerie & œufs,Parmesan,150 g,f
-2628,26,Semaine du 18 au 24 mai,Crémerie & œufs,Chèvre frais,150 g,f
-2629,26,Semaine du 18 au 24 mai,Crémerie & œufs,Burrata,2 pièces,f
-2630,26,Semaine du 18 au 24 mai,Crémerie & œufs,Cheddar affiné,100 g,f
-2631,26,Semaine du 18 au 24 mai,Crémerie & œufs,Crème fraîche,20 cl,f
-2632,26,Semaine du 18 au 24 mai,Crémerie & œufs,Lait,50 cl,f
-2633,26,Semaine du 18 au 24 mai,Épicerie,Lentilles vertes,400 g,f
-2634,26,Semaine du 18 au 24 mai,Épicerie,Lentilles corail,300 g,f
-2635,26,Semaine du 18 au 24 mai,Épicerie,Pois chiches (bocal),1 bocal,f
-2636,26,Semaine du 18 au 24 mai,Épicerie,Quinoa,400 g,f
-2637,26,Semaine du 18 au 24 mai,Épicerie,Riz à risotto (arborio),300 g,f
-2638,26,Semaine du 18 au 24 mai,Épicerie,Riz basmati,400 g,f
-2639,26,Semaine du 18 au 24 mai,Épicerie,Polenta,200 g,f
-2640,26,Semaine du 18 au 24 mai,Épicerie,Semoule,200 g,f
-2641,26,Semaine du 18 au 24 mai,Épicerie,Gnocchi,500 g,f
-2642,26,Semaine du 18 au 24 mai,Épicerie,Lait de coco,1 boîte,f
-2643,26,Semaine du 18 au 24 mai,Épicerie,Sauce teriyaki,1 flacon,f
-2644,26,Semaine du 18 au 24 mai,Épicerie,Graines de sésame,1 sachet,f
-2645,26,Semaine du 18 au 24 mai,Épicerie,Pignons de pin,50 g,f
-2646,26,Semaine du 18 au 24 mai,Épicerie,Amandes,150 g,f
-2647,26,Semaine du 18 au 24 mai,Épicerie,Noix & noix de cajou,150 g,f
-2648,26,Semaine du 18 au 24 mai,Épicerie,Pâte feuilletée,1 rouleau,f
-2649,26,Semaine du 18 au 24 mai,Épicerie,Vin rouge (cuisine),25 cl,f
-2650,26,Semaine du 18 au 24 mai,Épicerie,Moutarde,1 pot,f
-2651,26,Semaine du 18 au 24 mai,Épicerie,Vinaigre de riz,1 flacon,f
-2652,26,Semaine du 18 au 24 mai,Épicerie,Huile d'olive,1 bouteille,f
-2653,26,Semaine du 18 au 24 mai,Boulangerie,Pain de seigle,1 pièce,f
-2654,26,Semaine du 18 au 24 mai,Boulangerie,Pains à burger,2 pièces,f
-2617,26,Semaine du 18 au 24 mai,Viandes,Poulet fermier (cuisses/découpe),"1,2 kg",f
-2715,27,Semaine du 25 au 31 mai,Viandes & poissons,Bavette d'aloyau,300 g (180 J + 120 Z),f
-2716,27,Semaine du 25 au 31 mai,Viandes & poissons,Cuisses de poulet fermier (blanquette),600 g,f
-2717,27,Semaine du 25 au 31 mai,Viandes & poissons,Cuisses de poulet (tajine),600 g,f
-2718,27,Semaine du 25 au 31 mai,Viandes & poissons,Suprême de pintade,200 g (Julien),f
-2719,27,Semaine du 25 au 31 mai,Viandes & poissons,Pavé de saumon frais,300 g (170 J + 130 Z),f
-2720,27,Semaine du 25 au 31 mai,Viandes & poissons,Dos de lieu jaune,350 g (200 J + 150 Z),f
-2721,27,Semaine du 25 au 31 mai,Viandes & poissons,Jambon de Paris,200 g,f
-2722,27,Semaine du 25 au 31 mai,Crémerie & œufs,Skyr nature 0%,"4,2 kg (9 pots de 500 g)",f
-2723,27,Semaine du 25 au 31 mai,Crémerie & œufs,Œufs frais (cal. moyens),30 (3 boîtes de 10),f
-2724,27,Semaine du 25 au 31 mai,Crémerie & œufs,Crème fraîche épaisse 30%,40 cl,f
-2725,27,Semaine du 25 au 31 mai,Crémerie & œufs,Beurre doux,250 g,f
-2726,27,Semaine du 25 au 31 mai,Crémerie & œufs,Yaourt nature brassé (sauce verte),2 (125 g),f
-2727,27,Semaine du 25 au 31 mai,Crémerie & œufs,Ricotta,400 g,f
-2728,27,Semaine du 25 au 31 mai,Crémerie & œufs,Mozzarella di bufala,150 g,f
-2729,27,Semaine du 25 au 31 mai,Crémerie & œufs,Parmesan AOP (bloc),200 g,f
-2730,27,Semaine du 25 au 31 mai,Crémerie & œufs,Pecorino romano,100 g,f
-2731,27,Semaine du 25 au 31 mai,Crémerie & œufs,Halloumi,100 g,f
-2732,27,Semaine du 25 au 31 mai,Fruits & légumes,Pommes de terre grenailles,500 g,f
-2733,27,Semaine du 25 au 31 mai,Fruits & légumes,Pommes de terre nouvelles (sautées + fondantes),1 kg,f
-2734,27,Semaine du 25 au 31 mai,Fruits & légumes,Pommes de terre rattes,400 g,f
-2735,27,Semaine du 25 au 31 mai,Fruits & légumes,Échalotes,200 g,f
-2736,27,Semaine du 25 au 31 mai,Fruits & légumes,Oignons jaunes,1 kg,f
-2737,27,Semaine du 25 au 31 mai,Fruits & légumes,Ail (têtes),2,f
-2738,27,Semaine du 25 au 31 mai,Fruits & légumes,Gingembre frais,1 rhizome (50 g),f
-2739,27,Semaine du 25 au 31 mai,Fruits & légumes,Carottes nouvelles,800 g,f
-2740,27,Semaine du 25 au 31 mai,Fruits & légumes,Champignons de Paris,250 g,f
-2741,27,Semaine du 25 au 31 mai,Fruits & légumes,Courgettes,1 kg,f
-2742,27,Semaine du 25 au 31 mai,Fruits & légumes,Aubergines,600 g (2),f
-2743,27,Semaine du 25 au 31 mai,Fruits & légumes,Poivron rouge,1,f
-2744,27,Semaine du 25 au 31 mai,Fruits & légumes,Haricots verts frais,800 g,f
-2745,27,Semaine du 25 au 31 mai,Fruits & légumes,Fèves fraîches en cosse,"1,2 kg",f
-2746,27,Semaine du 25 au 31 mai,Fruits & légumes,Asperges vertes,1 kg (2 bottes),f
-2747,27,Semaine du 25 au 31 mai,Fruits & légumes,Brocoli,1 grosse tête (500 g),f
-2748,27,Semaine du 25 au 31 mai,Fruits & légumes,Concombre,1,f
-2749,27,Semaine du 25 au 31 mai,Fruits & légumes,Tomates fraîches (minestrone),4,f
-2750,27,Semaine du 25 au 31 mai,Fruits & légumes,Radis roses,1 botte,f
-2751,27,Semaine du 25 au 31 mai,Fruits & légumes,Citrons jaunes,5,f
-2752,27,Semaine du 25 au 31 mai,Fruits & légumes,Bananes,3,f
-2753,27,Semaine du 25 au 31 mai,Fruits & légumes,Pommes,6,f
-2754,27,Semaine du 25 au 31 mai,Fruits & légumes,Fruits de saison (collations diverses),5,f
-2755,27,Semaine du 25 au 31 mai,Aromates frais,Coriandre fraîche,2 bottes,f
-2756,27,Semaine du 25 au 31 mai,Aromates frais,Persil plat,1 botte,f
-2757,27,Semaine du 25 au 31 mai,Aromates frais,Basilic,1 grosse botte,f
-2758,27,Semaine du 25 au 31 mai,Aromates frais,Aneth,1 botte,f
-2759,27,Semaine du 25 au 31 mai,Aromates frais,Ciboulette,1 botte,f
-2760,27,Semaine du 25 au 31 mai,Aromates frais,Thym frais,1 botte,f
-2761,27,Semaine du 25 au 31 mai,Aromates frais,Romarin,1 brin,f
-2762,27,Semaine du 25 au 31 mai,Légumineuses,Haricots rouges (boîte),1 × 400 g,f
-2763,27,Semaine du 25 au 31 mai,Légumineuses,Maïs doux (petite boîte),1 × 150 g,f
-2764,27,Semaine du 25 au 31 mai,Légumineuses,Pois chiches (boîte),3 × 400 g,f
-2765,27,Semaine du 25 au 31 mai,Légumineuses,Haricots blancs (boîte),1 × 400 g,f
-2766,27,Semaine du 25 au 31 mai,Féculents & pains,Riz basmati,600 g,f
-2767,27,Semaine du 25 au 31 mai,Féculents & pains,Riz arborio (risotto),300 g,f
-2768,27,Semaine du 25 au 31 mai,Féculents & pains,Riz long grain (pilaf),200 g,f
-2769,27,Semaine du 25 au 31 mai,Féculents & pains,Semoule fine couscous,200 g,f
-2770,27,Semaine du 25 au 31 mai,Féculents & pains,Boulgour fin,250 g,f
-2771,27,Semaine du 25 au 31 mai,Féculents & pains,Plaques de lasagnes,250 g,f
-2772,27,Semaine du 25 au 31 mai,Féculents & pains,Orecchiette,400 g,f
-2773,27,Semaine du 25 au 31 mai,Féculents & pains,Pâtes courtes type ditalini (minestrone),100 g,f
-2774,27,Semaine du 25 au 31 mai,Féculents & pains,Pain de campagne,1 grand pain,f
-2775,27,Semaine du 25 au 31 mai,Épicerie & condiments,Tomates concassées (boîte),2 × 400 g,f
-2776,27,Semaine du 25 au 31 mai,Épicerie & condiments,Coulis de tomate,1 × 500 g,f
-2777,27,Semaine du 25 au 31 mai,Épicerie & condiments,Citron confit,2,f
-2778,27,Semaine du 25 au 31 mai,Épicerie & condiments,Olives vertes dénoyautées,100 g,f
-2779,27,Semaine du 25 au 31 mai,Épicerie & condiments,Câpres au vinaigre,1 petit pot,f
-2780,27,Semaine du 25 au 31 mai,Épicerie & condiments,Poivre vert en saumure,1 petit pot,f
-2781,27,Semaine du 25 au 31 mai,Épicerie & condiments,Pesto au basilic,1 pot,f
-2782,27,Semaine du 25 au 31 mai,Épicerie & condiments,Moutarde de Dijon,1 pot,f
-2783,27,Semaine du 25 au 31 mai,Épicerie & condiments,Huile d'olive vierge extra,RAS — vérifier stock,f
-2784,27,Semaine du 25 au 31 mai,Épicerie & condiments,Vinaigre de vin,RAS — vérifier stock,f
-2785,27,Semaine du 25 au 31 mai,Épicerie & condiments,Bouillon de volaille,1 cube,f
-2786,27,Semaine du 25 au 31 mai,Épicerie & condiments,Bouillon de légumes,2 cubes,f
-2787,27,Semaine du 25 au 31 mai,Épicerie & condiments,Farine T55,100 g,f
-2788,27,Semaine du 25 au 31 mai,Épicerie & condiments,Cumin moulu,1 pot,f
-2789,27,Semaine du 25 au 31 mai,Épicerie & condiments,Paprika fumé,1 pot,f
-2790,27,Semaine du 25 au 31 mai,Épicerie & condiments,Mélange chana masala (curry indien),1 pot,f
-2791,27,Semaine du 25 au 31 mai,Épicerie & condiments,Ras el hanout,1 pot,f
-2792,27,Semaine du 25 au 31 mai,Épicerie & condiments,Vin blanc sec (cuisine),1 bouteille 75 cl,f
-2793,27,Semaine du 25 au 31 mai,Oléagineux,Amandes entières,200 g,f
-2794,27,Semaine du 25 au 31 mai,Oléagineux,Cerneaux de noix,80 g,f
+id,import_id,week_label,category,product_name,quantity,checked,canonical_food_id,archetype_id,notes,container_qty,container_size,container_unit
+1020,10,S1,🥩 Viandes & Poissons,Saucisses de porc,400g,f,,,,,,
+1021,10,S1,🥩 Viandes & Poissons,Cuisses de poulet,600g,f,,,,,,
+1022,10,S1,🥩 Viandes & Poissons,Filet de poulet,540g,f,,,,,,
+1023,10,S1,🥩 Viandes & Poissons,Saumon,360g (200+160),f,,,,,,
+1024,10,S1,🥩 Viandes & Poissons,Steak haché 5%,560g,f,,,,,,
+1025,10,S1,🥩 Viandes & Poissons,Jambon,280g,f,,,,,,
+1026,10,S1,🥩 Viandes & Poissons,Lardons dinde,280g,f,,,,,,
+1027,10,S1,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1028,10,S1,🥛 Produits laitiers,Emmental,75g,f,,,,,,
+1029,10,S1,🥛 Produits laitiers,Cheddar,45g,f,,,,,,
+1030,10,S1,🥛 Produits laitiers,Parmesan,40g,f,,,,,,
+1031,10,S1,🥛 Produits laitiers,Gruyère,40g,f,,,,,,
+1032,10,S1,🥛 Produits laitiers,Beurre,30g,f,,,,,,
+1033,10,S1,🥛 Produits laitiers,Lait,80ml,f,,,,,,
+1034,10,S1,🥔 Féculents,Riz,440g cuit,f,,,,,,
+1035,10,S1,🥔 Féculents,Semoule,370g cuite,f,,,,,,
+1036,10,S1,🥔 Féculents,Pâtes,200g cuites,f,,,,,,
+1037,10,S1,🥔 Féculents,PDT,1.2kg,f,,,,,,
+1038,10,S1,🥔 Féculents,Grenaille,600g,f,,,,,,
+1039,10,S1,🥔 Féculents,Pain complet,350g,f,,,,,,
+1040,10,S1,🥔 Féculents,Pain burger,150g,f,,,,,,
+1041,10,S1,🥬 Légumes de saison,Poivrons conserve,300g,f,,,,,,
+1042,10,S1,🥬 Légumes de saison,Oignon,450g,f,,,,,,
+1043,10,S1,🥬 Légumes de saison,Carottes,180g,f,,,,,,
+1044,10,S1,🥬 Légumes de saison,Brocoli,440g,f,,,,,,
+1045,10,S1,🥬 Légumes de saison,Endives,450g (7),f,,,,,,
+1046,10,S1,🥬 Légumes de saison,Mâche,160g,f,,,,,,
+1047,10,S1,🥬 Légumes de saison,Haricots verts,540g,f,,,,,,
+1048,10,S1,🥬 Légumes de saison,Salade verte,200g,f,,,,,,
+1049,10,S1,🥬 Légumes de saison,Tomates cerise,90g,f,,,,,,
+1050,10,S1,🥬 Légumes de saison,Lentilles vertes,250g sèches,f,,,,,,
+1051,10,S1,🥬 Légumes de saison,Lentilles cuites,200g,f,,,,,,
+1052,10,S1,🥫 Conserves & épicerie,Passata,950g,f,,,,,,
+1053,10,S1,🥫 Conserves & épicerie,Concentré tomate,20g,f,,,,,,
+1054,10,S1,🥫 Conserves & épicerie,Gingembre frais,15g,f,,,,,,
+1055,10,S1,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1056,10,S1,🥫 Conserves & épicerie,Miel,22g,f,,,,,,
+1057,10,S1,🥫 Conserves & épicerie,Moutarde,18g,f,,,,,,
+1058,10,S1,🥫 Conserves & épicerie,Cornichons,35g,f,,,,,,
+1059,10,S1,🥫 Conserves & épicerie,Ketchup,18g,f,,,,,,
+1060,10,S1,🥫 Conserves & épicerie,Cumin,5g,f,,,,,,
+1061,10,S1,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1062,10,S1,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1063,10,S1,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1064,10,S1,🍎 Fruits & oléagineux,Pommes,300g,f,,,,,,
+1065,10,S1,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1066,10,S1,🍎 Fruits & oléagineux,Kiwis,200g,f,,,,,,
+1067,10,S1,🍎 Fruits & oléagineux,Clémentines,280g,f,,,,,,
+1068,10,S1,🍎 Fruits & oléagineux,Oranges,180g,f,,,,,,
+1069,10,S2,🥩 Viandes & Poissons,Bœuf haché 5%,860g,f,,,,,,
+1070,10,S2,🥩 Viandes & Poissons,Filet de porc,370g,f,,,,,,
+1071,10,S2,🥩 Viandes & Poissons,Cabillaud,370g,f,,,,,,
+1072,10,S2,🥩 Viandes & Poissons,Filet de poulet,990g,f,,,,,,
+1073,10,S2,🥩 Viandes & Poissons,Jambon,205g,f,,,,,,
+1074,10,S2,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f,,,,,,
+1075,10,S2,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1076,10,S2,🥛 Produits laitiers,Emmental,35g,f,,,,,,
+1077,10,S2,🥛 Produits laitiers,Parmesan,62g,f,,,,,,
+1078,10,S2,🥛 Produits laitiers,Gruyère,65g,f,,,,,,
+1079,10,S2,🥛 Produits laitiers,Crème 15%,125g,f,,,,,,
+1080,10,S2,🥛 Produits laitiers,Beurre,30g,f,,,,,,
+1081,10,S2,🥛 Produits laitiers,Lait coco,100g,f,,,,,,
+1082,10,S2,🥛 Produits laitiers,Lait,140ml,f,,,,,,
+1083,10,S2,🥔 Féculents,Pâtes complètes,400g cuites,f,,,,,,
+1084,10,S2,🥔 Féculents,PDT,740g,f,,,,,,
+1085,10,S2,🥔 Féculents,Riz,640g cuit,f,,,,,,
+1086,10,S2,🥔 Féculents,Frites four,400g,f,,,,,,
+1087,10,S2,🥔 Féculents,Naan,150g,f,,,,,,
+1088,10,S2,🥔 Féculents,Pâtes,340g cuites,f,,,,,,
+1089,10,S2,🥔 Féculents,Polenta,360g cuite,f,,,,,,
+1090,10,S2,🥔 Féculents,Pain complet,300g,f,,,,,,
+1091,10,S2,🥔 Féculents,Farine,55g,f,,,,,,
+1092,10,S2,🥬 Légumes de saison,Carottes,330g,f,,,,,,
+1093,10,S2,🥬 Légumes de saison,Champignons,300g,f,,,,,,
+1094,10,S2,🥬 Légumes de saison,Poireaux,270g,f,,,,,,
+1095,10,S2,🥬 Légumes de saison,Betteraves,180g,f,,,,,,
+1096,10,S2,🥬 Légumes de saison,Mâche,140g,f,,,,,,
+1097,10,S2,🥬 Légumes de saison,Brocoli,270g,f,,,,,,
+1098,10,S2,🥬 Légumes de saison,Chou-fleur,370g,f,,,,,,
+1099,10,S2,🥬 Légumes de saison,Oignon,350g,f,,,,,,
+1100,10,S2,🥬 Légumes de saison,Salade verte,200g,f,,,,,,
+1101,10,S2,🥬 Légumes de saison,Lentilles vertes,130g sèches,f,,,,,,
+1102,10,S2,🥬 Légumes de saison,Haricots verts,140g,f,,,,,,
+1103,10,S2,🥬 Légumes de saison,Olives,25g,f,,,,,,
+1104,10,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f,,,,,,
+1105,10,S2,🥬 Légumes de saison,Petits pois,80g,f,,,,,,
+1106,10,S2,🥫 Conserves & épicerie,Passata,470g,f,,,,,,
+1107,10,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f,,,,,,
+1108,10,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1109,10,S2,🥫 Conserves & épicerie,Miel,11g,f,,,,,,
+1656,14,S1,Fruits,Kiwis,200g,f,,,,,,
+1110,10,S2,🥫 Conserves & épicerie,Gingembre,9g,f,,,,,,
+1111,10,S2,🥫 Conserves & épicerie,Moutarde,15g,f,,,,,,
+1112,10,S2,🥫 Conserves & épicerie,Curry,10g,f,,,,,,
+1113,10,S2,🥫 Conserves & épicerie,Chapelure,34g,f,,,,,,
+1114,10,S2,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1115,10,S2,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1116,10,S2,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1117,10,S2,🍎 Fruits & oléagineux,Pommes,450g,f,,,,,,
+1118,10,S2,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1119,10,S2,🍎 Fruits & oléagineux,Kiwis,100g,f,,,,,,
+1120,10,S2,🍎 Fruits & oléagineux,Oranges,180g,f,,,,,,
+1121,10,S2,🍎 Fruits & oléagineux,Clémentines,140g,f,,,,,,
+1122,10,S3,🥩 Viandes & Poissons,Filet de poulet,730g,f,,,,,,
+1123,10,S3,🥩 Viandes & Poissons,Saumon,360g,f,,,,,,
+1124,10,S3,🥩 Viandes & Poissons,Filet de dinde,370g,f,,,,,,
+1125,10,S3,🥩 Viandes & Poissons,Jambon,320g,f,,,,,,
+1126,10,S3,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f,,,,,,
+1127,10,S3,🥩 Viandes & Poissons,Filet de porc,550g,f,,,,,,
+1128,10,S3,🥩 Viandes & Poissons,Lardon fumé,45g,f,,,,,,
+1129,10,S3,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1130,10,S3,🥛 Produits laitiers,Emmental,85g,f,,,,,,
+1131,10,S3,🥛 Produits laitiers,Gruyère,45g,f,,,,,,
+1132,10,S3,🥛 Produits laitiers,Mozzarella,115g,f,,,,,,
+1133,10,S3,🥛 Produits laitiers,Parmesan,14g,f,,,,,,
+1134,10,S3,🥛 Produits laitiers,Crème 15%,135g,f,,,,,,
+1135,10,S3,🥛 Produits laitiers,Beurre,40g,f,,,,,,
+1136,10,S3,🥛 Produits laitiers,Lait,140ml,f,,,,,,
+1137,10,S3,🥔 Féculents,Riz,620g cuit,f,,,,,,
+1138,10,S3,🥔 Féculents,Pâtes,380g cuites,f,,,,,,
+1139,10,S3,🥔 Féculents,Pâtes complètes,580g cuites,f,,,,,,
+1140,10,S3,🥔 Féculents,PDT,620g,f,,,,,,
+1141,10,S3,🥔 Féculents,Semoule,380g cuite,f,,,,,,
+1142,10,S3,🥔 Féculents,Tortilla wrap,175g,f,,,,,,
+1143,10,S3,🥔 Féculents,Pain complet,300g,f,,,,,,
+1144,10,S3,🥔 Féculents,Farine,80g,f,,,,,,
+1145,10,S3,🥔 Féculents,Pâte brisée,130g,f,,,,,,
+1146,10,S3,🥬 Légumes de saison,Brocoli,280g,f,,,,,,
+1147,10,S3,🥬 Légumes de saison,Poireaux,540g,f,,,,,,
+1148,10,S3,🥬 Légumes de saison,Navets,220g,f,,,,,,
+1149,10,S3,🥬 Légumes de saison,Haricots verts,440g,f,,,,,,
+1150,10,S3,🥬 Légumes de saison,Champignons,360g,f,,,,,,
+1151,10,S3,🥬 Légumes de saison,Mâche,140g,f,,,,,,
+1152,10,S3,🥬 Légumes de saison,Carottes,230g,f,,,,,,
+1153,10,S3,🥬 Légumes de saison,Chou vert,140g,f,,,,,,
+1154,10,S3,🥬 Légumes de saison,Salade verte,320g,f,,,,,,
+1155,10,S3,🥬 Légumes de saison,Oignon,190g,f,,,,,,
+1156,10,S3,🥬 Légumes de saison,Lentilles cuites,430g,f,,,,,,
+1157,10,S3,🥬 Légumes de saison,Pois chiches conserve,180g,f,,,,,,
+1158,10,S3,🥫 Conserves & épicerie,Passata,130g,f,,,,,,
+1159,10,S3,🥫 Conserves & épicerie,Guacamole,55g,f,,,,,,
+1160,10,S3,🥫 Conserves & épicerie,Moutarde,47g,f,,,,,,
+1161,10,S3,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1162,10,S3,🥫 Conserves & épicerie,Gingembre,9g,f,,,,,,
+1163,10,S3,🥫 Conserves & épicerie,Cumin,5g,f,,,,,,
+1164,10,S3,🥫 Conserves & épicerie,Paprika,3.5g,f,,,,,,
+1165,10,S3,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1166,10,S3,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1167,10,S3,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1168,10,S3,🍎 Fruits & oléagineux,Pommes,450g,f,,,,,,
+1169,10,S3,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1170,10,S3,🍎 Fruits & oléagineux,Clémentines,280g,f,,,,,,
+1171,10,S3,🍎 Fruits & oléagineux,Kiwis,200g,f,,,,,,
+1172,11,S1,🥩 Viandes & Poissons,Saucisses de porc,400g,f,,,,,,
+1173,11,S1,🥩 Viandes & Poissons,Cuisses de poulet,600g,f,,,,,,
+1174,11,S1,🥩 Viandes & Poissons,Filet de poulet,540g,f,,,,,,
+1175,11,S1,🥩 Viandes & Poissons,Saumon,360g (200+160),f,,,,,,
+1176,11,S1,🥩 Viandes & Poissons,Steak haché 5%,560g,f,,,,,,
+1177,11,S1,🥩 Viandes & Poissons,Jambon,280g,f,,,,,,
+1178,11,S1,🥩 Viandes & Poissons,Lardons dinde,280g,f,,,,,,
+1179,11,S1,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1180,11,S1,🥛 Produits laitiers,Emmental,75g,f,,,,,,
+1181,11,S1,🥛 Produits laitiers,Cheddar,45g,f,,,,,,
+1182,11,S1,🥛 Produits laitiers,Parmesan,40g,f,,,,,,
+1183,11,S1,🥛 Produits laitiers,Gruyère,40g,f,,,,,,
+1184,11,S1,🥛 Produits laitiers,Beurre,30g,f,,,,,,
+1185,11,S1,🥛 Produits laitiers,Lait,80ml,f,,,,,,
+1186,11,S1,🥔 Féculents,Riz,440g cuit,f,,,,,,
+1187,11,S1,🥔 Féculents,Semoule,370g cuite,f,,,,,,
+1188,11,S1,🥔 Féculents,Pâtes,200g cuites,f,,,,,,
+1189,11,S1,🥔 Féculents,PDT,1.2kg,f,,,,,,
+1190,11,S1,🥔 Féculents,Grenaille,600g,f,,,,,,
+1191,11,S1,🥔 Féculents,Pain complet,350g,f,,,,,,
+1192,11,S1,🥔 Féculents,Pain burger,150g,f,,,,,,
+1193,11,S1,🥬 Légumes de saison,Poivrons conserve,300g,f,,,,,,
+1194,11,S1,🥬 Légumes de saison,Oignon,450g,f,,,,,,
+1195,11,S1,🥬 Légumes de saison,Carottes,180g,f,,,,,,
+1196,11,S1,🥬 Légumes de saison,Brocoli,440g,f,,,,,,
+1197,11,S1,🥬 Légumes de saison,Endives,450g (7),f,,,,,,
+1198,11,S1,🥬 Légumes de saison,Mâche,160g,f,,,,,,
+1199,11,S1,🥬 Légumes de saison,Haricots verts,540g,f,,,,,,
+1200,11,S1,🥬 Légumes de saison,Salade verte,200g,f,,,,,,
+1201,11,S1,🥬 Légumes de saison,Tomates cerise,90g,f,,,,,,
+1202,11,S1,🥬 Légumes de saison,Lentilles vertes,250g sèches,f,,,,,,
+1203,11,S1,🥬 Légumes de saison,Lentilles cuites,200g,f,,,,,,
+1204,11,S1,🥫 Conserves & épicerie,Passata,950g,f,,,,,,
+1205,11,S1,🥫 Conserves & épicerie,Concentré tomate,20g,f,,,,,,
+1206,11,S1,🥫 Conserves & épicerie,Gingembre frais,15g,f,,,,,,
+1207,11,S1,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1208,11,S1,🥫 Conserves & épicerie,Miel,22g,f,,,,,,
+1209,11,S1,🥫 Conserves & épicerie,Moutarde,18g,f,,,,,,
+1210,11,S1,🥫 Conserves & épicerie,Cornichons,35g,f,,,,,,
+1211,11,S1,🥫 Conserves & épicerie,Ketchup,18g,f,,,,,,
+1212,11,S1,🥫 Conserves & épicerie,Cumin,5g,f,,,,,,
+1213,11,S1,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1214,11,S1,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1215,11,S1,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1216,11,S1,🍎 Fruits & oléagineux,Pommes,300g,f,,,,,,
+1217,11,S1,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1218,11,S1,🍎 Fruits & oléagineux,Kiwis,200g,f,,,,,,
+1219,11,S1,🍎 Fruits & oléagineux,Clémentines,280g,f,,,,,,
+1220,11,S1,🍎 Fruits & oléagineux,Oranges,180g,f,,,,,,
+1221,11,S2,🥩 Viandes & Poissons,Bœuf haché 5%,860g,f,,,,,,
+1222,11,S2,🥩 Viandes & Poissons,Filet de porc,370g,f,,,,,,
+1223,11,S2,🥩 Viandes & Poissons,Cabillaud,370g,f,,,,,,
+1224,11,S2,🥩 Viandes & Poissons,Filet de poulet,990g,f,,,,,,
+1225,11,S2,🥩 Viandes & Poissons,Jambon,205g,f,,,,,,
+1226,11,S2,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f,,,,,,
+1227,11,S2,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1228,11,S2,🥛 Produits laitiers,Emmental,35g,f,,,,,,
+1229,11,S2,🥛 Produits laitiers,Parmesan,62g,f,,,,,,
+1230,11,S2,🥛 Produits laitiers,Gruyère,65g,f,,,,,,
+1231,11,S2,🥛 Produits laitiers,Crème 15%,125g,f,,,,,,
+1232,11,S2,🥛 Produits laitiers,Beurre,30g,f,,,,,,
+1233,11,S2,🥛 Produits laitiers,Lait coco,100g,f,,,,,,
+1234,11,S2,🥛 Produits laitiers,Lait,140ml,f,,,,,,
+1235,11,S2,🥔 Féculents,Pâtes complètes,400g cuites,f,,,,,,
+1236,11,S2,🥔 Féculents,PDT,740g,f,,,,,,
+1237,11,S2,🥔 Féculents,Riz,640g cuit,f,,,,,,
+1238,11,S2,🥔 Féculents,Frites four,400g,f,,,,,,
+1239,11,S2,🥔 Féculents,Naan,150g,f,,,,,,
+1240,11,S2,🥔 Féculents,Pâtes,340g cuites,f,,,,,,
+1241,11,S2,🥔 Féculents,Polenta,360g cuite,f,,,,,,
+1242,11,S2,🥔 Féculents,Pain complet,300g,f,,,,,,
+1243,11,S2,🥔 Féculents,Farine,55g,f,,,,,,
+1244,11,S2,🥬 Légumes de saison,Carottes,330g,f,,,,,,
+1245,11,S2,🥬 Légumes de saison,Champignons,300g,f,,,,,,
+1246,11,S2,🥬 Légumes de saison,Poireaux,270g,f,,,,,,
+1247,11,S2,🥬 Légumes de saison,Betteraves,180g,f,,,,,,
+1248,11,S2,🥬 Légumes de saison,Mâche,140g,f,,,,,,
+1249,11,S2,🥬 Légumes de saison,Brocoli,270g,f,,,,,,
+1250,11,S2,🥬 Légumes de saison,Chou-fleur,370g,f,,,,,,
+1251,11,S2,🥬 Légumes de saison,Oignon,350g,f,,,,,,
+1252,11,S2,🥬 Légumes de saison,Salade verte,200g,f,,,,,,
+1253,11,S2,🥬 Légumes de saison,Lentilles vertes,130g sèches,f,,,,,,
+1254,11,S2,🥬 Légumes de saison,Haricots verts,140g,f,,,,,,
+1255,11,S2,🥬 Légumes de saison,Olives,25g,f,,,,,,
+1256,11,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f,,,,,,
+1257,11,S2,🥬 Légumes de saison,Petits pois,80g,f,,,,,,
+1258,11,S2,🥫 Conserves & épicerie,Passata,470g,f,,,,,,
+1259,11,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f,,,,,,
+1260,11,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1261,11,S2,🥫 Conserves & épicerie,Miel,11g,f,,,,,,
+1262,11,S2,🥫 Conserves & épicerie,Gingembre,9g,f,,,,,,
+1263,11,S2,🥫 Conserves & épicerie,Moutarde,15g,f,,,,,,
+1264,11,S2,🥫 Conserves & épicerie,Curry,10g,f,,,,,,
+1265,11,S2,🥫 Conserves & épicerie,Chapelure,34g,f,,,,,,
+1266,11,S2,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1267,11,S2,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1268,11,S2,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1269,11,S2,🍎 Fruits & oléagineux,Pommes,450g,f,,,,,,
+1270,11,S2,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1271,11,S2,🍎 Fruits & oléagineux,Kiwis,100g,f,,,,,,
+1272,11,S2,🍎 Fruits & oléagineux,Oranges,180g,f,,,,,,
+1273,11,S2,🍎 Fruits & oléagineux,Clémentines,140g,f,,,,,,
+1274,11,S3,🥩 Viandes & Poissons,Filet de poulet,730g,f,,,,,,
+1275,11,S3,🥩 Viandes & Poissons,Saumon,360g,f,,,,,,
+1276,11,S3,🥩 Viandes & Poissons,Filet de dinde,370g,f,,,,,,
+1277,11,S3,🥩 Viandes & Poissons,Jambon,320g,f,,,,,,
+1278,11,S3,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f,,,,,,
+1279,11,S3,🥩 Viandes & Poissons,Filet de porc,550g,f,,,,,,
+1280,11,S3,🥩 Viandes & Poissons,Lardon fumé,45g,f,,,,,,
+1281,11,S3,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1282,11,S3,🥛 Produits laitiers,Emmental,85g,f,,,,,,
+1283,11,S3,🥛 Produits laitiers,Gruyère,45g,f,,,,,,
+1284,11,S3,🥛 Produits laitiers,Mozzarella,115g,f,,,,,,
+1285,11,S3,🥛 Produits laitiers,Parmesan,14g,f,,,,,,
+1286,11,S3,🥛 Produits laitiers,Crème 15%,135g,f,,,,,,
+1287,11,S3,🥛 Produits laitiers,Beurre,40g,f,,,,,,
+1288,11,S3,🥛 Produits laitiers,Lait,140ml,f,,,,,,
+1289,11,S3,🥔 Féculents,Riz,620g cuit,f,,,,,,
+1290,11,S3,🥔 Féculents,Pâtes,380g cuites,f,,,,,,
+1291,11,S3,🥔 Féculents,Pâtes complètes,580g cuites,f,,,,,,
+1292,11,S3,🥔 Féculents,PDT,620g,f,,,,,,
+1293,11,S3,🥔 Féculents,Semoule,380g cuite,f,,,,,,
+1294,11,S3,🥔 Féculents,Tortilla wrap,175g,f,,,,,,
+1295,11,S3,🥔 Féculents,Pain complet,300g,f,,,,,,
+1296,11,S3,🥔 Féculents,Farine,80g,f,,,,,,
+1297,11,S3,🥔 Féculents,Pâte brisée,130g,f,,,,,,
+1298,11,S3,🥬 Légumes de saison,Brocoli,280g,f,,,,,,
+1299,11,S3,🥬 Légumes de saison,Poireaux,540g,f,,,,,,
+1300,11,S3,🥬 Légumes de saison,Navets,220g,f,,,,,,
+1301,11,S3,🥬 Légumes de saison,Haricots verts,440g,f,,,,,,
+1302,11,S3,🥬 Légumes de saison,Champignons,360g,f,,,,,,
+1303,11,S3,🥬 Légumes de saison,Mâche,140g,f,,,,,,
+1304,11,S3,🥬 Légumes de saison,Carottes,230g,f,,,,,,
+1305,11,S3,🥬 Légumes de saison,Chou vert,140g,f,,,,,,
+1306,11,S3,🥬 Légumes de saison,Salade verte,320g,f,,,,,,
+1307,11,S3,🥬 Légumes de saison,Oignon,190g,f,,,,,,
+1308,11,S3,🥬 Légumes de saison,Lentilles cuites,430g,f,,,,,,
+1309,11,S3,🥬 Légumes de saison,Pois chiches conserve,180g,f,,,,,,
+1310,11,S3,🥫 Conserves & épicerie,Passata,130g,f,,,,,,
+1311,11,S3,🥫 Conserves & épicerie,Guacamole,55g,f,,,,,,
+1312,11,S3,🥫 Conserves & épicerie,Moutarde,47g,f,,,,,,
+1313,11,S3,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1314,11,S3,🥫 Conserves & épicerie,Gingembre,9g,f,,,,,,
+1315,11,S3,🥫 Conserves & épicerie,Cumin,5g,f,,,,,,
+1316,11,S3,🥫 Conserves & épicerie,Paprika,3.5g,f,,,,,,
+1317,11,S3,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1318,11,S3,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1319,11,S3,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1320,11,S3,🍎 Fruits & oléagineux,Pommes,450g,f,,,,,,
+1321,11,S3,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1322,11,S3,🍎 Fruits & oléagineux,Clémentines,280g,f,,,,,,
+1323,11,S3,🍎 Fruits & oléagineux,Kiwis,200g,f,,,,,,
+1324,12,S1,🥩 Viandes & Poissons,Saucisses de porc,400g,f,,,,,,
+1325,12,S1,🥩 Viandes & Poissons,Cuisses de poulet,600g,f,,,,,,
+1326,12,S1,🥩 Viandes & Poissons,Filet de poulet,540g,f,,,,,,
+1327,12,S1,🥩 Viandes & Poissons,Saumon,360g (200+160),f,,,,,,
+1328,12,S1,🥩 Viandes & Poissons,Steak haché 5%,560g,f,,,,,,
+1329,12,S1,🥩 Viandes & Poissons,Jambon,280g,f,,,,,,
+1330,12,S1,🥩 Viandes & Poissons,Lardons dinde,280g,f,,,,,,
+1331,12,S1,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1332,12,S1,🥛 Produits laitiers,Emmental,75g,f,,,,,,
+1333,12,S1,🥛 Produits laitiers,Cheddar,45g,f,,,,,,
+1334,12,S1,🥛 Produits laitiers,Parmesan,40g,f,,,,,,
+1335,12,S1,🥛 Produits laitiers,Gruyère,40g,f,,,,,,
+1336,12,S1,🥛 Produits laitiers,Beurre,30g,f,,,,,,
+1337,12,S1,🥛 Produits laitiers,Lait,80ml,f,,,,,,
+1338,12,S1,🥔 Féculents,Riz,440g cuit,f,,,,,,
+1339,12,S1,🥔 Féculents,Semoule,370g cuite,f,,,,,,
+1340,12,S1,🥔 Féculents,Pâtes,200g cuites,f,,,,,,
+1341,12,S1,🥔 Féculents,PDT,1.2kg,f,,,,,,
+1342,12,S1,🥔 Féculents,Grenaille,600g,f,,,,,,
+1343,12,S1,🥔 Féculents,Pain complet,350g,f,,,,,,
+1344,12,S1,🥔 Féculents,Pain burger,150g,f,,,,,,
+1345,12,S1,🥬 Légumes de saison,Poivrons conserve,300g,f,,,,,,
+1346,12,S1,🥬 Légumes de saison,Oignon,450g,f,,,,,,
+1347,12,S1,🥬 Légumes de saison,Carottes,180g,f,,,,,,
+1348,12,S1,🥬 Légumes de saison,Brocoli,440g,f,,,,,,
+1349,12,S1,🥬 Légumes de saison,Endives,450g (7),f,,,,,,
+1350,12,S1,🥬 Légumes de saison,Mâche,160g,f,,,,,,
+1351,12,S1,🥬 Légumes de saison,Haricots verts,540g,f,,,,,,
+1352,12,S1,🥬 Légumes de saison,Salade verte,200g,f,,,,,,
+1353,12,S1,🥬 Légumes de saison,Tomates cerise,90g,f,,,,,,
+1354,12,S1,🥬 Légumes de saison,Lentilles vertes,250g sèches,f,,,,,,
+1355,12,S1,🥬 Légumes de saison,Lentilles cuites,200g,f,,,,,,
+1356,12,S1,🥫 Conserves & épicerie,Passata,950g,f,,,,,,
+1357,12,S1,🥫 Conserves & épicerie,Concentré tomate,20g,f,,,,,,
+1358,12,S1,🥫 Conserves & épicerie,Gingembre frais,15g,f,,,,,,
+1359,12,S1,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1360,12,S1,🥫 Conserves & épicerie,Miel,22g,f,,,,,,
+1361,12,S1,🥫 Conserves & épicerie,Moutarde,18g,f,,,,,,
+1362,12,S1,🥫 Conserves & épicerie,Cornichons,35g,f,,,,,,
+1363,12,S1,🥫 Conserves & épicerie,Ketchup,18g,f,,,,,,
+1364,12,S1,🥫 Conserves & épicerie,Cumin,5g,f,,,,,,
+1365,12,S1,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1366,12,S1,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1367,12,S1,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1368,12,S1,🍎 Fruits & oléagineux,Pommes,300g,f,,,,,,
+1369,12,S1,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1370,12,S1,🍎 Fruits & oléagineux,Kiwis,200g,f,,,,,,
+1371,12,S1,🍎 Fruits & oléagineux,Clémentines,280g,f,,,,,,
+1372,12,S1,🍎 Fruits & oléagineux,Oranges,180g,f,,,,,,
+1373,12,S2,🥩 Viandes & Poissons,Bœuf haché 5%,860g,f,,,,,,
+1374,12,S2,🥩 Viandes & Poissons,Filet de porc,370g,f,,,,,,
+1375,12,S2,🥩 Viandes & Poissons,Cabillaud,370g,f,,,,,,
+1376,12,S2,🥩 Viandes & Poissons,Filet de poulet,990g,f,,,,,,
+1377,12,S2,🥩 Viandes & Poissons,Jambon,205g,f,,,,,,
+1378,12,S2,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f,,,,,,
+1379,12,S2,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1380,12,S2,🥛 Produits laitiers,Emmental,35g,f,,,,,,
+1381,12,S2,🥛 Produits laitiers,Parmesan,62g,f,,,,,,
+1382,12,S2,🥛 Produits laitiers,Gruyère,65g,f,,,,,,
+1383,12,S2,🥛 Produits laitiers,Crème 15%,125g,f,,,,,,
+1384,12,S2,🥛 Produits laitiers,Beurre,30g,f,,,,,,
+1385,12,S2,🥛 Produits laitiers,Lait coco,100g,f,,,,,,
+1386,12,S2,🥛 Produits laitiers,Lait,140ml,f,,,,,,
+1387,12,S2,🥔 Féculents,Pâtes complètes,400g cuites,f,,,,,,
+1388,12,S2,🥔 Féculents,PDT,740g,f,,,,,,
+1389,12,S2,🥔 Féculents,Riz,640g cuit,f,,,,,,
+1390,12,S2,🥔 Féculents,Frites four,400g,f,,,,,,
+1391,12,S2,🥔 Féculents,Naan,150g,f,,,,,,
+1392,12,S2,🥔 Féculents,Pâtes,340g cuites,f,,,,,,
+1393,12,S2,🥔 Féculents,Polenta,360g cuite,f,,,,,,
+1394,12,S2,🥔 Féculents,Pain complet,300g,f,,,,,,
+1395,12,S2,🥔 Féculents,Farine,55g,f,,,,,,
+1396,12,S2,🥬 Légumes de saison,Carottes,330g,f,,,,,,
+1397,12,S2,🥬 Légumes de saison,Champignons,300g,f,,,,,,
+1398,12,S2,🥬 Légumes de saison,Poireaux,270g,f,,,,,,
+1399,12,S2,🥬 Légumes de saison,Betteraves,180g,f,,,,,,
+1400,12,S2,🥬 Légumes de saison,Mâche,140g,f,,,,,,
+1401,12,S2,🥬 Légumes de saison,Brocoli,270g,f,,,,,,
+1402,12,S2,🥬 Légumes de saison,Chou-fleur,370g,f,,,,,,
+1403,12,S2,🥬 Légumes de saison,Oignon,350g,f,,,,,,
+1404,12,S2,🥬 Légumes de saison,Salade verte,200g,f,,,,,,
+1405,12,S2,🥬 Légumes de saison,Lentilles vertes,130g sèches,f,,,,,,
+1406,12,S2,🥬 Légumes de saison,Haricots verts,140g,f,,,,,,
+1407,12,S2,🥬 Légumes de saison,Olives,25g,f,,,,,,
+1408,12,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f,,,,,,
+1409,12,S2,🥬 Légumes de saison,Petits pois,80g,f,,,,,,
+1410,12,S2,🥫 Conserves & épicerie,Passata,470g,f,,,,,,
+1411,12,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f,,,,,,
+1412,12,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1413,12,S2,🥫 Conserves & épicerie,Miel,11g,f,,,,,,
+1414,12,S2,🥫 Conserves & épicerie,Gingembre,9g,f,,,,,,
+1415,12,S2,🥫 Conserves & épicerie,Moutarde,15g,f,,,,,,
+1416,12,S2,🥫 Conserves & épicerie,Curry,10g,f,,,,,,
+1417,12,S2,🥫 Conserves & épicerie,Chapelure,34g,f,,,,,,
+1418,12,S2,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1419,12,S2,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1420,12,S2,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1421,12,S2,🍎 Fruits & oléagineux,Pommes,450g,f,,,,,,
+1422,12,S2,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1423,12,S2,🍎 Fruits & oléagineux,Kiwis,100g,f,,,,,,
+1424,12,S2,🍎 Fruits & oléagineux,Oranges,180g,f,,,,,,
+1425,12,S2,🍎 Fruits & oléagineux,Clémentines,140g,f,,,,,,
+1426,12,S3,🥩 Viandes & Poissons,Filet de poulet,730g,f,,,,,,
+1427,12,S3,🥩 Viandes & Poissons,Saumon,360g,f,,,,,,
+1428,12,S3,🥩 Viandes & Poissons,Filet de dinde,370g,f,,,,,,
+1429,12,S3,🥩 Viandes & Poissons,Jambon,320g,f,,,,,,
+1430,12,S3,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f,,,,,,
+1431,12,S3,🥩 Viandes & Poissons,Filet de porc,550g,f,,,,,,
+1432,12,S3,🥩 Viandes & Poissons,Lardon fumé,45g,f,,,,,,
+1433,12,S3,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1434,12,S3,🥛 Produits laitiers,Emmental,85g,f,,,,,,
+1435,12,S3,🥛 Produits laitiers,Gruyère,45g,f,,,,,,
+1436,12,S3,🥛 Produits laitiers,Mozzarella,115g,f,,,,,,
+1437,12,S3,🥛 Produits laitiers,Parmesan,14g,f,,,,,,
+1438,12,S3,🥛 Produits laitiers,Crème 15%,135g,f,,,,,,
+1439,12,S3,🥛 Produits laitiers,Beurre,40g,f,,,,,,
+1440,12,S3,🥛 Produits laitiers,Lait,140ml,f,,,,,,
+1441,12,S3,🥔 Féculents,Riz,620g cuit,f,,,,,,
+1442,12,S3,🥔 Féculents,Pâtes,380g cuites,f,,,,,,
+1443,12,S3,🥔 Féculents,Pâtes complètes,580g cuites,f,,,,,,
+1444,12,S3,🥔 Féculents,PDT,620g,f,,,,,,
+1445,12,S3,🥔 Féculents,Semoule,380g cuite,f,,,,,,
+1446,12,S3,🥔 Féculents,Tortilla wrap,175g,f,,,,,,
+1447,12,S3,🥔 Féculents,Pain complet,300g,f,,,,,,
+1448,12,S3,🥔 Féculents,Farine,80g,f,,,,,,
+1449,12,S3,🥔 Féculents,Pâte brisée,130g,f,,,,,,
+1450,12,S3,🥬 Légumes de saison,Brocoli,280g,f,,,,,,
+1451,12,S3,🥬 Légumes de saison,Poireaux,540g,f,,,,,,
+1452,12,S3,🥬 Légumes de saison,Navets,220g,f,,,,,,
+1453,12,S3,🥬 Légumes de saison,Haricots verts,440g,f,,,,,,
+1454,12,S3,🥬 Légumes de saison,Champignons,360g,f,,,,,,
+1455,12,S3,🥬 Légumes de saison,Mâche,140g,f,,,,,,
+1456,12,S3,🥬 Légumes de saison,Carottes,230g,f,,,,,,
+1457,12,S3,🥬 Légumes de saison,Chou vert,140g,f,,,,,,
+1458,12,S3,🥬 Légumes de saison,Salade verte,320g,f,,,,,,
+1459,12,S3,🥬 Légumes de saison,Oignon,190g,f,,,,,,
+1460,12,S3,🥬 Légumes de saison,Lentilles cuites,430g,f,,,,,,
+1461,12,S3,🥬 Légumes de saison,Pois chiches conserve,180g,f,,,,,,
+1462,12,S3,🥫 Conserves & épicerie,Passata,130g,f,,,,,,
+1463,12,S3,🥫 Conserves & épicerie,Guacamole,55g,f,,,,,,
+1464,12,S3,🥫 Conserves & épicerie,Moutarde,47g,f,,,,,,
+1465,12,S3,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1466,12,S3,🥫 Conserves & épicerie,Gingembre,9g,f,,,,,,
+1467,12,S3,🥫 Conserves & épicerie,Cumin,5g,f,,,,,,
+1468,12,S3,🥫 Conserves & épicerie,Paprika,3.5g,f,,,,,,
+1469,12,S3,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1470,12,S3,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1471,12,S3,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1472,12,S3,🍎 Fruits & oléagineux,Pommes,450g,f,,,,,,
+1473,12,S3,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1474,12,S3,🍎 Fruits & oléagineux,Clémentines,280g,f,,,,,,
+1475,12,S3,🍎 Fruits & oléagineux,Kiwis,200g,f,,,,,,
+1476,13,S1,🥩 Viandes & Poissons,Saucisses de porc,400g,f,,,,,,
+1477,13,S1,🥩 Viandes & Poissons,Cuisses de poulet,600g,f,,,,,,
+1478,13,S1,🥩 Viandes & Poissons,Filet de poulet,540g,f,,,,,,
+1479,13,S1,🥩 Viandes & Poissons,Saumon,360g (200+160),f,,,,,,
+1480,13,S1,🥩 Viandes & Poissons,Steak haché 5%,560g,f,,,,,,
+1481,13,S1,🥩 Viandes & Poissons,Jambon,280g,f,,,,,,
+1482,13,S1,🥩 Viandes & Poissons,Lardons dinde,280g,f,,,,,,
+1483,13,S1,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1484,13,S1,🥛 Produits laitiers,Emmental,75g,f,,,,,,
+1485,13,S1,🥛 Produits laitiers,Cheddar,45g,f,,,,,,
+1486,13,S1,🥛 Produits laitiers,Parmesan,40g,f,,,,,,
+1487,13,S1,🥛 Produits laitiers,Gruyère,40g,f,,,,,,
+1488,13,S1,🥛 Produits laitiers,Beurre,30g,f,,,,,,
+1489,13,S1,🥛 Produits laitiers,Lait,80ml,f,,,,,,
+1490,13,S1,🥔 Féculents,Riz,440g cuit,f,,,,,,
+1491,13,S1,🥔 Féculents,Semoule,370g cuite,f,,,,,,
+1492,13,S1,🥔 Féculents,Pâtes,200g cuites,f,,,,,,
+1493,13,S1,🥔 Féculents,PDT,1.2kg,f,,,,,,
+1494,13,S1,🥔 Féculents,Grenaille,600g,f,,,,,,
+1495,13,S1,🥔 Féculents,Pain complet,350g,f,,,,,,
+1496,13,S1,🥔 Féculents,Pain burger,150g,f,,,,,,
+1497,13,S1,🥬 Légumes de saison,Poivrons conserve,300g,f,,,,,,
+1498,13,S1,🥬 Légumes de saison,Oignon,450g,f,,,,,,
+1499,13,S1,🥬 Légumes de saison,Carottes,180g,f,,,,,,
+1500,13,S1,🥬 Légumes de saison,Brocoli,440g,f,,,,,,
+1501,13,S1,🥬 Légumes de saison,Endives,450g (7),f,,,,,,
+1502,13,S1,🥬 Légumes de saison,Mâche,160g,f,,,,,,
+1503,13,S1,🥬 Légumes de saison,Haricots verts,540g,f,,,,,,
+1504,13,S1,🥬 Légumes de saison,Salade verte,200g,f,,,,,,
+1505,13,S1,🥬 Légumes de saison,Tomates cerise,90g,f,,,,,,
+1506,13,S1,🥬 Légumes de saison,Lentilles vertes,250g sèches,f,,,,,,
+1507,13,S1,🥬 Légumes de saison,Lentilles cuites,200g,f,,,,,,
+1508,13,S1,🥫 Conserves & épicerie,Passata,950g,f,,,,,,
+1509,13,S1,🥫 Conserves & épicerie,Concentré tomate,20g,f,,,,,,
+1510,13,S1,🥫 Conserves & épicerie,Gingembre frais,15g,f,,,,,,
+1511,13,S1,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1512,13,S1,🥫 Conserves & épicerie,Miel,22g,f,,,,,,
+1513,13,S1,🥫 Conserves & épicerie,Moutarde,18g,f,,,,,,
+1514,13,S1,🥫 Conserves & épicerie,Cornichons,35g,f,,,,,,
+1515,13,S1,🥫 Conserves & épicerie,Ketchup,18g,f,,,,,,
+1516,13,S1,🥫 Conserves & épicerie,Cumin,5g,f,,,,,,
+1517,13,S1,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1518,13,S1,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1519,13,S1,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1520,13,S1,🍎 Fruits & oléagineux,Pommes,300g,f,,,,,,
+1521,13,S1,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1522,13,S1,🍎 Fruits & oléagineux,Kiwis,200g,f,,,,,,
+1523,13,S1,🍎 Fruits & oléagineux,Clémentines,280g,f,,,,,,
+1524,13,S1,🍎 Fruits & oléagineux,Oranges,180g,f,,,,,,
+1525,13,S2,🥩 Viandes & Poissons,Bœuf haché 5%,860g,f,,,,,,
+1526,13,S2,🥩 Viandes & Poissons,Filet de porc,370g,f,,,,,,
+1527,13,S2,🥩 Viandes & Poissons,Cabillaud,370g,f,,,,,,
+1528,13,S2,🥩 Viandes & Poissons,Filet de poulet,990g,f,,,,,,
+1529,13,S2,🥩 Viandes & Poissons,Jambon,205g,f,,,,,,
+1530,13,S2,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f,,,,,,
+1531,13,S2,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1532,13,S2,🥛 Produits laitiers,Emmental,35g,f,,,,,,
+1533,13,S2,🥛 Produits laitiers,Parmesan,62g,f,,,,,,
+1534,13,S2,🥛 Produits laitiers,Gruyère,65g,f,,,,,,
+1535,13,S2,🥛 Produits laitiers,Crème 15%,125g,f,,,,,,
+1536,13,S2,🥛 Produits laitiers,Beurre,30g,f,,,,,,
+1537,13,S2,🥛 Produits laitiers,Lait coco,100g,f,,,,,,
+1538,13,S2,🥛 Produits laitiers,Lait,140ml,f,,,,,,
+1539,13,S2,🥔 Féculents,Pâtes complètes,400g cuites,f,,,,,,
+1540,13,S2,🥔 Féculents,PDT,740g,f,,,,,,
+1541,13,S2,🥔 Féculents,Riz,640g cuit,f,,,,,,
+1542,13,S2,🥔 Féculents,Frites four,400g,f,,,,,,
+1543,13,S2,🥔 Féculents,Naan,150g,f,,,,,,
+1544,13,S2,🥔 Féculents,Pâtes,340g cuites,f,,,,,,
+1545,13,S2,🥔 Féculents,Polenta,360g cuite,f,,,,,,
+1546,13,S2,🥔 Féculents,Pain complet,300g,f,,,,,,
+1547,13,S2,🥔 Féculents,Farine,55g,f,,,,,,
+1548,13,S2,🥬 Légumes de saison,Carottes,330g,f,,,,,,
+1549,13,S2,🥬 Légumes de saison,Champignons,300g,f,,,,,,
+1550,13,S2,🥬 Légumes de saison,Poireaux,270g,f,,,,,,
+1551,13,S2,🥬 Légumes de saison,Betteraves,180g,f,,,,,,
+1552,13,S2,🥬 Légumes de saison,Mâche,140g,f,,,,,,
+1553,13,S2,🥬 Légumes de saison,Brocoli,270g,f,,,,,,
+1554,13,S2,🥬 Légumes de saison,Chou-fleur,370g,f,,,,,,
+1555,13,S2,🥬 Légumes de saison,Oignon,350g,f,,,,,,
+1556,13,S2,🥬 Légumes de saison,Salade verte,200g,f,,,,,,
+1557,13,S2,🥬 Légumes de saison,Lentilles vertes,130g sèches,f,,,,,,
+1558,13,S2,🥬 Légumes de saison,Haricots verts,140g,f,,,,,,
+1559,13,S2,🥬 Légumes de saison,Olives,25g,f,,,,,,
+1560,13,S2,🥬 Légumes de saison,Pois chiches conserve,140g,f,,,,,,
+1561,13,S2,🥬 Légumes de saison,Petits pois,80g,f,,,,,,
+1657,14,S1,Fruits,Oranges,180g,f,,,,,,
+1562,13,S2,🥫 Conserves & épicerie,Passata,470g,f,,,,,,
+1563,13,S2,🥫 Conserves & épicerie,Concentré tomate,15g,f,,,,,,
+1564,13,S2,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1565,13,S2,🥫 Conserves & épicerie,Miel,11g,f,,,,,,
+1566,13,S2,🥫 Conserves & épicerie,Gingembre,9g,f,,,,,,
+1567,13,S2,🥫 Conserves & épicerie,Moutarde,15g,f,,,,,,
+1568,13,S2,🥫 Conserves & épicerie,Curry,10g,f,,,,,,
+1569,13,S2,🥫 Conserves & épicerie,Chapelure,34g,f,,,,,,
+1570,13,S2,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1571,13,S2,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1572,13,S2,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1573,13,S2,🍎 Fruits & oléagineux,Pommes,450g,f,,,,,,
+1574,13,S2,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1575,13,S2,🍎 Fruits & oléagineux,Kiwis,100g,f,,,,,,
+1576,13,S2,🍎 Fruits & oléagineux,Oranges,180g,f,,,,,,
+1577,13,S2,🍎 Fruits & oléagineux,Clémentines,140g,f,,,,,,
+1578,13,S3,🥩 Viandes & Poissons,Filet de poulet,730g,f,,,,,,
+1579,13,S3,🥩 Viandes & Poissons,Saumon,360g,f,,,,,,
+1580,13,S3,🥩 Viandes & Poissons,Filet de dinde,370g,f,,,,,,
+1581,13,S3,🥩 Viandes & Poissons,Jambon,320g,f,,,,,,
+1582,13,S3,🥩 Viandes & Poissons,Bœuf haché 5%,360g,f,,,,,,
+1583,13,S3,🥩 Viandes & Poissons,Filet de porc,550g,f,,,,,,
+1584,13,S3,🥩 Viandes & Poissons,Lardon fumé,45g,f,,,,,,
+1585,13,S3,🥛 Produits laitiers,Skyr,2kg,f,,,,,,
+1586,13,S3,🥛 Produits laitiers,Emmental,85g,f,,,,,,
+1587,13,S3,🥛 Produits laitiers,Gruyère,45g,f,,,,,,
+1588,13,S3,🥛 Produits laitiers,Mozzarella,115g,f,,,,,,
+1589,13,S3,🥛 Produits laitiers,Parmesan,14g,f,,,,,,
+1590,13,S3,🥛 Produits laitiers,Crème 15%,135g,f,,,,,,
+1591,13,S3,🥛 Produits laitiers,Beurre,40g,f,,,,,,
+1592,13,S3,🥛 Produits laitiers,Lait,140ml,f,,,,,,
+1593,13,S3,🥔 Féculents,Riz,620g cuit,f,,,,,,
+1594,13,S3,🥔 Féculents,Pâtes,380g cuites,f,,,,,,
+1595,13,S3,🥔 Féculents,Pâtes complètes,580g cuites,f,,,,,,
+1596,13,S3,🥔 Féculents,PDT,620g,f,,,,,,
+1597,13,S3,🥔 Féculents,Semoule,380g cuite,f,,,,,,
+1598,13,S3,🥔 Féculents,Tortilla wrap,175g,f,,,,,,
+1599,13,S3,🥔 Féculents,Pain complet,300g,f,,,,,,
+1600,13,S3,🥔 Féculents,Farine,80g,f,,,,,,
+1601,13,S3,🥔 Féculents,Pâte brisée,130g,f,,,,,,
+1602,13,S3,🥬 Légumes de saison,Brocoli,280g,f,,,,,,
+1603,13,S3,🥬 Légumes de saison,Poireaux,540g,f,,,,,,
+1604,13,S3,🥬 Légumes de saison,Navets,220g,f,,,,,,
+1605,13,S3,🥬 Légumes de saison,Haricots verts,440g,f,,,,,,
+1606,13,S3,🥬 Légumes de saison,Champignons,360g,f,,,,,,
+1607,13,S3,🥬 Légumes de saison,Mâche,140g,f,,,,,,
+1608,13,S3,🥬 Légumes de saison,Carottes,230g,f,,,,,,
+1609,13,S3,🥬 Légumes de saison,Chou vert,140g,f,,,,,,
+1610,13,S3,🥬 Légumes de saison,Salade verte,320g,f,,,,,,
+1611,13,S3,🥬 Légumes de saison,Oignon,190g,f,,,,,,
+1612,13,S3,🥬 Légumes de saison,Lentilles cuites,430g,f,,,,,,
+1613,13,S3,🥬 Légumes de saison,Pois chiches conserve,180g,f,,,,,,
+1614,13,S3,🥫 Conserves & épicerie,Passata,130g,f,,,,,,
+1615,13,S3,🥫 Conserves & épicerie,Guacamole,55g,f,,,,,,
+1616,13,S3,🥫 Conserves & épicerie,Moutarde,47g,f,,,,,,
+1617,13,S3,🥫 Conserves & épicerie,Sauce soja,22ml,f,,,,,,
+1618,13,S3,🥫 Conserves & épicerie,Gingembre,9g,f,,,,,,
+1619,13,S3,🥫 Conserves & épicerie,Cumin,5g,f,,,,,,
+1620,13,S3,🥫 Conserves & épicerie,Paprika,3.5g,f,,,,,,
+1621,13,S3,🍎 Fruits & oléagineux,Amandes,180g,f,,,,,,
+1622,13,S3,🍎 Fruits & oléagineux,Noix,20g,f,,,,,,
+1623,13,S3,🍎 Fruits & oléagineux,Beurre de cacahuète,20g,f,,,,,,
+1624,13,S3,🍎 Fruits & oléagineux,Pommes,450g,f,,,,,,
+1625,13,S3,🍎 Fruits & oléagineux,Poires,320g,f,,,,,,
+1626,13,S3,🍎 Fruits & oléagineux,Clémentines,280g,f,,,,,,
+1627,13,S3,🍎 Fruits & oléagineux,Kiwis,200g,f,,,,,,
+1628,14,S1,Protéines,Skyr nature,2.8kg,f,,,,,,
+1629,14,S1,Protéines,Œufs,30 pièces,f,,,,,,
+1630,14,S1,Protéines,Saucisses créoles,800g,f,,,,,,
+1631,14,S1,Protéines,Bœuf à braiser,960g,f,,,,,,
+1632,14,S1,Protéines,Escalopes de dinde,360g,f,,,,,,
+1633,14,S1,Protéines,Émincé de porc,330g,f,,,,,,
+1634,14,S1,Protéines,Pavés de saumon,360g,f,,,,,,
+1635,14,S1,Protéines,Filets de cabillaud,360g,f,,,,,,
+1636,14,S1,Protéines,Steaks hachés,270g,f,,,,,,
+1637,14,S1,Protéines,Lardons,140g,f,,,,,,
+1638,14,S1,Protéines,Jambon blanc,140g,f,,,,,,
+1639,14,S1,Protéines,Amandes,200g,f,,,,,,
+1640,14,S1,Protéines,Noix,30g,f,,,,,,
+1641,14,S1,Légumes,Asperges vertes,270g,f,,,,,,
+1642,14,S1,Légumes,Radis roses,220g,f,,,,,,
+1643,14,S1,Légumes,Petit pois frais/surgelés,320g,f,,,,,,
+1644,14,S1,Légumes,Artichauts,360g,f,,,,,,
+1645,14,S1,Légumes,Champignons de Paris,330g,f,,,,,,
+1646,14,S1,Légumes,Haricots verts,270g,f,,,,,,
+1647,14,S1,Légumes,Mâche,220g,f,,,,,,
+1648,14,S1,Légumes,Salade verte,1 pièce,f,,,,,,
+1649,14,S1,Légumes,Oignons,1kg,f,,,,,,
+1650,14,S1,Légumes,Ail,2 têtes,f,,,,,,
+1651,14,S1,Légumes,Gingembre,50g,f,,,,,,
+1652,14,S1,Légumes,Pommes de terre,2kg,f,,,,,,
+1653,14,S1,Légumes,Carottes,500g,f,,,,,,
+1654,14,S1,Fruits,Pommes,300g,f,,,,,,
+1655,14,S1,Fruits,Poires,150g,f,,,,,,
+1658,14,S1,Crémerie,Crème fraîche,200ml,f,,,,,,
+1659,14,S1,Crémerie,Lait,500ml,f,,,,,,
+1660,14,S1,Crémerie,Gruyère râpé,100g,f,,,,,,
+1661,14,S1,Crémerie,Parmesan,100g,f,,,,,,
+1662,14,S1,Crémerie,Cheddar,55g,f,,,,,,
+1663,14,S1,Crémerie,Beurre,250g,f,,,,,,
+1664,14,S1,Féculents,Riz basmati,1kg,f,,,,,,
+1665,14,S1,Féculents,Riz jasmin,500g,f,,,,,,
+1666,14,S1,Féculents,Pâtes,560g,f,,,,,,
+1667,14,S1,Féculents,Pain complet,1 pain,f,,,,,,
+1668,14,S1,Féculents,Pain burger,4 pains,f,,,,,,
+1669,14,S1,Conserves,Haricots rouges,2 boîtes 400g,f,,,,,,
+1670,14,S1,Conserves,Pois chiches,2 boîtes 400g,f,,,,,,
+1671,14,S1,Conserves,Passata,800ml,f,,,,,,
+1672,14,S1,Conserves,Lait de coco,400ml,f,,,,,,
+1673,14,S1,Conserves,Tomates concassées,400g,f,,,,,,
+1674,14,S1,Conserves,Olives noires,100g,f,,,,,,
+1675,14,S1,Condiments/Épicerie,Huile d'olive,500ml,f,,,,,,
+1676,14,S1,Condiments/Épicerie,Beurre de cacahuète,30g,f,,,,,,
+1677,14,S1,Condiments/Épicerie,Miel,50g,f,,,,,,
+1678,14,S1,Condiments/Épicerie,Sauce soja,200ml,f,,,,,,
+1679,14,S1,Condiments/Épicerie,Nuoc-mam,100ml,f,,,,,,
+1680,14,S1,Condiments/Épicerie,Épices créoles,mélange,f,,,,,,
+1681,14,S1,Condiments/Épicerie,Curcuma,poudre,f,,,,,,
+1682,14,S1,Condiments/Épicerie,Farine,500g,f,,,,,,
+1683,14,S1,Condiments/Épicerie,Herbes fraîches,"persil, ciboulette",f,,,,,,
+1684,15,S1,Protéines,Skyr nature,3.5kg,f,,,,,,
+1685,15,S1,Protéines,Œufs,30 unités,f,,,,,,
+1686,15,S1,Protéines,Poulet fermier,600g,f,,,,,,
+1687,15,S1,Protéines,Escalope dinde,320g,f,,,,,,
+1688,15,S1,Protéines,Pavé saumon,350g,f,,,,,,
+1689,15,S1,Protéines,Émincé bœuf,500g,f,,,,,,
+1690,15,S1,Protéines,Côte porc,320g,f,,,,,,
+1691,15,S1,Protéines,Émincé porc,500g,f,,,,,,
+1692,15,S1,Protéines,Filet cabillaud,360g,f,,,,,,
+1693,15,S1,Protéines,Jambon blanc,200g,f,,,,,,
+1694,15,S1,Protéines,Gigot agneau,320g,f,,,,,,
+1695,15,S1,Protéines,Amandes,200g,f,,,,,,
+1696,15,S1,Protéines,Noix,100g,f,,,,,,
+1697,15,S1,Légumes,Asperges,270g,f,,,,,,
+1698,15,S1,Légumes,Poivrons,400g,f,,,,,,
+1699,15,S1,Légumes,Radis,210g,f,,,,,,
+1700,15,S1,Légumes,Petits pois surgelés,300g,f,,,,,,
+1701,15,S1,Légumes,Cœurs artichauts conserve,2 boîtes,f,,,,,,
+1702,15,S1,Légumes,Champignons Paris,400g,f,,,,,,
+1703,15,S1,Légumes,Épinards frais,500g,f,,,,,,
+1704,15,S1,Légumes,Carottes nouvelles,270g,f,,,,,,
+1705,15,S1,Légumes,Salade verte,2 pièces,f,,,,,,
+1706,15,S1,Légumes,Haricots verts,220g,f,,,,,,
+1707,15,S1,Légumes,Oignons,1kg,f,,,,,,
+1708,15,S1,Fruits,Pommes,500g,f,,,,,,
+1709,15,S1,Fruits,Fraises,300g,f,,,,,,
+1710,15,S1,Fruits,Poires,300g,f,,,,,,
+1711,15,S1,Fruits,Kiwis,200g,f,,,,,,
+1712,15,S1,Fruits,Oranges,400g,f,,,,,,
+1713,15,S1,Crémerie,Gruyère râpé,300g,f,,,,,,
+1714,15,S1,Crémerie,Crème fraîche,50cl,f,,,,,,
+1715,15,S1,Crémerie,Lait,1L,f,,,,,,
+1716,15,S1,Crémerie,Beurre,500g,f,,,,,,
+1717,15,S1,Féculents,Pommes de terre,2kg,f,,,,,,
+1718,15,S1,Féculents,PDT grenaille,500g,f,,,,,,
+1719,15,S1,Féculents,Riz basmati,1kg,f,,,,,,
+1720,15,S1,Féculents,Semoule,500g,f,,,,,,
+1721,15,S1,Féculents,Pain de mie,1 paquet,f,,,,,,
+1722,15,S1,Féculents,Pain complet,400g,f,,,,,,
+1723,15,S1,Féculents,Farine sarrasin,500g,f,,,,,,
+1724,15,S1,Épicerie,Huile olive,50cl,f,,,,,,
+1725,15,S1,Épicerie,Passata tomate,1kg,f,,,,,,
+1726,15,S1,Épicerie,Lait coco,400ml,f,,,,,,
+1727,15,S1,Épicerie,Moutarde,1 pot,f,,,,,,
+1728,15,S1,Épicerie,Beurre cacahuète,500g,f,,,,,,
+1729,15,S1,Condiments,"Sel, poivre",selon besoin,f,,,,,,
+1730,15,S1,Condiments,Herbes Provence,1 pot,f,,,,,,
+1731,15,S1,Condiments,Curry poudre,1 pot,f,,,,,,
+1732,15,S1,Condiments,Ail,1 tête,f,,,,,,
+1733,15,S1,Condiments,Romarin,frais,f,,,,,,
+1734,16,S1,Épicerie,Épaule d'agneau,705 g,f,,,,,,
+1735,16,S1,Féculents,Pommes de terre nouvelles,890 g,f,,,,,,
+1736,16,S1,Épicerie,Artichauts,300 g,f,,,,,,
+1737,16,S1,Légumes,Carottes nouvelles,600 g,f,,,,,,
+1738,16,S1,Légumes,Oignon jaune,580 g,f,,,,,,
+1739,16,S1,Épicerie,Ail,77 g,f,,,,,,
+1740,16,S1,Légumes,Tomates concassées,600 g,f,,,,,,
+1741,16,S1,Épicerie,Olives vertes,140 g,f,,,,,,
+1742,16,S1,Épicerie,Bouillon de bœuf,1500 ml,f,,,,,,
+1743,16,S1,Épicerie,Huile d'olive,320 ml,f,,,,,,
+1744,16,S1,Épicerie,Gingembre frais,10 g,f,,,,,,
+1745,16,S1,Épicerie,Cumin moulu,12 g,f,,,,,,
+1746,16,S1,Épicerie,Coriandre moulue,5 g,f,,,,,,
+1747,16,S1,Épicerie,Cannelle,3 g,f,,,,,,
+1748,16,S1,Épicerie,Paprika doux,15 g,f,,,,,,
+1749,16,S1,Épicerie,Safran,0 g,f,,,,,,
+1750,16,S1,Épicerie,Sel,51 g,f,,,,,,
+1751,16,S1,Épicerie,Poivre noir,19 g,f,,,,,,
+1752,16,S1,Épicerie,Citron,102 g,f,,,,,,
+1753,16,S1,Épicerie,Coriandre fraîche,30 g,f,,,,,,
+1754,16,S1,Protéines,Pavé de saumon,350 g,f,,,,,,
+1755,16,S1,Légumes,Asperges vertes,270 g,f,,,,,,
+1756,16,S1,Crémerie,Beurre,145 g,f,,,,,,
+1757,16,S1,Épicerie,Persil plat,30 g,f,,,,,,
+1758,16,S1,Épicerie,Sel fin,10 g,f,,,,,,
+1759,16,S1,Féculents,Riz basmati,860 g,f,,,,,,
+1760,16,S1,Légumes,Courgettes,300 g,f,,,,,,
+1761,16,S1,Épicerie,Cœurs d'artichaut,200 g,f,,,,,,
+1762,16,S1,Légumes,Tomates,1150 g,f,,,,,,
+1763,16,S1,Légumes,Oignon,151 g,f,,,,,,
+1764,16,S1,Épicerie,Bouillon de légumes,450 ml,f,,,,,,
+1765,16,S1,Épicerie,Gingembre moulu,1 g,f,,,,,,
+1766,16,S1,Protéines,Escalope de dinde,320 g,f,,,,,,
+1767,16,S1,Légumes,Carottes,220 g,f,,,,,,
+1768,16,S1,Légumes,Champignons de Paris,200 g,f,,,,,,
+1769,16,S1,Crémerie,Crème fraîche épaisse,200 ml,f,,,,,,
+1770,16,S1,Épicerie,Bouillon de volaille,800 ml,f,,,,,,
+1771,16,S1,Épicerie,Farine,20 g,f,,,,,,
+1772,16,S1,Épicerie,Vin blanc sec,260 ml,f,,,,,,
+1773,16,S1,Épicerie,Thym frais,12 branches,f,,,,,,
+1774,16,S1,Épicerie,Laurier,8 feuilles,f,,,,,,
+1775,16,S1,Épicerie,Bœuf à mijoter (paleron ou joue),315 g,f,,,,,,
+1776,16,S1,Épicerie,Aubergines,680 g,f,,,,,,
+1777,16,S1,Féculents,Pommes de terre,2000 g,f,,,,,,
+1778,16,S1,Légumes,Tomates pelées en dés,400 g,f,,,,,,
+1779,16,S1,Légumes,Oignons,320 g,f,,,,,,
+1780,16,S1,Légumes,Concentré de tomates,20 g,f,,,,,,
+1781,16,S1,Épicerie,Herbes de Provence,11 g,f,,,,,,
+1782,16,S1,Épicerie,Œufs,5 pièces,f,,,,,,
+1783,16,S1,Épicerie,Épinards frais,270 g,f,,,,,,
+1784,16,S1,Féculents,Pain de campagne,50 g,f,,,,,,
+1785,16,S1,Épicerie,Bœuf à braiser (macreuse ou paleron),525 g,f,,,,,,
+1786,16,S1,Crémerie,Gruyère râpé,90 g,f,,,,,,
+1787,16,S1,Légumes,Concentré de tomate,90 g,f,,,,,,
+1788,16,S1,Épicerie,Vin rouge,150 ml,f,,,,,,
+1789,16,S1,Protéines,Côtes de porc,320 g,f,,,,,,
+1790,16,S1,Féculents,Pommes de terre grenaille,390 g,f,,,,,,
+1791,16,S1,Légumes,Radis,260 g,f,,,,,,
+1792,16,S1,Épicerie,Moutarde à l'ancienne,30 g,f,,,,,,
+1793,16,S1,Épicerie,Échalote,41 g,f,,,,,,
+1794,16,S1,Épicerie,Bœuf haché 5% MG,565 g,f,,,,,,
+1795,16,S1,Légumes,Haricots rouges en conserve,800 g,f,,,,,,
+1796,16,S1,Légumes,Tomates concassées en conserve,400 g,f,,,,,,
+1797,16,S1,Légumes,Poivron rouge,270 g,f,,,,,,
+1798,16,S1,Épicerie,Piment de Cayenne,3 g,f,,,,,,
+1799,16,S1,Épicerie,Origan séché,2 g,f,,,,,,
+1800,16,S1,Épicerie,Poivre noir moulu,4 g,f,,,,,,
+1801,16,S1,Épicerie,Chocolat noir 70%,15 g,f,,,,,,
+1802,16,S1,Protéines,Filet de cabillaud,360 g,f,,,,,,
+1803,16,S1,Conserves,Petits pois surgelés,270 g,f,,,,,,
+1804,16,S1,Épicerie,Cheddar râpé,90 g,f,,,,,,
+1805,16,S1,Épicerie,Nachos,60 g,f,,,,,,
+1806,16,S1,Épicerie,Cumin en poudre,3 g,f,,,,,,
+1807,16,S1,Épicerie,Paprika,3 g,f,,,,,,
+1808,16,S1,Féculents,Tortillas de blé,3 pièces,f,,,,,,
+1809,16,S1,Protéines,Escalopes de poulet,280 g,f,,,,,,
+1810,16,S1,Épicerie,Cheddar,55 g,f,,,,,,
+1811,16,S1,Légumes,Salade iceberg,100 g,f,,,,,,
+1812,16,S1,Légumes,Concombre,80 g,f,,,,,,
+1813,16,S1,Légumes,Carotte,60 g,f,,,,,,
+1814,16,S1,Épicerie,Mayonnaise,30 g,f,,,,,,
+1815,16,S1,Épicerie,Spaghettis,300 g,f,,,,,,
+1816,16,S1,Épicerie,Pancetta ou lardons,120 g,f,,,,,,
+1817,16,S1,Épicerie,Œufs entiers,2 pièces,f,,,,,,
+1818,16,S1,Épicerie,Jaunes d'œufs,1 pièce,f,,,,,,
+1819,16,S1,Épicerie,Parmesan râpé,80 g,f,,,,,,
+1820,16,S1,Épicerie,Gros sel,15 g,f,,,,,,
+1821,16,S1,Protéines,Rôti de porc dans l'épaule,600 g,f,,,,,,
+1822,16,S1,Légumes,Oignons jaunes,200 g,f,,,,,,
+1823,16,S1,Crémerie,Skyr,2200 g,f,,,,,,
+1824,16,S1,Crémerie,Oeufs,27 pièces,f,,,,,,
+1825,16,S1,Épicerie,Amandes,210 g,f,,,,,,
+1826,17,S1,Épicerie,Épaule d'agneau,1600 g,f,,,,,,
+1827,17,S1,Épicerie,Artichauts,155 pièces,f,,,,,,
+1828,17,S1,Légumes,Carottes nouvelles,1650 g,f,,,,,,
+1829,17,S1,Conserves,Petits pois,150 g,f,,,,,,
+1830,17,S1,Légumes,Oignon jaune,121 pièce,f,,,,,,
+1831,17,S1,Épicerie,Ail,48 gousses,f,,,,,,
+1832,17,S1,Épicerie,Gingembre frais,70 g,f,,,,,,
+1833,17,S1,Épicerie,Huile d'olive,318 ml,f,,,,,,
+1834,17,S1,Épicerie,Curcuma,8 g,f,,,,,,
+1835,17,S1,Épicerie,Cannelle,2 g,f,,,,,,
+1836,17,S1,Épicerie,Gingembre moulu,2 g,f,,,,,,
+1837,17,S1,Épicerie,Coriandre moulue,3 g,f,,,,,,
+1838,17,S1,Épicerie,Bouillon de légumes,1000 ml,f,,,,,,
+1839,17,S1,Légumes,Tomates concassées,400 g,f,,,,,,
+1840,17,S1,Épicerie,Olives vertes,60 g,f,,,,,,
+1841,17,S1,Épicerie,Coriandre fraîche,55 g,f,,,,,,
+1842,17,S1,Épicerie,Citron,4 pièce,f,,,,,,
+1843,17,S1,Épicerie,Sel,59 g,f,,,,,,
+1844,17,S1,Épicerie,Poivre noir,25 g,f,,,,,,
+1845,17,S1,Féculents,Riz basmati,430 g,f,,,,,,
+1846,17,S1,Protéines,Escalope de dinde,320 g,f,,,,,,
+1847,17,S1,Épicerie,Chapelure,140 g,f,,,,,,
+1848,17,S1,Épicerie,Œufs,12 pièces,f,,,,,,
+1849,17,S1,Épicerie,Farine,145 g,f,,,,,,
+1850,17,S1,Épicerie,Parmesan râpé,30 g,f,,,,,,
+1851,17,S1,Féculents,Pommes de terre grenaille,1370 g,f,,,,,,
+1852,17,S1,Légumes,Radis roses,570 g,f,,,,,,
+1853,17,S1,Crémerie,Beurre,285 g,f,,,,,,
+1854,17,S1,Épicerie,Persil plat,40 g,f,,,,,,
+1855,17,S1,Épicerie,Herbes de Provence,3 g,f,,,,,,
+1856,17,S1,Féculents,Semoule de couscous,150 g,f,,,,,,
+1857,17,S1,Légumes,Courgettes,200 g,f,,,,,,
+1858,17,S1,Légumes,Oignon,392 pièce,f,,,,,,
+1859,17,S1,Légumes,Tomates,400 g,f,,,,,,
+1860,17,S1,Épicerie,Bouillon de bœuf,1600 ml,f,,,,,,
+1861,17,S1,Légumes,Concentré de tomate,67 c. à soupe,f,,,,,,
+1862,17,S1,Épicerie,Ras-el-hanout,2 c. à café,f,,,,,,
+1863,17,S1,Épicerie,Cumin moulu,3 c. à café,f,,,,,,
+1864,17,S1,Protéines,Filet de saumon,380 g,f,,,,,,
+1865,17,S1,Légumes,Asperges vertes,470 g,f,,,,,,
+1866,17,S1,Légumes,Carotte nouvelle,120 g,f,,,,,,
+1867,17,S1,Épicerie,Sauce soja,60 ml,f,,,,,,
+1868,17,S1,Épicerie,Miel,55 g,f,,,,,,
+1869,17,S1,Épicerie,Mirin,30 ml,f,,,,,,
+1870,17,S1,Féculents,Vinaigre de riz,15 ml,f,,,,,,
+1871,17,S1,Épicerie,Huile de sésame,15 ml,f,,,,,,
+1872,17,S1,Épicerie,Graines de sésame,10 g,f,,,,,,
+1873,17,S1,Épicerie,Ciboulette fraîche,5 g,f,,,,,,
+1874,17,S1,Épicerie,Cœurs d'artichaut,180 g,f,,,,,,
+1875,17,S1,Crémerie,Lait de coco,400 ml,f,,,,,,
+1876,17,S1,Épicerie,Curry en poudre,27 g,f,,,,,,
+1877,17,S1,Épicerie,Cumin en poudre,3 g,f,,,,,,
+1878,17,S1,Épicerie,Coriandre en poudre,3 g,f,,,,,,
+1879,17,S1,Protéines,Côtes de porc,310 g,f,,,,,,
+1880,17,S1,Féculents,Pommes de terre,1830 g,f,,,,,,
+1881,17,S1,Épicerie,Thym frais,10 branches,f,,,,,,
+1882,17,S1,Épicerie,Naan nature,3 pièces,f,,,,,,
+1883,17,S1,Épicerie,Épinards frais,220 g,f,,,,,,
+1884,17,S1,Crémerie,Gruyère râpé,105 g,f,,,,,,
+1885,17,S1,Crémerie,Crème fraîche,30 ml,f,,,,,,
+1886,17,S1,Épicerie,Muscade,1 pincée,f,,,,,,
+1887,17,S1,Épicerie,Bœuf à braiser (paleron ou macreuse),285 g,f,,,,,,
+1888,17,S1,Conserves,Petits pois frais ou surgelés,150 g,f,,,,,,
+1889,17,S1,Féculents,Pommes de terre nouvelles,300 g,f,,,,,,
+1890,17,S1,Épicerie,Vin blanc sec,200 ml,f,,,,,,
+1891,17,S1,Épicerie,Laurier,4 feuilles,f,,,,,,
+1892,17,S1,Protéines,Pavé de saumon,310 g,f,,,,,,
+1893,17,S1,Épicerie,Bœuf à braiser,400 g,f,,,,,,
+1894,17,S1,Conserves,Petits pois surgelés,350 g,f,,,,,,
+1895,17,S1,Épicerie,Vin rouge,150 ml,f,,,,,,
+1896,17,S1,Crémerie,Lait,100 ml,f,,,,,,
+1897,17,S1,Épicerie,Thym,2 branches,f,,,,,,
+1898,17,S1,Protéines,Filet de cabillaud,360 g,f,,,,,,
+1899,17,S1,Épicerie,Mayonnaise,30 g,f,,,,,,
+1900,17,S1,Épicerie,Cornichons,20 g,f,,,,,,
+1901,17,S1,Épicerie,Câpres,10 g,f,,,,,,
+1902,17,S1,Épicerie,Spaghettis,350 g,f,,,,,,
+1903,17,S1,Épicerie,Guanciale,140 g,f,,,,,,
+1904,17,S1,Épicerie,Pecorino Romano,70 g,f,,,,,,
+1905,17,S1,Épicerie,Gros sel,15 g,f,,,,,,
+1906,17,S1,Protéines,Rôti de porc (filet ou échine),500 g,f,,,,,,
+1907,17,S1,Épicerie,Romarin,3 g,f,,,,,,
+1908,17,S1,Épicerie,Moutarde de Dijon,15 g,f,,,,,,
+1909,17,S1,Crémerie,Skyr,2200 g,f,,,,,,
+1910,17,S1,Crémerie,Oeufs,27 pièces,f,,,,,,
+1911,17,S1,Épicerie,Amandes,210 g,f,,,,,,
+1912,18,S1,Épicerie,Épaule d'agneau,400 g,f,,,,,,
+1913,18,S1,Féculents,Riz basmati,665 g,f,,,,,,
+1914,18,S1,Légumes,Carottes nouvelles,400 g,f,,,,,,
+1915,18,S1,Conserves,Petits pois frais,150 g,f,,,,,,
+1916,18,S1,Épicerie,Artichauts,2 pièces,f,,,,,,
+1917,18,S1,Légumes,Oignon,124 pièce,f,,,,,,
+1918,18,S1,Épicerie,Ail,33 gousses,f,,,,,,
+1919,18,S1,Épicerie,Gingembre frais,15 g,f,,,,,,
+1920,18,S1,Légumes,Tomates,2 pièces,f,,,,,,
+1921,18,S1,Épicerie,Bouillon d'agneau,400 ml,f,,,,,,
+1922,18,S1,Épicerie,Huile d'olive,293 ml,f,,,,,,
+1923,18,S1,Épicerie,Ras el hanout,8 g,f,,,,,,
+1924,18,S1,Épicerie,Curcuma,3 g,f,,,,,,
+1925,18,S1,Épicerie,Cannelle,2 g,f,,,,,,
+1926,18,S1,Épicerie,Sel,56 g,f,,,,,,
+1927,18,S1,Épicerie,Poivre noir,20 g,f,,,,,,
+1928,18,S1,Épicerie,Coriandre fraîche,20 g,f,,,,,,
+1929,18,S1,Épicerie,Citron confit,30 g,f,,,,,,
+1930,18,S1,Crémerie,Beurre,290 g,f,,,,,,
+1931,18,S1,Protéines,Pavé de saumon,310 g,f,,,,,,
+1932,18,S1,Légumes,Asperges vertes,270 g,f,,,,,,
+1933,18,S1,Féculents,Pommes de terre grenaille,770 g,f,,,,,,
+1934,18,S1,Épicerie,Persil plat,45 g,f,,,,,,
+1935,18,S1,Épicerie,Citron,4 pièce,f,,,,,,
+1936,18,S1,Protéines,Escalope de dinde,320 g,f,,,,,,
+1937,18,S1,Épicerie,Chapelure,140 g,f,,,,,,
+1938,18,S1,Épicerie,Œufs,12 pièces,f,,,,,,
+1939,18,S1,Épicerie,Farine,130 g,f,,,,,,
+1940,18,S1,Épicerie,Parmesan râpé,30 g,f,,,,,,
+1941,18,S1,Légumes,Radis roses,420 g,f,,,,,,
+1942,18,S1,Épicerie,Herbes de Provence,3 g,f,,,,,,
+1943,18,S1,Protéines,Blanc de poulet,400 g,f,,,,,,
+1944,18,S1,Légumes,Poivron rouge,351 g,f,,,,,,
+1945,18,S1,Légumes,Poivron vert,150 g,f,,,,,,
+1946,18,S1,Légumes,Tomates pelées en dés,300 g,f,,,,,,
+1947,18,S1,Protéines,Jambon de Bayonne,60 g,f,,,,,,
+1948,18,S1,Épicerie,Vin blanc sec,80 ml,f,,,,,,
+1949,18,S1,Légumes,Concentré de tomate,75 g,f,,,,,,
+1950,18,S1,Épicerie,Piment d'Espelette,2 g,f,,,,,,
+1951,18,S1,Épicerie,Thym séché,1 g,f,,,,,,
+1952,18,S1,Épicerie,Laurier,4 feuilles,f,,,,,,
+1953,18,S1,Protéines,Côtes de porc,310 g,f,,,,,,
+1954,18,S1,Féculents,Pommes de terre,2560 g,f,,,,,,
+1955,18,S1,Épicerie,Miel,25 g,f,,,,,,
+1956,18,S1,Épicerie,Thym frais,2 branches,f,,,,,,
+1957,18,S1,Épicerie,Bouillon de légumes,100 ml,f,,,,,,
+1958,18,S1,Protéines,Filets de poulet,300 g,f,,,,,,
+1959,18,S1,Féculents,Tortillas de blé,3 pièces,f,,,,,,
+1960,18,S1,Légumes,Poivron jaune,1 pièce,f,,,,,,
+1961,18,S1,Légumes,Salade iceberg,230 g,f,,,,,,
+1962,18,S1,Légumes,Tomates cerises,200 g,f,,,,,,
+1963,18,S1,Légumes,Concombre,1 pièce,f,,,,,,
+1964,18,S1,Crémerie,Fromage râpé,60 g,f,,,,,,
+1965,18,S1,Épicerie,Huile de tournesol,500 ml,f,,,,,,
+1966,18,S1,Épicerie,Paprika doux,9 cuillère à café,f,,,,,,
+1967,18,S1,Épicerie,Cumin moulu,5 cuillère à café,f,,,,,,
+1968,18,S1,Épicerie,Poivre,1 pincée,f,,,,,,
+1969,18,S1,Protéines,Filet de cabillaud,720 g,f,,,,,,
+1970,18,S1,Conserves,Petits pois surgelés,620 g,f,,,,,,
+1971,18,S1,Épicerie,Thym,4 g,f,,,,,,
+1972,18,S1,Épicerie,Bœuf haché 5% MG,265 g,f,,,,,,
+1973,18,S1,Légumes,Haricots rouges en conserve,400 g,f,,,,,,
+1974,18,S1,Légumes,Tomates concassées en conserve,400 g,f,,,,,,
+1975,18,S1,Légumes,Oignon jaune,180 g,f,,,,,,
+1976,18,S1,Épicerie,Piment de Cayenne,2 g,f,,,,,,
+1977,18,S1,Épicerie,Origan séché,2 g,f,,,,,,
+1978,18,S1,Épicerie,Poivre noir moulu,2 g,f,,,,,,
+1979,18,S1,Épicerie,Bouillon de bœuf,600 ml,f,,,,,,
+1980,18,S1,Épicerie,Chocolat noir 70%,15 g,f,,,,,,
+1981,18,S1,Épicerie,Épinards frais,220 g,f,,,,,,
+1982,18,S1,Crémerie,Gruyère râpé,105 g,f,,,,,,
+1983,18,S1,Crémerie,Crème fraîche,30 ml,f,,,,,,
+1984,18,S1,Épicerie,Muscade,1 pincée,f,,,,,,
+1985,18,S1,Épicerie,Mayonnaise,50 g,f,,,,,,
+1986,18,S1,Épicerie,Cornichons,50 g,f,,,,,,
+1987,18,S1,Épicerie,Câpres,10 g,f,,,,,,
+1988,18,S1,Féculents,Pains burger,2 pièces,f,,,,,,
+1989,18,S1,Protéines,Steak haché 15% MG,270 g,f,,,,,,
+1990,18,S1,Épicerie,Cheddar en tranches,55 g,f,,,,,,
+1991,18,S1,Légumes,Tomate,1 pièce,f,,,,,,
+1992,18,S1,Légumes,Oignon rouge,50 g,f,,,,,,
+1993,18,S1,Épicerie,Ketchup,15 g,f,,,,,,
+1994,18,S1,Épicerie,Bœuf à braiser,400 g,f,,,,,,
+1995,18,S1,Épicerie,Vin rouge,150 ml,f,,,,,,
+1996,18,S1,Crémerie,Lait,100 ml,f,,,,,,
+1997,18,S1,Épicerie,Spaghettis,350 g,f,,,,,,
+1998,18,S1,Épicerie,Guanciale,140 g,f,,,,,,
+1999,18,S1,Épicerie,Pecorino Romano,70 g,f,,,,,,
+2000,18,S1,Épicerie,Gros sel,15 g,f,,,,,,
+2001,18,S1,Crémerie,Skyr,2200 g,f,,,,,,
+2002,18,S1,Crémerie,Oeufs,27 pièces,f,,,,,,
+2003,18,S1,Épicerie,Amandes,210 g,f,,,,,,
+2004,19,S1,Épicerie,Épaule d'agneau,850 g,f,,,,,,
+2005,19,S1,Épicerie,Artichauts,6 pièces,f,,,,,,
+2006,19,S1,Légumes,Carottes nouvelles,900 g,f,,,,,,
+2007,19,S1,Légumes,Oignon jaune,1 pièce,f,,,,,,
+2008,19,S1,Épicerie,Ail,29 gousses,f,,,,,,
+2009,19,S1,Épicerie,Gingembre frais,30 g,f,,,,,,
+2010,19,S1,Épicerie,Huile d'olive,286 ml,f,,,,,,
+2011,19,S1,Épicerie,Cumin moulu,7 g,f,,,,,,
+2012,19,S1,Épicerie,Coriandre moulue,5 g,f,,,,,,
+2013,19,S1,Épicerie,Cannelle,2 g,f,,,,,,
+2014,19,S1,Épicerie,Bouillon de légumes,600 ml,f,,,,,,
+2015,19,S1,Épicerie,Citron,5 pièce,f,,,,,,
+2016,19,S1,Épicerie,Coriandre fraîche,40 g,f,,,,,,
+2017,19,S1,Épicerie,Sel,56 g,f,,,,,,
+2018,19,S1,Épicerie,Poivre noir,22 g,f,,,,,,
+2019,19,S1,Féculents,Riz basmati,535 g,f,,,,,,
+2020,19,S1,Crémerie,Beurre,325 g,f,,,,,,
+2021,19,S1,Protéines,Pavé de saumon,310 g,f,,,,,,
+2022,19,S1,Légumes,Asperges vertes,270 g,f,,,,,,
+2023,19,S1,Féculents,Pommes de terre grenaille,1770 g,f,,,,,,
+2024,19,S1,Épicerie,Persil plat,55 g,f,,,,,,
+2025,19,S1,Féculents,Semoule de couscous,150 g,f,,,,,,
+2026,19,S1,Légumes,Courgettes,200 g,f,,,,,,
+2027,19,S1,Légumes,Oignon,394 pièce,f,,,,,,
+2028,19,S1,Légumes,Tomates,400 g,f,,,,,,
+2029,19,S1,Épicerie,Bouillon de bœuf,1000 ml,f,,,,,,
+2030,19,S1,Légumes,Concentré de tomate,22 c. à soupe,f,,,,,,
+2031,19,S1,Épicerie,Ras-el-hanout,2 c. à café,f,,,,,,
+2032,19,S1,Protéines,Escalope de dinde,320 g,f,,,,,,
+2033,19,S1,Épicerie,Chapelure,140 g,f,,,,,,
+2034,19,S1,Épicerie,Œufs,12 pièces,f,,,,,,
+2035,19,S1,Épicerie,Farine,130 g,f,,,,,,
+2036,19,S1,Épicerie,Parmesan râpé,30 g,f,,,,,,
+2037,19,S1,Légumes,Radis roses,200 g,f,,,,,,
+2038,19,S1,Épicerie,Herbes de Provence,3 g,f,,,,,,
+2039,19,S1,Épicerie,Émincé de bœuf,700 g,f,,,,,,
+2040,19,S1,Légumes,Champignons de Paris,400 g,f,,,,,,
+2041,19,S1,Crémerie,Crème fraîche épaisse,250 ml,f,,,,,,
+2042,19,S1,Épicerie,Moutarde de Dijon,40 g,f,,,,,,
+2043,19,S1,Épicerie,Paprika doux,11 g,f,,,,,,
+2044,19,S1,Légumes,Radis,270 g,f,,,,,,
+2045,19,S1,Crémerie,Gruyère râpé,105 g,f,,,,,,
+2046,19,S1,Féculents,Pommes de terre,1940 g,f,,,,,,
+2047,19,S1,Épicerie,Ciboulette,10 g,f,,,,,,
+2048,19,S1,Crémerie,Lait entier,80 ml,f,,,,,,
+2049,19,S1,Épicerie,Huile de tournesol,515 ml,f,,,,,,
+2050,19,S1,Protéines,Côtes de porc,400 g,f,,,,,,
+2051,19,S1,Conserves,Petits pois frais,300 g,f,,,,,,
+2052,19,S1,Épicerie,Bouillon de volaille,200 ml,f,,,,,,
+2053,19,S1,Épicerie,Thym frais,7 branches,f,,,,,,
+2054,19,S1,Protéines,Filets de poulet,300 g,f,,,,,,
+2055,19,S1,Féculents,Tortillas de blé,3 pièces,f,,,,,,
+2056,19,S1,Légumes,Poivron rouge,1 pièce,f,,,,,,
+2057,19,S1,Légumes,Poivron jaune,1 pièce,f,,,,,,
+2058,19,S1,Légumes,Salade iceberg,230 g,f,,,,,,
+2059,19,S1,Légumes,Tomates cerises,200 g,f,,,,,,
+2060,19,S1,Légumes,Concombre,1 pièce,f,,,,,,
+2061,19,S1,Crémerie,Fromage râpé,60 g,f,,,,,,
+2062,19,S1,Épicerie,Poivre,1 pincée,f,,,,,,
+2063,19,S1,Protéines,Filet de cabillaud,720 g,f,,,,,,
+2064,19,S1,Conserves,Petits pois surgelés,470 g,f,,,,,,
+2065,19,S1,Épicerie,Thym,2 g,f,,,,,,
+2066,19,S1,Épicerie,Mayonnaise,50 g,f,,,,,,
+2067,19,S1,Épicerie,Cornichons,50 g,f,,,,,,
+2068,19,S1,Épicerie,Câpres,10 g,f,,,,,,
+2069,19,S1,Protéines,Rôti de porc (filet ou échine),500 g,f,,,,,,
+2070,19,S1,Épicerie,Romarin,3 g,f,,,,,,
+2071,19,S1,Épicerie,Vin blanc sec,100 ml,f,,,,,,
+2072,19,S1,Féculents,Pains burger,2 pièces,f,,,,,,
+2073,19,S1,Protéines,Steak haché 15% MG,270 g,f,,,,,,
+2074,19,S1,Épicerie,Cheddar en tranches,55 g,f,,,,,,
+2075,19,S1,Légumes,Tomate,1 pièce,f,,,,,,
+2076,19,S1,Légumes,Oignon rouge,50 g,f,,,,,,
+2077,19,S1,Épicerie,Ketchup,15 g,f,,,,,,
+2078,19,S1,Épicerie,Spaghettis,350 g,f,,,,,,
+2079,19,S1,Épicerie,Guanciale,140 g,f,,,,,,
+2080,19,S1,Épicerie,Pecorino Romano,70 g,f,,,,,,
+2081,19,S1,Épicerie,Gros sel,15 g,f,,,,,,
+2082,19,S1,Crémerie,Skyr,2200 g,f,,,,,,
+2083,19,S1,Crémerie,Oeufs,27 pièces,f,,,,,,
+2084,19,S1,Épicerie,Amandes,210 g,f,,,,,,
+2085,20,S1,Épicerie,Épaule d'agneau,850 g,f,,,,,,
+2086,20,S1,Épicerie,Artichauts,6 pièces,f,,,,,,
+2087,20,S1,Légumes,Carottes nouvelles,1150 g,f,,,,,,
+2088,20,S1,Légumes,Oignon jaune,151 pièce,f,,,,,,
+2089,20,S1,Épicerie,Ail,54 gousses,f,,,,,,
+2090,20,S1,Épicerie,Gingembre frais,40 g,f,,,,,,
+2091,20,S1,Épicerie,Huile d'olive,348 ml,f,,,,,,
+2092,20,S1,Épicerie,Cumin moulu,6 g,f,,,,,,
+2093,20,S1,Épicerie,Coriandre moulue,7 g,f,,,,,,
+2094,20,S1,Épicerie,Cannelle,2 g,f,,,,,,
+2095,20,S1,Épicerie,Bouillon de légumes,600 ml,f,,,,,,
+2096,20,S1,Épicerie,Citron,5 pièce,f,,,,,,
+2097,20,S1,Épicerie,Coriandre fraîche,50 g,f,,,,,,
+2098,20,S1,Épicerie,Sel,64 g,f,,,,,,
+2099,20,S1,Épicerie,Poivre noir,23 g,f,,,,,,
+2100,20,S1,Féculents,Riz basmati,485 g,f,,,,,,
+2101,20,S1,Crémerie,Beurre,295 g,f,,,,,,
+2102,20,S1,Protéines,Pavé de saumon,310 g,f,,,,,,
+2103,20,S1,Légumes,Asperges vertes,270 g,f,,,,,,
+2104,20,S1,Féculents,Pommes de terre grenaille,1770 g,f,,,,,,
+2105,20,S1,Épicerie,Persil plat,45 g,f,,,,,,
+2106,20,S1,Féculents,Semoule de couscous,150 g,f,,,,,,
+2107,20,S1,Légumes,Courgettes,500 g,f,,,,,,
+2108,20,S1,Légumes,Oignon,273 pièce,f,,,,,,
+2109,20,S1,Légumes,Tomates,1200 g,f,,,,,,
+2110,20,S1,Épicerie,Bouillon de bœuf,1300 ml,f,,,,,,
+2111,20,S1,Légumes,Concentré de tomate,82 c. à soupe,f,,,,,,
+2112,20,S1,Épicerie,Ras-el-hanout,2 c. à café,f,,,,,,
+2113,20,S1,Protéines,Escalope de dinde,320 g,f,,,,,,
+2114,20,S1,Épicerie,Chapelure,140 g,f,,,,,,
+2115,20,S1,Épicerie,Œufs,12 pièces,f,,,,,,
+2116,20,S1,Épicerie,Farine,130 g,f,,,,,,
+2117,20,S1,Épicerie,Parmesan râpé,30 g,f,,,,,,
+2118,20,S1,Légumes,Radis roses,200 g,f,,,,,,
+2119,20,S1,Épicerie,Herbes de Provence,6 g,f,,,,,,
+2120,20,S1,Conserves,Pois chiches en conserve,400 g,f,,,,,,
+2121,20,S1,Crémerie,Lait de coco,200 ml,f,,,,,,
+2122,20,S1,Légumes,Tomates pelées en dés,200 g,f,,,,,,
+2123,20,S1,Épicerie,Curry en poudre,8 g,f,,,,,,
+2124,20,S1,Épicerie,Cumin en poudre,3 g,f,,,,,,
+2125,20,S1,Épicerie,Paprika,2 g,f,,,,,,
+2126,20,S1,Épicerie,Yaourt grec,80 g,f,,,,,,
+2127,20,S1,Protéines,Côtes de porc,400 g,f,,,,,,
+2128,20,S1,Conserves,Petits pois frais,300 g,f,,,,,,
+2129,20,S1,Épicerie,Bouillon de volaille,200 ml,f,,,,,,
+2130,20,S1,Épicerie,Thym frais,13 branches,f,,,,,,
+2131,20,S1,Épicerie,Bœuf à braiser (paleron ou joue),600 g,f,,,,,,
+2132,20,S1,Légumes,Oignons,200 g,f,,,,,,
+2133,20,S1,Épicerie,Vin rouge,400 ml,f,,,,,,
+2134,20,S1,Épicerie,Olives noires,80 g,f,,,,,,
+2135,20,S1,Épicerie,Laurier,3 feuilles,f,,,,,,
+2136,20,S1,Épicerie,Romarin,5 branches,f,,,,,,
+2137,20,S1,Épicerie,Orange,1 pièce,f,,,,,,
+2138,20,S1,Féculents,Pommes de terre,2040 g,f,,,,,,
+2139,20,S1,Légumes,Radis,270 g,f,,,,,,
+2140,20,S1,Crémerie,Gruyère râpé,95 g,f,,,,,,
+2141,20,S1,Épicerie,Ciboulette,10 g,f,,,,,,
+2142,20,S1,Épicerie,Bœuf à mijoter (paleron ou gîte),400 g,f,,,,,,
+2143,20,S1,Crémerie,Lait entier,120 ml,f,,,,,,
+2144,20,S1,Épicerie,Muscade,1 g,f,,,,,,
+2145,20,S1,Protéines,Filet de cabillaud,720 g,f,,,,,,
+2146,20,S1,Conserves,Petits pois surgelés,470 g,f,,,,,,
+2147,20,S1,Épicerie,Thym,2 g,f,,,,,,
+2148,20,S1,Féculents,Pains burger,2 pièces,f,,,,,,
+2149,20,S1,Protéines,Steak haché 15% MG,270 g,f,,,,,,
+2150,20,S1,Épicerie,Cheddar en tranches,55 g,f,,,,,,
+2151,20,S1,Légumes,Salade iceberg,80 g,f,,,,,,
+2152,20,S1,Légumes,Tomate,1 pièce,f,,,,,,
+2153,20,S1,Légumes,Oignon rouge,50 g,f,,,,,,
+2154,20,S1,Épicerie,Cornichons,50 g,f,,,,,,
+2155,20,S1,Épicerie,Mayonnaise,50 g,f,,,,,,
+2156,20,S1,Épicerie,Ketchup,15 g,f,,,,,,
+2157,20,S1,Épicerie,Spaghettis,350 g,f,,,,,,
+2158,20,S1,Épicerie,Guanciale,140 g,f,,,,,,
+2159,20,S1,Épicerie,Pecorino Romano,70 g,f,,,,,,
+2160,20,S1,Épicerie,Gros sel,15 g,f,,,,,,
+2161,20,S1,Épicerie,Câpres,10 g,f,,,,,,
+2162,20,S1,Protéines,Rôti de porc (filet ou échine),500 g,f,,,,,,
+2163,20,S1,Épicerie,Vin blanc sec,100 ml,f,,,,,,
+2164,20,S1,Épicerie,Moutarde de Dijon,15 g,f,,,,,,
+2165,20,S1,Crémerie,Skyr,2200 g,f,,,,,,
+2166,20,S1,Crémerie,Oeufs,27 pièces,f,,,,,,
+2167,20,S1,Épicerie,Amandes,210 g,f,,,,,,
+2170,21,S1,Légumes,Carottes nouvelles,1100 g,f,,,,,,
+2171,21,S1,Légumes,Oignon jaune,271 pièce,f,,,,,,
+2175,21,S1,Épicerie,Cumin moulu,6 g,f,,,,,,
+2176,21,S1,Épicerie,Coriandre moulue,5 g,f,,,,,,
+2177,21,S1,Épicerie,Cannelle,2 g,f,,,,,,
+2179,21,S1,Épicerie,Citron,5 pièce,f,,,,,,
+2180,21,S1,Épicerie,Coriandre fraîche,40 g,f,,,,,,
+2181,21,S1,Épicerie,Sel,62 g,f,,,,,,
+2182,21,S1,Épicerie,Poivre noir,23 g,f,,,,,,
+2183,21,S1,Féculents,Riz basmati,335 g,f,,,,,,
+2184,21,S1,Crémerie,Beurre,305 g,f,,,,,,
+2185,21,S1,Protéines,Pavé de saumon,310 g,f,,,,,,
+2186,21,S1,Légumes,Asperges vertes,570 g,f,,,,,,
+2187,21,S1,Féculents,Pommes de terre grenaille,1770 g,f,,,,,,
+2188,21,S1,Épicerie,Persil plat,50 g,f,,,,,,
+2189,21,S1,Féculents,Semoule de couscous,150 g,f,,,,,,
+2190,21,S1,Légumes,Courgettes,500 g,f,,,,,,
+2191,21,S1,Légumes,Oignon,303 pièce,f,,,,,,
+2192,21,S1,Légumes,Tomates,800 g,f,,,,,,
+2193,21,S1,Épicerie,Bouillon de bœuf,1500 ml,f,,,,,,
+2194,21,S1,Légumes,Concentré de tomate,37 c. à soupe,f,,,,,,
+2195,21,S1,Épicerie,Ras-el-hanout,2 c. à café,f,,,,,,
+2196,21,S1,Épicerie,Œufs,17 pièces,f,,,,,,
+2197,21,S1,Légumes,Radis,270 g,f,,,,,,
+2198,21,S1,Crémerie,Gruyère râpé,95 g,f,,,,,,
+2199,21,S1,Féculents,Pommes de terre,2110 g,f,,,,,,
+2200,21,S1,Épicerie,Ciboulette,10 g,f,,,,,,
+2201,21,S1,Protéines,Côtes de porc,400 g,f,,,,,,
+2202,21,S1,Conserves,Petits pois frais,300 g,f,,,,,,
+2203,21,S1,Épicerie,Bouillon de volaille,200 ml,f,,,,,,
+2204,21,S1,Épicerie,Thym frais,12 branches,f,,,,,,
+2205,21,S1,Protéines,Escalope de dinde,320 g,f,,,,,,
+2206,21,S1,Épicerie,Chapelure,140 g,f,,,,,,
+2207,21,S1,Épicerie,Farine,145 g,f,,,,,,
+2208,21,S1,Épicerie,Parmesan râpé,30 g,f,,,,,,
+2209,21,S1,Légumes,Radis roses,200 g,f,,,,,,
+2210,21,S1,Épicerie,Herbes de Provence,6 g,f,,,,,,
+2211,21,S1,Épicerie,Bœuf à braiser (paleron ou macreuse),285 g,f,,,,,,
+2212,21,S1,Conserves,Petits pois frais ou surgelés,150 g,f,,,,,,
+2213,21,S1,Féculents,Pommes de terre nouvelles,300 g,f,,,,,,
+2214,21,S1,Épicerie,Vin blanc sec,200 ml,f,,,,,,
+2215,21,S1,Épicerie,Laurier,3 feuilles,f,,,,,,
+2216,21,S1,Protéines,Filet de cabillaud,720 g,f,,,,,,
+2217,21,S1,Conserves,Petits pois surgelés,470 g,f,,,,,,
+2218,21,S1,Épicerie,Thym,2 g,f,,,,,,
+2219,21,S1,Épicerie,Bœuf à mijoter (paleron ou gîte),400 g,f,,,,,,
+2220,21,S1,Crémerie,Lait entier,120 ml,f,,,,,,
+2221,21,S1,Épicerie,Vin rouge,100 ml,f,,,,,,
+2222,21,S1,Épicerie,Muscade,1 g,f,,,,,,
+2223,21,S1,Protéines,Rôti de porc (filet ou échine),500 g,f,,,,,,
+2224,21,S1,Épicerie,Romarin,3 g,f,,,,,,
+2225,21,S1,Épicerie,Moutarde de Dijon,25 g,f,,,,,,
+2226,21,S1,Épicerie,Spaghettis,350 g,f,,,,,,
+2227,21,S1,Épicerie,Guanciale,140 g,f,,,,,,
+2228,21,S1,Épicerie,Pecorino Romano,70 g,f,,,,,,
+2229,21,S1,Épicerie,Gros sel,15 g,f,,,,,,
+2230,21,S1,Féculents,Pains burger,2 pièces,f,,,,,,
+2231,21,S1,Protéines,Steak haché 15% MG,270 g,f,,,,,,
+2232,21,S1,Épicerie,Cheddar en tranches,55 g,f,,,,,,
+2233,21,S1,Légumes,Salade iceberg,80 g,f,,,,,,
+2234,21,S1,Légumes,Tomate,1 pièce,f,,,,,,
+2235,21,S1,Légumes,Oignon rouge,50 g,f,,,,,,
+2236,21,S1,Épicerie,Cornichons,50 g,f,,,,,,
+2237,21,S1,Épicerie,Mayonnaise,50 g,f,,,,,,
+2238,21,S1,Épicerie,Ketchup,15 g,f,,,,,,
+2239,21,S1,Épicerie,Câpres,10 g,f,,,,,,
+2240,21,S1,Épicerie,Épinards frais,270 g,f,,,,,,
+2241,21,S1,Épicerie,Vinaigre balsamique,15 ml,f,,,,,,
+2242,21,S1,Crémerie,Skyr,2200 g,f,,,,,,
+2243,21,S1,Crémerie,Oeufs,27 pièces,f,,,,,,
+2244,21,S1,Épicerie,Amandes,210 g,f,,,,,,
+2168,21,S1,Épicerie,Épaule d'agneau,850 g,t,,,,,,
+2245,22,S1,Épicerie,Épaule d'agneau,1250 g,f,,,,,,
+2178,21,S1,Épicerie,Bouillon de légumes,600 ml,t,,,,,,
+2172,21,S1,Épicerie,Ail,50 gousses,f,,,,,,
+2173,21,S1,Épicerie,Gingembre frais,30 g,f,,,,,,
+2174,21,S1,Épicerie,Huile d'olive,373 ml,t,,,,,,
+2169,21,S1,Épicerie,Artichauts,6 pièces,t,,,,,,
+2246,22,S1,Épicerie,Artichauts,154 pièces,f,,,,,,
+2247,22,S1,Légumes,Carottes nouvelles,1100 g,f,,,,,,
+2248,22,S1,Légumes,Oignon jaune,151 pièce,f,,,,,,
+2249,22,S1,Épicerie,Ail,50 gousses,f,,,,,,
+2250,22,S1,Épicerie,Gingembre frais,40 g,f,,,,,,
+2251,22,S1,Épicerie,Huile d'olive,295 ml,f,,,,,,
+2252,22,S1,Épicerie,Cumin moulu,7 g,f,,,,,,
+2253,22,S1,Épicerie,Coriandre moulue,5 g,f,,,,,,
+2254,22,S1,Épicerie,Cannelle,2 g,f,,,,,,
+2255,22,S1,Épicerie,Bouillon de légumes,900 ml,f,,,,,,
+2256,22,S1,Épicerie,Citron,3 pièce,f,,,,,,
+2257,22,S1,Épicerie,Coriandre fraîche,40 g,f,,,,,,
+2258,22,S1,Épicerie,Sel,59 g,f,,,,,,
+2259,22,S1,Épicerie,Poivre noir,22 g,f,,,,,,
+2260,22,S1,Féculents,Riz basmati,455 g,f,,,,,,
+2261,22,S1,Crémerie,Beurre,260 g,f,,,,,,
+2262,22,S1,Épicerie,Œufs,13 pièces,f,,,,,,
+2263,22,S1,Légumes,Radis,270 g,f,,,,,,
+2264,22,S1,Crémerie,Gruyère râpé,155 g,f,,,,,,
+2265,22,S1,Féculents,Pommes de terre,2250 g,f,,,,,,
+2266,22,S1,Épicerie,Ciboulette,10 g,f,,,,,,
+2267,22,S1,Épicerie,Naan nature,3 pièces,f,,,,,,
+2268,22,S1,Légumes,Oignon,662 g,f,,,,,,
+2269,22,S1,Crémerie,Lait de coco,400 ml,f,,,,,,
+2270,22,S1,Légumes,Tomates concassées,200 g,f,,,,,,
+2271,22,S1,Épicerie,Curry en poudre,27 g,f,,,,,,
+2272,22,S1,Épicerie,Curcuma,3 g,f,,,,,,
+2273,22,S1,Protéines,Pavé de saumon,310 g,f,,,,,,
+2274,22,S1,Légumes,Asperges vertes,570 g,f,,,,,,
+2275,22,S1,Féculents,Pommes de terre grenaille,1370 g,f,,,,,,
+2276,22,S1,Épicerie,Persil plat,20 g,f,,,,,,
+2277,22,S1,Épicerie,Cœurs d'artichaut,180 g,f,,,,,,
+2278,22,S1,Épicerie,Cumin en poudre,3 g,f,,,,,,
+2279,22,S1,Épicerie,Coriandre en poudre,3 g,f,,,,,,
+2280,22,S1,Légumes,Concentré de tomate,40 g,f,,,,,,
+2281,22,S1,Épicerie,Épinards frais,270 g,f,,,,,,
+2282,22,S1,Épicerie,Vinaigre balsamique,15 ml,f,,,,,,
+2283,22,S1,Épicerie,Moutarde de Dijon,35 g,f,,,,,,
+2284,22,S1,Protéines,Côtes de porc,400 g,f,,,,,,
+2285,22,S1,Conserves,Petits pois frais,300 g,f,,,,,,
+2286,22,S1,Épicerie,Bouillon de volaille,200 ml,f,,,,,,
+2287,22,S1,Épicerie,Thym frais,9 branches,f,,,,,,
+2288,22,S1,Épicerie,Bœuf à mijoter (paleron ou gîte),400 g,f,,,,,,
+2289,22,S1,Légumes,Courgettes,300 g,f,,,,,,
+2290,22,S1,Légumes,Tomates,400 g,f,,,,,,
+2291,22,S1,Crémerie,Lait entier,200 ml,f,,,,,,
+2292,22,S1,Épicerie,Herbes de Provence,3 g,f,,,,,,
+2293,22,S1,Épicerie,Laurier,1 feuille,f,,,,,,
+2294,22,S1,Épicerie,Bouillon de bœuf,300 ml,f,,,,,,
+2295,22,S1,Épicerie,Vin rouge,100 ml,f,,,,,,
+2296,22,S1,Épicerie,Muscade,1 g,f,,,,,,
+2297,22,S1,Protéines,Filet de cabillaud,360 g,f,,,,,,
+2298,22,S1,Conserves,Petits pois surgelés,270 g,f,,,,,,
+2299,22,S1,Épicerie,Thym,2 g,f,,,,,,
+2300,22,S1,Féculents,Pains burger,2 pièces,f,,,,,,
+2301,22,S1,Protéines,Steak haché 15% MG,270 g,f,,,,,,
+2302,22,S1,Épicerie,Cheddar en tranches,55 g,f,,,,,,
+2303,22,S1,Légumes,Salade iceberg,80 g,f,,,,,,
+2304,22,S1,Légumes,Tomate,1 pièce,f,,,,,,
+2305,22,S1,Légumes,Oignon rouge,50 g,f,,,,,,
+2306,22,S1,Épicerie,Cornichons,30 g,f,,,,,,
+2307,22,S1,Épicerie,Mayonnaise,20 g,f,,,,,,
+2308,22,S1,Épicerie,Ketchup,15 g,f,,,,,,
+2309,22,S1,Épicerie,Spaghettis,350 g,f,,,,,,
+2310,22,S1,Épicerie,Guanciale,140 g,f,,,,,,
+2311,22,S1,Épicerie,Pecorino Romano,70 g,f,,,,,,
+2312,22,S1,Épicerie,Gros sel,15 g,f,,,,,,
+2313,22,S1,Protéines,Rôti de porc (filet ou échine),500 g,f,,,,,,
+2314,22,S1,Épicerie,Romarin,3 g,f,,,,,,
+2315,22,S1,Épicerie,Vin blanc sec,100 ml,f,,,,,,
+2316,22,S1,Épicerie,Émincé de bœuf,300 g,f,,,,,,
+2317,22,S1,Légumes,Champignons de Paris,200 g,f,,,,,,
+2318,22,S1,Crémerie,Crème fraîche épaisse,100 ml,f,,,,,,
+2319,22,S1,Épicerie,Paprika doux,5 g,f,,,,,,
+2320,22,S1,Épicerie,Huile de tournesol,15 ml,f,,,,,,
+2321,22,S1,Crémerie,Skyr,2200 g,f,,,,,,
+2322,22,S1,Crémerie,Oeufs,27 pièces,f,,,,,,
+2323,22,S1,Épicerie,Amandes,210 g,f,,,,,,
+2324,23,S1,Protéines,Escalope de dinde,680 g,f,,,,,,
+2325,23,S1,Féculents,Riz basmati,805 g,f,,,,,,
+2326,23,S1,Légumes,Carottes,220 g,f,,,,,,
+2327,23,S1,Légumes,Champignons de Paris,400 g,f,,,,,,
+2328,23,S1,Légumes,Oignon jaune,101 g,f,,,,,,
+2329,23,S1,Crémerie,Crème fraîche épaisse,240 ml,f,,,,,,
+2330,23,S1,Épicerie,Bouillon de volaille,800 ml,f,,,,,,
+2331,23,S1,Crémerie,Beurre,270 g,f,,,,,,
+2332,23,S1,Épicerie,Farine,80 g,f,,,,,,
+2333,23,S1,Épicerie,Vin blanc sec,200 ml,f,,,,,,
+2334,23,S1,Épicerie,Thym frais,5 branches,f,,,,,,
+2335,23,S1,Épicerie,Laurier,4 feuilles,f,,,,,,
+2336,23,S1,Épicerie,Persil plat,65 g,f,,,,,,
+2337,23,S1,Épicerie,Huile d'olive,305 ml,f,,,,,,
+2338,23,S1,Épicerie,Sel,66 g,f,,,,,,
+2339,23,S1,Épicerie,Poivre noir,21 g,f,,,,,,
+2340,23,S1,Épicerie,Œufs,25 pièces,f,,,,,,
+2341,23,S1,Légumes,Radis,420 g,f,,,,,,
+2342,23,S1,Crémerie,Gruyère râpé,225 g,f,,,,,,
+2343,23,S1,Féculents,Pommes de terre,1150 g,f,,,,,,
+2344,23,S1,Épicerie,Ciboulette,10 g,f,,,,,,
+2345,23,S1,Épicerie,Vol-au-vent surgelés,4 pièces,f,,,,,,
+2346,23,S1,Légumes,Carottes nouvelles,1100 g,f,,,,,,
+2347,23,S1,Légumes,Oignon blanc,1 pièce,f,,,,,,
+2348,23,S1,Conserves,Petits pois frais,150 g,f,,,,,,
+2349,23,S1,Protéines,Pavé de saumon,310 g,f,,,,,,
+2350,23,S1,Légumes,Asperges vertes,570 g,f,,,,,,
+2351,23,S1,Féculents,Pommes de terre grenaille,370 g,f,,,,,,
+2352,23,S1,Épicerie,Ail,32 gousses,f,,,,,,
+2353,23,S1,Épicerie,Citron,3 pièce,f,,,,,,
+2354,23,S1,Conserves,Lentilles vertes,200 g,f,,,,,,
+2355,23,S1,Légumes,Oignon rouge,130 g,f,,,,,,
+2356,23,S1,Épicerie,Vinaigre de vin rouge,20 ml,f,,,,,,
+2357,23,S1,Épicerie,Moutarde à l'ancienne,15 g,f,,,,,,
+2358,23,S1,Épicerie,Épinards frais,270 g,f,,,,,,
+2359,23,S1,Légumes,Oignon,541 g,f,,,,,,
+2360,23,S1,Épicerie,Vinaigre balsamique,15 ml,f,,,,,,
+2361,23,S1,Épicerie,Moutarde de Dijon,10 g,f,,,,,,
+2362,23,S1,Épicerie,Épaule d'agneau,1250 g,f,,,,,,
+2363,23,S1,Épicerie,Cœurs d'artichaut,180 g,f,,,,,,
+2364,23,S1,Crémerie,Lait de coco,400 ml,f,,,,,,
+2365,23,S1,Épicerie,Gingembre frais,40 g,f,,,,,,
+2366,23,S1,Épicerie,Curry en poudre,27 g,f,,,,,,
+2367,23,S1,Épicerie,Cumin en poudre,3 g,f,,,,,,
+2368,23,S1,Épicerie,Coriandre en poudre,3 g,f,,,,,,
+2369,23,S1,Légumes,Concentré de tomate,50 g,f,,,,,,
+2370,23,S1,Épicerie,Bouillon de légumes,700 ml,f,,,,,,
+2371,23,S1,Épicerie,Coriandre fraîche,40 g,f,,,,,,
+2372,23,S1,Féculents,Pain de mie,8 tranches,f,,,,,,
+2373,23,S1,Protéines,Jambon blanc,320 g,f,,,,,,
+2374,23,S1,Crémerie,Lait,300 ml,f,,,,,,
+2375,23,S1,Épicerie,Muscade,1 pincée,f,,,,,,
+2376,23,S1,Épicerie,Poivre,1 pincée,f,,,,,,
+2377,23,S1,Épicerie,Naan nature,3 pièces,f,,,,,,
+2378,23,S1,Épicerie,Artichauts,154 g,f,,,,,,
+2379,23,S1,Légumes,Tomates concassées,200 g,f,,,,,,
+2380,23,S1,Épicerie,Curcuma,3 g,f,,,,,,
+2381,23,S1,Épicerie,Cumin moulu,11 g,f,,,,,,
+2382,23,S1,Protéines,Filet de cabillaud,360 g,f,,,,,,
+2383,23,S1,Conserves,Petits pois surgelés,270 g,f,,,,,,
+2384,23,S1,Épicerie,Thym,2 g,f,,,,,,
+2385,23,S1,Féculents,Pains burger,2 pièces,f,,,,,,
+2386,23,S1,Protéines,Steak haché 15% MG,270 g,f,,,,,,
+2387,23,S1,Épicerie,Cheddar en tranches,55 g,f,,,,,,
+2388,23,S1,Légumes,Salade iceberg,80 g,f,,,,,,
+2389,23,S1,Légumes,Tomate,1 pièce,f,,,,,,
+2390,23,S1,Épicerie,Cornichons,30 g,f,,,,,,
+2391,23,S1,Épicerie,Mayonnaise,20 g,f,,,,,,
+2392,23,S1,Épicerie,Ketchup,15 g,f,,,,,,
+2393,23,S1,Légumes,Tomates,600 g,f,,,,,,
+2394,23,S1,Légumes,Poivrons rouges,300 g,f,,,,,,
+2395,23,S1,Épicerie,Paprika doux,8 g,f,,,,,,
+2396,23,S1,Épicerie,Harissa,8 g,f,,,,,,
+2397,23,S1,Épicerie,Sucre,5 g,f,,,,,,
+2398,23,S1,Féculents,Pain pita,120 g,f,,,,,,
+2399,23,S1,Épicerie,Coriandre moulue,5 g,f,,,,,,
+2400,23,S1,Épicerie,Cannelle,2 g,f,,,,,,
+2401,23,S1,Épicerie,Farine de sarrasin,120 g,f,,,,,,
+2402,23,S1,Crémerie,Lait demi-écrémé,250 ml,f,,,,,,
+2403,23,S1,Épicerie,Eau,100 ml,f,,,,,,
+2404,23,S1,Épicerie,Huile de tournesol,15 ml,f,,,,,,
+2405,23,S1,Légumes,Salade verte mélangée,120 g,f,,,,,,
+2406,23,S1,Épicerie,Vinaigrette,15 ml,f,,,,,,
+2407,23,S1,Crémerie,Skyr,2200 g,f,,,,,,
+2408,23,S1,Crémerie,Oeufs,27 pièces,f,,,,,,
+2409,23,S1,Épicerie,Amandes,210 g,f,,,,,,
+2410,24,S1,Épicerie,Épaule d'agneau,400 g,f,,,,,,
+2411,24,S1,Féculents,Semoule de couscous,150 g,f,,,,,,
+2412,24,S1,Légumes,Carottes nouvelles,400 g,f,,,,,,
+2413,24,S1,Épicerie,Artichauts,2 pièces,f,,,,,,
+2414,24,S1,Légumes,Courgettes,200 g,f,,,,,,
+2415,24,S1,Légumes,Oignon,544 pièce,f,,,,,,
+2416,24,S1,Légumes,Tomates,1400 g,f,,,,,,
+2417,24,S1,Épicerie,Bouillon de bœuf,800 ml,f,,,,,,
+2418,24,S1,Légumes,Concentré de tomate,77 c. à soupe,f,,,,,,
+2419,24,S1,Épicerie,Ras-el-hanout,2 c. à café,f,,,,,,
+2420,24,S1,Épicerie,Cumin moulu,5 c. à café,f,,,,,,
+2421,24,S1,Épicerie,Gingembre frais,40 g,f,,,,,,
+2422,24,S1,Épicerie,Ail,42 gousses,f,,,,,,
+2423,24,S1,Épicerie,Huile d'olive,243 c. à soupe,f,,,,,,
+2424,24,S1,Crémerie,Beurre,220 g,f,,,,,,
+2425,24,S1,Épicerie,Coriandre fraîche,30 g,f,,,,,,
+2426,24,S1,Épicerie,Sel,56 c. à café,f,,,,,,
+2427,24,S1,Épicerie,Poivre noir,18 c. à café,f,,,,,,
+2428,24,S1,Légumes,Poivrons rouges,300 g,f,,,,,,
+2429,24,S1,Épicerie,Œufs,24 pièces,f,,,,,,
+2430,24,S1,Épicerie,Paprika doux,8 g,f,,,,,,
+2431,24,S1,Épicerie,Harissa,8 g,f,,,,,,
+2432,24,S1,Épicerie,Sucre,5 g,f,,,,,,
+2433,24,S1,Épicerie,Persil plat,35 g,f,,,,,,
+2434,24,S1,Féculents,Pain pita,120 g,f,,,,,,
+2435,24,S1,Conserves,Pois chiches en conserve,400 g,f,,,,,,
+2436,24,S1,Féculents,Riz basmati,785 g,f,,,,,,
+2437,24,S1,Crémerie,Lait de coco,400 ml,f,,,,,,
+2438,24,S1,Légumes,Tomates pelées en dés,500 g,f,,,,,,
+2439,24,S1,Épicerie,Curry en poudre,23 g,f,,,,,,
+2440,24,S1,Épicerie,Cumin en poudre,3 g,f,,,,,,
+2441,24,S1,Épicerie,Coriandre moulue,2 g,f,,,,,,
+2442,24,S1,Épicerie,Paprika,2 g,f,,,,,,
+2443,24,S1,Épicerie,Yaourt grec,80 g,f,,,,,,
+2444,24,S1,Protéines,Pavé de saumon,310 g,f,,,,,,
+2445,24,S1,Légumes,Asperges vertes,570 g,f,,,,,,
+2446,24,S1,Féculents,Pommes de terre grenaille,770 g,f,,,,,,
+2447,24,S1,Épicerie,Citron,2 pièce,f,,,,,,
+2448,24,S1,Féculents,Pain de mie,8 tranches,f,,,,,,
+2449,24,S1,Protéines,Jambon blanc,320 g,f,,,,,,
+2450,24,S1,Crémerie,Gruyère râpé,225 g,f,,,,,,
+2451,24,S1,Épicerie,Farine,30 g,f,,,,,,
+2452,24,S1,Crémerie,Lait,300 ml,f,,,,,,
+2453,24,S1,Épicerie,Muscade,1 pincée,f,,,,,,
+2454,24,S1,Épicerie,Poivre,3 pincée,f,,,,,,
+2455,24,S1,Protéines,Filet de cabillaud,360 g,f,,,,,,
+2456,24,S1,Conserves,Petits pois surgelés,270 g,f,,,,,,
+2457,24,S1,Épicerie,Thym,4 g,f,,,,,,
+2458,24,S1,Protéines,Filet de porc,320 g,f,,,,,,
+2459,24,S1,Crémerie,Crème fraîche,60 ml,f,,,,,,
+2460,24,S1,Conserves,Petits pois,150 g,f,,,,,,
+2461,24,S1,Épicerie,Bouillon de volaille,350 ml,f,,,,,,
+2462,24,S1,Épicerie,Farine de sarrasin,120 g,f,,,,,,
+2463,24,S1,Crémerie,Lait demi-écrémé,250 ml,f,,,,,,
+2464,24,S1,Épicerie,Eau,100 ml,f,,,,,,
+2465,24,S1,Épicerie,Huile de tournesol,15 ml,f,,,,,,
+2466,24,S1,Légumes,Salade verte mélangée,120 g,f,,,,,,
+2467,24,S1,Épicerie,Vinaigrette,15 ml,f,,,,,,
+2468,24,S1,Protéines,Blanc de poulet,400 g,f,,,,,,
+2469,24,S1,Légumes,Poivron rouge,200 g,f,,,,,,
+2470,24,S1,Légumes,Poivron vert,150 g,f,,,,,,
+2471,24,S1,Protéines,Jambon de Bayonne,60 g,f,,,,,,
+2472,24,S1,Épicerie,Vin blanc sec,80 ml,f,,,,,,
+2473,24,S1,Épicerie,Piment d'Espelette,2 g,f,,,,,,
+2474,24,S1,Épicerie,Thym séché,1 g,f,,,,,,
+2475,24,S1,Épicerie,Laurier,2 feuilles,f,,,,,,
+2476,24,S1,Féculents,Pommes de terre,820 g,f,,,,,,
+2477,24,S1,Épicerie,Épinards frais,270 g,f,,,,,,
+2478,24,S1,Épicerie,Vinaigre balsamique,15 ml,f,,,,,,
+2479,24,S1,Épicerie,Moutarde de Dijon,10 g,f,,,,,,
+2480,24,S1,Épicerie,Spaghettis,350 g,f,,,,,,
+2481,24,S1,Épicerie,Guanciale,140 g,f,,,,,,
+2482,24,S1,Épicerie,Pecorino Romano,70 g,f,,,,,,
+2483,24,S1,Épicerie,Gros sel,15 g,f,,,,,,
+2484,24,S1,Protéines,Saucisses fumées,300 g,f,,,,,,
+2485,24,S1,Légumes,Haricots rouges,200 g,f,,,,,,
+2486,24,S1,Légumes,Oignons,2 pièces,f,,,,,,
+2487,24,S1,Épicerie,Piment de Cayenne,1 pincée,f,,,,,,
+2488,24,S1,Épicerie,Curcuma en poudre,5 g,f,,,,,,
+2489,24,S1,Épicerie,Huile végétale,30 mL,f,,,,,,
+2490,24,S1,Épicerie,Feuilles de laurier,2 pièces,f,,,,,,
+2491,24,S1,Protéines,Côtes de porc,400 g,f,,,,,,
+2492,24,S1,Conserves,Petits pois frais,300 g,f,,,,,,
+2493,24,S1,Épicerie,Thym frais,2 branches,f,,,,,,
+2494,24,S1,Légumes,Radis,270 g,f,,,,,,
+2495,24,S1,Épicerie,Ciboulette,10 g,f,,,,,,
+2496,24,S1,Crémerie,Skyr,2200 g,f,,,,,,
+2497,24,S1,Crémerie,Oeufs,27 pièces,f,,,,,,
+2498,24,S1,Épicerie,Amandes,210 g,f,,,,,,
+2499,25,S1,Épicerie,Émincé de bœuf,400 g,f,,,,,,
+2500,25,S1,Légumes,Champignons de Paris,380 g,f,,,,,,
+2501,25,S1,Légumes,Oignon,570 g,f,,,,,,
+2502,25,S1,Crémerie,Crème fraîche épaisse,350 ml,f,,,,,,
+2503,25,S1,Épicerie,Moutarde de Dijon,25 g,f,,,,,,
+2504,25,S1,Légumes,Concentré de tomate,50 g,f,,,,,,
+2505,25,S1,Épicerie,Bouillon de bœuf,200 ml,f,,,,,,
+2506,25,S1,Féculents,Riz basmati,650 g,f,,,,,,
+2507,25,S1,Crémerie,Beurre,315 g,f,,,,,,
+2508,25,S1,Épicerie,Huile d'olive,265 ml,f,,,,,,
+2509,25,S1,Épicerie,Paprika doux,13 g,f,,,,,,
+2510,25,S1,Épicerie,Persil plat,35 g,f,,,,,,
+2511,25,S1,Épicerie,Sel,61 g,f,,,,,,
+2512,25,S1,Épicerie,Poivre noir,15 g,f,,,,,,
+2513,25,S1,Épicerie,Œufs,23 pièces,f,,,,,,
+2514,25,S1,Épicerie,Cœurs d'artichauts,270 g,f,,,,,,
+2515,25,S1,Crémerie,Gruyère râpé,315 g,f,,,,,,
+2516,25,S1,Féculents,Pommes de terre grenaille,430 g,f,,,,,,
+2517,25,S1,Légumes,Salade verte mélangée,220 g,f,,,,,,
+2518,25,S1,Épicerie,Vinaigrette,70 ml,f,,,,,,
+2519,25,S1,Épicerie,Poivre noir moulu,2 g,f,,,,,,
+2520,25,S1,Épicerie,Herbes de Provence,3 g,f,,,,,,
+2521,25,S1,Protéines,Filet de saumon,380 g,f,,,,,,
+2522,25,S1,Légumes,Asperges vertes,500 g,f,,,,,,
+2523,25,S1,Légumes,Radis roses,370 g,f,,,,,,
+2524,25,S1,Légumes,Carotte nouvelle,120 g,f,,,,,,
+2525,25,S1,Épicerie,Sauce soja,60 ml,f,,,,,,
+2526,25,S1,Épicerie,Miel,55 g,f,,,,,,
+2527,25,S1,Épicerie,Mirin,30 ml,f,,,,,,
+2528,25,S1,Féculents,Vinaigre de riz,15 ml,f,,,,,,
+2529,25,S1,Épicerie,Gingembre frais,30 g,f,,,,,,
+2530,25,S1,Épicerie,Ail,22 gousses,f,,,,,,
+2531,25,S1,Épicerie,Huile de sésame,15 ml,f,,,,,,
+2532,25,S1,Épicerie,Graines de sésame,10 g,f,,,,,,
+2533,25,S1,Épicerie,Ciboulette fraîche,15 g,f,,,,,,
+2534,25,S1,Conserves,Lentilles corail,200 g,f,,,,,,
+2535,25,S1,Crémerie,Lait de coco,200 ml,f,,,,,,
+2536,25,S1,Épicerie,Bouillon de légumes,500 ml,f,,,,,,
+2537,25,S1,Légumes,Tomates,800 g,f,,,,,,
+2538,25,S1,Légumes,Carottes nouvelles,370 g,f,,,,,,
+2539,25,S1,Épicerie,Épinards frais,370 g,f,,,,,,
+2540,25,S1,Épicerie,Curcuma en poudre,5 g,f,,,,,,
+2541,25,S1,Épicerie,Cumin en poudre,3 g,f,,,,,,
+2542,25,S1,Épicerie,Coriandre en poudre,3 g,f,,,,,,
+2543,25,S1,Épicerie,Garam masala,2 g,f,,,,,,
+2544,25,S1,Épicerie,Coriandre fraîche,10 g,f,,,,,,
+2545,25,S1,Féculents,Pommes de terre,1250 g,f,,,,,,
+2546,25,S1,Épicerie,Vinaigre balsamique,15 ml,f,,,,,,
+2547,25,S1,Épicerie,Farine,180 g,f,,,,,,
+2548,25,S1,Épicerie,Eau froide,30 ml,f,,,,,,
+2549,25,S1,Épicerie,Lardons,150 g,f,,,,,,
+2550,25,S1,Crémerie,Lait entier,100 ml,f,,,,,,
+2551,25,S1,Épicerie,Noix de muscade,2 pincée,f,,,,,,
+2552,25,S1,Légumes,Salade verte,280 g,f,,,,,,
+2553,25,S1,Protéines,Dos de cabillaud,350 g,f,,,,,,
+2554,25,S1,Épicerie,Chapelure,60 g,f,,,,,,
+2555,25,S1,Épicerie,Persil plat frais,20 g,f,,,,,,
+2556,25,S1,Épicerie,Parmesan râpé,30 g,f,,,,,,
+2557,25,S1,Épicerie,Citron,1 pièce,f,,,,,,
+2558,25,S1,Épicerie,Sucre,15 g,f,,,,,,
+2559,25,S1,Épicerie,Penne rigate,540 g,f,,,,,,
+2560,25,S1,Épicerie,Guanciale,120 g,f,,,,,,
+2561,25,S1,Légumes,Tomates pelées,400 g,f,,,,,,
+2562,25,S1,Épicerie,Pecorino Romano,80 g,f,,,,,,
+2563,25,S1,Épicerie,Piment rouge,1 pièce,f,,,,,,
+2564,25,S1,Épicerie,Vin blanc sec,210 ml,f,,,,,,
+2565,25,S1,Légumes,Poivrons rouges,300 g,f,,,,,,
+2566,25,S1,Épicerie,Cumin moulu,4 g,f,,,,,,
+2567,25,S1,Épicerie,Harissa,8 g,f,,,,,,
+2568,25,S1,Féculents,Pain pita,120 g,f,,,,,,
+2569,25,S1,Féculents,Pain de mie,8 tranches,f,,,,,,
+2570,25,S1,Protéines,Jambon blanc,320 g,f,,,,,,
+2571,25,S1,Crémerie,Lait,300 ml,f,,,,,,
+2572,25,S1,Épicerie,Poivre blanc,1 pincée,f,,,,,,
+2573,25,S1,Épicerie,Vinaigre de vin,5 ml,f,,,,,,
+2574,25,S1,Féculents,Riz arborio,450 g,f,,,,,,
+2575,25,S1,Épicerie,Parmesan AOP,80 g,f,,,,,,
+2576,25,S1,Épicerie,Bouillon de volaille,1200 ml,f,,,,,,
+2577,25,S1,Épicerie,Échalote,1 pièce,f,,,,,,
+2578,25,S1,Protéines,Côtes de porc,310 g,f,,,,,,
+2579,25,S1,Épicerie,Thym frais,2 branches,f,,,,,,
+2580,25,S1,Épicerie,Farine de sarrasin,120 g,f,,,,,,
+2581,25,S1,Crémerie,Lait demi-écrémé,250 ml,f,,,,,,
+2582,25,S1,Épicerie,Eau,100 ml,f,,,,,,
+2583,25,S1,Épicerie,Huile de tournesol,15 ml,f,,,,,,
+2584,25,S1,Crémerie,Skyr,2200 g,f,,,,,,
+2585,25,S1,Crémerie,Oeufs,27 pièces,f,,,,,,
+2586,25,S1,Épicerie,Amandes,210 g,f,,,,,,
+2587,26,Semaine du 18 au 24 mai,Légumes,Asperges vertes,3 bottes,f,,,,,,
+2588,26,Semaine du 18 au 24 mai,Légumes,Radis roses,3 bottes,f,,,,,,
+2589,26,Semaine du 18 au 24 mai,Légumes,Fenouil,2 bulbes,f,,,,,,
+2590,26,Semaine du 18 au 24 mai,Légumes,Petits pois frais (ou surgelés),"1,2 kg",f,,,,,,
+2591,26,Semaine du 18 au 24 mai,Légumes,Pommes de terre nouvelles,"1,5 kg",f,,,,,,
+2592,26,Semaine du 18 au 24 mai,Légumes,Haricots verts,800 g,f,,,,,,
+2593,26,Semaine du 18 au 24 mai,Légumes,Carottes nouvelles,1 botte,f,,,,,,
+2594,26,Semaine du 18 au 24 mai,Légumes,Navets nouveaux,1 botte,f,,,,,,
+2595,26,Semaine du 18 au 24 mai,Légumes,Courgettes,5 pièces,f,,,,,,
+2596,26,Semaine du 18 au 24 mai,Légumes,Aubergine,1 pièce,f,,,,,,
+2597,26,Semaine du 18 au 24 mai,Légumes,Tomates,4 pièces,f,,,,,,
+2598,26,Semaine du 18 au 24 mai,Légumes,Concombre,2 pièces,f,,,,,,
+2599,26,Semaine du 18 au 24 mai,Légumes,Roquette,1 sachet,f,,,,,,
+2600,26,Semaine du 18 au 24 mai,Légumes,Salade verte,1 pièce,f,,,,,,
+2601,26,Semaine du 18 au 24 mai,Légumes,Patate douce,600 g,f,,,,,,
+2602,26,Semaine du 18 au 24 mai,Légumes,Oignons,4 pièces,f,,,,,,
+2603,26,Semaine du 18 au 24 mai,Légumes,Ail,1 tête,f,,,,,,
+2604,26,Semaine du 18 au 24 mai,Légumes,Edamame (surgelé),300 g,f,,,,,,
+2605,26,Semaine du 18 au 24 mai,Légumes,Gingembre frais,1 morceau,f,,,,,,
+2606,26,Semaine du 18 au 24 mai,Herbes,Menthe fraîche,2 bottes,f,,,,,,
+2607,26,Semaine du 18 au 24 mai,Herbes,Coriandre fraîche,1 botte,f,,,,,,
+2608,26,Semaine du 18 au 24 mai,Herbes,Persil & ciboulette,1 botte chacun,f,,,,,,
+2609,26,Semaine du 18 au 24 mai,Herbes,Basilic,1 botte,f,,,,,,
+2610,26,Semaine du 18 au 24 mai,Herbes,Thym & romarin frais,1 botte,f,,,,,,
+2611,26,Semaine du 18 au 24 mai,Fruits,Citrons,5 pièces,f,,,,,,
+2612,26,Semaine du 18 au 24 mai,Fruits,Pommes,5 pièces,f,,,,,,
+2613,26,Semaine du 18 au 24 mai,Fruits,Poires,3 pièces,f,,,,,,
+2614,26,Semaine du 18 au 24 mai,Fruits,Bananes,3 pièces,f,,,,,,
+2615,26,Semaine du 18 au 24 mai,Fruits,Oranges,2 pièces,f,,,,,,
+2616,26,Semaine du 18 au 24 mai,Fruits,Kiwis,3 pièces,f,,,,,,
+2618,26,Semaine du 18 au 24 mai,Viandes,Sauté de bœuf (paleron/macreuse),600 g,f,,,,,,
+2619,26,Semaine du 18 au 24 mai,Viandes,Steak haché 15% (burger),400 g,f,,,,,,
+2620,26,Semaine du 18 au 24 mai,Viandes,Côtes de porc,2 pièces,f,,,,,,
+2621,26,Semaine du 18 au 24 mai,Charcuterie,Jambon de Paris,250 g,f,,,,,,
+2622,26,Semaine du 18 au 24 mai,Poissons,Dos de cabillaud,400 g,f,,,,,,
+2623,26,Semaine du 18 au 24 mai,Poissons,Pavé de saumon,400 g,f,,,,,,
+2624,26,Semaine du 18 au 24 mai,Crémerie & œufs,Œufs,x18,f,,,,,,
+2625,26,Semaine du 18 au 24 mai,Crémerie & œufs,Skyr 0%,2 kg,f,,,,,,
+2626,26,Semaine du 18 au 24 mai,Crémerie & œufs,Feta,200 g,f,,,,,,
+2627,26,Semaine du 18 au 24 mai,Crémerie & œufs,Parmesan,150 g,f,,,,,,
+2628,26,Semaine du 18 au 24 mai,Crémerie & œufs,Chèvre frais,150 g,f,,,,,,
+2629,26,Semaine du 18 au 24 mai,Crémerie & œufs,Burrata,2 pièces,f,,,,,,
+2630,26,Semaine du 18 au 24 mai,Crémerie & œufs,Cheddar affiné,100 g,f,,,,,,
+2631,26,Semaine du 18 au 24 mai,Crémerie & œufs,Crème fraîche,20 cl,f,,,,,,
+2632,26,Semaine du 18 au 24 mai,Crémerie & œufs,Lait,50 cl,f,,,,,,
+2633,26,Semaine du 18 au 24 mai,Épicerie,Lentilles vertes,400 g,f,,,,,,
+2634,26,Semaine du 18 au 24 mai,Épicerie,Lentilles corail,300 g,f,,,,,,
+2635,26,Semaine du 18 au 24 mai,Épicerie,Pois chiches (bocal),1 bocal,f,,,,,,
+2636,26,Semaine du 18 au 24 mai,Épicerie,Quinoa,400 g,f,,,,,,
+2637,26,Semaine du 18 au 24 mai,Épicerie,Riz à risotto (arborio),300 g,f,,,,,,
+2638,26,Semaine du 18 au 24 mai,Épicerie,Riz basmati,400 g,f,,,,,,
+2639,26,Semaine du 18 au 24 mai,Épicerie,Polenta,200 g,f,,,,,,
+2640,26,Semaine du 18 au 24 mai,Épicerie,Semoule,200 g,f,,,,,,
+2641,26,Semaine du 18 au 24 mai,Épicerie,Gnocchi,500 g,f,,,,,,
+2642,26,Semaine du 18 au 24 mai,Épicerie,Lait de coco,1 boîte,f,,,,,,
+2643,26,Semaine du 18 au 24 mai,Épicerie,Sauce teriyaki,1 flacon,f,,,,,,
+2644,26,Semaine du 18 au 24 mai,Épicerie,Graines de sésame,1 sachet,f,,,,,,
+2645,26,Semaine du 18 au 24 mai,Épicerie,Pignons de pin,50 g,f,,,,,,
+2646,26,Semaine du 18 au 24 mai,Épicerie,Amandes,150 g,f,,,,,,
+2647,26,Semaine du 18 au 24 mai,Épicerie,Noix & noix de cajou,150 g,f,,,,,,
+2648,26,Semaine du 18 au 24 mai,Épicerie,Pâte feuilletée,1 rouleau,f,,,,,,
+2649,26,Semaine du 18 au 24 mai,Épicerie,Vin rouge (cuisine),25 cl,f,,,,,,
+2650,26,Semaine du 18 au 24 mai,Épicerie,Moutarde,1 pot,f,,,,,,
+2651,26,Semaine du 18 au 24 mai,Épicerie,Vinaigre de riz,1 flacon,f,,,,,,
+2652,26,Semaine du 18 au 24 mai,Épicerie,Huile d'olive,1 bouteille,f,,,,,,
+2653,26,Semaine du 18 au 24 mai,Boulangerie,Pain de seigle,1 pièce,f,,,,,,
+2654,26,Semaine du 18 au 24 mai,Boulangerie,Pains à burger,2 pièces,f,,,,,,
+2617,26,Semaine du 18 au 24 mai,Viandes,Poulet fermier (cuisses/découpe),"1,2 kg",f,,,,,,
+2715,27,Semaine du 25 au 31 mai,Viandes & poissons,Bavette d'aloyau,300 g (180 J + 120 Z),t,,,,,,
+2716,27,Semaine du 25 au 31 mai,Viandes & poissons,Cuisses de poulet fermier (blanquette),600 g,f,,,,,,
+2717,27,Semaine du 25 au 31 mai,Viandes & poissons,Cuisses de poulet (tajine),600 g,f,,,,,,
+2718,27,Semaine du 25 au 31 mai,Viandes & poissons,Suprême de pintade,200 g (Julien),f,,,,,,
+2719,27,Semaine du 25 au 31 mai,Viandes & poissons,Pavé de saumon frais,300 g (170 J + 130 Z),f,,,,,,
+2720,27,Semaine du 25 au 31 mai,Viandes & poissons,Dos de lieu jaune,350 g (200 J + 150 Z),f,,,,,,
+2721,27,Semaine du 25 au 31 mai,Viandes & poissons,Jambon de Paris,200 g,f,,,,,,
+2722,27,Semaine du 25 au 31 mai,Crémerie & œufs,Skyr nature 0%,"4,2 kg (9 pots de 500 g)",f,,,,,,
+2723,27,Semaine du 25 au 31 mai,Crémerie & œufs,Œufs frais (cal. moyens),30 (3 boîtes de 10),f,,,,,,
+2724,27,Semaine du 25 au 31 mai,Crémerie & œufs,Crème fraîche épaisse 30%,40 cl,f,,,,,,
+2725,27,Semaine du 25 au 31 mai,Crémerie & œufs,Beurre doux,250 g,f,,,,,,
+2727,27,Semaine du 25 au 31 mai,Crémerie & œufs,Ricotta,400 g,f,,,,,,
+2728,27,Semaine du 25 au 31 mai,Crémerie & œufs,Mozzarella di bufala,150 g,f,,,,,,
+2729,27,Semaine du 25 au 31 mai,Crémerie & œufs,Parmesan AOP (bloc),200 g,f,,,,,,
+2730,27,Semaine du 25 au 31 mai,Crémerie & œufs,Pecorino romano,100 g,f,,,,,,
+2731,27,Semaine du 25 au 31 mai,Crémerie & œufs,Halloumi,100 g,f,,,,,,
+2732,27,Semaine du 25 au 31 mai,Fruits & légumes,Pommes de terre grenailles,500 g,f,,,,,,
+2733,27,Semaine du 25 au 31 mai,Fruits & légumes,Pommes de terre nouvelles (sautées + fondantes),1 kg,f,,,,,,
+2734,27,Semaine du 25 au 31 mai,Fruits & légumes,Pommes de terre rattes,400 g,f,,,,,,
+2735,27,Semaine du 25 au 31 mai,Fruits & légumes,Échalotes,200 g,f,,,,,,
+2736,27,Semaine du 25 au 31 mai,Fruits & légumes,Oignons jaunes,1 kg,f,,,,,,
+2737,27,Semaine du 25 au 31 mai,Fruits & légumes,Ail (têtes),2,f,,,,,,
+2738,27,Semaine du 25 au 31 mai,Fruits & légumes,Gingembre frais,1 rhizome (50 g),f,,,,,,
+2739,27,Semaine du 25 au 31 mai,Fruits & légumes,Carottes nouvelles,800 g,f,,,,,,
+2740,27,Semaine du 25 au 31 mai,Fruits & légumes,Champignons de Paris,250 g,f,,,,,,
+2741,27,Semaine du 25 au 31 mai,Fruits & légumes,Courgettes,1 kg,f,,,,,,
+2742,27,Semaine du 25 au 31 mai,Fruits & légumes,Aubergines,600 g (2),f,,,,,,
+2743,27,Semaine du 25 au 31 mai,Fruits & légumes,Poivron rouge,1,f,,,,,,
+2744,27,Semaine du 25 au 31 mai,Fruits & légumes,Haricots verts frais,800 g,f,,,,,,
+2745,27,Semaine du 25 au 31 mai,Fruits & légumes,Fèves fraîches en cosse,"1,2 kg",f,,,,,,
+2746,27,Semaine du 25 au 31 mai,Fruits & légumes,Asperges vertes,1 kg (2 bottes),f,,,,,,
+2747,27,Semaine du 25 au 31 mai,Fruits & légumes,Brocoli,1 grosse tête (500 g),f,,,,,,
+2749,27,Semaine du 25 au 31 mai,Fruits & légumes,Tomates fraîches (minestrone),4,f,,,,,,
+2750,27,Semaine du 25 au 31 mai,Fruits & légumes,Radis roses,1 botte,f,,,,,,
+2751,27,Semaine du 25 au 31 mai,Fruits & légumes,Citrons jaunes,5,f,,,,,,
+2752,27,Semaine du 25 au 31 mai,Fruits & légumes,Bananes,3,f,,,,,,
+2753,27,Semaine du 25 au 31 mai,Fruits & légumes,Pommes,6,f,,,,,,
+2754,27,Semaine du 25 au 31 mai,Fruits & légumes,Fruits de saison (collations diverses),5,f,,,,,,
+2755,27,Semaine du 25 au 31 mai,Aromates frais,Coriandre fraîche,2 bottes,f,,,,,,
+2756,27,Semaine du 25 au 31 mai,Aromates frais,Persil plat,1 botte,f,,,,,,
+2757,27,Semaine du 25 au 31 mai,Aromates frais,Basilic,1 grosse botte,f,,,,,,
+2759,27,Semaine du 25 au 31 mai,Aromates frais,Ciboulette,1 botte,f,,,,,,
+2760,27,Semaine du 25 au 31 mai,Aromates frais,Thym frais,1 botte,f,,,,,,
+2761,27,Semaine du 25 au 31 mai,Aromates frais,Romarin,1 brin,f,,,,,,
+2762,27,Semaine du 25 au 31 mai,Légumineuses,Haricots rouges (boîte),1 × 400 g,f,,,,,,
+2763,27,Semaine du 25 au 31 mai,Légumineuses,Maïs doux (petite boîte),1 × 150 g,f,,,,,,
+2764,27,Semaine du 25 au 31 mai,Légumineuses,Pois chiches (boîte),3 × 400 g,f,,,,,,
+2765,27,Semaine du 25 au 31 mai,Légumineuses,Haricots blancs (boîte),1 × 400 g,f,,,,,,
+2766,27,Semaine du 25 au 31 mai,Féculents & pains,Riz basmati,600 g,f,,,,,,
+2767,27,Semaine du 25 au 31 mai,Féculents & pains,Riz arborio (risotto),300 g,f,,,,,,
+2768,27,Semaine du 25 au 31 mai,Féculents & pains,Riz long grain (pilaf),200 g,f,,,,,,
+2769,27,Semaine du 25 au 31 mai,Féculents & pains,Semoule fine couscous,200 g,f,,,,,,
+2771,27,Semaine du 25 au 31 mai,Féculents & pains,Plaques de lasagnes,250 g,f,,,,,,
+2772,27,Semaine du 25 au 31 mai,Féculents & pains,Orecchiette,400 g,f,,,,,,
+2773,27,Semaine du 25 au 31 mai,Féculents & pains,Pâtes courtes type ditalini (minestrone),100 g,f,,,,,,
+2774,27,Semaine du 25 au 31 mai,Féculents & pains,Pain de campagne,1 grand pain,f,,,,,,
+2775,27,Semaine du 25 au 31 mai,Épicerie & condiments,Tomates concassées (boîte),2 × 400 g,f,,,,,,
+2776,27,Semaine du 25 au 31 mai,Épicerie & condiments,Coulis de tomate,1 × 500 g,f,,,,,,
+2777,27,Semaine du 25 au 31 mai,Épicerie & condiments,Citron confit,2,f,,,,,,
+2778,27,Semaine du 25 au 31 mai,Épicerie & condiments,Olives vertes dénoyautées,100 g,f,,,,,,
+2780,27,Semaine du 25 au 31 mai,Épicerie & condiments,Poivre vert en saumure,1 petit pot,f,,,,,,
+2781,27,Semaine du 25 au 31 mai,Épicerie & condiments,Pesto au basilic,1 pot,f,,,,,,
+2782,27,Semaine du 25 au 31 mai,Épicerie & condiments,Moutarde de Dijon,1 pot,f,,,,,,
+2783,27,Semaine du 25 au 31 mai,Épicerie & condiments,Huile d'olive vierge extra,RAS — vérifier stock,f,,,,,,
+2784,27,Semaine du 25 au 31 mai,Épicerie & condiments,Vinaigre de vin,RAS — vérifier stock,f,,,,,,
+2785,27,Semaine du 25 au 31 mai,Épicerie & condiments,Bouillon de volaille,1 cube,f,,,,,,
+2786,27,Semaine du 25 au 31 mai,Épicerie & condiments,Bouillon de légumes,2 cubes,f,,,,,,
+2787,27,Semaine du 25 au 31 mai,Épicerie & condiments,Farine T55,100 g,f,,,,,,
+2788,27,Semaine du 25 au 31 mai,Épicerie & condiments,Cumin moulu,1 pot,f,,,,,,
+2789,27,Semaine du 25 au 31 mai,Épicerie & condiments,Paprika fumé,1 pot,f,,,,,,
+2790,27,Semaine du 25 au 31 mai,Épicerie & condiments,Mélange chana masala (curry indien),1 pot,f,,,,,,
+2791,27,Semaine du 25 au 31 mai,Épicerie & condiments,Ras el hanout,1 pot,f,,,,,,
+2792,27,Semaine du 25 au 31 mai,Épicerie & condiments,Vin blanc sec (cuisine),1 bouteille 75 cl,f,,,,,,
+2793,27,Semaine du 25 au 31 mai,Oléagineux,Amandes entières,200 g,f,,,,,,
+2794,27,Semaine du 25 au 31 mai,Oléagineux,Cerneaux de noix,80 g,f,,,,,,
+2795,27,Semaine du 25 au 31 mai,Épicerie & condiments,Pâte d'ají amarillo (épicerie péruvienne / sud-américaine),1 pot (200 g),f,,,,,,
+2796,27,Semaine du 25 au 31 mai,Épicerie & condiments,Vinaigre blanc (escabeche),1 bouteille 50 cl,f,,,,,,
+2797,27,Semaine du 25 au 31 mai,Fruits & légumes,Oignons rouges,2 (200 g),f,,,,,,
+2798,27,Semaine du 25 au 31 mai,Fruits & légumes,Citrons verts,4,f,,,,,,

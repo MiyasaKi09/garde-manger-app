@@ -1309,9 +1309,9 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 2414,27,Zoé,2026-05-25,diner,standard,"Bavette d'aloyau, sauce au poivre vert, pommes grenailles rôties au thym & haricots verts à l'ail (portion Zoé)",540.0,42.0,40.0,22.0,6.0,Bavette poivre grenailles
 2415,27,Zoé,2026-05-25,collation,standard,150g skyr 0% + 1 banane,200.0,18.0,16.0,7.0,3.0,
 2416,27,Julien,2026-05-27,pdj,léger,250g skyr 0% + 80g jambon de Paris + 1 fruit,320.0,41.0,30.0,4.0,3.0,
-2417,27,Julien,2026-05-27,dejeuner,léger,"Saumon poché froid, sauce verte yaourt-aneth-câpres, taboulé de boulgour aux herbes fraîches & concombre (batch préparé mardi soir)",700.0,46.0,65.0,26.0,8.0,Saumon poché froid
 2418,27,Julien,2026-05-27,diner,léger,"Œufs cocotte aux asperges vertes, ricotta & ciboulette, mouillettes de pain de campagne grillé",600.0,40.0,48.0,25.0,6.0,Œufs cocotte asperges
 2419,27,Julien,2026-05-27,collation,léger,200g skyr 0% + 1 pomme + 12g amandes,250.0,27.0,24.0,7.0,4.0,
-2420,27,Zoé,2026-05-27,dejeuner,léger,"Saumon poché froid, sauce verte yaourt-aneth-câpres, taboulé de boulgour aux herbes & concombre (portion Zoé)",490.0,32.0,50.0,18.0,6.0,Saumon poché froid
 2421,27,Zoé,2026-05-27,diner,léger,"Œufs cocotte aux asperges vertes, ricotta & ciboulette, mouillettes de pain grillé (portion Zoé)",450.0,28.0,36.0,20.0,5.0,Œufs cocotte asperges
 2422,27,Zoé,2026-05-27,collation,léger,150g skyr 0% + 1 pomme,200.0,18.0,16.0,6.0,3.0,
+2423,27,Julien,2026-05-27,dejeuner,léger,"Escabeche de saumon péruvien — saumon mariné à froid au vinaigre, ají amarillo, oignon rouge & carottes confites, riz vert à la coriandre & citron vert, maïs choclo (batch préparé mardi soir, servi froid)",700.0,46.0,70.0,27.0,7.0,Escabeche saumon péruvien
+2424,27,Zoé,2026-05-27,dejeuner,léger,"Escabeche de saumon péruvien — saumon mariné au vinaigre, ají amarillo, oignon rouge & carottes, riz vert à la coriandre (portion Zoé)",490.0,32.0,50.0,18.0,6.0,Escabeche saumon péruvien

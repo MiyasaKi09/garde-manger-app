@@ -1,2 +1,3 @@
 id,user_id,import_id,target_days,target_start,target_end,status,created_at,target_meals,user_instructions
 1,9055926b-ed29-49f1-96b8-fc717973b333,27,"{2026-05-25,2026-05-27}",2026-05-25,2026-05-31,processing,2026-05-24 14:55:52.337536+00,,
+2,9055926b-ed29-49f1-96b8-fc717973b333,27,,2026-05-25,2026-05-31,done,2026-05-24 19:00:43.846261+00,"[{""date"": ""2026-05-27"", ""type"": ""dejeuner""}]",fait moi un plat d'inspiration péruvienne
