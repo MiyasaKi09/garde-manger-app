@@ -166,6 +166,15 @@
   border-bottom: 1px solid var(--line);
 }
 
+/* Food emoji */
+.courses-item-emoji {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
 /* Name + notes vertical stack */
 .courses-item-label {
   flex: 1;

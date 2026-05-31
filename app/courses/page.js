@@ -6,6 +6,7 @@ import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
 import { ShoppingCart, Check, Package } from 'lucide-react'
 import Link from 'next/link'
+import { getFoodEmoji } from '@/lib/foodEmoji'
 import './courses.css'
 
 export default function CoursesPage() {
@@ -256,6 +257,7 @@ export default function CoursesPage() {
                       <div className={`courses-checkbox${item.checked ? ' checked' : ''}`}>
                         {item.checked && <Check size={13} color="#fff" />}
                       </div>
+                      <span className="courses-item-emoji">{getFoodEmoji(item.product_name, item.category)}</span>
                       <div className="courses-item-label">
                         <span className={`courses-item-name${item.checked ? ' checked' : ''}`}>
                           {item.product_name}
