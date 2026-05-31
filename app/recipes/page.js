@@ -20,6 +20,8 @@ export default function RecipesPage() {
   const [inventoryStatus, setInventoryStatus] = useState({});
   const [error, setError] = useState(null);
   const [selectedRecipeToCook, setSelectedRecipeToCook] = useState(null);
+  const [fetchingImages, setFetchingImages] = useState(false);
+  const [fetchResult, setFetchResult] = useState(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -398,6 +400,29 @@ export default function RecipesPage() {
     setFilteredRecipes(filtered);
   }
 
+  async function handleFetchImages() {
+    setFetchingImages(true);
+    setFetchResult(null);
+    try {
+      const res = await fetch('/api/recipes/fetch-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ batch: true }),
+      });
+      const data = await res.json();
+      if (data.error) {
+        setFetchResult({ error: data.error });
+      } else {
+        setFetchResult({ updated: data.updated, total: data.total });
+        if (data.updated > 0) fetchRecipes();
+      }
+    } catch (err) {
+      setFetchResult({ error: err.message });
+    } finally {
+      setFetchingImages(false);
+    }
+  }
+
   // Statistiques calculées
   const totalRecipes = recipes.length;
   const availableRecipes = filteredRecipes.filter(recipe => {
@@ -480,7 +505,38 @@ export default function RecipesPage() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
+          <button
+            onClick={handleFetchImages}
+            disabled={fetchingImages}
+            className="add-recipe-btn"
+            style={{
+              background: fetchingImages
+                ? '#6b7280'
+                : 'linear-gradient(135deg, #3b82f6, #2563eb)',
+              cursor: fetchingImages ? 'wait' : 'pointer',
+            }}
+          >
+            {fetchingImages ? 'Chargement...' : 'Photos auto'}
+          </button>
         </div>
+
+        {fetchResult && (
+          <div style={{
+            marginTop: 8,
+            padding: '8px 14px',
+            borderRadius: 10,
+            fontSize: 13,
+            background: fetchResult.error
+              ? 'rgba(239, 68, 68, 0.1)'
+              : 'rgba(34, 197, 94, 0.1)',
+            color: fetchResult.error ? '#dc2626' : '#16a34a',
+            border: `1px solid ${fetchResult.error ? 'rgba(239,68,68,0.2)' : 'rgba(34,197,94,0.2)'}`,
+          }}>
+            {fetchResult.error
+              ? fetchResult.error
+              : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
+          </div>
+        )}
 
         <div className="stats-controls">
           <div className="stats-inline">
