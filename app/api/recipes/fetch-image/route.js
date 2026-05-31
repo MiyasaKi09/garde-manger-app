@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabaseClient'
+import { authenticateRequest } from '@/lib/apiAuth'
 
 async function searchPexels(recipeName, apiKey) {
   const clean = recipeName.replace(/\(.*?\)/g, '').replace(/\d+/g, '').trim()
@@ -22,13 +22,14 @@ export async function POST(req) {
   const PEXELS_KEY = process.env.PEXELS_API_KEY
   if (!PEXELS_KEY) {
     return Response.json(
-      { error: 'Clé API Pexels manquante. Ajoutez PEXELS_API_KEY dans votre fichier .env.local puis redémarrez le serveur.' },
+      { error: 'Clé API Pexels manquante. Ajoutez PEXELS_API_KEY dans .env.local puis redémarrez.' },
       { status: 400 }
     )
   }
 
-  if (!supabase) {
-    return Response.json({ error: 'Supabase non configuré' }, { status: 500 })
+  const { supabase, user, error: authError } = await authenticateRequest(req)
+  if (authError || !user) {
+    return Response.json({ error: 'Non authentifié' }, { status: 401 })
   }
 
   const body = await req.json()

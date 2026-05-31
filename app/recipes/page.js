@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
+import { authFetch } from '@/lib/authFetch';
 import RecipeListCard from './components/RecipeListCard';
 import './recipes.css';
 
@@ -239,7 +240,7 @@ export default function RecipesPage() {
     setFetchingImages(true);
     setFetchResult(null);
     try {
-      const res = await fetch('/api/recipes/fetch-image', {
+      const res = await authFetch('/api/recipes/fetch-image', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ batch: true }),
