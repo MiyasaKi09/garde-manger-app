@@ -6,6 +6,7 @@ import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
 import { ShoppingCart, Check, ChevronLeft, Package } from 'lucide-react'
 import Link from 'next/link'
+import { getFoodEmoji } from '@/lib/foodEmoji'
 
 export default function CoursesPage() {
   const router = useRouter()
@@ -420,6 +421,7 @@ export default function CoursesPage() {
                 }}>
                   {item.checked && <Check size={13} color="#fff" />}
                 </div>
+                <span style={S.itemEmoji}>{getFoodEmoji(item.product_name, item.category)}</span>
                 <span style={{
                   ...S.itemName,
                   textDecoration: item.checked ? 'line-through' : 'none',
@@ -590,6 +592,13 @@ const S = {
   checkboxChecked: {
     background: '#16a34a',
     borderColor: '#16a34a',
+  },
+  itemEmoji: {
+    fontSize: 20,
+    lineHeight: 1,
+    flexShrink: 0,
+    width: 28,
+    textAlign: 'center',
   },
   itemName: {
     flex: 1,

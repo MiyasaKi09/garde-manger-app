@@ -227,19 +227,41 @@
 
 .card-header {
   display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.product-emoji {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.card-header-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 0.8rem; /* Margin réduite */
-  padding-bottom: 0.8rem; /* Padding réduit */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  gap: 8px;
 }
 
 .card-header h3 {
   color: #2e7d32;
-  font-size: 1.1rem; /* Taille réduite */
+  font-size: 1.1rem;
   margin: 0;
   flex: 1;
-  font-weight: 600; /* Légèrement plus gras */
+  font-weight: 600;
   line-height: 1.3;
 }
 

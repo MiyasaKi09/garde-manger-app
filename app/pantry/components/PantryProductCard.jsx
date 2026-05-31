@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { getQuickConversions } from '../../../lib/quickConversions';
 import { capitalizeProduct, getEffectiveExpiration, daysUntil } from './pantryUtils';
+import { getFoodEmoji } from '@/lib/foodEmoji';
 
 export default function PantryProductCard({ item, onConsume, onEdit, onDelete, onUpdateQuantity }) {
   const [showActions, setShowActions] = useState(false);
@@ -70,13 +71,18 @@ export default function PantryProductCard({ item, onConsume, onEdit, onDelete, o
     setShowActions(false);
   };
 
+  const emoji = getFoodEmoji(item.product_name, item.category_name);
+
   return (
     <div className="product-card" onClick={handleCardClick} style={{cursor: 'pointer'}}>
       <div className="card-header">
-        <h3>{capitalizeProduct(item.product_name) || 'Sans nom'}</h3>
-        {item.category_name && (
-          <span className="category-badge">{item.category_name}</span>
-        )}
+        <span className="product-emoji">{emoji}</span>
+        <div className="card-header-text">
+          <h3>{capitalizeProduct(item.product_name) || 'Sans nom'}</h3>
+          {item.category_name && (
+            <span className="category-badge">{item.category_name}</span>
+          )}
+        </div>
       </div>
 
       <div className="card-body">
