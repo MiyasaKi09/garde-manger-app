@@ -1247,6 +1247,7 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 2338,26,Zoé,2026-05-21,collation,standard,Collation — 150 g skyr 0 % & 15 g amandes,200.0,14.0,20.0,8.0,3.0,
 2339,26,Julien,2026-05-22,pdj,léger,"PDJ (variante B) — 250 g skyr 0 %, 80 g jambon de Paris, 1 orange",330.0,42.0,31.0,4.0,3.0,
 2340,26,Julien,2026-05-22,dejeuner,léger,"Velouté de petits pois à la menthe, omelette fines herbes & radis, pain de seigle",680.0,52.0,80.0,22.0,16.0,
+2466,28,Zoé,2026-06-06,collation,gourmand,"100g skyr nature, 1 fruit & 5g amandes",180.0,11.0,25.0,4.0,5.0,
 2341,26,Julien,2026-05-22,diner,léger,"Pavé de saumon teriyaki, riz vinaigré & edamame, salade de concombre au sésame",680.0,55.0,46.0,24.0,14.0,
 2342,26,Julien,2026-05-22,collation,léger,Collation — 200 g skyr 0 % & 1 kiwi,210.0,18.0,33.0,2.0,3.0,
 2343,26,Zoé,2026-05-22,dejeuner,léger,Velouté de petits pois à la menthe & omelette fines herbes-radis (portion Zoé),560.0,38.0,50.0,20.0,9.0,
@@ -1315,3 +1316,51 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 2422,27,Zoé,2026-05-27,collation,léger,150g skyr 0% + 1 pomme,200.0,18.0,16.0,6.0,3.0,
 2423,27,Julien,2026-05-27,dejeuner,léger,"Escabeche de saumon péruvien — saumon mariné à froid au vinaigre, ají amarillo, oignon rouge & carottes confites, riz vert à la coriandre & citron vert, maïs choclo (batch préparé mardi soir, servi froid)",700.0,46.0,70.0,27.0,7.0,Escabeche saumon péruvien
 2424,27,Zoé,2026-05-27,dejeuner,léger,"Escabeche de saumon péruvien — saumon mariné au vinaigre, ají amarillo, oignon rouge & carottes, riz vert à la coriandre (portion Zoé)",490.0,32.0,50.0,18.0,6.0,Escabeche saumon péruvien
+2425,28,Julien,2026-06-01,pdj,standard,200g skyr nature & 3 œufs durs,360.0,41.0,9.0,17.0,0.0,
+2426,28,Julien,2026-06-01,dejeuner,standard,"Mafé végétal d'Afrique de l'Ouest — patate douce, pois chiches & sauce arachide-tomate, riz basmati, légumes fondants (carotte, oignon, chou), coriandre fraîche (batch préparé dimanche soir)",780.0,28.0,121.0,21.0,27.0,Mafé végétal arachide
+2427,28,Julien,2026-06-01,diner,standard,"Filet de merlu en croûte panko-citron-persil, frites de pommes de terre rôties au four, écrasée de petits pois à la menthe & pickles d'oignons rouges",830.0,68.0,76.0,27.0,12.0,Merlu panko & frites four
+2428,28,Julien,2026-06-01,collation,standard,"200g skyr nature, 1 pomme & 5g amandes",200.0,20.0,22.0,3.0,3.0,
+2467,28,Julien,2026-06-07,pdj,léger,"250g skyr nature, 80g jambon blanc & 1 pomme",340.0,40.0,37.0,4.0,5.0,
+2429,28,Zoé,2026-06-01,dejeuner,standard,"Mafé végétal d'Afrique de l'Ouest — patate douce, pois chiches & sauce arachide, riz basmati (portion Zoé)",550.0,21.0,89.0,13.0,19.0,Mafé végétal arachide
+2430,28,Zoé,2026-06-01,diner,standard,"Filet de merlu en croûte panko-citron, frites de PDT au four & écrasée petits pois menthe (portion Zoé)",600.0,46.0,58.0,20.0,9.0,Merlu panko & frites four
+2431,28,Zoé,2026-06-01,collation,standard,"100g skyr nature, 1 fruit & 5g amandes",180.0,11.0,25.0,4.0,5.0,
+2432,28,Julien,2026-06-02,pdj,gourmand,200g skyr nature & 3 œufs durs,360.0,41.0,9.0,17.0,0.0,
+2433,28,Julien,2026-06-02,dejeuner,gourmand,"Bibimbap coréen — bœuf bulgogi mariné soja-poire-gingembre, tofu fumé, riz, légumes sautés (carotte, courgette, champignons), kimchi maison, œuf au plat & sauce gochujang, sésame grillé (batch préparé lundi soir)",850.0,57.0,63.0,39.0,9.0,Bibimbap bœuf bulgogi
+2434,28,Julien,2026-06-02,diner,gourmand,"Khachapuri géorgien adjarien — pain en barque garni de sulguni & mozzarella fondus, œuf coulant & beurre, salade fraîche tomates-concombre-aneth, olives noires Kalamata",730.0,38.0,68.0,34.0,2.0,Khachapuri & salade
+2435,28,Julien,2026-06-02,collation,gourmand,"200g skyr nature, 1 pomme & 5g amandes",200.0,20.0,22.0,3.0,3.0,
+2436,28,Zoé,2026-06-02,dejeuner,gourmand,"Bibimbap coréen — bœuf bulgogi, riz, légumes sautés, kimchi, œuf & gochujang (portion Zoé)",580.0,40.0,47.0,25.0,6.0,Bibimbap bœuf bulgogi
+2437,28,Zoé,2026-06-02,diner,gourmand,"Khachapuri géorgien sulguni-mozzarella & œuf, salade tomates-concombre-aneth (portion Zoé)",750.0,32.0,62.0,40.0,6.0,Khachapuri & salade
+2438,28,Zoé,2026-06-02,collation,gourmand,"100g skyr nature, 1 fruit & 5g amandes",180.0,11.0,25.0,4.0,5.0,
+2439,28,Julien,2026-06-03,pdj,standard,200g skyr nature & 3 œufs durs,360.0,41.0,9.0,17.0,0.0,
+2442,28,Julien,2026-06-03,collation,standard,"200g skyr nature, 1 pomme & 5g amandes",200.0,20.0,22.0,3.0,3.0,
+2445,28,Zoé,2026-06-03,collation,standard,"100g skyr nature, 1 fruit & 5g amandes",180.0,11.0,25.0,4.0,5.0,
+2446,28,Julien,2026-06-04,pdj,léger,"250g skyr nature, 80g jambon blanc & 1 pomme",340.0,40.0,37.0,4.0,5.0,
+2447,28,Julien,2026-06-04,dejeuner,léger,"Tom Kha gaï thaïlandais — poulet poché dans un bouillon coco-citronnelle-galanga-kaffir, champignons & pousses de bambou, riz jasmin, coriandre & citron vert (batch préparé mercredi soir)",580.0,49.0,36.0,25.0,2.0,Tom Kha poulet
+2448,28,Julien,2026-06-04,diner,léger,"Frittata aux courgettes, pommes de terre vapeur, féta & menthe, salade de pousses, fenouil cru & tomates cerises, pain de seigle",670.0,45.0,56.0,45.0,13.0,Frittata courgettes-PDT
+2449,28,Julien,2026-06-04,collation,léger,"200g skyr nature, 1 pomme & 5g amandes",200.0,20.0,22.0,3.0,3.0,
+2450,28,Zoé,2026-06-04,dejeuner,léger,"Tom Kha thaï version végétarienne — tofu ferme poché dans un bouillon coco-citronnelle-galanga, champignons & pousses de bambou, riz jasmin, coriandre (jour végé Zoé)",440.0,22.0,32.0,27.0,4.0,Tom Kha tofu
+2451,28,Zoé,2026-06-04,diner,léger,"Frittata aux courgettes, PDT, féta & menthe, salade pousses-fenouil cru & pain de seigle (portion Zoé)",470.0,30.0,31.0,25.0,8.0,Frittata courgettes-PDT
+2452,28,Zoé,2026-06-04,collation,léger,"100g skyr nature, 1 fruit & 5g amandes",180.0,11.0,25.0,4.0,5.0,
+2453,28,Julien,2026-06-05,pdj,standard,200g skyr nature & 3 œufs durs,360.0,41.0,9.0,17.0,0.0,
+2454,28,Julien,2026-06-05,dejeuner,standard,"Pörkölt hongrois de porc au paprika fumé & doux, oignons confits & poivrons, galuska (gnocchi rustiques de pommes de terre), pointe de crème fraîche & persil plat (batch préparé jeudi soir)",820.0,62.0,50.0,36.0,5.0,Pörkölt porc & galuska
+2455,28,Julien,2026-06-05,diner,standard,"Pizza margherita maison — pâte à pizza fine, sauce tomate San Marzano, mozzarella di bufala, basilic frais & filet d'huile d'olive, salade verte vinaigrette balsamique & féta émiettée",695.0,38.0,63.0,33.0,6.0,Pizza margherita
+2456,28,Julien,2026-06-05,collation,standard,"200g skyr nature, 1 pomme & 5g amandes",200.0,20.0,22.0,3.0,3.0,
+2457,28,Zoé,2026-06-05,dejeuner,standard,"Pörkölt hongrois de porc au paprika & galuska, crème fraîche & persil (portion Zoé)",540.0,38.0,38.0,25.0,4.0,Pörkölt porc & galuska
+2458,28,Zoé,2026-06-05,diner,standard,"Pizza margherita maison mozzarella di bufala & basilic, salade vinaigrette balsamique-féta (portion Zoé)",600.0,30.0,51.0,32.0,4.0,Pizza margherita
+2459,28,Zoé,2026-06-05,collation,standard,"100g skyr nature, 1 fruit & 5g amandes",180.0,11.0,25.0,4.0,5.0,
+2460,28,Julien,2026-06-06,pdj,gourmand,200g skyr nature & 3 œufs durs,360.0,41.0,9.0,17.0,0.0,
+2461,28,Julien,2026-06-06,dejeuner,gourmand,"Paella mixta valenciana — riz bomba safrané au fumet, poulet doré & chorizo doux, poivrons rouges, petits pois, tomates & oignons confits, paprika & ail (cuisson dimanche midi en cocotte)",830.0,45.0,89.0,34.0,7.0,Paella poulet-chorizo
+2462,28,Julien,2026-06-06,diner,gourmand,"Magret de canard rôti rosé, sauce cerises griottes au balsamique, gratin dauphinois crémeux à l'ail & noix de muscade, haricots verts à l'échalote & beurre noisette",820.0,43.0,53.0,49.0,9.0,Magret canard & gratin
+2463,28,Julien,2026-06-06,collation,gourmand,"200g skyr nature, 1 pomme & 5g amandes",200.0,20.0,22.0,3.0,3.0,
+2464,28,Zoé,2026-06-06,dejeuner,gourmand,"Paella mixta valenciana — riz bomba safrané, poulet & chorizo, poivrons & petits pois (portion Zoé)",680.0,37.0,72.0,28.0,6.0,Paella poulet-chorizo
+2465,28,Zoé,2026-06-06,diner,gourmand,"Magret de canard rôti, sauce cerises-balsamique, gratin dauphinois & haricots verts à l'échalote (portion Zoé)",670.0,34.0,45.0,38.0,7.0,Magret canard & gratin
+2468,28,Julien,2026-06-07,dejeuner,léger,"Niçoise revisitée aux sardines fraîches grillées — sardines de petit bateau saisies à la plancha, pommes de terre rattes vapeur, haricots verts croquants, œuf mollet, olives noires de Nice, tomates anciennes, pois chiches, féta émiettée, basilic & vinaigrette aux anchois",1000.0,75.0,82.0,41.0,18.0,Niçoise sardines fraîches
+2469,28,Julien,2026-06-07,diner,léger,"Velouté de courgettes au curry doux & lait de coco léger, croûtons à l'ail, tartine d'avocat-radis-féta sur pain de campagne grillé",480.0,14.0,59.0,20.0,11.0,Velouté & tartine avocat
+2470,28,Julien,2026-06-07,collation,léger,"200g skyr nature, 1 pomme & 5g amandes",200.0,20.0,22.0,3.0,3.0,
+2471,28,Zoé,2026-06-07,dejeuner,léger,"Niçoise aux sardines fraîches grillées, rattes vapeur, haricots verts, œuf mollet, olives, tomates, pois chiches & féta (portion Zoé)",760.0,54.0,62.0,34.0,14.0,Niçoise sardines fraîches
+2472,28,Zoé,2026-06-07,diner,léger,"Velouté de courgettes au curry doux, croûtons à l'ail & tartine avocat-radis-féta (portion Zoé)",410.0,13.0,51.0,19.0,9.0,Velouté & tartine avocat
+2473,28,Zoé,2026-06-07,collation,léger,"100g skyr nature, 1 fruit & 5g amandes",180.0,11.0,25.0,4.0,5.0,
+2440,28,Julien,2026-06-03,dejeuner,standard,"Aubergines alla parmigiana — aubergines grillées, sauce tomate basilic, mozzarella & parmesan gratinés, œuf au plat doré, mix pois chiches & boulgour aux herbes (batch préparé mardi soir)",800.0,52.0,76.0,33.0,19.0,Parmigiana & pois chiches
+2441,28,Julien,2026-06-03,diner,standard,"Falafels maison à la coriandre & cumin, tabbouleh libanais menthe-persil-grenade, sauce yaourt-tahini citronnée, féta émiettée, œuf mollet & pousses de salade (version allégée)",720.0,35.0,64.0,35.0,15.0,Falafels & tabbouleh
+2443,28,Zoé,2026-06-03,dejeuner,standard,Aubergines alla parmigiana & mix pois chiches-boulgour aux herbes (portion Zoé),560.0,35.0,52.0,22.0,14.0,Parmigiana & pois chiches
+2444,28,Zoé,2026-06-03,diner,standard,"Falafels coriandre, tabbouleh menthe-grenade, sauce yaourt-tahini, féta & œuf mollet (portion Zoé)",580.0,30.0,52.0,30.0,12.0,Falafels & tabbouleh
