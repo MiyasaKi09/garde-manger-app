@@ -38,6 +38,7 @@ export default function MinimalistHeader() {
   const navItems = useMemo(() => ([
     { href: '/', label: 'Accueil' },
     { href: '/pantry', label: 'Stock' },
+    { href: '/recipes', label: 'Recettes' },
     { href: '/planning', label: 'Planning' },
     { href: '/courses', label: 'Courses' },
     { href: '/nutrition', label: 'Nutrition' },
