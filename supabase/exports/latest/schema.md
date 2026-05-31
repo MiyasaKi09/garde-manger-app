@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Sun May 31 21:52:12 UTC 2026_
+_Généré le : Sun May 31 21:58:15 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -243,6 +243,7 @@ _Généré le : Sun May 31 21:52:12 UTC 2026_
  - created_at :: timestamp with time zone default now()
  - rating :: integer
  - cook_count :: integer default 0
+ - image_url :: text
 
 ### instructions
  - id :: integer default nextval('instructions_id_seq'::regclass) NOT NULL
@@ -765,7 +766,7 @@ _Généré le : Sun May 31 21:52:12 UTC 2026_
  - recipe_nutrition_cache → (recipe_id)
  - recipe_pairings → (side_recipe_id, main_recipe_id)
  - recipe_steps → (id)
- - recipe_tags → (tag_id, recipe_id)
+ - recipe_tags → (recipe_id, tag_id)
  - recipes → (id)
  - reference_categories → (id)
  - reference_subcategories → (id)
@@ -773,9 +774,9 @@ _Généré le : Sun May 31 21:52:12 UTC 2026_
  - tags → (id)
  - unit_conversions_generic → (id)
  - unit_conversions_product → (id)
- - user_allergies → (canonical_food_id, user_id)
- - user_diets → (diet_id, user_id)
- - user_health_goals → (person_name, user_id)
+ - user_allergies → (user_id, canonical_food_id)
+ - user_diets → (user_id, diet_id)
+ - user_health_goals → (user_id, person_name)
  - user_profiles → (user_id)
  - user_recipe_interactions → (id)
  - weight_entries → (id)
