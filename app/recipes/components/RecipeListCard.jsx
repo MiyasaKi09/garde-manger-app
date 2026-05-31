@@ -3,14 +3,14 @@
 import Link from 'next/link'
 import { getRecipeStyle } from '@/lib/foodEmoji'
 
-export default function RecipeListCard({ recipe, status, onCook }) {
-  const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0) + (recipe.rest_min || 0)
-  const style = getRecipeStyle(recipe.category, recipe.title || recipe.name)
+export default function RecipeListCard({ recipe, status }) {
+  const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0)
+  const style = getRecipeStyle(recipe.category, recipe.title)
   const hasImage = !!recipe.image_url
 
   return (
     <Link
-      href={`/recipes/${recipe.id}`}
+      href={`/recipes/generated/${recipe.id}`}
       className="recipe-img-card"
       style={{ textDecoration: 'none', color: 'inherit' }}
     >
@@ -24,7 +24,7 @@ export default function RecipeListCard({ recipe, status, onCook }) {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={recipe.image_url}
-            alt={recipe.title || recipe.name}
+            alt={recipe.title}
             className="recipe-img-photo"
             loading="lazy"
           />
@@ -32,7 +32,7 @@ export default function RecipeListCard({ recipe, status, onCook }) {
           <span className="recipe-img-emoji">{style.emoji}</span>
         )}
 
-        {status.mykoScore !== undefined && (
+        {status.mykoScore !== undefined && status.mykoScore > 0 && (
           <div className={`recipe-img-score ${
             status.mykoScore >= 80 ? 'score-high' :
             status.mykoScore >= 50 ? 'score-mid' : 'score-low'
@@ -46,10 +46,11 @@ export default function RecipeListCard({ recipe, status, onCook }) {
         )}
 
         <div className="recipe-img-overlay">
-          <h3 className="recipe-img-title">{recipe.title || recipe.name}</h3>
+          <h3 className="recipe-img-title">{recipe.title}</h3>
           <div className="recipe-img-meta">
             {totalTime > 0 && <span>⏱ {totalTime}min</span>}
-            <span>👥 {recipe.servings || recipe.portions || '?'}</span>
+            {recipe.servings && <span>👥 {recipe.servings}</span>}
+            {recipe.ingredient_count > 0 && <span>🧂 {recipe.ingredient_count}</span>}
           </div>
         </div>
       </div>
@@ -58,10 +59,10 @@ export default function RecipeListCard({ recipe, status, onCook }) {
         <div className="recipe-img-avail-bar">
           <div
             className="recipe-img-avail-fill"
-            style={{ width: `${status.availabilityPercent}%` }}
+            style={{ width: `${status.availabilityPercent || 0}%` }}
           />
         </div>
-        <span className="recipe-img-avail-pct">{status.availabilityPercent}%</span>
+        <span className="recipe-img-avail-pct">{status.availabilityPercent || 0}%</span>
       </div>
     </Link>
   )
