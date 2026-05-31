@@ -36,8 +36,8 @@ export async function POST(req) {
 
   if (batch) {
     const { data: recipes, error } = await supabase
-      .from('recipes')
-      .select('id, name')
+      .from('generated_recipes')
+      .select('id, title')
       .or('image_url.is.null,image_url.eq.')
 
     if (error) return Response.json({ error: error.message }, { status: 500 })
@@ -45,10 +45,10 @@ export async function POST(req) {
 
     let updated = 0
     for (const recipe of recipes) {
-      const imageUrl = await searchPexels(recipe.name, PEXELS_KEY)
+      const imageUrl = await searchPexels(recipe.title, PEXELS_KEY)
       if (imageUrl) {
         const { error: upErr } = await supabase
-          .from('recipes')
+          .from('generated_recipes')
           .update({ image_url: imageUrl })
           .eq('id', recipe.id)
         if (!upErr) updated++
@@ -64,16 +64,16 @@ export async function POST(req) {
   }
 
   const { data: recipe } = await supabase
-    .from('recipes')
-    .select('name')
+    .from('generated_recipes')
+    .select('title')
     .eq('id', recipeId)
     .single()
 
   if (!recipe) return Response.json({ error: 'Recette introuvable' }, { status: 404 })
 
-  const imageUrl = await searchPexels(recipe.name, PEXELS_KEY)
+  const imageUrl = await searchPexels(recipe.title, PEXELS_KEY)
   if (imageUrl) {
-    await supabase.from('recipes').update({ image_url: imageUrl }).eq('id', recipeId)
+    await supabase.from('generated_recipes').update({ image_url: imageUrl }).eq('id', recipeId)
   }
 
   return Response.json({ imageUrl })

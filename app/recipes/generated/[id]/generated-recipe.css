@@ -1,0 +1,366 @@
+.gr-page {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+.gr-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  font-size: 1.1rem;
+  color: var(--ink-2);
+}
+
+.gr-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 8px 16px;
+  font-size: 14px;
+  color: var(--ink-2);
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.gr-back:hover {
+  background: var(--surface-soft);
+  color: var(--ink-1);
+}
+
+.gr-hero {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.gr-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gr-hero-emoji {
+  font-size: 5rem;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.2));
+}
+
+.gr-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 20px 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+}
+
+.gr-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.3;
+}
+
+.gr-desc {
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}
+
+.gr-meta-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.gr-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.gr-meta-icon {
+  font-size: 14px;
+}
+
+.gr-nutrition-bar {
+  display: flex;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.gr-nut-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 8px;
+  border-right: 1px solid var(--line);
+}
+
+.gr-nut-item:last-child {
+  border-right: none;
+}
+
+.gr-nut-val {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-1);
+}
+
+.gr-nut-label {
+  font-size: 0.7rem;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 2px;
+}
+
+.gr-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 6px;
+  margin-bottom: 16px;
+}
+
+.gr-tab {
+  flex: 1;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  border-radius: var(--r-sm);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gr-tab:hover {
+  background: var(--surface-soft);
+}
+
+.gr-tab.active {
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.gr-section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.gr-empty {
+  text-align: center;
+  color: var(--ink-3);
+  padding: 20px;
+}
+
+.gr-ing-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gr-ing-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--surface-soft);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+}
+
+.gr-ing-qty {
+  font-weight: 600;
+  color: var(--brand);
+  min-width: 70px;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.gr-ing-name {
+  font-size: 0.95rem;
+  color: var(--ink-1);
+  flex: 1;
+}
+
+.gr-ing-notes {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  font-style: italic;
+}
+
+.gr-step-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gr-step-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  background: var(--surface-soft);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gr-step-item:hover {
+  background: var(--surface);
+  border-color: var(--line-strong);
+}
+
+.gr-step-item.done {
+  opacity: 0.5;
+}
+
+.gr-step-item.done .gr-step-text {
+  text-decoration: line-through;
+}
+
+.gr-step-item.done .gr-step-num {
+  background: var(--brand);
+  color: #fff;
+}
+
+.gr-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.gr-step-body {
+  flex: 1;
+}
+
+.gr-step-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-1);
+  line-height: 1.5;
+}
+
+.gr-step-dur {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  background: var(--surface);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+
+.gr-tips {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.gr-tips-title {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: var(--ink-1);
+}
+
+.gr-tips p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .gr-page {
+    padding: 12px 10px 40px;
+  }
+
+  .gr-hero {
+    border-radius: 14px;
+    aspect-ratio: 3 / 2;
+  }
+
+  .gr-title {
+    font-size: 1.2rem;
+  }
+
+  .gr-meta-row {
+    gap: 6px;
+  }
+
+  .gr-meta-chip {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .gr-nutrition-bar {
+    flex-wrap: wrap;
+  }
+
+  .gr-nut-item {
+    min-width: 60px;
+  }
+
+  .gr-ing-item {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .gr-ing-qty {
+    min-width: auto;
+  }
+}
