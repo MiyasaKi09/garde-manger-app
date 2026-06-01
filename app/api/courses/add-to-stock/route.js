@@ -50,7 +50,7 @@ export async function POST(request) {
       resolvedCanonicalFoodId = match.canonicalFoodId
     }
 
-    const matched = !!(resolvedArchetypeId || resolvedCanonicalFoodId)
+    let matched = !!(resolvedArchetypeId || resolvedCanonicalFoodId)
 
     // 2. Déduire le mode de stockage depuis le nom du produit
     const storage = guessStorage(productName)
@@ -102,14 +102,29 @@ export async function POST(request) {
       }]
     }
 
-    // 7. Insérer les lots
-    const { data: lots, error } = await supabase
+    // 7. Insérer les lots (retry sans IDs si FK invalide)
+    let { data: lots, error } = await supabase
       .from('inventory_lots')
       .insert(lotsToCreate)
       .select()
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
+      // FK constraint failure → retry sans archetype_id/canonical_food_id
+      const fallbackLots = lotsToCreate.map(l => ({
+        ...l,
+        archetype_id: null,
+        canonical_food_id: null,
+      }))
+      const fallback = await supabase
+        .from('inventory_lots')
+        .insert(fallbackLots)
+        .select()
+
+      if (fallback.error) {
+        return NextResponse.json({ error: fallback.error.message }, { status: 500 })
+      }
+      lots = fallback.data
+      matched = false
     }
 
     return NextResponse.json({ success: true, lots, matched, lotsCreated: lots.length })
