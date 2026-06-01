@@ -18,6 +18,8 @@ export default function CoursesPage() {
   const [activeWeek, setActiveWeek] = useState(null)
   const [expandedItems, setExpandedItems] = useState(new Set())
   const [containerEdits, setContainerEdits] = useState({})
+  const [fetchingImages, setFetchingImages] = useState(false)
+  const [fetchResult, setFetchResult] = useState(null)
 
   useEffect(() => {
     async function load() {
@@ -152,6 +154,34 @@ export default function CoursesPage() {
     }
   }
 
+  async function handleFetchImages() {
+    if (!importId) return
+    setFetchingImages(true)
+    setFetchResult(null)
+    try {
+      const res = await authFetch('/api/courses/fetch-images', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ importId }),
+      })
+      const data = await res.json()
+      if (data.error) {
+        setFetchResult({ error: data.error })
+      } else {
+        setFetchResult({ updated: data.updated, total: data.total })
+        if (data.updated > 0) {
+          const res2 = await authFetch(`/api/planning/imports/${importId}`)
+          const d2 = await res2.json()
+          setItems(d2.shoppingItems || [])
+        }
+      }
+    } catch (err) {
+      setFetchResult({ error: err.message })
+    } finally {
+      setFetchingImages(false)
+    }
+  }
+
   const checkedCount = filteredItems.filter(i => i.checked).length
   const totalCount = filteredItems.length
   const allCheckedCount = items.filter(i => i.checked).length
@@ -197,16 +227,29 @@ export default function CoursesPage() {
                 <p className="hero-subtitle">{allCheckedCount}/{allTotalCount} articles cochés</p>
               )}
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, flexShrink: 0 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8, flexShrink: 0 }}>
               <div className="courses-progress-bar-outer" style={{ width: 80 }}>
                 <div
                   className="courses-progress-bar-inner"
                   style={{ width: allTotalCount ? `${(allCheckedCount / allTotalCount) * 100}%` : '0%' }}
                 />
               </div>
+              <button
+                onClick={handleFetchImages}
+                disabled={fetchingImages}
+                className="courses-photo-btn"
+              >
+                {fetchingImages ? '...' : 'Photos'}
+              </button>
             </div>
           </div>
         </div>
+
+        {fetchResult && (
+          <div className={`courses-fetch-result ${fetchResult.error ? 'error' : 'success'}`}>
+            {fetchResult.error ? fetchResult.error : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
+          </div>
+        )}
 
         {weekLabels.length > 1 && (
           <div className="courses-week-tabs">
@@ -257,7 +300,12 @@ export default function CoursesPage() {
                       <div className={`courses-checkbox${item.checked ? ' checked' : ''}`}>
                         {item.checked && <Check size={13} color="#fff" />}
                       </div>
-                      <span className="courses-item-emoji">{getFoodEmoji(item.product_name, item.category)}</span>
+                      {item.image_url ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={item.image_url} alt="" className="courses-item-thumb" loading="lazy" />
+                      ) : (
+                        <span className="courses-item-emoji">{getFoodEmoji(item.product_name, item.category)}</span>
+                      )}
                       <div className="courses-item-label">
                         <span className={`courses-item-name${item.checked ? ' checked' : ''}`}>
                           {item.product_name}
