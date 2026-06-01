@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { buildAiContext, formatContextForPrompt } from '@/lib/aiContextBuilder'
-import { normalizeRecipeName } from '@/lib/recipeNormalizer'
+import { normalizeRecipeName, cleanRecipeName } from '@/lib/recipeNormalizer'
 import { calculatePreciseNutrition } from '@/lib/recipePreciseNutrition'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
@@ -29,9 +29,10 @@ export async function POST(request) {
   }
 
   // Clean description: extract dish name (before ":")
-  const cleanDesc = description.indexOf(':') > 0 && description.indexOf(':') < 60
+  const rawDesc = description.indexOf(':') > 0 && description.indexOf(':') < 60
     ? description.substring(0, description.indexOf(':')).trim()
     : description.trim()
+  const cleanDesc = cleanRecipeName(rawDesc)
   const normalized = normalizeRecipeName(cleanDesc)
 
   // 1. Check cache — try exact match first, then fuzzy (ilike prefix)
