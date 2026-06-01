@@ -3,7 +3,7 @@ import Anthropic from '@anthropic-ai/sdk'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { createImport } from '@/lib/nutritionPlanService'
 import { parseJsonPlan } from '@/lib/jsonPlanParser'
-import { normalizeRecipeName } from '@/lib/recipeNormalizer'
+import { normalizeRecipeName, cleanRecipeName, cleanIngredientName } from '@/lib/recipeNormalizer'
 import { buildAiContext, formatContextForPrompt } from '@/lib/aiContextBuilder'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
@@ -78,19 +78,49 @@ async function autoSaveRecipes(supabase, userId, recipes, days) {
   const cookingStepsMap = buildCookingStepsMap(days)
 
   for (const recipe of recipes) {
-    const normalized = normalizeRecipeName(recipe.name)
+    const cleanName = cleanRecipeName(recipe.name)
+    const normalized = normalizeRecipeName(cleanName || recipe.name)
     if (!normalized) continue
 
-    // Check if already exists
-    const { data: existing } = await supabase
+    // Check if already exists — exact match first
+    let existing = null
+    const { data: exactMatch } = await supabase
       .from('generated_recipes')
-      .select('id, steps')
+      .select('id, steps, name_normalized')
       .eq('user_id', userId)
       .eq('name_normalized', normalized)
       .limit(1)
 
+    if (exactMatch?.length) {
+      existing = exactMatch[0]
+    } else {
+      // Fuzzy match: find recipes whose normalized name contains ours or vice versa
+      const { data: allRecipes } = await supabase
+        .from('generated_recipes')
+        .select('id, steps, name_normalized, title')
+        .eq('user_id', userId)
+        .ilike('name_normalized', `%${normalized.split('-').slice(0, 3).join('-')}%`)
+        .limit(10)
+
+      if (allRecipes?.length) {
+        const normTokens = new Set(normalized.split('-').filter(t => t.length >= 3))
+        let bestMatch = null, bestScore = 0
+        for (const r of allRecipes) {
+          const rTokens = r.name_normalized.split('-').filter(t => t.length >= 3)
+          if (!rTokens.length) continue
+          const overlap = rTokens.filter(t => normTokens.has(t)).length
+          const score = overlap / Math.max(normTokens.size, rTokens.length)
+          if (score > bestScore && score >= 0.7) {
+            bestScore = score
+            bestMatch = r
+          }
+        }
+        if (bestMatch) existing = bestMatch
+      }
+    }
+
     // Skip if already saved WITH steps
-    if (existing?.length > 0 && existing[0].steps?.length > 0) continue
+    if (existing && existing.steps?.length > 0) continue
 
     // Parse ingredients from string to array if needed
     let ingredients = []
@@ -344,7 +374,7 @@ async function rebuildShoppingList(supabase, userId, importId, days) {
         allIngredients.push({
           canonicalFoodId: null,
           archetypeId: null,
-          canonicalName: ing.name,
+          canonicalName: cleanIngredientName(ing.name),
           archetypeName: null,
           quantity: (ing.quantity || 0) * multiplier,
           unit: ing.unit || '',
@@ -506,21 +536,54 @@ async function generateMissingRecipes(supabase, userId, days) {
 
   if (!dishNames.size) return 0
 
-  // 2. Check which ones are missing steps in the cache
+  // 2. Check which ones are missing steps in the cache (with fuzzy dedup)
   const toGenerate = []
   for (const name of dishNames) {
-    const normalized = normalizeRecipeName(name)
+    const cleanName = cleanRecipeName(name)
+    const normalized = normalizeRecipeName(cleanName || name)
     if (!normalized) continue
 
-    const { data: existing } = await supabase
+    // Exact match
+    const { data: exactMatch } = await supabase
       .from('generated_recipes')
-      .select('id, steps')
+      .select('id, steps, name_normalized')
       .eq('user_id', userId)
       .eq('name_normalized', normalized)
       .limit(1)
 
-    if (existing?.length > 0 && existing[0].steps?.length > 0) continue
-    toGenerate.push({ name, normalized, existingId: existing?.[0]?.id || null })
+    let existingId = null
+    let hasSteps = false
+
+    if (exactMatch?.length) {
+      existingId = exactMatch[0].id
+      hasSteps = exactMatch[0].steps?.length > 0
+    } else {
+      // Fuzzy match
+      const corePrefix = normalized.split('-').slice(0, 3).join('-')
+      const { data: fuzzy } = await supabase
+        .from('generated_recipes')
+        .select('id, steps, name_normalized')
+        .eq('user_id', userId)
+        .ilike('name_normalized', `%${corePrefix}%`)
+        .limit(10)
+
+      if (fuzzy?.length) {
+        const normTokens = new Set(normalized.split('-').filter(t => t.length >= 3))
+        for (const r of fuzzy) {
+          const rTokens = r.name_normalized.split('-').filter(t => t.length >= 3)
+          const overlap = rTokens.filter(t => normTokens.has(t)).length
+          const score = overlap / Math.max(normTokens.size, rTokens.length)
+          if (score >= 0.7) {
+            existingId = r.id
+            hasSteps = r.steps?.length > 0
+            break
+          }
+        }
+      }
+    }
+
+    if (hasSteps) continue
+    toGenerate.push({ name: cleanName || name, normalized, existingId })
   }
 
   if (!toGenerate.length) return 0
@@ -544,6 +607,7 @@ RÈGLES :
 - Adapte pour 2 personnes (Julien + Zoé).
 - Aliments interdits : thon, panais, épinards, céleri, crevettes, whey.
 - Étapes détaillées avec temps précis et quantités en grammes.
+- Noms d'ingrédients SIMPLES et GÉNÉRIQUES : jamais de "(pour le rougail)", "(burger)", "(minestrone)" ou référence au plat entre parenthèses. Juste le nom de l'aliment.
 
 FORMAT JSON :
 {
