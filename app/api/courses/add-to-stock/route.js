@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
+import { matchIngredient } from '@/lib/ingredientMatcher'
 
 /**
  * POST /api/courses/add-to-stock
@@ -39,17 +40,17 @@ export async function POST(request) {
       return NextResponse.json({ error: 'productName requis' }, { status: 400 })
     }
 
-    // 1. Résoudre les IDs ingrédient
+    // 1. Résoudre les IDs ingrédient via le matcher partagé
     let resolvedArchetypeId = archetypeId
     let resolvedCanonicalFoodId = canonicalFoodId
 
     if (!resolvedArchetypeId && !resolvedCanonicalFoodId) {
-      const match = await findIngredient(supabase, productName)
-      resolvedArchetypeId = match?.archetypeId ?? null
-      resolvedCanonicalFoodId = match?.canonicalFoodId ?? null
+      const match = await matchIngredient(supabase, productName)
+      resolvedArchetypeId = match.archetypeId
+      resolvedCanonicalFoodId = match.canonicalFoodId
     }
 
-    const matched = !!(resolvedArchetypeId || resolvedCanonicalFoodId)
+    let matched = !!(resolvedArchetypeId || resolvedCanonicalFoodId)
 
     // 2. Déduire le mode de stockage depuis le nom du produit
     const storage = guessStorage(productName)
@@ -73,7 +74,7 @@ export async function POST(request) {
       storage_place: storage.place,
       acquired_on,
       expiration_date,
-      notes: matched ? null : productName,
+      notes: productName,
     }
 
     // 6. Déterminer la quantité : conditionnement multi-contenants ou total unique
@@ -101,56 +102,35 @@ export async function POST(request) {
       }]
     }
 
-    // 7. Insérer les lots
-    const { data: lots, error } = await supabase
+    // 7. Insérer les lots (retry sans IDs si FK invalide)
+    let { data: lots, error } = await supabase
       .from('inventory_lots')
       .insert(lotsToCreate)
       .select()
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
+      // FK constraint failure → retry sans archetype_id/canonical_food_id
+      const fallbackLots = lotsToCreate.map(l => ({
+        ...l,
+        archetype_id: null,
+        canonical_food_id: null,
+      }))
+      const fallback = await supabase
+        .from('inventory_lots')
+        .insert(fallbackLots)
+        .select()
+
+      if (fallback.error) {
+        return NextResponse.json({ error: fallback.error.message }, { status: 500 })
+      }
+      lots = fallback.data
+      matched = false
     }
 
     return NextResponse.json({ success: true, lots, matched, lotsCreated: lots.length })
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 })
   }
-}
-
-/**
- * Cherche un ingrédient par nom : archetype d'abord, puis canonical_food.
- * Retourne { archetypeId?, canonicalFoodId? } ou null.
- */
-async function findIngredient(supabase, name) {
-  const normalized = name.trim().toLowerCase()
-  const words = normalized.split(/\s+/).filter(w => w.length > 2 && !['de','du','des','le','la','les','au','aux','en'].includes(w))
-  const candidates = [normalized, ...(words.length ? [words[0]] : [])]
-
-  for (const term of candidates) {
-    const { data: archs } = await supabase
-      .from('archetypes')
-      .select('id, name')
-      .ilike('name', `%${term}%`)
-      .limit(5)
-
-    if (archs?.length) {
-      const best = archs.find(a => a.name.toLowerCase() === normalized) ?? archs[0]
-      return { archetypeId: best.id, canonicalFoodId: null }
-    }
-
-    const { data: cfs } = await supabase
-      .from('canonical_foods')
-      .select('id, canonical_name')
-      .ilike('canonical_name', `%${term}%`)
-      .limit(5)
-
-    if (cfs?.length) {
-      const best = cfs.find(c => c.canonical_name?.toLowerCase() === normalized) ?? cfs[0]
-      return { archetypeId: null, canonicalFoodId: best.id }
-    }
-  }
-
-  return null
 }
 
 /**

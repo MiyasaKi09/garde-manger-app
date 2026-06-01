@@ -5,6 +5,7 @@ import { createImport } from '@/lib/nutritionPlanService'
 import { parseJsonPlan } from '@/lib/jsonPlanParser'
 import { normalizeRecipeName, cleanRecipeName, cleanIngredientName } from '@/lib/recipeNormalizer'
 import { buildAiContext, formatContextForPrompt } from '@/lib/aiContextBuilder'
+import { matchIngredient } from '@/lib/ingredientMatcher'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -368,14 +369,17 @@ async function rebuildShoppingList(supabase, userId, importId, days) {
         })
       }
     } else {
-      // Fallback: raw JSONB ingredients (no IDs — string-only)
+      // Fallback: raw JSONB ingredients — resolve IDs via matcher
       for (const ing of (recipe.ingredients || [])) {
         if (!ing.name) continue
+        const cleanName = cleanIngredientName(ing.name)
+        const match = await matchIngredient(supabase, cleanName)
         allIngredients.push({
-          canonicalFoodId: null,
-          archetypeId: null,
-          canonicalName: cleanIngredientName(ing.name),
+          canonicalFoodId: match.canonicalFoodId,
+          archetypeId: match.archetypeId,
+          canonicalName: match.matchedName || cleanName,
           archetypeName: null,
+          rawName: cleanName,
           quantity: (ing.quantity || 0) * multiplier,
           unit: ing.unit || '',
         })
@@ -383,17 +387,27 @@ async function rebuildShoppingList(supabase, userId, importId, days) {
     }
   }
 
-  // 3. Add fixed ingredients (PDJ + collations) — no IDs available
+  // 3. Add fixed ingredients (PDJ + collations) — resolve IDs via matcher
   const numDays = days.length
-  allIngredients.push(
-    { canonicalFoodId: null, archetypeId: null, canonicalName: 'Skyr',   archetypeName: null, quantity: 200 * numDays + 200 * Math.ceil(numDays * 4 / 7), unit: 'g' },
-    { canonicalFoodId: null, archetypeId: null, canonicalName: 'Oeufs',  archetypeName: null, quantity: 3 * numDays + Math.ceil(numDays * 3 / 7) * 2,     unit: 'pièces' },
-    { canonicalFoodId: null, archetypeId: null, canonicalName: 'Amandes', archetypeName: null, quantity: 30 * numDays, unit: 'g' },
-  )
+  const fixedItems = [
+    { name: 'Skyr', quantity: 200 * numDays + 200 * Math.ceil(numDays * 4 / 7), unit: 'g' },
+    { name: 'Oeufs', quantity: 3 * numDays + Math.ceil(numDays * 3 / 7) * 2, unit: 'pièces' },
+    { name: 'Amandes', quantity: 30 * numDays, unit: 'g' },
+  ]
+  for (const fix of fixedItems) {
+    const match = await matchIngredient(supabase, fix.name)
+    allIngredients.push({
+      canonicalFoodId: match.canonicalFoodId,
+      archetypeId: match.archetypeId,
+      canonicalName: match.matchedName || fix.name,
+      archetypeName: null,
+      rawName: fix.name,
+      quantity: fix.quantity,
+      unit: fix.unit,
+    })
+  }
 
   // 4. Aggregate by canonical_food_id (or lowercase name as fallback)
-  // Map key: `id:${canonicalFoodId}` | `name:${lowerName}`
-  // Value: { canonicalFoodId, archetypeId (first seen), canonicalName, archetypeNames (set), totalQty, unit }
   const aggregated = new Map()
   for (const ing of allIngredients) {
     const key = ing.canonicalFoodId != null
@@ -406,6 +420,7 @@ async function rebuildShoppingList(supabase, userId, importId, days) {
         archetypeId: ing.archetypeId,
         canonicalName: ing.canonicalName,
         archetypeNames: new Set(),
+        rawNames: new Set(),
         totalQty: 0,
         unit: ing.unit,
       })
@@ -413,6 +428,9 @@ async function rebuildShoppingList(supabase, userId, importId, days) {
     const agg = aggregated.get(key)
     agg.totalQty += ing.quantity || 0
     if (ing.archetypeName) agg.archetypeNames.add(ing.archetypeName)
+    if (ing.rawName && ing.rawName.toLowerCase() !== agg.canonicalName.toLowerCase()) {
+      agg.rawNames.add(ing.rawName)
+    }
   }
 
   // 5. Fetch current stock by resolved_canonical_food_id (ID-based, accurate)
@@ -479,20 +497,28 @@ async function rebuildShoppingList(supabase, userId, importId, days) {
 
     const qtyStr = `${Math.round(needed)}${agg.unit ? ' ' + agg.unit : ''}`
     const stockNote = inStock > 0 ? `${Math.round(inStock)}${agg.unit ? ' ' + agg.unit : ''} en stock` : null
-    const variantNote = agg.archetypeNames.size > 0
-      ? [...agg.archetypeNames].join(', ')
-      : null
+
+    // Display name: prefer rawName (user-friendly), fallback to canonical
+    const displayName = agg.rawNames.size === 1
+      ? [...agg.rawNames][0]
+      : agg.canonicalName
+
+    // Notes: archetype variants + raw recipe names if multiple
+    const noteParts = []
+    if (agg.archetypeNames.size > 0) noteParts.push([...agg.archetypeNames].join(', '))
+    if (agg.rawNames.size > 1) noteParts.push([...agg.rawNames].join(', '))
+    const notes = noteParts.length > 0 ? noteParts.join(' · ') : null
 
     shoppingItems.push({
       import_id: importId,
       week_label: 'S1',
       category,
-      product_name: agg.canonicalName,
+      product_name: displayName,
       quantity: stockNote ? `${qtyStr} (${stockNote})` : qtyStr,
       checked: false,
       canonical_food_id: agg.canonicalFoodId ?? null,
       archetype_id: agg.archetypeId ?? null,
-      notes: variantNote,
+      notes,
     })
   }
 
