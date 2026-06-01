@@ -73,7 +73,7 @@ export async function POST(request) {
       storage_place: storage.place,
       acquired_on,
       expiration_date,
-      notes: matched ? null : productName,
+      notes: productName,
     }
 
     // 6. Déterminer la quantité : conditionnement multi-contenants ou total unique
@@ -118,39 +118,94 @@ export async function POST(request) {
 }
 
 /**
- * Cherche un ingrédient par nom : archetype d'abord, puis canonical_food.
- * Retourne { archetypeId?, canonicalFoodId? } ou null.
+ * Cherche un ingrédient par nom : canonical_food d'abord (noms génériques),
+ * puis archetype en fallback. Utilise un scoring pour éviter les faux positifs
+ * (ex: "Pommes" → "Pomme" et non "Compote de Pommes Stérilisée").
  */
 async function findIngredient(supabase, name) {
   const normalized = name.trim().toLowerCase()
-  const words = normalized.split(/\s+/).filter(w => w.length > 2 && !['de','du','des','le','la','les','au','aux','en'].includes(w))
-  const candidates = [normalized, ...(words.length ? [words[0]] : [])]
+  const words = normalized
+    .split(/[\s/,]+/)
+    .filter(w => w.length > 2 && !['de','du','des','le','la','les','au','aux','en','pour','avec','sans'].includes(w))
 
-  for (const term of candidates) {
-    const { data: archs } = await supabase
-      .from('archetypes')
-      .select('id, name')
-      .ilike('name', `%${term}%`)
-      .limit(5)
+  if (!words.length) return null
 
-    if (archs?.length) {
-      const best = archs.find(a => a.name.toLowerCase() === normalized) ?? archs[0]
-      return { archetypeId: best.id, canonicalFoodId: null }
-    }
+  // 1. Exact match (case-insensitive)
+  const { data: exactCf } = await supabase
+    .from('canonical_foods')
+    .select('id, canonical_name')
+    .ilike('canonical_name', normalized)
+    .limit(1)
+  if (exactCf?.length) return { archetypeId: null, canonicalFoodId: exactCf[0].id }
 
-    const { data: cfs } = await supabase
-      .from('canonical_foods')
-      .select('id, canonical_name')
-      .ilike('canonical_name', `%${term}%`)
-      .limit(5)
+  const { data: exactArch } = await supabase
+    .from('archetypes')
+    .select('id, name')
+    .ilike('name', normalized)
+    .limit(1)
+  if (exactArch?.length) return { archetypeId: exactArch[0].id, canonicalFoodId: null }
 
-    if (cfs?.length) {
-      const best = cfs.find(c => c.canonical_name?.toLowerCase() === normalized) ?? cfs[0]
-      return { archetypeId: null, canonicalFoodId: best.id }
-    }
+  // 2. Search canonical_foods by main word (prefer generic names for stock)
+  const mainWord = words[0]
+  const { data: cfMatches } = await supabase
+    .from('canonical_foods')
+    .select('id, canonical_name')
+    .ilike('canonical_name', `%${mainWord}%`)
+    .limit(15)
+
+  if (cfMatches?.length) {
+    const best = scoreBestMatch(cfMatches, 'canonical_name', mainWord, normalized)
+    if (best) return { archetypeId: null, canonicalFoodId: best.id }
+  }
+
+  // 3. Search archetypes by main word (fallback)
+  const { data: archMatches } = await supabase
+    .from('archetypes')
+    .select('id, name')
+    .ilike('name', `%${mainWord}%`)
+    .limit(15)
+
+  if (archMatches?.length) {
+    const best = scoreBestMatch(archMatches, 'name', mainWord, normalized)
+    if (best) return { archetypeId: best.id, canonicalFoodId: null }
   }
 
   return null
+}
+
+/**
+ * Score candidates and return the best match, or null if none is good enough.
+ * Scoring: exact > starts-with > standalone-word > substring.
+ * Tiebreaker: shorter name wins (more specific/generic).
+ */
+function scoreBestMatch(candidates, nameField, searchWord, fullNormalized) {
+  const scored = candidates.map(item => {
+    const itemName = (item[nameField] || '').toLowerCase()
+    const itemWords = itemName.split(/\s+/)
+
+    let score = 0
+
+    // Exact full-name match
+    if (itemName === fullNormalized) score = 100
+    // Name starts with the search word (e.g., "pomme" matches "Pomme")
+    else if (itemName.startsWith(searchWord)) score = 80
+    // Search word is a standalone word in the name
+    else if (itemWords.some(w => w === searchWord || w === searchWord + 's' || searchWord === w + 's')) score = 60
+    // Search word is a word prefix (e.g., "pomme" in "pommeau")
+    else if (itemWords.some(w => w.startsWith(searchWord))) score = 40
+    // Mere substring — low confidence (e.g., "pommes" inside "Compote de Pommes")
+    else score = 10
+
+    // Penalize longer names: shorter = more likely the base ingredient
+    score -= itemName.length * 0.5
+
+    return { ...item, _score: score }
+  })
+
+  scored.sort((a, b) => b._score - a._score)
+  // Reject if best score is too low (mere substring in a long name)
+  if (scored[0]._score < 20) return null
+  return scored[0]
 }
 
 /**

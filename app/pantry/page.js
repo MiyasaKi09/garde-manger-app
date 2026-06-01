@@ -229,14 +229,15 @@ export default function PantryPage() {
       const transformedData = (data || []).map(item => {
         let productName = 'Produit sans nom';
 
-        // Déterminer le nom selon le type
-        if (item.canonical_food_id && item.canonical_foods?.canonical_name) {
+        // Déterminer le nom : notes (label original courses) > canonical > archetype
+        if (item.notes && !item.notes.includes('\n')) {
+          productName = item.notes;
+        } else if (item.canonical_food_id && item.canonical_foods?.canonical_name) {
           productName = item.canonical_foods.canonical_name;
         } else if (item.archetype_id && item.archetypes?.name) {
           productName = item.archetypes.name;
         } else if (item.notes) {
-          // Produit custom avec notes
-          productName = item.notes.split('\n')[0]; // Première ligne des notes
+          productName = item.notes.split('\n')[0];
         } else if (item.product_name) {
           productName = item.product_name;
         }
