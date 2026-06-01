@@ -166,13 +166,66 @@
   border-bottom: 1px solid var(--line);
 }
 
-/* Food emoji */
+/* Food emoji / thumbnail */
 .courses-item-emoji {
   font-size: 20px;
   line-height: 1;
   flex-shrink: 0;
-  width: 28px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.courses-item-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+}
+
+/* Photos button */
+.courses-photo-btn {
+  padding: 4px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease);
+}
+.courses-photo-btn:hover {
+  background: var(--brand-soft);
+  color: var(--brand);
+  border-color: var(--brand);
+}
+.courses-photo-btn:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* Fetch result message */
+.courses-fetch-result {
+  padding: 6px 14px;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-xs);
+  margin-bottom: var(--s-3);
   text-align: center;
+}
+.courses-fetch-result.success {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+.courses-fetch-result.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 /* Name + notes vertical stack */
