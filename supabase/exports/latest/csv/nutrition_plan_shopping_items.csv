@@ -1713,7 +1713,6 @@ id,import_id,week_label,category,product_name,quantity,checked,canonical_food_id
 2796,27,Semaine du 25 au 31 mai,Épicerie & condiments,Vinaigre blanc (escabeche),1 bouteille 50 cl,f,,,,,,,
 2797,27,Semaine du 25 au 31 mai,Fruits & légumes,Oignons rouges,2 (200 g),f,,,,,,,
 2798,27,Semaine du 25 au 31 mai,Fruits & légumes,Citrons verts,4,f,,,,,,,
-2800,28,Semaine 23 — 1-7 juin 2026,Boucherie,Magret de canard,1 (~350 g),f,,,,,,,https://images.pexels.com/photos/4586810/pexels-photo-4586810.jpeg?auto=compress&cs=tinysrgb&h=130
 2802,28,Semaine 23 — 1-7 juin 2026,Boucherie,Chorizo doux ibérique,90 g,f,,,,,,,https://images.pexels.com/photos/34745309/pexels-photo-34745309.jpeg?auto=compress&cs=tinysrgb&h=130
 2804,28,Semaine 23 — 1-7 juin 2026,Charcuterie,Jambon blanc à l'ancienne,200 g,f,,,,,,,https://images.pexels.com/photos/9207055/pexels-photo-9207055.jpeg?auto=compress&cs=tinysrgb&h=130
 2805,28,Semaine 23 — 1-7 juin 2026,Poissonnerie,Filets de merlu frais,400 g,f,,,,,,,https://images.pexels.com/photos/19239122/pexels-photo-19239122.jpeg?auto=compress&cs=tinysrgb&h=130
@@ -1735,13 +1734,9 @@ id,import_id,week_label,category,product_name,quantity,checked,canonical_food_id
 2835,28,Semaine 23 — 1-7 juin 2026,Légumes,Haricots verts frais (fins),700 g,f,,,,,,,https://images.pexels.com/photos/4965038/pexels-photo-4965038.jpeg?auto=compress&cs=tinysrgb&h=130
 2837,28,Semaine 23 — 1-7 juin 2026,Légumes,Fenouil,1 bulbe,f,,,,,,,https://images.pexels.com/photos/4965038/pexels-photo-4965038.jpeg?auto=compress&cs=tinysrgb&h=130
 2839,28,Semaine 23 — 1-7 juin 2026,Légumes,"Salade verte (laitue, sucrine)",2 pièces,f,,,,,,,https://images.pexels.com/photos/11287049/pexels-photo-11287049.jpeg?auto=compress&cs=tinysrgb&h=130
-2799,28,Semaine 23 — 1-7 juin 2026,Boucherie,Rumsteak ou bavette pour bulgogi,300 g,f,,,,,,,https://images.pexels.com/photos/5643415/pexels-photo-5643415.jpeg?auto=compress&cs=tinysrgb&h=130
-2801,28,Semaine 23 — 1-7 juin 2026,Boucherie,Échine ou longe de porc (pörkölt),400 g,f,,,,,,,https://images.pexels.com/photos/20051271/pexels-photo-20051271.jpeg?auto=compress&cs=tinysrgb&h=130
-2803,28,Semaine 23 — 1-7 juin 2026,Boucherie,Hauts de cuisse de poulet désossés,400 g,f,,,,,,,https://images.pexels.com/photos/7368041/pexels-photo-7368041.jpeg?auto=compress&cs=tinysrgb&h=130
 2806,28,Semaine 23 — 1-7 juin 2026,Poissonnerie,Sardines fraîches (petit bateau),350 g,f,,,,,,,https://images.pexels.com/photos/20141098/pexels-photo-20141098.jpeg?auto=compress&cs=tinysrgb&h=130
 2808,28,Semaine 23 — 1-7 juin 2026,Crémerie,Mozzarella di bufala,250 g (2 boules),f,,,,,,,https://images.pexels.com/photos/8696570/pexels-photo-8696570.jpeg?auto=compress&cs=tinysrgb&h=130
 2842,28,Semaine 23 — 1-7 juin 2026,Légumes,Cœurs d'artichauts (bocal),1 bocal 240 g,f,,,,,,,https://images.pexels.com/photos/11940666/pexels-photo-11940666.jpeg?auto=compress&cs=tinysrgb&h=130
-2844,28,Semaine 23 — 1-7 juin 2026,Fruits,Pommes Pink Lady / Gala,"1,8 kg (14 pièces)",f,,,,,,,https://images.pexels.com/photos/17975557/pexels-photo-17975557.jpeg?auto=compress&cs=tinysrgb&h=130
 2846,28,Semaine 23 — 1-7 juin 2026,Fruits,Citrons verts (lime),4 pièces,f,,,,,,,https://images.pexels.com/photos/10839495/pexels-photo-10839495.jpeg?auto=compress&cs=tinysrgb&h=130
 2848,28,Semaine 23 — 1-7 juin 2026,Aromates,Coriandre fraîche,2 bottes,f,,,,,,,https://images.pexels.com/photos/14430641/pexels-photo-14430641.jpeg?auto=compress&cs=tinysrgb&h=130
 2850,28,Semaine 23 — 1-7 juin 2026,Aromates,Menthe fraîche,1 botte,f,,,,,,,https://images.pexels.com/photos/15760105/pexels-photo-15760105.jpeg?auto=compress&cs=tinysrgb&h=130
@@ -1769,6 +1764,9 @@ id,import_id,week_label,category,product_name,quantity,checked,canonical_food_id
 2890,28,Semaine 23 — 1-7 juin 2026,Épices,Curry doux en poudre,1 pot,f,,,,,,,https://images.pexels.com/photos/5894767/pexels-photo-5894767.jpeg?auto=compress&cs=tinysrgb&h=130
 2892,28,Semaine 23 — 1-7 juin 2026,Épices,Noix de muscade entière,1 pièce,f,,,,,,,https://images.pexels.com/photos/7829483/pexels-photo-7829483.jpeg?auto=compress&cs=tinysrgb&h=130
 2894,28,Semaine 23 — 1-7 juin 2026,Boulangerie,Pain de seigle,1 pain,f,,,,,,,https://images.pexels.com/photos/30452364/pexels-photo-30452364.jpeg?auto=compress&cs=tinysrgb&h=130
+2799,28,Semaine 23 — 1-7 juin 2026,Boucherie,Rumsteak ou bavette pour bulgogi,300 g,f,,,,,,,https://images.pexels.com/photos/5643415/pexels-photo-5643415.jpeg?auto=compress&cs=tinysrgb&h=130
+2803,28,Semaine 23 — 1-7 juin 2026,Boucherie,Hauts de cuisse de poulet désossés,400 g,f,,,,,,,https://images.pexels.com/photos/7368041/pexels-photo-7368041.jpeg?auto=compress&cs=tinysrgb&h=130
+2801,28,Semaine 23 — 1-7 juin 2026,Boucherie,Échine ou longe de porc (pörkölt),400 g,f,,,,,,,https://images.pexels.com/photos/20051271/pexels-photo-20051271.jpeg?auto=compress&cs=tinysrgb&h=130
 2810,28,Semaine 23 — 1-7 juin 2026,Crémerie,Parmesan Reggiano (à râper),120 g,f,,,,,,,https://images.pexels.com/photos/7368035/pexels-photo-7368035.jpeg?auto=compress&cs=tinysrgb&h=130
 2812,28,Semaine 23 — 1-7 juin 2026,Crémerie,Crème fraîche épaisse,200 g,f,,,,,,,https://images.pexels.com/photos/32986486/pexels-photo-32986486.jpeg?auto=compress&cs=tinysrgb&h=130
 2822,28,Semaine 23 — 1-7 juin 2026,Légumes,Carottes,600 g,f,,,,,,,https://images.pexels.com/photos/12756070/pexels-photo-12756070.jpeg?auto=compress&cs=tinysrgb&h=130
@@ -1809,3 +1807,5 @@ id,import_id,week_label,category,product_name,quantity,checked,canonical_food_id
 2889,28,Semaine 23 — 1-7 juin 2026,Épices,Coriandre moulue,1 pot,f,,,,,,,https://images.pexels.com/photos/14430641/pexels-photo-14430641.jpeg?auto=compress&cs=tinysrgb&h=130
 2891,28,Semaine 23 — 1-7 juin 2026,Épices,Safran (filaments),"1 dose 0,5 g",f,,,,,,,https://images.pexels.com/photos/7090156/pexels-photo-7090156.jpeg?auto=compress&cs=tinysrgb&h=130
 2893,28,Semaine 23 — 1-7 juin 2026,Boulangerie,"Pain de campagne (croûtons, tartines)",1 grand pain,f,,,,,,,https://images.pexels.com/photos/5634637/pexels-photo-5634637.jpeg?auto=compress&cs=tinysrgb&h=130
+2844,28,Semaine 23 — 1-7 juin 2026,Fruits,Pommes Pink Lady / Gala,"1,8 kg (14 pièces)",t,,,,,,,https://images.pexels.com/photos/17975557/pexels-photo-17975557.jpeg?auto=compress&cs=tinysrgb&h=130
+2800,28,Semaine 23 — 1-7 juin 2026,Boucherie,Magret de canard,1 (~350 g),f,,,,,,,https://images.pexels.com/photos/4586810/pexels-photo-4586810.jpeg?auto=compress&cs=tinysrgb&h=130
