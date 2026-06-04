@@ -17,9 +17,9 @@ export async function GET(request, { params }) {
       return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
     }
 
-    const recipeId = params.id;
+    const { id: recipeId } = await params;
 
-    // 1. Ingrédients de la recette
+    // 1. Ingrédients de la recette (+ canonical_food_id de l'archetype pour le cross-ref)
     const { data: recipeIngredients, error: ingredientsError } = await supabase
       .from('recipe_ingredients')
       .select(`
@@ -31,7 +31,7 @@ export async function GET(request, { params }) {
         unit,
         notes,
         canonical_foods(id, canonical_name),
-        archetypes(id, name)
+        archetypes(id, name, canonical_food_id)
       `)
       .eq('recipe_id', recipeId)
       .order('id');
@@ -55,6 +55,36 @@ export async function GET(request, { params }) {
       .map(i => i.archetype_id)
       .filter(Boolean);
 
+    // Cross-référence : canonical_food_id des archetypes de la recette (pour trouver les lots
+    // qui référencent directement le canonical alors que la recette référence l'archetype)
+    const canonicalFromRecipeArchetypes = recipeIngredients
+      .map(i => i.archetypes?.canonical_food_id)
+      .filter(Boolean);
+
+    // Cross-référence inverse : archetypes dont le canonical_food_id est dans canonicalIds
+    // (pour trouver les lots qui référencent un archetype alors que la recette référence le canonical)
+    let expandedArchetypeIds = [...archetypeIds]
+    if (canonicalIds.length > 0) {
+      const { data: crossArchs } = await supabase
+        .from('archetypes')
+        .select('id')
+        .in('canonical_food_id', canonicalIds)
+      if (crossArchs?.length) {
+        expandedArchetypeIds = [...new Set([...expandedArchetypeIds, ...crossArchs.map(a => a.id)])]
+      }
+    }
+
+    const allCanonicalIds = [...new Set([...canonicalIds, ...canonicalFromRecipeArchetypes])]
+    const allArchetypeIds = expandedArchetypeIds
+
+    // Construire la map archetype→canonical pour le filtre en mémoire
+    const archetypeCanonicalMap = {}
+    recipeIngredients.forEach(i => {
+      if (i.archetype_id && i.archetypes?.canonical_food_id) {
+        archetypeCanonicalMap[i.archetype_id] = i.archetypes.canonical_food_id
+      }
+    })
+
     // 3. Une seule requête batch pour tous les lots pertinents
     let lotsQuery = supabase
       .from('inventory_lots')
@@ -67,20 +97,20 @@ export async function GET(request, { params }) {
         expiration_date,
         opened_at,
         canonical_foods(canonical_name),
-        archetypes(name)
+        archetypes(name, canonical_food_id)
       `)
       .eq('user_id', user.id)
       .gt('qty_remaining', 0)
       .order('expiration_date', { ascending: true, nullsFirst: false });
 
-    if (canonicalIds.length > 0 && archetypeIds.length > 0) {
+    if (allCanonicalIds.length > 0 && allArchetypeIds.length > 0) {
       lotsQuery = lotsQuery.or(
-        `canonical_food_id.in.(${canonicalIds.join(',')}),archetype_id.in.(${archetypeIds.join(',')})`
+        `canonical_food_id.in.(${allCanonicalIds.join(',')}),archetype_id.in.(${allArchetypeIds.join(',')})`
       );
-    } else if (canonicalIds.length > 0) {
-      lotsQuery = lotsQuery.in('canonical_food_id', canonicalIds);
-    } else if (archetypeIds.length > 0) {
-      lotsQuery = lotsQuery.in('archetype_id', archetypeIds);
+    } else if (allCanonicalIds.length > 0) {
+      lotsQuery = lotsQuery.in('canonical_food_id', allCanonicalIds);
+    } else if (allArchetypeIds.length > 0) {
+      lotsQuery = lotsQuery.in('archetype_id', allArchetypeIds);
     } else {
       // Aucun ID connu → pas de lots
       return NextResponse.json({
@@ -101,14 +131,33 @@ export async function GET(request, { params }) {
 
     const { data: allLots } = await lotsQuery;
 
+    // Étendre la map archetype→canonical avec les lots récupérés
+    ;(allLots || []).forEach(lot => {
+      if (lot.archetype_id && lot.archetypes?.canonical_food_id) {
+        archetypeCanonicalMap[lot.archetype_id] = lot.archetypes.canonical_food_id
+      }
+    })
+
     const todayISO = new Date().toISOString().split('T')[0];
 
-    // 4. Regrouper en mémoire
+    // 4. Regrouper en mémoire avec cross-référence canonical↔archetype
     const ingredientsWithLots = recipeIngredients.map(ingredient => {
-      const matchingLots = (allLots || []).filter(lot =>
-        (ingredient.canonical_food_id && lot.canonical_food_id === ingredient.canonical_food_id) ||
-        (ingredient.archetype_id && lot.archetype_id === ingredient.archetype_id)
-      );
+      const ingCanonical = ingredient.canonical_food_id
+        || archetypeCanonicalMap[ingredient.archetype_id]
+        || null
+
+      const matchingLots = (allLots || []).filter(lot => {
+        const lotCanonical = lot.canonical_food_id
+          || archetypeCanonicalMap[lot.archetype_id]
+          || null
+
+        return (
+          (ingredient.canonical_food_id && lot.canonical_food_id === ingredient.canonical_food_id) ||
+          (ingredient.archetype_id && lot.archetype_id === ingredient.archetype_id) ||
+          // Cross-ref : lot via archetype → même canonical que l'ingrédient de recette
+          (ingCanonical && lotCanonical && ingCanonical === lotCanonical)
+        )
+      });
 
       return {
         ingredient_id: ingredient.id,
@@ -120,7 +169,7 @@ export async function GET(request, { params }) {
         archetype_id: ingredient.archetype_id,
         available_lots: matchingLots.map(lot => ({
           lot_id: lot.id,
-          product_name: lot.canonical_foods?.canonical_name || lot.archetypes?.name || 'Produit',
+          product_name: lot.canonical_foods?.canonical_name || lot.archetypes?.name || null,
           quantity_available: lot.qty_remaining,
           unit: lot.unit,
           expiration_date: lot.expiration_date,

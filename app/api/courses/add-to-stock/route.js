@@ -51,8 +51,11 @@ export async function POST(request) {
 
     const matched = !!(resolvedArchetypeId || resolvedCanonicalFoodId)
 
-    // 2. Déduire le mode de stockage depuis le nom du produit
-    const storage = guessStorage(productName)
+    // 2. Déduire le mode de stockage : DB en priorité si un seul champ est renseigné
+    const dbStorageMethod = await resolveStorageHint(supabase, resolvedArchetypeId, resolvedCanonicalFoodId)
+    const storage = dbStorageMethod
+      ? { method: dbStorageMethod, place: STORAGE_PLACES[dbStorageMethod] }
+      : guessStorage(productName)
 
     // 3. Lire les données de conservation depuis le DB, fallback sur règles mot-clé
     const shelfLifeDays = await resolveShelfLife(supabase, resolvedArchetypeId, resolvedCanonicalFoodId, storage.method)
@@ -209,6 +212,49 @@ function guessShelfLifeFallback(name, storageMethod) {
     return 7
   }
   return 90
+}
+
+const STORAGE_PLACES = {
+  pantry: 'Garde-manger',
+  fridge: 'Frigo',
+  freezer: 'Congélateur',
+}
+
+/**
+ * Résout le mode de stockage depuis la DB (archetype ou canonical_food).
+ * Retourne la méthode uniquement si exactement un champ shelf_life est renseigné
+ * (signal non ambigu). Sinon retourne null pour laisser guessStorage() décider.
+ */
+async function resolveStorageHint(supabase, archetypeId, canonicalFoodId) {
+  const fields = 'shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer'
+  let data = null
+
+  if (archetypeId) {
+    const { data: arch } = await supabase
+      .from('archetypes')
+      .select(fields)
+      .eq('id', archetypeId)
+      .single()
+    data = arch
+  } else if (canonicalFoodId) {
+    const { data: cf } = await supabase
+      .from('canonical_foods')
+      .select(fields)
+      .eq('id', canonicalFoodId)
+      .single()
+    data = cf
+  }
+
+  if (!data) return null
+
+  const populated = [
+    data.shelf_life_days_pantry  && 'pantry',
+    data.shelf_life_days_fridge  && 'fridge',
+    data.shelf_life_days_freezer && 'freezer',
+  ].filter(Boolean)
+
+  // Signal non ambigu : un seul mode de conservation renseigné en DB
+  return populated.length === 1 ? populated[0] : null
 }
 
 /**

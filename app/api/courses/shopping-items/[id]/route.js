@@ -18,6 +18,7 @@ export async function PATCH(request, { params }) {
     const body = await request.json()
     const updates = {}
 
+    if ('checked' in body)        updates.checked        = Boolean(body.checked)
     if ('container_qty' in body)  updates.container_qty  = body.container_qty  ?? null
     if ('container_size' in body) updates.container_size = body.container_size ?? null
     if ('container_unit' in body) updates.container_unit = body.container_unit ?? null

@@ -22,7 +22,7 @@ export async function POST(request, { params }) {
       );
     }
 
-    const { id: recipeId } = params;
+    const { id: recipeId } = await params;
     const body = await request.json();
     const { portions, storageMethod, notes, ingredients = [] } = body;
 
@@ -97,7 +97,7 @@ export async function POST(request, { params }) {
         // 1. Déduire la quantité du lot d'inventaire
         const { data: lot, error: lotError } = await supabase
           .from('inventory_lots')
-          .select('id, quantity, unit, product_name')
+          .select('id, qty_remaining, unit')
           .eq('id', lot_id)
           .eq('user_id', user.id)
           .single();
@@ -106,15 +106,12 @@ export async function POST(request, { params }) {
           continue;
         }
 
-        const newQuantity = Math.max(0, lot.quantity - quantity_used);
+        const newQty = Math.max(0, lot.qty_remaining - quantity_used);
 
         // Mettre à jour le lot
         const { error: updateError } = await supabase
           .from('inventory_lots')
-          .update({ 
-            quantity: newQuantity,
-            updated_at: new Date().toISOString()
-          })
+          .update({ qty_remaining: newQty })
           .eq('id', lot_id);
 
         if (updateError) {
@@ -130,14 +127,14 @@ export async function POST(request, { params }) {
             lot_id: lot_id,
             quantity_used: quantity_used,
             unit: unit || lot.unit,
-            product_name: product_name || lot.product_name
+            product_name: product_name || null
           });
 
         if (ingredientError) {
           console.error('Erreur enregistrement ingrédient:', ingredientError);
         } else {
           ingredientsUsed.push({
-            product_name: product_name || lot.product_name,
+            product_name: product_name || null,
             quantity_used,
             unit: unit || lot.unit
           });

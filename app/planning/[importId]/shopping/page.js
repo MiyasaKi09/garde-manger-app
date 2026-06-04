@@ -58,10 +58,12 @@ export default function ShoppingPage() {
     setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: newChecked } : i))
 
     try {
-      await supabase
-        .from('nutrition_plan_shopping_items')
-        .update({ checked: newChecked })
-        .eq('id', itemId)
+      const res = await authFetch(`/api/courses/shopping-items/${itemId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ checked: newChecked }),
+      })
+      if (!res.ok) throw new Error('Erreur réseau')
     } catch (err) {
       // Revert on error
       setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: !newChecked } : i))

@@ -130,10 +130,11 @@ export default function CoursesPage() {
     setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: newChecked, stocking: newChecked } : i))
 
     try {
-      await supabase
-        .from('nutrition_plan_shopping_items')
-        .update({ checked: newChecked })
-        .eq('id', itemId)
+      await authFetch(`/api/courses/shopping-items/${itemId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ checked: newChecked }),
+      })
 
       if (newChecked) {
         try {
