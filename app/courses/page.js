@@ -228,7 +228,7 @@ export default function CoursesPage() {
         const res2 = await authFetch(`/api/planning/imports/${importId}`)
         const d2 = await res2.json()
         setItems(d2.shoppingItems || [])
-        setFetchResult({ items: data.items, recipesCreated: data.recipesCreated })
+        setFetchResult({ items: data.items, mode: data.mode, inStock: data.inStock, recipesCreated: data.recipesCreated })
       }
     } catch (err) {
       setFetchResult({ error: err.message })
@@ -335,7 +335,10 @@ export default function CoursesPage() {
             {fetchResult.error
               ? fetchResult.error
               : fetchResult.items != null
-                ? `Liste recalculée — ${fetchResult.items} article${fetchResult.items > 1 ? 's' : ''}${fetchResult.recipesCreated > 0 ? ` · ${fetchResult.recipesCreated} recette(s) ajoutée(s)` : ''}`
+                ? (fetchResult.mode === 'enriched'
+                    ? `${fetchResult.items} articles reliés au stock${fetchResult.inStock > 0 ? ` · ${fetchResult.inStock} déjà en stock` : ''}`
+                    : `Liste recalculée — ${fetchResult.items} article${fetchResult.items > 1 ? 's' : ''}`)
+                  + (fetchResult.recipesCreated > 0 ? ` · ${fetchResult.recipesCreated} recette(s) ajoutée(s)` : '')
                 : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
           </div>
         )}
