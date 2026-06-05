@@ -201,7 +201,7 @@ export default function CoursesPage() {
         const res2 = await authFetch(`/api/planning/imports/${importId}`)
         const d2 = await res2.json()
         setItems(d2.shoppingItems || [])
-        setFetchResult({ rebuilt: data.items })
+        setFetchResult({ inStock: data.inStock, enriched: data.enriched })
       }
     } catch (err) {
       setFetchResult({ error: err.message })
@@ -287,8 +287,8 @@ export default function CoursesPage() {
           <div className={`courses-fetch-result ${fetchResult.error ? 'error' : 'success'}`}>
             {fetchResult.error
               ? fetchResult.error
-              : fetchResult.rebuilt != null
-                ? `Liste recalculée — ${fetchResult.rebuilt} article${fetchResult.rebuilt > 1 ? 's' : ''} (stock déduit)`
+              : fetchResult.enriched != null
+                ? `${fetchResult.inStock} article${fetchResult.inStock > 1 ? 's' : ''} déjà en stock sur ${fetchResult.enriched}`
                 : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
           </div>
         )}

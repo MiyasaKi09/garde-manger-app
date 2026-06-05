@@ -42,9 +42,16 @@ export async function POST(request) {
   try {
     // 1. Relier les recettes non encore liées (déterministe)
     await linkRecipesForUser(supabase, user.id, { onlyUnlinked: true })
-    // 2. Reconstruire la liste stock-aware
-    const count = await rebuildShoppingListFromImport(supabase, user.id, importId)
-    return NextResponse.json({ success: true, importId, items: count })
+    // 2. Reconstruire la liste stock-aware (non destructeur : abandonne sans
+    //    rien supprimer s'il ne peut pas produire de liste valide)
+    const result = await rebuildShoppingListFromImport(supabase, user.id, importId)
+    if (result.aborted) {
+      return NextResponse.json({ error: result.reason, aborted: true })
+    }
+    return NextResponse.json({
+      success: true, importId,
+      items: result.items, enriched: result.enriched, inStock: result.inStock,
+    })
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 })
   }
