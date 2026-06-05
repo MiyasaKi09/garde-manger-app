@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Fri Jun  5 11:31:45 UTC 2026_
+_Generated: Fri Jun  5 12:44:34 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -7,15 +7,15 @@ _Generated: Fri Jun  5 11:31:45 UTC 2026_
 - archetypes: 418 rows
 - canonical_food_origins: 0 rows
 - canonical_food_processes: 0 rows
-- canonical_foods: 265 rows
+- canonical_foods: 268 rows
 - cooked_dish_ingredients: 0 rows
 - cooked_dishes: 0 rows
 - cooking_nutrition_factors: 69 rows
 - countries: 0 rows
 - cultivars: 3 rows
 - diets: 9 rows
-- generated_recipe_ingredients: 1508 rows
-- generated_recipes: 121 rows
+- generated_recipe_ingredients: 1723 rows
+- generated_recipes: 136 rows
 - instructions: 0 rows
 - inventory_lots: 0 rows
 - legacy_users: 0 rows
@@ -27,10 +27,10 @@ _Generated: Fri Jun  5 11:31:45 UTC 2026_
 - nutrition_plan_imports: 21 rows
 - nutrition_plan_meals: 1414 rows
 - nutrition_plan_prep_tasks: 994 rows
-- nutrition_plan_shopping_items: 1813 rows
+- nutrition_plan_shopping_items: 1914 rows
 - nutritional_data: 3178 rows
 - pantry_items: 0 rows
-- plan_regen_requests: 2 rows
+- plan_regen_requests: 3 rows
 - planned_meals: 0 rows
 - process_nutrition_modifiers: 28 rows
 - processes: 14 rows

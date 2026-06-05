@@ -1,498 +1,678 @@
 id,generated_recipe_id,raw_name,quantity,unit,notes,canonical_food_id,archetype_id,match_status,created_at
-3120,82,pavés de saumon,350,g,en cubes,2062,,canonical,2026-06-05 10:40:04.354011+00
-3121,82,lait de coco,25,cl,allégé,,224,archetype,2026-06-05 10:40:04.354011+00
-3122,82,riz basmati,150,g,,4003,,canonical,2026-06-05 10:40:04.354011+00
-3123,82,gingembre frais,15,g,râpé,10002,,canonical,2026-06-05 10:40:04.354011+00
-3124,82,citron vert,1,piece,jus,1016,,canonical,2026-06-05 10:40:04.354011+00
-3125,82,oignon,1,piece,,2041,,canonical,2026-06-05 10:40:04.354011+00
-3126,82,pâte de curry,1,cs,,15,,canonical,2026-06-05 10:40:04.354011+00
-3127,82,coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-05 10:40:04.354011+00
-3142,90,orecchiette,180,g,,15,,canonical,2026-06-05 10:40:04.992744+00
-3143,90,brocolis,500,g,en bouquets,2003,,canonical,2026-06-05 10:40:04.992744+00
-3144,90,ail,2,piece,,10001,,canonical,2026-06-05 10:40:04.992744+00
-3145,90,piment doux,1,cc,flocons,2048,,canonical,2026-06-05 10:40:04.992744+00
-3146,90,pecorino,60,g,râpé,,274,archetype,2026-06-05 10:40:04.992744+00
-3147,90,huile d olive,3,cs,,14030,,canonical,2026-06-05 10:40:04.992744+00
-3174,93,Pavé de saumon frais (sans peau),300,g,170 g Julien + 130 g Zoé,2062,,canonical,2026-06-05 10:40:05.605381+00
-3175,93,Oignon rouge,150,g,émincé finement en demi-lunes,2041,,canonical,2026-06-05 10:40:05.605381+00
-3176,93,Carotte nouvelle,130,g,taillée en julienne ou rondelles fines,1005,,canonical,2026-06-05 10:40:05.605381+00
-3177,93,Pâte d'ají amarillo,30,g,2 cuillères à soupe — piment jaune péruvien,15,,canonical,2026-06-05 10:40:05.605381+00
-3178,93,Gousse d'ail,2,gousse,écrasée,10001,,canonical,2026-06-05 10:40:05.605381+00
-3179,93,Vinaigre blanc,60,ml,pour l'escabeche,14032,,canonical,2026-06-05 10:40:05.605381+00
-3180,93,Citron vert (jus + zeste),2,pièce,"1 pour escabeche, 1 pour riz vert",1016,,canonical,2026-06-05 10:40:05.605381+00
-3181,93,Huile d'olive vierge extra,15,ml,1 cuillère à soupe,14030,,canonical,2026-06-05 10:40:05.605381+00
-3182,93,Cumin moulu,1,c. à c.,,14017,,canonical,2026-06-05 10:40:05.605381+00
-3183,93,Feuille de laurier,1,pièce,,2039,,canonical,2026-06-05 10:40:05.605381+00
-3184,93,Sel fin,1,c. à c.,+ poivre au moulin,6004,,canonical,2026-06-05 10:40:05.605381+00
-3185,93,Riz basmati,140,g,"70 g Julien + 50 g Zoé, cru",4003,,canonical,2026-06-05 10:40:05.605381+00
-3186,93,Coriandre fraîche,1,botte,"feuilles + tiges fines, pour le riz vert",1018,,canonical,2026-06-05 10:40:05.605381+00
-3187,93,Persil plat,0.5,botte,pour le riz vert,1049,,canonical,2026-06-05 10:40:05.605381+00
-3188,93,Bouillon de légumes,300,ml,pour cuire le riz,14036,,canonical,2026-06-05 10:40:05.605381+00
-3189,93,Maïs doux (choclo),80,g,"égoutté, pour servir",9007,,canonical,2026-06-05 10:40:05.605381+00
-3221,98,Aubergines,450,g,en tranches 1 cm,1001,,canonical,2026-06-05 10:40:06.213099+00
-3222,98,Sauce tomate concassée,200,g,,,327,archetype,2026-06-05 10:40:06.213099+00
-3223,98,Oignon,1,petit,émincé,2041,,canonical,2026-06-05 10:40:06.213099+00
-3224,98,Ail,2,gousses,,10001,,canonical,2026-06-05 10:40:06.213099+00
-3225,98,Mozzarella,140,g,en tranches,,320,archetype,2026-06-05 10:40:06.213099+00
-3226,98,Parmesan,40,g,râpé,,273,archetype,2026-06-05 10:40:06.213099+00
-3227,98,Basilic frais,15,g,,1004,,canonical,2026-06-05 10:40:06.213099+00
-3228,98,Œufs,2,pièces,pour finition (œuf au plat),2040,,canonical,2026-06-05 10:40:06.213099+00
-3229,98,Boulgour,140,g,cru,16,,canonical,2026-06-05 10:40:06.213099+00
-3230,98,Pois chiches en bocal,180,g,égouttés,5008,,canonical,2026-06-05 10:40:06.213099+00
-3231,98,Huile d'olive,15,ml,,14030,,canonical,2026-06-05 10:40:06.213099+00
-3232,98,Persil plat,10,g,,1049,,canonical,2026-06-05 10:40:06.213099+00
-3260,105,Magret de canard,340,g,,2005,,canonical,2026-06-05 10:40:06.836157+00
-3261,105,Cerises griottes,140,g,dénoyautées,1008,,canonical,2026-06-05 10:40:06.836157+00
-3262,105,Vinaigre balsamique,30,ml,,14032,,canonical,2026-06-05 10:40:06.836157+00
-3263,105,Sucre,10,g,,14037,,canonical,2026-06-05 10:40:06.836157+00
-3264,105,Fond de veau,120,ml,,,315,archetype,2026-06-05 10:40:06.836157+00
-3265,105,Pommes de terre Charlotte,400,g,en fines lamelles,1053,,canonical,2026-06-05 10:40:06.836157+00
-3266,105,Crème fraîche épaisse,80,g,,,198,archetype,2026-06-05 10:40:06.836157+00
-3267,105,Lait entier,120,ml,,7001,,canonical,2026-06-05 10:40:06.836157+00
-3268,105,Emmental,40,g,râpé,,272,archetype,2026-06-05 10:40:06.836157+00
-3269,105,Ail,2,gousses,,10001,,canonical,2026-06-05 10:40:06.836157+00
-3270,105,Noix de muscade,1,pincée,,10004,,canonical,2026-06-05 10:40:06.836157+00
-3271,105,Haricots verts frais,260,g,,2037,,canonical,2026-06-05 10:40:06.836157+00
-3272,105,Échalotes,3,pièces,,2031,,canonical,2026-06-05 10:40:06.836157+00
-3273,105,Beurre,20,g,,,300,archetype,2026-06-05 10:40:06.836157+00
-3296,83,quinoa,140,g,,4002,,canonical,2026-06-05 10:40:07.454217+00
-3297,83,fèves fraîches,300,g,écossées,2035,,canonical,2026-06-05 10:40:07.454217+00
-3298,83,asperges vertes,1,botte,,8004,,canonical,2026-06-05 10:40:07.454217+00
-3299,83,œufs,2,piece,pour pocher,2040,,canonical,2026-06-05 10:40:07.454217+00
-3300,83,citron,1,piece,jus,1015,,canonical,2026-06-05 10:40:07.454217+00
-3301,83,huile d olive,2,cs,,14030,,canonical,2026-06-05 10:40:07.454217+00
-3302,83,herbes fraîches,1,botte,persil/ciboulette,,,unmatched,2026-06-05 10:40:07.454217+00
-3318,87,feuilles de lasagnes,8,piece,,15,,canonical,2026-06-05 10:40:08.050508+00
-3319,87,courgette,1,piece,,2026,,canonical,2026-06-05 10:40:08.050508+00
-3320,87,aubergine,1,piece,,1001,,canonical,2026-06-05 10:40:08.050508+00
-3321,87,poivron,1,piece,,1051,,canonical,2026-06-05 10:40:08.050508+00
-3322,87,tomates concassées,400,g,,1059,,canonical,2026-06-05 10:40:08.050508+00
-3323,87,ricotta,250,g,,,231,archetype,2026-06-05 10:40:08.050508+00
-3128,85,suprêmes de pintade,2,piece,,8012,,canonical,2026-06-05 10:40:04.574707+00
-3129,85,pommes de terre,400,g,en cubes,1053,,canonical,2026-06-05 10:40:04.574707+00
-3130,85,fèves fraîches,300,g,,2035,,canonical,2026-06-05 10:40:04.574707+00
-3131,85,ail,2,piece,,10001,,canonical,2026-06-05 10:40:04.574707+00
-3132,85,persil plat,0.5,botte,,1049,,canonical,2026-06-05 10:40:04.574707+00
-3133,85,thym,2,piece,branches,1058,,canonical,2026-06-05 10:40:04.574707+00
-3134,85,beurre,20,g,,,300,archetype,2026-06-05 10:40:04.574707+00
-3148,99,Pois chiches en bocal,330,g,très bien égouttés,5008,,canonical,2026-06-05 10:40:05.194301+00
-3149,99,Oignon,0.5,pièce,,2041,,canonical,2026-06-05 10:40:05.194301+00
-3150,99,Ail,2,gousses,,10001,,canonical,2026-06-05 10:40:05.194301+00
-3151,99,Coriandre fraîche,25,g,,1018,,canonical,2026-06-05 10:40:05.194301+00
-3152,99,Persil plat,40,g,pour falafels + taboulé,1049,,canonical,2026-06-05 10:40:05.194301+00
-3153,99,Cumin moulu,5,g,,14017,,canonical,2026-06-05 10:40:05.194301+00
-3154,99,Coriandre moulue,3,g,,1018,,canonical,2026-06-05 10:40:05.194301+00
-3155,99,Farine,20,g,,,312,archetype,2026-06-05 10:40:05.194301+00
-3156,99,Boulgour fin,50,g,trempé 15 min,16,,canonical,2026-06-05 10:40:05.194301+00
-3157,99,Tomates,200,g,en petits dés,1059,,canonical,2026-06-05 10:40:05.194301+00
-3158,99,Menthe fraîche,20,g,,1037,,canonical,2026-06-05 10:40:05.194301+00
-3159,99,Citron jaune,1,pièce,jus,1015,,canonical,2026-06-05 10:40:05.194301+00
-3160,99,Huile d'olive,15,ml,,14030,,canonical,2026-06-05 10:40:05.194301+00
-3161,99,Grenade,80,g,graines,1027,,canonical,2026-06-05 10:40:05.194301+00
-3162,99,Yaourt nature,80,g,,,335,archetype,2026-06-05 10:40:05.194301+00
-3163,99,Tahini,30,g,,26,,canonical,2026-06-05 10:40:05.194301+00
-3164,99,Féta,60,g,émiettée,,313,archetype,2026-06-05 10:40:05.194301+00
-3165,99,Œufs (mollets),2,pièces,,2040,,canonical,2026-06-05 10:40:05.194301+00
-3190,94,Patate douce,350,g,en cubes 2 cm,2045,,canonical,2026-06-05 10:40:05.807624+00
-3191,94,Pois chiches en bocal,330,g,égouttés et rincés,5008,,canonical,2026-06-05 10:40:05.807624+00
-3192,94,Pâte d'arachide 100%,45,g,,15,,canonical,2026-06-05 10:40:05.807624+00
-3193,94,Tomates concassées,150,g,,1059,,canonical,2026-06-05 10:40:05.807624+00
-3194,94,Oignon jaune,1,pièce,émincé,2041,,canonical,2026-06-05 10:40:05.807624+00
-3195,94,Carotte,1,pièce,en rondelles,1005,,canonical,2026-06-05 10:40:05.807624+00
-3196,94,Chou blanc,150,g,émincé,2009,,canonical,2026-06-05 10:40:05.807624+00
-3197,94,Ail,2,gousses,écrasées,10001,,canonical,2026-06-05 10:40:05.807624+00
-3198,94,Gingembre frais,15,g,râpé,10002,,canonical,2026-06-05 10:40:05.807624+00
-3199,94,Piment habanero,0.5,pièce,"entier, à retirer en fin",2048,,canonical,2026-06-05 10:40:05.807624+00
-3200,94,Riz basmati,120,g,"cru, à cuire",4003,,canonical,2026-06-05 10:40:05.807624+00
-3201,94,Cacahuètes nature,20,g,en topping,11002,,canonical,2026-06-05 10:40:05.807624+00
-3202,94,Huile neutre,15,ml,,,,unmatched,2026-06-05 10:40:05.807624+00
-3203,94,Bouillon de légumes,350,ml,,14036,,canonical,2026-06-05 10:40:05.807624+00
-3204,94,Coriandre fraîche,1,poignée,pour servir,1018,,canonical,2026-06-05 10:40:05.807624+00
-3233,101,Œufs,5,pièces,,2040,,canonical,2026-06-05 10:40:06.411454+00
-3234,101,Courgettes,450,g,râpées et égouttées,2026,,canonical,2026-06-05 10:40:06.411454+00
-3235,101,Pommes de terre rattes,200,g,"cuites vapeur, en cubes",1053,,canonical,2026-06-05 10:40:06.411454+00
-3236,101,Féta,100,g,émiettée,,313,archetype,2026-06-05 10:40:06.411454+00
-3237,101,Menthe fraîche,15,g,ciselée,1037,,canonical,2026-06-05 10:40:06.411454+00
-3238,101,Parmesan,18,g,râpé,,273,archetype,2026-06-05 10:40:06.411454+00
-3239,101,Huile d'olive,8,ml,,14030,,canonical,2026-06-05 10:40:06.411454+00
-3240,101,"Pousses (mâche, roquette)",140,g,,1033,,canonical,2026-06-05 10:40:06.411454+00
-3241,101,Fenouil,100,g,très finement tranché,2034,,canonical,2026-06-05 10:40:06.411454+00
-3242,101,Tomates cerises,180,g,,1008,,canonical,2026-06-05 10:40:06.411454+00
-3243,101,Pain de seigle,110,g,,,321,archetype,2026-06-05 10:40:06.411454+00
-3244,101,Citron,1,pièce,pour vinaigrette,1015,,canonical,2026-06-05 10:40:06.411454+00
-3274,107,Courgettes,500,g,en tronçons,2026,,canonical,2026-06-05 10:40:07.070065+00
-3275,107,Oignon,1,pièce,,2041,,canonical,2026-06-05 10:40:07.070065+00
-3276,107,Ail,1,gousse,,10001,,canonical,2026-06-05 10:40:07.070065+00
-3277,107,Curry doux,5,g,,,477,archetype,2026-06-05 10:40:07.070065+00
-3278,107,Lait de coco light,150,ml,,,224,archetype,2026-06-05 10:40:07.070065+00
-3279,107,Bouillon de légumes,400,ml,,14036,,canonical,2026-06-05 10:40:07.070065+00
-3280,107,Pain de campagne,110,g,pour croûtons,,433,archetype,2026-06-05 10:40:07.070065+00
-3281,107,Huile d'olive,12,ml,,14030,,canonical,2026-06-05 10:40:07.070065+00
-3282,107,Pain de campagne,110,g,pour tartines,,433,archetype,2026-06-05 10:40:07.070065+00
-3283,107,Avocat mûr,120,g,écrasé,1002,,canonical,2026-06-05 10:40:07.070065+00
-3284,107,Féta,50,g,,,313,archetype,2026-06-05 10:40:07.070065+00
-3285,107,Radis roses,60,g,en rondelles fines,1056,,canonical,2026-06-05 10:40:07.070065+00
-3286,107,Citron,0.5,pièce,jus,1015,,canonical,2026-06-05 10:40:07.070065+00
-3287,107,Ciboulette,8,g,,2018,,canonical,2026-06-05 10:40:07.070065+00
-3303,84,pois chiches cuits,400,g,,5008,,canonical,2026-06-05 10:40:07.648162+00
-3304,84,aubergines,2,piece,en cubes,1001,,canonical,2026-06-05 10:40:07.648162+00
-3305,84,tomates concassées,400,g,,1059,,canonical,2026-06-05 10:40:07.648162+00
-3306,84,oignon,1,piece,,2041,,canonical,2026-06-05 10:40:07.648162+00
-3307,84,gingembre frais,15,g,,10002,,canonical,2026-06-05 10:40:07.648162+00
-3135,88,dos de lieu jaune,350,g,,24,,canonical,2026-06-05 10:40:04.777213+00
-3136,88,échalote,2,piece,ciselées,2031,,canonical,2026-06-05 10:40:04.777213+00
-3137,88,vin blanc,10,cl,,,331,archetype,2026-06-05 10:40:04.777213+00
-3138,88,beurre,80,g,froid en dés,,300,archetype,2026-06-05 10:40:04.777213+00
-3139,88,citron,1,piece,jus,1015,,canonical,2026-06-05 10:40:04.777213+00
-3140,88,pommes de terre,400,g,,1053,,canonical,2026-06-05 10:40:04.777213+00
-3141,88,asperges vertes,1,botte,,8004,,canonical,2026-06-05 10:40:04.777213+00
-3166,92,haricots blancs cuits,400,g,,14021,,canonical,2026-06-05 10:40:05.396788+00
-3167,92,carotte,2,piece,en dés,1005,,canonical,2026-06-05 10:40:05.396788+00
-3168,92,courgette,1,piece,en dés,2026,,canonical,2026-06-05 10:40:05.396788+00
-3169,92,tomates concassées,200,g,,1059,,canonical,2026-06-05 10:40:05.396788+00
-3170,92,petites pâtes,80,g,,15,,canonical,2026-06-05 10:40:05.396788+00
-3171,92,pesto,2,cs,,30,,canonical,2026-06-05 10:40:05.396788+00
-3172,92,parmesan,40,g,copeaux,,273,archetype,2026-06-05 10:40:05.396788+00
-3173,92,pain de campagne,2,piece,tranches,,433,archetype,2026-06-05 10:40:05.396788+00
-3205,96,Rumsteak ou bavette,250,g,en lamelles fines,,347,archetype,2026-06-05 10:40:06.014316+00
-3206,96,Tofu fumé,60,g,en cubes,20,,canonical,2026-06-05 10:40:06.014316+00
-3207,96,Sauce soja,40,ml,,14033,,canonical,2026-06-05 10:40:06.014316+00
-3208,96,Sucre de canne,15,g,,14004,,canonical,2026-06-05 10:40:06.014316+00
-3209,96,Huile de sésame,10,ml,,25,,canonical,2026-06-05 10:40:06.014316+00
-3210,96,Ail,2,gousses,râpé,10001,,canonical,2026-06-05 10:40:06.014316+00
-3211,96,Gingembre,10,g,râpé,10002,,canonical,2026-06-05 10:40:06.014316+00
-3212,96,Poire ou pomme,50,g,râpée,1050,,canonical,2026-06-05 10:40:06.014316+00
-3213,96,Riz,150,g,"cru, type japonica",4003,,canonical,2026-06-05 10:40:06.014316+00
-3214,96,Carotte,1,pièce,en julienne,1005,,canonical,2026-06-05 10:40:06.014316+00
-3215,96,Courgette,1,petite,en julienne,2026,,canonical,2026-06-05 10:40:06.014316+00
-3216,96,Champignons de Paris,120,g,émincés,3001,,canonical,2026-06-05 10:40:06.014316+00
-3217,96,Kimchi,70,g,,35,,canonical,2026-06-05 10:40:06.014316+00
-3218,96,Œufs,2,pièces,,2040,,canonical,2026-06-05 10:40:06.014316+00
-3219,96,Gochujang,35,g,,32,,canonical,2026-06-05 10:40:06.014316+00
-3220,96,Graines de sésame grillées,13,g,,14020,,canonical,2026-06-05 10:40:06.014316+00
-3245,102,Échine de porc,420,g,en gros cubes 3 cm,2051,,canonical,2026-06-05 10:40:06.635475+00
-3246,102,Oignons jaunes,350,g,finement émincés,2041,,canonical,2026-06-05 10:40:06.635475+00
-3247,102,Poivron rouge,1,pièce,en lanières,1051,,canonical,2026-06-05 10:40:06.635475+00
-3248,102,Ail,3,gousses,,10001,,canonical,2026-06-05 10:40:06.635475+00
-3249,102,Tomates concassées,80,g,,1059,,canonical,2026-06-05 10:40:06.635475+00
-3250,102,Paprika doux,15,g,,,473,archetype,2026-06-05 10:40:06.635475+00
-3251,102,Paprika fumé,5,g,,,474,archetype,2026-06-05 10:40:06.635475+00
-3252,102,Cumin graines,3,g,,14017,,canonical,2026-06-05 10:40:06.635475+00
-3253,102,Bouillon de bœuf,250,ml,,,305,archetype,2026-06-05 10:40:06.635475+00
-3254,102,Saindoux ou huile,15,ml,,27,,canonical,2026-06-05 10:40:06.635475+00
-3255,102,Crème fraîche,40,g,finition,,310,archetype,2026-06-05 10:40:06.635475+00
-3256,102,Pommes de terre,350,g,pour galuska,1053,,canonical,2026-06-05 10:40:06.635475+00
-3257,102,Farine,120,g,,,312,archetype,2026-06-05 10:40:06.635475+00
-3258,102,Œuf,1,pièce,,2040,,canonical,2026-06-05 10:40:06.635475+00
-3259,102,Persil plat,12,g,,1049,,canonical,2026-06-05 10:40:06.635475+00
-3288,81,riz arborio,180,g,,4003,,canonical,2026-06-05 10:40:07.261877+00
-3289,81,courgettes,2,piece,en dés,2026,,canonical,2026-06-05 10:40:07.261877+00
-3290,81,citron,1,piece,zeste et jus,1015,,canonical,2026-06-05 10:40:07.261877+00
-3291,81,parmesan,50,g,râpé,,273,archetype,2026-06-05 10:40:07.261877+00
-3292,81,oignon,1,piece,,2041,,canonical,2026-06-05 10:40:07.261877+00
-3293,81,vin blanc,10,cl,,,331,archetype,2026-06-05 10:40:07.261877+00
-3294,81,bouillon de légumes,80,cl,chaud,14036,,canonical,2026-06-05 10:40:07.261877+00
-3295,81,basilic frais,0.5,botte,,1004,,canonical,2026-06-05 10:40:07.261877+00
-3311,86,pois chiches cuits,300,g,égouttés,5008,,canonical,2026-06-05 10:40:07.848871+00
-3312,86,halloumi,225,g,en tranches,21,,canonical,2026-06-05 10:40:07.848871+00
-3313,86,pommes de terre,300,g,en cubes,1053,,canonical,2026-06-05 10:40:07.848871+00
-3314,86,fèves fraîches,250,g,,2035,,canonical,2026-06-05 10:40:07.848871+00
-3315,86,ail,2,piece,,10001,,canonical,2026-06-05 10:40:07.848871+00
-3316,86,persil plat,0.5,botte,,1049,,canonical,2026-06-05 10:40:07.848871+00
-3317,86,paprika fumé,1,cc,,,474,archetype,2026-06-05 10:40:07.848871+00
-3334,91,pommes de terre rattes,500,g,,1053,,canonical,2026-06-05 10:40:08.44549+00
-3335,91,haricots verts,200,g,,2037,,canonical,2026-06-05 10:40:08.44549+00
-3336,91,pois chiches cuits,200,g,,5008,,canonical,2026-06-05 10:40:08.44549+00
-3337,91,œufs,4,piece,durs,2040,,canonical,2026-06-05 10:40:08.44549+00
-3338,91,radis,1,botte,en rondelles,1056,,canonical,2026-06-05 10:40:08.44549+00
-3339,91,moutarde,1,cs,,10003,,canonical,2026-06-05 10:40:08.44549+00
-3340,91,huile d olive,3,cs,,14030,,canonical,2026-06-05 10:40:08.44549+00
-3341,91,herbes fraîches,1,botte,,,,unmatched,2026-06-05 10:40:08.44549+00
-3367,100,Haut de cuisse de poulet,200,g,en lamelles (Julien),2054,,canonical,2026-06-05 10:40:09.361967+00
-3368,100,Tofu ferme,150,g,en cubes (Zoé),20,,canonical,2026-06-05 10:40:09.361967+00
-3308,84,garam masala,2,cc,,,478,archetype,2026-06-05 10:40:07.648162+00
-3309,84,riz basmati,150,g,,4003,,canonical,2026-06-05 10:40:07.648162+00
-3310,84,coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-05 10:40:07.648162+00
-3326,89,cuisses de poulet,500,g,,2054,,canonical,2026-06-05 10:40:08.245746+00
-3327,89,olives vertes,120,g,dénoyautées,11007,,canonical,2026-06-05 10:40:08.245746+00
-3328,89,citron confit,1,piece,,1015,,canonical,2026-06-05 10:40:08.245746+00
-3329,89,oignon,2,piece,émincés,2041,,canonical,2026-06-05 10:40:08.245746+00
-3330,89,semoule de blé,160,g,,17,,canonical,2026-06-05 10:40:08.245746+00
-3331,89,gingembre frais,10,g,,10002,,canonical,2026-06-05 10:40:08.245746+00
-3332,89,coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-05 10:40:08.245746+00
-3333,89,safran ou curcuma,1,cc,,6003,,canonical,2026-06-05 10:40:08.245746+00
-3354,97,Farine T55,300,g,,,312,archetype,2026-06-05 10:40:09.16797+00
-3355,97,Yaourt nature,100,g,,,335,archetype,2026-06-05 10:40:09.16797+00
-3356,97,Levure boulangère sèche,4,g,,14040,,canonical,2026-06-05 10:40:09.16797+00
-3357,97,Œufs (dont 2 pour garniture),3,pièces,,2040,,canonical,2026-06-05 10:40:09.16797+00
-3358,97,Sulguni géorgien,65,g,râpé,,,unmatched,2026-06-05 10:40:09.16797+00
-3359,97,Mozzarella,160,g,râpée,,320,archetype,2026-06-05 10:40:09.16797+00
-3360,97,Beurre doux,22,g,,,204,archetype,2026-06-05 10:40:09.16797+00
-3361,97,Tomates anciennes,270,g,en quartiers,1059,,canonical,2026-06-05 10:40:09.16797+00
-3362,97,Concombre,180,g,en dés,2022,,canonical,2026-06-05 10:40:09.16797+00
-3363,97,Aneth frais,15,g,ciselé,8002,,canonical,2026-06-05 10:40:09.16797+00
-3364,97,Olives Kalamata,45,g,,11007,,canonical,2026-06-05 10:40:09.16797+00
-3365,97,Huile d'olive,18,ml,,14030,,canonical,2026-06-05 10:40:09.16797+00
-3366,97,Vinaigre de vin blanc,10,ml,,,331,archetype,2026-06-05 10:40:09.16797+00
-3394,104,Riz bomba,160,g,,4003,,canonical,2026-06-05 10:40:09.913342+00
-3395,104,Haut de cuisse de poulet,250,g,en gros cubes,2054,,canonical,2026-06-05 10:40:09.913342+00
-3396,104,Chorizo doux,80,g,en rondelles,22,,canonical,2026-06-05 10:40:09.913342+00
-3397,104,Oignon,1,pièce,haché,2041,,canonical,2026-06-05 10:40:09.913342+00
-3398,104,Poivron rouge,150,g,en lanières,1051,,canonical,2026-06-05 10:40:09.913342+00
-3399,104,Tomates concassées,100,g,,1059,,canonical,2026-06-05 10:40:09.913342+00
-3400,104,Petits pois,100,g,frais ou surgelés,2047,,canonical,2026-06-05 10:40:09.913342+00
-3401,104,Cœurs d'artichauts,80,g,en quartiers (optionnel),8003,,canonical,2026-06-05 10:40:09.913342+00
-3402,104,Ail,3,gousses,,10001,,canonical,2026-06-05 10:40:09.913342+00
-3403,104,Bouillon de volaille,450,ml,,,389,archetype,2026-06-05 10:40:09.913342+00
-3404,104,Safran,1,dose,infusé dans bouillon,10006,,canonical,2026-06-05 10:40:09.913342+00
-3405,104,Paprika doux,4,g,,,473,archetype,2026-06-05 10:40:09.913342+00
-3406,104,Huile d'olive,18,ml,,14030,,canonical,2026-06-05 10:40:09.913342+00
-3407,104,Citron,1,pièce,quartiers à servir,1015,,canonical,2026-06-05 10:40:09.913342+00
-3408,104,Persil plat,10,g,,1049,,canonical,2026-06-05 10:40:09.913342+00
-3497,113,Spaghetti,250,g,,15,,canonical,2026-06-05 10:40:11.876534+00
-3498,113,Courgettes,2,pièces,en rubans à l'économe,2026,,canonical,2026-06-05 10:40:11.876534+00
-3499,113,Ail,4,gousses,finement émincées,10001,,canonical,2026-06-05 10:40:11.876534+00
-3500,113,Piment doux peperoncino,1,c. à café,en flocons,2048,,canonical,2026-06-05 10:40:11.876534+00
-3501,113,Huile d'olive vierge extra,6,c. à soupe,,14030,,canonical,2026-06-05 10:40:11.876534+00
-3502,113,Burrata des Pouilles,2,pièces,125g chacune,,,unmatched,2026-06-05 10:40:11.876534+00
-3503,113,Œuf,2,pièces,mollets,2040,,canonical,2026-06-05 10:40:11.876534+00
-3504,113,Parmesan Reggiano,40,g,râpé,,273,archetype,2026-06-05 10:40:11.876534+00
-3505,113,Basilic frais,1,botte,effeuillé,1004,,canonical,2026-06-05 10:40:11.876534+00
-3506,113,Citron jaune,0.5,pièce,zeste,1015,,canonical,2026-06-05 10:40:11.876534+00
-3566,118,Semaine fine moyenne,250,g,,,,unmatched,2026-06-05 10:40:13.104426+00
-3567,118,Pois chiches en conserve,400,g,égouttés (200 g bouillon + 200 g boulettes),5008,,canonical,2026-06-05 10:40:13.104426+00
-3568,118,Boulgour fin,150,g,boulettes,16,,canonical,2026-06-05 10:40:13.104426+00
-3569,118,Carottes,3,pièces,en tronçons,1005,,canonical,2026-06-05 10:40:13.104426+00
-3570,118,Courgettes,3,pièces,en tronçons,2026,,canonical,2026-06-05 10:40:13.104426+00
-3571,118,Navets,3,pièces,en quartiers,1041,,canonical,2026-06-05 10:40:13.104426+00
-3572,118,Tomates,3,pièces,en quartiers,1059,,canonical,2026-06-05 10:40:13.104426+00
-3573,118,Oignons,2,pièces,hachés,2041,,canonical,2026-06-05 10:40:13.104426+00
-3574,118,Raisins secs,80,g,,,93,archetype,2026-06-05 10:40:13.104426+00
-3575,118,Concentré de tomate,2,c. à soupe,,,4,archetype,2026-06-05 10:40:13.104426+00
-3576,118,Ras el hanout,2,c. à café,,37,,canonical,2026-06-05 10:40:13.104426+00
-3577,118,Safran filaments,1,pincée,,10006,,canonical,2026-06-05 10:40:13.104426+00
-3578,118,Cumin moulu,1,c. à café,,14017,,canonical,2026-06-05 10:40:13.104426+00
-3579,118,Coriandre fraîche,1,botte,,1018,,canonical,2026-06-05 10:40:13.104426+00
-3580,118,Persil plat,0.5,botte,boulettes,1049,,canonical,2026-06-05 10:40:13.104426+00
-3581,118,Œuf,1,pièce,boulettes,2040,,canonical,2026-06-05 10:40:13.104426+00
-3582,118,Harissa,2,c. à café,,36,,canonical,2026-06-05 10:40:13.104426+00
-3583,118,Huile d'olive,4,c. à soupe,,14030,,canonical,2026-06-05 10:40:13.104426+00
-3584,118,Ail,3,gousses,,10001,,canonical,2026-06-05 10:40:13.104426+00
-3613,121,Œufs,6,pièces,,2040,,canonical,2026-06-05 10:40:13.691012+00
-3324,87,parmesan,40,g,râpé,,273,archetype,2026-06-05 10:40:08.050508+00
-3325,87,basilic frais,0.5,botte,,1004,,canonical,2026-06-05 10:40:08.050508+00
-3342,95,Filet de merlu,380,g,sans peau,9009,,canonical,2026-06-05 10:40:08.814635+00
-3343,95,Chapelure panko,40,g,,,306,archetype,2026-06-05 10:40:08.814635+00
-3344,95,Zest de citron jaune,1,pièce,non traité,1015,,canonical,2026-06-05 10:40:08.814635+00
-3345,95,Persil plat,10,g,haché,1049,,canonical,2026-06-05 10:40:08.814635+00
-3346,95,Œuf,1,pièce,battu,2040,,canonical,2026-06-05 10:40:08.814635+00
-3347,95,Pommes de terre Bintje,450,g,en frites,1053,,canonical,2026-06-05 10:40:08.814635+00
-3348,95,Huile d'olive,20,ml,,14030,,canonical,2026-06-05 10:40:08.814635+00
-3349,95,Petits pois frais,230,g,écossés,2047,,canonical,2026-06-05 10:40:08.814635+00
-3350,95,Menthe fraîche,8,feuilles,,1037,,canonical,2026-06-05 10:40:08.814635+00
-3351,95,Beurre,13,g,,,300,archetype,2026-06-05 10:40:08.814635+00
-3352,95,Oignon rouge,1,pièce,émincé fin,2041,,canonical,2026-06-05 10:40:08.814635+00
-3353,95,Vinaigre de cidre,30,ml,pickles,,529,archetype,2026-06-05 10:40:08.814635+00
-3382,103,Farine T55,280,g,,,312,archetype,2026-06-05 10:40:09.554837+00
-3383,103,Levure boulangère sèche,4,g,,14040,,canonical,2026-06-05 10:40:09.554837+00
-3384,103,Sel,6,g,,6004,,canonical,2026-06-05 10:40:09.554837+00
-3385,103,Huile d'olive,15,ml,,14030,,canonical,2026-06-05 10:40:09.554837+00
-3386,103,Sauce tomate San Marzano,150,g,,,327,archetype,2026-06-05 10:40:09.554837+00
-3387,103,Mozzarella di bufala,180,g,"égouttée, déchirée",,320,archetype,2026-06-05 10:40:09.554837+00
-3388,103,Parmesan,18,g,,,273,archetype,2026-06-05 10:40:09.554837+00
-3389,103,Basilic frais,12,feuilles,,1004,,canonical,2026-06-05 10:40:09.554837+00
-3390,103,Salade verte,120,g,,14029,,canonical,2026-06-05 10:40:09.554837+00
-3391,103,Féta,55,g,pour la salade,,313,archetype,2026-06-05 10:40:09.554837+00
-3392,103,Tomates cerises,150,g,,1008,,canonical,2026-06-05 10:40:09.554837+00
-3393,103,Vinaigre balsamique,15,ml,,14032,,canonical,2026-06-05 10:40:09.554837+00
-3424,112,Spätzle alsaciens,350,g,frais ou séchés,,,unmatched,2026-06-05 10:40:10.486802+00
-3425,112,Champignons de Paris,200,g,émincés,3001,,canonical,2026-06-05 10:40:10.486802+00
-3426,112,Pleurotes ou girolles,150,g,déchirées à la main,,,unmatched,2026-06-05 10:40:10.486802+00
-3427,112,Comté affiné,150,g,râpé,,270,archetype,2026-06-05 10:40:10.486802+00
-3428,112,Crème fraîche épaisse,200,g,,,198,archetype,2026-06-05 10:40:10.486802+00
-3429,112,Œufs,5,pièces,3 miroir + 2 pour gratin si besoin,2040,,canonical,2026-06-05 10:40:10.486802+00
-3430,112,Échalote,1,pièce,hachée,2031,,canonical,2026-06-05 10:40:10.486802+00
-3431,112,Beurre,40,g,,,300,archetype,2026-06-05 10:40:10.486802+00
-3432,112,Noix de muscade,1,pincée,râpée,10004,,canonical,2026-06-05 10:40:10.486802+00
-3433,112,Mâche,150,g,salade,1033,,canonical,2026-06-05 10:40:10.486802+00
-3434,112,Noix concassées,30,g,salade,,,unmatched,2026-06-05 10:40:10.486802+00
-3435,112,Moutarde de Dijon,1,c. à café,vinaigrette,10003,,canonical,2026-06-05 10:40:10.486802+00
-3436,112,Vinaigre de cidre,1,c. à soupe,vinaigrette,,529,archetype,2026-06-05 10:40:10.486802+00
-3437,108,Bœuf haché 5% MG,300,g,,,304,archetype,2026-06-05 10:40:10.810372+00
-3438,108,Haricots noirs en conserve,400,g,égouttés,14022,,canonical,2026-06-05 10:40:10.810372+00
-3439,108,Maïs doux,200,g,poêlé à sec,9007,,canonical,2026-06-05 10:40:10.810372+00
-3440,108,Tomates concassées,400,g,,1059,,canonical,2026-06-05 10:40:10.810372+00
-3441,108,Oignon rouge,1,pièce,haché,2041,,canonical,2026-06-05 10:40:10.810372+00
-3442,108,Ail,3,gousses,hachées,10001,,canonical,2026-06-05 10:40:10.810372+00
-3443,108,Cumin moulu,2,c. à café,,14017,,canonical,2026-06-05 10:40:10.810372+00
-3444,108,Paprika fumé,2,c. à café,,,474,archetype,2026-06-05 10:40:10.810372+00
-3445,108,Tortillas de maïs,6,pièces,,19,,canonical,2026-06-05 10:40:10.810372+00
-3446,108,Avocat,2,pièces,guacamole,1002,,canonical,2026-06-05 10:40:10.810372+00
-3447,108,Citron vert,1,pièce,jus,1016,,canonical,2026-06-05 10:40:10.810372+00
-3448,108,Cheddar râpé,80,g,,,261,archetype,2026-06-05 10:40:10.810372+00
-3449,108,Coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-05 10:40:10.810372+00
-3450,108,Jalapeños,2,c. à soupe,en lamelles,41,,canonical,2026-06-05 10:40:10.810372+00
-3451,109,Saumon frais qualité sashimi,350,g,cubes 1.5 cm,2062,,canonical,2026-06-05 10:40:11.104839+00
-3452,109,Riz à sushi,200,g,,4003,,canonical,2026-06-05 10:40:11.104839+00
-3453,109,Vinaigre de riz,3,c. à soupe,,14032,,canonical,2026-06-05 10:40:11.104839+00
-3454,109,Sucre,1,c. à soupe,,14037,,canonical,2026-06-05 10:40:11.104839+00
-3455,109,Sauce soja,3,c. à soupe,marinade,14033,,canonical,2026-06-05 10:40:11.104839+00
-3456,109,Mirin,1,c. à soupe,marinade,33,,canonical,2026-06-05 10:40:11.104839+00
-3457,109,Huile de sésame grillé,1,c. à café,marinade,25,,canonical,2026-06-05 10:40:11.104839+00
-3458,109,Edamame décortiqués,150,g,,,,unmatched,2026-06-05 10:40:11.104839+00
-3459,109,Mangue,1,pièce,en dés,1035,,canonical,2026-06-05 10:40:11.104839+00
-3460,109,Avocat,1,pièce,en tranches,1002,,canonical,2026-06-05 10:40:11.104839+00
-3461,109,Concombre,0.5,pièce,en dés,2022,,canonical,2026-06-05 10:40:11.104839+00
-3462,109,Mayonnaise japonaise,2,c. à soupe,sauce,28,,canonical,2026-06-05 10:40:11.104839+00
-3463,109,Sriracha,1,c. à soupe,sauce,42,,canonical,2026-06-05 10:40:11.104839+00
-3464,109,Sésame noir,1,c. à café,,25,,canonical,2026-06-05 10:40:11.104839+00
-3465,109,Algue nori,1,feuille,en lanières,,,unmatched,2026-06-05 10:40:11.104839+00
-3466,109,Oignons frits,2,c. à soupe,,2041,,canonical,2026-06-05 10:40:11.104839+00
-3369,100,Lait de coco light,400,ml,,,224,archetype,2026-06-05 10:40:09.361967+00
-3370,100,Bouillon de volaille,300,ml,,,389,archetype,2026-06-05 10:40:09.361967+00
-3371,100,Citronnelle,3,bâtons,"écrasés, en tronçons",2019,,canonical,2026-06-05 10:40:09.361967+00
-3372,100,Galanga,25,g,en rondelles,39,,canonical,2026-06-05 10:40:09.361967+00
-3373,100,Feuilles de kaffir,5,feuilles,,40,,canonical,2026-06-05 10:40:09.361967+00
-3374,100,Champignons de Paris,150,g,émincés,3001,,canonical,2026-06-05 10:40:09.361967+00
-3375,100,Pousses de bambou,80,g,en lamelles,2055,,canonical,2026-06-05 10:40:09.361967+00
-3376,100,Nuoc-mâm,18,ml,,34,,canonical,2026-06-05 10:40:09.361967+00
-3377,100,Jus de citron vert,2,c.s.,,1016,,canonical,2026-06-05 10:40:09.361967+00
-3378,100,Sucre de palme ou cassonade,8,g,,14037,,canonical,2026-06-05 10:40:09.361967+00
-3379,100,Piment oiseau,1,pièce,selon goût,2048,,canonical,2026-06-05 10:40:09.361967+00
-3380,100,Coriandre fraîche,15,g,,1018,,canonical,2026-06-05 10:40:09.361967+00
-3381,100,Riz jasmin,150,g,cru,4003,,canonical,2026-06-05 10:40:09.361967+00
-3409,106,Sardines fraîches entières,330,g,écaillées vidées,9012,,canonical,2026-06-05 10:40:10.293315+00
-3410,106,Pommes de terre rattes,350,g,,1053,,canonical,2026-06-05 10:40:10.293315+00
-3411,106,Haricots verts frais,180,g,,2037,,canonical,2026-06-05 10:40:10.293315+00
-3412,106,Œufs,2,pièces,pour mollet,2040,,canonical,2026-06-05 10:40:10.293315+00
-3413,106,Tomates anciennes,200,g,en quartiers,1059,,canonical,2026-06-05 10:40:10.293315+00
-3414,106,Olives noires de Nice,45,g,,,532,archetype,2026-06-05 10:40:10.293315+00
-3415,106,Pois chiches en bocal,180,g,égouttés,5008,,canonical,2026-06-05 10:40:10.293315+00
-3416,106,Féta,75,g,émiettée,,313,archetype,2026-06-05 10:40:10.293315+00
-3417,106,Radis roses,80,g,en rondelles,1056,,canonical,2026-06-05 10:40:10.293315+00
-3418,106,Basilic frais,15,feuilles,,1004,,canonical,2026-06-05 10:40:10.293315+00
-3419,106,Anchois à l'huile,4,filets,,9001,,canonical,2026-06-05 10:40:10.293315+00
-3420,106,Huile d'olive,18,ml,,14030,,canonical,2026-06-05 10:40:10.293315+00
-3421,106,Vinaigre de vin rouge,12,ml,,,332,archetype,2026-06-05 10:40:10.293315+00
-3422,106,Ail,1,gousse,,10001,,canonical,2026-06-05 10:40:10.293315+00
-3423,106,Citron,1,pièce,,1015,,canonical,2026-06-05 10:40:10.293315+00
-3507,114,Lentilles vertes du Puy,200,g,sèches,5005,,canonical,2026-06-05 10:40:12.069151+00
-3508,114,Aubergines,3,pièces,en tranches 1 cm,1001,,canonical,2026-06-05 10:40:12.069151+00
-3509,114,Pommes de terre à chair ferme,500,g,en rondelles fines,1053,,canonical,2026-06-05 10:40:12.069151+00
-3510,114,Tomates concassées,400,g,,1059,,canonical,2026-06-05 10:40:12.069151+00
-3511,114,Oignon,1,pièce,haché,2041,,canonical,2026-06-05 10:40:12.069151+00
-3512,114,Ail,3,gousses,,10001,,canonical,2026-06-05 10:40:12.069151+00
-3513,114,Cannelle moulue,0.5,c. à café,,14012,,canonical,2026-06-05 10:40:12.069151+00
-3514,114,Origan séché,1,c. à café,,,134,archetype,2026-06-05 10:40:12.069151+00
-3515,114,Concentré de tomate,2,c. à soupe,,,4,archetype,2026-06-05 10:40:12.069151+00
-3516,114,Lait entier,500,ml,béchamel,7001,,canonical,2026-06-05 10:40:12.069151+00
-3517,114,Beurre,40,g,béchamel,,300,archetype,2026-06-05 10:40:12.069151+00
-3518,114,Farine,40,g,béchamel,,312,archetype,2026-06-05 10:40:12.069151+00
-3519,114,Kefalotyri ou parmesan,100,g,râpé,,273,archetype,2026-06-05 10:40:12.069151+00
-3520,114,Œuf,1,pièce,béchamel,2040,,canonical,2026-06-05 10:40:12.069151+00
-3521,114,Noix de muscade,1,pincée,béchamel,10004,,canonical,2026-06-05 10:40:12.069151+00
-3522,114,Huile d'olive,5,c. à soupe,,14030,,canonical,2026-06-05 10:40:12.069151+00
-3523,114,Menthe fraîche,0.5,botte,finition,1037,,canonical,2026-06-05 10:40:12.069151+00
-3524,115,Dorade royale entière,1200,g,"vidée, écaillée",9005,,canonical,2026-06-05 10:40:12.384457+00
-3525,115,Gros sel de Guérande,2,kg,croûte,6004,,canonical,2026-06-05 10:40:12.384457+00
-3526,115,Blancs d'œufs,2,pièces,croûte,,302,archetype,2026-06-05 10:40:12.384457+00
-3527,115,Thym frais,4,brins,,1058,,canonical,2026-06-05 10:40:12.384457+00
-3528,115,Romarin frais,2,brins,,2057,,canonical,2026-06-05 10:40:12.384457+00
-3529,115,Citron jaune,1,pièce,farce,1015,,canonical,2026-06-05 10:40:12.384457+00
-3530,115,Fenouil,3,bulbes,en quartiers,2034,,canonical,2026-06-05 10:40:12.384457+00
-3531,115,Pastis,5,cl,,45,,canonical,2026-06-05 10:40:12.384457+00
-3532,115,Olives Taggiasche,80,g,dénoyautées,11007,,canonical,2026-06-05 10:40:12.384457+00
-3533,115,Pommes de terre nouvelles,500,g,,1053,,canonical,2026-06-05 10:40:12.384457+00
-3534,115,Citron confit,1,pièce,finement haché,1015,,canonical,2026-06-05 10:40:12.384457+00
-3535,115,Huile d'olive vierge extra,6,c. à soupe,,14030,,canonical,2026-06-05 10:40:12.384457+00
-3536,115,Ail,2,gousses,,10001,,canonical,2026-06-05 10:40:12.384457+00
-3537,116,Lentilles corail (moong dal),200,g,,5005,,canonical,2026-06-05 10:40:12.676135+00
-3538,116,Riz basmati,150,g,,4003,,canonical,2026-06-05 10:40:12.676135+00
-3539,116,Carottes,2,pièces,en dés,1005,,canonical,2026-06-05 10:40:12.676135+00
-3540,116,Courgette,1,pièce,en dés,2026,,canonical,2026-06-05 10:40:12.676135+00
-3541,116,Tomates,2,pièces,en dés,1059,,canonical,2026-06-05 10:40:12.676135+00
-3542,116,Oignon,1,pièce,haché,2041,,canonical,2026-06-05 10:40:12.676135+00
-3543,116,Ail,3,gousses,râpées,10001,,canonical,2026-06-05 10:40:12.676135+00
-3544,116,Gingembre frais,20,g,râpé,10002,,canonical,2026-06-05 10:40:12.676135+00
-3545,116,Ghee,40,g,,46,,canonical,2026-06-05 10:40:12.676135+00
-3546,116,Graines de cumin,1,c. à café,,14017,,canonical,2026-06-05 10:40:12.676135+00
-3467,110,Vermicelles de riz fins,200,g,,4003,,canonical,2026-06-05 10:40:11.393482+00
-3468,110,Tofu fumé,300,g,en cubes,20,,canonical,2026-06-05 10:40:11.393482+00
-3469,110,Citronnelle,2,tiges,écrasée et hachée,2019,,canonical,2026-06-05 10:40:11.393482+00
-3470,110,Gingembre frais,20,g,râpé,10002,,canonical,2026-06-05 10:40:11.393482+00
-3471,110,Sauce soja,2,c. à soupe,,14033,,canonical,2026-06-05 10:40:11.393482+00
-3472,110,Carottes,2,pièces,"en julienne, picklées",1005,,canonical,2026-06-05 10:40:11.393482+00
-3473,110,Daikon,0.5,pièce,"en julienne, picklée",43,,canonical,2026-06-05 10:40:11.393482+00
-3474,110,Vinaigre de riz,3,c. à soupe,pickles,14032,,canonical,2026-06-05 10:40:11.393482+00
-3475,110,Concombre,1,pièce,en julienne,2022,,canonical,2026-06-05 10:40:11.393482+00
-3476,110,Menthe fraîche,1,botte,,1037,,canonical,2026-06-05 10:40:11.393482+00
-3477,110,Coriandre fraîche,1,botte,,1018,,canonical,2026-06-05 10:40:11.393482+00
-3478,110,Basilic thaï,0.5,botte,,1004,,canonical,2026-06-05 10:40:11.393482+00
-3479,110,Cacahuètes torréfiées,60,g,concassées,11002,,canonical,2026-06-05 10:40:11.393482+00
-3480,110,Sauce poisson (nuoc mam),3,c. à soupe,nuoc cham,34,,canonical,2026-06-05 10:40:11.393482+00
-3481,110,Citron vert,2,pièces,"jus, nuoc cham",1016,,canonical,2026-06-05 10:40:11.393482+00
-3482,110,Sucre,2,c. à café,nuoc cham,14037,,canonical,2026-06-05 10:40:11.393482+00
-3483,110,Ail,1,gousse,"râpée, nuoc cham",10001,,canonical,2026-06-05 10:40:11.393482+00
-3484,111,Filets de poulet,350,g,émincés,2054,,canonical,2026-06-05 10:40:11.683758+00
-3485,111,Sauce soja,4,c. à soupe,teriyaki,14033,,canonical,2026-06-05 10:40:11.683758+00
-3486,111,Mirin,4,c. à soupe,teriyaki,33,,canonical,2026-06-05 10:40:11.683758+00
-3487,111,Saké de cuisine,2,c. à soupe,teriyaki,33,,canonical,2026-06-05 10:40:11.683758+00
-3488,111,Sucre,2,c. à café,teriyaki,14037,,canonical,2026-06-05 10:40:11.683758+00
-3489,111,Riz japonais,250,g,,4003,,canonical,2026-06-05 10:40:11.683758+00
-3490,111,Pak choi,4,pièces,coupés en 4,2044,,canonical,2026-06-05 10:40:11.683758+00
-3491,111,Shiitakés frais,200,g,émincés,44,,canonical,2026-06-05 10:40:11.683758+00
-3492,111,Ail,2,gousses,hachées,10001,,canonical,2026-06-05 10:40:11.683758+00
-3493,111,Gingembre frais,15,g,râpé,10002,,canonical,2026-06-05 10:40:11.683758+00
-3494,111,Huile de sésame grillé,1,c. à café,,25,,canonical,2026-06-05 10:40:11.683758+00
-3495,111,Oignons verts,3,tiges,ciselés,2041,,canonical,2026-06-05 10:40:11.683758+00
-3496,111,Sésame blanc grillé,1,c. à soupe,,25,,canonical,2026-06-05 10:40:11.683758+00
-3554,117,Échine de porc,500,g,en tranches 2 cm,2051,,canonical,2026-06-05 10:40:12.909475+00
-3555,117,Miel,3,c. à soupe,,14001,,canonical,2026-06-05 10:40:12.909475+00
-3556,117,Moutarde de Dijon,2,c. à soupe,,10003,,canonical,2026-06-05 10:40:12.909475+00
-3557,117,Romarin frais,2,brins,effeuillé haché,2057,,canonical,2026-06-05 10:40:12.909475+00
-3558,117,Ail,3,gousses,écrasées,10001,,canonical,2026-06-05 10:40:12.909475+00
-3559,117,Carottes nouvelles,400,g,"en bottes, fanes coupées",1005,,canonical,2026-06-05 10:40:12.909475+00
-3560,117,Navets boule d'or,350,g,en quartiers,1041,,canonical,2026-06-05 10:40:12.909475+00
-3561,117,Oignons rouges,2,pièces,en quartiers,2041,,canonical,2026-06-05 10:40:12.909475+00
-3562,117,Pommes grenailles,500,g,non épluchées,1052,,canonical,2026-06-05 10:40:12.909475+00
-3563,117,Huile d'olive,4,c. à soupe,,14030,,canonical,2026-06-05 10:40:12.909475+00
-3564,117,Vinaigre balsamique,1,c. à soupe,légumes,14032,,canonical,2026-06-05 10:40:12.909475+00
-3565,117,Thym frais,3,brins,,1058,,canonical,2026-06-05 10:40:12.909475+00
-3600,120,Tomates anciennes mûres,800,g,mondées,1039,,canonical,2026-06-05 10:40:13.500195+00
-3601,120,Poivrons rouges,2,pièces,grillés et pelés,1051,,canonical,2026-06-05 10:40:13.500195+00
-3602,120,Concombre,0.5,pièce,,2022,,canonical,2026-06-05 10:40:13.500195+00
-3603,120,Ail,1,gousse,dégermée,10001,,canonical,2026-06-05 10:40:13.500195+00
-3604,120,Pain rassis,80,g,écroûté,,440,archetype,2026-06-05 10:40:13.500195+00
-3605,120,Vinaigre de Xérès,3,c. à soupe,,14032,,canonical,2026-06-05 10:40:13.500195+00
-3606,120,Huile d'olive vierge extra,6,c. à soupe,,14030,,canonical,2026-06-05 10:40:13.500195+00
-3607,120,Cumin moulu,1,c. à café,,14017,,canonical,2026-06-05 10:40:13.500195+00
-3608,120,Œufs,2,pièces,mollets,2040,,canonical,2026-06-05 10:40:13.500195+00
-3609,120,Pain de campagne,4,tranches,tartine,,433,archetype,2026-06-05 10:40:13.500195+00
-3610,120,Tomate cœur de bœuf,1,pièce,tartine,14011,,canonical,2026-06-05 10:40:13.500195+00
-3611,120,Manchego affiné,80,g,en copeaux,,267,archetype,2026-06-05 10:40:13.500195+00
-3612,120,Basilic frais,0.5,botte,,1004,,canonical,2026-06-05 10:40:13.500195+00
-3547,116,Curcuma moulu,1,c. à café,,6003,,canonical,2026-06-05 10:40:12.676135+00
-3548,116,Garam masala,1,c. à café,,,478,archetype,2026-06-05 10:40:12.676135+00
-3549,116,Coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-05 10:40:12.676135+00
-3550,116,Yaourt nature,250,g,raita,,335,archetype,2026-06-05 10:40:12.676135+00
-3551,116,Concombre,1,pièce,"raita, râpé",2022,,canonical,2026-06-05 10:40:12.676135+00
-3552,116,Menthe fraîche,0.5,botte,raita,1037,,canonical,2026-06-05 10:40:12.676135+00
-3553,116,Cumin moulu,1,pincée,raita,14017,,canonical,2026-06-05 10:40:12.676135+00
-3585,119,Côte de bœuf maturée,1200,g,sortie 1 h avant,,353,archetype,2026-06-05 10:40:13.299512+00
-3586,119,Beurre,80,g,noisette + arrosage,,300,archetype,2026-06-05 10:40:13.299512+00
-3587,119,Fleur de sel de Guérande,1,c. à café,,6004,,canonical,2026-06-05 10:40:13.299512+00
-3588,119,Poivre noir mignonette,1,c. à café,,10005,,canonical,2026-06-05 10:40:13.299512+00
-3589,119,Pommes de terre Bintje,1000,g,frites,1053,,canonical,2026-06-05 10:40:13.299512+00
-3590,119,Huile de friture,1,L,,,,unmatched,2026-06-05 10:40:13.299512+00
-3591,119,Échalotes,3,pièces,béarnaise + salade,2031,,canonical,2026-06-05 10:40:13.299512+00
-3592,119,Vinaigre d'estragon,5,cl,béarnaise,,142,archetype,2026-06-05 10:40:13.299512+00
-3593,119,Vin blanc sec,5,cl,béarnaise,,331,archetype,2026-06-05 10:40:13.299512+00
-3594,119,Jaunes d'œufs,3,pièces,béarnaise,,318,archetype,2026-06-05 10:40:13.299512+00
-3595,119,Beurre clarifié,200,g,béarnaise,,403,archetype,2026-06-05 10:40:13.299512+00
-3596,119,Estragon frais,1,bouquet,béarnaise,2033,,canonical,2026-06-05 10:40:13.299512+00
-3597,119,Salade batavia,1,pièce,,14029,,canonical,2026-06-05 10:40:13.299512+00
-3598,119,Vinaigre de Xérès,2,c. à soupe,vinaigrette,14032,,canonical,2026-06-05 10:40:13.299512+00
-3599,119,Huile d'olive,4,c. à soupe,vinaigrette,14030,,canonical,2026-06-05 10:40:13.299512+00
+4856,82,pavés de saumon,350,g,en cubes,2062,,canonical,2026-06-05 12:39:15.701135+00
+4857,82,lait de coco,25,cl,allégé,,224,archetype,2026-06-05 12:39:15.701135+00
+4858,82,riz basmati,150,g,,4003,,canonical,2026-06-05 12:39:15.701135+00
+4859,82,gingembre frais,15,g,râpé,10002,,canonical,2026-06-05 12:39:15.701135+00
+4860,82,citron vert,1,piece,jus,1016,,canonical,2026-06-05 12:39:15.701135+00
+4861,82,oignon,1,piece,,2041,,canonical,2026-06-05 12:39:15.701135+00
+4862,82,pâte de curry,1,cs,,15,,canonical,2026-06-05 12:39:15.701135+00
+4863,82,coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-05 12:39:15.701135+00
+4926,94,Patate douce,350,g,en cubes 2 cm,2045,,canonical,2026-06-05 12:39:17.261379+00
+4927,94,Pois chiches en bocal,330,g,égouttés et rincés,5008,,canonical,2026-06-05 12:39:17.261379+00
+4928,94,Pâte d'arachide 100%,45,g,,15,,canonical,2026-06-05 12:39:17.261379+00
+4929,94,Tomates concassées,150,g,,1059,,canonical,2026-06-05 12:39:17.261379+00
+4930,94,Oignon jaune,1,pièce,émincé,2041,,canonical,2026-06-05 12:39:17.261379+00
+4931,94,Carotte,1,pièce,en rondelles,1005,,canonical,2026-06-05 12:39:17.261379+00
+4932,94,Chou blanc,150,g,émincé,2009,,canonical,2026-06-05 12:39:17.261379+00
+4933,94,Ail,2,gousses,écrasées,10001,,canonical,2026-06-05 12:39:17.261379+00
+4934,94,Gingembre frais,15,g,râpé,10002,,canonical,2026-06-05 12:39:17.261379+00
+4935,94,Piment habanero,0.5,pièce,"entier, à retirer en fin",2048,,canonical,2026-06-05 12:39:17.261379+00
+4936,94,Riz basmati,120,g,"cru, à cuire",4003,,canonical,2026-06-05 12:39:17.261379+00
+4937,94,Cacahuètes nature,20,g,en topping,11002,,canonical,2026-06-05 12:39:17.261379+00
+4938,94,Huile neutre,15,ml,,,,unmatched,2026-06-05 12:39:17.261379+00
+4939,94,Bouillon de légumes,350,ml,,14036,,canonical,2026-06-05 12:39:17.261379+00
+4940,94,Coriandre fraîche,1,poignée,pour servir,1018,,canonical,2026-06-05 12:39:17.261379+00
+5024,81,riz arborio,180,g,,4003,,canonical,2026-06-05 12:39:18.66964+00
+5025,81,courgettes,2,piece,en dés,2026,,canonical,2026-06-05 12:39:18.66964+00
+5026,81,citron,1,piece,zeste et jus,1015,,canonical,2026-06-05 12:39:18.66964+00
+5027,81,parmesan,50,g,râpé,,273,archetype,2026-06-05 12:39:18.66964+00
+5028,81,oignon,1,piece,,2041,,canonical,2026-06-05 12:39:18.66964+00
+5029,81,vin blanc,10,cl,,,331,archetype,2026-06-05 12:39:18.66964+00
+5030,81,bouillon de légumes,80,cl,chaud,14036,,canonical,2026-06-05 12:39:18.66964+00
+5031,81,basilic frais,0.5,botte,,1004,,canonical,2026-06-05 12:39:18.66964+00
+5078,95,Filet de merlu,380,g,sans peau,9009,,canonical,2026-06-05 12:39:20.035181+00
+5079,95,Chapelure panko,40,g,,,306,archetype,2026-06-05 12:39:20.035181+00
+5080,95,Zest de citron jaune,1,pièce,non traité,1015,,canonical,2026-06-05 12:39:20.035181+00
+5081,95,Persil plat,10,g,haché,1049,,canonical,2026-06-05 12:39:20.035181+00
+5082,95,Œuf,1,pièce,battu,2040,,canonical,2026-06-05 12:39:20.035181+00
+5083,95,Pommes de terre Bintje,450,g,en frites,1053,,canonical,2026-06-05 12:39:20.035181+00
+5084,95,Huile d'olive,20,ml,,14030,,canonical,2026-06-05 12:39:20.035181+00
+5085,95,Petits pois frais,230,g,écossés,2047,,canonical,2026-06-05 12:39:20.035181+00
+5086,95,Menthe fraîche,8,feuilles,,1037,,canonical,2026-06-05 12:39:20.035181+00
+5087,95,Beurre,13,g,,,300,archetype,2026-06-05 12:39:20.035181+00
+5088,95,Oignon rouge,1,pièce,émincé fin,2041,,canonical,2026-06-05 12:39:20.035181+00
+5089,95,Vinaigre de cidre,30,ml,pickles,,529,archetype,2026-06-05 12:39:20.035181+00
+5176,111,Filets de poulet,350,g,émincés,2054,,canonical,2026-06-05 12:39:21.42371+00
+5177,111,Sauce soja,4,c. à soupe,teriyaki,14033,,canonical,2026-06-05 12:39:21.42371+00
+5178,111,Mirin,4,c. à soupe,teriyaki,33,,canonical,2026-06-05 12:39:21.42371+00
+5179,111,Saké de cuisine,2,c. à soupe,teriyaki,33,,canonical,2026-06-05 12:39:21.42371+00
+5180,111,Sucre,2,c. à café,teriyaki,14037,,canonical,2026-06-05 12:39:21.42371+00
+5181,111,Riz japonais,250,g,,4003,,canonical,2026-06-05 12:39:21.42371+00
+5182,111,Pak choi,4,pièces,coupés en 4,2044,,canonical,2026-06-05 12:39:21.42371+00
+5183,111,Shiitakés frais,200,g,émincés,44,,canonical,2026-06-05 12:39:21.42371+00
+5184,111,Ail,2,gousses,hachées,10001,,canonical,2026-06-05 12:39:21.42371+00
+5185,111,Gingembre frais,15,g,râpé,10002,,canonical,2026-06-05 12:39:21.42371+00
+5186,111,Huile de sésame grillé,1,c. à café,,25,,canonical,2026-06-05 12:39:21.42371+00
+5187,111,Oignons verts,3,tiges,ciselés,2041,,canonical,2026-06-05 12:39:21.42371+00
+5188,111,Sésame blanc grillé,1,c. à soupe,,25,,canonical,2026-06-05 12:39:21.42371+00
+5276,121,Œufs,6,pièces,,2040,,canonical,2026-06-05 12:39:22.792398+00
+5277,121,Courgettes,2,pièces,en dés,2026,,canonical,2026-06-05 12:39:22.792398+00
+5278,121,Ail,2,gousses,hachées,10001,,canonical,2026-06-05 12:39:22.792398+00
+5279,121,Ciboulette,0.5,botte,ciselée,2018,,canonical,2026-06-05 12:39:22.792398+00
+5280,121,Persil plat,0.5,botte,ciselé,1049,,canonical,2026-06-05 12:39:22.792398+00
+5281,121,Estragon frais,0.5,botte,ciselé,2033,,canonical,2026-06-05 12:39:22.792398+00
+5282,121,Beurre,30,g,,,300,archetype,2026-06-05 12:39:22.792398+00
+5283,121,Huile d'olive,2,c. à soupe,,14030,,canonical,2026-06-05 12:39:22.792398+00
+5284,121,Tomates anciennes,3,pièces,en tranches,1059,,canonical,2026-06-05 12:39:22.792398+00
+5285,121,Mozzarella di bufala,250,g,,,320,archetype,2026-06-05 12:39:22.792398+00
+5286,121,Basilic frais,1,botte,,1004,,canonical,2026-06-05 12:39:22.792398+00
+5287,121,Vinaigre balsamique,2,c. à soupe,,14032,,canonical,2026-06-05 12:39:22.792398+00
+5288,121,Pain de campagne,4,tranches,,,433,archetype,2026-06-05 12:39:22.792398+00
+4864,85,suprêmes de pintade,2,piece,,8012,,canonical,2026-06-05 12:39:16.06349+00
+4865,85,pommes de terre,400,g,en cubes,1053,,canonical,2026-06-05 12:39:16.06349+00
+4866,85,fèves fraîches,300,g,,2035,,canonical,2026-06-05 12:39:16.06349+00
+4867,85,ail,2,piece,,10001,,canonical,2026-06-05 12:39:16.06349+00
+4868,85,persil plat,0.5,botte,,1049,,canonical,2026-06-05 12:39:16.06349+00
+4869,85,thym,2,piece,branches,1058,,canonical,2026-06-05 12:39:16.06349+00
+4870,85,beurre,20,g,,,300,archetype,2026-06-05 12:39:16.06349+00
+4941,96,Rumsteak ou bavette,250,g,en lamelles fines,,347,archetype,2026-06-05 12:39:17.459115+00
+4942,96,Tofu fumé,60,g,en cubes,20,,canonical,2026-06-05 12:39:17.459115+00
+4943,96,Sauce soja,40,ml,,14033,,canonical,2026-06-05 12:39:17.459115+00
+4944,96,Sucre de canne,15,g,,14004,,canonical,2026-06-05 12:39:17.459115+00
+4945,96,Huile de sésame,10,ml,,25,,canonical,2026-06-05 12:39:17.459115+00
+4946,96,Ail,2,gousses,râpé,10001,,canonical,2026-06-05 12:39:17.459115+00
+4947,96,Gingembre,10,g,râpé,10002,,canonical,2026-06-05 12:39:17.459115+00
+4948,96,Poire ou pomme,50,g,râpée,1050,,canonical,2026-06-05 12:39:17.459115+00
+4949,96,Riz,150,g,"cru, type japonica",4003,,canonical,2026-06-05 12:39:17.459115+00
+4950,96,Carotte,1,pièce,en julienne,1005,,canonical,2026-06-05 12:39:17.459115+00
+4951,96,Courgette,1,petite,en julienne,2026,,canonical,2026-06-05 12:39:17.459115+00
+4952,96,Champignons de Paris,120,g,émincés,3001,,canonical,2026-06-05 12:39:17.459115+00
+4953,96,Kimchi,70,g,,35,,canonical,2026-06-05 12:39:17.459115+00
+4954,96,Œufs,2,pièces,,2040,,canonical,2026-06-05 12:39:17.459115+00
+4955,96,Gochujang,35,g,,32,,canonical,2026-06-05 12:39:17.459115+00
+4956,96,Graines de sésame grillées,13,g,,14020,,canonical,2026-06-05 12:39:17.459115+00
+5032,83,quinoa,140,g,,4002,,canonical,2026-06-05 12:39:18.866756+00
+5033,83,fèves fraîches,300,g,écossées,2035,,canonical,2026-06-05 12:39:18.866756+00
+5034,83,asperges vertes,1,botte,,8004,,canonical,2026-06-05 12:39:18.866756+00
+5035,83,œufs,2,piece,pour pocher,2040,,canonical,2026-06-05 12:39:18.866756+00
+5036,83,citron,1,piece,jus,1015,,canonical,2026-06-05 12:39:18.866756+00
+5037,83,huile d olive,2,cs,,14030,,canonical,2026-06-05 12:39:18.866756+00
+5038,83,herbes fraîches,1,botte,persil/ciboulette,,,unmatched,2026-06-05 12:39:18.866756+00
+5090,97,Farine T55,300,g,,,312,archetype,2026-06-05 12:39:20.227945+00
+5091,97,Yaourt nature,100,g,,,335,archetype,2026-06-05 12:39:20.227945+00
+5092,97,Levure boulangère sèche,4,g,,14040,,canonical,2026-06-05 12:39:20.227945+00
+5093,97,Œufs (dont 2 pour garniture),3,pièces,,2040,,canonical,2026-06-05 12:39:20.227945+00
+5094,97,Sulguni géorgien,65,g,râpé,,,unmatched,2026-06-05 12:39:20.227945+00
+5095,97,Mozzarella,160,g,râpée,,320,archetype,2026-06-05 12:39:20.227945+00
+5096,97,Beurre doux,22,g,,,204,archetype,2026-06-05 12:39:20.227945+00
+5097,97,Tomates anciennes,270,g,en quartiers,1059,,canonical,2026-06-05 12:39:20.227945+00
+5098,97,Concombre,180,g,en dés,2022,,canonical,2026-06-05 12:39:20.227945+00
+5099,97,Aneth frais,15,g,ciselé,8002,,canonical,2026-06-05 12:39:20.227945+00
+5100,97,Olives Kalamata,45,g,,11007,,canonical,2026-06-05 12:39:20.227945+00
+5101,97,Huile d'olive,18,ml,,14030,,canonical,2026-06-05 12:39:20.227945+00
+5102,97,Vinaigre de vin blanc,10,ml,,,331,archetype,2026-06-05 12:39:20.227945+00
+5189,114,Lentilles vertes du Puy,200,g,sèches,5005,,canonical,2026-06-05 12:39:21.618848+00
+5190,114,Aubergines,3,pièces,en tranches 1 cm,1001,,canonical,2026-06-05 12:39:21.618848+00
+5191,114,Pommes de terre à chair ferme,500,g,en rondelles fines,1053,,canonical,2026-06-05 12:39:21.618848+00
+5192,114,Tomates concassées,400,g,,1059,,canonical,2026-06-05 12:39:21.618848+00
+5193,114,Oignon,1,pièce,haché,2041,,canonical,2026-06-05 12:39:21.618848+00
+5194,114,Ail,3,gousses,,10001,,canonical,2026-06-05 12:39:21.618848+00
+5195,114,Cannelle moulue,0.5,c. à café,,14012,,canonical,2026-06-05 12:39:21.618848+00
+5196,114,Origan séché,1,c. à café,,,134,archetype,2026-06-05 12:39:21.618848+00
+5197,114,Concentré de tomate,2,c. à soupe,,,4,archetype,2026-06-05 12:39:21.618848+00
+5198,114,Lait entier,500,ml,béchamel,7001,,canonical,2026-06-05 12:39:21.618848+00
+5199,114,Beurre,40,g,béchamel,,300,archetype,2026-06-05 12:39:21.618848+00
+5200,114,Farine,40,g,béchamel,,312,archetype,2026-06-05 12:39:21.618848+00
+5201,114,Kefalotyri ou parmesan,100,g,râpé,,273,archetype,2026-06-05 12:39:21.618848+00
+5202,114,Œuf,1,pièce,béchamel,2040,,canonical,2026-06-05 12:39:21.618848+00
+5203,114,Noix de muscade,1,pincée,béchamel,10004,,canonical,2026-06-05 12:39:21.618848+00
+5204,114,Huile d'olive,5,c. à soupe,,14030,,canonical,2026-06-05 12:39:21.618848+00
+5205,114,Menthe fraîche,0.5,botte,finition,1037,,canonical,2026-06-05 12:39:21.618848+00
+5290,108,Bœuf haché 5% MG,300,g,,,304,archetype,2026-06-05 12:39:22.991585+00
+5291,108,Haricots noirs en conserve,400,g,égouttés,14022,,canonical,2026-06-05 12:39:22.991585+00
+5292,108,Maïs doux,200,g,poêlé à sec,9007,,canonical,2026-06-05 12:39:22.991585+00
+5293,108,Tomates concassées,400,g,,1059,,canonical,2026-06-05 12:39:22.991585+00
+5294,108,Oignon rouge,1,pièce,haché,2041,,canonical,2026-06-05 12:39:22.991585+00
+5295,108,Ail,3,gousses,hachées,10001,,canonical,2026-06-05 12:39:22.991585+00
+5296,108,Cumin moulu,2,c. à café,,14017,,canonical,2026-06-05 12:39:22.991585+00
+5297,108,Paprika fumé,2,c. à café,,,474,archetype,2026-06-05 12:39:22.991585+00
+5298,108,Tortillas de maïs,6,pièces,,19,,canonical,2026-06-05 12:39:22.991585+00
+5299,108,Avocat,2,pièces,guacamole,1002,,canonical,2026-06-05 12:39:22.991585+00
+4871,88,dos de lieu jaune,350,g,,24,,canonical,2026-06-05 12:39:16.262094+00
+4872,88,échalote,2,piece,ciselées,2031,,canonical,2026-06-05 12:39:16.262094+00
+4873,88,vin blanc,10,cl,,,331,archetype,2026-06-05 12:39:16.262094+00
+4874,88,beurre,80,g,froid en dés,,300,archetype,2026-06-05 12:39:16.262094+00
+4875,88,citron,1,piece,jus,1015,,canonical,2026-06-05 12:39:16.262094+00
+4876,88,pommes de terre,400,g,,1053,,canonical,2026-06-05 12:39:16.262094+00
+4877,88,asperges vertes,1,botte,,8004,,canonical,2026-06-05 12:39:16.262094+00
+4957,98,Aubergines,450,g,en tranches 1 cm,1001,,canonical,2026-06-05 12:39:17.649306+00
+4958,98,Sauce tomate concassée,200,g,,,327,archetype,2026-06-05 12:39:17.649306+00
+4959,98,Oignon,1,petit,émincé,2041,,canonical,2026-06-05 12:39:17.649306+00
+4960,98,Ail,2,gousses,,10001,,canonical,2026-06-05 12:39:17.649306+00
+4961,98,Mozzarella,140,g,en tranches,,320,archetype,2026-06-05 12:39:17.649306+00
+4962,98,Parmesan,40,g,râpé,,273,archetype,2026-06-05 12:39:17.649306+00
+4963,98,Basilic frais,15,g,,1004,,canonical,2026-06-05 12:39:17.649306+00
+4964,98,Œufs,2,pièces,pour finition (œuf au plat),2040,,canonical,2026-06-05 12:39:17.649306+00
+4965,98,Boulgour,140,g,cru,16,,canonical,2026-06-05 12:39:17.649306+00
+4966,98,Pois chiches en bocal,180,g,égouttés,5008,,canonical,2026-06-05 12:39:17.649306+00
+4967,98,Huile d'olive,15,ml,,14030,,canonical,2026-06-05 12:39:17.649306+00
+4968,98,Persil plat,10,g,,1049,,canonical,2026-06-05 12:39:17.649306+00
+5039,84,pois chiches cuits,400,g,,5008,,canonical,2026-06-05 12:39:19.058905+00
+5040,84,aubergines,2,piece,en cubes,1001,,canonical,2026-06-05 12:39:19.058905+00
+5041,84,tomates concassées,400,g,,1059,,canonical,2026-06-05 12:39:19.058905+00
+5042,84,oignon,1,piece,,2041,,canonical,2026-06-05 12:39:19.058905+00
+5043,84,gingembre frais,15,g,,10002,,canonical,2026-06-05 12:39:19.058905+00
+5044,84,garam masala,2,cc,,,478,archetype,2026-06-05 12:39:19.058905+00
+5045,84,riz basmati,150,g,,4003,,canonical,2026-06-05 12:39:19.058905+00
+5046,84,coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-05 12:39:19.058905+00
+5103,100,Haut de cuisse de poulet,200,g,en lamelles (Julien),2054,,canonical,2026-06-05 12:39:20.432314+00
+5104,100,Tofu ferme,150,g,en cubes (Zoé),20,,canonical,2026-06-05 12:39:20.432314+00
+5105,100,Lait de coco light,400,ml,,,224,archetype,2026-06-05 12:39:20.432314+00
+5106,100,Bouillon de volaille,300,ml,,,389,archetype,2026-06-05 12:39:20.432314+00
+5107,100,Citronnelle,3,bâtons,"écrasés, en tronçons",2019,,canonical,2026-06-05 12:39:20.432314+00
+5108,100,Galanga,25,g,en rondelles,39,,canonical,2026-06-05 12:39:20.432314+00
+5109,100,Feuilles de kaffir,5,feuilles,,40,,canonical,2026-06-05 12:39:20.432314+00
+5110,100,Champignons de Paris,150,g,émincés,3001,,canonical,2026-06-05 12:39:20.432314+00
+5111,100,Pousses de bambou,80,g,en lamelles,2055,,canonical,2026-06-05 12:39:20.432314+00
+5112,100,Nuoc-mâm,18,ml,,34,,canonical,2026-06-05 12:39:20.432314+00
+5113,100,Jus de citron vert,2,c.s.,,1016,,canonical,2026-06-05 12:39:20.432314+00
+5114,100,Sucre de palme ou cassonade,8,g,,14037,,canonical,2026-06-05 12:39:20.432314+00
+5115,100,Piment oiseau,1,pièce,selon goût,2048,,canonical,2026-06-05 12:39:20.432314+00
+5116,100,Coriandre fraîche,15,g,,1018,,canonical,2026-06-05 12:39:20.432314+00
+5117,100,Riz jasmin,150,g,cru,4003,,canonical,2026-06-05 12:39:20.432314+00
+5206,115,Dorade royale entière,1200,g,"vidée, écaillée",9005,,canonical,2026-06-05 12:39:21.807701+00
+5207,115,Gros sel de Guérande,2,kg,croûte,6004,,canonical,2026-06-05 12:39:21.807701+00
+5208,115,Blancs d'œufs,2,pièces,croûte,,302,archetype,2026-06-05 12:39:21.807701+00
+5209,115,Thym frais,4,brins,,1058,,canonical,2026-06-05 12:39:21.807701+00
+5210,115,Romarin frais,2,brins,,2057,,canonical,2026-06-05 12:39:21.807701+00
+5211,115,Citron jaune,1,pièce,farce,1015,,canonical,2026-06-05 12:39:21.807701+00
+5212,115,Fenouil,3,bulbes,en quartiers,2034,,canonical,2026-06-05 12:39:21.807701+00
+5213,115,Pastis,5,cl,,45,,canonical,2026-06-05 12:39:21.807701+00
+5214,115,Olives Taggiasche,80,g,dénoyautées,11007,,canonical,2026-06-05 12:39:21.807701+00
+5215,115,Pommes de terre nouvelles,500,g,,1053,,canonical,2026-06-05 12:39:21.807701+00
+5216,115,Citron confit,1,pièce,finement haché,1015,,canonical,2026-06-05 12:39:21.807701+00
+5217,115,Huile d'olive vierge extra,6,c. à soupe,,14030,,canonical,2026-06-05 12:39:21.807701+00
+5218,115,Ail,2,gousses,,10001,,canonical,2026-06-05 12:39:21.807701+00
+5304,110,Vermicelles de riz fins,200,g,,4003,,canonical,2026-06-05 12:39:23.196649+00
+5305,110,Tofu fumé,300,g,en cubes,20,,canonical,2026-06-05 12:39:23.196649+00
+5306,110,Citronnelle,2,tiges,écrasée et hachée,2019,,canonical,2026-06-05 12:39:23.196649+00
+5307,110,Gingembre frais,20,g,râpé,10002,,canonical,2026-06-05 12:39:23.196649+00
+5308,110,Sauce soja,2,c. à soupe,,14033,,canonical,2026-06-05 12:39:23.196649+00
+5309,110,Carottes,2,pièces,"en julienne, picklées",1005,,canonical,2026-06-05 12:39:23.196649+00
+5310,110,Daikon,0.5,pièce,"en julienne, picklée",43,,canonical,2026-06-05 12:39:23.196649+00
+5311,110,Vinaigre de riz,3,c. à soupe,pickles,14032,,canonical,2026-06-05 12:39:23.196649+00
+5312,110,Concombre,1,pièce,en julienne,2022,,canonical,2026-06-05 12:39:23.196649+00
+5313,110,Menthe fraîche,1,botte,,1037,,canonical,2026-06-05 12:39:23.196649+00
+5314,110,Coriandre fraîche,1,botte,,1018,,canonical,2026-06-05 12:39:23.196649+00
+5315,110,Basilic thaï,0.5,botte,,1004,,canonical,2026-06-05 12:39:23.196649+00
+5316,110,Cacahuètes torréfiées,60,g,concassées,11002,,canonical,2026-06-05 12:39:23.196649+00
+4878,90,orecchiette,180,g,,15,,canonical,2026-06-05 12:39:16.458838+00
+4879,90,brocolis,500,g,en bouquets,2003,,canonical,2026-06-05 12:39:16.458838+00
+4880,90,ail,2,piece,,10001,,canonical,2026-06-05 12:39:16.458838+00
+4881,90,piment doux,1,cc,flocons,2048,,canonical,2026-06-05 12:39:16.458838+00
+4882,90,pecorino,60,g,râpé,,274,archetype,2026-06-05 12:39:16.458838+00
+4883,90,huile d olive,3,cs,,14030,,canonical,2026-06-05 12:39:16.458838+00
+4969,101,Œufs,5,pièces,,2040,,canonical,2026-06-05 12:39:17.846106+00
+4970,101,Courgettes,450,g,râpées et égouttées,2026,,canonical,2026-06-05 12:39:17.846106+00
+4971,101,Pommes de terre rattes,200,g,"cuites vapeur, en cubes",1053,,canonical,2026-06-05 12:39:17.846106+00
+4972,101,Féta,100,g,émiettée,,313,archetype,2026-06-05 12:39:17.846106+00
+4973,101,Menthe fraîche,15,g,ciselée,1037,,canonical,2026-06-05 12:39:17.846106+00
+4974,101,Parmesan,18,g,râpé,,273,archetype,2026-06-05 12:39:17.846106+00
+4975,101,Huile d'olive,8,ml,,14030,,canonical,2026-06-05 12:39:17.846106+00
+4976,101,"Pousses (mâche, roquette)",140,g,,1033,,canonical,2026-06-05 12:39:17.846106+00
+4977,101,Fenouil,100,g,très finement tranché,2034,,canonical,2026-06-05 12:39:17.846106+00
+4978,101,Tomates cerises,180,g,,1008,,canonical,2026-06-05 12:39:17.846106+00
+4979,101,Pain de seigle,110,g,,,321,archetype,2026-06-05 12:39:17.846106+00
+4980,101,Citron,1,pièce,pour vinaigrette,1015,,canonical,2026-06-05 12:39:17.846106+00
+5047,86,pois chiches cuits,300,g,égouttés,5008,,canonical,2026-06-05 12:39:19.250327+00
+5048,86,halloumi,225,g,en tranches,21,,canonical,2026-06-05 12:39:19.250327+00
+5049,86,pommes de terre,300,g,en cubes,1053,,canonical,2026-06-05 12:39:19.250327+00
+5050,86,fèves fraîches,250,g,,2035,,canonical,2026-06-05 12:39:19.250327+00
+5051,86,ail,2,piece,,10001,,canonical,2026-06-05 12:39:19.250327+00
+5052,86,persil plat,0.5,botte,,1049,,canonical,2026-06-05 12:39:19.250327+00
+5053,86,paprika fumé,1,cc,,,474,archetype,2026-06-05 12:39:19.250327+00
+5118,103,Farine T55,280,g,,,312,archetype,2026-06-05 12:39:20.630204+00
+5119,103,Levure boulangère sèche,4,g,,14040,,canonical,2026-06-05 12:39:20.630204+00
+5120,103,Sel,6,g,,6004,,canonical,2026-06-05 12:39:20.630204+00
+5121,103,Huile d'olive,15,ml,,14030,,canonical,2026-06-05 12:39:20.630204+00
+5122,103,Sauce tomate San Marzano,150,g,,,327,archetype,2026-06-05 12:39:20.630204+00
+5123,103,Mozzarella di bufala,180,g,"égouttée, déchirée",,320,archetype,2026-06-05 12:39:20.630204+00
+5124,103,Parmesan,18,g,,,273,archetype,2026-06-05 12:39:20.630204+00
+5125,103,Basilic frais,12,feuilles,,1004,,canonical,2026-06-05 12:39:20.630204+00
+5126,103,Salade verte,120,g,,14029,,canonical,2026-06-05 12:39:20.630204+00
+5127,103,Féta,55,g,pour la salade,,313,archetype,2026-06-05 12:39:20.630204+00
+5128,103,Tomates cerises,150,g,,1008,,canonical,2026-06-05 12:39:20.630204+00
+5129,103,Vinaigre balsamique,15,ml,,14032,,canonical,2026-06-05 12:39:20.630204+00
+5219,116,Lentilles corail (moong dal),200,g,,5005,,canonical,2026-06-05 12:39:22.003277+00
+5220,116,Riz basmati,150,g,,4003,,canonical,2026-06-05 12:39:22.003277+00
+5221,116,Carottes,2,pièces,en dés,1005,,canonical,2026-06-05 12:39:22.003277+00
+5222,116,Courgette,1,pièce,en dés,2026,,canonical,2026-06-05 12:39:22.003277+00
+5223,116,Tomates,2,pièces,en dés,1059,,canonical,2026-06-05 12:39:22.003277+00
+5224,116,Oignon,1,pièce,haché,2041,,canonical,2026-06-05 12:39:22.003277+00
+5225,116,Ail,3,gousses,râpées,10001,,canonical,2026-06-05 12:39:22.003277+00
+5226,116,Gingembre frais,20,g,râpé,10002,,canonical,2026-06-05 12:39:22.003277+00
+5227,116,Ghee,40,g,,46,,canonical,2026-06-05 12:39:22.003277+00
+5228,116,Graines de cumin,1,c. à café,,14017,,canonical,2026-06-05 12:39:22.003277+00
+5229,116,Curcuma moulu,1,c. à café,,6003,,canonical,2026-06-05 12:39:22.003277+00
+5230,116,Garam masala,1,c. à café,,,478,archetype,2026-06-05 12:39:22.003277+00
+5231,116,Coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-05 12:39:22.003277+00
+5232,116,Yaourt nature,250,g,raita,,335,archetype,2026-06-05 12:39:22.003277+00
+5233,116,Concombre,1,pièce,"raita, râpé",2022,,canonical,2026-06-05 12:39:22.003277+00
+5234,116,Menthe fraîche,0.5,botte,raita,1037,,canonical,2026-06-05 12:39:22.003277+00
+5235,116,Cumin moulu,1,pincée,raita,14017,,canonical,2026-06-05 12:39:22.003277+00
+5321,113,Spaghetti,250,g,,15,,canonical,2026-06-05 12:39:23.392085+00
+5322,113,Courgettes,2,pièces,en rubans à l'économe,2026,,canonical,2026-06-05 12:39:23.392085+00
+5323,113,Ail,4,gousses,finement émincées,10001,,canonical,2026-06-05 12:39:23.392085+00
+5324,113,Piment doux peperoncino,1,c. à café,en flocons,2048,,canonical,2026-06-05 12:39:23.392085+00
+5325,113,Huile d'olive vierge extra,6,c. à soupe,,14030,,canonical,2026-06-05 12:39:23.392085+00
+5326,113,Burrata des Pouilles,2,pièces,125g chacune,,,unmatched,2026-06-05 12:39:23.392085+00
+5327,113,Œuf,2,pièces,mollets,2040,,canonical,2026-06-05 12:39:23.392085+00
+5328,113,Parmesan Reggiano,40,g,râpé,,273,archetype,2026-06-05 12:39:23.392085+00
+5329,113,Basilic frais,1,botte,effeuillé,1004,,canonical,2026-06-05 12:39:23.392085+00
+5330,113,Citron jaune,0.5,pièce,zeste,1015,,canonical,2026-06-05 12:39:23.392085+00
+4884,99,Pois chiches en bocal,330,g,très bien égouttés,5008,,canonical,2026-06-05 12:39:16.657479+00
+4885,99,Oignon,0.5,pièce,,2041,,canonical,2026-06-05 12:39:16.657479+00
+4886,99,Ail,2,gousses,,10001,,canonical,2026-06-05 12:39:16.657479+00
+4887,99,Coriandre fraîche,25,g,,1018,,canonical,2026-06-05 12:39:16.657479+00
+4888,99,Persil plat,40,g,pour falafels + taboulé,1049,,canonical,2026-06-05 12:39:16.657479+00
+4889,99,Cumin moulu,5,g,,14017,,canonical,2026-06-05 12:39:16.657479+00
+4890,99,Coriandre moulue,3,g,,1018,,canonical,2026-06-05 12:39:16.657479+00
+4891,99,Farine,20,g,,,312,archetype,2026-06-05 12:39:16.657479+00
+4892,99,Boulgour fin,50,g,trempé 15 min,16,,canonical,2026-06-05 12:39:16.657479+00
+4893,99,Tomates,200,g,en petits dés,1059,,canonical,2026-06-05 12:39:16.657479+00
+4894,99,Menthe fraîche,20,g,,1037,,canonical,2026-06-05 12:39:16.657479+00
+4895,99,Citron jaune,1,pièce,jus,1015,,canonical,2026-06-05 12:39:16.657479+00
+4896,99,Huile d'olive,15,ml,,14030,,canonical,2026-06-05 12:39:16.657479+00
+4897,99,Grenade,80,g,graines,1027,,canonical,2026-06-05 12:39:16.657479+00
+4898,99,Yaourt nature,80,g,,,335,archetype,2026-06-05 12:39:16.657479+00
+4899,99,Tahini,30,g,,26,,canonical,2026-06-05 12:39:16.657479+00
+4900,99,Féta,60,g,émiettée,,313,archetype,2026-06-05 12:39:16.657479+00
+4901,99,Œufs (mollets),2,pièces,,2040,,canonical,2026-06-05 12:39:16.657479+00
+4981,102,Échine de porc,420,g,en gros cubes 3 cm,2051,,canonical,2026-06-05 12:39:18.07363+00
+4982,102,Oignons jaunes,350,g,finement émincés,2041,,canonical,2026-06-05 12:39:18.07363+00
+4983,102,Poivron rouge,1,pièce,en lanières,1051,,canonical,2026-06-05 12:39:18.07363+00
+4984,102,Ail,3,gousses,,10001,,canonical,2026-06-05 12:39:18.07363+00
+4985,102,Tomates concassées,80,g,,1059,,canonical,2026-06-05 12:39:18.07363+00
+4986,102,Paprika doux,15,g,,,473,archetype,2026-06-05 12:39:18.07363+00
+4987,102,Paprika fumé,5,g,,,474,archetype,2026-06-05 12:39:18.07363+00
+4988,102,Cumin graines,3,g,,14017,,canonical,2026-06-05 12:39:18.07363+00
+4989,102,Bouillon de bœuf,250,ml,,,305,archetype,2026-06-05 12:39:18.07363+00
+4990,102,Saindoux ou huile,15,ml,,27,,canonical,2026-06-05 12:39:18.07363+00
+4991,102,Crème fraîche,40,g,finition,,310,archetype,2026-06-05 12:39:18.07363+00
+4992,102,Pommes de terre,350,g,pour galuska,1053,,canonical,2026-06-05 12:39:18.07363+00
+4993,102,Farine,120,g,,,312,archetype,2026-06-05 12:39:18.07363+00
+4994,102,Œuf,1,pièce,,2040,,canonical,2026-06-05 12:39:18.07363+00
+4995,102,Persil plat,12,g,,1049,,canonical,2026-06-05 12:39:18.07363+00
+5054,87,feuilles de lasagnes,8,piece,,15,,canonical,2026-06-05 12:39:19.449011+00
+5055,87,courgette,1,piece,,2026,,canonical,2026-06-05 12:39:19.449011+00
+5056,87,aubergine,1,piece,,1001,,canonical,2026-06-05 12:39:19.449011+00
+5057,87,poivron,1,piece,,1051,,canonical,2026-06-05 12:39:19.449011+00
+5058,87,tomates concassées,400,g,,1059,,canonical,2026-06-05 12:39:19.449011+00
+5059,87,ricotta,250,g,,,231,archetype,2026-06-05 12:39:19.449011+00
+5060,87,parmesan,40,g,râpé,,273,archetype,2026-06-05 12:39:19.449011+00
+5061,87,basilic frais,0.5,botte,,1004,,canonical,2026-06-05 12:39:19.449011+00
+5130,104,Riz bomba,160,g,,4003,,canonical,2026-06-05 12:39:20.822696+00
+5131,104,Haut de cuisse de poulet,250,g,en gros cubes,2054,,canonical,2026-06-05 12:39:20.822696+00
+5132,104,Chorizo doux,80,g,en rondelles,22,,canonical,2026-06-05 12:39:20.822696+00
+5133,104,Oignon,1,pièce,haché,2041,,canonical,2026-06-05 12:39:20.822696+00
+5134,104,Poivron rouge,150,g,en lanières,1051,,canonical,2026-06-05 12:39:20.822696+00
+5135,104,Tomates concassées,100,g,,1059,,canonical,2026-06-05 12:39:20.822696+00
+5136,104,Petits pois,100,g,frais ou surgelés,2047,,canonical,2026-06-05 12:39:20.822696+00
+5137,104,Cœurs d'artichauts,80,g,en quartiers (optionnel),8003,,canonical,2026-06-05 12:39:20.822696+00
+5138,104,Ail,3,gousses,,10001,,canonical,2026-06-05 12:39:20.822696+00
+5139,104,Bouillon de volaille,450,ml,,,389,archetype,2026-06-05 12:39:20.822696+00
+5140,104,Safran,1,dose,infusé dans bouillon,10006,,canonical,2026-06-05 12:39:20.822696+00
+5141,104,Paprika doux,4,g,,,473,archetype,2026-06-05 12:39:20.822696+00
+5142,104,Huile d'olive,18,ml,,14030,,canonical,2026-06-05 12:39:20.822696+00
+5143,104,Citron,1,pièce,quartiers à servir,1015,,canonical,2026-06-05 12:39:20.822696+00
+5144,104,Persil plat,10,g,,1049,,canonical,2026-06-05 12:39:20.822696+00
+5236,117,Échine de porc,500,g,en tranches 2 cm,2051,,canonical,2026-06-05 12:39:22.20973+00
+5237,117,Miel,3,c. à soupe,,14001,,canonical,2026-06-05 12:39:22.20973+00
+5238,117,Moutarde de Dijon,2,c. à soupe,,10003,,canonical,2026-06-05 12:39:22.20973+00
+5239,117,Romarin frais,2,brins,effeuillé haché,2057,,canonical,2026-06-05 12:39:22.20973+00
+5240,117,Ail,3,gousses,écrasées,10001,,canonical,2026-06-05 12:39:22.20973+00
+5241,117,Carottes nouvelles,400,g,"en bottes, fanes coupées",1005,,canonical,2026-06-05 12:39:22.20973+00
+5242,117,Navets boule d'or,350,g,en quartiers,1041,,canonical,2026-06-05 12:39:22.20973+00
+5243,117,Oignons rouges,2,pièces,en quartiers,2041,,canonical,2026-06-05 12:39:22.20973+00
+5244,117,Pommes grenailles,500,g,non épluchées,1052,,canonical,2026-06-05 12:39:22.20973+00
+5245,117,Huile d'olive,4,c. à soupe,,14030,,canonical,2026-06-05 12:39:22.20973+00
+5246,117,Vinaigre balsamique,1,c. à soupe,légumes,14032,,canonical,2026-06-05 12:39:22.20973+00
+5247,117,Thym frais,3,brins,,1058,,canonical,2026-06-05 12:39:22.20973+00
+5331,118,Semaine fine moyenne,250,g,,,,unmatched,2026-06-05 12:39:23.588939+00
+5332,118,Pois chiches en conserve,400,g,égouttés (200 g bouillon + 200 g boulettes),5008,,canonical,2026-06-05 12:39:23.588939+00
+4902,92,haricots blancs cuits,400,g,,14021,,canonical,2026-06-05 12:39:16.85999+00
+4903,92,carotte,2,piece,en dés,1005,,canonical,2026-06-05 12:39:16.85999+00
+4904,92,courgette,1,piece,en dés,2026,,canonical,2026-06-05 12:39:16.85999+00
+4905,92,tomates concassées,200,g,,1059,,canonical,2026-06-05 12:39:16.85999+00
+4906,92,petites pâtes,80,g,,15,,canonical,2026-06-05 12:39:16.85999+00
+4907,92,pesto,2,cs,,30,,canonical,2026-06-05 12:39:16.85999+00
+4908,92,parmesan,40,g,copeaux,,273,archetype,2026-06-05 12:39:16.85999+00
+4909,92,pain de campagne,2,piece,tranches,,433,archetype,2026-06-05 12:39:16.85999+00
+4996,105,Magret de canard,340,g,,2005,,canonical,2026-06-05 12:39:18.276464+00
+4997,105,Cerises griottes,140,g,dénoyautées,1008,,canonical,2026-06-05 12:39:18.276464+00
+4998,105,Vinaigre balsamique,30,ml,,14032,,canonical,2026-06-05 12:39:18.276464+00
+4999,105,Sucre,10,g,,14037,,canonical,2026-06-05 12:39:18.276464+00
+5000,105,Fond de veau,120,ml,,,315,archetype,2026-06-05 12:39:18.276464+00
+5001,105,Pommes de terre Charlotte,400,g,en fines lamelles,1053,,canonical,2026-06-05 12:39:18.276464+00
+5002,105,Crème fraîche épaisse,80,g,,,198,archetype,2026-06-05 12:39:18.276464+00
+5003,105,Lait entier,120,ml,,7001,,canonical,2026-06-05 12:39:18.276464+00
+5004,105,Emmental,40,g,râpé,,272,archetype,2026-06-05 12:39:18.276464+00
+5005,105,Ail,2,gousses,,10001,,canonical,2026-06-05 12:39:18.276464+00
+5006,105,Noix de muscade,1,pincée,,10004,,canonical,2026-06-05 12:39:18.276464+00
+5007,105,Haricots verts frais,260,g,,2037,,canonical,2026-06-05 12:39:18.276464+00
+5008,105,Échalotes,3,pièces,,2031,,canonical,2026-06-05 12:39:18.276464+00
+5009,105,Beurre,20,g,,,300,archetype,2026-06-05 12:39:18.276464+00
+5062,89,cuisses de poulet,500,g,,2054,,canonical,2026-06-05 12:39:19.644349+00
+5063,89,olives vertes,120,g,dénoyautées,11007,,canonical,2026-06-05 12:39:19.644349+00
+5064,89,citron confit,1,piece,,1015,,canonical,2026-06-05 12:39:19.644349+00
+5065,89,oignon,2,piece,émincés,2041,,canonical,2026-06-05 12:39:19.644349+00
+5066,89,semoule de blé,160,g,,17,,canonical,2026-06-05 12:39:19.644349+00
+5067,89,gingembre frais,10,g,,10002,,canonical,2026-06-05 12:39:19.644349+00
+5068,89,coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-05 12:39:19.644349+00
+5069,89,safran ou curcuma,1,cc,,6003,,canonical,2026-06-05 12:39:19.644349+00
+5145,106,Sardines fraîches entières,330,g,écaillées vidées,9012,,canonical,2026-06-05 12:39:21.014796+00
+5146,106,Pommes de terre rattes,350,g,,1053,,canonical,2026-06-05 12:39:21.014796+00
+5147,106,Haricots verts frais,180,g,,2037,,canonical,2026-06-05 12:39:21.014796+00
+5148,106,Œufs,2,pièces,pour mollet,2040,,canonical,2026-06-05 12:39:21.014796+00
+5149,106,Tomates anciennes,200,g,en quartiers,1059,,canonical,2026-06-05 12:39:21.014796+00
+5150,106,Olives noires de Nice,45,g,,,532,archetype,2026-06-05 12:39:21.014796+00
+5151,106,Pois chiches en bocal,180,g,égouttés,5008,,canonical,2026-06-05 12:39:21.014796+00
+5152,106,Féta,75,g,émiettée,,313,archetype,2026-06-05 12:39:21.014796+00
+5153,106,Radis roses,80,g,en rondelles,1056,,canonical,2026-06-05 12:39:21.014796+00
+5154,106,Basilic frais,15,feuilles,,1004,,canonical,2026-06-05 12:39:21.014796+00
+5155,106,Anchois à l'huile,4,filets,,9001,,canonical,2026-06-05 12:39:21.014796+00
+5156,106,Huile d'olive,18,ml,,14030,,canonical,2026-06-05 12:39:21.014796+00
+5157,106,Vinaigre de vin rouge,12,ml,,,332,archetype,2026-06-05 12:39:21.014796+00
+5158,106,Ail,1,gousse,,10001,,canonical,2026-06-05 12:39:21.014796+00
+5159,106,Citron,1,pièce,,1015,,canonical,2026-06-05 12:39:21.014796+00
+5248,112,Spätzle alsaciens,350,g,frais ou séchés,,,unmatched,2026-06-05 12:39:22.398717+00
+5249,112,Champignons de Paris,200,g,émincés,3001,,canonical,2026-06-05 12:39:22.398717+00
+5250,112,Pleurotes ou girolles,150,g,déchirées à la main,,,unmatched,2026-06-05 12:39:22.398717+00
+5251,112,Comté affiné,150,g,râpé,,270,archetype,2026-06-05 12:39:22.398717+00
+5252,112,Crème fraîche épaisse,200,g,,,198,archetype,2026-06-05 12:39:22.398717+00
+5253,112,Œufs,5,pièces,3 miroir + 2 pour gratin si besoin,2040,,canonical,2026-06-05 12:39:22.398717+00
+5254,112,Échalote,1,pièce,hachée,2031,,canonical,2026-06-05 12:39:22.398717+00
+5255,112,Beurre,40,g,,,300,archetype,2026-06-05 12:39:22.398717+00
+5256,112,Noix de muscade,1,pincée,râpée,10004,,canonical,2026-06-05 12:39:22.398717+00
+5257,112,Mâche,150,g,salade,1033,,canonical,2026-06-05 12:39:22.398717+00
+5258,112,Noix concassées,30,g,salade,,,unmatched,2026-06-05 12:39:22.398717+00
+5259,112,Moutarde de Dijon,1,c. à café,vinaigrette,10003,,canonical,2026-06-05 12:39:22.398717+00
+5260,112,Vinaigre de cidre,1,c. à soupe,vinaigrette,,529,archetype,2026-06-05 12:39:22.398717+00
+5350,120,Tomates anciennes mûres,800,g,mondées,1039,,canonical,2026-06-05 12:39:23.787491+00
+5351,120,Poivrons rouges,2,pièces,grillés et pelés,1051,,canonical,2026-06-05 12:39:23.787491+00
+5352,120,Concombre,0.5,pièce,,2022,,canonical,2026-06-05 12:39:23.787491+00
+5353,120,Ail,1,gousse,dégermée,10001,,canonical,2026-06-05 12:39:23.787491+00
+5354,120,Pain rassis,80,g,écroûté,,440,archetype,2026-06-05 12:39:23.787491+00
+5355,120,Vinaigre de Xérès,3,c. à soupe,,14032,,canonical,2026-06-05 12:39:23.787491+00
+5356,120,Huile d'olive vierge extra,6,c. à soupe,,14030,,canonical,2026-06-05 12:39:23.787491+00
+5357,120,Cumin moulu,1,c. à café,,14017,,canonical,2026-06-05 12:39:23.787491+00
+5358,120,Œufs,2,pièces,mollets,2040,,canonical,2026-06-05 12:39:23.787491+00
+5359,120,Pain de campagne,4,tranches,tartine,,433,archetype,2026-06-05 12:39:23.787491+00
+5360,120,Tomate cœur de bœuf,1,pièce,tartine,14011,,canonical,2026-06-05 12:39:23.787491+00
+5361,120,Manchego affiné,80,g,en copeaux,,267,archetype,2026-06-05 12:39:23.787491+00
+4910,93,Pavé de saumon frais (sans peau),300,g,170 g Julien + 130 g Zoé,2062,,canonical,2026-06-05 12:39:17.06065+00
+4911,93,Oignon rouge,150,g,émincé finement en demi-lunes,2041,,canonical,2026-06-05 12:39:17.06065+00
+4912,93,Carotte nouvelle,130,g,taillée en julienne ou rondelles fines,1005,,canonical,2026-06-05 12:39:17.06065+00
+4913,93,Pâte d'ají amarillo,30,g,2 cuillères à soupe — piment jaune péruvien,15,,canonical,2026-06-05 12:39:17.06065+00
+4914,93,Gousse d'ail,2,gousse,écrasée,10001,,canonical,2026-06-05 12:39:17.06065+00
+4915,93,Vinaigre blanc,60,ml,pour l'escabeche,14032,,canonical,2026-06-05 12:39:17.06065+00
+4916,93,Citron vert (jus + zeste),2,pièce,"1 pour escabeche, 1 pour riz vert",1016,,canonical,2026-06-05 12:39:17.06065+00
+4917,93,Huile d'olive vierge extra,15,ml,1 cuillère à soupe,14030,,canonical,2026-06-05 12:39:17.06065+00
+4918,93,Cumin moulu,1,c. à c.,,14017,,canonical,2026-06-05 12:39:17.06065+00
+4919,93,Feuille de laurier,1,pièce,,2039,,canonical,2026-06-05 12:39:17.06065+00
+4920,93,Sel fin,1,c. à c.,+ poivre au moulin,6004,,canonical,2026-06-05 12:39:17.06065+00
+4921,93,Riz basmati,140,g,"70 g Julien + 50 g Zoé, cru",4003,,canonical,2026-06-05 12:39:17.06065+00
+4922,93,Coriandre fraîche,1,botte,"feuilles + tiges fines, pour le riz vert",1018,,canonical,2026-06-05 12:39:17.06065+00
+4923,93,Persil plat,0.5,botte,pour le riz vert,1049,,canonical,2026-06-05 12:39:17.06065+00
+4924,93,Bouillon de légumes,300,ml,pour cuire le riz,14036,,canonical,2026-06-05 12:39:17.06065+00
+4925,93,Maïs doux (choclo),80,g,"égoutté, pour servir",9007,,canonical,2026-06-05 12:39:17.06065+00
+5010,107,Courgettes,500,g,en tronçons,2026,,canonical,2026-06-05 12:39:18.475342+00
+5011,107,Oignon,1,pièce,,2041,,canonical,2026-06-05 12:39:18.475342+00
+5012,107,Ail,1,gousse,,10001,,canonical,2026-06-05 12:39:18.475342+00
+5013,107,Curry doux,5,g,,,477,archetype,2026-06-05 12:39:18.475342+00
+5014,107,Lait de coco light,150,ml,,,224,archetype,2026-06-05 12:39:18.475342+00
+5015,107,Bouillon de légumes,400,ml,,14036,,canonical,2026-06-05 12:39:18.475342+00
+5016,107,Pain de campagne,110,g,pour croûtons,,433,archetype,2026-06-05 12:39:18.475342+00
+5017,107,Huile d'olive,12,ml,,14030,,canonical,2026-06-05 12:39:18.475342+00
+5018,107,Pain de campagne,110,g,pour tartines,,433,archetype,2026-06-05 12:39:18.475342+00
+5019,107,Avocat mûr,120,g,écrasé,1002,,canonical,2026-06-05 12:39:18.475342+00
+5020,107,Féta,50,g,,,313,archetype,2026-06-05 12:39:18.475342+00
+5021,107,Radis roses,60,g,en rondelles fines,1056,,canonical,2026-06-05 12:39:18.475342+00
+5022,107,Citron,0.5,pièce,jus,1015,,canonical,2026-06-05 12:39:18.475342+00
+5023,107,Ciboulette,8,g,,2018,,canonical,2026-06-05 12:39:18.475342+00
+5070,91,pommes de terre rattes,500,g,,1053,,canonical,2026-06-05 12:39:19.845397+00
+5071,91,haricots verts,200,g,,2037,,canonical,2026-06-05 12:39:19.845397+00
+5072,91,pois chiches cuits,200,g,,5008,,canonical,2026-06-05 12:39:19.845397+00
+5073,91,œufs,4,piece,durs,2040,,canonical,2026-06-05 12:39:19.845397+00
+5074,91,radis,1,botte,en rondelles,1056,,canonical,2026-06-05 12:39:19.845397+00
+5075,91,moutarde,1,cs,,10003,,canonical,2026-06-05 12:39:19.845397+00
+5076,91,huile d olive,3,cs,,14030,,canonical,2026-06-05 12:39:19.845397+00
+5077,91,herbes fraîches,1,botte,,,,unmatched,2026-06-05 12:39:19.845397+00
+5160,109,Saumon frais qualité sashimi,350,g,cubes 1.5 cm,2062,,canonical,2026-06-05 12:39:21.220207+00
+5161,109,Riz à sushi,200,g,,4003,,canonical,2026-06-05 12:39:21.220207+00
+5162,109,Vinaigre de riz,3,c. à soupe,,14032,,canonical,2026-06-05 12:39:21.220207+00
+5163,109,Sucre,1,c. à soupe,,14037,,canonical,2026-06-05 12:39:21.220207+00
+5164,109,Sauce soja,3,c. à soupe,marinade,14033,,canonical,2026-06-05 12:39:21.220207+00
+5165,109,Mirin,1,c. à soupe,marinade,33,,canonical,2026-06-05 12:39:21.220207+00
+5166,109,Huile de sésame grillé,1,c. à café,marinade,25,,canonical,2026-06-05 12:39:21.220207+00
+5167,109,Edamame décortiqués,150,g,,,,unmatched,2026-06-05 12:39:21.220207+00
+5168,109,Mangue,1,pièce,en dés,1035,,canonical,2026-06-05 12:39:21.220207+00
+5169,109,Avocat,1,pièce,en tranches,1002,,canonical,2026-06-05 12:39:21.220207+00
+5170,109,Concombre,0.5,pièce,en dés,2022,,canonical,2026-06-05 12:39:21.220207+00
+5171,109,Mayonnaise japonaise,2,c. à soupe,sauce,28,,canonical,2026-06-05 12:39:21.220207+00
+5172,109,Sriracha,1,c. à soupe,sauce,42,,canonical,2026-06-05 12:39:21.220207+00
+5173,109,Sésame noir,1,c. à café,,25,,canonical,2026-06-05 12:39:21.220207+00
+5174,109,Algue nori,1,feuille,en lanières,,,unmatched,2026-06-05 12:39:21.220207+00
+5175,109,Oignons frits,2,c. à soupe,,2041,,canonical,2026-06-05 12:39:21.220207+00
+5261,119,Côte de bœuf maturée,1200,g,sortie 1 h avant,,353,archetype,2026-06-05 12:39:22.596355+00
+5262,119,Beurre,80,g,noisette + arrosage,,300,archetype,2026-06-05 12:39:22.596355+00
+5263,119,Fleur de sel de Guérande,1,c. à café,,6004,,canonical,2026-06-05 12:39:22.596355+00
+5264,119,Poivre noir mignonette,1,c. à café,,10005,,canonical,2026-06-05 12:39:22.596355+00
+5265,119,Pommes de terre Bintje,1000,g,frites,1053,,canonical,2026-06-05 12:39:22.596355+00
+5266,119,Huile de friture,1,L,,,,unmatched,2026-06-05 12:39:22.596355+00
+5267,119,Échalotes,3,pièces,béarnaise + salade,2031,,canonical,2026-06-05 12:39:22.596355+00
+5268,119,Vinaigre d'estragon,5,cl,béarnaise,,142,archetype,2026-06-05 12:39:22.596355+00
+5269,119,Vin blanc sec,5,cl,béarnaise,,331,archetype,2026-06-05 12:39:22.596355+00
+5270,119,Jaunes d'œufs,3,pièces,béarnaise,,318,archetype,2026-06-05 12:39:22.596355+00
+5271,119,Beurre clarifié,200,g,béarnaise,,403,archetype,2026-06-05 12:39:22.596355+00
+5272,119,Estragon frais,1,bouquet,béarnaise,2033,,canonical,2026-06-05 12:39:22.596355+00
+5273,119,Salade batavia,1,pièce,,14029,,canonical,2026-06-05 12:39:22.596355+00
+5274,119,Vinaigre de Xérès,2,c. à soupe,vinaigrette,14032,,canonical,2026-06-05 12:39:22.596355+00
+5275,119,Huile d'olive,4,c. à soupe,vinaigrette,14030,,canonical,2026-06-05 12:39:22.596355+00
+5363,122,Joues de bœuf,600,g,"parées, coupées en gros cubes",14011,,canonical,2026-06-05 12:39:24.023988+00
+5364,122,Lardons fumés,80,g,,,379,archetype,2026-06-05 12:39:24.023988+00
+5365,122,Champignons de Paris,250,g,quartiers,3001,,canonical,2026-06-05 12:39:24.023988+00
+5366,122,Oignons grelots,150,g,épluchés entiers,2041,,canonical,2026-06-05 12:39:24.023988+00
+5367,122,Carottes,300,g,en rondelles,1005,,canonical,2026-06-05 12:39:24.023988+00
+5368,122,Pommes de terre Charlotte,500,g,épluchées,1053,,canonical,2026-06-05 12:39:24.023988+00
+5369,122,Vin rouge (pinot noir),400,ml,,,332,archetype,2026-06-05 12:39:24.023988+00
+5370,122,Bouillon de bœuf,300,ml,,,305,archetype,2026-06-05 12:39:24.023988+00
+5371,122,Beurre doux,40,g,,,204,archetype,2026-06-05 12:39:24.023988+00
+5372,122,Farine,15,g,pour singer,,312,archetype,2026-06-05 12:39:24.023988+00
+5373,122,Thym,2,branches,,1058,,canonical,2026-06-05 12:39:24.023988+00
+5374,122,Laurier,1,feuille,,2039,,canonical,2026-06-05 12:39:24.023988+00
+5375,122,Ail,2,gousses,écrasées,10001,,canonical,2026-06-05 12:39:24.023988+00
+5376,122,Persil plat,4,branches,ciselé,1049,,canonical,2026-06-05 12:39:24.023988+00
+5458,129,Escalopes de dinde,280,g,2 escalopes fines,8009,,canonical,2026-06-05 12:39:25.383549+00
+5459,129,Flocons d'avoine,60,g,mixés gros,,314,archetype,2026-06-05 12:39:25.383549+00
+5460,129,Parmesan râpé,30,g,,,273,archetype,2026-06-05 12:39:25.383549+00
+5461,129,Œuf,1,pièce,battu,2040,,canonical,2026-06-05 12:39:25.383549+00
+5462,129,Farine T65,20,g,,,312,archetype,2026-06-05 12:39:25.383549+00
+5463,129,Mâche,150,g,lavée,1033,,canonical,2026-06-05 12:39:25.383549+00
+5464,129,Fenouil,1,bulbe,finement émincé,2034,,canonical,2026-06-05 12:39:25.383549+00
+5465,129,Pomme Granny Smith,1,pièce,en julienne,1052,,canonical,2026-06-05 12:39:25.383549+00
+5466,129,Noix de Grenoble,40,g,concassées,47,,canonical,2026-06-05 12:39:25.383549+00
+5467,129,Yaourt grec,50,g,,,334,archetype,2026-06-05 12:39:25.383549+00
+5468,129,Moutarde de Dijon,1,c. à café,,10003,,canonical,2026-06-05 12:39:25.383549+00
+5469,129,Miel,1,c. à café,,14001,,canonical,2026-06-05 12:39:25.383549+00
+5470,129,Huile d'olive,30,ml,,14030,,canonical,2026-06-05 12:39:25.383549+00
+5471,129,Vinaigre de cidre,15,ml,,,529,archetype,2026-06-05 12:39:25.383549+00
+5472,129,Herbes de Provence,1,c. à café,,38,,canonical,2026-06-05 12:39:25.383549+00
+5564,136,Pain de seigle,4,tranches,épaisses,,321,archetype,2026-06-05 12:39:26.789651+00
+5565,136,Chèvre frais (bûche),160,g,,49,,canonical,2026-06-05 12:39:26.789651+00
+5566,136,Betteraves crues,300,g,en quartiers,1012,,canonical,2026-06-05 12:39:26.789651+00
+5567,136,Sirop d'érable,30,ml,,14002,,canonical,2026-06-05 12:39:26.789651+00
+5568,136,Thym,3,branches,,1058,,canonical,2026-06-05 12:39:26.789651+00
+5569,136,Miel de châtaignier,20,g,,14001,,canonical,2026-06-05 12:39:26.789651+00
+5570,136,Noix de Grenoble,40,g,concassées,47,,canonical,2026-06-05 12:39:26.789651+00
+5571,136,Pousses de salade,100,g,,14029,,canonical,2026-06-05 12:39:26.789651+00
+5572,136,Pomme Granny Smith,1,pièce,en julienne,1052,,canonical,2026-06-05 12:39:26.789651+00
+5573,136,Fenouil,1,bulbe,finement émincé,2034,,canonical,2026-06-05 12:39:26.789651+00
+5574,136,Graines de courge,30,g,grillées,2024,,canonical,2026-06-05 12:39:26.789651+00
+5575,136,Huile d'olive,30,ml,,14030,,canonical,2026-06-05 12:39:26.789651+00
+5576,136,Vinaigre balsamique,15,ml,,14032,,canonical,2026-06-05 12:39:26.789651+00
+5577,136,Fleur de sel,1,pincée,,6004,,canonical,2026-06-05 12:39:26.789651+00
+5289,121,Fleur de sel,1,pincée,,6004,,canonical,2026-06-05 12:39:22.792398+00
+5377,123,Semoule de blé dur fine,150,g,,17,,canonical,2026-06-05 12:39:24.21188+00
+5378,123,Lait,600,ml,,7001,,canonical,2026-06-05 12:39:24.21188+00
+5379,123,Beurre doux,80,g,,,204,archetype,2026-06-05 12:39:24.21188+00
+5380,123,Parmesan AOP râpé,80,g,,,273,archetype,2026-06-05 12:39:24.21188+00
+5381,123,Jaunes d'œufs,2,pièces,,,318,archetype,2026-06-05 12:39:24.21188+00
+5382,123,Feuilles de sauge,12,feuilles,,2061,,canonical,2026-06-05 12:39:24.21188+00
+5383,123,Courgettes,300,g,en dés,2026,,canonical,2026-06-05 12:39:24.21188+00
+5384,123,Petits pois frais,150,g,écossés,2047,,canonical,2026-06-05 12:39:24.21188+00
+5385,123,Fèves fraîches,150,g,écossées & pelées,2035,,canonical,2026-06-05 12:39:24.21188+00
+5386,123,Menthe fraîche,8,feuilles,ciselée,1037,,canonical,2026-06-05 12:39:24.21188+00
+5387,123,Huile d'olive,20,ml,,14030,,canonical,2026-06-05 12:39:24.21188+00
+5388,123,Muscade,1,pincée,,10004,,canonical,2026-06-05 12:39:24.21188+00
+5473,130,Pois chiches cuits,300,g,égouttés,5008,,canonical,2026-06-05 12:39:25.592412+00
+5474,130,Oignon rouge,1,petit,haché,2041,,canonical,2026-06-05 12:39:25.592412+00
+5475,130,Ail,2,gousses,hachées,10001,,canonical,2026-06-05 12:39:25.592412+00
+5476,130,Cumin en poudre,2,c. à café,,14017,,canonical,2026-06-05 12:39:25.592412+00
+5477,130,Coriandre fraîche,1,bouquet,ciselée,1018,,canonical,2026-06-05 12:39:25.592412+00
+5478,130,Menthe fraîche,6,feuilles,ciselée,1037,,canonical,2026-06-05 12:39:25.592412+00
+5479,130,Œuf,1,pièce,,2040,,canonical,2026-06-05 12:39:25.592412+00
+5480,130,Flocons d'avoine,40,g,mixés,,314,archetype,2026-06-05 12:39:25.592412+00
+5481,130,Mâche,150,g,,1033,,canonical,2026-06-05 12:39:25.592412+00
+5482,130,Fenouil,1,bulbe,émincé,2034,,canonical,2026-06-05 12:39:25.592412+00
+5483,130,Pomme Granny,1,pièce,julienne,1052,,canonical,2026-06-05 12:39:25.592412+00
+5484,130,Noix de Grenoble,40,g,concassées,47,,canonical,2026-06-05 12:39:25.592412+00
+5485,130,Tahini,20,g,,26,,canonical,2026-06-05 12:39:25.592412+00
+5486,130,Yaourt grec,80,g,,,334,archetype,2026-06-05 12:39:25.592412+00
+5487,130,Citron jaune,1,pièce,jus,1015,,canonical,2026-06-05 12:39:25.592412+00
+5488,130,Huile d'olive,30,ml,,14030,,canonical,2026-06-05 12:39:25.592412+00
+5300,108,Citron vert,1,pièce,jus,1016,,canonical,2026-06-05 12:39:22.991585+00
+5301,108,Cheddar râpé,80,g,,,261,archetype,2026-06-05 12:39:22.991585+00
+5302,108,Coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-05 12:39:22.991585+00
+5303,108,Jalapeños,2,c. à soupe,en lamelles,41,,canonical,2026-06-05 12:39:22.991585+00
+5389,124,Lentilles corail,180,g,,5005,,canonical,2026-06-05 12:39:24.413083+00
+5390,124,Lait de coco,200,ml,,,224,archetype,2026-06-05 12:39:24.413083+00
+5391,124,Oignon jaune,1,pièce,émincé,2041,,canonical,2026-06-05 12:39:24.413083+00
+5392,124,Ail,3,gousses,hachées,10001,,canonical,2026-06-05 12:39:24.413083+00
+5393,124,Gingembre frais,20,g,râpé,10002,,canonical,2026-06-05 12:39:24.413083+00
+5394,124,Tomates concassées,200,g,,1059,,canonical,2026-06-05 12:39:24.413083+00
+5395,124,Curcuma en poudre,2,c. à café,,6003,,canonical,2026-06-05 12:39:24.413083+00
+5396,124,Cumin en poudre,1,c. à café,,14017,,canonical,2026-06-05 12:39:24.413083+00
+5397,124,Cardamome verte,3,gousses,écrasées,6001,,canonical,2026-06-05 12:39:24.413083+00
+5398,124,Riz basmati,180,g,,4003,,canonical,2026-06-05 12:39:24.413083+00
+5399,124,Oignon rouge,1,pièce,finement émincé,2041,,canonical,2026-06-05 12:39:24.413083+00
+5400,124,Citron vert,1,pièce,jus,1016,,canonical,2026-06-05 12:39:24.413083+00
+5401,124,Coriandre fraîche,1,bouquet,ciselée,1018,,canonical,2026-06-05 12:39:24.413083+00
+5402,124,Huile de coco,20,ml,,,,unmatched,2026-06-05 12:39:24.413083+00
+5489,131,Semoule moyenne,200,g,,17,,canonical,2026-06-05 12:39:25.785841+00
+5490,131,Pois chiches cuits,240,g,,5008,,canonical,2026-06-05 12:39:25.785841+00
+5491,131,Courgette,1,pièce,en bâtonnets,2026,,canonical,2026-06-05 12:39:25.785841+00
+5492,131,Carotte,2,pièces,en bâtonnets,1005,,canonical,2026-06-05 12:39:25.785841+00
+5493,131,Navet nouveau,2,pièces,en quartiers,1041,,canonical,2026-06-05 12:39:25.785841+00
+5494,131,Oignon jaune,1,pièce,émincé,2041,,canonical,2026-06-05 12:39:25.785841+00
+5495,131,Tomates concassées,300,g,,1059,,canonical,2026-06-05 12:39:25.785841+00
+5496,131,Chou vert,150,g,en lanières,2015,,canonical,2026-06-05 12:39:25.785841+00
+5497,131,Fenouil,1,bulbe,en quartiers,2034,,canonical,2026-06-05 12:39:25.785841+00
+5498,131,Ail,3,gousses,hachées,10001,,canonical,2026-06-05 12:39:25.785841+00
+5499,131,Ras-el-hanout,2,c. à café,,37,,canonical,2026-06-05 12:39:25.785841+00
+5500,131,Cumin en poudre,1,c. à café,,14017,,canonical,2026-06-05 12:39:25.785841+00
+5501,131,Curcuma,1,c. à café,,6003,,canonical,2026-06-05 12:39:25.785841+00
+5502,131,Harissa douce,1,c. à soupe,,36,,canonical,2026-06-05 12:39:25.785841+00
+5503,131,Bouillon de légumes,600,ml,,14036,,canonical,2026-06-05 12:39:25.785841+00
+5504,131,Huile d'olive,40,ml,,14030,,canonical,2026-06-05 12:39:25.785841+00
+5505,131,Beurre doux,30,g,,,204,archetype,2026-06-05 12:39:25.785841+00
+5506,131,Coriandre fraîche,1,bouquet,,1018,,canonical,2026-06-05 12:39:25.785841+00
+5317,110,Sauce poisson (nuoc mam),3,c. à soupe,nuoc cham,34,,canonical,2026-06-05 12:39:23.196649+00
+5318,110,Citron vert,2,pièces,"jus, nuoc cham",1016,,canonical,2026-06-05 12:39:23.196649+00
+5319,110,Sucre,2,c. à café,nuoc cham,14037,,canonical,2026-06-05 12:39:23.196649+00
+5320,110,Ail,1,gousse,"râpée, nuoc cham",10001,,canonical,2026-06-05 12:39:23.196649+00
+5403,125,Dos de cabillaud,300,g,2 pavés,2004,,canonical,2026-06-05 12:39:24.605792+00
+5404,125,Pommes de terre nouvelles (rattes),400,g,,1053,,canonical,2026-06-05 12:39:24.605792+00
+5405,125,Petits pois frais,150,g,écossés,2047,,canonical,2026-06-05 12:39:24.605792+00
+5406,125,Fèves fraîches,150,g,écossées & pelées,2035,,canonical,2026-06-05 12:39:24.605792+00
+5407,125,Radis roses,1,botte,en rondelles,1056,,canonical,2026-06-05 12:39:24.605792+00
+5408,125,Huile d'olive vierge extra,60,ml,,14030,,canonical,2026-06-05 12:39:24.605792+00
+5409,125,Citron jaune,1,pièce,jus & zeste,1015,,canonical,2026-06-05 12:39:24.605792+00
+5410,125,Câpres,20,g,rincées,31,,canonical,2026-06-05 12:39:24.605792+00
+5411,125,Persil plat,1,bouquet,ciselé,1049,,canonical,2026-06-05 12:39:24.605792+00
+5412,125,Échalote,1,petite,finement ciselée,2031,,canonical,2026-06-05 12:39:24.605792+00
+5413,125,Beurre doux,15,g,,,204,archetype,2026-06-05 12:39:24.605792+00
+5414,125,Fleur de sel,1,pincée,,6004,,canonical,2026-06-05 12:39:24.605792+00
+5507,132,Pavé de saumon,300,g,2 pavés épais,2062,,canonical,2026-06-05 12:39:25.978055+00
+5508,132,Gnocchi de pommes de terre,400,g,frais (rayon frais ou maison),1053,,canonical,2026-06-05 12:39:25.978055+00
+5509,132,Tomates anciennes,300,g,en petits dés,1059,,canonical,2026-06-05 12:39:25.978055+00
+5510,132,Olives Taggiasche,40,g,dénoyautées,11007,,canonical,2026-06-05 12:39:25.978055+00
+5511,132,Basilic,1,bouquet,ciselé,1004,,canonical,2026-06-05 12:39:25.978055+00
+5512,132,Câpres,10,g,,31,,canonical,2026-06-05 12:39:25.978055+00
+5513,132,Échalote,1,petite,finement ciselée,2031,,canonical,2026-06-05 12:39:25.978055+00
+5514,132,Huile d'olive vierge extra,60,ml,,14030,,canonical,2026-06-05 12:39:25.978055+00
+5515,132,Citron jaune,1,pièce,jus & zeste,1015,,canonical,2026-06-05 12:39:25.978055+00
+5516,132,Courgettes,2,pièces,en rubans,2026,,canonical,2026-06-05 12:39:25.978055+00
+5517,132,Beurre doux,30,g,,,204,archetype,2026-06-05 12:39:25.978055+00
+5518,132,Ail,2,gousses,écrasées,10001,,canonical,2026-06-05 12:39:25.978055+00
+5519,132,Fleur de sel,1,pincée,,6004,,canonical,2026-06-05 12:39:25.978055+00
+5333,118,Boulgour fin,150,g,boulettes,16,,canonical,2026-06-05 12:39:23.588939+00
+5334,118,Carottes,3,pièces,en tronçons,1005,,canonical,2026-06-05 12:39:23.588939+00
+5335,118,Courgettes,3,pièces,en tronçons,2026,,canonical,2026-06-05 12:39:23.588939+00
+5336,118,Navets,3,pièces,en quartiers,1041,,canonical,2026-06-05 12:39:23.588939+00
+5337,118,Tomates,3,pièces,en quartiers,1059,,canonical,2026-06-05 12:39:23.588939+00
+5338,118,Oignons,2,pièces,hachés,2041,,canonical,2026-06-05 12:39:23.588939+00
+5339,118,Raisins secs,80,g,,,93,archetype,2026-06-05 12:39:23.588939+00
+5340,118,Concentré de tomate,2,c. à soupe,,,4,archetype,2026-06-05 12:39:23.588939+00
+5341,118,Ras el hanout,2,c. à café,,37,,canonical,2026-06-05 12:39:23.588939+00
+5342,118,Safran filaments,1,pincée,,10006,,canonical,2026-06-05 12:39:23.588939+00
+5343,118,Cumin moulu,1,c. à café,,14017,,canonical,2026-06-05 12:39:23.588939+00
+5344,118,Coriandre fraîche,1,botte,,1018,,canonical,2026-06-05 12:39:23.588939+00
+5345,118,Persil plat,0.5,botte,boulettes,1049,,canonical,2026-06-05 12:39:23.588939+00
+5346,118,Œuf,1,pièce,boulettes,2040,,canonical,2026-06-05 12:39:23.588939+00
+5347,118,Harissa,2,c. à café,,36,,canonical,2026-06-05 12:39:23.588939+00
+5348,118,Huile d'olive,4,c. à soupe,,14030,,canonical,2026-06-05 12:39:23.588939+00
+5349,118,Ail,3,gousses,,10001,,canonical,2026-06-05 12:39:23.588939+00
+5429,127,Farine de sarrasin,120,g,,4004,,canonical,2026-06-05 12:39:24.994795+00
+5430,127,Eau,300,ml,,14018,,canonical,2026-06-05 12:39:24.994795+00
+5431,127,Œufs,4,pièces,"2 dans la pâte, 2 sur galettes",2040,,canonical,2026-06-05 12:39:24.994795+00
+5432,127,Sel,1,pincée,gros sel,6004,,canonical,2026-06-05 12:39:24.994795+00
+5433,127,Beurre demi-sel,40,g,,6004,,canonical,2026-06-05 12:39:24.994795+00
+5434,127,Champignons de Paris,250,g,en lamelles,3001,,canonical,2026-06-05 12:39:24.994795+00
+5435,127,Ail,2,gousses,hachées,10001,,canonical,2026-06-05 12:39:24.994795+00
+5436,127,Emmental râpé,80,g,,,272,archetype,2026-06-05 12:39:24.994795+00
+5362,120,Basilic frais,0.5,botte,,1004,,canonical,2026-06-05 12:39:23.787491+00
+5443,128,Quinoa,150,g,,4002,,canonical,2026-06-05 12:39:25.18724+00
+5444,128,Carottes,200,g,en bâtonnets,1005,,canonical,2026-06-05 12:39:25.18724+00
+5445,128,Betteraves crues,250,g,en cubes,1012,,canonical,2026-06-05 12:39:25.18724+00
+5446,128,Brocolis,250,g,en fleurettes,2003,,canonical,2026-06-05 12:39:25.18724+00
+5447,128,Pois chiches cuits,300,g,égouttés & séchés,5008,,canonical,2026-06-05 12:39:25.18724+00
+5448,128,Cumin en poudre,2,c. à café,,14017,,canonical,2026-06-05 12:39:25.18724+00
+5449,128,Paprika fumé,1,c. à café,,,474,archetype,2026-06-05 12:39:25.18724+00
+5450,128,Tahini,40,g,,26,,canonical,2026-06-05 12:39:25.18724+00
+5451,128,Yaourt grec,100,g,,,334,archetype,2026-06-05 12:39:25.18724+00
+5452,128,Citron jaune,1,pièce,jus,1015,,canonical,2026-06-05 12:39:25.18724+00
+5453,128,Ail,1,gousse,râpée,10001,,canonical,2026-06-05 12:39:25.18724+00
+5454,128,Graines de courge,30,g,,2024,,canonical,2026-06-05 12:39:25.18724+00
+5455,128,Huile d'olive,40,ml,,14030,,canonical,2026-06-05 12:39:25.18724+00
+5456,128,Coriandre fraîche,4,branches,,1018,,canonical,2026-06-05 12:39:25.18724+00
+5457,128,Houmous,100,g,voir tip : maison à partir de pois chiches,48,,canonical,2026-06-05 12:39:25.18724+00
+5548,135,Vermicelles de riz,160,g,,4003,,canonical,2026-06-05 12:39:26.594331+00
+5549,135,Tofu fumé,200,g,en cubes,20,,canonical,2026-06-05 12:39:26.594331+00
+5550,135,Champignons shiitaké,150,g,émincés,14015,,canonical,2026-06-05 12:39:26.594331+00
+5551,135,Pak-choï,2,pièces,effeuillé,2044,,canonical,2026-06-05 12:39:26.594331+00
+5552,135,Bouillon de légumes,1500,ml,,14036,,canonical,2026-06-05 12:39:26.594331+00
+5553,135,Gingembre frais,40,g,en tranches grillées,10002,,canonical,2026-06-05 12:39:26.594331+00
+5554,135,Oignon jaune,1,pièce,coupé en deux & grillé,2041,,canonical,2026-06-05 12:39:26.594331+00
+5555,135,Anis étoilé,3,pièces,,,,unmatched,2026-06-05 12:39:26.594331+00
+5556,135,Cannelle bâton,1,pièce,,14012,,canonical,2026-06-05 12:39:26.594331+00
+5557,135,Cardamome,2,gousses,,6001,,canonical,2026-06-05 12:39:26.594331+00
+5558,135,Sauce soja,30,ml,,14033,,canonical,2026-06-05 12:39:26.594331+00
+5559,135,Coriandre fraîche,1,bouquet,,1018,,canonical,2026-06-05 12:39:26.594331+00
+5560,135,Basilic thaï,1,bouquet,,1004,,canonical,2026-06-05 12:39:26.594331+00
+5561,135,Citron vert,1,pièce,en quartiers,1016,,canonical,2026-06-05 12:39:26.594331+00
+5562,135,Oignons frits,20,g,,2041,,canonical,2026-06-05 12:39:26.594331+00
+5415,126,Cuisses de poulet désossées,450,g,avec peau,2054,,canonical,2026-06-05 12:39:24.804991+00
 1216,6,Blanc de poulet,400,g,coupé en morceaux,2054,,canonical,2026-06-04 20:04:11.473378+00
 1217,6,Poivron rouge,200,g,émincé,1051,,canonical,2026-06-04 20:04:11.473378+00
 1218,6,Poivron vert,150,g,émincé,1051,,canonical,2026-06-04 20:04:11.473378+00
@@ -524,8 +704,33 @@ id,generated_recipe_id,raw_name,quantity,unit,notes,canonical_food_id,archetype_
 1244,5,Sel,3,g,,6004,,canonical,2026-06-04 20:04:11.677533+00
 1245,5,Poivre noir,1,pincée,moulu,10005,,canonical,2026-06-04 20:04:11.677533+00
 1246,5,Eau,320,mL,pour le riz,14018,,canonical,2026-06-04 20:04:11.677533+00
-3614,121,Courgettes,2,pièces,en dés,2026,,canonical,2026-06-05 10:40:13.691012+00
-3615,121,Ail,2,gousses,hachées,10001,,canonical,2026-06-05 10:40:13.691012+00
+5416,126,Jambon de Bayonne,60,g,en lanières,,317,archetype,2026-06-05 12:39:24.804991+00
+5417,126,Poivron rouge,2,pièces,en lamelles,1051,,canonical,2026-06-05 12:39:24.804991+00
+5418,126,Poivron vert,1,pièce,en lamelles,1051,,canonical,2026-06-05 12:39:24.804991+00
+5419,126,Tomates anciennes,400,g,concassées,1059,,canonical,2026-06-05 12:39:24.804991+00
+5420,126,Oignon jaune,1,gros,émincé,2041,,canonical,2026-06-05 12:39:24.804991+00
+5421,126,Ail,3,gousses,hachées,10001,,canonical,2026-06-05 12:39:24.804991+00
+5422,126,Piment d'Espelette,1,c. à café,,2048,,canonical,2026-06-05 12:39:24.804991+00
+5423,126,Vin blanc sec,100,ml,,,331,archetype,2026-06-05 12:39:24.804991+00
+5424,126,Bouillon de volaille,150,ml,,,389,archetype,2026-06-05 12:39:24.804991+00
+5425,126,Riz basmati,160,g,,4003,,canonical,2026-06-05 12:39:24.804991+00
+5426,126,Safran,1,pincée,filaments,10006,,canonical,2026-06-05 12:39:24.804991+00
+5427,126,Huile d'olive,30,ml,,14030,,canonical,2026-06-05 12:39:24.804991+00
+5428,126,Basilic,6,feuilles,,1004,,canonical,2026-06-05 12:39:24.804991+00
+5520,133,Farine T65,200,g,,,312,archetype,2026-06-05 12:39:26.179639+00
+5521,133,Huile d'olive,80,ml,,14030,,canonical,2026-06-05 12:39:26.179639+00
+5522,133,Eau froide,80,ml,,14018,,canonical,2026-06-05 12:39:26.179639+00
+5523,133,Sel fin,1,pincée,,6004,,canonical,2026-06-05 12:39:26.179639+00
+5524,133,Courgettes,2,pièces,finement tranchées en rondelles,2026,,canonical,2026-06-05 12:39:26.179639+00
+5525,133,Ricotta,200,g,,,231,archetype,2026-06-05 12:39:26.179639+00
+5526,133,Citron jaune,1,pièce,zeste,1015,,canonical,2026-06-05 12:39:26.179639+00
+5527,133,Pesto au basilic,60,g,,1004,,canonical,2026-06-05 12:39:26.179639+00
+5528,133,Tomates cerises,300,g,,1008,,canonical,2026-06-05 12:39:26.179639+00
+5529,133,Œuf,1,pièce,pour dorure,2040,,canonical,2026-06-05 12:39:26.179639+00
+5530,133,Roquette,100,g,,2058,,canonical,2026-06-05 12:39:26.179639+00
+5531,133,Pignons de pin,30,g,grillés,,,unmatched,2026-06-05 12:39:26.179639+00
+5532,133,Vinaigre balsamique,15,ml,,14032,,canonical,2026-06-05 12:39:26.179639+00
+5533,133,Parmesan râpé,30,g,,,273,archetype,2026-06-05 12:39:26.179639+00
 1267,1,Saucisses fumées,300,g,de préférence saucisses de Strasbourg,,383,archetype,2026-06-04 20:04:12.050353+00
 1268,1,Riz basmati,150,g,,4003,,canonical,2026-06-04 20:04:12.050353+00
 1269,1,Haricots rouges,200,g,"en conserve, égouttés",14023,,canonical,2026-06-04 20:04:12.050353+00
@@ -557,17 +762,8 @@ id,generated_recipe_id,raw_name,quantity,unit,notes,canonical_food_id,archetype_
 1295,3,Pommes de terre,400,g,"chair ferme, pour accompagnement",1053,,canonical,2026-06-04 20:04:12.261768+00
 1296,3,Sel,8,g,,6004,,canonical,2026-06-04 20:04:12.261768+00
 1297,3,Poivre noir,2,g,moulu,10005,,canonical,2026-06-04 20:04:12.261768+00
-3616,121,Ciboulette,0.5,botte,ciselée,2018,,canonical,2026-06-05 10:40:13.691012+00
-3617,121,Persil plat,0.5,botte,ciselé,1049,,canonical,2026-06-05 10:40:13.691012+00
-3618,121,Estragon frais,0.5,botte,ciselé,2033,,canonical,2026-06-05 10:40:13.691012+00
-3619,121,Beurre,30,g,,,300,archetype,2026-06-05 10:40:13.691012+00
-3620,121,Huile d'olive,2,c. à soupe,,14030,,canonical,2026-06-05 10:40:13.691012+00
-3621,121,Tomates anciennes,3,pièces,en tranches,1059,,canonical,2026-06-05 10:40:13.691012+00
-3622,121,Mozzarella di bufala,250,g,,,320,archetype,2026-06-05 10:40:13.691012+00
-3623,121,Basilic frais,1,botte,,1004,,canonical,2026-06-05 10:40:13.691012+00
-3624,121,Vinaigre balsamique,2,c. à soupe,,14032,,canonical,2026-06-05 10:40:13.691012+00
-3625,121,Pain de campagne,4,tranches,,,433,archetype,2026-06-05 10:40:13.691012+00
-3626,121,Fleur de sel,1,pincée,,6004,,canonical,2026-06-05 10:40:13.691012+00
+5437,127,Salade verte,1,pièce,feuilles lavées,14029,,canonical,2026-06-05 12:39:24.994795+00
+5438,127,Pomme Granny Smith,1,pièce,en lamelles,1052,,canonical,2026-06-05 12:39:24.994795+00
 1311,9,agneau,305,g,,4001,,canonical,2026-06-04 20:04:12.462396+00
 1312,9,courgettes,300,g,,2026,,canonical,2026-06-04 20:04:12.462396+00
 1313,9,PDT,200,g,,,,unmatched,2026-06-04 20:04:12.462396+00
@@ -575,7 +771,20 @@ id,generated_recipe_id,raw_name,quantity,unit,notes,canonical_food_id,archetype_
 1315,9,olives,,,,11007,,canonical,2026-06-04 20:04:12.462396+00
 1316,9,épices,,,,12,,canonical,2026-06-04 20:04:12.462396+00
 1317,9,bouillon,,,,14035,,canonical,2026-06-04 20:04:12.462396+00
+5439,127,Noix de Grenoble,40,g,concassées,47,,canonical,2026-06-05 12:39:24.994795+00
+5440,127,Vinaigre de cidre,15,ml,,,529,archetype,2026-06-05 12:39:24.994795+00
+5441,127,Huile d'olive,30,ml,,14030,,canonical,2026-06-05 12:39:24.994795+00
+5442,127,Persil plat,4,branches,ciselé,1049,,canonical,2026-06-05 12:39:24.994795+00
+5534,134,Entrecôte de bœuf,600,g,"épaisse, 1 pièce",,346,archetype,2026-06-05 12:39:26.396333+00
+5535,134,Pommes de terre Bintje,800,g,en frites épaisses,1053,,canonical,2026-06-05 12:39:26.396333+00
+5536,134,Graisse de canard,200,g,,2005,,canonical,2026-06-05 12:39:26.396333+00
+5537,134,Beurre doux,80,g,pommade,,204,archetype,2026-06-05 12:39:26.396333+00
+5538,134,Échalote,2,pièces,finement ciselées,2031,,canonical,2026-06-05 12:39:26.396333+00
+5539,134,Persil plat,1,bouquet,ciselé,1049,,canonical,2026-06-05 12:39:26.396333+00
+5540,134,Cerfeuil,1,petit bouquet,ciselé,2008,,canonical,2026-06-05 12:39:26.396333+00
+5541,134,Estragon,4,branches,,2033,,canonical,2026-06-05 12:39:26.396333+00
 1892,66,huile d'olive,,,,14030,,canonical,2026-06-04 20:04:20.953846+00
+5542,134,Jaunes d'œufs,3,pièces,,,318,archetype,2026-06-05 12:39:26.396333+00
 1345,13,Pavé de saumon,350,g,2 pavés de 175g chacun,2062,,canonical,2026-06-04 20:04:12.829982+00
 1346,13,Asperges vertes,270,g,fraîches de saison,8004,,canonical,2026-06-04 20:04:12.829982+00
 1347,13,Pommes de terre nouvelles,390,g,grenaille ou charlotte,1053,,canonical,2026-06-04 20:04:12.829982+00
@@ -586,6 +795,8 @@ id,generated_recipe_id,raw_name,quantity,unit,notes,canonical_food_id,archetype_
 1352,13,Persil plat,10,g,frais,1049,,canonical,2026-06-04 20:04:12.829982+00
 1353,13,Sel fin,5,g,,6004,,canonical,2026-06-04 20:04:12.829982+00
 1354,13,Poivre noir,2,g,moulu,10005,,canonical,2026-06-04 20:04:12.829982+00
+5543,134,Vinaigre de vin blanc,50,ml,,,331,archetype,2026-06-05 12:39:26.396333+00
+5544,134,Vin blanc sec,50,ml,,,331,archetype,2026-06-05 12:39:26.396333+00
 1370,14,Épaule d'agneau,305,g,coupée en cubes de 3cm,4001,,canonical,2026-06-04 20:04:13.029396+00
 1371,14,Riz basmati,120,g,,4003,,canonical,2026-06-04 20:04:13.029396+00
 1372,14,Courgettes,300,g,en rondelles épaisses,2026,,canonical,2026-06-04 20:04:13.029396+00
@@ -604,6 +815,9 @@ id,generated_recipe_id,raw_name,quantity,unit,notes,canonical_food_id,archetype_
 1385,14,Coriandre fraîche,10,g,pour servir,1018,,canonical,2026-06-04 20:04:13.029396+00
 1386,14,Sel,5,g,,6004,,canonical,2026-06-04 20:04:13.029396+00
 1387,14,Poivre noir,2,g,moulu,10005,,canonical,2026-06-04 20:04:13.029396+00
+5545,134,Beurre clarifié,120,g,pour béarnaise,,403,archetype,2026-06-05 12:39:26.396333+00
+5546,134,Salade verte,1,pièce,,14029,,canonical,2026-06-05 12:39:26.396333+00
+5547,134,Fleur de sel,1,pincée,,6004,,canonical,2026-06-05 12:39:26.396333+00
 1403,10,Bœuf à mijoter (paleron ou joue),315,g,en cubes de 3cm,14011,,canonical,2026-06-04 20:04:13.221797+00
 1404,10,Aubergines,280,g,moyennes,1001,,canonical,2026-06-04 20:04:13.221797+00
 1405,10,Pommes de terre,350,g,chair ferme,1053,,canonical,2026-06-04 20:04:13.221797+00
@@ -1175,6 +1389,7 @@ id,generated_recipe_id,raw_name,quantity,unit,notes,canonical_food_id,archetype_
 1979,57,Poivre noir,1,g,,10005,,canonical,2026-06-04 20:04:22.721958+00
 1980,57,Coriandre fraîche,10,g,pour finir,1018,,canonical,2026-06-04 20:04:22.721958+00
 1981,57,Riz basmati,300,g,poids cuit,4003,,canonical,2026-06-04 20:04:22.721958+00
+5563,135,Huile de sésame,15,ml,,25,,canonical,2026-06-05 12:39:26.594331+00
 2020,4,Saucisses fumées,120,g,coupées en rondelles,,383,archetype,2026-06-04 20:04:23.714136+00
 2021,4,Riz basmati,100,g,,4003,,canonical,2026-06-04 20:04:23.714136+00
 2022,4,Haricots rouges,160,g,"en conserve, égouttés",14023,,canonical,2026-06-04 20:04:23.714136+00
