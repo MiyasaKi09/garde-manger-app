@@ -1809,6 +1809,6 @@ id,import_id,week_label,category,product_name,quantity,checked,canonical_food_id
 2893,28,Semaine 23 — 1-7 juin 2026,Boulangerie,"Pain de campagne (croûtons, tartines)",1 grand pain,f,,,,,,,https://images.pexels.com/photos/5634637/pexels-photo-5634637.jpeg?auto=compress&cs=tinysrgb&h=130
 2844,28,Semaine 23 — 1-7 juin 2026,Fruits,Pommes Pink Lady / Gala,"1,8 kg (14 pièces)",t,,,,,,,https://images.pexels.com/photos/17975557/pexels-photo-17975557.jpeg?auto=compress&cs=tinysrgb&h=130
 2800,28,Semaine 23 — 1-7 juin 2026,Boucherie,Magret de canard,1 (~350 g),t,,,,,,,https://images.pexels.com/photos/4586810/pexels-photo-4586810.jpeg?auto=compress&cs=tinysrgb&h=130
-3019,29,S1,Crémerie,Skyr,2200 g,f,,,,,,,
-3020,29,S1,Crémerie,Oeufs,27 pièces,f,,,,,,,
-3021,29,S1,Épicerie,Amandes,210 g,f,,,,,,,
+3019,29,S1,Crémerie,Skyr,2200 g,f,,,,,,,https://images.pexels.com/photos/14827255/pexels-photo-14827255.jpeg?auto=compress&cs=tinysrgb&h=130
+3020,29,S1,Crémerie,Oeufs,27 pièces,f,2040,,,,,,https://images.pexels.com/photos/7094745/pexels-photo-7094745.jpeg?auto=compress&cs=tinysrgb&h=130
+3021,29,S1,Épicerie,Amandes,210 g,f,11001,,,,,,https://images.pexels.com/photos/18435586/pexels-photo-18435586.jpeg?auto=compress&cs=tinysrgb&h=130
