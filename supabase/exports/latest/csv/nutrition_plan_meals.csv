@@ -1364,3 +1364,52 @@ id,import_id,person_name,meal_date,meal_type,day_type,description,kcal,protein_g
 2441,28,Julien,2026-06-03,diner,standard,"Falafels maison à la coriandre & cumin, tabbouleh libanais menthe-persil-grenade, sauce yaourt-tahini citronnée, féta émiettée, œuf mollet & pousses de salade (version allégée)",720.0,35.0,64.0,35.0,15.0,Falafels & tabbouleh
 2443,28,Zoé,2026-06-03,dejeuner,standard,Aubergines alla parmigiana & mix pois chiches-boulgour aux herbes (portion Zoé),560.0,35.0,52.0,22.0,14.0,Parmigiana & pois chiches
 2444,28,Zoé,2026-06-03,diner,standard,"Falafels coriandre, tabbouleh menthe-grenade, sauce yaourt-tahini, féta & œuf mollet (portion Zoé)",580.0,30.0,52.0,30.0,12.0,Falafels & tabbouleh
+2474,29,Julien,2026-06-08,pdj,standard,"Skyr nature 200g aux 3 œufs durs, fleur de sel & ciboulette ciselée",370.0,41.0,10.0,16.0,0.0,
+2475,29,Julien,2026-06-08,dejeuner,standard,"Chili tex-mex de bœuf haché aux haricots noirs & maïs grillé, tortillas de maïs croustillantes, guacamole maison à la lime & cheddar râpé, coriandre fraîche & jalapeños (batch préparé dimanche soir)",760.0,60.0,75.0,26.0,16.0,Chili tex-mex bœuf
+2476,29,Julien,2026-06-08,diner,standard,"Poke bowl saumon mariné soja-sésame-mirin, riz vinaigré tiède, edamame, concombre, mangue & avocat, oignons frits croustillants & sauce sriracha-mayo, graines de sésame noir & nori",720.0,50.0,70.0,28.0,9.0,Poke saumon
+2477,29,Julien,2026-06-08,collation,standard,Pomme golden & 25g d'amandes natures,200.0,6.0,17.0,13.0,4.0,
+2478,29,Zoé,2026-06-08,dejeuner,standard,"Chili tex-mex de bœuf haché, haricots noirs, maïs grillé, tortillas de maïs, guacamole & cheddar (portion Zoé)",580.0,42.0,65.0,18.0,12.0,Chili tex-mex bœuf
+2479,29,Zoé,2026-06-08,diner,standard,"Poke bowl saumon mariné soja-sésame, riz vinaigré, edamame, concombre, mangue & avocat, sauce sriracha-mayo (portion Zoé)",540.0,38.0,55.0,22.0,8.0,Poke saumon
+2480,29,Zoé,2026-06-08,collation,standard,Yaourt grec nature & 1 banane,200.0,12.0,30.0,3.0,2.0,
+2481,29,Julien,2026-06-09,pdj,léger,"Skyr nature 250g, 80g de jambon blanc supérieur & 1 pomme",320.0,43.0,18.0,3.0,2.0,
+2482,29,Julien,2026-06-09,dejeuner,léger,"Salade vietnamienne de vermicelles de riz tièdes, tofu fumé mariné citronnelle-gingembre, pickles carottes-daikon, concombre, menthe-coriandre-basilic thaï, cacahuètes torréfiées concassées & sauce nuoc cham au citron vert (batch préparé lundi soir)",620.0,38.0,70.0,22.0,8.0,Salade vietnamienne
+2483,29,Julien,2026-06-09,diner,léger,"Émincé de poulet teriyaki laqué soja-mirin-saké, riz blanc japonais, wok de pak choi & shiitakés à l'ail-gingembre, oignons verts ciselés & sésame grillé",710.0,61.0,78.0,16.0,6.0,Poulet teriyaki
+2484,29,Julien,2026-06-09,collation,léger,2 œufs durs & 1 pomme golden,230.0,13.0,13.0,11.0,3.0,
+2485,29,Zoé,2026-06-09,dejeuner,léger,"Salade vietnamienne de vermicelles de riz, tofu fumé citronnelle, pickles carottes-daikon, concombre, herbes fraîches, cacahuètes & sauce nuoc cham (portion Zoé)",500.0,30.0,60.0,16.0,10.0,Salade vietnamienne
+2486,29,Zoé,2026-06-09,diner,léger,"Tofu ferme teriyaki laqué soja-mirin, riz blanc japonais, wok de pak choi & shiitakés à l'ail-gingembre, sésame grillé (jour végé Zoé)",540.0,28.0,70.0,14.0,8.0,Tofu teriyaki
+2487,29,Zoé,2026-06-09,collation,léger,Yaourt brassé nature & 1 poire,180.0,8.0,25.0,5.0,3.0,
+2488,29,Julien,2026-06-10,pdj,standard,"Skyr nature 200g aux 3 œufs durs, fleur de sel & ciboulette ciselée",370.0,41.0,10.0,16.0,0.0,
+2489,29,Julien,2026-06-10,dejeuner,standard,"Spätzle alsaciens aux champignons sauvages (girolles, pleurotes, champignons de Paris), sauce crémeuse au comté & noix de muscade, 3 œufs miroir gratinés, salade verte mâche-noix vinaigrette moutarde-cidre (batch préparé mardi soir)",830.0,55.0,82.0,36.0,7.0,Spätzle champignons
+2490,29,Julien,2026-06-10,diner,standard,"Pâtes aglio olio peperoncino aux courgettes ribbon & basilic frais, burrata fondante des Pouilles, œuf mollet, parmesan râpé & filet d'huile d'olive",720.0,38.0,80.0,28.0,7.0,Aglio olio burrata
+2491,29,Julien,2026-06-10,collation,standard,Skyr nature 150g & 1 poire,150.0,18.0,17.0,1.0,3.0,
+2492,29,Zoé,2026-06-10,dejeuner,standard,"Spätzle alsaciens aux champignons sauvages, sauce crémeuse au comté, 2 œufs miroir gratinés & salade verte (portion Zoé)",620.0,36.0,70.0,28.0,6.0,Spätzle champignons
+2493,29,Zoé,2026-06-10,diner,standard,"Pâtes aglio olio peperoncino aux courgettes & basilic, burrata fondante & parmesan (portion Zoé)",540.0,24.0,65.0,22.0,6.0,Aglio olio burrata
+2494,29,Zoé,2026-06-10,collation,standard,Yaourt grec & 1 pêche,150.0,10.0,18.0,4.0,3.0,
+2495,29,Julien,2026-06-11,pdj,gourmand,"Skyr nature 200g aux 3 œufs durs, fleur de sel & ciboulette ciselée",370.0,41.0,10.0,16.0,0.0,
+2496,29,Julien,2026-06-11,dejeuner,gourmand,"Moussaka grecque végétarienne aux lentilles vertes du Puy, aubergines confites grillées, pommes de terre rôties à l'origan & béchamel au kefalotyri gratinée, cannelle & feuilles de menthe (batch préparé mercredi soir)",820.0,50.0,75.0,35.0,14.0,Moussaka végé
+2497,29,Julien,2026-06-11,diner,gourmand,"Dorade royale rôtie en croûte de sel aux herbes, fenouil braisé au pastis & olives Taggiasche, écrasé de pommes de terre nouvelles à l'huile d'olive vierge & citron confit",750.0,65.0,55.0,30.0,10.0,Dorade royale
+2498,29,Julien,2026-06-11,collation,gourmand,"Yaourt grec 200g, 1 banane & 15g d'amandes",250.0,12.0,25.0,12.0,4.0,
+2499,29,Zoé,2026-06-11,dejeuner,gourmand,"Moussaka grecque végétarienne aux lentilles, aubergines, pommes de terre & béchamel gratinée (portion Zoé)",620.0,35.0,60.0,28.0,12.0,Moussaka végé
+2500,29,Zoé,2026-06-11,diner,gourmand,"Dorade royale rôtie en croûte de sel, fenouil braisé au pastis & écrasé de pommes de terre nouvelles au citron confit (portion Zoé)",580.0,50.0,45.0,25.0,8.0,Dorade royale
+2501,29,Zoé,2026-06-11,collation,gourmand,Yaourt grec & 1 pomme,200.0,8.0,22.0,8.0,3.0,
+2502,29,Julien,2026-06-12,pdj,standard,"Skyr nature 200g aux 3 œufs durs, fleur de sel & ciboulette ciselée",370.0,41.0,10.0,16.0,0.0,
+2503,29,Julien,2026-06-12,dejeuner,standard,"Khichdi indien aux lentilles dorées (moong dal) & riz basmati, légumes mijotés (carottes, courgettes, tomates), épices toastées (cumin, curcuma, gingembre frais), ghee, raita concombre-menthe & coriandre fraîche (batch préparé mercredi soir)",700.0,40.0,100.0,18.0,16.0,Khichdi indien
+2504,29,Julien,2026-06-12,diner,standard,"Échine de porc grillée laquée miel-moutarde-romarin, légumes printaniers rôtis au four (carottes nouvelles, navets boule d'or, oignons rouges) & pommes grenailles à l'ail confit",780.0,60.0,70.0,30.0,10.0,Échine porc miel-moutarde
+2505,29,Julien,2026-06-12,collation,standard,"Yaourt skyr 150g, 1 pomme & 10g d'amandes",200.0,10.0,18.0,10.0,4.0,
+2506,29,Zoé,2026-06-12,dejeuner,standard,"Khichdi indien lentilles dorées & riz basmati, légumes mijotés aux épices, raita concombre-menthe (portion Zoé)",540.0,28.0,80.0,14.0,12.0,Khichdi indien
+2507,29,Zoé,2026-06-12,diner,standard,"Échine de porc grillée miel-moutarde, légumes printaniers rôtis & pommes grenailles à l'ail (portion Zoé)",600.0,45.0,55.0,25.0,8.0,Échine porc miel-moutarde
+2508,29,Zoé,2026-06-12,collation,standard,Yaourt brassé & 1 banane,180.0,8.0,22.0,6.0,3.0,
+2509,29,Julien,2026-06-13,pdj,gourmand,"Skyr nature 200g aux 3 œufs durs, fleur de sel & ciboulette ciselée",370.0,41.0,10.0,16.0,0.0,
+2510,29,Julien,2026-06-13,dejeuner,gourmand,"Couscous royal végétarien aux 7 légumes (carottes, courgettes, navets, oignons, tomates, pois chiches, raisins) & boulettes de boulgour-pois chiches aux herbes, semoule fine moyenne, bouillon corsé au ras el hanout & safran, harissa maison & coriandre (batch préparé mercredi soir)",850.0,38.0,130.0,22.0,22.0,Couscous royal végé
+2511,29,Julien,2026-06-13,diner,gourmand,"Côte de bœuf maturée 30 jours rôtie au beurre noisette & fleur de sel de Guérande, sauce béarnaise à l'estragon, frites maison double cuisson & salade verte vinaigrette échalote au vinaigre de Xérès",950.0,75.0,80.0,50.0,8.0,Côte de bœuf béarnaise
+2512,29,Julien,2026-06-13,collation,gourmand,1 pomme golden,80.0,5.0,5.0,5.0,2.0,
+2513,29,Zoé,2026-06-13,dejeuner,gourmand,"Couscous royal végétarien aux 7 légumes & boulettes boulgour-pois chiches, semoule fine au safran & harissa (portion Zoé)",650.0,28.0,100.0,18.0,18.0,Couscous royal végé
+2514,29,Zoé,2026-06-13,diner,gourmand,"Côte de bœuf maturée rôtie, sauce béarnaise, frites maison & salade verte vinaigrette échalote (portion Zoé)",700.0,55.0,65.0,38.0,6.0,Côte de bœuf béarnaise
+2515,29,Zoé,2026-06-13,collation,gourmand,1 banane & 1 carré de chocolat noir 70%,120.0,4.0,22.0,3.0,3.0,
+2516,29,Julien,2026-06-14,pdj,léger,"Skyr nature 250g, 80g de jambon blanc supérieur & 1 pomme",320.0,43.0,18.0,3.0,2.0,
+2517,29,Julien,2026-06-14,dejeuner,léger,"Gaspacho andalou de tomates fraîches & poivrons rouges grillés au cumin, ail & vinaigre de Xérès, œuf mollet coulant, tartine de pan con tomate au manchego affiné, basilic frais & filet d'huile d'olive vierge (batch préparé mercredi soir)",620.0,38.0,60.0,22.0,8.0,Gaspacho andalou
+2518,29,Julien,2026-06-14,diner,léger,"Omelette baveuse aux fines herbes (ciboulette, persil plat, estragon) & courgettes sautées à l'ail, salade tomates anciennes-mozzarella di bufala-basilic vinaigrette balsamique, pain de campagne grillé",720.0,50.0,55.0,30.0,6.0,Omelette herbes courgettes
+2519,29,Julien,2026-06-14,collation,léger,Skyr nature 200g & 1 banane,200.0,22.0,30.0,1.0,3.0,
+2520,29,Zoé,2026-06-14,dejeuner,léger,"Gaspacho andalou de tomates & poivrons grillés, œuf mollet, tartine pan con tomate au manchego, basilic & huile d'olive (portion Zoé)",500.0,30.0,50.0,20.0,8.0,Gaspacho andalou
+2521,29,Zoé,2026-06-14,diner,léger,"Omelette aux fines herbes & courgettes sautées à l'ail, salade tomates-mozzarella di bufala-basilic vinaigrette balsamique, pain grillé (portion Zoé)",540.0,36.0,45.0,25.0,5.0,Omelette herbes courgettes
+2522,29,Zoé,2026-06-14,collation,léger,Yaourt brassé nature & 1 poire,170.0,8.0,24.0,4.0,3.0,
