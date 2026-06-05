@@ -93,7 +93,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
     <style jsx global>{`
       /* ── CookMode Landing ── */
       .cook-landing-scroll {
-        flex: 1; display: flex; align-items: center; justify-content: center;
+        flex: 1; display: flex; flex-direction: column;
         padding: 32px 20px; overflow-y: auto;
         scrollbar-width: none;
       }
@@ -104,10 +104,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
         box-shadow: 0 32px 80px rgba(24,28,22,0.35), 0 4px 16px rgba(24,28,22,0.15);
         padding: 40px 36px;
         width: 100%; max-width: 560px;
-        max-height: calc(100vh - 64px);
-        overflow-y: auto;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(24,28,22,0.15) transparent;
+        margin: auto; /* centre quand ça tient, sans couper le haut quand c'est grand */
         position: relative;
       }
       .cook-landing-card::-webkit-scrollbar { width: 4px; }
@@ -153,7 +150,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
         background: #F3EFE4; border-radius: 18px;
         padding: 20px 22px; margin-bottom: 20px; text-align: left;
       }
-      .cook-persons-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+      .cook-persons-grid { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start; }
       .cook-person-card {
         flex: 1; min-width: 170px;
         background: #FFFDF7; border-radius: 14px;
