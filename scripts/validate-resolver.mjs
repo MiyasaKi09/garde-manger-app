@@ -2,7 +2,7 @@
 // node scripts/validate-resolver.mjs
 import { readFileSync } from 'node:fs'
 import {
-  buildCatalogIndex, resolveIngredient,
+  buildCatalogIndex, resolveIngredient, proposeCanonicalName,
 } from '../lib/ingredientResolver.js'
 
 const CSV = 'supabase/exports/latest/csv'
@@ -80,6 +80,17 @@ console.log('Échantillon de résolutions:')
 console.log(samples.join('\n'))
 console.log(`\nNon matchés (${unmatched.length}):`)
 console.log('  ' + unmatched.slice(0, 60).join(' · '))
+
+// --- auto-création conservatrice : ce qui SERAIT créé ---
+const wouldCreate = new Set()
+const leftAlone = []
+for (const n of unmatched) {
+  const w = proposeCanonicalName(n)
+  if (w) wouldCreate.add(w)
+  else leftAlone.push(n)
+}
+console.log(`\n→ Auto-créés (conservateur, ${wouldCreate.size}) : ${[...wouldCreate].sort().join(', ')}`)
+console.log(`→ Laissés unmatched (${leftAlone.length}) : ${leftAlone.join(' · ')}`)
 
 // --- gain attendu APRÈS migration 024 (canoniques manquants + keywords) ---
 const EXTRA = [
