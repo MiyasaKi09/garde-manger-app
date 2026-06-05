@@ -197,20 +197,25 @@ export default function TodayMeals({ importId }) {
   if (loading) return <p style={{ color: '#9ca3af', fontSize: 13, textAlign: 'center' }}>...</p>
   if (!importId || meals.length === 0) return null
 
-  // Jours à afficher : aujourd'hui/demain s'ils ont des repas, sinon les 2
-  // prochains jours du plan (ex. plan futur), sinon les 2 premiers disponibles.
-  const dates = [...new Set(meals.map(m => m.meal_date))].sort()
-  let showDates = dates.filter(d => d === todayStr || d === tomorrowStr)
-  if (showDates.length === 0) {
-    const upcoming = dates.filter(d => d >= todayStr)
-    showDates = (upcoming.length ? upcoming : dates).slice(0, 2)
+  // Repas d'aujourd'hui (et de demain). On ne montre PAS les jours lointains
+  // d'un plan futur : si rien aujourd'hui, on l'indique clairement.
+  const groups = [
+    { date: todayStr, label: "Aujourd'hui", meals: meals.filter(m => m.meal_date === todayStr) },
+    { date: tomorrowStr, label: 'Demain', meals: meals.filter(m => m.meal_date === tomorrowStr) },
+  ].filter(g => g.meals.length > 0)
+
+  if (groups.length === 0) {
+    const todayLabel = today.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
+    return (
+      <div style={{ textAlign: 'center', padding: '14px 0' }}>
+        <p style={{ color: '#9ca3af', fontSize: 13, margin: '0 0 4px', textTransform: 'capitalize' }}>{todayLabel}</p>
+        <p style={{ color: '#6b7280', fontSize: 14, margin: '0 0 10px', fontWeight: 500 }}>Rien de prévu aujourd'hui</p>
+        <a href="/planning" style={{ fontSize: 13, fontWeight: 600, color: '#2d5a2d', textDecoration: 'none' }}>
+          Voir le planning de la semaine →
+        </a>
+      </div>
+    )
   }
-  const dayLabel = (d) => d === todayStr ? "Aujourd'hui"
-    : d === tomorrowStr ? 'Demain'
-    : new Date(d).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
-  const groups = showDates.map(d => ({
-    date: d, label: dayLabel(d), meals: meals.filter(m => m.meal_date === d),
-  })).filter(g => g.meals.length > 0)
 
   return (
     <>
@@ -238,7 +243,7 @@ export default function TodayMeals({ importId }) {
 
           return (
             <div key={group.date}>
-              <p style={{ ...S.dayLabel, textTransform: 'capitalize' }}>{group.label}</p>
+              {groups.length > 1 && <p style={S.dayLabel}>{group.label}</p>}
               {mergedMeals.map((meal, i) => {
                 const isGenerating = generatingRecipe && selectedMeal?.dishName === meal.dishName
                 const isNext = meal.type === nextType

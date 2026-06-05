@@ -153,18 +153,6 @@ export default function Home() {
       <div className="home-page">
         <div className="home-bento">
 
-          {/* HERO — pleine largeur */}
-          <div className="home-cell home-hero">
-            <div>
-              <p className="home-greeting">{greeting}</p>
-              <h1 className="home-title">Qu'est-ce qu'on<br />mange ?</h1>
-            </div>
-            <Link href="/planning/assistant" className="btn-primary">
-              <Sparkles size={18} />
-              <span>Demander à Myko</span>
-            </Link>
-          </div>
-
           {/* PLANNING DU JOUR — pleine largeur */}
           <div className="home-cell home-cell-full">
             <div className="home-cell-header">
