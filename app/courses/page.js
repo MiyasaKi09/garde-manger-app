@@ -9,18 +9,52 @@ import Link from 'next/link'
 import { getFoodEmoji } from '@/lib/foodEmoji'
 import './courses.css'
 
+function weekArrowStyle(disabled) {
+  return {
+    width: 30, height: 30, borderRadius: '50%',
+    border: '1px solid var(--line, #d8dcc8)',
+    background: 'var(--surface, #fff)',
+    color: disabled ? 'var(--ink-3, #b5b8a6)' : 'var(--ink-1, #2f3320)',
+    cursor: disabled ? 'default' : 'pointer',
+    opacity: disabled ? 0.4 : 1,
+    fontSize: 18, lineHeight: 1,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    flexShrink: 0,
+  }
+}
+
 export default function CoursesPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
   const [items, setItems] = useState([])
   const [importId, setImportId] = useState(null)
   const [importLabel, setImportLabel] = useState('')
+  const [imports, setImports] = useState([])
+  const [importIndex, setImportIndex] = useState(0)
   const [activeWeek, setActiveWeek] = useState(null)
   const [expandedItems, setExpandedItems] = useState(new Set())
   const [containerEdits, setContainerEdits] = useState({})
   const [fetchingImages, setFetchingImages] = useState(false)
   const [fetchResult, setFetchResult] = useState(null)
   const [rebuilding, setRebuilding] = useState(false)
+
+  async function loadItems(imp) {
+    setImportId(imp.id)
+    setImportLabel(imp.month_label || '')
+    const res = await authFetch(`/api/planning/imports/${imp.id}`)
+    const d = await res.json()
+    const list = d.shoppingItems || []
+    setItems(list)
+    const weeks = [...new Set(list.map(i => i.week_label))].sort()
+    setActiveWeek(weeks.length > 0 ? weeks[0] : null)
+  }
+
+  async function goToImport(idx) {
+    if (idx < 0 || idx >= imports.length || idx === importIndex) return
+    setImportIndex(idx)
+    setExpandedItems(new Set())
+    await loadItems(imports[idx])
+  }
 
   useEffect(() => {
     async function load() {
@@ -31,16 +65,9 @@ export default function CoursesPage() {
       const d = await res.json()
       if (!d.imports?.length) { setLoading(false); return }
 
-      const latestId = d.imports[0].id
-      setImportId(latestId)
-      setImportLabel(d.imports[0].month_label || '')
-
-      const res2 = await authFetch(`/api/planning/imports/${latestId}`)
-      const d2 = await res2.json()
-      setItems(d2.shoppingItems || [])
-
-      const weeks = [...new Set((d2.shoppingItems || []).map(i => i.week_label))].sort()
-      if (weeks.length > 0) setActiveWeek(weeks[0])
+      setImports(d.imports)
+      setImportIndex(0)
+      await loadItems(d.imports[0])
       setLoading(false)
     }
     load()
@@ -201,7 +228,7 @@ export default function CoursesPage() {
         const res2 = await authFetch(`/api/planning/imports/${importId}`)
         const d2 = await res2.json()
         setItems(d2.shoppingItems || [])
-        setFetchResult({ inStock: data.inStock, enriched: data.enriched, recipesCreated: data.recipesCreated })
+        setFetchResult({ items: data.items, recipesCreated: data.recipesCreated })
       }
     } catch (err) {
       setFetchResult({ error: err.message })
@@ -250,7 +277,27 @@ export default function CoursesPage() {
             <div className="hero-text">
               <span className="hero-eyebrow">Courses</span>
               <h1 className="hero-title">Liste de courses</h1>
-              {importLabel && <p className="hero-subtitle">{importLabel}</p>}
+              {imports.length > 1 ? (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, margin: '4px 0' }}>
+                  <button
+                    onClick={() => goToImport(importIndex + 1)}
+                    disabled={importIndex >= imports.length - 1}
+                    aria-label="Semaine précédente"
+                    style={weekArrowStyle(importIndex >= imports.length - 1)}
+                  >‹</button>
+                  <p className="hero-subtitle" style={{ margin: 0, minWidth: 180, textAlign: 'center' }}>
+                    {importLabel || 'Semaine'}
+                  </p>
+                  <button
+                    onClick={() => goToImport(importIndex - 1)}
+                    disabled={importIndex <= 0}
+                    aria-label="Semaine suivante"
+                    style={weekArrowStyle(importIndex <= 0)}
+                  >›</button>
+                </div>
+              ) : (
+                importLabel && <p className="hero-subtitle">{importLabel}</p>
+              )}
               {allTotalCount > 0 && (
                 <p className="hero-subtitle">{allCheckedCount}/{allTotalCount} articles cochés</p>
               )}
@@ -287,8 +334,8 @@ export default function CoursesPage() {
           <div className={`courses-fetch-result ${fetchResult.error ? 'error' : 'success'}`}>
             {fetchResult.error
               ? fetchResult.error
-              : fetchResult.enriched != null
-                ? `${fetchResult.recipesCreated > 0 ? `${fetchResult.recipesCreated} recette(s) ajoutée(s) · ` : ''}${fetchResult.inStock} déjà en stock sur ${fetchResult.enriched}`
+              : fetchResult.items != null
+                ? `Liste recalculée — ${fetchResult.items} article${fetchResult.items > 1 ? 's' : ''}${fetchResult.recipesCreated > 0 ? ` · ${fetchResult.recipesCreated} recette(s) ajoutée(s)` : ''}`
                 : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
           </div>
         )}

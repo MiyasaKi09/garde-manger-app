@@ -55,7 +55,7 @@ export async function POST(request) {
     }
     return NextResponse.json({
       success: true, importId,
-      items: result.items, enriched: result.enriched, inStock: result.inStock,
+      items: result.items,
       recipesCreated: recipeSync.created, recipesMatched: recipeSync.matched,
     })
   } catch (e) {
