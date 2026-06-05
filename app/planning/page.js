@@ -158,9 +158,6 @@ export default function PlanningPage() {
       <div className="planning-container">
         {/* ═══ HERO HEADER ═══ */}
         <div className="hero-header">
-          <div className="hero-decoration">
-            <Leaf size={120} strokeWidth={0.5} />
-          </div>
           <div className="hero-content">
             <div className="hero-text">
               <span className="hero-eyebrow">Planning</span>
@@ -172,6 +169,12 @@ export default function PlanningPage() {
                 <Sparkles size={18} />
                 Demander à Myko
               </button>
+              {planningReady && imports.length > 0 && (
+                <button className="btn-regen" onClick={() => { setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMeals([]); setRegenInstructions(''); setRegenMode('week') }}>
+                  <RefreshCw size={14} />
+                  Modifier
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -198,13 +201,6 @@ export default function PlanningPage() {
         ) : (
           <>
             <section className="planning-section">
-              <div className="section-header">
-                <div className="section-accent"></div>
-                <button className="btn-regen" onClick={() => { setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMeals([]); setRegenInstructions(''); setRegenMode('week') }}>
-                  <RefreshCw size={14} />
-                  Modifier
-                </button>
-              </div>
               <WeeklyPlanView imports={imports} />
             </section>
 

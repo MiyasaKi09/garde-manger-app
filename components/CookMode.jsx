@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { X, ChevronLeft, ChevronRight, Play, Pause, RotateCcw, RefreshCw, Loader2 } from 'lucide-react'
 import { authFetch } from '@/lib/authFetch'
 
@@ -60,6 +61,11 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   }, [open, steps, onClose, currentStep])
 
   if (!open || !recipe) return null
+
+  // Rendu via portail sur <body> pour couvrir TOUTE la page (sinon un ancêtre
+  // avec transform/animation piège le position:fixed et limite l'overlay).
+  const portalTarget = typeof document !== 'undefined' ? document.body : null
+  const portal = (node) => (portalTarget ? createPortal(node, portalTarget) : node)
 
   const recipeName = recipe.title || recipe.name
   const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0)
@@ -226,7 +232,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
   // ---- LANDING SCREEN ----
   if (currentStep === -1) {
-    return (
+    return portal(
       <div style={styles.landingOverlay}>
         {responsiveStyles}
         <div className="cook-landing-scroll">
@@ -400,7 +406,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
   // ---- DONE SCREEN (rating) ----
   if (currentStep === 'done') {
-    return (
+    return portal(
       <div style={S.overlay}>
         {responsiveStyles}
         <div className="cook-step-content">
@@ -456,7 +462,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   const fullText = step.instruction || step.description || ''
   const { title: stepTitle, body: stepBody } = splitStepText(fullText)
 
-  return (
+  return portal(
     <div style={S.overlay}>
       {/* Header */}
       <div style={S.header}>
