@@ -66,8 +66,14 @@ export default function CoursesPage() {
       if (!d.imports?.length) { setLoading(false); return }
 
       setImports(d.imports)
-      setImportIndex(0)
-      await loadItems(d.imports[0])
+      // Ouvre sur la semaine qui couvre aujourd'hui (comme le planning), sinon la dernière.
+      const today = new Date().toISOString().split('T')[0]
+      let idx = d.imports.findIndex(i =>
+        i.date_range_start && i.date_range_end &&
+        i.date_range_start <= today && i.date_range_end >= today)
+      if (idx < 0) idx = 0
+      setImportIndex(idx)
+      await loadItems(d.imports[idx])
       setLoading(false)
     }
     load()

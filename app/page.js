@@ -20,6 +20,16 @@ const daysUntil = (d) => {
   return Math.round((new Date(targetISO) - new Date(todayISO)) / 86400000);
 }
 
+// Choisit l'import qui COUVRE aujourd'hui (comme le planning), sinon le dernier.
+const pickImportForToday = (imports) => {
+  if (!imports?.length) return null;
+  const today = new Date().toISOString().split('T')[0];
+  return imports.find(i =>
+    i.date_range_start && i.date_range_end &&
+    i.date_range_start <= today && i.date_range_end >= today
+  ) || imports[0];
+}
+
 export default function Home() {
   const router = useRouter()
   const [user, setUser] = useState(null)
@@ -52,7 +62,8 @@ export default function Home() {
     try {
       const r = await authFetch('/api/planning/imports')
       const d = await r.json()
-      if (d.imports?.length) setLatestImportId(d.imports[0].id)
+      const imp = pickImportForToday(d.imports)
+      if (imp) setLatestImportId(imp.id)
     } catch {}
   }
 
@@ -114,8 +125,9 @@ export default function Home() {
     try {
       const r = await authFetch('/api/planning/imports')
       const d = await r.json()
-      if (!d.imports?.length) return
-      const r2 = await authFetch(`/api/planning/imports/${d.imports[0].id}`)
+      const imp = pickImportForToday(d.imports)
+      if (!imp) return
+      const r2 = await authFetch(`/api/planning/imports/${imp.id}`)
       const d2 = await r2.json()
       const items = d2.shoppingItems || []
       if (!items.length) return
