@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
-import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
+import MealCookSheet from '@/components/MealCookSheet'
+import { ChevronLeft, ChevronRight, Loader2, Check } from 'lucide-react'
 
 /**
  * Extrait le nom du plat à partir des descriptions.
@@ -56,6 +57,10 @@ export default function WeeklyPlanView({ imports = [] }) {
   const [generatedRecipe, setGeneratedRecipe] = useState(null)
   const [generatingFor, setGeneratingFor] = useState(null)
   const [currentMealEntries, setCurrentMealEntries] = useState([])
+
+  // « Cuisiné » : créneaux faits (clé `${date}|${type}`) + feuille de confirmation
+  const [doneSet, setDoneSet] = useState(new Set())
+  const [cookSheetMeal, setCookSheetMeal] = useState(null)
 
   // Préchargement invisible : caches mémoire (semaines + fiches recettes).
   const mealsCacheRef = useRef({})   // importId -> meals[]
@@ -148,6 +153,45 @@ export default function WeeklyPlanView({ imports = [] }) {
     prefetchImport(importIdForOffset(weekOffset - 1))
     prefetchImport(importIdForOffset(weekOffset + 1))
   }, [weekOffset, imports]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // État « cuisiné » de la semaine affichée (depuis meal_log).
+  useEffect(() => {
+    loadDone()
+  }, [selectedImportId, weekOffset]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  async function loadDone() {
+    try {
+      const wd = getWeekDates(weekOffset)
+      const from = wd[0].toISOString().split('T')[0]
+      const to = wd[6].toISOString().split('T')[0]
+      const res = await authFetch(`/api/nutrition/log?from=${from}&to=${to}`)
+      const data = await res.json()
+      const s = new Set()
+      for (const e of (data.entries || [])) {
+        if (e.meal_date && e.meal_type) s.add(`${e.meal_date}|${e.meal_type}`)
+      }
+      setDoneSet(s)
+    } catch {}
+  }
+
+  async function toggleDone(typeMeals, type) {
+    const date = typeMeals?.[0]?.meal_date
+    if (!date) return
+    const key = `${date}|${type}`
+    if (doneSet.has(key)) {
+      try {
+        await authFetch('/api/meals/cook', {
+          method: 'DELETE', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ meal_date: date, meal_type: type }),
+        })
+        setDoneSet(s => { const n = new Set(s); n.delete(key); return n })
+      } catch {}
+    } else {
+      const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
+      const dishName = (julien?.short_label || '').trim() || extractDishName(typeMeals.map(m => m.description))
+      setCookSheetMeal({ type, dishName, entries: typeMeals })
+    }
+  }
 
   // Lecture de la fiche déjà générée par la routine (zéro API facturée).
   async function handleMealClick(typeMeals, dishName) {
@@ -274,15 +318,31 @@ export default function WeeklyPlanView({ imports = [] }) {
                     const colors = MEAL_COLORS[type] || MEAL_COLORS.dejeuner
                     // Seuls déjeuner/dîner ont une fiche recette (pas pdj/collation).
                     const clickable = type === 'dejeuner' || type === 'diner'
+                    const done = doneSet.has(`${typeMeals[0]?.meal_date}|${type}`)
+                    const descStyle = done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined
 
                     return (
                       <div key={type} className="weekly-meal-block">
-                        <span
-                          className="weekly-meal-type"
-                          style={{ background: colors.bg, color: colors.text }}
-                        >
-                          {MEAL_LABELS[type] || type}
-                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 2 }}>
+                          <button
+                            onClick={(e) => { e.stopPropagation(); toggleDone(typeMeals, type) }}
+                            title={done ? 'Cuisiné — annuler' : 'Marquer cuisiné'}
+                            style={{
+                              width: 16, height: 16, borderRadius: 4, flexShrink: 0, padding: 0,
+                              border: `1.5px solid ${done ? '#16a34a' : '#cbd5c0'}`,
+                              background: done ? '#16a34a' : 'transparent',
+                              display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                            }}
+                          >
+                            {done && <Check size={9} color="#fff" />}
+                          </button>
+                          <span
+                            className="weekly-meal-type"
+                            style={{ background: colors.bg, color: colors.text }}
+                          >
+                            {MEAL_LABELS[type] || type}
+                          </span>
+                        </div>
                         {clickable ? (
                           <button
                             onClick={() => handleMealClick(typeMeals, dishName)}
@@ -296,11 +356,11 @@ export default function WeeklyPlanView({ imports = [] }) {
                             {isGenerating ? (
                               <Loader2 size={11} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: colors.accent }} />
                             ) : null}
-                            <span className="weekly-meal-desc">{dishName}</span>
+                            <span className="weekly-meal-desc" style={descStyle}>{dishName}</span>
                           </button>
                         ) : (
                           <div className="weekly-meal-btn" style={{ cursor: 'default' }}>
-                            <span className="weekly-meal-desc">{dishName}</span>
+                            <span className="weekly-meal-desc" style={descStyle}>{dishName}</span>
                           </div>
                         )}
                       </div>
@@ -452,6 +512,13 @@ button.weekly-meal-btn:disabled { cursor: default; }
         steps={generatedRecipe?.steps || []}
         ingredients={generatedRecipe?.ingredients || []}
         mealEntries={currentMealEntries}
+      />
+
+      <MealCookSheet
+        open={!!cookSheetMeal}
+        meal={cookSheetMeal}
+        onClose={() => setCookSheetMeal(null)}
+        onDone={() => { if (cookSheetMeal) setDoneSet(s => new Set(s).add(`${cookSheetMeal.entries?.[0]?.meal_date}|${cookSheetMeal.type}`)) }}
       />
     </div>
   )

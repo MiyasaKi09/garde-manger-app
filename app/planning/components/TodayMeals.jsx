@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
+import MealCookSheet from '@/components/MealCookSheet'
 import { Loader2, ChefHat, RefreshCw, X, Check } from 'lucide-react'
 
 /**
@@ -62,6 +63,10 @@ export default function TodayMeals({ importId }) {
   const [meals, setMeals] = useState([])
   const [loading, setLoading] = useState(true)
 
+  // « Cuisiné » : créneaux faits (clé `${date}|${type}`) + feuille de confirmation
+  const [doneSet, setDoneSet] = useState(new Set())
+  const [cookSheetMeal, setCookSheetMeal] = useState(null)
+
   // Cook mode
   const [cookModeOpen, setCookModeOpen] = useState(false)
   const [generatedRecipe, setGeneratedRecipe] = useState(null)
@@ -88,7 +93,39 @@ export default function TodayMeals({ importId }) {
   useEffect(() => {
     if (!importId) { setLoading(false); return }
     loadMeals()
+    loadDone()
   }, [importId])
+
+  async function loadDone() {
+    try {
+      const res = await authFetch(`/api/nutrition/log?from=${todayStr}&to=${tomorrowStr}`)
+      const data = await res.json()
+      const s = new Set()
+      for (const e of (data.entries || [])) {
+        if (e.meal_date && e.meal_type) s.add(`${e.meal_date}|${e.meal_type}`)
+      }
+      setDoneSet(s)
+    } catch {}
+  }
+
+  const mealKey = (meal) => `${meal.entries?.[0]?.meal_date}|${meal.type}`
+  const isDone = (meal) => doneSet.has(mealKey(meal))
+
+  async function toggleDone(meal) {
+    const key = mealKey(meal)
+    const date = meal.entries?.[0]?.meal_date
+    if (doneSet.has(key)) {
+      try {
+        await authFetch('/api/meals/cook', {
+          method: 'DELETE', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ meal_date: date, meal_type: meal.type }),
+        })
+        setDoneSet(s => { const n = new Set(s); n.delete(key); return n })
+      } catch {}
+    } else {
+      setCookSheetMeal(meal)
+    }
+  }
 
   async function loadMeals() {
     try {
@@ -253,11 +290,10 @@ export default function TodayMeals({ importId }) {
                 const isNext = meal.type === nextType
                 const colors = MEAL_COLORS[meal.type] || MEAL_COLORS.dejeuner
 
+                const done = isDone(meal)
                 return (
-                  <button
+                  <div
                     key={i}
-                    onClick={() => handleMealClick(meal)}
-                    disabled={generatingRecipe}
                     style={{
                       ...S.mealRow,
                       ...(isNext ? {
@@ -265,23 +301,39 @@ export default function TodayMeals({ importId }) {
                         borderColor: colors.border,
                         background: `linear-gradient(135deg, ${colors.bg}44, rgba(255,255,255,0.5))`,
                       } : {}),
+                      ...(done ? { background: 'rgba(74,124,74,0.06)' } : {}),
                       opacity: generatingRecipe && !isGenerating ? 0.5 : 1,
                     }}
                   >
-                    <span style={{
-                      ...S.mealType,
-                      background: colors.bg,
-                      color: colors.text,
-                    }}>
-                      {MEAL_LABELS[meal.type] || meal.type}
+                    <button
+                      onClick={(e) => { e.stopPropagation(); toggleDone(meal) }}
+                      title={done ? 'Cuisiné — annuler' : 'Marquer cuisiné'}
+                      style={{
+                        width: 22, height: 22, borderRadius: 6, flexShrink: 0, padding: 0,
+                        border: `1.5px solid ${done ? '#16a34a' : '#cbd5c0'}`,
+                        background: done ? '#16a34a' : 'transparent',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                      }}
+                    >
+                      {done && <Check size={12} color="#fff" />}
+                    </button>
+                    <span
+                      onClick={() => !generatingRecipe && handleMealClick(meal)}
+                      style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1, minWidth: 0, cursor: 'pointer' }}
+                    >
+                      <span style={{ ...S.mealType, background: colors.bg, color: colors.text }}>
+                        {MEAL_LABELS[meal.type] || meal.type}
+                      </span>
+                      <span style={{ ...S.mealDesc, ...(done ? { textDecoration: 'line-through', opacity: 0.55 } : {}) }}>
+                        {meal.dishName}
+                      </span>
+                      {isGenerating ? (
+                        <Loader2 size={14} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: '#4a7c4a' }} />
+                      ) : (
+                        <span style={S.mealPersons}>{meal.persons.join('')}</span>
+                      )}
                     </span>
-                    <span style={S.mealDesc}>{meal.dishName}</span>
-                    {isGenerating ? (
-                      <Loader2 size={14} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: '#4a7c4a' }} />
-                    ) : (
-                      <span style={S.mealPersons}>{meal.persons.join('')}</span>
-                    )}
-                  </button>
+                  </div>
                 )
               })}
             </div>
@@ -427,6 +479,13 @@ export default function TodayMeals({ importId }) {
         recipeId={cachedRecipeId}
         onRate={handleRate}
         mealEntries={selectedMeal?.entries || []}
+      />
+
+      <MealCookSheet
+        open={!!cookSheetMeal}
+        meal={cookSheetMeal}
+        onClose={() => setCookSheetMeal(null)}
+        onDone={() => { if (cookSheetMeal) setDoneSet(s => new Set(s).add(mealKey(cookSheetMeal))) }}
       />
     </>
   )
