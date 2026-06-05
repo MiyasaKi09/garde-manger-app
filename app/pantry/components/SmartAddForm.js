@@ -391,8 +391,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         const { data: archetypes } = await supabase
           .from('archetypes')
           .select(`
-            id, name, canonical_food_id, shelf_life_days,
-            canonical_foods!inner(canonical_name, category_id, primary_unit, keywords)
+            id, name, canonical_food_id,
+            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer,
+            canonical_foods!inner(canonical_name, category_id, primary_unit, keywords, shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer)
           `)
           .ilike('name', `%${q}%`)
           .limit(20);
@@ -400,16 +401,18 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         if (archetypes) {
           archetypes.forEach(archetype => {
             const name = archetype.name.toLowerCase();
+            const cf = archetype.canonical_foods;
             if (!seenNames.has(name)) {
               allResults.push({
                 id: `arch_${archetype.id}`,
                 canonical_name: archetype.name,
-                category_id: archetype.canonical_foods?.category_id,
-                primary_unit: archetype.canonical_foods?.primary_unit || 'unités',
-                shelf_life_days_pantry: archetype.shelf_life_days,
-                shelf_life_days_fridge: archetype.shelf_life_days,
-                shelf_life_days_freezer: archetype.shelf_life_days * 10,
-                keywords: archetype.canonical_foods?.keywords,
+                category_id: cf?.category_id,
+                primary_unit: cf?.primary_unit || 'unités',
+                // Durées PAR LIEU de l'archétype (repli sur le canonique) — fini les 365 d'office.
+                shelf_life_days_pantry: archetype.shelf_life_days_pantry ?? cf?.shelf_life_days_pantry ?? null,
+                shelf_life_days_fridge: archetype.shelf_life_days_fridge ?? cf?.shelf_life_days_fridge ?? null,
+                shelf_life_days_freezer: archetype.shelf_life_days_freezer ?? cf?.shelf_life_days_freezer ?? null,
+                keywords: cf?.keywords,
                 type: 'archetype',
                 source_name: archetype.name
               });
@@ -631,18 +634,33 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     };
   }, [searchQuery, performSearch]);
 
+  // Stockage par défaut intelligent : un produit frais (durée frigo courte ou
+  // pas de durée placard) part au frigo ; un produit sec/stable part au placard.
+  const smartStorage = (p) => {
+    const fr = p?.shelf_life_days_fridge ?? null;
+    const pa = p?.shelf_life_days_pantry ?? null;
+    if (fr != null && fr <= 14 && (pa == null || pa >= fr * 2)) return 'fridge';
+    if (pa != null) return 'pantry';
+    if (fr != null) return 'fridge';
+    return 'pantry';
+  };
+
   const handleProductSelect = (product) => {
     setSelectedProduct(product);
     const preferredUnit = product.primary_unit || 'unités';
-    const defaultExpiration = getDefaultExpirationDate(product, lotData.storage_method);
-    
+    const method = smartStorage(product);
+    const place = method === 'fridge' ? 'Réfrigérateur' : method === 'freezer' ? 'Congélateur' : 'Garde-manger';
+    const defaultExpiration = getDefaultExpirationDate(product, method);
+
     setLotData(prev => ({
       ...prev,
       unit: preferredUnit,
       qty_remaining: 1,
+      storage_method: method,
+      storage_place: place,
       expiration_date: defaultExpiration
     }));
-    
+
     setStep(2);
   };
 
