@@ -650,14 +650,6 @@ id,generated_recipe_id,raw_name,quantity,unit,notes,canonical_food_id,archetype_
 1953,80,riz,150,g,,4003,,canonical,2026-06-04 20:04:22.329704+00
 1954,80,jaune d œuf,1,piece,liaison,2040,,canonical,2026-06-04 20:04:22.329704+00
 1955,80,citron,0.5,piece,jus,1015,,canonical,2026-06-04 20:04:22.329704+00
-1956,82,pavés de saumon,350,g,en cubes,2062,,canonical,2026-06-04 20:04:22.526071+00
-1957,82,lait de coco,25,cl,allégé,7001,,canonical,2026-06-04 20:04:22.526071+00
-1958,82,riz basmati,150,g,,4003,,canonical,2026-06-04 20:04:22.526071+00
-1959,82,gingembre frais,15,g,râpé,10002,,canonical,2026-06-04 20:04:22.526071+00
-1960,82,citron vert,1,piece,jus,1016,,canonical,2026-06-04 20:04:22.526071+00
-1961,82,oignon,1,piece,,2041,,canonical,2026-06-04 20:04:22.526071+00
-1962,82,pâte de curry,1,cs,,15,,canonical,2026-06-04 20:04:22.526071+00
-1963,82,coriandre fraîche,0.5,botte,,1018,,canonical,2026-06-04 20:04:22.526071+00
 1964,57,Lentilles corail,200,g,,5005,,canonical,2026-06-04 20:04:22.721958+00
 1965,57,Lait de coco,200,ml,,7001,,canonical,2026-06-04 20:04:22.721958+00
 1966,57,Bouillon de légumes,400,ml,,14036,,canonical,2026-06-04 20:04:22.721958+00

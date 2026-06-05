@@ -1,2 +1,1 @@
 id,qty_remaining,initial_qty,unit,storage_method,storage_place,acquired_on,expiration_date,notes,user_id,created_at,updated_at,product_id,canonical_food_id,cultivar_id,archetype_id,adjusted_expiration_date,is_opened,opened_at,container_size,container_unit,is_containerized
-8de7a3da-f2cd-4509-9a00-275411611041,450.000,450.000,g,fridge,Frigo,2026-06-05,2026-06-08,,9055926b-ed29-49f1-96b8-fc717973b333,2026-06-05 09:30:04.350725+00,2026-06-05 09:30:04.350725+00,,,,345,,f,,,,f
