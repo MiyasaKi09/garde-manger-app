@@ -32,8 +32,15 @@ const STORAGE_METHODS = [
  * @param {function} props.onClose
  * @param {object} props.recipe - { id, name, servings }
  * @param {function} props.onComplete - Called after successful cook
+ * @param {string} [props.apiBase] - Base des endpoints cook/available-ingredients.
+ *   Défaut: `/api/recipes/${recipe.id}` (recettes table `recipes`).
+ *   Recettes générées: passer `/api/recipes/generated/${recipe.id}`.
+ * @param {number|null} [props.mealRecipeId] - recipe_id à logguer dans meal_log
+ *   (FK → table `recipes`). Passer null pour une recette générée.
  */
-export default function CookWizard({ open, onClose, recipe, onComplete }) {
+export default function CookWizard({ open, onClose, recipe, onComplete, apiBase, mealRecipeId }) {
+  const base = apiBase || `/api/recipes/${recipe?.id}`
+  const logRecipeId = mealRecipeId !== undefined ? mealRecipeId : recipe?.id
   const [step, setStep] = useState(1)
   const [portions, setPortions] = useState(recipe?.servings || 2)
   const [storageMethod, setStorageMethod] = useState('fridge')
@@ -58,7 +65,7 @@ export default function CookWizard({ open, onClose, recipe, onComplete }) {
   async function loadIngredients() {
     setLoadingIngredients(true)
     try {
-      const res = await authFetch(`/api/recipes/${recipe.id}/available-ingredients`)
+      const res = await authFetch(`${base}/available-ingredients`)
       const data = await res.json()
       if (data.ingredients) {
         setIngredients(data.ingredients)
@@ -91,7 +98,7 @@ export default function CookWizard({ open, onClose, recipe, onComplete }) {
       // Build ingredients list for API
       const ingredientsPayload = Object.values(matchedLots).filter(m => m.lot_id && m.quantity_used > 0)
 
-      const res = await authFetch(`/api/recipes/${recipe.id}/cook`, {
+      const res = await authFetch(`${base}/cook`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -139,7 +146,7 @@ export default function CookWizard({ open, onClose, recipe, onComplete }) {
             meal_date: today,
             meal_type: mealType,
             cooked_dish_id: result?.dish?.id || null,
-            recipe_id: recipe.id,
+            recipe_id: logRecipeId || null,
             description: recipe.name,
             portions_eaten: config.portions,
             ...nutrition,

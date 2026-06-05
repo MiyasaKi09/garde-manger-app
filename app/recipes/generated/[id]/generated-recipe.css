@@ -105,6 +105,32 @@
   font-size: 14px;
 }
 
+.gr-cook-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: var(--r-card);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.gr-cook-btn:hover {
+  background: #15803d;
+}
+
+.gr-cook-btn:active {
+  transform: scale(0.99);
+}
+
 .gr-nutrition-bar {
   display: flex;
   gap: 2px;

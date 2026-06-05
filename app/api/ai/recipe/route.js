@@ -4,6 +4,7 @@ import { authenticateRequest } from '@/lib/apiAuth'
 import { buildAiContext, formatContextForPrompt } from '@/lib/aiContextBuilder'
 import { normalizeRecipeName, cleanRecipeName } from '@/lib/recipeNormalizer'
 import { calculatePreciseNutrition } from '@/lib/recipePreciseNutrition'
+import { linkRecipesForUser } from '@/lib/ingredientResolver'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -214,6 +215,16 @@ Utilise les valeurs CIQUAL/table de composition des aliments, pas des estimation
     } catch (nutritionErr) {
       recipe.nutrition_source = 'estimate'
       console.error('[AI Recipe] Calcul nutrition précis échoué, fallback estimation:', nutritionErr.message)
+    }
+
+    // 5. Relier les ingrédients aux entités d'inventaire (déterministe, sans API).
+    // Best-effort : un échec ne doit pas bloquer la réponse recette.
+    if (recipeDbId) {
+      try {
+        await linkRecipesForUser(supabase, user.id, { recipeId: recipeDbId })
+      } catch (linkErr) {
+        console.error('[AI Recipe] Liaison ingrédients échouée:', linkErr.message)
+      }
     }
 
     return NextResponse.json({ recipe, recipeDbId, cached: false })

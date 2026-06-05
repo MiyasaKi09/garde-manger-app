@@ -5,6 +5,7 @@ import { createImport } from '@/lib/nutritionPlanService'
 import { parseJsonPlan } from '@/lib/jsonPlanParser'
 import { normalizeRecipeName, cleanRecipeName, cleanIngredientName } from '@/lib/recipeNormalizer'
 import { buildAiContext, formatContextForPrompt } from '@/lib/aiContextBuilder'
+import { linkRecipesForUser } from '@/lib/ingredientResolver'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -48,6 +49,14 @@ export async function POST(request) {
 
     // ── Generate complete recipe cards for dishes missing steps ──
     await generateMissingRecipes(supabase, user.id, plan.days || [])
+
+    // ── Relier les ingrédients aux entités d'inventaire (déterministe, sans API).
+    //    Doit tourner AVANT la liste de courses pour qu'elle utilise les IDs liés. ──
+    try {
+      await linkRecipesForUser(supabase, user.id, { all: true })
+    } catch (linkErr) {
+      console.error('[AI Plan Generate] Liaison ingrédients échouée:', linkErr.message)
+    }
 
     // ── Rebuild shopping list from REAL recipe ingredients - stock ──
     await rebuildShoppingList(supabase, user.id, result.importId, plan.days || [])
