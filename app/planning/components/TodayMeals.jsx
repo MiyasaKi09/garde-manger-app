@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import { Loader2, ChefHat, RefreshCw, X, Check } from 'lucide-react'
@@ -120,28 +121,31 @@ export default function TodayMeals({ importId }) {
   }
 
   // ── COOK FLOW ──
+  // Lit la fiche déjà générée (par la routine / l'import) — zéro API facturée,
+  // comme la page Planning.
   async function handleCook() {
     if (!selectedMeal || generatingRecipe) return
+    const julien = selectedMeal.entries.find(e => e.person_name === 'Julien') || selectedMeal.entries[0]
+    const query = julien?.description || selectedMeal.dishName
+    if (!query) return
     setGeneratingRecipe(true)
     setShowChoice(false)
 
     try {
-      const res = await authFetch('/api/ai/recipe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          description: selectedMeal.dishName,
-          persons: ['Julien', 'Zoé'],
-          servings: 2,
-        }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error)
+      const res = await authFetch(`/api/recipes/generated?q=${encodeURIComponent(query)}`)
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        alert(res.status === 404
+          ? "Pas encore de fiche recette pour ce plat. Elle est créée lors de la génération du planning."
+          : (data.error || 'Erreur lors du chargement de la recette.'))
+        return
+      }
       setGeneratedRecipe(data.recipe)
-      setCachedRecipeId(data.recipeDbId || null)
+      setCachedRecipeId(data.recipe?.id || null)
       setCookModeOpen(true)
     } catch (err) {
-      console.error('Error generating recipe:', err)
+      console.error('Error loading recipe:', err)
+      alert('Erreur lors du chargement de la recette. Réessaie.')
     } finally {
       setGeneratingRecipe(false)
     }
@@ -289,11 +293,11 @@ export default function TodayMeals({ importId }) {
         <style>{`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
       )}
 
-      {/* ═══ CHOICE MODAL ═══ */}
-      {showChoice && selectedMeal && (
+      {/* ═══ CHOICE MODAL (portail → couvre TOUTE la page) ═══ */}
+      {showChoice && selectedMeal && typeof document !== 'undefined' && createPortal(
         <>
           <div style={S.overlay} onClick={closeModal} />
-          <div className="today-modal">
+          <div style={S.modal}>
             {/* Decorative top bar */}
             <div style={S.modalTopBar} />
 
@@ -377,7 +381,8 @@ export default function TodayMeals({ importId }) {
             )}
           </div>
           <style>{`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
-        </>
+        </>,
+        document.body
       )}
 
       <style jsx>{`
