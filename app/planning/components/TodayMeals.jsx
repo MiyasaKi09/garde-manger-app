@@ -93,12 +93,7 @@ export default function TodayMeals({ importId }) {
     try {
       const res = await authFetch(`/api/planning/imports/${importId}`)
       const data = await res.json()
-      if (data.meals) {
-        const filtered = data.meals.filter(m =>
-          m.meal_date === todayStr || m.meal_date === tomorrowStr
-        )
-        setMeals(filtered)
-      }
+      if (data.meals) setMeals(data.meals)
     } catch (err) {
       console.error('Erreur chargement meals:', err)
     } finally {
@@ -202,11 +197,20 @@ export default function TodayMeals({ importId }) {
   if (loading) return <p style={{ color: '#9ca3af', fontSize: 13, textAlign: 'center' }}>...</p>
   if (!importId || meals.length === 0) return null
 
-  // Group: today then tomorrow
-  const groups = [
-    { date: todayStr, label: "Aujourd'hui", meals: meals.filter(m => m.meal_date === todayStr) },
-    { date: tomorrowStr, label: 'Demain', meals: meals.filter(m => m.meal_date === tomorrowStr) },
-  ].filter(g => g.meals.length > 0)
+  // Jours à afficher : aujourd'hui/demain s'ils ont des repas, sinon les 2
+  // prochains jours du plan (ex. plan futur), sinon les 2 premiers disponibles.
+  const dates = [...new Set(meals.map(m => m.meal_date))].sort()
+  let showDates = dates.filter(d => d === todayStr || d === tomorrowStr)
+  if (showDates.length === 0) {
+    const upcoming = dates.filter(d => d >= todayStr)
+    showDates = (upcoming.length ? upcoming : dates).slice(0, 2)
+  }
+  const dayLabel = (d) => d === todayStr ? "Aujourd'hui"
+    : d === tomorrowStr ? 'Demain'
+    : new Date(d).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
+  const groups = showDates.map(d => ({
+    date: d, label: dayLabel(d), meals: meals.filter(m => m.meal_date === d),
+  })).filter(g => g.meals.length > 0)
 
   return (
     <>
@@ -234,7 +238,7 @@ export default function TodayMeals({ importId }) {
 
           return (
             <div key={group.date}>
-              {groups.length > 1 && <p style={S.dayLabel}>{group.label}</p>}
+              <p style={{ ...S.dayLabel, textTransform: 'capitalize' }}>{group.label}</p>
               {mergedMeals.map((meal, i) => {
                 const isGenerating = generatingRecipe && selectedMeal?.dishName === meal.dishName
                 const isNext = meal.type === nextType

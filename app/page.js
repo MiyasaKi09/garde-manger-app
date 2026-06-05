@@ -156,7 +156,7 @@ export default function Home() {
           {/* PLANNING DU JOUR — pleine largeur */}
           <div className="home-cell home-cell-full">
             <div className="home-cell-header">
-              <span className="home-cell-label"><CalendarDays size={14} /> Aujourd'hui</span>
+              <span className="home-cell-label"><CalendarDays size={14} /> Vos repas</span>
               <Link href="/planning" className="home-cell-link">Semaine <ChevronRight size={12} /></Link>
             </div>
             {latestImportId ? (
