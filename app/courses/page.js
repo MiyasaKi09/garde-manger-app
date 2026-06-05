@@ -201,7 +201,7 @@ export default function CoursesPage() {
         const res2 = await authFetch(`/api/planning/imports/${importId}`)
         const d2 = await res2.json()
         setItems(d2.shoppingItems || [])
-        setFetchResult({ inStock: data.inStock, enriched: data.enriched })
+        setFetchResult({ inStock: data.inStock, enriched: data.enriched, recipesCreated: data.recipesCreated })
       }
     } catch (err) {
       setFetchResult({ error: err.message })
@@ -267,7 +267,7 @@ export default function CoursesPage() {
                   onClick={handleRebuild}
                   disabled={rebuilding}
                   className="courses-photo-btn"
-                  title="Recalculer la liste à partir de tes recettes et déduire ton stock"
+                  title="Synchroniser : créer les recettes du plan, relier les ingrédients, marquer ce que tu as déjà en stock"
                 >
                   {rebuilding ? '...' : '♻️ Stock'}
                 </button>
@@ -288,7 +288,7 @@ export default function CoursesPage() {
             {fetchResult.error
               ? fetchResult.error
               : fetchResult.enriched != null
-                ? `${fetchResult.inStock} article${fetchResult.inStock > 1 ? 's' : ''} déjà en stock sur ${fetchResult.enriched}`
+                ? `${fetchResult.recipesCreated > 0 ? `${fetchResult.recipesCreated} recette(s) ajoutée(s) · ` : ''}${fetchResult.inStock} déjà en stock sur ${fetchResult.enriched}`
                 : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
           </div>
         )}

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { linkRecipesForUser } from '@/lib/ingredientResolver'
+import { ensureRecipesForImport } from '@/lib/recipeImporter'
 import { rebuildShoppingListFromImport } from '@/lib/shoppingListBuilder'
 
 export const dynamic = 'force-dynamic'
@@ -40,17 +41,22 @@ export async function POST(request) {
   }
 
   try {
-    // 1. Relier les recettes non encore liées (déterministe)
+    // 1. Faire grossir la base : créer/dédupliquer les recettes du plan (sans API)
+    const recipeSync = await ensureRecipesForImport(supabase, user.id, importId)
+    // 2. Relier les ingrédients (auto-création conservatrice des canoniques)
     await linkRecipesForUser(supabase, user.id, { onlyUnlinked: true })
-    // 2. Reconstruire la liste stock-aware (non destructeur : abandonne sans
-    //    rien supprimer s'il ne peut pas produire de liste valide)
+    // 3. Enrichir la liste de courses (non destructeur : marque « déjà en stock »)
     const result = await rebuildShoppingListFromImport(supabase, user.id, importId)
     if (result.aborted) {
-      return NextResponse.json({ error: result.reason, aborted: true })
+      return NextResponse.json({
+        error: result.reason, aborted: true,
+        recipesCreated: recipeSync.created, recipesMatched: recipeSync.matched,
+      })
     }
     return NextResponse.json({
       success: true, importId,
       items: result.items, enriched: result.enriched, inStock: result.inStock,
+      recipesCreated: recipeSync.created, recipesMatched: recipeSync.matched,
     })
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 })

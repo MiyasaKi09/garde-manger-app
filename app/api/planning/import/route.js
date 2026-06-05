@@ -3,6 +3,8 @@ import { authenticateRequest } from '@/lib/apiAuth'
 import { parseWorkbook } from '@/lib/xlsxParser'
 import { parseJsonPlan } from '@/lib/jsonPlanParser'
 import { createImport } from '@/lib/nutritionPlanService'
+import { ensureRecipesForImport } from '@/lib/recipeImporter'
+import { linkRecipesForUser } from '@/lib/ingredientResolver'
 
 export async function POST(request) {
   try {
@@ -43,6 +45,15 @@ export async function POST(request) {
     }
 
     const result = await createImport(supabase, user.id, parsed)
+
+    // Faire grossir la base : recettes du plan (déterministe, sans API) + liaison
+    // stock. Best-effort : ne doit pas faire échouer l'import.
+    try {
+      await ensureRecipesForImport(supabase, user.id, result.importId)
+      await linkRecipesForUser(supabase, user.id, { onlyUnlinked: true })
+    } catch (e) {
+      console.error('[Import] Sync recettes/liaison échouée:', e.message)
+    }
 
     return NextResponse.json({
       success: true,
