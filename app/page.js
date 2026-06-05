@@ -32,7 +32,7 @@ export default function Home() {
   const [latestWeight, setLatestWeight] = useState(null)
   const [showAddForm, setShowAddForm] = useState(false)
   const [showOcr, setShowOcr] = useState(false)
-  const [shoppingStats, setShoppingStats] = useState({ total: 0, checked: 0, uncheckedByCategory: [] })
+  const [shoppingStats, setShoppingStats] = useState({ total: 0, checked: 0, uncheckedByCategory: [], nextItems: [] })
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -58,16 +58,26 @@ export default function Home() {
 
   async function loadStock() {
     try {
-      const { data } = await supabase.from('inventory_lots').select('id, qty_remaining, expiration_date, notes').gt('qty_remaining', 0)
+      const { data } = await supabase
+        .from('inventory_lots')
+        .select('id, qty_remaining, expiration_date, archetype:archetypes(name), canonical_food:canonical_foods(canonical_name), product:products(name)')
+        .gt('qty_remaining', 0)
       if (!data) return
       const urgent = []
       let expiring = 0, expired = 0
       for (const lot of data) {
         const d = daysUntil(lot.expiration_date)
-        if (d !== null && d < 0) expired++
-        if (d !== null && d >= 0 && d <= 3) { expiring++; if (urgent.length < 4) urgent.push({ ...lot, days: d, name: lot.notes || `#${lot.id}` }) }
+        if (d === null) continue
+        if (d < 0) expired++
+        else if (d <= 3) expiring++
+        // « À consommer vite » : périmé, DLC (J-3) et DDM (J-7)
+        if (d <= 7) {
+          const name = lot.product?.name || lot.archetype?.name || lot.canonical_food?.canonical_name || `Lot #${lot.id}`
+          urgent.push({ id: lot.id, days: d, name })
+        }
       }
-      setStockStats({ total: data.length, expiring, expired, urgentItems: urgent })
+      urgent.sort((a, b) => a.days - b.days)
+      setStockStats({ total: data.length, expiring, expired, urgentItems: urgent.slice(0, 5) })
     } catch {}
   }
 
@@ -111,16 +121,18 @@ export default function Home() {
       if (!items.length) return
       const checked = items.filter(i => i.checked).length
       const byCat = {}
+      const nextItems = []
       for (const it of items) {
         if (it.checked) continue
         const c = it.category || 'Autres'
         byCat[c] = (byCat[c] || 0) + 1
+        if (nextItems.length < 6 && it.product_name) nextItems.push(it.product_name)
       }
       const uncheckedByCategory = Object.entries(byCat)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 4)
         .map(([name, count]) => ({ name, count }))
-      setShoppingStats({ total: items.length, checked, uncheckedByCategory })
+      setShoppingStats({ total: items.length, checked, uncheckedByCategory, nextItems })
     } catch {}
   }
 
@@ -189,13 +201,13 @@ export default function Home() {
             </Link>
             {stockStats.urgentItems.length > 0 && (
               <div className="home-urgent-list">
-                {stockStats.urgentItems.map((it, i) => (
-                  <div key={i} className="home-urgent-row">
+                {stockStats.urgentItems.map((it) => (
+                  <Link key={it.id} href="/pantry" className="home-urgent-row" style={{ textDecoration: 'none', color: 'inherit' }}>
                     <span className="home-urgent-name">{it.name}</span>
                     <span className={`home-urgent-badge ${it.days <= 0 ? 'home-urgent-expired' : 'home-urgent-warning'}`}>
-                      {it.days <= 0 ? '!' : `${it.days}j`}
+                      {it.days <= 0 ? 'périmé' : `J-${it.days}`}
                     </span>
-                  </div>
+                  </Link>
                 ))}
               </div>
             )}
@@ -214,11 +226,11 @@ export default function Home() {
           </button>
 
           {/* COURSES — pleine largeur */}
-          <Link href="/courses" className="home-cell home-cell-full home-cell-link-block">
+          <div className="home-cell home-cell-full">
             <div className="home-cell-header">
               <span className="home-cell-label"><ShoppingCart size={14} /> Courses</span>
               {shoppingStats.total > 0 && (
-                <span className="home-cell-link">{shoppingStats.total - shoppingStats.checked} restants <ChevronRight size={12} /></span>
+                <Link href="/courses" className="home-cell-link">{shoppingStats.total - shoppingStats.checked} restants <ChevronRight size={12} /></Link>
               )}
             </div>
             {shoppingStats.total > 0 ? (
@@ -232,15 +244,21 @@ export default function Home() {
                 {shoppingStats.uncheckedByCategory.length > 0 && (
                   <div className="home-pills">
                     {shoppingStats.uncheckedByCategory.map(c => (
-                      <span key={c.name} className="home-pill">{c.name} ({c.count})</span>
+                      <Link key={c.name} href="/courses" className="home-pill home-pill-link">{c.name} ({c.count})</Link>
                     ))}
                   </div>
                 )}
+                {shoppingStats.nextItems?.length > 0 && (
+                  <p className="home-next-items">
+                    À acheter : {shoppingStats.nextItems.join(' · ')}
+                    {shoppingStats.total - shoppingStats.checked > shoppingStats.nextItems.length ? '…' : ''}
+                  </p>
+                )}
               </>
             ) : (
-              <p className="home-empty-hint">Pas de liste en cours</p>
+              <Link href="/planning/assistant" className="home-empty-btn"><Sparkles size={14} /> Créer une liste</Link>
             )}
-          </Link>
+          </div>
 
           {/* POIDS */}
           <Link href="/nutrition" className="home-cell home-weight-cell">
@@ -268,6 +286,16 @@ export default function Home() {
                 <NutritionBar label="Prot" value={pn.protein_g} target={pg.target_protein_g} unit="g" color="#3b82f6" />
                 <NutritionBar label="Gluc" value={pn.carbs_g} target={pg.target_carbs_g} unit="g" color="#f59e0b" />
                 <NutritionBar label="Lip" value={pn.fat_g} target={pg.target_fat_g} unit="g" color="#ef4444" />
+              </div>
+            ) : pn.kcal > 0 ? (
+              <div style={{ marginTop: 4 }}>
+                <p className="home-next-items" style={{ marginTop: 0 }}>Consommé aujourd'hui :</p>
+                <p style={{ margin: '2px 0 8px', fontWeight: 600, color: 'var(--ink-1)', fontSize: 14 }}>
+                  {Math.round(pn.kcal)} kcal · {Math.round(pn.protein_g)}g P · {Math.round(pn.carbs_g)}g G · {Math.round(pn.fat_g)}g L
+                </p>
+                <Link href="/nutrition/onboarding" className="home-empty-btn">
+                  <Settings size={14} /> Définir des objectifs
+                </Link>
               </div>
             ) : (
               <Link href="/nutrition/onboarding" className="home-empty-btn" style={{ marginTop: 12 }}>

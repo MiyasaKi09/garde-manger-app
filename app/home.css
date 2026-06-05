@@ -222,6 +222,22 @@
   padding: 3px 8px;
   border-radius: var(--r-sm);
 }
+.home-pill-link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.home-pill-link:hover {
+  background: var(--surface);
+  border-color: var(--brand);
+  color: var(--brand);
+}
+.home-next-items {
+  margin: 8px 0 0;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  line-height: 1.4;
+}
 
 /* Poids */
 .home-weight-icon { color: var(--ink-3); }
