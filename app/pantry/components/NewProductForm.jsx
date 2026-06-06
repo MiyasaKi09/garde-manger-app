@@ -5,59 +5,83 @@ import { supabase } from '@/lib/supabaseClient'
 
 /**
  * Formulaire de création d'un produit absent du catalogue.
- * Crée une vraie entrée canonical_foods (réutilisable) avec catégorie, unité
- * et durées de conservation par lieu. À la création, on enchaîne sur le lot.
+ * Deux types possibles :
+ *   - Produit de base  → entrée canonical_foods (catégorie, unité, durées).
+ *   - Variante         → entrée archetypes rattachée à un produit de base
+ *                        existant (hérite sa nutrition ; durées propres).
+ * À la création, on enchaîne sur le lot (stockage + DLC auto).
  *
- * @param {string} initialName  nom pré-rempli (la recherche)
+ * @param {string} initialName
  * @param {function} onCancel
- * @param {function} onCreated  reçoit le produit { id, name, type:'canonical', ... }
+ * @param {function} onCreated  reçoit { id, name, type:'canonical'|'archetype', ... }
  */
 const UNITS = ['g', 'ml', 'cl', 'L', 'kg', 'pièce', 'unités']
 
 export default function NewProductForm({ initialName = '', onCancel, onCreated }) {
+  const [kind, setKind] = useState('canonical') // 'canonical' | 'archetype'
   const [name, setName] = useState(initialName)
   const [categoryId, setCategoryId] = useState('')
   const [unit, setUnit] = useState('g')
   const [pantry, setPantry] = useState('')
   const [fridge, setFridge] = useState('7')
   const [freezer, setFreezer] = useState('90')
+
   const [categories, setCategories] = useState([])
+  const [canonicals, setCanonicals] = useState([])
+  const [parentSearch, setParentSearch] = useState('')
+
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
 
   useEffect(() => {
     supabase.from('reference_categories').select('id, name').order('name')
       .then(({ data }) => setCategories(data || []))
+    supabase.from('canonical_foods').select('id, canonical_name').order('canonical_name')
+      .then(({ data }) => setCanonicals(data || []))
   }, [])
+
+  function resolveParent() {
+    const q = parentSearch.trim().toLowerCase()
+    return canonicals.find(c => (c.canonical_name || '').toLowerCase() === q)
+      || canonicals.find(c => (c.canonical_name || '').toLowerCase().includes(q) && q.length >= 2)
+      || null
+  }
 
   async function create() {
     if (!name.trim()) { setError('Le nom est requis'); return }
     setSaving(true); setError('')
     try {
-      const payload = {
-        canonical_name: name.trim(),
-        category_id: categoryId ? Number(categoryId) : null,
-        primary_unit: unit,
+      const shelf = {
         shelf_life_days_pantry: pantry !== '' ? Number(pantry) : null,
         shelf_life_days_fridge: fridge !== '' ? Number(fridge) : null,
         shelf_life_days_freezer: freezer !== '' ? Number(freezer) : null,
       }
+
+      if (kind === 'archetype') {
+        const parent = resolveParent()
+        if (!parent) { setError('Choisis un produit de base existant à rattacher'); setSaving(false); return }
+        const { data, error: insErr } = await supabase
+          .from('archetypes')
+          .insert({ name: name.trim(), canonical_food_id: parent.id, primary_unit: unit, ...shelf })
+          .select('id')
+          .single()
+        if (insErr || !data) throw new Error(insErr?.message || 'Création échouée')
+        onCreated({ id: data.id, name: name.trim(), type: 'archetype', primary_unit: unit, ...shelf })
+        return
+      }
+
       const { data, error: insErr } = await supabase
         .from('canonical_foods')
-        .insert(payload)
+        .insert({
+          canonical_name: name.trim(),
+          category_id: categoryId ? Number(categoryId) : null,
+          primary_unit: unit,
+          ...shelf,
+        })
         .select('id')
         .single()
       if (insErr || !data) throw new Error(insErr?.message || 'Création échouée')
-      onCreated({
-        id: data.id,
-        name: payload.canonical_name,
-        type: 'canonical',
-        category_id: payload.category_id,
-        primary_unit: unit,
-        shelf_life_days_pantry: payload.shelf_life_days_pantry,
-        shelf_life_days_fridge: payload.shelf_life_days_fridge,
-        shelf_life_days_freezer: payload.shelf_life_days_freezer,
-      })
+      onCreated({ id: data.id, name: name.trim(), type: 'canonical', category_id: categoryId ? Number(categoryId) : null, primary_unit: unit, ...shelf })
     } catch (e) {
       setError(e.message)
     } finally {
@@ -67,20 +91,46 @@ export default function NewProductForm({ initialName = '', onCancel, onCreated }
 
   return (
     <div style={S.wrap}>
-      <p style={S.intro}>Nouveau produit — il sera ajouté au catalogue et réutilisable.</p>
+      {/* Type */}
+      <div style={S.kindRow}>
+        <button onClick={() => setKind('canonical')} style={{ ...S.kindBtn, ...(kind === 'canonical' ? S.kindActive : {}) }}>
+          Produit de base
+        </button>
+        <button onClick={() => setKind('archetype')} style={{ ...S.kindBtn, ...(kind === 'archetype' ? S.kindActive : {}) }}>
+          Variante d'un produit
+        </button>
+      </div>
+      <p style={S.intro}>
+        {kind === 'canonical'
+          ? 'Nouvel aliment de base, ajouté au catalogue et réutilisable.'
+          : 'Variante rattachée à un produit de base existant (hérite sa nutrition).'}
+      </p>
 
       <label style={S.label}>Nom du produit *</label>
       <input style={S.input} value={name} onChange={e => setName(e.target.value)} placeholder="Ex : Pâté en croûte" autoFocus />
 
+      {kind === 'archetype' && (
+        <>
+          <label style={S.label}>Rattacher à (produit de base) *</label>
+          <input style={S.input} list="npf-canon-list" value={parentSearch}
+            onChange={e => setParentSearch(e.target.value)} placeholder="Ex : pâté, fromage, bœuf…" />
+          <datalist id="npf-canon-list">
+            {canonicals.map(c => <option key={c.id} value={c.canonical_name} />)}
+          </datalist>
+        </>
+      )}
+
       <div style={S.row2}>
-        <div style={{ flex: 1 }}>
-          <label style={S.label}>Catégorie</label>
-          <select style={S.input} value={categoryId} onChange={e => setCategoryId(e.target.value)}>
-            <option value="">— Aucune —</option>
-            {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-          </select>
-        </div>
-        <div style={{ width: 110 }}>
+        {kind === 'canonical' && (
+          <div style={{ flex: 1 }}>
+            <label style={S.label}>Catégorie</label>
+            <select style={S.input} value={categoryId} onChange={e => setCategoryId(e.target.value)}>
+              <option value="">— Aucune —</option>
+              {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+          </div>
+        )}
+        <div style={{ width: kind === 'canonical' ? 110 : '100%' }}>
           <label style={S.label}>Unité</label>
           <select style={S.input} value={unit} onChange={e => setUnit(e.target.value)}>
             {UNITS.map(u => <option key={u} value={u}>{u}</option>)}
@@ -119,7 +169,10 @@ export default function NewProductForm({ initialName = '', onCancel, onCreated }
 
 const S = {
   wrap: { padding: '4px 2px 8px' },
-  intro: { fontSize: 13, color: '#6b7280', margin: '0 0 16px' },
+  kindRow: { display: 'flex', gap: 8, marginBottom: 10 },
+  kindBtn: { flex: 1, padding: '9px 0', borderRadius: 10, border: '1px solid #d8dcc8', background: '#fff', fontSize: 13, fontWeight: 600, color: '#6b7280', cursor: 'pointer', fontFamily: 'inherit' },
+  kindActive: { background: '#e7eee4', borderColor: '#2f5d3a', color: '#2f5d3a' },
+  intro: { fontSize: 13, color: '#6b7280', margin: '0 0 14px' },
   label: { display: 'block', fontSize: 12, fontWeight: 600, color: '#4b5563', margin: '12px 0 6px' },
   input: { width: '100%', padding: '11px 12px', border: '1px solid #d8dcc8', borderRadius: 10, fontSize: 14, fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box', background: '#fff' },
   row2: { display: 'flex', gap: 10 },

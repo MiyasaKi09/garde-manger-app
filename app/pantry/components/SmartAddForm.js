@@ -325,33 +325,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     const q = (query || '').trim().toLowerCase();
     
     try {
-      // Si pas de query, prendre les 5 produits les plus populaires
+      // Pas de query : aucune suggestion au hasard. Modale propre → on tape.
       if (!q || q.length === 0) {
-        const { data: topProducts } = await supabase
-          .from('canonical_foods')
-          .select(`
-            id, canonical_name, category_id, subcategory_id, keywords, primary_unit,
-            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
-          `)
-          .order('id')
-          .limit(3);
-
-        if (topProducts) {
-          const results = topProducts.map(food => ({
-            id: food.id,
-            name: food.canonical_name,
-            type: 'canonical',
-            category_id: food.category_id,
-            subcategory_id: food.subcategory_id,
-            matchScore: 50,
-            primary_unit: food.primary_unit || 'unités',
-            shelf_life_days_pantry: food.shelf_life_days_pantry,
-            shelf_life_days_fridge: food.shelf_life_days_fridge,
-            shelf_life_days_freezer: food.shelf_life_days_freezer,
-            icon: getCategoryIcon(food.category_id, food.canonical_name)
-          })).slice(0, 3); // Limiter à 3 suggestions
-          setSearchResults(results);
-        }
+        setSearchResults([]);
         setSearchLoading(false);
         return;
       }
@@ -526,47 +502,16 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         };
       });
 
-      // Filtrer les résultats avec score > 0 et trier
+      // Filtrer les résultats avec score > 0 et trier. PAS de comblement au
+      // hasard : si peu/pas de résultats, on laisse l'UI proposer la création.
       let finalResults = scoredResults
         .filter(r => r.matchScore > 0)
         .sort((a, b) => b.matchScore - a.matchScore)
-        .slice(0, 3); // Réduire à 3 suggestions
-
-      // Si moins de 3 résultats, compléter avec les plus populaires
-      if (finalResults.length < 3) {
-        const { data: topProducts } = await supabase
-          .from('canonical_foods')
-          .select(`
-            id, canonical_name, category_id, primary_unit,
-            shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
-          `)
-          .order('id')
-          .limit(3 - finalResults.length);
-
-        if (topProducts) {
-          const existingNames = new Set(finalResults.map(r => r.name.toLowerCase()));
-          topProducts.forEach(food => {
-            if (!existingNames.has(food.canonical_name.toLowerCase())) {
-              finalResults.push({
-                id: food.id,
-                name: food.canonical_name,
-                type: 'canonical',
-                category_id: food.category_id,
-                matchScore: 25,
-                primary_unit: food.primary_unit || 'unités',
-                shelf_life_days_pantry: food.shelf_life_days_pantry || 30,
-                shelf_life_days_fridge: food.shelf_life_days_fridge || 7,
-                shelf_life_days_freezer: food.shelf_life_days_freezer || 90,
-                icon: getCategoryIcon(food.category_id, food.canonical_name)
-              });
-            }
-          });
-        }
-      }
+        .slice(0, 6);
 
       // Transition smooth pour l'apparition des nouveaux résultats
       setTimeout(() => {
-        setSearchResults(finalResults.slice(0, 3));
+        setSearchResults(finalResults);
         setIsTransitioning(false);
       }, 100);
       
@@ -789,7 +734,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                   )}
                   {!searchLoading && searchResults.length === 0 && !searchQuery && (
                     <div className="no-results">
-                      Chargement des suggestions...
+                      Tape le nom d'un produit à ajouter.
                     </div>
                   )}
                 </div>
