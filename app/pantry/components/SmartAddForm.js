@@ -316,12 +316,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     // Démarrer la transition smooth
     setIsTransitioning(true);
     setSearchLoading(true);
-    
-    // Petit délai pour permettre l'animation de sortie si des résultats existent
-    if (searchResults.length > 0) {
-      await new Promise(resolve => setTimeout(resolve, 150));
-    }
-    
+
     const q = (query || '').trim().toLowerCase();
     
     try {
@@ -527,7 +522,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     } finally {
       setSearchLoading(false);
     }
-  }, [supabase, getCategoryIcon, searchResults.length]);
+  }, [supabase, getCategoryIcon]);
 
   // Charger les suggestions initiales quand le modal s'ouvre
   useEffect(() => {
