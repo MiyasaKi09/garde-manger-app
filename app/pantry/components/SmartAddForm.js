@@ -7,6 +7,7 @@ import { supabase } from '@/lib/supabaseClient';
 import { toast } from '../../../components/Toast';
 import { getPossibleUnitsForProduct } from '../../../lib/possibleUnits';
 import LotDetailsForm from './LotDetailsForm';
+import NewProductForm from './NewProductForm';
 import './SmartAddForm.css';
 
 // Fonction pour calculer la distance de Levenshtein (détection des fautes de frappe)
@@ -572,37 +573,12 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     } catch (error) {
       console.error('Erreur recherche:', error);
       // En cas d'erreur, essayons une recherche basique
-      try {
-        const { data: fallbackProducts } = await supabase
-          .from('canonical_foods')
-          .select('id, canonical_name, category_id, primary_unit')
-          .limit(3);
-        
-        if (fallbackProducts) {
-          const results = fallbackProducts.map(food => ({
-            id: food.id,
-            name: food.canonical_name,
-            type: 'canonical',
-            category_id: food.category_id,
-            matchScore: 20,
-            primary_unit: food.primary_unit || 'unités',
-            shelf_life_days_pantry: 30,
-            shelf_life_days_fridge: 7,
-            shelf_life_days_freezer: 90,
-            icon: getCategoryIcon(food.category_id, food.canonical_name)
-          }));
-          setTimeout(() => {
-            setSearchResults(results);
-            setIsTransitioning(false);
-          }, 100);
-        }
-      } catch (fallbackError) {
-        console.error('Erreur fallback:', fallbackError);
-        setTimeout(() => {
-          setSearchResults([]);
-          setIsTransitioning(false);
-        }, 100);
-      }
+      // Pas de résultat : on n'affiche PAS de produits au hasard. Liste vide →
+      // l'UI propose de créer le produit (formulaire complet).
+      setTimeout(() => {
+        setSearchResults([]);
+        setIsTransitioning(false);
+      }, 100);
     } finally {
       setSearchLoading(false);
     }
@@ -803,18 +779,8 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                       <div className="no-results-tip">
                         Voulez-vous créer ce produit ?
                       </div>
-                      <button 
-                        onClick={() => handleProductSelect({
-                          id: 'custom',
-                          name: searchQuery,
-                          type: 'custom',
-                          category_id: null,
-                          primary_unit: 'unités',
-                          shelf_life_days_pantry: 7,
-                          shelf_life_days_fridge: 7,
-                          shelf_life_days_freezer: 90,
-                          icon: '📦'
-                        })}
+                      <button
+                        onClick={() => setStep('create')}
                         className="create-custom-btn"
                       >
                         ✨ Créer "{searchQuery}"
@@ -829,6 +795,14 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 </div>
               </div>
             </>
+          )}
+
+          {step === 'create' && (
+            <NewProductForm
+              initialName={searchQuery}
+              onCancel={() => setStep(1)}
+              onCreated={(product) => handleProductSelect(product)}
+            />
           )}
 
           {step === 2 && selectedProduct && (
