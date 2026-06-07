@@ -1,16 +1,15 @@
 /* Styles pour la page de détail des recettes */
 .recipe-detail-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, rgba(240, 253, 244, 0.8) 0%, rgba(219, 234, 254, 0.8) 100%);
+  background: transparent;
   padding: 20px;
   font-family: var(--font-text);
 }
 
 .recipe-header {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
+  background: var(--surface);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--line);
   padding: 24px;
   margin-bottom: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -19,18 +18,18 @@
 .back-button {
   display: inline-block;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   text-decoration: none;
-  color: #374151;
+  color: var(--ink-2);
   font-size: 14px;
   margin-bottom: 20px;
   transition: all 0.3s ease;
 }
 
 .back-button:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--surface);
   transform: translateY(-1px);
 }
 
@@ -45,7 +44,7 @@
 .recipe-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--ink-1);
   margin: 0;
   flex: 1;
   line-height: 1.2;
@@ -68,35 +67,34 @@
 }
 
 .high-score {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: var(--brand);
   color: white;
 }
 
 .medium-score {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: var(--accent);
   color: white;
 }
 
 .difficulty-badge {
   background: rgba(107, 114, 128, 0.2);
-  color: #374151;
+  color: var(--ink-2);
   padding: 4px 8px;
   border-radius: 8px;
   font-size: 12px;
 }
 
 .recipe-description {
-  color: #6b7280;
+  color: var(--ink-3);
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
 }
 
 .recipe-content {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
+  background: var(--surface);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--line);
   padding: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
@@ -109,7 +107,7 @@
 }
 
 .info-card {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--surface);
   border-radius: 12px;
   padding: 16px;
   display: flex;
@@ -127,7 +125,7 @@
 
 .info-label {
   font-size: 12px;
-  color: #6b7280;
+  color: var(--ink-3);
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -136,12 +134,12 @@
 .info-value {
   font-size: 18px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--ink-1);
 }
 
 .info-details {
   font-size: 11px;
-  color: #9ca3af;
+  color: var(--ink-3);
   margin-top: 2px;
 }
 
@@ -156,7 +154,7 @@
 .instructions-section h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--ink-1);
   margin-bottom: 16px;
 }
 
@@ -167,7 +165,7 @@
 }
 
 .ingredient-item {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--surface);
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 8px;
@@ -178,31 +176,31 @@
 
 .ingredient-quantity {
   font-weight: 600;
-  color: #059669;
+  color: var(--brand);
   min-width: 80px;
 }
 
 .ingredient-name {
   flex: 1;
   margin-left: 12px;
-  color: #374151;
+  color: var(--ink-2);
 }
 
 .no-ingredients {
-  color: #6b7280;
+  color: var(--ink-3);
   font-style: italic;
   padding: 20px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--surface);
   border-radius: 8px;
 }
 
 .instructions-content {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--surface);
   border-radius: 8px;
   padding: 20px;
   line-height: 1.6;
-  color: #374151;
+  color: var(--ink-2);
 }
 
 .instructions-text {
@@ -210,7 +208,7 @@
 }
 
 .chef-tips {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.1));
+  background: var(--brand-soft);
   border: 1px solid rgba(34, 197, 94, 0.2);
   border-radius: 8px;
   padding: 16px;
@@ -220,12 +218,12 @@
 .chef-tips h3 {
   margin: 0 0 8px 0;
   font-size: 16px;
-  color: #059669;
+  color: var(--brand);
 }
 
 .chef-tips p {
   margin: 0;
-  color: #374151;
+  color: var(--ink-2);
   font-size: 14px;
 }
 
@@ -247,19 +245,19 @@
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: var(--brand);
   color: white;
 }
 
 .action-btn.secondary {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: var(--brand);
   color: white;
 }
 
 .action-btn.tertiary {
-  background: rgba(255, 255, 255, 0.4);
-  color: #374151;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--surface);
+  color: var(--ink-2);
+  border: 1px solid var(--line);
 }
 
 .action-btn:hover {
@@ -307,10 +305,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
+  background: var(--surface);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--line);
   padding: 24px;
   margin-bottom: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -318,7 +315,7 @@
 
 .edit-header h1 {
   margin: 0;
-  color: #1f2937;
+  color: var(--ink-1);
   font-size: 1.5rem;
 }
 
@@ -333,10 +330,9 @@
 }
 
 .edit-section {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
+  background: var(--surface);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--line);
   padding: 24px;
   margin-bottom: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -344,7 +340,7 @@
 
 .edit-section h2 {
   margin: 0 0 20px 0;
-  color: #1f2937;
+  color: var(--ink-1);
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -363,7 +359,7 @@
 .form-group label {
   display: block;
   margin-bottom: 6px;
-  color: #374151;
+  color: var(--ink-2);
   font-weight: 500;
   font-size: 14px;
 }
@@ -373,12 +369,11 @@
 .form-group textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.5);
-  color: #374151;
+  background: var(--surface);
+  color: var(--ink-2);
   font-size: 14px;
-  backdrop-filter: blur(5px);
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
@@ -387,8 +382,8 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #22c55e;
-  background: rgba(255, 255, 255, 0.7);
+  border-color: var(--brand);
+  background: var(--surface);
   box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
 }
 
@@ -429,9 +424,9 @@
   gap: 12px;
   align-items: center;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--surface);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--line);
 }
 
 /* Instructions individuelles */
@@ -442,9 +437,9 @@
 }
 
 .instruction-block {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--surface);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--line);
   padding: 16px;
 }
 
@@ -456,7 +451,7 @@
 }
 
 .step-number {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: var(--brand);
   color: white;
   padding: 6px 12px;
   border-radius: 20px;
@@ -475,17 +470,17 @@
 .instruction-meta input,
 .instruction-meta select {
   padding: 8px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--line);
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.5);
-  color: #374151;
+  background: var(--surface);
+  color: var(--ink-2);
   font-size: 12px;
 }
 
 .empty-instructions {
   text-align: center;
   padding: 40px 20px;
-  color: #6b7280;
+  color: var(--ink-3);
   font-style: italic;
 }
 
@@ -495,7 +490,7 @@
 }
 
 .add-btn {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: var(--brand);
   color: white;
   border: none;
   border-radius: 8px;
@@ -507,7 +502,7 @@
 }
 
 .add-btn:hover {
-  background: linear-gradient(135deg, #16a34a, #15803d);
+  background: linear-gradient(135deg, var(--brand-strong), #15803d);
   transform: translateY(-1px);
 }
 
@@ -530,7 +525,7 @@
 .empty-ingredients {
   text-align: center;
   padding: 40px 20px;
-  color: #6b7280;
+  color: var(--ink-3);
   font-style: italic;
 }
 
@@ -584,33 +579,33 @@
   align-items: baseline;
   gap: 12px;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   margin-bottom: 8px;
   transition: all 0.2s ease;
 }
 
 .ingredient-item:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--surface);
   transform: translateX(4px);
 }
 
 .ingredient-quantity {
   font-weight: 600;
-  color: #059669;
+  color: var(--brand);
   min-width: 80px;
   font-size: 0.95rem;
 }
 
 .ingredient-name {
   flex: 1;
-  color: #374151;
+  color: var(--ink-2);
   font-size: 1rem;
 }
 
 .ingredient-link {
-  color: #059669;
+  color: var(--brand);
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease;
@@ -623,7 +618,7 @@
 }
 
 .ingredient-notes {
-  color: #6b7280;
+  color: var(--ink-3);
   font-size: 0.875rem;
   font-style: italic;
 }
@@ -631,7 +626,7 @@
 .no-ingredients {
   padding: 20px;
   text-align: center;
-  color: #6b7280;
+  color: var(--ink-3);
   font-style: italic;
 }
 
