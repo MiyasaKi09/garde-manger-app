@@ -1,0 +1,38 @@
+/* =============================================================================
+   app/styles/tokens.css — Couche de tokens éditoriale canonique (Myko)
+   -----------------------------------------------------------------------------
+   Direction A « garde-manger éditorial » : papier · forêt · ambre,
+   étendue d'accents éditoriaux (terracotta · olive · safran · argile) et de
+   tokens sémantiques d'état (DLC/DDM).
+
+   ⚠️ ADDITIF — n'écrase aucune variable existante de app/globals.css.
+   Les tokens legacy (forest-*/earth-*/mushroom) restent dans globals.css et
+   seront remappés page par page en Phase 2 (les remapper globalement
+   décalerait les couleurs des écrans non encore refondus).
+   Source de vérité pour TOUT nouveau token de design → ce fichier.
+   ============================================================================= */
+
+:root {
+  /* ── Accents éditoriaux (Direction A) ───────────────────────────────────── */
+  --terracotta: #C2613F;       --terracotta-soft: #F4E2D8;
+  --clay: #A8694B;             --clay-soft: #EFE0D6;
+  --olive: #6E7A3F;            --olive-soft: #EEF0E0;
+  --saffron: #E0A92E;          --saffron-soft: #F8EBCB;
+
+  /* ── États d'expiration (DLC J-3 / DDM J-7 / périmé) ────────────────────── */
+  /* Couleurs portées par le texte/puce ; *-bg pour le fond du chip.          */
+  --state-fresh:    #356B2B;   --state-fresh-bg:   #E8F2E3;   /* OK */
+  --state-soon:     #7A5410;   --state-soon-bg:    #FBEED0;   /* DLC ≤ J-3 / DDM ≤ J-7 */
+  --state-expired:  #8A3A20;   --state-expired-bg: #F6E0D6;   /* périmé */
+
+  /* ── Typographie éditoriale ─────────────────────────────────────────────── */
+  /* Variable dédiée au serif de lecture (Crimson Text). --font-display
+     (Fraunces) et --font-text (Inter) restent définies dans globals.css ;
+     PR 2 (next/font) recablera ces trois variables vers des polices
+     auto-hébergées sans changer les noms.                                     */
+  --font-editorial: 'Crimson Text', Georgia, serif;
+
+  /* ── Anneau de focus accessible (réutilisable partout) ──────────────────── */
+  --ring: 0 0 0 3px var(--brand-soft, rgba(47, 93, 58, 0.25));
+  --ring-strong: 0 0 0 4px var(--accent-soft, rgba(222, 138, 44, 0.35));
+}
