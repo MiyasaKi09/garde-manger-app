@@ -84,7 +84,7 @@ const S = {
   },
   logo: { fontSize: 48, marginBottom: 8 },
   title: {
-    fontFamily: "'Crimson Text', Georgia, serif",
+    fontFamily: "var(--font-editorial)",
     fontSize: 28,
     fontWeight: 600,
     color: 'var(--ink, #1f281f)',

@@ -30,7 +30,7 @@
      (Fraunces) et --font-text (Inter) restent définies dans globals.css ;
      PR 2 (next/font) recablera ces trois variables vers des polices
      auto-hébergées sans changer les noms.                                     */
-  --font-editorial: 'Crimson Text', Georgia, serif;
+  --font-editorial: var(--font-crimson), Georgia, serif;
 
   /* ── Anneau de focus accessible (réutilisable partout) ──────────────────── */
   --ring: 0 0 0 3px var(--brand-soft, rgba(47, 93, 58, 0.25));

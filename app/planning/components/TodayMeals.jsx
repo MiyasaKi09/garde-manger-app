@@ -426,7 +426,7 @@ export default function TodayMeals({ importId }) {
                 <div style={S.successIcon}>
                   <Check size={28} color="white" />
                 </div>
-                <p style={{ color: '#4a7c4a', fontWeight: 600, marginTop: 12, fontFamily: "'Crimson Text', Georgia, serif", fontSize: 18 }}>
+                <p style={{ color: '#4a7c4a', fontWeight: 600, marginTop: 12, fontFamily: "var(--font-editorial)", fontSize: 18 }}>
                   Repas modifié !
                 </p>
               </div>
@@ -498,7 +498,7 @@ const S = {
     gap: 6,
   },
   dayLabel: {
-    fontFamily: "'Crimson Text', Georgia, serif",
+    fontFamily: "var(--font-editorial)",
     fontSize: 15,
     fontWeight: 600,
     color: '#2d5a2d',
@@ -516,7 +516,7 @@ const S = {
     background: 'rgba(255,255,255,0.55)',
     backdropFilter: 'blur(6px)',
     cursor: 'pointer',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
     textAlign: 'left',
     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     fontSize: 14,
@@ -537,7 +537,7 @@ const S = {
     flexShrink: 0,
     minWidth: 56,
     textAlign: 'center',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
   },
   mealDesc: {
     flex: 1,
@@ -552,7 +552,7 @@ const S = {
     borderRadius: 6,
     padding: '2px 6px',
     flexShrink: 0,
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
   },
 
   // Overlay + Modal
@@ -597,10 +597,10 @@ const S = {
     borderRadius: 8,
     textTransform: 'uppercase',
     letterSpacing: 0.4,
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
   },
   modalTitle: {
-    fontFamily: "'Crimson Text', Georgia, serif",
+    fontFamily: "var(--font-editorial)",
     fontSize: 24,
     fontWeight: 700,
     color: 'var(--forest-800, #2d5a2d)',
@@ -612,7 +612,7 @@ const S = {
     fontSize: 12,
     color: '#6b7280',
     margin: 0,
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
   },
   closeBtn: {
     border: 'none',
@@ -645,7 +645,7 @@ const S = {
     fontSize: 15,
     fontWeight: 600,
     cursor: 'pointer',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
     boxShadow: '0 4px 16px rgba(45, 90, 45, 0.25)',
     transition: 'all 0.2s',
   },
@@ -663,7 +663,7 @@ const S = {
     fontSize: 15,
     fontWeight: 600,
     cursor: 'pointer',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
     transition: 'all 0.2s',
   },
 
@@ -679,7 +679,7 @@ const S = {
     border: '1.5px solid rgba(74, 124, 74, 0.15)',
     borderRadius: 14,
     fontSize: 14,
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
     color: 'var(--ink, #1f281f)',
     outline: 'none',
     background: 'rgba(255,255,255,0.8)',
@@ -699,7 +699,7 @@ const S = {
     fontSize: 15,
     fontWeight: 600,
     cursor: 'pointer',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
     boxShadow: '0 4px 16px rgba(45, 90, 45, 0.25)',
   },
   swapError: {
@@ -714,7 +714,7 @@ const S = {
     color: '#6b7280',
     fontSize: 13,
     cursor: 'pointer',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
     padding: '4px 0',
     textAlign: 'center',
   },

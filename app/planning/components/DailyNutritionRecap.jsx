@@ -207,13 +207,13 @@ const S = {
     textTransform: 'uppercase',
     letterSpacing: 0.8,
     color: '#9ca3af',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
   },
   dayDate: {
     fontSize: 13,
     fontWeight: 600,
     color: 'var(--forest-800, #2d5a2d)',
-    fontFamily: "'Crimson Text', Georgia, serif",
+    fontFamily: "var(--font-editorial)",
   },
   personTag: {
     fontSize: 10,
@@ -223,7 +223,7 @@ const S = {
     borderRadius: 6,
     padding: '2px 6px',
     flexShrink: 0,
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
   },
   macros: {
     display: 'flex',
@@ -246,7 +246,7 @@ const S = {
     fontWeight: 600,
     color: '#6b7280',
     fontVariantNumeric: 'tabular-nums',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
   },
   legend: {
     display: 'flex',
@@ -261,7 +261,7 @@ const S = {
     gap: 4,
     fontSize: 10,
     color: '#9ca3af',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "var(--font-text)",
   },
   legendDot: {
     width: 6,

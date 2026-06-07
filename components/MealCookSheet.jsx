@@ -164,8 +164,8 @@ const S = {
   sheet: { position: 'fixed', bottom: 0, left: 0, right: 0, background: 'rgba(255,255,255,0.98)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderRadius: '28px 28px 0 0', padding: '0 22px 32px', zIndex: 2001, maxHeight: '85vh', overflowY: 'auto', boxShadow: '0 -8px 40px rgba(0,0,0,0.18)', maxWidth: 520, margin: '0 auto' },
   grab: { width: 40, height: 4, background: '#d1d5db', borderRadius: 4, margin: '12px auto 14px' },
   header: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 },
-  badge: { display: 'inline-block', fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 8, textTransform: 'uppercase', letterSpacing: 0.4, background: '#ede9fe', color: '#5b21b6', fontFamily: "'Inter', sans-serif" },
-  title: { fontFamily: "'Crimson Text', Georgia, serif", fontSize: 23, fontWeight: 700, color: '#2d5a2d', margin: '8px 0 0', lineHeight: 1.2 },
+  badge: { display: 'inline-block', fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 8, textTransform: 'uppercase', letterSpacing: 0.4, background: '#ede9fe', color: '#5b21b6', fontFamily: "var(--font-text)" },
+  title: { fontFamily: "var(--font-editorial)", fontSize: 23, fontWeight: 700, color: '#2d5a2d', margin: '8px 0 0', lineHeight: 1.2 },
   close: { border: 'none', background: 'rgba(0,0,0,0.04)', borderRadius: 12, padding: 10, cursor: 'pointer', color: '#6b7280', display: 'flex', flexShrink: 0 },
   nutri: { display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 16 },
   nutriItem: { fontSize: 13, fontWeight: 600, color: '#4a7c4a', background: 'rgba(74,124,74,0.08)', borderRadius: 8, padding: '5px 10px' },
@@ -179,5 +179,5 @@ const S = {
   unit: { fontSize: 13, color: '#6b7280', minWidth: 26 },
   outStock: { fontSize: 12, color: '#d97706', fontWeight: 600 },
   err: { color: '#dc2626', fontSize: 13, margin: '0 0 12px', textAlign: 'center' },
-  confirm: { width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '15px 0', background: 'linear-gradient(135deg, #2d5a2d, #4a7c4a)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 15, fontWeight: 700, cursor: 'pointer', fontFamily: "'Inter', sans-serif", boxShadow: '0 4px 16px rgba(45,90,45,0.25)' },
+  confirm: { width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '15px 0', background: 'linear-gradient(135deg, #2d5a2d, #4a7c4a)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 15, fontWeight: 700, cursor: 'pointer', fontFamily: "var(--font-text)", boxShadow: '0 4px 16px rgba(45,90,45,0.25)' },
 }

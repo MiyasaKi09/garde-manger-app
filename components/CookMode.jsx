@@ -124,7 +124,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
       }
       .cook-landing-close:hover { background: rgba(24,28,22,0.12); }
       .cook-landing-title {
-        font-family: 'Fraunces', Georgia, serif;
+        font-family: var(--font-display);
         font-size: 30px; font-weight: 700;
         color: #181C16; line-height: 1.15;
         letter-spacing: -0.02em; margin-bottom: 12px;
@@ -135,7 +135,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
         border-radius: 2px; margin-bottom: 14px;
       }
       .cook-landing-desc {
-        font-family: 'Crimson Text', Georgia, serif;
+        font-family: var(--font-editorial);
         font-size: 17px; color: #4B4F45; line-height: 1.6;
         font-style: italic; margin-bottom: 16px;
       }
@@ -655,7 +655,7 @@ const styles = {
 const S = {
   overlay: { position: 'fixed', inset: 0, background: BG, zIndex: 2000, display: 'flex', flexDirection: 'column', fontFamily: 'inherit' },
   header: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', flexShrink: 0 },
-  headerTitle: { fontSize: 14, fontWeight: 600, color: '#16a34a', fontFamily: "'Crimson Text', Georgia, serif", fontSize: 18 },
+  headerTitle: { fontSize: 14, fontWeight: 600, color: '#16a34a', fontFamily: "var(--font-editorial)", fontSize: 18 },
   closeBtn: { border: 'none', background: 'rgba(0,0,0,0.05)', color: '#6b7280', cursor: 'pointer', padding: 8, display: 'flex', borderRadius: 10 },
   content: { flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', overflowY: 'auto' },
   stepCard: { maxWidth: 560, width: '100%', ...GLASS, borderRadius: 20, padding: '32px 28px', textAlign: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' },

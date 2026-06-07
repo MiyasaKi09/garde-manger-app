@@ -275,7 +275,7 @@ export function IntelligentProductCard({
             margin: 0, 
             fontSize: '1.25rem',
             color: 'var(--forest-800)',
-            fontFamily: "'Crimson Text', Georgia, serif"
+            fontFamily: "var(--font-editorial)"
           }}>
             {name}
           </h3>
@@ -497,7 +497,7 @@ export function IntelligentRecommendations({ recommendations, onRecommendationCl
       <h3 style={{
         margin: '0 0 1rem 0',
         color: 'var(--forest-800)',
-        fontFamily: "'Crimson Text', Georgia, serif",
+        fontFamily: "var(--font-editorial)",
         display: 'flex',
         alignItems: 'center',
         gap: '0.5rem'
