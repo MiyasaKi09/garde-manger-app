@@ -1,5 +1,6 @@
 // app/layout.js
 import "./globals.css";
+import "./styles/tokens.css";
 import { Suspense } from "react";
 import MinimalistHeader from "@/components/MinimalistHeader";
 import MatisseWallpaperRandom from "@/components/MatisseWallpaperRandom";
