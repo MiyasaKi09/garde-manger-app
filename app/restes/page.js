@@ -25,7 +25,7 @@ export default function RestesRedirectPage() {
       textAlign: 'center'
     }}>
       <div style={{
-        background: 'rgba(255, 255, 255, 0.8)',
+        background: 'var(--surface)',
         backdropFilter: 'blur(10px)',
         borderRadius: '16px',
         padding: '3rem',

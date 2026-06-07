@@ -443,7 +443,7 @@ export default function TodayMeals({ importId }) {
           bottom: 0;
           left: 0;
           right: 0;
-          background: rgba(255,255,255,0.97);
+          background: var(--surface);
           backdrop-filter: blur(24px);
           -webkit-backdrop-filter: blur(24px);
           border-radius: 28px 28px 0 0;
@@ -513,7 +513,7 @@ const S = {
     padding: '12px 14px',
     border: '1px solid rgba(0, 0, 0, 0.05)',
     borderRadius: 14,
-    background: 'rgba(255,255,255,0.55)',
+    background: 'var(--surface)',
     backdropFilter: 'blur(6px)',
     cursor: 'pointer',
     fontFamily: "var(--font-text)",
@@ -566,7 +566,7 @@ const S = {
   modal: {
     position: 'fixed',
     bottom: 0, left: 0, right: 0,
-    background: 'rgba(255,255,255,0.97)',
+    background: 'var(--surface)',
     backdropFilter: 'blur(24px)',
     WebkitBackdropFilter: 'blur(24px)',
     borderRadius: '28px 28px 0 0',
@@ -682,7 +682,7 @@ const S = {
     fontFamily: "var(--font-text)",
     color: 'var(--ink, #1f281f)',
     outline: 'none',
-    background: 'rgba(255,255,255,0.8)',
+    background: 'var(--surface)',
     boxSizing: 'border-box',
     transition: 'border-color 0.2s',
   },

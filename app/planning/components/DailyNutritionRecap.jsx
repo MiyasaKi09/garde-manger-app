@@ -118,7 +118,7 @@ export default function DailyNutritionRecap({ importId }) {
           align-items: center;
           gap: 12px;
           padding: 10px 14px;
-          background: rgba(255, 255, 255, 0.6);
+          background: var(--surface);
           backdrop-filter: blur(8px);
           border: 1px solid rgba(0, 0, 0, 0.04);
           border-radius: 14px;

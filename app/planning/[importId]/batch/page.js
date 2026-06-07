@@ -179,7 +179,7 @@ export default function BatchPage() {
         .day-time { font-size: 12px; font-weight: 600; color: #2563eb; background: rgba(59,130,246,0.08); padding: 2px 8px; border-radius: 5px; }
         .day-badge-free { font-size: 12px; font-weight: 600; color: #16a34a; background: rgba(34,197,94,0.08); padding: 2px 8px; border-radius: 5px; }
 
-        .day-content { background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; overflow: hidden; }
+        .day-content { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 
         .task { display: flex; align-items: baseline; gap: 8px; padding: 10px 14px; border-bottom: 1px solid rgba(0,0,0,0.03); }
         .task.batch { background: rgba(234,179,8,0.04); }
@@ -198,9 +198,9 @@ export default function BatchPage() {
         .recipes-section { margin-top: 32px; padding-top: 20px; border-top: 2px solid rgba(0,0,0,0.06); }
         .recipes-section h2 { font-size: 17px; font-weight: 700; color: #1f2937; margin: 0 0 12px; }
 
-        .recipe { background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+        .recipe { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
         .recipe-head { display: flex; align-items: center; padding: 12px 14px; cursor: pointer; gap: 10px; }
-        .recipe-head:hover { background: rgba(255,255,255,0.2); }
+        .recipe-head:hover { background: var(--surface); }
         .recipe-name { font-size: 15px; font-weight: 600; color: #1f2937; flex: 1; }
         .recipe-meta { display: flex; gap: 8px; font-size: 11px; color: #6b7280; }
 

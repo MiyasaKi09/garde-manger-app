@@ -133,15 +133,15 @@ export default function ShoppingPage() {
 
       <style jsx>{`
         .container { padding: 16px; max-width: 700px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-        .header-card { background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+        .header-card { background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
         .back-btn { display: inline-flex; align-items: center; gap: 6px; background: none; border: none; color: #6b7280; cursor: pointer; font-size: 14px; padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; }
         .back-btn:hover { background: rgba(0,0,0,0.05); }
         .header-card h1 { display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: bold; color: #1f2937; margin: 0 0 4px; }
         .header-card p { color: #6b7280; margin: 0; font-size: 14px; }
 
         .week-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-        .week-tab { padding: 8px 18px; background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 14px; color: #6b7280; transition: all 0.2s; }
-        .week-tab:hover { background: rgba(255,255,255,0.4); }
+        .week-tab { padding: 8px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 14px; color: #6b7280; transition: all 0.2s; }
+        .week-tab:hover { background: var(--surface); }
         .week-tab.active { background: #16a34a; color: white; border-color: #16a34a; }
 
         .progress-bar-container { margin-bottom: 16px; }
@@ -153,8 +153,8 @@ export default function ShoppingPage() {
         .category-header { font-size: 14px; font-weight: 700; color: #374151; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06); margin-bottom: 6px; }
 
         .items-list { display: flex; flex-direction: column; gap: 4px; }
-        .item-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 8px; cursor: pointer; transition: all 0.15s; }
-        .item-row:hover { background: rgba(255,255,255,0.35); }
+        .item-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--surface); border-radius: 8px; cursor: pointer; transition: all 0.15s; }
+        .item-row:hover { background: var(--surface); }
         .item-row.checked { opacity: 0.5; }
         .item-row.checked .item-name { text-decoration: line-through; }
 

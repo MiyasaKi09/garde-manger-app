@@ -125,21 +125,21 @@ export default function PersonsPage() {
 
       <style jsx>{`
         .container { padding: 16px; max-width: 1000px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-        .header-card { background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+        .header-card { background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
         .back-btn { display: inline-flex; align-items: center; gap: 6px; background: none; border: none; color: #6b7280; cursor: pointer; font-size: 14px; padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; }
         .back-btn:hover { background: rgba(0,0,0,0.05); }
         .header-card h1 { font-size: 22px; font-weight: bold; color: #1f2937; margin: 0 0 12px; }
 
         .day-nav { display: flex; align-items: center; gap: 12px; justify-content: center; }
-        .nav-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.25); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .nav-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         .day-label { font-size: 16px; font-weight: 600; color: #374151; text-transform: capitalize; }
 
         .persons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         .person-column { display: flex; flex-direction: column; gap: 10px; }
-        .person-name { font-size: 18px; font-weight: 700; color: #1f2937; margin: 0; padding: 8px 12px; background: rgba(255,255,255,0.3); border-radius: 10px; text-align: center; }
+        .person-name { font-size: 18px; font-weight: 700; color: #1f2937; margin: 0; padding: 8px 12px; background: var(--surface); border-radius: 10px; text-align: center; }
 
-        .meal-card { background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px; }
+        .meal-card { background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
         .meal-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 13px; }
         .meal-type-label { font-weight: 600; color: #374151; }
         .day-type { font-size: 11px; color: #9ca3af; background: rgba(0,0,0,0.04); padding: 2px 8px; border-radius: 4px; }
@@ -158,7 +158,7 @@ export default function PersonsPage() {
         .macro.fiber { background: rgba(34,197,94,0.08); }
         .macro.fiber .macro-val { color: #16a34a; }
 
-        .total-card { background: rgba(255,255,255,0.3); border: 2px solid rgba(34,197,94,0.3); border-radius: 12px; padding: 12px; }
+        .total-card { background: var(--surface); border: 2px solid rgba(34,197,94,0.3); border-radius: 12px; padding: 12px; }
         .total-card.warn { border-color: rgba(234,179,8,0.3); }
         .total-header { font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
         .total-macros .macro { font-size: 13px; }

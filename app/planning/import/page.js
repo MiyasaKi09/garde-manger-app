@@ -206,9 +206,9 @@ export default function ImportPage() {
         }
 
         .header-card {
-          background: rgba(255, 255, 255, 0.25);
+          background: var(--surface);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid var(--line);
           border-radius: 16px;
           padding: 24px;
           margin-bottom: 24px;
@@ -245,7 +245,7 @@ export default function ImportPage() {
         }
 
         .drop-zone {
-          background: rgba(255, 255, 255, 0.25);
+          background: var(--surface);
           backdrop-filter: blur(10px);
           border: 2px dashed #d1d5db;
           border-radius: 16px;
@@ -343,9 +343,9 @@ export default function ImportPage() {
         }
 
         .success-card {
-          background: rgba(255, 255, 255, 0.25);
+          background: var(--surface);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid var(--line);
           border-radius: 16px;
           padding: 32px 24px;
           text-align: center;
@@ -371,7 +371,7 @@ export default function ImportPage() {
         }
 
         .summary-item {
-          background: rgba(255, 255, 255, 0.4);
+          background: var(--surface);
           border-radius: 10px;
           padding: 12px;
         }
@@ -418,7 +418,7 @@ export default function ImportPage() {
         .spinner-sm {
           width: 18px;
           height: 18px;
-          border: 2px solid rgba(255, 255, 255, 0.3);
+          border: 2px solid var(--line);
           border-top: 2px solid white;
           border-radius: 50%;
           animation: spin 1s linear infinite;
