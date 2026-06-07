@@ -239,13 +239,14 @@
 .category-badge {
   background: var(--brand-soft);
   color: var(--brand);
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.55rem;
   border-radius: var(--r-sm);
-  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
   border: 1px solid rgba(47, 93, 58, 0.25);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.04em;
   margin-left: 0.5rem;
 }
 
@@ -276,10 +277,13 @@
 
 /* Statut d'expiration */
 .status-badge {
-  padding: 0.4rem 0.8rem;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--r-sm);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   align-self: flex-start;
   margin-top: 0.25rem;
 }
@@ -691,25 +695,12 @@
 }
 
 .stat-filter-btn.active {
-  background: var(--brand-soft);
-  border-color: var(--brand);
-  color: var(--brand);
-  transform: scale(1.05);
+  background: var(--terracotta);
+  border-color: var(--terracotta);
 }
-
-.stat-filter-btn.expired.active {
-  background: var(--state-expired-bg);
-  border-color: var(--state-expired);
-}
-
-.stat-filter-btn.expiring.active {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-}
-
-.stat-filter-btn.good.active {
-  background: var(--brand-soft);
-  border-color: var(--brand);
+.stat-filter-btn.active .stat-number,
+.stat-filter-btn.active .stat-label {
+  color: #fff;
 }
 
 .stat-number {
@@ -720,11 +711,12 @@
 }
 
 .stat-label {
+  font-family: var(--font-mono);
   font-size: 10px;
-  font-weight: 600;
-  color: var(--ink-2);
+  font-weight: 500;
+  color: var(--ink-3);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.04em;
   line-height: 1;
 }
 
@@ -739,9 +731,12 @@
 }
 
 .sort-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
   white-space: nowrap;
 }
 
@@ -755,12 +750,15 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 7px 13px;
   border: 1px solid var(--line);
   background: var(--surface-soft);
   border-radius: var(--r-sm);
-  font-size: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--ink-2);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -774,9 +772,9 @@
 }
 
 .sort-btn.active {
-  background: var(--brand-soft);
-  border-color: var(--brand);
-  color: var(--brand);
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: #fff;
   font-weight: 600;
 }
 
