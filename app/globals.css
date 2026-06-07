@@ -74,6 +74,7 @@
 
   --font-display: var(--font-fraunces), Georgia, serif;
   --font-text: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --fs-display: clamp(40px, 6.5vw, 64px);
   --fs-h1: clamp(30px, 4.2vw, 44px);
   --fs-h2: clamp(22px, 2.6vw, 26px);
@@ -201,15 +202,15 @@ h3 {
   align-items: flex-end; gap: var(--s-6); flex-wrap: wrap;
 }
 .hero-text { max-width: 620px; }
+/* Eyebrow « surligné » : rectangle net terracotta (motif V21) */
 .hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: var(--fs-xs); font-weight: 700;
-  letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--ink-3); margin-bottom: var(--s-3);
-}
-.hero-eyebrow::before {
-  content: ''; width: 26px; height: 2px;
-  background: var(--accent); border-radius: 2px;
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--terracotta); color: #fff;
+  padding: 5px 10px; border-radius: 3px;
+  margin-bottom: var(--s-4);
 }
 .hero-title {
   font-family: var(--font-display);
@@ -304,10 +305,21 @@ h3 {
   padding: var(--s-7);
   text-align: center;
   color: var(--ink-3);
-  font-size: var(--fs-sm);
-  letter-spacing: 0.02em;
-  animation: mykoPulse 1.4s var(--ease) infinite;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
+
+/* Skeleton réutilisable (remplace les loaders texte moches) */
+.skeleton {
+  background: linear-gradient(90deg, #EBE5D6 25%, #FBF7EC 37%, #EBE5D6 63%);
+  background-size: 400% 100%;
+  animation: mykoShimmer 1.4s ease infinite;
+  border-radius: 6px;
+}
+@keyframes mykoShimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+@media (prefers-reduced-motion: reduce) { .skeleton { animation: none; } }
 
 /* ── État vide ── */
 .empty-state-card {

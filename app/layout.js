@@ -2,7 +2,7 @@
 import "./globals.css";
 import "./styles/tokens.css";
 import { Suspense } from "react";
-import { Fraunces, Inter, Crimson_Text } from "next/font/google";
+import { Fraunces, Inter, Crimson_Text, JetBrains_Mono } from "next/font/google";
 import MinimalistHeader from "@/components/MinimalistHeader";
 import MatisseWallpaperRandom from "@/components/MatisseWallpaperRandom";
 import ToastContainer from "@/components/Toast";
@@ -19,6 +19,7 @@ const crimson = Crimson_Text({
   display: "swap",
   variable: "--font-crimson",
 });
+const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], display: "swap", variable: "--font-jetbrains" });
 
 export const metadata = {
   title: "Myko — Réseau mycorhizien",
@@ -27,7 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${fraunces.variable} ${inter.variable} ${crimson.variable}`}>
+    <html lang="fr" className={`${fraunces.variable} ${inter.variable} ${crimson.variable} ${jetbrains.variable}`}>
       <body>
         {/* Header fixé */}
         <MinimalistHeader />
