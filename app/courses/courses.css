@@ -41,16 +41,18 @@
   border-radius: var(--r-pill);
   cursor: pointer;
   font-weight: 600;
-  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--ink-2);
   transition: all var(--dur-fast) var(--ease);
   white-space: nowrap;
-  font-family: var(--font-text);
 }
 .courses-week-tab.active {
-  background: var(--brand);
+  background: var(--terracotta);
   color: #fff;
-  border-color: var(--brand);
+  border-color: var(--terracotta);
 }
 .courses-cat-section {
   margin-bottom: var(--s-3);
@@ -291,9 +293,10 @@
   gap: var(--s-2);
 }
 .container-picker-label {
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-3);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }

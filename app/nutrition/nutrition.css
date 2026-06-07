@@ -30,12 +30,14 @@
   color: var(--ink-1);
 }
 .nutrition-date-label {
-  font-size: var(--fs-body);
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
   color: var(--ink-1);
   min-width: 160px;
   text-align: center;
-  text-transform: capitalize;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 .nutrition-section-card {
   background: var(--surface);
