@@ -292,130 +292,140 @@ export default function LocationDetail() {
 
   const groups = groupBy(lots, l => l.product?.name ?? '—');
 
+  const flabel = { display:'grid', gap:6, fontFamily:'var(--font-mono)', fontSize:11, letterSpacing:'0.04em', textTransform:'uppercase', color:'var(--ink-3)' };
+  const finput = { width:'100%', minWidth:0 };
+
   return (
-    <div>
-      <h1>{locName}</h1>
+    <div className="v21-page narrow">
+      <header className="v21-hero">
+        <div className="v21-hero-text">
+          <span className="v21-eyebrow">Emplacement</span>
+          <h1 className="v21-title">{locName}</h1>
+          <div className="v21-rule" />
+          <p className="v21-lede">{lots.length} lot{lots.length !== 1 ? 's' : ''} rangé{lots.length !== 1 ? 's' : ''} ici.</p>
+        </div>
+      </header>
 
       {/* Formulaire ajout */}
-      <form onSubmit={addLot} className="card" style={{display:'grid',gap:10,maxWidth:780}}>
-        <div style={{display:'grid',gridTemplateColumns:'2fr 1fr',gap:10}}>
-          <label>Produit
-            <div style={{position:'relative'}}>
-              <input
-                ref={inputRef}
-                className="input"
-                placeholder="Ex: Tomates"
-                value={nameInput}
-                onChange={e=>{ setNameInput(e.target.value); setShowSuggest(true); setSelectedProd(null); setChosenCategory(''); }}
-                onFocus={()=> setShowSuggest(true)}
-                autoComplete="off"
-                onKeyDown={(e)=>{
-                  if(!showSuggest) return;
-                  if(e.key==='ArrowDown'){ e.preventDefault(); setHoverIdx(i=>Math.min(i+1, (suggestions.length-1))); }
-                  if(e.key==='ArrowUp'){ e.preventDefault(); setHoverIdx(i=>Math.max(i-1, 0)); }
-                  if(e.key==='Enter' && hoverIdx>=0 && suggestions[hoverIdx]){
-                    e.preventDefault(); onPickSuggestion(suggestions[hoverIdx]);
-                  }
-                  if(e.key==='Escape'){ setShowSuggest(false); }
-                }}
-                required
-              />
-              {showSuggest && nameInput.trim() && suggestions.length>0 && (
-                <div
-                  ref={suggestRef}
-                  style={{
-                    position:'absolute', top:'100%', left:0, right:0, zIndex:50,
-                    background:'#fff', border:'1px solid #dcdce0', borderTop:'none',
-                    borderBottomLeftRadius:10, borderBottomRightRadius:10, boxShadow:'0 6px 18px rgba(0,0,0,.06)',
-                    maxHeight: 260, overflowY:'auto'
+      <section className="v21-section">
+        <div className="v21-bh"><span className="v21-bl">Ajouter un produit</span></div>
+        <form onSubmit={addLot} style={{display:'grid',gap:14,maxWidth:780}}>
+          <div style={{display:'grid',gridTemplateColumns:'2fr 1fr',gap:12}}>
+            <label style={flabel}>Produit
+              <div style={{position:'relative'}}>
+                <input
+                  ref={inputRef}
+                  className="v21-search"
+                  style={finput}
+                  placeholder="Ex: Tomates"
+                  value={nameInput}
+                  onChange={e=>{ setNameInput(e.target.value); setShowSuggest(true); setSelectedProd(null); setChosenCategory(''); }}
+                  onFocus={()=> setShowSuggest(true)}
+                  autoComplete="off"
+                  onKeyDown={(e)=>{
+                    if(!showSuggest) return;
+                    if(e.key==='ArrowDown'){ e.preventDefault(); setHoverIdx(i=>Math.min(i+1, (suggestions.length-1))); }
+                    if(e.key==='ArrowUp'){ e.preventDefault(); setHoverIdx(i=>Math.max(i-1, 0)); }
+                    if(e.key==='Enter' && hoverIdx>=0 && suggestions[hoverIdx]){
+                      e.preventDefault(); onPickSuggestion(suggestions[hoverIdx]);
+                    }
+                    if(e.key==='Escape'){ setShowSuggest(false); }
                   }}
-                >
-                  {suggestions.map((s, idx)=>(
-                    <div
-                      key={s.id}
-                      style={{
-                        padding:'8px 10px', cursor:'pointer',
-                        background: idx===hoverIdx ? '#f5f5f7' : 'transparent'
-                      }}
-                      onMouseEnter={()=>setHoverIdx(idx)}
-                      onMouseDown={()=>onPickSuggestion(s)}
-                    >
-                      <div style={{
-                        display:'-webkit-box',
-                        WebkitLineClamp:3,
-                        WebkitBoxOrient:'vertical',
-                        overflow:'hidden'
-                      }}>
-                        {s.label} <span style={{opacity:.6,fontSize:12}}>({s.unit||'g'})</span>
+                  required
+                />
+                {showSuggest && nameInput.trim() && suggestions.length>0 && (
+                  <div
+                    ref={suggestRef}
+                    style={{
+                      position:'absolute', top:'100%', left:0, right:0, zIndex:50,
+                      background:'var(--surface)', border:'1px solid var(--line-strong)', borderTop:'none',
+                      borderRadius:'0 0 3px 3px', boxShadow:'var(--sh-2)',
+                      maxHeight: 260, overflowY:'auto'
+                    }}
+                  >
+                    {suggestions.map((s, idx)=>(
+                      <div
+                        key={s.id}
+                        style={{
+                          padding:'9px 12px', cursor:'pointer', fontFamily:'var(--font-text)', fontSize:14, color:'var(--ink-1)',
+                          background: idx===hoverIdx ? 'var(--surface-soft)' : 'transparent'
+                        }}
+                        onMouseEnter={()=>setHoverIdx(idx)}
+                        onMouseDown={()=>onPickSuggestion(s)}
+                      >
+                        <div style={{display:'-webkit-box',WebkitLineClamp:3,WebkitBoxOrient:'vertical',overflow:'hidden'}}>
+                          {s.label} <span style={{color:'var(--ink-3)',fontSize:12,fontFamily:'var(--font-mono)'}}>({s.unit||'g'})</span>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                )}
+              </div>
+            </label>
+
+            <label style={flabel}>Quantité
+              <input className="v21-search" style={finput} required type="number" step="0.01" min="0" value={qty} onChange={e=>setQty(e.target.value)}/>
+            </label>
+          </div>
+
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>
+            <label style={flabel}>Unité
+              <select className="v21-search" style={finput} value={unit} onChange={e=>setUnit(e.target.value)}>
+                {UNIT_OPTIONS.map(u=><option key={u} value={u}>{u}</option>)}
+              </select>
+            </label>
+
+            <label style={flabel}>Catégorie {currentProduct?.category ? <span style={{color:'var(--ink-3)',textTransform:'none'}}>(actuelle : {currentProduct.category})</span> : <span style={{color:'var(--ink-3)',textTransform:'none'}}>(non renseignée)</span>}
+              <select className="v21-search" style={finput} value={chosenCategory} onChange={e=>setChosenCategory(e.target.value)}>
+                <option value="">— choisir (optionnel)</option>
+                {CATEGORY_OPTIONS.map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
+            </label>
+          </div>
+
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>
+            <label style={flabel}>DLC
+              <input className="v21-search" style={finput} type="date" value={dlc} onChange={e=>setDlc(e.target.value)}/>
+              {!dlc && preview && (
+                <div style={{fontSize:12,color:'var(--ink-3)',marginTop:6,textTransform:'none',fontFamily:'var(--font-text)',letterSpacing:0}}>
+                  Suggestion : <strong style={{color:'var(--ink-1)'}}>{preview.date}</strong> ({preview.days} j, source : {preview.source})
                 </div>
               )}
-            </div>
-          </label>
+            </label>
+          </div>
 
-          <label>Quantité
-            <input className="input" required type="number" step="0.01" min="0" value={qty} onChange={e=>setQty(e.target.value)}/>
-          </label>
-        </div>
-
-        {/* Catégorie (si produit sélectionné ou si tu veux forcer) */}
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10}}>
-          <label>Unité
-            <select className="input" value={unit} onChange={e=>setUnit(e.target.value)}>
-              {UNIT_OPTIONS.map(u=><option key={u} value={u}>{u}</option>)}
-            </select>
-          </label>
-
-          <label>Catégorie {currentProduct?.category ? <span style={{opacity:.6}}>(actuelle : {currentProduct.category})</span> : <span style={{opacity:.6}}>(non renseignée)</span>}
-            <select
-              className="input"
-              value={chosenCategory}
-              onChange={e=>setChosenCategory(e.target.value)}
-            >
-              <option value="">— choisir (optionnel)</option>
-              {CATEGORY_OPTIONS.map(c => <option key={c} value={c}>{c}</option>)}
-            </select>
-          </label>
-        </div>
-
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10}}>
-          <label>DLC
-            <input className="input" type="date" value={dlc} onChange={e=>setDlc(e.target.value)}/>
-            {!dlc && preview && (
-              <div style={{fontSize:12,opacity:.75,marginTop:6}}>
-                Suggestion : <strong>{preview.date}</strong> <span style={{opacity:.7}}>({preview.days} j, source : {preview.source})</span>
-              </div>
-            )}
-          </label>
-        </div>
-
-        <div>
-          <button className="btn primary" type="submit" disabled={saving}>
-            {saving ? 'Ajout…' : 'Ajouter ici'}
-          </button>
-        </div>
-      </form>
+          <div>
+            <button className="v21-btn" type="submit" disabled={saving}>
+              {saving ? 'Ajout…' : 'Ajouter ici'}
+            </button>
+          </div>
+        </form>
+      </section>
 
       {/* lots groupés par produit */}
-      {Object.entries(groupBy(lots, l => l.product?.name ?? '—')).map(([name, items]) => (
-        <div key={name} className="card">
-          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:8}}>
-            <strong>{name}</strong>
-            <span style={{opacity:.6,fontSize:12}}>{items.length} lot(s)</span>
+      <section className="v21-section flush" style={{paddingTop:8}}>
+        {Object.entries(groupBy(lots, l => l.product?.name ?? '—')).map(([name, items]) => (
+          <div key={name} style={{marginTop:20}}>
+            <div className="v21-bh" style={{marginBottom:8}}>
+              <span style={{fontFamily:'var(--font-display)',fontWeight:600,fontSize:20,color:'var(--ink-1)'}}>{name}</span>
+              <span className="v21-mast-c">{items.length} lot{items.length>1?'s':''}</span>
+            </div>
+            <div className="v21-its">
+              {items.map(i=>(
+                <div key={i.id} className="v21-it compact">
+                  <span className="v21-it-bar" aria-hidden="true" />
+                  <span className="v21-it-n" style={{fontSize:16}}>{i.qty} {i.unit}</span>
+                  <span className="v21-it-st" style={{color:'var(--ink-3)',gap:10}}>
+                    DLC {i.dlc || '—'}
+                    <IconButton title="Retirer" onClick={()=>removeLot(i.id)}>✖️</IconButton>
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div style={{marginTop:6}}>
-            {items.map(i=>(
-              <div key={i.id} style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:8,padding:'6px 0'}}>
-                <div>• {i.qty} {i.unit} — DLC {i.dlc || '—'}</div>
-                <IconButton title="Retirer" onClick={()=>removeLot(i.id)}>✖️</IconButton>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-      {lots.length===0 && <p>Aucun produit ici.</p>}
+        ))}
+        {lots.length===0 && <div className="v21-empty"><p>Aucun produit ici.</p></div>}
+      </section>
     </div>
   );
 }
