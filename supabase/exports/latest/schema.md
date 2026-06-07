@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Sat Jun  6 10:34:31 UTC 2026_
+_Généré le : Sun Jun  7 09:56:16 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -730,7 +730,7 @@ _Généré le : Sat Jun  6 10:34:31 UTC 2026_
 
 ---
 ## Clés primaires
- - _backup_views → (view_name, dropped_at, view_schema)
+ - _backup_views → (dropped_at, view_schema, view_name)
  - archetype_nutrition_overrides → (archetype_id)
  - archetypes → (id)
  - canonical_food_origins → (food_id, country_id)
@@ -775,8 +775,8 @@ _Généré le : Sat Jun  6 10:34:31 UTC 2026_
  - tags → (id)
  - unit_conversions_generic → (id)
  - unit_conversions_product → (id)
- - user_allergies → (user_id, canonical_food_id)
- - user_diets → (user_id, diet_id)
+ - user_allergies → (canonical_food_id, user_id)
+ - user_diets → (diet_id, user_id)
  - user_health_goals → (user_id, person_name)
  - user_profiles → (user_id)
  - user_recipe_interactions → (id)
@@ -890,16 +890,13 @@ _Généré le : Sat Jun  6 10:34:31 UTC 2026_
  - public.inventory_lots → idx_inv_canonical : CREATE INDEX idx_inv_canonical ON public.inventory_lots USING btree (canonical_food_id)
  - public.inventory_lots → idx_inv_cultivar : CREATE INDEX idx_inv_cultivar ON public.inventory_lots USING btree (cultivar_id)
  - public.inventory_lots → idx_inv_product : CREATE INDEX idx_inv_product ON public.inventory_lots USING btree (product_id)
- - public.inventory_lots → idx_inv_user_exp : CREATE INDEX idx_inv_user_exp ON public.inventory_lots USING btree (user_id, expiration_date)
  - public.inventory_lots → idx_inventory_lots_adjusted_exp : CREATE INDEX idx_inventory_lots_adjusted_exp ON public.inventory_lots USING btree (adjusted_expiration_date) WHERE (adjusted_expiration_date IS NOT NULL)
  - public.inventory_lots → idx_inventory_lots_containerized : CREATE INDEX idx_inventory_lots_containerized ON public.inventory_lots USING btree (user_id, is_containerized) WHERE (is_containerized = true)
  - public.inventory_lots → idx_inventory_lots_expiration : CREATE INDEX idx_inventory_lots_expiration ON public.inventory_lots USING btree (expiration_date)
  - public.inventory_lots → idx_inventory_lots_is_opened : CREATE INDEX idx_inventory_lots_is_opened ON public.inventory_lots USING btree (is_opened) WHERE (is_opened = true)
  - public.inventory_lots → idx_inventory_lots_storage : CREATE INDEX idx_inventory_lots_storage ON public.inventory_lots USING btree (storage_method)
  - public.inventory_lots → idx_inventory_lots_user_exp : CREATE INDEX idx_inventory_lots_user_exp ON public.inventory_lots USING btree (user_id, expiration_date)
- - public.inventory_lots → idx_inventory_lots_user_expiry : CREATE INDEX idx_inventory_lots_user_expiry ON public.inventory_lots USING btree (user_id, expiration_date) WHERE (qty_remaining > (0)::numeric)
  - public.inventory_lots → idx_inventory_lots_user_id : CREATE INDEX idx_inventory_lots_user_id ON public.inventory_lots USING btree (user_id)
- - public.inventory_lots → idx_inventory_lots_user_qty : CREATE INDEX idx_inventory_lots_user_qty ON public.inventory_lots USING btree (user_id) WHERE (qty_remaining > (0)::numeric)
  - public.inventory_lots → inventory_lots_pkey : CREATE UNIQUE INDEX inventory_lots_pkey ON public.inventory_lots USING btree (id)
  - public.legacy_users → users_pkey : CREATE UNIQUE INDEX users_pkey ON public.legacy_users USING btree (id)
  - public.legacy_users → users_username_key : CREATE UNIQUE INDEX users_username_key ON public.legacy_users USING btree (username)
@@ -943,7 +940,6 @@ _Généré le : Sat Jun  6 10:34:31 UTC 2026_
  - public.recipe_ingredients → idx_recipe_ingredients_archetype : CREATE INDEX idx_recipe_ingredients_archetype ON public.recipe_ingredients USING btree (archetype_id)
  - public.recipe_ingredients → idx_recipe_ingredients_canonical : CREATE INDEX idx_recipe_ingredients_canonical ON public.recipe_ingredients USING btree (canonical_food_id)
  - public.recipe_ingredients → idx_recipe_ingredients_cfid_arid : CREATE INDEX idx_recipe_ingredients_cfid_arid ON public.recipe_ingredients USING btree (canonical_food_id, archetype_id)
- - public.recipe_ingredients → idx_recipe_ingredients_recipe : CREATE INDEX idx_recipe_ingredients_recipe ON public.recipe_ingredients USING btree (recipe_id)
  - public.recipe_ingredients → idx_recipe_ingredients_recipe_id : CREATE INDEX idx_recipe_ingredients_recipe_id ON public.recipe_ingredients USING btree (recipe_id)
  - public.recipe_ingredients → idx_recipe_ingredients_sub : CREATE INDEX idx_recipe_ingredients_sub ON public.recipe_ingredients USING btree (sub_recipe_id)
  - public.recipe_ingredients → recipe_ingredients_pkey : CREATE UNIQUE INDEX recipe_ingredients_pkey ON public.recipe_ingredients USING btree (id)
@@ -965,7 +961,6 @@ _Généré le : Sat Jun  6 10:34:31 UTC 2026_
  - public.seasonality → seasonality_pkey : CREATE UNIQUE INDEX seasonality_pkey ON public.seasonality USING btree (id)
  - public.tags → tags_name_key : CREATE UNIQUE INDEX tags_name_key ON public.tags USING btree (name)
  - public.tags → tags_pkey : CREATE UNIQUE INDEX tags_pkey ON public.tags USING btree (id)
- - public.tags → uq_tags_name : CREATE UNIQUE INDEX uq_tags_name ON public.tags USING btree (name)
  - public.unit_conversions_generic → idx_unit_conv_generic_norm : CREATE UNIQUE INDEX idx_unit_conv_generic_norm ON public.unit_conversions_generic USING btree (lower(from_unit), lower(to_unit))
  - public.unit_conversions_generic → unit_conversions_generic_pkey : CREATE UNIQUE INDEX unit_conversions_generic_pkey ON public.unit_conversions_generic USING btree (id)
  - public.unit_conversions_product → idx_unit_conv_product_norm : CREATE UNIQUE INDEX idx_unit_conv_product_norm ON public.unit_conversions_product USING btree (product_id, lower(from_unit), lower(to_unit))

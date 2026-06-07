@@ -1,10 +1,10 @@
 # Data export summary
-_Generated: Sat Jun  6 10:34:34 UTC 2026_
+_Generated: Sun Jun  7 09:56:18 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
 - archetype_nutrition_overrides: 5 rows
-- archetypes: 418 rows
+- archetypes: 419 rows
 - canonical_food_origins: 0 rows
 - canonical_food_processes: 0 rows
 - canonical_foods: 268 rows
