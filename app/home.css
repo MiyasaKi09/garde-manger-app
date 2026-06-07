@@ -74,7 +74,7 @@
 .v21-stat:hover { background: var(--surface-soft); }
 .v21-stat-l { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
 .v21-stat-v { font-family: var(--font-display); font-weight: 600; font-size: clamp(36px, 5vw, 54px); line-height: 1; margin-top: 6px; color: var(--ink-1); }
-.v21-stat:first-child .v21-stat-v { color: var(--terracotta); }
+.v21-stat.alert .v21-stat-v { color: var(--terracotta); }
 .v21-stat-s { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); margin-top: 6px; }
 
 /* ── En-tête de bloc + label « surlignage » sombre ── */

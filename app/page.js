@@ -209,17 +209,17 @@ export default function Home() {
           <Link href="/pantry" className="v21-stat">
             <span className="v21-stat-l">Garde-manger</span>
             <span className="v21-stat-v">{stockStats.total}</span>
-            <span className="v21-stat-s">{surveiller > 0 ? `${surveiller} à surveiller` : 'produits en stock'}</span>
+            <span className="v21-stat-s">{stockStats.total > 1 ? 'produits en stock' : 'produit en stock'}</span>
           </Link>
           <Link href="/courses" className="v21-stat">
             <span className="v21-stat-l">Courses</span>
             <span className="v21-stat-v">{coursesLeft}</span>
             <span className="v21-stat-s">{shoppingStats.total > 0 ? `restants · ${shoppingStats.checked}/${shoppingStats.total}` : 'rien à acheter'}</span>
           </Link>
-          <Link href="/nutrition" className="v21-stat">
-            <span className="v21-stat-l">Poids</span>
-            <span className="v21-stat-v">{latestWeight ? latestWeight.weight_kg : '—'}</span>
-            <span className="v21-stat-s">{latestWeight ? (pg.target_weight_kg ? `kg → ${pg.target_weight_kg}` : 'kg') : 'pas de mesure'}</span>
+          <Link href="/pantry" className={`v21-stat ${surveiller > 0 ? 'alert' : ''}`}>
+            <span className="v21-stat-l">À surveiller</span>
+            <span className="v21-stat-v">{surveiller}</span>
+            <span className="v21-stat-s">{surveiller > 0 ? 'à consommer vite' : 'rien ne périme'}</span>
           </Link>
         </div>
 
