@@ -39,24 +39,46 @@
   min-height: 120px;
 }
 
+.home-hero-text { display: flex; flex-direction: column; }
 .home-greeting {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: var(--fs-xs);
-  color: var(--brand);
-  font-weight: 600;
-  margin: 0 0 4px;
-  letter-spacing: 0.5px;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+.home-greeting::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 .home-title {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-optical-sizing: auto;
+  font-size: clamp(30px, 7vw, 40px);
   font-weight: 600;
   color: var(--ink-1);
   margin: 0;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
 }
+.home-hero-sub {
+  margin: 10px 0 0;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  line-height: 1.4;
+  max-width: 34ch;
+}
+.home-hero-mark { width: 60px; height: 60px; flex-shrink: 0; align-self: center; }
 
 /* Cellules utilitaires */
 .home-cell-full { grid-column: 1 / -1; }
@@ -129,8 +151,8 @@
   margin-bottom: 8px;
   color: var(--ink-2);
 }
-.home-alert-expired { color: #ef4444; }
-.home-alert-expiring { color: #f59e0b; }
+.home-alert-expired { color: var(--state-expired); }
+.home-alert-expiring { color: var(--state-soon); }
 .home-urgent-list {
   display: flex;
   flex-direction: column;
@@ -153,8 +175,8 @@
   max-width: 70%;
 }
 .home-urgent-badge { font-weight: 700; font-size: 10px; }
-.home-urgent-expired { color: #ef4444; }
-.home-urgent-warning { color: #f59e0b; }
+.home-urgent-expired { color: var(--state-expired); }
+.home-urgent-warning { color: var(--state-soon); }
 
 /* Actions (Ajouter / Scanner) */
 .home-action-cell {
@@ -302,6 +324,19 @@
   font-weight: 600;
 }
 
+/* Accessibilité clavier */
+.home-cell:focus-visible,
+.home-action-cell:focus-visible,
+.home-nav-cell:focus-visible,
+.home-empty-btn:focus-visible,
+.home-cell-link:focus-visible,
+.home-pill-link:focus-visible,
+.home-urgent-row:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .home-bento { grid-template-columns: repeat(2, 1fr); }
@@ -310,4 +345,5 @@
   .home-cell-stock { grid-row: span 1; }
   .home-cell-macros { grid-column: 1 / -1; }
   .home-nav-grid { grid-template-columns: repeat(3, 1fr); }
+  .home-hero-mark { width: 46px; height: 46px; }
 }

@@ -152,6 +152,8 @@ export default function Home() {
   const pn = nutritionToday[person] || { kcal: 0, protein_g: 0, carbs_g: 0, fat_g: 0 }
   const today = new Date()
   const greeting = today.getHours() < 12 ? 'Bonjour' : today.getHours() < 18 ? 'Bon après-midi' : 'Bonsoir'
+  const dateLabel = today.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
+  const dateCap = dateLabel.charAt(0).toUpperCase() + dateLabel.slice(1)
 
   if (loading) return (
     <div className="myko-loading" style={{ margin: '20vh auto', maxWidth: 400 }}>
@@ -164,6 +166,20 @@ export default function Home() {
       <div className="myko-canvas" aria-hidden="true" />
       <div className="home-page">
         <div className="home-bento">
+
+          {/* HERO ÉDITORIAL */}
+          <header className="home-hero">
+            <div className="home-hero-text">
+              <p className="home-greeting">{dateCap}</p>
+              <h1 className="home-title">{greeting}.</h1>
+              <p className="home-hero-sub">Ce qui mûrit, ce qui se cuisine, ce qui se partage.</p>
+            </div>
+            <svg className="home-hero-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <circle cx="44" cy="20" r="10" fill="var(--saffron)" opacity="0.9" />
+              <path d="M16 44c6-14 26-16 32-6 4 8-4 18-16 18-10 0-18-6-16-12Z" fill="var(--brand)" opacity="0.9" />
+              <path d="M23 23c8-2 12 6 8 12-3 5-12 4-14-2-1-5 2-9 6-10Z" fill="var(--terracotta)" opacity="0.85" />
+            </svg>
+          </header>
 
           {/* PLANNING DU JOUR — pleine largeur */}
           <div className="home-cell home-cell-full">
