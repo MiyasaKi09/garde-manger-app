@@ -46,6 +46,25 @@ export default function MinimalistHeader() {
 
   const headerHeight = elevated ? 64 : 80;
 
+  // Wordmark éditorial réutilisable (Fraunces + point terracotta)
+  const Wordmark = ({ size = '1.4rem' }) => (
+    <Link
+      href="/"
+      aria-label="Myko — accueil"
+      style={{
+        textDecoration: 'none',
+        fontFamily: 'var(--font-display)',
+        fontOpticalSizing: 'auto',
+        fontSize: size,
+        fontWeight: 700,
+        color: 'var(--brand-strong)',
+        letterSpacing: '-0.03em',
+      }}
+    >
+      myko<span style={{ color: 'var(--terracotta)' }}>.</span>
+    </Link>
+  );
+
   return (
     <>
       <header
@@ -60,39 +79,28 @@ export default function MinimalistHeader() {
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 1000,
-          transition: 'height .25s ease, background .25s ease',
+          transition: 'height .25s ease',
           background: 'transparent',
         }}
       >
-        {/* Navigation desktop - style original */}
+        {/* Navigation desktop — pilule papier givré éditoriale */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '2rem',
-            padding: '.6rem 1.2rem',
+            gap: '1.75rem',
+            padding: '.6rem 1.4rem',
             borderRadius: '999px',
-            background: elevated ? 'rgba(30,30,30,0.35)' : 'rgba(30,30,30,0.25)',
-            border: '1px solid rgba(255,255,255,0.25)',
-            backdropFilter: 'blur(18px)',
-            WebkitBackdropFilter: 'blur(18px)',
+            background: elevated ? 'rgba(255,253,247,0.92)' : 'rgba(255,253,247,0.8)',
+            border: '1px solid var(--line)',
+            backdropFilter: 'blur(14px) saturate(120%)',
+            WebkitBackdropFilter: 'blur(14px) saturate(120%)',
+            boxShadow: elevated ? 'var(--sh-2)' : 'var(--sh-1)',
+            transition: 'background .25s ease, box-shadow .25s ease',
           }}
           className="desktop-nav"
         >
-          <Link
-            href="/"
-            style={{
-              textDecoration: 'none',
-              fontFamily: 'var(--font-display)',
-              fontSize: '1.25rem',
-              fontWeight: '700',
-              color: 'var(--brand)',
-              letterSpacing: '-0.02em',
-              marginRight: '0.5rem',
-            }}
-          >
-            myko.
-          </Link>
+          <span style={{ marginRight: '0.4rem' }}><Wordmark /></span>
           {navItems.map((item) => {
             const active = pathname === item.href;
             return (
@@ -101,68 +109,80 @@ export default function MinimalistHeader() {
                 href={item.href}
                 className={`myko-nav-link${active ? ' is-active' : ''}`}
                 style={{
+                  position: 'relative',
                   textDecoration: 'none',
                   fontSize: '0.95rem',
-                  fontWeight: active ? '600' : '500',
-                  color: active ? 'var(--brand)' : '#fff',
-                  opacity: active ? 1 : 0.85,
-                  transition: 'opacity .2s ease, color .2s ease',
-                  padding: '0.5rem 0'
+                  fontWeight: active ? 600 : 500,
+                  color: active ? 'var(--brand)' : 'var(--ink-2)',
+                  transition: 'color .2s ease',
+                  padding: '0.5rem 0',
                 }}
-                onMouseEnter={(e) => e.target.style.opacity = '1'}
-                onMouseLeave={(e) => {
-                  if (pathname !== item.href) e.target.style.opacity = '0.85';
-                }}
+                onMouseEnter={(e) => { if (!active) e.currentTarget.style.color = 'var(--brand-strong)'; }}
+                onMouseLeave={(e) => { if (!active) e.currentTarget.style.color = 'var(--ink-2)'; }}
               >
                 {item.label}
+                {active && (
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      position: 'absolute',
+                      left: 0,
+                      right: 0,
+                      bottom: 2,
+                      height: 2,
+                      borderRadius: 2,
+                      background: 'var(--accent)',
+                    }}
+                  />
+                )}
               </Link>
             );
           })}
 
           {user ? (
-            <button 
-              onClick={handleLogout} 
+            <button
+              onClick={handleLogout}
               className="myko-solid-btn"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '.4rem 1rem',
+                padding: '.45rem 1.1rem',
                 borderRadius: '999px',
-                background: 'rgba(255,255,255,0.2)',
+                background: 'var(--brand)',
                 color: '#fff',
-                fontWeight: '600',
+                fontWeight: 600,
                 fontSize: '.9rem',
                 textDecoration: 'none',
-                border: '1px solid rgba(255,255,255,0.25)',
-                transition: 'background .2s ease',
-                cursor: 'pointer'
+                border: '1px solid var(--brand)',
+                transition: 'background .2s ease, transform .2s ease',
+                cursor: 'pointer',
               }}
-              onMouseEnter={(e) => e.target.style.background = 'rgba(255,255,255,0.35)'}
-              onMouseLeave={(e) => e.target.style.background = 'rgba(255,255,255,0.2)'}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--brand-strong)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--brand)'; }}
             >
               Déconnexion
             </button>
           ) : (
-            <Link 
-              href="/login" 
+            <Link
+              href="/login"
               className="myko-solid-btn"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '.4rem 1rem',
+                padding: '.45rem 1.1rem',
                 borderRadius: '999px',
-                background: 'rgba(255,255,255,0.2)',
+                background: 'var(--brand)',
                 color: '#fff',
-                fontWeight: '600',
+                fontWeight: 600,
                 fontSize: '.9rem',
                 textDecoration: 'none',
-                border: '1px solid rgba(255,255,255,0.25)',
-                transition: 'background .2s ease'
+                border: '1px solid var(--brand)',
+                transition: 'background .2s ease',
               }}
-              onMouseEnter={(e) => e.target.style.background = 'rgba(255,255,255,0.35)'}
-              onMouseLeave={(e) => e.target.style.background = 'rgba(255,255,255,0.2)'}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--brand-strong)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--brand)'; }}
             >
               Se connecter
             </Link>
@@ -170,21 +190,7 @@ export default function MinimalistHeader() {
         </div>
 
         {/* Logo mobile */}
-        <Link
-          href="/"
-          style={{
-            display: 'none',
-            textDecoration: 'none',
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.25rem',
-            fontWeight: '700',
-            color: 'var(--brand)',
-            letterSpacing: '-0.02em',
-          }}
-          className="mobile-logo"
-        >
-          myko.
-        </Link>
+        <span className="mobile-logo" style={{ display: 'none' }}><Wordmark size="1.5rem" /></span>
 
         {/* Menu burger mobile */}
         <button
@@ -194,25 +200,27 @@ export default function MinimalistHeader() {
             width: '48px',
             height: '48px',
             borderRadius: '50%',
-            background: elevated ? 'rgba(30,30,30,0.35)' : 'rgba(30,30,30,0.25)',
-            border: '1px solid rgba(255,255,255,0.25)',
-            backdropFilter: 'blur(18px)',
-            WebkitBackdropFilter: 'blur(18px)',
-            color: '#fff',
+            background: 'rgba(255,253,247,0.9)',
+            border: '1px solid var(--line)',
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+            color: 'var(--ink-1)',
             fontSize: '1.2rem',
             cursor: 'pointer',
-            transition: 'all 0.3s ease'
+            boxShadow: 'var(--sh-1)',
+            transition: 'all 0.3s ease',
           }}
           className="mobile-menu-btn"
           aria-label="Menu"
+          aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? '✕' : '☰'}
         </button>
       </header>
 
-      {/* Menu mobile - dropdown */}
+      {/* Menu mobile — dropdown papier */}
       {mobileMenuOpen && (
-        <div 
+        <div
           style={{
             position: 'fixed',
             top: headerHeight + 10,
@@ -220,68 +228,47 @@ export default function MinimalistHeader() {
             transform: 'translateX(-50%)',
             width: '90%',
             maxWidth: '400px',
-            background: 'rgba(30,30,30,0.9)',
+            background: 'rgba(255,253,247,0.97)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255,255,255,0.25)',
-            borderRadius: '16px',
-            padding: '1.5rem',
+            border: '1px solid var(--line)',
+            borderRadius: 'var(--r-card)',
+            padding: '1.25rem',
             zIndex: 999,
-            boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-            animation: 'slideDown 0.3s ease'
+            boxShadow: 'var(--sh-3)',
+            animation: 'slideDown 0.3s ease',
           }}
           className="mobile-menu"
         >
-          <nav style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1rem'
-          }}>
-            {navItems.map(item => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  color: pathname === item.href ? '#fff' : 'rgba(255,255,255,0.8)',
-                  textDecoration: 'none',
-                  fontSize: '1.1rem',
-                  fontWeight: pathname === item.href ? '600' : '500',
-                  padding: '0.75rem 1rem',
-                  borderRadius: '12px',
-                  background: pathname === item.href ? 'rgba(255,255,255,0.1)' : 'transparent',
-                  transition: 'all 0.3s ease',
-                  border: pathname === item.href ? '1px solid rgba(255,255,255,0.2)' : '1px solid transparent'
-                }}
-                onMouseEnter={(e) => {
-                  if (pathname !== item.href) {
-                    e.target.style.background = 'rgba(255,255,255,0.05)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (pathname !== item.href) {
-                    e.target.style.background = 'transparent';
-                  }
-                }}
-              >
-                {item.label}
-              </Link>
-            ))}
+          <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {navItems.map(item => {
+              const active = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{
+                    color: active ? 'var(--brand)' : 'var(--ink-1)',
+                    textDecoration: 'none',
+                    fontSize: '1.05rem',
+                    fontWeight: active ? 600 : 500,
+                    padding: '0.7rem 0.9rem',
+                    borderRadius: 'var(--r-sm)',
+                    background: active ? 'var(--brand-soft)' : 'transparent',
+                    transition: 'background 0.2s ease',
+                  }}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
 
             {/* Actions utilisateur mobile */}
-            <div style={{
-              marginTop: '1rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid rgba(255,255,255,0.1)'
-            }}>
+            <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--line)' }}>
               {user ? (
                 <>
-                  <div style={{
-                    color: 'rgba(255,255,255,0.6)',
-                    fontSize: '0.9rem',
-                    marginBottom: '1rem',
-                    textAlign: 'center'
-                  }}>
+                  <div style={{ color: 'var(--ink-3)', fontSize: '0.85rem', marginBottom: '0.75rem', textAlign: 'center' }}>
                     {user.email}
                   </div>
                   <button
@@ -289,14 +276,13 @@ export default function MinimalistHeader() {
                     style={{
                       width: '100%',
                       padding: '0.75rem',
-                      background: 'rgba(255,255,255,0.1)',
-                      border: '1px solid rgba(255,255,255,0.2)',
-                      borderRadius: '12px',
+                      background: 'var(--brand)',
+                      border: '1px solid var(--brand)',
+                      borderRadius: 'var(--r-sm)',
                       color: '#fff',
                       fontSize: '0.95rem',
-                      fontWeight: '500',
+                      fontWeight: 600,
                       cursor: 'pointer',
-                      transition: 'all 0.3s ease'
                     }}
                   >
                     Déconnexion
@@ -310,15 +296,14 @@ export default function MinimalistHeader() {
                     display: 'block',
                     width: '100%',
                     padding: '0.75rem',
-                    background: 'rgba(255,255,255,0.1)',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    borderRadius: '12px',
+                    background: 'var(--brand)',
+                    border: '1px solid var(--brand)',
+                    borderRadius: 'var(--r-sm)',
                     color: '#fff',
                     fontSize: '0.95rem',
-                    fontWeight: '500',
+                    fontWeight: 600,
                     textDecoration: 'none',
                     textAlign: 'center',
-                    transition: 'all 0.3s ease'
                   }}
                 >
                   Se connecter
@@ -331,17 +316,16 @@ export default function MinimalistHeader() {
 
       {/* Overlay pour fermer le menu */}
       {mobileMenuOpen && (
-        <div 
+        <div
           style={{
             position: 'fixed',
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'rgba(0,0,0,0.3)',
+            background: 'rgba(24,28,22,0.25)',
             backdropFilter: 'blur(2px)',
             zIndex: 998,
-            transition: 'all 0.3s ease'
           }}
           onClick={() => setMobileMenuOpen(false)}
         />
@@ -369,13 +353,13 @@ export default function MinimalistHeader() {
         }
 
         @keyframes slideDown {
-          from { 
-            opacity: 0; 
-            transform: translateX(-50%) translateY(-10px); 
+          from {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-10px);
           }
-          to { 
-            opacity: 1; 
-            transform: translateX(-50%) translateY(0); 
+          to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
           }
         }
       `}</style>
