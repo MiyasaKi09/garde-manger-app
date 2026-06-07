@@ -83,11 +83,14 @@ export default function Home() {
 
   async function loadStock() {
     try {
-      const { data } = await supabase
+      // ⚠️ inventory_lots a des FK EN DOUBLE vers products/archetypes/canonical_foods
+      // (ex. inventory_lots_product_fk + inventory_lots_product_fkey). Sans préciser
+      // la contrainte, l'embed PostgREST est ambigu → la requête échoue → 0 produit.
+      const { data, error } = await supabase
         .from('inventory_lots')
-        .select('id, qty_remaining, unit, storage_place, expiration_date, archetype:archetypes(name), canonical_food:canonical_foods(canonical_name), product:products(name)')
+        .select('id, qty_remaining, unit, storage_place, expiration_date, archetype:archetypes!inventory_lots_archetype_id_fkey(name), canonical_food:canonical_foods!inventory_lots_canonical_food_id_fkey(canonical_name), product:products!inventory_lots_product_fkey(name)')
         .gt('qty_remaining', 0)
-      if (!data) return
+      if (error || !data) return
       const items = []
       let expiring = 0, expired = 0
       for (const lot of data) {
@@ -96,7 +99,8 @@ export default function Home() {
           if (d < 0) expired++
           else if (d <= 3) expiring++
         }
-        const name = lot.product?.name || lot.archetype?.name || lot.canonical_food?.canonical_name || `Lot #${lot.id}`
+        const raw = lot.product?.name || lot.archetype?.name || lot.canonical_food?.canonical_name || 'Produit'
+        const name = raw.charAt(0).toUpperCase() + raw.slice(1)
         const status = d === null ? 'ok' : d < 0 ? 'exp' : d <= 3 ? 'soon' : 'ok'
         const q = lot.qty_remaining != null ? +(+lot.qty_remaining).toFixed(2) : null
         const qty = q != null ? `${q}${lot.unit ? ' ' + lot.unit : ''}` : ''
