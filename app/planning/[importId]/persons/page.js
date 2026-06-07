@@ -47,125 +47,159 @@ export default function PersonsPage() {
     return data.dailyTotals.find(t => t.meal_date === currentDate && t.person_name === person)
   }
 
-  const mealLabels = { pdj: 'Petit-dejeuner', dejeuner: 'Dejeuner', diner: 'Diner', collation: 'Collation' }
-  const mealIcons = { pdj: '🌅', dejeuner: '☀️', diner: '🌙', collation: '🥜' }
+  const mealLabels = { pdj: 'Petit-déj', dejeuner: 'Déjeuner', diner: 'Dîner', collation: 'Collation' }
+  const MEAL_BAR = { pdj: '#D9A33A', dejeuner: '#6FB05A', diner: '#6E7A3F', collation: '#BB5836' }
 
   if (loading) {
-    return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p>Chargement...</p></div>
+    return (
+      <div className="v21-page wide" aria-busy="true" aria-label="Chargement">
+        <div className="v21-skel" style={{ height: 90, marginBottom: 20 }} />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          {[0, 1].map(c => (
+            <div key={c} style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+              {Array.from({ length: 4 }).map((_, i) => <div key={i} className="v21-skel" style={{ height: 56, borderRadius: 0 }} />)}
+            </div>
+          ))}
+        </div>
+      </div>
+    )
   }
 
   return (
     <>
-      <div className="container">
-        <div className="header-card">
-          <button className="back-btn" onClick={() => router.push(`/planning/${importId}`)}>
-            <ArrowLeft size={18} /> Retour au calendrier
-          </button>
-          <h1>Par personne</h1>
+      <div className="v21-page wide">
+        <button className="pers-back" onClick={() => router.push(`/planning/${importId}`)}>
+          <ArrowLeft size={15} /> Retour au calendrier
+        </button>
 
+        {/* ═══ HERO ÉDITORIAL ═══ */}
+        <header className="v21-hero">
+          <div className="v21-hero-text">
+            <span className="v21-eyebrow">Planning · par personne</span>
+            <h1 className="v21-title">Par personne.</h1>
+            <div className="v21-rule" />
+            <p className="v21-lede">Les assiettes de Julien et Zoé, jour par jour.</p>
+          </div>
           {/* Day selector */}
-          <div className="day-nav">
-            <button className="nav-btn" onClick={() => setDayIndex(Math.max(0, dayIndex - 1))} disabled={dayIndex === 0}>
-              <ChevronLeft size={18} />
+          <div className="pers-daynav">
+            <button className="pers-arrow" onClick={() => setDayIndex(Math.max(0, dayIndex - 1))} disabled={dayIndex === 0} aria-label="Jour précédent">
+              <ChevronLeft size={16} />
             </button>
-            <div className="day-label">
+            <span className="pers-day-label">
               {currentDate && new Date(currentDate + 'T00:00:00').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}
-            </div>
-            <button className="nav-btn" onClick={() => setDayIndex(Math.min(dates.length - 1, dayIndex + 1))} disabled={dayIndex >= dates.length - 1}>
-              <ChevronRight size={18} />
+            </span>
+            <button className="pers-arrow" onClick={() => setDayIndex(Math.min(dates.length - 1, dayIndex + 1))} disabled={dayIndex >= dates.length - 1} aria-label="Jour suivant">
+              <ChevronRight size={16} />
             </button>
           </div>
-        </div>
+        </header>
 
-        <div className="persons-grid">
+        <div className="pers-grid">
           {['Julien', 'Zoé'].map(person => {
             const meals = getMeals(person)
             const total = getTotal(person)
             return (
-              <div key={person} className="person-column">
-                <h2 className="person-name">{person}</h2>
+              <section key={person} className="pers-col">
+                <div className="v21-bh"><span className="v21-bl">{person}</span></div>
 
-                {meals.map(meal => (
-                  <div key={meal.id} className="meal-card">
-                    <div className="meal-header">
-                      <span>{mealIcons[meal.meal_type]}</span>
-                      <span className="meal-type-label">{mealLabels[meal.meal_type]}</span>
-                      {meal.day_type && <span className="day-type">{meal.day_type}</span>}
+                <div className="v21-meals">
+                  {meals.map(meal => (
+                    <div key={meal.id} className="v21-meal pers-meal">
+                      <span className="v21-meal-bar" style={{ background: MEAL_BAR[meal.meal_type] || MEAL_BAR.diner }} />
+                      <span className="v21-meal-l">{mealLabels[meal.meal_type] || meal.meal_type}</span>
+                      <div className="pers-meal-body">
+                        <span className="v21-meal-n">{meal.description}</span>
+                        <div className="pers-macros">
+                          <span className="pers-m"><b>{meal.kcal}</b> kcal</span>
+                          <span className="pers-m"><b>{meal.protein_g}</b>P</span>
+                          <span className="pers-m"><b>{meal.carbs_g}</b>G</span>
+                          <span className="pers-m"><b>{meal.fat_g}</b>L</span>
+                          {meal.fiber_g != null && <span className="pers-m"><b>{meal.fiber_g}</b>F</span>}
+                          {meal.day_type && <span className="pers-daytype">{meal.day_type}</span>}
+                        </div>
+                      </div>
                     </div>
-                    <div className="meal-description">{meal.description}</div>
-                    <div className="macro-bar">
-                      <div className="macro"><span className="macro-val">{meal.kcal}</span><span className="macro-unit">kcal</span></div>
-                      <div className="macro prot"><span className="macro-val">{meal.protein_g}</span><span className="macro-unit">P</span></div>
-                      <div className="macro carbs"><span className="macro-val">{meal.carbs_g}</span><span className="macro-unit">G</span></div>
-                      <div className="macro fat"><span className="macro-val">{meal.fat_g}</span><span className="macro-unit">L</span></div>
-                      {meal.fiber_g != null && <div className="macro fiber"><span className="macro-val">{meal.fiber_g}</span><span className="macro-unit">F</span></div>}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
 
                 {total && (
-                  <div className={`total-card ${total.validated ? 'valid' : 'warn'}`}>
-                    <div className="total-header">
-                      <span>{total.validated ? '✅' : '⚠️'} Total jour</span>
-                    </div>
-                    <div className="macro-bar total-macros">
-                      <div className="macro"><span className="macro-val">{total.kcal}</span><span className="macro-unit">kcal</span></div>
-                      <div className="macro prot"><span className="macro-val">{total.protein_g}</span><span className="macro-unit">P</span></div>
-                      <div className="macro carbs"><span className="macro-val">{total.carbs_g}</span><span className="macro-unit">G</span></div>
-                      <div className="macro fat"><span className="macro-val">{total.fat_g}</span><span className="macro-unit">L</span></div>
-                      {total.fiber_g != null && <div className="macro fiber"><span className="macro-val">{total.fiber_g}</span><span className="macro-unit">F</span></div>}
+                  <div className={`pers-total ${total.validated ? 'ok' : 'warn'}`}>
+                    <span className="pers-total-l">Total jour · {total.validated ? 'dans la cible' : 'hors cible'}</span>
+                    <div className="pers-macros pers-macros-total">
+                      <span className="pers-m"><b>{total.kcal}</b> kcal</span>
+                      <span className="pers-m"><b>{total.protein_g}</b>P</span>
+                      <span className="pers-m"><b>{total.carbs_g}</b>G</span>
+                      <span className="pers-m"><b>{total.fat_g}</b>L</span>
+                      {total.fiber_g != null && <span className="pers-m"><b>{total.fiber_g}</b>F</span>}
                     </div>
                   </div>
                 )}
-              </div>
+              </section>
             )
           })}
         </div>
       </div>
 
       <style jsx>{`
-        .container { padding: 16px; max-width: 1000px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-        .header-card { background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
-        .back-btn { display: inline-flex; align-items: center; gap: 6px; background: none; border: none; color: #6b7280; cursor: pointer; font-size: 14px; padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; }
-        .back-btn:hover { background: rgba(0,0,0,0.05); }
-        .header-card h1 { font-size: 22px; font-weight: bold; color: #1f2937; margin: 0 0 12px; }
+        .pers-back {
+          display: inline-flex; align-items: center; gap: 7px;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase;
+          background: none; border: none; color: var(--ink-3); cursor: pointer;
+          padding: 0; margin-bottom: 20px; transition: color 0.15s ease;
+        }
+        .pers-back:hover { color: var(--terracotta); }
 
-        .day-nav { display: flex; align-items: center; gap: 12px; justify-content: center; }
-        .nav-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-        .day-label { font-size: 16px; font-weight: 600; color: #374151; text-transform: capitalize; }
+        .pers-daynav { display: flex; align-items: center; gap: 12px; }
+        .pers-arrow {
+          width: 34px; height: 34px; border-radius: 3px;
+          border: 1px solid var(--line-strong); background: transparent; cursor: pointer;
+          display: flex; align-items: center; justify-content: center; color: var(--ink-2);
+          transition: border-color 0.15s ease, color 0.15s ease;
+        }
+        .pers-arrow:hover:not(:disabled) { border-color: var(--ink-1); color: var(--ink-1); }
+        .pers-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+        .pers-day-label {
+          font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.03em; text-transform: uppercase;
+          color: var(--ink-2); min-width: 150px; text-align: center;
+        }
 
-        .persons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .person-column { display: flex; flex-direction: column; gap: 10px; }
-        .person-name { font-size: 18px; font-weight: 700; color: #1f2937; margin: 0; padding: 8px 12px; background: var(--surface); border-radius: 10px; text-align: center; }
+        .pers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+        .pers-col { padding: 30px 0; min-width: 0; }
+        .pers-col:first-child { border-right: 1px solid var(--line); padding-right: 32px; }
+        .pers-col:last-child { padding-left: 32px; }
 
-        .meal-card { background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
-        .meal-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 13px; }
-        .meal-type-label { font-weight: 600; color: #374151; }
-        .day-type { font-size: 11px; color: #9ca3af; background: rgba(0,0,0,0.04); padding: 2px 8px; border-radius: 4px; }
-        .meal-description { font-size: 13px; color: #374151; line-height: 1.4; margin-bottom: 10px; }
+        /* Ligne repas adaptée : barre | label | corps (nom + macros) */
+        .v21-meal.pers-meal { grid-template-columns: 8px 92px 1fr; align-items: start; }
+        .pers-meal-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+        .pers-macros { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+        .pers-m { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
+        .pers-m b { font-weight: 600; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+        .pers-daytype {
+          font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em;
+          color: var(--ink-3); border: 1px solid var(--line); border-radius: 3px; padding: 1px 6px;
+        }
 
-        .macro-bar { display: flex; gap: 6px; flex-wrap: wrap; }
-        .macro { display: flex; align-items: baseline; gap: 2px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.04); font-size: 12px; }
-        .macro-val { font-weight: 700; color: #1f2937; }
-        .macro-unit { font-size: 10px; color: #6b7280; }
-        .macro.prot { background: rgba(239,68,68,0.08); }
-        .macro.prot .macro-val { color: #dc2626; }
-        .macro.carbs { background: rgba(59,130,246,0.08); }
-        .macro.carbs .macro-val { color: #2563eb; }
-        .macro.fat { background: rgba(234,179,8,0.08); }
-        .macro.fat .macro-val { color: #ca8a04; }
-        .macro.fiber { background: rgba(34,197,94,0.08); }
-        .macro.fiber .macro-val { color: #16a34a; }
-
-        .total-card { background: var(--surface); border: 2px solid rgba(34,197,94,0.3); border-radius: 12px; padding: 12px; }
-        .total-card.warn { border-color: rgba(234,179,8,0.3); }
-        .total-header { font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
-        .total-macros .macro { font-size: 13px; }
-        .total-macros .macro-val { font-size: 14px; }
+        .pers-total {
+          display: flex; flex-direction: column; gap: 8px;
+          margin-top: 14px; padding: 14px 0 0; border-top: 1.5px solid var(--ink-1);
+        }
+        .pers-total-l {
+          font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase;
+          color: var(--ink-2);
+        }
+        .pers-total.warn .pers-total-l { color: var(--state-soon); }
+        .pers-total.ok .pers-total-l { color: var(--state-fresh); }
+        .pers-macros-total .pers-m { font-size: 12px; }
+        .pers-macros-total .pers-m b { font-size: 13px; color: var(--ink-1); }
 
         @media (max-width: 768px) {
-          .persons-grid { grid-template-columns: 1fr; }
+          .pers-grid { grid-template-columns: 1fr; }
+          .pers-col:first-child { border-right: none; padding-right: 0; border-bottom: 1px solid var(--line); }
+          .pers-col:last-child { padding-left: 0; }
+        }
+        @media (max-width: 560px) {
+          .v21-meal.pers-meal { grid-template-columns: 8px 1fr; }
+          .v21-meal.pers-meal .v21-meal-l { display: none; }
         }
       `}</style>
     </>

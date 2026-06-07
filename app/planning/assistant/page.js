@@ -128,232 +128,127 @@ export default function PlanningAssistantPage() {
   }, [])
 
   return (
-    <div style={S.page}>
-      <button onClick={() => { abortRef.current?.abort(); router.push('/planning') }} style={S.backBtn}>
-        <ArrowLeft size={18} />
+    <div className="v21-page narrow">
+      <button onClick={() => { abortRef.current?.abort(); router.push('/planning') }} className="asst-back">
+        <ArrowLeft size={15} /> Retour au planning
       </button>
+
+      {/* ═══ HERO ÉDITORIAL ═══ */}
+      <header className="v21-hero">
+        <div className="v21-hero-text">
+          <span className="v21-eyebrow">Assistant · Myko</span>
+          <h1 className="v21-title">Générer le planning.</h1>
+          <div className="v21-rule" />
+          <p className="v21-lede">Stock, objectifs et anti-répétition — Myko compose la semaine prochaine.</p>
+        </div>
+      </header>
 
       {/* ═══ PICK ═══ */}
       {status === 'pick' && (
-        <div style={S.center}>
-          <div style={S.iconWrap}>
-            <Sparkles size={40} color="#16a34a" />
-          </div>
-          <h2 style={S.title}>Générer le planning</h2>
-          <p style={S.subtitle}>
+        <section className="v21-section flush asst-body">
+          <p className="asst-text">
             Myko va créer le planning complet de la semaine prochaine en tenant compte de ton stock, de tes objectifs et de l'anti-répétition.
           </p>
 
-          <div style={S.weekCard}>
-            <span style={S.weekLabel}>Semaine générée</span>
-            <span style={S.weekDates}>{weekLabel}</span>
+          <div className="asst-week">
+            <span className="asst-week-l">Semaine générée</span>
+            <span className="asst-week-v">{weekLabel}</span>
           </div>
 
-          <button onClick={generatePlan} style={S.generateBtn}>
-            <Sparkles size={18} />
-            Générer avec Myko
+          <button onClick={generatePlan} className="v21-btn">
+            <Sparkles size={15} /> Générer avec Myko
           </button>
 
-          <p style={S.note}>
+          <p className="asst-note">
             La génération dure 2–4 minutes. Tu peux quitter la page — le planning apparaîtra dans l'onglet Planning.
           </p>
-        </div>
+        </section>
       )}
 
       {/* ═══ GENERATING ═══ */}
       {status === 'generating' && (
-        <div style={S.center}>
-          <div style={S.iconWrap}>
-            <Sparkles size={40} color="#16a34a" style={{ animation: 'pulse 2s ease-in-out infinite' }} />
+        <section className="v21-section flush asst-body" aria-busy="true">
+          <span className="asst-eyebrow-live">Myko travaille</span>
+          <p className="asst-progress">{progressText}</p>
+          <div className="asst-skel-group">
+            <div className="v21-skel" style={{ height: 12, width: '90%' }} />
+            <div className="v21-skel" style={{ height: 12, width: '70%' }} />
+            <div className="v21-skel" style={{ height: 12, width: '80%' }} />
           </div>
-          <p style={S.progressText}>{progressText}</p>
-          <div style={S.progressBarOuter}>
-            <div style={S.progressBarInner} />
-          </div>
-          <p style={S.note}>Myko écrit directement dans Supabase au fur et à mesure.</p>
-        </div>
+          <p className="asst-note">Myko écrit directement dans Supabase au fur et à mesure.</p>
+        </section>
       )}
 
       {/* ═══ ERROR ═══ */}
       {status === 'error' && (
-        <div style={S.center}>
-          <span style={{ fontSize: 48 }}>😕</span>
-          <p style={S.progressText}>Oups...</p>
-          <p style={S.errorText}>{errorMsg}</p>
-          <button onClick={generatePlan} style={S.retryBtn}>
-            <RefreshCw size={16} />
-            Réessayer
+        <section className="v21-section flush asst-body">
+          <p className="asst-progress">Oups…</p>
+          <p className="asst-error">{errorMsg}</p>
+          <button onClick={generatePlan} className="v21-btn terra">
+            <RefreshCw size={15} /> Réessayer
           </button>
-        </div>
+        </section>
       )}
 
       {/* ═══ SUCCESS ═══ */}
       {status === 'success' && (
-        <div style={S.center}>
-          <div style={S.iconWrap}>
-            <Sparkles size={40} color="#16a34a" />
-          </div>
-          <p style={S.progressText}>Planning sauvegardé !</p>
-          <p style={S.note}>Redirection...</p>
-        </div>
+        <section className="v21-section flush asst-body">
+          <span className="asst-eyebrow-live">Terminé</span>
+          <p className="asst-progress">Planning sauvegardé.</p>
+          <p className="asst-note">Redirection…</p>
+        </section>
       )}
 
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.6; transform: scale(1.1); }
+      <style jsx>{`
+        .asst-back {
+          display: inline-flex; align-items: center; gap: 7px;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase;
+          background: none; border: none; color: var(--ink-3); cursor: pointer;
+          padding: 0; margin-bottom: 20px; transition: color 0.15s ease;
         }
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(200%); }
+        .asst-back:hover { color: var(--terracotta); }
+
+        .asst-body { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding-top: 30px; }
+
+        .asst-text {
+          font-family: var(--font-text); font-size: 15px; line-height: 1.6;
+          color: var(--ink-2); max-width: 52ch; margin: 0;
+        }
+
+        .asst-week {
+          display: flex; flex-direction: column; gap: 6px;
+          width: 100%; padding: 18px 20px;
+          border: 1px solid var(--line-strong); border-radius: 3px;
+        }
+        .asst-week-l {
+          font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+          color: var(--ink-3);
+        }
+        .asst-week-v { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--ink-1); }
+
+        .asst-note {
+          font-family: var(--font-mono); font-size: 11px; line-height: 1.6;
+          color: var(--ink-3); max-width: 48ch; margin: 0;
+        }
+
+        .asst-eyebrow-live {
+          display: inline-block;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+          background: var(--terracotta); color: #fff; padding: 5px 10px; border-radius: 3px;
+        }
+        .asst-progress {
+          font-family: var(--font-display); font-size: 24px; font-weight: 600;
+          letter-spacing: -0.02em; color: var(--ink-1); margin: 0;
+        }
+        .asst-skel-group { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 360px; }
+
+        .asst-error {
+          font-family: var(--font-text); font-size: 14px; line-height: 1.5; white-space: pre-line;
+          color: var(--state-expired); background: var(--state-expired-bg);
+          border: 1px solid var(--state-expired); border-radius: 3px;
+          padding: 12px 16px; margin: 0; max-width: 52ch;
         }
       `}</style>
     </div>
   )
-}
-
-const S = {
-  page: {
-    minHeight: 'calc(100vh - 80px)',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-  },
-  backBtn: {
-    position: 'absolute',
-    top: 12, left: 12,
-    border: 'none',
-    background: 'rgba(0,0,0,0.04)',
-    borderRadius: 12,
-    padding: 10,
-    cursor: 'pointer',
-    color: '#6b7280',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  center: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: 14,
-    padding: '0 24px',
-    textAlign: 'center',
-    maxWidth: 440,
-    width: '100%',
-  },
-  iconWrap: {
-    width: 90, height: 90,
-    borderRadius: '50%',
-    background: 'rgba(22,163,74,0.06)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 4,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: 700,
-    color: 'var(--ink, #1f281f)',
-    margin: 0,
-  },
-  subtitle: {
-    fontSize: 15,
-    color: '#6b7280',
-    margin: 0,
-    lineHeight: 1.55,
-    maxWidth: 360,
-  },
-  weekCard: {
-    width: '100%',
-    background: 'rgba(22,163,74,0.05)',
-    border: '1.5px solid rgba(22,163,74,0.18)',
-    borderRadius: 16,
-    padding: '16px 20px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 4,
-    marginTop: 4,
-  },
-  weekLabel: {
-    fontSize: 10,
-    fontWeight: 700,
-    letterSpacing: '0.15em',
-    textTransform: 'uppercase',
-    color: '#16a34a',
-  },
-  weekDates: {
-    fontSize: 16,
-    fontWeight: 600,
-    color: 'var(--ink, #1f281f)',
-  },
-  generateBtn: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    width: '100%',
-    padding: '14px 0',
-    border: 'none',
-    borderRadius: 16,
-    background: 'linear-gradient(135deg, #16a34a, #059669)',
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 600,
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    boxShadow: '0 4px 14px rgba(22,163,74,0.3)',
-  },
-  note: {
-    fontSize: 12,
-    color: '#9ca3af',
-    margin: 0,
-    lineHeight: 1.5,
-    maxWidth: 340,
-  },
-  progressText: {
-    fontSize: 17,
-    fontWeight: 600,
-    color: 'var(--ink, #1f281f)',
-    margin: 0,
-  },
-  progressBarOuter: {
-    width: 180, height: 3,
-    background: 'rgba(22,163,74,0.08)',
-    borderRadius: 2,
-    overflow: 'hidden',
-    position: 'relative',
-  },
-  progressBarInner: {
-    position: 'absolute',
-    top: 0, left: 0,
-    width: '50%', height: '100%',
-    background: 'linear-gradient(90deg, transparent, #16a34a, transparent)',
-    borderRadius: 2,
-    animation: 'shimmer 1.5s ease-in-out infinite',
-  },
-  errorText: {
-    fontSize: 14,
-    color: '#dc2626',
-    margin: 0,
-    maxWidth: 400,
-    lineHeight: 1.4,
-    whiteSpace: 'pre-line',
-  },
-  retryBtn: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 8,
-    padding: '12px 24px',
-    background: 'linear-gradient(135deg, #16a34a, #059669)',
-    color: 'white',
-    border: 'none',
-    borderRadius: 14,
-    fontSize: 15,
-    fontWeight: 600,
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    boxShadow: '0 4px 14px rgba(22,163,74,0.3)',
-  },
 }

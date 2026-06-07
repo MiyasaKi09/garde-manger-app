@@ -535,16 +535,18 @@ export default function RecipeEditPage() {
 
   if (loading) {
     return (
-      <div className="recipes-container">
-        <div className="loading-spinner">⏳ Chargement...</div>
+      <div className="v21-page narrow">
+        <div className="v21-skel" style={{ height: 44, width: '50%' }} />
+        <div className="v21-skel" style={{ height: 40, marginTop: 24 }} />
+        <div className="v21-skel" style={{ height: 300, marginTop: 28 }} />
       </div>
     );
   }
 
   return (
-    <div className="recipes-container">
+    <div className="v21-page narrow">
       <div className="recipes-header">
-        <h1>{isNew ? '➕ Nouvelle recette' : '✏️ Modifier la recette'}</h1>
+        <h1>{isNew ? 'Nouvelle recette' : 'Modifier la recette'}</h1>
         <Link href="/recipes" className="btn-secondary">
           ← Retour aux recettes
         </Link>
@@ -552,35 +554,35 @@ export default function RecipeEditPage() {
 
       {/* Tabs de navigation */}
       <div className="edit-tabs">
-        <button 
+        <button
           className={`tab-btn ${activeTab === 'basic' ? 'active' : ''}`}
           onClick={() => setActiveTab('basic')}
         >
-          📝 Informations
+          Informations
         </button>
-        <button 
+        <button
           className={`tab-btn ${activeTab === 'ingredients' ? 'active' : ''}`}
           onClick={() => setActiveTab('ingredients')}
         >
-          🥕 Ingrédients
+          Ingrédients
         </button>
-        <button 
+        <button
           className={`tab-btn ${activeTab === 'steps' ? 'active' : ''}`}
           onClick={() => setActiveTab('steps')}
         >
-          📋 Instructions
+          Instructions
         </button>
-        <button 
+        <button
           className={`tab-btn ${activeTab === 'tools' ? 'active' : ''}`}
           onClick={() => setActiveTab('tools')}
         >
-          🔧 Ustensiles
+          Ustensiles
         </button>
-        <button 
+        <button
           className={`tab-btn ${activeTab === 'nutrition' ? 'active' : ''}`}
           onClick={() => setActiveTab('nutrition')}
         >
-          📊 Nutrition
+          Nutrition
         </button>
       </div>
 
@@ -741,7 +743,7 @@ export default function RecipeEditPage() {
                     checked={recipe.is_veg}
                     onChange={(e) => setRecipe({...recipe, is_veg: e.target.checked})}
                   />
-                  <span>🌱 Végétarien</span>
+                  <span>Végétarien</span>
                 </label>
               </div>
 
@@ -881,7 +883,7 @@ export default function RecipeEditPage() {
                     className="btn-primary"
                     type="button"
                   >
-                    ➕ Ajouter
+                    + Ajouter
                   </button>
                 </div>
               </div>
@@ -993,7 +995,7 @@ export default function RecipeEditPage() {
                   className="btn-secondary"
                   type="button"
                 >
-                  ➕ Ajouter une étape
+                  + Ajouter une étape
                 </button>
               </>
             )}
@@ -1083,7 +1085,7 @@ export default function RecipeEditPage() {
                     className="btn-primary"
                     type="button"
                   >
-                    ➕ Ajouter
+                    + Ajouter
                   </button>
                 </div>
               </div>
@@ -1301,14 +1303,14 @@ export default function RecipeEditPage() {
                       onClick={addMicronutrient}
                       className="btn-primary"
                     >
-                      ➕ Ajouter
+                      + Ajouter
                     </button>
                   </div>
                 </div>
 
                 <div className="micro-info">
                   <small>
-                    💡 Astuce : Vous pouvez ajouter n'importe quel nutriment ou composé nutritionnel 
+                    Astuce : Vous pouvez ajouter n'importe quel nutriment ou composé nutritionnel
                     (vitamines, minéraux, acides aminés, antioxydants, etc.)
                   </small>
                 </div>
@@ -1328,7 +1330,7 @@ export default function RecipeEditPage() {
           disabled={saving || !recipe.title}
           className="btn-primary"
         >
-          {saving ? '⏳ Sauvegarde...' : '💾 Sauvegarder la recette'}
+          {saving ? 'Sauvegarde…' : 'Sauvegarder la recette'}
         </button>
       </div>
     </div>

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import SmartAddForm from './components/SmartAddForm';
-import ProductCard from './components/PantryProductCard';
 import ConsumeModal from './components/ConsumeModal';
 import OcrReviewList from './components/OcrReviewList';
 import { capitalizeProduct } from './components/pantryUtils';
@@ -14,6 +13,43 @@ import PantryTabs from './components/PantryTabs';
 import RestesManager from '@/components/RestesManager';
 import './pantry.css';
 
+// Registre V21 — onglets de statut (mappés sur statusFilter)
+const STATUS_TABS = [
+  { key: 'all', label: 'Tout' },
+  { key: 'expired', label: 'Expirés' },
+  { key: 'expiring_soon', label: 'Bientôt' },
+  { key: 'good', label: 'Bon état' },
+];
+
+// Tri V21 — puces (mappées sur sortBy). defaultOrder = ordre au premier clic.
+const SORT_CHIPS = [
+  { key: 'expiration', label: 'Expiration', defaultOrder: 'asc' },
+  { key: 'quantity', label: 'Quantité', defaultOrder: 'desc' },
+  { key: 'name', label: 'Nom', defaultOrder: 'asc' },
+  { key: 'location', label: 'Emplacement', defaultOrder: 'asc' },
+];
+
+// expiration_status (good|expiring_soon|expired|no_date) → classe ledger (ok|soon|exp)
+function v21StatusClass(item) {
+  if (item.expiration_status === 'expired') return 'exp';
+  if (item.expiration_status === 'expiring_soon') return 'soon';
+  return 'ok';
+}
+
+// Libellé d'état mono pour la colonne de droite du registre
+function v21StatusLabel(item) {
+  if (item.expiration_status === 'expired') return 'Périmé';
+  const d = item.days_until_expiration;
+  if (item.expiration_status === 'expiring_soon') {
+    if (d == null) return 'À utiliser';
+    if (d <= 0) return "Aujourd'hui";
+    if (d === 1) return 'Demain';
+    return `À utiliser ${d} j`;
+  }
+  // good / no_date
+  if (d == null) return 'Frais';
+  return `Frais ${d} j`;
+}
 
 export default function PantryPage() {
   const router = useRouter();
@@ -81,7 +117,7 @@ export default function PantryPage() {
     // Tri
     filtered.sort((a, b) => {
       let comparison = 0;
-      
+
       switch (sortBy) {
         case 'expiration':
           // Tri par date d'expiration (les sans date à la fin)
@@ -94,28 +130,28 @@ export default function PantryPage() {
             comparison = dateA - dateB;
           }
           break;
-          
+
         case 'quantity':
           // Tri par quantité (convertir tout en grammes pour comparer)
           const qtyA = getQuantityInGrams(a);
           const qtyB = getQuantityInGrams(b);
           comparison = qtyA - qtyB;
           break;
-          
+
         case 'name':
           // Tri alphabétique par nom
           comparison = (a.product_name || '').localeCompare(b.product_name || '');
           break;
-          
+
         case 'location':
           // Tri par emplacement
           comparison = (a.storage_place || '').localeCompare(b.storage_place || '');
           break;
-          
+
         default:
           comparison = 0;
       }
-      
+
       return sortOrder === 'desc' ? -comparison : comparison;
     });
 
@@ -126,12 +162,12 @@ export default function PantryPage() {
   function getQuantityInGrams(item) {
     const qty = item.qty_remaining || 0;
     const unit = (item.unit || '').toLowerCase();
-    
+
     // Si on a des métadonnées pour conversion
     if (item.grams_per_unit && (unit === 'u' || unit === 'pièce' || unit === 'pièces')) {
       return qty * item.grams_per_unit;
     }
-    
+
     // Conversion standard des unités
     switch (unit) {
       case 'kg': return qty * 1000;
@@ -145,11 +181,11 @@ export default function PantryPage() {
 
   async function loadPantryItems() {
     if (isLoading) return; // Éviter les chargements multiples
-    
+
     setIsLoading(true);
     setLoading(true);
     try {
-      
+
       // D'abord, essayons la version simple qui fonctionnait
       let { data, error } = await supabase
         .from('inventory_lots')
@@ -160,9 +196,9 @@ export default function PantryPage() {
         console.error('Erreur lors du chargement des lots:', error);
         throw error;
       }
-      
 
-      
+
+
       // Enrichir avec les canonical_foods ET les archetypes
       if (data && data.length > 0) {
         // Récupérer les canonical_foods
@@ -222,9 +258,9 @@ export default function PantryPage() {
           return item;
         });
       }
-      
 
-      
+
+
       // Transformer les données - version simple d'abord
       const transformedData = (data || []).map(item => {
         let productName = 'Produit sans nom';
@@ -269,12 +305,12 @@ export default function PantryPage() {
 
   function getExpirationStatus(dateString) {
     if (!dateString) return 'no_date';
-    
+
     const today = new Date();
     const expirationDate = new Date(dateString);
     const diffTime = expirationDate - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
+
     if (diffDays < 0) return 'expired';
     if (diffDays <= 3) return 'expiring_soon';
     return 'good';
@@ -282,7 +318,7 @@ export default function PantryPage() {
 
   function getDaysUntilExpiration(dateString) {
     if (!dateString) return null;
-    
+
     const today = new Date();
     const expirationDate = new Date(dateString);
     const diffTime = expirationDate - today;
@@ -378,18 +414,18 @@ export default function PantryPage() {
     // Fermer le modal d'édition
     setShowEditLot(false);
     setItemToEdit(null);
-    
+
     // Mise à jour locale immédiate pour une UX fluide
-    setItems(prev => prev.map(i => 
-      i.id === id ? { 
-        ...i, 
+    setItems(prev => prev.map(i =>
+      i.id === id ? {
+        ...i,
         qty_remaining: parseFloat(updates.qty_remaining),
         unit: updates.unit,
         storage_place: updates.storage_place,
         expiration_date: updates.expiration_date
       } : i
     ));
-    
+
     try {
       const { error } = await supabase
         .from('inventory_lots')
@@ -428,7 +464,7 @@ export default function PantryPage() {
     if (!itemToDelete) return;
 
     const id = itemToDelete.id;
-    
+
     // Suppression optimiste immédiate
     setItems(prev => prev.filter(i => i.id !== id));
 
@@ -456,335 +492,266 @@ export default function PantryPage() {
     loadPantryItems();
   }
 
+  // Bascule de tri V21 : re-clic = inverse l'ordre, sinon applique l'ordre par défaut
+  function handleSortChip(chip) {
+    if (sortBy === chip.key) {
+      setSortOrder(prev => (prev === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setSortBy(chip.key);
+      setSortOrder(chip.defaultOrder);
+    }
+  }
+
   // Calculer les stats pour les tabs
   const tabStats = {
     totalProducts: items.length,
-    atRiskCount: items.filter(i => 
+    atRiskCount: items.filter(i =>
       i.expiration_status === 'expired' || i.expiration_status === 'expiring_soon'
     ).length
   };
 
+  // Compteurs pour le hero / lede
+  const surveiller = tabStats.atRiskCount;
+
   if (loading) {
     return (
-      <div className="pantry-loading">
-        <div className="loading-spinner"></div>
-        <p>Chargement du garde-manger...</p>
+      <div className="v21-page wide" aria-busy="true" aria-label="Chargement du garde-manger">
+        <div className="v21-skel" style={{ height: 150, marginBottom: 28 }} />
+        <div className="v21-skel" style={{ height: 56, marginBottom: 18 }} />
+        <div className="v21-skel" style={{ height: 44, marginBottom: 22 }} />
+        <div className="v21-its">
+          {[0, 1, 2, 3, 4, 5].map(i => (
+            <div key={i} className="v21-skel" style={{ height: 56, marginBottom: 1 }} />
+          ))}
+        </div>
       </div>
     );
   }
 
   return (
     <>
-      <div className="myko-canvas" aria-hidden="true" />
-      <div className="myko-page-container">
-        <div className="hero-header">
-          <div className="hero-content">
-            <div className="hero-text">
-              <span className="hero-eyebrow">Inventaire</span>
-              <h1 className="hero-title">Garde-manger</h1>
-              <p className="hero-subtitle">{items.length} produit{items.length !== 1 ? 's' : ''} · {items.filter(i => { const d = i.expiration_date ? Math.ceil((new Date(i.expiration_date) - new Date()) / 86400000) : null; return d !== null && d <= 3; }).length} à surveiller</p>
-            </div>
-            <div className="hero-actions">
-              <button className="btn-primary" onClick={() => setShowForm(true)}>
-                + Ajouter un produit
-              </button>
-              <button className="btn-secondary" onClick={() => setShowOcr(true)}>
-                Scanner
-              </button>
-            </div>
+      <div className="v21-page wide">
+
+        {/* HERO ÉDITORIAL */}
+        <header className="v21-hero">
+          <div className="v21-hero-text">
+            <span className="v21-eyebrow">Inventaire</span>
+            <h1 className="v21-title">Garde-manger</h1>
+            <div className="v21-rule" />
+            <p className="v21-lede">
+              {items.length} produit{items.length !== 1 ? 's' : ''} · {surveiller} à surveiller
+            </p>
           </div>
-        </div>
+          <div className="v21-hero-side">
+            <button className="v21-btn" onClick={() => setShowForm(true)}>+ Ajouter</button>
+            <button className="v21-btn ghost" onClick={() => setShowOcr(true)}>Scanner</button>
+          </div>
+        </header>
 
-      {/* Onglets de navigation */}
-      <PantryTabs
-        activeTab={activeTab} 
-        onTabChange={setActiveTab}
-        stats={tabStats}
-      />
+        {/* Onglets de navigation (Inventaire / À Risque / Statistiques) */}
+        <PantryTabs
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          stats={tabStats}
+        />
 
-      {/* Contenu selon l'onglet actif */}
-      {activeTab === 'inventory' && (
-        <>
-          {/* Contrôles améliorés */}
-          <div className="pantry-controls">
-            {/* Ligne 1: Recherche et stats */}
-            <div className="top-row">
+        {/* Contenu selon l'onglet actif */}
+        {activeTab === 'inventory' && (
+          <>
+            {/* Barre d'outils V21 : recherche + tri */}
+            <div className="v21-toolbar">
               <input
                 type="text"
-                placeholder="Rechercher un produit..."
+                placeholder="Rechercher un produit…"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input"
+                className="v21-search"
+                aria-label="Rechercher un produit"
               />
-              
-              {/* Stats cliquables pour filtrage rapide */}
-              <div className="stats-filter">
-                <button 
-                  className={`stat-filter-btn ${statusFilter === 'all' ? 'active' : ''}`}
-                  onClick={() => setStatusFilter('all')}
-                  title="Afficher tous les articles"
-                >
-                  <span className="stat-number">{items.length}</span>
-                  <span className="stat-label">TOUT</span>
-                </button>
-                <button 
-                  className={`stat-filter-btn expired ${statusFilter === 'expired' ? 'active' : ''}`}
-                  onClick={() => setStatusFilter(statusFilter === 'expired' ? 'all' : 'expired')}
-                  title="Afficher uniquement les produits expirés"
-                >
-                  <span className="stat-number">{items.filter(i => i.expiration_status === 'expired').length}</span>
-                  <span className="stat-label">EXPIRÉS</span>
-                </button>
-                <button 
-                  className={`stat-filter-btn expiring ${statusFilter === 'expiring_soon' ? 'active' : ''}`}
-                  onClick={() => setStatusFilter(statusFilter === 'expiring_soon' ? 'all' : 'expiring_soon')}
-                  title="Afficher uniquement les produits qui expirent bientôt"
-                >
-                  <span className="stat-number">{items.filter(i => i.expiration_status === 'expiring_soon').length}</span>
-                  <span className="stat-label">EXPIRE BIENTÔT</span>
-                </button>
-                <button 
-                  className={`stat-filter-btn good ${statusFilter === 'good' ? 'active' : ''}`}
-                  onClick={() => setStatusFilter(statusFilter === 'good' ? 'all' : 'good')}
-                  title="Afficher uniquement les produits en bon état"
-                >
-                  <span className="stat-number">{items.filter(i => i.expiration_status === 'good').length}</span>
-                  <span className="stat-label">BON ÉTAT</span>
-                </button>
+              <div className="v21-sort">
+                <span className="v21-sort-l">Trier</span>
+                {SORT_CHIPS.map(chip => (
+                  <button
+                    key={chip.key}
+                    className={`v21-chip ${sortBy === chip.key ? 'on' : ''}`}
+                    onClick={() => handleSortChip(chip)}
+                    aria-pressed={sortBy === chip.key}
+                  >
+                    {chip.label}
+                    {sortBy === chip.key && (sortOrder === 'asc' ? ' ↑' : ' ↓')}
+                  </button>
+                ))}
               </div>
             </div>
 
-            {/* Ligne 2: Options de tri */}
-            <div className="sort-controls">
-              <span className="sort-label">Trier par :</span>
-              
-              <div className="sort-options">
-                <button
-                  className={`sort-btn ${sortBy === 'expiration' ? 'active' : ''}`}
-                  onClick={() => {
-                    if (sortBy === 'expiration') {
-                      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-                    } else {
-                      setSortBy('expiration');
-                      setSortOrder('asc');
-                    }
-                  }}
-                >
-                  📅 Expiration {sortBy === 'expiration' && (sortOrder === 'asc' ? '↗️' : '↘️')}
-                </button>
-                
-                <button
-                  className={`sort-btn ${sortBy === 'quantity' ? 'active' : ''}`}
-                  onClick={() => {
-                    if (sortBy === 'quantity') {
-                      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-                    } else {
-                      setSortBy('quantity');
-                      setSortOrder('desc'); // Par défaut: plus grosse quantité d'abord
-                    }
-                  }}
-                >
-                  📦 Quantité {sortBy === 'quantity' && (sortOrder === 'asc' ? '↗️' : '↘️')}
-                </button>
-                
-                <button
-                  className={`sort-btn ${sortBy === 'name' ? 'active' : ''}`}
-                  onClick={() => {
-                    if (sortBy === 'name') {
-                      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-                    } else {
-                      setSortBy('name');
-                      setSortOrder('asc');
-                    }
-                  }}
-                >
-                  🔤 Nom {sortBy === 'name' && (sortOrder === 'asc' ? '↗️' : '↘️')}
-                </button>
-                
-                <button
-                  className={`sort-btn ${sortBy === 'location' ? 'active' : ''}`}
-                  onClick={() => {
-                    if (sortBy === 'location') {
-                      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-                    } else {
-                      setSortBy('location');
-                      setSortOrder('asc');
-                    }
-                  }}
-                >
-                  📍 Emplacement {sortBy === 'location' && (sortOrder === 'asc' ? '↗️' : '↘️')}
-                </button>
-              </div>
-
-              {/* Indicateur du nombre d'éléments filtrés */}
-              {filteredItems.length !== items.length && (
-                <span className="filter-count">
-                  {filteredItems.length} / {items.length} articles
-                </span>
-              )}
+            {/* Onglets de statut V21 */}
+            <div className="v21-tabs" role="tablist" aria-label="Filtrer par état">
+              {STATUS_TABS.map(tab => {
+                const count = tab.key === 'all'
+                  ? items.length
+                  : items.filter(i => i.expiration_status === tab.key).length;
+                return (
+                  <button
+                    key={tab.key}
+                    role="tab"
+                    aria-selected={statusFilter === tab.key}
+                    className={`v21-tab ${statusFilter === tab.key ? 'on' : ''}`}
+                    onClick={() => setStatusFilter(tab.key)}
+                  >
+                    {tab.label} · {count}
+                  </button>
+                );
+              })}
             </div>
-          </div>
 
-          {/* Grille des produits */}
-          <div className="pantry-grid">
+            {/* Registre / inventaire (ledger V21) */}
             {filteredItems.length === 0 ? (
-              <div className="empty-state">
-                <h2>Aucun article trouvé</h2>
-                <p>Ajustez vos filtres ou ajoutez des articles</p>
+              <div className="v21-empty">
+                <p>Aucun article trouvé. Ajustez vos filtres ou ajoutez des produits.</p>
+                <button className="v21-btn" onClick={() => setShowForm(true)}>+ Ajouter un produit</button>
               </div>
             ) : (
-              filteredItems.map(item => (
-                <ProductCard
-                  key={item.id}
-                  item={item}
-                  onConsume={() => handleConsume(item.id)}
-                  onEdit={() => handleEdit(item.id)}
-                  onDelete={() => handleDeleteClick(item.id)}
-                  onUpdateQuantity={handleUpdateQuantity}
-                />
-              ))
+              <div className="v21-its">
+                {filteredItems.map(item => {
+                  const cls = v21StatusClass(item);
+                  const q = item.qty_remaining != null
+                    ? +(+item.qty_remaining).toFixed(2)
+                    : null;
+                  const qty = q != null ? `${q}${item.unit ? ' ' + item.unit : ''}` : '—';
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      className={`v21-it ${cls}`}
+                      onClick={() => handleEdit(item.id)}
+                      title="Modifier ce lot"
+                    >
+                      <span className="v21-it-bar" aria-hidden="true" />
+                      <span className="v21-it-n">{capitalizeProduct(item.product_name)}</span>
+                      <span className="v21-it-q">{qty}</span>
+                      <span className="v21-it-lc">{item.storage_place || '—'}</span>
+                      <span className="v21-it-st">{v21StatusLabel(item)}</span>
+                    </button>
+                  );
+                })}
+              </div>
             )}
-          </div>
-        </>
-      )}
+          </>
+        )}
 
-      {/* Onglet Gestion des Restes */}
-      {activeTab === 'waste' && userId && (
-        <RestesManager userId={userId} onActionComplete={loadPantryItems} />
-      )}
+        {/* Onglet Gestion des Restes */}
+        {activeTab === 'waste' && userId && (
+          <RestesManager userId={userId} onActionComplete={loadPantryItems} />
+        )}
 
-      {/* Onglet Statistiques */}
-      {activeTab === 'stats' && (
-        <div className="stats-view">
-          <div className="stats-content" style={{
-            background: 'rgba(255, 255, 255, 0.7)',
-            backdropFilter: 'blur(10px)',
-            borderRadius: '16px',
-            padding: '2rem',
-            maxWidth: '800px',
-            margin: '0 auto'
-          }}>
-            <h2 style={{ marginBottom: '2rem', color: 'var(--forest-700)' }}>📊 Vue d'ensemble</h2>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
-              <div className="stat-box">
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📦</div>
-                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--forest-700)' }}>{items.length}</div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>Produits total</div>
+        {/* Onglet Statistiques */}
+        {activeTab === 'stats' && (
+          <section className="v21-section flush stats-view">
+            <div className="v21-bh"><span className="v21-bl">Vue d'ensemble</span></div>
+            <div className="v21-stats cols-4">
+              <div className="v21-stat">
+                <span className="v21-stat-l">Produits</span>
+                <span className="v21-stat-v">{items.length}</span>
+                <span className="v21-stat-s">au total</span>
               </div>
-              
-              <div className="stat-box">
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🔥</div>
-                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#ef4444' }}>
-                  {items.filter(i => i.expiration_status === 'expired').length}
-                </div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>Expirés</div>
+              <div className={`v21-stat ${items.filter(i => i.expiration_status === 'expired').length > 0 ? 'alert' : ''}`}>
+                <span className="v21-stat-l">Expirés</span>
+                <span className="v21-stat-v">{items.filter(i => i.expiration_status === 'expired').length}</span>
+                <span className="v21-stat-s">à retirer</span>
               </div>
-              
-              <div className="stat-box">
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⏰</div>
-                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#f97316' }}>
-                  {items.filter(i => i.expiration_status === 'expiring_soon').length}
-                </div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>Expire bientôt</div>
+              <div className="v21-stat">
+                <span className="v21-stat-l">Bientôt</span>
+                <span className="v21-stat-v">{items.filter(i => i.expiration_status === 'expiring_soon').length}</span>
+                <span className="v21-stat-s">à consommer vite</span>
               </div>
-              
-              <div className="stat-box">
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>✅</div>
-                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#22c55e' }}>
-                  {items.filter(i => i.expiration_status === 'good').length}
-                </div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--earth-600)' }}>Bon état</div>
+              <div className="v21-stat">
+                <span className="v21-stat-l">Bon état</span>
+                <span className="v21-stat-v">{items.filter(i => i.expiration_status === 'good').length}</span>
+                <span className="v21-stat-s">sans urgence</span>
               </div>
             </div>
+            <p className="v21-next">
+              {tabStats.atRiskCount > 0
+                ? `Vous avez ${tabStats.atRiskCount} produit(s) à risque. Consultez l'onglet « À Risque » pour des suggestions anti-gaspillage.`
+                : 'Aucun produit à risque pour le moment.'}
+            </p>
+          </section>
+        )}
 
-            <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'rgba(255, 255, 255, 0.5)', borderRadius: '12px' }}>
-              <h3 style={{ marginBottom: '1rem', color: 'var(--forest-700)' }}>💡 Conseil</h3>
-              <p style={{ color: 'var(--earth-700)', lineHeight: '1.6' }}>
-                {tabStats.atRiskCount > 0 
-                  ? `Vous avez ${tabStats.atRiskCount} produit(s) à risque. Consultez l'onglet "À Risque" pour des suggestions anti-gaspillage.`
-                  : 'Excellent ! Aucun produit à risque pour le moment. Continuez comme ça ! 🎉'
-                }
-              </p>
-            </div>
-          </div>
+        {/* Modal d'ajout - disponible sur tous les onglets */}
+        {showForm && (
+          <SmartAddForm
+            open={showForm}
+            onClose={handleFormClose}
+            onLotCreated={handleFormClose}
+          />
+        )}
+
+        {/* Modal de consommation */}
+        <ConsumeModal
+          item={itemToConsume}
+          isOpen={showConsumeModal}
+          onClose={() => {
+            setShowConsumeModal(false);
+            setItemToConsume(null);
+          }}
+          onConfirm={handleConsumeConfirm}
+        />
+
+        {/* Boutons flottants */}
+        <div className="pantry-fab-group">
+          <button
+            className="pantry-fab pantry-fab-secondary"
+            onClick={() => setShowOcr(true)}
+            title="Scanner une liste (OCR)"
+          >
+            <span aria-hidden="true">⌕</span>
+          </button>
+          <button
+            className="pantry-fab"
+            onClick={() => setShowForm(true)}
+            title="Ajouter un article"
+          >
+            <span aria-hidden="true">+</span>
+          </button>
         </div>
-      )}
 
-      {/* Modal d'ajout - disponible sur tous les onglets */}
-      {showForm && (
-        <SmartAddForm
-          open={showForm}
-          onClose={handleFormClose}
-          onLotCreated={handleFormClose}
-        />
-      )}
+        {/* Modal OCR */}
+        {showOcr && (
+          <OcrReviewList
+            onClose={() => setShowOcr(false)}
+            onItemsAdded={(count) => {
+              setShowOcr(false);
+              loadPantryItems();
+            }}
+          />
+        )}
 
-      {/* Modal de consommation */}
-      <ConsumeModal
-        item={itemToConsume}
-        isOpen={showConsumeModal}
-        onClose={() => {
-          setShowConsumeModal(false);
-          setItemToConsume(null);
-        }}
-        onConfirm={handleConsumeConfirm}
-      />
-
-      {/* Boutons flottants */}
-      <div className="pantry-fab-group">
-        <button
-          className="pantry-fab pantry-fab-secondary"
-          onClick={() => setShowOcr(true)}
-          title="Scanner une liste (OCR)"
-        >
-          📷
-        </button>
-        <button
-          className="pantry-fab"
-          onClick={() => setShowForm(true)}
-          title="Ajouter un article"
-        >
-          +
-        </button>
-      </div>
-
-      {/* Modal OCR */}
-      {showOcr && (
-        <OcrReviewList
-          onClose={() => setShowOcr(false)}
-          onItemsAdded={(count) => {
-            setShowOcr(false);
-            loadPantryItems();
+        {/* Dialog de confirmation de suppression */}
+        <ConfirmDialog
+          isOpen={showConfirmDelete}
+          onClose={() => {
+            setShowConfirmDelete(false);
+            setItemToDelete(null);
           }}
+          onConfirm={handleDeleteConfirm}
+          title="Supprimer l'article"
+          message={`Êtes-vous sûr de vouloir supprimer "${itemToDelete?.product_name}" ?`}
+          confirmText="Supprimer"
+          cancelText="Annuler"
         />
-      )}
 
-      {/* Dialog de confirmation de suppression */}
-      <ConfirmDialog
-        isOpen={showConfirmDelete}
-        onClose={() => {
-          setShowConfirmDelete(false);
-          setItemToDelete(null);
-        }}
-        onConfirm={handleDeleteConfirm}
-        title="Supprimer l'article"
-        message={`Êtes-vous sûr de vouloir supprimer "${itemToDelete?.product_name}" ?`}
-        confirmText="Supprimer"
-        cancelText="Annuler"
-      />
-
-      {/* Modal d'édition complète */}
-      {showEditLot && itemToEdit && (
-        <EditLotForm
-          item={itemToEdit}
-          onUpdate={handleUpdateLot}
-          onCancel={() => {
-            setShowEditLot(false);
-            setItemToEdit(null);
-          }}
-        />
-      )}
+        {/* Modal d'édition complète */}
+        {showEditLot && itemToEdit && (
+          <EditLotForm
+            item={itemToEdit}
+            onUpdate={handleUpdateLot}
+            onCancel={() => {
+              setShowEditLot(false);
+              setItemToEdit(null);
+            }}
+          />
+        )}
       </div>
     </>
   );

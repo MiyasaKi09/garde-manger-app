@@ -83,19 +83,25 @@ export default function ImportPage() {
 
   return (
     <>
-      <div className="import-container">
-        <div className="header-card">
-          <button onClick={() => router.push('/planning')} className="back-button">
-            <ArrowLeft size={18} /> Retour au planning
-          </button>
-          <h1>Importer un plan nutritionnel</h1>
-          <p>Déposez le fichier .xlsx ou .json généré par votre nutritionniste</p>
-        </div>
+      <div className="v21-page narrow">
+        <button onClick={() => router.push('/planning')} className="imp-back">
+          <ArrowLeft size={15} /> Retour au planning
+        </button>
+
+        {/* ═══ HERO ÉDITORIAL ═══ */}
+        <header className="v21-hero">
+          <div className="v21-hero-text">
+            <span className="v21-eyebrow">Import · plan nutritionnel</span>
+            <h1 className="v21-title">Importer un plan.</h1>
+            <div className="v21-rule" />
+            <p className="v21-lede">Déposez le fichier .xlsx ou .json généré par votre nutritionniste.</p>
+          </div>
+        </header>
 
         {!result ? (
-          <>
+          <section className="v21-section flush imp-body">
             <div
-              className={`drop-zone ${dragging ? 'dragging' : ''} ${file ? 'has-file' : ''}`}
+              className={`imp-drop ${dragging ? 'dragging' : ''} ${file ? 'has-file' : ''}`}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
@@ -110,323 +116,132 @@ export default function ImportPage() {
               />
 
               {file ? (
-                <div className="file-info">
+                <div className="imp-file">
                   {file.name.endsWith('.json') ? (
-                    <FileJson size={48} color="#16a34a" />
+                    <FileJson size={36} color="var(--terracotta)" strokeWidth={1.4} />
                   ) : (
-                    <FileSpreadsheet size={48} color="#16a34a" />
+                    <FileSpreadsheet size={36} color="var(--terracotta)" strokeWidth={1.4} />
                   )}
-                  <div className="file-name">{file.name}</div>
-                  <div className="file-size">{(file.size / 1024).toFixed(1)} KB</div>
+                  <div className="imp-file-name">{file.name}</div>
+                  <div className="imp-file-size">{(file.size / 1024).toFixed(1)} KB</div>
                 </div>
               ) : (
-                <div className="drop-prompt">
-                  <Upload size={48} color="#9ca3af" />
-                  <div className="drop-text">Glissez votre fichier .xlsx ou .json ici</div>
-                  <div className="drop-hint">ou cliquez pour parcourir</div>
+                <div className="imp-prompt">
+                  <Upload size={36} color="var(--ink-3)" strokeWidth={1.4} />
+                  <div className="imp-drop-t">Glissez votre fichier .xlsx ou .json ici</div>
+                  <div className="imp-drop-h">ou cliquez pour parcourir</div>
                 </div>
               )}
             </div>
 
             {error && (
-              <div className="error-banner">
-                <AlertCircle size={18} />
+              <div className="imp-error">
+                <AlertCircle size={16} />
                 <span>{error}</span>
               </div>
             )}
 
             {file && (
-              <button
-                className="upload-button"
-                onClick={handleUpload}
-                disabled={uploading}
-              >
-                {uploading ? (
-                  <>
-                    <div className="spinner-sm"></div>
-                    Import en cours...
-                  </>
-                ) : (
-                  <>
-                    <Upload size={18} />
-                    Importer le plan
-                  </>
-                )}
-              </button>
+              uploading ? (
+                <div className="imp-uploading" aria-busy="true">
+                  <div className="v21-skel" style={{ height: 12, width: '70%' }} />
+                  <span className="imp-uploading-l">Import en cours…</span>
+                </div>
+              ) : (
+                <button className="v21-btn" onClick={handleUpload}>
+                  <Upload size={15} /> Importer le plan
+                </button>
+              )
             )}
-          </>
+          </section>
         ) : (
-          <div className="success-card">
-            <CheckCircle size={48} color="#16a34a" />
-            <h2>Import réussi !</h2>
-            <p className="month-label">{result.meta?.monthLabel}</p>
+          <section className="v21-section flush imp-body">
+            <span className="imp-ok-eyebrow"><CheckCircle size={14} /> Import réussi</span>
+            {result.meta?.monthLabel && <p className="imp-month">{result.meta.monthLabel}</p>}
 
-            <div className="summary-grid">
-              <div className="summary-item">
-                <div className="summary-number">{result.summary.meals}</div>
-                <div className="summary-label">Repas</div>
+            <div className="v21-stats cols-4 imp-summary">
+              <div className="v21-stat">
+                <span className="v21-stat-l">Repas</span>
+                <span className="v21-stat-v">{result.summary.meals}</span>
               </div>
-              <div className="summary-item">
-                <div className="summary-number">{result.summary.batchRecipes}</div>
-                <div className="summary-label">Recettes batch</div>
+              <div className="v21-stat">
+                <span className="v21-stat-l">Recettes batch</span>
+                <span className="v21-stat-v">{result.summary.batchRecipes}</span>
               </div>
-              <div className="summary-item">
-                <div className="summary-number">{result.summary.prepTasks}</div>
-                <div className="summary-label">Tâches prep</div>
+              <div className="v21-stat">
+                <span className="v21-stat-l">Tâches prep</span>
+                <span className="v21-stat-v">{result.summary.prepTasks}</span>
               </div>
-              <div className="summary-item">
-                <div className="summary-number">{result.summary.shoppingItems}</div>
-                <div className="summary-label">Articles courses</div>
+              <div className="v21-stat">
+                <span className="v21-stat-l">Articles courses</span>
+                <span className="v21-stat-v">{result.summary.shoppingItems}</span>
               </div>
             </div>
 
             {result.warnings?.length > 0 && (
-              <div className="warnings">
-                <AlertCircle size={16} />
+              <div className="imp-warn">
+                <AlertCircle size={15} />
                 <span>{result.warnings.length} avertissement(s)</span>
               </div>
             )}
 
-            <button
-              className="view-button"
-              onClick={() => router.push(`/planning/${result.importId}`)}
-            >
+            <button className="v21-btn" onClick={() => router.push(`/planning/${result.importId}`)}>
               Voir le planning
             </button>
-          </div>
+          </section>
         )}
       </div>
 
       <style jsx>{`
-        .import-container {
-          padding: 20px;
-          max-width: 600px;
-          margin: 0 auto;
-          font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        .imp-back {
+          display: inline-flex; align-items: center; gap: 7px;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase;
+          background: none; border: none; color: var(--ink-3); cursor: pointer;
+          padding: 0; margin-bottom: 20px; transition: color 0.15s ease;
         }
+        .imp-back:hover { color: var(--terracotta); }
 
-        .header-card {
+        .imp-body { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding-top: 30px; }
+
+        .imp-drop {
+          width: 100%; box-sizing: border-box;
+          border: 1.5px dashed var(--line-strong); border-radius: 3px;
+          padding: 48px 24px; text-align: center; cursor: pointer;
           background: var(--surface);
-          backdrop-filter: blur(10px);
-          border: 1px solid var(--line);
-          border-radius: 16px;
-          padding: 24px;
-          margin-bottom: 24px;
-          text-align: center;
+          transition: border-color 0.15s ease, background 0.15s ease;
+        }
+        .imp-drop:hover, .imp-drop.dragging { border-color: var(--terracotta); background: var(--surface-soft); }
+        .imp-drop.has-file { border-style: solid; border-color: var(--terracotta); background: var(--surface-soft); }
+
+        .imp-prompt, .imp-file { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .imp-drop-t { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink-1); }
+        .imp-drop-h { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; }
+        .imp-file-name { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink-1); }
+        .imp-file-size { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
+
+        .imp-error {
+          display: flex; align-items: center; gap: 8px; width: 100%; box-sizing: border-box;
+          font-family: var(--font-text); font-size: 13px;
+          color: var(--state-expired); background: var(--state-expired-bg);
+          border: 1px solid var(--state-expired); border-radius: 3px; padding: 11px 14px;
         }
 
-        .header-card h1 {
-          font-size: 24px;
-          color: #1f2937;
-          margin: 12px 0 8px;
-        }
+        .imp-uploading { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 320px; }
+        .imp-uploading-l { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
 
-        .header-card p {
-          color: #6b7280;
-          margin: 0;
+        .imp-ok-eyebrow {
+          display: inline-flex; align-items: center; gap: 6px;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+          background: var(--brand); color: #fff; padding: 5px 10px; border-radius: 3px;
         }
+        .imp-month { font-family: var(--font-text); font-size: 14px; color: var(--ink-2); margin: 0; }
+        .imp-summary { width: 100%; }
+        .imp-summary .v21-stat { padding: 18px 18px 18px 0; }
 
-        .back-button {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          background: none;
-          border: none;
-          color: #6b7280;
-          cursor: pointer;
-          font-size: 14px;
-          padding: 4px 8px;
-          border-radius: 6px;
-        }
-
-        .back-button:hover {
-          background: rgba(0, 0, 0, 0.05);
-          color: #374151;
-        }
-
-        .drop-zone {
-          background: var(--surface);
-          backdrop-filter: blur(10px);
-          border: 2px dashed #d1d5db;
-          border-radius: 16px;
-          padding: 48px 24px;
-          text-align: center;
-          cursor: pointer;
-          transition: all 0.2s;
-          margin-bottom: 16px;
-        }
-
-        .drop-zone:hover, .drop-zone.dragging {
-          border-color: #16a34a;
-          background: rgba(34, 197, 94, 0.05);
-        }
-
-        .drop-zone.has-file {
-          border-color: #16a34a;
-          border-style: solid;
-          background: rgba(34, 197, 94, 0.05);
-        }
-
-        .drop-prompt {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .drop-text {
-          font-size: 16px;
-          font-weight: 600;
-          color: #374151;
-        }
-
-        .drop-hint {
-          font-size: 14px;
-          color: #9ca3af;
-        }
-
-        .file-info {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .file-name {
-          font-size: 16px;
-          font-weight: 600;
-          color: #16a34a;
-        }
-
-        .file-size {
-          font-size: 14px;
-          color: #6b7280;
-        }
-
-        .error-banner {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          background: #fef2f2;
-          border: 1px solid #fecaca;
-          border-radius: 8px;
-          padding: 12px 16px;
-          margin-bottom: 16px;
-          color: #dc2626;
-          font-size: 14px;
-        }
-
-        .upload-button {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          padding: 14px 24px;
-          background: #16a34a;
-          color: white;
-          border: none;
-          border-radius: 12px;
-          font-size: 16px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: background 0.2s;
-        }
-
-        .upload-button:hover:not(:disabled) {
-          background: #15803d;
-        }
-
-        .upload-button:disabled {
-          opacity: 0.7;
-          cursor: not-allowed;
-        }
-
-        .success-card {
-          background: var(--surface);
-          backdrop-filter: blur(10px);
-          border: 1px solid var(--line);
-          border-radius: 16px;
-          padding: 32px 24px;
-          text-align: center;
-        }
-
-        .success-card h2 {
-          font-size: 22px;
-          color: #16a34a;
-          margin: 16px 0 4px;
-        }
-
-        .month-label {
-          font-size: 16px;
-          color: #6b7280;
-          margin: 0 0 24px;
-        }
-
-        .summary-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 12px;
-          margin-bottom: 20px;
-        }
-
-        .summary-item {
-          background: var(--surface);
-          border-radius: 10px;
-          padding: 12px;
-        }
-
-        .summary-number {
-          font-size: 24px;
-          font-weight: bold;
-          color: #16a34a;
-        }
-
-        .summary-label {
-          font-size: 12px;
-          color: #6b7280;
-        }
-
-        .warnings {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 6px;
-          color: #d97706;
-          font-size: 14px;
-          margin-bottom: 16px;
-        }
-
-        .view-button {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 12px 32px;
-          background: #16a34a;
-          color: white;
-          border: none;
-          border-radius: 10px;
-          font-size: 16px;
-          font-weight: 600;
-          cursor: pointer;
-        }
-
-        .view-button:hover {
-          background: #15803d;
-        }
-
-        .spinner-sm {
-          width: 18px;
-          height: 18px;
-          border: 2px solid var(--line);
-          border-top: 2px solid white;
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+        .imp-warn {
+          display: flex; align-items: center; gap: 7px;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase;
+          color: var(--state-soon);
         }
       `}</style>
     </>

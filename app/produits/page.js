@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 export default function ProduitsPage(){
   const [lots, setLots] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(()=>{ (async()=>{
     // On agrège par produit pour afficher une carte par produit
@@ -13,6 +14,7 @@ export default function ProduitsPage(){
       .select('id, qty, unit, dlc, product:products_catalog(id,name,category), location:locations(id,name,icon)')
       .order('dlc', { ascending: true });
     if(!error) setLots(data||[]);
+    setLoading(false);
   })() },[]);
 
   // Regroupe par produit
@@ -33,17 +35,45 @@ export default function ProduitsPage(){
   },[lots]);
 
   return (
-    <div>
-      <h1>Produits</h1>
-      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))',gap:12}}>
-        {products.map(p=>(
-          <Link key={p.id} href={`/produits/${p.id}`} className="card" style={{textDecoration:'none',color:'inherit'}}>
-            <strong>{p.name}</strong>
-            <div style={{opacity:.7,marginTop:4}}>{p.total} {p.unit}</div>
-            <div style={{marginTop:6,fontSize:12,opacity:.7}}>{p.category||'—'}</div>
-          </Link>
-        ))}
-      </div>
+    <div className="v21-page">
+      <header className="v21-hero">
+        <div className="v21-hero-text">
+          <span className="v21-eyebrow">Garde-manger</span>
+          <h1 className="v21-title">Produits</h1>
+          <div className="v21-rule" />
+          <p className="v21-lede">Vos produits en stock, regroupés et triés par fraîcheur.</p>
+        </div>
+      </header>
+
+      <section className="v21-section flush">
+        <div className="v21-mast-h">
+          <h2 className="v21-mast-title">Catalogue</h2>
+          <span className="v21-mast-c">{products.length} produit{products.length !== 1 ? 's' : ''}</span>
+        </div>
+
+        {loading ? (
+          <div className="v21-cards" aria-busy="true" aria-label="Chargement des produits" style={{ marginTop: 22 }}>
+            {[0,1,2,3].map(i => <div key={i} className="v21-skel" style={{ height: 132 }} />)}
+          </div>
+        ) : products.length === 0 ? (
+          <div className="v21-empty">
+            <p>Aucun produit en stock pour le moment.</p>
+            <Link href="/add" className="v21-btn">Ajouter un lot</Link>
+          </div>
+        ) : (
+          <div className="v21-cards" style={{ marginTop: 22 }}>
+            {products.map(p=>(
+              <Link key={p.id} href={`/produits/${p.id}`} className="v21-card">
+                <div className="v21-card-body">
+                  <span className="v21-card-title">{p.name}</span>
+                  <span className="v21-bignum" style={{ fontSize: 22 }}>{p.total} {p.unit}</span>
+                  <span className="v21-card-meta">{p.category || '—'}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   );
 }

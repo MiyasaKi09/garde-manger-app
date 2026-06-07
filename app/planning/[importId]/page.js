@@ -6,8 +6,6 @@ import { supabase } from '@/lib/supabaseClient'
 
 // ── Constants ──
 const PDJ_J = { d: "200g skyr + 3 œufs durs", k: 383, p: 44, g: 9, l: 18, f: 0 }
-const EMOJIS = { "Séance": "🏋️", "Repos": "😴", "WE": "🌴", "Marche": "🚶", "Activité libre": "🌊", "Repos actif": "🧘" }
-const MEAL_ICONS = { pdj: "🌅", dej: "🥡", din: "🍳", col: "🥜" }
 
 // ── Data transformation (JSON → flat format) ──
 function transformMeal(m) {
@@ -203,94 +201,70 @@ export default function PlanningView() {
 
   const MacroBar = ({ k, p: pr, g, l, f, target }) => {
     const pct = target ? Math.min((k / target) * 100, 100) : 100
+    const over = target && (k / target) * 100 > 102
     return (
-      <div style={{ display: "flex", gap: 8, alignItems: "center", fontSize: 12, flexWrap: "wrap" }}>
-        <div style={{ flex: 1, minWidth: 80 }}>
-          <div style={{ background: "#1a1a2e", borderRadius: 6, height: 6, overflow: "hidden" }}>
-            <div style={{ width: `${pct}%`, height: "100%", borderRadius: 6,
-              background: pct > 102 ? "linear-gradient(90deg,#e74c3c,#ff6b6b)" : "linear-gradient(90deg,#f39c12,#f1c40f)",
-              transition: "width 0.4s ease" }} />
-          </div>
+      <div className="pv-macrobar">
+        <div className="pv-macrobar-track">
+          <div className="pv-macrobar-fill" style={{ width: `${pct}%`, background: over ? 'var(--terracotta)' : 'var(--saffron)' }} />
         </div>
-        <span style={{ color: "#f1c40f", fontWeight: 700 }}>{k}</span>
-        <span style={{ color: "#3498db" }}>{pr}P</span>
-        <span style={{ color: "#e67e22" }}>{g}G</span>
-        <span style={{ color: "#9b59b6" }}>{l}L</span>
-        <span style={{ color: "#2ecc71" }}>{f}F</span>
+        <span className="pv-m"><b>{k}</b> kcal</span>
+        <span className="pv-m"><b>{pr}</b>P</span>
+        <span className="pv-m"><b>{g}</b>G</span>
+        <span className="pv-m"><b>{l}</b>L</span>
+        <span className="pv-m"><b>{f}</b>F</span>
       </div>
     )
   }
 
-  const MealCard = ({ icon, label, desc, macros, onClick, expandable, expanded }) => (
+  // Barre de couleur par repas (alignée v21.css)
+  const MEAL_BAR = { pdj: '#D9A33A', dej: '#6FB05A', din: '#6E7A3F', col: '#BB5836' }
+
+  const MealCard = ({ barKey, label, desc, macros, onClick, expandable, expanded }) => (
     <div
       onClick={expandable ? onClick : undefined}
-      style={{
-        background: expanded ? "#1e2a4a" : "#16213e",
-        borderRadius: 16, padding: "14px 16px", cursor: expandable ? "pointer" : "default",
-        border: expanded ? "1px solid #3498db44" : "1px solid #ffffff08",
-        transition: "all 0.2s ease",
-      }}
+      className={`pv-meal${expandable ? ' clickable' : ''}${expanded ? ' open' : ''}`}
     >
-      <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 8 }}>
-        <span style={{ fontSize: 20, lineHeight: 1 }}>{icon}</span>
-        <div style={{ flex: 1 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 1.5, color: "#8899aa", fontWeight: 600 }}>{label}</span>
-            {expandable && (
-              <span style={{ fontSize: 10, color: "#3498db", background: "#3498db22", padding: "2px 8px", borderRadius: 10, fontWeight: 600 }}>
-                {expanded ? "▲ fermer" : "▼ étapes"}
-              </span>
-            )}
-          </div>
-          <p style={{ margin: "4px 0 0", fontSize: 14, color: "#e8e8f0", lineHeight: 1.4, fontWeight: 500 }}>{desc}</p>
+      <span className="pv-meal-bar" aria-hidden="true" style={{ background: MEAL_BAR[barKey] || MEAL_BAR.din }} />
+      <div className="pv-meal-main">
+        <div className="pv-meal-h">
+          <span className="pv-meal-l">{label}</span>
+          {expandable && (
+            <span className="pv-meal-toggle">{expanded ? 'Fermer' : 'Étapes'}</span>
+          )}
         </div>
+        <p className="pv-meal-d">{desc}</p>
+        <MacroBar {...macros} />
       </div>
-      <MacroBar {...macros} />
     </div>
   )
 
   const StepsList = ({ steps, title, time, portions }) => (
-    <div style={{ background: "#0d1b2a", borderRadius: 14, padding: 16, margin: "0 0 4px", border: "1px solid #ffffff08" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-        <span style={{ fontSize: 13, fontWeight: 700, color: "#f1c40f" }}>{title}</span>
-        <span style={{ fontSize: 12, color: "#3498db", background: "#3498db18", padding: "3px 10px", borderRadius: 8 }}>⏱ {time}</span>
+    <div className="pv-steps">
+      <div className="pv-steps-h">
+        <span className="v21-bl">{title}</span>
+        {time && <span className="pv-steps-time">{time}</span>}
       </div>
       {portions && (
-        <div style={{ marginBottom: 10, display: "flex", flexDirection: "column", gap: 4 }}>
-          <div style={{ fontSize: 12, color: "#e8e8f0", padding: "8px 12px", background: "#1e3a5f22", borderRadius: 8, lineHeight: 1.5, border: "1px solid #3498db22" }}>
-            <span style={{ color: "#f39c12", fontWeight: 700, fontSize: 11, textTransform: "uppercase", letterSpacing: 1 }}>Julien</span>
-            <span style={{ color: "#8899aa", margin: "0 6px" }}>·</span>
-            <span>{portions.pJ}</span>
+        <div className="pv-portions">
+          <div className="pv-portion">
+            <span className="pv-portion-p">Julien</span>
+            <span className="pv-portion-d">{portions.pJ}</span>
           </div>
-          <div style={{ fontSize: 12, color: "#e8e8f0", padding: "8px 12px", background: "#e74c3c0a", borderRadius: 8, lineHeight: 1.5, border: "1px solid #e74c3c18" }}>
-            <span style={{ color: "#e74c3c", fontWeight: 700, fontSize: 11, textTransform: "uppercase", letterSpacing: 1 }}>Zoé</span>
-            <span style={{ color: "#8899aa", margin: "0 6px" }}>·</span>
-            <span>{portions.pZ}</span>
+          <div className="pv-portion">
+            <span className="pv-portion-p">Zoé</span>
+            <span className="pv-portion-d">{portions.pZ}</span>
           </div>
         </div>
       )}
       {steps.map((s, i) => (
-        <div
-          key={i}
-          style={{
-            display: "flex", gap: 10, padding: "10px 0",
-            borderTop: i > 0 ? "1px solid #ffffff08" : "none",
-          }}
-        >
-          <div style={{
-            width: 28, height: 28, borderRadius: "50%", flexShrink: 0,
-            background: "#f39c12",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 12, fontWeight: 700, color: "#000",
-          }}>
-            {i + 1}
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
-              <span style={{ fontSize: 13, fontWeight: 600, color: "#e8e8f0" }}>{s.a}</span>
-              <span style={{ fontSize: 11, color: "#f39c12", fontWeight: 500, flexShrink: 0 }}>{s.t}</span>
+        <div key={i} className="pv-step">
+          <span className="pv-step-n">{i + 1}</span>
+          <div className="pv-step-body">
+            <div className="pv-step-top">
+              <span className="pv-step-a">{s.a}</span>
+              {s.t && <span className="pv-step-t">{s.t}</span>}
             </div>
-            <p style={{ margin: "4px 0 0", fontSize: 12, color: "#aabbcc", lineHeight: 1.6 }}>{s.dt}</p>
+            {s.dt && <p className="pv-step-dt">{s.dt}</p>}
           </div>
         </div>
       ))}
@@ -301,25 +275,29 @@ export default function PlanningView() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: "100vh", background: "#0a0f1e", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ textAlign: "center", color: "#667788" }}>
-          <div style={{ width: 40, height: 40, border: "3px solid #1e3a5f", borderTop: "3px solid #f39c12", borderRadius: "50%", animation: "spin 1s linear infinite", margin: "0 auto 16px" }} />
-          <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14 }}>Chargement...</div>
-        </div>
-        <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+      <div className="v21-page" aria-busy="true" aria-label="Chargement du planning">
+        <div className="v21-skel" style={{ height: 90, marginBottom: 24 }} />
+        <div className="v21-skel" style={{ height: 44, marginBottom: 18 }} />
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className="v21-skel" style={{ height: 72, marginBottom: 12 }} />
+        ))}
       </div>
     )
   }
 
   if (error) {
     return (
-      <div style={{ minHeight: "100vh", background: "#0a0f1e", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-        <div style={{ textAlign: "center", color: "#e74c3c" }}>
-          <div style={{ fontSize: 40, marginBottom: 12 }}>!</div>
-          <div style={{ fontSize: 16, fontWeight: 600 }}>{error}</div>
-          <button onClick={() => router.push('/planning')} style={{ marginTop: 16, padding: "10px 24px", borderRadius: 10, border: "none", background: "#f39c12", color: "#000", fontWeight: 600, cursor: "pointer" }}>
-            Retour
-          </button>
+      <div className="v21-page">
+        <header className="v21-hero">
+          <div className="v21-hero-text">
+            <span className="v21-eyebrow">Planning</span>
+            <h1 className="v21-title">Introuvable.</h1>
+            <div className="v21-rule" />
+            <p className="v21-lede">{error}</p>
+          </div>
+        </header>
+        <div className="v21-section flush" style={{ paddingTop: 28 }}>
+          <button onClick={() => router.push('/planning')} className="v21-btn">Retour au planning</button>
         </div>
       </div>
     )
@@ -327,266 +305,309 @@ export default function PlanningView() {
 
   if (!day) return null
 
-  const emojiKey = Object.keys(EMOJIS).find(k => day.type?.includes(k))
-
   // ── Render ──
   return (
-    <div style={{
-      maxWidth: 430, margin: "0 auto", minHeight: "100vh",
-      background: "#0a0f1e", color: "#e8e8f0",
-      fontFamily: "'DM Sans', 'Nunito', -apple-system, sans-serif",
-      display: "flex", flexDirection: "column",
-    }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-      {/* Header */}
-      <div style={{ padding: "16px 16px 0", background: "linear-gradient(180deg, #0f1a30 0%, #0a0f1e 100%)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-          <div>
-            <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, letterSpacing: -0.5 }}>
-              myko<span style={{ color: "#f39c12" }}>.</span>
-            </h1>
-          </div>
-          <div style={{
-            display: "flex", background: "#16213e", borderRadius: 10, overflow: "hidden", border: "1px solid #ffffff10",
-          }}>
+    <div className="v21-page" ref={scrollRef}>
+      {/* ═══ HERO ÉDITORIAL ═══ */}
+      <header className="v21-hero">
+        <div className="v21-hero-text">
+          <span className="v21-eyebrow">Planning · {day.day} {day.date}</span>
+          <h1 className="v21-title">{day.day}.</h1>
+          <div className="v21-rule" />
+          <p className="v21-lede">Semaine {day.wk}{day.type ? ` · ${day.type}` : ''}.</p>
+        </div>
+        {/* Sélecteur de personne */}
+        <div className="v21-hero-side">
+          <div className="v21-tabs pv-person" role="tablist" aria-label="Personne">
             {["j", "z"].map(pp => (
-              <button key={pp} onClick={() => setPerson(pp)} style={{
-                padding: "6px 16px", border: "none", cursor: "pointer", fontSize: 13, fontWeight: 600,
-                background: person === pp ? "#1e3a5f" : "transparent",
-                color: person === pp ? "#f1c40f" : "#667788",
-                transition: "all 0.2s",
-              }}>
+              <button key={pp} role="tab" aria-selected={person === pp}
+                onClick={() => setPerson(pp)}
+                className={`v21-tab ${person === pp ? 'on' : ''}`}>
                 {pp === "j" ? "Julien" : "Zoé"}
               </button>
             ))}
           </div>
         </div>
+      </header>
 
-        {/* Day Nav */}
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-          <button onClick={prev} disabled={dayIdx === 0} style={{
-            width: 36, height: 36, borderRadius: 10, border: "none", cursor: "pointer",
-            background: "#16213e", color: "#88aacc", fontSize: 16, opacity: dayIdx === 0 ? 0.3 : 1,
-          }}>&#8592;</button>
-          <div style={{ flex: 1, textAlign: "center" }}>
-            <div style={{ fontSize: 18, fontWeight: 700 }}>
-              {day.day} {day.date}
-              <span style={{ marginLeft: 6 }}>{emojiKey ? EMOJIS[emojiKey] : ""}</span>
-            </div>
-            <div style={{ fontSize: 11, color: "#667788", marginTop: 2 }}>Semaine {day.wk} · {day.type}</div>
-          </div>
-          <button onClick={next} disabled={dayIdx === DATA.length - 1} style={{
-            width: 36, height: 36, borderRadius: 10, border: "none", cursor: "pointer",
-            background: "#16213e", color: "#88aacc", fontSize: 16, opacity: dayIdx === DATA.length - 1 ? 0.3 : 1,
-          }}>&#8594;</button>
+      {/* Day nav + onglets */}
+      <div className="pv-bar">
+        <div className="pv-daynav">
+          <button onClick={prev} disabled={dayIdx === 0} className="pv-arrow" aria-label="Jour précédent">&#8592;</button>
+          <span className="pv-daynav-l">{day.day} {day.date}</span>
+          <button onClick={next} disabled={dayIdx === DATA.length - 1} className="pv-arrow" aria-label="Jour suivant">&#8594;</button>
         </div>
-
-        {/* Total bar */}
-        {tot && (
-          <div style={{
-            background: tot.ok ? "linear-gradient(135deg, #1b4332, #0d2818)" : "linear-gradient(135deg, #4a1a1a, #2a0e0e)",
-            borderRadius: 12, padding: "10px 14px", marginBottom: 14,
-            border: tot.ok ? "1px solid #2ecc7133" : "1px solid #e74c3c33",
-          }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
-              <span style={{ fontSize: 12, fontWeight: 600, color: tot.ok ? "#2ecc71" : "#e74c3c" }}>
-                {tot.ok ? "✅ Dans la cible" : "⚠️ Hors cible"}
-              </span>
-              <span style={{ fontSize: 18, fontWeight: 800, color: "#f1c40f" }}>{tot.k} kcal</span>
-            </div>
-            <MacroBar k={tot.k} p={tot.p} g={tot.g} l={tot.l} f={tot.f} target={p === "j" ? 2050 : 1350} />
-          </div>
-        )}
+        <div className="v21-tabs pv-tabs" role="tablist" aria-label="Vue">
+          <button role="tab" aria-selected={tab === 'today'} className={`v21-tab ${tab === 'today' ? 'on' : ''}`} onClick={() => setTab('today')}>Aujourd'hui</button>
+          <button role="tab" aria-selected={tab === 'courses'} className={`v21-tab ${tab === 'courses' ? 'on' : ''}`} onClick={() => setTab('courses')}>Courses</button>
+        </div>
       </div>
+
+      {/* Total du jour */}
+      {tab === 'today' && tot && (
+        <div className={`pv-total ${tot.ok ? 'ok' : 'warn'}`}>
+          <div className="pv-total-head">
+            <span className="pv-total-l">Total jour · {tot.ok ? 'dans la cible' : 'hors cible'}</span>
+            <span className="pv-total-k">{tot.k} kcal</span>
+          </div>
+          <MacroBar k={tot.k} p={tot.p} g={tot.g} l={tot.l} f={tot.f} target={p === "j" ? 2050 : 1350} />
+        </div>
+      )}
 
       {/* ── TAB: TODAY ── */}
       {tab === "today" && (
-        <>
-          <div ref={scrollRef} style={{ flex: 1, overflow: "auto", padding: "0 16px 24px" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <section className="v21-section flush pv-today">
+          {/* PDJ (Julien only) */}
+          {p === "j" && (
+            <MealCard barKey="pdj" label="Petit-déjeuner" desc={PDJ_J.d}
+              macros={{ k: PDJ_J.k, p: PDJ_J.p, g: PDJ_J.g, l: PDJ_J.l, f: PDJ_J.f }} />
+          )}
 
-              {/* PDJ (Julien only) */}
-              {p === "j" && (
-                <MealCard icon={MEAL_ICONS.pdj} label="Petit-déjeuner" desc={PDJ_J.d}
-                  macros={{ k: PDJ_J.k, p: PDJ_J.p, g: PDJ_J.g, l: PDJ_J.l, f: PDJ_J.f }} />
-              )}
+          {/* Déjeuner */}
+          <MealCard barKey="dej" label="Déjeuner" desc={day.dej[p].d}
+            macros={{ k: day.dej[p].k, p: day.dej[p].p, g: day.dej[p].g, l: day.dej[p].l, f: day.dej[p].f }} />
 
-              {/* Déjeuner */}
-              <MealCard icon={MEAL_ICONS.dej} label="Déjeuner" desc={day.dej[p].d}
-                macros={{ k: day.dej[p].k, p: day.dej[p].p, g: day.dej[p].g, l: day.dej[p].l, f: day.dej[p].f }} />
+          {/* Dîner — expandable */}
+          <MealCard barKey="din" label="Dîner" desc={day.din[p].d}
+            macros={{ k: day.din[p].k, p: day.din[p].p, g: day.din[p].g, l: day.din[p].l, f: day.din[p].f }}
+            expandable={!!day.ck_din} expanded={expandedSection === "din"} onClick={() => toggle("din")} />
 
-              {/* Dîner — expandable */}
-              <MealCard icon={MEAL_ICONS.din} label="Dîner" desc={day.din[p].d}
-                macros={{ k: day.din[p].k, p: day.din[p].p, g: day.din[p].g, l: day.din[p].l, f: day.din[p].f }}
-                expandable={!!day.ck_din} expanded={expandedSection === "din"} onClick={() => toggle("din")} />
+          {expandedSection === "din" && day.ck_din && (
+            <StepsList steps={day.ck_din.steps} title={day.ck_din.name} time={day.ck_din.time}
+              portions={{ pJ: day.ck_din.pJ, pZ: day.ck_din.pZ }} />
+          )}
 
-              {expandedSection === "din" && day.ck_din && (
-                <StepsList steps={day.ck_din.steps} title={day.ck_din.name} time={day.ck_din.time}
-                  portions={{ pJ: day.ck_din.pJ, pZ: day.ck_din.pZ }} />
-              )}
+          {/* Collation */}
+          <MealCard barKey="col" label="Collation" desc={day.col[p].d}
+            macros={{ k: day.col[p].k, p: day.col[p].p, g: day.col[p].g, l: day.col[p].l, f: day.col[p].f }} />
 
-              {/* Collation */}
-              <MealCard icon={MEAL_ICONS.col} label="Collation" desc={day.col[p].d}
-                macros={{ k: day.col[p].k, p: day.col[p].p, g: day.col[p].g, l: day.col[p].l, f: day.col[p].f }} />
+          {/* Batch note */}
+          {day.batch && (
+            <p className="pv-batch">{day.batch}</p>
+          )}
 
-              {/* Batch note */}
-              {day.batch && (
-                <div style={{ fontSize: 12, color: "#667788", padding: "6px 12px", background: "#ffffff04", borderRadius: 10, textAlign: "center" }}>
-                  📦 {day.batch}
-                </div>
-              )}
-
-              {/* Separator */}
-              <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #ffffff15, transparent)", margin: "8px 0" }} />
-
-              {/* Prep section */}
-              {day.ck_prep ? (
-                <>
-                  <div
-                    onClick={() => toggle("prep")}
-                    style={{
-                      background: expandedSection === "prep" ? "#1a2a1a" : "#16213e",
-                      borderRadius: 16, padding: "14px 16px", cursor: "pointer",
-                      border: expandedSection === "prep" ? "1px solid #2ecc7133" : "1px solid #ffffff08",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <span style={{ fontSize: 18 }}>👨‍🍳</span>
-                        <div>
-                          <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 1.5, color: "#2ecc71", fontWeight: 600 }}>
-                            À préparer ce soir
-                          </div>
-                          <div style={{ fontSize: 13, color: "#e8e8f0", fontWeight: 500, marginTop: 2 }}>
-                            {day.ck_prep.dishes.map(d => d.n).join(" + ")}
-                          </div>
-                        </div>
-                      </div>
-                      <div style={{ textAlign: "right" }}>
-                        <div style={{ fontSize: 14, fontWeight: 700, color: "#f39c12" }}>⏱ {day.ck_prep.time}</div>
-                        <span style={{ fontSize: 10, color: "#3498db", fontWeight: 600 }}>
-                          {expandedSection === "prep" ? "▲" : "▼ voir"}
-                        </span>
-                      </div>
+          {/* Prep section */}
+          {day.ck_prep ? (
+            <>
+              <div onClick={() => toggle("prep")} className={`pv-prep${expandedSection === "prep" ? ' open' : ''}`}>
+                <span className="pv-prep-bar" aria-hidden="true" />
+                <div className="pv-prep-main">
+                  <span className="pv-prep-l">À préparer ce soir</span>
+                  <span className="pv-prep-dish">{day.ck_prep.dishes.map(d => d.n).join(" + ")}</span>
+                  {day.ck_prep.dishes.length > 0 && (
+                    <div className="pv-prep-tags">
+                      {day.ck_prep.dishes.map((d, i) => (
+                        <span key={i} className="pv-prep-tag">{d.f}</span>
+                      ))}
                     </div>
-                    {day.ck_prep.dishes.length > 0 && (
-                      <div style={{ display: "flex", gap: 6, marginTop: 8, flexWrap: "wrap" }}>
-                        {day.ck_prep.dishes.map((d, i) => (
-                          <span key={i} style={{
-                            fontSize: 11, padding: "3px 10px", borderRadius: 8,
-                            background: "#2ecc7118", color: "#2ecc71", fontWeight: 500,
-                          }}>
-                            → {d.f}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {expandedSection === "prep" && (
-                    <StepsList steps={day.ck_prep.steps} title="Préparation" time={day.ck_prep.time} />
                   )}
-                </>
-              ) : (
-                <div style={{
-                  background: "#16213e", borderRadius: 16, padding: "14px 16px",
-                  border: "1px solid #ffffff08", textAlign: "center",
-                }}>
-                  <span style={{ fontSize: 18 }}>🎉</span>
-                  <div style={{ fontSize: 13, color: "#667788", marginTop: 4 }}>Rien à préparer ce soir</div>
                 </div>
-              )}
-            </div>
-          </div>
+                <div className="pv-prep-right">
+                  {day.ck_prep.time && <span className="pv-prep-time">{day.ck_prep.time}</span>}
+                  <span className="pv-prep-toggle">{expandedSection === "prep" ? 'Fermer' : 'Voir'}</span>
+                </div>
+              </div>
 
-          {/* Day dots */}
-          <div style={{
-            padding: "10px 16px 8px", display: "flex", justifyContent: "center", gap: 4, flexWrap: "wrap",
-          }}>
+              {expandedSection === "prep" && (
+                <StepsList steps={day.ck_prep.steps} title="Préparation" time={day.ck_prep.time} />
+              )}
+            </>
+          ) : (
+            <p className="pv-noprep">Rien à préparer ce soir.</p>
+          )}
+
+          {/* Day dots — repères de jour (rectangles) */}
+          <div className="pv-dots">
             {DATA.map((d, i) => (
-              <button key={i} onClick={() => { setDayIdx(i); setExpandedSection(null) }} style={{
-                width: i === dayIdx ? 20 : 8, height: 8, borderRadius: 4, border: "none", cursor: "pointer",
-                background: i === dayIdx ? "#f39c12" : d.wk === day.wk ? "#1e3a5f" : "#0d1b2a",
-                transition: "all 0.3s ease",
-              }} />
+              <button key={i} onClick={() => { setDayIdx(i); setExpandedSection(null) }}
+                aria-label={`Jour ${i + 1}`}
+                className={`pv-dot${i === dayIdx ? ' on' : ''}${d.wk === day.wk ? ' wk' : ''}`} />
             ))}
           </div>
-        </>
+        </section>
       )}
 
       {/* ── TAB: COURSES ── */}
       {tab === "courses" && (
-        <div style={{ flex: 1, overflow: "auto", padding: "0 16px 24px" }}>
+        <section className="v21-section flush pv-courses">
           {/* Week selector */}
-          <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
-            {GROC.map((g, i) => (
-              <button key={i} onClick={() => setGrocWeek(i)} style={{
-                flex: 1, padding: "8px 4px", borderRadius: 10, border: "none", cursor: "pointer",
-                background: grocWeek === i ? "#1e3a5f" : "#16213e",
-                color: grocWeek === i ? "#f1c40f" : "#667788",
-                fontSize: 12, fontWeight: 600, transition: "all 0.2s",
-              }}>{g.wk}</button>
-            ))}
-          </div>
-          <div style={{ fontSize: 11, color: "#667788", textAlign: "center", marginBottom: 12 }}>
-            {GROC[grocWeek]?.label}
-          </div>
+          {GROC.length > 0 && (
+            <div className="v21-tabs pv-grocweeks" role="tablist" aria-label="Semaines">
+              {GROC.map((g, i) => (
+                <button key={i} role="tab" aria-selected={grocWeek === i}
+                  className={`v21-tab ${grocWeek === i ? 'on' : ''}`}
+                  onClick={() => setGrocWeek(i)}>{g.wk}</button>
+              ))}
+            </div>
+          )}
+          {GROC[grocWeek]?.label && <p className="pv-groclabel">{GROC[grocWeek].label}</p>}
+
           {GROC[grocWeek]?.cats.map((cat, ci) => (
-            <div key={ci} style={{ marginBottom: 12 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#e8e8f0", marginBottom: 6, padding: "6px 10px", background: "#1e3a5f", borderRadius: 8 }}>
-                {cat.name}
+            <div key={ci} className="pv-groccat">
+              <div className="v21-bh"><span className="v21-bl">{cat.name}</span></div>
+              <div className="v21-its">
+                {cat.items.map((item, ii) => {
+                  const key = `${grocWeek}-${ci}-${ii}`
+                  const isDone = checked[key]
+                  return (
+                    <button key={ii} type="button"
+                      onClick={() => setChecked(prev => ({ ...prev, [key]: !prev[key] }))}
+                      className={`v21-it pv-groc-it${isDone ? ' is-checked' : ''}`}>
+                      <span className="v21-it-bar" aria-hidden="true" style={{ background: isDone ? 'var(--sage, #6FB05A)' : 'var(--line-strong)' }} />
+                      <span className="pv-groc-check"><span className={`pv-groc-box${isDone ? ' on' : ''}`}>{isDone && "✓"}</span></span>
+                      <span className="pv-groc-body">
+                        <span className="pv-groc-name">{item.p}</span>
+                        {item.u && <span className="pv-groc-u">{item.u}</span>}
+                      </span>
+                      <span className="pv-groc-q">{item.q}</span>
+                    </button>
+                  )
+                })}
               </div>
-              {cat.items.map((item, ii) => {
-                const key = `${grocWeek}-${ci}-${ii}`
-                const isDone = checked[key]
-                return (
-                  <div key={ii} onClick={() => setChecked(prev => ({ ...prev, [key]: !prev[key] }))}
-                    style={{
-                      display: "flex", alignItems: "center", gap: 10, padding: "8px 10px",
-                      borderBottom: "1px solid #ffffff06", cursor: "pointer",
-                      opacity: isDone ? 0.4 : 1, transition: "opacity 0.2s",
-                    }}>
-                    <div style={{
-                      width: 20, height: 20, borderRadius: 6, flexShrink: 0,
-                      border: isDone ? "2px solid #2ecc71" : "2px solid #334455",
-                      background: isDone ? "#2ecc7133" : "transparent",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: 12, color: "#2ecc71",
-                    }}>{isDone ? "✓" : ""}</div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 13, color: "#e8e8f0", fontWeight: 500, textDecoration: isDone ? "line-through" : "none" }}>
-                        {item.p}
-                      </div>
-                      <div style={{ fontSize: 11, color: "#667788" }}>{item.u}</div>
-                    </div>
-                    <div style={{ fontSize: 12, color: "#f39c12", fontWeight: 600, flexShrink: 0 }}>{item.q}</div>
-                  </div>
-                )
-              })}
             </div>
           ))}
-        </div>
+        </section>
       )}
 
-      {/* Bottom Tab Bar */}
-      <div style={{
-        display: "flex", borderTop: "1px solid #ffffff10",
-        background: "#0d1225",
-      }}>
-        {[{ id: "today", icon: "📋", label: "Aujourd'hui" }, { id: "courses", icon: "🛒", label: "Courses" }].map(t => (
-          <button key={t.id} onClick={() => setTab(t.id)} style={{
-            flex: 1, padding: "10px 0 12px", border: "none", cursor: "pointer",
-            background: "transparent", display: "flex", flexDirection: "column", alignItems: "center", gap: 2,
-          }}>
-            <span style={{ fontSize: 18 }}>{t.icon}</span>
-            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: 0.5,
-              color: tab === t.id ? "#f39c12" : "#556677",
-            }}>{t.label}</span>
-          </button>
-        ))}
-      </div>
+      <style jsx>{`
+        /* Sélecteur personne / onglets : .v21-tabs sans bordures hautes/basses ici */
+        .pv-person, .pv-tabs, .pv-grocweeks { border-top: none; border-bottom: none; padding: 0; margin-top: 0; }
+
+        .pv-bar {
+          display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+          padding: 16px 0; border-bottom: 1px solid var(--line);
+        }
+        .pv-daynav { display: flex; align-items: center; gap: 12px; }
+        .pv-arrow {
+          width: 34px; height: 34px; border-radius: 3px;
+          border: 1px solid var(--line-strong); background: transparent; cursor: pointer;
+          color: var(--ink-2); font-size: 16px; line-height: 1;
+          transition: border-color 0.15s ease, color 0.15s ease;
+        }
+        .pv-arrow:hover:not(:disabled) { border-color: var(--ink-1); color: var(--ink-1); }
+        .pv-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+        .pv-daynav-l {
+          font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.03em; text-transform: uppercase;
+          color: var(--ink-2); min-width: 120px; text-align: center;
+        }
+
+        /* Total du jour */
+        .pv-total { padding: 16px 0; border-bottom: 1.5px solid var(--ink-1); }
+        .pv-total-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+        .pv-total-l { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); }
+        .pv-total.ok .pv-total-l { color: var(--state-fresh); }
+        .pv-total.warn .pv-total-l { color: var(--state-soon); }
+        .pv-total-k { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--ink-1); }
+
+        .pv-today, .pv-courses { padding-top: 22px; display: flex; flex-direction: column; }
+
+        /* Lignes de repas */
+        .pv-meal {
+          display: grid; grid-template-columns: 8px 1fr; align-items: stretch;
+          border-bottom: 1px solid var(--line);
+        }
+        .pv-meal-bar { align-self: stretch; }
+        .pv-meal.clickable { cursor: pointer; }
+        .pv-meal.clickable:hover { background: var(--surface-soft); }
+        .pv-meal-main { padding: 15px 16px; min-width: 0; }
+        .pv-meal-h { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+        .pv-meal-l { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+        .pv-meal-toggle {
+          font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase;
+          color: var(--terracotta);
+        }
+        .pv-meal-d { font-family: var(--font-display); font-weight: 500; font-size: 18px; line-height: 1.3; color: var(--ink-1); margin: 5px 0 9px; }
+
+        /* MacroBar */
+        .pv-macrobar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .pv-macrobar-track { flex: 1; min-width: 90px; height: 5px; background: var(--line); overflow: hidden; }
+        .pv-macrobar-fill { height: 100%; transition: width 0.4s ease; }
+        .pv-m { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
+        .pv-m b { font-weight: 600; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+        /* Étapes (StepsList) */
+        .pv-steps { border-bottom: 1px solid var(--line); padding: 16px 16px 8px; background: var(--surface-soft); }
+        .pv-steps-h { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+        .pv-steps-time { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
+        .pv-portions { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+        .pv-portion { display: flex; gap: 10px; align-items: baseline; padding: 8px 12px; border: 1px solid var(--line); border-radius: 3px; }
+        .pv-portion-p { font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--terracotta); min-width: 48px; }
+        .pv-portion-d { font-family: var(--font-text); font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+        .pv-step { display: flex; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); }
+        .pv-step:first-of-type { border-top: none; }
+        .pv-step-n {
+          width: 24px; height: 24px; border-radius: 3px; flex-shrink: 0;
+          background: var(--ink-1); color: var(--paper);
+          display: flex; align-items: center; justify-content: center;
+          font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+        }
+        .pv-step-body { flex: 1; min-width: 0; }
+        .pv-step-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+        .pv-step-a { font-family: var(--font-text); font-size: 13px; font-weight: 600; color: var(--ink-1); }
+        .pv-step-t { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); flex-shrink: 0; }
+        .pv-step-dt { font-family: var(--font-text); font-size: 12px; color: var(--ink-2); line-height: 1.6; margin: 4px 0 0; }
+
+        .pv-batch {
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; color: var(--ink-3);
+          padding: 12px 0; border-bottom: 1px solid var(--line); margin: 0;
+        }
+
+        /* Prep */
+        .pv-prep {
+          display: grid; grid-template-columns: 8px 1fr auto; align-items: stretch;
+          border-bottom: 1px solid var(--line); cursor: pointer;
+        }
+        .pv-prep:hover { background: var(--surface-soft); }
+        .pv-prep-bar { align-self: stretch; background: var(--olive, #6E7A3F); }
+        .pv-prep-main { padding: 15px 16px; min-width: 0; }
+        .pv-prep-l { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--state-fresh); }
+        .pv-prep-dish { display: block; font-family: var(--font-display); font-size: 16px; font-weight: 500; color: var(--ink-1); margin-top: 3px; }
+        .pv-prep-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .pv-prep-tag { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-2); border: 1px solid var(--line-strong); border-radius: 3px; padding: 2px 8px; }
+        .pv-prep-right { padding: 15px 16px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; justify-content: center; }
+        .pv-prep-time { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--ink-1); }
+        .pv-prep-toggle { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--terracotta); }
+
+        .pv-noprep { font-family: var(--font-text); font-size: 13px; color: var(--ink-3); padding: 14px 0; border-bottom: 1px solid var(--line); margin: 0; }
+
+        /* Repères de jour */
+        .pv-dots { display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; padding: 22px 0 4px; }
+        .pv-dot {
+          width: 8px; height: 8px; border-radius: 2px; border: none; cursor: pointer;
+          background: var(--line); transition: background 0.2s ease, width 0.2s ease;
+        }
+        .pv-dot.wk { background: var(--line-strong); }
+        .pv-dot.on { width: 22px; background: var(--terracotta); }
+
+        /* Courses */
+        .pv-groclabel { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); text-align: center; margin: 12px 0 0; }
+        .pv-groccat { padding-top: 22px; }
+        .v21-it.pv-groc-it {
+          grid-template-columns: 8px 30px 1fr auto; width: 100%;
+          border: none; border-bottom: 1px solid var(--line);
+          background: transparent; cursor: pointer; text-align: left; font: inherit;
+        }
+        .pv-groc-check { padding: 0 !important; justify-content: center; }
+        .pv-groc-box {
+          width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0;
+          border: 1.5px solid var(--line-strong); background: transparent;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 11px; color: #fff;
+          transition: background 0.15s ease, border-color 0.15s ease;
+        }
+        .pv-groc-box.on { background: var(--brand); border-color: var(--brand); }
+        .pv-groc-body { flex-direction: column; align-items: flex-start; gap: 2px; }
+        .pv-groc-name { font-family: var(--font-display); font-size: 16px; font-weight: 500; color: var(--ink-1); }
+        .pv-groc-u { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3); }
+        .pv-groc-q { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); white-space: nowrap; justify-content: flex-end; }
+        .v21-it.is-checked { opacity: 0.55; }
+        .v21-it.is-checked .pv-groc-name { text-decoration: line-through; color: var(--ink-3); }
+
+        @media (max-width: 560px) {
+          .v21-it.pv-groc-it { grid-template-columns: 8px 30px 1fr; }
+          .pv-groc-q { display: none; }
+        }
+      `}</style>
     </div>
   )
 }

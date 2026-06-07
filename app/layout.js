@@ -1,6 +1,7 @@
 // app/layout.js
 import "./globals.css";
 import "./styles/tokens.css";
+import "./styles/v21.css";
 import { Suspense } from "react";
 import { Fraunces, Inter, Crimson_Text, JetBrains_Mono } from "next/font/google";
 import MinimalistHeader from "@/components/MinimalistHeader";

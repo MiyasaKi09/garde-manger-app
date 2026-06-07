@@ -1,4 +1,4 @@
-/* Styles pour le sélecteur d'ingrédients avec recherche intelligente */
+/* Sélecteur d'ingrédients avec recherche — V21 (papier, filets, terracotta) */
 
 .ingredient-search-selector {
   position: relative;
@@ -15,46 +15,44 @@
   position: absolute;
   left: 12px;
   z-index: 2;
-  color: #6b7280;
+  color: var(--ink-3);
   pointer-events: none;
 }
 
-.search-input {
+.ingredient-search-selector .search-input {
   width: 100%;
-  padding: 12px 16px 12px 40px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.5);
-  color: #374151;
-  font-size: 14px;
-  backdrop-filter: blur(5px);
-  transition: all 0.3s ease;
   box-sizing: border-box;
+  padding: 10px 16px 10px 38px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--ink-1);
+  font-family: var(--font-text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
 }
 
-.search-input:focus {
-  outline: none;
-  border-color: #22c55e;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+.ingredient-search-selector .search-input:focus {
+  border-color: var(--terracotta);
 }
 
 .clear-button {
   position: absolute;
   right: 8px;
   z-index: 2;
-  background: rgba(239, 68, 68, 0.1);
-  border: none;
-  border-radius: 4px;
-  padding: 4px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  padding: 4px 6px;
   cursor: pointer;
-  color: #dc2626;
-  transition: all 0.2s ease;
+  color: var(--terracotta);
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .clear-button:hover {
-  background: rgba(239, 68, 68, 0.2);
-  transform: scale(1.1);
+  border-color: var(--terracotta);
+  background: var(--terracotta-soft);
 }
 
 /* Dropdown des résultats */
@@ -64,11 +62,9 @@
   left: 0;
   right: 0;
   z-index: var(--z-modal);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
   margin-top: 4px;
   max-height: 300px;
   overflow: hidden;
@@ -83,10 +79,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 10px 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.15s ease;
+  border-bottom: 1px solid var(--line);
 }
 
 .search-result-item:last-child {
@@ -94,56 +90,44 @@
 }
 
 .search-result-item:hover {
-  background: rgba(34, 197, 94, 0.1);
+  background: var(--surface-soft);
 }
 
 .ingredient-info {
   flex: 1;
 }
 
-.ingredient-name {
+.ingredient-info .ingredient-name {
+  font-family: var(--font-text);
   font-weight: 500;
-  color: #1f2937;
+  color: var(--ink-1);
   margin-bottom: 2px;
 }
 
-.ingredient-details {
-  font-size: 12px;
-  color: #6b7280;
-  opacity: 0.8;
+.ingredient-info .ingredient-details {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
 }
 
 .match-indicator {
-  font-size: 16px;
-  opacity: 0.7;
+  font-size: 14px;
+  color: var(--ink-3);
 }
 
 .no-results {
-  padding: 20px;
+  padding: 18px;
   text-align: center;
 }
 
 .no-results-text {
-  color: #6b7280;
+  color: var(--ink-3);
   font-style: italic;
   font-size: 14px;
 }
 
-/* Scrollbar pour les résultats */
-.search-results::-webkit-scrollbar {
-  width: 6px;
-}
-
-.search-results::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
-}
-
-.search-results::-webkit-scrollbar-thumb {
-  background: rgba(107, 114, 128, 0.3);
-  border-radius: 3px;
-}
-
-.search-results::-webkit-scrollbar-thumb:hover {
-  background: rgba(107, 114, 128, 0.5);
-}
+/* Scrollbar */
+.search-results::-webkit-scrollbar { width: 6px; }
+.search-results::-webkit-scrollbar-track { background: transparent; }
+.search-results::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
+.search-results::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }

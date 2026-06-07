@@ -1,68 +1,38 @@
 'use client'
 
 import Link from 'next/link'
-import { getRecipeStyle } from '@/lib/foodEmoji'
 
 export default function RecipeListCard({ recipe, status }) {
   const totalTime = (recipe.prep_min || 0) + (recipe.cook_min || 0)
-  const style = getRecipeStyle(recipe.category, recipe.title)
   const hasImage = !!recipe.image_url
+  const monogram = (recipe.title || 'M').trim().charAt(0).toUpperCase()
+
+  const meta = []
+  if (totalTime > 0) meta.push(`${totalTime} min`)
+  if (recipe.servings) meta.push(`${recipe.servings} pers.`)
+  if (status?.mykoScore > 0) meta.push(`${status.mykoScore} pts`)
 
   return (
-    <Link
-      href={`/recipes/generated/${recipe.id}`}
-      className="recipe-img-card"
-      style={{ textDecoration: 'none', color: 'inherit' }}
-    >
-      <div
-        className="recipe-img-visual"
-        style={hasImage ? undefined : {
-          background: `linear-gradient(135deg, ${style.bg} 0%, ${style.bgEnd} 100%)`
-        }}
-      >
+    <Link href={`/recipes/generated/${recipe.id}`} className="v21-card rc-card">
+      <div className="v21-card-media">
         {hasImage ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={recipe.image_url}
-            alt={recipe.title}
-            className="recipe-img-photo"
-            loading="lazy"
-          />
+          <img src={recipe.image_url} alt={recipe.title} loading="lazy" />
         ) : (
-          <span className="recipe-img-mono">{(recipe.title || 'M').trim().charAt(0).toUpperCase()}</span>
+          <span className="v21-card-mono">{monogram}</span>
         )}
-
-        {status.mykoScore !== undefined && status.mykoScore > 0 && (
-          <div className={`recipe-img-score ${
-            status.mykoScore >= 80 ? 'score-high' :
-            status.mykoScore >= 50 ? 'score-mid' : 'score-low'
-          }`}>
-            {status.mykoScore}★
-          </div>
-        )}
-
-        {status.urgentIngredients > 0 && (
-          <div className="recipe-img-urgent">URGENT</div>
-        )}
-
-        <div className="recipe-img-overlay">
-          <h3 className="recipe-img-title">{recipe.title}</h3>
-          <div className="recipe-img-meta">
-            {totalTime > 0 && <span>{totalTime} min</span>}
-            {recipe.servings && <span>{recipe.servings} pers.</span>}
-            {recipe.ingredient_count > 0 && <span>{recipe.ingredient_count} ingr.</span>}
-          </div>
-        </div>
+        {status?.urgentIngredients > 0 && <span className="rc-flag">Urgent</span>}
       </div>
 
-      <div className="recipe-img-footer">
-        <div className="recipe-img-avail-bar">
-          <div
-            className="recipe-img-avail-fill"
-            style={{ width: `${status.availabilityPercent || 0}%` }}
-          />
+      <div className="v21-card-body">
+        <h3 className="v21-card-title">{recipe.title}</h3>
+        {meta.length > 0 && <div className="v21-card-meta">{meta.join(' · ')}</div>}
+        <div className="rc-avail">
+          <span className="rc-avail-bar" aria-hidden="true">
+            <span className="rc-avail-fill" style={{ width: `${status?.availabilityPercent || 0}%` }} />
+          </span>
+          <span className="rc-avail-pct">{status?.availabilityPercent || 0}%</span>
         </div>
-        <span className="recipe-img-avail-pct">{status.availabilityPercent || 0}%</span>
       </div>
     </Link>
   )

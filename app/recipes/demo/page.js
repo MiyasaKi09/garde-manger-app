@@ -66,23 +66,20 @@ export default function RecipesDemoPage() {
   };
 
   return (
-    <div className="recipes-container">
-      <div className="recipes-header">
-        <h1>📖 Démo Myko - Interface Recettes</h1>
-      </div>
-
-      <div style={{ padding: '2rem', textAlign: 'center' }}>
-        <p style={{ marginBottom: '2rem', color: '#666' }}>
-          Cliquez sur le bouton ci-dessous pour voir la nouvelle interface Myko en action
-        </p>
-        <button 
-          onClick={() => setSelectedRecipe(DEMO_RECIPE)}
-          className="btn-primary"
-          style={{ fontSize: '1.2rem', padding: '1rem 2rem' }}
-        >
-          🎯 Voir la recette Myko
-        </button>
-      </div>
+    <div className="v21-page narrow">
+      <header className="v21-hero">
+        <div className="v21-hero-text">
+          <span className="v21-eyebrow">Démo</span>
+          <h1 className="v21-title">Interface recettes</h1>
+          <div className="v21-rule" />
+          <p className="v21-lede">Aperçu de la fiche recette Myko en action.</p>
+        </div>
+        <div className="v21-hero-side">
+          <button onClick={() => setSelectedRecipe(DEMO_RECIPE)} className="v21-btn terra">
+            Voir la recette
+          </button>
+        </div>
+      </header>
 
       {selectedRecipe && (
         <RecipeModalDemo 

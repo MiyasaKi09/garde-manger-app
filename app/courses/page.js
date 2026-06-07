@@ -4,24 +4,10 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { ShoppingCart, Check, Package } from 'lucide-react'
+import { ShoppingCart, Check, Package, ChevronLeft, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import { getFoodEmoji } from '@/lib/foodEmoji'
 import './courses.css'
-
-function weekArrowStyle(disabled) {
-  return {
-    width: 30, height: 30, borderRadius: '50%',
-    border: '1px solid var(--line, #d8dcc8)',
-    background: 'var(--surface, #fff)',
-    color: disabled ? 'var(--ink-3, #b5b8a6)' : 'var(--ink-1, #2f3320)',
-    cursor: disabled ? 'default' : 'pointer',
-    opacity: disabled ? 0.4 : 1,
-    fontSize: 18, lineHeight: 1,
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    flexShrink: 0,
-  }
-}
 
 export default function CoursesPage() {
   const router = useRouter()
@@ -247,225 +233,200 @@ export default function CoursesPage() {
   const totalCount = filteredItems.length
   const allCheckedCount = items.filter(i => i.checked).length
   const allTotalCount = items.length
+  const remaining = totalCount - checkedCount
 
   if (loading) return (
-    <div className="myko-loading">Chargement...</div>
+    <div className="v21-page courses-page" aria-busy="true" aria-label="Chargement des courses">
+      <div className="v21-skel" style={{ height: 150 }} />
+      <div className="cou-skel-list">
+        {[0, 1, 2, 3, 4].map(i => <div key={i} className="v21-skel" style={{ height: 52 }} />)}
+      </div>
+    </div>
   )
 
   if (!importId || items.length === 0) return (
-    <>
-      <div className="myko-canvas" aria-hidden="true" />
-      <div className="courses-page">
-        <div className="hero-header">
-          <div className="hero-content">
-            <div className="hero-text">
-              <span className="hero-eyebrow">Courses</span>
-              <h1 className="hero-title">Liste de courses</h1>
-            </div>
-          </div>
+    <div className="v21-page courses-page">
+      <header className="v21-hero">
+        <div className="v21-hero-text">
+          <span className="v21-eyebrow">Courses</span>
+          <h1 className="v21-title">Liste.</h1>
+          <div className="v21-rule" />
+          <p className="v21-lede">Rien à acheter pour l'instant.</p>
         </div>
-        <div className="empty-state-card courses-empty">
-          <div className="empty-icon"><ShoppingCart size={40} /></div>
-          <h3>Pas de liste de courses</h3>
-          <p>Demande un planning à Myko pour générer la liste</p>
-          <Link href="/planning/assistant" className="courses-cta-btn">Créer un planning</Link>
-        </div>
+      </header>
+      <div className="v21-empty cou-empty">
+        <div className="cou-empty-ico"><ShoppingCart size={32} /></div>
+        <p>Demande un planning à Myko pour générer la liste de courses.</p>
+        <Link href="/planning/assistant" className="v21-btn">Créer un planning</Link>
       </div>
-    </>
+    </div>
   )
 
   return (
-    <>
-      <div className="myko-canvas" aria-hidden="true" />
-      <div className="courses-page">
-        <div className="hero-header">
-          <div className="hero-content">
-            <div className="hero-text">
-              <span className="hero-eyebrow">Courses</span>
-              <h1 className="hero-title">Liste de courses</h1>
-              {imports.length > 1 ? (
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, margin: '4px 0' }}>
-                  <button
-                    onClick={() => goToImport(importIndex + 1)}
-                    disabled={importIndex >= imports.length - 1}
-                    aria-label="Semaine précédente"
-                    style={weekArrowStyle(importIndex >= imports.length - 1)}
-                  >‹</button>
-                  <p className="hero-subtitle" style={{ margin: 0, minWidth: 180, textAlign: 'center' }}>
-                    {importLabel || 'Semaine'}
-                  </p>
-                  <button
-                    onClick={() => goToImport(importIndex - 1)}
-                    disabled={importIndex <= 0}
-                    aria-label="Semaine suivante"
-                    style={weekArrowStyle(importIndex <= 0)}
-                  >›</button>
-                </div>
-              ) : (
-                importLabel && <p className="hero-subtitle">{importLabel}</p>
-              )}
-              {allTotalCount > 0 && (
-                <p className="hero-subtitle">{allCheckedCount}/{allTotalCount} articles cochés</p>
-              )}
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8, flexShrink: 0 }}>
-              <div className="courses-progress-bar-outer" style={{ width: 80 }}>
-                <div
-                  className="courses-progress-bar-inner"
-                  style={{ width: allTotalCount ? `${(allCheckedCount / allTotalCount) * 100}%` : '0%' }}
-                />
-              </div>
-              <div style={{ display: 'flex', gap: 6 }}>
-                <button
-                  onClick={handleRebuild}
-                  disabled={rebuilding}
-                  className="courses-photo-btn"
-                  title="Synchroniser : créer les recettes du plan, relier les ingrédients, marquer ce que tu as déjà en stock"
-                >
-                  {rebuilding ? '...' : '♻️ Stock'}
-                </button>
-                <button
-                  onClick={handleFetchImages}
-                  disabled={fetchingImages}
-                  className="courses-photo-btn"
-                >
-                  {fetchingImages ? '...' : 'Photos'}
-                </button>
-              </div>
-            </div>
+    <div className="v21-page courses-page">
+
+      {/* HERO ÉDITORIAL */}
+      <header className="v21-hero">
+        <div className="v21-hero-text">
+          <span className="v21-eyebrow">Courses</span>
+          <h1 className="v21-title">Liste.</h1>
+          <div className="v21-rule" />
+          <p className="v21-lede">{remaining} restant{remaining !== 1 ? 's' : ''} sur cette semaine.</p>
+        </div>
+        <div className="v21-hero-side">
+          <div className="cou-actions">
+            <button onClick={handleRebuild} disabled={rebuilding} className="v21-btn ghost sm"
+              title="Synchroniser : créer les recettes du plan, relier les ingrédients, marquer ce que tu as déjà en stock">
+              {rebuilding ? '…' : 'Stock'}
+            </button>
+            <button onClick={handleFetchImages} disabled={fetchingImages} className="v21-btn ghost sm">
+              {fetchingImages ? '…' : 'Photos'}
+            </button>
           </div>
         </div>
+      </header>
 
-        {fetchResult && (
-          <div className={`courses-fetch-result ${fetchResult.error ? 'error' : 'success'}`}>
-            {fetchResult.error
-              ? fetchResult.error
-              : fetchResult.items != null
-                ? (fetchResult.mode === 'enriched'
-                    ? `${fetchResult.items} articles reliés au stock${fetchResult.inStock > 0 ? ` · ${fetchResult.inStock} déjà en stock` : ''}`
-                    : `Liste recalculée — ${fetchResult.items} article${fetchResult.items > 1 ? 's' : ''}`)
-                  + (fetchResult.recipesCreated > 0 ? ` · ${fetchResult.recipesCreated} recette(s) ajoutée(s)` : '')
-                : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
+      {/* PROGRESSION GLOBALE */}
+      <section className="v21-section strong cou-overview">
+        <div className="cou-bignum-row">
+          <div className="v21-bignum">{checkedCount} / {totalCount}</div>
+          {allTotalCount !== totalCount && (
+            <span className="cou-allcount">{allCheckedCount}/{allTotalCount} au total</span>
+          )}
+        </div>
+        <div className="v21-prog"><div className="v21-prog-fill" style={{ width: totalCount ? `${(checkedCount / totalCount) * 100}%` : '0%' }} /></div>
+
+        {imports.length > 1 && (
+          <div className="cou-impnav">
+            <button onClick={() => goToImport(importIndex + 1)} disabled={importIndex >= imports.length - 1}
+              className="cou-impbtn" aria-label="Semaine précédente">
+              <ChevronLeft size={16} />
+            </button>
+            <span className="cou-implabel">{importLabel || 'Semaine'}</span>
+            <button onClick={() => goToImport(importIndex - 1)} disabled={importIndex <= 0}
+              className="cou-impbtn" aria-label="Semaine suivante">
+              <ChevronRight size={16} />
+            </button>
           </div>
         )}
+        {imports.length <= 1 && importLabel && <p className="cou-implabel-static">{importLabel}</p>}
+      </section>
 
-        {weekLabels.length > 1 && (
-          <div className="courses-week-tabs">
-            {weekLabels.map(week => (
-              <button
-                key={week}
-                onClick={() => setActiveWeek(week)}
-                className={`courses-week-tab${activeWeek === week ? ' active' : ''}`}
-              >
-                {week}
-              </button>
-            ))}
-          </div>
-        )}
+      {fetchResult && (
+        <div className={`cou-result ${fetchResult.error ? 'error' : 'ok'}`}>
+          {fetchResult.error
+            ? fetchResult.error
+            : fetchResult.items != null
+              ? (fetchResult.mode === 'enriched'
+                  ? `${fetchResult.items} articles reliés au stock${fetchResult.inStock > 0 ? ` · ${fetchResult.inStock} déjà en stock` : ''}`
+                  : `Liste recalculée — ${fetchResult.items} article${fetchResult.items > 1 ? 's' : ''}`)
+                + (fetchResult.recipesCreated > 0 ? ` · ${fetchResult.recipesCreated} recette(s) ajoutée(s)` : '')
+              : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
+        </div>
+      )}
 
-        {weekLabels.length > 1 && (
-          <div className="courses-week-progress">
-            <span className="courses-week-progress-text">{checkedCount}/{totalCount} articles</span>
-            <div className="courses-progress-bar-outer" style={{ flex: 1 }}>
-              <div
-                className="courses-progress-bar-inner"
-                style={{ width: totalCount ? `${(checkedCount / totalCount) * 100}%` : '0%' }}
-              />
+      {/* ONGLETS DE SEMAINE */}
+      {weekLabels.length > 1 && (
+        <div className="v21-tabs" role="tablist" aria-label="Filtrer par semaine">
+          {weekLabels.map(week => (
+            <button
+              key={week}
+              role="tab"
+              aria-selected={activeWeek === week}
+              onClick={() => setActiveWeek(week)}
+              className={`v21-tab ${activeWeek === week ? 'on' : ''}`}
+            >
+              {week}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* CATÉGORIES */}
+      {Object.entries(groupedItems).map(([category, catItems]) => {
+        const catChecked = catItems.filter(i => i.checked).length
+        return (
+          <section key={category} className="cou-cat">
+            <div className="cou-cat-h">
+              <span className="v21-cat">{category}</span>
+              <span className="cou-cat-c">{catChecked} / {catItems.length}</span>
             </div>
-          </div>
-        )}
-
-        {Object.entries(groupedItems).map(([category, catItems]) => {
-          const catChecked = catItems.filter(i => i.checked).length
-          return (
-            <div key={category} className="courses-cat-section">
-              <div className="courses-cat-header">
-                <span>{category}</span>
-                <span>{catChecked}/{catItems.length}</span>
-              </div>
+            <div className="cou-items">
               {catItems.map(item => {
                 const isExpanded = expandedItems.has(item.id)
                 const hasContainer = !!(item.container_qty && item.container_size)
                 return (
-                  <div key={item.id} className="courses-item-wrapper">
+                  <div key={item.id} className="cou-item-wrap">
                     <div
                       onClick={() => toggleItem(item.id)}
-                      className={`courses-item-row${item.checked ? ' checked' : ''}`}
+                      className={`cou-row${item.checked ? ' checked' : ''}`}
                       role="button"
                       tabIndex={0}
                       onKeyDown={e => e.key === 'Enter' && toggleItem(item.id)}
                     >
-                      <div className={`courses-checkbox${item.checked ? ' checked' : ''}`}>
-                        {item.checked && <Check size={13} color="#fff" />}
-                      </div>
+                      <span className={`cou-check${item.checked ? ' on' : ''}`}>
+                        {item.checked && <Check size={12} color="#fff" />}
+                      </span>
                       {item.image_url ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={item.image_url} alt="" className="courses-item-thumb" loading="lazy" />
+                        <img src={item.image_url} alt="" className="cou-thumb" loading="lazy" />
                       ) : (
-                        <span className="courses-item-emoji">{getFoodEmoji(item.product_name, item.category)}</span>
+                        <span className="cou-emoji">{getFoodEmoji(item.product_name, item.category)}</span>
                       )}
-                      <div className="courses-item-label">
-                        <span className={`courses-item-name${item.checked ? ' checked' : ''}`}>
-                          {item.product_name}
-                        </span>
-                        {item.notes && (
-                          <span className="courses-item-notes">{item.notes}</span>
-                        )}
-                      </div>
-                      {item.quantity && (
-                        <span className="courses-item-qty">{item.quantity}</span>
-                      )}
-                      {item.stocking && (
-                        <span className="courses-badge-stocking">...</span>
-                      )}
+                      <span className="cou-label">
+                        <span className={`cou-name${item.checked ? ' checked' : ''}`}>{item.product_name}</span>
+                        {item.notes && <span className="cou-notes">{item.notes}</span>}
+                      </span>
+                      {item.quantity && <span className="cou-qty">{item.quantity}</span>}
+                      {item.stocking && <span className="cou-badge stocking">…</span>}
                       {item.stocked && !item.stocking && (
-                        <span className="courses-badge-stocked"><Package size={11} /> rangé</span>
+                        <span className="cou-badge stocked"><Package size={11} /> rangé</span>
                       )}
                       {item.stockError && !item.stocking && (
-                        <span className="courses-badge-error" title={item.stockErrorMsg || ''}>non rangé</span>
+                        <span className="cou-badge error" title={item.stockErrorMsg || ''}>non rangé</span>
                       )}
+                      <button
+                        className={`cou-cont-toggle${hasContainer ? ' has' : ''}${isExpanded ? ' on' : ''}`}
+                        onClick={e => {
+                          e.stopPropagation()
+                          setExpandedItems(prev => {
+                            const next = new Set(prev)
+                            next.has(item.id) ? next.delete(item.id) : next.add(item.id)
+                            return next
+                          })
+                        }}
+                        title="Conditionnement (nb de contenants)"
+                        aria-label="Configurer le conditionnement"
+                      >
+                        <Package size={13} />
+                      </button>
                     </div>
-                    <button
-                      className={`courses-container-toggle${hasContainer ? ' has-container' : ''}${isExpanded ? ' active' : ''}`}
-                      onClick={e => {
-                        e.stopPropagation()
-                        setExpandedItems(prev => {
-                          const next = new Set(prev)
-                          next.has(item.id) ? next.delete(item.id) : next.add(item.id)
-                          return next
-                        })
-                      }}
-                      title="Conditionnement (nb de contenants)"
-                      aria-label="Configurer le conditionnement"
-                    >
-                      <Package size={13} />
-                    </button>
                     {isExpanded && (
-                      <div className="container-picker" onClick={e => e.stopPropagation()}>
-                        <span className="container-picker-label">Conditionnement</span>
-                        <div className="container-picker-fields">
+                      <div className="cou-cont-picker" onClick={e => e.stopPropagation()}>
+                        <span className="cou-cont-label">Conditionnement</span>
+                        <div className="cou-cont-fields">
                           <input
                             type="number"
                             min="1"
                             placeholder="Nb"
-                            className="container-input container-input-qty"
+                            className="cou-cont-input qty"
                             value={getContainerEdit(item, 'container_qty')}
                             onChange={e => setContainerField(item.id, 'container_qty', e.target.value)}
                             onBlur={() => saveContainerEdits(item)}
                           />
-                          <span className="container-times">×</span>
+                          <span className="cou-cont-x">×</span>
                           <input
                             type="number"
                             min="0.01"
                             step="0.01"
                             placeholder="Taille"
-                            className="container-input container-input-size"
+                            className="cou-cont-input size"
                             value={getContainerEdit(item, 'container_size')}
                             onChange={e => setContainerField(item.id, 'container_size', e.target.value)}
                             onBlur={() => saveContainerEdits(item)}
                           />
                           <select
-                            className="container-unit-select"
+                            className="cou-cont-unit"
                             value={getContainerEdit(item, 'container_unit') || 'L'}
                             onChange={e => {
                               setContainerField(item.id, 'container_unit', e.target.value)
@@ -481,7 +442,7 @@ export default function CoursesPage() {
                           </select>
                         </div>
                         {item.container_qty && item.container_size && (
-                          <span className="container-picker-summary">
+                          <span className="cou-cont-sum">
                             {item.container_qty} × {item.container_size} {item.container_unit}
                           </span>
                         )}
@@ -491,9 +452,9 @@ export default function CoursesPage() {
                 )
               })}
             </div>
-          )
-        })}
-      </div>
-    </>
+          </section>
+        )
+      })}
+    </div>
   )
 }

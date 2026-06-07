@@ -42,7 +42,13 @@ export default function DailyNutritionRecap({ importId }) {
     }
   }
 
-  if (loading) return <p style={{ color: '#9ca3af', fontSize: 13, textAlign: 'center' }}>...</p>
+  if (loading) return (
+    <div aria-busy="true" aria-label="Chargement de la nutrition">
+      {Array.from({ length: 4 }).map((_, i) => (
+        <div key={i} className="v21-skel" style={{ height: 52, marginBottom: 1, borderRadius: 0 }} />
+      ))}
+    </div>
+  )
   if (!totals.length) return null
 
   // Group by date
@@ -116,23 +122,20 @@ export default function DailyNutritionRecap({ importId }) {
         .nutri-day-row {
           display: flex;
           align-items: center;
-          gap: 12px;
-          padding: 10px 14px;
-          background: var(--surface);
-          backdrop-filter: blur(8px);
-          border: 1px solid rgba(0, 0, 0, 0.04);
-          border-radius: 14px;
+          gap: 14px;
+          padding: 12px 0;
+          border-bottom: 1px solid var(--line);
         }
         .nutri-day-label {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          min-width: 52px;
+          align-items: flex-start;
+          min-width: 64px;
           flex-shrink: 0;
         }
         .nutri-persons-wrap {
           display: flex;
-          gap: 16px;
+          gap: 22px;
           flex: 1;
           min-width: 0;
         }
@@ -140,20 +143,19 @@ export default function DailyNutritionRecap({ importId }) {
           flex: 1;
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 10px;
           min-width: 0;
         }
         .nutri-macro-bar {
-          width: 40px;
-          height: 3px;
-          background: rgba(0, 0, 0, 0.06);
-          border-radius: 2px;
+          width: 48px;
+          height: 4px;
+          background: var(--line);
           overflow: hidden;
           flex-shrink: 0;
         }
         .nutri-micro-row {
           display: flex;
-          gap: 6px;
+          gap: 8px;
           flex-shrink: 0;
         }
 
@@ -161,33 +163,21 @@ export default function DailyNutritionRecap({ importId }) {
           .nutri-day-row {
             flex-direction: column;
             align-items: stretch;
-            gap: 6px;
-            padding: 10px 12px;
+            gap: 8px;
+            padding: 12px 0;
           }
           .nutri-day-label {
             flex-direction: row;
+            align-items: baseline;
             gap: 8px;
             min-width: 0;
           }
           .nutri-persons-wrap {
             flex-direction: column;
-            gap: 6px;
-          }
-          .nutri-person-block {
-            gap: 6px;
+            gap: 8px;
           }
           .nutri-macro-bar {
-            width: 32px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .nutri-day-row {
-            padding: 8px 10px;
-            border-radius: 12px;
-          }
-          .nutri-micro-row {
-            gap: 4px;
+            width: 40px;
           }
         }
       `}</style>
@@ -199,74 +189,75 @@ const S = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 6,
   },
   dayName: {
-    fontSize: 10,
-    fontWeight: 700,
+    fontFamily: 'var(--font-mono)',
+    fontSize: 10.5,
+    fontWeight: 400,
     textTransform: 'uppercase',
-    letterSpacing: 0.8,
-    color: '#9ca3af',
-    fontFamily: "var(--font-text)",
+    letterSpacing: '0.06em',
+    color: 'var(--ink-3)',
   },
   dayDate: {
-    fontSize: 13,
+    fontFamily: 'var(--font-display)',
+    fontSize: 17,
     fontWeight: 600,
-    color: 'var(--forest-800, #2d5a2d)',
-    fontFamily: "var(--font-editorial)",
+    color: 'var(--ink-1)',
+    marginTop: 2,
   },
   personTag: {
-    fontSize: 10,
-    fontWeight: 700,
-    color: '#4a7c4a',
-    background: 'rgba(74, 124, 74, 0.08)',
-    borderRadius: 6,
-    padding: '2px 6px',
+    fontFamily: 'var(--font-mono)',
+    fontSize: 11,
+    fontWeight: 600,
+    color: 'var(--ink-2)',
+    border: '1px solid var(--line-strong)',
+    borderRadius: 3,
+    padding: '2px 7px',
     flexShrink: 0,
-    fontFamily: "var(--font-text)",
   },
   macros: {
     display: 'flex',
     alignItems: 'baseline',
-    gap: 2,
+    gap: 3,
     flexShrink: 0,
   },
   macroMain: {
-    fontSize: 16,
-    fontWeight: 700,
+    fontFamily: 'var(--font-display)',
+    fontSize: 20,
+    fontWeight: 600,
     fontVariantNumeric: 'tabular-nums',
   },
   macroUnit: {
+    fontFamily: 'var(--font-mono)',
     fontSize: 10,
-    color: '#9ca3af',
-    fontWeight: 600,
+    color: 'var(--ink-3)',
   },
   microValue: {
-    fontSize: 10,
+    fontFamily: 'var(--font-mono)',
+    fontSize: 11,
     fontWeight: 600,
-    color: '#6b7280',
+    color: 'var(--ink-2)',
     fontVariantNumeric: 'tabular-nums',
-    fontFamily: "var(--font-text)",
   },
   legend: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     gap: 16,
-    marginTop: 8,
+    marginTop: 14,
     flexWrap: 'wrap',
   },
   legendItem: {
     display: 'flex',
     alignItems: 'center',
-    gap: 4,
-    fontSize: 10,
-    color: '#9ca3af',
-    fontFamily: "var(--font-text)",
+    gap: 5,
+    fontFamily: 'var(--font-mono)',
+    fontSize: 10.5,
+    color: 'var(--ink-3)',
   },
   legendDot: {
-    width: 6,
-    height: 6,
-    borderRadius: '50%',
+    width: 8,
+    height: 8,
+    borderRadius: 2,
     display: 'inline-block',
   },
 }

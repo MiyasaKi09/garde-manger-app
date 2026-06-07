@@ -15,32 +15,22 @@ export default function RestesRedirectPage() {
   }, [router]);
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '100vh',
-      padding: '2rem',
-      textAlign: 'center'
-    }}>
-      <div style={{
-        background: 'var(--surface)',
-        backdropFilter: 'blur(10px)',
-        borderRadius: '16px',
-        padding: '3rem',
-        maxWidth: '500px'
-      }}>
-        <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔄</div>
-        <h1 style={{ color: 'var(--forest-700)', marginBottom: '1rem' }}>
-          Redirection en cours...
-        </h1>
-        <p style={{ color: 'var(--earth-600)', lineHeight: '1.6' }}>
-          La gestion des restes est désormais intégrée dans le garde-manger.
-          <br />
-          Vous allez être redirigé automatiquement.
-        </p>
-      </div>
+    <div className="v21-page narrow">
+      <header className="v21-hero">
+        <div className="v21-hero-text">
+          <span className="v21-eyebrow">Anti-gaspi</span>
+          <h1 className="v21-title">Restes</h1>
+          <div className="v21-rule" />
+          <p className="v21-lede">La gestion des restes est désormais intégrée au garde-manger.</p>
+        </div>
+      </header>
+
+      <section className="v21-section flush" aria-busy="true" aria-label="Redirection en cours">
+        <p className="v21-next" style={{ marginTop: 0 }}>Redirection vers le garde-manger…</p>
+        <div className="v21-skel" style={{ height: 56, marginTop: 14 }} />
+        <div className="v21-skel" style={{ height: 56, marginTop: 12 }} />
+        <div className="v21-skel" style={{ height: 56, marginTop: 12 }} />
+      </section>
     </div>
   );
 }

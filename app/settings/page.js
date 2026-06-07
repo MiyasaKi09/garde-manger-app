@@ -1,23 +1,28 @@
+import Link from 'next/link'
+
 export default function SettingsHome() {
   return (
-    <>
-      <div className="myko-canvas" aria-hidden="true" />
-      <div className="myko-page-container">
-        <div className="hero-header">
-          <div className="hero-content">
-            <div className="hero-text">
-              <span className="hero-eyebrow">Paramètres</span>
-              <h1 className="hero-title">Réglages</h1>
-            </div>
-          </div>
+    <div className="v21-page narrow">
+      <header className="v21-hero">
+        <div className="v21-hero-text">
+          <span className="v21-eyebrow">Paramètres</span>
+          <h1 className="v21-title">Réglages</h1>
+          <div className="v21-rule" />
+          <p className="v21-lede">Gérez vos données et la configuration de Myko.</p>
         </div>
-        <div style={{ display: 'grid', gap: 12 }}>
-          <a className="myko-card" href="/settings/data" style={{ display: 'block', textDecoration: 'none', padding: 'var(--s-4) var(--s-5)' }}>
-            <div style={{ fontWeight: 600, color: 'var(--ink-1)' }}>Données</div>
-            <div style={{ opacity: 0.7, color: 'var(--ink-2)', fontSize: 'var(--fs-sm)', marginTop: 4 }}>Nettoyer produits &amp; alias (supprimer "bizarres").</div>
-          </a>
+      </header>
+
+      <section className="v21-section flush">
+        <div className="v21-bh"><span className="v21-bl">Général</span></div>
+        <div className="v21-its">
+          <Link href="/settings/data" className="v21-it compact">
+            <span className="v21-it-bar" aria-hidden="true" />
+            <span className="v21-it-n">Données</span>
+            <span className="v21-it-st">Gérer →</span>
+          </Link>
         </div>
-      </div>
-    </>
+        <p className="v21-next">Nettoyer produits &amp; alias (supprimer les entrées « bizarres »).</p>
+      </section>
+    </div>
   )
 }

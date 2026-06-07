@@ -30,13 +30,9 @@ const MEAL_LABELS = {
   collation: 'Collation',
 }
 
-// Palette repas — refonte « Mycélium » (éditorial, désaturé)
-const MEAL_COLORS = {
-  pdj: { bg: '#F4EBD6', text: '#9A6B1E', accent: '#C98A2E' },
-  dejeuner: { bg: '#E6EFE5', text: '#2F5D3A', accent: '#3F7D52' },
-  diner: { bg: '#ECE6F4', text: '#5B4789', accent: '#7A5AA6' },
-  collation: { bg: '#F6E5EC', text: '#9C4368', accent: '#B5587E' },
-}
+// V21 — barre de couleur par repas (saffron / sage / olive / terracotta),
+// alignée sur TodayMeals + v21.css (.v21-meal-bar).
+const MEAL_BAR = { pdj: '#D9A33A', dejeuner: '#6FB05A', diner: '#6E7A3F', collation: '#BB5836' }
 
 const MEAL_ORDER = ['pdj', 'dejeuner', 'diner', 'collation']
 
@@ -237,12 +233,14 @@ export default function WeeklyPlanView({ imports = [] }) {
 
   if (loading) {
     return (
-      <div style={{
-        background: 'var(--surface)', border: '1px solid var(--line)',
-        borderRadius: 'var(--r-card)', padding: 'var(--s-7)',
-        textAlign: 'center', color: 'var(--ink-3)',
-        fontFamily: 'var(--font-text)', fontSize: 13, letterSpacing: '0.02em',
-      }}>Chargement du planning…</div>
+      <div aria-busy="true" aria-label="Chargement du planning">
+        <div className="v21-skel" style={{ height: 36, width: 260, margin: '0 auto 18px' }} />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="v21-skel" style={{ height: 64, marginBottom: 1, borderRadius: 0 }} />
+          ))}
+        </div>
+      </div>
     )
   }
 
@@ -257,56 +255,52 @@ export default function WeeklyPlanView({ imports = [] }) {
   return (
     <div style={{ marginBottom: 20 }}>
       {/* Week navigation */}
-      <div style={styles.weekNav}>
-        <button onClick={() => setWeekOffset(w => w - 1)} style={styles.navArrow}>
-          <ChevronLeft size={18} />
+      <div className="weekly-nav">
+        <button onClick={() => setWeekOffset(w => w - 1)} className="weekly-nav-arrow" aria-label="Semaine précédente">
+          <ChevronLeft size={16} />
         </button>
-        <div style={styles.weekLabelWrap}>
-          <span style={styles.weekLabel}>
-            {weekDates[0].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}
-          </span>
-          <span style={styles.weekSep}>—</span>
-          <span style={styles.weekLabel}>
-            {weekDates[6].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}
-          </span>
+        <div className="weekly-nav-label">
+          <span>{weekDates[0].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}</span>
+          <span className="weekly-nav-sep">—</span>
+          <span>{weekDates[6].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}</span>
         </div>
-        <button onClick={() => setWeekOffset(w => w + 1)} style={styles.navArrow}>
-          <ChevronRight size={18} />
+        <button onClick={() => setWeekOffset(w => w + 1)} className="weekly-nav-arrow" aria-label="Semaine suivante">
+          <ChevronRight size={16} />
         </button>
       </div>
 
       {!selectedImport && (
-        <p style={{ ...styles.noMeal, margin: '4px 0 14px', fontSize: 13 }}>
+        <p className="weekly-empty">
           Aucun planning pour cette semaine — navigue avec ‹ › ou clique « Demander à Myko ».
         </p>
       )}
 
-      {/* Days */}
-      <div className="weekly-days-grid">
+      {/* Days — sections à filets, lignes de repas V21 */}
+      <div className="weekly-days">
         {weekDates.map(date => {
           const dateStr = date.toISOString().split('T')[0]
           const isToday = dateStr === todayStr
           const dayMeals = mealsByDate[dateStr] || []
-          const dayName = DAY_NAMES[date.getDay()]
+          const dayName = DAY_NAMES_FULL[date.getDay()]
           const dayNum = date.getDate()
+          const monthLabel = date.toLocaleDateString('fr-FR', { month: 'short' })
 
           return (
-            <div
-              key={dateStr}
-              className={`weekly-day-card${isToday ? ' weekly-day-today' : ''}`}
-            >
+            <section key={dateStr} className="weekly-day">
               {/* Day header */}
-              <div className={`weekly-day-header${isToday ? ' weekly-day-header-today' : ''}`}>
-                <span className="weekly-day-name">{dayName}</span>
-                <span className={`weekly-day-num${isToday ? ' weekly-day-num-today' : ''}`}>{dayNum}</span>
+              <div className="weekly-day-h">
+                <span className={`weekly-day-tag${isToday ? ' on' : ''}`}>
+                  {dayName} {dayNum} {monthLabel}
+                </span>
+                {isToday && <span className="weekly-day-today">Aujourd'hui</span>}
               </div>
 
               {/* Meals */}
-              <div className="weekly-meals-wrap">
-                {dayMeals.length === 0 ? (
-                  <p style={styles.noMeal}>—</p>
-                ) : (
-                  [...new Set(dayMeals.map(m => m.meal_type))]
+              {dayMeals.length === 0 ? (
+                <p className="weekly-noMeal">Rien de prévu</p>
+              ) : (
+                <div className="v21-meals">
+                  {[...new Set(dayMeals.map(m => m.meal_type))]
                     .sort((a, b) => MEAL_ORDER.indexOf(a) - MEAL_ORDER.indexOf(b))
                     .map(type => {
                     const typeMeals = dayMeals.filter(m => m.meal_type === type)
@@ -315,34 +309,15 @@ export default function WeeklyPlanView({ imports = [] }) {
                     const julienRow = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
                     const dishName = (julienRow?.short_label || '').trim() || extractDishName(descriptions)
                     const isGenerating = generatingFor === dishName
-                    const colors = MEAL_COLORS[type] || MEAL_COLORS.dejeuner
                     // Seuls déjeuner/dîner ont une fiche recette (pas pdj/collation).
                     const clickable = type === 'dejeuner' || type === 'diner'
                     const done = doneSet.has(`${typeMeals[0]?.meal_date}|${type}`)
                     const descStyle = done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined
 
                     return (
-                      <div key={type} className="weekly-meal-block">
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 2 }}>
-                          <button
-                            onClick={(e) => { e.stopPropagation(); toggleDone(typeMeals, type) }}
-                            title={done ? 'Cuisiné — annuler' : 'Marquer cuisiné'}
-                            style={{
-                              width: 16, height: 16, borderRadius: 4, flexShrink: 0, padding: 0,
-                              border: `1.5px solid ${done ? '#16a34a' : '#cbd5c0'}`,
-                              background: done ? '#16a34a' : 'transparent',
-                              display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                            }}
-                          >
-                            {done && <Check size={9} color="#fff" />}
-                          </button>
-                          <span
-                            className="weekly-meal-type"
-                            style={{ background: colors.bg, color: colors.text }}
-                          >
-                            {MEAL_LABELS[type] || type}
-                          </span>
-                        </div>
+                      <div key={type} className="v21-meal" style={{ opacity: generatingFor && !isGenerating ? 0.4 : 1 }}>
+                        <span className="v21-meal-bar" style={{ background: MEAL_BAR[type] || MEAL_BAR.diner }} />
+                        <span className="v21-meal-l">{MEAL_LABELS[type] || type}</span>
                         {clickable ? (
                           <button
                             onClick={() => handleMealClick(typeMeals, dishName)}
@@ -350,25 +325,29 @@ export default function WeeklyPlanView({ imports = [] }) {
                             onFocus={() => prefetchRecipe(typeMeals)}
                             disabled={!!generatingFor}
                             className="weekly-meal-btn"
-                            style={{ opacity: generatingFor && !isGenerating ? 0.4 : 1 }}
                             title="Voir la recette"
                           >
                             {isGenerating ? (
-                              <Loader2 size={11} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: colors.accent }} />
+                              <Loader2 size={12} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: 'var(--ink-3)' }} />
                             ) : null}
-                            <span className="weekly-meal-desc" style={descStyle}>{dishName}</span>
+                            <span className="v21-meal-n" style={descStyle}>{dishName}</span>
                           </button>
                         ) : (
-                          <div className="weekly-meal-btn" style={{ cursor: 'default' }}>
-                            <span className="weekly-meal-desc" style={descStyle}>{dishName}</span>
-                          </div>
+                          <span className="v21-meal-n" style={{ ...descStyle, cursor: 'default' }}>{dishName}</span>
                         )}
+                        <button
+                          onClick={(e) => { e.stopPropagation(); toggleDone(typeMeals, type) }}
+                          title={done ? 'Cuisiné — annuler' : 'Marquer cuisiné'}
+                          className={`weekly-check${done ? ' on' : ''}`}
+                        >
+                          {done && <Check size={11} color="#fff" />}
+                        </button>
                       </div>
                     )
-                  })
-                )}
-              </div>
-            </div>
+                  })}
+                </div>
+              )}
+            </section>
           )
         })}
       </div>
@@ -378,126 +357,81 @@ export default function WeeklyPlanView({ imports = [] }) {
         <style>{`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
       )}
 
-      {/* Responsive styles */}
+      {/* Styles V21 — filets, surlignage, lignes de repas */}
       <style jsx>{`
-/* ===== REFONTE « MYCÉLIUM » — grille semaine ===== */
-.weekly-days-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: var(--s-3);
-}
-.weekly-day-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-card);
-  overflow: hidden;
-  transition: transform var(--dur) var(--spring),
-              box-shadow var(--dur) var(--ease),
-              border-color var(--dur) var(--ease);
-  animation: cardPop 0.55s var(--spring) both;
-}
-.weekly-day-card:nth-child(1) { animation-delay: 0.02s; }
-.weekly-day-card:nth-child(2) { animation-delay: 0.06s; }
-.weekly-day-card:nth-child(3) { animation-delay: 0.10s; }
-.weekly-day-card:nth-child(4) { animation-delay: 0.14s; }
-.weekly-day-card:nth-child(5) { animation-delay: 0.18s; }
-.weekly-day-card:nth-child(6) { animation-delay: 0.22s; }
-.weekly-day-card:nth-child(7) { animation-delay: 0.26s; }
-.weekly-day-card:hover {
-  transform: translateY(-4px) scale(1.012);
-  box-shadow: var(--sh-2);
-  border-color: var(--line-strong);
-}
-@keyframes cardPop {
-  0%   { opacity: 0; transform: translateY(16px) scale(0.96); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .weekly-day-card { animation: none; }
-}
-.weekly-day-today {
-  border-color: var(--brand);
-  box-shadow: inset 0 3px 0 0 var(--accent);
-}
-.weekly-day-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 12px 8px;
-  border-bottom: 1px solid var(--line);
-}
-.weekly-day-header-today {
-  background: var(--brand-soft);
-  border-bottom-color: rgba(47, 93, 58, 0.18);
-}
-.weekly-day-name {
-  font-family: var(--font-text);
-  font-size: var(--fs-xs); font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.14em;
-  color: var(--ink-3);
-}
-.weekly-day-header-today .weekly-day-name { color: var(--brand); }
-.weekly-day-num {
-  font-family: var(--font-display);
-  font-size: 17px; font-weight: 600;
-  color: var(--ink-2); line-height: 1;
-}
-.weekly-day-num-today {
-  width: 27px; height: 27px; border-radius: var(--r-pill);
-  background: var(--brand); color: #fff;
+/* ── Navigation de semaine ── */
+.weekly-nav {
   display: flex; align-items: center; justify-content: center;
-  font-size: 14px;
+  gap: 18px; padding: 4px 0 18px;
 }
-.weekly-meals-wrap {
-  padding: 10px 11px 12px;
-  display: flex; flex-direction: column; gap: 9px;
+.weekly-nav-arrow {
+  border: 1px solid var(--line-strong); background: transparent;
+  border-radius: 3px; width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--ink-2);
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
-.weekly-meal-block {
-  display: flex; flex-direction: column; gap: 4px;
+.weekly-nav-arrow:hover { border-color: var(--ink-1); color: var(--ink-1); }
+.weekly-nav-label {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-size: 19px; font-weight: 600;
+  letter-spacing: -0.01em; color: var(--ink-1);
 }
-.weekly-meal-block + .weekly-meal-block {
-  border-top: 1px solid var(--line);
-  padding-top: 9px;
-}
-.weekly-meal-type {
-  align-self: flex-start;
-  font-family: var(--font-text);
-  font-size: 9px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.07em;
-  padding: 2px 8px; border-radius: var(--r-pill);
-}
-.weekly-meal-btn {
-  display: flex; align-items: flex-start; gap: 5px;
-  width: 100%; padding: 3px 4px; margin: 0;
-  border: none; background: transparent;
-  cursor: pointer; text-align: left;
-  border-radius: var(--r-sm);
-  transition: background var(--dur-fast) var(--ease),
-              transform var(--dur) var(--spring);
-}
-button.weekly-meal-btn:hover {
-  background: var(--surface-soft);
-  transform: translateX(3px);
-}
-button.weekly-meal-btn:active { transform: scale(0.97); }
-button.weekly-meal-btn:disabled { cursor: default; }
-.weekly-meal-desc {
-  flex: 1; min-width: 0;
-  font-family: var(--font-display);
-  font-size: 13.5px; font-weight: 600;
-  line-height: 1.25; color: var(--ink-1);
-  display: -webkit-box;
-  -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-  overflow: hidden;
+.weekly-nav-sep { color: var(--ink-3); font-size: 14px; }
+
+.weekly-empty {
+  font-family: var(--font-text); font-size: 13px; color: var(--ink-3);
+  text-align: center; margin: 4px 0 14px;
 }
 
-@media (max-width: 768px) {
-  .weekly-days-grid { grid-template-columns: repeat(2, 1fr); gap: var(--s-2); }
-  .weekly-meal-desc { font-size: 13px; }
+/* ── Jours : sections empilées à filets ── */
+.weekly-days { display: flex; flex-direction: column; }
+.weekly-day { padding: 18px 0 4px; border-top: 1px solid var(--line); }
+.weekly-day:first-child { border-top: none; }
+.weekly-day-h { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.weekly-day-tag {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-2);
 }
-@media (max-width: 480px) {
-  .weekly-days-grid { grid-template-columns: 1fr; gap: var(--s-2); }
-  .weekly-day-header { padding: 9px 14px 7px; }
-  .weekly-meals-wrap { padding: 10px 14px 12px; }
-  .weekly-meal-desc { font-size: 14px; }
+.weekly-day-tag.on {
+  background: var(--terracotta); color: #fff;
+  padding: 4px 9px; border-radius: 3px;
+}
+.weekly-day-today {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--terracotta);
+}
+.weekly-noMeal {
+  font-family: var(--font-text); font-size: 13px; color: var(--ink-3);
+  margin: 2px 0 10px;
+}
+
+/* ── Nom de plat cliquable : occupe la colonne 1fr de .v21-meal ── */
+.weekly-meal-btn {
+  display: flex; align-items: center; gap: 8px;
+  min-width: 0; padding: 0; margin: 0;
+  border: none; background: transparent; cursor: pointer; text-align: left;
+}
+.weekly-meal-btn:disabled { cursor: default; }
+.weekly-meal-btn:hover:not(:disabled) .v21-meal-n { color: var(--terracotta); }
+
+/* ── Case « cuisiné » (colonne auto de droite) ── */
+.weekly-check {
+  width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0; padding: 0;
+  border: 1.5px solid var(--line-strong); background: transparent;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.weekly-check.on { background: var(--brand); border-color: var(--brand); }
+
+.weekly-meal-btn:focus-visible, .weekly-check:focus-visible,
+.weekly-nav-arrow:focus-visible {
+  outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px;
+}
+
+@media (max-width: 560px) {
+  .weekly-nav-label { font-size: 16px; }
 }
       `}</style>
 
@@ -522,27 +456,4 @@ button.weekly-meal-btn:disabled { cursor: default; }
       />
     </div>
   )
-}
-
-const styles = {
-  weekNav: {
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    gap: 18, marginBottom: 'var(--s-5)', padding: '4px 0',
-  },
-  navArrow: {
-    border: '1px solid var(--line-strong)', background: 'var(--surface)',
-    borderRadius: 'var(--r-pill)', width: 36, height: 36,
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    cursor: 'pointer', color: 'var(--ink-2)', transition: 'var(--transition-base)',
-  },
-  weekLabelWrap: { display: 'flex', alignItems: 'center', gap: 10 },
-  weekLabel: {
-    fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 600,
-    letterSpacing: '-0.01em', color: 'var(--ink-1)',
-  },
-  weekSep: { color: 'var(--ink-3)', fontSize: 14 },
-  noMeal: {
-    fontSize: 13, color: 'var(--ink-3)', textAlign: 'center',
-    margin: '14px 0', fontFamily: 'var(--font-text)',
-  },
 }

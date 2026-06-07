@@ -1,57 +1,118 @@
-.nutrition-page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: clamp(16px, 3vw, 40px);
-  padding-bottom: 40px;
-  position: relative;
-  z-index: 1;
+/* app/nutrition/nutrition.css — Nutrition V21 (éditorial à filets)
+   Primitives partagées dans app/styles/v21.css. Ici : seulement le spécifique. */
+
+/* ── Navigation de date (contrôles mono) ── */
+.nut-datenav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
 }
-.nutrition-date-nav {
+.nut-datebtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--s-4);
-  margin-bottom: var(--s-5);
-}
-.nutrition-date-btn {
+  width: 34px;
+  height: 34px;
   border: 1px solid var(--line-strong);
-  background: var(--surface);
-  border-radius: var(--r-sm);
-  padding: var(--s-1);
-  cursor: pointer;
+  border-radius: 3px;
+  background: transparent;
   color: var(--ink-2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--dur-fast) var(--ease);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
-.nutrition-date-btn:hover {
-  background: var(--surface-soft);
-  color: var(--ink-1);
-}
-.nutrition-date-label {
+.nut-datebtn:hover { border-color: var(--ink-1); color: var(--ink-1); }
+.nut-datelabel {
   font-family: var(--font-mono);
   font-size: 12px;
-  font-weight: 500;
-  color: var(--ink-1);
-  min-width: 160px;
-  text-align: center;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
-}
-.nutrition-section-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-card);
-  box-shadow: var(--sh-1);
-  padding: var(--s-5);
-  margin-bottom: var(--s-4);
-  animation: mykoReveal 0.4s var(--spring) both;
-}
-.nutrition-section-title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h2);
-  font-weight: 600;
+  text-transform: uppercase;
   color: var(--ink-1);
-  margin: 0 0 var(--s-3);
+  min-width: 200px;
+  text-align: center;
+}
+
+/* ── Squelettes de chargement ── */
+.nut-skel-wrap { display: flex; flex-direction: column; gap: 16px; padding-top: 30px; }
+
+/* ── Micronutriments (grille à filets) ── */
+.nut-micros {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.nut-micro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--paper);
+}
+.nut-micro-l { font-family: var(--font-mono); font-size: 11px; text-transform: capitalize; color: var(--ink-3); }
+.nut-micro-v { font-family: var(--font-mono); font-size: 13px; font-weight: 600; }
+.nut-micro-v.ok { color: var(--brand); }
+.nut-micro-v.mid { color: var(--state-soon); }
+.nut-micro-v.low { color: var(--terracotta); }
+
+/* ── Repas du jour (lignes à filets) ── */
+.nut-meals { display: flex; flex-direction: column; }
+.nut-meal {
+  display: grid;
+  grid-template-columns: 104px 1fr auto;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.nut-meal:last-child { border-bottom: none; }
+.nut-meal-t { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-3); }
+.nut-meal-n { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--ink-1); min-width: 0; }
+.nut-meal-k { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); white-space: nowrap; }
+
+/* ── Poids ── */
+.nut-weight-form { display: flex; gap: 8px; margin-bottom: 18px; }
+.nut-input {
+  flex: 1;
+  font-family: var(--font-text);
+  font-size: 15px;
+  color: var(--ink-1);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.nut-input:focus { border-color: var(--terracotta); }
+
+.nut-weight-now { display: flex; align-items: baseline; flex-wrap: wrap; gap: 14px; }
+.nut-weight-v { font-family: var(--font-display); font-weight: 600; font-size: 40px; line-height: 1; color: var(--ink-1); }
+.nut-weight-u { font-family: var(--font-display); font-weight: 500; font-size: 20px; color: var(--ink-3); }
+.nut-weight-d { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
+.nut-weight-goal {
+  margin-left: auto;
+  font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--brand); border: 1px solid var(--line-strong); border-radius: 3px; padding: 5px 10px;
+}
+
+.nut-weight-hist { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; flex-direction: column; }
+.nut-weight-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.nut-weight-row:last-child { border-bottom: none; }
+.nut-weight-row-d { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
+.nut-weight-row-v { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--ink-1); }
+
+/* ── A11y ── */
+.nut-datebtn:focus-visible, .nut-input:focus-visible {
+  outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 560px) {
+  .nut-datelabel { min-width: 0; flex: 1; }
+  .nut-meal { grid-template-columns: 1fr auto; }
+  .nut-meal-t { grid-column: 1 / -1; }
 }

@@ -877,76 +877,35 @@ export default function RecipeDetail() {
 
   if (loading) {
     return (
-      <div className="recipe-detail-container">
-        <div className="loading-spinner" style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '60vh',
-          fontSize: '1.2rem',
-          color: '#374151'
-        }}>
-          Chargement de la recette...
-        </div>
+      <div className="v21-page narrow">
+        <div className="v21-skel" style={{ height: 24, width: 120 }} />
+        <div className="v21-skel" style={{ height: 56, width: '70%', marginTop: 22 }} />
+        <div className="v21-skel" style={{ height: 3, width: 92, marginTop: 22 }} />
+        <div className="v21-skel" style={{ height: 200, marginTop: 28 }} />
+        <div className="v21-skel" style={{ height: 260, marginTop: 24 }} />
       </div>
     );
   }
-  
+
   if (error) {
     return (
-      <div className="recipe-detail-container">
-        <div className="error-message" style={{
-          background: 'rgba(239, 68, 68, 0.1)',
-          border: '1px solid rgba(239, 68, 68, 0.3)',
-          borderRadius: '12px',
-          padding: '20px',
-          textAlign: 'center'
-        }}>
-          <h2 style={{ color: '#dc2626' }}>Erreur</h2>
+      <div className="v21-page narrow">
+        <div className="rd-error">
+          <h2>Erreur</h2>
           <p>{error}</p>
-          <button 
-            onClick={() => window.history.back()}
-            style={{
-              padding: '10px 20px',
-              background: '#dc2626',
-              color: 'white',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer'
-            }}
-          >
-            ← Retour
-          </button>
+          <button onClick={() => window.history.back()} className="v21-btn">← Retour</button>
         </div>
       </div>
     );
   }
-  
+
   if (!recipe) {
     return (
-      <div className="recipe-detail-container">
-        <div className="error-message" style={{
-          background: 'rgba(107, 114, 128, 0.1)',
-          border: '1px solid rgba(107, 114, 128, 0.3)',
-          borderRadius: '12px',
-          padding: '20px',
-          textAlign: 'center'
-        }}>
+      <div className="v21-page narrow">
+        <div className="rd-error">
           <h2>Recette introuvable</h2>
-          <p>Aucune recette trouvée avec l'ID: {id}</p>
-          <button 
-            onClick={() => window.history.back()}
-            style={{
-              padding: '10px 20px',
-              background: '#6b7280',
-              color: 'white',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer'
-            }}
-          >
-            ← Retour aux recettes
-          </button>
+          <p>Aucune recette trouvée avec l'ID&nbsp;: {id}</p>
+          <button onClick={() => window.history.back()} className="v21-btn">← Retour aux recettes</button>
         </div>
       </div>
     );
@@ -955,57 +914,45 @@ export default function RecipeDetail() {
   // Interface d'édition avec onglets (style cohérent avec /recipes/edit/new)
   if (isEditing) {
     return (
-      <div className="recipes-container">
+      <div className="v21-page narrow">
         {/* Header */}
         <div className="edit-header-bar">
-          <h1>✏️ Édition de "{recipe.title}"</h1>
+          <h1>Édition — {recipe.title}</h1>
           <div className="edit-actions">
-            <button 
-              className="btn-tertiary" 
-              onClick={() => {
-                alert(`${availableIngredients.length} ingrédients chargés`);
-              }}
-            >
-              🔍 Test données
-            </button>
-            <button 
-              className="btn-primary" 
-              onClick={saveRecipe}
-              disabled={sending}
-            >
-              {sending ? '⏳ Sauvegarde...' : '💾 Sauvegarder'}
+            <button className="btn-primary" onClick={saveRecipe} disabled={sending}>
+              {sending ? 'Sauvegarde…' : 'Sauvegarder'}
             </button>
             <button className="btn-secondary" onClick={cancelEditing}>
-              ❌ Annuler
+              Annuler
             </button>
           </div>
         </div>
 
         {/* Tabs de navigation */}
         <div className="edit-tabs">
-          <button 
+          <button
             className={`tab-btn ${activeEditTab === 'basic' ? 'active' : ''}`}
             onClick={() => setActiveEditTab('basic')}
           >
-            📝 Informations
+            Informations
           </button>
-          <button 
+          <button
             className={`tab-btn ${activeEditTab === 'ingredients' ? 'active' : ''}`}
             onClick={() => setActiveEditTab('ingredients')}
           >
-            🥕 Ingrédients
+            Ingrédients
           </button>
-          <button 
+          <button
             className={`tab-btn ${activeEditTab === 'instructions' ? 'active' : ''}`}
             onClick={() => setActiveEditTab('instructions')}
           >
-            📋 Instructions  
+            Instructions
           </button>
-          <button 
+          <button
             className={`tab-btn ${activeEditTab === 'nutrition' ? 'active' : ''}`}
             onClick={() => setActiveEditTab('nutrition')}
           >
-            📊 Nutrition
+            Nutrition
           </button>
         </div>
 
@@ -1013,7 +960,7 @@ export default function RecipeDetail() {
         <div className="edit-content">
           {activeEditTab === 'basic' && (
             <div className="edit-section">
-              <h2>📝 Informations générales</h2>
+              <h2>Informations générales</h2>
             
             <div className="form-grid">
               <div className="form-group">
@@ -1124,8 +1071,8 @@ export default function RecipeDetail() {
 
           {activeEditTab === 'ingredients' && (
             <div className="edit-section">
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-              <h2>🥕 Ingrédients</h2>
+            <div className="edit-section-head">
+              <h2>Ingrédients</h2>
               <button className="add-btn" onClick={addIngredient}>
                 + Ajouter un ingrédient
               </button>
@@ -1176,7 +1123,7 @@ export default function RecipeDetail() {
                     onClick={() => removeIngredient(index)}
                     title="Supprimer cet ingrédient"
                   >
-                    🗑️
+                    ✕
                   </button>
                 </div>
               ))}
@@ -1192,8 +1139,8 @@ export default function RecipeDetail() {
 
           {activeEditTab === 'instructions' && (
             <div className="edit-section">
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-              <h2>📋 Instructions</h2>
+            <div className="edit-section-head">
+              <h2>Instructions</h2>
               <button className="add-btn" onClick={addInstruction}>
                 + Ajouter une étape
               </button>
@@ -1209,7 +1156,7 @@ export default function RecipeDetail() {
                       onClick={() => removeInstruction(index)}
                       title="Supprimer cette étape"
                     >
-                      🗑️
+                      ✕
                     </button>
                   </div>
                   <textarea
@@ -1265,7 +1212,7 @@ export default function RecipeDetail() {
             </div>
 
             <div className="form-group">
-              <label>💡 Conseils du chef (optionnel)</label>
+              <label>Conseils du chef (optionnel)</label>
               <textarea
                 value={editedRecipe.chef_tips || ''}
                 onChange={(e) => setEditedRecipe(prev => ({...prev, chef_tips: e.target.value}))}
@@ -1278,8 +1225,8 @@ export default function RecipeDetail() {
 
           {activeEditTab === 'nutrition' && (
             <div className="edit-section">
-              <h2>📊 Informations nutritionnelles</h2>
-              <p style={{color: '#6b7280', fontStyle: 'italic', marginBottom: '20px'}}>
+              <h2>Informations nutritionnelles</h2>
+              <p className="info-text">
                 Les informations nutritionnelles seront calculées automatiquement selon les ingrédients ajoutés.
                 Cette section sera développée dans une prochaine version.
               </p>
@@ -1305,249 +1252,62 @@ export default function RecipeDetail() {
   }
 
   return (
-    <div className="recipe-detail-container">
-      <div className="recipe-header">
-        <button 
-          onClick={() => window.history.back()}
-          className="back-button"
-        >
-          ← Retour aux recettes
-        </button>
-        
-        <div className="recipe-title-section">
-          <h1 className="recipe-title">{recipe.title}</h1>
-          <div className="recipe-badges">
-            <span className={`myko-score ${recipe.myko_score >= 80 ? 'high-score' : 'medium-score'}`}>
-              {recipe.myko_score}★ Myko
-            </span>
-          </div>
-        </div>
-        
-        {recipe.description && (
-          <p className="recipe-description">{recipe.description}</p>
-        )}
-      </div>
+    <div className="v21-page narrow rd-page">
+      <button onClick={() => window.history.back()} className="v21-link rd-back">
+        ← Recettes
+      </button>
+
+      <header className="rd-head">
+        <span className="v21-eyebrow">Recette</span>
+        <h1 className="v21-title rd-title">{recipe.title}</h1>
+        <div className="v21-rule" />
+        {recipe.description && <p className="v21-lede rd-desc">{recipe.description}</p>}
+        <p className="rd-meta-line">
+          {[
+            `${totalTime} min`,
+            `${recipe.servings || 4} portions`,
+            recipe.myko_score != null ? `Score ${recipe.myko_score}/100` : null,
+            recipe.is_vegan ? 'Vegan' : recipe.is_vegetarian ? 'Végétarien' : 'Omnivore',
+          ].filter(Boolean).join('  ·  ')}
+        </p>
+      </header>
 
       <div className="recipe-content">
-        {/* Cartes d'information condensées */}
-        <div style={{
-          display: 'flex',
-          gap: '10px',
-          marginBottom: '16px',
-          flexWrap: 'wrap'
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            padding: '6px 12px',
-            background: '#f3f4f6',
-            borderRadius: '8px',
-            fontSize: '0.9rem'
-          }}>
-            <span>⏱️</span>
-            <span style={{ fontWeight: '600' }}>{totalTime} min</span>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            padding: '6px 12px',
-            background: '#f3f4f6',
-            borderRadius: '8px',
-            fontSize: '0.9rem'
-          }}>
-            <span>👥</span>
-            <span style={{ fontWeight: '600' }}>{recipe.servings || 4} portions</span>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            padding: '6px 12px',
-            background: '#f3f4f6',
-            borderRadius: '8px',
-            fontSize: '0.9rem'
-          }}>
-            <span>📊</span>
-            <span style={{ fontWeight: '600' }}>{recipe.myko_score}/100</span>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            padding: '6px 12px',
-            background: '#f3f4f6',
-            borderRadius: '8px',
-            fontSize: '0.9rem'
-          }}>
-            <span>🌱</span>
-            <span style={{ fontWeight: '600' }}>
-              {recipe.is_vegan ? 'Vegan' : recipe.is_vegetarian ? 'Végétarien' : 'Omnivore'}
-            </span>
-          </div>
-
-          {/* Badges nutritionnels */}
-          {nutrition && (
-            <>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '6px 12px',
-                background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
-                borderRadius: '8px',
-                fontSize: '0.9rem'
-              }}>
-                <span>🔥</span>
-                <span style={{ fontWeight: '600' }}>{Math.round(nutrition.calories)} kcal</span>
-              </div>
-
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '6px 12px',
-                background: 'linear-gradient(135deg, #fecaca 0%, #fca5a5 100%)',
-                borderRadius: '8px',
-                fontSize: '0.9rem'
-              }}>
-                <span>🥩</span>
-                <span style={{ fontWeight: '600' }}>{nutrition.proteines.toFixed(1)}g prot.</span>
-              </div>
-
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '6px 12px',
-                background: 'linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%)',
-                borderRadius: '8px',
-                fontSize: '0.9rem'
-              }}>
-                <span>🌾</span>
-                <span style={{ fontWeight: '600' }}>{nutrition.glucides.toFixed(1)}g gluc.</span>
-              </div>
-
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '6px 12px',
-                background: 'linear-gradient(135deg, #fde047 0%, #facc15 100%)',
-                borderRadius: '8px',
-                fontSize: '0.9rem'
-              }}>
-                <span>🧈</span>
-                <span style={{ fontWeight: '600' }}>{nutrition.lipides.toFixed(1)}g lip.</span>
-              </div>
-            </>
-          )}
-
-          {/* Bouton pour afficher les détails nutritionnels */}
-          {nutrition && (
-            <button
-              onClick={() => setShowDetailedNutrition(!showDetailedNutrition)}
-              style={{
-                background: 'transparent',
-                border: '1px solid #d1d5db',
-                borderRadius: '8px',
-                padding: '6px 12px',
-                fontSize: '0.85rem',
-                color: '#6b7280',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                transition: 'all 0.2s'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.borderColor = '#059669';
-                e.target.style.color = '#059669';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.borderColor = '#d1d5db';
-                e.target.style.color = '#6b7280';
-              }}
-            >
-              {showDetailedNutrition ? '▼' : '▶'} Détails nutritionnels
+        {/* Bandeau nutrition (par portion) */}
+        {nutrition && (
+          <div className="rd-nutrition">
+            <div className="rd-nut-item"><span className="rd-nut-val">{Math.round(nutrition.calories)}</span><span className="rd-nut-label">kcal</span></div>
+            <div className="rd-nut-item"><span className="rd-nut-val">{nutrition.proteines.toFixed(1)}g</span><span className="rd-nut-label">Protéines</span></div>
+            <div className="rd-nut-item"><span className="rd-nut-val">{nutrition.glucides.toFixed(1)}g</span><span className="rd-nut-label">Glucides</span></div>
+            <div className="rd-nut-item"><span className="rd-nut-val">{nutrition.lipides.toFixed(1)}g</span><span className="rd-nut-label">Lipides</span></div>
+            <button className="rd-nut-toggle" onClick={() => setShowDetailedNutrition(!showDetailedNutrition)}>
+              {showDetailedNutrition ? '▼ Détails' : '▶ Détails'}
             </button>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Section détails nutritionnels */}
         {nutrition && showDetailedNutrition && (
-          <div style={{
-            background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
-            borderRadius: '12px',
-            padding: '20px',
-            marginBottom: '16px',
-            border: '1px solid #bbf7d0',
-            maxHeight: '70vh',
-            overflowY: 'auto'
-          }}>
-            <h3 style={{
-              margin: '0 0 16px 0',
-              fontSize: '1rem',
-              fontWeight: '600',
-              color: '#047857'
-            }}>
-              📊 Valeurs nutritionnelles détaillées (par portion)
-            </h3>
+          <div className="rd-nut-detail">
+            <span className="v21-bl">Valeurs détaillées · par portion</span>
 
             {/* Macronutriments principaux */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-              gap: '12px',
-              marginBottom: '20px'
-            }}>
-              <div style={{
-                background: 'white',
-                padding: '12px',
-                borderRadius: '8px',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-              }}>
-                <div style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '4px' }}>Énergie</div>
-                <div style={{ fontSize: '1.3rem', fontWeight: '700', color: '#059669' }}>
-                  {Math.round(nutrition.calories)} <span style={{ fontSize: '0.9rem', fontWeight: '400' }}>kcal</span>
-                </div>
+            <div className="rd-nut-grid">
+              <div className="rd-nut-card">
+                <div className="rd-nut-card-l">Énergie</div>
+                <div className="rd-nut-card-v">{Math.round(nutrition.calories)} <span>kcal</span></div>
               </div>
-              <div style={{
-                background: 'white',
-                padding: '12px',
-                borderRadius: '8px',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-              }}>
-                <div style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '4px' }}>Protéines</div>
-                <div style={{ fontSize: '1.3rem', fontWeight: '700', color: '#dc2626' }}>
-                  {nutrition.proteines.toFixed(1)} <span style={{ fontSize: '0.9rem', fontWeight: '400' }}>g</span>
-                </div>
+              <div className="rd-nut-card">
+                <div className="rd-nut-card-l">Protéines</div>
+                <div className="rd-nut-card-v">{nutrition.proteines.toFixed(1)} <span>g</span></div>
               </div>
-              <div style={{
-                background: 'white',
-                padding: '12px',
-                borderRadius: '8px',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-              }}>
-                <div style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '4px' }}>Glucides</div>
-                <div style={{ fontSize: '1.3rem', fontWeight: '700', color: '#7c3aed' }}>
-                  {nutrition.glucides.toFixed(1)} <span style={{ fontSize: '0.9rem', fontWeight: '400' }}>g</span>
-                </div>
+              <div className="rd-nut-card">
+                <div className="rd-nut-card-l">Glucides</div>
+                <div className="rd-nut-card-v">{nutrition.glucides.toFixed(1)} <span>g</span></div>
               </div>
-              <div style={{
-                background: 'white',
-                padding: '12px',
-                borderRadius: '8px',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-              }}>
-                <div style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '4px' }}>Lipides</div>
-                <div style={{ fontSize: '1.3rem', fontWeight: '700', color: '#ca8a04' }}>
-                  {nutrition.lipides.toFixed(1)} <span style={{ fontSize: '0.9rem', fontWeight: '400' }}>g</span>
-                </div>
+              <div className="rd-nut-card">
+                <div className="rd-nut-card-l">Lipides</div>
+                <div className="rd-nut-card-v">{nutrition.lipides.toFixed(1)} <span>g</span></div>
               </div>
             </div>
 
@@ -1557,62 +1317,30 @@ export default function RecipeDetail() {
                 {/* Autres nutriments */}
                 {(micronutrients.fibres > 0 || micronutrients.sucres > 0 || micronutrients.ag_satures > 0) && (
                   <div style={{ marginBottom: '20px' }}>
-                    <h4 style={{
-                      fontSize: '0.9rem',
-                      fontWeight: '600',
-                      color: '#047857',
-                      marginBottom: '12px',
-                      borderBottom: '1px solid #bbf7d0',
-                      paddingBottom: '8px'
-                    }}>
+                    <h4 className="rd-nut-h4">
                       Autres nutriments
                     </h4>
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
-                      gap: '8px'
-                    }}>
+                    <div className="rd-micro-grid">
                       {micronutrients.fibres > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Fibres</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Fibres</span>
+                          <span className="rd-micro-v">
                             {micronutrients.fibres.toFixed(1)} g
                           </span>
                         </div>
                       )}
                       {micronutrients.sucres > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Sucres</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Sucres</span>
+                          <span className="rd-micro-v">
                             {micronutrients.sucres.toFixed(1)} g
                           </span>
                         </div>
                       )}
                       {micronutrients.ag_satures > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>AG saturés</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">AG saturés</span>
+                          <span className="rd-micro-v">
                             {micronutrients.ag_satures.toFixed(1)} g
                           </span>
                         </div>
@@ -1625,107 +1353,54 @@ export default function RecipeDetail() {
                 {(micronutrients.calcium > 0 || micronutrients.fer > 0 || micronutrients.magnesium > 0 ||
                   micronutrients.potassium > 0 || micronutrients.sodium > 0 || micronutrients.zinc > 0) && (
                   <div style={{ marginBottom: '20px' }}>
-                    <h4 style={{
-                      fontSize: '0.9rem',
-                      fontWeight: '600',
-                      color: '#047857',
-                      marginBottom: '12px',
-                      borderBottom: '1px solid #bbf7d0',
-                      paddingBottom: '8px'
-                    }}>
-                      ⚡ Minéraux
+                    <h4 className="rd-nut-h4">
+                      Minéraux
                     </h4>
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
-                      gap: '8px'
-                    }}>
+                    <div className="rd-micro-grid">
                       {micronutrients.calcium > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Calcium</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Calcium</span>
+                          <span className="rd-micro-v">
                             {micronutrients.calcium.toFixed(1)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.fer > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Fer</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Fer</span>
+                          <span className="rd-micro-v">
                             {micronutrients.fer.toFixed(2)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.magnesium > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Magnésium</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Magnésium</span>
+                          <span className="rd-micro-v">
                             {micronutrients.magnesium.toFixed(1)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.potassium > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Potassium</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Potassium</span>
+                          <span className="rd-micro-v">
                             {micronutrients.potassium.toFixed(1)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.sodium > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Sodium</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Sodium</span>
+                          <span className="rd-micro-v">
                             {micronutrients.sodium.toFixed(1)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.zinc > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Zinc</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Zinc</span>
+                          <span className="rd-micro-v">
                             {micronutrients.zinc.toFixed(2)} mg
                           </span>
                         </div>
@@ -1740,182 +1415,94 @@ export default function RecipeDetail() {
                   micronutrients.vitamine_b2 > 0 || micronutrients.vitamine_b3 > 0 || micronutrients.vitamine_b6 > 0 ||
                   micronutrients.vitamine_b9 > 0 || micronutrients.vitamine_b12 > 0) && (
                   <div style={{ marginBottom: '20px' }}>
-                    <h4 style={{
-                      fontSize: '0.9rem',
-                      fontWeight: '600',
-                      color: '#047857',
-                      marginBottom: '12px',
-                      borderBottom: '1px solid #bbf7d0',
-                      paddingBottom: '8px'
-                    }}>
-                      🌈 Vitamines
+                    <h4 className="rd-nut-h4">
+                      Vitamines
                     </h4>
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
-                      gap: '8px'
-                    }}>
+                    <div className="rd-micro-grid">
                       {micronutrients.vitamine_a > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine A</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine A</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_a.toFixed(1)} µg
                           </span>
                         </div>
                       )}
                       {micronutrients.vitamine_c > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine C</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine C</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_c.toFixed(1)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.vitamine_d > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine D</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine D</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_d.toFixed(1)} µg
                           </span>
                         </div>
                       )}
                       {micronutrients.vitamine_e > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine E</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine E</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_e.toFixed(1)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.vitamine_k > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine K</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine K</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_k.toFixed(1)} µg
                           </span>
                         </div>
                       )}
                       {micronutrients.vitamine_b1 > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B1</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine B1</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_b1.toFixed(2)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.vitamine_b2 > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B2</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine B2</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_b2.toFixed(2)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.vitamine_b3 > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B3</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine B3</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_b3.toFixed(2)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.vitamine_b6 > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B6</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine B6</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_b6.toFixed(2)} mg
                           </span>
                         </div>
                       )}
                       {micronutrients.vitamine_b9 > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B9</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine B9</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_b9.toFixed(1)} µg
                           </span>
                         </div>
                       )}
                       {micronutrients.vitamine_b12 > 0 && (
-                        <div style={{
-                          background: 'white',
-                          padding: '8px 12px',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', color: '#374151' }}>Vitamine B12</span>
-                          <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#059669' }}>
+                        <div className="rd-micro-card">
+                          <span className="rd-micro-l">Vitamine B12</span>
+                          <span className="rd-micro-v">
                             {micronutrients.vitamine_b12.toFixed(2)} µg
                           </span>
                         </div>
@@ -1928,60 +1515,23 @@ export default function RecipeDetail() {
           </div>
         )}
 
-        <div className="recipe-body" style={{
-          display: 'grid',
-          gridTemplateColumns: '350px 1fr',
-          gap: '32px',
-          alignItems: 'start'
-        }}>
+        <div className="recipe-body">
           <div className="ingredients-section">
-            <h2>Ingrédients ({ings.length})</h2>
+            <div className="v21-bh"><span className="v21-bl">Ingrédients · {ings.length}</span></div>
             {ings.length > 0 ? (
-              <div style={{ position: 'relative' }}>
-                <ul
-                  ref={ingredientsListRef}
-                  className="ingredients-list hide-scrollbar"
-                  onMouseDown={handleMouseDown}
-                  onMouseMove={handleMouseMove}
-                  onMouseUp={handleMouseUp}
-                  onMouseLeave={handleMouseLeave}
-                  style={{
-                    maxHeight: '320px',
-                    overflowY: 'scroll',
-                    paddingRight: '8px',
-                    cursor: 'grab',
-                    scrollbarWidth: 'none',
-                    msOverflowStyle: 'none',
-                    position: 'relative',
-                    WebkitOverflowScrolling: 'touch'
-                  }}
-                >
+              <ul ref={ingredientsListRef} className="ingredients-list">
                 {ings.map((ing, index) => {
-                  // Déterminer le nom à afficher
                   const displayName = ing.name || ing.canonical_foods?.name || 'Ingrédient inconnu';
-                  
-                  // Créer le lien vers la page du produit si on a l'ID
                   const productId = ing.canonical_food_id || ing.archetype_id;
                   const productUrl = productId ? `/produits/${productId}` : null;
-                  
+
                   return (
                     <li key={ing.id || index} className="ingredient-item">
                       <span className="ingredient-quantity">
                         {roundForUnit(ing.quantity, ing.unit)} {ing.unit}
                       </span>
                       {productUrl ? (
-                        <a 
-                          href={productUrl} 
-                          className="ingredient-name ingredient-link"
-                          style={{ 
-                            color: '#059669', 
-                            textDecoration: 'none',
-                            cursor: 'pointer',
-                            transition: 'color 0.2s'
-                          }}
-                          onMouseEnter={(e) => e.target.style.color = '#047857'}
-                          onMouseLeave={(e) => e.target.style.color = '#059669'}
-                        >
+                        <a href={productUrl} className="ingredient-name ingredient-link">
                           {displayName}
                         </a>
                       ) : (
@@ -1996,19 +1546,8 @@ export default function RecipeDetail() {
                   );
                 })}
               </ul>
-              {/* Gradient pour indiquer qu'il y a plus de contenu */}
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: '40px',
-                background: 'linear-gradient(to bottom, transparent, white)',
-                pointerEvents: 'none'
-              }} />
-            </div>
             ) : (
-              <p className="no-ingredients" style={{ color: '#6b7280', fontStyle: 'italic' }}>
+              <p className="no-ingredients">
                 Aucun ingrédient défini pour cette recette.
               </p>
             )}
@@ -2018,14 +1557,14 @@ export default function RecipeDetail() {
         </div>
 
         <div className="recipe-actions">
-          <button className="action-btn primary" onClick={() => setShowCookMode(true)}>
-            👨‍🍳 Commencer la cuisine
+          <button className="v21-btn terra" onClick={() => setShowCookMode(true)}>
+            Commencer la cuisine
           </button>
-          <button className="action-btn secondary" onClick={() => setShowCookWizard(true)}>
-            📦 Préparer & déduire le stock
+          <button className="v21-btn" onClick={() => setShowCookWizard(true)}>
+            Préparer &amp; déduire le stock
           </button>
-          <button className="action-btn tertiary" onClick={startEditing}>
-            📝 Modifier
+          <button className="v21-btn ghost" onClick={startEditing}>
+            Modifier
           </button>
         </div>
 

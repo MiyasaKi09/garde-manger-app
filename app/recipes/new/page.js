@@ -11,13 +11,10 @@ export default function NewRecipePage() {
   }, [router]);
   
   return (
-    <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      height: '100vh' 
-    }}>
-      <div>Redirection vers le formulaire de création...</div>
+    <div className="v21-page narrow" aria-busy="true">
+      <div className="v21-skel" style={{ height: 44, width: '50%' }} />
+      <div className="v21-skel" style={{ height: 40, marginTop: 24 }} />
+      <div className="v21-skel" style={{ height: 300, marginTop: 28 }} />
     </div>
   );
 }

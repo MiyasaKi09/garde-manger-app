@@ -60,20 +60,32 @@ export default function BatchPage() {
     return new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
   }
 
-  const mealLabels = { dejeuner: 'Midi', diner: 'Soir' }
-
-  if (loading) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p>Chargement...</p></div>
+  if (loading) return (
+    <div className="v21-page" aria-busy="true" aria-label="Chargement">
+      <div className="v21-skel" style={{ height: 90, marginBottom: 24 }} />
+      {Array.from({ length: 4 }).map((_, i) => (
+        <div key={i} className="v21-skel" style={{ height: 96, marginBottom: 14 }} />
+      ))}
+    </div>
+  )
   if (!data) return null
 
   return (
     <>
-      <div className="container">
-        <div className="header">
-          <button className="back-btn" onClick={() => router.push(`/planning/${importId}`)}>
-            <ArrowLeft size={18} />
-          </button>
-          <h1>Cuisine du jour</h1>
-        </div>
+      <div className="v21-page">
+        <button className="bat-back" onClick={() => router.push(`/planning/${importId}`)}>
+          <ArrowLeft size={15} /> Retour au calendrier
+        </button>
+
+        {/* ═══ HERO ÉDITORIAL ═══ */}
+        <header className="v21-hero">
+          <div className="v21-hero-text">
+            <span className="v21-eyebrow">Planning · batch cooking</span>
+            <h1 className="v21-title">Cuisine du jour.</h1>
+            <div className="v21-rule" />
+            <p className="v21-lede">Ce qu'on prépare, ce qu'on sert — jour après jour.</p>
+          </div>
+        </header>
 
         {/* Day by day */}
         {days.map((day, i) => {
@@ -84,24 +96,25 @@ export default function BatchPage() {
           }, 0)
 
           return (
-            <div key={i} className={`day ${isFree ? 'free' : ''}`}>
-              <div className="day-date">
-                <span>{formatDate(day.date, day.label)}</span>
-                {totalMin > 0 && <span className="day-time">{totalMin} min</span>}
-                {isFree && <span className="day-badge-free">Repos</span>}
+            <section key={i} className={`bat-day ${isFree ? 'free' : ''}`}>
+              <div className="bat-day-h">
+                <span className="bat-day-date">{formatDate(day.date, day.label)}</span>
+                {totalMin > 0 && <span className="bat-day-time">{totalMin} min</span>}
+                {isFree && <span className="bat-day-free">Repos</span>}
               </div>
 
-              <div className="day-content">
+              <div className="bat-day-body">
                 {/* Prep tasks */}
                 {day.prep.map((task, j) => {
                   const isBatch = /batch/i.test(task.task)
                   const isPortionner = /portionner|restes/i.test(task.task)
                   return (
-                    <div key={j} className={`task ${isBatch ? 'batch' : ''} ${isFree ? 'task-free' : ''}`}>
-                      <div className="task-label">{isBatch ? '🍳 Batch' : isPortionner ? '📦 Prep' : isFree ? '🎉' : '🔪 Prep'}</div>
-                      <div className="task-text">{task.task}</div>
+                    <div key={j} className={`bat-task ${isBatch ? 'batch' : ''}`}>
+                      <span className="bat-task-bar" aria-hidden="true" style={{ background: isBatch ? '#D9A33A' : isFree ? 'var(--line-strong)' : '#6E7A3F' }} />
+                      <span className="bat-task-l">{isBatch ? 'Batch' : isPortionner ? 'Prep' : isFree ? 'Repos' : 'Prep'}</span>
+                      <span className="bat-task-t">{task.task}</span>
                       {task.estimated_time && !/🎉/.test(task.estimated_time) && (
-                        <div className="task-time">{task.estimated_time}</div>
+                        <span className="bat-task-time">{task.estimated_time}</span>
                       )}
                     </div>
                   )
@@ -109,17 +122,17 @@ export default function BatchPage() {
 
                 {/* Meals to serve */}
                 {day.meals.length > 0 && (
-                  <div className="day-meals">
+                  <div className="bat-serve">
                     {['dejeuner', 'diner'].map(mt => {
                       const mealsForType = day.meals.filter(m => m.meal_type === mt)
                       if (mealsForType.length === 0) return null
                       return (
-                        <div key={mt} className="serve-block">
-                          <div className="serve-label">{mt === 'dejeuner' ? '☀️ Midi' : '🌙 Soir'}</div>
+                        <div key={mt} className="bat-serve-block">
+                          <span className="bat-serve-l">{mt === 'dejeuner' ? 'Midi' : 'Soir'}</span>
                           {mealsForType.map((m, k) => (
-                            <div key={k} className="serve-item">
-                              <span className="serve-person">{m.person_name}</span>
-                              <span className="serve-desc">{m.description}</span>
+                            <div key={k} className="bat-serve-item">
+                              <span className="bat-serve-p">{m.person_name}</span>
+                              <span className="bat-serve-d">{m.description}</span>
                             </div>
                           ))}
                         </div>
@@ -128,87 +141,111 @@ export default function BatchPage() {
                   </div>
                 )}
               </div>
-            </div>
+            </section>
           )
         })}
 
         {/* Recipes reference */}
         {batchRecipes.length > 0 && (
-          <div className="recipes-section">
-            <h2>Recettes ({batchRecipes.length})</h2>
-            {batchRecipes.map((recipe, i) => {
-              const name = recipe.name.split('\n')[0].replace(/^B\d+\s*[—–-]\s*/, '')
-              const expanded = expandedRecipe === i
+          <section className="bat-recipes">
+            <div className="v21-bh"><span className="v21-bl">Recettes · {batchRecipes.length}</span></div>
+            <div className="v21-its">
+              {batchRecipes.map((recipe, i) => {
+                const name = recipe.name.split('\n')[0].replace(/^B\d+\s*[—–-]\s*/, '')
+                const expanded = expandedRecipe === i
 
-              return (
-                <div key={i} className="recipe">
-                  <div className="recipe-head" onClick={() => setExpandedRecipe(expanded ? null : i)}>
-                    <div className="recipe-name">{name}</div>
-                    <div className="recipe-meta">
-                      {recipe.rendement && <span>{recipe.rendement.split('\n')[0]}</span>}
-                      {recipe.macros_per_100g && <span>{recipe.macros_per_100g}</span>}
-                    </div>
-                    {expanded ? <ChevronUp size={18} color="#9ca3af" /> : <ChevronDown size={18} color="#9ca3af" />}
+                return (
+                  <div key={i} className="bat-recipe">
+                    <button type="button" className="bat-recipe-head" onClick={() => setExpandedRecipe(expanded ? null : i)} aria-expanded={expanded}>
+                      <span className="bat-recipe-name">{name}</span>
+                      <span className="bat-recipe-meta">
+                        {recipe.rendement && <span>{recipe.rendement.split('\n')[0]}</span>}
+                        {recipe.macros_per_100g && <span>{recipe.macros_per_100g}</span>}
+                      </span>
+                      {expanded ? <ChevronUp size={16} color="var(--ink-3)" /> : <ChevronDown size={16} color="var(--ink-3)" />}
+                    </button>
+                    {expanded && (
+                      <div className="bat-recipe-detail">
+                        {recipe.ingredients && <div className="bat-r-block"><span className="bat-r-l">Ingrédients</span><div className="bat-r-t">{recipe.ingredients.replace(/\|/g, '\n')}</div></div>}
+                        {recipe.portions && <div className="bat-r-block"><span className="bat-r-l">Portions</span><div className="bat-r-t">{recipe.portions}</div></div>}
+                        {recipe.instructions && <div className="bat-r-block"><span className="bat-r-l">Préparation</span><div className="bat-r-t">{recipe.instructions}</div></div>}
+                        {recipe.reheat && <div className="bat-r-reheat">{recipe.reheat}</div>}
+                      </div>
+                    )}
                   </div>
-                  {expanded && (
-                    <div className="recipe-detail">
-                      {recipe.ingredients && <div className="r-block"><div className="r-label">Ingrédients</div><div className="r-text">{recipe.ingredients.replace(/\|/g, '\n')}</div></div>}
-                      {recipe.portions && <div className="r-block"><div className="r-label">Portions</div><div className="r-text">{recipe.portions}</div></div>}
-                      {recipe.instructions && <div className="r-block"><div className="r-label">Préparation</div><div className="r-text">{recipe.instructions}</div></div>}
-                      {recipe.reheat && <div className="r-reheat">{recipe.reheat}</div>}
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-          </div>
+                )
+              })}
+            </div>
+          </section>
         )}
       </div>
 
       <style jsx>{`
-        .container { padding: 16px; max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+        .bat-back {
+          display: inline-flex; align-items: center; gap: 7px;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase;
+          background: none; border: none; color: var(--ink-3); cursor: pointer;
+          padding: 0; margin-bottom: 20px; transition: color 0.15s ease;
+        }
+        .bat-back:hover { color: var(--terracotta); }
 
-        .header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-        .back-btn { background: none; border: none; color: #6b7280; cursor: pointer; padding: 6px; border-radius: 8px; display: flex; }
-        .header h1 { font-size: 20px; font-weight: 700; color: #1f2937; margin: 0; }
+        .bat-day { padding: 22px 0 4px; border-top: 1px solid var(--line); }
+        .bat-day:first-of-type { border-top: none; }
+        .bat-day.free { opacity: 0.6; }
+        .bat-day-h { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+        .bat-day-date {
+          font-family: var(--font-display); font-size: 20px; font-weight: 600;
+          letter-spacing: -0.02em; color: var(--ink-1); text-transform: capitalize;
+        }
+        .bat-day-time, .bat-day-free {
+          font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.03em; text-transform: uppercase;
+          padding: 2px 8px; border-radius: 3px;
+        }
+        .bat-day-time { color: var(--ink-2); border: 1px solid var(--line-strong); }
+        .bat-day-free { color: #fff; background: var(--brand); }
 
-        .day { margin-bottom: 20px; }
-        .day.free { opacity: 0.6; }
-        .day-date { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; text-transform: capitalize; }
-        .day-date span:first-child { font-size: 15px; font-weight: 700; color: #1f2937; }
-        .day-time { font-size: 12px; font-weight: 600; color: #2563eb; background: rgba(59,130,246,0.08); padding: 2px 8px; border-radius: 5px; }
-        .day-badge-free { font-size: 12px; font-weight: 600; color: #16a34a; background: rgba(34,197,94,0.08); padding: 2px 8px; border-radius: 5px; }
+        .bat-task {
+          display: grid; grid-template-columns: 8px 64px 1fr auto; align-items: stretch;
+          border-bottom: 1px solid var(--line);
+        }
+        .bat-task-bar { align-self: stretch; }
+        .bat-task > span:not(.bat-task-bar) { padding: 11px 14px; display: flex; align-items: center; min-width: 0; }
+        .bat-task-l { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); }
+        .bat-task-t { font-family: var(--font-text); font-size: 14px; color: var(--ink-1); line-height: 1.4; }
+        .bat-task-time { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); white-space: nowrap; justify-content: flex-end; }
 
-        .day-content { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+        .bat-serve { padding: 12px 0 4px 22px; }
+        .bat-serve-block { margin-bottom: 10px; }
+        .bat-serve-block:last-child { margin-bottom: 0; }
+        .bat-serve-l { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); display: block; margin-bottom: 4px; }
+        .bat-serve-item { display: flex; gap: 10px; padding: 2px 0; }
+        .bat-serve-p { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--brand); min-width: 52px; }
+        .bat-serve-d { font-family: var(--font-text); font-size: 13px; color: var(--ink-2); }
 
-        .task { display: flex; align-items: baseline; gap: 8px; padding: 10px 14px; border-bottom: 1px solid rgba(0,0,0,0.03); }
-        .task.batch { background: rgba(234,179,8,0.04); }
-        .task-label { font-size: 12px; font-weight: 600; color: #6b7280; white-space: nowrap; min-width: 70px; }
-        .task-text { font-size: 14px; color: #374151; line-height: 1.4; flex: 1; }
-        .task-time { font-size: 12px; color: #6b7280; white-space: nowrap; }
+        .bat-recipes { margin-top: 34px; padding-top: 8px; border-top: 1.5px solid var(--ink-1); }
+        .bat-recipe { border-bottom: 1px solid var(--line); }
+        .bat-recipe-head {
+          display: flex; align-items: center; gap: 12px; width: 100%;
+          padding: 14px 4px; background: transparent; border: none; cursor: pointer; text-align: left;
+          transition: background 0.15s ease;
+        }
+        .bat-recipe-head:hover { background: var(--surface-soft); }
+        .bat-recipe-name { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink-1); flex: 1; min-width: 0; }
+        .bat-recipe-meta { display: flex; gap: 10px; font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.03em; }
 
-        .day-meals { padding: 8px 14px 10px; border-top: 1px solid rgba(0,0,0,0.06); }
-        .serve-block { margin-bottom: 6px; }
-        .serve-block:last-child { margin-bottom: 0; }
-        .serve-label { font-size: 13px; font-weight: 700; color: #374151; margin-bottom: 4px; }
-        .serve-item { display: flex; gap: 8px; padding: 2px 0; font-size: 13px; }
-        .serve-person { font-weight: 600; color: #16a34a; min-width: 50px; }
-        .serve-desc { color: #374151; }
+        .bat-recipe-detail { padding: 0 4px 16px; }
+        .bat-r-block { margin-bottom: 12px; }
+        .bat-r-l { display: block; font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+        .bat-r-t { font-family: var(--font-text); font-size: 13px; color: var(--ink-2); line-height: 1.6; white-space: pre-line; }
+        .bat-r-reheat {
+          font-family: var(--font-text); font-size: 12px; color: var(--state-soon);
+          background: var(--state-soon-bg); border-radius: 3px; padding: 8px 12px;
+        }
 
-        .recipes-section { margin-top: 32px; padding-top: 20px; border-top: 2px solid rgba(0,0,0,0.06); }
-        .recipes-section h2 { font-size: 17px; font-weight: 700; color: #1f2937; margin: 0 0 12px; }
-
-        .recipe { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
-        .recipe-head { display: flex; align-items: center; padding: 12px 14px; cursor: pointer; gap: 10px; }
-        .recipe-head:hover { background: var(--surface); }
-        .recipe-name { font-size: 15px; font-weight: 600; color: #1f2937; flex: 1; }
-        .recipe-meta { display: flex; gap: 8px; font-size: 11px; color: #6b7280; }
-
-        .recipe-detail { padding: 0 14px 14px; }
-        .r-block { margin-bottom: 10px; }
-        .r-label { font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
-        .r-text { font-size: 13px; color: #374151; line-height: 1.6; white-space: pre-line; }
-        .r-reheat { font-size: 12px; color: #92400e; background: rgba(234,179,8,0.06); padding: 6px 10px; border-radius: 6px; }
+        @media (max-width: 560px) {
+          .bat-task { grid-template-columns: 8px 56px 1fr; }
+          .bat-task-time { display: none; }
+        }
       `}</style>
     </>
   )

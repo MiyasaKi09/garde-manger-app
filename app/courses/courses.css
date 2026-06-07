@@ -1,391 +1,131 @@
-.courses-page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: clamp(16px, 3vw, 40px);
-  padding-bottom: 40px;
-  position: relative;
-  z-index: 1;
-}
-.courses-header {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-card);
-  padding: var(--s-5) var(--s-4);
-  margin-bottom: var(--s-3);
-  box-shadow: var(--sh-1);
-  animation: mykoReveal 0.4s var(--spring) both;
-}
-.courses-progress-outer {
-  height: 6px;
-  background: var(--line);
-  border-radius: 3px;
-  overflow: hidden;
-  margin: var(--s-2) 0;
-}
-.courses-progress-inner {
-  height: 100%;
-  background: var(--brand);
-  border-radius: 3px;
-  transition: width 0.3s;
-}
-.courses-week-tabs {
-  display: flex;
-  gap: var(--s-2);
-  margin-bottom: var(--s-3);
-  overflow-x: auto;
-}
-.courses-week-tab {
-  padding: var(--s-2) var(--s-4);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
-  cursor: pointer;
-  font-weight: 600;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--ink-2);
-  transition: all var(--dur-fast) var(--ease);
-  white-space: nowrap;
-}
-.courses-week-tab.active {
-  background: var(--terracotta);
-  color: #fff;
-  border-color: var(--terracotta);
-}
-.courses-cat-section {
-  margin-bottom: var(--s-3);
-  animation: mykoReveal 0.4s var(--spring) both;
-}
-.courses-cat-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  color: var(--ink-1);
-  padding: var(--s-2) var(--s-1);
-  border-bottom: 1px solid var(--line);
-  margin-bottom: var(--s-1);
-}
-.courses-item-row {
-  display: flex;
-  align-items: center;
-  gap: var(--s-2);
-  width: 100%;
-  padding: var(--s-2) var(--s-3);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  cursor: pointer;
-  margin-bottom: var(--s-1);
-  font-size: var(--fs-body);
-  color: var(--ink-1);
-  transition: all var(--dur-fast) var(--ease);
-  font-family: inherit;
-  text-align: left;
-}
-.courses-item-row:hover {
-  background: var(--surface-soft);
-  transform: translateX(2px);
-}
-.courses-item-row.checked {
-  opacity: 0.45;
-}
-.courses-checkbox {
-  width: 22px;
-  height: 22px;
-  border-radius: 7px;
-  border: 2px solid var(--line-strong);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all var(--dur-fast) var(--ease);
-  background: transparent;
-}
-.courses-checkbox.checked {
-  background: var(--brand);
-  border-color: var(--brand);
-}
-.courses-item-qty {
-  font-size: var(--fs-xs);
-  color: var(--ink-3);
-  flex-shrink: 0;
-}
-.courses-stocked {
-  background: var(--brand-soft);
-  color: var(--brand);
-  padding: 2px var(--s-2);
-  border-radius: var(--r-sm);
-  font-size: var(--fs-xs);
-  font-weight: 600;
-}
-.courses-empty {
-  text-align: center;
-  padding: var(--s-7);
-}
-.courses-badge-stocking {
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  color: var(--ink-3);
-  flex-shrink: 0;
-}
-.courses-badge-stocked {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  color: var(--brand);
-  background: var(--brand-soft);
-  padding: 2px var(--s-2);
-  border-radius: var(--r-sm);
-  flex-shrink: 0;
-}
-.courses-badge-error {
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  color: #c0392b;
-  background: rgba(192, 57, 43, 0.08);
-  padding: 2px var(--s-2);
-  border-radius: var(--r-sm);
-  flex-shrink: 0;
+/* app/courses/courses.css — Courses V21 (éditorial à filets)
+   Primitives partagées dans app/styles/v21.css. Ici : seulement le spécifique. */
+
+/* ── Squelette de liste ── */
+.cou-skel-list { display: flex; flex-direction: column; gap: 8px; margin-top: 22px; }
+
+/* ── État vide ── */
+.cou-empty { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.cou-empty-ico {
+  display: flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; margin-bottom: 8px;
+  border: 1.5px solid var(--ink-1); border-radius: 3px; color: var(--ink-1);
 }
 
-/* ── Item wrapper (row + container toggle + picker) ── */
-.courses-item-wrapper {
-  margin-bottom: var(--s-1);
+/* ── Actions du hero (Stock / Photos) ── */
+.cou-actions { display: flex; gap: 6px; }
+
+/* ── Vue d'ensemble (gros chiffre + progression + nav semaine) ── */
+.cou-overview { padding-top: 26px; }
+.cou-bignum-row { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.cou-allcount { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); }
+
+.cou-impnav { display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+.cou-impbtn {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  border: 1px solid var(--line-strong); border-radius: 3px;
+  background: transparent; color: var(--ink-2); cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
-.courses-item-wrapper .courses-item-row {
-  margin-bottom: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: none;
+.cou-impbtn:hover:not(:disabled) { border-color: var(--ink-1); color: var(--ink-1); }
+.cou-impbtn:disabled { opacity: 0.35; cursor: default; }
+.cou-implabel { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-1); min-width: 180px; text-align: center; }
+.cou-implabel-static { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); margin-top: 4px; }
+
+/* ── Message de résultat (rebuild / photos) ── */
+.cou-result {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.02em;
+  padding: 10px 14px; margin-top: 16px; border-radius: 3px; border: 1px solid var(--line-strong);
 }
-.courses-item-wrapper .courses-item-row:only-child {
-  border-radius: var(--r-sm);
-  border-bottom: 1px solid var(--line);
+.cou-result.ok { color: var(--brand); border-color: var(--brand); background: var(--brand-soft); }
+.cou-result.error { color: var(--state-expired); border-color: var(--state-expired); background: var(--state-expired-bg); }
+
+/* ── Catégorie (section à filet sombre en tête) ── */
+.cou-cat { padding-top: 30px; }
+.cou-cat-h {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding-bottom: 10px; margin-bottom: 0; border-bottom: 1.5px solid var(--ink-1);
+}
+.cou-cat-c { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.03em; }
+
+/* ── Lignes d'articles (registre à filets) ── */
+.cou-items { display: flex; flex-direction: column; }
+.cou-item-wrap { display: flex; flex-direction: column; border-bottom: 1px solid var(--line); }
+.cou-row {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%; padding: 13px 4px; text-align: left;
+  background: transparent; border: none; cursor: pointer;
+  font-family: inherit; color: var(--ink-1);
+  transition: background 0.15s ease;
+}
+.cou-row:hover { background: var(--surface-soft); }
+.cou-row.checked { opacity: 0.5; }
+
+/* Case à cocher carrée minimale */
+.cou-check {
+  display: flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; flex-shrink: 0;
+  border: 1.5px solid var(--line-strong); border-radius: 3px; background: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.cou-check.on { background: var(--brand); border-color: var(--brand); }
+
+/* Vignette / emoji */
+.cou-emoji {
+  flex-shrink: 0; width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center; font-size: 19px; line-height: 1;
+}
+.cou-thumb { flex-shrink: 0; width: 30px; height: 30px; object-fit: cover; border: 1px solid var(--line); border-radius: 3px; }
+
+/* Nom + notes */
+.cou-label { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.cou-name { font-family: var(--font-display); font-weight: 500; font-size: 17px; color: var(--ink-1); }
+.cou-name.checked { text-decoration: line-through; }
+.cou-notes { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cou-qty { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); flex-shrink: 0; }
+
+/* Badges d'état de rangement */
+.cou-badge { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.02em; text-transform: uppercase; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px; padding: 3px 7px; border-radius: 3px; }
+.cou-badge.stocking { color: var(--ink-3); }
+.cou-badge.stocked { color: var(--brand); background: var(--brand-soft); }
+.cou-badge.error { color: var(--state-expired); background: var(--state-expired-bg); }
+
+/* Bouton conditionnement (icône en fin de ligne) */
+.cou-cont-toggle {
+  display: flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; flex-shrink: 0;
+  border: 1px solid var(--line); border-radius: 3px; background: transparent;
+  color: var(--ink-3); cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.cou-cont-toggle:hover { border-color: var(--ink-1); color: var(--ink-1); }
+.cou-cont-toggle.has { color: var(--terracotta); border-color: var(--terracotta); }
+.cou-cont-toggle.on { background: var(--surface-soft); color: var(--ink-1); }
+
+/* Panneau de conditionnement */
+.cou-cont-picker { display: flex; flex-direction: column; gap: 8px; padding: 12px 4px 14px; }
+.cou-cont-label { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+.cou-cont-fields { display: flex; align-items: center; gap: 8px; }
+.cou-cont-input, .cou-cont-unit {
+  font-family: var(--font-mono); font-size: 13px; color: var(--ink-1);
+  border: 1px solid var(--line-strong); border-radius: 3px; padding: 6px 8px; background: var(--surface); outline: none;
+  transition: border-color 0.15s ease;
+}
+.cou-cont-input:focus, .cou-cont-unit:focus { border-color: var(--terracotta); }
+.cou-cont-input.qty { width: 60px; }
+.cou-cont-input.size { width: 76px; }
+.cou-cont-x { font-family: var(--font-mono); font-size: 13px; color: var(--ink-3); }
+.cou-cont-sum { font-family: var(--font-mono); font-size: 11px; color: var(--terracotta); }
+
+/* ── A11y ── */
+.cou-row:focus-visible, .cou-impbtn:focus-visible, .cou-cont-toggle:focus-visible,
+.cou-cont-input:focus-visible, .cou-cont-unit:focus-visible {
+  outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px;
 }
 
-/* Food emoji / thumbnail */
-.courses-item-emoji {
-  font-size: 20px;
-  line-height: 1;
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.courses-item-thumb {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 1px solid var(--line);
-}
-
-/* Photos button */
-.courses-photo-btn {
-  padding: 4px 12px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  color: var(--ink-2);
-  cursor: pointer;
-  transition: all var(--dur-fast) var(--ease);
-}
-.courses-photo-btn:hover {
-  background: var(--brand-soft);
-  color: var(--brand);
-  border-color: var(--brand);
-}
-.courses-photo-btn:disabled {
-  opacity: 0.5;
-  cursor: wait;
-}
-
-/* Fetch result message */
-.courses-fetch-result {
-  padding: 6px 14px;
-  border-radius: var(--r-sm);
-  font-size: var(--fs-xs);
-  margin-bottom: var(--s-3);
-  text-align: center;
-}
-.courses-fetch-result.success {
-  background: rgba(34, 197, 94, 0.1);
-  color: #16a34a;
-  border: 1px solid rgba(34, 197, 94, 0.2);
-}
-.courses-fetch-result.error {
-  background: rgba(239, 68, 68, 0.1);
-  color: #dc2626;
-  border: 1px solid rgba(239, 68, 68, 0.2);
-}
-
-/* Name + notes vertical stack */
-.courses-item-label {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-.courses-item-name {
-  font-weight: 500;
-}
-.courses-item-name.checked {
-  text-decoration: line-through;
-}
-.courses-item-notes {
-  font-size: var(--fs-xs);
-  color: var(--ink-3);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Container toggle button */
-.courses-container-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 5px var(--s-3);
-  background: var(--surface-soft);
-  border: 1px solid var(--line);
-  border-top: none;
-  border-radius: 0 0 var(--r-sm) var(--r-sm);
-  cursor: pointer;
-  color: var(--ink-3);
-  font-size: var(--fs-xs);
-  transition: all var(--dur-fast) var(--ease);
-}
-.courses-container-toggle:hover {
-  background: var(--surface);
-  color: var(--ink-1);
-}
-.courses-container-toggle.has-container {
-  color: var(--brand);
-}
-.courses-container-toggle.active {
-  background: var(--surface);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-/* Container picker panel */
-.container-picker {
-  padding: var(--s-2) var(--s-3);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-top: none;
-  border-radius: 0 0 var(--r-sm) var(--r-sm);
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-2);
-}
-.container-picker-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--ink-3);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.container-picker-fields {
-  display: flex;
-  align-items: center;
-  gap: var(--s-2);
-}
-.container-input {
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-sm);
-  padding: 4px var(--s-2);
-  font-size: var(--fs-sm);
-  font-family: inherit;
-  color: var(--ink-1);
-  background: var(--surface);
-}
-.container-input-qty  { width: 60px; }
-.container-input-size { width: 70px; }
-.container-times {
-  font-size: var(--fs-sm);
-  color: var(--ink-3);
-}
-.container-unit-select {
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-sm);
-  padding: 4px var(--s-2);
-  font-size: var(--fs-sm);
-  font-family: inherit;
-  color: var(--ink-1);
-  background: var(--surface);
-}
-.container-picker-summary {
-  font-size: var(--fs-xs);
-  color: var(--brand);
-  font-weight: 600;
-}
-.courses-week-progress {
-  display: flex;
-  align-items: center;
-  gap: var(--s-3);
-  margin-bottom: var(--s-3);
-  padding: 0 var(--s-1);
-}
-.courses-week-progress-text {
-  font-size: var(--fs-xs);
-  color: var(--ink-3);
-}
-.courses-global-progress {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  flex-shrink: 0;
-}
-.courses-progress-text {
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  color: var(--brand);
-}
-.courses-header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--s-3);
-}
-.courses-progress-bar-outer {
-  width: 80px;
-  height: 6px;
-  background: var(--line);
-  border-radius: 3px;
-  overflow: hidden;
-}
-.courses-progress-bar-inner {
-  height: 100%;
-  background: var(--brand);
-  border-radius: 3px;
-  transition: width 0.3s;
-}
-.courses-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: var(--s-2) var(--s-4);
-  background: var(--brand);
-  color: #fff;
-  border-radius: var(--r-pill);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  text-decoration: none;
-  margin-top: var(--s-3);
+/* ── Responsive ── */
+@media (max-width: 560px) {
+  .cou-implabel { min-width: 0; flex: 1; }
+  .cou-notes { white-space: normal; }
 }

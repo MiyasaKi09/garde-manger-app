@@ -267,12 +267,32 @@ export default function RecipesPage() {
   }).length;
   const urgentRecipes = filteredRecipes.filter(r => (inventoryStatus[r.id]?.urgentIngredients || 0) > 0).length;
 
+  const filterChips = [
+    { key: 'all', label: `Toutes · ${totalRecipes}` },
+    { key: 'available', label: `Réalisables · ${availableRecipes}` },
+    { key: 'partial', label: `Partielles · ${partialRecipes}` },
+    { key: 'urgent', label: `Urgentes · ${urgentRecipes}` },
+  ];
+  const sortChips = [
+    { key: 'date', label: 'Récentes' },
+    { key: 'myko_score', label: 'Score Myko' },
+    { key: 'availability', label: 'Disponibilité' },
+    { key: 'time', label: 'Temps' },
+    { key: 'name', label: 'Nom' },
+  ];
+
   if (loading) {
     return (
-      <div className="recipes-container">
-        <div className="recipes-grid" aria-busy="true" aria-label="Chargement des recettes">
+      <div className="v21-page wide">
+        <div className="v21-cards" aria-busy="true" aria-label="Chargement des recettes">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="skeleton" style={{ aspectRatio: '4 / 3', borderRadius: 'var(--r-card)' }} />
+            <div key={i} className="v21-card">
+              <div className="v21-card-media v21-skel" />
+              <div className="v21-card-body">
+                <div className="v21-skel" style={{ height: 20, width: '80%' }} />
+                <div className="v21-skel" style={{ height: 12, width: '50%', marginTop: 6 }} />
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -281,141 +301,100 @@ export default function RecipesPage() {
 
   if (error) {
     return (
-      <div className="recipes-container">
-        <div className="error-message" style={{
-          background: 'rgba(239, 68, 68, 0.1)',
-          border: '1px solid rgba(239, 68, 68, 0.3)',
-          borderRadius: '12px',
-          padding: '20px',
-          textAlign: 'center'
-        }}>
-          <h2 style={{ color: '#dc2626' }}>Erreur de connexion</h2>
+      <div className="v21-page">
+        <div className="rc-error">
+          <h2>Erreur de connexion</h2>
           <p>{error}</p>
-          <button
-            onClick={() => { setError(null); fetchRecipes(); }}
-            style={{ padding: '10px 20px', background: '#dc2626', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer' }}
-          >
-            Réessayer
-          </button>
+          <button onClick={() => { setError(null); fetchRecipes(); }} className="v21-btn">Réessayer</button>
         </div>
       </div>
     );
   }
 
   return (
-    <>
-      <div className="myko-canvas" aria-hidden="true" />
-      <div className="myko-page-container">
-        <div className="hero-header">
-          <div className="hero-content">
-            <div className="hero-text">
-              <h1 className="hero-title">Mes recettes</h1>
-              <p className="hero-subtitle">{recipes.length} disponibles</p>
-            </div>
-          </div>
+    <div className="v21-page wide">
+      <header className="v21-hero">
+        <div className="v21-hero-text">
+          <span className="v21-eyebrow">Recettes</span>
+          <h1 className="v21-title">Mes recettes</h1>
+          <div className="v21-rule" />
+          <p className="v21-lede">{recipes.length} disponible{recipes.length !== 1 ? 's' : ''} dans votre carnet.</p>
         </div>
+        <div className="v21-hero-side">
+          <button onClick={handleFetchImages} disabled={fetchingImages} className="v21-btn ghost">
+            {fetchingImages ? 'Chargement…' : 'Photos auto'}
+          </button>
+        </div>
+      </header>
 
-        <div className="recipes-container">
-          <div className="recipes-controls">
-            <div className="search-filters">
-              <input
-                type="text"
-                placeholder="Rechercher une recette..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input"
-              />
-              <button
-                onClick={handleFetchImages}
-                disabled={fetchingImages}
-                className="add-recipe-btn"
-                style={{
-                  background: 'transparent',
-                  color: 'var(--brand)',
-                  border: '1px solid var(--line-strong)',
-                  cursor: fetchingImages ? 'wait' : 'pointer',
-                  opacity: fetchingImages ? 0.6 : 1,
-                }}
-              >
-                {fetchingImages ? 'Chargement...' : 'Photos auto'}
-              </button>
-            </div>
+      {fetchResult && (
+        <p className={`rc-notice ${fetchResult.error ? 'err' : 'ok'}`}>
+          {fetchResult.error ? fetchResult.error : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
+        </p>
+      )}
 
-            {fetchResult && (
-              <div style={{
-                marginTop: 8, padding: '8px 14px', borderRadius: 10, fontSize: 13,
-                background: fetchResult.error ? 'rgba(239, 68, 68, 0.1)' : 'rgba(34, 197, 94, 0.1)',
-                color: fetchResult.error ? '#dc2626' : '#16a34a',
-                border: `1px solid ${fetchResult.error ? 'rgba(239,68,68,0.2)' : 'rgba(34,197,94,0.2)'}`,
-              }}>
-                {fetchResult.error ? fetchResult.error : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
-              </div>
-            )}
-
-            <div className="stats-controls">
-              <div className="stats-inline">
-                <div className={`stat-item stat-filter-btn ${availabilityFilter === 'all' ? 'stat-filter-active' : ''}`} onClick={() => setAvailabilityFilter('all')}>
-                  <div className="stat-number">{totalRecipes}</div>
-                  <div className="stat-label">Total</div>
-                </div>
-                <div className={`stat-item stat-filter-btn ${availabilityFilter === 'available' ? 'stat-filter-active' : ''}`} onClick={() => setAvailabilityFilter('available')}>
-                  <div className="stat-number">{availableRecipes}</div>
-                  <div className="stat-label">Réalisables</div>
-                </div>
-                <div className={`stat-item stat-filter-btn ${availabilityFilter === 'partial' ? 'stat-filter-active' : ''}`} onClick={() => setAvailabilityFilter('partial')}>
-                  <div className="stat-number">{partialRecipes}</div>
-                  <div className="stat-label">Partielles</div>
-                </div>
-                <div className={`stat-item stat-filter-btn urgent-recipes ${availabilityFilter === 'urgent' ? 'stat-filter-active' : ''}`} onClick={() => setAvailabilityFilter('urgent')}>
-                  <div className="stat-number">{urgentRecipes}</div>
-                  <div className="stat-label">Urgentes</div>
-                </div>
-              </div>
-
-              <div className="sort-controls">
-                {['date', 'myko_score', 'availability', 'time', 'name'].map(key => {
-                  const labels = { date: 'Récentes', myko_score: 'Score Myko', availability: 'Disponibilité', time: 'Temps', name: 'Nom' };
-                  const defaultOrder = key === 'time' || key === 'name' ? 'asc' : 'desc';
-                  return (
-                    <button
-                      key={key}
-                      className={`sort-btn ${sortBy === key ? 'active' : ''}`}
-                      onClick={() => {
-                        if (sortBy === key) setSortOrder(o => o === 'desc' ? 'asc' : 'desc');
-                        else { setSortBy(key); setSortOrder(defaultOrder); }
-                      }}
-                    >
-                      {labels[key]} {sortBy === key && (sortOrder === 'desc' ? '↓' : '↑')}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {filteredRecipes.length !== totalRecipes && (
-                <div className="filter-count">{filteredRecipes.length} sur {totalRecipes} recettes</div>
-              )}
-            </div>
-          </div>
-
-          <div className="recipes-grid">
-            {filteredRecipes.length === 0 ? (
-              <div className="empty-state">
-                <h2>Aucune recette trouvée</h2>
-                <p>Demandez un planning à Myko pour générer vos recettes de la semaine.</p>
-                <Link href="/planning/assistant" className="add-recipe-btn">Créer un planning</Link>
-              </div>
-            ) : (
-              filteredRecipes.map(recipe => (
-                <RecipeListCard
-                  key={recipe.id}
-                  recipe={recipe}
-                  status={inventoryStatus[recipe.id] || { totalIngredients: 0, availableIngredients: 0, availabilityPercent: 0, urgentIngredients: 0 }}
-                />
-              ))
-            )}
-          </div>
+      <div className="v21-toolbar">
+        <input
+          type="text"
+          placeholder="Rechercher une recette…"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="v21-search"
+        />
+        <div className="v21-sort">
+          <span className="v21-sort-l">Filtrer</span>
+          {filterChips.map(c => (
+            <button
+              key={c.key}
+              className={`v21-chip ${availabilityFilter === c.key ? 'on' : ''}`}
+              onClick={() => setAvailabilityFilter(c.key)}
+            >
+              {c.label}
+            </button>
+          ))}
         </div>
       </div>
-    </>
+
+      <div className="v21-toolbar rc-toolbar-sort">
+        <div className="v21-sort">
+          <span className="v21-sort-l">Trier</span>
+          {sortChips.map(c => {
+            const defaultOrder = c.key === 'time' || c.key === 'name' ? 'asc' : 'desc';
+            return (
+              <button
+                key={c.key}
+                className={`v21-chip ${sortBy === c.key ? 'on' : ''}`}
+                onClick={() => {
+                  if (sortBy === c.key) setSortOrder(o => o === 'desc' ? 'asc' : 'desc');
+                  else { setSortBy(c.key); setSortOrder(defaultOrder); }
+                }}
+              >
+                {c.label}{sortBy === c.key ? (sortOrder === 'desc' ? ' ↓' : ' ↑') : ''}
+              </button>
+            );
+          })}
+        </div>
+        {filteredRecipes.length !== totalRecipes && (
+          <span className="rc-count">{filteredRecipes.length} / {totalRecipes}</span>
+        )}
+      </div>
+
+      {filteredRecipes.length === 0 ? (
+        <div className="v21-empty rc-empty">
+          <p>Aucune recette trouvée.</p>
+          <Link href="/planning/assistant" className="v21-btn">Créer un planning</Link>
+        </div>
+      ) : (
+        <div className="v21-cards">
+          {filteredRecipes.map(recipe => (
+            <RecipeListCard
+              key={recipe.id}
+              recipe={recipe}
+              status={inventoryStatus[recipe.id] || { totalIngredients: 0, availableIngredients: 0, availabilityPercent: 0, urgentIngredients: 0 }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { Upload, FileSpreadsheet, Trash2, Calendar, Sparkles, Leaf, RefreshCw, X } from 'lucide-react'
+import { Sparkles, RefreshCw, X } from 'lucide-react'
 import WeeklyPlanView from './components/WeeklyPlanView'
 import DailyNutritionRecap from './components/DailyNutritionRecap'
 
@@ -154,63 +154,57 @@ export default function PlanningPage() {
 
   return (
     <>
-      <div className="planning-canvas" aria-hidden="true" />
-      <div className="planning-container">
-        {/* ═══ HERO HEADER ═══ */}
-        <div className="hero-header">
-          <div className="hero-content">
-            <div className="hero-text">
-              <span className="hero-eyebrow">Planning</span>
-              <h1 className="hero-title">Vos repas de la semaine</h1>
-              <p className="hero-subtitle">Planifiez, cuisinez, savourez — avec l'aide de Myko</p>
-            </div>
-            <div className="hero-actions">
-              <button className="btn-primary" onClick={() => router.push('/planning/assistant')}>
-                <Sparkles size={18} />
-                Demander à Myko
-              </button>
-              {planningReady && imports.length > 0 && (
-                <button className="btn-regen" onClick={() => { setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMeals([]); setRegenInstructions(''); setRegenMode('week') }}>
-                  <RefreshCw size={14} />
-                  Modifier
-                </button>
-              )}
-            </div>
+      <div className="v21-page wide">
+        {/* ═══ HERO ÉDITORIAL ═══ */}
+        <header className="v21-hero">
+          <div className="v21-hero-text">
+            <span className="v21-eyebrow">Planning · réseau mycorhizien</span>
+            <h1 className="v21-title">Vos repas de la semaine.</h1>
+            <div className="v21-rule" />
+            <p className="v21-lede">Planifiez, cuisinez, savourez — avec l'aide de Myko.</p>
           </div>
-        </div>
+          <div className="v21-hero-side">
+            <button className="v21-btn" onClick={() => router.push('/planning/assistant')}>
+              <Sparkles size={15} /> Demander à Myko
+            </button>
+            {planningReady && imports.length > 0 && (
+              <button className="v21-btn ghost" onClick={() => { setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMeals([]); setRegenInstructions(''); setRegenMode('week') }}>
+                <RefreshCw size={14} /> Modifier
+              </button>
+            )}
+          </div>
+        </header>
 
         {/* ═══ CONTENU : un seul état de chargement, pas de flash ═══ */}
         {!planningReady ? (
-          <section className="planning-section">
-            <div className="planning-loading">Chargement du planning…</div>
+          <section className="v21-section flush" aria-busy="true" aria-label="Chargement du planning">
+            <div className="v21-skel" style={{ height: 44, marginBottom: 18 }} />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 1, background: 'var(--line)', border: '1px solid var(--line)' }}>
+              {Array.from({ length: 7 }).map((_, i) => <div key={i} className="v21-skel" style={{ height: 180, borderRadius: 0 }} />)}
+            </div>
           </section>
         ) : imports.length === 0 ? (
-          <section className="planning-section">
-            <div className="empty-state-card">
-              <div className="empty-icon">
-                <FileSpreadsheet size={48} strokeWidth={1.2} />
-              </div>
-              <h3>Aucun plan encore</h3>
-              <p>Demande à Myko de créer un planning ou importe un fichier .xlsx</p>
-              <button className="btn-primary btn-lg" onClick={() => router.push('/planning/assistant')}>
-                <Sparkles size={20} />
-                Créer un planning avec l'IA
+          <section className="v21-section flush">
+            <div className="v21-empty">
+              <p>Aucun plan encore. Demande à Myko de créer un planning ou importe un fichier .xlsx.</p>
+              <button className="v21-btn" onClick={() => router.push('/planning/assistant')}>
+                <Sparkles size={15} /> Créer un planning avec l'IA
               </button>
             </div>
           </section>
         ) : (
           <>
-            <section className="planning-section">
+            <section className="v21-section">
+              <div className="v21-bh"><span className="v21-bl">Semaine</span></div>
               <WeeklyPlanView imports={imports} />
             </section>
 
-            <section className="planning-section">
+            <section className="v21-section flush">
+              <div className="v21-bh"><span className="v21-bl">Nutrition — jour par jour</span></div>
               <DailyNutritionRecap importId={latestImport.id} />
             </section>
           </>
         )}
-
-        {/* ═══ MANAGE IMPORTS (compact) supprimé selon demande UI ═══ */}
       </div>
 
       {/* ═══ MODAL RÉGÉNÉRATION ═══ */}
@@ -219,7 +213,7 @@ export default function PlanningPage() {
           <div className="regen-card" onClick={e => e.stopPropagation()}>
             {/* Header */}
             <div className="regen-header">
-              <span className="regen-title">Modifier le planning</span>
+              <span className="v21-bl">Modifier le planning</span>
               {(regenStatus === 'idle' || regenStatus === 'error') && (
                 <button className="regen-close" onClick={() => setRegenOpen(false)}><X size={18} /></button>
               )}
@@ -227,21 +221,21 @@ export default function PlanningPage() {
 
             {regenStatus === 'idle' || regenStatus === 'error' ? (<>
               {/* Mode selector */}
-              <div className="regen-modes">
+              <div className="v21-tabs regen-modes">
                 <button
-                  className={`regen-mode-btn${regenMode === 'week' ? ' active' : ''}`}
+                  className={`v21-tab${regenMode === 'week' ? ' on' : ''}`}
                   onClick={() => setRegenMode('week')}
                 >
                   Semaine entière
                 </button>
                 <button
-                  className={`regen-mode-btn${regenMode === 'days' ? ' active' : ''}`}
+                  className={`v21-tab${regenMode === 'days' ? ' on' : ''}`}
                   onClick={() => setRegenMode('days')}
                 >
                   Jours précis
                 </button>
                 <button
-                  className={`regen-mode-btn${regenMode === 'meals' ? ' active' : ''}`}
+                  className={`v21-tab${regenMode === 'meals' ? ' on' : ''}`}
                   onClick={() => setRegenMode('meals')}
                 >
                   Un repas
@@ -303,7 +297,7 @@ export default function PlanningPage() {
               </div>
 
               <button
-                className="regen-submit"
+                className="v21-btn terra regen-submit"
                 onClick={submitRegen}
                 disabled={(regenMode === 'days' && !regenDays.length) || (regenMode === 'meals' && !regenMeals.length)}
               >
@@ -317,15 +311,16 @@ export default function PlanningPage() {
               <p className="regen-note">Myko régénère en 2–4 min et écrit directement dans Supabase.</p>
             </>) : regenStatus === 'submitting' ? (
               <div className="regen-waiting">
-                <div className="regen-spinner" />
+                <div className="v21-skel" style={{ height: 10, width: '70%' }} />
                 <p>Déclenchement de la routine…</p>
               </div>
             ) : regenStatus === 'waiting' ? (
               <div className="regen-waiting">
-                <div className="regen-spinner" />
+                <div className="v21-skel" style={{ height: 10, width: '85%' }} />
+                <div className="v21-skel" style={{ height: 10, width: '60%' }} />
                 <p>Myko régénère ton planning…</p>
                 <p className="regen-note">Tu peux fermer cette fenêtre, le résultat apparaîtra automatiquement.</p>
-                <button className="regen-cancel" onClick={() => setRegenOpen(false)}>Fermer et revenir plus tard</button>
+                <button className="v21-btn ghost sm regen-cancel" onClick={() => setRegenOpen(false)}>Fermer et revenir plus tard</button>
               </div>
             ) : null}
           </div>
@@ -333,293 +328,34 @@ export default function PlanningPage() {
       )}
 
       <style jsx>{`
-/* ===== REFONTE « MYCÉLIUM » — Planning (pilote) ===== */
-/* Voile papier TRANSLUCIDE : laisse vivre les amibes animées en fond
-   (signature Mycélium) tout en gardant le texte lisible. */
-.planning-canvas {
-  position: fixed; inset: 0; z-index: 0;
-  background: var(--paper);
-  opacity: 0.46;
-  pointer-events: none;
-  -webkit-mask-image: radial-gradient(120% 95% at 50% 0%, #000 55%, rgba(0,0,0,0.78) 100%);
-          mask-image: radial-gradient(120% 95% at 50% 0%, #000 55%, rgba(0,0,0,0.78) 100%);
-}
-.planning-container {
-  position: relative; z-index: 1;
-  max-width: 980px; margin: 0 auto;
-  padding: clamp(22px, 4vw, 52px) clamp(16px, 4vw, 36px) 96px;
-  font-family: var(--font-text);
-  color: var(--ink-1);
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── Masthead éditorial ── */
-.hero-header {
-  position: relative;
-  padding: var(--s-5) 0 var(--s-6);
-  border-bottom: 1px solid var(--line);
-  margin-bottom: var(--s-7);
-  overflow: hidden;
-}
-.hero-decoration {
-  position: absolute; top: -34px; right: -20px;
-  color: var(--brand); opacity: 0.06;
-  transform: rotate(12deg); pointer-events: none;
-}
-.hero-content {
-  position: relative; z-index: 1;
-  display: flex; justify-content: space-between;
-  align-items: flex-end; gap: var(--s-6); flex-wrap: wrap;
-}
-.hero-text { max-width: 620px; }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: var(--fs-xs); font-weight: 700;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: var(--s-3);
-}
-.hero-eyebrow::before {
-  content: ''; width: 26px; height: 2px;
-  background: var(--accent); border-radius: 2px;
-}
-.hero-title {
-  font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-size: var(--fs-display); font-weight: 600;
-  line-height: 1.04; letter-spacing: -0.025em;
-  color: var(--ink-1); margin: 0 0 var(--s-3);
-}
-.hero-subtitle {
-  font-size: var(--fs-body); color: var(--ink-2);
-  margin: 0; line-height: 1.55; font-weight: 400;
-}
-.hero-actions { display: flex; gap: var(--s-3); flex-wrap: wrap; }
-
-/* ── Boutons ── */
-.btn-primary, .btn-secondary {
-  display: inline-flex; align-items: center; gap: 9px;
-  padding: 13px 22px; border-radius: var(--r-pill);
-  font-family: var(--font-text); font-size: var(--fs-sm);
-  font-weight: 600; cursor: pointer;
-  transition: transform var(--dur) var(--spring),
-              background var(--dur-fast) var(--ease),
-              box-shadow var(--dur-fast) var(--ease),
-              border-color var(--dur-fast) var(--ease);
-}
-.btn-primary:active, .btn-secondary:active { transform: scale(0.96); }
-.btn-primary {
-  background: var(--brand); color: #fff; border: 1px solid var(--brand);
-  box-shadow: var(--sh-1);
-}
-.btn-primary:hover {
-  background: var(--brand-strong); border-color: var(--brand-strong);
-  transform: translateY(-3px) scale(1.035);
-  box-shadow: var(--sh-2), 0 0 0 4px var(--accent-soft);
-}
-.btn-secondary {
-  background: transparent; color: var(--ink-1);
-  border: 1px solid var(--line-strong);
-}
-.btn-secondary:hover {
-  background: var(--surface); border-color: var(--ink-2);
-  transform: translateY(-3px) scale(1.035);
-}
-.btn-lg { padding: 15px 28px; font-size: var(--fs-body); }
-
-/* ── Sections ── */
-.planning-section {
-  margin-bottom: var(--s-7);
-  animation: mykoReveal 0.62s var(--spring) both;
-}
-.planning-section:nth-of-type(2) { animation-delay: 0.07s; }
-.planning-section:nth-of-type(3) { animation-delay: 0.14s; }
-.planning-section:nth-of-type(4) { animation-delay: 0.2s; }
-.section-header {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: var(--s-5);
-  padding-bottom: var(--s-3);
-  border-bottom: 1px solid var(--line);
-}
-.section-accent {
-  width: 9px; height: 9px; border-radius: 2px;
-  background: var(--accent); transform: rotate(45deg);
-  flex-shrink: 0;
-}
-.section-title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h2); font-weight: 600;
-  letter-spacing: -0.015em; color: var(--ink-1); margin: 0;
-}
-
-/* ── Chargement (un seul état, sobre) ── */
-.planning-loading {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-card);
-  padding: var(--s-7);
-  text-align: center;
-  color: var(--ink-3);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  animation: mykoPulse 1.4s var(--ease) infinite;
-}
-
-/* ── État vide ── */
-.empty-state-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-card);
-  padding: var(--s-8) var(--s-5);
-  text-align: center;
-  box-shadow: var(--sh-1);
-}
-.empty-icon {
-  width: 76px; height: 76px; margin: 0 auto var(--s-4);
-  background: var(--brand-soft); border-radius: var(--r-card);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--brand);
-}
-.empty-state-card h3 {
-  font-family: var(--font-display);
-  font-size: 26px; font-weight: 600; letter-spacing: -0.02em;
-  color: var(--ink-1); margin: 0 0 var(--s-2);
-}
-.empty-state-card p {
-  color: var(--ink-2); font-size: var(--fs-body);
-  margin: 0 auto var(--s-5); max-width: 360px; line-height: 1.55;
-}
-.empty-state-card .btn-primary {
-  display: inline-flex;
-  background: var(--brand); color: #fff; border-color: var(--brand);
-}
-
-/* ── Liste des plans (registre) ── */
-.imports-details {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-card);
-  overflow: hidden;
-}
-.imports-summary {
-  display: flex; align-items: center; gap: 9px;
-  padding: 14px 18px;
-  font-family: var(--font-text);
-  font-size: var(--fs-sm); font-weight: 600;
-  color: var(--ink-2); cursor: pointer;
-  list-style: none;
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
-}
-.imports-summary::-webkit-details-marker { display: none; }
-.imports-summary:hover { background: var(--surface-soft); color: var(--ink-1); }
-.imports-compact {
-  padding: 0 10px 10px;
-  display: flex; flex-direction: column;
-}
-.import-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 12px 12px;
-  border-top: 1px solid var(--line);
-  transition: background var(--dur) var(--ease);
-}
-.import-row:hover { background: var(--surface-soft); }
-.import-row-name {
-  flex: 1; min-width: 0;
-  font-family: var(--font-display);
-  font-size: var(--fs-body); font-weight: 600;
-  color: var(--ink-1); cursor: pointer;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.import-row-name:hover { color: var(--brand); }
-.import-row-date {
-  font-size: var(--fs-xs); color: var(--ink-3);
-  font-weight: 500; flex-shrink: 0; letter-spacing: 0.02em;
-}
-.delete-btn {
-  background: none; border: none; color: var(--ink-3);
-  cursor: pointer; padding: 8px; border-radius: var(--r-sm);
-  display: flex; transition: var(--transition-base);
-}
-.delete-btn:hover { color: #c0392b; background: rgba(192, 57, 43, 0.08); }
-
-/* ── Motion ── */
-@keyframes mykoReveal {
-  0%   { opacity: 0; transform: translateY(20px) scale(0.985); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-@keyframes mykoPulse {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.55; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .planning-section, .planning-loading { animation: none; }
-}
-
-/* ── Bouton "Modifier" dans le section-header ── */
-.btn-regen {
-  margin-left: auto;
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 14px; border-radius: var(--r-pill);
-  font-family: var(--font-text); font-size: var(--fs-xs);
-  font-weight: 600; cursor: pointer;
-  background: var(--surface); color: var(--ink-2);
-  border: 1px solid var(--line-strong);
-  transition: var(--transition-base);
-}
-.btn-regen:hover { background: var(--surface-soft); color: var(--brand); border-color: var(--brand); }
-
-/* ── Modal régénération ── */
+/* ── Modal régénération — V21 (papier, filets, rectangles) ── */
 .regen-overlay {
   position: fixed; inset: 0; z-index: 500;
   background: rgba(24, 28, 22, 0.52);
-  backdrop-filter: blur(6px);
   display: flex; align-items: center; justify-content: center;
   padding: 16px;
-  animation: mykoReveal 0.22s var(--ease) both;
 }
 .regen-card {
   background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--r-card);
-  box-shadow: var(--sh-2);
-  width: 100%; max-width: 440px;
+  border: 1.5px solid var(--ink-1);
+  border-radius: 3px;
+  width: 100%; max-width: 460px;
   padding: 24px;
   display: flex; flex-direction: column; gap: 18px;
 }
 .regen-header {
-  display: flex; align-items: center; justify-content: space-between;
-}
-.regen-title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3); font-weight: 600;
-  color: var(--ink-1); letter-spacing: -0.015em;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
 .regen-close {
   background: none; border: none; cursor: pointer;
-  color: var(--ink-3); padding: 6px;
-  border-radius: var(--r-sm); display: flex;
-  transition: var(--transition-base);
+  color: var(--ink-3); padding: 6px; border-radius: 3px; display: flex;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 .regen-close:hover { background: var(--surface-soft); color: var(--ink-1); }
 
-.regen-modes {
-  display: flex; gap: 8px;
-}
-.regen-mode-btn {
-  flex: 1; padding: 10px 12px;
-  border: 1.5px solid var(--line-strong);
-  border-radius: var(--r-md);
-  background: transparent; cursor: pointer;
-  font-family: var(--font-text); font-size: var(--fs-sm);
-  font-weight: 600; color: var(--ink-2);
-  transition: var(--transition-base);
-}
-.regen-mode-btn:hover { border-color: var(--brand); color: var(--brand); }
-.regen-mode-btn.active {
-  background: var(--terracotta); border-color: var(--terracotta);
-  color: #fff;
-}
+/* Onglets de mode : réutilisent .v21-tabs/.v21-tab, mais en répartition égale */
+.regen-modes { margin-top: 0; }
+.regen-modes .v21-tab { flex: 1; text-align: center; }
 
 .regen-days-grid {
   display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
@@ -627,145 +363,77 @@ export default function PlanningPage() {
 .regen-day-btn {
   display: flex; flex-direction: column; align-items: center;
   gap: 3px; padding: 10px 0;
-  border: 1.5px solid var(--line-strong);
-  border-radius: var(--r-md);
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
   background: transparent; cursor: pointer;
-  transition: var(--transition-base);
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
-.regen-day-btn:hover { border-color: var(--brand); }
-.regen-day-btn.active {
-  background: var(--terracotta); border-color: var(--terracotta);
-}
+.regen-day-btn:hover { border-color: var(--ink-1); }
+.regen-day-btn.active { background: var(--terracotta); border-color: var(--terracotta); }
 .regen-day-name {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--ink-3);
 }
 .regen-day-btn.active .regen-day-name { color: #fff; }
-.regen-day-num {
-  font-size: var(--fs-sm); font-weight: 700;
-  color: var(--ink-1);
-}
+.regen-day-num { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--ink-1); }
 .regen-day-btn.active .regen-day-num { color: #fff; }
 
+.regen-meals-list { display: flex; flex-direction: column; gap: 6px; }
+.regen-meal-row { display: flex; align-items: center; gap: 10px; }
+.regen-meal-day { display: flex; align-items: baseline; gap: 5px; width: 62px; flex-shrink: 0; }
+.regen-meal-day-name {
+  font-family: var(--font-mono);
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3);
+}
+.regen-meal-day-num { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink-1); }
+.regen-meal-btn {
+  flex: 1; padding: 9px 0;
+  border: 1px solid var(--line-strong); border-radius: 3px;
+  background: transparent; cursor: pointer;
+  font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--ink-2); transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.regen-meal-btn:hover { border-color: var(--ink-1); color: var(--ink-1); }
+.regen-meal-btn.active { background: var(--terracotta); border-color: var(--terracotta); color: #fff; }
+
 .regen-error {
-  font-size: var(--fs-sm); color: #dc2626;
-  background: rgba(220, 38, 38, 0.06);
-  border: 1px solid rgba(220, 38, 38, 0.18);
-  border-radius: var(--r-sm); padding: 10px 14px;
-  margin: 0; line-height: 1.45;
+  font-family: var(--font-text); font-size: 13px; color: var(--state-expired);
+  background: var(--state-expired-bg);
+  border: 1px solid var(--state-expired);
+  border-radius: 3px; padding: 10px 14px; margin: 0; line-height: 1.45;
 }
 
-.regen-submit {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  width: 100%; padding: 14px;
-  background: linear-gradient(135deg, var(--brand), #059669);
-  color: #fff; border: none;
-  border-radius: var(--r-pill); cursor: pointer;
-  font-family: var(--font-text); font-size: var(--fs-body);
-  font-weight: 600; box-shadow: var(--sh-1);
-  transition: var(--transition-base);
-}
-.regen-submit:hover:not(:disabled) { filter: brightness(1.08); transform: translateY(-2px); }
-.regen-submit:disabled {
-  opacity: 0.45; cursor: not-allowed; filter: none; transform: none;
-}
+.regen-submit { width: 100%; }
+.regen-submit:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .regen-note {
-  font-size: var(--fs-xs); color: var(--ink-3);
+  font-family: var(--font-mono); font-size: 11px; color: var(--ink-3);
   text-align: center; margin: -6px 0 0; line-height: 1.5;
 }
 
 .regen-waiting {
-  display: flex; flex-direction: column; align-items: center; gap: 14px;
-  padding: 8px 0 4px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 8px 0 4px;
 }
+.regen-waiting .v21-skel { width: 100%; }
 .regen-waiting p {
-  font-size: var(--fs-body); font-weight: 600; color: var(--ink-1);
+  font-family: var(--font-text); font-size: 14px; font-weight: 600; color: var(--ink-1);
   margin: 0; text-align: center;
 }
-.regen-waiting .regen-note { font-size: var(--fs-xs); color: var(--ink-3); }
-.regen-spinner {
-  width: 36px; height: 36px;
-  border: 3px solid var(--line-strong);
-  border-top-color: var(--brand);
-  border-radius: 50%;
-  animation: regenSpin 0.8s linear infinite;
-}
-@keyframes regenSpin { to { transform: rotate(360deg); } }
+.regen-cancel { margin-top: 4px; }
 
-.regen-cancel {
-  background: none; border: 1px solid var(--line-strong);
-  border-radius: var(--r-pill); padding: 10px 22px;
-  font-family: var(--font-text); font-size: var(--fs-sm);
-  font-weight: 600; color: var(--ink-2); cursor: pointer;
-  transition: var(--transition-base);
-}
-.regen-cancel:hover { background: var(--surface-soft); color: var(--ink-1); }
-
-/* ── Grille repas (midi/soir par jour) ── */
-.regen-meals-list {
-  display: flex; flex-direction: column; gap: 6px;
-}
-.regen-meal-row {
-  display: flex; align-items: center; gap: 10px;
-}
-.regen-meal-day {
-  display: flex; align-items: baseline; gap: 5px;
-  width: 62px; flex-shrink: 0;
-}
-.regen-meal-day-name {
-  font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--ink-3);
-}
-.regen-meal-day-num {
-  font-size: var(--fs-sm); font-weight: 700; color: var(--ink-1);
-}
-.regen-meal-btn {
-  flex: 1; padding: 9px 0;
-  border: 1.5px solid var(--line-strong);
-  border-radius: var(--r-md);
-  background: transparent; cursor: pointer;
-  font-family: var(--font-text); font-size: var(--fs-sm);
-  font-weight: 600; color: var(--ink-2);
-  transition: var(--transition-base);
-}
-.regen-meal-btn:hover { border-color: var(--brand); color: var(--brand); }
-.regen-meal-btn.active {
-  background: var(--brand-soft); border-color: var(--brand); color: var(--brand);
-}
-
-/* ── Champ instructions ── */
 .regen-instructions-wrap { width: 100%; }
 .regen-instructions {
-  width: 100%; box-sizing: border-box;
-  padding: 10px 13px;
-  border: 1.5px solid var(--line-strong);
-  border-radius: var(--r-md);
+  width: 100%; box-sizing: border-box; padding: 10px 13px;
+  border: 1px solid var(--line-strong); border-radius: 3px;
   background: var(--surface);
-  font-family: var(--font-text); font-size: var(--fs-sm);
-  color: var(--ink-1); line-height: 1.5;
-  resize: vertical; outline: none;
-  transition: border-color var(--dur-fast) var(--ease);
+  font-family: var(--font-text); font-size: 14px; color: var(--ink-1); line-height: 1.5;
+  resize: vertical; outline: none; transition: border-color 0.15s ease;
 }
-.regen-instructions:focus { border-color: var(--brand); }
+.regen-instructions:focus { border-color: var(--terracotta); }
 .regen-instructions::placeholder { color: var(--ink-3); }
 
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .planning-container { padding: 20px 16px 64px; }
-  .hero-header { padding: var(--s-3) 0 var(--s-5); margin-bottom: var(--s-6); }
-  .hero-content { flex-direction: column; align-items: flex-start; gap: var(--s-4); }
-  .hero-actions { width: 100%; }
-  .hero-actions .btn-primary, .hero-actions .btn-secondary { flex: 1; justify-content: center; }
-  .section-title { font-size: 18px; }
-  .regen-days-grid { grid-template-columns: repeat(4, 1fr); }
-}
-@media (max-width: 480px) {
-  .planning-container { padding: 16px 12px 48px; }
-  .hero-actions { flex-direction: column; }
-  .planning-section { margin-bottom: var(--s-6); }
+@media (max-width: 560px) {
   .regen-days-grid { grid-template-columns: repeat(4, 1fr); }
 }
       `}</style>

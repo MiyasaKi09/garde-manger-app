@@ -73,100 +73,121 @@ export default function ShoppingPage() {
   const checkedCount = filteredItems.filter(i => i.checked).length
   const totalCount = filteredItems.length
 
-  if (loading) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p>Chargement...</p></div>
+  if (loading) return (
+    <div className="v21-page" aria-busy="true" aria-label="Chargement des courses">
+      <div className="v21-skel" style={{ height: 90, marginBottom: 20 }} />
+      <div className="v21-skel" style={{ height: 38, width: 200, marginBottom: 18 }} />
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={i} className="v21-skel" style={{ height: 48, marginBottom: 1, borderRadius: 0 }} />
+        ))}
+      </div>
+    </div>
+  )
   if (!data) return null
 
   return (
     <>
-      <div className="container">
-        <div className="header-card">
-          <button className="back-btn" onClick={() => router.push(`/planning/${importId}`)}>
-            <ArrowLeft size={18} /> Retour au calendrier
-          </button>
-          <h1><ShoppingCart size={22} /> Listes de courses</h1>
-          <p>{data.import?.month_label}</p>
-        </div>
+      <div className="v21-page">
+        <button className="shop-back" onClick={() => router.push(`/planning/${importId}`)}>
+          <ArrowLeft size={15} /> Retour au calendrier
+        </button>
+
+        {/* ═══ HERO ÉDITORIAL ═══ */}
+        <header className="v21-hero">
+          <div className="v21-hero-text">
+            <span className="v21-eyebrow"><ShoppingCart size={12} /> Courses{data.import?.month_label ? ` · ${data.import.month_label}` : ''}</span>
+            <h1 className="v21-title">Listes de courses.</h1>
+            <div className="v21-rule" />
+            <p className="v21-lede">Ce qu'il reste à rapporter, semaine par semaine.</p>
+          </div>
+          <div className="v21-hero-badge">
+            <span className="v">{Math.max(totalCount - checkedCount, 0)}</span>
+            <span className="l">{totalCount > 0 ? 'articles restants' : 'rien à acheter'}</span>
+          </div>
+        </header>
 
         {/* Week tabs */}
-        <div className="week-tabs">
-          {weekLabels.map(week => (
-            <button
-              key={week}
-              className={`week-tab ${activeWeek === week ? 'active' : ''}`}
-              onClick={() => setActiveWeek(week)}
-            >
-              {week}
-            </button>
-          ))}
-        </div>
+        {weekLabels.length > 0 && (
+          <div className="v21-tabs" role="tablist" aria-label="Semaines">
+            {weekLabels.map(week => (
+              <button
+                key={week}
+                role="tab"
+                aria-selected={activeWeek === week}
+                className={`v21-tab ${activeWeek === week ? 'on' : ''}`}
+                onClick={() => setActiveWeek(week)}
+              >
+                {week}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Progress */}
-        <div className="progress-bar-container">
-          <div className="progress-text">{checkedCount}/{totalCount} articles</div>
-          <div className="progress-bar">
-            <div className="progress-fill" style={{ width: totalCount ? `${(checkedCount / totalCount) * 100}%` : '0%' }}></div>
-          </div>
+        <div className="shop-prog-wrap">
+          <span className="shop-prog-t">{checkedCount} / {totalCount} articles</span>
+          <div className="v21-prog"><div className="v21-prog-fill" style={{ width: totalCount ? `${(checkedCount / totalCount) * 100}%` : '0%' }} /></div>
         </div>
 
         {/* Items grouped by category */}
         {Object.entries(groupedItems).map(([category, catItems]) => (
-          <div key={category} className="category-section">
-            <div className="category-header">{category}</div>
-            <div className="items-list">
+          <section key={category} className="shop-cat">
+            <div className="v21-bh"><span className="v21-bl">{category}</span></div>
+            <div className="v21-its">
               {catItems.map(item => (
-                <div
+                <button
                   key={item.id}
-                  className={`item-row ${item.checked ? 'checked' : ''}`}
+                  type="button"
+                  className={`v21-it compact shop-it ${item.checked ? 'is-checked' : ''}`}
                   onClick={() => toggleItem(item.id)}
                 >
-                  <div className={`checkbox ${item.checked ? 'checked' : ''}`}>
-                    {item.checked && <Check size={14} />}
-                  </div>
-                  <div className="item-name">{item.product_name}</div>
-                  <div className="item-qty">{item.quantity}</div>
-                </div>
+                  <span className="v21-it-bar" aria-hidden="true" style={{ background: item.checked ? 'var(--sage, #6FB05A)' : 'var(--line-strong)' }} />
+                  <span className="shop-check-wrap"><span className={`shop-box ${item.checked ? 'on' : ''}`}>{item.checked && <Check size={12} color="#fff" />}</span></span>
+                  <span className="v21-it-n shop-name">{item.product_name}</span>
+                  <span className="v21-it-q shop-qty">{item.quantity}</span>
+                </button>
               ))}
             </div>
-          </div>
+          </section>
         ))}
       </div>
 
       <style jsx>{`
-        .container { padding: 16px; max-width: 700px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-        .header-card { background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
-        .back-btn { display: inline-flex; align-items: center; gap: 6px; background: none; border: none; color: #6b7280; cursor: pointer; font-size: 14px; padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; }
-        .back-btn:hover { background: rgba(0,0,0,0.05); }
-        .header-card h1 { display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: bold; color: #1f2937; margin: 0 0 4px; }
-        .header-card p { color: #6b7280; margin: 0; font-size: 14px; }
+        .shop-back {
+          display: inline-flex; align-items: center; gap: 7px;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase;
+          background: none; border: none; color: var(--ink-3); cursor: pointer;
+          padding: 0; margin-bottom: 20px; transition: color 0.15s ease;
+        }
+        .shop-back:hover { color: var(--terracotta); }
 
-        .week-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-        .week-tab { padding: 8px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 14px; color: #6b7280; transition: all 0.2s; }
-        .week-tab:hover { background: var(--surface); }
-        .week-tab.active { background: #16a34a; color: white; border-color: #16a34a; }
+        .shop-prog-wrap { padding: 18px 0 6px; }
+        .shop-prog-t { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); letter-spacing: 0.03em; }
 
-        .progress-bar-container { margin-bottom: 16px; }
-        .progress-text { font-size: 13px; color: #6b7280; margin-bottom: 4px; }
-        .progress-bar { height: 6px; background: rgba(0,0,0,0.06); border-radius: 3px; overflow: hidden; }
-        .progress-fill { height: 100%; background: #16a34a; border-radius: 3px; transition: width 0.3s; }
+        .shop-cat { padding-top: 22px; }
 
-        .category-section { margin-bottom: 18px; }
-        .category-header { font-size: 14px; font-weight: 700; color: #374151; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06); margin-bottom: 6px; }
+        /* Ligne d'article : barre | case | nom | quantité (grille .v21-it.compact étendue) */
+        .v21-it.shop-it {
+          grid-template-columns: 8px 30px 1fr auto;
+          width: 100%; border: none; border-bottom: 1px solid var(--line);
+          background: transparent; cursor: pointer; text-align: left; font: inherit;
+        }
+        .shop-check-wrap { padding: 0 !important; justify-content: center; }
+        .shop-box {
+          width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0;
+          border: 1.5px solid var(--line-strong); background: transparent;
+          display: flex; align-items: center; justify-content: center;
+          transition: background 0.15s ease, border-color 0.15s ease;
+        }
+        .shop-box.on { background: var(--brand); border-color: var(--brand); }
+        .v21-it.is-checked .shop-name { text-decoration: line-through; color: var(--ink-3); }
+        .v21-it.is-checked { opacity: 0.6; }
+        .shop-qty { white-space: nowrap; text-align: right; }
 
-        .items-list { display: flex; flex-direction: column; gap: 4px; }
-        .item-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--surface); border-radius: 8px; cursor: pointer; transition: all 0.15s; }
-        .item-row:hover { background: var(--surface); }
-        .item-row.checked { opacity: 0.5; }
-        .item-row.checked .item-name { text-decoration: line-through; }
-
-        .checkbox { width: 22px; height: 22px; border-radius: 6px; border: 2px solid #d1d5db; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; }
-        .checkbox.checked { background: #16a34a; border-color: #16a34a; color: white; }
-
-        .item-name { flex: 1; font-size: 14px; color: #374151; }
-        .item-qty { font-size: 12px; color: #6b7280; text-align: right; max-width: 200px; }
-
-        @media (max-width: 768px) {
-          .item-row { flex-wrap: wrap; }
-          .item-qty { width: 100%; text-align: left; padding-left: 32px; font-size: 11px; }
+        @media (max-width: 560px) {
+          .v21-it.shop-it { grid-template-columns: 8px 30px 1fr; }
+          .shop-qty { display: none; }
         }
       `}</style>
     </>

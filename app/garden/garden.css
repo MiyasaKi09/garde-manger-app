@@ -1,34 +1,18 @@
-.garden-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: clamp(16px, 3vw, 40px);
-  padding-bottom: 40px;
-  position: relative;
-  z-index: 1;
+/* app/garden/garden.css — Potager V21 (papier, hairline) */
+
+/* Ligne de plante : le dernier segment (action) s'aligne à droite */
+.garden-plant .garden-plant-action {
+  justify-content: flex-end;
 }
-.garden-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-3);
-}
-.garden-plant-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--s-4) var(--s-5);
-  animation: cardPop 0.4s var(--spring) both;
-}
-.garden-plant-name {
-  font-size: var(--fs-body);
-  font-weight: 600;
-  color: var(--ink-1);
-}
+
+/* Bandeau d'erreur — rectangle net terracotta, pas de glassmorphism */
 .garden-error {
-  background: rgba(192, 57, 43, 0.06);
-  border: 1px solid rgba(192, 57, 43, 0.2);
-  border-radius: var(--r-sm);
-  padding: var(--s-3) var(--s-4);
-  color: #c0392b;
-  font-size: var(--fs-sm);
-  margin-bottom: var(--s-4);
+  font-family: var(--font-text);
+  font-size: 13px;
+  color: var(--state-expired);
+  background: var(--state-expired-bg);
+  border-left: 3px solid var(--terracotta);
+  border-radius: 3px;
+  padding: 12px 14px;
+  margin-top: 18px;
 }

@@ -1,0 +1,221 @@
+/* =============================================================================
+   app/styles/v21.css — Système de mise en page V21 « signature + surlignage »
+   -----------------------------------------------------------------------------
+   Primitives PARTAGÉES par toutes les pages (importé globalement dans layout.js).
+   Référence = la maquette myko-v21-signature-surlignage.html + l'accueil.
+   ADN : papier chaud, Fraunces display + Inter + JetBrains Mono, filets fins
+   (hairlines), traits structurants sombres (--ink-1), accent terracotta utilisé
+   à la fois en structure (filet du hero) ET en surlignage (rectangle plein 3px
+   pour les états actifs). Couleur-info pour les états (sage/saffron/terracotta).
+   ============================================================================= */
+
+/* ── Conteneur de page ── */
+.v21-page {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px clamp(16px, 4vw, 40px) 96px;
+  color: var(--ink-1);
+}
+.v21-page.wide { max-width: 1280px; }
+.v21-page.narrow { max-width: 820px; }
+
+/* ── Hero éditorial ── */
+.v21-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 28px;
+  padding-bottom: 26px;
+  border-bottom: 1.5px solid var(--ink-1);
+}
+.v21-hero-text { min-width: 0; }
+.v21-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--terracotta);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+.v21-title {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: clamp(44px, 7vw, 92px);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  color: var(--ink-1);
+  margin: 16px 0 0;
+}
+.v21-rule { width: 92px; height: 3px; background: var(--terracotta); margin: 22px 0 0; }
+.v21-lede {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-2);
+  margin: 18px 0 0;
+  max-width: 46ch;
+}
+.v21-hero-side { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; flex-shrink: 0; }
+/* Badge chiffré aligné à droite du hero (ex. « 0 à surveiller ») */
+.v21-hero-badge { text-align: right; font-family: var(--font-mono); }
+.v21-hero-badge .v { display: block; font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6vw, 60px); line-height: 0.9; color: var(--terracotta); }
+.v21-hero-badge .l { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-top: 6px; }
+
+/* ── Boutons (rectangles nets, jamais de pilule) ── */
+.v21-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.03em; text-transform: uppercase;
+  background: var(--brand); color: #fff; border: 1px solid var(--brand);
+  border-radius: 3px; padding: 10px 16px; cursor: pointer; text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease; white-space: nowrap;
+}
+.v21-btn:hover { background: var(--brand-strong); border-color: var(--brand-strong); }
+.v21-btn.ghost { background: transparent; color: var(--brand); }
+.v21-btn.ghost:hover { background: var(--brand-soft); }
+.v21-btn.sm { padding: 7px 12px; font-size: 11px; }
+.v21-btn.terra { background: var(--terracotta); border-color: var(--terracotta); }
+.v21-btn.terra:hover { background: var(--terracotta-soft); color: var(--ink-1); }
+
+/* ── Bandeau de statistiques à filets ── */
+.v21-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1.5px solid var(--ink-1); }
+.v21-stats.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.v21-stats.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.v21-stat {
+  display: flex; flex-direction: column;
+  padding: 22px 24px 22px 0; border-right: 1px solid var(--line);
+  text-decoration: none; color: inherit; transition: background 0.15s ease;
+}
+.v21-stat + .v21-stat { padding-left: 24px; }
+.v21-stat:last-child { border-right: none; }
+.v21-stat:hover { background: var(--surface-soft); }
+.v21-stat-l { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.v21-stat-v { font-family: var(--font-display); font-weight: 600; font-size: clamp(34px, 5vw, 54px); line-height: 1; margin-top: 6px; color: var(--ink-1); }
+.v21-stat-s { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); margin-top: 6px; }
+.v21-stat.alert .v21-stat-v { color: var(--terracotta); }
+
+/* ── Section + en-tête + label surligné (rectangle plein sombre) ── */
+.v21-section { padding: 30px 0; border-bottom: 1px solid var(--line); }
+.v21-section.strong { border-bottom: 1.5px solid var(--ink-1); }
+.v21-section.flush { border-bottom: none; }
+.v21-bh { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 12px; flex-wrap: wrap; }
+.v21-bl {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--ink-1); color: var(--paper); padding: 4px 9px; border-radius: 3px;
+}
+.v21-link { font-family: var(--font-mono); font-size: 11px; color: var(--terracotta); text-decoration: none; white-space: nowrap; }
+.v21-link:hover { text-decoration: underline; }
+
+/* ── Titre de section « display » (gros, façon masthead garde-manger) ── */
+.v21-mast-h { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; padding-top: 8px; }
+.v21-mast-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(34px, 5vw, 64px); letter-spacing: -0.03em; line-height: 0.9; color: var(--ink-1); margin: 0; }
+.v21-mast-c { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* ── Onglets (actif = rectangle terracotta plein) ── */
+.v21-tabs { display: flex; gap: 6px; flex-wrap: wrap; border-top: 1px solid var(--ink-1); border-bottom: 1px solid var(--ink-1); margin-top: 22px; padding: 10px 0; }
+.v21-tab { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; padding: 8px 14px; border-radius: 3px; color: var(--ink-2); background: transparent; border: none; cursor: pointer; transition: color 0.15s ease, background 0.15s ease; text-decoration: none; }
+.v21-tab:hover { color: var(--ink-1); }
+.v21-tab.on { background: var(--terracotta); color: #fff; font-weight: 600; }
+
+/* ── Barre d'outils : recherche + tri ── */
+.v21-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.v21-search { flex: 1; min-width: 200px; font-family: var(--font-text); font-size: 14px; color: var(--ink-1); background: var(--surface); border: 1px solid var(--line-strong); border-radius: 3px; padding: 10px 14px; outline: none; transition: border-color 0.15s ease; }
+.v21-search:focus { border-color: var(--terracotta); }
+.v21-sort { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.v21-sort-l { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-right: 2px; }
+.v21-chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink-2); background: transparent; border: 1px solid var(--line-strong); border-radius: 3px; padding: 7px 11px; cursor: pointer; text-decoration: none; transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease; }
+.v21-chip:hover { border-color: var(--ink-1); color: var(--ink-1); }
+.v21-chip.on { background: var(--terracotta); border-color: var(--terracotta); color: #fff; font-weight: 600; }
+
+/* ── Registre / index (lignes à filets + barre d'état à gauche) ── */
+.v21-its { display: flex; flex-direction: column; }
+.v21-it {
+  display: grid; grid-template-columns: 8px 1fr 110px 1fr 130px; align-items: stretch;
+  border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; transition: background 0.15s ease;
+}
+.v21-it.compact { grid-template-columns: 8px 1fr auto; }
+.v21-it:hover { background: var(--surface-soft); }
+.v21-it-bar { align-self: stretch; background: var(--sage, #6FB05A); }
+.v21-it.soon .v21-it-bar { background: var(--saffron, #E0A92E); }
+.v21-it.exp .v21-it-bar { background: var(--terracotta); }
+.v21-it > span:not(.v21-it-bar), .v21-it > div:not(.v21-it-bar) { padding: 15px 16px; display: flex; align-items: center; min-width: 0; }
+.v21-it-n { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--ink-1); overflow: hidden; }
+.v21-it-q { font-family: var(--font-mono); font-size: 13px; color: var(--ink-2); }
+.v21-it-lc { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; }
+.v21-it-st { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; font-weight: 600; justify-content: flex-end; text-align: right; }
+.v21-it.ok .v21-it-st { color: var(--brand); }
+.v21-it.soon .v21-it-st { color: var(--state-soon, #7A5410); }
+.v21-it.exp .v21-it-st { color: var(--terracotta); }
+
+/* ── Grille de cartes éditoriales (recettes, etc.) — plates, à filets ── */
+.v21-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.v21-card { display: flex; flex-direction: column; background: var(--paper); text-decoration: none; color: inherit; transition: background 0.15s ease; }
+.v21-card:hover { background: var(--surface-soft); }
+.v21-card-media { aspect-ratio: 4/3; background: var(--surface-soft); overflow: hidden; position: relative; }
+.v21-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.v21-card-mono { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 44px; color: var(--ink-3); background: var(--surface-soft); }
+.v21-card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.v21-card-title { font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.15; color: var(--ink-1); }
+.v21-card-meta { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.03em; margin-top: auto; }
+
+/* ── Repas (lignes à barre de couleur) ── */
+.v21-meals { display: flex; flex-direction: column; }
+.v21-meal { display: grid; grid-template-columns: 8px 92px 1fr auto; align-items: center; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.v21-meal-bar { display: block; width: 100%; height: 22px; border-radius: 2px; }
+.v21-meal-l { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-3); }
+.v21-meal-n { font-family: var(--font-display); font-weight: 500; font-size: 18px; line-height: 1.25; color: var(--ink-1); min-width: 0; }
+.v21-meal-w { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); white-space: nowrap; }
+
+/* ── Progression + puces de catégorie ── */
+.v21-bignum { font-family: var(--font-display); font-weight: 600; font-size: 34px; line-height: 1; color: var(--ink-1); }
+.v21-prog { height: 6px; background: var(--line); overflow: hidden; margin: 10px 0 14px; }
+.v21-prog-fill { height: 100%; background: var(--terracotta); transition: width 0.3s ease; }
+.v21-cats { display: flex; flex-wrap: wrap; gap: 6px; }
+.v21-cat { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); background: transparent; border: 1px solid var(--line-strong); border-radius: 3px; padding: 5px 10px; text-decoration: none; transition: border-color 0.15s ease, color 0.15s ease; }
+.v21-cat:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+/* ── Texte courant / état vide ── */
+.v21-next { font-family: var(--font-text); font-size: 13px; color: var(--ink-3); margin-top: 12px; line-height: 1.5; }
+.v21-empty { padding: 18px 0; }
+.v21-empty p { color: var(--ink-3); font-size: 14px; margin-bottom: 12px; }
+.v21-macros { display: flex; flex-direction: column; gap: 6px; }
+
+/* ── Navigation rapide ── */
+.v21-nav { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 30px; }
+.v21-navlink { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); text-decoration: none; border: 1px solid var(--line); border-radius: 3px; padding: 10px 14px; transition: border-color 0.15s ease, color 0.15s ease; }
+.v21-navlink:hover { border-color: var(--ink-1); color: var(--ink-1); }
+
+/* ── Chargement (squelette) ── */
+.v21-skel { background: var(--surface-soft); border-radius: 3px; position: relative; overflow: hidden; }
+.v21-skel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent); transform: translateX(-100%); animation: v21Shimmer 1.3s infinite; }
+@keyframes v21Shimmer { 100% { transform: translateX(100%); } }
+
+/* ── A11y : focus visible cohérent ── */
+.v21-stat:focus-visible, .v21-btn:focus-visible, .v21-navlink:focus-visible, .v21-cat:focus-visible,
+.v21-link:focus-visible, .v21-tab:focus-visible, .v21-it:focus-visible, .v21-card:focus-visible,
+.v21-chip:focus-visible, .v21-search:focus-visible {
+  outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .v21-hero { grid-template-columns: 1fr; align-items: start; gap: 18px; }
+  .v21-hero-side { align-items: flex-start; flex-direction: row; }
+  .v21-hero-badge { text-align: left; }
+  .v21-it { grid-template-columns: 8px 1fr auto; }
+  .v21-it-q, .v21-it-lc { display: none; }
+}
+@media (max-width: 560px) {
+  .v21-stats, .v21-stats.cols-4, .v21-stats.cols-2 { grid-template-columns: 1fr; }
+  .v21-stat { border-right: none; border-bottom: 1px solid var(--line); padding: 18px 0; }
+  .v21-stat + .v21-stat { padding-left: 0; }
+  .v21-stat:last-child { border-bottom: none; }
+  .v21-title { font-size: clamp(40px, 13vw, 60px); }
+  .v21-cards { grid-template-columns: 1fr; }
+}
