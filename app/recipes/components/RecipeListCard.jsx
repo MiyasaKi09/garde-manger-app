@@ -29,7 +29,7 @@ export default function RecipeListCard({ recipe, status }) {
             loading="lazy"
           />
         ) : (
-          <span className="recipe-img-emoji">{style.emoji}</span>
+          <span className="recipe-img-mono">{(recipe.title || 'M').trim().charAt(0).toUpperCase()}</span>
         )}
 
         {status.mykoScore !== undefined && status.mykoScore > 0 && (
@@ -48,9 +48,9 @@ export default function RecipeListCard({ recipe, status }) {
         <div className="recipe-img-overlay">
           <h3 className="recipe-img-title">{recipe.title}</h3>
           <div className="recipe-img-meta">
-            {totalTime > 0 && <span>⏱ {totalTime}min</span>}
-            {recipe.servings && <span>👥 {recipe.servings}</span>}
-            {recipe.ingredient_count > 0 && <span>🧂 {recipe.ingredient_count}</span>}
+            {totalTime > 0 && <span>{totalTime} min</span>}
+            {recipe.servings && <span>{recipe.servings} pers.</span>}
+            {recipe.ingredient_count > 0 && <span>{recipe.ingredient_count} ingr.</span>}
           </div>
         </div>
       </div>

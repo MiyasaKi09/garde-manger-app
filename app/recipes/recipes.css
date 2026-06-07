@@ -747,6 +747,17 @@
   line-height: 1;
 }
 
+.recipe-img-mono {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: 3.4rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: rgba(255, 253, 247, 0.92);
+  user-select: none;
+}
+
 .recipe-img-score {
   position: absolute;
   top: 8px;

@@ -326,8 +326,11 @@ export default function RecipesPage() {
                 disabled={fetchingImages}
                 className="add-recipe-btn"
                 style={{
-                  background: fetchingImages ? '#6b7280' : 'linear-gradient(135deg, #3b82f6, #2563eb)',
+                  background: 'transparent',
+                  color: 'var(--brand)',
+                  border: '1px solid var(--line-strong)',
                   cursor: fetchingImages ? 'wait' : 'pointer',
+                  opacity: fetchingImages ? 0.6 : 1,
                 }}
               >
                 {fetchingImages ? 'Chargement...' : 'Photos auto'}
