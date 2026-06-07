@@ -204,8 +204,8 @@ h3 {
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
   font-size: var(--fs-xs); font-weight: 700;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: var(--s-3);
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: var(--s-3);
 }
 .hero-eyebrow::before {
   content: ''; width: 26px; height: 2px;
@@ -219,8 +219,11 @@ h3 {
   color: var(--ink-1); margin: 0 0 var(--s-3);
 }
 .hero-subtitle {
-  font-size: var(--fs-body); color: var(--ink-2);
-  margin: 0; line-height: 1.55; font-weight: 400;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.05rem; color: var(--ink-2);
+  margin: 0; line-height: 1.5; font-weight: 400;
+  max-width: 52ch;
 }
 .hero-actions { display: flex; gap: var(--s-3); flex-wrap: wrap; align-items: center; }
 
