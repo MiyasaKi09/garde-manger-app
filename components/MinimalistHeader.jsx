@@ -104,7 +104,7 @@ export default function MinimalistHeader() {
       <div className="myko-hd-spacer" />
 
       <style jsx global>{`
-        .myko-hd{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;gap:8px;height:66px;padding:0 clamp(18px,4vw,42px);background:rgba(242,238,227,0.82);backdrop-filter:saturate(140%) blur(12px);-webkit-backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line);transition:box-shadow .25s ease}
+        .myko-hd{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;gap:8px;height:66px;padding:0 clamp(18px,4vw,42px);background:rgba(242,238,227,0.82);backdrop-filter:saturate(140%) blur(12px);-webkit-backdrop-filter:saturate(140%) blur(12px);border-bottom:1.5px solid var(--ink-1);transition:box-shadow .25s ease}
         .myko-hd.is-elevated{box-shadow:var(--sh-1)}
         .myko-hd-brand{font-family:var(--font-display);font-optical-sizing:auto;font-weight:700;font-size:1.4rem;letter-spacing:-.03em;color:var(--brand-strong);text-decoration:none;margin-right:1.4rem}
         .myko-hd-brand span{color:var(--terracotta)}
@@ -112,7 +112,7 @@ export default function MinimalistHeader() {
         .myko-hd-link{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;padding:7px 12px;border-radius:3px;transition:color .15s ease,background .15s ease}
         .myko-hd-link:hover{color:var(--ink-1)}
         .myko-hd-link.on{background:var(--terracotta);color:#fff;font-weight:600}
-        .myko-hd-cta{margin-left:auto;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:#fff;background:var(--brand);border:none;border-radius:999px;padding:9px 16px;text-decoration:none;cursor:pointer;transition:background .2s ease;white-space:nowrap}
+        .myko-hd-cta{margin-left:auto;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:#fff;background:var(--brand);border:none;border-radius:3px;padding:9px 18px;text-decoration:none;cursor:pointer;transition:background .2s ease;white-space:nowrap}
         .myko-hd-cta:hover{background:var(--brand-strong)}
         .myko-hd-burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:10px;background:var(--surface);border:1px solid var(--line);color:var(--ink-1);font-size:1.1rem;cursor:pointer;box-shadow:var(--sh-1)}
         .myko-hd-spacer{height:66px}
@@ -123,7 +123,7 @@ export default function MinimalistHeader() {
         .myko-hd-mlink.on{background:var(--terracotta);color:#fff;font-weight:600}
         .myko-hd-mfoot{margin-top:10px;padding-top:12px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px;align-items:center}
         .myko-hd-mfoot span{font-family:var(--font-mono);font-size:11px;color:var(--ink-3)}
-        .myko-hd-cta.full{margin:0;width:100%;text-align:center;border-radius:var(--r-sm);padding:12px}
+        .myko-hd-cta.full{margin:0;width:100%;text-align:center;border-radius:3px;padding:12px}
         @keyframes mykoSlideDown{from{opacity:0;transform:translate(-50%,-8px)}to{opacity:1;transform:translate(-50%,0)}}
         @media(max-width:820px){.myko-hd-nav,.myko-hd>.myko-hd-cta{display:none}.myko-hd-burger{display:inline-flex;align-items:center;justify-content:center}}
       `}</style>
