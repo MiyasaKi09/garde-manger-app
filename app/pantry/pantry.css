@@ -79,3 +79,48 @@ button.v21-it {
 @media (max-width: 560px) {
   .pantry-fab-group { bottom: 18px; right: 18px; }
 }
+
+/* ============================================================
+   TABLEAU DE BORD V21 — rail synthèse (gauche) + index (droite)
+   ============================================================ */
+.stock-board { display: grid; grid-template-columns: 340px 1fr; }
+
+/* ── Rail (cockpit) ── */
+.stock-rail { border-right: 1px solid var(--ink-1); min-width: 0; }
+.stock-rblk { padding: 26px; border-bottom: 1px solid var(--line); }
+.stock-rblk:last-child { border-bottom: none; }
+.stock-rlink { padding-top: 20px; padding-bottom: 20px; }
+
+.stock-twin { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.stock-cell { display: flex; flex-direction: column; min-width: 0; }
+.stock-num { font-family: var(--font-display); font-weight: 600; font-size: clamp(38px, 3.6vw, 56px); line-height: 0.92; margin-top: 2px; color: var(--ink-1); }
+.stock-num.hot { color: var(--terracotta); }
+.stock-rmeta { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
+
+/* barres — par emplacement */
+.stock-barrow { display: grid; grid-template-columns: 100px 1fr 24px; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.stock-barrow:last-child { border-bottom: none; }
+.stock-bl { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stock-track { height: 8px; background: var(--line); }
+.stock-track i { display: block; height: 100%; background: var(--ink-1); }
+.stock-bn { font-family: var(--font-mono); font-size: 12px; color: var(--ink-1); text-align: right; font-weight: 500; }
+
+/* mini-liste — par état */
+.stock-emp { display: flex; flex-direction: column; }
+.stock-e { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--font-mono); font-size: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.stock-e:last-child { border-bottom: none; }
+.stock-e .k { color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.02em; }
+.stock-e .n { color: var(--ink-1); font-weight: 500; }
+
+/* ── Index de travail (droite) ── */
+.stock-right { min-width: 0; padding-left: 28px; }
+.stock-rhead { padding: 26px 0 0; }
+.stock-rtitle { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 3.4vw, 44px); letter-spacing: -0.03em; line-height: 0.9; color: var(--ink-1); margin: 0; }
+.stock-rc { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 10px; }
+.stock-toolbar { padding-top: 18px; }
+
+@media (max-width: 880px) {
+  .stock-board { grid-template-columns: 1fr; }
+  .stock-rail { border-right: none; border-bottom: 1px solid var(--ink-1); }
+  .stock-right { padding-left: 0; }
+}

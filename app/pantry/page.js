@@ -9,7 +9,6 @@ import OcrReviewList from './components/OcrReviewList';
 import { capitalizeProduct } from './components/pantryUtils';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import EditLotForm from './components/EditLotForm';
-import PantryTabs from './components/PantryTabs';
 import RestesManager from '@/components/RestesManager';
 import './pantry.css';
 
@@ -513,6 +512,22 @@ export default function PantryPage() {
   // Compteurs pour le hero / lede
   const surveiller = tabStats.atRiskCount;
 
+  // ── Répartition pour le rail « tableau de bord » ──
+  const locationCounts = {};
+  for (const i of items) {
+    const k = i.storage_place || 'Non rangé';
+    locationCounts[k] = (locationCounts[k] || 0) + 1;
+  }
+  const locationBreakdown = Object.entries(locationCounts)
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+  const maxLoc = locationBreakdown.reduce((m, l) => Math.max(m, l.count), 0) || 1;
+  const etat = {
+    good: items.filter(i => i.expiration_status === 'good' || i.expiration_status === 'no_date').length,
+    soon: items.filter(i => i.expiration_status === 'expiring_soon').length,
+    expired: items.filter(i => i.expiration_status === 'expired').length,
+  };
+
   if (loading) {
     return (
       <div className="v21-page wide" aria-busy="true" aria-label="Chargement du garde-manger">
@@ -538,144 +553,162 @@ export default function PantryPage() {
             <span className="v21-eyebrow">Inventaire</span>
             <h1 className="v21-title">Garde-manger</h1>
             <div className="v21-rule" />
-            <p className="v21-lede">
-              {items.length} produit{items.length !== 1 ? 's' : ''} · {surveiller} à surveiller
-            </p>
+            <p className="v21-lede">Tout ce qui dort dans vos réserves, d'un seul regard.</p>
           </div>
           <div className="v21-hero-side">
-            <button className="v21-btn" onClick={() => setShowForm(true)}>+ Ajouter</button>
-            <button className="v21-btn ghost" onClick={() => setShowOcr(true)}>Scanner</button>
+            <div className="v21-hero-badge">
+              <span className="v">{surveiller}</span>
+              <span className="l">à surveiller</span>
+            </div>
           </div>
         </header>
 
-        {/* Onglets de navigation (Inventaire / À Risque / Statistiques) */}
-        <PantryTabs
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-          stats={tabStats}
-        />
-
-        {/* Contenu selon l'onglet actif */}
-        {activeTab === 'inventory' && (
-          <>
-            {/* Barre d'outils V21 : recherche + tri */}
-            <div className="v21-toolbar">
-              <input
-                type="text"
-                placeholder="Rechercher un produit…"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="v21-search"
-                aria-label="Rechercher un produit"
-              />
-              <div className="v21-sort">
-                <span className="v21-sort-l">Trier</span>
-                {SORT_CHIPS.map(chip => (
-                  <button
-                    key={chip.key}
-                    className={`v21-chip ${sortBy === chip.key ? 'on' : ''}`}
-                    onClick={() => handleSortChip(chip)}
-                    aria-pressed={sortBy === chip.key}
-                  >
-                    {chip.label}
-                    {sortBy === chip.key && (sortOrder === 'asc' ? ' ↑' : ' ↓')}
-                  </button>
-                ))}
-              </div>
+        {activeTab === 'waste' ? (
+          /* ── Anti-gaspi / Restes ── */
+          <section className="v21-section flush" style={{ paddingTop: 24 }}>
+            <div className="v21-bh">
+              <span className="v21-bl">Anti-gaspi — restes</span>
+              <button type="button" className="v21-link" onClick={() => setActiveTab('inventory')}>← Retour à l'inventaire</button>
             </div>
+            {userId && <RestesManager userId={userId} onActionComplete={loadPantryItems} />}
+          </section>
+        ) : (
+          /* ── TABLEAU DE BORD : rail synthèse + index de travail ── */
+          <div className="stock-board">
 
-            {/* Onglets de statut V21 */}
-            <div className="v21-tabs" role="tablist" aria-label="Filtrer par état">
-              {STATUS_TABS.map(tab => {
-                const count = tab.key === 'all'
-                  ? items.length
-                  : items.filter(i => i.expiration_status === tab.key).length;
-                return (
-                  <button
-                    key={tab.key}
-                    role="tab"
-                    aria-selected={statusFilter === tab.key}
-                    className={`v21-tab ${statusFilter === tab.key ? 'on' : ''}`}
-                    onClick={() => setStatusFilter(tab.key)}
-                  >
-                    {tab.label} · {count}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Registre / inventaire (ledger V21) */}
-            {filteredItems.length === 0 ? (
-              <div className="v21-empty">
-                <p>Aucun article trouvé. Ajustez vos filtres ou ajoutez des produits.</p>
-                <button className="v21-btn" onClick={() => setShowForm(true)}>+ Ajouter un produit</button>
+            {/* RAIL — synthèse / cockpit */}
+            <aside className="stock-rail">
+              <div className="stock-rblk">
+                <div className="stock-twin">
+                  <div className="stock-cell">
+                    <span className="v21-stat-l">Produits</span>
+                    <span className="stock-num">{items.length}</span>
+                    <span className="v21-stat-s">en stock</span>
+                  </div>
+                  <div className="stock-cell">
+                    <span className="v21-stat-l">À surveiller</span>
+                    <span className={`stock-num ${surveiller > 0 ? 'hot' : ''}`}>{surveiller}</span>
+                    <span className="v21-stat-s">≤ 3 jours</span>
+                  </div>
+                </div>
               </div>
-            ) : (
-              <div className="v21-its">
-                {filteredItems.map(item => {
-                  const cls = v21StatusClass(item);
-                  const q = item.qty_remaining != null
-                    ? +(+item.qty_remaining).toFixed(2)
-                    : null;
-                  const qty = q != null ? `${q}${item.unit ? ' ' + item.unit : ''}` : '—';
+
+              {locationBreakdown.length > 0 && (
+                <div className="stock-rblk">
+                  <div className="v21-bh">
+                    <span className="v21-bl">Par emplacement</span>
+                    <span className="stock-rmeta">{locationBreakdown.length} lieu{locationBreakdown.length > 1 ? 'x' : ''}</span>
+                  </div>
+                  {locationBreakdown.map(l => (
+                    <div className="stock-barrow" key={l.name}>
+                      <span className="stock-bl" title={l.name}>{l.name}</span>
+                      <span className="stock-track"><i style={{ width: `${Math.max(6, (l.count / maxLoc) * 100)}%` }} /></span>
+                      <span className="stock-bn">{l.count}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="stock-rblk">
+                <div className="v21-bh"><span className="v21-bl">Par état</span></div>
+                <div className="stock-emp">
+                  <div className="stock-e"><span className="k">Bon état</span><span className="n">{etat.good}</span></div>
+                  <div className="stock-e"><span className="k">Bientôt</span><span className="n" style={{ color: 'var(--state-soon)' }}>{etat.soon}</span></div>
+                  <div className="stock-e"><span className="k">Périmés</span><span className="n" style={{ color: 'var(--terracotta)' }}>{etat.expired}</span></div>
+                </div>
+              </div>
+
+              <div className="stock-rblk stock-rlink">
+                <button type="button" className="v21-link" onClick={() => setActiveTab('waste')}>Gérer les restes / anti-gaspi →</button>
+              </div>
+            </aside>
+
+            {/* RIGHT — index de travail */}
+            <section className="stock-right">
+              <div className="stock-rhead">
+                <h2 className="stock-rtitle">Inventaire</h2>
+                <div className="stock-rc">{items.length} produit{items.length !== 1 ? 's' : ''} · {surveiller} à surveiller</div>
+              </div>
+
+              {/* recherche + tri */}
+              <div className="v21-toolbar stock-toolbar">
+                <input
+                  type="text"
+                  placeholder="Rechercher un produit…"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="v21-search"
+                  aria-label="Rechercher un produit"
+                />
+                <div className="v21-sort">
+                  <span className="v21-sort-l">Trier</span>
+                  {SORT_CHIPS.map(chip => (
+                    <button
+                      key={chip.key}
+                      className={`v21-chip ${sortBy === chip.key ? 'on' : ''}`}
+                      onClick={() => handleSortChip(chip)}
+                      aria-pressed={sortBy === chip.key}
+                    >
+                      {chip.label}{sortBy === chip.key && (sortOrder === 'asc' ? ' ↑' : ' ↓')}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* onglets de statut */}
+              <div className="v21-tabs stock-stabs" role="tablist" aria-label="Filtrer par état">
+                {STATUS_TABS.map(tab => {
+                  const count = tab.key === 'all'
+                    ? items.length
+                    : items.filter(i => i.expiration_status === tab.key).length;
                   return (
                     <button
-                      key={item.id}
-                      type="button"
-                      className={`v21-it ${cls}`}
-                      onClick={() => handleEdit(item.id)}
-                      title="Modifier ce lot"
+                      key={tab.key}
+                      role="tab"
+                      aria-selected={statusFilter === tab.key}
+                      className={`v21-tab ${statusFilter === tab.key ? 'on' : ''}`}
+                      onClick={() => setStatusFilter(tab.key)}
                     >
-                      <span className="v21-it-bar" aria-hidden="true" />
-                      <span className="v21-it-n">{capitalizeProduct(item.product_name)}</span>
-                      <span className="v21-it-q">{qty}</span>
-                      <span className="v21-it-lc">{item.storage_place || '—'}</span>
-                      <span className="v21-it-st">{v21StatusLabel(item)}</span>
+                      {tab.label} · {count}
                     </button>
                   );
                 })}
               </div>
-            )}
-          </>
-        )}
 
-        {/* Onglet Gestion des Restes */}
-        {activeTab === 'waste' && userId && (
-          <RestesManager userId={userId} onActionComplete={loadPantryItems} />
-        )}
-
-        {/* Onglet Statistiques */}
-        {activeTab === 'stats' && (
-          <section className="v21-section flush stats-view">
-            <div className="v21-bh"><span className="v21-bl">Vue d'ensemble</span></div>
-            <div className="v21-stats cols-4">
-              <div className="v21-stat">
-                <span className="v21-stat-l">Produits</span>
-                <span className="v21-stat-v">{items.length}</span>
-                <span className="v21-stat-s">au total</span>
-              </div>
-              <div className={`v21-stat ${items.filter(i => i.expiration_status === 'expired').length > 0 ? 'alert' : ''}`}>
-                <span className="v21-stat-l">Expirés</span>
-                <span className="v21-stat-v">{items.filter(i => i.expiration_status === 'expired').length}</span>
-                <span className="v21-stat-s">à retirer</span>
-              </div>
-              <div className="v21-stat">
-                <span className="v21-stat-l">Bientôt</span>
-                <span className="v21-stat-v">{items.filter(i => i.expiration_status === 'expiring_soon').length}</span>
-                <span className="v21-stat-s">à consommer vite</span>
-              </div>
-              <div className="v21-stat">
-                <span className="v21-stat-l">Bon état</span>
-                <span className="v21-stat-v">{items.filter(i => i.expiration_status === 'good').length}</span>
-                <span className="v21-stat-s">sans urgence</span>
-              </div>
-            </div>
-            <p className="v21-next">
-              {tabStats.atRiskCount > 0
-                ? `Vous avez ${tabStats.atRiskCount} produit(s) à risque. Consultez l'onglet « À Risque » pour des suggestions anti-gaspillage.`
-                : 'Aucun produit à risque pour le moment.'}
-            </p>
-          </section>
+              {/* registre / inventaire (ledger V21) */}
+              {filteredItems.length === 0 ? (
+                <div className="v21-empty">
+                  <p>Aucun article trouvé. Ajustez vos filtres ou ajoutez des produits.</p>
+                  <button className="v21-btn" onClick={() => setShowForm(true)}>+ Ajouter un produit</button>
+                </div>
+              ) : (
+                <div className="v21-its">
+                  {filteredItems.map(item => {
+                    const cls = v21StatusClass(item);
+                    const q = item.qty_remaining != null
+                      ? +(+item.qty_remaining).toFixed(2)
+                      : null;
+                    const qty = q != null ? `${q}${item.unit ? ' ' + item.unit : ''}` : '—';
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        className={`v21-it ${cls}`}
+                        onClick={() => handleEdit(item.id)}
+                        title="Modifier ce lot"
+                      >
+                        <span className="v21-it-bar" aria-hidden="true" />
+                        <span className="v21-it-n">{capitalizeProduct(item.product_name)}</span>
+                        <span className="v21-it-q">{qty}</span>
+                        <span className="v21-it-lc">{item.storage_place || '—'}</span>
+                        <span className="v21-it-st">{v21StatusLabel(item)}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </section>
+          </div>
         )}
 
         {/* Modal d'ajout - disponible sur tous les onglets */}
