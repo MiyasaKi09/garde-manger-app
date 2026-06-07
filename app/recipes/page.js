@@ -270,7 +270,11 @@ export default function RecipesPage() {
   if (loading) {
     return (
       <div className="recipes-container">
-        <div className="loading-spinner">Chargement des recettes Myko...</div>
+        <div className="recipes-grid" aria-busy="true" aria-label="Chargement des recettes">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="skeleton" style={{ aspectRatio: '4 / 3', borderRadius: 'var(--r-card)' }} />
+          ))}
+        </div>
       </div>
     );
   }

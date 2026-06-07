@@ -138,12 +138,17 @@
   cursor: pointer;
 }
 
-.stat-filter-btn:hover, .stat-filter-active {
-  background: var(--brand-soft);
-  border-color: var(--brand);
-  color: var(--brand);
+.stat-filter-btn:hover {
+  background: var(--surface);
+  border-color: var(--line-strong);
   transform: translateY(-2px);
 }
+.stat-filter-active {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+}
+.stat-filter-active .stat-number,
+.stat-filter-active .stat-label { color: #fff; }
 
 .urgent-recipes {
   background: var(--state-expired-bg);
@@ -157,8 +162,11 @@
 }
 
 .stat-label {
-  font-size: 0.75rem;
-  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
   text-align: center;
 }
 
@@ -169,27 +177,35 @@
 }
 
 .sort-btn {
-  padding: 8px 12px;
+  padding: 7px 13px;
   background: var(--surface-soft);
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
-  font-size: 13px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--ink-2);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
-.sort-btn:hover, .sort-btn.active {
-  background: var(--brand-soft);
-  border-color: var(--brand);
-  color: var(--brand);
+.sort-btn:hover {
+  background: var(--surface);
+  border-color: var(--line-strong);
+}
+.sort-btn.active {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: #fff;
 }
 
 .filter-count {
-  font-size: 14px;
-  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
   background: var(--surface-soft);
-  padding: 8px 12px;
+  padding: 7px 11px;
   border-radius: var(--r-sm);
   border: 1px solid var(--line);
 }
