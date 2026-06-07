@@ -55,6 +55,9 @@ const MEAL_COLORS = {
 
 const MEAL_ORDER = ['pdj', 'dejeuner', 'diner', 'collation']
 
+// V21 — barre de couleur par repas (saffron / sage / olive / terracotta)
+const MEAL_BAR = { pdj: '#D9A33A', dejeuner: '#6FB05A', diner: '#6E7A3F', collation: '#BB5836' }
+
 /**
  * Affiche les repas d'aujourd'hui et demain.
  * Clic sur un repas → modal choix : Cuisiner ou Changer.
@@ -248,10 +251,10 @@ export default function TodayMeals({ importId }) {
   if (groups.length === 0) {
     const todayLabel = today.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
     return (
-      <div style={{ textAlign: 'center', padding: '14px 0' }}>
-        <p style={{ color: '#9ca3af', fontSize: 13, margin: '0 0 4px', textTransform: 'capitalize' }}>{todayLabel}</p>
-        <p style={{ color: '#6b7280', fontSize: 14, margin: '0 0 10px', fontWeight: 500 }}>Rien de prévu aujourd'hui</p>
-        <a href="/planning" style={{ fontSize: 13, fontWeight: 600, color: '#2d5a2d', textDecoration: 'none' }}>
+      <div style={{ padding: '14px 0' }}>
+        <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--ink-3)', margin: '0 0 6px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{todayLabel}</p>
+        <p style={{ fontFamily: 'var(--font-display)', color: 'var(--ink-1)', fontSize: 19, margin: '0 0 10px' }}>Rien de prévu aujourd'hui</p>
+        <a href="/planning" style={{ fontFamily: 'var(--font-mono)', fontSize: 11, fontWeight: 600, color: 'var(--terracotta)', textDecoration: 'none' }}>
           Voir le planning de la semaine →
         </a>
       </div>
@@ -276,62 +279,33 @@ export default function TodayMeals({ importId }) {
               return { type, dishName, entries, persons: [...new Set(persons)] }
             })
 
-          const now = new Date()
-          const h = now.getHours()
-          const nextType = group.date === todayStr
-            ? (h < 10 ? 'pdj' : h < 14 ? 'dejeuner' : h < 21 ? 'diner' : null)
-            : null
-
           return (
             <div key={group.date}>
               {groups.length > 1 && <p style={S.dayLabel}>{group.label}</p>}
               {mergedMeals.map((meal, i) => {
                 const isGenerating = generatingRecipe && selectedMeal?.dishName === meal.dishName
-                const isNext = meal.type === nextType
-                const colors = MEAL_COLORS[meal.type] || MEAL_COLORS.dejeuner
-
                 const done = isDone(meal)
                 return (
-                  <div
-                    key={i}
-                    style={{
-                      ...S.mealRow,
-                      ...(isNext ? {
-                        ...S.mealRowNext,
-                        borderColor: colors.border,
-                        background: `linear-gradient(135deg, ${colors.bg}44, rgba(255,255,255,0.5))`,
-                      } : {}),
-                      ...(done ? { background: 'rgba(74,124,74,0.06)' } : {}),
-                      opacity: generatingRecipe && !isGenerating ? 0.5 : 1,
-                    }}
-                  >
-                    <button
-                      onClick={(e) => { e.stopPropagation(); toggleDone(meal) }}
-                      title={done ? 'Cuisiné — annuler' : 'Marquer cuisiné'}
-                      style={{
-                        width: 22, height: 22, borderRadius: 6, flexShrink: 0, padding: 0,
-                        border: `1.5px solid ${done ? '#16a34a' : '#cbd5c0'}`,
-                        background: done ? '#16a34a' : 'transparent',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                      }}
-                    >
-                      {done && <Check size={12} color="#fff" />}
-                    </button>
+                  <div key={i} style={{ ...S.meal, opacity: generatingRecipe && !isGenerating ? 0.5 : 1 }}>
+                    <span style={{ ...S.mealBar, background: MEAL_BAR[meal.type] || MEAL_BAR.diner }} />
+                    <span style={S.mealLabel}>{MEAL_LABELS[meal.type] || meal.type}</span>
                     <span
                       onClick={() => !generatingRecipe && handleMealClick(meal)}
-                      style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1, minWidth: 0, cursor: 'pointer' }}
+                      style={{ ...S.mealName, ...(done ? S.mealNameDone : {}), cursor: meal.dishName ? 'pointer' : 'default' }}
                     >
-                      <span style={{ ...S.mealType, background: colors.bg, color: colors.text }}>
-                        {MEAL_LABELS[meal.type] || meal.type}
-                      </span>
-                      <span style={{ ...S.mealDesc, ...(done ? { textDecoration: 'line-through', opacity: 0.55 } : {}) }}>
-                        {meal.dishName}
-                      </span>
-                      {isGenerating ? (
-                        <Loader2 size={14} style={{ animation: 'spin 1s linear infinite', flexShrink: 0, color: '#4a7c4a' }} />
-                      ) : (
-                        <span style={S.mealPersons}>{meal.persons.join('')}</span>
-                      )}
+                      {meal.dishName}
+                    </span>
+                    <span style={S.mealRight}>
+                      {isGenerating
+                        ? <Loader2 size={13} style={{ animation: 'spin 1s linear infinite', color: 'var(--ink-3)' }} />
+                        : <span style={S.mealW}>{meal.persons.join('·')}</span>}
+                      <button
+                        onClick={(e) => { e.stopPropagation(); toggleDone(meal) }}
+                        title={done ? 'Cuisiné — annuler' : 'Marquer cuisiné'}
+                        style={{ ...S.check, ...(done ? S.checkDone : {}) }}
+                      >
+                        {done && <Check size={11} color="#fff" />}
+                      </button>
                     </span>
                   </div>
                 )
@@ -495,64 +469,77 @@ const S = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 6,
   },
   dayLabel: {
-    fontFamily: "var(--font-editorial)",
-    fontSize: 15,
-    fontWeight: 600,
-    color: '#2d5a2d',
-    letterSpacing: 0.5,
-    margin: '12px 0 6px',
+    fontFamily: 'var(--font-mono)',
+    fontSize: 11,
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+    color: 'var(--ink-3)',
+    margin: '16px 0 2px',
   },
-  mealRow: {
+  meal: {
+    display: 'grid',
+    gridTemplateColumns: '8px 92px 1fr auto',
+    alignItems: 'center',
+    gap: 14,
+    padding: '15px 0',
+    borderBottom: '1px solid var(--line)',
+    transition: 'opacity 0.2s ease',
+  },
+  mealBar: {
+    display: 'block',
+    width: '100%',
+    height: 22,
+    borderRadius: 2,
+  },
+  mealLabel: {
+    fontFamily: 'var(--font-mono)',
+    fontSize: 11,
+    letterSpacing: '0.03em',
+    textTransform: 'uppercase',
+    color: 'var(--ink-3)',
+  },
+  mealName: {
+    fontFamily: 'var(--font-display)',
+    fontWeight: 500,
+    fontSize: 18,
+    lineHeight: 1.25,
+    color: 'var(--ink-1)',
+    minWidth: 0,
+  },
+  mealNameDone: {
+    textDecoration: 'line-through',
+    opacity: 0.5,
+  },
+  mealRight: {
     display: 'flex',
     alignItems: 'center',
     gap: 10,
-    width: '100%',
-    padding: '12px 14px',
-    border: '1px solid rgba(0, 0, 0, 0.05)',
-    borderRadius: 14,
-    background: 'var(--surface)',
-    backdropFilter: 'blur(6px)',
+    justifyContent: 'flex-end',
+  },
+  mealW: {
+    fontFamily: 'var(--font-mono)',
+    fontSize: 11,
+    color: 'var(--ink-3)',
+    whiteSpace: 'nowrap',
+  },
+  check: {
+    width: 18,
+    height: 18,
+    borderRadius: 4,
+    flexShrink: 0,
+    padding: 0,
+    border: '1.5px solid var(--line-strong)',
+    background: 'transparent',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     cursor: 'pointer',
-    fontFamily: "var(--font-text)",
-    textAlign: 'left',
-    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-    fontSize: 14,
-    color: 'var(--ink, #1f281f)',
-    marginBottom: 2,
   },
-  mealRowNext: {
-    borderWidth: '1.5px',
-    boxShadow: '0 2px 12px rgba(74, 124, 74, 0.08)',
-  },
-  mealType: {
-    fontSize: 10,
-    fontWeight: 700,
-    padding: '3px 10px',
-    borderRadius: 8,
-    textTransform: 'uppercase',
-    letterSpacing: 0.4,
-    flexShrink: 0,
-    minWidth: 56,
-    textAlign: 'center',
-    fontFamily: "var(--font-text)",
-  },
-  mealDesc: {
-    flex: 1,
-    wordBreak: 'break-word',
-    fontWeight: 500,
-  },
-  mealPersons: {
-    fontSize: 10,
-    fontWeight: 700,
-    color: '#4a7c4a',
-    background: 'rgba(74, 124, 74, 0.08)',
-    borderRadius: 6,
-    padding: '2px 6px',
-    flexShrink: 0,
-    fontFamily: "var(--font-text)",
+  checkDone: {
+    background: 'var(--brand)',
+    borderColor: 'var(--brand)',
   },
 
   // Overlay + Modal

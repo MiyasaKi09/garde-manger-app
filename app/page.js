@@ -30,12 +30,26 @@ const pickImportForToday = (imports) => {
   ) || imports[0];
 }
 
+// Registre garde-manger (ledger V21) — onglets + libellé d'état
+const STOCK_TABS = [
+  { key: 'all', label: 'Tout' },
+  { key: 'exp', label: 'Expirés' },
+  { key: 'soon', label: 'Bientôt' },
+  { key: 'ok', label: 'Bon état' },
+]
+const stockStatusLabel = (it) => {
+  if (it.status === 'exp') return 'Périmé'
+  if (it.status === 'soon') return it.days <= 0 ? "Aujourd'hui" : it.days === 1 ? 'Demain' : `J-${it.days}`
+  return it.days != null ? `${it.days} j` : '—'
+}
+
 export default function Home() {
   const router = useRouter()
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [latestImportId, setLatestImportId] = useState(null)
-  const [stockStats, setStockStats] = useState({ total: 0, expiring: 0, expired: 0, urgentItems: [] })
+  const [stockStats, setStockStats] = useState({ total: 0, expiring: 0, expired: 0, urgentItems: [], items: [] })
+  const [stockTab, setStockTab] = useState('all')
   const [nutritionToday, setNutritionToday] = useState({})
   const [goals, setGoals] = useState([])
   const [person, setPerson] = useState('')
@@ -71,24 +85,27 @@ export default function Home() {
     try {
       const { data } = await supabase
         .from('inventory_lots')
-        .select('id, qty_remaining, expiration_date, archetype:archetypes(name), canonical_food:canonical_foods(canonical_name), product:products(name)')
+        .select('id, qty_remaining, unit, storage_place, expiration_date, archetype:archetypes(name), canonical_food:canonical_foods(canonical_name), product:products(name)')
         .gt('qty_remaining', 0)
       if (!data) return
-      const urgent = []
+      const items = []
       let expiring = 0, expired = 0
       for (const lot of data) {
         const d = daysUntil(lot.expiration_date)
-        if (d === null) continue
-        if (d < 0) expired++
-        else if (d <= 3) expiring++
-        // « À consommer vite » : périmé, DLC (J-3) et DDM (J-7)
-        if (d <= 7) {
-          const name = lot.product?.name || lot.archetype?.name || lot.canonical_food?.canonical_name || `Lot #${lot.id}`
-          urgent.push({ id: lot.id, days: d, name })
+        if (d !== null) {
+          if (d < 0) expired++
+          else if (d <= 3) expiring++
         }
+        const name = lot.product?.name || lot.archetype?.name || lot.canonical_food?.canonical_name || `Lot #${lot.id}`
+        const status = d === null ? 'ok' : d < 0 ? 'exp' : d <= 3 ? 'soon' : 'ok'
+        const q = lot.qty_remaining != null ? +(+lot.qty_remaining).toFixed(2) : null
+        const qty = q != null ? `${q}${lot.unit ? ' ' + lot.unit : ''}` : ''
+        items.push({ id: lot.id, name, qty, location: lot.storage_place || '', days: d, status })
       }
-      urgent.sort((a, b) => a.days - b.days)
-      setStockStats({ total: data.length, expiring, expired, urgentItems: urgent.slice(0, 5) })
+      const rank = { exp: 0, soon: 1, ok: 2 }
+      items.sort((a, b) => (rank[a.status] - rank[b.status]) || ((a.days ?? 9999) - (b.days ?? 9999)))
+      const urgentItems = items.filter(i => i.status !== 'ok').slice(0, 5)
+      setStockStats({ total: data.length, expiring, expired, urgentItems, items })
     } catch {}
   }
 
@@ -156,6 +173,7 @@ export default function Home() {
   const dateCap = dateLabel.charAt(0).toUpperCase() + dateLabel.slice(1)
   const surveiller = stockStats.expiring + stockStats.expired
   const coursesLeft = shoppingStats.total > 0 ? shoppingStats.total - shoppingStats.checked : 0
+  const filteredStock = (stockStats.items || []).filter(it => stockTab === 'all' || it.status === stockTab).slice(0, 6)
 
   if (loading) return (
     <div className="v21-home" aria-busy="true" aria-label="Chargement de Myko">
@@ -205,24 +223,10 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* À SURVEILLER (anti-gaspi) */}
-        {stockStats.urgentItems.length > 0 && (
-          <section className="v21-block">
-            <div className="v21-bh"><span className="v21-bl">À surveiller</span><Link href="/pantry" className="v21-link">Garde-manger →</Link></div>
-            <div className="v21-urgent">
-              {stockStats.urgentItems.map((it) => (
-                <Link key={it.id} href="/pantry" className="v21-urgent-row">
-                  <span className="v21-urgent-name">{it.name}</span>
-                  <span className={`v21-urgent-tag ${it.days <= 0 ? 'exp' : 'soon'}`}>{it.days <= 0 ? 'périmé' : `J-${it.days}`}</span>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* REPAS + NUTRITION */}
+        {/* REPAS — aujourd'hui | COURSES + NUTRITION (deux colonnes V21) */}
         <div className="v21-cols">
-          <section className="v21-block">
+          {/* Colonne gauche — Repas */}
+          <section className="v21-col v21-col-main">
             <div className="v21-bh"><span className="v21-bl">Repas — aujourd'hui</span><Link href="/planning" className="v21-link">Semaine →</Link></div>
             {latestImportId ? (
               <TodayMeals importId={latestImportId} />
@@ -233,48 +237,95 @@ export default function Home() {
               </div>
             )}
           </section>
-          <section className="v21-block">
-            <div className="v21-bh"><span className="v21-bl">Nutrition</span><PersonSelector selected={person} onChange={setPerson} /></div>
-            {pg.target_calories ? (
-              <div className="v21-macros">
-                <NutritionBar label="kcal" value={pn.kcal} target={pg.target_calories} color="var(--brand)" />
-                <NutritionBar label="Prot" value={pn.protein_g} target={pg.target_protein_g} unit="g" color="#3b82f6" />
-                <NutritionBar label="Gluc" value={pn.carbs_g} target={pg.target_carbs_g} unit="g" color="#f59e0b" />
-                <NutritionBar label="Lip" value={pn.fat_g} target={pg.target_fat_g} unit="g" color="#ef4444" />
-              </div>
-            ) : pn.kcal > 0 ? (
-              <div>
-                <p className="v21-next" style={{ marginTop: 0 }}>Consommé aujourd'hui</p>
-                <p style={{ margin: '4px 0 12px', fontFamily: 'var(--font-display)', color: 'var(--ink-1)', fontSize: 18 }}>
-                  {Math.round(pn.kcal)} kcal · {Math.round(pn.protein_g)}g P · {Math.round(pn.carbs_g)}g G · {Math.round(pn.fat_g)}g L
-                </p>
-                <Link href="/nutrition/onboarding" className="v21-btn ghost"><Settings size={15} /> Définir des objectifs</Link>
-              </div>
-            ) : (
-              <Link href="/nutrition/onboarding" className="v21-btn ghost"><Settings size={15} /> Configurer mes objectifs</Link>
-            )}
+
+          {/* Colonne droite — Courses puis Nutrition */}
+          <section className="v21-col v21-col-side">
+            <div className="v21-sub">
+              <div className="v21-bh"><span className="v21-bl">Courses</span>{shoppingStats.total > 0 && <Link href="/courses" className="v21-link">Ouvrir →</Link>}</div>
+              {shoppingStats.total > 0 ? (
+                <>
+                  <div className="v21-bignum">{shoppingStats.checked} / {shoppingStats.total}</div>
+                  <div className="v21-prog"><div className="v21-prog-fill" style={{ width: `${(shoppingStats.checked / shoppingStats.total) * 100}%` }} /></div>
+                  {shoppingStats.uncheckedByCategory.length > 0 && (
+                    <div className="v21-cats">
+                      {shoppingStats.uncheckedByCategory.map(c => (
+                        <Link key={c.name} href="/courses" className="v21-cat">{c.name} · {c.count}</Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <Link href="/planning/assistant" className="v21-btn ghost"><Sparkles size={15} /> Créer une liste</Link>
+              )}
+            </div>
+
+            <div className="v21-sub v21-sub-divided">
+              <div className="v21-bh"><span className="v21-bl">Nutrition</span><PersonSelector selected={person} onChange={setPerson} /></div>
+              {pg.target_calories ? (
+                <div className="v21-macros">
+                  <NutritionBar label="kcal" value={pn.kcal} target={pg.target_calories} color="var(--brand)" />
+                  <NutritionBar label="Prot" value={pn.protein_g} target={pg.target_protein_g} unit="g" color="#3b82f6" />
+                  <NutritionBar label="Gluc" value={pn.carbs_g} target={pg.target_carbs_g} unit="g" color="#f59e0b" />
+                  <NutritionBar label="Lip" value={pn.fat_g} target={pg.target_fat_g} unit="g" color="#ef4444" />
+                </div>
+              ) : pn.kcal > 0 ? (
+                <div>
+                  <p className="v21-next" style={{ marginTop: 0 }}>Consommé aujourd'hui</p>
+                  <p style={{ margin: '4px 0 12px', fontFamily: 'var(--font-display)', color: 'var(--ink-1)', fontSize: 18 }}>
+                    {Math.round(pn.kcal)} kcal · {Math.round(pn.protein_g)}g P · {Math.round(pn.carbs_g)}g G · {Math.round(pn.fat_g)}g L
+                  </p>
+                  <Link href="/nutrition/onboarding" className="v21-btn ghost"><Settings size={15} /> Définir des objectifs</Link>
+                </div>
+              ) : (
+                <Link href="/nutrition/onboarding" className="v21-btn ghost"><Settings size={15} /> Configurer mes objectifs</Link>
+              )}
+            </div>
           </section>
         </div>
 
-        {/* COURSES */}
-        <section className="v21-block">
-          <div className="v21-bh"><span className="v21-bl">Courses</span>{shoppingStats.total > 0 && <Link href="/courses" className="v21-link">{coursesLeft} restants →</Link>}</div>
-          {shoppingStats.total > 0 ? (
+        {/* GARDE-MANGER — registre (ledger éditorial) */}
+        <section className="v21-ledger">
+          <div className="v21-ledger-h">
+            <h2 className="v21-ledger-title">Garde-manger</h2>
+            <span className="v21-ledger-c">{stockStats.total} produit{stockStats.total !== 1 ? 's' : ''} · {surveiller} à surveiller</span>
+          </div>
+          {stockStats.total > 0 ? (
             <>
-              <div className="v21-prog"><div className="v21-prog-fill" style={{ width: `${(shoppingStats.checked / shoppingStats.total) * 100}%` }} /></div>
-              {shoppingStats.uncheckedByCategory.length > 0 && (
-                <div className="v21-cats">
-                  {shoppingStats.uncheckedByCategory.map(c => (
-                    <Link key={c.name} href="/courses" className="v21-cat">{c.name} · {c.count}</Link>
+              <div className="v21-tabs" role="tablist" aria-label="Filtrer le garde-manger">
+                {STOCK_TABS.map(t => (
+                  <button
+                    key={t.key}
+                    role="tab"
+                    aria-selected={stockTab === t.key}
+                    className={`v21-tab ${stockTab === t.key ? 'on' : ''}`}
+                    onClick={() => setStockTab(t.key)}
+                  >{t.label}</button>
+                ))}
+              </div>
+              {filteredStock.length > 0 ? (
+                <div className="v21-its">
+                  {filteredStock.map(it => (
+                    <Link key={it.id} href="/pantry" className={`v21-it ${it.status}`}>
+                      <span className="v21-it-bar" aria-hidden="true" />
+                      <span className="v21-it-n">{it.name}</span>
+                      <span className="v21-it-q">{it.qty}</span>
+                      <span className="v21-it-lc">{it.location}</span>
+                      <span className="v21-it-st">{stockStatusLabel(it)}</span>
+                    </Link>
                   ))}
                 </div>
+              ) : (
+                <p className="v21-next">Rien dans cette catégorie.</p>
               )}
-              {shoppingStats.nextItems?.length > 0 && (
-                <p className="v21-next">À acheter : {shoppingStats.nextItems.join(' · ')}{coursesLeft > shoppingStats.nextItems.length ? '…' : ''}</p>
+              {(stockStats.items || []).length > filteredStock.length && (
+                <Link href="/pantry" className="v21-link v21-ledger-all">Tout le garde-manger →</Link>
               )}
             </>
           ) : (
-            <Link href="/planning/assistant" className="v21-btn ghost"><Sparkles size={15} /> Créer une liste</Link>
+            <div className="v21-empty" style={{ paddingTop: 18 }}>
+              <p>Ton garde-manger est vide.</p>
+              <button onClick={() => setShowAddForm(true)} className="v21-btn"><Plus size={15} /> Ajouter un produit</button>
+            </div>
           )}
         </section>
 

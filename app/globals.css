@@ -164,15 +164,11 @@ h3 {
    SYSTÈME MYCÉLIUM — Classes partagées (rollout sur toutes les pages)
    ===================================================================== */
 
-/* ── Voile papier (fond translucide laissant vivre le wallpaper) ── */
-.myko-canvas {
-  position: fixed; inset: 0; z-index: 0;
-  background: var(--paper);
-  opacity: 0.30;
-  pointer-events: none;
-  -webkit-mask-image: radial-gradient(120% 95% at 50% 0%, #000 55%, rgba(0,0,0,0.78) 100%);
-          mask-image: radial-gradient(120% 95% at 50% 0%, #000 55%, rgba(0,0,0,0.78) 100%);
-}
+/* ── Voile papier : SUPPRIMÉ (V21) ──
+   Le fond papier-peint est désormais discret (opacity .22, comme la maquette),
+   donc plus besoin d'un voile translucide plein écran par-dessus.
+   On neutralise la classe pour que les <div.myko-canvas> existants soient inertes. */
+.myko-canvas { display: none !important; }
 
 /* ── Conteneur de page générique ── */
 .myko-page-container {

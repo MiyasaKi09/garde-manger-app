@@ -913,7 +913,7 @@ export default function MatisseWallpaper() {
         width: '100%',
         height: `${initH}px`,
         zIndex: 0,
-        opacity: 0.5,
+        opacity: 0.22,
         pointerEvents: "none",
         overflow: "hidden",
       }}
