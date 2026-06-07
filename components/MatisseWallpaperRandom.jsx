@@ -9,23 +9,26 @@ const CONFIG = {
     olive: "var(--brand, #2f5d3a)",
     terra: "var(--accent, #de8a2c)",
     sable: "var(--sprout, #6fb05a)",
+    clay: "var(--terracotta, #c2613f)",
   },
   sizes: {
     olive: { min: 80, max: 130 },
     terra: { min: 70, max: 110 },
     sable: { min: 90, max: 150 },
+    clay: { min: 65, max: 105 },
   },
   sizesMobile: {
     olive: { min: 40, max: 65 },
     terra: { min: 35, max: 55 },
     sable: { min: 45, max: 70 },
+    clay: { min: 34, max: 52 },
   },
   coverage: {
-    min: 0.30,
-    max: 0.60,
+    min: 0.38,
+    max: 0.70,
     checkInterval: 2000,
   },
-  initialCount: 10,
+  initialCount: 13,
   minCells: 8,
   maxCells: 25,
   physics: {
@@ -764,7 +767,7 @@ export default function MatisseWallpaper() {
     // Initialize cells
     const bounds = { width: docW, height: docH };
     const cells = [];
-    const colors = ['olive', 'terra', 'sable'];
+    const colors = ['olive', 'terra', 'sable', 'clay'];
     const margin = 80;
     const placed = [];
 

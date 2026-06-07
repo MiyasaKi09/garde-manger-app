@@ -62,12 +62,12 @@
 .home-title {
   font-family: var(--font-display);
   font-optical-sizing: auto;
-  font-size: clamp(30px, 7vw, 40px);
-  font-weight: 600;
+  font-size: clamp(36px, 9vw, 52px);
+  font-weight: 700;
   color: var(--ink-1);
   margin: 0;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  line-height: 1;
+  letter-spacing: -0.03em;
 }
 .home-hero-sub {
   margin: 10px 0 0;
@@ -78,7 +78,7 @@
   line-height: 1.4;
   max-width: 34ch;
 }
-.home-hero-mark { width: 60px; height: 60px; flex-shrink: 0; align-self: center; }
+.home-hero-mark { width: 76px; height: 76px; flex-shrink: 0; align-self: center; }
 
 /* Cellules utilitaires */
 .home-cell-full { grid-column: 1 / -1; }
