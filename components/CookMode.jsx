@@ -105,7 +105,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
       }
       .cook-landing-scroll::-webkit-scrollbar { display: none; }
       .cook-landing-card {
-        background: #FFFDF7;
+        background: var(--surface);
         border-radius: 28px;
         box-shadow: 0 32px 80px rgba(24,28,22,0.35), 0 4px 16px rgba(24,28,22,0.15);
         padding: 40px 36px;
@@ -118,7 +118,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
       .cook-landing-card::-webkit-scrollbar-thumb { background: rgba(24,28,22,0.15); border-radius: 4px; }
       .cook-landing-close {
         position: absolute; top: 18px; right: 18px;
-        border: none; background: rgba(24,28,22,0.06); color: #8A8C7E;
+        border: none; background: rgba(24,28,22,0.06); color: var(--ink-3);
         cursor: pointer; padding: 8px; display: flex; border-radius: 50%;
         transition: background 0.15s;
       }
@@ -126,66 +126,66 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
       .cook-landing-title {
         font-family: var(--font-display);
         font-size: 30px; font-weight: 700;
-        color: #181C16; line-height: 1.15;
+        color: var(--ink-1); line-height: 1.15;
         letter-spacing: -0.02em; margin-bottom: 12px;
         padding-right: 40px;
       }
       .cook-landing-accent {
-        width: 36px; height: 3px; background: #2F5D3A;
+        width: 36px; height: 3px; background: var(--brand);
         border-radius: 2px; margin-bottom: 14px;
       }
       .cook-landing-desc {
         font-family: var(--font-editorial);
-        font-size: 17px; color: #4B4F45; line-height: 1.6;
+        font-size: 17px; color: var(--ink-2); line-height: 1.6;
         font-style: italic; margin-bottom: 16px;
       }
       .cook-meta-pill {
         display: inline-flex; align-items: center; gap: 6px;
-        background: #E7EEE4; color: #2F5D3A;
+        background: var(--brand-soft); color: var(--brand);
         border-radius: 999px; padding: 5px 14px;
         font-size: 13px; font-weight: 600; margin-bottom: 28px;
       }
       .cook-meta-sep { opacity: 0.5; }
       .cook-section-label {
         font-size: 10px; font-weight: 700; letter-spacing: 2px;
-        color: #8A8C7E; text-transform: uppercase;
-        border-left: 2px solid #2F5D3A; padding-left: 8px;
+        color: var(--ink-3); text-transform: uppercase;
+        border-left: 2px solid var(--brand); padding-left: 8px;
         margin-bottom: 14px; display: block;
       }
       .cook-nutrition-block {
-        background: #F3EFE4; border-radius: 18px;
+        background: var(--paper); border-radius: 18px;
         padding: 20px 22px; margin-bottom: 20px; text-align: left;
       }
       .cook-persons-grid { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start; }
       .cook-person-card {
         flex: 1; min-width: 170px;
-        background: #FFFDF7; border-radius: 14px;
+        background: var(--surface); border-radius: 14px;
         padding: 14px 16px; border: 1px solid rgba(24,28,22,0.07);
         box-shadow: 0 1px 4px rgba(24,28,22,0.04);
       }
       .cook-person-name {
         display: inline-block; font-size: 11px; font-weight: 700;
-        color: #2F5D3A; background: #E7EEE4;
+        color: var(--brand); background: var(--brand-soft);
         padding: 3px 10px; border-radius: 6px;
         text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 12px;
       }
       .cook-macros-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-      .cook-macro-value { font-size: 20px; font-weight: 700; color: #181C16; font-variant-numeric: tabular-nums; }
+      .cook-macro-value { font-size: 20px; font-weight: 700; color: var(--ink-1); font-variant-numeric: tabular-nums; }
       .cook-ingredients-block {
-        background: #F3EFE4; border-radius: 18px;
+        background: var(--paper); border-radius: 18px;
         padding: 20px 22px; margin-bottom: 28px; text-align: left;
       }
       .cook-ing-item {
         display: flex; align-items: baseline; gap: 8px;
-        font-size: 14px; color: #4B4F45; padding: 5px 0;
+        font-size: 14px; color: var(--ink-2); padding: 5px 0;
         border-bottom: 1px solid rgba(24,28,22,0.06);
       }
       .cook-ing-item:last-child { border-bottom: none; }
-      .cook-ing-dot { width: 6px; height: 6px; border-radius: 50%; background: #6FB05A; flex-shrink: 0; margin-top: 6px; }
-      .cook-ing-qty { font-weight: 700; color: #181C16; white-space: nowrap; }
+      .cook-ing-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sprout); flex-shrink: 0; margin-top: 6px; }
+      .cook-ing-qty { font-weight: 700; color: var(--ink-1); white-space: nowrap; }
       .cook-start-btn {
         width: 100%; padding: 17px; border: none; border-radius: 999px;
-        background: #2F5D3A; color: white;
+        background: var(--brand); color: white;
         font-size: 16px; font-weight: 700; cursor: pointer;
         font-family: inherit; letter-spacing: 0.03em;
         box-shadow: 0 6px 24px rgba(47,93,58,0.3);
@@ -196,10 +196,10 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
       /* ── Step & timer ── */
       .cook-step-content { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
-      .cook-step-card { max-width: 560px; width: 100%; background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; padding: 32px 28px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-      .cook-step-title { font-size: 24px; font-weight: 700; color: var(--ink, #1f281f); margin-bottom: 16px; line-height: 1.3; }
-      .cook-step-text { font-size: 16px; line-height: 1.7; color: #374151; margin: 0; }
-      .cook-timer-text { font-size: 48px; font-weight: 300; font-variant-numeric: tabular-nums; letter-spacing: 2px; color: var(--ink, #1f281f); }
+      .cook-step-card { max-width: 560px; width: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+      .cook-step-title { font-size: 24px; font-weight: 700; color: var(--ink, var(--ink-1)); margin-bottom: 16px; line-height: 1.3; }
+      .cook-step-text { font-size: 16px; line-height: 1.7; color: var(--ink-2); margin: 0; }
+      .cook-timer-text { font-size: 48px; font-weight: 300; font-variant-numeric: tabular-nums; letter-spacing: 2px; color: var(--ink, var(--ink-1)); }
       .cook-footer { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 16px 24px 28px; flex-shrink: 0; }
 
       @media (max-width: 768px) {
@@ -413,7 +413,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
           <div style={{ textAlign: 'center', maxWidth: 400 }}>
             <div style={{ fontSize: 56, marginBottom: 16 }}>👨‍🍳</div>
             <h2 style={{ ...S.stepTitle, marginBottom: 8 }}>Bon appétit !</h2>
-            <p style={{ color: '#9ca3af', marginBottom: 32 }}>
+            <p style={{ color: 'var(--ink-3)', marginBottom: 32 }}>
               Comment c'était ?
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 32 }}>
@@ -429,7 +429,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
                     opacity: star <= rating ? 1 : 0.3,
                     transition: 'opacity 0.15s, transform 0.15s',
                     transform: star <= rating ? 'scale(1.1)' : 'scale(1)',
-                    color: '#f59e0b',
+                    color: 'var(--accent)',
                   }}
                 >
                   ★
@@ -547,7 +547,7 @@ function Timer({ minutes }) {
     <div style={S.timerContainer}>
       <div style={S.timerDisplay}>
         <span className="cook-timer-text" style={{
-          color: remaining === 0 ? '#ef4444' : 'var(--ink, #1f281f)',
+          color: remaining === 0 ? 'var(--state-expired)' : 'var(--ink, var(--ink-1))',
         }}>
           {String(mins).padStart(2, '0')}:{String(secs).padStart(2, '0')}
         </span>
@@ -565,8 +565,8 @@ function Timer({ minutes }) {
             onClick={() => setRunning(!running)}
             style={{
               ...S.timerBtn,
-              background: running ? 'rgba(255,255,255,0.1)' : 'rgba(96,165,250,0.2)',
-              borderColor: running ? 'rgba(255,255,255,0.2)' : 'rgba(96,165,250,0.4)',
+              background: running ? 'var(--surface-soft)' : 'var(--accent-soft)',
+              borderColor: running ? 'var(--line)' : 'var(--accent)',
             }}
           >
             {running ? <Pause size={18} /> : <Play size={18} />}
@@ -622,11 +622,10 @@ function splitStepText(text) {
 
 // ── Unified glass-morphism styles ──
 
-const BG = 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 30%, #fefce8 100%)'
+const BG = 'linear-gradient(160deg, var(--surface-soft) 0%, var(--paper) 100%)'
 const GLASS = {
-  background: 'rgba(255,255,255,0.6)',
-  backdropFilter: 'blur(12px)',
-  border: '1px solid rgba(255,255,255,0.35)',
+  background: 'var(--surface)',
+  border: '1px solid var(--line)',
 }
 
 // Landing screen uses `styles.xxx`, steps/done use `S.xxx`
@@ -635,45 +634,45 @@ const styles = {
 
   // Nutrition section (inline styles still used for these)
   macroItem: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 },
-  macroLabel: { fontSize: 10, fontWeight: 600, color: '#8A8C7E', textTransform: 'uppercase', letterSpacing: 0.5 },
+  macroLabel: { fontSize: 10, fontWeight: 600, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: 0.5 },
   macroDivider: { width: 1, height: 24, background: 'rgba(24,28,22,0.1)', flexShrink: 0 },
-  personPortions: { fontSize: 12, color: '#6b7280', marginTop: 8, lineHeight: 1.4, textAlign: 'center' },
-  nutritionBadge: { fontSize: 10, color: '#2F5D3A', fontWeight: 600, textAlign: 'right', marginTop: 10, letterSpacing: 0.3, opacity: 0.7 },
+  personPortions: { fontSize: 12, color: 'var(--ink-3)', marginTop: 8, lineHeight: 1.4, textAlign: 'center' },
+  nutritionBadge: { fontSize: 10, color: 'var(--brand)', fontWeight: 600, textAlign: 'right', marginTop: 10, letterSpacing: 0.3, opacity: 0.7 },
 
   // Régénérer
   regenWrap: { marginTop: 16, display: 'flex', justifyContent: 'center' },
-  regenToggle: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 16px', border: 'none', background: 'none', color: '#6b7280', fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' },
+  regenToggle: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 16px', border: 'none', background: 'none', color: 'var(--ink-3)', fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' },
   regenPanel: { display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 360 },
-  regenInput: { width: '100%', padding: '12px 14px', border: '1px solid rgba(0,0,0,0.12)', borderRadius: 12, fontSize: 14, fontFamily: 'inherit', outline: 'none', background: 'rgba(255,255,255,0.8)', boxSizing: 'border-box' },
-  regenConfirm: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 0', border: 'none', borderRadius: 14, background: 'linear-gradient(135deg, #16a34a, #059669)', color: 'white', fontSize: 14, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' },
-  regenError: { color: '#dc2626', fontSize: 12, margin: 0, textAlign: 'center' },
-  regenCancel: { background: 'none', border: 'none', color: '#9ca3af', fontSize: 12, cursor: 'pointer', fontFamily: 'inherit', padding: '2px 0' },
-  regenDoneText: { fontSize: 13, color: '#16a34a', fontWeight: 600, textAlign: 'center', margin: 0, lineHeight: 1.5, maxWidth: 360 },
+  regenInput: { width: '100%', padding: '12px 14px', border: '1px solid rgba(0,0,0,0.12)', borderRadius: 12, fontSize: 14, fontFamily: 'inherit', outline: 'none', background: 'var(--surface)', boxSizing: 'border-box' },
+  regenConfirm: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 0', border: 'none', borderRadius: 14, background: 'linear-gradient(135deg, var(--brand), var(--brand))', color: 'white', fontSize: 14, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' },
+  regenError: { color: 'var(--state-expired)', fontSize: 12, margin: 0, textAlign: 'center' },
+  regenCancel: { background: 'none', border: 'none', color: 'var(--ink-3)', fontSize: 12, cursor: 'pointer', fontFamily: 'inherit', padding: '2px 0' },
+  regenDoneText: { fontSize: 13, color: 'var(--brand)', fontWeight: 600, textAlign: 'center', margin: 0, lineHeight: 1.5, maxWidth: 360 },
 }
 
 // Steps + Done screens (also glass-morphism)
 const S = {
   overlay: { position: 'fixed', inset: 0, background: BG, zIndex: 2000, display: 'flex', flexDirection: 'column', fontFamily: 'inherit' },
   header: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', flexShrink: 0 },
-  headerTitle: { fontSize: 14, fontWeight: 600, color: '#16a34a', fontFamily: "var(--font-editorial)", fontSize: 18 },
-  closeBtn: { border: 'none', background: 'rgba(0,0,0,0.05)', color: '#6b7280', cursor: 'pointer', padding: 8, display: 'flex', borderRadius: 10 },
+  headerTitle: { fontSize: 14, fontWeight: 600, color: 'var(--brand)', fontFamily: "var(--font-editorial)", fontSize: 18 },
+  closeBtn: { border: 'none', background: 'rgba(0,0,0,0.05)', color: 'var(--ink-3)', cursor: 'pointer', padding: 8, display: 'flex', borderRadius: 10 },
   content: { flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', overflowY: 'auto' },
   stepCard: { maxWidth: 560, width: '100%', ...GLASS, borderRadius: 20, padding: '32px 28px', textAlign: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' },
-  stepBadge: { fontSize: 11, fontWeight: 700, color: '#16a34a', background: 'rgba(22,163,74,0.08)', padding: '3px 10px', borderRadius: 8, display: 'inline-block', marginBottom: 16, textTransform: 'uppercase', letterSpacing: 0.5 },
-  stepTitle: { fontSize: 24, fontWeight: 700, color: 'var(--ink, #1f281f)', marginBottom: 16, lineHeight: 1.3 },
-  stepText: { fontSize: 16, lineHeight: 1.7, color: '#374151', margin: 0 },
+  stepBadge: { fontSize: 11, fontWeight: 700, color: 'var(--brand)', background: 'rgba(22,163,74,0.08)', padding: '3px 10px', borderRadius: 8, display: 'inline-block', marginBottom: 16, textTransform: 'uppercase', letterSpacing: 0.5 },
+  stepTitle: { fontSize: 24, fontWeight: 700, color: 'var(--ink, var(--ink-1))', marginBottom: 16, lineHeight: 1.3 },
+  stepText: { fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', margin: 0 },
   footer: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, padding: '16px 24px 28px', flexShrink: 0 },
-  navBtn: { border: '1px solid rgba(0,0,0,0.08)', background: 'rgba(255,255,255,0.6)', color: '#6b7280', cursor: 'pointer', padding: 12, display: 'flex', alignItems: 'center', borderRadius: 12 },
-  navBtnPrimary: { display: 'flex', alignItems: 'center', gap: 6, padding: '12px 24px', border: 'none', borderRadius: 14, background: 'linear-gradient(135deg, #16a34a, #059669)', color: 'white', fontSize: 15, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 14px rgba(22,163,74,0.25)' },
-  primaryBtn: { padding: '14px 48px', border: 'none', borderRadius: 16, background: 'linear-gradient(135deg, #16a34a, #059669)', color: 'white', fontSize: 16, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 14px rgba(22,163,74,0.3)' },
+  navBtn: { border: '1px solid rgba(0,0,0,0.08)', background: 'var(--surface)', color: 'var(--ink-3)', cursor: 'pointer', padding: 12, display: 'flex', alignItems: 'center', borderRadius: 12 },
+  navBtnPrimary: { display: 'flex', alignItems: 'center', gap: 6, padding: '12px 24px', border: 'none', borderRadius: 14, background: 'linear-gradient(135deg, var(--brand), var(--brand))', color: 'white', fontSize: 15, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 14px rgba(22,163,74,0.25)' },
+  primaryBtn: { padding: '14px 48px', border: 'none', borderRadius: 16, background: 'linear-gradient(135deg, var(--brand), var(--brand))', color: 'white', fontSize: 16, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 14px rgba(22,163,74,0.3)' },
 
   // Timer (adapted for light theme)
   timerContainer: { marginTop: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 },
   timerDisplay: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 },
-  timerText: { fontSize: 48, fontWeight: 300, fontVariantNumeric: 'tabular-nums', letterSpacing: 2, color: 'var(--ink, #1f281f)' },
-  timerLabel: { fontSize: 13, color: '#9ca3af' },
+  timerText: { fontSize: 48, fontWeight: 300, fontVariantNumeric: 'tabular-nums', letterSpacing: 2, color: 'var(--ink, var(--ink-1))' },
+  timerLabel: { fontSize: 13, color: 'var(--ink-3)' },
   timerActions: { display: 'flex', gap: 12 },
-  timerBtn: { display: 'flex', alignItems: 'center', gap: 8, padding: '10px 24px', border: '1px solid rgba(22,163,74,0.3)', borderRadius: 24, background: 'rgba(22,163,74,0.08)', color: '#16a34a', fontSize: 14, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' },
+  timerBtn: { display: 'flex', alignItems: 'center', gap: 8, padding: '10px 24px', border: '1px solid rgba(22,163,74,0.3)', borderRadius: 24, background: 'rgba(22,163,74,0.08)', color: 'var(--brand)', fontSize: 14, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' },
   progressBar: { width: 200, height: 3, borderRadius: 2, background: 'rgba(0,0,0,0.06)', overflow: 'hidden', marginTop: 4 },
-  progressFill: { height: '100%', background: '#16a34a', borderRadius: 2, transition: 'width 1s linear' },
+  progressFill: { height: '100%', background: 'var(--brand)', borderRadius: 2, transition: 'width 1s linear' },
 }
