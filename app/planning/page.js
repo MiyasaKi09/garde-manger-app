@@ -1,12 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { Sparkles, RefreshCw, X } from 'lucide-react'
-import WeeklyPlanView from './components/WeeklyPlanView'
-import DailyNutritionRecap from './components/DailyNutritionRecap'
+import { Sparkles, RefreshCw, X, Check } from 'lucide-react'
+import WeekGrid from './components/WeekGrid'
 
 export default function PlanningPage() {
   const router = useRouter()
@@ -57,7 +56,75 @@ export default function PlanningPage() {
   const latestImport = imports[0] || null
   const planningReady = !loading && importsLoaded
 
-  // ── Régénération ──
+  // ── Semaine affichée (lundi → dimanche, comme WeeklyPlanView) ──
+  const [weekOffset, setWeekOffset] = useState(0)
+
+  function getWeekDates(offset) {
+    const today = new Date()
+    const monday = new Date(today)
+    monday.setDate(today.getDate() - ((today.getDay() + 6) % 7) + offset * 7)
+    const days = []
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(monday)
+      d.setDate(monday.getDate() + i)
+      days.push(d)
+    }
+    return days
+  }
+
+  const fmt = d => d.toISOString().split('T')[0]
+  const weekDates = getWeekDates(weekOffset)
+  const weekStart = fmt(weekDates[0])
+  const weekEnd = fmt(weekDates[6])
+
+  // L'import qui COUVRE la semaine affichée (même règle que WeeklyPlanView).
+  const selectedImport =
+    imports.find(i => i.date_range_start === weekStart) ||
+    imports.find(i => i.date_range_start <= weekEnd && i.date_range_end >= weekStart) ||
+    null
+  const selectedImportId = selectedImport?.id || null
+
+  // ── Données de la semaine sélectionnée (un seul fetch + cache mémoire) ──
+  const detailCacheRef = useRef({}) // importId -> { meals, batchRecipes, prepTasks, shoppingItems }
+  const [weekData, setWeekData] = useState(null)
+  const [weekLoading, setWeekLoading] = useState(true)
+
+  useEffect(() => {
+    if (!selectedImportId) { setWeekData(null); setWeekLoading(false); return }
+    let cancelled = false
+    const cached = detailCacheRef.current[selectedImportId]
+    if (cached) { setWeekData(cached); setWeekLoading(false); return }
+    setWeekLoading(true)
+    ;(async () => {
+      try {
+        const res = await authFetch(`/api/planning/imports/${selectedImportId}`)
+        const data = await res.json()
+        const payload = {
+          meals: data.meals || [],
+          batchRecipes: data.batchRecipes || [],
+          prepTasks: data.prepTasks || [],
+          shoppingItems: data.shoppingItems || [],
+        }
+        detailCacheRef.current[selectedImportId] = payload
+        if (!cancelled) setWeekData(payload)
+      } catch (err) {
+        console.error('Erreur chargement semaine:', err)
+        if (!cancelled) setWeekData({ meals: [], batchRecipes: [], prepTasks: [], shoppingItems: [] })
+      } finally {
+        if (!cancelled) setWeekLoading(false)
+      }
+    })()
+    return () => { cancelled = true }
+  }, [selectedImportId])
+
+  const meals = weekData?.meals || []
+  const batchRecipes = weekData?.batchRecipes || []
+  const prepTasks = weekData?.prepTasks || []
+  const shoppingItems = weekData?.shoppingItems || []
+
+  const weekRangeLabel = `${weekDates[0].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })} – ${weekDates[6].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}`
+
+  // ── Régénération ── (flux conservé verbatim)
   const [regenOpen, setRegenOpen] = useState(false)
   const [regenMode, setRegenMode] = useState('week') // 'week' | 'days'
   const [regenDays, setRegenDays] = useState([])
@@ -136,6 +203,7 @@ export default function PlanningPage() {
         if (latest?.status === 'done') {
           setRegenStatus('done')
           setRegenOpen(false)
+          detailCacheRef.current = {} // invalide le cache : les repas ont changé
           await loadImports()
           return
         }
@@ -145,6 +213,7 @@ export default function PlanningPage() {
       }
       setRegenStatus('done')
       setRegenOpen(false)
+      detailCacheRef.current = {}
       await loadImports()
     } catch (err) {
       setRegenStatus('error')
@@ -152,30 +221,52 @@ export default function PlanningPage() {
     }
   }
 
+  function openRegen() {
+    setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMeals([]); setRegenInstructions(''); setRegenMode('week')
+  }
+
+  // ── Sessions de batch : regroupées par `timing` ──
+  const batchSessions = (() => {
+    if (!batchRecipes.length) return []
+    const groups = new Map()
+    for (const r of batchRecipes) {
+      const key = (r.timing && String(r.timing).trim()) || '__base__'
+      if (!groups.has(key)) groups.set(key, [])
+      groups.get(key).push(r)
+    }
+    return [...groups.entries()].map(([key, bases]) => {
+      const title = key === '__base__' ? 'Bases à préparer' : key
+      // Temps estimé : si une prepTask correspond au timing, on l'affiche.
+      const matchTask = prepTasks.find(t => (t.prep_label || '').trim() === key) ||
+        (key !== '__base__' ? prepTasks.find(t => key && (t.prep_label || '').toLowerCase().includes(String(key).toLowerCase())) : null)
+      return { key, title, bases, estimated: matchTask?.estimated_time || null }
+    })
+  })()
+
   return (
     <>
       <div className="v21-page wide">
         {/* ═══ HERO ÉDITORIAL ═══ */}
         <header className="v21-hero">
           <div className="v21-hero-text">
-            <span className="v21-eyebrow">Planning · réseau mycorhizien</span>
-            <h1 className="v21-title">Vos repas de la semaine.</h1>
+            <span className="v21-eyebrow">Planning</span>
+            <h1 className="v21-title">La semaine</h1>
             <div className="v21-rule" />
-            <p className="v21-lede">Planifiez, cuisinez, savourez — avec l'aide de Myko.</p>
+            <p className="v21-lede">Sept jours dressés comme une carte, pilotés d'un coup d'œil.</p>
           </div>
           <div className="v21-hero-side">
             <button className="v21-btn" onClick={() => router.push('/planning/assistant')}>
               <Sparkles size={15} /> Demander à Myko
             </button>
             {planningReady && imports.length > 0 && (
-              <button className="v21-btn ghost" onClick={() => { setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMeals([]); setRegenInstructions(''); setRegenMode('week') }}>
+              <button className="v21-btn ghost" onClick={openRegen}>
                 <RefreshCw size={14} /> Modifier
               </button>
             )}
           </div>
         </header>
 
-        {/* ═══ CONTENU : un seul état de chargement, pas de flash ═══ */}
+        {/* ═══ CONTENU ═══ */}
         {!planningReady ? (
           <section className="v21-section flush" aria-busy="true" aria-label="Chargement du planning">
             <div className="v21-skel" style={{ height: 44, marginBottom: 18 }} />
@@ -193,17 +284,84 @@ export default function PlanningPage() {
             </div>
           </section>
         ) : (
-          <>
-            <section className="v21-section">
-              <div className="v21-bh"><span className="v21-bl">Semaine</span></div>
-              <WeeklyPlanView imports={imports} />
-            </section>
+          /* ═══ LE COCKPIT : rail | grille ═══ */
+          <div className="ck-board">
+            {/* ─── RAIL GAUCHE : sessions de batch ─── */}
+            <aside className="ck-rail">
+              <div className="ck-railhead">
+                <span className="ck-rail-t">Sessions de batch</span>
+                <div className="ck-rail-title">Préparer la semaine</div>
+                <div className="ck-rail-cap">cuisinez en lots, mangez sans effort</div>
+              </div>
 
-            <section className="v21-section flush">
-              <div className="v21-bh"><span className="v21-bl">Nutrition — jour par jour</span></div>
-              <DailyNutritionRecap importId={latestImport.id} />
-            </section>
-          </>
+              {weekLoading ? (
+                <div className="ck-rail-body" aria-busy="true">
+                  <div className="v21-skel" style={{ height: 16, width: '60%', marginBottom: 14 }} />
+                  <div className="v21-skel" style={{ height: 13, width: '90%', marginBottom: 9 }} />
+                  <div className="v21-skel" style={{ height: 13, width: '80%', marginBottom: 9 }} />
+                  <div className="v21-skel" style={{ height: 13, width: '85%' }} />
+                </div>
+              ) : batchSessions.length ? (
+                <>
+                  {batchSessions.map(sess => (
+                    <div key={sess.key} className="ck-sess">
+                      <div className="ck-sess-h">
+                        <div className="ck-sess-nm">{sess.title}</div>
+                        <div className="ck-sess-meta">
+                          {sess.estimated ? `≈ ${sess.estimated} · ` : ''}
+                          {sess.bases.length} base{sess.bases.length > 1 ? 's' : ''}
+                        </div>
+                      </div>
+                      <div className="ck-bases">
+                        {sess.bases.map((b, i) => (
+                          <BaseRow key={`${sess.key}-${i}`} base={b} />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                  <a className="ck-courses" href="/courses" onClick={(e) => { e.preventDefault(); router.push('/courses') }}>
+                    Ouvrir la liste de courses · {shoppingItems.length} →
+                  </a>
+                </>
+              ) : (
+                /* État vide — aucune session de batch pour cette semaine */
+                <>
+                  <div className="ck-rail-empty">
+                    <p className="ck-empty-txt">Pas encore de sessions de batch pour cette semaine.</p>
+                    {selectedImportId && (
+                      <button
+                        className="ck-empty-link"
+                        onClick={() => router.push(`/planning/${selectedImportId}/batch`)}
+                      >
+                        Préparer un batch →
+                      </button>
+                    )}
+                  </div>
+                  <a className="ck-courses" href="/courses" onClick={(e) => { e.preventDefault(); router.push('/courses') }}>
+                    Ouvrir la liste de courses · {shoppingItems.length} →
+                  </a>
+                </>
+              )}
+            </aside>
+
+            {/* ─── GRILLE DROITE ─── */}
+            {weekLoading ? (
+              <section className="ck-grid-loading" aria-busy="true" aria-label="Chargement de la grille">
+                <div className="v21-skel" style={{ height: 44, marginBottom: 1, borderRadius: 0 }} />
+                {Array.from({ length: 7 }).map((_, i) => (
+                  <div key={i} className="v21-skel" style={{ height: 72, marginBottom: 1, borderRadius: 0 }} />
+                ))}
+              </section>
+            ) : (
+              <WeekGrid
+                meals={meals}
+                weekDates={weekDates}
+                weekOffset={weekOffset}
+                onPrevWeek={() => setWeekOffset(w => w - 1)}
+                onNextWeek={() => setWeekOffset(w => w + 1)}
+              />
+            )}
+          </div>
         )}
       </div>
 
@@ -328,6 +486,89 @@ export default function PlanningPage() {
       )}
 
       <style jsx>{`
+/* ═══════════════════════════════════════════════════════════════════════
+   COCKPIT — board (rail | grille), divisé par un filet sombre.
+   Réutilise les tokens v21 (papier, ink, filets, terracotta).
+   ═══════════════════════════════════════════════════════════════════════ */
+.ck-board {
+  display: grid; grid-template-columns: 340px 1fr;
+  border-top: 1px solid var(--ink-1);
+}
+.ck-rail { border-right: 1px solid var(--ink-1); min-width: 0; }
+
+/* En-tête du rail */
+.ck-railhead { padding: 30px 28px 22px; border-bottom: 1px solid var(--ink-1); }
+.ck-rail-t {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--ink-1); color: var(--paper); padding: 4px 9px; border-radius: 3px;
+}
+.ck-rail-title {
+  font-family: var(--font-display); font-weight: 600; font-size: 27px; letter-spacing: -0.02em; line-height: 1;
+  margin-top: 16px; color: var(--ink-1);
+}
+.ck-rail-cap { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.02em; margin-top: 8px; }
+
+/* Corps du rail (skeleton) */
+.ck-rail-body { padding: 24px 28px; }
+
+/* Une session de batch */
+.ck-sess { padding: 24px 28px 8px; border-bottom: 1px solid var(--ink-1); position: relative; }
+.ck-sess::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--ink-3); }
+.ck-sess-h { margin-bottom: 10px; }
+.ck-sess-nm { font-family: var(--font-display); font-weight: 600; font-size: 21px; letter-spacing: -0.01em; line-height: 1.08; color: var(--ink-1); }
+.ck-sess-meta { font-family: var(--font-mono); font-size: 11px; color: var(--terracotta); font-weight: 500; letter-spacing: 0.02em; margin-top: 5px; }
+
+/* Une base = case + nom + qty */
+.ck-bases { display: flex; flex-direction: column; }
+.ck-base { display: flex; align-items: flex-start; gap: 11px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+.ck-base:last-child { border-bottom: none; }
+.ck-ck {
+  flex: none; width: 15px; height: 15px; border: 1.5px solid var(--line-strong); border-radius: 3px;
+  margin-top: 2px; cursor: pointer; background: transparent; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.ck-ck:hover { border-color: var(--terracotta); }
+.ck-ck.on { background: var(--brand); border-color: var(--brand); }
+.ck-base-b { flex: 1; min-width: 0; }
+.ck-base-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.ck-base-nm { font-family: var(--font-display); font-weight: 500; font-size: 15.5px; line-height: 1.2; color: var(--ink-1); }
+.ck-base-q { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); font-weight: 500; white-space: nowrap; flex: none; }
+
+/* État vide du rail */
+.ck-rail-empty { padding: 26px 28px; }
+.ck-empty-txt { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); line-height: 1.6; letter-spacing: 0.01em; margin: 0 0 14px; }
+.ck-empty-link {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.02em; color: var(--terracotta);
+  background: transparent; border: none; padding: 0; cursor: pointer; text-decoration: none;
+}
+.ck-empty-link:hover { text-decoration: underline; }
+
+/* Lien courses (bas du rail) */
+.ck-courses {
+  display: block; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.02em;
+  color: var(--terracotta); text-decoration: none; padding: 20px 28px; cursor: pointer;
+  border-top: 1px solid var(--line);
+}
+.ck-courses:hover { text-decoration: underline; }
+
+/* Skeleton de la grille (panneau droit pendant le fetch) */
+.ck-grid-loading { min-width: 0; padding: 18px 42px; }
+
+.ck-empty-link:focus-visible, .ck-courses:focus-visible, .ck-ck:focus-visible {
+  outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px;
+}
+
+/* Responsive : le board s'empile (rail au-dessus) */
+@media (max-width: 880px) {
+  .ck-board { grid-template-columns: 1fr; }
+  .ck-rail { border-right: none; border-bottom: 1px solid var(--ink-1); }
+  .ck-railhead, .ck-sess, .ck-rail-empty, .ck-rail-body { padding-left: 22px; padding-right: 22px; }
+  .ck-courses { padding-left: 22px; padding-right: 22px; }
+  .ck-grid-loading { padding: 16px 22px; }
+}
+
 /* ── Modal régénération — V21 (papier, filets, rectangles) ── */
 .regen-overlay {
   position: fixed; inset: 0; z-index: 500;
@@ -438,5 +679,31 @@ export default function PlanningPage() {
 }
       `}</style>
     </>
+  )
+}
+
+/* ── Ligne de base avec case à cocher locale (état visuel) ── */
+function BaseRow({ base }) {
+  const [done, setDone] = useState(false)
+  const qty = (base.portions && String(base.portions).trim()) || (base.rendement && String(base.rendement).trim()) || ''
+  return (
+    <div className="ck-base">
+      <button
+        className={`ck-ck${done ? ' on' : ''}`}
+        onClick={() => setDone(d => !d)}
+        aria-pressed={done}
+        title={done ? 'Préparée' : 'À préparer'}
+      >
+        {done && <Check size={10} color="#fff" />}
+      </button>
+      <div className="ck-base-b">
+        <div className="ck-base-top">
+          <span className="ck-base-nm" style={done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined}>
+            {base.name || 'Base'}
+          </span>
+          {qty && <span className="ck-base-q">{qty}</span>}
+        </div>
+      </div>
+    </div>
   )
 }
