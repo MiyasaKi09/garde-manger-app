@@ -459,9 +459,10 @@ export default function PlanningPage() {
   padding: var(--s-7);
   text-align: center;
   color: var(--ink-3);
-  font-family: var(--font-text);
-  font-size: var(--fs-sm);
-  letter-spacing: 0.02em;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   animation: mykoPulse 1.4s var(--ease) infinite;
 }
 
@@ -616,8 +617,8 @@ export default function PlanningPage() {
 }
 .regen-mode-btn:hover { border-color: var(--brand); color: var(--brand); }
 .regen-mode-btn.active {
-  background: var(--brand-soft); border-color: var(--brand);
-  color: var(--brand);
+  background: var(--terracotta); border-color: var(--terracotta);
+  color: #fff;
 }
 
 .regen-days-grid {
@@ -633,19 +634,19 @@ export default function PlanningPage() {
 }
 .regen-day-btn:hover { border-color: var(--brand); }
 .regen-day-btn.active {
-  background: var(--brand-soft); border-color: var(--brand);
+  background: var(--terracotta); border-color: var(--terracotta);
 }
 .regen-day-name {
   font-size: 10px; font-weight: 700;
   letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--ink-3);
 }
-.regen-day-btn.active .regen-day-name { color: var(--brand); }
+.regen-day-btn.active .regen-day-name { color: #fff; }
 .regen-day-num {
   font-size: var(--fs-sm); font-weight: 700;
   color: var(--ink-1);
 }
-.regen-day-btn.active .regen-day-num { color: var(--brand); }
+.regen-day-btn.active .regen-day-num { color: #fff; }
 
 .regen-error {
   font-size: var(--fs-sm); color: #dc2626;
