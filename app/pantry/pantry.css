@@ -199,7 +199,7 @@
   gap: 10px;
   margin-bottom: 0.8rem;
   padding-bottom: 0.8rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid var(--line);
 }
 
 .product-emoji {
@@ -211,8 +211,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
+  background: var(--brand-soft);
+  border-radius: var(--r-sm);
 }
 
 .card-header-text {
@@ -285,21 +285,21 @@
 }
 
 .status-good {
-  background: var(--brand-soft);
-  border: 1px solid rgba(47, 93, 58, 0.3);
-  color: var(--brand);
+  background: var(--state-fresh-bg);
+  border: 1px solid rgba(53, 107, 43, 0.25);
+  color: var(--state-fresh);
 }
 
 .status-expiring {
-  background: var(--accent-soft);
-  border: 1px solid rgba(222, 138, 44, 0.3);
-  color: var(--accent);
+  background: var(--state-soon-bg);
+  border: 1px solid rgba(224, 169, 46, 0.35);
+  color: var(--state-soon);
 }
 
 .status-expired {
-  background: rgba(239, 83, 80, 0.15);
-  border: 1px solid rgba(239, 83, 80, 0.3);
-  color: #c62828;
+  background: var(--state-expired-bg);
+  border: 1px solid rgba(194, 97, 63, 0.35);
+  color: var(--state-expired);
 }
 
 /* Actions de la carte */
@@ -698,8 +698,8 @@
 }
 
 .stat-filter-btn.expired.active {
-  background: rgba(244, 67, 54, 0.1);
-  border-color: rgba(244, 67, 54, 0.5);
+  background: var(--state-expired-bg);
+  border-color: var(--state-expired);
 }
 
 .stat-filter-btn.expiring.active {
@@ -783,11 +783,25 @@
 .filter-count {
   margin-left: auto;
   padding: 4px 8px;
-  background: rgba(33, 150, 243, 0.1);
-  border: 1px solid rgba(33, 150, 243, 0.3);
+  background: var(--brand-soft);
+  border: 1px solid rgba(47, 93, 58, 0.25);
   border-radius: 6px;
   font-size: 11px;
   font-weight: 600;
-  color: #1565c0;
+  color: var(--brand);
   white-space: nowrap;
+}
+
+/* Accessibilité clavier */
+.stat-item:focus-visible,
+.stat-filter-btn:focus-visible,
+.sort-btn:focus-visible,
+.action-btn:focus-visible,
+.conversion-btn:focus-visible,
+.pantry-fab:focus-visible,
+.pantry-fab-secondary:focus-visible,
+.search-input:focus-visible,
+.filter-select:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
