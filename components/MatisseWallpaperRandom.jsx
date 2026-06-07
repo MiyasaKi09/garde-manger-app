@@ -24,11 +24,11 @@ const CONFIG = {
     clay: { min: 34, max: 52 },
   },
   coverage: {
-    min: 0.38,
-    max: 0.70,
+    min: 0.28,
+    max: 0.50,
     checkInterval: 2000,
   },
-  initialCount: 13,
+  initialCount: 10,
   minCells: 8,
   maxCells: 25,
   physics: {
@@ -913,6 +913,7 @@ export default function MatisseWallpaper() {
         width: '100%',
         height: `${initH}px`,
         zIndex: 0,
+        opacity: 0.5,
         pointerEvents: "none",
         overflow: "hidden",
       }}

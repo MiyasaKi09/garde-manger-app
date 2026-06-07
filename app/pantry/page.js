@@ -480,8 +480,7 @@ export default function PantryPage() {
         <div className="hero-header">
           <div className="hero-content">
             <div className="hero-text">
-              <span className="hero-eyebrow">Garde-Manger</span>
-              <h1 className="hero-title">Votre stock alimentaire</h1>
+              <h1 className="hero-title">Garde-manger</h1>
               <p className="hero-subtitle">{items.length} produit{items.length !== 1 ? 's' : ''} · {items.filter(i => { const d = i.expiration_date ? Math.ceil((new Date(i.expiration_date) - new Date()) / 86400000) : null; return d !== null && d <= 3; }).length} à surveiller</p>
             </div>
             <div className="hero-actions">

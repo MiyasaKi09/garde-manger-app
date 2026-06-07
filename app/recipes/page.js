@@ -305,9 +305,8 @@ export default function RecipesPage() {
         <div className="hero-header">
           <div className="hero-content">
             <div className="hero-text">
-              <span className="hero-eyebrow">Recettes</span>
-              <h1 className="hero-title">Mes recettes Myko</h1>
-              <p className="hero-subtitle">{recipes.length} recette{recipes.length !== 1 ? 's' : ''} disponible{recipes.length !== 1 ? 's' : ''}</p>
+              <h1 className="hero-title">Mes recettes</h1>
+              <p className="hero-subtitle">{recipes.length} disponibles</p>
             </div>
           </div>
         </div>
