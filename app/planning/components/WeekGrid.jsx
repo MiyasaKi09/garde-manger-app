@@ -41,6 +41,15 @@ function personInitial(name) {
   return name.trim().charAt(0).toUpperCase()
 }
 
+// Nom compact pour la grille : on coupe avant le premier séparateur de
+// composition (« & » / « , ») pour rester lisible dans une cellule étroite.
+function conciseDish(s) {
+  if (!s) return ''
+  let c = s.split(' & ')[0].split(/,\s/)[0].trim()
+  if (c.length > 42) c = c.slice(0, 40).trim() + '…'
+  return c
+}
+
 /**
  * La grille (cockpit, panneau droit). Table semaine type×jour.
  * Possède en interne le mode cuisine + l'état « cuisiné » (repris de WeeklyPlanView).
@@ -63,8 +72,9 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
 
   const recipeCacheRef = useRef({}) // description -> recipe | false | null
 
-  const todayStr = new Date().toISOString().split('T')[0]
-  const fmt = d => d.toISOString().split('T')[0]
+  // ⚠️ Date LOCALE (pas toISOString, qui repasse en UTC et décale -1 jour en UTC+).
+  const fmt = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+  const todayStr = fmt(new Date())
 
   // État « cuisiné » de la semaine affichée (depuis meal_log) — recharge au changement de semaine.
   useEffect(() => {
@@ -195,15 +205,19 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
 
     const descriptions = typeMeals.map(m => m.description)
     const julienRow = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-    const dishName = (julienRow?.short_label || '').trim() || extractDishName(descriptions)
+    const shortLabel = (julienRow?.short_label || '').trim()
+    const fullName = extractDishName(descriptions)
+    const dishName = shortLabel || conciseDish(fullName)
+    const fullTitle = shortLabel || fullName
     const isGenerating = generatingFor === dishName
     const clickable = type === 'dejeuner' || type === 'diner'
     const done = doneSet.has(`${typeMeals[0]?.meal_date}|${type}`)
     const dishStyle = done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined
 
-    // Tag convive : selon le filtre, J / Z / J·Z (personnes présentes).
+    // Tag convive : on n'affiche que les exceptions (un seul convive) en vue « Tous ».
     const initials = [...new Set(typeMeals.map(m => personInitial(m.person_name)).filter(Boolean))]
     const whoTag = initials.join('·')
+    const showWho = person === 'all' && whoTag && whoTag !== 'J·Z'
 
     return (
       <div
@@ -220,7 +234,7 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
             onFocus={() => prefetchRecipe(typeMeals)}
             disabled={!!generatingFor}
             className="wg-dish-btn"
-            title="Voir la recette"
+            title={fullTitle}
           >
             {isGenerating && (
               <Loader2 size={11} style={{ animation: 'wgspin 1s linear infinite', flexShrink: 0, color: 'var(--ink-3)' }} />
@@ -228,10 +242,10 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
             <span className="wg-dish" style={dishStyle}>{dishName}</span>
           </button>
         ) : (
-          <span className="wg-dish wg-dish-static" style={dishStyle}>{dishName}</span>
+          <span className="wg-dish wg-dish-static" style={dishStyle} title={fullTitle}>{dishName}</span>
         )}
         <span className="wg-cell-foot">
-          {whoTag && <span className="wg-who">{whoTag}</span>}
+          {showWho ? <span className="wg-who">{whoTag}</span> : <span aria-hidden="true" />}
           <button
             onClick={(e) => { e.stopPropagation(); toggleDone(typeMeals, type) }}
             title={done ? 'Cuisiné — annuler' : 'Marquer cuisiné'}
@@ -420,6 +434,7 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
 .wg-dish-btn {
   display: flex; align-items: flex-start; gap: 7px; text-align: left;
   border: none; background: transparent; padding: 0; margin: 0; cursor: pointer; min-width: 0;
+  appearance: none; -webkit-appearance: none; font: inherit; color: inherit; box-shadow: none;
 }
 .wg-dish-btn:disabled { cursor: default; }
 .wg-dish {
