@@ -6,7 +6,7 @@
    tokens sémantiques d'état (DLC/DDM).
 
    ⚠️ ADDITIF — n'écrase aucune variable existante de app/globals.css.
-   Les tokens legacy (forest-*/earth-*/mushroom) restent dans globals.css et
+   Les tokens legacy (forest, earth, mushroom) restent dans globals.css et
    seront remappés page par page en Phase 2 (les remapper globalement
    décalerait les couleurs des écrans non encore refondus).
    Source de vérité pour TOUT nouveau token de design → ce fichier.
