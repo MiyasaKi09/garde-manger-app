@@ -57,6 +57,10 @@
 .wg-alt { display: block; margin-top: 7px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.35; color: #7A5AA6; }
 .wg-alt .wg-alt-k { text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-right: 5px; }
 
+/* Étiquette « préparé · réchauffer » : déjeuner couvert par un batch (cuisiné d'avance) */
+.wg-batch { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #4f7d3f; }
+.wg-batch::before { content: ""; width: 6px; height: 6px; border-radius: 1px; background: #6FB05A; flex: none; }
+
 /* Coche « cuisiné » : discrète en coin, pleine au survol / si faite */
 .wg-check { position: absolute; top: 9px; right: 8px; width: 15px; height: 15px; border-radius: 3px; padding: 0; border: 1.5px solid var(--line-strong); background: var(--paper); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0.28; transition: opacity 0.15s ease, background 0.15s ease, border-color 0.15s ease; }
 .wg-cell:hover .wg-check { opacity: 1; }

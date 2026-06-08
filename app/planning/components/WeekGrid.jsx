@@ -175,6 +175,8 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
     const clickable = type === 'dejeuner' || type === 'diner'
     const done = doneSet.has(`${typeMeals[0]?.meal_date}|${type}`)
     const dishStyle = done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined
+    // Repas couvert par une préparation batch (déjeuners liés par la Routine) → réchauffe.
+    const batched = typeMeals.some(m => m.batch_recipe_id)
 
     // Plat spécial = déjeuner/dîner où les convives ont des plats DIFFÉRENTS
     // (le « carné pour Julien / végé pour Zoé » hebdomadaire). On compare les
@@ -200,6 +202,7 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
         ) : (
           <span className="wg-dish wg-dish-static" style={dishStyle} title={dishName}>{renderDishName(dishName)}</span>
         )}
+        {batched && <span className="wg-batch">préparé · réchauffer</span>}
         {isSpecial && person === 'all' && altMeal && (
           <span className="wg-alt"><span className="wg-alt-k">{altMeal.person_name}</span>{renderDishName(dishOf(altMeal))}</span>
         )}

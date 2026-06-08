@@ -133,6 +133,10 @@ export default function PlanningPage() {
   const [regenMeals, setRegenMeals] = useState([]) // [{date, type}]
   const [regenInstructions, setRegenInstructions] = useState('')
 
+  // ── Planification du batch (déclenche la Routine claude.ai « Batch déjeuners ») ──
+  const [batchStatus, setBatchStatus] = useState('idle') // idle | submitting | waiting | done | error
+  const [batchError, setBatchError] = useState('')
+
   const weekDaysFromImport = latestImport ? (() => {
     const days = []
     const start = new Date(latestImport.date_range_start)
@@ -225,21 +229,108 @@ export default function PlanningPage() {
     setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMeals([]); setRegenInstructions(''); setRegenMode('week')
   }
 
-  // ── Sessions de batch : regroupées par `timing` ──
+  // ── Déclenche la Routine batch, puis attend que les préparations (cook_date) apparaissent ──
+  async function planBatch() {
+    if (!selectedImportId || batchStatus === 'submitting' || batchStatus === 'waiting') return
+    setBatchStatus('submitting'); setBatchError('')
+    try {
+      const res = await authFetch('/api/routine/generate-batch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ importId: selectedImportId }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok && res.status !== 202) {
+        throw new Error(data.error || data.hint || `Erreur (${res.status})`)
+      }
+      setBatchStatus('waiting')
+
+      // Sonde l'import jusqu'à voir des préparations datées (cook_date) — signe que la Routine a écrit.
+      const MAX_WAIT = 6 * 60 * 1000
+      const POLL = 8000
+      const deadline = Date.now() + MAX_WAIT
+      while (Date.now() < deadline) {
+        await new Promise(r => setTimeout(r, POLL))
+        try {
+          const r2 = await authFetch(`/api/planning/imports/${selectedImportId}`)
+          const d2 = await r2.json().catch(() => ({}))
+          const fresh = d2.batchRecipes || []
+          if (fresh.some(b => b.cook_date)) {
+            const payload = {
+              meals: d2.meals || [],
+              batchRecipes: fresh,
+              prepTasks: d2.prepTasks || [],
+              shoppingItems: d2.shoppingItems || [],
+            }
+            detailCacheRef.current[selectedImportId] = payload
+            setWeekData(payload)
+            setBatchStatus('done')
+            return
+          }
+        } catch { /* on retente au prochain tick */ }
+      }
+      // Délai dépassé : on arrête le spinner, l'utilisateur pourra rafraîchir.
+      setBatchStatus('idle')
+    } catch (err) {
+      setBatchStatus('error'); setBatchError(err.message)
+    }
+  }
+
+  // ── Sessions de batch : une vraie « journée de cuisine » par cook_date ──
+  // Modèle « prépa à l'avance » : on cuisine tout en lots (le dimanche), on réchauffe
+  // chaque déjeuner de la semaine. Repli sur l'ancien regroupement par `timing`
+  // (durée) pour les imports legacy sans cook_date.
   const batchSessions = (() => {
     if (!batchRecipes.length) return []
+
+    // Jours (meal_date) couverts par chaque préparation, via repas → batch_recipe_id.
+    const coverByBatch = new Map() // batchId -> Set(meal_date)
+    for (const m of meals) {
+      if (!m.batch_recipe_id) continue
+      if (!coverByBatch.has(m.batch_recipe_id)) coverByBatch.set(m.batch_recipe_id, new Set())
+      coverByBatch.get(m.batch_recipe_id).add(m.meal_date)
+    }
+    const daysOf = (b) => [...(coverByBatch.get(b.id) || [])].sort().map(batchDayLabel)
+
+    if (batchRecipes.some(b => b.cook_date)) {
+      const groups = new Map()
+      for (const r of batchRecipes) {
+        const key = r.cook_date || '__base__'
+        if (!groups.has(key)) groups.set(key, [])
+        groups.get(key).push(r)
+      }
+      return [...groups.entries()]
+        .sort((a, b) => String(a[0]).localeCompare(String(b[0])))
+        .map(([key, bases]) => {
+          const cookDate = key === '__base__' ? null : key
+          const portions = bases.reduce((s, b) => s + (Number(b.portions_total) || 0), 0)
+          const covered = new Set()
+          for (const b of bases) (coverByBatch.get(b.id) || []).forEach(d => covered.add(d))
+          const matchTask = cookDate ? prepTasks.find(t => t.prep_date === cookDate) : null
+          return {
+            key,
+            title: cookDate ? `Cuisine du ${batchCookDateLabel(cookDate)}` : 'À préparer',
+            cookDate, bases, daysOf, portions, covers: covered.size,
+            estimated: matchTask?.estimated_time || null,
+          }
+        })
+    }
+
+    // ── Legacy : regroupé par `timing` (durée), sans lien repas. ──
     const groups = new Map()
     for (const r of batchRecipes) {
-      const key = (r.timing && String(r.timing).trim()) || '__base__'
-      if (!groups.has(key)) groups.set(key, [])
-      groups.get(key).push(r)
+      const k = (r.timing && String(r.timing).trim()) || '__base__'
+      if (!groups.has(k)) groups.set(k, [])
+      groups.get(k).push(r)
     }
-    return [...groups.entries()].map(([key, bases]) => {
-      const title = key === '__base__' ? 'Bases à préparer' : key
-      // Temps estimé : si une prepTask correspond au timing, on l'affiche.
-      const matchTask = prepTasks.find(t => (t.prep_label || '').trim() === key) ||
-        (key !== '__base__' ? prepTasks.find(t => key && (t.prep_label || '').toLowerCase().includes(String(key).toLowerCase())) : null)
-      return { key, title, bases, estimated: matchTask?.estimated_time || null }
+    return [...groups.entries()].map(([k, bases]) => {
+      const matchTask = prepTasks.find(t => (t.prep_label || '').trim() === k) ||
+        (k !== '__base__' ? prepTasks.find(t => k && (t.prep_label || '').toLowerCase().includes(String(k).toLowerCase())) : null)
+      return {
+        key: k, title: k === '__base__' ? 'Bases à préparer' : k,
+        cookDate: null, bases, daysOf: () => [], portions: 0, covers: 0,
+        estimated: matchTask?.estimated_time || null,
+      }
     })
   })()
 
@@ -292,6 +383,27 @@ export default function PlanningPage() {
                 <span className="ck-rail-t">Sessions de batch</span>
                 <div className="ck-rail-title">Préparer la semaine</div>
                 <div className="ck-rail-cap">cuisinez en lots, mangez sans effort</div>
+                {selectedImportId && (
+                  <button
+                    className="ck-plan-btn"
+                    onClick={planBatch}
+                    disabled={batchStatus === 'submitting' || batchStatus === 'waiting'}
+                  >
+                    {batchStatus === 'submitting' ? (
+                      <>Déclenchement…</>
+                    ) : batchStatus === 'waiting' ? (
+                      <><RefreshCw size={13} className="ck-spin" /> Myko prépare le batch…</>
+                    ) : batchSessions.length ? (
+                      <><RefreshCw size={13} /> Replanifier le batch</>
+                    ) : (
+                      <><Sparkles size={13} /> Planifier le batch</>
+                    )}
+                  </button>
+                )}
+                {batchStatus === 'waiting' && (
+                  <div className="ck-plan-hint">≈ 1–2 min · tu peux rester sur la page, ça s'affichera tout seul</div>
+                )}
+                {batchStatus === 'error' && <div className="ck-plan-err">{batchError}</div>}
               </div>
 
               {weekLoading ? (
@@ -309,14 +421,24 @@ export default function PlanningPage() {
                         <div className="ck-sess-nm">{sess.title}</div>
                         <div className="ck-sess-meta">
                           {sess.estimated ? `≈ ${sess.estimated} · ` : ''}
-                          {sess.bases.length} base{sess.bases.length > 1 ? 's' : ''}
+                          {sess.bases.length} plat{sess.bases.length > 1 ? 's' : ''}
+                          {sess.portions ? ` · ${sess.portions} portions` : ''}
+                          {sess.covers ? ` · couvre ${sess.covers} déjeuner${sess.covers > 1 ? 's' : ''}` : ''}
                         </div>
                       </div>
                       <div className="ck-bases">
                         {sess.bases.map((b, i) => (
-                          <BaseRow key={`${sess.key}-${i}`} base={b} />
+                          <BaseRow key={`${sess.key}-${i}`} base={b} days={sess.daysOf(b)} />
                         ))}
                       </div>
+                      {sess.cookDate && selectedImportId && (
+                        <button
+                          className="ck-sess-open"
+                          onClick={() => router.push(`/planning/${selectedImportId}/batch`)}
+                        >
+                          Ouvrir le jour de cuisine →
+                        </button>
+                      )}
                     </div>
                   ))}
                   <a className="ck-courses" href="/courses" onClick={(e) => { e.preventDefault(); router.push('/courses') }}>
@@ -327,15 +449,9 @@ export default function PlanningPage() {
                 /* État vide — aucune session de batch pour cette semaine */
                 <>
                   <div className="ck-rail-empty">
-                    <p className="ck-empty-txt">Pas encore de sessions de batch pour cette semaine.</p>
-                    {selectedImportId && (
-                      <button
-                        className="ck-empty-link"
-                        onClick={() => router.push(`/planning/${selectedImportId}/batch`)}
-                      >
-                        Préparer un batch →
-                      </button>
-                    )}
+                    <p className="ck-empty-txt">
+                      Pas encore de préparations pour cette semaine. Lance <b>« Planifier le batch »</b> ci-dessus : Myko regroupe tes déjeuners en lots à cuisiner d'avance, puis tu n'as plus qu'à réchauffer.
+                    </p>
                   </div>
                   <a className="ck-courses" href="/courses" onClick={(e) => { e.preventDefault(); router.push('/courses') }}>
                     Ouvrir la liste de courses · {shoppingItems.length} →
@@ -485,10 +601,12 @@ export default function PlanningPage() {
         </div>
       )}
 
-      <style jsx>{`
+      <style jsx global>{`
 /* ═══════════════════════════════════════════════════════════════════════
    COCKPIT — board (rail | grille), divisé par un filet sombre.
    Réutilise les tokens v21 (papier, ink, filets, terracotta).
+   global : BaseRow étant un composant séparé, ses classes (.ck-base…)
+   doivent rester non-scopées pour recevoir le style.
    ═══════════════════════════════════════════════════════════════════════ */
 .ck-board {
   display: grid; grid-template-columns: 340px 1fr;
@@ -508,6 +626,27 @@ export default function PlanningPage() {
   margin-top: 16px; color: var(--ink-1);
 }
 .ck-rail-cap { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.02em; margin-top: 8px; }
+
+/* Bouton « Planifier le batch » (déclenche la Routine) */
+.ck-plan-btn {
+  margin-top: 18px; width: 100%;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  background: var(--terracotta); color: #fff; border: none; border-radius: 3px;
+  padding: 11px 14px; cursor: pointer;
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+.ck-plan-btn:hover:not(:disabled) { filter: brightness(1.06); }
+.ck-plan-btn:disabled { opacity: 0.65; cursor: default; }
+.ck-plan-btn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.ck-spin { animation: ck-spin 0.9s linear infinite; }
+@keyframes ck-spin { to { transform: rotate(360deg); } }
+.ck-plan-hint { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3); letter-spacing: 0.01em; line-height: 1.5; margin-top: 10px; }
+.ck-plan-err {
+  font-family: var(--font-text); font-size: 12.5px; color: var(--state-expired);
+  background: var(--state-expired-bg); border: 1px solid var(--state-expired);
+  border-radius: 3px; padding: 8px 11px; margin-top: 10px; line-height: 1.45;
+}
 
 /* Corps du rail (skeleton) */
 .ck-rail-body { padding: 24px 28px; }
@@ -535,6 +674,16 @@ export default function PlanningPage() {
 .ck-base-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
 .ck-base-nm { font-family: var(--font-display); font-weight: 500; font-size: 15.5px; line-height: 1.2; color: var(--ink-1); }
 .ck-base-q { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); font-weight: 500; white-space: nowrap; flex: none; }
+.ck-base-cov { font-family: var(--font-mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.03em; margin-top: 4px; }
+
+/* Lien « Ouvrir le jour de cuisine » en pied de session */
+.ck-sess-open {
+  display: inline-block; margin: 4px 0 18px; padding: 0;
+  background: transparent; border: none; cursor: pointer;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; color: var(--terracotta);
+}
+.ck-sess-open:hover { text-decoration: underline; }
+.ck-sess-open:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px; }
 
 /* État vide du rail */
 .ck-rail-empty { padding: 26px 28px; }
@@ -682,10 +831,24 @@ export default function PlanningPage() {
   )
 }
 
-/* ── Ligne de base avec case à cocher locale (état visuel) ── */
-function BaseRow({ base }) {
+/* ── Libellés de date pour les sessions de batch ── */
+const BATCH_DOW = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
+function batchDayLabel(iso) {
+  const d = new Date(`${iso}T00:00:00`)
+  return Number.isNaN(d.getTime()) ? iso : BATCH_DOW[d.getDay()]
+}
+function batchCookDateLabel(iso) {
+  const d = new Date(`${iso}T00:00:00`)
+  if (Number.isNaN(d.getTime())) return iso
+  return d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
+}
+
+/* ── Ligne de préparation : case (visuelle) + nom + portions + jours couverts. ── */
+function BaseRow({ base, days = [] }) {
   const [done, setDone] = useState(false)
-  const qty = (base.portions && String(base.portions).trim()) || (base.rendement && String(base.rendement).trim()) || ''
+  const qty = base.portions_total
+    ? `${base.portions_total} portions`
+    : (base.portions && String(base.portions).trim()) || (base.rendement && String(base.rendement).trim()) || ''
   return (
     <div className="ck-base">
       <button
@@ -699,10 +862,11 @@ function BaseRow({ base }) {
       <div className="ck-base-b">
         <div className="ck-base-top">
           <span className="ck-base-nm" style={done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined}>
-            {base.name || 'Base'}
+            {base.name || 'Préparation'}
           </span>
           {qty && <span className="ck-base-q">{qty}</span>}
         </div>
+        {days.length > 0 && <div className="ck-base-cov">couvre {days.join(' · ')}</div>}
       </div>
     </div>
   )
