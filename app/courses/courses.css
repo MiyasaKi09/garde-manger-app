@@ -106,9 +106,10 @@
 .cou-card.done { opacity: 0.6; }
 
 .cou-card-top { position: relative; cursor: pointer; }
-.cou-card-thumb { height: 96px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.cou-card-img { width: 100%; height: 96px; object-fit: cover; display: block; }
+.cou-card-thumb { height: 110px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.cou-card-img { width: 100%; height: 110px; object-fit: cover; display: block; }
 .cou-card-mono { font-family: var(--font-display); font-weight: 600; font-size: 38px; line-height: 1; color: rgba(24,28,22,0.34); }
+.cou-card-emoji { font-size: 40px; line-height: 1; }
 .cou-card-chk {
   position: absolute; top: 8px; right: 8px;
   display: flex; align-items: center; justify-content: center; width: 22px; height: 22px;

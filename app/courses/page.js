@@ -4,8 +4,10 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { ShoppingCart, Check, Package, ChevronLeft, ChevronRight, RefreshCw, Camera } from 'lucide-react'
+import { ShoppingCart, Check, Package, ChevronLeft, ChevronRight, RefreshCw, ImageOff } from 'lucide-react'
 import Link from 'next/link'
+import { getFoodEmoji } from '@/lib/foodEmoji'
+import { ingredientImageUrl } from '@/lib/ingredientImage'
 import './courses.css'
 
 const RAYON_TINTS = ['#E4EBDC', '#F1E9D4', '#EFD9D0', '#E8E2D2', '#EADFCB', '#DEE7EC']
@@ -25,6 +27,7 @@ export default function CoursesPage() {
   const [fetchingImages, setFetchingImages] = useState(false)
   const [fetchResult, setFetchResult] = useState(null)
   const [rebuilding, setRebuilding] = useState(false)
+  const [imgErrors, setImgErrors] = useState(new Set()) // images cassées (404) → repli icône
 
   async function loadItems(imp) {
     setImportId(imp.id)
@@ -178,7 +181,7 @@ export default function CoursesPage() {
     }
   }
 
-  async function handleFetchImages(replace = false) {
+  async function handleClearImages() {
     if (!importId) return
     setFetchingImages(true)
     setFetchResult(null)
@@ -186,18 +189,16 @@ export default function CoursesPage() {
       const res = await authFetch('/api/courses/fetch-images', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ importId, replace }),
+        body: JSON.stringify({ importId, clear: true }),
       })
       const data = await res.json()
       if (data.error) {
         setFetchResult({ error: data.error })
       } else {
-        setFetchResult({ updated: data.updated, total: data.total, cleared: data.cleared })
-        if (data.updated > 0 || data.cleared > 0) {
-          const res2 = await authFetch(`/api/planning/imports/${importId}`)
-          const d2 = await res2.json()
-          setItems(d2.shoppingItems || [])
-        }
+        setFetchResult({ cleared: data.cleared, clearedOnly: true })
+        const res2 = await authFetch(`/api/planning/imports/${importId}`)
+        const d2 = await res2.json()
+        setItems(d2.shoppingItems || [])
       }
     } catch (err) {
       setFetchResult({ error: err.message })
@@ -256,7 +257,8 @@ export default function CoursesPage() {
   function renderCard(item, tint) {
     const isExpanded = expandedItems.has(item.id)
     const hasContainer = !!(item.container_qty && item.container_size)
-    const letter = (item.product_name || '?').trim().charAt(0).toUpperCase()
+    const tmdb = ingredientImageUrl(item.product_name)
+    const photo = imgErrors.has(item.id) ? null : (tmdb || item.image_url || null)
     return (
       <div key={item.id} className={`cou-card${item.checked ? ' done' : ''}`}>
         <div
@@ -269,12 +271,18 @@ export default function CoursesPage() {
           <span className={`cou-card-chk${item.checked ? ' on' : ''}`}>
             {item.checked && <Check size={12} color="#fff" />}
           </span>
-          <div className="cou-card-thumb" style={item.image_url ? undefined : { background: tint }}>
-            {item.image_url ? (
+          <div className="cou-card-thumb" style={photo ? undefined : { background: tint }}>
+            {photo ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={item.image_url} alt="" className="cou-card-img" loading="lazy" />
+              <img
+                src={photo}
+                alt=""
+                className="cou-card-img"
+                loading="lazy"
+                onError={() => setImgErrors(prev => new Set(prev).add(item.id))}
+              />
             ) : (
-              <span className="cou-card-mono">{letter}</span>
+              <span className="cou-card-emoji">{getFoodEmoji(item.product_name, item.category)}</span>
             )}
           </div>
         </div>
@@ -404,7 +412,9 @@ export default function CoursesPage() {
                   ? `${fetchResult.items} articles reliés au stock${fetchResult.inStock > 0 ? ` · ${fetchResult.inStock} déjà en stock` : ''}`
                   : `Liste recalculée — ${fetchResult.items} article${fetchResult.items > 1 ? 's' : ''}`)
                 + (fetchResult.recipesCreated > 0 ? ` · ${fetchResult.recipesCreated} recette(s) ajoutée(s)` : '')
-              : `${fetchResult.updated}/${fetchResult.total} photos${fetchResult.cleared ? ` · ${fetchResult.cleared} hors-sujet retirée${fetchResult.cleared > 1 ? 's' : ''}` : ''}`}
+              : fetchResult.clearedOnly
+                ? `${fetchResult.cleared || 0} ancienne${(fetchResult.cleared || 0) > 1 ? 's' : ''} image${(fetchResult.cleared || 0) > 1 ? 's' : ''} effacée${(fetchResult.cleared || 0) > 1 ? 's' : ''} — photos d'ingrédients rétablies`
+                : `${fetchResult.updated}/${fetchResult.total} photos`}
         </div>
       )}
 
@@ -503,13 +513,9 @@ export default function CoursesPage() {
               title="Synchroniser : créer les recettes du plan, relier les ingrédients, marquer ce que tu as déjà en stock">
               <RefreshCw size={13} /> {rebuilding ? 'Synchro…' : 'Synchroniser le stock'}
             </button>
-            <button onClick={() => handleFetchImages(false)} disabled={fetchingImages} className="cou-raction"
-              title="Récupère une photo (Open Food Facts) pour les articles qui n'en ont pas">
-              <Camera size={13} /> {fetchingImages ? 'Photos…' : 'Photos auto'}
-            </button>
-            <button onClick={() => handleFetchImages(true)} disabled={fetchingImages} className="cou-raction"
-              title="Re-télécharge toutes les photos depuis Open Food Facts et retire les images hors-sujet">
-              <RefreshCw size={13} /> {fetchingImages ? 'Photos…' : 'Corriger les photos'}
+            <button onClick={handleClearImages} disabled={fetchingImages} className="cou-raction"
+              title="Efface les anciennes images importées (Pexels / Open Food Facts) : chaque produit retrouve sa photo d'ingrédient">
+              <ImageOff size={13} /> {fetchingImages ? '…' : 'Réinitialiser les photos'}
             </button>
           </section>
         </aside>
