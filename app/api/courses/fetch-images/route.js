@@ -1,9 +1,13 @@
 import { authenticateRequest } from '@/lib/apiAuth'
 import { guessIngredient } from '@/lib/ingredientImage'
+import Anthropic from '@anthropic-ai/sdk'
 
-// Pexels (photo lifestyle, jolie) interrogé avec l'INGRÉDIENT ANGLAIS propre
-// (via le mapping FR→EN) au lieu du nom de produit brut → bon sujet + beau style.
+// Pexels (photo lifestyle) interrogé avec une requête INTELLIGENTE :
+// Claude génère, pour chaque produit FR, la meilleure requête anglaise
+// (ingrédient cru, pas un plat ; désambiguïsé). Repli sur le mapping local.
 export const maxDuration = 60
+
+const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
 function cleanName(name) {
   return (name || '')
@@ -13,10 +17,49 @@ function cleanName(name) {
     .trim()
 }
 
-// mots-modificateurs (pas le sujet), mots « contexte alimentaire » (+), mots hors-sujet (--)
-const MODIFIERS = new Set(['raw', 'fresh', 'meat', 'fillet', 'sliced', 'food', 'breast'])
-const GOOD = ['food', 'fresh', 'raw', 'meat', 'vegetable', 'fruit', 'ingredient', 'cooking', 'cuisine', 'dish', 'meal', 'plate', 'bowl', 'sliced', 'fillet', 'grilled', 'seafood', 'organic', 'closeup', 'close-up', 'cutting board', 'wooden']
-const BAD = ['mountain', 'landscape', 'scenery', 'skyline', 'cityscape', 'city', 'town', 'village', 'building', 'architecture', 'street', 'road', 'highway', 'beach', 'seaside', 'ocean', 'desert', 'flag', 'map', 'airport', 'aircraft', 'vehicle', 'portrait', 'selfie', 'woman', 'man', 'people', 'person', 'child', 'baby', 'crowd', 'grazing', 'pasture', 'barn', 'grass', 'meadow', 'field', 'farm', 'hen', 'rooster', 'chick ', 'sunset', 'sky']
+// ── Claude : produit FR → requête image anglaise précise ──
+async function smartQueries(productNames) {
+  if (!process.env.ANTHROPIC_API_KEY || !productNames.length) return {}
+  const list = productNames.map((n, i) => `${i + 1}. ${n}`).join('\n')
+  const prompt = `Tu aides à illustrer une liste de courses française avec de jolies photos.
+Pour CHAQUE produit ci-dessous, donne la meilleure REQUÊTE de recherche d'image en ANGLAIS (2 à 4 mots, minuscules) pour trouver une belle photo de CE produit/ingrédient tel qu'on l'achète au marché ou en magasin — l'ingrédient CRU/BRUT seul, JAMAIS un plat cuisiné, une recette ou une assiette dressée.
+
+Règles impératives :
+- ingrédient seul, pas un plat : « Parmesan AOP » → "parmesan cheese wedge" (PAS des pâtes) ; « Basilic » → "fresh basil leaves" (PAS un plat) ; « Crème fraîche épaisse » → "creme fraiche bowl".
+- désambiguïse : « dinde » → "raw turkey breast" (PAS le pays Turquie) ; « poulet » → "raw chicken breast" (PAS une poule vivante) ; « bœuf » → "raw beef steak".
+- spécificité utile : « Jambon de Bayonne » → "cured ham slices" ; « Mâche » → "lambs lettuce" ; « Champignons shiitaké » → "shiitake mushrooms".
+- produits transformés/conserves : illustre l'ingrédient principal cru (« Tomates concassées (boîte) » → "fresh tomatoes").
+
+Réponds UNIQUEMENT par un objet JSON, clés = numéros (en chaînes), valeurs = requêtes. Aucun autre texte.
+
+Produits :
+${list}`
+  try {
+    const msg = await anthropic.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 2000,
+      messages: [{ role: 'user', content: prompt }],
+    })
+    const text = (msg.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('')
+    const m = text.match(/\{[\s\S]*\}/)
+    if (!m) return {}
+    const obj = JSON.parse(m[0])
+    const out = {}
+    productNames.forEach((n, i) => {
+      const q = obj[String(i + 1)]
+      if (q && typeof q === 'string') out[n] = q.trim()
+    })
+    return out
+  } catch {
+    return {}
+  }
+}
+
+// ── Filtre de pertinence sur la description (alt) Pexels ──
+const MODIFIERS = new Set(['raw', 'fresh', 'meat', 'fillet', 'sliced', 'food', 'breast', 'whole', 'block', 'wedge', 'bunch', 'leaves'])
+const GOOD = ['food', 'fresh', 'raw', 'ingredient', 'vegetable', 'vegetables', 'fruit', 'fruits', 'organic', 'closeup', 'close-up', 'wooden', 'market', 'harvest', 'bunch', 'whole', 'isolated']
+const DISH = ['cooked', 'recipe', 'pasta', 'spaghetti', 'noodles', 'pizza', 'soup', 'stew', 'curry', 'sandwich', 'burger', 'cake', 'dessert', 'pancake', 'casserole', 'fried', 'lasagna', 'risotto', 'served', 'sauce on']
+const BAD = ['mountain', 'landscape', 'scenery', 'skyline', 'cityscape', 'city', 'town', 'village', 'building', 'architecture', 'street', 'road', 'highway', 'beach', 'seaside', 'ocean', 'desert', 'flag', 'map', 'airport', 'aircraft', 'vehicle', 'portrait', 'selfie', 'woman', 'man', 'people', 'person', 'child', 'baby', 'crowd', 'grazing', 'pasture', 'barn', 'meadow', 'farm', 'hen', 'rooster', 'sunset']
 
 function scoreAlt(alt, subjectTerms) {
   const a = (alt || '').toLowerCase()
@@ -24,6 +67,7 @@ function scoreAlt(alt, subjectTerms) {
   let s = 0
   for (const t of subjectTerms) if (a.includes(t)) s += 3
   for (const g of GOOD) if (a.includes(g)) s += 1
+  for (const d of DISH) if (a.includes(d)) s -= 3
   for (const b of BAD) if (a.includes(b)) s -= 5
   return s
 }
@@ -39,7 +83,6 @@ async function searchPexelsList(query, apiKey) {
     if (!res.ok) return []
     const data = await res.json()
     const photos = data.photos || []
-    // ne garde que les photos dont la description colle (score >= 1), triées par pertinence
     return photos
       .map((p) => ({ url: p.src?.large || p.src?.medium || p.src?.small || null, score: scoreAlt(p.alt, subjectTerms) }))
       .filter((x) => x.url && x.score >= 1)
@@ -90,7 +133,6 @@ export async function POST(req) {
     return Response.json({ error: 'Clé API Pexels manquante' }, { status: 400 })
   }
 
-  // mode "fill" : seulement les articles sans image. "replace" : tous (corrige l'existant).
   let q = supabase
     .from('nutrition_plan_shopping_items')
     .select('id, product_name, image_url')
@@ -101,13 +143,15 @@ export async function POST(req) {
   if (error) return Response.json({ error: error.message }, { status: 500 })
   if (!items?.length) return Response.json({ updated: 0, total: 0, cleared: 0, source: 'pexels' })
 
-  // 1 recherche par nom de produit unique ; requête = ingrédient EN propre
   const uniqueNames = [...new Set(items.map((i) => (i.product_name || '').trim()).filter(Boolean))]
-  // regroupe les produits par requête (ex. toutes les variétés de pomme de terre)
-  // pour leur donner des photos DIFFÉRENTES (sinon image identique partout)
+
+  // Claude génère les requêtes (intelligent) ; repli mapping local puis nom nettoyé
+  const claudeQ = await smartQueries(uniqueNames)
+
+  // regroupe par requête pour distribuer des photos DIFFÉRENTES aux produits identiques
   const byQuery = new Map()
   for (const name of uniqueNames) {
-    const query = guessIngredient(name) || cleanName(name)
+    const query = claudeQ[name] || guessIngredient(name) || cleanName(name)
     if (!byQuery.has(query)) byQuery.set(query, [])
     byQuery.get(query).push(name)
   }
@@ -150,5 +194,5 @@ export async function POST(req) {
     if (!clErr) cleared = clearIds.length
   }
 
-  return Response.json({ updated, total: items.length, cleared, source: 'pexels' })
+  return Response.json({ updated, total: items.length, cleared, source: 'pexels+claude' })
 }
