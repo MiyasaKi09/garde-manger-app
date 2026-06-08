@@ -19,6 +19,12 @@ const AJR = {
   potassium_mg: 2000, sodium_mg: 2400, phosphore_mg: 700,
 }
 
+// Micronutriments toujours affichés (à 0 % tant qu'il n'y a pas de données)
+const DEFAULT_MICROS = [
+  'fer_mg', 'calcium_mg', 'magnesium_mg', 'zinc_mg', 'vitamine_c_mg', 'vitamine_d_ug',
+  'vitamine_b12_ug', 'vitamine_b9_ug', 'potassium_mg', 'vitamine_a_ug', 'vitamine_b6_mg', 'selenium_ug',
+]
+
 const MEAL_LABELS = { pdj: 'Petit-déj', dejeuner: 'Déjeuner', diner: 'Dîner' }
 const mealLabel = (t) => MEAL_LABELS[t] || 'Collation'
 const MEAL_BAR = { pdj: '#D9A33A', dejeuner: '#6FB05A', diner: '#6E7A3F', collation: '#BB5836' }
@@ -189,7 +195,7 @@ export default function NutritionPage() {
   const dateLabel = isToday ? "Aujourd'hui" : displayDate.charAt(0).toUpperCase() + displayDate.slice(1)
 
   const latestWeight = weights[0]
-  const activeMicros = Object.entries(AJR).filter(([key]) => (microTotals[key] || 0) > 0)
+  const microKeys = [...new Set([...DEFAULT_MICROS, ...Object.keys(microTotals).filter(k => AJR[k])])]
 
   const sortedW = [...weights].filter(w => w.weight_kg != null).sort((a, b) => String(a.date).localeCompare(String(b.date)))
   const wDelta = sortedW.length >= 2 ? (sortedW[sortedW.length - 1].weight_kg - sortedW[0].weight_kg) : null
@@ -287,25 +293,22 @@ export default function NutritionPage() {
             {/* MICRONUTRIMENTS */}
             <div className="nut-msec">
               <div className="v21-bh"><span className="v21-bl">Micronutriments</span></div>
-              {activeMicros.length > 0 ? (
-                <div className="nut-micros">
-                  {activeMicros.map(([key, ajr]) => {
-                    const val = microTotals[key] || 0
-                    const pct = Math.round((val / ajr) * 100)
-                    const label = key.replace(/_/g, ' ').replace(/vitamine /g, 'Vit. ').replace(/ (mg|ug)$/g, '')
-                    const cls = pct >= 80 ? 'ok' : pct >= 50 ? 'mid' : 'low'
-                    return (
-                      <div key={key} className="nut-micro">
-                        <span className="nut-micro-l">{label}</span>
-                        <span className="nut-micro-v"><b>{pct}</b> %</span>
-                        <span className={`nut-micro-bar ${cls}`} />
-                      </div>
-                    )
-                  })}
-                </div>
-              ) : (
-                <p className="v21-next" style={{ marginTop: 0 }}>Pas de données de micronutriments pour ce jour — elles s'affichent dès que les repas en contiennent.</p>
-              )}
+              <div className="nut-micros">
+                {microKeys.map((key) => {
+                  const ajr = AJR[key] || 1
+                  const val = microTotals[key] || 0
+                  const pct = Math.round((val / ajr) * 100)
+                  const label = key.replace(/_/g, ' ').replace(/vitamine /g, 'Vit. ').replace(/ (mg|ug)$/g, '')
+                  const cls = pct >= 80 ? 'ok' : pct >= 50 ? 'mid' : 'low'
+                  return (
+                    <div key={key} className="nut-micro">
+                      <span className="nut-micro-l">{label}</span>
+                      <span className="nut-micro-v"><b>{pct}</b> %</span>
+                      <span className={`nut-micro-bar ${cls}`} />
+                    </div>
+                  )
+                })}
+              </div>
             </div>
 
             {/* POIDS — courbe */}
