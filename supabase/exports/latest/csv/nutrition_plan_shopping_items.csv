@@ -1634,6 +1634,19 @@ id,import_id,week_label,category,product_name,quantity,checked,canonical_food_id
 2653,26,Semaine du 18 au 24 mai,Boulangerie,Pain de seigle,1 pièce,f,,,,,,,
 2654,26,Semaine du 18 au 24 mai,Boulangerie,Pains à burger,2 pièces,f,,,,,,,
 2617,26,Semaine du 18 au 24 mai,Viandes,Poulet fermier (cuisses/découpe),"1,2 kg",f,,,,,,,
+3068,29,Semaine 08-14 juin,Herbes fraîches,Ciboulette,1 bouquet,f,2018,,,,,,https://images.pexels.com/photos/7682360/pexels-photo-7682360.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3076,29,Semaine 08-14 juin,Crémerie,Parmesan AOP,200 g,f,,273,,,,,https://images.pexels.com/photos/34037769/pexels-photo-34037769.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3084,29,Semaine 08-14 juin,Épicerie,Vin rouge (Pinot noir),75 cl,f,,332,,,,,https://images.pexels.com/photos/20714221/pexels-photo-20714221.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3100,29,Semaine 08-14 juin,Épicerie,Câpres,1 bocal,f,31,,,,,,https://images.pexels.com/photos/27650917/pexels-photo-27650917.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3102,29,Semaine 08-14 juin,Épicerie,Tahini (purée de sésame),200 g,f,25,,,,,,https://images.pexels.com/photos/4963954/pexels-photo-4963954.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3103,29,Semaine 08-14 juin,Épicerie,Pignons de pin,80 g,f,,,,,,,https://images.pexels.com/photos/11806634/pexels-photo-11806634.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3106,29,Semaine 08-14 juin,Épicerie,Graines de courge,100 g,f,2024,,,,,,https://images.pexels.com/photos/6316531/pexels-photo-6316531.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3107,29,Semaine 08-14 juin,Épicerie,Pâte de tofu fumé,300 g,f,20,,,,,,https://images.pexels.com/photos/546945/pexels-photo-546945.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3110,29,Semaine 08-14 juin,Épicerie,Sirop d'érable,25 cl,f,14002,,,,,,https://images.pexels.com/photos/33260/honey-sweet-syrup-organic.jpg?auto=compress&cs=tinysrgb&h=650&w=940
+3119,29,Semaine 08-14 juin,Épices,Ras-el-hanout,1 pot,f,37,,,,,,https://images.pexels.com/photos/4967736/pexels-photo-4967736.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3121,29,Semaine 08-14 juin,Épices,Piment d'Espelette,1 pot,f,2048,,,,,,https://images.pexels.com/photos/173880/pexels-photo-173880.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3123,29,Semaine 08-14 juin,Épices,Cannelle bâton,1 sachet,f,14012,,,,,,https://images.pexels.com/photos/8651023/pexels-photo-8651023.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3065,29,Semaine 08-14 juin,Herbes fraîches,Basilic,3 bouquets,f,1004,,,,,,https://images.pexels.com/photos/36430172/pexels-photo-36430172.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
 2716,27,Semaine du 25 au 31 mai,Viandes & poissons,Cuisses de poulet fermier (blanquette),600 g,f,,,,,,,
 2717,27,Semaine du 25 au 31 mai,Viandes & poissons,Cuisses de poulet (tajine),600 g,f,,,,,,,
 2718,27,Semaine du 25 au 31 mai,Viandes & poissons,Suprême de pintade,200 g (Julien),f,,,,,,,
@@ -1809,107 +1822,94 @@ id,import_id,week_label,category,product_name,quantity,checked,canonical_food_id
 2893,28,Semaine 23 — 1-7 juin 2026,Boulangerie,"Pain de campagne (croûtons, tartines)",1 grand pain,f,,,,,,,https://images.pexels.com/photos/5634637/pexels-photo-5634637.jpeg?auto=compress&cs=tinysrgb&h=130
 2844,28,Semaine 23 — 1-7 juin 2026,Fruits,Pommes Pink Lady / Gala,"1,8 kg (14 pièces)",t,,,,,,,https://images.pexels.com/photos/17975557/pexels-photo-17975557.jpeg?auto=compress&cs=tinysrgb&h=130
 2800,28,Semaine 23 — 1-7 juin 2026,Boucherie,Magret de canard,1 (~350 g),f,,,,,,,https://images.pexels.com/photos/4586810/pexels-photo-4586810.jpeg?auto=compress&cs=tinysrgb&h=130
-3022,29,Semaine 08-14 juin,Boucherie,Joues de bœuf,"1,2 kg",f,14011,,,,,,https://images.openfoodfacts.org/images/products/334/665/021/1142/front_fr.4.200.jpg
-3026,29,Semaine 08-14 juin,Boucherie,Escalopes de dinde,200 g,f,8009,,,,,,https://images.openfoodfacts.org/images/products/327/016/016/8125/front_fr.41.200.jpg
-3032,29,Semaine 08-14 juin,Fruits & légumes,Oignons grelots,300 g,f,2041,,,,,,https://images.openfoodfacts.org/images/products/336/177/010/0039/front_fr.4.200.jpg
-3034,29,Semaine 08-14 juin,Fruits & légumes,Pommes de terre nouvelles (rattes),800 g,f,1053,,,,,,https://images.openfoodfacts.org/images/products/356/007/080/5990/front_fr.55.200.jpg
-3027,29,Semaine 08-14 juin,Boucherie,Entrecôte de bœuf (épaisse),600 g,f,,346,,,,,https://images.openfoodfacts.org/images/products/405/648/913/7832/front_fr.3.200.jpg
-3031,29,Semaine 08-14 juin,Fruits & légumes,Champignons de Paris,500 g,f,3001,,,,,,https://images.openfoodfacts.org/images/products/348/740/000/6967/front_fr.27.200.jpg
-3033,29,Semaine 08-14 juin,Fruits & légumes,Pommes de terre Charlotte,"1,5 kg",f,1053,,,,,,https://images.openfoodfacts.org/images/products/376/001/456/0156/front_fr.10.200.jpg
-3036,29,Semaine 08-14 juin,Fruits & légumes,Carottes,1 kg,f,1005,,,,,,https://images.openfoodfacts.org/images/products/308/368/114/8619/front_fr.73.200.jpg
-3037,29,Semaine 08-14 juin,Fruits & légumes,Courgettes,"1,5 kg",f,2026,,,,,,https://images.openfoodfacts.org/images/products/308/368/109/4459/front_fr.64.200.jpg
-3039,29,Semaine 08-14 juin,Fruits & légumes,Petits pois frais,500 g,f,2047,,,,,,https://images.openfoodfacts.org/images/products/308/368/109/5319/front_fr.65.200.jpg
-3040,29,Semaine 08-14 juin,Fruits & légumes,Radis roses,2 bottes,f,1056,,,,,,https://images.openfoodfacts.org/images/products/341/102/180/5517/front_fr.14.200.jpg
-3023,29,Semaine 08-14 juin,Boucherie,Lardons fumés,150 g,f,,379,,,,,
-3035,29,Semaine 08-14 juin,Fruits & légumes,Pommes de terre Bintje (pour frites),1 kg,f,1053,,,,,,
-3038,29,Semaine 08-14 juin,Fruits & légumes,Fèves fraîches,500 g,f,2035,,,,,,
-3024,29,Semaine 08-14 juin,Boucherie,Poulet (cuisses désossées),900 g,f,2054,,,,,,
-3025,29,Semaine 08-14 juin,Boucherie,Jambon de Bayonne,120 g,f,,317,,,,,
-3028,29,Semaine 08-14 juin,Boucherie,Jambon de Paris (tranches),400 g,f,,317,,,,,
-3029,29,Semaine 08-14 juin,Poissonnerie,Dos de cabillaud,500 g,f,2004,,,,,,
-3030,29,Semaine 08-14 juin,Poissonnerie,Pavé de saumon frais,500 g,f,2062,,,,,,
-3042,29,Semaine 08-14 juin,Fruits & légumes,Oignons rouges,3 pièces,f,2041,,,,,,https://images.openfoodfacts.org/images/products/800/651/561/0330/front_fr.11.200.jpg
-3044,29,Semaine 08-14 juin,Fruits & légumes,Poivron rouge,3 pièces,f,1051,,,,,,https://images.openfoodfacts.org/images/products/345/630/001/4334/front_fr.34.200.jpg
-3047,29,Semaine 08-14 juin,Fruits & légumes,Tomates cerises,500 g,f,1008,,,,,,https://images.openfoodfacts.org/images/products/327/655/877/5128/front_fr.37.200.jpg
-3050,29,Semaine 08-14 juin,Fruits & légumes,Brocolis,500 g,f,2003,,,,,,https://images.openfoodfacts.org/images/products/330/274/048/3103/front_fr.670.200.jpg
-3058,29,Semaine 08-14 juin,Fruits & légumes,Champignons shiitaké,200 g,f,14015,,,,,,https://images.openfoodfacts.org/images/products/490/266/301/2467/front_fr.24.200.jpg
-3064,29,Semaine 08-14 juin,Fruits & légumes,Gingembre frais,100 g,f,10002,,,,,,https://images.openfoodfacts.org/images/products/317/568/125/7566/front_fr.57.200.jpg
-3077,29,Semaine 08-14 juin,Crémerie,Ricotta,250 g,f,,231,,,,,https://images.openfoodfacts.org/images/products/800/166/572/6580/front_fr.3.200.jpg
-3093,29,Semaine 08-14 juin,Épicerie,Farine T65,500 g,f,,312,,,,,https://images.openfoodfacts.org/images/products/376/004/979/0214/front_fr.266.200.jpg
-3095,29,Semaine 08-14 juin,Épicerie,Lait de coco,40 cl,f,,224,,,,,https://images.openfoodfacts.org/images/products/888/630/321/0238/front_fr.137.200.jpg
-3098,29,Semaine 08-14 juin,Épicerie,Vinaigre de cidre,25 cl,f,,529,,,,,https://images.openfoodfacts.org/images/products/303/681/023/0860/front_fr.67.200.jpg
-3104,29,Semaine 08-14 juin,Épicerie,Noix de Grenoble,150 g,f,47,,,,,,https://images.openfoodfacts.org/images/products/324/539/015/4378/front_fr.57.200.jpg
-3061,29,Semaine 08-14 juin,Fruits & légumes,Citrons jaunes,5 pièces,f,1015,,,,,,
-3071,29,Semaine 08-14 juin,Herbes fraîches,Menthe,1 bouquet,f,1037,,,,,,
-3082,29,Semaine 08-14 juin,Crémerie,Lait,1 L,f,7001,,,,,,
-3087,29,Semaine 08-14 juin,Épicerie,Riz basmati,500 g,f,4003,,,,,,
-3108,29,Semaine 08-14 juin,Épicerie,Sauce soja,25 cl,f,14033,,,,,,
-3049,29,Semaine 08-14 juin,Fruits & légumes,Betteraves crues,600 g,f,1012,,,,,,
-3052,29,Semaine 08-14 juin,Fruits & légumes,Chou vert,1 pièce,f,2015,,,,,,
-3114,29,Semaine 08-14 juin,Épicerie,Chocolat noir 70%,100 g,f,,308,,,,,https://images.openfoodfacts.org/images/products/322/982/010/0234/front_fr.246.200.jpg
-3048,29,Semaine 08-14 juin,Fruits & légumes,Tomates concassées (boîte 400g),3 boîtes,f,1059,,,,,,https://images.openfoodfacts.org/images/products/800/511/017/0300/front_fr.87.200.jpg
-3065,29,Semaine 08-14 juin,Herbes fraîches,Basilic,3 bouquets,f,1004,,,,,,https://images.openfoodfacts.org/images/products/303/835/419/9603/front_fr.291.200.jpg
-3084,29,Semaine 08-14 juin,Épicerie,Vin rouge (Pinot noir),75 cl,f,,332,,,,,https://images.openfoodfacts.org/images/products/314/859/201/0513/front_fr.24.200.jpg
-3100,29,Semaine 08-14 juin,Épicerie,Câpres,1 bocal,f,31,,,,,,https://images.openfoodfacts.org/images/products/802/968/902/5755/front_fr.3.200.jpg
-3102,29,Semaine 08-14 juin,Épicerie,Tahini (purée de sésame),200 g,f,25,,,,,,https://images.openfoodfacts.org/images/products/400/091/510/2871/front_fr.62.200.jpg
-3103,29,Semaine 08-14 juin,Épicerie,Pignons de pin,80 g,f,,,,,,,https://images.openfoodfacts.org/images/products/000/002/009/0074/front_fr.56.200.jpg
-3106,29,Semaine 08-14 juin,Épicerie,Graines de courge,100 g,f,2024,,,,,,https://images.openfoodfacts.org/images/products/356/470/711/9221/front_fr.79.200.jpg
-3107,29,Semaine 08-14 juin,Épicerie,Pâte de tofu fumé,300 g,f,20,,,,,,https://images.openfoodfacts.org/images/products/376/024/295/1016/front_fr.3.200.jpg
-3110,29,Semaine 08-14 juin,Épicerie,Sirop d'érable,25 cl,f,14002,,,,,,https://images.openfoodfacts.org/images/products/308/854/250/0285/front_fr.281.200.jpg
-3119,29,Semaine 08-14 juin,Épices,Ras-el-hanout,1 pot,f,37,,,,,,https://images.openfoodfacts.org/images/products/316/629/621/2224/front_fr.22.200.jpg
-3121,29,Semaine 08-14 juin,Épices,Piment d'Espelette,1 pot,f,2048,,,,,,https://images.openfoodfacts.org/images/products/308/368/105/9793/front_fr.71.200.jpg
-3123,29,Semaine 08-14 juin,Épices,Cannelle bâton,1 sachet,f,14012,,,,,,https://images.openfoodfacts.org/images/products/316/205/004/0058/front_fr.11.200.jpg
-3081,29,Semaine 08-14 juin,Crémerie,Yaourt grec nature,400 g,f,,208,,,,,
-3041,29,Semaine 08-14 juin,Fruits & légumes,Oignons jaunes,5 pièces,f,2041,,,,,,https://images.openfoodfacts.org/images/products/000/004/089/1040/front_fr.7.200.jpg
-3066,29,Semaine 08-14 juin,Herbes fraîches,Coriandre,2 bouquets,f,1018,,,,,,https://images.openfoodfacts.org/images/products/329/207/000/6571/front_fr.51.200.jpg
-3097,29,Semaine 08-14 juin,Épicerie,Graisse de canard,250 g,f,2005,,,,,,
-3078,29,Semaine 08-14 juin,Crémerie,Emmental râpé,150 g,f,,272,,,,,https://images.openfoodfacts.org/images/products/322/802/117/0046/front_fr.154.200.jpg
-3099,29,Semaine 08-14 juin,Épicerie,Vinaigre balsamique,25 cl,f,14032,,,,,,https://images.openfoodfacts.org/images/products/872/270/019/7508/front_fr.130.200.jpg
-3116,29,Semaine 08-14 juin,Épices,Cumin en poudre,1 pot,f,14017,,,,,,https://images.openfoodfacts.org/images/products/358/028/181/9227/front_fr.4.200.jpg
-3120,29,Semaine 08-14 juin,Épices,Safran (filaments),1 dose,f,10006,,,,,,https://images.openfoodfacts.org/images/products/611/102/610/2945/front_fr.11.200.jpg
-3046,29,Semaine 08-14 juin,Fruits & légumes,Tomates anciennes,800 g,f,1059,,,,,,https://images.openfoodfacts.org/images/products/505/951/272/5159/front_en.3.200.jpg
-3051,29,Semaine 08-14 juin,Fruits & légumes,Navets nouveaux,400 g,f,1041,,,,,,https://images.openfoodfacts.org/images/products/376/024/554/0538/front_fr.4.200.jpg
-3053,29,Semaine 08-14 juin,Fruits & légumes,Fenouil,3 bulbes,f,2034,,,,,,
-3062,29,Semaine 08-14 juin,Fruits & légumes,Citrons verts,3 pièces,f,1016,,,,,,https://images.openfoodfacts.org/images/products/312/448/018/5235/front_fr.80.200.jpg
-3068,29,Semaine 08-14 juin,Herbes fraîches,Ciboulette,1 bouquet,f,2018,,,,,,https://images.openfoodfacts.org/images/products/328/178/089/4950/front_fr.18.200.jpg
-3076,29,Semaine 08-14 juin,Crémerie,Parmesan AOP,200 g,f,,273,,,,,https://images.openfoodfacts.org/images/products/324/883/000/1614/front_fr.64.200.jpg
-3043,29,Semaine 08-14 juin,Fruits & légumes,Ail,2 têtes,f,10001,,,,,,
-3045,29,Semaine 08-14 juin,Fruits & légumes,Poivron vert,2 pièces,f,1051,,,,,,
-3060,29,Semaine 08-14 juin,Fruits & légumes,Pommes Granny Smith,6 pièces,f,1052,,,,,,
-3072,29,Semaine 08-14 juin,Herbes fraîches,Basilic thaï,1 bouquet,f,1004,,,,,,
-3075,29,Semaine 08-14 juin,Crémerie,Beurre doux,500 g,f,,204,,,,,
-3079,29,Semaine 08-14 juin,Crémerie,Mozzarella,125 g,f,,320,,,,,
-3122,29,Semaine 08-14 juin,Épices,Anis étoilé (badiane),1 sachet,f,,,,,,,
-3125,29,Semaine 08-14 juin,Boulangerie,Pain au levain,1 pain,f,,321,,,,,
-3083,29,Semaine 08-14 juin,Crémerie,Crème fraîche épaisse,20 cl,f,,198,,,,,https://images.openfoodfacts.org/images/products/315/525/120/5388/front_fr.374.200.jpg
-3088,29,Semaine 08-14 juin,Épicerie,Lentilles corail,250 g,f,5005,,,,,,https://images.openfoodfacts.org/images/products/317/568/110/4112/front_fr.80.200.jpg
-3094,29,Semaine 08-14 juin,Épicerie,Vermicelles de riz,250 g,f,4003,,,,,,
-3090,29,Semaine 08-14 juin,Épicerie,Quinoa,250 g,f,4002,,,,,,https://images.openfoodfacts.org/images/products/376/004/979/8029/front_fr.130.200.jpg
-3086,29,Semaine 08-14 juin,Épicerie,Semoule moyenne (couscous),400 g,f,17,,,,,,
-3092,29,Semaine 08-14 juin,Épicerie,Farine de sarrasin,300 g,f,4004,,,,,,
-3096,29,Semaine 08-14 juin,Épicerie,Huile d'olive vierge extra,50 cl,f,14030,,,,,,
-3070,29,Semaine 08-14 juin,Herbes fraîches,Thym,1 bouquet,f,1058,,,,,,https://images.openfoodfacts.org/images/products/342/215/000/0100/front_fr.66.200.jpg
-3111,29,Semaine 08-14 juin,Épicerie,Moutarde de Dijon,1 pot,f,10003,,,,,,https://images.openfoodfacts.org/images/products/327/019/012/1909/front_fr.78.200.jpg
-3124,29,Semaine 08-14 juin,Boulangerie,Pain de seigle,1 pain,f,,321,,,,,https://images.openfoodfacts.org/images/products/356/007/087/9762/front_fr.50.200.jpg
-3055,29,Semaine 08-14 juin,Fruits & légumes,Salade verte (laitue),2 pièces,f,1031,,,,,,https://images.openfoodfacts.org/images/products/356/470/030/1456/front_fr.112.200.jpg
-3057,29,Semaine 08-14 juin,Fruits & légumes,Pousses (épinards/salade) -- attention pas d'épinards,150 g,f,1020,,,,,,
-3063,29,Semaine 08-14 juin,Fruits & légumes,Fruits de saison (fraises/pêches),1 kg,f,1048,,,,,,
-3067,29,Semaine 08-14 juin,Herbes fraîches,Persil plat,1 bouquet,f,1049,,,,,,
-3085,29,Semaine 08-14 juin,Épicerie,Semoule de blé dur (gnocchi romana),250 g,f,17,,,,,,
-3089,29,Semaine 08-14 juin,Épicerie,Pois chiches cuits (bocal),3 bocaux (720 g),f,5008,,,,,,https://images.openfoodfacts.org/images/products/560/367/001/1519/front_fr.18.200.jpg
-3112,29,Semaine 08-14 juin,Épicerie,Harissa douce,1 tube,f,36,,,,,,
-3054,29,Semaine 08-14 juin,Fruits & légumes,Mâche,200 g,f,1033,,,,,,https://images.openfoodfacts.org/images/products/328/022/089/2006/front_fr.82.200.jpg
-3069,29,Semaine 08-14 juin,Herbes fraîches,Sauge,1 bouquet,f,2061,,,,,,https://images.openfoodfacts.org/images/products/376/002/050/2669/front_fr.40.200.jpg
-3073,29,Semaine 08-14 juin,Crémerie,Skyr nature (gros pots 450g),"5 pots (env. 2,5 kg)",f,,212,,,,,https://images.openfoodfacts.org/images/products/332/977/007/7003/front_fr.98.200.jpg
-3080,29,Semaine 08-14 juin,Crémerie,Chèvre frais (bûche),200 g,f,49,,,,,,https://images.openfoodfacts.org/images/products/327/277/001/6131/front_fr.21.200.jpg
-3118,29,Semaine 08-14 juin,Épices,Paprika fumé,1 pot,f,,474,,,,,https://images.openfoodfacts.org/images/products/316/629/620/8869/front_fr.53.200.jpg
-3105,29,Semaine 08-14 juin,Épicerie,Amandes natures,200 g,f,11001,,,,,,https://images.openfoodfacts.org/images/products/541/118/811/8961/front_fr.195.200.jpg
-3117,29,Semaine 08-14 juin,Épices,Cardamome,1 pot,f,6001,,,,,,https://images.openfoodfacts.org/images/products/376/025/346/0491/front_fr.32.200.jpg
-3059,29,Semaine 08-14 juin,Fruits & légumes,Pak-choï,3 pièces,f,2044,,,,,,https://images.openfoodfacts.org/images/products/506/019/853/0210/front_fr.12.200.jpg
-3091,29,Semaine 08-14 juin,Épicerie,Flocons d'avoine,200 g,f,,314,,,,,https://images.openfoodfacts.org/images/products/322/982/001/9307/front_fr.300.200.jpg
-3101,29,Semaine 08-14 juin,Épicerie,Olives Taggiasche,150 g,f,11007,,,,,,https://images.openfoodfacts.org/images/products/800/837/800/1508/front_fr.11.200.jpg
-3109,29,Semaine 08-14 juin,Épicerie,Miel de châtaignier,1 pot,f,14001,,,,,,https://images.openfoodfacts.org/images/products/359/671/048/8834/front_fr.47.200.jpg
-3113,29,Semaine 08-14 juin,Épicerie,Pesto au basilic (ou maison),1 pot,f,1004,,,,,,https://images.openfoodfacts.org/images/products/303/835/419/9603/front_fr.291.200.jpg
-3115,29,Semaine 08-14 juin,Épices,Curcuma en poudre,1 pot,f,6003,,,,,,https://images.openfoodfacts.org/images/products/501/768/900/4217/front_en.3.200.jpg
-3056,29,Semaine 08-14 juin,Fruits & légumes,Roquette,150 g,f,2058,,,,,,
-3074,29,Semaine 08-14 juin,Crémerie,Œufs,24 pièces (2 boîtes de 12),f,2040,,,,,,
+3030,29,Semaine 08-14 juin,Poissonnerie,Pavé de saumon frais,500 g,f,2062,,,,,,https://images.pexels.com/photos/34079758/pexels-photo-34079758.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3031,29,Semaine 08-14 juin,Fruits & légumes,Champignons de Paris,500 g,f,3001,,,,,,https://images.pexels.com/photos/9875872/pexels-photo-9875872.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3032,29,Semaine 08-14 juin,Fruits & légumes,Oignons grelots,300 g,f,2041,,,,,,https://images.pexels.com/photos/17140078/pexels-photo-17140078.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3033,29,Semaine 08-14 juin,Fruits & légumes,Pommes de terre Charlotte,"1,5 kg",f,1053,,,,,,https://images.pexels.com/photos/5960/healthy-wood-red-apple.jpg?auto=compress&cs=tinysrgb&h=650&w=940
+3034,29,Semaine 08-14 juin,Fruits & légumes,Pommes de terre nouvelles (rattes),800 g,f,1053,,,,,,https://images.pexels.com/photos/5960/healthy-wood-red-apple.jpg?auto=compress&cs=tinysrgb&h=650&w=940
+3035,29,Semaine 08-14 juin,Fruits & légumes,Pommes de terre Bintje (pour frites),1 kg,f,1053,,,,,,https://images.pexels.com/photos/5960/healthy-wood-red-apple.jpg?auto=compress&cs=tinysrgb&h=650&w=940
+3036,29,Semaine 08-14 juin,Fruits & légumes,Carottes,1 kg,f,1005,,,,,,https://images.pexels.com/photos/33383280/pexels-photo-33383280.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3022,29,Semaine 08-14 juin,Boucherie,Joues de bœuf,"1,2 kg",f,14011,,,,,,https://images.pexels.com/photos/6545671/pexels-photo-6545671.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3027,29,Semaine 08-14 juin,Boucherie,Entrecôte de bœuf (épaisse),600 g,f,,346,,,,,https://images.pexels.com/photos/6545671/pexels-photo-6545671.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3023,29,Semaine 08-14 juin,Boucherie,Lardons fumés,150 g,f,,379,,,,,https://images.pexels.com/photos/8522778/pexels-photo-8522778.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3024,29,Semaine 08-14 juin,Boucherie,Poulet (cuisses désossées),900 g,f,2054,,,,,,https://images.pexels.com/photos/36660076/pexels-photo-36660076.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3025,29,Semaine 08-14 juin,Boucherie,Jambon de Bayonne,120 g,f,,317,,,,,https://images.pexels.com/photos/37589473/pexels-photo-37589473.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3026,29,Semaine 08-14 juin,Boucherie,Escalopes de dinde,200 g,f,8009,,,,,,https://images.pexels.com/photos/37759093/pexels-photo-37759093.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3028,29,Semaine 08-14 juin,Boucherie,Jambon de Paris (tranches),400 g,f,,317,,,,,https://images.pexels.com/photos/6660292/pexels-photo-6660292.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3029,29,Semaine 08-14 juin,Poissonnerie,Dos de cabillaud,500 g,f,2004,,,,,,https://images.pexels.com/photos/8351639/pexels-photo-8351639.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3037,29,Semaine 08-14 juin,Fruits & légumes,Courgettes,"1,5 kg",f,2026,,,,,,https://images.pexels.com/photos/237635/pexels-photo-237635.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3038,29,Semaine 08-14 juin,Fruits & légumes,Fèves fraîches,500 g,f,2035,,,,,,https://images.pexels.com/photos/30688215/pexels-photo-30688215.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3039,29,Semaine 08-14 juin,Fruits & légumes,Petits pois frais,500 g,f,2047,,,,,,https://images.pexels.com/photos/5125097/pexels-photo-5125097.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3040,29,Semaine 08-14 juin,Fruits & légumes,Radis roses,2 bottes,f,1056,,,,,,https://images.pexels.com/photos/33653559/pexels-photo-33653559.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3082,29,Semaine 08-14 juin,Crémerie,Lait,1 L,f,7001,,,,,,https://images.pexels.com/photos/33789451/pexels-photo-33789451.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3095,29,Semaine 08-14 juin,Épicerie,Lait de coco,40 cl,f,,224,,,,,https://images.pexels.com/photos/33789451/pexels-photo-33789451.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3087,29,Semaine 08-14 juin,Épicerie,Riz basmati,500 g,f,4003,,,,,,https://images.pexels.com/photos/6544376/pexels-photo-6544376.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3093,29,Semaine 08-14 juin,Épicerie,Farine T65,500 g,f,,312,,,,,https://images.pexels.com/photos/1047326/pexels-photo-1047326.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3098,29,Semaine 08-14 juin,Épicerie,Vinaigre de cidre,25 cl,f,,529,,,,,https://images.pexels.com/photos/5223214/pexels-photo-5223214.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3104,29,Semaine 08-14 juin,Épicerie,Noix de Grenoble,150 g,f,47,,,,,,https://images.pexels.com/photos/1489291/pexels-photo-1489291.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3108,29,Semaine 08-14 juin,Épicerie,Sauce soja,25 cl,f,14033,,,,,,https://images.pexels.com/photos/29021368/pexels-photo-29021368.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3058,29,Semaine 08-14 juin,Fruits & légumes,Champignons shiitaké,200 g,f,14015,,,,,,https://images.pexels.com/photos/9875872/pexels-photo-9875872.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3042,29,Semaine 08-14 juin,Fruits & légumes,Oignons rouges,3 pièces,f,2041,,,,,,https://images.pexels.com/photos/17140078/pexels-photo-17140078.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3044,29,Semaine 08-14 juin,Fruits & légumes,Poivron rouge,3 pièces,f,1051,,,,,,https://images.pexels.com/photos/15747862/pexels-photo-15747862.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3047,29,Semaine 08-14 juin,Fruits & légumes,Tomates cerises,500 g,f,1008,,,,,,https://images.pexels.com/photos/36094858/pexels-photo-36094858.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3049,29,Semaine 08-14 juin,Fruits & légumes,Betteraves crues,600 g,f,1012,,,,,,https://images.pexels.com/photos/5758605/pexels-photo-5758605.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3050,29,Semaine 08-14 juin,Fruits & légumes,Brocolis,500 g,f,2003,,,,,,https://images.pexels.com/photos/5719937/pexels-photo-5719937.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3052,29,Semaine 08-14 juin,Fruits & légumes,Chou vert,1 pièce,f,2015,,,,,,https://images.pexels.com/photos/34973888/pexels-photo-34973888.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3061,29,Semaine 08-14 juin,Fruits & légumes,Citrons jaunes,5 pièces,f,1015,,,,,,https://images.pexels.com/photos/35926707/pexels-photo-35926707.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3064,29,Semaine 08-14 juin,Fruits & légumes,Gingembre frais,100 g,f,10002,,,,,,https://images.pexels.com/photos/10112136/pexels-photo-10112136.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3071,29,Semaine 08-14 juin,Herbes fraîches,Menthe,1 bouquet,f,1037,,,,,,https://images.pexels.com/photos/34056409/pexels-photo-34056409.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3077,29,Semaine 08-14 juin,Crémerie,Ricotta,250 g,f,,231,,,,,https://images.pexels.com/photos/8109320/pexels-photo-8109320.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3072,29,Semaine 08-14 juin,Herbes fraîches,Basilic thaï,1 bouquet,f,1004,,,,,,https://images.pexels.com/photos/36430172/pexels-photo-36430172.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3041,29,Semaine 08-14 juin,Fruits & légumes,Oignons jaunes,5 pièces,f,2041,,,,,,https://images.pexels.com/photos/17140078/pexels-photo-17140078.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3060,29,Semaine 08-14 juin,Fruits & légumes,Pommes Granny Smith,6 pièces,f,1052,,,,,,https://images.pexels.com/photos/5960/healthy-wood-red-apple.jpg?auto=compress&cs=tinysrgb&h=650&w=940
+3046,29,Semaine 08-14 juin,Fruits & légumes,Tomates anciennes,800 g,f,1059,,,,,,https://images.pexels.com/photos/36094858/pexels-photo-36094858.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3048,29,Semaine 08-14 juin,Fruits & légumes,Tomates concassées (boîte 400g),3 boîtes,f,1059,,,,,,https://images.pexels.com/photos/36094858/pexels-photo-36094858.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3062,29,Semaine 08-14 juin,Fruits & légumes,Citrons verts,3 pièces,f,1016,,,,,,https://images.pexels.com/photos/35926707/pexels-photo-35926707.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3099,29,Semaine 08-14 juin,Épicerie,Vinaigre balsamique,25 cl,f,14032,,,,,,https://images.pexels.com/photos/5223214/pexels-photo-5223214.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3045,29,Semaine 08-14 juin,Fruits & légumes,Poivron vert,2 pièces,f,1051,,,,,,https://images.pexels.com/photos/10899475/pexels-photo-10899475.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3066,29,Semaine 08-14 juin,Herbes fraîches,Coriandre,2 bouquets,f,1018,,,,,,https://images.pexels.com/photos/10487771/pexels-photo-10487771.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3078,29,Semaine 08-14 juin,Crémerie,Emmental râpé,150 g,f,,272,,,,,https://images.pexels.com/photos/543733/pexels-photo-543733.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3114,29,Semaine 08-14 juin,Épicerie,Chocolat noir 70%,100 g,f,,308,,,,,https://images.pexels.com/photos/8927931/pexels-photo-8927931.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3116,29,Semaine 08-14 juin,Épices,Cumin en poudre,1 pot,f,14017,,,,,,https://images.pexels.com/photos/10487762/pexels-photo-10487762.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3120,29,Semaine 08-14 juin,Épices,Safran (filaments),1 dose,f,10006,,,,,,https://images.pexels.com/photos/14262714/pexels-photo-14262714.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3079,29,Semaine 08-14 juin,Crémerie,Mozzarella,125 g,f,,320,,,,,https://images.pexels.com/photos/6142468/pexels-photo-6142468.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3122,29,Semaine 08-14 juin,Épices,Anis étoilé (badiane),1 sachet,f,,,,,,,https://images.pexels.com/photos/5769698/pexels-photo-5769698.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3125,29,Semaine 08-14 juin,Boulangerie,Pain au levain,1 pain,f,,321,,,,,https://images.pexels.com/photos/6195/bread-food-baking-homemade.jpg?auto=compress&cs=tinysrgb&h=650&w=940
+3043,29,Semaine 08-14 juin,Fruits & légumes,Ail,2 têtes,f,10001,,,,,,https://images.pexels.com/photos/6576763/pexels-photo-6576763.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3051,29,Semaine 08-14 juin,Fruits & légumes,Navets nouveaux,400 g,f,1041,,,,,,https://images.pexels.com/photos/29181514/pexels-photo-29181514.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3053,29,Semaine 08-14 juin,Fruits & légumes,Fenouil,3 bulbes,f,2034,,,,,,https://images.pexels.com/photos/19014380/pexels-photo-19014380.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3081,29,Semaine 08-14 juin,Crémerie,Yaourt grec nature,400 g,f,,208,,,,,https://images.pexels.com/photos/4006347/pexels-photo-4006347.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3097,29,Semaine 08-14 juin,Épicerie,Graisse de canard,250 g,f,2005,,,,,,https://images.pexels.com/photos/27565478/pexels-photo-27565478.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3075,29,Semaine 08-14 juin,Crémerie,Beurre doux,500 g,f,,204,,,,,https://images.pexels.com/photos/7965940/pexels-photo-7965940.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3094,29,Semaine 08-14 juin,Épicerie,Vermicelles de riz,250 g,f,4003,,,,,,https://images.pexels.com/photos/6544376/pexels-photo-6544376.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3092,29,Semaine 08-14 juin,Épicerie,Farine de sarrasin,300 g,f,4004,,,,,,https://images.pexels.com/photos/1047326/pexels-photo-1047326.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3088,29,Semaine 08-14 juin,Épicerie,Lentilles corail,250 g,f,5005,,,,,,https://images.pexels.com/photos/6576763/pexels-photo-6576763.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3083,29,Semaine 08-14 juin,Crémerie,Crème fraîche épaisse,20 cl,f,,198,,,,,https://images.pexels.com/photos/6690234/pexels-photo-6690234.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3086,29,Semaine 08-14 juin,Épicerie,Semoule moyenne (couscous),400 g,f,17,,,,,,https://images.pexels.com/photos/26586517/pexels-photo-26586517.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3090,29,Semaine 08-14 juin,Épicerie,Quinoa,250 g,f,4002,,,,,,https://images.pexels.com/photos/9218779/pexels-photo-9218779.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3096,29,Semaine 08-14 juin,Épicerie,Huile d'olive vierge extra,50 cl,f,14030,,,,,,https://images.pexels.com/photos/33783/olive-oil-salad-dressing-cooking-olive.jpg?auto=compress&cs=tinysrgb&h=650&w=940
+3124,29,Semaine 08-14 juin,Boulangerie,Pain de seigle,1 pain,f,,321,,,,,https://images.pexels.com/photos/6195/bread-food-baking-homemade.jpg?auto=compress&cs=tinysrgb&h=650&w=940
+3073,29,Semaine 08-14 juin,Crémerie,Skyr nature (gros pots 450g),"5 pots (env. 2,5 kg)",f,,212,,,,,https://images.pexels.com/photos/4006347/pexels-photo-4006347.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3091,29,Semaine 08-14 juin,Épicerie,Flocons d'avoine,200 g,f,,314,,,,,https://images.pexels.com/photos/575822/pexels-photo-575822.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3101,29,Semaine 08-14 juin,Épicerie,Olives Taggiasche,150 g,f,11007,,,,,,https://images.pexels.com/photos/14437061/pexels-photo-14437061.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3109,29,Semaine 08-14 juin,Épicerie,Miel de châtaignier,1 pot,f,14001,,,,,,https://images.pexels.com/photos/35510387/pexels-photo-35510387.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3111,29,Semaine 08-14 juin,Épicerie,Moutarde de Dijon,1 pot,f,10003,,,,,,https://images.pexels.com/photos/6786042/pexels-photo-6786042.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3113,29,Semaine 08-14 juin,Épicerie,Pesto au basilic (ou maison),1 pot,f,1004,,,,,,https://images.pexels.com/photos/6118/food-water-corn-cooking.jpg?auto=compress&cs=tinysrgb&h=650&w=940
+3115,29,Semaine 08-14 juin,Épices,Curcuma en poudre,1 pot,f,6003,,,,,,https://images.pexels.com/photos/6220709/pexels-photo-6220709.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3085,29,Semaine 08-14 juin,Épicerie,Semoule de blé dur (gnocchi romana),250 g,f,17,,,,,,https://images.pexels.com/photos/26586517/pexels-photo-26586517.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3118,29,Semaine 08-14 juin,Épices,Paprika fumé,1 pot,f,,474,,,,,https://images.pexels.com/photos/1274613/pexels-photo-1274613.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3105,29,Semaine 08-14 juin,Épicerie,Amandes natures,200 g,f,11001,,,,,,https://images.pexels.com/photos/4397851/pexels-photo-4397851.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3112,29,Semaine 08-14 juin,Épicerie,Harissa douce,1 tube,f,36,,,,,,https://images.pexels.com/photos/14655706/pexels-photo-14655706.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3117,29,Semaine 08-14 juin,Épices,Cardamome,1 pot,f,6001,,,,,,https://images.pexels.com/photos/37568646/pexels-photo-37568646.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3054,29,Semaine 08-14 juin,Fruits & légumes,Mâche,200 g,f,1033,,,,,,https://images.pexels.com/photos/11509871/pexels-photo-11509871.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3089,29,Semaine 08-14 juin,Épicerie,Pois chiches cuits (bocal),3 bocaux (720 g),f,5008,,,,,,https://images.pexels.com/photos/5125097/pexels-photo-5125097.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3055,29,Semaine 08-14 juin,Fruits & légumes,Salade verte (laitue),2 pièces,f,1031,,,,,,https://images.pexels.com/photos/11509871/pexels-photo-11509871.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3056,29,Semaine 08-14 juin,Fruits & légumes,Roquette,150 g,f,2058,,,,,,https://images.pexels.com/photos/36782610/pexels-photo-36782610.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3057,29,Semaine 08-14 juin,Fruits & légumes,Pousses (épinards/salade) -- attention pas d'épinards,150 g,f,1020,,,,,,https://images.pexels.com/photos/34857767/pexels-photo-34857767.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3059,29,Semaine 08-14 juin,Fruits & légumes,Pak-choï,3 pièces,f,2044,,,,,,https://images.pexels.com/photos/12150346/pexels-photo-12150346.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3063,29,Semaine 08-14 juin,Fruits & légumes,Fruits de saison (fraises/pêches),1 kg,f,1048,,,,,,https://images.pexels.com/photos/18018686/pexels-photo-18018686.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3067,29,Semaine 08-14 juin,Herbes fraîches,Persil plat,1 bouquet,f,1049,,,,,,https://images.pexels.com/photos/6102658/pexels-photo-6102658.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3069,29,Semaine 08-14 juin,Herbes fraîches,Sauge,1 bouquet,f,2061,,,,,,https://images.pexels.com/photos/17506694/pexels-photo-17506694.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3070,29,Semaine 08-14 juin,Herbes fraîches,Thym,1 bouquet,f,1058,,,,,,https://images.pexels.com/photos/9814710/pexels-photo-9814710.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3074,29,Semaine 08-14 juin,Crémerie,Œufs,24 pièces (2 boîtes de 12),f,2040,,,,,,https://images.pexels.com/photos/4184073/pexels-photo-4184073.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
+3080,29,Semaine 08-14 juin,Crémerie,Chèvre frais (bûche),200 g,f,49,,,,,,https://images.pexels.com/photos/251599/pexels-photo-251599.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
