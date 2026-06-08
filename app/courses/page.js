@@ -4,10 +4,11 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { ShoppingCart, Check, Package, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ShoppingCart, Check, Package, ChevronLeft, ChevronRight, RefreshCw, Camera } from 'lucide-react'
 import Link from 'next/link'
-import { getFoodEmoji } from '@/lib/foodEmoji'
 import './courses.css'
+
+const RAYON_TINTS = ['#E4EBDC', '#F1E9D4', '#EFD9D0', '#E8E2D2', '#EADFCB', '#DEE7EC']
 
 export default function CoursesPage() {
   const router = useRouter()
@@ -18,6 +19,7 @@ export default function CoursesPage() {
   const [imports, setImports] = useState([])
   const [importIndex, setImportIndex] = useState(0)
   const [activeWeek, setActiveWeek] = useState(null)
+  const [activeRayon, setActiveRayon] = useState(null) // null = défaut (1er rayon) · 'TOUT' = tout · sinon = catégorie
   const [expandedItems, setExpandedItems] = useState(new Set())
   const [containerEdits, setContainerEdits] = useState({})
   const [fetchingImages, setFetchingImages] = useState(false)
@@ -33,6 +35,7 @@ export default function CoursesPage() {
     setItems(list)
     const weeks = [...new Set(list.map(i => i.week_label))].sort()
     setActiveWeek(weeks.length > 0 ? weeks[0] : null)
+    setActiveRayon(null)
   }
 
   async function goToImport(idx) {
@@ -235,21 +238,132 @@ export default function CoursesPage() {
   const allTotalCount = items.length
   const remaining = totalCount - checkedCount
 
+  // ── Dérivés de la refonte cockpit ──
+  const categories = Object.keys(groupedItems)
+  const showAll = activeRayon === 'TOUT'
+  const currentRayon = showAll ? null : (categories.includes(activeRayon) ? activeRayon : (categories[0] ?? null))
+  const currentItems = currentRayon ? groupedItems[currentRayon] : []
+  const currentChecked = currentItems.filter(i => i.checked).length
+  const currentIndex = currentRayon ? categories.indexOf(currentRayon) : -1
+  const pct = totalCount ? Math.round((checkedCount / totalCount) * 100) : 0
+  const weekIdx = activeWeek ? weekLabels.indexOf(activeWeek) : -1
+  const goWeek = (delta) => {
+    const ni = weekIdx + delta
+    if (ni >= 0 && ni < weekLabels.length) { setActiveWeek(weekLabels[ni]); setActiveRayon(null) }
+  }
+  const catTint = (cat) => RAYON_TINTS[Math.max(0, categories.indexOf(cat)) % RAYON_TINTS.length]
+
+  function renderCard(item, tint) {
+    const isExpanded = expandedItems.has(item.id)
+    const hasContainer = !!(item.container_qty && item.container_size)
+    const letter = (item.product_name || '?').trim().charAt(0).toUpperCase()
+    return (
+      <div key={item.id} className={`cou-card${item.checked ? ' done' : ''}`}>
+        <div
+          className="cou-card-top"
+          role="button"
+          tabIndex={0}
+          onClick={() => toggleItem(item.id)}
+          onKeyDown={e => e.key === 'Enter' && toggleItem(item.id)}
+        >
+          <span className={`cou-card-chk${item.checked ? ' on' : ''}`}>
+            {item.checked && <Check size={12} color="#fff" />}
+          </span>
+          <div className="cou-card-thumb" style={item.image_url ? undefined : { background: tint }}>
+            {item.image_url ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={item.image_url} alt="" className="cou-card-img" loading="lazy" />
+            ) : (
+              <span className="cou-card-mono">{letter}</span>
+            )}
+          </div>
+        </div>
+        <div className="cou-card-info">
+          <span className="cou-card-nm">{item.product_name}</span>
+          <div className="cou-card-foot">
+            {item.quantity && <span className="cou-card-qty">{item.quantity}</span>}
+            {hasContainer && (
+              <span className="cou-card-cond">{item.container_qty} × {item.container_size} {item.container_unit}</span>
+            )}
+            <button
+              className={`cou-card-cont${hasContainer ? ' has' : ''}${isExpanded ? ' on' : ''}`}
+              onClick={e => {
+                e.stopPropagation()
+                setExpandedItems(prev => {
+                  const next = new Set(prev)
+                  next.has(item.id) ? next.delete(item.id) : next.add(item.id)
+                  return next
+                })
+              }}
+              title="Conditionnement (nb de contenants)"
+              aria-label="Configurer le conditionnement"
+            >
+              <Package size={12} />
+            </button>
+          </div>
+          {item.notes && <span className="cou-card-notes">{item.notes}</span>}
+          {item.stocking && <span className="cou-card-tag stocking">rangement…</span>}
+          {item.stocked && !item.stocking && (
+            <span className="cou-card-tag stocked"><Package size={10} /> rangé</span>
+          )}
+          {item.stockError && !item.stocking && (
+            <span className="cou-card-tag error" title={item.stockErrorMsg || ''}>non rangé</span>
+          )}
+        </div>
+        {isExpanded && (
+          <div className="cou-card-picker" onClick={e => e.stopPropagation()}>
+            <span className="cou-cont-label">Conditionnement</span>
+            <div className="cou-cont-fields">
+              <input
+                type="number" min="1" placeholder="Nb" className="cou-cont-input qty"
+                value={getContainerEdit(item, 'container_qty')}
+                onChange={e => setContainerField(item.id, 'container_qty', e.target.value)}
+                onBlur={() => saveContainerEdits(item)}
+              />
+              <span className="cou-cont-x">×</span>
+              <input
+                type="number" min="0.01" step="0.01" placeholder="Taille" className="cou-cont-input size"
+                value={getContainerEdit(item, 'container_size')}
+                onChange={e => setContainerField(item.id, 'container_size', e.target.value)}
+                onBlur={() => saveContainerEdits(item)}
+              />
+              <select
+                className="cou-cont-unit"
+                value={getContainerEdit(item, 'container_unit') || 'L'}
+                onChange={e => { setContainerField(item.id, 'container_unit', e.target.value); saveContainerEdits(item) }}
+              >
+                <option value="L">L</option>
+                <option value="ml">ml</option>
+                <option value="cl">cl</option>
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+                <option value="unités">unités</option>
+              </select>
+            </div>
+          </div>
+        )}
+      </div>
+    )
+  }
+
   if (loading) return (
-    <div className="v21-page courses-page" aria-busy="true" aria-label="Chargement des courses">
+    <div className="v21-page wide courses-page" aria-busy="true" aria-label="Chargement des courses">
       <div className="v21-skel" style={{ height: 150 }} />
-      <div className="cou-skel-list">
-        {[0, 1, 2, 3, 4].map(i => <div key={i} className="v21-skel" style={{ height: 52 }} />)}
+      <div className="cou-board">
+        <div className="cou-rail"><div className="v21-skel" style={{ height: 320, margin: '24px' }} /></div>
+        <div className="cou-main cou-skel-list">
+          {[0, 1, 2, 3, 4, 5].map(i => <div key={i} className="v21-skel" style={{ height: 120 }} />)}
+        </div>
       </div>
     </div>
   )
 
   if (!importId || items.length === 0) return (
-    <div className="v21-page courses-page">
+    <div className="v21-page wide courses-page">
       <header className="v21-hero">
         <div className="v21-hero-text">
           <span className="v21-eyebrow">Courses</span>
-          <h1 className="v21-title">Liste.</h1>
+          <h1 className="v21-title">La liste.</h1>
           <div className="v21-rule" />
           <p className="v21-lede">Rien à acheter pour l'instant.</p>
         </div>
@@ -263,54 +377,23 @@ export default function CoursesPage() {
   )
 
   return (
-    <div className="v21-page courses-page">
+    <div className="v21-page wide courses-page">
 
       {/* HERO ÉDITORIAL */}
       <header className="v21-hero">
         <div className="v21-hero-text">
           <span className="v21-eyebrow">Courses</span>
-          <h1 className="v21-title">Liste.</h1>
+          <h1 className="v21-title">La liste.</h1>
           <div className="v21-rule" />
           <p className="v21-lede">{remaining} restant{remaining !== 1 ? 's' : ''} sur cette semaine.</p>
         </div>
         <div className="v21-hero-side">
-          <div className="cou-actions">
-            <button onClick={handleRebuild} disabled={rebuilding} className="v21-btn ghost sm"
-              title="Synchroniser : créer les recettes du plan, relier les ingrédients, marquer ce que tu as déjà en stock">
-              {rebuilding ? '…' : 'Stock'}
-            </button>
-            <button onClick={handleFetchImages} disabled={fetchingImages} className="v21-btn ghost sm">
-              {fetchingImages ? '…' : 'Photos'}
-            </button>
+          <div className="v21-hero-badge">
+            <span className="v">{remaining}</span>
+            <span className="l">à acheter</span>
           </div>
         </div>
       </header>
-
-      {/* PROGRESSION GLOBALE */}
-      <section className="v21-section strong cou-overview">
-        <div className="cou-bignum-row">
-          <div className="v21-bignum">{checkedCount} / {totalCount}</div>
-          {allTotalCount !== totalCount && (
-            <span className="cou-allcount">{allCheckedCount}/{allTotalCount} au total</span>
-          )}
-        </div>
-        <div className="v21-prog"><div className="v21-prog-fill" style={{ width: totalCount ? `${(checkedCount / totalCount) * 100}%` : '0%' }} /></div>
-
-        {imports.length > 1 && (
-          <div className="cou-impnav">
-            <button onClick={() => goToImport(importIndex + 1)} disabled={importIndex >= imports.length - 1}
-              className="cou-impbtn" aria-label="Semaine précédente">
-              <ChevronLeft size={16} />
-            </button>
-            <span className="cou-implabel">{importLabel || 'Semaine'}</span>
-            <button onClick={() => goToImport(importIndex - 1)} disabled={importIndex <= 0}
-              className="cou-impbtn" aria-label="Semaine suivante">
-              <ChevronRight size={16} />
-            </button>
-          </div>
-        )}
-        {imports.length <= 1 && importLabel && <p className="cou-implabel-static">{importLabel}</p>}
-      </section>
 
       {fetchResult && (
         <div className={`cou-result ${fetchResult.error ? 'error' : 'ok'}`}>
@@ -325,136 +408,160 @@ export default function CoursesPage() {
         </div>
       )}
 
-      {/* ONGLETS DE SEMAINE */}
-      {weekLabels.length > 1 && (
-        <div className="v21-tabs" role="tablist" aria-label="Filtrer par semaine">
-          {weekLabels.map(week => (
-            <button
-              key={week}
-              role="tab"
-              aria-selected={activeWeek === week}
-              onClick={() => setActiveWeek(week)}
-              className={`v21-tab ${activeWeek === week ? 'on' : ''}`}
-            >
-              {week}
-            </button>
-          ))}
-        </div>
-      )}
+      {/* COCKPIT : rail | cartes */}
+      <div className="cou-board">
 
-      {/* CATÉGORIES */}
-      {Object.entries(groupedItems).map(([category, catItems]) => {
-        const catChecked = catItems.filter(i => i.checked).length
-        return (
-          <section key={category} className="cou-cat">
-            <div className="cou-cat-h">
-              <span className="v21-cat">{category}</span>
-              <span className="cou-cat-c">{catChecked} / {catItems.length}</span>
-            </div>
-            <div className="cou-items">
-              {catItems.map(item => {
-                const isExpanded = expandedItems.has(item.id)
-                const hasContainer = !!(item.container_qty && item.container_size)
-                return (
-                  <div key={item.id} className="cou-item-wrap">
-                    <div
-                      onClick={() => toggleItem(item.id)}
-                      className={`cou-row${item.checked ? ' checked' : ''}`}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={e => e.key === 'Enter' && toggleItem(item.id)}
-                    >
-                      <span className={`cou-check${item.checked ? ' on' : ''}`}>
-                        {item.checked && <Check size={12} color="#fff" />}
-                      </span>
-                      {item.image_url ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={item.image_url} alt="" className="cou-thumb" loading="lazy" />
-                      ) : (
-                        <span className="cou-emoji">{getFoodEmoji(item.product_name, item.category)}</span>
-                      )}
-                      <span className="cou-label">
-                        <span className={`cou-name${item.checked ? ' checked' : ''}`}>{item.product_name}</span>
-                        {item.notes && <span className="cou-notes">{item.notes}</span>}
-                      </span>
-                      {item.quantity && <span className="cou-qty">{item.quantity}</span>}
-                      {item.stocking && <span className="cou-badge stocking">…</span>}
-                      {item.stocked && !item.stocking && (
-                        <span className="cou-badge stocked"><Package size={11} /> rangé</span>
-                      )}
-                      {item.stockError && !item.stocking && (
-                        <span className="cou-badge error" title={item.stockErrorMsg || ''}>non rangé</span>
-                      )}
-                      <button
-                        className={`cou-cont-toggle${hasContainer ? ' has' : ''}${isExpanded ? ' on' : ''}`}
-                        onClick={e => {
-                          e.stopPropagation()
-                          setExpandedItems(prev => {
-                            const next = new Set(prev)
-                            next.has(item.id) ? next.delete(item.id) : next.add(item.id)
-                            return next
-                          })
-                        }}
-                        title="Conditionnement (nb de contenants)"
-                        aria-label="Configurer le conditionnement"
-                      >
-                        <Package size={13} />
-                      </button>
-                    </div>
-                    {isExpanded && (
-                      <div className="cou-cont-picker" onClick={e => e.stopPropagation()}>
-                        <span className="cou-cont-label">Conditionnement</span>
-                        <div className="cou-cont-fields">
-                          <input
-                            type="number"
-                            min="1"
-                            placeholder="Nb"
-                            className="cou-cont-input qty"
-                            value={getContainerEdit(item, 'container_qty')}
-                            onChange={e => setContainerField(item.id, 'container_qty', e.target.value)}
-                            onBlur={() => saveContainerEdits(item)}
-                          />
-                          <span className="cou-cont-x">×</span>
-                          <input
-                            type="number"
-                            min="0.01"
-                            step="0.01"
-                            placeholder="Taille"
-                            className="cou-cont-input size"
-                            value={getContainerEdit(item, 'container_size')}
-                            onChange={e => setContainerField(item.id, 'container_size', e.target.value)}
-                            onBlur={() => saveContainerEdits(item)}
-                          />
-                          <select
-                            className="cou-cont-unit"
-                            value={getContainerEdit(item, 'container_unit') || 'L'}
-                            onChange={e => {
-                              setContainerField(item.id, 'container_unit', e.target.value)
-                              saveContainerEdits(item)
-                            }}
-                          >
-                            <option value="L">L</option>
-                            <option value="ml">ml</option>
-                            <option value="cl">cl</option>
-                            <option value="g">g</option>
-                            <option value="kg">kg</option>
-                            <option value="unités">unités</option>
-                          </select>
-                        </div>
-                        {item.container_qty && item.container_size && (
-                          <span className="cou-cont-sum">
-                            {item.container_qty} × {item.container_size} {item.container_unit}
-                          </span>
-                        )}
-                      </div>
-                    )}
+        {/* ── RAIL ── */}
+        <aside className="cou-rail">
+
+          {/* Avancement */}
+          <section className="cou-rsec">
+            <span className="v21-bl">Avancement</span>
+            <div className="cou-big">{checkedCount} <span className="cou-big-of">/ {totalCount}</span></div>
+            <span className="cou-rsub">articles rangés</span>
+            <div className="cou-prog"><div className="cou-prog-fill" style={{ width: `${pct}%` }} /></div>
+            <span className="cou-rsub">{pct} % · {remaining} restant{remaining !== 1 ? 's' : ''}</span>
+            {allTotalCount !== totalCount && (
+              <span className="cou-rsub">{allCheckedCount}/{allTotalCount} sur tout le plan</span>
+            )}
+          </section>
+
+          {/* Semaine */}
+          {(weekLabels.length > 0 || imports.length > 1) && (
+            <section className="cou-rsec">
+              <span className="v21-bl">Semaine</span>
+              {weekLabels.length > 0 && (
+                <>
+                  <div className="cou-wk">
+                    <button className="cou-wk-btn" onClick={() => goWeek(-1)} disabled={weekIdx <= 0} aria-label="Semaine précédente"><ChevronLeft size={15} /></button>
+                    <b>{activeWeek || 'Semaine'}</b>
+                    <button className="cou-wk-btn" onClick={() => goWeek(1)} disabled={weekIdx >= weekLabels.length - 1} aria-label="Semaine suivante"><ChevronRight size={15} /></button>
                   </div>
+                  {weekLabels.length > 1 && (
+                    <span className="cou-wk-cap">Semaine {weekIdx + 1} / {weekLabels.length}{importLabel ? ` · ${importLabel}` : ''}</span>
+                  )}
+                </>
+              )}
+              {imports.length > 1 && (
+                <div className="cou-plan">
+                  <button className="cou-wk-btn" onClick={() => goToImport(importIndex + 1)} disabled={importIndex >= imports.length - 1} aria-label="Plan précédent"><ChevronLeft size={14} /></button>
+                  <span className="cou-plan-lbl">{importLabel || 'Plan'}</span>
+                  <button className="cou-wk-btn" onClick={() => goToImport(importIndex - 1)} disabled={importIndex <= 0} aria-label="Plan suivant"><ChevronRight size={14} /></button>
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* Rayons (onglets latéraux = parcours) */}
+          <section className="cou-rsec cou-rsec-grow">
+            <span className="v21-bl">Rayons</span>
+            <div className="cou-tabs" role="tablist" aria-label="Filtrer par rayon">
+              <button
+                role="tab" aria-selected={showAll}
+                className={`cou-tab cou-tab-all${showAll ? ' on' : ''}`}
+                onClick={() => setActiveRayon('TOUT')}
+              >
+                <span className="cou-tab-nm">Tout</span>
+                <span className="cou-tab-c">{totalCount}</span>
+              </button>
+              {categories.map((cat, i) => {
+                const catItems = groupedItems[cat]
+                const catChecked = catItems.filter(it => it.checked).length
+                const on = currentRayon === cat
+                return (
+                  <button
+                    key={cat}
+                    role="tab" aria-selected={on}
+                    className={`cou-tab${on ? ' on' : ''}`}
+                    onClick={() => setActiveRayon(cat)}
+                  >
+                    <span className="cou-tab-pip">{catChecked === catItems.length ? <Check size={11} /> : i + 1}</span>
+                    <span className="cou-tab-nm">{cat}</span>
+                    <span className="cou-tab-c">{catChecked} / {catItems.length}</span>
+                    <span className="cou-tab-mini"><span className="cou-tab-mini-f" style={{ width: `${catItems.length ? (catChecked / catItems.length) * 100 : 0}%` }} /></span>
+                  </button>
                 )
               })}
             </div>
           </section>
-        )
-      })}
+
+          {/* Actions */}
+          <section className="cou-ractions">
+            <button onClick={handleRebuild} disabled={rebuilding} className="cou-raction"
+              title="Synchroniser : créer les recettes du plan, relier les ingrédients, marquer ce que tu as déjà en stock">
+              <RefreshCw size={13} /> {rebuilding ? 'Synchro…' : 'Synchroniser le stock'}
+            </button>
+            <button onClick={handleFetchImages} disabled={fetchingImages} className="cou-raction">
+              <Camera size={13} /> {fetchingImages ? 'Photos…' : 'Photos auto'}
+            </button>
+          </section>
+        </aside>
+
+        {/* ── MAIN ── */}
+        <section className="cou-main">
+          {currentRayon === null ? (
+            /* Vue « Tout » — toutes les cartes groupées par rayon */
+            categories.length === 0 ? (
+              <div className="v21-empty cou-empty"><p>Aucun article pour cette semaine.</p></div>
+            ) : (
+              categories.map(cat => {
+                const catItems = groupedItems[cat]
+                const catChecked = catItems.filter(it => it.checked).length
+                const tint = catTint(cat)
+                return (
+                  <div key={cat} className="cou-group">
+                    <div className="cou-group-h">
+                      <span className="v21-bl">{cat}</span>
+                      <span className="cou-group-c">{catChecked} / {catItems.length} rangés</span>
+                    </div>
+                    <div className="cou-grid">{catItems.map(it => renderCard(it, tint))}</div>
+                  </div>
+                )
+              })
+            )
+          ) : (
+            /* Vue rayon focalisé — cartes + parcours */
+            <>
+              <header className="cou-rayhead">
+                <div className="cou-rayhead-l">
+                  <span className="v21-bl">Rayon en cours</span>
+                  <h2 className="cou-rayhead-nm">{currentRayon}</h2>
+                  <span className="cou-rayhead-meta">{currentChecked} / {currentItems.length} cochés · {currentItems.length - currentChecked} restant{currentItems.length - currentChecked !== 1 ? 's' : ''}</span>
+                </div>
+                <div className="cou-rayhead-count">
+                  <span className="cou-rayhead-count-v">{currentItems.length - currentChecked}</span>
+                  <span className="cou-rayhead-count-l">restant{currentItems.length - currentChecked !== 1 ? 's' : ''}</span>
+                </div>
+              </header>
+              <div className="cou-prog cou-rayhead-prog"><div className="cou-prog-fill" style={{ width: `${currentItems.length ? (currentChecked / currentItems.length) * 100 : 0}%` }} /></div>
+
+              <div className="cou-grid">{currentItems.map(it => renderCard(it, catTint(currentRayon)))}</div>
+
+              {/* Parcours */}
+              <div className="cou-parcours">
+                <span className="cou-parcours-step">Rayon <b>{currentIndex + 1}</b> / {categories.length}</span>
+                <span className="cou-parcours-mid">{currentItems.length - currentChecked} article{currentItems.length - currentChecked !== 1 ? 's' : ''} restant{currentItems.length - currentChecked !== 1 ? 's' : ''} dans ce rayon</span>
+                <span className="cou-parcours-nav">
+                  <button
+                    className="cou-parcours-btn ghost"
+                    disabled={currentIndex <= 0}
+                    onClick={() => currentIndex > 0 && setActiveRayon(categories[currentIndex - 1])}
+                  >
+                    <ChevronLeft size={14} /> Précédent
+                  </button>
+                  <button
+                    className="cou-parcours-btn next"
+                    disabled={currentIndex >= categories.length - 1}
+                    onClick={() => currentIndex < categories.length - 1 && setActiveRayon(categories[currentIndex + 1])}
+                  >
+                    {currentIndex < categories.length - 1 ? categories[currentIndex + 1] : 'Fin'} <ChevronRight size={14} />
+                  </button>
+                </span>
+              </div>
+            </>
+          )}
+        </section>
+      </div>
     </div>
   )
 }
