@@ -28,29 +28,25 @@ function scoreAlt(alt, subjectTerms) {
   return s
 }
 
-async function searchPexels(query, apiKey) {
-  if (!query) return null
+async function searchPexelsList(query, apiKey) {
+  if (!query) return []
   const subjectTerms = query.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !MODIFIERS.has(w))
   try {
     const res = await fetch(
       `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=15&orientation=landscape`,
       { headers: { Authorization: apiKey }, signal: AbortSignal.timeout(6500) }
     )
-    if (!res.ok) return null
+    if (!res.ok) return []
     const data = await res.json()
     const photos = data.photos || []
-    if (!photos.length) return null
-    let best = null
-    let bestScore = -Infinity
-    for (const p of photos) {
-      const sc = scoreAlt(p.alt, subjectTerms)
-      if (sc > bestScore) { bestScore = sc; best = p }
-    }
-    // tout est hors-sujet / non vérifiable → on ne met rien (repli icône) plutôt qu'une image absurde
-    if (!best || bestScore < 1) return null
-    return best.src?.large || best.src?.medium || best.src?.small || null
+    // ne garde que les photos dont la description colle (score >= 1), triées par pertinence
+    return photos
+      .map((p) => ({ url: p.src?.large || p.src?.medium || p.src?.small || null, score: scoreAlt(p.alt, subjectTerms) }))
+      .filter((x) => x.url && x.score >= 1)
+      .sort((a, b) => b.score - a.score)
+      .map((x) => x.url)
   } catch {
-    return null
+    return []
   }
 }
 
@@ -107,10 +103,21 @@ export async function POST(req) {
 
   // 1 recherche par nom de produit unique ; requête = ingrédient EN propre
   const uniqueNames = [...new Set(items.map((i) => (i.product_name || '').trim()).filter(Boolean))]
-  const imageByName = {}
-  await runPool(uniqueNames, 4, async (name) => {
+  // regroupe les produits par requête (ex. toutes les variétés de pomme de terre)
+  // pour leur donner des photos DIFFÉRENTES (sinon image identique partout)
+  const byQuery = new Map()
+  for (const name of uniqueNames) {
     const query = guessIngredient(name) || cleanName(name)
-    imageByName[name.toLowerCase()] = await searchPexels(query, PEXELS_KEY)
+    if (!byQuery.has(query)) byQuery.set(query, [])
+    byQuery.get(query).push(name)
+  }
+  const imageByName = {}
+  await runPool([...byQuery.keys()], 4, async (query) => {
+    const urls = await searchPexelsList(query, PEXELS_KEY)
+    const names = byQuery.get(query)
+    names.forEach((nm, i) => {
+      imageByName[nm.toLowerCase()] = urls.length ? urls[i % urls.length] : null
+    })
   })
 
   // mises à jour groupées
