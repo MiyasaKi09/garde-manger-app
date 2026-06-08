@@ -31,6 +31,7 @@ export default function CoursesPage() {
   const [picker, setPicker] = useState(null)            // produit dont on change la photo
   const [pickerCands, setPickerCands] = useState([])
   const [pickerLoading, setPickerLoading] = useState(false)
+  const [pickerQuery, setPickerQuery] = useState('')
 
   async function loadItems(imp) {
     setImportId(imp.id)
@@ -285,23 +286,29 @@ export default function CoursesPage() {
   }
   const catTint = (cat) => RAYON_TINTS[Math.max(0, categories.indexOf(cat)) % RAYON_TINTS.length]
 
-  async function openImagePicker(item) {
-    setPicker(item)
-    setPickerCands([])
+  async function fetchCandidates(item, customQuery) {
     setPickerLoading(true)
     try {
       const res = await authFetch('/api/courses/item-images', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: item.product_name }),
+        body: JSON.stringify(customQuery ? { name: item.product_name, query: customQuery } : { name: item.product_name }),
       })
       const d = await res.json()
       setPickerCands(d.candidates || [])
+      setPickerQuery(d.query || customQuery || '')
     } catch {
       setPickerCands([])
     } finally {
       setPickerLoading(false)
     }
+  }
+
+  function openImagePicker(item) {
+    setPicker(item)
+    setPickerCands([])
+    setPickerQuery('')
+    fetchCandidates(item)
   }
 
   async function chooseImage(url) {
@@ -670,6 +677,15 @@ export default function CoursesPage() {
               <span className="cou-pick-title">{picker.product_name}</span>
               <button className="cou-pick-close" onClick={() => setPicker(null)} aria-label="Fermer"><X size={16} /></button>
             </div>
+            <form className="cou-pick-search" onSubmit={e => { e.preventDefault(); fetchCandidates(picker, pickerQuery.trim()) }}>
+              <input
+                className="cou-pick-input"
+                value={pickerQuery}
+                onChange={e => setPickerQuery(e.target.value)}
+                placeholder="Affiner la recherche (en anglais)…"
+              />
+              <button type="submit" className="cou-pick-search-btn">Chercher</button>
+            </form>
             {pickerLoading ? (
               <div className="cou-pick-msg">Recherche de photos…</div>
             ) : pickerCands.length === 0 ? (
