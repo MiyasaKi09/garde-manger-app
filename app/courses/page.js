@@ -426,28 +426,40 @@ export default function CoursesPage() {
             )}
           </section>
 
-          {/* Semaine */}
+          {/* Semaine — un seul sélecteur (évite le doublon semaine/plan) */}
           {(weekLabels.length > 0 || imports.length > 1) && (
             <section className="cou-rsec">
               <span className="v21-bl">Semaine</span>
-              {weekLabels.length > 0 && (
+              {weekLabels.length > 1 ? (
+                /* Le plan contient plusieurs semaines → navigation par semaine (+ nav de plan distincte) */
                 <>
                   <div className="cou-wk">
                     <button className="cou-wk-btn" onClick={() => goWeek(-1)} disabled={weekIdx <= 0} aria-label="Semaine précédente"><ChevronLeft size={15} /></button>
-                    <b>{activeWeek || 'Semaine'}</b>
+                    <b>{activeWeek}</b>
                     <button className="cou-wk-btn" onClick={() => goWeek(1)} disabled={weekIdx >= weekLabels.length - 1} aria-label="Semaine suivante"><ChevronRight size={15} /></button>
                   </div>
-                  {weekLabels.length > 1 && (
-                    <span className="cou-wk-cap">Semaine {weekIdx + 1} / {weekLabels.length}{importLabel ? ` · ${importLabel}` : ''}</span>
+                  <span className="cou-wk-cap">Semaine {weekIdx + 1} / {weekLabels.length}</span>
+                  {imports.length > 1 && (
+                    <div className="cou-plan">
+                      <button className="cou-wk-btn" onClick={() => goToImport(importIndex + 1)} disabled={importIndex >= imports.length - 1} aria-label="Plan précédent"><ChevronLeft size={14} /></button>
+                      <span className="cou-plan-lbl">{importLabel || 'Plan'}</span>
+                      <button className="cou-wk-btn" onClick={() => goToImport(importIndex - 1)} disabled={importIndex <= 0} aria-label="Plan suivant"><ChevronRight size={14} /></button>
+                    </div>
                   )}
                 </>
-              )}
-              {imports.length > 1 && (
-                <div className="cou-plan">
-                  <button className="cou-wk-btn" onClick={() => goToImport(importIndex + 1)} disabled={importIndex >= imports.length - 1} aria-label="Plan précédent"><ChevronLeft size={14} /></button>
-                  <span className="cou-plan-lbl">{importLabel || 'Plan'}</span>
-                  <button className="cou-wk-btn" onClick={() => goToImport(importIndex - 1)} disabled={importIndex <= 0} aria-label="Plan suivant"><ChevronRight size={14} /></button>
-                </div>
+              ) : imports.length > 1 ? (
+                /* Chaque plan = une semaine → la nav de plan EST le sélecteur de semaine */
+                <>
+                  <div className="cou-wk">
+                    <button className="cou-wk-btn" onClick={() => goToImport(importIndex + 1)} disabled={importIndex >= imports.length - 1} aria-label="Semaine précédente"><ChevronLeft size={15} /></button>
+                    <b>{activeWeek || importLabel}</b>
+                    <button className="cou-wk-btn" onClick={() => goToImport(importIndex - 1)} disabled={importIndex <= 0} aria-label="Semaine suivante"><ChevronRight size={15} /></button>
+                  </div>
+                  <span className="cou-wk-cap">Semaine {imports.length - importIndex} / {imports.length}</span>
+                </>
+              ) : (
+                /* Une seule semaine */
+                <div className="cou-wk"><b>{activeWeek || importLabel || 'Semaine en cours'}</b></div>
               )}
             </section>
           )}
