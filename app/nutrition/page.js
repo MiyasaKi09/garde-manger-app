@@ -285,9 +285,9 @@ export default function NutritionPage() {
             </div>
 
             {/* MICRONUTRIMENTS */}
-            {activeMicros.length > 0 && (
-              <div className="nut-msec">
-                <div className="v21-bh"><span className="v21-bl">Micronutriments</span></div>
+            <div className="nut-msec">
+              <div className="v21-bh"><span className="v21-bl">Micronutriments</span></div>
+              {activeMicros.length > 0 ? (
                 <div className="nut-micros">
                   {activeMicros.map(([key, ajr]) => {
                     const val = microTotals[key] || 0
@@ -303,19 +303,23 @@ export default function NutritionPage() {
                     )
                   })}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="v21-next" style={{ marginTop: 0 }}>Pas de données de micronutriments pour ce jour — elles s'affichent dès que les repas en contiennent.</p>
+              )}
+            </div>
 
             {/* POIDS — courbe */}
-            {weights.length > 1 && (
-              <div className="nut-msec">
-                <div className="v21-bh">
-                  <span className="v21-bl">Poids · évolution</span>
-                  {wDelta != null && <span className="nut-msec-meta">{wDelta <= 0 ? '▼' : '▲'} {Math.abs(wDelta).toFixed(1)} kg{goals?.target_weight_kg ? ` · reste ${(latestWeight.weight_kg - goals.target_weight_kg).toFixed(1)} kg` : ''}</span>}
-                </div>
-                <WeightCurve weights={weights} target={goals?.target_weight_kg} />
+            <div className="nut-msec">
+              <div className="v21-bh">
+                <span className="v21-bl">Poids · évolution</span>
+                {weights.length > 1 && wDelta != null && <span className="nut-msec-meta">{wDelta <= 0 ? '▼' : '▲'} {Math.abs(wDelta).toFixed(1)} kg{goals?.target_weight_kg ? ` · reste ${(latestWeight.weight_kg - goals.target_weight_kg).toFixed(1)} kg` : ''}</span>}
               </div>
-            )}
+              {weights.length > 1 ? (
+                <WeightCurve weights={weights} target={goals?.target_weight_kg} />
+              ) : (
+                <p className="v21-next" style={{ marginTop: 0 }}>Pas encore assez de pesées pour tracer la courbe — ajoute des mesures de poids (bouton dans le rail à gauche).</p>
+              )}
+            </div>
 
             {/* REPAS DU JOUR */}
             <div className="nut-msec">
