@@ -13,18 +13,42 @@ function cleanName(name) {
     .trim()
 }
 
+// mots-modificateurs (pas le sujet), mots « contexte alimentaire » (+), mots hors-sujet (--)
+const MODIFIERS = new Set(['raw', 'fresh', 'meat', 'fillet', 'sliced', 'food', 'breast'])
+const GOOD = ['food', 'fresh', 'raw', 'meat', 'vegetable', 'fruit', 'ingredient', 'cooking', 'cuisine', 'dish', 'meal', 'plate', 'bowl', 'sliced', 'fillet', 'grilled', 'seafood', 'organic', 'closeup', 'close-up', 'cutting board', 'wooden']
+const BAD = ['mountain', 'landscape', 'scenery', 'skyline', 'cityscape', 'city', 'town', 'village', 'building', 'architecture', 'street', 'road', 'highway', 'beach', 'seaside', 'ocean', 'desert', 'flag', 'map', 'airport', 'aircraft', 'vehicle', 'portrait', 'selfie', 'woman', 'man', 'people', 'person', 'child', 'baby', 'crowd', 'grazing', 'pasture', 'barn', 'grass', 'meadow', 'field', 'farm', 'hen', 'rooster', 'chick ', 'sunset', 'sky']
+
+function scoreAlt(alt, subjectTerms) {
+  const a = (alt || '').toLowerCase()
+  if (!a) return 0
+  let s = 0
+  for (const t of subjectTerms) if (a.includes(t)) s += 3
+  for (const g of GOOD) if (a.includes(g)) s += 1
+  for (const b of BAD) if (a.includes(b)) s -= 5
+  return s
+}
+
 async function searchPexels(query, apiKey) {
   if (!query) return null
+  const subjectTerms = query.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !MODIFIERS.has(w))
   try {
     const res = await fetch(
-      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=10&orientation=landscape`,
+      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=15&orientation=landscape`,
       { headers: { Authorization: apiKey }, signal: AbortSignal.timeout(6500) }
     )
     if (!res.ok) return null
     const data = await res.json()
-    const photo = data.photos?.[0]
-    if (!photo) return null
-    return photo.src?.large || photo.src?.medium || photo.src?.small || null
+    const photos = data.photos || []
+    if (!photos.length) return null
+    let best = null
+    let bestScore = -Infinity
+    for (const p of photos) {
+      const sc = scoreAlt(p.alt, subjectTerms)
+      if (sc > bestScore) { bestScore = sc; best = p }
+    }
+    // tout est hors-sujet / non vérifiable → on ne met rien (repli icône) plutôt qu'une image absurde
+    if (!best || bestScore < 1) return null
+    return best.src?.large || best.src?.medium || best.src?.small || null
   } catch {
     return null
   }
