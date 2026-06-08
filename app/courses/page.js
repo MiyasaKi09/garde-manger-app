@@ -178,7 +178,7 @@ export default function CoursesPage() {
     }
   }
 
-  async function handleFetchImages() {
+  async function handleFetchImages(replace = false) {
     if (!importId) return
     setFetchingImages(true)
     setFetchResult(null)
@@ -186,14 +186,14 @@ export default function CoursesPage() {
       const res = await authFetch('/api/courses/fetch-images', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ importId }),
+        body: JSON.stringify({ importId, replace }),
       })
       const data = await res.json()
       if (data.error) {
         setFetchResult({ error: data.error })
       } else {
-        setFetchResult({ updated: data.updated, total: data.total })
-        if (data.updated > 0) {
+        setFetchResult({ updated: data.updated, total: data.total, cleared: data.cleared })
+        if (data.updated > 0 || data.cleared > 0) {
           const res2 = await authFetch(`/api/planning/imports/${importId}`)
           const d2 = await res2.json()
           setItems(d2.shoppingItems || [])
@@ -404,7 +404,7 @@ export default function CoursesPage() {
                   ? `${fetchResult.items} articles reliés au stock${fetchResult.inStock > 0 ? ` · ${fetchResult.inStock} déjà en stock` : ''}`
                   : `Liste recalculée — ${fetchResult.items} article${fetchResult.items > 1 ? 's' : ''}`)
                 + (fetchResult.recipesCreated > 0 ? ` · ${fetchResult.recipesCreated} recette(s) ajoutée(s)` : '')
-              : `${fetchResult.updated}/${fetchResult.total} photos récupérées`}
+              : `${fetchResult.updated}/${fetchResult.total} photos${fetchResult.cleared ? ` · ${fetchResult.cleared} hors-sujet retirée${fetchResult.cleared > 1 ? 's' : ''}` : ''}`}
         </div>
       )}
 
@@ -503,8 +503,13 @@ export default function CoursesPage() {
               title="Synchroniser : créer les recettes du plan, relier les ingrédients, marquer ce que tu as déjà en stock">
               <RefreshCw size={13} /> {rebuilding ? 'Synchro…' : 'Synchroniser le stock'}
             </button>
-            <button onClick={handleFetchImages} disabled={fetchingImages} className="cou-raction">
+            <button onClick={() => handleFetchImages(false)} disabled={fetchingImages} className="cou-raction"
+              title="Récupère une photo (Open Food Facts) pour les articles qui n'en ont pas">
               <Camera size={13} /> {fetchingImages ? 'Photos…' : 'Photos auto'}
+            </button>
+            <button onClick={() => handleFetchImages(true)} disabled={fetchingImages} className="cou-raction"
+              title="Re-télécharge toutes les photos depuis Open Food Facts et retire les images hors-sujet">
+              <RefreshCw size={13} /> {fetchingImages ? 'Photos…' : 'Corriger les photos'}
             </button>
           </section>
         </aside>
