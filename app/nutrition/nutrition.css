@@ -48,7 +48,7 @@
 .nut-ring-p { font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
 
 /* ── Micronutriments (grille à filets) ── */
-.nut-micros { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.nut-micros { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .nut-micro { background: var(--paper); padding: 13px 14px 14px; display: flex; flex-direction: column; gap: 5px; }
 .nut-micro-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
 .nut-micro-v { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
