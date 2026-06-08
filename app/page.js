@@ -61,7 +61,8 @@ export default function Home() {
   const [shoppingStats, setShoppingStats] = useState({ total: 0, checked: 0, uncheckedByCategory: [], nextItems: [] })
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      const user = session?.user
       if (!user) { router.push('/login'); return }
       setUser(user)
       loadAll()

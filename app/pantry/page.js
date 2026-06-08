@@ -73,7 +73,8 @@ export default function PantryPage() {
   const [showOcr, setShowOcr] = useState(false);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      const user = session?.user;
       if (!user) {
         router.push('/login');
       } else {

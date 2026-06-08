@@ -72,8 +72,8 @@ export default function RecipesPage() {
   const [fetchResult, setFetchResult] = useState(null);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (!user) router.push('/login');
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session?.user) router.push('/login');
     });
   }, [router]);
 

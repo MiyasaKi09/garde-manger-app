@@ -158,8 +158,8 @@ export default function NutritionPage() {
   const [newWeight, setNewWeight] = useState('')
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (!user) router.push('/login')
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session?.user) router.push('/login')
       else loadData()
     })
   }, [])
