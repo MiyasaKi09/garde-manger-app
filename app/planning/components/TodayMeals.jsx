@@ -330,11 +330,8 @@ export default function TodayMeals({ importId }) {
             {/* Header */}
             <div style={S.modalHeader}>
               <div>
-                <span style={{
-                  ...S.modalMealType,
-                  background: (MEAL_COLORS[selectedMeal.type] || MEAL_COLORS.dejeuner).bg,
-                  color: (MEAL_COLORS[selectedMeal.type] || MEAL_COLORS.dejeuner).text,
-                }}>
+                <span style={S.modalMealTypeWrap}>
+                  <span style={{ ...S.modalMealBar, background: MEAL_BAR[selectedMeal.type] || MEAL_BAR.diner }} />
                   {MEAL_LABELS[selectedMeal.type] || selectedMeal.type}
                 </span>
                 <h3 style={S.modalTitle}>{selectedMeal.dishName}</h3>
@@ -400,7 +397,7 @@ export default function TodayMeals({ importId }) {
                 <div style={S.successIcon}>
                   <Check size={28} color="white" />
                 </div>
-                <p style={{ color: '#4a7c4a', fontWeight: 600, marginTop: 12, fontFamily: "var(--font-editorial)", fontSize: 18 }}>
+                <p style={{ color: 'var(--ink-1)', fontWeight: 600, marginTop: 14, fontFamily: 'var(--font-display)', fontSize: 20 }}>
                   Repas modifié !
                 </p>
               </div>
@@ -410,39 +407,6 @@ export default function TodayMeals({ importId }) {
         </>,
         document.body
       )}
-
-      <style jsx>{`
-        .today-modal {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background: var(--surface);
-          backdrop-filter: blur(24px);
-          -webkit-backdrop-filter: blur(24px);
-          border-radius: 28px 28px 0 0;
-          padding: 0 24px 36px;
-          z-index: 1101;
-          max-height: 80vh;
-          overflow-y: auto;
-          box-shadow: 0 -8px 40px rgba(0,0,0,0.15);
-        }
-
-        @media (max-width: 768px) {
-          .today-modal {
-            padding: 0 16px 28px;
-            border-radius: 22px 22px 0 0;
-            max-height: 85vh;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .today-modal {
-            padding: 0 14px 24px;
-            border-radius: 18px 18px 0 0;
-          }
-        }
-      `}</style>
 
       <CookMode
         open={cookModeOpen}
@@ -542,75 +506,83 @@ const S = {
     borderColor: 'var(--brand)',
   },
 
-  // Overlay + Modal
+  // Overlay + Modal (bottom sheet) — V21 éditorial
   overlay: {
     position: 'fixed',
     top: 0, left: 0, right: 0, bottom: 0,
-    background: 'rgba(0,0,0,0.45)',
-    backdropFilter: 'blur(6px)',
+    background: 'rgba(24,28,22,0.45)',
+    backdropFilter: 'blur(4px)',
+    WebkitBackdropFilter: 'blur(4px)',
     zIndex: 1100,
   },
   modal: {
     position: 'fixed',
     bottom: 0, left: 0, right: 0,
-    background: 'var(--surface)',
-    backdropFilter: 'blur(24px)',
-    WebkitBackdropFilter: 'blur(24px)',
-    borderRadius: '28px 28px 0 0',
+    background: 'var(--paper)',
+    borderTop: '1.5px solid var(--ink-1)',
+    borderRadius: '6px 6px 0 0',
     padding: '0 24px 36px',
     zIndex: 1101,
     maxHeight: '80vh',
     overflowY: 'auto',
-    boxShadow: '0 -8px 40px rgba(0,0,0,0.15)',
+    boxShadow: '0 -18px 50px -20px rgba(24,28,22,0.4)',
+    fontFamily: 'var(--font-text)',
   },
   modalTopBar: {
     width: 40,
     height: 4,
-    background: '#d1d5db',
-    borderRadius: 4,
-    margin: '12px auto 16px',
+    background: 'rgba(24,28,22,0.22)',
+    borderRadius: 2,
+    margin: '12px auto 18px',
   },
   modalHeader: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginBottom: 20,
+    marginBottom: 22,
   },
-  modalMealType: {
-    display: 'inline-block',
-    fontSize: 10,
-    fontWeight: 700,
-    padding: '3px 10px',
-    borderRadius: 8,
+  modalMealTypeWrap: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 8,
+    fontFamily: 'var(--font-mono)',
+    fontSize: 11,
+    fontWeight: 600,
     textTransform: 'uppercase',
-    letterSpacing: 0.4,
-    fontFamily: "var(--font-text)",
+    letterSpacing: '0.08em',
+    color: 'var(--ink-2)',
+  },
+  modalMealBar: {
+    width: 16,
+    height: 7,
+    borderRadius: 2,
+    flexShrink: 0,
   },
   modalTitle: {
-    fontFamily: "var(--font-editorial)",
-    fontSize: 24,
-    fontWeight: 700,
-    color: 'var(--forest-800, #2d5a2d)',
-    margin: '8px 0 4px',
-    letterSpacing: -0.02,
+    fontFamily: 'var(--font-display)',
+    fontSize: 25,
+    fontWeight: 600,
+    color: 'var(--ink-1)',
+    margin: '10px 0 5px',
+    letterSpacing: '-0.01em',
     lineHeight: 1.2,
   },
   modalMacros: {
+    fontFamily: 'var(--font-mono)',
     fontSize: 12,
-    color: '#6b7280',
+    color: 'var(--ink-3)',
     margin: 0,
-    fontFamily: "var(--font-text)",
+    letterSpacing: '0.02em',
   },
   closeBtn: {
-    border: 'none',
-    background: 'rgba(0,0,0,0.04)',
-    borderRadius: 12,
-    padding: 10,
+    border: '1px solid var(--ink-1)',
+    background: 'transparent',
+    borderRadius: 3,
+    padding: 7,
     cursor: 'pointer',
-    color: '#6b7280',
+    color: 'var(--ink-1)',
     display: 'flex',
     flexShrink: 0,
-    transition: 'all 0.15s',
   },
 
   // Choice buttons
@@ -624,17 +596,17 @@ const S = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    padding: '16px 0',
-    background: 'linear-gradient(135deg, #2d5a2d, #4a7c4a)',
-    color: 'white',
-    border: 'none',
-    borderRadius: 16,
-    fontSize: 15,
+    padding: '15px 0',
+    background: 'var(--terracotta)',
+    color: '#fff',
+    border: '1px solid var(--terracotta)',
+    borderRadius: 3,
+    fontFamily: 'var(--font-mono)',
+    fontSize: 13,
     fontWeight: 600,
+    textTransform: 'uppercase',
+    letterSpacing: '0.06em',
     cursor: 'pointer',
-    fontFamily: "var(--font-text)",
-    boxShadow: '0 4px 16px rgba(45, 90, 45, 0.25)',
-    transition: 'all 0.2s',
   },
   swapBtn: {
     flex: 1,
@@ -642,16 +614,17 @@ const S = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    padding: '16px 0',
+    padding: '15px 0',
     background: 'transparent',
-    color: '#374151',
-    border: '1.5px solid rgba(0,0,0,0.1)',
-    borderRadius: 16,
-    fontSize: 15,
+    color: 'var(--ink-1)',
+    border: '1px solid var(--ink-1)',
+    borderRadius: 3,
+    fontFamily: 'var(--font-mono)',
+    fontSize: 13,
     fontWeight: 600,
+    textTransform: 'uppercase',
+    letterSpacing: '0.06em',
     cursor: 'pointer',
-    fontFamily: "var(--font-text)",
-    transition: 'all 0.2s',
   },
 
   // Swap section
@@ -662,46 +635,49 @@ const S = {
   },
   swapInput: {
     width: '100%',
-    padding: '14px 16px',
-    border: '1.5px solid rgba(74, 124, 74, 0.15)',
-    borderRadius: 14,
+    padding: '13px 14px',
+    border: '1px solid var(--ink-1)',
+    borderRadius: 3,
     fontSize: 14,
-    fontFamily: "var(--font-text)",
-    color: 'var(--ink, #1f281f)',
+    fontFamily: 'var(--font-text)',
+    color: 'var(--ink-1)',
     outline: 'none',
-    background: 'var(--surface)',
+    background: 'var(--paper)',
     boxSizing: 'border-box',
-    transition: 'border-color 0.2s',
   },
   generateBtn: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    padding: '16px 0',
-    background: 'linear-gradient(135deg, #2d5a2d, #4a7c4a)',
-    color: 'white',
-    border: 'none',
-    borderRadius: 16,
-    fontSize: 15,
+    padding: '15px 0',
+    background: 'var(--terracotta)',
+    color: '#fff',
+    border: '1px solid var(--terracotta)',
+    borderRadius: 3,
+    fontFamily: 'var(--font-mono)',
+    fontSize: 13,
     fontWeight: 600,
+    textTransform: 'uppercase',
+    letterSpacing: '0.06em',
     cursor: 'pointer',
-    fontFamily: "var(--font-text)",
-    boxShadow: '0 4px 16px rgba(45, 90, 45, 0.25)',
   },
   swapError: {
-    color: '#dc2626',
+    color: 'var(--state-expired, #B23A2E)',
     fontSize: 13,
     margin: 0,
     textAlign: 'center',
+    fontFamily: 'var(--font-text)',
   },
   cancelLink: {
     background: 'none',
     border: 'none',
-    color: '#6b7280',
-    fontSize: 13,
+    color: 'var(--ink-3)',
+    fontFamily: 'var(--font-mono)',
+    fontSize: 11,
+    textTransform: 'uppercase',
+    letterSpacing: '0.06em',
     cursor: 'pointer',
-    fontFamily: "var(--font-text)",
     padding: '4px 0',
     textAlign: 'center',
   },
@@ -710,10 +686,9 @@ const S = {
     width: 52,
     height: 52,
     borderRadius: '50%',
-    background: 'linear-gradient(135deg, #2d5a2d, #4a7c4a)',
+    background: 'var(--brand)',
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    boxShadow: '0 4px 16px rgba(45, 90, 45, 0.25)',
   },
 }
