@@ -230,175 +230,203 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
     `}</style>
   )
 
-  // ---- LANDING SCREEN ----
+  const cmStyles = (
+    <style jsx global>{`
+      .cm-backdrop { position: fixed; inset: 0; z-index: 2000; background: rgba(24,28,22,0.5); display: flex; align-items: center; justify-content: center; padding: 24px; font-family: var(--font-text); }
+      .cm-modal { position: relative; width: 680px; max-width: 100%; max-height: 92vh; background: var(--paper); border: 1.5px solid var(--ink-1); border-radius: 3px; box-shadow: 0 18px 50px -18px rgba(24,28,22,0.45), 0 4px 14px -8px rgba(24,28,22,0.3); display: flex; flex-direction: column; overflow: hidden; }
+      .cm-x { position: absolute; top: 13px; right: 13px; z-index: 3; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; background: var(--paper); border: 1px solid var(--ink-1); border-radius: 3px; font-family: var(--font-mono); font-size: 16px; line-height: 1; color: var(--ink-1); cursor: pointer; transition: background .12s, color .12s; }
+      .cm-x:hover { background: var(--ink-1); color: var(--paper); }
+      .cm-body { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden; }
+      .cm-head { padding: 16px 30px 14px; border-bottom: 1px solid var(--ink-1); }
+      .cm-eyebrow { display: inline-block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; background: var(--terracotta); color: #fff; padding: 4px 9px; border-radius: 3px; }
+      .cm-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(21px,3.1vw,26px); line-height: 1.04; letter-spacing: -.02em; margin: 10px 0 0; max-width: 580px; color: var(--ink-1); padding-right: 36px; }
+      .cm-rule { height: 3px; width: 80px; background: var(--terracotta); margin: 11px 0 0; }
+      .cm-desc { font-family: var(--font-editorial); font-style: italic; font-size: 14px; line-height: 1.34; color: var(--ink-2); margin-top: 8px; max-width: 580px; }
+      .cm-meta { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .03em; color: var(--ink-3); text-transform: uppercase; margin-top: 8px; }
+      .cm-seclabel { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; background: var(--ink-1); color: var(--paper); padding: 4px 9px; border-radius: 3px; }
+      .cm-persona { border-bottom: 1px solid var(--ink-1); }
+      .cm-persona-head { padding: 11px 30px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .cm-same { font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-3); }
+      .cm-split { display: grid; margin-top: 7px; }
+      .cm-col { padding: 10px 30px; position: relative; }
+      .cm-col + .cm-col { border-left: 1px solid var(--ink-1); }
+      .cm-who { display: inline-block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; background: var(--ink-1); color: var(--paper); padding: 4px 10px; border-radius: 3px; }
+      .cm-kcal { font-family: var(--font-display); font-weight: 600; font-size: clamp(36px,5.4vw,46px); line-height: .86; letter-spacing: -.03em; margin-top: 8px; color: var(--ink-1); }
+      .cm-kcal .cm-u { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: .04em; color: var(--ink-3); margin-left: 6px; vertical-align: 5px; text-transform: uppercase; }
+      .cm-macros { margin-top: 8px; border-top: 1px solid var(--line); }
+      .cm-macro { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; border-bottom: 1px solid var(--line); }
+      .cm-ml { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-3); }
+      .cm-mv { font-family: var(--font-mono); font-weight: 600; font-size: 13px; color: var(--ink-1); }
+      .cm-tick { height: 3px; width: 42px; margin-top: 8px; }
+      .cm-col.j .cm-tick { background: var(--terracotta); }
+      .cm-col.z .cm-tick { background: var(--olive); }
+      .cm-sec { padding: 12px 30px 13px; }
+      .cm-sh { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+      .cm-count { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .03em; color: var(--ink-3); text-transform: uppercase; }
+      .cm-ingt { width: 100%; border-collapse: collapse; }
+      .cm-ingt thead th { font-family: var(--font-mono); font-size: 9.5px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); text-align: right; padding: 0 0 6px; border-bottom: 1px solid var(--ink-1); }
+      .cm-ingt thead th.cm-h-n { text-align: left; }
+      .cm-ingt tbody td { padding: 3px 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+      .cm-ingt tbody tr:last-child td { border-bottom: none; }
+      .cm-n { font-family: var(--font-display); font-weight: 500; font-size: 13.5px; line-height: 1.05; color: var(--ink-1); text-align: left; padding-right: 12px; }
+      .cm-q { font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; color: var(--ink-1); text-align: right; width: 74px; white-space: nowrap; }
+      .cm-q.z { color: var(--ink-2); }
+      .cm-q.common { color: var(--ink-3); text-align: right; }
+      .cm-foot { padding: 11px 30px; border-top: 1px solid var(--ink-1); display: flex; gap: 12px; align-items: center; background: var(--paper); flex-wrap: wrap; }
+      .cm-btn { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .04em; text-transform: uppercase; border-radius: 3px; padding: 11px 22px; cursor: pointer; border: 1px solid transparent; transition: filter .12s, background .12s, color .12s; }
+      .cm-btn-primary { background: var(--terracotta); color: #fff; font-weight: 600; border-color: var(--terracotta); display: flex; align-items: center; justify-content: center; gap: 8px; }
+      .cm-btn-primary:hover { filter: brightness(.94); }
+      .cm-btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+      .cm-cook { flex: 1; }
+      .cm-btn-ghost { background: transparent; color: var(--ink-2); border-color: var(--ink-1); }
+      .cm-btn-ghost:hover { background: var(--ink-1); color: var(--paper); border-color: var(--ink-1); }
+      .cm-regen-row { flex: 1; display: flex; gap: 8px; align-items: center; min-width: 0; }
+      .cm-regen-input { flex: 1; min-width: 0; font-family: var(--font-text); font-size: 13px; color: var(--ink-1); background: var(--surface); border: 1px solid var(--line-strong); border-radius: 3px; padding: 10px 12px; outline: none; }
+      .cm-regen-input:focus { border-color: var(--terracotta); }
+      .cm-regen-done { font-family: var(--font-mono); font-size: 12px; color: var(--brand); margin: 0; }
+      .cm-regen-error { font-family: var(--font-mono); font-size: 11px; color: var(--state-expired, #8A3A20); margin: 6px 0 0; width: 100%; }
+      @media (max-width: 720px) {
+        .cm-backdrop { padding: 0; align-items: stretch; }
+        .cm-modal { width: 100%; max-width: 100%; max-height: 100vh; height: 100vh; border: none; border-radius: 0; }
+        .cm-head, .cm-sec, .cm-persona-head, .cm-col, .cm-foot { padding-left: 20px; padding-right: 20px; }
+      }
+      @media (max-width: 430px) {
+        .cm-split { grid-template-columns: 1fr !important; }
+        .cm-col + .cm-col { border-left: none; border-top: 1px solid var(--ink-1); }
+      }
+    `}</style>
+  )
+
+  // ---- LANDING SCREEN (V21) ----
   if (currentStep === -1) {
+    const persons = mealEntries || []
+    const totalKcal = persons.reduce((s, p) => s + (Number(p.kcal) || 0), 0)
+    const parseQty = (q) => parseFloat(String(q ?? '').replace(',', '.'))
+    const isScalable = (ing) => persons.length >= 2 && totalKcal > 0 && !isNaN(parseQty(ing.quantity))
+    const scaledQty = (ing, p) => {
+      const num = parseQty(ing.quantity)
+      const share = totalKcal ? (Number(p.kcal) || 0) / totalKcal : 1 / Math.max(persons.length, 1)
+      const v = num * share
+      const r = v >= 10 ? Math.round(v) : Math.round(v * 10) / 10
+      return `${r}${ing.unit ? ' ' + ing.unit : ''}`
+    }
+    const nps = recipe?.nutrition_per_serving
+
     return portal(
-      <div style={styles.landingOverlay}>
-        {responsiveStyles}
-        <div className="cook-landing-scroll">
-          <div className="cook-landing-card">
-            {/* Close */}
-            <button onClick={onClose} className="cook-landing-close" aria-label="Fermer">
-              <X size={20} />
-            </button>
+      <div className="cm-backdrop">
+        {cmStyles}
+        <div className="cm-modal" role="dialog" aria-modal="true">
+          <button onClick={onClose} className="cm-x" aria-label="Fermer">×</button>
+          <div className="cm-body">
+            <header className="cm-head">
+              <span className="cm-eyebrow">{persons.length ? 'Du planning' : 'Recette'}</span>
+              <h1 className="cm-title">{recipeName}</h1>
+              <div className="cm-rule" />
+              {recipe.description && <p className="cm-desc">{recipe.description}</p>}
+              {(steps?.length > 0 || totalTime > 0) && (
+                <div className="cm-meta">
+                  {steps?.length > 0 ? `${steps.length} étape${steps.length > 1 ? 's' : ''}` : ''}
+                  {steps?.length > 0 && totalTime > 0 ? ' · ' : ''}
+                  {totalTime > 0 ? `${totalTime} min` : ''}
+                </div>
+              )}
+            </header>
 
-            {/* Header */}
-            <h1 className="cook-landing-title">{recipeName}</h1>
-            <div className="cook-landing-accent" />
-
-            {recipe.description && (
-              <p className="cook-landing-desc">{recipe.description}</p>
-            )}
-
-            {(steps?.length > 0 || totalTime > 0) && (
-              <div className="cook-meta-pill">
-                {steps?.length > 0 && <span>{steps.length} étape{steps.length > 1 ? 's' : ''}</span>}
-                {steps?.length > 0 && totalTime > 0 && <span className="cook-meta-sep">·</span>}
-                {totalTime > 0 && <span>{totalTime} min</span>}
-              </div>
-            )}
-
-            {/* Per-person nutrition from meal plan */}
-            {mealEntries?.length > 0 && (
-              <div className="cook-nutrition-block">
-                <span className="cook-section-label">Nutrition par personne</span>
-                <div className="cook-persons-grid">
-                  {mealEntries.map((entry, i) => (
-                    <div key={i} className="cook-person-card">
-                      <span className="cook-person-name">{entry.person_name || '?'}</span>
-                      <div className="cook-macros-row">
-                        <div style={styles.macroItem}>
-                          <span className="cook-macro-value">{Math.round(entry.kcal || 0)}</span>
-                          <span style={styles.macroLabel}>kcal</span>
-                        </div>
-                        <div style={styles.macroDivider} />
-                        <div style={styles.macroItem}>
-                          <span className="cook-macro-value">{Math.round(entry.protein_g || 0)}g</span>
-                          <span style={styles.macroLabel}>prot</span>
-                        </div>
-                        <div style={styles.macroDivider} />
-                        <div style={styles.macroItem}>
-                          <span className="cook-macro-value">{Math.round(entry.carbs_g || 0)}g</span>
-                          <span style={styles.macroLabel}>gluc</span>
-                        </div>
-                        <div style={styles.macroDivider} />
-                        <div style={styles.macroItem}>
-                          <span className="cook-macro-value">{Math.round(entry.fat_g || 0)}g</span>
-                          <span style={styles.macroLabel}>lip</span>
-                        </div>
+            {persons.length > 0 ? (
+              <section className="cm-persona">
+                <div className="cm-persona-head">
+                  <span className="cm-seclabel">Nutrition par personne</span>
+                  <span className="cm-same">Même plat · {persons.length} portion{persons.length > 1 ? 's' : ''}</span>
+                </div>
+                <div className="cm-split" style={{ gridTemplateColumns: `repeat(${persons.length}, 1fr)` }}>
+                  {persons.map((p, i) => (
+                    <div key={i} className={`cm-col ${i % 2 === 0 ? 'j' : 'z'}`}>
+                      <span className="cm-who">{p.person_name || '?'}</span>
+                      <div className="cm-tick" />
+                      <div className="cm-kcal">{Math.round(p.kcal || 0)}<span className="cm-u">kcal</span></div>
+                      <div className="cm-macros">
+                        <div className="cm-macro"><span className="cm-ml">Protéines</span><span className="cm-mv">{Math.round(p.protein_g || 0)} g</span></div>
+                        <div className="cm-macro"><span className="cm-ml">Glucides</span><span className="cm-mv">{Math.round(p.carbs_g || 0)} g</span></div>
+                        <div className="cm-macro"><span className="cm-ml">Lipides</span><span className="cm-mv">{Math.round(p.fat_g || 0)} g</span></div>
                       </div>
-                      {entry.description && (
-                        <p style={styles.personPortions}>{entry.description}</p>
-                      )}
                     </div>
                   ))}
                 </div>
-                {recipe?.nutrition_source === 'ciqual' && (
-                  <p style={styles.nutritionBadge}>Valeurs calculées · CIQUAL</p>
-                )}
-              </div>
-            )}
-
-            {/* Recipe-level nutrition fallback */}
-            {(!mealEntries?.length) && recipe?.nutrition_per_serving && (
-              <div className="cook-nutrition-block">
-                <span className="cook-section-label">Nutrition par portion</span>
-                <div className="cook-macros-row">
-                  <div style={styles.macroItem}>
-                    <span className="cook-macro-value">{recipe.nutrition_per_serving.kcal || '—'}</span>
-                    <span style={styles.macroLabel}>kcal</span>
-                  </div>
-                  <div style={styles.macroDivider} />
-                  <div style={styles.macroItem}>
-                    <span className="cook-macro-value">{recipe.nutrition_per_serving.protein_g || '—'}g</span>
-                    <span style={styles.macroLabel}>prot</span>
-                  </div>
-                  <div style={styles.macroDivider} />
-                  <div style={styles.macroItem}>
-                    <span className="cook-macro-value">{recipe.nutrition_per_serving.carbs_g || '—'}g</span>
-                    <span style={styles.macroLabel}>gluc</span>
-                  </div>
-                  <div style={styles.macroDivider} />
-                  <div style={styles.macroItem}>
-                    <span className="cook-macro-value">{recipe.nutrition_per_serving.fat_g || '—'}g</span>
-                    <span style={styles.macroLabel}>lip</span>
+              </section>
+            ) : nps ? (
+              <section className="cm-persona">
+                <div className="cm-persona-head"><span className="cm-seclabel">Nutrition par portion</span></div>
+                <div className="cm-split" style={{ gridTemplateColumns: '1fr' }}>
+                  <div className="cm-col j">
+                    <div className="cm-kcal">{nps.kcal ?? '—'}<span className="cm-u">kcal</span></div>
+                    <div className="cm-macros">
+                      <div className="cm-macro"><span className="cm-ml">Protéines</span><span className="cm-mv">{nps.protein_g ?? '—'} g</span></div>
+                      <div className="cm-macro"><span className="cm-ml">Glucides</span><span className="cm-mv">{nps.carbs_g ?? '—'} g</span></div>
+                      <div className="cm-macro"><span className="cm-ml">Lipides</span><span className="cm-mv">{nps.fat_g ?? '—'} g</span></div>
+                    </div>
                   </div>
                 </div>
-                {recipe.nutrition_source === 'ciqual' && (
-                  <p style={styles.nutritionBadge}>Valeurs calculées · CIQUAL</p>
-                )}
-              </div>
-            )}
+              </section>
+            ) : null}
 
-            {/* Ingredients */}
             {ingredients?.length > 0 && (
-              <div className="cook-ingredients-block">
-                <span className="cook-section-label">Ingrédients</span>
-                {ingredients.map((ing, i) => (
-                  <div key={i} className="cook-ing-item">
-                    <span className="cook-ing-dot" />
-                    {ing.quantity && <span className="cook-ing-qty">{ing.quantity} {ing.unit}</span>}
-                    <span>{ing.name}{ing.notes ? ` — ${ing.notes}` : ''}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            <button
-              onClick={() => setCurrentStep(0)}
-              className="cook-start-btn"
-              disabled={!steps?.length}
-            >
-              Commencer la recette
-            </button>
-
-            {/* ── RÉGÉNÉRER (routine Claude) ── */}
-            <div style={styles.regenWrap}>
-              {regenDone ? (
-                <p style={styles.regenDoneText}>
-                  Recette régénérée. Ferme et relance la cuisine pour voir la nouvelle version.
-                </p>
-              ) : !regenOpen ? (
-                <button onClick={() => setRegenOpen(true)} style={styles.regenToggle}>
-                  <RefreshCw size={15} />
-                  Régénérer cette recette
-                </button>
-              ) : (
-                <div style={styles.regenPanel}>
-                  <input
-                    type="text"
-                    value={regenDir}
-                    onChange={e => setRegenDir(e.target.value)}
-                    placeholder="Ex : version plus light, moins de beurre… (optionnel)"
-                    style={styles.regenInput}
-                    onKeyDown={e => e.key === 'Enter' && handleRegenerate()}
-                    disabled={regenLoading}
-                    autoFocus
-                  />
-                  <button onClick={handleRegenerate} disabled={regenLoading} style={styles.regenConfirm}>
-                    {regenLoading ? (
-                      <>
-                        <Loader2 size={15} style={{ animation: 'cm-spin 1s linear infinite' }} />
-                        Claude réfléchit… (30–60s)
-                      </>
-                    ) : (
-                      <>
-                        <RefreshCw size={15} />
-                        Régénérer
-                      </>
-                    )}
-                  </button>
-                  {regenError && <p style={styles.regenError}>{regenError}</p>}
-                  {!regenLoading && (
-                    <button onClick={() => setRegenOpen(false)} style={styles.regenCancel}>
-                      Annuler
-                    </button>
-                  )}
-                  <style jsx global>{`@keyframes cm-spin { from { transform: rotate(0) } to { transform: rotate(360deg) } }`}</style>
+              <section className="cm-sec">
+                <div className="cm-sh">
+                  <span className="cm-seclabel">{persons.length >= 2 ? 'Ingrédients · par personne' : 'Ingrédients'}</span>
+                  <span className="cm-count">{ingredients.length} produit{ingredients.length > 1 ? 's' : ''}</span>
                 </div>
-              )}
-            </div>
+                <table className="cm-ingt">
+                  {persons.length >= 2 && (
+                    <thead><tr><th className="cm-h-n">Ingrédient</th>{persons.map((p, i) => <th key={i}>{p.person_name}</th>)}</tr></thead>
+                  )}
+                  <tbody>
+                    {ingredients.map((ing, i) => (
+                      <tr key={i}>
+                        <td className="cm-n">{ing.name}</td>
+                        {persons.length >= 2 ? (
+                          isScalable(ing)
+                            ? persons.map((p, j) => <td key={j} className={`cm-q${j > 0 ? ' z' : ''}`}>{scaledQty(ing, p)}</td>)
+                            : <td className="cm-q common" colSpan={persons.length}>{ing.quantity ? `${ing.quantity}${ing.unit ? ' ' + ing.unit : ''}` : 'au goût'}{ing.notes ? ` · ${ing.notes}` : ''}</td>
+                        ) : (
+                          <td className="cm-q">{ing.quantity ? `${ing.quantity}${ing.unit ? ' ' + ing.unit : ''}` : 'au goût'}</td>
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </section>
+            )}
           </div>
+
+          <footer className="cm-foot">
+            {regenDone ? (
+              <p className="cm-regen-done">Recette régénérée — ferme et relance la cuisine pour la voir.</p>
+            ) : regenOpen ? (
+              <div className="cm-regen-row">
+                <input
+                  type="text"
+                  value={regenDir}
+                  onChange={e => setRegenDir(e.target.value)}
+                  placeholder="Ex : plus light, moins de beurre… (optionnel)"
+                  className="cm-regen-input"
+                  onKeyDown={e => e.key === 'Enter' && handleRegenerate()}
+                  disabled={regenLoading}
+                  autoFocus
+                />
+                <button onClick={handleRegenerate} disabled={regenLoading} className="cm-btn cm-btn-primary">
+                  {regenLoading ? <><Loader2 size={14} style={{ animation: 'cm-spin 1s linear infinite' }} /> …</> : 'Régénérer'}
+                </button>
+                {!regenLoading && <button onClick={() => setRegenOpen(false)} className="cm-btn cm-btn-ghost">Annuler</button>}
+                <style jsx global>{`@keyframes cm-spin { from { transform: rotate(0) } to { transform: rotate(360deg) } }`}</style>
+              </div>
+            ) : (
+              <>
+                <button onClick={() => setCurrentStep(0)} disabled={!steps?.length} className="cm-btn cm-btn-primary cm-cook">✦ Cuisiner</button>
+                <button onClick={() => setRegenOpen(true)} className="cm-btn cm-btn-ghost">Changer le plat</button>
+              </>
+            )}
+            {regenError && <p className="cm-regen-error">{regenError}</p>}
+          </footer>
         </div>
       </div>
     )
