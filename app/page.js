@@ -44,6 +44,11 @@ const stockStatusLabel = (it) => {
   return it.days != null ? `${it.days} j` : '—'
 }
 
+// Petit squelette inline (rendu progressif des cartes de l'accueil).
+const Sk = ({ w = 60, h = 14, radius = 6, style }) => (
+  <span className="skeleton" style={{ display: 'inline-block', width: w, height: h, borderRadius: radius, verticalAlign: 'middle', ...style }} />
+)
+
 export default function Home() {
   const router = useRouter()
   const [user, setUser] = useState(null)
@@ -60,6 +65,7 @@ export default function Home() {
   const [showAddForm, setShowAddForm] = useState(false)
   const [showOcr, setShowOcr] = useState(false)
   const [shoppingStats, setShoppingStats] = useState({ total: 0, checked: 0, uncheckedByCategory: [], nextItems: [] })
+  const [ready, setReady] = useState({}) // sections prêtes : { plan, stock, nutri, goals, shopping }
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -75,6 +81,7 @@ export default function Home() {
         if (cached.goals) setGoals(cached.goals)
         if ('latestWeight' in cached) setLatestWeight(cached.latestWeight)
         if (cached.latestImportId) setLatestImportId(cached.latestImportId)
+        setReady({ plan: true, stock: true, nutri: true, goals: true, shopping: true })
         setLoading(false)
       }
       loadAll()
@@ -102,7 +109,7 @@ export default function Home() {
       const d = await r.json()
       const imp = pickImportForToday(d.imports)
       if (imp) setLatestImportId(imp.id)
-    } catch {}
+    } catch {} finally { setReady(p => ({ ...p, plan: true })) }
   }
 
   async function loadStock() {
@@ -134,7 +141,7 @@ export default function Home() {
       items.sort((a, b) => (rank[a.status] - rank[b.status]) || ((a.days ?? 9999) - (b.days ?? 9999)))
       const urgentItems = items.filter(i => i.status !== 'ok').slice(0, 5)
       setStockStats({ total: data.length, expiring, expired, urgentItems, items })
-    } catch {}
+    } catch {} finally { setReady(p => ({ ...p, stock: true })) }
   }
 
   async function loadNutrition() {
@@ -151,7 +158,7 @@ export default function Home() {
         bp[p].carbs_g += e.carbs_g || 0; bp[p].fat_g += e.fat_g || 0
       }
       setNutritionToday(bp)
-    } catch {}
+    } catch {} finally { setReady(p => ({ ...p, nutri: true })) }
   }
 
   async function loadGoals() {
@@ -159,7 +166,7 @@ export default function Home() {
       const res = await authFetch('/api/nutrition/goals')
       const data = await res.json()
       if (data.goals) setGoals(data.goals)
-    } catch {}
+    } catch {} finally { setReady(p => ({ ...p, goals: true })) }
   }
 
   async function loadWeight() {
@@ -204,7 +211,7 @@ export default function Home() {
         .slice(0, 4)
         .map(([name, count]) => ({ name, count }))
       setShoppingStats({ total: items.length, checked, uncheckedByCategory, nextItems })
-    } catch {}
+    } catch {} finally { setReady(p => ({ ...p, shopping: true })) }
   }
 
   const pg = goals.find(g => g.person_name === person) || goals[0] || {}
@@ -216,16 +223,6 @@ export default function Home() {
   const surveiller = stockStats.expiring + stockStats.expired
   const coursesLeft = shoppingStats.total > 0 ? shoppingStats.total - shoppingStats.checked : 0
   const filteredStock = (stockStats.items || []).filter(it => stockTab === 'all' || it.status === stockTab).slice(0, 6)
-
-  if (loading) return (
-    <div className="v21-home" aria-busy="true" aria-label="Chargement de Myko">
-      <div className="skeleton" style={{ height: 150, borderRadius: 'var(--r-card)' }} />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14, marginTop: 24 }}>
-        {[0, 1, 2].map(i => <div key={i} className="skeleton" style={{ height: 96, borderRadius: 'var(--r-card)' }} />)}
-      </div>
-      <div className="skeleton" style={{ height: 220, borderRadius: 'var(--r-card)', marginTop: 24 }} />
-    </div>
-  )
 
   return (
     <>
@@ -250,18 +247,18 @@ export default function Home() {
         <div className="v21-stats">
           <Link href="/pantry" className="v21-stat">
             <span className="v21-stat-l">Garde-manger</span>
-            <span className="v21-stat-v">{stockStats.total}</span>
-            <span className="v21-stat-s">{stockStats.total > 1 ? 'produits en stock' : 'produit en stock'}</span>
+            <span className="v21-stat-v">{ready.stock ? stockStats.total : <Sk w={30} h={24} />}</span>
+            <span className="v21-stat-s">{ready.stock ? (stockStats.total > 1 ? 'produits en stock' : 'produit en stock') : <Sk w={90} h={10} />}</span>
           </Link>
           <Link href="/courses" className="v21-stat">
             <span className="v21-stat-l">Courses</span>
-            <span className="v21-stat-v">{coursesLeft}</span>
-            <span className="v21-stat-s">{shoppingStats.total > 0 ? `restants · ${shoppingStats.checked}/${shoppingStats.total}` : 'rien à acheter'}</span>
+            <span className="v21-stat-v">{ready.shopping ? coursesLeft : <Sk w={30} h={24} />}</span>
+            <span className="v21-stat-s">{ready.shopping ? (shoppingStats.total > 0 ? `restants · ${shoppingStats.checked}/${shoppingStats.total}` : 'rien à acheter') : <Sk w={90} h={10} />}</span>
           </Link>
-          <Link href="/pantry" className={`v21-stat ${surveiller > 0 ? 'alert' : ''}`}>
+          <Link href="/pantry" className={`v21-stat ${ready.stock && surveiller > 0 ? 'alert' : ''}`}>
             <span className="v21-stat-l">À surveiller</span>
-            <span className="v21-stat-v">{surveiller}</span>
-            <span className="v21-stat-s">{surveiller > 0 ? 'à consommer vite' : 'rien ne périme'}</span>
+            <span className="v21-stat-v">{ready.stock ? surveiller : <Sk w={30} h={24} />}</span>
+            <span className="v21-stat-s">{ready.stock ? (surveiller > 0 ? 'à consommer vite' : 'rien ne périme') : <Sk w={90} h={10} />}</span>
           </Link>
         </div>
 
@@ -270,7 +267,13 @@ export default function Home() {
           {/* Colonne gauche — Repas */}
           <section className="v21-col v21-col-main">
             <div className="v21-bh"><span className="v21-bl">Repas — aujourd'hui</span><Link href="/planning" className="v21-link">Semaine →</Link></div>
-            {latestImportId ? (
+            {!ready.plan && !latestImportId ? (
+              <div style={{ display: 'grid', gap: 10, paddingTop: 12 }}>
+                <Sk w="100%" h={56} radius={3} />
+                <Sk w="100%" h={56} radius={3} />
+                <Sk w="100%" h={56} radius={3} />
+              </div>
+            ) : latestImportId ? (
               <TodayMeals importId={latestImportId} />
             ) : (
               <div className="v21-empty">
@@ -283,8 +286,10 @@ export default function Home() {
           {/* Colonne droite — Courses puis Nutrition */}
           <section className="v21-col v21-col-side">
             <div className="v21-sub">
-              <div className="v21-bh"><span className="v21-bl">Courses</span>{shoppingStats.total > 0 && <Link href="/courses" className="v21-link">Ouvrir →</Link>}</div>
-              {shoppingStats.total > 0 ? (
+              <div className="v21-bh"><span className="v21-bl">Courses</span>{ready.shopping && shoppingStats.total > 0 && <Link href="/courses" className="v21-link">Ouvrir →</Link>}</div>
+              {!ready.shopping ? (
+                <><Sk w={88} h={28} style={{ marginBottom: 10 }} /><Sk w="100%" h={8} radius={4} /></>
+              ) : shoppingStats.total > 0 ? (
                 <>
                   <div className="v21-bignum">{shoppingStats.checked} / {shoppingStats.total}</div>
                   <div className="v21-prog"><div className="v21-prog-fill" style={{ width: `${(shoppingStats.checked / shoppingStats.total) * 100}%` }} /></div>
@@ -303,7 +308,11 @@ export default function Home() {
 
             <div className="v21-sub v21-sub-divided">
               <div className="v21-bh"><span className="v21-bl">Nutrition</span><PersonSelector selected={person} onChange={setPerson} /></div>
-              {pg.target_calories ? (
+              {!(ready.goals && ready.nutri) ? (
+                <div className="v21-macros">
+                  {[0, 1, 2, 3].map(i => <Sk key={i} w="100%" h={26} radius={4} style={{ marginBottom: 8 }} />)}
+                </div>
+              ) : pg.target_calories ? (
                 <div className="v21-macros">
                   <NutritionBar label="kcal" value={pn.kcal} target={pg.target_calories} color="var(--brand)" />
                   <NutritionBar label="Prot" value={pn.protein_g} target={pg.target_protein_g} unit="g" color="#3b82f6" />
@@ -343,9 +352,13 @@ export default function Home() {
         <section className="v21-ledger">
           <div className="v21-ledger-h">
             <h2 className="v21-ledger-title">Garde-manger</h2>
-            <span className="v21-ledger-c">{stockStats.total} produit{stockStats.total !== 1 ? 's' : ''} · {surveiller} à surveiller</span>
+            <span className="v21-ledger-c">{ready.stock ? <>{stockStats.total} produit{stockStats.total !== 1 ? 's' : ''} · {surveiller} à surveiller</> : <Sk w={150} h={11} />}</span>
           </div>
-          {stockStats.total > 0 ? (
+          {!ready.stock ? (
+            <div className="v21-its" style={{ paddingTop: 12 }}>
+              {[0, 1, 2, 3].map(i => <Sk key={i} w="100%" h={42} radius={3} style={{ display: 'block', marginBottom: 8 }} />)}
+            </div>
+          ) : stockStats.total > 0 ? (
             <>
               <div className="v21-tabs" role="tablist" aria-label="Filtrer le garde-manger">
                 {STOCK_TABS.map(t => (
