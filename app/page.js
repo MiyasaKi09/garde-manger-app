@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
+import { readCache, writeCache } from '@/lib/pageCache'
 import NutritionBar from '@/components/ui/NutritionBar'
 import PersonSelector from '@/components/ui/PersonSelector'
 import TodayMeals from './planning/components/TodayMeals'
@@ -65,6 +66,17 @@ export default function Home() {
       const user = session?.user
       if (!user) { router.push('/login'); return }
       setUser(user)
+      // Rendu instantané du dernier tableau de bord connu (reload/revisite).
+      const cached = readCache('home')
+      if (cached) {
+        if (cached.stockStats) setStockStats(cached.stockStats)
+        if (cached.shoppingStats) setShoppingStats(cached.shoppingStats)
+        if (cached.nutritionToday) setNutritionToday(cached.nutritionToday)
+        if (cached.goals) setGoals(cached.goals)
+        if ('latestWeight' in cached) setLatestWeight(cached.latestWeight)
+        if (cached.latestImportId) setLatestImportId(cached.latestImportId)
+        setLoading(false)
+      }
       loadAll()
     })
   }, [])
@@ -73,10 +85,16 @@ export default function Home() {
   useEffect(() => { if (user) loadWeight() }, [person])
 
   async function loadAll() {
-    setLoading(true)
+    if (!readCache('home')) setLoading(true) // pas de skeleton si on a déjà un cache
     await Promise.all([loadPlan(), loadStock(), loadNutrition(), loadGoals(), loadWeight(), loadShopping()])
     setLoading(false)
   }
+
+  // Mémorise le tableau de bord (rendu instantané au prochain chargement).
+  useEffect(() => {
+    if (loading) return
+    writeCache('home', { stockStats, shoppingStats, nutritionToday, goals, latestWeight, latestImportId })
+  }, [loading, stockStats, shoppingStats, nutritionToday, goals, latestWeight, latestImportId])
 
   async function loadPlan() {
     try {
