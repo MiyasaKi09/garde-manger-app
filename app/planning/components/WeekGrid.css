@@ -45,10 +45,17 @@
 .wg-cell { position: relative; padding: 13px 26px 13px 14px; min-width: 0; }
 .wg-dish-btn { appearance: none; -webkit-appearance: none; border: 0; background: none; box-shadow: none; outline: none; padding: 0; margin: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; min-width: 0; display: flex; align-items: flex-start; gap: 7px; width: 100%; }
 .wg-dish-btn:disabled { cursor: default; }
-.wg-dish { font-family: var(--font-display); font-weight: 500; font-size: 15px; line-height: 1.24; letter-spacing: -0.005em; color: var(--ink-1); display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.wg-dish { font-family: var(--font-display); font-weight: 500; font-size: 14.5px; line-height: 1.26; letter-spacing: -0.005em; color: var(--ink-1); display: block; }
 .wg-dish em { font-style: italic; font-weight: 500; color: var(--ink-2); }
 .wg-dish-btn:hover:not(:disabled) .wg-dish { color: var(--terracotta); }
 .wg-empty { font-family: var(--font-mono); font-size: 13px; color: var(--ink-3); }
+
+/* Plat spécial de la semaine : déjeuner/dîner où Julien et Zoé divergent
+   (carné / végé). Accent prune distinct + la version de l'autre convive. */
+.wg-special { background: rgba(122, 90, 166, 0.05); }
+.wg-special::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #7A5AA6; }
+.wg-alt { display: block; margin-top: 7px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.35; color: #7A5AA6; }
+.wg-alt .wg-alt-k { text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-right: 5px; }
 
 /* Coche « cuisiné » : discrète en coin, pleine au survol / si faite */
 .wg-check { position: absolute; top: 9px; right: 8px; width: 15px; height: 15px; border-radius: 3px; padding: 0; border: 1.5px solid var(--line-strong); background: var(--paper); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0.28; transition: opacity 0.15s ease, background 0.15s ease, border-color 0.15s ease; }

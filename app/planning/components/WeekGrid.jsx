@@ -16,6 +16,11 @@ function extractDishName(descriptions) {
   return s.replace(/\s*\((?:portion|part)[^)]*\)\s*$/i, '').trim()
 }
 
+// Nom de plat d'une ligne de repas (surnom court sinon description nettoyée).
+function dishOf(m) {
+  return (m?.short_label || '').trim() || extractDishName([m?.description])
+}
+
 // La 2e proposition (après la 1re virgule) en italique, comme la maquette
 // (« Niçoise revisitée, sardines grillées »).
 function renderDishName(name) {
@@ -156,23 +161,30 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
 
   function renderCell(dateStr, type) {
     const dayMeals = mealsByDate[dateStr] || []
-    const typeMeals = filterByPerson(dayMeals.filter(m => m.meal_type === type))
+    const allTypeMeals = dayMeals.filter(m => m.meal_type === type)
+    const typeMeals = filterByPerson(allTypeMeals)
     const label = MEAL_LABELS[type]
 
     if (!typeMeals.length) {
       return <div key={type} className="wg-cell" data-type={label}><span className="wg-empty">—</span></div>
     }
 
-    const descriptions = typeMeals.map(m => m.description)
     const julienRow = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-    const dishName = (julienRow?.short_label || '').trim() || extractDishName(descriptions)
+    const dishName = dishOf(julienRow)
     const isGenerating = generatingFor === dishName
     const clickable = type === 'dejeuner' || type === 'diner'
     const done = doneSet.has(`${typeMeals[0]?.meal_date}|${type}`)
     const dishStyle = done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined
 
+    // Plat spécial = déjeuner/dîner où les convives ont des plats DIFFÉRENTS
+    // (le « carné pour Julien / végé pour Zoé » hebdomadaire). On compare les
+    // surnoms (donc une simple différence de portion ne compte pas).
+    const labels = [...new Set(allTypeMeals.map(dishOf))]
+    const isSpecial = (type === 'dejeuner' || type === 'diner') && labels.length > 1
+    const altMeal = isSpecial ? allTypeMeals.find(m => dishOf(m) !== dishName) : null
+
     return (
-      <div key={type} className="wg-cell" data-type={label} style={{ opacity: generatingFor && !isGenerating ? 0.4 : 1 }}>
+      <div key={type} className={`wg-cell${isSpecial ? ' wg-special' : ''}`} data-type={label} style={{ opacity: generatingFor && !isGenerating ? 0.4 : 1 }}>
         {clickable ? (
           <button
             onClick={() => handleMealClick(typeMeals, dishName)}
@@ -187,6 +199,9 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
           </button>
         ) : (
           <span className="wg-dish wg-dish-static" style={dishStyle} title={dishName}>{renderDishName(dishName)}</span>
+        )}
+        {isSpecial && person === 'all' && altMeal && (
+          <span className="wg-alt"><span className="wg-alt-k">{altMeal.person_name}</span>{renderDishName(dishOf(altMeal))}</span>
         )}
         <button
           onClick={(e) => { e.stopPropagation(); toggleDone(typeMeals, type) }}
