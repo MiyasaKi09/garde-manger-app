@@ -119,13 +119,14 @@ function fmtIngredient(it, factor) {
 /* ───────── planification intelligente (Claude) ───────── */
 const SYSTEM_PROMPT = `Tu es chef spécialiste du batch cooking et de la sécurité alimentaire. On te donne les déjeuners (lundi→vendredi) d'une semaine, DÉJÀ choisis : tu ne changes pas les plats, tu planifies seulement QUAND les cuisiner à l'avance et COMMENT les conserver.
 
-Objectif : le MOINS de sessions de cuisine possible, sans jamais sacrifier la fraîcheur ni la sécurité alimentaire.
+Objectif : un bon ÉQUILIBRE entre peu de sessions ET fraîcheur. Vise au plus ~3 jours entre la cuisson et la consommation : il vaut mieux 2 sessions que garder un plat 5 jours au frigo.
 
 Règles :
-- Plats qui se gardent bien (mijotés, daubes, currys, dahl, soupes/veloutés, plats en sauce, légumineuses, plats au four type gratin/lasagne) OU qui se congèlent : cuisiner la veille du lundi (cook_sunday) pour toute la semaine. Si des portions sont mangées plus de ~4 jours après la cuisson, conseiller de CONGELER ces portions et de les sortir la veille.
-- Plats fragiles NON congelables : poisson/fruits de mer cuits ≈2 j, salades/crudités/tartines/plats crus ≈1–2 j, œufs ≈3 j. Les cuisiner dans une session d'appoint EN SEMAINE, au plus tôt 2 j avant et au plus tard la veille du jour où ils sont mangés.
+- Fais en général DEUX sessions : une le dimanche (cook_sunday) pour les déjeuners du DÉBUT de semaine (lundi→mercredi), et une session d'appoint en MILIEU de semaine (ex. le mercredi) pour la FIN de semaine (jeudi→vendredi). Ne cuisine PAS tout le dimanche pour le vendredi (5 jours, c'est trop long).
+- Exception : un mijoté robuste et meilleur réchauffé (bourguignon, daube, dahl, currys) PEUT être cuisiné le dimanche même pour le milieu de semaine.
+- Plats fragiles NON congelables (poisson/fruits de mer ≈2 j, salades/crudités/plats crus ≈1–2 j, œufs ≈3 j) : à cuisiner au plus près du jour où ils sont mangés (session d'appoint), jamais le dimanche pour la fin de semaine.
 - cook_date ∈ allowed_cook_dates, et TOUJOURS ≤ au premier jour où le plat est mangé.
-- Regroupe les cuissons sur les mêmes jours pour limiter le nombre de sessions.
+- Regroupe les plats d'une même tranche de semaine sur le MÊME jour de cuisine (2 sessions, pas 5).
 - keeps_days = conservation frigo réaliste (entier). freezable = booléen. conservation = phrase COURTE, concrète, en français (ex : « Se garde 5 j au frigo, encore meilleur réchauffé » ou « Congèle les portions de vendredi, sors-les la veille »). reheat = consigne de réchauffage courte et adaptée. prep_minutes = temps de cuisson estimé du lot (entier).
 
 Réponds UNIQUEMENT en JSON valide, sans texte autour, en RÉUTILISANT EXACTEMENT l'id fourni pour chaque plat : {"dishes":[{"id":"0","cook_date":"YYYY-MM-DD","keeps_days":5,"freezable":true,"conservation":"…","reheat":"…","prep_minutes":35}]}`
@@ -137,7 +138,10 @@ function extractJson(text) {
   try { return JSON.parse(text.slice(a, b + 1)) } catch { return null }
 }
 async function scheduleWithClaude(dishesInput, cookSunday, allowedDates) {
-  if (!process.env.ANTHROPIC_API_KEY) return null
+  if (!process.env.ANTHROPIC_API_KEY) {
+    console.error('[batch] ANTHROPIC_API_KEY absente en prod — repli sur les règles')
+    return null
+  }
   try {
     const payload = { cook_sunday: cookSunday, allowed_cook_dates: allowedDates, dishes: dishesInput }
     const msg = await anthropic.messages.create({
@@ -157,7 +161,11 @@ async function scheduleWithClaude(dishesInput, cookSunday, allowedDates) {
       const id = d?.id != null ? String(d.id) : null
       if (id != null) map.set(id, d)
     }
-    return map.size ? map : null
+    if (!map.size) {
+      console.error('[batch] Claude: dishes sans id exploitable —', JSON.stringify(json.dishes).slice(0, 200))
+      return null
+    }
+    return map
   } catch (e) {
     console.error('[batch] Claude indisponible:', e?.message || e)
     return null
@@ -224,15 +232,18 @@ export async function POST(request) {
   groupList.forEach(([key, g], i) => {
     const eats = [...g.eats].sort()
     const earliest = eats[0]
+    const latest = eats[eats.length - 1]
     const prof = classifyDish(g.name)
 
-    // base déterministe
-    let cookDate = prof.freeze ? cookSunday : (() => {
-      let c = addDays(eats[eats.length - 1], -prof.keeps)
-      if (c < cookSunday) c = cookSunday
-      if (c > earliest) c = earliest
-      return c
-    })()
+    // base déterministe : on évite de garder un plat trop longtemps. Fenêtre de
+    // fraîcheur ~3 j → session du dimanche pour le début de semaine (lun→mer),
+    // session d'appoint le mercredi pour la fin de semaine (jeu→ven). On ne
+    // cuisine jamais après le 1er repas du plat.
+    const FRESH = 3
+    const midweek = addDays(cookSunday, 3)
+    let cookDate
+    if (daysBetween(cookSunday, latest) <= FRESH) cookDate = cookSunday
+    else cookDate = midweek <= earliest ? midweek : earliest
     let entry = {
       cook_date: cookDate,
       keeps_days: prof.keeps,
