@@ -69,19 +69,48 @@ function WeightCurve({ weights, target }) {
   if (pts.length === 0 && !target) {
     return <p className="v21-next" style={{ marginTop: 0 }}>Définis un objectif de poids et ajoute des mesures (rail à gauche) pour suivre ta courbe.</p>
   }
+  const dayMs = 86400000
+  const toDay = d => Math.round(new Date(d).getTime() / dayMs)
+  const baseDay = pts.length ? toDay(pts[0].date) : toDay(new Date().toISOString().split('T')[0])
+  const ptDays = pts.map(p => toDay(p.date) - baseDay)
+  const lastDay = pts.length ? ptDays[ptDays.length - 1] : 0
+  const lastW = pts.length ? pts[pts.length - 1].weight_kg : null
+
+  // Prévision réaliste vers l'objectif : pente récente (sinon 0,5 kg/sem),
+  // bornée à 0,25–1 kg/sem, horizon max 150 jours.
+  let fc = null
+  if (target != null && lastW != null && Math.abs(lastW - target) > 0.1) {
+    const dir = target < lastW ? -1 : 1
+    let rate
+    if (pts.length >= 2) {
+      const slope = (lastW - pts[0].weight_kg) / Math.max(1, lastDay - ptDays[0])
+      rate = (Math.sign(slope) === dir && Math.abs(slope) > 0.002) ? Math.abs(slope) : 0.5 / 7
+    } else {
+      rate = 0.5 / 7
+    }
+    rate = Math.min(1 / 7, Math.max(0.25 / 7, rate))
+    const days = Math.abs(lastW - target) / rate
+    const maxH = 150
+    fc = days <= maxH
+      ? { day: lastDay + days, w: target, reached: true }
+      : { day: lastDay + maxH, w: lastW + dir * rate * maxH, reached: false }
+  }
+
+  const maxDay = Math.max(lastDay, fc ? fc.day : lastDay, 1)
   const W = 800, H = 200, padL = 42, padR = 16, padT = 16, padB = 26
-  const vals = pts.map(p => p.weight_kg).concat(target ? [target] : [])
+  const vals = pts.map(p => p.weight_kg)
+  if (target != null) vals.push(target)
+  if (fc) vals.push(fc.w)
   let minV = Math.min(...vals), maxV = Math.max(...vals)
   if (minV === maxV) { minV -= 2; maxV += 2 }
   const span = Math.max(1, maxV - minV)
   minV = minV - span * 0.18
   maxV = maxV + span * 0.18
-  const x = i => pts.length <= 1 ? padL + (W - padL - padR) / 2 : padL + (i / (pts.length - 1)) * (W - padL - padR)
+  const x = day => padL + (day / maxDay) * (W - padL - padR)
   const y = v => padT + (1 - (v - minV) / (maxV - minV)) * (H - padT - padB)
-  const line = pts.length >= 2 ? pts.map((p, i) => `${x(i).toFixed(1)},${y(p.weight_kg).toFixed(1)}`).join(' ') : null
+  const line = pts.length >= 2 ? pts.map((p, i) => `${x(ptDays[i]).toFixed(1)},${y(p.weight_kg).toFixed(1)}`).join(' ') : null
   const yTicks = [maxV, (minV + maxV) / 2, minV]
-  const fmtD = d => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })
-  const xi = pts.length >= 2 ? [...new Set([0, Math.floor((pts.length - 1) / 2), pts.length - 1])] : pts.length === 1 ? [0] : []
+  const fmtDay = day => new Date((baseDay + day) * dayMs).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })
   return (
     <svg className="nut-curve" viewBox={`0 0 ${W} ${H}`}>
       {yTicks.map((t, i) => (
@@ -90,21 +119,28 @@ function WeightCurve({ weights, target }) {
           <text x={padL - 7} y={y(t) + 3} textAnchor="end" className="nut-curve-tk">{t.toFixed(1)}</text>
         </g>
       ))}
-      {target ? (
+      {target != null && (
         <g>
-          <line x1={padL} y1={y(target)} x2={W - padR} y2={y(target)} stroke="var(--terracotta)" strokeWidth="1.4" strokeDasharray="5 5" vectorEffect="non-scaling-stroke" />
-          <text x={W - padR} y={y(target) - 5} textAnchor="end" className="nut-curve-obj">objectif {target} kg</text>
+          <line x1={padL} y1={y(target)} x2={W - padR} y2={y(target)} stroke="#6FB05A" strokeWidth="1.4" strokeDasharray="5 5" vectorEffect="non-scaling-stroke" />
+          <text x={padL + 2} y={y(target) - 5} textAnchor="start" className="nut-curve-obj">objectif {target} kg</text>
         </g>
-      ) : null}
+      )}
+      {fc && lastW != null && (
+        <g>
+          <line x1={x(lastDay)} y1={y(lastW)} x2={x(fc.day)} y2={y(fc.w)} stroke="var(--terracotta)" strokeWidth="2" strokeDasharray="2 5" strokeLinecap="round" vectorEffect="non-scaling-stroke" opacity="0.85" />
+          <circle cx={x(fc.day)} cy={y(fc.w)} r="3.5" fill="var(--terracotta)" />
+          {fc.reached && <text x={x(fc.day)} y={y(fc.w) - 9} textAnchor="end" className="nut-curve-fc">objectif ≈ {fmtDay(fc.day)}</text>}
+        </g>
+      )}
       {line && <polyline points={line} fill="none" stroke="var(--terracotta)" strokeWidth="2" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />}
       {pts.map((p, i) => (
-        <circle key={`d${i}`} cx={x(i)} cy={y(p.weight_kg)} r="3" fill="var(--paper)" stroke="var(--terracotta)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+        <circle key={`d${i}`} cx={x(ptDays[i])} cy={y(p.weight_kg)} r="3" fill="var(--paper)" stroke="var(--terracotta)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
       ))}
-      {xi.map((i, k) => (
-        <text key={`x${k}`} x={x(i)} y={H - 8} textAnchor={xi.length === 1 ? 'middle' : k === 0 ? 'start' : k === xi.length - 1 ? 'end' : 'middle'} className="nut-curve-tk">{fmtD(pts[i].date)}</text>
-      ))}
+      {pts.length >= 1 && <text x={x(0)} y={H - 8} textAnchor="start" className="nut-curve-tk">{fmtDay(0)}</text>}
+      {pts.length >= 2 && lastDay > 0 && <text x={x(lastDay)} y={H - 8} textAnchor="middle" className="nut-curve-tk">{fmtDay(lastDay)}</text>}
+      {fc && fc.reached && <text x={x(fc.day)} y={H - 8} textAnchor="end" className="nut-curve-tk">{fmtDay(fc.day)}</text>}
       {pts.length === 0 && (
-        <text x={padL + (W - padL - padR) / 2} y={H / 2 + 4} textAnchor="middle" className="nut-curve-tk">aucune pesée pour l’instant — ajoute-en pour voir la courbe</text>
+        <text x={padL + (W - padL - padR) / 2} y={H / 2 + 4} textAnchor="middle" className="nut-curve-tk">aucune pesée — ajoute-en pour voir ta progression</text>
       )}
     </svg>
   )

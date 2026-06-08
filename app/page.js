@@ -68,6 +68,9 @@ export default function Home() {
     })
   }, [])
 
+  // recharge le poids du convive sélectionné (permet de saisir Julien ET Zoé)
+  useEffect(() => { if (user) loadWeight() }, [person])
+
   async function loadAll() {
     setLoading(true)
     await Promise.all([loadPlan(), loadStock(), loadNutrition(), loadGoals(), loadWeight(), loadShopping()])
@@ -141,7 +144,7 @@ export default function Home() {
   }
 
   async function loadWeight() {
-    try { const r = await authFetch('/api/nutrition/weight?limit=1'); const d = await r.json(); if (d.entries?.length) setLatestWeight(d.entries[0]) } catch {}
+    try { const r = await authFetch(`/api/nutrition/weight?person=${person}&limit=1`); const d = await r.json(); setLatestWeight(d.entries?.length ? d.entries[0] : null) } catch {}
   }
 
   async function handleAddWeight() {

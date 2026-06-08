@@ -61,7 +61,8 @@
 /* ── Courbe de poids ── */
 .nut-curve { width: 100%; height: auto; display: block; }
 .nut-curve-tk { font-family: var(--font-mono); font-size: 10px; fill: var(--ink-3); }
-.nut-curve-obj { font-family: var(--font-mono); font-size: 10px; fill: var(--terracotta); }
+.nut-curve-obj { font-family: var(--font-mono); font-size: 10px; fill: #5b8f49; }
+.nut-curve-fc { font-family: var(--font-mono); font-size: 10px; fill: var(--terracotta); }
 
 /* ── Repas du jour (ledger) ── */
 .nut-meals { display: flex; flex-direction: column; }
