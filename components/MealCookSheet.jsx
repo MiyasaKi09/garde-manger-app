@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { authFetch } from '@/lib/authFetch'
-import { X, Check, ChefHat, Loader2 } from 'lucide-react'
+import { X, Check, ChefHat, Loader2, Flame } from 'lucide-react'
 
 const MEAL_LABELS = { pdj: 'Petit-déj', dejeuner: 'Déjeuner', diner: 'Dîner', collation: 'Collation' }
 
@@ -24,8 +24,14 @@ export default function MealCookSheet({ open, onClose, meal, onDone }) {
   const mealDate = meal?.entries?.[0]?.meal_date
   const dishName = meal?.dishName
 
+  // Repas « batch » (préparé d'avance) → on réchauffe : pas de déduction de stock,
+  // le stock a déjà été retiré au moment de cuisiner le lot. Sinon, flux normal FEFO.
+  const isBatch = (meal?.entries || []).some(e => e.batch_recipe_id)
+
   useEffect(() => {
-    if (open && meal) loadIngredients()
+    if (!open || !meal) return
+    if (isBatch) { setRows([]); setError(null); setLoading(false) }
+    else loadIngredients()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, meal?.dishName])
 
@@ -114,8 +120,13 @@ export default function MealCookSheet({ open, onClose, meal, onDone }) {
           ))}
         </div>
 
-        <p style={S.sectionLabel}>À déduire du stock</p>
-        {loading ? (
+        <p style={S.sectionLabel}>{isBatch ? "Préparé d'avance" : 'À déduire du stock'}</p>
+        {isBatch ? (
+          <p style={S.reheat}>
+            <Flame size={15} style={{ flexShrink: 0, marginTop: 1 }} />
+            <span>Ce déjeuner a été cuisiné lors du batch — réchauffe ta barquette. Rien à déduire du stock (déjà retiré le jour de cuisine) ; seule la nutrition du jour sera enregistrée.</span>
+          </p>
+        ) : loading ? (
           <p style={S.hint}><Loader2 size={14} style={{ animation: 'mcs-spin 1s linear infinite', verticalAlign: 'middle', marginRight: 6 }} />Chargement…</p>
         ) : rows.length === 0 ? (
           <p style={S.hint}>Aucun ingrédient lié au stock — seule la nutrition sera enregistrée.</p>
@@ -150,7 +161,7 @@ export default function MealCookSheet({ open, onClose, meal, onDone }) {
         {error && <p style={S.err}>{error}</p>}
 
         <button onClick={confirm} disabled={saving || loading} style={{ ...S.confirm, opacity: (saving || loading) ? 0.6 : 1 }}>
-          {saving ? 'Enregistrement…' : <><ChefHat size={18} /> Confirmer — cuisiné</>}
+          {saving ? 'Enregistrement…' : isBatch ? <><Flame size={18} /> Confirmer — réchauffé</> : <><ChefHat size={18} /> Confirmer — cuisiné</>}
         </button>
         <style>{`@keyframes mcs-spin { from { transform: rotate(0) } to { transform: rotate(360deg) } }`}</style>
       </div>
@@ -171,6 +182,7 @@ const S = {
   nutriItem: { fontSize: 13, fontWeight: 600, color: '#4a7c4a', background: 'rgba(74,124,74,0.08)', borderRadius: 8, padding: '5px 10px' },
   sectionLabel: { fontSize: 10, fontWeight: 700, letterSpacing: 2, color: '#8A8C7E', textTransform: 'uppercase', borderLeft: '2px solid #2F5D3A', paddingLeft: 8, margin: '0 0 10px' },
   hint: { color: '#9ca3af', fontSize: 13, margin: '0 0 16px' },
+  reheat: { display: 'flex', gap: 9, alignItems: 'flex-start', color: '#b45309', fontSize: 13, lineHeight: 1.5, background: 'rgba(217,119,6,0.08)', border: '1px solid rgba(217,119,6,0.18)', borderRadius: 12, padding: '11px 13px', margin: '0 0 16px' },
   list: { display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 16 },
   row: { display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 12, background: 'rgba(255,255,255,0.6)' },
   check: { width: 22, height: 22, borderRadius: 6, border: '1.5px solid #cbd5c0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, padding: 0 },
