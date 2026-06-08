@@ -26,10 +26,21 @@ export async function POST(request) {
 
   let body = {}
   try { body = await request.json() } catch {}
-  const { meal_date, meal_type, dish_name, entries = [], deductions = [] } = body || {}
+  const { meal_date, meal_type, dish_name, entries = [], deductions = [], batch_recipe_id } = body || {}
   if (!meal_date || !meal_type) {
     return NextResponse.json({ error: 'meal_date et meal_type requis' }, { status: 400 })
   }
+
+  // Le créneau était-il déjà loggé ? (évite de re-décompter une portion de batch
+  // si on re-marque le même repas sans l'avoir d'abord annulé).
+  const { data: priorLog } = await supabase
+    .from('meal_log')
+    .select('id')
+    .eq('user_id', user.id)
+    .eq('meal_date', meal_date)
+    .eq('meal_type', meal_type)
+    .limit(1)
+  const alreadyLogged = (priorLog?.length || 0) > 0
 
   // 1. Nutrition du jour — remplace les logs du créneau (idempotent)
   await supabase
@@ -84,7 +95,32 @@ export async function POST(request) {
     if (!updErr) deductedCount++
   }
 
-  return NextResponse.json({ success: true, logged: logRows.length, deducted: deductedCount })
+  // 3. Repas issu d'un batch → on retire une portion du plat préparé (cooked_dishes),
+  //    au lieu de re-déduire les ingrédients bruts. Une seule fois par créneau.
+  let batchConsumed = 0
+  if (batch_recipe_id && !alreadyLogged) {
+    const portions = Math.max(1, (entries || []).filter(e => e && e.person_name).length || 1)
+    const { data: dish } = await supabase
+      .from('cooked_dishes')
+      .select('id, portions_remaining')
+      .eq('user_id', user.id)
+      .eq('batch_recipe_id', batch_recipe_id)
+      .gt('portions_remaining', 0)
+      .order('expiration_date', { ascending: true })
+      .limit(1)
+      .maybeSingle()
+    if (dish) {
+      const newRemaining = Math.max(0, (dish.portions_remaining || 0) - portions)
+      const { error: cdErr } = await supabase
+        .from('cooked_dishes')
+        .update({ portions_remaining: newRemaining })
+        .eq('id', dish.id)
+        .eq('user_id', user.id)
+      if (!cdErr) batchConsumed = (dish.portions_remaining || 0) - newRemaining
+    }
+  }
+
+  return NextResponse.json({ success: true, logged: logRows.length, deducted: deductedCount, batchConsumed })
 }
 
 export async function DELETE(request) {

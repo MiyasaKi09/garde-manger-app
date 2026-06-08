@@ -298,6 +298,8 @@ export async function POST(request) {
         name: g.name,
         cook_date: p.cook_date,
         portions_total: portions,
+        keeps_days: p.keeps_days,
+        freezable: p.freezable,
         ingredients,
         instructions,
         reheat: p.reheat,

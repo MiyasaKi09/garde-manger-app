@@ -82,9 +82,10 @@ export default function MealCookSheet({ open, onClose, meal, onDone }) {
         person_name: e.person_name, kcal: e.kcal, protein_g: e.protein_g,
         carbs_g: e.carbs_g, fat_g: e.fat_g, fiber_g: e.fiber_g,
       }))
+      const batchRecipeId = (meal.entries || []).find(e => e.batch_recipe_id)?.batch_recipe_id || null
       const res = await authFetch('/api/meals/cook', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ meal_date: mealDate, meal_type: meal.type, dish_name: dishName, entries, deductions }),
+        body: JSON.stringify({ meal_date: mealDate, meal_type: meal.type, dish_name: dishName, entries, deductions, batch_recipe_id: batchRecipeId }),
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(data.error || 'Erreur')

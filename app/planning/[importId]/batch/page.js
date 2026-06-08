@@ -4,12 +4,17 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter, useParams } from 'next/navigation'
-import { ArrowLeft, ChevronDown, ChevronUp, Check } from 'lucide-react'
+import { ArrowLeft, ChevronDown, ChevronUp, Check, Refrigerator, Loader2 } from 'lucide-react'
 
 const DOW = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
 const dayShort = (iso) => {
   const d = new Date(`${iso}T00:00:00`)
   return Number.isNaN(d.getTime()) ? iso : DOW[d.getDay()]
+}
+const frDate = (iso) => {
+  if (!iso) return ''
+  const d = new Date(`${iso}T00:00:00`)
+  return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })
 }
 const cleanName = (name) => (name || 'Préparation').split('\n')[0].replace(/^B\d+\s*[—–-]\s*/, '').trim()
 
@@ -20,6 +25,8 @@ export default function BatchPage() {
   const [data, setData] = useState(null)
   const [expanded, setExpanded] = useState(null)
   const [doneMap, setDoneMap] = useState({}) // taskId -> bool (persisté)
+  const [cookedMap, setCookedMap] = useState({}) // batch_recipe_id -> cooked_dish (en stock)
+  const [cookingId, setCookingId] = useState(null)
 
   useEffect(() => {
     async function load() {
@@ -32,10 +39,46 @@ export default function BatchPage() {
       const m = {}
       for (const t of (d.prepTasks || [])) m[t.id] = !!t.done
       setDoneMap(m)
+      // Plats déjà cuisinés (en stock) pour les préparations de cet import.
+      const ids = (d.batchRecipes || []).map(r => r.id)
+      if (ids.length) {
+        const { data: cooked } = await supabase
+          .from('cooked_dishes')
+          .select('id, batch_recipe_id, portions_remaining, portions_cooked, expiration_date, storage_method')
+          .in('batch_recipe_id', ids)
+        const cm = {}
+        for (const c of (cooked || [])) cm[c.batch_recipe_id] = c
+        setCookedMap(cm)
+      }
       setLoading(false)
     }
     load()
   }, [importId])
+
+  async function cookPrep(recipe) {
+    if (cookingId) return
+    setCookingId(recipe.id)
+    try {
+      const res = await authFetch('/api/planning/batch/cook', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ batchRecipeId: recipe.id }),
+      })
+      const d = await res.json().catch(() => ({}))
+      if (res.ok && d.dish) setCookedMap(prev => ({ ...prev, [recipe.id]: d.dish }))
+    } finally {
+      setCookingId(null)
+    }
+  }
+
+  async function uncookPrep(recipe) {
+    setCookedMap(prev => { const n = { ...prev }; delete n[recipe.id]; return n })
+    try {
+      await authFetch('/api/planning/batch/cook', {
+        method: 'DELETE', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ batchRecipeId: recipe.id }),
+      })
+    } catch { /* l'UI a déjà retiré l'état */ }
+  }
 
   async function toggleTask(task) {
     const next = !doneMap[task.id]
@@ -224,6 +267,25 @@ export default function BatchPage() {
                           </span>
                           {open ? <ChevronUp size={16} color="var(--ink-3)" /> : <ChevronDown size={16} color="var(--ink-3)" />}
                         </button>
+                        {(() => {
+                          const cooked = cookedMap[recipe.id]
+                          if (cooked) return (
+                            <div className="bat-prep-cook done">
+                              <Refrigerator size={13} />
+                              <span>Au stock · {cooked.portions_remaining}/{cooked.portions_cooked} portion{cooked.portions_cooked > 1 ? 's' : ''}{cooked.expiration_date ? ` · à manger avant le ${frDate(cooked.expiration_date)}` : ''}</span>
+                              <button className="bat-cook-undo" onClick={() => uncookPrep(recipe)}>retirer</button>
+                            </div>
+                          )
+                          return (
+                            <div className="bat-prep-cook">
+                              <button className="bat-cook-btn" onClick={() => cookPrep(recipe)} disabled={cookingId === recipe.id}>
+                                {cookingId === recipe.id
+                                  ? <><Loader2 size={13} className="bat-spin" /> Ajout au stock…</>
+                                  : <><Refrigerator size={13} /> Marquer cuisiné · ajouter au stock</>}
+                              </button>
+                            </div>
+                          )
+                        })()}
                         {open && (
                           <div className="bat-prep-detail">
                             {recipe.ingredients && <div className="bat-r-block"><span className="bat-r-l">Ingrédients</span><div className="bat-r-t">{recipe.ingredients.replace(/\s*[·|]\s*/g, '\n')}</div></div>}
@@ -304,6 +366,30 @@ export default function BatchPage() {
         .bat-prep-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
         .bat-prep-name { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink-1); }
         .bat-prep-keep { font-family: var(--font-mono); font-size: 10.5px; color: #6E7A3F; letter-spacing: 0.01em; line-height: 1.4; text-transform: none; }
+
+        /* Action « cuisiné → au stock » */
+        .bat-prep-cook { padding: 0 4px 12px; }
+        .bat-cook-btn {
+          display: inline-flex; align-items: center; gap: 7px;
+          background: transparent; border: 1px solid var(--line-strong); border-radius: 3px;
+          padding: 8px 12px; cursor: pointer;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.02em; color: var(--ink-1);
+          transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+        }
+        .bat-cook-btn:hover:not(:disabled) { border-color: var(--terracotta); color: var(--terracotta); }
+        .bat-cook-btn:disabled { opacity: 0.6; cursor: default; }
+        .bat-prep-cook.done {
+          display: flex; align-items: center; gap: 8px;
+          font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.01em; color: #4f7d3f;
+        }
+        .bat-prep-cook.done > svg { flex: none; }
+        .bat-cook-undo {
+          background: none; border: none; cursor: pointer; padding: 0 0 0 6px;
+          font-family: var(--font-mono); font-size: 10px; color: var(--ink-3); text-decoration: underline;
+        }
+        .bat-cook-undo:hover { color: var(--state-expired); }
+        .bat-spin { animation: batspin 0.9s linear infinite; }
+        @keyframes batspin { to { transform: rotate(360deg); } }
         .bat-prep-meta { display: flex; gap: 10px; align-items: center; flex-shrink: 0; font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.03em; }
         .bat-prep-port { color: var(--terracotta); font-weight: 600; }
 
