@@ -128,7 +128,7 @@ Règles :
 - Regroupe les cuissons sur les mêmes jours pour limiter le nombre de sessions.
 - keeps_days = conservation frigo réaliste (entier). freezable = booléen. conservation = phrase COURTE, concrète, en français (ex : « Se garde 5 j au frigo, encore meilleur réchauffé » ou « Congèle les portions de vendredi, sors-les la veille »). reheat = consigne de réchauffage courte et adaptée. prep_minutes = temps de cuisson estimé du lot (entier).
 
-Réponds UNIQUEMENT en JSON valide, sans texte autour : {"dishes":[{"name":"…","cook_date":"YYYY-MM-DD","keeps_days":5,"freezable":true,"conservation":"…","reheat":"…","prep_minutes":35}]}`
+Réponds UNIQUEMENT en JSON valide, sans texte autour, en RÉUTILISANT EXACTEMENT l'id fourni pour chaque plat : {"dishes":[{"id":"0","cook_date":"YYYY-MM-DD","keeps_days":5,"freezable":true,"conservation":"…","reheat":"…","prep_minutes":35}]}`
 
 function extractJson(text) {
   if (!text) return null
@@ -148,11 +148,18 @@ async function scheduleWithClaude(dishesInput, cookSunday, allowedDates) {
     })
     const text = (msg.content || []).filter(b => b.type === 'text').map(b => b.text).join('')
     const json = extractJson(text)
-    if (!json || !Array.isArray(json.dishes)) return null
+    if (!json || !Array.isArray(json.dishes)) {
+      console.error('[batch] Réponse Claude inexploitable:', (text || '').slice(0, 160))
+      return null
+    }
     const map = new Map()
-    for (const d of json.dishes) if (d?.name) map.set(normalizeRecipeName(d.name), d)
+    for (const d of json.dishes) {
+      const id = d?.id != null ? String(d.id) : null
+      if (id != null) map.set(id, d)
+    }
     return map.size ? map : null
-  } catch {
+  } catch (e) {
+    console.error('[batch] Claude indisponible:', e?.message || e)
     return null
   }
 }
@@ -196,11 +203,13 @@ export async function POST(request) {
   const cookSunday = addDays(imp.date_range_start, -1)
   const allowedDates = [cookSunday, ...Array.from({ length: 5 }, (_, i) => addDays(imp.date_range_start, i))] // dim + lun→ven
 
-  // Entrée pour Claude.
-  const dishesInput = [...groups.values()].map(g => {
+  // Entrée pour Claude — chaque plat porte un id stable (matching robuste, indépendant du nom).
+  const groupList = [...groups.entries()] // [key, g] — l'index sert d'id
+  const dishesInput = groupList.map(([key, g], i) => {
     const byDate = {}
     for (const m of g.meals) byDate[m.meal_date] = (byDate[m.meal_date] || 0) + 1
     return {
+      id: String(i),
       name: g.name,
       total_portions: g.meals.length,
       eats: Object.entries(byDate).sort().map(([date, portions]) => ({ date, weekday: DOW_FR[weekdayOf(date)], portions })),
@@ -208,11 +217,11 @@ export async function POST(request) {
   })
 
   const ai = await scheduleWithClaude(dishesInput, cookSunday, allowedDates)
-  const usedAi = !!ai
 
   // Planning final par plat : Claude si valide, sinon règles déterministes.
   const plan = new Map() // key -> { cook_date, keeps_days, freezable, conservation, reheat, prep_minutes }
-  for (const [key, g] of groups) {
+  let aiApplied = 0
+  groupList.forEach(([key, g], i) => {
     const eats = [...g.eats].sort()
     const earliest = eats[0]
     const prof = classifyDish(g.name)
@@ -233,19 +242,21 @@ export async function POST(request) {
       prep_minutes: null,
     }
 
-    // override Claude si présent + cohérent (date allouée, jamais après le 1er repas)
-    const a = ai?.get(normalizeRecipeName(g.name))
+    // override Claude (matché par id) si cohérent (date allouée, jamais après le 1er repas)
+    const a = ai?.get(String(i))
     if (a) {
+      let used = false
       const cd = typeof a.cook_date === 'string' ? a.cook_date.slice(0, 10) : null
-      if (cd && allowedDates.includes(cd) && cd <= earliest) entry.cook_date = cd
+      if (cd && allowedDates.includes(cd) && cd <= earliest) { entry.cook_date = cd; used = true }
       if (Number.isFinite(a.keeps_days)) entry.keeps_days = Math.round(a.keeps_days)
       if (typeof a.freezable === 'boolean') entry.freezable = a.freezable
-      if (typeof a.conservation === 'string' && a.conservation.trim()) entry.conservation = cap(a.conservation.trim())
-      if (typeof a.reheat === 'string' && a.reheat.trim()) entry.reheat = a.reheat.trim()
+      if (typeof a.conservation === 'string' && a.conservation.trim()) { entry.conservation = cap(a.conservation.trim()); used = true }
+      if (typeof a.reheat === 'string' && a.reheat.trim()) { entry.reheat = a.reheat.trim(); used = true }
       if (Number.isFinite(a.prep_minutes)) entry.prep_minutes = Math.round(a.prep_minutes)
+      if (used) aiApplied++
     }
     plan.set(key, entry)
-  }
+  })
 
   // ── Idempotence (ordre FK-safe) ──
   await supabase.from('nutrition_plan_meals').update({ batch_recipe_id: null }).eq('import_id', importId)
@@ -328,6 +339,6 @@ export async function POST(request) {
     ok: true, import_id: importId,
     sessions: [...cookDatesUsed].sort(),
     batch_recipes: batchCount, linked_meals: linkedCount,
-    planner: usedAi ? 'ai' : 'rules',
+    planner: aiApplied > 0 ? 'ai' : 'rules',
   })
 }

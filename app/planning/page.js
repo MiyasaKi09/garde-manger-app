@@ -133,9 +133,10 @@ export default function PlanningPage() {
   const [regenMeals, setRegenMeals] = useState([]) // [{date, type}]
   const [regenInstructions, setRegenInstructions] = useState('')
 
-  // ── Planification du batch (déclenche la Routine claude.ai « Batch déjeuners ») ──
-  const [batchStatus, setBatchStatus] = useState('idle') // idle | submitting | waiting | done | error
+  // ── Planification du batch (génération intelligente in-app) ──
+  const [batchStatus, setBatchStatus] = useState('idle') // idle | submitting | done | error
   const [batchError, setBatchError] = useState('')
+  const [batchResult, setBatchResult] = useState(null) // { sessions, batch_recipes, planner }
 
   const weekDaysFromImport = latestImport ? (() => {
     const days = []
@@ -232,7 +233,7 @@ export default function PlanningPage() {
   // ── Génère le batch DANS l'app (déterministe, instantané) puis rafraîchit la semaine. ──
   async function planBatch() {
     if (!selectedImportId || batchStatus === 'submitting') return
-    setBatchStatus('submitting'); setBatchError('')
+    setBatchStatus('submitting'); setBatchError(''); setBatchResult(null)
     try {
       const res = await authFetch('/api/planning/batch/generate', {
         method: 'POST',
@@ -241,6 +242,7 @@ export default function PlanningPage() {
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(data.error || `Erreur (${res.status})`)
+      setBatchResult(data)
 
       // Recharge le détail de l'import (préparations + repas reliés) et rafraîchit le rail.
       const r2 = await authFetch(`/api/planning/imports/${selectedImportId}`)
@@ -382,6 +384,13 @@ export default function PlanningPage() {
                   </button>
                 )}
                 {batchStatus === 'error' && <div className="ck-plan-err">{batchError}</div>}
+                {batchStatus === 'done' && batchResult && (
+                  <div className="ck-plan-ok">
+                    ✓ {batchResult.batch_recipes} préparation{batchResult.batch_recipes > 1 ? 's' : ''}
+                    {' · '}{(batchResult.sessions?.length || 1)} session{(batchResult.sessions?.length || 1) > 1 ? 's' : ''} de cuisine
+                    {batchResult.planner === 'ai' ? ' · planifié par Myko (IA)' : ' · planifié (règles)'}
+                  </div>
+                )}
               </div>
 
               {weekLoading ? (
@@ -624,6 +633,11 @@ export default function PlanningPage() {
   font-family: var(--font-text); font-size: 12.5px; color: var(--state-expired);
   background: var(--state-expired-bg); border: 1px solid var(--state-expired);
   border-radius: 3px; padding: 8px 11px; margin-top: 10px; line-height: 1.45;
+}
+.ck-plan-ok {
+  font-family: var(--font-mono); font-size: 10.5px; color: #4f7d3f; letter-spacing: 0.01em;
+  background: rgba(111, 176, 90, 0.1); border: 1px solid rgba(111, 176, 90, 0.3);
+  border-radius: 3px; padding: 8px 11px; margin-top: 10px; line-height: 1.5;
 }
 
 /* Corps du rail (skeleton) */
