@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Mon Jun  8 16:34:04 UTC 2026_
+_Généré le : Mon Jun  8 17:40:20 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -159,6 +159,7 @@ _Généré le : Mon Jun  8 16:34:04 UTC 2026_
  - notes :: text
  - created_at :: timestamp with time zone default now()
  - updated_at :: timestamp with time zone default now()
+ - batch_recipe_id :: bigint
 
 ### cooked_dishes_active
  - id :: bigint
@@ -378,6 +379,8 @@ _Généré le : Mon Jun  8 16:34:04 UTC 2026_
  - cook_date :: date
  - portions_total :: integer
  - conservation :: text
+ - keeps_days :: integer
+ - freezable :: boolean
 
 ### nutrition_plan_daily_totals
  - id :: bigint default nextval('nutrition_plan_daily_totals_id_seq'::regclass) NOT NULL
@@ -874,6 +877,7 @@ _Généré le : Mon Jun  8 16:34:04 UTC 2026_
  - public.cooked_dish_ingredients → idx_cooked_dish_ingredients_lot_id : CREATE INDEX idx_cooked_dish_ingredients_lot_id ON public.cooked_dish_ingredients USING btree (lot_id) WHERE (lot_id IS NOT NULL)
  - public.cooked_dishes → cooked_dishes_pkey : CREATE UNIQUE INDEX cooked_dishes_pkey ON public.cooked_dishes USING btree (id)
  - public.cooked_dishes → idx_cooked_dishes_active : CREATE INDEX idx_cooked_dishes_active ON public.cooked_dishes USING btree (user_id, portions_remaining) WHERE (portions_remaining > 0)
+ - public.cooked_dishes → idx_cooked_dishes_batch : CREATE INDEX idx_cooked_dishes_batch ON public.cooked_dishes USING btree (batch_recipe_id)
  - public.cooked_dishes → idx_cooked_dishes_expiration : CREATE INDEX idx_cooked_dishes_expiration ON public.cooked_dishes USING btree (expiration_date) WHERE (portions_remaining > 0)
  - public.cooked_dishes → idx_cooked_dishes_recipe_id : CREATE INDEX idx_cooked_dishes_recipe_id ON public.cooked_dishes USING btree (recipe_id) WHERE (recipe_id IS NOT NULL)
  - public.cooked_dishes → idx_cooked_dishes_user_id : CREATE INDEX idx_cooked_dishes_user_id ON public.cooked_dishes USING btree (user_id)
