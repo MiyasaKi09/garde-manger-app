@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Mon Jun  8 17:40:22 UTC 2026_
+_Generated: Mon Jun  8 18:17:16 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -26,7 +26,7 @@ _Generated: Mon Jun  8 17:40:22 UTC 2026_
 - nutrition_plan_daily_totals: 378 rows
 - nutrition_plan_imports: 21 rows
 - nutrition_plan_meals: 1414 rows
-- nutrition_plan_prep_tasks: 1000 rows
+- nutrition_plan_prep_tasks: 1001 rows
 - nutrition_plan_shopping_items: 1914 rows
 - nutritional_data: 3178 rows
 - pantry_items: 0 rows
