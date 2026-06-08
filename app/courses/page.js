@@ -4,10 +4,9 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { ShoppingCart, Check, Package, ChevronLeft, ChevronRight, RefreshCw, ImageOff } from 'lucide-react'
+import { ShoppingCart, Check, Package, ChevronLeft, ChevronRight, RefreshCw, ImageOff, Camera } from 'lucide-react'
 import Link from 'next/link'
 import { getFoodEmoji } from '@/lib/foodEmoji'
-import { ingredientImageUrl } from '@/lib/ingredientImage'
 import './courses.css'
 
 const RAYON_TINTS = ['#E4EBDC', '#F1E9D4', '#EFD9D0', '#E8E2D2', '#EADFCB', '#DEE7EC']
@@ -181,6 +180,34 @@ export default function CoursesPage() {
     }
   }
 
+  async function handleFetchImages(replace = false) {
+    if (!importId) return
+    setFetchingImages(true)
+    setFetchResult(null)
+    try {
+      const res = await authFetch('/api/courses/fetch-images', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ importId, replace }),
+      })
+      const data = await res.json()
+      if (data.error) {
+        setFetchResult({ error: data.error })
+      } else {
+        setFetchResult({ updated: data.updated, total: data.total, cleared: data.cleared })
+        if (data.updated > 0 || data.cleared > 0) {
+          const res2 = await authFetch(`/api/planning/imports/${importId}`)
+          const d2 = await res2.json()
+          setItems(d2.shoppingItems || [])
+        }
+      }
+    } catch (err) {
+      setFetchResult({ error: err.message })
+    } finally {
+      setFetchingImages(false)
+    }
+  }
+
   async function handleClearImages() {
     if (!importId) return
     setFetchingImages(true)
@@ -257,8 +284,7 @@ export default function CoursesPage() {
   function renderCard(item, tint) {
     const isExpanded = expandedItems.has(item.id)
     const hasContainer = !!(item.container_qty && item.container_size)
-    const tmdb = ingredientImageUrl(item.product_name)
-    const photo = imgErrors.has(item.id) ? null : (tmdb || item.image_url || null)
+    const photo = imgErrors.has(item.id) ? null : (item.image_url || null)
     return (
       <div key={item.id} className={`cou-card${item.checked ? ' done' : ''}`}>
         <div
@@ -413,7 +439,7 @@ export default function CoursesPage() {
                   : `Liste recalculée — ${fetchResult.items} article${fetchResult.items > 1 ? 's' : ''}`)
                 + (fetchResult.recipesCreated > 0 ? ` · ${fetchResult.recipesCreated} recette(s) ajoutée(s)` : '')
               : fetchResult.clearedOnly
-                ? `${fetchResult.cleared || 0} ancienne${(fetchResult.cleared || 0) > 1 ? 's' : ''} image${(fetchResult.cleared || 0) > 1 ? 's' : ''} effacée${(fetchResult.cleared || 0) > 1 ? 's' : ''} — photos d'ingrédients rétablies`
+                ? `${fetchResult.cleared || 0} ancienne${(fetchResult.cleared || 0) > 1 ? 's' : ''} image${(fetchResult.cleared || 0) > 1 ? 's' : ''} effacée${(fetchResult.cleared || 0) > 1 ? 's' : ''} — icônes rétablies`
                 : `${fetchResult.updated}/${fetchResult.total} photos`}
         </div>
       )}
@@ -513,8 +539,12 @@ export default function CoursesPage() {
               title="Synchroniser : créer les recettes du plan, relier les ingrédients, marquer ce que tu as déjà en stock">
               <RefreshCw size={13} /> {rebuilding ? 'Synchro…' : 'Synchroniser le stock'}
             </button>
+            <button onClick={() => handleFetchImages(true)} disabled={fetchingImages} className="cou-raction"
+              title="Récupère une jolie photo (Pexels) pour chaque produit, en cherchant le bon ingrédient">
+              <Camera size={13} /> {fetchingImages ? 'Photos…' : 'Photos auto'}
+            </button>
             <button onClick={handleClearImages} disabled={fetchingImages} className="cou-raction"
-              title="Efface les anciennes images importées (Pexels / Open Food Facts) : chaque produit retrouve sa photo d'ingrédient">
+              title="Retire toutes les photos et n'affiche que les icônes">
               <ImageOff size={13} /> {fetchingImages ? '…' : 'Réinitialiser les photos'}
             </button>
           </section>
