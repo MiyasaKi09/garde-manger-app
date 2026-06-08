@@ -1,995 +1,995 @@
-id,import_id,prep_date,prep_label,task,estimated_time
-582,10,2026-03-16,Lundi 16/03,undefined: undefined,
-583,10,2026-03-16,Lundi 16/03,undefined: undefined,
-584,10,2026-03-16,Lundi 16/03,undefined: undefined,
-585,10,2026-03-16,Lundi 16/03,undefined: undefined,
-586,10,2026-03-16,Lundi 16/03,undefined: undefined,
-587,10,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,
-588,10,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,
-589,10,2026-03-17,Mardi 17/03,undefined: undefined,
-590,10,2026-03-17,Mardi 17/03,undefined: undefined,
-591,10,2026-03-17,Mardi 17/03,undefined: undefined,
-592,10,2026-03-17,Mardi 17/03,undefined: undefined,
-593,10,2026-03-17,Mardi 17/03,undefined: undefined,
-594,10,2026-03-17,Mardi 17/03,undefined: undefined,
-595,10,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-596,10,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-597,10,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-598,10,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-599,10,2026-03-18,Mercredi 18/03,undefined: undefined,
-600,10,2026-03-18,Mercredi 18/03,undefined: undefined,
-601,10,2026-03-18,Mercredi 18/03,undefined: undefined,
-602,10,2026-03-18,Mercredi 18/03,undefined: undefined,
-603,10,2026-03-18,Mercredi 18/03,[Prep] undefined: undefined,
-604,10,2026-03-19,Jeudi 19/03,undefined: undefined,
-605,10,2026-03-19,Jeudi 19/03,undefined: undefined,
-606,10,2026-03-19,Jeudi 19/03,undefined: undefined,
-607,10,2026-03-19,Jeudi 19/03,undefined: undefined,
-608,10,2026-03-19,Jeudi 19/03,undefined: undefined,
-609,10,2026-03-19,Jeudi 19/03,undefined: undefined,
-610,10,2026-03-20,Vendredi 20/03,undefined: undefined,
-611,10,2026-03-20,Vendredi 20/03,undefined: undefined,
-612,10,2026-03-20,Vendredi 20/03,undefined: undefined,
-613,10,2026-03-20,Vendredi 20/03,undefined: undefined,
-614,10,2026-03-20,Vendredi 20/03,undefined: undefined,
-615,10,2026-03-22,Dimanche 22/03,undefined: undefined,
-616,10,2026-03-22,Dimanche 22/03,undefined: undefined,
-617,10,2026-03-22,Dimanche 22/03,undefined: undefined,
-618,10,2026-03-22,Dimanche 22/03,undefined: undefined,
-619,10,2026-03-22,Dimanche 22/03,undefined: undefined,
-620,10,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-621,10,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-622,10,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-623,10,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-624,10,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-625,10,2026-03-23,Lundi 23/03,undefined: undefined,
-626,10,2026-03-23,Lundi 23/03,undefined: undefined,
-627,10,2026-03-23,Lundi 23/03,undefined: undefined,
-628,10,2026-03-23,Lundi 23/03,undefined: undefined,
-629,10,2026-03-23,Lundi 23/03,undefined: undefined,
-630,10,2026-03-24,Mardi 24/03,undefined: undefined,
-631,10,2026-03-24,Mardi 24/03,undefined: undefined,
-632,10,2026-03-24,Mardi 24/03,undefined: undefined,
-633,10,2026-03-24,Mardi 24/03,undefined: undefined,
-634,10,2026-03-24,Mardi 24/03,undefined: undefined,
-635,10,2026-03-24,Mardi 24/03,undefined: undefined,
-636,10,2026-03-25,Mercredi 25/03,undefined: undefined,
-637,10,2026-03-25,Mercredi 25/03,undefined: undefined,
-638,10,2026-03-25,Mercredi 25/03,undefined: undefined,
-639,10,2026-03-25,Mercredi 25/03,undefined: undefined,
-640,10,2026-03-25,Mercredi 25/03,undefined: undefined,
-641,10,2026-03-26,Jeudi 26/03,undefined: undefined,
-642,10,2026-03-26,Jeudi 26/03,undefined: undefined,
-643,10,2026-03-26,Jeudi 26/03,undefined: undefined,
-644,10,2026-03-26,Jeudi 26/03,undefined: undefined,
-645,10,2026-03-26,Jeudi 26/03,undefined: undefined,
-646,10,2026-03-27,Vendredi 27/03,undefined: undefined,
-647,10,2026-03-27,Vendredi 27/03,undefined: undefined,
-648,10,2026-03-27,Vendredi 27/03,undefined: undefined,
-649,10,2026-03-27,Vendredi 27/03,undefined: undefined,
-650,10,2026-03-27,Vendredi 27/03,undefined: undefined,
-651,10,2026-03-29,Dimanche 29/03,undefined: undefined,
-652,10,2026-03-29,Dimanche 29/03,undefined: undefined,
-653,10,2026-03-29,Dimanche 29/03,undefined: undefined,
-654,10,2026-03-29,Dimanche 29/03,undefined: undefined,
-655,10,2026-03-29,Dimanche 29/03,undefined: undefined,
-656,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-657,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-658,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-659,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-660,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-661,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-662,10,2026-03-30,Lundi 30/03,undefined: undefined,
-663,10,2026-03-30,Lundi 30/03,undefined: undefined,
-664,10,2026-03-30,Lundi 30/03,undefined: undefined,
-665,10,2026-03-30,Lundi 30/03,undefined: undefined,
-666,10,2026-03-30,Lundi 30/03,undefined: undefined,
-667,10,2026-03-31,Mardi 31/03,undefined: undefined,
-668,10,2026-03-31,Mardi 31/03,undefined: undefined,
-669,10,2026-03-31,Mardi 31/03,undefined: undefined,
-670,10,2026-03-31,Mardi 31/03,undefined: undefined,
-671,10,2026-03-31,Mardi 31/03,undefined: undefined,
-672,10,2026-04-01,Mercredi 01/04,undefined: undefined,
-673,10,2026-04-01,Mercredi 01/04,undefined: undefined,
-674,10,2026-04-01,Mercredi 01/04,undefined: undefined,
-675,10,2026-04-01,Mercredi 01/04,undefined: undefined,
-676,10,2026-04-01,Mercredi 01/04,undefined: undefined,
-677,10,2026-04-01,Mercredi 01/04,[Prep] undefined: undefined,
-678,10,2026-04-02,Jeudi 02/04,undefined: undefined,
-679,10,2026-04-02,Jeudi 02/04,undefined: undefined,
-680,10,2026-04-02,Jeudi 02/04,undefined: undefined,
-681,10,2026-04-02,Jeudi 02/04,undefined: undefined,
-682,10,2026-04-03,Vendredi 03/04,undefined: undefined,
-683,10,2026-04-03,Vendredi 03/04,undefined: undefined,
-684,10,2026-04-03,Vendredi 03/04,undefined: undefined,
-685,10,2026-04-03,Vendredi 03/04,undefined: undefined,
-686,10,2026-04-03,Vendredi 03/04,undefined: undefined,
-687,10,2026-04-04,Samedi 04/04,undefined: undefined,
-688,10,2026-04-04,Samedi 04/04,undefined: undefined,
-689,10,2026-04-04,Samedi 04/04,undefined: undefined,
-690,10,2026-04-04,Samedi 04/04,undefined: undefined,
-691,10,2026-04-04,Samedi 04/04,undefined: undefined,
-692,10,2026-04-05,Dimanche 05/04,undefined: undefined,
-693,10,2026-04-05,Dimanche 05/04,undefined: undefined,
-694,10,2026-04-05,Dimanche 05/04,undefined: undefined,
-695,10,2026-04-05,Dimanche 05/04,undefined: undefined,
-696,10,2026-04-05,Dimanche 05/04,undefined: undefined,
-467,9,2026-03-16,Lundi 16/03,undefined: undefined,
-468,9,2026-03-16,Lundi 16/03,undefined: undefined,
-469,9,2026-03-16,Lundi 16/03,undefined: undefined,
-470,9,2026-03-16,Lundi 16/03,undefined: undefined,
-471,9,2026-03-16,Lundi 16/03,undefined: undefined,
-472,9,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,
-473,9,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,
-474,9,2026-03-17,Mardi 17/03,undefined: undefined,
-475,9,2026-03-17,Mardi 17/03,undefined: undefined,
-476,9,2026-03-17,Mardi 17/03,undefined: undefined,
-477,9,2026-03-17,Mardi 17/03,undefined: undefined,
-478,9,2026-03-17,Mardi 17/03,undefined: undefined,
-479,9,2026-03-17,Mardi 17/03,undefined: undefined,
-480,9,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-481,9,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-482,9,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-483,9,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-484,9,2026-03-18,Mercredi 18/03,undefined: undefined,
-485,9,2026-03-18,Mercredi 18/03,undefined: undefined,
-486,9,2026-03-18,Mercredi 18/03,undefined: undefined,
-487,9,2026-03-18,Mercredi 18/03,undefined: undefined,
-488,9,2026-03-18,Mercredi 18/03,[Prep] undefined: undefined,
-489,9,2026-03-19,Jeudi 19/03,undefined: undefined,
-490,9,2026-03-19,Jeudi 19/03,undefined: undefined,
-491,9,2026-03-19,Jeudi 19/03,undefined: undefined,
-492,9,2026-03-19,Jeudi 19/03,undefined: undefined,
-493,9,2026-03-19,Jeudi 19/03,undefined: undefined,
-494,9,2026-03-19,Jeudi 19/03,undefined: undefined,
-495,9,2026-03-20,Vendredi 20/03,undefined: undefined,
-496,9,2026-03-20,Vendredi 20/03,undefined: undefined,
-497,9,2026-03-20,Vendredi 20/03,undefined: undefined,
-498,9,2026-03-20,Vendredi 20/03,undefined: undefined,
-499,9,2026-03-20,Vendredi 20/03,undefined: undefined,
-500,9,2026-03-22,Dimanche 22/03,undefined: undefined,
-501,9,2026-03-22,Dimanche 22/03,undefined: undefined,
-502,9,2026-03-22,Dimanche 22/03,undefined: undefined,
-503,9,2026-03-22,Dimanche 22/03,undefined: undefined,
-504,9,2026-03-22,Dimanche 22/03,undefined: undefined,
-505,9,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-506,9,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-507,9,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-508,9,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-509,9,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-510,9,2026-03-23,Lundi 23/03,undefined: undefined,
-511,9,2026-03-23,Lundi 23/03,undefined: undefined,
-512,9,2026-03-23,Lundi 23/03,undefined: undefined,
-513,9,2026-03-23,Lundi 23/03,undefined: undefined,
-514,9,2026-03-23,Lundi 23/03,undefined: undefined,
-515,9,2026-03-24,Mardi 24/03,undefined: undefined,
-516,9,2026-03-24,Mardi 24/03,undefined: undefined,
-517,9,2026-03-24,Mardi 24/03,undefined: undefined,
-518,9,2026-03-24,Mardi 24/03,undefined: undefined,
-519,9,2026-03-24,Mardi 24/03,undefined: undefined,
-520,9,2026-03-24,Mardi 24/03,undefined: undefined,
-521,9,2026-03-25,Mercredi 25/03,undefined: undefined,
-522,9,2026-03-25,Mercredi 25/03,undefined: undefined,
-523,9,2026-03-25,Mercredi 25/03,undefined: undefined,
-524,9,2026-03-25,Mercredi 25/03,undefined: undefined,
-525,9,2026-03-25,Mercredi 25/03,undefined: undefined,
-526,9,2026-03-26,Jeudi 26/03,undefined: undefined,
-527,9,2026-03-26,Jeudi 26/03,undefined: undefined,
-528,9,2026-03-26,Jeudi 26/03,undefined: undefined,
-529,9,2026-03-26,Jeudi 26/03,undefined: undefined,
-530,9,2026-03-26,Jeudi 26/03,undefined: undefined,
-531,9,2026-03-27,Vendredi 27/03,undefined: undefined,
-532,9,2026-03-27,Vendredi 27/03,undefined: undefined,
-533,9,2026-03-27,Vendredi 27/03,undefined: undefined,
-534,9,2026-03-27,Vendredi 27/03,undefined: undefined,
-535,9,2026-03-27,Vendredi 27/03,undefined: undefined,
-536,9,2026-03-29,Dimanche 29/03,undefined: undefined,
-537,9,2026-03-29,Dimanche 29/03,undefined: undefined,
-538,9,2026-03-29,Dimanche 29/03,undefined: undefined,
-539,9,2026-03-29,Dimanche 29/03,undefined: undefined,
-540,9,2026-03-29,Dimanche 29/03,undefined: undefined,
-541,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-542,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-543,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-544,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-545,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-546,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-547,9,2026-03-30,Lundi 30/03,undefined: undefined,
-548,9,2026-03-30,Lundi 30/03,undefined: undefined,
-549,9,2026-03-30,Lundi 30/03,undefined: undefined,
-550,9,2026-03-30,Lundi 30/03,undefined: undefined,
-551,9,2026-03-30,Lundi 30/03,undefined: undefined,
-552,9,2026-03-31,Mardi 31/03,undefined: undefined,
-553,9,2026-03-31,Mardi 31/03,undefined: undefined,
-554,9,2026-03-31,Mardi 31/03,undefined: undefined,
-555,9,2026-03-31,Mardi 31/03,undefined: undefined,
-556,9,2026-03-31,Mardi 31/03,undefined: undefined,
-557,9,2026-04-01,Mercredi 01/04,undefined: undefined,
-558,9,2026-04-01,Mercredi 01/04,undefined: undefined,
-559,9,2026-04-01,Mercredi 01/04,undefined: undefined,
-560,9,2026-04-01,Mercredi 01/04,undefined: undefined,
-561,9,2026-04-01,Mercredi 01/04,undefined: undefined,
-562,9,2026-04-01,Mercredi 01/04,[Prep] undefined: undefined,
-563,9,2026-04-02,Jeudi 02/04,undefined: undefined,
-564,9,2026-04-02,Jeudi 02/04,undefined: undefined,
-565,9,2026-04-02,Jeudi 02/04,undefined: undefined,
-566,9,2026-04-02,Jeudi 02/04,undefined: undefined,
-567,9,2026-04-03,Vendredi 03/04,undefined: undefined,
-568,9,2026-04-03,Vendredi 03/04,undefined: undefined,
-569,9,2026-04-03,Vendredi 03/04,undefined: undefined,
-570,9,2026-04-03,Vendredi 03/04,undefined: undefined,
-571,9,2026-04-03,Vendredi 03/04,undefined: undefined,
-572,9,2026-04-04,Samedi 04/04,undefined: undefined,
-573,9,2026-04-04,Samedi 04/04,undefined: undefined,
-574,9,2026-04-04,Samedi 04/04,undefined: undefined,
-575,9,2026-04-04,Samedi 04/04,undefined: undefined,
-576,9,2026-04-04,Samedi 04/04,undefined: undefined,
-577,9,2026-04-05,Dimanche 05/04,undefined: undefined,
-578,9,2026-04-05,Dimanche 05/04,undefined: undefined,
-579,9,2026-04-05,Dimanche 05/04,undefined: undefined,
-580,9,2026-04-05,Dimanche 05/04,undefined: undefined,
-581,9,2026-04-05,Dimanche 05/04,undefined: undefined,
-697,11,2026-03-16,Lundi 16/03,undefined: undefined,
-698,11,2026-03-16,Lundi 16/03,undefined: undefined,
-699,11,2026-03-16,Lundi 16/03,undefined: undefined,
-700,11,2026-03-16,Lundi 16/03,undefined: undefined,
-701,11,2026-03-16,Lundi 16/03,undefined: undefined,
-702,11,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,
-703,11,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,
-704,11,2026-03-17,Mardi 17/03,undefined: undefined,
-705,11,2026-03-17,Mardi 17/03,undefined: undefined,
-706,11,2026-03-17,Mardi 17/03,undefined: undefined,
-707,11,2026-03-17,Mardi 17/03,undefined: undefined,
-708,11,2026-03-17,Mardi 17/03,undefined: undefined,
-709,11,2026-03-17,Mardi 17/03,undefined: undefined,
-710,11,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-711,11,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-712,11,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-713,11,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-714,11,2026-03-18,Mercredi 18/03,undefined: undefined,
-715,11,2026-03-18,Mercredi 18/03,undefined: undefined,
-716,11,2026-03-18,Mercredi 18/03,undefined: undefined,
-717,11,2026-03-18,Mercredi 18/03,undefined: undefined,
-718,11,2026-03-18,Mercredi 18/03,[Prep] undefined: undefined,
-719,11,2026-03-19,Jeudi 19/03,undefined: undefined,
-720,11,2026-03-19,Jeudi 19/03,undefined: undefined,
-721,11,2026-03-19,Jeudi 19/03,undefined: undefined,
-722,11,2026-03-19,Jeudi 19/03,undefined: undefined,
-723,11,2026-03-19,Jeudi 19/03,undefined: undefined,
-724,11,2026-03-19,Jeudi 19/03,undefined: undefined,
-725,11,2026-03-20,Vendredi 20/03,undefined: undefined,
-726,11,2026-03-20,Vendredi 20/03,undefined: undefined,
-727,11,2026-03-20,Vendredi 20/03,undefined: undefined,
-728,11,2026-03-20,Vendredi 20/03,undefined: undefined,
-729,11,2026-03-20,Vendredi 20/03,undefined: undefined,
-730,11,2026-03-22,Dimanche 22/03,undefined: undefined,
-731,11,2026-03-22,Dimanche 22/03,undefined: undefined,
-732,11,2026-03-22,Dimanche 22/03,undefined: undefined,
-733,11,2026-03-22,Dimanche 22/03,undefined: undefined,
-734,11,2026-03-22,Dimanche 22/03,undefined: undefined,
-735,11,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-736,11,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-737,11,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-738,11,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-739,11,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-740,11,2026-03-23,Lundi 23/03,undefined: undefined,
-741,11,2026-03-23,Lundi 23/03,undefined: undefined,
-742,11,2026-03-23,Lundi 23/03,undefined: undefined,
-743,11,2026-03-23,Lundi 23/03,undefined: undefined,
-744,11,2026-03-23,Lundi 23/03,undefined: undefined,
-745,11,2026-03-24,Mardi 24/03,undefined: undefined,
-746,11,2026-03-24,Mardi 24/03,undefined: undefined,
-747,11,2026-03-24,Mardi 24/03,undefined: undefined,
-748,11,2026-03-24,Mardi 24/03,undefined: undefined,
-749,11,2026-03-24,Mardi 24/03,undefined: undefined,
-750,11,2026-03-24,Mardi 24/03,undefined: undefined,
-751,11,2026-03-25,Mercredi 25/03,undefined: undefined,
-752,11,2026-03-25,Mercredi 25/03,undefined: undefined,
-753,11,2026-03-25,Mercredi 25/03,undefined: undefined,
-754,11,2026-03-25,Mercredi 25/03,undefined: undefined,
-755,11,2026-03-25,Mercredi 25/03,undefined: undefined,
-756,11,2026-03-26,Jeudi 26/03,undefined: undefined,
-757,11,2026-03-26,Jeudi 26/03,undefined: undefined,
-758,11,2026-03-26,Jeudi 26/03,undefined: undefined,
-759,11,2026-03-26,Jeudi 26/03,undefined: undefined,
-760,11,2026-03-26,Jeudi 26/03,undefined: undefined,
-761,11,2026-03-27,Vendredi 27/03,undefined: undefined,
-762,11,2026-03-27,Vendredi 27/03,undefined: undefined,
-763,11,2026-03-27,Vendredi 27/03,undefined: undefined,
-764,11,2026-03-27,Vendredi 27/03,undefined: undefined,
-765,11,2026-03-27,Vendredi 27/03,undefined: undefined,
-766,11,2026-03-29,Dimanche 29/03,undefined: undefined,
-767,11,2026-03-29,Dimanche 29/03,undefined: undefined,
-768,11,2026-03-29,Dimanche 29/03,undefined: undefined,
-769,11,2026-03-29,Dimanche 29/03,undefined: undefined,
-770,11,2026-03-29,Dimanche 29/03,undefined: undefined,
-771,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-772,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-773,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-774,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-775,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-776,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-777,11,2026-03-30,Lundi 30/03,undefined: undefined,
-778,11,2026-03-30,Lundi 30/03,undefined: undefined,
-779,11,2026-03-30,Lundi 30/03,undefined: undefined,
-780,11,2026-03-30,Lundi 30/03,undefined: undefined,
-781,11,2026-03-30,Lundi 30/03,undefined: undefined,
-782,11,2026-03-31,Mardi 31/03,undefined: undefined,
-783,11,2026-03-31,Mardi 31/03,undefined: undefined,
-784,11,2026-03-31,Mardi 31/03,undefined: undefined,
-785,11,2026-03-31,Mardi 31/03,undefined: undefined,
-786,11,2026-03-31,Mardi 31/03,undefined: undefined,
-787,11,2026-04-01,Mercredi 01/04,undefined: undefined,
-788,11,2026-04-01,Mercredi 01/04,undefined: undefined,
-789,11,2026-04-01,Mercredi 01/04,undefined: undefined,
-790,11,2026-04-01,Mercredi 01/04,undefined: undefined,
-791,11,2026-04-01,Mercredi 01/04,undefined: undefined,
-792,11,2026-04-01,Mercredi 01/04,[Prep] undefined: undefined,
-793,11,2026-04-02,Jeudi 02/04,undefined: undefined,
-794,11,2026-04-02,Jeudi 02/04,undefined: undefined,
-795,11,2026-04-02,Jeudi 02/04,undefined: undefined,
-796,11,2026-04-02,Jeudi 02/04,undefined: undefined,
-797,11,2026-04-03,Vendredi 03/04,undefined: undefined,
-798,11,2026-04-03,Vendredi 03/04,undefined: undefined,
-799,11,2026-04-03,Vendredi 03/04,undefined: undefined,
-800,11,2026-04-03,Vendredi 03/04,undefined: undefined,
-801,11,2026-04-03,Vendredi 03/04,undefined: undefined,
-802,11,2026-04-04,Samedi 04/04,undefined: undefined,
-803,11,2026-04-04,Samedi 04/04,undefined: undefined,
-804,11,2026-04-04,Samedi 04/04,undefined: undefined,
-805,11,2026-04-04,Samedi 04/04,undefined: undefined,
-806,11,2026-04-04,Samedi 04/04,undefined: undefined,
-807,11,2026-04-05,Dimanche 05/04,undefined: undefined,
-808,11,2026-04-05,Dimanche 05/04,undefined: undefined,
-809,11,2026-04-05,Dimanche 05/04,undefined: undefined,
-810,11,2026-04-05,Dimanche 05/04,undefined: undefined,
-811,11,2026-04-05,Dimanche 05/04,undefined: undefined,
-812,12,2026-03-16,Lundi 16/03,undefined: undefined,
-813,12,2026-03-16,Lundi 16/03,undefined: undefined,
-814,12,2026-03-16,Lundi 16/03,undefined: undefined,
-815,12,2026-03-16,Lundi 16/03,undefined: undefined,
-816,12,2026-03-16,Lundi 16/03,undefined: undefined,
-817,12,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,
-818,12,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,
-819,12,2026-03-17,Mardi 17/03,undefined: undefined,
-820,12,2026-03-17,Mardi 17/03,undefined: undefined,
-821,12,2026-03-17,Mardi 17/03,undefined: undefined,
-822,12,2026-03-17,Mardi 17/03,undefined: undefined,
-823,12,2026-03-17,Mardi 17/03,undefined: undefined,
-824,12,2026-03-17,Mardi 17/03,undefined: undefined,
-825,12,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-826,12,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-827,12,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-828,12,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-829,12,2026-03-18,Mercredi 18/03,undefined: undefined,
-830,12,2026-03-18,Mercredi 18/03,undefined: undefined,
-831,12,2026-03-18,Mercredi 18/03,undefined: undefined,
-832,12,2026-03-18,Mercredi 18/03,undefined: undefined,
-833,12,2026-03-18,Mercredi 18/03,[Prep] undefined: undefined,
-834,12,2026-03-19,Jeudi 19/03,undefined: undefined,
-835,12,2026-03-19,Jeudi 19/03,undefined: undefined,
-836,12,2026-03-19,Jeudi 19/03,undefined: undefined,
-837,12,2026-03-19,Jeudi 19/03,undefined: undefined,
-838,12,2026-03-19,Jeudi 19/03,undefined: undefined,
-839,12,2026-03-19,Jeudi 19/03,undefined: undefined,
-840,12,2026-03-20,Vendredi 20/03,undefined: undefined,
-841,12,2026-03-20,Vendredi 20/03,undefined: undefined,
-842,12,2026-03-20,Vendredi 20/03,undefined: undefined,
-843,12,2026-03-20,Vendredi 20/03,undefined: undefined,
-844,12,2026-03-20,Vendredi 20/03,undefined: undefined,
-845,12,2026-03-22,Dimanche 22/03,undefined: undefined,
-846,12,2026-03-22,Dimanche 22/03,undefined: undefined,
-847,12,2026-03-22,Dimanche 22/03,undefined: undefined,
-848,12,2026-03-22,Dimanche 22/03,undefined: undefined,
-849,12,2026-03-22,Dimanche 22/03,undefined: undefined,
-850,12,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-851,12,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-852,12,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-853,12,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-854,12,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-855,12,2026-03-23,Lundi 23/03,undefined: undefined,
-856,12,2026-03-23,Lundi 23/03,undefined: undefined,
-857,12,2026-03-23,Lundi 23/03,undefined: undefined,
-858,12,2026-03-23,Lundi 23/03,undefined: undefined,
-859,12,2026-03-23,Lundi 23/03,undefined: undefined,
-860,12,2026-03-24,Mardi 24/03,undefined: undefined,
-861,12,2026-03-24,Mardi 24/03,undefined: undefined,
-862,12,2026-03-24,Mardi 24/03,undefined: undefined,
-863,12,2026-03-24,Mardi 24/03,undefined: undefined,
-864,12,2026-03-24,Mardi 24/03,undefined: undefined,
-865,12,2026-03-24,Mardi 24/03,undefined: undefined,
-866,12,2026-03-25,Mercredi 25/03,undefined: undefined,
-867,12,2026-03-25,Mercredi 25/03,undefined: undefined,
-868,12,2026-03-25,Mercredi 25/03,undefined: undefined,
-869,12,2026-03-25,Mercredi 25/03,undefined: undefined,
-870,12,2026-03-25,Mercredi 25/03,undefined: undefined,
-871,12,2026-03-26,Jeudi 26/03,undefined: undefined,
-872,12,2026-03-26,Jeudi 26/03,undefined: undefined,
-873,12,2026-03-26,Jeudi 26/03,undefined: undefined,
-874,12,2026-03-26,Jeudi 26/03,undefined: undefined,
-875,12,2026-03-26,Jeudi 26/03,undefined: undefined,
-876,12,2026-03-27,Vendredi 27/03,undefined: undefined,
-877,12,2026-03-27,Vendredi 27/03,undefined: undefined,
-878,12,2026-03-27,Vendredi 27/03,undefined: undefined,
-879,12,2026-03-27,Vendredi 27/03,undefined: undefined,
-880,12,2026-03-27,Vendredi 27/03,undefined: undefined,
-881,12,2026-03-29,Dimanche 29/03,undefined: undefined,
-882,12,2026-03-29,Dimanche 29/03,undefined: undefined,
-883,12,2026-03-29,Dimanche 29/03,undefined: undefined,
-884,12,2026-03-29,Dimanche 29/03,undefined: undefined,
-885,12,2026-03-29,Dimanche 29/03,undefined: undefined,
-886,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-887,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-888,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-889,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-890,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-891,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-892,12,2026-03-30,Lundi 30/03,undefined: undefined,
-893,12,2026-03-30,Lundi 30/03,undefined: undefined,
-894,12,2026-03-30,Lundi 30/03,undefined: undefined,
-895,12,2026-03-30,Lundi 30/03,undefined: undefined,
-896,12,2026-03-30,Lundi 30/03,undefined: undefined,
-897,12,2026-03-31,Mardi 31/03,undefined: undefined,
-898,12,2026-03-31,Mardi 31/03,undefined: undefined,
-899,12,2026-03-31,Mardi 31/03,undefined: undefined,
-900,12,2026-03-31,Mardi 31/03,undefined: undefined,
-901,12,2026-03-31,Mardi 31/03,undefined: undefined,
-902,12,2026-04-01,Mercredi 01/04,undefined: undefined,
-903,12,2026-04-01,Mercredi 01/04,undefined: undefined,
-904,12,2026-04-01,Mercredi 01/04,undefined: undefined,
-905,12,2026-04-01,Mercredi 01/04,undefined: undefined,
-906,12,2026-04-01,Mercredi 01/04,undefined: undefined,
-907,12,2026-04-01,Mercredi 01/04,[Prep] undefined: undefined,
-908,12,2026-04-02,Jeudi 02/04,undefined: undefined,
-909,12,2026-04-02,Jeudi 02/04,undefined: undefined,
-910,12,2026-04-02,Jeudi 02/04,undefined: undefined,
-911,12,2026-04-02,Jeudi 02/04,undefined: undefined,
-912,12,2026-04-03,Vendredi 03/04,undefined: undefined,
-913,12,2026-04-03,Vendredi 03/04,undefined: undefined,
-914,12,2026-04-03,Vendredi 03/04,undefined: undefined,
-915,12,2026-04-03,Vendredi 03/04,undefined: undefined,
-916,12,2026-04-03,Vendredi 03/04,undefined: undefined,
-917,12,2026-04-04,Samedi 04/04,undefined: undefined,
-918,12,2026-04-04,Samedi 04/04,undefined: undefined,
-919,12,2026-04-04,Samedi 04/04,undefined: undefined,
-920,12,2026-04-04,Samedi 04/04,undefined: undefined,
-921,12,2026-04-04,Samedi 04/04,undefined: undefined,
-922,12,2026-04-05,Dimanche 05/04,undefined: undefined,
-923,12,2026-04-05,Dimanche 05/04,undefined: undefined,
-924,12,2026-04-05,Dimanche 05/04,undefined: undefined,
-925,12,2026-04-05,Dimanche 05/04,undefined: undefined,
-926,12,2026-04-05,Dimanche 05/04,undefined: undefined,
-927,13,2026-03-16,Lundi 16/03,undefined: undefined,
-928,13,2026-03-16,Lundi 16/03,undefined: undefined,
-929,13,2026-03-16,Lundi 16/03,undefined: undefined,
-930,13,2026-03-16,Lundi 16/03,undefined: undefined,
-931,13,2026-03-16,Lundi 16/03,undefined: undefined,
-932,13,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,
-933,13,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,
-934,13,2026-03-17,Mardi 17/03,undefined: undefined,
-935,13,2026-03-17,Mardi 17/03,undefined: undefined,
-936,13,2026-03-17,Mardi 17/03,undefined: undefined,
-937,13,2026-03-17,Mardi 17/03,undefined: undefined,
-938,13,2026-03-17,Mardi 17/03,undefined: undefined,
-939,13,2026-03-17,Mardi 17/03,undefined: undefined,
-940,13,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-941,13,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-942,13,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-943,13,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,
-944,13,2026-03-18,Mercredi 18/03,undefined: undefined,
-945,13,2026-03-18,Mercredi 18/03,undefined: undefined,
-946,13,2026-03-18,Mercredi 18/03,undefined: undefined,
-947,13,2026-03-18,Mercredi 18/03,undefined: undefined,
-948,13,2026-03-18,Mercredi 18/03,[Prep] undefined: undefined,
-949,13,2026-03-19,Jeudi 19/03,undefined: undefined,
-950,13,2026-03-19,Jeudi 19/03,undefined: undefined,
-951,13,2026-03-19,Jeudi 19/03,undefined: undefined,
-952,13,2026-03-19,Jeudi 19/03,undefined: undefined,
-953,13,2026-03-19,Jeudi 19/03,undefined: undefined,
-954,13,2026-03-19,Jeudi 19/03,undefined: undefined,
-955,13,2026-03-20,Vendredi 20/03,undefined: undefined,
-956,13,2026-03-20,Vendredi 20/03,undefined: undefined,
-957,13,2026-03-20,Vendredi 20/03,undefined: undefined,
-958,13,2026-03-20,Vendredi 20/03,undefined: undefined,
-959,13,2026-03-20,Vendredi 20/03,undefined: undefined,
-960,13,2026-03-22,Dimanche 22/03,undefined: undefined,
-961,13,2026-03-22,Dimanche 22/03,undefined: undefined,
-962,13,2026-03-22,Dimanche 22/03,undefined: undefined,
-963,13,2026-03-22,Dimanche 22/03,undefined: undefined,
-964,13,2026-03-22,Dimanche 22/03,undefined: undefined,
-965,13,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-966,13,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-967,13,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-968,13,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-969,13,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,
-970,13,2026-03-23,Lundi 23/03,undefined: undefined,
-971,13,2026-03-23,Lundi 23/03,undefined: undefined,
-972,13,2026-03-23,Lundi 23/03,undefined: undefined,
-973,13,2026-03-23,Lundi 23/03,undefined: undefined,
-974,13,2026-03-23,Lundi 23/03,undefined: undefined,
-975,13,2026-03-24,Mardi 24/03,undefined: undefined,
-976,13,2026-03-24,Mardi 24/03,undefined: undefined,
-977,13,2026-03-24,Mardi 24/03,undefined: undefined,
-978,13,2026-03-24,Mardi 24/03,undefined: undefined,
-979,13,2026-03-24,Mardi 24/03,undefined: undefined,
-980,13,2026-03-24,Mardi 24/03,undefined: undefined,
-981,13,2026-03-25,Mercredi 25/03,undefined: undefined,
-982,13,2026-03-25,Mercredi 25/03,undefined: undefined,
-983,13,2026-03-25,Mercredi 25/03,undefined: undefined,
-984,13,2026-03-25,Mercredi 25/03,undefined: undefined,
-985,13,2026-03-25,Mercredi 25/03,undefined: undefined,
-986,13,2026-03-26,Jeudi 26/03,undefined: undefined,
-987,13,2026-03-26,Jeudi 26/03,undefined: undefined,
-988,13,2026-03-26,Jeudi 26/03,undefined: undefined,
-989,13,2026-03-26,Jeudi 26/03,undefined: undefined,
-990,13,2026-03-26,Jeudi 26/03,undefined: undefined,
-991,13,2026-03-27,Vendredi 27/03,undefined: undefined,
-992,13,2026-03-27,Vendredi 27/03,undefined: undefined,
-993,13,2026-03-27,Vendredi 27/03,undefined: undefined,
-994,13,2026-03-27,Vendredi 27/03,undefined: undefined,
-995,13,2026-03-27,Vendredi 27/03,undefined: undefined,
-996,13,2026-03-29,Dimanche 29/03,undefined: undefined,
-997,13,2026-03-29,Dimanche 29/03,undefined: undefined,
-998,13,2026-03-29,Dimanche 29/03,undefined: undefined,
-999,13,2026-03-29,Dimanche 29/03,undefined: undefined,
-1000,13,2026-03-29,Dimanche 29/03,undefined: undefined,
-1001,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-1002,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-1003,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-1004,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-1005,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-1006,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,
-1007,13,2026-03-30,Lundi 30/03,undefined: undefined,
-1008,13,2026-03-30,Lundi 30/03,undefined: undefined,
-1009,13,2026-03-30,Lundi 30/03,undefined: undefined,
-1010,13,2026-03-30,Lundi 30/03,undefined: undefined,
-1011,13,2026-03-30,Lundi 30/03,undefined: undefined,
-1012,13,2026-03-31,Mardi 31/03,undefined: undefined,
-1013,13,2026-03-31,Mardi 31/03,undefined: undefined,
-1014,13,2026-03-31,Mardi 31/03,undefined: undefined,
-1015,13,2026-03-31,Mardi 31/03,undefined: undefined,
-1016,13,2026-03-31,Mardi 31/03,undefined: undefined,
-1017,13,2026-04-01,Mercredi 01/04,undefined: undefined,
-1018,13,2026-04-01,Mercredi 01/04,undefined: undefined,
-1019,13,2026-04-01,Mercredi 01/04,undefined: undefined,
-1020,13,2026-04-01,Mercredi 01/04,undefined: undefined,
-1021,13,2026-04-01,Mercredi 01/04,undefined: undefined,
-1022,13,2026-04-01,Mercredi 01/04,[Prep] undefined: undefined,
-1023,13,2026-04-02,Jeudi 02/04,undefined: undefined,
-1024,13,2026-04-02,Jeudi 02/04,undefined: undefined,
-1025,13,2026-04-02,Jeudi 02/04,undefined: undefined,
-1026,13,2026-04-02,Jeudi 02/04,undefined: undefined,
-1027,13,2026-04-03,Vendredi 03/04,undefined: undefined,
-1028,13,2026-04-03,Vendredi 03/04,undefined: undefined,
-1029,13,2026-04-03,Vendredi 03/04,undefined: undefined,
-1030,13,2026-04-03,Vendredi 03/04,undefined: undefined,
-1031,13,2026-04-03,Vendredi 03/04,undefined: undefined,
-1032,13,2026-04-04,Samedi 04/04,undefined: undefined,
-1033,13,2026-04-04,Samedi 04/04,undefined: undefined,
-1034,13,2026-04-04,Samedi 04/04,undefined: undefined,
-1035,13,2026-04-04,Samedi 04/04,undefined: undefined,
-1036,13,2026-04-04,Samedi 04/04,undefined: undefined,
-1037,13,2026-04-05,Dimanche 05/04,undefined: undefined,
-1038,13,2026-04-05,Dimanche 05/04,undefined: undefined,
-1039,13,2026-04-05,Dimanche 05/04,undefined: undefined,
-1040,13,2026-04-05,Dimanche 05/04,undefined: undefined,
-1041,13,2026-04-05,Dimanche 05/04,undefined: undefined,
-1042,14,2026-04-06,Lundi 06/04,"Préchauffer four et préparer PDT: Four 200°C. Couper 400g PDT en cubes, huile + sel + thym, enfourner",5min
-1043,14,2026-04-06,Lundi 06/04,"Cuire bœuf et oignons: 360g émincé bœuf poêlé 3min/face. Ajouter 2 oignons émincés, cuire 8min",12min
-1044,14,2026-04-06,Lundi 06/04,Cuire asperges: 270g asperges à la vapeur 8min ou poêlées 5min,8min
-1045,14,2026-04-06,Lundi 06/04,[Prep] Préparer base: Faire revenir 1 oignon + 2 gousses ail hachées 5min,10min
-1046,14,2026-04-06,Lundi 06/04,"[Prep] Mijoter: Ajouter 800g saucisses coupées + 400g passata + 200g haricots rouges + épices créoles, mijoter 25min",30min
-1047,14,2026-04-06,Lundi 06/04,[Prep] Conditionner: Répartir en 2 portions avec 150g/120g riz cuit par personne,5min
-1048,14,2026-04-07,Mardi 07/04,"Cuire riz: 360g riz basmati, eau bouillante salée 12min",12min
-1049,14,2026-04-07,Mardi 07/04,"Cuire dinde: 360g escalopes dinde coupées, poêlées 4min/face",8min
-1050,14,2026-04-07,Mardi 07/04,"Champignons et sauce: 330g champignons de Paris poêlés 5min, ajouter 100ml crème fraîche",5min
-1051,14,2026-04-08,Mercredi 08/04,"Cuire riz: 360g riz jasmin, eau bouillante 15min",15min
-1052,14,2026-04-08,Mercredi 08/04,"Caraméliser porc: 330g émincé porc + 30g sucre brun caramélisé + nuoc-mam + sauce soja, cuire 8min",10min
-1053,14,2026-04-08,Mercredi 08/04,Légumes sautés: 220g radis roses + 140g petits pois surgelés sautés 5min,5min
-1054,14,2026-04-08,Mercredi 08/04,"[Prep] Cuire œufs: 15 œufs durs 10min, refroidir à l'eau froide",15min
-1055,14,2026-04-08,Mercredi 08/04,"[Prep] Base curry: Oignon + ail + gingembre + épices (curcuma, coriandre, cumin) 5min",10min
-1056,14,2026-04-08,Mercredi 08/04,"[Prep] Mijoter curry: 400g pois chiches + 400ml lait coco + 200g tomates + épinards, mijoter 15min",15min
-1057,14,2026-04-09,Jeudi 09/04,"Cuire PDT grenaille: 400g PDT grenaille lavées, bouillies 15min puis rissolées 5min",20min
-1058,14,2026-04-09,Jeudi 09/04,"Cuire saumon: 360g pavés saumon + marinade miel-soja-gingembre, grillés 4min/face",8min
-1059,14,2026-04-09,Jeudi 09/04,Haricots verts: 270g haricots verts vapeur 6min ou surgelés poêlés 4min,6min
-1060,14,2026-04-10,Vendredi 10/04,"Cuire PDT sautées: 400g PDT coupées en rondelles, cuites vapeur 10min puis sautées 8min",18min
-1061,14,2026-04-10,Vendredi 10/04,"Omelette: 5 œufs battus + persil/ciboulette/estragon, cuire 3min/face",6min
-1062,14,2026-04-10,Vendredi 10/04,Servir: Mâche assaisonnée + pain complet grillé,2min
-1063,14,2026-04-10,Vendredi 10/04,"[Prep] Préparer viande: 600g bœuf à braiser coupé en cubes, fariné et doré 10min",15min
-1064,14,2026-04-10,Vendredi 10/04,"[Prep] Mijoter daube: Ajouter 300g carottes + oignons + ail + vin rouge + tomates + herbes de Provence + olives, mijoter 30min",35min
-1065,14,2026-04-11,Samedi 11/04,Cuire pâtes: 360g pâtes fraîches ou spaghetti al dente selon paquet,10min
-1066,14,2026-04-11,Samedi 11/04,Lardons et œufs: 140g lardons dorés 5min. Mélanger 3 œufs + 70g parmesan râpé,5min
-1067,14,2026-04-11,Samedi 11/04,Assembler: Mélanger pâtes chaudes + lardons + mélange œufs hors du feu + poivre,3min
-1068,14,2026-04-12,Dimanche 12/04,Cuire riz: 330g riz basmati 12min eau bouillante salée,12min
-1069,14,2026-04-12,Dimanche 12/04,Préparer gratin: 360g cœurs artichauts + 140g jambon + béchamel légère + 45g gruyère,10min
-1070,14,2026-04-12,Dimanche 12/04,"Gratiner: Four 200°C, gratiner 8min jusqu'à doré",8min
-1071,14,2026-04-12,Dimanche 12/04,"[Prep] Cuire œufs: 15 œufs durs 10min eau bouillante, refroidir",15min
-1072,14,2026-04-12,Dimanche 12/04,[Prep] Préparer batch: Choisir recette semaine suivante selon planning,45min
-1073,15,2026-03-31,Lundi 31/03,"PDT rôties: Couper 420g PDT en quartiers, huile d'olive, sel, four 200°C",5min
-1074,15,2026-03-31,Lundi 31/03,"Asperges: Éplucher 270g asperges, cuisson vapeur ou poêle",8min
-1075,15,2026-03-31,Lundi 31/03,"Escalopes: Saisir 320g escalopes dinde à la poêle, sel, poivre",12min
-1076,15,2026-03-31,Lundi 31/03,[Prep] Batch poulet basquaise: Faire revenir 600g poulet + 2 oignons + 400g poivrons + 500g passata + 800g PDT,55min
-1077,15,2026-04-01,Mardi 01/04,Riz: Cuire 350g riz basmati à l'eau salée,3min
-1078,15,2026-04-01,Mardi 01/04,Radis sautés: Faire sauter 210g radis coupés en rondelles à la poêle,8min
-1079,15,2026-04-01,Mardi 01/04,Petits pois: Cuire 140g petits pois surgelés à la poêle,5min
-1080,15,2026-04-01,Mardi 01/04,"Saumon: Cuire 350g pavés saumon à la poêle, sel, poivre",4min
-1081,15,2026-04-02,Mercredi 02/04,PDT cuites: Cuire 320g PDT en dés à l'eau salée,15min
-1082,15,2026-04-02,Mercredi 02/04,Artichauts: Réchauffer 270g cœurs artichauts en conserve,3min
-1083,15,2026-04-02,Mercredi 02/04,"Tortilla: Battre 5 œufs, mélanger PDT + artichauts, cuire à la poêle",7min
-1084,15,2026-04-02,Mercredi 02/04,[Prep] Batch bœuf stroganoff: Faire revenir 500g émincé bœuf + champignons + crème + semoule,30min
-1085,15,2026-04-02,Mercredi 02/04,[Prep] Œufs durs: Cuire 15 œufs durs pour la semaine,15min
-1086,15,2026-04-03,Jeudi 03/04,PDT grenaille: Cuire 390g PDT grenaille à l'eau puis poêler avec herbes,15min
-1087,15,2026-04-03,Jeudi 03/04,Épinards: Faire sauter 220g épinards frais à la poêle,3min
-1088,15,2026-04-03,Jeudi 03/04,"Côtes porc: Cuire 320g côtes porc à la poêle, déglacé moutarde",4min
-1089,15,2026-04-04,Vendredi 04/04,Riz: Cuire 350g riz basmati à l'eau salée,3min
-1090,15,2026-04-04,Vendredi 04/04,Carottes: Cuire 270g carottes nouvelles en rondelles à la poêle,10min
-1091,15,2026-04-04,Vendredi 04/04,"Cabillaud: Cuire 360g filets cabillaud à la poêle, citron",7min
-1092,15,2026-04-04,Vendredi 04/04,[Prep] Batch émincé porc curry: Faire revenir 500g émincé porc + curry + lait coco + légumes + riz,50min
-1093,15,2026-04-05,Samedi 05/04,Béchamel: Préparer béchamel avec 30g beurre + farine + lait,5min
-1094,15,2026-04-05,Samedi 05/04,"Montage: Tartiner pain, jambon, gruyère, béchamel dessus",5min
-1095,15,2026-04-05,Samedi 05/04,Cuisson: Gratiner au four 200°C jusqu'à doré,5min
-1096,15,2026-04-06,Dimanche 06/04,"PDT rôties: Couper 440g PDT en quartiers, huile, herbes, four 200°C",5min
-1097,15,2026-04-06,Dimanche 06/04,Haricots verts: Cuire 220g haricots verts à la vapeur,8min
-1098,15,2026-04-06,Dimanche 06/04,"Gigot: Saisir 320g tranches gigot à la poêle, ail, romarin",12min
-1099,15,2026-04-06,Dimanche 06/04,[Prep] Cuire œufs durs: Préparer 15 œufs durs pour la semaine,15min
-1100,15,2026-04-06,Dimanche 06/04,[Prep] Batch lundi: Préparer batch pour lundi-mardi,45min
-1101,16,2026-04-07,Lundi 07/04,Cuire PDT vapeur: Laver et cuire 390g PDT à la vapeur 15min,15min
-1102,16,2026-04-07,Lundi 07/04,"Préparer asperges: Éplucher 270g asperges, les cuire vapeur 8min",8min
-1103,16,2026-04-07,Lundi 07/04,Cuire saumon: Saisir 350g pavé saumon huile olive 4min/côté,8min
-1104,16,2026-04-07,Lundi 07/04,"[Prep] Préparer tajine agneau: Découper 305g agneau, émincer oignons, courgettes",20min
-1105,16,2026-04-07,Lundi 07/04,"[Prep] Mijoter tajine: Faire revenir agneau, ajouter légumes, épices, 400ml bouillon",40min
-1106,16,2026-04-08,Mardi 08/04,Cuire riz: Cuire 350g riz basmati dans 700ml eau salée 12min,12min
-1107,16,2026-04-08,Mardi 08/04,"Dinde et légumes: Faire revenir 320g dinde, ajouter 220g carottes, 150g champignons",8min
-1108,16,2026-04-08,Mardi 08/04,"Sauce blanche: Ajouter crème fraîche, bouillon, herbes, mijoter 5min",5min
-1109,16,2026-04-09,Mercredi 09/04,Cuire épinards: Faire revenir 270g épinards frais à l'huile 5min,5min
-1110,16,2026-04-09,Mercredi 09/04,PDT sautées: Cuire 320g PDT coupées à la poêle 10min,10min
-1111,16,2026-04-09,Mercredi 09/04,"Tortilla: Battre 5 œufs, mélanger PDT-épinards, cuire 8min",8min
-1112,16,2026-04-09,Mercredi 09/04,"[Prep] Préparer bœuf provençal: Découper 315g bœuf, émincer aubergines, tomates",15min
-1113,16,2026-04-09,Mercredi 09/04,"[Prep] Mijoter: Faire revenir bœuf, ajouter légumes, herbes de Provence",35min
-1114,16,2026-04-09,Mercredi 09/04,[Prep] Œufs durs: Cuire 15 œufs pour les 3 prochains jours,15min
-1115,16,2026-04-10,Jeudi 10/04,"PDT grenaille: Laver 390g PDT grenaille, les rôtir au four 20min à 200°C",20min
-1116,16,2026-04-10,Jeudi 10/04,"Radis sautés: Couper 220g radis, les faire sauter 8min à la poêle",8min
-1117,16,2026-04-10,Jeudi 10/04,"Côte porc: Cuire 320g côte porc 6min/côté, déglacer moutarde-crème",12min
-1118,16,2026-04-11,Vendredi 11/04,Cuire riz: Cuire 350g riz basmati dans eau bouillante salée 12min,12min
-1119,16,2026-04-11,Vendredi 11/04,Petits pois: Cuire 270g petits pois surgelés 6min vapeur,6min
-1120,16,2026-04-11,Vendredi 11/04,Cabillaud: Cuire 360g cabillaud à la poêle huile olive 4min/côté,8min
-1121,16,2026-04-11,Vendredi 11/04,"[Prep] Chili con carne: Faire revenir 270g bœuf haché, ajouter oignons, épices",10min
-1122,16,2026-04-11,Vendredi 11/04,"[Prep] Mijoter chili: Ajouter 400g haricots rouges, tomates concassées, mijoter 35min",35min
-1123,16,2026-04-12,Samedi 12/04,"Frites four: Couper PDT en frites, enfourner 200°C 18min avec huile",18min
-1124,16,2026-04-12,Samedi 12/04,Poulet grillé: Cuire 280g blanc poulet coupé en lamelles 8min,8min
-1125,16,2026-04-12,Samedi 12/04,"Assembler wraps: Garnir tortillas avec poulet, salade, tomates, fromage",5min
-1126,16,2026-04-13,Dimanche 13/04,"PDT rôties: Couper 420g PDT, les rôtir au four 200°C avec huile 22min",22min
-1127,16,2026-04-13,Dimanche 13/04,"Rôti porc: Saisir 320g rôti porc 12min, finir au four 10min",15min
-1128,16,2026-04-13,Dimanche 13/04,Carottes nouvelles: Cuire 270g carottes nouvelles entières vapeur 12min,12min
-1129,16,2026-04-13,Dimanche 13/04,[Prep] Œufs durs: Cuire 15 œufs durs pour la semaine prochaine,15min
-1130,16,2026-04-13,Dimanche 13/04,[Prep] Préparer ingrédients: Découper légumes pour le batch de lundi,15min
-1131,17,2026-04-07,Lundi 07/04,Préparer les PDT: Laver et couper 350g PDT grenaille en deux. Les faire rôtir au four à 200°C avec un filet d'huile d'olive et du sel,20min
-1132,17,2026-04-07,Lundi 07/04,"Paner les escalopes: Passer 320g escalopes de dinde dans farine, œuf battu, puis chapelure. Les cuire à la poêle 3-4min/côté",8min
-1133,17,2026-04-07,Lundi 07/04,Cuire les asperges: Faire cuire 220g asperges à la vapeur pendant 6-8min,8min
-1134,17,2026-04-08,Mardi 08/04,Cuire le riz: Faire cuire 160g riz basmati dans 320ml d'eau salée pendant 15min,15min
-1135,17,2026-04-08,Mardi 08/04,"Préparer la sauce teriyaki: Mélanger 2 c.s. sauce soja, 1 c.s. miel, 1 c.c. vinaigre de riz, 1 gousse ail hachée",2min
-1136,17,2026-04-08,Mardi 08/04,"Cuire le saumon: Cuire 310g filets de saumon à la poêle 4min/côté, badigeonner de sauce teriyaki",8min
-1137,17,2026-04-08,Mardi 08/04,Faire sauter les petit pois: Faire revenir 270g petit pois surgelés à la poêle avec un peu d'huile et d'ail 5min,5min
-1138,17,2026-04-08,Mardi 08/04,"[Prep] Préparer les légumes: Éplucher et couper 400g carottes nouvelles, nettoyer 6 artichauts",20min
-1139,17,2026-04-08,Mardi 08/04,[Prep] Faire revenir la viande: Faire dorer 600g épaule d'agneau coupée en morceaux dans un faitout avec huile d'olive,10min
-1140,17,2026-04-08,Mardi 08/04,"[Prep] Mijoter le curry: Ajouter 400ml lait de coco, 2 c.s. pâte curry rouge, légumes, laisser mijoter 30min",30min
-1141,17,2026-04-09,Mercredi 09/04,Cuire les PDT: Faire cuire 350g PDT épluchées à la vapeur pendant 20min,20min
-1142,17,2026-04-09,Mercredi 09/04,Préparer les radis: Nettoyer et couper 220g radis en quartiers,5min
-1143,17,2026-04-09,Mercredi 09/04,"Cuire le porc: Saisir 300g côtes de porc à la poêle 4min/côté, réserver",8min
-1144,17,2026-04-09,Mercredi 09/04,"Confire les radis: Dans la même poêle, faire revenir les radis avec 2 c.s. miel, sel, poivre 8min",8min
-1145,17,2026-04-09,Mercredi 09/04,"[Prep] Cuire les œufs: Faire bouillir 15 œufs pendant 10min, les refroidir dans l'eau glacée",15min
-1146,17,2026-04-10,Jeudi 10/04,"Préparer les PDT: Couper 320g PDT en dés, les faire sauter à la poêle avec huile d'olive 12min",12min
-1147,17,2026-04-10,Jeudi 10/04,Cuire les épinards: Faire revenir 220g épinards frais à la poêle 3min jusqu'à ce qu'ils flétrissent,3min
-1148,17,2026-04-10,Jeudi 10/04,"Préparer l'omelette: Battre 5 œufs, verser dans une poêle chaude, ajouter épinards et 45g gruyère râpé",5min
-1149,17,2026-04-10,Jeudi 10/04,"Finaliser: Plier l'omelette en deux, laisser cuire 2min supplémentaires",2min
-1150,17,2026-04-10,Jeudi 10/04,[Prep] Faire revenir la viande: Faire dorer 600g bœuf à braiser coupé en morceaux dans un faitout,15min
-1151,17,2026-04-10,Jeudi 10/04,"[Prep] Ajouter les légumes: Ajouter 300g carottes nouvelles, 200g petit pois, 2 oignons émincés",10min
-1152,17,2026-04-10,Jeudi 10/04,"[Prep] Mijoter: Ajouter 400ml bouillon bœuf, herbes de Provence, laisser mijoter à feu doux 45min",45min
-1153,17,2026-04-11,Vendredi 11/04,"Préparer les PDT: Laver et couper 340g PDT grenaille, les faire rôtir au four à 200°C avec huile d'olive 20min",20min
-1154,17,2026-04-11,Vendredi 11/04,Cuire les asperges: Faire cuire 270g asperges à la vapeur 8min,8min
-1155,17,2026-04-11,Vendredi 11/04,Cuire le saumon: Saisir 310g pavés de saumon à la poêle 4min/côté,8min
-1156,17,2026-04-11,Vendredi 11/04,Préparer le beurre à l'ail: Faire fondre 30g beurre avec 2 gousses ail hachées et persil,3min
-1157,17,2026-04-12,Samedi 12/04,"Préparer les frites: Couper 350g PDT en frites, les faire au four à 220°C avec huile d'olive 25min",25min
-1158,17,2026-04-12,Samedi 12/04,"Paner le cabillaud: Passer 350g filets de cabillaud dans farine, œuf battu, chapelure",8min
-1159,17,2026-04-12,Samedi 12/04,Cuire le poisson: Faire frire le cabillaud pané à la poêle 4min/côté,8min
-1160,17,2026-04-12,Samedi 12/04,Cuire les petit pois: Faire cuire 220g petit pois surgelés 5min,5min
-1161,17,2026-04-12,Samedi 12/04,"Préparer la sauce: Mélanger mayonnaise, câpres, cornichons hachés, citron",3min
-1162,17,2026-04-12,Samedi 12/04,"[Prep] Faire la purée: Éplucher et cuire 400g PDT, les écraser avec lait et beurre",20min
-1163,17,2026-04-12,Samedi 12/04,"[Prep] Assembler: Dans un plat, disposer le bœuf mijoté, recouvrir de purée, gratiner 15min",15min
-1164,17,2026-04-13,Dimanche 13/04,Préparer le rôti: Saisir 800g rôti de porc dans un faitout avec huile d'olive 8min de tous côtés,8min
-1165,17,2026-04-13,Dimanche 13/04,Ajouter les légumes: Ajouter 270g carottes nouvelles entières et 2 oignons émincés autour du rôti,5min
-1166,17,2026-04-13,Dimanche 13/04,"Cuire au four: Enfourner à 180°C pendant 60min, arroser régulièrement",60min
-1167,17,2026-04-13,Dimanche 13/04,Préparer les PDT: Faire rôtir 340g PDT coupées avec huile et romarin 45min,45min
-1168,17,2026-04-13,Dimanche 13/04,Repos et découpe: Laisser reposer le rôti 10min avant de découper,10min
-1169,17,2026-04-13,Dimanche 13/04,"[Prep] Cuire les œufs: Faire bouillir 15 œufs pendant 10min, les refroidir dans l'eau glacée",15min
-1170,18,2026-04-07,Lundi 07/04,"Préparer les PDT grenaille: Laver et couper 350g PDT grenaille en deux. Les faire rôtir au four à 200°C avec huile d'olive, sel et herbes de Provence",30min
-1171,18,2026-04-07,Lundi 07/04,Cuire les asperges: Parer 270g asperges et les cuire à la vapeur 8-10 min jusqu'à tendreté,10min
-1172,18,2026-04-07,Lundi 07/04,"Cuire le saumon: Saisir 320g pavé de saumon dans une poêle avec un peu d'huile, 4-5 min par face",10min
-1173,18,2026-04-07,Lundi 07/04,Beurre à l'ail: Faire fondre 20g beurre avec 2 gousses d'ail hachées et persil,2min
-1174,18,2026-04-07,Lundi 07/04,"[Prep] Préparer le tajine d'agneau: Suivre la recette complète : faire revenir 500g épaule d'agneau coupée, ajouter légumes de printemps, épices et laisser mijoter",95min
-1175,18,2026-04-08,Mardi 08/04,"Préparer les frites four: Couper 350g PDT en bâtonnets, les huiler et enfourner à 220°C",35min
-1176,18,2026-04-08,Mardi 08/04,"Paner les escalopes: Passer 280g escalopes de dinde dans farine, œuf battu et chapelure",10min
-1177,18,2026-04-08,Mardi 08/04,Cuire les escalopes: Faire dorer les escalopes panées 4-5 min par face dans l'huile,10min
-1178,18,2026-04-08,Mardi 08/04,"Faire sauter les radis: Nettoyer et couper 220g radis, les faire sauter au beurre avec sel et poivre",8min
-1179,18,2026-04-09,Mercredi 09/04,"Confiture de radis au miel: Couper 220g radis en quartiers, les cuire dans une poêle avec 2 c.à.s de miel, beurre et thym 15 min",15min
-1180,18,2026-04-09,Mercredi 09/04,"Cuire les PDT vapeur: Éplucher et couper 350g PDT, les cuire à la vapeur 20 min",25min
-1181,18,2026-04-09,Mercredi 09/04,Cuire les côtes de porc: Saisir 320g côtes de porc dans une poêle bien chaude 5-6 min par face,12min
-1182,18,2026-04-09,Mercredi 09/04,Repos et service: Laisser reposer la viande 3 min avant de servir,3min
-1183,18,2026-04-09,Mercredi 09/04,"[Prep] Préparer le poulet basquaise: Découper 500g poulet, le faire revenir avec oignons et poivrons, ajouter tomates et laisser mijoter",55min
-1184,18,2026-04-09,Mercredi 09/04,[Prep] Cuire les œufs durs: Mettre 15 œufs à cuire 10 min dans l'eau bouillante,15min
-1185,18,2026-04-10,Jeudi 10/04,Cuire le riz: Rincer 350g riz basmati et le cuire dans 2 volumes d'eau salée 18 min,20min
-1186,18,2026-04-10,Jeudi 10/04,Cuire les petits pois: Faire cuire 270g petits pois surgelés dans l'eau bouillante salée 5 min,8min
-1187,18,2026-04-10,Jeudi 10/04,Cuire le cabillaud: Poêler 350g filets de cabillaud dans l'huile d'olive 4-5 min par face,10min
-1188,18,2026-04-10,Jeudi 10/04,"Assaisonnement: Finir avec un filet d'huile d'olive, citron, sel et persil",2min
-1189,18,2026-04-10,Jeudi 10/04,"[Prep] Préparer le chili con carne: Faire revenir 500g bœuf haché, ajouter oignons, haricots rouges, tomates et épices. Laisser mijoter",45min
-1190,18,2026-04-11,Vendredi 11/04,Préparer les PDT sautées: Éplucher et couper 350g PDT en dés. Les faire sauter à la poêle avec huile d'olive 20 min,25min
-1191,18,2026-04-11,Vendredi 11/04,Préparer les épinards: Nettoyer et faire tomber 270g épinards frais à la poêle avec ail et beurre,8min
-1192,18,2026-04-11,Vendredi 11/04,"Battre et cuire l'omelette: Battre 5 œufs, verser dans la poêle, ajouter épinards et 45g gruyère râpé, cuire 5-6 min",8min
-1193,18,2026-04-12,Samedi 12/04,Préparer les frites: Couper 330g PDT en bâtonnets et les cuire au four à 220°C,25min
-1194,18,2026-04-12,Samedi 12/04,"Former et cuire les steaks: Former 270g viande hachée en 2 steaks, les cuire 3-4 min par face",8min
-1195,18,2026-04-12,Samedi 12/04,Griller les pains: Faire griller les pains burger et préparer la salade,5min
-1196,18,2026-04-12,Samedi 12/04,"Assembler: Monter les burgers avec salade, steaks, 55g cheddar et condiments",5min
-1197,18,2026-04-13,Dimanche 13/04,Cuire les pâtes: Faire cuire 350g spaghettis dans une grande casserole d'eau salée selon temps paquet,12min
-1198,18,2026-04-13,Dimanche 13/04,Faire revenir le guanciale: Couper 140g guanciale en dés et les faire revenir jusqu'à croustillant,8min
-1199,18,2026-04-13,Dimanche 13/04,Préparer l'émulsion: Battre 3 œufs avec 70g pecorino romano râpé dans un grand bol,3min
-1200,18,2026-04-13,Dimanche 13/04,"Mélanger: Égoutter les pâtes, les mélanger au guanciale et aux œufs hors du feu en remuant vivement",2min
-1201,18,2026-04-13,Dimanche 13/04,[Prep] Cuire œufs durs S2: Mettre 15 œufs à cuire 10 min dans l'eau bouillante pour la semaine,15min
-1202,18,2026-04-13,Dimanche 13/04,[Prep] Planifier courses: Vérifier la liste de courses et organiser les batches de la semaine suivante,15min
-1203,19,2026-04-07,Lundi 07/04,Cuire les PDT grenaille: Faire bouillir 340g PDT grenaille lavées avec peau dans eau salée 15min,15min
-1204,19,2026-04-07,Lundi 07/04,"Préparer les asperges: Casser le pied de 270g asperges, les cuire 8min à l'eau bouillante salée",8min
-1205,19,2026-04-07,Lundi 07/04,"Cuire le saumon: Saler/poivrer 310g pavé saumon, cuire 4min peau côté poêle puis retourner 3min",7min
-1206,19,2026-04-07,Lundi 07/04,"Finir les accompagnements: Égoutter PDT et asperges, faire fondre 20g beurre avec 1 gousse ail haché",3min
-1207,19,2026-04-07,Lundi 07/04,"[Prep] Mijoter le tajine d'agneau: Couper 600g épaule agneau en cubes, faire revenir avec oignon. Ajouter épices, 400g artichauts, 300g carottes nouvelles, bouillon. Mijoter 75min",90min
-1208,19,2026-04-08,Mardi 08/04,"Paner les escalopes: Aplatir 320g escalopes dinde, passer dans farine, œuf battu, chapelure",8min
-1209,19,2026-04-08,Mardi 08/04,"Cuire les PDT: Couper 350g PDT en cubes, les faire sauter à la poêle avec huile 15min",15min
-1210,19,2026-04-08,Mardi 08/04,Cuire la dinde: Faire dorer les escalopes panées 4min de chaque côté dans l'huile,8min
-1211,19,2026-04-08,Mardi 08/04,Préparer les épinards: Faire revenir 220g épinards frais avec 30ml crème fraîche,5min
-1212,19,2026-04-09,Mercredi 09/04,Cuire les PDT: Faire sauter 320g PDT coupées en cubes avec huile 15min jusqu'à dorées,15min
-1213,19,2026-04-09,Mercredi 09/04,"Préparer les radis: Couper 220g radis en rondelles, les faire sauter 5min avec beurre",5min
-1214,19,2026-04-09,Mercredi 09/04,"Faire l'omelette: Battre 5 œufs, cuire en omelette, ajouter radis et 45g gruyère râpé",8min
-1215,19,2026-04-09,Mercredi 09/04,"[Prep] Préparer le bœuf stroganoff: Couper 500g bœuf en lamelles, faire revenir avec oignons et champignons. Ajouter crème et moutarde, mijoter 30min",45min
-1216,19,2026-04-09,Mercredi 09/04,"[Prep] Cuire œufs durs: Cuire 15 œufs 10min, refroidir à l'eau froide",15min
-1217,19,2026-04-10,Jeudi 10/04,Cuire les PDT: Faire bouillir 350g PDT grenaille avec peau 15min dans eau salée,15min
-1218,19,2026-04-10,Jeudi 10/04,"Cuire le porc: Saler/poivrer 320g côtes de porc, les cuire 4min de chaque côté",8min
-1219,19,2026-04-10,Jeudi 10/04,Préparer les petits pois: Faire revenir 270g petits pois avec lardons et oignons à la française,10min
-1220,19,2026-04-10,Jeudi 10/04,"[Prep] Préparer le poulet basquaise: Couper 600g poulet en morceaux, faire revenir avec poivrons, tomates, oignons et épices. Mijoter 40min",55min
-1221,19,2026-04-11,Vendredi 11/04,"Cuire le riz: Rincer 350g riz basmati, le cuire dans 525ml eau salée 15min",15min
-1222,19,2026-04-11,Vendredi 11/04,Cuire les petits pois: Faire cuire 270g petits pois 8min dans eau bouillante salée,8min
-1223,19,2026-04-11,Vendredi 11/04,"Cuire le cabillaud: Saler/poivrer 360g filets de cabillaud, les cuire 4min de chaque côté",8min
-1224,19,2026-04-12,Samedi 12/04,"Réchauffer le rôti: Sortir le rôti de porc du frigo, le réchauffer au four 180°C 15min",15min
-1225,19,2026-04-12,Samedi 12/04,Réchauffer les accompagnements: Réchauffer PDT et carottes à la poêle 8min avec un peu d'huile,8min
-1226,19,2026-04-12,Samedi 12/04,Préparer le jus: Réchauffer le jus de cuisson et rectifier l'assaisonnement,3min
-1227,19,2026-04-13,Dimanche 13/04,"Cuire les pâtes: Porter à ébullition une grande casserole d'eau salée, cuire 350g spaghettis selon temps paquet",10min
-1228,19,2026-04-13,Dimanche 13/04,"Faire le guanciale: Couper 140g guanciale en lardons, les faire dorer sans matière grasse 5min",5min
-1229,19,2026-04-13,Dimanche 13/04,Préparer la liaison: Battre 3 œufs entiers avec 70g pecorino romano râpé et poivre noir,3min
-1230,19,2026-04-13,Dimanche 13/04,"Assembler: Égoutter pâtes en gardant un peu d'eau de cuisson, mélanger hors feu avec œufs et guanciale",7min
-1231,19,2026-04-13,Dimanche 13/04,"[Prep] Cuire œufs durs: Mettre 15 œufs dans eau froide, porter à ébullition puis 10min de cuisson",15min
-1232,20,2026-04-06,Lundi 06/04,"Précuisson PDT: Laver et couper 350g PDT grenaille en deux, cuire 12min eau bouillante salée",12min
-1233,20,2026-04-06,Lundi 06/04,"Préparation asperges: Éplucher 270g asperges, couper les extrémités dures",3min
-1234,20,2026-04-06,Lundi 06/04,"Cuisson saumon: Saler/poivrer 320g pavés saumon, cuire 4min chaque côté à la poêle huile d'olive",8min
-1235,20,2026-04-06,Lundi 06/04,"Finition: Égoutter PDT, les faire dorer 2min. Cuire asperges 3min vapeur. Beurre à l'ail fondu",5min
-1236,20,2026-04-06,Lundi 06/04,"[Prep] Préparation légumes: Éplucher 500g artichauts, couper 400g carottes nouvelles en rondelles, émincer 2 oignons",20min
-1237,20,2026-04-06,Lundi 06/04,[Prep] Cuisson agneau: Faire revenir 600g épaule d'agneau coupée en cubes dans huile d'olive 8min,8min
-1238,20,2026-04-06,Lundi 06/04,"[Prep] Mijoté: Ajouter légumes, épices tajine, 400ml bouillon, couvrir et mijoter 90min feu doux",90min
-1239,20,2026-04-07,Mardi 07/04,"Préparation frites: Couper 350g PDT en frites, les badigeonner d'huile, enfourner 20min à 220°C",5min
-1240,20,2026-04-07,Mardi 07/04,"Panure escalopes: Aplatir 280g escalopes, les paner: farine, œuf battu, chapelure",8min
-1241,20,2026-04-07,Mardi 07/04,Préparation radis: Laver et couper 220g radis en quartiers,3min
-1242,20,2026-04-07,Mardi 07/04,"Cuisson finale: Cuire escalopes 3min chaque côté, radis sautés 4min au beurre avec herbes",10min
-1243,20,2026-04-08,Mercredi 08/04,"Préparation PDT: Éplucher et couper 350g PDT en cubes, les faire cuire 15min eau bouillante",5min
-1244,20,2026-04-08,Mercredi 08/04,"Cuisson côtes: Saler/poivrer 320g côtes de porc, les griller 4min chaque côté à la poêle",8min
-1245,20,2026-04-08,Mercredi 08/04,Petits pois: Faire revenir 270g petits pois avec oignon émincé et lardons 5min,5min
-1246,20,2026-04-08,Mercredi 08/04,"Finition: Égoutter PDT, les faire sauter au beurre avec persil 3min",7min
-1247,20,2026-04-08,Mercredi 08/04,"[Prep] Base curry: Faire revenir oignon, gingembre, ail, épices curry 5min",5min
-1248,20,2026-04-08,Mercredi 08/04,"[Prep] Mijoté: Ajouter 400g pois chiches égouttés, 200ml lait coco, tomates concassées, mijoter 30min",30min
-1249,20,2026-04-08,Mercredi 08/04,"[Prep] Œufs durs: Cuire 15 œufs 9min eau bouillante, refroidir eau froide",15min
-1250,20,2026-04-09,Jeudi 09/04,"PDT sautées: Éplucher et couper 350g PDT en cubes, les cuire 12min eau bouillante puis les sauter au beurre",15min
-1251,20,2026-04-09,Jeudi 09/04,"Radis: Laver et couper 270g radis en lamelles, les faire sauter 5min au beurre",5min
-1252,20,2026-04-09,Jeudi 09/04,"Omelette: Battre 5 œufs, cuire omelette 3min, ajouter radis et 55g gruyère râpé, plier",5min
-1253,20,2026-04-09,Jeudi 09/04,"[Prep] Préparation: Couper 650g bœuf à braiser en cubes, éplucher 300g carottes et 400g PDT",15min
-1254,20,2026-04-09,Jeudi 09/04,[Prep] Coloration: Faire revenir la viande dans huile d'olive jusqu'à coloration dorée,10min
-1255,20,2026-04-09,Jeudi 09/04,"[Prep] Mijoté: Ajouter légumes, herbes de Provence, vin rouge, bouillon, mijoter 90min couvert",95min
-1256,20,2026-04-10,Vendredi 10/04,"Cuisson riz: Rincer 350g riz basmati, le cuire 15min dans 700ml eau bouillante salée",15min
-1257,20,2026-04-10,Vendredi 10/04,"Petits pois: Cuire 270g petits pois 8min eau bouillante, les égoutter et les poêler avec menthe",8min
-1258,20,2026-04-10,Vendredi 10/04,"Cabillaud: Saler/poivrer 360g filets cabillaud, les cuire 4min chaque côté à la poêle huile d'olive",8min
-1259,20,2026-04-10,Vendredi 10/04,"[Prep] Purée: Éplucher 500g PDT, les cuire 20min, les écraser avec lait et beurre",25min
-1260,20,2026-04-10,Vendredi 10/04,"[Prep] Assemblage: Dans plats: étaler le bœuf de la daube, recouvrir de purée, gratiner 15min",5min
-1261,20,2026-04-11,Samedi 11/04,"Préparation: Couper 140g guanciale en lardons, battre 3 œufs avec 70g pecorino râpé",5min
-1262,20,2026-04-11,Samedi 11/04,Cuisson pâtes: Cuire 350g spaghettis dans eau bouillante salée selon temps paquet,10min
-1263,20,2026-04-11,Samedi 11/04,Guanciale: Faire revenir les lardons jusqu'à dorés et croustillants,5min
-1264,20,2026-04-11,Samedi 11/04,"Finalisation: Mélanger pâtes chaudes avec œufs-fromage hors feu, ajouter guanciale et eau de cuisson",5min
-1265,20,2026-04-12,Dimanche 12/04,"Préparation: Saler/poivrer 800g rôti filet porc, éplucher 270g carottes nouvelles entières",10min
-1266,20,2026-04-12,Dimanche 12/04,Coloration: Faire dorer le rôti sur toutes faces dans cocotte avec huile d'olive,8min
-1267,20,2026-04-12,Dimanche 12/04,"Cuisson four: Ajouter carottes, thym, laurier, enfourner 60min à 180°C en arrosant",60min
-1268,20,2026-04-12,Dimanche 12/04,"PDT rôties: Éplucher 380g PDT, les faire rôtir avec rôti les 40 dernières minutes",12min
-1269,20,2026-04-12,Dimanche 12/04,"[Prep] Œufs durs: Cuire 15 œufs 9min eau bouillante, refroidir eau glacée, écaler",15min
-1270,20,2026-04-12,Dimanche 12/04,"[Prep] Préparation batch: Sortir ingrédients pour le batch de lundi, découper légumes",15min
-1271,21,2026-04-06,Lundi 06/04,Préchauffer le four: Préchauffer à 200°C,5min
-1272,21,2026-04-06,Lundi 06/04,"Préparer les PDT grenaille: Laver 430g PDT grenaille, couper en deux, mélanger avec huile d'olive, sel, poivre, enfourner",10min
-1273,21,2026-04-06,Lundi 06/04,"Préparer les asperges: Éplucher 270g asperges, couper les pieds",5min
-1274,21,2026-04-06,Lundi 06/04,"Cuire le saumon: Cuire 320g pavés de saumon à la poêle, 4min de chaque côté",10min
-1275,21,2026-04-06,Lundi 06/04,Cuire les asperges: Sauter les asperges 8min avec beurre à l'ail,10min
-1276,21,2026-04-06,Lundi 06/04,[Prep] Couper l'agneau: Découper 600g épaule d'agneau en cubes de 3cm,15min
-1277,21,2026-04-06,Lundi 06/04,"[Prep] Faire revenir l'agneau: Faire dorer les cubes d'agneau dans huile d'olive, réserver",15min
-1278,21,2026-04-06,Lundi 06/04,"[Prep] Préparer les légumes: Éplucher et couper 300g artichauts, 250g carottes nouvelles, 2 oignons",20min
-1279,21,2026-04-06,Lundi 06/04,"[Prep] Mijoter le tajine: Ajouter légumes, épices (cumin, coriandre, cannelle, gingembre), bouillon, laisser mijoter 1h30",70min
-1280,21,2026-04-07,Mardi 07/04,"Cuire les PDT: Éplucher et cuire 480g PDT à l'eau 20min, égoutter",25min
-1281,21,2026-04-07,Mardi 07/04,Préparer les radis: Laver et couper 220g radis en rondelles,5min
-1282,21,2026-04-07,Mardi 07/04,Sauter les PDT: Faire sauter les PDT cuites dans l'huile d'olive jusqu'à dorées,8min
-1283,21,2026-04-07,Mardi 07/04,Cuire les radis: Sauter les radis 5min avec un peu d'huile,5min
-1284,21,2026-04-07,Mardi 07/04,"Faire l'omelette: Battre 5 œufs, cuire à la poêle, ajouter radis et 55g gruyère râpé",8min
-1285,21,2026-04-08,Mercredi 08/04,Préchauffer le four: Préchauffer à 220°C pour les frites,5min
-1286,21,2026-04-08,Mercredi 08/04,"Préparer les frites: Couper 430g PDT en frites, huiler, saler, enfourner 20min",10min
-1287,21,2026-04-08,Mercredi 08/04,"Paner les escalopes: Passer 320g escalopes dans farine, œuf battu, chapelure",5min
-1288,21,2026-04-08,Mercredi 08/04,Cuire les escalopes: Cuire les escalopes panées 3min de chaque côté,8min
-1289,21,2026-04-08,Mercredi 08/04,"Préparer la salade: Émincer 220g radis, assaisonner vinaigrette",5min
-1290,21,2026-04-08,Mercredi 08/04,"[Prep] Cuire le porc: Griller 520g côtes de porc, réserver au frais",15min
-1291,21,2026-04-08,Mercredi 08/04,"[Prep] Préparer le riz pilaf: Faire revenir 250g riz avec oignon, ajouter bouillon, cuire 18min",25min
-1292,21,2026-04-08,Mercredi 08/04,"[Prep] Cuire les petits pois: Cuire 350g petits pois surgelés à la française avec laitue, oignon",15min
-1293,21,2026-04-08,Mercredi 08/04,"[Prep] Cuire les œufs durs: Cuire 15 œufs durs pour la semaine, écaler",15min
-1294,21,2026-04-09,Jeudi 09/04,Cuire le riz: Rincer et cuire 270g riz basmati dans 2x son volume d'eau salée,18min
-1295,21,2026-04-09,Jeudi 09/04,Préparer le cabillaud: Saler et poivrer 350g filets de cabillaud,2min
-1296,21,2026-04-09,Jeudi 09/04,"Cuire les petits pois: Cuire 270g petits pois surgelés à l'eau bouillante 5min, égoutter",8min
-1297,21,2026-04-09,Jeudi 09/04,Poêler le cabillaud: Cuire le cabillaud à la poêle 4min de chaque côté,8min
-1298,21,2026-04-09,Jeudi 09/04,Finir les petits pois: Sauter les petits pois avec beurre et persil,3min
-1299,21,2026-04-09,Jeudi 09/04,[Prep] Couper le bœuf: Découper 600g paleron de bœuf en cubes de 4cm,10min
-1300,21,2026-04-09,Jeudi 09/04,"[Prep] Faire revenir le bœuf: Faire dorer les cubes dans huile, réserver",15min
-1301,21,2026-04-09,Jeudi 09/04,"[Prep] Préparer les légumes: Éplucher 300g carottes nouvelles, 200g navets, 1 oignon",15min
-1302,21,2026-04-09,Jeudi 09/04,"[Prep] Mijoter: Remettre le bœuf, ajouter légumes, bouillon, herbes, mijoter 45min",50min
-1303,21,2026-04-10,Vendredi 10/04,Préchauffer le four: Préchauffer à 180°C,10min
-1304,21,2026-04-10,Vendredi 10/04,Saisir le rôti: Saisir 520g rôti de porc dans une cocotte sur tous les côtés,10min
-1305,21,2026-04-10,Vendredi 10/04,Préparer les légumes: Éplucher 430g PDT et 270g carottes nouvelles,15min
-1306,21,2026-04-10,Vendredi 10/04,"Cuire au four: Ajouter légumes autour du rôti, arroser d'huile, enfourner 60min",60min
-1307,21,2026-04-10,Vendredi 10/04,Finir les carottes: Glacer les carottes avec miel et beurre,5min
-1308,21,2026-04-10,Vendredi 10/04,"[Prep] Préparer la purée: Cuire 600g PDT, écraser avec lait et beurre",25min
-1309,21,2026-04-10,Vendredi 10/04,"[Prep] Assembler le parmentier: Disposer le bœuf mijoté dans un plat, recouvrir de purée, râper gruyère",10min
-1310,21,2026-04-10,Vendredi 10/04,[Prep] Gratiner: Enfourner 15min à 200°C pour gratiner,15min
-1311,21,2026-04-11,Samedi 11/04,Préchauffer le four: Préchauffer à 220°C pour les frites,5min
-1312,21,2026-04-11,Samedi 11/04,"Préparer les frites: Couper 380g PDT en frites, huiler, saler, enfourner 25min",10min
-1313,21,2026-04-11,Samedi 11/04,"Former les steaks: Former 2 steaks avec 270g viande hachée, saler, poivrer",5min
-1314,21,2026-04-11,Samedi 11/04,Cuire les steaks: Cuire les steaks à la poêle 4min de chaque côté,10min
-1315,21,2026-04-11,Samedi 11/04,"Assembler les burgers: Griller les pains, assembler avec cheddar fondu et salade",5min
-1316,21,2026-04-11,Samedi 11/04,[Prep] Cuire les pâtes: Cuire 350g spaghettis al dente dans eau salée,11min
-1317,21,2026-04-11,Samedi 11/04,"[Prep] Préparer la sauce: Faire revenir 140g guanciale, battre 3 œufs avec 70g pecorino",5min
-1318,21,2026-04-11,Samedi 11/04,[Prep] Mélanger: Mélanger pâtes chaudes avec œufs-fromage hors du feu,3min
-1319,21,2026-04-12,Dimanche 12/04,"Cuire les PDT: Éplucher et cuire 430g PDT à l'eau, couper en rondelles",20min
-1320,21,2026-04-12,Dimanche 12/04,"Préparer les épinards: Nettoyer 270g épinards frais, les faire tomber à la poêle",8min
-1321,21,2026-04-12,Dimanche 12/04,Faire revenir l'oignon: Émincer et faire revenir 1 oignon dans l'huile d'olive,5min
-1322,21,2026-04-12,Dimanche 12/04,Battre les œufs: Battre 5 œufs avec sel et poivre,2min
-1323,21,2026-04-12,Dimanche 12/04,"Cuire la tortilla: Mélanger tous les ingrédients, cuire dans grande poêle, retourner",15min
-1324,21,2026-04-12,Dimanche 12/04,"[Prep] Paner le cabillaud: Passer 350g filets dans farine, œuf, chapelure",15min
-1325,21,2026-04-12,Dimanche 12/04,[Prep] Cuire le fish & chips: Cuire cabillaud pané et 380g frites au four 25min à 200°C,30min
-1326,21,2026-04-12,Dimanche 12/04,"[Prep] Préparer sauce tartare: Mélanger mayo, cornichons, câpres, persil, citron",10min
-1327,21,2026-04-12,Dimanche 12/04,[Prep] Cuire petits pois: Cuire 220g petits pois surgelés,8min
-1328,21,2026-04-12,Dimanche 12/04,[Prep] Cuire œufs semaine: Cuire 15 œufs durs pour la semaine prochaine,15min
-1329,22,2026-04-06,Lundi 06/04,Préparer les pommes de terre: Éplucher et couper 350g pommes de terre en cubes. Les faire cuire 15min à l'eau bouillante salée,15min
-1330,22,2026-04-06,Lundi 06/04,Préparer les radis: Laver et couper 210g radis en rondelles. Les faire sauter 5min à la poêle avec huile d'olive,5min
-1331,22,2026-04-06,Lundi 06/04,"Cuire l'omelette: Battre 5 œufs, verser dans poêle chaude, ajouter radis et 45g gruyère râpé. Cuire 3-4min",5min
-1332,22,2026-04-06,Lundi 06/04,"[Prep] Préparer le tajine d'agneau: Couper 600g épaule d'agneau en cubes, faire revenir avec oignons, ajouter épices, 400g artichauts, 300g carottes nouvelles, mijoter 1h30",120min
-1333,22,2026-04-07,Mardi 07/04,"Cuire le riz: Rincer 160g riz basmati, cuire 12min dans 320ml eau bouillante salée",12min
-1334,22,2026-04-07,Mardi 07/04,"Préparer les asperges: Éplucher 350g asperges, cuire 8min vapeur",8min
-1335,22,2026-04-07,Mardi 07/04,"Griller le saumon: Griller 320g pavé saumon 4min chaque face, préparer beurre à l'aneth",10min
-1336,22,2026-04-08,Mercredi 08/04,"Cuire les pommes de terre: Éplucher et couper 390g pommes de terre en rondelles, cuire 10min à l'eau",10min
-1337,22,2026-04-08,Mercredi 08/04,"Préparer les légumes: Faire revenir 2 oignons émincés, ajouter 270g épinards frais, cuire 5min",5min
-1338,22,2026-04-08,Mercredi 08/04,"Monter la tortilla: Battre 5 œufs, mélanger avec légumes et PDT, cuire 8min poêle puis 2min four",10min
-1339,22,2026-04-08,Mercredi 08/04,"[Prep] Préparer curry d'agneau: Couper 550g épaule d'agneau, faire revenir avec oignons, épices, lait de coco, ajouter 200g petits pois, 250g carottes nouvelles",60min
-1340,22,2026-04-08,Mercredi 08/04,"[Prep] Cuire œufs durs: Faire bouillir 15 œufs pendant 9min, refroidir à l'eau froide, écaler",15min
-1341,22,2026-04-09,Jeudi 09/04,"Cuire les pommes de terre: Éplucher 350g pommes de terre, cuire 15min à l'eau bouillante salée",15min
-1342,22,2026-04-09,Jeudi 09/04,"Préparer petits pois à la française: Faire revenir oignon, ajouter 270g petits pois, laitue, cuire 8min avec bouillon",8min
-1343,22,2026-04-09,Jeudi 09/04,"Griller les côtes: Griller 280g côtes de porc 4min chaque face, assaisonner",8min
-1344,22,2026-04-10,Vendredi 10/04,"Cuire le riz: Rincer 160g riz basmati, cuire 12min dans eau bouillante salée",12min
-1345,22,2026-04-10,Vendredi 10/04,"Préparer petits pois: Cuire 270g petits pois 6min à l'eau bouillante, égoutter",6min
-1346,22,2026-04-10,Vendredi 10/04,"Cuire le cabillaud: Poêler 320g filets cabillaud 4min chaque face, préparer beurre blanc",10min
-1347,22,2026-04-10,Vendredi 10/04,"[Prep] Préparer bœuf provençal: Couper 550g bœuf à braiser, faire revenir avec oignons, ajouter tomates, courgettes, aubergines, herbes de Provence, mijoter 1h30",115min
-1348,22,2026-04-11,Samedi 11/04,Cuire les pâtes: Cuire 350g spaghettis dans eau bouillante salée selon paquet,10min
-1349,22,2026-04-11,Samedi 11/04,"Préparer guanciale: Couper 140g guanciale en lardons, faire revenir 5min sans matière grasse",5min
-1350,22,2026-04-11,Samedi 11/04,"Monter la carbonara: Battre 3 œufs avec 70g pecorino, mélanger pâtes chaudes, guanciale et œufs hors feu",5min
-1351,22,2026-04-12,Dimanche 12/04,Réchauffer le bœuf stroganoff: Réchauffer 320g bœuf stroganoff (du batch) avec champignons et crème,8min
-1352,22,2026-04-12,Dimanche 12/04,"Préparer purée: Réchauffer 400g purée de pommes de terre, ajuster avec lait et beurre",10min
-1353,22,2026-04-12,Dimanche 12/04,"Monter le parmentier: Dresser stroganoff dans plat, recouvrir de purée, gratiner 5min four",10min
-1354,22,2026-04-12,Dimanche 12/04,"[Prep] Préparer bœuf stroganoff: Couper 550g bœuf en lamelles, faire revenir avec oignons, champignons, moutarde, crème fraîche, mijoter 45min",65min
-1355,22,2026-04-12,Dimanche 12/04,[Prep] Cuire œufs durs: Faire bouillir 15 œufs pendant 9min pour la semaine,15min
-1356,23,2026-04-05,Lundi 05/04,Cuire les pommes de terre: Laver et cuire 430g PDT grenaille entières 15min à l'eau bouillante salée,15min
-1357,23,2026-04-05,Lundi 05/04,Préparer les radis: Laver et émincer 270g radis en fines rondelles,5min
-1358,23,2026-04-05,Lundi 05/04,"Cuire l'omelette: Battre 5 œufs, cuire dans poêle huilée, ajouter radis et 50g gruyère râpé, plier",8min
-1359,23,2026-04-06,Mardi 06/04,"Cuire le riz: Rincer 190g riz basmati, cuire 15min dans 380ml eau bouillante salée",15min
-1360,23,2026-04-06,Mardi 06/04,"Préparer asperges: Éplucher 350g asperges, cuire 8min vapeur",10min
-1361,23,2026-04-06,Mardi 06/04,"Cuire le saumon: Saler poivrer 320g saumon, cuire 4min/côté dans poêle huilée",8min
-1362,23,2026-04-06,Mardi 06/04,"[Prep] Préparer curry d'agneau: Couper 600g épaule agneau, faire revenir avec oignons, ajouter curry, lait coco, légumes",60min
-1363,23,2026-04-06,Mardi 06/04,[Prep] Cuire œufs: Cuire 15 œufs durs pour la semaine,10min
-1364,23,2026-04-07,Mercredi 07/04,Cuire les pommes de terre: Éplucher et cuire 430g PDT en rondelles 12min à l'eau salée,12min
-1365,23,2026-04-07,Mercredi 07/04,Cuire épinards et oignon: Faire revenir 1 oignon émincé et 270g épinards frais dans huile d'olive 5min,8min
-1366,23,2026-04-07,Mercredi 07/04,"Faire la tortilla: Battre 5 œufs, mélanger avec PDT et épinards, cuire 8min poêle, retourner",10min
-1367,23,2026-04-07,Mercredi 07/04,"[Prep] Préparer salade lentilles: Cuire 225g lentilles vertes 20min, préparer vinaigrette moutarde",20min
-1368,23,2026-04-08,Jeudi 08/04,"Préparer béchamel: Faire un roux avec 30g beurre et farine, ajouter 300ml lait, assaisonner",8min
-1369,23,2026-04-08,Jeudi 08/04,"Monter les croques: Garnir pain de mie avec jambon et gruyère, napper béchamel",5min
-1370,23,2026-04-08,Jeudi 08/04,"Cuire au four: Gratiner 8min à 200°C, casser 2 œufs dessus, cuire 3min",12min
-1371,23,2026-04-09,Vendredi 09/04,"Cuire le riz pilaf: Faire revenir 175g riz basmati avec oignon, ajouter 350ml bouillon, cuire 15min",18min
-1372,23,2026-04-09,Vendredi 09/04,Cuire les petits pois: Cuire 320g petits pois surgelés 5min à l'eau bouillante salée,8min
-1373,23,2026-04-09,Vendredi 09/04,"Cuire le cabillaud: Saler poivrer 350g cabillaud, cuire 4min/côté dans poêle huilée",8min
-1374,23,2026-04-09,Vendredi 09/04,[Prep] Préparer pâte burger: Façonner 4 steaks hachés pour samedi,10min
-1375,23,2026-04-09,Vendredi 09/04,[Prep] Cuire œufs: Cuire 15 œufs durs pour la semaine suivante,15min
-1376,23,2026-04-09,Vendredi 09/04,[Prep] Laver légumes: Préparer artichauts pour dimanche,5min
-1377,23,2026-04-10,Samedi 10/04,Faire la base: Faire revenir 1 oignon et 1 poivron émincés 8min dans huile d'olive,8min
-1378,23,2026-04-10,Samedi 10/04,"Ajouter tomates: Ajouter 550g tomates concassées, épices (cumin, paprika), cuire 10min",10min
-1379,23,2026-04-10,Samedi 10/04,"Pocher les œufs: Creuser 5 puits, casser les œufs dedans, couvrir et cuire 6min",6min
-1380,23,2026-04-11,Dimanche 11/04,"Préparer pâte galettes: Mélanger 150g farine sarrasin avec 400ml eau et sel, laisser reposer",5min
-1381,23,2026-04-11,Dimanche 11/04,Cuire galettes: Faire 3.5 galettes fines dans poêle antiadhésive,10min
-1382,23,2026-04-11,Dimanche 11/04,"Garnir galettes: Garnir avec jambon, gruyère, casser œufs dessus, plier en carré",8min
-1383,23,2026-04-11,Dimanche 11/04,[Prep] Préparer batch poulet: Lancer batch poulet basquaise pour lundi-mardi,60min
-1384,23,2026-04-11,Dimanche 11/04,[Prep] Cuire œufs: Cuire 15 œufs durs pour la semaine,15min
-1385,23,2026-04-11,Dimanche 11/04,[Prep] Prep légumes: Laver et préparer légumes pour la semaine,45min
-1386,24,2026-04-07,Lundi 07/04,Préparer légumes: Réchauffer 200g/150g ratatouille. Cuire 250g/180g PDT vapeur 15min,15min
-1387,24,2026-04-07,Lundi 07/04,"Cuire œufs: Casser 3/2 œufs dans la ratatouille chaude, couvrir 8min",8min
-1388,24,2026-04-07,Lundi 07/04,Servir: Accompagner des PDT vapeur et pain grillé,2min
-1389,24,2026-04-07,Lundi 07/04,"[Prep] Curry pois chiches: Faire revenir oignon, ail, épices. Ajouter 400g pois chiches, 400ml lait coco, légumes. Mijoter 30min",45min
-1390,24,2026-04-08,Mardi 08/04,Cuire PDT: Faire rôtir 250g/180g PDT grenaille avec huile et thym 20min à 200°C,20min
-1391,24,2026-04-08,Mardi 08/04,"Cuire saumon: Saler, poivrer, cuire 180g/140g saumon 4min/côté dans poêle chaude",8min
-1392,24,2026-04-08,Mardi 08/04,Cuire asperges: Faire sauter 200g/150g asperges 5min avec ail et huile,5min
-1393,24,2026-04-08,Mardi 08/04,"[Prep] Croque-madame: Préparer béchamel, monter croques avec jambon-gruyère, enfourner avec œuf au plat",35min
-1394,24,2026-04-09,Mercredi 09/04,Cuire riz: Faire cuire 250g/180g riz basmati dans eau bouillante salée 15min,15min
-1395,24,2026-04-09,Mercredi 09/04,Cuire cabillaud: Faire cuire 200g/150g cabillaud à la poêle 4min/côté avec beurre,8min
-1396,24,2026-04-09,Mercredi 09/04,Réchauffer petits pois: Faire sauter 150g/120g petits pois avec beurre et menthe 3min,3min
-1397,24,2026-04-09,Mercredi 09/04,"[Prep] Émincé porc curry: Faire revenir émincé de porc, oignon, curry, lait coco, légumes. Mijoter 45min",60min
-1398,24,2026-04-10,Jeudi 10/04,"Préparer pâte: Mélanger 100g farine sarrasin, eau, sel. Laisser reposer 10min",12min
-1399,24,2026-04-10,Jeudi 10/04,"Cuire galettes: Étaler pâte, garnir jambon-emmental, casser œuf au centre, plier",10min
-1400,24,2026-04-10,Jeudi 10/04,Servir: Accompagner de salade verte vinaigrette,3min
-1401,24,2026-04-10,Jeudi 10/04,"[Prep] Poulet basquaise: Faire revenir poulet, poivrons, oignons, ail, tomates. Mijoter 35min avec épices",50min
-1402,24,2026-04-11,Vendredi 11/04,Cuire PDT: Faire cuire 250g/180g PDT en rondelles dans poêle avec huile 10min,10min
-1403,24,2026-04-11,Vendredi 11/04,"Ajouter épinards: Ajouter 150g/120g épinards, oignon émincé, cuire 3min",3min
-1404,24,2026-04-11,Vendredi 11/04,"Finir tortilla: Verser œufs battus, cuire 6min dessous, 4min dessus",10min
-1405,24,2026-04-12,Samedi 12/04,Cuire riz: Faire cuire 200g/150g riz dans eau bouillante salée 15min,15min
-1406,24,2026-04-12,Samedi 12/04,"Faire rougail: Faire revenir oignons, tomates, gingembre, piment 8min",8min
-1407,24,2026-04-12,Samedi 12/04,"Ajouter saucisses: Ajouter 200g/150g saucisses grillées, mijoter 2min",2min
-1408,24,2026-04-13,Dimanche 13/04,Cuire PDT: Faire rôtir 250g/180g PDT grenaille avec huile et herbes 20min,20min
-1409,24,2026-04-13,Dimanche 13/04,Préparer radis: Faire revenir 150g/120g radis émincés 3min à la poêle,3min
-1410,24,2026-04-13,Dimanche 13/04,"Cuire omelette: Battre œufs, verser sur radis, ajouter gruyère, plier",5min
-1411,24,2026-04-13,Dimanche 13/04,"[Prep] Couscous agneau: Mijoter agneau avec légumes 60min, préparer semoule",60min
-1412,24,2026-04-13,Dimanche 13/04,[Prep] Cuire œufs: Faire durcir 15 œufs pour la semaine,15min
-1413,25,2026-04-07,Lundi 07/04,"Préparer les pommes de terre: Laver et couper 430g PDT grenaille en 2. Préchauffer four 220°C. Rôtir 20min avec huile d'olive, sel, romarin",5min
-1414,25,2026-04-07,Lundi 07/04,"Préparer les artichauts: Égoutter 270g cœurs d'artichauts en bocal. Couper en quartiers, faire revenir 3min à la poêle",5min
-1415,25,2026-04-07,Lundi 07/04,"Cuire l'omelette: Battre 5 œufs avec sel/poivre. Verser sur artichauts, ajouter 55g gruyère râpé. Cuire 3min puis finir 2min au four",8min
-1416,25,2026-04-07,Lundi 07/04,Dresser: Servir avec PDT rôties et salade verte vinaigrette,2min
-1417,25,2026-04-07,Lundi 07/04,[Prep] Préparer le bœuf: Couper 400g émincé de bœuf en lanières. Faire revenir par petites quantités dans poêle chaude 2min,8min
-1418,25,2026-04-07,Lundi 07/04,[Prep] Cuire les champignons: Émincer 300g champignons de Paris. Cuire 5min jusqu'à évaporation de l'eau,8min
-1419,25,2026-04-07,Lundi 07/04,"[Prep] Mijoter la sauce: Ajouter bœuf, 200ml crème fraîche, 1 CS moutarde, sel/poivre. Mijoter 15min à feu doux",20min
-1420,25,2026-04-07,Lundi 07/04,[Prep] Cuire le riz: Cuire 360g riz basmati selon paquet. Mélanger avec le stroganoff,15min
-1421,25,2026-04-08,Mardi 08/04,Cuire le riz: Cuire 350g riz basmati selon paquet. Réserver au chaud,12min
-1422,25,2026-04-08,Mardi 08/04,"Préparer la sauce teriyaki: Mélanger 3 CS sauce soja, 2 CS miel, 1 CS vinaigre de riz, 1 cc gingembre râpé",2min
-1423,25,2026-04-08,Mardi 08/04,"Cuire le saumon: Poêler 320g filets saumon 3min côté peau, retourner 2min. Napper de sauce teriyaki",6min
-1424,25,2026-04-08,Mardi 08/04,Préparer les petits pois: Faire sauter 270g petits pois surgelés avec 2 gousses ail émincé 3min,4min
-1425,25,2026-04-08,Mardi 08/04,Dresser: Servir saumon glacé sur riz avec petits pois,1min
-1426,25,2026-04-08,Mardi 08/04,[Prep] Cuire les lentilles: Rincer 200g lentilles corail. Cuire 15min dans 600ml bouillon légumes,20min
-1427,25,2026-04-08,Mardi 08/04,"[Prep] Préparer les épices: Faire revenir 1 oignon émincé, 2 gousses ail, 1 cc curcuma, 1 cc cumin, 1 cc coriandre 3min",5min
-1428,25,2026-04-08,Mardi 08/04,"[Prep] Mijoter le dhal: Ajouter lentilles, 200ml lait coco, 200g épinards surgelés. Mijoter 10min",12min
-1429,25,2026-04-08,Mardi 08/04,[Prep] Cuire le riz: Cuire 300g riz basmati selon paquet,15min
-1430,25,2026-04-09,Mercredi 09/04,Préparer les pommes de terre: Éplucher et couper 430g PDT en rondelles 5mm. Cuire 10min à l'eau bouillante salée,12min
-1431,25,2026-04-09,Mercredi 09/04,Cuire les épinards: Faire fondre 270g épinards frais avec 1 oignon émincé dans poêle avec huile 3min,5min
-1432,25,2026-04-09,Mercredi 09/04,"Assembler la tortilla: Battre 5 œufs. Mélanger PDT égouttées, épinards, œufs. Cuire poêle 5min puis retourner 3min",8min
-1433,25,2026-04-09,Mercredi 09/04,"Préparer la salade: Couper 200g asperges en tronçons, blanchir 2min. Assaisonner vinaigrette",5min
-1434,25,2026-04-09,Mercredi 09/04,"[Prep] Préparer la pâte à quiche: Mélanger 250g farine, 125g beurre, 1 œuf, pincée sel. Fraiser, réserver 30min au frais",10min
-1435,25,2026-04-09,Mercredi 09/04,[Prep] Cuire les lardons: Faire revenir 150g lardons fumés jusqu'à doré. Égoutter sur papier,5min
-1436,25,2026-04-09,Mercredi 09/04,"[Prep] Préparer l'appareil: Battre 4 œufs, 200ml crème fraîche, 100ml lait, muscade, sel, poivre",5min
-1437,25,2026-04-09,Mercredi 09/04,"[Prep] Monter et cuire: Étaler pâte dans moule, piquer. Répartir lardons, verser appareil. Cuire 35min 180°C",40min
-1438,25,2026-04-10,Jeudi 10/04,Cuire les pommes de terre: Éplucher et cuire 430g PDT à l'eau bouillante salée 15-20min,20min
-1439,25,2026-04-10,Jeudi 10/04,"Préparer la croûte: Mélanger 50g chapelure, 2 CS persil haché, 1 CS huile d'olive, ail, sel, poivre",3min
-1440,25,2026-04-10,Jeudi 10/04,"Cuire le cabillaud: Poêler 350g dos de cabillaud 2min côté peau. Retourner, napper de croûte, finir 3min au four 200°C",6min
-1441,25,2026-04-10,Jeudi 10/04,Glacer les carottes: Cuire 270g carottes nouvelles 8min eau bouillante. Glacer 2min beurre + sucre,10min
-1442,25,2026-04-10,Jeudi 10/04,[Prep] Cuire les pâtes: Cuire 300g penne selon paquet. Égoutter en gardant 100ml eau de cuisson,12min
-1443,25,2026-04-10,Jeudi 10/04,"[Prep] Préparer la sauce: Faire revenir 100g guanciale coupé fin jusqu'à croustillant. Ajouter 400g passata, mijoter 15min",18min
-1444,25,2026-04-10,Jeudi 10/04,"[Prep] Finaliser: Mélanger pâtes, sauce, eau de cuisson, 60g pecorino râpé, poivre noir",3min
-1445,25,2026-04-10,Jeudi 10/04,[Prep] Refroidir: Laisser tiédir avant de réfrigérer,5min
-1446,25,2026-04-11,Vendredi 11/04,Cuire les pommes de terre: Éplucher et cuire 430g PDT à l'eau bouillante salée 15-20min,20min
-1447,25,2026-04-11,Vendredi 11/04,Préparer la ratatouille: Réchauffer 350g ratatouille tomates-poivrons dans poêle 5min,5min
-1448,25,2026-04-11,Vendredi 11/04,"Cuire les œufs: Faire des puits dans la ratatouille, casser 5 œufs dedans. Couvrir, cuire 3-4min",5min
-1449,25,2026-04-11,Vendredi 11/04,Servir: Servir chaud avec PDT vapeur et pain grillé,2min
-1450,25,2026-04-12,Samedi 12/04,"Préparer le bouillon: Chauffer 1L bouillon légumes dans casserole, maintenir chaud",5min
-1451,25,2026-04-12,Samedi 12/04,"Nacrer le riz: Faire revenir 1 oignon émincé, ajouter 450g riz arborio. Nacrer 2min",4min
-1452,25,2026-04-12,Samedi 12/04,Cuire les champignons: Poêler 180g champignons de Paris émincés 5min. Réserver,5min
-1453,25,2026-04-12,Samedi 12/04,Cuire le risotto: Ajouter bouillon louche par louche en remuant. Cuire 18min total,18min
-1454,25,2026-04-12,Samedi 12/04,"Finaliser: Ajouter champignons, 80g parmesan, 30g beurre. Mélanger hors feu",2min
-1455,25,2026-04-13,Dimanche 13/04,"Préparer la pâte: Mélanger 200g farine sarrasin, 400ml eau, pincée sel. Laisser reposer 10min",12min
-1456,25,2026-04-13,Dimanche 13/04,Cuire les galettes: Cuire 3.5 galettes fines à la crêpière ou poêle anti-adhésive,8min
-1457,25,2026-04-13,Dimanche 13/04,"Garnir: Sur chaque galette: jambon, œuf cassé au centre, fromage râpé. Plier en carré",4min
-1458,25,2026-04-13,Dimanche 13/04,Servir: Accompagner de salade verte vinaigrette,1min
-1459,25,2026-04-13,Dimanche 13/04,[Prep] Cuire les œufs: Mettre 15 œufs dans casserole d'eau froide. Porter à ébullition puis 9min,12min
-1460,25,2026-04-13,Dimanche 13/04,"[Prep] Refroidir: Plonger dans eau glacée, écaler quand tièdes",5min
+id,import_id,prep_date,prep_label,task,estimated_time,done,done_at
+582,10,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+583,10,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+584,10,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+585,10,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+586,10,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+587,10,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,,f,
+588,10,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,,f,
+589,10,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+590,10,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+591,10,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+592,10,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+593,10,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+594,10,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+595,10,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+596,10,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+597,10,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+598,10,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+599,10,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+600,10,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+601,10,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+602,10,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+603,10,2026-03-18,Mercredi 18/03,[Prep] undefined: undefined,,f,
+604,10,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+605,10,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+606,10,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+607,10,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+608,10,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+609,10,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+610,10,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+611,10,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+612,10,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+613,10,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+614,10,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+615,10,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+616,10,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+617,10,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+618,10,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+619,10,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+620,10,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+621,10,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+622,10,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+623,10,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+624,10,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+625,10,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+626,10,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+627,10,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+628,10,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+629,10,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+630,10,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+631,10,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+632,10,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+633,10,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+634,10,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+635,10,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+636,10,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+637,10,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+638,10,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+639,10,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+640,10,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+641,10,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+642,10,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+643,10,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+644,10,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+645,10,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+646,10,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+647,10,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+648,10,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+649,10,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+650,10,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+651,10,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+652,10,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+653,10,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+654,10,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+655,10,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+656,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+657,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+658,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+659,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+660,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+661,10,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+662,10,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+663,10,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+664,10,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+665,10,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+666,10,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+667,10,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+668,10,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+669,10,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+670,10,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+671,10,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+672,10,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+673,10,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+674,10,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+675,10,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+676,10,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+677,10,2026-04-01,Mercredi 01/04,[Prep] undefined: undefined,,f,
+678,10,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+679,10,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+680,10,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+681,10,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+682,10,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+683,10,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+684,10,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+685,10,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+686,10,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+687,10,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+688,10,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+689,10,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+690,10,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+691,10,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+692,10,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+693,10,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+694,10,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+695,10,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+696,10,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+467,9,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+468,9,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+469,9,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+470,9,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+471,9,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+472,9,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,,f,
+473,9,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,,f,
+474,9,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+475,9,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+476,9,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+477,9,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+478,9,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+479,9,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+480,9,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+481,9,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+482,9,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+483,9,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+484,9,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+485,9,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+486,9,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+487,9,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+488,9,2026-03-18,Mercredi 18/03,[Prep] undefined: undefined,,f,
+489,9,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+490,9,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+491,9,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+492,9,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+493,9,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+494,9,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+495,9,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+496,9,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+497,9,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+498,9,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+499,9,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+500,9,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+501,9,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+502,9,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+503,9,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+504,9,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+505,9,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+506,9,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+507,9,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+508,9,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+509,9,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+510,9,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+511,9,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+512,9,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+513,9,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+514,9,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+515,9,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+516,9,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+517,9,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+518,9,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+519,9,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+520,9,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+521,9,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+522,9,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+523,9,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+524,9,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+525,9,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+526,9,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+527,9,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+528,9,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+529,9,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+530,9,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+531,9,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+532,9,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+533,9,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+534,9,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+535,9,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+536,9,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+537,9,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+538,9,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+539,9,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+540,9,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+541,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+542,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+543,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+544,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+545,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+546,9,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+547,9,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+548,9,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+549,9,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+550,9,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+551,9,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+552,9,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+553,9,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+554,9,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+555,9,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+556,9,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+557,9,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+558,9,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+559,9,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+560,9,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+561,9,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+562,9,2026-04-01,Mercredi 01/04,[Prep] undefined: undefined,,f,
+563,9,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+564,9,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+565,9,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+566,9,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+567,9,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+568,9,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+569,9,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+570,9,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+571,9,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+572,9,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+573,9,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+574,9,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+575,9,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+576,9,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+577,9,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+578,9,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+579,9,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+580,9,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+581,9,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+697,11,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+698,11,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+699,11,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+700,11,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+701,11,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+702,11,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,,f,
+703,11,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,,f,
+704,11,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+705,11,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+706,11,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+707,11,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+708,11,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+709,11,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+710,11,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+711,11,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+712,11,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+713,11,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+714,11,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+715,11,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+716,11,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+717,11,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+718,11,2026-03-18,Mercredi 18/03,[Prep] undefined: undefined,,f,
+719,11,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+720,11,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+721,11,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+722,11,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+723,11,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+724,11,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+725,11,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+726,11,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+727,11,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+728,11,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+729,11,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+730,11,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+731,11,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+732,11,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+733,11,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+734,11,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+735,11,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+736,11,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+737,11,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+738,11,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+739,11,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+740,11,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+741,11,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+742,11,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+743,11,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+744,11,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+745,11,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+746,11,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+747,11,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+748,11,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+749,11,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+750,11,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+751,11,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+752,11,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+753,11,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+754,11,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+755,11,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+756,11,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+757,11,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+758,11,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+759,11,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+760,11,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+761,11,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+762,11,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+763,11,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+764,11,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+765,11,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+766,11,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+767,11,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+768,11,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+769,11,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+770,11,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+771,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+772,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+773,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+774,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+775,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+776,11,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+777,11,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+778,11,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+779,11,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+780,11,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+781,11,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+782,11,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+783,11,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+784,11,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+785,11,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+786,11,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+787,11,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+788,11,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+789,11,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+790,11,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+791,11,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+792,11,2026-04-01,Mercredi 01/04,[Prep] undefined: undefined,,f,
+793,11,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+794,11,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+795,11,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+796,11,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+797,11,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+798,11,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+799,11,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+800,11,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+801,11,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+802,11,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+803,11,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+804,11,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+805,11,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+806,11,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+807,11,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+808,11,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+809,11,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+810,11,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+811,11,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+812,12,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+813,12,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+814,12,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+815,12,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+816,12,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+817,12,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,,f,
+818,12,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,,f,
+819,12,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+820,12,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+821,12,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+822,12,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+823,12,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+824,12,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+825,12,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+826,12,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+827,12,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+828,12,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+829,12,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+830,12,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+831,12,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+832,12,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+833,12,2026-03-18,Mercredi 18/03,[Prep] undefined: undefined,,f,
+834,12,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+835,12,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+836,12,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+837,12,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+838,12,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+839,12,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+840,12,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+841,12,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+842,12,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+843,12,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+844,12,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+845,12,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+846,12,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+847,12,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+848,12,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+849,12,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+850,12,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+851,12,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+852,12,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+853,12,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+854,12,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+855,12,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+856,12,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+857,12,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+858,12,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+859,12,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+860,12,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+861,12,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+862,12,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+863,12,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+864,12,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+865,12,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+866,12,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+867,12,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+868,12,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+869,12,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+870,12,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+871,12,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+872,12,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+873,12,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+874,12,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+875,12,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+876,12,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+877,12,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+878,12,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+879,12,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+880,12,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+881,12,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+882,12,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+883,12,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+884,12,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+885,12,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+886,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+887,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+888,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+889,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+890,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+891,12,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+892,12,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+893,12,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+894,12,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+895,12,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+896,12,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+897,12,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+898,12,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+899,12,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+900,12,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+901,12,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+902,12,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+903,12,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+904,12,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+905,12,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+906,12,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+907,12,2026-04-01,Mercredi 01/04,[Prep] undefined: undefined,,f,
+908,12,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+909,12,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+910,12,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+911,12,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+912,12,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+913,12,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+914,12,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+915,12,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+916,12,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+917,12,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+918,12,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+919,12,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+920,12,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+921,12,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+922,12,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+923,12,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+924,12,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+925,12,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+926,12,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+927,13,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+928,13,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+929,13,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+930,13,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+931,13,2026-03-16,Lundi 16/03,undefined: undefined,,f,
+932,13,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,,f,
+933,13,2026-03-16,Lundi 16/03,[Prep] undefined: undefined,,f,
+934,13,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+935,13,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+936,13,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+937,13,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+938,13,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+939,13,2026-03-17,Mardi 17/03,undefined: undefined,,f,
+940,13,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+941,13,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+942,13,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+943,13,2026-03-17,Mardi 17/03,[Prep] undefined: undefined,,f,
+944,13,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+945,13,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+946,13,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+947,13,2026-03-18,Mercredi 18/03,undefined: undefined,,f,
+948,13,2026-03-18,Mercredi 18/03,[Prep] undefined: undefined,,f,
+949,13,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+950,13,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+951,13,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+952,13,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+953,13,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+954,13,2026-03-19,Jeudi 19/03,undefined: undefined,,f,
+955,13,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+956,13,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+957,13,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+958,13,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+959,13,2026-03-20,Vendredi 20/03,undefined: undefined,,f,
+960,13,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+961,13,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+962,13,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+963,13,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+964,13,2026-03-22,Dimanche 22/03,undefined: undefined,,f,
+965,13,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+966,13,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+967,13,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+968,13,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+969,13,2026-03-22,Dimanche 22/03,[Prep] undefined: undefined,,f,
+970,13,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+971,13,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+972,13,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+973,13,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+974,13,2026-03-23,Lundi 23/03,undefined: undefined,,f,
+975,13,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+976,13,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+977,13,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+978,13,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+979,13,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+980,13,2026-03-24,Mardi 24/03,undefined: undefined,,f,
+981,13,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+982,13,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+983,13,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+984,13,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+985,13,2026-03-25,Mercredi 25/03,undefined: undefined,,f,
+986,13,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+987,13,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+988,13,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+989,13,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+990,13,2026-03-26,Jeudi 26/03,undefined: undefined,,f,
+991,13,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+992,13,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+993,13,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+994,13,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+995,13,2026-03-27,Vendredi 27/03,undefined: undefined,,f,
+996,13,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+997,13,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+998,13,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+999,13,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+1000,13,2026-03-29,Dimanche 29/03,undefined: undefined,,f,
+1001,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+1002,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+1003,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+1004,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+1005,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+1006,13,2026-03-29,Dimanche 29/03,[Prep] undefined: undefined,,f,
+1007,13,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+1008,13,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+1009,13,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+1010,13,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+1011,13,2026-03-30,Lundi 30/03,undefined: undefined,,f,
+1012,13,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+1013,13,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+1014,13,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+1015,13,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+1016,13,2026-03-31,Mardi 31/03,undefined: undefined,,f,
+1017,13,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+1018,13,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+1019,13,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+1020,13,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+1021,13,2026-04-01,Mercredi 01/04,undefined: undefined,,f,
+1022,13,2026-04-01,Mercredi 01/04,[Prep] undefined: undefined,,f,
+1023,13,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+1024,13,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+1025,13,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+1026,13,2026-04-02,Jeudi 02/04,undefined: undefined,,f,
+1027,13,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+1028,13,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+1029,13,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+1030,13,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+1031,13,2026-04-03,Vendredi 03/04,undefined: undefined,,f,
+1032,13,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+1033,13,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+1034,13,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+1035,13,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+1036,13,2026-04-04,Samedi 04/04,undefined: undefined,,f,
+1037,13,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+1038,13,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+1039,13,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+1040,13,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+1041,13,2026-04-05,Dimanche 05/04,undefined: undefined,,f,
+1042,14,2026-04-06,Lundi 06/04,"Préchauffer four et préparer PDT: Four 200°C. Couper 400g PDT en cubes, huile + sel + thym, enfourner",5min,f,
+1043,14,2026-04-06,Lundi 06/04,"Cuire bœuf et oignons: 360g émincé bœuf poêlé 3min/face. Ajouter 2 oignons émincés, cuire 8min",12min,f,
+1044,14,2026-04-06,Lundi 06/04,Cuire asperges: 270g asperges à la vapeur 8min ou poêlées 5min,8min,f,
+1045,14,2026-04-06,Lundi 06/04,[Prep] Préparer base: Faire revenir 1 oignon + 2 gousses ail hachées 5min,10min,f,
+1046,14,2026-04-06,Lundi 06/04,"[Prep] Mijoter: Ajouter 800g saucisses coupées + 400g passata + 200g haricots rouges + épices créoles, mijoter 25min",30min,f,
+1047,14,2026-04-06,Lundi 06/04,[Prep] Conditionner: Répartir en 2 portions avec 150g/120g riz cuit par personne,5min,f,
+1048,14,2026-04-07,Mardi 07/04,"Cuire riz: 360g riz basmati, eau bouillante salée 12min",12min,f,
+1049,14,2026-04-07,Mardi 07/04,"Cuire dinde: 360g escalopes dinde coupées, poêlées 4min/face",8min,f,
+1050,14,2026-04-07,Mardi 07/04,"Champignons et sauce: 330g champignons de Paris poêlés 5min, ajouter 100ml crème fraîche",5min,f,
+1051,14,2026-04-08,Mercredi 08/04,"Cuire riz: 360g riz jasmin, eau bouillante 15min",15min,f,
+1052,14,2026-04-08,Mercredi 08/04,"Caraméliser porc: 330g émincé porc + 30g sucre brun caramélisé + nuoc-mam + sauce soja, cuire 8min",10min,f,
+1053,14,2026-04-08,Mercredi 08/04,Légumes sautés: 220g radis roses + 140g petits pois surgelés sautés 5min,5min,f,
+1054,14,2026-04-08,Mercredi 08/04,"[Prep] Cuire œufs: 15 œufs durs 10min, refroidir à l'eau froide",15min,f,
+1055,14,2026-04-08,Mercredi 08/04,"[Prep] Base curry: Oignon + ail + gingembre + épices (curcuma, coriandre, cumin) 5min",10min,f,
+1056,14,2026-04-08,Mercredi 08/04,"[Prep] Mijoter curry: 400g pois chiches + 400ml lait coco + 200g tomates + épinards, mijoter 15min",15min,f,
+1057,14,2026-04-09,Jeudi 09/04,"Cuire PDT grenaille: 400g PDT grenaille lavées, bouillies 15min puis rissolées 5min",20min,f,
+1058,14,2026-04-09,Jeudi 09/04,"Cuire saumon: 360g pavés saumon + marinade miel-soja-gingembre, grillés 4min/face",8min,f,
+1059,14,2026-04-09,Jeudi 09/04,Haricots verts: 270g haricots verts vapeur 6min ou surgelés poêlés 4min,6min,f,
+1060,14,2026-04-10,Vendredi 10/04,"Cuire PDT sautées: 400g PDT coupées en rondelles, cuites vapeur 10min puis sautées 8min",18min,f,
+1061,14,2026-04-10,Vendredi 10/04,"Omelette: 5 œufs battus + persil/ciboulette/estragon, cuire 3min/face",6min,f,
+1062,14,2026-04-10,Vendredi 10/04,Servir: Mâche assaisonnée + pain complet grillé,2min,f,
+1063,14,2026-04-10,Vendredi 10/04,"[Prep] Préparer viande: 600g bœuf à braiser coupé en cubes, fariné et doré 10min",15min,f,
+1064,14,2026-04-10,Vendredi 10/04,"[Prep] Mijoter daube: Ajouter 300g carottes + oignons + ail + vin rouge + tomates + herbes de Provence + olives, mijoter 30min",35min,f,
+1065,14,2026-04-11,Samedi 11/04,Cuire pâtes: 360g pâtes fraîches ou spaghetti al dente selon paquet,10min,f,
+1066,14,2026-04-11,Samedi 11/04,Lardons et œufs: 140g lardons dorés 5min. Mélanger 3 œufs + 70g parmesan râpé,5min,f,
+1067,14,2026-04-11,Samedi 11/04,Assembler: Mélanger pâtes chaudes + lardons + mélange œufs hors du feu + poivre,3min,f,
+1068,14,2026-04-12,Dimanche 12/04,Cuire riz: 330g riz basmati 12min eau bouillante salée,12min,f,
+1069,14,2026-04-12,Dimanche 12/04,Préparer gratin: 360g cœurs artichauts + 140g jambon + béchamel légère + 45g gruyère,10min,f,
+1070,14,2026-04-12,Dimanche 12/04,"Gratiner: Four 200°C, gratiner 8min jusqu'à doré",8min,f,
+1071,14,2026-04-12,Dimanche 12/04,"[Prep] Cuire œufs: 15 œufs durs 10min eau bouillante, refroidir",15min,f,
+1072,14,2026-04-12,Dimanche 12/04,[Prep] Préparer batch: Choisir recette semaine suivante selon planning,45min,f,
+1073,15,2026-03-31,Lundi 31/03,"PDT rôties: Couper 420g PDT en quartiers, huile d'olive, sel, four 200°C",5min,f,
+1074,15,2026-03-31,Lundi 31/03,"Asperges: Éplucher 270g asperges, cuisson vapeur ou poêle",8min,f,
+1075,15,2026-03-31,Lundi 31/03,"Escalopes: Saisir 320g escalopes dinde à la poêle, sel, poivre",12min,f,
+1076,15,2026-03-31,Lundi 31/03,[Prep] Batch poulet basquaise: Faire revenir 600g poulet + 2 oignons + 400g poivrons + 500g passata + 800g PDT,55min,f,
+1077,15,2026-04-01,Mardi 01/04,Riz: Cuire 350g riz basmati à l'eau salée,3min,f,
+1078,15,2026-04-01,Mardi 01/04,Radis sautés: Faire sauter 210g radis coupés en rondelles à la poêle,8min,f,
+1079,15,2026-04-01,Mardi 01/04,Petits pois: Cuire 140g petits pois surgelés à la poêle,5min,f,
+1080,15,2026-04-01,Mardi 01/04,"Saumon: Cuire 350g pavés saumon à la poêle, sel, poivre",4min,f,
+1081,15,2026-04-02,Mercredi 02/04,PDT cuites: Cuire 320g PDT en dés à l'eau salée,15min,f,
+1082,15,2026-04-02,Mercredi 02/04,Artichauts: Réchauffer 270g cœurs artichauts en conserve,3min,f,
+1083,15,2026-04-02,Mercredi 02/04,"Tortilla: Battre 5 œufs, mélanger PDT + artichauts, cuire à la poêle",7min,f,
+1084,15,2026-04-02,Mercredi 02/04,[Prep] Batch bœuf stroganoff: Faire revenir 500g émincé bœuf + champignons + crème + semoule,30min,f,
+1085,15,2026-04-02,Mercredi 02/04,[Prep] Œufs durs: Cuire 15 œufs durs pour la semaine,15min,f,
+1086,15,2026-04-03,Jeudi 03/04,PDT grenaille: Cuire 390g PDT grenaille à l'eau puis poêler avec herbes,15min,f,
+1087,15,2026-04-03,Jeudi 03/04,Épinards: Faire sauter 220g épinards frais à la poêle,3min,f,
+1088,15,2026-04-03,Jeudi 03/04,"Côtes porc: Cuire 320g côtes porc à la poêle, déglacé moutarde",4min,f,
+1089,15,2026-04-04,Vendredi 04/04,Riz: Cuire 350g riz basmati à l'eau salée,3min,f,
+1090,15,2026-04-04,Vendredi 04/04,Carottes: Cuire 270g carottes nouvelles en rondelles à la poêle,10min,f,
+1091,15,2026-04-04,Vendredi 04/04,"Cabillaud: Cuire 360g filets cabillaud à la poêle, citron",7min,f,
+1092,15,2026-04-04,Vendredi 04/04,[Prep] Batch émincé porc curry: Faire revenir 500g émincé porc + curry + lait coco + légumes + riz,50min,f,
+1093,15,2026-04-05,Samedi 05/04,Béchamel: Préparer béchamel avec 30g beurre + farine + lait,5min,f,
+1094,15,2026-04-05,Samedi 05/04,"Montage: Tartiner pain, jambon, gruyère, béchamel dessus",5min,f,
+1095,15,2026-04-05,Samedi 05/04,Cuisson: Gratiner au four 200°C jusqu'à doré,5min,f,
+1096,15,2026-04-06,Dimanche 06/04,"PDT rôties: Couper 440g PDT en quartiers, huile, herbes, four 200°C",5min,f,
+1097,15,2026-04-06,Dimanche 06/04,Haricots verts: Cuire 220g haricots verts à la vapeur,8min,f,
+1098,15,2026-04-06,Dimanche 06/04,"Gigot: Saisir 320g tranches gigot à la poêle, ail, romarin",12min,f,
+1099,15,2026-04-06,Dimanche 06/04,[Prep] Cuire œufs durs: Préparer 15 œufs durs pour la semaine,15min,f,
+1100,15,2026-04-06,Dimanche 06/04,[Prep] Batch lundi: Préparer batch pour lundi-mardi,45min,f,
+1101,16,2026-04-07,Lundi 07/04,Cuire PDT vapeur: Laver et cuire 390g PDT à la vapeur 15min,15min,f,
+1102,16,2026-04-07,Lundi 07/04,"Préparer asperges: Éplucher 270g asperges, les cuire vapeur 8min",8min,f,
+1103,16,2026-04-07,Lundi 07/04,Cuire saumon: Saisir 350g pavé saumon huile olive 4min/côté,8min,f,
+1104,16,2026-04-07,Lundi 07/04,"[Prep] Préparer tajine agneau: Découper 305g agneau, émincer oignons, courgettes",20min,f,
+1105,16,2026-04-07,Lundi 07/04,"[Prep] Mijoter tajine: Faire revenir agneau, ajouter légumes, épices, 400ml bouillon",40min,f,
+1106,16,2026-04-08,Mardi 08/04,Cuire riz: Cuire 350g riz basmati dans 700ml eau salée 12min,12min,f,
+1107,16,2026-04-08,Mardi 08/04,"Dinde et légumes: Faire revenir 320g dinde, ajouter 220g carottes, 150g champignons",8min,f,
+1108,16,2026-04-08,Mardi 08/04,"Sauce blanche: Ajouter crème fraîche, bouillon, herbes, mijoter 5min",5min,f,
+1109,16,2026-04-09,Mercredi 09/04,Cuire épinards: Faire revenir 270g épinards frais à l'huile 5min,5min,f,
+1110,16,2026-04-09,Mercredi 09/04,PDT sautées: Cuire 320g PDT coupées à la poêle 10min,10min,f,
+1111,16,2026-04-09,Mercredi 09/04,"Tortilla: Battre 5 œufs, mélanger PDT-épinards, cuire 8min",8min,f,
+1112,16,2026-04-09,Mercredi 09/04,"[Prep] Préparer bœuf provençal: Découper 315g bœuf, émincer aubergines, tomates",15min,f,
+1113,16,2026-04-09,Mercredi 09/04,"[Prep] Mijoter: Faire revenir bœuf, ajouter légumes, herbes de Provence",35min,f,
+1114,16,2026-04-09,Mercredi 09/04,[Prep] Œufs durs: Cuire 15 œufs pour les 3 prochains jours,15min,f,
+1115,16,2026-04-10,Jeudi 10/04,"PDT grenaille: Laver 390g PDT grenaille, les rôtir au four 20min à 200°C",20min,f,
+1116,16,2026-04-10,Jeudi 10/04,"Radis sautés: Couper 220g radis, les faire sauter 8min à la poêle",8min,f,
+1117,16,2026-04-10,Jeudi 10/04,"Côte porc: Cuire 320g côte porc 6min/côté, déglacer moutarde-crème",12min,f,
+1118,16,2026-04-11,Vendredi 11/04,Cuire riz: Cuire 350g riz basmati dans eau bouillante salée 12min,12min,f,
+1119,16,2026-04-11,Vendredi 11/04,Petits pois: Cuire 270g petits pois surgelés 6min vapeur,6min,f,
+1120,16,2026-04-11,Vendredi 11/04,Cabillaud: Cuire 360g cabillaud à la poêle huile olive 4min/côté,8min,f,
+1121,16,2026-04-11,Vendredi 11/04,"[Prep] Chili con carne: Faire revenir 270g bœuf haché, ajouter oignons, épices",10min,f,
+1122,16,2026-04-11,Vendredi 11/04,"[Prep] Mijoter chili: Ajouter 400g haricots rouges, tomates concassées, mijoter 35min",35min,f,
+1123,16,2026-04-12,Samedi 12/04,"Frites four: Couper PDT en frites, enfourner 200°C 18min avec huile",18min,f,
+1124,16,2026-04-12,Samedi 12/04,Poulet grillé: Cuire 280g blanc poulet coupé en lamelles 8min,8min,f,
+1125,16,2026-04-12,Samedi 12/04,"Assembler wraps: Garnir tortillas avec poulet, salade, tomates, fromage",5min,f,
+1126,16,2026-04-13,Dimanche 13/04,"PDT rôties: Couper 420g PDT, les rôtir au four 200°C avec huile 22min",22min,f,
+1127,16,2026-04-13,Dimanche 13/04,"Rôti porc: Saisir 320g rôti porc 12min, finir au four 10min",15min,f,
+1128,16,2026-04-13,Dimanche 13/04,Carottes nouvelles: Cuire 270g carottes nouvelles entières vapeur 12min,12min,f,
+1129,16,2026-04-13,Dimanche 13/04,[Prep] Œufs durs: Cuire 15 œufs durs pour la semaine prochaine,15min,f,
+1130,16,2026-04-13,Dimanche 13/04,[Prep] Préparer ingrédients: Découper légumes pour le batch de lundi,15min,f,
+1131,17,2026-04-07,Lundi 07/04,Préparer les PDT: Laver et couper 350g PDT grenaille en deux. Les faire rôtir au four à 200°C avec un filet d'huile d'olive et du sel,20min,f,
+1132,17,2026-04-07,Lundi 07/04,"Paner les escalopes: Passer 320g escalopes de dinde dans farine, œuf battu, puis chapelure. Les cuire à la poêle 3-4min/côté",8min,f,
+1133,17,2026-04-07,Lundi 07/04,Cuire les asperges: Faire cuire 220g asperges à la vapeur pendant 6-8min,8min,f,
+1134,17,2026-04-08,Mardi 08/04,Cuire le riz: Faire cuire 160g riz basmati dans 320ml d'eau salée pendant 15min,15min,f,
+1135,17,2026-04-08,Mardi 08/04,"Préparer la sauce teriyaki: Mélanger 2 c.s. sauce soja, 1 c.s. miel, 1 c.c. vinaigre de riz, 1 gousse ail hachée",2min,f,
+1136,17,2026-04-08,Mardi 08/04,"Cuire le saumon: Cuire 310g filets de saumon à la poêle 4min/côté, badigeonner de sauce teriyaki",8min,f,
+1137,17,2026-04-08,Mardi 08/04,Faire sauter les petit pois: Faire revenir 270g petit pois surgelés à la poêle avec un peu d'huile et d'ail 5min,5min,f,
+1138,17,2026-04-08,Mardi 08/04,"[Prep] Préparer les légumes: Éplucher et couper 400g carottes nouvelles, nettoyer 6 artichauts",20min,f,
+1139,17,2026-04-08,Mardi 08/04,[Prep] Faire revenir la viande: Faire dorer 600g épaule d'agneau coupée en morceaux dans un faitout avec huile d'olive,10min,f,
+1140,17,2026-04-08,Mardi 08/04,"[Prep] Mijoter le curry: Ajouter 400ml lait de coco, 2 c.s. pâte curry rouge, légumes, laisser mijoter 30min",30min,f,
+1141,17,2026-04-09,Mercredi 09/04,Cuire les PDT: Faire cuire 350g PDT épluchées à la vapeur pendant 20min,20min,f,
+1142,17,2026-04-09,Mercredi 09/04,Préparer les radis: Nettoyer et couper 220g radis en quartiers,5min,f,
+1143,17,2026-04-09,Mercredi 09/04,"Cuire le porc: Saisir 300g côtes de porc à la poêle 4min/côté, réserver",8min,f,
+1144,17,2026-04-09,Mercredi 09/04,"Confire les radis: Dans la même poêle, faire revenir les radis avec 2 c.s. miel, sel, poivre 8min",8min,f,
+1145,17,2026-04-09,Mercredi 09/04,"[Prep] Cuire les œufs: Faire bouillir 15 œufs pendant 10min, les refroidir dans l'eau glacée",15min,f,
+1146,17,2026-04-10,Jeudi 10/04,"Préparer les PDT: Couper 320g PDT en dés, les faire sauter à la poêle avec huile d'olive 12min",12min,f,
+1147,17,2026-04-10,Jeudi 10/04,Cuire les épinards: Faire revenir 220g épinards frais à la poêle 3min jusqu'à ce qu'ils flétrissent,3min,f,
+1148,17,2026-04-10,Jeudi 10/04,"Préparer l'omelette: Battre 5 œufs, verser dans une poêle chaude, ajouter épinards et 45g gruyère râpé",5min,f,
+1149,17,2026-04-10,Jeudi 10/04,"Finaliser: Plier l'omelette en deux, laisser cuire 2min supplémentaires",2min,f,
+1150,17,2026-04-10,Jeudi 10/04,[Prep] Faire revenir la viande: Faire dorer 600g bœuf à braiser coupé en morceaux dans un faitout,15min,f,
+1151,17,2026-04-10,Jeudi 10/04,"[Prep] Ajouter les légumes: Ajouter 300g carottes nouvelles, 200g petit pois, 2 oignons émincés",10min,f,
+1152,17,2026-04-10,Jeudi 10/04,"[Prep] Mijoter: Ajouter 400ml bouillon bœuf, herbes de Provence, laisser mijoter à feu doux 45min",45min,f,
+1153,17,2026-04-11,Vendredi 11/04,"Préparer les PDT: Laver et couper 340g PDT grenaille, les faire rôtir au four à 200°C avec huile d'olive 20min",20min,f,
+1154,17,2026-04-11,Vendredi 11/04,Cuire les asperges: Faire cuire 270g asperges à la vapeur 8min,8min,f,
+1155,17,2026-04-11,Vendredi 11/04,Cuire le saumon: Saisir 310g pavés de saumon à la poêle 4min/côté,8min,f,
+1156,17,2026-04-11,Vendredi 11/04,Préparer le beurre à l'ail: Faire fondre 30g beurre avec 2 gousses ail hachées et persil,3min,f,
+1157,17,2026-04-12,Samedi 12/04,"Préparer les frites: Couper 350g PDT en frites, les faire au four à 220°C avec huile d'olive 25min",25min,f,
+1158,17,2026-04-12,Samedi 12/04,"Paner le cabillaud: Passer 350g filets de cabillaud dans farine, œuf battu, chapelure",8min,f,
+1159,17,2026-04-12,Samedi 12/04,Cuire le poisson: Faire frire le cabillaud pané à la poêle 4min/côté,8min,f,
+1160,17,2026-04-12,Samedi 12/04,Cuire les petit pois: Faire cuire 220g petit pois surgelés 5min,5min,f,
+1161,17,2026-04-12,Samedi 12/04,"Préparer la sauce: Mélanger mayonnaise, câpres, cornichons hachés, citron",3min,f,
+1162,17,2026-04-12,Samedi 12/04,"[Prep] Faire la purée: Éplucher et cuire 400g PDT, les écraser avec lait et beurre",20min,f,
+1163,17,2026-04-12,Samedi 12/04,"[Prep] Assembler: Dans un plat, disposer le bœuf mijoté, recouvrir de purée, gratiner 15min",15min,f,
+1164,17,2026-04-13,Dimanche 13/04,Préparer le rôti: Saisir 800g rôti de porc dans un faitout avec huile d'olive 8min de tous côtés,8min,f,
+1165,17,2026-04-13,Dimanche 13/04,Ajouter les légumes: Ajouter 270g carottes nouvelles entières et 2 oignons émincés autour du rôti,5min,f,
+1166,17,2026-04-13,Dimanche 13/04,"Cuire au four: Enfourner à 180°C pendant 60min, arroser régulièrement",60min,f,
+1167,17,2026-04-13,Dimanche 13/04,Préparer les PDT: Faire rôtir 340g PDT coupées avec huile et romarin 45min,45min,f,
+1168,17,2026-04-13,Dimanche 13/04,Repos et découpe: Laisser reposer le rôti 10min avant de découper,10min,f,
+1169,17,2026-04-13,Dimanche 13/04,"[Prep] Cuire les œufs: Faire bouillir 15 œufs pendant 10min, les refroidir dans l'eau glacée",15min,f,
+1170,18,2026-04-07,Lundi 07/04,"Préparer les PDT grenaille: Laver et couper 350g PDT grenaille en deux. Les faire rôtir au four à 200°C avec huile d'olive, sel et herbes de Provence",30min,f,
+1171,18,2026-04-07,Lundi 07/04,Cuire les asperges: Parer 270g asperges et les cuire à la vapeur 8-10 min jusqu'à tendreté,10min,f,
+1172,18,2026-04-07,Lundi 07/04,"Cuire le saumon: Saisir 320g pavé de saumon dans une poêle avec un peu d'huile, 4-5 min par face",10min,f,
+1173,18,2026-04-07,Lundi 07/04,Beurre à l'ail: Faire fondre 20g beurre avec 2 gousses d'ail hachées et persil,2min,f,
+1174,18,2026-04-07,Lundi 07/04,"[Prep] Préparer le tajine d'agneau: Suivre la recette complète : faire revenir 500g épaule d'agneau coupée, ajouter légumes de printemps, épices et laisser mijoter",95min,f,
+1175,18,2026-04-08,Mardi 08/04,"Préparer les frites four: Couper 350g PDT en bâtonnets, les huiler et enfourner à 220°C",35min,f,
+1176,18,2026-04-08,Mardi 08/04,"Paner les escalopes: Passer 280g escalopes de dinde dans farine, œuf battu et chapelure",10min,f,
+1177,18,2026-04-08,Mardi 08/04,Cuire les escalopes: Faire dorer les escalopes panées 4-5 min par face dans l'huile,10min,f,
+1178,18,2026-04-08,Mardi 08/04,"Faire sauter les radis: Nettoyer et couper 220g radis, les faire sauter au beurre avec sel et poivre",8min,f,
+1179,18,2026-04-09,Mercredi 09/04,"Confiture de radis au miel: Couper 220g radis en quartiers, les cuire dans une poêle avec 2 c.à.s de miel, beurre et thym 15 min",15min,f,
+1180,18,2026-04-09,Mercredi 09/04,"Cuire les PDT vapeur: Éplucher et couper 350g PDT, les cuire à la vapeur 20 min",25min,f,
+1181,18,2026-04-09,Mercredi 09/04,Cuire les côtes de porc: Saisir 320g côtes de porc dans une poêle bien chaude 5-6 min par face,12min,f,
+1182,18,2026-04-09,Mercredi 09/04,Repos et service: Laisser reposer la viande 3 min avant de servir,3min,f,
+1183,18,2026-04-09,Mercredi 09/04,"[Prep] Préparer le poulet basquaise: Découper 500g poulet, le faire revenir avec oignons et poivrons, ajouter tomates et laisser mijoter",55min,f,
+1184,18,2026-04-09,Mercredi 09/04,[Prep] Cuire les œufs durs: Mettre 15 œufs à cuire 10 min dans l'eau bouillante,15min,f,
+1185,18,2026-04-10,Jeudi 10/04,Cuire le riz: Rincer 350g riz basmati et le cuire dans 2 volumes d'eau salée 18 min,20min,f,
+1186,18,2026-04-10,Jeudi 10/04,Cuire les petits pois: Faire cuire 270g petits pois surgelés dans l'eau bouillante salée 5 min,8min,f,
+1187,18,2026-04-10,Jeudi 10/04,Cuire le cabillaud: Poêler 350g filets de cabillaud dans l'huile d'olive 4-5 min par face,10min,f,
+1188,18,2026-04-10,Jeudi 10/04,"Assaisonnement: Finir avec un filet d'huile d'olive, citron, sel et persil",2min,f,
+1189,18,2026-04-10,Jeudi 10/04,"[Prep] Préparer le chili con carne: Faire revenir 500g bœuf haché, ajouter oignons, haricots rouges, tomates et épices. Laisser mijoter",45min,f,
+1190,18,2026-04-11,Vendredi 11/04,Préparer les PDT sautées: Éplucher et couper 350g PDT en dés. Les faire sauter à la poêle avec huile d'olive 20 min,25min,f,
+1191,18,2026-04-11,Vendredi 11/04,Préparer les épinards: Nettoyer et faire tomber 270g épinards frais à la poêle avec ail et beurre,8min,f,
+1192,18,2026-04-11,Vendredi 11/04,"Battre et cuire l'omelette: Battre 5 œufs, verser dans la poêle, ajouter épinards et 45g gruyère râpé, cuire 5-6 min",8min,f,
+1193,18,2026-04-12,Samedi 12/04,Préparer les frites: Couper 330g PDT en bâtonnets et les cuire au four à 220°C,25min,f,
+1194,18,2026-04-12,Samedi 12/04,"Former et cuire les steaks: Former 270g viande hachée en 2 steaks, les cuire 3-4 min par face",8min,f,
+1195,18,2026-04-12,Samedi 12/04,Griller les pains: Faire griller les pains burger et préparer la salade,5min,f,
+1196,18,2026-04-12,Samedi 12/04,"Assembler: Monter les burgers avec salade, steaks, 55g cheddar et condiments",5min,f,
+1197,18,2026-04-13,Dimanche 13/04,Cuire les pâtes: Faire cuire 350g spaghettis dans une grande casserole d'eau salée selon temps paquet,12min,f,
+1198,18,2026-04-13,Dimanche 13/04,Faire revenir le guanciale: Couper 140g guanciale en dés et les faire revenir jusqu'à croustillant,8min,f,
+1199,18,2026-04-13,Dimanche 13/04,Préparer l'émulsion: Battre 3 œufs avec 70g pecorino romano râpé dans un grand bol,3min,f,
+1200,18,2026-04-13,Dimanche 13/04,"Mélanger: Égoutter les pâtes, les mélanger au guanciale et aux œufs hors du feu en remuant vivement",2min,f,
+1201,18,2026-04-13,Dimanche 13/04,[Prep] Cuire œufs durs S2: Mettre 15 œufs à cuire 10 min dans l'eau bouillante pour la semaine,15min,f,
+1202,18,2026-04-13,Dimanche 13/04,[Prep] Planifier courses: Vérifier la liste de courses et organiser les batches de la semaine suivante,15min,f,
+1203,19,2026-04-07,Lundi 07/04,Cuire les PDT grenaille: Faire bouillir 340g PDT grenaille lavées avec peau dans eau salée 15min,15min,f,
+1204,19,2026-04-07,Lundi 07/04,"Préparer les asperges: Casser le pied de 270g asperges, les cuire 8min à l'eau bouillante salée",8min,f,
+1205,19,2026-04-07,Lundi 07/04,"Cuire le saumon: Saler/poivrer 310g pavé saumon, cuire 4min peau côté poêle puis retourner 3min",7min,f,
+1206,19,2026-04-07,Lundi 07/04,"Finir les accompagnements: Égoutter PDT et asperges, faire fondre 20g beurre avec 1 gousse ail haché",3min,f,
+1207,19,2026-04-07,Lundi 07/04,"[Prep] Mijoter le tajine d'agneau: Couper 600g épaule agneau en cubes, faire revenir avec oignon. Ajouter épices, 400g artichauts, 300g carottes nouvelles, bouillon. Mijoter 75min",90min,f,
+1208,19,2026-04-08,Mardi 08/04,"Paner les escalopes: Aplatir 320g escalopes dinde, passer dans farine, œuf battu, chapelure",8min,f,
+1209,19,2026-04-08,Mardi 08/04,"Cuire les PDT: Couper 350g PDT en cubes, les faire sauter à la poêle avec huile 15min",15min,f,
+1210,19,2026-04-08,Mardi 08/04,Cuire la dinde: Faire dorer les escalopes panées 4min de chaque côté dans l'huile,8min,f,
+1211,19,2026-04-08,Mardi 08/04,Préparer les épinards: Faire revenir 220g épinards frais avec 30ml crème fraîche,5min,f,
+1212,19,2026-04-09,Mercredi 09/04,Cuire les PDT: Faire sauter 320g PDT coupées en cubes avec huile 15min jusqu'à dorées,15min,f,
+1213,19,2026-04-09,Mercredi 09/04,"Préparer les radis: Couper 220g radis en rondelles, les faire sauter 5min avec beurre",5min,f,
+1214,19,2026-04-09,Mercredi 09/04,"Faire l'omelette: Battre 5 œufs, cuire en omelette, ajouter radis et 45g gruyère râpé",8min,f,
+1215,19,2026-04-09,Mercredi 09/04,"[Prep] Préparer le bœuf stroganoff: Couper 500g bœuf en lamelles, faire revenir avec oignons et champignons. Ajouter crème et moutarde, mijoter 30min",45min,f,
+1216,19,2026-04-09,Mercredi 09/04,"[Prep] Cuire œufs durs: Cuire 15 œufs 10min, refroidir à l'eau froide",15min,f,
+1217,19,2026-04-10,Jeudi 10/04,Cuire les PDT: Faire bouillir 350g PDT grenaille avec peau 15min dans eau salée,15min,f,
+1218,19,2026-04-10,Jeudi 10/04,"Cuire le porc: Saler/poivrer 320g côtes de porc, les cuire 4min de chaque côté",8min,f,
+1219,19,2026-04-10,Jeudi 10/04,Préparer les petits pois: Faire revenir 270g petits pois avec lardons et oignons à la française,10min,f,
+1220,19,2026-04-10,Jeudi 10/04,"[Prep] Préparer le poulet basquaise: Couper 600g poulet en morceaux, faire revenir avec poivrons, tomates, oignons et épices. Mijoter 40min",55min,f,
+1221,19,2026-04-11,Vendredi 11/04,"Cuire le riz: Rincer 350g riz basmati, le cuire dans 525ml eau salée 15min",15min,f,
+1222,19,2026-04-11,Vendredi 11/04,Cuire les petits pois: Faire cuire 270g petits pois 8min dans eau bouillante salée,8min,f,
+1223,19,2026-04-11,Vendredi 11/04,"Cuire le cabillaud: Saler/poivrer 360g filets de cabillaud, les cuire 4min de chaque côté",8min,f,
+1224,19,2026-04-12,Samedi 12/04,"Réchauffer le rôti: Sortir le rôti de porc du frigo, le réchauffer au four 180°C 15min",15min,f,
+1225,19,2026-04-12,Samedi 12/04,Réchauffer les accompagnements: Réchauffer PDT et carottes à la poêle 8min avec un peu d'huile,8min,f,
+1226,19,2026-04-12,Samedi 12/04,Préparer le jus: Réchauffer le jus de cuisson et rectifier l'assaisonnement,3min,f,
+1227,19,2026-04-13,Dimanche 13/04,"Cuire les pâtes: Porter à ébullition une grande casserole d'eau salée, cuire 350g spaghettis selon temps paquet",10min,f,
+1228,19,2026-04-13,Dimanche 13/04,"Faire le guanciale: Couper 140g guanciale en lardons, les faire dorer sans matière grasse 5min",5min,f,
+1229,19,2026-04-13,Dimanche 13/04,Préparer la liaison: Battre 3 œufs entiers avec 70g pecorino romano râpé et poivre noir,3min,f,
+1230,19,2026-04-13,Dimanche 13/04,"Assembler: Égoutter pâtes en gardant un peu d'eau de cuisson, mélanger hors feu avec œufs et guanciale",7min,f,
+1231,19,2026-04-13,Dimanche 13/04,"[Prep] Cuire œufs durs: Mettre 15 œufs dans eau froide, porter à ébullition puis 10min de cuisson",15min,f,
+1232,20,2026-04-06,Lundi 06/04,"Précuisson PDT: Laver et couper 350g PDT grenaille en deux, cuire 12min eau bouillante salée",12min,f,
+1233,20,2026-04-06,Lundi 06/04,"Préparation asperges: Éplucher 270g asperges, couper les extrémités dures",3min,f,
+1234,20,2026-04-06,Lundi 06/04,"Cuisson saumon: Saler/poivrer 320g pavés saumon, cuire 4min chaque côté à la poêle huile d'olive",8min,f,
+1235,20,2026-04-06,Lundi 06/04,"Finition: Égoutter PDT, les faire dorer 2min. Cuire asperges 3min vapeur. Beurre à l'ail fondu",5min,f,
+1236,20,2026-04-06,Lundi 06/04,"[Prep] Préparation légumes: Éplucher 500g artichauts, couper 400g carottes nouvelles en rondelles, émincer 2 oignons",20min,f,
+1237,20,2026-04-06,Lundi 06/04,[Prep] Cuisson agneau: Faire revenir 600g épaule d'agneau coupée en cubes dans huile d'olive 8min,8min,f,
+1238,20,2026-04-06,Lundi 06/04,"[Prep] Mijoté: Ajouter légumes, épices tajine, 400ml bouillon, couvrir et mijoter 90min feu doux",90min,f,
+1239,20,2026-04-07,Mardi 07/04,"Préparation frites: Couper 350g PDT en frites, les badigeonner d'huile, enfourner 20min à 220°C",5min,f,
+1240,20,2026-04-07,Mardi 07/04,"Panure escalopes: Aplatir 280g escalopes, les paner: farine, œuf battu, chapelure",8min,f,
+1241,20,2026-04-07,Mardi 07/04,Préparation radis: Laver et couper 220g radis en quartiers,3min,f,
+1242,20,2026-04-07,Mardi 07/04,"Cuisson finale: Cuire escalopes 3min chaque côté, radis sautés 4min au beurre avec herbes",10min,f,
+1243,20,2026-04-08,Mercredi 08/04,"Préparation PDT: Éplucher et couper 350g PDT en cubes, les faire cuire 15min eau bouillante",5min,f,
+1244,20,2026-04-08,Mercredi 08/04,"Cuisson côtes: Saler/poivrer 320g côtes de porc, les griller 4min chaque côté à la poêle",8min,f,
+1245,20,2026-04-08,Mercredi 08/04,Petits pois: Faire revenir 270g petits pois avec oignon émincé et lardons 5min,5min,f,
+1246,20,2026-04-08,Mercredi 08/04,"Finition: Égoutter PDT, les faire sauter au beurre avec persil 3min",7min,f,
+1247,20,2026-04-08,Mercredi 08/04,"[Prep] Base curry: Faire revenir oignon, gingembre, ail, épices curry 5min",5min,f,
+1248,20,2026-04-08,Mercredi 08/04,"[Prep] Mijoté: Ajouter 400g pois chiches égouttés, 200ml lait coco, tomates concassées, mijoter 30min",30min,f,
+1249,20,2026-04-08,Mercredi 08/04,"[Prep] Œufs durs: Cuire 15 œufs 9min eau bouillante, refroidir eau froide",15min,f,
+1250,20,2026-04-09,Jeudi 09/04,"PDT sautées: Éplucher et couper 350g PDT en cubes, les cuire 12min eau bouillante puis les sauter au beurre",15min,f,
+1251,20,2026-04-09,Jeudi 09/04,"Radis: Laver et couper 270g radis en lamelles, les faire sauter 5min au beurre",5min,f,
+1252,20,2026-04-09,Jeudi 09/04,"Omelette: Battre 5 œufs, cuire omelette 3min, ajouter radis et 55g gruyère râpé, plier",5min,f,
+1253,20,2026-04-09,Jeudi 09/04,"[Prep] Préparation: Couper 650g bœuf à braiser en cubes, éplucher 300g carottes et 400g PDT",15min,f,
+1254,20,2026-04-09,Jeudi 09/04,[Prep] Coloration: Faire revenir la viande dans huile d'olive jusqu'à coloration dorée,10min,f,
+1255,20,2026-04-09,Jeudi 09/04,"[Prep] Mijoté: Ajouter légumes, herbes de Provence, vin rouge, bouillon, mijoter 90min couvert",95min,f,
+1256,20,2026-04-10,Vendredi 10/04,"Cuisson riz: Rincer 350g riz basmati, le cuire 15min dans 700ml eau bouillante salée",15min,f,
+1257,20,2026-04-10,Vendredi 10/04,"Petits pois: Cuire 270g petits pois 8min eau bouillante, les égoutter et les poêler avec menthe",8min,f,
+1258,20,2026-04-10,Vendredi 10/04,"Cabillaud: Saler/poivrer 360g filets cabillaud, les cuire 4min chaque côté à la poêle huile d'olive",8min,f,
+1259,20,2026-04-10,Vendredi 10/04,"[Prep] Purée: Éplucher 500g PDT, les cuire 20min, les écraser avec lait et beurre",25min,f,
+1260,20,2026-04-10,Vendredi 10/04,"[Prep] Assemblage: Dans plats: étaler le bœuf de la daube, recouvrir de purée, gratiner 15min",5min,f,
+1261,20,2026-04-11,Samedi 11/04,"Préparation: Couper 140g guanciale en lardons, battre 3 œufs avec 70g pecorino râpé",5min,f,
+1262,20,2026-04-11,Samedi 11/04,Cuisson pâtes: Cuire 350g spaghettis dans eau bouillante salée selon temps paquet,10min,f,
+1263,20,2026-04-11,Samedi 11/04,Guanciale: Faire revenir les lardons jusqu'à dorés et croustillants,5min,f,
+1264,20,2026-04-11,Samedi 11/04,"Finalisation: Mélanger pâtes chaudes avec œufs-fromage hors feu, ajouter guanciale et eau de cuisson",5min,f,
+1265,20,2026-04-12,Dimanche 12/04,"Préparation: Saler/poivrer 800g rôti filet porc, éplucher 270g carottes nouvelles entières",10min,f,
+1266,20,2026-04-12,Dimanche 12/04,Coloration: Faire dorer le rôti sur toutes faces dans cocotte avec huile d'olive,8min,f,
+1267,20,2026-04-12,Dimanche 12/04,"Cuisson four: Ajouter carottes, thym, laurier, enfourner 60min à 180°C en arrosant",60min,f,
+1268,20,2026-04-12,Dimanche 12/04,"PDT rôties: Éplucher 380g PDT, les faire rôtir avec rôti les 40 dernières minutes",12min,f,
+1269,20,2026-04-12,Dimanche 12/04,"[Prep] Œufs durs: Cuire 15 œufs 9min eau bouillante, refroidir eau glacée, écaler",15min,f,
+1270,20,2026-04-12,Dimanche 12/04,"[Prep] Préparation batch: Sortir ingrédients pour le batch de lundi, découper légumes",15min,f,
+1271,21,2026-04-06,Lundi 06/04,Préchauffer le four: Préchauffer à 200°C,5min,f,
+1272,21,2026-04-06,Lundi 06/04,"Préparer les PDT grenaille: Laver 430g PDT grenaille, couper en deux, mélanger avec huile d'olive, sel, poivre, enfourner",10min,f,
+1273,21,2026-04-06,Lundi 06/04,"Préparer les asperges: Éplucher 270g asperges, couper les pieds",5min,f,
+1274,21,2026-04-06,Lundi 06/04,"Cuire le saumon: Cuire 320g pavés de saumon à la poêle, 4min de chaque côté",10min,f,
+1275,21,2026-04-06,Lundi 06/04,Cuire les asperges: Sauter les asperges 8min avec beurre à l'ail,10min,f,
+1276,21,2026-04-06,Lundi 06/04,[Prep] Couper l'agneau: Découper 600g épaule d'agneau en cubes de 3cm,15min,f,
+1277,21,2026-04-06,Lundi 06/04,"[Prep] Faire revenir l'agneau: Faire dorer les cubes d'agneau dans huile d'olive, réserver",15min,f,
+1278,21,2026-04-06,Lundi 06/04,"[Prep] Préparer les légumes: Éplucher et couper 300g artichauts, 250g carottes nouvelles, 2 oignons",20min,f,
+1279,21,2026-04-06,Lundi 06/04,"[Prep] Mijoter le tajine: Ajouter légumes, épices (cumin, coriandre, cannelle, gingembre), bouillon, laisser mijoter 1h30",70min,f,
+1280,21,2026-04-07,Mardi 07/04,"Cuire les PDT: Éplucher et cuire 480g PDT à l'eau 20min, égoutter",25min,f,
+1281,21,2026-04-07,Mardi 07/04,Préparer les radis: Laver et couper 220g radis en rondelles,5min,f,
+1282,21,2026-04-07,Mardi 07/04,Sauter les PDT: Faire sauter les PDT cuites dans l'huile d'olive jusqu'à dorées,8min,f,
+1283,21,2026-04-07,Mardi 07/04,Cuire les radis: Sauter les radis 5min avec un peu d'huile,5min,f,
+1284,21,2026-04-07,Mardi 07/04,"Faire l'omelette: Battre 5 œufs, cuire à la poêle, ajouter radis et 55g gruyère râpé",8min,f,
+1285,21,2026-04-08,Mercredi 08/04,Préchauffer le four: Préchauffer à 220°C pour les frites,5min,f,
+1286,21,2026-04-08,Mercredi 08/04,"Préparer les frites: Couper 430g PDT en frites, huiler, saler, enfourner 20min",10min,f,
+1287,21,2026-04-08,Mercredi 08/04,"Paner les escalopes: Passer 320g escalopes dans farine, œuf battu, chapelure",5min,f,
+1288,21,2026-04-08,Mercredi 08/04,Cuire les escalopes: Cuire les escalopes panées 3min de chaque côté,8min,f,
+1289,21,2026-04-08,Mercredi 08/04,"Préparer la salade: Émincer 220g radis, assaisonner vinaigrette",5min,f,
+1290,21,2026-04-08,Mercredi 08/04,"[Prep] Cuire le porc: Griller 520g côtes de porc, réserver au frais",15min,f,
+1291,21,2026-04-08,Mercredi 08/04,"[Prep] Préparer le riz pilaf: Faire revenir 250g riz avec oignon, ajouter bouillon, cuire 18min",25min,f,
+1292,21,2026-04-08,Mercredi 08/04,"[Prep] Cuire les petits pois: Cuire 350g petits pois surgelés à la française avec laitue, oignon",15min,f,
+1293,21,2026-04-08,Mercredi 08/04,"[Prep] Cuire les œufs durs: Cuire 15 œufs durs pour la semaine, écaler",15min,f,
+1294,21,2026-04-09,Jeudi 09/04,Cuire le riz: Rincer et cuire 270g riz basmati dans 2x son volume d'eau salée,18min,f,
+1295,21,2026-04-09,Jeudi 09/04,Préparer le cabillaud: Saler et poivrer 350g filets de cabillaud,2min,f,
+1296,21,2026-04-09,Jeudi 09/04,"Cuire les petits pois: Cuire 270g petits pois surgelés à l'eau bouillante 5min, égoutter",8min,f,
+1297,21,2026-04-09,Jeudi 09/04,Poêler le cabillaud: Cuire le cabillaud à la poêle 4min de chaque côté,8min,f,
+1298,21,2026-04-09,Jeudi 09/04,Finir les petits pois: Sauter les petits pois avec beurre et persil,3min,f,
+1299,21,2026-04-09,Jeudi 09/04,[Prep] Couper le bœuf: Découper 600g paleron de bœuf en cubes de 4cm,10min,f,
+1300,21,2026-04-09,Jeudi 09/04,"[Prep] Faire revenir le bœuf: Faire dorer les cubes dans huile, réserver",15min,f,
+1301,21,2026-04-09,Jeudi 09/04,"[Prep] Préparer les légumes: Éplucher 300g carottes nouvelles, 200g navets, 1 oignon",15min,f,
+1302,21,2026-04-09,Jeudi 09/04,"[Prep] Mijoter: Remettre le bœuf, ajouter légumes, bouillon, herbes, mijoter 45min",50min,f,
+1303,21,2026-04-10,Vendredi 10/04,Préchauffer le four: Préchauffer à 180°C,10min,f,
+1304,21,2026-04-10,Vendredi 10/04,Saisir le rôti: Saisir 520g rôti de porc dans une cocotte sur tous les côtés,10min,f,
+1305,21,2026-04-10,Vendredi 10/04,Préparer les légumes: Éplucher 430g PDT et 270g carottes nouvelles,15min,f,
+1306,21,2026-04-10,Vendredi 10/04,"Cuire au four: Ajouter légumes autour du rôti, arroser d'huile, enfourner 60min",60min,f,
+1307,21,2026-04-10,Vendredi 10/04,Finir les carottes: Glacer les carottes avec miel et beurre,5min,f,
+1308,21,2026-04-10,Vendredi 10/04,"[Prep] Préparer la purée: Cuire 600g PDT, écraser avec lait et beurre",25min,f,
+1309,21,2026-04-10,Vendredi 10/04,"[Prep] Assembler le parmentier: Disposer le bœuf mijoté dans un plat, recouvrir de purée, râper gruyère",10min,f,
+1310,21,2026-04-10,Vendredi 10/04,[Prep] Gratiner: Enfourner 15min à 200°C pour gratiner,15min,f,
+1311,21,2026-04-11,Samedi 11/04,Préchauffer le four: Préchauffer à 220°C pour les frites,5min,f,
+1312,21,2026-04-11,Samedi 11/04,"Préparer les frites: Couper 380g PDT en frites, huiler, saler, enfourner 25min",10min,f,
+1313,21,2026-04-11,Samedi 11/04,"Former les steaks: Former 2 steaks avec 270g viande hachée, saler, poivrer",5min,f,
+1314,21,2026-04-11,Samedi 11/04,Cuire les steaks: Cuire les steaks à la poêle 4min de chaque côté,10min,f,
+1315,21,2026-04-11,Samedi 11/04,"Assembler les burgers: Griller les pains, assembler avec cheddar fondu et salade",5min,f,
+1316,21,2026-04-11,Samedi 11/04,[Prep] Cuire les pâtes: Cuire 350g spaghettis al dente dans eau salée,11min,f,
+1317,21,2026-04-11,Samedi 11/04,"[Prep] Préparer la sauce: Faire revenir 140g guanciale, battre 3 œufs avec 70g pecorino",5min,f,
+1318,21,2026-04-11,Samedi 11/04,[Prep] Mélanger: Mélanger pâtes chaudes avec œufs-fromage hors du feu,3min,f,
+1319,21,2026-04-12,Dimanche 12/04,"Cuire les PDT: Éplucher et cuire 430g PDT à l'eau, couper en rondelles",20min,f,
+1320,21,2026-04-12,Dimanche 12/04,"Préparer les épinards: Nettoyer 270g épinards frais, les faire tomber à la poêle",8min,f,
+1321,21,2026-04-12,Dimanche 12/04,Faire revenir l'oignon: Émincer et faire revenir 1 oignon dans l'huile d'olive,5min,f,
+1322,21,2026-04-12,Dimanche 12/04,Battre les œufs: Battre 5 œufs avec sel et poivre,2min,f,
+1323,21,2026-04-12,Dimanche 12/04,"Cuire la tortilla: Mélanger tous les ingrédients, cuire dans grande poêle, retourner",15min,f,
+1324,21,2026-04-12,Dimanche 12/04,"[Prep] Paner le cabillaud: Passer 350g filets dans farine, œuf, chapelure",15min,f,
+1325,21,2026-04-12,Dimanche 12/04,[Prep] Cuire le fish & chips: Cuire cabillaud pané et 380g frites au four 25min à 200°C,30min,f,
+1326,21,2026-04-12,Dimanche 12/04,"[Prep] Préparer sauce tartare: Mélanger mayo, cornichons, câpres, persil, citron",10min,f,
+1327,21,2026-04-12,Dimanche 12/04,[Prep] Cuire petits pois: Cuire 220g petits pois surgelés,8min,f,
+1328,21,2026-04-12,Dimanche 12/04,[Prep] Cuire œufs semaine: Cuire 15 œufs durs pour la semaine prochaine,15min,f,
+1329,22,2026-04-06,Lundi 06/04,Préparer les pommes de terre: Éplucher et couper 350g pommes de terre en cubes. Les faire cuire 15min à l'eau bouillante salée,15min,f,
+1330,22,2026-04-06,Lundi 06/04,Préparer les radis: Laver et couper 210g radis en rondelles. Les faire sauter 5min à la poêle avec huile d'olive,5min,f,
+1331,22,2026-04-06,Lundi 06/04,"Cuire l'omelette: Battre 5 œufs, verser dans poêle chaude, ajouter radis et 45g gruyère râpé. Cuire 3-4min",5min,f,
+1332,22,2026-04-06,Lundi 06/04,"[Prep] Préparer le tajine d'agneau: Couper 600g épaule d'agneau en cubes, faire revenir avec oignons, ajouter épices, 400g artichauts, 300g carottes nouvelles, mijoter 1h30",120min,f,
+1333,22,2026-04-07,Mardi 07/04,"Cuire le riz: Rincer 160g riz basmati, cuire 12min dans 320ml eau bouillante salée",12min,f,
+1334,22,2026-04-07,Mardi 07/04,"Préparer les asperges: Éplucher 350g asperges, cuire 8min vapeur",8min,f,
+1335,22,2026-04-07,Mardi 07/04,"Griller le saumon: Griller 320g pavé saumon 4min chaque face, préparer beurre à l'aneth",10min,f,
+1336,22,2026-04-08,Mercredi 08/04,"Cuire les pommes de terre: Éplucher et couper 390g pommes de terre en rondelles, cuire 10min à l'eau",10min,f,
+1337,22,2026-04-08,Mercredi 08/04,"Préparer les légumes: Faire revenir 2 oignons émincés, ajouter 270g épinards frais, cuire 5min",5min,f,
+1338,22,2026-04-08,Mercredi 08/04,"Monter la tortilla: Battre 5 œufs, mélanger avec légumes et PDT, cuire 8min poêle puis 2min four",10min,f,
+1339,22,2026-04-08,Mercredi 08/04,"[Prep] Préparer curry d'agneau: Couper 550g épaule d'agneau, faire revenir avec oignons, épices, lait de coco, ajouter 200g petits pois, 250g carottes nouvelles",60min,f,
+1340,22,2026-04-08,Mercredi 08/04,"[Prep] Cuire œufs durs: Faire bouillir 15 œufs pendant 9min, refroidir à l'eau froide, écaler",15min,f,
+1341,22,2026-04-09,Jeudi 09/04,"Cuire les pommes de terre: Éplucher 350g pommes de terre, cuire 15min à l'eau bouillante salée",15min,f,
+1342,22,2026-04-09,Jeudi 09/04,"Préparer petits pois à la française: Faire revenir oignon, ajouter 270g petits pois, laitue, cuire 8min avec bouillon",8min,f,
+1343,22,2026-04-09,Jeudi 09/04,"Griller les côtes: Griller 280g côtes de porc 4min chaque face, assaisonner",8min,f,
+1344,22,2026-04-10,Vendredi 10/04,"Cuire le riz: Rincer 160g riz basmati, cuire 12min dans eau bouillante salée",12min,f,
+1345,22,2026-04-10,Vendredi 10/04,"Préparer petits pois: Cuire 270g petits pois 6min à l'eau bouillante, égoutter",6min,f,
+1346,22,2026-04-10,Vendredi 10/04,"Cuire le cabillaud: Poêler 320g filets cabillaud 4min chaque face, préparer beurre blanc",10min,f,
+1347,22,2026-04-10,Vendredi 10/04,"[Prep] Préparer bœuf provençal: Couper 550g bœuf à braiser, faire revenir avec oignons, ajouter tomates, courgettes, aubergines, herbes de Provence, mijoter 1h30",115min,f,
+1348,22,2026-04-11,Samedi 11/04,Cuire les pâtes: Cuire 350g spaghettis dans eau bouillante salée selon paquet,10min,f,
+1349,22,2026-04-11,Samedi 11/04,"Préparer guanciale: Couper 140g guanciale en lardons, faire revenir 5min sans matière grasse",5min,f,
+1350,22,2026-04-11,Samedi 11/04,"Monter la carbonara: Battre 3 œufs avec 70g pecorino, mélanger pâtes chaudes, guanciale et œufs hors feu",5min,f,
+1351,22,2026-04-12,Dimanche 12/04,Réchauffer le bœuf stroganoff: Réchauffer 320g bœuf stroganoff (du batch) avec champignons et crème,8min,f,
+1352,22,2026-04-12,Dimanche 12/04,"Préparer purée: Réchauffer 400g purée de pommes de terre, ajuster avec lait et beurre",10min,f,
+1353,22,2026-04-12,Dimanche 12/04,"Monter le parmentier: Dresser stroganoff dans plat, recouvrir de purée, gratiner 5min four",10min,f,
+1354,22,2026-04-12,Dimanche 12/04,"[Prep] Préparer bœuf stroganoff: Couper 550g bœuf en lamelles, faire revenir avec oignons, champignons, moutarde, crème fraîche, mijoter 45min",65min,f,
+1355,22,2026-04-12,Dimanche 12/04,[Prep] Cuire œufs durs: Faire bouillir 15 œufs pendant 9min pour la semaine,15min,f,
+1356,23,2026-04-05,Lundi 05/04,Cuire les pommes de terre: Laver et cuire 430g PDT grenaille entières 15min à l'eau bouillante salée,15min,f,
+1357,23,2026-04-05,Lundi 05/04,Préparer les radis: Laver et émincer 270g radis en fines rondelles,5min,f,
+1358,23,2026-04-05,Lundi 05/04,"Cuire l'omelette: Battre 5 œufs, cuire dans poêle huilée, ajouter radis et 50g gruyère râpé, plier",8min,f,
+1359,23,2026-04-06,Mardi 06/04,"Cuire le riz: Rincer 190g riz basmati, cuire 15min dans 380ml eau bouillante salée",15min,f,
+1360,23,2026-04-06,Mardi 06/04,"Préparer asperges: Éplucher 350g asperges, cuire 8min vapeur",10min,f,
+1361,23,2026-04-06,Mardi 06/04,"Cuire le saumon: Saler poivrer 320g saumon, cuire 4min/côté dans poêle huilée",8min,f,
+1362,23,2026-04-06,Mardi 06/04,"[Prep] Préparer curry d'agneau: Couper 600g épaule agneau, faire revenir avec oignons, ajouter curry, lait coco, légumes",60min,f,
+1363,23,2026-04-06,Mardi 06/04,[Prep] Cuire œufs: Cuire 15 œufs durs pour la semaine,10min,f,
+1364,23,2026-04-07,Mercredi 07/04,Cuire les pommes de terre: Éplucher et cuire 430g PDT en rondelles 12min à l'eau salée,12min,f,
+1365,23,2026-04-07,Mercredi 07/04,Cuire épinards et oignon: Faire revenir 1 oignon émincé et 270g épinards frais dans huile d'olive 5min,8min,f,
+1366,23,2026-04-07,Mercredi 07/04,"Faire la tortilla: Battre 5 œufs, mélanger avec PDT et épinards, cuire 8min poêle, retourner",10min,f,
+1367,23,2026-04-07,Mercredi 07/04,"[Prep] Préparer salade lentilles: Cuire 225g lentilles vertes 20min, préparer vinaigrette moutarde",20min,f,
+1368,23,2026-04-08,Jeudi 08/04,"Préparer béchamel: Faire un roux avec 30g beurre et farine, ajouter 300ml lait, assaisonner",8min,f,
+1369,23,2026-04-08,Jeudi 08/04,"Monter les croques: Garnir pain de mie avec jambon et gruyère, napper béchamel",5min,f,
+1370,23,2026-04-08,Jeudi 08/04,"Cuire au four: Gratiner 8min à 200°C, casser 2 œufs dessus, cuire 3min",12min,f,
+1371,23,2026-04-09,Vendredi 09/04,"Cuire le riz pilaf: Faire revenir 175g riz basmati avec oignon, ajouter 350ml bouillon, cuire 15min",18min,f,
+1372,23,2026-04-09,Vendredi 09/04,Cuire les petits pois: Cuire 320g petits pois surgelés 5min à l'eau bouillante salée,8min,f,
+1373,23,2026-04-09,Vendredi 09/04,"Cuire le cabillaud: Saler poivrer 350g cabillaud, cuire 4min/côté dans poêle huilée",8min,f,
+1374,23,2026-04-09,Vendredi 09/04,[Prep] Préparer pâte burger: Façonner 4 steaks hachés pour samedi,10min,f,
+1375,23,2026-04-09,Vendredi 09/04,[Prep] Cuire œufs: Cuire 15 œufs durs pour la semaine suivante,15min,f,
+1376,23,2026-04-09,Vendredi 09/04,[Prep] Laver légumes: Préparer artichauts pour dimanche,5min,f,
+1377,23,2026-04-10,Samedi 10/04,Faire la base: Faire revenir 1 oignon et 1 poivron émincés 8min dans huile d'olive,8min,f,
+1378,23,2026-04-10,Samedi 10/04,"Ajouter tomates: Ajouter 550g tomates concassées, épices (cumin, paprika), cuire 10min",10min,f,
+1379,23,2026-04-10,Samedi 10/04,"Pocher les œufs: Creuser 5 puits, casser les œufs dedans, couvrir et cuire 6min",6min,f,
+1380,23,2026-04-11,Dimanche 11/04,"Préparer pâte galettes: Mélanger 150g farine sarrasin avec 400ml eau et sel, laisser reposer",5min,f,
+1381,23,2026-04-11,Dimanche 11/04,Cuire galettes: Faire 3.5 galettes fines dans poêle antiadhésive,10min,f,
+1382,23,2026-04-11,Dimanche 11/04,"Garnir galettes: Garnir avec jambon, gruyère, casser œufs dessus, plier en carré",8min,f,
+1383,23,2026-04-11,Dimanche 11/04,[Prep] Préparer batch poulet: Lancer batch poulet basquaise pour lundi-mardi,60min,f,
+1384,23,2026-04-11,Dimanche 11/04,[Prep] Cuire œufs: Cuire 15 œufs durs pour la semaine,15min,f,
+1385,23,2026-04-11,Dimanche 11/04,[Prep] Prep légumes: Laver et préparer légumes pour la semaine,45min,f,
+1386,24,2026-04-07,Lundi 07/04,Préparer légumes: Réchauffer 200g/150g ratatouille. Cuire 250g/180g PDT vapeur 15min,15min,f,
+1387,24,2026-04-07,Lundi 07/04,"Cuire œufs: Casser 3/2 œufs dans la ratatouille chaude, couvrir 8min",8min,f,
+1388,24,2026-04-07,Lundi 07/04,Servir: Accompagner des PDT vapeur et pain grillé,2min,f,
+1389,24,2026-04-07,Lundi 07/04,"[Prep] Curry pois chiches: Faire revenir oignon, ail, épices. Ajouter 400g pois chiches, 400ml lait coco, légumes. Mijoter 30min",45min,f,
+1390,24,2026-04-08,Mardi 08/04,Cuire PDT: Faire rôtir 250g/180g PDT grenaille avec huile et thym 20min à 200°C,20min,f,
+1391,24,2026-04-08,Mardi 08/04,"Cuire saumon: Saler, poivrer, cuire 180g/140g saumon 4min/côté dans poêle chaude",8min,f,
+1392,24,2026-04-08,Mardi 08/04,Cuire asperges: Faire sauter 200g/150g asperges 5min avec ail et huile,5min,f,
+1393,24,2026-04-08,Mardi 08/04,"[Prep] Croque-madame: Préparer béchamel, monter croques avec jambon-gruyère, enfourner avec œuf au plat",35min,f,
+1394,24,2026-04-09,Mercredi 09/04,Cuire riz: Faire cuire 250g/180g riz basmati dans eau bouillante salée 15min,15min,f,
+1395,24,2026-04-09,Mercredi 09/04,Cuire cabillaud: Faire cuire 200g/150g cabillaud à la poêle 4min/côté avec beurre,8min,f,
+1396,24,2026-04-09,Mercredi 09/04,Réchauffer petits pois: Faire sauter 150g/120g petits pois avec beurre et menthe 3min,3min,f,
+1397,24,2026-04-09,Mercredi 09/04,"[Prep] Émincé porc curry: Faire revenir émincé de porc, oignon, curry, lait coco, légumes. Mijoter 45min",60min,f,
+1398,24,2026-04-10,Jeudi 10/04,"Préparer pâte: Mélanger 100g farine sarrasin, eau, sel. Laisser reposer 10min",12min,f,
+1399,24,2026-04-10,Jeudi 10/04,"Cuire galettes: Étaler pâte, garnir jambon-emmental, casser œuf au centre, plier",10min,f,
+1400,24,2026-04-10,Jeudi 10/04,Servir: Accompagner de salade verte vinaigrette,3min,f,
+1401,24,2026-04-10,Jeudi 10/04,"[Prep] Poulet basquaise: Faire revenir poulet, poivrons, oignons, ail, tomates. Mijoter 35min avec épices",50min,f,
+1402,24,2026-04-11,Vendredi 11/04,Cuire PDT: Faire cuire 250g/180g PDT en rondelles dans poêle avec huile 10min,10min,f,
+1403,24,2026-04-11,Vendredi 11/04,"Ajouter épinards: Ajouter 150g/120g épinards, oignon émincé, cuire 3min",3min,f,
+1404,24,2026-04-11,Vendredi 11/04,"Finir tortilla: Verser œufs battus, cuire 6min dessous, 4min dessus",10min,f,
+1405,24,2026-04-12,Samedi 12/04,Cuire riz: Faire cuire 200g/150g riz dans eau bouillante salée 15min,15min,f,
+1406,24,2026-04-12,Samedi 12/04,"Faire rougail: Faire revenir oignons, tomates, gingembre, piment 8min",8min,f,
+1407,24,2026-04-12,Samedi 12/04,"Ajouter saucisses: Ajouter 200g/150g saucisses grillées, mijoter 2min",2min,f,
+1408,24,2026-04-13,Dimanche 13/04,Cuire PDT: Faire rôtir 250g/180g PDT grenaille avec huile et herbes 20min,20min,f,
+1409,24,2026-04-13,Dimanche 13/04,Préparer radis: Faire revenir 150g/120g radis émincés 3min à la poêle,3min,f,
+1410,24,2026-04-13,Dimanche 13/04,"Cuire omelette: Battre œufs, verser sur radis, ajouter gruyère, plier",5min,f,
+1411,24,2026-04-13,Dimanche 13/04,"[Prep] Couscous agneau: Mijoter agneau avec légumes 60min, préparer semoule",60min,f,
+1412,24,2026-04-13,Dimanche 13/04,[Prep] Cuire œufs: Faire durcir 15 œufs pour la semaine,15min,f,
+1413,25,2026-04-07,Lundi 07/04,"Préparer les pommes de terre: Laver et couper 430g PDT grenaille en 2. Préchauffer four 220°C. Rôtir 20min avec huile d'olive, sel, romarin",5min,f,
+1414,25,2026-04-07,Lundi 07/04,"Préparer les artichauts: Égoutter 270g cœurs d'artichauts en bocal. Couper en quartiers, faire revenir 3min à la poêle",5min,f,
+1415,25,2026-04-07,Lundi 07/04,"Cuire l'omelette: Battre 5 œufs avec sel/poivre. Verser sur artichauts, ajouter 55g gruyère râpé. Cuire 3min puis finir 2min au four",8min,f,
+1416,25,2026-04-07,Lundi 07/04,Dresser: Servir avec PDT rôties et salade verte vinaigrette,2min,f,
+1417,25,2026-04-07,Lundi 07/04,[Prep] Préparer le bœuf: Couper 400g émincé de bœuf en lanières. Faire revenir par petites quantités dans poêle chaude 2min,8min,f,
+1418,25,2026-04-07,Lundi 07/04,[Prep] Cuire les champignons: Émincer 300g champignons de Paris. Cuire 5min jusqu'à évaporation de l'eau,8min,f,
+1419,25,2026-04-07,Lundi 07/04,"[Prep] Mijoter la sauce: Ajouter bœuf, 200ml crème fraîche, 1 CS moutarde, sel/poivre. Mijoter 15min à feu doux",20min,f,
+1420,25,2026-04-07,Lundi 07/04,[Prep] Cuire le riz: Cuire 360g riz basmati selon paquet. Mélanger avec le stroganoff,15min,f,
+1421,25,2026-04-08,Mardi 08/04,Cuire le riz: Cuire 350g riz basmati selon paquet. Réserver au chaud,12min,f,
+1422,25,2026-04-08,Mardi 08/04,"Préparer la sauce teriyaki: Mélanger 3 CS sauce soja, 2 CS miel, 1 CS vinaigre de riz, 1 cc gingembre râpé",2min,f,
+1423,25,2026-04-08,Mardi 08/04,"Cuire le saumon: Poêler 320g filets saumon 3min côté peau, retourner 2min. Napper de sauce teriyaki",6min,f,
+1424,25,2026-04-08,Mardi 08/04,Préparer les petits pois: Faire sauter 270g petits pois surgelés avec 2 gousses ail émincé 3min,4min,f,
+1425,25,2026-04-08,Mardi 08/04,Dresser: Servir saumon glacé sur riz avec petits pois,1min,f,
+1426,25,2026-04-08,Mardi 08/04,[Prep] Cuire les lentilles: Rincer 200g lentilles corail. Cuire 15min dans 600ml bouillon légumes,20min,f,
+1427,25,2026-04-08,Mardi 08/04,"[Prep] Préparer les épices: Faire revenir 1 oignon émincé, 2 gousses ail, 1 cc curcuma, 1 cc cumin, 1 cc coriandre 3min",5min,f,
+1428,25,2026-04-08,Mardi 08/04,"[Prep] Mijoter le dhal: Ajouter lentilles, 200ml lait coco, 200g épinards surgelés. Mijoter 10min",12min,f,
+1429,25,2026-04-08,Mardi 08/04,[Prep] Cuire le riz: Cuire 300g riz basmati selon paquet,15min,f,
+1430,25,2026-04-09,Mercredi 09/04,Préparer les pommes de terre: Éplucher et couper 430g PDT en rondelles 5mm. Cuire 10min à l'eau bouillante salée,12min,f,
+1431,25,2026-04-09,Mercredi 09/04,Cuire les épinards: Faire fondre 270g épinards frais avec 1 oignon émincé dans poêle avec huile 3min,5min,f,
+1432,25,2026-04-09,Mercredi 09/04,"Assembler la tortilla: Battre 5 œufs. Mélanger PDT égouttées, épinards, œufs. Cuire poêle 5min puis retourner 3min",8min,f,
+1433,25,2026-04-09,Mercredi 09/04,"Préparer la salade: Couper 200g asperges en tronçons, blanchir 2min. Assaisonner vinaigrette",5min,f,
+1434,25,2026-04-09,Mercredi 09/04,"[Prep] Préparer la pâte à quiche: Mélanger 250g farine, 125g beurre, 1 œuf, pincée sel. Fraiser, réserver 30min au frais",10min,f,
+1435,25,2026-04-09,Mercredi 09/04,[Prep] Cuire les lardons: Faire revenir 150g lardons fumés jusqu'à doré. Égoutter sur papier,5min,f,
+1436,25,2026-04-09,Mercredi 09/04,"[Prep] Préparer l'appareil: Battre 4 œufs, 200ml crème fraîche, 100ml lait, muscade, sel, poivre",5min,f,
+1437,25,2026-04-09,Mercredi 09/04,"[Prep] Monter et cuire: Étaler pâte dans moule, piquer. Répartir lardons, verser appareil. Cuire 35min 180°C",40min,f,
+1438,25,2026-04-10,Jeudi 10/04,Cuire les pommes de terre: Éplucher et cuire 430g PDT à l'eau bouillante salée 15-20min,20min,f,
+1439,25,2026-04-10,Jeudi 10/04,"Préparer la croûte: Mélanger 50g chapelure, 2 CS persil haché, 1 CS huile d'olive, ail, sel, poivre",3min,f,
+1440,25,2026-04-10,Jeudi 10/04,"Cuire le cabillaud: Poêler 350g dos de cabillaud 2min côté peau. Retourner, napper de croûte, finir 3min au four 200°C",6min,f,
+1441,25,2026-04-10,Jeudi 10/04,Glacer les carottes: Cuire 270g carottes nouvelles 8min eau bouillante. Glacer 2min beurre + sucre,10min,f,
+1442,25,2026-04-10,Jeudi 10/04,[Prep] Cuire les pâtes: Cuire 300g penne selon paquet. Égoutter en gardant 100ml eau de cuisson,12min,f,
+1443,25,2026-04-10,Jeudi 10/04,"[Prep] Préparer la sauce: Faire revenir 100g guanciale coupé fin jusqu'à croustillant. Ajouter 400g passata, mijoter 15min",18min,f,
+1444,25,2026-04-10,Jeudi 10/04,"[Prep] Finaliser: Mélanger pâtes, sauce, eau de cuisson, 60g pecorino râpé, poivre noir",3min,f,
+1445,25,2026-04-10,Jeudi 10/04,[Prep] Refroidir: Laisser tiédir avant de réfrigérer,5min,f,
+1446,25,2026-04-11,Vendredi 11/04,Cuire les pommes de terre: Éplucher et cuire 430g PDT à l'eau bouillante salée 15-20min,20min,f,
+1447,25,2026-04-11,Vendredi 11/04,Préparer la ratatouille: Réchauffer 350g ratatouille tomates-poivrons dans poêle 5min,5min,f,
+1448,25,2026-04-11,Vendredi 11/04,"Cuire les œufs: Faire des puits dans la ratatouille, casser 5 œufs dedans. Couvrir, cuire 3-4min",5min,f,
+1449,25,2026-04-11,Vendredi 11/04,Servir: Servir chaud avec PDT vapeur et pain grillé,2min,f,
+1450,25,2026-04-12,Samedi 12/04,"Préparer le bouillon: Chauffer 1L bouillon légumes dans casserole, maintenir chaud",5min,f,
+1451,25,2026-04-12,Samedi 12/04,"Nacrer le riz: Faire revenir 1 oignon émincé, ajouter 450g riz arborio. Nacrer 2min",4min,f,
+1452,25,2026-04-12,Samedi 12/04,Cuire les champignons: Poêler 180g champignons de Paris émincés 5min. Réserver,5min,f,
+1453,25,2026-04-12,Samedi 12/04,Cuire le risotto: Ajouter bouillon louche par louche en remuant. Cuire 18min total,18min,f,
+1454,25,2026-04-12,Samedi 12/04,"Finaliser: Ajouter champignons, 80g parmesan, 30g beurre. Mélanger hors feu",2min,f,
+1455,25,2026-04-13,Dimanche 13/04,"Préparer la pâte: Mélanger 200g farine sarrasin, 400ml eau, pincée sel. Laisser reposer 10min",12min,f,
+1456,25,2026-04-13,Dimanche 13/04,Cuire les galettes: Cuire 3.5 galettes fines à la crêpière ou poêle anti-adhésive,8min,f,
+1457,25,2026-04-13,Dimanche 13/04,"Garnir: Sur chaque galette: jambon, œuf cassé au centre, fromage râpé. Plier en carré",4min,f,
+1458,25,2026-04-13,Dimanche 13/04,Servir: Accompagner de salade verte vinaigrette,1min,f,
+1459,25,2026-04-13,Dimanche 13/04,[Prep] Cuire les œufs: Mettre 15 œufs dans casserole d'eau froide. Porter à ébullition puis 9min,12min,f,
+1460,25,2026-04-13,Dimanche 13/04,"[Prep] Refroidir: Plonger dans eau glacée, écaler quand tièdes",5min,f,
