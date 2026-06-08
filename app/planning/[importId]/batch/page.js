@@ -214,7 +214,10 @@ export default function BatchPage() {
                     return (
                       <div key={key} className="bat-prep">
                         <button type="button" className="bat-prep-head" onClick={() => setExpanded(open ? null : key)} aria-expanded={open}>
-                          <span className="bat-prep-name">{name}</span>
+                          <span className="bat-prep-main">
+                            <span className="bat-prep-name">{name}</span>
+                            {recipe.conservation && <span className="bat-prep-keep">{recipe.conservation}</span>}
+                          </span>
                           <span className="bat-prep-meta">
                             {recipe.portions_total ? <span className="bat-prep-port">{recipe.portions_total} portions</span> : null}
                             {days.length > 0 && <span>couvre {days.join(' · ')}</span>}
@@ -298,8 +301,10 @@ export default function BatchPage() {
           transition: background 0.15s ease;
         }
         .bat-prep-head:hover { background: var(--surface-soft); }
-        .bat-prep-name { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink-1); flex: 1; min-width: 0; }
-        .bat-prep-meta { display: flex; gap: 10px; align-items: center; font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.03em; }
+        .bat-prep-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+        .bat-prep-name { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink-1); }
+        .bat-prep-keep { font-family: var(--font-mono); font-size: 10.5px; color: #6E7A3F; letter-spacing: 0.01em; line-height: 1.4; text-transform: none; }
+        .bat-prep-meta { display: flex; gap: 10px; align-items: center; flex-shrink: 0; font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.03em; }
         .bat-prep-port { color: var(--terracotta); font-weight: 600; }
 
         .bat-prep-detail { padding: 0 4px 16px; }
