@@ -1,118 +1,95 @@
-/* app/nutrition/nutrition.css — Nutrition V21 (éditorial à filets)
+/* app/nutrition/nutrition.css — Nutrition V21 « cockpit » (rail + anneaux + courbe)
    Primitives partagées dans app/styles/v21.css. Ici : seulement le spécifique. */
 
-/* ── Navigation de date (contrôles mono) ── */
-.nut-datenav {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
+/* ════════════ COCKPIT : rail | main ════════════ */
+.nut-board {
+  display: grid; grid-template-columns: 320px 1fr;
+  border-top: 1.5px solid var(--ink-1); margin-top: 24px;
 }
-.nut-datebtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--line-strong);
-  border-radius: 3px;
-  background: transparent;
-  color: var(--ink-2);
-  cursor: pointer;
-  transition: border-color 0.15s ease, color 0.15s ease;
-}
-.nut-datebtn:hover { border-color: var(--ink-1); color: var(--ink-1); }
-.nut-datelabel {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-1);
-  min-width: 200px;
-  text-align: center;
-}
+.nut-rail { border-right: 1px solid var(--ink-1); display: flex; flex-direction: column; min-width: 0; }
+.nut-main { min-width: 0; padding: 28px 32px 0; }
 
-/* ── Squelettes de chargement ── */
-.nut-skel-wrap { display: flex; flex-direction: column; gap: 16px; padding-top: 30px; }
+/* ── Rail ── */
+.nut-daynav { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid var(--ink-1); border-radius: 3px; padding: 7px 10px; margin: 24px 24px 0; }
+.nut-daynav b { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.03em; color: var(--ink-1); }
+.nut-daybtn { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex-shrink: 0; border: none; background: transparent; color: var(--ink-2); cursor: pointer; border-radius: 3px; transition: color 0.15s ease, background 0.15s ease; }
+.nut-daybtn:hover { color: var(--ink-1); background: var(--surface-soft); }
 
-/* ── Micronutriments (grille à filets) ── */
-.nut-micros {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.nut-micro {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: var(--paper);
-}
-.nut-micro-l { font-family: var(--font-mono); font-size: 11px; text-transform: capitalize; color: var(--ink-3); }
-.nut-micro-v { font-family: var(--font-mono); font-size: 13px; font-weight: 600; }
-.nut-micro-v.ok { color: var(--brand); }
-.nut-micro-v.mid { color: var(--state-soon); }
-.nut-micro-v.low { color: var(--terracotta); }
+.nut-rsec { padding: 24px; border-bottom: 1px solid var(--line); }
+.nut-rsec .v21-bl { margin-bottom: 14px; }
+.nut-big { font-family: var(--font-display); font-weight: 600; font-size: 46px; line-height: 0.9; letter-spacing: -0.02em; color: var(--ink-1); }
+.nut-big.sm { font-size: 34px; }
+.nut-big-u { font-size: 18px; color: var(--ink-3); }
+.nut-rsub { display: block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-top: 8px; }
+.nut-prog { height: 3px; background: var(--line); margin-top: 12px; position: relative; }
+.nut-prog-f { position: absolute; left: 0; top: 0; bottom: 0; background: var(--terracotta); }
 
-/* ── Repas du jour (lignes à filets) ── */
-.nut-meals { display: flex; flex-direction: column; }
-.nut-meal {
-  display: grid;
-  grid-template-columns: 104px 1fr auto;
-  align-items: baseline;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-}
-.nut-meal:last-child { border-bottom: none; }
-.nut-meal-t { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-3); }
-.nut-meal-n { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--ink-1); min-width: 0; }
-.nut-meal-k { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); white-space: nowrap; }
-
-/* ── Poids ── */
-.nut-weight-form { display: flex; gap: 8px; margin-bottom: 18px; }
-.nut-input {
-  flex: 1;
-  font-family: var(--font-text);
-  font-size: 15px;
-  color: var(--ink-1);
-  background: var(--surface);
-  border: 1px solid var(--line-strong);
-  border-radius: 3px;
-  padding: 10px 14px;
-  outline: none;
-  transition: border-color 0.15s ease;
-}
+.nut-ractions { padding: 20px 24px 26px; margin-top: auto; }
+.nut-raction { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink-2); border-radius: 3px; padding: 9px 13px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: border-color 0.15s ease, color 0.15s ease; }
+.nut-raction:hover { border-color: var(--ink-1); color: var(--ink-1); }
+.nut-weight-form { display: flex; gap: 8px; margin-top: 10px; }
+.nut-input { flex: 1; min-width: 0; font-family: var(--font-mono); font-size: 13px; border: 1px solid var(--line-strong); border-radius: 3px; padding: 8px 10px; background: var(--surface); color: var(--ink-1); outline: none; transition: border-color 0.15s ease; }
 .nut-input:focus { border-color: var(--terracotta); }
 
-.nut-weight-now { display: flex; align-items: baseline; flex-wrap: wrap; gap: 14px; }
-.nut-weight-v { font-family: var(--font-display); font-weight: 600; font-size: 40px; line-height: 1; color: var(--ink-1); }
-.nut-weight-u { font-family: var(--font-display); font-weight: 500; font-size: 20px; color: var(--ink-3); }
-.nut-weight-d { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
-.nut-weight-goal {
-  margin-left: auto;
-  font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em;
-  color: var(--brand); border: 1px solid var(--line-strong); border-radius: 3px; padding: 5px 10px;
-}
+/* ── Main : sections ── */
+.nut-msec { margin-bottom: 34px; }
+.nut-msec .v21-bh { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.nut-msec-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; color: var(--ink-3); }
 
-.nut-weight-hist { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; flex-direction: column; }
-.nut-weight-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--line); }
-.nut-weight-row:last-child { border-bottom: none; }
-.nut-weight-row-d { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
-.nut-weight-row-v { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--ink-1); }
+/* ── Anneaux macros ── */
+.nut-rings { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.nut-ring { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+.nut-ring-c { position: relative; width: 112px; height: 112px; }
+.nut-ring-c svg { width: 112px; height: 112px; display: block; }
+.nut-ring-mid { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; }
+.nut-ring-v { font-family: var(--font-display); font-weight: 600; font-size: 26px; line-height: 1; color: var(--ink-1); letter-spacing: -0.01em; }
+.nut-ring-u { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.02em; color: var(--ink-3); }
+.nut-ring-l { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+.nut-ring-p { font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+
+/* ── Micronutriments (grille à filets) ── */
+.nut-micros { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.nut-micro { background: var(--paper); padding: 13px 14px 14px; display: flex; flex-direction: column; gap: 5px; }
+.nut-micro-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+.nut-micro-v { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
+.nut-micro-v b { font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--ink-1); margin-right: 2px; }
+.nut-micro-bar { height: 3px; width: 100%; margin-top: 3px; border-radius: 2px; }
+.nut-micro-bar.ok { background: #6FB05A; }
+.nut-micro-bar.mid { background: var(--saffron); }
+.nut-micro-bar.low { background: var(--terracotta); }
+
+/* ── Courbe de poids ── */
+.nut-curve { width: 100%; height: auto; display: block; }
+.nut-curve-tk { font-family: var(--font-mono); font-size: 10px; fill: var(--ink-3); }
+.nut-curve-obj { font-family: var(--font-mono); font-size: 10px; fill: var(--terracotta); }
+
+/* ── Repas du jour (ledger) ── */
+.nut-meals { display: flex; flex-direction: column; }
+.nut-meal { display: grid; grid-template-columns: 6px 94px 1fr auto; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.nut-meal:last-child { border-bottom: none; }
+.nut-meal-bar { display: block; width: 100%; height: 30px; border-radius: 2px; }
+.nut-meal-t { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-3); }
+.nut-meal-mid { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.nut-meal-n { font-family: var(--font-display); font-weight: 500; font-size: 17px; line-height: 1.25; color: var(--ink-1); }
+.nut-meal-macros { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.02em; color: var(--ink-3); }
+.nut-meal-k { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); white-space: nowrap; }
 
 /* ── A11y ── */
-.nut-datebtn:focus-visible, .nut-input:focus-visible {
+.nut-daybtn:focus-visible, .nut-raction:focus-visible, .nut-input:focus-visible {
   outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px;
 }
 
 /* ── Responsive ── */
+@media (max-width: 900px) {
+  .nut-board { grid-template-columns: 1fr; }
+  .nut-rail { border-right: none; border-bottom: 1px solid var(--ink-1); }
+  .nut-ractions { margin-top: 0; }
+  .nut-main { padding: 26px 22px 0; }
+  .nut-micros { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 560px) {
-  .nut-datelabel { min-width: 0; flex: 1; }
-  .nut-meal { grid-template-columns: 1fr auto; }
-  .nut-meal-t { grid-column: 1 / -1; }
+  .nut-rings { grid-template-columns: repeat(2, 1fr); }
+  .nut-micros { grid-template-columns: repeat(2, 1fr); }
+  .nut-meal { grid-template-columns: 6px 1fr auto; }
+  .nut-meal-t { display: none; }
 }
