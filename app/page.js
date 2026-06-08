@@ -52,8 +52,10 @@ export default function Home() {
   const [stockTab, setStockTab] = useState('all')
   const [nutritionToday, setNutritionToday] = useState({})
   const [goals, setGoals] = useState([])
-  const [person, setPerson] = useState('')
+  const [person, setPerson] = useState('Julien')
   const [latestWeight, setLatestWeight] = useState(null)
+  const [showWeightInput, setShowWeightInput] = useState(false)
+  const [newWeight, setNewWeight] = useState('')
   const [showAddForm, setShowAddForm] = useState(false)
   const [showOcr, setShowOcr] = useState(false)
   const [shoppingStats, setShoppingStats] = useState({ total: 0, checked: 0, uncheckedByCategory: [], nextItems: [] })
@@ -142,6 +144,20 @@ export default function Home() {
     try { const r = await authFetch('/api/nutrition/weight?limit=1'); const d = await r.json(); if (d.entries?.length) setLatestWeight(d.entries[0]) } catch {}
   }
 
+  async function handleAddWeight() {
+    if (!newWeight) return
+    try {
+      await authFetch('/api/nutrition/weight', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ person_name: person || 'Julien', date: new Date().toISOString().split('T')[0], weight_kg: parseFloat(newWeight) }),
+      })
+      setShowWeightInput(false)
+      setNewWeight('')
+      loadWeight()
+    } catch {}
+  }
+
   async function loadShopping() {
     try {
       const r = await authFetch('/api/planning/imports')
@@ -169,7 +185,7 @@ export default function Home() {
     } catch {}
   }
 
-  const pg = goals.find(g => g.person_name === person) || {}
+  const pg = goals.find(g => g.person_name === person) || goals[0] || {}
   const pn = nutritionToday[person] || { kcal: 0, protein_g: 0, carbs_g: 0, fat_g: 0 }
   const today = new Date()
   const greeting = today.getHours() < 12 ? 'Bonjour' : today.getHours() < 18 ? 'Bon après-midi' : 'Bonsoir'
@@ -282,6 +298,20 @@ export default function Home() {
                 </div>
               ) : (
                 <Link href="/nutrition/onboarding" className="v21-btn ghost"><Settings size={15} /> Configurer mes objectifs</Link>
+              )}
+
+              {/* Poids du jour */}
+              <div className="home-weight">
+                <span className="home-weight-now">
+                  {latestWeight ? <>{latestWeight.weight_kg}<span className="home-weight-u"> kg</span></> : <span className="home-weight-empty">Poids non saisi</span>}
+                </span>
+                <button onClick={() => setShowWeightInput(v => !v)} className="v21-btn ghost sm"><Plus size={13} /> Poids du jour</button>
+              </div>
+              {showWeightInput && (
+                <div className="home-weight-form">
+                  <input type="number" step="0.1" value={newWeight} onChange={e => setNewWeight(e.target.value)} placeholder="Ex : 72.5" className="home-weight-input" autoFocus />
+                  <button onClick={handleAddWeight} className="v21-btn sm">Enregistrer</button>
+                </div>
               )}
             </div>
           </section>
