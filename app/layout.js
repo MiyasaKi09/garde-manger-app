@@ -7,6 +7,7 @@ import { Fraunces, Inter, Crimson_Text, JetBrains_Mono } from "next/font/google"
 import MinimalistHeader from "@/components/MinimalistHeader";
 import MatisseWallpaperRandom from "@/components/MatisseWallpaperRandom";
 import ToastContainer from "@/components/Toast";
+import CacheWarmer from "@/components/CacheWarmer";
 import "../components/Toast.css";
 
 // Polices auto-hébergées via next/font (remplacent les <link> Google Fonts :
@@ -63,6 +64,9 @@ export default function RootLayout({ children }) {
         
         {/* Système de notifications toast */}
         <ToastContainer />
+
+        {/* Préchargement prédictif des données partagées (au repos) */}
+        <CacheWarmer />
       </body>
     </html>
   );
