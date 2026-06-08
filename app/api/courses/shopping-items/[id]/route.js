@@ -19,6 +19,7 @@ export async function PATCH(request, { params }) {
     const updates = {}
 
     if ('checked' in body)        updates.checked        = Boolean(body.checked)
+    if ('image_url' in body)      updates.image_url      = body.image_url ?? null
     if ('container_qty' in body)  updates.container_qty  = body.container_qty  ?? null
     if ('container_size' in body) updates.container_size = body.container_size ?? null
     if ('container_unit' in body) updates.container_unit = body.container_unit ?? null

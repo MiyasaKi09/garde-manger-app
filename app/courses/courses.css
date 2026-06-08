@@ -117,6 +117,27 @@
 }
 .cou-card-chk.on { background: var(--terracotta); border-color: var(--terracotta); }
 
+/* bouton « changer la photo » (correction 1 clic) sur l'image */
+.cou-card-editimg { position: absolute; top: 8px; left: 8px; z-index: 2; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border: none; border-radius: 3px; background: rgba(24,28,22,0.5); color: #fff; cursor: pointer; transition: background 0.15s ease; }
+.cou-card-editimg:hover { background: var(--terracotta); }
+
+/* sélecteur de photo */
+.cou-pick-overlay { position: fixed; inset: 0; z-index: 1200; background: rgba(24,28,22,0.5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 24px; }
+.cou-pick { background: var(--paper); border: 1.5px solid var(--ink-1); border-radius: 4px; width: 100%; max-width: 560px; max-height: 84vh; overflow-y: auto; padding: 18px 20px 20px; box-shadow: 0 24px 60px -20px rgba(24,28,22,0.5); }
+.cou-pick-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.cou-pick-title { font-family: var(--font-display); font-weight: 600; font-size: 19px; color: var(--ink-1); letter-spacing: -0.01em; }
+.cou-pick-close { display: flex; border: 1px solid var(--ink-1); background: transparent; color: var(--ink-1); border-radius: 3px; padding: 5px; cursor: pointer; }
+.cou-pick-msg { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.03em; color: var(--ink-3); padding: 24px 0; text-align: center; }
+.cou-pick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.cou-pick-cand { border: 1.5px solid var(--line); border-radius: 3px; overflow: hidden; cursor: pointer; padding: 0; background: var(--surface-soft); aspect-ratio: 4 / 3; transition: border-color 0.15s ease; }
+.cou-pick-cand:hover { border-color: var(--terracotta); }
+.cou-pick-cand.on { border-color: var(--terracotta); }
+.cou-pick-cand img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cou-pick-none { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink-2); border-radius: 3px; padding: 9px 14px; cursor: pointer; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+.cou-pick-none:hover { border-color: var(--ink-1); color: var(--ink-1); }
+.cou-pick-cand:focus-visible, .cou-pick-close:focus-visible, .cou-pick-none:focus-visible, .cou-card-editimg:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+@media (max-width: 560px) { .cou-pick-grid { grid-template-columns: repeat(2, 1fr); } }
+
 .cou-card-info { display: flex; flex-direction: column; gap: 4px; padding: 11px 12px 12px; }
 .cou-card-nm { font-family: var(--font-display); font-weight: 500; font-size: 15.5px; line-height: 1.22; letter-spacing: -0.01em; color: var(--ink-1); }
 .cou-card.done .cou-card-nm { text-decoration: line-through; text-decoration-thickness: 1px; }

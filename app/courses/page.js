@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
+import { createPortal } from 'react-dom'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { ShoppingCart, Check, Package, ChevronLeft, ChevronRight, RefreshCw, ImageOff, Camera } from 'lucide-react'
+import { ShoppingCart, Check, Package, ChevronLeft, ChevronRight, RefreshCw, ImageOff, Camera, X } from 'lucide-react'
 import Link from 'next/link'
 import { getFoodEmoji } from '@/lib/foodEmoji'
 import './courses.css'
@@ -27,6 +28,9 @@ export default function CoursesPage() {
   const [fetchResult, setFetchResult] = useState(null)
   const [rebuilding, setRebuilding] = useState(false)
   const [imgErrors, setImgErrors] = useState(new Set()) // images cassées (404) → repli icône
+  const [picker, setPicker] = useState(null)            // produit dont on change la photo
+  const [pickerCands, setPickerCands] = useState([])
+  const [pickerLoading, setPickerLoading] = useState(false)
 
   async function loadItems(imp) {
     setImportId(imp.id)
@@ -281,6 +285,40 @@ export default function CoursesPage() {
   }
   const catTint = (cat) => RAYON_TINTS[Math.max(0, categories.indexOf(cat)) % RAYON_TINTS.length]
 
+  async function openImagePicker(item) {
+    setPicker(item)
+    setPickerCands([])
+    setPickerLoading(true)
+    try {
+      const res = await authFetch('/api/courses/item-images', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: item.product_name }),
+      })
+      const d = await res.json()
+      setPickerCands(d.candidates || [])
+    } catch {
+      setPickerCands([])
+    } finally {
+      setPickerLoading(false)
+    }
+  }
+
+  async function chooseImage(url) {
+    const item = picker
+    if (!item) return
+    setItems(prev => prev.map(i => i.id === item.id ? { ...i, image_url: url } : i))
+    setImgErrors(prev => { const n = new Set(prev); n.delete(item.id); return n })
+    setPicker(null)
+    try {
+      await authFetch(`/api/courses/shopping-items/${item.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image_url: url }),
+      })
+    } catch {}
+  }
+
   function renderCard(item, tint) {
     const isExpanded = expandedItems.has(item.id)
     const hasContainer = !!(item.container_qty && item.container_size)
@@ -297,6 +335,14 @@ export default function CoursesPage() {
           <span className={`cou-card-chk${item.checked ? ' on' : ''}`}>
             {item.checked && <Check size={12} color="#fff" />}
           </span>
+          <button
+            className="cou-card-editimg"
+            onClick={e => { e.stopPropagation(); openImagePicker(item) }}
+            title="Changer la photo"
+            aria-label="Changer la photo"
+          >
+            <Camera size={12} />
+          </button>
           <div className="cou-card-thumb" style={photo ? undefined : { background: tint }}>
             {photo ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -615,6 +661,36 @@ export default function CoursesPage() {
           )}
         </section>
       </div>
+
+      {/* ── Sélecteur de photo (correction 1 clic) ── */}
+      {picker && typeof document !== 'undefined' && createPortal(
+        <div className="cou-pick-overlay" onClick={() => setPicker(null)}>
+          <div className="cou-pick" onClick={e => e.stopPropagation()}>
+            <div className="cou-pick-head">
+              <span className="cou-pick-title">{picker.product_name}</span>
+              <button className="cou-pick-close" onClick={() => setPicker(null)} aria-label="Fermer"><X size={16} /></button>
+            </div>
+            {pickerLoading ? (
+              <div className="cou-pick-msg">Recherche de photos…</div>
+            ) : pickerCands.length === 0 ? (
+              <div className="cou-pick-msg">Aucune photo trouvée pour ce produit.</div>
+            ) : (
+              <div className="cou-pick-grid">
+                {pickerCands.map((u, i) => (
+                  <button key={i} className={`cou-pick-cand${picker.image_url === u ? ' on' : ''}`} onClick={() => chooseImage(u)}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={u} alt="" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            )}
+            <button className="cou-pick-none" onClick={() => chooseImage(null)}>
+              <ImageOff size={13} /> Aucune photo (icône)
+            </button>
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   )
 }
