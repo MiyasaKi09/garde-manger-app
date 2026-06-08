@@ -229,48 +229,31 @@ export default function PlanningPage() {
     setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMeals([]); setRegenInstructions(''); setRegenMode('week')
   }
 
-  // ── Déclenche la Routine batch, puis attend que les préparations (cook_date) apparaissent ──
+  // ── Génère le batch DANS l'app (déterministe, instantané) puis rafraîchit la semaine. ──
   async function planBatch() {
-    if (!selectedImportId || batchStatus === 'submitting' || batchStatus === 'waiting') return
+    if (!selectedImportId || batchStatus === 'submitting') return
     setBatchStatus('submitting'); setBatchError('')
     try {
-      const res = await authFetch('/api/routine/generate-batch', {
+      const res = await authFetch('/api/planning/batch/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ importId: selectedImportId }),
       })
       const data = await res.json().catch(() => ({}))
-      if (!res.ok && res.status !== 202) {
-        throw new Error(data.error || data.hint || `Erreur (${res.status})`)
-      }
-      setBatchStatus('waiting')
+      if (!res.ok) throw new Error(data.error || `Erreur (${res.status})`)
 
-      // Sonde l'import jusqu'à voir des préparations datées (cook_date) — signe que la Routine a écrit.
-      const MAX_WAIT = 6 * 60 * 1000
-      const POLL = 8000
-      const deadline = Date.now() + MAX_WAIT
-      while (Date.now() < deadline) {
-        await new Promise(r => setTimeout(r, POLL))
-        try {
-          const r2 = await authFetch(`/api/planning/imports/${selectedImportId}`)
-          const d2 = await r2.json().catch(() => ({}))
-          const fresh = d2.batchRecipes || []
-          if (fresh.some(b => b.cook_date)) {
-            const payload = {
-              meals: d2.meals || [],
-              batchRecipes: fresh,
-              prepTasks: d2.prepTasks || [],
-              shoppingItems: d2.shoppingItems || [],
-            }
-            detailCacheRef.current[selectedImportId] = payload
-            setWeekData(payload)
-            setBatchStatus('done')
-            return
-          }
-        } catch { /* on retente au prochain tick */ }
+      // Recharge le détail de l'import (préparations + repas reliés) et rafraîchit le rail.
+      const r2 = await authFetch(`/api/planning/imports/${selectedImportId}`)
+      const d2 = await r2.json().catch(() => ({}))
+      const payload = {
+        meals: d2.meals || [],
+        batchRecipes: d2.batchRecipes || [],
+        prepTasks: d2.prepTasks || [],
+        shoppingItems: d2.shoppingItems || [],
       }
-      // Délai dépassé : on arrête le spinner, l'utilisateur pourra rafraîchir.
-      setBatchStatus('idle')
+      detailCacheRef.current[selectedImportId] = payload
+      setWeekData(payload)
+      setBatchStatus('done')
     } catch (err) {
       setBatchStatus('error'); setBatchError(err.message)
     }
@@ -387,21 +370,16 @@ export default function PlanningPage() {
                   <button
                     className="ck-plan-btn"
                     onClick={planBatch}
-                    disabled={batchStatus === 'submitting' || batchStatus === 'waiting'}
+                    disabled={batchStatus === 'submitting'}
                   >
                     {batchStatus === 'submitting' ? (
-                      <>Déclenchement…</>
-                    ) : batchStatus === 'waiting' ? (
-                      <><RefreshCw size={13} className="ck-spin" /> Myko prépare le batch…</>
+                      <><RefreshCw size={13} className="ck-spin" /> Génération du batch…</>
                     ) : batchSessions.length ? (
                       <><RefreshCw size={13} /> Replanifier le batch</>
                     ) : (
                       <><Sparkles size={13} /> Planifier le batch</>
                     )}
                   </button>
-                )}
-                {batchStatus === 'waiting' && (
-                  <div className="ck-plan-hint">≈ 1–2 min · tu peux rester sur la page, ça s'affichera tout seul</div>
                 )}
                 {batchStatus === 'error' && <div className="ck-plan-err">{batchError}</div>}
               </div>
