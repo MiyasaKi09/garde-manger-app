@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { authFetch } from '@/lib/authFetch';
+import { readCache, writeCache } from '@/lib/pageCache';
 import './recipes.css';
 
 /* ── Fiche recette horizontale (vignette + infos), barre d'état à gauche ── */
@@ -77,7 +78,14 @@ export default function RecipesPage() {
     });
   }, [router]);
 
-  useEffect(() => { fetchRecipes(); }, []);
+  const inventoryPromiseRef = useRef(null);
+
+  useEffect(() => {
+    // Revisite instantanée : on rend le dernier état connu sans skeleton.
+    const cached = readCache('recipes');
+    if (cached) { setRecipes(cached.recipes || []); setInventoryStatus(cached.status || {}); setLoading(false); }
+    fetchRecipes();
+  }, []);
 
   useEffect(() => {
     if (recipes.length > 0) checkInventoryAvailability();
@@ -85,7 +93,15 @@ export default function RecipesPage() {
 
   async function fetchRecipes() {
     try {
-      setLoading(true);
+      if (!readCache('recipes')) setLoading(true);
+      // Inventaire lancé EN PARALLÈLE (indépendant des recettes), réutilisé plus bas.
+      inventoryPromiseRef.current = (async () =>
+        supabase
+          .from('inventory_lots')
+          .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date')
+          .gt('qty_remaining', 0)
+          .gt('expiration_date', new Date().toISOString())
+      )();
       const { data, error } = await supabase
         .from('generated_recipes')
         .select('id, title, description, servings, prep_min, cook_min, ingredients, steps, source, created_at, rating, cook_count, image_url')
@@ -119,12 +135,15 @@ export default function RecipesPage() {
 
   async function checkInventoryAvailability() {
     try {
-      const { data: inventory, error } = await supabase
-        .from('inventory_lots')
-        .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date')
-        .gt('qty_remaining', 0)
-        .gt('expiration_date', new Date().toISOString());
-      if (error) return;
+      const invResult = inventoryPromiseRef.current
+        ? await inventoryPromiseRef.current
+        : await supabase
+            .from('inventory_lots')
+            .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date')
+            .gt('qty_remaining', 0)
+            .gt('expiration_date', new Date().toISOString());
+      const inventory = invResult?.data;
+      if (invResult?.error) return;
       const inv = inventory || [];
 
       // archetype d'un lot → canonique (pour matcher un lot archétype à un ingrédient canonique)
@@ -201,6 +220,7 @@ export default function RecipesPage() {
         statusMap[recipe.id] = { total, available, missing, missingNames, urgent, expiringName, expiringDays, percent, mykoScore: Math.round(mykoScore) };
       }
       setInventoryStatus(statusMap);
+      writeCache('recipes', { recipes, status: statusMap });
     } catch { /* silencieux */ }
   }
 

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
+import { readCache, writeCache } from '@/lib/pageCache';
 import SmartAddForm from './components/SmartAddForm';
 import ConsumeModal from './components/ConsumeModal';
 import OcrReviewList from './components/OcrReviewList';
@@ -92,6 +93,9 @@ export default function PantryPage() {
   }, [searchParams]);
 
   useEffect(() => {
+    // Revisite instantanée : on rend le dernier stock connu sans skeleton.
+    const cached = readCache('pantry');
+    if (cached) { setItems(cached); setLoading(false); }
     loadPantryItems();
   }, []);
 
@@ -183,7 +187,7 @@ export default function PantryPage() {
     if (isLoading) return; // Éviter les chargements multiples
 
     setIsLoading(true);
-    setLoading(true);
+    if (!readCache('pantry')) setLoading(true); // pas de skeleton si on a déjà le cache
     try {
 
       // D'abord, essayons la version simple qui fonctionnait
@@ -294,6 +298,7 @@ export default function PantryPage() {
         return transformed;
       });
       setItems(transformedData);
+      writeCache('pantry', transformedData);
     } catch (error) {
       console.error('Erreur lors du chargement:', error);
       setItems([]);
