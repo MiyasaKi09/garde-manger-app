@@ -196,10 +196,10 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
       /* ── Step & timer ── */
       .cook-step-content { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
-      .cook-step-card { max-width: 560px; width: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-      .cook-step-title { font-size: 24px; font-weight: 700; color: var(--ink, var(--ink-1)); margin-bottom: 16px; line-height: 1.3; }
-      .cook-step-text { font-size: 16px; line-height: 1.7; color: var(--ink-2); margin: 0; }
-      .cook-timer-text { font-size: 48px; font-weight: 300; font-variant-numeric: tabular-nums; letter-spacing: 2px; color: var(--ink, var(--ink-1)); }
+      .cook-step-card { max-width: 560px; width: 100%; background: var(--paper); border: 1.5px solid var(--ink-1); border-radius: 3px; padding: 36px 32px; text-align: left; box-shadow: 0 18px 50px -20px rgba(24,28,22,0.3); }
+      .cook-step-title { font-family: var(--font-display); font-size: 25px; font-weight: 600; color: var(--ink-1); margin-bottom: 14px; line-height: 1.25; letter-spacing: -0.01em; }
+      .cook-step-text { font-family: var(--font-text); font-size: 16px; line-height: 1.7; color: var(--ink-2); margin: 0; }
+      .cook-timer-text { font-family: var(--font-display); font-size: 52px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; color: var(--ink-1); }
       .cook-footer { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 16px 24px 28px; flex-shrink: 0; }
 
       @media (max-width: 768px) {
@@ -210,8 +210,8 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
         .cook-person-card { min-width: 0; }
         .cook-macro-value { font-size: 18px; }
         .cook-step-content { padding: 16px; }
-        .cook-step-card { padding: 24px 18px; border-radius: 16px; }
-        .cook-step-title { font-size: 20px; }
+        .cook-step-card { padding: 26px 20px; border-radius: 3px; }
+        .cook-step-title { font-size: 22px; }
         .cook-step-text { font-size: 15px; }
         .cook-timer-text { font-size: 36px; }
         .cook-footer { padding: 12px 16px 20px; gap: 12px; }
@@ -457,7 +457,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
                     opacity: star <= rating ? 1 : 0.3,
                     transition: 'opacity 0.15s, transform 0.15s',
                     transform: star <= rating ? 'scale(1.1)' : 'scale(1)',
-                    color: 'var(--accent)',
+                    color: 'var(--terracotta)',
                   }}
                 >
                   ★
@@ -593,8 +593,9 @@ function Timer({ minutes }) {
             onClick={() => setRunning(!running)}
             style={{
               ...S.timerBtn,
-              background: running ? 'var(--surface-soft)' : 'var(--accent-soft)',
-              borderColor: running ? 'var(--line)' : 'var(--accent)',
+              background: running ? 'transparent' : 'var(--terracotta)',
+              color: running ? 'var(--ink-1)' : '#fff',
+              borderColor: running ? 'var(--ink-1)' : 'var(--terracotta)',
             }}
           >
             {running ? <Pause size={18} /> : <Play size={18} />}
@@ -648,14 +649,6 @@ function splitStepText(text) {
 
 // --- Styles ---
 
-// ── Unified glass-morphism styles ──
-
-const BG = 'linear-gradient(160deg, var(--surface-soft) 0%, var(--paper) 100%)'
-const GLASS = {
-  background: 'var(--surface)',
-  border: '1px solid var(--line)',
-}
-
 // Landing screen uses `styles.xxx`, steps/done use `S.xxx`
 const styles = {
   landingOverlay: { position: 'fixed', inset: 0, background: 'rgba(24,28,22,0.55)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)', zIndex: 2000, display: 'flex', flexDirection: 'column', fontFamily: 'inherit' },
@@ -678,29 +671,29 @@ const styles = {
   regenDoneText: { fontSize: 13, color: 'var(--brand)', fontWeight: 600, textAlign: 'center', margin: 0, lineHeight: 1.5, maxWidth: 360 },
 }
 
-// Steps + Done screens (also glass-morphism)
+// Steps + Done screens — V21 editorial
 const S = {
-  overlay: { position: 'fixed', inset: 0, background: BG, zIndex: 2000, display: 'flex', flexDirection: 'column', fontFamily: 'inherit' },
-  header: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', flexShrink: 0 },
-  headerTitle: { fontSize: 14, fontWeight: 600, color: 'var(--brand)', fontFamily: "var(--font-editorial)", fontSize: 18 },
-  closeBtn: { border: 'none', background: 'rgba(0,0,0,0.05)', color: 'var(--ink-3)', cursor: 'pointer', padding: 8, display: 'flex', borderRadius: 10 },
+  overlay: { position: 'fixed', inset: 0, background: 'var(--paper)', zIndex: 2000, display: 'flex', flexDirection: 'column', fontFamily: 'var(--font-text)' },
+  header: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 24px', flexShrink: 0, borderBottom: '1px solid var(--ink-1)' },
+  headerTitle: { fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 19, color: 'var(--ink-1)', letterSpacing: '-0.01em' },
+  closeBtn: { border: '1px solid var(--ink-1)', background: 'transparent', color: 'var(--ink-1)', cursor: 'pointer', padding: 6, display: 'flex', borderRadius: 3 },
   content: { flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', overflowY: 'auto' },
-  stepCard: { maxWidth: 560, width: '100%', ...GLASS, borderRadius: 20, padding: '32px 28px', textAlign: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' },
-  stepBadge: { fontSize: 11, fontWeight: 700, color: 'var(--brand)', background: 'rgba(22,163,74,0.08)', padding: '3px 10px', borderRadius: 8, display: 'inline-block', marginBottom: 16, textTransform: 'uppercase', letterSpacing: 0.5 },
-  stepTitle: { fontSize: 24, fontWeight: 700, color: 'var(--ink, var(--ink-1))', marginBottom: 16, lineHeight: 1.3 },
-  stepText: { fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', margin: 0 },
-  footer: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, padding: '16px 24px 28px', flexShrink: 0 },
-  navBtn: { border: '1px solid rgba(0,0,0,0.08)', background: 'var(--surface)', color: 'var(--ink-3)', cursor: 'pointer', padding: 12, display: 'flex', alignItems: 'center', borderRadius: 12 },
-  navBtnPrimary: { display: 'flex', alignItems: 'center', gap: 6, padding: '12px 24px', border: 'none', borderRadius: 14, background: 'linear-gradient(135deg, var(--brand), var(--brand))', color: 'white', fontSize: 15, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 14px rgba(22,163,74,0.25)' },
-  primaryBtn: { padding: '14px 48px', border: 'none', borderRadius: 16, background: 'linear-gradient(135deg, var(--brand), var(--brand))', color: 'white', fontSize: 16, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 14px rgba(22,163,74,0.3)' },
+  stepCard: { maxWidth: 560, width: '100%', background: 'var(--paper)', border: '1.5px solid var(--ink-1)', borderRadius: 3, padding: '36px 32px', boxShadow: '0 18px 50px -20px rgba(24,28,22,0.3)' },
+  stepBadge: { fontFamily: 'var(--font-mono)', fontSize: 11, fontWeight: 600, color: 'var(--paper)', background: 'var(--ink-1)', padding: '4px 10px', borderRadius: 3, display: 'inline-block', marginBottom: 18, textTransform: 'uppercase', letterSpacing: '0.08em' },
+  stepTitle: { fontFamily: 'var(--font-display)', fontSize: 25, fontWeight: 600, color: 'var(--ink-1)', marginBottom: 14, lineHeight: 1.25, letterSpacing: '-0.01em' },
+  stepText: { fontFamily: 'var(--font-text)', fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', margin: 0 },
+  footer: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, padding: '16px 24px 28px', flexShrink: 0 },
+  navBtn: { border: '1px solid var(--ink-1)', background: 'transparent', color: 'var(--ink-1)', cursor: 'pointer', padding: 12, display: 'flex', alignItems: 'center', borderRadius: 3 },
+  navBtnPrimary: { display: 'flex', alignItems: 'center', gap: 8, padding: '13px 28px', border: '1px solid var(--terracotta)', borderRadius: 3, background: 'var(--terracotta)', color: '#fff', fontFamily: 'var(--font-mono)', fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', cursor: 'pointer' },
+  primaryBtn: { padding: '14px 40px', border: '1px solid var(--terracotta)', borderRadius: 3, background: 'var(--terracotta)', color: '#fff', fontFamily: 'var(--font-mono)', fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', cursor: 'pointer' },
 
-  // Timer (adapted for light theme)
-  timerContainer: { marginTop: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 },
+  // Timer — V21
+  timerContainer: { marginTop: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, paddingTop: 24, borderTop: '1px solid var(--line)' },
   timerDisplay: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 },
-  timerText: { fontSize: 48, fontWeight: 300, fontVariantNumeric: 'tabular-nums', letterSpacing: 2, color: 'var(--ink, var(--ink-1))' },
-  timerLabel: { fontSize: 13, color: 'var(--ink-3)' },
+  timerText: { fontFamily: 'var(--font-display)', fontSize: 52, fontWeight: 600, fontVariantNumeric: 'tabular-nums', letterSpacing: '0.01em', color: 'var(--ink-1)' },
+  timerLabel: { fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '0.06em' },
   timerActions: { display: 'flex', gap: 12 },
-  timerBtn: { display: 'flex', alignItems: 'center', gap: 8, padding: '10px 24px', border: '1px solid rgba(22,163,74,0.3)', borderRadius: 24, background: 'rgba(22,163,74,0.08)', color: 'var(--brand)', fontSize: 14, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' },
-  progressBar: { width: 200, height: 3, borderRadius: 2, background: 'rgba(0,0,0,0.06)', overflow: 'hidden', marginTop: 4 },
-  progressFill: { height: '100%', background: 'var(--brand)', borderRadius: 2, transition: 'width 1s linear' },
+  timerBtn: { display: 'flex', alignItems: 'center', gap: 8, padding: '10px 22px', border: '1px solid var(--ink-1)', borderRadius: 3, background: 'transparent', color: 'var(--ink-1)', fontFamily: 'var(--font-mono)', fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', cursor: 'pointer' },
+  progressBar: { width: 220, height: 3, borderRadius: 0, background: 'var(--line)', overflow: 'hidden', marginTop: 4 },
+  progressFill: { height: '100%', background: 'var(--terracotta)', borderRadius: 0, transition: 'width 1s linear' },
 }
