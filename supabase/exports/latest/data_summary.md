@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Mon Jun  8 20:03:12 UTC 2026_
+_Generated: Tue Jun  9 21:40:23 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -8,30 +8,13 @@ _Generated: Mon Jun  8 20:03:12 UTC 2026_
 - canonical_food_origins: 0 rows
 - canonical_food_processes: 0 rows
 - canonical_foods: 268 rows
-- cooked_dish_ingredients: 0 rows
-- cooked_dishes: 0 rows
 - cooking_nutrition_factors: 69 rows
 - countries: 0 rows
 - cultivars: 3 rows
 - diets: 9 rows
-- generated_recipe_ingredients: 1723 rows
-- generated_recipes: 136 rows
 - instructions: 0 rows
-- inventory_lots: 5 rows
-- legacy_users: 0 rows
 - locations: 3 rows
-- meal_log: 0 rows
-- meal_plans: 0 rows
-- nutrition_plan_batch_recipes: 69 rows
-- nutrition_plan_daily_totals: 378 rows
-- nutrition_plan_imports: 21 rows
-- nutrition_plan_meals: 1414 rows
-- nutrition_plan_prep_tasks: 1001 rows
-- nutrition_plan_shopping_items: 1914 rows
 - nutritional_data: 3178 rows
-- pantry_items: 0 rows
-- plan_regen_requests: 3 rows
-- planned_meals: 0 rows
 - process_nutrition_modifiers: 28 rows
 - processes: 14 rows
 - products: 0 rows
@@ -47,9 +30,3 @@ _Generated: Mon Jun  8 20:03:12 UTC 2026_
 - tags: 75 rows
 - unit_conversions_generic: 10 rows
 - unit_conversions_product: 0 rows
-- user_allergies: 0 rows
-- user_diets: 0 rows
-- user_health_goals: 2 rows
-- user_profiles: 0 rows
-- user_recipe_interactions: 0 rows
-- weight_entries: 1 rows
