@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { convertWithMeta } from '@/lib/units';
+import { toast } from '@/components/Toast';
 import IngredientSearchSelector from './IngredientSearchSelector';
 import InstructionsCarousel from './components/InstructionsCarousel';
 import CookMode from '@/components/CookMode';
@@ -98,6 +99,7 @@ export default function RecipeDetail() {
   const [nutrition, setNutrition] = useState(null);
   const [micronutrients, setMicronutrients] = useState(null);
   const [showDetailedNutrition, setShowDetailedNutrition] = useState(false);
+  const [ingredientsWithoutNutrition, setIngredientsWithoutNutrition] = useState(0);
 
   // Ref pour le drag-to-scroll des ingrédients
   const ingredientsListRef = useRef(null);
@@ -152,16 +154,13 @@ export default function RecipeDetail() {
         .select('id, name, category, subcategory')
         .order('category', { ascending: true })
         .order('name', { ascending: true });
-      
-      if (error) {
-        console.error('❌ Erreur Supabase:', error);
-        throw error;
-      }
-      
+
+      if (error) throw error;
+
       setAvailableIngredients(data || []);
     } catch (error) {
-      console.error('❌ Erreur chargement ingrédients:', error);
-      // Essayons une requête plus simple en fallback
+      console.error('Erreur chargement ingrédients disponibles:', error);
+      // Fallback requête simple
       try {
         const { data: fallbackData, error: fallbackError } = await supabase
           .from('canonical_foods')
@@ -172,7 +171,7 @@ export default function RecipeDetail() {
           setAvailableIngredients(fallbackData);
         }
       } catch (fallbackErr) {
-        console.error('❌ Fallback échoué:', fallbackErr);
+        console.error('Fallback canonical_foods échoué:', fallbackErr);
       }
     }
   }
@@ -376,11 +375,11 @@ export default function RecipeDetail() {
       }
 
       // 6. Recharger la recette
-      window.location.reload();
+      router.refresh();
 
     } catch (error) {
       console.error('Erreur sauvegarde:', error);
-      alert(`Erreur lors de la sauvegarde: ${error.message}`);
+      toast.error(`Erreur lors de la sauvegarde: ${error.message}`);
     } finally {
       setSending(false);
     }
@@ -400,32 +399,27 @@ export default function RecipeDetail() {
       .eq('id', id)
       .single();
 
-    // Si erreur avec les relations, essayer une requête simple
+    // Si erreur, essayer une requête de fallback simple
     if (errR) {
-      console.error('Erreur première requête:', errR);
-      // Essayons une requête de fallback plus simple
       const { data: fallbackData, error: fallbackError } = await supabase
         .from('recipes')
         .select('*')
         .eq('id', id)
         .single();
-        
-      if (fallbackError) {
-        console.error('Erreur requête fallback:', fallbackError);
-      } else {
+
+      if (!fallbackError) {
         r = fallbackData;
         errR = null;
       }
     }
     if (errR) {
-      console.error('Erreur lors du chargement de la recette:', errR);
+      console.error('Erreur chargement recette:', errR);
       setError(`Recette avec l'ID ${id} introuvable. Erreur: ${errR.message}`);
-      setLoading(false); 
-      return; 
+      setLoading(false);
+      return;
     }
 
     if (!r) {
-      console.error('Aucune recette trouvée avec l\'ID:', id);
       setError(`Aucune recette trouvée avec l'ID ${id}`);
       setLoading(false);
       return;
@@ -479,7 +473,7 @@ export default function RecipeDetail() {
         .eq('recipe_id', id);
 
       if (ingredientsError) {
-        console.error('❌ Erreur chargement ingrédients:', ingredientsError);
+        console.error('Erreur chargement ingrédients:', ingredientsError);
         ingredients = [];
       }
 
@@ -529,7 +523,7 @@ export default function RecipeDetail() {
       setLotsByProduct({});
       setMetaByProduct({});
     } catch (error) {
-      console.error('Erreur ingrédients:', error);
+      console.error('Erreur chargement ingrédients recette:', error);
       setIngs([]);
     }
 
@@ -542,13 +536,12 @@ export default function RecipeDetail() {
         .order('step_no', { ascending: true });
 
       if (stepsError) {
-        console.error('❌ Erreur chargement étapes:', stepsError);
         setRecipeSteps([]);
       } else {
         setRecipeSteps(steps || []);
       }
     } catch (error) {
-      console.error('Erreur étapes:', error);
+      console.error('Erreur chargement étapes recette:', error);
       setRecipeSteps([]);
     }
 
@@ -560,9 +553,7 @@ export default function RecipeDetail() {
         .eq('recipe_id', id)
         .maybeSingle();
 
-      if (nutritionError) {
-        console.error('❌ Erreur nutrition:', nutritionError);
-      } else if (nutritionData) {
+      if (!nutritionError && nutritionData) {
         setNutrition({
           calories: nutritionData.calories_per_serving,
           proteines: nutritionData.proteines_per_serving,
@@ -571,7 +562,7 @@ export default function RecipeDetail() {
         });
       }
     } catch (error) {
-      console.error('Erreur nutrition:', error);
+      console.error('Erreur chargement nutrition:', error);
     }
 
     // Charger les micronutriments depuis les ingrédients
@@ -705,7 +696,14 @@ export default function RecipeDetail() {
           }
         });
 
-        setMicronutrients(micro);
+        // Diviser par le nombre de portions pour avoir les valeurs par portion
+        const servings = r?.servings || 1;
+        const microPerServing = {};
+        for (const key of Object.keys(micro)) {
+          microPerServing[key] = Math.round((micro[key] / servings) * 100) / 100;
+        }
+        setMicronutrients(microPerServing);
+        setIngredientsWithoutNutrition(ingredientsWithoutNutrition);
       }
     } catch (error) {
       console.error('Erreur micronutriments:', error);
@@ -822,57 +820,8 @@ export default function RecipeDetail() {
   }
 
   async function cook() {
-    setError('');
-    setSending(true);
-    try {
-      // Construire un plan à partir de la sélection (si présent)
-      const flatPlan = [];
-      let hasAny = false;
-
-      for (const ing of ings) {
-        const pid = ing.product_id;
-        const picks = plan[pid] || {};
-        for (const lot of (lotsByProduct[pid] || [])) {
-          const p = picks[lot.id];
-          if (p?.checked && Number(p.qty) > 0) {
-            hasAny = true;
-            flatPlan.push({
-              product_id: pid,
-              lot_id: lot.id,
-              qty: Number(p.qty),
-              unit: (p.unit || lot.unit)
-            });
-          }
-        }
-      }
-
-      // Si plan présent, vérifier couverture (sauf ingrédients optionnels)
-      if (hasAny) {
-        const notOk = Object.values(coverage).find(c => !c.ok);
-        if (notOk) {
-          throw new Error("Le plan ne couvre pas les besoins d’au moins un ingrédient (ou quantité = 0).");
-        }
-      }
-
-      const res = await fetch(`/api/cook/${id}`, {
-        method: 'POST',
-        headers: { 'Content-Type':'application/json' },
-        body: hasAny ? JSON.stringify({ plan: flatPlan }) : '{}'
-      });
-      const json = await res.json();
-      if (!res.ok) {
-        if (json?.missing?.length) {
-          const first = json.missing[0];
-          throw new Error(`Stock insuffisant pour ${first.name}: il manque ${first.missingQty} ${first.unit} (dispo ${first.available}).`);
-        }
-        throw new Error(json?.error || 'Erreur inconnue');
-      }
-      router.push('/recipes'); // ou afficher un toast de succès
-    } catch (e) {
-      setError(e.message || 'Erreur');
-    } finally {
-      setSending(false);
-    }
+    // Naviguer vers la page de cuisine dédiée (app/cook/[id]/page.js)
+    router.push(`/cook/${id}`);
   }
 
   if (loading) {
@@ -1284,6 +1233,13 @@ export default function RecipeDetail() {
               {showDetailedNutrition ? '▼ Détails' : '▶ Détails'}
             </button>
           </div>
+        )}
+
+        {/* Avertissement nutrition incomplète */}
+        {ingredientsWithoutNutrition > 0 && (
+          <p style={{ margin: '4px 0 0', fontSize: 12, opacity: 0.65, fontStyle: 'italic' }}>
+            Valeurs partielles — {ingredientsWithoutNutrition} ingrédient{ingredientsWithoutNutrition > 1 ? 's' : ''} sans données nutritionnelles
+          </p>
         )}
 
         {/* Section détails nutritionnels */}

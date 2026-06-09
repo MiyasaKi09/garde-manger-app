@@ -424,22 +424,8 @@ export const formatQuantity = (quantity, unit) => {
   return unitMap[unit?.toLowerCase()] || `${rounded} ${unit}`;
 };
 
-/**
- * Calcule le nombre de jours jusqu'à une date
- */
-export const daysUntil = (dateStr) => {
-  if (!dateStr) return null;
-  
-  const date = new Date(dateStr);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  date.setHours(0, 0, 0, 0);
-  
-  const diffTime = date - today;
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  
-  return diffDays;
-};
+// Délègue vers lib/dates.js pour un calcul UTC cohérent (évite les décalages DST ±1j)
+export { daysUntil } from '@/lib/dates';
 
 /**
  * Formate une date d'expiration avec indicateur visuel
