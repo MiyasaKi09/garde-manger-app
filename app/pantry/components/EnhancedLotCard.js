@@ -23,7 +23,7 @@ export function EnhancedLotCard({ lot, onUpdate, onDelete, compact = false }) {
     const urgencyLevel = daysLeft === null ? 'unknown'
                       : daysLeft < 0 ? 'expired'
                       : daysLeft === 0 ? 'today'
-                      : daysLeft <= 2 ? 'critical'
+                      : daysLeft <= 3 ? 'critical'
                       : daysLeft <= 7 ? 'warning'
                       : 'ok';
 

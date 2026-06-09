@@ -6,7 +6,9 @@ import { ChevronDown, Package2 } from 'lucide-react';
 import { daysUntil, getExpirationStatus, formatQuantity, capitalizeProduct } from './pantryUtils';
 
 export default function ProductCard({ product, onOpen }) {
-  // Protection contre product undefined
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Protection contre product undefined (après les hooks — règle des hooks React)
   if (!product) {
     return (
       <div className="product-card error">
@@ -14,8 +16,6 @@ export default function ProductCard({ product, onOpen }) {
       </div>
     );
   }
-
-  const [isExpanded, setIsExpanded] = useState(false);
   
   // Données sécurisées du produit
   const productName = capitalizeProduct(product.productName || 'Produit sans nom');

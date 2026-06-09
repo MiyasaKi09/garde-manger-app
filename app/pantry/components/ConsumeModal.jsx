@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { toast } from '@/components/Toast';
 
 export default function ConsumeModal({ item, isOpen, onClose, onConfirm }) {
   const [quantity, setQuantity] = useState('');
@@ -24,7 +25,7 @@ export default function ConsumeModal({ item, isOpen, onClose, onConfirm }) {
     e.preventDefault();
     const qty = parseFloat(quantity);
     if (isNaN(qty) || qty <= 0) {
-      alert('Veuillez entrer une quantité valide');
+      toast.error('Veuillez entrer une quantité valide');
       return;
     }
     if (qty > item.qty_remaining) {

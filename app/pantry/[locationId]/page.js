@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import IconButton from '@/components/ui/IconButton';
+import { toast } from '@/components/Toast';
 
 /* -------------------- helpers texte -------------------- */
 const strip = (s='') => s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().trim();
@@ -228,7 +229,7 @@ export default function LocationDetail() {
 
   async function addLot(e) {
     e.preventDefault();
-    if (!nameInput.trim() || !qty) return alert('Produit et quantité requis.');
+    if (!nameInput.trim() || !qty) return toast.error('Produit et quantité requis.');
     setSaving(true);
     try {
       // 1) on exige un produit existant (sélectionné)
@@ -277,7 +278,7 @@ export default function LocationDetail() {
       await refresh();
       inputRef.current?.focus();
     } catch (err) {
-      alert(err.message || 'Erreur');
+      toast.error(err.message || 'Erreur');
     } finally {
       setSaving(false);
     }
@@ -286,7 +287,7 @@ export default function LocationDetail() {
   async function removeLot(id) {
     if (!confirm('Retirer ce lot ?')) return;
     const { error } = await supabase.from('inventory_lots').delete().eq('id', id);
-    if (error) return alert(error.message);
+    if (error) return toast.error(error.message);
     await refresh();
   }
 

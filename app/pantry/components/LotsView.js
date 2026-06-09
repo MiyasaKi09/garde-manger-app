@@ -17,13 +17,8 @@ export default function LotsView({
   const [editingLot, setEditingLot] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
 
-  // Protection contre product undefined
-  if (!product) {
-    return null;
-  }
-
-  const lots = mapLotsWithEffectiveExpiration(product.lots || []);
-  const productName = capitalizeProduct(product.productName || 'Produit');
+  const lots = mapLotsWithEffectiveExpiration(product?.lots || []);
+  const productName = capitalizeProduct(product?.productName || 'Produit');
 
   // Tri des lots par urgence d'expiration
   const sortedLots = useMemo(() => {
@@ -38,6 +33,11 @@ export default function LotsView({
       return 0;
     });
   }, [lots]);
+
+  // Protection contre product undefined (après les hooks — règle des hooks React)
+  if (!product) {
+    return null;
+  }
 
   const handleClose = () => {
     if (onClose && typeof onClose === 'function') {

@@ -506,15 +506,25 @@ async function rebuildShoppingList(supabase, userId, importId, days) {
   }
 
   // 7. Delete old shopping items and insert new ones
-  await supabase
+  const { error: deleteError } = await supabase
     .from('nutrition_plan_shopping_items')
     .delete()
     .eq('import_id', importId)
 
+  if (deleteError) {
+    console.error('[AI Plan Generate] Échec suppression liste de courses:', deleteError.message)
+    throw new Error(`Échec reconstruction de la liste de courses : ${deleteError.message}`)
+  }
+
   if (shoppingItems.length > 0) {
-    await supabase
+    const { error: insertError } = await supabase
       .from('nutrition_plan_shopping_items')
       .insert(shoppingItems)
+
+    if (insertError) {
+      console.error('[AI Plan Generate] Échec insertion liste de courses:', insertError.message)
+      throw new Error(`Échec insertion de la liste de courses : ${insertError.message}`)
+    }
   }
 
   return shoppingItems.length
@@ -604,10 +614,22 @@ async function generateMissingRecipes(supabase, userId, days) {
 
   for (const { name, normalized, existingId } of toGenerate) {
     try {
+      // Assainir le nom injecté dans le prompt : 200 caractères max,
+      // sans guillemets ni retours à la ligne (anti prompt injection).
+      const safeName = String(name)
+        .replace(/["'`«»]/g, '')
+        .replace(/[\r\n]+/g, ' ')
+        .trim()
+        .slice(0, 200)
+
       const response = await anthropic.messages.create({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 4096,
-        system: `Tu es Myko, un chef cuisinier expert. Génère une fiche recette complète.
+        // cache_control sur le system prompt (contexte long réutilisé à chaque recette)
+        system: [{
+          type: 'text',
+          cache_control: { type: 'ephemeral' },
+          text: `Tu es Myko, un chef cuisinier expert. Génère une fiche recette complète.
 
 ${context}
 
@@ -634,9 +656,10 @@ FORMAT JSON :
   "chef_tips": "Conseil optionnel",
   "nutrition_per_serving": { "kcal": 450, "protein_g": 35, "carbs_g": 40, "fat_g": 15, "fiber_g": 6 }
 }`,
+        }],
         messages: [{
           role: 'user',
-          content: `Génère la fiche recette complète pour : "${name}" (2 portions, Julien et Zoé)`,
+          content: `Génère la fiche recette complète pour : "${safeName}" (2 portions, Julien et Zoé)`,
         }],
       })
 

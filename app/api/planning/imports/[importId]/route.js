@@ -5,7 +5,7 @@ import { getImport, deleteImport } from '@/lib/nutritionPlanService'
 export async function GET(request, { params }) {
   try {
     const { supabase, user, error: authError } = await authenticateRequest(request)
-    if (authError) {
+    if (authError || !user) {
       return NextResponse.json({ error: authError }, { status: 401 })
     }
 
@@ -19,7 +19,7 @@ export async function GET(request, { params }) {
 export async function DELETE(request, { params }) {
   try {
     const { supabase, user, error: authError } = await authenticateRequest(request)
-    if (authError) {
+    if (authError || !user) {
       return NextResponse.json({ error: authError }, { status: 401 })
     }
 

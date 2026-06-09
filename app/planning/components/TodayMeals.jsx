@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import MealCookSheet from '@/components/MealCookSheet'
 import { Loader2, ChefHat, RefreshCw, X, Check } from 'lucide-react'
+import { toast } from '@/components/Toast'
+import './TodayMeals.css'
 
 /**
  * Extrait le nom du plat à partir des descriptions de plusieurs personnes.
@@ -33,8 +35,6 @@ function extractDishName(descriptions) {
   const lastSpace = prefix.lastIndexOf(' ')
   if (lastSpace > 5) prefix = prefix.substring(0, lastSpace)
   prefix = prefix.trim()
-  // If common prefix is too short (e.g. collations differ between persons),
-  // show the first person's full description instead
   if (prefix.length < 10) return first.substring(0, 60).trim()
   return prefix
 }
@@ -55,8 +55,13 @@ const MEAL_COLORS = {
 
 const MEAL_ORDER = ['pdj', 'dejeuner', 'diner', 'collation']
 
-// V21 — barre de couleur par repas (saffron / sage / olive / terracotta)
-const MEAL_BAR = { pdj: '#D9A33A', dejeuner: '#6FB05A', diner: '#6E7A3F', collation: '#BB5836' }
+// Couleurs des barres via variables CSS (tokens --m-*)
+const MEAL_BAR_VAR = {
+  pdj: 'var(--m-pdj)',
+  dejeuner: 'var(--m-dej)',
+  diner: 'var(--m-din)',
+  collation: 'var(--m-col)',
+}
 
 /**
  * Affiche les repas d'aujourd'hui et demain.
@@ -80,12 +85,14 @@ export default function TodayMeals({ importId }) {
   const [selectedMeal, setSelectedMeal] = useState(null)
   const [showChoice, setShowChoice] = useState(false)
 
-  // Modify-meal mode — déclenche la routine Claude (écritures Supabase côté routine)
+  // Modify-meal mode
   const [swapMode, setSwapMode] = useState(false)
   const [swapDirection, setSwapDirection] = useState('')
   const [swapping, setSwapping] = useState(false)
   const [swapError, setSwapError] = useState('')
   const [swapSuccess, setSwapSuccess] = useState(false)
+
+  const recipeCacheRef = useRef({})
 
   const today = new Date()
   const tomorrow = new Date(today)
@@ -98,6 +105,16 @@ export default function TodayMeals({ importId }) {
     loadMeals()
     loadDone()
   }, [importId])
+
+  // Fermeture par Escape sur la bottom sheet
+  useEffect(() => {
+    if (!showChoice) return
+    function onKeyDown(e) {
+      if (e.key === 'Escape') closeModal()
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [showChoice])
 
   async function loadDone() {
     try {
@@ -161,8 +178,6 @@ export default function TodayMeals({ importId }) {
   }
 
   // ── COOK FLOW ──
-  // Lit la fiche déjà générée (par la routine / l'import) — zéro API facturée,
-  // comme la page Planning.
   async function handleCook() {
     if (!selectedMeal || generatingRecipe) return
     const julien = selectedMeal.entries.find(e => e.person_name === 'Julien') || selectedMeal.entries[0]
@@ -171,13 +186,16 @@ export default function TodayMeals({ importId }) {
     setGeneratingRecipe(true)
     setShowChoice(false)
 
+    // Réutilise le helper partagé mais sans setGeneratingFor (on a generatingRecipe ici)
     try {
       const res = await authFetch(`/api/recipes/generated?q=${encodeURIComponent(query)}`)
       const data = await res.json().catch(() => ({}))
       if (!res.ok) {
-        alert(res.status === 404
-          ? "Pas encore de fiche recette pour ce plat. Elle est créée lors de la génération du planning."
-          : (data.error || 'Erreur lors du chargement de la recette.'))
+        toast.error(
+          res.status === 404
+            ? "Pas encore de fiche recette pour ce plat. Elle est créée lors de la génération du planning."
+            : (data.error || 'Erreur lors du chargement de la recette.')
+        )
         return
       }
       setGeneratedRecipe(data.recipe)
@@ -185,7 +203,7 @@ export default function TodayMeals({ importId }) {
       setCookModeOpen(true)
     } catch (err) {
       console.error('Error loading recipe:', err)
-      alert('Erreur lors du chargement de la recette. Réessaie.')
+      toast.error('Erreur lors du chargement de la recette. Réessaie.')
     } finally {
       setGeneratingRecipe(false)
     }
@@ -205,8 +223,6 @@ export default function TodayMeals({ importId }) {
   }
 
   // ── MODIFY FLOW ──
-  // Déclenche la routine Claude "Modifier un repas". La routine écrit
-  // elle-même en Supabase (Julien + Zoé) ; on recharge ensuite les repas.
   async function handleModify() {
     if (!selectedMeal || swapping) return
     setSwapping(true)
@@ -241,8 +257,6 @@ export default function TodayMeals({ importId }) {
   if (loading) return <p style={{ color: '#9ca3af', fontSize: 13, textAlign: 'center' }}>...</p>
   if (!importId || meals.length === 0) return null
 
-  // Repas d'aujourd'hui (et de demain). On ne montre PAS les jours lointains
-  // d'un plan futur : si rien aujourd'hui, on l'indique clairement.
   const groups = [
     { date: todayStr, label: "Aujourd'hui", meals: meals.filter(m => m.meal_date === todayStr) },
     { date: tomorrowStr, label: 'Demain', meals: meals.filter(m => m.meal_date === tomorrowStr) },
@@ -263,7 +277,7 @@ export default function TodayMeals({ importId }) {
 
   return (
     <>
-      <div style={S.container}>
+      <div className="tm-container">
         {groups.map(group => {
           const byType = {}
           for (const m of group.meals) {
@@ -281,28 +295,29 @@ export default function TodayMeals({ importId }) {
 
           return (
             <div key={group.date}>
-              {groups.length > 1 && <p style={S.dayLabel}>{group.label}</p>}
+              {groups.length > 1 && <p className="tm-day-label">{group.label}</p>}
               {mergedMeals.map((meal, i) => {
                 const isGenerating = generatingRecipe && selectedMeal?.dishName === meal.dishName
                 const done = isDone(meal)
                 return (
-                  <div key={i} style={{ ...S.meal, opacity: generatingRecipe && !isGenerating ? 0.5 : 1 }}>
-                    <span style={{ ...S.mealBar, background: MEAL_BAR[meal.type] || MEAL_BAR.diner }} />
-                    <span style={S.mealLabel}>{MEAL_LABELS[meal.type] || meal.type}</span>
+                  <div key={i} className="tm-meal" style={{ opacity: generatingRecipe && !isGenerating ? 0.5 : 1 }}>
+                    <span className="tm-meal-bar" style={{ background: MEAL_BAR_VAR[meal.type] || MEAL_BAR_VAR.diner }} />
+                    <span className="tm-meal-label">{MEAL_LABELS[meal.type] || meal.type}</span>
                     <span
                       onClick={() => !generatingRecipe && handleMealClick(meal)}
-                      style={{ ...S.mealName, ...(done ? S.mealNameDone : {}), cursor: meal.dishName ? 'pointer' : 'default' }}
+                      className={`tm-meal-name${done ? ' tm-meal-name-done' : ''}`}
+                      style={{ cursor: meal.dishName ? 'pointer' : 'default' }}
                     >
                       {meal.dishName}
                     </span>
-                    <span style={S.mealRight}>
+                    <span className="tm-meal-right">
                       {isGenerating
                         ? <Loader2 size={13} style={{ animation: 'spin 1s linear infinite', color: 'var(--ink-3)' }} />
-                        : <span style={S.mealW}>{meal.persons.join('·')}</span>}
+                        : <span className="tm-meal-who">{meal.persons.join('·')}</span>}
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleDone(meal) }}
                         title={done ? 'Cuisiné — annuler' : 'Marquer cuisiné'}
-                        style={{ ...S.check, ...(done ? S.checkDone : {}) }}
+                        className={`tm-check${done ? ' done' : ''}`}
                       >
                         {done && <Check size={11} color="#fff" />}
                       </button>
@@ -322,56 +337,64 @@ export default function TodayMeals({ importId }) {
       {/* ═══ CHOICE MODAL (portail → couvre TOUTE la page) ═══ */}
       {showChoice && selectedMeal && typeof document !== 'undefined' && createPortal(
         <>
-          <div style={S.overlay} onClick={closeModal} />
-          <div style={S.modal}>
+          <div className="tm-overlay" onClick={closeModal} />
+          <div
+            className="tm-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Options pour ${selectedMeal.dishName}`}
+          >
             {/* Decorative top bar */}
-            <div style={S.modalTopBar} />
+            <div className="tm-modal-top-bar" />
 
             {/* Header */}
-            <div style={S.modalHeader}>
+            <div className="tm-modal-header">
               <div>
-                <span style={S.modalMealTypeWrap}>
-                  <span style={{ ...S.modalMealBar, background: MEAL_BAR[selectedMeal.type] || MEAL_BAR.diner }} />
+                <span className="tm-modal-meal-type-wrap">
+                  <span className="tm-modal-meal-bar" style={{ background: MEAL_BAR_VAR[selectedMeal.type] || MEAL_BAR_VAR.diner }} />
                   {MEAL_LABELS[selectedMeal.type] || selectedMeal.type}
                 </span>
-                <h3 style={S.modalTitle}>{selectedMeal.dishName}</h3>
+                <h3 className="tm-modal-title">{selectedMeal.dishName}</h3>
                 {selectedMeal.entries[0]?.kcal && (
-                  <p style={S.modalMacros}>
+                  <p className="tm-modal-macros">
                     {selectedMeal.entries.map(e => `${e.person_name?.charAt(0)}: ${e.kcal} kcal`).join(' · ')}
                   </p>
                 )}
               </div>
-              <button onClick={closeModal} style={S.closeBtn}><X size={18} /></button>
+              <button onClick={closeModal} className="tm-close-btn" aria-label="Fermer"><X size={18} /></button>
             </div>
 
             {/* ── DEFAULT: choice buttons ── */}
             {!swapMode && !swapSuccess && (
-              <div style={S.choiceButtons}>
-                <button onClick={handleCook} style={S.cookBtn}>
+              <div className="tm-choice-buttons">
+                <button onClick={handleCook} className="tm-cook-btn">
                   <ChefHat size={18} />
                   Cuisiner
                 </button>
-                <button onClick={() => setSwapMode(true)} style={S.swapBtn}>
+                <button onClick={() => setSwapMode(true)} className="tm-swap-btn">
                   <RefreshCw size={18} />
                   Changer ce plat
                 </button>
               </div>
             )}
 
-            {/* ── MODIFY MODE: direction libre → déclenche la routine Claude ── */}
+            {/* ── MODIFY MODE ── */}
             {swapMode && !swapSuccess && (
-              <div style={S.swapSection}>
+              <div className="tm-swap-section">
+                <label htmlFor="tm-swap-input" className="sr-only">Direction de modification (optionnel)</label>
                 <input
+                  id="tm-swap-input"
+                  aria-label="Direction de modification (optionnel)"
                   type="text"
                   value={swapDirection}
                   onChange={e => setSwapDirection(e.target.value)}
                   placeholder="Ex : plus végétarien, moins gras, j'ai du saumon… (optionnel)"
-                  style={S.swapInput}
+                  className="tm-swap-input"
                   onKeyDown={e => e.key === 'Enter' && handleModify()}
                   autoFocus
                   disabled={swapping}
                 />
-                <button onClick={handleModify} disabled={swapping} style={S.generateBtn}>
+                <button onClick={handleModify} disabled={swapping} className="tm-generate-btn">
                   {swapping ? (
                     <>
                       <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} />
@@ -384,22 +407,20 @@ export default function TodayMeals({ importId }) {
                     </>
                   )}
                 </button>
-                {swapError && <p style={S.swapError}>{swapError}</p>}
+                {swapError && <p className="tm-swap-error">{swapError}</p>}
                 {!swapping && (
-                  <button onClick={() => setSwapMode(false)} style={S.cancelLink}>Annuler</button>
+                  <button onClick={() => setSwapMode(false)} className="tm-cancel-link">Annuler</button>
                 )}
               </div>
             )}
 
             {/* ── SUCCESS ── */}
             {swapSuccess && (
-              <div style={{ textAlign: 'center', padding: '20px 0' }}>
-                <div style={S.successIcon}>
+              <div className="tm-success-section">
+                <div className="tm-success-icon">
                   <Check size={28} color="white" />
                 </div>
-                <p style={{ color: 'var(--ink-1)', fontWeight: 600, marginTop: 14, fontFamily: 'var(--font-display)', fontSize: 20 }}>
-                  Repas modifié !
-                </p>
+                <p className="tm-success-label">Repas modifié !</p>
               </div>
             )}
           </div>
@@ -427,268 +448,4 @@ export default function TodayMeals({ importId }) {
       />
     </>
   )
-}
-
-const S = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  dayLabel: {
-    fontFamily: 'var(--font-mono)',
-    fontSize: 11,
-    letterSpacing: '0.08em',
-    textTransform: 'uppercase',
-    color: 'var(--ink-3)',
-    margin: '16px 0 2px',
-  },
-  meal: {
-    display: 'grid',
-    gridTemplateColumns: '8px 92px 1fr auto',
-    alignItems: 'center',
-    gap: 14,
-    padding: '15px 0',
-    borderBottom: '1px solid var(--line)',
-    transition: 'opacity 0.2s ease',
-  },
-  mealBar: {
-    display: 'block',
-    width: '100%',
-    height: 22,
-    borderRadius: 2,
-  },
-  mealLabel: {
-    fontFamily: 'var(--font-mono)',
-    fontSize: 11,
-    letterSpacing: '0.03em',
-    textTransform: 'uppercase',
-    color: 'var(--ink-3)',
-  },
-  mealName: {
-    fontFamily: 'var(--font-display)',
-    fontWeight: 500,
-    fontSize: 18,
-    lineHeight: 1.25,
-    color: 'var(--ink-1)',
-    minWidth: 0,
-  },
-  mealNameDone: {
-    textDecoration: 'line-through',
-    opacity: 0.5,
-  },
-  mealRight: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 10,
-    justifyContent: 'flex-end',
-  },
-  mealW: {
-    fontFamily: 'var(--font-mono)',
-    fontSize: 11,
-    color: 'var(--ink-3)',
-    whiteSpace: 'nowrap',
-  },
-  check: {
-    width: 18,
-    height: 18,
-    borderRadius: 4,
-    flexShrink: 0,
-    padding: 0,
-    border: '1.5px solid var(--line-strong)',
-    background: 'transparent',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: 'pointer',
-  },
-  checkDone: {
-    background: 'var(--brand)',
-    borderColor: 'var(--brand)',
-  },
-
-  // Overlay + Modal (bottom sheet) — V21 éditorial
-  overlay: {
-    position: 'fixed',
-    top: 0, left: 0, right: 0, bottom: 0,
-    background: 'rgba(24,28,22,0.45)',
-    backdropFilter: 'blur(4px)',
-    WebkitBackdropFilter: 'blur(4px)',
-    zIndex: 1100,
-  },
-  modal: {
-    position: 'fixed',
-    bottom: 0, left: 0, right: 0,
-    background: 'var(--paper)',
-    borderTop: '1.5px solid var(--ink-1)',
-    borderRadius: '6px 6px 0 0',
-    padding: '0 24px 36px',
-    zIndex: 1101,
-    maxHeight: '80vh',
-    overflowY: 'auto',
-    boxShadow: '0 -18px 50px -20px rgba(24,28,22,0.4)',
-    fontFamily: 'var(--font-text)',
-  },
-  modalTopBar: {
-    width: 40,
-    height: 4,
-    background: 'rgba(24,28,22,0.22)',
-    borderRadius: 2,
-    margin: '12px auto 18px',
-  },
-  modalHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 22,
-  },
-  modalMealTypeWrap: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 8,
-    fontFamily: 'var(--font-mono)',
-    fontSize: 11,
-    fontWeight: 600,
-    textTransform: 'uppercase',
-    letterSpacing: '0.08em',
-    color: 'var(--ink-2)',
-  },
-  modalMealBar: {
-    width: 16,
-    height: 7,
-    borderRadius: 2,
-    flexShrink: 0,
-  },
-  modalTitle: {
-    fontFamily: 'var(--font-display)',
-    fontSize: 25,
-    fontWeight: 600,
-    color: 'var(--ink-1)',
-    margin: '10px 0 5px',
-    letterSpacing: '-0.01em',
-    lineHeight: 1.2,
-  },
-  modalMacros: {
-    fontFamily: 'var(--font-mono)',
-    fontSize: 12,
-    color: 'var(--ink-3)',
-    margin: 0,
-    letterSpacing: '0.02em',
-  },
-  closeBtn: {
-    border: '1px solid var(--ink-1)',
-    background: 'transparent',
-    borderRadius: 3,
-    padding: 7,
-    cursor: 'pointer',
-    color: 'var(--ink-1)',
-    display: 'flex',
-    flexShrink: 0,
-  },
-
-  // Choice buttons
-  choiceButtons: {
-    display: 'flex',
-    gap: 12,
-  },
-  cookBtn: {
-    flex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    padding: '15px 0',
-    background: 'var(--terracotta)',
-    color: '#fff',
-    border: '1px solid var(--terracotta)',
-    borderRadius: 3,
-    fontFamily: 'var(--font-mono)',
-    fontSize: 13,
-    fontWeight: 600,
-    textTransform: 'uppercase',
-    letterSpacing: '0.06em',
-    cursor: 'pointer',
-  },
-  swapBtn: {
-    flex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    padding: '15px 0',
-    background: 'transparent',
-    color: 'var(--ink-1)',
-    border: '1px solid var(--ink-1)',
-    borderRadius: 3,
-    fontFamily: 'var(--font-mono)',
-    fontSize: 13,
-    fontWeight: 600,
-    textTransform: 'uppercase',
-    letterSpacing: '0.06em',
-    cursor: 'pointer',
-  },
-
-  // Swap section
-  swapSection: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 12,
-  },
-  swapInput: {
-    width: '100%',
-    padding: '13px 14px',
-    border: '1px solid var(--ink-1)',
-    borderRadius: 3,
-    fontSize: 14,
-    fontFamily: 'var(--font-text)',
-    color: 'var(--ink-1)',
-    outline: 'none',
-    background: 'var(--paper)',
-    boxSizing: 'border-box',
-  },
-  generateBtn: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    padding: '15px 0',
-    background: 'var(--terracotta)',
-    color: '#fff',
-    border: '1px solid var(--terracotta)',
-    borderRadius: 3,
-    fontFamily: 'var(--font-mono)',
-    fontSize: 13,
-    fontWeight: 600,
-    textTransform: 'uppercase',
-    letterSpacing: '0.06em',
-    cursor: 'pointer',
-  },
-  swapError: {
-    color: 'var(--state-expired, #B23A2E)',
-    fontSize: 13,
-    margin: 0,
-    textAlign: 'center',
-    fontFamily: 'var(--font-text)',
-  },
-  cancelLink: {
-    background: 'none',
-    border: 'none',
-    color: 'var(--ink-3)',
-    fontFamily: 'var(--font-mono)',
-    fontSize: 11,
-    textTransform: 'uppercase',
-    letterSpacing: '0.06em',
-    cursor: 'pointer',
-    padding: '4px 0',
-    textAlign: 'center',
-  },
-
-  successIcon: {
-    width: 52,
-    height: 52,
-    borderRadius: '50%',
-    background: 'var(--brand)',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 }

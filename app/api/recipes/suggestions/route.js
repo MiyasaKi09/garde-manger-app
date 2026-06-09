@@ -16,6 +16,7 @@
  */
 
 import { NextResponse } from 'next/server';
+import { authenticateRequest } from '@/lib/apiAuth';
 import { suggestPairings, debugPairing } from '@/lib/pairingService';
 
 /**
@@ -58,6 +59,12 @@ import { suggestPairings, debugPairing } from '@/lib/pairingService';
  */
 export async function POST(request) {
   try {
+    // Auth obligatoire
+    const { user, error: authError } = await authenticateRequest(request);
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
+    }
+
     const body = await request.json();
     const { mainRecipeId, diet, season, maxSuggestions = 5 } = body;
 
@@ -131,6 +138,12 @@ export async function POST(request) {
  */
 export async function GET(request) {
   try {
+    // Auth obligatoire
+    const { user, error: authError } = await authenticateRequest(request);
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const debug = searchParams.get('debug');
     const mainId = parseInt(searchParams.get('main') || '0');

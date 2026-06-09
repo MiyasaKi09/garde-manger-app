@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { authFetch } from '@/lib/authFetch'
 import { calculateFullProfile, ACTIVITY_LABELS } from '@/lib/nutritionCalculator'
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
+import { toast } from '@/components/Toast'
 import './onboarding.css'
 
 const STEPS = [
@@ -100,7 +101,7 @@ export default function NutritionOnboarding() {
       router.push('/nutrition')
     } catch (err) {
       console.error('Save error:', err)
-      alert('Erreur — vérifie que la migration SQL a été appliquée')
+      toast.error('Erreur lors de la sauvegarde du profil')
     } finally {
       setSaving(false)
     }

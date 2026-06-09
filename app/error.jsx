@@ -1,7 +1,6 @@
 'use client';
 
 export default function Error({ error, reset }) {
-  console.error('Client Error boundary:', error);
   return (
     <div className="card" style={{margin:'24px auto', maxWidth:700}}>
       <h2>Oups, une erreur est survenue</h2>

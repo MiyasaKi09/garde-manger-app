@@ -5,6 +5,8 @@ import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import MealCookSheet from '@/components/MealCookSheet'
 import { ChevronLeft, ChevronRight, Loader2, Check } from 'lucide-react'
+import { toast } from '@/components/Toast'
+import { openMealRecipe } from './openMealRecipe'
 import './WeekGrid.css'
 
 /** Extrait le nom du plat — repris verbatim de WeeklyPlanView. */
@@ -33,7 +35,7 @@ function renderDishName(name) {
 }
 
 const MEAL_LABELS = { pdj: 'Petit-déj', dejeuner: 'Déjeuner', diner: 'Dîner', collation: 'Collation' }
-const MEAL_BAR = { pdj: '#D9A33A', dejeuner: '#6FB05A', diner: '#6E7A3F', collation: '#BB5836' }
+const MEAL_BAR = { pdj: 'var(--m-pdj)', dejeuner: 'var(--m-dej)', diner: 'var(--m-din)', collation: 'var(--m-col)' }
 const MEAL_ORDER = ['pdj', 'dejeuner', 'diner', 'collation']
 const DAY_NAMES_FULL = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
 
@@ -112,38 +114,17 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
   }
 
   async function handleMealClick(typeMeals, dishName) {
-    const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-    const query = julien?.description
-    if (!query) return
     setCurrentMealEntries(typeMeals || [])
-
-    const cached = recipeCacheRef.current[query]
-    if (cached) { setGeneratedRecipe(cached); setCookModeOpen(true); return }
-    if (cached === false) {
-      alert("Pas encore de fiche recette pour ce plat. Elle est créée par la routine lors de la génération du planning.")
-      return
-    }
-
-    setGeneratingFor(dishName)
-    try {
-      const res = await authFetch(`/api/recipes/generated?q=${encodeURIComponent(query)}`)
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) {
-        recipeCacheRef.current[query] = false
-        alert(res.status === 404
-          ? "Pas encore de fiche recette pour ce plat. Elle est créée par la routine lors de la génération du planning."
-          : (data.error || 'Erreur lors du chargement de la recette.'))
-        return
-      }
-      recipeCacheRef.current[query] = data.recipe || false
-      setGeneratedRecipe(data.recipe)
-      setCookModeOpen(true)
-    } catch (err) {
-      console.error('Erreur recette:', err)
-      alert('Erreur lors du chargement de la recette. Réessaie.')
-    } finally {
-      setGeneratingFor(null)
-    }
+    await openMealRecipe({
+      typeMeals,
+      recipeCacheRef,
+      setGeneratingFor,
+      setGeneratedRecipe,
+      setCookModeOpen,
+      authFetch,
+      toastError: toast.error,
+      dishName,
+    })
   }
 
   const mealsByDate = {}

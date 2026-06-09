@@ -11,6 +11,7 @@ import { capitalizeProduct } from './components/pantryUtils';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import EditLotForm from './components/EditLotForm';
 import RestesManager from '@/components/RestesManager';
+import { toast } from '@/components/Toast';
 import './pantry.css';
 
 // Registre V21 — onglets de statut (mappés sur statusFilter)
@@ -357,21 +358,21 @@ export default function PantryPage() {
 
         if (error) {
           console.error('Erreur lors du fractionnement:', error);
-          alert('Erreur lors de la consommation: ' + error.message);
+          toast.error('Erreur lors de la consommation : ' + error.message);
           return;
         }
 
         // Afficher le message de résultat
         if (data && data.length > 0 && data[0].message) {
-          alert(data[0].message);
+          toast.success(data[0].message);
         }
 
         // Recharger les items pour refléter les changements
         await loadPantryItems();
 
       } catch (error) {
-        console.error('Erreur:', error);
-        alert('Erreur lors de la consommation');
+        console.error('Erreur consommation:', error);
+        toast.error('Erreur lors de la consommation');
       }
       return;
     }
@@ -398,11 +399,9 @@ export default function PantryPage() {
 
       if (error) {
         console.error('Erreur lors de la consommation:', error);
-        // Revertir en cas d'erreur
         await loadPantryItems();
       }
-    } catch (error) {
-      console.error('Erreur:', error);
+    } catch {
       await loadPantryItems();
     }
   }
@@ -443,13 +442,12 @@ export default function PantryPage() {
         .eq('id', id);
 
       if (error) {
-        console.error('Erreur Supabase lors de la mise à jour:', error);
+        console.error('Erreur mise à jour lot:', error);
         throw error;
       }
     } catch (error) {
       console.error('Erreur lors de la mise à jour:', error);
-      alert('Erreur lors de la mise à jour: ' + error.message);
-      // Revertir la mise à jour locale en cas d'erreur
+      toast.error('Erreur lors de la mise à jour : ' + error.message);
       await loadPantryItems();
     }
   }
@@ -481,13 +479,10 @@ export default function PantryPage() {
 
       if (error) {
         console.error('Erreur lors de la suppression:', error);
-        // Revertir la suppression optimiste en cas d'erreur
         await loadPantryItems();
-        alert('Erreur lors de la suppression: ' + error.message);
+        toast.error('Erreur lors de la suppression : ' + error.message);
       }
-    } catch (error) {
-      console.error('Erreur:', error);
-      // Revertir la suppression optimiste
+    } catch {
       await loadPantryItems();
     }
   }
@@ -682,13 +677,18 @@ export default function PantryPage() {
               </div>
 
               {/* registre / inventaire (ledger V21) */}
-              {filteredItems.length === 0 ? (
+              {items.length === 0 ? (
+                <div className="v21-empty">
+                  <p>Votre garde-manger est vide. Commencez par ajouter vos premiers produits.</p>
+                  <button className="v21-btn" onClick={() => setShowForm(true)}>+ Ajouter un produit</button>
+                </div>
+              ) : filteredItems.length === 0 ? (
                 <div className="v21-empty">
                   <p>Aucun article trouvé. Ajustez vos filtres ou ajoutez des produits.</p>
                   <button className="v21-btn" onClick={() => setShowForm(true)}>+ Ajouter un produit</button>
                 </div>
               ) : (
-                <div className="v21-its">
+                <div className="v21-its" role="list">
                   {filteredItems.map(item => {
                     const cls = v21StatusClass(item);
                     const q = item.qty_remaining != null

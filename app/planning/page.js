@@ -6,6 +6,7 @@ import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
 import { Sparkles, RefreshCw, X, Check } from 'lucide-react'
 import WeekGrid from './components/WeekGrid'
+import ConfirmDialog from '@/components/ConfirmDialog'
 
 export default function PlanningPage() {
   const router = useRouter()
@@ -13,6 +14,8 @@ export default function PlanningPage() {
   const [loading, setLoading] = useState(true)
   const [importsLoaded, setImportsLoaded] = useState(false)
   const [imports, setImports] = useState([])
+  const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false)
+  const [importToDelete, setImportToDelete] = useState(null)
 
   useEffect(() => { checkAuth() }, [])
   useEffect(() => { if (user) loadImports() }, [user])
@@ -22,8 +25,7 @@ export default function PlanningPage() {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) { router.push('/login'); return }
       setUser(session.user)
-    } catch (error) {
-      console.error('Erreur auth:', error)
+    } catch {
       router.push('/login')
     } finally {
       setLoading(false)
@@ -35,21 +37,28 @@ export default function PlanningPage() {
       const res = await authFetch('/api/planning/imports')
       const data = await res.json()
       if (data.imports) setImports(data.imports)
-    } catch (err) {
-      console.error('Erreur chargement imports:', err)
+    } catch {
+      // imports restent vides
     } finally {
       setImportsLoaded(true)
     }
   }
 
-  async function handleDelete(importId, e) {
+  function handleDelete(importId, e) {
     e.stopPropagation()
-    if (!confirm('Supprimer ce plan importé ?')) return
+    setImportToDelete(importId)
+    setConfirmDeleteOpen(true)
+  }
+
+  async function doDelete() {
+    if (!importToDelete) return
     try {
-      await authFetch(`/api/planning/imports/${importId}`, { method: 'DELETE' })
-      setImports(prev => prev.filter(i => i.id !== importId))
+      await authFetch(`/api/planning/imports/${importToDelete}`, { method: 'DELETE' })
+      setImports(prev => prev.filter(i => i.id !== importToDelete))
     } catch (err) {
       console.error('Erreur suppression:', err)
+    } finally {
+      setImportToDelete(null)
     }
   }
 
@@ -108,7 +117,7 @@ export default function PlanningPage() {
         detailCacheRef.current[selectedImportId] = payload
         if (!cancelled) setWeekData(payload)
       } catch (err) {
-        console.error('Erreur chargement semaine:', err)
+        console.error('Erreur chargement détail semaine:', err)
         if (!cancelled) setWeekData({ meals: [], batchRecipes: [], prepTasks: [], shoppingItems: [] })
       } finally {
         if (!cancelled) setWeekLoading(false)
@@ -587,6 +596,16 @@ export default function PlanningPage() {
           </div>
         </div>
       )}
+
+      <ConfirmDialog
+        isOpen={confirmDeleteOpen}
+        onClose={() => { setConfirmDeleteOpen(false); setImportToDelete(null) }}
+        onConfirm={doDelete}
+        title="Supprimer ce plan ?"
+        message="Cette action est irréversible. Le plan importé et tous ses repas seront supprimés."
+        confirmText="Supprimer"
+        cancelText="Annuler"
+      />
 
       <style jsx global>{`
 /* ═══════════════════════════════════════════════════════════════════════

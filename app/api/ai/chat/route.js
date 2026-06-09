@@ -40,7 +40,9 @@ export async function POST(request) {
     const ctx = await buildAiContext(supabase, user.id)
     let formattedContext = formatContextForPrompt(ctx)
     if (contextOverride) {
-      formattedContext += '\n\nCONTEXTE SUPPLÉMENTAIRE :\n' + contextOverride
+      // Limiter le contexte injecté par le client (anti-abus / coûts tokens)
+      const safeOverride = String(contextOverride).slice(0, 4000)
+      formattedContext += '\n\nCONTEXTE SUPPLÉMENTAIRE :\n' + safeOverride
     }
 
     const systemPrompt = getSystemPrompt(intent, formattedContext)

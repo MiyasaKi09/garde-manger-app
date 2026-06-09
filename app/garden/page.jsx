@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
+import { toast } from '@/components/Toast'
 import './garden.css'
 
 export default function GardenPage() {
@@ -23,7 +24,7 @@ export default function GardenPage() {
   async function harvest(plant) {
     const { error } = await supabase.rpc('add_harvest_lot', { plant_id: plant.id })
     if (error) setError(error.message)
-    else alert('Récolte enregistrée dans votre stock !')
+    else toast.success('Récolte enregistrée dans votre stock !')
   }
 
   return (

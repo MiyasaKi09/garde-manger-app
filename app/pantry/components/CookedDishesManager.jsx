@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import CookedDishCard from './CookedDishCard';
+import { toast } from '@/components/Toast';
 import './CookedDishesManager.css';
 
 export default function CookedDishesManager({ userId, onActionComplete }) {
@@ -60,11 +61,11 @@ export default function CookedDishesManager({ userId, onActionComplete }) {
 
 
       } else {
-        alert(data.error || 'Erreur lors de la consommation');
+        toast.error(data.error || 'Erreur lors de la consommation');
       }
     } catch (error) {
       console.error('Erreur:', error);
-      alert('Erreur lors de la consommation');
+      toast.error('Erreur lors de la consommation');
     }
   };
 
@@ -82,11 +83,11 @@ export default function CookedDishesManager({ userId, onActionComplete }) {
         await loadDishes();
         if (onActionComplete) onActionComplete();
       } else {
-        alert(data.error || 'Erreur lors du changement de stockage');
+        toast.error(data.error || 'Erreur lors du changement de stockage');
       }
     } catch (error) {
       console.error('Erreur:', error);
-      alert('Erreur lors du changement de stockage');
+      toast.error('Erreur lors du changement de stockage');
     }
   };
 
@@ -102,11 +103,11 @@ export default function CookedDishesManager({ userId, onActionComplete }) {
         await loadDishes();
         if (onActionComplete) onActionComplete();
       } else {
-        alert(data.error || 'Erreur lors de la suppression');
+        toast.error(data.error || 'Erreur lors de la suppression');
       }
     } catch (error) {
       console.error('Erreur:', error);
-      alert('Erreur lors de la suppression');
+      toast.error('Erreur lors de la suppression');
     }
   };
 
