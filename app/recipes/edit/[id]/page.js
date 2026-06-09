@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import Link from 'next/link';
+import { toast } from '@/components/Toast';
 import '../../recipes.css';
 
 export default function RecipeEditPage() {
@@ -238,7 +239,7 @@ export default function RecipeEditPage() {
       
     } catch (error) {
       console.error('Erreur chargement recette:', error);
-      alert('Erreur lors du chargement de la recette');
+      toast.error('Erreur lors du chargement de la recette');
     } finally {
       setLoading(false);
     }
@@ -282,8 +283,8 @@ export default function RecipeEditPage() {
       ];
 
       setProductSuggestions(suggestions);
-    } catch (error) {
-      console.error('Erreur recherche produits:', error);
+    } catch {
+      // erreur silencieuse (suggestions non critiques)
     } finally {
       setSearchingProducts(false);
     }
@@ -291,7 +292,7 @@ export default function RecipeEditPage() {
 
   function addIngredient() {
     if (!newIngredient.name || !newIngredient.qty) {
-      alert('Veuillez remplir au moins le nom et la quantité');
+      toast.error('Veuillez remplir au moins le nom et la quantité');
       return;
     }
 
@@ -338,7 +339,7 @@ export default function RecipeEditPage() {
 
   function addUtensil() {
     if (!newUtensil.utensil_name) {
-      alert('Veuillez entrer le nom de l\'ustensile');
+      toast.error("Veuillez entrer le nom de l'ustensile");
       return;
     }
 
@@ -361,7 +362,7 @@ export default function RecipeEditPage() {
 
   function addMicronutrient() {
     if (!selectedMicronutrient || !microValue) {
-      alert('Veuillez sélectionner un nutriment et entrer une valeur');
+      toast.error('Veuillez sélectionner un nutriment et entrer une valeur');
       return;
     }
 
@@ -398,7 +399,7 @@ export default function RecipeEditPage() {
 
   async function saveRecipe() {
     if (!recipe.title) {
-      alert('Le titre est obligatoire');
+      toast.error('Le titre est obligatoire');
       return;
     }
 
@@ -523,11 +524,11 @@ export default function RecipeEditPage() {
         if (error) throw error;
       }
 
-      alert('Recette sauvegardée avec succès!');
+      toast.success('Recette sauvegardée avec succès !');
       router.push('/recipes');
     } catch (error) {
-      console.error('Erreur sauvegarde:', error);
-      alert('Erreur lors de la sauvegarde: ' + error.message);
+      console.error('Erreur sauvegarde recette:', error);
+      toast.error('Erreur lors de la sauvegarde : ' + error.message);
     } finally {
       setSaving(false);
     }

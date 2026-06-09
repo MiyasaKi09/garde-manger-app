@@ -5,6 +5,8 @@ import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import MealCookSheet from '@/components/MealCookSheet'
 import { ChevronLeft, ChevronRight, Loader2, Check } from 'lucide-react'
+import { toast } from '@/components/Toast'
+import { openMealRecipe } from './openMealRecipe'
 
 /**
  * Extrait le nom du plat à partir des descriptions.
@@ -30,9 +32,8 @@ const MEAL_LABELS = {
   collation: 'Collation',
 }
 
-// V21 — barre de couleur par repas (saffron / sage / olive / terracotta),
-// alignée sur TodayMeals + v21.css (.v21-meal-bar).
-const MEAL_BAR = { pdj: '#D9A33A', dejeuner: '#6FB05A', diner: '#6E7A3F', collation: '#BB5836' }
+// V21 — barre de couleur par repas, via tokens CSS --m-*
+const MEAL_BAR = { pdj: 'var(--m-pdj)', dejeuner: 'var(--m-dej)', diner: 'var(--m-din)', collation: 'var(--m-col)' }
 
 const MEAL_ORDER = ['pdj', 'dejeuner', 'diner', 'collation']
 
@@ -111,7 +112,7 @@ export default function WeeklyPlanView({ imports = [] }) {
       mealsCacheRef.current[id] = m
       setMeals(m)
     } catch (err) {
-      console.error('Erreur chargement meals:', err)
+      console.error('Erreur chargement planning:', err)
       setMeals([])
     } finally {
       setLoading(false)
@@ -191,44 +192,17 @@ export default function WeeklyPlanView({ imports = [] }) {
 
   // Lecture de la fiche déjà générée par la routine (zéro API facturée).
   async function handleMealClick(typeMeals, dishName) {
-    const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-    const query = julien?.description
-    if (!query) return
-
     setCurrentMealEntries(typeMeals || [])
-
-    // Préchargé au survol → ouverture instantanée.
-    const cached = recipeCacheRef.current[query]
-    if (cached) {
-      setGeneratedRecipe(cached)
-      setCookModeOpen(true)
-      return
-    }
-    if (cached === false) {
-      alert("Pas encore de fiche recette pour ce plat. Elle est créée par la routine lors de la génération du planning.")
-      return
-    }
-
-    setGeneratingFor(dishName)
-    try {
-      const res = await authFetch(`/api/recipes/generated?q=${encodeURIComponent(query)}`)
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) {
-        recipeCacheRef.current[query] = false
-        alert(res.status === 404
-          ? "Pas encore de fiche recette pour ce plat. Elle est créée par la routine lors de la génération du planning."
-          : (data.error || 'Erreur lors du chargement de la recette.'))
-        return
-      }
-      recipeCacheRef.current[query] = data.recipe || false
-      setGeneratedRecipe(data.recipe)
-      setCookModeOpen(true)
-    } catch (err) {
-      console.error('Erreur recette:', err)
-      alert('Erreur lors du chargement de la recette. Réessaie.')
-    } finally {
-      setGeneratingFor(null)
-    }
+    await openMealRecipe({
+      typeMeals,
+      recipeCacheRef,
+      setGeneratingFor,
+      setGeneratedRecipe,
+      setCookModeOpen,
+      authFetch,
+      toastError: toast.error,
+      dishName,
+    })
   }
 
   if (loading) {

@@ -73,7 +73,7 @@ export default function ProduitDetail(){
         ) : rows.length === 0 ? (
           <div className="v21-empty">
             <p>Aucun lot pour ce produit.</p>
-            <Link href="/add" className="v21-btn">Ajouter un lot</Link>
+            <Link href="/pantry" className="v21-btn">Ajouter un lot</Link>
           </div>
         ) : (
           <div className="v21-its">

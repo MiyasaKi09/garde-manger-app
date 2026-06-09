@@ -217,7 +217,7 @@ export default function PlanningView() {
   }
 
   // Barre de couleur par repas (alignée v21.css)
-  const MEAL_BAR = { pdj: '#D9A33A', dej: '#6FB05A', din: '#6E7A3F', col: '#BB5836' }
+  const MEAL_BAR = { pdj: 'var(--m-pdj)', dej: 'var(--m-dej)', din: 'var(--m-din)', col: 'var(--m-col)' }
 
   const MealCard = ({ barKey, label, desc, macros, onClick, expandable, expanded }) => (
     <div

@@ -317,7 +317,7 @@ function RiskCard({ risk, expanded, onToggle, onAction, isProcessing }) {
             {risk.daysLeft < 0 ? (
               <span className="expired">PÉRIMÉ</span>
             ) : risk.daysLeft === 0 ? (
-              <span className="today">Expire aujourd'hui</span>
+              <span className="today">Expire aujourd&apos;hui</span>
             ) : risk.daysLeft === 1 ? (
               <span className="tomorrow">Expire demain</span>
             ) : (

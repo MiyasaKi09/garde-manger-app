@@ -373,7 +373,10 @@ export default function RecipesPage() {
       {recipes.length === 0 ? (
         <div className="v21-empty rc-empty">
           <p>Aucune recette pour le moment.</p>
-          <Link href="/planning/assistant" className="v21-btn">✦ Demander à Myko</Link>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', marginTop: 4 }}>
+            <Link href="/recipes/new" className="v21-btn">+ Créer ma première recette</Link>
+            <Link href="/planning/assistant" className="v21-btn ghost">✦ Demander à Myko</Link>
+          </div>
         </div>
       ) : showSections ? (
         <>

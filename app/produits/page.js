@@ -58,7 +58,7 @@ export default function ProduitsPage(){
         ) : products.length === 0 ? (
           <div className="v21-empty">
             <p>Aucun produit en stock pour le moment.</p>
-            <Link href="/add" className="v21-btn">Ajouter un lot</Link>
+            <Link href="/pantry" className="v21-btn">Ajouter un lot</Link>
           </div>
         ) : (
           <div className="v21-cards" style={{ marginTop: 22 }}>

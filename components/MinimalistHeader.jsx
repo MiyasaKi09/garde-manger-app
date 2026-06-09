@@ -67,7 +67,7 @@ export default function MinimalistHeader() {
           aria-expanded={mobileMenuOpen}
           onClick={() => setMobileMenuOpen((v) => !v)}
         >
-          {mobileMenuOpen ? '✕' : '☰'}
+          <span aria-hidden="true">{mobileMenuOpen ? '✕' : '☰'}</span>
         </button>
       </header>
 
