@@ -447,9 +447,11 @@ export const formatExpiryDate = (dateStr) => {
 };
 
 /**
- * Retourne un statut d'expiration basé sur le nombre de jours restants
+ * Retourne un statut d'expiration basé sur le nombre de jours restants.
+ * Règle métier : alerte à J-3 pour les DLC (et durées estimées), J-7 pour les DDM —
+ * le paramètre expiryKind ('DLC' | 'DDM' | 'ESTIMATE') décale les seuils orange/jaune.
  */
-export const getExpirationStatus = (days) => {
+export const getExpirationStatus = (days, expiryKind) => {
   if (days === null) {
     return { label: 'Sans date', color: '#6b7280' };
   }
@@ -466,11 +468,14 @@ export const getExpirationStatus = (days) => {
     return { label: 'Expire demain', color: '#f97316' };
   }
 
-  if (days <= 3) {
+  const orange = expiryKind === 'DDM' ? 7 : 3;
+  const jaune = expiryKind === 'DDM' ? 14 : 7;
+
+  if (days <= orange) {
     return { label: `Expire dans ${days}j`, color: '#f97316' };
   }
 
-  if (days <= 7) {
+  if (days <= jaune) {
     return { label: `Expire dans ${days}j`, color: '#facc15' };
   }
 
