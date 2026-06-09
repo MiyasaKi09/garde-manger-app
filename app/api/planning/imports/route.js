@@ -5,7 +5,7 @@ import { listImports } from '@/lib/nutritionPlanService'
 export async function GET(request) {
   try {
     const { supabase, user, error: authError } = await authenticateRequest(request)
-    if (authError) {
+    if (authError || !user) {
       return NextResponse.json({ error: authError }, { status: 401 })
     }
 

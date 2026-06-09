@@ -1,5 +1,6 @@
 // app/api/recipes/[id]/nutrition/calculate/route.js
 import { createClient } from '@supabase/supabase-js';
+import { authenticateRequest } from '@/lib/apiAuth';
 
 function getSupabase() {
   return createClient(
@@ -10,6 +11,12 @@ function getSupabase() {
 
 export async function POST(request, { params }) {
   try {
+    // Auth obligatoire AVANT tout usage du client service_role
+    const { user, error: authError } = await authenticateRequest(request);
+    if (authError || !user) {
+      return Response.json({ error: 'Non authentifié' }, { status: 401 });
+    }
+
     const { id } = params;
     const recipeId = parseInt(id);
     const supabase = getSupabase();
@@ -29,17 +36,17 @@ export async function POST(request, { params }) {
       return Response.json({ error: error.message }, { status: 500 });
     }
 
-    return Response.json({ 
-      success: true, 
+    return Response.json({
+      success: true,
       data,
       message: 'Valeurs nutritionnelles calculées et mises en cache'
     });
 
   } catch (error) {
     console.error('❌ Erreur serveur:', error);
-    return Response.json({ 
-      error: 'Erreur serveur', 
-      details: error.message 
+    return Response.json({
+      error: 'Erreur serveur',
+      details: error.message
     }, { status: 500 });
   }
 }

@@ -16,13 +16,46 @@ export const config = {
   ],
 };
 
+// Pages nécessitant une session utilisateur (préfixes de chemin)
+const PROTECTED_PREFIXES = [
+  '/pantry',
+  '/planning',
+  '/courses',
+  '/nutrition',
+  '/recipes',
+  '/garden',
+  '/restes',
+  '/produits',
+  '/cook',
+  '/settings',
+];
+
+function isProtectedPath(pathname) {
+  // Jamais de redirection pour les API (elles gèrent leur propre auth et
+  // doivent renvoyer du JSON, pas une redirection HTML) ni pour /auth/*.
+  if (pathname.startsWith('/api/') || pathname.startsWith('/auth/')) return false;
+  if (pathname === '/' || pathname === '/login') return false;
+
+  return PROTECTED_PREFIXES.some(
+    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`)
+  );
+}
+
 export async function middleware(req) {
   const res = NextResponse.next();
   const supabase = createMiddlewareClient({ req, res });
-  
+
   // Rafraîchir la session (important pour que auth.uid() fonctionne)
-  // Mais NE PAS bloquer les requêtes - juste rafraîchir les cookies
-  await supabase.auth.getSession();
-  
+  const { data: { session } } = await supabase.auth.getSession();
+
+  // Protection des pages : rediriger vers /login si pas de session
+  const { pathname } = req.nextUrl;
+  if (!session && isProtectedPath(pathname)) {
+    const loginUrl = req.nextUrl.clone();
+    loginUrl.pathname = '/login';
+    loginUrl.search = '';
+    return NextResponse.redirect(loginUrl);
+  }
+
   return res;
 }

@@ -55,9 +55,24 @@ export async function POST(request, { params }) {
       );
     }
 
-    // Calculer la date d'expiration
+    // Récupérer les lots utilisés pour appliquer la règle DLC des restes
+    // (DLC plat = min(règle stockage, DLC lot le plus court))
+    let usedLotRows = [];
+    const validLotIds = (ingredients || [])
+      .filter(i => i.lot_id && i.quantity_used > 0)
+      .map(i => i.lot_id);
+    if (validLotIds.length > 0) {
+      const { data: fetchedLots } = await supabase
+        .from('inventory_lots')
+        .select('id, adjusted_expiration_date, expiration_date, best_before')
+        .in('id', validLotIds)
+        .eq('user_id', user.id);
+      usedLotRows = fetchedLots || [];
+    }
+
+    // Calculer la date d'expiration (inclut la contrainte DLC des lots)
     const cookedAt = new Date();
-    const expirationDate = calculateCookedDishExpiration(cookedAt, storageMethod);
+    const expirationDate = calculateCookedDishExpiration(cookedAt, storageMethod, usedLotRows);
 
     // Créer le plat cuisiné
     const { data: dish, error: dishError } = await supabase
@@ -94,6 +109,7 @@ export async function POST(request, { params }) {
           continue; // Ignorer les entrées invalides
         }
 
+        // TODO: basculer sur la RPC consume_lots_fefo (migration 20260609) une fois appliquée
         // 1. Déduire la quantité du lot d'inventaire
         const { data: lot, error: lotError } = await supabase
           .from('inventory_lots')

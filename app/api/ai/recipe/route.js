@@ -97,7 +97,11 @@ export async function POST(request) {
     const response = await anthropic.messages.create({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 4096,
-      system: `Tu es Myko, un chef cuisinier expert. On te donne une description de repas et tu génères une fiche recette complète et détaillée.
+      // cache_control sur le system prompt (long, réutilisé entre générations)
+      system: [{
+        type: 'text',
+        cache_control: { type: 'ephemeral' },
+        text: `Tu es Myko, un chef cuisinier expert. On te donne une description de repas et tu génères une fiche recette complète et détaillée.
 
 ${context}
 
@@ -139,6 +143,7 @@ Utilise les valeurs CIQUAL/table de composition des aliments, pas des estimation
 - Huile d'olive : kcal 884, p 0, g 0, l 100, f 0
 - Oignon : kcal 40, p 1.1, g 9.3, l 0.1, f 1.7
 - Tomate : kcal 18, p 0.9, g 3.9, l 0.2, f 1.2`,
+      }],
       messages: [
         {
           role: 'user',

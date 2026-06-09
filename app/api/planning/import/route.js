@@ -9,7 +9,7 @@ import { linkRecipesForUser } from '@/lib/ingredientResolver'
 export async function POST(request) {
   try {
     const { supabase, user, error: authError } = await authenticateRequest(request)
-    if (authError) {
+    if (authError || !user) {
       return NextResponse.json({ error: authError }, { status: 401 })
     }
 

@@ -1,29 +1,35 @@
 // app/api/restes/action/route.js
 /**
  * API d'Actions Anti-Gaspillage
- * 
+ *
  * POST /api/restes/action
  * Enregistre une action de prévention du gaspillage
  */
 
 import { NextResponse } from 'next/server';
+import { authenticateRequest } from '@/lib/apiAuth';
 import { logWastePreventionAction } from '@/lib/wastePreventionService';
-import { supabase } from '@/lib/supabaseClient';
 
 export async function POST(req) {
   try {
+    // Auth : userId dérivé de la session, jamais du body
+    const { supabase, user, error: authError } = await authenticateRequest(req);
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
+    }
+    const userId = user.id;
+
     const body = await req.json();
     const {
-      userId,
       lotId,
       actionType,  // 'freeze', 'preserve', 'cook', 'transform', 'share'
       quantitySaved,
       notes
     } = body;
 
-    if (!userId || !lotId || !actionType) {
+    if (!lotId || !actionType) {
       return NextResponse.json(
-        { error: 'userId, lotId et actionType sont requis' },
+        { error: 'lotId et actionType sont requis' },
         { status: 400 }
       );
     }
@@ -43,7 +49,15 @@ export async function POST(req) {
       actionType,
       quantitySaved: quantitySaved || 0,
       notes
-    });
+    }, supabase);
+
+    if (!result.success) {
+      console.error('Erreur log action anti-gaspillage:', result.error);
+      return NextResponse.json(
+        { error: 'Échec de l\'enregistrement de l\'action', message: result.error },
+        { status: 500 }
+      );
+    }
 
     // Actions spécifiques selon le type
     let updateResult = null;
@@ -61,7 +75,15 @@ export async function POST(req) {
         .eq('user_id', userId)
         .select();
 
-      updateResult = { action: 'freeze', data, error };
+      if (error) {
+        console.error('Erreur mutation freeze:', error);
+        return NextResponse.json(
+          { error: 'Échec de la mise à jour du lot (congélation)', message: error.message },
+          { status: 500 }
+        );
+      }
+
+      updateResult = { action: 'freeze', data };
     }
 
     if (actionType === 'consumed') {
@@ -76,7 +98,15 @@ export async function POST(req) {
         .eq('user_id', userId)
         .select();
 
-      updateResult = { action: 'consumed', data, error };
+      if (error) {
+        console.error('Erreur mutation consumed:', error);
+        return NextResponse.json(
+          { error: 'Échec de la mise à jour du lot (consommation)', message: error.message },
+          { status: 500 }
+        );
+      }
+
+      updateResult = { action: 'consumed', data };
     }
 
     return NextResponse.json({
@@ -102,9 +132,8 @@ export async function POST(req) {
 export async function GET(req) {
   return NextResponse.json({
     endpoint: 'POST /api/restes/action',
-    description: 'Enregistre une action de prévention du gaspillage',
+    description: 'Enregistre une action de prévention du gaspillage (utilisateur authentifié)',
     parameters: {
-      userId: 'UUID de l\'utilisateur (requis)',
       lotId: 'ID du lot concerné (requis)',
       actionType: 'Type d\'action: freeze, preserve, cook, transform, share, consumed (requis)',
       quantitySaved: 'Quantité sauvée (optionnel)',
@@ -112,7 +141,6 @@ export async function GET(req) {
     },
     validActions: ['freeze', 'preserve', 'cook', 'transform', 'share', 'consumed'],
     example: {
-      userId: 'uuid-123',
       lotId: 'lot-456',
       actionType: 'freeze',
       quantitySaved: 500,
