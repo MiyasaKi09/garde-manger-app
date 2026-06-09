@@ -163,13 +163,28 @@ jobs:
           TMP="data_export"
           rm -rf "$TMP"
           mkdir -p "$TMP" "$EXPORT_LATEST/csv"
+
+          # Exclude tables containing personal data from the export.
+          # Reference tables (archetypes, canonical_foods, recipes, ...) stay included.
+          TABLES_SQL="select tablename from pg_tables where schemaname='public'
+            and tablename not in (
+              'weight_entries','user_health_goals','meal_log',
+              'nutrition_plan_meals','nutrition_plan_imports','nutrition_plan_daily_totals',
+              'nutrition_plan_batch_recipes','nutrition_plan_prep_tasks','nutrition_plan_shopping_items',
+              'inventory_lots','generated_recipes','generated_recipe_ingredients',
+              'legacy_users','plan_regen_requests','cooked_dishes','cooked_dish_ingredients',
+              'pantry_items','planned_meals','meal_plans'
+            )
+            and tablename !~ '^user_'
+            and tablename !~ '_log\$'
+            order by tablename;"
           echo "# Data export summary" > "$EXPORT_LATEST/data_summary.md"
           echo "_Generated: $(date -u)_" >> "$EXPORT_LATEST/data_summary.md"
           echo >> "$EXPORT_LATEST/data_summary.md"
           echo "## Tables and counts" >> "$EXPORT_LATEST/data_summary.md"
 
           if [ -n "$PGOPT" ]; then
-            LIST=$(PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
+            LIST=$(PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "$TABLES_SQL")
             for T in $LIST; do
               echo "Exporting $T..."
               PGOPTIONS="$PGOPT" psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -c "\copy public.\"$T\" to '${TMP}/${T}.csv' csv header"
@@ -177,7 +192,7 @@ jobs:
               echo "- $T: $CNT rows" >> "$EXPORT_LATEST/data_summary.md"
             done
           else
-            LIST=$(psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "select tablename from pg_tables where schemaname='public' order by tablename;")
+            LIST=$(psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -Atc "$TABLES_SQL")
             for T in $LIST; do
               echo "Exporting $T..."
               psql "host=$HOST port=$PORT dbname=$DB user=$USER sslmode=require" -c "\copy public.\"$T\" to '${TMP}/${T}.csv' csv header"
