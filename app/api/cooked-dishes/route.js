@@ -4,10 +4,10 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import {
-  createCookedDish,
-  getCookedDishes
-} from '@/lib/cookedDishesService';
+import { authenticateRequest } from '@/lib/apiAuth';
+import { createCookedDish } from '@/lib/cookedDishesService';
+
+export const dynamic = 'force-dynamic';
 
 // POST /api/cooked-dishes - Créer un nouveau plat cuisiné
 export async function POST(request) {
@@ -77,11 +77,15 @@ export async function POST(request) {
 }
 
 // GET /api/cooked-dishes - Lister les plats cuisinés
+//   ?onlyWithPortions=true  → uniquement portions_remaining > 0
+//   ?expiringInDays=N       → expiration ≤ aujourd'hui + N jours
+//   ?active=true            → restes « mangeables » : portions_remaining > 0
+//                             ET non périmés (DLC comparée en UTC), tri DLC asc
 export async function GET(request) {
   try {
-    // Vérification authentification
-    const supabase = createRouteHandlerClient({ cookies });
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    // Auth via apiAuth (Bearer + cookies) : le client retourné porte le jeton
+    // utilisateur → compatible RLS, contrairement au client anon partagé.
+    const { supabase, user, error: authError } = await authenticateRequest(request);
 
     if (authError || !user) {
       return NextResponse.json(
@@ -92,27 +96,50 @@ export async function GET(request) {
 
     // Récupérer les paramètres de requête
     const { searchParams } = new URL(request.url);
-    const onlyWithPortions = searchParams.get('onlyWithPortions') === 'true';
+    const active = searchParams.get('active') === 'true';
+    const onlyWithPortions = active || searchParams.get('onlyWithPortions') === 'true';
     const expiringInDays = searchParams.get('expiringInDays');
 
-    const options = {
-      onlyWithPortions,
-      expiringInDays: expiringInDays ? parseInt(expiringInDays) : null
-    };
+    // Comparaisons de dates en UTC (cf. règle DLC / timezone)
+    const todayUtc = new Date().toISOString().split('T')[0];
 
-    // Récupérer les plats
-    const result = await getCookedDishes(user.id, options);
+    let query = supabase
+      .from('cooked_dishes')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('expiration_date', { ascending: true });
 
-    if (!result.success) {
+    if (onlyWithPortions) {
+      query = query.gt('portions_remaining', 0);
+    }
+    if (active) {
+      query = query.gte('expiration_date', todayUtc);
+    }
+    if (expiringInDays) {
+      const target = new Date();
+      target.setUTCDate(target.getUTCDate() + parseInt(expiringInDays));
+      query = query.lte('expiration_date', target.toISOString().split('T')[0]);
+    }
+
+    const { data: dishes, error } = await query;
+    if (error) {
       return NextResponse.json(
-        { error: result.error || 'Erreur lors de la récupération des plats' },
+        { error: error.message || 'Erreur lors de la récupération des plats' },
         { status: 500 }
       );
     }
 
+    // Jours restants avant DLC (0 = expire aujourd'hui), calculés en UTC
+    const dishesWithDays = (dishes || []).map(dish => ({
+      ...dish,
+      days_until_expiration: Math.round(
+        (Date.parse(dish.expiration_date) - Date.parse(todayUtc)) / 86400000
+      )
+    }));
+
     return NextResponse.json({
       success: true,
-      dishes: result.dishes
+      dishes: dishesWithDays
     });
 
   } catch (error) {
