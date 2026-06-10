@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
-import { Loader2, ChefHat, RefreshCw, X, Check, Minus, Plus, Flame, Soup } from 'lucide-react'
+import { Loader2, ChefHat, RefreshCw, X, Check, Minus, Plus, Flame, Soup, Sparkles } from 'lucide-react'
 import { toast } from '@/components/Toast'
 import './TodayMeals.css'
 
@@ -95,6 +95,13 @@ export default function TodayMeals({ importId }) {
   // Restes actifs (cooked_dishes avec portions restantes, non périmés)
   const [leftovers, setLeftovers] = useState([])
 
+  // Re-planning dynamique : proposé après création de restes, ou improvisation
+  const [replanOffered, setReplanOffered] = useState(false)
+  const [replanSending, setReplanSending] = useState(false)
+  const [improviseOpen, setImproviseOpen] = useState(false)
+  const [improviseText, setImproviseText] = useState('')
+  const [improviseSlot, setImproviseSlot] = useState('diner')
+
   // Cook mode
   const [cookModeOpen, setCookModeOpen] = useState(false)
   const [generatedRecipe, setGeneratedRecipe] = useState(null)
@@ -155,12 +162,55 @@ export default function TodayMeals({ importId }) {
     if (cookSheetMeal) setDoneSet(s => new Set(s).add(mealKey(cookSheetMeal)))
     if (result?.leftover) {
       toast.success(`Repas validé — ${result.leftover.portions_remaining} portion(s) aux restes (DLC ${formatDlc(result.leftover.expiration_date)})`)
+      setReplanOffered(true)
     } else if (cookSheetMeal?.eatenDish) {
       toast.success('Reste mangé — portions mises à jour !')
     } else {
       toast.success('Repas validé !')
     }
     loadLeftovers()
+  }
+
+  /**
+   * Re-planning dynamique : la Routine claude.ai réorganise la fin de semaine
+   * (restes d'abord, stock, budget nutritionnel restant). `pinned` fixe un
+   * repas décidé par l'utilisateur (« ce soir je fais des bolognaises »).
+   */
+  async function requestReplan({ reason, pinned } = {}) {
+    if (replanSending) return
+    setReplanSending(true)
+    try {
+      const res = await authFetch('/api/routine/replan-week', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ import_id: importId, reason, pinned }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || data.error) {
+        toast.error(data.error || 'Impossible de lancer la réorganisation')
+        return
+      }
+      toast.success('Réorganisation lancée — la routine met à jour la semaine (1-2 min)…')
+      setReplanOffered(false)
+      setImproviseOpen(false)
+      setImproviseText('')
+    } catch {
+      toast.error('Erreur réseau — réorganisation non lancée')
+    } finally {
+      setReplanSending(false)
+    }
+  }
+
+  function submitImprovise() {
+    const text = improviseText.trim()
+    if (!text) {
+      toast.warning('Décrivez le plat que vous voulez cuisiner')
+      return
+    }
+    requestReplan({
+      reason: 'envie',
+      pinned: { meal_date: todayStr, meal_type: improviseSlot, description: text },
+    })
   }
 
   // Fermeture par Escape sur la bottom sheet
@@ -338,6 +388,70 @@ export default function TodayMeals({ importId }) {
   return (
     <>
       <div className="tm-container">
+        {/* Re-planning dynamique proposé quand des restes viennent d'être créés */}
+        {replanOffered && (
+          <div className="tm-replan-cta" role="status">
+            <span className="tm-replan-text">
+              Des restes ont été créés — réorganiser la suite de la semaine pour les utiliser ?
+            </span>
+            <div className="tm-replan-actions">
+              <button
+                className="tm-replan-yes"
+                disabled={replanSending}
+                onClick={() => requestReplan({ reason: 'leftovers' })}
+              >
+                {replanSending ? 'Lancement…' : 'Réorganiser'}
+              </button>
+              <button className="tm-replan-later" onClick={() => setReplanOffered(false)}>
+                Plus tard
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Improviser : l'utilisateur impose un plat, la routine réajuste le reste */}
+        <div className="tm-improvise">
+          {!improviseOpen ? (
+            <button className="tm-improvise-open" onClick={() => setImproviseOpen(true)}>
+              <Sparkles size={13} aria-hidden="true" />
+              Improviser un repas
+            </button>
+          ) : (
+            <div className="tm-improvise-form">
+              <input
+                type="text"
+                className="tm-improvise-input"
+                placeholder="Ex : bolognaise maison avec ce qu'on a"
+                value={improviseText}
+                maxLength={200}
+                onChange={(e) => setImproviseText(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') submitImprovise() }}
+                aria-label="Plat que vous voulez cuisiner"
+                autoFocus
+              />
+              <select
+                className="tm-improvise-slot"
+                value={improviseSlot}
+                onChange={(e) => setImproviseSlot(e.target.value)}
+                aria-label="Créneau du repas improvisé"
+              >
+                <option value="dejeuner">Déjeuner</option>
+                <option value="diner">Dîner</option>
+              </select>
+              <button className="tm-replan-yes" disabled={replanSending} onClick={submitImprovise}>
+                {replanSending ? '…' : 'Caler ce plat'}
+              </button>
+              <button
+                className="tm-replan-later"
+                onClick={() => { setImproviseOpen(false); setImproviseText('') }}
+                aria-label="Annuler l'improvisation"
+              >
+                <X size={13} />
+              </button>
+            </div>
+          )}
+        </div>
+
         {leftovers.length > 0 && (
           <div className="tm-leftovers">
             <p className="tm-leftovers-title">
