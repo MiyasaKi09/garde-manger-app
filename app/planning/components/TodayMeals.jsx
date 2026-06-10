@@ -4,10 +4,27 @@ import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
-import MealCookSheet from '@/components/MealCookSheet'
-import { Loader2, ChefHat, RefreshCw, X, Check } from 'lucide-react'
+import { Loader2, ChefHat, RefreshCw, X, Check, Minus, Plus, Flame, Soup, Sparkles } from 'lucide-react'
 import { toast } from '@/components/Toast'
 import './TodayMeals.css'
+
+const round1 = (v) => Math.round(v * 10) / 10
+
+/** Affiche 1,5 plutôt que 1.5 (et sans décimale inutile). */
+const fmtPortions = (v) => String(round1(v)).replace('.', ',')
+
+/** Formate une DLC (date ISO) — comparaisons et affichage en UTC. */
+const formatDlc = (d) =>
+  new Date(`${d}T00:00:00Z`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', timeZone: 'UTC' })
+
+/** Créneau « en cours » selon l'heure locale (pour manger un reste maintenant). */
+function currentMealType() {
+  const h = new Date().getHours()
+  if (h < 10) return 'pdj'
+  if (h < 15) return 'dejeuner'
+  if (h < 18) return 'collation'
+  return 'diner'
+}
 
 /**
  * Extrait le nom du plat à partir des descriptions de plusieurs personnes.
@@ -75,6 +92,16 @@ export default function TodayMeals({ importId }) {
   const [doneSet, setDoneSet] = useState(new Set())
   const [cookSheetMeal, setCookSheetMeal] = useState(null)
 
+  // Restes actifs (cooked_dishes avec portions restantes, non périmés)
+  const [leftovers, setLeftovers] = useState([])
+
+  // Re-planning dynamique : proposé après création de restes, ou improvisation
+  const [replanOffered, setReplanOffered] = useState(false)
+  const [replanSending, setReplanSending] = useState(false)
+  const [improviseOpen, setImproviseOpen] = useState(false)
+  const [improviseText, setImproviseText] = useState('')
+  const [improviseSlot, setImproviseSlot] = useState('diner')
+
   // Cook mode
   const [cookModeOpen, setCookModeOpen] = useState(false)
   const [generatedRecipe, setGeneratedRecipe] = useState(null)
@@ -106,6 +133,86 @@ export default function TodayMeals({ importId }) {
     loadDone()
   }, [importId])
 
+  useEffect(() => { loadLeftovers() }, [])
+
+  async function loadLeftovers() {
+    try {
+      const res = await authFetch('/api/cooked-dishes?active=true')
+      const data = await res.json().catch(() => ({}))
+      if (res.ok && Array.isArray(data.dishes)) setLeftovers(data.dishes)
+    } catch {}
+  }
+
+  /** « Manger maintenant » sur un reste → même sheet, préremplie pour le créneau en cours. */
+  function eatLeftover(dish) {
+    const type = currentMealType()
+    const planEntries = meals.filter(m => m.meal_date === todayStr && m.meal_type === type)
+    const persons = planEntries.length
+      ? [...new Set(planEntries.map(e => e.person_name).filter(Boolean))]
+      : ['Julien']
+    setCookSheetMeal({
+      type,
+      dishName: dish.name,
+      entries: persons.map(name => ({ person_name: name, meal_date: todayStr })),
+      eatenDish: dish,
+    })
+  }
+
+  function handleCooked(result) {
+    if (cookSheetMeal) setDoneSet(s => new Set(s).add(mealKey(cookSheetMeal)))
+    if (result?.leftover) {
+      toast.success(`Repas validé — ${fmtPortions(result.leftover.portions_remaining)} portion(s) aux restes (DLC ${formatDlc(result.leftover.expiration_date)})`)
+      setReplanOffered(true)
+    } else if (cookSheetMeal?.eatenDish) {
+      toast.success('Reste mangé — portions mises à jour !')
+    } else {
+      toast.success('Repas validé !')
+    }
+    loadLeftovers()
+  }
+
+  /**
+   * Re-planning dynamique : la Routine claude.ai réorganise la fin de semaine
+   * (restes d'abord, stock, budget nutritionnel restant). `pinned` fixe un
+   * repas décidé par l'utilisateur (« ce soir je fais des bolognaises »).
+   */
+  async function requestReplan({ reason, pinned } = {}) {
+    if (replanSending) return
+    setReplanSending(true)
+    try {
+      const res = await authFetch('/api/routine/replan-week', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ import_id: importId, reason, pinned }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || data.error) {
+        toast.error(data.error || 'Impossible de lancer la réorganisation')
+        return
+      }
+      toast.success('Réorganisation lancée — la routine met à jour la semaine (1-2 min)…')
+      setReplanOffered(false)
+      setImproviseOpen(false)
+      setImproviseText('')
+    } catch {
+      toast.error('Erreur réseau — réorganisation non lancée')
+    } finally {
+      setReplanSending(false)
+    }
+  }
+
+  function submitImprovise() {
+    const text = improviseText.trim()
+    if (!text) {
+      toast.warning('Décrivez le plat que vous voulez cuisiner')
+      return
+    }
+    requestReplan({
+      reason: 'envie',
+      pinned: { meal_date: todayStr, meal_type: improviseSlot, description: text },
+    })
+  }
+
   // Fermeture par Escape sur la bottom sheet
   useEffect(() => {
     if (!showChoice) return
@@ -136,11 +243,14 @@ export default function TodayMeals({ importId }) {
     const date = meal.entries?.[0]?.meal_date
     if (doneSet.has(key)) {
       try {
+        // batch_recipe_id → l'API re-crédite la portion batch décomptée
+        const batchRecipeId = (meal.entries || []).find(e => e.batch_recipe_id)?.batch_recipe_id || null
         await authFetch('/api/meals/cook', {
           method: 'DELETE', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ meal_date: date, meal_type: meal.type }),
+          body: JSON.stringify({ meal_date: date, meal_type: meal.type, batch_recipe_id: batchRecipeId }),
         })
         setDoneSet(s => { const n = new Set(s); n.delete(key); return n })
+        loadLeftovers() // le reste créé par ce créneau a pu être supprimé
       } catch {}
     } else {
       setCookSheetMeal(meal)
@@ -278,6 +388,99 @@ export default function TodayMeals({ importId }) {
   return (
     <>
       <div className="tm-container">
+        {/* Re-planning dynamique proposé quand des restes viennent d'être créés */}
+        {replanOffered && (
+          <div className="tm-replan-cta" role="status">
+            <span className="tm-replan-text">
+              Des restes ont été créés — réorganiser la suite de la semaine pour les utiliser ?
+            </span>
+            <div className="tm-replan-actions">
+              <button
+                className="tm-replan-yes"
+                disabled={replanSending}
+                onClick={() => requestReplan({ reason: 'leftovers' })}
+              >
+                {replanSending ? 'Lancement…' : 'Réorganiser'}
+              </button>
+              <button className="tm-replan-later" onClick={() => setReplanOffered(false)}>
+                Plus tard
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Improviser : l'utilisateur impose un plat, la routine réajuste le reste */}
+        <div className="tm-improvise">
+          {!improviseOpen ? (
+            <button className="tm-improvise-open" onClick={() => setImproviseOpen(true)}>
+              <Sparkles size={13} aria-hidden="true" />
+              Improviser un repas
+            </button>
+          ) : (
+            <div className="tm-improvise-form">
+              <input
+                type="text"
+                className="tm-improvise-input"
+                placeholder="Ex : bolognaise maison avec ce qu'on a"
+                value={improviseText}
+                maxLength={200}
+                onChange={(e) => setImproviseText(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') submitImprovise() }}
+                aria-label="Plat que vous voulez cuisiner"
+                autoFocus
+              />
+              <select
+                className="tm-improvise-slot"
+                value={improviseSlot}
+                onChange={(e) => setImproviseSlot(e.target.value)}
+                aria-label="Créneau du repas improvisé"
+              >
+                <option value="dejeuner">Déjeuner</option>
+                <option value="diner">Dîner</option>
+              </select>
+              <button className="tm-replan-yes" disabled={replanSending} onClick={submitImprovise}>
+                {replanSending ? '…' : 'Caler ce plat'}
+              </button>
+              <button
+                className="tm-replan-later"
+                onClick={() => { setImproviseOpen(false); setImproviseText('') }}
+                aria-label="Annuler l'improvisation"
+              >
+                <X size={13} />
+              </button>
+            </div>
+          )}
+        </div>
+
+        {leftovers.length > 0 && (
+          <div className="tm-leftovers">
+            <p className="tm-leftovers-title">
+              <Soup size={13} />
+              Restes à manger
+            </p>
+            {leftovers.map(d => {
+              const days = d.days_until_expiration
+              const badgeClass = days <= 1 ? ' tm-dlc-red' : days <= 3 ? ' tm-dlc-orange' : ''
+              return (
+                <div key={d.id} className="tm-leftover-row">
+                  <div className="tm-leftover-info">
+                    <span className="tm-leftover-name">{d.name}</span>
+                    <span className="tm-leftover-meta">
+                      {fmtPortions(d.portions_remaining)} portion{d.portions_remaining > 1 ? 's' : ''}
+                      {d.storage_method === 'freezer' ? ' · congelé' : ''}
+                    </span>
+                  </div>
+                  <span className={`tm-dlc-badge${badgeClass}`}>
+                    {days <= 0 ? "Aujourd'hui" : `J-${days}`}
+                  </span>
+                  <button className="tm-eat-now-btn" onClick={() => eatLeftover(d)}>
+                    Manger maintenant
+                  </button>
+                </div>
+              )
+            })}
+          </div>
+        )}
         {groups.map(group => {
           const byType = {}
           for (const m of group.meals) {
@@ -440,12 +643,315 @@ export default function TodayMeals({ importId }) {
         mealEntries={selectedMeal?.entries || []}
       />
 
-      <MealCookSheet
+      <CookValidationSheet
         open={!!cookSheetMeal}
         meal={cookSheetMeal}
         onClose={() => setCookSheetMeal(null)}
-        onDone={() => { if (cookSheetMeal) setDoneSet(s => new Set(s).add(mealKey(cookSheetMeal))) }}
+        onDone={handleCooked}
       />
     </>
+  )
+}
+
+/**
+ * Feuille de validation d'un repas (bottom sheet) :
+ *   - steppers « portions mangées » par personne (défaut 1, pas de 0,5) ;
+ *   - « portions préparées au total » → le surplus part aux restes (cooked_dishes) ;
+ *   - reste existant (meal.eatenDish) : décrémente ses portions via eaten_dish_id,
+ *     nutrition par portion du plat si disponible, rien à déduire du stock ;
+ *   - sinon : déduction FEFO des ingrédients comme avant.
+ * POST /api/meals/cook — les kcal/macros envoyés par entry sont les TOTAUX
+ * mangés par la personne (valeur du plan × portions_eaten).
+ */
+function CookValidationSheet({ open, meal, onClose, onDone }) {
+  const [rows, setRows] = useState([])
+  const [loadingIng, setLoadingIng] = useState(false)
+  const [saving, setSaving] = useState(false)
+  const [error, setError] = useState(null)
+  const [portions, setPortions] = useState({})        // person_name → portions mangées
+  const [prepared, setPrepared] = useState(1)         // portions préparées au total
+  const [preparedTouched, setPreparedTouched] = useState(false)
+
+  const eatenDish = meal?.eatenDish || null
+  const mealDate = meal?.entries?.[0]?.meal_date
+  const dishName = meal?.dishName
+  // Repas « batch » : stock déjà déduit le jour de cuisine → rien à déduire ici.
+  const isBatch = !eatenDish && (meal?.entries || []).some(e => e.batch_recipe_id)
+
+  useEffect(() => {
+    if (!open || !meal) return
+    const init = {}
+    for (const e of meal.entries || []) init[e.person_name] = 1
+    setPortions(init)
+    setPrepared(Object.keys(init).length || 1)
+    setPreparedTouched(false)
+    setError(null)
+    if (isBatch || eatenDish) { setRows([]); setLoadingIng(false) }
+    else loadIngredients()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, meal?.dishName, eatenDish?.id])
+
+  async function loadIngredients() {
+    setLoadingIng(true); setError(null); setRows([])
+    try {
+      const julien = meal.entries.find(e => e.person_name === 'Julien') || meal.entries[0]
+      const q = julien?.description || dishName
+      if (!q) { setLoadingIng(false); return }
+      const recRes = await authFetch(`/api/recipes/generated?q=${encodeURIComponent(q)}`)
+      if (!recRes.ok) { setLoadingIng(false); return }
+      const recData = await recRes.json().catch(() => ({}))
+      const recipeId = recData.recipe?.id
+      if (!recipeId) { setLoadingIng(false); return }
+      const ingRes = await authFetch(`/api/recipes/generated/${recipeId}/available-ingredients`)
+      const ingData = await ingRes.json().catch(() => ({}))
+      const built = (ingData.ingredients || []).map(ing => {
+        const lot = ing.available_lots?.[0] || null
+        const avail = lot?.quantity_available ?? 0
+        const take = lot ? Math.min(ing.quantity || 0, avail) : 0
+        return {
+          name: ing.name,
+          unit: ing.unit || lot?.unit || 'g',
+          qty: Math.round(take),
+          lot_id: lot?.id || null,
+          include: !!lot && take > 0,
+        }
+      })
+      setRows(built)
+    } catch {
+      setError('Erreur de chargement des ingrédients')
+    } finally {
+      setLoadingIng(false)
+    }
+  }
+
+  function updateRow(i, patch) {
+    setRows(rs => rs.map((r, idx) => (idx === i ? { ...r, ...patch } : r)))
+  }
+
+  const eatenTotal = round1(Object.values(portions).reduce((s, v) => s + (Number(v) || 0), 0))
+  const effectivePrepared = preparedTouched ? Math.max(prepared, eatenTotal) : eatenTotal
+  const surplus = Math.max(0, round1(effectivePrepared - eatenTotal))
+
+  function stepPortion(name, delta) {
+    setPortions(p => ({ ...p, [name]: Math.max(0.5, round1((p[name] || 1) + delta)) }))
+  }
+
+  function stepPrepared(delta) {
+    setPreparedTouched(true)
+    setPrepared(Math.max(eatenTotal, round1(effectivePrepared + delta)))
+  }
+
+  async function confirm() {
+    if (saving) return
+    setSaving(true); setError(null)
+    try {
+      const deductions = rows
+        .filter(r => r.include && r.lot_id && r.qty > 0)
+        .map(r => ({ lot_id: r.lot_id, quantity_used: r.qty, unit: r.unit, product_name: r.name }))
+      const entries = (meal.entries || []).map(e => {
+        const p = portions[e.person_name] ?? 1
+        // Source nutrition : le reste (par portion) si on mange un reste, sinon le plan.
+        const src = eatenDish
+          ? {
+              kcal: eatenDish.kcal_per_portion,
+              protein_g: eatenDish.protein_g_per_portion,
+              carbs_g: eatenDish.carbs_g_per_portion,
+              fat_g: eatenDish.fat_g_per_portion,
+              fiber_g: eatenDish.fiber_g_per_portion,
+            }
+          : e
+        // Totaux mangés par la personne = valeur par portion × portions mangées.
+        const scale = (v) => (v != null ? round1(Number(v) * p) : null)
+        return {
+          person_name: e.person_name,
+          portions_eaten: p,
+          kcal: scale(src.kcal),
+          protein_g: scale(src.protein_g),
+          carbs_g: scale(src.carbs_g),
+          fat_g: scale(src.fat_g),
+          fiber_g: scale(src.fiber_g),
+          micronutrients: e.micronutrients || undefined,
+        }
+      })
+      const batchRecipeId = (meal.entries || []).find(e => e.batch_recipe_id)?.batch_recipe_id || null
+      const res = await authFetch('/api/meals/cook', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          meal_date: mealDate,
+          meal_type: meal.type,
+          dish_name: dishName,
+          entries,
+          deductions,
+          batch_recipe_id: batchRecipeId,
+          eaten_dish_id: eatenDish?.id || undefined,
+          // Pas de portions_prepared pour un reste mangé (rien de cuisiné) ni un
+          // batch (les barquettes restantes sont déjà comptées dans cooked_dishes).
+          portions_prepared: (eatenDish || isBatch) ? undefined : effectivePrepared,
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || 'Erreur')
+      onDone?.(data)
+      onClose?.()
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  if (!open || !meal || typeof document === 'undefined') return null
+
+  return createPortal(
+    <>
+      <div className="tm-overlay" onClick={onClose} />
+      <div className="tm-modal" role="dialog" aria-modal="true" aria-label={`Valider ${dishName}`}>
+        <div className="tm-modal-top-bar" />
+
+        <div className="tm-modal-header">
+          <div>
+            <span className="tm-modal-meal-type-wrap">
+              <span className="tm-modal-meal-bar" style={{ background: MEAL_BAR_VAR[meal.type] || MEAL_BAR_VAR.diner }} />
+              {MEAL_LABELS[meal.type] || meal.type}
+              {eatenDish && <span className="tm-leftover-flag">Reste</span>}
+            </span>
+            <h3 className="tm-modal-title">{dishName}</h3>
+            {eatenDish ? (
+              eatenDish.kcal_per_portion != null && (
+                <p className="tm-modal-macros">
+                  {Math.round(eatenDish.kcal_per_portion)} kcal · {Math.round(eatenDish.protein_g_per_portion || 0)}g P / portion
+                </p>
+              )
+            ) : (
+              meal.entries?.[0]?.kcal && (
+                <p className="tm-modal-macros">
+                  {meal.entries.map(e => `${e.person_name?.charAt(0)}: ${Math.round(e.kcal)} kcal`).join(' · ')}
+                </p>
+              )
+            )}
+          </div>
+          <button onClick={onClose} className="tm-close-btn" aria-label="Fermer"><X size={18} /></button>
+        </div>
+
+        {/* ── Portions mangées ── */}
+        <p className="tm-section-label">Portions mangées</p>
+        <div className="tm-portion-list">
+          {(meal.entries || []).map(e => (
+            <div key={e.person_name} className="tm-portion-row">
+              <span className="tm-portion-name">{e.person_name}</span>
+              <div className="tm-stepper">
+                <button
+                  type="button"
+                  onClick={() => stepPortion(e.person_name, -0.5)}
+                  aria-label={`Moins de portions pour ${e.person_name}`}
+                ><Minus size={13} /></button>
+                <span className="tm-stepper-value">{fmtPortions(portions[e.person_name] ?? 1)}</span>
+                <button
+                  type="button"
+                  onClick={() => stepPortion(e.person_name, 0.5)}
+                  aria-label={`Plus de portions pour ${e.person_name}`}
+                ><Plus size={13} /></button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Portions préparées (ni reste existant, ni batch déjà compté) ── */}
+        {!eatenDish && !isBatch && (
+          <>
+            <p className="tm-section-label">Portions préparées au total</p>
+            <div className="tm-portion-list">
+              <div className="tm-portion-row">
+                <span className="tm-portion-name">Préparé</span>
+                <div className="tm-stepper">
+                  <button type="button" onClick={() => stepPrepared(-0.5)} aria-label="Moins de portions préparées"><Minus size={13} /></button>
+                  <span className="tm-stepper-value">{fmtPortions(effectivePrepared)}</span>
+                  <button type="button" onClick={() => stepPrepared(0.5)} aria-label="Plus de portions préparées"><Plus size={13} /></button>
+                </div>
+              </div>
+            </div>
+            {surplus > 0 && (
+              <p className="tm-leftover-hint">
+                ➜ {fmtPortions(surplus)} portion{surplus > 1 ? 's' : ''} iront aux restes (DLC estimée +3 j)
+              </p>
+            )}
+          </>
+        )}
+
+        {/* ── Stock ── */}
+        <p className="tm-section-label">
+          {eatenDish ? 'Reste du frigo' : isBatch ? "Préparé d'avance" : 'À déduire du stock'}
+        </p>
+        {eatenDish ? (
+          <p className="tm-sheet-note">
+            <Soup size={15} style={{ flexShrink: 0, marginTop: 1 }} />
+            <span>
+              {fmtPortions(eatenDish.portions_remaining)} portion{eatenDish.portions_remaining > 1 ? 's' : ''} restante{eatenDish.portions_remaining > 1 ? 's' : ''} ·
+              DLC {formatDlc(eatenDish.expiration_date)}. Rien à déduire du stock (déjà retiré à la cuisson).
+            </span>
+          </p>
+        ) : isBatch ? (
+          <p className="tm-sheet-note">
+            <Flame size={15} style={{ flexShrink: 0, marginTop: 1 }} />
+            <span>Cuisiné lors du batch — réchauffe ta barquette, rien à déduire du stock.</span>
+          </p>
+        ) : loadingIng ? (
+          <p className="tm-sheet-hint">
+            <Loader2 size={14} style={{ animation: 'spin 1s linear infinite', verticalAlign: 'middle', marginRight: 6 }} />
+            Chargement…
+          </p>
+        ) : rows.length === 0 ? (
+          <p className="tm-sheet-hint">Aucun ingrédient lié au stock — seule la nutrition sera enregistrée.</p>
+        ) : (
+          <div className="tm-ing-list">
+            {rows.map((r, i) => (
+              <div key={i} className="tm-ing-row" style={{ opacity: r.lot_id ? 1 : 0.5 }}>
+                <button
+                  type="button"
+                  onClick={() => r.lot_id && updateRow(i, { include: !r.include })}
+                  className={`tm-check${r.include ? ' done' : ''}`}
+                  style={{ cursor: r.lot_id ? 'pointer' : 'default' }}
+                  aria-label={`${r.include ? 'Exclure' : 'Inclure'} ${r.name}`}
+                >
+                  {r.include && <Check size={11} color="#fff" />}
+                </button>
+                <span className="tm-ing-name">{r.name}</span>
+                {r.lot_id ? (
+                  <>
+                    <input
+                      type="number" min="0" value={r.qty}
+                      onChange={e => updateRow(i, { qty: Math.max(0, Number(e.target.value)) })}
+                      className="tm-ing-qty"
+                    />
+                    <span className="tm-ing-unit">{r.unit}</span>
+                  </>
+                ) : (
+                  <span className="tm-ing-outstock">pas en stock</span>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {error && <p className="tm-swap-error">{error}</p>}
+
+        <button
+          onClick={confirm}
+          disabled={saving || loadingIng}
+          className="tm-confirm-btn"
+          style={{ opacity: (saving || loadingIng) ? 0.6 : 1 }}
+        >
+          {saving
+            ? 'Enregistrement…'
+            : eatenDish
+              ? <><Soup size={17} /> Confirmer — reste mangé</>
+              : isBatch
+                ? <><Flame size={17} /> Confirmer — réchauffé</>
+                : <><ChefHat size={17} /> Confirmer — cuisiné</>}
+        </button>
+        <style>{`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
+      </div>
+    </>,
+    document.body
   )
 }

@@ -20,6 +20,11 @@ export default function SettingsHome() {
             <span className="v21-it-n">Données</span>
             <span className="v21-it-st">Gérer →</span>
           </Link>
+          <Link href="/settings/security" className="v21-it compact">
+            <span className="v21-it-bar" aria-hidden="true" />
+            <span className="v21-it-n">Sécurité</span>
+            <span className="v21-it-st">Mot de passe &amp; sessions →</span>
+          </Link>
         </div>
         <p className="v21-next">Nettoyer produits &amp; alias (supprimer les entrées « bizarres »).</p>
       </section>

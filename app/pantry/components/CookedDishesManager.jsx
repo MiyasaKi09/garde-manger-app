@@ -5,6 +5,14 @@ import CookedDishCard from './CookedDishCard';
 import { toast } from '@/components/Toast';
 import './CookedDishesManager.css';
 
+// portions_cooked / portions_remaining sont numeric en base (demi-portions) :
+// on normalise en nombre arrondi au 0,5 pour un affichage propre
+// (« 1.5 », jamais « 1.5000 » si la valeur arrive sérialisée en chaîne).
+const toHalfPortion = (v) => {
+  const n = Number(v);
+  return Number.isFinite(n) ? Math.round(n * 2) / 2 : 0;
+};
+
 export default function CookedDishesManager({ userId, onActionComplete }) {
   const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,7 +39,11 @@ export default function CookedDishesManager({ userId, onActionComplete }) {
       const data = await response.json();
 
       if (data.success) {
-        setDishes(data.dishes || []);
+        setDishes((data.dishes || []).map(d => ({
+          ...d,
+          portions_cooked: toHalfPortion(d.portions_cooked),
+          portions_remaining: toHalfPortion(d.portions_remaining),
+        })));
       } else {
         console.error('Erreur chargement plats:', data.error);
         setDishes([]);

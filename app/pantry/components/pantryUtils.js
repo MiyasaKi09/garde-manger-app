@@ -424,8 +424,12 @@ export const formatQuantity = (quantity, unit) => {
   return unitMap[unit?.toLowerCase()] || `${rounded} ${unit}`;
 };
 
-// Délègue vers lib/dates.js pour un calcul UTC cohérent (évite les décalages DST ±1j)
-export { daysUntil } from '@/lib/dates';
+// Délègue vers lib/dates.js pour un calcul UTC cohérent (évite les décalages DST ±1j).
+// Import (et pas seulement `export ... from`) : daysUntil est utilisé localement
+// (formatExpiryDate, sortByExpiry, export default) et formatDate est consommé
+// par LifespanBadge via ce module.
+import { daysUntil, formatDate } from '@/lib/dates';
+export { daysUntil, formatDate };
 
 /**
  * Formate une date d'expiration avec indicateur visuel
@@ -446,44 +450,59 @@ export const formatExpiryDate = (dateStr) => {
   return { text: `Expire dans ${months} mois`, color: 'green', emoji: '✅' };
 };
 
+// Teintes claires dérivées des couleurs de statut (fond des badges).
+const STATUS_BG = {
+  red: 'rgba(220,38,38,0.12)',
+  orange: 'rgba(249,115,22,0.12)',
+  yellow: 'rgba(250,204,21,0.15)',
+  green: 'rgba(34,197,94,0.10)',
+  gray: 'rgba(107,114,128,0.10)',
+};
+
 /**
- * Retourne un statut d'expiration basé sur le nombre de jours restants
+ * Retourne un statut d'expiration basé sur le nombre de jours restants.
+ * Règle métier : alerte à J-3 pour les DLC (et durées estimées), J-7 pour les DDM —
+ * le paramètre expiryKind ('DLC' | 'DDM' | 'ESTIMATE') décale les seuils orange/jaune.
+ * Retourne { label, color, bgColor } — bgColor est une teinte claire de color.
  */
-export const getExpirationStatus = (days) => {
+export const getExpirationStatus = (days, expiryKind) => {
   if (days === null) {
-    return { label: 'Sans date', color: '#6b7280' };
+    return { label: 'Sans date', color: '#6b7280', bgColor: STATUS_BG.gray };
   }
 
   if (days < 0) {
-    return { label: `Expiré depuis ${Math.abs(days)}j`, color: '#dc2626' };
+    return { label: `Expiré depuis ${Math.abs(days)}j`, color: '#dc2626', bgColor: STATUS_BG.red };
   }
 
   if (days === 0) {
-    return { label: "Expire aujourd'hui", color: '#dc2626' };
+    return { label: "Expire aujourd'hui", color: '#dc2626', bgColor: STATUS_BG.red };
   }
 
   if (days === 1) {
-    return { label: 'Expire demain', color: '#f97316' };
+    return { label: 'Expire demain', color: '#f97316', bgColor: STATUS_BG.orange };
   }
 
-  if (days <= 3) {
-    return { label: `Expire dans ${days}j`, color: '#f97316' };
+  const orange = expiryKind === 'DDM' ? 7 : 3;
+  const jaune = expiryKind === 'DDM' ? 14 : 7;
+
+  if (days <= orange) {
+    return { label: `Expire dans ${days}j`, color: '#f97316', bgColor: STATUS_BG.orange };
   }
 
-  if (days <= 7) {
-    return { label: `Expire dans ${days}j`, color: '#facc15' };
+  if (days <= jaune) {
+    return { label: `Expire dans ${days}j`, color: '#facc15', bgColor: STATUS_BG.yellow };
   }
 
   if (days <= 30) {
-    return { label: `Expire dans ${days}j`, color: '#22c55e' };
+    return { label: `Expire dans ${days}j`, color: '#22c55e', bgColor: STATUS_BG.green };
   }
 
   const months = Math.floor(days / 30);
   if (months === 1) {
-    return { label: 'Expire dans 1 mois', color: '#16a34a' };
+    return { label: 'Expire dans 1 mois', color: '#16a34a', bgColor: STATUS_BG.green };
   }
 
-  return { label: `Expire dans ${months} mois`, color: '#16a34a' };
+  return { label: `Expire dans ${months} mois`, color: '#16a34a', bgColor: STATUS_BG.green };
 };
 
 /* ============ GROUPEMENT ET TRI ============ */

@@ -22,7 +22,7 @@ export default function AuthGate({ children }) {
       }
       const email = session.user?.email?.toLowerCase() || '';
       if (allowed.length > 0 && !allowed.includes(email)) {
-        await supabase.auth.signOut();
+        await supabase.auth.signOut({ scope: 'local' });
         router.replace('/login?error=not_allowed');
         return;
       }

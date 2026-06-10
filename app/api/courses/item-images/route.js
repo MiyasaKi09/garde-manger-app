@@ -23,7 +23,7 @@ async function smartQueryOne(name) {
   if (!process.env.ANTHROPIC_API_KEY) return null
   try {
     const msg = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 40,
       messages: [{
         role: 'user',

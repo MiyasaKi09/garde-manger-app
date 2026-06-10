@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Package, Calendar, MapPin, X } from 'lucide-react';
+import { Package, Calendar, MapPin, X, PackageOpen } from 'lucide-react';
+import { authFetch } from '@/lib/authFetch';
+import { toast } from '@/components/Toast';
 import './EditLotForm.css';
 
 const STORAGE_LOCATIONS = [
@@ -14,12 +16,43 @@ const STORAGE_LOCATIONS = [
 
 const POSSIBLE_UNITS = ['u', 'g', 'kg', 'mL', 'cL', 'L'];
 
-export default function EditLotForm({ 
-  item, 
-  onUpdate, 
-  onCancel 
+export default function EditLotForm({
+  item,
+  onUpdate,
+  onCancel,
+  onReload
 }) {
   const [quantity, setQuantity] = useState(item.qty_remaining);
+  const [isOpened, setIsOpened] = useState(!!item.is_opened);
+  const [adjustedDate, setAdjustedDate] = useState(item.adjusted_expiration_date || null);
+  const [toggling, setToggling] = useState(false);
+
+  // Marquer le lot ouvert/refermé : la DLC est recalculée côté serveur
+  // (durées après ouverture de l'archétype, plafonnées à la DLC d'origine).
+  const handleToggleOpened = async () => {
+    setToggling(true);
+    try {
+      const res = await authFetch('/api/lots/manage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: isOpened ? 'close' : 'open', lotId: item.id }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error || data.success === false) {
+        toast.error(data.error || 'Impossible de changer l\'état du produit');
+        return;
+      }
+      const nowOpened = !isOpened;
+      setIsOpened(nowOpened);
+      setAdjustedDate(nowOpened ? (data.lot?.adjusted_expiration_date || null) : null);
+      toast.success(data.messageShort || data.message || (nowOpened ? 'Produit marqué ouvert' : 'Produit refermé'));
+      onReload?.();
+    } catch {
+      toast.error('Erreur réseau — état du produit inchangé');
+    } finally {
+      setToggling(false);
+    }
+  };
   const [unit, setUnit] = useState(item.unit);
   const [location, setLocation] = useState(item.storage_place || 'garde-manger');
   
@@ -234,6 +267,34 @@ export default function EditLotForm({
         </div>
 
         <div className="modal-content">
+          {/* Section État (ouvert / fermé) — la DLC se réduit après ouverture */}
+          <div className="form-section">
+            <div className="section-header">
+              <PackageOpen size={16} />
+              <span>État du produit</span>
+            </div>
+            <div className="opened-row">
+              <div className="opened-info">
+                <span className={`opened-badge ${isOpened ? 'is-open' : ''}`}>
+                  {isOpened ? 'Ouvert / entamé' : 'Non ouvert'}
+                </span>
+                {isOpened && adjustedDate && (
+                  <span className="opened-dlc">
+                    DLC réduite au {new Date(adjustedDate).toLocaleDateString('fr-FR')}
+                  </span>
+                )}
+              </div>
+              <button
+                type="button"
+                className="action-btn secondary opened-toggle"
+                onClick={handleToggleOpened}
+                disabled={toggling}
+              >
+                {toggling ? '…' : isOpened ? 'Refermer (DLC d\'origine)' : 'Marquer comme ouvert'}
+              </button>
+            </div>
+          </div>
+
           {/* Section Quantité */}
           <div className="form-section">
             <div className="section-header">

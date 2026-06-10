@@ -315,7 +315,7 @@ function LotCard({ lot, isEditing, onEdit, onCancelEdit, onSave, onDelete, produ
   // Calcul de la date d'expiration effective et des jours restants
   const effectiveExpiration = getEffectiveExpiration(lot);
   const daysLeft = daysUntil(effectiveExpiration);
-  const status = getExpirationStatus(daysLeft);
+  const status = getExpirationStatus(daysLeft, lot.expiry_kind || lot.archetypes?.expiry_kind);
 
   const handleSave = () => {
     if (onSave && typeof onSave === 'function') {

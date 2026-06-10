@@ -46,7 +46,12 @@ export async function POST(request) {
     .maybeSingle()
   if (existing) return NextResponse.json({ dish: existing, already: true })
 
-  const portions = Number(br.portions_total) || 1
+  // portions_total est généralement entier côté plan, mais une valeur décimale
+  // est conservée telle quelle (arrondie au demi — cooked_dishes est numeric).
+  const rawPortions = Number(br.portions_total)
+  const portions = Number.isFinite(rawPortions) && rawPortions > 0
+    ? Math.max(0.5, Math.round(rawPortions * 2) / 2)
+    : 1
   const keeps = Number.isFinite(br.keeps_days) && br.keeps_days > 0 ? br.keeps_days : 4
   const expiration = addDaysISO(keeps)
 

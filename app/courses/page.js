@@ -32,6 +32,24 @@ export default function CoursesPage() {
   const [pickerCands, setPickerCands] = useState([])
   const [pickerLoading, setPickerLoading] = useState(false)
   const [pickerQuery, setPickerQuery] = useState('')
+  const [toast, setToast] = useState(null)            // { id, msg, kind } — toast discret auto-effacé
+
+  useEffect(() => {
+    if (!toast) return
+    const t = setTimeout(() => setToast(null), 4000)
+    return () => clearTimeout(t)
+  }, [toast])
+
+  function showToast(msg, kind = 'ok') {
+    setToast({ id: Date.now(), msg, kind })
+  }
+
+  // 'YYYY-MM-DD' → 'JJ/MM' (sans passer par Date : évite les décalages timezone)
+  function formatDayMonth(iso) {
+    if (!iso || typeof iso !== 'string') return ''
+    const [, m, d] = iso.split('-')
+    return d && m ? `${d}/${m}` : ''
+  }
 
   async function loadItems(imp) {
     setImportId(imp.id)
@@ -114,9 +132,47 @@ export default function CoursesPage() {
       if (!res.ok || !data.success) {
         return { success: false, error: data.error || 'Erreur inconnue' }
       }
-      return { success: true, lotsCreated: data.lotsCreated }
+      return {
+        success: true,
+        lotsCreated: data.lotsCreated,
+        lotIds: data.lotIds || [],
+        matched: data.matched,
+        expirationDate: data.expirationDate || null,
+      }
     } catch (err) {
       return { success: false, error: err.message }
+    }
+  }
+
+  /** Décochage : retire du stock les lots non entamés créés au cochage. */
+  async function removeFromStock(itemId) {
+    try {
+      const res = await authFetch('/api/courses/add-to-stock', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ itemId }),
+      })
+      const data = await res.json()
+      if (!res.ok || !data.success) {
+        return { success: false, error: data.error || 'Erreur inconnue' }
+      }
+      return { success: true, deleted: data.deleted, kept: data.kept }
+    } catch (err) {
+      return { success: false, error: err.message }
+    }
+  }
+
+  /** Sauvegarde le lien article → lots créés (pour pouvoir les retirer au décochage). */
+  async function saveCreatedLotIds(itemId, lotIds) {
+    try {
+      await authFetch(`/api/courses/shopping-items/${itemId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ created_lot_ids: lotIds }),
+      })
+      return true
+    } catch {
+      return false
     }
   }
 
@@ -155,9 +211,9 @@ export default function CoursesPage() {
 
   async function toggleItem(itemId) {
     const item = items.find(i => i.id === itemId)
-    if (!item) return
+    if (!item || item.stocking || item.unstocking) return
     const newChecked = !item.checked
-    setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: newChecked, stocking: newChecked } : i))
+    setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: newChecked, stocking: newChecked, unstocking: !newChecked } : i))
 
     try {
       await authFetch(`/api/courses/shopping-items/${itemId}`, {
@@ -165,23 +221,53 @@ export default function CoursesPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ checked: newChecked }),
       })
+    } catch {
+      // PATCH checked échoué → revert pur, rien n'a touché le stock
+      setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: !newChecked, stocking: false, unstocking: false } : i))
+      return
+    }
 
-      if (newChecked) {
+    if (newChecked) {
+      // ── Cochage → rangement au stock ──
+      const result = await addToStock(item)
+      if (result.success) {
+        await saveCreatedLotIds(itemId, result.lotIds)
+        setItems(prev => prev.map(i => i.id === itemId
+          ? { ...i, stocked: true, stocking: false, stockError: false, unmatched: result.matched === false, created_lot_ids: result.lotIds }
+          : i))
+        const dlc = formatDayMonth(result.expirationDate)
+        showToast(dlc ? `Ajouté au stock · DLC le ${dlc}` : 'Ajouté au stock')
+      } else {
+        // Rangement raté → on re-décoche pour rester cohérent (aucun lot créé)
+        setItems(prev => prev.map(i => i.id === itemId
+          ? { ...i, checked: false, stocking: false, stockError: true, stockErrorMsg: result.error }
+          : i))
         try {
-          const result = await addToStock(item)
-          if (result.success) {
-            setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: true, stocking: false } : i))
-          } else {
-            setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false, stockError: true, stockErrorMsg: result.error } : i))
-          }
-        } catch (stockErr) {
-          setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocking: false, stockError: true, stockErrorMsg: stockErr.message } : i))
+          await authFetch(`/api/courses/shopping-items/${itemId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ checked: false }),
+          })
+        } catch {}
+        showToast(`Rangement impossible — ${result.error}`, 'error')
+      }
+    } else {
+      // ── Décochage → retirer du stock les lots non entamés ──
+      const result = await removeFromStock(itemId)
+      if (result.success) {
+        setItems(prev => prev.map(i => i.id === itemId
+          ? { ...i, stocked: false, stocking: false, unstocking: false, stockError: false, unmatched: false, created_lot_ids: null }
+          : i))
+        if (result.kept > 0) {
+          showToast('Lot déjà entamé, conservé au stock')
+        } else if (result.deleted > 0) {
+          showToast('Retiré du stock')
         }
       } else {
-        setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: false, stocking: false, stockError: false } : i))
+        // L'article reste décoché ; le nettoyage se rejouera au prochain cochage
+        setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: false, stocking: false, unstocking: false } : i))
+        showToast(`Stock non nettoyé — ${result.error}`, 'error')
       }
-    } catch {
-      setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: !newChecked, stocking: false } : i))
     }
   }
 
@@ -390,11 +476,15 @@ export default function CoursesPage() {
           </div>
           {item.notes && <span className="cou-card-notes">{item.notes}</span>}
           {item.stocking && <span className="cou-card-tag stocking">rangement…</span>}
+          {item.unstocking && <span className="cou-card-tag stocking">retrait…</span>}
           {item.stocked && !item.stocking && (
             <span className="cou-card-tag stocked"><Package size={10} /> rangé</span>
           )}
           {item.stockError && !item.stocking && (
             <span className="cou-card-tag error" title={item.stockErrorMsg || ''}>non rangé</span>
+          )}
+          {item.unmatched && !item.stocking && (
+            <span className="cou-card-tag unmatched" title="Produit non relié au catalogue — rangé tel quel (nom en notes)">non reconnu</span>
           )}
         </div>
         {isExpanded && (
@@ -668,6 +758,12 @@ export default function CoursesPage() {
           )}
         </section>
       </div>
+
+      {/* ── Toast discret (rangement / retrait du stock) ── */}
+      {toast && typeof document !== 'undefined' && createPortal(
+        <div key={toast.id} className={`cou-toast ${toast.kind}`} role="status">{toast.msg}</div>,
+        document.body
+      )}
 
       {/* ── Sélecteur de photo (correction 1 clic) ── */}
       {picker && typeof document !== 'undefined' && createPortal(

@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
+import { buildAiContext, formatContextForPrompt } from '@/lib/aiContextBuilder'
+import { PLANNING_OUTPUT_REQUIREMENTS } from '@/lib/aiSystemPrompts'
 
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
@@ -13,6 +15,12 @@ const TRIGGER_TIMEOUT_MS = 20_000
  *   - Avec { importId, targetStart, targetEnd, days? } : crée une requête de
  *     régénération dans plan_regen_requests puis déclenche la routine.
  *     La routine lit la requête au CP0 et régénère les jours demandés.
+ *
+ * Le payload webhook transmet à la Routine claude.ai le contexte enrichi
+ * (restes, allergies/régimes, profil de goûts, écarts nutritionnels 7j,
+ * micros < 70 % AJR, anti-gaspillage, saison) + les exigences de sortie
+ * (calibration ±5 % par personne, créativité, micros ANSES). Le format JSON
+ * du plan attendu reste inchangé (compatible lib/jsonPlanParser.js).
  */
 export async function POST(request) {
   const { supabase, user, error: authError } = await authenticateRequest(request)
@@ -60,6 +68,20 @@ export async function POST(request) {
     )
   }
 
+  // Contexte enrichi pour la Routine (best-effort : un échec de construction
+  // ne doit jamais bloquer le déclenchement de la génération).
+  let triggerPayload = { user_id: user.id }
+  try {
+    const ctx = await buildAiContext(supabase, user.id)
+    triggerPayload = {
+      user_id: user.id,
+      context: formatContextForPrompt(ctx),
+      output_requirements: PLANNING_OUTPUT_REQUIREMENTS,
+    }
+  } catch (ctxErr) {
+    console.error('[Routine Generate Plan] Contexte IA indisponible:', ctxErr.message)
+  }
+
   const controller = new AbortController()
   const timeout = setTimeout(() => controller.abort(), TRIGGER_TIMEOUT_MS)
   try {
@@ -70,7 +92,7 @@ export async function POST(request) {
         'Content-Type': 'application/json',
         'anthropic-version': '2023-06-01',
       },
-      body: '{}',
+      body: JSON.stringify(triggerPayload),
       signal: controller.signal,
     })
 

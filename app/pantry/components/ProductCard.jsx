@@ -100,7 +100,7 @@ export default function ProductCard({ product, onOpen }) {
             <div className="lots-list">
               {lots.slice(0, 3).map((lot, index) => {
                 const lotDays = daysUntil(lot.effective_expiration);
-                const lotStatus = getExpirationStatus(lotDays);
+                const lotStatus = getExpirationStatus(lotDays, lot.expiry_kind || lot.archetypes?.expiry_kind);
                 
                 return (
                   <div key={lot.id || index} className="lot-item">

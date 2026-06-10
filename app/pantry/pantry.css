@@ -124,3 +124,12 @@ button.v21-it {
   .stock-rail { border-right: none; border-bottom: 1px solid var(--ink-1); }
   .stock-right { padding-left: 0; }
 }
+
+/* Lot entamé (DLC réduite après ouverture) */
+.v21-it-opened {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--terracotta, #bb5836);
+  margin-left: 6px;
+  white-space: nowrap;
+}

@@ -8,6 +8,7 @@ import SmartAddForm from './components/SmartAddForm';
 import ConsumeModal from './components/ConsumeModal';
 import OcrReviewList from './components/OcrReviewList';
 import { capitalizeProduct } from './components/pantryUtils';
+import { daysUntil } from '@/lib/dates';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import EditLotForm from './components/EditLotForm';
 import RestesManager from '@/components/RestesManager';
@@ -237,7 +238,7 @@ export default function PantryPage() {
         if (archetypeIds.length > 0) {
           const { data: archetypeData, error: archetypeError } = await supabase
             .from('archetypes')
-            .select('id, name, shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer, open_shelf_life_days_pantry, open_shelf_life_days_fridge, open_shelf_life_days_freezer')
+            .select('id, name, expiry_kind, shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer, open_shelf_life_days_pantry, open_shelf_life_days_fridge, open_shelf_life_days_freezer')
             .in('id', archetypeIds);
 
           if (!archetypeError && archetypeData) {
@@ -285,8 +286,9 @@ export default function PantryPage() {
         const transformed = {
           ...item,
           product_name: productName,
-          expiration_status: getExpirationStatus(item.expiration_date),
-          days_until_expiration: getDaysUntilExpiration(item.expiration_date),
+          expiry_kind: item.archetypes?.expiry_kind || null,
+          expiration_status: getExpirationStatus(item.adjusted_expiration_date || item.expiration_date, item.archetypes?.expiry_kind),
+          days_until_expiration: daysUntil(item.adjusted_expiration_date || item.expiration_date),
           // Métadonnées utilisant les vrais noms de colonnes
           grams_per_unit: item.canonical_foods?.unit_weight_grams || null,
           density_g_per_ml: item.canonical_foods?.density_g_per_ml || null,
@@ -309,26 +311,16 @@ export default function PantryPage() {
     }
   }
 
-  function getExpirationStatus(dateString) {
-    if (!dateString) return 'no_date';
+  // Règle métier : alerte à J-3 pour les DLC (et durées estimées), J-7 pour les DDM.
+  // Comparaisons en UTC via lib/dates pour éviter les décalages de fuseau.
+  function getExpirationStatus(dateString, expiryKind) {
+    const diffDays = daysUntil(dateString);
+    if (diffDays === null) return 'no_date';
 
-    const today = new Date();
-    const expirationDate = new Date(dateString);
-    const diffTime = expirationDate - today;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
+    const threshold = expiryKind === 'DDM' ? 7 : 3;
     if (diffDays < 0) return 'expired';
-    if (diffDays <= 3) return 'expiring_soon';
+    if (diffDays <= threshold) return 'expiring_soon';
     return 'good';
-  }
-
-  function getDaysUntilExpiration(dateString) {
-    if (!dateString) return null;
-
-    const today = new Date();
-    const expirationDate = new Date(dateString);
-    const diffTime = expirationDate - today;
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   }
 
 
@@ -704,7 +696,12 @@ export default function PantryPage() {
                         title="Modifier ce lot"
                       >
                         <span className="v21-it-bar" aria-hidden="true" />
-                        <span className="v21-it-n">{capitalizeProduct(item.product_name)}</span>
+                        <span className="v21-it-n">
+                          {capitalizeProduct(item.product_name)}
+                          {item.is_opened && (
+                            <span className="v21-it-opened" title={`Entamé — DLC réduite${item.adjusted_expiration_date ? ' au ' + new Date(item.adjusted_expiration_date).toLocaleDateString('fr-FR') : ''}`}> ◦ entamé</span>
+                          )}
+                        </span>
                         <span className="v21-it-q">{qty}</span>
                         <span className="v21-it-lc">{item.storage_place || '—'}</span>
                         <span className="v21-it-st">{v21StatusLabel(item)}</span>
@@ -785,6 +782,7 @@ export default function PantryPage() {
           <EditLotForm
             item={itemToEdit}
             onUpdate={handleUpdateLot}
+            onReload={loadPantryItems}
             onCancel={() => {
               setShowEditLot(false);
               setItemToEdit(null);

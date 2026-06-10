@@ -57,7 +57,7 @@ export async function POST(request) {
     const maxTokens = intent === 'planning' ? 8192 : 4096
 
     const stream = anthropic.messages.stream({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: maxTokens,
       // cache_control sur le system prompt statique (999 lignes) → économie ~30% tokens
       system: [{ type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral' } }],

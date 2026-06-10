@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
+import { parseQuantity, normalizeUnit } from '@/lib/parseQuantity'
 
 /**
  * POST /api/courses/add-to-stock
@@ -7,9 +8,12 @@ import { authenticateRequest } from '@/lib/apiAuth'
  *
  * Body:
  *   { productName, quantity,
+ *     itemId?,                                ← id nutrition_plan_shopping_items (lien lots ↔ article)
  *     canonicalFoodId?, archetypeId?,         ← IDs depuis nutrition_plan_shopping_items
  *     containerQty?, containerSize?, containerUnit?   ← conditionnement (ex: 3 × 1L)
  *   }
+ *
+ * Réponse : { success, lots, lotIds, matched, lotsCreated, expirationDate }
  *
  * Flux :
  *   1. Résoudre l'ingrédient (IDs directs ou recherche par nom)
@@ -17,6 +21,8 @@ import { authenticateRequest } from '@/lib/apiAuth'
  *   3. Lire shelf_life_days_[method] depuis archetypes / canonical_foods
  *   4. Calculer expiration_date = aujourd'hui + shelf_life_days
  *   5. Créer le ou les lots (N lots si conditionnement multi-contenants)
+ *
+ * NB : user_id des lots est posé par le default DB (auth.uid()) — on ne l'envoie jamais.
  */
 export async function POST(request) {
   try {
@@ -28,6 +34,7 @@ export async function POST(request) {
     const {
       productName,
       quantity,
+      itemId = null,
       canonicalFoodId = null,
       archetypeId = null,
       containerQty = null,
@@ -37,6 +44,13 @@ export async function POST(request) {
 
     if (!productName) {
       return NextResponse.json({ error: 'productName requis' }, { status: 400 })
+    }
+
+    // 0. Idempotence : si l'article garde des lots d'un cochage précédent
+    //    (décochage raté, double cochage…), nettoyer les lots non entamés
+    //    AVANT d'en recréer — évite les doublons de stock.
+    if (itemId != null) {
+      await cleanupCreatedLots(supabase, user.id, itemId)
     }
 
     // 1. Résoudre les IDs ingrédient
@@ -114,10 +128,102 @@ export async function POST(request) {
       return NextResponse.json({ error: error.message }, { status: 500 })
     }
 
-    return NextResponse.json({ success: true, lots, matched, lotsCreated: lots.length })
+    return NextResponse.json({
+      success: true,
+      lots,
+      lotIds: lots.map(l => l.id),
+      matched,
+      lotsCreated: lots.length,
+      expirationDate: expiration_date,
+    })
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 })
   }
+}
+
+/**
+ * DELETE /api/courses/add-to-stock
+ * Annule le rangement d'un article décoché.
+ * Body: { itemId }
+ *
+ * Supprime les lots listés dans nutrition_plan_shopping_items.created_lot_ids
+ * appartenant à l'utilisateur ET non entamés (qty_remaining = initial_qty).
+ * Les lots déjà partiellement consommés sont CONSERVÉS (kept > 0 dans la
+ * réponse → l'UI informe l'utilisateur). created_lot_ids est vidé ensuite.
+ *
+ * Réponse : { success, deleted, kept }
+ */
+export async function DELETE(request) {
+  try {
+    const { supabase, user, error: authError } = await authenticateRequest(request)
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
+    }
+
+    let body = {}
+    try { body = await request.json() } catch {}
+    const itemId = body?.itemId ?? new URL(request.url).searchParams.get('itemId')
+    if (itemId == null) {
+      return NextResponse.json({ error: 'itemId requis' }, { status: 400 })
+    }
+
+    const result = await cleanupCreatedLots(supabase, user.id, itemId)
+    if (result.error) {
+      return NextResponse.json({ error: result.error }, { status: 500 })
+    }
+
+    return NextResponse.json({ success: true, deleted: result.deleted, kept: result.kept })
+  } catch (err) {
+    return NextResponse.json({ error: err.message }, { status: 500 })
+  }
+}
+
+/**
+ * Supprime les lots référencés par created_lot_ids de l'article, appartenant
+ * à l'utilisateur et NON entamés (qty_remaining = initial_qty). Les lots
+ * entamés sont conservés. Vide created_lot_ids dans tous les cas.
+ * Retourne { deleted, kept } ou { error }.
+ */
+async function cleanupCreatedLots(supabase, userId, itemId) {
+  // RLS: la policy "users_own_shopping" vérifie via import_id → nutrition_plan_imports.user_id
+  const { data: item, error: itemErr } = await supabase
+    .from('nutrition_plan_shopping_items')
+    .select('id, created_lot_ids')
+    .eq('id', itemId)
+    .maybeSingle()
+
+  if (itemErr) return { error: itemErr.message }
+  const lotIds = item?.created_lot_ids || []
+  if (!item || lotIds.length === 0) return { deleted: 0, kept: 0 }
+
+  const { data: lots, error: lotsErr } = await supabase
+    .from('inventory_lots')
+    .select('id, qty_remaining, initial_qty')
+    .in('id', lotIds)
+    .eq('user_id', userId)
+
+  if (lotsErr) return { error: lotsErr.message }
+
+  // Ne JAMAIS supprimer un lot déjà entamé
+  const untouched = (lots || []).filter(l => Number(l.qty_remaining) >= Number(l.initial_qty))
+  const kept = (lots || []).length - untouched.length
+
+  if (untouched.length > 0) {
+    const { error: delErr } = await supabase
+      .from('inventory_lots')
+      .delete()
+      .in('id', untouched.map(l => l.id))
+      .eq('user_id', userId)
+    if (delErr) return { error: delErr.message }
+  }
+
+  const { error: clearErr } = await supabase
+    .from('nutrition_plan_shopping_items')
+    .update({ created_lot_ids: null })
+    .eq('id', itemId)
+  if (clearErr) return { error: clearErr.message }
+
+  return { deleted: untouched.length, kept }
 }
 
 /**
@@ -267,36 +373,4 @@ function guessStorage(name) {
   if (/salade|laitue|tomate|concombre|courgette|aubergine|poivron|brocoli|chou|fenouil|navet|radis|carotte|poireau|champignon|épinard|haricot.?vert|asperge|céleri|betterave|endive|mâche|roquette|persil|coriandre|menthe|basilic|ciboulette|fraise|framboise|myrtille/i.test(n)) return { method: 'fridge', place: 'Frigo' }
   if (/frais|fraîche/i.test(n)) return { method: 'fridge', place: 'Frigo' }
   return { method: 'pantry', place: 'Garde-manger' }
-}
-
-/**
- * Parse une chaîne de quantité en {qty, unit}.
- * Gère le format "600 g (400 g en stock)" → extrait 600 g.
- */
-function parseQuantity(qtyStr) {
-  if (!qtyStr) return { qty: 1, unit: 'unités' }
-  const clean = qtyStr.trim().toLowerCase()
-
-  // Ignorer l'annotation "(X en stock)" et lire juste la partie avant
-  const withNote = clean.match(/^(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|l|unités?|pièces?|boîtes?|paquets?|bouteilles?|sachets?|tranches?|gousses?|feuilles?)\s*\(/)
-  if (withNote) return normalizeUnit(parseFloat(withNote[1].replace(',', '.')), withNote[2])
-
-  const m = clean.match(/^(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|l|unités?|pièces?|boîtes?|paquets?|bouteilles?|sachets?|tranches?|gousses?|feuilles?)/)
-  if (m) return normalizeUnit(parseFloat(m[1].replace(',', '.')), m[2])
-
-  const numOnly = clean.match(/^(\d+(?:[.,]\d+)?)/)
-  if (numOnly) return { qty: parseFloat(numOnly[1].replace(',', '.')), unit: 'unités' }
-
-  return { qty: 1, unit: 'unités' }
-}
-
-function normalizeUnit(qty, unit) {
-  switch (unit) {
-    case 'kg': return { qty: qty * 1000, unit: 'g' }
-    case 'l':  return { qty: qty * 1000, unit: 'ml' }
-    case 'cl': return { qty: qty * 10,   unit: 'ml' }
-    case 'g':  return { qty, unit: 'g' }
-    case 'ml': return { qty, unit: 'ml' }
-    default:   return { qty, unit: 'unités' }
-  }
 }

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
+import { fetchDietaryConstraints, formatDietaryConstraints } from '@/lib/aiContextBuilder'
 
 export const dynamic = 'force-dynamic'
 // La routine Claude (génération LLM + écritures Supabase) prend ~30-60s.
@@ -60,6 +61,15 @@ export async function POST(request) {
     )
   }
 
+  // Contraintes alimentaires strictes (allergies + régimes) transmises à la
+  // routine — best-effort : un échec ne bloque pas la modification.
+  let dietaryConstraints = ''
+  try {
+    dietaryConstraints = formatDietaryConstraints(await fetchDietaryConstraints(supabase, user.id))
+  } catch (ctxErr) {
+    console.error('[Routine Modify Meal] Contraintes alimentaires indisponibles:', ctxErr.message)
+  }
+
   const controller = new AbortController()
   const timeout = setTimeout(() => controller.abort(), ROUTINE_TIMEOUT_MS)
   try {
@@ -75,6 +85,7 @@ export async function POST(request) {
         meal_type,
         person_name,
         direction: direction || '',
+        dietary_constraints: dietaryConstraints,
       }),
       signal: controller.signal,
     })
