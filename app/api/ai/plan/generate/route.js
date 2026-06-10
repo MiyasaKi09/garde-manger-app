@@ -623,7 +623,7 @@ async function generateMissingRecipes(supabase, userId, days) {
         .slice(0, 200)
 
       const response = await anthropic.messages.create({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 4096,
         // cache_control sur le system prompt (contexte long réutilisé à chaque recette)
         system: [{
@@ -637,6 +637,8 @@ RÈGLES :
 - Réponds UNIQUEMENT avec du JSON valide, sans texte autour.
 - Adapte pour 2 personnes (Julien + Zoé).
 - Aliments interdits : thon, panais, épinards, céleri, crevettes, whey.
+- Respecte STRICTEMENT la section CONTRAINTES ALIMENTAIRES STRICTES du contexte (allergies, régimes) : aucun aliment listé, même en sous-ingrédient ou trace.
+- Respecte les PRODUITS DE SAISON du contexte et utilise en priorité les produits du stock marqués ⚠️ (DLC proche).
 - Étapes détaillées avec temps précis et quantités en grammes.
 - Noms d'ingrédients SIMPLES et GÉNÉRIQUES : jamais de "(pour le rougail)", "(burger)", "(minestrone)" ou référence au plat entre parenthèses. Juste le nom de l'aliment.
 

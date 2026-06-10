@@ -95,7 +95,7 @@ export async function POST(request) {
     const context = formatContextForPrompt(ctx)
 
     const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 4096,
       // cache_control sur le system prompt (long, réutilisé entre générations)
       system: [{

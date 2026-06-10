@@ -145,7 +145,7 @@ async function scheduleWithClaude(dishesInput, cookSunday, allowedDates) {
   try {
     const payload = { cook_sunday: cookSunday, allowed_cook_dates: allowedDates, dishes: dishesInput }
     const msg = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 2000,
       system: SYSTEM_PROMPT,
       messages: [{ role: 'user', content: `Semaine à organiser (JSON) :\n${JSON.stringify(payload)}` }],
