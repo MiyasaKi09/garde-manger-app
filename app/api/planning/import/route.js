@@ -31,7 +31,7 @@ export async function POST(request) {
 
     if (isXlsx) {
       const buffer = await file.arrayBuffer()
-      parsed = parseWorkbook(new Uint8Array(buffer), file.name)
+      parsed = await parseWorkbook(new Uint8Array(buffer), file.name)
     } else {
       const text = await file.text()
       parsed = parseJsonPlan(text, file.name)
