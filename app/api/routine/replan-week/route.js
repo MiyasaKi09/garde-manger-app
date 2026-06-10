@@ -89,12 +89,40 @@ export async function POST(request) {
     today, targetEnd, pinned, reason,
   })
 
+  // Créneaux à régénérer : déjeuners/dîners restants de la fenêtre, MOINS les
+  // créneaux déjà validés (meal_log). Le créneau épinglé reste DANS la liste :
+  // la routine le réécrit avec le plat imposé (user_instructions) et ses macros.
+  // → mode target_meals du CP1-REGEN : chirurgical, ne touche à rien d'autre.
+  const { data: planSlots } = await supabase
+    .from('nutrition_plan_meals')
+    .select('meal_date, meal_type')
+    .eq('import_id', import_id)
+    .gte('meal_date', today)
+    .lte('meal_date', targetEnd)
+    .in('meal_type', ['dejeuner', 'diner'])
+  const { data: validated } = await supabase
+    .from('meal_log')
+    .select('meal_date, meal_type')
+    .eq('user_id', user.id)
+    .gte('meal_date', today)
+    .lte('meal_date', targetEnd)
+  const validatedSet = new Set((validated || []).map(v => `${v.meal_date}|${v.meal_type}`))
+  const targetMeals = [...new Set((planSlots || [])
+    .filter(s => !validatedSet.has(`${s.meal_date}|${s.meal_type}`))
+    .map(s => `${s.meal_date}|${s.meal_type}`))]
+    .map(k => { const [date, type] = k.split('|'); return { date, type } })
+
+  if (!targetMeals.length) {
+    return NextResponse.json({ error: 'Aucun créneau restant à réorganiser sur cette fenêtre.' }, { status: 400 })
+  }
+
   // Requête de régénération lue par la Routine au CP0
   const { data: req, error: insertErr } = await supabase
     .from('plan_regen_requests')
     .insert({
       user_id: user.id,
       import_id,
+      target_meals: targetMeals,
       target_start: today,
       target_end: targetEnd,
       user_instructions: instructions,
