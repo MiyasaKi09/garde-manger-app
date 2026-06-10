@@ -162,6 +162,23 @@
 .cou-card-tag.stocking { color: var(--ink-3); }
 .cou-card-tag.stocked { color: var(--brand); }
 .cou-card-tag.error { color: var(--state-expired); }
+.cou-card-tag.unmatched { color: var(--ink-3); border: 1px dashed var(--line); border-radius: 3px; padding: 2px 5px; }
+
+/* toast discret (rangement / retrait du stock) */
+.cou-toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: var(--ink-1); color: var(--paper);
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.02em;
+  padding: 10px 16px; border-radius: 6px;
+  box-shadow: 0 6px 24px rgba(24, 28, 22, 0.25);
+  z-index: 1300; pointer-events: none;
+  animation: cou-toast-in 0.18s ease-out;
+}
+.cou-toast.error { background: var(--state-expired); color: #fff; }
+@keyframes cou-toast-in {
+  from { opacity: 0; transform: translate(-50%, 6px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
 
 /* picker conditionnement (dans la carte) */
 .cou-card-picker { display: flex; flex-direction: column; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }

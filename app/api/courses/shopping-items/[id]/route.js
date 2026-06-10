@@ -3,8 +3,9 @@ import { authenticateRequest } from '@/lib/apiAuth'
 
 /**
  * PATCH /api/courses/shopping-items/[id]
- * Met à jour les informations de conditionnement d'un article de courses.
- * Body: { container_qty?, container_size?, container_unit? }
+ * Met à jour un article de courses.
+ * Body: { checked?, image_url?, container_qty?, container_size?, container_unit?,
+ *         created_lot_ids? }   ← uuid[] des lots créés au cochage (ou null pour vider)
  */
 export async function PATCH(request, { params }) {
   try {
@@ -23,6 +24,11 @@ export async function PATCH(request, { params }) {
     if ('container_qty' in body)  updates.container_qty  = body.container_qty  ?? null
     if ('container_size' in body) updates.container_size = body.container_size ?? null
     if ('container_unit' in body) updates.container_unit = body.container_unit ?? null
+    if ('created_lot_ids' in body) {
+      updates.created_lot_ids = Array.isArray(body.created_lot_ids) && body.created_lot_ids.length > 0
+        ? body.created_lot_ids
+        : null
+    }
 
     if (Object.keys(updates).length === 0) {
       return NextResponse.json({ error: 'Aucun champ à mettre à jour' }, { status: 400 })
