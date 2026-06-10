@@ -696,7 +696,12 @@ export default function PantryPage() {
                         title="Modifier ce lot"
                       >
                         <span className="v21-it-bar" aria-hidden="true" />
-                        <span className="v21-it-n">{capitalizeProduct(item.product_name)}</span>
+                        <span className="v21-it-n">
+                          {capitalizeProduct(item.product_name)}
+                          {item.is_opened && (
+                            <span className="v21-it-opened" title={`Entamé — DLC réduite${item.adjusted_expiration_date ? ' au ' + new Date(item.adjusted_expiration_date).toLocaleDateString('fr-FR') : ''}`}> ◦ entamé</span>
+                          )}
+                        </span>
                         <span className="v21-it-q">{qty}</span>
                         <span className="v21-it-lc">{item.storage_place || '—'}</span>
                         <span className="v21-it-st">{v21StatusLabel(item)}</span>
@@ -777,6 +782,7 @@ export default function PantryPage() {
           <EditLotForm
             item={itemToEdit}
             onUpdate={handleUpdateLot}
+            onReload={loadPantryItems}
             onCancel={() => {
               setShowEditLot(false);
               setItemToEdit(null);

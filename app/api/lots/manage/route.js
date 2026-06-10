@@ -33,11 +33,11 @@ export async function POST(request) {
 
     switch (action) {
       case 'open':
-        result = await openLot(lotId, user.id);
+        result = await openLot(lotId, user.id, supabase);
         break;
 
       case 'close':
-        result = await closeLot(lotId, user.id);
+        result = await closeLot(lotId, user.id, supabase);
         break;
 
       case 'changeStorage':
@@ -47,7 +47,7 @@ export async function POST(request) {
             { status: 400 }
           );
         }
-        result = await changeStorageMethod(lotId, user.id, storageMethod);
+        result = await changeStorageMethod(lotId, user.id, storageMethod, supabase);
         break;
 
       default:

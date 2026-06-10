@@ -436,3 +436,31 @@
   cursor: not-allowed;
   transform: none;
 }
+/* État du produit (ouvert / fermé) */
+.opened-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.opened-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.opened-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+.opened-badge.is-open {
+  color: var(--terracotta, #bb5836);
+}
+.opened-dlc {
+  font-size: 0.78rem;
+  color: #b45309;
+}
+.opened-toggle {
+  white-space: nowrap;
+}
