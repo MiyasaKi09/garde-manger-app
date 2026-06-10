@@ -4,3 +4,207 @@ archetype_id,nutrition_id,reason,created_at,updated_at
 206,5042,"Yaourt nature 0% - Profil lipidique spécifique, code CIQUAL yaourt 0% MG",2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
 207,5040,"Yaourt nature brassé - Texture différente, code CIQUAL spécifique",2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
 199,5332,"Crème fraîche légère 15% MG - % MG spécifique, code CIQUAL crème 15% MG",2026-02-03 12:33:59.398294+00,2026-02-03 12:33:59.398294+00
+535,4982,Sardine appertisée à l'huile : teneur en lipides et sodium significativement différente de la sardine crue,2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+536,4809,"Maquereau en conserve : en l'absence d'entrée CIQUAL dédiée pour la conserve, référence au maquereau cru",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+543,4579,"Saucisson sec : viande de porc séchée et salée, profil lipidique et sodique radicalement différent du porc frais",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+544,4600,"Merguez crue : mélange bœuf/mouton épicé, teneur en graisses et sel différente du canonique agneau brut",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+545,4694,"Chorizo : saucisse sèche de porc épicée au paprika, profil calorique et sodique très différent du porc brut",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+546,6011,"Huile de tournesol : corps gras pur à 100% lipides, nutrition radicalement différente de la graine brute",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+547,5999,"Huile de colza : corps gras pur, enrichi en oméga-3 (acide alpha-linolénique), profil propre",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+548,6009,"Huile de sésame : corps gras pur torréfié, profil en acides gras spécifique (sésamol, sesamine)",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+549,6128,"Vinaigre balsamique : teneur en sucres élevée (moût de raisin concentré), calorique vs vinaigre ordinaire",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+550,6127,Vinaigre de cidre : acidité et profil minéral propre à la fermentation du cidre,2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+552,4103,"Riz basmati cru : index glycémique plus bas que le riz blanc standard, profil glucidique distinct",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+553,4100,"Riz complet : son conservé, teneur en fibres et micronutriments significativement plus élevée que le riz blanc",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+554,4128,"Vermicelles de riz sèches : composition différente du riz blanc cru (amidon rétrogradé, pas de protéines de son)",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+555,4122,"Pâtes sèches standard crues : semoule de blé dur, profil protéique et glucidique distinct du blé grain entier",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+556,4126,"Pâtes complètes crues : semoule de blé complet, fibres × 2,5 par rapport aux pâtes blanches",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+557,5906,"Galette de sarrasin préemballée : sans gluten, profil glucidique et lipidique propre à la préparation",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+558,4212,"Farine T55 : farine blanche panification, teneur protéique et glucidique propre au blé moulé raffiné",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+559,4214,"Farine T45 pâtisserie : extraction plus poussée, teneur en amidon légèrement supérieure à T55",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+560,4209,"Farine T110 semi-complète : fibres × 3 vs T55, teneur en minéraux (magnésium, fer) significativement plus haute",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+561,5836,"Muesli floconneux : mélange céréales + fruits secs, profil sucres et fibres distinct du grain d'avoine brut",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+562,4167,"Biscotte classique : pain déshydraté, densité calorique et sodique différente du pain frais",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+563,4200,"Crackers nature : biscuit sec salé, teneur en lipides (matière grasse ajoutée) et sel distincte de la farine",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+564,5656,"Chocolat blanc : pas de pâte de cacao, profil sucres et lipides (beurre de cacao + lait) très différent du cacao poudre",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+565,5653,"Chocolat au lait en tablette : addition de lait en poudre et sucre, profil calorique et sucres distinct du cacao brut",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+566,3609,"Maïs doux appertisé égoutté : teneur en sucres différente du maïs grain sec, sodium ajouté",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+567,5543,"Crème de coco : concentration en matière grasse supérieure au lait de coco, même référence CIQUAL disponible (18041)",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+568,6141,"Bouillon cube déshydraté de volaille : très riche en sodium (> 10 000 mg/100g), profil radicalement différent du bouillon liquide",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+571,5307,"Fromage fondu en tranchettes : sels de fonte ajoutés, teneur en sodium et calcium distincte du fromage affiné",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+573,3594,"Pousses de soja appertisées : processus thermique, perte en vitamine C et légère modification du profil vs frais",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+574,5572,"Café moulu : torréfaction produit des molécules de Maillard, perte chlorogénique vs grain vert, profil propre",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+576,6016,"Margarine 80% MG : corps gras végétal émulsionné, profil en acides gras (trans ou non) propre à la formulation",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+575,4986,"Surimi bâtonnets : produit transformé (fécule, arôme crabe, sel), profil très différent du poisson brut",2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00
+569,6137,"Bouillon cube de bœuf : produit déshydraté très riche en sodium, CIQUAL « Bouillon de boeuf, déshydraté »",2026-06-10 07:33:13.40475+00,2026-06-10 07:33:13.40475+00
+570,6146,"Bouillon cube de légumes : pas d'entrée CIQUAL légumes déshydratée pure — proxy « pot-au-feu, déshydraté » (profil sodium/matières sèches comparable)",2026-06-10 07:33:13.40475+00,2026-06-10 07:33:13.40475+00
+223,5551,Boisson au riz nature : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+336,5044,Lait demi-écrémé UHT : aligné sur le canonique,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+338,5269,Fromage générique : proxy emmental (fromage le plus courant),2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+461,4122,Pâtes sèches standard crues : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+463,4122,Nouilles sèches : proxy pâtes sèches standard,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+464,4122,Nouilles chinoises sèches : proxy pâtes sèches,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+465,4122,Nouilles ramen sèches : proxy pâtes sèches,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+467,4122,Nouilles udon : proxy pâtes sèches,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+468,4122,Fideos : proxy pâtes sèches,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+469,4229,Pâte phyllo : proxy pâte à pizza fine crue,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+337,5332,Crème de lait (aliment moyen) : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+402,5108,Babeurre : proxy lait fermenté à boire nature maigre,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+419,5114,Fromage frais : proxy fromage blanc (aliment moyen),2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+403,5984,Beurre clarifié/ghee : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+404,5970,Beurre de tourage : assimilé beurre 82% MG,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+405,5970,Beurre fondu : assimilé beurre 82% MG,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+406,5970,Beurre froid : assimilé beurre 82% MG,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+407,5970,Beurre manié : assimilé beurre 82% MG (50/50 farine — approximation),2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+408,5970,Beurre mou : assimilé beurre 82% MG,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+409,5970,Beurre pour glaçage : assimilé beurre 82% MG,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+411,5186,Crème chiboust : proxy crème pâtissière CIQUAL,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+412,5336,Crème chantilly sous pression : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+300,5970,Beurre 82% MG doux : CIQUAL direct (barattage non modélisable),2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+301,5972,Beurre 80% MG demi-sel : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+312,4212,Farine de blé T55 : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+313,5317,Feta AOP : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+320,5327,Mozzarella lait de vache : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+316,5114,Fromage blanc (aliment moyen) : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+470,4248,Pâte à pizza crue : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+323,4230,Pâte brisée crue : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+321,4134,Pain baguette courante : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+432,4134,Baguette courante : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+433,4140,Pain de campagne : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+417,5322,Fromage Minas : proxy chèvre frais (pâte fraîche saumurée),2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+420,5271,Emmental râpé : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+322,4230,Pâte (générique) : proxy pâte brisée crue,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+324,4235,Pâte feuilletée crue : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+330,4122,Pâtes sèches standard crues : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+329,4116,Semoule de blé dur crue : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+434,4151,Pain de mie courant : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+220,5547,Boisson au soja nature : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+221,5544,Boisson à l'amande nature non sucrée : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+435,4152,Mie de pain : pain de mie sans croûte,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+436,4152,Mie de pain : pain de mie sans croûte,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+437,5729,Brioche : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+438,4158,Pain pour hamburger (bun) : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+222,5552,Boisson à base d'avoine nature : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+224,5543,Lait de coco : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+439,5876,Pain d'épices : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+440,4134,Pain rassis : assimilé baguette courante,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+441,4248,Pâte à pain : proxy pâte à pizza crue,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+462,4124,Raviolis frais : proxy pâtes aux œufs crues (hors farce),2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+457,4122,Pâtes sèches standard crues : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+458,4122,Pâtes sèches standard crues : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+459,4122,Pâtes sèches standard crues : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+460,4122,Pâtes sèches standard crues : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+418,5232,Chèvre lactique affiné (bûchette/crottin) : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+227,5112,Kéfir de lait : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+334,5110,Yaourt à la grecque nature : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+335,5097,Yaourt nature (aliment moyen) : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+215,5120,Fromage blanc nature 0% MG : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+216,5122,Fromage blanc nature 3% MG (≈20% sur extrait sec) : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+217,5125,Fromage blanc gourmand 8% MG (≈40% sur extrait sec) : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+218,5139,Petit suisse nature 4% MG : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+219,5118,Faisselle 6% MG : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+230,5118,Cottage cheese : proxy faisselle 6% MG (fromage frais grainé),2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+231,5326,Ricotta : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+232,5325,Mascarpone : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+233,5310,Cream cheese : proxy fromage fondu double crème 31% MG,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+234,5310,Fromage à tartiner : proxy fromage fondu double crème,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+235,5320,Chèvre frais type bûchette fraîche : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+195,5335,Crème 30% UHT : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+196,5340,Crème légère 15-20% fluide : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+310,5333,Crème 30% MG épaisse rayon frais : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+311,5335,Crème 30% MG semi-épaisse UHT : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+414,5186,Crème pâtissière : CIQUAL direct,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+415,5186,Crème pâtissière chocolat : proxy crème pâtissière,2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+416,5676,Ganache : proxy chocolat noir 40% à pâtisser (approximation),2026-06-10 07:41:26.049155+00,2026-06-10 07:41:26.049155+00
+497,5586,Porto : CIQUAL vin doux,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+496,5614,Kirsch : proxy whisky (eau-de-vie 40°),2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+384,4588,Chair à saucisse pur porc crue : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+339,5596,Bière cœur de marché : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+359,4419,Veau épaule crue : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+373,4473,Carré : proxy côtelette crue,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+307,5654,Chocolat noir à croquer <70% : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+382,4608,Saucisse de Strasbourg/Knack : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+357,4412,Escalope de veau crue : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+325,4588,Porc haché : proxy chair à saucisse pur porc,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+89,3925,Compote : proxy compote de pomme,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+381,4594,Saucisse de Toulouse crue : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+413,4023,Crème de marrons : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+343,5598,Cidre (aliment moyen) : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+346,4388,Entrecôte crue : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+361,4418,Veau rôti cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+355,4390,Araignée : proxy faux-filet cru,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+348,4391,Pavé : proxy filet de bœuf cru,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+332,5592,Vin rouge : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+376,4551,Jambon cuit supérieur : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+303,4447,Blanc de poulet : aligné sur poulet viande crue,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+365,4421,Jarret de veau cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+340,5596,Bière blonde : CIQUAL cœur de marché,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+498,5613,Rhum : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+367,4413,Veau noix crue : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+298,4475,Agneau haché : proxy épaule crue,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+493,5586,Marsala : CIQUAL vin doux,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+52,3925,Compote de pomme : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+366,4412,Paupiette : proxy escalope crue (hors farce),2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+317,4551,Jambon cuit supérieur : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+85,5705,Confiture de prune : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+358,4422,Veau collier cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+492,5612,Grand Marnier : CIQUAL liqueur,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+427,4805,Morue dessalée : proxy cabillaud cru,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+377,4576,Jambon sec Serrano : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+494,5612,Amaretto : CIQUAL liqueur,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+374,4551,Jambon cuit supérieur : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+68,3925,Compote : proxy compote de pomme,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+353,4384,Côte de bœuf crue : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+305,3158,Bouillon de bœuf déshydraté reconstitué : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+80,5700,Confiture : proxy confiture de fraise,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+370,4474,Gigot cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+94,5700,Confiture : proxy confiture de fraise,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+362,4416,Veau steak haché 15% MG cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+356,4273,Bœuf effiloché : CIQUAL bourguignon cuit,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+62,3925,Compote : proxy compote de pomme,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+531,3400,Thon en conserve : aligné sur canonique thon appertisé,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+309,5614,Cognac : proxy whisky (eau-de-vie 40°),2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+349,4402,Bœuf bourguignon/pot-au-feu cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+363,4410,Côte de veau crue : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+341,5603,Bière ambrée : proxy bière spéciale 5-6°,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+389,3166,Bouillon de volaille reconstitué : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+351,4402,Bœuf à mijoter : CIQUAL bourguignon cru,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+386,4673,Boudin noir à cuire : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+378,4576,Jambon ibérique : proxy Serrano,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+369,4473,Côtelette d'agneau crue : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+352,4408,Paleron cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+69,5700,Confiture : proxy confiture de fraise,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+385,6039,Lard gras cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+79,3925,Compote : proxy compote de pomme,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+90,5700,Confiture de fraise : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+350,4402,Bœuf à braiser : CIQUAL bourguignon cru,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+387,4530,Foie de porc cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+84,3925,Compote : proxy compote de pomme,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+74,3925,Compote : proxy compote de pomme,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+354,4391,Filet de bœuf cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+380,4590,Saucisse fumée à cuire : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+347,4388,Bavette : proxy entrecôte crue,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+410,5643,Caramel : proxy caramel liquide/nappage,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+54,5700,Confiture : proxy confiture de fraise,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+342,5595,Bière brune : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+53,3925,Compote de pomme : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+371,4475,Épaule crue : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+364,4414,Filet de veau cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+372,4474,Filet : proxy gigot cru,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+360,4422,Veau collier cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+495,5614,Calvados : proxy whisky (eau-de-vie 40°),2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+75,5702,Confiture de cerise : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+388,3166,Bouillon de volaille reconstitué : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+344,5599,Cidre brut : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+375,4569,Jambon cru : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+345,4390,Steak : proxy faux-filet cru,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+308,5672,Chocolat noir 70% dégustation : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+331,5593,Vin blanc sec : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+63,5700,Confiture : proxy confiture de fraise,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+473,6164,Paprika : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+477,6155,Curry en poudre : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+27,5434,Jus de carotte : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+327,6103,Sauce tomate : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+529,6127,Vinaigre de cidre : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+533,5002,Anchois marinés : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
+59,3935,Pomme cuite au four : CIQUAL direct,2026-06-10 07:42:05.795354+00,2026-06-10 07:42:05.795354+00
