@@ -6,30 +6,78 @@ import { supabase } from '@/lib/supabaseClient'
 
 const ACCOUNT_EMAIL = process.env.NEXT_PUBLIC_LOGIN_EMAIL || ''
 
+/**
+ * Connexion principale : email + mot de passe (rapide, multi-appareils).
+ * Secours : lien magique par email, et « mot de passe oublié » qui permet
+ * aussi de DÉFINIR un premier mot de passe sur un compte créé par magic link.
+ * La session est stockée en cookies → reconnue par le middleware et le serveur,
+ * et persiste indépendamment sur chaque appareil.
+ */
 export default function LoginPage() {
   const router = useRouter()
+  const [email, setEmail] = useState(ACCOUNT_EMAIL)
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [info, setInfo] = useState('')
 
   const handleLogin = async (e) => {
     e.preventDefault()
     setLoading(true)
     setError('')
+    setInfo('')
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: ACCOUNT_EMAIL,
-        password,
-      })
-
+      const { error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) {
-        setError('Mauvais mot de passe')
+        setError(
+          /invalid login credentials/i.test(error.message)
+            ? 'Email ou mot de passe incorrect. Si le compte a été créé par lien magique, utilisez « Mot de passe oublié » pour en définir un.'
+            : error.message
+        )
       } else {
         router.push('/')
+        router.refresh()
       }
     } catch {
       setError('Erreur de connexion')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleMagicLink = async () => {
+    if (!email) { setError('Renseignez votre email d\'abord'); return }
+    setLoading(true)
+    setError('')
+    setInfo('')
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+      })
+      if (error) setError(error.message)
+      else setInfo('Lien magique envoyé — vérifiez votre boîte mail.')
+    } catch {
+      setError('Erreur lors de l\'envoi du lien')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleForgotPassword = async () => {
+    if (!email) { setError('Renseignez votre email d\'abord'); return }
+    setLoading(true)
+    setError('')
+    setInfo('')
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/auth/callback?redirect=/auth/reset`,
+      })
+      if (error) setError(error.message)
+      else setInfo('Email envoyé — suivez le lien pour définir votre mot de passe.')
+    } catch {
+      setError('Erreur lors de l\'envoi de l\'email')
     } finally {
       setLoading(false)
     }
@@ -42,21 +90,42 @@ export default function LoginPage() {
         <h1 style={S.title}>Myko</h1>
 
         {error && <p style={S.error}>{error}</p>}
+        {info && <p style={S.info}>{info}</p>}
 
         <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="Email"
+            style={S.input}
+            autoComplete="username"
+            required
+          />
           <input
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             placeholder="Mot de passe"
             style={S.input}
-            autoFocus
+            autoComplete="current-password"
+            autoFocus={!!ACCOUNT_EMAIL}
             required
           />
           <button type="submit" disabled={loading} style={S.btn}>
-            {loading ? '...' : 'Entrer'}
+            {loading ? '…' : 'Entrer'}
           </button>
         </form>
+
+        <div style={S.links}>
+          <button type="button" style={S.link} onClick={handleForgotPassword} disabled={loading}>
+            Mot de passe oublié ?
+          </button>
+          <span style={S.sep}>·</span>
+          <button type="button" style={S.link} onClick={handleMagicLink} disabled={loading}>
+            Lien magique
+          </button>
+        </div>
       </div>
     </div>
   )
@@ -84,7 +153,7 @@ const S = {
   },
   logo: { fontSize: 48, marginBottom: 8 },
   title: {
-    fontFamily: "var(--font-editorial)",
+    fontFamily: 'var(--font-editorial)',
     fontSize: 28,
     fontWeight: 600,
     color: 'var(--ink, #1f281f)',
@@ -96,6 +165,14 @@ const S = {
     marginBottom: 12,
     padding: '8px 12px',
     background: 'rgba(220,38,38,0.06)',
+    borderRadius: 10,
+  },
+  info: {
+    color: '#15803d',
+    fontSize: 13,
+    marginBottom: 12,
+    padding: '8px 12px',
+    background: 'rgba(22,163,74,0.08)',
     borderRadius: 10,
   },
   input: {
@@ -124,4 +201,23 @@ const S = {
     fontFamily: 'inherit',
     boxShadow: '0 2px 8px rgba(22,163,74,0.3)',
   },
+  links: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 8,
+    marginTop: 16,
+  },
+  link: {
+    background: 'none',
+    border: 'none',
+    color: 'var(--ink, #1f281f)',
+    opacity: 0.7,
+    fontSize: 13,
+    cursor: 'pointer',
+    textDecoration: 'underline',
+    fontFamily: 'inherit',
+    padding: 0,
+  },
+  sep: { opacity: 0.4, fontSize: 13 },
 }
