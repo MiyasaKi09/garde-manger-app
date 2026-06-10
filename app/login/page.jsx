@@ -3,15 +3,16 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
+import './login.css'
 
 const ACCOUNT_EMAIL = process.env.NEXT_PUBLIC_LOGIN_EMAIL || ''
 
 /**
  * Connexion principale : email + mot de passe (rapide, multi-appareils).
- * Secours : lien magique par email, et « mot de passe oublié » qui permet
- * aussi de DÉFINIR un premier mot de passe sur un compte créé par magic link.
- * La session est stockée en cookies → reconnue par le middleware et le serveur,
- * et persiste indépendamment sur chaque appareil.
+ * Secours : lien magique, et « mot de passe oublié » qui permet aussi de
+ * DÉFINIR un premier mot de passe sur un compte créé par magic link.
+ * Session en cookies → reconnue par le middleware/serveur, persistante
+ * indépendamment sur chaque appareil.
  */
 export default function LoginPage() {
   const router = useRouter()
@@ -26,7 +27,6 @@ export default function LoginPage() {
     setLoading(true)
     setError('')
     setInfo('')
-
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) {
@@ -84,140 +84,55 @@ export default function LoginPage() {
   }
 
   return (
-    <div style={S.page}>
-      <div style={S.card}>
-        <div style={S.logo}>🥬</div>
-        <h1 style={S.title}>Myko</h1>
+    <div className="auth-page">
+      <div className="auth-card">
+        <p className="auth-eyebrow">Réseau mycorhizien</p>
+        <h1 className="auth-title">Myko</h1>
+        <div className="auth-rule" />
+        <p className="auth-lede">Cultivez les connexions entre cuisine, garde-manger et potager.</p>
 
-        {error && <p style={S.error}>{error}</p>}
-        {info && <p style={S.info}>{info}</p>}
+        {error && <p className="auth-error" role="alert">{error}</p>}
+        {info && <p className="auth-info" role="status">{info}</p>}
 
         <form onSubmit={handleLogin}>
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            placeholder="Email"
-            style={S.input}
-            autoComplete="username"
-            required
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            placeholder="Mot de passe"
-            style={S.input}
-            autoComplete="current-password"
-            autoFocus={!!ACCOUNT_EMAIL}
-            required
-          />
-          <button type="submit" disabled={loading} style={S.btn}>
+          <label className="auth-field">
+            <span className="auth-field-l">Email</span>
+            <input
+              type="email"
+              className="auth-input"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              autoComplete="username"
+              required
+            />
+          </label>
+          <label className="auth-field">
+            <span className="auth-field-l">Mot de passe</span>
+            <input
+              type="password"
+              className="auth-input"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              autoComplete="current-password"
+              autoFocus={!!ACCOUNT_EMAIL}
+              required
+            />
+          </label>
+          <button type="submit" className="auth-btn" disabled={loading}>
             {loading ? '…' : 'Entrer'}
           </button>
         </form>
 
-        <div style={S.links}>
-          <button type="button" style={S.link} onClick={handleForgotPassword} disabled={loading}>
+        <div className="auth-links">
+          <button type="button" className="auth-link" onClick={handleForgotPassword} disabled={loading}>
             Mot de passe oublié ?
           </button>
-          <span style={S.sep}>·</span>
-          <button type="button" style={S.link} onClick={handleMagicLink} disabled={loading}>
+          <span className="auth-sep">·</span>
+          <button type="button" className="auth-link" onClick={handleMagicLink} disabled={loading}>
             Lien magique
           </button>
         </div>
       </div>
     </div>
   )
-}
-
-const S = {
-  page: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: 'calc(100vh - 100px)',
-    padding: 24,
-  },
-  card: {
-    width: '100%',
-    maxWidth: 320,
-    textAlign: 'center',
-    background: 'rgba(255,255,255,0.6)',
-    backdropFilter: 'blur(12px)',
-    WebkitBackdropFilter: 'blur(12px)',
-    borderRadius: 24,
-    padding: '40px 28px',
-    border: '1px solid rgba(255,255,255,0.3)',
-    boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-  },
-  logo: { fontSize: 48, marginBottom: 8 },
-  title: {
-    fontFamily: 'var(--font-editorial)',
-    fontSize: 28,
-    fontWeight: 600,
-    color: 'var(--ink, #1f281f)',
-    marginBottom: 28,
-  },
-  error: {
-    color: '#dc2626',
-    fontSize: 13,
-    marginBottom: 12,
-    padding: '8px 12px',
-    background: 'rgba(220,38,38,0.06)',
-    borderRadius: 10,
-  },
-  info: {
-    color: '#15803d',
-    fontSize: 13,
-    marginBottom: 12,
-    padding: '8px 12px',
-    background: 'rgba(22,163,74,0.08)',
-    borderRadius: 10,
-  },
-  input: {
-    width: '100%',
-    padding: '14px 16px',
-    border: '1px solid rgba(0,0,0,0.08)',
-    borderRadius: 14,
-    fontSize: 16,
-    fontFamily: 'inherit',
-    background: 'rgba(255,255,255,0.7)',
-    textAlign: 'center',
-    marginBottom: 12,
-    boxSizing: 'border-box',
-    outline: 'none',
-  },
-  btn: {
-    width: '100%',
-    padding: '14px',
-    border: 'none',
-    borderRadius: 14,
-    background: 'linear-gradient(135deg, #16a34a, #059669)',
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 600,
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    boxShadow: '0 2px 8px rgba(22,163,74,0.3)',
-  },
-  links: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 8,
-    marginTop: 16,
-  },
-  link: {
-    background: 'none',
-    border: 'none',
-    color: 'var(--ink, #1f281f)',
-    opacity: 0.7,
-    fontSize: 13,
-    cursor: 'pointer',
-    textDecoration: 'underline',
-    fontFamily: 'inherit',
-    padding: 0,
-  },
-  sep: { opacity: 0.4, fontSize: 13 },
 }
