@@ -3,9 +3,10 @@
 
 import { daysUntil, formatDate, getExpirationStatus } from './pantryUtils';
 
-export default function LifespanBadge({ date, size = 'md', showDate = false }) {
+// expiryKind ('DLC' | 'DDM' | 'ESTIMATE') décale les seuils d'alerte (J-3 DLC, J-7 DDM).
+export default function LifespanBadge({ date, size = 'md', showDate = false, expiryKind }) {
   const d = daysUntil(date);
-  const s = getExpirationStatus(d);
+  const s = getExpirationStatus(d, expiryKind);
 
   const paddings = size === 'sm' ? '4px 8px' : '6px 10px';
   const fontSize = size === 'sm' ? '11px' : '12px';

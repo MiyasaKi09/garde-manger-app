@@ -161,7 +161,7 @@ export default function TodayMeals({ importId }) {
   function handleCooked(result) {
     if (cookSheetMeal) setDoneSet(s => new Set(s).add(mealKey(cookSheetMeal)))
     if (result?.leftover) {
-      toast.success(`Repas validé — ${result.leftover.portions_remaining} portion(s) aux restes (DLC ${formatDlc(result.leftover.expiration_date)})`)
+      toast.success(`Repas validé — ${fmtPortions(result.leftover.portions_remaining)} portion(s) aux restes (DLC ${formatDlc(result.leftover.expiration_date)})`)
       setReplanOffered(true)
     } else if (cookSheetMeal?.eatenDish) {
       toast.success('Reste mangé — portions mises à jour !')
@@ -466,7 +466,7 @@ export default function TodayMeals({ importId }) {
                   <div className="tm-leftover-info">
                     <span className="tm-leftover-name">{d.name}</span>
                     <span className="tm-leftover-meta">
-                      {d.portions_remaining} portion{d.portions_remaining > 1 ? 's' : ''}
+                      {fmtPortions(d.portions_remaining)} portion{d.portions_remaining > 1 ? 's' : ''}
                       {d.storage_method === 'freezer' ? ' · congelé' : ''}
                     </span>
                   </div>
@@ -886,7 +886,7 @@ function CookValidationSheet({ open, meal, onClose, onDone }) {
           <p className="tm-sheet-note">
             <Soup size={15} style={{ flexShrink: 0, marginTop: 1 }} />
             <span>
-              {eatenDish.portions_remaining} portion{eatenDish.portions_remaining > 1 ? 's' : ''} restante{eatenDish.portions_remaining > 1 ? 's' : ''} ·
+              {fmtPortions(eatenDish.portions_remaining)} portion{eatenDish.portions_remaining > 1 ? 's' : ''} restante{eatenDish.portions_remaining > 1 ? 's' : ''} ·
               DLC {formatDlc(eatenDish.expiration_date)}. Rien à déduire du stock (déjà retiré à la cuisson).
             </span>
           </p>

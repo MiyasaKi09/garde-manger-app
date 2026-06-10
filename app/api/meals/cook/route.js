@@ -8,6 +8,9 @@ export const dynamic = 'force-dynamic'
 const NUTRI_FIELDS = ['kcal', 'protein_g', 'carbs_g', 'fat_g', 'fiber_g']
 
 const round1 = (v) => Math.round(v * 10) / 10
+// portions_cooked / portions_remaining sont numeric en base : on travaille au
+// demi (0,5 / 1,5 / …) — arrondi au 0,5 le plus proche.
+const roundHalf = (v) => Math.round(v * 2) / 2
 
 /**
  * Lien reste ↔ créneau : on stocke un marqueur parsable dans cooked_dishes.notes
@@ -61,9 +64,9 @@ const entryPortions = (e) => {
  *   - leftover : { id, name, portions_remaining, expiration_date } | null
  *
  * Limites connues :
- *   - portions_cooked / portions_remaining sont des entiers en base : les
- *     demi-portions sont arrondies à l'entier le plus proche (min 1) pour les
- *     restes et les décréments de plats ;
+ *   - portions_cooked / portions_remaining sont numeric en base : les
+ *     demi-portions sont supportées (arrondi au 0,5 le plus proche, min 0,5
+ *     pour un reste créé et pour un décrément de plat) ;
  *   - la revalidation d'un créneau recrée le reste de zéro : les portions déjà
  *     mangées sur l'ancien reste de ce créneau ne sont pas préservées.
  */
@@ -245,7 +248,9 @@ export async function POST(request) {
   //    Une seule fois par créneau (cf. JSDoc).
   let dishConsumed = 0
   if (consumedDish && !alreadyLogged) {
-    const dec = Math.max(1, Math.round(portionsEaten || 1))
+    // Demi-portions acceptées (0,5 / 1,5 / …) — min 0,5 pour décompter au moins
+    // quelque chose ; fallback 1 si aucune portion renseignée.
+    const dec = Math.max(0.5, roundHalf(portionsEaten || 1))
     const newRemaining = Math.max(0, (consumedDish.portions_remaining || 0) - dec)
     const patch = { portions_remaining: newRemaining }
     if (newRemaining === 0) patch.consumed_completely_at = new Date().toISOString()
@@ -290,13 +295,17 @@ export async function POST(request) {
 
     const now = new Date()
     const expiration = calculateCookedDishExpiration(now, 'fridge', usedLots)
+    // Demi-portions : arrondi au 0,5 ; un surplus existe donc min 0,5 restant,
+    // et portions_cooked ne peut pas être inférieur aux portions restantes.
+    const leftoverRemaining = Math.max(0.5, roundHalf(surplus))
+    const leftoverCooked = Math.max(leftoverRemaining, roundHalf(prepared))
     const { data: created, error: leftoverErr } = await supabase
       .from('cooked_dishes')
       .insert({
         user_id: user.id,
         name: dish_name || 'Restes',
-        portions_cooked: Math.max(1, Math.round(prepared)),
-        portions_remaining: Math.max(1, Math.round(surplus)),
+        portions_cooked: leftoverCooked,
+        portions_remaining: leftoverRemaining,
         storage_method: 'fridge',
         cooked_at: now.toISOString(),
         expiration_date: expiration.toISOString().split('T')[0],
@@ -392,7 +401,7 @@ export async function DELETE(request) {
     if (!dish) return 0
     const target = Math.min(
       dish.portions_cooked || 0,
-      (dish.portions_remaining || 0) + Math.max(1, Math.round(portions))
+      (dish.portions_remaining || 0) + Math.max(0.5, roundHalf(portions))
     )
     if (target <= (dish.portions_remaining || 0)) return 0
     const patch = { portions_remaining: target }
