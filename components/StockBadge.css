@@ -1,0 +1,106 @@
+/* ============================================================================
+   StockBadge.css — Indicateur de disponibilité stock (dot ou chip).
+   Tokens : --brand/--sprout (vert), --saffron/--state-soon (ambre),
+            --terracotta (rouge), --ink-3 (neutre).
+   ============================================================================ */
+
+/* ── Pastille circulaire (variant="dot") ── */
+.sb-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+.sb-dot.sb-ok {
+  background: var(--state-fresh-bg, #E8F2E3);
+  color: var(--state-fresh, #356B2B);
+  border: 1.5px solid var(--sprout, #6FB05A);
+}
+
+.sb-dot.sb-partial {
+  background: var(--state-soon-bg, #FBEED0);
+  color: var(--state-soon, #7A5410);
+  border: 1.5px solid var(--saffron, #E0A92E);
+}
+
+.sb-dot.sb-missing {
+  background: var(--surface-soft, #F5F3EF);
+  color: var(--ink-3, #8A8C7E);
+  border: 1.5px solid var(--line-strong, #BFC1B7);
+}
+
+/* ── Chip avec label (variant="chip") ── */
+.sb-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  border: 1px solid;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: default;
+  margin-left: auto;
+}
+
+.sb-chip.sb-ok {
+  color: var(--state-fresh, #356B2B);
+  border-color: var(--sprout, #6FB05A);
+  background: var(--state-fresh-bg, #E8F2E3);
+}
+
+.sb-chip.sb-partial {
+  color: var(--state-soon, #7A5410);
+  border-color: var(--saffron, #E0A92E);
+  background: var(--state-soon-bg, #FBEED0);
+}
+
+.sb-chip.sb-missing {
+  color: var(--ink-3, #8A8C7E);
+  border-color: var(--line-strong, #BFC1B7);
+  background: var(--surface-soft, #F5F3EF);
+}
+
+.sb-chip-label {
+  line-height: 1;
+}
+
+/* ── Placeholder de chargement ── */
+.sb-placeholder {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--line, #E5E3DC);
+  flex-shrink: 0;
+  animation: sb-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes sb-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.9; }
+}
+
+/* ── Pastille planning (variant="dot" dans la grille) ── */
+.sb-plan-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sb-plan-dot.sb-ok      { background: var(--sprout, #6FB05A); }
+.sb-plan-dot.sb-partial { background: var(--saffron, #E0A92E); }
+.sb-plan-dot.sb-missing { background: var(--ink-3, #8A8C7E); }

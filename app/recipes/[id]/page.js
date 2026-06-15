@@ -3,12 +3,14 @@
 import { useEffect, useMemo, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
+import { authFetch } from '@/lib/authFetch';
 import { convertWithMeta } from '@/lib/units';
 import { toast } from '@/components/Toast';
 import IngredientSearchSelector from './IngredientSearchSelector';
 import InstructionsCarousel from './components/InstructionsCarousel';
 import CookMode from '@/components/CookMode';
 import CookWizard from '@/components/CookWizard';
+import StockBadge from '@/components/StockBadge';
 import './recipe-detail.css';
 import './IngredientSearchSelector.css';
 
@@ -94,6 +96,10 @@ export default function RecipeDetail() {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [showCookWizard, setShowCookWizard] = useState(false);
   const [showCookMode, setShowCookMode] = useState(false);
+
+  // État pour la disponibilité stock
+  const [stockAvailability, setStockAvailability] = useState(null); // Map ingredient_id → { inStock, hasEnough }
+  const [stockLoading, setStockLoading] = useState(false);
 
   // État pour les données nutritionnelles
   const [nutrition, setNutrition] = useState(null);
@@ -522,6 +528,26 @@ export default function RecipeDetail() {
       // Pour l'instant, pas de chargement de lots détaillé
       setLotsByProduct({});
       setMetaByProduct({});
+
+      // Disponibilité stock des ingrédients (best-effort, non bloquant)
+      if (ingList.length > 0) {
+        setStockLoading(true);
+        try {
+          const res = await authFetch(`/api/recipes/${id}/available-ingredients`);
+          const json = await res.json();
+          if (Array.isArray(json.ingredients)) {
+            const map = {};
+            for (const ing of json.ingredients) {
+              map[ing.ingredient_id] = {
+                inStock: ing.available_lots?.length > 0,
+                hasEnough: ing.has_enough === true,
+              };
+            }
+            setStockAvailability(map);
+          }
+        } catch { /* silencieux : la disponibilité est non bloquante */ }
+        finally { setStockLoading(false); }
+      }
     } catch (error) {
       console.error('Erreur chargement ingrédients recette:', error);
       setIngs([]);
@@ -1481,8 +1507,15 @@ export default function RecipeDetail() {
                   const productId = ing.canonical_food_id || ing.archetype_id;
                   const productUrl = productId ? `/produits/${productId}` : null;
 
+                  const stockInfo = stockAvailability ? stockAvailability[ing.id] : null;
+
                   return (
                     <li key={ing.id || index} className="ingredient-item">
+                      <StockBadge
+                        loading={stockLoading}
+                        inStock={stockInfo?.inStock ?? false}
+                        hasEnough={stockInfo?.hasEnough ?? false}
+                      />
                       <span className="ingredient-quantity">
                         {roundForUnit(ing.quantity, ing.unit)} {ing.unit}
                       </span>

@@ -60,7 +60,7 @@
 
 .ingredients-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
 .ingredient-item {
-  display: flex; align-items: baseline; gap: 12px;
+  display: flex; align-items: center; gap: 10px;
   padding: 11px 0; border-bottom: 1px solid var(--line);
 }
 .ingredient-quantity { font-family: var(--font-mono); font-size: 13px; color: var(--ink-2); min-width: 72px; flex-shrink: 0; }
