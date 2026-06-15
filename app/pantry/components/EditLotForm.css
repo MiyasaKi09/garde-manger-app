@@ -436,6 +436,17 @@
   cursor: not-allowed;
   transform: none;
 }
+
+.action-btn.danger {
+  flex: 0 0 auto;
+  background: rgba(192, 86, 59, 0.08);
+  border: 1px solid rgba(192, 86, 59, 0.35);
+}
+
+.action-btn.danger:hover {
+  background: rgba(192, 86, 59, 0.16);
+  transform: translateY(-1px);
+}
 /* État du produit (ouvert / fermé) */
 .opened-row {
   display: flex;
