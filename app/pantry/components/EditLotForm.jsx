@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Package, Calendar, MapPin, X, PackageOpen } from 'lucide-react';
+import { Package, Calendar, MapPin, X, PackageOpen, Trash2 } from 'lucide-react';
 import { authFetch } from '@/lib/authFetch';
 import { toast } from '@/components/Toast';
 import './EditLotForm.css';
@@ -20,7 +20,8 @@ export default function EditLotForm({
   item,
   onUpdate,
   onCancel,
-  onReload
+  onReload,
+  onDelete
 }) {
   const [quantity, setQuantity] = useState(item.qty_remaining);
   const [isOpened, setIsOpened] = useState(!!item.is_opened);
@@ -406,9 +407,19 @@ export default function EditLotForm({
 
           {/* Actions */}
           <div className="form-actions">
-            <button 
-              type="button" 
-              className="action-btn secondary" 
+            {onDelete && (
+              <button
+                type="button"
+                className="action-btn danger"
+                onClick={onDelete}
+              >
+                <Trash2 size={14} />
+                Supprimer
+              </button>
+            )}
+            <button
+              type="button"
+              className="action-btn secondary"
               onClick={onCancel}
             >
               Annuler

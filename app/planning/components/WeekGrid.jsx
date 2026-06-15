@@ -2,12 +2,30 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { authFetch } from '@/lib/authFetch'
+import { supabase } from '@/lib/supabaseClient'
 import CookMode from '@/components/CookMode'
 import MealCookSheet from '@/components/MealCookSheet'
 import { ChevronLeft, ChevronRight, Loader2, Check } from 'lucide-react'
 import { toast } from '@/components/Toast'
 import { openMealRecipe } from './openMealRecipe'
 import './WeekGrid.css'
+
+/**
+ * Petite pastille de couverture stock affichée dans une cellule planning.
+ * Rendue en CSS inline pour ne pas alourdir le bundle (pas de fichier CSS séparé ici,
+ * les styles sont dans WeekGrid.css sous .wg-stock-dot).
+ */
+function StockDot({ status }) {
+  if (!status) return null
+  const titles = { ok: 'Tous les ingrédients en stock', partial: 'Stock partiel', missing: 'Ingrédients à acheter' }
+  return (
+    <span
+      className={`wg-stock-dot wg-stock-${status}`}
+      title={titles[status] || ''}
+      aria-label={titles[status] || ''}
+    />
+  )
+}
 
 /** Extrait le nom du plat — repris verbatim de WeeklyPlanView. */
 function extractDishName(descriptions) {
@@ -55,6 +73,10 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
   const [doneSet, setDoneSet] = useState(new Set())
   const [cookSheetMeal, setCookSheetMeal] = useState(null)
 
+  // Disponibilité stock par recette générée (batch_recipe_id → status)
+  // status : 'ok' | 'partial' | 'missing'
+  const [stockByRecipe, setStockByRecipe] = useState({})
+
   const recipeCacheRef = useRef({})
 
   // ⚠️ Date LOCALE (toISOString décalerait de -1 jour en UTC+).
@@ -62,6 +84,7 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
   const todayStr = fmt(new Date())
 
   useEffect(() => { loadDone() }, [weekOffset]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { loadStockAvailability() }, [meals]) // eslint-disable-line react-hooks/exhaustive-deps
 
   async function loadDone() {
     if (!weekDates.length) return
@@ -76,6 +99,45 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
       }
       setDoneSet(s)
     } catch {}
+  }
+
+  async function loadStockAvailability() {
+    // Collecter les batch_recipe_id uniques des repas déj/dîner
+    const recipeIds = []
+    for (const m of meals) {
+      if ((m.meal_type === 'dejeuner' || m.meal_type === 'diner') && m.batch_recipe_id) {
+        recipeIds.push(m.batch_recipe_id)
+      }
+    }
+    const uniqueIds = [...new Set(recipeIds)]
+    if (uniqueIds.length === 0) return
+
+    try {
+      // Utilise fetch directement avec le token pour ne pas invalider le cache GET d'authFetch
+      const { data: { session } } = await supabase.auth.getSession()
+      const headers = { 'Content-Type': 'application/json' }
+      if (session?.access_token) headers['Authorization'] = `Bearer ${session.access_token}`
+
+      const res = await fetch('/api/recipes/availability-batch', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ recipe_ids: uniqueIds }),
+      })
+      if (!res.ok) return
+      const data = await res.json().catch(() => ({}))
+      const map = {}
+      for (const r of (data.results || [])) {
+        if (r.total === 0) continue // pas d'ingrédients liés → pas de pastille
+        if (r.has_enough_count === r.total) {
+          map[r.recipe_id] = 'ok'
+        } else if (r.in_stock > 0) {
+          map[r.recipe_id] = 'partial'
+        } else {
+          map[r.recipe_id] = 'missing'
+        }
+      }
+      setStockByRecipe(map)
+    } catch { /* non bloquant */ }
   }
 
   function filterByPerson(typeMeals) {
@@ -159,6 +221,10 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
     // Repas couvert par une préparation batch (déjeuners liés par la Routine) → réchauffe.
     const batched = typeMeals.some(m => m.batch_recipe_id)
 
+    // Pastille stock : uniquement si la cellule a une recette générée liée
+    const batchRecipeId = typeMeals.find(m => m.batch_recipe_id)?.batch_recipe_id
+    const stockStatus = (clickable && batchRecipeId) ? (stockByRecipe[batchRecipeId] || null) : null
+
     // Plat spécial = déjeuner/dîner où les convives ont des plats DIFFÉRENTS
     // (le « carné pour Julien / végé pour Zoé » hebdomadaire). On compare les
     // surnoms (donc une simple différence de portion ne compte pas).
@@ -179,6 +245,7 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
           >
             {isGenerating && <Loader2 size={11} className="wg-spin" />}
             <span className="wg-dish" style={dishStyle}>{renderDishName(dishName)}</span>
+            {stockStatus && <StockDot status={stockStatus} />}
           </button>
         ) : (
           <span className="wg-dish wg-dish-static" style={dishStyle} title={dishName}>{renderDishName(dishName)}</span>

@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import CookWizard from '@/components/CookWizard'
+import StockBadge from '@/components/StockBadge'
 import './generated-recipe.css'
 
 export default function GeneratedRecipeDetail() {
@@ -15,6 +16,7 @@ export default function GeneratedRecipeDetail() {
   const [activeTab, setActiveTab] = useState('ingredients')
   const [checkedSteps, setCheckedSteps] = useState(new Set())
   const [linkedIngredients, setLinkedIngredients] = useState(null) // ingrédients liés + stock
+  const [stockLoading, setStockLoading] = useState(false)
   const [showCook, setShowCook] = useState(false)
 
   useEffect(() => {
@@ -37,6 +39,7 @@ export default function GeneratedRecipeDetail() {
       setLoading(false)
 
       // Ingrédients liés au stock (best-effort, peut être vide si pas encore lié)
+      setStockLoading(true)
       try {
         const res = await authFetch(`/api/recipes/generated/${id}/available-ingredients`)
         const json = await res.json()
@@ -44,6 +47,7 @@ export default function GeneratedRecipeDetail() {
           setLinkedIngredients(json.ingredients)
         }
       } catch { /* affichage brut en repli */ }
+      finally { setStockLoading(false) }
     }
     load()
   }, [id, router])
@@ -130,23 +134,39 @@ export default function GeneratedRecipeDetail() {
             <ul className="gr-ing-list">
               {linkedIngredients.map((ing) => {
                 const inStock = ing.available_lots?.length > 0
+                const hasEnough = ing.has_enough === true
+                const stockTitle = hasEnough
+                  ? `En stock${ing.available_lots[0]?.product_name ? ` : ${ing.available_lots[0].product_name}` : ''}`
+                  : inStock
+                    ? `Stock insuffisant (disponible : ${ing.available_lots[0]?.quantity_available ?? '?'} ${ing.available_lots[0]?.unit ?? ''})`
+                    : 'À acheter — absent du garde-manger'
                 return (
                   <li key={ing.id} className="gr-ing-item">
                     <span className="gr-ing-qty">
                       {ing.quantity}{ing.unit ? ` ${ing.unit}` : ''}
                     </span>
                     <span className="gr-ing-name">{ing.name}</span>
-                    <span
-                      className={`gr-ing-stock${inStock ? ' in' : ' out'}`}
-                      title={inStock
-                        ? `En stock : ${ing.available_lots[0].product_name || ''} (${ing.available_lots[0].quantity_available} ${ing.available_lots[0].unit})`
-                        : 'Pas dans le garde-manger'}
-                    >
-                      {inStock ? '✓ En stock' : 'À acheter'}
-                    </span>
+                    <StockBadge
+                      inStock={inStock}
+                      hasEnough={hasEnough}
+                      title={stockTitle}
+                      variant="chip"
+                    />
                   </li>
                 )
               })}
+            </ul>
+          ) : stockLoading ? (
+            <ul className="gr-ing-list">
+              {ingredients.map((ing, i) => (
+                <li key={i} className="gr-ing-item">
+                  <span className="gr-ing-qty">
+                    {ing.quantity}{ing.unit ? ` ${ing.unit}` : ''}
+                  </span>
+                  <span className="gr-ing-name">{ing.name}</span>
+                  <StockBadge loading={true} inStock={false} hasEnough={false} variant="chip" />
+                </li>
+              ))}
             </ul>
           ) : ingredients.length === 0 ? (
             <p className="gr-empty">Pas d'ingrédients disponibles</p>

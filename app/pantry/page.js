@@ -787,6 +787,12 @@ export default function PantryPage() {
               setShowEditLot(false);
               setItemToEdit(null);
             }}
+            onDelete={() => {
+              const id = itemToEdit.id;
+              setShowEditLot(false);
+              setItemToEdit(null);
+              handleDeleteClick(id);
+            }}
           />
         )}
       </div>
