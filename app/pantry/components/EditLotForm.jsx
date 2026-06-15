@@ -412,7 +412,6 @@ export default function EditLotForm({
                 type="button"
                 className="action-btn danger"
                 onClick={onDelete}
-                style={{ marginRight: 'auto', display: 'inline-flex', alignItems: 'center', gap: 6, color: 'var(--terracotta, #c0563b)' }}
               >
                 <Trash2 size={14} />
                 Supprimer
