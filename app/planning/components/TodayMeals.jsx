@@ -6,6 +6,8 @@ import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import { Loader2, ChefHat, RefreshCw, X, Check, Minus, Plus, Flame, Soup, Sparkles } from 'lucide-react'
 import { toast } from '@/components/Toast'
+import useStockCoverage from './useStockCoverage'
+import StockDot from './StockDot'
 import './TodayMeals.css'
 
 const round1 = (v) => Math.round(v * 10) / 10
@@ -120,6 +122,8 @@ export default function TodayMeals({ importId }) {
   const [swapSuccess, setSwapSuccess] = useState(false)
 
   const recipeCacheRef = useRef({})
+
+  const { coverageByMeal } = useStockCoverage(importId)
 
   const today = new Date()
   const tomorrow = new Date(today)
@@ -502,6 +506,12 @@ export default function TodayMeals({ importId }) {
               {mergedMeals.map((meal, i) => {
                 const isGenerating = generatingRecipe && selectedMeal?.dishName === meal.dishName
                 const done = isDone(meal)
+                const isMainMeal = meal.type === 'dejeuner' || meal.type === 'diner'
+                // Lit la couverture depuis l'id de Julien (premier entry Julien, sinon premier)
+                const julienEntry = meal.entries.find(e => e.person_name === 'Julien') || meal.entries[0]
+                const stockCov = (isMainMeal && julienEntry?.id)
+                  ? coverageByMeal[julienEntry.id]
+                  : null
                 return (
                   <div key={i} className="tm-meal" style={{ opacity: generatingRecipe && !isGenerating ? 0.5 : 1 }}>
                     <span className="tm-meal-bar" style={{ background: MEAL_BAR_VAR[meal.type] || MEAL_BAR_VAR.diner }} />
@@ -513,6 +523,15 @@ export default function TodayMeals({ importId }) {
                     >
                       {meal.dishName}
                     </span>
+                    {stockCov && (
+                      <StockDot
+                        status={stockCov.status}
+                        have={stockCov.have}
+                        need={stockCov.need}
+                        missing={stockCov.missing || []}
+                        faded={done}
+                      />
+                    )}
                     <span className="tm-meal-right">
                       {isGenerating
                         ? <Loader2 size={13} style={{ animation: 'spin 1s linear infinite', color: 'var(--ink-3)' }} />

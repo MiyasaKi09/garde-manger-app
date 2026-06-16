@@ -7,6 +7,8 @@ import MealCookSheet from '@/components/MealCookSheet'
 import { ChevronLeft, ChevronRight, Loader2, Check } from 'lucide-react'
 import { toast } from '@/components/Toast'
 import { openMealRecipe } from './openMealRecipe'
+import useStockCoverage from './useStockCoverage'
+import StockDot from './StockDot'
 
 /**
  * Extrait le nom du plat à partir des descriptions.
@@ -62,6 +64,8 @@ export default function WeeklyPlanView({ imports = [] }) {
   // Préchargement invisible : caches mémoire (semaines + fiches recettes).
   const mealsCacheRef = useRef({})   // importId -> meals[]
   const recipeCacheRef = useRef({})  // description -> recipe | false (absent) | null (en cours)
+
+  const { coverageByMeal } = useStockCoverage(selectedImportId)
 
   const getWeekDates = (offset) => {
     const today = new Date()
@@ -288,6 +292,11 @@ export default function WeeklyPlanView({ imports = [] }) {
                     const done = doneSet.has(`${typeMeals[0]?.meal_date}|${type}`)
                     const descStyle = done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined
 
+                    // Couverture stock pour déjeuner/dîner
+                    const stockCov = (clickable && julienRow?.id)
+                      ? coverageByMeal[julienRow.id]
+                      : null
+
                     return (
                       <div key={type} className="v21-meal" style={{ opacity: generatingFor && !isGenerating ? 0.4 : 1 }}>
                         <span className="v21-meal-bar" style={{ background: MEAL_BAR[type] || MEAL_BAR.diner }} />
@@ -308,6 +317,15 @@ export default function WeeklyPlanView({ imports = [] }) {
                           </button>
                         ) : (
                           <span className="v21-meal-n" style={{ ...descStyle, cursor: 'default' }}>{dishName}</span>
+                        )}
+                        {stockCov && (
+                          <StockDot
+                            status={stockCov.status}
+                            have={stockCov.have}
+                            need={stockCov.need}
+                            missing={stockCov.missing || []}
+                            faded={done}
+                          />
                         )}
                         <button
                           onClick={(e) => { e.stopPropagation(); toggleDone(typeMeals, type) }}

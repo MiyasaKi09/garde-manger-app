@@ -1,0 +1,78 @@
+/* StockDot.css
+   Pastille de couverture stock pour un repas.
+   Jamais la couleur seule : glyphe + aria-label + title.
+   Préfixe .sd-* → pas de collision. */
+
+:root {
+  --sd-full:    #3f6c45;
+  --sd-partial: #c9821f;
+  --sd-none:    var(--terracotta, #BB5836);
+  --sd-unknown: var(--ink-3, #8A8C7E);
+
+  --sd-full-bg:    rgba(63, 108, 69, 0.12);
+  --sd-partial-bg: rgba(201, 130, 31, 0.12);
+  --sd-none-bg:    rgba(187, 88, 54, 0.12);
+  --sd-unknown-bg: rgba(138, 140, 126, 0.12);
+}
+
+.sd-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: default;
+  border-radius: 3px;
+  padding: 2px 5px;
+  flex-shrink: 0;
+}
+
+/* Variantes de statut */
+.sd-dot[data-status="full"] {
+  background: var(--sd-full-bg);
+  color: var(--sd-full);
+}
+.sd-dot[data-status="partial"] {
+  background: var(--sd-partial-bg);
+  color: var(--sd-partial);
+}
+.sd-dot[data-status="none"] {
+  background: var(--sd-none-bg);
+  color: var(--sd-none);
+}
+.sd-dot[data-status="unknown"] {
+  background: var(--sd-unknown-bg);
+  color: var(--sd-unknown);
+}
+
+/* Pastille ronde + glyphe */
+.sd-pip {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+  background: currentColor;
+  display: inline-block;
+}
+
+.sd-glyph {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+/* Fraction have/need (partial uniquement) */
+.sd-frac {
+  font-size: 9.5px;
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+}
+
+/* État pâle quand le repas est déjà marqué "cuisiné" */
+.sd-dot.sd-faded {
+  opacity: 0.35;
+  pointer-events: none;
+}
