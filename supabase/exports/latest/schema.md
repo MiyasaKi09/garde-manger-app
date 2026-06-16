@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Tue Jun  9 21:40:21 UTC 2026_
+_Généré le : Wed Jun 10 20:25:39 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -10,6 +10,7 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
 - canonical_food_origins
 - canonical_food_processes
 - canonical_foods
+- ciqual_reference
 - cooked_dish_ingredients
 - cooked_dishes
 - cooking_nutrition_factors
@@ -97,6 +98,7 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
  - open_shelf_life_days_fridge :: integer
  - open_shelf_life_days_freezer :: integer
  - parent_archetype_id :: bigint
+ - expiry_kind :: text
 
 ### archetypes_shelf_life
  - id :: bigint
@@ -136,6 +138,12 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
  - subcategory_id :: bigint
  - nutrition_id :: integer
 
+### ciqual_reference
+ - alim_code :: text NOT NULL
+ - alim_nom_fr :: text NOT NULL
+ - groupe :: text
+ - sous_groupe :: text
+
 ### cooked_dish_ingredients
  - id :: bigint default nextval('cooked_dish_ingredients_id_seq'::regclass) NOT NULL
  - dish_id :: bigint NOT NULL
@@ -150,8 +158,8 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
  - user_id :: uuid NOT NULL
  - name :: text NOT NULL
  - recipe_id :: bigint
- - portions_cooked :: integer NOT NULL
- - portions_remaining :: integer NOT NULL
+ - portions_cooked :: numeric NOT NULL
+ - portions_remaining :: numeric NOT NULL
  - storage_method :: text NOT NULL
  - cooked_at :: timestamp with time zone default now() NOT NULL
  - expiration_date :: date NOT NULL
@@ -160,14 +168,20 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
  - created_at :: timestamp with time zone default now()
  - updated_at :: timestamp with time zone default now()
  - batch_recipe_id :: bigint
+ - kcal_per_portion :: numeric
+ - protein_g_per_portion :: numeric
+ - carbs_g_per_portion :: numeric
+ - fat_g_per_portion :: numeric
+ - fiber_g_per_portion :: numeric
+ - source_meal_type :: text
 
 ### cooked_dishes_active
  - id :: bigint
  - user_id :: uuid
  - name :: text
  - recipe_id :: bigint
- - portions_cooked :: integer
- - portions_remaining :: integer
+ - portions_cooked :: numeric
+ - portions_remaining :: numeric
  - storage_method :: text
  - cooked_at :: timestamp with time zone
  - expiration_date :: date
@@ -184,9 +198,9 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
  - total_dishes_cooked :: bigint
  - dishes_with_leftovers :: bigint
  - dishes_fully_consumed :: bigint
- - total_portions_cooked :: bigint
- - total_portions_remaining :: bigint
- - total_portions_consumed :: bigint
+ - total_portions_cooked :: numeric
+ - total_portions_remaining :: numeric
+ - total_portions_consumed :: numeric
  - consumption_rate_percent :: numeric
 
 ### cooking_nutrition_factors
@@ -445,6 +459,7 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
  - container_size :: numeric
  - container_unit :: text
  - image_url :: text
+ - created_lot_ids :: ARRAY
 
 ### nutritional_data
  - id :: bigint default nextval('nutritional_data_id_seq'::regclass) NOT NULL
@@ -739,12 +754,13 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
 
 ---
 ## Clés primaires
- - _backup_views → (dropped_at, view_schema, view_name)
+ - _backup_views → (view_schema, view_name, dropped_at)
  - archetype_nutrition_overrides → (archetype_id)
  - archetypes → (id)
- - canonical_food_origins → (food_id, country_id)
+ - canonical_food_origins → (country_id, food_id)
  - canonical_food_processes → (id)
  - canonical_foods → (id)
+ - ciqual_reference → (alim_code)
  - cooked_dish_ingredients → (id)
  - cooked_dishes → (id)
  - cooking_nutrition_factors → (id)
@@ -865,13 +881,14 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
  - public.canonical_food_processes → canonical_food_processes_pkey : CREATE UNIQUE INDEX canonical_food_processes_pkey ON public.canonical_food_processes USING btree (id)
  - public.canonical_foods → canonical_foods_canonical_name_key : CREATE UNIQUE INDEX canonical_foods_canonical_name_key ON public.canonical_foods USING btree (canonical_name)
  - public.canonical_foods → canonical_foods_pkey : CREATE UNIQUE INDEX canonical_foods_pkey ON public.canonical_foods USING btree (id)
+ - public.ciqual_reference → ciqual_reference_pkey : CREATE UNIQUE INDEX ciqual_reference_pkey ON public.ciqual_reference USING btree (alim_code)
  - public.cooked_dish_ingredients → cooked_dish_ingredients_pkey : CREATE UNIQUE INDEX cooked_dish_ingredients_pkey ON public.cooked_dish_ingredients USING btree (id)
  - public.cooked_dish_ingredients → idx_cooked_dish_ingredients_dish_id : CREATE INDEX idx_cooked_dish_ingredients_dish_id ON public.cooked_dish_ingredients USING btree (dish_id)
  - public.cooked_dish_ingredients → idx_cooked_dish_ingredients_lot_id : CREATE INDEX idx_cooked_dish_ingredients_lot_id ON public.cooked_dish_ingredients USING btree (lot_id) WHERE (lot_id IS NOT NULL)
  - public.cooked_dishes → cooked_dishes_pkey : CREATE UNIQUE INDEX cooked_dishes_pkey ON public.cooked_dishes USING btree (id)
- - public.cooked_dishes → idx_cooked_dishes_active : CREATE INDEX idx_cooked_dishes_active ON public.cooked_dishes USING btree (user_id, portions_remaining) WHERE (portions_remaining > 0)
+ - public.cooked_dishes → idx_cooked_dishes_active : CREATE INDEX idx_cooked_dishes_active ON public.cooked_dishes USING btree (user_id, portions_remaining) WHERE (portions_remaining > (0)::numeric)
  - public.cooked_dishes → idx_cooked_dishes_batch : CREATE INDEX idx_cooked_dishes_batch ON public.cooked_dishes USING btree (batch_recipe_id)
- - public.cooked_dishes → idx_cooked_dishes_expiration : CREATE INDEX idx_cooked_dishes_expiration ON public.cooked_dishes USING btree (expiration_date) WHERE (portions_remaining > 0)
+ - public.cooked_dishes → idx_cooked_dishes_expiration : CREATE INDEX idx_cooked_dishes_expiration ON public.cooked_dishes USING btree (expiration_date) WHERE (portions_remaining > (0)::numeric)
  - public.cooked_dishes → idx_cooked_dishes_recipe_id : CREATE INDEX idx_cooked_dishes_recipe_id ON public.cooked_dishes USING btree (recipe_id) WHERE (recipe_id IS NOT NULL)
  - public.cooked_dishes → idx_cooked_dishes_user_id : CREATE INDEX idx_cooked_dishes_user_id ON public.cooked_dishes USING btree (user_id)
  - public.cooking_nutrition_factors → cooking_nutrition_factors_cooking_method_nutrient_name_fact_key : CREATE UNIQUE INDEX cooking_nutrition_factors_cooking_method_nutrient_name_fact_key ON public.cooking_nutrition_factors USING btree (cooking_method, nutrient_name, factor_type)
@@ -983,11 +1000,12 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
 
 ---
 ## Contraintes CHECK
+ - archetypes_expiry_kind_check ON archetypes : CHECK ((expiry_kind = ANY (ARRAY['DLC'::text, 'DDM'::text, 'ESTIMATE'::text])))
  - archetypes_origin_oneof_chk ON archetypes : CHECK (((canonical_food_id IS NOT NULL) OR (cultivar_id IS NOT NULL)))
  - chk_archetype_parent ON archetypes : CHECK ((((canonical_food_id IS NOT NULL) AND (cultivar_id IS NULL)) OR ((canonical_food_id IS NULL) AND (cultivar_id IS NOT NULL))))
  - cooked_dish_ingredients_quantity_used_check ON cooked_dish_ingredients : CHECK ((quantity_used > (0)::numeric))
- - cooked_dishes_check ON cooked_dishes : CHECK (((portions_remaining >= 0) AND (portions_remaining <= portions_cooked)))
- - cooked_dishes_portions_cooked_check ON cooked_dishes : CHECK ((portions_cooked > 0))
+ - cooked_dishes_check ON cooked_dishes : CHECK (((portions_remaining >= (0)::numeric) AND (portions_remaining <= portions_cooked)))
+ - cooked_dishes_portions_cooked_check ON cooked_dishes : CHECK ((portions_cooked > (0)::numeric))
  - cooked_dishes_storage_method_check ON cooked_dishes : CHECK ((storage_method = ANY (ARRAY['fridge'::text, 'freezer'::text, 'counter'::text])))
  - gri_not_both_entities ON generated_recipe_ingredients : CHECK ((NOT ((canonical_food_id IS NOT NULL) AND (archetype_id IS NOT NULL))))
  - generated_recipes_rating_check ON generated_recipes : CHECK (((rating >= 1) AND (rating <= 5)))
@@ -1056,7 +1074,7 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
    FROM ((cooked_dishes cd
      LEFT JOIN recipes r ON ((cd.recipe_id = r.id)))
      LEFT JOIN cooked_dish_ingredients cdi ON ((cd.id = cdi.dish_id)))
-  WHERE (cd.portions_remaining > 0)
+  WHERE (cd.portions_remaining > (0)::numeric)
   GROUP BY cd.id, r.name
   ORDER BY cd.expiration_date;
 ```
@@ -1066,12 +1084,12 @@ _Généré le : Tue Jun  9 21:40:21 UTC 2026_
 ```sql
  SELECT user_id,
     count(*) AS total_dishes_cooked,
-    count(*) FILTER (WHERE (portions_remaining > 0)) AS dishes_with_leftovers,
-    count(*) FILTER (WHERE (portions_remaining = 0)) AS dishes_fully_consumed,
+    count(*) FILTER (WHERE (portions_remaining > (0)::numeric)) AS dishes_with_leftovers,
+    count(*) FILTER (WHERE (portions_remaining = (0)::numeric)) AS dishes_fully_consumed,
     sum(portions_cooked) AS total_portions_cooked,
     sum(portions_remaining) AS total_portions_remaining,
     sum((portions_cooked - portions_remaining)) AS total_portions_consumed,
-    round(((100.0 * (sum((portions_cooked - portions_remaining)))::numeric) / (NULLIF(sum(portions_cooked), 0))::numeric), 2) AS consumption_rate_percent
+    round(((100.0 * sum((portions_cooked - portions_remaining))) / NULLIF(sum(portions_cooked), (0)::numeric)), 2) AS consumption_rate_percent
    FROM cooked_dishes
   GROUP BY user_id;
 ```
