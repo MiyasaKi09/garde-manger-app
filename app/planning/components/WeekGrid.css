@@ -72,6 +72,28 @@
 
 .wg-dish-btn:focus-visible, .wg-check:focus-visible, .wg-chip:focus-visible, .wg-wknav-arrow:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px; }
 
+/* ── En-tête gauche (label + résumé stock) ── */
+.wg-head-left { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* Résumé stock discret dans l'en-tête */
+.wg-stock-summary { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.03em; }
+.wg-ss-full    { color: #3f6c45; }
+.wg-ss-partial { color: #c9821f; }
+.wg-ss-none    { color: var(--terracotta); }
+
+/* Légende stock (point multicolore) */
+.wg-legend-stock { position: relative; }
+.wg-legend-stock .wg-legend-stock-pip {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: conic-gradient(#3f6c45 0% 34%, #c9821f 34% 67%, var(--terracotta, #BB5836) 67% 100%);
+}
+
+/* Séparateur entre groupes de chips */
+.wg-filt-sep { width: 1px; height: 18px; background: var(--line-strong); flex: none; margin: 0 4px; }
+
+/* Toggle stock : variante colorée du chip (vert quand on = stock affiché) */
+.wg-chip-stock.on { background: #3f6c45; border-color: #3f6c45; }
+
 /* ── Responsive : repli en cartes-jour empilées ── */
 @media (max-width: 880px) {
   .wg-head { flex-direction: column; align-items: flex-start; gap: 14px; padding: 16px 22px; }

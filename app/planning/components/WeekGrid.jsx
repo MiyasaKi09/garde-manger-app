@@ -7,6 +7,8 @@ import MealCookSheet from '@/components/MealCookSheet'
 import { ChevronLeft, ChevronRight, Loader2, Check } from 'lucide-react'
 import { toast } from '@/components/Toast'
 import { openMealRecipe } from './openMealRecipe'
+import useStockCoverage from './useStockCoverage'
+import StockDot from './StockDot'
 import './WeekGrid.css'
 
 /** Extrait le nom du plat — repris verbatim de WeeklyPlanView. */
@@ -44,8 +46,11 @@ const DAY_NAMES_FULL = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vend
  * Possède en interne le mode cuisine + l'état « cuisiné ».
  * La navigation de semaine est remontée à la page (onPrevWeek/onNextWeek).
  */
-export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, onPrevWeek, onNextWeek }) {
+export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, onPrevWeek, onNextWeek, importId = null }) {
   const [person, setPerson] = useState('all') // 'all' | 'Julien' | 'Zoé'
+  const [showStock, setShowStock] = useState(true)
+
+  const { coverageByMeal, summary } = useStockCoverage(importId)
 
   const [cookModeOpen, setCookModeOpen] = useState(false)
   const [generatedRecipe, setGeneratedRecipe] = useState(null)
@@ -155,6 +160,11 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
     const isGenerating = generatingFor === dishName
     const clickable = type === 'dejeuner' || type === 'diner'
     const done = doneSet.has(`${typeMeals[0]?.meal_date}|${type}`)
+
+    // Couverture stock : seulement pour déjeuner/dîner, lu depuis l'id Julien
+    const stockCov = (showStock && clickable && julienRow?.id)
+      ? coverageByMeal[julienRow.id]
+      : null
     const dishStyle = done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined
     // Repas couvert par une préparation batch (déjeuners liés par la Routine) → réchauffe.
     const batched = typeMeals.some(m => m.batch_recipe_id)
@@ -183,6 +193,15 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
         ) : (
           <span className="wg-dish wg-dish-static" style={dishStyle} title={dishName}>{renderDishName(dishName)}</span>
         )}
+        {stockCov && (
+          <StockDot
+            status={stockCov.status}
+            have={stockCov.have}
+            need={stockCov.need}
+            missing={stockCov.missing || []}
+            faded={done}
+          />
+        )}
         {batched && <span className="wg-batch">préparé · réchauffer</span>}
         {isSpecial && person === 'all' && altMeal && (
           <span className="wg-alt"><span className="wg-alt-k">{altMeal.person_name}</span>{renderDishName(dishOf(altMeal))}</span>
@@ -202,12 +221,24 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
     <section className="wg-right">
       {/* En-tête : label + légende des types de repas */}
       <div className="wg-head">
-        <span className="wg-lbl">La grille{rangeLabel ? ` · ${rangeLabel}` : ''}</span>
+        <div className="wg-head-left">
+          <span className="wg-lbl">La grille{rangeLabel ? ` · ${rangeLabel}` : ''}</span>
+          {/* Résumé stock discret */}
+          {showStock && (summary.full != null || summary.partial != null) && (
+            <span className="wg-stock-summary" aria-live="polite">
+              {summary.full > 0 && <span className="wg-ss-full">{summary.full} prêt{summary.full > 1 ? 's' : ''}</span>}
+              {summary.partial > 0 && <span className="wg-ss-partial">{summary.partial} partiel{summary.partial > 1 ? 's' : ''}</span>}
+              {summary.none > 0 && <span className="wg-ss-none">{summary.none} manquant{summary.none > 1 ? 's' : ''}</span>}
+            </span>
+          )}
+        </div>
         <div className="wg-legend">
           <span><i style={{ background: MEAL_BAR.pdj }} />Petit-déj</span>
           <span><i style={{ background: MEAL_BAR.dejeuner }} />Déjeuner</span>
           <span><i style={{ background: MEAL_BAR.diner }} />Dîner</span>
           <span><i style={{ background: MEAL_BAR.collation }} />Collation</span>
+          {/* Légende stock */}
+          <span className="wg-legend-stock"><i className="wg-legend-stock-pip" />Stock</span>
         </div>
       </div>
 
@@ -217,6 +248,17 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
         <button className={`wg-chip${person === 'all' ? ' on' : ''}`} onClick={() => setPerson('all')}>Tous</button>
         <button className={`wg-chip${person === 'Julien' ? ' on' : ''}`} onClick={() => setPerson('Julien')}>Julien</button>
         <button className={`wg-chip${person === 'Zoé' ? ' on' : ''}`} onClick={() => setPerson('Zoé')}>Zoé</button>
+        {/* Séparateur visuel */}
+        <span className="wg-filt-sep" aria-hidden="true" />
+        <span className="wg-filt-lab">Stock</span>
+        <button
+          className={`wg-chip wg-chip-stock${showStock ? ' on' : ''}`}
+          onClick={() => setShowStock(v => !v)}
+          aria-pressed={showStock}
+          title={showStock ? 'Masquer les indicateurs stock' : 'Afficher les indicateurs stock'}
+        >
+          {showStock ? 'Affiché' : 'Masqué'}
+        </button>
         <span className="wg-wknav">
           <button className="wg-wknav-arrow" onClick={onPrevWeek} aria-label="Semaine précédente"><ChevronLeft size={15} /></button>
           {rangeShort}

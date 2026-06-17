@@ -471,6 +471,7 @@ export default function PlanningPage() {
                 weekOffset={weekOffset}
                 onPrevWeek={() => setWeekOffset(w => w - 1)}
                 onNextWeek={() => setWeekOffset(w => w + 1)}
+                importId={selectedImportId}
               />
             )}
           </div>
