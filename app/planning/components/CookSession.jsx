@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { authFetch } from '@/lib/authFetch'
-import { Loader2, ChefHat, Flame, Soup, X, Minus, Plus, Check, Search, AlertTriangle } from 'lucide-react'
+import { Loader2, ChefHat, Flame, Soup, X, Minus, Plus, Check, Search, AlertTriangle, Refrigerator } from 'lucide-react'
 import './CookSession.css'
 
 const round1 = (v) => Math.round(v * 10) / 10
@@ -103,13 +103,20 @@ export default function CookSession({ open, meal, onClose, onDone }) {
   // ── Nom du plat libre (mode freeform)
   const [freeDishName, setFreeDishName] = useState('')
 
+  // ── Mode batch cook (journée de cuisine)
+  const [preparedPortions, setPreparedPortions] = useState(1)
+  const [storageMethod, setStorageMethod] = useState('fridge')
+
   // ── Soumission
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState(null)
   const [shortfalls, setShortfalls] = useState([])
 
   const eatenDish = meal?.eatenDish || null
-  const isBatch = !eatenDish && !meal?.freeform && (meal?.entries || []).some(e => e.batch_recipe_id)
+  // isBatchCook : NOUVELLE cuisson d'un batch (mode journée de cuisine)
+  const isBatchCook = !!meal?.batch
+  // isBatch : réchauffe d'un plat déjà cuisiné en batch (mode existant — ne s'applique QUE si !isBatchCook)
+  const isBatch = !isBatchCook && !eatenDish && !meal?.freeform && (meal?.entries || []).some(e => e.batch_recipe_id)
   const isFreeform = !!meal?.freeform
   const mealDate = meal?.entries?.[0]?.meal_date
   const dishName = isFreeform ? freeDishName : (meal?.dishName || '')
@@ -128,14 +135,19 @@ export default function CookSession({ open, meal, onClose, onDone }) {
     setSearchResults([])
     if (isFreeform) setFreeDishName('')
 
-    if (isBatch || eatenDish) {
+    if (isBatchCook) {
+      // Mode journée de cuisine : portions depuis la prop, reset conservation
+      setPreparedPortions(meal.portionsTotal || 1)
+      setStorageMethod('fridge')
+      loadBatchIngredients()
+    } else if (isBatch || eatenDish) {
       setRows([])
       setLoadingIng(false)
     } else {
       loadIngredients()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, meal?.dishName, eatenDish?.id, isFreeform])
+  }, [open, meal?.dishName, meal?.batchRecipeId, eatenDish?.id, isFreeform, isBatchCook])
 
   // ── Fermeture clavier Escape
   useEffect(() => {
@@ -165,6 +177,39 @@ export default function CookSession({ open, meal, onClose, onDone }) {
       setSearchResults([])
     } finally {
       setSearchLoading(false)
+    }
+  }
+
+  /**
+   * Mode journée de cuisine : charge les ingrédients du batch depuis
+   * GET /api/planning/batch/{batchRecipeId}/ingredients
+   */
+  async function loadBatchIngredients() {
+    setLoadingIng(true)
+    setError(null)
+    setRows([])
+    const id = meal?.batchRecipeId
+    if (!id) {
+      setLoadingIng(false)
+      return
+    }
+    try {
+      const res = await authFetch(`/api/planning/batch/${id}/ingredients`)
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || 'Erreur chargement ingrédients batch')
+      const mapped = (data.ingredients || []).map(ing => ({
+        key: ingKey(ing),
+        name: ing.name,
+        canonical_food_id: ing.canonical_food_id || null,
+        archetype_id: ing.archetype_id || null,
+        qty: Math.round(ing.quantity || 100),
+        unit: ing.unit || 'g',
+      }))
+      setRows(mapped)
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setLoadingIng(false)
     }
   }
 
@@ -281,6 +326,33 @@ export default function CookSession({ open, meal, onClose, onDone }) {
           unit: r.unit,
         }))
 
+      // ── Mode journée de cuisine (batch cook) ──
+      if (isBatchCook) {
+        const body = {
+          batchRecipeId: meal.batchRecipeId,
+          needs,
+          portions: preparedPortions,
+          storage_method: storageMethod,
+        }
+        const res = await authFetch('/api/planning/batch/cook', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        })
+        const data = await res.json().catch(() => ({}))
+        if (!res.ok) throw new Error(data.error || 'Erreur')
+
+        onDone?.(data)
+
+        if (data.shortfalls?.length) {
+          setShortfalls(data.shortfalls)
+          return
+        }
+        onClose?.()
+        return
+      }
+
+      // ── Modes existants (repas planifié, reste, réchauffe, freeform) ──
       const entries = (meal.entries || []).map(e => {
         const p = portions[e.person_name] ?? 1
         const src = eatenDish
@@ -345,9 +417,14 @@ export default function CookSession({ open, meal, onClose, onDone }) {
     }
   }
 
+  function stepBatchPortions(delta) {
+    setPreparedPortions(p => Math.max(0.5, round1(p + delta)))
+  }
+
   if (!open || !meal || typeof document === 'undefined') return null
 
-  const hasIngSection = !eatenDish && !isBatch
+  // La section ingrédients s'affiche : en batchCook, en normal et en freeform ; pas en réchauffe ni en reste.
+  const hasIngSection = isBatchCook || (!eatenDish && !isBatch)
 
   return createPortal(
     <>
@@ -374,6 +451,7 @@ export default function CookSession({ open, meal, onClose, onDone }) {
               {eatenDish && <span className="cs-badge-reste">Reste</span>}
               {isFreeform && <span className="cs-badge-libre">Libre</span>}
               {isBatch && <span className="cs-badge-batch">Batch</span>}
+              {isBatchCook && <span className="cs-badge-batch-cook">Jour de cuisine</span>}
             </span>
 
             {/* Nom du plat : champ éditable en mode libre, sinon statique */}
@@ -410,35 +488,90 @@ export default function CookSession({ open, meal, onClose, onDone }) {
           </button>
         </div>
 
-        {/* ── Portions mangées ── */}
-        <p className="cs-section-label">Portions mangées</p>
-        <div className="cs-portion-list">
-          {(meal.entries || []).map(e => (
-            <div key={e.person_name} className="cs-portion-row">
-              <span className="cs-portion-name">{e.person_name}</span>
-              <div className="cs-stepper">
-                <button
-                  type="button"
-                  onClick={() => stepPortion(e.person_name, -0.5)}
-                  aria-label={`Moins de portions pour ${e.person_name}`}
-                >
-                  <Minus size={13} />
-                </button>
-                <span className="cs-stepper-val">{fmtPortions(portions[e.person_name] ?? 1)}</span>
-                <button
-                  type="button"
-                  onClick={() => stepPortion(e.person_name, 0.5)}
-                  aria-label={`Plus de portions pour ${e.person_name}`}
-                >
-                  <Plus size={13} />
-                </button>
+        {/* ── Mode journée de cuisine : Portions préparées + conservation ── */}
+        {isBatchCook && (
+          <>
+            <p className="cs-section-label">Portions préparées</p>
+            <div className="cs-portion-list">
+              <div className="cs-portion-row">
+                <span className="cs-portion-name">Barquettes / portions</span>
+                <div className="cs-stepper">
+                  <button
+                    type="button"
+                    onClick={() => stepBatchPortions(-0.5)}
+                    aria-label="Moins de portions préparées"
+                  >
+                    <Minus size={13} />
+                  </button>
+                  <span className="cs-stepper-val">{fmtPortions(preparedPortions)}</span>
+                  <button
+                    type="button"
+                    onClick={() => stepBatchPortions(0.5)}
+                    aria-label="Plus de portions préparées"
+                  >
+                    <Plus size={13} />
+                  </button>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* ── Portions préparées ── */}
-        {!eatenDish && !isBatch && (
+            <p className="cs-section-label">Conservation</p>
+            <div className="cs-storage-seg" role="group" aria-label="Méthode de conservation">
+              <button
+                type="button"
+                className={`cs-storage-opt${storageMethod === 'fridge' ? ' cs-storage-active' : ''}`}
+                onClick={() => setStorageMethod('fridge')}
+                aria-pressed={storageMethod === 'fridge'}
+              >
+                <Refrigerator size={13} aria-hidden="true" />
+                Frigo
+              </button>
+              <button
+                type="button"
+                className={`cs-storage-opt${storageMethod === 'freezer' ? ' cs-storage-active' : ''}`}
+                onClick={() => setStorageMethod('freezer')}
+                aria-pressed={storageMethod === 'freezer'}
+              >
+                <Flame size={13} aria-hidden="true" />
+                Congélateur
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* ── Portions mangées (modes hors batchCook) ── */}
+        {!isBatchCook && (
+          <>
+            <p className="cs-section-label">Portions mangées</p>
+            <div className="cs-portion-list">
+              {(meal.entries || []).map(e => (
+                <div key={e.person_name} className="cs-portion-row">
+                  <span className="cs-portion-name">{e.person_name}</span>
+                  <div className="cs-stepper">
+                    <button
+                      type="button"
+                      onClick={() => stepPortion(e.person_name, -0.5)}
+                      aria-label={`Moins de portions pour ${e.person_name}`}
+                    >
+                      <Minus size={13} />
+                    </button>
+                    <span className="cs-stepper-val">{fmtPortions(portions[e.person_name] ?? 1)}</span>
+                    <button
+                      type="button"
+                      onClick={() => stepPortion(e.person_name, 0.5)}
+                      aria-label={`Plus de portions pour ${e.person_name}`}
+                    >
+                      <Plus size={13} />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* ── Portions préparées au total (mode normal — hors batchCook et hors batch réchauffe) ── */}
+        {!isBatchCook && !eatenDish && !isBatch && (
           <>
             <p className="cs-section-label">Portions préparées au total</p>
             <div className="cs-portion-list">
@@ -476,7 +609,7 @@ export default function CookSession({ open, meal, onClose, onDone }) {
           <>
             <p className="cs-section-label">Ingrédients à déduire du stock</p>
 
-            {eatenDish ? null : isBatch ? null : loadingIng ? (
+            {loadingIng ? (
               <p className="cs-hint">
                 <Loader2 size={14} className="cs-spin" aria-hidden="true" />
                 Chargement des ingrédients…
@@ -487,7 +620,9 @@ export default function CookSession({ open, meal, onClose, onDone }) {
                   <p className="cs-hint">
                     {isFreeform
                       ? 'Ajoutez des ingrédients ci-dessous pour déduire du stock.'
-                      : 'Aucun ingrédient lié au stock — seule la nutrition sera enregistrée.'}
+                      : isBatchCook
+                        ? 'Aucun ingrédient récupéré — ajoutez-en ci-dessous pour déduire du stock.'
+                        : 'Aucun ingrédient lié au stock — seule la nutrition sera enregistrée.'}
                   </p>
                 )}
 
@@ -630,6 +765,8 @@ export default function CookSession({ open, meal, onClose, onDone }) {
               <Loader2 size={16} className="cs-spin" aria-hidden="true" />
               Enregistrement…
             </>
+          ) : isBatchCook ? (
+            <><Refrigerator size={17} aria-hidden="true" /> Confirmer — cuisiné &amp; ajouté au stock</>
           ) : eatenDish ? (
             <><Soup size={17} aria-hidden="true" /> Confirmer — reste mangé</>
           ) : isBatch ? (

@@ -4,7 +4,8 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter, useParams } from 'next/navigation'
-import { ArrowLeft, ChevronDown, ChevronUp, Check, Refrigerator, Loader2 } from 'lucide-react'
+import { ArrowLeft, ChevronDown, ChevronUp, Check, Refrigerator } from 'lucide-react'
+import CookSession from '@/app/planning/components/CookSession'
 
 const DOW = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
 const dayShort = (iso) => {
@@ -26,7 +27,8 @@ export default function BatchPage() {
   const [expanded, setExpanded] = useState(null)
   const [doneMap, setDoneMap] = useState({}) // taskId -> bool (persisté)
   const [cookedMap, setCookedMap] = useState({}) // batch_recipe_id -> cooked_dish (en stock)
-  const [cookingId, setCookingId] = useState(null)
+  const [cookingId, setCookingId] = useState(null) // gardé pour compatibilité (spinner undo etc.)
+  const [cookSheet, setCookSheet] = useState(null) // meal passé à CookSession en mode batchCook
 
   useEffect(() => {
     async function load() {
@@ -55,18 +57,19 @@ export default function BatchPage() {
     load()
   }, [importId])
 
-  async function cookPrep(recipe) {
-    if (cookingId) return
-    setCookingId(recipe.id)
-    try {
-      const res = await authFetch('/api/planning/batch/cook', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ batchRecipeId: recipe.id }),
-      })
-      const d = await res.json().catch(() => ({}))
-      if (res.ok && d.dish) setCookedMap(prev => ({ ...prev, [recipe.id]: d.dish }))
-    } finally {
-      setCookingId(null)
+  function cookPrep(recipe) {
+    setCookSheet({
+      batch: true,
+      batchRecipeId: recipe.id,
+      dishName: cleanName(recipe.name),
+      portionsTotal: recipe.portions_total || 1,
+      type: 'dejeuner',
+    })
+  }
+
+  function handleBatchCooked(data) {
+    if (data?.dish) {
+      setCookedMap(prev => ({ ...prev, [data.dish.batch_recipe_id]: data.dish }))
     }
   }
 
@@ -278,10 +281,8 @@ export default function BatchPage() {
                           )
                           return (
                             <div className="bat-prep-cook">
-                              <button className="bat-cook-btn" onClick={() => cookPrep(recipe)} disabled={cookingId === recipe.id}>
-                                {cookingId === recipe.id
-                                  ? <><Loader2 size={13} className="bat-spin" /> Ajout au stock…</>
-                                  : <><Refrigerator size={13} /> Marquer cuisiné · ajouter au stock</>}
+                              <button className="bat-cook-btn" onClick={() => cookPrep(recipe)}>
+                                <Refrigerator size={13} /> Cuisiner &amp; déduire du stock
                               </button>
                             </div>
                           )
@@ -303,6 +304,13 @@ export default function BatchPage() {
           )
         })}
       </div>
+
+      <CookSession
+        open={!!cookSheet}
+        meal={cookSheet}
+        onClose={() => setCookSheet(null)}
+        onDone={handleBatchCooked}
+      />
 
       <style jsx>{`
         .bat-back {
