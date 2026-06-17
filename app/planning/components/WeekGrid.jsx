@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
-import MealCookSheet from '@/components/MealCookSheet'
+import CookSession from './CookSession'
 import { ChevronLeft, ChevronRight, Loader2, Check } from 'lucide-react'
 import { toast } from '@/components/Toast'
 import { openMealRecipe } from './openMealRecipe'
@@ -306,11 +306,13 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
         ingredients={generatedRecipe?.ingredients || []}
         mealEntries={currentMealEntries}
       />
-      <MealCookSheet
+      <CookSession
         open={!!cookSheetMeal}
         meal={cookSheetMeal}
         onClose={() => setCookSheetMeal(null)}
-        onDone={() => { if (cookSheetMeal) setDoneSet(s => new Set(s).add(`${cookSheetMeal.entries?.[0]?.meal_date}|${cookSheetMeal.type}`)) }}
+        onDone={(data) => {
+          if (cookSheetMeal) setDoneSet(s => new Set(s).add(`${cookSheetMeal.entries?.[0]?.meal_date}|${cookSheetMeal.type}`))
+        }}
       />
     </section>
   )

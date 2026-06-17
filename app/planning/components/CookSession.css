@@ -1,0 +1,501 @@
+/* CookSession.css — feuille de cuisson flexible
+   Préfixe cs-* — tokens V21 : --terracotta, --ink-1/2/3, --line, --paper,
+   --font-display, --font-mono, --font-text, --m-pdj/dej/din/col, --brand
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* ── Overlay ────────────────────────────────────────────────────────────── */
+.cs-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 28, 22, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1100;
+}
+
+/* ── Bottom-sheet ───────────────────────────────────────────────────────── */
+.cs-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--paper);
+  border-top: 1.5px solid var(--ink-1);
+  border-radius: 6px 6px 0 0;
+  padding: 0 24px 40px;
+  z-index: 1101;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 -18px 50px -20px rgba(24, 28, 22, 0.4);
+  font-family: var(--font-text);
+}
+
+/* ── Poignée ────────────────────────────────────────────────────────────── */
+.cs-handle {
+  width: 40px;
+  height: 4px;
+  background: rgba(24, 28, 22, 0.22);
+  border-radius: 2px;
+  margin: 12px auto 18px;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.cs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.cs-header-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.cs-meal-type-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+}
+
+.cs-meal-bar {
+  width: 16px;
+  height: 7px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Badges (Reste / Libre / Batch) */
+.cs-badge-reste,
+.cs-badge-libre,
+.cs-badge-batch {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 3px;
+  padding: 1px 6px;
+}
+.cs-badge-reste {
+  color: var(--terracotta);
+  border: 1px solid var(--terracotta);
+}
+.cs-badge-libre {
+  color: var(--ink-2);
+  border: 1px solid var(--ink-2);
+}
+.cs-badge-batch {
+  color: var(--ink-3);
+  border: 1px solid var(--line-strong, var(--line));
+}
+
+.cs-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ink-1);
+  margin: 10px 0 5px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* Champ nom du plat (mode libre) */
+.cs-freedish-input {
+  display: block;
+  width: 100%;
+  margin: 10px 0 5px;
+  padding: 10px 12px;
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink-1);
+  background: var(--paper);
+  border: 1.5px solid var(--ink-1);
+  border-radius: 4px;
+  outline: none;
+  box-sizing: border-box;
+  letter-spacing: -0.01em;
+}
+.cs-freedish-input::placeholder { color: var(--ink-3); font-weight: 400; }
+.cs-freedish-input:focus { border-color: var(--terracotta); }
+
+.cs-macros {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.cs-close {
+  flex-shrink: 0;
+  border: 1px solid var(--ink-1);
+  background: transparent;
+  border-radius: 3px;
+  padding: 7px;
+  cursor: pointer;
+  color: var(--ink-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+}
+
+/* ── Étiquettes de section ──────────────────────────────────────────────── */
+.cs-section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-left: 2px solid var(--terracotta);
+  padding-left: 8px;
+  margin: 18px 0 8px;
+}
+
+/* ── Steppers de portions ───────────────────────────────────────────────── */
+.cs-portion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cs-portion-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper);
+}
+
+.cs-portion-name {
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-1);
+}
+
+.cs-stepper {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.cs-stepper button {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ink-1);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ink-1);
+  cursor: pointer;
+  padding: 0;
+}
+
+.cs-stepper-val {
+  min-width: 42px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-1);
+}
+
+/* Hint surplus → restes */
+.cs-leftover-hint {
+  font-family: var(--font-text);
+  font-size: 13px;
+  color: var(--terracotta);
+  background: rgba(193, 102, 60, 0.08);
+  border: 1px solid rgba(193, 102, 60, 0.25);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 8px 0 0;
+}
+
+/* ── Liste d'ingrédients ────────────────────────────────────────────────── */
+.cs-ing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.cs-ing-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper);
+}
+
+.cs-ing-row.cs-ing-unlinked {
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+.cs-ing-name {
+  flex: 1;
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-1);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cs-ing-qty {
+  width: 64px;
+  padding: 5px 8px;
+  border: 1px solid var(--line-strong, var(--line));
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: right;
+  font-family: var(--font-mono);
+  color: var(--ink-1);
+  background: var(--paper);
+  outline: none;
+  flex-shrink: 0;
+}
+
+.cs-ing-unit {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  min-width: 26px;
+  flex-shrink: 0;
+}
+
+.cs-ing-unlinked-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #9a5b1f;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.cs-ing-remove {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ink-3);
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.12s ease, color 0.12s ease;
+}
+.cs-ing-remove:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+
+/* ── Recherche d'ingrédient ─────────────────────────────────────────────── */
+.cs-search-wrap {
+  position: relative;
+  margin-top: 2px;
+}
+
+.cs-search-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px dashed var(--line-strong, var(--ink-3));
+  border-radius: 4px;
+  background: var(--paper);
+}
+
+.cs-search-icon {
+  flex-shrink: 0;
+  color: var(--ink-3);
+}
+
+.cs-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: var(--ink-1);
+  outline: none;
+  min-width: 0;
+}
+.cs-search-input::placeholder { color: var(--ink-3); }
+
+.cs-search-loader {
+  flex-shrink: 0;
+  color: var(--ink-3);
+}
+
+.cs-search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 2px 0 0;
+  padding: 4px 0;
+  background: var(--paper);
+  border: 1px solid var(--ink-1);
+  border-radius: 4px;
+  box-shadow: 0 8px 24px -8px rgba(24, 28, 22, 0.22);
+  z-index: 10;
+  list-style: none;
+}
+
+.cs-search-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 9px 14px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  gap: 10px;
+}
+.cs-search-item:hover {
+  background: rgba(24, 28, 22, 0.05);
+}
+
+.cs-search-item-name {
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: var(--ink-1);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cs-search-item-unit {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  flex-shrink: 0;
+}
+
+/* ── Notes contextuelles (reste / batch) ───────────────────────────────── */
+.cs-note {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  font-family: var(--font-text);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  background: rgba(24, 28, 22, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin: 0;
+}
+
+.cs-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-text);
+  color: var(--ink-3);
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+/* ── Shortfalls (avertissement non bloquant) ────────────────────────────── */
+.cs-shortfall-warn {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-text);
+  font-size: 13px;
+  color: #9a5b1f;
+  background: rgba(199, 123, 63, 0.1);
+  border: 1px solid rgba(199, 123, 63, 0.35);
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ── Erreur ─────────────────────────────────────────────────────────────── */
+.cs-error {
+  color: var(--state-expired, #b23a2e);
+  font-size: 13px;
+  font-family: var(--font-text);
+  margin: 10px 0 0;
+  text-align: center;
+}
+
+/* ── Bouton confirmer ───────────────────────────────────────────────────── */
+.cs-confirm-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 0;
+  margin-top: 20px;
+  background: var(--terracotta);
+  color: #fff;
+  border: 1px solid var(--terracotta);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.cs-confirm-btn:disabled { cursor: default; }
+
+/* ── Animation de chargement (spin) ────────────────────────────────────── */
+.cs-spin {
+  animation: cs-spin-anim 1s linear infinite;
+}
+
+/* ── Focus visible ──────────────────────────────────────────────────────── */
+.cs-close:focus-visible,
+.cs-stepper button:focus-visible,
+.cs-ing-remove:focus-visible,
+.cs-search-item:focus-visible,
+.cs-confirm-btn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .cs-sheet {
+    padding: 0 16px 36px;
+  }
+  .cs-title,
+  .cs-freedish-input {
+    font-size: 19px;
+  }
+}
