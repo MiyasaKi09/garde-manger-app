@@ -95,6 +95,10 @@
   color: var(--ink-3);
   border: 1px solid var(--line-strong, var(--line));
 }
+.cs-badge-batch-cook {
+  color: #4f7d3f;
+  border: 1px solid #4f7d3f;
+}
 
 .cs-title {
   font-family: var(--font-display);
@@ -397,6 +401,47 @@
   font-size: 11px;
   color: var(--ink-3);
   flex-shrink: 0;
+}
+
+/* ── Segmented control conservation (batchCook) ────────────────────────── */
+.cs-storage-seg {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--ink-1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.cs-storage-opt {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 12px;
+  background: var(--paper);
+  border: none;
+  border-right: 1px solid var(--ink-1);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.cs-storage-opt:last-child {
+  border-right: none;
+}
+.cs-storage-opt:hover:not(.cs-storage-active) {
+  background: rgba(24, 28, 22, 0.04);
+  color: var(--ink-1);
+}
+.cs-storage-active {
+  background: var(--ink-1);
+  color: var(--paper);
 }
 
 /* ── Notes contextuelles (reste / batch) ───────────────────────────────── */
