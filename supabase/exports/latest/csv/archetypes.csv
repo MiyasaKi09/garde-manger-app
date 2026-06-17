@@ -1,16 +1,14 @@
 id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_days,open_shelf_life_unit,storage_profile,created_at,updated_at,notes,density_g_per_ml,grams_per_unit,primary_unit,nutrition_modifier_id,is_default,shelf_life_days_pantry,shelf_life_days_fridge,shelf_life_days_freezer,open_shelf_life_days_pantry,open_shelf_life_days_fridge,open_shelf_life_days_freezer,parent_archetype_id,expiry_kind
-205,Yaourt nature entier,7001,,fermentation lactique 43°C 4h lait entier,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,21,60,,3,,333,DLC
 14,Aubergines confites,1001,,confisage,14,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2026-06-09 21:57:05.190681+00,Aubergines cuites lentement dans l'huile,,,u,3476,f,14,14,140,7,7,,,DLC
 72,Purée d'abricots congelée,1009,,cuisson et congélation,180,,days,congélateur,2025-10-04 13:07:06.100763+00,2026-06-09 21:57:05.190681+00,"Abricots cuits et mixés, congelés",,,u,3843,f,5,7,270,0,3,,,DLC
 191,Lait concentré non sucré,7001,,évaporation 60% eau,365,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,7,90,0,3,30,336,DDM
-204,Beurre doux,7001,,barattage crème maturation 82% MG,60,14,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,90,270,,30,180,300,DDM
+205,Yaourt nature entier,7001,,fermentation lactique 43°C 4h lait entier,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,21,60,,3,,333,DLC
+204,Beurre doux,7001,,barattage crème maturation 82% MG,60,14,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,90,270,,30,180,300,DDM
+206,Yaourt nature 0%,7001,,fermentation lactique 43°C 4h lait écrémé,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,21,60,,3,,333,DLC
+207,Yaourt nature brassé,7001,,fermentation lactique 43°C brassage,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,21,60,,3,,333,DLC
 223,Lait de riz,4003,,cuisson riz broyage filtration,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,g,4098,f,730,730,,365,365,,,DDM
 225,Crème de soja,4005,,concentration crème soja épaississement,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,g,3531,f,90,90,900,5,5,50,,DDM
 339,bière,8,,fermentation,,,days,,2025-10-30 17:51:14.602152+00,2026-06-09 21:56:01.628236+00,,,,ml,,f,180,365,,3,3,,,DDM
-206,Yaourt nature 0%,7001,,fermentation lactique 43°C 4h lait écrémé,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,21,60,,3,,333,DLC
-207,Yaourt nature brassé,7001,,fermentation lactique 43°C brassage,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,21,60,,3,,333,DLC
-535,sardines en conserve,9012,,"appertisation en conserve métallique, huile",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,135.00,boîte,,f,1460,,,,3,,,DDM
-536,maquereau en conserve,9008,,"appertisation en conserve métallique, marinade ou huile",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,190.00,boîte,,f,1460,,,,3,,,DDM
 537,sardines fraîches,9012,,"poisson frais entier ou fileté, cru",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,t,,2,90,,2,,,DLC
 538,maquereau frais,9008,,"poisson frais entier ou fileté, cru",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,t,,2,90,,2,,,DLC
 539,lieu jaune frais,24,,"poisson blanc frais, cru",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,t,,2,90,,2,,,DLC
@@ -18,7 +16,6 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 541,lieu noir surgelé,51,,surgélation après conditionnement en filets,,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,,,180,,2,,,DDM
 542,colin d'alaska surgelé,52,,surgélation après conditionnement en filets ou portions panées,,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,t,,,180,,2,,,DDM
 543,saucisson sec,2051,,"séchage et maturation de viande de porc hachée, embossée et séchée à l'air",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,30,90,180,14,21,,,DDM
-544,merguez,4001,,"saucisse crue épicée à base de bœuf et mouton/agneau, embossée dans boyau naturel",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,80.00,pièce,,f,,3,60,,3,,,DLC
 545,chorizo,22,,saucisse sèche ou semi-sèche de porc épicée au paprika,,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,t,30,60,180,14,21,,,DDM
 546,huile de tournesol,11009,,extraction et raffinage des graines de tournesol,,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,0.920,,ml,,t,540,,,90,,,,DDM
 547,huile de colza,14031,,extraction et raffinage des graines de colza (canola),,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,0.920,,ml,,f,540,,,90,,,,DDM
@@ -31,30 +28,36 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 554,vermicelles de riz,4003,,"farine de riz extrudée en filaments fins, séchée",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,730,,,180,,,,DDM
 555,pâtes sèches,5002,,"semoule de blé dur extrudée et séchée (spaghetti, penne, fusilli…)",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,730,,,180,,,,DDM
 556,pâtes complètes,5002,,semoule de blé complet extrudée et séchée,,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,365,,,180,,,,DDM
-557,galette de sarrasin,4004,,"galette bretonne à base de farine de sarrasin (blé noir), nature",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,60.00,pièce,,t,,5,60,,5,,,DLC
 558,farine de blé T55,5002,,"farine blanche tout usage (panification), taux cendres 0,50-0,60%",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,365,,,180,,,,DDM
 559,farine de blé T45,5002,,"farine blanche très fine pour pâtisserie, taux cendres < 0,50%",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,365,,,180,,,,DDM
 560,farine complète T110,5002,,"farine semi-complète à fort taux d'extraction, taux cendres 0,90-1,10%",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,180,,,90,,,,DDM
 561,muesli,5001,,"mélange de flocons de céréales, fruits secs et noix, non cuit",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,365,,,90,,,,DDM
-562,biscottes,5002,,"pain de mie tranché, cuit une seconde fois pour déshydratation",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,10.00,pièce,,f,365,,,30,,,,DDM
-563,crackers nature,5002,,"biscuit sec salé à base de farine de blé, nature",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,8.00,pièce,,f,365,,,30,,,,DDM
 564,chocolat blanc,8005,,"tablette à base de beurre de cacao, lait et sucre, sans pâte de cacao",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,365,,,90,,,,DDM
 565,chocolat au lait,8005,,tablette de chocolat à teneur réduite en cacao avec addition de lait en poudre,,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,,g,,f,365,,,90,,,,DDM
-566,maïs en conserve,9007,,"grains de maïs doux appertisés en boîte métallique, égouttés",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,285.00,boîte,,f,1460,,,,3,,,DDM
 567,crème de coco,1043,,"pulpe de noix de coco broyée, centrifugée, concentration supérieure au lait de coco",,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,0.960,,ml,,f,730,,,,5,,,DDM
-568,bouillon cube de volaille,14035,,concentré déshydraté de bouillon de volaille en cube ou granulés,,,days,,2026-06-10 07:30:57.135449+00,2026-06-10 07:30:57.135449+00,,,10.00,cube,,f,730,,,180,,,,DDM
-569,bouillon cube de bœuf,14035,,concentré déshydraté de bouillon de bœuf en cube ou granulés,,,days,,2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00,,,10.00,cube,,f,730,,,180,,,,DDM
-570,bouillon cube de légumes,14036,,concentré déshydraté de légumes en cube ou granulés,,,days,,2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00,,,10.00,cube,,f,730,,,180,,,,DDM
-571,fromage fondu en tranchettes,7001,,"fromage fondu à tartiner ou garnir, conditionné en tranches individuelles",,,days,,2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00,,,20.00,tranchette,,f,,30,90,,14,,,DLC
+535,sardines en conserve,9012,,"appertisation en conserve métallique, huile",,,days,,2026-06-10 07:30:57.135449+00,2026-06-15 17:15:35.851572+00,,,135.00,u,,f,1460,,,,3,,,DDM
+536,maquereau en conserve,9008,,"appertisation en conserve métallique, marinade ou huile",,,days,,2026-06-10 07:30:57.135449+00,2026-06-15 17:15:35.851572+00,,,190.00,u,,f,1460,,,,3,,,DDM
+544,merguez,4001,,"saucisse crue épicée à base de bœuf et mouton/agneau, embossée dans boyau naturel",,,days,,2026-06-10 07:30:57.135449+00,2026-06-15 17:15:35.851572+00,,,80.00,u,,f,,3,60,,3,,,DLC
+557,galette de sarrasin,4004,,"galette bretonne à base de farine de sarrasin (blé noir), nature",,,days,,2026-06-10 07:30:57.135449+00,2026-06-15 17:15:35.851572+00,,,60.00,u,,t,,5,60,,5,,,DLC
+562,biscottes,5002,,"pain de mie tranché, cuit une seconde fois pour déshydratation",,,days,,2026-06-10 07:30:57.135449+00,2026-06-15 17:15:35.851572+00,,,10.00,u,,f,365,,,30,,,,DDM
+563,crackers nature,5002,,"biscuit sec salé à base de farine de blé, nature",,,days,,2026-06-10 07:30:57.135449+00,2026-06-15 17:15:35.851572+00,,,8.00,u,,f,365,,,30,,,,DDM
+566,maïs en conserve,9007,,"grains de maïs doux appertisés en boîte métallique, égouttés",,,days,,2026-06-10 07:30:57.135449+00,2026-06-15 17:15:35.851572+00,,,285.00,u,,f,1460,,,,3,,,DDM
+568,bouillon cube de volaille,14035,,concentré déshydraté de bouillon de volaille en cube ou granulés,,,days,,2026-06-10 07:30:57.135449+00,2026-06-15 17:15:35.851572+00,,,10.00,u,,f,730,,,180,,,,DDM
 572,pousses de soja fraîches,54,,"haricot mungo germé frais, cru, vendu en barquette réfrigérée",,,days,,2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00,,,,g,,t,,5,30,,5,,,DLC
-573,pousses de soja en conserve,54,,"haricot mungo germé appertisé en boîte métallique, égoutté",,,days,,2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00,,,285.00,boîte,,f,1460,,,,3,,,DDM
 574,café moulu,8006,,"grains de café torréfiés et moulus, conditionné sous atmosphère protectrice",,,days,,2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00,,,,g,,t,365,,,30,,,,DDM
-575,surimi en bâtonnets,53,,"bâtonnets de chair de poisson reconstitués, arôme crabe, pasteurisés",,,days,,2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00,,,17.00,pièce,,t,,7,90,,3,,,DLC
 576,margarine à tartiner,50,,"matière grasse végétale à 80% MG, conditionnée en barquette, usage tartinage et cuisson",,,days,,2026-06-10 07:32:25.391111+00,2026-06-10 07:32:25.391111+00,,,,g,,t,,90,365,,90,,,DLC
+569,bouillon cube de bœuf,14035,,concentré déshydraté de bouillon de bœuf en cube ou granulés,,,days,,2026-06-10 07:32:25.391111+00,2026-06-15 17:15:35.851572+00,,,10.00,u,,f,730,,,180,,,,DDM
+570,bouillon cube de légumes,14036,,concentré déshydraté de légumes en cube ou granulés,,,days,,2026-06-10 07:32:25.391111+00,2026-06-15 17:15:35.851572+00,,,10.00,u,,f,730,,,180,,,,DDM
+571,fromage fondu en tranchettes,7001,,"fromage fondu à tartiner ou garnir, conditionné en tranches individuelles",,,days,,2026-06-10 07:32:25.391111+00,2026-06-15 17:15:35.851572+00,,,20.00,u,,f,,30,90,,14,,,DLC
+573,pousses de soja en conserve,54,,"haricot mungo germé appertisé en boîte métallique, égoutté",,,days,,2026-06-10 07:32:25.391111+00,2026-06-15 17:15:35.851572+00,,,285.00,u,,f,1460,,,,3,,,DDM
+575,surimi en bâtonnets,53,,"bâtonnets de chair de poisson reconstitués, arôme crabe, pasteurisés",,,days,,2026-06-10 07:32:25.391111+00,2026-06-15 17:15:35.851572+00,,,17.00,u,,t,,7,90,,3,,,DLC
 336,lait,7001,,lait,,,days,,2025-10-30 16:28:28.97176+00,2026-06-09 21:57:05.190681+00,,,,ml,,f,,21,60,,3,,,DLC
 40,Échalotes confites,2031,,confisage,14,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2026-06-09 21:57:05.190681+00,Échalotes confites dans l'huile,,,u,3611,f,14,14,140,7,7,,,DLC
 2,Tomates confites,1059,,confisage,90,7,days,réfrigéré,2025-10-04 13:05:32.404841+00,2026-06-09 21:57:05.190681+00,Tomates cuites lentement à basse température dans l'huile,,,u,3474,f,7,14,180,3,7,,,DLC
 16,Purée d'aubergines,1001,,cuisson et mixage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2026-06-09 21:57:05.190681+00,Aubergines cuites et mixées,,,u,3476,f,5,5,50,3,5,,,DLC
+577,Haricot vert en conserve,2037,,,,,days,,2026-06-15 14:58:31.461842+00,2026-06-15 17:15:35.851572+00,,,,g,,f,700,,,,,,,DDM
+578,Cèpe séché,14014,,,,,days,,2026-06-15 15:00:22.199267+00,2026-06-15 17:15:35.851572+00,,,,g,,f,300,,,,,,,DDM
+211,Yaourt lait de chèvre,,1,fermentation lactique 43°C lait chèvre,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,21,60,,3,,336,DLC
 338,fromage,7001,,fromage,,,days,,2025-10-30 16:28:28.97176+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,30,90,,7,,,DDM
 461,trofie ou linguine,5002,,option pâtes,,,days,,2025-11-03 15:53:00.22738+00,2026-06-09 21:56:01.628236+00,,,,g,,f,730,,,180,,,457,DDM
 463,nouilles,5002,,nouilles générique,,,days,,2025-11-03 15:53:00.22738+00,2026-06-09 21:56:01.628236+00,,,,g,,f,730,,,180,,,457,DDM
@@ -66,12 +69,39 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 469,pâte phyllo,5002,,pâte feuilletée fine,,,days,,2025-11-03 15:53:00.22738+00,2026-06-09 21:56:01.628236+00,,,,g,,f,730,,,180,,,,DDM
 186,Lait demi-écrémé UHT,7001,,pasteurisation UHT 140°C écrémage partiel,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,7,90,0,3,30,336,DDM
 187,Lait écrémé UHT,7001,,pasteurisation UHT 140°C écrémage total,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,7,90,0,3,30,336,DDM
-211,Yaourt lait de chèvre,,1,fermentation lactique 43°C lait chèvre,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,21,60,,3,,336,DLC
 337,crème,7001,,crème,,,days,,2025-10-30 16:28:28.97176+00,2026-06-09 21:56:01.628236+00,,,,ml,,f,,30,120,,5,,,DLC
 121,Persil congelé haché,1049,,hachage et congélation,180,,days,congélateur,2025-10-04 13:10:13.5716+00,2026-06-09 21:56:01.628236+00,Persil frais haché et congelé,,,g,3236,f,,2,120,,1,60,,DLC
 22,Courgettes grillées,2026,,grillage,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2026-06-09 21:56:01.628236+00,Courgettes tranchées et grillées,,,u,3471,f,5,5,50,3,3,,,ESTIMATE
+208,Yaourt grec nature,7001,,fermentation lactique 43°C égouttage 10% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,21,60,,3,,333,DLC
+209,Yaourt grec 0%,7001,,fermentation lactique 43°C égouttage 0% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,21,60,,3,,333,DLC
+210,Yaourt lait de brebis,,2,fermentation lactique 43°C lait brebis,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,21,60,,3,,336,DLC
+212,Skyr nature,7001,,fermentation lactique ultrafiltration 0% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,,DLC
+213,Yaourt vanille,7001,,fermentation lactique + arôme vanille,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,21,60,,3,,333,DLC
+214,Yaourt aux fruits,7001,,fermentation lactique + préparation fruits,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,21,60,,3,,333,DLC
+215,Fromage blanc 0%,7001,,caillage lactique égouttage 0% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,338,DLC
+216,Fromage blanc 20%,7001,,caillage lactique égouttage 20% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,338,DLC
+217,Fromage blanc 40%,7001,,caillage lactique égouttage 40% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,338,DLC
+218,Petit-suisse,7001,,caillage lactique égouttage petit format,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,3,3,30,338,DLC
+219,Faisselle,7001,,caillage lactique égouttage faisselle,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,3,3,30,338,DLC
+230,Cottage cheese,7001,,caillage présure égouttage grains cottage,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,338,DLC
+231,Ricotta,7001,,caillage acide lactoserum filtration,21,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,21,21,210,3,3,30,338,DLC
 402,babeurre,7001,,fermentation,,,days,,2025-10-30 18:14:38.215007+00,2026-06-09 21:56:01.628236+00,,,,ml,,f,,90,270,,30,,,DLC
 419,fromage frais,7001,,fromage frais,,,days,,2025-10-30 18:14:38.215007+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,14,60,,7,,338,DLC
+232,Mascarpone,7001,,caillage acide crème égouttage 75% MG,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,3,3,30,338,DLC
+233,Cream cheese,7001,,caillage lactique crème tartinage Philadelphia,60,7,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,7,7,70,338,DLC
+234,Fromage à tartiner nature,7001,,caillage lactique égouttage tartinage,60,7,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,7,7,70,338,DLC
+235,Bûche de chèvre fraîche,,1,caillage lactique égouttage moulage bûche affinage 1 semaine,21,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,21,21,210,5,5,50,,DLC
+236,Bûche de chèvre demi-sec,,1,caillage lactique égouttage moulage bûche affinage 3 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,,DLC
+237,Bûche de chèvre sec,,1,caillage lactique égouttage moulage bûche affinage 8 semaines,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,10,10,100,,DLC
+238,Crottin de chèvre,,1,caillage lactique égouttage moulage crottin affinage 2-4 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DLC
+239,Sainte-Maure,,1,caillage lactique moulage bûche cendré paille affinage 3 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DLC
+240,Camembert,7001,,caillage présure moulage affinagesurface Penicillium camemberti 3 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DLC
+241,Brie,7001,,caillage présure moulage meule affinage surface Penicillium 4 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DLC
+242,Coulommiers,7001,,caillage présure moulage affinage surface Penicillium 4 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DLC
+243,Chaource,7001,,caillage présure crème ajoutée affinage surface Penicillium 2 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DLC
+244,Saint-Marcellin,7001,,caillage lactique moulage rond affinage surface Penicillium 3 semaines,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,338,DLC
+245,Brillat-Savarin,7001,,caillage présure triple crème 75% MG affinage Penicillium 2 semaines,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,338,DLC
+246,Neufchâtel,7001,,caillage présure moulage cœur affinage surface Penicillium 3 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DLC
 403,beurre clarifié,7001,,clarification,,,days,,2025-10-30 18:14:38.215007+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,90,270,,30,,300,DDM
 404,beurre de tourage,7001,,préparation,,,days,,2025-10-30 18:14:38.215007+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,90,270,,30,,300,DDM
 405,beurre fondu,7001,,fonte,,,days,,2025-10-30 18:14:38.215007+00,2026-06-09 21:56:01.628236+00,,,,ml,,f,,90,270,,30,,300,DDM
@@ -84,6 +114,17 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 412,crème fouettée,7001,,fouettage,,,days,,2025-10-30 18:14:38.215007+00,2026-06-09 21:56:01.628236+00,,,,ml,,f,,30,120,,5,,337,DLC
 319,lardon,2051,,découpe et fumage,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:57:05.190681+00,,,,g,3419,f,,3,120,,1,,,DLC
 317,jambon,2051,,salaison,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:57:05.190681+00,,,,g,3419,f,,7,60,,3,30,,DLC
+247,Explorateur,7001,,caillage présure triple crème affinage surface Penicillium 3 semaines,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,338,DLC
+248,Munster,7001,,caillage présure lavage croûte Brevibacterium marc raisin affinage 3 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DLC
+249,Époisses,7001,,caillage présure lavage croûte eau-de-vie affinage 4 semaines,45,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,5,5,50,338,DLC
+251,Pont-l'Évêque,7001,,caillage présure lavage croûte affinage 6 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DLC
+252,Livarot,7001,,caillage présure lavage croûte rocou affinage 3 mois,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,7,7,70,338,DLC
+253,Reblochon,7001,,caillage présure pressé non cuit lavage croûte affinage 6 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DLC
+254,Mont d'Or,7001,,caillage présure lavage croûte saumure épicéa affinage 6 semaines,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,338,DLC
+255,Vacherin,7001,,caillage présure lavage croûte saumure affinage 3 semaines,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,338,DLC
+197,Crème épaisse 35%,7001,,écrémage centrifugation 35% MG maturation,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,337,DLC
+198,Crème fraîche épaisse,7001,,fermentation lactique ensemencement 35% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,30,120,,3,60,337,DLC
+199,Crème fraîche légère,7001,,fermentation lactique ensemencement 15% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,,30,120,,3,60,337,DLC
 300,beurre,7001,,barattage,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:56:01.628236+00,,,,g,3467,f,,90,270,,30,180,,DDM
 331,vin blanc,14,,fermentation raisin blanc,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:56:01.628236+00,,,,g,3874,f,1825,,,365,,,,DDM
 301,beurre salé,7001,,barattage salé,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:56:01.628236+00,,,,g,3467,f,,90,270,,30,180,300,DDM
@@ -107,11 +148,11 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 480,épices speculoos,12,,mélange speculoos,,,days,,2025-11-03 15:53:05.422197+00,2026-06-09 21:56:01.628236+00,,,,g,,f,730,,,365,,,,DDM
 316,fromage blanc,7001,,caillage,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:56:01.628236+00,,,,g,3467,f,,14,60,,7,,338,DLC
 27,Jus de carotte,1005,,extraction,3,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2026-06-09 21:57:05.190681+00,Jus extrait de carottes fraîches,,,u,3584,f,7,21,270,0,2,,,DLC
+282,Pouligny-Saint-Pierre,,1,caillage lactique moulage pyramide tronquée affinage 5 semaines AOC,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DDM
+280,Valençay,,1,caillage lactique moulage pyramide affinage 4 semaines AOC,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DDM
+281,Rocamadour,,1,caillage lactique moulage rond affinage 2 semaines AOC,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,30,30,300,5,5,50,338,DDM
 36,Oignons caramélisés,2041,,cuisson lente,7,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2026-06-09 21:56:01.628236+00,Oignons cuits lentement jusqu'à caramélisation,,,u,3468,f,90,90,180,14,7,,,DDM
 226,Crème d'avoine,5001,,concentration lait avoine épaississement,90,5,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,g,4107,f,90,90,900,5,5,50,,DDM
-282,Pouligny-Saint-Pierre,,1,caillage lactique moulage pyramide tronquée affinage 5 semaines AOC,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DDM
-280,Valençay,,1,caillage lactique moulage pyramide affinage 4 semaines AOC,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DDM
-281,Rocamadour,,1,caillage lactique moulage rond affinage 2 semaines AOC,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,338,DDM
 340,bière blonde,8,,fermentation,,,days,,2025-10-30 17:51:14.602152+00,2026-06-09 21:56:01.628236+00,,,,ml,,f,180,365,,3,3,,339,DDM
 341,bière ambrée,8,,fermentation,,,days,,2025-10-30 17:51:14.602152+00,2026-06-09 21:56:01.628236+00,,,,ml,,f,180,365,,3,3,,339,DDM
 342,bière brune,8,,fermentation,,,days,,2025-10-30 17:51:14.602152+00,2026-06-09 21:56:01.628236+00,,,,ml,,f,180,365,,3,3,,339,DDM
@@ -122,9 +163,9 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 6,Tomates lacto-fermentées,1059,,lacto-fermentation,90,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2026-06-09 21:57:05.190681+00,"Tomates fermentées en saumure, probiotiques",,,u,3474,f,7,14,180,3,30,,,DLC
 110,Romarin séché,2057,,séchage,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2026-06-09 21:56:01.628236+00,Branches de romarin déshydratées,,,g,6186,f,730,730,730,180,180,365,,DDM
 470,pâte à pizza,5002,,pâte pizza,,,days,,2025-11-03 15:53:00.22738+00,2026-06-09 21:57:05.190681+00,,,,g,,f,,3,90,180,,,,DLC
-265,Ossau-Iraty,,2,caillage présure pressé non cuit affinage 4 mois AOC Pays Basque,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,90,900,14,14,140,338,DDM
-274,Pecorino,,2,caillage présure pressé cuit affinage 8 mois pecora italien,365,30,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,365,365,3650,30,30,300,338,DDM
-284,Pélardon,,2,caillage lactique moulage rond affinage 2 semaines Cévennes,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DDM
+265,Ossau-Iraty,,2,caillage présure pressé non cuit affinage 4 mois AOC Pays Basque,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,90,90,900,14,14,140,338,DDM
+274,Pecorino,,2,caillage présure pressé cuit affinage 8 mois pecora italien,365,30,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,365,365,3650,30,30,300,338,DDM
+284,Pélardon,,2,caillage lactique moulage rond affinage 2 semaines Cévennes,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DDM
 531,Thon en conserve,2064,,appertisation,,,days,température ambiante,2026-02-02 15:45:24.024876+00,2026-06-09 21:56:01.628236+00,,,,g,,f,1825,,,,3,,,DDM
 1,Tomates séchées,1059,,séchage,180,30,days,frais et sec,2025-10-04 13:05:32.404841+00,2026-06-09 21:56:01.628236+00,"Tomates déshydratées au four ou au soleil, concentrées en saveur",,,u,3474,f,365,180,1800,3,7,,,DDM
 5,Tomates pelées en bocaux,1059,,stérilisation,730,3,days,température ambiante,2025-10-04 13:05:32.404841+00,2026-06-09 21:56:01.628236+00,Tomates pelées et stérilisées en bocaux,,,u,3474,f,1095,1095,1800,,3,60,,DDM
@@ -154,21 +195,21 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 140,Estragon séché,2033,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2026-06-09 21:56:01.628236+00,Feuilles d'estragon déshydratées,,,g,3246,f,365,365,3650,90,90,900,,DDM
 145,Fenouil séché (herbe),2034,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2026-06-09 21:56:01.628236+00,Feuilles de fenouil déshydratées,,,u,3466,f,365,365,3650,90,90,900,,DDM
 146,Fenouil en poudre,2034,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2026-06-09 21:56:01.628236+00,Fenouil séché réduit en poudre,,,u,3466,f,365,365,3650,90,90,900,,DDM
-256,Cantal,7001,,caillage présure pressage mécanique affinage 3-6 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,90,900,14,14,140,338,DDM
-257,Saint-Nectaire,7001,,caillage présure pressage mécanique affinage 6 semaines,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,10,10,100,338,DDM
-258,Morbier,7001,,caillage présure pressage mécanique raie horizontale affinage 2 mois,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,10,10,100,338,DDM
-259,Tomme de Savoie,7001,,caillage présure pressage mécanique affinage 2-6 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,90,900,14,14,140,338,DDM
-260,Raclette,7001,,caillage présure pressage mécanique affinage 3 mois fonte raclette,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,10,10,100,338,DDM
-261,Cheddar,7001,,caillage présure pressage mécanique affinage 3-24 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,90,900,14,14,140,338,DDM
-262,Gouda,7001,,caillage présure pressage mécanique affinage 4-18 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,90,900,14,14,140,338,DDM
-263,Edam,7001,,caillage présure pressage mécanique affinage 4-10 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,90,900,14,14,140,338,DDM
-264,Mimolette,7001,,caillage présure pressage mécanique affinage 6-24 mois coloration rocou,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,120,120,1200,14,14,140,338,DDM
-266,Provolone,7001,,caillage présure filage eau chaude 80°C affinage 2 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,90,900,14,14,140,338,DDM
-267,Manchego,7001,,caillage présure pressage affinage 3-12 mois lait brebis,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,120,120,1200,14,14,140,338,DDM
-268,Abondance,7001,,caillage présure chauffage 53°C pressage affinage 6 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,90,900,14,14,140,338,DDM
-269,Beaufort,7001,,caillage présure chauffage 54°C pressage meule 40kg affinage 9-12 mois,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,120,120,1200,14,14,140,338,DDM
-270,Comté,7001,,caillage présure chauffage 55°C pressage meule affinage 8-24 mois,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,180,180,1800,14,14,140,338,DDM
-271,Gruyère,7001,,caillage présure chauffage 55°C pressage affinage 6-12 mois,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,180,180,1800,14,14,140,338,DDM
+256,Cantal,7001,,caillage présure pressage mécanique affinage 3-6 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,90,90,900,14,14,140,338,DDM
+257,Saint-Nectaire,7001,,caillage présure pressage mécanique affinage 6 semaines,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,10,10,100,338,DDM
+258,Morbier,7001,,caillage présure pressage mécanique raie horizontale affinage 2 mois,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,10,10,100,338,DDM
+259,Tomme de Savoie,7001,,caillage présure pressage mécanique affinage 2-6 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,90,90,900,14,14,140,338,DDM
+260,Raclette,7001,,caillage présure pressage mécanique affinage 3 mois fonte raclette,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,10,10,100,338,DDM
+261,Cheddar,7001,,caillage présure pressage mécanique affinage 3-24 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,90,90,900,14,14,140,338,DDM
+262,Gouda,7001,,caillage présure pressage mécanique affinage 4-18 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,90,90,900,14,14,140,338,DDM
+263,Edam,7001,,caillage présure pressage mécanique affinage 4-10 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,90,90,900,14,14,140,338,DDM
+264,Mimolette,7001,,caillage présure pressage mécanique affinage 6-24 mois coloration rocou,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,120,120,1200,14,14,140,338,DDM
+266,Provolone,7001,,caillage présure filage eau chaude 80°C affinage 2 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,90,90,900,14,14,140,338,DDM
+267,Manchego,7001,,caillage présure pressage affinage 3-12 mois lait brebis,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,120,120,1200,14,14,140,338,DDM
+268,Abondance,7001,,caillage présure chauffage 53°C pressage affinage 6 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,90,90,900,14,14,140,338,DDM
+269,Beaufort,7001,,caillage présure chauffage 54°C pressage meule 40kg affinage 9-12 mois,120,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,120,120,1200,14,14,140,338,DDM
+270,Comté,7001,,caillage présure chauffage 55°C pressage meule affinage 8-24 mois,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,180,180,1800,14,14,140,338,DDM
+271,Gruyère,7001,,caillage présure chauffage 55°C pressage affinage 6-12 mois,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,180,180,1800,14,14,140,338,DDM
 126,Graines de coriandre moulues,1018,,séchage et broyage des graines,730,180,days,frais et sec,2025-10-04 13:10:13.5716+00,2026-06-09 21:56:01.628236+00,Graines de coriandre réduites en poudre,,,g,6160,f,730,730,730,180,180,365,,DDM
 29,Carottes râpées sous vide,1005,,râpage et mise sous vide,7,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2026-06-09 21:57:05.190681+00,Carottes râpées fraîches sous vide,,,u,3584,f,7,21,270,0,3,,,DLC
 67,Abricots séchés,1009,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2026-06-09 21:56:01.628236+00,Abricots dénoyautés et déshydratés,,,u,3843,f,365,180,730,180,90,,,DDM
@@ -176,16 +217,16 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 88,Fraises séchées,1022,,séchage,180,,days,frais et sec,2025-10-04 13:07:06.100763+00,2026-06-09 21:56:01.628236+00,Fraises tranchées et déshydratées,,,g,3851,f,180,180,1800,180,90,,,DDM
 323,pâte brisée,5002,,pétrissage court,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:57:05.190681+00,,,,g,3455,f,,3,90,180,,,,DLC
 321,pain,5002,,cuisson levée,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:57:05.190681+00,,,,g,3455,f,3,7,90,1,3,,,DLC
-272,Emmental,7001,,caillage présure chauffage 53°C pressage meule 80kg affinage 5 mois,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,180,180,1800,14,14,140,338,DDM
-273,Parmesan,7001,,caillage présure chauffage 55°C pressage meule affinage 12-36 mois,365,30,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,365,365,3650,30,30,300,338,DDM
-275,Fontina,7001,,caillage présure chauffage 48°C pressage affinage 3 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,90,900,14,14,140,338,DDM
-276,Roquefort,,2,caillage présure ensemencement Penicillium roqueforti piquage affinage 3 mois,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,7,7,70,338,DDM
-277,Bleu d'Auvergne,7001,,caillage présure ensemencement Penicillium roqueforti piquage affinage 2 mois,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,7,7,70,338,DDM
 91,Fraises congelées,1022,,congélation,270,,days,congélateur,2025-10-04 13:07:06.100763+00,2026-06-09 21:56:01.628236+00,"Fraises entières ou coupées, congelées",,,g,3851,f,270,270,2700,0,3,,,DDM
 432,baguette,5002,,pain français long,,,days,,2025-11-03 15:51:14.885322+00,2026-06-09 21:57:05.190681+00,,,,g,,f,3,7,90,1,3,,321,DLC
 433,pain de campagne,5002,,pain rustique,,,days,,2025-11-03 15:51:14.885322+00,2026-06-09 21:57:05.190681+00,,,,g,,f,3,7,90,1,3,,321,DLC
-278,Fourme d'Ambert,7001,,caillage présure ensemencement Penicillium roqueforti piquage affinage 3-4 mois,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,7,7,70,338,DDM
-279,Gorgonzola,7001,,caillage présure ensemencement Penicillium roqueforti piquage affinage 3-4 mois,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,7,7,70,338,DDM
+272,Emmental,7001,,caillage présure chauffage 53°C pressage meule 80kg affinage 5 mois,180,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,180,180,1800,14,14,140,338,DDM
+273,Parmesan,7001,,caillage présure chauffage 55°C pressage meule affinage 12-36 mois,365,30,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,365,365,3650,30,30,300,338,DDM
+275,Fontina,7001,,caillage présure chauffage 48°C pressage affinage 3 mois,90,14,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,90,90,900,14,14,140,338,DDM
+276,Roquefort,,2,caillage présure ensemencement Penicillium roqueforti piquage affinage 3 mois,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,7,7,70,338,DDM
+277,Bleu d'Auvergne,7001,,caillage présure ensemencement Penicillium roqueforti piquage affinage 2 mois,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,7,7,70,338,DDM
+278,Fourme d'Ambert,7001,,caillage présure ensemencement Penicillium roqueforti piquage affinage 3-4 mois,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,7,7,70,338,DDM
+279,Gorgonzola,7001,,caillage présure ensemencement Penicillium roqueforti piquage affinage 3-4 mois,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,7,7,70,338,DDM
 417,fromage Minas,7001,,fromage brésilien,,,days,,2025-10-30 18:14:38.215007+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,30,90,,7,,338,DDM
 420,fromage râpé,7001,,râpage,,,days,,2025-10-30 18:14:38.215007+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,30,90,,7,,338,DDM
 322,pâte,5002,,laminage,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:56:01.628236+00,,,,g,3455,f,730,,,180,,,,DDM
@@ -318,10 +359,10 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 74,Compote de cerises,1008,,cuisson,7,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2026-06-09 21:57:05.190681+00,Cerises cuites et écrasées,,,u,3847,f,7,7,70,0,5,,,DLC
 41,Salade lavée et essorée sous vide,1031,,lavage et emballage sous vide,5,,days,réfrigéré,2025-10-04 13:05:32.404841+00,2026-06-09 21:57:05.190681+00,"Salade lavée, essorée et mise sous vide",,,u,3469,f,,5,180,,2,90,,DLC
 43,Poudre de laitue séchée,1031,,séchage et broyage,180,,days,frais et sec,2025-10-04 13:05:32.404841+00,2026-06-09 21:57:05.190681+00,Laitue séchée et réduite en poudre,,,u,3469,f,180,,365,,2,90,,DDM
-283,Picodon,,1,caillage lactique moulage rond affinage 2-4 semaines AOC,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DDM
+283,Picodon,,1,caillage lactique moulage rond affinage 2-4 semaines AOC,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,45,45,450,7,7,70,338,DDM
+193,Lait en poudre,7001,,déshydratation complète atomisation,730,30,days,frais et sec,2025-10-04 17:24:01.602539+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,730,,,30,30,30,336,DLC
 127,Aneth séché,8002,,séchage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2026-06-09 21:56:01.628236+00,Brins d'aneth déshydratés,,,g,6191,f,365,365,3650,90,90,900,,DDM
 129,Aneth en poudre,8002,,séchage et broyage,365,90,days,frais et sec,2025-10-04 13:10:13.5716+00,2026-06-09 21:56:01.628236+00,Aneth séché réduit en poudre,,,g,6191,f,365,365,3650,90,90,900,,DDM
-193,Lait en poudre,7001,,déshydratation complète atomisation,730,30,days,frais et sec,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,730,,,30,30,30,336,DLC
 185,Lait entier UHT,7001,,pasteurisation UHT 140°C,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,7,90,0,3,30,336,DDM
 194,Lait sans lactose,7001,,hydrolyse enzymatique lactose,90,3,days,température ambiante puis réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,7,90,0,3,30,336,DDM
 188,Lait entier frais,7001,,pasteurisation fraîche 72°C,7,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,7,60,,3,30,336,DLC
@@ -329,51 +370,11 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 190,Lait écrémé frais,7001,,pasteurisation fraîche 72°C écrémage total,7,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,7,60,,3,30,336,DLC
 228,Lait fermenté,7001,,fermentation lactique bactéries bifidus,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,7,90,0,3,30,336,DLC
 229,Lait ribot,7001,,fermentation lactique babeurre Bretagne,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,90,7,90,0,3,30,336,DLC
-208,Yaourt grec nature,7001,,fermentation lactique 43°C égouttage 10% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,21,60,,3,,333,DLC
-209,Yaourt grec 0%,7001,,fermentation lactique 43°C égouttage 0% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,21,60,,3,,333,DLC
-210,Yaourt lait de brebis,,2,fermentation lactique 43°C lait brebis,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,21,60,,3,,336,DLC
-212,Skyr nature,7001,,fermentation lactique ultrafiltration 0% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,,DLC
-213,Yaourt vanille,7001,,fermentation lactique + arôme vanille,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,21,60,,3,,333,DLC
-214,Yaourt aux fruits,7001,,fermentation lactique + préparation fruits,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,21,60,,3,,333,DLC
 227,Kéfir,7001,,fermentation grains kéfir levures bactéries,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,336,DLC
 334,yaourt grec,7001,,fermentation et égouttage,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:56:01.628236+00,,,,g,3467,f,,21,60,,3,,333,DLC
 335,yaourt nature,7001,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:56:01.628236+00,,,,g,3467,f,,21,60,,3,,333,DLC
-215,Fromage blanc 0%,7001,,caillage lactique égouttage 0% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,338,DLC
-216,Fromage blanc 20%,7001,,caillage lactique égouttage 20% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,338,DLC
-217,Fromage blanc 40%,7001,,caillage lactique égouttage 40% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,338,DLC
-218,Petit-suisse,7001,,caillage lactique égouttage petit format,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,3,3,30,338,DLC
-219,Faisselle,7001,,caillage lactique égouttage faisselle,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,3,3,30,338,DLC
-230,Cottage cheese,7001,,caillage présure égouttage grains cottage,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,338,DLC
-231,Ricotta,7001,,caillage acide lactoserum filtration,21,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,21,21,210,3,3,30,338,DLC
-232,Mascarpone,7001,,caillage acide crème égouttage 75% MG,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,3,3,30,338,DLC
-233,Cream cheese,7001,,caillage lactique crème tartinage Philadelphia,60,7,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,7,7,70,338,DLC
-234,Fromage à tartiner nature,7001,,caillage lactique égouttage tartinage,60,7,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,7,7,70,338,DLC
-235,Bûche de chèvre fraîche,,1,caillage lactique égouttage moulage bûche affinage 1 semaine,21,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,21,21,210,5,5,50,,DLC
-236,Bûche de chèvre demi-sec,,1,caillage lactique égouttage moulage bûche affinage 3 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,,DLC
-237,Bûche de chèvre sec,,1,caillage lactique égouttage moulage bûche affinage 8 semaines,60,10,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,10,10,100,,DLC
-238,Crottin de chèvre,,1,caillage lactique égouttage moulage crottin affinage 2-4 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DLC
-239,Sainte-Maure,,1,caillage lactique moulage bûche cendré paille affinage 3 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DLC
-240,Camembert,7001,,caillage présure moulage affinagesurface Penicillium camemberti 3 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DLC
-241,Brie,7001,,caillage présure moulage meule affinage surface Penicillium 4 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DLC
-242,Coulommiers,7001,,caillage présure moulage affinage surface Penicillium 4 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DLC
-243,Chaource,7001,,caillage présure crème ajoutée affinage surface Penicillium 2 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DLC
-244,Saint-Marcellin,7001,,caillage lactique moulage rond affinage surface Penicillium 3 semaines,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,338,DLC
-245,Brillat-Savarin,7001,,caillage présure triple crème 75% MG affinage Penicillium 2 semaines,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,338,DLC
-246,Neufchâtel,7001,,caillage présure moulage cœur affinage surface Penicillium 3 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DLC
-247,Explorateur,7001,,caillage présure triple crème affinage surface Penicillium 3 semaines,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,338,DLC
-248,Munster,7001,,caillage présure lavage croûte Brevibacterium marc raisin affinage 3 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DLC
-249,Époisses,7001,,caillage présure lavage croûte eau-de-vie affinage 4 semaines,45,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,5,5,50,338,DLC
-250,Maroilles,7001,,caillage présure lavage croûte bière affinage 3 semaines,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,7,7,70,338,DLC
-251,Pont-l'Évêque,7001,,caillage présure lavage croûte affinage 6 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DLC
-252,Livarot,7001,,caillage présure lavage croûte rocou affinage 3 mois,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,7,7,70,338,DLC
-253,Reblochon,7001,,caillage présure pressé non cuit lavage croûte affinage 6 semaines,45,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,45,45,450,7,7,70,338,DLC
-254,Mont d'Or,7001,,caillage présure lavage croûte saumure épicéa affinage 6 semaines,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,338,DLC
-255,Vacherin,7001,,caillage présure lavage croûte saumure affinage 3 semaines,30,5,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,338,DLC
 195,Crème liquide 30%,7001,,écrémage centrifugation 30% MG,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,30,120,,3,60,337,DLC
 196,Crème liquide 15%,7001,,écrémage centrifugation 15% MG,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,30,120,,3,60,337,DLC
-197,Crème épaisse 35%,7001,,écrémage centrifugation 35% MG maturation,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,30,30,300,5,5,50,337,DLC
-198,Crème fraîche épaisse,7001,,fermentation lactique ensemencement 35% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,30,120,,3,60,337,DLC
-199,Crème fraîche légère,7001,,fermentation lactique ensemencement 15% MG,30,5,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,30,120,,3,60,337,DLC
 202,Crème anglaise,7001,,cuisson anglaise jaunes œufs vanille,30,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,,3,60,,2,30,337,DLC
 203,Chantilly,7001,,fouettage mécanique incorporation air,60,3,days,réfrigéré,2025-10-04 17:24:01.602539+00,2026-06-09 21:56:01.628236+00,,,,L,3467,f,60,60,600,3,3,30,,DLC
 310,crème fraîche,7001,,fermentation,,,days,,2025-10-26 12:28:44.742772+00,2026-06-09 21:56:01.628236+00,,,,g,3467,f,,30,120,,3,60,337,DLC
@@ -399,19 +400,17 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 354,filet de bœuf,14011,,filet,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
 355,araignée de bœuf,14011,,transformation,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
 356,bœuf effiloché,14011,,transformation,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
-357,escalope de veau,8015,,escalope,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,pièce,,f,,3,120,,1,,,DLC
 358,veau en morceaux,8015,,en morceaux,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
 359,sauté de veau,8015,,en morceaux,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,358,DLC
 360,veau pour blanquette,8015,,en morceaux,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,358,DLC
 361,rôti de veau,8015,,rôti,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
 362,veau haché,8015,,haché,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
-363,côte de veau,8015,,côte,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,pièce,,f,,3,120,,1,,,DLC
 364,filet de veau,8015,,filet,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
-365,jarret de veau,8015,,jarret,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,tranche,,f,,3,120,,1,,,DLC
-366,paupiettes de veau,8015,,transformation,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,pièce,,f,,3,120,,1,,,DLC
+357,escalope de veau,8015,,escalope,,,days,,2025-10-30 18:05:55.23725+00,2026-06-15 17:15:35.851572+00,,,,u,,f,,3,120,,1,,,DLC
+363,côte de veau,8015,,côte,,,days,,2025-10-30 18:05:55.23725+00,2026-06-15 17:15:35.851572+00,,,,u,,f,,3,120,,1,,,DLC
+250,Maroilles,7001,,caillage présure lavage croûte bière affinage 3 semaines,60,7,days,réfrigéré,2025-10-04 17:25:53.774151+00,2026-06-15 17:15:35.851572+00,,,,g,3467,f,60,60,600,7,7,70,338,DLC
 367,grenadins de veau,8015,,transformation,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
 368,os de veau,8015,,os,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
-369,côtelette d'agneau,4001,,côtelette,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,pièce,,f,,3,120,,1,,,DLC
 370,gigot d'agneau,4001,,gigot,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
 371,épaule d'agneau,4001,,épaule,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
 372,filet d'agneau,4001,,filet,,,days,,2025-10-30 18:05:55.23725+00,2026-06-09 21:56:01.628236+00,,,,g,,f,,3,120,,1,,,DLC
@@ -456,6 +455,9 @@ id,name,canonical_food_id,cultivar_id,process,shelf_life_days,open_shelf_life_da
 64,Jus de poire,1050,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2026-06-09 21:56:01.628236+00,Jus extrait de poires fraîches,,,u,3470,f,5,5,50,0,2,,,ESTIMATE
 81,Jus de pêche,1048,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2026-06-09 21:56:01.628236+00,Jus extrait de pêches fraîches,,,u,3870,f,5,7,270,0,2,,,ESTIMATE
 86,Jus de prune,1054,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2026-06-09 21:56:01.628236+00,Jus extrait de prunes fraîches,,,u,3872,f,5,7,270,0,2,,,ESTIMATE
+365,jarret de veau,8015,,jarret,,,days,,2025-10-30 18:05:55.23725+00,2026-06-15 17:15:35.851572+00,,,,u,,f,,3,120,,1,,,DLC
+366,paupiettes de veau,8015,,transformation,,,days,,2025-10-30 18:05:55.23725+00,2026-06-15 17:15:35.851572+00,,,,u,,f,,3,120,,1,,,DLC
+369,côtelette d'agneau,4001,,côtelette,,,days,,2025-10-30 18:05:55.23725+00,2026-06-15 17:15:35.851572+00,,,,u,,f,,3,120,,1,,,DLC
 92,Coulis de fraises,1022,,mixage et filtrage,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2026-06-09 21:56:01.628236+00,Fraises mixées et filtrées en sauce liquide,,,g,3851,f,5,5,50,0,5,,,ESTIMATE
 95,Jus de raisin,1057,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2026-06-09 21:56:01.628236+00,Jus extrait de raisins frais,,,g,3874,f,5,5,50,0,2,,,ESTIMATE
 76,Jus de cerise,1008,,extraction,5,,days,réfrigéré,2025-10-04 13:07:06.100763+00,2026-06-09 21:56:01.628236+00,Jus extrait de cerises fraîches,,,u,3847,f,5,5,50,0,2,,,ESTIMATE
