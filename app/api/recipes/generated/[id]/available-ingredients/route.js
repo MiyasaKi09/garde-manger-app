@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
+import { linkRecipesForUser } from '@/lib/ingredientResolver'
+import { recomputeGeneratedNutrition } from '@/lib/generatedRecipeNutrition'
 
 export const dynamic = 'force-dynamic'
 
@@ -20,6 +22,31 @@ export async function GET(request, { params }) {
   }
 
   const { id: recipeId } = await params
+
+  // 0. Self-heal : (re)lier les ingrédients si la recette n'a aucun lien, ou si
+  // ses lignes portent la signature de l'ancien parseur (quantité présente mais
+  // unité absente → comptait en grammes au lieu de pièces). On relie via le
+  // résolveur déterministe puis on recalcule la nutrition CIQUAL. Ainsi chaque
+  // recette Routine se répare au 1er affichage / 1re cuisson.
+  const { data: existingRows } = await supabase
+    .from('generated_recipe_ingredients')
+    .select('id, quantity, unit')
+    .eq('generated_recipe_id', recipeId)
+
+  const needsRelink =
+    !existingRows?.length ||
+    existingRows.some(r => r.quantity != null && (r.unit == null || String(r.unit).trim() === ''))
+
+  if (needsRelink) {
+    try {
+      const res = await linkRecipesForUser(supabase, user.id, { recipeId: Number(recipeId) })
+      if (res?.recipes > 0) {
+        await recomputeGeneratedNutrition(supabase, Number(recipeId))
+      }
+    } catch {
+      // best-effort : on continue avec l'existant si la liaison échoue
+    }
+  }
 
   // 1. Ingrédients liés de la recette générée
   const { data: ingredients, error: ingErr } = await supabase

@@ -107,6 +107,9 @@ export default function CookSession({ open, meal, onClose, onDone }) {
   const [preparedPortions, setPreparedPortions] = useState(1)
   const [storageMethod, setStorageMethod] = useState('fridge')
 
+  // ── Nutrition par variante (clé = short_label || description → nutrition_per_serving)
+  const variantNutritionRef = useRef({})
+
   // ── Soumission
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState(null)
@@ -133,6 +136,7 @@ export default function CookSession({ open, meal, onClose, onDone }) {
     setShortfalls([])
     setSearchQuery('')
     setSearchResults([])
+    variantNutritionRef.current = {}
     if (isFreeform) setFreeDishName('')
 
     if (isBatchCook) {
@@ -241,6 +245,11 @@ export default function CookSession({ open, meal, onClose, onDone }) {
         const recData = await recRes.json().catch(() => ({}))
         const recipeId = recData.recipe?.id
         if (!recipeId) continue
+
+        // Capturer la nutrition canonique par portion pour cette variante
+        if (recData.recipe?.nutrition_per_serving) {
+          variantNutritionRef.current[variant.label] = recData.recipe.nutrition_per_serving
+        }
 
         const ingRes = await authFetch(`/api/recipes/generated/${recipeId}/available-ingredients`)
         const ingData = await ingRes.json().catch(() => ({}))
@@ -355,6 +364,9 @@ export default function CookSession({ open, meal, onClose, onDone }) {
       // ── Modes existants (repas planifié, reste, réchauffe, freeform) ──
       const entries = (meal.entries || []).map(e => {
         const p = portions[e.person_name] ?? 1
+        // Chercher la nutrition canonique de la variante de cette entrée
+        const variantKey = (e.short_label || e.description || '').trim()
+        const canonicalNutrition = variantNutritionRef.current[variantKey] || null
         const src = eatenDish
           ? {
               kcal: eatenDish.kcal_per_portion,
@@ -365,7 +377,7 @@ export default function CookSession({ open, meal, onClose, onDone }) {
             }
           : isFreeform
             ? { kcal: null, protein_g: null, carbs_g: null, fat_g: null, fiber_g: null }
-            : e
+            : (canonicalNutrition || e)
         const scale = (v) => (v != null ? round1(Number(v) * p) : null)
         return {
           person_name: e.person_name,

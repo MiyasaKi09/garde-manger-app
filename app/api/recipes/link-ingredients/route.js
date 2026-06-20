@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { linkRecipesForUser } from '@/lib/ingredientResolver'
+import { recomputeGeneratedNutritionBatch } from '@/lib/generatedRecipeNutrition'
 
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
@@ -39,7 +40,13 @@ export async function POST(request) {
     if (recipe_id && result.recipes === 0) {
       return NextResponse.json({ error: 'Aucune recette' }, { status: 404 })
     }
-    return NextResponse.json(result)
+
+    // Recalcul nutritionnel CIQUAL pour chaque recette (re)liée — garde la
+    // nutrition cohérente avec les ingrédients fraîchement résolus.
+    const linkedIds = (result.details || []).map(d => d.recipe_id).filter(Boolean)
+    const nutrition = await recomputeGeneratedNutritionBatch(supabase, linkedIds)
+
+    return NextResponse.json({ ...result, nutrition })
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 })
   }

@@ -86,6 +86,105 @@
 .gr-tips { margin-top: 30px; padding-top: 22px; border-top: 1.5px solid var(--ink-1); }
 .gr-tips p { margin: 14px 0 0; font-family: var(--font-text); font-size: 14px; line-height: 1.6; color: var(--ink-2); max-width: 64ch; }
 
+/* ── Badge statut lien ── */
+.gr-link-badge {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+}
+.gr-link-badge.linked {
+  color: var(--brand, #4a7c59); background: color-mix(in srgb, var(--brand, #4a7c59) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand, #4a7c59) 30%, transparent);
+}
+.gr-link-badge.unmatched {
+  color: var(--terracotta, #c0522a); background: color-mix(in srgb, var(--terracotta, #c0522a) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--terracotta, #c0522a) 30%, transparent);
+}
+
+/* ── Ligne ingrédient non liée ── */
+.gr-ing-item.gr-ing-unmatched { background: color-mix(in srgb, var(--terracotta, #c0522a) 4%, transparent); }
+
+/* ── Bouton Corriger ── */
+.gr-ing-fix-btn {
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-3);
+  padding: 2px 5px; border-radius: 2px; flex-shrink: 0;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.gr-ing-fix-btn:hover { color: var(--ink-1); }
+
+/* ── Barre Réparer les liens ── */
+.gr-repair-bar {
+  display: flex; justify-content: flex-end;
+  margin-bottom: 10px;
+}
+.gr-repair-btn {
+  background: none; border: 1px solid var(--line); cursor: pointer; border-radius: 4px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em;
+  text-transform: uppercase; color: var(--ink-2);
+  padding: 6px 12px; transition: border-color 0.15s, color 0.15s;
+}
+.gr-repair-btn:hover:not(:disabled) { border-color: var(--ink-2); color: var(--ink-1); }
+.gr-repair-btn:disabled { opacity: 0.55; cursor: default; }
+
+/* ── Panneau de liaison inline ── */
+.gr-link-panel {
+  width: 100%; margin-top: 8px; padding: 10px 12px;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 4px; display: flex; flex-direction: column; gap: 6px;
+}
+.gr-link-search-row {
+  display: flex; align-items: center; gap: 6px;
+}
+.gr-link-input {
+  flex: 1; border: 1px solid var(--line); border-radius: 3px;
+  font-family: var(--font-text); font-size: 14px; color: var(--ink-1);
+  background: var(--paper); padding: 6px 10px;
+  outline: none; min-width: 0;
+}
+.gr-link-input:focus { border-color: var(--ink-2); }
+.gr-link-cancel {
+  background: none; border: none; cursor: pointer;
+  font-size: 13px; color: var(--ink-3); padding: 4px 6px; line-height: 1;
+}
+.gr-link-cancel:hover { color: var(--ink-1); }
+.gr-link-spinner {
+  width: 12px; height: 12px; border: 2px solid var(--line);
+  border-top-color: var(--ink-2); border-radius: 50%;
+  animation: gr-spin 0.6s linear infinite; flex-shrink: 0;
+}
+@keyframes gr-spin { to { transform: rotate(360deg); } }
+
+.gr-link-results {
+  list-style: none; margin: 0; padding: 0;
+  border: 1px solid var(--line); border-radius: 3px; overflow: hidden;
+}
+.gr-link-result-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; background: none; border: none; cursor: pointer;
+  padding: 8px 10px; gap: 8px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.gr-link-results li:last-child .gr-link-result-btn { border-bottom: none; }
+.gr-link-result-btn:hover { background: color-mix(in srgb, var(--ink-1) 5%, transparent); }
+.gr-link-result-name {
+  font-family: var(--font-text); font-size: 14px; color: var(--ink-1); flex: 1;
+}
+.gr-link-result-type {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-3); flex-shrink: 0;
+}
+
+.gr-link-nonstockable {
+  background: none; border: none; cursor: pointer; align-self: flex-start;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-3); padding: 0;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.gr-link-nonstockable:hover { color: var(--terracotta, #c0522a); }
+
 @media (max-width: 560px) {
   .gr-nut-item { min-width: 64px; }
   .gr-ing-item { flex-wrap: wrap; gap: 6px 14px; }

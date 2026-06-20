@@ -1,11 +1,151 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import CookWizard from '@/components/CookWizard'
 import './generated-recipe.css'
+
+// ── Helpers ─────────────────────────────────────────────────────────────────
+
+function LinkBadge({ status, canonicalId, archetypeId }) {
+  const isLinked = status === 'stock' || status === 'canonical' || status === 'archetype'
+  const isUnmatched = !isLinked || (!canonicalId && !archetypeId)
+  if (isUnmatched) {
+    return <span className="gr-link-badge unmatched" title="Cet ingrédient n'est pas lié au garde-manger">non lié ⚠</span>
+  }
+  return <span className="gr-link-badge linked" title={`Lié (${status})`}>lié ✓</span>
+}
+
+function IngredientSearchDropdown({ ingredientId, onLinked, onClose }) {
+  const [query, setQuery] = useState('')
+  const [results, setResults] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [linking, setLinking] = useState(false)
+  const timerRef = useRef(null)
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [])
+
+  useEffect(() => {
+    if (timerRef.current) clearTimeout(timerRef.current)
+    if (query.trim().length < 2) { setResults([]); return }
+    timerRef.current = setTimeout(async () => {
+      setLoading(true)
+      try {
+        const res = await authFetch(`/api/ingredients/search?q=${encodeURIComponent(query.trim())}&limit=8`)
+        const data = await res.json().catch(() => ({}))
+        setResults(res.ok ? (data.results || []) : [])
+      } catch {
+        setResults([])
+      } finally {
+        setLoading(false)
+      }
+    }, 250)
+    return () => clearTimeout(timerRef.current)
+  }, [query])
+
+  async function selectResult(result) {
+    setLinking(true)
+    try {
+      const body = {
+        generated_recipe_ingredient_id: ingredientId,
+        ...(result.canonical_food_id ? { canonical_food_id: result.canonical_food_id } : {}),
+        ...(result.archetype_id ? { archetype_id: result.archetype_id } : {}),
+      }
+      const res = await authFetch('/api/ingredients/link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || 'Erreur de liaison')
+      onLinked(data)
+    } catch {
+      // silently ignore — user can retry
+    } finally {
+      setLinking(false)
+    }
+  }
+
+  async function markNonStockable() {
+    setLinking(true)
+    try {
+      const res = await authFetch('/api/ingredients/link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ generated_recipe_ingredient_id: ingredientId, none: true }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || 'Erreur')
+      onLinked(data)
+    } catch {
+      // silently ignore
+    } finally {
+      setLinking(false)
+    }
+  }
+
+  return (
+    <div className="gr-link-panel">
+      <div className="gr-link-search-row">
+        <input
+          ref={inputRef}
+          className="gr-link-input"
+          type="text"
+          placeholder="Rechercher un ingrédient…"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          disabled={linking}
+          aria-label="Rechercher un ingrédient à lier"
+          autoComplete="off"
+        />
+        {loading && <span className="gr-link-spinner" aria-hidden="true" />}
+        <button
+          type="button"
+          className="gr-link-cancel"
+          onClick={onClose}
+          aria-label="Annuler la correction"
+          disabled={linking}
+        >
+          ✕
+        </button>
+      </div>
+
+      {results.length > 0 && (
+        <ul className="gr-link-results" role="listbox" aria-label="Résultats">
+          {results.map((r, i) => (
+            <li key={i} role="option">
+              <button
+                type="button"
+                className="gr-link-result-btn"
+                onClick={() => selectResult(r)}
+                disabled={linking}
+              >
+                <span className="gr-link-result-name">{r.name}</span>
+                <span className="gr-link-result-type">{r.type === 'canonical' ? 'Canonique' : 'Archétype'}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <button
+        type="button"
+        className="gr-link-nonstockable"
+        onClick={markNonStockable}
+        disabled={linking}
+      >
+        {linking ? 'En cours…' : 'Non stockable (ignorer)'}
+      </button>
+    </div>
+  )
+}
+
+// ── Page principale ──────────────────────────────────────────────────────────
 
 export default function GeneratedRecipeDetail() {
   const { id } = useParams()
@@ -14,8 +154,23 @@ export default function GeneratedRecipeDetail() {
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('ingredients')
   const [checkedSteps, setCheckedSteps] = useState(new Set())
-  const [linkedIngredients, setLinkedIngredients] = useState(null) // ingrédients liés + stock
+  const [linkedIngredients, setLinkedIngredients] = useState(null)
   const [showCook, setShowCook] = useState(false)
+
+  // ── État pour la correction des liens
+  const [openLinkId, setOpenLinkId] = useState(null)   // id de l'ingrédient dont le panneau est ouvert
+  const [repairing, setRepairing] = useState(false)
+  const [repairDone, setRepairDone] = useState(false)
+
+  const fetchLinkedIngredients = useCallback(async () => {
+    try {
+      const res = await authFetch(`/api/recipes/generated/${id}/available-ingredients`)
+      const json = await res.json()
+      if (Array.isArray(json.ingredients) && json.ingredients.length) {
+        setLinkedIngredients(json.ingredients)
+      }
+    } catch { /* affichage brut en repli */ }
+  }, [id])
 
   useEffect(() => {
     async function load() {
@@ -37,16 +192,67 @@ export default function GeneratedRecipeDetail() {
       setLoading(false)
 
       // Ingrédients liés au stock (best-effort, peut être vide si pas encore lié)
-      try {
-        const res = await authFetch(`/api/recipes/generated/${id}/available-ingredients`)
-        const json = await res.json()
-        if (Array.isArray(json.ingredients) && json.ingredients.length) {
-          setLinkedIngredients(json.ingredients)
-        }
-      } catch { /* affichage brut en repli */ }
+      await fetchLinkedIngredients()
     }
     load()
-  }, [id, router])
+  }, [id, router, fetchLinkedIngredients])
+
+  // ── Callback après liaison d'un ingrédient individuel
+  function handleLinked(ingId, linkResponse) {
+    const { ingredient, nutrition } = linkResponse
+    setLinkedIngredients(prev =>
+      (prev || []).map(ing =>
+        ing.id === ingId
+          ? {
+              ...ing,
+              match_status: ingredient.match_status,
+              canonical_food_id: ingredient.canonical_food_id ?? null,
+              archetype_id: ingredient.archetype_id ?? null,
+              name: ingredient.raw_name || ing.name,
+            }
+          : ing
+      )
+    )
+    if (nutrition) {
+      setRecipe(prev => ({ ...prev, nutrition_per_serving: nutrition }))
+    }
+    setOpenLinkId(null)
+  }
+
+  // ── Réparer tous les liens
+  async function repairAllLinks() {
+    if (repairing) return
+    setRepairing(true)
+    setRepairDone(false)
+    try {
+      const res = await authFetch('/api/recipes/link-ingredients', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ recipe_id: id }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || 'Erreur')
+
+      // Rafraîchir la liste des ingrédients liés
+      await fetchLinkedIngredients()
+
+      // Recharger la nutrition recalculée côté serveur (la route renvoie un
+      // compteur { updated, failed }, pas les macros — on relit la recette).
+      const { data: fresh } = await supabase
+        .from('generated_recipes')
+        .select('nutrition_per_serving')
+        .eq('id', id)
+        .single()
+      if (fresh?.nutrition_per_serving) {
+        setRecipe(prev => ({ ...prev, nutrition_per_serving: fresh.nutrition_per_serving }))
+      }
+      setRepairDone(true)
+    } catch {
+      // ignorer silencieusement pour l'instant
+    } finally {
+      setRepairing(false)
+    }
+  }
 
   if (loading) {
     return (
@@ -81,6 +287,14 @@ export default function GeneratedRecipeDetail() {
       return next
     })
   }
+
+  // Compte les ingrédients non liés pour afficher le bouton Réparer de façon pertinente
+  const unmatchedCount = linkedIngredients
+    ? linkedIngredients.filter(ing => {
+        const isLinked = ing.match_status === 'stock' || ing.match_status === 'canonical' || ing.match_status === 'archetype'
+        return !isLinked || (!ing.canonical_food_id && !ing.archetype_id)
+      }).length
+    : 0
 
   return (
     <div className="v21-page narrow gr-page">
@@ -126,16 +340,50 @@ export default function GeneratedRecipeDetail() {
 
       {activeTab === 'ingredients' && (
         <div className="gr-section">
+          {/* ── Bouton global Réparer les liens ── */}
+          {linkedIngredients && (
+            <div className="gr-repair-bar">
+              <button
+                type="button"
+                className="gr-repair-btn"
+                onClick={repairAllLinks}
+                disabled={repairing}
+                aria-label="Réparer tous les liens ingrédients"
+              >
+                {repairing
+                  ? 'Réparation…'
+                  : repairDone
+                    ? 'Liens à jour ✓'
+                    : unmatchedCount > 0
+                      ? `Réparer les liens (${unmatchedCount} non lié${unmatchedCount > 1 ? 's' : ''})`
+                      : 'Réparer les liens'}
+              </button>
+            </div>
+          )}
+
           {linkedIngredients ? (
             <ul className="gr-ing-list">
               {linkedIngredients.map((ing) => {
                 const inStock = ing.available_lots?.length > 0
+                const isLinked = ing.match_status === 'stock' || ing.match_status === 'canonical' || ing.match_status === 'archetype'
+                const hasIds = !!(ing.canonical_food_id || ing.archetype_id)
+                const showLinkPanel = openLinkId === ing.id
+
                 return (
-                  <li key={ing.id} className="gr-ing-item">
+                  <li key={ing.id} className={`gr-ing-item${!isLinked || !hasIds ? ' gr-ing-unmatched' : ''}`}>
                     <span className="gr-ing-qty">
                       {ing.quantity}{ing.unit ? ` ${ing.unit}` : ''}
                     </span>
                     <span className="gr-ing-name">{ing.name}</span>
+
+                    {/* Badge statut lien */}
+                    <LinkBadge
+                      status={ing.match_status}
+                      canonicalId={ing.canonical_food_id}
+                      archetypeId={ing.archetype_id}
+                    />
+
+                    {/* Badge stock (séparé du badge lien) */}
                     <span
                       className={`gr-ing-stock${inStock ? ' in' : ' out'}`}
                       title={inStock
@@ -144,6 +392,28 @@ export default function GeneratedRecipeDetail() {
                     >
                       {inStock ? '✓ En stock' : 'À acheter'}
                     </span>
+
+                    {/* Bouton Corriger (toujours présent, discret) */}
+                    {!showLinkPanel && (
+                      <button
+                        type="button"
+                        className="gr-ing-fix-btn"
+                        onClick={() => setOpenLinkId(showLinkPanel ? null : ing.id)}
+                        aria-label={`Corriger le lien de ${ing.name}`}
+                        aria-expanded={showLinkPanel}
+                      >
+                        Corriger
+                      </button>
+                    )}
+
+                    {/* Panneau de recherche inline */}
+                    {showLinkPanel && (
+                      <IngredientSearchDropdown
+                        ingredientId={ing.id}
+                        onLinked={(data) => handleLinked(ing.id, data)}
+                        onClose={() => setOpenLinkId(null)}
+                      />
+                    )}
                   </li>
                 )
               })}
