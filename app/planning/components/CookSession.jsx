@@ -506,346 +506,352 @@ export default function CookSession({ open, meal, onClose, onDone }) {
         aria-modal="true"
         aria-label={dishName ? `Valider ${dishName}` : 'Cuisiner un plat'}
       >
-        {/* Poignée */}
-        <div className="cs-handle" aria-hidden="true" />
+        {/* ── En-tête sticky ─────────────────────────────────────────── */}
+        <div className="cs-sheet-head">
+          {/* Poignée */}
+          <div className="cs-handle" aria-hidden="true" />
 
-        {/* Header */}
-        <div className="cs-header">
-          <div className="cs-header-left">
-            <span className="cs-meal-type-wrap">
-              <span
-                className="cs-meal-bar"
-                style={{ background: MEAL_BAR[meal.type] || MEAL_BAR.diner }}
-                aria-hidden="true"
-              />
-              {MEAL_LABELS[meal.type] || meal.type}
-              {eatenDish && <span className="cs-badge-reste">Reste</span>}
-              {isFreeform && <span className="cs-badge-libre">Libre</span>}
-              {isBatch && <span className="cs-badge-batch">Batch</span>}
-              {isBatchCook && <span className="cs-badge-batch-cook">Jour de cuisine</span>}
-            </span>
+          {/* Header titre + bouton fermer */}
+          <div className="cs-header">
+            <div className="cs-header-left">
+              <span className="cs-meal-type-wrap">
+                <span
+                  className="cs-meal-bar"
+                  style={{ background: MEAL_BAR[meal.type] || MEAL_BAR.diner }}
+                  aria-hidden="true"
+                />
+                {MEAL_LABELS[meal.type] || meal.type}
+                {eatenDish && <span className="cs-badge-reste">Reste</span>}
+                {isFreeform && <span className="cs-badge-libre">Libre</span>}
+                {isBatch && <span className="cs-badge-batch">Batch</span>}
+                {isBatchCook && <span className="cs-badge-batch-cook">Jour de cuisine</span>}
+              </span>
 
-            {/* Nom du plat : champ éditable en mode libre, sinon statique */}
-            {isFreeform ? (
-              <input
-                className="cs-freedish-input"
-                type="text"
-                placeholder="Nom du plat…"
-                value={freeDishName}
-                maxLength={120}
-                onChange={e => setFreeDishName(e.target.value)}
-                aria-label="Nom du plat"
-                autoFocus
-              />
-            ) : (
-              <h2 className="cs-title">{dishName || 'Repas'}</h2>
-            )}
+              {/* Nom du plat : champ éditable en mode libre, sinon statique */}
+              {isFreeform ? (
+                <input
+                  className="cs-freedish-input"
+                  type="text"
+                  placeholder="Nom du plat…"
+                  value={freeDishName}
+                  maxLength={120}
+                  onChange={e => setFreeDishName(e.target.value)}
+                  aria-label="Nom du plat"
+                  autoFocus
+                />
+              ) : (
+                <h2 className="cs-title">{dishName || 'Repas'}</h2>
+              )}
 
-            {/* Macros résumé */}
-            {eatenDish && eatenDish.kcal_per_portion != null && (
-              <p className="cs-macros">
-                {Math.round(eatenDish.kcal_per_portion)} kcal ·{' '}
-                {Math.round(eatenDish.protein_g_per_portion || 0)} g P / portion
-              </p>
-            )}
-            {!eatenDish && !isFreeform && meal.entries?.[0]?.kcal && (
-              <p className="cs-macros">
-                {meal.entries.map(e => `${e.person_name?.charAt(0)}: ${Math.round(e.kcal)} kcal`).join(' · ')}
-              </p>
-            )}
+              {/* Macros résumé */}
+              {eatenDish && eatenDish.kcal_per_portion != null && (
+                <p className="cs-macros">
+                  {Math.round(eatenDish.kcal_per_portion)} kcal ·{' '}
+                  {Math.round(eatenDish.protein_g_per_portion || 0)} g P / portion
+                </p>
+              )}
+              {!eatenDish && !isFreeform && meal.entries?.[0]?.kcal && (
+                <p className="cs-macros">
+                  {meal.entries.map(e => `${e.person_name?.charAt(0)}: ${Math.round(e.kcal)} kcal`).join(' · ')}
+                </p>
+              )}
+            </div>
+            <button onClick={onClose} className="cs-close" aria-label="Fermer la feuille de cuisson">
+              <X size={18} />
+            </button>
           </div>
-          <button onClick={onClose} className="cs-close" aria-label="Fermer la feuille de cuisson">
-            <X size={18} />
-          </button>
         </div>
 
-        {/* ── Mode journée de cuisine : Portions préparées + conservation ── */}
-        {isBatchCook && (
-          <>
-            <p className="cs-section-label">Portions préparées</p>
-            <div className="cs-portion-list">
-              <div className="cs-portion-row">
-                <span className="cs-portion-name">Barquettes / portions</span>
-                <div className="cs-stepper">
-                  <button
-                    type="button"
-                    onClick={() => stepBatchPortions(-0.5)}
-                    aria-label="Moins de portions préparées"
-                  >
-                    <Minus size={13} />
-                  </button>
-                  <span className="cs-stepper-val">{fmtPortions(preparedPortions)}</span>
-                  <button
-                    type="button"
-                    onClick={() => stepBatchPortions(0.5)}
-                    aria-label="Plus de portions préparées"
-                  >
-                    <Plus size={13} />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <p className="cs-section-label">Conservation</p>
-            <div className="cs-storage-seg" role="group" aria-label="Méthode de conservation">
-              <button
-                type="button"
-                className={`cs-storage-opt${storageMethod === 'fridge' ? ' cs-storage-active' : ''}`}
-                onClick={() => setStorageMethod('fridge')}
-                aria-pressed={storageMethod === 'fridge'}
-              >
-                <Refrigerator size={13} aria-hidden="true" />
-                Frigo
-              </button>
-              <button
-                type="button"
-                className={`cs-storage-opt${storageMethod === 'freezer' ? ' cs-storage-active' : ''}`}
-                onClick={() => setStorageMethod('freezer')}
-                aria-pressed={storageMethod === 'freezer'}
-              >
-                <Flame size={13} aria-hidden="true" />
-                Congélateur
-              </button>
-            </div>
-          </>
-        )}
-
-        {/* ── Portions mangées (modes hors batchCook) ── */}
-        {!isBatchCook && (
-          <>
-            <p className="cs-section-label">Portions mangées</p>
-            <div className="cs-portion-list">
-              {(meal.entries || []).map(e => (
-                <div key={e.person_name} className="cs-portion-row">
-                  <span className="cs-portion-name">{e.person_name}</span>
+        {/* ── Corps scrollable ────────────────────────────────────────── */}
+        <div className="cs-sheet-body">
+          {/* ── Mode journée de cuisine : Portions préparées + conservation ── */}
+          {isBatchCook && (
+            <>
+              <p className="cs-section-label">Portions préparées</p>
+              <div className="cs-portion-list">
+                <div className="cs-portion-row">
+                  <span className="cs-portion-name">Barquettes / portions</span>
                   <div className="cs-stepper">
                     <button
                       type="button"
-                      onClick={() => stepPortion(e.person_name, -0.5)}
-                      aria-label={`Moins de portions pour ${e.person_name}`}
+                      onClick={() => stepBatchPortions(-0.5)}
+                      aria-label="Moins de portions préparées"
                     >
                       <Minus size={13} />
                     </button>
-                    <span className="cs-stepper-val">{fmtPortions(portions[e.person_name] ?? 1)}</span>
+                    <span className="cs-stepper-val">{fmtPortions(preparedPortions)}</span>
                     <button
                       type="button"
-                      onClick={() => stepPortion(e.person_name, 0.5)}
-                      aria-label={`Plus de portions pour ${e.person_name}`}
+                      onClick={() => stepBatchPortions(0.5)}
+                      aria-label="Plus de portions préparées"
                     >
                       <Plus size={13} />
                     </button>
                   </div>
                 </div>
-              ))}
-            </div>
-          </>
-        )}
+              </div>
 
-        {/* ── Portions préparées au total (mode normal — hors batchCook et hors batch réchauffe) ── */}
-        {!isBatchCook && !eatenDish && !isBatch && (
-          <>
-            <p className="cs-section-label">Portions préparées au total</p>
-            <div className="cs-portion-list">
-              <div className="cs-portion-row">
-                <span className="cs-portion-name">Préparé</span>
-                <div className="cs-stepper">
-                  <button
-                    type="button"
-                    onClick={() => stepPrepared(-0.5)}
-                    aria-label="Moins de portions préparées"
-                  >
-                    <Minus size={13} />
-                  </button>
-                  <span className="cs-stepper-val">{fmtPortions(effectivePrepared)}</span>
-                  <button
-                    type="button"
-                    onClick={() => stepPrepared(0.5)}
-                    aria-label="Plus de portions préparées"
-                  >
-                    <Plus size={13} />
-                  </button>
+              <p className="cs-section-label">Conservation</p>
+              <div className="cs-storage-seg" role="group" aria-label="Méthode de conservation">
+                <button
+                  type="button"
+                  className={`cs-storage-opt${storageMethod === 'fridge' ? ' cs-storage-active' : ''}`}
+                  onClick={() => setStorageMethod('fridge')}
+                  aria-pressed={storageMethod === 'fridge'}
+                >
+                  <Refrigerator size={13} aria-hidden="true" />
+                  Frigo
+                </button>
+                <button
+                  type="button"
+                  className={`cs-storage-opt${storageMethod === 'freezer' ? ' cs-storage-active' : ''}`}
+                  onClick={() => setStorageMethod('freezer')}
+                  aria-pressed={storageMethod === 'freezer'}
+                >
+                  <Flame size={13} aria-hidden="true" />
+                  Congélateur
+                </button>
+              </div>
+            </>
+          )}
+
+          {/* ── Portions mangées (modes hors batchCook) ── */}
+          {!isBatchCook && (
+            <>
+              <p className="cs-section-label">Portions mangées</p>
+              <div className="cs-portion-list">
+                {(meal.entries || []).map(e => (
+                  <div key={e.person_name} className="cs-portion-row">
+                    <span className="cs-portion-name">{e.person_name}</span>
+                    <div className="cs-stepper">
+                      <button
+                        type="button"
+                        onClick={() => stepPortion(e.person_name, -0.5)}
+                        aria-label={`Moins de portions pour ${e.person_name}`}
+                      >
+                        <Minus size={13} />
+                      </button>
+                      <span className="cs-stepper-val">{fmtPortions(portions[e.person_name] ?? 1)}</span>
+                      <button
+                        type="button"
+                        onClick={() => stepPortion(e.person_name, 0.5)}
+                        aria-label={`Plus de portions pour ${e.person_name}`}
+                      >
+                        <Plus size={13} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          {/* ── Portions préparées au total (mode normal — hors batchCook et hors batch réchauffe) ── */}
+          {!isBatchCook && !eatenDish && !isBatch && (
+            <>
+              <p className="cs-section-label">Portions préparées au total</p>
+              <div className="cs-portion-list">
+                <div className="cs-portion-row">
+                  <span className="cs-portion-name">Préparé</span>
+                  <div className="cs-stepper">
+                    <button
+                      type="button"
+                      onClick={() => stepPrepared(-0.5)}
+                      aria-label="Moins de portions préparées"
+                    >
+                      <Minus size={13} />
+                    </button>
+                    <span className="cs-stepper-val">{fmtPortions(effectivePrepared)}</span>
+                    <button
+                      type="button"
+                      onClick={() => stepPrepared(0.5)}
+                      aria-label="Plus de portions préparées"
+                    >
+                      <Plus size={13} />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-            {surplus > 0 && (
-              <p className="cs-leftover-hint">
-                ➜ {fmtPortions(surplus)} portion{surplus > 1 ? 's' : ''} iront aux restes (DLC estimée +3 j)
-              </p>
-            )}
-          </>
-        )}
-
-        {/* ── Ingrédients ── */}
-        {hasIngSection && (
-          <>
-            <p className="cs-section-label">Ingrédients à déduire du stock</p>
-
-            {loadingIng ? (
-              <p className="cs-hint">
-                <Loader2 size={14} className="cs-spin" aria-hidden="true" />
-                Chargement des ingrédients…
-              </p>
-            ) : (
-              <>
-                {rows.length === 0 && !loadingIng && (
-                  <p className="cs-hint">
-                    {isFreeform
-                      ? 'Ajoutez des ingrédients ci-dessous pour déduire du stock.'
-                      : isBatchCook
-                        ? 'Aucun ingrédient récupéré — ajoutez-en ci-dessous pour déduire du stock.'
-                        : 'Aucun ingrédient lié au stock — seule la nutrition sera enregistrée.'}
-                  </p>
-                )}
-
-                {rows.length > 0 && (
-                  <div className="cs-ing-list" role="list">
-                    {rows.map(r => {
-                      const linked = !!(r.canonical_food_id || r.archetype_id)
-                      return (
-                        <div
-                          key={r.key}
-                          className={`cs-ing-row${!linked ? ' cs-ing-unlinked' : ''}`}
-                          role="listitem"
-                        >
-                          <span className="cs-ing-name" title={r.name}>{r.name}</span>
-                          {linked ? (
-                            <>
-                              <input
-                                type="number"
-                                min="0"
-                                value={r.qty}
-                                onChange={e => updateRow(r.key, { qty: Math.max(0, Number(e.target.value)) })}
-                                className="cs-ing-qty"
-                                aria-label={`Quantité de ${r.name}`}
-                              />
-                              <span className="cs-ing-unit">{r.unit}</span>
-                            </>
-                          ) : (
-                            <span className="cs-ing-unlinked-note">pas lié au stock</span>
-                          )}
-                          <button
-                            type="button"
-                            className="cs-ing-remove"
-                            onClick={() => removeRow(r.key)}
-                            aria-label={`Supprimer ${r.name}`}
-                          >
-                            <X size={13} />
-                          </button>
-                        </div>
-                      )
-                    })}
-                  </div>
-                )}
-
-                {/* Recherche libre */}
-                <div className="cs-search-wrap">
-                  <div className="cs-search-field">
-                    <Search size={13} className="cs-search-icon" aria-hidden="true" />
-                    <input
-                      type="text"
-                      className="cs-search-input"
-                      placeholder="Ajouter un ingrédient…"
-                      value={searchQuery}
-                      onChange={e => setSearchQuery(e.target.value)}
-                      aria-label="Rechercher un ingrédient à ajouter"
-                      autoComplete="off"
-                    />
-                    {searchLoading && <Loader2 size={12} className="cs-spin cs-search-loader" aria-hidden="true" />}
-                  </div>
-                  {searchResults.length > 0 && (
-                    <ul className="cs-search-results" role="listbox" aria-label="Résultats de recherche">
-                      {searchResults.map((r, i) => (
-                        <li key={i} role="option">
-                          <button
-                            type="button"
-                            className="cs-search-item"
-                            onClick={() => addSearchResult(r)}
-                          >
-                            <span className="cs-search-item-name">{r.name}</span>
-                            <span className="cs-search-item-unit">{r.unit}</span>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </>
-            )}
-          </>
-        )}
-
-        {/* ── Mode reste existant ── */}
-        {eatenDish && (
-          <>
-            <p className="cs-section-label">Reste du frigo</p>
-            <p className="cs-note">
-              <Soup size={15} aria-hidden="true" style={{ flexShrink: 0, marginTop: 1 }} />
-              <span>
-                {fmtPortions(eatenDish.portions_remaining)} portion
-                {eatenDish.portions_remaining > 1 ? 's' : ''} restante
-                {eatenDish.portions_remaining > 1 ? 's' : ''} ·
-                DLC {formatDlc(eatenDish.expiration_date)}.
-                Rien à déduire du stock (déjà retiré à la cuisson).
-              </span>
-            </p>
-          </>
-        )}
-
-        {/* ── Mode batch ── */}
-        {isBatch && (
-          <>
-            <p className="cs-section-label">Préparé d'avance</p>
-            <p className="cs-note">
-              <Flame size={15} aria-hidden="true" style={{ flexShrink: 0, marginTop: 1 }} />
-              <span>Cuisiné lors du batch — réchauffe ta barquette, rien à déduire du stock.</span>
-            </p>
-          </>
-        )}
-
-        {/* ── Avertissement shortfalls (après réponse — non bloquant) ── */}
-        {shortfalls.length > 0 && (
-          <div className="cs-shortfall-warn" role="alert">
-            <AlertTriangle size={15} aria-hidden="true" />
-            <span>
-              Stock insuffisant pour : {shortfalls.map(s => {
-                // Le backend renvoie les shortfalls par id (sans nom) → on
-                // retrouve le nom depuis nos lignes d'ingrédients.
-                const row = rows.find(r =>
-                  (s.canonical_food_id && r.canonical_food_id === s.canonical_food_id) ||
-                  (s.archetype_id && r.archetype_id === s.archetype_id)
-                )
-                return row?.name || `${fmtPortions(s.missing ?? s.qty ?? 0)} ${s.unit || ''}`.trim() || 'ingrédient'
-              }).join(', ')} — enregistré quand même. Pense à racheter.
-            </span>
-          </div>
-        )}
-
-        {/* ── Erreur ── */}
-        {error && <p className="cs-error" role="alert">{error}</p>}
-
-        {/* ── Bouton confirmer ── */}
-        <button
-          type="button"
-          onClick={confirm}
-          disabled={saving || loadingIng}
-          className="cs-confirm-btn"
-          style={{ opacity: (saving || loadingIng) ? 0.6 : 1 }}
-        >
-          {saving ? (
-            <>
-              <Loader2 size={16} className="cs-spin" aria-hidden="true" />
-              Enregistrement…
+              {surplus > 0 && (
+                <p className="cs-leftover-hint">
+                  ➜ {fmtPortions(surplus)} portion{surplus > 1 ? 's' : ''} iront aux restes (DLC estimée +3 j)
+                </p>
+              )}
             </>
-          ) : isBatchCook ? (
-            <><Refrigerator size={17} aria-hidden="true" /> Confirmer — cuisiné &amp; ajouté au stock</>
-          ) : eatenDish ? (
-            <><Soup size={17} aria-hidden="true" /> Confirmer — reste mangé</>
-          ) : isBatch ? (
-            <><Flame size={17} aria-hidden="true" /> Confirmer — réchauffé</>
-          ) : (
-            <><ChefHat size={17} aria-hidden="true" /> Confirmer — cuisiné</>
           )}
-        </button>
+
+          {/* ── Ingrédients ── */}
+          {hasIngSection && (
+            <>
+              <p className="cs-section-label">Ingrédients à déduire du stock</p>
+
+              {loadingIng ? (
+                <p className="cs-hint">
+                  <Loader2 size={14} className="cs-spin" aria-hidden="true" />
+                  Chargement des ingrédients…
+                </p>
+              ) : (
+                <>
+                  {rows.length === 0 && !loadingIng && (
+                    <p className="cs-hint">
+                      {isFreeform
+                        ? 'Ajoutez des ingrédients ci-dessous pour déduire du stock.'
+                        : isBatchCook
+                          ? 'Aucun ingrédient récupéré — ajoutez-en ci-dessous pour déduire du stock.'
+                          : 'Aucun ingrédient lié au stock — seule la nutrition sera enregistrée.'}
+                    </p>
+                  )}
+
+                  {rows.length > 0 && (
+                    <div className="cs-ing-list" role="list">
+                      {rows.map(r => {
+                        const linked = !!(r.canonical_food_id || r.archetype_id)
+                        return (
+                          <div
+                            key={r.key}
+                            className={`cs-ing-row${!linked ? ' cs-ing-unlinked' : ''}`}
+                            role="listitem"
+                          >
+                            <span className="cs-ing-name" title={r.name}>{r.name}</span>
+                            {linked ? (
+                              <>
+                                <input
+                                  type="number"
+                                  min="0"
+                                  value={r.qty}
+                                  onChange={e => updateRow(r.key, { qty: Math.max(0, Number(e.target.value)) })}
+                                  className="cs-ing-qty"
+                                  aria-label={`Quantité de ${r.name}`}
+                                />
+                                <span className="cs-ing-unit">{r.unit}</span>
+                              </>
+                            ) : (
+                              <span className="cs-ing-unlinked-note">pas lié au stock</span>
+                            )}
+                            <button
+                              type="button"
+                              className="cs-ing-remove"
+                              onClick={() => removeRow(r.key)}
+                              aria-label={`Supprimer ${r.name}`}
+                            >
+                              <X size={13} />
+                            </button>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  )}
+
+                  {/* Recherche libre */}
+                  <div className="cs-search-wrap">
+                    <div className="cs-search-field">
+                      <Search size={13} className="cs-search-icon" aria-hidden="true" />
+                      <input
+                        type="text"
+                        className="cs-search-input"
+                        placeholder="Ajouter un ingrédient…"
+                        value={searchQuery}
+                        onChange={e => setSearchQuery(e.target.value)}
+                        aria-label="Rechercher un ingrédient à ajouter"
+                        autoComplete="off"
+                      />
+                      {searchLoading && <Loader2 size={12} className="cs-spin cs-search-loader" aria-hidden="true" />}
+                    </div>
+                    {searchResults.length > 0 && (
+                      <ul className="cs-search-results" role="listbox" aria-label="Résultats de recherche">
+                        {searchResults.map((r, i) => (
+                          <li key={i} role="option">
+                            <button
+                              type="button"
+                              className="cs-search-item"
+                              onClick={() => addSearchResult(r)}
+                            >
+                              <span className="cs-search-item-name">{r.name}</span>
+                              <span className="cs-search-item-unit">{r.unit}</span>
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </>
+              )}
+            </>
+          )}
+
+          {/* ── Mode reste existant ── */}
+          {eatenDish && (
+            <>
+              <p className="cs-section-label">Reste du frigo</p>
+              <p className="cs-note">
+                <Soup size={15} aria-hidden="true" style={{ flexShrink: 0, marginTop: 1 }} />
+                <span>
+                  {fmtPortions(eatenDish.portions_remaining)} portion
+                  {eatenDish.portions_remaining > 1 ? 's' : ''} restante
+                  {eatenDish.portions_remaining > 1 ? 's' : ''} ·
+                  DLC {formatDlc(eatenDish.expiration_date)}.
+                  Rien à déduire du stock (déjà retiré à la cuisson).
+                </span>
+              </p>
+            </>
+          )}
+
+          {/* ── Mode batch ── */}
+          {isBatch && (
+            <>
+              <p className="cs-section-label">Préparé d'avance</p>
+              <p className="cs-note">
+                <Flame size={15} aria-hidden="true" style={{ flexShrink: 0, marginTop: 1 }} />
+                <span>Cuisiné lors du batch — réchauffe ta barquette, rien à déduire du stock.</span>
+              </p>
+            </>
+          )}
+
+          {/* ── Avertissement shortfalls (après réponse — non bloquant) ── */}
+          {shortfalls.length > 0 && (
+            <div className="cs-shortfall-warn" role="alert">
+              <AlertTriangle size={15} aria-hidden="true" />
+              <span>
+                Stock insuffisant pour : {shortfalls.map(s => {
+                  const row = rows.find(r =>
+                    (s.canonical_food_id && r.canonical_food_id === s.canonical_food_id) ||
+                    (s.archetype_id && r.archetype_id === s.archetype_id)
+                  )
+                  return row?.name || `${fmtPortions(s.missing ?? s.qty ?? 0)} ${s.unit || ''}`.trim() || 'ingrédient'
+                }).join(', ')} — enregistré quand même. Pense à racheter.
+              </span>
+            </div>
+          )}
+
+          {/* ── Erreur ── */}
+          {error && <p className="cs-error" role="alert">{error}</p>}
+        </div>
+
+        {/* ── Pied sticky : bouton Valider toujours visible ───────────── */}
+        <div className="cs-sheet-foot">
+          <button
+            type="button"
+            onClick={confirm}
+            disabled={saving || loadingIng}
+            className="cs-confirm-btn"
+            style={{ opacity: (saving || loadingIng) ? 0.6 : 1 }}
+          >
+            {saving ? (
+              <>
+                <Loader2 size={16} className="cs-spin" aria-hidden="true" />
+                Enregistrement…
+              </>
+            ) : isBatchCook ? (
+              <><Refrigerator size={17} aria-hidden="true" /> Confirmer — cuisiné &amp; ajouté au stock</>
+            ) : eatenDish ? (
+              <><Soup size={17} aria-hidden="true" /> Confirmer — reste mangé</>
+            ) : isBatch ? (
+              <><Flame size={17} aria-hidden="true" /> Confirmer — réchauffé</>
+            ) : (
+              <><ChefHat size={17} aria-hidden="true" /> Confirmer — cuisiné</>
+            )}
+          </button>
+        </div>
       </div>
       <style>{`@keyframes cs-spin-anim { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
     </>,

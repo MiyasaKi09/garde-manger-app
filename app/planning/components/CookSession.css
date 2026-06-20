@@ -407,6 +407,8 @@
   justify-content: space-between;
   width: 100%;
   padding: 9px 14px;
+  /* Cible 44px minimum */
+  min-height: 44px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -527,7 +529,7 @@
   text-align: center;
 }
 
-/* ── Bouton confirmer ───────────────────────────────────────────────────── */
+/* ── Bouton confirmer (rendu dans .cs-sheet-foot) ──────────────────────── */
 .cs-confirm-btn {
   width: 100%;
   display: flex;
@@ -535,7 +537,9 @@
   justify-content: center;
   gap: 8px;
   padding: 15px 0;
-  margin-top: 20px;
+  /* margin-top géré par le conteneur sticky-foot */
+  margin-top: 0;
+  min-height: 44px;
   background: var(--terracotta);
   color: #fff;
   border: 1px solid var(--terracotta);
@@ -567,12 +571,30 @@
 }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
-@media (max-width: 480px) {
-  .cs-sheet {
-    padding: 0 16px 36px;
+@media (max-width: 860px) {
+  .cs-sheet-head,
+  .cs-sheet-body {
+    padding-left: 16px;
+    padding-right: 16px;
   }
+  .cs-sheet-foot {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 560px) {
   .cs-title,
   .cs-freedish-input {
     font-size: 19px;
+  }
+  /* Ligne ingrédient : ajustements sur téléphone étroit */
+  .cs-ing-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .cs-ing-name {
+    font-size: 13px;
   }
 }
