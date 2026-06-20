@@ -436,6 +436,31 @@
   cursor: not-allowed;
   transform: none;
 }
+@media (max-width: 860px) {
+  .modal-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+  .modal-container {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .modal-content {
+    padding: 16px;
+  }
+  .qty-btn {
+    width: 48px;
+    height: 48px;
+  }
+  .action-btn {
+    padding: 14px 16px;
+  }
+}
+
 /* État du produit (ouvert / fermé) */
 .opened-row {
   display: flex;

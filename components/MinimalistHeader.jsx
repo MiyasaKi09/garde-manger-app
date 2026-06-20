@@ -125,7 +125,9 @@ export default function MinimalistHeader() {
         .myko-hd-mfoot span{font-family:var(--font-mono);font-size:11px;color:var(--ink-3)}
         .myko-hd-cta.full{margin:0;width:100%;text-align:center;border-radius:3px;padding:12px}
         @keyframes mykoSlideDown{from{opacity:0;transform:translate(-50%,-8px)}to{opacity:1;transform:translate(-50%,0)}}
-        @media(max-width:820px){.myko-hd-nav,.myko-hd>.myko-hd-cta{display:none}.myko-hd-burger{display:inline-flex;align-items:center;justify-content:center}}
+        /* ≤860px : la nav passe dans la barre d'onglets en bas (MobileTabBar).
+           Le header garde la marque + la déconnexion ; plus de burger. */
+        @media(max-width:860px){.myko-hd-nav{display:none}}
       `}</style>
     </>
   );

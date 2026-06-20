@@ -76,8 +76,20 @@ button.v21-it {
   outline-offset: 2px;
 }
 
+@media (max-width: 860px) {
+  .pantry-fab-group {
+    bottom: calc(72px + env(safe-area-inset-bottom));
+    right: 28px;
+  }
+  .pantry-fab,
+  .pantry-fab-secondary {
+    width: 48px;
+    height: 48px;
+  }
+}
+
 @media (max-width: 560px) {
-  .pantry-fab-group { bottom: 18px; right: 18px; }
+  .pantry-fab-group { right: 18px; }
 }
 
 /* ============================================================
@@ -93,7 +105,7 @@ button.v21-it {
 
 .stock-twin { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .stock-cell { display: flex; flex-direction: column; min-width: 0; }
-.stock-num { font-family: var(--font-display); font-weight: 600; font-size: clamp(38px, 3.6vw, 56px); line-height: 0.92; margin-top: 2px; color: var(--ink-1); }
+.stock-num { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 3.6vw, 56px); line-height: 0.92; margin-top: 2px; color: var(--ink-1); }
 .stock-num.hot { color: var(--terracotta); }
 .stock-rmeta { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
 
@@ -119,7 +131,7 @@ button.v21-it {
 .stock-rc { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 10px; }
 .stock-toolbar { padding-top: 18px; }
 
-@media (max-width: 880px) {
+@media (max-width: 860px) {
   .stock-board { grid-template-columns: 1fr; }
   .stock-rail { border-right: none; border-bottom: 1px solid var(--ink-1); }
   .stock-right { padding-left: 0; }

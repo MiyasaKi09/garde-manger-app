@@ -168,12 +168,24 @@
 /* ── Responsive ── */
 @media (max-width: 860px) {
   .v21-hero { grid-template-columns: 1fr; align-items: start; gap: 18px; }
-  .v21-hero-side { flex-direction: row; }
+  .v21-hero-side { flex-direction: row; flex-wrap: wrap; }
+  /* Boutons hero ≥44px de hauteur sur mobile */
+  .v21-hero-side .v21-btn { min-height: 44px; flex: 1 1 auto; justify-content: center; }
   .v21-cols { grid-template-columns: 1fr; }
   .v21-col-main { border-right: none; padding-right: 0; border-bottom: 1px solid var(--line); }
   .v21-col-side { padding-left: 0; }
+  /* Ledger : 2 colonnes (barre + nom + statut) */
   .v21-it { grid-template-columns: 8px 1fr auto; }
   .v21-it-q, .v21-it-lc { display: none; }
+  /* Nom tronqué proprement sur une ligne */
+  .v21-it-n { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; display: block; }
+  /* Onglets : tap target ≥44px */
+  .v21-tab { min-height: 44px; display: inline-flex; align-items: center; }
+  /* Nav rapide : tap target ≥44px */
+  .v21-navlink { min-height: 44px; }
+  /* Poids du jour : bouton et input ≥44px */
+  .home-weight-input { min-height: 44px; }
+  .home-weight-form .v21-btn { min-height: 44px; }
 }
 @media (max-width: 560px) {
   .v21-stats { grid-template-columns: 1fr; }
@@ -181,6 +193,8 @@
   .v21-stat + .v21-stat { padding-left: 0; }
   .v21-stat:last-child { border-bottom: none; }
   .v21-title { font-size: clamp(40px, 13vw, 60px); }
+  /* Statut ledger : pas de retour à la ligne forcé */
+  .v21-it-st { white-space: nowrap; }
 }
 
 /* ── Poids du jour (module Nutrition de l'accueil) ── */

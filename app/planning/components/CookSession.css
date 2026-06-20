@@ -22,12 +22,40 @@
   background: var(--paper);
   border-top: 1.5px solid var(--ink-1);
   border-radius: 6px 6px 0 0;
-  padding: 0 24px 40px;
   z-index: 1101;
-  max-height: 88vh;
-  overflow-y: auto;
+  /* 92dvh sur navigateurs modernes, 92vh en fallback */
+  max-height: 92vh;
+  max-height: 92dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   box-shadow: 0 -18px 50px -20px rgba(24, 28, 22, 0.4);
   font-family: var(--font-text);
+}
+
+/* ── Header sticky en haut du bottom-sheet ─────────────────────────────── */
+.cs-sheet-head {
+  flex-shrink: 0;
+  padding: 0 24px;
+  background: var(--paper);
+}
+
+/* ── Corps scrollable (ingrédients, portions, etc.) ────────────────────── */
+.cs-sheet-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 24px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Pied sticky : bouton Valider toujours accessible ──────────────────── */
+.cs-sheet-foot {
+  flex-shrink: 0;
+  padding: 12px 24px;
+  /* Respect du home indicator iOS */
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  background: var(--paper);
+  border-top: 1px solid var(--line);
 }
 
 /* ── Poignée ────────────────────────────────────────────────────────────── */
@@ -150,6 +178,9 @@
   align-items: center;
   justify-content: center;
   margin-left: 12px;
+  /* Cible 44×44px sur mobile */
+  min-width: 44px;
+  min-height: 44px;
 }
 
 /* ── Étiquettes de section ──────────────────────────────────────────────── */
@@ -197,8 +228,8 @@
 }
 
 .cs-stepper button {
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,6 +299,7 @@
 
 .cs-ing-qty {
   width: 64px;
+  min-height: 44px;
   padding: 5px 8px;
   border: 1px solid var(--line-strong, var(--line));
   border-radius: 3px;

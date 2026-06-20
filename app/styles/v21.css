@@ -205,6 +205,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 860px) {
+  .v21-page { padding-bottom: 28px; } /* la barre d'onglets + .main gèrent l'espace bas */
   .v21-hero { grid-template-columns: 1fr; align-items: start; gap: 18px; }
   .v21-hero-side { align-items: flex-start; flex-direction: row; }
   .v21-hero-badge { text-align: left; }

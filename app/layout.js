@@ -5,6 +5,7 @@ import "./styles/v21.css";
 import { Suspense } from "react";
 import { Fraunces, Inter, Crimson_Text, JetBrains_Mono } from "next/font/google";
 import MinimalistHeader from "@/components/MinimalistHeader";
+import MobileTabBar from "@/components/MobileTabBar";
 import MatisseWallpaperRandom from "@/components/MatisseWallpaperRandom";
 import ToastContainer from "@/components/Toast";
 import CacheWarmer from "@/components/CacheWarmer";
@@ -26,6 +27,15 @@ const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500", "6
 export const metadata = {
   title: "Myko — Réseau mycorhizien",
   description: "Cultivez les connexions entre cuisine, garde-manger et potager",
+};
+
+// Viewport mobile explicite (largeur de l'appareil, zoom autorisé pour l'a11y,
+// couleur de barre système accordée au papier).
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#F2EEE3",
 };
 
 export default function RootLayout({ children }) {
@@ -62,6 +72,9 @@ export default function RootLayout({ children }) {
           </Suspense>
         </main>
         
+        {/* Navigation primaire mobile (barre d'onglets en bas, ≤ 860px) */}
+        <MobileTabBar />
+
         {/* Système de notifications toast */}
         <ToastContainer />
 

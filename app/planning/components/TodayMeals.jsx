@@ -586,85 +586,93 @@ export default function TodayMeals({ importId }) {
             aria-modal="true"
             aria-label={`Options pour ${selectedMeal.dishName}`}
           >
-            {/* Decorative top bar */}
-            <div className="tm-modal-top-bar" />
+            {/* ── En-tête sticky ── */}
+            <div className="tm-modal-sticky-head">
+              {/* Decorative drag handle */}
+              <div className="tm-modal-top-bar" />
 
-            {/* Header */}
-            <div className="tm-modal-header">
-              <div>
-                <span className="tm-modal-meal-type-wrap">
-                  <span className="tm-modal-meal-bar" style={{ background: MEAL_BAR_VAR[selectedMeal.type] || MEAL_BAR_VAR.diner }} />
-                  {MEAL_LABELS[selectedMeal.type] || selectedMeal.type}
-                </span>
-                <h3 className="tm-modal-title">{selectedMeal.dishName}</h3>
-                {selectedMeal.entries[0]?.kcal && (
-                  <p className="tm-modal-macros">
-                    {selectedMeal.entries.map(e => `${e.person_name?.charAt(0)}: ${e.kcal} kcal`).join(' · ')}
-                  </p>
-                )}
+              <div className="tm-modal-header">
+                <div>
+                  <span className="tm-modal-meal-type-wrap">
+                    <span className="tm-modal-meal-bar" style={{ background: MEAL_BAR_VAR[selectedMeal.type] || MEAL_BAR_VAR.diner }} />
+                    {MEAL_LABELS[selectedMeal.type] || selectedMeal.type}
+                  </span>
+                  <h3 className="tm-modal-title">{selectedMeal.dishName}</h3>
+                  {selectedMeal.entries[0]?.kcal && (
+                    <p className="tm-modal-macros">
+                      {selectedMeal.entries.map(e => `${e.person_name?.charAt(0)}: ${e.kcal} kcal`).join(' · ')}
+                    </p>
+                  )}
+                </div>
+                <button onClick={closeModal} className="tm-close-btn" aria-label="Fermer"><X size={18} /></button>
               </div>
-              <button onClick={closeModal} className="tm-close-btn" aria-label="Fermer"><X size={18} /></button>
             </div>
 
-            {/* ── DEFAULT: choice buttons ── */}
-            {!swapMode && !swapSuccess && (
-              <div className="tm-choice-buttons">
-                <button onClick={handleCook} className="tm-cook-btn">
-                  <ChefHat size={18} />
-                  Cuisiner
-                </button>
-                <button onClick={() => setSwapMode(true)} className="tm-swap-btn">
-                  <RefreshCw size={18} />
-                  Changer ce plat
-                </button>
-              </div>
-            )}
-
-            {/* ── MODIFY MODE ── */}
-            {swapMode && !swapSuccess && (
-              <div className="tm-swap-section">
-                <label htmlFor="tm-swap-input" className="sr-only">Direction de modification (optionnel)</label>
-                <input
-                  id="tm-swap-input"
-                  aria-label="Direction de modification (optionnel)"
-                  type="text"
-                  value={swapDirection}
-                  onChange={e => setSwapDirection(e.target.value)}
-                  placeholder="Ex : plus végétarien, moins gras, j'ai du saumon… (optionnel)"
-                  className="tm-swap-input"
-                  onKeyDown={e => e.key === 'Enter' && handleModify()}
-                  autoFocus
-                  disabled={swapping}
-                />
-                <button onClick={handleModify} disabled={swapping} className="tm-generate-btn">
-                  {swapping ? (
-                    <>
-                      <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} />
-                      Claude réfléchit à un nouveau repas… (30–60s)
-                    </>
-                  ) : (
-                    <>
-                      <RefreshCw size={16} />
-                      Régénérer le repas
-                    </>
-                  )}
-                </button>
-                {swapError && <p className="tm-swap-error">{swapError}</p>}
-                {!swapping && (
-                  <button onClick={() => setSwapMode(false)} className="tm-cancel-link">Annuler</button>
-                )}
-              </div>
-            )}
-
-            {/* ── SUCCESS ── */}
-            {swapSuccess && (
-              <div className="tm-success-section">
-                <div className="tm-success-icon">
-                  <Check size={28} color="white" />
+            {/* ── Corps scrollable ── */}
+            <div className="tm-modal-body">
+              {/* ── DEFAULT: choice buttons ── */}
+              {!swapMode && !swapSuccess && (
+                <div className="tm-choice-buttons">
+                  <button onClick={handleCook} className="tm-cook-btn">
+                    <ChefHat size={18} />
+                    Cuisiner
+                  </button>
+                  <button onClick={() => setSwapMode(true)} className="tm-swap-btn">
+                    <RefreshCw size={18} />
+                    Changer ce plat
+                  </button>
                 </div>
-                <p className="tm-success-label">Repas modifié !</p>
-              </div>
-            )}
+              )}
+
+              {/* ── MODIFY MODE ── */}
+              {swapMode && !swapSuccess && (
+                <div className="tm-swap-section">
+                  <label htmlFor="tm-swap-input" className="sr-only">Direction de modification (optionnel)</label>
+                  <input
+                    id="tm-swap-input"
+                    aria-label="Direction de modification (optionnel)"
+                    type="text"
+                    value={swapDirection}
+                    onChange={e => setSwapDirection(e.target.value)}
+                    placeholder="Ex : plus végétarien, moins gras, j'ai du saumon… (optionnel)"
+                    className="tm-swap-input"
+                    onKeyDown={e => e.key === 'Enter' && handleModify()}
+                    autoFocus
+                    disabled={swapping}
+                  />
+                  <button onClick={handleModify} disabled={swapping} className="tm-generate-btn">
+                    {swapping ? (
+                      <>
+                        <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} />
+                        Claude réfléchit à un nouveau repas… (30–60s)
+                      </>
+                    ) : (
+                      <>
+                        <RefreshCw size={16} />
+                        Régénérer le repas
+                      </>
+                    )}
+                  </button>
+                  {swapError && <p className="tm-swap-error">{swapError}</p>}
+                  {!swapping && (
+                    <button onClick={() => setSwapMode(false)} className="tm-cancel-link">Annuler</button>
+                  )}
+                </div>
+              )}
+
+              {/* ── SUCCESS ── */}
+              {swapSuccess && (
+                <div className="tm-success-section">
+                  <div className="tm-success-icon">
+                    <Check size={28} color="white" />
+                  </div>
+                  <p className="tm-success-label">Repas modifié !</p>
+                </div>
+              )}
+            </div>
+
+            {/* ── Pied sticky : padding safe-area iOS ── */}
+            <div className="tm-modal-sticky-foot" />
           </div>
           <style>{`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
         </>,

@@ -81,16 +81,32 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 900px) {
+@media (max-width: 860px) {
   .nut-board { grid-template-columns: 1fr; }
   .nut-rail { border-right: none; border-bottom: 1px solid var(--ink-1); }
   .nut-ractions { margin-top: 0; }
   .nut-main { padding: 26px 22px 0; }
   .nut-micros { grid-template-columns: repeat(3, 1fr); }
+
+  /* Day-nav tap targets ≥44px */
+  .nut-daybtn {
+    width: 44px;
+    height: 44px;
+  }
 }
 @media (max-width: 560px) {
   .nut-rings { grid-template-columns: repeat(2, 1fr); }
+  /* Ring sizes: keep ≥96px, improve label readability */
+  .nut-ring-c,
+  .nut-ring-c svg { width: 100px; height: 100px; }
+  .nut-ring-l { font-size: 11.5px; }
+  .nut-ring-p { font-size: 12px; }
+
   .nut-micros { grid-template-columns: repeat(2, 1fr); }
+  /* Micro label readability */
+  .nut-micro-l { font-size: 11px; }
+  .nut-micro-v { font-size: 12px; }
+
   .nut-meal { grid-template-columns: 6px 1fr auto; }
   .nut-meal-t { display: none; }
 }

@@ -62,7 +62,7 @@
 .rc-lede { font-family: var(--font-editorial); font-style: italic; font-size: 16px; color: var(--ink-2); margin: 10px 0 20px; }
 
 /* Planche-contact de fiches horizontales */
-.rc-sheet { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line-strong); }
+.rc-sheet { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line-strong); }
 .rc-fiche { position: relative; background: var(--paper); display: flex; align-items: stretch; gap: 14px; text-decoration: none; color: inherit; overflow: hidden; padding: 14px 16px 14px 19px; transition: background 0.15s ease; }
 .rc-fiche:hover { background: var(--surface-soft); }
 .rc-fiche::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--brand); }
@@ -107,11 +107,39 @@
 
 .rc-fiche:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 
-@media (max-width: 880px) {
+@media (max-width: 860px) {
+  /* Toolbar : barre de recherche pleine largeur */
   .rc-tools-right { width: 100%; justify-content: flex-start; }
   .rc-tools-right .v21-search { max-width: none; flex: 1; }
+  /* Grille fiches : 1 colonne sur tablette/téléphone */
   .rc-sheet { grid-template-columns: 1fr; }
   .rc-cata { flex-direction: column; align-items: flex-start; }
+  /* Chips de tri ≥44px tap target */
+  .v21-chip { min-height: 44px; display: inline-flex; align-items: center; }
+  /* Boutons d'action dans l'en-tête ≥44px */
+  .btn-primary, .btn-secondary, .btn-tertiary { min-height: 44px; }
+  /* Onglets ≥44px */
+  .tab-btn { min-height: 44px; display: inline-flex; align-items: center; }
+  /* Barre d'actions bas de formulaire : colonnes étirées */
+  .edit-actions-bar { justify-content: stretch; }
+  .edit-actions-bar .btn-primary, .edit-actions-bar .btn-secondary { flex: 1; }
+  /* Lignes ingrédients : 2 colonnes (nom / qty+unit) */
+  .ingredient-row { grid-template-columns: 1fr auto; gap: 8px; }
+  .ingredient-item-edit, .utensil-item-edit { grid-template-columns: 1fr auto; gap: 8px; }
+  /* Bouton supprimer ≥44px */
+  .remove-btn, .btn-remove, .btn-remove-micro { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
+}
+
+@media (max-width: 560px) {
+  /* Lignes ingrédients : empilement complet sur téléphone étroit */
+  .ingredient-row { grid-template-columns: 1fr; }
+  .ingredient-item-edit, .utensil-item-edit { grid-template-columns: 1fr; }
+  /* form-grid : 1 colonne */
+  .form-grid { grid-template-columns: 1fr; }
+  /* Recherche toolbar pleine largeur */
+  .rc-tools-right .v21-search { width: 100%; }
+  /* Bouton autophoto : masquer le libellé si nécessaire */
+  .rc-autophoto { padding: 9px 10px; }
 }
 
 /* ============================================================================
@@ -298,10 +326,4 @@
   outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px;
 }
 
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .ingredient-row { grid-template-columns: 1fr 1fr; }
-  .ingredient-item-edit, .utensil-item-edit { grid-template-columns: 1fr auto; }
-  .edit-actions-bar { justify-content: stretch; }
-  .edit-actions-bar .btn-primary, .edit-actions-bar .btn-secondary { flex: 1; }
-}
+/* ── Responsive : géré dans le bloc @media (max-width: 860px) et 560px ci-dessus ── */

@@ -272,9 +272,66 @@
   margin: 10px 0 0;
 }
 
+/* ── Responsive ── */
+
+/* Dès 860px : tap targets pour tous les boutons interactifs */
+@media (max-width: 860px) {
+  /* Bouton "Cuisiner" : déjà pleine largeur via width:100%, ok */
+
+  /* Onglets ≥44px */
+  .v21-tab { min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* Bouton global "Réparer les liens" ≥44px */
+  .gr-repair-btn { min-height: 44px; display: inline-flex; align-items: center; padding: 10px 16px; }
+
+  /* Bouton "Corriger" sur chaque ligne ≥44px */
+  .gr-ing-fix-btn { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 8px 10px; }
+
+  /* Bouton ✕ annuler dans le panneau ≥44px */
+  .gr-link-cancel { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 8px; }
+
+  /* Input de recherche inline ≥44px de hauteur */
+  .gr-link-input { min-height: 44px; padding: 10px 12px; }
+
+  /* Résultats de recherche ≥44px */
+  .gr-link-result-btn { min-height: 44px; padding: 10px 12px; }
+
+  /* Bouton "Non stockable" ≥44px */
+  .gr-link-nonstockable { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 0; }
+}
+
+/* Dès 560px : réorganisation des blocs sur téléphone étroit */
 @media (max-width: 560px) {
-  .gr-nut-item { min-width: 64px; }
-  .gr-ing-item { flex-wrap: wrap; gap: 6px 14px; }
+  /* Nutrition : items plus petits mais lisibles */
+  .gr-nut-item { min-width: 64px; padding: 12px 12px; }
+  .gr-nut-val { font-size: 20px; }
+
+  /* Lignes ingrédients : wrap complet, chaque badge sur sa propre rangée */
+  .gr-ing-item {
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: flex-start;
+  }
+  /* Qty : largeur fixe maintenue */
+  .gr-ing-qty { min-width: 60px; }
+  /* Nom : flex 1 mais peut passer à la ligne */
+  .gr-ing-name { flex: 1; min-width: 0; }
+  /* Badges et bouton : poussés à la ligne suivante, alignés à gauche */
   .gr-ing-stock { margin-left: 0; }
+  .gr-link-badge { flex-shrink: 0; }
+  .gr-ing-fix-btn { margin-left: auto; }
+
+  /* Panneau liaison : pleine largeur sans overflow */
+  .gr-link-panel { padding: 10px; }
+  .gr-link-search-row { gap: 4px; }
+
+  /* Micronutriments : 2 colonnes */
   .gr-micro-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Badge vérification : texte peut se couper proprement */
+  .gr-verif-chip { white-space: normal; word-break: break-word; }
+
+  /* Barre réparer : pleine largeur */
+  .gr-repair-bar { justify-content: stretch; }
+  .gr-repair-btn { width: 100%; justify-content: center; }
 }

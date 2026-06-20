@@ -94,18 +94,69 @@
 /* Toggle stock : variante colorée du chip (vert quand on = stock affiché) */
 .wg-chip-stock.on { background: #3f6c45; border-color: #3f6c45; }
 
-/* ── Responsive : repli en cartes-jour empilées ── */
-@media (max-width: 880px) {
-  .wg-head { flex-direction: column; align-items: flex-start; gap: 14px; padding: 16px 22px; }
-  .wg-filt { overflow-x: auto; padding-left: 22px; padding-right: 22px; }
-  .wg-wknav { display: none; }
+/* ── Line-clamp sur les noms de plats longs ── */
+.wg-dish {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* ── Responsive : repli en liste jour-par-jour ── */
+@media (max-width: 860px) {
+  /* En-tête */
+  .wg-head { flex-direction: column; align-items: flex-start; gap: 14px; padding: 16px 12px; }
+
+  /* Barre de filtres : wrap + navigation semaine visible */
+  .wg-filt { flex-wrap: wrap; padding-left: 12px; padding-right: 12px; gap: 6px; overflow-x: visible; }
+  .wg-filt-sep { display: none; }
+  .wg-wknav { margin-left: 0; width: 100%; justify-content: space-between; order: -1; }
+
+  /* Flèches de nav semaine : cible 44px */
+  .wg-wknav-arrow { min-width: 44px; min-height: 44px; padding: 0; }
+
+  /* Chips convive : cible 44px */
+  .wg-chip { min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; }
+
+  /* Grille → liste empilée, une ligne par jour */
   .wg-grid { display: block; padding: 0; }
   .wg-ghead { display: none; }
   .wg-row { display: block; border-bottom: 1px solid var(--ink-1); }
-  .wg-daycell { flex-direction: row; align-items: baseline; gap: 12px; padding: 18px 22px 8px; border-left: none; border-bottom: none; }
+
+  /* En-tête de jour : inline, moins de padding */
+  .wg-daycell {
+    flex-direction: row; align-items: baseline; gap: 12px;
+    padding: 14px 12px 6px; border-left: none; border-bottom: none;
+  }
   .wg-today-tag { margin-top: 0; margin-left: auto; }
-  .wg-cell { border-left: none; border-bottom: none; padding: 8px 22px; }
-  .wg-cell .wg-dish { -webkit-line-clamp: unset; }
-  .wg-cell::before { content: attr(data-type); display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
-  .wg-check { top: 6px; }
+
+  /* Cellule repas : pleine largeur, padding réduit */
+  .wg-cell { border-left: none; border-bottom: none; padding: 8px 12px; min-width: 0; max-width: 100%; }
+  .wg-cell::before {
+    content: attr(data-type); display: block;
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px;
+  }
+
+  /* Nom de plat : 2 lignes max, jamais overflow */
+  .wg-dish { -webkit-line-clamp: 2; }
+
+  /* Coche : cible 44px (zone invisible agrandie via padding) */
+  .wg-check {
+    top: 8px; right: 6px;
+    width: 24px; height: 24px;
+    /* Zone de tap 44×44 sans agrandir visuellement */
+    padding: 10px;
+    margin: -10px;
+    opacity: 1;
+  }
+}
+
+/* ── Téléphones étroits (≤560px) ── */
+@media (max-width: 560px) {
+  .wg-head { padding: 12px 8px; }
+  .wg-filt { padding-left: 8px; padding-right: 8px; }
+  .wg-daycell { padding: 12px 8px 4px; }
+  .wg-cell { padding: 6px 8px; }
+  .wg-dow { font-size: 16px; }
 }

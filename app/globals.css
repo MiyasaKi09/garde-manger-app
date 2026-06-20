@@ -135,6 +135,15 @@ body {
   padding: 32px 24px;
 }
 
+/* Mobile : moins de marge latérale + espace en bas pour la barre d'onglets fixe
+   (≈58px + aire sûre iOS). Breakpoint unifié 860px (cf. v21.css). */
+@media (max-width: 860px) {
+  .main { padding: 18px 14px calc(72px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 560px) {
+  .main { padding: 14px 12px calc(72px + env(safe-area-inset-bottom)); }
+}
+
 /* Typographie */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
