@@ -1,0 +1,20 @@
+/* components/ui/Modal.css
+   Complète les styles inline de Modal.jsx.
+   Préfixe .modal-* pour éviter toute collision. */
+
+/* dvh progressif : les navigateurs qui supportent dvh l'appliquent en
+   dernier (cascade), les autres gardent le 90vh du style inline. */
+.modal-shell {
+  max-height: 90dvh;
+}
+
+/* Sur mobile, assurer que le footer avec safe-area est bien calculé */
+@media (max-width: 860px) {
+  .modal-shell {
+    /* Sur téléphone, la modale devient un bottom-sheet si on veut,
+       mais ici on la garde centrée. On s'assure juste qu'elle ne
+       déborde pas. */
+    max-height: 90dvh;
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+}

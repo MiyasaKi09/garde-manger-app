@@ -45,7 +45,19 @@
 .wg-cell { position: relative; padding: 13px 26px 13px 14px; min-width: 0; }
 .wg-dish-btn { appearance: none; -webkit-appearance: none; border: 0; background: none; box-shadow: none; outline: none; padding: 0; margin: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; min-width: 0; display: flex; align-items: flex-start; gap: 7px; width: 100%; }
 .wg-dish-btn:disabled { cursor: default; }
-.wg-dish { font-family: var(--font-display); font-weight: 500; font-size: 14.5px; line-height: 1.26; letter-spacing: -0.005em; color: var(--ink-1); display: block; }
+.wg-dish {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 14.5px;
+  line-height: 1.26;
+  letter-spacing: -0.005em;
+  color: var(--ink-1);
+  /* Line-clamp 2 lignes max (évite les débordements) */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
 .wg-dish em { font-style: italic; font-weight: 500; color: var(--ink-2); }
 .wg-dish-btn:hover:not(:disabled) .wg-dish { color: var(--terracotta); }
 .wg-empty { font-family: var(--font-mono); font-size: 13px; color: var(--ink-3); }
@@ -93,14 +105,6 @@
 
 /* Toggle stock : variante colorée du chip (vert quand on = stock affiché) */
 .wg-chip-stock.on { background: #3f6c45; border-color: #3f6c45; }
-
-/* ── Line-clamp sur les noms de plats longs ── */
-.wg-dish {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-}
 
 /* ── Responsive : repli en liste jour-par-jour ── */
 @media (max-width: 860px) {

@@ -419,9 +419,9 @@ const styles = {
     textAlign: 'center',
   },
   pmBtn: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: 44,
+    height: 44,
+    borderRadius: 22,
     border: '1px solid rgba(0,0,0,0.08)',
     background: 'rgba(255,255,255,0.6)',
     cursor: 'pointer',
@@ -431,9 +431,9 @@ const styles = {
     color: '#374151',
   },
   pmBtnSm: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
+    width: 44,
+    height: 44,
+    borderRadius: 22,
     border: '1px solid rgba(0,0,0,0.08)',
     background: 'rgba(255,255,255,0.6)',
     cursor: 'pointer',
@@ -449,8 +449,8 @@ const styles = {
     gap: 10,
   },
   checkbox: {
-    width: 22,
-    height: 22,
+    width: 44,
+    height: 44,
     borderRadius: 6,
     border: '2px solid',
     display: 'flex',
@@ -467,6 +467,7 @@ const styles = {
   },
   chip: {
     padding: '6px 12px',
+    minHeight: 44,
     border: '1px solid rgba(0,0,0,0.08)',
     borderRadius: 20,
     background: 'rgba(255,255,255,0.6)',
@@ -475,6 +476,8 @@ const styles = {
     fontFamily: 'inherit',
     color: '#374151',
     transition: 'all 0.15s',
+    display: 'inline-flex',
+    alignItems: 'center',
   },
   chipActive: {
     background: 'rgba(22,163,74,0.1)',
@@ -490,6 +493,7 @@ const styles = {
   nextBtn: {
     flex: 1,
     padding: '12px',
+    minHeight: 44,
     border: 'none',
     borderRadius: 10,
     background: '#16a34a',
@@ -501,6 +505,7 @@ const styles = {
   },
   backBtn: {
     padding: '12px 16px',
+    minHeight: 44,
     border: '1px solid rgba(0,0,0,0.08)',
     borderRadius: 10,
     background: 'transparent',
@@ -512,6 +517,7 @@ const styles = {
   cookBtn: {
     width: '100%',
     padding: '14px',
+    minHeight: 44,
     border: 'none',
     borderRadius: 12,
     background: 'linear-gradient(135deg, #16a34a, #059669)',

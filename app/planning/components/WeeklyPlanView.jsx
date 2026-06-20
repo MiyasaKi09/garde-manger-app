@@ -358,7 +358,7 @@ export default function WeeklyPlanView({ imports = [] }) {
 }
 .weekly-nav-arrow {
   border: 1px solid var(--line-strong); background: transparent;
-  border-radius: 3px; width: 34px; height: 34px;
+  border-radius: 3px; width: 44px; height: 44px;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; color: var(--ink-2);
   transition: border-color 0.15s ease, color 0.15s ease;
@@ -408,7 +408,7 @@ export default function WeeklyPlanView({ imports = [] }) {
 .weekly-meal-btn:disabled { cursor: default; }
 .weekly-meal-btn:hover:not(:disabled) .v21-meal-n { color: var(--terracotta); }
 
-/* ── Case « cuisiné » (colonne auto de droite) ── */
+/* ── Case « cuisiné » : visuel 18px, zone de tap 44×44px ── */
 .weekly-check {
   width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0; padding: 0;
   border: 1.5px solid var(--line-strong); background: transparent;
@@ -420,6 +420,14 @@ export default function WeeklyPlanView({ imports = [] }) {
 .weekly-meal-btn:focus-visible, .weekly-check:focus-visible,
 .weekly-nav-arrow:focus-visible {
   outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px;
+}
+
+@media (max-width: 860px) {
+  /* Coche cuisiné : zone de tap élargie sans agrandir le visuel */
+  .weekly-check {
+    padding: 13px;
+    margin: -13px;
+  }
 }
 
 @media (max-width: 560px) {

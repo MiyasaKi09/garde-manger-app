@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback } from 'react'
 import { X } from 'lucide-react'
+import './Modal.css'
 
 /**
  * Modal glass-morphism réutilisable.
@@ -27,7 +28,7 @@ export default function Modal({ open, onClose, title, children, width = 520 }) {
 
   return (
     <div style={styles.backdrop} onClick={onClose}>
-      <div style={{ ...styles.modal, maxWidth: width }} onClick={e => e.stopPropagation()}>
+      <div style={{ ...styles.modal, maxWidth: width }} className="modal-shell" onClick={e => e.stopPropagation()}>
         {title && (
           <div style={styles.header}>
             <h3 style={styles.title}>{title}</h3>
@@ -55,7 +56,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1000,
-    padding: 16,
+    padding: '16px 16px calc(16px + env(safe-area-inset-bottom))',
   },
   modal: {
     width: '100%',
@@ -65,7 +66,8 @@ const styles = {
     border: '1px solid rgba(0,0,0,0.06)',
     borderRadius: 20,
     boxShadow: '0 16px 48px rgba(0,0,0,0.12)',
-    maxHeight: '85vh',
+    /* 90dvh sur navigateurs modernes, 90vh en fallback */
+    maxHeight: '90vh',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
@@ -76,6 +78,7 @@ const styles = {
     justifyContent: 'space-between',
     padding: '16px 20px',
     borderBottom: '1px solid rgba(0,0,0,0.06)',
+    flexShrink: 0,
   },
   title: {
     margin: 0,
@@ -93,10 +96,14 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    /* Cible 44×44px sur mobile */
+    minWidth: 44,
+    minHeight: 44,
   },
   body: {
     flex: 1,
     overflowY: 'auto',
     padding: 20,
+    WebkitOverflowScrolling: 'touch',
   },
 }
