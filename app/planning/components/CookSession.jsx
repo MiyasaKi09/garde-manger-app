@@ -129,6 +129,9 @@ export default function CookSession({ open, meal, onClose, onDone }) {
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState(null)
   const [shortfalls, setShortfalls] = useState([])
+  // Vrai si une fiche a été trouvée pour le créneau mais qu'aucun ingrédient
+  // n'a pu être chargé → on bloque la validation pour ne pas loguer sans déduction.
+  const [ingIncomplete, setIngIncomplete] = useState(false)
 
   const eatenDish = meal?.eatenDish || null
   // isBatchCook : NOUVELLE cuisson d'un batch (mode journée de cuisine)
@@ -149,6 +152,7 @@ export default function CookSession({ open, meal, onClose, onDone }) {
     setPreparedTouched(false)
     setError(null)
     setShortfalls([])
+    setIngIncomplete(false)
     setSearchQuery('')
     setSearchResults([])
     variantNutritionRef.current = {}
@@ -213,7 +217,8 @@ export default function CookSession({ open, meal, onClose, onDone }) {
       return
     }
     try {
-      const res = await authFetch(`/api/planning/batch/${id}/ingredients`)
+      // noCache : la déduction a besoin de l'état RÉEL des liens, pas du cache SWR.
+      const res = await authFetch(`/api/planning/batch/${id}/ingredients`, { noCache: true })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(data.error || 'Erreur chargement ingrédients batch')
       const mapped = (data.ingredients || []).map(ing => ({
@@ -246,6 +251,7 @@ export default function CookSession({ open, meal, onClose, onDone }) {
       return
     }
 
+    let matchedRecipe = false
     try {
       const variants = groupByVariant(meal.entries || [])
       let merged = []
@@ -260,13 +266,16 @@ export default function CookSession({ open, meal, onClose, onDone }) {
         const recData = await recRes.json().catch(() => ({}))
         const recipeId = recData.recipe?.id
         if (!recipeId) continue
+        matchedRecipe = true
 
         // Capturer la nutrition canonique par portion pour cette variante
         if (recData.recipe?.nutrition_per_serving) {
           variantNutritionRef.current[variant.label] = recData.recipe.nutrition_per_serving
         }
 
-        const ingRes = await authFetch(`/api/recipes/generated/${recipeId}/available-ingredients`)
+        // noCache : la déduction a besoin des liens RÉELS, pas d'une réponse SWR
+        // périmée (sinon `rows` vide → aucune déduction tout en loguant le repas).
+        const ingRes = await authFetch(`/api/recipes/generated/${recipeId}/available-ingredients`, { noCache: true })
         const ingData = await ingRes.json().catch(() => ({}))
 
         // Préférer la nutrition relue APRÈS le self-heal de la route (macros +
@@ -288,8 +297,16 @@ export default function CookSession({ open, meal, onClose, onDone }) {
       }
 
       setRows(merged)
+      // Filet de sécurité : une fiche a matché mais aucun ingrédient n'a pu être
+      // chargé → on signale et on empêchera la validation (sinon repas loggué
+      // sans déduction de stock, en silence).
+      if (matchedRecipe && merged.length === 0) {
+        setIngIncomplete(true)
+        setError('Ingrédients non chargés — fermez et rouvrez la feuille pour réessayer.')
+      }
     } catch {
-      setError('Erreur de chargement des ingrédients')
+      setIngIncomplete(true)
+      setError('Erreur de chargement des ingrédients — réessayez.')
     } finally {
       setLoadingIng(false)
     }
@@ -338,6 +355,12 @@ export default function CookSession({ open, meal, onClose, onDone }) {
   // ── Confirmation
   async function confirm() {
     if (saving) return
+    if (ingIncomplete) {
+      // Ingrédients non chargés : valider ici loggerait le repas SANS déduire le
+      // stock. On bloque et on demande de réessayer (rechargement frais).
+      setError('Ingrédients non chargés — fermez et rouvrez la feuille pour réessayer.')
+      return
+    }
     if (isFreeform && !freeDishName.trim()) {
       setError('Entrez un nom pour le plat')
       return
@@ -388,6 +411,15 @@ export default function CookSession({ open, meal, onClose, onDone }) {
         // Chercher la nutrition canonique de la variante de cette entrée
         const variantKey = (e.short_label || e.description || '').trim()
         const canonicalNutrition = variantNutritionRef.current[variantKey] || null
+        const usingCanonical = !eatenDish && !isFreeform && !!canonicalNutrition
+        // Facteur de portion PAR PERSONNE : la nutrition canonique est UNE valeur
+        // par portion (identique pour tous) ; on la met à l'échelle de l'énergie
+        // que le PLAN attribue à chaque personne (Julien ≠ Zoé) → on garde la
+        // répartition de macros + micros canonique mais différenciée par personne.
+        const planFactor = usingCanonical && Number(canonicalNutrition.kcal) > 0 && Number(e?.kcal) > 0
+          ? Number(e.kcal) / Number(canonicalNutrition.kcal)
+          : 1
+        const nutFactor = usingCanonical ? p * planFactor : p
         const src = eatenDish
           ? {
               kcal: eatenDish.kcal_per_portion,
@@ -399,14 +431,13 @@ export default function CookSession({ open, meal, onClose, onDone }) {
           : isFreeform
             ? { kcal: null, protein_g: null, carbs_g: null, fat_g: null, fiber_g: null }
             : (canonicalNutrition || e)
-        const scale = (v) => (v != null ? round1(Number(v) * p) : null)
-        // Micronutriments par portion : reste mangé → ceux du plat ; sinon ceux
-        // de la fiche canonique ; sinon ceux du plan (souvent absents). Mis à
-        // l'échelle des portions mangées.
+        const scale = (v) => (v != null ? round1(Number(v) * nutFactor) : null)
+        // Micronutriments : reste mangé → ceux du plat (× portions) ; sinon ceux
+        // de la fiche canonique (× facteur par personne) ; sinon ceux du plan.
         const microSrc = eatenDish
           ? eatenDish.micronutrients_per_portion
           : (canonicalNutrition?.micronutrients || e.micronutrients)
-        const micronutrients = scaleMicros(microSrc, p)
+        const micronutrients = scaleMicros(microSrc, nutFactor)
         return {
           person_name: e.person_name,
           portions_eaten: p,
