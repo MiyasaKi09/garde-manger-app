@@ -101,9 +101,16 @@ AS $function$
   END
 $function$;
 
--- ── Nutrition par portion d'une recette générée ────────────────────────────────
-CREATE OR REPLACE FUNCTION public.calculate_generated_recipe_nutrition(gen_recipe_id_param bigint)
-RETURNS TABLE(kcal numeric, protein_g numeric, carbs_g numeric, fat_g numeric, fiber_g numeric)
+-- ── Nutrition par portion d'une recette générée (macros + micros) ──────────────
+-- Retour : macros (colonnes) + micros (jsonb, clés alignées sur nutritional_data
+-- et sur ce qu'attend la page nutrition : fer_mg, calcium_mg, vitamine_c_mg…).
+-- Les modificateurs de process s'appliquent aux nutriments qui en ont (calories,
+-- proteines, glucides, lipides, fibres, calcium, fer, vitamine_b1, vitamine_c) ;
+-- les autres micros prennent le facteur 1.0 (valeur CIQUAL brute).
+-- Le changement de signature impose un DROP préalable.
+DROP FUNCTION IF EXISTS public.calculate_generated_recipe_nutrition(bigint);
+CREATE FUNCTION public.calculate_generated_recipe_nutrition(gen_recipe_id_param bigint)
+RETURNS TABLE(kcal numeric, protein_g numeric, carbs_g numeric, fat_g numeric, fiber_g numeric, micros jsonb)
 LANGUAGE plpgsql
 SET search_path TO 'public'
 AS $function$
@@ -146,20 +153,51 @@ BEGIN
   ),
   ing AS (
     SELECT
-      COALESCE(nd.calories_kcal, 0) * COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'calories'), 1.0) * (ib.grams / 100.0) AS kc,
-      COALESCE(nd.proteines_g, 0) * COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'proteines'), 1.0) * (ib.grams / 100.0) AS prot,
-      COALESCE(nd.glucides_g, 0)  * COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'glucides'),  1.0) * (ib.grams / 100.0) AS gluc,
-      COALESCE(nd.lipides_g, 0)   * COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'lipides'),   1.0) * (ib.grams / 100.0) AS lip,
-      COALESCE(nd.fibres_g, 0)    * COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'fibres'),    1.0) * (ib.grams / 100.0) AS fib
+      ib.grams / 100.0 AS f,
+      COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'calories'), 1.0) AS f_cal,
+      COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'proteines'), 1.0) AS f_prot,
+      COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'glucides'), 1.0) AS f_gluc,
+      COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'lipides'), 1.0) AS f_lip,
+      COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'fibres'), 1.0) AS f_fib,
+      COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'calcium'), 1.0) AS f_ca,
+      COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'fer'), 1.0) AS f_fe,
+      COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'vitamine_b1'), 1.0) AS f_b1,
+      COALESCE((SELECT pf.factor_value FROM process_factors pf WHERE pf.archetype_id = ib.archetype_id AND pf.nutrient = 'vitamine_c'), 1.0) AS f_vc,
+      nd.*
     FROM ingredient_base ib
     LEFT JOIN nutritional_data nd ON nd.id = ib.nutrition_id_to_use
   )
   SELECT
-    ROUND(COALESCE(SUM(kc), 0) / servings_var, 0),
-    ROUND(COALESCE(SUM(prot), 0) / servings_var, 1),
-    ROUND(COALESCE(SUM(gluc), 0) / servings_var, 1),
-    ROUND(COALESCE(SUM(lip),  0) / servings_var, 1),
-    ROUND(COALESCE(SUM(fib),  0) / servings_var, 1)
+    ROUND(COALESCE(SUM(COALESCE(calories_kcal, 0) * f_cal * f), 0) / servings_var, 0),
+    ROUND(COALESCE(SUM(COALESCE(proteines_g, 0) * f_prot * f), 0) / servings_var, 1),
+    ROUND(COALESCE(SUM(COALESCE(glucides_g, 0)  * f_gluc * f), 0) / servings_var, 1),
+    ROUND(COALESCE(SUM(COALESCE(lipides_g, 0)   * f_lip * f), 0) / servings_var, 1),
+    ROUND(COALESCE(SUM(COALESCE(fibres_g, 0)    * f_fib * f), 0) / servings_var, 1),
+    jsonb_build_object(
+      'calcium_mg',     ROUND(COALESCE(SUM(COALESCE(calcium_mg, 0)      * f_ca * f), 0) / servings_var, 2),
+      'fer_mg',         ROUND(COALESCE(SUM(COALESCE(fer_mg, 0)          * f_fe * f), 0) / servings_var, 2),
+      'magnesium_mg',   ROUND(COALESCE(SUM(COALESCE(magnesium_mg, 0)    * f), 0) / servings_var, 2),
+      'phosphore_mg',   ROUND(COALESCE(SUM(COALESCE(phosphore_mg, 0)    * f), 0) / servings_var, 2),
+      'potassium_mg',   ROUND(COALESCE(SUM(COALESCE(potassium_mg, 0)    * f), 0) / servings_var, 2),
+      'sodium_mg',      ROUND(COALESCE(SUM(COALESCE(sodium_mg, 0)       * f), 0) / servings_var, 2),
+      'zinc_mg',        ROUND(COALESCE(SUM(COALESCE(zinc_mg, 0)         * f), 0) / servings_var, 2),
+      'cuivre_mg',      ROUND(COALESCE(SUM(COALESCE(cuivre_mg, 0)       * f), 0) / servings_var, 2),
+      'selenium_ug',    ROUND(COALESCE(SUM(COALESCE(selenium_ug, 0)     * f), 0) / servings_var, 2),
+      'iode_ug',        ROUND(COALESCE(SUM(COALESCE(iode_ug, 0)         * f), 0) / servings_var, 2),
+      'vitamine_a_ug',  ROUND(COALESCE(SUM(COALESCE(vitamine_a_ug, 0)   * f), 0) / servings_var, 2),
+      'beta_carotene_ug', ROUND(COALESCE(SUM(COALESCE(beta_carotene_ug, 0) * f), 0) / servings_var, 2),
+      'vitamine_d_ug',  ROUND(COALESCE(SUM(COALESCE(vitamine_d_ug, 0)   * f), 0) / servings_var, 2),
+      'vitamine_e_mg',  ROUND(COALESCE(SUM(COALESCE(vitamine_e_mg, 0)   * f), 0) / servings_var, 2),
+      'vitamine_k_ug',  ROUND(COALESCE(SUM(COALESCE(vitamine_k_ug, 0)   * f), 0) / servings_var, 2),
+      'vitamine_c_mg',  ROUND(COALESCE(SUM(COALESCE(vitamine_c_mg, 0)   * f_vc * f), 0) / servings_var, 2),
+      'vitamine_b1_mg', ROUND(COALESCE(SUM(COALESCE(vitamine_b1_mg, 0)  * f_b1 * f), 0) / servings_var, 2),
+      'vitamine_b2_mg', ROUND(COALESCE(SUM(COALESCE(vitamine_b2_mg, 0)  * f), 0) / servings_var, 2),
+      'vitamine_b3_mg', ROUND(COALESCE(SUM(COALESCE(vitamine_b3_mg, 0)  * f), 0) / servings_var, 2),
+      'vitamine_b5_mg', ROUND(COALESCE(SUM(COALESCE(vitamine_b5_mg, 0)  * f), 0) / servings_var, 2),
+      'vitamine_b6_mg', ROUND(COALESCE(SUM(COALESCE(vitamine_b6_mg, 0)  * f), 0) / servings_var, 2),
+      'vitamine_b9_ug', ROUND(COALESCE(SUM(COALESCE(vitamine_b9_ug, 0)  * f), 0) / servings_var, 2),
+      'vitamine_b12_ug', ROUND(COALESCE(SUM(COALESCE(vitamine_b12_ug, 0) * f), 0) / servings_var, 2)
+    )
   FROM ing;
 END;
 $function$;

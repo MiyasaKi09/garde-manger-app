@@ -106,7 +106,7 @@ export async function POST(request) {
   if (eaten_dish_id) {
     const { data: dish, error: dishErr } = await supabase
       .from('cooked_dishes')
-      .select('id, name, portions_cooked, portions_remaining, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion')
+      .select('id, name, portions_cooked, portions_remaining, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion, micronutrients_per_portion')
       .eq('id', eaten_dish_id)
       .eq('user_id', user.id)
       .maybeSingle()
@@ -144,6 +144,17 @@ export async function POST(request) {
       const per = eaten_dish_id ? consumedDish?.[`${field}_per_portion`] : null
       return per != null ? round1(Number(per) * p) : null
     }
+    // Micros : ceux fournis par l'entry, sinon (reste mangé) ceux du plat × portions.
+    let micronutrients = (e.micronutrients && typeof e.micronutrients === 'object') ? e.micronutrients : null
+    if (!micronutrients && eaten_dish_id && consumedDish?.micronutrients_per_portion) {
+      const src = consumedDish.micronutrients_per_portion
+      const scaled = {}
+      for (const [k, v] of Object.entries(src)) {
+        const n = Number(v)
+        if (Number.isFinite(n)) scaled[k] = Math.round(n * p * 100) / 100
+      }
+      if (Object.keys(scaled).length) micronutrients = scaled
+    }
     return {
       user_id: user.id,
       person_name: e.person_name,
@@ -156,7 +167,7 @@ export async function POST(request) {
       carbs_g: val('carbs_g'),
       fat_g: val('fat_g'),
       fiber_g: val('fiber_g'),
-      micronutrients: (e.micronutrients && typeof e.micronutrients === 'object') ? e.micronutrients : null,
+      micronutrients,
       cooked_dish_id: consumedDish?.id ?? null,
     }
   })
@@ -225,6 +236,26 @@ export async function POST(request) {
       per[field] = weight > 0 ? round1(total / weight) : null
     }
 
+    // Micronutriments PAR PORTION : même moyenne pondérée, par clé.
+    const microTotals = {}
+    const microWeights = {}
+    for (const e of validEntries) {
+      const m = e.micronutrients
+      if (!m || typeof m !== 'object') continue
+      const w = entryPortions(e)
+      for (const [k, v] of Object.entries(m)) {
+        const n = Number(v)
+        if (!Number.isFinite(n)) continue
+        microTotals[k] = (microTotals[k] || 0) + n
+        microWeights[k] = (microWeights[k] || 0) + w
+      }
+    }
+    const microPer = {}
+    for (const k of Object.keys(microTotals)) {
+      if (microWeights[k] > 0) microPer[k] = Math.round((microTotals[k] / microWeights[k]) * 100) / 100
+    }
+    const microPerPortion = Object.keys(microPer).length ? microPer : null
+
     const now = new Date()
     const expiration = calculateCookedDishExpiration(now, 'fridge', usedLots)
     // Demi-portions : arrondi au 0,5 ; un surplus existe donc min 0,5 restant,
@@ -248,6 +279,7 @@ export async function POST(request) {
         carbs_g_per_portion: per.carbs_g,
         fat_g_per_portion: per.fat_g,
         fiber_g_per_portion: per.fiber_g,
+        micronutrients_per_portion: microPerPortion,
       })
       .select('id, name, portions_remaining, expiration_date')
       .single()

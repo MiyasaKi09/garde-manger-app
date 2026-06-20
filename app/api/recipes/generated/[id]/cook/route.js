@@ -34,7 +34,7 @@ export async function POST(request, { params }) {
   // Recette générée (scopée à l'utilisateur)
   const { data: recipe, error: recipeError } = await supabase
     .from('generated_recipes')
-    .select('id, title')
+    .select('id, title, nutrition_per_serving')
     .eq('id', recipeId)
     .eq('user_id', user.id)
     .single()
@@ -45,6 +45,13 @@ export async function POST(request, { params }) {
 
   const cookedAt = new Date()
   const expirationDate = calculateCookedDishExpiration(cookedAt, storageMethod)
+
+  // Nutrition PAR PORTION (= nutrition_per_serving de la fiche, déjà par portion)
+  // → conservée sur le plat pour que sa consommation ultérieure loggue macros + micros.
+  const nps = recipe.nutrition_per_serving && typeof recipe.nutrition_per_serving === 'object'
+    ? recipe.nutrition_per_serving
+    : {}
+  const num = (v) => (v != null && Number.isFinite(Number(v)) ? Number(v) : null)
 
   const { data: dish, error: dishError } = await supabase
     .from('cooked_dishes')
@@ -58,6 +65,12 @@ export async function POST(request, { params }) {
       cooked_at: cookedAt.toISOString(),
       expiration_date: expirationDate.toISOString().split('T')[0],
       notes: notes || null,
+      kcal_per_portion: num(nps.kcal),
+      protein_g_per_portion: num(nps.protein_g),
+      carbs_g_per_portion: num(nps.carbs_g),
+      fat_g_per_portion: num(nps.fat_g),
+      fiber_g_per_portion: num(nps.fiber_g),
+      micronutrients_per_portion: (nps.micronutrients && typeof nps.micronutrients === 'object') ? nps.micronutrients : null,
     })
     .select()
     .single()

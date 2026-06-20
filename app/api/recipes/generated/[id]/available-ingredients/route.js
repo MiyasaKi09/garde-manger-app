@@ -48,6 +48,15 @@ export async function GET(request, { params }) {
     }
   }
 
+  // Nutrition par portion (macros + micros), relue APRÈS un éventuel self-heal —
+  // pour que l'appelant (CookSession) loggue des valeurs à jour, pas l'ancien cache.
+  const { data: recRow } = await supabase
+    .from('generated_recipes')
+    .select('nutrition_per_serving')
+    .eq('id', recipeId)
+    .maybeSingle()
+  const nutritionPerServing = recRow?.nutrition_per_serving || null
+
   // 1. Ingrédients liés de la recette générée
   const { data: ingredients, error: ingErr } = await supabase
     .from('generated_recipe_ingredients')
@@ -64,7 +73,7 @@ export async function GET(request, { params }) {
     return NextResponse.json({ error: 'Erreur lecture ingrédients' }, { status: 500 })
   }
   if (!ingredients?.length) {
-    return NextResponse.json({ recipe_id: Number(recipeId), ingredients: [] })
+    return NextResponse.json({ recipe_id: Number(recipeId), ingredients: [], nutrition_per_serving: nutritionPerServing })
   }
 
   // 2. IDs à croiser (canonical direct + canonical des archétypes de la recette)
@@ -172,5 +181,5 @@ export async function GET(request, { params }) {
     }
   })
 
-  return NextResponse.json({ recipe_id: Number(recipeId), ingredients: out })
+  return NextResponse.json({ recipe_id: Number(recipeId), ingredients: out, nutrition_per_serving: nutritionPerServing })
 }

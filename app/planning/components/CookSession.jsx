@@ -9,6 +9,21 @@ import './CookSession.css'
 const round1 = (v) => Math.round(v * 10) / 10
 export const fmtPortions = (v) => String(round1(v)).replace('.', ',')
 
+/**
+ * Met à l'échelle un objet de micronutriments PAR PORTION par le nombre de
+ * portions mangées (arrondi 2 décimales). Retourne null si rien d'exploitable —
+ * pour ne loguer des micros que lorsqu'on en a réellement.
+ */
+function scaleMicros(micros, portions) {
+  if (!micros || typeof micros !== 'object') return null
+  const out = {}
+  for (const [k, v] of Object.entries(micros)) {
+    const n = Number(v)
+    if (Number.isFinite(n) && n > 0) out[k] = Math.round(n * portions * 100) / 100
+  }
+  return Object.keys(out).length ? out : null
+}
+
 const formatDlc = (d) =>
   new Date(`${d}T00:00:00Z`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', timeZone: 'UTC' })
 
@@ -254,6 +269,12 @@ export default function CookSession({ open, meal, onClose, onDone }) {
         const ingRes = await authFetch(`/api/recipes/generated/${recipeId}/available-ingredients`)
         const ingData = await ingRes.json().catch(() => ({}))
 
+        // Préférer la nutrition relue APRÈS le self-heal de la route (macros +
+        // micros à jour) plutôt que le cache éventuellement périmé de /generated.
+        if (ingData.nutrition_per_serving) {
+          variantNutritionRef.current[variant.label] = ingData.nutrition_per_serving
+        }
+
         const variantRows = (ingData.ingredients || []).map(ing => ({
           key: ingKey(ing),
           name: ing.name,
@@ -379,6 +400,13 @@ export default function CookSession({ open, meal, onClose, onDone }) {
             ? { kcal: null, protein_g: null, carbs_g: null, fat_g: null, fiber_g: null }
             : (canonicalNutrition || e)
         const scale = (v) => (v != null ? round1(Number(v) * p) : null)
+        // Micronutriments par portion : reste mangé → ceux du plat ; sinon ceux
+        // de la fiche canonique ; sinon ceux du plan (souvent absents). Mis à
+        // l'échelle des portions mangées.
+        const microSrc = eatenDish
+          ? eatenDish.micronutrients_per_portion
+          : (canonicalNutrition?.micronutrients || e.micronutrients)
+        const micronutrients = scaleMicros(microSrc, p)
         return {
           person_name: e.person_name,
           portions_eaten: p,
@@ -387,7 +415,7 @@ export default function CookSession({ open, meal, onClose, onDone }) {
           carbs_g: scale(src.carbs_g),
           fat_g: scale(src.fat_g),
           fiber_g: scale(src.fiber_g),
-          ...(e.micronutrients ? { micronutrients: e.micronutrients } : {}),
+          ...(micronutrients ? { micronutrients } : {}),
         }
       })
 
