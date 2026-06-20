@@ -185,8 +185,96 @@
 }
 .gr-link-nonstockable:hover { color: var(--terracotta, #c0522a); }
 
+/* ── Badge qualité nutrition ── */
+.gr-verif-wrap {
+  margin-top: 10px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.gr-verif-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 3px;
+  border: 1px solid transparent; width: fit-content;
+}
+.gr-verif-chip.ok {
+  color: var(--brand, #4a7c59);
+  background: color-mix(in srgb, var(--brand, #4a7c59) 10%, transparent);
+  border-color: color-mix(in srgb, var(--brand, #4a7c59) 30%, transparent);
+}
+.gr-verif-chip.warning {
+  color: var(--saffron, #c08a20);
+  background: color-mix(in srgb, var(--saffron, #E0A92E) 12%, transparent);
+  border-color: color-mix(in srgb, var(--saffron, #E0A92E) 40%, transparent);
+}
+.gr-verif-chip.error {
+  color: var(--terracotta, #c0522a);
+  background: color-mix(in srgb, var(--terracotta, #c0522a) 10%, transparent);
+  border-color: color-mix(in srgb, var(--terracotta, #c0522a) 30%, transparent);
+}
+.gr-verif-issues {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.gr-verif-issue {
+  font-family: var(--font-text); font-size: 12px; line-height: 1.4;
+  padding-left: 12px; position: relative;
+}
+.gr-verif-issue::before {
+  content: '–'; position: absolute; left: 0;
+}
+.gr-verif-issue.warning { color: var(--saffron, #c08a20); }
+.gr-verif-issue.error { color: var(--terracotta, #c0522a); }
+.gr-verif-missing {
+  font-family: var(--font-text); font-size: 12px;
+  color: var(--ink-3); margin: 0; font-style: italic;
+}
+
+/* ── Bloc micronutriments ── */
+.gr-micro-block {
+  margin-top: 20px; padding: 18px 0 0;
+  border-top: 1px solid var(--line);
+}
+.gr-micro-title {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-3); margin: 0 0 12px;
+}
+.gr-micro-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0;
+}
+.gr-micro-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: baseline;
+  gap: 6px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.gr-micro-label {
+  font-family: var(--font-text); font-size: 13px; color: var(--ink-2);
+}
+.gr-micro-val {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  color: var(--ink-1); white-space: nowrap;
+}
+.gr-micro-pct {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--ink-3); white-space: nowrap;
+  min-width: 38px; text-align: right;
+}
+.gr-micro-note {
+  font-family: var(--font-text); font-size: 11px;
+  color: var(--ink-3); font-style: italic;
+  margin: 10px 0 0;
+}
+
 @media (max-width: 560px) {
   .gr-nut-item { min-width: 64px; }
   .gr-ing-item { flex-wrap: wrap; gap: 6px 14px; }
   .gr-ing-stock { margin-left: 0; }
+  .gr-micro-grid { grid-template-columns: 1fr 1fr; }
 }

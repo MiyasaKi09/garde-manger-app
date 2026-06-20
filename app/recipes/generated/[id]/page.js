@@ -7,6 +7,58 @@ import { authFetch } from '@/lib/authFetch'
 import CookWizard from '@/components/CookWizard'
 import './generated-recipe.css'
 
+// ── Constantes micronutriments ────────────────────────────────────────────────
+
+const MICRO_AJR = {
+  calcium_mg: 800,
+  fer_mg: 14,
+  magnesium_mg: 375,
+  zinc_mg: 10,
+  selenium_ug: 55,
+  vitamine_a_ug: 800,
+  vitamine_c_mg: 80,
+  vitamine_d_ug: 5,
+  vitamine_e_mg: 12,
+  vitamine_b1_mg: 1.1,
+  vitamine_b2_mg: 1.4,
+  vitamine_b3_mg: 16,
+  vitamine_b6_mg: 1.4,
+  vitamine_b9_ug: 200,
+  vitamine_b12_ug: 2.5,
+  vitamine_k_ug: 75,
+  potassium_mg: 2000,
+  sodium_mg: 2400,
+  phosphore_mg: 700,
+}
+
+const MICRO_LABELS = {
+  calcium_mg: 'Calcium',
+  fer_mg: 'Fer',
+  magnesium_mg: 'Magnésium',
+  zinc_mg: 'Zinc',
+  selenium_ug: 'Sélénium',
+  vitamine_a_ug: 'Vit. A',
+  vitamine_c_mg: 'Vit. C',
+  vitamine_d_ug: 'Vit. D',
+  vitamine_e_mg: 'Vit. E',
+  vitamine_b1_mg: 'Vit. B1',
+  vitamine_b2_mg: 'Vit. B2',
+  vitamine_b3_mg: 'Vit. B3',
+  vitamine_b6_mg: 'Vit. B6',
+  vitamine_b9_ug: 'Vit. B9',
+  vitamine_b12_ug: 'Vit. B12',
+  vitamine_k_ug: 'Vit. K',
+  potassium_mg: 'Potassium',
+  sodium_mg: 'Sodium',
+  phosphore_mg: 'Phosphore',
+}
+
+function microUnit(key) {
+  if (key.endsWith('_mg')) return 'mg'
+  if (key.endsWith('_ug')) return 'µg'
+  return ''
+}
+
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
 function LinkBadge({ status, canonicalId, archetypeId }) {
@@ -145,6 +197,89 @@ function IngredientSearchDropdown({ ingredientId, onLinked, onClose }) {
   )
 }
 
+// ── Bloc qualité nutrition ────────────────────────────────────────────────────
+
+function NutritionVerificationBadge({ verification }) {
+  if (!verification) return null
+  const { status, coverage_pct, issues = [], missing = [] } = verification
+
+  let chipClass = 'gr-verif-chip'
+  let label = ''
+  if (status === 'ok') {
+    chipClass += ' ok'
+    label = '✓ Nutrition vérifiée CIQUAL'
+    if (coverage_pct != null) label += ` · ${Math.round(coverage_pct)} %`
+  } else if (status === 'warning') {
+    chipClass += ' warning'
+    label = '⚠ Nutrition à vérifier'
+  } else {
+    chipClass += ' error'
+    label = 'Nutrition indisponible'
+  }
+
+  const hasIssues = (status === 'warning' || status === 'error') && issues.length > 0
+  const hasMissing = missing.length > 0
+
+  return (
+    <div className="gr-verif-wrap">
+      <span className={chipClass}>{label}</span>
+      {hasIssues && (
+        <ul className="gr-verif-issues">
+          {issues.map((iss, i) => (
+            <li key={i} className={`gr-verif-issue ${iss.level}`}>{iss.detail}</li>
+          ))}
+        </ul>
+      )}
+      {hasMissing && (
+        <p className="gr-verif-missing">
+          Sans données CIQUAL : {missing.join(', ')}
+        </p>
+      )}
+    </div>
+  )
+}
+
+// ── Bloc micronutriments ──────────────────────────────────────────────────────
+
+function MicronutrientsBlock({ micronutrients }) {
+  if (!micronutrients) return null
+
+  // Conserver l'ordre de MICRO_AJR, ne garder que les clés avec AJR et valeur > 0
+  const entries = Object.keys(MICRO_AJR)
+    .filter(key => {
+      const val = micronutrients[key]
+      return typeof val === 'number' && val > 0
+    })
+    .map(key => ({
+      key,
+      label: MICRO_LABELS[key] || key,
+      value: micronutrients[key],
+      unit: microUnit(key),
+      ajr: MICRO_AJR[key],
+      pct: Math.round((micronutrients[key] / MICRO_AJR[key]) * 100),
+    }))
+
+  if (entries.length === 0) return null
+
+  return (
+    <div className="gr-micro-block">
+      <h3 className="gr-micro-title">Micronutriments par portion</h3>
+      <ul className="gr-micro-grid">
+        {entries.map(({ key, label, value, unit, pct }) => (
+          <li key={key} className="gr-micro-item">
+            <span className="gr-micro-label">{label}</span>
+            <span className="gr-micro-val">
+              {value % 1 === 0 ? value : value.toFixed(1)}{unit}
+            </span>
+            <span className="gr-micro-pct">{pct} %</span>
+          </li>
+        ))}
+      </ul>
+      <p className="gr-micro-note">% des apports journaliers recommandés (AJR)</p>
+    </div>
+  )
+}
+
 // ── Page principale ──────────────────────────────────────────────────────────
 
 export default function GeneratedRecipeDetail() {
@@ -165,9 +300,12 @@ export default function GeneratedRecipeDetail() {
   const fetchLinkedIngredients = useCallback(async () => {
     try {
       const res = await authFetch(`/api/recipes/generated/${id}/available-ingredients`)
-      const json = await res.json()
-      if (Array.isArray(json.ingredients) && json.ingredients.length) {
-        setLinkedIngredients(json.ingredients)
+      const data = await res.json()
+      if (Array.isArray(data.ingredients) && data.ingredients.length) {
+        setLinkedIngredients(data.ingredients)
+      }
+      if (data.nutrition_per_serving) {
+        setRecipe(prev => ({ ...prev, nutrition_per_serving: data.nutrition_per_serving }))
       }
     } catch { /* affichage brut en repli */ }
   }, [id])
@@ -324,6 +462,10 @@ export default function GeneratedRecipeDetail() {
           {nutrition.fiber_g != null && <div className="gr-nut-item"><span className="gr-nut-val">{nutrition.fiber_g}g</span><span className="gr-nut-label">Fibres</span></div>}
         </div>
       )}
+
+      <NutritionVerificationBadge verification={nutrition.verification} />
+
+      <MicronutrientsBlock micronutrients={nutrition.micronutrients} />
 
       <button className="v21-btn terra gr-cook-btn" onClick={() => setShowCook(true)}>
         Cuisiner — déduire du garde-manger
