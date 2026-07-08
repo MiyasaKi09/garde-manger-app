@@ -4,6 +4,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { Search, Plus, X, Package } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
+import { authFetch } from '@/lib/authFetch';
 import { toast } from '../../../components/Toast';
 import { getPossibleUnitsForProduct } from '../../../lib/possibleUnits';
 import LotDetailsForm from './LotDetailsForm';
@@ -510,8 +511,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         setIsTransitioning(false);
       }, 100);
       
-    } catch (error) {
-      console.error('Erreur recherche:', error);
+    } catch {
       // En cas d'erreur, essayons une recherche basique
       // Pas de résultat : on n'affiche PAS de produits au hasard. Liste vide →
       // l'UI propose de créer le produit (formulaire complet).
@@ -635,24 +635,23 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         container_unit: lotData.is_containerized && lotData.container_unit ? lotData.container_unit : null
       };
 
-      const { data: createdLot, error } = await supabase
-        .from('inventory_lots')
-        .insert([lotDataToInsert])
-        .select()
-        .single();
+      const res = await authFetch('/api/lots/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lots: [lotDataToInsert] }),
+      });
+      const json = await res.json();
 
-      if (error) {
-        console.error('Erreur Supabase:', error);
-        toast.error(`Erreur lors de la création: ${error.message}`);
+      if (!res.ok) {
+        toast.error(`Erreur lors de la création: ${json.error}`);
         return;
       }
 
       toast.success(`${formatProductName(selectedProduct.name)} ajouté au garde-manger !`);
-      onLotCreated?.(createdLot);
+      onLotCreated?.(json.lots?.[0]);
       onClose();
-      
+
     } catch (error) {
-      console.error('Erreur création lot:', error);
       toast.error('Erreur lors de la création du lot');
     } finally {
       setLoading(false);

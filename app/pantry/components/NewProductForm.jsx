@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
+import { authFetch } from '@/lib/authFetch'
 
 /**
  * Formulaire de création d'un produit absent du catalogue.
@@ -60,28 +61,25 @@ export default function NewProductForm({ initialName = '', onCancel, onCreated }
       if (kind === 'archetype') {
         const parent = resolveParent()
         if (!parent) { setError('Choisis un produit de base existant à rattacher'); setSaving(false); return }
-        const { data, error: insErr } = await supabase
-          .from('archetypes')
-          .insert({ name: name.trim(), canonical_food_id: parent.id, primary_unit: unit, ...shelf })
-          .select('id')
-          .single()
-        if (insErr || !data) throw new Error(insErr?.message || 'Création échouée')
-        onCreated({ id: data.id, name: name.trim(), type: 'archetype', primary_unit: unit, ...shelf })
+        const res = await authFetch('/api/lots/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ catalog: { kind: 'archetype', name: name.trim(), canonical_food_id: parent.id, primary_unit: unit, ...shelf } }),
+        })
+        const json = await res.json()
+        if (!res.ok || !json.entry) throw new Error(json.error || 'Création échouée')
+        onCreated({ id: json.entry.id, name: name.trim(), type: 'archetype', primary_unit: unit, ...shelf })
         return
       }
 
-      const { data, error: insErr } = await supabase
-        .from('canonical_foods')
-        .insert({
-          canonical_name: name.trim(),
-          category_id: categoryId ? Number(categoryId) : null,
-          primary_unit: unit,
-          ...shelf,
-        })
-        .select('id')
-        .single()
-      if (insErr || !data) throw new Error(insErr?.message || 'Création échouée')
-      onCreated({ id: data.id, name: name.trim(), type: 'canonical', category_id: categoryId ? Number(categoryId) : null, primary_unit: unit, ...shelf })
+      const res = await authFetch('/api/lots/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ catalog: { kind: 'canonical', canonical_name: name.trim(), category_id: categoryId ? Number(categoryId) : null, primary_unit: unit, ...shelf } }),
+      })
+      const json = await res.json()
+      if (!res.ok || !json.entry) throw new Error(json.error || 'Création échouée')
+      onCreated({ id: json.entry.id, name: name.trim(), type: 'canonical', category_id: categoryId ? Number(categoryId) : null, primary_unit: unit, ...shelf })
     } catch (e) {
       setError(e.message)
     } finally {

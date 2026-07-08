@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { authFetch } from '@/lib/authFetch'
-import { supabase } from '@/lib/supabaseClient'
 import ImageCapture from '@/components/ui/ImageCapture'
 import GlassCard from '@/components/ui/GlassCard'
 import { Check, X, Loader2, Trash2, Edit3 } from 'lucide-react'
@@ -68,12 +67,7 @@ export default function OcrReviewList({ onClose, onItemsAdded }) {
     setError(null)
 
     try {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) throw new Error('Non authentifié')
-
-      // Batch insert into inventory_lots
       const lots = selected.map(item => ({
-        user_id: user.id,
         qty_remaining: item.quantity || 1,
         initial_qty: item.quantity || 1,
         unit: item.unit || 'pièce(s)',
@@ -82,11 +76,13 @@ export default function OcrReviewList({ onClose, onItemsAdded }) {
         acquired_on: new Date().toISOString().split('T')[0],
       }))
 
-      const { error: insertError } = await supabase
-        .from('inventory_lots')
-        .insert(lots)
-
-      if (insertError) throw insertError
+      const res = await authFetch('/api/lots/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lots }),
+      })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error || 'Erreur lors de l\'ajout')
 
       setStep('done')
       setTimeout(() => {
