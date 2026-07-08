@@ -1,8 +1,6 @@
 'use client';
 
 export default function GlobalError({ error, reset }) {
-  // Next.js fournit `error.digest` en prod
-  console.error('GlobalError:', error);
 
   return (
     <html>

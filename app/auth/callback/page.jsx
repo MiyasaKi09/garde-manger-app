@@ -22,7 +22,6 @@ export default function AuthCallback() {
           if (error) {
             const { data: { session } } = await supabase.auth.getSession();
             if (!session) {
-              console.error('Erreur auth callback:', error);
               router.push('/login?error=auth_failed');
               return;
             }
@@ -33,8 +32,7 @@ export default function AuthCallback() {
         const redirect = new URLSearchParams(window.location.search).get('redirect') || '/';
         router.push(redirect);
         router.refresh();
-      } catch (error) {
-        console.error('Erreur callback:', error);
+      } catch {
         router.push('/login?error=callback_error');
       }
     };

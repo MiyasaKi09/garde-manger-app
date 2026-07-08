@@ -7,7 +7,7 @@ import { readCache, writeCache } from '@/lib/pageCache';
 import SmartAddForm from './components/SmartAddForm';
 import ConsumeModal from './components/ConsumeModal';
 import OcrReviewList from './components/OcrReviewList';
-import { capitalizeProduct } from './components/pantryUtils';
+import { capitalizeProduct, getExpirationStatus } from './components/pantryUtils';
 import { daysUntil } from '@/lib/dates';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import EditLotForm from './components/EditLotForm';
@@ -199,7 +199,6 @@ export default function PantryPage() {
         .order('expiration_date', { ascending: true, nullsLast: true });
 
       if (error) {
-        console.error('Erreur lors du chargement des lots:', error);
         throw error;
       }
 
@@ -283,12 +282,22 @@ export default function PantryPage() {
           productName = item.product_name;
         }
 
+        const expiryKind = item.archetypes?.expiry_kind || null;
+        const days = daysUntil(item.adjusted_expiration_date || item.expiration_date);
+        // seuil d'alerte selon le type : J-3 pour DLC, J-7 pour DDM
+        const threshold = expiryKind === 'DDM' ? 7 : 3;
+        // string key utilisée par les filtres onglets (good | expiring_soon | expired | no_date)
+        const statusKey = days === null ? 'no_date' : days < 0 ? 'expired' : days <= threshold ? 'expiring_soon' : 'good';
+        // badge display via pantryUtils (objet { label, color, bgColor })
+        const expirationBadge = getExpirationStatus(days, expiryKind);
+
         const transformed = {
           ...item,
           product_name: productName,
-          expiry_kind: item.archetypes?.expiry_kind || null,
-          expiration_status: getExpirationStatus(item.adjusted_expiration_date || item.expiration_date, item.archetypes?.expiry_kind),
-          days_until_expiration: daysUntil(item.adjusted_expiration_date || item.expiration_date),
+          expiry_kind: expiryKind,
+          expiration_status: statusKey,
+          expiration_badge: expirationBadge,
+          days_until_expiration: days,
           // Métadonnées utilisant les vrais noms de colonnes
           grams_per_unit: item.canonical_foods?.unit_weight_grams || null,
           density_g_per_ml: item.canonical_foods?.density_g_per_ml || null,
@@ -303,27 +312,13 @@ export default function PantryPage() {
       setItems(transformedData);
       writeCache('pantry', transformedData);
     } catch (error) {
-      console.error('Erreur lors du chargement:', error);
+      toast.error('Erreur lors du chargement du garde-manger');
       setItems([]);
     } finally {
       setLoading(false);
       setIsLoading(false);
     }
   }
-
-  // Règle métier : alerte à J-3 pour les DLC (et durées estimées), J-7 pour les DDM.
-  // Comparaisons en UTC via lib/dates pour éviter les décalages de fuseau.
-  function getExpirationStatus(dateString, expiryKind) {
-    const diffDays = daysUntil(dateString);
-    if (diffDays === null) return 'no_date';
-
-    const threshold = expiryKind === 'DDM' ? 7 : 3;
-    if (diffDays < 0) return 'expired';
-    if (diffDays <= threshold) return 'expiring_soon';
-    return 'good';
-  }
-
-
 
   // Ouvrir le modal de consommation
   function handleConsume(id) {
@@ -349,7 +344,6 @@ export default function PantryPage() {
         });
 
         if (error) {
-          console.error('Erreur lors du fractionnement:', error);
           toast.error('Erreur lors de la consommation : ' + error.message);
           return;
         }
@@ -363,7 +357,6 @@ export default function PantryPage() {
         await loadPantryItems();
 
       } catch (error) {
-        console.error('Erreur consommation:', error);
         toast.error('Erreur lors de la consommation');
       }
       return;
@@ -390,7 +383,7 @@ export default function PantryPage() {
         .eq('id', item.id);
 
       if (error) {
-        console.error('Erreur lors de la consommation:', error);
+        toast.error('Erreur lors de la consommation : ' + error.message);
         await loadPantryItems();
       }
     } catch {
@@ -434,11 +427,9 @@ export default function PantryPage() {
         .eq('id', id);
 
       if (error) {
-        console.error('Erreur mise à jour lot:', error);
         throw error;
       }
     } catch (error) {
-      console.error('Erreur lors de la mise à jour:', error);
       toast.error('Erreur lors de la mise à jour : ' + error.message);
       await loadPantryItems();
     }
@@ -470,7 +461,6 @@ export default function PantryPage() {
         .eq('id', id);
 
       if (error) {
-        console.error('Erreur lors de la suppression:', error);
         await loadPantryItems();
         toast.error('Erreur lors de la suppression : ' + error.message);
       }
