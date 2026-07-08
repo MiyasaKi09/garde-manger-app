@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Wed Jun 17 21:57:31 UTC 2026_
+_Généré le : Wed Jul  8 23:10:54 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -174,6 +174,7 @@ _Généré le : Wed Jun 17 21:57:31 UTC 2026_
  - fat_g_per_portion :: numeric
  - fiber_g_per_portion :: numeric
  - source_meal_type :: text
+ - micronutrients_per_portion :: jsonb
 
 ### cooked_dishes_active
  - id :: bigint
