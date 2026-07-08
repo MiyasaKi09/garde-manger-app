@@ -30,9 +30,10 @@ const entryPortions = (e) => {
 
 /**
  * POST /api/meals/cook — Marque un repas du plan comme « cuisiné / mangé ».
+ *   - déduit les lots choisis de l'inventaire (ATOMIQUE via la RPC
+ *     consume_lots_fefo, AVANT toute écriture de log — fail-fast) ;
  *   - logue la nutrition du jour dans meal_log (une ligne par personne,
  *     micronutriments inclus) ;
- *   - déduit les lots choisis de l'inventaire ;
  *   - si `portions_prepared` > portions mangées : crée un reste (cooked_dishes)
  *     avec nutrition PAR PORTION dérivée des entries et DLC frigo
  *     (min(+3 j, DLC des lots utilisés)) ;
@@ -127,7 +128,24 @@ export async function POST(request) {
     if (dish) consumedDish = dish
   }
 
-  // 1. Nutrition du jour — remplace les logs du créneau (idempotent)
+  // 1. Déduction du stock EN PREMIER : besoins automatiques (FEFO multi-lots)
+  //    + déductions explicites, via le helper partagé (cf. lib/deductNeeds),
+  //    qui applique la décrémentation de façon ATOMIQUE (RPC consume_lots_fefo).
+  //    Fail-fast : si la déduction échoue, on ne touche NI aux logs NI aux
+  //    plats — pas de logs orphelins sans déduction de stock.
+  //    Ex : 5 bouteilles de 1 L, besoin 1,5 L → 1 vidée + 0,5 L sur la 2e
+  //    (le trigger SQL auto_open_lot marque « ouvert » le lot entamé).
+  const { deductedCount, usedLots, shortfalls, error: deductError } = await deductFromStock(
+    supabase, user.id, { needs, deductions },
+  )
+  if (deductError) {
+    return NextResponse.json(
+      { error: `Déduction du stock impossible : ${deductError}` },
+      { status: 500 },
+    )
+  }
+
+  // 2. Nutrition du jour — remplace les logs du créneau (idempotent)
   await supabase
     .from('meal_log')
     .delete()
@@ -167,14 +185,6 @@ export async function POST(request) {
       return NextResponse.json({ error: `Log nutrition: ${logErr.message}` }, { status: 500 })
     }
   }
-
-  // 2. Déduction du stock : besoins automatiques (FEFO multi-lots) + déductions
-  //    explicites, via le helper partagé (cf. lib/deductNeeds). Le trigger SQL
-  //    auto_open_lot marque « ouvert » un lot partiellement consommé.
-  //    Ex : 5 bouteilles de 1 L, besoin 1,5 L → 1 vidée + 0,5 L sur la 2e.
-  const { deductedCount, usedLots, shortfalls } = await deductFromStock(
-    supabase, user.id, { needs, deductions },
-  )
 
   // 3. Décrément du plat consommé (reste mangé ou portion de batch).
   //    Une seule fois par créneau (cf. JSDoc).
@@ -276,10 +286,15 @@ export async function POST(request) {
  *   - supprime le reste créé par ce créneau (marqueur `[slot:...]`).
  *
  * body: { meal_date, meal_type, batch_recipe_id? }
- * Réponse: { success, restoredPortions }
+ * Réponse: { success, restoredPortions, stock_restored: false }
  *
  * Limites connues :
- *   - le stock d'ingrédients (inventory_lots) n'est PAS restauré ;
+ *   - le stock d'ingrédients (inventory_lots) n'est PAS restauré, et ne PEUT
+ *     PAS l'être en l'état : le POST ne persiste nulle part quels lots / quelles
+ *     quantités ont été déduits (meal_log n'a aucune colonne pour ça — le seul
+ *     jsonb, `micronutrients`, a une autre sémantique). Restaurer exigerait une
+ *     migration (colonne jsonb de traçabilité sur meal_log) — hors périmètre
+ *     ici. La réponse l'assume explicitement via `stock_restored: false` ;
  *   - la restauration batch en mode fallback peut viser un autre plat que celui
  *     décrémenté à l'origine si plusieurs plats partagent le même batch_recipe_id ;
  *   - la suppression du reste lié au créneau est définitive : les portions déjà
@@ -371,5 +386,7 @@ export async function DELETE(request) {
     .eq('user_id', user.id)
     .like('notes', slotMarkerLike(meal_date, meal_type))
 
-  return NextResponse.json({ success: true, restoredPortions })
+  // stock_restored: false — assumé (cf. JSDoc : la déduction n'est pas tracée
+  // en base, donc irréversible sans migration).
+  return NextResponse.json({ success: true, restoredPortions, stock_restored: false })
 }
