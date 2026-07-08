@@ -1,10 +1,6 @@
-/**
- * Retourne la date d'expiration effective d'un lot (ajustée si ouvert, sinon originale)
- */
-export function getEffectiveExpiration(lot) {
-  if (!lot) return null;
-  return lot.adjusted_expiration_date || lot.expiration_date || null;
-}
+// Source unique pour getEffectiveExpiration (lib/utils.js est la référence, pantryUtils délègue).
+import { getEffectiveExpiration } from '@/lib/utils';
+export { getEffectiveExpiration };
 
 /**
  * Ajoute la propriété effective_expiration à chaque lot d'un tableau
@@ -565,34 +561,35 @@ export const sortByExpiry = (products) => {
 /* ============ VALIDATION ============ */
 
 /**
- * Valide une date d'expiration
+ * Valide une date d'expiration.
+ * Utilise daysUntil() (UTC, conforme à lib/dates.js) pour éviter les décalages DST ±1j.
  */
 export const validateExpiryDate = (date) => {
   if (!date) return { valid: true, message: '' };
-  
-  const expiryDate = new Date(date);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  expiryDate.setHours(0, 0, 0, 0);
-  
-  // Vérifier que la date est valide
-  if (isNaN(expiryDate.getTime())) {
+
+  // Vérifier que la date est parseable avant de passer à daysUntil
+  const parsed = new Date(String(date).split('T')[0]);
+  if (isNaN(parsed.getTime())) {
     return { valid: false, message: 'Date invalide' };
   }
-  
+
+  // daysUntil compare les portions YYYY-MM-DD en UTC (voir lib/dates.js)
+  const days = daysUntil(date);
+
+  if (days === null) {
+    return { valid: false, message: 'Date invalide' };
+  }
+
   // Avertissement si la date est dans le passé
-  if (expiryDate < today) {
+  if (days < 0) {
     return { valid: true, warning: true, message: 'Cette date est déjà passée' };
   }
-  
+
   // Avertissement si la date est très lointaine (plus de 5 ans)
-  const fiveYearsFromNow = new Date(today);
-  fiveYearsFromNow.setFullYear(today.getFullYear() + 5);
-  
-  if (expiryDate > fiveYearsFromNow) {
+  if (days > 365 * 5) {
     return { valid: true, warning: true, message: 'Cette date semble très lointaine' };
   }
-  
+
   return { valid: true, message: '' };
 };
 

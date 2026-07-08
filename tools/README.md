@@ -1,6 +1,22 @@
-# 🛠️ Dossier Tools - Scripts d'Enrichissement
+# Tools — Scripts SQL utilitaires
 
-Ce dossier contient les scripts pour enrichir les recettes avec des profils gustatifs.
+## Source canonique pour les fonctions de nutrition
+
+Les fonctions de calcul nutritionnel (`calculate_recipe_nutrition`,
+`calculate_and_cache_nutrition`) sont désormais versionnées dans :
+
+```
+supabase/migrations/20260708_nutrition_functions_consolidated.sql
+```
+
+Les anciennes variantes (`create_nutrition_function*.sql`, `fix_function*.sql`,
+`create_cache_function.sql`, `create_nutrition_cache.sql`) ont été archivées dans
+`tools/archive/` lors de l'audit de juillet 2026. Voir `tools/archive/README.md`
+pour le détail des raisons et les dangers de ré-exécution.
+
+---
+
+## Scripts d'enrichissement des recettes
 
 ---
 

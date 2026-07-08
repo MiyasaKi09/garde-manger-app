@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
+import { authFetch } from '@/lib/authFetch';
+import { toast } from '@/components/Toast';
 import PartySizeControl from '@/components/PartySizeControl';
 import { scaleCookTime, scalePrepTime } from '@/lib/scale';
 
@@ -21,9 +23,9 @@ export default function CookPage() {
   // ---------- State ----------
   const [loading, setLoading] = useState(true);
 
-  const [recipe, setRecipe] = useState(null);        // { id, title/name, servings, prep_min, cook_min, ... }
+  const [recipe, setRecipe] = useState(null);        // { id, name, servings, prep_time_minutes, cook_time_minutes, ... }
   const [ingredients, setIngredients] = useState([]); // [{id, qty, unit, note, product:{id,name,default_unit}}]
-  const [lots, setLots] = useState([]);               // [{id, product_id, qty_remaining, unit, expiration_date, storage_place}]
+  const [lots, setLots] = useState([]);               // [{id, qty_remaining, unit, expiration_date, storage_place}]
 
   const [people, setPeople] = useState(2);
   const [neverExceed, setNeverExceed] = useState(true);
@@ -32,7 +34,6 @@ export default function CookPage() {
   // { lines:[{ingredientId, productId, productName, neededBaseQty, neededBaseUnit, neededScaledQty, allocations:[{lotId, lotUnit, takeQty}]}],
   //   missing:[{label, reason}] }
   const [plan, setPlan] = useState(null);
-  const [toastMsg, setToastMsg] = useState(null);
 
   // ---------- Prefs locales ----------
   useEffect(() => {
@@ -56,32 +57,33 @@ export default function CookPage() {
         if (er) throw er;
         setRecipe(r);
 
-        // 2) Ingrédients (avec produit)
+        // 2) Ingrédients — colonnes réelles du schéma (quantity, notes, canonical_food_id, archetype_id)
+        //    Aliasés en qty/note/product pour compatibilité avec buildPlan
         const { data: ri, error: ei } = await supabase
           .from('recipe_ingredients')
-          .select('id, qty, unit, note, product:products_catalog(id,name,default_unit)')
+          .select('id, quantity, unit, notes, canonical_food_id, archetype_id, canonical_foods(id, canonical_name), archetypes(id, name)')
           .eq('recipe_id', id)
           .order('id');
         if (ei) throw ei;
-        setIngredients(ri || []);
 
-        // 3) Lots pour les produits concernés, tri FEFO (expiration croissante)
-        const productIds = (ri || []).map(x => x.product?.id).filter(Boolean);
-        if (productIds.length) {
-          const { data: pl, error: el } = await supabase
-            .from('inventory_lots')
-            .select('id, product_id, qty_remaining, unit, expiration_date, storage_place')
-            .in('product_id', Array.from(new Set(productIds)))
-            .gt('qty_remaining', 0)
-            .order('expiration_date', { ascending: true, nullsFirst: false });
-          if (el) throw el;
-          setLots(pl || []);
-        } else {
-          setLots([]);
-        }
+        // Normalise vers la forme attendue par buildPlan
+        const normalized = (ri || []).map(r => ({
+          ...r,
+          qty: r.quantity,
+          note: r.notes,
+          product: r.canonical_foods
+            ? { id: r.canonical_food_id, name: r.canonical_foods.canonical_name, default_unit: r.unit }
+            : r.archetypes
+              ? { id: r.archetype_id, name: r.archetypes.name, default_unit: r.unit }
+              : null,
+        }));
+        setIngredients(normalized);
+
+        // 3) Lots — product_id n'existe plus sur inventory_lots.
+        //    Le dry-run indiquera "manquant" ; la déduction réelle passe par l'API.
+        setLots([]);
       } catch (e) {
-        console.error('Erreur chargement CookPage:', e);
-        setToastMsg({ type: 'error', text: 'Erreur chargement: ' + (e?.message || e) });
+        toast.error('Erreur chargement : ' + (e?.message || e));
       } finally {
         setLoading(false);
       }
@@ -149,7 +151,6 @@ export default function CookPage() {
         });
         if (error) { /* conversion indisponible pour cette unité */ }
         if (convLotQty == null) {
-          // Pas de conversion vers l'unité de ce lot : on ignore ce lot
           continue;
         }
 
@@ -161,7 +162,6 @@ export default function CookPage() {
             takeQty: canTakeLotUnit
           });
 
-          // Back-convert ce qu'on vient d'allouer en "unité recette" pour diminuer le reste
           const { data: backToRecipeUnit } = await supabase.rpc('convert_qty', {
             p_product_id: productId,
             p_from_unit: lot.unit,
@@ -200,10 +200,7 @@ export default function CookPage() {
     const p = await buildPlan();
     setPlan(p);
     if (neverExceed && p.missing.length) {
-      setToastMsg({
-        type: 'warning',
-        text: 'Ingrédients manquants : ' + p.missing.map(m => `${m.label}: ${m.reason}`).join(', ')
-      });
+      toast.warning('Ingrédients manquants : ' + p.missing.map(m => `${m.label}: ${m.reason}`).join(', '));
     }
   }
 
@@ -212,42 +209,36 @@ export default function CookPage() {
     setPlan(p);
 
     if (neverExceed && p.missing.length) {
-      setToastMsg({
-        type: 'error',
-        text: 'Impossible de cuisiner, il manque : ' + p.missing.map(m => `${m.label}: ${m.reason}`).join(', ')
-      });
+      toast.error('Impossible de cuisiner, il manque : ' + p.missing.map(m => `${m.label}: ${m.reason}`).join(', '));
       return;
     }
 
-    // Appliquer le plan : décrémenter les lots
-    // TODO: basculer sur la RPC consume_lots_fefo (migration 20260609) une fois appliquée
+    // Déduire les lots via l'API (FEFO atomique côté serveur)
     try {
-      for (const line of p.lines) {
-        for (const al of line.allocations) {
-          if (al.takeQty > 0) {
-            // re-lire qty_remaining courante par sécurité
-            const { data: lotRow, error: er } = await supabase
-              .from('inventory_lots')
-              .select('qty_remaining')
-              .eq('id', al.lotId)
-              .single();
-            if (er) throw er;
+      const ingredients = p.lines.flatMap(line =>
+        (line.allocations || []).filter(a => a.takeQty > 0).map(a => ({
+          lot_id: a.lotId,
+          quantity_used: a.takeQty,
+          unit: a.lotUnit,
+        }))
+      );
 
-            const newQty = Math.max(0, Number(lotRow?.qty_remaining || 0) - Number(al.takeQty));
-            const { error: eu } = await supabase
-              .from('inventory_lots')
-              .update({ qty_remaining: newQty })
-              .eq('id', al.lotId);
-            if (eu) throw eu;
-          }
-        }
+      const res = await authFetch(`/api/recipes/${id}/cook`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ portions: people, storageMethod: 'fridge', ingredients }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error('Erreur pendant la déduction : ' + (data.error || res.status));
+        return;
       }
 
-      setToastMsg({ type: 'success', text: 'Déduction effectuée !' });
+      toast.success('Déduction effectuée !');
       router.push('/pantry');
     } catch (e) {
-      console.error('Erreur déduction lots:', e);
-      setToastMsg({ type: 'error', text: 'Erreur pendant la déduction: ' + (e?.message || e) });
+      toast.error('Erreur pendant la déduction : ' + (e?.message || e));
     }
   }
 
@@ -261,24 +252,10 @@ export default function CookPage() {
 
   return (
     <div className="grid" style={{ gap: 12 }}>
-      {/* Toast inline simple */}
-      {toastMsg && (
-        <div style={{
-          padding: '10px 16px',
-          borderRadius: 8,
-          background: toastMsg.type === 'error' ? '#fee2e2' : toastMsg.type === 'warning' ? '#fef3c7' : '#dcfce7',
-          color: toastMsg.type === 'error' ? '#b91c1c' : toastMsg.type === 'warning' ? '#92400e' : '#166534',
-          fontSize: 13
-        }}>
-          {toastMsg.text}
-          <button style={{ marginLeft: 10, background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => setToastMsg(null)}>×</button>
-        </div>
-      )}
-
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
         <div>
-          <h1 style={{ margin: '6px 0' }}>{recipe?.title || recipe?.name || 'Cuisiner'}</h1>
+          <h1 style={{ margin: '6px 0' }}>{recipe?.name || recipe?.title || 'Cuisiner'}</h1>
           <div style={{ opacity: .7, fontSize: 13 }}>
             Base: {recipe?.servings ?? 2} pers &bull; prep {scaledTimes.prep}&prime; &bull; cuisson {scaledTimes.cook}&prime;
           </div>

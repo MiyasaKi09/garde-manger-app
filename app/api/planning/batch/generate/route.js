@@ -147,7 +147,10 @@ async function scheduleWithClaude(dishesInput, cookSunday, allowedDates) {
     const msg = await anthropic.messages.create({
       model: 'claude-sonnet-4-6',
       max_tokens: 2000,
-      system: SYSTEM_PROMPT,
+      // cache_control sur le system prompt statique (même pattern que
+      // app/api/ai/chat). NB : sous le minimum cachable du modèle, le flag est
+      // simplement ignoré (aucune erreur) — utile dès que le prompt grossit.
+      system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }],
       messages: [{ role: 'user', content: `Semaine à organiser (JSON) :\n${JSON.stringify(payload)}` }],
     })
     const text = (msg.content || []).filter(b => b.type === 'text').map(b => b.text).join('')

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 import { Upload, FileSpreadsheet, FileJson, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react'
@@ -13,7 +13,7 @@ export default function ImportPage() {
   const [uploading, setUploading] = useState(false)
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
-  // Auth is handled by ProtectedShell, no need to double-check here
+  // Auth est gérée par middleware.js (redirection /login si pas de session)
 
   function handleDragOver(e) {
     e.preventDefault()

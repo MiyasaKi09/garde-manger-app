@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { Sparkles, RefreshCw, X, Check } from 'lucide-react'
 import WeekGrid from './components/WeekGrid'
 import ConfirmDialog from '@/components/ConfirmDialog'
+import { toast } from '@/components/Toast'
 
 export default function PlanningPage() {
   const router = useRouter()
@@ -55,8 +56,8 @@ export default function PlanningPage() {
     try {
       await authFetch(`/api/planning/imports/${importToDelete}`, { method: 'DELETE' })
       setImports(prev => prev.filter(i => i.id !== importToDelete))
-    } catch (err) {
-      console.error('Erreur suppression:', err)
+    } catch {
+      toast.error('Erreur lors de la suppression du plan')
     } finally {
       setImportToDelete(null)
     }
@@ -116,9 +117,11 @@ export default function PlanningPage() {
         }
         detailCacheRef.current[selectedImportId] = payload
         if (!cancelled) setWeekData(payload)
-      } catch (err) {
-        console.error('Erreur chargement détail semaine:', err)
-        if (!cancelled) setWeekData({ meals: [], batchRecipes: [], prepTasks: [], shoppingItems: [] })
+      } catch {
+        if (!cancelled) {
+          toast.error('Erreur lors du chargement des données de la semaine')
+          setWeekData({ meals: [], batchRecipes: [], prepTasks: [], shoppingItems: [] })
+        }
       } finally {
         if (!cancelled) setWeekLoading(false)
       }

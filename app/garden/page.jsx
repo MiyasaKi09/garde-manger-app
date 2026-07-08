@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
+import { authFetch } from '@/lib/authFetch'
 import { toast } from '@/components/Toast'
 import './garden.css'
 
@@ -22,9 +23,21 @@ export default function GardenPage() {
   }
 
   async function harvest(plant) {
-    const { error } = await supabase.rpc('add_harvest_lot', { plant_id: plant.id })
-    if (error) setError(error.message)
-    else toast.success('Récolte enregistrée dans votre stock !')
+    try {
+      const res = await authFetch('/api/garden/harvest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plantId: plant.id, qty: 1, unit: 'pièce(s)' }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setError(data.error || 'Erreur lors de la récolte')
+        return
+      }
+      toast.success('Récolte enregistrée dans votre stock !')
+    } catch (err) {
+      setError(err.message)
+    }
   }
 
   return (

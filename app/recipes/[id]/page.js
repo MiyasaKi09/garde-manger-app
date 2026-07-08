@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
-import { convertWithMeta } from '@/lib/units';
+import { authFetch } from '@/lib/authFetch';
 import { toast } from '@/components/Toast';
 import IngredientSearchSelector from './IngredientSearchSelector';
 import InstructionsCarousel from './components/InstructionsCarousel';
@@ -12,60 +12,10 @@ import CookWizard from '@/components/CookWizard';
 import './recipe-detail.css';
 import './IngredientSearchSelector.css';
 
-function Section({ title, children, right }) {
-  return (
-    <section style={{margin:'16px 0'}}>
-      <div style={{display:'flex',justifyContent:'space-between',alignItems:'baseline',gap:12}}>
-        <h2 style={{margin:'8px 0'}}>{title}</h2>
-        {right}
-      </div>
-      {children}
-    </section>
-  );
-}
-
 function roundForUnit(q, unit) {
   const u = (unit||'').toLowerCase();
   // On autorise 2 décimales partout (même 'u' au cas où tu stockes des demi-pièces).
   return Math.round(Number(q) * 100) / 100;
-}
-
-// Ligne d’un lot sélectionnable pour un ingrédient
-function LotRow({ lot, ing, meta, onChange }) {
-  const needUnit = (ing.unit || ing.product?.default_unit || 'g').toLowerCase();
-  const lotInNeed = convertWithMeta(Number(lot.qty), lot.unit, needUnit, meta).qty;
-
-  const [checked, setChecked] = useState(false);
-  const [qty, setQty] = useState('');
-
-  useEffect(()=>{ onChange({ id: lot.id, checked, qty, unit: lot.unit }); }, [checked, qty]); // eslint-disable-line
-
-  return (
-    <div className="card" style={{display:'grid',gridTemplateColumns:'auto 1fr 240px 180px',gap:8,alignItems:'center'}}>
-      <input type="checkbox" checked={checked} onChange={e=>setChecked(e.target.checked)} />
-      <div>
-        <div style={{fontWeight:600}}>{lot.product_name || ing.product?.name || 'Produit'}</div>
-        <div style={{opacity:.7,fontSize:12}}>
-          Lot {String(lot.id).slice(0,8)} • DLC {lot.dlc || '—'} • Entré le {lot.entered_at?.slice(0,10) || '—'}
-        </div>
-      </div>
-      <div style={{opacity:.9}}>
-        Stock: <strong>{Number(lot.qty).toFixed(2)} {lot.unit}</strong>
-        <div style={{fontSize:12,opacity:.7}}>≈ {lotInNeed.toFixed(2)} {needUnit}</div>
-      </div>
-      <div style={{display:'flex',gap:6,alignItems:'center'}}>
-        <span style={{opacity:.7,fontSize:12}}>Prendre</span>
-        <input
-          className="input"
-          type="number" step="0.01" min="0"
-          value={qty}
-          onChange={e=>setQty(e.target.value)}
-          style={{width:110}}
-        />
-        <span style={{opacity:.9}}>{lot.unit}</span>
-      </div>
-    </div>
-  );
 }
 
 export default function RecipeDetail() {
@@ -75,9 +25,6 @@ export default function RecipeDetail() {
   const [recipe, setRecipe] = useState(null);
   const [ings, setIngs] = useState([]);
   const [recipeSteps, setRecipeSteps] = useState([]);       // Étapes de la recette depuis recipe_steps
-  const [lotsByProduct, setLotsByProduct] = useState({});   // product_id -> lots[]
-  const [metaByProduct, setMetaByProduct] = useState({});   // product_id -> meta
-  const [plan, setPlan] = useState({});                     // product_id -> { lot_id -> {checked, qty, unit} }
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
@@ -90,8 +37,6 @@ export default function RecipeDetail() {
   const [editedInstructions, setEditedInstructions] = useState([]);
   const [availableIngredients, setAvailableIngredients] = useState([]);
 
-  // État pour le carrousel d'instructions
-  const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [showCookWizard, setShowCookWizard] = useState(false);
   const [showCookMode, setShowCookMode] = useState(false);
 
@@ -106,9 +51,6 @@ export default function RecipeDetail() {
   const [isDragging, setIsDragging] = useState(false);
   const [startY, setStartY] = useState(0);
   const [scrollTop, setScrollTop] = useState(0);
-
-  // Préférence: ne jamais dépasser (cap l'auto-remplissage)
-  const [noOverfill, setNoOverfill] = useState(true);
 
   // Handlers pour le drag-to-scroll des ingrédients
   const handleMouseDown = (e) => {
@@ -158,21 +100,8 @@ export default function RecipeDetail() {
       if (error) throw error;
 
       setAvailableIngredients(data || []);
-    } catch (error) {
-      console.error('Erreur chargement ingrédients disponibles:', error);
-      // Fallback requête simple
-      try {
-        const { data: fallbackData, error: fallbackError } = await supabase
-          .from('canonical_foods')
-          .select('*')
-          .limit(10);
-
-        if (!fallbackError && fallbackData) {
-          setAvailableIngredients(fallbackData);
-        }
-      } catch (fallbackErr) {
-        console.error('Fallback canonical_foods échoué:', fallbackErr);
-      }
+    } catch {
+      // Non bloquant : l'édition d'ingrédients sera vide
     }
   }
 
@@ -293,93 +222,46 @@ export default function RecipeDetail() {
     try {
       setSending(true);
 
-      // 1. Sauvegarder la recette principale (sans instructions dans le champ texte)
-      const recipeUpdate = {
-        name: editedRecipe.name,
-        description: editedRecipe.description,
-        short_description: editedRecipe.short_description,
-        prep_min: parseInt(editedRecipe.prep_min) || 0,
-        cook_min: parseInt(editedRecipe.cook_min) || 0,
-        rest_min: parseInt(editedRecipe.rest_min) || 0,
-        servings: parseInt(editedRecipe.servings) || 4,
-        chef_tips: editedRecipe.chef_tips,
-        is_vegetarian: editedRecipe.is_vegetarian,
-        is_vegan: editedRecipe.is_vegan,
-        is_gluten_free: editedRecipe.is_gluten_free,
-        updated_at: new Date().toISOString()
-      };
-
-      const { error: recipeError } = await supabase
-        .from('recipes')
-        .update(recipeUpdate)
-        .eq('id', id);
-
-      if (recipeError) throw recipeError;
-
-      // 2. Supprimer les anciens ingrédients
-      const { error: deleteIngredientsError } = await supabase
-        .from('recipe_ingredients')
-        .delete()
-        .eq('recipe_id', id);
-
-      if (deleteIngredientsError) throw deleteIngredientsError;
-
-      // 3. Ajouter les nouveaux ingrédients
-      const ingredientsToAdd = editedIngredients
-        .filter(ing => ing.canonical_food_id && ing.quantity > 0)
+      const ingredientRows = editedIngredients
+        .filter(ing => ing.canonical_food_id && Number(ing.quantity) > 0)
         .map(ing => ({
-          recipe_id: parseInt(id),
           canonical_food_id: parseInt(ing.canonical_food_id),
           quantity: parseFloat(ing.quantity),
           unit: ing.unit,
           notes: ing.notes || null,
-          created_at: new Date().toISOString()
         }));
 
-      if (ingredientsToAdd.length > 0) {
-        const { error: ingredientsError } = await supabase
-          .from('recipe_ingredients')
-          .insert(ingredientsToAdd);
-
-        if (ingredientsError) throw ingredientsError;
-      }
-
-      // 4. Supprimer les anciennes étapes
-      const { error: deleteStepsError } = await supabase
-        .from('recipe_steps')
-        .delete()
-        .eq('recipe_id', id);
-
-      if (deleteStepsError) throw deleteStepsError;
-
-      // 5. Ajouter les nouvelles étapes
-      const stepsToAdd = editedInstructions
+      const stepRows = editedInstructions
         .filter(inst => inst.text && inst.text.trim())
         .map((inst, index) => ({
-          recipe_id: parseInt(id),
           step_no: index + 1,
           instruction: inst.text.trim(),
           duration_min: inst.duration ? parseInt(inst.duration) : null,
           temperature: inst.temperature ? parseFloat(inst.temperature) : null,
           temperature_unit: inst.temperature_unit || '°C',
-          type: inst.type || 'preparation',
-          created_at: new Date().toISOString()
         }));
 
-      if (stepsToAdd.length > 0) {
-        const { error: stepsError } = await supabase
-          .from('recipe_steps')
-          .insert(stepsToAdd);
+      const res = await authFetch('/api/recipes/manage', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: parseInt(id),
+          name: editedRecipe.name,
+          description: editedRecipe.description || null,
+          prep_min: parseInt(editedRecipe.prep_min) || 0,
+          cook_min: parseInt(editedRecipe.cook_min) || 0,
+          servings: parseInt(editedRecipe.servings) || 4,
+          ingredients: ingredientRows,
+          steps: stepRows,
+        }),
+      });
 
-        if (stepsError) throw stepsError;
-      }
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || `Erreur ${res.status}`);
 
-      // 6. Recharger la recette
       router.refresh();
-
     } catch (error) {
-      console.error('Erreur sauvegarde:', error);
-      toast.error(`Erreur lors de la sauvegarde: ${error.message}`);
+      toast.error(`Erreur lors de la sauvegarde : ${error.message}`);
     } finally {
       setSending(false);
     }
@@ -391,29 +273,14 @@ export default function RecipeDetail() {
     // Charger les ingrédients disponibles dès le début
     await loadAvailableIngredients();
     
-    // 1) recette + ingrédients + meta produit
-    // Essayer d'abord avec les relations
-    let { data: r, error: errR } = await supabase
+    // 1) recette
+    const { data: r, error: errR } = await supabase
       .from('recipes')
       .select('*')
       .eq('id', id)
       .single();
 
-    // Si erreur, essayer une requête de fallback simple
     if (errR) {
-      const { data: fallbackData, error: fallbackError } = await supabase
-        .from('recipes')
-        .select('*')
-        .eq('id', id)
-        .single();
-
-      if (!fallbackError) {
-        r = fallbackData;
-        errR = null;
-      }
-    }
-    if (errR) {
-      console.error('Erreur chargement recette:', errR);
       setError(`Recette avec l'ID ${id} introuvable. Erreur: ${errR.message}`);
       setLoading(false);
       return;
@@ -473,7 +340,6 @@ export default function RecipeDetail() {
         .eq('recipe_id', id);
 
       if (ingredientsError) {
-        console.error('Erreur chargement ingrédients:', ingredientsError);
         ingredients = [];
       }
 
@@ -519,11 +385,7 @@ export default function RecipeDetail() {
       const ingList = enrichedIngredients;
       setIngs(ingList);
 
-      // Pour l'instant, pas de chargement de lots détaillé
-      setLotsByProduct({});
-      setMetaByProduct({});
-    } catch (error) {
-      console.error('Erreur chargement ingrédients recette:', error);
+    } catch {
       setIngs([]);
     }
 
@@ -540,8 +402,7 @@ export default function RecipeDetail() {
       } else {
         setRecipeSteps(steps || []);
       }
-    } catch (error) {
-      console.error('Erreur chargement étapes recette:', error);
+    } catch {
       setRecipeSteps([]);
     }
 
@@ -561,8 +422,8 @@ export default function RecipeDetail() {
           lipides: nutritionData.lipides_per_serving
         });
       }
-    } catch (error) {
-      console.error('Erreur chargement nutrition:', error);
+    } catch {
+      // Non bloquant
     }
 
     // Charger les micronutriments depuis les ingrédients
@@ -705,44 +566,12 @@ export default function RecipeDetail() {
         setMicronutrients(microPerServing);
         setIngredientsWithoutNutrition(ingredientsWithoutNutrition);
       }
-    } catch (error) {
-      console.error('Erreur micronutriments:', error);
+    } catch {
+      // Non bloquant
     }
 
     setLoading(false);
   })(); }, [id]);
-
-  function setLotSelection(product_id, lot_id, patch) {
-    setPlan(prev => {
-      const forProd = { ...(prev[product_id] || {}) };
-      const prevLot = forProd[lot_id] || { checked:false, qty:'', unit: lotsByProduct[product_id]?.find(l=>l.id===lot_id)?.unit || 'g' };
-      forProd[lot_id] = { ...prevLot, ...patch };
-      return { ...prev, [product_id]: forProd };
-    });
-  }
-
-  // Couverture par rapport au besoin (en unité de l’ingrédient)
-  const coverage = useMemo(() => {
-    const out = {};
-    for (const ing of ings) {
-      const pid = ing.product_id;
-      const needUnit = (ing.unit || ing.product?.default_unit || 'g').toLowerCase();
-      const needQty = Number(ing.qty || 0);
-      const meta = metaByProduct[pid] || {};
-      let covered = 0;
-      const picks = plan[pid] || {};
-      for (const lot of (lotsByProduct[pid] || [])) {
-        const pick = picks[lot.id];
-        if (!pick?.checked) continue;
-        const take = Number(pick.qty || 0);
-        if (!(take > 0)) continue;
-        const inNeed = convertWithMeta(take, pick.unit || lot.unit, needUnit, meta).qty;
-        covered += inNeed;
-      }
-      out[pid] = { needQty, needUnit, covered, ok: covered + 1e-9 >= needQty || ing.optional };
-    }
-    return out;
-  }, [ings, plan, lotsByProduct, metaByProduct]);
 
   // Calculer le temps total à partir de la somme des durées des étapes
   const totalTime = useMemo(() => {
@@ -755,74 +584,6 @@ export default function RecipeDetail() {
     // Fallback sur les valeurs de la recette si pas d'étapes
     return (recipe?.prep_min || 0) + (recipe?.cook_min || 0) + (recipe?.rest_min || 0);
   }, [recipeSteps, recipe]);
-
-  // Auto-remplit pour UN ingrédient (respecte la préférence noOverfill)
-  function autoFillForProduct(pid) {
-    const ing = (ings || []).find(x => x.product_id === pid);
-    if (!ing) return;
-
-    const needUnit = (ing.unit || ing.product?.default_unit || 'g').toLowerCase();
-    const target = Number(ing.qty || 0);
-    let remaining = target;
-    const meta = metaByProduct[pid] || {};
-    const lots = (lotsByProduct[pid] || []).slice(); // déjà FIFO par tri
-
-    // on réinitialise la sélection courante de ce produit
-    setPlan(prev => ({ ...prev, [pid]: {} }));
-
-    for (const lot of lots) {
-      if (remaining <= 1e-9) break;
-
-      // quantité dispo convertie dans l’unité demandée
-      const lotInNeed = convertWithMeta(Number(lot.qty), lot.unit, needUnit, meta).qty;
-      if (lotInNeed <= 0) continue;
-
-      // quantité à prendre dans l’unité demandée
-      let takeInNeed = Math.min(lotInNeed, remaining);
-      if (takeInNeed <= 0) continue;
-
-      // reconvertir vers l'unité du lot pour saisie UI
-      let takeInLot = convertWithMeta(takeInNeed, needUnit, lot.unit, meta).qty;
-      // arrondi propre
-      takeInLot = roundForUnit(takeInLot, lot.unit);
-      // ne pas dépasser le lot
-      takeInLot = Math.min(takeInLot, Number(lot.qty));
-
-      // si préférence "ne jamais dépasser", on recalcule la prise en needUnit après arrondi
-      if (noOverfill) {
-        const backInNeed = convertWithMeta(takeInLot, lot.unit, needUnit, meta).qty;
-        // Si l'arrondi provoque un dépassement, on réduit un poil
-        if (backInNeed > remaining + 1e-9) {
-          // réduisons dans l'unité du lot
-          const step = (lot.unit.toLowerCase() === 'u') ? 0.01 : 0.01; // pas minimal
-          while (takeInLot > 0) {
-            takeInLot = Math.max(0, roundForUnit(takeInLot - step, lot.unit));
-            const chk = convertWithMeta(takeInLot, lot.unit, needUnit, meta).qty;
-            if (chk <= remaining + 1e-9) break;
-          }
-        }
-      }
-
-      if (takeInLot <= 0) continue;
-
-      // met à jour sélection UI
-      setLotSelection(pid, lot.id, { checked: true, qty: takeInLot, unit: lot.unit });
-
-      // décrémente remaining sur la base de la quantité réellement prise (après arrondi)
-      const takenInNeed = convertWithMeta(takeInLot, lot.unit, needUnit, meta).qty;
-      remaining -= takenInNeed;
-    }
-  }
-
-  // Auto-remplit tous les ingrédients
-  function autoFillAll() {
-    for (const ing of (ings || [])) autoFillForProduct(ing.product_id);
-  }
-
-  async function cook() {
-    // Naviguer vers la page de cuisine dédiée (app/cook/[id]/page.js)
-    router.push(`/cook/${id}`);
-  }
 
   if (loading) {
     return (
@@ -1478,23 +1239,15 @@ export default function RecipeDetail() {
               <ul ref={ingredientsListRef} className="ingredients-list">
                 {ings.map((ing, index) => {
                   const displayName = ing.name || ing.canonical_foods?.name || 'Ingrédient inconnu';
-                  const productId = ing.canonical_food_id || ing.archetype_id;
-                  const productUrl = productId ? `/produits/${productId}` : null;
 
                   return (
                     <li key={ing.id || index} className="ingredient-item">
                       <span className="ingredient-quantity">
                         {roundForUnit(ing.quantity, ing.unit)} {ing.unit}
                       </span>
-                      {productUrl ? (
-                        <a href={productUrl} className="ingredient-name ingredient-link">
-                          {displayName}
-                        </a>
-                      ) : (
-                        <span className="ingredient-name">
-                          {displayName}
-                        </span>
-                      )}
+                      <span className="ingredient-name">
+                        {displayName}
+                      </span>
                       {ing.notes && (
                         <span className="ingredient-notes">({ing.notes})</span>
                       )}

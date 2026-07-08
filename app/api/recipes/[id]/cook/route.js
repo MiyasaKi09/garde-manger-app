@@ -2,19 +2,22 @@ import { NextResponse } from 'next/server';
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { calculateCookedDishExpiration } from '@/lib/shelfLifeRules';
+import { deductFromStock } from '@/lib/deductNeeds';
 
 /**
  * POST /api/recipes/[id]/cook
- * Crée un plat cuisiné à partir d'une recette
- * Version complète : déduit les ingrédients de l'inventaire
+ * Crée un plat cuisiné à partir d'une recette et déduit les ingrédients de
+ * l'inventaire de façon ATOMIQUE (RPC consume_lots_fefo via lib/deductNeeds :
+ * lots scopés user_id, quantités bornées au stock restant, tout-ou-rien).
+ * Fail-fast : si la déduction échoue, aucun plat n'est créé.
  */
 export async function POST(request, { params }) {
   try {
     const supabase = createRouteHandlerClient({ cookies });
-    
+
     // Vérifier l'authentification
     const { data: { user }, error: authError } = await supabase.auth.getUser();
-    
+
     if (authError || !user) {
       return NextResponse.json(
         { error: 'Non authentifié' },
@@ -41,7 +44,7 @@ export async function POST(request, { params }) {
       );
     }
 
-    // Récupérer la recette
+    // Récupérer la recette (catalogue partagé — pas de colonne user_id)
     const { data: recipe, error: recipeError } = await supabase
       .from('recipes')
       .select('id, name')
@@ -55,26 +58,35 @@ export async function POST(request, { params }) {
       );
     }
 
-    // Récupérer les lots utilisés pour appliquer la règle DLC des restes
-    // (DLC plat = min(règle stockage, DLC lot le plus court))
-    let usedLotRows = [];
-    const validLotIds = (ingredients || [])
-      .filter(i => i.lot_id && i.quantity_used > 0)
-      .map(i => i.lot_id);
-    if (validLotIds.length > 0) {
-      const { data: fetchedLots } = await supabase
-        .from('inventory_lots')
-        .select('id, adjusted_expiration_date, expiration_date, best_before')
-        .in('id', validLotIds)
-        .eq('user_id', user.id);
-      usedLotRows = fetchedLots || [];
+    // Ingrédients valides à déduire (lot + quantité > 0)
+    const validIngredients = (ingredients || []).filter(
+      i => i && i.lot_id && Number(i.quantity_used) > 0
+    );
+
+    // 1. Déduction ATOMIQUE du stock, AVANT la création du plat (fail-fast).
+    //    deductFromStock scope les lots par user_id (ownership, M9), borne les
+    //    quantités au stock restant et applique le tout via la RPC
+    //    consume_lots_fefo (verrou de ligne, tout-ou-rien ; le lot vidé est
+    //    supprimé par la RPC). usedLots (état AVANT déduction) sert au calcul
+    //    de la DLC du plat : min(règle stockage, DLC lot le plus court).
+    const { usedLots, error: deductError } = await deductFromStock(
+      supabase,
+      user.id,
+      { deductions: validIngredients.map(i => ({ lot_id: i.lot_id, quantity_used: i.quantity_used })) }
+    );
+    if (deductError) {
+      return NextResponse.json(
+        { error: `Déduction du stock impossible : ${deductError}` },
+        { status: 500 }
+      );
     }
+    const usedLotById = new Map((usedLots || []).map(l => [l.id, l]));
 
-    // Calculer la date d'expiration (inclut la contrainte DLC des lots)
+    // 2. Calculer la date d'expiration (inclut la contrainte DLC des lots)
     const cookedAt = new Date();
-    const expirationDate = calculateCookedDishExpiration(cookedAt, storageMethod, usedLotRows);
+    const expirationDate = calculateCookedDishExpiration(cookedAt, storageMethod, usedLots);
 
-    // Créer le plat cuisiné
+    // 3. Créer le plat cuisiné
     const { data: dish, error: dishError } = await supabase
       .from('cooked_dishes')
       .insert({
@@ -99,62 +111,35 @@ export async function POST(request, { params }) {
       );
     }
 
-    // Déduire les ingrédients de l'inventaire et enregistrer dans cooked_dish_ingredients
-    let ingredientsUsed = [];
-    if (ingredients && ingredients.length > 0) {
-      for (const ingredient of ingredients) {
-        const { lot_id, quantity_used, unit, product_name } = ingredient;
+    // 4. Traçabilité dans cooked_dish_ingredients. Un lot entièrement consommé
+    //    a été SUPPRIMÉ par la RPC → lot_id null (la FK est ON DELETE SET NULL,
+    //    on garde product_name/quantité). Un lot absent de usedLots n'appartenait
+    //    pas à l'utilisateur ou n'existait plus → ignoré (comme avant).
+    const ingredientsUsed = [];
+    for (const ingredient of validIngredients) {
+      const { lot_id, quantity_used, unit, product_name } = ingredient;
+      const lot = usedLotById.get(lot_id);
+      if (!lot) continue;
+      const lotDeleted = Number(quantity_used) >= (lot.qty_remaining || 0);
 
-        if (!lot_id || !quantity_used || quantity_used <= 0) {
-          continue; // Ignorer les entrées invalides
-        }
+      const { error: ingredientError } = await supabase
+        .from('cooked_dish_ingredients')
+        .insert({
+          dish_id: dish.id,
+          lot_id: lotDeleted ? null : lot_id,
+          quantity_used: quantity_used,
+          unit: unit || lot.unit,
+          product_name: product_name || null,
+        });
 
-        // TODO: basculer sur la RPC consume_lots_fefo (migration 20260609) une fois appliquée
-        // 1. Déduire la quantité du lot d'inventaire
-        const { data: lot, error: lotError } = await supabase
-          .from('inventory_lots')
-          .select('id, qty_remaining, unit')
-          .eq('id', lot_id)
-          .eq('user_id', user.id)
-          .single();
-
-        if (lotError || !lot) {
-          continue;
-        }
-
-        const newQty = Math.max(0, lot.qty_remaining - quantity_used);
-
-        // Mettre à jour le lot
-        const { error: updateError } = await supabase
-          .from('inventory_lots')
-          .update({ qty_remaining: newQty })
-          .eq('id', lot_id);
-
-        if (updateError) {
-          console.error(`Erreur mise à jour lot ${lot_id}:`, updateError);
-          continue;
-        }
-
-        // 2. Enregistrer dans cooked_dish_ingredients
-        const { error: ingredientError } = await supabase
-          .from('cooked_dish_ingredients')
-          .insert({
-            dish_id: dish.id,
-            lot_id: lot_id,
-            quantity_used: quantity_used,
-            unit: unit || lot.unit,
-            product_name: product_name || null
-          });
-
-        if (ingredientError) {
-          console.error('Erreur enregistrement ingrédient:', ingredientError);
-        } else {
-          ingredientsUsed.push({
-            product_name: product_name || null,
-            quantity_used,
-            unit: unit || lot.unit
-          });
-        }
+      if (ingredientError) {
+        console.error('Erreur enregistrement ingrédient:', ingredientError);
+      } else {
+        ingredientsUsed.push({
+          product_name: product_name || null,
+          quantity_used,
+          unit: unit || lot.unit,
+        });
       }
     }
 

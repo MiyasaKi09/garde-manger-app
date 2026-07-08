@@ -85,7 +85,7 @@ Les macros nutritionnels se calculent au niveau **canonique** (données CIQUAL).
 ### Règles DLC
 - **DLC** (Date Limite Consommation) : alerte à J-3.
 - **DDM** (Date Durabilité Minimale) : alerte à J-7.
-- Règle FIFO : toujours consommer le lot le plus ancien en premier.
+- Règle FEFO : consommer d'abord le lot dont la date de péremption effective est la plus proche (lots ouverts en premier).
 
 ### Calculs nutritionnels
 - Base : pour 100g (source CIQUAL France).

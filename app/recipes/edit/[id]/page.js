@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
+import { authFetch } from '@/lib/authFetch';
 import Link from 'next/link';
 import { toast } from '@/components/Toast';
 import '../../recipes.css';
@@ -238,7 +239,6 @@ export default function RecipeEditPage() {
       setUtensils(utensilsData || []);
       
     } catch (error) {
-      console.error('Erreur chargement recette:', error);
       toast.error('Erreur lors du chargement de la recette');
     } finally {
       setLoading(false);
@@ -405,129 +405,66 @@ export default function RecipeEditPage() {
 
     setSaving(true);
     try {
-      let savedRecipeId = recipeId;
+      // Corps commun POST / PUT
+      const ingredientRows = ingredients.map((ing) => ({
+        qty: parseFloat(ing.qty),
+        unit: ing.unit,
+        note: ing.note || null,
+        is_optional: ing.is_optional || false,
+        canonical_food_id: ing.canonical_food_id || null,
+        archetype_id: ing.archetype_id || null,
+      }));
 
-      // Nettoyer les données nutrition (enlever les valeurs vides)
-      let cleanedNutrition = null;
-      if (recipe.nutrition) {
-        const macros = {};
-        const micros = {};
-        
-        // Nettoyer les macros
-        if (recipe.nutrition.macros) {
-          Object.entries(recipe.nutrition.macros).forEach(([key, value]) => {
-            if (value && value !== '') {
-              macros[key] = value;
-            }
-          });
-        }
-        
-        // Nettoyer les micros
-        if (recipe.nutrition.micros) {
-          Object.entries(recipe.nutrition.micros).forEach(([key, data]) => {
-            if (data && data.value && data.value !== '') {
-              micros[key] = data;
-            }
-          });
-        }
-        
-        if (Object.keys(macros).length > 0 || Object.keys(micros).length > 0) {
-          cleanedNutrition = { macros, micros };
-        }
-      }
+      const stepRows = useTextSteps
+        ? []
+        : steps.map((step) => ({
+            instruction: step.instruction,
+            duration_min: step.duration_min ? parseInt(step.duration_min) : null,
+            temperature: step.temperature ? parseInt(step.temperature) : null,
+            temperature_unit: step.temperature_unit || '°C',
+          }));
 
-      // Sauvegarder la recette principale
-      const recipeData = {
-        ...recipe,
-        steps: useTextSteps ? textSteps : null,
-        tags: recipe.tags.length > 0 ? recipe.tags : null,
-        nutrition: cleanedNutrition
+      const utensilRows = utensils.map((u) => ({
+        utensil_name: u.utensil_name,
+        quantity: parseInt(u.quantity) || 1,
+        is_optional: u.is_optional || false,
+        notes: u.notes || null,
+      }));
+
+      const body = {
+        title: recipe.title,
+        description: recipe.description || null,
+        prep_min: parseInt(recipe.prep_min) || 0,
+        cook_min: parseInt(recipe.cook_min) || 0,
+        servings: parseInt(recipe.servings) || 4,
+        ingredients: ingredientRows,
+        steps: stepRows,
+        utensils: utensilRows,
       };
 
+      let res;
       if (isNew) {
-        const { data, error } = await supabase
-          .from('recipes')
-          .insert([recipeData])
-          .select()
-          .single();
-
-        if (error) throw error;
-        savedRecipeId = data.id;
+        res = await authFetch('/api/recipes/manage', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
       } else {
-        const { error } = await supabase
-          .from('recipes')
-          .update(recipeData)
-          .eq('id', recipeId);
-
-        if (error) throw error;
+        res = await authFetch('/api/recipes/manage', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: parseInt(recipeId), ...body }),
+        });
       }
 
-      // Supprimer les anciennes données liées
-      if (!isNew) {
-        await supabase.from('recipe_ingredients').delete().eq('recipe_id', savedRecipeId);
-        await supabase.from('recipe_steps').delete().eq('recipe_id', savedRecipeId);
-        await supabase.from('recipe_utensils').delete().eq('recipe_id', savedRecipeId);
-      }
-
-      // Sauvegarder les ingrédients
-      if (ingredients.length > 0) {
-        const ingredientsToSave = ingredients.map((ing, idx) => ({
-          recipe_id: savedRecipeId,
-          qty: parseFloat(ing.qty),
-          unit: ing.unit,
-          note: ing.note || null,
-          is_optional: ing.is_optional || false,
-          position: idx,
-          // Vous devrez ajouter la logique pour lier aux bons produits
-          product_id: ing.product_id || null
-        }));
-
-        const { error } = await supabase
-          .from('recipe_ingredients')
-          .insert(ingredientsToSave);
-
-        if (error) throw error;
-      }
-
-      // Sauvegarder les étapes (si pas en mode texte)
-      if (!useTextSteps && steps.length > 0) {
-        const stepsToSave = steps.map((step, idx) => ({
-          recipe_id: savedRecipeId,
-          step_no: idx + 1,
-          instruction: step.instruction,
-          duration_min: step.duration_min ? parseInt(step.duration_min) : null,
-          temperature: step.temperature ? parseInt(step.temperature) : null,
-          temperature_unit: step.temperature_unit || '°C'
-        }));
-
-        const { error } = await supabase
-          .from('recipe_steps')
-          .insert(stepsToSave);
-
-        if (error) throw error;
-      }
-
-      // Sauvegarder les ustensiles
-      if (utensils.length > 0) {
-        const utensilsToSave = utensils.map(utensil => ({
-          recipe_id: savedRecipeId,
-          utensil_name: utensil.utensil_name,
-          quantity: parseInt(utensil.quantity) || 1,
-          is_optional: utensil.is_optional || false,
-          notes: utensil.notes || null
-        }));
-
-        const { error } = await supabase
-          .from('recipe_utensils')
-          .insert(utensilsToSave);
-
-        if (error) throw error;
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || `Erreur ${res.status}`);
       }
 
       toast.success('Recette sauvegardée avec succès !');
       router.push('/recipes');
     } catch (error) {
-      console.error('Erreur sauvegarde recette:', error);
       toast.error('Erreur lors de la sauvegarde : ' + error.message);
     } finally {
       setSaving(false);

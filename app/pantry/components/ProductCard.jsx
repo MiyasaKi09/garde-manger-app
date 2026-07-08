@@ -26,9 +26,10 @@ export default function ProductCard({ product, onOpen }) {
   const primaryUnit = product.primaryUnit || 'unité';
   const nextExpiry = product.nextExpiry;
 
-  // Calcul du statut d'expiration
+  // Calcul du statut d'expiration — expiryKind ('DLC' | 'DDM') détermine le seuil d'alerte
+  const expiryKind = product.expiryKind || product.expiry_kind || null;
   const daysLeft = daysUntil(nextExpiry);
-  const expirationStatus = getExpirationStatus(daysLeft);
+  const expirationStatus = getExpirationStatus(daysLeft, expiryKind);
 
   // Formatage de la quantité
   const quantityDisplay = formatQuantity(totalQuantity, primaryUnit, 1);

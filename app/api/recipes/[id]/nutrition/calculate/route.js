@@ -1,38 +1,34 @@
 // app/api/recipes/[id]/nutrition/calculate/route.js
-import { createClient } from '@supabase/supabase-js';
 import { authenticateRequest } from '@/lib/apiAuth';
 
-function getSupabase() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-  );
-}
-
+/**
+ * POST /api/recipes/[id]/nutrition/calculate
+ * Déclenche la RPC calculate_and_cache_nutrition pour la recette.
+ * Utilise le client AUTHENTIFIÉ (plus de service role) : la RLS s'applique,
+ * la RPC (SECURITY INVOKER) ne voit que ce que l'utilisateur peut voir.
+ * Réponse inchangée : { success, data, message } | { error }.
+ */
 export async function POST(request, { params }) {
   try {
-    // Auth obligatoire AVANT tout usage du client service_role
-    const { user, error: authError } = await authenticateRequest(request);
+    const { supabase, user, error: authError } = await authenticateRequest(request);
     if (authError || !user) {
       return Response.json({ error: 'Non authentifié' }, { status: 401 });
     }
 
-    const { id } = params;
-    const recipeId = parseInt(id);
-    const supabase = getSupabase();
+    const { id } = await params;
+    const recipeId = parseInt(id, 10);
 
     if (!recipeId) {
       return Response.json({ error: 'Recipe ID invalide' }, { status: 400 });
     }
 
-    // Appeler calculate_and_cache_nutrition avec service role
     const { data, error } = await supabase.rpc(
       'calculate_and_cache_nutrition',
       { recipe_id_param: recipeId }
     );
 
     if (error) {
-      console.error('❌ Erreur:', error);
+      console.error('[nutrition/calculate] Erreur RPC:', error);
       return Response.json({ error: error.message }, { status: 500 });
     }
 
@@ -43,7 +39,7 @@ export async function POST(request, { params }) {
     });
 
   } catch (error) {
-    console.error('❌ Erreur serveur:', error);
+    console.error('[nutrition/calculate] Erreur serveur:', error);
     return Response.json({
       error: 'Erreur serveur',
       details: error.message

@@ -72,10 +72,17 @@ export async function POST(request) {
     : (Number.isFinite(br.keeps_days) && br.keeps_days > 0 ? br.keeps_days : 4)
   const expiration = addDaysISO(keeps)
 
-  // Déduction du stock des ingrédients réellement utilisés (FEFO), si fournis.
-  const { shortfalls } = needs.length
+  // Déduction du stock des ingrédients réellement utilisés (FEFO, atomique via
+  // la RPC consume_lots_fefo), si fournis. Fail-fast AVANT de créer le plat.
+  const { shortfalls, error: deductError } = needs.length
     ? await deductFromStock(supabase, user.id, { needs })
-    : { shortfalls: [] }
+    : { shortfalls: [], error: null }
+  if (deductError) {
+    return NextResponse.json(
+      { error: `Déduction du stock impossible : ${deductError}` },
+      { status: 500 },
+    )
+  }
 
   const { data: dish, error: insErr } = await supabase
     .from('cooked_dishes')
