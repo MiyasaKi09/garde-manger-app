@@ -29,9 +29,39 @@ const entryPortions = (e) => {
 }
 
 /**
+ * Construit un objet prêt pour l'insertion dans inventory_lots à partir du
+ * snapshot conservé dans meal_stock_deductions.lot_snapshot.
+ * Utilisé lors de la restauration d'annulation (DELETE /api/meals/cook) pour
+ * recréer un lot que la RPC consume_lots_fefo avait supprimé après vidage.
+ *
+ * @param {object} snap  - Contenu de lot_snapshot (peut avoir des nulls)
+ * @param {number} qty   - Quantité à restituer (= qty_deducted de la déduction)
+ * @param {string} userId - UUID de l'utilisateur propriétaire
+ */
+const buildLotFromSnapshot = (snap, qty, userId) => ({
+  user_id: userId,
+  qty_remaining: Number(qty),
+  initial_qty: Number(qty),
+  unit: snap.unit || 'unités',
+  storage_method: snap.storage_method || 'pantry',
+  storage_place: snap.storage_place || 'Garde-manger',
+  acquired_on: snap.acquired_on || new Date().toISOString().split('T')[0],
+  canonical_food_id: snap.canonical_food_id || null,
+  cultivar_id: snap.cultivar_id || null,
+  archetype_id: snap.archetype_id || null,
+  product_id: snap.product_id || null,
+  expiration_date: snap.expiration_date || null,
+  adjusted_expiration_date: snap.adjusted_expiration_date || null,
+  is_opened: snap.is_opened || false,
+  opened_at: snap.opened_at || null,
+})
+
+/**
  * POST /api/meals/cook — Marque un repas du plan comme « cuisiné / mangé ».
  *   - déduit les lots choisis de l'inventaire (ATOMIQUE via la RPC
  *     consume_lots_fefo, AVANT toute écriture de log — fail-fast) ;
+ *   - enregistre les déductions dans meal_stock_deductions (fail-soft) pour
+ *     permettre la restauration lors d'une annulation (DELETE) ;
  *   - logue la nutrition du jour dans meal_log (une ligne par personne,
  *     micronutriments inclus) ;
  *   - si `portions_prepared` > portions mangées : crée un reste (cooked_dishes)
@@ -60,9 +90,11 @@ const entryPortions = (e) => {
  *   portions_prepared?       // total préparé ; surplus → reste
  * }
  *
- * Réponse: { success, logged, deducted, batchConsumed, leftover }
+ * Réponse: { success, logged, deducted, batchConsumed, leftover, deductions_recorded? }
  *   - batchConsumed : portions décomptées du plat (batch ou reste mangé)
  *   - leftover : { id, name, portions_remaining, expiration_date } | null
+ *   - deductions_recorded : absent si OK, false si l'enregistrement des
+ *     déductions a échoué (cuisson réussie mais restauration impossible)
  *
  * Limites connues :
  *   - portions_cooked / portions_remaining sont numeric en base : les
@@ -143,6 +175,66 @@ export async function POST(request) {
       { error: `Déduction du stock impossible : ${deductError}` },
       { status: 500 },
     )
+  }
+
+  // 1b. Traçabilité des déductions — fail-soft.
+  //     Chaque lot débité est enregistré dans meal_stock_deductions avec un
+  //     snapshot suffisant pour recréer le lot s'il a été supprimé par la RPC
+  //     (consume_lots_fefo supprime le lot quand qty_remaining → 0).
+  //     Un échec ici n'interrompt pas la cuisson (la déduction est réelle) mais
+  //     empêche la restauration lors d'une annulation → signalé via
+  //     deductions_recorded: false dans la réponse.
+  let deductionsRecorded = true
+  if (usedLots && usedLots.length > 0) {
+    // Idempotence : purger les déductions du créneau précédent avant d'insérer
+    // (même logique que meal_log qui est supprimé/recréé à chaque validation).
+    await supabase
+      .from('meal_stock_deductions')
+      .delete()
+      .eq('user_id', user.id)
+      .eq('meal_date', meal_date)
+      .eq('meal_type', meal_type)
+
+    // Vérifier quels lots existent encore après la déduction RPC : la RPC supprime
+    // les lots vidés → lot_id = null pour les lots manquants (évite une violation FK).
+    const lotIds = usedLots.map(l => l.id)
+    const { data: stillExisting } = await supabase
+      .from('inventory_lots')
+      .select('id')
+      .in('id', lotIds)
+      .eq('user_id', user.id)
+    const existingSet = new Set((stillExisting || []).map(l => l.id))
+
+    const deductionRows = usedLots.map(lot => ({
+      user_id: user.id,
+      meal_date,
+      meal_type,
+      // lot_id null si le lot a été supprimé par la RPC (lot vidé)
+      lot_id: existingSet.has(lot.id) ? lot.id : null,
+      lot_snapshot: {
+        canonical_food_id: lot.canonical_food_id ?? null,
+        cultivar_id:       lot.cultivar_id       ?? null,
+        archetype_id:      lot.archetype_id      ?? null,
+        product_id:        lot.product_id        ?? null,
+        unit:                       lot.unit                       ?? null,
+        expiration_date:            lot.expiration_date            ?? null,
+        adjusted_expiration_date:   lot.adjusted_expiration_date   ?? null,
+        storage_place:              lot.storage_place              ?? null,
+        storage_method:             lot.storage_method             ?? null,
+        is_opened:                  lot.is_opened                  ?? false,
+        opened_at:                  lot.opened_at                  ?? null,
+        acquired_on:                lot.acquired_on                ?? null,
+      },
+      qty_deducted: lot.qty_deducted,
+    }))
+
+    const { error: deductionErr } = await supabase
+      .from('meal_stock_deductions')
+      .insert(deductionRows)
+    if (deductionErr) {
+      console.error('[meals/cook POST] Erreur enregistrement déductions:', deductionErr.message)
+      deductionsRecorded = false
+    }
   }
 
   // 2. Nutrition du jour — remplace les logs du créneau (idempotent)
@@ -271,6 +363,9 @@ export async function POST(request) {
     batchConsumed: dishConsumed,
     leftover,
     shortfalls: shortfalls.length ? shortfalls : undefined,
+    // deductions_recorded absent si OK ; false si l'enregistrement a échoué
+    // (la cuisson est réussie, mais l'annulation ne pourra pas restaurer le stock)
+    ...(deductionsRecorded ? {} : { deductions_recorded: false }),
   })
 }
 
@@ -283,23 +378,31 @@ export async function POST(request) {
  *   - fallback : si les logs n'ont pas de cooked_dish_id mais que
  *     `batch_recipe_id` est fourni dans le body, re-crédite le plat batch le
  *     plus récent (logs historiques d'avant la traçabilité) ;
+ *   - restaure le stock déduit depuis meal_stock_deductions (migration 20260709) :
+ *     pour chaque déduction non restaurée du créneau, re-crédite qty_remaining
+ *     sur le lot s'il existe encore (verrou optimiste ×3), ou recrée le lot
+ *     entier depuis lot_snapshot si la RPC consume_lots_fefo l'avait supprimé
+ *     après vidage (qty_remaining → 0) ;
  *   - supprime le reste créé par ce créneau (marqueur `[slot:...]`).
  *
  * body: { meal_date, meal_type, batch_recipe_id? }
- * Réponse: { success, restoredPortions, stock_restored: false }
+ * Réponse: { success, restoredPortions, stock_restored: true,
+ *            restored_lots: n, recreated_lots: m }
+ *   - restored_lots  : lots incrémentés (encore présents dans inventory_lots)
+ *   - recreated_lots : lots recréés depuis snapshot (avaient été supprimés)
+ *   - Si aucune déduction n'avait été tracée (repas validé avant la migration
+ *     20260709 ou avec deductions_recorded: false), restored_lots = 0 et
+ *     recreated_lots = 0.
  *
  * Limites connues :
- *   - le stock d'ingrédients (inventory_lots) n'est PAS restauré, et ne PEUT
- *     PAS l'être en l'état : le POST ne persiste nulle part quels lots / quelles
- *     quantités ont été déduits (meal_log n'a aucune colonne pour ça — le seul
- *     jsonb, `micronutrients`, a une autre sémantique). Restaurer exigerait une
- *     migration (colonne jsonb de traçabilité sur meal_log) — hors périmètre
- *     ici. La réponse l'assume explicitement via `stock_restored: false` ;
  *   - la restauration batch en mode fallback peut viser un autre plat que celui
  *     décrémenté à l'origine si plusieurs plats partagent le même batch_recipe_id ;
  *   - la suppression du reste lié au créneau est définitive : les portions déjà
  *     mangées depuis ce reste restent logguées (leur cooked_dish_id passe à NULL
- *     via la FK ON DELETE SET NULL).
+ *     via la FK ON DELETE SET NULL) ;
+ *   - si le POST a été appelé avant la migration 20260709 (ou avec
+ *     deductions_recorded: false dans la réponse), aucune déduction n'est tracée
+ *     et le stock ne peut pas être restauré (restored_lots = 0, recreated_lots = 0).
  */
 export async function DELETE(request) {
   const { supabase, user, error: authError } = await authenticateRequest(request)
@@ -313,13 +416,23 @@ export async function DELETE(request) {
     return NextResponse.json({ error: 'meal_date et meal_type requis' }, { status: 400 })
   }
 
-  // Lire les logs AVANT suppression pour savoir quoi restaurer.
+  // Lire les logs AVANT suppression pour savoir quoi restaurer (portions de plats).
   const { data: logs } = await supabase
     .from('meal_log')
     .select('cooked_dish_id, portions_eaten')
     .eq('user_id', user.id)
     .eq('meal_date', meal_date)
     .eq('meal_type', meal_type)
+
+  // Charger les déductions de stock non restaurées pour ce créneau AVANT de
+  // supprimer meal_log (indépendant, mais regroupé avec la lecture des logs).
+  const { data: stockDeductions } = await supabase
+    .from('meal_stock_deductions')
+    .select('id, lot_id, lot_snapshot, qty_deducted')
+    .eq('user_id', user.id)
+    .eq('meal_date', meal_date)
+    .eq('meal_type', meal_type)
+    .eq('restored', false)
 
   const { error } = await supabase
     .from('meal_log')
@@ -379,6 +492,82 @@ export async function DELETE(request) {
     if (dish) restoredPortions += await restoreDish(dish.id, orphanPortions || logs.length)
   }
 
+  // Restauration du stock d'ingrédients depuis meal_stock_deductions.
+  // Deux cas :
+  //   • lot_id non null → lot encore présent dans inventory_lots (la FK ON DELETE
+  //     SET NULL l'aurait mis à null s'il avait disparu) → re-créditer qty_remaining
+  //     (lecture + update avec verrou optimiste ×3, même pattern que lots/consume).
+  //   • lot_id null → lot supprimé par la RPC (ou avant l'insert FK) → recréer
+  //     un nouveau lot depuis lot_snapshot avec qty_remaining = qty_deducted.
+  let restoredLots = 0
+  let recreatedLots = 0
+
+  if (stockDeductions && stockDeductions.length > 0) {
+    const toUpdate  = stockDeductions.filter(r =>  r.lot_id)
+    const toRecreate = stockDeductions.filter(r => !r.lot_id)
+
+    // Lots encore présents : re-créditer (optimiste ×3)
+    for (const row of toUpdate) {
+      let creditedOk = false
+      for (let attempt = 0; attempt < 3; attempt++) {
+        const { data: lot } = await supabase
+          .from('inventory_lots')
+          .select('id, qty_remaining')
+          .eq('id', row.lot_id)
+          .eq('user_id', user.id)
+          .maybeSingle()
+
+        if (!lot) break  // lot disparu entre la lecture FK et maintenant (race rare)
+
+        const newQty = (Number(lot.qty_remaining) || 0) + Number(row.qty_deducted)
+        // Verrou optimiste : l'UPDATE ne correspondra à aucune ligne si qty_remaining
+        // a changé entre la lecture et l'écriture → on relit et retente.
+        const { data: updated } = await supabase
+          .from('inventory_lots')
+          .update({ qty_remaining: newQty })
+          .eq('id', row.lot_id)
+          .eq('qty_remaining', lot.qty_remaining)
+          .eq('user_id', user.id)
+          .select('id')
+
+        if (updated && updated.length > 0) {
+          creditedOk = true
+          restoredLots++
+          break
+        }
+        // 0 lignes mises à jour → conflit concurrent → relire et retenter
+      }
+
+      if (!creditedOk) {
+        // Lot disparu pendant les tentatives → recrée depuis le snapshot
+        const snap = row.lot_snapshot || {}
+        const { error: reinsertErr } = await supabase
+          .from('inventory_lots')
+          .insert(buildLotFromSnapshot(snap, row.qty_deducted, user.id))
+        if (!reinsertErr) recreatedLots++
+      }
+    }
+
+    // Lots supprimés (lot_id IS NULL) : recréer en lot depuis le snapshot.
+    // Insertion en lot (une seule requête) pour minimiser les allers-retours.
+    if (toRecreate.length > 0) {
+      const inserts = toRecreate.map(row =>
+        buildLotFromSnapshot(row.lot_snapshot || {}, row.qty_deducted, user.id)
+      )
+      const { error: batchInsertErr } = await supabase
+        .from('inventory_lots')
+        .insert(inserts)
+      if (!batchInsertErr) recreatedLots += toRecreate.length
+    }
+
+    // Marquer toutes les déductions du créneau comme restaurées
+    await supabase
+      .from('meal_stock_deductions')
+      .update({ restored: true })
+      .in('id', stockDeductions.map(r => r.id))
+      .eq('user_id', user.id)
+  }
+
   // Reste créé par ce créneau → suppression (retrouvé via le marqueur [slot:...]).
   await supabase
     .from('cooked_dishes')
@@ -386,7 +575,11 @@ export async function DELETE(request) {
     .eq('user_id', user.id)
     .like('notes', slotMarkerLike(meal_date, meal_type))
 
-  // stock_restored: false — assumé (cf. JSDoc : la déduction n'est pas tracée
-  // en base, donc irréversible sans migration).
-  return NextResponse.json({ success: true, restoredPortions, stock_restored: false })
+  return NextResponse.json({
+    success: true,
+    restoredPortions,
+    stock_restored: true,
+    restored_lots: restoredLots,
+    recreated_lots: recreatedLots,
+  })
 }
