@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Wed Jul  8 23:10:56 UTC 2026_
+_Generated: Wed Jul  8 23:43:37 UTC 2026_
 
 ## Tables and counts
 - _backup_views: 2 rows
@@ -15,12 +15,13 @@ _Generated: Wed Jul  8 23:10:56 UTC 2026_
 - diets: 9 rows
 - instructions: 0 rows
 - locations: 3 rows
+- meal_stock_deductions: 0 rows
 - nutritional_data: 3178 rows
 - process_nutrition_modifiers: 28 rows
 - processes: 14 rows
 - products: 0 rows
 - recipe_ingredients: 12 rows
-- recipe_nutrition_cache: 0 rows
+- recipe_nutrition_cache: 1 rows
 - recipe_pairings: 0 rows
 - recipe_steps: 7 rows
 - recipe_tags: 0 rows
