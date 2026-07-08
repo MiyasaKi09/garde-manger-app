@@ -13,6 +13,7 @@ import ConfirmDialog from '../../components/ConfirmDialog';
 import EditLotForm from './components/EditLotForm';
 import RestesManager from '@/components/RestesManager';
 import { toast } from '@/components/Toast';
+import { authFetch } from '@/lib/authFetch';
 import './pantry.css';
 
 // Registre V21 — onglets de statut (mappés sur statusFilter)
@@ -377,13 +378,14 @@ export default function PantryPage() {
     ));
 
     try {
-      const { error } = await supabase
-        .from('inventory_lots')
-        .update({ qty_remaining: newQty })
-        .eq('id', item.id);
-
-      if (error) {
-        toast.error('Erreur lors de la consommation : ' + error.message);
+      const res = await authFetch('/api/lots/consume', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lotId: item.id, qty: quantity }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        toast.error('Erreur lors de la consommation : ' + (data.error || res.status));
         await loadPantryItems();
       }
     } catch {
@@ -416,18 +418,19 @@ export default function PantryPage() {
     ));
 
     try {
-      const { error } = await supabase
-        .from('inventory_lots')
-        .update({
-          qty_remaining: parseFloat(updates.qty_remaining),
-          unit: updates.unit,
-          storage_place: updates.storage_place,
-          expiration_date: updates.expiration_date
-        })
-        .eq('id', id);
-
-      if (error) {
-        throw error;
+      const patch = {
+        qty_remaining: parseFloat(updates.qty_remaining),
+        storage_place: updates.storage_place ?? null,
+        expiration_date: updates.expiration_date ?? null,
+      };
+      const res = await authFetch(`/api/lots/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(patch),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || res.status);
       }
     } catch (error) {
       toast.error('Erreur lors de la mise à jour : ' + error.message);
@@ -455,14 +458,11 @@ export default function PantryPage() {
     setItems(prev => prev.filter(i => i.id !== id));
 
     try {
-      const { error } = await supabase
-        .from('inventory_lots')
-        .delete()
-        .eq('id', id);
-
-      if (error) {
+      const res = await authFetch(`/api/lots/${id}`, { method: 'DELETE' });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
         await loadPantryItems();
-        toast.error('Erreur lors de la suppression : ' + error.message);
+        toast.error('Erreur lors de la suppression : ' + (data.error || res.status));
       }
     } catch {
       await loadPantryItems();
