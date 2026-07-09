@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
@@ -33,6 +33,7 @@ export default function CoursesPage() {
   const [pickerLoading, setPickerLoading] = useState(false)
   const [pickerQuery, setPickerQuery] = useState('')
   const [toast, setToast] = useState(null)            // { id, msg, kind } — toast discret auto-effacé
+  const resolvedImportsRef = useRef(new Set())        // importIds pour lesquels resolve-pending a déjà été déclenché
 
   useEffect(() => {
     if (!toast) return
@@ -61,6 +62,25 @@ export default function CoursesPage() {
     const weeks = [...new Set(list.map(i => i.week_label))].sort()
     setActiveWeek(weeks.length > 0 ? weeks[0] : null)
     setActiveRayon(null)
+
+    // Si des articles n'ont aucune FK référentiel, déclencher la résolution une fois par import.
+    // Re-fetch silencieux ensuite pour que les FK résolues atterrissent dans l'état.
+    const hasUnlinked = list.some(i => !i.canonical_food_id && !i.archetype_id)
+    if (hasUnlinked && !resolvedImportsRef.current.has(imp.id)) {
+      resolvedImportsRef.current.add(imp.id)
+      try {
+        await authFetch('/api/ingredients/resolve-pending', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ import_id: imp.id }),
+        })
+        const res2 = await authFetch(`/api/planning/imports/${imp.id}`)
+        const d2 = await res2.json()
+        setItems(d2.shoppingItems || [])
+      } catch {
+        // best-effort — les badges « non relié » restent visibles
+      }
+    }
   }
 
   async function goToImport(idx) {
@@ -129,6 +149,23 @@ export default function CoursesPage() {
         }),
       })
       const data = await res.json()
+
+      // Nouveau format par-item : { items: [{id, ok, lot_id?, error?}], ... }
+      if (data.items && Array.isArray(data.items)) {
+        const itemResult = data.items.find(r => r.id === item.id) || data.items[0]
+        if (!itemResult || !itemResult.ok) {
+          return { success: false, error: itemResult?.error || data.error || 'Erreur inconnue' }
+        }
+        return {
+          success: true,
+          lotsCreated: data.lotsCreated ?? 1,
+          lotIds: itemResult.lot_id ? [itemResult.lot_id] : (data.lotIds || []),
+          matched: data.matched,
+          expirationDate: data.expirationDate || null,
+        }
+      }
+
+      // Compatibilité ascendante avec l'ancien format { success, error, lotIds, ... }
       if (!res.ok || !data.success) {
         return { success: false, error: data.error || 'Erreur inconnue' }
       }
@@ -249,7 +286,7 @@ export default function CoursesPage() {
             body: JSON.stringify({ checked: false }),
           })
         } catch {}
-        showToast(`Rangement impossible — ${result.error}`, 'error')
+        showToast(`Rangement impossible pour "${item.product_name}" : ${result.error}`, 'error')
       }
     } else {
       // ── Décochage → retirer du stock les lots non entamés ──
@@ -485,6 +522,9 @@ export default function CoursesPage() {
           )}
           {item.unmatched && !item.stocking && (
             <span className="cou-card-tag unmatched" title="Produit non relié au catalogue — rangé tel quel (nom en notes)">non reconnu</span>
+          )}
+          {!item.canonical_food_id && !item.archetype_id && !item.checked && (
+            <span className="cou-card-tag unlinked" title="Ingrédient pas encore relié au référentiel — résolution automatique en cours">⚠ non relié</span>
           )}
         </div>
         {isExpanded && (

@@ -163,6 +163,7 @@
 .cou-card-tag.stocked { color: var(--brand); }
 .cou-card-tag.error { color: var(--state-expired); }
 .cou-card-tag.unmatched { color: var(--ink-3); border: 1px dashed var(--line); border-radius: 3px; padding: 2px 5px; }
+.cou-card-tag.unlinked { color: var(--ink-3); font-size: 9px; opacity: 0.7; letter-spacing: 0.04em; }
 
 /* toast discret (rangement / retrait du stock) */
 .cou-toast {
