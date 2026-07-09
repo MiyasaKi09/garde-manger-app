@@ -246,6 +246,17 @@ export default function PlanningPage() {
         targetImportId = data.imports[0]?.id || null
       }
     } catch { /* le rail se resynchronisera au prochain passage */ }
+    // Résolution identité ingrédients avant validation — fire-and-forget, best-effort.
+    // Permet à validate de voir les FK correctement remplies.
+    if (targetImportId) {
+      try {
+        await authFetch('/api/ingredients/resolve-pending', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ import_id: targetImportId }),
+        })
+      } catch { /* best-effort — la validation continue quoi qu'il arrive */ }
+    }
     if (targetImportId) await runValidation(targetImportId)
     setRegenStatus('done')
     setRegenOpen(false)

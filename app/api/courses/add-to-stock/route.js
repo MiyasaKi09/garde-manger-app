@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { parseQuantity, normalizeUnit } from '@/lib/parseQuantity'
+import { loadResolverData, resolveIngredient, ensureCanonical } from '@/lib/ingredientResolver'
 
 /**
  * POST /api/courses/add-to-stock
@@ -13,14 +14,19 @@ import { parseQuantity, normalizeUnit } from '@/lib/parseQuantity'
  *     containerQty?, containerSize?, containerUnit?   ← conditionnement (ex: 3 × 1L)
  *   }
  *
- * Réponse : { success, lots, lotIds, matched, lotsCreated, expirationDate }
+ * Réponse :
+ *   { success, lots, lotIds, matched, lotsCreated, expirationDate,   ← champs legacy (courses/page.js)
+ *     items: [{ id, ok, lot_id?, error? }], created_lots, auto_created }
  *
  * Flux :
- *   1. Résoudre l'ingrédient (IDs directs ou recherche par nom)
- *   2. Déduire le mode de stockage (frigo/congélateur/garde-manger)
- *   3. Lire shelf_life_days_[method] depuis archetypes / canonical_foods
- *   4. Calculer expiration_date = aujourd'hui + shelf_life_days
- *   5. Créer le ou les lots (N lots si conditionnement multi-contenants)
+ *   1. Résoudre l'ingrédient : IDs directs (si fournis) OU résolveur central
+ *      (loadResolverData + resolveIngredient) OU creation garantie (ensureCanonical).
+ *      Garantie : le lot insert a TOUJOURS exactement une FK d'identité.
+ *   2. Écrire la FK résolue sur l'item de courses (évite de repasser par le résolveur).
+ *   3. Déduire le mode de stockage (frigo/congélateur/garde-manger).
+ *   4. Lire shelf_life_days_[method] depuis archetypes / canonical_foods.
+ *   5. Calculer expiration_date = aujourd'hui + shelf_life_days.
+ *   6. Créer le ou les lots (N lots si conditionnement multi-contenants).
  *
  * NB : user_id des lots est posé par le default DB (auth.uid()) — on ne l'envoie jamais.
  */
@@ -54,16 +60,55 @@ export async function POST(request) {
     }
 
     // 1. Résoudre les IDs ingrédient
+    //    Chemin rapide : les IDs sont déjà dans l'item de courses (flow normal).
+    //    Chemin résolveur : résolution déterministe (tokens/synonymes/tiers) via
+    //    le résolveur central, puis creation garantie (ensureCanonical) si toujours
+    //    non résolu — évite la violation de la contrainte inventory_lots_one_of.
     let resolvedArchetypeId = archetypeId
     let resolvedCanonicalFoodId = canonicalFoodId
+    let autoCreated = false
 
     if (!resolvedArchetypeId && !resolvedCanonicalFoodId) {
-      const match = await findIngredient(supabase, productName)
-      resolvedArchetypeId = match?.archetypeId ?? null
-      resolvedCanonicalFoodId = match?.canonicalFoodId ?? null
+      // Charger le catalogue et le stock une seule fois
+      const ctx = await loadResolverData(supabase, user.id)
+      const r = resolveIngredient(productName, ctx)
+      resolvedArchetypeId = r.archetype_id ?? null
+      resolvedCanonicalFoodId = r.canonical_food_id ?? null
+
+      if (!resolvedArchetypeId && !resolvedCanonicalFoodId) {
+        // Dernier recours : créer un canonique tracé (source='auto', verified=false)
+        const ensured = await ensureCanonical(supabase, productName, ctx)
+        if (ensured?.canonical_food_id) {
+          resolvedCanonicalFoodId = ensured.canonical_food_id
+          autoCreated = true
+        }
+      }
+
+      // Réécrire la FK résolue sur l'item de courses pour les passages ultérieurs
+      if (itemId != null && (resolvedCanonicalFoodId || resolvedArchetypeId)) {
+        await supabase
+          .from('nutrition_plan_shopping_items')
+          .update({
+            canonical_food_id: resolvedCanonicalFoodId ?? null,
+            archetype_id: resolvedArchetypeId ?? null,
+          })
+          .eq('id', itemId)
+      }
     }
 
     const matched = !!(resolvedArchetypeId || resolvedCanonicalFoodId)
+
+    // Garde-fou : sans AUCUNE identité (nom vide/inexploitable, ensureCanonical
+    // a rendu null), on n'insère PAS — l'insert violerait inventory_lots_one_of.
+    // Erreur par article, le reste du lot de courses continue.
+    if (!matched) {
+      return NextResponse.json({
+        success: false,
+        matched: false,
+        error: `Ingrédient non identifiable : « ${productName} »`,
+        items: itemId ? [{ id: itemId, ok: false, error: 'Ingrédient non identifiable' }] : [],
+      })
+    }
 
     // 2. Déduire le mode de stockage : DB en priorité si un seul champ est renseigné
     const dbStorageMethod = await resolveStorageHint(supabase, resolvedArchetypeId, resolvedCanonicalFoodId)
@@ -118,23 +163,48 @@ export async function POST(request) {
       }]
     }
 
-    // 7. Insérer les lots
-    const { data: lots, error } = await supabase
-      .from('inventory_lots')
-      .insert(lotsToCreate)
-      .select()
-
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
+    // 7. Insérer les lots — erreur par item, jamais d'échec global
+    let lots = []
+    let insertError = null
+    try {
+      const { data: lotData, error: lotErr } = await supabase
+        .from('inventory_lots')
+        .insert(lotsToCreate)
+        .select()
+      if (lotErr) insertError = lotErr.message
+      else lots = lotData || []
+    } catch (e) {
+      insertError = e.message
     }
 
+    if (insertError) {
+      return NextResponse.json({
+        // Champs legacy
+        success: false,
+        error: insertError,
+        lotIds: [],
+        matched,
+        lotsCreated: 0,
+        // Champs par item
+        items: [{ id: itemId, ok: false, error: insertError }],
+        created_lots: 0,
+        auto_created: autoCreated,
+      })
+    }
+
+    const lotIds = lots.map(l => l.id)
     return NextResponse.json({
+      // Champs legacy (utilisés par app/courses/page.js — ne pas supprimer)
       success: true,
       lots,
-      lotIds: lots.map(l => l.id),
+      lotIds,
       matched,
       lotsCreated: lots.length,
       expirationDate: expiration_date,
+      // Champs par item
+      items: [{ id: itemId, ok: true, lot_id: lots[0]?.id ?? null }],
+      created_lots: lots.length,
+      auto_created: autoCreated,
     })
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 })
@@ -224,42 +294,6 @@ async function cleanupCreatedLots(supabase, userId, itemId) {
   if (clearErr) return { error: clearErr.message }
 
   return { deleted: untouched.length, kept }
-}
-
-/**
- * Cherche un ingrédient par nom : archetype d'abord, puis canonical_food.
- * Retourne { archetypeId?, canonicalFoodId? } ou null.
- */
-async function findIngredient(supabase, name) {
-  const normalized = name.trim().toLowerCase()
-  const words = normalized.split(/\s+/).filter(w => w.length > 2 && !['de','du','des','le','la','les','au','aux','en'].includes(w))
-  const candidates = [normalized, ...(words.length ? [words[0]] : [])]
-
-  for (const term of candidates) {
-    const { data: archs } = await supabase
-      .from('archetypes')
-      .select('id, name')
-      .ilike('name', `%${term}%`)
-      .limit(5)
-
-    if (archs?.length) {
-      const best = archs.find(a => a.name.toLowerCase() === normalized) ?? archs[0]
-      return { archetypeId: best.id, canonicalFoodId: null }
-    }
-
-    const { data: cfs } = await supabase
-      .from('canonical_foods')
-      .select('id, canonical_name')
-      .ilike('canonical_name', `%${term}%`)
-      .limit(5)
-
-    if (cfs?.length) {
-      const best = cfs.find(c => c.canonical_name?.toLowerCase() === normalized) ?? cfs[0]
-      return { archetypeId: null, canonicalFoodId: best.id }
-    }
-  }
-
-  return null
 }
 
 /**
