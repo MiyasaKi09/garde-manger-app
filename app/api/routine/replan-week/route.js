@@ -134,12 +134,15 @@ export async function POST(request) {
     return NextResponse.json({ error: `Erreur création requête : ${insertErr.message}` }, { status: 500 })
   }
 
-  // Contexte enrichi (restes, contraintes, goûts, écarts, micros) — best-effort
-  let triggerPayload = { user_id: user.id }
+  // Contexte enrichi (restes, contraintes, goûts, écarts, micros) — best-effort.
+  // request_id = id de la requête plan_regen_requests insérée ci-dessus : la
+  // Routine traite CETTE requête précise (plus de LIMIT 1 sur les pending).
+  let triggerPayload = { user_id: user.id, request_id: req.id }
   try {
     const ctx = await buildAiContext(supabase, user.id)
     triggerPayload = {
       user_id: user.id,
+      request_id: req.id,
       context: formatContextForPrompt(ctx),
       output_requirements: PLANNING_OUTPUT_REQUIREMENTS,
     }

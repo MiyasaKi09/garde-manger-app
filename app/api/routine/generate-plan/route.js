@@ -34,8 +34,11 @@ export async function POST(request) {
   const { importId, targetStart, targetEnd, days, meals, instructions } = body || {}
 
   // ── Mode régénération : écrire la requête en DB avant de déclencher ──
+  // L'id inséré (request_id) est transmis dans le payload webhook : la Routine
+  // traite CETTE requête précise, plus de ORDER BY created_at LIMIT 1 hasardeux.
+  let requestId = null
   if (targetStart && targetEnd) {
-    const { error: insertErr } = await supabase
+    const { data: reqRow, error: insertErr } = await supabase
       .from('plan_regen_requests')
       .insert({
         user_id: user.id,
@@ -47,6 +50,8 @@ export async function POST(request) {
         target_end: targetEnd,
         status: 'pending',
       })
+      .select('id')
+      .single()
 
     if (insertErr) {
       return NextResponse.json(
@@ -54,6 +59,7 @@ export async function POST(request) {
         { status: 500 },
       )
     }
+    requestId = reqRow?.id ?? null
   }
 
   const url = process.env.CLAUDE_ROUTINE_GENERATE_PLAN_URL
@@ -70,11 +76,12 @@ export async function POST(request) {
 
   // Contexte enrichi pour la Routine (best-effort : un échec de construction
   // ne doit jamais bloquer le déclenchement de la génération).
-  let triggerPayload = { user_id: user.id }
+  let triggerPayload = { user_id: user.id, request_id: requestId }
   try {
     const ctx = await buildAiContext(supabase, user.id)
     triggerPayload = {
       user_id: user.id,
+      request_id: requestId,
       context: formatContextForPrompt(ctx),
       output_requirements: PLANNING_OUTPUT_REQUIREMENTS,
     }

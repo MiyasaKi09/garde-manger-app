@@ -19,6 +19,27 @@ const frDate = (iso) => {
 }
 const cleanName = (name) => (name || 'Préparation').split('\n')[0].replace(/^B\d+\s*[—–-]\s*/, '').trim()
 
+// Ingrédients d'une préparation : ingredients_json ([{name, quantity, unit}])
+// en priorité, repli sur le texte ·-séparé legacy. Retourne un texte multi-ligne.
+function formatIngredients(recipe) {
+  const json = recipe?.ingredients_json
+  if (Array.isArray(json) && json.length) {
+    const lines = json
+      .map(i => {
+        if (!i) return null
+        if (typeof i === 'string') return i.trim() || null
+        const name = String(i.name || '').trim()
+        if (!name) return null
+        const qty = [i.quantity, i.unit].filter(v => v != null && String(v).trim() !== '').join(' ')
+        return qty ? `${name} — ${qty}` : name
+      })
+      .filter(Boolean)
+    if (lines.length) return lines.join('\n')
+  }
+  if (recipe?.ingredients) return String(recipe.ingredients).replace(/\s*[·|]\s*/g, '\n')
+  return null
+}
+
 export default function BatchPage() {
   const router = useRouter()
   const { importId } = useParams()
@@ -289,7 +310,13 @@ export default function BatchPage() {
                         })()}
                         {open && (
                           <div className="bat-prep-detail">
-                            {recipe.ingredients && <div className="bat-r-block"><span className="bat-r-l">Ingrédients</span><div className="bat-r-t">{recipe.ingredients.replace(/\s*[·|]\s*/g, '\n')}</div></div>}
+                            {(() => {
+                              // v5 : ingredients_json (jsonb structuré) d'abord,
+                              // repli sur le texte ·-séparé des imports legacy.
+                              const text = formatIngredients(recipe)
+                              if (!text) return null
+                              return <div className="bat-r-block"><span className="bat-r-l">Ingrédients</span><div className="bat-r-t">{text}</div></div>
+                            })()}
                             {recipe.instructions && <div className="bat-r-block"><span className="bat-r-l">Préparation</span><div className="bat-r-t">{recipe.instructions}</div></div>}
                             {recipe.portions && !recipe.portions_total && <div className="bat-r-block"><span className="bat-r-l">Portions</span><div className="bat-r-t">{recipe.portions}</div></div>}
                             {recipe.reheat && <div className="bat-r-reheat"><b>Réchauffage —</b> {recipe.reheat}</div>}

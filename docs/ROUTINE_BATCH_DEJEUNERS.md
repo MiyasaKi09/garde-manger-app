@@ -1,3 +1,9 @@
+> ⚠️ **OBSOLÈTE — le batch est généré in-app depuis juillet 2026, voir
+> `/api/planning/batch/generate`.** Cette routine n'est plus déclenchée par
+> l'app : le relais `POST /api/routine/generate-batch` a été supprimé.
+> Document conservé pour l'historique uniquement — ne pas coller ce prompt
+> dans une Routine claude.ai. Architecture actuelle : `docs/ROUTINES.md`.
+
 # ROUTINE MYKO — BATCH DÉJEUNERS (v2)
 
 ## Schéma (colonnes EXACTES — ne pas en inventer)
