@@ -12,6 +12,7 @@ export default function GeneratedRecipeDetail() {
   const router = useRouter()
   const [recipe, setRecipe] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [notFound, setNotFound] = useState(false)
   const [activeTab, setActiveTab] = useState('ingredients')
   const [checkedSteps, setCheckedSteps] = useState(new Set())
   const [linkedIngredients, setLinkedIngredients] = useState(null) // ingrédients liés + stock
@@ -26,10 +27,11 @@ export default function GeneratedRecipeDetail() {
         .from('generated_recipes')
         .select('*')
         .eq('id', id)
-        .single()
+        .maybeSingle()
 
       if (error || !data) {
-        router.push('/recipes')
+        setNotFound(true)
+        setLoading(false)
         return
       }
 
@@ -60,7 +62,18 @@ export default function GeneratedRecipeDetail() {
     )
   }
 
-  if (!recipe) return null
+  if (notFound || !recipe) {
+    return (
+      <div className="v21-page narrow gr-page">
+        <button className="v21-link gr-back" onClick={() => router.push('/recipes')}>← Recettes</button>
+        <div className="rd-error" style={{ marginTop: 40 }}>
+          <h2>Recette introuvable</h2>
+          <p>Cette recette n'existe pas ou a été supprimée.</p>
+          <button onClick={() => router.push('/recipes')} className="v21-btn">← Retour aux recettes</button>
+        </div>
+      </div>
+    )
+  }
 
   const ingredients = Array.isArray(recipe.ingredients) ? recipe.ingredients : []
   const steps = Array.isArray(recipe.steps) ? recipe.steps : []

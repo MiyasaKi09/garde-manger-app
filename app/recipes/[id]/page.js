@@ -28,6 +28,7 @@ export default function RecipeDetail() {
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
+  const [notFound, setNotFound] = useState(false);
   
   // États pour l'édition
   const [isEditing, setIsEditing] = useState(false);
@@ -109,15 +110,9 @@ export default function RecipeDetail() {
     setEditedRecipe({
       name: recipe.title || '',
       description: recipe.description || '',
-      short_description: recipe.short_description || '',
       prep_min: recipe.prep_min || 0,
       cook_min: recipe.cook_min || 0,
-      rest_min: recipe.rest_min || 0,
       servings: recipe.servings || 4,
-      chef_tips: recipe.chef_tips || '',
-      is_vegetarian: recipe.is_vegetarian || false,
-      is_vegan: recipe.is_vegan || false,
-      is_gluten_free: recipe.is_gluten_free || false
     });
 
     // Charger les étapes depuis recipeSteps
@@ -273,42 +268,45 @@ export default function RecipeDetail() {
     // Charger les ingrédients disponibles dès le début
     await loadAvailableIngredients();
     
-    // 1) recette
+    // 1) recette classique (maybeSingle évite l'exception PostgREST si absent)
     const { data: r, error: errR } = await supabase
       .from('recipes')
-      .select('*')
+      .select('id, name, description, prep_time_minutes, cook_time_minutes, servings, cooking_method')
       .eq('id', id)
-      .single();
+      .maybeSingle();
 
     if (errR) {
-      setError(`Recette avec l'ID ${id} introuvable. Erreur: ${errR.message}`);
+      setError('Une erreur est survenue lors du chargement de la recette.');
       setLoading(false);
       return;
     }
 
     if (!r) {
-      setError(`Aucune recette trouvée avec l'ID ${id}`);
+      // Vérifier si cet id correspond à une recette générée → redirection
+      const { data: gen } = await supabase
+        .from('generated_recipes')
+        .select('id')
+        .eq('id', id)
+        .maybeSingle();
+      if (gen) {
+        router.replace(`/recipes/generated/${id}`);
+        return;
+      }
+      setNotFound(true);
       setLoading(false);
       return;
     }
 
-    const totalTime = (r?.prep_time_minutes || 0) + (r?.cook_time_minutes || 0) + (r?.rest_min || 0);
-    setRecipe({ 
-      id: r?.id, 
-      title: r?.title || r?.name, 
-      description: r?.description,
-      short_description: r?.short_description,
-      time_min: totalTime, 
-      prep_min: r?.prep_time_minutes,
-      cook_min: r?.cook_time_minutes,
-      rest_min: r?.rest_min,
-      servings: r?.servings,
-      steps: r?.instructions,
-      myko_score: r?.myko_score,
-      chef_tips: r?.chef_tips,
-      is_vegetarian: r?.is_vegetarian,
-      is_vegan: r?.is_vegan,
-      is_gluten_free: r?.is_gluten_free
+    const totalTime = (r.prep_time_minutes || 0) + (r.cook_time_minutes || 0);
+    setRecipe({
+      id: r.id,
+      title: r.name,
+      description: r.description,
+      time_min: totalTime,
+      prep_min: r.prep_time_minutes,
+      cook_min: r.cook_time_minutes,
+      servings: r.servings,
+      cooking_method: r.cooking_method,
     });
     
     // Charger les ingrédients de la recette (requête séparée et robuste)
@@ -593,6 +591,18 @@ export default function RecipeDetail() {
         <div className="v21-skel" style={{ height: 3, width: 92, marginTop: 22 }} />
         <div className="v21-skel" style={{ height: 200, marginTop: 28 }} />
         <div className="v21-skel" style={{ height: 260, marginTop: 24 }} />
+      </div>
+    );
+  }
+
+  if (notFound) {
+    return (
+      <div className="v21-page narrow">
+        <div className="rd-error">
+          <h2>Recette introuvable</h2>
+          <p>Cette recette n'existe pas ou a été supprimée.</p>
+          <button onClick={() => router.push('/recipes')} className="v21-btn">← Retour aux recettes</button>
+        </div>
       </div>
     );
   }
@@ -976,8 +986,6 @@ export default function RecipeDetail() {
           {[
             `${totalTime} min`,
             `${recipe.servings || 4} portions`,
-            recipe.myko_score != null ? `Score ${recipe.myko_score}/100` : null,
-            recipe.is_vegan ? 'Vegan' : recipe.is_vegetarian ? 'Végétarien' : 'Omnivore',
           ].filter(Boolean).join('  ·  ')}
         </p>
       </header>
