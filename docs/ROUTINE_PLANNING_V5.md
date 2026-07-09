@@ -238,8 +238,14 @@ DÉCIDE :
 - Intention gustative : ≥3 cuisines authentiques, arc des saveurs sur la semaine.
 - Allocation 14 repas déj+dîn : 4 viande / 2 poisson / 8 végé, ≥1 viande ROUGE,
   ≥1 poisson gras (dans le respect des interdits CP0.d).
-- 1 jour « végé renforcé » pour la personne au target le plus bas (1 seul repas
-  de viande blanche ce jour-là ; lignes différenciées par personne).
+- JOUR VÉGÉ DIFFÉRENCIÉ : choisis 1 des repas « viande » de la semaine ;
+  ce jour-là, la personne au target le plus bas reçoit une VARIANTE
+  VÉGÉTARIENNE du repas (pois chiches, tofu ou œufs — apport protéique
+  équivalent) pendant que l'autre personne garde la viande (BLANCHE
+  uniquement ce jour-là). Les lignes des deux personnes sont donc
+  DIFFÉRENTES pour ce créneau, chacune avec sa propre fiche
+  (generated_recipe_id distinct). Bilan hebdo : la personne
+  végé-différenciée totalise 3 repas de viande, l'autre 4.
 - Pomme de terre : 3-4 repas/semaine, formes variées (compte comme féculent).
 - Lots ⚠️ DLC du contexte utilisés en priorité + 2 sessions batch dans la semaine.
 - RESTES (CP0.i) placés en début de semaine (comptent dans l'équilibre du jour,
@@ -288,6 +294,11 @@ POUR CHAQUE repas déj/dîner NON-restes, DANS CET ORDRE :
    une ligne par personne concernée (kcal arrondi à 10, P/G/L/F au gramme,
    day_type renseigné). Les lignes des différentes personnes pour un même
    créneau partagent le même generated_recipe_id.
+   EXCEPTION — JOUR VÉGÉ DIFFÉRENCIÉ (CP1) : pour CE créneau, crée DEUX
+   fiches (le plat viande blanche + sa variante végétarienne pois
+   chiches/tofu/œufs) ; la ligne de la personne au target le plus bas
+   pointe la fiche végé, l'autre la fiche viande — descriptions,
+   short_labels et macros propres à chaque variante.
 4. Pdj/collations : lignes sans fiche (generated_recipe_id NULL).
 5. VÉRIFIE : SELECT count(*) FROM nutrition_plan_meals
    WHERE import_id=<id> AND meal_date='<date>'; = nombre attendu pour ce jour.
@@ -300,6 +311,9 @@ CHECKPOINT 3 — VÉRIFICATION
 Par personne : moyenne hebdo kcal = target_calories ± 2 % ; protéines dans la
 bande cible ; typologie = 2G/3S/2L ; ≥1 viande rouge + ≥1 poisson gras ;
 PDT dans 3-4 repas ; short_label sur tous les déj/dîn ; AUCUN ingrédient interdit.
+JOUR VÉGÉ DIFFÉRENCIÉ : la personne au target le plus bas totalise EXACTEMENT
+3 repas de viande sur la semaine (l'autre 4) et le créneau différencié a bien
+deux descriptions et deux generated_recipe_id distincts.
 Vérifie par requête d'agrégat :
   SELECT person_name, round(avg(day_kcal)) FROM (
     SELECT person_name, meal_date, sum(kcal) day_kcal

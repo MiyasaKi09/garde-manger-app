@@ -6,6 +6,7 @@ import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
 import { Sparkles, RefreshCw, X, Check } from 'lucide-react'
 import WeekGrid from './components/WeekGrid'
+import WeeklyNutritionRecap from './components/WeeklyNutritionRecap'
 import ConfirmDialog from '@/components/ConfirmDialog'
 import { toast } from '@/components/Toast'
 
@@ -133,6 +134,20 @@ export default function PlanningPage() {
   const batchRecipes = weekData?.batchRecipes || []
   const prepTasks = weekData?.prepTasks || []
   const shoppingItems = weekData?.shoppingItems || []
+
+  // Cibles nutritionnelles par personne (pour le récap hebdo). Best-effort.
+  const [nutritionGoals, setNutritionGoals] = useState([])
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      try {
+        const res = await authFetch('/api/nutrition/goals')
+        const data = await res.json().catch(() => ({}))
+        if (!cancelled && res.ok) setNutritionGoals(data.goals || [])
+      } catch {}
+    })()
+    return () => { cancelled = true }
+  }, [])
 
   const weekRangeLabel = `${weekDates[0].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })} – ${weekDates[6].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}`
 
@@ -607,14 +622,17 @@ export default function PlanningPage() {
                 ))}
               </section>
             ) : (
-              <WeekGrid
-                meals={meals}
-                weekDates={weekDates}
-                weekOffset={weekOffset}
-                onPrevWeek={() => setWeekOffset(w => w - 1)}
-                onNextWeek={() => setWeekOffset(w => w + 1)}
-                importId={selectedImportId}
-              />
+              <div className="ck-grid-col">
+                <WeeklyNutritionRecap meals={meals} goals={nutritionGoals} />
+                <WeekGrid
+                  meals={meals}
+                  weekDates={weekDates}
+                  weekOffset={weekOffset}
+                  onPrevWeek={() => setWeekOffset(w => w - 1)}
+                  onNextWeek={() => setWeekOffset(w => w + 1)}
+                  importId={selectedImportId}
+                />
+              </div>
             )}
           </div>
         )}
@@ -876,6 +894,29 @@ export default function PlanningPage() {
 
 /* Skeleton de la grille (panneau droit pendant le fetch) */
 .ck-grid-loading { min-width: 0; padding: 18px 42px; }
+.ck-grid-col { min-width: 0; display: flex; flex-direction: column; }
+
+/* ── Récap nutritionnel hebdo (au-dessus de la grille) ─────────────────── */
+.wnr {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 22px;
+  padding: 10px 42px 8px; border-bottom: 1px solid rgba(0,0,0,0.08);
+  font-size: 12px; color: var(--ink-3);
+}
+.wnr-lbl {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.wnr-person { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 7px; }
+.wnr-person b { color: var(--ink-1); font-weight: 600; }
+.wnr-dot { width: 8px; height: 8px; border-radius: 50%; align-self: center; background: #c7c2b8; }
+.wnr-ok   { background: #4c8a4f; }
+.wnr-warn { background: #d8952f; }
+.wnr-off  { background: #c0492f; }
+.wnr-none { background: #c7c2b8; }
+.wnr-kcal b, .wnr-kcal { color: var(--ink-2, #574f42); }
+.wnr-macros { color: var(--ink-3); }
+.wnr-days { font-style: italic; }
+@media (max-width: 900px) { .wnr { padding: 10px 22px 8px; } }
 
 .ck-empty-link:focus-visible, .ck-courses:focus-visible, .ck-ck:focus-visible {
   outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px;

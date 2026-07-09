@@ -59,6 +59,9 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
 
   const [doneSet, setDoneSet] = useState(new Set())
   const [cookSheetMeal, setCookSheetMeal] = useState(null)
+  // Détail pdj/collation : { label, dateStr, entries } — pas de fiche recette
+  // pour ces créneaux, on affiche la composition (quantités) et les macros.
+  const [detailMeal, setDetailMeal] = useState(null)
 
   const recipeCacheRef = useRef({})
 
@@ -191,7 +194,13 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
             <span className="wg-dish" style={dishStyle}>{renderDishName(dishName)}</span>
           </button>
         ) : (
-          <span className="wg-dish wg-dish-static" style={dishStyle} title={dishName}>{renderDishName(dishName)}</span>
+          <button
+            onClick={() => setDetailMeal({ label, dateStr, entries: typeMeals })}
+            className="wg-dish-btn wg-dish-info"
+            title={`${label} — voir la composition`}
+          >
+            <span className="wg-dish" style={dishStyle}>{renderDishName(dishName)}</span>
+          </button>
         )}
         {stockCov && (
           <StockDot
@@ -314,6 +323,31 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
           if (cookSheetMeal) setDoneSet(s => new Set(s).add(`${cookSheetMeal.entries?.[0]?.meal_date}|${cookSheetMeal.type}`))
         }}
       />
+
+      {/* Détail pdj/collation : composition (quantités) + macros par personne */}
+      {detailMeal && (
+        <div className="wg-detail-overlay" onClick={() => setDetailMeal(null)}>
+          <div className="wg-detail-card" role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
+            <div className="wg-detail-head">
+              <span className="wg-detail-title">{detailMeal.label}</span>
+              <button className="wg-detail-close" onClick={() => setDetailMeal(null)} aria-label="Fermer">✕</button>
+            </div>
+            {detailMeal.entries.map((m, i) => (
+              <div key={i} className="wg-detail-entry">
+                <span className="wg-detail-person">{m.person_name}</span>
+                <p className="wg-detail-desc">{m.description}</p>
+                <p className="wg-detail-macros">
+                  {m.kcal != null && <span><b>{Math.round(m.kcal)}</b> kcal</span>}
+                  {m.protein_g != null && <span>P <b>{Math.round(m.protein_g)}</b> g</span>}
+                  {m.carbs_g != null && <span>G <b>{Math.round(m.carbs_g)}</b> g</span>}
+                  {m.fat_g != null && <span>L <b>{Math.round(m.fat_g)}</b> g</span>}
+                  {m.fiber_g != null && <span>F <b>{Math.round(m.fiber_g)}</b> g</span>}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   )
 }
