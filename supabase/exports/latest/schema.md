@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Thu Jul  9 13:51:03 UTC 2026_
+_Généré le : Thu Jul  9 14:13:26 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -140,6 +140,8 @@ _Généré le : Thu Jul  9 13:51:03 UTC 2026_
  - updated_at :: timestamp with time zone default now()
  - subcategory_id :: bigint
  - nutrition_id :: integer
+ - source :: text default 'curated'::text NOT NULL
+ - verified :: boolean default true NOT NULL
 
 ### ciqual_reference
  - alim_code :: text NOT NULL
@@ -841,8 +843,8 @@ _Généré le : Thu Jul  9 13:51:03 UTC 2026_
  - tags → (id)
  - unit_conversions_generic → (id)
  - unit_conversions_product → (id)
- - user_allergies → (user_id, canonical_food_id)
- - user_diets → (diet_id, user_id)
+ - user_allergies → (canonical_food_id, user_id)
+ - user_diets → (user_id, diet_id)
  - user_food_bans → (id)
  - user_health_goals → (user_id, person_name)
  - user_profiles → (user_id)
@@ -1061,6 +1063,7 @@ _Généré le : Thu Jul  9 13:51:03 UTC 2026_
  - archetypes_expiry_kind_check ON archetypes : CHECK ((expiry_kind = ANY (ARRAY['DLC'::text, 'DDM'::text, 'ESTIMATE'::text])))
  - archetypes_origin_oneof_chk ON archetypes : CHECK (((canonical_food_id IS NOT NULL) OR (cultivar_id IS NOT NULL)))
  - chk_archetype_parent ON archetypes : CHECK ((((canonical_food_id IS NOT NULL) AND (cultivar_id IS NULL)) OR ((canonical_food_id IS NULL) AND (cultivar_id IS NOT NULL))))
+ - canonical_foods_source_check ON canonical_foods : CHECK ((source = ANY (ARRAY['curated'::text, 'auto'::text, 'ai'::text])))
  - cooked_dish_ingredients_quantity_used_check ON cooked_dish_ingredients : CHECK ((quantity_used > (0)::numeric))
  - cooked_dishes_check ON cooked_dishes : CHECK (((portions_remaining >= (0)::numeric) AND (portions_remaining <= portions_cooked)))
  - cooked_dishes_portions_cooked_check ON cooked_dishes : CHECK ((portions_cooked > (0)::numeric))
