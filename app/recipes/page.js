@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { authFetch } from '@/lib/authFetch';
 import { readCache, writeCache } from '@/lib/pageCache';
+import { dedupCatalog } from './catalogDedup';
 import './recipes.css';
 
 /* ── Fiche recette horizontale (vignette + infos), barre d'état à gauche ── */
@@ -35,7 +36,7 @@ function Fiche({ r, s, variant }) {
   }
 
   return (
-    <Link href={`/recipes/${r.id}`} className={`rc-fiche ${v}`}>
+    <Link href={r.href || `/recipes/${r.id}`} className={`rc-fiche ${v}`}>
       <div className="rc-media">
         {r.image_url
           ? <img src={r.image_url} alt={r.title || 'Recette'} loading="lazy" />
@@ -94,6 +95,7 @@ export default function RecipesPage() {
   async function fetchRecipes() {
     try {
       if (!readCache('recipes')) setLoading(true);
+
       // Inventaire lancé EN PARALLÈLE (indépendant des recettes), réutilisé plus bas.
       inventoryPromiseRef.current = (async () =>
         supabase
@@ -102,29 +104,87 @@ export default function RecipesPage() {
           .gt('qty_remaining', 0)
           .gt('expiration_date', new Date().toISOString())
       )();
-      const { data, error } = await supabase
-        .from('generated_recipes')
-        .select('id, title, description, servings, prep_min, cook_min, ingredients, steps, source, created_at, rating, cook_count, image_url')
-        .order('created_at', { ascending: false });
 
-      if (error) { setError(`Erreur de connexion: ${error.message}`); setRecipes([]); return; }
-      if (!data || data.length === 0) { setRecipes([]); return; }
+      // Charger les deux sources de recettes en parallèle.
+      const [genResult, clsResult] = await Promise.all([
+        supabase
+          .from('generated_recipes')
+          .select('id, title, description, servings, prep_min, cook_min, ingredients, steps, source, created_at, rating, cook_count, image_url')
+          .order('created_at', { ascending: false }),
+        supabase
+          .from('recipes')
+          .select('id, name, description, prep_time_minutes, cook_time_minutes, servings')
+          .order('name', { ascending: true }),
+      ]);
 
-      const recipeIds = data.map(r => r.id);
-      const { data: linkedIngs } = await supabase
-        .from('generated_recipe_ingredients')
-        .select('generated_recipe_id, canonical_food_id, archetype_id, quantity, unit')
-        .in('generated_recipe_id', recipeIds);
+      if (genResult.error) {
+        setError(`Erreur de connexion: ${genResult.error.message}`);
+        setRecipes([]);
+        return;
+      }
+
+      const genData = genResult.data || [];
+      const clsData = clsResult.data || []; // non-critique si échoue
+
+      // Ingrédients liés aux deux sources, en parallèle.
+      const [linkedIngsResult, clsLinkedIngsResult] = await Promise.all([
+        genData.length
+          ? supabase
+              .from('generated_recipe_ingredients')
+              .select('generated_recipe_id, canonical_food_id, archetype_id, quantity, unit')
+              .in('generated_recipe_id', genData.map(r => r.id))
+          : Promise.resolve({ data: [], error: null }),
+        clsData.length
+          ? supabase
+              .from('recipe_ingredients')
+              .select('recipe_id, canonical_food_id, archetype_id, quantity, unit')
+              .in('recipe_id', clsData.map(r => r.id))
+          : Promise.resolve({ data: [], error: null }),
+      ]);
 
       const ingsByRecipe = {};
-      (linkedIngs || []).forEach(ing => {
+      (linkedIngsResult.data || []).forEach(ing => {
         (ingsByRecipe[ing.generated_recipe_id] = ingsByRecipe[ing.generated_recipe_id] || []).push(ing);
       });
 
-      setRecipes(data.map(r => ({
-        ...r,
+      const clsIngsByRecipe = {};
+      (clsLinkedIngsResult.data || []).forEach(ing => {
+        (clsIngsByRecipe[ing.recipe_id] = clsIngsByRecipe[ing.recipe_id] || []).push(ing);
+      });
+
+      // Normaliser vers la forme commune de carte.
+      const generated = genData.map(r => ({
+        key: `gen-${r.id}`,
+        source: 'generated',
+        id: r.id,
+        title: r.title,
+        description: r.description,
+        image_url: r.image_url,
+        prep_min: r.prep_min,
+        cook_min: r.cook_min,
+        servings: r.servings,
+        rating: r.rating,
+        href: `/recipes/generated/${r.id}`,
         linked_ingredients: ingsByRecipe[r.id] || [],
-      })));
+      }));
+
+      const classic = clsData.map(r => ({
+        key: `cls-${r.id}`,
+        source: 'classic',
+        id: r.id,
+        title: r.name,
+        description: r.description,
+        image_url: null,
+        prep_min: r.prep_time_minutes,
+        cook_min: r.cook_time_minutes,
+        servings: r.servings,
+        rating: null,
+        href: `/recipes/${r.id}`,
+        linked_ingredients: clsIngsByRecipe[r.id] || [],
+      }));
+
+      // Déduplication : générées d'abord pour que « préférer generated » soit efficace.
+      setRecipes(dedupCatalog([...generated, ...classic]));
     } catch (err) {
       setError(`Erreur: ${err.message}`);
       setRecipes([]);
@@ -177,7 +237,7 @@ export default function RecipesPage() {
       for (const recipe of recipes) {
         const linked = recipe.linked_ingredients || [];
         if (linked.length === 0) {
-          statusMap[recipe.id] = { total: 0, available: 0, missing: 0, missingNames: [], urgent: 0, expiringName: null, expiringDays: null, percent: 0, mykoScore: 0 };
+          statusMap[recipe.key] = { total: 0, available: 0, missing: 0, missingNames: [], urgent: 0, expiringName: null, expiringDays: null, percent: 0, mykoScore: 0 };
           continue;
         }
         let available = 0, urgent = 0;
@@ -217,7 +277,7 @@ export default function RecipesPage() {
         const t = (recipe.prep_min || 0) + (recipe.cook_min || 0);
         mykoScore += t > 0 ? Math.max(0, 10 - (t / 120) * 10) : 5;
 
-        statusMap[recipe.id] = { total, available, missing, missingNames, urgent, expiringName, expiringDays, percent, mykoScore: Math.round(mykoScore) };
+        statusMap[recipe.key] = { total, available, missing, missingNames, urgent, expiringName, expiringDays, percent, mykoScore: Math.round(mykoScore) };
       }
       setInventoryStatus(statusMap);
       writeCache('recipes', { recipes, status: statusMap });
@@ -244,7 +304,7 @@ export default function RecipesPage() {
   }
 
   // ── Regroupements (pilotés par le garde-manger) ──
-  const withStatus = recipes.map(r => ({ r, s: inventoryStatus[r.id] }));
+  const withStatus = recipes.map(r => ({ r, s: inventoryStatus[r.key] }));
   const ready = withStatus.filter(x => x.s);
   const byScore = (a, b) => (b.s.mykoScore || 0) - (a.s.mykoScore || 0);
 
@@ -389,7 +449,7 @@ export default function RecipesPage() {
               </div>
               <p className="rc-lede">Cuisinez d'abord ceux-là — vos produits qui approchent de la date.</p>
               <div className="rc-sheet">
-                {antigaspi.map(({ r, s }) => <Fiche key={r.id} r={r} s={s} variant="ag" />)}
+                {antigaspi.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} variant="ag" />)}
               </div>
             </section>
           )}
@@ -402,7 +462,7 @@ export default function RecipesPage() {
               </div>
               <p className="rc-lede">Tous les ingrédients sont dans votre garde-manger.</p>
               <div className="rc-sheet">
-                {cuisinable.map(({ r, s }) => <Fiche key={r.id} r={r} s={s} variant="ok" />)}
+                {cuisinable.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} variant="ok" />)}
               </div>
             </section>
           )}
@@ -416,7 +476,7 @@ export default function RecipesPage() {
               </div>
               <p className="rc-lede">Si proches — un saut au marché et c'est prêt.</p>
               <div className="rc-sheet">
-                {manque.map(({ r, s }) => <Fiche key={r.id} r={r} s={s} variant="sf" />)}
+                {manque.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} variant="sf" />)}
               </div>
             </section>
           )}
@@ -453,7 +513,7 @@ export default function RecipesPage() {
             <div className="v21-empty rc-empty"><p>Aucune recette trouvée.</p></div>
           ) : (
             <div className="rc-sheet">
-              {flatList.map(({ r, s }) => <Fiche key={r.id} r={r} s={s} />)}
+              {flatList.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} />)}
             </div>
           )}
         </>

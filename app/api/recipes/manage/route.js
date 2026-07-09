@@ -14,8 +14,6 @@ export const dynamic = 'force-dynamic'
  *                      sub_recipe_id?, quantity NOT NULL, unit NOT NULL, notes?)
  *   recipe_steps(recipe_id, step_no, instruction, duration_min?, temperature?,
  *                temperature_unit?)
- *   recipe_utensils — ⚠️ table ABSENTE du schéma actuel : les ustensiles fournis
- *   sont tentés « best effort » et remontés dans `warnings` si l'écriture échoue.
  *
  * Compat éditeurs actuels : `title` est accepté comme alias de `name`,
  * `prep_min`/`cook_min` comme alias de `prep_time_minutes`/`cook_time_minutes`.
@@ -35,16 +33,15 @@ export const dynamic = 'force-dynamic'
  *     is_scalable_to_main?, is_complete_meal?, needs_side_dish?: boolean,
  *     ingredients?: [{ quantity: number>0, unit: string, archetype_id?,
  *                      canonical_food_id?, sub_recipe_id?, notes? }],
- *     steps?: [{ instruction: string, duration_min?, temperature?, temperature_unit? }],
- *     utensils?: [{ utensil_name: string, quantity?: int>=1, is_optional?, notes? }]
+ *     steps?: [{ instruction: string, duration_min?, temperature?, temperature_unit? }]
  *   }
- *   → 201 { success: true, recipe, ingredients_count, steps_count, utensils_count, warnings? }
+ *   → 201 { success: true, recipe, ingredients_count, steps_count }
  *
  * PUT /api/recipes/manage — mise à jour + remplacement des enfants
  *   body: { id: int (requis), ...mêmes champs que POST (tous optionnels) }
  *   Sémantique enfants : un tableau FOURNI remplace intégralement
  *   (delete + insert) ; un tableau ABSENT (undefined) est laissé tel quel.
- *   → 200 { success: true, recipe, ingredients_count?, steps_count?, utensils_count?, warnings? }
+ *   → 200 { success: true, recipe, ingredients_count?, steps_count? }
  *
  * DELETE /api/recipes/manage?id=123 (ou body { id })
  *   Supprime la recette ; les enfants (ingredients, steps, tags, pairings,
@@ -163,22 +160,6 @@ function parseSteps(list) {
   return { rows, errors }
 }
 
-function parseUtensils(list) {
-  const rows = []
-  const errors = []
-  ;(list || []).forEach((u, i) => {
-    const name = typeof u?.utensil_name === 'string' ? u.utensil_name.trim() : ''
-    if (!name) { errors.push(`utensils[${i}].utensil_name est requis`); return }
-    rows.push({
-      utensil_name: name,
-      quantity: intIn(u.quantity, 1, 100) ?? 1,
-      is_optional: u.is_optional === true,
-      notes: u.notes ?? null,
-    })
-  })
-  return { rows, errors }
-}
-
 /**
  * Remplace les enfants d'une recette (delete + insert).
  * `tolerateMissingTable` : recipe_utensils n'existe pas (encore) en base →
@@ -213,8 +194,7 @@ export async function POST(request) {
   const { fields, errors } = parseRecipeFields(body || {}, { requireName: true })
   const { rows: ingredients, errors: ingErrors } = parseIngredients(body?.ingredients)
   const { rows: steps, errors: stepErrors } = parseSteps(body?.steps)
-  const { rows: utensils, errors: utErrors } = parseUtensils(body?.utensils)
-  const allErrors = [...errors, ...ingErrors, ...stepErrors, ...utErrors]
+  const allErrors = [...errors, ...ingErrors, ...stepErrors]
   if (allErrors.length) {
     return NextResponse.json({ error: allErrors.join(' ; ') }, { status: 400 })
   }
@@ -228,7 +208,6 @@ export async function POST(request) {
     .single()
   if (insErr) return NextResponse.json({ error: insErr.message }, { status: 500 })
 
-  const warnings = []
   const ingRes = await replaceChildren(supabase, 'recipe_ingredients', recipe.id, ingredients)
   const stepRes = !ingRes.error
     ? await replaceChildren(supabase, 'recipe_steps', recipe.id, steps)
@@ -239,16 +218,12 @@ export async function POST(request) {
     await supabase.from('recipes').delete().eq('id', recipe.id)
     return NextResponse.json({ error: hardError }, { status: 500 })
   }
-  const utRes = await replaceChildren(supabase, 'recipe_utensils', recipe.id, utensils, { tolerateMissingTable: true })
-  if (utRes.warning) warnings.push(utRes.warning)
 
   return NextResponse.json({
     success: true,
     recipe,
     ingredients_count: ingRes.count,
     steps_count: stepRes.count,
-    utensils_count: utRes.count,
-    warnings: warnings.length ? warnings : undefined,
   }, { status: 201 })
 }
 
@@ -273,10 +248,6 @@ export async function PUT(request) {
   if (Array.isArray(body?.steps)) {
     const { rows, errors: e } = parseSteps(body.steps)
     parsedChildren.steps = rows; childErrors.push(...e)
-  }
-  if (Array.isArray(body?.utensils)) {
-    const { rows, errors: e } = parseUtensils(body.utensils)
-    parsedChildren.utensils = rows; childErrors.push(...e)
   }
   const allErrors = [...errors, ...childErrors]
   if (allErrors.length) {
@@ -307,7 +278,6 @@ export async function PUT(request) {
     recipe = data
   }
 
-  const warnings = []
   const counts = {}
   if (parsedChildren.ingredients) {
     const r = await replaceChildren(supabase, 'recipe_ingredients', id, parsedChildren.ingredients)
@@ -319,17 +289,11 @@ export async function PUT(request) {
     if (r.error) return NextResponse.json({ error: r.error }, { status: 500 })
     counts.steps_count = r.count
   }
-  if (parsedChildren.utensils) {
-    const r = await replaceChildren(supabase, 'recipe_utensils', id, parsedChildren.utensils, { tolerateMissingTable: true })
-    if (r.warning) warnings.push(r.warning)
-    counts.utensils_count = r.count
-  }
 
   return NextResponse.json({
     success: true,
     recipe,
     ...counts,
-    warnings: warnings.length ? warnings : undefined,
   })
 }
 
@@ -350,9 +314,6 @@ export async function DELETE(request) {
 
   // Les enfants directs (ingredients, steps, tags, pairings, nutrition_cache,
   // instructions) sont en ON DELETE CASCADE en base — pas de purge manuelle.
-  // recipe_utensils (si la table est créée un jour) : purge best effort.
-  await supabase.from('recipe_utensils').delete().eq('recipe_id', id)
-
   const { data: deleted, error } = await supabase
     .from('recipes')
     .delete()

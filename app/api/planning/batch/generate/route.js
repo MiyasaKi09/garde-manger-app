@@ -64,6 +64,13 @@ const frShort = (iso) => { const d = new Date(`${iso}T00:00:00Z`); return `${DOW
 const cap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : s
 
 /* ───────── profils de conservation par type de plat (repli déterministe) ───────── */
+// NOTE : ces regexes classifient les durées de conservation frigo/congélo,
+// elles ne filtrent PAS les aliments interdits. Les mots comme "thon", "crevette",
+// "veau", "agneau" apparaissent ici uniquement pour estimer la fragilité du plat
+// (poisson = 2 j, viande = 4 j). Les interdits alimentaires vivent désormais dans
+// la table user_food_bans (migration 20260709_routine_v5.sql) et sont injectés
+// dans les prompts IA via buildConstraintsBlock (lib/aiSystemPrompts.js) et
+// fetchDietaryConstraints (lib/aiContextBuilder.js).
 const DISH_PROFILES = [
   { re: /(bourguignon|blanquette|daube|pot-au-feu|joues|tajine|navarin|carbonnade|osso|boeuf braise|bœuf braise)/, keeps: 5, freeze: true, better: true },
   { re: /(dahl|dhal|curry|chili|cassoulet|lentille|pois chiche|haricot|soupe|veloute|velouté|potage|minestrone|ragout|ragoût|mijot)/, keeps: 5, freeze: true, better: true },

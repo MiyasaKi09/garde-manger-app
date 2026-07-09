@@ -136,14 +136,160 @@ export default function PlanningPage() {
 
   const weekRangeLabel = `${weekDates[0].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })} – ${weekDates[6].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}`
 
-  // ── Régénération ── (flux conservé verbatim)
+  // ── Régénération ──
+  // Machine à états du poller :
+  //   idle → submitting → waiting → done | error | stalled
+  //   stalled = 6 min sans résolution : la routine continue en arrière-plan,
+  //   on ne simule PLUS un « done » — l'utilisateur peut « Vérifier » (re-check
+  //   ponctuel) ou « Relancer » (retour au formulaire).
   const [regenOpen, setRegenOpen] = useState(false)
-  const [regenMode, setRegenMode] = useState('week') // 'week' | 'days'
+  const [regenMode, setRegenMode] = useState('week') // 'week' | 'days' | 'meals'
   const [regenDays, setRegenDays] = useState([])
-  const [regenStatus, setRegenStatus] = useState('idle') // idle | submitting | waiting | done | error
+  const [regenStatus, setRegenStatus] = useState('idle') // idle | submitting | waiting | done | error | stalled
   const [regenError, setRegenError] = useState('')
   const [regenMeals, setRegenMeals] = useState([]) // [{date, type}]
   const [regenInstructions, setRegenInstructions] = useState('')
+  const [validation, setValidation] = useState(null) // rapport /validate quand !ok
+  const pollTokenRef = useRef(0) // invalide les boucles de polling obsolètes
+
+  const REGEN_MAX_WAIT = 6 * 60 * 1000
+  const REGEN_POLL_MS = 8000
+
+  // Dernière requête de régénération de l'utilisateur. Repli sans error_message
+  // tant que la migration v5 (colonne error_message) n'est pas appliquée.
+  async function fetchLatestRegen(userId) {
+    let { data, error } = await supabase
+      .from('plan_regen_requests')
+      .select('id, status, error_message, created_at')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(1)
+    if (error) {
+      ;({ data } = await supabase
+        .from('plan_regen_requests')
+        .select('id, status, created_at')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .limit(1))
+    }
+    return data?.[0] || null
+  }
+
+  // Validation post-génération : signale les manques (créneaux, macros, fiches,
+  // courses) et propose « Compléter ». Best-effort — ne bloque jamais le flux.
+  async function runValidation(importId) {
+    if (!importId) return
+    try {
+      const res = await authFetch(`/api/planning/imports/${importId}/validate`)
+      const report = await res.json().catch(() => null)
+      if (!res.ok || !report) return
+      if (report.ok) { setValidation(null); return }
+      setValidation({ importId, ...report })
+      const summary = validationSummary(report)
+      if (summary) toast.warning(`Plan incomplet : ${summary}`)
+    } catch { /* best-effort */ }
+  }
+
+  function validationSummary(report) {
+    const parts = []
+    const n1 = report.missing_slots?.length || 0
+    const n2 = report.invalid_macros?.length || 0
+    const n3 = report.dej_diner_sans_fiche?.length || 0
+    if (n1) parts.push(`${n1} créneau${n1 > 1 ? 'x' : ''} manquant${n1 > 1 ? 's' : ''}`)
+    if (n2) parts.push(`${n2} repas sans macros`)
+    if (n3) parts.push(`${n3} repas sans fiche`)
+    if (!report.shopping_count) parts.push('liste de courses vide')
+    return parts.join(', ')
+  }
+
+  // Pré-remplit le modal en mode « Un repas » avec les créneaux à compléter.
+  function completeMissing() {
+    if (!validation) return
+    const slots = new Map()
+    const add = s => { if (s?.date && s?.type) slots.set(`${s.date}|${s.type}`, { date: s.date, type: s.type }) }
+    ;(validation.missing_slots || []).forEach(add)
+    ;(validation.dej_diner_sans_fiche || []).forEach(add)
+    ;(validation.invalid_macros || []).forEach(add)
+    setRegenMeals([...slots.values()])
+    setRegenMode('meals')
+    setRegenDays([])
+    setRegenInstructions('')
+    setRegenError('')
+    setRegenStatus('idle')
+    setRegenOpen(true)
+  }
+
+  // Résolution « done » : recharge les imports, invalide le cache, valide le plan.
+  async function onRegenDone() {
+    detailCacheRef.current = {} // les repas ont changé
+    let targetImportId = null
+    try {
+      const res = await authFetch('/api/planning/imports')
+      const data = await res.json().catch(() => ({}))
+      if (data.imports) {
+        setImports(data.imports)
+        targetImportId = data.imports[0]?.id || null
+      }
+    } catch { /* le rail se resynchronisera au prochain passage */ }
+    if (targetImportId) await runValidation(targetImportId)
+    setRegenStatus('done')
+    setRegenOpen(false)
+  }
+
+  // Boucle de polling honnête : done → validation ; error → error_message ;
+  // budget épuisé → « stalled » (jamais de faux succès).
+  async function pollRegen(userId, budgetMs = REGEN_MAX_WAIT) {
+    const token = ++pollTokenRef.current
+    const deadline = Date.now() + budgetMs
+    while (Date.now() < deadline) {
+      await new Promise(r => setTimeout(r, REGEN_POLL_MS))
+      if (pollTokenRef.current !== token) return
+      const latest = await fetchLatestRegen(userId)
+      if (pollTokenRef.current !== token) return
+      if (latest?.status === 'done') { await onRegenDone(); return }
+      if (latest?.status === 'error') {
+        const msg = latest.error_message || 'La routine a rencontré une erreur. Réessaie.'
+        toast.error(msg)
+        setRegenStatus('error')
+        setRegenError(msg)
+        return
+      }
+    }
+    if (pollTokenRef.current === token) setRegenStatus('stalled')
+  }
+
+  // « Vérifier » depuis l'état stalled : un seul re-check, sans relancer la boucle.
+  async function checkRegenOnce() {
+    if (!user) return
+    const latest = await fetchLatestRegen(user.id)
+    if (latest?.status === 'done') { await onRegenDone(); return }
+    if (latest?.status === 'error') {
+      const msg = latest.error_message || 'La routine a rencontré une erreur. Réessaie.'
+      toast.error(msg)
+      setRegenStatus('error')
+      setRegenError(msg)
+      return
+    }
+    toast.info('Toujours en cours — Myko continue de générer en arrière-plan.')
+  }
+
+  // Reprise au montage : si une requête pending/processing de moins de 15 min
+  // existe, on ré-affiche la progression (l'onglet a pu être fermé entre-temps).
+  useEffect(() => {
+    if (!user) return
+    let cancelled = false
+    ;(async () => {
+      const latest = await fetchLatestRegen(user.id)
+      if (cancelled || !latest) return
+      if (!['pending', 'processing'].includes(latest.status)) return
+      const age = Date.now() - new Date(latest.created_at).getTime()
+      if (!(age >= 0 && age < 15 * 60 * 1000)) return
+      setRegenOpen(true)
+      setRegenStatus('waiting')
+      pollRegen(user.id, Math.max(60 * 1000, REGEN_MAX_WAIT - age))
+    })()
+    return () => { cancelled = true; pollTokenRef.current++ }
+  }, [user])
 
   // ── Planification du batch (génération intelligente in-app) ──
   const [batchStatus, setBatchStatus] = useState('idle') // idle | submitting | done | error
@@ -202,36 +348,12 @@ export default function PlanningPage() {
       if (!res.ok && res.status !== 202) {
         throw new Error(data.error || `Erreur (${res.status})`)
       }
+      setValidation(null)
       setRegenStatus('waiting')
 
-      // Poll plan_regen_requests jusqu'à status='done'
-      const MAX_WAIT = 6 * 60 * 1000
-      const POLL = 8000
-      const deadline = Date.now() + MAX_WAIT
-      while (Date.now() < deadline) {
-        await new Promise(r => setTimeout(r, POLL))
-        const { data: rows } = await supabase
-          .from('plan_regen_requests')
-          .select('status')
-          .eq('user_id', user?.id)
-          .order('created_at', { ascending: false })
-          .limit(1)
-        const latest = rows?.[0]
-        if (latest?.status === 'done') {
-          setRegenStatus('done')
-          setRegenOpen(false)
-          detailCacheRef.current = {} // invalide le cache : les repas ont changé
-          await loadImports()
-          return
-        }
-        if (latest?.status === 'error') {
-          throw new Error('La routine a rencontré une erreur. Réessaie.')
-        }
-      }
-      setRegenStatus('done')
-      setRegenOpen(false)
-      detailCacheRef.current = {}
-      await loadImports()
+      // Poll honnête de plan_regen_requests : done → validation du plan,
+      // error → error_message, 6 min sans réponse → stalled (pas de faux done).
+      await pollRegen(user?.id)
     } catch (err) {
       setRegenStatus('error')
       setRegenError(err.message)
@@ -239,6 +361,7 @@ export default function PlanningPage() {
   }
 
   function openRegen() {
+    pollTokenRef.current++ // stoppe une éventuelle boucle de polling en cours
     setRegenOpen(true); setRegenStatus('idle'); setRegenDays([]); setRegenMeals([]); setRegenInstructions(''); setRegenMode('week')
   }
 
@@ -353,6 +476,22 @@ export default function PlanningPage() {
             )}
           </div>
         </header>
+
+        {/* ═══ BANNIÈRE VALIDATION — plan incomplet après régénération ═══ */}
+        {validation && (
+          <div className="regen-vbanner" role="status">
+            <span className="regen-vbanner-txt">
+              Plan incomplet — {validationSummary(validation) || 'des éléments manquent'}
+              {' '}({validation.meals_count}/{validation.expected_count} repas).
+            </span>
+            <div className="regen-vbanner-actions">
+              <button className="v21-btn sm" onClick={completeMissing}>Compléter</button>
+              <button className="regen-vbanner-close" onClick={() => setValidation(null)} aria-label="Masquer">
+                <X size={14} />
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* ═══ CONTENU ═══ */}
         {!planningReady ? (
@@ -483,12 +622,12 @@ export default function PlanningPage() {
 
       {/* ═══ MODAL RÉGÉNÉRATION ═══ */}
       {regenOpen && (
-        <div className="regen-overlay" onClick={() => regenStatus === 'idle' || regenStatus === 'error' ? setRegenOpen(false) : null}>
+        <div className="regen-overlay" onClick={() => ['idle', 'error', 'stalled'].includes(regenStatus) ? setRegenOpen(false) : null}>
           <div className="regen-card" onClick={e => e.stopPropagation()}>
             {/* Header */}
             <div className="regen-header">
               <span className="v21-bl">Modifier le planning</span>
-              {(regenStatus === 'idle' || regenStatus === 'error') && (
+              {['idle', 'error', 'stalled'].includes(regenStatus) && (
                 <button className="regen-close" onClick={() => setRegenOpen(false)}><X size={18} /></button>
               )}
             </div>
@@ -595,6 +734,24 @@ export default function PlanningPage() {
                 <p>Myko régénère ton planning…</p>
                 <p className="regen-note">Tu peux fermer cette fenêtre, le résultat apparaîtra automatiquement.</p>
                 <button className="v21-btn ghost sm regen-cancel" onClick={() => setRegenOpen(false)}>Fermer et revenir plus tard</button>
+              </div>
+            ) : regenStatus === 'stalled' ? (
+              <div className="regen-waiting regen-stalled">
+                <p>La génération prend plus de temps que prévu — elle continue en arrière-plan.</p>
+                <p className="regen-note">
+                  Le résultat apparaîtra dès que la routine aura terminé. Tu peux vérifier
+                  maintenant, ou relancer une nouvelle demande.
+                </p>
+                <div className="regen-stall-actions">
+                  <button className="v21-btn sm" onClick={checkRegenOnce}>Vérifier</button>
+                  <button
+                    className="v21-btn ghost sm"
+                    onClick={() => { setRegenStatus('idle'); setRegenError('') }}
+                  >
+                    Relancer
+                  </button>
+                </div>
+                <button className="v21-btn ghost sm regen-cancel" onClick={() => setRegenOpen(false)}>Fermer</button>
               </div>
             ) : null}
           </div>
@@ -826,6 +983,33 @@ export default function PlanningPage() {
   margin: 0; text-align: center;
 }
 .regen-cancel { margin-top: 4px; }
+
+/* État « stalled » : génération plus longue que prévu, jamais de faux done */
+.regen-stalled p:first-child {
+  font-family: var(--font-text); font-size: 14px; font-weight: 600; color: var(--ink-1);
+}
+.regen-stall-actions { display: flex; gap: 10px; justify-content: center; }
+
+/* Bannière de validation post-génération (plan incomplet) */
+.regen-vbanner {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  border: 1px solid var(--state-soon, #b07d2a);
+  background: var(--state-soon-bg, rgba(176, 125, 42, 0.08));
+  border-radius: 3px; padding: 11px 14px; margin-bottom: 18px;
+}
+.regen-vbanner-txt {
+  font-family: var(--font-text); font-size: 13.5px; color: var(--ink-1); line-height: 1.45;
+}
+.regen-vbanner-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.regen-vbanner-close {
+  background: none; border: none; cursor: pointer; padding: 5px;
+  color: var(--ink-3); border-radius: 3px; display: flex;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.regen-vbanner-close:hover { background: var(--surface-soft); color: var(--ink-1); }
+@media (max-width: 560px) {
+  .regen-vbanner { flex-direction: column; align-items: flex-start; }
+}
 
 .regen-instructions-wrap { width: 100%; }
 .regen-instructions {
