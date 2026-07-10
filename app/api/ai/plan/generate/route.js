@@ -6,6 +6,7 @@ import { parseJsonPlan } from '@/lib/jsonPlanParser'
 import { normalizeRecipeName, cleanRecipeName, cleanIngredientName } from '@/lib/recipeNormalizer'
 import { buildAiContext, formatContextForPrompt } from '@/lib/aiContextBuilder'
 import { linkRecipesForUser } from '@/lib/ingredientResolver'
+import { validateGeneratedRecipe } from '@/lib/aiRecipeSchema'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -48,7 +49,9 @@ export async function POST(request) {
     }
 
     // ── Generate complete recipe cards for dishes missing steps ──
-    await generateMissingRecipes(supabase, user.id, plan.days || [])
+    // Chaque recette générée est validée (lib/aiRecipeSchema) : une recette
+    // invalide est ignorée (comptée dans skipped_invalid) sans faire échouer le plan.
+    const missingRes = await generateMissingRecipes(supabase, user.id, plan.days || [])
 
     // ── Relier les ingrédients aux entités d'inventaire (déterministe, sans API).
     //    Doit tourner AVANT la liste de courses pour qu'elle utilise les IDs liés. ──
@@ -65,6 +68,8 @@ export async function POST(request) {
       success: true,
       importId: result.importId,
       summary: result.summary,
+      generated_recipes: missingRes.generated,
+      skipped_invalid: missingRes.skippedInvalid,
     })
   } catch (err) {
     console.error('[AI Plan Generate] Error:', err)
@@ -553,7 +558,7 @@ async function generateMissingRecipes(supabase, userId, days) {
     }
   }
 
-  if (!dishNames.size) return 0
+  if (!dishNames.size) return { generated: 0, skippedInvalid: 0 }
 
   // 2. Check which ones are missing steps in the cache (with fuzzy dedup)
   const toGenerate = []
@@ -605,10 +610,11 @@ async function generateMissingRecipes(supabase, userId, days) {
     toGenerate.push({ name: cleanName || name, normalized, existingId })
   }
 
-  if (!toGenerate.length) return 0
+  if (!toGenerate.length) return { generated: 0, skippedInvalid: 0 }
 
   // 3. Generate each missing recipe via Claude (batch)
   let generated = 0
+  let skippedInvalid = 0
   const ctx = await buildAiContext(supabase, userId)
   const context = formatContextForPrompt(ctx)
 
@@ -674,18 +680,27 @@ FORMAT JSON :
         if (match) recipe = JSON.parse(match[0])
       }
 
-      if (!recipe?.steps?.length) continue
+      // Valider/réparer la réponse IA AVANT sauvegarde : une recette
+      // irréparable est ignorée (pas de sauvegarde partielle), le plan continue.
+      if (recipe && recipe.title == null) recipe.title = name
+      const validation = validateGeneratedRecipe(recipe)
+      if (!validation.ok) {
+        skippedInvalid++
+        console.error(`[Plan Generate] Recette IA invalide pour "${name}", ignorée:`, validation.errors.join(' ; '))
+        continue
+      }
+      const cleaned = validation.value
 
       const recipeData = {
-        title: recipe.title || name,
-        description: recipe.description || null,
-        servings: recipe.servings || 2,
-        prep_min: recipe.prep_min || null,
-        cook_min: recipe.cook_min || null,
-        ingredients: recipe.ingredients || [],
-        steps: recipe.steps || [],
-        chef_tips: recipe.chef_tips || null,
-        nutrition_per_serving: recipe.nutrition_per_serving || null,
+        title: cleaned.title,
+        description: cleaned.description,
+        servings: cleaned.servings,
+        prep_min: cleaned.prep_min,
+        cook_min: cleaned.cook_min,
+        ingredients: cleaned.ingredients,
+        steps: cleaned.steps,
+        chef_tips: cleaned.chef_tips,
+        nutrition_per_serving: cleaned.nutrition_per_serving,
       }
 
       if (existingId) {
@@ -705,5 +720,5 @@ FORMAT JSON :
     }
   }
 
-  return generated
+  return { generated, skippedInvalid }
 }

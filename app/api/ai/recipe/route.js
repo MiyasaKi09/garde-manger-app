@@ -5,6 +5,7 @@ import { buildAiContext, formatContextForPrompt } from '@/lib/aiContextBuilder'
 import { normalizeRecipeName, cleanRecipeName } from '@/lib/recipeNormalizer'
 import { calculatePreciseNutrition } from '@/lib/recipePreciseNutrition'
 import { linkRecipesForUser, isRecipeLinkComplete } from '@/lib/ingredientResolver'
+import { validateGeneratedRecipe } from '@/lib/aiRecipeSchema'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -205,19 +206,35 @@ Utilise les valeurs CIQUAL/table de composition des aliments, pas des estimation
       return NextResponse.json({ error: 'Impossible de générer la recette', raw: text }, { status: 500 })
     }
 
+    // Fallback historique : si le modèle omet servings, prendre celui demandé.
+    if (recipe.servings == null && servings) recipe.servings = servings
+
+    // 2b. Valider/réparer la réponse IA AVANT toute sauvegarde.
+    // Irréparable (pas de titre, aucun ingrédient/étape valide) → 502, rien
+    // n'est persisté (jamais de sauvegarde partielle).
+    const validation = validateGeneratedRecipe(recipe)
+    if (!validation.ok) {
+      console.error('[AI Recipe] Réponse IA invalide:', validation.errors.join(' ; '))
+      return NextResponse.json(
+        { error: 'Réponse IA invalide', details: validation.errors },
+        { status: 502 }
+      )
+    }
+    recipe = validation.value
+
     // 3. Save to cache (update if exists with empty steps, insert if new)
     let recipeDbId = existingCacheId || null
     try {
       const recipeData = {
-        title: recipe.title || description,
-        description: recipe.description || null,
-        servings: recipe.servings || servings || 2,
-        prep_min: recipe.prep_min || null,
-        cook_min: recipe.cook_min || null,
-        ingredients: recipe.ingredients || [],
-        steps: recipe.steps || [],
-        chef_tips: recipe.chef_tips || null,
-        nutrition_per_serving: recipe.nutrition_per_serving || null,
+        title: recipe.title,
+        description: recipe.description,
+        servings: recipe.servings,
+        prep_min: recipe.prep_min,
+        cook_min: recipe.cook_min,
+        ingredients: recipe.ingredients,
+        steps: recipe.steps,
+        chef_tips: recipe.chef_tips,
+        nutrition_per_serving: recipe.nutrition_per_serving,
       }
 
       if (existingCacheId) {
