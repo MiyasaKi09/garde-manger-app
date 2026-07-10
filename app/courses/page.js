@@ -1,39 +1,67 @@
 'use client'
 
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
-import { ShoppingCart, Check, Package, ChevronLeft, ChevronRight, RefreshCw, ImageOff, Camera, X } from 'lucide-react'
+import {
+  ShoppingCart, Check, Package, ChevronLeft, ChevronRight,
+  RefreshCw, ImageOff, Camera, X, MoreHorizontal,
+} from 'lucide-react'
 import Link from 'next/link'
 import { getFoodEmoji } from '@/lib/foodEmoji'
+import StoragePlanSheet from '@/components/StoragePlanSheet'
+import IngredientReviewPanel from '@/components/IngredientReviewPanel'
 import './courses.css'
 
 const RAYON_TINTS = ['#E4EBDC', '#F1E9D4', '#EFD9D0', '#E8E2D2', '#EADFCB', '#DEE7EC']
 
 export default function CoursesPage() {
   const router = useRouter()
-  const [loading, setLoading] = useState(true)
-  const [items, setItems] = useState([])
-  const [importId, setImportId] = useState(null)
+
+  // ── Données ──────────────────────────────────────────────────────────────────
+  const [loading, setLoading]         = useState(true)
+  const [items, setItems]             = useState([])
+  const [importId, setImportId]       = useState(null)
   const [importLabel, setImportLabel] = useState('')
-  const [imports, setImports] = useState([])
+  const [imports, setImports]         = useState([])
   const [importIndex, setImportIndex] = useState(0)
-  const [activeWeek, setActiveWeek] = useState(null)
-  const [activeRayon, setActiveRayon] = useState(null) // null = défaut (1er rayon) · 'TOUT' = tout · sinon = catégorie
-  const [expandedItems, setExpandedItems] = useState(new Set())
-  const [containerEdits, setContainerEdits] = useState({})
+
+  // ── Navigation ────────────────────────────────────────────────────────────────
+  const [activeWeek, setActiveWeek]   = useState(null)
+  const [activeRayon, setActiveRayon] = useState(null) // null = 1er rayon · 'TOUT' = tout
+
+  // ── UI locale ────────────────────────────────────────────────────────────────
+  const [expandedItems, setExpandedItems]     = useState(new Set())
+  const [containerEdits, setContainerEdits]   = useState({})
+
+  // ── Résolution des ingrédients ────────────────────────────────────────────────
+  const [resolutionPending, setResolutionPending] = useState(false)
+  const [resolutionError, setResolutionError]     = useState(false)
+  const resolvedImportsRef = useRef(new Set())
+
+  // ── Images ───────────────────────────────────────────────────────────────────
   const [fetchingImages, setFetchingImages] = useState(false)
-  const [fetchResult, setFetchResult] = useState(null)
-  const [rebuilding, setRebuilding] = useState(false)
-  const [imgErrors, setImgErrors] = useState(new Set()) // images cassées (404) → repli icône
-  const [picker, setPicker] = useState(null)            // produit dont on change la photo
-  const [pickerCands, setPickerCands] = useState([])
-  const [pickerLoading, setPickerLoading] = useState(false)
-  const [pickerQuery, setPickerQuery] = useState('')
-  const [toast, setToast] = useState(null)            // { id, msg, kind } — toast discret auto-effacé
-  const resolvedImportsRef = useRef(new Set())        // importIds pour lesquels resolve-pending a déjà été déclenché
+  const [fetchResult, setFetchResult]       = useState(null)
+  const [rebuilding, setRebuilding]         = useState(false)
+  const [imgErrors, setImgErrors]           = useState(new Set())
+  const [picker, setPicker]                 = useState(null)
+  const [pickerCands, setPickerCands]       = useState([])
+  const [pickerLoading, setPickerLoading]   = useState(false)
+  const [pickerQuery, setPickerQuery]       = useState('')
+
+  // ── Menu secondaire ⋯ ────────────────────────────────────────────────────────
+  const [menuOpen, setMenuOpen] = useState(false)
+  // Panneau « Aliments à confirmer » (liaisons en attente de validation)
+  const [reviewOpen, setReviewOpen] = useState(false)
+
+  // ── Feuille de rangement ─────────────────────────────────────────────────────
+  const [showStorageSheet, setShowStorageSheet] = useState(false)
+  const [storageItems, setStorageItems]         = useState([]) // snapshot stable
+
+  // ── Toast ────────────────────────────────────────────────────────────────────
+  const [toast, setToast] = useState(null) // { id, msg, kind }
 
   useEffect(() => {
     if (!toast) return
@@ -52,22 +80,41 @@ export default function CoursesPage() {
     return d && m ? `${d}/${m}` : ''
   }
 
+  // ── Résumé de résolution (dérivé des items) ──────────────────────────────────
+  const resolutionSummary = useMemo(() => {
+    if (items.length === 0) return null
+    const toConfirm = items.filter(i =>
+      i.review_status === 'pending' ||
+      i.review_status === 'proposed' ||
+      (!i.canonical_food_id && !i.archetype_id)
+    ).length
+    const ready = items.filter(i =>
+      (i.canonical_food_id || i.archetype_id) &&
+      (!i.review_status || i.review_status === 'auto' || i.review_status === 'confirmed')
+    ).length
+    return { ready, toConfirm }
+  }, [items])
+
+  // ── Chargement ───────────────────────────────────────────────────────────────
   async function loadItems(imp) {
     setImportId(imp.id)
     setImportLabel(imp.month_label || '')
+    setResolutionError(false)
+
     const res = await authFetch(`/api/planning/imports/${imp.id}`)
     const d = await res.json()
     const list = d.shoppingItems || []
     setItems(list)
+
     const weeks = [...new Set(list.map(i => i.week_label))].sort()
     setActiveWeek(weeks.length > 0 ? weeks[0] : null)
     setActiveRayon(null)
 
-    // Si des articles n'ont aucune FK référentiel, déclencher la résolution une fois par import.
-    // Re-fetch silencieux ensuite pour que les FK résolues atterrissent dans l'état.
+    // Résolution des ingrédients non liés — déclenché une fois par import
     const hasUnlinked = list.some(i => !i.canonical_food_id && !i.archetype_id)
     if (hasUnlinked && !resolvedImportsRef.current.has(imp.id)) {
       resolvedImportsRef.current.add(imp.id)
+      setResolutionPending(true)
       try {
         await authFetch('/api/ingredients/resolve-pending', {
           method: 'POST',
@@ -77,8 +124,10 @@ export default function CoursesPage() {
         const res2 = await authFetch(`/api/planning/imports/${imp.id}`)
         const d2 = await res2.json()
         setItems(d2.shoppingItems || [])
+        setResolutionPending(false)
       } catch {
-        // best-effort — les badges « non relié » restent visibles
+        setResolutionPending(false)
+        setResolutionError(true)
       }
     }
   }
@@ -100,7 +149,6 @@ export default function CoursesPage() {
       if (!d.imports?.length) { setLoading(false); return }
 
       setImports(d.imports)
-      // Ouvre sur la semaine qui couvre aujourd'hui (comme le planning), sinon la dernière.
       const today = new Date().toISOString().split('T')[0]
       let idx = d.imports.findIndex(i =>
         i.date_range_start && i.date_range_end &&
@@ -113,14 +161,13 @@ export default function CoursesPage() {
     load()
   }, [])
 
-  const weekLabels = useMemo(() => {
-    return [...new Set(items.map(i => i.week_label))].sort()
-  }, [items])
+  // ── Dérivés filtrés ──────────────────────────────────────────────────────────
+  const weekLabels = useMemo(() =>
+    [...new Set(items.map(i => i.week_label))].sort(), [items])
 
-  const filteredItems = useMemo(() => {
-    if (!activeWeek) return items
-    return items.filter(i => i.week_label === activeWeek)
-  }, [items, activeWeek])
+  const filteredItems = useMemo(() =>
+    activeWeek ? items.filter(i => i.week_label === activeWeek) : items,
+    [items, activeWeek])
 
   const groupedItems = useMemo(() => {
     const groups = {}
@@ -132,56 +179,14 @@ export default function CoursesPage() {
     return groups
   }, [filteredItems])
 
-  async function addToStock(item) {
-    try {
-      const res = await authFetch('/api/courses/add-to-stock', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          itemId: item.id,
-          productName: item.product_name,
-          quantity: item.quantity,
-          canonicalFoodId: item.canonical_food_id ?? null,
-          archetypeId: item.archetype_id ?? null,
-          containerQty: item.container_qty ?? null,
-          containerSize: item.container_size ?? null,
-          containerUnit: item.container_unit ?? null,
-        }),
-      })
-      const data = await res.json()
+  // Articles cochés mais pas encore rangés (à ranger via StoragePlanSheet)
+  const itemsToStore = useMemo(() =>
+    items.filter(i => i.checked && !(i.created_lot_ids?.length > 0)),
+    [items])
 
-      // Nouveau format par-item : { items: [{id, ok, lot_id?, error?}], ... }
-      if (data.items && Array.isArray(data.items)) {
-        const itemResult = data.items.find(r => r.id === item.id) || data.items[0]
-        if (!itemResult || !itemResult.ok) {
-          return { success: false, error: itemResult?.error || data.error || 'Erreur inconnue' }
-        }
-        return {
-          success: true,
-          lotsCreated: data.lotsCreated ?? 1,
-          lotIds: itemResult.lot_id ? [itemResult.lot_id] : (data.lotIds || []),
-          matched: data.matched,
-          expirationDate: data.expirationDate || null,
-        }
-      }
+  // ── Gestion du stock ─────────────────────────────────────────────────────────
 
-      // Compatibilité ascendante avec l'ancien format { success, error, lotIds, ... }
-      if (!res.ok || !data.success) {
-        return { success: false, error: data.error || 'Erreur inconnue' }
-      }
-      return {
-        success: true,
-        lotsCreated: data.lotsCreated,
-        lotIds: data.lotIds || [],
-        matched: data.matched,
-        expirationDate: data.expirationDate || null,
-      }
-    } catch (err) {
-      return { success: false, error: err.message }
-    }
-  }
-
-  /** Décochage : retire du stock les lots non entamés créés au cochage. */
+  /** Retire du stock les lots créés pour un article (décochage). */
   async function removeFromStock(itemId) {
     try {
       const res = await authFetch('/api/courses/add-to-stock', {
@@ -199,20 +204,84 @@ export default function CoursesPage() {
     }
   }
 
-  /** Sauvegarde le lien article → lots créés (pour pouvoir les retirer au décochage). */
-  async function saveCreatedLotIds(itemId, lotIds) {
+  /**
+   * Clic sur une carte = « acheté » uniquement.
+   * Aucun appel add-to-stock au cochage.
+   * Décochage : si l'article a des lots créés (rangé avant), les retirer du stock.
+   */
+  async function toggleItem(itemId) {
+    const item = items.find(i => i.id === itemId)
+    if (!item || item.unstocking) return
+    const newChecked = !item.checked
+
+    // Mise à jour optimiste
+    setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: newChecked } : i))
+
     try {
       await authFetch(`/api/courses/shopping-items/${itemId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ created_lot_ids: lotIds }),
+        body: JSON.stringify({ checked: newChecked }),
       })
-      return true
     } catch {
-      return false
+      // PATCH échoué → revert
+      setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: !newChecked } : i))
+      return
+    }
+
+    if (!newChecked) {
+      // Décochage : retirer du stock si l'article a des lots créés (déjà rangé)
+      const hasLots = (item.created_lot_ids?.length > 0)
+      if (hasLots) {
+        setItems(prev => prev.map(i => i.id === itemId ? { ...i, unstocking: true } : i))
+        const result = await removeFromStock(itemId)
+        if (result.success) {
+          setItems(prev => prev.map(i => i.id === itemId
+            ? { ...i, stocked: false, unstocking: false, created_lot_ids: null }
+            : i))
+          if (result.kept > 0) showToast('Lot déjà entamé, conservé au stock')
+          else if (result.deleted > 0) showToast('Retiré du stock')
+        } else {
+          setItems(prev => prev.map(i => i.id === itemId ? { ...i, unstocking: false } : i))
+          showToast(`Stock non nettoyé — ${result.error}`, 'error')
+        }
+      }
+      // Si l'article était coché mais pas rangé : décochage trivial (rien à faire)
+    }
+    // Cochage → l'article passe dans « à ranger » (itemsToStore), rien d'autre
+  }
+
+  /**
+   * Callback de StoragePlanSheet : appelé après rangement réussi de chaque article.
+   * Met à jour l'état local pour refléter les lots créés.
+   */
+  const handleItemStored = useCallback((itemId, lotIds) => {
+    setItems(prev => prev.map(i => i.id === itemId
+      ? { ...i, stocked: true, created_lot_ids: lotIds, stockError: false }
+      : i))
+  }, [])
+
+  /**
+   * Callback de StoragePlanSheet : fin du flux (utilisateur clique Terminé).
+   * Ferme la feuille et affiche un toast récapitulatif.
+   */
+  function handleSheetDone({ stored, errors }) {
+    setShowStorageSheet(false)
+    if (stored > 0) {
+      const msg = errors > 0
+        ? `${stored} article${stored > 1 ? 's' : ''} rangé${stored > 1 ? 's' : ''} · ${errors} erreur${errors > 1 ? 's' : ''}`
+        : `${stored} article${stored > 1 ? 's' : ''} rangé${stored > 1 ? 's' : ''} au stock`
+      showToast(msg, errors > 0 ? 'warn' : 'ok')
     }
   }
 
+  /** Ouvre la feuille de rangement avec un snapshot des articles à ranger. */
+  function openStorageSheet() {
+    setStorageItems(itemsToStore.slice())
+    setShowStorageSheet(true)
+  }
+
+  // ── Sauvegarde du conditionnement ─────────────────────────────────────────────
   async function updateContainer(itemId, containerQty, containerSize, containerUnit) {
     try {
       await authFetch(`/api/courses/shopping-items/${itemId}`, {
@@ -224,7 +293,7 @@ export default function CoursesPage() {
         i.id === itemId ? { ...i, container_qty: containerQty, container_size: containerSize, container_unit: containerUnit } : i
       ))
     } catch {
-      // silent — UI already reflects the edit via containerEdits state
+      // silent — UI already reflects via containerEdits
     }
   }
 
@@ -240,78 +309,18 @@ export default function CoursesPage() {
 
   function saveContainerEdits(item) {
     const edits = containerEdits[item.id] || {}
-    const qty = parseInt(edits.container_qty ?? item.container_qty) || null
+    const qty  = parseInt(edits.container_qty ?? item.container_qty) || null
     const size = parseFloat(String(edits.container_size ?? item.container_size).replace(',', '.')) || null
     const unit = edits.container_unit ?? item.container_unit ?? null
     updateContainer(item.id, qty, size, unit)
   }
 
-  async function toggleItem(itemId) {
-    const item = items.find(i => i.id === itemId)
-    if (!item || item.stocking || item.unstocking) return
-    const newChecked = !item.checked
-    setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: newChecked, stocking: newChecked, unstocking: !newChecked } : i))
-
-    try {
-      await authFetch(`/api/courses/shopping-items/${itemId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ checked: newChecked }),
-      })
-    } catch {
-      // PATCH checked échoué → revert pur, rien n'a touché le stock
-      setItems(prev => prev.map(i => i.id === itemId ? { ...i, checked: !newChecked, stocking: false, unstocking: false } : i))
-      return
-    }
-
-    if (newChecked) {
-      // ── Cochage → rangement au stock ──
-      const result = await addToStock(item)
-      if (result.success) {
-        await saveCreatedLotIds(itemId, result.lotIds)
-        setItems(prev => prev.map(i => i.id === itemId
-          ? { ...i, stocked: true, stocking: false, stockError: false, unmatched: result.matched === false, created_lot_ids: result.lotIds }
-          : i))
-        const dlc = formatDayMonth(result.expirationDate)
-        showToast(dlc ? `Ajouté au stock · DLC le ${dlc}` : 'Ajouté au stock')
-      } else {
-        // Rangement raté → on re-décoche pour rester cohérent (aucun lot créé)
-        setItems(prev => prev.map(i => i.id === itemId
-          ? { ...i, checked: false, stocking: false, stockError: true, stockErrorMsg: result.error }
-          : i))
-        try {
-          await authFetch(`/api/courses/shopping-items/${itemId}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ checked: false }),
-          })
-        } catch {}
-        showToast(`Rangement impossible pour "${item.product_name}" : ${result.error}`, 'error')
-      }
-    } else {
-      // ── Décochage → retirer du stock les lots non entamés ──
-      const result = await removeFromStock(itemId)
-      if (result.success) {
-        setItems(prev => prev.map(i => i.id === itemId
-          ? { ...i, stocked: false, stocking: false, unstocking: false, stockError: false, unmatched: false, created_lot_ids: null }
-          : i))
-        if (result.kept > 0) {
-          showToast('Lot déjà entamé, conservé au stock')
-        } else if (result.deleted > 0) {
-          showToast('Retiré du stock')
-        }
-      } else {
-        // L'article reste décoché ; le nettoyage se rejouera au prochain cochage
-        setItems(prev => prev.map(i => i.id === itemId ? { ...i, stocked: false, stocking: false, unstocking: false } : i))
-        showToast(`Stock non nettoyé — ${result.error}`, 'error')
-      }
-    }
-  }
-
+  // ── Actions images ────────────────────────────────────────────────────────────
   async function handleFetchImages(replace = false) {
     if (!importId) return
     setFetchingImages(true)
     setFetchResult(null)
+    setMenuOpen(false)
     try {
       const res = await authFetch('/api/courses/fetch-images', {
         method: 'POST',
@@ -340,6 +349,7 @@ export default function CoursesPage() {
     if (!importId) return
     setFetchingImages(true)
     setFetchResult(null)
+    setMenuOpen(false)
     try {
       const res = await authFetch('/api/courses/fetch-images', {
         method: 'POST',
@@ -366,6 +376,7 @@ export default function CoursesPage() {
     if (!importId) return
     setRebuilding(true)
     setFetchResult(null)
+    setMenuOpen(false)
     try {
       const res = await authFetch('/api/courses/rebuild', {
         method: 'POST',
@@ -388,27 +399,7 @@ export default function CoursesPage() {
     }
   }
 
-  const checkedCount = filteredItems.filter(i => i.checked).length
-  const totalCount = filteredItems.length
-  const allCheckedCount = items.filter(i => i.checked).length
-  const allTotalCount = items.length
-  const remaining = totalCount - checkedCount
-
-  // ── Dérivés de la refonte cockpit ──
-  const categories = Object.keys(groupedItems)
-  const showAll = activeRayon === 'TOUT'
-  const currentRayon = showAll ? null : (categories.includes(activeRayon) ? activeRayon : (categories[0] ?? null))
-  const currentItems = currentRayon ? groupedItems[currentRayon] : []
-  const currentChecked = currentItems.filter(i => i.checked).length
-  const currentIndex = currentRayon ? categories.indexOf(currentRayon) : -1
-  const pct = totalCount ? Math.round((checkedCount / totalCount) * 100) : 0
-  const weekIdx = activeWeek ? weekLabels.indexOf(activeWeek) : -1
-  const goWeek = (delta) => {
-    const ni = weekIdx + delta
-    if (ni >= 0 && ni < weekLabels.length) { setActiveWeek(weekLabels[ni]); setActiveRayon(null) }
-  }
-  const catTint = (cat) => RAYON_TINTS[Math.max(0, categories.indexOf(cat)) % RAYON_TINTS.length]
-
+  // ── Sélecteur d'image par article ────────────────────────────────────────────
   async function fetchCandidates(item, customQuery) {
     setPickerLoading(true)
     try {
@@ -449,10 +440,35 @@ export default function CoursesPage() {
     } catch {}
   }
 
+  // ── Compteurs ────────────────────────────────────────────────────────────────
+  const checkedCount   = filteredItems.filter(i => i.checked).length
+  const totalCount     = filteredItems.length
+  const allCheckedCount = items.filter(i => i.checked).length
+  const allTotalCount   = items.length
+  const remaining       = totalCount - checkedCount
+
+  const categories = Object.keys(groupedItems)
+  const showAll    = activeRayon === 'TOUT'
+  const currentRayon = showAll ? null : (categories.includes(activeRayon) ? activeRayon : (categories[0] ?? null))
+  const currentItems  = currentRayon ? groupedItems[currentRayon] : []
+  const currentChecked = currentItems.filter(i => i.checked).length
+  const currentIndex   = currentRayon ? categories.indexOf(currentRayon) : -1
+  const pct       = totalCount ? Math.round((checkedCount / totalCount) * 100) : 0
+  const weekIdx   = activeWeek ? weekLabels.indexOf(activeWeek) : -1
+  const goWeek    = (delta) => {
+    const ni = weekIdx + delta
+    if (ni >= 0 && ni < weekLabels.length) { setActiveWeek(weekLabels[ni]); setActiveRayon(null) }
+  }
+  const catTint = (cat) => RAYON_TINTS[Math.max(0, categories.indexOf(cat)) % RAYON_TINTS.length]
+
+  // ── Rendu d'une carte article ─────────────────────────────────────────────────
   function renderCard(item, tint) {
-    const isExpanded = expandedItems.has(item.id)
+    const isExpanded  = expandedItems.has(item.id)
     const hasContainer = !!(item.container_qty && item.container_size)
     const photo = imgErrors.has(item.id) ? null : (item.image_url || null)
+    const isStored  = !!(item.created_lot_ids?.length > 0) || !!item.stocked
+    const isToStore = item.checked && !isStored && !item.unstocking
+
     return (
       <div key={item.id} className={`cou-card${item.checked ? ' done' : ''}`}>
         <div
@@ -512,19 +528,12 @@ export default function CoursesPage() {
             </button>
           </div>
           {item.notes && <span className="cou-card-notes">{item.notes}</span>}
-          {item.stocking && <span className="cou-card-tag stocking">rangement…</span>}
           {item.unstocking && <span className="cou-card-tag stocking">retrait…</span>}
-          {item.stocked && !item.stocking && (
+          {isToStore && (
+            <span className="cou-card-tag to-store">à ranger</span>
+          )}
+          {isStored && !item.unstocking && (
             <span className="cou-card-tag stocked"><Package size={10} /> rangé</span>
-          )}
-          {item.stockError && !item.stocking && (
-            <span className="cou-card-tag error" title={item.stockErrorMsg || ''}>non rangé</span>
-          )}
-          {item.unmatched && !item.stocking && (
-            <span className="cou-card-tag unmatched" title="Produit non relié au catalogue — rangé tel quel (nom en notes)">non reconnu</span>
-          )}
-          {!item.canonical_food_id && !item.archetype_id && !item.checked && (
-            <span className="cou-card-tag unlinked" title="Ingrédient pas encore relié au référentiel — résolution automatique en cours">⚠ non relié</span>
           )}
         </div>
         {isExpanded && (
@@ -563,6 +572,7 @@ export default function CoursesPage() {
     )
   }
 
+  // ── Squelette de chargement ───────────────────────────────────────────────────
   if (loading) return (
     <div className="v21-page wide courses-page" aria-busy="true" aria-label="Chargement des courses">
       <div className="v21-skel" style={{ height: 150 }} />
@@ -575,6 +585,7 @@ export default function CoursesPage() {
     </div>
   )
 
+  // ── État vide ────────────────────────────────────────────────────────────────
   if (!importId || items.length === 0) return (
     <div className="v21-page wide courses-page">
       <header className="v21-hero">
@@ -593,10 +604,11 @@ export default function CoursesPage() {
     </div>
   )
 
+  // ── Page principale ──────────────────────────────────────────────────────────
   return (
     <div className="v21-page wide courses-page">
 
-      {/* HERO ÉDITORIAL */}
+      {/* ── HERO ÉDITORIAL ── */}
       <header className="v21-hero">
         <div className="v21-hero-text">
           <span className="v21-eyebrow">Courses</span>
@@ -609,9 +621,82 @@ export default function CoursesPage() {
             <span className="v">{remaining}</span>
             <span className="l">à acheter</span>
           </div>
+          {/* Menu secondaire ⋯ */}
+          <div className="cou-overflow-wrap">
+            <button
+              className="cou-overflow-btn"
+              onClick={() => setMenuOpen(v => !v)}
+              aria-label="Actions secondaires"
+              aria-expanded={menuOpen}
+            >
+              <MoreHorizontal size={16} />
+            </button>
+            {menuOpen && (
+              <>
+                <div className="cou-overflow-backdrop" onClick={() => setMenuOpen(false)} />
+                <div className="cou-overflow-dropdown" role="menu">
+                  <button
+                    className="cou-overflow-item"
+                    role="menuitem"
+                    onClick={handleRebuild}
+                    disabled={rebuilding}
+                  >
+                    <RefreshCw size={13} />
+                    {rebuilding ? 'Synchro…' : 'Synchroniser le stock'}
+                  </button>
+                  <button
+                    className="cou-overflow-item"
+                    role="menuitem"
+                    onClick={() => handleFetchImages(true)}
+                    disabled={fetchingImages}
+                  >
+                    <Camera size={13} />
+                    {fetchingImages ? 'Photos…' : 'Photos auto'}
+                  </button>
+                  <button
+                    className="cou-overflow-item"
+                    role="menuitem"
+                    onClick={handleClearImages}
+                    disabled={fetchingImages}
+                  >
+                    <ImageOff size={13} />
+                    Réinitialiser les photos
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </header>
 
+      {/* ── Bandeau résolution des ingrédients ── */}
+      {resolutionError && (
+        <div className="cou-resolution-banner error">
+          Résolution en attente — certains produits peuvent ne pas être reliés au catalogue
+        </div>
+      )}
+      {!resolutionError && resolutionPending && (
+        <div className="cou-resolution-banner pending">
+          Liaison des ingrédients en cours…
+        </div>
+      )}
+      {!resolutionError && !resolutionPending && resolutionSummary && resolutionSummary.toConfirm > 0 && (
+        <button
+          className="cou-resolution-banner warn cou-resolution-btn"
+          onClick={() => setReviewOpen(true)}
+          title="Ouvrir la liste des aliments à confirmer"
+        >
+          {resolutionSummary.ready > 0 && `${resolutionSummary.ready} article${resolutionSummary.ready !== 1 ? 's' : ''} prêt${resolutionSummary.ready !== 1 ? 's' : ''} · `}
+          {resolutionSummary.toConfirm} à confirmer →
+        </button>
+      )}
+      <IngredientReviewPanel
+        open={reviewOpen}
+        onClose={() => setReviewOpen(false)}
+        onChanged={() => { if (imports[importIndex]) loadItems(imports[importIndex]) }}
+      />
+
+      {/* ── Bandeau résultat (rebuild / photos) ── */}
       {fetchResult && (
         <div className={`cou-result ${fetchResult.error ? 'error' : 'ok'}`}>
           {fetchResult.error
@@ -627,7 +712,7 @@ export default function CoursesPage() {
         </div>
       )}
 
-      {/* COCKPIT : rail | cartes */}
+      {/* ── COCKPIT : rail | cartes ── */}
       <div className="cou-board">
 
         {/* ── RAIL ── */}
@@ -637,7 +722,7 @@ export default function CoursesPage() {
           <section className="cou-rsec">
             <span className="v21-bl">Avancement</span>
             <div className="cou-big">{checkedCount} <span className="cou-big-of">/ {totalCount}</span></div>
-            <span className="cou-rsub">articles rangés</span>
+            <span className="cou-rsub">articles achetés</span>
             <div className="cou-prog"><div className="cou-prog-fill" style={{ width: `${pct}%` }} /></div>
             <span className="cou-rsub">{pct} % · {remaining} restant{remaining !== 1 ? 's' : ''}</span>
             {allTotalCount !== totalCount && (
@@ -645,12 +730,11 @@ export default function CoursesPage() {
             )}
           </section>
 
-          {/* Semaine — un seul sélecteur (évite le doublon semaine/plan) */}
+          {/* Semaine */}
           {(weekLabels.length > 0 || imports.length > 1) && (
             <section className="cou-rsec">
               <span className="v21-bl">Semaine</span>
               {weekLabels.length > 1 ? (
-                /* Le plan contient plusieurs semaines → navigation par semaine (+ nav de plan distincte) */
                 <>
                   <div className="cou-wk">
                     <button className="cou-wk-btn" onClick={() => goWeek(-1)} disabled={weekIdx <= 0} aria-label="Semaine précédente"><ChevronLeft size={15} /></button>
@@ -667,7 +751,6 @@ export default function CoursesPage() {
                   )}
                 </>
               ) : imports.length > 1 ? (
-                /* Chaque plan = une semaine → la nav de plan EST le sélecteur de semaine */
                 <>
                   <div className="cou-wk">
                     <button className="cou-wk-btn" onClick={() => goToImport(importIndex + 1)} disabled={importIndex >= imports.length - 1} aria-label="Semaine précédente"><ChevronLeft size={15} /></button>
@@ -677,7 +760,6 @@ export default function CoursesPage() {
                   <span className="cou-wk-cap">Semaine {imports.length - importIndex} / {imports.length}</span>
                 </>
               ) : (
-                /* Une seule semaine */
                 <div className="cou-wk"><b>{activeWeek || importLabel || 'Semaine en cours'}</b></div>
               )}
             </section>
@@ -696,7 +778,7 @@ export default function CoursesPage() {
                 <span className="cou-tab-c">{totalCount}</span>
               </button>
               {categories.map((cat, i) => {
-                const catItems = groupedItems[cat]
+                const catItems   = groupedItems[cat]
                 const catChecked = catItems.filter(it => it.checked).length
                 const on = currentRayon === cat
                 return (
@@ -716,39 +798,23 @@ export default function CoursesPage() {
             </div>
           </section>
 
-          {/* Actions */}
-          <section className="cou-ractions">
-            <button onClick={handleRebuild} disabled={rebuilding} className="cou-raction"
-              title="Synchroniser : créer les recettes du plan, relier les ingrédients, marquer ce que tu as déjà en stock">
-              <RefreshCw size={13} /> {rebuilding ? 'Synchro…' : 'Synchroniser le stock'}
-            </button>
-            <button onClick={() => handleFetchImages(true)} disabled={fetchingImages} className="cou-raction"
-              title="Récupère une jolie photo (Pexels) pour chaque produit, en cherchant le bon ingrédient">
-              <Camera size={13} /> {fetchingImages ? 'Photos…' : 'Photos auto'}
-            </button>
-            <button onClick={handleClearImages} disabled={fetchingImages} className="cou-raction"
-              title="Retire toutes les photos et n'affiche que les icônes">
-              <ImageOff size={13} /> {fetchingImages ? '…' : 'Réinitialiser les photos'}
-            </button>
-          </section>
         </aside>
 
         {/* ── MAIN ── */}
         <section className="cou-main">
           {currentRayon === null ? (
-            /* Vue « Tout » — toutes les cartes groupées par rayon */
             categories.length === 0 ? (
               <div className="v21-empty cou-empty"><p>Aucun article pour cette semaine.</p></div>
             ) : (
               categories.map(cat => {
-                const catItems = groupedItems[cat]
+                const catItems   = groupedItems[cat]
                 const catChecked = catItems.filter(it => it.checked).length
                 const tint = catTint(cat)
                 return (
                   <div key={cat} className="cou-group">
                     <div className="cou-group-h">
                       <span className="v21-bl">{cat}</span>
-                      <span className="cou-group-c">{catChecked} / {catItems.length} rangés</span>
+                      <span className="cou-group-c">{catChecked} / {catItems.length} achetés</span>
                     </div>
                     <div className="cou-grid">{catItems.map(it => renderCard(it, tint))}</div>
                   </div>
@@ -756,7 +822,6 @@ export default function CoursesPage() {
               })
             )
           ) : (
-            /* Vue rayon focalisé — cartes + parcours */
             <>
               <header className="cou-rayhead">
                 <div className="cou-rayhead-l">
@@ -773,7 +838,6 @@ export default function CoursesPage() {
 
               <div className="cou-grid">{currentItems.map(it => renderCard(it, catTint(currentRayon)))}</div>
 
-              {/* Parcours */}
               <div className="cou-parcours">
                 <span className="cou-parcours-step">Rayon <b>{currentIndex + 1}</b> / {categories.length}</span>
                 <span className="cou-parcours-mid">{currentItems.length - currentChecked} article{currentItems.length - currentChecked !== 1 ? 's' : ''} restant{currentItems.length - currentChecked !== 1 ? 's' : ''} dans ce rayon</span>
@@ -799,13 +863,35 @@ export default function CoursesPage() {
         </section>
       </div>
 
-      {/* ── Toast discret (rangement / retrait du stock) ── */}
+      {/* ── Bouton principal sticky « Ranger mes N achats » ── */}
+      {itemsToStore.length > 0 && (
+        <button
+          className="cou-store-btn"
+          onClick={openStorageSheet}
+          aria-label={`Ranger ${itemsToStore.length} achat${itemsToStore.length !== 1 ? 's' : ''}`}
+        >
+          <Package size={15} />
+          Ranger mes {itemsToStore.length} achat{itemsToStore.length !== 1 ? 's' : ''}
+        </button>
+      )}
+
+      {/* ── Feuille de rangement ── */}
+      {showStorageSheet && storageItems.length > 0 && (
+        <StoragePlanSheet
+          items={storageItems}
+          onClose={() => setShowStorageSheet(false)}
+          onItemStored={handleItemStored}
+          onDone={handleSheetDone}
+        />
+      )}
+
+      {/* ── Toast discret ── */}
       {toast && typeof document !== 'undefined' && createPortal(
         <div key={toast.id} className={`cou-toast ${toast.kind}`} role="status">{toast.msg}</div>,
         document.body
       )}
 
-      {/* ── Sélecteur de photo (correction 1 clic) ── */}
+      {/* ── Sélecteur de photo par article ── */}
       {picker && typeof document !== 'undefined' && createPortal(
         <div className="cou-pick-overlay" onClick={() => setPicker(null)}>
           <div className="cou-pick" onClick={e => e.stopPropagation()}>

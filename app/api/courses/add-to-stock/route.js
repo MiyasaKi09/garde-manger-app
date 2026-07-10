@@ -193,6 +193,23 @@ export async function POST(request) {
     }
 
     const lotIds = lots.map(l => l.id)
+
+    // Journal des mouvements — best-effort (échec non bloquant)
+    try {
+      const movements = lots.map(lot => ({
+        user_id:         user.id,
+        lot_id:          lot.id,
+        movement_type:   'purchase',
+        quantity_before: 0,
+        quantity_delta:  Number(lot.initial_qty) || 0,
+        quantity_after:  Number(lot.qty_remaining) || 0,
+      }))
+      await supabase.from('inventory_movements').insert(movements)
+      // Erreur Supabase ignorée intentionnellement (journal non bloquant)
+    } catch {
+      // Erreur réseau ou autre — non bloquante
+    }
+
     return NextResponse.json({
       // Champs legacy (utilisés par app/courses/page.js — ne pas supprimer)
       success: true,

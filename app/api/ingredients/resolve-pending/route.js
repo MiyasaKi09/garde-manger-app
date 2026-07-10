@@ -25,8 +25,10 @@ export const maxDuration = 60
  *                               items non reliés de l'utilisateur sont traités.
  *
  * Réponse :
- *   { shopping: { scanned, resolved, created, stillUnmatched },
- *     recipes:  { recipes, ingredients_total, ingredients_matched, created, match_rate, details } }
+ *   { shopping: { scanned, resolved, created, stillUnmatched, pendingCount, proposedCount },
+ *     recipes:  { recipes, ingredients_total, ingredients_matched, created, pending, proposed, match_rate, details },
+ *     pendingCount: number,                          ← total pending + proposed (tout confondu)
+ *     summary: { ready, to_confirm, label } }        ← « X prêts · Y à confirmer » pour l'UI
  */
 export async function POST(request) {
   const { supabase, user, error: authError } = await authenticateRequest(request)
@@ -45,7 +47,24 @@ export async function POST(request) {
       linkRecipesForUser(supabase, user.id, { onlyUnlinked: true, autoCreate: true }),
     ])
 
-    return NextResponse.json({ shopping: shoppingResult, recipes: recipesResult })
+    // Synthèse pour l'UI (« X prêts · Y à confirmer ») : prêts = liaisons
+    // fiables (auto), à confirmer = pending + proposed (recettes + courses).
+    const toConfirm =
+      (shoppingResult.pendingCount ?? 0) + (shoppingResult.proposedCount ?? 0) +
+      (recipesResult.pending ?? 0) + (recipesResult.proposed ?? 0)
+    const ready =
+      (shoppingResult.scanned ?? 0) + (recipesResult.ingredients_total ?? 0) - toConfirm
+
+    return NextResponse.json({
+      shopping: shoppingResult,
+      recipes: recipesResult,
+      pendingCount: toConfirm,
+      summary: {
+        ready: Math.max(0, ready),
+        to_confirm: toConfirm,
+        label: `${Math.max(0, ready)} prêts · ${toConfirm} à confirmer`,
+      },
+    })
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 })
   }
