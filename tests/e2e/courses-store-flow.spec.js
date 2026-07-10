@@ -98,13 +98,13 @@ test.describe('Courses — acheté → ranger', () => {
     await page.goto('/courses')
     await expect(page.getByText('Poulet fermier')).toBeVisible()
 
-    // Click the card top area (triggers toggleItem)
-    await page.locator('.cou-card-top').first().click()
-
-    // Wait for the PATCH to go out (checked state updates)
-    await page.waitForResponse(
+    // Armer l'attente AVANT le clic (réponse mockée instantanée — flaky sinon)
+    const patchDone = page.waitForResponse(
       (r) => r.url().includes(`/api/courses/shopping-items/${ITEM_ID}`) && r.request().method() === 'PATCH'
     )
+    // Click the card top area (triggers toggleItem)
+    await page.locator('.cou-card-top').first().click()
+    await patchDone
 
     // add-to-stock must NOT have been called
     expect(addToStockCalled).toBe(false)
@@ -117,10 +117,13 @@ test.describe('Courses — acheté → ranger', () => {
     await page.goto('/courses')
     await expect(page.getByText('Poulet fermier')).toBeVisible()
 
-    await page.locator('.cou-card-top').first().click()
-    await page.waitForResponse(
+    // Armer l'attente AVANT le clic : la réponse mockée part instantanément
+    // et serait ratée si waitForResponse était appelé après (flaky en CI).
+    const patchDone = page.waitForResponse(
       (r) => r.url().includes(`/api/courses/shopping-items/${ITEM_ID}`) && r.request().method() === 'PATCH'
     )
+    await page.locator('.cou-card-top').first().click()
+    await patchDone
 
     // The sticky ranger button should appear
     await expect(page.locator('.cou-store-btn')).toBeVisible()
@@ -131,10 +134,13 @@ test.describe('Courses — acheté → ranger', () => {
     await expect(page.getByText('Poulet fermier')).toBeVisible()
 
     // Check the card
-    await page.locator('.cou-card-top').first().click()
-    await page.waitForResponse(
+    // Armer l'attente AVANT le clic : la réponse mockée part instantanément
+    // et serait ratée si waitForResponse était appelé après (flaky en CI).
+    const patchDone = page.waitForResponse(
       (r) => r.url().includes(`/api/courses/shopping-items/${ITEM_ID}`) && r.request().method() === 'PATCH'
     )
+    await page.locator('.cou-card-top').first().click()
+    await patchDone
 
     // Open the storage sheet
     const rangerBtn = page.locator('.cou-store-btn')
