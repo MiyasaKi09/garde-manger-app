@@ -4,7 +4,7 @@ import { authenticateRequest } from '@/lib/apiAuth'
 import { buildAiContext, formatContextForPrompt } from '@/lib/aiContextBuilder'
 import { normalizeRecipeName, cleanRecipeName } from '@/lib/recipeNormalizer'
 import { calculatePreciseNutrition } from '@/lib/recipePreciseNutrition'
-import { linkRecipesForUser } from '@/lib/ingredientResolver'
+import { linkRecipesForUser, isRecipeLinkComplete } from '@/lib/ingredientResolver'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -66,9 +66,48 @@ export async function POST(request) {
     }
 
     if (cached && cached.steps?.length > 0) {
-      // Cache hit with complete recipe (has steps)
+      // Cache hit with complete recipe (has steps).
+      // Intégrité des liaisons AVANT de servir : une recette en cache peut avoir
+      // des liaisons partielles ou absentes (anciennes générations, échec
+      // silencieux post-génération). Critère de complétude : autant de lignes
+      // generated_recipe_ingredients que d'ingrédients JSONB, et aucune ligne
+      // unmatched non confirmée.
+      let recipeStatus = cached.status || 'ready'
+      try {
+        let { data: linkRows, error: linkRowsErr } = await supabase
+          .from('generated_recipe_ingredients')
+          .select('match_status, review_status')
+          .eq('generated_recipe_id', cached.id)
+        if (linkRowsErr) {
+          // Colonne review_status absente (migration 20260712 non appliquée).
+          ;({ data: linkRows } = await supabase
+            .from('generated_recipe_ingredients')
+            .select('match_status')
+            .eq('generated_recipe_id', cached.id))
+        }
+        const srcCount = Array.isArray(cached.ingredients) ? cached.ingredients.length : 0
+        if (!isRecipeLinkComplete(srcCount, linkRows || [])) {
+          const linkRes = await linkRecipesForUser(supabase, user.id, {
+            recipeId: cached.id,
+            autoCreate: true,
+          })
+          recipeStatus = (linkRes?.pending ?? 0) > 0 ? 'needs_review' : 'ready'
+          // Fail-soft si la colonne status n'existe pas encore.
+          await supabase.from('generated_recipes')
+            .update({ status: recipeStatus })
+            .eq('id', cached.id)
+        }
+      } catch (linkErr) {
+        console.error('[AI Recipe] Réparation liaisons cache échouée:', linkErr.message)
+        recipeStatus = 'needs_review'
+        await supabase.from('generated_recipes')
+          .update({ status: 'needs_review' })
+          .eq('id', cached.id)
+      }
+
       return NextResponse.json({
         recipeDbId: cached.id,
+        status: recipeStatus,
         recipe: {
           title: cached.title,
           description: cached.description,
@@ -223,16 +262,24 @@ Utilise les valeurs CIQUAL/table de composition des aliments, pas des estimation
     }
 
     // 5. Relier les ingrédients aux entités d'inventaire (déterministe, sans API).
-    // Best-effort : un échec ne doit pas bloquer la réponse recette.
+    // Best-effort : un échec ne bloque pas la réponse recette, mais il est
+    // TRACÉ dans generated_recipes.status ('needs_review'), plus seulement loggé.
+    let recipeStatus = 'ready'
     if (recipeDbId) {
       try {
-        await linkRecipesForUser(supabase, user.id, { recipeId: recipeDbId })
+        const linkRes = await linkRecipesForUser(supabase, user.id, { recipeId: recipeDbId })
+        if ((linkRes?.pending ?? 0) > 0) recipeStatus = 'needs_review'
       } catch (linkErr) {
         console.error('[AI Recipe] Liaison ingrédients échouée:', linkErr.message)
+        recipeStatus = 'needs_review'
       }
+      // Fail-soft si la colonne status n'existe pas encore (migration 20260712).
+      await supabase.from('generated_recipes')
+        .update({ status: recipeStatus })
+        .eq('id', recipeDbId)
     }
 
-    return NextResponse.json({ recipe, recipeDbId, cached: false })
+    return NextResponse.json({ recipe, recipeDbId, status: recipeStatus, cached: false })
   } catch (err) {
     console.error('[AI Recipe] Error:', err)
     return NextResponse.json({ error: err.message }, { status: 500 })
