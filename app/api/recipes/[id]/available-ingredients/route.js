@@ -1,6 +1,7 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
+import { sumAvailableForNeed } from '@/lib/cookingSessionDraft';
 
 /**
  * GET /api/recipes/[id]/available-ingredients
@@ -124,6 +125,7 @@ export async function GET(request, { params }) {
           canonical_food_id: ingredient.canonical_food_id,
           archetype_id: ingredient.archetype_id,
           available_lots: [],
+          available_total: 0,
           has_enough: false,
         }))
       });
@@ -139,6 +141,19 @@ export async function GET(request, { params }) {
     })
 
     const todayISO = new Date().toISOString().split('T')[0];
+
+    // Métadonnées de conversion (poids unitaire, densité) des canoniques concernés
+    // — nécessaires pour sommer des lots exprimés dans une autre unité que le besoin.
+    const metaByCanonical = {};
+    if (allCanonicalIds.length > 0) {
+      const { data: metas } = await supabase
+        .from('canonical_foods')
+        .select('id, unit_weight_grams, density_g_per_ml')
+        .in('id', allCanonicalIds);
+      for (const m of (metas || [])) {
+        metaByCanonical[m.id] = { grams_per_unit: m.unit_weight_grams, density_g_per_ml: m.density_g_per_ml };
+      }
+    }
 
     // 4. Regrouper en mémoire avec cross-référence canonical↔archetype
     const ingredientsWithLots = recipeIngredients.map(ingredient => {
@@ -159,6 +174,12 @@ export async function GET(request, { params }) {
         )
       });
 
+      // Disponibilité = SOMME multi-lots convertie vers l'unité du besoin
+      // (un lot non convertible est exclu) — plus jamais un test sur un lot unique.
+      const neededUnit = ingredient.unit || 'u';
+      const meta = (ingCanonical && metaByCanonical[ingCanonical]) || {};
+      const availableTotal = sumAvailableForNeed(matchingLots, neededUnit, meta);
+
       return {
         ingredient_id: ingredient.id,
         name: ingredient.canonical_foods?.canonical_name || ingredient.archetypes?.name || 'Ingrédient inconnu',
@@ -178,7 +199,8 @@ export async function GET(request, { params }) {
             ? Math.round((new Date(String(lot.expiration_date).split('T')[0]) - new Date(todayISO)) / 86400000)
             : null,
         })),
-        has_enough: matchingLots.some(lot => lot.qty_remaining >= ingredient.quantity),
+        available_total: availableTotal,
+        has_enough: ingredient.quantity != null && availableTotal + 1e-9 >= ingredient.quantity,
       };
     });
 
