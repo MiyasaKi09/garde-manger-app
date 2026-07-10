@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
-import CookWizard from '@/components/CookWizard'
+import CookingSessionSheet from '@/components/CookingSessionSheet'
 import './generated-recipe.css'
 
 export default function GeneratedRecipeDetail() {
@@ -212,13 +212,13 @@ export default function GeneratedRecipeDetail() {
         </div>
       )}
 
-      <CookWizard
+      <CookingSessionSheet
         open={showCook}
         onClose={() => setShowCook(false)}
-        recipe={{ id: recipe.id, name: recipe.title, servings: recipe.servings }}
-        apiBase={`/api/recipes/generated/${recipe.id}`}
-        mealRecipeId={null}
-        onComplete={() => setShowCook(false)}
+        recipeSource="ai"
+        generatedRecipeId={recipe.id}
+        defaultServings={recipe.servings || 4}
+        onCommitted={() => setShowCook(false)}
       />
     </div>
   )

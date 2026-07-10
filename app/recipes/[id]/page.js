@@ -8,7 +8,7 @@ import { toast } from '@/components/Toast';
 import IngredientSearchSelector from './IngredientSearchSelector';
 import InstructionsCarousel from './components/InstructionsCarousel';
 import CookMode from '@/components/CookMode';
-import CookWizard from '@/components/CookWizard';
+import CookingSessionSheet from '@/components/CookingSessionSheet';
 import './recipe-detail.css';
 import './IngredientSearchSelector.css';
 
@@ -1278,7 +1278,7 @@ export default function RecipeDetail() {
             Commencer la cuisine
           </button>
           <button className="v21-btn" onClick={() => setShowCookWizard(true)}>
-            Préparer &amp; déduire le stock
+            Cuisiner — déduire du stock
           </button>
           <button className="v21-btn ghost" onClick={startEditing}>
             Modifier
@@ -1293,11 +1293,13 @@ export default function RecipeDetail() {
           ingredients={ings}
         />
 
-        <CookWizard
+        <CookingSessionSheet
           open={showCookWizard}
           onClose={() => setShowCookWizard(false)}
-          recipe={recipe}
-          onComplete={() => setShowCookWizard(false)}
+          recipeSource="curated"
+          recipeId={id}
+          defaultServings={recipe?.servings || 4}
+          onCommitted={() => setShowCookWizard(false)}
         />
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
+import { sumAvailableForNeed } from '@/lib/cookingSessionDraft'
 
 export const dynamic = 'force-dynamic'
 
@@ -103,6 +104,19 @@ export async function GET(request, { params }) {
     }
   })
 
+  // Métadonnées de conversion (poids unitaire, densité) des canoniques concernés
+  // — nécessaires pour sommer des lots exprimés dans une autre unité que le besoin.
+  const metaByCanonical = {}
+  if (allCanonicalIds.length) {
+    const { data: metas } = await supabase
+      .from('canonical_foods')
+      .select('id, unit_weight_grams, density_g_per_ml')
+      .in('id', allCanonicalIds)
+    for (const m of (metas || [])) {
+      metaByCanonical[m.id] = { grams_per_unit: m.unit_weight_grams, density_g_per_ml: m.density_g_per_ml }
+    }
+  }
+
   // 4. Croisement en mémoire
   const out = ingredients.map(ing => {
     const ingCanonical = ing.canonical_food_id || archetypeCanonicalMap[ing.archetype_id] || null
@@ -120,6 +134,12 @@ export async function GET(request, { params }) {
       || ing.canonical_foods?.canonical_name
       || ing.archetypes?.name
       || 'Ingrédient'
+
+    // Disponibilité = SOMME multi-lots convertie vers l'unité du besoin
+    // (un lot non convertible est exclu) — plus jamais un test sur un lot unique.
+    const neededUnit = ing.unit || 'u'
+    const meta = (ingCanonical && metaByCanonical[ingCanonical]) || {}
+    const availableTotal = sumAvailableForNeed(matchingLots, neededUnit, meta)
 
     return {
       id: ing.id,
@@ -141,7 +161,8 @@ export async function GET(request, { params }) {
           ? Math.round((new Date(String(lot.expiration_date).split('T')[0]) - new Date(todayISO)) / 86400000)
           : null,
       })),
-      has_enough: matchingLots.some(lot => ing.quantity != null && lot.qty_remaining >= ing.quantity),
+      available_total: availableTotal,
+      has_enough: ing.quantity != null && availableTotal + 1e-9 >= ing.quantity,
     }
   })
 
