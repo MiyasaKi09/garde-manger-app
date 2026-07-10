@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Fri Jul 10 16:47:34 UTC 2026_
+_Généré le : Fri Jul 10 20:53:15 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -285,6 +285,10 @@ _Généré le : Fri Jul 10 16:47:34 UTC 2026_
  - archetype_id :: bigint
  - match_status :: text default 'unmatched'::text NOT NULL
  - created_at :: timestamp with time zone default now() NOT NULL
+ - match_confidence :: numeric
+ - resolution_source :: text
+ - resolved_at :: timestamp with time zone
+ - review_status :: text
 
 ### generated_recipes
  - id :: bigint default nextval('generated_recipes_id_seq'::regclass) NOT NULL
@@ -304,6 +308,7 @@ _Généré le : Fri Jul 10 16:47:34 UTC 2026_
  - rating :: integer
  - cook_count :: integer default 0
  - image_url :: text
+ - status :: text default 'ready'::text NOT NULL
 
 ### instructions
  - id :: integer default nextval('instructions_id_seq'::regclass) NOT NULL
@@ -532,6 +537,10 @@ _Généré le : Fri Jul 10 16:47:34 UTC 2026_
  - container_unit :: text
  - image_url :: text
  - created_lot_ids :: ARRAY
+ - match_confidence :: numeric
+ - resolution_source :: text
+ - resolved_at :: timestamp with time zone
+ - review_status :: text
 
 ### nutritional_data
  - id :: bigint default nextval('nutritional_data_id_seq'::regclass) NOT NULL
@@ -847,7 +856,7 @@ _Généré le : Fri Jul 10 16:47:34 UTC 2026_
 
 ---
 ## Clés primaires
- - _backup_views → (dropped_at, view_name, view_schema)
+ - _backup_views → (view_name, view_schema, dropped_at)
  - archetype_nutrition_overrides → (archetype_id)
  - archetypes → (id)
  - canonical_food_origins → (food_id, country_id)
@@ -887,7 +896,7 @@ _Généré le : Fri Jul 10 16:47:34 UTC 2026_
  - products → (id)
  - recipe_ingredients → (id)
  - recipe_nutrition_cache → (recipe_id)
- - recipe_pairings → (side_recipe_id, main_recipe_id)
+ - recipe_pairings → (main_recipe_id, side_recipe_id)
  - recipe_steps → (id)
  - recipe_tags → (recipe_id, tag_id)
  - recipes → (id)
@@ -1020,6 +1029,7 @@ _Généré le : Fri Jul 10 16:47:34 UTC 2026_
  - public.generated_recipe_ingredients → idx_gri_archetype : CREATE INDEX idx_gri_archetype ON public.generated_recipe_ingredients USING btree (archetype_id)
  - public.generated_recipe_ingredients → idx_gri_canonical : CREATE INDEX idx_gri_canonical ON public.generated_recipe_ingredients USING btree (canonical_food_id)
  - public.generated_recipe_ingredients → idx_gri_recipe : CREATE INDEX idx_gri_recipe ON public.generated_recipe_ingredients USING btree (generated_recipe_id)
+ - public.generated_recipe_ingredients → idx_gri_review_status : CREATE INDEX idx_gri_review_status ON public.generated_recipe_ingredients USING btree (review_status) WHERE (review_status = ANY (ARRAY['pending'::text, 'proposed'::text]))
  - public.generated_recipes → generated_recipes_pkey : CREATE UNIQUE INDEX generated_recipes_pkey ON public.generated_recipes USING btree (id)
  - public.generated_recipes → idx_generated_recipes_name : CREATE INDEX idx_generated_recipes_name ON public.generated_recipes USING btree (user_id, name_normalized)
  - public.instructions → instructions_pkey : CREATE UNIQUE INDEX instructions_pkey ON public.instructions USING btree (id)
@@ -1065,6 +1075,7 @@ _Généré le : Fri Jul 10 16:47:34 UTC 2026_
  - public.nutrition_plan_shopping_items → idx_npsi_archetype : CREATE INDEX idx_npsi_archetype ON public.nutrition_plan_shopping_items USING btree (archetype_id) WHERE (archetype_id IS NOT NULL)
  - public.nutrition_plan_shopping_items → idx_npsi_canonical_food : CREATE INDEX idx_npsi_canonical_food ON public.nutrition_plan_shopping_items USING btree (canonical_food_id) WHERE (canonical_food_id IS NOT NULL)
  - public.nutrition_plan_shopping_items → idx_npsi_import_week : CREATE INDEX idx_npsi_import_week ON public.nutrition_plan_shopping_items USING btree (import_id, week_label)
+ - public.nutrition_plan_shopping_items → idx_npsi_review_status : CREATE INDEX idx_npsi_review_status ON public.nutrition_plan_shopping_items USING btree (review_status) WHERE (review_status = ANY (ARRAY['pending'::text, 'proposed'::text]))
  - public.nutrition_plan_shopping_items → nutrition_plan_shopping_items_pkey : CREATE UNIQUE INDEX nutrition_plan_shopping_items_pkey ON public.nutrition_plan_shopping_items USING btree (id)
  - public.nutritional_data → nutritional_data_pkey : CREATE UNIQUE INDEX nutritional_data_pkey ON public.nutritional_data USING btree (id)
  - public.nutritional_data → nutritional_data_source_id_key : CREATE UNIQUE INDEX nutritional_data_source_id_key ON public.nutritional_data USING btree (source_id)
@@ -1144,13 +1155,16 @@ _Généré le : Fri Jul 10 16:47:34 UTC 2026_
  - cooking_sessions_recipe_source_check ON cooking_sessions : CHECK ((recipe_source = ANY (ARRAY['curated'::text, 'ai'::text, 'libre'::text])))
  - cooking_sessions_status_check ON cooking_sessions : CHECK ((status = ANY (ARRAY['draft'::text, 'committed'::text, 'undone'::text])))
  - gri_not_both_entities ON generated_recipe_ingredients : CHECK ((NOT ((canonical_food_id IS NOT NULL) AND (archetype_id IS NOT NULL))))
+ - gri_review_status_check ON generated_recipe_ingredients : CHECK ((review_status = ANY (ARRAY['auto'::text, 'proposed'::text, 'pending'::text, 'confirmed'::text])))
  - generated_recipes_rating_check ON generated_recipes : CHECK (((rating >= 1) AND (rating <= 5)))
+ - generated_recipes_status_check ON generated_recipes : CHECK ((status = ANY (ARRAY['ready'::text, 'needs_review'::text, 'error'::text])))
  - inventory_lots_one_of ON inventory_lots : CHECK (((((((canonical_food_id IS NOT NULL))::integer + ((cultivar_id IS NOT NULL))::integer) + ((archetype_id IS NOT NULL))::integer) + ((product_id IS NOT NULL))::integer) = 1))
  - inventory_lots_storage_method_check ON inventory_lots : CHECK (((storage_method)::text = ANY ((ARRAY['pantry'::character varying, 'fridge'::character varying, 'freezer'::character varying])::text[])))
  - inventory_movements_movement_type_check ON inventory_movements : CHECK ((movement_type = ANY (ARRAY['purchase'::text, 'consumption'::text, 'correction'::text, 'restore'::text, 'waste'::text])))
  - meal_log_meal_type_check ON meal_log : CHECK ((meal_type = ANY (ARRAY['pdj'::text, 'dejeuner'::text, 'diner'::text, 'collation'::text])))
  - meal_stock_deductions_qty_deducted_check ON meal_stock_deductions : CHECK ((qty_deducted > (0)::numeric))
  - nutrition_plan_meals_meal_type_check ON nutrition_plan_meals : CHECK ((meal_type = ANY (ARRAY['pdj'::text, 'dejeuner'::text, 'diner'::text, 'collation'::text])))
+ - npsi_review_status_check ON nutrition_plan_shopping_items : CHECK ((review_status = ANY (ARRAY['auto'::text, 'proposed'::text, 'pending'::text, 'confirmed'::text])))
  - plan_regen_requests_status_check ON plan_regen_requests : CHECK ((status = ANY (ARRAY['pending'::text, 'processing'::text, 'done'::text, 'error'::text])))
  - process_nutrition_modifiers_category_check ON process_nutrition_modifiers : CHECK ((category = ANY (ARRAY['DRYING'::text, 'CONCENTRATION'::text, 'FERMENTATION'::text, 'AGING'::text, 'MECHANICAL'::text, 'PRESERVATION'::text, 'FAT_SEPARATION'::text])))
  - process_nutrition_modifiers_factor_type_check ON process_nutrition_modifiers : CHECK ((factor_type = ANY (ARRAY['RETENTION'::text, 'MULTIPLICATION'::text, 'CONCENTRATION'::text])))
