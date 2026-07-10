@@ -60,7 +60,7 @@ export default function NewProductForm({ initialName = '', onCancel, onCreated }
 
       if (kind === 'archetype') {
         const parent = resolveParent()
-        if (!parent) { setError('Choisis un produit de base existant à rattacher'); setSaving(false); return }
+        if (!parent) { setError('Choisis un aliment de base existant à rattacher'); setSaving(false); return }
         const res = await authFetch('/api/lots/create', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -92,7 +92,7 @@ export default function NewProductForm({ initialName = '', onCancel, onCreated }
       {/* Type */}
       <div style={S.kindRow}>
         <button onClick={() => setKind('canonical')} style={{ ...S.kindBtn, ...(kind === 'canonical' ? S.kindActive : {}) }}>
-          Produit de base
+          Aliment de base
         </button>
         <button onClick={() => setKind('archetype')} style={{ ...S.kindBtn, ...(kind === 'archetype' ? S.kindActive : {}) }}>
           Variante d'un produit
@@ -101,7 +101,7 @@ export default function NewProductForm({ initialName = '', onCancel, onCreated }
       <p style={S.intro}>
         {kind === 'canonical'
           ? 'Nouvel aliment de base, ajouté au catalogue et réutilisable.'
-          : 'Variante rattachée à un produit de base existant (hérite sa nutrition).'}
+          : 'Variante rattachée à un aliment de base existant (hérite sa nutrition).'}
       </p>
 
       <label style={S.label}>Nom du produit *</label>
@@ -109,7 +109,7 @@ export default function NewProductForm({ initialName = '', onCancel, onCreated }
 
       {kind === 'archetype' && (
         <>
-          <label style={S.label}>Rattacher à (produit de base) *</label>
+          <label style={S.label}>Rattacher à (aliment de base) *</label>
           <input style={S.input} list="npf-canon-list" value={parentSearch}
             onChange={e => setParentSearch(e.target.value)} placeholder="Ex : pâté, fromage, bœuf…" />
           <datalist id="npf-canon-list">
