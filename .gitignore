@@ -6,3 +6,7 @@ node_modules
 .env.production
 .env*.local
 *.local
+
+# Artefacts Playwright
+test-results/
+playwright-report/

@@ -1,13 +1,11 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { authFetch } from '@/lib/authFetch';
 import { readCache, writeCache } from '@/lib/pageCache';
-import { dedupCatalog } from './catalogDedup';
-import { convertWithMeta } from '@/lib/units';
 import './recipes.css';
 
 /* ── Fiche recette horizontale (vignette + infos), barre d'état à gauche ── */
@@ -80,8 +78,6 @@ export default function RecipesPage() {
     });
   }, [router]);
 
-  const inventoryPromiseRef = useRef(null);
-
   useEffect(() => {
     // Revisite instantanée : on rend le dernier état connu sans skeleton.
     const cached = readCache('recipes');
@@ -89,208 +85,34 @@ export default function RecipesPage() {
     fetchRecipes();
   }, []);
 
-  useEffect(() => {
-    if (recipes.length > 0) checkInventoryAvailability();
-  }, [recipes]);
-
   async function fetchRecipes() {
     try {
       if (!readCache('recipes')) setLoading(true);
 
-      // Inventaire lancé EN PARALLÈLE (indépendant des recettes), réutilisé plus bas.
-      inventoryPromiseRef.current = (async () =>
-        supabase
-          .from('inventory_lots')
-          .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date')
-          .gt('qty_remaining', 0)
-          .gt('expiration_date', new Date().toISOString())
-      )();
-
-      // Charger les deux sources de recettes en parallèle.
-      const [genResult, clsResult] = await Promise.all([
-        supabase
-          .from('generated_recipes')
-          .select('id, title, description, servings, prep_min, cook_min, ingredients, steps, source, created_at, rating, cook_count, image_url')
-          .order('created_at', { ascending: false }),
-        supabase
-          .from('recipes')
-          .select('id, name, description, prep_time_minutes, cook_time_minutes, servings')
-          .order('name', { ascending: true }),
-      ]);
-
-      if (genResult.error) {
-        setError(`Erreur de connexion: ${genResult.error.message}`);
+      // Tout est calculé côté serveur (sources fusionnées + dédup + disponibilité
+      // face au stock avec conversion d'unités) — un seul aller-retour.
+      const res = await authFetch('/api/recipes/catalog');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.error) {
+        setError(`Erreur de connexion: ${data.error || res.status}`);
         setRecipes([]);
         return;
       }
 
-      const genData = genResult.data || [];
-      const clsData = clsResult.data || []; // non-critique si échoue
+      const list = data.recipes || [];
+      // Carte clé → disponibilité (même forme que l'ancien statusMap client).
+      const statusMap = {};
+      for (const r of list) if (r.availability) statusMap[r.key] = r.availability;
 
-      // Ingrédients liés aux deux sources, en parallèle.
-      const [linkedIngsResult, clsLinkedIngsResult] = await Promise.all([
-        genData.length
-          ? supabase
-              .from('generated_recipe_ingredients')
-              .select('generated_recipe_id, canonical_food_id, archetype_id, quantity, unit')
-              .in('generated_recipe_id', genData.map(r => r.id))
-          : Promise.resolve({ data: [], error: null }),
-        clsData.length
-          ? supabase
-              .from('recipe_ingredients')
-              .select('recipe_id, canonical_food_id, archetype_id, quantity, unit')
-              .in('recipe_id', clsData.map(r => r.id))
-          : Promise.resolve({ data: [], error: null }),
-      ]);
-
-      const ingsByRecipe = {};
-      (linkedIngsResult.data || []).forEach(ing => {
-        (ingsByRecipe[ing.generated_recipe_id] = ingsByRecipe[ing.generated_recipe_id] || []).push(ing);
-      });
-
-      const clsIngsByRecipe = {};
-      (clsLinkedIngsResult.data || []).forEach(ing => {
-        (clsIngsByRecipe[ing.recipe_id] = clsIngsByRecipe[ing.recipe_id] || []).push(ing);
-      });
-
-      // Normaliser vers la forme commune de carte.
-      const generated = genData.map(r => ({
-        key: `gen-${r.id}`,
-        source: 'generated',
-        id: r.id,
-        title: r.title,
-        description: r.description,
-        image_url: r.image_url,
-        prep_min: r.prep_min,
-        cook_min: r.cook_min,
-        servings: r.servings,
-        rating: r.rating,
-        href: `/recipes/generated/${r.id}`,
-        linked_ingredients: ingsByRecipe[r.id] || [],
-      }));
-
-      const classic = clsData.map(r => ({
-        key: `cls-${r.id}`,
-        source: 'classic',
-        id: r.id,
-        title: r.name,
-        description: r.description,
-        image_url: null,
-        prep_min: r.prep_time_minutes,
-        cook_min: r.cook_time_minutes,
-        servings: r.servings,
-        rating: null,
-        href: `/recipes/${r.id}`,
-        linked_ingredients: clsIngsByRecipe[r.id] || [],
-      }));
-
-      // Déduplication : générées d'abord pour que « préférer generated » soit efficace.
-      setRecipes(dedupCatalog([...generated, ...classic]));
+      setRecipes(list);
+      setInventoryStatus(statusMap);
+      writeCache('recipes', { recipes: list, status: statusMap });
     } catch (err) {
       setError(`Erreur: ${err.message}`);
       setRecipes([]);
     } finally {
       setLoading(false);
     }
-  }
-
-  async function checkInventoryAvailability() {
-    try {
-      const invResult = inventoryPromiseRef.current
-        ? await inventoryPromiseRef.current
-        : await supabase
-            .from('inventory_lots')
-            .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date')
-            .gt('qty_remaining', 0)
-            .gt('expiration_date', new Date().toISOString());
-      const inventory = invResult?.data;
-      if (invResult?.error) return;
-      const inv = inventory || [];
-
-      // archetype d'un lot → canonique (pour matcher un lot archétype à un ingrédient canonique)
-      const lotArcheIds = inv.filter(l => l.archetype_id).map(l => l.archetype_id);
-      const archetypeMapping = {};
-      if (lotArcheIds.length) {
-        const { data: arche } = await supabase.from('archetypes').select('id, canonical_food_id').in('id', lotArcheIds);
-        (arche || []).forEach(a => { archetypeMapping[a.id] = a.canonical_food_id; });
-      }
-
-      // noms des ingrédients liés des recettes (pour « utilise »/« manque »)
-      const canonIds = new Set(), archeNameIds = new Set();
-      recipes.forEach(r => (r.linked_ingredients || []).forEach(ing => {
-        if (ing.canonical_food_id) canonIds.add(ing.canonical_food_id);
-        if (ing.archetype_id) archeNameIds.add(ing.archetype_id);
-      }));
-      const canonName = {}, archeName = {};
-      if (canonIds.size) {
-        const { data } = await supabase.from('canonical_foods').select('id, canonical_name').in('id', [...canonIds]);
-        (data || []).forEach(c => { canonName[c.id] = c.canonical_name; });
-      }
-      if (archeNameIds.size) {
-        const { data } = await supabase.from('archetypes').select('id, name').in('id', [...archeNameIds]);
-        (data || []).forEach(a => { archeName[a.id] = a.name; });
-      }
-      const cap = (x) => x ? x.charAt(0).toUpperCase() + x.slice(1) : x;
-      const nameOf = (ing) => cap(canonName[ing.canonical_food_id] || archeName[ing.archetype_id] || 'ingrédient');
-
-      const now = new Date();
-      const statusMap = {};
-      for (const recipe of recipes) {
-        const linked = recipe.linked_ingredients || [];
-        if (linked.length === 0) {
-          statusMap[recipe.key] = { total: 0, available: 0, missing: 0, missingNames: [], urgent: 0, expiringName: null, expiringDays: null, percent: 0, mykoScore: 0 };
-          continue;
-        }
-        let available = 0, urgent = 0;
-        const missingNames = [];
-        let expiringName = null, expiringDays = null;
-
-        for (const ing of linked) {
-          let totalAvailable = 0, earliestExp = null;
-          for (const lot of inv) {
-            let m = false;
-            if (ing.canonical_food_id && lot.canonical_food_id === ing.canonical_food_id) m = true;
-            else if (ing.canonical_food_id && lot.archetype_id && archetypeMapping[lot.archetype_id] === ing.canonical_food_id) m = true;
-            else if (ing.archetype_id && lot.archetype_id === ing.archetype_id) m = true;
-            if (m) {
-              // Convertir la qty du lot vers l'unité de l'ingrédient avant sommation.
-              // Un lot inconvertible (ex: g → u sans meta) est exclu de la somme.
-              const ingUnit = ing.unit || 'g';
-              const lotUnit = lot.unit || 'g';
-              const converted = convertWithMeta(lot.qty_remaining || 0, lotUnit, ingUnit);
-              // convertWithMeta retourne { qty, unit } ; si unit ≠ ingUnit → conversion non fiable → exclure.
-              if (converted.unit === ingUnit) {
-                totalAvailable += converted.qty;
-              }
-              if (lot.expiration_date) {
-                const d = new Date(lot.expiration_date);
-                if (!earliestExp || d < earliestExp) earliestExp = d;
-              }
-            }
-          }
-          if (totalAvailable >= (ing.quantity || 1)) {
-            available++;
-            if (earliestExp) {
-              const days = Math.floor((earliestExp - now) / 86400000);
-              if (days <= 7) { urgent++; if (expiringDays === null || days < expiringDays) { expiringDays = days; expiringName = nameOf(ing); } }
-            }
-          } else {
-            missingNames.push(nameOf(ing));
-          }
-        }
-
-        const total = linked.length;
-        const missing = total - available;
-        const percent = Math.round((available / total) * 100);
-        let mykoScore = (percent / 100) * 60 + (urgent / total) * 30;
-        const t = (recipe.prep_min || 0) + (recipe.cook_min || 0);
-        mykoScore += t > 0 ? Math.max(0, 10 - (t / 120) * 10) : 5;
-
-        statusMap[recipe.key] = { total, available, missing, missingNames, urgent, expiringName, expiringDays, percent, mykoScore: Math.round(mykoScore) };
-      }
-      setInventoryStatus(statusMap);
-      writeCache('recipes', { recipes, status: statusMap });
-    } catch { /* silencieux */ }
   }
 
   async function handleFetchImages() {

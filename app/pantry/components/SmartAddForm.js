@@ -652,7 +652,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       onClose();
 
     } catch (error) {
-      toast.error('Erreur lors de la création du lot');
+      toast.error("Erreur lors de l'ajout au stock");
     } finally {
       setLoading(false);
     }
@@ -767,7 +767,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 disabled={loading}
                 className="create-btn"
               >
-                {loading ? 'Création...' : 'Créer le lot'}
+                {loading ? 'Ajout en cours...' : 'Ajouter au stock'}
               </button>
             </>
           )}

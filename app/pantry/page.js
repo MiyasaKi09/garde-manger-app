@@ -7,13 +7,12 @@ import { readCache, writeCache } from '@/lib/pageCache';
 import SmartAddForm from './components/SmartAddForm';
 import ConsumeModal from './components/ConsumeModal';
 import OcrReviewList from './components/OcrReviewList';
-import { capitalizeProduct, getExpirationStatus } from './components/pantryUtils';
-import { daysUntil } from '@/lib/dates';
+import { capitalizeProduct } from './components/pantryUtils';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import EditLotForm from './components/EditLotForm';
 import RestesManager from '@/components/RestesManager';
 import { toast } from '@/components/Toast';
-import { authFetch } from '@/lib/authFetch';
+import { authFetch, invalidateAuthCache } from '@/lib/authFetch';
 import './pantry.css';
 
 // Registre V21 — onglets de statut (mappés sur statusFilter)
@@ -192,126 +191,16 @@ export default function PantryPage() {
     setIsLoading(true);
     if (!readCache('pantry')) setLoading(true); // pas de skeleton si on a déjà le cache
     try {
-
-      // D'abord, essayons la version simple qui fonctionnait
-      let { data, error } = await supabase
-        .from('inventory_lots')
-        .select('*')
-        .order('expiration_date', { ascending: true, nullsLast: true });
-
-      if (error) {
-        throw error;
+      // Lots enrichis (noms, expiry_kind, jours restants, badge, statut) calculés
+      // côté serveur — un seul aller-retour.
+      const res = await authFetch('/api/pantry');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.error) {
+        throw new Error(data.error || `HTTP ${res.status}`);
       }
-
-
-
-      // Enrichir avec les canonical_foods ET les archetypes
-      if (data && data.length > 0) {
-        // Récupérer les canonical_foods
-        const canonicalIds = data
-          .filter(item => item.canonical_food_id)
-          .map(item => item.canonical_food_id);
-
-        // Récupérer les archetypes
-        const archetypeIds = data
-          .filter(item => item.archetype_id)
-          .map(item => item.archetype_id);
-
-        let canonicalMap = {};
-        let archetypeMap = {};
-
-        // Charger canonical_foods
-        if (canonicalIds.length > 0) {
-          const { data: canonicalData, error: canonicalError } = await supabase
-            .from('canonical_foods')
-            .select('id, canonical_name, density_g_per_ml, unit_weight_grams, shelf_life_days_pantry')
-            .in('id', canonicalIds);
-
-          if (!canonicalError && canonicalData) {
-            canonicalData.forEach(item => {
-              canonicalMap[item.id] = item;
-            });
-          }
-        }
-
-        // Charger archetypes
-        if (archetypeIds.length > 0) {
-          const { data: archetypeData, error: archetypeError } = await supabase
-            .from('archetypes')
-            .select('id, name, expiry_kind, shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer, open_shelf_life_days_pantry, open_shelf_life_days_fridge, open_shelf_life_days_freezer')
-            .in('id', archetypeIds);
-
-          if (!archetypeError && archetypeData) {
-            archetypeData.forEach(item => {
-              archetypeMap[item.id] = item;
-            });
-          }
-        }
-
-        // Enrichir les données
-        data = data.map(item => {
-          if (item.canonical_food_id && canonicalMap[item.canonical_food_id]) {
-            return {
-              ...item,
-              canonical_foods: canonicalMap[item.canonical_food_id]
-            };
-          } else if (item.archetype_id && archetypeMap[item.archetype_id]) {
-            return {
-              ...item,
-              archetypes: archetypeMap[item.archetype_id]
-            };
-          }
-          return item;
-        });
-      }
-
-
-
-      // Transformer les données - version simple d'abord
-      const transformedData = (data || []).map(item => {
-        let productName = 'Produit sans nom';
-
-        // Déterminer le nom selon le type
-        if (item.canonical_food_id && item.canonical_foods?.canonical_name) {
-          productName = item.canonical_foods.canonical_name;
-        } else if (item.archetype_id && item.archetypes?.name) {
-          productName = item.archetypes.name;
-        } else if (item.notes) {
-          // Produit custom avec notes
-          productName = item.notes.split('\n')[0]; // Première ligne des notes
-        } else if (item.product_name) {
-          productName = item.product_name;
-        }
-
-        const expiryKind = item.archetypes?.expiry_kind || null;
-        const days = daysUntil(item.adjusted_expiration_date || item.expiration_date);
-        // seuil d'alerte selon le type : J-3 pour DLC, J-7 pour DDM
-        const threshold = expiryKind === 'DDM' ? 7 : 3;
-        // string key utilisée par les filtres onglets (good | expiring_soon | expired | no_date)
-        const statusKey = days === null ? 'no_date' : days < 0 ? 'expired' : days <= threshold ? 'expiring_soon' : 'good';
-        // badge display via pantryUtils (objet { label, color, bgColor })
-        const expirationBadge = getExpirationStatus(days, expiryKind);
-
-        const transformed = {
-          ...item,
-          product_name: productName,
-          expiry_kind: expiryKind,
-          expiration_status: statusKey,
-          expiration_badge: expirationBadge,
-          days_until_expiration: days,
-          // Métadonnées utilisant les vrais noms de colonnes
-          grams_per_unit: item.canonical_foods?.unit_weight_grams || null,
-          density_g_per_ml: item.canonical_foods?.density_g_per_ml || null,
-          primary_unit: item.unit
-        };
-
-        // Log pour debug (optionnel)
-        // console.log(`Produit transformé: "${transformed.product_name}"`);
-
-        return transformed;
-      });
-      setItems(transformedData);
-      writeCache('pantry', transformedData);
+      const lots = data.lots || [];
+      setItems(lots);
+      writeCache('pantry', lots);
     } catch (error) {
       toast.error('Erreur lors du chargement du garde-manger');
       setItems([]);
@@ -319,6 +208,13 @@ export default function PantryPage() {
       setLoading(false);
       setIsLoading(false);
     }
+  }
+
+  // Recharge FRAÎCHE après une mutation faite hors authFetch (RPC Supabase directe,
+  // fetch brut dans RestesManager) : le cache GET d'authFetch n'a pas été invalidé.
+  async function reloadPantryFresh() {
+    invalidateAuthCache();
+    await loadPantryItems();
   }
 
   // Ouvrir le modal de consommation
@@ -354,8 +250,8 @@ export default function PantryPage() {
           toast.success(data[0].message);
         }
 
-        // Recharger les items pour refléter les changements
-        await loadPantryItems();
+        // Recharger les items pour refléter les changements (RPC directe → cache à invalider)
+        await reloadPantryFresh();
 
       } catch (error) {
         toast.error('Erreur lors de la consommation');
@@ -553,7 +449,7 @@ export default function PantryPage() {
               <span className="v21-bl">Anti-gaspi — restes</span>
               <button type="button" className="v21-link" onClick={() => setActiveTab('inventory')}>← Retour à l'inventaire</button>
             </div>
-            {userId && <RestesManager userId={userId} onActionComplete={loadPantryItems} />}
+            {userId && <RestesManager userId={userId} onActionComplete={reloadPantryFresh} />}
           </section>
         ) : (
           /* ── TABLEAU DE BORD : rail synthèse + index de travail ── */

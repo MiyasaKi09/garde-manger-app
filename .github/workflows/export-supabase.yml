@@ -164,19 +164,31 @@ jobs:
           rm -rf "$TMP"
           mkdir -p "$TMP" "$EXPORT_LATEST/csv"
 
-          # Exclude tables containing personal data from the export.
-          # Reference tables (archetypes, canonical_foods, recipes, ...) stay included.
+          # LISTE BLANCHE explicite : seules les tables de RÉFÉRENCE ci-dessous
+          # sont exportées. Rationale sécurité : avec l'ancienne liste noire,
+          # chaque NOUVELLE table (souvent personnelle : user_id, sessions,
+          # journaux, stock...) fuyait par défaut dans le dépôt tant qu'on ne
+          # pensait pas à l'ajouter à la blacklist. Avec la liste blanche, une
+          # nouvelle table personnelle ne peut JAMAIS fuiter par défaut — il
+          # faut un ajout explicite ici pour exporter une table.
           TABLES_SQL="select tablename from pg_tables where schemaname='public'
-            and tablename not in (
-              'weight_entries','user_health_goals','meal_log',
-              'nutrition_plan_meals','nutrition_plan_imports','nutrition_plan_daily_totals',
-              'nutrition_plan_batch_recipes','nutrition_plan_prep_tasks','nutrition_plan_shopping_items',
-              'inventory_lots','generated_recipes','generated_recipe_ingredients',
-              'legacy_users','plan_regen_requests','cooked_dishes','cooked_dish_ingredients',
-              'pantry_items','planned_meals','meal_plans'
+            and tablename in (
+              -- Référentiel aliments (hiérarchie archétype → canonique → produit)
+              'canonical_foods','archetypes','cultivars','products',
+              'archetype_nutrition_overrides','archetypes_shelf_life',
+              'canonical_food_origins','canonical_food_processes','processes',
+              'reference_categories','reference_subcategories','countries','locations',
+              -- Recettes curées (référentiel, non personnel)
+              'recipes','recipe_ingredients','recipe_steps','instructions',
+              'recipe_cuisines','recipe_mots_cles','recipe_tags','recipe_type_plats',
+              'recipe_regime_alimentaires','recipe_pairings','recipe_nutrition_cache',
+              'cuisines','mots_cles','type_plats','regime_alimentaires','tags',
+              -- Nutrition (CIQUAL) et facteurs de transformation/cuisson
+              'nutritional_data','ciqual_reference','diets',
+              'process_nutrition_modifiers','cooking_nutrition_factors',
+              -- Conversions d'unités et saisonnalité
+              'unit_conversions_generic','unit_conversions_product','seasonality'
             )
-            and tablename !~ '^user_'
-            and tablename !~ '_log\$'
             order by tablename;"
           echo "# Data export summary" > "$EXPORT_LATEST/data_summary.md"
           echo "_Generated: $(date -u)_" >> "$EXPORT_LATEST/data_summary.md"
