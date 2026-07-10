@@ -1,0 +1,1010 @@
+/*
+ * CookingSessionSheet.css
+ * Feuille de cuisson unique (remplace CookWizard).
+ * Tokens : var(--terracotta), --ink-*, --paper, --brand, --line, --font-display, --font-text.
+ * Aucune couleur hex verte générique.
+ */
+
+/* ── Backdrop ──────────────────────────────────────────────────────────────── */
+
+.css-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 28, 22, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end; /* bottom-sheet on mobile */
+  justify-content: center;
+  z-index: 1200;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .css-backdrop {
+    align-items: center;
+    padding: 16px;
+  }
+}
+
+/* ── Sheet container ────────────────────────────────────────────────────────── */
+
+.css-sheet {
+  width: 100%;
+  max-width: 600px;
+  max-height: 92dvh;
+  background: var(--surface, #FFFDF7);
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 -4px 32px rgba(24, 28, 22, 0.18);
+}
+
+@media (min-width: 640px) {
+  .css-sheet {
+    border-radius: 20px;
+    max-height: 88vh;
+    box-shadow: 0 8px 40px rgba(24, 28, 22, 0.20);
+  }
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+
+.css-header {
+  flex-shrink: 0;
+  background: var(--paper, #F3EFE4);
+  border-bottom: 1px solid var(--line, rgba(24, 28, 22, 0.12));
+  padding: 16px 20px 12px;
+}
+
+.css-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.css-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.css-eyebrow {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta, #C2613F);
+}
+
+.css-recipe-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink-1, #181C16);
+  margin: 0;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.css-close-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--line, rgba(24, 28, 22, 0.08));
+  border: none;
+  border-radius: 8px;
+  color: var(--ink-2, #4B4F45);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.css-close-btn:hover {
+  background: var(--line-strong, rgba(24, 28, 22, 0.18));
+}
+
+/* Portions stepper in header */
+
+.css-portions-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.css-portions-hl {
+  font-family: var(--font-text, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2, #4B4F45);
+}
+
+.css-portions-hint {
+  font-size: 12px;
+  color: var(--ink-3, #8A8C7E);
+  margin-left: auto;
+}
+
+/* ── Stepper (shared) ──────────────────────────────────────────────────────── */
+
+.css-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--paper-2, #EBE5D6);
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.css-step-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  color: var(--ink-1, #181C16);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.css-step-btn:hover:not(:disabled) {
+  background: var(--terracotta-soft, #F4E2D8);
+}
+
+.css-step-btn:disabled {
+  color: var(--ink-3, #8A8C7E);
+  cursor: not-allowed;
+}
+
+.css-step-val {
+  min-width: 32px;
+  text-align: center;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--terracotta, #C2613F);
+}
+
+/* ── Body ───────────────────────────────────────────────────────────────────── */
+
+.css-body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Loading / error ─────────────────────────────────────────────────────────  */
+
+.css-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 20px;
+  color: var(--ink-3, #8A8C7E);
+  font-size: 14px;
+}
+
+.css-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--line, rgba(24, 28, 22, 0.12));
+  border-top-color: var(--terracotta, #C2613F);
+  border-radius: 50%;
+  animation: css-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes css-spin {
+  to { transform: rotate(360deg); }
+}
+
+.css-session-error {
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--ink-2, #4B4F45);
+}
+
+.css-session-error p {
+  margin: 0 0 16px;
+  font-size: 14px;
+}
+
+/* ── Committed success state ─────────────────────────────────────────────────  */
+
+.css-committed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.css-committed-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--terracotta-soft, #F4E2D8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--terracotta, #C2613F);
+}
+
+.css-committed-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink-1, #181C16);
+  margin: 0;
+}
+
+.css-committed-sub {
+  font-size: 14px;
+  color: var(--ink-3, #8A8C7E);
+  margin: 0;
+}
+
+.css-committed-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.css-committed-undo,
+.css-committed-correct {
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  font-family: var(--font-text, sans-serif);
+}
+
+.css-committed-undo {
+  background: transparent;
+  border: 1px solid var(--line-strong, rgba(24, 28, 22, 0.22));
+  color: var(--ink-2, #4B4F45);
+}
+
+.css-committed-undo:hover:not(:disabled) {
+  background: var(--paper-2, #EBE5D6);
+}
+
+.css-committed-correct {
+  background: var(--terracotta-soft, #F4E2D8);
+  border: 1px solid var(--terracotta, #C2613F);
+  color: var(--terracotta, #C2613F);
+}
+
+.css-committed-correct:hover:not(:disabled) {
+  background: var(--terracotta, #C2613F);
+  color: #fff;
+}
+
+.css-committed-undo:disabled,
+.css-committed-correct:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ── Sections ───────────────────────────────────────────────────────────────── */
+
+.css-section {
+  padding: 20px 20px 12px;
+  border-bottom: 1px solid var(--line, rgba(24, 28, 22, 0.08));
+}
+
+.css-section:last-child {
+  border-bottom: none;
+}
+
+.css-section-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-1, #181C16);
+  margin: 0 0 14px;
+}
+
+/* ── Ingredient rows ─────────────────────────────────────────────────────────  */
+
+.css-ing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.css-ing-row {
+  background: var(--surface-soft, #FBF7EC);
+  border: 1px solid var(--line, rgba(24, 28, 22, 0.10));
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s;
+}
+
+.css-ing-row.css-ing-missing {
+  border-color: var(--terracotta-soft, #F4E2D8);
+  background: #FEFAF7;
+}
+
+.css-ing-row.css-ing-skipped {
+  opacity: 0.55;
+}
+
+.css-ing-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.css-ing-ident {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.css-ing-name {
+  font-family: var(--font-text, sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-1, #181C16);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.css-ing-qty {
+  font-size: 13px;
+  color: var(--ink-3, #8A8C7E);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Action chip (cyclable) ─────────────────────────────────────────────────── */
+
+.css-action-chip {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--line-strong, rgba(24, 28, 22, 0.22));
+  background: var(--surface, #FFFDF7);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--ink-2, #4B4F45);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  font-family: var(--font-text, sans-serif);
+  white-space: nowrap;
+}
+
+.css-action-chip:hover {
+  border-color: var(--terracotta, #C2613F);
+  color: var(--terracotta, #C2613F);
+}
+
+.css-action-chip.css-action-used {
+  background: var(--brand-soft, #E7EEE4);
+  border-color: var(--brand, #2F5D3A);
+  color: var(--brand, #2F5D3A);
+}
+
+.css-action-chip.css-action-quantity {
+  background: var(--saffron-soft, #F8EBCB);
+  border-color: var(--saffron, #E0A92E);
+  color: var(--state-soon, #7A5410);
+}
+
+.css-action-chip.css-action-substituted {
+  background: var(--terracotta-soft, #F4E2D8);
+  border-color: var(--terracotta, #C2613F);
+  color: var(--terracotta, #C2613F);
+}
+
+.css-action-chip.css-action-skipped {
+  background: var(--paper-2, #EBE5D6);
+  border-color: transparent;
+  color: var(--ink-3, #8A8C7E);
+}
+
+/* ── Missing box ─────────────────────────────────────────────────────────────  */
+
+.css-missing-box {
+  background: var(--terracotta-soft, #F4E2D8);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.css-missing-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--terracotta, #C2613F);
+}
+
+.css-missing-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.css-missing-btn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--terracotta, #C2613F);
+  background: var(--surface, #FFFDF7);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--terracotta, #C2613F);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  font-family: var(--font-text, sans-serif);
+}
+
+.css-missing-btn:hover {
+  background: var(--terracotta, #C2613F);
+  color: #fff;
+}
+
+/* ── Inline qty / unit inputs ────────────────────────────────────────────────  */
+
+.css-inline-qty {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.css-qty-input {
+  width: 80px;
+  padding: 6px 8px;
+  border: 1px solid var(--line-strong, rgba(24, 28, 22, 0.22));
+  border-radius: 6px;
+  background: var(--surface, #FFFDF7);
+  font-size: 13px;
+  color: var(--ink-1, #181C16);
+  font-family: var(--font-text, sans-serif);
+}
+
+.css-qty-input:focus {
+  outline: none;
+  border-color: var(--terracotta, #C2613F);
+  box-shadow: 0 0 0 2px var(--terracotta-soft, #F4E2D8);
+}
+
+.css-unit-input {
+  width: 56px;
+  padding: 6px 8px;
+  border: 1px solid var(--line-strong, rgba(24, 28, 22, 0.22));
+  border-radius: 6px;
+  background: var(--surface, #FFFDF7);
+  font-size: 13px;
+  color: var(--ink-2, #4B4F45);
+  font-family: var(--font-text, sans-serif);
+}
+
+.css-unit-input:focus {
+  outline: none;
+  border-color: var(--terracotta, #C2613F);
+}
+
+/* ── Substitution block ──────────────────────────────────────────────────────  */
+
+.css-sub-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.css-sub-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--terracotta, #C2613F);
+}
+
+.css-sub-change {
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong, rgba(24, 28, 22, 0.22));
+  border-radius: 6px;
+  background: var(--surface, #FFFDF7);
+  font-size: 11px;
+  color: var(--ink-2, #4B4F45);
+  cursor: pointer;
+  font-family: var(--font-text, sans-serif);
+  align-self: flex-start;
+}
+
+.css-sub-change:hover {
+  border-color: var(--terracotta, #C2613F);
+  color: var(--terracotta, #C2613F);
+}
+
+.css-search-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border: 1px dashed var(--terracotta, #C2613F);
+  border-radius: 6px;
+  background: var(--terracotta-soft, #F4E2D8);
+  font-size: 12px;
+  color: var(--terracotta, #C2613F);
+  cursor: pointer;
+  font-family: var(--font-text, sans-serif);
+  font-weight: 500;
+}
+
+.css-search-trigger:hover {
+  background: var(--terracotta, #C2613F);
+  color: #fff;
+}
+
+/* ── Multi-lot allocations ──────────────────────────────────────────────────── */
+
+.css-allocs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding-top: 2px;
+}
+
+.css-alloc-chip {
+  font-size: 11px;
+  color: var(--ink-3, #8A8C7E);
+  background: var(--paper-2, #EBE5D6);
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+/* ── Extra ingredients ───────────────────────────────────────────────────────── */
+
+.css-extra-list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.css-extra-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3, #8A8C7E);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 6px;
+}
+
+.css-extra-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper, #F3EFE4);
+  border: 1px dashed var(--line-strong, rgba(24, 28, 22, 0.22));
+  border-radius: 8px;
+  padding: 8px 10px;
+  flex-wrap: wrap;
+}
+
+.css-extra-row .css-ing-name {
+  flex: 1;
+  min-width: 100px;
+}
+
+.css-remove-extra {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--ink-3, #8A8C7E);
+  cursor: pointer;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.css-remove-extra:hover {
+  background: var(--terracotta-soft, #F4E2D8);
+  color: var(--terracotta, #C2613F);
+}
+
+.css-add-ing-btn {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 16px;
+  border: 1px dashed var(--line-strong, rgba(24, 28, 22, 0.30));
+  border-radius: 8px;
+  background: transparent;
+  font-size: 13px;
+  color: var(--ink-2, #4B4F45);
+  cursor: pointer;
+  font-family: var(--font-text, sans-serif);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.css-add-ing-btn:hover {
+  border-color: var(--terracotta, #C2613F);
+  color: var(--terracotta, #C2613F);
+}
+
+/* ── Search panel ────────────────────────────────────────────────────────────── */
+
+.css-search-panel {
+  margin: 0 20px 12px;
+  background: var(--surface-soft, #FBF7EC);
+  border: 1px solid var(--line-strong, rgba(24, 28, 22, 0.18));
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.css-search-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--line, rgba(24, 28, 22, 0.10));
+}
+
+.css-search-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2, #4B4F45);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.css-search-close {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--ink-3, #8A8C7E);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.css-search-close:hover {
+  background: var(--line, rgba(24, 28, 22, 0.08));
+}
+
+.css-search-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line, rgba(24, 28, 22, 0.08));
+}
+
+.css-search-icon {
+  color: var(--ink-3, #8A8C7E);
+  flex-shrink: 0;
+}
+
+.css-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--ink-1, #181C16);
+  font-family: var(--font-text, sans-serif);
+}
+
+.css-search-input:focus {
+  outline: none;
+}
+
+.css-search-input::placeholder {
+  color: var(--ink-3, #8A8C7E);
+}
+
+.css-search-status {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--ink-3, #8A8C7E);
+  margin: 0;
+}
+
+.css-search-results {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.css-search-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.css-search-result:hover,
+.css-search-result:focus {
+  background: var(--terracotta-soft, #F4E2D8);
+  outline: none;
+}
+
+.css-result-name {
+  font-size: 13px;
+  color: var(--ink-1, #181C16);
+  font-weight: 500;
+}
+
+.css-result-meta {
+  font-size: 11px;
+  color: var(--ink-3, #8A8C7E);
+}
+
+/* ── Bilan (final block) ────────────────────────────────────────────────────── */
+
+.css-bilan {
+  background: var(--surface-soft, #FBF7EC);
+}
+
+.css-bilan-portions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.css-bilan-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.css-bilan-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-3, #8A8C7E);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.css-bilan-rest {
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+}
+
+.css-bilan-rest-val {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink-1, #181C16);
+}
+
+/* ── Field groups (storage, meal, persons) ────────────────────────────────── */
+
+.css-field-group {
+  margin-bottom: 14px;
+}
+
+.css-field-group:last-child {
+  margin-bottom: 0;
+}
+
+.css-field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3, #8A8C7E);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.css-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.css-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--line-strong, rgba(24, 28, 22, 0.22));
+  background: var(--surface, #FFFDF7);
+  font-size: 13px;
+  color: var(--ink-2, #4B4F45);
+  cursor: pointer;
+  font-family: var(--font-text, sans-serif);
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+
+.css-chip:hover {
+  border-color: var(--terracotta, #C2613F);
+}
+
+.css-chip.css-chip-on {
+  background: var(--terracotta, #C2613F);
+  border-color: var(--terracotta, #C2613F);
+  color: #fff;
+  font-weight: 600;
+}
+
+.css-chip.css-chip-on:hover {
+  background: var(--clay, #A8694B);
+  border-color: var(--clay, #A8694B);
+}
+
+.css-chip-person {
+  padding: 5px 12px;
+}
+
+.css-meal-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.css-date-input {
+  padding: 7px 10px;
+  border: 1px solid var(--line-strong, rgba(24, 28, 22, 0.22));
+  border-radius: 8px;
+  background: var(--surface, #FFFDF7);
+  font-size: 13px;
+  color: var(--ink-1, #181C16);
+  font-family: var(--font-text, sans-serif);
+  flex-shrink: 0;
+}
+
+.css-date-input:focus {
+  outline: none;
+  border-color: var(--terracotta, #C2613F);
+  box-shadow: 0 0 0 2px var(--terracotta-soft, #F4E2D8);
+}
+
+/* ── Storage block ───────────────────────────────────────────────────────────── */
+
+.css-storage-block {
+  margin-bottom: 16px;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────────── */
+
+.css-footer {
+  flex-shrink: 0;
+  padding: 14px 20px;
+  border-top: 1px solid var(--line, rgba(24, 28, 22, 0.10));
+  background: var(--surface, #FFFDF7);
+}
+
+.css-commit-error {
+  font-size: 12px;
+  color: var(--terracotta, #C2613F);
+  margin: 0 0 8px;
+  padding: 8px 12px;
+  background: var(--terracotta-soft, #F4E2D8);
+  border-radius: 6px;
+}
+
+.css-commit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--terracotta, #C2613F);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-text, sans-serif);
+  letter-spacing: 0.01em;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.css-commit-btn:hover:not(:disabled) {
+  background: var(--clay, #A8694B);
+}
+
+.css-commit-btn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.css-commit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.css-close-main-btn {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--line-strong, rgba(24, 28, 22, 0.22));
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink-2, #4B4F45);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-text, sans-serif);
+  transition: background 0.12s;
+}
+
+.css-close-main-btn:hover {
+  background: var(--paper, #F3EFE4);
+}
+
+/* Secondary button (used in error state) */
+.css-btn-secondary {
+  padding: 9px 18px;
+  border: 1px solid var(--line-strong, rgba(24, 28, 22, 0.22));
+  border-radius: 8px;
+  background: var(--surface, #FFFDF7);
+  color: var(--ink-2, #4B4F45);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-text, sans-serif);
+}
+
+.css-btn-secondary:hover {
+  background: var(--paper, #F3EFE4);
+}
+
+/* ── Responsive tweaks ───────────────────────────────────────────────────────── */
+
+@media (max-width: 400px) {
+  .css-header {
+    padding: 14px 16px 10px;
+  }
+
+  .css-section {
+    padding: 16px 16px 10px;
+  }
+
+  .css-footer {
+    padding: 12px 16px;
+  }
+
+  .css-bilan-portions {
+    gap: 10px;
+  }
+}

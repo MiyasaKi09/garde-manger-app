@@ -7,6 +7,7 @@ import { supabase } from '@/lib/supabaseClient';
 import { authFetch } from '@/lib/authFetch';
 import { readCache, writeCache } from '@/lib/pageCache';
 import { dedupCatalog } from './catalogDedup';
+import { convertWithMeta } from '@/lib/units';
 import './recipes.css';
 
 /* ── Fiche recette horizontale (vignette + infos), barre d'état à gauche ── */
@@ -252,7 +253,15 @@ export default function RecipesPage() {
             else if (ing.canonical_food_id && lot.archetype_id && archetypeMapping[lot.archetype_id] === ing.canonical_food_id) m = true;
             else if (ing.archetype_id && lot.archetype_id === ing.archetype_id) m = true;
             if (m) {
-              totalAvailable += lot.qty_remaining || 0;
+              // Convertir la qty du lot vers l'unité de l'ingrédient avant sommation.
+              // Un lot inconvertible (ex: g → u sans meta) est exclu de la somme.
+              const ingUnit = ing.unit || 'g';
+              const lotUnit = lot.unit || 'g';
+              const converted = convertWithMeta(lot.qty_remaining || 0, lotUnit, ingUnit);
+              // convertWithMeta retourne { qty, unit } ; si unit ≠ ingUnit → conversion non fiable → exclure.
+              if (converted.unit === ingUnit) {
+                totalAvailable += converted.qty;
+              }
               if (lot.expiration_date) {
                 const d = new Date(lot.expiration_date);
                 if (!earliestExp || d < earliestExp) earliestExp = d;
