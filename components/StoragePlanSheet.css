@@ -153,6 +153,25 @@
   color: var(--ink-3, #8A8C7E);
 }
 
+.sps-plan-state {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-bottom: 1px solid var(--line, rgba(24, 28, 22, 0.12));
+  background: var(--surface-soft, #FBF7EC);
+  color: var(--ink-3, #8A8C7E);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.03em;
+}
+
+.sps-plan-state.error {
+  background: var(--state-expired-bg, #F6E0D6);
+  color: #8b3d2d;
+}
+
 /* ── Corps (liste d'articles) ── */
 .sps-body {
   flex: 1 1 0;
@@ -260,6 +279,23 @@
   border: 1px solid #B3C9F0;
 }
 
+.sps-badge-pending {
+  background: var(--accent-soft, #F7E6CE);
+  color: #7a4a16;
+  border: 1px solid #ddb77f;
+}
+
+.sps-row-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: -5px 16px 9px 52px;
+  color: var(--ink-3, #8A8C7E);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  line-height: 1.35;
+}
+
 /* Icônes d'état */
 .sps-row-ok {
   flex-shrink: 0;
@@ -321,6 +357,12 @@
   padding: 8px 16px 14px 52px; /* 52px = emoji width + gap */
   border-top: 1px dashed var(--accent, #DE8A2C);
   background: rgba(222, 138, 44, 0.04);
+}
+
+.sps-edit-optional {
+  color: var(--ink-3, #8A8C7E);
+  font-weight: 400;
+  text-transform: none;
 }
 
 .sps-row-warn-label {
@@ -426,6 +468,11 @@
 
 .sps-btn-primary:hover {
   background: #A5512E;
+}
+
+.sps-btn-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .sps-btn-primary:focus-visible,

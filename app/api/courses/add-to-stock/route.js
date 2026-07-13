@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { parseQuantity, normalizeUnit } from '@/lib/parseQuantity'
 import { loadResolverData, resolveIngredient, ensureCanonical } from '@/lib/ingredientResolver'
+import { buildStorageDecision } from '@/lib/storageDecisionServer'
+import { normalizeIsoDate, todayIso } from '@/lib/storageDecision'
 
 /**
  * POST /api/courses/add-to-stock
@@ -23,9 +25,9 @@ import { loadResolverData, resolveIngredient, ensureCanonical } from '@/lib/ingr
  *      (loadResolverData + resolveIngredient) OU creation garantie (ensureCanonical).
  *      Garantie : le lot insert a TOUJOURS exactement une FK d'identité.
  *   2. Écrire la FK résolue sur l'item de courses (évite de repasser par le résolveur).
- *   3. Déduire le mode de stockage (frigo/congélateur/garde-manger).
- *   4. Lire shelf_life_days_[method] depuis archetypes / canonical_foods.
- *   5. Calculer expiration_date = aujourd'hui + shelf_life_days.
+ *   3. Prendre une décision de conservation unique, sourcée et validée.
+ *   4. Prioriser la date d'étiquette, puis la politique et le catalogue.
+ *   5. Refuser un rangement dangereux ou encore ambigu.
  *   6. Créer le ou les lots (N lots si conditionnement multi-contenants).
  *
  * NB : user_id des lots est posé par le default DB (auth.uid()) — on ne l'envoie jamais.
@@ -46,17 +48,17 @@ export async function POST(request) {
       containerQty = null,
       containerSize = null,
       containerUnit = null,
+      category = '',
+      purchaseState = 'unknown',
+      foodState = 'unknown',
+      storageMethod = null,
+      useByDate = null,
+      bestBeforeDate = null,
+      acquiredOn = null,
     } = await request.json()
 
     if (!productName) {
       return NextResponse.json({ error: 'productName requis' }, { status: 400 })
-    }
-
-    // 0. Idempotence : si l'article garde des lots d'un cochage précédent
-    //    (décochage raté, double cochage…), nettoyer les lots non entamés
-    //    AVANT d'en recréer — évite les doublons de stock.
-    if (itemId != null) {
-      await cleanupCreatedLots(supabase, user.id, itemId)
     }
 
     // 1. Résoudre les IDs ingrédient
@@ -110,31 +112,73 @@ export async function POST(request) {
       })
     }
 
-    // 2. Déduire le mode de stockage : DB en priorité si un seul champ est renseigné
-    const dbStorageMethod = await resolveStorageHint(supabase, resolvedArchetypeId, resolvedCanonicalFoodId)
-    const storage = dbStorageMethod
-      ? { method: dbStorageMethod, place: STORAGE_PLACES[dbStorageMethod] }
-      : guessStorage(productName)
+    // 2. Décision unique utilisée également par la prévisualisation du panneau.
+    //    Le congélateur reste une possibilité, jamais le défaut d'un produit frais.
+    const acquired_on = normalizeIsoDate(acquiredOn) || todayIso()
+    const storageDecision = await buildStorageDecision(supabase, {
+      productName,
+      category,
+      canonicalFoodId: resolvedCanonicalFoodId,
+      archetypeId: resolvedArchetypeId,
+      purchaseState,
+      foodState,
+      storageMethod,
+      useByDate,
+      bestBeforeDate,
+      acquiredOn: acquired_on,
+    })
 
-    // 3. Lire les données de conservation depuis le DB, fallback sur règles mot-clé
-    const shelfLifeDays = await resolveShelfLife(supabase, resolvedArchetypeId, resolvedCanonicalFoodId, storage.method)
-      ?? guessShelfLifeFallback(productName, storage.method)
+    if (!storageDecision.valid) {
+      return NextResponse.json({
+        success: false,
+        code: 'INVALID_STORAGE_DECISION',
+        error: storageDecision.error || storageDecision.reason,
+        storageDecision,
+        items: [{ id: itemId, ok: false, error: storageDecision.error || storageDecision.reason }],
+      }, { status: 422 })
+    }
 
-    // 4. Calculer la date d'expiration
-    const today = new Date()
-    const expDate = new Date(today)
-    expDate.setDate(expDate.getDate() + shelfLifeDays)
-    const acquired_on = today.toISOString().split('T')[0]
-    const expiration_date = expDate.toISOString().split('T')[0]
+    if (storageDecision.requiresConfirmation) {
+      return NextResponse.json({
+        success: false,
+        code: 'STORAGE_CONFIRMATION_REQUIRED',
+        error: 'Lieu de conservation à confirmer avant le rangement',
+        storageDecision,
+        items: [{ id: itemId, ok: false, error: 'Lieu de conservation à confirmer' }],
+      }, { status: 422 })
+    }
+
+    const expiration_date = storageDecision.expirationDate
+
+    // Idempotence seulement APRÈS validation. Une décision refusée ne doit
+    // jamais supprimer un lot créé lors d'un rangement précédent.
+    if (itemId != null) {
+      const cleanup = await cleanupCreatedLots(supabase, user.id, itemId)
+      if (cleanup.error) {
+        return NextResponse.json({
+          success: false,
+          error: cleanup.error,
+          items: [{ id: itemId, ok: false, error: cleanup.error }],
+        }, { status: 500 })
+      }
+    }
 
     // 5. Construire le template de lot
     const baseLot = {
       archetype_id: resolvedArchetypeId ?? null,
       canonical_food_id: resolvedCanonicalFoodId ?? null,
-      storage_method: storage.method,
-      storage_place: storage.place,
+      storage_method: storageDecision.method,
+      storage_place: storageDecision.place,
       acquired_on,
       expiration_date,
+      storage_decision_source: storageDecision.storageSource,
+      storage_decision_confidence: storageDecision.confidence,
+      storage_policy_version: storageDecision.policyVersion,
+      expiration_source: storageDecision.expirationSource,
+      expiration_kind: storageDecision.expiryKind,
+      requires_storage_review: storageDecision.needsReview,
+      label_use_by_date: normalizeIsoDate(useByDate),
+      label_best_before_date: normalizeIsoDate(bestBeforeDate),
       notes: matched ? null : productName,
     }
 
@@ -218,6 +262,7 @@ export async function POST(request) {
       matched,
       lotsCreated: lots.length,
       expirationDate: expiration_date,
+      storageDecision,
       // Champs par item
       items: [{ id: itemId, ok: true, lot_id: lots[0]?.id ?? null }],
       created_lots: lots.length,
@@ -311,117 +356,4 @@ async function cleanupCreatedLots(supabase, userId, itemId) {
   if (clearErr) return { error: clearErr.message }
 
   return { deleted: untouched.length, kept }
-}
-
-/**
- * Lit shelf_life_days_[storageMethod] depuis archetypes (puis canonical_food en fallback).
- * Retourne le nombre de jours, ou null si non trouvé.
- */
-async function resolveShelfLife(supabase, archetypeId, canonicalFoodId, storageMethod) {
-  const field = `shelf_life_days_${storageMethod}`
-
-  if (archetypeId) {
-    const { data } = await supabase
-      .from('archetypes')
-      .select(`${field}, canonical_food:canonical_foods(${field})`)
-      .eq('id', archetypeId)
-      .single()
-
-    if (data) {
-      const days = data[field] ?? data.canonical_food?.[field] ?? null
-      if (days) return days
-    }
-  }
-
-  if (canonicalFoodId) {
-    const { data } = await supabase
-      .from('canonical_foods')
-      .select(field)
-      .eq('id', canonicalFoodId)
-      .single()
-
-    if (data?.[field]) return data[field]
-  }
-
-  return null
-}
-
-/**
- * Fallback par mots-clés quand aucune donnée DB n'est disponible.
- */
-function guessShelfLifeFallback(name, storageMethod) {
-  const n = name.toLowerCase()
-  if (storageMethod === 'freezer') return 180
-  if (/huile|vinaigre|épice|cumin|cannelle|paprika|curcuma|curry|poivre|muscade|thym|origan|herbes/i.test(n)) return 365
-  if (/conserve|passata|concentré|boîte|bocal|farine|sucre|sel|maïzena|pâtes|riz|semoule|quinoa|lentilles|pois/i.test(n)) return 365
-  if (/amande|noix|noisette|cacahuète|fruit.?sec/i.test(n)) return 180
-  if (storageMethod === 'fridge') {
-    if (/poulet|viande|bœuf|boeuf|porc|veau|agneau|dinde|saucisse|lardons|bacon/i.test(n)) return 4
-    if (/saumon|cabillaud|truite|poisson/i.test(n)) return 3
-    if (/lait/i.test(n)) return 7
-    if (/yaourt|skyr/i.test(n)) return 21
-    if (/fromage|beurre|crème/i.test(n)) return 21
-    if (/œuf|oeuf/i.test(n)) return 28
-    if (/salade|épinard|mâche/i.test(n)) return 5
-    if (/champignon/i.test(n)) return 5
-    if (/tomate|courgette|aubergine|poivron/i.test(n)) return 7
-    if (/carotte|navet|poireau|chou|brocoli/i.test(n)) return 14
-    return 7
-  }
-  return 90
-}
-
-const STORAGE_PLACES = {
-  pantry: 'Garde-manger',
-  fridge: 'Frigo',
-  freezer: 'Congélateur',
-}
-
-/**
- * Résout le mode de stockage depuis la DB (archetype ou canonical_food).
- * Retourne la méthode uniquement si exactement un champ shelf_life est renseigné
- * (signal non ambigu). Sinon retourne null pour laisser guessStorage() décider.
- */
-async function resolveStorageHint(supabase, archetypeId, canonicalFoodId) {
-  const fields = 'shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer'
-  let data = null
-
-  if (archetypeId) {
-    const { data: arch } = await supabase
-      .from('archetypes')
-      .select(fields)
-      .eq('id', archetypeId)
-      .single()
-    data = arch
-  } else if (canonicalFoodId) {
-    const { data: cf } = await supabase
-      .from('canonical_foods')
-      .select(fields)
-      .eq('id', canonicalFoodId)
-      .single()
-    data = cf
-  }
-
-  if (!data) return null
-
-  const populated = [
-    data.shelf_life_days_pantry  && 'pantry',
-    data.shelf_life_days_fridge  && 'fridge',
-    data.shelf_life_days_freezer && 'freezer',
-  ].filter(Boolean)
-
-  // Signal non ambigu : un seul mode de conservation renseigné en DB
-  return populated.length === 1 ? populated[0] : null
-}
-
-/**
- * Déduit le mode de stockage depuis le nom du produit.
- */
-function guessStorage(name) {
-  const n = name.toLowerCase()
-  if (/surgelé|congelé|glace/i.test(n)) return { method: 'freezer', place: 'Congélateur' }
-  if (/lait|yaourt|skyr|fromage|beurre|crème|œuf|oeuf|poulet|viande|bœuf|boeuf|porc|veau|agneau|dinde|saumon|cabillaud|truite|poisson|jambon|lardons|saucisse|merguez|chorizo|magret|canard|guanciale|pancetta|bacon/i.test(n)) return { method: 'fridge', place: 'Frigo' }
-  if (/salade|laitue|tomate|concombre|courgette|aubergine|poivron|brocoli|chou|fenouil|navet|radis|carotte|poireau|champignon|épinard|haricot.?vert|asperge|céleri|betterave|endive|mâche|roquette|persil|coriandre|menthe|basilic|ciboulette|fraise|framboise|myrtille/i.test(n)) return { method: 'fridge', place: 'Frigo' }
-  if (/frais|fraîche/i.test(n)) return { method: 'fridge', place: 'Frigo' }
-  return { method: 'pantry', place: 'Garde-manger' }
 }

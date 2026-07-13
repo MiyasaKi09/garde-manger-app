@@ -74,6 +74,37 @@ test.describe('Courses — acheté → ranger', () => {
       return route.fallback()
     })
 
+    // Prévisualisation serveur : exactement la décision qui sera utilisée au
+    // rangement. Le panneau ne possède plus de guess local indépendant.
+    await page.route('/api/courses/storage-plan', async (route) => {
+      const body = route.request().postDataJSON()
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          decisions: body.items.map(item => ({
+            id: item.id,
+            decision: {
+              valid: true,
+              method: 'fridge',
+              place: 'Frigo',
+              shelfLifeDays: 2,
+              expirationDate: '2026-07-15',
+              expiryKind: 'estimate',
+              storageSource: 'food_safety_rule',
+              expirationSource: 'canonical_catalog',
+              confidence: 0.98,
+              policyVersion: 'storage-v1-2026-07-13',
+              requiresConfirmation: false,
+              needsReview: false,
+              forbiddenMethods: ['pantry'],
+              reason: 'Volaille fraîche : conservation au réfrigérateur',
+            },
+          })),
+        }),
+      })
+    })
+
     // PATCH shopping-items/:id for lot_ids persistence (called by StoragePlanSheet)
     await page.route(`/api/courses/shopping-items/**`, (route) => {
       if (route.request().method() === 'PATCH') {
@@ -151,6 +182,8 @@ test.describe('Courses — acheté → ranger', () => {
     const dialog = page.getByRole('dialog', { name: /ranger les achats/i })
     await expect(dialog).toBeVisible()
     await expect(dialog.getByText('Poulet fermier')).toBeVisible()
+    await expect(dialog.getByText('Frigo')).toBeVisible()
+    await expect(dialog.getByText(/15 juil/i)).toBeVisible()
 
     // Click "Tout ranger"
     const toutRangerBtn = dialog.getByRole('button', { name: /tout ranger/i })
