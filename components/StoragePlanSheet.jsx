@@ -20,13 +20,16 @@ import { authFetch } from '@/lib/authFetch'
 import { getFoodEmoji } from '@/lib/foodEmoji'
 import './StoragePlanSheet.css'
 
-/* ── Déduction du lieu de stockage depuis la catégorie ─────────────────────── */
-function guessStorageFromCategory(category) {
-  const c = (category || '').toLowerCase()
-  if (/surgel|congel/.test(c)) return { label: 'Congélateur', badge: 'freezer' }
-  if (/viande|poisson|frais|lait|laiti|lacté|fromage|charcuter|réfrig|œuf|oeuf/.test(c))
-    return { label: 'Frigo', badge: 'fridge' }
-  return { label: 'Garde-manger', badge: 'pantry' }
+const STORAGE_LABELS = {
+  pantry: 'Garde-manger',
+  fridge: 'Frigo',
+  freezer: 'Congélateur',
+}
+
+function formatDate(value) {
+  if (!value) return null
+  return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short' })
+    .format(new Date(`${value}T12:00:00Z`))
 }
 
 /* ── Détermine si un article nécessite une confirmation de l'utilisateur ────── */
@@ -45,6 +48,13 @@ export default function StoragePlanSheet({ items, onClose, onItemStored, onDone 
 
   // Quantités éditables (pour les lignes « à confirmer »)
   const [quantityEdits, setQuantityEdits] = useState({})
+  const [storageEdits, setStorageEdits] = useState({})
+  const [dateEdits, setDateEdits] = useState({})
+
+  // Décisions serveur : même moteur que celui qui crée effectivement les lots.
+  const [storagePlans, setStoragePlans] = useState({})
+  const [planStatus, setPlanStatus] = useState('loading')
+  const [planError, setPlanError] = useState(null)
 
   // Lignes dépliées (auto-dépliées si review_status nécessite confirmation)
   const [expandedItems, setExpandedItems] = useState(() => {
@@ -61,9 +71,66 @@ export default function StoragePlanSheet({ items, onClose, onItemStored, onDone 
 
   const storedCount = useMemo(() => Object.values(results).filter(r => r.ok).length, [results])
   const errorCount  = useMemo(() => Object.values(results).filter(r => !r.ok).length,  [results])
-  const toConfirmCount = items.filter(isToConfirm).length
+  const toConfirmCount = items.filter(item =>
+    isToConfirm(item) || storagePlans[item.id]?.requiresConfirmation
+  ).length
+  const unresolvedStorageCount = items.filter(item => {
+    const decision = storagePlans[item.id]
+    return !decision || !decision.valid || (decision.requiresConfirmation && !storageEdits[item.id])
+  }).length
 
   const pct = progress.total > 0 ? Math.round((progress.done / progress.total) * 100) : 0
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadStoragePlans() {
+      setPlanStatus('loading')
+      setPlanError(null)
+      try {
+        const res = await authFetch('/api/courses/storage-plan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: items.map(item => ({
+              id: item.id,
+              productName: item.product_name,
+              category: item.category,
+              canonicalFoodId: item.canonical_food_id ?? null,
+              archetypeId: item.archetype_id ?? null,
+              purchaseState: item.purchase_state ?? 'unknown',
+              foodState: item.food_state ?? 'unknown',
+            })),
+          }),
+        })
+        const data = await res.json()
+        if (!res.ok) throw new Error(data.error || 'Décision de conservation indisponible')
+
+        const next = {}
+        for (const entry of data.decisions || []) {
+          if (entry.decision) next[entry.id] = entry.decision
+          else next[entry.id] = { valid: false, requiresConfirmation: true, error: entry.error }
+        }
+        if (cancelled) return
+        setStoragePlans(next)
+        setExpandedItems(previous => {
+          const expanded = new Set(previous)
+          items.forEach(item => {
+            if (next[item.id]?.requiresConfirmation || !next[item.id]?.valid) expanded.add(item.id)
+          })
+          return expanded
+        })
+        setPlanStatus('ready')
+      } catch (error) {
+        if (cancelled) return
+        setPlanError(error.message)
+        setPlanStatus('error')
+      }
+    }
+
+    loadStoragePlans()
+    return () => { cancelled = true }
+  }, [items])
 
   function toggleExpanded(itemId) {
     setExpandedItems(prev => {
@@ -101,11 +168,16 @@ export default function StoragePlanSheet({ items, onClose, onItemStored, onDone 
               itemId: item.id,
               productName: item.product_name,
               quantity: qty,
+              category: item.category,
               canonicalFoodId: item.canonical_food_id ?? null,
               archetypeId:     item.archetype_id ?? null,
               containerQty:    item.container_qty ?? null,
               containerSize:   item.container_size ?? null,
               containerUnit:   item.container_unit ?? null,
+              purchaseState:   item.purchase_state ?? 'unknown',
+              foodState:       item.food_state ?? 'unknown',
+              storageMethod:   storageEdits[item.id] ?? null,
+              useByDate:       dateEdits[item.id] || null,
             }),
           })
           const data = await res.json()
@@ -208,11 +280,27 @@ export default function StoragePlanSheet({ items, onClose, onItemStored, onDone 
           </div>
         )}
 
+        {phase === 'plan' && planStatus === 'loading' && (
+          <div className="sps-plan-state" role="status">
+            Vérification des lieux et des dates…
+          </div>
+        )}
+        {phase === 'plan' && planStatus === 'error' && (
+          <div className="sps-plan-state error" role="alert">
+            <AlertTriangle size={12} /> {planError}
+          </div>
+        )}
+
         {/* ── Liste des articles ── */}
         <div className="sps-body">
           {items.map(item => {
-            const storage  = guessStorageFromCategory(item.category)
-            const confirm  = isToConfirm(item)
+            const decision = storagePlans[item.id]
+            const selectedMethod = storageEdits[item.id] || decision?.method || null
+            const storage = {
+              label: selectedMethod ? STORAGE_LABELS[selectedMethod] : 'À confirmer',
+              badge: selectedMethod || 'pending',
+            }
+            const confirm  = isToConfirm(item) || decision?.requiresConfirmation || !decision?.valid
             const result   = results[item.id]
             const expanded = expandedItems.has(item.id) && !result
             const qty      = quantityEdits[item.id] !== undefined
@@ -261,12 +349,24 @@ export default function StoragePlanSheet({ items, onClose, onItemStored, onDone 
                   )}
                 </div>
 
+                {!result && decision?.valid && selectedMethod && (
+                  <div className="sps-row-meta">
+                    <span>{decision.reason}</span>
+                    {decision.expirationDate && (
+                      <span>· {decision.expiryKind === 'DDM' ? 'DDM' : 'DLC'} {formatDate(decision.expirationDate)}</span>
+                    )}
+                    <span>· source {decision.storageSource.replaceAll('_', ' ')}</span>
+                  </div>
+                )}
+
                 {/* Détail déplié (articles à confirmer) */}
                 {expanded && (
                   <div className="sps-row-detail">
-                    <span className="sps-row-warn-label">
-                      <AlertTriangle size={10} /> Produit non confirmé — vérifiez la quantité
-                    </span>
+                    {isToConfirm(item) && (
+                      <span className="sps-row-warn-label">
+                        <AlertTriangle size={10} /> Produit non confirmé — vérifiez la quantité
+                      </span>
+                    )}
                     <div className="sps-row-edit">
                       <label className="sps-edit-label" htmlFor={`qty-${item.id}`}>
                         Quantité
@@ -280,6 +380,42 @@ export default function StoragePlanSheet({ items, onClose, onItemStored, onDone 
                           setQuantityEdits(prev => ({ ...prev, [item.id]: e.target.value }))
                         }
                         placeholder={item.quantity || 'ex : 500 g'}
+                      />
+                    </div>
+                    {(decision?.requiresConfirmation || !decision?.valid) && (
+                      <div className="sps-row-edit">
+                        <label className="sps-edit-label" htmlFor={`storage-${item.id}`}>
+                          Où était le produit en magasin ?
+                        </label>
+                        <select
+                          id={`storage-${item.id}`}
+                          className="sps-edit-input"
+                          value={storageEdits[item.id] || ''}
+                          onChange={event => setStorageEdits(previous => ({
+                            ...previous,
+                            [item.id]: event.target.value,
+                          }))}
+                        >
+                          <option value="">Choisir…</option>
+                          <option value="pantry" disabled={decision?.forbiddenMethods?.includes('pantry')}>Garde-manger</option>
+                          <option value="fridge" disabled={decision?.forbiddenMethods?.includes('fridge')}>Réfrigérateur</option>
+                          <option value="freezer" disabled={decision?.forbiddenMethods?.includes('freezer')}>Congélateur</option>
+                        </select>
+                      </div>
+                    )}
+                    <div className="sps-row-edit">
+                      <label className="sps-edit-label" htmlFor={`date-${item.id}`}>
+                        DLC de l'emballage <span className="sps-edit-optional">(facultatif)</span>
+                      </label>
+                      <input
+                        id={`date-${item.id}`}
+                        className="sps-edit-input"
+                        type="date"
+                        value={dateEdits[item.id] || ''}
+                        onChange={event => setDateEdits(previous => ({
+                          ...previous,
+                          [item.id]: event.target.value,
+                        }))}
                       />
                     </div>
                   </div>
@@ -301,8 +437,15 @@ export default function StoragePlanSheet({ items, onClose, onItemStored, onDone 
               <button className="sps-btn-ghost" onClick={onClose}>
                 Annuler
               </button>
-              <button className="sps-btn-primary" onClick={handleStore}>
-                <Package size={14} /> Tout ranger
+              <button
+                className="sps-btn-primary"
+                onClick={handleStore}
+                disabled={planStatus !== 'ready' || unresolvedStorageCount > 0}
+              >
+                <Package size={14} />
+                {unresolvedStorageCount > 0
+                  ? `${unresolvedStorageCount} lieu${unresolvedStorageCount > 1 ? 'x' : ''} à confirmer`
+                  : 'Tout ranger'}
               </button>
             </>
           )}
