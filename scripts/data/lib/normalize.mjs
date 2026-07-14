@@ -7,6 +7,7 @@
 export function normalizeName(raw) {
   if (raw == null) return ''
   return String(raw)
+    .replace(/œ/gi, 'oe').replace(/æ/gi, 'ae') // ligatures (œuf → oeuf) — NFD ne les décompose pas
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '') // retire les diacritiques (clé normalisée)
     .toLowerCase()

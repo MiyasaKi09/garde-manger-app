@@ -67,9 +67,44 @@ node scripts/data/publish/emit-publish.mjs # → scripts/data/out/f0-publish/*.s
 # puis appliquer 00-setup, 10a/10b/10c-forms, 90-finalize (idempotents, ON CONFLICT DO NOTHING)
 ```
 
+## Produits commerciaux — `data-v2/commercial-products` (Open Food Facts)
+
+> Réf. §3.9, §5.1, §9.1. OFF fournit les **produits commerciaux** (code-barres,
+> marque, conditionnement) — **jamais** la base des aliments génériques.
+
+| Étape | Fichier |
+|---|---|
+| Client OFF (recherche par catégorie, France, populaires) | `scripts/data/download/openfoodfacts.mjs` |
+| Normalisation produit (quantité, emballage, ligature œ) | `scripts/data/lib/off-normalize.mjs` |
+| Rapprochement produit → concept (recouvrement de tokens) | `scripts/data/lib/off-match.mjs` |
+| RPC de scan (SECURITY DEFINER, données publiées) | `supabase/migrations/20260714210001_v2_commercial_scan_rpc.sql` |
+| Lecture serveur + repli live OFF | `lib/db/queries/commercialProducts.js` |
+| API scan | `app/api/catalog/scan/route.js` |
+
+**Rapprochement** (`off-match`) : un produit est lié à un concept si assez de mots
+significatifs du concept (≥3 lettres, hors stopwords, singularisés) sont présents dans
+le nom du produit. `confidence = tokens partagés / tokens du concept` ; liaison si
+≥ 0,5 ; départage par spécificité puis nom le plus court. Haute **précision** : les
+huiles d'olive (absentes du catalogue) restent NON liées plutôt que rattachées par
+erreur à l'huile de palme. Le `food_form_id` est **nullable** — un produit commercial
+ne remplace jamais une forme.
+
+**Seed publié** (`openfoodfacts`, ODbL) : **36 produits** français populaires (moutarde,
+riz basmati, lardons, pois chiche, haricots, lentilles, quinoa, œufs, noix de cajou,
+vinaigre balsamique…) — **28 liés** à une forme F0, **8 non liés** (noms anglais /
+aliment absent du catalogue) avec `review_task`. `match_confidence` stocké par produit.
+
+**Scan** : `GET /api/catalog/scan?barcode=…[&live=1]` → produit publié + forme liée +
+nutrition/100 g (via `public.scan_commercial_product`). `live=1` tente un repli OFF en
+direct (candidat `untrusted`, non stocké) si le produit est absent du catalogue.
+
+Sécurité : le schéma `catalog` n'est pas exposé à l'API ; le client lit via la RPC
+`SECURITY DEFINER` (search_path verrouillé, `anon` révoqué, `authenticated` uniquement).
+
 ## Suite
 
 - **F1 (1 500 formes)** : couverture semaine, USDA en complément, contrôle croisé.
-- **PR 3 `data-v2/commercial-products`** : Open Food Facts → `catalog.commercial_products`.
+- **Import OFF massif** : via les exports OFF (pas l'API de recherche) quand le volume
+  le justifiera.
 - **PR 4 `data-v2/recipe-factory`** : la nutrition-engine réutilise `lib/domain/units` +
   `lib/domain/nutrition/calculator` (logique déterministe inchangée).
