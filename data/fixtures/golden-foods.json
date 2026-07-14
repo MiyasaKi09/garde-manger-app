@@ -1,0 +1,88 @@
+{
+  "_comment": "Corpus GOLDEN de validation manuelle (fix F0, point 12). Réf. MYKO_DATA_FOUNDATION_V2 §8.4. Structure culinaire CORRECTE, validée à la main (confiance A pour l'identité/catégorie/états ; la nutrition reste sourcée Ciqual = B). Sert de référence pour la reconstruction curée de F0 et de golden dataset de test. Ces entrées démontrent le découpage attendu (concept → formes avec états + rendements + transformation), notamment le cas poulet cité par l'audit.",
+  "concepts": [
+    {
+      "canonical_name": "Poulet",
+      "category": "volailles",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "UN concept. 'Poulet fermier', 'poulet var. blanc' sont des attributs (mode d'élevage/variété), pas des concepts distincts.",
+      "forms": [
+        {
+          "canonical_name": "Cuisse de poulet crue, avec os, avec peau",
+          "cut_name": "cuisse", "bone_state": "bone_in", "skin_state": "with_skin",
+          "cooking_state": "raw", "physical_state": "solid",
+          "edible_yield_ratio": 0.72,
+          "state_confidence": "A", "ciqual_alim_code_ref": "36022",
+          "note": "Rendement comestible ~72 % (os ~25 %, pertes ~3 %)."
+        },
+        {
+          "canonical_name": "Haut de cuisse de poulet cru, désossé, avec peau",
+          "cut_name": "haut_de_cuisse", "bone_state": "boneless", "skin_state": "with_skin",
+          "cooking_state": "raw", "physical_state": "solid",
+          "edible_yield_ratio": 0.94, "state_confidence": "A"
+        },
+        {
+          "canonical_name": "Haut de cuisse de poulet cru, désossé, sans peau",
+          "cut_name": "haut_de_cuisse", "bone_state": "boneless", "skin_state": "skinless",
+          "cooking_state": "raw", "physical_state": "solid",
+          "edible_yield_ratio": 1.0, "state_confidence": "A"
+        },
+        {
+          "canonical_name": "Blanc de poulet cru, sans peau",
+          "cut_name": "blanc", "bone_state": "boneless", "skin_state": "skinless",
+          "cooking_state": "raw", "physical_state": "solid",
+          "edible_yield_ratio": 1.0, "state_confidence": "A", "ciqual_alim_code_ref": "36003"
+        },
+        {
+          "canonical_name": "Poulet cuit, effiloché",
+          "cut_name": null, "cooking_state": "cooked", "preparation_state": "shredded",
+          "physical_state": "solid", "edible_yield_ratio": 1.0, "state_confidence": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "action_code": "desosser", "action_label": "Désosser",
+          "source_form": "Cuisse de poulet crue, avec os, avec peau",
+          "skill_level": "intermediate", "active_minutes": 4,
+          "outputs": [
+            { "form": "Haut de cuisse de poulet cru, désossé, avec peau", "role": "main", "expected_yield_ratio": 0.72, "min": 0.68, "max": 0.76 },
+            { "form": "Os et articulations de poulet", "role": "byproduct", "expected_yield_ratio": 0.22, "min": 0.18, "max": 0.25 },
+            { "form": "Parures de poulet", "role": "trim", "expected_yield_ratio": 0.05, "min": 0.03, "max": 0.08 }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Pintade",
+      "category": "volailles", "identity_confidence": "A", "category_confidence": "A",
+      "forms": [
+        { "canonical_name": "Pintade crue, viande et peau", "bone_state": "boneless", "skin_state": "with_skin", "cooking_state": "raw", "edible_yield_ratio": 1.0, "state_confidence": "A", "ciqual_alim_code_ref": "36700" }
+      ]
+    },
+    {
+      "canonical_name": "Pomme de terre",
+      "category": "cereales_feculents", "identity_confidence": "A", "category_confidence": "A",
+      "note": "Féculent (rangement), pas 'légume' — décision de taxonomie explicite.",
+      "forms": [
+        { "canonical_name": "Pomme de terre crue, entière, avec peau", "cooking_state": "raw", "skin_state": "with_skin", "edible_yield_ratio": 0.85, "state_confidence": "A", "note": "épluchage ~15 % de pertes" },
+        { "canonical_name": "Pomme de terre cuite, épluchée", "cooking_state": "cooked", "skin_state": "skinless", "edible_yield_ratio": 1.0, "state_confidence": "A" }
+      ]
+    },
+    {
+      "canonical_name": "Lentille verte",
+      "category": "legumineuses", "identity_confidence": "A", "category_confidence": "A",
+      "forms": [
+        { "canonical_name": "Lentille verte sèche, crue", "cooking_state": "raw", "preservation_state": "dried", "edible_yield_ratio": 1.0, "state_confidence": "A", "note": "×~2,4 en masse après cuisson (hydratation) — conversion propre à l'aliment" },
+        { "canonical_name": "Lentille verte cuite", "cooking_state": "cooked", "edible_yield_ratio": 1.0, "state_confidence": "A", "ciqual_alim_code_ref": "20587" }
+      ]
+    },
+    {
+      "canonical_name": "Yaourt nature",
+      "category": "produits_laitiers", "identity_confidence": "A", "category_confidence": "A",
+      "forms": [
+        { "canonical_name": "Yaourt nature", "physical_state": "solid", "default_quantity_unit": "g", "edible_yield_ratio": 1.0, "state_confidence": "A", "note": "unité usuelle : pot de 125 g" }
+      ]
+    }
+  ]
+}
