@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {
-  parseQuantityString, parsePackagingType, normalizeOffProduct,
+  parseQuantityString, parsePackagingType, normalizeOffProduct, isCompositeProduct,
 } from '@/scripts/data/lib/off-normalize.mjs'
 import { significantTokens, matchProductToConcept } from '@/scripts/data/lib/off-match.mjs'
 
@@ -45,6 +45,20 @@ describe('normalizeOffProduct', () => {
   it('retourne null sans code-barres ou nom', () => {
     expect(normalizeOffProduct({ code: '', product_name: 'x' })).toBe(null)
     expect(normalizeOffProduct({ code: '123', product_name: '' })).toBe(null)
+  })
+})
+
+describe('isCompositeProduct — nutrition étiquette obligatoire', () => {
+  it('produit composé/transformé détecté', () => {
+    expect(isCompositeProduct({}, 'curry de pois chiches aux epices')).toBe(true)
+    expect(isCompositeProduct({}, 'haricots blancs a la tomate')).toBe(true)
+    expect(isCompositeProduct({}, 'quinoa croquant amandes et noisettes')).toBe(true)
+    expect(isCompositeProduct({ nova_group: 4 }, 'nutella')).toBe(true)
+  })
+  it('aliment simple non composé', () => {
+    expect(isCompositeProduct({ nova_group: 1 }, 'lentilles vertes')).toBe(false)
+    expect(isCompositeProduct({}, 'moutarde de dijon')).toBe(false)
+    expect(isCompositeProduct({}, 'riz basmati')).toBe(false)
   })
 })
 

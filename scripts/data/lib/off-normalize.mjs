@@ -39,6 +39,19 @@ export function parseQuantityString(qty, productQuantityGrams) {
   return { package_quantity: null, package_unit: null }
 }
 
+/**
+ * Détecte un produit COMPOSÉ / transformé (plusieurs ingrédients cuisinés) : sa
+ * nutrition ne peut pas être celle d'une forme générique simple. Réf. fix R0 §48.
+ * Signaux : NOVA 3-4 (transformé/ultra-transformé) ou libellé « préparé/cuisiné/
+ * aux/à la/curry/sauce/gourmand/croquant/mélange… ».
+ */
+export function isCompositeProduct(p, nameNormalized) {
+  const nova = Number(p?.nova_group)
+  if (Number.isFinite(nova) && nova >= 3) return true
+  const n = String(nameNormalized || '')
+  return /\b(aux?|a la|cuisine|prepare|curry|sauce|gourmand|croquant|melange|farci|nappe|fume|marine|assaisonne|plat)\b/.test(n)
+}
+
 /** Type d'emballage principal depuis la chaîne `packaging` OFF. */
 export function parsePackagingType(packaging) {
   const s = String(packaging ?? '').toLowerCase()
@@ -68,17 +81,19 @@ export function normalizeOffProduct(p) {
 
   const { package_quantity, package_unit } = parseQuantityString(p.quantity, p.product_quantity)
   const brand = String(p.brands ?? '').split(',')[0].trim() || null
+  const name_normalized = normalizeName(name)
   const n = p.nutriments || {}
   const num = (v) => (typeof v === 'number' && Number.isFinite(v) ? v : null)
 
   return {
     barcode,
     commercial_name: name,
-    name_normalized: normalizeName(name),
+    name_normalized,
     brand,
     package_quantity,
     package_unit,
     packaging_type: parsePackagingType(p.packaging),
+    is_composite: isCompositeProduct(p, name_normalized),
     categories_tags: Array.isArray(p.categories_tags) ? p.categories_tags : [],
     // valeurs d'étiquette (pour 100 g/ml) — indicatif, non source de vérité générique
     label_nutriments: {

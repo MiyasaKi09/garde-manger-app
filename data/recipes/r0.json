@@ -1,0 +1,165 @@
+{
+  "_comment": "Corpus recette R0 (data-v2/recipe-factory). Réf. §6, §11 + verdict directeur. Contenu ÉDITORIAL PROPRE Myko (CC0). Chargées CANDIDATES (draft). Chaque ingrédient nomme une FORME EXACTE en état correct (cru/sec/cuit/pelé…) via `form` ; le loader la rattache par identité exacte (sinon NULL = forme F0 à fournir). Recettes COMPLÈTES : toute matière grasse/liquide/assaisonnement cité dans une étape figure dans les ingrédients, avec quantités et critères de cuisson (T° à cœur).",
+  "source": { "code": "myko_editorial", "license": "cc0-1.0", "rights": "own_content", "publisher": "Myko" },
+  "recipes": [
+    {
+      "family": "Poulet à la moutarde et purée",
+      "meal_role": "diner", "dish_structure": "proteine + feculent + sauce",
+      "version": { "title": "Poulet à la moutarde, purée maison", "servings": 4, "prep_minutes": 20, "cook_minutes": 35, "difficulty": "facile" },
+      "components": [
+        { "name": "poulet", "role": "protein", "position": 1 },
+        { "name": "sauce moutarde", "role": "sauce", "position": 2 },
+        { "name": "purée", "role": "side", "position": 3 }
+      ],
+      "ingredients": [
+        { "component": "poulet", "food": "poulet", "form": "Haut de cuisse de poulet cru, désossé, sans peau", "quantity": 600, "unit": "g", "requirement_type": "validated_options", "strictness": "preferred", "culinary_role": "morceau a mijoter",
+          "options": ["Haut de cuisse de poulet cru, désossé, sans peau", "Cuisse de poulet crue, avec os, avec peau", "Blanc de poulet cru, sans peau"] },
+        { "component": "poulet", "food": "huile d'olive", "form": "Huile d'olive vierge extra", "quantity": 15, "unit": "ml", "requirement_type": "functional_requirement", "strictness": "required", "culinary_role": "matiere grasse de saisie" },
+        { "component": "sauce moutarde", "food": "oignon jaune", "form": "Oignon jaune cru", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "sauce moutarde", "food": "vin blanc", "form": "Vin blanc sec", "quantity": 100, "unit": "ml", "requirement_type": "functional_requirement", "strictness": "recommended", "culinary_role": "deglacage" },
+        { "component": "sauce moutarde", "food": "moutarde", "form": "Moutarde de Dijon", "quantity": 30, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "sauce moutarde", "food": "crème", "form": "Crème fraîche épaisse", "quantity": 150, "unit": "ml", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "purée", "food": "pomme de terre", "form": "Pomme de terre crue, épluchée", "quantity": 800, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "purée", "food": "lait", "form": "Lait demi-écrémé", "quantity": 100, "unit": "ml", "requirement_type": "functional_requirement", "strictness": "recommended" },
+        { "component": "purée", "food": "beurre", "form": "Beurre doux", "quantity": 30, "unit": "g", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": null, "food": "sel", "form": "Sel fin", "quantity": 6, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true },
+        { "component": null, "food": "poivre", "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Éplucher et émincer l'oignon. Saler et poivrer les hauts de cuisse.", "active_minutes": 6 },
+        { "n": 2, "instruction": "Saisir les hauts de cuisse dans l'huile d'olive 4 min par face, réserver.", "active_minutes": 10 },
+        { "n": 3, "instruction": "Faire suer l'oignon, déglacer au vin blanc, ajouter moutarde et crème.", "active_minutes": 5 },
+        { "n": 4, "instruction": "Remettre le poulet, couvrir, mijoter 20 min à feu doux (T° à cœur ≥ 75 °C).", "active_minutes": 2, "passive_minutes": 20, "target_core_temperature_c": 75 },
+        { "n": 5, "instruction": "Cuire les pommes de terre épluchées 20 min à l'eau salée, écraser avec beurre et lait chaud.", "active_minutes": 8, "passive_minutes": 20 }
+      ],
+      "variation_axes": [
+        { "name": "morceau", "selection_mode": "single", "options": ["Haut de cuisse de poulet cru, désossé, sans peau", "Cuisse de poulet crue, avec os, avec peau", "Blanc de poulet cru, sans peau"] }
+      ]
+    },
+    {
+      "family": "Lentilles vertes mijotées",
+      "meal_role": "diner", "dish_structure": "legumineuse",
+      "version": { "title": "Lentilles vertes aux carottes et oignon", "servings": 4, "prep_minutes": 10, "cook_minutes": 30, "difficulty": "facile" },
+      "components": [{ "name": "plat", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "plat", "food": "lentille verte", "form": "Lentille verte sèche, crue", "quantity": 250, "unit": "g", "requirement_type": "exact_form", "strictness": "required", "preparation_note": "rincer avant cuisson" },
+        { "component": "plat", "food": "carotte", "form": "Carotte crue", "quantity": 2, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "plat", "food": "oignon jaune", "form": "Oignon jaune cru", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "plat", "food": "huile d'olive", "form": "Huile d'olive vierge extra", "quantity": 15, "unit": "ml", "requirement_type": "functional_requirement", "strictness": "required", "culinary_role": "matiere grasse de suée" },
+        { "component": null, "food": "sel", "form": "Sel fin", "quantity": 5, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Éplucher et tailler oignon et carottes en petits dés.", "active_minutes": 5 },
+        { "n": 2, "instruction": "Faire suer oignon et carottes dans l'huile d'olive.", "active_minutes": 3 },
+        { "n": 3, "instruction": "Ajouter les lentilles sèches rincées et 2× leur volume d'eau ; mijoter 25-30 min, saler en fin de cuisson.", "active_minutes": 2, "passive_minutes": 28 }
+      ]
+    },
+    {
+      "family": "Omelette aux fines herbes",
+      "meal_role": "diner", "dish_structure": "oeufs",
+      "version": { "title": "Omelette aux fines herbes", "servings": 2, "prep_minutes": 5, "cook_minutes": 5, "difficulty": "facile" },
+      "components": [{ "name": "omelette", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "omelette", "food": "oeuf", "form": "Œuf cru", "quantity": 4, "unit": "u", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "omelette", "food": "persil", "form": "Persil frais", "quantity": 10, "unit": "g", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "omelette", "food": "beurre", "form": "Beurre doux", "quantity": 15, "unit": "g", "requirement_type": "exact_form", "strictness": "required", "culinary_role": "matiere grasse de cuisson" },
+        { "component": null, "food": "sel", "form": "Sel fin", "quantity": 2, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Battre les œufs, ciseler le persil, saler.", "active_minutes": 3 },
+        { "n": 2, "instruction": "Cuire dans le beurre mousseux à feu moyen 3-4 min, plier.", "active_minutes": 4 }
+      ]
+    },
+    {
+      "family": "Gratin de pommes de terre",
+      "meal_role": "diner", "dish_structure": "feculent gratine",
+      "version": { "title": "Gratin de pommes de terre", "servings": 4, "prep_minutes": 15, "cook_minutes": 45, "difficulty": "facile" },
+      "components": [{ "name": "gratin", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "gratin", "food": "pomme de terre", "form": "Pomme de terre crue, épluchée", "quantity": 800, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "gratin", "food": "crème", "form": "Crème fraîche épaisse", "quantity": 200, "unit": "ml", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "gratin", "food": "lait", "form": "Lait demi-écrémé", "quantity": 150, "unit": "ml", "requirement_type": "functional_requirement", "strictness": "recommended" },
+        { "component": "gratin", "food": "fromage râpé", "form": "Comté", "quantity": 80, "unit": "g", "requirement_type": "validated_options", "strictness": "recommended", "options": ["Comté", "Gruyère râpé"] },
+        { "component": "gratin", "food": "beurre", "form": "Beurre doux", "quantity": 15, "unit": "g", "requirement_type": "exact_form", "strictness": "recommended", "culinary_role": "beurrer le plat" },
+        { "component": null, "food": "sel", "form": "Sel fin", "quantity": 5, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Éplucher et émincer finement les pommes de terre. Beurrer le plat.", "active_minutes": 10 },
+        { "n": 2, "instruction": "Disposer en couches, saler, napper de crème et lait, râper le comté dessus.", "active_minutes": 5 },
+        { "n": 3, "instruction": "Cuire 45 min à 180 °C jusqu'à ce que la lame traverse sans résistance.", "passive_minutes": 45, "temperature_c": 180 }
+      ]
+    },
+    {
+      "family": "Poêlée de haricots verts à l'ail",
+      "meal_role": "diner", "dish_structure": "legume",
+      "version": { "title": "Haricots verts poêlés à l'ail", "servings": 4, "prep_minutes": 5, "cook_minutes": 15, "difficulty": "facile" },
+      "components": [{ "name": "plat", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "plat", "food": "haricot vert", "form": "Haricot vert cru", "quantity": 500, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "plat", "food": "ail", "form": "Ail cru", "quantity": 2, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "plat", "food": "beurre", "form": "Beurre doux", "quantity": 20, "unit": "g", "requirement_type": "exact_form", "strictness": "required", "culinary_role": "matiere grasse de poêle" },
+        { "component": null, "food": "sel", "form": "Sel fin", "quantity": 4, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Équeuter les haricots, les cuire 8 min à l'eau bouillante salée, égoutter.", "active_minutes": 3, "passive_minutes": 8 },
+        { "n": 2, "instruction": "Poêler dans le beurre avec l'ail écrasé 5 min.", "active_minutes": 5 }
+      ]
+    },
+    {
+      "family": "Salade de pois chiches",
+      "meal_role": "dejeuner", "dish_structure": "legumineuse froide",
+      "version": { "title": "Salade de pois chiches", "servings": 4, "prep_minutes": 10, "cook_minutes": 0, "difficulty": "facile" },
+      "components": [{ "name": "salade", "role": "main", "position": 1 }, { "name": "assaisonnement", "role": "dressing", "position": 2 }],
+      "ingredients": [
+        { "component": "salade", "food": "pois chiche", "form": "Pois chiche cuit, égoutté", "quantity": 400, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "salade", "food": "tomate", "form": "Tomate crue", "quantity": 2, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "salade", "food": "oignon rouge", "form": "Oignon rouge cru", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "assaisonnement", "food": "huile d'olive", "form": "Huile d'olive vierge extra", "quantity": 30, "unit": "ml", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "assaisonnement", "food": "vinaigre", "form": "Vinaigre de vin rouge", "quantity": 15, "unit": "ml", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": null, "food": "sel", "form": "Sel fin", "quantity": 3, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Rincer et égoutter les pois chiches. Couper tomates et oignon rouge.", "active_minutes": 8 },
+        { "n": 2, "instruction": "Mélanger, assaisonner d'huile d'olive, de vinaigre et de sel.", "active_minutes": 2 }
+      ]
+    },
+    {
+      "family": "Quinoa aux légumes",
+      "meal_role": "diner", "dish_structure": "cereale + legumes",
+      "version": { "title": "Quinoa poêlé aux légumes", "servings": 4, "prep_minutes": 10, "cook_minutes": 20, "difficulty": "facile" },
+      "components": [{ "name": "plat", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "plat", "food": "quinoa", "form": "Quinoa cru", "quantity": 200, "unit": "g", "requirement_type": "exact_form", "strictness": "required", "preparation_note": "rincer avant cuisson" },
+        { "component": "plat", "food": "carotte", "form": "Carotte crue", "quantity": 2, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "plat", "food": "poivron rouge", "form": "Poivron rouge cru", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "plat", "food": "huile d'olive", "form": "Huile d'olive vierge extra", "quantity": 20, "unit": "ml", "requirement_type": "exact_form", "strictness": "required", "culinary_role": "matiere grasse de poêle" },
+        { "component": null, "food": "sel", "form": "Sel fin", "quantity": 4, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Rincer le quinoa, cuire 15 min dans 2× son volume d'eau salée, égoutter.", "active_minutes": 3, "passive_minutes": 15 },
+        { "n": 2, "instruction": "Tailler carotte et poivron en dés, poêler dans l'huile d'olive 8 min, mélanger au quinoa.", "active_minutes": 8 }
+      ]
+    },
+    {
+      "family": "Cabillaud au four et riz",
+      "meal_role": "diner", "dish_structure": "poisson + feculent",
+      "version": { "title": "Cabillaud au four, riz blanc", "servings": 4, "prep_minutes": 10, "cook_minutes": 25, "difficulty": "facile" },
+      "components": [
+        { "name": "poisson", "role": "protein", "position": 1 },
+        { "name": "riz", "role": "side", "position": 2 }
+      ],
+      "ingredients": [
+        { "component": "poisson", "food": "cabillaud", "form": "Cabillaud cru", "quantity": 600, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "poisson", "food": "citron", "form": "Citron jaune", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "poisson", "food": "huile d'olive", "form": "Huile d'olive vierge extra", "quantity": 15, "unit": "ml", "requirement_type": "exact_form", "strictness": "required", "culinary_role": "arroser le poisson" },
+        { "component": "riz", "food": "riz", "form": "Riz blanc cru", "quantity": 250, "unit": "g", "requirement_type": "validated_options", "strictness": "required", "options": ["Riz blanc cru", "Riz complet cru"] },
+        { "component": null, "food": "sel", "form": "Sel fin", "quantity": 5, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Déposer le cabillaud dans un plat, arroser d'huile d'olive, ajouter des rondelles de citron, saler.", "active_minutes": 5 },
+        { "n": 2, "instruction": "Cuire 20 min à 180 °C (T° à cœur ≥ 63 °C).", "passive_minutes": 20, "temperature_c": 180, "target_core_temperature_c": 63 },
+        { "n": 3, "instruction": "Cuire le riz 12 min à l'eau bouillante salée, égoutter.", "active_minutes": 2, "passive_minutes": 12 }
+      ]
+    }
+  ]
+}

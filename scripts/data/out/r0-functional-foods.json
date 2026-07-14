@@ -1,0 +1,113 @@
+{
+  "count": 27,
+  "forms": [
+    {
+      "normalized": "ail cru",
+      "name": "Ail cru"
+    },
+    {
+      "normalized": "beurre doux",
+      "name": "Beurre doux"
+    },
+    {
+      "normalized": "cabillaud cru",
+      "name": "Cabillaud cru"
+    },
+    {
+      "normalized": "carotte crue",
+      "name": "Carotte crue"
+    },
+    {
+      "normalized": "citron jaune",
+      "name": "Citron jaune"
+    },
+    {
+      "normalized": "comte",
+      "name": "Comté"
+    },
+    {
+      "normalized": "creme fraiche epaisse",
+      "name": "Crème fraîche épaisse"
+    },
+    {
+      "normalized": "haricot vert cru",
+      "name": "Haricot vert cru"
+    },
+    {
+      "normalized": "haut de cuisse de poulet cru desosse sans peau",
+      "name": "Haut de cuisse de poulet cru, désossé, sans peau"
+    },
+    {
+      "normalized": "huile d olive vierge extra",
+      "name": "Huile d'olive vierge extra"
+    },
+    {
+      "normalized": "lait demi ecreme",
+      "name": "Lait demi-écrémé"
+    },
+    {
+      "normalized": "lentille verte seche crue",
+      "name": "Lentille verte sèche, crue"
+    },
+    {
+      "normalized": "moutarde de dijon",
+      "name": "Moutarde de Dijon"
+    },
+    {
+      "normalized": "oeuf cru",
+      "name": "Œuf cru"
+    },
+    {
+      "normalized": "oignon jaune cru",
+      "name": "Oignon jaune cru"
+    },
+    {
+      "normalized": "oignon rouge cru",
+      "name": "Oignon rouge cru"
+    },
+    {
+      "normalized": "persil frais",
+      "name": "Persil frais"
+    },
+    {
+      "normalized": "pois chiche cuit egoutte",
+      "name": "Pois chiche cuit, égoutté"
+    },
+    {
+      "normalized": "poivre noir moulu",
+      "name": "Poivre noir moulu"
+    },
+    {
+      "normalized": "poivron rouge cru",
+      "name": "Poivron rouge cru"
+    },
+    {
+      "normalized": "pomme de terre crue epluchee",
+      "name": "Pomme de terre crue, épluchée"
+    },
+    {
+      "normalized": "quinoa cru",
+      "name": "Quinoa cru"
+    },
+    {
+      "normalized": "riz blanc cru",
+      "name": "Riz blanc cru"
+    },
+    {
+      "normalized": "sel fin",
+      "name": "Sel fin"
+    },
+    {
+      "normalized": "tomate crue",
+      "name": "Tomate crue"
+    },
+    {
+      "normalized": "vin blanc sec",
+      "name": "Vin blanc sec"
+    },
+    {
+      "normalized": "vinaigre de vin rouge",
+      "name": "Vinaigre de vin rouge"
+    }
+  ]
+}
