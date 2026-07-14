@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Mon Jul 13 14:27:50 UTC 2026_
+_Généré le : Tue Jul 14 12:35:18 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -24,6 +24,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
 - food_storage_policies
 - generated_recipe_ingredients
 - generated_recipes
+- household_member_legacy_names
 - household_members
 - instructions
 - inventory_lots
@@ -367,6 +368,14 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - image_url :: text
  - status :: text default 'ready'::text NOT NULL
 
+### household_member_legacy_names
+ - id :: bigint NOT NULL
+ - user_id :: uuid NOT NULL
+ - household_member_id :: uuid NOT NULL
+ - normalized_name :: text NOT NULL
+ - raw_name :: text
+ - created_at :: timestamp with time zone default now() NOT NULL
+
 ### household_members
  - id :: uuid default gen_random_uuid() NOT NULL
  - user_id :: uuid default auth.uid() NOT NULL
@@ -560,6 +569,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - micronutrients :: jsonb
  - created_at :: timestamp with time zone default now()
  - cooking_session_id :: uuid
+ - household_member_id :: uuid
 
 ### meal_plan_slots
  - id :: uuid default gen_random_uuid() NOT NULL
@@ -658,6 +668,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - fat_g :: numeric
  - fiber_g :: numeric
  - validated :: boolean default false
+ - household_member_id :: uuid
 
 ### nutrition_plan_imports
  - id :: bigint default nextval('nutrition_plan_imports_id_seq'::regclass) NOT NULL
@@ -693,6 +704,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - locked :: boolean default false NOT NULL
  - nutrition_source :: text default 'legacy'::text NOT NULL
  - nutrition_confidence :: numeric
+ - household_member_id :: uuid
 
 ### nutrition_plan_prep_tasks
  - id :: bigint default nextval('nutrition_plan_prep_tasks_id_seq'::regclass) NOT NULL
@@ -1046,6 +1058,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - weight_loss_rate :: numeric
  - bmr :: numeric
  - tdee :: numeric
+ - household_member_id :: uuid
 
 ### user_profiles
  - user_id :: uuid NOT NULL
@@ -1098,6 +1111,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - weight_kg :: numeric NOT NULL
  - notes :: text
  - created_at :: timestamp with time zone default now()
+ - household_member_id :: uuid
 
 ---
 ## Clés primaires
@@ -1121,6 +1135,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - food_storage_policies → (id)
  - generated_recipe_ingredients → (id)
  - generated_recipes → (id)
+ - household_member_legacy_names → (id)
  - household_members → (id)
  - instructions → (id)
  - inventory_lots → (id)
@@ -1153,9 +1168,9 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - recipe_ingredients → (id)
  - recipe_nutrition_cache → (recipe_id)
  - recipe_nutrition_snapshots → (id)
- - recipe_pairings → (side_recipe_id, main_recipe_id)
+ - recipe_pairings → (main_recipe_id, side_recipe_id)
  - recipe_steps → (id)
- - recipe_tags → (recipe_id, tag_id)
+ - recipe_tags → (tag_id, recipe_id)
  - recipes → (id)
  - reference_categories → (id)
  - reference_subcategories → (id)
@@ -1163,7 +1178,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - tags → (id)
  - unit_conversions_generic → (id)
  - unit_conversions_product → (id)
- - user_allergies → (canonical_food_id, user_id)
+ - user_allergies → (user_id, canonical_food_id)
  - user_diets → (diet_id, user_id)
  - user_food_bans → (id)
  - user_health_goals → (person_name, user_id)
@@ -1174,54 +1189,56 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
 
 ---
 ## Clés étrangères
- - archetype_nutrition_overrides.nutrition_id → nutritional_data.id  (constraint archetype_nutrition_overrides_nutrition_id_fkey)
  - archetype_nutrition_overrides.archetype_id → archetypes.id  (constraint archetype_nutrition_overrides_archetype_id_fkey)
- - archetypes.cultivar_id → cultivars.id  (constraint archetypes_cultivar_id_fkey)
- - archetypes.canonical_food_id → canonical_foods.id  (constraint archetypes_canonical_food_id_fkey)
+ - archetype_nutrition_overrides.nutrition_id → nutritional_data.id  (constraint archetype_nutrition_overrides_nutrition_id_fkey)
  - archetypes.parent_archetype_id → archetypes.id  (constraint fk_parent_archetype)
+ - archetypes.canonical_food_id → canonical_foods.id  (constraint archetypes_canonical_food_id_fkey)
+ - archetypes.cultivar_id → cultivars.id  (constraint archetypes_cultivar_id_fkey)
  - canonical_food_origins.food_id → canonical_foods.id  (constraint canonical_food_origins_food_id_fkey)
  - canonical_food_origins.country_id → countries.id  (constraint canonical_food_origins_country_id_fkey)
  - canonical_food_processes.food_id → canonical_foods.id  (constraint canonical_food_processes_food_id_fkey)
  - canonical_food_processes.process_id → processes.id  (constraint canonical_food_processes_process_id_fkey)
- - canonical_foods.subcategory_id → reference_subcategories.id  (constraint canonical_foods_subcategory_id_fkey)
- - canonical_foods.category_id → reference_categories.id  (constraint canonical_foods_category_id_fkey)
  - canonical_foods.nutrition_id → nutritional_data.id  (constraint canonical_foods_nutrition_id_fkey)
- - cooked_dish_ingredients.lot_id → inventory_lots.id  (constraint cooked_dish_ingredients_lot_id_fkey)
+ - canonical_foods.category_id → reference_categories.id  (constraint canonical_foods_category_id_fkey)
+ - canonical_foods.subcategory_id → reference_subcategories.id  (constraint canonical_foods_subcategory_id_fkey)
  - cooked_dish_ingredients.dish_id → cooked_dishes.id  (constraint cooked_dish_ingredients_dish_id_fkey)
+ - cooked_dish_ingredients.lot_id → inventory_lots.id  (constraint cooked_dish_ingredients_lot_id_fkey)
  - cooked_dishes.cooking_session_id → cooking_sessions.id  (constraint cooked_dishes_cooking_session_id_fkey)
- - cooked_dishes.generated_recipe_id → generated_recipes.id  (constraint cooked_dishes_generated_recipe_id_fkey)
  - cooked_dishes.recipe_id → recipes.id  (constraint cooked_dishes_recipe_id_fkey)
+ - cooked_dishes.generated_recipe_id → generated_recipes.id  (constraint cooked_dishes_generated_recipe_id_fkey)
  - cooking_session_ingredients.session_id → cooking_sessions.id  (constraint cooking_session_ingredients_session_id_fkey)
- - cooking_sessions.generated_recipe_id → generated_recipes.id  (constraint cooking_sessions_generated_recipe_id_fkey)
  - cooking_sessions.recipe_id → recipes.id  (constraint cooking_sessions_recipe_id_fkey)
+ - cooking_sessions.generated_recipe_id → generated_recipes.id  (constraint cooking_sessions_generated_recipe_id_fkey)
  - cultivars.canonical_food_id → canonical_foods.id  (constraint cultivars_canonical_food_id_fkey)
  - data_quality_issues.plan_version_id → meal_plan_versions.id  (constraint data_quality_issues_plan_version_id_fkey)
  - decision_audit_log.plan_version_id → meal_plan_versions.id  (constraint decision_audit_log_plan_version_id_fkey)
  - food_storage_policies.archetype_id → archetypes.id  (constraint food_storage_policies_archetype_id_fkey)
  - food_storage_policies.canonical_food_id → canonical_foods.id  (constraint food_storage_policies_canonical_food_id_fkey)
- - generated_recipe_ingredients.archetype_id → archetypes.id  (constraint fk_gri_archetype)
  - generated_recipe_ingredients.canonical_food_id → canonical_foods.id  (constraint fk_gri_canonical_food)
  - generated_recipe_ingredients.generated_recipe_id → generated_recipes.id  (constraint generated_recipe_ingredients_generated_recipe_id_fkey)
+ - generated_recipe_ingredients.archetype_id → archetypes.id  (constraint fk_gri_archetype)
+ - household_member_legacy_names.household_member_id → household_members.id  (constraint household_member_legacy_names_household_member_id_fkey)
  - instructions.recipe_id → recipes.id  (constraint instructions_recipe_id_fkey)
- - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fk)
  - inventory_lots.cultivar_id → cultivars.id  (constraint inventory_lots_cultivar_fk)
- - inventory_lots.canonical_food_id → canonical_foods.id  (constraint inventory_lots_canonical_fk)
+ - inventory_lots.product_id → products.id  (constraint inventory_lots_product_fk)
  - inventory_lots.archetype_id → archetypes.id  (constraint inventory_lots_archetype_fk)
+ - inventory_lots.canonical_food_id → canonical_foods.id  (constraint inventory_lots_canonical_fk)
  - inventory_movements.session_id → cooking_sessions.id  (constraint inventory_movements_session_id_fkey)
  - inventory_movements.lot_id → inventory_lots.id  (constraint inventory_movements_lot_id_fkey)
- - inventory_reservations.plan_version_id → meal_plan_versions.id  (constraint inventory_reservations_plan_version_id_fkey)
- - inventory_reservations.slot_id → meal_plan_slots.id  (constraint inventory_reservations_slot_id_fkey)
- - inventory_reservations.lot_id → inventory_lots.id  (constraint inventory_reservations_lot_id_fkey)
  - inventory_reservations.canonical_food_id → canonical_foods.id  (constraint inventory_reservations_canonical_food_id_fkey)
- - meal_feedback.slot_id → meal_plan_slots.id  (constraint meal_feedback_slot_id_fkey)
- - meal_feedback.actual_recipe_id → generated_recipes.id  (constraint meal_feedback_actual_recipe_id_fkey)
- - meal_feedback.plan_version_id → meal_plan_versions.id  (constraint meal_feedback_plan_version_id_fkey)
+ - inventory_reservations.slot_id → meal_plan_slots.id  (constraint inventory_reservations_slot_id_fkey)
+ - inventory_reservations.plan_version_id → meal_plan_versions.id  (constraint inventory_reservations_plan_version_id_fkey)
+ - inventory_reservations.lot_id → inventory_lots.id  (constraint inventory_reservations_lot_id_fkey)
  - meal_feedback.household_member_id → household_members.id  (constraint meal_feedback_household_member_id_fkey)
- - meal_log.cooked_dish_id → cooked_dishes.id  (constraint meal_log_cooked_dish_id_fkey)
+ - meal_feedback.plan_version_id → meal_plan_versions.id  (constraint meal_feedback_plan_version_id_fkey)
+ - meal_feedback.actual_recipe_id → generated_recipes.id  (constraint meal_feedback_actual_recipe_id_fkey)
+ - meal_feedback.slot_id → meal_plan_slots.id  (constraint meal_feedback_slot_id_fkey)
+ - meal_log.household_member_id → household_members.id  (constraint meal_log_household_member_id_fkey)
  - meal_log.cooking_session_id → cooking_sessions.id  (constraint meal_log_cooking_session_id_fkey)
+ - meal_log.cooked_dish_id → cooked_dishes.id  (constraint meal_log_cooked_dish_id_fkey)
  - meal_log.recipe_id → recipes.id  (constraint meal_log_recipe_id_fkey)
- - meal_plan_slots.cooked_dish_id → cooked_dishes.id  (constraint meal_plan_slots_cooked_dish_id_fkey)
  - meal_plan_slots.plan_version_id → meal_plan_versions.id  (constraint meal_plan_slots_plan_version_id_fkey)
+ - meal_plan_slots.cooked_dish_id → cooked_dishes.id  (constraint meal_plan_slots_cooked_dish_id_fkey)
  - meal_plan_slots.generated_recipe_id → generated_recipes.id  (constraint meal_plan_slots_generated_recipe_id_fkey)
  - meal_plan_validation_issues.slot_id → meal_plan_slots.id  (constraint meal_plan_validation_issues_slot_id_fkey)
  - meal_plan_validation_issues.plan_version_id → meal_plan_versions.id  (constraint meal_plan_validation_issues_plan_version_id_fkey)
@@ -1229,34 +1246,36 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - meal_plans.user_id → legacy_users.id  (constraint meal_plans_user_id_fkey)
  - meal_stock_deductions.lot_id → inventory_lots.id  (constraint meal_stock_deductions_lot_id_fkey)
  - nutrition_plan_batch_recipes.import_id → nutrition_plan_imports.id  (constraint nutrition_plan_batch_recipes_import_id_fkey)
+ - nutrition_plan_daily_totals.household_member_id → household_members.id  (constraint nutrition_plan_daily_totals_household_member_id_fkey)
  - nutrition_plan_daily_totals.import_id → nutrition_plan_imports.id  (constraint nutrition_plan_daily_totals_import_id_fkey)
  - nutrition_plan_imports.active_plan_version_id → meal_plan_versions.id  (constraint nutrition_plan_imports_active_plan_version_id_fkey)
- - nutrition_plan_meals.generated_recipe_id → generated_recipes.id  (constraint nutrition_plan_meals_generated_recipe_id_fkey)
- - nutrition_plan_meals.import_id → nutrition_plan_imports.id  (constraint nutrition_plan_meals_import_id_fkey)
- - nutrition_plan_meals.meal_plan_slot_id → meal_plan_slots.id  (constraint nutrition_plan_meals_meal_plan_slot_id_fkey)
- - nutrition_plan_meals.cooked_dish_id → cooked_dishes.id  (constraint nutrition_plan_meals_cooked_dish_id_fkey)
+ - nutrition_plan_meals.household_member_id → household_members.id  (constraint nutrition_plan_meals_household_member_id_fkey)
  - nutrition_plan_meals.batch_recipe_id → nutrition_plan_batch_recipes.id  (constraint nutrition_plan_meals_batch_recipe_id_fkey)
+ - nutrition_plan_meals.import_id → nutrition_plan_imports.id  (constraint nutrition_plan_meals_import_id_fkey)
+ - nutrition_plan_meals.cooked_dish_id → cooked_dishes.id  (constraint nutrition_plan_meals_cooked_dish_id_fkey)
+ - nutrition_plan_meals.meal_plan_slot_id → meal_plan_slots.id  (constraint nutrition_plan_meals_meal_plan_slot_id_fkey)
+ - nutrition_plan_meals.generated_recipe_id → generated_recipes.id  (constraint nutrition_plan_meals_generated_recipe_id_fkey)
  - nutrition_plan_prep_tasks.import_id → nutrition_plan_imports.id  (constraint nutrition_plan_prep_tasks_import_id_fkey)
- - nutrition_plan_prep_tasks.plan_version_id → meal_plan_versions.id  (constraint nutrition_plan_prep_tasks_plan_version_id_fkey)
  - nutrition_plan_prep_tasks.meal_plan_slot_id → meal_plan_slots.id  (constraint nutrition_plan_prep_tasks_meal_plan_slot_id_fkey)
- - nutrition_plan_shopping_items.canonical_food_id → canonical_foods.id  (constraint nutrition_plan_shopping_items_canonical_food_id_fkey)
+ - nutrition_plan_prep_tasks.plan_version_id → meal_plan_versions.id  (constraint nutrition_plan_prep_tasks_plan_version_id_fkey)
  - nutrition_plan_shopping_items.archetype_id → archetypes.id  (constraint nutrition_plan_shopping_items_archetype_id_fkey)
  - nutrition_plan_shopping_items.import_id → nutrition_plan_imports.id  (constraint nutrition_plan_shopping_items_import_id_fkey)
+ - nutrition_plan_shopping_items.canonical_food_id → canonical_foods.id  (constraint nutrition_plan_shopping_items_canonical_food_id_fkey)
  - nutrition_plan_shopping_items.plan_version_id → meal_plan_versions.id  (constraint nutrition_plan_shopping_items_plan_version_id_fkey)
  - nutrition_target_versions.member_id → household_members.id  (constraint nutrition_target_versions_member_id_fkey)
  - pantry_items.product_id → products.id  (constraint pantry_items_product_id_fkey)
  - pantry_items.user_id → legacy_users.id  (constraint pantry_items_user_id_fkey)
  - plan_regen_requests.import_id → nutrition_plan_imports.id  (constraint plan_regen_requests_import_id_fkey)
- - planned_meals.plan_id → meal_plans.id  (constraint planned_meals_plan_id_fkey)
  - planned_meals.recipe_id → recipes.id  (constraint planned_meals_recipe_id_fkey)
- - prep_task_dependencies.plan_version_id → meal_plan_versions.id  (constraint prep_task_dependencies_plan_version_id_fkey)
+ - planned_meals.plan_id → meal_plans.id  (constraint planned_meals_plan_id_fkey)
  - prep_task_dependencies.task_id → nutrition_plan_prep_tasks.id  (constraint prep_task_dependencies_task_id_fkey)
+ - prep_task_dependencies.plan_version_id → meal_plan_versions.id  (constraint prep_task_dependencies_plan_version_id_fkey)
  - prep_task_dependencies.depends_on_task_id → nutrition_plan_prep_tasks.id  (constraint prep_task_dependencies_depends_on_task_id_fkey)
  - products.archetype_id → archetypes.id  (constraint products_archetype_fk)
  - recipe_ingredients.canonical_food_id → canonical_foods.id  (constraint recipe_ingredients_canonical_food_id_fkey)
- - recipe_ingredients.recipe_id → recipes.id  (constraint recipe_ingredients_recipe_id_fkey)
  - recipe_ingredients.sub_recipe_id → recipes.id  (constraint recipe_ingredients_sub_recipe_fk)
  - recipe_ingredients.archetype_id → archetypes.id  (constraint recipe_ingredients_archetype_id_fkey)
+ - recipe_ingredients.recipe_id → recipes.id  (constraint recipe_ingredients_recipe_id_fkey)
  - recipe_nutrition_cache.recipe_id → recipes.id  (constraint recipe_nutrition_cache_recipe_id_fkey)
  - recipe_nutrition_snapshots.generated_recipe_id → generated_recipes.id  (constraint recipe_nutrition_snapshots_generated_recipe_id_fkey)
  - recipe_pairings.main_recipe_id → recipes.id  (constraint recipe_pairings_main_recipe_id_fkey)
@@ -1269,9 +1288,11 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - user_allergies.canonical_food_id → canonical_foods.id  (constraint user_allergies_canonical_food_id_fkey)
  - user_diets.diet_id → diets.id  (constraint user_diets_diet_id_fkey)
  - user_food_bans.canonical_food_id → canonical_foods.id  (constraint user_food_bans_canonical_food_id_fkey)
+ - user_health_goals.household_member_id → household_members.id  (constraint user_health_goals_household_member_id_fkey)
  - user_recipe_interactions.recipe_id → recipes.id  (constraint user_recipe_interactions_recipe_id_fkey)
  - user_recipe_interactions.user_id → legacy_users.id  (constraint user_recipe_interactions_user_id_fkey)
  - waste_prevention_log.lot_id → inventory_lots.id  (constraint waste_prevention_log_lot_id_fkey)
+ - weight_entries.household_member_id → household_members.id  (constraint weight_entries_household_member_id_fkey)
 
 ---
 ## Index
@@ -1328,6 +1349,8 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - public.generated_recipe_ingredients → idx_gri_review_status : CREATE INDEX idx_gri_review_status ON public.generated_recipe_ingredients USING btree (review_status) WHERE (review_status = ANY (ARRAY['pending'::text, 'proposed'::text]))
  - public.generated_recipes → generated_recipes_pkey : CREATE UNIQUE INDEX generated_recipes_pkey ON public.generated_recipes USING btree (id)
  - public.generated_recipes → idx_generated_recipes_name : CREATE INDEX idx_generated_recipes_name ON public.generated_recipes USING btree (user_id, name_normalized)
+ - public.household_member_legacy_names → household_member_legacy_names_pkey : CREATE UNIQUE INDEX household_member_legacy_names_pkey ON public.household_member_legacy_names USING btree (id)
+ - public.household_member_legacy_names → household_member_legacy_names_user_id_normalized_name_key : CREATE UNIQUE INDEX household_member_legacy_names_user_id_normalized_name_key ON public.household_member_legacy_names USING btree (user_id, normalized_name)
  - public.household_members → household_members_pkey : CREATE UNIQUE INDEX household_members_pkey ON public.household_members USING btree (id)
  - public.household_members → idx_household_members_user_active : CREATE INDEX idx_household_members_user_active ON public.household_members USING btree (user_id, active)
  - public.household_members → uq_household_members_user_name : CREATE UNIQUE INDEX uq_household_members_user_name ON public.household_members USING btree (user_id, lower(name))
@@ -1364,6 +1387,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - public.meal_feedback → idx_meal_feedback_slot : CREATE INDEX idx_meal_feedback_slot ON public.meal_feedback USING btree (slot_id)
  - public.meal_feedback → idx_meal_feedback_user_created : CREATE INDEX idx_meal_feedback_user_created ON public.meal_feedback USING btree (user_id, created_at DESC)
  - public.meal_feedback → meal_feedback_pkey : CREATE UNIQUE INDEX meal_feedback_pkey ON public.meal_feedback USING btree (id)
+ - public.meal_log → idx_meal_log_household_member : CREATE INDEX idx_meal_log_household_member ON public.meal_log USING btree (household_member_id)
  - public.meal_log → idx_meal_log_user_date : CREATE INDEX idx_meal_log_user_date ON public.meal_log USING btree (user_id, person_name, meal_date)
  - public.meal_log → meal_log_pkey : CREATE UNIQUE INDEX meal_log_pkey ON public.meal_log USING btree (id)
  - public.meal_plan_slots → idx_meal_plan_slots_cooked_dish : CREATE INDEX idx_meal_plan_slots_cooked_dish ON public.meal_plan_slots USING btree (cooked_dish_id)
@@ -1395,6 +1419,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - public.nutrition_plan_meals → idx_npm_generated_recipe_id : CREATE INDEX idx_npm_generated_recipe_id ON public.nutrition_plan_meals USING btree (generated_recipe_id) WHERE (generated_recipe_id IS NOT NULL)
  - public.nutrition_plan_meals → idx_npm_import_date : CREATE INDEX idx_npm_import_date ON public.nutrition_plan_meals USING btree (import_id, meal_date)
  - public.nutrition_plan_meals → idx_npm_person_date : CREATE INDEX idx_npm_person_date ON public.nutrition_plan_meals USING btree (person_name, meal_date)
+ - public.nutrition_plan_meals → idx_nutrition_plan_meals_household_member : CREATE INDEX idx_nutrition_plan_meals_household_member ON public.nutrition_plan_meals USING btree (household_member_id)
  - public.nutrition_plan_meals → idx_nutrition_plan_meals_slot : CREATE INDEX idx_nutrition_plan_meals_slot ON public.nutrition_plan_meals USING btree (meal_plan_slot_id) WHERE (meal_plan_slot_id IS NOT NULL)
  - public.nutrition_plan_meals → nutrition_plan_meals_import_id_person_name_meal_date_meal_t_key : CREATE UNIQUE INDEX nutrition_plan_meals_import_id_person_name_meal_date_meal_t_key ON public.nutrition_plan_meals USING btree (import_id, person_name, meal_date, meal_type)
  - public.nutrition_plan_meals → nutrition_plan_meals_pkey : CREATE UNIQUE INDEX nutrition_plan_meals_pkey ON public.nutrition_plan_meals USING btree (id)
@@ -1412,6 +1437,7 @@ _Généré le : Mon Jul 13 14:27:50 UTC 2026_
  - public.nutrition_target_versions → idx_nutrition_targets_member_dates : CREATE INDEX idx_nutrition_targets_member_dates ON public.nutrition_target_versions USING btree (member_id, effective_from DESC, effective_to)
  - public.nutrition_target_versions → idx_nutrition_targets_user : CREATE INDEX idx_nutrition_targets_user ON public.nutrition_target_versions USING btree (user_id)
  - public.nutrition_target_versions → nutrition_target_versions_pkey : CREATE UNIQUE INDEX nutrition_target_versions_pkey ON public.nutrition_target_versions USING btree (id)
+ - public.nutrition_target_versions → uq_nutrition_targets_member_active : CREATE UNIQUE INDEX uq_nutrition_targets_member_active ON public.nutrition_target_versions USING btree (member_id) WHERE (effective_to IS NULL)
  - public.nutrition_target_versions → uq_nutrition_targets_member_day : CREATE UNIQUE INDEX uq_nutrition_targets_member_day ON public.nutrition_target_versions USING btree (member_id, effective_from)
  - public.nutritional_data → nutritional_data_pkey : CREATE UNIQUE INDEX nutritional_data_pkey ON public.nutritional_data USING btree (id)
  - public.nutritional_data → nutritional_data_source_id_key : CREATE UNIQUE INDEX nutritional_data_source_id_key ON public.nutritional_data USING btree (source_id)
