@@ -10,3 +10,4 @@ node_modules
 # Artefacts Playwright
 test-results/
 playwright-report/
+.data-cache/

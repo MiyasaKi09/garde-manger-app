@@ -227,7 +227,18 @@ jobs:
           name: supabase-data-csv
           path: data-csv.zip
 
-      # Commit only the export folder to main (no force) — handle deletions inside that folder
+      # Commit ONLY the export folder to main.
+      #
+      # IMPORTANT (régression corrigée) : l'ancienne version faisait
+      # `git checkout main && git reset --soft origin/main`. Comme le checkout du
+      # workflow peut pointer sur un SHA en retard sur origin/main (course entre
+      # merges), `reset --soft` conservait l'INDEX obsolète : le commit produit
+      # annulait alors TOUS les fichiers ajoutés entre-temps (migrations, docs…),
+      # pas seulement le dossier d'export. C'est ce qui a supprimé la fondation V2.
+      #
+      # Correctif : on repart de l'arbre EXACT d'origin/main, puis on ne réintroduit
+      # QUE le dossier d'export régénéré. Ainsi le diff committé ne peut jamais
+      # toucher un autre chemin que supabase/exports/latest.
       - name: Commit export folder to main (safe, only export folder)
         if: steps.pick.outputs.ok == '1'
         shell: bash
@@ -236,21 +247,36 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Update local main to latest remote
+          # 1. Mettre de côté le dossier d'export régénéré (working tree courant).
+          TMP_EXPORT="$(mktemp -d)"
+          if [ -d supabase/exports/latest ]; then
+            cp -a supabase/exports/latest/. "$TMP_EXPORT/"
+          fi
+
+          # 2. Aligner l'arbre de travail EXACTEMENT sur origin/main (index inclus).
           git fetch origin main
-          git checkout main
-          git reset --soft origin/main
+          git checkout -B main origin/main
+          git reset --hard origin/main
 
-          # Remove tracked files under supabase/exports/latest (so deletions are recorded),
-          # but DO NOT touch any other paths.
-          git rm -r --ignore-unmatch supabase/exports/latest || true
+          # 3. Réécrire uniquement le dossier d'export avec la version régénérée.
+          rm -rf supabase/exports/latest
+          mkdir -p supabase/exports/latest
+          cp -a "$TMP_EXPORT/." supabase/exports/latest/
+          rm -rf "$TMP_EXPORT"
 
-          # Add the new export folder (adds new files and staged deletions)
-          git add -A supabase/exports/latest
+          # 4. Ne stager QUE ce dossier (jamais -A sur tout le dépôt).
+          git add -- supabase/exports/latest
 
           if git diff --cached --quiet; then
             echo "No changes to commit in supabase/exports/latest."
             exit 0
+          fi
+
+          # Garde-fou : refuser de committer si un chemin hors export est touché.
+          if git diff --cached --name-only | grep -v '^supabase/exports/latest/' | grep -q .; then
+            echo "ERROR: staged changes outside supabase/exports/latest — refusing to commit."
+            git diff --cached --name-only
+            exit 1
           fi
 
           git commit -m "chore(export): update supabase/exports/latest"
