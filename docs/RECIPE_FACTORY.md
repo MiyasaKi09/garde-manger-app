@@ -50,27 +50,35 @@ complètement (3 composants, axe de variation « morceau ») comme référence.
   lentille verte, moutarde, œuf, oignon jaune, oignon rouge, persil, pois chiche,
   poivron rouge, pomme de terre, quinoa, riz blanc, sel, tomate.
 
-## Première release F0 fonctionnelle publiée (F0.1)
+## État & discipline (suite à l'audit directeur)
 
-`scripts/data/publish/publish-f0-functional.sql` — construit et **publie
-ATOMIQUEMENT** (via `ops.publish_catalog_release()`) les formes requises par R0 qui ont
-une nutrition Ciqual :
+Une première tentative de publication `F0.1-functional-r0` (18 formes) a été **rétractée** :
+le rattachement automatique « nom le plus court » choisissait de mauvaises formes
+(lentille/haricot déjà cuits, œuf dur au lieu de cru, pomme de terre nouvelle
+arbitraire) et la publication était prématurée + appliquée depuis une branche non
+fusionnée. Supabase a été **remis à l'état de `main`** (F0 candidate, culinary vide).
 
-- release active = **`F0.1-functional-r0`** (`ops.active_catalog_release`) ;
-- **18 formes publiées** + 18 profils nutritionnels (Ciqual, confiance B) ;
-  identité relevée à B (validée par usage dans une recette) ;
-- **20 exigences d'ingrédients** des recettes pointent désormais sur des formes
-  **publiées** ; **12 produits commerciaux** se résolvent à une forme publiée (le scan
-  code-barres renvoie produit → forme → nutrition).
+**Règle adoptée** : plus aucune écriture Supabase depuis cette branche non fusionnée.
+Les corrections sont **code d'abord** ; l'application en base ne se fait qu'après merge.
 
-Boucle fermée démontrée : `recettes → liste fonctionnelle → F0 validé publié
-atomiquement → recettes & scan résolus`. Petit mais **correct** (pas 300 arbitraires).
+## Corrections en cours (réf. verdict)
 
-## Suite
+1. Chargeur idempotent + `content_hash` calculé sur le **contenu complet** (pas le nom).
+2. Rattachement d'ingrédient à une forme **explicite et correcte en état** (cru/sec/cuit/
+   pelé…) — suppression du matching « nom le plus court ».
+3. Recettes **complètes** (matière grasse, liquide de déglaçage, sel chiffré, T° à cœur,
+   huile/vinaigre de la salade…). Chaque ingrédient cité dans une étape existe.
+4. `recipe_requirement_options` réellement peuplées ; variantes reliées aux formes/
+   exigences/branches.
+5. Garde-fous sur `publish_catalog_release` (confiance ≥ B, états ≥ B, pas de tâche de
+   revue ouverte, nutrition présente, checksums) + immuabilité étendue aux tables enfants.
+6. Produit commercial composé : nutrition d'**étiquette**, jamais celle d'une forme
+   générique simple.
+7. Provenance recette (import_run, auteur, licence) + tests culinaires (ingrédient cité,
+   cohérence cru/cuit, matière grasse de cuisson, options non vides).
 
-1. **Étendre R0 → 30-50 recettes** (même format éditorial rights-clean) → élargit F0.
-2. **Structurer finement** les aliments manquants (crème, sel, découpes poulet) comme
-   `golden-foods.json` (concept unique + formes avec états + rendements) et compléter F0.
-3. **Nutrition des recettes** : calcul déterministe (`lib/domain/nutrition/calculator`
-   + `toGramsV2` strict) sur les formes publiées → `recipe_executions` (snapshots figés).
-4. Revue → passage des recettes de `draft` à `published` (immuables).
+## Suite (après corrections)
+
+Reconstruire F0 depuis les **formes correctes en état** requises par les recettes,
+structurées comme `golden-foods.json`, puis publier atomiquement (avec garde-fous).
+Nutrition des recettes via le calculateur déterministe + `toGramsV2` → `recipe_executions`.
