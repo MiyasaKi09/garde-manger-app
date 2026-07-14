@@ -23,29 +23,33 @@
 | 14 | Trigger empêchant la modif d'une recette publiée | ✅ triggers `recipe_versions` + `recipe_executions` |
 | 15 | Risques sécurité V1 actifs | ⚠️ **partiel** — voir ci-dessous |
 
-## Point 15 — sécurité V1 : fait vs à décider
+## Point 15 — sécurité V1 : audité, mais durcissement reporté (pour ne pas casser l'app)
 
-**Fait (sans risque pour l'app) :**
-- Écriture des tables de **référence pures** (`nutritional_data`, `canonical_foods`,
-  `archetypes`, `processes`, `cooking_nutrition_factors`, `process_nutrition_modifiers`,
-  `countries`, `cultivars`, `diets`, `reference_categories`, `reference_subcategories`,
-  `seasonality`, `canonical_food_origins`, `canonical_food_processes`,
-  `archetype_nutrition_overrides`) **verrouillée** : plus de policy `FOR ALL USING(true)`
-  pour `authenticated` ; lecture conservée ; écriture réservée à `service_role`.
-  → corrige « n'importe quel authentifié peut corrompre le catalogue » pour ces tables.
+L'audit V1 a été fait (policies `USING(true)`, objets anon, fonctions SECURITY DEFINER).
+**Deux tentatives de durcissement ont été annulées après avoir découvert des contraintes
+réelles** — mieux vaut reporter proprement que casser l'app en production :
 
-**À décider (produit) — non modifié pour ne pas casser l'app en production :**
-- **Données du foyer** (`pantry_items`, `meal_plans`, `planned_meals`,
-  `user_recipe_interactions`) : policy `FOR ALL TO authenticated USING(true)`. Pour un
-  garde-manger **partagé à deux**, l'accès inter-membres est peut-être **voulu**.
-  Décision : (a) partage au niveau **foyer** (via `household_members`), ou (b) strict
-  `user_id = auth.uid()`. À trancher avant de resserrer.
-- **Fonctions `SECURITY DEFINER`** appelables par `authenticated` : `add_harvest_lot`,
-  `split_containerized_lot` (V1). À faire passer par des routes serveur (`service_role`)
-  et révoquer `authenticated` — nécessite de confirmer que l'app ne les appelle pas
-  directement côté client.
-- Tables métier potentiellement écrites par l'app (`recipes`, `recipe_*`, `products`) :
-  laissées en l'état ici (édition utilisateur probable) — à qualifier au cas par cas.
+- **Verrouillage des écritures « catalogue »** (220005) → **reverté** (220008).
+  L'app écrit certaines de ces tables comme `authenticated` : la revue des ingrédients
+  (`POST /api/ingredients/review`) fait `canonical_foods.verified = true` (catalogue
+  canonique explicitement « vérifiable par tout membre du foyer »), et le pipeline
+  nutrition insère dans `nutritional_data`. Le lockdown cassait ces flux (e2e
+  recipe-repair). ➡️ Le durcissement nécessite une analyse **par table** des chemins
+  d'écriture réels (séparer référence figée vs tables éditées par l'utilisateur).
+- **RLS des données foyer** (`pantry_items`, `meal_plans`, `planned_meals`,
+  `user_recipe_interactions`) → **non appliqué**. Décision produit = **partage au niveau
+  foyer**. Mais ces tables V1 utilisent un `user_id` **entier** (modèle utilisateur
+  legacy), pas l'`uuid` `auth.uid()` ; il manque le pont legacy↔auth pour écrire une
+  policy correcte. Le partage foyer arrivera proprement avec les tables V2
+  (`household_id`/`user_id` uuid) à la bascule. Tables actuellement **vides** → risque nul
+  dans l'immédiat.
+- **Fonctions `SECURITY DEFINER`** appelables par `authenticated` (`add_harvest_lot`,
+  `split_containerized_lot`) : à faire passer par des routes serveur (`service_role`) et
+  révoquer `authenticated`, après confirmation que l'app ne les appelle pas côté client.
+
+**Conclusion honnête** : le durcissement V1 demande une connaissance fine des chemins
+d'écriture de l'app + le pont legacy↔auth. Il est mieux traité **à la bascule V2** (qui
+remplace ces tables par un modèle propre) qu'en modifiant à l'aveugle une app en prod.
 
 ## Point 10 — reconstruction fonctionnelle de F0 : cadre posé, liste à fournir
 
