@@ -1,89 +1,113 @@
 {
-  "count": 21,
+  "count": 27,
   "forms": [
     {
-      "normalized": "ail",
-      "name": "ail"
+      "normalized": "ail cru",
+      "name": "Ail cru"
     },
     {
-      "normalized": "cabillaud",
-      "name": "cabillaud"
+      "normalized": "beurre doux",
+      "name": "Beurre doux"
     },
     {
-      "normalized": "carotte",
-      "name": "carotte"
+      "normalized": "cabillaud cru",
+      "name": "Cabillaud cru"
     },
     {
-      "normalized": "citron",
-      "name": "citron"
+      "normalized": "carotte crue",
+      "name": "Carotte crue"
+    },
+    {
+      "normalized": "citron jaune",
+      "name": "Citron jaune"
     },
     {
       "normalized": "comte",
-      "name": "comté"
+      "name": "Comté"
     },
     {
-      "normalized": "creme",
-      "name": "crème"
+      "normalized": "creme fraiche epaisse",
+      "name": "Crème fraîche épaisse"
     },
     {
-      "normalized": "haricot vert",
-      "name": "haricot vert"
+      "normalized": "haricot vert cru",
+      "name": "Haricot vert cru"
     },
     {
-      "normalized": "haut de cuisse de poulet",
-      "name": "haut de cuisse de poulet"
+      "normalized": "haut de cuisse de poulet cru desosse sans peau",
+      "name": "Haut de cuisse de poulet cru, désossé, sans peau"
     },
     {
-      "normalized": "lentille verte",
-      "name": "lentille verte"
+      "normalized": "huile d olive vierge extra",
+      "name": "Huile d'olive vierge extra"
     },
     {
-      "normalized": "moutarde",
-      "name": "moutarde"
+      "normalized": "lait demi ecreme",
+      "name": "Lait demi-écrémé"
     },
     {
-      "normalized": "oeuf",
-      "name": "oeuf"
+      "normalized": "lentille verte seche crue",
+      "name": "Lentille verte sèche, crue"
     },
     {
-      "normalized": "oignon jaune",
-      "name": "oignon jaune"
+      "normalized": "moutarde de dijon",
+      "name": "Moutarde de Dijon"
     },
     {
-      "normalized": "oignon rouge",
-      "name": "oignon rouge"
+      "normalized": "oeuf cru",
+      "name": "Œuf cru"
     },
     {
-      "normalized": "persil",
-      "name": "persil"
+      "normalized": "oignon jaune cru",
+      "name": "Oignon jaune cru"
     },
     {
-      "normalized": "pois chiche",
-      "name": "pois chiche"
+      "normalized": "oignon rouge cru",
+      "name": "Oignon rouge cru"
     },
     {
-      "normalized": "poivron rouge",
-      "name": "poivron rouge"
+      "normalized": "persil frais",
+      "name": "Persil frais"
     },
     {
-      "normalized": "pomme de terre",
-      "name": "pomme de terre"
+      "normalized": "pois chiche cuit egoutte",
+      "name": "Pois chiche cuit, égoutté"
     },
     {
-      "normalized": "quinoa",
-      "name": "quinoa"
+      "normalized": "poivre noir moulu",
+      "name": "Poivre noir moulu"
     },
     {
-      "normalized": "riz blanc",
-      "name": "riz blanc"
+      "normalized": "poivron rouge cru",
+      "name": "Poivron rouge cru"
     },
     {
-      "normalized": "sel",
-      "name": "sel"
+      "normalized": "pomme de terre crue epluchee",
+      "name": "Pomme de terre crue, épluchée"
     },
     {
-      "normalized": "tomate",
-      "name": "tomate"
+      "normalized": "quinoa cru",
+      "name": "Quinoa cru"
+    },
+    {
+      "normalized": "riz blanc cru",
+      "name": "Riz blanc cru"
+    },
+    {
+      "normalized": "sel fin",
+      "name": "Sel fin"
+    },
+    {
+      "normalized": "tomate crue",
+      "name": "Tomate crue"
+    },
+    {
+      "normalized": "vin blanc sec",
+      "name": "Vin blanc sec"
+    },
+    {
+      "normalized": "vinaigre de vin rouge",
+      "name": "Vinaigre de vin rouge"
     }
   ]
 }

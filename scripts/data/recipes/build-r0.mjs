@@ -55,6 +55,12 @@ values ('myko_editorial','Recettes éditoriales Myko','Myko','internal','cc0-1.0
         '{"store_raw":true,"redistribute":true,"modify":true,"attribution_required":false,"own_content":true}'::jsonb,
         'manual','r0',now())
 on conflict (code) do update set last_checked_at=now();
+
+-- Run d'import R0 (provenance, idempotent).
+insert into ops.import_runs (source_dataset_id, source_version, code_version, configuration_hash, status, started_at, completed_at, candidate_count)
+select sd.id, 'r0', 'r0-loader-1.0', md5('recipes:r0'), 'completed', now(), now(), ${corpus.recipes.length}
+from ops.source_datasets sd where sd.code='myko_editorial'
+  and not exists (select 1 from ops.import_runs r where r.configuration_hash = md5('recipes:r0'));
 `
 
 const foods = new Map()
@@ -74,6 +80,12 @@ for (const r of corpus.recipes) {
       SET title=EXCLUDED.title, servings=EXCLUDED.servings, prep_minutes=EXCLUDED.prep_minutes,
           cook_minutes=EXCLUDED.cook_minutes, difficulty=EXCLUDED.difficulty, content_hash=EXCLUDED.content_hash
     RETURNING id INTO v_ver;\n`
+  // provenance de la version (source éditoriale + run d'import).
+  sql += `  INSERT INTO ops.field_provenance(entity_schema,entity_table,entity_id,field_name,source_dataset_id,source_record_key,normalized_value,transformation_rule,import_run_id,selected)
+    SELECT 'culinary','recipe_versions',v_ver,'content',sd.id,${q('r0:' + famNorm)},to_jsonb(${q(hash)}::text),'myko_editorial_recipe',run.id,true
+    FROM ops.source_datasets sd, (SELECT id FROM ops.import_runs WHERE configuration_hash=md5('recipes:r0') LIMIT 1) run
+    WHERE sd.code='myko_editorial'
+      AND NOT EXISTS (SELECT 1 FROM ops.field_provenance fp WHERE fp.entity_table='recipe_versions' AND fp.entity_id=v_ver AND fp.field_name='content');\n`
   // idempotence : purge des enfants de cette version avant réinsertion.
   sql += `  DELETE FROM culinary.recipe_requirement_options o USING culinary.recipe_ingredient_requirements r
              WHERE o.requirement_id=r.id AND r.recipe_version_id=v_ver;
