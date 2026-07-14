@@ -1,0 +1,58 @@
+# Registre des sources de données Myko V2
+# Réf. MYKO_DATA_FOUNDATION_V2 §5.1, §5.2, §16.
+# Chaque source doit avoir une fiche juridique (licence + usages autorisés) AVANT
+# tout import. Cette liste alimente ops.source_datasets.
+
+sources:
+  - code: ciqual_2020
+    name: Table Ciqual 2020 (composition nutritionnelle des aliments)
+    publisher: ANSES
+    source_url: https://ciqual.anses.fr/
+    download_url: "https://ciqual.anses.fr/cms/sites/default/files/inline-files/Table%20Ciqual%202020_FR_2020%2007%2007.xls"
+    license_code: etalab-2.0
+    license_url: https://www.etalab.gouv.fr/licence-ouverte-open-licence
+    allowed_uses:
+      store_raw: true
+      redistribute: true
+      modify: true
+      attribution_required: true
+    attribution: "Source : Table Ciqual 2020, ANSES — Licence Ouverte / Open Licence 2.0"
+    update_strategy: manual_versioned
+    current_version: "2020-07-07"
+    role: base nutritionnelle française principale (aliments génériques)
+
+  - code: usda_fdc
+    name: USDA FoodData Central
+    publisher: USDA Agricultural Research Service
+    source_url: https://fdc.nal.usda.gov/
+    download_url: https://fdc.nal.usda.gov/download-datasets.html
+    license_code: cc0-1.0
+    license_url: https://creativecommons.org/publicdomain/zero/1.0/
+    allowed_uses:
+      store_raw: true
+      redistribute: true
+      modify: true
+      attribution_required: false
+    update_strategy: api_or_download
+    role: complément des aliments absents de Ciqual, découpes détaillées, contrôle croisé
+
+  - code: openfoodfacts
+    name: Open Food Facts
+    publisher: Open Food Facts contributors
+    source_url: https://world.openfoodfacts.org/
+    download_url: https://world.openfoodfacts.org/data
+    license_code: odbl-1.0
+    license_url: https://opendatacommons.org/licenses/odbl/1-0/
+    allowed_uses:
+      store_raw: true
+      redistribute: true
+      modify: true
+      attribution_required: true
+      share_alike: true
+    attribution: "Source : Open Food Facts — Open Database License (ODbL)"
+    update_strategy: bulk_export_preferred
+    role: produits commerciaux, codes-barres, conditionnement, étiquettes (jamais base générique)
+    notes: >
+      Données collaboratives non garanties exactes. Réservé aux produits commerciaux
+      (catalog.commercial_products), pas aux aliments génériques. Imports massifs via
+      exports, pas l'API de recherche.

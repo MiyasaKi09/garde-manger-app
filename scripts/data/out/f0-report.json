@@ -1,0 +1,32 @@
+{
+  "parsed_records": 3186,
+  "candidates": 2208,
+  "rejected": {
+    "no_category": 84,
+    "no_energy": 881,
+    "blocking_anomaly": 13
+  },
+  "selected": 300,
+  "concepts": 281,
+  "with_warnings": 8,
+  "per_category": {
+    "legumes": 45,
+    "fruits": 35,
+    "viandes": 30,
+    "poissons_fruits_de_mer": 25,
+    "produits_laitiers": 30,
+    "cereales_feculents": 30,
+    "volailles": 20,
+    "legumineuses": 15,
+    "condiments_sauces": 15,
+    "matieres_grasses": 12,
+    "herbes_aromates": 8,
+    "epices": 8,
+    "produits_sucres": 8,
+    "oeufs": 6,
+    "boissons": 6,
+    "produits_transformes": 5,
+    "preparations_culinaires": 2
+  },
+  "nutrients_mapped": 33
+}
