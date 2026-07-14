@@ -1,0 +1,89 @@
+{
+  "count": 21,
+  "foods": [
+    {
+      "normalized": "ail",
+      "name": "ail"
+    },
+    {
+      "normalized": "cabillaud",
+      "name": "cabillaud"
+    },
+    {
+      "normalized": "carotte",
+      "name": "carotte"
+    },
+    {
+      "normalized": "citron",
+      "name": "citron"
+    },
+    {
+      "normalized": "comte",
+      "name": "comté"
+    },
+    {
+      "normalized": "creme",
+      "name": "crème"
+    },
+    {
+      "normalized": "haricot vert",
+      "name": "haricot vert"
+    },
+    {
+      "normalized": "haut de cuisse de poulet",
+      "name": "haut de cuisse de poulet"
+    },
+    {
+      "normalized": "lentille verte",
+      "name": "lentille verte"
+    },
+    {
+      "normalized": "moutarde",
+      "name": "moutarde"
+    },
+    {
+      "normalized": "oeuf",
+      "name": "oeuf"
+    },
+    {
+      "normalized": "oignon jaune",
+      "name": "oignon jaune"
+    },
+    {
+      "normalized": "oignon rouge",
+      "name": "oignon rouge"
+    },
+    {
+      "normalized": "persil",
+      "name": "persil"
+    },
+    {
+      "normalized": "pois chiche",
+      "name": "pois chiche"
+    },
+    {
+      "normalized": "poivron rouge",
+      "name": "poivron rouge"
+    },
+    {
+      "normalized": "pomme de terre",
+      "name": "pomme de terre"
+    },
+    {
+      "normalized": "quinoa",
+      "name": "quinoa"
+    },
+    {
+      "normalized": "riz blanc",
+      "name": "riz blanc"
+    },
+    {
+      "normalized": "sel",
+      "name": "sel"
+    },
+    {
+      "normalized": "tomate",
+      "name": "tomate"
+    }
+  ]
+}

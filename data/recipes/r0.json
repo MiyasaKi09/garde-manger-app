@@ -1,0 +1,144 @@
+{
+  "_comment": "Corpus recette R0 (data-v2/recipe-factory). Réf. MYKO_DATA_FOUNDATION_V2 §6, §11. Contenu ÉDITORIAL PROPRE (droits Myko, CC0) — recettes réelles, simples, du foyer. Chargées comme CANDIDATES (publication_status='draft') : ne deviennent une vérité publiée qu'après revue. L'union des ingrédients requis constitue la liste fonctionnelle F0 à valider/publier.",
+  "source": { "code": "myko_editorial", "license": "cc0-1.0", "rights": "own_content", "publisher": "Myko" },
+  "recipes": [
+    {
+      "family": "Poulet à la moutarde et purée",
+      "meal_role": "diner", "dish_structure": "proteine + feculent + sauce",
+      "version": { "title": "Poulet à la moutarde, purée maison", "servings": 4, "prep_minutes": 20, "cook_minutes": 35, "difficulty": "facile" },
+      "components": [
+        { "name": "poulet", "role": "protein", "position": 1 },
+        { "name": "sauce moutarde", "role": "sauce", "position": 2 },
+        { "name": "purée", "role": "side", "position": 3 }
+      ],
+      "ingredients": [
+        { "component": "poulet", "food": "haut de cuisse de poulet", "quantity": 600, "unit": "g", "requirement_type": "validated_options", "strictness": "preferred", "culinary_role": "piece a mijoter" },
+        { "component": "sauce moutarde", "food": "moutarde", "quantity": 30, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "sauce moutarde", "food": "crème", "quantity": 150, "unit": "ml", "requirement_type": "functional_requirement", "strictness": "recommended" },
+        { "component": "sauce moutarde", "food": "oignon jaune", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "purée", "food": "pomme de terre", "quantity": 800, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": null, "food": "sel", "quantity": 0, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Émincer l'oignon. Saler les hauts de cuisse.", "active_minutes": 5 },
+        { "n": 2, "instruction": "Saisir les hauts de cuisse 4 min par face dans une cocotte, réserver.", "active_minutes": 10 },
+        { "n": 3, "instruction": "Faire suer l'oignon, déglacer, ajouter moutarde et crème.", "active_minutes": 5 },
+        { "n": 4, "instruction": "Remettre le poulet, couvrir, mijoter 20 min à feu doux.", "active_minutes": 2, "passive_minutes": 20 },
+        { "n": 5, "instruction": "Cuire les pommes de terre épluchées 20 min à l'eau, écraser en purée.", "active_minutes": 8, "passive_minutes": 20 }
+      ],
+      "variation_axes": [
+        { "name": "morceau", "selection_mode": "single", "options": ["haut de cuisse de poulet", "cuisse de poulet", "blanc de poulet"] },
+        { "name": "féculent", "selection_mode": "single", "options": ["pomme de terre", "pomme de terre et céleri-rave"] }
+      ]
+    },
+    {
+      "family": "Lentilles vertes mijotées",
+      "meal_role": "diner", "dish_structure": "legumineuse",
+      "version": { "title": "Lentilles vertes aux carottes et oignon", "servings": 4, "prep_minutes": 10, "cook_minutes": 30, "difficulty": "facile" },
+      "components": [{ "name": "plat", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "plat", "food": "lentille verte", "quantity": 250, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "plat", "food": "carotte", "quantity": 2, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "plat", "food": "oignon jaune", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Émincer oignon et carottes en dés.", "active_minutes": 5 },
+        { "n": 2, "instruction": "Faire suer, ajouter les lentilles rincées et 2× leur volume d'eau.", "active_minutes": 3 },
+        { "n": 3, "instruction": "Mijoter 25-30 min jusqu'à absorption, saler en fin de cuisson.", "active_minutes": 2, "passive_minutes": 28 }
+      ]
+    },
+    {
+      "family": "Omelette aux fines herbes",
+      "meal_role": "diner", "dish_structure": "oeufs",
+      "version": { "title": "Omelette aux fines herbes", "servings": 2, "prep_minutes": 5, "cook_minutes": 5, "difficulty": "facile" },
+      "components": [{ "name": "omelette", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "omelette", "food": "oeuf", "quantity": 4, "unit": "u", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "omelette", "food": "persil", "quantity": 10, "unit": "g", "requirement_type": "exact_form", "strictness": "recommended" }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Battre les œufs, ciseler le persil, saler.", "active_minutes": 3 },
+        { "n": 2, "instruction": "Cuire à feu moyen 3-4 min, plier.", "active_minutes": 4 }
+      ]
+    },
+    {
+      "family": "Gratin de pommes de terre",
+      "meal_role": "diner", "dish_structure": "feculent gratine",
+      "version": { "title": "Gratin de pommes de terre", "servings": 4, "prep_minutes": 15, "cook_minutes": 45, "difficulty": "facile" },
+      "components": [{ "name": "gratin", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "gratin", "food": "pomme de terre", "quantity": 800, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "gratin", "food": "crème", "quantity": 200, "unit": "ml", "requirement_type": "functional_requirement", "strictness": "recommended" },
+        { "component": "gratin", "food": "comté", "quantity": 80, "unit": "g", "requirement_type": "validated_options", "strictness": "recommended" }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Éplucher et émincer finement les pommes de terre.", "active_minutes": 10 },
+        { "n": 2, "instruction": "Disposer en couches, napper de crème, râper le fromage.", "active_minutes": 5 },
+        { "n": 3, "instruction": "Cuire 45 min à 180 °C.", "passive_minutes": 45, "temperature_c": 180 }
+      ]
+    },
+    {
+      "family": "Poêlée de haricots verts à l'ail",
+      "meal_role": "diner", "dish_structure": "legume",
+      "version": { "title": "Haricots verts poêlés à l'ail", "servings": 4, "prep_minutes": 5, "cook_minutes": 15, "difficulty": "facile" },
+      "components": [{ "name": "plat", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "plat", "food": "haricot vert", "quantity": 500, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "plat", "food": "ail", "quantity": 2, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Cuire les haricots 8 min à l'eau bouillante salée.", "passive_minutes": 8 },
+        { "n": 2, "instruction": "Poêler avec l'ail écrasé 5 min.", "active_minutes": 5 }
+      ]
+    },
+    {
+      "family": "Salade de pois chiches",
+      "meal_role": "dejeuner", "dish_structure": "legumineuse froide",
+      "version": { "title": "Salade de pois chiches", "servings": 4, "prep_minutes": 10, "cook_minutes": 0, "difficulty": "facile" },
+      "components": [{ "name": "salade", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "salade", "food": "pois chiche", "quantity": 400, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "salade", "food": "tomate", "quantity": 2, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "salade", "food": "oignon rouge", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Rincer les pois chiches, couper tomates et oignon.", "active_minutes": 8 },
+        { "n": 2, "instruction": "Mélanger, assaisonner d'huile et de vinaigre.", "active_minutes": 2 }
+      ]
+    },
+    {
+      "family": "Quinoa aux légumes",
+      "meal_role": "diner", "dish_structure": "cereale + legumes",
+      "version": { "title": "Quinoa poêlé aux légumes", "servings": 4, "prep_minutes": 10, "cook_minutes": 20, "difficulty": "facile" },
+      "components": [{ "name": "plat", "role": "main", "position": 1 }],
+      "ingredients": [
+        { "component": "plat", "food": "quinoa", "quantity": 200, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "plat", "food": "carotte", "quantity": 2, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "plat", "food": "poivron rouge", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Cuire le quinoa 15 min dans 2× son volume d'eau.", "passive_minutes": 15 },
+        { "n": 2, "instruction": "Poêler les légumes en dés, mélanger au quinoa.", "active_minutes": 8 }
+      ]
+    },
+    {
+      "family": "Cabillaud au four et riz",
+      "meal_role": "diner", "dish_structure": "poisson + feculent",
+      "version": { "title": "Cabillaud au four, riz blanc", "servings": 4, "prep_minutes": 10, "cook_minutes": 25, "difficulty": "facile" },
+      "components": [
+        { "name": "poisson", "role": "protein", "position": 1 },
+        { "name": "riz", "role": "side", "position": 2 }
+      ],
+      "ingredients": [
+        { "component": "poisson", "food": "cabillaud", "quantity": 600, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
+        { "component": "poisson", "food": "citron", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
+        { "component": "riz", "food": "riz blanc", "quantity": 250, "unit": "g", "requirement_type": "validated_options", "strictness": "required" }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Déposer le cabillaud avec des rondelles de citron, saler.", "active_minutes": 5 },
+        { "n": 2, "instruction": "Cuire 20 min à 180 °C.", "passive_minutes": 20, "temperature_c": 180 },
+        { "n": 3, "instruction": "Cuire le riz 12 min à l'eau bouillante salée.", "passive_minutes": 12 }
+      ]
+    }
+  ]
+}
