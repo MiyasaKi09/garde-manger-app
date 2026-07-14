@@ -67,5 +67,12 @@ RETURNS jsonb LANGUAGE sql STABLE SECURITY DEFINER SET search_path = catalog, pu
   );
 $$;
 
+-- Backfill : marquer les produits COMPOSÉS déjà présents (seed #101) par motif de nom,
+-- afin que la règle « pas de nutrition générique pour un composé » s'applique dès le merge.
+UPDATE catalog.commercial_products
+SET is_composite = true
+WHERE is_composite = false
+  AND commercial_name ~* '(curry|à la |aux |cuisin|croquant|gourmand|savora|prépar|prepar|sauce|farci|nappé|fumé|mariné)';
+
 REVOKE ALL ON FUNCTION public.scan_commercial_product(text) FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.scan_commercial_product(text) TO authenticated;
