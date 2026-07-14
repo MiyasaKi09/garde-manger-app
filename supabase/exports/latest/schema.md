@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Tue Jul 14 14:42:09 UTC 2026_
+_Généré le : Tue Jul 14 15:56:07 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -1115,7 +1115,7 @@ _Généré le : Tue Jul 14 14:42:09 UTC 2026_
 
 ---
 ## Clés primaires
- - _backup_views → (view_schema, dropped_at, view_name)
+ - _backup_views → (dropped_at, view_schema, view_name)
  - archetype_nutrition_overrides → (archetype_id)
  - archetypes → (id)
  - canonical_food_origins → (food_id, country_id)
@@ -1168,9 +1168,9 @@ _Généré le : Tue Jul 14 14:42:09 UTC 2026_
  - recipe_ingredients → (id)
  - recipe_nutrition_cache → (recipe_id)
  - recipe_nutrition_snapshots → (id)
- - recipe_pairings → (main_recipe_id, side_recipe_id)
+ - recipe_pairings → (side_recipe_id, main_recipe_id)
  - recipe_steps → (id)
- - recipe_tags → (tag_id, recipe_id)
+ - recipe_tags → (recipe_id, tag_id)
  - recipes → (id)
  - reference_categories → (id)
  - reference_subcategories → (id)
@@ -1178,10 +1178,10 @@ _Généré le : Tue Jul 14 14:42:09 UTC 2026_
  - tags → (id)
  - unit_conversions_generic → (id)
  - unit_conversions_product → (id)
- - user_allergies → (user_id, canonical_food_id)
- - user_diets → (diet_id, user_id)
+ - user_allergies → (canonical_food_id, user_id)
+ - user_diets → (user_id, diet_id)
  - user_food_bans → (id)
- - user_health_goals → (person_name, user_id)
+ - user_health_goals → (user_id, person_name)
  - user_profiles → (user_id)
  - user_recipe_interactions → (id)
  - waste_prevention_log → (id)

@@ -1,5 +1,5 @@
 # Data export summary
-_Generated: Tue Jul 14 14:42:12 UTC 2026_
+_Generated: Tue Jul 14 15:56:10 UTC 2026_
 
 ## Tables and counts
 - archetype_nutrition_overrides: 209 rows
