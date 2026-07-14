@@ -50,13 +50,27 @@ complètement (3 composants, axe de variation « morceau ») comme référence.
   lentille verte, moutarde, œuf, oignon jaune, oignon rouge, persil, pois chiche,
   poivron rouge, pomme de terre, quinoa, riz blanc, sel, tomate.
 
+## Première release F0 fonctionnelle publiée (F0.1)
+
+`scripts/data/publish/publish-f0-functional.sql` — construit et **publie
+ATOMIQUEMENT** (via `ops.publish_catalog_release()`) les formes requises par R0 qui ont
+une nutrition Ciqual :
+
+- release active = **`F0.1-functional-r0`** (`ops.active_catalog_release`) ;
+- **18 formes publiées** + 18 profils nutritionnels (Ciqual, confiance B) ;
+  identité relevée à B (validée par usage dans une recette) ;
+- **20 exigences d'ingrédients** des recettes pointent désormais sur des formes
+  **publiées** ; **12 produits commerciaux** se résolvent à une forme publiée (le scan
+  code-barres renvoie produit → forme → nutrition).
+
+Boucle fermée démontrée : `recettes → liste fonctionnelle → F0 validé publié
+atomiquement → recettes & scan résolus`. Petit mais **correct** (pas 300 arbitraires).
+
 ## Suite
 
-1. **Étendre R0 → 30-50 recettes** (même format éditorial rights-clean).
-2. **Construire F0 fonctionnel** = union des ingrédients, structuré comme le
-   `golden-foods.json` (concept unique + formes avec états + rendements), confiance A
-   sur l'identité/les états, nutrition Ciqual à B.
-3. **Publier F0 atomiquement** via `ops.publish_catalog_release()` (release curée).
-4. **Nutrition des recettes** : calcul déterministe via `lib/domain/nutrition/calculator`
-   + `lib/domain/units` (`toGramsV2` strict) sur les formes validées → snapshots.
-5. Revue → passage des recettes de `draft` à `published` (immuables).
+1. **Étendre R0 → 30-50 recettes** (même format éditorial rights-clean) → élargit F0.
+2. **Structurer finement** les aliments manquants (crème, sel, découpes poulet) comme
+   `golden-foods.json` (concept unique + formes avec états + rendements) et compléter F0.
+3. **Nutrition des recettes** : calcul déterministe (`lib/domain/nutrition/calculator`
+   + `toGramsV2` strict) sur les formes publiées → `recipe_executions` (snapshots figés).
+4. Revue → passage des recettes de `draft` à `published` (immuables).
