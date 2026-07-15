@@ -849,5 +849,55 @@
         "table": "commercial_products"
       }
     ]
+  },
+  {
+    "file": "20260715170000_v3_culinary_sensory_planning.sql",
+    "github_version": "20260715170000",
+    "name": "v3_culinary_sensory_planning",
+    "sha256": "59ab3e1215839e811294fb9b9145d2957abd34da9e6882236ff7f48ec6dd89a5",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260715171000_v3_canonical_plan_publication.sql",
+    "github_version": "20260715171000",
+    "name": "v3_canonical_plan_publication",
+    "sha256": "4403698b112d95d6fdd0ecede2089967deb1ca110ef551dd59157ac7ba265825",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260715172000_v3_recipe_code_normalization.sql",
+    "github_version": "20260715172000",
+    "name": "v3_recipe_code_normalization",
+    "sha256": "cb16d137f258f9f5d86a62a411d9a8b5a4045c0e243144e7a7fef1d8f90cfb7d",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260715173000_v3_recipe_execution_policy_consolidation.sql",
+    "github_version": "20260715173000",
+    "name": "v3_recipe_execution_policy_consolidation",
+    "sha256": "00c19574c6b79de368ef19e3167ec40c47dafca73ac54dd7ef1517e402c5bf5c",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260715174000_v3_planner_fk_indexes.sql",
+    "github_version": "20260715174000",
+    "name": "v3_planner_fk_indexes",
+    "sha256": "833f2755b35210f18fa0905d0b9d0fa42a9f63b16ec5fb6480a2ff5f33c84c40",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

@@ -114,8 +114,11 @@ jobs:
           # Migrations V2 non-rollback : version >= 20260714200001.
           # Les fichiers pré-V2 (20260714115309, 20260714115842) ont un préfixe
           # 20260714115*, donc on filtre à partir de 20260714[2-9]* et 20260715*.
+          # Le pont V3 cible les tables publiques historiques : il est validé
+          # dans la simulation de production, pas sur le socle V2 vierge.
           find supabase/migrations -maxdepth 1 -name '*.sql' \
             | grep -v '_rollback\.sql$' \
+            | grep -v '/20260715171000_v3_canonical_plan_publication\.sql$' \
             | grep -E '/(20260714[2-9]|20260715)' \
             | LC_ALL=C sort \
             | while IFS= read -r f; do cp "$f" /tmp/v2mig_a/; done
