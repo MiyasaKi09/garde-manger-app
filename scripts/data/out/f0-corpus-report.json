@@ -1,0 +1,72 @@
+{
+  "corpus_hash": "50343360792c40f5a187745aee447ca7",
+  "concepts_total": 27,
+  "forms_total": 31,
+  "forms_with_ciqual": 30,
+  "forms_with_override": 1,
+  "forms_missing_nutrition": 0,
+  "r0_coverage": {
+    "required": 31,
+    "covered": 31,
+    "missing": []
+  },
+  "missing_nutrition": [],
+  "warnings": [],
+  "estimated_zero_macros": [
+    {
+      "form": "cabillaud cru",
+      "macros": [
+        "carbohydrate_g"
+      ]
+    },
+    {
+      "form": "comte",
+      "macros": [
+        "carbohydrate_g"
+      ]
+    },
+    {
+      "form": "gruyere rape",
+      "macros": [
+        "carbohydrate_g"
+      ]
+    },
+    {
+      "form": "huile d olive vierge extra",
+      "macros": [
+        "carbohydrate_g"
+      ]
+    },
+    {
+      "form": "blanc de poulet cru sans peau",
+      "macros": [
+        "carbohydrate_g"
+      ]
+    },
+    {
+      "form": "cuisse de poulet crue avec os avec peau",
+      "macros": [
+        "carbohydrate_g"
+      ]
+    },
+    {
+      "form": "haut de cuisse de poulet cru desosse sans peau",
+      "macros": [
+        "carbohydrate_g"
+      ]
+    },
+    {
+      "form": "vin blanc sec",
+      "macros": [
+        "fat_g"
+      ]
+    },
+    {
+      "form": "vinaigre de vin rouge",
+      "macros": [
+        "carbohydrate_g",
+        "fat_g"
+      ]
+    }
+  ]
+}
