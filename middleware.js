@@ -26,6 +26,15 @@ export async function middleware(request) {
 
   if (!url || !key) return response
 
+  // Le navigateur Playwright intercepte les appels client, mais pas les appels
+  // réseau effectués par le middleware. Ce garde-fou strict permet au serveur
+  // E2E d'utiliser son identité factice sans contacter un domaine inexistant.
+  // Il ne peut pas s'activer avec les identifiants d'un environnement réel.
+  const isE2eStub = process.env.MYKO_E2E_BYPASS_AUTH === '1'
+    && url === 'https://example.supabase.co'
+    && key === 'stub'
+  if (isE2eStub) return response
+
   const supabase = createServerClient(url, key, {
     cookies: {
       getAll() {

@@ -110,7 +110,10 @@ const NEW_EXPECTED_OBJECTS = {
 // ── Fonctions utilitaires ─────────────────────────────────────────────────────
 
 function sha256(filepath) {
-  const content = readFileSync(filepath);
+  // Git stocke les migrations avec des fins de ligne LF. Normaliser ici évite
+  // qu'un manifest généré depuis Windows contienne des empreintes CRLF qui
+  // dérivent ensuite lors du checkout Linux de la CI.
+  const content = readFileSync(filepath, 'utf8').replace(/\r\n/g, '\n');
   return createHash('sha256').update(content).digest('hex');
 }
 

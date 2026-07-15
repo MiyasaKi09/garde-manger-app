@@ -15,11 +15,12 @@ const chromiumExecutable = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE
 const remoteBaseURL = process.env.PLAYWRIGHT_BASE_URL
 
 // Stub env passed to the dev/start server so the app doesn't hard-error on
-// missing Supabase credentials. All actual Supabase network traffic is
-// intercepted by page.route() inside each test — no real Supabase is needed.
+// missing Supabase credentials. Browser traffic is intercepted by page.route()
+// and middleware auth is bypassed only for this exact stub identity.
 const STUB_ENV = {
   NEXT_PUBLIC_SUPABASE_URL: 'https://example.supabase.co',
   NEXT_PUBLIC_SUPABASE_ANON_KEY: 'stub',
+  MYKO_E2E_BYPASS_AUTH: '1',
 }
 
 module.exports = defineConfig({
