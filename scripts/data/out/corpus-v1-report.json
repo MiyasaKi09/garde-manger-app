@@ -1,0 +1,821 @@
+{
+  "corpus_version": "scraped-v1",
+  "corpus_hash": "dfe8989e17361041b1875e06ce0766ba",
+  "using_real_corpus": true,
+  "recipe_count": 72,
+  "distinct_required_forms": 153,
+  "total_distinct_forms": 160,
+  "forms_resolved_count": 23,
+  "forms_missing_count": 137,
+  "forms_resolved": [
+    {
+      "form": "Ail cru",
+      "recipe_count": 19,
+      "required": true
+    },
+    {
+      "form": "Beurre doux",
+      "recipe_count": 33,
+      "required": true
+    },
+    {
+      "form": "Carotte crue",
+      "recipe_count": 13,
+      "required": true
+    },
+    {
+      "form": "Comté",
+      "recipe_count": 7,
+      "required": true
+    },
+    {
+      "form": "Crème fraîche épaisse",
+      "recipe_count": 5,
+      "required": true
+    },
+    {
+      "form": "Cuisse de poulet crue, avec os, avec peau",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Haricot vert cru",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Haut de cuisse de poulet cru, désossé, sans peau",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Huile d'olive vierge extra",
+      "recipe_count": 27,
+      "required": true
+    },
+    {
+      "form": "Lait demi-écrémé",
+      "recipe_count": 9,
+      "required": true
+    },
+    {
+      "form": "Lentille verte sèche, crue",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Moutarde de Dijon",
+      "recipe_count": 9,
+      "required": true
+    },
+    {
+      "form": "Œuf cru",
+      "recipe_count": 26,
+      "required": true
+    },
+    {
+      "form": "Oignon jaune cru",
+      "recipe_count": 25,
+      "required": true
+    },
+    {
+      "form": "Oignon rouge cru",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Persil frais",
+      "recipe_count": 13,
+      "required": true
+    },
+    {
+      "form": "Pois chiche cuit, égoutté",
+      "recipe_count": 4,
+      "required": true
+    },
+    {
+      "form": "Poivre noir moulu",
+      "recipe_count": 19,
+      "required": true
+    },
+    {
+      "form": "Pomme de terre crue, épluchée",
+      "recipe_count": 6,
+      "required": true
+    },
+    {
+      "form": "Quinoa cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Sel fin",
+      "recipe_count": 63,
+      "required": true
+    },
+    {
+      "form": "Vin blanc sec",
+      "recipe_count": 6,
+      "required": true
+    },
+    {
+      "form": "Vinaigre de vin rouge",
+      "recipe_count": 4,
+      "required": true
+    }
+  ],
+  "forms_missing": [
+    {
+      "form": "Agneau haché cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Anchois à l'huile, égoutté",
+      "recipe_count": 1,
+      "required": false
+    },
+    {
+      "form": "Aneth frais",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Aubergine fraîche",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Banane mûre",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Basilic frais",
+      "recipe_count": 4,
+      "required": true
+    },
+    {
+      "form": "Béchamel préparée",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Bicarbonate de sodium alimentaire",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Bière brune belge",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Biscuit cuillère",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Blanc d'œuf cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Bœuf cuit effiloché",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Bœuf haché cru 15 % MG",
+      "recipe_count": 4,
+      "required": true
+    },
+    {
+      "form": "Bouillon de bœuf non salé",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Bouillon de légumes non salé",
+      "recipe_count": 4,
+      "required": true
+    },
+    {
+      "form": "Bouillon de volaille non salé",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Bouquet garni frais",
+      "recipe_count": 4,
+      "required": true
+    },
+    {
+      "form": "Cacao non sucré",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Café expresso refroidi",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Cannelle moulue",
+      "recipe_count": 4,
+      "required": true
+    },
+    {
+      "form": "Cassonade",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Céleri branche cru",
+      "recipe_count": 5,
+      "required": true
+    },
+    {
+      "form": "Cerise fraîche dénoyautée",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Champignon de Paris frais",
+      "recipe_count": 6,
+      "required": true
+    },
+    {
+      "form": "Chapelure de blé",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Chocolat noir 70 %",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Ciboulette fraîche",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Citron jaune frais",
+      "recipe_count": 5,
+      "required": true
+    },
+    {
+      "form": "Clou de girofle",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Concombre frais",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Confit de canard cuit, effiloché",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Coriandre fraîche",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Coriandre moulue",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Courgette fraîche",
+      "recipe_count": 6,
+      "required": true
+    },
+    {
+      "form": "Crème fraîche liquide entière",
+      "recipe_count": 11,
+      "required": true
+    },
+    {
+      "form": "Cumin en graines",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Cumin moulu",
+      "recipe_count": 7,
+      "required": true
+    },
+    {
+      "form": "Curcuma moulu",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Curry en poudre",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Dos de cabillaud cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Eau",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Eau glacée",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Échalote crue",
+      "recipe_count": 6,
+      "required": true
+    },
+    {
+      "form": "Endive fraîche",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Épaule de veau crue, en cubes",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Épinard frais",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Estragon frais",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Farine de blé T55",
+      "recipe_count": 18,
+      "required": true
+    },
+    {
+      "form": "Farine de blé type 00",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Fécule de maïs",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Feuille de lasagne sèche",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Feuille de laurier séchée",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Filet mignon de porc cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Garam masala",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Gélatine feuille",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Gingembre frais",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Gnocchi de pomme de terre frais",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Gousse de vanille",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Guanciale cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Haricot blanc cuit, égoutté",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Haricot rouge cuit, égoutté",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Harissa",
+      "recipe_count": 1,
+      "required": false
+    },
+    {
+      "form": "Herbes de Provence séchées",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Huile de colza raffinée",
+      "recipe_count": 11,
+      "required": true
+    },
+    {
+      "form": "Huile de noix",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Jambon blanc cuit",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Jambon de Bayonne",
+      "recipe_count": 1,
+      "required": false
+    },
+    {
+      "form": "Jarret de bœuf cru, avec os",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Jaune d'œuf cru",
+      "recipe_count": 4,
+      "required": true
+    },
+    {
+      "form": "Jus de citron frais",
+      "recipe_count": 7,
+      "required": true
+    },
+    {
+      "form": "Lait de coco",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Lait entier",
+      "recipe_count": 7,
+      "required": true
+    },
+    {
+      "form": "Lapin cru, découpé",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Lardon fumé cru",
+      "recipe_count": 4,
+      "required": true
+    },
+    {
+      "form": "Lentille corail sèche, crue",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Levure boulangère sèche",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Levure chimique",
+      "recipe_count": 5,
+      "required": true
+    },
+    {
+      "form": "Marsala",
+      "recipe_count": 1,
+      "required": false
+    },
+    {
+      "form": "Mascarpone",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Merguez crue",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Miel",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Mozzarella",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Muscade moulue",
+      "recipe_count": 11,
+      "required": true
+    },
+    {
+      "form": "Navet cru",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Oignon grelot cru",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Olive noire dénoyautée",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Olive verte dénoyautée",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Origan séché",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Os à moelle de bœuf",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Pain d'épices",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Pain de campagne",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Pain de mie",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Paleron de bœuf cru, paré",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Paprika fumé",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Parmesan affiné",
+      "recipe_count": 7,
+      "required": true
+    },
+    {
+      "form": "Pâte brisée crue",
+      "recipe_count": 5,
+      "required": true
+    },
+    {
+      "form": "Pâte feuilletée crue",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Pâte sablée crue",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Pâtes sèches courtes",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Pavé de saumon cru, sans peau",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Pecorino romano",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Petites pâtes sèches",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Pignon de pin",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Piment d'Espelette moulu",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Piment en poudre",
+      "recipe_count": 2,
+      "required": false
+    },
+    {
+      "form": "Poireau cru",
+      "recipe_count": 7,
+      "required": true
+    },
+    {
+      "form": "Pois chiche sec, cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Poivre blanc moulu",
+      "recipe_count": 2,
+      "required": false
+    },
+    {
+      "form": "Poivre noir en grains",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Poivron jaune frais",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Poivron rouge frais",
+      "recipe_count": 5,
+      "required": true
+    },
+    {
+      "form": "Poivron vert frais",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Pomme de terre crue, avec peau",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Pomme fraîche",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Porc haché cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Potimarron frais, épépiné",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Poulet entier cru, prêt à cuire",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Ras el-hanout",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Rhum ambré",
+      "recipe_count": 1,
+      "required": false
+    },
+    {
+      "form": "Riz arborio cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Riz long blanc cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Riz rond blanc cru",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Semoule de blé dur moyenne sèche",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Spaghetti secs",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Sucre semoule",
+      "recipe_count": 14,
+      "required": true
+    },
+    {
+      "form": "Tahini",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Thon au naturel en conserve, égoutté",
+      "recipe_count": 2,
+      "required": true
+    },
+    {
+      "form": "Thym frais",
+      "recipe_count": 6,
+      "required": true
+    },
+    {
+      "form": "Thym séché",
+      "recipe_count": 3,
+      "required": true
+    },
+    {
+      "form": "Tomate concassée en conserve",
+      "recipe_count": 12,
+      "required": true
+    },
+    {
+      "form": "Tomate entière pelée en conserve",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Tomate fraîche mûre",
+      "recipe_count": 4,
+      "required": true
+    },
+    {
+      "form": "Vanille liquide",
+      "recipe_count": 4,
+      "required": true
+    },
+    {
+      "form": "Vin rouge sec",
+      "recipe_count": 5,
+      "required": true
+    },
+    {
+      "form": "Vinaigre de cidre",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Yaourt nature",
+      "recipe_count": 1,
+      "required": true
+    },
+    {
+      "form": "Zeste de citron",
+      "recipe_count": 1,
+      "required": true
+    }
+  ],
+  "review_tasks_estimate": {
+    "missing_food_form": 346,
+    "unresolved_required_ingredient": 71,
+    "variants_need_branch_modeling": 72,
+    "total": 489
+  },
+  "note": "forms_resolved/forms_missing établis par cross-référencement statique avec le corpus F0 (fichier f0-corpus.json). Les comptes SQL réels peuvent différer si le catalogue a été enrichi entre la génération et l'exécution du SQL. En CI (base fraîche + F0 seul), les formes manquantes correspondent au backlog de review_tasks."
+}

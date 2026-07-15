@@ -1,0 +1,80 @@
+{
+  "_comment": "Échantillon corpus-v1 — 2 recettes représentatives. Développement et tests CI sans le corpus réel.",
+  "corpus_version": "scraped-v1",
+  "source_doc": "sample",
+  "doctrine": { "status": "candidate", "min_confidence": "B" },
+  "forms_order": [
+    { "rank": 1, "name": "Carotte crue", "recipe_count": 2 },
+    { "rank": 2, "name": "Oignon jaune cru", "recipe_count": 2 },
+    { "rank": 3, "name": "Sel fin", "recipe_count": 2 },
+    { "rank": 4, "name": "Poivre noir moulu", "recipe_count": 2 },
+    { "rank": 5, "name": "Céleri branche cru", "recipe_count": 1 },
+    { "rank": 6, "name": "Beurre doux", "recipe_count": 1 },
+    { "rank": 7, "name": "Tomate fraîche mûre", "recipe_count": 1 },
+    { "rank": 8, "name": "Pâte brisée", "recipe_count": 1 }
+  ],
+  "recipes": [
+    {
+      "code": "SAMPLE-001",
+      "family": "Soupe de légumes au bouillon",
+      "category": "soupe",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 35,
+      "difficulty": "facile",
+      "tags": ["végétarien", "hiver", "réconfortant"],
+      "sources": ["sample"],
+      "arbitrage": null,
+      "ingredients": [
+        { "form": "Carotte crue",       "quantity": 200, "unit": "g",     "role": "légume",       "optional": false },
+        { "form": "Oignon jaune cru",   "quantity": 1,   "unit": "u",     "role": "aromatique",   "optional": false },
+        { "form": "Céleri branche cru", "quantity": 80,  "unit": "g",     "role": "aromatique",   "optional": false },
+        { "form": "Sel fin",            "quantity": 5,   "unit": "g",     "role": "assaisonnement","optional": true  },
+        { "form": "Poivre noir moulu",  "quantity": 2,   "unit": "g",     "role": "assaisonnement","optional": true  }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Éplucher et couper carottes, oignon et céleri en petits morceaux." },
+        { "n": 2, "instruction": "Faire revenir les légumes dans une cocotte avec un filet d'eau, 5 minutes." },
+        { "n": 3, "instruction": "Couvrir d'eau bouillante et laisser mijoter 30 minutes à feu doux." },
+        { "n": 4, "instruction": "Assaisonner de sel et poivre avant de servir." }
+      ],
+      "techniques": ["mijoter", "revenir"],
+      "variants": ["version épicée (piment)", "version plus épaisse (mixée)"],
+      "conservation": { "refrigerator_days": 4, "freezer_days": 90 },
+      "allergens": []
+    },
+    {
+      "code": "SAMPLE-002",
+      "family": "Tarte provençale aux tomates",
+      "category": "tarte salée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 40,
+      "difficulty": "facile",
+      "tags": ["été", "végétarien"],
+      "sources": ["sample"],
+      "arbitrage": null,
+      "ingredients": [
+        { "form": "Pâte brisée",        "quantity": 250, "unit": "g",     "role": "base",          "optional": false },
+        { "form": "Tomate fraîche mûre","quantity": 600, "unit": "g",     "role": "garniture",     "optional": false },
+        { "form": "Beurre doux",        "quantity": 20,  "unit": "g",     "role": "matière grasse","optional": false },
+        { "form": "Sel fin",            "quantity": 4,   "unit": "g",     "role": "assaisonnement","optional": true  },
+        { "form": "Poivre noir moulu",  "quantity": 1,   "unit": "g",     "role": "assaisonnement","optional": true  }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Préchauffer le four à 200°C. Abaisser la pâte dans un moule beurré." },
+        { "n": 2, "instruction": "Couper les tomates en rondelles. Saler légèrement et laisser dégorger 10 minutes." },
+        { "n": 3, "instruction": "Égoutter les tomates et les déposer sur la pâte. Saler, poivrer." },
+        { "n": 4, "instruction": "Cuire 40 minutes jusqu'à ce que la pâte soit dorée." }
+      ],
+      "techniques": ["foncer", "cuisson au four"],
+      "variants": [],
+      "conservation": { "refrigerator_days": 2 },
+      "allergens": ["gluten", "lait"]
+    }
+  ]
+}
