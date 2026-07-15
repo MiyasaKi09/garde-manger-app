@@ -1,0 +1,1409 @@
+{
+  "_comment": "Corpus alimentaire F0 curé — Myko V2, recettes R0 (31 formes, 27 concepts). Données nutritionnelles CIQUAL 2020. Statut candidat non publié. Tous les ciqual_alim_code sont vérifiés présents dans ciqual_nutrition_import.csv (source_id). Exception : sel fin — aucun code sel présent dans ce fichier (sel = 0 kcal/macro, absent de l'import). Réf. MYKO_DATA_FOUNDATION_V2 §8.",
+  "source": {
+    "code": "myko_f0_curated",
+    "publisher": "Myko",
+    "license": "cc0-1.0",
+    "nutrition_source": "ciqual_2020"
+  },
+  "concepts": [
+    {
+      "canonical_name": "Ail",
+      "category": "herbes_aromates",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "L'unité fonctionnelle dans les recettes R0 est la gousse (u). La têle d'ail est le mode d'achat courant.",
+      "forms": [
+        {
+          "canonical_name": "Ail cru",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "u",
+          "edible_yield_ratio": 0.85,
+          "state_confidence": "A",
+          "ciqual_alim_code": "11000",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 11000 = 'Ail, cru' — correspondance exacte. Rendement 0.85 : retrait de la peau de la gousse (~15 % de perte). Unité = gousse pelée.",
+          "conversions": [
+            {
+              "from_unit": "u",
+              "to_unit": "g",
+              "factor": 5,
+              "context": "gousse moyenne",
+              "min_factor": 3,
+              "max_factor": 8,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "unopened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 720,
+              "shelf_life_max_hours": 4320,
+              "recommended_hours": 2160,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Tête d'ail entière : 1 à 6 mois en endroit frais et sec. Éviter réfrigérateur qui favorise la germination."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Beurre",
+      "category": "matieres_grasses",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Beurre doux",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "fat",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "16400",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 16400 = 'Beurre à 82 % MG, doux' — correspondance exacte pour le beurre doux standard français.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 1344,
+              "shelf_life_max_hours": 2016,
+              "recommended_hours": 1680,
+              "safety_level": "medium",
+              "confidence": "A",
+              "note": "Beurre emballé : 8 à 12 semaines. Ouvert : 3 à 4 semaines (336-672 h)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Cabillaud",
+      "category": "poissons_fruits_de_mer",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Cabillaud cru",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": "boneless",
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "lean",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "26043",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 26043 = 'Cabillaud, cru' — correspondance exacte. La forme R0 suppose un filet prêt à cuire (sans arêtes principales). Si vendu entier, rendement ~0.45-0.55 ; si en filet avec peau, ~0.90.",
+          "safety_core_temp_c": 63,
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 48,
+              "recommended_hours": 36,
+              "safety_level": "high",
+              "confidence": "A",
+              "note": "Poisson frais très périssable. Idéalement consommé le jour d'achat ou le lendemain. Zone la plus froide du réfrigérateur (0-2°C optimal)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Carotte",
+      "category": "legumes",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Carotte crue",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": "with_skin",
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "u",
+          "edible_yield_ratio": 0.87,
+          "state_confidence": "A",
+          "ciqual_alim_code": "20009",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 20009 = 'Carotte, crue' — correspondance exacte. Rendement 0.87 : épluchage + retrait des extrémités (~13 % de pertes). Unité = carotte entière.",
+          "conversions": [
+            {
+              "from_unit": "u",
+              "to_unit": "g",
+              "factor": 100,
+              "context": "carotte moyenne",
+              "min_factor": 80,
+              "max_factor": 150,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 336,
+              "shelf_life_max_hours": 720,
+              "recommended_hours": 504,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Carottes entières, bac à légumes : 2 à 4 semaines. Pelées/coupées : 3-5 jours dans l'eau froide."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Citron",
+      "category": "fruits",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Citron jaune",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": "with_skin",
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "u",
+          "edible_yield_ratio": 0.55,
+          "state_confidence": "A",
+          "ciqual_alim_code": "13009",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 13009 = 'Citron, pulpe, cru' — code pour la pulpe seule. Rendement 0.55 approximé : pulpe + jus (50-60 % du poids total) + zeste utilisable (~5 %). Peau blanche (albédo) et pépins rejetés. Unité = citron jaune entier moyen (~130 g).",
+          "conversions": [
+            {
+              "from_unit": "u",
+              "to_unit": "g",
+              "factor": 130,
+              "context": "citron jaune moyen entier",
+              "min_factor": 100,
+              "max_factor": 170,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "unopened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 22,
+              "shelf_life_min_hours": 168,
+              "shelf_life_max_hours": 336,
+              "recommended_hours": 240,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Citron entier à température ambiante : 1-2 semaines. Réfrigéré (bac à légumes) : 3-4 semaines."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Comté",
+      "category": "produits_laitiers",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "Fromage AOP à pâte pressée cuite. Une seule forme R0 : Comté en morceau ou tranché, utilisé râpé ou en copeaux.",
+      "forms": [
+        {
+          "canonical_name": "Comté",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "fat",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "12110",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 12110 = 'Comté' — correspondance exacte. La croûte représente ~5 % du poids mais est rarement consommée ; dans les recettes R0, la quantité est pesée sans croûte, rendement = 1.0.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 2,
+              "max_temperature_c": 8,
+              "shelf_life_min_hours": 336,
+              "shelf_life_max_hours": 672,
+              "recommended_hours": 504,
+              "safety_level": "medium",
+              "confidence": "A",
+              "note": "Morceau entamé, bien emballé dans du papier sulfurisé ou film : 2 à 4 semaines."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Crème fraîche",
+      "category": "produits_laitiers",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Crème fraîche épaisse",
+          "physical_state": "liquid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "fat",
+          "default_quantity_unit": "ml",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "19410",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 19410 = 'Crème de lait, 30 % MG, épaisse, rayon frais' — meilleure correspondance pour la crème fraîche épaisse (30 % MG, rayon frais). Densité ≈ 1.0 g/ml, donc ml ≈ g en pratique.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 336,
+              "shelf_life_max_hours": 672,
+              "recommended_hours": 504,
+              "safety_level": "medium",
+              "confidence": "A"
+            },
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "opened",
+              "opened_state": "opened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 168,
+              "recommended_hours": 120,
+              "safety_level": "high",
+              "confidence": "A",
+              "note": "Pot ouvert : consommer dans les 3 à 7 jours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Gruyère",
+      "category": "produits_laitiers",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "Fromage à pâte pressée cuite, similaire au comté. La forme R0 est râpée, conditionnement typique en sachet.",
+      "forms": [
+        {
+          "canonical_name": "Gruyère râpé",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": "grated",
+          "fat_level": "fat",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "12114",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 12114 = 'Gruyère' — fromage générique. Pas de code spécifique 'râpé' dans CIQUAL : le râpage ne modifie pas la valeur nutritive (différence infime d'humidité, non significative). 12113 (Gruyère IGP France, 398 kcal) légèrement moins gras que 12114 (426 kcal) ; 12114 retenu comme valeur générique commerciale.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 720,
+              "shelf_life_max_hours": 2160,
+              "recommended_hours": 1440,
+              "safety_level": "medium",
+              "confidence": "A"
+            },
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "opened",
+              "opened_state": "opened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 240,
+              "recommended_hours": 168,
+              "safety_level": "medium",
+              "confidence": "A",
+              "note": "Sachet ouvert : refermer hermétiquement, consommer dans 3 à 10 jours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Haricot vert",
+      "category": "legumes",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Haricot vert cru",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.90,
+          "state_confidence": "A",
+          "ciqual_alim_code": "20061",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 20061 = 'Haricot vert, cru' — correspondance exacte. Rendement 0.90 : retrait des extrémités (queues et pointes), ~10 % de pertes.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "loose",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 168,
+              "recommended_hours": 120,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Bac à légumes, dans un sac perforé ou sans emballage : 3 à 7 jours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Huile d'olive",
+      "category": "matieres_grasses",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Huile d'olive vierge extra",
+          "physical_state": "liquid",
+          "cooking_state": "raw",
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "fat",
+          "default_quantity_unit": "ml",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "17270",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 17270 = 'Huile d'olive vierge extra' — correspondance exacte. Densité ≈ 0.914 g/ml (conversion ml→g si besoin).",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 20,
+              "shelf_life_min_hours": 8760,
+              "shelf_life_max_hours": 13140,
+              "recommended_hours": 13140,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Bouteille non ouverte à l'abri de la lumière et de la chaleur : 12 à 18 mois. Ouverte : 3 à 6 mois (2160-4380 h) avant rancissement notable."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Lait",
+      "category": "produits_laitiers",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Lait demi-écrémé",
+          "physical_state": "liquid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "ml",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "19041",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 19041 = 'Lait demi-écrémé, UHT' (47.3 kcal/100 ml). Le code 19042 (pasteurisé, 46.7 kcal) est quasi-identique. 19041 retenu comme code générique. Densité ≈ 1.03 g/ml.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 120,
+              "recommended_hours": 96,
+              "safety_level": "high",
+              "confidence": "A",
+              "note": "Brique UHT ouverte : 3 à 5 jours au réfrigérateur. Brique non ouverte (UHT) : DLC fabricant, à température ambiante jusqu'à ouverture."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Lentille verte",
+      "category": "legumineuses",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "Seule la forme sèche crue est requise par R0. La cuisson ×2.4 en masse (approximation golden-foods.json).",
+      "forms": [
+        {
+          "canonical_name": "Lentille verte sèche, crue",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "20585",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 20585 = 'Lentille verte, sèche' — correspondance exacte. Après cuisson le poids ×2.4 environ (hydratation). Vérifier le code 20587 (lentille verte cuite, bouillie) pour les plats où la lentille est présentée cuite.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 17520,
+              "shelf_life_max_hours": 26280,
+              "recommended_hours": 17520,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Sachet non ouvert, lieu frais et sec : 2 à 3 ans. Sachet ouvert, récipient hermétique : 6 à 12 mois."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Moutarde",
+      "category": "condiments_sauces",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Moutarde de Dijon",
+          "physical_state": "liquid",
+          "cooking_state": "raw",
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "11013",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 11013 = 'Moutarde' (générique, 152 kcal/100 g). Aucun code spécifique 'Moutarde de Dijon' dans la base CIQUAL 2020. La moutarde de Dijon est légèrement moins grasse et plus acide que la moyenne ; écart nutritionnel marginal (< 5 %). Approximation acceptable.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 1440,
+              "shelf_life_max_hours": 2160,
+              "recommended_hours": 2160,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Pot ouvert au réfrigérateur : 2 à 3 mois. Pot non ouvert au placard (DLC fabricant) : 12 à 24 mois."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Œuf",
+      "category": "oeufs",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "Oeuf de poule entier. L'unité fonctionnelle est l'oeuf entier (u). Le normalized 'oeuf cru' est obtenu par normalisation de 'Œuf cru' (Œ→oe, minuscules).",
+      "forms": [
+        {
+          "canonical_name": "Œuf cru",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "u",
+          "edible_yield_ratio": 0.88,
+          "state_confidence": "A",
+          "ciqual_alim_code": "22000",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 22000 = 'Oeuf, cru' — oeuf entier de poule, cru. Rendement 0.88 : retrait de la coquille (~12 % du poids total). Unité = oeuf entier avec coquille. Température minimale de cuisson préconisée 72°C pour les plats avec oeuf entièrement cuit.",
+          "safety_core_temp_c": 72,
+          "conversions": [
+            {
+              "from_unit": "u",
+              "to_unit": "g",
+              "factor": 57,
+              "context": "oeuf de poule calibre M (53-63 g), sans coquille ~50 g",
+              "min_factor": 50,
+              "max_factor": 65,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "unopened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 20,
+              "shelf_life_min_hours": 504,
+              "shelf_life_max_hours": 720,
+              "recommended_hours": 504,
+              "safety_level": "medium",
+              "confidence": "A",
+              "note": "Oeufs frais (date de ponte) : jusqu'à 28 jours à température ambiante stable (France : non réfrigérés en magasin). Si réfrigérés (0-4°C) : jusqu'à 35 jours depuis la ponte. Ne pas recasser un oeuf réfrigéré à la chaleur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Oignon",
+      "category": "legumes",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "Deux formes R0 : oignon jaune (usage général) et oignon rouge (plus doux, souvent cru). Concept unique.",
+      "forms": [
+        {
+          "canonical_name": "Oignon jaune cru",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": "with_skin",
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "u",
+          "edible_yield_ratio": 0.88,
+          "state_confidence": "A",
+          "ciqual_alim_code": "20239",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 20239 = 'Oignon jaune, cru' — correspondance exacte. Rendement 0.88 : retrait des pelures sèches et des extrémités (~12 %). Unité = oignon moyen entier avec peau.",
+          "conversions": [
+            {
+              "from_unit": "u",
+              "to_unit": "g",
+              "factor": 120,
+              "context": "oignon jaune moyen",
+              "min_factor": 80,
+              "max_factor": 200,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "unopened",
+              "min_temperature_c": 10,
+              "max_temperature_c": 20,
+              "shelf_life_min_hours": 720,
+              "shelf_life_max_hours": 2160,
+              "recommended_hours": 1440,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Oignons entiers non épluchés, lieu frais, sec, sombre et aéré : 1 à 3 mois. Coupés : couvrir et réfrigérer, 3-5 jours."
+            }
+          ]
+        },
+        {
+          "canonical_name": "Oignon rouge cru",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": "with_skin",
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "u",
+          "edible_yield_ratio": 0.88,
+          "state_confidence": "A",
+          "ciqual_alim_code": "20238",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 20238 = 'Oignon rouge, cru' — correspondance exacte. Mêmes règles de rendement et conservation que l'oignon jaune.",
+          "conversions": [
+            {
+              "from_unit": "u",
+              "to_unit": "g",
+              "factor": 130,
+              "context": "oignon rouge moyen",
+              "min_factor": 100,
+              "max_factor": 200,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "unopened",
+              "min_temperature_c": 10,
+              "max_temperature_c": 20,
+              "shelf_life_min_hours": 720,
+              "shelf_life_max_hours": 2160,
+              "recommended_hours": 1440,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Conditions identiques à l'oignon jaune. L'oignon rouge se conserve souvent légèrement moins longtemps car plus humide."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Persil",
+      "category": "herbes_aromates",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Persil frais",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.90,
+          "state_confidence": "A",
+          "ciqual_alim_code": "11014",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 11014 = 'Persil, frais' — correspondance exacte. Rendement 0.90 : retrait des tiges dures épaisses (~10 %). Les tiges tendres sont consommables.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "loose",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 120,
+              "shelf_life_max_hours": 168,
+              "recommended_hours": 120,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Bouquet enveloppé dans un torchon humide ou les pieds dans un verre d'eau : 5 à 7 jours au réfrigérateur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Pois chiche",
+      "category": "legumineuses",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "La forme R0 est le pois chiche prêt à l'emploi (cuit et égoutté, typiquement issu d'une conserve appertisée).",
+      "forms": [
+        {
+          "canonical_name": "Pois chiche cuit, égoutté",
+          "physical_state": "solid",
+          "cooking_state": "cooked",
+          "preservation_state": "canned",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "20532",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 20532 = 'Pois chiche, appertisé, égoutté' — correspondance exacte pour la forme usuelle (conserve égouttée). Valeur proche de 20507 (pois chiche bouilli, 109 kcal vs 111 kcal). Si pois chiches cuits maison sans sel, utiliser 20507 (nutrition_confidence B identique).",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "opened",
+              "opened_state": "opened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 120,
+              "recommended_hours": 96,
+              "safety_level": "medium",
+              "confidence": "A",
+              "note": "Conserve ouverte, transvasée dans un récipient couvert : 3 à 5 jours. Conserve non ouverte : DLC fabricant (2-5 ans)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Poivre noir",
+      "category": "epices",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Poivre noir moulu",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": "ground",
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "11015",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 11015 = 'Poivre noir, poudre' — correspondance exacte pour le poivre moulu. Utilisé en très petites quantités (< 2 g/recette) : impact nutritionnel négligeable.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 8760,
+              "shelf_life_max_hours": 17520,
+              "recommended_hours": 8760,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Poivre moulu en récipient hermétique, à l'abri de la lumière : 1 à 2 ans. Qualité olfactive décroît avant la sécurité alimentaire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Poivron",
+      "category": "legumes",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Poivron rouge cru",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": "with_skin",
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "u",
+          "edible_yield_ratio": 0.82,
+          "state_confidence": "A",
+          "ciqual_alim_code": "20087",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 20087 = 'Poivron rouge, cru' — correspondance exacte. Rendement 0.82 : retrait de la queue, du coeur et des graines (~18 % du poids total). Unité = poivron entier moyen.",
+          "conversions": [
+            {
+              "from_unit": "u",
+              "to_unit": "g",
+              "factor": 160,
+              "context": "poivron rouge moyen entier",
+              "min_factor": 130,
+              "max_factor": 220,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "loose",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 120,
+              "shelf_life_max_hours": 240,
+              "recommended_hours": 168,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Poivron entier, bac à légumes : 5 à 10 jours. Coupé et couvert : 3 à 5 jours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Pomme de terre",
+      "category": "cereales_feculents",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "Féculent (rangement taxonomique), pas 'légume'. La forme R0 est épluchée et crue — prête à découper et cuire.",
+      "forms": [
+        {
+          "canonical_name": "Pomme de terre crue, épluchée",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": "skinless",
+          "preparation_state": "peeled",
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "4008",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 4008 = 'Pomme de terre, sans peau, crue' — correspondance exacte. Forme déjà épluchée : rendement = 1.0 (pas de déchet supplémentaire). Si stockée entière avec peau, rendement d'épluchage ~0.85.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "submerged",
+              "opened_state": "opened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 12,
+              "shelf_life_max_hours": 48,
+              "recommended_hours": 24,
+              "safety_level": "medium",
+              "confidence": "A",
+              "note": "Pomme de terre épluchée : couvrir d'eau froide au réfrigérateur pour éviter l'oxydation. Conserver max 24-48 h. L'eau doit être changée si gardée plus longtemps."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Poulet",
+      "category": "volailles",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "UN concept, trois formes R0 : blanc (boneless skinless breast), cuisse entière avec os et peau, haut de cuisse désossé sans peau. Les recettes R0 permettent de substituer un morceau à un autre via des quantity_factor.",
+      "forms": [
+        {
+          "canonical_name": "Blanc de poulet cru, sans peau",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": "blanc",
+          "bone_state": "boneless",
+          "skin_state": "skinless",
+          "preparation_state": null,
+          "fat_level": "lean",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "36003",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 36003 = 'Poulet, viande, crue' — code générique poulet (viande seule sans peau). Aucun code spécifique 'blanc' (poitrine) dans CIQUAL 2020. La poitrine sans peau est légèrement plus maigre que la moyenne viande poulet (36003 : 113 kcal/100 g) ; écart acceptable pour les calculs R0.",
+          "safety_core_temp_c": 75,
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 72,
+              "recommended_hours": 48,
+              "safety_level": "high",
+              "confidence": "A"
+            }
+          ]
+        },
+        {
+          "canonical_name": "Cuisse de poulet crue, avec os, avec peau",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": "cuisse",
+          "bone_state": "bone_in",
+          "skin_state": "with_skin",
+          "preparation_state": null,
+          "fat_level": "medium",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.72,
+          "state_confidence": "A",
+          "ciqual_alim_code": "36002",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 36002 = 'Poulet, cuisse, viande et peau, cru' — correspondance exacte. Rendement comestible ~72 % : os ~25 %, pertes/cartilages ~3 %.",
+          "safety_core_temp_c": 75,
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 72,
+              "recommended_hours": 48,
+              "safety_level": "high",
+              "confidence": "A"
+            }
+          ]
+        },
+        {
+          "canonical_name": "Haut de cuisse de poulet cru, désossé, sans peau",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": "haut_de_cuisse",
+          "bone_state": "boneless",
+          "skin_state": "skinless",
+          "preparation_state": null,
+          "fat_level": "medium",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "36019",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 36019 = 'Poulet, haut de cuisse, viande, cru' — 'viande seule' implique sans os et sans peau dans la nomenclature CIQUAL, correspondance très bonne. 116 kcal/100 g (légèrement plus gras que le blanc 36003 = 113 kcal).",
+          "safety_core_temp_c": 75,
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 72,
+              "recommended_hours": 48,
+              "safety_level": "high",
+              "confidence": "A"
+            }
+          ]
+        }
+      ],
+      "transformations": [
+        {
+          "action_code": "desosser_depouiller",
+          "action_label": "Désosser et dépouiller",
+          "source_form": "Cuisse de poulet crue, avec os, avec peau",
+          "skill_level": "intermediate",
+          "active_minutes": 6,
+          "passive_minutes": 0,
+          "outputs": [
+            {
+              "form": "Haut de cuisse de poulet cru, désossé, sans peau",
+              "role": "main",
+              "expected_yield_ratio": 0.58,
+              "min": 0.54,
+              "max": 0.62
+            },
+            {
+              "form": "Os et articulations de poulet",
+              "role": "byproduct",
+              "expected_yield_ratio": 0.22,
+              "min": 0.18,
+              "max": 0.25
+            },
+            {
+              "form": "Parures et peau de poulet",
+              "role": "trim",
+              "expected_yield_ratio": 0.19,
+              "min": 0.14,
+              "max": 0.24
+            }
+          ],
+          "note": "Transformation combinée désossage + retrait peau. Calcul du rendement : désossage cuisse → haut de cuisse avec peau (~72 % ; golden-foods.json ref.), puis retrait de la peau du haut de cuisse (~80 % de la portion désossée) → haut de cuisse sans peau ~58 % de la cuisse initiale. La somme des rendements outputs ≈ 0.99 (perte de suc ~1 %)."
+        }
+      ]
+    },
+    {
+      "canonical_name": "Quinoa",
+      "category": "cereales_feculents",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Quinoa cru",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "9340",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 9340 = 'Quinoa, cru' — correspondance exacte. Après cuisson, masse ×2.8 environ (forte hydratation). Le quinoa cuit (9341 = 119 kcal, bouilli/non salé) peut compléter si besoin.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 17520,
+              "shelf_life_max_hours": 26280,
+              "recommended_hours": 17520,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Sachet fermé, lieu frais et sec : 2 à 3 ans. Ouvert, récipient hermétique : 12 mois."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Riz",
+      "category": "cereales_feculents",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "Deux formes R0 : riz blanc (raffiné) et riz complet (céréale entière). Concept unique.",
+      "forms": [
+        {
+          "canonical_name": "Riz blanc cru",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "9100",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 9100 = 'Riz blanc, cru' — correspondance exacte. Après cuisson, masse ×2.5-3 selon le type (nature, basmati, long grain). 350 kcal/100 g cru.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 17520,
+              "shelf_life_max_hours": 43800,
+              "recommended_hours": 26280,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Riz blanc raffiné, sachet fermé : 2 à 5 ans. Ouvert, récipient hermétique : 1 à 2 ans."
+            }
+          ]
+        },
+        {
+          "canonical_name": "Riz complet cru",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "9102",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 9102 = 'Riz complet, cru' — correspondance exacte. 349 kcal/100 g cru. Le son (son = couche externe) contient des huiles qui rancissent : durée de conservation plus courte que le riz blanc.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "unopened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 20,
+              "shelf_life_min_hours": 4380,
+              "shelf_life_max_hours": 8760,
+              "recommended_hours": 6480,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Riz complet, sachet fermé, à l'abri de la lumière et de la chaleur : 6 à 12 mois. Les huiles du son rancissent : conserver au frais (réfrigérateur) si période chaude ou conservé ouvert."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Sel",
+      "category": "condiments_sauces",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Sel fin",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": null,
+          "nutrition_confidence": "B",
+          "note": "NaCl quasi-pur (99 %+), absent du fichier nutrition CIQUAL car sans macros. Nutrition renseignée explicitement (nutrition_override) : macros à ZÉRO MESURÉ (measured, pas 'non disponible') + sodium ~39 340 mg/100 g (fraction Na de NaCl). Satisfait le garde-fou de publication (4 macros présents) tout en restant nutritionnellement correct.",
+          "nutrition_override": {
+            "values": {
+              "energy_kcal": 0, "protein_g": 0, "carbohydrate_g": 0, "fat_g": 0,
+              "fiber_g": 0, "sugars_g": 0, "saturated_fat_g": 0,
+              "sodium_mg": 39340, "salt_g": 100
+            },
+            "value_status": "measured"
+          },
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 30,
+              "shelf_life_min_hours": 87600,
+              "shelf_life_max_hours": 175200,
+              "recommended_hours": 87600,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Sel : durée de conservation indéfinie si conservé au sec. À l'abri de l'humidité pour éviter l'agglomération. Pas de DLC légale obligatoire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Tomate",
+      "category": "legumes",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Tomate crue",
+          "physical_state": "solid",
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": "with_skin",
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "u",
+          "edible_yield_ratio": 0.94,
+          "state_confidence": "A",
+          "ciqual_alim_code": "20047",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 20047 = 'Tomate, crue' — correspondance exacte (tomate ronde standard). Rendement 0.94 : retrait du pédoncule et des parties abîmées (~6 %). Les graines et le gel sont consommés. Unité = tomate ronde moyenne entière.",
+          "conversions": [
+            {
+              "from_unit": "u",
+              "to_unit": "g",
+              "factor": 130,
+              "context": "tomate ronde moyenne",
+              "min_factor": 100,
+              "max_factor": 200,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "unopened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 22,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 168,
+              "recommended_hours": 96,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Tomates mûres à température ambiante : 3 à 7 jours. Ne pas réfrigérer une tomate non entamée : le froid détruit les arômes et fait fariner la chair. Coupée : réfrigérer, consommer dans 2 jours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Vin blanc",
+      "category": "boissons",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "note": "Utilisé comme ingrédient de cuisson (déglaçage, marinade). Non consommé tel quel dans les recettes R0.",
+      "forms": [
+        {
+          "canonical_name": "Vin blanc sec",
+          "physical_state": "liquid",
+          "cooking_state": "raw",
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "ml",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "5215",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 5215 = 'Vin blanc (sec)' — correspondance exacte. 18.2 kcal/100 ml. Densité ≈ 0.99 g/ml. L'alcool s'évapore en cuisson longue (réduction > 30 min) ; les calories de l'alcool disparaissent avec l'évaporation.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "refrigerator",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 0,
+              "max_temperature_c": 8,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 120,
+              "recommended_hours": 72,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Bouteille ouverte, rebouchée, au réfrigérateur : 3 à 5 jours pour la cuisine (qualité gustative). Non ouverte : DLC fabricant, plusieurs mois à température appropriée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Vinaigre de vin",
+      "category": "condiments_sauces",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Vinaigre de vin rouge",
+          "physical_state": "liquid",
+          "cooking_state": "raw",
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "ml",
+          "edible_yield_ratio": 1.0,
+          "state_confidence": "A",
+          "ciqual_alim_code": "11220",
+          "nutrition_confidence": "B",
+          "note": "CIQUAL 11220 = 'Vinaigre de vin rouge' — correspondance exacte. 21.6 kcal/100 ml. Le vinaigre est auto-conservé par son acidité acétique.",
+          "conversions": [],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 17520,
+              "shelf_life_max_hours": 35040,
+              "recommended_hours": 17520,
+              "safety_level": "low",
+              "confidence": "A",
+              "note": "Vinaigre ouvert à l'abri de la lumière : 2 à 4 ans. L'acidité préserve naturellement. Un dépôt (mère de vinaigre) est normal et inoffensif."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
