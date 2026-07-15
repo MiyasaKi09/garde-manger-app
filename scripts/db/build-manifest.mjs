@@ -65,12 +65,16 @@ const VERIFY_OBJECTS = {
 };
 
 // Versions genuinement nouvelles (non appliquées en prod au 2026-07-15).
-// Seules ces 4 migrations doivent être exécutées par apply-migrations.sh sur prod.
+// Migrations postérieures au snapshot de production simulé par la CI.
 const NEW_VERSIONS = new Set([
   '20260715090001', // v2_immutability_full
   '20260715090002', // v2_publish_release_exclusive
   '20260715090003', // v2_catalog_active_release_rls
   '20260715090004', // v2_off_label_completeness
+  '20260715190000', // v3_operational_recipe_api
+  '20260715214547', // complete_recipe_catalog_v3
+  '20260715221042', // repair_recipe_corpus_v3_utf8
+  '20260715221509', // recipe_catalog_v3_indexes
 ]);
 
 // Objets attendus après application des nouvelles migrations (pour assertions CI).
@@ -91,6 +95,15 @@ const NEW_EXPECTED_OBJECTS = {
   '20260715090004': [
     { type: 'column', schema: 'catalog', name: 'label_nutrition_complete', table: 'commercial_products' },
     { type: 'column', schema: 'catalog', name: 'label_nutrition_review_status', table: 'commercial_products' },
+  ],
+  '20260715190000': [
+    { type: 'function', schema: 'public', name: 'get_operational_recipe_catalog_v3' },
+  ],
+  '20260715214547': [
+    { type: 'function', schema: 'public', name: 'get_editorial_recipe_catalog_v3' },
+    { type: 'column', schema: 'culinary', name: 'source_name', table: 'recipe_ingredient_requirements' },
+    { type: 'column', schema: 'culinary', name: 'yield_quantity', table: 'recipe_versions' },
+    { type: 'column', schema: 'culinary', name: 'required_quantity', table: 'recipe_components' },
   ],
 };
 

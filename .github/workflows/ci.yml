@@ -51,7 +51,7 @@ jobs:
   #   Scénario B (prod divergente) : base vierge → bootstrap → simulation de
   #     l'état prod (migrations appliquées sous des versions historiques +
   #     migrations ad-hoc sans ledger) → reconcile-ledger.sh → apply-migrations.sh
-  #     n'applique que les 4 nouvelles → assertions objets → 2e apply = 0.
+  #     n'applique que les migrations post-snapshot → assertions objets → 2e apply = 0.
   #     Puis : test de refus sur drift de checksum.
   # ──────────────────────────────────────────────────────────────────────────
   db-tests:
@@ -320,7 +320,7 @@ jobs:
       #
       # Après reconcile-ledger.sh :
       #   - Toutes les github_versions non-rollback sont dans schema_migrations.
-      #   - apply-migrations.sh n'applique que 090001-090004.
+      #   - apply-migrations.sh n'applique que les migrations post-snapshot.
       #   - Un 2e apply rapporte 0.
       #   - Un drift de checksum fait échouer l'apply.
       # ────────────────────────────────────────────────────────────────────────
@@ -405,7 +405,7 @@ jobs:
         run: |
           # Contrôle de CONTENANCE (pas d'égalité de comptes) : après reconcile,
           # chaque github_version des entrées à baseliner (hors 'new') doit être
-          # présente dans schema_migrations. On exclut 'new' (090001-090004) qui
+          # présente dans schema_migrations. On exclut 'new', qui
           # ne sont appliquées qu'à l'étape suivante. Robuste aux collisions de
           # version (fichiers pré-V2 partageant un préfixe) et aux versions
           # historiques laissées par la simulation.
@@ -420,31 +420,35 @@ jobs:
           ")
           [ "$missing" -eq 0 ] && echo "OK : toutes les github_versions baseline présentes dans le ledger."
 
-      - name: "[B] Dry-run apply (doit rapporter seulement 090001-090004)"
+      - name: "[B] Dry-run apply (migrations post-snapshot uniquement)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           output=$(bash scripts/db/apply-migrations.sh status)
           echo "$output"
-          # Exactement 4 migrations à appliquer.
+          # Huit migrations postérieures au snapshot de production simulé.
           count=$(echo "$output" | grep -c '^apply ' || true)
           echo "Migrations à appliquer : $count"
-          [ "$count" -eq 4 ]
-          # Et ce sont bien les 4 nouvelles.
+          [ "$count" -eq 8 ]
+          # Et ce sont bien les 8 nouvelles.
           echo "$output" | grep '^apply ' | grep -q '20260715090001'
           echo "$output" | grep '^apply ' | grep -q '20260715090002'
           echo "$output" | grep '^apply ' | grep -q '20260715090003'
           echo "$output" | grep '^apply ' | grep -q '20260715090004'
+          echo "$output" | grep '^apply ' | grep -q '20260715190000'
+          echo "$output" | grep '^apply ' | grep -q '20260715214547'
+          echo "$output" | grep '^apply ' | grep -q '20260715221042'
+          echo "$output" | grep '^apply ' | grep -q '20260715221509'
 
-      - name: "[B] Apply réel (seulement 090001-090004)"
+      - name: "[B] Apply réel (8 migrations post-snapshot)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           output=$(bash scripts/db/apply-migrations.sh apply)
           echo "$output"
-          echo "$output" | grep -E '^migrations : 4 appliquées'
+          echo "$output" | grep -E '^migrations : 8 appliquées'
 
-      - name: "[B] Assertions objets — 4 nouvelles migrations installées"
+      - name: "[B] Assertions objets — 8 nouvelles migrations installées"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
@@ -480,6 +484,34 @@ jobs:
                 AND column_name IN ('label_nutrition_complete','label_nutrition_review_status')
               HAVING count(*) = 2;
             IF NOT FOUND THEN RAISE EXCEPTION 'manque colonnes label_nutrition_* (090004)'; END IF;
+
+            -- 190000 + 214547 : contrats authentifiés des catalogues V3.
+            PERFORM 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
+              WHERE n.nspname='public'
+                AND p.proname IN ('get_operational_recipe_catalog_v3','get_editorial_recipe_catalog_v3')
+              HAVING count(*) = 2;
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque contrats catalogue recettes V3'; END IF;
+
+            -- 214547 : libellé source et quantités de composition.
+            PERFORM 1 FROM information_schema.columns
+              WHERE (table_schema, table_name, column_name) IN (
+                ('culinary','recipe_ingredient_requirements','source_name'),
+                ('culinary','recipe_versions','yield_quantity'),
+                ('culinary','recipe_components','required_quantity')
+              )
+              HAVING count(*) = 3;
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque colonnes catalogue complet V3'; END IF;
+
+            -- 221509 : index de lecture du catalogue complet.
+            PERFORM 1 FROM pg_indexes
+              WHERE schemaname='culinary'
+                AND indexname IN (
+                  'idx_recipe_components_recipe_version',
+                  'idx_recipe_requirements_recipe_position',
+                  'idx_recipe_variation_axes_family'
+                )
+              HAVING count(*) = 3;
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque index catalogue recettes V3'; END IF;
           END $$;
           ASSERTIONS
 

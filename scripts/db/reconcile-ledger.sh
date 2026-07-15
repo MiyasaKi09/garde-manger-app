@@ -39,7 +39,7 @@
 #
 # Critères de succès après un apply réel :
 #   - Chaque github_version de non-rollback est dans schema_migrations.
-#   - Un apply-migrations.sh subséquent ne voit que les 4 nouvelles (090001-4).
+#   - Un apply-migrations.sh subséquent ne voit que les migrations post-snapshot.
 #   - Un second apply-migrations.sh rapporte 0 appliquées.
 # ============================================================================
 set -euo pipefail
