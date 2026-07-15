@@ -1,0 +1,1855 @@
+{
+  "_comment": "Échantillon F0 — 31 formes de la liste fonctionnelle R0. Utiliser f0-corpus.json en production.",
+  "source": {
+    "code": "myko_f0_curated",
+    "publisher": "Myko",
+    "license": "cc0-1.0",
+    "nutrition_source": "ciqual_2020"
+  },
+  "concepts": [
+    {
+      "canonical_name": "Ail",
+      "category": "herbes_aromates",
+      "identity_confidence": "B",
+      "category_confidence": "B",
+      "forms": [
+        {
+          "canonical_name": "Ail cru",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": "skinless",
+          "preparation_state": "peeled",
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.82,
+          "state_confidence": "B",
+          "ciqual_alim_code": "11000",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "clove",
+              "to_unit": "g",
+              "factor": 5,
+              "context": "gousse moyenne",
+              "min_factor": 3,
+              "max_factor": 8,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "whole",
+              "min_temperature_c": 10,
+              "max_temperature_c": 20,
+              "shelf_life_min_hours": 720,
+              "shelf_life_max_hours": 2160,
+              "recommended_hours": 1440,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "airtight",
+              "opened_state": "peeled",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 168,
+              "shelf_life_max_hours": 336,
+              "recommended_hours": 240,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Beurre",
+      "category": "matieres_grasses",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Beurre doux",
+          "physical_state": "solid",
+          "cooking_state": null,
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "full_fat",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "A",
+          "ciqual_alim_code": "16400",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "tbsp",
+              "to_unit": "g",
+              "factor": 15,
+              "context": null,
+              "min_factor": 12,
+              "max_factor": 18,
+              "confidence": "B"
+            },
+            {
+              "from_unit": "tsp",
+              "to_unit": "g",
+              "factor": 5,
+              "context": null,
+              "min_factor": 4,
+              "max_factor": 6,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "wrapped",
+              "opened_state": "closed",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 720,
+              "shelf_life_max_hours": 2160,
+              "recommended_hours": 1440,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "frozen",
+              "packaging_state": "airtight",
+              "opened_state": "closed",
+              "min_temperature_c": -24,
+              "max_temperature_c": -18,
+              "shelf_life_min_hours": 4320,
+              "shelf_life_max_hours": 8760,
+              "recommended_hours": 6480,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Cabillaud",
+      "category": "poissons_fruits_de_mer",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Cabillaud cru",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": "fillet",
+          "bone_state": "boneless",
+          "skin_state": "skinless",
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.95,
+          "state_confidence": "B",
+          "ciqual_alim_code": "26043",
+          "nutrition_confidence": "B",
+          "safety_core_temp_c": 63,
+          "conversions": [
+            {
+              "from_unit": "portion",
+              "to_unit": "g",
+              "factor": 150,
+              "context": "portion adulte",
+              "min_factor": 120,
+              "max_factor": 200,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "wrapped",
+              "opened_state": "closed",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 72,
+              "recommended_hours": 48,
+              "safety_level": "critical",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "frozen",
+              "packaging_state": "airtight",
+              "opened_state": "closed",
+              "min_temperature_c": -24,
+              "max_temperature_c": -18,
+              "shelf_life_min_hours": 2160,
+              "shelf_life_max_hours": 4320,
+              "recommended_hours": 3240,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Carotte",
+      "category": "legumes",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Carotte crue",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": "peeled",
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.85,
+          "state_confidence": "B",
+          "ciqual_alim_code": "20009",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 100,
+              "context": "carotte moyenne",
+              "min_factor": 60,
+              "max_factor": 150,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "loose",
+              "opened_state": "closed",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 168,
+              "shelf_life_max_hours": 504,
+              "recommended_hours": 336,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Citron",
+      "category": "fruits",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Citron jaune",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "piece",
+          "edible_yield_ratio": 0.65,
+          "state_confidence": "B",
+          "ciqual_alim_code": "13009",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 120,
+              "context": "citron entier moyen",
+              "min_factor": 80,
+              "max_factor": 160,
+              "confidence": "B"
+            },
+            {
+              "from_unit": "tbsp",
+              "to_unit": "g",
+              "factor": 15,
+              "context": "jus de citron",
+              "min_factor": null,
+              "max_factor": null,
+              "confidence": "C"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "whole",
+              "min_temperature_c": 15,
+              "max_temperature_c": 22,
+              "shelf_life_min_hours": 168,
+              "shelf_life_max_hours": 504,
+              "recommended_hours": 336,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "loose",
+              "opened_state": "whole",
+              "min_temperature_c": 4,
+              "max_temperature_c": 8,
+              "shelf_life_min_hours": 336,
+              "shelf_life_max_hours": 720,
+              "recommended_hours": 504,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Comté",
+      "category": "produits_laitiers",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Comté",
+          "physical_state": "solid",
+          "cooking_state": null,
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "full_fat",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "A",
+          "ciqual_alim_code": "12110",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "portion",
+              "to_unit": "g",
+              "factor": 30,
+              "context": "portion fromagère",
+              "min_factor": 20,
+              "max_factor": 50,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "wrapped",
+              "opened_state": "closed",
+              "min_temperature_c": 2,
+              "max_temperature_c": 8,
+              "shelf_life_min_hours": 336,
+              "shelf_life_max_hours": 1344,
+              "recommended_hours": 720,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Crème fraîche",
+      "category": "produits_laitiers",
+      "identity_confidence": "B",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Crème fraîche épaisse",
+          "physical_state": "thick_liquid",
+          "cooking_state": null,
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "full_fat",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "19410",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "tbsp",
+              "to_unit": "g",
+              "factor": 20,
+              "context": null,
+              "min_factor": 18,
+              "max_factor": 22,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "airtight",
+              "opened_state": "closed",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 168,
+              "recommended_hours": 120,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Gruyère",
+      "category": "produits_laitiers",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Gruyère râpé",
+          "physical_state": "grated",
+          "cooking_state": null,
+          "preservation_state": null,
+          "cut_name": "grated",
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "full_fat",
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "A",
+          "ciqual_alim_code": "12113",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "portion",
+              "to_unit": "g",
+              "factor": 30,
+              "context": "portion fromagère",
+              "min_factor": 20,
+              "max_factor": 50,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "airtight",
+              "opened_state": "opened",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 240,
+              "recommended_hours": 168,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Haricot vert",
+      "category": "legumes",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Haricot vert cru",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": "trimmed",
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.9,
+          "state_confidence": "B",
+          "ciqual_alim_code": "20061",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "portion",
+              "to_unit": "g",
+              "factor": 150,
+              "context": "portion légume",
+              "min_factor": 100,
+              "max_factor": 200,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "loose",
+              "opened_state": "closed",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 48,
+              "shelf_life_max_hours": 120,
+              "recommended_hours": 72,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Huile d'olive",
+      "category": "matieres_grasses",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Huile d'olive vierge extra",
+          "physical_state": "liquid",
+          "cooking_state": null,
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "full_fat",
+          "default_quantity_unit": "ml",
+          "edible_yield_ratio": 1,
+          "state_confidence": "A",
+          "ciqual_alim_code": "17270",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "ml",
+              "to_unit": "g",
+              "factor": 0.916,
+              "context": null,
+              "min_factor": null,
+              "max_factor": null,
+              "confidence": "B"
+            },
+            {
+              "from_unit": "tbsp",
+              "to_unit": "g",
+              "factor": 13.7,
+              "context": null,
+              "min_factor": 12,
+              "max_factor": 16,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 15,
+              "max_temperature_c": 22,
+              "shelf_life_min_hours": 8760,
+              "shelf_life_max_hours": 17520,
+              "recommended_hours": 13140,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 15,
+              "max_temperature_c": 22,
+              "shelf_life_min_hours": 2160,
+              "shelf_life_max_hours": 4320,
+              "recommended_hours": 2880,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Lait",
+      "category": "produits_laitiers",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Lait demi-écrémé",
+          "physical_state": "liquid",
+          "cooking_state": null,
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": "half_fat",
+          "default_quantity_unit": "ml",
+          "edible_yield_ratio": 1,
+          "state_confidence": "A",
+          "ciqual_alim_code": "19041",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "ml",
+              "to_unit": "g",
+              "factor": 1.03,
+              "context": null,
+              "min_factor": null,
+              "max_factor": null,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 168,
+              "recommended_hours": 120,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 2160,
+              "shelf_life_max_hours": 4320,
+              "recommended_hours": 3240,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Lentille verte",
+      "category": "legumineuses",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Lentille verte sèche, crue",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "20585",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "portion",
+              "to_unit": "g",
+              "factor": 75,
+              "context": "portion sèche avant cuisson",
+              "min_factor": 60,
+              "max_factor": 90,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 17520,
+              "shelf_life_max_hours": 26280,
+              "recommended_hours": 21900,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "ambient",
+              "packaging_state": "airtight",
+              "opened_state": "opened",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 8760,
+              "shelf_life_max_hours": 17520,
+              "recommended_hours": 13140,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Moutarde de Dijon",
+      "category": "condiments_sauces",
+      "identity_confidence": "B",
+      "category_confidence": "B",
+      "forms": [
+        {
+          "canonical_name": "Moutarde de Dijon",
+          "physical_state": "paste",
+          "cooking_state": null,
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "11013",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "tsp",
+              "to_unit": "g",
+              "factor": 5,
+              "context": null,
+              "min_factor": 4,
+              "max_factor": 6,
+              "confidence": "B"
+            },
+            {
+              "from_unit": "tbsp",
+              "to_unit": "g",
+              "factor": 15,
+              "context": null,
+              "min_factor": 12,
+              "max_factor": 18,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 8760,
+              "shelf_life_max_hours": 26280,
+              "recommended_hours": 17520,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "airtight",
+              "opened_state": "opened",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 2160,
+              "shelf_life_max_hours": 4320,
+              "recommended_hours": 2880,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Œuf de poule",
+      "category": "oeufs",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Œuf cru",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "piece",
+          "edible_yield_ratio": 0.88,
+          "state_confidence": "A",
+          "ciqual_alim_code": "22000",
+          "nutrition_confidence": "B",
+          "safety_core_temp_c": 70,
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 60,
+              "context": "oeuf moyen calibre M",
+              "min_factor": 53,
+              "max_factor": 73,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "box",
+              "opened_state": "closed",
+              "min_temperature_c": 4,
+              "max_temperature_c": 8,
+              "shelf_life_min_hours": 504,
+              "shelf_life_max_hours": 672,
+              "recommended_hours": 504,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "ambient",
+              "packaging_state": "box",
+              "opened_state": "closed",
+              "min_temperature_c": 15,
+              "max_temperature_c": 20,
+              "shelf_life_min_hours": 168,
+              "shelf_life_max_hours": 336,
+              "recommended_hours": 168,
+              "safety_level": "safe",
+              "confidence": "C"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Oignon",
+      "category": "legumes",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Oignon jaune cru",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": "peeled",
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.88,
+          "state_confidence": "B",
+          "ciqual_alim_code": "20239",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 120,
+              "context": "oignon moyen",
+              "min_factor": 80,
+              "max_factor": 160,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "whole",
+              "min_temperature_c": 10,
+              "max_temperature_c": 18,
+              "shelf_life_min_hours": 720,
+              "shelf_life_max_hours": 2160,
+              "recommended_hours": 1440,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "airtight",
+              "opened_state": "cut",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 96,
+              "recommended_hours": 48,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        },
+        {
+          "canonical_name": "Oignon rouge cru",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": "peeled",
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.88,
+          "state_confidence": "B",
+          "ciqual_alim_code": "20238",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 120,
+              "context": "oignon moyen",
+              "min_factor": 80,
+              "max_factor": 160,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "whole",
+              "min_temperature_c": 10,
+              "max_temperature_c": 18,
+              "shelf_life_min_hours": 720,
+              "shelf_life_max_hours": 2160,
+              "recommended_hours": 1440,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Persil",
+      "category": "herbes_aromates",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Persil frais",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "11014",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "bunch",
+              "to_unit": "g",
+              "factor": 30,
+              "context": "bouquet moyen",
+              "min_factor": 20,
+              "max_factor": 50,
+              "confidence": "C"
+            },
+            {
+              "from_unit": "tbsp",
+              "to_unit": "g",
+              "factor": 4,
+              "context": "persil haché",
+              "min_factor": 3,
+              "max_factor": 5,
+              "confidence": "C"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "damp_wrap",
+              "opened_state": "whole",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 48,
+              "shelf_life_max_hours": 120,
+              "recommended_hours": 72,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Pois chiche",
+      "category": "legumineuses",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Pois chiche cuit, égoutté",
+          "physical_state": null,
+          "cooking_state": "cooked",
+          "preservation_state": "canned",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": "drained",
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "20507",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "can",
+              "to_unit": "g",
+              "factor": 240,
+              "context": "conserve 400g, égoutté",
+              "min_factor": 200,
+              "max_factor": 280,
+              "confidence": "C"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "airtight",
+              "opened_state": "opened",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 120,
+              "recommended_hours": 96,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 17520,
+              "shelf_life_max_hours": 43800,
+              "recommended_hours": 26280,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Poivre noir",
+      "category": "epices",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Poivre noir moulu",
+          "physical_state": "powder",
+          "cooking_state": null,
+          "preservation_state": "dried",
+          "cut_name": "ground",
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "11015",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "tsp",
+              "to_unit": "g",
+              "factor": 2.5,
+              "context": null,
+              "min_factor": 2,
+              "max_factor": 3,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 26280,
+              "shelf_life_max_hours": 52560,
+              "recommended_hours": 35040,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Poivron rouge",
+      "category": "legumes",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Poivron rouge cru",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.82,
+          "state_confidence": "B",
+          "ciqual_alim_code": "20087",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 150,
+              "context": "poivron moyen",
+              "min_factor": 100,
+              "max_factor": 200,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "loose",
+              "opened_state": "whole",
+              "min_temperature_c": 4,
+              "max_temperature_c": 8,
+              "shelf_life_min_hours": 120,
+              "shelf_life_max_hours": 240,
+              "recommended_hours": 168,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Pomme de terre",
+      "category": "cereales_feculents",
+      "identity_confidence": "A",
+      "category_confidence": "B",
+      "forms": [
+        {
+          "canonical_name": "Pomme de terre crue, épluchée",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": "peeled",
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "4008",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 150,
+              "context": "pomme de terre moyenne",
+              "min_factor": 100,
+              "max_factor": 250,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "airtight",
+              "opened_state": "peeled",
+              "min_temperature_c": 2,
+              "max_temperature_c": 6,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 72,
+              "recommended_hours": 48,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "whole",
+              "min_temperature_c": 8,
+              "max_temperature_c": 15,
+              "shelf_life_min_hours": 720,
+              "shelf_life_max_hours": 2160,
+              "recommended_hours": 1440,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Poulet",
+      "category": "volailles",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Blanc de poulet cru, sans peau",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": "breast",
+          "bone_state": "boneless",
+          "skin_state": "skinless",
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.97,
+          "state_confidence": "B",
+          "ciqual_alim_code": "36017",
+          "nutrition_confidence": "B",
+          "safety_core_temp_c": 74,
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 200,
+              "context": "blanc moyen",
+              "min_factor": 150,
+              "max_factor": 280,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "wrapped",
+              "opened_state": "closed",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 48,
+              "recommended_hours": 36,
+              "safety_level": "critical",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "frozen",
+              "packaging_state": "airtight",
+              "opened_state": "closed",
+              "min_temperature_c": -24,
+              "max_temperature_c": -18,
+              "shelf_life_min_hours": 2160,
+              "shelf_life_max_hours": 6480,
+              "recommended_hours": 4320,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        },
+        {
+          "canonical_name": "Cuisse de poulet crue, avec os, avec peau",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": "thigh",
+          "bone_state": "bone_in",
+          "skin_state": "with_skin",
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.73,
+          "state_confidence": "B",
+          "ciqual_alim_code": "36002",
+          "nutrition_confidence": "B",
+          "safety_core_temp_c": 74,
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 300,
+              "context": "cuisse entière avec os",
+              "min_factor": 220,
+              "max_factor": 380,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "wrapped",
+              "opened_state": "closed",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 48,
+              "recommended_hours": 36,
+              "safety_level": "critical",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "frozen",
+              "packaging_state": "airtight",
+              "opened_state": "closed",
+              "min_temperature_c": -24,
+              "max_temperature_c": -18,
+              "shelf_life_min_hours": 2160,
+              "shelf_life_max_hours": 6480,
+              "recommended_hours": 4320,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        },
+        {
+          "canonical_name": "Haut de cuisse de poulet cru, désossé, sans peau",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": "upper_thigh",
+          "bone_state": "boneless",
+          "skin_state": "skinless",
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.97,
+          "state_confidence": "B",
+          "ciqual_alim_code": "36019",
+          "nutrition_confidence": "B",
+          "safety_core_temp_c": 74,
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 120,
+              "context": "haut de cuisse désossé",
+              "min_factor": 80,
+              "max_factor": 160,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "wrapped",
+              "opened_state": "closed",
+              "min_temperature_c": 0,
+              "max_temperature_c": 4,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 48,
+              "recommended_hours": 36,
+              "safety_level": "critical",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "frozen",
+              "packaging_state": "airtight",
+              "opened_state": "closed",
+              "min_temperature_c": -24,
+              "max_temperature_c": -18,
+              "shelf_life_min_hours": 2160,
+              "shelf_life_max_hours": 6480,
+              "recommended_hours": 4320,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": [
+        {
+          "action_code": "desossage",
+          "action_label": "Désossage cuisse",
+          "source_form": "Cuisse de poulet crue, avec os, avec peau",
+          "skill_level": "intermediate",
+          "active_minutes": 5,
+          "outputs": [
+            {
+              "form": "Haut de cuisse de poulet cru, désossé, sans peau",
+              "role": "main",
+              "expected_yield_ratio": 0.72,
+              "min": 0.68,
+              "max": 0.76
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_name": "Quinoa",
+      "category": "cereales_feculents",
+      "identity_confidence": "A",
+      "category_confidence": "B",
+      "forms": [
+        {
+          "canonical_name": "Quinoa cru",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "9340",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "portion",
+              "to_unit": "g",
+              "factor": 70,
+              "context": "portion sèche avant cuisson",
+              "min_factor": 50,
+              "max_factor": 90,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 17520,
+              "shelf_life_max_hours": 43800,
+              "recommended_hours": 26280,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "ambient",
+              "packaging_state": "airtight",
+              "opened_state": "opened",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 8760,
+              "shelf_life_max_hours": 17520,
+              "recommended_hours": 13140,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Riz",
+      "category": "cereales_feculents",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Riz blanc cru",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "9100",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "portion",
+              "to_unit": "g",
+              "factor": 75,
+              "context": "portion sèche avant cuisson",
+              "min_factor": 60,
+              "max_factor": 90,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 43800,
+              "shelf_life_max_hours": 87600,
+              "recommended_hours": 52560,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "ambient",
+              "packaging_state": "airtight",
+              "opened_state": "opened",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 17520,
+              "shelf_life_max_hours": 43800,
+              "recommended_hours": 26280,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        },
+        {
+          "canonical_name": "Riz complet cru",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "9102",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "portion",
+              "to_unit": "g",
+              "factor": 75,
+              "context": "portion sèche avant cuisson",
+              "min_factor": 60,
+              "max_factor": 90,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 17520,
+              "shelf_life_max_hours": 43800,
+              "recommended_hours": 26280,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "ambient",
+              "packaging_state": "airtight",
+              "opened_state": "opened",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 8760,
+              "shelf_life_max_hours": 17520,
+              "recommended_hours": 13140,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Sel",
+      "category": "condiments_sauces",
+      "identity_confidence": "B",
+      "category_confidence": "B",
+      "forms": [
+        {
+          "canonical_name": "Sel fin",
+          "physical_state": "powder",
+          "cooking_state": null,
+          "preservation_state": "dried",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": null,
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "tsp",
+              "to_unit": "g",
+              "factor": 6,
+              "context": null,
+              "min_factor": 5,
+              "max_factor": 7,
+              "confidence": "B"
+            },
+            {
+              "from_unit": "pinch",
+              "to_unit": "g",
+              "factor": 0.5,
+              "context": null,
+              "min_factor": 0.3,
+              "max_factor": 1,
+              "confidence": "C"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 175200,
+              "shelf_life_max_hours": 175200,
+              "recommended_hours": 175200,
+              "safety_level": "low",
+              "confidence": "B"
+            }
+          ],
+          "nutrition_override": {
+            "values": {
+              "energy_kcal": 0,
+              "protein_g": 0,
+              "carbohydrate_g": 0,
+              "fat_g": 0,
+              "fiber_g": 0,
+              "sugars_g": 0,
+              "saturated_fat_g": 0,
+              "sodium_mg": 39340,
+              "salt_g": 100
+            },
+            "value_status": "measured"
+          }
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Tomate",
+      "category": "legumes",
+      "identity_confidence": "A",
+      "category_confidence": "A",
+      "forms": [
+        {
+          "canonical_name": "Tomate crue",
+          "physical_state": null,
+          "cooking_state": "raw",
+          "preservation_state": "fresh",
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "g",
+          "edible_yield_ratio": 0.92,
+          "state_confidence": "B",
+          "ciqual_alim_code": "20047",
+          "nutrition_confidence": "B",
+          "conversions": [
+            {
+              "from_unit": "piece",
+              "to_unit": "g",
+              "factor": 150,
+              "context": "tomate ronde moyenne",
+              "min_factor": 80,
+              "max_factor": 300,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "loose",
+              "opened_state": "whole",
+              "min_temperature_c": 15,
+              "max_temperature_c": 22,
+              "shelf_life_min_hours": 72,
+              "shelf_life_max_hours": 168,
+              "recommended_hours": 96,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "loose",
+              "opened_state": "cut",
+              "min_temperature_c": 4,
+              "max_temperature_c": 8,
+              "shelf_life_min_hours": 24,
+              "shelf_life_max_hours": 72,
+              "recommended_hours": 48,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Vin blanc",
+      "category": "boissons",
+      "identity_confidence": "B",
+      "category_confidence": "B",
+      "forms": [
+        {
+          "canonical_name": "Vin blanc sec",
+          "physical_state": "liquid",
+          "cooking_state": null,
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "ml",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "5215",
+          "nutrition_confidence": "C",
+          "conversions": [
+            {
+              "from_unit": "ml",
+              "to_unit": "g",
+              "factor": 0.993,
+              "context": null,
+              "min_factor": null,
+              "max_factor": null,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 10,
+              "max_temperature_c": 18,
+              "shelf_life_min_hours": 17520,
+              "shelf_life_max_hours": 43800,
+              "recommended_hours": 26280,
+              "safety_level": "safe",
+              "confidence": "B"
+            },
+            {
+              "storage_method": "refrigerated",
+              "packaging_state": "sealed",
+              "opened_state": "opened",
+              "min_temperature_c": 4,
+              "max_temperature_c": 8,
+              "shelf_life_min_hours": 48,
+              "shelf_life_max_hours": 120,
+              "recommended_hours": 72,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    },
+    {
+      "canonical_name": "Vinaigre",
+      "category": "condiments_sauces",
+      "identity_confidence": "B",
+      "category_confidence": "B",
+      "forms": [
+        {
+          "canonical_name": "Vinaigre de vin rouge",
+          "physical_state": "liquid",
+          "cooking_state": null,
+          "preservation_state": null,
+          "cut_name": null,
+          "bone_state": null,
+          "skin_state": null,
+          "preparation_state": null,
+          "fat_level": null,
+          "default_quantity_unit": "ml",
+          "edible_yield_ratio": 1,
+          "state_confidence": "B",
+          "ciqual_alim_code": "11220",
+          "nutrition_confidence": "C",
+          "conversions": [
+            {
+              "from_unit": "tbsp",
+              "to_unit": "g",
+              "factor": 14,
+              "context": null,
+              "min_factor": 12,
+              "max_factor": 16,
+              "confidence": "B"
+            }
+          ],
+          "storage": [
+            {
+              "storage_method": "ambient",
+              "packaging_state": "sealed",
+              "opened_state": "closed",
+              "min_temperature_c": 10,
+              "max_temperature_c": 25,
+              "shelf_life_min_hours": 43800,
+              "shelf_life_max_hours": 175200,
+              "recommended_hours": 87600,
+              "safety_level": "safe",
+              "confidence": "B"
+            }
+          ]
+        }
+      ],
+      "transformations": []
+    }
+  ]
+}

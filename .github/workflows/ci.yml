@@ -153,6 +153,86 @@ jobs:
             "SELECT count(*) FROM culinary.recipe_instruction_branches;" \
             | grep -qx 5
 
+      - name: "[A] Chargeur F0 génère un SQL valide et le charge en base"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: |
+          # 1. Génération du SQL
+          node scripts/data/foods/build-f0-corpus.mjs
+          # 2. Application (1re fois)
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/f0-corpus-load.sql
+          # 3. Assertions : 27 concepts, 31 formes candidates (0 publiées), profils primaires
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 << 'ASSERT_F0'
+          DO $$
+          DECLARE n integer;
+          BEGIN
+            SELECT count(*) INTO n FROM catalog.food_concepts WHERE status = 'candidate';
+            IF n < 27 THEN RAISE EXCEPTION '[F0] concepts candidats: attendu >= 27, obtenu %', n; END IF;
+
+            SELECT count(*) INTO n FROM catalog.food_forms WHERE status = 'candidate';
+            IF n < 31 THEN RAISE EXCEPTION '[F0] formes candidates: attendu >= 31, obtenu %', n; END IF;
+
+            SELECT count(*) INTO n FROM catalog.food_forms WHERE status = 'published';
+            IF n <> 0 THEN RAISE EXCEPTION '[F0] aucune forme ne doit être publiée, obtenu %', n; END IF;
+
+            SELECT count(*) INTO n FROM catalog.food_nutrition_profiles WHERE is_primary = true;
+            IF n < 31 THEN RAISE EXCEPTION '[F0] profils primaires: attendu >= 31, obtenu %', n; END IF;
+
+            -- Sel fin : profil override avec 4 macros à zéro (valeurs mesurées)
+            SELECT count(*) INTO n
+            FROM catalog.food_nutrient_values nv
+            JOIN catalog.food_nutrition_profiles np ON np.id = nv.nutrition_profile_id
+            JOIN catalog.food_forms ff ON ff.id = np.food_form_id
+            WHERE ff.canonical_name_normalized = 'sel fin'
+              AND nv.nutrient_code IN ('energy_kcal','protein_g','carbohydrate_g','fat_g')
+              AND nv.value_status = 'measured'
+              AND nv.amount = 0;
+            IF n <> 4 THEN RAISE EXCEPTION '[F0] sel fin: 4 macros mesurées à zéro attendues, obtenu %', n; END IF;
+
+            -- Sel fin sodium > 0
+            SELECT count(*) INTO n
+            FROM catalog.food_nutrient_values nv
+            JOIN catalog.food_nutrition_profiles np ON np.id = nv.nutrition_profile_id
+            JOIN catalog.food_forms ff ON ff.id = np.food_form_id
+            WHERE ff.canonical_name_normalized = 'sel fin'
+              AND nv.nutrient_code = 'sodium_mg'
+              AND nv.amount > 0;
+            IF n <> 1 THEN RAISE EXCEPTION '[F0] sel fin: sodium_mg > 0 attendu, obtenu %', n; END IF;
+
+            -- CHAQUE forme doit porter les 4 macros essentiels (énergie/protéines/glucides/lipides)
+            -- non nuls sur son profil primaire — sinon le garde-fou de publication (PR 111) rejettera.
+            SELECT count(*) INTO n
+            FROM catalog.food_forms ff
+            WHERE NOT (
+              EXISTS (SELECT 1 FROM catalog.food_nutrition_profiles p JOIN catalog.food_nutrient_values v ON v.nutrition_profile_id=p.id
+                      WHERE p.food_form_id=ff.id AND p.is_primary AND v.nutrient_code='energy_kcal'     AND v.amount IS NOT NULL)
+              AND EXISTS (SELECT 1 FROM catalog.food_nutrition_profiles p JOIN catalog.food_nutrient_values v ON v.nutrition_profile_id=p.id
+                      WHERE p.food_form_id=ff.id AND p.is_primary AND v.nutrient_code='protein_g'      AND v.amount IS NOT NULL)
+              AND EXISTS (SELECT 1 FROM catalog.food_nutrition_profiles p JOIN catalog.food_nutrient_values v ON v.nutrition_profile_id=p.id
+                      WHERE p.food_form_id=ff.id AND p.is_primary AND v.nutrient_code='carbohydrate_g' AND v.amount IS NOT NULL)
+              AND EXISTS (SELECT 1 FROM catalog.food_nutrition_profiles p JOIN catalog.food_nutrient_values v ON v.nutrition_profile_id=p.id
+                      WHERE p.food_form_id=ff.id AND p.is_primary AND v.nutrient_code='fat_g'          AND v.amount IS NOT NULL));
+            IF n <> 0 THEN RAISE EXCEPTION '[F0] % forme(s) sans les 4 macros essentiels', n; END IF;
+
+            -- ops.publish_catalog_release doit rejeter (pas de release créée)
+            BEGIN
+              PERFORM ops.publish_catalog_release(gen_random_uuid());
+              RAISE EXCEPTION '[F0] publish_catalog_release aurait dû échouer';
+            EXCEPTION WHEN OTHERS THEN
+              -- Attendu : release introuvable ou item manquants
+              NULL;
+            END;
+
+            RAISE NOTICE '[F0] toutes les assertions passent.';
+          END $$;
+          ASSERT_F0
+
+          # 4. Idempotence : 2e application doit donner les mêmes comptes
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/f0-corpus-load.sql
+          psql "$DATABASE_URL" -tAc \
+            "SELECT count(*) FROM catalog.food_forms WHERE status='candidate';" \
+            | grep -qE '^[0-9]+$'
+
       # ────────────────────────────────────────────────────────────────────────
       # SCÉNARIO B — Simulation d'une prod divergente, puis reconcile + apply
       #
