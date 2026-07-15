@@ -203,7 +203,10 @@ jobs:
             [20260714220008]=20260714155027
           )
 
-          for github_v in "${!HIST[@]}"; do
+          # IMPORTANT : itérer les clés dans l'ORDRE (les tableaux associatifs bash
+          # sont parcourus en ordre de hachage). L'ordre de dépendance est requis :
+          # 200002 (ops.source_datasets) doit précéder 200003 (catalog qui le référence).
+          for github_v in $(printf '%s\n' "${!HIST[@]}" | LC_ALL=C sort); do
             hist_v="${HIST[$github_v]}"
             f="$(find supabase/migrations -name "${github_v}_*.sql" | head -1)"
             base="$(basename "$f" .sql)"
@@ -240,18 +243,26 @@ jobs:
           DATABASE_URL: ${{ env.DB_B }}
         run: bash scripts/db/reconcile-ledger.sh apply
 
-      - name: "[B] Vérification : toutes les github_versions non-rollback dans le ledger"
+      - name: "[B] Vérification : toutes les github_versions baseline sont dans le ledger"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
-          # Récupère le nombre de versions attendues depuis le manifest.
-          expected=$(node -e "
+          # Contrôle de CONTENANCE (pas d'égalité de comptes) : après reconcile,
+          # chaque github_version des entrées à baseliner (hors 'new') doit être
+          # présente dans schema_migrations. On exclut 'new' (090001-090004) qui
+          # ne sont appliquées qu'à l'étape suivante. Robuste aux collisions de
+          # version (fichiers pré-V2 partageant un préfixe) et aux versions
+          # historiques laissées par la simulation.
+          missing=0
+          while IFS= read -r v; do
+            [ -z "$v" ] && continue
+            present=$(psql "$DATABASE_URL" -tAc "SELECT 1 FROM supabase_migrations.schema_migrations WHERE version = '$v'")
+            if [ "$present" != "1" ]; then echo "MANQUE dans le ledger : $v"; missing=1; fi
+          done < <(node -e "
             const m = JSON.parse(require('fs').readFileSync('scripts/db/migration-manifest.json'));
-            console.log(m.filter(e => e.role === 'apply').length);
+            for (const e of m) if (e.role === 'apply' && e.baseline !== 'new') console.log(e.github_version);
           ")
-          actual=$(psql "$DATABASE_URL" -tAc "SELECT count(*) FROM supabase_migrations.schema_migrations;")
-          echo "Attendu : $expected | Présent : $actual"
-          [ "$actual" -eq "$expected" ]
+          [ "$missing" -eq 0 ] && echo "OK : toutes les github_versions baseline présentes dans le ledger."
 
       - name: "[B] Dry-run apply (doit rapporter seulement 090001-090004)"
         env:
