@@ -26,7 +26,7 @@ function recipe(linked, { prep = 0, cook = 0 } = {}) {
 
 describe('availabilityStatusOf', () => {
   it('verrouille le catalogue principal sur le corpus V3 opérationnel', () => {
-    expect(recipeCatalogSourcePolicy).toBe('v3_operational_only')
+    expect(recipeCatalogSourcePolicy).toBe('v3_editorial_complete')
   })
 
   it('retourne manque si pas de statut ou pas d\'ingrédients liés', () => {

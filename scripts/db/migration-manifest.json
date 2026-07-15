@@ -856,9 +856,28 @@
     "name": "v3_culinary_sensory_planning",
     "sha256": "59ab3e1215839e811294fb9b9145d2957abd34da9e6882236ff7f48ec6dd89a5",
     "role": "apply",
-    "baseline": "trust",
+    "baseline": "verify_objects",
     "historical_version": null,
-    "expected_objects": []
+    "expected_objects": [
+      {
+        "type": "column",
+        "schema": "culinary",
+        "name": "sensory_profile",
+        "table": "recipe_families"
+      },
+      {
+        "type": "column",
+        "schema": "culinary",
+        "name": "planning_eligible",
+        "table": "recipe_versions"
+      },
+      {
+        "type": "column",
+        "schema": "culinary",
+        "name": "variant_candidates",
+        "table": "recipe_versions"
+      }
+    ]
   },
   {
     "file": "20260715171000_v3_canonical_plan_publication.sql",
@@ -897,6 +916,76 @@
     "sha256": "833f2755b35210f18fa0905d0b9d0fa42a9f63b16ec5fb6480a2ff5f33c84c40",
     "role": "apply",
     "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260715190000_v3_operational_recipe_api.sql",
+    "github_version": "20260715190000",
+    "name": "v3_operational_recipe_api",
+    "sha256": "974aabec282bfeb62c6fb06f5fb77b19c831adb585a06ed91ae6567e3a27208a",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "get_operational_recipe_catalog_v3"
+      }
+    ]
+  },
+  {
+    "file": "20260715214547_complete_recipe_catalog_v3.sql",
+    "github_version": "20260715214547",
+    "name": "complete_recipe_catalog_v3",
+    "sha256": "2af39f0c743f739c405c897bd5d0e3433a69bae57b820e0bed221d57b6429f3e",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "get_editorial_recipe_catalog_v3"
+      },
+      {
+        "type": "column",
+        "schema": "culinary",
+        "name": "source_name",
+        "table": "recipe_ingredient_requirements"
+      },
+      {
+        "type": "column",
+        "schema": "culinary",
+        "name": "yield_quantity",
+        "table": "recipe_versions"
+      },
+      {
+        "type": "column",
+        "schema": "culinary",
+        "name": "required_quantity",
+        "table": "recipe_components"
+      }
+    ]
+  },
+  {
+    "file": "20260715221042_repair_recipe_corpus_v3_utf8.sql",
+    "github_version": "20260715221042",
+    "name": "repair_recipe_corpus_v3_utf8",
+    "sha256": "2cdcdbfe81ffa02f4e17a456f3dd1d2e2e65155d60642d91cd06d1180341057d",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260715221509_recipe_catalog_v3_indexes.sql",
+    "github_version": "20260715221509",
+    "name": "recipe_catalog_v3_indexes",
+    "sha256": "63e3c5d1eddba06ee511fcd705b7d6cd4a7a0cc72e773c841f8e5702b1c267d0",
+    "role": "apply",
+    "baseline": "new",
     "historical_version": null,
     "expected_objects": []
   }

@@ -12,3 +12,6 @@ test-results/
 playwright-report/
 .data-cache/
 restore_output.log
+supabase/.temp/
+scripts/data/out/corpus-v3-chunks/
+scripts/data/out/corpus-v3-source-name-chunks/

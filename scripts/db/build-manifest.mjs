@@ -62,15 +62,25 @@ const VERIFY_OBJECTS = {
   '20260714230003': [
     { type: 'column', schema: 'catalog', name: 'is_composite', table: 'commercial_products' },
   ],
+  // Socle sensoriel V3 appliqué avant le snapshot du catalogue opérationnel.
+  '20260715170000': [
+    { type: 'column', schema: 'culinary', name: 'sensory_profile', table: 'recipe_families' },
+    { type: 'column', schema: 'culinary', name: 'planning_eligible', table: 'recipe_versions' },
+    { type: 'column', schema: 'culinary', name: 'variant_candidates', table: 'recipe_versions' },
+  ],
 };
 
 // Versions genuinement nouvelles (non appliquées en prod au 2026-07-15).
-// Seules ces 4 migrations doivent être exécutées par apply-migrations.sh sur prod.
+// Migrations postérieures au snapshot de production simulé par la CI.
 const NEW_VERSIONS = new Set([
   '20260715090001', // v2_immutability_full
   '20260715090002', // v2_publish_release_exclusive
   '20260715090003', // v2_catalog_active_release_rls
   '20260715090004', // v2_off_label_completeness
+  '20260715190000', // v3_operational_recipe_api
+  '20260715214547', // complete_recipe_catalog_v3
+  '20260715221042', // repair_recipe_corpus_v3_utf8
+  '20260715221509', // recipe_catalog_v3_indexes
 ]);
 
 // Objets attendus après application des nouvelles migrations (pour assertions CI).
@@ -92,12 +102,24 @@ const NEW_EXPECTED_OBJECTS = {
     { type: 'column', schema: 'catalog', name: 'label_nutrition_complete', table: 'commercial_products' },
     { type: 'column', schema: 'catalog', name: 'label_nutrition_review_status', table: 'commercial_products' },
   ],
+  '20260715190000': [
+    { type: 'function', schema: 'public', name: 'get_operational_recipe_catalog_v3' },
+  ],
+  '20260715214547': [
+    { type: 'function', schema: 'public', name: 'get_editorial_recipe_catalog_v3' },
+    { type: 'column', schema: 'culinary', name: 'source_name', table: 'recipe_ingredient_requirements' },
+    { type: 'column', schema: 'culinary', name: 'yield_quantity', table: 'recipe_versions' },
+    { type: 'column', schema: 'culinary', name: 'required_quantity', table: 'recipe_components' },
+  ],
 };
 
 // ── Fonctions utilitaires ─────────────────────────────────────────────────────
 
 function sha256(filepath) {
-  const content = readFileSync(filepath);
+  // Git stocke les migrations avec des fins de ligne LF. Normaliser ici évite
+  // qu'un manifest généré depuis Windows contienne des empreintes CRLF qui
+  // dérivent ensuite lors du checkout Linux de la CI.
+  const content = readFileSync(filepath, 'utf8').replace(/\r\n/g, '\n');
   return createHash('sha256').update(content).digest('hex');
 }
 

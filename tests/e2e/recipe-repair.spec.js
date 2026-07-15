@@ -201,10 +201,10 @@ test.describe('Recipe repair — needs_review + review panel', () => {
       // Click "Confirmer" for the pending item
       const confirmBtn = panel.getByRole('button', { name: /confirmer/i }).first()
       await expect(confirmBtn).toBeVisible()
-      await confirmBtn.click()
-
-      // Wait for the POST to complete
-      await page.waitForResponse((r) => r.url().includes('/api/ingredients/review') && r.request().method() === 'POST')
+      await Promise.all([
+        page.waitForResponse((r) => r.url().includes('/api/ingredients/review') && r.request().method() === 'POST'),
+        confirmBtn.click(),
+      ])
 
       // Assert the POST body
       expect(reviewPostCalls.length).toBeGreaterThan(0)

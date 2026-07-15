@@ -50,7 +50,7 @@ const CATALOG_RECIPE = {
 
 test.describe('Catalog → Cooking session', () => {
   test.beforeEach(async ({ context, page }) => {
-    // 1. Inject fake auth cookie so middleware does NOT redirect to /login
+    // 1. Inject the fake browser session used by client-side auth helpers.
     await mockAuthSession(context)
 
     // 2. Intercept all Supabase REST calls and the app's /api routes

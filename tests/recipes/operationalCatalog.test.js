@@ -57,4 +57,30 @@ describe('operational recipe catalog mapper', () => {
       optional: false,
     })
   })
+
+  it('keeps an editorial recipe readable without pretending its nutrition is complete', () => {
+    const recipe = materializeOperationalRecipe({
+      ...record,
+      catalogStatus: 'editorial_candidate',
+      operationalEligible: false,
+      exactIngredients: [{ name: 'Produit éditorial', quantity: 2, unit: 'pièce', grams: null, per100g: null }],
+    })
+
+    expect(recipe.eligible).toBe(true)
+    expect(recipe.operationalEligible).toBe(false)
+    expect(recipe.exactIngredients[0].grams).toBeNull()
+    expect(recipe.nutritionCoverage).toMatchObject({ pct: 0, ingredientCount: 1, resolvedCount: 0 })
+  })
+
+  it('scales the quantity requested from a linked sub-recipe', () => {
+    const recipe = materializeOperationalRecipe({
+      ...record,
+      exactIngredients: [{
+        ...record.exactIngredients[0],
+        component: { code: 'FR-024', requiredQuantity: 240, requiredUnit: 'g', yieldQuantity: 870, yieldUnit: 'g' },
+      }],
+    }, { servings: 4 })
+
+    expect(recipe.exactIngredients[0].component.requiredQuantity).toBe(480)
+  })
 })
