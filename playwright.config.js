@@ -12,6 +12,7 @@ const chromiumExecutable = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE
   || (process.env.PLAYWRIGHT_BROWSERS_PATH
     ? path.join(process.env.PLAYWRIGHT_BROWSERS_PATH, 'chromium')
     : undefined)
+const remoteBaseURL = process.env.PLAYWRIGHT_BASE_URL
 
 // Stub env passed to the dev/start server so the app doesn't hard-error on
 // missing Supabase credentials. All actual Supabase network traffic is
@@ -31,7 +32,7 @@ module.exports = defineConfig({
   reporter: process.env.CI ? 'github' : 'list',
 
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: remoteBaseURL || 'http://localhost:3000',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     // When PLAYWRIGHT_BROWSERS_PATH is set locally, point at the pre-installed
@@ -46,7 +47,7 @@ module.exports = defineConfig({
     },
   ],
 
-  webServer: {
+  webServer: remoteBaseURL ? undefined : {
     // In CI: build happens before `npx playwright test`, then we start the
     // production server. Locally: reuse whatever is already running (or start
     // the dev server).

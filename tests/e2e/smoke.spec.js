@@ -4,6 +4,9 @@ test('la connexion rend correctement et protège les recettes V3', async ({ page
   const pageErrors = []
   page.on('pageerror', error => pageErrors.push(error.message))
 
+  if (process.env.VERCEL_SHARE_URL) {
+    await page.goto(process.env.VERCEL_SHARE_URL)
+  }
   await page.goto('/login')
   await expect(page.getByRole('heading', { name: 'Myko' })).toBeVisible()
   await expect(page.getByLabel('Email')).toBeVisible()
