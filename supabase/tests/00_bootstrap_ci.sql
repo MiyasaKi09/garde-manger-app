@@ -22,6 +22,12 @@ END $$;
 -- Schéma + fonctions d'auth (stubs). auth.uid()/auth.role() renvoient NULL en CI.
 CREATE SCHEMA IF NOT EXISTS auth;
 
+-- Table minimale ciblée par les clés étrangères des migrations applicatives.
+-- La vraie structure reste fournie et gérée par Supabase en production.
+CREATE TABLE IF NOT EXISTS auth.users (
+  id uuid PRIMARY KEY
+);
+
 CREATE OR REPLACE FUNCTION auth.uid() RETURNS uuid
   LANGUAGE sql STABLE AS $$ SELECT nullif(current_setting('request.jwt.claim.sub', true), '')::uuid $$;
 
