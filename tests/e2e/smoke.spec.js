@@ -18,7 +18,7 @@ test('la connexion rend correctement et protège les recettes V3', async ({ page
   await page.screenshot({ path: 'test-results/myko-login-smoke.png', fullPage: true })
 
   await page.goto('/recipes/canonical/FR-001')
-  await expect(page).toHaveURL(/\/login$/)
+  await expect(page).toHaveURL(/\/login(?:\?next=.*)?$/)
   await expect(page.getByRole('heading', { name: 'Myko' })).toBeVisible()
   await expect(page.locator('[data-nextjs-dialog]')).toHaveCount(0)
   expect(pageErrors).toEqual([])

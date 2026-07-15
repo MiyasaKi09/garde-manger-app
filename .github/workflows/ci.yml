@@ -314,7 +314,7 @@ jobs:
       #
       # Simule exactement l'état prod au 2026-07-15 :
       #   - Migrations 200001→220008 appliquées sous VERSIONS HISTORIQUES.
-      #   - Migrations 220006, 230001-230003 appliquées sans ligne dans le ledger
+      #   - Migrations 220006, 230001-230003 et socle sensoriel V3 appliqués sans ligne dans le ledger
       #     (execute_sql ad-hoc).
       #   - Pré-V2 absentes (migrate ultérieurement via reconcile trust).
       #
@@ -379,7 +379,7 @@ jobs:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           # Ces migrations ont été appliquées hors CLI Supabase — aucune ligne dans le ledger.
-          for v in 20260714220006 20260714230001 20260714230002 20260714230003; do
+          for v in 20260714220006 20260714230001 20260714230002 20260714230003 20260715170000; do
             f="$(find supabase/migrations -name "${v}_*.sql" | head -1)"
             echo "apply (sans ledger)  $(basename "$f")"
             psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f "$f"

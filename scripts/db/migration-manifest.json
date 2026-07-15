@@ -856,9 +856,28 @@
     "name": "v3_culinary_sensory_planning",
     "sha256": "59ab3e1215839e811294fb9b9145d2957abd34da9e6882236ff7f48ec6dd89a5",
     "role": "apply",
-    "baseline": "trust",
+    "baseline": "verify_objects",
     "historical_version": null,
-    "expected_objects": []
+    "expected_objects": [
+      {
+        "type": "column",
+        "schema": "culinary",
+        "name": "sensory_profile",
+        "table": "recipe_families"
+      },
+      {
+        "type": "column",
+        "schema": "culinary",
+        "name": "planning_eligible",
+        "table": "recipe_versions"
+      },
+      {
+        "type": "column",
+        "schema": "culinary",
+        "name": "variant_candidates",
+        "table": "recipe_versions"
+      }
+    ]
   },
   {
     "file": "20260715171000_v3_canonical_plan_publication.sql",

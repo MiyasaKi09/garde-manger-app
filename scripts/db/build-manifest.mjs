@@ -62,6 +62,12 @@ const VERIFY_OBJECTS = {
   '20260714230003': [
     { type: 'column', schema: 'catalog', name: 'is_composite', table: 'commercial_products' },
   ],
+  // Socle sensoriel V3 appliqué avant le snapshot du catalogue opérationnel.
+  '20260715170000': [
+    { type: 'column', schema: 'culinary', name: 'sensory_profile', table: 'recipe_families' },
+    { type: 'column', schema: 'culinary', name: 'planning_eligible', table: 'recipe_versions' },
+    { type: 'column', schema: 'culinary', name: 'variant_candidates', table: 'recipe_versions' },
+  ],
 };
 
 // Versions genuinement nouvelles (non appliquées en prod au 2026-07-15).
