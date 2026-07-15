@@ -6,7 +6,10 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { authFetch } from '@/lib/authFetch';
 import { readCache, writeCache } from '@/lib/pageCache';
+import { limitRecipePreview, selectDiverseAntiWaste } from '@/lib/domain/recipes/catalogPresentation';
 import './recipes.css';
+
+const RECIPES_CACHE_KEY = 'recipes:v3-operational:2';
 
 /* ── Fiche recette horizontale (vignette + infos), barre d'état à gauche ── */
 function variantOf(s) {
@@ -83,17 +86,17 @@ export default function RecipesPage() {
 
   useEffect(() => {
     // Revisite instantanée : on rend le dernier état connu sans skeleton.
-    const cached = readCache('recipes');
+    const cached = readCache(RECIPES_CACHE_KEY);
     if (cached) { setRecipes(cached.recipes || []); setInventoryStatus(cached.status || {}); setLoading(false); }
     fetchRecipes();
   }, []);
 
   async function fetchRecipes() {
     try {
-      if (!readCache('recipes')) setLoading(true);
+      if (!readCache(RECIPES_CACHE_KEY)) setLoading(true);
 
-      // Tout est calculé côté serveur (sources fusionnées + dédup + disponibilité
-      // face au stock avec conversion d'unités) — un seul aller-retour.
+      // Le serveur renvoie uniquement le corpus V3 contrôlé, déjà rapproché du
+      // stock avec conversion d'unités — un seul aller-retour.
       const res = await authFetch('/api/recipes/catalog');
       const data = await res.json().catch(() => ({}));
       if (!res.ok || data.error) {
@@ -109,7 +112,7 @@ export default function RecipesPage() {
 
       setRecipes(list);
       setInventoryStatus(statusMap);
-      writeCache('recipes', { recipes: list, status: statusMap });
+      writeCache(RECIPES_CACHE_KEY, { recipes: list, status: statusMap });
     } catch (err) {
       setError(`Erreur: ${err.message}`);
       setRecipes([]);
@@ -146,6 +149,9 @@ export default function RecipesPage() {
   const cuisinable = ready.filter(x => x.s.total > 0 && x.s.missing === 0 && x.s.urgent === 0).sort(byScore);
   const manque = ready.filter(x => x.s.total > 0 && x.s.missing >= 1 && x.s.missing <= 2 && x.s.urgent === 0)
     .sort((a, b) => (a.s.missing - b.s.missing) || byScore(a, b));
+  const antigaspiPreview = selectDiverseAntiWaste(antigaspi, { limit: 9, maxPerSignal: 3 });
+  const cuisinablePreview = limitRecipePreview(cuisinable, 9);
+  const manquePreview = limitRecipePreview(manque, 6);
 
   const cuisinableCount = ready.filter(x => x.s.total > 0 && x.s.missing === 0).length;
   const prioritaireCount = antigaspi.length;
@@ -283,7 +289,7 @@ export default function RecipesPage() {
               </div>
               <p className="rc-lede">Cuisinez d'abord ceux-là — vos produits qui approchent de la date.</p>
               <div className="rc-sheet">
-                {antigaspi.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} variant="ag" />)}
+                {antigaspiPreview.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} variant="ag" />)}
               </div>
             </section>
           )}
@@ -296,7 +302,7 @@ export default function RecipesPage() {
               </div>
               <p className="rc-lede">Tous les ingrédients sont dans votre garde-manger.</p>
               <div className="rc-sheet">
-                {cuisinable.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} variant="ok" />)}
+                {cuisinablePreview.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} variant="ok" />)}
               </div>
             </section>
           )}
@@ -310,7 +316,7 @@ export default function RecipesPage() {
               </div>
               <p className="rc-lede">Si proches — un saut au marché et c'est prêt.</p>
               <div className="rc-sheet">
-                {manque.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} variant="sf" />)}
+                {manquePreview.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} variant="sf" />)}
               </div>
             </section>
           )}

@@ -62,7 +62,7 @@
 .rc-lede { font-family: var(--font-editorial); font-style: italic; font-size: 16px; color: var(--ink-2); margin: 10px 0 20px; }
 
 /* Planche-contact de fiches horizontales */
-.rc-sheet { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line-strong); }
+.rc-sheet { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line-strong); }
 .rc-fiche { position: relative; background: var(--paper); display: flex; align-items: stretch; gap: 14px; text-decoration: none; color: inherit; overflow: hidden; padding: 14px 16px 14px 19px; transition: background 0.15s ease; }
 .rc-fiche:hover { background: var(--surface-soft); }
 .rc-fiche::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--brand); }
