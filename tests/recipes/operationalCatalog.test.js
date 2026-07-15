@@ -51,6 +51,10 @@ describe('operational recipe catalog mapper', () => {
     const card = operationalRecipeCards(catalog.recipes)[0]
     expect(catalog.metadata).toMatchObject({ source: 'supabase', eligibleCount: 50, returnedCount: 1 })
     expect(card).toMatchObject({ source: 'canonical_v3', id: 'TEST-001', catalog_status: 'operational_candidate' })
-    expect(card.linked_ingredients[0]).toMatchObject({ canonical_form_id: 'form-1', quantity_grams: 200 })
+    expect(card.linked_ingredients[0]).toMatchObject({
+      canonical_form_id: 'form-1',
+      quantity_grams: 200,
+      optional: false,
+    })
   })
 })

@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import {
+  activeInventoryLots,
   computeRecipeAvailability,
   availabilityStatusOf,
+  recipeCatalogSourcePolicy,
 } from '@/app/api/recipes/catalog/route'
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -23,6 +25,10 @@ function recipe(linked, { prep = 0, cook = 0 } = {}) {
 // ── availabilityStatusOf ─────────────────────────────────────────────────────
 
 describe('availabilityStatusOf', () => {
+  it('verrouille le catalogue principal sur le corpus V3 opérationnel', () => {
+    expect(recipeCatalogSourcePolicy).toBe('v3_operational_only')
+  })
+
   it('retourne manque si pas de statut ou pas d\'ingrédients liés', () => {
     expect(availabilityStatusOf(null)).toBe('manque')
     expect(availabilityStatusOf({ total: 0, missing: 0, urgent: 0 })).toBe('manque')
@@ -109,6 +115,18 @@ describe('computeRecipeAvailability', () => {
     expect(s.available).toBe(1)
   })
 
+  it('ignore les ingrédients facultatifs dans le calcul des manquants', () => {
+    const linked = [
+      { canonical_food_id: 1, quantity: 1, unit: 'u' },
+      { canonical_food_id: 2, quantity: 1, unit: 'u', optional: true },
+    ]
+    const inv = [{ canonical_food_id: 1, qty_remaining: 1, unit: 'u', expiration_date: inDays(30) }]
+    const s = computeRecipeAvailability(recipe(linked), inv, {}, nameOf, NOW)
+    expect(s.total).toBe(1)
+    expect(s.missing).toBe(0)
+    expect(s.missingNames).toEqual([])
+  })
+
   it('mykoScore : formule identique au client (percent, urgent, bonus temps)', () => {
     const linked = [{ canonical_food_id: 1, quantity: 1, unit: 'u' }]
     const inv = [{ canonical_food_id: 1, qty_remaining: 2, unit: 'u', expiration_date: inDays(30) }]
@@ -118,5 +136,18 @@ describe('computeRecipeAvailability', () => {
     // sans temps renseigné → bonus forfaitaire 5 → 65
     const s2 = computeRecipeAvailability(recipe(linked), inv, {}, nameOf, NOW)
     expect(s2.mykoScore).toBe(65)
+  })
+})
+
+describe('activeInventoryLots', () => {
+  it('garde les lots sans date et retire ceux dont la date effective est passée', () => {
+    const lots = activeInventoryLots([
+      { id: 'sans-date', expiration_date: null },
+      { id: 'futur', expiration_date: '2026-07-20' },
+      { id: 'expire', expiration_date: '2026-07-09' },
+      { id: 'ouvert-expire', expiration_date: '2026-07-20', adjusted_expiration_date: '2026-07-09' },
+    ], NOW)
+
+    expect(lots.map((lot) => lot.id)).toEqual(['sans-date', 'futur'])
   })
 })

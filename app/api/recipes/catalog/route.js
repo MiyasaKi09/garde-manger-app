@@ -1,67 +1,50 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
-import { dedupCatalog } from '@/app/recipes/catalogDedup'
 import { convertWithMeta } from '@/lib/units'
 import { listOperationalRecipes } from '@/lib/db/operationalRecipeCatalog'
 import { operationalRecipeCards } from '@/lib/domain/recipes/operationalCatalog'
 import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
+import { getEffectiveExpiration } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'
+export const recipeCatalogSourcePolicy = 'v3_operational_only'
 
-/**
- * GET /api/recipes/catalog — catalogue unifié de recettes, prêt à afficher.
- *
- * Fait côté serveur ce que la page recettes faisait côté client :
- *   1. Charge les recettes générées (RLS user) + recettes classiques + leurs
- *      ingrédients liés (generated_recipe_ingredients / recipe_ingredients).
- *   2. Normalise vers la forme commune de carte et déduplique (dedupCatalog).
- *   3. Charge le stock (inventory_lots non vides, non expirés) + le mapping
- *      archétype→canonique, et calcule la disponibilité par recette avec
- *      sommation multi-lots ET conversion d'unités (lib/units.convertWithMeta).
- *
- * → 200 {
- *     recipes: [{
- *       key, source: 'generated'|'classic', id, title, description,
- *       image_url, prep_min, cook_min, servings, rating, href,
- *       needs_review?: boolean,           // recettes générées uniquement
- *       availability: {
- *         status: 'anti-gaspi'|'cuisinable'|'presque'|'manque',
- *         missing_count, expiring_count,
- *         // détail utilisé par l'UI (tri mykoScore, libellés « utilise/manque ») :
- *         total, available, missing, missingNames, urgent,
- *         expiringName, expiringDays, percent, mykoScore
- *       } | null                          // null si le stock n'a pas pu être lu
- *     }]
- *   }
- * → 401 { error } si non authentifié
- * → 500 { error } si la lecture des recettes générées échoue
- *
- * Pas de cache serveur (données utilisateur) — mais un seul aller-retour client.
- */
+const NO_STORE_HEADERS = { 'Cache-Control': 'private, no-store' }
+const cap = (value) => (value ? value.charAt(0).toUpperCase() + value.slice(1) : value)
 
-const cap = (x) => (x ? x.charAt(0).toUpperCase() + x.slice(1) : x)
+function jsonNoStore(body, init = {}) {
+  return NextResponse.json(body, {
+    ...init,
+    headers: { ...NO_STORE_HEADERS, ...(init.headers || {}) },
+  })
+}
 
-/** Statut synthétique — miroir exact de variantOf() côté page. */
-export function availabilityStatusOf(s) {
-  if (!s || !s.total) return 'manque'
-  if (s.urgent > 0) return 'anti-gaspi'
-  if (s.missing === 0) return 'cuisinable'
-  if (s.missing <= 2) return 'presque'
+/** Statut synthétique utilisé par la page recettes. */
+export function availabilityStatusOf(status) {
+  if (!status || !status.total) return 'manque'
+  if (status.urgent > 0) return 'anti-gaspi'
+  if (status.missing === 0) return 'cuisinable'
+  if (status.missing <= 2) return 'presque'
   return 'manque'
 }
 
 /**
- * Disponibilité d'une recette face au stock — logique et seuils identiques à
- * l'ancien checkInventoryAvailability() client (fonction pure, testable).
- *
- * @param {object} recipe   carte avec linked_ingredients, prep_min, cook_min
- * @param {Array}  inv      lots { canonical_food_id, archetype_id, qty_remaining, unit, expiration_date }
- * @param {object} archetypeToCanonical  archetype_id (lot) → canonical_food_id
- * @param {(ing) => string} nameOf       nom affichable d'un ingrédient lié
- * @param {Date}   now
+ * Conserve les lots utilisables, y compris ceux qui n'ont pas de date, et
+ * applique en priorité la date recalculée d'un produit ouvert.
  */
-export function computeRecipeAvailability(recipe, inv, archetypeToCanonical, nameOf, now = new Date()) {
-  const linked = recipe.linked_ingredients || []
+export function activeInventoryLots(lots = [], now = new Date()) {
+  const today = now.toISOString().slice(0, 10)
+  return lots
+    .map((lot) => ({
+      ...lot,
+      expiration_date: getEffectiveExpiration(lot),
+    }))
+    .filter((lot) => !lot.expiration_date || String(lot.expiration_date).slice(0, 10) >= today)
+}
+
+/** Calcule la faisabilité d'une recette face au stock réel de l'utilisateur. */
+export function computeRecipeAvailability(recipe, inventory, archetypeToCanonical, nameOf, now = new Date()) {
+  const linked = (recipe.linked_ingredients || []).filter((ingredient) => !ingredient.optional)
   if (linked.length === 0) {
     return {
       total: 0, available: 0, missing: 0, missingNames: [], urgent: 0,
@@ -69,46 +52,60 @@ export function computeRecipeAvailability(recipe, inv, archetypeToCanonical, nam
     }
   }
 
-  let available = 0, urgent = 0
+  let available = 0
+  let urgent = 0
   const missingNames = []
-  let expiringName = null, expiringDays = null
+  let expiringName = null
+  let expiringDays = null
 
-  for (const ing of linked) {
-    let totalAvailable = 0, earliestExp = null
-    for (const lot of inv) {
-      let m = false
-      if (ing.canonical_food_id && lot.canonical_food_id === ing.canonical_food_id) m = true
-      else if (ing.canonical_food_id && lot.archetype_id && archetypeToCanonical[lot.archetype_id] === ing.canonical_food_id) m = true
-      else if (ing.archetype_id && lot.archetype_id === ing.archetype_id) m = true
-      else if (ing.canonical_form_normalized && lot.form_normalized_candidates?.includes(ing.canonical_form_normalized)) m = true
-      if (m) {
-        // Convertir la qty du lot vers l'unité de l'ingrédient avant sommation.
-        // Un lot inconvertible (ex: g → u sans meta) est exclu de la somme.
-        const ingUnit = ing.canonical_form_normalized ? 'g' : (ing.unit || 'g')
-        const lotUnit = lot.unit || 'g'
-        const converted = convertWithMeta(lot.qty_remaining || 0, lotUnit, ingUnit)
-        // convertWithMeta retourne { qty, unit } ; si unit ≠ ingUnit → conversion non fiable → exclure.
-        if (converted.unit === ingUnit) {
-          totalAvailable += converted.qty
-        }
-        if (lot.expiration_date) {
-          const d = new Date(lot.expiration_date)
-          if (!earliestExp || d < earliestExp) earliestExp = d
-        }
+  for (const ingredient of linked) {
+    let totalAvailable = 0
+    let earliestExpiration = null
+
+    for (const lot of inventory) {
+      let matches = false
+      if (ingredient.canonical_food_id && lot.canonical_food_id === ingredient.canonical_food_id) matches = true
+      else if (
+        ingredient.canonical_food_id
+        && lot.archetype_id
+        && archetypeToCanonical[lot.archetype_id] === ingredient.canonical_food_id
+      ) matches = true
+      else if (ingredient.archetype_id && lot.archetype_id === ingredient.archetype_id) matches = true
+      else if (
+        ingredient.canonical_form_normalized
+        && lot.form_normalized_candidates?.includes(ingredient.canonical_form_normalized)
+      ) matches = true
+
+      if (!matches) continue
+
+      const ingredientUnit = ingredient.canonical_form_normalized ? 'g' : (ingredient.unit || 'g')
+      const converted = convertWithMeta(lot.qty_remaining || 0, lot.unit || 'g', ingredientUnit)
+      if (converted.unit === ingredientUnit) totalAvailable += converted.qty
+
+      if (lot.expiration_date) {
+        const expiration = new Date(lot.expiration_date)
+        if (!earliestExpiration || expiration < earliestExpiration) earliestExpiration = expiration
       }
     }
-    const required = ing.canonical_form_normalized ? ing.quantity_grams : (ing.quantity || 1)
+
+    const required = ingredient.canonical_form_normalized
+      ? ingredient.quantity_grams
+      : (ingredient.quantity || 1)
+
     if (totalAvailable >= required) {
       available++
-      if (earliestExp) {
-        const days = Math.floor((earliestExp - now) / 86400000)
+      if (earliestExpiration) {
+        const days = Math.floor((earliestExpiration - now) / 86400000)
         if (days <= 7) {
           urgent++
-          if (expiringDays === null || days < expiringDays) { expiringDays = days; expiringName = nameOf(ing) }
+          if (expiringDays === null || days < expiringDays) {
+            expiringDays = days
+            expiringName = nameOf(ingredient)
+          }
         }
       }
     } else {
-      missingNames.push(nameOf(ing))
+      missingNames.push(nameOf(ingredient))
     }
   }
 
@@ -116,167 +113,124 @@ export function computeRecipeAvailability(recipe, inv, archetypeToCanonical, nam
   const missing = total - available
   const percent = Math.round((available / total) * 100)
   let mykoScore = (percent / 100) * 60 + (urgent / total) * 30
-  const t = (recipe.prep_min || 0) + (recipe.cook_min || 0)
-  mykoScore += t > 0 ? Math.max(0, 10 - (t / 120) * 10) : 5
+  const totalMinutes = (recipe.prep_min || 0) + (recipe.cook_min || 0)
+  mykoScore += totalMinutes > 0 ? Math.max(0, 10 - (totalMinutes / 120) * 10) : 5
 
   return {
-    total, available, missing, missingNames, urgent,
-    expiringName, expiringDays, percent, mykoScore: Math.round(mykoScore),
+    total,
+    available,
+    missing,
+    missingNames,
+    urgent,
+    expiringName,
+    expiringDays,
+    percent,
+    mykoScore: Math.round(mykoScore),
   }
 }
 
+async function computeCatalogAvailability(supabase, recipes, rawInventory) {
+  const inventory = activeInventoryLots(rawInventory)
+  const lotArchetypeIds = inventory.filter((lot) => lot.archetype_id).map((lot) => lot.archetype_id)
+  const canonicalIds = new Set(
+    inventory.filter((lot) => lot.canonical_food_id).map((lot) => lot.canonical_food_id),
+  )
+  const ingredientArchetypeIds = new Set()
+
+  recipes.forEach((recipe) => (recipe.linked_ingredients || []).forEach((ingredient) => {
+    if (ingredient.canonical_food_id) canonicalIds.add(ingredient.canonical_food_id)
+    if (ingredient.archetype_id) ingredientArchetypeIds.add(ingredient.archetype_id)
+  }))
+
+  const requestedArchetypeIds = [...new Set([...lotArchetypeIds, ...ingredientArchetypeIds])]
+  const [archetypeResult, canonicalResult] = await Promise.all([
+    requestedArchetypeIds.length
+      ? supabase.from('archetypes').select('id, canonical_food_id, name').in('id', requestedArchetypeIds)
+      : Promise.resolve({ data: [], error: null }),
+    canonicalIds.size
+      ? supabase.from('canonical_foods').select('id, canonical_name').in('id', [...canonicalIds])
+      : Promise.resolve({ data: [], error: null }),
+  ])
+
+  const archetypeToCanonical = {}
+  const canonicalNames = {}
+  const archetypeNames = {}
+  ;(archetypeResult.data || []).forEach((archetype) => {
+    archetypeToCanonical[archetype.id] = archetype.canonical_food_id
+    archetypeNames[archetype.id] = archetype.name
+  })
+  ;(canonicalResult.data || []).forEach((food) => {
+    canonicalNames[food.id] = food.canonical_name
+  })
+
+  const nameOf = (ingredient) => cap(
+    ingredient.canonical_form_name
+    || canonicalNames[ingredient.canonical_food_id]
+    || archetypeNames[ingredient.archetype_id]
+    || 'ingrédient',
+  )
+  const inventoryWithNames = inventory.map((lot) => ({
+    ...lot,
+    form_normalized_candidates: [
+      canonicalNames[lot.canonical_food_id],
+      archetypeNames[lot.archetype_id],
+    ].filter(Boolean).map(normalizeFoodForm),
+  }))
+
+  const now = new Date()
+  return Object.fromEntries(recipes.map((recipe) => {
+    const status = computeRecipeAvailability(recipe, inventoryWithNames, archetypeToCanonical, nameOf, now)
+    return [recipe.key, {
+      status: availabilityStatusOf(status),
+      missing_count: status.missing,
+      expiring_count: status.urgent,
+      ...status,
+    }]
+  }))
+}
+
+/**
+ * Le catalogue principal expose exclusivement les recettes V3 opérationnelles.
+ * Les recettes générées restent accessibles depuis leur historique et le planning,
+ * mais ne sont plus mélangées au corpus éditorial validé.
+ */
 export async function GET(request) {
   const { supabase, user, error: authError } = await authenticateRequest(request)
   if (authError || !user) {
-    return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
+    return jsonNoStore({ error: 'Non authentifié' }, { status: 401 })
   }
 
-  // 1. Recettes (2 sources) + stock, en parallèle.
-  const [operationalCatalog, genResult, clsResult, invResult] = await Promise.all([
-    listOperationalRecipes(supabase),
-    supabase
-      .from('generated_recipes')
-      .select('id, title, description, servings, prep_min, cook_min, source, created_at, rating, cook_count, image_url, status')
-      .order('created_at', { ascending: false }),
-    supabase
-      .from('recipes')
-      .select('id, name, description, prep_time_minutes, cook_time_minutes, servings')
-      .order('name', { ascending: true }),
-    supabase
-      .from('inventory_lots')
-      .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date')
-      .gt('qty_remaining', 0)
-      .gt('expiration_date', new Date().toISOString()),
-  ])
-
-  if (genResult.error) {
-    return NextResponse.json({ error: genResult.error.message }, { status: 500 })
-  }
-
-  const genData = genResult.data || []
-  const clsData = clsResult.error ? [] : (clsResult.data || []) // non-critique si échoue
-
-  // 2. Ingrédients liés des deux sources, en parallèle.
-  const [linkedIngsResult, clsLinkedIngsResult] = await Promise.all([
-    genData.length
-      ? supabase
-          .from('generated_recipe_ingredients')
-          .select('generated_recipe_id, canonical_food_id, archetype_id, quantity, unit')
-          .in('generated_recipe_id', genData.map(r => r.id))
-      : Promise.resolve({ data: [], error: null }),
-    clsData.length
-      ? supabase
-          .from('recipe_ingredients')
-          .select('recipe_id, canonical_food_id, archetype_id, quantity, unit')
-          .in('recipe_id', clsData.map(r => r.id))
-      : Promise.resolve({ data: [], error: null }),
-  ])
-
-  const ingsByRecipe = {}
-  ;(linkedIngsResult.data || []).forEach(ing => {
-    (ingsByRecipe[ing.generated_recipe_id] = ingsByRecipe[ing.generated_recipe_id] || []).push(ing)
-  })
-  const clsIngsByRecipe = {}
-  ;(clsLinkedIngsResult.data || []).forEach(ing => {
-    (clsIngsByRecipe[ing.recipe_id] = clsIngsByRecipe[ing.recipe_id] || []).push(ing)
-  })
-
-  // 3. Normaliser vers la forme commune de carte.
-  const canonical = operationalRecipeCards(operationalCatalog.recipes)
-  const generated = genData.map(r => ({
-    key: `gen-${r.id}`,
-    source: 'generated',
-    id: r.id,
-    title: r.title,
-    description: r.description,
-    image_url: r.image_url,
-    prep_min: r.prep_min,
-    cook_min: r.cook_min,
-    servings: r.servings,
-    rating: r.rating,
-    href: `/recipes/generated/${r.id}`,
-    needs_review: r.status === 'needs_review',
-    linked_ingredients: ingsByRecipe[r.id] || [],
-  }))
-
-  const classic = clsData.map(r => ({
-    key: `cls-${r.id}`,
-    source: 'classic',
-    id: r.id,
-    title: r.name,
-    description: r.description,
-    image_url: null,
-    prep_min: r.prep_time_minutes,
-    cook_min: r.cook_time_minutes,
-    servings: r.servings,
-    rating: null,
-    href: `/recipes/${r.id}`,
-    linked_ingredients: clsIngsByRecipe[r.id] || [],
-  }))
-
-  // 4. Déduplication : une recette V3 validée prime sur les sources historiques.
-  const deduped = dedupCatalog([...canonical, ...generated, ...classic])
-
-  // 5. Disponibilité face au stock (miroir de l'ancien calcul client).
-  //    Si le stock n'a pas pu être lu, availability = null (l'UI dégrade en « mut »).
-  let availabilityByKey = null
-  if (!invResult.error) {
-    const inv = invResult.data || []
-
-    // archetype d'un lot → canonique + noms des ingrédients liés, en parallèle.
-    const lotArcheIds = [...new Set(inv.filter(l => l.archetype_id).map(l => l.archetype_id))]
-    const canonIds = new Set(inv.filter(lot => lot.canonical_food_id).map(lot => lot.canonical_food_id))
-    const archeNameIds = new Set()
-    deduped.forEach(r => (r.linked_ingredients || []).forEach(ing => {
-      if (ing.canonical_food_id) canonIds.add(ing.canonical_food_id)
-      if (ing.archetype_id) archeNameIds.add(ing.archetype_id)
-    }))
-    const requestedArcheIds = [...new Set([...lotArcheIds, ...archeNameIds])]
-
-    const [archeMapResult, canonNameResult] = await Promise.all([
-      requestedArcheIds.length
-        ? supabase.from('archetypes').select('id, canonical_food_id, name').in('id', requestedArcheIds)
-        : Promise.resolve({ data: [] }),
-      canonIds.size
-        ? supabase.from('canonical_foods').select('id, canonical_name').in('id', [...canonIds])
-        : Promise.resolve({ data: [] }),
+  let operationalCatalog
+  let inventoryResult
+  try {
+    ;[operationalCatalog, inventoryResult] = await Promise.all([
+      listOperationalRecipes(supabase),
+      supabase
+        .from('inventory_lots')
+        .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date, adjusted_expiration_date')
+        .gt('qty_remaining', 0),
     ])
-
-    const archetypeMapping = {}
-    ;(archeMapResult.data || []).forEach(a => { archetypeMapping[a.id] = a.canonical_food_id })
-    const canonName = {}, archeName = {}
-    ;(canonNameResult.data || []).forEach(c => { canonName[c.id] = c.canonical_name })
-    ;(archeMapResult.data || []).forEach(a => { archeName[a.id] = a.name })
-    const nameOf = (ing) => cap(ing.canonical_form_name || canonName[ing.canonical_food_id] || archeName[ing.archetype_id] || 'ingrédient')
-    const inventoryWithNames = inv.map((lot) => ({
-      ...lot,
-      form_normalized_candidates: [
-        canonName[lot.canonical_food_id],
-        archeName[lot.archetype_id],
-      ].filter(Boolean).map(normalizeFoodForm),
-    }))
-
-    const now = new Date()
-    availabilityByKey = {}
-    for (const recipe of deduped) {
-      const s = computeRecipeAvailability(recipe, inventoryWithNames, archetypeMapping, nameOf, now)
-      availabilityByKey[recipe.key] = {
-        status: availabilityStatusOf(s),
-        missing_count: s.missing,
-        expiring_count: s.urgent,
-        ...s,
-      }
-    }
+  } catch (error) {
+    console.error('[recipes/catalog] V3 catalog unavailable', error)
+    return jsonNoStore({ error: 'Le catalogue de recettes est momentanément indisponible.' }, { status: 503 })
   }
 
-  // 6. Réponse : cartes prêtes à afficher (sans la liste d'ingrédients, inutile à l'UI).
-  const recipesOut = deduped.map(({ linked_ingredients, ...card }) => ({
+  const recipes = operationalRecipeCards(operationalCatalog.recipes)
+  let availabilityByKey = null
+  if (!inventoryResult.error) {
+    availabilityByKey = await computeCatalogAvailability(supabase, recipes, inventoryResult.data || [])
+  } else {
+    console.error('[recipes/catalog] Inventory unavailable', inventoryResult.error)
+  }
+
+  const recipesOut = recipes.map(({ linked_ingredients: _linkedIngredients, ...card }) => ({
     ...card,
-    availability: availabilityByKey ? (availabilityByKey[card.key] || null) : null,
+    availability: availabilityByKey?.[card.key] || null,
   }))
 
-  return NextResponse.json({
+  return jsonNoStore({
     recipes: recipesOut,
     canonical_catalog: operationalCatalog.metadata,
+    source_policy: recipeCatalogSourcePolicy,
   })
 }
