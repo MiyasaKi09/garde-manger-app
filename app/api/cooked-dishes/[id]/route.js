@@ -1,16 +1,14 @@
 // API pour supprimer un plat cuisiné
 // DELETE /api/cooked-dishes/[id]
 
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
+import { authenticateRequest } from '@/lib/apiAuth';
 import { deleteCookedDish } from '@/lib/cookedDishesService';
 
 export async function DELETE(request, { params }) {
   try {
     // Vérification authentification
-    const supabase = createRouteHandlerClient({ cookies });
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const { supabase, user, error: authError } = await authenticateRequest(request);
 
     if (authError || !user) {
       return NextResponse.json(
@@ -29,7 +27,7 @@ export async function DELETE(request, { params }) {
     }
 
     // Supprimer le plat
-    const result = await deleteCookedDish(dishId, user.id);
+    const result = await deleteCookedDish(dishId, user.id, supabase);
 
     if (!result.success) {
       return NextResponse.json(
