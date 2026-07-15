@@ -1,0 +1,853 @@
+[
+  {
+    "file": "001_shelf_life_after_opening.sql",
+    "github_version": "001",
+    "name": "shelf_life_after_opening",
+    "sha256": "2ef4389daca2ed1b84ffdc3e6a61639e474dd8b5654a435df7abf7b5f7e3e29e",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "002_cooked_dishes.sql",
+    "github_version": "002",
+    "name": "cooked_dishes",
+    "sha256": "eb2b148883517709987a32eb28d85336f626fc5fc4d05d85098b6eb752f4e786",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "003_auto_user_id.sql",
+    "github_version": "003",
+    "name": "auto_user_id",
+    "sha256": "e6e85af8bc204cbc8204affc5aeddffc57e67950155fa68009e622154ae2ad9a",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "003b_trigger_auto_user_id.sql",
+    "github_version": "003b",
+    "name": "trigger_auto_user_id",
+    "sha256": "da5fa80201840a59b1ba4d684edbe2663243c17fcc7eebe72482eb3eb0f3de08",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "004_container_management.sql",
+    "github_version": "004",
+    "name": "container_management",
+    "sha256": "0f8abce49256c898ceb9d151e99cb377f996f9371db7d051e353b75af0058258",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "005_fix_archetypes_shelf_life.sql",
+    "github_version": "005",
+    "name": "fix_archetypes_shelf_life",
+    "sha256": "4241a2cd8af75dc726aaa805fa1d500595367696d3e67cd2ff6f7d9b1b36fabf",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "006_populate_archetypes_data.sql",
+    "github_version": "006",
+    "name": "populate_archetypes_data",
+    "sha256": "78ec314d52e1ba0e80c6c83bad91b74dd255b177acb7654177b41a5a565ebdf1",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "007_create_process_nutrition_modifiers.sql",
+    "github_version": "007",
+    "name": "create_process_nutrition_modifiers",
+    "sha256": "83f4360f897c4247b610e299002930807119ac9ebec60fb75a6441f2026f36d1",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "008_create_archetype_nutrition_overrides.sql",
+    "github_version": "008",
+    "name": "create_archetype_nutrition_overrides",
+    "sha256": "953d60babd7a51694e762d82536c4211a631e59d456803e229962ed5897350e5",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "009_nutrition_plan_import.sql",
+    "github_version": "009",
+    "name": "nutrition_plan_import",
+    "sha256": "3e5616db0d40e9922294c99179f0d172721f82d32a7ba233ccf25e47f4f6e621",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "010_raw_json_column.sql",
+    "github_version": "010",
+    "name": "raw_json_column",
+    "sha256": "5f971a9d0a3652d3b4451ab803b0dc9694aef49effb1c7cbc79fe3c2e44931ff",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "011_meal_log_and_weight.sql",
+    "github_version": "011",
+    "name": "meal_log_and_weight",
+    "sha256": "2c67e6cf925c539731dbcb731f54ed43f066465b5c66005919e0d721c887bca9",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "012_generated_recipes.sql",
+    "github_version": "012",
+    "name": "generated_recipes",
+    "sha256": "fbd5ec2c6bbeb19aecc867c51bf9fc89eb39e240b56236f09a698d8f555ebb82",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "013_fix_health_goals_pk.sql",
+    "github_version": "013",
+    "name": "fix_health_goals_pk",
+    "sha256": "f231645865be73fac24003118b213de1721be3246a39fb7f6d26400a87759e86",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260518_add_short_label_meals.sql",
+    "github_version": "20260518",
+    "name": "add_short_label_meals",
+    "sha256": "746129a106095a0f0c3d6691b1ea36444d687270ce3f6edc27a7083800ab32c3",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260518_generated_recipe_ingredients.sql",
+    "github_version": "20260518",
+    "name": "generated_recipe_ingredients",
+    "sha256": "e777a1d5b40473a028219ed21bcf654913536391c9a240724e620330233ef72d",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260525_shelf_life_canonical_foods.sql",
+    "github_version": "20260525",
+    "name": "shelf_life_canonical_foods",
+    "sha256": "7100ec628b547b3a01df46b1c0e92d2ddf4913eecc2508ecc3a26ba506152ac9",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260525_shopping_items_ids.sql",
+    "github_version": "20260525",
+    "name": "shopping_items_ids",
+    "sha256": "19d876b6565e11ae34bac17b7acd650aeabfabd297baa6cafbfe17d1ebbbb6e0",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260531_generated_recipes_image_url.sql",
+    "github_version": "20260531",
+    "name": "generated_recipes_image_url",
+    "sha256": "af2c6fd3461351413dde8ec93988648f3d88a4ee694f4e0c9545860e42883190",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260601_shopping_items_image_url.sql",
+    "github_version": "20260601",
+    "name": "shopping_items_image_url",
+    "sha256": "dfe55c4a7bc376d2bfd891521a54e5ffeb664871d43ca6c002f63982f1773f8d",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260609_consume_lots_fefo_rpc.sql",
+    "github_version": "20260609",
+    "name": "consume_lots_fefo_rpc",
+    "sha256": "3dd444c8b21fe659adadcdc4e11d2bc3575fd2662607f0767ca34623bb2115f4",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260609_db_hardening.sql",
+    "github_version": "20260609",
+    "name": "db_hardening",
+    "sha256": "eec0123cc51702c3a0cb24a364811e8c5a3ddf43aed77afad6dbef95ccacb9c3",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260610_archetype_nutrition_overrides.sql",
+    "github_version": "20260610",
+    "name": "archetype_nutrition_overrides",
+    "sha256": "d6b249094ff7efdbd8b95372087e70606fd98fee47acb779b62e7d9870d247c8",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260610_auto_open_lot.sql",
+    "github_version": "20260610",
+    "name": "auto_open_lot",
+    "sha256": "8411ca311cd7b32ed0d6d6c9edad2d235cc2a55ade2f013f70f919ef166b6899",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260610_ciqual_reference.sql",
+    "github_version": "20260610",
+    "name": "ciqual_reference",
+    "sha256": "3d4a6240ad86960e09df7c7ca8ec9d66df2d592ea1615c4809db965087976897",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260610_common_foods.sql",
+    "github_version": "20260610",
+    "name": "common_foods",
+    "sha256": "34a3b4805f52518a012978d781644517f506401c8ca488fd9c99f9f7ed4c2716",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260610_fix_ciqual_links.sql",
+    "github_version": "20260610",
+    "name": "fix_ciqual_links",
+    "sha256": "4daeeaa85a434cb931a8a8b325c18f6cfe9c1318952888316838c8fe03e895b8",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260610_fix_expiry_kind_perishables.sql",
+    "github_version": "20260610",
+    "name": "fix_expiry_kind_perishables",
+    "sha256": "4f224886570c844d04c88bcd6fd8615339164f07b260c3285ddbe805f4709997",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260610_fix_shelf_life_data.sql",
+    "github_version": "20260610",
+    "name": "fix_shelf_life_data",
+    "sha256": "58f3677a34357d906434df3b8a43bccc9ac27fdacaa529f2c524fa4e5c42de14",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260610_meal_loop.sql",
+    "github_version": "20260610",
+    "name": "meal_loop",
+    "sha256": "412c814ea6b8b912dab2a4cf371c0cd4d3b001b4c7078f4ffe9c11ef47b570ad",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260611_decimal_portions.sql",
+    "github_version": "20260611",
+    "name": "decimal_portions",
+    "sha256": "119941e99f52dfd7b3252197121b89e1db62f7d2bea6a30004299971c9fa50fd",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260611_merge_duplicate_canonicals.sql",
+    "github_version": "20260611",
+    "name": "merge_duplicate_canonicals",
+    "sha256": "9bf6428ad726309f07f1579166a28c3479a843e7341ed4d8ba6adb75687c936c",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260708_nutrition_functions_consolidated.sql",
+    "github_version": "20260708",
+    "name": "nutrition_functions_consolidated",
+    "sha256": "d11d3cb1554148ec787688c8562a8418f528d8988b1f4fa7f27fb4d2db371664",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260708_rls_user_tables.sql",
+    "github_version": "20260708",
+    "name": "rls_user_tables",
+    "sha256": "13a579e155b76d1ec6c342babec8cfebcbe8aaf219760f12684595d689376d8f",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260708_rls_user_tables_rollback.sql",
+    "github_version": "20260708",
+    "name": "rls_user_tables_rollback",
+    "sha256": "8168905eca02d3af2e78148efeff17f9855a82364599908f7226fad0132b2cd5",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260708_waste_prevention_log.sql",
+    "github_version": "20260708",
+    "name": "waste_prevention_log",
+    "sha256": "5ce0b7bd49ab6064d390d5d0b29a3be3e12fc1dec6bedbe0f0751aab3da2bd76",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260709_meal_stock_deductions.sql",
+    "github_version": "20260709",
+    "name": "meal_stock_deductions",
+    "sha256": "97c97b9eebff7927e6be83ed4656d2b03ca6f1964aad047999aa67c08eaac3a3",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260709_routine_v5.sql",
+    "github_version": "20260709",
+    "name": "routine_v5",
+    "sha256": "2f2bdeb62bf96da4e302136a2032fcc2ec500a190d1c3d3718eede6eb4a4bf08",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260709_routine_v5_rollback.sql",
+    "github_version": "20260709",
+    "name": "routine_v5_rollback",
+    "sha256": "db25dd3939ebab5383540a1604db41600bb07c58f0ae482e874f2c0e9d104b5c",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260710_ingredient_provenance.sql",
+    "github_version": "20260710",
+    "name": "ingredient_provenance",
+    "sha256": "6322459aeaef8e8f936196bacbda53e369ee70c794f88f0442290df5635a48ee",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260710_ingredient_provenance_rollback.sql",
+    "github_version": "20260710",
+    "name": "ingredient_provenance_rollback",
+    "sha256": "8479c5bd393c24dfe29bb9219c79fe39670b253fce7c0e4e78f79cac615bbd55",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260711_cooking_sessions.sql",
+    "github_version": "20260711",
+    "name": "cooking_sessions",
+    "sha256": "d4014f17ea8c442f88e7e837f2671711bef1c0388ed42619d6ac801ab43fd2af",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260711_cooking_sessions_rollback.sql",
+    "github_version": "20260711",
+    "name": "cooking_sessions_rollback",
+    "sha256": "dff9f620ea0b080e92f1ad556d83210b80b01841c3bf73c56d0bffad39381e35",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260712_resolution_provenance.sql",
+    "github_version": "20260712",
+    "name": "resolution_provenance",
+    "sha256": "fdea0376009226b615040775976a4868d41cc2a9a8ae9f6ea0723eb24b435002",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260712_resolution_provenance_rollback.sql",
+    "github_version": "20260712",
+    "name": "resolution_provenance_rollback",
+    "sha256": "964b47eb90176b4364cfd36f4f468c539def364b7e3e4638c810faa866671a01",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260713122954_storage_safety_policies.sql",
+    "github_version": "20260713122954",
+    "name": "storage_safety_policies",
+    "sha256": "b2d0eab67ec839add43a55c2d4a8c7d2142295f4d3c359aeba0d4eb0827d5557",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260713134235_closed_loop_planning_v2.sql",
+    "github_version": "20260713134235",
+    "name": "closed_loop_planning_v2",
+    "sha256": "0480e87594adfcc6b5149f7fd4dd549aea9d6211aeefbaa6da2dbc3ce8dc6e53",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260713135000_closed_loop_hardening.sql",
+    "github_version": "20260713135000",
+    "name": "closed_loop_hardening",
+    "sha256": "82e22a9976193307034353cadd1cb28f0e70bd409c48708a3f9c980d301247c0",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260713135528_closed_loop_tenant_integrity.sql",
+    "github_version": "20260713135528",
+    "name": "closed_loop_tenant_integrity",
+    "sha256": "8db5710c89cba4fdc35c8f6c1fff3f426b9223ba4ab0b469c63d991e604303b5",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260713140517_nutrition_target_consistency.sql",
+    "github_version": "20260713140517",
+    "name": "nutrition_target_consistency",
+    "sha256": "72c4d2923cd1f632e09d5130a2f08eaf8d513faa90aea451bce2d9b39da9b97d",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260713162447_security_harden_views_functions_grants.sql",
+    "github_version": "20260713162447",
+    "name": "security_harden_views_functions_grants",
+    "sha256": "735f7854a509a85d701dd782be4a302fec63bee4d1dde66ec7360bcad533b55e",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260713162835_scope_private_tables_revoke_anon.sql",
+    "github_version": "20260713162835",
+    "name": "scope_private_tables_revoke_anon",
+    "sha256": "b96f0a795360d6567294d43dce9d4f7a9d4a0dfda8fefcfd67b5ae1da1d882cd",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260713163953_household_member_legacy_names.sql",
+    "github_version": "20260713163953",
+    "name": "household_member_legacy_names",
+    "sha256": "f967ebc7800c5e78f309aa60db679a311f41a79b48e8924394384dec2094168a",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260713_storage_safety_policies.sql",
+    "github_version": "20260713",
+    "name": "storage_safety_policies",
+    "sha256": "65f7e01659a2f9d13ad7879504497da9f23f90f126d3e760e9bdae8610d55df5",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260714115309_household_member_id_on_legacy_tables.sql",
+    "github_version": "20260714115309",
+    "name": "household_member_id_on_legacy_tables",
+    "sha256": "03cb352c1fe777ae9e9185a6d0c054aab426047e6dd16039c186c52ea1ec6851",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260714115842_nutrition_targets_single_active.sql",
+    "github_version": "20260714115842",
+    "name": "nutrition_targets_single_active",
+    "sha256": "5fd3834205fb5ed4758e7f3298f7e0139d7a9feac00bec3dbdd692ad58298f9d",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260714200001_v2_0001_schemas_and_roles.sql",
+    "github_version": "20260714200001",
+    "name": "v2_0001_schemas_and_roles",
+    "sha256": "c30ab0f13c4d26403de381103d7c8864d092e18d07f0bc7212a3607093524453",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714133658",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714200002_v2_0002_ops_provenance.sql",
+    "github_version": "20260714200002",
+    "name": "v2_0002_ops_provenance",
+    "sha256": "d566aada49b2ba21f478d9856970d8e318664d9c850ec22ab1d2ebb10d396787",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714133728",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714200003_v2_0003_catalog_food_model.sql",
+    "github_version": "20260714200003",
+    "name": "v2_0003_catalog_food_model",
+    "sha256": "816c77aa8ef6c5ca494848a6fb3a8c0f5fa467e38f01748136ecc89f83cdc991",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714133812",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714200004_v2_0004_culinary_model.sql",
+    "github_version": "20260714200004",
+    "name": "v2_0004_culinary_model",
+    "sha256": "eb69d633a773e0be668470fd8c748de292e28c6c6fc8e610abe48f5e0eacb32a",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714133854",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714200005_v2_0005_rls_and_grants.sql",
+    "github_version": "20260714200005",
+    "name": "v2_0005_rls_and_grants",
+    "sha256": "8ea7a2b2553b8c8aea494b61f068467e97611de6681e32358241d679a47412f5",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714133939",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714210001_v2_commercial_scan_rpc.sql",
+    "github_version": "20260714210001",
+    "name": "v2_commercial_scan_rpc",
+    "sha256": "3a9bbe383d04cd3aa3f0889d7292135adaadb6d7b48919a6862d4a5d072609be",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714145929",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714220001_v2_release_integrity_and_confidence.sql",
+    "github_version": "20260714220001",
+    "name": "v2_release_integrity_and_confidence",
+    "sha256": "e47be591cde4542006297d04225931abe983aa42eac00d1db36b34d7e70ade10",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714151219",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714220002_v2_atomic_release_functions.sql",
+    "github_version": "20260714220002",
+    "name": "v2_atomic_release_functions",
+    "sha256": "5fea63bacfb29de2993ab9ac5c281210f69614f29e7830f16038c20e13c2ec45",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714151408",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714220003_v2_retract_premature_f0.sql",
+    "github_version": "20260714220003",
+    "name": "v2_retract_premature_f0",
+    "sha256": "2dd26f6da21dc1bb2364a9099af14e091e32f5f5eacf0bc8c889a9d4fed7e15e",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714152756",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714220004_v2_f0_provenance.sql",
+    "github_version": "20260714220004",
+    "name": "v2_f0_provenance",
+    "sha256": "9860622ba6691c295ad9f3a1edbd6003266fa3b96ddc8b0398df7a77bfbae5df",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714153652",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714220005_v1_lock_reference_writes.sql",
+    "github_version": "20260714220005",
+    "name": "v1_lock_reference_writes",
+    "sha256": "c52d40fda4bfc8418851fc66f077733accc402643f76a769b5254470c9b00281",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714153956",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714220006_v2_exclude_prepared_dishes.sql",
+    "github_version": "20260714220006",
+    "name": "v2_exclude_prepared_dishes",
+    "sha256": "286b959d95f7177a5cbd8810ec07a835d978310fa8149793b1ac8a3a97d86a11",
+    "role": "apply",
+    "baseline": "verify_objects",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "catalog",
+        "name": "food_forms"
+      }
+    ]
+  },
+  {
+    "file": "20260714220008_v1_revert_reference_writes.sql",
+    "github_version": "20260714220008",
+    "name": "v1_revert_reference_writes",
+    "sha256": "703c0dac172905ee15af9a504c2bb0dde6f16159e22bad353b037d265ca89837",
+    "role": "apply",
+    "baseline": "ledger_match",
+    "historical_version": "20260714155027",
+    "expected_objects": []
+  },
+  {
+    "file": "20260714230001_v2_publish_guardrails.sql",
+    "github_version": "20260714230001",
+    "name": "v2_publish_guardrails",
+    "sha256": "20c274a8aa48ad4267d1debfa7e3410e82a1a3145c049a8529e79dcc3cfe33f7",
+    "role": "apply",
+    "baseline": "verify_objects",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "function",
+        "schema": "ops",
+        "name": "confidence_rank"
+      },
+      {
+        "type": "function",
+        "schema": "ops",
+        "name": "publish_catalog_release"
+      }
+    ]
+  },
+  {
+    "file": "20260714230002_v2_recipe_child_immutability.sql",
+    "github_version": "20260714230002",
+    "name": "v2_recipe_child_immutability",
+    "sha256": "bba7b1cca36e1fdc10be94beefe48124df3065d9041ebdaf62583ccd39e062d8",
+    "role": "apply",
+    "baseline": "verify_objects",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "trigger",
+        "schema": "culinary",
+        "name": "trg_recipe_steps_immutable",
+        "table": "recipe_steps"
+      },
+      {
+        "type": "trigger",
+        "schema": "culinary",
+        "name": "trg_recipe_components_immutable",
+        "table": "recipe_components"
+      }
+    ]
+  },
+  {
+    "file": "20260714230003_v2_commercial_label_nutrition.sql",
+    "github_version": "20260714230003",
+    "name": "v2_commercial_label_nutrition",
+    "sha256": "555c0c46aee42976692267baa8e7ad53ca8cc680c1f8a9ee8933be17e5f61007",
+    "role": "apply",
+    "baseline": "verify_objects",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "column",
+        "schema": "catalog",
+        "name": "is_composite",
+        "table": "commercial_products"
+      }
+    ]
+  },
+  {
+    "file": "20260715090001_v2_immutability_full.sql",
+    "github_version": "20260715090001",
+    "name": "v2_immutability_full",
+    "sha256": "8d39aeb0471f23fd340679592abc9a37ec245c2f3671da93f27305eca346a240",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "function",
+        "schema": "culinary",
+        "name": "family_has_published_version"
+      },
+      {
+        "type": "trigger",
+        "schema": "culinary",
+        "name": "trg_recipe_variation_axes_immutable",
+        "table": "recipe_variation_axes"
+      },
+      {
+        "type": "trigger",
+        "schema": "culinary",
+        "name": "trg_recipe_variation_options_immutable",
+        "table": "recipe_variation_options"
+      }
+    ]
+  },
+  {
+    "file": "20260715090002_v2_publish_release_exclusive.sql",
+    "github_version": "20260715090002",
+    "name": "v2_publish_release_exclusive",
+    "sha256": "b38f2fe5f555a21220e65f2a2c5b562106ba8ebf4c9a8fc32c2d3bac57c7a95b",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "function",
+        "schema": "ops",
+        "name": "publish_catalog_release"
+      },
+      {
+        "type": "function",
+        "schema": "ops",
+        "name": "rollback_catalog_release"
+      }
+    ]
+  },
+  {
+    "file": "20260715090003_v2_catalog_active_release_rls.sql",
+    "github_version": "20260715090003",
+    "name": "v2_catalog_active_release_rls",
+    "sha256": "f31913410010a375dae6681b0a125724ada05768e389aae9cb4da6b526de41f3",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "function",
+        "schema": "catalog",
+        "name": "is_in_active_release"
+      },
+      {
+        "type": "policy",
+        "schema": "catalog",
+        "name": "p_food_forms_read",
+        "table": "food_forms"
+      }
+    ]
+  },
+  {
+    "file": "20260715090004_v2_off_label_completeness.sql",
+    "github_version": "20260715090004",
+    "name": "v2_off_label_completeness",
+    "sha256": "18f94e97a20f2ccdfc6da1a3bfb43b20e477253677511c210b8a56c59fbed306",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "column",
+        "schema": "catalog",
+        "name": "label_nutrition_complete",
+        "table": "commercial_products"
+      },
+      {
+        "type": "column",
+        "schema": "catalog",
+        "name": "label_nutrition_review_status",
+        "table": "commercial_products"
+      }
+    ]
+  }
+]

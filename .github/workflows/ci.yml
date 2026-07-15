@@ -40,11 +40,25 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
+  # ──────────────────────────────────────────────────────────────────────────
+  # db-tests : valide le mécanisme de migration (PR 105).
+  #
+  # Deux scénarios en séquence sur le même service Postgres 17 :
+  #
+  #   Scénario A (fresh) : base vierge → bootstrap → apply de toutes les
+  #     migrations V2 non-rollback depuis zéro → assertions SQL → 2e apply = 0.
+  #
+  #   Scénario B (prod divergente) : base vierge → bootstrap → simulation de
+  #     l'état prod (migrations appliquées sous des versions historiques +
+  #     migrations ad-hoc sans ledger) → reconcile-ledger.sh → apply-migrations.sh
+  #     n'applique que les 4 nouvelles → assertions objets → 2e apply = 0.
+  #     Puis : test de refus sur drift de checksum.
+  # ──────────────────────────────────────────────────────────────────────────
   db-tests:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:15
+        image: postgres:17
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
@@ -56,7 +70,9 @@ jobs:
           --health-timeout 5s
           --health-retries 20
     env:
-      DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+      BASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+      DB_A: postgres://postgres:postgres@localhost:5432/myko_ci_a
+      DB_B: postgres://postgres:postgres@localhost:5432/myko_ci_b
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -73,35 +89,269 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Bootstrap Supabase roles/auth (CI stub)
+      # ── Création des bases de données de test ─────────────────────────────
+      - name: Créer les bases de test
+        run: |
+          psql "$BASE_URL" -c "CREATE DATABASE myko_ci_a;"
+          psql "$BASE_URL" -c "CREATE DATABASE myko_ci_b;"
+
+      # ────────────────────────────────────────────────────────────────────────
+      # SCÉNARIO A — Base vierge, apply depuis zéro
+      # Valide que les migrations V2 s'appliquent proprement sur un Postgres
+      # fraîchement initialisé avec le stub auth Supabase.
+      # Les migrations pré-V2 (ALTER TABLE sur le schéma public legacy) ne
+      # peuvent pas s'exécuter sur une base vierge : on les exclut en ciblant
+      # uniquement le sous-ensemble V2 (qui est auto-portant depuis les schémas).
+      # ────────────────────────────────────────────────────────────────────────
+      - name: "[A] Bootstrap stubs Supabase"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
         run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/00_bootstrap_ci.sql
 
-      # Le registre de migrations mélange des migrations V1 (qui supposent le schéma de
-      # prod existant) et les migrations V2 auto-portantes. La CI valide l'application
-      # DEPUIS ZÉRO des seules migrations structurelles V2 (`*_v2_*.sql`).
-      - name: Sélection des migrations structurelles V2
-        run: mkdir -p /tmp/v2mig && cp supabase/migrations/*_v2_*.sql /tmp/v2mig/
-
-      - name: Apply migrations (ordonné, atomique, tracé)
-        run: bash scripts/db/apply-migrations.sh /tmp/v2mig
-
-      - name: Migrations idempotentes (2e application ne fait rien)
-        run: bash scripts/db/apply-migrations.sh /tmp/v2mig
-
-      - name: Run SQL assertions (immutabilité, objets, registre)
+      - name: "[A] Sélection des migrations V2 (auto-portantes)"
         run: |
-          shopt -s nullglob
+          mkdir -p /tmp/v2mig_a
+          # Migrations V2 non-rollback : version >= 20260714200001.
+          # Les fichiers pré-V2 (20260714115309, 20260714115842) ont un préfixe
+          # 20260714115*, donc on filtre à partir de 20260714[2-9]* et 20260715*.
+          find supabase/migrations -maxdepth 1 -name '*.sql' \
+            | grep -v '_rollback\.sql$' \
+            | grep -E '/(20260714[2-9]|20260715)' \
+            | LC_ALL=C sort \
+            | while IFS= read -r f; do cp "$f" /tmp/v2mig_a/; done
+          echo "Migrations V2 sélectionnées : $(ls /tmp/v2mig_a/ | wc -l)"
+
+      - name: "[A] Apply migrations V2 (applicateur sécurisé)"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: bash scripts/db/apply-migrations.sh apply /tmp/v2mig_a
+
+      - name: "[A] Assertions SQL"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: |
           for f in supabase/tests/ci/*.sql; do
             echo "== $f =="
             psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"
           done
 
-      # Le chargeur R0 doit produire un SQL qui s'applique réellement sur le schéma V2.
-      - name: Le chargeur R0 génère un SQL valide sur le schéma
+      - name: "[A] Idempotence : 2e apply doit rapporter 0 appliquées"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: |
+          output=$(bash scripts/db/apply-migrations.sh apply /tmp/v2mig_a)
+          echo "$output"
+          echo "$output" | grep -E '^migrations : 0 appliquées'
+
+      - name: "[A] Chargeur R0 génère un SQL valide sur le schéma V2"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
         run: |
           node scripts/data/recipes/build-r0.mjs
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/r0-load.sql
-          psql "$DATABASE_URL" -tAc "select count(*) from culinary.recipe_instruction_branches;" | grep -qx 5
+          psql "$DATABASE_URL" -tAc \
+            "SELECT count(*) FROM culinary.recipe_instruction_branches;" \
+            | grep -qx 5
+
+      # ────────────────────────────────────────────────────────────────────────
+      # SCÉNARIO B — Simulation d'une prod divergente, puis reconcile + apply
+      #
+      # Simule exactement l'état prod au 2026-07-15 :
+      #   - Migrations 200001→220008 appliquées sous VERSIONS HISTORIQUES.
+      #   - Migrations 220006, 230001-230003 appliquées sans ligne dans le ledger
+      #     (execute_sql ad-hoc).
+      #   - Pré-V2 absentes (migrate ultérieurement via reconcile trust).
+      #
+      # Après reconcile-ledger.sh :
+      #   - Toutes les github_versions non-rollback sont dans schema_migrations.
+      #   - apply-migrations.sh n'applique que 090001-090004.
+      #   - Un 2e apply rapporte 0.
+      #   - Un drift de checksum fait échouer l'apply.
+      # ────────────────────────────────────────────────────────────────────────
+      - name: "[B] Bootstrap stubs Supabase"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/00_bootstrap_ci.sql
+
+      - name: "[B] Simulation état prod — bootstrap tables de suivi"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q \
+            -c "CREATE SCHEMA IF NOT EXISTS supabase_migrations;" \
+            -c "CREATE TABLE IF NOT EXISTS supabase_migrations.schema_migrations (version text PRIMARY KEY, name text, applied_at timestamptz NOT NULL DEFAULT now());" \
+            -c "CREATE SCHEMA IF NOT EXISTS ops;" \
+            -c "CREATE TABLE IF NOT EXISTS ops.schema_migration_checksums (version text PRIMARY KEY, name text, sha256 text NOT NULL, applied_at timestamptz NOT NULL DEFAULT now());"
+
+      - name: "[B] Simulation état prod — appliquer migrations avec VERSIONS HISTORIQUES"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          # Carte github_version→historical_version (miroir du manifest).
+          declare -A HIST=(
+            [20260714200001]=20260714133658
+            [20260714200002]=20260714133728
+            [20260714200003]=20260714133812
+            [20260714200004]=20260714133854
+            [20260714200005]=20260714133939
+            [20260714210001]=20260714145929
+            [20260714220001]=20260714151219
+            [20260714220002]=20260714151408
+            [20260714220003]=20260714152756
+            [20260714220004]=20260714153652
+            [20260714220005]=20260714153956
+            [20260714220008]=20260714155027
+          )
+
+          for github_v in "${!HIST[@]}"; do
+            hist_v="${HIST[$github_v]}"
+            f="$(find supabase/migrations -name "${github_v}_*.sql" | head -1)"
+            base="$(basename "$f" .sql)"
+            name="${base#*_}"
+            echo "apply  $base (→ ledger: $hist_v)"
+            psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q --single-transaction \
+              -f "$f" \
+              -c "INSERT INTO supabase_migrations.schema_migrations(version, name)
+                    VALUES ('${hist_v}', '${name}') ON CONFLICT DO NOTHING;"
+          done
+
+      - name: "[B] Simulation état prod — appliquer sans enregistrement (ad-hoc execute_sql)"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          # Ces migrations ont été appliquées hors CLI Supabase — aucune ligne dans le ledger.
+          for v in 20260714220006 20260714230001 20260714230002 20260714230003; do
+            f="$(find supabase/migrations -name "${v}_*.sql" | head -1)"
+            echo "apply (sans ledger)  $(basename "$f")"
+            psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f "$f"
+          done
+
+      - name: "[B] Dry-run reconcile (vérification du plan)"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          output=$(bash scripts/db/reconcile-ledger.sh --dry-run)
+          echo "$output"
+          # Le dry-run doit indiquer des enregistrements à faire, pas d'erreurs.
+          echo "$output" | grep -v 'ERREUR'
+
+      - name: "[B] Reconcile réel du ledger"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: bash scripts/db/reconcile-ledger.sh apply
+
+      - name: "[B] Vérification : toutes les github_versions non-rollback dans le ledger"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          # Récupère le nombre de versions attendues depuis le manifest.
+          expected=$(node -e "
+            const m = JSON.parse(require('fs').readFileSync('scripts/db/migration-manifest.json'));
+            console.log(m.filter(e => e.role === 'apply').length);
+          ")
+          actual=$(psql "$DATABASE_URL" -tAc "SELECT count(*) FROM supabase_migrations.schema_migrations;")
+          echo "Attendu : $expected | Présent : $actual"
+          [ "$actual" -eq "$expected" ]
+
+      - name: "[B] Dry-run apply (doit rapporter seulement 090001-090004)"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          output=$(bash scripts/db/apply-migrations.sh status)
+          echo "$output"
+          # Exactement 4 migrations à appliquer.
+          count=$(echo "$output" | grep -c '^apply ' || true)
+          echo "Migrations à appliquer : $count"
+          [ "$count" -eq 4 ]
+          # Et ce sont bien les 4 nouvelles.
+          echo "$output" | grep '^apply ' | grep -q '20260715090001'
+          echo "$output" | grep '^apply ' | grep -q '20260715090002'
+          echo "$output" | grep '^apply ' | grep -q '20260715090003'
+          echo "$output" | grep '^apply ' | grep -q '20260715090004'
+
+      - name: "[B] Apply réel (seulement 090001-090004)"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          output=$(bash scripts/db/apply-migrations.sh apply)
+          echo "$output"
+          echo "$output" | grep -E '^migrations : 4 appliquées'
+
+      - name: "[B] Assertions objets — 4 nouvelles migrations installées"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 << 'ASSERTIONS'
+          DO $$
+          BEGIN
+            -- 090001 : culinary.family_has_published_version
+            PERFORM 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
+              WHERE n.nspname='culinary' AND p.proname='family_has_published_version';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque culinary.family_has_published_version (090001)'; END IF;
+
+            -- 090001 : triggers d''immuabilité variation (>= 8 triggers trg_*immutable)
+            PERFORM 1 FROM pg_trigger t JOIN pg_class c ON c.oid=t.tgrelid
+              JOIN pg_namespace n ON n.oid=c.relnamespace
+              WHERE n.nspname='culinary' AND t.tgname LIKE 'trg_%immutable'
+              HAVING count(*) >= 8;
+            IF NOT FOUND THEN RAISE EXCEPTION 'insuffisant triggers immutabilité (090001)'; END IF;
+
+            -- 090002 : ops.publish_catalog_release (version exclusive)
+            PERFORM 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
+              WHERE n.nspname='ops' AND p.proname IN ('publish_catalog_release','rollback_catalog_release')
+              HAVING count(*) = 2;
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque ops.publish/rollback (090002)'; END IF;
+
+            -- 090003 : catalog.is_in_active_release
+            PERFORM 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
+              WHERE n.nspname='catalog' AND p.proname='is_in_active_release';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque catalog.is_in_active_release (090003)'; END IF;
+
+            -- 090004 : label_nutrition_complete + label_nutrition_review_status
+            PERFORM 1 FROM information_schema.columns
+              WHERE table_schema='catalog' AND table_name='commercial_products'
+                AND column_name IN ('label_nutrition_complete','label_nutrition_review_status')
+              HAVING count(*) = 2;
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque colonnes label_nutrition_* (090004)'; END IF;
+          END $$;
+          ASSERTIONS
+
+      - name: "[B] Idempotence : 2e apply doit rapporter 0 appliquées"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          output=$(bash scripts/db/apply-migrations.sh apply)
+          echo "$output"
+          echo "$output" | grep -E '^migrations : 0 appliquées'
+
+      - name: "[B] Refus de drift de checksum"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          # Corrompt le sha256 de 090001 dans la table checksums.
+          psql "$DATABASE_URL" -c \
+            "UPDATE ops.schema_migration_checksums SET sha256='0000000000000000000000000000000000000000000000000000000000000000' WHERE version='20260715090001';"
+          # L'apply doit échouer (exit 2) à cause du drift détecté.
+          # Note : on utilise "if ... ; then" pour capturer le code de sortie sans pipe
+          # (un pipe modifierait le code de sortie via PIPESTATUS).
+          if bash scripts/db/apply-migrations.sh apply; then
+            echo "FAIL: apply aurait dû échouer sur le drift de checksum" >&2
+            exit 1
+          fi
+          echo "OK: drift de checksum correctement refusé."
+          # Restaurer le sha256 correct pour ne pas laisser la base en état invalide.
+          correct_sha=$(sha256sum supabase/migrations/20260715090001_v2_immutability_full.sql | cut -d' ' -f1)
+          psql "$DATABASE_URL" -c \
+            "UPDATE ops.schema_migration_checksums SET sha256='${correct_sha}' WHERE version='20260715090001';"
+
+      - name: "[B] Assertions SQL (suite de la CI V2)"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          for f in supabase/tests/ci/*.sql; do
+            echo "== $f =="
+            psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"
+          done
 
   e2e:
     runs-on: ubuntu-latest
