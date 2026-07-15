@@ -234,6 +234,77 @@ jobs:
             | grep -qE '^[0-9]+$'
 
       # ────────────────────────────────────────────────────────────────────────
+      # [A] Corpus-v1 : chargeur des 72 recettes candidates (sample en CI).
+      # Utilise le sample (corpus-v1.sample.json) car le réel n'est pas committé.
+      # Valide : familles candidate, versions draft, 0 publiés, review_tasks
+      # pour les formes manquantes, pas de formes bloquant publish_catalog_release.
+      # ────────────────────────────────────────────────────────────────────────
+      - name: "[A] Corpus-v1 génère un SQL valide et le charge en base"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: |
+          # 1. Génération du SQL (utilise corpus-v1.sample.json en CI)
+          node scripts/data/recipes/build-corpus-v1.mjs
+          # 2. Application (1re fois)
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/corpus-v1-load.sql
+          # 3. Assertions
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 << 'ASSERT_CORPUS_V1'
+          DO $$
+          DECLARE n integer;
+          BEGIN
+            -- Familles candidates uniquement (rien de publié)
+            SELECT count(*) INTO n FROM culinary.recipe_families WHERE status = 'candidate';
+            IF n < 1 THEN RAISE EXCEPTION '[corpus-v1] familles candidates: attendu >= 1, obtenu %', n; END IF;
+
+            SELECT count(*) INTO n FROM culinary.recipe_families WHERE status = 'published';
+            IF n <> 0 THEN RAISE EXCEPTION '[corpus-v1] aucune famille ne doit être publiée, obtenu %', n; END IF;
+
+            -- Versions draft uniquement (rien de publié)
+            SELECT count(*) INTO n FROM culinary.recipe_versions WHERE publication_status = 'draft';
+            IF n < 1 THEN RAISE EXCEPTION '[corpus-v1] versions draft: attendu >= 1, obtenu %', n; END IF;
+
+            SELECT count(*) INTO n FROM culinary.recipe_versions WHERE publication_status = 'published';
+            IF n <> 0 THEN RAISE EXCEPTION '[corpus-v1] aucune version ne doit être publiée, obtenu %', n; END IF;
+
+            -- review_tasks ouvertes pour les formes manquantes (sample a des formes non résolues)
+            SELECT count(*) INTO n FROM quality.review_tasks WHERE status = 'open';
+            IF n < 1 THEN RAISE EXCEPTION '[corpus-v1] review_tasks open: attendu >= 1, obtenu %', n; END IF;
+
+            -- Les review_tasks pour unresolved_required_ingredient existent
+            SELECT count(*) INTO n FROM quality.review_tasks
+            WHERE status = 'open' AND task_type = 'unresolved_required_ingredient';
+            IF n < 1 THEN RAISE EXCEPTION '[corpus-v1] unresolved_required_ingredient tasks: attendu >= 1, obtenu %', n; END IF;
+
+            -- Les review_tasks pour variants_need_branch_modeling existent (sample-001 a des variants)
+            SELECT count(*) INTO n FROM quality.review_tasks
+            WHERE status = 'open' AND task_type = 'variants_need_branch_modeling';
+            IF n < 1 THEN RAISE EXCEPTION '[corpus-v1] variants_need_branch_modeling tasks: attendu >= 1, obtenu %', n; END IF;
+
+            -- ops.publish_catalog_release doit encore rejeter (recettes bloquées)
+            BEGIN
+              PERFORM ops.publish_catalog_release(gen_random_uuid());
+              RAISE EXCEPTION '[corpus-v1] publish_catalog_release aurait dû échouer';
+            EXCEPTION WHEN OTHERS THEN
+              -- Attendu : pas de release créée
+              NULL;
+            END;
+
+            RAISE NOTICE '[corpus-v1] toutes les assertions passent.';
+          END $$;
+          ASSERT_CORPUS_V1
+
+          # 4. Idempotence : 2e application doit donner les mêmes comptes
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/corpus-v1-load.sql
+          n_fam=$(psql "$DATABASE_URL" -tAc "SELECT count(*) FROM culinary.recipe_families WHERE status='candidate';")
+          n_ver=$(psql "$DATABASE_URL" -tAc "SELECT count(*) FROM culinary.recipe_versions WHERE publication_status='draft';")
+          n_task=$(psql "$DATABASE_URL" -tAc "SELECT count(*) FROM quality.review_tasks WHERE status='open';")
+          echo "[A] Idempotence corpus-v1 : familles=$n_fam versions=$n_ver tâches=$n_task"
+          # Les comptes doivent être des entiers (pas de doublon)
+          echo "$n_fam"  | grep -qE '^[0-9]+$'
+          echo "$n_ver"  | grep -qE '^[0-9]+$'
+          echo "$n_task" | grep -qE '^[0-9]+$'
+
+      # ────────────────────────────────────────────────────────────────────────
       # SCÉNARIO B — Simulation d'une prod divergente, puis reconcile + apply
       #
       # Simule exactement l'état prod au 2026-07-15 :
