@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { fetchDietaryConstraints } from '@/lib/aiContextBuilder'
-import { getCanonicalRecipes, canonicalCatalogMetadata } from '@/lib/domain/recipes/canonicalCatalog'
+import { listOperationalRecipes } from '@/lib/db/operationalRecipeCatalog'
 import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan } from '@/lib/domain/planning/closedLoopPlanner'
@@ -121,7 +121,8 @@ export async function POST(request) {
       members = [defaultMember]
     }
     const servings = Math.max(1, members.reduce((sum, member) => sum + (Number(member.portion_multiplier) || 1), 0))
-    const recipes = getCanonicalRecipes({ servings })
+    const operationalCatalog = await listOperationalRecipes(supabase, { servings })
+    const recipes = operationalCatalog.recipes
     if (!recipes.length) throw new Error('Aucune recette V3 exécutable')
 
     const { plannerLots, existingReservations } = await loadPlannerInventory(supabase, recipes)
@@ -156,7 +157,7 @@ export async function POST(request) {
       windowStart,
       constraints,
       inventoryLots: plannerLots,
-      corpusVersion: canonicalCatalogMetadata.version,
+      corpusVersion: operationalCatalog.metadata.corpusVersion,
     })
     const { data, error } = await supabase.rpc('publish_canonical_closed_loop_plan', { p_payload: payload })
     if (error) throw new Error(error.message)

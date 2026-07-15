@@ -1,8 +1,6 @@
 // API REST pour les plats cuisinés
 // Endpoints: POST (créer), GET (lister)
 
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { authenticateRequest } from '@/lib/apiAuth';
 import { createCookedDish } from '@/lib/cookedDishesService';
@@ -13,8 +11,7 @@ export const dynamic = 'force-dynamic';
 export async function POST(request) {
   try {
     // Vérification authentification
-    const supabase = createRouteHandlerClient({ cookies });
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const { supabase, user, error: authError } = await authenticateRequest(request);
 
     if (authError || !user) {
       return NextResponse.json(
@@ -50,7 +47,8 @@ export async function POST(request) {
       portionsCooked: parseInt(portionsCooked),
       storageMethod: storageMethod || 'fridge',
       ingredientsUsed: ingredientsUsed || [],
-      notes: notes || null
+      notes: notes || null,
+      supabaseClient: supabase,
     });
 
     if (!result.success) {

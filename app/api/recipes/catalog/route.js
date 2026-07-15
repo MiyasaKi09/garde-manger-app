@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { dedupCatalog } from '@/app/recipes/catalogDedup'
 import { convertWithMeta } from '@/lib/units'
-import { getCanonicalRecipeCards } from '@/lib/domain/recipes/canonicalCatalog'
+import { listOperationalRecipes } from '@/lib/db/operationalRecipeCatalog'
+import { operationalRecipeCards } from '@/lib/domain/recipes/operationalCatalog'
 import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 
 export const dynamic = 'force-dynamic'
@@ -131,7 +132,8 @@ export async function GET(request) {
   }
 
   // 1. Recettes (2 sources) + stock, en parallèle.
-  const [genResult, clsResult, invResult] = await Promise.all([
+  const [operationalCatalog, genResult, clsResult, invResult] = await Promise.all([
+    listOperationalRecipes(supabase),
     supabase
       .from('generated_recipes')
       .select('id, title, description, servings, prep_min, cook_min, source, created_at, rating, cook_count, image_url, status')
@@ -180,7 +182,7 @@ export async function GET(request) {
   })
 
   // 3. Normaliser vers la forme commune de carte.
-  const canonical = getCanonicalRecipeCards()
+  const canonical = operationalRecipeCards(operationalCatalog.recipes)
   const generated = genData.map(r => ({
     key: `gen-${r.id}`,
     source: 'generated',
@@ -273,5 +275,8 @@ export async function GET(request) {
     availability: availabilityByKey ? (availabilityByKey[card.key] || null) : null,
   }))
 
-  return NextResponse.json({ recipes: recipesOut })
+  return NextResponse.json({
+    recipes: recipesOut,
+    canonical_catalog: operationalCatalog.metadata,
+  })
 }

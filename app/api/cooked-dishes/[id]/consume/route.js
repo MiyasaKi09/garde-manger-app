@@ -1,16 +1,14 @@
 // API pour consommer des portions d'un plat
 // POST /api/cooked-dishes/[id]/consume
 
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
+import { authenticateRequest } from '@/lib/apiAuth';
 import { consumePortions } from '@/lib/cookedDishesService';
 
 export async function POST(request, { params }) {
   try {
     // Vérification authentification
-    const supabase = createRouteHandlerClient({ cookies });
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const { supabase, user, error: authError } = await authenticateRequest(request);
 
     if (authError || !user) {
       return NextResponse.json(
@@ -40,7 +38,7 @@ export async function POST(request, { params }) {
     }
 
     // Consommer les portions
-    const result = await consumePortions(dishId, user.id, portionsToConsume);
+    const result = await consumePortions(dishId, user.id, portionsToConsume, supabase);
 
     if (!result.success) {
       return NextResponse.json(

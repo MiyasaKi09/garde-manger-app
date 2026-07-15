@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getCanonicalRecipe, getCanonicalRecipes } from '@/lib/domain/recipes/canonicalCatalog'
+import { getOperationalRecipe } from '@/lib/db/operationalRecipeCatalog'
+import { createCookieSupabase } from '@/lib/supabase/request'
 import styles from './recipe.module.css'
+
+export const dynamic = 'force-dynamic'
 
 const sensoryLabels = {
   sweet: 'Sucré',
@@ -19,25 +22,27 @@ const sensoryLabels = {
 const identityLabels = {
   named_traditional_dish: 'Plat traditionnel nommé',
   domestic_international_dish: 'Plat domestique international',
+  domestic_standard: 'Standard de cuisine domestique',
 }
 
 function formatQuantity(value) {
   return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(value)
 }
 
-export function generateStaticParams() {
-  return getCanonicalRecipes().map((recipe) => ({ code: recipe.code }))
+async function loadRecipe(code) {
+  const supabase = await createCookieSupabase()
+  return getOperationalRecipe(supabase, code)
 }
 
-export function generateMetadata({ params }) {
-  const recipe = getCanonicalRecipe(params.code)
+export async function generateMetadata({ params }) {
+  const recipe = await loadRecipe(params.code)
   return recipe
-    ? { title: `${recipe.family} · Myko`, description: `${recipe.cuisineOrigin} — recette canonique Myko V3.` }
+    ? { title: `${recipe.family} · Myko`, description: `${recipe.cuisineOrigin} — recette Myko V3 contrôlée.` }
     : {}
 }
 
-export default function CanonicalRecipePage({ params }) {
-  const recipe = getCanonicalRecipe(params.code)
+export default async function CanonicalRecipePage({ params }) {
+  const recipe = await loadRecipe(params.code)
   if (!recipe?.eligible) notFound()
 
   const scores = Object.entries(recipe.sensory?.scores || {})
@@ -51,7 +56,7 @@ export default function CanonicalRecipePage({ params }) {
 
       <header className={styles.hero}>
         <div>
-          <p className={styles.eyebrow}>Recette canonique V3 · confiance {recipe.confidence}</p>
+          <p className={styles.eyebrow}>Recette V3 contrôlée · confiance {recipe.confidence}</p>
           <h1>{recipe.family}</h1>
           <p className={styles.lede}>{recipe.cuisineOrigin} · {recipe.category}</p>
           {recipe.canonicalArbitration && <p className={styles.arbitration}>{recipe.canonicalArbitration}</p>}
@@ -76,7 +81,7 @@ export default function CanonicalRecipePage({ params }) {
           <h2>Pour {recipe.servings} personnes</h2>
           <ul>
             {recipe.exactIngredients.map((ingredient) => (
-              <li key={`${ingredient.formNormalized}-${ingredient.role}`}>
+              <li key={`${ingredient.foodFormId}-${ingredient.role}`}>
                 <span><strong>{ingredient.name}</strong><small>{ingredient.role}</small></span>
                 <span>{formatQuantity(ingredient.quantity)} {ingredient.unit}{ingredient.optional ? ' · facultatif' : ''}</span>
               </li>
@@ -136,7 +141,7 @@ export default function CanonicalRecipePage({ params }) {
       </div>
 
       <footer className={styles.footer}>
-        <div><strong>{recipe.techniques.join(' · ')}</strong><span>{recipe.sources.length} sources éditoriales recoupées</span></div>
+        <div><strong>{recipe.techniques.join(' · ')}</strong><span>{recipe.sources.length} source de données traçable</span></div>
         <Link href={`/planning?recipe=${recipe.code}`}>Intégrer au planning →</Link>
       </footer>
     </main>
