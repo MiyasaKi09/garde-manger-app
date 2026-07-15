@@ -43,42 +43,53 @@ complètement (3 composants, axe de variation « morceau ») comme référence.
 
 - **8 recettes** candidates (poulet moutarde purée, lentilles mijotées, omelette,
   gratin, haricots verts, salade de pois chiches, quinoa aux légumes, cabillaud + riz).
-- **25 exigences d'ingrédients**, **21 rattachées** à une `food_form` existante ; les
-  non rattachées (crème, sel…) = aliments que **F0 doit encore fournir**.
-- **Liste fonctionnelle F0 dérivée : 21 aliments** (`r0-functional-foods.json`) :
-  ail, cabillaud, carotte, citron, comté, crème, haricot vert, haut de cuisse de poulet,
-  lentille verte, moutarde, œuf, oignon jaune, oignon rouge, persil, pois chiche,
-  poivron rouge, pomme de terre, quinoa, riz blanc, sel, tomate.
+- **Liste fonctionnelle F0 dérivée : 31 formes** (`r0-functional-foods.json`) — l'**union**
+  des formes préférées **et de toutes les alternatives** (options validées, options d'axe,
+  formes de branche) : inclut désormais cuisse de poulet avec os, blanc de poulet, gruyère
+  râpé, riz complet, ainsi que les assaisonnements (sel fin, poivre noir moulu).
 
-## État & discipline (suite à l'audit directeur)
+## Variantes RÉELLEMENT exécutables (verdict directeur #2)
 
-Une première tentative de publication `F0.1-functional-r0` (18 formes) a été **rétractée** :
-le rattachement automatique « nom le plus court » choisissait de mauvaises formes
-(lentille/haricot déjà cuits, œuf dur au lieu de cru, pomme de terre nouvelle
-arbitraire) et la publication était prématurée + appliquée depuis une branche non
-fusionnée. Supabase a été **remis à l'état de `main`** (F0 candidate, culinary vide).
+Une option validée qui **change la cuisson** n'est plus un simple libellé : elle porte une
+`recipe_instruction_branch` propre, ses **étapes distinctes** (`recipe_steps.branch_id`), un
+`quantity_factor` (rendement, ex. **désossage** des cuisses avec os = ×1,45) et un
+`quality_impact`. L'axe de variation relie ses options aux branches par
+`selection_condition` (`{axis, option}`) — relation **déterministe**.
 
-**Règle adoptée** : plus aucune écriture Supabase depuis cette branche non fusionnée.
-Les corrections sont **code d'abord** ; l'application en base ne se fait qu'après merge.
+- **Poulet** : 3 morceaux ⇒ 3 branches avec saisie + mijotage **distincts** (haut de cuisse
+  20 min, cuisse entière avec os 30 min, blanc 12 min), rendement de désossage sur la cuisse.
+- **Cabillaud** : riz blanc (12 min) vs riz complet (18 min, plus d'eau) = 2 branches.
 
-## Corrections en cours (réf. verdict)
+Les **assaisonnements** chiffrés portent leur **forme réelle** (Sel fin, Poivre noir moulu)
+avec une **quantité de référence** (comptée dans le sodium) tout en restant
+`seasoning_to_taste` + optionnels (**ajustables au goût**) — plus de `preferred_food_form_id`
+NULL qui excluait le sel du calcul nutritionnel.
 
-1. Chargeur idempotent + `content_hash` calculé sur le **contenu complet** (pas le nom).
-2. Rattachement d'ingrédient à une forme **explicite et correcte en état** (cru/sec/cuit/
-   pelé…) — suppression du matching « nom le plus court ».
-3. Recettes **complètes** (matière grasse, liquide de déglaçage, sel chiffré, T° à cœur,
-   huile/vinaigre de la salade…). Chaque ingrédient cité dans une étape existe.
-4. `recipe_requirement_options` réellement peuplées ; variantes reliées aux formes/
-   exigences/branches.
-5. Garde-fous sur `publish_catalog_release` (confiance ≥ B, états ≥ B, pas de tâche de
-   revue ouverte, nutrition présente, checksums) + immuabilité étendue aux tables enfants.
-6. Produit commercial composé : nutrition d'**étiquette**, jamais celle d'une forme
-   générique simple.
-7. Provenance recette (import_run, auteur, licence) + tests culinaires (ingrédient cité,
-   cohérence cru/cuit, matière grasse de cuisson, options non vides).
+## Reproductibilité : hash & provenance (verdict directeur)
 
-## Suite (après corrections)
+- `content_hash` = md5 du **contenu canonique complet** : famille, `meal_role`,
+  `dish_structure`, titre, portions, temps prépa/cuisson, difficulté, composants (+rôle),
+  association ingrédient↔composant, `strictness`, `culinary_role`, `preparation_note`,
+  options (forme, `quantity_factor`, `quality_impact`, branche), étapes (+branche, T°),
+  branches, axes (+`selection_mode`). Toute modification de contenu change le hash.
+- Le **run d'import** est identifié par le **hash du corpus** (union des hash de recettes) :
+  un corpus modifié crée un nouveau run. La **provenance** est réécrite (delete+insert) à
+  chaque contenu → jamais de hash périmé.
 
-Reconstruire F0 depuis les **formes correctes en état** requises par les recettes,
-structurées comme `golden-foods.json`, puis publier atomiquement (avec garde-fous).
+## Mécanisme de migration & tests SQL en CI (verdict directeur #6, #7)
+
+- `scripts/db/apply-migrations.sh` : applicateur **ordonné, idempotent, tracé** dans
+  `supabase_migrations.schema_migrations` (réexécutable). Utilisé en CI **et** pour
+  réconcilier le registre avec les fichiers versionnés.
+- Job CI **`db-tests`** : Postgres éphémère → `00_bootstrap_ci.sql` (rôles/`auth` stub) →
+  `apply-migrations.sh` (×2, prouve l'idempotence) → assertions SQL `supabase/tests/ci/*.sql`
+  (immuabilité, garde-fous de publication, release exclusive, nutrition OFF). Une suite
+  pgTAP plus riche (`supabase/tests/*_test.sql`) est disponible en local (`pg_prove`).
+
+## Discipline d'application (rappel)
+
+Aucune écriture Supabase depuis une branche non fusionnée. Ordre imposé par le directeur :
+1) durcir (cette PR) → 2) merger → 3) appliquer les migrations **via le mécanisme** →
+4) charger les 8 recettes candidates (`r0-load.sql`). La publication F0 vient **plus tard**,
+après extension du corpus vers 30-50 recettes et revue.
 Nutrition des recettes via le calculateur déterministe + `toGramsV2` → `recipe_executions`.

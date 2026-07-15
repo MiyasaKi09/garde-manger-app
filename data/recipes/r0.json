@@ -1,5 +1,5 @@
 {
-  "_comment": "Corpus recette R0 (data-v2/recipe-factory). Réf. §6, §11 + verdict directeur. Contenu ÉDITORIAL PROPRE Myko (CC0). Chargées CANDIDATES (draft). Chaque ingrédient nomme une FORME EXACTE en état correct (cru/sec/cuit/pelé…) via `form` ; le loader la rattache par identité exacte (sinon NULL = forme F0 à fournir). Recettes COMPLÈTES : toute matière grasse/liquide/assaisonnement cité dans une étape figure dans les ingrédients, avec quantités et critères de cuisson (T° à cœur).",
+  "_comment": "Corpus recette R0 (data-v2/recipe-factory). Réf. §6, §11 + verdicts directeur. Contenu ÉDITORIAL PROPRE Myko (CC0). Chargées CANDIDATES (draft). Chaque ingrédient nomme une FORME EXACTE en état correct (cru/sec/cuit/pelé…) via `form` ; le loader la rattache par identité exacte (sinon NULL = forme F0 à fournir). VARIANTES EXÉCUTABLES : une option validée qui change la cuisson porte `branch`, `quantity_factor` (rendement, ex. désossage) et `quality_impact` ; les étapes propres à une variante portent `branch`. Le loader crée une recipe_instruction_branch par variante, y rattache ses étapes et relie chaque option d'axe à sa branche par `selection_condition`. Assaisonnements : forme réelle + quantité de référence (pour le sodium) + `seasoning_to_taste`/optionnel (ajustable au goût).",
   "source": { "code": "myko_editorial", "license": "cc0-1.0", "rights": "own_content", "publisher": "Myko" },
   "recipes": [
     {
@@ -11,9 +11,18 @@
         { "name": "sauce moutarde", "role": "sauce", "position": 2 },
         { "name": "purée", "role": "side", "position": 3 }
       ],
+      "branches": [
+        { "name": "haut de cuisse", "axis": "morceau", "option": "Haut de cuisse de poulet cru, désossé, sans peau", "confidence": "C" },
+        { "name": "cuisse entière", "axis": "morceau", "option": "Cuisse de poulet crue, avec os, avec peau", "confidence": "C" },
+        { "name": "blanc", "axis": "morceau", "option": "Blanc de poulet cru, sans peau", "confidence": "C" }
+      ],
       "ingredients": [
         { "component": "poulet", "food": "poulet", "form": "Haut de cuisse de poulet cru, désossé, sans peau", "quantity": 600, "unit": "g", "requirement_type": "validated_options", "strictness": "preferred", "culinary_role": "morceau a mijoter",
-          "options": ["Haut de cuisse de poulet cru, désossé, sans peau", "Cuisse de poulet crue, avec os, avec peau", "Blanc de poulet cru, sans peau"] },
+          "options": [
+            { "form": "Haut de cuisse de poulet cru, désossé, sans peau", "quantity_factor": 1.0, "quality_impact": 0, "branch": "haut de cuisse" },
+            { "form": "Cuisse de poulet crue, avec os, avec peau", "quantity_factor": 1.45, "quality_impact": 0.1, "branch": "cuisse entière" },
+            { "form": "Blanc de poulet cru, sans peau", "quantity_factor": 1.0, "quality_impact": -0.15, "branch": "blanc" }
+          ] },
         { "component": "poulet", "food": "huile d'olive", "form": "Huile d'olive vierge extra", "quantity": 15, "unit": "ml", "requirement_type": "functional_requirement", "strictness": "required", "culinary_role": "matiere grasse de saisie" },
         { "component": "sauce moutarde", "food": "oignon jaune", "form": "Oignon jaune cru", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
         { "component": "sauce moutarde", "food": "vin blanc", "form": "Vin blanc sec", "quantity": 100, "unit": "ml", "requirement_type": "functional_requirement", "strictness": "recommended", "culinary_role": "deglacage" },
@@ -26,10 +35,14 @@
         { "component": null, "food": "poivre", "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
       ],
       "steps": [
-        { "n": 1, "instruction": "Éplucher et émincer l'oignon. Saler et poivrer les hauts de cuisse.", "active_minutes": 6 },
-        { "n": 2, "instruction": "Saisir les hauts de cuisse dans l'huile d'olive 4 min par face, réserver.", "active_minutes": 10 },
+        { "n": 1, "instruction": "Éplucher et émincer l'oignon. Saler et poivrer le poulet.", "active_minutes": 6 },
+        { "n": 2, "branch": "haut de cuisse", "instruction": "Saisir les hauts de cuisse dans l'huile d'olive 4 min par face, réserver.", "active_minutes": 10 },
+        { "n": 2, "branch": "cuisse entière", "instruction": "Saisir les cuisses entières côté peau 5 min puis 4 min sur l'autre face, réserver.", "active_minutes": 12 },
+        { "n": 2, "branch": "blanc", "instruction": "Saisir les blancs 3 min par face à feu vif, réserver (ne pas dessécher).", "active_minutes": 6 },
         { "n": 3, "instruction": "Faire suer l'oignon, déglacer au vin blanc, ajouter moutarde et crème.", "active_minutes": 5 },
-        { "n": 4, "instruction": "Remettre le poulet, couvrir, mijoter 20 min à feu doux (T° à cœur ≥ 75 °C).", "active_minutes": 2, "passive_minutes": 20, "target_core_temperature_c": 75 },
+        { "n": 4, "branch": "haut de cuisse", "instruction": "Remettre les hauts de cuisse, couvrir, mijoter 20 min à feu doux (T° à cœur ≥ 75 °C).", "active_minutes": 2, "passive_minutes": 20, "target_core_temperature_c": 75 },
+        { "n": 4, "branch": "cuisse entière", "instruction": "Remettre les cuisses entières, couvrir, mijoter 30 min à feu doux (T° à cœur ≥ 75 °C, l'os ralentit la cuisson).", "active_minutes": 2, "passive_minutes": 30, "target_core_temperature_c": 75 },
+        { "n": 4, "branch": "blanc", "instruction": "Remettre les blancs, couvrir, mijoter 12 min à feu doux (T° à cœur ≥ 75 °C, retirer dès atteinte pour rester moelleux).", "active_minutes": 2, "passive_minutes": 12, "target_core_temperature_c": 75 },
         { "n": 5, "instruction": "Cuire les pommes de terre épluchées 20 min à l'eau salée, écraser avec beurre et lait chaud.", "active_minutes": 8, "passive_minutes": 20 }
       ],
       "variation_axes": [
@@ -79,13 +92,17 @@
         { "component": "gratin", "food": "pomme de terre", "form": "Pomme de terre crue, épluchée", "quantity": 800, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
         { "component": "gratin", "food": "crème", "form": "Crème fraîche épaisse", "quantity": 200, "unit": "ml", "requirement_type": "exact_form", "strictness": "recommended" },
         { "component": "gratin", "food": "lait", "form": "Lait demi-écrémé", "quantity": 150, "unit": "ml", "requirement_type": "functional_requirement", "strictness": "recommended" },
-        { "component": "gratin", "food": "fromage râpé", "form": "Comté", "quantity": 80, "unit": "g", "requirement_type": "validated_options", "strictness": "recommended", "options": ["Comté", "Gruyère râpé"] },
+        { "component": "gratin", "food": "fromage râpé", "form": "Comté", "quantity": 80, "unit": "g", "requirement_type": "validated_options", "strictness": "recommended", "culinary_role": "fromage a gratiner",
+          "options": [
+            { "form": "Comté", "quantity_factor": 1.0, "quality_impact": 0 },
+            { "form": "Gruyère râpé", "quantity_factor": 1.0, "quality_impact": -0.05 }
+          ] },
         { "component": "gratin", "food": "beurre", "form": "Beurre doux", "quantity": 15, "unit": "g", "requirement_type": "exact_form", "strictness": "recommended", "culinary_role": "beurrer le plat" },
         { "component": null, "food": "sel", "form": "Sel fin", "quantity": 5, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
       ],
       "steps": [
         { "n": 1, "instruction": "Éplucher et émincer finement les pommes de terre. Beurrer le plat.", "active_minutes": 10 },
-        { "n": 2, "instruction": "Disposer en couches, saler, napper de crème et lait, râper le comté dessus.", "active_minutes": 5 },
+        { "n": 2, "instruction": "Disposer en couches, saler, napper de crème et lait, râper le fromage dessus.", "active_minutes": 5 },
         { "n": 3, "instruction": "Cuire 45 min à 180 °C jusqu'à ce que la lame traverse sans résistance.", "passive_minutes": 45, "temperature_c": 180 }
       ]
     },
@@ -148,17 +165,29 @@
         { "name": "poisson", "role": "protein", "position": 1 },
         { "name": "riz", "role": "side", "position": 2 }
       ],
+      "branches": [
+        { "name": "riz blanc", "axis": "riz", "option": "Riz blanc cru", "confidence": "C" },
+        { "name": "riz complet", "axis": "riz", "option": "Riz complet cru", "confidence": "C" }
+      ],
       "ingredients": [
         { "component": "poisson", "food": "cabillaud", "form": "Cabillaud cru", "quantity": 600, "unit": "g", "requirement_type": "exact_form", "strictness": "required" },
         { "component": "poisson", "food": "citron", "form": "Citron jaune", "quantity": 1, "unit": "u", "requirement_type": "exact_form", "strictness": "recommended" },
         { "component": "poisson", "food": "huile d'olive", "form": "Huile d'olive vierge extra", "quantity": 15, "unit": "ml", "requirement_type": "exact_form", "strictness": "required", "culinary_role": "arroser le poisson" },
-        { "component": "riz", "food": "riz", "form": "Riz blanc cru", "quantity": 250, "unit": "g", "requirement_type": "validated_options", "strictness": "required", "options": ["Riz blanc cru", "Riz complet cru"] },
+        { "component": "riz", "food": "riz", "form": "Riz blanc cru", "quantity": 250, "unit": "g", "requirement_type": "validated_options", "strictness": "required", "culinary_role": "feculent",
+          "options": [
+            { "form": "Riz blanc cru", "quantity_factor": 1.0, "quality_impact": 0, "branch": "riz blanc" },
+            { "form": "Riz complet cru", "quantity_factor": 1.0, "quality_impact": 0.05, "branch": "riz complet" }
+          ] },
         { "component": null, "food": "sel", "form": "Sel fin", "quantity": 5, "unit": "g", "requirement_type": "seasoning_to_taste", "strictness": "optional", "is_optional": true }
       ],
       "steps": [
         { "n": 1, "instruction": "Déposer le cabillaud dans un plat, arroser d'huile d'olive, ajouter des rondelles de citron, saler.", "active_minutes": 5 },
         { "n": 2, "instruction": "Cuire 20 min à 180 °C (T° à cœur ≥ 63 °C).", "passive_minutes": 20, "temperature_c": 180, "target_core_temperature_c": 63 },
-        { "n": 3, "instruction": "Cuire le riz 12 min à l'eau bouillante salée, égoutter.", "active_minutes": 2, "passive_minutes": 12 }
+        { "n": 3, "branch": "riz blanc", "instruction": "Cuire le riz blanc 12 min à l'eau bouillante salée, égoutter.", "active_minutes": 2, "passive_minutes": 12 },
+        { "n": 3, "branch": "riz complet", "instruction": "Cuire le riz complet 18 min à l'eau bouillante salée (prévoir plus d'eau), égoutter.", "active_minutes": 2, "passive_minutes": 18 }
+      ],
+      "variation_axes": [
+        { "name": "riz", "selection_mode": "single", "options": ["Riz blanc cru", "Riz complet cru"] }
       ]
     }
   ]
