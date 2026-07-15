@@ -40,6 +40,69 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
+  db-tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install psql client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Bootstrap Supabase roles/auth (CI stub)
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/00_bootstrap_ci.sql
+
+      # Le registre de migrations mélange des migrations V1 (qui supposent le schéma de
+      # prod existant) et les migrations V2 auto-portantes. La CI valide l'application
+      # DEPUIS ZÉRO des seules migrations structurelles V2 (`*_v2_*.sql`).
+      - name: Sélection des migrations structurelles V2
+        run: mkdir -p /tmp/v2mig && cp supabase/migrations/*_v2_*.sql /tmp/v2mig/
+
+      - name: Apply migrations (ordonné, atomique, tracé)
+        run: bash scripts/db/apply-migrations.sh /tmp/v2mig
+
+      - name: Migrations idempotentes (2e application ne fait rien)
+        run: bash scripts/db/apply-migrations.sh /tmp/v2mig
+
+      - name: Run SQL assertions (immutabilité, objets, registre)
+        run: |
+          shopt -s nullglob
+          for f in supabase/tests/ci/*.sql; do
+            echo "== $f =="
+            psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"
+          done
+
+      # Le chargeur R0 doit produire un SQL qui s'applique réellement sur le schéma V2.
+      - name: Le chargeur R0 génère un SQL valide sur le schéma
+        run: |
+          node scripts/data/recipes/build-r0.mjs
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/r0-load.sql
+          psql "$DATABASE_URL" -tAc "select count(*) from culinary.recipe_instruction_branches;" | grep -qx 5
+
   e2e:
     runs-on: ubuntu-latest
     env:

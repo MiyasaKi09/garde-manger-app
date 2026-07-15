@@ -82,8 +82,7 @@ export function normalizeOffProduct(p) {
   const { package_quantity, package_unit } = parseQuantityString(p.quantity, p.product_quantity)
   const brand = String(p.brands ?? '').split(',')[0].trim() || null
   const name_normalized = normalizeName(name)
-  const n = p.nutriments || {}
-  const num = (v) => (typeof v === 'number' && Number.isFinite(v) ? v : null)
+  const label = extractLabelNutriments(p.nutriments || {})
 
   return {
     barcode,
@@ -95,16 +94,36 @@ export function normalizeOffProduct(p) {
     packaging_type: parsePackagingType(p.packaging),
     is_composite: isCompositeProduct(p, name_normalized),
     categories_tags: Array.isArray(p.categories_tags) ? p.categories_tags : [],
-    // valeurs d'étiquette (pour 100 g/ml) — indicatif, non source de vérité générique
-    label_nutriments: {
-      energy_kcal: num(n['energy-kcal_100g']),
-      protein_g: num(n['proteins_100g']),
-      carbohydrate_g: num(n['carbohydrates_100g']),
-      fat_g: num(n['fat_100g']),
-      saturated_fat_g: num(n['saturated-fat_100g']),
-      sugars_g: num(n['sugars_100g']),
-      salt_g: num(n['salt_100g']),
-      fiber_g: num(n['fiber_100g']),
-    },
+    // valeurs d'étiquette (pour 100 g/ml) — clés nulles SUPPRIMÉES : un objet vide {}
+    // signifie « pas d'étiquette exploitable » (jamais confondu avec une étiquette présente).
+    label_nutriments: label.values,
+    // une étiquette est « complète » si les 4 macros clés sont présentes (verdict directeur).
+    label_nutrition_complete: label.complete,
+    label_nutrition_confidence: label.confidence,   // A si complète, C si partielle, null si vide
+    label_nutrition_review_status: 'unreviewed',
   }
+}
+
+/**
+ * Extrait les valeurs d'étiquette OFF (pour 100 g/ml) en SUPPRIMANT les clés nulles.
+ * @returns {{ values:object, complete:boolean, confidence:string|null }}
+ */
+export function extractLabelNutriments(n) {
+  const num = (v) => (typeof v === 'number' && Number.isFinite(v) ? v : null)
+  const raw = {
+    energy_kcal: num(n['energy-kcal_100g']),
+    protein_g: num(n['proteins_100g']),
+    carbohydrate_g: num(n['carbohydrates_100g']),
+    fat_g: num(n['fat_100g']),
+    saturated_fat_g: num(n['saturated-fat_100g']),
+    sugars_g: num(n['sugars_100g']),
+    salt_g: num(n['salt_100g']),
+    fiber_g: num(n['fiber_100g']),
+  }
+  const values = {}
+  for (const [k, v] of Object.entries(raw)) if (v !== null) values[k] = v
+  // complète = 4 macros clés présentes ; sans elles, la nutrition étiquette n'est pas fiable.
+  const complete = ['energy_kcal', 'protein_g', 'carbohydrate_g', 'fat_g'].every((k) => k in values)
+  const confidence = Object.keys(values).length === 0 ? null : (complete ? 'A' : 'C')
+  return { values, complete, confidence }
 }

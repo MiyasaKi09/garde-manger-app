@@ -1,5 +1,6 @@
 {
-  "count": 27,
+  "corpus_hash": "f1bab84b494c59664f7f629c27540e56",
+  "count": 31,
   "forms": [
     {
       "normalized": "ail cru",
@@ -8,6 +9,10 @@
     {
       "normalized": "beurre doux",
       "name": "Beurre doux"
+    },
+    {
+      "normalized": "blanc de poulet cru sans peau",
+      "name": "Blanc de poulet cru, sans peau"
     },
     {
       "normalized": "cabillaud cru",
@@ -28,6 +33,14 @@
     {
       "normalized": "creme fraiche epaisse",
       "name": "Crème fraîche épaisse"
+    },
+    {
+      "normalized": "cuisse de poulet crue avec os avec peau",
+      "name": "Cuisse de poulet crue, avec os, avec peau"
+    },
+    {
+      "normalized": "gruyere rape",
+      "name": "Gruyère râpé"
     },
     {
       "normalized": "haricot vert cru",
@@ -92,6 +105,10 @@
     {
       "normalized": "riz blanc cru",
       "name": "Riz blanc cru"
+    },
+    {
+      "normalized": "riz complet cru",
+      "name": "Riz complet cru"
     },
     {
       "normalized": "sel fin",

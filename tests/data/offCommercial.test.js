@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {
-  parseQuantityString, parsePackagingType, normalizeOffProduct, isCompositeProduct,
+  parseQuantityString, parsePackagingType, normalizeOffProduct, isCompositeProduct, extractLabelNutriments,
 } from '@/scripts/data/lib/off-normalize.mjs'
 import { significantTokens, matchProductToConcept } from '@/scripts/data/lib/off-match.mjs'
 
@@ -45,6 +45,39 @@ describe('normalizeOffProduct', () => {
   it('retourne null sans code-barres ou nom', () => {
     expect(normalizeOffProduct({ code: '', product_name: 'x' })).toBe(null)
     expect(normalizeOffProduct({ code: '123', product_name: '' })).toBe(null)
+  })
+})
+
+describe('extractLabelNutriments — clés nulles supprimées + complétude (verdict directeur)', () => {
+  it('étiquette complète (4 macros) → complete + confiance A, clés nulles retirées', () => {
+    const l = extractLabelNutriments({
+      'energy-kcal_100g': 200, 'proteins_100g': 8, 'carbohydrates_100g': 20, 'fat_100g': 9,
+      'salt_100g': null, 'fiber_100g': undefined,
+    })
+    expect(l.complete).toBe(true)
+    expect(l.confidence).toBe('A')
+    expect('salt_g' in l.values).toBe(false)
+    expect('fiber_g' in l.values).toBe(false)
+    expect(l.values).toEqual({ energy_kcal: 200, protein_g: 8, carbohydrate_g: 20, fat_g: 9 })
+  })
+  it('étiquette partielle → non complète + confiance C', () => {
+    const l = extractLabelNutriments({ 'energy-kcal_100g': 200, 'proteins_100g': 8 })
+    expect(l.complete).toBe(false)
+    expect(l.confidence).toBe('C')
+  })
+  it('étiquette entièrement nulle → objet vide {} (jamais « présente »)', () => {
+    const l = extractLabelNutriments({ 'energy-kcal_100g': null })
+    expect(l.values).toEqual({})
+    expect(l.complete).toBe(false)
+    expect(l.confidence).toBe(null)
+  })
+  it('normalizeOffProduct expose les drapeaux de complétude', () => {
+    const p = normalizeOffProduct({
+      code: '1', product_name: 'x', nutriments: { 'energy-kcal_100g': 100, 'proteins_100g': 3, 'carbohydrates_100g': 10, 'fat_100g': 5 },
+    })
+    expect(p.label_nutrition_complete).toBe(true)
+    expect(p.label_nutrition_confidence).toBe('A')
+    expect(p.label_nutrition_review_status).toBe('unreviewed')
   })
 })
 
