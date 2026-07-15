@@ -9,7 +9,7 @@ import { readCache, writeCache } from '@/lib/pageCache';
 import { limitRecipePreview, selectDiverseAntiWaste } from '@/lib/domain/recipes/catalogPresentation';
 import './recipes.css';
 
-const RECIPES_CACHE_KEY = 'recipes:v3-operational:2';
+const RECIPES_CACHE_KEY = 'recipes:v3-editorial-complete:1';
 
 /* ── Fiche recette horizontale (vignette + infos), barre d'état à gauche ── */
 function variantOf(s) {
@@ -47,7 +47,10 @@ function Fiche({ r, s, variant }) {
       <div className="rc-body">
         <h3 className="rc-name">{r.title || 'Sans titre'}</h3>
         {r.source === 'canonical_v3' && (
-          <span className="rc-canonical">V3 vérifiée · nutrition 100 %</span>
+          <span className="rc-canonical">
+            {r.planning_ready ? 'Quantités et nutrition vérifiées' : 'Quantités vérifiées'}
+            {r.variant_count > 0 ? ` · ${r.variant_count} variante${r.variant_count > 1 ? 's' : ''}` : ''}
+          </span>
         )}
         {cuis}
         <div className="rc-meta">
@@ -95,8 +98,8 @@ export default function RecipesPage() {
     try {
       if (!readCache(RECIPES_CACHE_KEY)) setLoading(true);
 
-      // Le serveur renvoie uniquement le corpus V3 contrôlé, déjà rapproché du
-      // stock avec conversion d'unités — un seul aller-retour.
+      // Le serveur renvoie le corpus éditorial complet. Seules les recettes
+      // planning_ready reçoivent un statut calculé depuis le garde-manger.
       const res = await authFetch('/api/recipes/catalog');
       const data = await res.json().catch(() => ({}));
       if (!res.ok || data.error) {

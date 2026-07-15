@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { convertWithMeta } from '@/lib/units'
-import { listOperationalRecipes } from '@/lib/db/operationalRecipeCatalog'
+import { listEditorialRecipes } from '@/lib/db/operationalRecipeCatalog'
 import { operationalRecipeCards } from '@/lib/domain/recipes/operationalCatalog'
 import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { getEffectiveExpiration } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'
-export const recipeCatalogSourcePolicy = 'v3_operational_only'
+export const recipeCatalogSourcePolicy = 'v3_editorial_complete'
 
 const NO_STORE_HEADERS = { 'Cache-Control': 'private, no-store' }
 const cap = (value) => (value ? value.charAt(0).toUpperCase() + value.slice(1) : value)
@@ -190,9 +190,9 @@ async function computeCatalogAvailability(supabase, recipes, rawInventory) {
 }
 
 /**
- * Le catalogue principal expose exclusivement les recettes V3 opérationnelles.
- * Les recettes générées restent accessibles depuis leur historique et le planning,
- * mais ne sont plus mélangées au corpus éditorial validé.
+ * Le catalogue principal expose les 302 recettes éditoriales V3. Le statut
+ * planning_ready sépare les recettes totalement rapprochées du stock de celles
+ * qui restent consultables mais ne doivent pas encore piloter le planning.
  */
 export async function GET(request) {
   const { supabase, user, error: authError } = await authenticateRequest(request)
@@ -204,7 +204,7 @@ export async function GET(request) {
   let inventoryResult
   try {
     ;[operationalCatalog, inventoryResult] = await Promise.all([
-      listOperationalRecipes(supabase),
+      listEditorialRecipes(supabase),
       supabase
         .from('inventory_lots')
         .select('canonical_food_id, archetype_id, qty_remaining, unit, expiration_date, adjusted_expiration_date')
@@ -216,9 +216,10 @@ export async function GET(request) {
   }
 
   const recipes = operationalRecipeCards(operationalCatalog.recipes)
+  const planningRecipes = recipes.filter((recipe) => recipe.planning_ready)
   let availabilityByKey = null
   if (!inventoryResult.error) {
-    availabilityByKey = await computeCatalogAvailability(supabase, recipes, inventoryResult.data || [])
+    availabilityByKey = await computeCatalogAvailability(supabase, planningRecipes, inventoryResult.data || [])
   } else {
     console.error('[recipes/catalog] Inventory unavailable', inventoryResult.error)
   }
