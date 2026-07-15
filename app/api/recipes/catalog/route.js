@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { dedupCatalog } from '@/app/recipes/catalogDedup'
 import { convertWithMeta } from '@/lib/units'
+import { getCanonicalRecipeCards } from '@/lib/domain/recipes/canonicalCatalog'
+import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 
 export const dynamic = 'force-dynamic'
 
@@ -77,10 +79,11 @@ export function computeRecipeAvailability(recipe, inv, archetypeToCanonical, nam
       if (ing.canonical_food_id && lot.canonical_food_id === ing.canonical_food_id) m = true
       else if (ing.canonical_food_id && lot.archetype_id && archetypeToCanonical[lot.archetype_id] === ing.canonical_food_id) m = true
       else if (ing.archetype_id && lot.archetype_id === ing.archetype_id) m = true
+      else if (ing.canonical_form_normalized && lot.form_normalized_candidates?.includes(ing.canonical_form_normalized)) m = true
       if (m) {
         // Convertir la qty du lot vers l'unité de l'ingrédient avant sommation.
         // Un lot inconvertible (ex: g → u sans meta) est exclu de la somme.
-        const ingUnit = ing.unit || 'g'
+        const ingUnit = ing.canonical_form_normalized ? 'g' : (ing.unit || 'g')
         const lotUnit = lot.unit || 'g'
         const converted = convertWithMeta(lot.qty_remaining || 0, lotUnit, ingUnit)
         // convertWithMeta retourne { qty, unit } ; si unit ≠ ingUnit → conversion non fiable → exclure.
@@ -93,7 +96,8 @@ export function computeRecipeAvailability(recipe, inv, archetypeToCanonical, nam
         }
       }
     }
-    if (totalAvailable >= (ing.quantity || 1)) {
+    const required = ing.canonical_form_normalized ? ing.quantity_grams : (ing.quantity || 1)
+    if (totalAvailable >= required) {
       available++
       if (earliestExp) {
         const days = Math.floor((earliestExp - now) / 86400000)
@@ -176,6 +180,7 @@ export async function GET(request) {
   })
 
   // 3. Normaliser vers la forme commune de carte.
+  const canonical = getCanonicalRecipeCards()
   const generated = genData.map(r => ({
     key: `gen-${r.id}`,
     source: 'generated',
@@ -207,8 +212,8 @@ export async function GET(request) {
     linked_ingredients: clsIngsByRecipe[r.id] || [],
   }))
 
-  // 4. Déduplication : générées d'abord pour que « préférer generated » soit efficace.
-  const deduped = dedupCatalog([...generated, ...classic])
+  // 4. Déduplication : une recette V3 validée prime sur les sources historiques.
+  const deduped = dedupCatalog([...canonical, ...generated, ...classic])
 
   // 5. Disponibilité face au stock (miroir de l'ancien calcul client).
   //    Si le stock n'a pas pu être lu, availability = null (l'UI dégrade en « mut »).
@@ -218,21 +223,20 @@ export async function GET(request) {
 
     // archetype d'un lot → canonique + noms des ingrédients liés, en parallèle.
     const lotArcheIds = [...new Set(inv.filter(l => l.archetype_id).map(l => l.archetype_id))]
-    const canonIds = new Set(), archeNameIds = new Set()
+    const canonIds = new Set(inv.filter(lot => lot.canonical_food_id).map(lot => lot.canonical_food_id))
+    const archeNameIds = new Set()
     deduped.forEach(r => (r.linked_ingredients || []).forEach(ing => {
       if (ing.canonical_food_id) canonIds.add(ing.canonical_food_id)
       if (ing.archetype_id) archeNameIds.add(ing.archetype_id)
     }))
+    const requestedArcheIds = [...new Set([...lotArcheIds, ...archeNameIds])]
 
-    const [archeMapResult, canonNameResult, archeNameResult] = await Promise.all([
-      lotArcheIds.length
-        ? supabase.from('archetypes').select('id, canonical_food_id').in('id', lotArcheIds)
+    const [archeMapResult, canonNameResult] = await Promise.all([
+      requestedArcheIds.length
+        ? supabase.from('archetypes').select('id, canonical_food_id, name').in('id', requestedArcheIds)
         : Promise.resolve({ data: [] }),
       canonIds.size
         ? supabase.from('canonical_foods').select('id, canonical_name').in('id', [...canonIds])
-        : Promise.resolve({ data: [] }),
-      archeNameIds.size
-        ? supabase.from('archetypes').select('id, name').in('id', [...archeNameIds])
         : Promise.resolve({ data: [] }),
     ])
 
@@ -240,13 +244,20 @@ export async function GET(request) {
     ;(archeMapResult.data || []).forEach(a => { archetypeMapping[a.id] = a.canonical_food_id })
     const canonName = {}, archeName = {}
     ;(canonNameResult.data || []).forEach(c => { canonName[c.id] = c.canonical_name })
-    ;(archeNameResult.data || []).forEach(a => { archeName[a.id] = a.name })
-    const nameOf = (ing) => cap(canonName[ing.canonical_food_id] || archeName[ing.archetype_id] || 'ingrédient')
+    ;(archeMapResult.data || []).forEach(a => { archeName[a.id] = a.name })
+    const nameOf = (ing) => cap(ing.canonical_form_name || canonName[ing.canonical_food_id] || archeName[ing.archetype_id] || 'ingrédient')
+    const inventoryWithNames = inv.map((lot) => ({
+      ...lot,
+      form_normalized_candidates: [
+        canonName[lot.canonical_food_id],
+        archeName[lot.archetype_id],
+      ].filter(Boolean).map(normalizeFoodForm),
+    }))
 
     const now = new Date()
     availabilityByKey = {}
     for (const recipe of deduped) {
-      const s = computeRecipeAvailability(recipe, inv, archetypeMapping, nameOf, now)
+      const s = computeRecipeAvailability(recipe, inventoryWithNames, archetypeMapping, nameOf, now)
       availabilityByKey[recipe.key] = {
         status: availabilityStatusOf(s),
         missing_count: s.missing,

@@ -43,6 +43,9 @@ function Fiche({ r, s, variant }) {
       </div>
       <div className="rc-body">
         <h3 className="rc-name">{r.title || 'Sans titre'}</h3>
+        {r.source === 'canonical_v3' && (
+          <span className="rc-canonical">V3 vérifiée · nutrition 100 %</span>
+        )}
         {cuis}
         <div className="rc-meta">
           {time > 0 ? `${time} min` : '—'}{r.servings ? ` · ${r.servings} pers` : ''}

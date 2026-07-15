@@ -1,0 +1,78 @@
+import { describe, expect, it } from 'vitest'
+import { generateClosedLoopPlan, sensoryTransitionPenalty } from '@/lib/domain/planning/closedLoopPlanner'
+
+const makeRecipe = (code, profile, form = 'carotte crue', overrides = {}) => ({
+  code,
+  family: `Recette ${code}`,
+  eligible: true,
+  servings: 2,
+  prepMinutes: 15,
+  cookMinutes: 20,
+  cuisineOrigin: code === 'C' ? 'Italie' : 'France',
+  allergens: [],
+  techniques: [code === 'C' ? 'grillé' : 'mijotage'],
+  sensory: {
+    profile,
+    scores: { richness: profile === 'rich_winey' ? 5 : 2, acidic: profile === 'fresh_acidic' ? 4 : 1, freshness: profile === 'fresh_acidic' ? 4 : 1 },
+    target_textures: [profile === 'fresh_acidic' ? 'croquant' : 'fondant'],
+  },
+  exactIngredients: [{ name: form, formNormalized: form, grams: 100, optional: false }],
+  nutritionPerServing: { kcal: 500, proteinG: 30, carbsG: 55, fatG: 18, fiberG: 8 },
+  ...overrides,
+})
+
+describe('closedLoopPlanner', () => {
+  it('réserve le stock globalement sans promettre deux fois le même lot', () => {
+    const plan = generateClosedLoopPlan({
+      slots: [{ key: 'd1', date: '2026-07-20' }, { key: 'd2', date: '2026-07-21' }],
+      recipes: [makeRecipe('A', 'rich_winey'), makeRecipe('B', 'creamy_delicate')],
+      inventoryLots: [{ id: 'lot-1', formNormalized: 'carotte crue', gramsAvailable: 150, expiresOn: '2026-07-21' }],
+      constraints: { allowShopping: true, targetPerMeal: { kcal: 500, proteinG: 30 } },
+    })
+    expect(plan.status).toBe('published')
+    expect(plan.reservations.reduce((sum, item) => sum + item.grams, 0)).toBe(150)
+    expect(plan.shoppingItems).toContainEqual(expect.objectContaining({ formNormalized: 'carotte crue', grams: 50 }))
+  })
+
+  it('favorise une transition sensorielle variée', () => {
+    const repeated = sensoryTransitionPenalty(makeRecipe('A', 'rich_winey'), makeRecipe('B', 'rich_winey'))
+    const contrasted = sensoryTransitionPenalty(makeRecipe('A', 'rich_winey'), makeRecipe('C', 'fresh_acidic'))
+    expect(repeated.total).toBeGreaterThan(contrasted.total)
+    expect(repeated.reasons).toContain('sensory_profile_repeated')
+  })
+
+  it('respecte les allergènes comme contrainte dure', () => {
+    const unsafe = makeRecipe('A', 'rich_winey', 'carotte crue', { allergens: ['gluten'] })
+    const safe = makeRecipe('B', 'fresh_acidic')
+    const plan = generateClosedLoopPlan({
+      slots: [{ key: 'd1', date: '2026-07-20' }],
+      recipes: [unsafe, safe],
+      inventoryLots: [{ id: 'lot-1', formNormalized: 'carotte crue', gramsAvailable: 100 }],
+      constraints: { allowShopping: true, allergens: ['gluten'] },
+    })
+    expect(plan.slots[0].recipeCode).toBe('B')
+  })
+
+  it('bloque les aliments interdits jusque dans une forme alimentaire précise', () => {
+    const unsafe = makeRecipe('A', 'rich_winey', 'huile d arachide raffinee')
+    const safe = makeRecipe('B', 'fresh_acidic', 'carotte crue')
+    const plan = generateClosedLoopPlan({
+      slots: [{ key: 'd1', date: '2026-07-20' }],
+      recipes: [unsafe, safe],
+      constraints: { allowShopping: true, forbiddenForms: ['arachide'] },
+    })
+    expect(plan.slots[0].recipeCode).toBe('B')
+  })
+
+  it('garde un plan faisable avec répétition pénalisée si une seule recette est sûre', () => {
+    const onlySafe = makeRecipe('A', 'fresh_acidic')
+    const plan = generateClosedLoopPlan({
+      slots: [{ key: 'd1', date: '2026-07-20' }, { key: 'd2', date: '2026-07-21' }],
+      recipes: [onlySafe],
+      constraints: { allowShopping: true },
+    })
+    expect(plan.status).toBe('published')
+    expect(plan.slots).toHaveLength(2)
+    expect(plan.slots[1].explanations).toContain('recipe_repeated')
+  })
+})

@@ -6,13 +6,11 @@ import { ArrowLeft, Sparkles, RefreshCw } from 'lucide-react'
 import { authFetch } from '@/lib/authFetch'
 
 const PROGRESS_MESSAGES = [
-  { delay: 0,     text: 'Myko prépare ton planning...' },
-  { delay: 8000,  text: 'Analyse du stock et des objectifs...' },
-  { delay: 16000, text: 'Sélection des recettes de la semaine...' },
-  { delay: 25000, text: 'Calcul des macros par personne...' },
-  { delay: 35000, text: 'Optimisation de la liste de courses...' },
-  { delay: 50000, text: 'Finalisation du planning...' },
-  { delay: 70000, text: 'Ça prend un peu plus longtemps que prévu...' },
+  { delay: 0, text: 'Analyse exacte du garde-manger...' },
+  { delay: 1200, text: 'Réservation globale des lots ouverts et proches de la date...' },
+  { delay: 2600, text: 'Équilibrage nutritionnel et sensoriel des 14 repas...' },
+  { delay: 4200, text: 'Calcul des quantités réellement manquantes...' },
+  { delay: 6500, text: 'Publication atomique du planning...' },
 ]
 
 function getNextMonday() {
@@ -39,8 +37,8 @@ export default function PlanningAssistantPage() {
   const abortRef = useRef(null)
   const timersRef = useRef([])
 
-  const nextMonday = getNextMonday()
-  const weekLabel = formatWeekLabel(nextMonday)
+  const windowStart = getNextMonday().toISOString().slice(0, 10)
+  const weekLabel = formatWeekLabel(new Date(`${windowStart}T12:00:00`))
 
   const startProgressMessages = useCallback(() => {
     timersRef.current.forEach(t => clearTimeout(t))
@@ -56,59 +54,20 @@ export default function PlanningAssistantPage() {
     setErrorMsg('')
     startProgressMessages()
 
-    const abortableSleep = (ms, signal) => new Promise((resolve, reject) => {
-      const t = setTimeout(resolve, ms)
-      signal?.addEventListener('abort', () => {
-        clearTimeout(t)
-        reject(new DOMException('Aborted', 'AbortError'))
-      }, { once: true })
-    })
-
     try {
       abortRef.current = new AbortController()
       const signal = abortRef.current.signal
-
-      // Référence : id max des imports existants, pour détecter le nouveau.
-      let baselineId = 0
-      try {
-        const baseRes = await authFetch('/api/planning/imports', { signal })
-        const baseData = await baseRes.json()
-        for (const imp of (baseData.imports || [])) {
-          if (Number(imp.id) > baselineId) baselineId = Number(imp.id)
-        }
-      } catch (e) {
-        if (e.name === 'AbortError') return
-      }
-
-      // Déclenche la routine (zéro coût API direct).
-      const trigRes = await authFetch('/api/routine/generate-plan', {
+      const response = await authFetch('/api/planning/generate-v3', {
         method: 'POST',
         signal,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ window_start: windowStart }),
       })
-      const trigData = await trigRes.json().catch(() => ({}))
-      if (!trigRes.ok && trigRes.status !== 202) {
-        const detail = trigData.detail ? ` — ${trigData.detail}` : ''
-        const hint = trigData.hint ? `\n${trigData.hint}` : ''
-        throw new Error((trigData.error || `Erreur déclenchement (${trigRes.status})`) + detail + hint)
-      }
-
-      // Poll Supabase jusqu'à voir le nouvel import (la routine écrit directement).
-      const MAX_WAIT_MS = 6 * 60 * 1000
-      const POLL_MS = 12_000
-      const deadline = Date.now() + MAX_WAIT_MS
-      while (Date.now() < deadline) {
-        await abortableSleep(POLL_MS, signal)
-        const res = await authFetch('/api/planning/imports', { signal })
-        const data = await res.json()
-        const fresh = (data.imports || []).find(imp => Number(imp.id) > baselineId)
-        if (fresh) {
-          setStatus('success')
-          setProgressText('Planning généré !')
-          setTimeout(() => router.push('/planning'), 800)
-          return
-        }
-      }
-      throw new Error("La routine prend plus de temps que prévu. Ton planning apparaîtra dans l'onglet Planning dès qu'il sera prêt.")
+      const data = await response.json().catch(() => ({}))
+      if (!response.ok) throw new Error(data.error || `Échec de génération (${response.status})`)
+      setStatus('success')
+      setProgressText('Planning vérifié et sauvegardé !')
+      setTimeout(() => router.push('/planning'), 700)
 
     } catch (err) {
       if (err.name === 'AbortError') return
@@ -118,7 +77,7 @@ export default function PlanningAssistantPage() {
       timersRef.current.forEach(t => clearTimeout(t))
       abortRef.current = null
     }
-  }, [router, startProgressMessages])
+  }, [router, startProgressMessages, windowStart])
 
   useEffect(() => {
     return () => {
@@ -160,7 +119,7 @@ export default function PlanningAssistantPage() {
           </button>
 
           <p className="asst-note">
-            La génération dure 2–4 minutes. Tu peux quitter la page — le planning apparaîtra dans l'onglet Planning.
+            Le calcul est déterministe : stock réservé une seule fois, allergies bloquantes, recettes exactes et courses chiffrées.
           </p>
         </section>
       )}
@@ -175,7 +134,7 @@ export default function PlanningAssistantPage() {
             <div className="v21-skel" style={{ height: 12, width: '70%' }} />
             <div className="v21-skel" style={{ height: 12, width: '80%' }} />
           </div>
-          <p className="asst-note">Myko écrit directement dans Supabase au fur et à mesure.</p>
+          <p className="asst-note">La publication est atomique : aucun demi-planning ne sera sauvegardé.</p>
         </section>
       )}
 

@@ -1,0 +1,5633 @@
+{
+  "corpus_version": "v3-300-real-dishes",
+  "source": "Ciqual 2020 + explicit Myko overrides",
+  "forms": [
+    {
+      "canonical_name": "Agneau haché cru",
+      "canonical_name_normalized": "agneau hache cru",
+      "category": "viandes",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "21502",
+      "source_name": "Agneau, gigot, cru",
+      "state": {
+        "concept": "Agneau haché cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 128,
+        "proteinG": 20,
+        "carbsG": 0.48,
+        "fatG": 5.13,
+        "fiberG": 0.96
+      },
+      "note": "Proxy nutritionnel explicite : gigot d’agneau cru, faute d’entrée hachée dédiée."
+    },
+    {
+      "canonical_name": "Ail cru",
+      "canonical_name_normalized": "ail cru",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11000",
+      "source_name": "Ail, cru",
+      "state": {
+        "concept": "Ail cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 111,
+        "proteinG": 5.31,
+        "carbsG": 18.6,
+        "fatG": 0.5,
+        "fiberG": 1.51
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Anchois à l'huile, égoutté",
+      "canonical_name_normalized": "anchois a l huile egoutte",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "26000",
+      "source_name": "Anchois, filets à l'huile, semi-conserve, égoutté",
+      "state": {
+        "concept": "Anchois à l'huile",
+        "rest": "égoutté",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 182,
+        "proteinG": 26.4,
+        "carbsG": 0.2,
+        "fatG": 8.45,
+        "fiberG": 12.2
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Aneth frais",
+      "canonical_name_normalized": "aneth frais",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11093",
+      "source_name": "Aneth, frais",
+      "state": {
+        "concept": "Aneth frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 48.2,
+        "proteinG": 3.93,
+        "carbsG": 3.9,
+        "fatG": 1.1,
+        "fiberG": 2.5
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Aubergine fraîche",
+      "canonical_name_normalized": "aubergine fraiche",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20053",
+      "source_name": "Aubergine, crue",
+      "state": {
+        "concept": "Aubergine fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g",
+        "u"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 15.3,
+        "proteinG": 1.12,
+        "carbsG": 2.39,
+        "fatG": 0.14,
+        "fiberG": 0.58
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Banane mûre",
+      "canonical_name_normalized": "banane mure",
+      "category": "fruits",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "13005",
+      "source_name": "Banane, pulpe, crue",
+      "state": {
+        "concept": "Banane mûre",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 90.5,
+        "proteinG": 1.06,
+        "carbsG": 19.7,
+        "fatG": 0.5,
+        "fiberG": 0.79
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Basilic frais",
+      "canonical_name_normalized": "basilic frais",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11033",
+      "source_name": "Basilic, frais",
+      "state": {
+        "concept": "Basilic frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 34.8,
+        "proteinG": 3.35,
+        "carbsG": 2.55,
+        "fatG": 0.47,
+        "fiberG": 1.49
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Béchamel préparée",
+      "canonical_name_normalized": "bechamel preparee",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11143",
+      "source_name": "Sauce béchamel, maison",
+      "state": {
+        "concept": "Béchamel préparée",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 146.6,
+        "proteinG": 3.84,
+        "carbsG": 8.97,
+        "fatG": 10.6,
+        "fiberG": 1.47
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Beurre doux",
+      "canonical_name_normalized": "beurre doux",
+      "category": "matieres_grasses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "16400",
+      "source_name": "Beurre à 82% MG, doux",
+      "state": {
+        "concept": "Beurre doux",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 753,
+        "proteinG": 0.7,
+        "carbsG": 0.9,
+        "fatG": 82.9,
+        "fiberG": 0.25
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Bicarbonate de sodium alimentaire",
+      "canonical_name_normalized": "bicarbonate de sodium alimentaire",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11507",
+      "source_name": "Bicarbonate de soude",
+      "state": {
+        "concept": "Bicarbonate de sodium alimentaire",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 0.4,
+        "proteinG": 0.1,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Macro-nutriments nuls ; usage technologique en faible quantité."
+    },
+    {
+      "canonical_name": "Bière brune belge",
+      "canonical_name_normalized": "biere brune belge",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "5000",
+      "source_name": "Bière brune",
+      "state": {
+        "concept": "Bière brune belge",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 18.119999999999997,
+        "proteinG": 0.43,
+        "carbsG": 4.1,
+        "fatG": 0,
+        "fiberG": 0.1
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Biscuit cuillère",
+      "canonical_name_normalized": "biscuit cuillere",
+      "category": "produits_sucres",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "24430",
+      "source_name": "Biscuit sec aux oeufs à la cuillère (cuiller) ou Boudoir",
+      "state": {
+        "concept": "Biscuit cuillère",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 385.5,
+        "proteinG": 7.98,
+        "carbsG": 79.9,
+        "fatG": 3.77,
+        "fiberG": 0.66
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Blanc d'œuf cru",
+      "canonical_name_normalized": "blanc d oeuf cru",
+      "category": "oeufs",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "22001",
+      "source_name": "Oeuf, blanc (blanc d'oeuf), cru",
+      "state": {
+        "concept": "Blanc d'œuf cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 33
+      },
+      "per100g": {
+        "kcal": 48.1,
+        "proteinG": 10.8,
+        "carbsG": 0.85,
+        "fatG": 0.19,
+        "fiberG": 0.62
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Bœuf cuit effiloché",
+      "canonical_name_normalized": "boeuf cuit effiloche",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "6271",
+      "source_name": "Boeuf, paleron, braisé ou bouilli",
+      "state": {
+        "concept": "Bœuf cuit effiloché",
+        "rest": "",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 251,
+        "proteinG": 36.8,
+        "carbsG": 0.2,
+        "fatG": 11.4,
+        "fiberG": 1.62
+      },
+      "note": "Paleron braisé/bouilli, coupe cohérente avec l’effilochage."
+    },
+    {
+      "canonical_name": "Bœuf haché cru 15 % MG",
+      "canonical_name_normalized": "boeuf hache cru 15 mg",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "6254",
+      "source_name": "Boeuf, steak haché 15% MG, cru",
+      "state": {
+        "concept": "Bœuf haché cru 15 % MG",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 209,
+        "proteinG": 20.2,
+        "carbsG": 0.47,
+        "fatG": 14.1,
+        "fiberG": 0.9
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Bouillon de bœuf non salé",
+      "canonical_name_normalized": "bouillon de boeuf non sale",
+      "category": "preparations_culinaires",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "25930",
+      "source_name": "Bouillon de boeuf, déshydraté reconstitué",
+      "state": {
+        "concept": "Bouillon de bœuf non salé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 9.05,
+        "proteinG": 0.6,
+        "carbsG": 1.33,
+        "fatG": 0.15,
+        "fiberG": 1.03
+      },
+      "note": "Bouillon reconstitué standard ; teneur en sel à corriger par profil produit non salé."
+    },
+    {
+      "canonical_name": "Bouillon de légumes non salé",
+      "canonical_name_normalized": "bouillon de legumes non sale",
+      "category": "preparations_culinaires",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "25948",
+      "source_name": "Bouillon de légumes, déshydraté reconstitué",
+      "state": {
+        "concept": "Bouillon de légumes non salé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 5.38,
+        "proteinG": 0.34,
+        "carbsG": 0.65,
+        "fatG": 0.16,
+        "fiberG": 1
+      },
+      "note": "Bouillon reconstitué standard ; teneur en sel à corriger par profil produit non salé."
+    },
+    {
+      "canonical_name": "Bouillon de volaille non salé",
+      "canonical_name_normalized": "bouillon de volaille non sale",
+      "category": "preparations_culinaires",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "25947",
+      "source_name": "Bouillon de volaille, déshydraté reconstitué",
+      "state": {
+        "concept": "Bouillon de volaille non salé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 5.58,
+        "proteinG": 0.6,
+        "carbsG": 0.5,
+        "fatG": 0.13,
+        "fiberG": 1.44
+      },
+      "note": "Bouillon reconstitué standard ; teneur en sel à corriger par profil produit non salé."
+    },
+    {
+      "canonical_name": "Bouquet garni frais",
+      "canonical_name_normalized": "bouquet garni frais",
+      "category": "herbes_aromates",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "11014",
+      "source_name": "Persil, frais",
+      "state": {
+        "concept": "Bouquet garni frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 15
+      },
+      "per100g": {
+        "kcal": 43,
+        "proteinG": 3.71,
+        "carbsG": 3.48,
+        "fatG": 0.63,
+        "fiberG": 2.35
+      },
+      "note": "Proxy persil frais pour un bouquet aromatique non consommé intégralement."
+    },
+    {
+      "canonical_name": "Cacao non sucré",
+      "canonical_name_normalized": "cacao non sucre",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "18100",
+      "source_name": "Cacao, non sucré, poudre soluble",
+      "state": {
+        "concept": "Cacao non sucré",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 387,
+        "proteinG": 22.4,
+        "carbsG": 11.6,
+        "fatG": 20.6,
+        "fiberG": 10
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Café expresso refroidi",
+      "canonical_name_normalized": "cafe expresso refroidi",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "18071",
+      "source_name": "Café expresso, non instantané, non sucré, prêt à boire",
+      "state": {
+        "concept": "Café expresso refroidi",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 7.64,
+        "proteinG": 0.5,
+        "carbsG": 1.16,
+        "fatG": 0.2,
+        "fiberG": 0.3
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Café moulu",
+      "canonical_name_normalized": "cafe moulu",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "18003",
+      "source_name": "Café, moulu",
+      "state": {
+        "concept": "Café moulu",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 397,
+        "proteinG": 14.4,
+        "carbsG": 40.2,
+        "fatG": 15.4,
+        "fiberG": 5.9
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Cannelle moulue",
+      "canonical_name_normalized": "cannelle moulue",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11025",
+      "source_name": "Cannelle, poudre",
+      "state": {
+        "concept": "Cannelle moulue",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 243,
+        "proteinG": 3.87,
+        "carbsG": 27.5,
+        "fatG": 1.22,
+        "fiberG": 3.6
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Carotte crue",
+      "canonical_name_normalized": "carotte crue",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20009",
+      "source_name": "Carotte, crue",
+      "state": {
+        "concept": "Carotte crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 40.2,
+        "proteinG": 0.63,
+        "carbsG": 7.59,
+        "fatG": 0.5,
+        "fiberG": 0.72
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Cassonade",
+      "canonical_name_normalized": "cassonade",
+      "category": "produits_sucres",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "31017",
+      "source_name": "Sucre roux",
+      "state": {
+        "concept": "Cassonade",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 389.7,
+        "proteinG": 0.12,
+        "carbsG": 97.3,
+        "fatG": 0,
+        "fiberG": 1.23
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Céleri branche cru",
+      "canonical_name_normalized": "celeri branche cru",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20023",
+      "source_name": "Céleri branche, cru",
+      "state": {
+        "concept": "Céleri branche cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 17.6,
+        "proteinG": 0.63,
+        "carbsG": 2.41,
+        "fatG": 0.5,
+        "fiberG": 1.07
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Cerise fraîche dénoyautée",
+      "canonical_name_normalized": "cerise fraiche denoyautee",
+      "category": "fruits",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "13008",
+      "source_name": "Cerise, dénoyautée, crue",
+      "state": {
+        "concept": "Cerise fraîche dénoyautée",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 55.7,
+        "proteinG": 0.81,
+        "carbsG": 13,
+        "fatG": 0.3,
+        "fiberG": 0.37
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Champignon de Paris frais",
+      "canonical_name_normalized": "champignon de paris frais",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20056",
+      "source_name": "Champignon de Paris ou champignon de couche, cru",
+      "state": {
+        "concept": "Champignon de Paris frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 28,
+        "proteinG": 2.62,
+        "carbsG": 3.15,
+        "fatG": 0.36,
+        "fiberG": 0.71
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Chapelure de blé",
+      "canonical_name_normalized": "chapelure de ble",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "7500",
+      "source_name": "Chapelure",
+      "state": {
+        "concept": "Chapelure de blé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 369,
+        "proteinG": 11.6,
+        "carbsG": 70,
+        "fatG": 3.77,
+        "fiberG": 2.86
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Chocolat noir 70 %",
+      "canonical_name_normalized": "chocolat noir 70",
+      "category": "produits_sucres",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "31074",
+      "source_name": "Chocolat noir à 70% cacao minimum, extra, dégustation, tablette",
+      "state": {
+        "concept": "Chocolat noir 70 %",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 591,
+        "proteinG": 10.4,
+        "carbsG": 26.9,
+        "fatG": 46.3,
+        "fiberG": 2.74
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Ciboulette fraîche",
+      "canonical_name_normalized": "ciboulette fraiche",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11003",
+      "source_name": "Ciboule ou Ciboulette, fraîche",
+      "state": {
+        "concept": "Ciboulette fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 29.7,
+        "proteinG": 2.57,
+        "carbsG": 2.1,
+        "fatG": 0.52,
+        "fiberG": 0.85
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Citron jaune frais",
+      "canonical_name_normalized": "citron jaune frais",
+      "category": "fruits",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "13009",
+      "source_name": "Citron, pulpe, cru",
+      "state": {
+        "concept": "Citron jaune frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 120
+      },
+      "per100g": {
+        "kcal": 27.6,
+        "proteinG": 0.5,
+        "carbsG": 1.56,
+        "fatG": 0.5,
+        "fiberG": 0.38
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Clou de girofle",
+      "canonical_name_normalized": "clou de girofle",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11052",
+      "source_name": "Clou de girofle",
+      "state": {
+        "concept": "Clou de girofle",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 0.2
+      },
+      "per100g": {
+        "kcal": 335,
+        "proteinG": 5.97,
+        "carbsG": 31.6,
+        "fatG": 13,
+        "fiberG": 5.63
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Comté",
+      "canonical_name_normalized": "comte",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "12110",
+      "source_name": "Comté",
+      "state": {
+        "concept": "Comté",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 420,
+        "proteinG": 27.2,
+        "carbsG": 0,
+        "fatG": 34.6,
+        "fiberG": 3.3
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Concombre frais",
+      "canonical_name_normalized": "concombre frais",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20019",
+      "source_name": "Concombre, pulpe et peau, cru",
+      "state": {
+        "concept": "Concombre frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 15.6,
+        "proteinG": 0.64,
+        "carbsG": 2.54,
+        "fatG": 0.11,
+        "fiberG": 0.39
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Confit de canard cuit, effiloché",
+      "canonical_name_normalized": "confit de canard cuit effiloche",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "8110",
+      "source_name": "Confit de canard",
+      "state": {
+        "concept": "Confit de canard cuit",
+        "rest": "effiloché",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 273,
+        "proteinG": 25.7,
+        "carbsG": 0.15,
+        "fatG": 18.8,
+        "fiberG": 2.11
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Congre cru",
+      "canonical_name_normalized": "congre cru",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "26127",
+      "source_name": "Congre, cru",
+      "state": {
+        "concept": "Congre cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 115,
+        "proteinG": 18.3,
+        "carbsG": 0,
+        "fatG": 4.6,
+        "fiberG": 0.75
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Coriandre fraîche",
+      "canonical_name_normalized": "coriandre fraiche",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11094",
+      "source_name": "Coriandre, fraiche",
+      "state": {
+        "concept": "Coriandre fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 22.3,
+        "proteinG": 2.13,
+        "carbsG": 0.87,
+        "fatG": 0.52,
+        "fiberG": 1.47
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Coriandre moulue",
+      "canonical_name_normalized": "coriandre moulue",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11026",
+      "source_name": "Coriandre, graine",
+      "state": {
+        "concept": "Coriandre moulue",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 346,
+        "proteinG": 12.4,
+        "carbsG": 13,
+        "fatG": 17.8,
+        "fiberG": 6.01
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Cornichon au vinaigre",
+      "canonical_name_normalized": "cornichon au vinaigre",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11004",
+      "source_name": "Cornichon, au vinaigre",
+      "state": {
+        "concept": "Cornichon au vinaigre",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 19.4,
+        "proteinG": 1.06,
+        "carbsG": 0.78,
+        "fatG": 0.6,
+        "fiberG": 2.29
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Courgette fraîche",
+      "canonical_name_normalized": "courgette fraiche",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20020",
+      "source_name": "Courgette, pulpe et peau, crue",
+      "state": {
+        "concept": "Courgette fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 16.5,
+        "proteinG": 1.23,
+        "carbsG": 1.8,
+        "fatG": 0.26,
+        "fiberG": 0.59
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Crème fraîche épaisse",
+      "canonical_name_normalized": "creme fraiche epaisse",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "19410",
+      "source_name": "Crème de lait, 30% MG, épaisse, rayon frais",
+      "state": {
+        "concept": "Crème fraîche épaisse",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 304,
+        "proteinG": 3,
+        "carbsG": 2.8,
+        "fatG": 30.7,
+        "fiberG": 0.47
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Crème fraîche liquide entière",
+      "canonical_name_normalized": "creme fraiche liquide entiere",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "19415",
+      "source_name": "Crème de lait, 30% MG, semi-épaisse, UHT",
+      "state": {
+        "concept": "Crème fraîche liquide entière",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": "liquid",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 297,
+        "proteinG": 2.49,
+        "carbsG": 1.94,
+        "fatG": 30.7,
+        "fiberG": 0.46
+      },
+      "note": "Crème entière semi-épaisse UHT, meilleur profil disponible pour crème liquide entière."
+    },
+    {
+      "canonical_name": "Cuisse de poulet crue, avec os, avec peau",
+      "canonical_name_normalized": "cuisse de poulet crue avec os avec peau",
+      "category": "volailles",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "36002",
+      "source_name": "Poulet, cuisse, viande et peau, cru",
+      "state": {
+        "concept": "Cuisse de poulet crue",
+        "rest": "avec os avec peau",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": "bone_in",
+        "skin_state": "with_skin"
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 192,
+        "proteinG": 17.3,
+        "carbsG": 0,
+        "fatG": 13.5,
+        "fiberG": 0.97
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Cumin en graines",
+      "canonical_name_normalized": "cumin en graines",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11042",
+      "source_name": "Cumin, graine",
+      "state": {
+        "concept": "Cumin en graines",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 427,
+        "proteinG": 17.8,
+        "carbsG": 33.7,
+        "fatG": 22.3,
+        "fiberG": 7.62
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Cumin moulu",
+      "canonical_name_normalized": "cumin moulu",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11042",
+      "source_name": "Cumin, graine",
+      "state": {
+        "concept": "Cumin moulu",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 427,
+        "proteinG": 17.8,
+        "carbsG": 33.7,
+        "fatG": 22.3,
+        "fiberG": 7.62
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Curcuma moulu",
+      "canonical_name_normalized": "curcuma moulu",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11089",
+      "source_name": "Curcuma, poudre",
+      "state": {
+        "concept": "Curcuma moulu",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 291,
+        "proteinG": 9.68,
+        "carbsG": 44.4,
+        "fatG": 3.25,
+        "fiberG": 7.08
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Curry en poudre",
+      "canonical_name_normalized": "curry en poudre",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11005",
+      "source_name": "Curry, poudre",
+      "state": {
+        "concept": "Curry en poudre",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 301,
+        "proteinG": 14.5,
+        "carbsG": 2.63,
+        "fatG": 14,
+        "fiberG": 7.07
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Dos de cabillaud cru",
+      "canonical_name_normalized": "dos de cabillaud cru",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "26043",
+      "source_name": "Cabillaud, cru",
+      "state": {
+        "concept": "Dos de cabillaud cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 77.6,
+        "proteinG": 18.1,
+        "carbsG": 0,
+        "fatG": 0.57,
+        "fiberG": 1.1
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Eau",
+      "canonical_name_normalized": "eau",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "18066",
+      "source_name": "Eau du robinet",
+      "state": {
+        "concept": "Eau",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 0,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Eau de coco",
+      "canonical_name_normalized": "eau de coco",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "18011",
+      "source_name": "Eau de coco",
+      "state": {
+        "concept": "Eau de coco",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 15.1,
+        "proteinG": 0.42,
+        "carbsG": 3.33,
+        "fatG": 0.3,
+        "fiberG": 0.45
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Eau glacée",
+      "canonical_name_normalized": "eau glacee",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "18066",
+      "source_name": "Eau du robinet",
+      "state": {
+        "concept": "Eau glacée",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 0,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Échalote crue",
+      "canonical_name_normalized": "echalote crue",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20097",
+      "source_name": "Échalote, crue",
+      "state": {
+        "concept": "Échalote crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 63.6,
+        "proteinG": 1.81,
+        "carbsG": 12.2,
+        "fatG": 0.5,
+        "fiberG": 0.67
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Endive fraîche",
+      "canonical_name_normalized": "endive fraiche",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20026",
+      "source_name": "Endive, crue",
+      "state": {
+        "concept": "Endive fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 150
+      },
+      "per100g": {
+        "kcal": 20.2,
+        "proteinG": 1.19,
+        "carbsG": 2.83,
+        "fatG": 0.5,
+        "fiberG": 0.41
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Épaule de veau crue, en cubes",
+      "canonical_name_normalized": "epaule de veau crue en cubes",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "6560",
+      "source_name": "Veau, épaule, crue",
+      "state": {
+        "concept": "Épaule de veau crue",
+        "rest": "en cubes",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 124,
+        "proteinG": 20.7,
+        "carbsG": 0,
+        "fatG": 4.63,
+        "fiberG": 1.07
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Épinard frais",
+      "canonical_name_normalized": "epinard frais",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20059",
+      "source_name": "Épinard, cru",
+      "state": {
+        "concept": "Épinard frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 24,
+        "proteinG": 2.62,
+        "carbsG": 2.25,
+        "fatG": 0.5,
+        "fiberG": 1.81
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Estragon frais",
+      "canonical_name_normalized": "estragon frais",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11092",
+      "source_name": "Estragon, frais",
+      "state": {
+        "concept": "Estragon frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 44,
+        "proteinG": 3.8,
+        "carbsG": 4.1,
+        "fatG": 0,
+        "fiberG": 0.025
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Farine de blé T55",
+      "canonical_name_normalized": "farine de ble t55",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9436",
+      "source_name": "Farine de blé tendre ou froment T55 (pour pains)",
+      "state": {
+        "concept": "Farine de blé T55",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 346,
+        "proteinG": 9.03,
+        "carbsG": 73.7,
+        "fatG": 1,
+        "fiberG": 0.54
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Farine de blé type 00",
+      "canonical_name_normalized": "farine de ble type 00",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9440",
+      "source_name": "Farine de blé tendre ou froment T45 (pour pâtisserie)",
+      "state": {
+        "concept": "Farine de blé type 00",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 352,
+        "proteinG": 9.06,
+        "carbsG": 75.9,
+        "fatG": 0.82,
+        "fiberG": 0.48
+      },
+      "note": "Proxy technologique T45, le plus proche de la farine italienne type 00."
+    },
+    {
+      "canonical_name": "Fécule de maïs",
+      "canonical_name_normalized": "fecule de mais",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9510",
+      "source_name": "Amidon de maïs ou fécule de maïs",
+      "state": {
+        "concept": "Fécule de maïs",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 362,
+        "proteinG": 0.43,
+        "carbsG": 89.2,
+        "fatG": 0.25,
+        "fiberG": 0.09
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Feuille de lasagne sèche",
+      "canonical_name_normalized": "feuille de lasagne seche",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9810",
+      "source_name": "Pâtes sèches standard, crues",
+      "state": {
+        "concept": "Feuille de lasagne sèche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 331,
+        "proteinG": 11.5,
+        "carbsG": 65.8,
+        "fatG": 1.79,
+        "fiberG": 0.8
+      },
+      "note": "Profil pâtes sèches standard crues."
+    },
+    {
+      "canonical_name": "Feuille de laurier séchée",
+      "canonical_name_normalized": "feuille de laurier sechee",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11053",
+      "source_name": "Laurier, feuille",
+      "state": {
+        "concept": "Feuille de laurier séchée",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "dried",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 0.2
+      },
+      "per100g": {
+        "kcal": 353,
+        "proteinG": 7.61,
+        "carbsG": 48.6,
+        "fatG": 8.36,
+        "fiberG": 3.62
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Filet mignon de porc cru",
+      "canonical_name_normalized": "filet mignon de porc cru",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "28204",
+      "source_name": "Porc, filet mignon, cru",
+      "state": {
+        "concept": "Filet mignon de porc cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": "boneless",
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 123,
+        "proteinG": 21.2,
+        "carbsG": 0.4,
+        "fatG": 4.09,
+        "fiberG": 1.01
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Garam masala",
+      "canonical_name_normalized": "garam masala",
+      "category": "epices",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "11005",
+      "source_name": "Curry, poudre",
+      "state": {
+        "concept": "Garam masala",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 301,
+        "proteinG": 14.5,
+        "carbsG": 2.63,
+        "fatG": 14,
+        "fiberG": 7.07
+      },
+      "note": "Proxy curry en poudre ; composition exacte requise pour publication globale."
+    },
+    {
+      "canonical_name": "Gélatine feuille",
+      "canonical_name_normalized": "gelatine feuille",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11007",
+      "source_name": "Gélatine, sèche",
+      "state": {
+        "concept": "Gélatine feuille",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 348,
+        "proteinG": 86.9,
+        "carbsG": 0,
+        "fatG": 0.1,
+        "fiberG": 1.28
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Gingembre frais",
+      "canonical_name_normalized": "gingembre frais",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11074",
+      "source_name": "Gingembre, racine crue",
+      "state": {
+        "concept": "Gingembre frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 32.9,
+        "proteinG": 1.1,
+        "carbsG": 3.4,
+        "fatG": 1.1,
+        "fiberG": 0.78
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Gnocchi de pomme de terre frais",
+      "canonical_name_normalized": "gnocchi de pomme de terre frais",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "26264",
+      "source_name": "Gnocchi à la pomme de terre, cru",
+      "state": {
+        "concept": "Gnocchi de pomme de terre frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 176,
+        "proteinG": 4.66,
+        "carbsG": 35,
+        "fatG": 1.42,
+        "fiberG": 1.48
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Gousse de vanille",
+      "canonical_name_normalized": "gousse de vanille",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11057",
+      "source_name": "Vanille, gousse",
+      "state": {
+        "concept": "Gousse de vanille",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 4
+      },
+      "per100g": {
+        "kcal": null,
+        "proteinG": null,
+        "carbsG": null,
+        "fatG": null,
+        "fiberG": null
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Guanciale cru",
+      "canonical_name_normalized": "guanciale cru",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "28858",
+      "source_name": "Pancetta ou Poitrine roulée sèche",
+      "state": {
+        "concept": "Guanciale cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 342,
+        "proteinG": 20.2,
+        "carbsG": 0.75,
+        "fatG": 28.8,
+        "fiberG": 4.7
+      },
+      "note": "Proxy pancetta/poitrine roulée sèche, même famille charcutière et profil proche."
+    },
+    {
+      "canonical_name": "Haricot blanc cuit, égoutté",
+      "canonical_name_normalized": "haricot blanc cuit egoutte",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20502",
+      "source_name": "Haricot blanc, bouilli/cuit à l'eau",
+      "state": {
+        "concept": "Haricot blanc cuit",
+        "rest": "égoutté",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 112,
+        "proteinG": 6.75,
+        "carbsG": 12,
+        "fatG": 1.1,
+        "fiberG": 1
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Haricot blanc sec",
+      "canonical_name_normalized": "haricot blanc sec",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20501",
+      "source_name": "Haricot blanc, sec",
+      "state": {
+        "concept": "Haricot blanc sec",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 268,
+        "proteinG": 19.1,
+        "carbsG": 43.9,
+        "fatG": 1.78,
+        "fiberG": 4.05
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Haricot rouge cuit, égoutté",
+      "canonical_name_normalized": "haricot rouge cuit egoutte",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20503",
+      "source_name": "Haricot rouge, bouilli/cuit à l'eau",
+      "state": {
+        "concept": "Haricot rouge cuit",
+        "rest": "égoutté",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 116,
+        "proteinG": 9.63,
+        "carbsG": 12.3,
+        "fatG": 0.6,
+        "fiberG": 0.95
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Haricot rouge sec",
+      "canonical_name_normalized": "haricot rouge sec",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20525",
+      "source_name": "Haricot rouge, sec",
+      "state": {
+        "concept": "Haricot rouge sec",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 283.9,
+        "proteinG": 22.5,
+        "carbsG": 46.1,
+        "fatG": 1.06,
+        "fiberG": 3.37
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Haricot vert cru",
+      "canonical_name_normalized": "haricot vert cru",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20061",
+      "source_name": "Haricot vert, cru",
+      "state": {
+        "concept": "Haricot vert cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 25.9,
+        "proteinG": 1.85,
+        "carbsG": 4.14,
+        "fatG": 0.21,
+        "fiberG": 0.68
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Haricot vert cuit",
+      "canonical_name_normalized": "haricot vert cuit",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20030",
+      "source_name": "Haricot vert, cuit",
+      "state": {
+        "concept": "Haricot vert cuit",
+        "rest": "",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 29.4,
+        "proteinG": 2,
+        "carbsG": 3,
+        "fatG": 0.17,
+        "fiberG": 0.69
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Harissa",
+      "canonical_name_normalized": "harissa",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11112",
+      "source_name": "Harissa (sauce condimentaire), préemballée",
+      "state": {
+        "concept": "Harissa",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 66.2,
+        "proteinG": 2.72,
+        "carbsG": 7.3,
+        "fatG": 2.9,
+        "fiberG": 4.3
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Haut de cuisse de poulet cru, désossé, sans peau",
+      "canonical_name_normalized": "haut de cuisse de poulet cru desosse sans peau",
+      "category": "volailles",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "36019",
+      "source_name": "Poulet, haut de cuisse, viande, cru",
+      "state": {
+        "concept": "Haut de cuisse de poulet cru",
+        "rest": "désossé sans peau",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": "skinless"
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 116,
+        "proteinG": 19.7,
+        "carbsG": 0,
+        "fatG": 4.12,
+        "fiberG": 0.95
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Herbes de Provence séchées",
+      "canonical_name_normalized": "herbes de provence sechees",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11060",
+      "source_name": "Herbes de Provence, séchées",
+      "state": {
+        "concept": "Herbes de Provence séchées",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "dried",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 283,
+        "proteinG": 11.5,
+        "carbsG": 23,
+        "fatG": 7.2,
+        "fiberG": 11
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Huile d’arachide",
+      "canonical_name_normalized": "huile d arachide",
+      "category": "matieres_grasses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "17040",
+      "source_name": "Huile d'arachide",
+      "state": {
+        "concept": "Huile d’arachide",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0.5,
+        "carbsG": 0,
+        "fatG": 99.9,
+        "fiberG": 0.25
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Huile d'olive vierge extra",
+      "canonical_name_normalized": "huile d olive vierge extra",
+      "category": "matieres_grasses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "17270",
+      "source_name": "Huile d'olive vierge extra",
+      "state": {
+        "concept": "Huile d'olive vierge extra",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0.5,
+        "carbsG": 0,
+        "fatG": 99.9,
+        "fiberG": 0.25
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Huile de colza raffinée",
+      "canonical_name_normalized": "huile de colza raffinee",
+      "category": "matieres_grasses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "17130",
+      "source_name": "Huile de colza",
+      "state": {
+        "concept": "Huile de colza raffinée",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 100,
+        "fiberG": 0.000054
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Huile de noix",
+      "canonical_name_normalized": "huile de noix",
+      "category": "matieres_grasses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "17220",
+      "source_name": "Huile de noix",
+      "state": {
+        "concept": "Huile de noix",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 100,
+        "fiberG": 0
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Jambon blanc cuit",
+      "canonical_name_normalized": "jambon blanc cuit",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "28925",
+      "source_name": "Jambon cuit, de Paris, découenné dégraissé",
+      "state": {
+        "concept": "Jambon blanc cuit",
+        "rest": "",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g",
+        "tranche"
+      ],
+      "conversion": {
+        "grams_per_unit": 40
+      },
+      "per100g": {
+        "kcal": 115,
+        "proteinG": 20,
+        "carbsG": 1.08,
+        "fatG": 3.42,
+        "fiberG": 0
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Jambon de Bayonne",
+      "canonical_name_normalized": "jambon de bayonne",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "28811",
+      "source_name": "Jambon de Bayonne",
+      "state": {
+        "concept": "Jambon de Bayonne",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 228,
+        "proteinG": 28,
+        "carbsG": 0.63,
+        "fatG": 12.6,
+        "fiberG": 6.3
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Jarret de bœuf cru, avec os",
+      "canonical_name_normalized": "jarret de boeuf cru avec os",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "6150",
+      "source_name": "Boeuf, jarret, cru",
+      "state": {
+        "concept": "Jarret de bœuf cru",
+        "rest": "avec os",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": "bone_in",
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 122,
+        "proteinG": 20.9,
+        "carbsG": 0,
+        "fatG": 4.25,
+        "fiberG": 0.96
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Jaune d'œuf cru",
+      "canonical_name_normalized": "jaune d oeuf cru",
+      "category": "oeufs",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "22002",
+      "source_name": "Oeuf, jaune (jaune d'oeuf), cru",
+      "state": {
+        "concept": "Jaune d'œuf cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 18
+      },
+      "per100g": {
+        "kcal": 307,
+        "proteinG": 15.5,
+        "carbsG": 1.09,
+        "fatG": 26.7,
+        "fiberG": 1.68
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Jus de citron frais",
+      "canonical_name_normalized": "jus de citron frais",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "2007",
+      "source_name": "Jus de citron, maison",
+      "state": {
+        "concept": "Jus de citron frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": "liquid",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 13.8,
+        "proteinG": 0.49,
+        "carbsG": 2.41,
+        "fatG": 0.24,
+        "fiberG": 0.26
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Lait de coco",
+      "canonical_name_normalized": "lait de coco",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "18041",
+      "source_name": "Lait de coco ou Crème de coco",
+      "state": {
+        "concept": "Lait de coco",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 188,
+        "proteinG": 1.77,
+        "carbsG": 3.4,
+        "fatG": 18.4,
+        "fiberG": 0.69
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Lait demi-écrémé",
+      "canonical_name_normalized": "lait demi ecreme",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "19041",
+      "source_name": "Lait demi-écrémé, UHT",
+      "state": {
+        "concept": "Lait demi-écrémé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 47.3,
+        "proteinG": 3.38,
+        "carbsG": 4.83,
+        "fatG": 1.55,
+        "fiberG": 0.69
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Lait entier",
+      "canonical_name_normalized": "lait entier",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "19023",
+      "source_name": "Lait entier, UHT",
+      "state": {
+        "concept": "Lait entier",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 65.4,
+        "proteinG": 3.32,
+        "carbsG": 4.85,
+        "fatG": 3.63,
+        "fiberG": 0.7
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Lapin cru, découpé",
+      "canonical_name_normalized": "lapin cru decoupe",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "34001",
+      "source_name": "Lapin, viande crue",
+      "state": {
+        "concept": "Lapin cru",
+        "rest": "découpé",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 189,
+        "proteinG": 20.4,
+        "carbsG": 0.66,
+        "fatG": 11.6,
+        "fiberG": 0.9
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Lardon fumé cru",
+      "canonical_name_normalized": "lardon fume cru",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "28720",
+      "source_name": "Lardon fumé, cru",
+      "state": {
+        "concept": "Lardon fumé cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 275,
+        "proteinG": 16.7,
+        "carbsG": 0.96,
+        "fatG": 22.6,
+        "fiberG": 4.29
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Lentille corail sèche, crue",
+      "canonical_name_normalized": "lentille corail seche crue",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20535",
+      "source_name": "Lentille corail, sèche",
+      "state": {
+        "concept": "Lentille corail sèche",
+        "rest": "crue",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 297.6,
+        "proteinG": 27.7,
+        "carbsG": 44.9,
+        "fatG": 0.8,
+        "fiberG": 2.35
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Lentille verte sèche, crue",
+      "canonical_name_normalized": "lentille verte seche crue",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20585",
+      "source_name": "Lentille verte, sèche",
+      "state": {
+        "concept": "Lentille verte sèche",
+        "rest": "crue",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 294.6,
+        "proteinG": 25.1,
+        "carbsG": 44.5,
+        "fatG": 1.8,
+        "fiberG": 2.74
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Levure boulangère sèche",
+      "canonical_name_normalized": "levure boulangere seche",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11045",
+      "source_name": "Levure de boulanger, déshydratée",
+      "state": {
+        "concept": "Levure boulangère sèche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 306.9,
+        "proteinG": 44.5,
+        "carbsG": 17.9,
+        "fatG": 6.37,
+        "fiberG": 7.99
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Levure chimique",
+      "canonical_name_normalized": "levure chimique",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11046",
+      "source_name": "Levure chimique ou Poudre à lever",
+      "state": {
+        "concept": "Levure chimique",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 142.4,
+        "proteinG": 1.96,
+        "carbsG": 33.2,
+        "fatG": 0.2,
+        "fiberG": 55
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Marsala",
+      "canonical_name_normalized": "marsala",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "1015",
+      "source_name": "Marsala",
+      "state": {
+        "concept": "Marsala",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 211,
+        "proteinG": 0.1,
+        "carbsG": 27.9,
+        "fatG": 0,
+        "fiberG": 0.12
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Mascarpone",
+      "canonical_name_normalized": "mascarpone",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "19584",
+      "source_name": "Mascarpone",
+      "state": {
+        "concept": "Mascarpone",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 384.5,
+        "proteinG": 4.38,
+        "carbsG": 4,
+        "fatG": 39,
+        "fiberG": 0.5
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Menthe fraîche",
+      "canonical_name_normalized": "menthe fraiche",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11027",
+      "source_name": "Menthe, fraîche",
+      "state": {
+        "concept": "Menthe fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 57.6,
+        "proteinG": 3.52,
+        "carbsG": 5.3,
+        "fatG": 0.84,
+        "fiberG": 1.9
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Menthe séchée",
+      "canonical_name_normalized": "menthe sechee",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11029",
+      "source_name": "Menthe, séchée",
+      "state": {
+        "concept": "Menthe séchée",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "dried",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 283,
+        "proteinG": 19.9,
+        "carbsG": 22.2,
+        "fatG": 6.03,
+        "fiberG": 10.7
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Merguez crue",
+      "canonical_name_normalized": "merguez crue",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "30150",
+      "source_name": "Merguez, crue",
+      "state": {
+        "concept": "Merguez crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 316,
+        "proteinG": 13.5,
+        "carbsG": 2.5,
+        "fatG": 28,
+        "fiberG": 2.78
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Miel",
+      "canonical_name_normalized": "miel",
+      "category": "produits_sucres",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "31008",
+      "source_name": "Miel",
+      "state": {
+        "concept": "Miel",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 329,
+        "proteinG": 0.56,
+        "carbsG": 81.7,
+        "fatG": 0,
+        "fiberG": 0.19
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Morue salée sèche",
+      "canonical_name_normalized": "morue salee seche",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "26098",
+      "source_name": "Morue, salée, sèche",
+      "state": {
+        "concept": "Morue salée sèche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 206,
+        "proteinG": 47.6,
+        "carbsG": 0,
+        "fatG": 1.67,
+        "fiberG": 18.4
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Moutarde de Dijon",
+      "canonical_name_normalized": "moutarde de dijon",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11013",
+      "source_name": "Moutarde",
+      "state": {
+        "concept": "Moutarde de Dijon",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 152,
+        "proteinG": 6.92,
+        "carbsG": 4.33,
+        "fatG": 11.2,
+        "fiberG": 7.36
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Mozzarella",
+      "canonical_name_normalized": "mozzarella",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "19590",
+      "source_name": "Mozzarella au lait de vache",
+      "state": {
+        "concept": "Mozzarella",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 229,
+        "proteinG": 16.5,
+        "carbsG": 0.75,
+        "fatG": 17.7,
+        "fiberG": 2.23
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Muscade moulue",
+      "canonical_name_normalized": "muscade moulue",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11048",
+      "source_name": "Noix de muscade",
+      "state": {
+        "concept": "Muscade moulue",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 504,
+        "proteinG": 5.3,
+        "carbsG": 28.5,
+        "fatG": 36.3,
+        "fiberG": 2.32
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Navet cru",
+      "canonical_name_normalized": "navet cru",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20064",
+      "source_name": "Navet, pelé, cru",
+      "state": {
+        "concept": "Navet cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 22.7,
+        "proteinG": 0.76,
+        "carbsG": 4.7,
+        "fatG": 0.1,
+        "fiberG": 0.65
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Œuf cru",
+      "canonical_name_normalized": "oeuf cru",
+      "category": "oeufs",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "22000",
+      "source_name": "Oeuf, cru",
+      "state": {
+        "concept": "Œuf cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 50
+      },
+      "per100g": {
+        "kcal": 140,
+        "proteinG": 12.7,
+        "carbsG": 0.27,
+        "fatG": 9.83,
+        "fiberG": 0.96
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Œuf dur",
+      "canonical_name_normalized": "oeuf dur",
+      "category": "oeufs",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "22010",
+      "source_name": "Oeuf, dur",
+      "state": {
+        "concept": "Œuf dur",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 134,
+        "proteinG": 13.5,
+        "carbsG": 0.52,
+        "fatG": 8.62,
+        "fiberG": 0.88
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Oignon grelot cru",
+      "canonical_name_normalized": "oignon grelot cru",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20034",
+      "source_name": "Oignon, cru",
+      "state": {
+        "concept": "Oignon grelot cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 35,
+        "proteinG": 1.1,
+        "carbsG": 6.25,
+        "fatG": 0.62,
+        "fiberG": 0.48
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Oignon jaune cru",
+      "canonical_name_normalized": "oignon jaune cru",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20239",
+      "source_name": "Oignon jaune, cru",
+      "state": {
+        "concept": "Oignon jaune cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 37.8,
+        "proteinG": 1.19,
+        "carbsG": 6.39,
+        "fatG": 0.5,
+        "fiberG": 0.44
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Oignon rouge cru",
+      "canonical_name_normalized": "oignon rouge cru",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20238",
+      "source_name": "Oignon rouge, cru",
+      "state": {
+        "concept": "Oignon rouge cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 36.3,
+        "proteinG": 1.31,
+        "carbsG": 5.63,
+        "fatG": 0.4,
+        "fiberG": 0.45
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Olive noire dénoyautée",
+      "canonical_name_normalized": "olive noire denoyautee",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "13032",
+      "source_name": "Olive noire, en saumure, égouttée",
+      "state": {
+        "concept": "Olive noire dénoyautée",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 160.7,
+        "proteinG": 1.38,
+        "carbsG": 0.1,
+        "fatG": 17.2,
+        "fiberG": 2.21
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Olive verte dénoyautée",
+      "canonical_name_normalized": "olive verte denoyautee",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "13033",
+      "source_name": "Olive verte, en saumure, égouttée",
+      "state": {
+        "concept": "Olive verte dénoyautée",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 155,
+        "proteinG": 1.31,
+        "carbsG": 0,
+        "fatG": 15.7,
+        "fiberG": 3.27
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Origan séché",
+      "canonical_name_normalized": "origan seche",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11035",
+      "source_name": "Origan, séché",
+      "state": {
+        "concept": "Origan séché",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 265,
+        "proteinG": 9,
+        "carbsG": 26.4,
+        "fatG": 4.28,
+        "fiberG": 7.87
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Os à moelle de bœuf",
+      "canonical_name_normalized": "os a moelle de boeuf",
+      "category": "viandes",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "6101",
+      "source_name": "Boeuf, braisé",
+      "state": {
+        "concept": "Os à moelle de bœuf",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 50
+      },
+      "per100g": {
+        "kcal": 240,
+        "proteinG": 32.1,
+        "carbsG": 0,
+        "fatG": 12.4,
+        "fiberG": 0.19
+      },
+      "note": "Proxy viande bovine braisée ; moelle dédiée absente de Ciqual."
+    },
+    {
+      "canonical_name": "Pain d'épices",
+      "canonical_name_normalized": "pain d epices",
+      "category": "produits_sucres",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "23200",
+      "source_name": "Pain d'épices",
+      "state": {
+        "concept": "Pain d'épices",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 307.7,
+        "proteinG": 2.94,
+        "carbsG": 71.5,
+        "fatG": 1.1,
+        "fiberG": 0.87
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pain de campagne",
+      "canonical_name_normalized": "pain de campagne",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "7100",
+      "source_name": "Pain, baguette ou boule, de campagne",
+      "state": {
+        "concept": "Pain de campagne",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g",
+        "tranche"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 250,
+        "proteinG": 7.52,
+        "carbsG": 50,
+        "fatG": 1.3,
+        "fiberG": 2.74
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pain de mie",
+      "canonical_name_normalized": "pain de mie",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "7200",
+      "source_name": "Pain de mie, courant",
+      "state": {
+        "concept": "Pain de mie",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g",
+        "tranche"
+      ],
+      "conversion": {
+        "grams_per_unit": 30
+      },
+      "per100g": {
+        "kcal": 275,
+        "proteinG": 7.13,
+        "carbsG": 52.3,
+        "fatG": 3.6,
+        "fiberG": 1.65
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pain pita",
+      "canonical_name_normalized": "pain pita",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "7180",
+      "source_name": "Pain pita",
+      "state": {
+        "concept": "Pain pita",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 256,
+        "proteinG": 7.53,
+        "carbsG": 53,
+        "fatG": 0.92,
+        "fiberG": 1.81
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Paleron de bœuf cru, paré",
+      "canonical_name_normalized": "paleron de boeuf cru pare",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "6270",
+      "source_name": "Boeuf, paleron, cru",
+      "state": {
+        "concept": "Paleron de bœuf cru",
+        "rest": "paré",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 144,
+        "proteinG": 21.2,
+        "carbsG": 0,
+        "fatG": 6.54,
+        "fiberG": 1.19
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Paprika fumé",
+      "canonical_name_normalized": "paprika fume",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11049",
+      "source_name": "Paprika",
+      "state": {
+        "concept": "Paprika fumé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 319,
+        "proteinG": 14.1,
+        "carbsG": 19.1,
+        "fatG": 12.9,
+        "fiberG": 7.74
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Parmesan affiné",
+      "canonical_name_normalized": "parmesan affine",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "12120",
+      "source_name": "Parmesan",
+      "state": {
+        "concept": "Parmesan affiné",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 409,
+        "proteinG": 31.1,
+        "carbsG": 0,
+        "fatG": 31,
+        "fiberG": 4.47
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Patate douce crue",
+      "canonical_name_normalized": "patate douce crue",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "4101",
+      "source_name": "Patate douce, crue",
+      "state": {
+        "concept": "Patate douce crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 86.3,
+        "proteinG": 1.51,
+        "carbsG": 18.3,
+        "fatG": 0.15,
+        "fiberG": 1.05
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pâte brisée crue",
+      "canonical_name_normalized": "pate brisee crue",
+      "category": "produits_sucres",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "23481",
+      "source_name": "Tarte normande aux pommes (garniture farine, oeufs, crème, sucre, calvados)",
+      "state": {
+        "concept": "Pâte brisée crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 313,
+        "proteinG": 4.44,
+        "carbsG": 38.7,
+        "fatG": 15,
+        "fiberG": 0.64
+      },
+      "note": "Proxy pâtisserie composite ; une fiche pâte brisée dédiée reste à sourcer."
+    },
+    {
+      "canonical_name": "Pâte feuilletée crue",
+      "canonical_name_normalized": "pate feuilletee crue",
+      "category": "produits_sucres",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "23481",
+      "source_name": "Tarte normande aux pommes (garniture farine, oeufs, crème, sucre, calvados)",
+      "state": {
+        "concept": "Pâte feuilletée crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 313,
+        "proteinG": 4.44,
+        "carbsG": 38.7,
+        "fatG": 15,
+        "fiberG": 0.64
+      },
+      "note": "Proxy pâtisserie composite ; une fiche pâte feuilletée dédiée reste à sourcer."
+    },
+    {
+      "canonical_name": "Pâte sablée crue",
+      "canonical_name_normalized": "pate sablee crue",
+      "category": "produits_sucres",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "23481",
+      "source_name": "Tarte normande aux pommes (garniture farine, oeufs, crème, sucre, calvados)",
+      "state": {
+        "concept": "Pâte sablée crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 313,
+        "proteinG": 4.44,
+        "carbsG": 38.7,
+        "fatG": 15,
+        "fiberG": 0.64
+      },
+      "note": "Proxy pâtisserie composite ; une fiche pâte sablée dédiée reste à sourcer."
+    },
+    {
+      "canonical_name": "Pâtes sèches courtes",
+      "canonical_name_normalized": "pates seches courtes",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9810",
+      "source_name": "Pâtes sèches standard, crues",
+      "state": {
+        "concept": "Pâtes sèches courtes",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 331,
+        "proteinG": 11.5,
+        "carbsG": 65.8,
+        "fatG": 1.79,
+        "fiberG": 0.8
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pavé de saumon cru, sans peau",
+      "canonical_name_normalized": "pave de saumon cru sans peau",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "26036",
+      "source_name": "Saumon, cru, élevage",
+      "state": {
+        "concept": "Pavé de saumon cru",
+        "rest": "sans peau",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": "skinless"
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 194,
+        "proteinG": 20.5,
+        "carbsG": 0,
+        "fatG": 12.4,
+        "fiberG": 1.22
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pecorino romano",
+      "canonical_name_normalized": "pecorino romano",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "12122",
+      "source_name": "Pecorino",
+      "state": {
+        "concept": "Pecorino romano",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": null,
+        "proteinG": null,
+        "carbsG": 0,
+        "fatG": 28.8,
+        "fiberG": 6.66
+      },
+      "note": "Pecorino Ciqual, identité fromagère exacte ; valeurs manquantes complétées seulement par dérivation documentée."
+    },
+    {
+      "canonical_name": "Persil frais",
+      "canonical_name_normalized": "persil frais",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11014",
+      "source_name": "Persil, frais",
+      "state": {
+        "concept": "Persil frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 43,
+        "proteinG": 3.71,
+        "carbsG": 3.48,
+        "fatG": 0.63,
+        "fiberG": 2.35
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Petites pâtes sèches",
+      "canonical_name_normalized": "petites pates seches",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9810",
+      "source_name": "Pâtes sèches standard, crues",
+      "state": {
+        "concept": "Petites pâtes sèches",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 331,
+        "proteinG": 11.5,
+        "carbsG": 65.8,
+        "fatG": 1.79,
+        "fiberG": 0.8
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pignon de pin",
+      "canonical_name_normalized": "pignon de pin",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "15025",
+      "source_name": "Pignon de pin",
+      "state": {
+        "concept": "Pignon de pin",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 665,
+        "proteinG": 13.7,
+        "carbsG": 6.31,
+        "fatG": 65,
+        "fiberG": 2.52
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Piment d'Espelette moulu",
+      "canonical_name_normalized": "piment d espelette moulu",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11088",
+      "source_name": "Poivre de Cayenne ou piment de Cayenne",
+      "state": {
+        "concept": "Piment d'Espelette moulu",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 376,
+        "proteinG": 12,
+        "carbsG": 29.4,
+        "fatG": 17.3,
+        "fiberG": 6.04
+      },
+      "note": "Proxy piment de Cayenne pour la nutrition ; identité aromatique reste Espelette."
+    },
+    {
+      "canonical_name": "Piment en poudre",
+      "canonical_name_normalized": "piment en poudre",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11088",
+      "source_name": "Poivre de Cayenne ou piment de Cayenne",
+      "state": {
+        "concept": "Piment en poudre",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 376,
+        "proteinG": 12,
+        "carbsG": 29.4,
+        "fatG": 17.3,
+        "fiberG": 6.04
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Poireau cru",
+      "canonical_name_normalized": "poireau cru",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20039",
+      "source_name": "Poireau, cru",
+      "state": {
+        "concept": "Poireau cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 32.3,
+        "proteinG": 1.49,
+        "carbsG": 4.9,
+        "fatG": 0.25,
+        "fiberG": 1.02
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pois chiche cuit, égoutté",
+      "canonical_name_normalized": "pois chiche cuit egoutte",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20532",
+      "source_name": "Pois chiche, appertisé, égoutté",
+      "state": {
+        "concept": "Pois chiche cuit",
+        "rest": "égoutté",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 111.1,
+        "proteinG": 6.74,
+        "carbsG": 15,
+        "fatG": 2.68,
+        "fiberG": 1
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pois chiche sec, cru",
+      "canonical_name_normalized": "pois chiche sec cru",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20516",
+      "source_name": "Pois chiche, sec",
+      "state": {
+        "concept": "Pois chiche sec",
+        "rest": "cru",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 324.6,
+        "proteinG": 20.5,
+        "carbsG": 47.5,
+        "fatG": 5.85,
+        "fiberG": 2.79
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Poitrine de porc demi-sel",
+      "canonical_name_normalized": "poitrine de porc demi sel",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "28550",
+      "source_name": "Poitrine de porc demi-sel",
+      "state": {
+        "concept": "Poitrine de porc demi-sel",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 268,
+        "proteinG": 16.8,
+        "carbsG": 0.75,
+        "fatG": 22,
+        "fiberG": 4.61
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Poivre blanc moulu",
+      "canonical_name_normalized": "poivre blanc moulu",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11019",
+      "source_name": "Poivre blanc, poudre",
+      "state": {
+        "concept": "Poivre blanc moulu",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 310,
+        "proteinG": 11.4,
+        "carbsG": 48.3,
+        "fatG": 2.11,
+        "fiberG": 1.6
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Poivre noir en grains",
+      "canonical_name_normalized": "poivre noir en grains",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11015",
+      "source_name": "Poivre noir, poudre",
+      "state": {
+        "concept": "Poivre noir en grains",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 330,
+        "proteinG": 13.3,
+        "carbsG": 39.5,
+        "fatG": 7.5,
+        "fiberG": 4.99
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Poivre noir moulu",
+      "canonical_name_normalized": "poivre noir moulu",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11015",
+      "source_name": "Poivre noir, poudre",
+      "state": {
+        "concept": "Poivre noir moulu",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "powder",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 330,
+        "proteinG": 13.3,
+        "carbsG": 39.5,
+        "fatG": 7.5,
+        "fiberG": 4.99
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Poivron jaune frais",
+      "canonical_name_normalized": "poivron jaune frais",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20168",
+      "source_name": "Poivron jaune, cru",
+      "state": {
+        "concept": "Poivron jaune frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 30.7,
+        "proteinG": 0.94,
+        "carbsG": 4.73,
+        "fatG": 0.3,
+        "fiberG": 0.54
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Poivron rouge frais",
+      "canonical_name_normalized": "poivron rouge frais",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20087",
+      "source_name": "Poivron rouge, cru",
+      "state": {
+        "concept": "Poivron rouge frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 36.6,
+        "proteinG": 1.06,
+        "carbsG": 5.98,
+        "fatG": 0.5,
+        "fiberG": 0.53
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Poivron vert frais",
+      "canonical_name_normalized": "poivron vert frais",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20085",
+      "source_name": "Poivron vert, cru",
+      "state": {
+        "concept": "Poivron vert frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 26,
+        "proteinG": 0.81,
+        "carbsG": 3.43,
+        "fatG": 0.5,
+        "fiberG": 0.41
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pomme de terre crue, avec peau",
+      "canonical_name_normalized": "pomme de terre crue avec peau",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "4007",
+      "source_name": "Pomme de terre nouvelle, bouillie/cuite à l'eau",
+      "state": {
+        "concept": "Pomme de terre crue",
+        "rest": "avec peau",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": "with_skin"
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": null,
+        "proteinG": 1.44,
+        "carbsG": null,
+        "fatG": 0.3,
+        "fiberG": 0.57
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pomme de terre crue, épluchée",
+      "canonical_name_normalized": "pomme de terre crue epluchee",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "4008",
+      "source_name": "Pomme de terre, sans peau, crue",
+      "state": {
+        "concept": "Pomme de terre crue",
+        "rest": "épluchée",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 80.5,
+        "proteinG": 2.16,
+        "carbsG": 16.2,
+        "fatG": 0.18,
+        "fiberG": 1.02
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pomme de terre nouvelle crue",
+      "canonical_name_normalized": "pomme de terre nouvelle crue",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "4023",
+      "source_name": "Pomme de terre nouvelle, crue",
+      "state": {
+        "concept": "Pomme de terre nouvelle crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 76.4,
+        "proteinG": 1.88,
+        "carbsG": 15.9,
+        "fatG": 0.3,
+        "fiberG": 0.9
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Pomme fraîche",
+      "canonical_name_normalized": "pomme fraiche",
+      "category": "fruits",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "13039",
+      "source_name": "Pomme, pulpe et peau, crue",
+      "state": {
+        "concept": "Pomme fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 49.6,
+        "proteinG": 0.25,
+        "carbsG": 11.6,
+        "fatG": 0.25,
+        "fiberG": 0.56
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Porc haché cru",
+      "canonical_name_normalized": "porc hache cru",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "28472",
+      "source_name": "Porc, hachage sans jarret, sans bateau, découenné, dégraissé, désossé, cru",
+      "state": {
+        "concept": "Porc haché cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 187,
+        "proteinG": 18.9,
+        "carbsG": 0.23,
+        "fatG": 12.3,
+        "fiberG": 0.2
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Potimarron frais, épépiné",
+      "canonical_name_normalized": "potimarron frais epepine",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20132",
+      "source_name": "Potimarron, pulpe, cru",
+      "state": {
+        "concept": "Potimarron frais",
+        "rest": "épépiné",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 15.8,
+        "proteinG": 0.63,
+        "carbsG": 3.1,
+        "fatG": 0.1,
+        "fiberG": 0.5
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Poulet entier cru, prêt à cuire",
+      "canonical_name_normalized": "poulet entier cru pret a cuire",
+      "category": "volailles",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "36003",
+      "source_name": "Poulet, viande, crue",
+      "state": {
+        "concept": "Poulet entier cru",
+        "rest": "prêt à cuire",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 113,
+        "proteinG": 20,
+        "carbsG": 0,
+        "fatG": 3.73,
+        "fiberG": 1.01
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Poulpe cuit",
+      "canonical_name_normalized": "poulpe cuit",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "10079",
+      "source_name": "Poulpe, cuit",
+      "state": {
+        "concept": "Poulpe cuit",
+        "rest": "",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 156,
+        "proteinG": 29.8,
+        "carbsG": 4.4,
+        "fatG": 2.08,
+        "fiberG": 3.2
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Quinoa cru",
+      "canonical_name_normalized": "quinoa cru",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9340",
+      "source_name": "Quinoa, cru",
+      "state": {
+        "concept": "Quinoa cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 354,
+        "proteinG": 13.2,
+        "carbsG": 58.1,
+        "fatG": 6.07,
+        "fiberG": 2.38
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Raisin sec",
+      "canonical_name_normalized": "raisin sec",
+      "category": "fruits",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "13046",
+      "source_name": "Raisin, sec",
+      "state": {
+        "concept": "Raisin sec",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 321,
+        "proteinG": 3,
+        "carbsG": 73.2,
+        "fatG": 0.9,
+        "fiberG": 2.5
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Ras el-hanout",
+      "canonical_name_normalized": "ras el hanout",
+      "category": "epices",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "11005",
+      "source_name": "Curry, poudre",
+      "state": {
+        "concept": "Ras el-hanout",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 301,
+        "proteinG": 14.5,
+        "carbsG": 2.63,
+        "fatG": 14,
+        "fiberG": 7.07
+      },
+      "note": "Proxy curry en poudre ; assemblage aromatique à sourcer séparément."
+    },
+    {
+      "canonical_name": "Rhum ambré",
+      "canonical_name_normalized": "rhum ambre",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "1004",
+      "source_name": "Rhum",
+      "state": {
+        "concept": "Rhum ambré",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.95
+      },
+      "per100g": {
+        "kcal": 256,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0.0092
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Riz arborio cru",
+      "canonical_name_normalized": "riz arborio cru",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9100",
+      "source_name": "Riz blanc, cru",
+      "state": {
+        "concept": "Riz arborio cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 350,
+        "proteinG": 7.04,
+        "carbsG": 78,
+        "fatG": 0.91,
+        "fiberG": 0.49
+      },
+      "note": "Profil riz blanc cru ; variété Arborio conservée comme identité culinaire."
+    },
+    {
+      "canonical_name": "Riz long blanc cru",
+      "canonical_name_normalized": "riz long blanc cru",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9100",
+      "source_name": "Riz blanc, cru",
+      "state": {
+        "concept": "Riz long blanc cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 350,
+        "proteinG": 7.04,
+        "carbsG": 78,
+        "fatG": 0.91,
+        "fiberG": 0.49
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Riz rond blanc cru",
+      "canonical_name_normalized": "riz rond blanc cru",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9100",
+      "source_name": "Riz blanc, cru",
+      "state": {
+        "concept": "Riz rond blanc cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 350,
+        "proteinG": 7.04,
+        "carbsG": 78,
+        "fatG": 0.91,
+        "fiberG": 0.49
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Romarin frais",
+      "canonical_name_normalized": "romarin frais",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11068",
+      "source_name": "Romarin, frais",
+      "state": {
+        "concept": "Romarin frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 121,
+        "proteinG": 3.31,
+        "carbsG": 6.6,
+        "fatG": 5.86,
+        "fiberG": 2.35
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Safran",
+      "canonical_name_normalized": "safran",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11039",
+      "source_name": "Safran",
+      "state": {
+        "concept": "Safran",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 352,
+        "proteinG": 11.4,
+        "carbsG": 61.5,
+        "fatG": 5.85,
+        "fiberG": 5.45
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Saindoux",
+      "canonical_name_normalized": "saindoux",
+      "category": "matieres_grasses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "16520",
+      "source_name": "Saindoux",
+      "state": {
+        "concept": "Saindoux",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 896,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 99.5,
+        "fiberG": 0.011
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Saint-pierre cru",
+      "canonical_name_normalized": "saint pierre cru",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "26104",
+      "source_name": "Saint-Pierre, cru",
+      "state": {
+        "concept": "Saint-pierre cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 86.7,
+        "proteinG": 19.9,
+        "carbsG": 0,
+        "fatG": 0.8,
+        "fiberG": 1.11
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Saucisse de Montbéliard",
+      "canonical_name_normalized": "saucisse de montbeliard",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "30105",
+      "source_name": "Saucisse de Montbéliard",
+      "state": {
+        "concept": "Saucisse de Montbéliard",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 319,
+        "proteinG": 17.3,
+        "carbsG": 1,
+        "fatG": 27.3,
+        "fiberG": 3.17
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Saucisse de Morteau",
+      "canonical_name_normalized": "saucisse de morteau",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "30104",
+      "source_name": "Saucisse de Morteau",
+      "state": {
+        "concept": "Saucisse de Morteau",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 397,
+        "proteinG": 16,
+        "carbsG": 1,
+        "fatG": 36.6,
+        "fiberG": 2.6
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Saucisse de Toulouse crue",
+      "canonical_name_normalized": "saucisse de toulouse crue",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "30110",
+      "source_name": "Saucisse de Toulouse, crue",
+      "state": {
+        "concept": "Saucisse de Toulouse crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 327,
+        "proteinG": 13.2,
+        "carbsG": 1,
+        "fatG": 30,
+        "fiberG": 2.64
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Sel fin",
+      "canonical_name_normalized": "sel fin",
+      "category": "condiments_sauces",
+      "confidence": "A",
+      "source": "myko_curated_override",
+      "source_record_key": null,
+      "source_name": "Sel fin",
+      "state": {
+        "concept": "Sel fin",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 0,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": null
+      },
+      "note": "Sel pur : macros et énergie nuls ; sodium traité séparément dans le profil complet."
+    },
+    {
+      "canonical_name": "Semoule de blé dur moyenne sèche",
+      "canonical_name_normalized": "semoule de ble dur moyenne seche",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9610",
+      "source_name": "Semoule de blé dur, crue",
+      "state": {
+        "concept": "Semoule de blé dur moyenne sèche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 348,
+        "proteinG": 10.9,
+        "carbsG": 71.6,
+        "fatG": 1.25,
+        "fiberG": 0.78
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Spaghetti secs",
+      "canonical_name_normalized": "spaghetti secs",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9810",
+      "source_name": "Pâtes sèches standard, crues",
+      "state": {
+        "concept": "Spaghetti secs",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 331,
+        "proteinG": 11.5,
+        "carbsG": 65.8,
+        "fatG": 1.79,
+        "fiberG": 0.8
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Sucre semoule",
+      "canonical_name_normalized": "sucre semoule",
+      "category": "produits_sucres",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "31016",
+      "source_name": "Sucre blanc",
+      "state": {
+        "concept": "Sucre semoule",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 399.2,
+        "proteinG": 0,
+        "carbsG": 99.8,
+        "fatG": 0,
+        "fiberG": 0.024
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Tahini",
+      "canonical_name_normalized": "tahini",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "15203",
+      "source_name": "Tahin ou Purée de sésame",
+      "state": {
+        "concept": "Tahini",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 606.6,
+        "proteinG": 17.7,
+        "carbsG": 13.8,
+        "fatG": 53.4,
+        "fiberG": 5.05
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Thon au naturel en conserve, égoutté",
+      "canonical_name_normalized": "thon au naturel en conserve egoutte",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "26181",
+      "source_name": "Thon albacore ou thon jaune, au naturel, appertisé, égoutté",
+      "state": {
+        "concept": "Thon au naturel en conserve",
+        "rest": "égoutté",
+        "cooking_state": null,
+        "preservation_state": "canned",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 128,
+        "proteinG": 26.6,
+        "carbsG": 0.58,
+        "fatG": 1.98,
+        "fiberG": 1.57
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Thym frais",
+      "canonical_name_normalized": "thym frais",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11070",
+      "source_name": "Thym, frais",
+      "state": {
+        "concept": "Thym frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 107,
+        "proteinG": 5.56,
+        "carbsG": 10.5,
+        "fatG": 1.68,
+        "fiberG": 3.2
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Thym séché",
+      "canonical_name_normalized": "thym seche",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11038",
+      "source_name": "Thym, séché",
+      "state": {
+        "concept": "Thym séché",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 285,
+        "proteinG": 9.11,
+        "carbsG": 26.9,
+        "fatG": 7.43,
+        "fiberG": 11.7
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Tomate concassée en conserve",
+      "canonical_name_normalized": "tomate concassee en conserve",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20169",
+      "source_name": "Tomate, pulpe, appertisée",
+      "state": {
+        "concept": "Tomate concassée en conserve",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "canned",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 26.1,
+        "proteinG": 1.2,
+        "carbsG": 3.63,
+        "fatG": 0.5,
+        "fiberG": 0.62
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Tomate entière pelée en conserve",
+      "canonical_name_normalized": "tomate entiere pelee en conserve",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20048",
+      "source_name": "Tomate, pelée, appertisée, égouttée",
+      "state": {
+        "concept": "Tomate entière pelée en conserve",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "canned",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 18.3,
+        "proteinG": 1.07,
+        "carbsG": 1.89,
+        "fatG": 0.28,
+        "fiberG": 0.66
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Tomate fraîche mûre",
+      "canonical_name_normalized": "tomate fraiche mure",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20047",
+      "source_name": "Tomate, crue",
+      "state": {
+        "concept": "Tomate fraîche mûre",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g",
+        "u"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 19.3,
+        "proteinG": 0.86,
+        "carbsG": 2.49,
+        "fatG": 0.26,
+        "fiberG": 0.97
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Vanille liquide",
+      "canonical_name_normalized": "vanille liquide",
+      "category": "epices",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11098",
+      "source_name": "Vanille, extrait aqueux",
+      "state": {
+        "concept": "Vanille liquide",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "liquid",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 57.7,
+        "proteinG": 0.03,
+        "carbsG": 14.4,
+        "fatG": 0,
+        "fiberG": 0.012
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Vin blanc sec",
+      "canonical_name_normalized": "vin blanc sec",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "5215",
+      "source_name": "Vin blanc (sec)",
+      "state": {
+        "concept": "Vin blanc sec",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 18.2,
+        "proteinG": 0.5,
+        "carbsG": 4.04,
+        "fatG": 0,
+        "fiberG": 0.19
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Vin rouge sec",
+      "canonical_name_normalized": "vin rouge sec",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "5214",
+      "source_name": "Vin rouge",
+      "state": {
+        "concept": "Vin rouge sec",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 82.1,
+        "proteinG": 0.07,
+        "carbsG": 2.63,
+        "fatG": 0,
+        "fiberG": 0.29
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Vinaigre de cidre",
+      "canonical_name_normalized": "vinaigre de cidre",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11018",
+      "source_name": "Vinaigre",
+      "state": {
+        "concept": "Vinaigre de cidre",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 22.6,
+        "proteinG": 0.04,
+        "carbsG": 0.62,
+        "fatG": 0.1,
+        "fiberG": 0.22
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Vinaigre de vin rouge",
+      "canonical_name_normalized": "vinaigre de vin rouge",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11220",
+      "source_name": "Vinaigre de vin rouge",
+      "state": {
+        "concept": "Vinaigre de vin rouge",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 21.6,
+        "proteinG": 0.5,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0.25
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Yaourt nature",
+      "canonical_name_normalized": "yaourt nature",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "19593",
+      "source_name": "Yaourt, lait fermenté ou spécialité laitière, nature",
+      "state": {
+        "concept": "Yaourt nature",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 45.8,
+        "proteinG": 3.96,
+        "carbsG": 2.65,
+        "fatG": 1.5,
+        "fiberG": 0.83
+      },
+      "note": null
+    },
+    {
+      "canonical_name": "Zeste de citron",
+      "canonical_name_normalized": "zeste de citron",
+      "category": "fruits",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "13125",
+      "source_name": "Citron, zeste, cru",
+      "state": {
+        "concept": "Zeste de citron",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 29.8,
+        "proteinG": 1.38,
+        "carbsG": 5.4,
+        "fatG": 0.3,
+        "fiberG": 0.6
+      },
+      "note": null
+    }
+  ]
+}

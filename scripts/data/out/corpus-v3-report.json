@@ -1,0 +1,10 @@
+{
+  "corpus_version": "v3-300-real-dishes",
+  "corpus_hash": "e866aa233ad9fcc4ff838f853594e96d",
+  "recipe_count": 302,
+  "food_forms_total_normalized": 719,
+  "recipes_static_eligible": 50,
+  "v1_enriched_static_eligible": 44,
+  "planner_rule_count": 7,
+  "sql_bytes": 3953703
+}

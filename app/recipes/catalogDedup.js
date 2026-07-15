@@ -92,9 +92,12 @@ export function dedupCatalog(recipes) {
     }
   }
 
-  // De chaque groupe, choisir le meilleur candidat : generated > classic
+  // De chaque groupe, choisir le meilleur candidat : canonical_v3 > generated > classic.
+  const priority = { canonical_v3: 3, generated: 2, classic: 1 }
   return groups.map(group => {
-    const gen = group.find(g => g.recipe.source === 'generated')
-    return gen ? gen.recipe : group[0].recipe
+    return group.reduce((best, candidate) =>
+      (priority[candidate.recipe.source] || 0) > (priority[best.recipe.source] || 0)
+        ? candidate
+        : best).recipe
   })
 }

@@ -8,6 +8,11 @@
 const { defineConfig, devices } = require('@playwright/test')
 const path = require('path')
 
+const chromiumExecutable = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE
+  || (process.env.PLAYWRIGHT_BROWSERS_PATH
+    ? path.join(process.env.PLAYWRIGHT_BROWSERS_PATH, 'chromium')
+    : undefined)
+
 // Stub env passed to the dev/start server so the app doesn't hard-error on
 // missing Supabase credentials. All actual Supabase network traffic is
 // intercepted by page.route() inside each test — no real Supabase is needed.
@@ -31,9 +36,7 @@ module.exports = defineConfig({
     screenshot: 'only-on-failure',
     // When PLAYWRIGHT_BROWSERS_PATH is set locally, point at the pre-installed
     // symlink. In CI after `npx playwright install chromium`, leave undefined.
-    launchOptions: process.env.PLAYWRIGHT_BROWSERS_PATH
-      ? { executablePath: path.join(process.env.PLAYWRIGHT_BROWSERS_PATH, 'chromium') }
-      : {},
+    launchOptions: chromiumExecutable ? { executablePath: chromiumExecutable } : {},
   },
 
   projects: [
