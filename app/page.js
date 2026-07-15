@@ -1,241 +1,109 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import {
+  AlertTriangle, CalendarDays, Camera, CheckCircle2, ChefHat,
+  Clock3, Package, Plus, RefreshCw, ShoppingCart, Sparkles,
+} from 'lucide-react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { readCache, writeCache } from '@/lib/pageCache'
-import NutritionBar from '@/components/ui/NutritionBar'
-import PersonSelector from '@/components/ui/PersonSelector'
-import TodayMeals from './planning/components/TodayMeals'
 import OcrReviewList from './pantry/components/OcrReviewList'
 import SmartAddForm from './pantry/components/SmartAddForm'
-import { Sparkles, Package, Camera, Plus, Settings, CalendarDays, BarChart3, ShoppingCart } from 'lucide-react'
 import './home.css'
 
-const daysUntil = (d) => {
-  if (!d) return null;
-  const todayISO = new Date().toISOString().split('T')[0];
-  const targetISO = String(d).split('T')[0];
-  return Math.round((new Date(targetISO) - new Date(todayISO)) / 86400000);
-}
+const mealLabels = { pdj: 'Petit-déjeuner', dejeuner: 'Déjeuner', collation: 'Collation', diner: 'Dîner' }
 
-// Choisit l'import qui COUVRE aujourd'hui (comme le planning), sinon le dernier.
-const pickImportForToday = (imports) => {
-  if (!imports?.length) return null;
-  const today = new Date().toISOString().split('T')[0];
-  return imports.find(i =>
-    i.date_range_start && i.date_range_end &&
-    i.date_range_start <= today && i.date_range_end >= today
-  ) || imports[0];
-}
+const formatTime = (value) => value
+  ? new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' }).format(new Date(value))
+  : null
 
-// Registre garde-manger (ledger V21) — onglets + libellé d'état
-const STOCK_TABS = [
-  { key: 'all', label: 'Tout' },
-  { key: 'exp', label: 'Expirés' },
-  { key: 'soon', label: 'Bientôt' },
-  { key: 'ok', label: 'Bon état' },
-]
-const stockStatusLabel = (it) => {
-  if (it.status === 'exp') return 'Périmé'
-  if (it.status === 'soon') return it.days <= 0 ? "Aujourd'hui" : it.days === 1 ? 'Demain' : `J-${it.days}`
-  return it.days != null ? `${it.days} j` : '—'
+function Skeleton() {
+  return (
+    <div className="today-loading" aria-busy="true" aria-label="Chargement d’aujourd’hui">
+      <div className="v21-skel" style={{ height: 150 }} />
+      <div className="v21-skel" style={{ height: 82 }} />
+      <div className="today-grid"><div className="v21-skel" style={{ height: 320 }} /><div className="v21-skel" style={{ height: 320 }} /></div>
+    </div>
+  )
 }
-
-// Petit squelette inline (rendu progressif des cartes de l'accueil).
-const Sk = ({ w = 60, h = 14, radius = 6, style }) => (
-  <span className="skeleton" style={{ display: 'inline-block', width: w, height: h, borderRadius: radius, verticalAlign: 'middle', ...style }} />
-)
 
 export default function Home() {
   const router = useRouter()
-  const [user, setUser] = useState(null)
+  const [today, setToday] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [latestImportId, setLatestImportId] = useState(null)
-  const [stockStats, setStockStats] = useState({ total: 0, expiring: 0, expired: 0, urgentItems: [], items: [] })
-  const [stockTab, setStockTab] = useState('all')
-  const [nutritionToday, setNutritionToday] = useState({})
-  const [goals, setGoals] = useState([])
-  const [person, setPerson] = useState('Julien')
-  const [latestWeight, setLatestWeight] = useState(null)
-  const [showWeightInput, setShowWeightInput] = useState(false)
-  const [newWeight, setNewWeight] = useState('')
+  const [error, setError] = useState('')
   const [showAddForm, setShowAddForm] = useState(false)
   const [showOcr, setShowOcr] = useState(false)
-  const [shoppingStats, setShoppingStats] = useState({ total: 0, checked: 0, uncheckedByCategory: [], nextItems: [] })
-  const [ready, setReady] = useState({}) // sections prêtes : { plan, stock, nutri, goals, shopping }
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      const user = session?.user
-      if (!user) { router.push('/login'); return }
-      setUser(user)
-      // Rendu instantané du dernier tableau de bord connu (reload/revisite).
-      const cached = readCache('home')
-      if (cached) {
-        if (cached.stockStats) setStockStats(cached.stockStats)
-        if (cached.shoppingStats) setShoppingStats(cached.shoppingStats)
-        if (cached.nutritionToday) setNutritionToday(cached.nutritionToday)
-        if (cached.goals) setGoals(cached.goals)
-        if ('latestWeight' in cached) setLatestWeight(cached.latestWeight)
-        if (cached.latestImportId) setLatestImportId(cached.latestImportId)
-        setReady({ plan: true, stock: true, nutri: true, goals: true, shopping: true })
-        setLoading(false)
-      }
-      loadAll()
-    })
+  const loadToday = useCallback(async ({ silent = false, signal } = {}) => {
+    if (!silent) setLoading(true)
+    setError('')
+    try {
+      const response = await authFetch('/api/today', { signal })
+      const data = await response.json().catch(() => ({}))
+      if (!response.ok) throw new Error(data.error || `Erreur ${response.status}`)
+      setToday(data)
+      writeCache('today-v3', data)
+    } catch (err) {
+      if (err.name === 'AbortError') return
+      setError(err.message || 'Impossible de charger la journée')
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
-  // recharge le poids du convive sélectionné (permet de saisir Julien ET Zoé)
-  useEffect(() => { if (user) loadWeight() }, [person])
-
-  async function loadAll() {
-    if (!readCache('home')) setLoading(true) // pas de skeleton si on a déjà un cache
-    await Promise.all([loadPlan(), loadStock(), loadNutrition(), loadGoals(), loadWeight(), loadShopping()])
-    setLoading(false)
-  }
-
-  // Mémorise le tableau de bord (rendu instantané au prochain chargement).
   useEffect(() => {
-    if (loading) return
-    writeCache('home', { stockStats, shoppingStats, nutritionToday, goals, latestWeight, latestImportId })
-  }, [loading, stockStats, shoppingStats, nutritionToday, goals, latestWeight, latestImportId])
+    let active = true
+    const controller = new AbortController()
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!active) return
+      if (!session?.user) { router.push('/login'); return }
+      const cached = readCache('today-v3')
+      if (cached) { setToday(cached); setLoading(false); loadToday({ silent: true, signal: controller.signal }) }
+      else loadToday({ signal: controller.signal })
+    })
+    return () => { active = false; controller.abort() }
+  }, [loadToday, router])
 
-  async function loadPlan() {
-    try {
-      const r = await authFetch('/api/planning/imports')
-      const d = await r.json()
-      const imp = pickImportForToday(d.imports)
-      if (imp) setLatestImportId(imp.id)
-    } catch {} finally { setReady(p => ({ ...p, plan: true })) }
-  }
-
-  async function loadStock() {
-    try {
-      // ⚠️ inventory_lots a des FK EN DOUBLE vers products/archetypes/canonical_foods
-      // (ex. inventory_lots_product_fk + inventory_lots_product_fkey). Sans préciser
-      // la contrainte, l'embed PostgREST est ambigu → la requête échoue → 0 produit.
-      const { data, error } = await supabase
-        .from('inventory_lots')
-        .select('id, qty_remaining, unit, storage_place, expiration_date, archetype:archetypes!inventory_lots_archetype_id_fkey(name), canonical_food:canonical_foods!inventory_lots_canonical_food_id_fkey(canonical_name), product:products!inventory_lots_product_fkey(name)')
-        .gt('qty_remaining', 0)
-      if (error || !data) return
-      const items = []
-      let expiring = 0, expired = 0
-      for (const lot of data) {
-        const d = daysUntil(lot.expiration_date)
-        if (d !== null) {
-          if (d < 0) expired++
-          else if (d <= 3) expiring++
-        }
-        const raw = lot.product?.name || lot.archetype?.name || lot.canonical_food?.canonical_name || 'Produit'
-        const name = raw.charAt(0).toUpperCase() + raw.slice(1)
-        const status = d === null ? 'ok' : d < 0 ? 'exp' : d <= 3 ? 'soon' : 'ok'
-        const q = lot.qty_remaining != null ? +(+lot.qty_remaining).toFixed(2) : null
-        const qty = q != null ? `${q}${lot.unit ? ' ' + lot.unit : ''}` : ''
-        items.push({ id: lot.id, name, qty, location: lot.storage_place || '', days: d, status })
-      }
-      const rank = { exp: 0, soon: 1, ok: 2 }
-      items.sort((a, b) => (rank[a.status] - rank[b.status]) || ((a.days ?? 9999) - (b.days ?? 9999)))
-      const urgentItems = items.filter(i => i.status !== 'ok').slice(0, 5)
-      setStockStats({ total: data.length, expiring, expired, urgentItems, items })
-    } catch {} finally { setReady(p => ({ ...p, stock: true })) }
-  }
-
-  async function loadNutrition() {
-    try {
-      const today = new Date().toISOString().split('T')[0]
-      const r = await authFetch(`/api/nutrition/log?from=${today}&to=${today}`)
-      const d = await r.json()
-      if (!d.entries) return
-      const bp = {}
-      for (const e of d.entries) {
-        const p = e.person_name || 'Julien'
-        if (!bp[p]) bp[p] = { kcal: 0, protein_g: 0, carbs_g: 0, fat_g: 0 }
-        bp[p].kcal += e.kcal || 0; bp[p].protein_g += e.protein_g || 0
-        bp[p].carbs_g += e.carbs_g || 0; bp[p].fat_g += e.fat_g || 0
-      }
-      setNutritionToday(bp)
-    } catch {} finally { setReady(p => ({ ...p, nutri: true })) }
-  }
-
-  async function loadGoals() {
-    try {
-      const res = await authFetch('/api/nutrition/goals')
-      const data = await res.json()
-      if (data.goals) setGoals(data.goals)
-    } catch {} finally { setReady(p => ({ ...p, goals: true })) }
-  }
-
-  async function loadWeight() {
-    try { const r = await authFetch(`/api/nutrition/weight?person=${person}&limit=1`); const d = await r.json(); setLatestWeight(d.entries?.length ? d.entries[0] : null) } catch {}
-  }
-
-  async function handleAddWeight() {
-    if (!newWeight) return
-    try {
-      await authFetch('/api/nutrition/weight', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ person_name: person || 'Julien', date: new Date().toISOString().split('T')[0], weight_kg: parseFloat(newWeight) }),
-      })
-      setShowWeightInput(false)
-      setNewWeight('')
-      loadWeight()
-    } catch {}
-  }
-
-  async function loadShopping() {
-    try {
-      const r = await authFetch('/api/planning/imports')
-      const d = await r.json()
-      const imp = pickImportForToday(d.imports)
-      if (!imp) return
-      const r2 = await authFetch(`/api/planning/imports/${imp.id}`)
-      const d2 = await r2.json()
-      const items = d2.shoppingItems || []
-      if (!items.length) return
-      const checked = items.filter(i => i.checked).length
-      const byCat = {}
-      const nextItems = []
-      for (const it of items) {
-        if (it.checked) continue
-        const c = it.category || 'Autres'
-        byCat[c] = (byCat[c] || 0) + 1
-        if (nextItems.length < 6 && it.product_name) nextItems.push(it.product_name)
-      }
-      const uncheckedByCategory = Object.entries(byCat)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 4)
-        .map(([name, count]) => ({ name, count }))
-      setShoppingStats({ total: items.length, checked, uncheckedByCategory, nextItems })
-    } catch {} finally { setReady(p => ({ ...p, shopping: true })) }
-  }
-
-  const pg = goals.find(g => g.person_name === person) || goals[0] || {}
-  const pn = nutritionToday[person] || { kcal: 0, protein_g: 0, carbs_g: 0, fat_g: 0 }
-  const today = new Date()
-  const greeting = today.getHours() < 12 ? 'Bonjour' : today.getHours() < 18 ? 'Bon après-midi' : 'Bonsoir'
-  const dateLabel = today.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
+  const now = new Date()
+  const greeting = now.getHours() < 12 ? 'Bonjour' : now.getHours() < 18 ? 'Bon après-midi' : 'Bonsoir'
+  const dateLabel = now.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
   const dateCap = dateLabel.charAt(0).toUpperCase() + dateLabel.slice(1)
-  const surveiller = stockStats.expiring + stockStats.expired
-  const coursesLeft = shoppingStats.total > 0 ? shoppingStats.total - shoppingStats.checked : 0
-  const filteredStock = (stockStats.items || []).filter(it => stockTab === 'all' || it.status === stockTab).slice(0, 6)
+
+  if (loading && !today) return <div className="v21-home"><Skeleton /></div>
+
+  if (error && !today) {
+    return (
+      <main className="v21-home today-error">
+        <AlertTriangle size={26} />
+        <h1>La journée n’a pas pu être assemblée.</h1>
+        <p>{error}</p>
+        <button className="v21-btn" onClick={() => loadToday()}><RefreshCw size={14} /> Réessayer</button>
+      </main>
+    )
+  }
+
+  const meals = today?.meals || []
+  const tasks = today?.tasks || []
+  const alerts = today?.alerts || []
+  const shopping = today?.shopping || { requiredCount: 0, items: [] }
+  const nutrition = today?.nutritionStatus || []
+  const leftovers = today?.leftovers || []
+  const nextAction = today?.nextAction
 
   return (
     <>
       <div className="myko-canvas" aria-hidden="true" />
-      <div className="v21-home">
-
-        {/* HERO ÉDITORIAL */}
+      <main className="v21-home">
         <header className="v21-hero">
           <div className="v21-hero-text">
-            <span className="v21-eyebrow">{dateCap} · réseau mycorhizien</span>
+            <span className="v21-eyebrow">{dateCap} · boucle fermée</span>
             <h1 className="v21-title">{greeting}.</h1>
             <div className="v21-rule" />
-            <p className="v21-lede">Ce qui mûrit, ce qui se cuisine, ce qui se partage.</p>
+            <p className="v21-lede">Une seule prochaine action, calculée depuis le vrai planning et le vrai stock.</p>
           </div>
           <div className="v21-hero-side">
             <button onClick={() => setShowAddForm(true)} className="v21-btn"><Plus size={15} /> Ajouter</button>
@@ -243,174 +111,125 @@ export default function Home() {
           </div>
         </header>
 
-        {/* STATS — bandeau à filets */}
+        {nextAction ? (
+          <Link href={nextAction.href} className={`today-action ${nextAction.priority >= 90 ? 'urgent' : ''}`}>
+            <span className="today-action-label">À faire maintenant</span>
+            <strong>{nextAction.title}</strong>
+            <span>{nextAction.at ? `${formatTime(nextAction.at)} · ` : ''}{nextAction.type === 'task' ? 'préparation' : nextAction.type === 'meal' ? 'repas' : nextAction.type === 'shopping' ? 'courses' : 'à vérifier'} →</span>
+          </Link>
+        ) : (
+          <div className="today-action done"><CheckCircle2 size={20} /><strong>Rien d’urgent pour le moment.</strong></div>
+        )}
+
         <div className="v21-stats">
-          <Link href="/pantry" className="v21-stat">
-            <span className="v21-stat-l">Garde-manger</span>
-            <span className="v21-stat-v">{ready.stock ? stockStats.total : <Sk w={30} h={24} />}</span>
-            <span className="v21-stat-s">{ready.stock ? (stockStats.total > 1 ? 'produits en stock' : 'produit en stock') : <Sk w={90} h={10} />}</span>
+          <Link href="/planning" className="v21-stat">
+            <span className="v21-stat-l">Repas aujourd’hui</span>
+            <span className="v21-stat-v">{meals.length}</span>
+            <span className="v21-stat-s">{today?.activePlan ? `plan ${today.activePlan.status}` : 'aucun plan actif'}</span>
           </Link>
-          <Link href="/courses" className="v21-stat">
+          <Link href="/planning" className="v21-stat">
+            <span className="v21-stat-l">Préparations</span>
+            <span className="v21-stat-v">{tasks.length}</span>
+            <span className="v21-stat-s">tâche{tasks.length !== 1 ? 's' : ''} restante{tasks.length !== 1 ? 's' : ''}</span>
+          </Link>
+          <Link href="/courses" className={`v21-stat ${shopping.requiredCount ? 'alert' : ''}`}>
             <span className="v21-stat-l">Courses</span>
-            <span className="v21-stat-v">{ready.shopping ? coursesLeft : <Sk w={30} h={24} />}</span>
-            <span className="v21-stat-s">{ready.shopping ? (shoppingStats.total > 0 ? `restants · ${shoppingStats.checked}/${shoppingStats.total}` : 'rien à acheter') : <Sk w={90} h={10} />}</span>
-          </Link>
-          <Link href="/pantry" className={`v21-stat ${ready.stock && surveiller > 0 ? 'alert' : ''}`}>
-            <span className="v21-stat-l">À surveiller</span>
-            <span className="v21-stat-v">{ready.stock ? surveiller : <Sk w={30} h={24} />}</span>
-            <span className="v21-stat-s">{ready.stock ? (surveiller > 0 ? 'à consommer vite' : 'rien ne périme') : <Sk w={90} h={10} />}</span>
+            <span className="v21-stat-v">{shopping.requiredCount}</span>
+            <span className="v21-stat-s">forme{shopping.requiredCount !== 1 ? 's' : ''} exacte{shopping.requiredCount !== 1 ? 's' : ''} à acheter</span>
           </Link>
         </div>
 
-        {/* REPAS — aujourd'hui | COURSES + NUTRITION (deux colonnes V21) */}
-        <div className="v21-cols">
-          {/* Colonne gauche — Repas */}
-          <section className="v21-col v21-col-main">
-            <div className="v21-bh"><span className="v21-bl">Repas — aujourd'hui</span><Link href="/planning" className="v21-link">Semaine →</Link></div>
-            {!ready.plan && !latestImportId ? (
-              <div style={{ display: 'grid', gap: 10, paddingTop: 12 }}>
-                <Sk w="100%" h={56} radius={3} />
-                <Sk w="100%" h={56} radius={3} />
-                <Sk w="100%" h={56} radius={3} />
+        <div className="today-grid">
+          <section className="today-panel">
+            <div className="v21-bh"><span className="v21-bl">La carte du jour</span><Link href="/planning" className="v21-link">Semaine →</Link></div>
+            {meals.length ? (
+              <div className="today-meals">
+                {meals.map((meal) => {
+                  const coverage = Number(meal.stockSummary?.coverage)
+                  return (
+                    <Link href={meal.href || '/planning'} key={meal.key || meal.id} className="today-meal">
+                      <span className="today-meal-type">{mealLabels[meal.type] || meal.type}</span>
+                      <strong>{meal.title}</strong>
+                      <span className="today-meal-meta">
+                        {meal.recipeCode ? `${meal.recipeCode} · ` : ''}
+                        {Number.isFinite(coverage) ? `${Math.round(coverage * 100)} % du stock` : 'stock non calculé'}
+                      </span>
+                      {meal.sensory?.profile && <span className="today-profile">{meal.sensory.profile.replaceAll('_', ' ')}</span>}
+                    </Link>
+                  )
+                })}
               </div>
-            ) : latestImportId ? (
-              <TodayMeals importId={latestImportId} />
             ) : (
-              <div className="v21-empty">
-                <p>Pas encore de planning cette semaine.</p>
-                <Link href="/planning/assistant" className="v21-btn"><Sparkles size={15} /> Créer un planning</Link>
-              </div>
+              <div className="v21-empty"><p>Pas de repas planifié aujourd’hui.</p><Link href="/planning/assistant" className="v21-btn"><Sparkles size={14} /> Composer la semaine</Link></div>
             )}
           </section>
 
-          {/* Colonne droite — Courses puis Nutrition */}
-          <section className="v21-col v21-col-side">
-            <div className="v21-sub">
-              <div className="v21-bh"><span className="v21-bl">Courses</span>{ready.shopping && shoppingStats.total > 0 && <Link href="/courses" className="v21-link">Ouvrir →</Link>}</div>
-              {!ready.shopping ? (
-                <><Sk w={88} h={28} style={{ marginBottom: 10 }} /><Sk w="100%" h={8} radius={4} /></>
-              ) : shoppingStats.total > 0 ? (
-                <>
-                  <div className="v21-bignum">{shoppingStats.checked} / {shoppingStats.total}</div>
-                  <div className="v21-prog"><div className="v21-prog-fill" style={{ width: `${(shoppingStats.checked / shoppingStats.total) * 100}%` }} /></div>
-                  {shoppingStats.uncheckedByCategory.length > 0 && (
-                    <div className="v21-cats">
-                      {shoppingStats.uncheckedByCategory.map(c => (
-                        <Link key={c.name} href="/courses" className="v21-cat">{c.name} · {c.count}</Link>
-                      ))}
-                    </div>
-                  )}
-                </>
-              ) : (
-                <Link href="/planning/assistant" className="v21-btn ghost"><Sparkles size={15} /> Créer une liste</Link>
-              )}
-            </div>
-
-            <div className="v21-sub v21-sub-divided">
-              <div className="v21-bh"><span className="v21-bl">Nutrition</span><PersonSelector selected={person} onChange={setPerson} /></div>
-              {!(ready.goals && ready.nutri) ? (
-                <div className="v21-macros">
-                  {[0, 1, 2, 3].map(i => <Sk key={i} w="100%" h={26} radius={4} style={{ marginBottom: 8 }} />)}
-                </div>
-              ) : pg.target_calories ? (
-                <div className="v21-macros">
-                  <NutritionBar label="kcal" value={pn.kcal} target={pg.target_calories} color="var(--brand)" />
-                  <NutritionBar label="Prot" value={pn.protein_g} target={pg.target_protein_g} unit="g" color="#3b82f6" />
-                  <NutritionBar label="Gluc" value={pn.carbs_g} target={pg.target_carbs_g} unit="g" color="#f59e0b" />
-                  <NutritionBar label="Lip" value={pn.fat_g} target={pg.target_fat_g} unit="g" color="#ef4444" />
-                </div>
-              ) : pn.kcal > 0 ? (
-                <div>
-                  <p className="v21-next" style={{ marginTop: 0 }}>Consommé aujourd'hui</p>
-                  <p style={{ margin: '4px 0 12px', fontFamily: 'var(--font-display)', color: 'var(--ink-1)', fontSize: 18 }}>
-                    {Math.round(pn.kcal)} kcal · {Math.round(pn.protein_g)}g P · {Math.round(pn.carbs_g)}g G · {Math.round(pn.fat_g)}g L
-                  </p>
-                  <Link href="/nutrition/onboarding" className="v21-btn ghost"><Settings size={15} /> Définir des objectifs</Link>
-                </div>
-              ) : (
-                <Link href="/nutrition/onboarding" className="v21-btn ghost"><Settings size={15} /> Configurer mes objectifs</Link>
-              )}
-
-              {/* Poids du jour */}
-              <div className="home-weight">
-                <span className="home-weight-now">
-                  {latestWeight ? <>{latestWeight.weight_kg}<span className="home-weight-u"> kg</span></> : <span className="home-weight-empty">Poids non saisi</span>}
-                </span>
-                <button onClick={() => setShowWeightInput(v => !v)} className="v21-btn ghost sm"><Plus size={13} /> Poids du jour</button>
-              </div>
-              {showWeightInput && (
-                <div className="home-weight-form">
-                  <input type="number" step="0.1" value={newWeight} onChange={e => setNewWeight(e.target.value)} placeholder="Ex : 72.5" className="home-weight-input" autoFocus />
-                  <button onClick={handleAddWeight} className="v21-btn sm">Enregistrer</button>
-                </div>
-              )}
-            </div>
+          <section className="today-panel today-side">
+            <div className="v21-bh"><span className="v21-bl">Préparations</span></div>
+            {tasks.length ? (
+              <ol className="today-tasks">
+                {tasks.map((task) => (
+                  <li key={task.id}>
+                    <span className="today-task-time"><Clock3 size={13} /> {formatTime(task.dueAt) || 'Aujourd’hui'}</span>
+                    <strong>{task.title}</strong>
+                    <span>{task.durationMinutes ? `${task.durationMinutes} min` : task.label}</span>
+                  </li>
+                ))}
+              </ol>
+            ) : <p className="today-muted">Aucune préparation en attente.</p>}
           </section>
         </div>
 
-        {/* GARDE-MANGER — registre (ledger éditorial) */}
-        <section className="v21-ledger">
-          <div className="v21-ledger-h">
-            <h2 className="v21-ledger-title">Garde-manger</h2>
-            <span className="v21-ledger-c">{ready.stock ? <>{stockStats.total} produit{stockStats.total !== 1 ? 's' : ''} · {surveiller} à surveiller</> : <Sk w={150} h={11} />}</span>
-          </div>
-          {!ready.stock ? (
-            <div className="v21-its" style={{ paddingTop: 12 }}>
-              {[0, 1, 2, 3].map(i => <Sk key={i} w="100%" h={42} radius={3} style={{ display: 'block', marginBottom: 8 }} />)}
+        {(alerts.length > 0 || leftovers.length > 0) && (
+          <section className="today-watch">
+            <div className="today-watch-head"><h2>À surveiller</h2><span>{alerts.length + leftovers.length} signal{alerts.length + leftovers.length !== 1 ? 'aux' : ''}</span></div>
+            <div className="today-watch-list">
+              {alerts.map((alert) => (
+                <Link href={alert.href || '/pantry'} key={alert.id} className={`today-watch-row ${alert.severity}`}>
+                  <AlertTriangle size={15} /><strong>{alert.title}</strong><span>{alert.severity}</span>
+                </Link>
+              ))}
+              {leftovers.map((leftover) => (
+                <Link href="/restes" key={`leftover-${leftover.id}`} className="today-watch-row leftover">
+                  <ChefHat size={15} /><strong>{leftover.name}</strong><span>{leftover.portionsRemaining} portion{leftover.portionsRemaining !== 1 ? 's' : ''}</span>
+                </Link>
+              ))}
             </div>
-          ) : stockStats.total > 0 ? (
-            <>
-              <div className="v21-tabs" role="tablist" aria-label="Filtrer le garde-manger">
-                {STOCK_TABS.map(t => (
-                  <button
-                    key={t.key}
-                    role="tab"
-                    aria-selected={stockTab === t.key}
-                    className={`v21-tab ${stockTab === t.key ? 'on' : ''}`}
-                    onClick={() => setStockTab(t.key)}
-                  >{t.label}</button>
-                ))}
-              </div>
-              {filteredStock.length > 0 ? (
-                <div className="v21-its">
-                  {filteredStock.map(it => (
-                    <Link key={it.id} href="/pantry" className={`v21-it ${it.status}`}>
-                      <span className="v21-it-bar" aria-hidden="true" />
-                      <span className="v21-it-n">{it.name}</span>
-                      <span className="v21-it-q">{it.qty}</span>
-                      <span className="v21-it-lc">{it.location}</span>
-                      <span className="v21-it-st">{stockStatusLabel(it)}</span>
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <p className="v21-next">Rien dans cette catégorie.</p>
-              )}
-              {(stockStats.items || []).length > filteredStock.length && (
-                <Link href="/pantry" className="v21-link v21-ledger-all">Tout le garde-manger →</Link>
-              )}
-            </>
-          ) : (
-            <div className="v21-empty" style={{ paddingTop: 18 }}>
-              <p>Ton garde-manger est vide.</p>
-              <button onClick={() => setShowAddForm(true)} className="v21-btn"><Plus size={15} /> Ajouter un produit</button>
-            </div>
-          )}
-        </section>
+          </section>
+        )}
 
-        {/* NAV RAPIDE */}
-        <nav className="v21-nav">
+        <div className="today-grid today-lower">
+          <section className="today-panel">
+            <div className="v21-bh"><span className="v21-bl">Nutrition enregistrée</span><Link href="/nutrition" className="v21-link">Détails →</Link></div>
+            {nutrition.length ? nutrition.map((member) => (
+              <div className="today-nutrition" key={member.memberId}>
+                <div><strong>{member.memberName}</strong><span>{member.consumed.kcal} kcal consommées</span></div>
+                <div className="today-nutrition-bar"><i style={{ width: `${Math.min(member.kcalPercent || 0, 100)}%` }} /></div>
+                <small>{member.kcalPercent == null ? 'Objectif non configuré' : `${member.kcalPercent} % de l’objectif · ${member.consumed.proteinG} g protéines`}</small>
+              </div>
+            )) : <p className="today-muted">Aucun membre actif dans le foyer.</p>}
+          </section>
+
+          <section className="today-panel today-side">
+            <div className="v21-bh"><span className="v21-bl">Prochaines courses</span><Link href="/courses" className="v21-link">Ouvrir →</Link></div>
+            {shopping.items.length ? (
+              <ul className="today-shopping">
+                {shopping.items.slice(0, 6).map((item) => <li key={item.id}><strong>{item.name}</strong><span>{item.purchaseQuantity ? `${Math.ceil(item.purchaseQuantity)} ${item.purchaseUnit || ''}` : item.displayQuantity}</span></li>)}
+              </ul>
+            ) : <p className="today-muted">Rien à acheter pour le plan actif.</p>}
+          </section>
+        </div>
+
+        <nav className="v21-nav" aria-label="Navigation rapide">
           <Link href="/planning/assistant" className="v21-navlink"><Sparkles size={15} /> Myko</Link>
           <Link href="/pantry" className="v21-navlink"><Package size={15} /> Stock</Link>
           <Link href="/planning" className="v21-navlink"><CalendarDays size={15} /> Planning</Link>
           <Link href="/courses" className="v21-navlink"><ShoppingCart size={15} /> Courses</Link>
-          <Link href="/nutrition" className="v21-navlink"><BarChart3 size={15} /> Nutrition</Link>
         </nav>
+      </main>
 
-      </div>
-
-      {showAddForm && <SmartAddForm open onClose={() => { setShowAddForm(false); loadStock() }} onLotCreated={() => { setShowAddForm(false); loadStock() }} />}
-      {showOcr && <OcrReviewList onClose={() => setShowOcr(false)} onItemsAdded={() => { setShowOcr(false); loadStock() }} />}
+      {showAddForm && <SmartAddForm open onClose={() => setShowAddForm(false)} onLotCreated={() => { setShowAddForm(false); loadToday({ silent: true }) }} />}
+      {showOcr && <OcrReviewList onClose={() => setShowOcr(false)} onItemsAdded={() => { setShowOcr(false); loadToday({ silent: true }) }} />}
     </>
   )
 }

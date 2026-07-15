@@ -14,7 +14,7 @@ from typing import List, Dict, Tuple
 import time
 
 # Configuration
-DATABASE_URL = 'postgresql://postgres:qnYlPNuhMmHTzcUR@aws-1-eu-west-3.pooler.supabase.com:6544/postgres?sslmode=require&options=project%3Dyylkwfikfbottngglaxj'
+DATABASE_URL = os.getenv('DATABASE_URL_TX') or os.getenv('DATABASE_URL')
 EXISTING_FILE = '/workspaces/garde-manger-app/LISTE_TOUTES_RECETTES_NORMALISEE (2).txt'
 OUTPUT_FILE = '/workspaces/garde-manger-app/LISTE_TOUTES_RECETTES_COMPLETE.txt'
 PROGRESS_FILE = '/workspaces/garde-manger-app/tools/enrichment_progress.json'
@@ -22,6 +22,8 @@ BATCH_SIZE = 50
 
 def connect_db():
     """Connexion à la base de données Supabase."""
+    if not DATABASE_URL:
+        raise RuntimeError('DATABASE_URL_TX ou DATABASE_URL est requis')
     return psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
 
 def load_existing_recipes() -> Dict[int, Dict]:

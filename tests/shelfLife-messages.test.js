@@ -34,12 +34,12 @@ describe('inferCategory', () => {
 });
 
 describe('calculateAdjustedExpiration', () => {
-  const openedAt = new Date(2026, 5, 1); // 1er juin 2026 (heure locale)
+  const openedAt = new Date(Date.UTC(2026, 5, 1));
 
   const plusDays = (date, days) => {
-    const d = new Date(date);
-    d.setDate(d.getDate() + days);
-    return d;
+    const iso = new Date(date).toISOString().slice(0, 10);
+    const [year, month, day] = iso.split('-').map(Number);
+    return new Date(Date.UTC(year, month - 1, day + days));
   };
 
   it('ajoute la durée de conservation après ouverture (Beurre frigo : 14 j)', () => {
@@ -77,14 +77,10 @@ describe('calculateAdjustedExpiration', () => {
       expect(result).toBeNull();
     });
 
-    it('comportement actuel : freezer null retombe sur la durée frigo (Mayonnaise)', () => {
-      // Mayonnaise.freezer === null mais le code fait `rules[method] || rules.fridge`
-      // → repli sur fridge (7 j) au lieu de null. Documente le comportement réel.
+    it('respecte l’interdiction explicite de congeler la mayonnaise', () => {
       expect(SHELF_LIFE_AFTER_OPENING['Mayonnaise'].freezer).toBeNull();
       const result = calculateAdjustedExpiration('Mayonnaise', 'freezer', openedAt);
-      expect(result.getTime()).toBe(
-        plusDays(openedAt, SHELF_LIFE_AFTER_OPENING['Mayonnaise'].fridge).getTime()
-      );
+      expect(result).toBeNull();
     });
   });
 });

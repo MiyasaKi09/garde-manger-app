@@ -2,6 +2,8 @@
  * Fabrique V2 — parseur Ciqual (XLS → enregistrements bruts homogènes).
  * Réf. MYKO_DATA_FOUNDATION_V2 §5.4 (Parse). Étape idempotente.
  */
+import { readFileSync } from 'node:fs'
+import { gunzipSync } from 'node:zlib'
 import XLSX from 'xlsx'
 import { COL, mapNutrientColumns } from '../lib/ciqual-nutrients.mjs'
 import { parseCiqualValue } from '../lib/normalize.mjs'
@@ -13,7 +15,11 @@ import { parseCiqualValue } from '../lib/normalize.mjs'
  *              values:{code:amount}, statuses:{code:status} }
  */
 export function parseCiqualWorkbook(filePath) {
-  const wb = XLSX.readFile(filePath)
+  // The source archive is committed as `.xls.gz` so the complete official
+  // workbook stays reproducible without an extra network download.
+  const source = readFileSync(filePath)
+  const workbookBuffer = filePath.toLowerCase().endsWith('.gz') ? gunzipSync(source) : source
+  const wb = XLSX.read(workbookBuffer, { type: 'buffer' })
   const ws = wb.Sheets['compo'] || wb.Sheets[wb.SheetNames[0]]
   const rows = XLSX.utils.sheet_to_json(ws, { header: 1, raw: true })
   const header = rows[0].map((h) => (h == null ? '' : String(h)))

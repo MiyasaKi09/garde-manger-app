@@ -14,7 +14,12 @@ export async function GET(request) {
   if (authError || !user) {
     return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
   }
-  const date = request.nextUrl.searchParams.get('date') || new Date().toISOString().slice(0, 10)
+  const date = request.nextUrl.searchParams.get('date') || new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date())
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return NextResponse.json({ error: 'Date invalide' }, { status: 400 })
+  }
   try {
     const viewModel = await getToday(supabase, date)
     assertTodayViewModel(viewModel) // garde-fou : ne renvoie jamais un contrat cassé
