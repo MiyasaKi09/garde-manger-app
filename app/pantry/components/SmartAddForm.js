@@ -6,7 +6,7 @@ import { Search, Plus, X, Package } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
 import { authFetch } from '@/lib/authFetch';
 import { toast } from '../../../components/Toast';
-import { getPossibleUnitsForProduct } from '../../../lib/possibleUnits';
+import { getPreferredUnit } from '../../../lib/productUnitPolicy';
 import LotDetailsForm from './LotDetailsForm';
 import NewProductForm from './NewProductForm';
 import './SmartAddForm.css';
@@ -338,6 +338,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         .from('canonical_foods')
         .select(`
           id, canonical_name, category_id, subcategory_id, keywords, primary_unit,
+          unit_weight_grams, density_g_per_ml,
           shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer
         `)
         .or(`canonical_name.ilike.%${q}%,keywords.cs.{${q}}`)
@@ -364,9 +365,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         const { data: archetypes } = await supabase
           .from('archetypes')
           .select(`
-            id, name, canonical_food_id,
+            id, name, canonical_food_id, primary_unit, grams_per_unit, density_g_per_ml,
             shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer,
-            canonical_foods!inner(canonical_name, category_id, primary_unit, keywords, shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer)
+            canonical_foods!inner(canonical_name, category_id, primary_unit, keywords, unit_weight_grams, density_g_per_ml, shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer)
           `)
           .ilike('name', `%${q}%`)
           .limit(20);
@@ -380,7 +381,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 id: `arch_${archetype.id}`,
                 canonical_name: archetype.name,
                 category_id: cf?.category_id,
-                primary_unit: cf?.primary_unit || 'unités',
+                primary_unit: archetype.primary_unit || cf?.primary_unit || 'g',
+                grams_per_unit: archetype.grams_per_unit ?? cf?.unit_weight_grams ?? null,
+                density_g_per_ml: archetype.density_g_per_ml ?? cf?.density_g_per_ml ?? null,
                 // Durées PAR LIEU de l'archétype (repli sur le canonique) — fini les 365 d'office.
                 shelf_life_days_pantry: archetype.shelf_life_days_pantry ?? cf?.shelf_life_days_pantry ?? null,
                 shelf_life_days_fridge: archetype.shelf_life_days_fridge ?? cf?.shelf_life_days_fridge ?? null,
@@ -403,7 +406,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           .from('cultivars')
           .select(`
             id, cultivar_name, canonical_food_id,
-            canonical_foods!inner(canonical_name, category_id, primary_unit, keywords,
+            canonical_foods!inner(canonical_name, category_id, primary_unit, keywords, unit_weight_grams, density_g_per_ml,
               shelf_life_days_pantry, shelf_life_days_fridge, shelf_life_days_freezer)
           `)
           .ilike('cultivar_name', `%${q}%`)
@@ -417,7 +420,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                 id: `cult_${cultivar.id}`,
                 canonical_name: cultivar.cultivar_name,
                 category_id: cultivar.canonical_foods?.category_id,
-                primary_unit: cultivar.canonical_foods?.primary_unit || 'unités',
+                primary_unit: cultivar.canonical_foods?.primary_unit || 'g',
+                grams_per_unit: cultivar.canonical_foods?.unit_weight_grams ?? null,
+                density_g_per_ml: cultivar.canonical_foods?.density_g_per_ml ?? null,
                 shelf_life_days_pantry: cultivar.canonical_foods?.shelf_life_days_pantry,
                 shelf_life_days_fridge: cultivar.canonical_foods?.shelf_life_days_fridge,
                 shelf_life_days_freezer: cultivar.canonical_foods?.shelf_life_days_freezer,
@@ -490,7 +495,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           category_id: item.category_id,
           subcategory_id: item.subcategory_id,
           matchScore,
-          primary_unit: item.primary_unit || 'unités',
+          primary_unit: item.primary_unit || 'g',
+          grams_per_unit: item.grams_per_unit ?? item.unit_weight_grams ?? null,
+          density_g_per_ml: item.density_g_per_ml ?? null,
           shelf_life_days_pantry: item.shelf_life_days_pantry || 30,
           shelf_life_days_fridge: item.shelf_life_days_fridge || 7,
           shelf_life_days_freezer: item.shelf_life_days_freezer || 90,
@@ -563,7 +570,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
 
   const handleProductSelect = (product) => {
     setSelectedProduct(product);
-    const preferredUnit = product.primary_unit || 'unités';
+    const preferredUnit = getPreferredUnit(product);
     const method = smartStorage(product);
     const place = method === 'fridge' ? 'Réfrigérateur' : method === 'freezer' ? 'Congélateur' : 'Garde-manger';
     const defaultExpiration = getDefaultExpirationDate(product, method);
@@ -661,13 +668,13 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   if (!open) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="smart-add-overlay" onClick={onClose}>
       <div 
         ref={modalRef}
-        className="modal-container" 
+        className="smart-add-modal"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="modal-header">
+        <div className="smart-add-header">
           <div className="header-title">
             <Plus size={20} />
             Ajouter un produit
@@ -677,7 +684,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           </button>
         </div>
 
-        <div className="modal-body">
+        <div className="smart-add-body">
           {step === 1 && (
             <>
               <div className="search-section">
@@ -756,7 +763,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
           )}
         </div>
 
-        <div className="modal-footer">
+        <div className="smart-add-footer">
           {step === 2 && (
             <>
               <button onClick={() => setStep(1)} className="back-btn">

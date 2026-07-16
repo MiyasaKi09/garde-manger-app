@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import CookSession from './CookSession'
-import { ChevronLeft, ChevronRight, Loader2, Check } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Loader2, Check, Pencil } from 'lucide-react'
 import { toast } from '@/components/Toast'
 import { openMealRecipe } from './openMealRecipe'
 import useStockCoverage from './useStockCoverage'
@@ -46,7 +46,10 @@ const DAY_NAMES_FULL = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vend
  * Possède en interne le mode cuisine + l'état « cuisiné ».
  * La navigation de semaine est remontée à la page (onPrevWeek/onNextWeek).
  */
-export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, onPrevWeek, onNextWeek, importId = null }) {
+export default function WeekGrid({
+  meals = [], weekDates = [], weekOffset = 0, onPrevWeek, onNextWeek,
+  importId = null, onModifyDay = null, onModifyMeal = null,
+}) {
   const [person, setPerson] = useState('all') // 'all' | 'Julien' | 'Zoé'
   const [showStock, setShowStock] = useState(true)
 
@@ -155,7 +158,16 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
     const label = MEAL_LABELS[type]
 
     if (!typeMeals.length) {
-      return <div key={type} className="wg-cell" data-type={label}><span className="wg-empty">—</span></div>
+      return (
+        <div key={type} className="wg-cell" data-type={label}>
+          <span className="wg-empty">—</span>
+          {onModifyMeal && ['dejeuner', 'diner'].includes(type) && (
+            <button type="button" className="wg-meal-edit" onClick={() => onModifyMeal(dateStr, type)}>
+              <Pencil size={11} /> Ajouter
+            </button>
+          )}
+        </div>
+      )
     }
 
     const julienRow = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
@@ -214,6 +226,17 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
         {batched && <span className="wg-batch">préparé · réchauffer</span>}
         {isSpecial && person === 'all' && altMeal && (
           <span className="wg-alt"><span className="wg-alt-k">{altMeal.person_name}</span>{renderDishName(dishOf(altMeal))}</span>
+        )}
+        {onModifyMeal && (
+          <button
+            type="button"
+            className="wg-meal-edit"
+            onClick={(event) => { event.stopPropagation(); onModifyMeal(dateStr, type) }}
+            aria-label={`Remplacer ${label.toLowerCase()} du ${dateStr}`}
+            title="Remplacer ce repas"
+          >
+            <Pencil size={11} /> Remplacer
+          </button>
         )}
         <button
           onClick={(e) => { e.stopPropagation(); toggleDone(typeMeals, type) }}
@@ -300,6 +323,11 @@ export default function WeekGrid({ meals = [], weekDates = [], weekOffset = 0, o
                 <span className="wg-dow">{dayName}</span>
                 <span className="wg-dnum">{isToday ? <b>{dayNum}</b> : dayNum} {monthLabel}</span>
                 {isToday && <span className="wg-today-tag">Aujourd'hui</span>}
+                {onModifyDay && (
+                  <button type="button" className="wg-day-edit" onClick={() => onModifyDay(dateStr)}>
+                    <Pencil size={10} /> Modifier le jour
+                  </button>
+                )}
               </div>
               {MEAL_ORDER.map(type => renderCell(dateStr, type))}
             </div>

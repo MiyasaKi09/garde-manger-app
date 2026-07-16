@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { generateClosedLoopPlan, sensoryTransitionPenalty } from '@/lib/domain/planning/closedLoopPlanner'
+import { generateClosedLoopPlan, isMealSuitableRecipe, sensoryTransitionPenalty } from '@/lib/domain/planning/closedLoopPlanner'
 
 const makeRecipe = (code, profile, form = 'carotte crue', overrides = {}) => ({
   code,
@@ -74,5 +74,29 @@ describe('closedLoopPlanner', () => {
     expect(plan.status).toBe('published')
     expect(plan.slots).toHaveLength(2)
     expect(plan.slots[1].explanations).toContain('recipe_repeated')
+  })
+
+  it('préserve les repas fixes et remplace seulement le créneau ciblé', () => {
+    const fixed = makeRecipe('A', 'fresh_acidic', 'poulet', {
+      exactIngredients: [{ name: 'Poulet', formNormalized: 'poulet', grams: 100, optional: false, category: 'volailles' }],
+    })
+    const replacement = makeRecipe('B', 'warm_aromatic', 'lentilles', {
+      exactIngredients: [{ name: 'Lentilles', formNormalized: 'lentilles', grams: 100, optional: false, category: 'legumineuses' }],
+    })
+    const plan = generateClosedLoopPlan({
+      slots: [
+        { key: 'd1', date: '2026-07-20', mealType: 'dejeuner', fixedRecipeCode: 'A' },
+        { key: 'd2', date: '2026-07-20', mealType: 'diner', excludedRecipeCodes: ['A'], intent: 'vegetarian' },
+      ],
+      recipes: [fixed, replacement],
+      constraints: { allowShopping: true },
+    })
+    expect(plan.slots.map((slot) => slot.recipeCode)).toEqual(['A', 'B'])
+  })
+
+  it('écarte desserts, sauces et accompagnements du catalogue des repas', () => {
+    expect(isMealSuitableRecipe(makeRecipe('DESS-001', 'sweet_spiced', 'farine', { category: 'dessert' }))).toBe(false)
+    expect(isMealSuitableRecipe(makeRecipe('FR-024', 'creamy_delicate', 'lait', { category: 'sauce de base' }))).toBe(false)
+    expect(isMealSuitableRecipe(makeRecipe('FR-033', 'fresh_acidic', 'lentilles', { category: 'salade complète' }))).toBe(true)
   })
 })

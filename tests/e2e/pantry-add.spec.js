@@ -134,8 +134,7 @@ test.describe('Pantry — ajouter un article', () => {
     await fab.click()
 
     // SmartAddForm should be visible
-    // SmartAddForm renders with .modal-container (no role="dialog")
-    await expect(page.locator('.modal-container')).toBeVisible()
+    await expect(page.locator('.smart-add-modal')).toBeVisible()
   })
 
   test('searches for a product in the form', async ({ page }) => {
@@ -148,7 +147,7 @@ test.describe('Pantry — ajouter un article', () => {
     // Wait for the form to open.
     // Scope the search input to the modal to avoid matching the pantry page's
     // own search box (placeholder uses unicode ellipsis … vs ASCII ...).
-    const modal = page.locator('.modal-container')
+    const modal = page.locator('.smart-add-modal')
     await expect(modal).toBeVisible()
     const searchInput = modal.locator('input.search-input')
     await expect(searchInput).toBeVisible()
@@ -185,7 +184,7 @@ test.describe('Pantry — ajouter un article', () => {
     await fab.click()
 
     // Scope to the modal to avoid matching the pantry page's own search box
-    const modal = page.locator('.modal-container')
+    const modal = page.locator('.smart-add-modal')
     await expect(modal).toBeVisible()
     const searchInput = modal.locator('input.search-input')
     await expect(searchInput).toBeVisible()
