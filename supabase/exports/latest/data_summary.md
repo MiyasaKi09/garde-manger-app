@@ -1,12 +1,12 @@
 # Data export summary
-_Generated: Thu Jul 16 16:52:18 UTC 2026_
+_Generated: Thu Jul 16 18:58:32 UTC 2026_
 
 ## Tables and counts
 - archetype_nutrition_overrides: 209 rows
 - archetypes: 463 rows
 - canonical_food_origins: 0 rows
 - canonical_food_processes: 0 rows
-- canonical_foods: 286 rows
+- canonical_foods: 293 rows
 - ciqual_reference: 3185 rows
 - cooking_nutrition_factors: 69 rows
 - countries: 0 rows
