@@ -2,6 +2,7 @@
 
 import { Archive, Home, Snowflake, Calendar } from 'lucide-react'
 import { getPossibleUnitsForProduct } from '@/lib/possibleUnits'
+import { getQuantityStep, normalizeProductUnit } from '@/lib/productUnitPolicy'
 
 /**
  * Step 2 form extracted from SmartAddForm.
@@ -17,20 +18,8 @@ export default function LotDetailsForm({
 }) {
   const possibleUnits = getPossibleUnitsForProduct(selectedProduct)
 
-  const getIncrementValue = (unit) => {
-    switch (unit) {
-      case 'kg': return 0.1
-      case 'g': return 100
-      case 'ml':
-      case 'cl': return 100
-      case 'L': return 0.5
-      case 'unités':
-      default: return 0.5
-    }
-  }
-
   const adjustQuantity = (direction) => {
-    const increment = getIncrementValue(lotData.unit)
+    const increment = getQuantityStep(lotData.unit)
     const currentQty = parseFloat(lotData.qty_remaining) || 0
     let newQty
 
@@ -42,8 +31,8 @@ export default function LotDetailsForm({
 
     if (lotData.unit === 'kg') {
       newQty = Math.round(newQty * 10) / 10
-    } else if (lotData.unit === 'unités') {
-      newQty = Math.round(newQty * 2) / 2
+    } else if (normalizeProductUnit(lotData.unit) === 'u') {
+      newQty = Math.round(newQty)
     }
 
     setLotData(prev => ({ ...prev, qty_remaining: newQty }))
@@ -104,7 +93,7 @@ export default function LotDetailsForm({
               value={lotData.qty_remaining}
               onChange={e => setLotData(prev => ({ ...prev, qty_remaining: parseFloat(e.target.value) || 0 }))}
               className="qty-input"
-              step={getIncrementValue(lotData.unit)}
+              step={getQuantityStep(lotData.unit)}
               min="0"
             />
             <button onClick={() => adjustQuantity('up')} className="qty-btn">+</button>

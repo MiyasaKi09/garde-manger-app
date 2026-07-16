@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { Package, Calendar, MapPin, X, PackageOpen } from 'lucide-react';
 import { authFetch } from '@/lib/authFetch';
 import { toast } from '@/components/Toast';
+import { getPossibleUnitsForProduct } from '@/lib/possibleUnits';
+import { normalizeProductUnit } from '@/lib/productUnitPolicy';
 import './EditLotForm.css';
 
 const STORAGE_LOCATIONS = [
@@ -13,8 +15,6 @@ const STORAGE_LOCATIONS = [
   { value: 'cave', label: 'Cave', icon: '🏛️', factor: 1.5 },
   { value: 'placard', label: 'Placard', icon: '🚪', factor: 1.0 }
 ];
-
-const POSSIBLE_UNITS = ['u', 'g', 'kg', 'mL', 'cL', 'L'];
 
 export default function EditLotForm({
   item,
@@ -53,7 +53,7 @@ export default function EditLotForm({
       setToggling(false);
     }
   };
-  const [unit, setUnit] = useState(item.unit);
+  const [unit, setUnit] = useState(normalizeProductUnit(item.unit) || 'g');
   const [location, setLocation] = useState(item.storage_place || 'garde-manger');
   
   // Garder la date d'origine et celle de création pour les calculs
@@ -67,7 +67,8 @@ export default function EditLotForm({
 
   // Métadonnées du produit pour les conversions
   const density = item.density_g_per_ml || 0;
-  const gramsPerUnit = item.grams_per_unit || 0;
+  const gramsPerUnit = item.grams_per_unit || item.unit_weight_grams || 0;
+  const possibleUnits = getPossibleUnitsForProduct({ ...item, primary_unit: item.primary_unit || item.unit });
 
   // Métadonnées de durée de conservation selon l'emplacement (depuis la base de données)
   const getShelfLifeDays = (location) => {
@@ -178,7 +179,8 @@ export default function EditLotForm({
   };
 
   // Conversion automatique quand l'unité change
-  const handleUnitChange = (newUnit) => {
+  const handleUnitChange = (requestedUnit) => {
+    const newUnit = normalizeProductUnit(requestedUnit) || requestedUnit;
     const currentQty = quantity;
     const currentUnitLower = unit.toLowerCase();
     const newUnitLower = newUnit.toLowerCase();
@@ -254,9 +256,9 @@ export default function EditLotForm({
   };
 
   return (
-    <div className="modal-overlay" onClick={onCancel}>
-      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
+    <div className="edit-lot-overlay" onClick={onCancel}>
+      <div className="edit-lot-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="edit-lot-header">
           <div className="header-title">
             <Package size={16} />
             Modifier {item.product_name}
@@ -266,7 +268,7 @@ export default function EditLotForm({
           </button>
         </div>
 
-        <div className="modal-content">
+        <div className="edit-lot-content">
           {/* Section État (ouvert / fermé) — la DLC se réduit après ouverture */}
           <div className="form-section">
             <div className="section-header">
@@ -330,14 +332,15 @@ export default function EditLotForm({
               </div>
               
               <div className="unit-selector">
-                {POSSIBLE_UNITS.map(u => (
+                {possibleUnits.map(({ value, label }) => (
                   <button
-                    key={u}
+                    key={value}
                     type="button"
-                    className={`unit-btn ${unit === u ? 'active' : ''}`}
-                    onClick={() => handleUnitChange(u)}
+                    className={`unit-btn ${unit === value ? 'active' : ''}`}
+                    onClick={() => handleUnitChange(value)}
+                    title={label}
                   >
-                    {u}
+                    {value}
                   </button>
                 ))}
               </div>
