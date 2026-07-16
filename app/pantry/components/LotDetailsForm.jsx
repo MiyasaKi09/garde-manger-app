@@ -18,6 +18,20 @@ export default function LotDetailsForm({
 }) {
   const possibleUnits = getPossibleUnitsForProduct(selectedProduct)
 
+  const updateContainer = (patch) => {
+    setLotData(prev => {
+      const next = { ...prev, ...patch }
+      const count = Math.max(1, Number(next.container_count_initial) || 1)
+      const size = Math.max(0, Number(next.container_size) || 0)
+      return {
+        ...next,
+        container_count_initial: count,
+        qty_remaining: size ? Math.round(count * size * 1000) / 1000 : prev.qty_remaining,
+        unit: next.container_unit || prev.unit,
+      }
+    })
+  }
+
   const adjustQuantity = (direction) => {
     const increment = getQuantityStep(lotData.unit)
     const currentQty = parseFloat(lotData.qty_remaining) || 0
@@ -84,7 +98,7 @@ export default function LotDetailsForm({
 
       <div className="form-section">
         {/* Quantity */}
-        <div className="quantity-section">
+        {!lotData.is_containerized && <div className="quantity-section">
           <label>Quantité</label>
           <div className="quantity-controls">
             <button onClick={() => adjustQuantity('down')} className="qty-btn">-</button>
@@ -98,10 +112,10 @@ export default function LotDetailsForm({
             />
             <button onClick={() => adjustQuantity('up')} className="qty-btn">+</button>
           </div>
-        </div>
+        </div>}
 
         {/* Unit */}
-        <div className="unit-section">
+        {!lotData.is_containerized && <div className="unit-section">
           <label>Unité</label>
           <select
             value={lotData.unit}
@@ -112,7 +126,7 @@ export default function LotDetailsForm({
               <option key={u.value} value={u.value}>{u.label}</option>
             ))}
           </select>
-        </div>
+        </div>}
 
         {/* Container management */}
         <div className="container-management-section">
@@ -123,22 +137,35 @@ export default function LotDetailsForm({
               onChange={e => setLotData(prev => ({
                 ...prev,
                 is_containerized: e.target.checked,
-                container_size: e.target.checked ? prev.container_size : '',
-                container_unit: e.target.checked ? prev.container_unit : '',
+                container_count_initial: e.target.checked ? (prev.container_count_initial || 1) : 1,
+                container_size: e.target.checked ? (prev.container_size || prev.qty_remaining || '') : '',
+                container_unit: e.target.checked ? (prev.container_unit || prev.unit || '') : '',
               }))}
               className="container-checkbox"
             />
-            <span>Produit en contenants unitaires</span>
+            <span>Suivre chaque contenant (paquet, pot, bouteille…)</span>
           </label>
 
           {lotData.is_containerized && (
             <div className="container-fields">
               <div className="container-field">
-                <label>Taille du contenant</label>
+                <label>Nombre de contenants</label>
+                <input
+                  type="number"
+                  value={lotData.container_count_initial}
+                  onChange={e => updateContainer({ container_count_initial: e.target.value })}
+                  className="container-count-input"
+                  step="1"
+                  min="1"
+                  max="200"
+                />
+              </div>
+              <div className="container-field">
+                <label>Contenance de chacun</label>
                 <input
                   type="number"
                   value={lotData.container_size}
-                  onChange={e => setLotData(prev => ({ ...prev, container_size: e.target.value }))}
+                  onChange={e => updateContainer({ container_size: e.target.value })}
                   placeholder="Ex: 25, 500..."
                   className="container-size-input"
                   step="0.01"
@@ -149,7 +176,7 @@ export default function LotDetailsForm({
                 <label>Unité</label>
                 <select
                   value={lotData.container_unit}
-                  onChange={e => setLotData(prev => ({ ...prev, container_unit: e.target.value }))}
+                  onChange={e => updateContainer({ container_unit: e.target.value })}
                   className="container-unit-select"
                 >
                   <option value="">Sélectionner...</option>
@@ -158,8 +185,16 @@ export default function LotDetailsForm({
                   <option value="L">L (litres)</option>
                   <option value="g">g (grammes)</option>
                   <option value="kg">kg (kilogrammes)</option>
+                  <option value="u">u (pièces)</option>
                 </select>
               </div>
+              {lotData.container_size && lotData.container_unit && (
+                <div className="container-total">
+                  <strong>Total en stock</strong>
+                  <span>{lotData.container_count_initial} × {lotData.container_size} {lotData.container_unit} = {lotData.qty_remaining} {lotData.container_unit}</span>
+                  <small>Myko suivra ensuite séparément les contenants fermés et celui qui est ouvert.</small>
+                </div>
+              )}
             </div>
           )}
         </div>

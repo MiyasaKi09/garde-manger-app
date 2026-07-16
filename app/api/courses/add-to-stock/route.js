@@ -188,15 +188,16 @@ export async function POST(request) {
 
     if (useContainers) {
       const perUnit = normalizeUnit(containerSize, (containerUnit || 'unités').toLowerCase())
-      lotsToCreate = Array.from({ length: containerQty }, () => ({
+      lotsToCreate = [{
         ...baseLot,
-        qty_remaining: perUnit.qty,
-        initial_qty: perUnit.qty,
+        qty_remaining: perUnit.qty * containerQty,
+        initial_qty: perUnit.qty * containerQty,
         unit: perUnit.unit,
         is_containerized: true,
-        container_size: containerSize,
-        container_unit: containerUnit,
-      }))
+        container_size: perUnit.qty,
+        container_unit: perUnit.unit,
+        container_count_initial: containerQty,
+      }]
     } else {
       const parsed = parseQuantity(quantity)
       lotsToCreate = [{

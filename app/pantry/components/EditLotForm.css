@@ -47,6 +47,19 @@
 .edit-lot-modal .opened-badge.is-open { color: var(--terracotta); }
 .edit-lot-modal .opened-dlc { color: #976116; font-size: 11px; }
 
+.edit-lot-modal .container-ledger-section { grid-column: 1 / -1; }
+.container-ledger-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+.container-ledger-summary > div { display: grid; gap: 2px; padding: 11px; border: 1px solid var(--line); border-radius: 9px; background: rgba(255,255,255,.32); }
+.container-ledger-summary strong { font-family: var(--font-display); font-size: 22px; }
+.container-ledger-summary span { color: var(--ink-3); font-size: 11px; }
+.container-ledger-list { display: grid; gap: 6px; }
+.container-ledger-row { display: grid; grid-template-columns: 34px 70px 90px 1fr; align-items: center; gap: 8px; padding: 9px 10px; border-left: 3px solid var(--line-strong); background: rgba(255,255,255,.25); font-size: 12px; }
+.container-ledger-row.open { border-left-color: var(--terracotta); }
+.container-ledger-row small { color: var(--ink-3); text-align: right; }
+.container-ledger-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.edit-lot-modal .action-btn.danger { color: var(--terracotta); border-color: var(--terracotta); }
+.container-ledger-history { margin: 12px 0 0; color: var(--ink-3); font-size: 11px; }
+
 .edit-lot-modal .quantity-controls { display: grid; gap: 10px; }
 .edit-lot-modal .quantity-input-wrapper { display: grid; grid-template-columns: 44px 1fr 44px; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 9px; }
 .edit-lot-modal .qty-btn { min-height: 44px; border: 0; color: var(--ink-1); background: rgba(255,255,255,.5); font-size: 20px; cursor: pointer; }
@@ -80,4 +93,7 @@
   .edit-lot-modal .form-section:nth-of-type(3),
   .edit-lot-modal .form-actions { grid-column: auto; }
   .edit-lot-modal .location-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .container-ledger-summary { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .container-ledger-row { grid-template-columns: 28px 58px 1fr; }
+  .container-ledger-row small { grid-column: 1 / -1; text-align: left; }
 }

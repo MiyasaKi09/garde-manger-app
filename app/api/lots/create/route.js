@@ -30,6 +30,11 @@ export const dynamic = 'force-dynamic'
  *     is_containerized : boolean
  *     container_size   : number | null
  *     container_unit   : string | null
+ *     container_count_initial : integer | null
+ *     barcode          : string | null
+ *     commercial_name  : string | null
+ *     brand            : string | null
+ *     packaging_type   : string | null
  *
  *   → 200 { success: true, lots: [created_lot, ...] }
  *
@@ -179,6 +184,52 @@ function validateLot(raw, index) {
     const v = raw.container_unit
     if (v !== null && typeof v !== 'string') errors.push(`${tag}.container_unit doit être une chaîne ou null`)
     else lot.container_unit = v
+  }
+
+  if ('container_count_initial' in raw) {
+    const n = Number(raw.container_count_initial)
+    if (!Number.isInteger(n) || n <= 0 || n > 200) {
+      errors.push(`${tag}.container_count_initial doit être un entier entre 1 et 200`)
+    } else {
+      lot.container_count_initial = n
+    }
+  }
+
+  for (const field of ['commercial_name', 'brand', 'packaging_type']) {
+    if (field in raw) {
+      const v = raw[field]
+      if (v !== null && typeof v !== 'string') errors.push(`${tag}.${field} doit être une chaîne ou null`)
+      else lot[field] = v?.trim().slice(0, 240) || null
+    }
+  }
+
+  if ('barcode' in raw) {
+    const v = raw.barcode
+    if (v === null || v === '') {
+      lot.barcode = null
+    } else if (typeof v !== 'string' || !/^\d{8,14}$/.test(v.trim())) {
+      errors.push(`${tag}.barcode doit contenir 8 à 14 chiffres`)
+    } else {
+      lot.barcode = v.trim()
+    }
+  }
+
+  // Règle unique pour tout le site : un lot containerisé stocke la quantité
+  // totale comestible, tandis que les contenants physiques portent le détail.
+  if (lot.is_containerized) {
+    if (!lot.container_size) errors.push(`${tag}.container_size requis pour un produit en contenants`)
+    if (!lot.container_unit?.trim()) errors.push(`${tag}.container_unit requis pour un produit en contenants`)
+    if (!lot.container_count_initial && lot.container_size && lot.initial_qty > 0) {
+      lot.container_count_initial = Math.max(1, Math.ceil(lot.initial_qty / lot.container_size))
+    }
+    if (!lot.container_count_initial) {
+      errors.push(`${tag}.container_count_initial requis pour un produit en contenants`)
+    } else if (lot.container_size && lot.container_unit) {
+      const total = lot.container_count_initial * lot.container_size
+      lot.qty_remaining = total
+      lot.initial_qty = total
+      lot.unit = lot.container_unit
+    }
   }
 
   return { lot, errors }

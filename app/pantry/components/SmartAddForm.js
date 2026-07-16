@@ -2,13 +2,14 @@
 'use client';
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { Search, Plus, X, Package } from 'lucide-react';
+import { Barcode, Plus, Search, X } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
 import { authFetch } from '@/lib/authFetch';
 import { toast } from '../../../components/Toast';
 import { getPreferredUnit } from '../../../lib/productUnitPolicy';
 import LotDetailsForm from './LotDetailsForm';
 import NewProductForm from './NewProductForm';
+import BarcodeScanner from './BarcodeScanner';
 import './SmartAddForm.css';
 
 // Fonction pour calculer la distance de Levenshtein (détection des fautes de frappe)
@@ -98,6 +99,27 @@ const formatProductName = (name) => {
     .trim();
 };
 
+const normalizeScannedUnit = (unit) => {
+  const normalized = String(unit || '').trim().toLowerCase();
+  if (normalized === 'ml') return 'mL';
+  if (normalized === 'cl') return 'cL';
+  if (normalized === 'l') return 'L';
+  if (normalized === 'unit' || normalized === 'unité' || normalized === 'unités') return 'u';
+  return normalized;
+};
+
+const getBarcodeSearchHint = (product) => {
+  if (product.food_form?.name) return product.food_form.name;
+  if (product.food_form?.concept) return product.food_form.concept;
+  const brandWords = new Set(String(product.brand || '').toLowerCase().split(/\s+/).filter(Boolean));
+  const words = String(product.commercial_name || '')
+    .replace(/\d+(?:[.,]\d+)?\s*(?:kg|g|ml|cl|l)\b/gi, ' ')
+    .replace(/[^\p{L}\s'-]/gu, ' ')
+    .split(/\s+/)
+    .filter(word => word.length >= 3 && !brandWords.has(word.toLowerCase()));
+  return words[0] || product.commercial_name || '';
+};
+
 export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [step, setStep] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
@@ -107,6 +129,9 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [entryMode, setEntryMode] = useState('search');
+  const [barcodeProduct, setBarcodeProduct] = useState(null);
+  const [barcodeLoading, setBarcodeLoading] = useState(false);
   
   const [lotData, setLotData] = useState({
     qty_remaining: 1,
@@ -115,8 +140,13 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     storage_place: 'Garde-manger',
     expiration_date: '',
     is_containerized: false, // Produit en contenants unitaires
+    container_count_initial: 1,
     container_size: '', // Taille d'un contenant (ex: 25 pour 25cL)
-    container_unit: '' // Unité du contenant (cL, mL, g, etc.)
+    container_unit: '', // Unité du contenant (cL, mL, g, etc.)
+    barcode: null,
+    commercial_name: null,
+    brand: null,
+    packaging_type: null,
   });
 
   const modalRef = useRef(null);
@@ -160,12 +190,22 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       setSearchQuery('');
       setSearchResults([]);
       setSelectedProduct(null);
+      setEntryMode('search');
+      setBarcodeProduct(null);
       setLotData({
         qty_remaining: 1,
         unit: 'unités',
         storage_method: 'pantry',
         storage_place: 'Garde-manger',
-        expiration_date: ''
+        expiration_date: '',
+        is_containerized: false,
+        container_count_initial: 1,
+        container_size: '',
+        container_unit: '',
+        barcode: null,
+        commercial_name: null,
+        brand: null,
+        packaging_type: null,
       });
       setTimeout(() => {
         searchInputRef.current?.focus();
@@ -568,6 +608,31 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     return 'pantry';
   };
 
+  const handleBarcodeDetected = async (barcode) => {
+    setBarcodeLoading(true);
+    try {
+      const res = await authFetch(`/api/catalog/scan?barcode=${encodeURIComponent(barcode)}&live=1`, {
+        cache: 'no-store',
+      });
+      const product = await res.json().catch(() => ({}));
+      if (!res.ok || !product.commercial_name) {
+        toast.warning('Produit inconnu. Vous pouvez quand même le rechercher par son nom.');
+        return;
+      }
+
+      const scanned = { ...product, barcode };
+      setBarcodeProduct(scanned);
+      setEntryMode('search');
+      const identity = getBarcodeSearchHint(product);
+      setSearchQuery(identity || '');
+      toast.success(`${product.commercial_name} identifié`);
+    } catch {
+      toast.error('Impossible de consulter le catalogue de codes-barres');
+    } finally {
+      setBarcodeLoading(false);
+    }
+  };
+
   const handleProductSelect = (product) => {
     setSelectedProduct(product);
     const preferredUnit = getPreferredUnit(product);
@@ -575,13 +640,25 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
     const place = method === 'fridge' ? 'Réfrigérateur' : method === 'freezer' ? 'Congélateur' : 'Garde-manger';
     const defaultExpiration = getDefaultExpirationDate(product, method);
 
+    const packageSize = Number(barcodeProduct?.package_quantity);
+    const packageUnit = normalizeScannedUnit(barcodeProduct?.package_unit) || preferredUnit;
+    const hasPackage = Number.isFinite(packageSize) && packageSize > 0 && !!packageUnit;
+
     setLotData(prev => ({
       ...prev,
-      unit: preferredUnit,
-      qty_remaining: 1,
+      unit: hasPackage ? packageUnit : preferredUnit,
+      qty_remaining: hasPackage ? packageSize : 1,
       storage_method: method,
       storage_place: place,
-      expiration_date: defaultExpiration
+      expiration_date: defaultExpiration,
+      is_containerized: hasPackage,
+      container_count_initial: 1,
+      container_size: hasPackage ? packageSize : '',
+      container_unit: hasPackage ? packageUnit : '',
+      barcode: barcodeProduct?.barcode || null,
+      commercial_name: barcodeProduct?.commercial_name || null,
+      brand: barcodeProduct?.brand || null,
+      packaging_type: barcodeProduct?.packaging_type || null,
     }));
 
     setStep(2);
@@ -638,8 +715,13 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         notes: notes,
         // Champs pour la gestion des contenants
         is_containerized: lotData.is_containerized,
+        container_count_initial: lotData.is_containerized ? Number(lotData.container_count_initial) : null,
         container_size: lotData.is_containerized && lotData.container_size ? parseFloat(lotData.container_size) : null,
-        container_unit: lotData.is_containerized && lotData.container_unit ? lotData.container_unit : null
+        container_unit: lotData.is_containerized && lotData.container_unit ? lotData.container_unit : null,
+        barcode: lotData.barcode || null,
+        commercial_name: lotData.commercial_name || null,
+        brand: lotData.brand || null,
+        packaging_type: lotData.packaging_type || null,
       };
 
       const res = await authFetch('/api/lots/create', {
@@ -655,8 +737,11 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
       }
 
       toast.success(`${formatProductName(selectedProduct.name)} ajouté au garde-manger !`);
-      onLotCreated?.(json.lots?.[0]);
-      onClose();
+      if (onLotCreated) {
+        await onLotCreated(json.lots?.[0]);
+      } else {
+        onClose();
+      }
 
     } catch (error) {
       toast.error("Erreur lors de l'ajout au stock");
@@ -687,7 +772,48 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         <div className="smart-add-body">
           {step === 1 && (
             <>
+              <div className="smart-add-modes" role="tablist" aria-label="Méthode d'ajout">
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={entryMode === 'search'}
+                  className={entryMode === 'search' ? 'active' : ''}
+                  onClick={() => setEntryMode('search')}
+                >
+                  <Search size={17} /> Rechercher
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={entryMode === 'barcode'}
+                  className={entryMode === 'barcode' ? 'active' : ''}
+                  onClick={() => setEntryMode('barcode')}
+                >
+                  <Barcode size={18} /> Code-barres
+                </button>
+              </div>
+
+              {entryMode === 'barcode' ? (
+                <BarcodeScanner onDetected={handleBarcodeDetected} loading={barcodeLoading} />
+              ) : (
               <div className="search-section">
+                {barcodeProduct && (
+                  <div className="barcode-product-card">
+                    <Barcode size={22} />
+                    <div>
+                      <strong>{barcodeProduct.commercial_name}</strong>
+                      <span>
+                        {[barcodeProduct.brand, barcodeProduct.package_quantity && barcodeProduct.package_unit
+                          ? `${barcodeProduct.package_quantity} ${barcodeProduct.package_unit}` : null]
+                          .filter(Boolean).join(' · ')}
+                      </span>
+                      <small>Choisissez maintenant l’aliment Myko correspondant.</small>
+                    </div>
+                    <button type="button" onClick={() => { setBarcodeProduct(null); setSearchQuery(''); }}>
+                      Effacer
+                    </button>
+                  </div>
+                )}
                 <div className="search-wrapper">
                   <input
                     ref={searchInputRef}
@@ -740,6 +866,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
                   )}
                 </div>
               </div>
+              )}
             </>
           )}
 
