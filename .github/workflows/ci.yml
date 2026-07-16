@@ -441,13 +441,13 @@ jobs:
           echo "$output" | grep '^apply ' | grep -q '20260715221509'
           echo "$output" | grep '^apply ' | grep -q '20260716111718'
 
-      - name: "[B] Apply réel (8 migrations post-snapshot)"
+      - name: "[B] Apply réel (9 migrations post-snapshot)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           output=$(bash scripts/db/apply-migrations.sh apply)
           echo "$output"
-          echo "$output" | grep -E '^migrations : 8 appliquées'
+          echo "$output" | grep -E '^migrations : 9 appliquées'
 
       - name: "[B] Assertions objets — 9 nouvelles migrations installées"
         env:
