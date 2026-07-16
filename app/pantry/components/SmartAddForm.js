@@ -719,7 +719,7 @@ export default function SmartAddForm({ open, onClose, onLotCreated }) {
         container_size: lotData.is_containerized && lotData.container_size ? parseFloat(lotData.container_size) : null,
         container_unit: lotData.is_containerized && lotData.container_unit ? lotData.container_unit : null,
         barcode: lotData.barcode || null,
-        commercial_name: lotData.commercial_name || null,
+        commercial_name: lotData.commercial_name || selectedProduct.name || null,
         brand: lotData.brand || null,
         packaging_type: lotData.packaging_type || null,
       };

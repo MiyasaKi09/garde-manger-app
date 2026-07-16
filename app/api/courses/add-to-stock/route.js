@@ -4,6 +4,7 @@ import { parseQuantity, normalizeUnit } from '@/lib/parseQuantity'
 import { loadResolverData, resolveIngredient, ensureCanonical } from '@/lib/ingredientResolver'
 import { buildStorageDecision } from '@/lib/storageDecisionServer'
 import { normalizeIsoDate, todayIso } from '@/lib/storageDecision'
+import { sanitizeInventoryLabel } from '@/lib/inventoryDisplayName'
 
 /**
  * POST /api/courses/add-to-stock
@@ -180,6 +181,9 @@ export async function POST(request) {
       label_use_by_date: normalizeIsoDate(useByDate),
       label_best_before_date: normalizeIsoDate(bestBeforeDate),
       notes: matched ? null : productName,
+      // Conserver la forme exacte choisie dans les courses. Les FK génériques
+      // restent disponibles pour le matching, sans dégrader le nom affiché.
+      commercial_name: sanitizeInventoryLabel(productName),
     }
 
     // 6. Déterminer la quantité : conditionnement multi-contenants ou total unique

@@ -41,10 +41,22 @@ describe('personalized deterministic meals', () => {
       .toMatchObject({ canonical_recipe_code: 'VEG', short_label: 'Lentilles aux légumes' })
     expect(result.valid).toBe(true)
     expect(result.daily.every((day) => day.energy_deviation <= 0.05)).toBe(true)
+    const supportMeals = result.meals.filter((meal) => ['fixed_breakfast', 'fixed_snack'].includes(meal.variant_kind))
+    const skyrItems = supportMeals.flatMap((meal) => meal.portion_details.items).filter((item) => item.food === 'skyr')
+    expect(skyrItems).toHaveLength(4)
+    expect(skyrItems.every((item) => item.quantity === 200)).toBe(true)
+    expect(result.meals.filter((meal) => meal.variant_kind === 'fixed_snack')
+      .every((meal) => meal.portion_details.items.every((item) => item.food !== 'skyr'))).toBe(true)
+    expect(result.supplementalRequirements.find((item) => item.label === 'skyr nature')).toMatchObject({
+      quantity: 800,
+      packageSize: 200,
+      packageCount: 4,
+      packageLabel: 'pot',
+    })
     for (const day of result.daily) {
       expect(Math.abs(day.total.proteinG - day.target.proteinG) / day.target.proteinG, JSON.stringify(day)).toBeLessThanOrEqual(0.2)
-      expect(Math.abs(day.total.carbsG - day.target.carbsG) / day.target.carbsG).toBeLessThanOrEqual(0.2)
-      expect(Math.abs(day.total.fatG - day.target.fatG) / day.target.fatG).toBeLessThanOrEqual(0.2)
+      expect(Math.abs(day.total.carbsG - day.target.carbsG) / day.target.carbsG, JSON.stringify(day)).toBeLessThanOrEqual(0.2)
+      expect(Math.abs(day.total.fatG - day.target.fatG) / day.target.fatG, JSON.stringify(day)).toBeLessThanOrEqual(0.2)
       expect(day.total.fiberG).toBeGreaterThanOrEqual(day.target.fiberG * 0.8)
     }
   })
@@ -55,8 +67,12 @@ describe('personalized deterministic meals', () => {
     const julien = optimizeDailyPortions({ target: { kcal: 2357, proteinG: 216, carbsG: 196, fatG: 79, fiberG: 33 }, breakfast, snack, lunch: meat.nutritionPerServing, dinner: fish.nutritionPerServing })
     const zoe = optimizeDailyPortions({ target: { kcal: 1525, proteinG: 75, carbsG: 192, fatG: 51, fiberG: 21 }, breakfast: null, snack, lunch: veggie.nutritionPerServing, dinner: fish.nutritionPerServing })
 
-    expect(julien.total.kcal).toBeCloseTo(2357, 0)
-    expect(zoe.total.kcal).toBeCloseTo(1525, 0)
+    expect(Math.abs(julien.total.kcal - 2357) / 2357).toBeLessThanOrEqual(0.05)
+    expect(Math.abs(zoe.total.kcal - 1525) / 1525).toBeLessThanOrEqual(0.05)
+    expect(julien).toMatchObject({ breakfastScale: 1, snackScale: 1 })
+    expect(zoe).toMatchObject({ breakfastScale: 0, snackScale: 1 })
+    expect(julien.lunchScale * 4).toBe(Math.round(julien.lunchScale * 4))
+    expect(julien.dinnerScale * 4).toBe(Math.round(julien.dinnerScale * 4))
     expect(julien.lunchScale).not.toBe(zoe.lunchScale)
   })
 })
