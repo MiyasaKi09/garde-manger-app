@@ -49,6 +49,28 @@ export async function GET(request) {
 
   let lots = data || []
 
+  // Charger les contenants physiques en une requête groupée, jamais une
+  // requête par lot. Les états terminaux restent disponibles dans la fiche
+  // pour rendre l'historique compréhensible.
+  const containerMap = new Map()
+  const containerizedLotIds = lots.filter(l => l.is_containerized).map(l => l.id)
+  if (containerizedLotIds.length) {
+    const { data: containers, error: containersError } = await supabase
+      .from('inventory_containers')
+      .select('id, lot_id, ordinal, status, initial_quantity, remaining_quantity, unit, barcode, expiration_date, adjusted_expiration_date, opened_at, emptied_at')
+      .in('lot_id', containerizedLotIds)
+      .order('ordinal', { ascending: true })
+
+    if (containersError) {
+      return NextResponse.json({ error: containersError.message }, { status: 500 })
+    }
+    for (const container of containers || []) {
+      const group = containerMap.get(container.lot_id) || []
+      group.push(container)
+      containerMap.set(container.lot_id, group)
+    }
+  }
+
   // Enrichir avec les canonical_foods ET les archetypes, en parallèle.
   if (lots.length > 0) {
     const canonicalIds = lots.filter(l => l.canonical_food_id).map(l => l.canonical_food_id)
@@ -106,6 +128,21 @@ export async function GET(request) {
 
     return {
       ...item,
+      containers: containerMap.get(item.id) || [],
+      container_summary: (() => {
+        const containers = containerMap.get(item.id) || []
+        if (!item.is_containerized) return null
+        return {
+          total_count: containers.length,
+          sealed_count: containers.filter(c => c.status === 'sealed').length,
+          open_count: containers.filter(c => c.status === 'open').length,
+          empty_count: containers.filter(c => c.status === 'empty').length,
+          discarded_count: containers.filter(c => c.status === 'discarded').length,
+          remaining_quantity: containers
+            .filter(c => c.status === 'sealed' || c.status === 'open')
+            .reduce((sum, c) => sum + Number(c.remaining_quantity || 0), 0),
+        }
+      })(),
       product_name: productName,
       expiry_kind: expiryKind,
       effective_expiration: getEffectiveExpiration(item),

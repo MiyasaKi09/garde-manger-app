@@ -20,7 +20,9 @@ export default function EditLotForm({
   item,
   onUpdate,
   onCancel,
-  onReload
+  onReload,
+  onConsume,
+  onContainerAction,
 }) {
   const [quantity, setQuantity] = useState(item.qty_remaining);
   const [isOpened, setIsOpened] = useState(!!item.is_opened);
@@ -269,7 +271,63 @@ export default function EditLotForm({
         </div>
 
         <div className="edit-lot-content">
-          {/* Section État (ouvert / fermé) — la DLC se réduit après ouverture */}
+          {/* Un produit conditionné suit chaque paquet physiquement. */}
+          {item.is_containerized ? (
+          <div className="form-section container-ledger-section">
+            <div className="section-header">
+              <PackageOpen size={16} />
+              <span>Contenants suivis</span>
+            </div>
+            <div className="container-ledger-summary">
+              <div><strong>{item.container_summary?.sealed_count || 0}</strong><span>fermés</span></div>
+              <div><strong>{item.container_summary?.open_count || 0}</strong><span>ouverts</span></div>
+              <div><strong>{item.qty_remaining}</strong><span>{item.unit} restants</span></div>
+            </div>
+            <div className="container-ledger-list">
+              {(item.containers || []).filter(c => c.status === 'sealed' || c.status === 'open').map(container => (
+                <div key={container.id} className={`container-ledger-row ${container.status}`}>
+                  <span>#{container.ordinal}</span>
+                  <strong>{container.status === 'open' ? 'Ouvert' : 'Fermé'}</strong>
+                  <span>{Number(container.remaining_quantity)} {container.unit}</span>
+                  <small>
+                    {container.status === 'open' && container.adjusted_expiration_date
+                      ? `à utiliser avant le ${new Date(container.adjusted_expiration_date).toLocaleDateString('fr-FR')}`
+                      : container.expiration_date
+                        ? `date ${new Date(container.expiration_date).toLocaleDateString('fr-FR')}`
+                        : 'sans date'}
+                  </small>
+                </div>
+              ))}
+            </div>
+            <div className="container-ledger-actions">
+              <button
+                type="button"
+                className="action-btn secondary"
+                onClick={() => onContainerAction?.(item, 'open')}
+                disabled={(item.container_summary?.open_count || 0) > 0 || (item.container_summary?.sealed_count || 0) === 0}
+              >
+                Ouvrir le prochain
+              </button>
+              <button type="button" className="action-btn primary" onClick={() => onConsume?.(item)}>
+                Consommer
+              </button>
+              <button
+                type="button"
+                className="action-btn danger"
+                onClick={() => onContainerAction?.(item, 'discard_open')}
+                disabled={(item.container_summary?.open_count || 0) === 0}
+              >
+                Jeter l’ouvert
+              </button>
+            </div>
+            {(item.container_summary?.empty_count || item.container_summary?.discarded_count) ? (
+              <p className="container-ledger-history">
+                Historique : {item.container_summary.empty_count || 0} vide(s), {item.container_summary.discarded_count || 0} jeté(s).
+              </p>
+            ) : null}
+          </div>
+          ) : (
+          /* Section État (ouvert / fermé) — la DLC se réduit après ouverture */
           <div className="form-section">
             <div className="section-header">
               <PackageOpen size={16} />
@@ -296,9 +354,10 @@ export default function EditLotForm({
               </button>
             </div>
           </div>
+          )}
 
           {/* Section Quantité */}
-          <div className="form-section">
+          {!item.is_containerized && <div className="form-section">
             <div className="section-header">
               <Package size={16} />
               <span>Quantité</span>
@@ -345,7 +404,7 @@ export default function EditLotForm({
                 ))}
               </div>
             </div>
-          </div>
+          </div>}
 
           {/* Section Emplacement */}
           <div className="form-section">

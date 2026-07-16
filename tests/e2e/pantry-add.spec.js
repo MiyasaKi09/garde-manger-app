@@ -97,6 +97,16 @@ test.describe('Pantry — ajouter un article', () => {
       api: {
         // Pantry page calls authFetch('/api/pantry'), not Supabase directly
         'GET /api/pantry': () => PANTRY_API_RESPONSE,
+        'GET /api/catalog/scan': () => ({
+          found: true,
+          barcode: '3564707087384',
+          commercial_name: 'Poulet fermier 500 g',
+          brand: 'Ferme test',
+          package_quantity: 500,
+          package_unit: 'g',
+          packaging_type: 'barquette',
+          food_form: { name: 'Poulet fermier', concept: 'Poulet' },
+        }),
       },
     })
 
@@ -211,5 +221,69 @@ test.describe('Pantry — ajouter un article', () => {
 
     // Toast "ajouté au garde-manger" should appear
     await expect(page.getByText(/ajouté au garde-manger|ajouté|stock/i).first()).toBeVisible()
+  })
+
+  test('scans a barcode and prefills one physical container', async ({ page }) => {
+    await page.goto('/pantry')
+    await page.locator('.pantry-fab:not(.pantry-fab-secondary)').click()
+
+    const modal = page.locator('.smart-add-modal')
+    await modal.getByRole('tab', { name: /code-barres/i }).click()
+    await modal.getByLabel('Code-barres').fill('3564707087384')
+    await modal.getByRole('button', { name: /identifier/i }).click()
+
+    await expect(modal.getByText('Poulet fermier 500 g')).toBeVisible()
+    const result = modal.locator('.product-item').first()
+    await expect(result).toBeVisible({ timeout: 5000 })
+    await result.click()
+
+    await expect(modal.locator('.container-checkbox')).toBeChecked()
+    await expect(modal.locator('.container-count-input')).toHaveValue('1')
+    await expect(modal.locator('.container-size-input')).toHaveValue('500')
+    await expect(modal.locator('.container-unit-select')).toHaveValue('g')
+    await expect(modal.getByText(/1 × 500 g = 500 g/i)).toBeVisible()
+  })
+
+  test('refreshes the inventory from the network after creation', async ({ page }) => {
+    let added = false
+    const refreshed = {
+      ...PANTRY_API_RESPONSE,
+      lots: [
+        ...PANTRY_API_RESPONSE.lots,
+        {
+          ...PANTRY_API_RESPONSE.lots[0],
+          id: '22222222-2222-4222-8222-222222222222',
+          canonical_food_id: null,
+          archetype_id: 88,
+          product_name: 'Beurre doux',
+          qty_remaining: 500,
+          initial_qty: 500,
+          unit: 'g',
+        },
+      ],
+    }
+
+    await page.route('/api/pantry', route => route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(added ? refreshed : PANTRY_API_RESPONSE),
+    }))
+    await page.route('/api/lots/create', route => {
+      added = true
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ success: true, lots: [{ id: '22222222-2222-4222-8222-222222222222' }] }),
+      })
+    })
+
+    await page.goto('/pantry')
+    await page.locator('.pantry-fab:not(.pantry-fab-secondary)').click()
+    const modal = page.locator('.smart-add-modal')
+    await modal.locator('input.search-input').fill('poulet')
+    await modal.locator('.product-item').first().click()
+    await modal.getByRole('button', { name: /ajouter au stock/i }).click()
+
+    await expect(page.getByText('Beurre doux')).toBeVisible({ timeout: 5000 })
   })
 })

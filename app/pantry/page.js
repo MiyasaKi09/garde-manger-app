@@ -185,15 +185,15 @@ export default function PantryPage() {
     }
   }
 
-  async function loadPantryItems() {
-    if (isLoading) return; // Éviter les chargements multiples
+  async function loadPantryItems({ fresh = false } = {}) {
+    if (isLoading && !fresh) return; // Éviter les chargements multiples
 
     setIsLoading(true);
     if (!readCache('pantry')) setLoading(true); // pas de skeleton si on a déjà le cache
     try {
       // Lots enrichis (noms, expiry_kind, jours restants, badge, statut) calculés
       // côté serveur — un seul aller-retour.
-      const res = await authFetch('/api/pantry');
+      const res = await authFetch('/api/pantry', fresh ? { cache: 'no-store' } : {});
       const data = await res.json().catch(() => ({}));
       if (!res.ok || data.error) {
         throw new Error(data.error || `HTTP ${res.status}`);
@@ -214,7 +214,7 @@ export default function PantryPage() {
   // fetch brut dans RestesManager) : le cache GET d'authFetch n'a pas été invalidé.
   async function reloadPantryFresh() {
     invalidateAuthCache();
-    await loadPantryItems();
+    await loadPantryItems({ fresh: true });
   }
 
   // Ouvrir le modal de consommation
@@ -233,24 +233,17 @@ export default function PantryPage() {
     // Si le produit est containerisé, utiliser la fonction de fractionnement
     if (item.is_containerized && item.container_size && item.container_unit) {
       try {
-        // Appeler la fonction PostgreSQL pour fractionner le lot
-        const { data, error } = await supabase.rpc('split_containerized_lot', {
-          p_lot_id: item.id,
-          p_quantity_consumed: quantity,
-          p_consumed_unit: unit
+        const res = await authFetch('/api/lots/containers', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ lotId: item.id, action: 'consume', quantity }),
         });
-
-        if (error) {
-          toast.error('Erreur lors de la consommation : ' + error.message);
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          toast.error('Erreur lors de la consommation : ' + (data.error || res.status));
           return;
         }
-
-        // Afficher le message de résultat
-        if (data && data.length > 0 && data[0].message) {
-          toast.success(data[0].message);
-        }
-
-        // Recharger les items pour refléter les changements (RPC directe → cache à invalider)
+        toast.success(`${quantity} ${item.container_unit} consommés`);
         await reloadPantryFresh();
 
       } catch (error) {
@@ -367,7 +360,38 @@ export default function PantryPage() {
 
   function handleFormClose() {
     setShowForm(false);
-    loadPantryItems();
+  }
+
+  function handleConsumeFromEdit(item) {
+    setShowEditLot(false);
+    setItemToEdit(null);
+    setItemToConsume(item);
+    setShowConsumeModal(true);
+  }
+
+  async function handleContainerAction(item, action) {
+    try {
+      const res = await authFetch('/api/lots/containers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lotId: item.id, action }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || String(res.status));
+      toast.success(action === 'open' ? 'Contenant ouvert et date recalculée' : 'Contenant ouvert retiré du stock');
+      setShowEditLot(false);
+      setItemToEdit(null);
+      await reloadPantryFresh();
+    } catch (error) {
+      toast.error(error.message || 'Action impossible sur ce contenant');
+    }
+  }
+
+  async function handleLotCreated() {
+    setShowForm(false);
+    setSearchTerm('');
+    setStatusFilter('all');
+    await reloadPantryFresh();
   }
 
   // Bascule de tri V21 : re-clic = inverse l'ordre, sinon applique l'ordre par défaut
@@ -573,6 +597,9 @@ export default function PantryPage() {
                       ? +(+item.qty_remaining).toFixed(2)
                       : null;
                     const qty = q != null ? `${q}${item.unit ? ' ' + item.unit : ''}` : '—';
+                    const containerLabel = item.container_summary
+                      ? `${item.container_summary.sealed_count} fermé${item.container_summary.sealed_count > 1 ? 's' : ''}${item.container_summary.open_count ? ` · ${item.container_summary.open_count} ouvert` : ''}`
+                      : null;
                     return (
                       <button
                         key={item.id}
@@ -587,6 +614,7 @@ export default function PantryPage() {
                           {item.is_opened && (
                             <span className="v21-it-opened" title={`Entamé — DLC réduite${item.adjusted_expiration_date ? ' au ' + new Date(item.adjusted_expiration_date).toLocaleDateString('fr-FR') : ''}`}> ◦ entamé</span>
                           )}
+                          {containerLabel && <span className="v21-it-containers">{containerLabel}</span>}
                         </span>
                         <span className="v21-it-q">{qty}</span>
                         <span className="v21-it-lc">{item.storage_place || '—'}</span>
@@ -605,7 +633,7 @@ export default function PantryPage() {
           <SmartAddForm
             open={showForm}
             onClose={handleFormClose}
-            onLotCreated={handleFormClose}
+            onLotCreated={handleLotCreated}
           />
         )}
 
@@ -668,7 +696,9 @@ export default function PantryPage() {
           <EditLotForm
             item={itemToEdit}
             onUpdate={handleUpdateLot}
-            onReload={loadPantryItems}
+            onReload={reloadPantryFresh}
+            onConsume={handleConsumeFromEdit}
+            onContainerAction={handleContainerAction}
             onCancel={() => {
               setShowEditLot(false);
               setItemToEdit(null);

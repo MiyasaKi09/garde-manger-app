@@ -80,6 +80,88 @@
   padding: 22px;
 }
 
+.smart-add-modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding: 4px;
+  border: 1px solid var(--line-strong);
+  border-radius: 11px;
+  background: rgba(255,255,255,.24);
+}
+.smart-add-modes button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  border: 0;
+  border-radius: 7px;
+  color: var(--ink-3);
+  background: transparent;
+  cursor: pointer;
+}
+.smart-add-modes button.active { color: white; background: var(--brand); }
+
+.barcode-product-card,
+.barcode-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.barcode-product-card {
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid rgba(45,94,57,.45);
+  border-radius: 10px;
+  background: rgba(45,94,57,.08);
+}
+.barcode-product-card > div { flex: 1; min-width: 0; }
+.barcode-product-card strong,
+.barcode-product-card span,
+.barcode-product-card small { display: block; }
+.barcode-product-card span { margin-top: 3px; color: var(--ink-2); }
+.barcode-product-card small { margin-top: 7px; color: var(--ink-3); }
+.barcode-product-card button {
+  border: 0;
+  color: var(--terracotta);
+  background: transparent;
+  cursor: pointer;
+}
+
+.barcode-scanner { display: grid; gap: 16px; }
+.barcode-intro { padding: 16px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.28); }
+.barcode-intro strong,
+.barcode-intro span { display: block; }
+.barcode-intro span { margin-top: 4px; color: var(--ink-3); font-size: 13px; }
+.barcode-entry { display: grid; grid-template-columns: 24px 1fr auto; align-items: center; gap: 8px; padding-left: 12px; border: 1px solid var(--line-strong); border-radius: 10px; background: rgba(255,255,255,.4); }
+.smart-add-modal .barcode-entry input { min-width: 0; border: 0; background: transparent; }
+.barcode-entry button,
+.barcode-camera-button,
+.barcode-camera button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 15px;
+  border: 1px solid var(--brand);
+  border-radius: 8px;
+  color: white;
+  background: var(--brand);
+  cursor: pointer;
+}
+.barcode-entry button { align-self: stretch; border-radius: 0 8px 8px 0; }
+.barcode-entry button:disabled,
+.barcode-camera-button:disabled { opacity: .55; }
+.barcode-camera { position: relative; overflow: hidden; min-height: 260px; border-radius: 12px; background: #111; }
+.barcode-camera-hidden { display: none; }
+.barcode-camera video { display: block; width: 100%; height: 320px; object-fit: cover; }
+.barcode-target { position: absolute; inset: 50% 12% auto; height: 92px; transform: translateY(-50%); border: 2px solid #fff; border-radius: 10px; box-shadow: 0 0 0 999px rgba(0,0,0,.25); }
+.barcode-camera button { position: absolute; right: 12px; bottom: 12px; }
+.barcode-message { margin: 0; padding: 10px 12px; border-left: 3px solid var(--terracotta); color: var(--ink-2); background: rgba(201,94,61,.08); }
+
 .smart-add-modal .search-wrapper { position: relative; }
 .smart-add-modal .search-input,
 .smart-add-modal input,
@@ -149,9 +231,13 @@
 .smart-add-modal .expiration-section { grid-column: 1 / -1; }
 .smart-add-modal .checkbox-label { display: flex !important; align-items: center; gap: 10px; padding: 12px 14px; margin: 0 !important; border: 1px solid var(--line); border-radius: 9px; background: rgba(255,255,255,.28); cursor: pointer; }
 .smart-add-modal .container-checkbox { width: 18px; min-height: 18px; accent-color: var(--brand); }
-.smart-add-modal .container-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.smart-add-modal .container-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+.smart-add-modal .container-total { grid-column: 1 / -1; display: grid; gap: 4px; padding: 12px 14px; border-left: 3px solid var(--brand); background: rgba(45,94,57,.07); }
+.smart-add-modal .container-total span { font-family: var(--font-mono); }
+.smart-add-modal .container-total small { color: var(--ink-3); }
 .smart-add-modal .container-size-input,
-.smart-add-modal .container-unit-select { padding: 0 12px; }
+.smart-add-modal .container-unit-select,
+.smart-add-modal .container-count-input { padding: 0 12px; }
 .smart-add-modal .storage-methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .smart-add-modal .storage-btn { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border: 1px solid var(--line); border-radius: 9px; color: var(--ink-2); background: rgba(255,255,255,.25); cursor: pointer; }
 .smart-add-modal .storage-btn.active { border-color: var(--brand); color: var(--brand); background: rgba(45, 94, 57, .1); }
@@ -163,9 +249,13 @@
   .smart-add-modal { width: 100%; max-height: 92vh; border-radius: 16px 16px 0 0; }
   .smart-add-body { padding: 18px; }
   .smart-add-modal .search-results,
-  .smart-add-modal .form-section { grid-template-columns: 1fr; }
+  .smart-add-modal .form-section,
+  .smart-add-modal .container-fields { grid-template-columns: 1fr; }
   .smart-add-modal .container-management-section,
   .smart-add-modal .storage-section,
   .smart-add-modal .expiration-section { grid-column: auto; }
   .smart-add-modal .storage-methods { grid-template-columns: 1fr; }
+  .barcode-entry { grid-template-columns: 22px 1fr; padding: 8px 10px; }
+  .barcode-entry button { grid-column: 1 / -1; width: 100%; border-radius: 8px; }
+  .barcode-camera video { height: 280px; }
 }
