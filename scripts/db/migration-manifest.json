@@ -1026,5 +1026,34 @@
         "table": "meal_plan_validation_issues"
       }
     ]
+  },
+  {
+    "file": "20260716162509_personalized_meal_assignments.sql",
+    "github_version": "20260716162509",
+    "name": "personalized_meal_assignments",
+    "sha256": "8c102273f1776b18a13a2987f38bdb88c5099607e1a810f7a4fd51972196fb49",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "column",
+        "schema": "public",
+        "name": "canonical_recipe_code",
+        "table": "nutrition_plan_meals"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "name": "canonical_recipe_execution_id",
+        "table": "nutrition_plan_meals"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "name": "target_snapshot",
+        "table": "nutrition_plan_meals"
+      }
+    ]
   }
 ]

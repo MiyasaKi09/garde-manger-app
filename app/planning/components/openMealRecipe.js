@@ -12,7 +12,20 @@
  * @param {function} options.toastError      - toast.error(msg)
  */
 const NO_SHEET_MSG =
-  "Pas encore de fiche recette pour ce plat. Elle est créée par la routine lors de la génération du planning."
+  "La fiche recette de ce plat n’est pas disponible."
+
+export function canonicalRecipeHref(meal) {
+  const direct = String(meal?.recipe_href || '').trim()
+  if (/^\/recipes\/canonical\/[a-z0-9-]+(?:\?.*)?$/i.test(direct)) return direct
+  const code = String(
+    meal?.canonical_recipe_code
+    || meal?.recipe_code
+    || meal?.recipeCode
+    || meal?.preparation?.recipe_code
+    || ''
+  ).trim()
+  return /^[a-z0-9-]+$/i.test(code) ? `/recipes/canonical/${encodeURIComponent(code)}` : null
+}
 
 export async function openMealRecipe({
   typeMeals,
@@ -25,6 +38,11 @@ export async function openMealRecipe({
   dishName,
 }) {
   const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
+  const canonicalHref = canonicalRecipeHref(julien)
+  if (canonicalHref) {
+    window.location.assign(canonicalHref)
+    return
+  }
   const query = julien?.description
   // FK-first : les repas écrits par la routine v5 portent generated_recipe_id.
   const recipeId = julien?.generated_recipe_id ?? null

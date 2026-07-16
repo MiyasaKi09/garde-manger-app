@@ -23,6 +23,35 @@
 
 .planning-workspace { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; padding-top: 24px; }
 .planning-main { min-width: 0; border: 1px solid var(--ink-1); background: rgba(255,255,255,.12); }
+.wnr { padding: 24px 28px 28px; border-bottom: 1px solid var(--ink-1); background: rgba(255,255,255,.2); }
+.wnr-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 18px; }
+.wnr-eyebrow { color: var(--terracotta); font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+.wnr-head h2 { margin: 5px 0 0; font-family: var(--font-display); font-size: 27px; line-height: 1; }
+.wnr-head p { max-width: 440px; margin: 0; color: var(--ink-3); font-size: 12px; line-height: 1.45; text-align: right; }
+.wnr-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.wnr-card { --wnr-tone: var(--terracotta); padding: 17px 18px 14px; border: 1px solid var(--line-strong); border-top: 3px solid var(--wnr-tone); border-radius: 9px; background: rgba(250,247,239,.8); }
+.wnr-card.wnr-ok { --wnr-tone: #3f6c45; }
+.wnr-card.wnr-warn { --wnr-tone: #c9821f; }
+.wnr-card.wnr-none { --wnr-tone: var(--ink-3); }
+.wnr-card > header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.wnr-person { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 18px; }
+.wnr-person > span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; color: white; background: var(--wnr-tone); font-family: var(--font-mono); font-size: 10px; }
+.wnr-status { display: inline-flex; align-items: center; gap: 5px; color: var(--wnr-tone); font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
+.wnr-energy { display: flex; align-items: baseline; gap: 7px; margin-top: 16px; }
+.wnr-energy strong { font-family: var(--font-display); font-size: 34px; line-height: 1; }
+.wnr-energy > span { color: var(--ink-2); font-size: 12px; }
+.wnr-energy em { margin-left: auto; color: var(--ink-3); font-family: var(--font-mono); font-size: 9px; font-style: normal; text-transform: uppercase; }
+.wnr-track { height: 5px; margin: 9px 0 16px; overflow: hidden; border-radius: 99px; background: var(--line); }
+.wnr-track i { display: block; height: 100%; border-radius: inherit; background: var(--wnr-tone); }
+.wnr-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0; }
+.wnr-metrics > div { min-width: 0; }
+.wnr-metrics dt { color: var(--ink-3); font-family: var(--font-mono); font-size: 8px; letter-spacing: .04em; text-transform: uppercase; }
+.wnr-metrics dd { display: flex; flex-direction: column; gap: 1px; margin: 4px 0 5px; }
+.wnr-metrics dd b { font-size: 12px; white-space: nowrap; }
+.wnr-metrics dd span { color: var(--ink-3); font-size: 9px; white-space: nowrap; }
+.wnr-metrics > div > i { display: block; height: 3px; overflow: hidden; border-radius: 99px; background: var(--line); }
+.wnr-metrics > div > i b { display: block; height: 100%; background: var(--wnr-tone); }
+.wnr-card > footer { margin-top: 13px; color: var(--ink-3); font-family: var(--font-mono); font-size: 8px; letter-spacing: .04em; text-transform: uppercase; }
 .planning-side { display: flex; flex-direction: column; gap: 16px; }
 .planning-side-card { padding: 22px; border: 1px solid var(--line-strong); background: rgba(255,255,255,.18); }
 .planning-side-card.accent { border-top: 4px solid var(--terracotta); }
@@ -77,6 +106,11 @@
   .planning-summary { grid-template-columns: 1fr 1fr; }
   .planning-summary > div, .planning-summary > div:first-child { padding: 13px 10px; border-bottom: 1px solid var(--line); }
   .planning-side { grid-template-columns: 1fr; }
+  .wnr { padding: 20px 16px; }
+  .wnr-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .wnr-head p { text-align: left; }
+  .wnr-grid { grid-template-columns: 1fr; }
+  .wnr-metrics { grid-template-columns: repeat(2, 1fr); gap: 13px; }
   .planning-modify-overlay { align-items: end; padding: 0; }
   .planning-modify { width: 100%; max-height: 92vh; border-radius: 14px 14px 0 0; }
   .planning-scope-tabs { grid-template-columns: 1fr; gap: 7px; }

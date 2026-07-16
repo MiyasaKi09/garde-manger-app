@@ -29,6 +29,9 @@ describe('canonical plan publication payload', () => {
       status: 'published', issues: [],
       objectiveScores: { stockCoverage: 0.75, sensoryRuleViolations: 0 },
       slots: [{
+        key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner',
+        recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [],
+      }, {
         key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner',
         recipeCode: 'FR-TEST', allocations: [{ lotId: 'lot-1', formNormalized: 'carotte crue', ingredientName: 'Carotte crue', grams: 150 }],
         shortages: [{ formNormalized: 'carotte crue', ingredientName: 'Carotte crue', grams: 50 }],
@@ -45,9 +48,9 @@ describe('canonical plan publication payload', () => {
     expect(payload.recipe_executions).toHaveLength(1)
     expect(payload.recipe_executions[0].content_hash).toMatch(/^[a-f0-9]{64}$/)
     expect(payload.reservations[0]).toMatchObject({ reserved_quantity: 150, reserved_unit: 'g' })
-    expect(payload.shopping_items[0]).toMatchObject({ purchase_qty: 50, required_qty: 200, stock_qty: 150 })
+    expect(payload.shopping_items[0]).toMatchObject({ purchase_qty: 50, required_qty: 400, stock_qty: 150 })
     expect(payload.tasks[0].instructions).toEqual(recipe.exactSteps)
-    expect(payload.legacy_meals).toHaveLength(2)
+    expect(payload.legacy_meals).toHaveLength(6)
     expect(payload.slots[0].nutrition_by_member).toHaveProperty('Alex')
   })
 

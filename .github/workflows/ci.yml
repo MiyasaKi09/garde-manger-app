@@ -436,11 +436,11 @@ jobs:
         run: |
           output=$(bash scripts/db/apply-migrations.sh status)
           echo "$output"
-          # Dix migrations postérieures au snapshot de production simulé.
+          # Onze migrations postérieures au snapshot de production simulé.
           count=$(echo "$output" | grep -c '^apply ' || true)
           echo "Migrations à appliquer : $count"
-          [ "$count" -eq 10 ]
-          # Et ce sont bien les 10 nouvelles.
+          [ "$count" -eq 11 ]
+          # Et ce sont bien les 11 nouvelles.
           echo "$output" | grep '^apply ' | grep -q '20260715090001'
           echo "$output" | grep '^apply ' | grep -q '20260715090002'
           echo "$output" | grep '^apply ' | grep -q '20260715090003'
@@ -451,16 +451,17 @@ jobs:
           echo "$output" | grep '^apply ' | grep -q '20260715221509'
           echo "$output" | grep '^apply ' | grep -q '20260716111718'
           echo "$output" | grep '^apply ' | grep -q '20260716152121'
+          echo "$output" | grep '^apply ' | grep -q '20260716162509'
 
-      - name: "[B] Apply réel (10 migrations post-snapshot)"
+      - name: "[B] Apply réel (11 migrations post-snapshot)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           output=$(bash scripts/db/apply-migrations.sh apply)
           echo "$output"
-          echo "$output" | grep -E '^migrations : 10 appliquées'
+          echo "$output" | grep -E '^migrations : 11 appliquées'
 
-      - name: "[B] Assertions objets — 10 nouvelles migrations installées"
+      - name: "[B] Assertions objets — 11 nouvelles migrations installées"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
@@ -497,6 +498,13 @@ jobs:
                 AND c.relname='meal_plan_validation_issues'
                 AND t.tgname='meal_plan_validation_issues_ensure_message';
             IF NOT FOUND THEN RAISE EXCEPTION 'manque protection messages planning (20260716152121)'; END IF;
+
+            -- 20260716162509 : affectation canonique et cible par personne.
+            PERFORM 1 FROM information_schema.columns
+              WHERE table_schema='public' AND table_name='nutrition_plan_meals'
+                AND column_name IN ('canonical_recipe_code','canonical_recipe_execution_id','target_snapshot')
+              HAVING count(*) = 3;
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque affectations repas personnalisées (20260716162509)'; END IF;
 
             -- 090003 : catalog.is_in_active_release
             PERFORM 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace

@@ -214,7 +214,7 @@ export async function POST(request) {
     }
 
     const payload = buildCanonicalPlanPayload({
-      plan, recipes, members, windowStart, constraints, inventoryLots: plannerLots,
+      plan, recipes, members, goals: goalsResult.data || [], windowStart, constraints, inventoryLots: plannerLots,
       corpusVersion: operationalCatalog.metadata.corpusVersion,
     })
     if (existing.planImport) payload.import_id = existing.planImport.id
@@ -228,6 +228,7 @@ export async function POST(request) {
       status: data.status,
       summary: {
         meals: payload.slots.length,
+        personalized_meals: payload.legacy_meals.length,
         changed: slots.filter((slot) => !slot.fixedRecipeCode).length,
         recipes: new Set(payload.slots.map((slot) => slot.recipe_code)).size,
         stock_coverage: plan.objectiveScores.stockCoverage,
