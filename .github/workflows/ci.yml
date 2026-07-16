@@ -431,11 +431,11 @@ jobs:
         run: |
           output=$(bash scripts/db/apply-migrations.sh status)
           echo "$output"
-          # Neuf migrations postérieures au snapshot de production simulé.
+          # Dix migrations postérieures au snapshot de production simulé.
           count=$(echo "$output" | grep -c '^apply ' || true)
           echo "Migrations à appliquer : $count"
-          [ "$count" -eq 9 ]
-          # Et ce sont bien les 9 nouvelles.
+          [ "$count" -eq 10 ]
+          # Et ce sont bien les 10 nouvelles.
           echo "$output" | grep '^apply ' | grep -q '20260715090001'
           echo "$output" | grep '^apply ' | grep -q '20260715090002'
           echo "$output" | grep '^apply ' | grep -q '20260715090003'
@@ -445,16 +445,17 @@ jobs:
           echo "$output" | grep '^apply ' | grep -q '20260715221042'
           echo "$output" | grep '^apply ' | grep -q '20260715221509'
           echo "$output" | grep '^apply ' | grep -q '20260716111718'
+          echo "$output" | grep '^apply ' | grep -q '20260716152121'
 
-      - name: "[B] Apply réel (9 migrations post-snapshot)"
+      - name: "[B] Apply réel (10 migrations post-snapshot)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           output=$(bash scripts/db/apply-migrations.sh apply)
           echo "$output"
-          echo "$output" | grep -E '^migrations : 9 appliquées'
+          echo "$output" | grep -E '^migrations : 10 appliquées'
 
-      - name: "[B] Assertions objets — 9 nouvelles migrations installées"
+      - name: "[B] Assertions objets — 10 nouvelles migrations installées"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
@@ -483,6 +484,14 @@ jobs:
             PERFORM 1 FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace
               WHERE n.nspname='public' AND c.relname='inventory_containers' AND c.relkind='r';
             IF NOT FOUND THEN RAISE EXCEPTION 'manque public.inventory_containers (20260716111718)'; END IF;
+
+            -- 20260716152121 : une alerte sans message ne bloque plus la publication.
+            PERFORM 1 FROM pg_trigger t JOIN pg_class c ON c.oid=t.tgrelid
+              JOIN pg_namespace n ON n.oid=c.relnamespace
+              WHERE n.nspname='public'
+                AND c.relname='meal_plan_validation_issues'
+                AND t.tgname='meal_plan_validation_issues_ensure_message';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque protection messages planning (20260716152121)'; END IF;
 
             -- 090003 : catalog.is_in_active_release
             PERFORM 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
