@@ -6,7 +6,7 @@ import CookMode from '@/components/CookMode'
 import CookSession from './CookSession'
 import { ChevronLeft, ChevronRight, Loader2, Check, Pencil } from 'lucide-react'
 import { toast } from '@/components/Toast'
-import { openMealRecipe } from './openMealRecipe'
+import { canonicalRecipeHref, openMealRecipe } from './openMealRecipe'
 import useStockCoverage from './useStockCoverage'
 import StockDot from './StockDot'
 import './WeekGrid.css'
@@ -96,6 +96,7 @@ export default function WeekGrid({
 
   async function prefetchRecipe(typeMeals) {
     const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
+    if (canonicalRecipeHref(julien)) return
     const q = julien?.description
     if (!q || recipeCacheRef.current[q] !== undefined) return
     recipeCacheRef.current[q] = null

@@ -16,7 +16,7 @@ export const dynamic = 'force-dynamic'
  *   meals_count, expected_count,
  *   missing_slots:        [{ date, type, person }],
  *   invalid_macros:       [{ date, type, person }],   — kcal null/0 hors restes
- *   dej_diner_sans_fiche: [{ date, type }],           — FK generated_recipe_id NULL
+ *   dej_diner_sans_fiche: [{ date, type }],           — aucune fiche générée ou canonique
  *   shopping_count,
  *   ok: boolean
  * }
@@ -76,7 +76,7 @@ export async function GET(request, { params }) {
   let hasV5Columns = true
   let { data: meals, error: mealsErr } = await supabase
     .from('nutrition_plan_meals')
-    .select(`${BASE_COLS}, generated_recipe_id, is_leftover`)
+    .select(`${BASE_COLS}, generated_recipe_id, canonical_recipe_execution_id, canonical_recipe_code, is_leftover`)
     .eq('import_id', importId)
   if (mealsErr) {
     hasV5Columns = false
@@ -122,14 +122,14 @@ export async function GET(request, { params }) {
     .filter(m => !isLeftover(m) && (m.kcal == null || Number(m.kcal) === 0))
     .map(m => ({ date: m.meal_date, type: m.meal_type, person: m.person_name }))
 
-  // ── Déj/dîners sans fiche recette (FK generated_recipe_id NULL) ──
+  // ── Déj/dîners sans fiche recette générée OU canonique ──
   // Indéterminable tant que la colonne v5 n'existe pas → liste vide (repli).
   const sansFiche = new Map()
   if (hasV5Columns) {
     for (const m of meals) {
       if (!['dejeuner', 'diner'].includes(m.meal_type)) continue
       if (isLeftover(m)) continue
-      if (m.generated_recipe_id != null) continue
+      if (m.generated_recipe_id != null || m.canonical_recipe_execution_id != null || m.canonical_recipe_code) continue
       sansFiche.set(`${m.meal_date}|${m.meal_type}`, { date: m.meal_date, type: m.meal_type })
     }
   }

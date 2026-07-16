@@ -73,6 +73,7 @@ export default function PlanningPage() {
   const [instructions, setInstructions] = useState('')
   const [modifyStatus, setModifyStatus] = useState('idle')
   const horizonStarted = useRef(false)
+  const personalizedRepairStarted = useRef(new Set())
 
   const weekDates = weekDatesForOffset(weekOffset)
   const weekStart = localIso(weekDates[0])
@@ -177,6 +178,36 @@ export default function PlanningPage() {
     return () => { cancelled = true }
   }, [selectedImportId, reloadKey])
 
+  useEffect(() => {
+    if (!selectedImportId || weekLoading || !weekData || !nutritionGoals.length) return
+    const people = [...new Set(nutritionGoals.map((goal) => goal.person_name).filter(Boolean))]
+    const expectedPerDay = people.length * 3 + (people.some((name) => name.localeCompare('Julien', 'fr', { sensitivity: 'base' }) === 0) ? 1 : 0)
+    const expected = expectedPerDay * 7
+    const uniqueMeals = new Set((weekData.meals || []).map((meal) => `${meal.meal_date}|${meal.meal_type}|${meal.person_name}`)).size
+    if (!expected || uniqueMeals >= expected || personalizedRepairStarted.current.has(selectedImportId)) return
+
+    personalizedRepairStarted.current.add(selectedImportId)
+    ;(async () => {
+      setHorizonStatus('preparing')
+      try {
+        const response = await authFetch('/api/planning/generate-v3', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ import_id: selectedImportId, window_start: weekStart, scope: 'week', intent: 'balanced' }),
+        })
+        const data = await response.json().catch(() => ({}))
+        if (!response.ok) throw new Error(data.error || 'Mise à niveau du planning incomplète')
+        await refreshImports()
+        setReloadKey((value) => value + 1)
+        setHorizonStatus('ready')
+        toast.success('Planning personnalisé remis à niveau : petit-déjeuner, collations, variantes et portions recalculés')
+      } catch (error) {
+        setHorizonStatus('error')
+        toast.error(error.message)
+      }
+    })()
+  }, [nutritionGoals, refreshImports, selectedImportId, weekData, weekLoading, weekStart])
+
   function openModification({ scope = 'week', date = null, type = null } = {}) {
     setModifyScope(scope)
     setModifyDays(scope === 'days' && date ? [date] : [])
@@ -220,7 +251,8 @@ export default function PlanningPage() {
       await refreshImports()
       setReloadKey((value) => value + 1)
       setModifyOpen(false)
-      toast.success(`${data.summary?.changed || 14} repas recalculé${(data.summary?.changed || 14) > 1 ? 's' : ''} avec les règles du foyer`)
+      const recalculated = data.summary?.personalized_meals || data.summary?.changed || 14
+      toast.success(`${recalculated} prises personnalisées recalculées avec les règles du foyer`)
     } catch (error) {
       setModifyStatus('error')
       toast.error(error.message)
@@ -248,6 +280,8 @@ export default function PlanningPage() {
   const plannedSlots = new Set(meals
     .filter((meal) => ['dejeuner', 'diner'].includes(meal.meal_type))
     .map((meal) => `${meal.meal_date}|${meal.meal_type}`)).size
+  const personalizedMeals = new Set(meals.map((meal) => `${meal.meal_date}|${meal.meal_type}|${meal.person_name}`)).size
+  const plannedDays = new Set(meals.map((meal) => meal.meal_date)).size
   const rangeLabel = `${weekDates[0].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })} — ${weekDates[6].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}`
   const nextWeekStart = addDays(localIso(mondayForOffset(0)), 7)
   const nextWeekReady = imports.some((item) => item.file_name === 'myko-canonical-v3' && item.date_range_start === nextWeekStart)
@@ -274,7 +308,7 @@ export default function PlanningPage() {
 
       <section className="planning-summary" aria-label="Résumé de la semaine">
         <div><CalendarDays size={18} /><span><b>{rangeLabel}</b><small>Semaine affichée</small></span></div>
-        <div><Check size={18} /><span><b>{plannedSlots}/14 repas</b><small>Déjeuners et dîners</small></span></div>
+        <div><Check size={18} /><span><b>{personalizedMeals || plannedSlots} prises</b><small>{plannedDays || 7} jours personnalisés</small></span></div>
         <div><ShoppingBasket size={18} /><span><b>{shoppingItems.length} produits</b><small>À prévoir aux courses</small></span></div>
         <div><Clock3 size={18} /><span><b>{batchRecipes.length} préparations</b><small>Organisation en avance</small></span></div>
       </section>

@@ -83,6 +83,7 @@ const NEW_VERSIONS = new Set([
   '20260715221509', // recipe_catalog_v3_indexes
   '20260716111718', // inventory_containers_and_barcode_lots
   '20260716152121', // fix_planning_validation_issue_messages
+  '20260716162509', // personalized_meal_assignments
 ]);
 
 // Objets attendus après application des nouvelles migrations (pour assertions CI).
@@ -119,6 +120,11 @@ const NEW_EXPECTED_OBJECTS = {
   '20260716152121': [
     { type: 'function', schema: 'public', name: 'ensure_plan_validation_issue_message' },
     { type: 'trigger', schema: 'public', name: 'meal_plan_validation_issues_ensure_message', table: 'meal_plan_validation_issues' },
+  ],
+  '20260716162509': [
+    { type: 'column', schema: 'public', name: 'canonical_recipe_code', table: 'nutrition_plan_meals' },
+    { type: 'column', schema: 'public', name: 'canonical_recipe_execution_id', table: 'nutrition_plan_meals' },
+    { type: 'column', schema: 'public', name: 'target_snapshot', table: 'nutrition_plan_meals' },
   ],
 };
 
