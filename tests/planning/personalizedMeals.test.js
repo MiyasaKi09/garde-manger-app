@@ -53,6 +53,8 @@ describe('personalized deterministic meals', () => {
       packageCount: 4,
       packageLabel: 'pot',
     })
+    expect(result.meals.filter((meal) => meal.variant_kind === 'fixed_breakfast')
+      .every((meal) => !meal.description.includes('œufs de œufs'))).toBe(true)
     for (const day of result.daily) {
       expect(Math.abs(day.total.proteinG - day.target.proteinG) / day.target.proteinG, JSON.stringify(day)).toBeLessThanOrEqual(0.2)
       expect(Math.abs(day.total.carbsG - day.target.carbsG) / day.target.carbsG, JSON.stringify(day)).toBeLessThanOrEqual(0.2)
