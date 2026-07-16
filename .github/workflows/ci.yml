@@ -426,11 +426,11 @@ jobs:
         run: |
           output=$(bash scripts/db/apply-migrations.sh status)
           echo "$output"
-          # Huit migrations postérieures au snapshot de production simulé.
+          # Neuf migrations postérieures au snapshot de production simulé.
           count=$(echo "$output" | grep -c '^apply ' || true)
           echo "Migrations à appliquer : $count"
-          [ "$count" -eq 8 ]
-          # Et ce sont bien les 8 nouvelles.
+          [ "$count" -eq 9 ]
+          # Et ce sont bien les 9 nouvelles.
           echo "$output" | grep '^apply ' | grep -q '20260715090001'
           echo "$output" | grep '^apply ' | grep -q '20260715090002'
           echo "$output" | grep '^apply ' | grep -q '20260715090003'
@@ -439,6 +439,7 @@ jobs:
           echo "$output" | grep '^apply ' | grep -q '20260715214547'
           echo "$output" | grep '^apply ' | grep -q '20260715221042'
           echo "$output" | grep '^apply ' | grep -q '20260715221509'
+          echo "$output" | grep '^apply ' | grep -q '20260716111718'
 
       - name: "[B] Apply réel (8 migrations post-snapshot)"
         env:
@@ -448,7 +449,7 @@ jobs:
           echo "$output"
           echo "$output" | grep -E '^migrations : 8 appliquées'
 
-      - name: "[B] Assertions objets — 8 nouvelles migrations installées"
+      - name: "[B] Assertions objets — 9 nouvelles migrations installées"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
