@@ -425,6 +425,11 @@ jobs:
           DATABASE_URL: ${{ env.DB_B }}
         run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/legacy_stock_fixture.sql
 
+      - name: "[B] Simulation état prod — socle planning historique"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/legacy_planning_fixture.sql
+
       - name: "[B] Dry-run apply (migrations post-snapshot uniquement)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
