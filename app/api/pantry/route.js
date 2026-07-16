@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { getExpirationStatus, getEffectiveExpiration } from '@/app/pantry/components/pantryUtils'
 import { daysUntil } from '@/lib/dates'
+import { resolveInventoryDisplayName } from '@/lib/inventoryDisplayName'
 
 export const dynamic = 'force-dynamic'
 
@@ -96,28 +97,20 @@ export async function GET(request) {
     const archetypeMap = {}
     ;(archetypeResult.data || []).forEach(a => { archetypeMap[a.id] = a })
 
-    lots = lots.map(item => {
-      if (item.canonical_food_id && canonicalMap[item.canonical_food_id]) {
-        return { ...item, canonical_foods: canonicalMap[item.canonical_food_id] }
-      } else if (item.archetype_id && archetypeMap[item.archetype_id]) {
-        return { ...item, archetypes: archetypeMap[item.archetype_id] }
-      }
-      return item
-    })
+    lots = lots.map(item => ({
+      ...item,
+      ...(item.canonical_food_id && canonicalMap[item.canonical_food_id]
+        ? { canonical_foods: canonicalMap[item.canonical_food_id] }
+        : {}),
+      ...(item.archetype_id && archetypeMap[item.archetype_id]
+        ? { archetypes: archetypeMap[item.archetype_id] }
+        : {}),
+    }))
   }
 
   // Transformer : mêmes champs calculés que l'ancien loadPantryItems client.
   const transformed = lots.map(item => {
-    let productName = 'Produit sans nom'
-    if (item.canonical_food_id && item.canonical_foods?.canonical_name) {
-      productName = item.canonical_foods.canonical_name
-    } else if (item.archetype_id && item.archetypes?.name) {
-      productName = item.archetypes.name
-    } else if (item.notes) {
-      productName = item.notes.split('\n')[0] // Première ligne des notes
-    } else if (item.product_name) {
-      productName = item.product_name
-    }
+    const productName = resolveInventoryDisplayName(item)
 
     const expiryKind = item.archetypes?.expiry_kind || null
     const days = daysUntil(item.adjusted_expiration_date || item.expiration_date)

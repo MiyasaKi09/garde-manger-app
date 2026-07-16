@@ -221,6 +221,23 @@ export async function POST(request) {
     const { data, error } = await supabase.rpc('publish_canonical_closed_loop_plan', { p_payload: payload })
     if (error) throw new Error(error.message)
 
+    // Le RPC historique publie les besoins structurés mais ne recopie pas encore
+    // les trois colonnes de conditionnement. On les rattache immédiatement au
+    // même plan afin que « 4 pots de 200 g » devienne bien quatre contenants
+    // physiques lors du rangement, et jamais un lot abstrait de 800 g.
+    const packagedItems = payload.shopping_items.filter((item) => item.container_qty && item.container_size && item.container_unit)
+    const packageUpdates = await Promise.all(packagedItems.map((item) => supabase
+      .from('nutrition_plan_shopping_items')
+      .update({
+        container_qty: item.container_qty,
+        container_size: item.container_size,
+        container_unit: item.container_unit,
+      })
+      .eq('plan_version_id', data.plan_version_id)
+      .eq('product_name', item.product_name)))
+    const packageError = packageUpdates.find((result) => result.error)?.error
+    if (packageError) throw new Error(`Conditionnement du planning non enregistré : ${packageError.message}`)
+
     return NextResponse.json({
       ok: true,
       import_id: data.import_id,

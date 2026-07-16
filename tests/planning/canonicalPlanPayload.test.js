@@ -59,6 +59,30 @@ describe('canonical plan publication payload', () => {
     expect(nextMondayIso(new Date('2026-07-19T12:00:00Z'))).toBe('2026-07-20')
   })
 
+  it('publishes skyr as physical 200 g pots instead of an arbitrary gram total', () => {
+    const plan = {
+      status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
+      slots: [
+        { key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
+        { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
+      ],
+    }
+    const payload = buildCanonicalPlanPayload({
+      plan, recipes: [recipe], windowStart: '2026-07-20',
+      members: [{ name: 'Julien', portion_multiplier: 1 }], constraints: {}, inventoryLots: [],
+    })
+    const skyr = payload.shopping_items.find((item) => item.product_name === 'Skyr nature')
+    expect(skyr).toMatchObject({
+      display_quantity: '1 pot de 200 g',
+      required_qty: 200,
+      purchase_qty: 200,
+      purchase_unit: 'g',
+      container_qty: 1,
+      container_size: 200,
+      container_unit: 'g',
+    })
+  })
+
   it('publishes every validation issue with a readable message and its context', () => {
     expect(normalizePlanIssues([
       { severity: 'warning', code: 'vegetarian_min', missing: 2 },
