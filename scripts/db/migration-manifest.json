@@ -988,5 +988,43 @@
     "baseline": "new",
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260716111718_inventory_containers_and_barcode_lots.sql",
+    "github_version": "20260716111718",
+    "name": "inventory_containers_and_barcode_lots",
+    "sha256": "6e82dd4349cc22cf8312360b5f62e1ffa808ee38c1d38cf55e002ff107a4f80d",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "inventory_containers"
+      }
+    ]
+  },
+  {
+    "file": "20260716152121_fix_planning_validation_issue_messages.sql",
+    "github_version": "20260716152121",
+    "name": "fix_planning_validation_issue_messages",
+    "sha256": "14ce35f4b682dfee260a28dc7c0035b1a252bd5c1e08a14432a5af85361b9cf2",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "ensure_plan_validation_issue_message"
+      },
+      {
+        "type": "trigger",
+        "schema": "public",
+        "name": "meal_plan_validation_issues_ensure_message",
+        "table": "meal_plan_validation_issues"
+      }
+    ]
   }
 ]

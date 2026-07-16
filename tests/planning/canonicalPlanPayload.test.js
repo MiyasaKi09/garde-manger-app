@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
+import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso, normalizePlanIssues } from '@/lib/domain/planning/canonicalPlanPayload'
 import { generateClosedLoopPlan } from '@/lib/domain/planning/closedLoopPlanner'
 import { getCanonicalRecipes } from '@/lib/domain/recipes/canonicalCatalog'
 
@@ -54,6 +54,25 @@ describe('canonical plan publication payload', () => {
   it('computes the next Monday in UTC deterministically', () => {
     expect(nextMondayIso(new Date('2026-07-15T12:00:00Z'))).toBe('2026-07-20')
     expect(nextMondayIso(new Date('2026-07-19T12:00:00Z'))).toBe('2026-07-20')
+  })
+
+  it('publishes every validation issue with a readable message and its context', () => {
+    expect(normalizePlanIssues([
+      { severity: 'warning', code: 'vegetarian_min', missing: 2 },
+      { severity: 'warning', code: 'protein_repeat_poulet', missing: 1 },
+    ])).toEqual([
+      expect.objectContaining({
+        severity: 'warning',
+        code: 'vegetarian_min',
+        message: expect.stringContaining('repas végétariens'),
+        details: { missing: 2 },
+      }),
+      expect.objectContaining({
+        code: 'protein_repeat_poulet',
+        message: expect.stringContaining('source de protéines'),
+        details: { missing: 1 },
+      }),
+    ])
   })
 
   it('can compose a full week from the publishable V3 corpus without invented stock', () => {

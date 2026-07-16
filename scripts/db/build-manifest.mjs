@@ -81,6 +81,8 @@ const NEW_VERSIONS = new Set([
   '20260715214547', // complete_recipe_catalog_v3
   '20260715221042', // repair_recipe_corpus_v3_utf8
   '20260715221509', // recipe_catalog_v3_indexes
+  '20260716111718', // inventory_containers_and_barcode_lots
+  '20260716152121', // fix_planning_validation_issue_messages
 ]);
 
 // Objets attendus après application des nouvelles migrations (pour assertions CI).
@@ -110,6 +112,13 @@ const NEW_EXPECTED_OBJECTS = {
     { type: 'column', schema: 'culinary', name: 'source_name', table: 'recipe_ingredient_requirements' },
     { type: 'column', schema: 'culinary', name: 'yield_quantity', table: 'recipe_versions' },
     { type: 'column', schema: 'culinary', name: 'required_quantity', table: 'recipe_components' },
+  ],
+  '20260716111718': [
+    { type: 'table', schema: 'public', name: 'inventory_containers' },
+  ],
+  '20260716152121': [
+    { type: 'function', schema: 'public', name: 'ensure_plan_validation_issue_message' },
+    { type: 'trigger', schema: 'public', name: 'meal_plan_validation_issues_ensure_message', table: 'meal_plan_validation_issues' },
   ],
 };
 
