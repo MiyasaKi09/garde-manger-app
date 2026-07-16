@@ -420,6 +420,11 @@ jobs:
           ")
           [ "$missing" -eq 0 ] && echo "OK : toutes les github_versions baseline présentes dans le ledger."
 
+      - name: "[B] Simulation état prod — socle stock historique"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/legacy_stock_fixture.sql
+
       - name: "[B] Dry-run apply (migrations post-snapshot uniquement)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
@@ -473,6 +478,11 @@ jobs:
               WHERE n.nspname='ops' AND p.proname IN ('publish_catalog_release','rollback_catalog_release')
               HAVING count(*) = 2;
             IF NOT FOUND THEN RAISE EXCEPTION 'manque ops.publish/rollback (090002)'; END IF;
+
+            -- 20260716111718 : contenants physiques du stock historique
+            PERFORM 1 FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace
+              WHERE n.nspname='public' AND c.relname='inventory_containers' AND c.relkind='r';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque public.inventory_containers (20260716111718)'; END IF;
 
             -- 090003 : catalog.is_in_active_release
             PERFORM 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
