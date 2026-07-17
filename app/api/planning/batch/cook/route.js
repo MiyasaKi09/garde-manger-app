@@ -21,8 +21,12 @@ export const dynamic = 'force-dynamic'
  * Idempotent : si un plat actif existe déjà pour cette préparation, on le renvoie
  * sans re-déduire le stock.
  *
- * DELETE /api/planning/batch/cook  { batchRecipeId } — annule (retire du stock ;
- * ne restaure PAS les ingrédients déduits, comme la cuisson d'un repas).
+ * DELETE /api/planning/batch/cook  { batchRecipeId, cookedDishId? } — annule
+ * (retire du stock ; ne restaure PAS les ingrédients déduits, comme la cuisson
+ * d'un repas). Avec `cookedDishId`, seul CE plat est supprimé : un expiré et un
+ * frais recuit peuvent partager le même batch_recipe_id (P0-3), retirer l'un ne
+ * doit pas détruire l'autre. Sans id (compat), tous les plats du batch sont
+ * supprimés — l'UI transmet toujours l'id du plat affiché.
  */
 const addDaysISO = (n) => {
   const d = new Date()
@@ -51,13 +55,20 @@ export async function POST(request) {
   if (!br) return NextResponse.json({ error: 'Préparation introuvable' }, { status: 404 })
 
   // Déjà cuisiné (plat actif lié) → on renvoie l'existant SANS re-déduire le stock.
-  const { data: existing } = await supabase
+  // Un plat PÉRIMÉ (DLC < aujourd'hui, comparaison UTC — piège #4) ne compte pas
+  // comme « déjà cuisiné » : recuisiner la préparation doit rester possible
+  // (audit F02 / test H). DLC absente (legacy) = non périmé. Le plat périmé
+  // n'est pas modifié ici — il reste en stock jusqu'à revue utilisateur.
+  const todayUtc = new Date().toISOString().slice(0, 10)
+  const { data: existing, error: existingErr } = await supabase
     .from('cooked_dishes')
     .select('*')
     .eq('user_id', user.id)
     .eq('batch_recipe_id', batchRecipeId)
     .gt('portions_remaining', 0)
+    .or(`expiration_date.is.null,expiration_date.gte.${todayUtc}`)
     .maybeSingle()
+  if (existingErr) return NextResponse.json({ error: existingErr.message }, { status: 500 })
   if (existing) return NextResponse.json({ dish: existing, already: true })
 
   // Portions réellement faites : `portions` du body sinon portions_total du plan.
@@ -112,12 +123,16 @@ export async function DELETE(request) {
   try { body = await request.json() } catch { /* body optionnel */ }
   const batchRecipeId = body?.batchRecipeId
   if (!batchRecipeId) return NextResponse.json({ error: 'batchRecipeId requis' }, { status: 400 })
+  const cookedDishId = body?.cookedDishId ?? body?.cooked_dish_id ?? null
 
-  const { error } = await supabase
+  let query = supabase
     .from('cooked_dishes')
     .delete()
     .eq('user_id', user.id)
     .eq('batch_recipe_id', batchRecipeId)
+  // Id explicite → suppression ciblée de CE plat uniquement (voir JSDoc).
+  if (cookedDishId != null) query = query.eq('id', cookedDishId)
+  const { error } = await query
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
   return NextResponse.json({ success: true })
 }

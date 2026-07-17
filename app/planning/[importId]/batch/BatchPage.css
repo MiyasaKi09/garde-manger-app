@@ -1,0 +1,17 @@
+/* Styles colocalisés de la page batch (app/planning/[importId]/batch/page.js).
+   Les styles historiques vivent encore dans le bloc styled-jsx de la page ;
+   les nouveaux états sont ajoutés ici, conformément à la convention CSS colocalisé. */
+
+/* Plat cuisiné dont la DLC est dépassée : état explicite non consommable
+   (« Périmé — à retirer »), distinct de l'état « Au stock » (audit F02). */
+.bat-prep-cook.bat-prep-cook-expired {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.01em;
+  color: var(--state-expired, #b3402a);
+}
+.bat-prep-cook.bat-prep-cook-expired > svg { flex: none; }
+.bat-prep-cook.bat-prep-cook-expired .bat-cook-undo { color: var(--state-expired, #b3402a); }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { buildPersonalizedMeals, optimizeDailyPortions } from '@/lib/domain/planning/personalizedMeals'
+import { SUPPLEMENT_FORMS, buildPersonalizedMeals, optimizeDailyPortions } from '@/lib/domain/planning/personalizedMeals'
+import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 
 const recipe = (code, family, nutrition, category = 'legumes') => ({
   code, family, eligible: true, servings: 2, prepMinutes: 20, cookMinutes: 25, cuisineOrigin: 'France',
@@ -76,5 +77,104 @@ describe('personalized deterministic meals', () => {
     expect(julien.lunchScale * 4).toBe(Math.round(julien.lunchScale * 4))
     expect(julien.dinnerScale * 4).toBe(Math.round(julien.dinnerScale * 4))
     expect(julien.lunchScale).not.toBe(zoe.lunchScale)
+  })
+
+  it('never serves a preparation-requiring food in any snack of a 7-day plan', () => {
+    const result = buildPersonalizedMeals({
+      plan: plan(), recipes: [meat, fish, veggie],
+      members: [{ id: 'j', name: 'Julien', portion_multiplier: 1, preferences: {} }, { id: 'z', name: 'Zoé', portion_multiplier: 1, preferences: {} }],
+      goals: [
+        { person_name: 'Julien', target_calories: 2357, target_protein_g: 216, target_carbs_g: 196, target_fat_g: 79, target_fiber_g: 33 },
+        { person_name: 'Zoé', target_calories: 1525, target_protein_g: 75, target_carbs_g: 192, target_fat_g: 51, target_fiber_g: 21 },
+      ],
+    })
+
+    const snackItems = result.meals
+      .filter((meal) => meal.variant_kind === 'fixed_snack')
+      .flatMap((meal) => meal.portion_details.items)
+    expect(snackItems.length).toBeGreaterThan(0)
+    // Aucun aliment de collation ne demande une préparation sans tâche source.
+    expect(snackItems.every((item) => item.food !== 'chicken')).toBe(true)
+    expect(snackItems.every((item) => !/r[ôo]ti|cuit|grill/i.test(item.displayLabel || ''))).toBe(true)
+    const julienSnacks = result.meals.filter((meal) => meal.person_name === 'Julien' && meal.variant_kind === 'fixed_snack')
+    expect(julienSnacks.some((meal) => meal.portion_details.items.some((item) => item.food === 'tuna'))).toBe(true)
+
+    // Le remplacement conserve la barrière énergétique ±5 % du foyer.
+    expect(result.valid).toBe(true)
+
+    expect(result.supplementalRequirements.every((item) => item.label !== 'blanc de poulet rôti')).toBe(true)
+    expect(result.supplementalRequirements.every((item) => !/r[ôo]ti/i.test(item.label))).toBe(true)
+  })
+
+  it('keeps energy as the only hard gate while persisting per-dimension nutrition validity', () => {
+    const result = buildPersonalizedMeals({
+      plan: plan(), recipes: [meat, fish, veggie],
+      members: [{ id: 'a', name: 'Alex', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true } } }],
+      goals: [{ person_name: 'Alex', target_calories: 2000, target_protein_g: 300, target_carbs_g: 230, target_fat_g: 70, target_fiber_g: 25 }],
+    })
+
+    expect(result.daily).toHaveLength(7)
+    for (const day of result.daily) {
+      // L'énergie tient (journée « valide ») mais le plancher protéique de
+      // 90 % de la cible est manqué : la journée est signalée, pas bloquée.
+      expect(day.valid).toBe(true)
+      expect(day.protein_valid).toBe(false)
+      expect(day.total.proteinG).toBeLessThan(0.9 * day.target.proteinG)
+      const expectedDeviation = Math.round(((day.total.proteinG - day.target.proteinG) / day.target.proteinG) * 10000) / 10000
+      expect(day.protein_deviation).toBe(expectedDeviation)
+      expect(day.protein_deviation).toBeLessThan(0)
+      expect(day.macro_deviations).toMatchObject({
+        proteinG: expectedDeviation,
+        carbsG: expect.any(Number),
+        fatG: expect.any(Number),
+        fiberG: expect.any(Number),
+      })
+    }
+    expect(result.valid).toBe(true)
+  })
+
+  it('exposes purchasable supplement forms with their gram conversions', () => {
+    const byLabel = new Map(SUPPLEMENT_FORMS.map((form) => [form.label, form]))
+    expect(byLabel.get('skyr nature')).toMatchObject({ unit: 'g', gramsPerUnit: 1, formNormalized: 'skyr nature', packageSize: 200 })
+    expect(byLabel.get('œufs durs')).toMatchObject({ unit: 'œuf', gramsPerUnit: 60, formNormalized: 'oeufs durs' })
+    for (const fruit of ['pomme', 'kiwi', 'poire', 'banane', 'pêche', 'nectarine', 'orange']) {
+      expect(byLabel.get(fruit)).toMatchObject({ unit: 'pièce', gramsPerUnit: 150 })
+    }
+    expect(byLabel.get('pêche').formNormalized).toBe('peche')
+    expect(byLabel.has('blanc de poulet rôti')).toBe(false)
+    expect(SUPPLEMENT_FORMS.every((form) => Number(form.gramsPerUnit) > 0)).toBe(true)
+  })
+
+  // MAJOR 2 : les aliases couvrent le vocabulaire réel des lots (canonical_foods /
+  // archetypes des exports) — égalité exacte, jamais de fuzzy.
+  it('expose des aliases normalisés du vocabulaire réel, sans collision entre entrées', () => {
+    const byLabel = new Map(SUPPLEMENT_FORMS.map((form) => [form.label, form]))
+    expect(byLabel.get('œufs durs').aliases).toEqual(['oeuf']) // canonique « œuf »
+    expect(byLabel.get('thon au naturel égoutté').aliases).toEqual(
+      expect.arrayContaining(['thon', 'thon en conserve']), // canonique + archétype
+    )
+    expect(byLabel.get('flocons d’avoine').aliases).toEqual(
+      expect.arrayContaining(['flocon d avoine', 'avoine']), // archétype + canonique
+    )
+    expect(byLabel.get('amandes').aliases).toEqual(['amande']) // canonique (singulier)
+    expect(byLabel.get('pain complet').aliases).toEqual(['pain']) // archétype « pain »
+    expect(byLabel.get('jambon blanc').aliases).toEqual(['jambon']) // archétype
+    expect(byLabel.get('skyr nature').aliases).toEqual([]) // déjà le nom exact de l'archétype
+
+    for (const form of SUPPLEMENT_FORMS) {
+      expect(Array.isArray(form.aliases)).toBe(true)
+      for (const alias of form.aliases) {
+        // Chaque alias est déjà une forme normalisée (comparable telle quelle).
+        expect(normalizeFoodForm(alias)).toBe(alias)
+        // Jamais redondant avec la forme principale de sa propre entrée.
+        expect(alias).not.toBe(form.formNormalized)
+        // Aucune collision : un alias ne capte jamais la forme principale
+        // d'une AUTRE entrée ('pain' ≠ 'pain d épices' par égalité exacte).
+        for (const other of SUPPLEMENT_FORMS) {
+          if (other === form) continue
+          expect(alias).not.toBe(other.formNormalized)
+        }
+      }
+    }
   })
 })

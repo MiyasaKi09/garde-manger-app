@@ -41,9 +41,11 @@ export async function POST(request, { params }) {
     const result = await consumePortions(dishId, user.id, portionsToConsume, supabase);
 
     if (!result.success) {
+      // Plat périmé : conflit métier (le plat existe mais n'est plus
+      // consommable) → 409, jamais une erreur serveur.
       return NextResponse.json(
         { error: result.error || 'Erreur lors de la consommation' },
-        { status: 500 }
+        { status: result.expired ? 409 : 500 }
       );
     }
 

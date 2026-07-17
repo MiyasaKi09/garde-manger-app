@@ -134,30 +134,77 @@ export async function POST(request) {
     .limit(1)
   const alreadyLogged = (priorLog?.length || 0) > 0
 
-  // Plat consommé : reste existant (eaten_dish_id) ou plat batch (batch_recipe_id)
+  // Plat consommé : reste existant (eaten_dish_id) ou plat batch (batch_recipe_id).
+  // DLC comparées en UTC (piège #4) ; une DLC absente (plats legacy) n'est PAS
+  // considérée comme périmée. Aucune mutation automatique d'un plat périmé ici :
+  // il reste en stock, signalé ailleurs (audit F02 / test H). Si le batch ne
+  // possède QUE des plats périmés à portions restantes → 409 (jamais de log
+  // silencieux sans décrément).
+  const todayUtc = new Date().toISOString().slice(0, 10)
   let consumedDish = null
   if (eaten_dish_id) {
     const { data: dish, error: dishErr } = await supabase
       .from('cooked_dishes')
-      .select('id, name, portions_cooked, portions_remaining, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion')
+      .select('id, name, portions_cooked, portions_remaining, expiration_date, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion')
       .eq('id', eaten_dish_id)
       .eq('user_id', user.id)
       .maybeSingle()
     if (dishErr || !dish) {
       return NextResponse.json({ error: 'Reste introuvable' }, { status: 404 })
     }
+    if (dish.expiration_date && String(dish.expiration_date).slice(0, 10) < todayUtc) {
+      const expiredOn = new Date(`${String(dish.expiration_date).slice(0, 10)}T00:00:00Z`)
+        .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' })
+      return NextResponse.json(
+        { error: `« ${dish.name} » est périmé depuis le ${expiredOn} : ce reste ne peut plus être consommé. Retirez-le du stock.` },
+        { status: 409 },
+      )
+    }
     consumedDish = dish
   } else if (batch_recipe_id) {
-    const { data: dish } = await supabase
+    // FEFO borné : jamais de plat périmé en sélection automatique.
+    const { data: dish, error: dishErr } = await supabase
       .from('cooked_dishes')
       .select('id, portions_cooked, portions_remaining')
       .eq('user_id', user.id)
       .eq('batch_recipe_id', batch_recipe_id)
       .gt('portions_remaining', 0)
+      .or(`expiration_date.is.null,expiration_date.gte.${todayUtc}`)
       .order('expiration_date', { ascending: true })
       .limit(1)
       .maybeSingle()
-    if (dish) consumedDish = dish
+    if (dishErr) {
+      return NextResponse.json({ error: `Lecture du plat batch : ${dishErr.message}` }, { status: 500 })
+    }
+    if (dish) {
+      consumedDish = dish
+    } else {
+      // Aucun plat VALIDE, mais des plats PÉRIMÉS à portions restantes existent
+      // pour cette recette → 409 explicite (même esprit que eaten_dish_id),
+      // AVANT toute écriture : on ne logue pas silencieusement un repas sans
+      // décrément. S'il n'existe aucun plat du tout, comportement inchangé.
+      const { data: expiredDish, error: expiredErr } = await supabase
+        .from('cooked_dishes')
+        .select('id, name, expiration_date')
+        .eq('user_id', user.id)
+        .eq('batch_recipe_id', batch_recipe_id)
+        .gt('portions_remaining', 0)
+        .lt('expiration_date', todayUtc)
+        .order('expiration_date', { ascending: false })
+        .limit(1)
+        .maybeSingle()
+      if (expiredErr) {
+        return NextResponse.json({ error: `Lecture du plat batch : ${expiredErr.message}` }, { status: 500 })
+      }
+      if (expiredDish) {
+        const expiredOn = new Date(`${String(expiredDish.expiration_date).slice(0, 10)}T00:00:00Z`)
+          .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' })
+        return NextResponse.json(
+          { error: `« ${expiredDish.name || 'Ce plat batch'} » est périmé depuis le ${expiredOn} : ce plat ne peut plus être consommé. Retirez-le du stock ou recuisinez la préparation.` },
+          { status: 409 },
+        )
+      }
+    }
   }
 
   // 1. Déduction du stock EN PREMIER : besoins automatiques (FEFO multi-lots)

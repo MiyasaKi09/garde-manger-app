@@ -67,9 +67,19 @@ function reconstructFromNormalized(importData) {
     dateMap[total.meal_date].totals.push(total)
   }
 
+  // Coexistence canonique + batch (P0-8 / F09) : quand le générateur batch a
+  // écrit ses tâches (source 'batch', ou 'legacy' pour les lignes au défaut de
+  // colonne), les tâches canoniques 'closed_loop' décrivent les MÊMES repas →
+  // on les exclut pour ne pas doubler les étapes (comportement post-batch de
+  // main). Sans tâche batch/legacy, tout est conservé (comportement pré-batch
+  // inchangé).
+  const allPrepTasks = prepTasks || []
+  const hasBatchTasks = allPrepTasks.some(task => task.source === 'batch' || task.source === 'legacy')
+  const visiblePrepTasks = hasBatchTasks ? allPrepTasks.filter(task => task.source !== 'closed_loop') : allPrepTasks
+
   // Group prep tasks by date, split dinner vs prep steps
   const prepByDate = {}
-  for (const task of (prepTasks || [])) {
+  for (const task of visiblePrepTasks) {
     const d = task.prep_date
     if (!d) continue
     if (!prepByDate[d]) prepByDate[d] = { dinner: [], prep: [] }

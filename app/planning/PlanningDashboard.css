@@ -12,7 +12,19 @@
 .planning-spin { animation: planning-spin .9s linear infinite; }
 @keyframes planning-spin { to { transform: rotate(360deg); } }
 
+/* Bannière « Semaine incomplète » (F16/F17) : état explicite + recalcul sur action. */
+.planning-incomplete { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 18px; margin-top: 18px; border: 1px solid var(--terracotta); border-left-width: 4px; border-radius: 8px; background: rgba(193, 96, 60, .08); }
+.planning-incomplete > svg { flex: none; color: var(--terracotta); }
+.planning-incomplete-text { flex: 1; min-width: 220px; }
+.planning-incomplete-text b { display: block; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--terracotta); }
+.planning-incomplete-text p { margin: 4px 0 0; color: var(--ink-2); font-size: 13px; line-height: 1.45; }
+.planning-repair { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid var(--terracotta); border-radius: 6px; color: var(--terracotta); background: transparent; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
+.planning-repair:hover:not(:disabled) { color: white; background: var(--terracotta); }
+.planning-repair:disabled { opacity: .55; cursor: not-allowed; }
+
 .planning-summary { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--ink-1); }
+.planning-summary .planning-summary-warn svg { color: var(--terracotta); }
+.planning-summary .planning-summary-warn small { color: var(--terracotta); }
 .planning-summary > div { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 18px 20px; border-right: 1px solid var(--line-strong); }
 .planning-summary > div:first-child { padding-left: 0; }
 .planning-summary > div:last-child { border-right: 0; }
@@ -60,6 +72,9 @@
 .planning-side-card button { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; min-height: 42px; padding: 0 12px; border: 1px solid var(--ink-1); border-radius: 5px; color: var(--ink-1); background: transparent; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
 .planning-side-card button:hover:not(:disabled) { color: white; background: var(--ink-1); }
 .planning-side-card button:disabled { opacity: .5; }
+/* Lien permanent vers la page batch (F18) — style secondaire sous le bouton principal. */
+.planning-side-card button.planning-batch-link { margin-top: 8px; border: none; min-height: 34px; color: var(--terracotta); background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.planning-side-card button.planning-batch-link:hover:not(:disabled) { color: var(--ink-1); background: transparent; }
 .planning-loading, .planning-empty { display: flex; min-height: 420px; align-items: center; justify-content: center; gap: 10px; color: var(--ink-3); font-family: var(--font-mono); font-size: 11px; }
 .planning-empty { flex-direction: column; text-align: center; }
 .planning-empty h2 { margin: 8px 0 0; color: var(--ink-1); font-family: var(--font-display); font-size: 28px; }
