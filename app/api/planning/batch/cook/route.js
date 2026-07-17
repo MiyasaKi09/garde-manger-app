@@ -51,13 +51,20 @@ export async function POST(request) {
   if (!br) return NextResponse.json({ error: 'Préparation introuvable' }, { status: 404 })
 
   // Déjà cuisiné (plat actif lié) → on renvoie l'existant SANS re-déduire le stock.
-  const { data: existing } = await supabase
+  // Un plat PÉRIMÉ (DLC < aujourd'hui, comparaison UTC — piège #4) ne compte pas
+  // comme « déjà cuisiné » : recuisiner la préparation doit rester possible
+  // (audit F02 / test H). DLC absente (legacy) = non périmé. Le plat périmé
+  // n'est pas modifié ici — il reste en stock jusqu'à revue utilisateur.
+  const todayUtc = new Date().toISOString().slice(0, 10)
+  const { data: existing, error: existingErr } = await supabase
     .from('cooked_dishes')
     .select('*')
     .eq('user_id', user.id)
     .eq('batch_recipe_id', batchRecipeId)
     .gt('portions_remaining', 0)
+    .or(`expiration_date.is.null,expiration_date.gte.${todayUtc}`)
     .maybeSingle()
+  if (existingErr) return NextResponse.json({ error: existingErr.message }, { status: 500 })
   if (existing) return NextResponse.json({ dish: existing, already: true })
 
   // Portions réellement faites : `portions` du body sinon portions_total du plan.

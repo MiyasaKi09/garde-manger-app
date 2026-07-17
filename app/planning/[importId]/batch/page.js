@@ -4,10 +4,16 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { useRouter, useParams } from 'next/navigation'
-import { ArrowLeft, ChevronDown, ChevronUp, Check, Refrigerator } from 'lucide-react'
+import { ArrowLeft, ChevronDown, ChevronUp, Check, Refrigerator, AlertTriangle } from 'lucide-react'
 import CookSession from '@/app/planning/components/CookSession'
+import './BatchPage.css'
 
 const DOW = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
+// DLC comparée en UTC (piège #4 : pas de décalage selon le fuseau de l'utilisateur).
+// Une DLC absente (plats legacy) n'est PAS considérée comme périmée.
+const todayUtcIso = () => new Date().toISOString().slice(0, 10)
+const isDishExpired = (expirationDate) =>
+  Boolean(expirationDate) && String(expirationDate).slice(0, 10) < todayUtcIso()
 const dayShort = (iso) => {
   const d = new Date(`${iso}T00:00:00`)
   return Number.isNaN(d.getTime()) ? iso : DOW[d.getDay()]
@@ -123,7 +129,11 @@ export default function BatchPage() {
   const sessions = useMemo(() => {
     if (!data) return []
     const meals = data.meals || []
-    const prepTasks = data.prepTasks || []
+    // Les tâches canoniques versionnées (source='closed_loop') coexistent
+    // désormais avec celles du générateur batch (source='batch') sur le même
+    // import (audit F09) : la check-list du jour de cuisine ne montre que les
+    // tâches batch/legacy, pas les « Préparer X » du plan canonique.
+    const prepTasks = (data.prepTasks || []).filter(t => t.source !== 'closed_loop')
     const recipes = data.batchRecipes || []
 
     // jours couverts par chaque préparation (repas → batch_recipe_id)
@@ -293,6 +303,15 @@ export default function BatchPage() {
                         </button>
                         {(() => {
                           const cooked = cookedMap[recipe.id]
+                          // Plat périmé (DLC dépassée, comparaison UTC) : état explicite
+                          // non consommable — on garde le bouton « retirer » (audit F02 / test H).
+                          if (cooked && isDishExpired(cooked.expiration_date)) return (
+                            <div className="bat-prep-cook bat-prep-cook-expired">
+                              <AlertTriangle size={13} />
+                              <span>Périmé — à retirer · {cooked.portions_remaining}/{cooked.portions_cooked} portion{cooked.portions_cooked > 1 ? 's' : ''} · DLC dépassée le {frDate(cooked.expiration_date)}</span>
+                              <button className="bat-cook-undo" onClick={() => uncookPrep(recipe)}>retirer</button>
+                            </div>
+                          )
                           if (cooked) return (
                             <div className="bat-prep-cook done">
                               <Refrigerator size={13} />

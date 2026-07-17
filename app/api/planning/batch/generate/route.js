@@ -280,9 +280,29 @@ export async function POST(request) {
   })
 
   // ── Idempotence (ordre FK-safe) ──
-  await supabase.from('nutrition_plan_meals').update({ batch_recipe_id: null }).eq('import_id', importId)
-  await supabase.from('nutrition_plan_prep_tasks').delete().eq('import_id', importId)
-  await supabase.from('nutrition_plan_batch_recipes').delete().eq('import_id', importId)
+  const { error: unlinkErr } = await supabase
+    .from('nutrition_plan_meals').update({ batch_recipe_id: null }).eq('import_id', importId)
+  if (unlinkErr) return NextResponse.json({ error: unlinkErr.message }, { status: 500 })
+
+  // On ne remplace QUE les tâches de CE générateur (source='batch') et ses
+  // anciennes lignes non taguées : la colonne `source` est NOT NULL DEFAULT
+  // 'legacy' (migration 20260713134235), donc les inserts historiques de cet
+  // endpoint portent source='legacy' — jamais NULL. Le balayage 'legacy' est
+  // transitoire (nettoyage one-shot de ces anciennes lignes). Les tâches
+  // canoniques versionnées (source='closed_loop', plan_version_id renseigné)
+  // ne doivent JAMAIS être touchées (audit F09) — garde-fou supplémentaire :
+  // on ne supprime rien qui soit rattaché à une version de plan.
+  const { error: taskDelErr } = await supabase
+    .from('nutrition_plan_prep_tasks')
+    .delete()
+    .eq('import_id', importId)
+    .in('source', ['batch', 'legacy'])
+    .is('plan_version_id', null)
+  if (taskDelErr) return NextResponse.json({ error: taskDelErr.message }, { status: 500 })
+
+  const { error: recipeDelErr } = await supabase
+    .from('nutrition_plan_batch_recipes').delete().eq('import_id', importId)
+  if (recipeDelErr) return NextResponse.json({ error: recipeDelErr.message }, { status: 500 })
 
   let batchCount = 0, linkedCount = 0
   const prepRows = []
@@ -343,6 +363,7 @@ export async function POST(request) {
       prep_label: 'Jour de cuisine',
       task: `Cuisiner ${g.name} — ${portions} portions, portionner en barquettes`,
       estimated_time: `${minutes} min`,
+      source: 'batch', // tague les tâches de ce générateur (idempotence scoping, F09)
     })
   }
 
@@ -354,9 +375,13 @@ export async function POST(request) {
       prep_label: 'Jour de cuisine',
       task: 'Étiqueter les barquettes (plat + date) et ranger au frigo / congélo',
       estimated_time: '10 min',
+      source: 'batch',
     })
   }
-  if (prepRows.length) await supabase.from('nutrition_plan_prep_tasks').insert(prepRows)
+  if (prepRows.length) {
+    const { error: prepInsErr } = await supabase.from('nutrition_plan_prep_tasks').insert(prepRows)
+    if (prepInsErr) return NextResponse.json({ error: prepInsErr.message }, { status: 500 })
+  }
 
   return NextResponse.json({
     ok: true, import_id: importId,

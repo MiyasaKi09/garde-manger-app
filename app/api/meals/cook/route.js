@@ -134,29 +134,46 @@ export async function POST(request) {
     .limit(1)
   const alreadyLogged = (priorLog?.length || 0) > 0
 
-  // Plat consommé : reste existant (eaten_dish_id) ou plat batch (batch_recipe_id)
+  // Plat consommé : reste existant (eaten_dish_id) ou plat batch (batch_recipe_id).
+  // DLC comparées en UTC (piège #4) ; une DLC absente (plats legacy) n'est PAS
+  // considérée comme périmée. Aucune mutation automatique d'un plat périmé ici :
+  // il reste en stock, signalé ailleurs (audit F02 / test H).
+  const todayUtc = new Date().toISOString().slice(0, 10)
   let consumedDish = null
   if (eaten_dish_id) {
     const { data: dish, error: dishErr } = await supabase
       .from('cooked_dishes')
-      .select('id, name, portions_cooked, portions_remaining, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion')
+      .select('id, name, portions_cooked, portions_remaining, expiration_date, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion')
       .eq('id', eaten_dish_id)
       .eq('user_id', user.id)
       .maybeSingle()
     if (dishErr || !dish) {
       return NextResponse.json({ error: 'Reste introuvable' }, { status: 404 })
     }
+    if (dish.expiration_date && String(dish.expiration_date).slice(0, 10) < todayUtc) {
+      const expiredOn = new Date(`${String(dish.expiration_date).slice(0, 10)}T00:00:00Z`)
+        .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' })
+      return NextResponse.json(
+        { error: `« ${dish.name} » est périmé depuis le ${expiredOn} : ce reste ne peut plus être consommé. Retirez-le du stock.` },
+        { status: 409 },
+      )
+    }
     consumedDish = dish
   } else if (batch_recipe_id) {
-    const { data: dish } = await supabase
+    // FEFO borné : jamais de plat périmé en sélection automatique.
+    const { data: dish, error: dishErr } = await supabase
       .from('cooked_dishes')
       .select('id, portions_cooked, portions_remaining')
       .eq('user_id', user.id)
       .eq('batch_recipe_id', batch_recipe_id)
       .gt('portions_remaining', 0)
+      .or(`expiration_date.is.null,expiration_date.gte.${todayUtc}`)
       .order('expiration_date', { ascending: true })
       .limit(1)
       .maybeSingle()
+    if (dishErr) {
+      return NextResponse.json({ error: `Lecture du plat batch : ${dishErr.message}` }, { status: 500 })
+    }
     if (dish) consumedDish = dish
   }
 
