@@ -65,6 +65,48 @@ async function resolveActiveSlot(supabase, userId, mealDate, mealType) {
   }
 }
 
+/**
+ * P2 — Résout le cooked_dish_id via planned_consumptions → planned_productions
+ * quand le slot n'a pas de cooked_dish_id direct (P1) mais qu'une production
+ * planifiée a été matérialisée (status='materialized').
+ *
+ * Requête en deux temps pour éviter .not() (non supporté par supabaseMock) :
+ *   1. planned_consumptions WHERE slot_id = slotId → filtre client planned_production_id IS NOT NULL.
+ *   2. planned_productions WHERE id IN [...] AND status = 'materialized' → lit materialized_cooked_dish_id.
+ *
+ * Fail-soft : toute erreur retourne null (le reste de la route continue).
+ */
+async function resolveProductionDish(supabase, userId, slotId) {
+  try {
+    const { data: consumptions } = await supabase
+      .from('planned_consumptions')
+      .select('planned_production_id')
+      .eq('slot_id', slotId)
+      .eq('user_id', userId)
+      .limit(10)
+
+    if (!consumptions || consumptions.length === 0) return null
+    const prodIds = consumptions
+      .map(c => c.planned_production_id)
+      .filter(Boolean)
+    if (prodIds.length === 0) return null
+
+    const { data: productions } = await supabase
+      .from('planned_productions')
+      .select('materialized_cooked_dish_id')
+      .in('id', prodIds)
+      .eq('status', 'materialized')
+      .eq('user_id', userId)
+      .limit(5)
+
+    if (!productions || productions.length === 0) return null
+    const found = productions.find(p => p.materialized_cooked_dish_id != null)
+    return found?.materialized_cooked_dish_id ?? null
+  } catch {
+    return null
+  }
+}
+
 const entryPortions = (e) => {
   const p = Number(e?.portions_eaten)
   return Number.isFinite(p) && p > 0 ? p : 1
@@ -183,9 +225,19 @@ export async function POST(request) {
   const { slotId, cooked_dish_id: slotDishId } = await resolveActiveSlot(
     supabase, user.id, meal_date, meal_type,
   )
+
+  // P2 — Si le slot n'a pas de cooked_dish_id direct (slotDishId null) et
+  // qu'aucun eaten_dish_id n'est fourni, chercher via planned_consumptions une
+  // production matérialisée (planned_productions.materialized_cooked_dish_id).
+  // Fail-soft : null si la table n'existe pas encore ou si aucune production trouvée.
+  let prodDishId = null
+  if (!eaten_dish_id && !slotDishId && slotId) {
+    prodDishId = await resolveProductionDish(supabase, user.id, slotId)
+  }
+
   // effectiveDishId : eaten_dish_id explicite en priorité, puis cooked_dish_id
-  // du slot publié. Utilisé pour les gardes DLC, le décrément, et les restes.
-  const effectiveDishId = eaten_dish_id ?? slotDishId
+  // du slot publié (P1), puis cooked_dish_id via production matérialisée (P2).
+  const effectiveDishId = eaten_dish_id ?? slotDishId ?? prodDishId
 
   // Plat consommé : reste existant (eaten_dish_id ou cooked_dish_id du slot)
   // ou plat batch (batch_recipe_id).
@@ -276,6 +328,27 @@ export async function POST(request) {
         .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' })
       return NextResponse.json(
         { error: `« ${dish.name} » est périmé depuis le ${expiredOn} : ce reste ne peut plus être consommé. Retirez-le du stock.` },
+        { status: 409 },
+      )
+    }
+    consumedDish = dish
+  } else if (prodDishId) {
+    // P2 — Le créneau consomme une production matérialisée via planned_consumptions.
+    // Mêmes gardes DLC que P1.
+    const { data: dish, error: dishErr } = await supabase
+      .from('cooked_dishes')
+      .select('id, name, portions_cooked, portions_remaining, expiration_date, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion')
+      .eq('id', prodDishId)
+      .eq('user_id', user.id)
+      .maybeSingle()
+    if (dishErr || !dish) {
+      return NextResponse.json({ error: 'Plat de production introuvable' }, { status: 404 })
+    }
+    if (dish.expiration_date && String(dish.expiration_date).slice(0, 10) < todayUtc) {
+      const expiredOn = new Date(`${String(dish.expiration_date).slice(0, 10)}T00:00:00Z`)
+        .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' })
+      return NextResponse.json(
+        { error: `« ${dish.name} » (production planifiée) est périmé depuis le ${expiredOn} : ce plat ne peut plus être consommé.` },
         { status: 409 },
       )
     }

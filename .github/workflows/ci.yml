@@ -441,11 +441,11 @@ jobs:
         run: |
           output=$(bash scripts/db/apply-migrations.sh status)
           echo "$output"
-          # Douze migrations postérieures au snapshot de production simulé.
+          # Treize migrations postérieures au snapshot de production simulé.
           count=$(echo "$output" | grep -c '^apply ' || true)
           echo "Migrations à appliquer : $count"
-          [ "$count" -eq 12 ]
-          # Et ce sont bien les 12 nouvelles.
+          [ "$count" -eq 13 ]
+          # Et ce sont bien les 13 nouvelles.
           echo "$output" | grep '^apply ' | grep -q '20260715090001'
           echo "$output" | grep '^apply ' | grep -q '20260715090002'
           echo "$output" | grep '^apply ' | grep -q '20260715090003'
@@ -458,16 +458,17 @@ jobs:
           echo "$output" | grep '^apply ' | grep -q '20260716152121'
           echo "$output" | grep '^apply ' | grep -q '20260716162509'
           echo "$output" | grep '^apply ' | grep -q '20260717000001'
+          echo "$output" | grep '^apply ' | grep -q '20260717000002'
 
-      - name: "[B] Apply réel (12 migrations post-snapshot)"
+      - name: "[B] Apply réel (13 migrations post-snapshot)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           output=$(bash scripts/db/apply-migrations.sh apply)
           echo "$output"
-          echo "$output" | grep -E '^migrations : 12 appliquées'
+          echo "$output" | grep -E '^migrations : 13 appliquées'
 
-      - name: "[B] Assertions objets — 12 nouvelles migrations installées"
+      - name: "[B] Assertions objets — 13 nouvelles migrations installées"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
@@ -521,6 +522,23 @@ jobs:
             PERFORM 1 FROM pg_indexes
               WHERE schemaname='public' AND indexname='idx_inventory_reservations_dish_active';
             IF NOT FOUND THEN RAISE EXCEPTION 'manque index idx_inventory_reservations_dish_active (20260717000001)'; END IF;
+
+            -- 20260717000002 : productions et consommations planifiées (P2).
+            PERFORM 1 FROM information_schema.tables
+              WHERE table_schema='public' AND table_name='planned_productions';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque public.planned_productions (20260717000002)'; END IF;
+
+            PERFORM 1 FROM information_schema.tables
+              WHERE table_schema='public' AND table_name='planned_consumptions';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque public.planned_consumptions (20260717000002)'; END IF;
+
+            PERFORM 1 FROM pg_indexes
+              WHERE schemaname='public' AND indexname='idx_planned_productions_version_status';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque index idx_planned_productions_version_status (20260717000002)'; END IF;
+
+            PERFORM 1 FROM information_schema.check_constraints
+              WHERE constraint_schema='public' AND constraint_name='planned_consumptions_one_source';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque CHECK planned_consumptions_one_source (20260717000002)'; END IF;
 
             -- 090003 : catalog.is_in_active_release
             PERFORM 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace

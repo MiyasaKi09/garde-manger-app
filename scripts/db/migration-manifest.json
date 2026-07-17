@@ -1087,5 +1087,51 @@
         "name": "publish_canonical_closed_loop_plan"
       }
     ]
+  },
+  {
+    "file": "20260717000002_p2_planned_productions.sql",
+    "github_version": "20260717000002",
+    "name": "p2_planned_productions",
+    "sha256": "13d353e9945c9625e672b4e30ab3982f60dc67c63806faa8c5c1146b7c51405f",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "planned_productions"
+      },
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "planned_consumptions"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "name": "idx_planned_productions_version_status"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "name": "idx_planned_consumptions_slot"
+      },
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "publish_closed_loop_plan"
+      }
+    ]
+  },
+  {
+    "file": "20260717000002_p2_planned_productions_rollback.sql",
+    "github_version": "20260717000002",
+    "name": "p2_planned_productions_rollback",
+    "sha256": "876c2509e8824c7d8b450f3e83387e79a521fca9d92e60041d912d8bc7de2b1b",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]
