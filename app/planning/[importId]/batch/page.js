@@ -20,6 +20,7 @@ const frDate = (iso) => {
   return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })
 }
 const cleanName = (name) => (name || 'Préparation').split('\n')[0].replace(/^B\d+\s*[—–-]\s*/, '').trim()
+const frNum = (value) => String(Math.round((Number(value) || 0) * 100) / 100).replace('.', ',')
 
 // Ingrédients d'une préparation : ingredients_json ([{name, quantity, unit}])
 // en priorité, repli sur le texte ·-séparé legacy. Retourne un texte multi-ligne.
@@ -52,6 +53,9 @@ export default function BatchPage() {
   const [cookedMap, setCookedMap] = useState({}) // batch_recipe_id -> cooked_dish (en stock)
   const [cookingId, setCookingId] = useState(null) // gardé pour compatibilité (spinner undo etc.)
   const [cookSheet, setCookSheet] = useState(null) // meal passé à CookSession en mode batchCook
+  // Plan canonique (Lot P3 volet B) : productions planifiées + dépendances de
+  // tâches de la version active — lues directement (lecture seule, RLS).
+  const [canonical, setCanonical] = useState({ productions: [], dependencies: [] })
 
   useEffect(() => {
     async function load() {
@@ -64,6 +68,28 @@ export default function BatchPage() {
       const m = {}
       for (const t of (d.prepTasks || [])) m[t.id] = !!t.done
       setDoneMap(m)
+      // Sessions dérivées du plan canonique (audit §13) : productions
+      // planifiées et dépendances (réchauffer ← préparer) de la version
+      // active. Lecture seule côté client (RLS user_id) — les mutations
+      // restent dans les API routes.
+      const closedLoopTasks = (d.prepTasks || []).filter(t => t.source === 'closed_loop' && t.plan_version_id)
+      if (closedLoopTasks.length) {
+        const versionIds = [...new Set(closedLoopTasks.map(t => t.plan_version_id))]
+        const [{ data: productions, error: prodErr }, { data: dependencies, error: depErr }] = await Promise.all([
+          supabase
+            .from('planned_productions')
+            .select('id, plan_version_id, source_task_id, production_key, output_name, planned_portions, storage_method, available_from, use_by, status')
+            .in('plan_version_id', versionIds)
+            .neq('status', 'cancelled'),
+          supabase
+            .from('prep_task_dependencies')
+            .select('id, plan_version_id, task_id, depends_on_task_id')
+            .in('plan_version_id', versionIds),
+        ])
+        if (!prodErr && !depErr) {
+          setCanonical({ productions: productions || [], dependencies: dependencies || [] })
+        }
+      }
       // Plats déjà cuisinés (en stock) pour les préparations de cet import.
       // Un expiré et un frais recuit peuvent partager le même batch_recipe_id
       // (P0-3) : on affiche le frais le plus récent, sinon l'expiré le plus
@@ -141,12 +167,57 @@ export default function BatchPage() {
   const sessions = useMemo(() => {
     if (!data) return []
     const meals = data.meals || []
-    // Les tâches canoniques versionnées (source='closed_loop') coexistent
-    // désormais avec celles du générateur batch (source='batch') sur le même
-    // import (audit F09) : la check-list du jour de cuisine ne montre que les
-    // tâches batch/legacy, pas les « Préparer X » du plan canonique.
-    const prepTasks = (data.prepTasks || []).filter(t => t.source !== 'closed_loop')
+    const allTasks = data.prepTasks || []
+    // Tâches batch/legacy (générateur) d'un côté, tâches canoniques
+    // versionnées (source='closed_loop', audit F09) de l'autre : quand un
+    // plan canonique existe, la check-list du jour de cuisine devient ses
+    // tâches « Préparer X » (leur validation matérialise la production, P2).
+    const prepTasks = allTasks.filter(t => t.source !== 'closed_loop')
+    const closedLoop = allTasks.filter(t => t.source === 'closed_loop')
+    const prepareTasks = closedLoop.filter(t => t.task_type === 'prepare_recipe')
     const recipes = data.batchRecipes || []
+
+    // Index canoniques : production par tâche source, tâches dépendantes
+    // (réchauffer ← préparer) par tâche parente.
+    const taskById = new Map(closedLoop.map(t => [String(t.id), t]))
+    const productionByTask = new Map()
+    for (const p of canonical.productions) {
+      if (p.source_task_id != null) productionByTask.set(String(p.source_task_id), p)
+    }
+    const dependentsByTask = new Map()
+    for (const dep of canonical.dependencies) {
+      const parentKey = String(dep.depends_on_task_id)
+      const child = taskById.get(String(dep.task_id))
+      if (!child) continue
+      if (!dependentsByTask.has(parentKey)) dependentsByTask.set(parentKey, [])
+      dependentsByTask.get(parentKey).push(child)
+    }
+
+    // Résumé canonique d'un jour de session (audit §13 : « Dimanche · 75 min
+    // actives · 3 préparations · 10 portions · couvre 6 repas »).
+    const canonicalInfoFor = (date) => {
+      const dayPrepares = prepareTasks.filter(t => t.prep_date === date)
+      if (!dayPrepares.length) return null
+      let minutes = 0
+      let portions = 0
+      const followUps = []
+      for (const t of dayPrepares) {
+        minutes += Number(t.duration_min) || 0
+        const production = productionByTask.get(String(t.id)) || null
+        if (production) portions += Number(production.planned_portions) || 0
+        for (const child of (dependentsByTask.get(String(t.id)) || [])) {
+          followUps.push({ task: child, production })
+        }
+      }
+      followUps.sort((a, b) => (a.task.prep_date || '').localeCompare(b.task.prep_date || ''))
+      return {
+        prepares: dayPrepares,
+        minutes,
+        portions,
+        covers: dayPrepares.length + followUps.length,
+        followUps,
+      }
+    }
 
     // jours couverts par chaque préparation (repas → batch_recipe_id)
     const coverByBatch = new Map()
@@ -157,25 +228,42 @@ export default function BatchPage() {
     }
     const daysOf = (r) => [...(coverByBatch.get(r.id) || [])].sort().map(dayShort)
 
-    const mkSession = (date, label, sRecipes, sTasks) => ({
-      date, label,
-      recipes: sRecipes,
-      tasks: sTasks,
-      daysOf,
-      portions: sRecipes.reduce((s, r) => s + (Number(r.portions_total) || 0), 0),
-      minutes: sTasks.reduce((s, t) => {
-        const m = (t.estimated_time || '').match(/(\d+)\s*min/i)
-        return s + (m ? parseInt(m[1], 10) : 0)
-      }, 0),
-    })
+    const mkSession = (date, label, sRecipes, sTasks) => {
+      const canon = date ? canonicalInfoFor(date) : null
+      // Check-list : les tâches du générateur si présentes, sinon les tâches
+      // canoniques « Préparer » du jour (même endpoint PATCH, même persistance).
+      const tasks = sTasks.length ? sTasks : (canon ? canon.prepares : [])
+      return {
+        date, label,
+        recipes: sRecipes,
+        tasks,
+        daysOf,
+        canonical: canon,
+        portions: canon ? canon.portions : sRecipes.reduce((s, r) => s + (Number(r.portions_total) || 0), 0),
+        minutes: canon ? canon.minutes : sTasks.reduce((s, t) => {
+          const m = (t.estimated_time || '').match(/(\d+)\s*min/i)
+          return s + (m ? parseInt(m[1], 10) : 0)
+        }, 0),
+      }
+    }
 
     if (recipes.some(r => r.cook_date)) {
-      const keys = [...new Set(recipes.map(r => r.cook_date).filter(Boolean))].sort()
+      const keys = [...new Set([
+        ...recipes.map(r => r.cook_date).filter(Boolean),
+        ...prepareTasks.map(t => t.prep_date).filter(Boolean),
+      ])].sort()
       return keys.map(date => mkSession(
         date, null,
         recipes.filter(r => r.cook_date === date),
         prepTasks.filter(t => t.prep_date === date),
       ))
+    }
+
+    // Plan canonique publié mais dérivation batch pas encore lancée : les
+    // sessions viennent des tâches « Préparer X » groupées par jour (§13).
+    if (prepareTasks.length) {
+      const keys = [...new Set(prepareTasks.map(t => t.prep_date).filter(Boolean))].sort()
+      return keys.map(date => mkSession(date, null, [], []))
     }
 
     // ── Legacy : pas de cook_date → on groupe les tâches par prep_date, recettes en référence. ──
@@ -193,7 +281,7 @@ export default function BatchPage() {
       else arr.push(mkSession(null, 'Préparations', recipes, []))
     }
     return arr
-  }, [data])
+  }, [data, canonical])
 
   function cookDateLabel(date, label) {
     if (label) return label
@@ -233,7 +321,7 @@ export default function BatchPage() {
         {!hasAnything && (
           <section className="v21-section flush">
             <div className="v21-empty">
-              <p>Pas encore de préparations. Depuis le planning, lance <b>« Planifier le batch »</b> : Myko regroupe tes déjeuners en lots à cuisiner d'avance.</p>
+              <p>Pas encore de préparations. Depuis le planning, lance <b>« Organiser les préparations »</b> : Myko dérive les lots à cuisiner d'avance depuis le plan de la semaine.</p>
               <button className="v21-btn" onClick={() => router.push('/planning')}>← Retour au planning</button>
             </div>
           </section>
@@ -247,15 +335,41 @@ export default function BatchPage() {
 
           return (
             <section key={si} className="bat-sess">
-              {/* En-tête de session */}
+              {/* En-tête de session — format §13 quand le plan canonique existe */}
               <div className="bat-sess-h">
                 <div className="bat-sess-date">{cookDateLabel(sess.date, sess.label)}</div>
                 <div className="bat-sess-meta">
-                  {sess.recipes.length > 0 && <span>{sess.recipes.length} plat{sess.recipes.length > 1 ? 's' : ''}</span>}
-                  {sess.portions > 0 && <span>{sess.portions} portions</span>}
-                  {sess.minutes > 0 && <span>≈ {sess.minutes} min</span>}
+                  {sess.canonical ? (
+                    <>
+                      {sess.canonical.minutes > 0 && <span>{sess.canonical.minutes} min actives</span>}
+                      <span>{sess.canonical.prepares.length} préparation{sess.canonical.prepares.length > 1 ? 's' : ''}</span>
+                      {sess.canonical.portions > 0 && <span>{frNum(sess.canonical.portions)} portions</span>}
+                      <span>couvre {sess.canonical.covers} repas</span>
+                    </>
+                  ) : (
+                    <>
+                      {sess.recipes.length > 0 && <span>{sess.recipes.length} plat{sess.recipes.length > 1 ? 's' : ''}</span>}
+                      {sess.portions > 0 && <span>{frNum(sess.portions)} portions</span>}
+                      {sess.minutes > 0 && <span>≈ {sess.minutes} min</span>}
+                    </>
+                  )}
                 </div>
               </div>
+
+              {/* Dépendances du plan canonique : réchauffer ← préparer (F10/§13) */}
+              {sess.canonical && sess.canonical.followUps.length > 0 && (
+                <div className="bat-deps">
+                  {sess.canonical.followUps.map(({ task, production }) => (
+                    <div key={task.id} className="bat-dep">
+                      <span className="bat-dep-when">{dayShort(task.prep_date)} {frDate(task.prep_date)}</span>
+                      <span className="bat-dep-t">{task.task}</span>
+                      <span className="bat-dep-arrow">
+                        ← préparé ce jour{production?.storage_method === 'freezer' ? ' · congelé, décongeler la veille' : ''}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* Avancement de la check-list */}
               {total > 0 && (
