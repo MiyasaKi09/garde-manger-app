@@ -14,8 +14,16 @@ export default function CookedDishCard({ dish, onConsume, onChangeStorage, onDel
     return date.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
   };
 
+  // DLC comparée en UTC (piège #4) : expiré = date strictement antérieure à
+  // aujourd'hui ; DLC absente (legacy) = non expiré. Badge « Expiré » et bouton
+  // « Manger » partagent cette unique logique — la même que la garde serveur
+  // de consumePortions (audit F02 / test H).
+  const isExpired = Boolean(dish.expiration_date)
+    && String(dish.expiration_date).slice(0, 10) < new Date().toISOString().slice(0, 10);
+
   const getUrgencyClass = () => {
-    if (dish.days_until_expiration <= 0) return 'expired';
+    if (isExpired) return 'expired';
+    if (!dish.expiration_date) return 'good';
     if (dish.days_until_expiration <= 1) return 'urgent';
     if (dish.days_until_expiration <= 3) return 'warning';
     return 'good';
@@ -40,7 +48,7 @@ export default function CookedDishCard({ dish, onConsume, onChangeStorage, onDel
   };
 
   const handleConsume = async (e) => {
-    if (!onConsume || consuming) return;
+    if (!onConsume || consuming || isExpired) return;
     e.stopPropagation();
     
     setConsuming(true);
@@ -97,9 +105,11 @@ export default function CookedDishCard({ dish, onConsume, onChangeStorage, onDel
           )}
         </div>
         <div className={`urgency-badge ${getUrgencyClass()}`}>
-          {dish.days_until_expiration <= 0 
-            ? 'Expiré' 
-            : `${dish.days_until_expiration}j`}
+          {isExpired
+            ? 'Expiré'
+            : !dish.expiration_date
+              ? '—'
+              : `${Math.max(dish.days_until_expiration, 0)}j`}
         </div>
       </div>
 
@@ -151,16 +161,17 @@ export default function CookedDishCard({ dish, onConsume, onChangeStorage, onDel
         />
       </div>
 
-      {/* Actions */}
+      {/* Actions — un plat périmé n'est plus mangeable, seul le retrait
+          (bouton Supprimer) reste possible. */}
       {showActions && (
         <div className="dish-actions">
-          <button 
+          <button
             className="action-btn consume"
             onClick={handleConsume}
-            disabled={consuming || dish.portions_remaining === 0}
-            title="Manger 1 portion"
+            disabled={consuming || dish.portions_remaining === 0 || isExpired}
+            title={isExpired ? 'Plat périmé — à retirer du stock' : 'Manger 1 portion'}
           >
-            {consuming ? '⏳' : '🍴'} {consuming ? 'Manger...' : 'Manger'}
+            {consuming ? '⏳' : '🍴'} {consuming ? 'Manger...' : isExpired ? 'Périmé' : 'Manger'}
           </button>
 
           <button 
@@ -177,12 +188,12 @@ export default function CookedDishCard({ dish, onConsume, onChangeStorage, onDel
                 : 'Congeler'}
           </button>
 
-          <button 
+          <button
             className="action-btn delete"
             onClick={handleDelete}
-            title="Supprimer ce plat"
+            title={isExpired ? 'Retirer ce plat périmé du stock' : 'Supprimer ce plat'}
           >
-            🗑️ Supprimer
+            🗑️ {isExpired ? 'Retirer' : 'Supprimer'}
           </button>
         </div>
       )}

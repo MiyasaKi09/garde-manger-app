@@ -61,7 +61,10 @@ export default function PlanningPage() {
   const [imports, setImports] = useState([])
   const [weekOffset, setWeekOffset] = useState(0)
   const [weekData, setWeekData] = useState(null)
-  const [weekLoading, setWeekLoading] = useState(false)
+  // Cycle de chargement de la semaine : la readiness n'est évaluée QUE sur des
+  // données réellement chargées ('ready') — jamais sur un échec ou un reste de
+  // l'import précédent (minor P0 : « Semaine incomplète — 0/N » fantôme).
+  const [weekStatus, setWeekStatus] = useState('idle') // 'idle' | 'loading' | 'ready' | 'error'
   const [reloadKey, setReloadKey] = useState(0)
   const [horizonStatus, setHorizonStatus] = useState('idle')
   const [batchStatus, setBatchStatus] = useState('idle')
@@ -163,24 +166,31 @@ export default function PlanningPage() {
   }, [imports, importsLoaded, refreshImports, user])
 
   useEffect(() => {
-    if (!selectedImportId) { setWeekData(null); setWeekLoading(false); return }
+    // Reset systématique au changement d'import : les repas de la semaine
+    // précédente ne doivent jamais être évalués comme ceux de l'import courant.
+    setWeekData(null)
+    if (!selectedImportId) { setWeekStatus('idle'); return }
     let cancelled = false
-    setWeekLoading(true)
+    setWeekStatus('loading')
     ;(async () => {
       try {
         const response = await authFetch(`/api/planning/imports/${selectedImportId}`)
         const data = await response.json().catch(() => ({}))
         if (!response.ok) throw new Error(data.error || 'Semaine indisponible')
-        if (!cancelled) setWeekData({
-          meals: data.meals || [],
-          batchRecipes: data.batchRecipes || [],
-          prepTasks: data.prepTasks || [],
-          shoppingItems: data.shoppingItems || [],
-        })
+        if (!cancelled) {
+          setWeekData({
+            meals: data.meals || [],
+            batchRecipes: data.batchRecipes || [],
+            prepTasks: data.prepTasks || [],
+            shoppingItems: data.shoppingItems || [],
+          })
+          setWeekStatus('ready')
+        }
       } catch (error) {
-        if (!cancelled) toast.error(error.message)
-      } finally {
-        if (!cancelled) setWeekLoading(false)
+        if (!cancelled) {
+          setWeekStatus('error')
+          toast.error(error.message)
+        }
       }
     })()
     return () => { cancelled = true }
@@ -301,7 +311,10 @@ export default function PlanningPage() {
   const nextWeekStart = addDays(localIso(mondayForOffset(0)), 7)
   const nextWeekReady = imports.some((item) => item.file_name === 'myko-canonical-v3' && item.date_range_start === nextWeekStart)
   const loading = authLoading || !importsLoaded
-  const weekAssessed = !loading && !weekLoading && goalsStatus !== 'loading'
+  const weekLoading = weekStatus === 'loading'
+  // Un import sélectionné n'est « évalué » que si sa semaine est réellement
+  // chargée ; sans import ('idle'), l'absence de données EST l'évaluation.
+  const weekAssessed = !loading && goalsStatus !== 'loading' && (selectedImportId ? weekStatus === 'ready' : true)
 
   return (
     <main className="planning-shell">
@@ -361,6 +374,22 @@ export default function PlanningPage() {
         </section>
       )}
 
+      {/* Échec de CHARGEMENT de la semaine : message d'erreur explicite — jamais
+          la bannière « Semaine incomplète » ni son bouton « Recalculer » (qui
+          remplacerait des repas peut-être présents mais illisibles). */}
+      {!loading && selectedImportId && weekStatus === 'error' && (
+        <section className="planning-incomplete" role="alert">
+          <AlertTriangle size={16} />
+          <div className="planning-incomplete-text">
+            <b>Semaine impossible à charger</b>
+            <p>Les repas de cette semaine n’ont pas pu être lus. Rien n’a été modifié — réessaie dans un instant.</p>
+          </div>
+          <button className="planning-repair" onClick={() => setReloadKey((value) => value + 1)}>
+            <RefreshCw size={14} /> Réessayer
+          </button>
+        </section>
+      )}
+
       <section className="planning-summary" aria-label="Résumé de la semaine">
         <div><CalendarDays size={18} /><span><b>{rangeLabel}</b><small>Semaine affichée</small></span></div>
         <div className={weekAssessed && !readiness.ready ? 'planning-summary-warn' : undefined}>
@@ -381,9 +410,16 @@ export default function PlanningPage() {
       ) : (
         <div className="planning-workspace">
           <section className="planning-main">
-            {selectedImportId && !weekLoading && <WeeklyNutritionRecap meals={meals} goals={nutritionGoals} />}
+            {selectedImportId && weekStatus === 'ready' && <WeeklyNutritionRecap meals={meals} goals={nutritionGoals} />}
             {weekLoading ? (
               <div className="planning-loading" aria-busy="true"><RefreshCw className="planning-spin" /> Chargement de la semaine…</div>
+            ) : selectedImportId && weekStatus === 'error' ? (
+              <div className="planning-empty">
+                <AlertTriangle size={30} />
+                <h2>La semaine n’a pas pu être chargée.</h2>
+                <p>Les repas existent peut-être déjà : rien n’a été modifié.</p>
+                <button className="planning-primary" onClick={() => setReloadKey((value) => value + 1)}>Réessayer</button>
+              </div>
             ) : selectedImportId ? (
               <WeekGrid
                 meals={meals}

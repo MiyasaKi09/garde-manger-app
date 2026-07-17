@@ -117,10 +117,12 @@ async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = n
   const archetypeById = new Map((archetypeResult.data || []).map((row) => [row.id, row]))
   // Les formes des petits-déjeuners/collations rejoignent les formes exactes
   // des recettes : leurs lots (skyr, œufs, fruits…) entrent ainsi dans la
-  // boucle d'allocation au lieu d'être rachetés systématiquement.
+  // boucle d'allocation au lieu d'être rachetés systématiquement. Les aliases
+  // couvrent le vocabulaire réel des lots ('œuf', 'Thon en conserve'…) qui ne
+  // porte pas les libellés d'affichage des suppléments.
   const exactForms = new Set([
     ...recipes.flatMap((recipe) => recipe.exactIngredients.map((ingredient) => ingredient.formNormalized)),
-    ...SUPPLEMENT_FORMS.map((form) => form.formNormalized),
+    ...SUPPLEMENT_FORMS.flatMap((form) => [form.formNormalized, ...(form.aliases || [])]),
   ])
   const today = new Date().toISOString().slice(0, 10)
   const plannerLots = []

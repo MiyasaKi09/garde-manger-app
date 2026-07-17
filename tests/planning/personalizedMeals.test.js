@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { SUPPLEMENT_FORMS, buildPersonalizedMeals, optimizeDailyPortions } from '@/lib/domain/planning/personalizedMeals'
+import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 
 const recipe = (code, family, nutrition, category = 'legumes') => ({
   code, family, eligible: true, servings: 2, prepMinutes: 20, cookMinutes: 25, cuisineOrigin: 'France',
@@ -142,5 +143,38 @@ describe('personalized deterministic meals', () => {
     expect(byLabel.get('pêche').formNormalized).toBe('peche')
     expect(byLabel.has('blanc de poulet rôti')).toBe(false)
     expect(SUPPLEMENT_FORMS.every((form) => Number(form.gramsPerUnit) > 0)).toBe(true)
+  })
+
+  // MAJOR 2 : les aliases couvrent le vocabulaire réel des lots (canonical_foods /
+  // archetypes des exports) — égalité exacte, jamais de fuzzy.
+  it('expose des aliases normalisés du vocabulaire réel, sans collision entre entrées', () => {
+    const byLabel = new Map(SUPPLEMENT_FORMS.map((form) => [form.label, form]))
+    expect(byLabel.get('œufs durs').aliases).toEqual(['oeuf']) // canonique « œuf »
+    expect(byLabel.get('thon au naturel égoutté').aliases).toEqual(
+      expect.arrayContaining(['thon', 'thon en conserve']), // canonique + archétype
+    )
+    expect(byLabel.get('flocons d’avoine').aliases).toEqual(
+      expect.arrayContaining(['flocon d avoine', 'avoine']), // archétype + canonique
+    )
+    expect(byLabel.get('amandes').aliases).toEqual(['amande']) // canonique (singulier)
+    expect(byLabel.get('pain complet').aliases).toEqual(['pain']) // archétype « pain »
+    expect(byLabel.get('jambon blanc').aliases).toEqual(['jambon']) // archétype
+    expect(byLabel.get('skyr nature').aliases).toEqual([]) // déjà le nom exact de l'archétype
+
+    for (const form of SUPPLEMENT_FORMS) {
+      expect(Array.isArray(form.aliases)).toBe(true)
+      for (const alias of form.aliases) {
+        // Chaque alias est déjà une forme normalisée (comparable telle quelle).
+        expect(normalizeFoodForm(alias)).toBe(alias)
+        // Jamais redondant avec la forme principale de sa propre entrée.
+        expect(alias).not.toBe(form.formNormalized)
+        // Aucune collision : un alias ne capte jamais la forme principale
+        // d'une AUTRE entrée ('pain' ≠ 'pain d épices' par égalité exacte).
+        for (const other of SUPPLEMENT_FORMS) {
+          if (other === form) continue
+          expect(alias).not.toBe(other.formNormalized)
+        }
+      }
+    }
   })
 })

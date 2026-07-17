@@ -115,15 +115,45 @@ describe('POST /api/meals/cook — plats cuisinés périmés', () => {
     expect(byId.ex.portions_remaining).toBe(2)
   })
 
-  it('FEFO batch_recipe_id : tous les plats périmés → aucun décompte, repas quand même validé', async () => {
+  it('batch_recipe_id : tous les plats périmés (portions restantes) → 409 explicite, aucune écriture', async () => {
     setup([
-      { id: 'ex1', user_id: 'u1', batch_recipe_id: 99, portions_cooked: 2, portions_remaining: 2, expiration_date: '2000-01-01' },
+      { id: 'ex1', user_id: 'u1', name: 'Chili périmé', batch_recipe_id: 99, portions_cooked: 2, portions_remaining: 2, expiration_date: '2000-01-01' },
+    ])
+
+    const response = await POST(request({ ...baseBody, batch_recipe_id: 99 }))
+    expect(response.status).toBe(409)
+    const body = await response.json()
+    expect(body.error).toContain('Chili périmé')
+    expect(body.error).toContain('périmé')
+
+    // Même esprit que eaten_dish_id : refus AVANT toute écriture — pas de log
+    // silencieux sans décrément, pas de déduction de stock, plat intouché.
+    expect(mock.rows('cooked_dishes')[0].portions_remaining).toBe(2)
+    expect(mock.rows('meal_log')).toHaveLength(0)
+    expect(deductFromStock).not.toHaveBeenCalled()
+  })
+
+  it('batch_recipe_id : plats périmés SANS portions restantes → comportement inchangé (200, aucun décompte)', async () => {
+    setup([
+      { id: 'ex1', user_id: 'u1', name: 'Chili fini', batch_recipe_id: 99, portions_cooked: 2, portions_remaining: 0, expiration_date: '2000-01-01' },
     ])
 
     const response = await POST(request({ ...baseBody, batch_recipe_id: 99 }))
     expect(response.status).toBe(200)
     const body = await response.json()
+    expect(body.success).toBe(true)
     expect(body.batchConsumed).toBe(0)
-    expect(mock.rows('cooked_dishes')[0].portions_remaining).toBe(2)
+    expect(mock.rows('meal_log')).toHaveLength(1)
+  })
+
+  it('batch_recipe_id : aucun plat du tout → comportement inchangé (200, repas loggé)', async () => {
+    setup([])
+
+    const response = await POST(request({ ...baseBody, batch_recipe_id: 99 }))
+    expect(response.status).toBe(200)
+    const body = await response.json()
+    expect(body.success).toBe(true)
+    expect(body.batchConsumed).toBe(0)
+    expect(mock.rows('meal_log')).toHaveLength(1)
   })
 })

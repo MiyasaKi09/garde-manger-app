@@ -6,14 +6,10 @@ import { authFetch } from '@/lib/authFetch'
 import { useRouter, useParams } from 'next/navigation'
 import { ArrowLeft, ChevronDown, ChevronUp, Check, Refrigerator, AlertTriangle } from 'lucide-react'
 import CookSession from '@/app/planning/components/CookSession'
+import { isDishExpired, pickDisplayedCookedDish } from '@/lib/domain/planning/cookedDishDisplay'
 import './BatchPage.css'
 
 const DOW = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
-// DLC comparée en UTC (piège #4 : pas de décalage selon le fuseau de l'utilisateur).
-// Une DLC absente (plats legacy) n'est PAS considérée comme périmée.
-const todayUtcIso = () => new Date().toISOString().slice(0, 10)
-const isDishExpired = (expirationDate) =>
-  Boolean(expirationDate) && String(expirationDate).slice(0, 10) < todayUtcIso()
 const dayShort = (iso) => {
   const d = new Date(`${iso}T00:00:00`)
   return Number.isNaN(d.getTime()) ? iso : DOW[d.getDay()]
@@ -69,15 +65,28 @@ export default function BatchPage() {
       for (const t of (d.prepTasks || [])) m[t.id] = !!t.done
       setDoneMap(m)
       // Plats déjà cuisinés (en stock) pour les préparations de cet import.
+      // Un expiré et un frais recuit peuvent partager le même batch_recipe_id
+      // (P0-3) : on affiche le frais le plus récent, sinon l'expiré le plus
+      // récent (état « Périmé — à retirer »).
       const ids = (d.batchRecipes || []).map(r => r.id)
       if (ids.length) {
-        const { data: cooked } = await supabase
+        const { data: cooked, error: cookedErr } = await supabase
           .from('cooked_dishes')
-          .select('id, batch_recipe_id, portions_remaining, portions_cooked, expiration_date, storage_method')
+          .select('id, batch_recipe_id, portions_remaining, portions_cooked, expiration_date, storage_method, cooked_at')
           .in('batch_recipe_id', ids)
-        const cm = {}
-        for (const c of (cooked || [])) cm[c.batch_recipe_id] = c
-        setCookedMap(cm)
+        if (!cookedErr) {
+          const byBatch = new Map()
+          for (const c of (cooked || [])) {
+            if (!byBatch.has(c.batch_recipe_id)) byBatch.set(c.batch_recipe_id, [])
+            byBatch.get(c.batch_recipe_id).push(c)
+          }
+          const cm = {}
+          for (const [batchId, dishes] of byBatch) {
+            const displayed = pickDisplayedCookedDish(dishes)
+            if (displayed) cm[batchId] = displayed
+          }
+          setCookedMap(cm)
+        }
       }
       setLoading(false)
     }
@@ -101,11 +110,14 @@ export default function BatchPage() {
   }
 
   async function uncookPrep(recipe) {
+    // On retire UNIQUEMENT le plat affiché (id exact) : « retirer » un expiré
+    // ne doit jamais détruire un plat frais recuit du même batch_recipe_id.
+    const displayed = cookedMap[recipe.id]
     setCookedMap(prev => { const n = { ...prev }; delete n[recipe.id]; return n })
     try {
       await authFetch('/api/planning/batch/cook', {
         method: 'DELETE', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ batchRecipeId: recipe.id }),
+        body: JSON.stringify({ batchRecipeId: recipe.id, cookedDishId: displayed?.id ?? null }),
       })
     } catch { /* l'UI a déjà retiré l'état */ }
   }

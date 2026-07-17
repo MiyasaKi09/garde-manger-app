@@ -21,8 +21,12 @@ export const dynamic = 'force-dynamic'
  * Idempotent : si un plat actif existe déjà pour cette préparation, on le renvoie
  * sans re-déduire le stock.
  *
- * DELETE /api/planning/batch/cook  { batchRecipeId } — annule (retire du stock ;
- * ne restaure PAS les ingrédients déduits, comme la cuisson d'un repas).
+ * DELETE /api/planning/batch/cook  { batchRecipeId, cookedDishId? } — annule
+ * (retire du stock ; ne restaure PAS les ingrédients déduits, comme la cuisson
+ * d'un repas). Avec `cookedDishId`, seul CE plat est supprimé : un expiré et un
+ * frais recuit peuvent partager le même batch_recipe_id (P0-3), retirer l'un ne
+ * doit pas détruire l'autre. Sans id (compat), tous les plats du batch sont
+ * supprimés — l'UI transmet toujours l'id du plat affiché.
  */
 const addDaysISO = (n) => {
   const d = new Date()
@@ -119,12 +123,16 @@ export async function DELETE(request) {
   try { body = await request.json() } catch { /* body optionnel */ }
   const batchRecipeId = body?.batchRecipeId
   if (!batchRecipeId) return NextResponse.json({ error: 'batchRecipeId requis' }, { status: 400 })
+  const cookedDishId = body?.cookedDishId ?? body?.cooked_dish_id ?? null
 
-  const { error } = await supabase
+  let query = supabase
     .from('cooked_dishes')
     .delete()
     .eq('user_id', user.id)
     .eq('batch_recipe_id', batchRecipeId)
+  // Id explicite → suppression ciblée de CE plat uniquement (voir JSDoc).
+  if (cookedDishId != null) query = query.eq('id', cookedDishId)
+  const { error } = await query
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
   return NextResponse.json({ success: true })
 }

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso, normalizePlanIssues } from '@/lib/domain/planning/canonicalPlanPayload'
-import { generateClosedLoopPlan } from '@/lib/domain/planning/closedLoopPlanner'
+import { buildCanonicalPlanPayload, buildWeekSlots, collectSupplementLots, nextMondayIso, normalizePlanIssues } from '@/lib/domain/planning/canonicalPlanPayload'
+import { allocateFromLots, buildAvailability, generateClosedLoopPlan } from '@/lib/domain/planning/closedLoopPlanner'
 import { getCanonicalRecipes } from '@/lib/domain/recipes/canonicalCatalog'
 
 const recipe = {
@@ -214,6 +214,65 @@ describe('canonical plan publication payload', () => {
 
     // Deux exécutions identiques produisent exactement le même payload.
     expect(JSON.parse(JSON.stringify(build()))).toEqual(JSON.parse(JSON.stringify(payload)))
+  })
+
+  // MAJOR 2 : les lots de production portent les noms canoniques/archétypes
+  // ('œuf', 'Thon en conserve', 'amande', 'avoine'…), pas les libellés
+  // d'affichage des suppléments — les aliases doivent suffire à les matcher.
+  it('matches production lot vocabulary (canonique/archétype) through supplement aliases', () => {
+    const plan = {
+      status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
+      slots: [
+        { key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
+        { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
+      ],
+    }
+    const payload = buildCanonicalPlanPayload({
+      plan, recipes: [recipe], windowStart: '2026-07-20',
+      members: [{ name: 'Julien', portion_multiplier: 1 }], constraints: {},
+      inventoryLots: [
+        // Noms réels du vocabulaire d'export (normalisés par loadPlannerInventory).
+        { id: 'lot-oeuf', formNormalized: 'oeuf', gramsAvailable: 600, expiresOn: '2026-07-24', opened: false },
+        { id: 'lot-thon', formNormalized: 'thon en conserve', gramsAvailable: 300, expiresOn: '2027-01-01', opened: false },
+        { id: 'lot-amande', formNormalized: 'amande', gramsAvailable: 200, expiresOn: '2026-12-01', opened: false },
+        { id: 'lot-avoine', formNormalized: 'avoine', gramsAvailable: 25, expiresOn: '2026-11-01', opened: false },
+      ],
+    })
+
+    // Couvert intégralement par le stock → plus jamais aux courses.
+    expect(payload.shopping_items.find((item) => item.product_name === 'Œufs durs')).toBeUndefined()
+    expect(payload.shopping_items.find((item) => item.product_name === 'Thon au naturel égoutté')).toBeUndefined()
+    expect(payload.shopping_items.find((item) => item.product_name === 'Amandes')).toBeUndefined()
+
+    // Couverture partielle : le lot 'avoine' (25 g) réduit l'achat, le manque part aux courses.
+    const oats = payload.shopping_items.find((item) => item.product_name === 'Flocons d’avoine')
+    expect(oats).toMatchObject({ stock_qty: 25, reserved_qty: 25 })
+    expect(oats.purchase_qty).toBe(oats.required_qty - 25)
+
+    // Sans lot d'aucune forme acceptée, l'article part intégralement aux courses.
+    const skyr = payload.shopping_items.find((item) => item.product_name === 'Skyr nature')
+    expect(skyr).toMatchObject({ stock_qty: 0, purchase_qty: 200 })
+  })
+
+  it('never serves the same lot twice when two entries accept the same alias, and keeps FEFO across forms', () => {
+    // Disponibilité partagée : le lot 'oeuf' (120 g) est accepté par deux
+    // « entrées » hypothétiques via le même alias — la première servie
+    // consomme la disponibilité résiduelle de la seconde.
+    const shared = buildAvailability([{ id: 'lot-oeuf', formNormalized: 'oeuf', gramsAvailable: 120 }], [])
+    const first = allocateFromLots(collectSupplementLots(shared, ['oeufs durs', 'oeuf']), 60)
+    expect(first.allocatedGrams).toBe(60)
+    const second = allocateFromLots(collectSupplementLots(shared, ['oeuf mollet', 'oeuf']), 120)
+    expect(second.allocatedGrams).toBe(60)
+    expect(second.shortageGrams).toBe(60)
+
+    // L'union de plusieurs formes est re-triée : ouvert d'abord, puis FEFO,
+    // même quand le plus urgent vient d'une forme alias.
+    const availability = buildAvailability([
+      { id: 'lot-forme', formNormalized: 'oeufs durs', gramsAvailable: 60, expiresOn: '2026-07-25', opened: false },
+      { id: 'lot-alias', formNormalized: 'oeuf', gramsAvailable: 60, expiresOn: '2026-07-21', opened: false },
+    ], [])
+    const lots = collectSupplementLots(availability, ['oeufs durs', 'oeuf'])
+    expect(lots.map((lot) => lot.id)).toEqual(['lot-alias', 'lot-forme'])
   })
 
   it('subtracts recipe reservations and other active plans before allocating supplements', () => {

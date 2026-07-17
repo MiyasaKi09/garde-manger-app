@@ -137,7 +137,9 @@ export async function POST(request) {
   // Plat consommé : reste existant (eaten_dish_id) ou plat batch (batch_recipe_id).
   // DLC comparées en UTC (piège #4) ; une DLC absente (plats legacy) n'est PAS
   // considérée comme périmée. Aucune mutation automatique d'un plat périmé ici :
-  // il reste en stock, signalé ailleurs (audit F02 / test H).
+  // il reste en stock, signalé ailleurs (audit F02 / test H). Si le batch ne
+  // possède QUE des plats périmés à portions restantes → 409 (jamais de log
+  // silencieux sans décrément).
   const todayUtc = new Date().toISOString().slice(0, 10)
   let consumedDish = null
   if (eaten_dish_id) {
@@ -174,7 +176,35 @@ export async function POST(request) {
     if (dishErr) {
       return NextResponse.json({ error: `Lecture du plat batch : ${dishErr.message}` }, { status: 500 })
     }
-    if (dish) consumedDish = dish
+    if (dish) {
+      consumedDish = dish
+    } else {
+      // Aucun plat VALIDE, mais des plats PÉRIMÉS à portions restantes existent
+      // pour cette recette → 409 explicite (même esprit que eaten_dish_id),
+      // AVANT toute écriture : on ne logue pas silencieusement un repas sans
+      // décrément. S'il n'existe aucun plat du tout, comportement inchangé.
+      const { data: expiredDish, error: expiredErr } = await supabase
+        .from('cooked_dishes')
+        .select('id, name, expiration_date')
+        .eq('user_id', user.id)
+        .eq('batch_recipe_id', batch_recipe_id)
+        .gt('portions_remaining', 0)
+        .lt('expiration_date', todayUtc)
+        .order('expiration_date', { ascending: false })
+        .limit(1)
+        .maybeSingle()
+      if (expiredErr) {
+        return NextResponse.json({ error: `Lecture du plat batch : ${expiredErr.message}` }, { status: 500 })
+      }
+      if (expiredDish) {
+        const expiredOn = new Date(`${String(expiredDish.expiration_date).slice(0, 10)}T00:00:00Z`)
+          .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' })
+        return NextResponse.json(
+          { error: `« ${expiredDish.name || 'Ce plat batch'} » est périmé depuis le ${expiredOn} : ce plat ne peut plus être consommé. Retirez-le du stock ou recuisinez la préparation.` },
+          { status: 409 },
+        )
+      }
+    }
   }
 
   // 1. Déduction du stock EN PREMIER : besoins automatiques (FEFO multi-lots)
