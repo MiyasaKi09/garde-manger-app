@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { generateClosedLoopPlan, isMealSuitableRecipe, sensoryTransitionPenalty } from '@/lib/domain/planning/closedLoopPlanner'
+import { allocateFromLots, buildAvailability, generateClosedLoopPlan, isMealSuitableRecipe, sensoryTransitionPenalty } from '@/lib/domain/planning/closedLoopPlanner'
 
 const makeRecipe = (code, profile, form = 'carotte crue', overrides = {}) => ({
   code,
@@ -98,5 +98,55 @@ describe('closedLoopPlanner', () => {
     expect(isMealSuitableRecipe(makeRecipe('DESS-001', 'sweet_spiced', 'farine', { category: 'dessert' }))).toBe(false)
     expect(isMealSuitableRecipe(makeRecipe('FR-024', 'creamy_delicate', 'lait', { category: 'sauce de base' }))).toBe(false)
     expect(isMealSuitableRecipe(makeRecipe('FR-033', 'fresh_acidic', 'lentilles', { category: 'salade complète' }))).toBe(true)
+  })
+})
+
+describe('allocateFromLots', () => {
+  const lotsFor = (form, availability) => availability.get(form) || []
+
+  it('prélève les lots ouverts d’abord puis en ordre FEFO', () => {
+    const availability = buildAvailability([
+      { id: 'ferme-tardif', formNormalized: 'skyr nature', gramsAvailable: 100, expiresOn: '2026-07-28' },
+      { id: 'ferme-proche', formNormalized: 'skyr nature', gramsAvailable: 100, expiresOn: '2026-07-22' },
+      { id: 'ouvert', formNormalized: 'skyr nature', gramsAvailable: 80, expiresOn: '2026-07-25', opened: true },
+    ])
+    const { allocations, allocatedGrams, shortageGrams } = allocateFromLots(lotsFor('skyr nature', availability), 150)
+    expect(allocations.map((entry) => [entry.lotId, entry.grams])).toEqual([['ouvert', 80], ['ferme-proche', 70]])
+    expect(allocatedGrams).toBe(150)
+    expect(shortageGrams).toBe(0)
+  })
+
+  it('retourne une allocation partielle avec le manque exact', () => {
+    const availability = buildAvailability([
+      { id: 'lot-1', formNormalized: 'oeufs durs', gramsAvailable: 60, expiresOn: '2026-07-24' },
+    ])
+    const lots = lotsFor('oeufs durs', availability)
+    const { allocations, allocatedGrams, shortageGrams } = allocateFromLots(lots, 120)
+    expect(allocations).toEqual([{ lotId: 'lot-1', grams: 60, expiresOn: '2026-07-24', opened: false }])
+    expect(allocatedGrams).toBe(60)
+    expect(shortageGrams).toBe(60)
+    // Le lot est épuisé mais jamais sur-réservé.
+    expect(lots[0].grams).toBe(0)
+  })
+
+  it('départage les péremptions identiques par identifiant croissant, de façon déterministe', () => {
+    const build = () => buildAvailability([
+      { id: 'lot-b', formNormalized: 'pomme', gramsAvailable: 150, expiresOn: '2026-07-24' },
+      { id: 'lot-a', formNormalized: 'pomme', gramsAvailable: 150, expiresOn: '2026-07-24' },
+    ])
+    const first = allocateFromLots(lotsFor('pomme', build()), 150)
+    const second = allocateFromLots(lotsFor('pomme', build()), 150)
+    expect(first.allocations.map((entry) => entry.lotId)).toEqual(['lot-a'])
+    expect(first).toEqual(second)
+  })
+
+  it('déduit les réservations actives existantes avant toute allocation', () => {
+    const availability = buildAvailability(
+      [{ id: 'lot-1', formNormalized: 'skyr nature', gramsAvailable: 200, expiresOn: '2026-07-23' }],
+      [{ lotId: 'lot-1', grams: 150, status: 'active' }],
+    )
+    const { allocatedGrams, shortageGrams } = allocateFromLots(lotsFor('skyr nature', availability), 200)
+    expect(allocatedGrams).toBe(50)
+    expect(shortageGrams).toBe(150)
   })
 })

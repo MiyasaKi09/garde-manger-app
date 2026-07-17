@@ -6,6 +6,7 @@ import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan, isMealSuitableRecipe } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
+import { SUPPLEMENT_FORMS } from '@/lib/domain/planning/personalizedMeals'
 
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
@@ -114,7 +115,13 @@ async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = n
   ])
   const canonicalById = new Map((canonicalResult.data || []).map((row) => [row.id, row]))
   const archetypeById = new Map((archetypeResult.data || []).map((row) => [row.id, row]))
-  const exactForms = new Set(recipes.flatMap((recipe) => recipe.exactIngredients.map((ingredient) => ingredient.formNormalized)))
+  // Les formes des petits-déjeuners/collations rejoignent les formes exactes
+  // des recettes : leurs lots (skyr, œufs, fruits…) entrent ainsi dans la
+  // boucle d'allocation au lieu d'être rachetés systématiquement.
+  const exactForms = new Set([
+    ...recipes.flatMap((recipe) => recipe.exactIngredients.map((ingredient) => ingredient.formNormalized)),
+    ...SUPPLEMENT_FORMS.map((form) => form.formNormalized),
+  ])
   const today = new Date().toISOString().slice(0, 10)
   const plannerLots = []
   const lotMeta = new Map()
@@ -215,6 +222,7 @@ export async function POST(request) {
 
     const payload = buildCanonicalPlanPayload({
       plan, recipes, members, goals: goalsResult.data || [], windowStart, constraints, inventoryLots: plannerLots,
+      existingReservations,
       corpusVersion: operationalCatalog.metadata.corpusVersion,
     })
     if (existing.planImport) payload.import_id = existing.planImport.id
