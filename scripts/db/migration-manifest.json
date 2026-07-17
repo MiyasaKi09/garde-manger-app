@@ -1055,5 +1055,37 @@
         "table": "nutrition_plan_meals"
       }
     ]
+  },
+  {
+    "file": "20260717000001_p1_cooked_dish_reservations.sql",
+    "github_version": "20260717000001",
+    "name": "p1_cooked_dish_reservations",
+    "sha256": "15ec8df034b7ce0fdc5e79c1ba2907dd2207e5ffbd43e20718167493e383ae23",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "column",
+        "schema": "public",
+        "name": "cooked_dish_id",
+        "table": "inventory_reservations"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "name": "idx_inventory_reservations_dish_active"
+      },
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "publish_closed_loop_plan"
+      },
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "publish_canonical_closed_loop_plan"
+      }
+    ]
   }
 ]

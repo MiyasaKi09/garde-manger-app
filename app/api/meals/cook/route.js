@@ -23,6 +23,48 @@ const slotMarker = (mealDate, mealType) => `[slot:${mealDate}|${mealType}]`
 const slotMarkerLike = (mealDate, mealType) =>
   `%${slotMarker(mealDate, mealType).replace(/[%_]/g, '\\$&')}%`
 
+/**
+ * Résout le créneau de plan actuellement publié pour un repas donné.
+ * Fait deux requêtes légères : meal_plan_slots → meal_plan_versions (filtre
+ * published). Retourne { slotId, cooked_dish_id } ou nulls si introuvable.
+ * Fail-soft : toute erreur retourne des nulls (le reste de la route continue).
+ *
+ * Utilisé par POST (flip active→consumed) et DELETE (flip consumed→active).
+ */
+async function resolveActiveSlot(supabase, userId, mealDate, mealType) {
+  try {
+    const { data: slots } = await supabase
+      .from('meal_plan_slots')
+      .select('id, cooked_dish_id, plan_version_id')
+      .eq('user_id', userId)
+      .eq('meal_date', mealDate)
+      .eq('meal_type', mealType)
+      .limit(10)
+
+    if (!slots || slots.length === 0) return { slotId: null, cooked_dish_id: null }
+
+    const versionIds = slots.map(s => s.plan_version_id).filter(Boolean)
+    if (versionIds.length === 0) return { slotId: null, cooked_dish_id: null }
+
+    const { data: versions } = await supabase
+      .from('meal_plan_versions')
+      .select('id')
+      .in('id', versionIds)
+      .eq('status', 'published')
+      .limit(1)
+
+    if (!versions || versions.length === 0) return { slotId: null, cooked_dish_id: null }
+
+    const publishedVersionId = versions[0].id
+    const slot = slots.find(s => String(s.plan_version_id) === String(publishedVersionId))
+    if (!slot) return { slotId: null, cooked_dish_id: null }
+
+    return { slotId: slot.id, cooked_dish_id: slot.cooked_dish_id ?? null }
+  } catch {
+    return { slotId: null, cooked_dish_id: null }
+  }
+}
+
 const entryPortions = (e) => {
   const p = Number(e?.portions_eaten)
   return Number.isFinite(p) && p > 0 ? p : 1
@@ -134,7 +176,19 @@ export async function POST(request) {
     .limit(1)
   const alreadyLogged = (priorLog?.length || 0) > 0
 
-  // Plat consommé : reste existant (eaten_dish_id) ou plat batch (batch_recipe_id).
+  // Résolution du créneau de plan publié pour ce repas (P1 — fail-soft).
+  // Permet de déduire cooked_dish_id depuis le slot quand eaten_dish_id n'est
+  // pas fourni explicitement, et de retrouver le slot_id pour flipper la
+  // réservation active→consumed après la consommation.
+  const { slotId, cooked_dish_id: slotDishId } = await resolveActiveSlot(
+    supabase, user.id, meal_date, meal_type,
+  )
+  // effectiveDishId : eaten_dish_id explicite en priorité, puis cooked_dish_id
+  // du slot publié. Utilisé pour les gardes DLC, le décrément, et les restes.
+  const effectiveDishId = eaten_dish_id ?? slotDishId
+
+  // Plat consommé : reste existant (eaten_dish_id ou cooked_dish_id du slot)
+  // ou plat batch (batch_recipe_id).
   // DLC comparées en UTC (piège #4) ; une DLC absente (plats legacy) n'est PAS
   // considérée comme périmée. Aucune mutation automatique d'un plat périmé ici :
   // il reste en stock, signalé ailleurs (audit F02 / test H). Si le batch ne
@@ -205,6 +259,27 @@ export async function POST(request) {
         )
       }
     }
+  } else if (slotDishId) {
+    // P1 — Le créneau de plan publié pointe vers un plat cuisiné existant.
+    // Mêmes gardes DLC que pour eaten_dish_id : 409 si périmé, 404 si introuvable.
+    const { data: dish, error: dishErr } = await supabase
+      .from('cooked_dishes')
+      .select('id, name, portions_cooked, portions_remaining, expiration_date, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion')
+      .eq('id', slotDishId)
+      .eq('user_id', user.id)
+      .maybeSingle()
+    if (dishErr || !dish) {
+      return NextResponse.json({ error: 'Reste introuvable' }, { status: 404 })
+    }
+    if (dish.expiration_date && String(dish.expiration_date).slice(0, 10) < todayUtc) {
+      const expiredOn = new Date(`${String(dish.expiration_date).slice(0, 10)}T00:00:00Z`)
+        .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' })
+      return NextResponse.json(
+        { error: `« ${dish.name} » est périmé depuis le ${expiredOn} : ce reste ne peut plus être consommé. Retirez-le du stock.` },
+        { status: 409 },
+      )
+    }
+    consumedDish = dish
   }
 
   // 1. Déduction du stock EN PREMIER : besoins automatiques (FEFO multi-lots)
@@ -295,10 +370,11 @@ export async function POST(request) {
   const logRows = validEntries.map(e => {
     const p = entryPortions(e)
     // Fallback nutrition : si l'entry n'a pas de valeur et qu'on mange un reste
-    // qui connaît sa nutrition par portion, on calcule total = per_portion × portions.
+    // (eaten_dish_id explicite ou issu du slot — effectiveDishId) qui connaît
+    // sa nutrition par portion, on calcule total = per_portion × portions.
     const val = (field) => {
       if (e[field] != null) return e[field]
-      const per = eaten_dish_id ? consumedDish?.[`${field}_per_portion`] : null
+      const per = effectiveDishId ? consumedDish?.[`${field}_per_portion`] : null
       return per != null ? round1(Number(per) * p) : null
     }
     return {
@@ -343,6 +419,21 @@ export async function POST(request) {
     if (!cdErr) dishConsumed = (consumedDish.portions_remaining || 0) - newRemaining
   }
 
+  // 3b. Flip de réservation active → consumed (P1, fail-soft).
+  //     Exécuté uniquement lors de la PREMIÈRE validation du créneau
+  //     (alreadyLogged guard — même logique que le décrément en step 3).
+  //     Une erreur ici ne bloque pas la cuisson : la réservation reste orpheline
+  //     jusqu'à la prochaine réconciliation ou annulation.
+  if (consumedDish && !alreadyLogged && slotId) {
+    await supabase
+      .from('inventory_reservations')
+      .update({ status: 'consumed', consumed_at: new Date().toISOString() })
+      .eq('slot_id', slotId)
+      .eq('cooked_dish_id', consumedDish.id)
+      .eq('status', 'active')
+      .eq('user_id', user.id)
+  }
+
   // 4. Restes — idempotence : on purge TOUJOURS le reste lié à ce créneau
   //    (revalidation avec moins de portions préparées → pas de reste fantôme).
   //    Exception : si le plat mangé est lui-même le reste créé jadis par ce
@@ -352,12 +443,12 @@ export async function POST(request) {
     .delete()
     .eq('user_id', user.id)
     .like('notes', slotMarkerLike(meal_date, meal_type))
-  if (eaten_dish_id) purge = purge.neq('id', eaten_dish_id)
+  if (effectiveDishId) purge = purge.neq('id', effectiveDishId)
   await purge
 
   let leftover = null
   const prepared = Number(portions_prepared)
-  if (!eaten_dish_id && Number.isFinite(prepared) && prepared > portionsEaten) {
+  if (!effectiveDishId && Number.isFinite(prepared) && prepared > portionsEaten) {
     const surplus = prepared - portionsEaten
 
     // Nutrition PAR PORTION : moyenne pondérée. e.kcal étant le TOTAL mangé par
@@ -524,6 +615,25 @@ export async function DELETE(request) {
   let restoredPortions = 0
   for (const [dishId, portions] of byDish) {
     restoredPortions += await restoreDish(dishId, portions)
+  }
+
+  // Flip réservations consumed → active (chemin de re-crédit symétrique — P1).
+  // On résout le slot APRÈS la suppression des logs (meal_plan_slots non affectés).
+  // Fail-soft : pas d'erreur remontée si le slot est absent ou si aucune
+  // réservation consumed ne correspond (rétrocompat pré-P1 assurée).
+  if (byDish.size > 0) {
+    const { slotId: cancelSlotId } = await resolveActiveSlot(supabase, user.id, meal_date, meal_type)
+    if (cancelSlotId) {
+      for (const dishId of byDish.keys()) {
+        await supabase
+          .from('inventory_reservations')
+          .update({ status: 'active', consumed_at: null })
+          .eq('slot_id', cancelSlotId)
+          .eq('cooked_dish_id', dishId)
+          .eq('status', 'consumed')
+          .eq('user_id', user.id)
+      }
+    }
   }
 
   // Fallback logs historiques (sans cooked_dish_id) : restauration via batch_recipe_id.

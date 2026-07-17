@@ -430,17 +430,22 @@ jobs:
           DATABASE_URL: ${{ env.DB_B }}
         run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/legacy_planning_fixture.sql
 
+      - name: "[B] Stubs tables planning P1 (cooked_dishes, inventory_reservations, meal_plan_slots/versions)"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/planning_p1_ci_stubs.sql
+
       - name: "[B] Dry-run apply (migrations post-snapshot uniquement)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           output=$(bash scripts/db/apply-migrations.sh status)
           echo "$output"
-          # Onze migrations postérieures au snapshot de production simulé.
+          # Douze migrations postérieures au snapshot de production simulé.
           count=$(echo "$output" | grep -c '^apply ' || true)
           echo "Migrations à appliquer : $count"
-          [ "$count" -eq 11 ]
-          # Et ce sont bien les 11 nouvelles.
+          [ "$count" -eq 12 ]
+          # Et ce sont bien les 12 nouvelles.
           echo "$output" | grep '^apply ' | grep -q '20260715090001'
           echo "$output" | grep '^apply ' | grep -q '20260715090002'
           echo "$output" | grep '^apply ' | grep -q '20260715090003'
@@ -452,16 +457,17 @@ jobs:
           echo "$output" | grep '^apply ' | grep -q '20260716111718'
           echo "$output" | grep '^apply ' | grep -q '20260716152121'
           echo "$output" | grep '^apply ' | grep -q '20260716162509'
+          echo "$output" | grep '^apply ' | grep -q '20260717000001'
 
-      - name: "[B] Apply réel (11 migrations post-snapshot)"
+      - name: "[B] Apply réel (12 migrations post-snapshot)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           output=$(bash scripts/db/apply-migrations.sh apply)
           echo "$output"
-          echo "$output" | grep -E '^migrations : 11 appliquées'
+          echo "$output" | grep -E '^migrations : 12 appliquées'
 
-      - name: "[B] Assertions objets — 11 nouvelles migrations installées"
+      - name: "[B] Assertions objets — 12 nouvelles migrations installées"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
@@ -505,6 +511,16 @@ jobs:
                 AND column_name IN ('canonical_recipe_code','canonical_recipe_execution_id','target_snapshot')
               HAVING count(*) = 3;
             IF NOT FOUND THEN RAISE EXCEPTION 'manque affectations repas personnalisées (20260716162509)'; END IF;
+
+            -- 20260717000001 : réservation de portions de plat cuisiné.
+            PERFORM 1 FROM information_schema.columns
+              WHERE table_schema='public' AND table_name='inventory_reservations'
+                AND column_name='cooked_dish_id' AND data_type='bigint';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque inventory_reservations.cooked_dish_id (20260717000001)'; END IF;
+
+            PERFORM 1 FROM pg_indexes
+              WHERE schemaname='public' AND indexname='idx_inventory_reservations_dish_active';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque index idx_inventory_reservations_dish_active (20260717000001)'; END IF;
 
             -- 090003 : catalog.is_in_active_release
             PERFORM 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
