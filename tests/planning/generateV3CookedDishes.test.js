@@ -163,10 +163,49 @@ describe('POST /api/planning/generate-v3 — plats cuisinés dans la boucle', ()
     }))
     expect(response.status).toBe(200)
     // Le plat reste un intrant (snapshoté), mais ne nourrit RIEN : aucun
-    // créneau lié, aucune réservation de portions, aucune tâche de réchauffage.
+    // créneau lié, aucune réservation de portions, aucune consommation de
+    // plat. Depuis le lot P2, des tâches de réchauffage peuvent exister pour
+    // les productions PLANIFIÉES — elles ne référencent jamais ce plat.
     expect(payload.slots.every((slot) => slot.cooked_dish_id === undefined)).toBe(true)
-    expect(payload.reservations).toEqual([])
-    expect(payload.tasks.every((task) => task.task_type === 'prepare_recipe')).toBe(true)
+    expect(payload.reservations.every((row) => row.cooked_dish_id === undefined)).toBe(true)
+    expect((payload.consumptions || []).every((row) => row.source.cooked_dish_id === undefined)).toBe(true)
+    const reheatTasks = payload.tasks.filter((task) => task.task_type === 'reheat_dish')
+    const productionConsumerKeys = new Set(payload.slots.filter((slot) => slot.source === 'planned_production').map((slot) => slot.slot_key))
+    expect(reheatTasks.every((task) => productionConsumerKeys.has(task.slot_key))).toBe(true)
+  })
+
+  it('P2 : le payload étendu passe tel quel au RPC — productions, consommations et dépendances de la même version', async () => {
+    const { response, payload } = await generate(seedMock())
+    expect(response.status).toBe(200)
+    // Le catalogue de test (prep 15 min > réchauffage 10 min) déclenche la
+    // mutualisation sur les créneaux que le reste ne couvre pas : le payload
+    // porte les trois volets du contrat P2 dans la même publication (test E).
+    expect(payload.productions.length).toBeGreaterThan(0)
+    expect(payload.productions.length).toBeLessThanOrEqual(2)
+    const taskKeys = new Set(payload.tasks.map((task) => task.task_key))
+    for (const production of payload.productions) {
+      expect(taskKeys.has(production.task_key)).toBe(true)
+      expect(production.storage_method).toBe('refrigerator')
+      expect(production.use_by >= production.available_from).toBe(true)
+    }
+    // Test L : chaque dépendance relie deux tâches présentes dans la même version.
+    expect(payload.dependencies.length).toBeGreaterThan(0)
+    for (const dependency of payload.dependencies) {
+      expect(taskKeys.has(dependency.task_key)).toBe(true)
+      expect(taskKeys.has(dependency.depends_on_task_key)).toBe(true)
+    }
+    // Chaque consommation référence exactement UNE source (audit §8).
+    for (const row of payload.consumptions) {
+      expect(Object.keys(row.source)).toHaveLength(1)
+    }
+    // Les consommations d'une production totalisent ses planned_portions
+    // (producteur + consommateurs, dimensionnés depuis les planned_servings).
+    for (const production of payload.productions) {
+      const total = payload.consumptions
+        .filter((row) => row.source.production_key === production.production_key)
+        .reduce((sum, row) => sum + row.portions, 0)
+      expect(total).toBeCloseTo(production.planned_portions, 6)
+    }
   })
 
   it('exclut un plat expiré (UTC) même s’il garde des portions restantes', async () => {
