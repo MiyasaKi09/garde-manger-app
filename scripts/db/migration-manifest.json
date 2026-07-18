@@ -1080,17 +1080,33 @@
     "file": "20260717000002_p2_planned_productions.sql",
     "github_version": "20260717000002",
     "name": "p2_planned_productions",
-    "sha256": "2064cb9d730974a6c4eb1391a45cb69ef69e8410b057bf2207fda24e19590627",
+    "sha256": "f8c12519fcc63540092e16f2d9dee66c5ba9387dfe3aba40909254253762b67a",
     "role": "apply",
     "baseline": "new",
     "historical_version": null,
-    "expected_objects": []
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "planned_productions"
+      },
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "planned_consumptions"
+      },
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "set_planned_task_done"
+      }
+    ]
   },
   {
     "file": "20260717000002_p2_planned_productions_rollback.sql",
     "github_version": "20260717000002",
     "name": "p2_planned_productions_rollback",
-    "sha256": "876c2509e8824c7d8b450f3e83387e79a521fca9d92e60041d912d8bc7de2b1b",
+    "sha256": "25d2cf4488178f56e0f9c5b1538bdee9620df3c9ff7a1863c6e240f758572d1d",
     "role": "rollback",
     "baseline": null,
     "historical_version": null,
