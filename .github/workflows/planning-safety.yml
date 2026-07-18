@@ -62,5 +62,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add scripts/db/migration-manifest.json
-          git commit -m "chore(db): regenerate migration manifest [skip ci]"
+          git commit -m "chore(db): regenerate migration manifest"
           git push origin "HEAD:${{ github.ref_name }}"
