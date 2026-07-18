@@ -559,9 +559,12 @@ BEGIN
     RAISE EXCEPTION 'authentication_required';
   END IF;
 
+  -- Verdict directeur : ne pas réintroduire la limite de 31 recipe_executions —
+  -- la personnalisation (20260716162509) l'avait portée à 64 (deux personnes,
+  -- petits-déjeuners et collations). On conserve la valeur 64.
   IF jsonb_typeof(p_payload) <> 'object'
      OR jsonb_array_length(COALESCE(p_payload->'slots', '[]'::jsonb)) NOT BETWEEN 1 AND 31
-     OR jsonb_array_length(COALESCE(p_payload->'recipe_executions', '[]'::jsonb)) NOT BETWEEN 1 AND 31
+     OR jsonb_array_length(COALESCE(p_payload->'recipe_executions', '[]'::jsonb)) NOT BETWEEN 1 AND 64
      OR jsonb_array_length(COALESCE(p_payload->'legacy_meals', '[]'::jsonb)) > 300 THEN
     RAISE EXCEPTION 'invalid_plan_payload';
   END IF;

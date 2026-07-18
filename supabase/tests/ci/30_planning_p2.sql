@@ -153,5 +153,31 @@ BEGIN
     RAISE EXCEPTION '[P2] fonction publish_closed_loop_plan absente';
   END IF;
 
+  -- ── Intégrité SQL durcie (verdict directeur) ─────────────────────────────
+  -- source_task_id NOT NULL (jamais de production orpheline)
+  PERFORM 1 FROM information_schema.columns
+    WHERE table_name = 'planned_productions' AND column_name = 'source_task_id'
+      AND is_nullable = 'NO';
+  IF NOT FOUND THEN
+    RAISE EXCEPTION '[P2] planned_productions.source_task_id devrait être NOT NULL';
+  END IF;
+
+  -- Contrainte de mesure strictement positive sur les consommations
+  PERFORM 1 FROM pg_constraint
+    WHERE conname = 'planned_consumptions_positive_measure';
+  IF NOT FOUND THEN
+    RAISE EXCEPTION '[P2] contrainte planned_consumptions_positive_measure manquante';
+  END IF;
+
+  -- FK source des consommations en RESTRICT (confdeltype='r'), jamais SET NULL
+  PERFORM 1 FROM pg_constraint
+    WHERE conrelid = 'public.planned_consumptions'::regclass
+      AND contype = 'f'
+      AND confrelid = 'public.planned_productions'::regclass
+      AND confdeltype = 'r';
+  IF NOT FOUND THEN
+    RAISE EXCEPTION '[P2] FK planned_consumptions→planned_productions devrait être ON DELETE RESTRICT';
+  END IF;
+
   RAISE NOTICE '[P2] toutes les assertions passent.';
 END $$;

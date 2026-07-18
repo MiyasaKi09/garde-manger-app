@@ -77,6 +77,8 @@ const NEW_VERSIONS = new Set([
   '20260715090002', // v2_publish_release_exclusive
   '20260715090003', // v2_catalog_active_release_rls
   '20260715090004', // v2_off_label_completeness
+  '20260717000001', // p1_cooked_dish_reservations (planning boucle fermée)
+  '20260717000002', // p2_planned_productions (productions/consommations)
   '20260715190000', // v3_operational_recipe_api
   '20260715214547', // complete_recipe_catalog_v3
   '20260715221042', // repair_recipe_corpus_v3_utf8

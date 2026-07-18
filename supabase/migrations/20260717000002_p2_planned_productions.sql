@@ -30,8 +30,12 @@ CREATE TABLE IF NOT EXISTS public.planned_productions (
   plan_version_id             uuid        NOT NULL
                               REFERENCES public.meal_plan_versions(id) ON DELETE CASCADE,
   -- Tâche de cuisson source (nullable : peut être absente en mode hors-tâche)
-  source_task_id              bigint
-                              REFERENCES public.nutrition_plan_prep_tasks(id) ON DELETE SET NULL,
+  -- Verdict directeur : NOT NULL — une production naît TOUJOURS d'une tâche de
+  -- cuisson (source_task_id) ; un task_key inconnu doit être rejeté par la RPC,
+  -- jamais transformé en production orpheline. ON DELETE RESTRICT : on ne supprime
+  -- pas une tâche dont dépend une production planifiée (la version cascade d'abord).
+  source_task_id              bigint      NOT NULL
+                              REFERENCES public.nutrition_plan_prep_tasks(id) ON DELETE RESTRICT,
   production_key              text        NOT NULL,
   recipe_code                 text        NOT NULL DEFAULT '',
   output_kind                 text        NOT NULL DEFAULT 'dish',
@@ -87,13 +91,17 @@ CREATE TABLE IF NOT EXISTS public.planned_consumptions (
                         REFERENCES public.meal_plan_versions(id) ON DELETE CASCADE,
   slot_id               uuid        NOT NULL
                         REFERENCES public.meal_plan_slots(id) ON DELETE CASCADE,
-  -- Source : exactement UNE colonne non nulle (contrainte CHECK ci-dessous)
+  -- Source : exactement UNE colonne non nulle (contrainte CHECK ci-dessous).
+  -- ON DELETE RESTRICT (verdict directeur) : une source encore consommée par un
+  -- plan ne peut être supprimée seule — la contrainte one_source interdisait déjà
+  -- silencieusement le SET NULL, RESTRICT rend le refus explicite. La suppression
+  -- de la version parente cascade d'abord la consommation (plan_version_id CASCADE).
   planned_production_id uuid
-                        REFERENCES public.planned_productions(id) ON DELETE SET NULL,
+                        REFERENCES public.planned_productions(id) ON DELETE RESTRICT,
   cooked_dish_id        bigint
-                        REFERENCES public.cooked_dishes(id) ON DELETE SET NULL,
+                        REFERENCES public.cooked_dishes(id) ON DELETE RESTRICT,
   lot_id                uuid
-                        REFERENCES public.inventory_lots(id) ON DELETE SET NULL,
+                        REFERENCES public.inventory_lots(id) ON DELETE RESTRICT,
   portions              numeric(6,2),
   quantity              numeric(12,3),
   unit                  text,
@@ -104,6 +112,13 @@ CREATE TABLE IF NOT EXISTS public.planned_consumptions (
     (planned_production_id IS NOT NULL)::int
     + (cooked_dish_id IS NOT NULL)::int
     + (lot_id IS NOT NULL)::int = 1
+  ),
+  -- Verdict directeur : une consommation doit porter une mesure strictement
+  -- positive (portions OU quantité), jamais une quantité nulle ou négative.
+  CONSTRAINT planned_consumptions_positive_measure CHECK (
+    (portions IS NULL OR portions > 0)
+    AND (quantity IS NULL OR quantity > 0)
+    AND (portions IS NOT NULL OR quantity IS NOT NULL)
   )
 );
 
@@ -403,6 +418,23 @@ BEGIN
             v_cooked_dish_id;
         END IF;
 
+        -- Verdict directeur : revérifier la DLC au jour du créneau CÔTÉ SQL (ne
+        -- pas faire confiance au payload). Un plat périmé avant le repas ne peut
+        -- être réservé (DLC absente = valide ; comparaison de dates en UTC).
+        IF EXISTS (
+          SELECT 1
+          FROM public.cooked_dishes cd
+          JOIN public.meal_plan_slots s
+            ON s.id = (v_slot_map->>(v_reservation->>'slot_key'))::uuid
+          WHERE cd.id = v_cooked_dish_id
+            AND cd.expiration_date IS NOT NULL
+            AND cd.expiration_date < s.meal_date
+        ) THEN
+          RAISE EXCEPTION
+            'plat_perime_au_creneau : le plat cuisiné % est périmé avant la date du créneau réservé',
+            v_cooked_dish_id;
+        END IF;
+
         SELECT coalesce(sum(reserved_quantity), 0) INTO v_dish_reserved_else
         FROM public.inventory_reservations
         WHERE cooked_dish_id = v_cooked_dish_id
@@ -565,6 +597,16 @@ BEGIN
   FOR v_production IN
     SELECT value FROM jsonb_array_elements(coalesce(p_payload->'productions', '[]'::jsonb))
   LOOP
+    -- Verdict directeur : une production DOIT référencer une tâche de cuisson
+    -- connue de cette version. task_key absent ou inconnu → rejet (jamais une
+    -- production orpheline silencieuse).
+    IF nullif(v_production->>'task_key', '') IS NULL
+       OR nullif(v_task_map->>(v_production->>'task_key'), '') IS NULL THEN
+      RAISE EXCEPTION
+        'production_orpheline : la production « % » référence une tâche de cuisson inconnue (task_key=%)',
+        v_production->>'production_key', coalesce(v_production->>'task_key', '∅');
+    END IF;
+
     INSERT INTO public.planned_productions (
       user_id, plan_version_id, source_task_id, production_key, recipe_code,
       output_kind, output_name, planned_quantity, planned_unit, planned_portions,
@@ -572,11 +614,7 @@ BEGIN
     ) VALUES (
       v_uid,
       v_version_id,
-      -- Résolution optionnelle task_key → task_id (absent = NULL autorisé)
-      CASE WHEN nullif(v_production->>'task_key', '') IS NOT NULL
-        THEN nullif(v_task_map->>(v_production->>'task_key'), '')::bigint
-        ELSE NULL
-      END,
+      (v_task_map->>(v_production->>'task_key'))::bigint,
       v_production->>'production_key',
       coalesce(nullif(v_production->>'recipe_code', ''), ''),
       coalesce(nullif(v_production->>'output_kind', ''), 'dish'),
