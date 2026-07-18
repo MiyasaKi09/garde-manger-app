@@ -1,0 +1,56 @@
+name: Unit diagnostics
+
+on:
+  push:
+    branches:
+      - 'claude/planning-closed-loop-p1'
+    paths:
+      - 'tests/**'
+      - 'app/**'
+      - 'lib/**'
+      - '.github/workflows/unit-diagnostics.yml'
+  pull_request:
+    paths:
+      - 'tests/**'
+      - 'app/**'
+      - 'lib/**'
+      - '.github/workflows/unit-diagnostics.yml'
+
+jobs:
+  failed-tests-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Exécuter Vitest et résumer seulement les échecs
+        shell: bash
+        run: |
+          set +e
+          npx vitest run --reporter=json --outputFile=/tmp/vitest-results.json >/tmp/vitest-console.txt 2>&1
+          status=$?
+          set -e
+          node <<'NODE'
+          const fs = require('node:fs')
+          const file = '/tmp/vitest-results.json'
+          if (!fs.existsSync(file)) {
+            console.error(fs.readFileSync('/tmp/vitest-console.txt', 'utf8').slice(-6000))
+            process.exit(2)
+          }
+          const result = JSON.parse(fs.readFileSync(file, 'utf8'))
+          const failed = (result.testResults || []).filter((suite) => suite.status === 'failed')
+          console.log(`Suites: ${result.numTotalTestSuites} · tests: ${result.numTotalTests} · échecs: ${result.numFailedTests}`)
+          for (const suite of failed) {
+            console.log(`\nFAIL ${suite.name}`)
+            for (const assertion of suite.assertionResults || []) {
+              if (assertion.status !== 'failed') continue
+              console.log(`- ${assertion.fullName || assertion.title}`)
+              const message = (assertion.failureMessages || []).join('\n').replace(/\x1b\[[0-9;]*m/g, '')
+              console.log(message.slice(0, 2500))
+            }
+          }
+          NODE
+          exit "$status"
