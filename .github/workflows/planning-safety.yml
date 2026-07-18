@@ -1,0 +1,34 @@
+name: Planning safety
+
+on:
+  pull_request:
+    paths:
+      - 'app/api/meals/cook/**'
+      - 'lib/server/legacyMealCookRoute.js'
+      - 'tests/planning/mealsCook*.test.js'
+      - '.github/workflows/planning-safety.yml'
+  push:
+    branches:
+      - 'claude/**'
+    paths:
+      - 'app/api/meals/cook/**'
+      - 'lib/server/legacyMealCookRoute.js'
+      - 'tests/planning/mealsCook*.test.js'
+      - '.github/workflows/planning-safety.yml'
+
+jobs:
+  prepared-source-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Vérifier les plats préparés et la double déduction
+        run: >-
+          npx vitest run
+          tests/planning/mealsCookExpiry.test.js
+          tests/planning/mealsCookPreparedSource.test.js
+          --reporter=verbose
