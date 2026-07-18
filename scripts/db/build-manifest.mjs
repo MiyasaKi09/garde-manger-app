@@ -79,6 +79,7 @@ const NEW_VERSIONS = new Set([
   '20260715090004', // v2_off_label_completeness
   '20260717000001', // p1_cooked_dish_reservations (planning boucle fermée)
   '20260717000002', // p2_planned_productions (productions/consommations)
+  '20260719000001', // clôture atomique des tâches et matérialisation physique
   '20260715190000', // v3_operational_recipe_api
   '20260715214547', // complete_recipe_catalog_v3
   '20260715221042', // repair_recipe_corpus_v3_utf8
@@ -127,6 +128,9 @@ const NEW_EXPECTED_OBJECTS = {
     { type: 'column', schema: 'public', name: 'canonical_recipe_code', table: 'nutrition_plan_meals' },
     { type: 'column', schema: 'public', name: 'canonical_recipe_execution_id', table: 'nutrition_plan_meals' },
     { type: 'column', schema: 'public', name: 'target_snapshot', table: 'nutrition_plan_meals' },
+  ],
+  '20260719000001': [
+    { type: 'function', schema: 'public', name: 'set_planned_task_done' },
   ],
 };
 
