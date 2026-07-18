@@ -9,6 +9,7 @@ on:
       - 'supabase/migrations/20260717000002_p2_planned_productions.sql'
       - 'supabase/migrations/includes/**'
       - 'scripts/db/build-manifest.mjs'
+      - 'scripts/db/migration-manifest.json'
       - '.github/workflows/planning-safety.yml'
   push:
     branches:
@@ -20,18 +21,17 @@ on:
       - 'supabase/migrations/20260717000002_p2_planned_productions.sql'
       - 'supabase/migrations/includes/**'
       - 'scripts/db/build-manifest.mjs'
+      - 'scripts/db/migration-manifest.json'
       - '.github/workflows/planning-safety.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   prepared-source-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event_name == 'push' && github.ref_name || github.head_ref }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -43,24 +43,7 @@ jobs:
           tests/planning/mealsCookExpiry.test.js
           tests/planning/mealsCookPreparedSource.test.js
           --reporter=verbose
-      - name: Régénérer le manifeste composite des migrations
-        run: node scripts/db/build-manifest.mjs
-      - name: Vérifier ou publier le manifeste régénéré
-        shell: bash
+      - name: Vérifier le manifeste composite des migrations
         run: |
-          if git diff --quiet -- scripts/db/migration-manifest.json; then
-            echo "Manifest déjà synchronisé."
-            exit 0
-          fi
-
-          if [ "${{ github.event_name }}" != "push" ]; then
-            echo "Le manifeste committé n'est pas synchronisé avec les migrations." >&2
-            git diff -- scripts/db/migration-manifest.json
-            exit 1
-          fi
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add scripts/db/migration-manifest.json
-          git commit -m "chore(db): regenerate migration manifest"
-          git push origin "HEAD:${{ github.ref_name }}"
+          node scripts/db/build-manifest.mjs
+          git diff --exit-code -- scripts/db/migration-manifest.json
