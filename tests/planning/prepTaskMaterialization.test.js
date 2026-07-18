@@ -1,5 +1,4 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { createSupabaseMock } from '../helpers/supabaseMock'
 
 vi.mock('@/lib/apiAuth', () => ({ authenticateRequest: vi.fn() }))
 
@@ -7,137 +6,94 @@ import { PATCH } from '@/app/api/planning/prep-tasks/[taskId]/route'
 import { authenticateRequest } from '@/lib/apiAuth'
 
 const request = (body) => ({ json: async () => body })
-const TASK_ID = '101'
-const PROD_ID = 'prod-uuid-1'
 const USER_ID = 'u1'
-const VERSION_ID = 'ver-1'
+const TASK_ID = '101'
 
-function makeBase() {
-  return {
-    nutrition_plan_prep_tasks: [{
-      id: TASK_ID, user_id: USER_ID, import_id: 1, done: false, done_at: null, workflow_status: 'pending',
-    }],
-    prep_task_dependencies: [],
-    planned_productions: [{
-      id: PROD_ID,
-      user_id: USER_ID,
-      plan_version_id: VERSION_ID,
-      source_task_id: TASK_ID,
-      production_key: 'batch-lentilles-2026-07-17',
-      output_name: 'Dahl de lentilles',
-      planned_portions: 4,
-      storage_method: 'refrigerator',
-      available_from: '2026-07-17',
-      use_by: '2026-07-20',
-      status: 'planned',
-      materialized_cooked_dish_id: null,
-    }],
-    cooked_dishes: [],
-  }
+function setupRpc({ data = null, error = null } = {}) {
+  const rpc = vi.fn(async () => ({ data, error }))
+  authenticateRequest.mockResolvedValue({
+    supabase: { rpc },
+    user: { id: USER_ID },
+    error: null,
+  })
+  return rpc
 }
 
-describe('PATCH /api/planning/prep-tasks/[taskId] — exécution cohérente', () => {
-  let mock
-  const setup = (tables) => {
-    mock = createSupabaseMock(tables)
-    authenticateRequest.mockResolvedValue({ supabase: mock, user: { id: USER_ID }, error: null })
-  }
-
+describe('PATCH /api/planning/prep-tasks/[taskId] — façade de la transaction SQL', () => {
   beforeEach(() => vi.clearAllMocks())
 
-  it('matérialise toutes les productions avant de terminer la tâche', async () => {
-    setup(makeBase())
-    const res = await PATCH(request({ done: true }), { params: { taskId: TASK_ID } })
-    expect(res.status).toBe(200)
-    const body = await res.json()
-    expect(body.task.done).toBe(true)
-    expect(body.materialized).toHaveLength(1)
-    expect(body.materialized[0].production_id).toBe(PROD_ID)
-    expect(mock.rows('cooked_dishes')).toHaveLength(1)
-    expect(mock.rows('planned_productions')[0].status).toBe('materialized')
+  it('délègue la clôture complète à set_planned_task_done', async () => {
+    const result = {
+      task: { id: Number(TASK_ID), done: true, done_at: '2026-07-19T08:00:00Z' },
+      materialized: [{ production_id: 'prod-1', cooked_dish_id: 42, portions: 4 }],
+      movements: 3,
+      reservations_consumed: 3,
+    }
+    const rpc = setupRpc({ data: result })
+
+    const response = await PATCH(request({ done: true }), { params: { taskId: TASK_ID } })
+    expect(response.status).toBe(200)
+    expect(await response.json()).toEqual(result)
+    expect(rpc).toHaveBeenCalledWith('set_planned_task_done', {
+      p_task_id: Number(TASK_ID),
+      p_done: true,
+    })
   })
 
-  it('termine une tâche sans production sans créer de plat', async () => {
-    const tables = makeBase()
-    tables.planned_productions = []
-    setup(tables)
-    const res = await PATCH(request({ done: true }), { params: { taskId: TASK_ID } })
-    expect(res.status).toBe(200)
-    expect((await res.json()).materialized).toEqual([])
-    expect(mock.rows('nutrition_plan_prep_tasks')[0].done).toBe(true)
+  it('délègue aussi la réouverture à la même transaction', async () => {
+    const result = { task: { id: Number(TASK_ID), done: false, done_at: null }, materialized: [], movements: 0 }
+    const rpc = setupRpc({ data: result })
+
+    const response = await PATCH(request({ done: false }), { params: { taskId: TASK_ID } })
+    expect(response.status).toBe(200)
+    expect(rpc).toHaveBeenCalledWith('set_planned_task_done', {
+      p_task_id: Number(TASK_ID),
+      p_done: false,
+    })
   })
 
-  it('refuse une tâche dont une dépendance est encore ouverte', async () => {
-    const tables = makeBase()
-    tables.nutrition_plan_prep_tasks.push({ id: '100', done: false, done_at: null })
-    tables.prep_task_dependencies.push({ task_id: TASK_ID, depends_on_task_id: '100' })
-    setup(tables)
-    const res = await PATCH(request({ done: true }), { params: { taskId: TASK_ID } })
-    expect(res.status).toBe(409)
-    expect(mock.rows('nutrition_plan_prep_tasks')[0].done).toBe(false)
-    expect(mock.rows('cooked_dishes')).toHaveLength(0)
+  it.each([
+    ['dependencies_pending', 'Termine d’abord les préparations'],
+    ['completed_dependant', 'préparation dépendante est déjà terminée'],
+    ['materialized_production_cannot_reopen', 'créé un plat réel'],
+    ['unreserved_ingredients_replan_required', 'Range les courses'],
+    ['stock_changed:lot-1', 'Le stock a changé'],
+    ['missing_density:lot-2', 'reconvertie dans l’unité réelle'],
+  ])('traduit le conflit SQL %s en réponse 409 actionnable', async (technical, expected) => {
+    setupRpc({ error: { message: technical } })
+
+    const response = await PATCH(request({ done: true }), { params: { taskId: TASK_ID } })
+    expect(response.status).toBe(409)
+    const body = await response.json()
+    expect(body.error).toContain(expected)
+    expect(body.technical_code).toBe(technical.split(':')[0])
   })
 
-  it('une erreur de création laisse la tâche ouverte', async () => {
-    setup(makeBase())
-    mock.queueError('cooked_dishes', 'insert', 'disk full')
-    const res = await PATCH(request({ done: true }), { params: { taskId: TASK_ID } })
-    expect(res.status).toBe(500)
-    expect(mock.rows('nutrition_plan_prep_tasks')[0].done).toBe(false)
-    expect(mock.rows('planned_productions')[0].status).toBe('planned')
-    expect(mock.rows('cooked_dishes')).toHaveLength(0)
+  it('retourne 404 lorsque la tâche n’appartient pas au tenant', async () => {
+    setupRpc({ error: { message: 'task_not_found_or_forbidden' } })
+    const response = await PATCH(request({ done: true }), { params: { taskId: TASK_ID } })
+    expect(response.status).toBe(404)
+    expect((await response.json()).error).toBe('Tâche introuvable')
   })
 
-  it('refuse de décocher une tâche ayant déjà créé un plat physique', async () => {
-    const tables = makeBase()
-    tables.nutrition_plan_prep_tasks[0].done = true
-    tables.nutrition_plan_prep_tasks[0].done_at = '2026-07-17T08:00:00Z'
-    tables.planned_productions[0].status = 'materialized'
-    tables.planned_productions[0].materialized_cooked_dish_id = 42
-    tables.cooked_dishes = [{ id: 42, user_id: USER_ID, portions_remaining: 4 }]
-    setup(tables)
-    const res = await PATCH(request({ done: false }), { params: { taskId: TASK_ID } })
-    expect(res.status).toBe(409)
-    expect(mock.rows('nutrition_plan_prep_tasks')[0].done).toBe(true)
-    expect(mock.rows('cooked_dishes')).toHaveLength(1)
+  it('conserve les erreurs SQL inattendues en 500', async () => {
+    setupRpc({ error: { message: 'disk full' } })
+    const response = await PATCH(request({ done: true }), { params: { taskId: TASK_ID } })
+    expect(response.status).toBe(500)
+    expect((await response.json()).error).toContain('disk full')
   })
 
-  it('refuse de décocher un parent si un enfant est déjà terminé', async () => {
-    const tables = makeBase()
-    tables.planned_productions = []
-    tables.nutrition_plan_prep_tasks[0].done = true
-    tables.nutrition_plan_prep_tasks.push({ id: '102', done: true, done_at: '2026-07-17T09:00:00Z' })
-    tables.prep_task_dependencies.push({ task_id: '102', depends_on_task_id: TASK_ID })
-    setup(tables)
-    const res = await PATCH(request({ done: false }), { params: { taskId: TASK_ID } })
-    expect(res.status).toBe(409)
-    expect(mock.rows('nutrition_plan_prep_tasks')[0].done).toBe(true)
+  it('refuse un identifiant non numérique avant tout appel RPC', async () => {
+    const rpc = setupRpc({ data: {} })
+    const response = await PATCH(request({ done: true }), { params: { taskId: 'unknown' } })
+    expect(response.status).toBe(400)
+    expect(rpc).not.toHaveBeenCalled()
   })
 
-  it('ne rematérialise pas une production déjà matérialisée', async () => {
-    const tables = makeBase()
-    tables.planned_productions[0].status = 'materialized'
-    tables.planned_productions[0].materialized_cooked_dish_id = 99
-    tables.cooked_dishes = [{ id: 99, user_id: USER_ID, portions_remaining: 4 }]
-    setup(tables)
-    const res = await PATCH(request({ done: true }), { params: { taskId: TASK_ID } })
-    expect(res.status).toBe(200)
-    expect((await res.json()).materialized).toEqual([])
-    expect(mock.rows('cooked_dishes')).toHaveLength(1)
-  })
-
-  it('retourne 404 pour une tâche absente', async () => {
-    setup(makeBase())
-    const res = await PATCH(request({ done: true }), { params: { taskId: '999-unknown' } })
-    expect(res.status).toBe(404)
-  })
-
-  it('conserve la méthode congélateur lors de la matérialisation', async () => {
-    const tables = makeBase()
-    tables.planned_productions[0].storage_method = 'freezer'
-    setup(tables)
-    const res = await PATCH(request({ done: true }), { params: { taskId: TASK_ID } })
-    expect(res.status).toBe(200)
-    expect(mock.rows('cooked_dishes')[0].storage_method).toBe('freezer')
+  it('refuse un corps sans booléen done', async () => {
+    const rpc = setupRpc({ data: {} })
+    const response = await PATCH(request({ done: 'oui' }), { params: { taskId: TASK_ID } })
+    expect(response.status).toBe(400)
+    expect(rpc).not.toHaveBeenCalled()
   })
 })
