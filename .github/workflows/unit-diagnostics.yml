@@ -9,48 +9,66 @@ on:
       - 'app/**'
       - 'lib/**'
       - '.github/workflows/unit-diagnostics.yml'
-  pull_request:
-    paths:
-      - 'tests/**'
-      - 'app/**'
-      - 'lib/**'
-      - '.github/workflows/unit-diagnostics.yml'
+
+permissions:
+  contents: write
 
 jobs:
   failed-tests-only:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Exécuter Vitest et résumer seulement les échecs
+      - name: Exécuter Vitest et enregistrer seulement les échecs
         shell: bash
         run: |
           set +e
           npx vitest run --reporter=json --outputFile=/tmp/vitest-results.json >/tmp/vitest-console.txt 2>&1
           status=$?
           set -e
+          mkdir -p diagnostics
           node <<'NODE'
           const fs = require('node:fs')
+          const output = 'diagnostics/vitest-failures.txt'
           const file = '/tmp/vitest-results.json'
           if (!fs.existsSync(file)) {
-            console.error(fs.readFileSync('/tmp/vitest-console.txt', 'utf8').slice(-6000))
-            process.exit(2)
+            const tail = fs.existsSync('/tmp/vitest-console.txt')
+              ? fs.readFileSync('/tmp/vitest-console.txt', 'utf8').slice(-10000)
+              : 'Aucune sortie Vitest disponible.'
+            fs.writeFileSync(output, `Vitest n’a pas produit de JSON.\n\n${tail}\n`)
+            process.exit(0)
           }
           const result = JSON.parse(fs.readFileSync(file, 'utf8'))
           const failed = (result.testResults || []).filter((suite) => suite.status === 'failed')
-          console.log(`Suites: ${result.numTotalTestSuites} · tests: ${result.numTotalTests} · échecs: ${result.numFailedTests}`)
+          const lines = [
+            `Suites: ${result.numTotalTestSuites}`,
+            `Tests: ${result.numTotalTests}`,
+            `Échecs: ${result.numFailedTests}`,
+          ]
           for (const suite of failed) {
-            console.log(`\nFAIL ${suite.name}`)
+            lines.push('', `FAIL ${suite.name}`)
             for (const assertion of suite.assertionResults || []) {
               if (assertion.status !== 'failed') continue
-              console.log(`- ${assertion.fullName || assertion.title}`)
-              const message = (assertion.failureMessages || []).join('\n').replace(/\x1b\[[0-9;]*m/g, '')
-              console.log(message.slice(0, 2500))
+              lines.push(`- ${assertion.fullName || assertion.title}`)
+              const message = (assertion.failureMessages || [])
+                .join('\n')
+                .replace(/\x1b\[[0-9;]*m/g, '')
+              lines.push(message.slice(0, 5000))
             }
           }
+          fs.writeFileSync(output, `${lines.join('\n')}\n`)
           NODE
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add diagnostics/vitest-failures.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(debug): record vitest failures"
+            git push origin "HEAD:${{ github.ref_name }}"
+          fi
           exit "$status"
