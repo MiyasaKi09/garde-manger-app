@@ -7,6 +7,8 @@ import {
 
 export const dynamic = 'force-dynamic'
 
+const cloneIfPossible = (request) => typeof request?.clone === 'function' ? request.clone() : request
+
 async function resolvePublishedSlot(supabase, userId, mealDate, mealType) {
   const { data: slots, error } = await supabase
     .from('meal_plan_slots')
@@ -83,13 +85,19 @@ async function activeBatchDishExists(supabase, userId, batchRecipeId) {
 }
 
 function sanitizedRequest(request, body) {
+  const sanitizedBody = { ...body, needs: [], deductions: [] }
+  // Les tests unitaires historiques emploient un objet minimal { json() }.
+  if (!(request instanceof Request)) {
+    return { ...request, json: async () => sanitizedBody }
+  }
+
   const headers = new Headers(request.headers)
   headers.delete('content-length')
   headers.set('content-type', 'application/json')
   return new Request(request.url, {
     method: 'POST',
     headers,
-    body: JSON.stringify({ ...body, needs: [], deductions: [] }),
+    body: JSON.stringify(sanitizedBody),
   })
 }
 
@@ -100,11 +108,10 @@ function sanitizedRequest(request, body) {
  *   jamais ses ingrédients bruts lors de sa consommation.
  */
 export async function POST(request) {
-  const inspectionRequest = request.clone()
   let body = {}
-  try { body = await inspectionRequest.json() } catch { return legacyPost(request) }
+  try { body = await cloneIfPossible(request).json() } catch { return legacyPost(request) }
 
-  const { supabase, user, error: authError } = await authenticateRequest(request.clone())
+  const { supabase, user, error: authError } = await authenticateRequest(cloneIfPossible(request))
   if (authError || !user) {
     return NextResponse.json({ error: authError || 'Non authentifié' }, { status: 401 })
   }
@@ -112,14 +119,12 @@ export async function POST(request) {
   try {
     let preparedSource = body.eaten_dish_id != null
 
+    // Si un plat batch réel existe, ses ingrédients ont déjà été débités par la
+    // session de cuisine. S'il n'existe pas, l'implémentation historique conserve
+    // ses gardes détaillées (plat périmé, batch legacy sans plat, etc.).
     if (body.batch_recipe_id != null) {
-      const batchReady = await activeBatchDishExists(supabase, user.id, body.batch_recipe_id)
-      if (!batchReady) {
-        return NextResponse.json({
-          error: 'Cette préparation batch n’a pas encore produit de plat disponible. Termine d’abord la session de cuisine.',
-        }, { status: 409 })
-      }
-      preparedSource = true
+      preparedSource = preparedSource
+        || await activeBatchDishExists(supabase, user.id, body.batch_recipe_id)
     }
 
     if (body.meal_date && body.meal_type) {
