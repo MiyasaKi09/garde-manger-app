@@ -4,8 +4,10 @@ on:
   pull_request:
     paths:
       - 'app/api/meals/cook/**'
+      - 'app/api/planning/prep-tasks/**'
       - 'lib/server/legacyMealCookRoute.js'
       - 'tests/planning/mealsCook*.test.js'
+      - 'tests/planning/prepTaskMaterialization.test.js'
       - 'supabase/migrations/20260717000002_p2_planned_productions.sql'
       - 'supabase/migrations/includes/**'
       - 'scripts/db/build-manifest.mjs'
@@ -16,8 +18,10 @@ on:
       - 'claude/**'
     paths:
       - 'app/api/meals/cook/**'
+      - 'app/api/planning/prep-tasks/**'
       - 'lib/server/legacyMealCookRoute.js'
       - 'tests/planning/mealsCook*.test.js'
+      - 'tests/planning/prepTaskMaterialization.test.js'
       - 'supabase/migrations/20260717000002_p2_planned_productions.sql'
       - 'supabase/migrations/includes/**'
       - 'scripts/db/build-manifest.mjs'
@@ -37,11 +41,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Vérifier les plats préparés et la double déduction
+      - name: Vérifier les plats préparés, la double déduction et la façade RPC
         run: >-
           npx vitest run
           tests/planning/mealsCookExpiry.test.js
           tests/planning/mealsCookPreparedSource.test.js
+          tests/planning/prepTaskMaterialization.test.js
           --reporter=verbose
       - name: Vérifier le manifeste composite des migrations
         run: |
