@@ -1,0 +1,50 @@
+name: Audit source export
+
+on:
+  push:
+    branches:
+      - claude/verify-planning-2026-07-19
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+env:
+  NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: stub
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Package audited sources
+        run: |
+          mkdir -p audit-source
+          cp package.json package-lock.json audit-source/
+          cp -R supabase/migrations audit-source/migrations
+          cp -R supabase/tests audit-source/supabase-tests
+          cp -R lib/domain/planning audit-source/planning-domain
+          cp -R lib/domain/recipes audit-source/recipe-domain
+          cp -R lib/domain/units audit-source/units
+          cp lib/shelfLifeRules.js audit-source/
+          cp -R tests/planning audit-source/planning-tests
+          mkdir -p audit-source/app-api-planning audit-source/app-planning audit-source/scripts-db
+          cp -R app/api/planning audit-source/app-api-planning/routes
+          cp -R app/planning audit-source/app-planning/pages
+          cp app/api/meals/cook/route.js audit-source/meals-cook-route.js
+          cp scripts/db/apply-migrations.sh audit-source/apply-migrations.sh
+          cp scripts/db/migration-manifest.json audit-source/migration-manifest.json
+          cp scripts/db/build-manifest.mjs audit-source/scripts-db/build-manifest.mjs
+          cp -R .github/workflows audit-source/workflows
+
+      - name: Upload audited sources
+        uses: actions/upload-artifact@v4
+        with:
+          name: planning-audit-source
+          path: audit-source
+          retention-days: 1
