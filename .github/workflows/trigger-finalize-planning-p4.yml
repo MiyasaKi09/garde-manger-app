@@ -41,6 +41,33 @@ jobs:
           script = '\n'.join(line[10:] if line.startswith('          ') else line for line in block.splitlines())
           exec(compile(script, 'finalize-planning-p4-once.yml', 'exec'))
 
+          migration = Path('supabase/migrations/20260719000001_p4_support_slot_reservations.sql')
+          migration.write_text(migration.read_text().replace(
+              "value->>'meal_type' NOT IN ('pdj', 'collation')",
+              "COALESCE(value->>'meal_type', '') NOT IN ('pdj', 'collation')",
+          ))
+
+          payload = Path('lib/domain/planning/canonicalPlanPayload.js')
+          payload.write_text(payload.read_text().replace(
+              "safety_deadline_at: new Date(`${group.date}T07:00:00Z`).toISOString(),",
+              "safety_deadline_at: due,",
+          ))
+
+          unit = Path('tests/planning/supportSlotReservations.test.js')
+          text = unit.read_text()
+          old = "const payload = buildCanonicalPlanPayload(baseArgs({ inventoryLots: lotsForAllSupplements() }))"
+          new = """const payload = buildCanonicalPlanPayload({
+      plan: basePlan(), recipes: [recipe], windowStart: '2026-07-20',
+      members: [julien], constraints: {},
+      inventoryLots: [
+        { id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 200 },
+        { id: 'lot-eggs', formNormalized: 'oeuf', gramsAvailable: 600 },
+      ],
+    })"""
+          if old not in text:
+              raise SystemExit('generated support test marker missing')
+          unit.write_text(text.replace(old, new, 1))
+
       - name: Regenerate migration manifest
         run: node scripts/db/build-manifest.mjs
 
