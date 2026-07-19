@@ -25,8 +25,13 @@ jobs:
       - name: Package audited sources
         run: |
           mkdir -p audit-source
+          cp package.json package-lock.json audit-source/
           cp -R supabase/migrations audit-source/migrations
+          cp -R supabase/tests audit-source/supabase-tests
           cp -R lib/domain/planning audit-source/planning-domain
+          cp -R lib/domain/recipes audit-source/recipe-domain
+          cp lib/domain/units.js lib/shelfLifeRules.js audit-source/
+          cp -R tests/planning audit-source/planning-tests
           mkdir -p audit-source/app-api-planning audit-source/app-planning
           cp -R app/api/planning audit-source/app-api-planning/routes
           cp -R app/planning audit-source/app-planning/pages
