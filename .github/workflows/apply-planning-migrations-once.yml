@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - claude/verify-planning-2026-07-19
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
