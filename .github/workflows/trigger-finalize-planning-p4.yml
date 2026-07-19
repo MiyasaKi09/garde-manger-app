@@ -83,6 +83,7 @@ jobs:
           set -euo pipefail
           rm .github/workflows/finalize-planning-p4-once.yml
           rm .github/workflows/trigger-finalize-planning-p4.yml
+          rm -f .github/p4-rerun-marker
           git config user.name "OpenAI"
           git config user.email "openai@users.noreply.github.com"
           git add -A
