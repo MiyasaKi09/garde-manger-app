@@ -1,0 +1,81 @@
+name: Prepare verified planning P4 blobs
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+env:
+  NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: stub
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/planning-p4-support-slots
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Apply reviewed P4 changes
+        shell: python
+        run: |
+          from pathlib import Path
+          workflow = Path('.github/workflows/finalize-planning-p4-once.yml').read_text()
+          section = workflow.split('- name: Harden support slots, link meals and add real preparation tasks', 1)[1]
+          block = section.split('run: |\n', 1)[1].split('\n      - name: Regenerate migration manifest', 1)[0]
+          script = '\n'.join(line[10:] if line.startswith('          ') else line for line in block.splitlines())
+          exec(compile(script, 'finalize-planning-p4-once.yml', 'exec'))
+
+          test = Path('tests/planning/plannedProductions.test.js')
+          text = test.read_text()
+          old = "const mealLines = payload.legacy_meals.filter((meal) => meal.slot_key)"
+          new = "const mealLines = payload.legacy_meals.filter((meal) => ['dejeuner', 'diner'].includes(meal.meal_type))"
+          if text.count(old) != 1:
+              raise SystemExit('test K main-meal filter marker missing')
+          test.write_text(text.replace(old, new, 1))
+      - run: node scripts/db/build-manifest.mjs
+      - run: npx vitest run
+      - run: npm run build
+      - name: Create immutable Git blobs
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          import base64, json, os, pathlib, subprocess
+          paths = [
+            '.github/workflows/ci.yml',
+            'lib/domain/planning/canonicalPlanPayload.js',
+            'lib/domain/planning/personalizedMeals.js',
+            'scripts/db/migration-manifest.json',
+            'supabase/migrations/20260719000001_p4_support_slot_reservations.sql',
+            'supabase/tests/ci/41_planning_p4.sql',
+            'tests/planning/supportSlotReservations.test.js',
+            'tests/planning/plannedProductions.test.js',
+          ]
+          mapping = {}
+          for path in paths:
+            raw = pathlib.Path(path).read_bytes()
+            payload = json.dumps({
+              'content': base64.b64encode(raw).decode(),
+              'encoding': 'base64',
+            })
+            result = subprocess.run(
+              ['gh', 'api', f'repos/{os.environ["REPOSITORY"]}/git/blobs', '--method', 'POST', '--input', '-'],
+              input=payload, text=True, check=True, capture_output=True,
+            )
+            mapping[path] = json.loads(result.stdout)['sha']
+          pathlib.Path('/tmp/p4-blobs.json').write_text(json.dumps(mapping, indent=2, sort_keys=True))
+      - uses: actions/upload-artifact@v4
+        with:
+          name: planning-p4-verified-blobs
+          path: /tmp/p4-blobs.json
+          retention-days: 1
