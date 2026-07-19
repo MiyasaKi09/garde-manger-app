@@ -441,11 +441,11 @@ jobs:
         run: |
           output=$(bash scripts/db/apply-migrations.sh status)
           echo "$output"
-          # Treize migrations postérieures au snapshot de production simulé.
+          # Quatorze migrations postérieures au snapshot de production simulé.
           count=$(echo "$output" | grep -c '^apply ' || true)
           echo "Migrations à appliquer : $count"
-          [ "$count" -eq 13 ]
-          # Et ce sont bien les 13 nouvelles.
+          [ "$count" -eq 14 ]
+          # Et ce sont bien les 14 nouvelles.
           echo "$output" | grep '^apply ' | grep -q '20260715090001'
           echo "$output" | grep '^apply ' | grep -q '20260715090002'
           echo "$output" | grep '^apply ' | grep -q '20260715090003'
@@ -459,16 +459,18 @@ jobs:
           echo "$output" | grep '^apply ' | grep -q '20260716162509'
           echo "$output" | grep '^apply ' | grep -q '20260717000001'
           echo "$output" | grep '^apply ' | grep -q '20260717000002'
+          echo "$output" | grep '^apply ' | grep -q '20260719000001'
+          echo "$output" | grep '^apply ' | grep -q '20260719000001'
 
-      - name: "[B] Apply réel (13 migrations post-snapshot)"
+      - name: "[B] Apply réel (14 migrations post-snapshot)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           output=$(bash scripts/db/apply-migrations.sh apply)
           echo "$output"
-          echo "$output" | grep -E '^migrations : 13 appliquées'
+          echo "$output" | grep -E '^migrations : 14 appliquées'
 
-      - name: "[B] Assertions objets — 13 nouvelles migrations installées"
+      - name: "[B] Assertions objets — 14 nouvelles migrations installées"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |

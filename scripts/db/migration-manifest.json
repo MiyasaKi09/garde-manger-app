@@ -1111,5 +1111,25 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260719000001_p4_support_slot_reservations.sql",
+    "github_version": "20260719000001",
+    "name": "p4_support_slot_reservations",
+    "sha256": "a0a86f87f1b13d5a42491810db22ad9779faf7dcc86383188e6351dc6c5f6ea7",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260719000001_p4_support_slot_reservations_rollback.sql",
+    "github_version": "20260719000001",
+    "name": "p4_support_slot_reservations_rollback",
+    "sha256": "6e78a2a998c5634372fbf9c833cd8fe9c7b347bc54151655f6432564c7511fc1",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

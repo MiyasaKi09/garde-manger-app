@@ -1,0 +1,303 @@
+name: Prepare planning UX and household rules
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+env:
+  NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: stub
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/planning-p4-support-slots
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+
+      - name: Apply UX and household-rule corrections
+        shell: python
+        run: |
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              text = p.read_text()
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'{path}: expected one match, got {count}: {old[:100]!r}')
+              p.write_text(text.replace(old, new, 1))
+
+          helper = Path('lib/domain/planning/memberPlanningRules.js')
+          helper.write_text("""function fold(value) {
+            return String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase().trim()
+          }
+
+          /**
+           * Source unique des règles individuelles utilisées par le moteur et l'UI.
+           * Les replis par prénom ne servent qu'à lire les anciens profils ; toute
+           * nouvelle configuration doit être persistée dans preferences.planning.
+           */
+          export function getMemberPlanningRules(member = {}) {
+            const planning = member?.preferences?.planning || {}
+            const name = fold(member?.name)
+            const parsedSwaps = Number(planning.vegetarian_meat_swaps_per_week)
+            return {
+              breakfast: planning.breakfast ?? name === 'julien',
+              snack: planning.snack ?? true,
+              vegetarianMeatSwaps: Number.isFinite(parsedSwaps)
+                ? Math.max(0, Math.min(7, parsedSwaps))
+                : (name === 'zoe' ? 1 : 0),
+            }
+          }
+
+          export function expectedWeeklyMealCount(members = [], days = 7) {
+            const safeDays = Math.max(0, Math.floor(Number(days) || 0))
+            return (members || []).reduce((total, member) => {
+              const rules = getMemberPlanningRules(member)
+              return total + safeDays * (2 + Number(rules.breakfast) + Number(rules.snack))
+            }, 0)
+          }
+          """.replace('          ', ''))
+
+          personalized = Path('lib/domain/planning/personalizedMeals.js')
+          text = personalized.read_text()
+          text = text.replace(
+              "import { normalizeFoodForm } from '../recipes/materializeRecipe'\n",
+              "import { normalizeFoodForm } from '../recipes/materializeRecipe'\nimport { getMemberPlanningRules } from './memberPlanningRules'\n",
+              1,
+          )
+          start = text.index('function memberRules(member) {')
+          end = text.index('\n\nfunction targetFor', start)
+          text = text[:start] + text[end + 2:]
+          text = text.replace('memberRules(member)', 'getMemberPlanningRules(member)')
+          old_meat = "const meatSlots = plan.slots.filter((slot) => classifyRecipe(recipeByCode.get(slot.recipeCode)).meat)"
+          new_meat = """const meatSlots = plan.slots.filter((slot) =>
+      slot.cookedDishId == null
+      && slot.productionKey == null
+      && slot.production == null
+      && slot.source !== 'planned_production'
+      && classifyRecipe(recipeByCode.get(slot.recipeCode)).meat)"""
+          if text.count(old_meat) != 1:
+              raise SystemExit('personalizedMeals: meat slot marker missing')
+          text = text.replace(old_meat, new_meat, 1)
+          text = text.replace('const mealScales = steps(0.5, 4, 0.25)', 'const mealScales = steps(0.5, 3, 0.25)', 1)
+          personalized.write_text(text)
+
+          page = Path('app/planning/page.js')
+          text = page.read_text()
+          text = text.replace(
+              "import { useCallback, useEffect, useRef, useState } from 'react'",
+              "import { useCallback, useEffect, useState } from 'react'",
+              1,
+          )
+          text = text.replace(
+              "import { computeWeekReadiness } from '@/lib/domain/planning/readiness'\n",
+              "import { computeWeekReadiness } from '@/lib/domain/planning/readiness'\nimport { expectedWeeklyMealCount } from '@/lib/domain/planning/memberPlanningRules'\n",
+              1,
+          )
+          text = text.replace(
+              "  const [nutritionGoals, setNutritionGoals] = useState([])\n",
+              "  const [nutritionGoals, setNutritionGoals] = useState([])\n  const [householdMembers, setHouseholdMembers] = useState([])\n",
+              1,
+          )
+          text = text.replace("  const horizonStarted = useRef(false)\n", '', 1)
+          text = text.replace(
+              "        setNutritionGoals(data.goals || [])\n        setGoalsStatus('ready')",
+              """        setNutritionGoals(data.goals || [])
+        const { data: memberRows, error: memberError } = await supabase
+          .from('household_members')
+          .select('id, name, preferences')
+          .eq('active', true)
+          .order('created_at')
+        if (memberError) throw new Error(memberError.message)
+        setHouseholdMembers(memberRows || [])
+        setGoalsStatus('ready')""",
+              1,
+          )
+          auto_start = text.index("  useEffect(() => {\n    if (!user || !importsLoaded || horizonStarted.current) return")
+          auto_end_marker = "  }, [imports, importsLoaded, refreshImports, user])\n"
+          auto_end = text.index(auto_end_marker, auto_start) + len(auto_end_marker)
+          replacement = """  useEffect(() => {
+    if (!user || !importsLoaded) return
+    const currentStart = localIso(mondayForOffset(0))
+    const nextStart = addDays(currentStart, 7)
+    const missing = [currentStart, nextStart].filter((start) =>
+      !imports.some((item) => item.file_name === 'myko-canonical-v3' && item.date_range_start === start))
+    setHorizonStatus(missing.length ? 'incomplete' : 'ready')
+  }, [imports, importsLoaded, user])
+
+  async function prepareHorizon() {
+    if (horizonStatus === 'preparing') return
+    const currentStart = localIso(mondayForOffset(0))
+    const nextStart = addDays(currentStart, 7)
+    const missing = [currentStart, nextStart].filter((start) =>
+      !imports.some((item) => item.file_name === 'myko-canonical-v3' && item.date_range_start === start))
+    if (!missing.length) { setHorizonStatus('ready'); return }
+    setHorizonStatus('preparing')
+    try {
+      for (const windowStart of missing) {
+        const response = await authFetch('/api/planning/generate-v3', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ window_start: windowStart, scope: 'week', intent: 'balanced' }),
+        })
+        const data = await response.json().catch(() => ({}))
+        if (!response.ok) throw new Error(data.error || 'Préparation de l’horizon incomplète')
+      }
+      await refreshImports()
+      setReloadKey((value) => value + 1)
+      setHorizonStatus('ready')
+      toast.success('Les deux semaines sont prêtes')
+    } catch (error) {
+      setHorizonStatus('error')
+      toast.error(error.message)
+    }
+  }
+"""
+          text = text[:auto_start] + replacement + text[auto_end:]
+
+          readiness_start = text.index('  // Prises attendues sur la semaine')
+          readiness_end = text.index('  const prepTaskCount', readiness_start)
+          text = text[:readiness_start] + """  // Même source de vérité que le moteur : préférences persistées du foyer.
+  const expectedMeals = expectedWeeklyMealCount(householdMembers, 7)
+""" + text[readiness_end:]
+
+          old_horizon = """          <div className={`planning-horizon ${horizonStatus}`}>
+            {horizonStatus === 'preparing' ? <RefreshCw size={15} className="planning-spin" /> : <Check size={15} />}
+            <span>{horizonStatus === 'preparing' ? 'Préparation des deux semaines…' : nextWeekReady ? 'Semaine suivante déjà prête' : 'Horizon à compléter'}</span>
+          </div>"""
+          new_horizon = """          <button
+            type="button"
+            className={`planning-horizon ${horizonStatus}`}
+            onClick={prepareHorizon}
+            disabled={horizonStatus === 'preparing' || horizonStatus === 'ready'}
+            title={horizonStatus === 'ready' ? 'Les deux semaines sont déjà présentes' : 'Créer explicitement les semaines manquantes'}
+          >
+            {horizonStatus === 'preparing' ? <RefreshCw size={15} className="planning-spin" /> : <Check size={15} />}
+            <span>{horizonStatus === 'preparing' ? 'Préparation des deux semaines…' : nextWeekReady ? 'Semaine suivante déjà prête' : 'Préparer l’horizon'}</span>
+          </button>"""
+          if text.count(old_horizon) != 1:
+              raise SystemExit('planning page: horizon render marker missing')
+          text = text.replace(old_horizon, new_horizon, 1)
+          page.write_text(text)
+
+          css = Path('app/planning/PlanningDashboard.css')
+          css_text = css.read_text()
+          css_text = css_text.replace(
+              ".planning-horizon { display: flex; align-items: center; gap: 7px; color: var(--brand); font-family: var(--font-mono); font-size: 10px; letter-spacing: .03em; }",
+              ".planning-horizon { appearance: none; display: flex; align-items: center; gap: 7px; padding: 0; border: 0; color: var(--brand); background: transparent; font-family: var(--font-mono); font-size: 10px; letter-spacing: .03em; cursor: pointer; }",
+              1,
+          )
+          css_text = css_text.replace(
+              ".planning-horizon.error { color: var(--terracotta); }",
+              ".planning-horizon.error { color: var(--terracotta); }\n.planning-horizon:disabled { cursor: default; opacity: .85; }",
+              1,
+          )
+          css.write_text(css_text)
+
+          rules_test = Path('tests/planning/memberPlanningRules.test.js')
+          rules_test.write_text("""import { describe, expect, it } from 'vitest'
+          import { expectedWeeklyMealCount, getMemberPlanningRules } from '@/lib/domain/planning/memberPlanningRules'
+
+          describe('member planning rules', () => {
+            it('uses persisted planning preferences as the source of truth', () => {
+              expect(getMemberPlanningRules({
+                name: 'Julien',
+                preferences: { planning: { breakfast: false, snack: false, vegetarian_meat_swaps_per_week: 3 } },
+              })).toEqual({ breakfast: false, snack: false, vegetarianMeatSwaps: 3 })
+            })
+
+            it('keeps legacy fallbacks only for profiles not migrated yet', () => {
+              expect(getMemberPlanningRules({ name: 'Julien', preferences: {} })).toMatchObject({ breakfast: true, snack: true })
+              expect(getMemberPlanningRules({ name: 'Zoé', preferences: {} })).toMatchObject({ breakfast: false, snack: true, vegetarianMeatSwaps: 1 })
+            })
+
+            it('computes completeness from the same rules as the planner', () => {
+              const members = [
+                { name: 'Julien', preferences: { planning: { breakfast: true, snack: true } } },
+                { name: 'Zoé', preferences: { planning: { breakfast: false, snack: true } } },
+              ]
+              expect(expectedWeeklyMealCount(members, 7)).toBe(49)
+              expect(expectedWeeklyMealCount([], 7)).toBe(0)
+            })
+          })
+          """.replace('          ', ''))
+
+          personalized_test = Path('tests/planning/personalizedMeals.test.js')
+          test_text = personalized_test.read_text()
+          test_text = test_text.replace(
+              "    expect(julien.lunchScale).not.toBe(zoe.lunchScale)\n",
+              "    expect(julien.lunchScale).not.toBe(zoe.lunchScale)\n    expect(Math.max(julien.lunchScale, julien.dinnerScale, zoe.lunchScale, zoe.dinnerScale)).toBeLessThanOrEqual(3)\n",
+              1,
+          )
+          closing = test_text.rfind('\n})')
+          extra = r'''
+
+  it('never assigns a member variant to an existing dish or a planned production', () => {
+    const resourcePlan = plan()
+    resourcePlan.slots[0] = { ...resourcePlan.slots[0], production: { productionKey: 'p1' } }
+    resourcePlan.slots[2] = { ...resourcePlan.slots[2], recipeCode: 'MEAT', cookedDishId: 9 }
+    const result = buildPersonalizedMeals({
+      plan: resourcePlan, recipes: [meat, fish, veggie],
+      members: [{ id: 'z', name: 'Zoé', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true, vegetarian_meat_swaps_per_week: 2 } } }],
+      goals: [{ person_name: 'Zoé', target_calories: 1525, target_protein_g: 75, target_carbs_g: 192, target_fat_g: 51, target_fiber_g: 21 }],
+    })
+    for (const slot of [resourcePlan.slots[0], resourcePlan.slots[2]]) {
+      expect(result.meals.find((meal) => meal.slot_key === slot.key)?.variant_kind).toBe('household_base')
+    }
+  })
+'''
+          personalized_test.write_text(test_text[:closing] + extra + test_text[closing:])
+
+      - name: Run unit tests
+        run: npx vitest run
+      - name: Build application
+        run: npm run build
+
+      - name: Create verified blobs and branch-tree metadata
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          import base64, json, os, pathlib, subprocess
+          paths = [
+            'app/planning/PlanningDashboard.css',
+            'app/planning/page.js',
+            'lib/domain/planning/memberPlanningRules.js',
+            'lib/domain/planning/personalizedMeals.js',
+            'tests/planning/memberPlanningRules.test.js',
+            'tests/planning/personalizedMeals.test.js',
+          ]
+          mapping = {}
+          for path in paths:
+            raw = pathlib.Path(path).read_bytes()
+            payload = json.dumps({'content': base64.b64encode(raw).decode(), 'encoding': 'base64'})
+            result = subprocess.run(
+              ['gh', 'api', f'repos/{os.environ["REPOSITORY"]}/git/blobs', '--method', 'POST', '--input', '-'],
+              input=payload, text=True, check=True, capture_output=True,
+            )
+            mapping[path] = json.loads(result.stdout)['sha']
+          meta = {
+            'head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+            'tree': subprocess.check_output(['git', 'rev-parse', 'HEAD^{tree}'], text=True).strip(),
+            'blobs': mapping,
+          }
+          pathlib.Path('/tmp/planning-ux-rules.json').write_text(json.dumps(meta, indent=2, sort_keys=True))
+      - uses: actions/upload-artifact@v4
+        with:
+          name: planning-ux-rules-verified
+          path: /tmp/planning-ux-rules.json
+          retention-days: 1

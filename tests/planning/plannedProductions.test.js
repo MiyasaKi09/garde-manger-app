@@ -217,7 +217,7 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
     // 2 membres × 2 créneaux = 4 lignes de repas ; les planned_servings
     // (multiplicateur de portion × ajustement énergétique) totalisent 4,5 —
     // c'est CETTE somme qui dimensionne la production, pas les 4 lignes.
-    const mealLines = payload.legacy_meals.filter((meal) => meal.slot_key)
+    const mealLines = payload.legacy_meals.filter((meal) => ['dejeuner', 'diner'].includes(meal.meal_type))
     expect(mealLines).toHaveLength(4)
     const plannedServingsTotal = mealLines.reduce((sum, meal) => sum + meal.planned_servings, 0)
     expect(plannedServingsTotal).toBe(4.5)

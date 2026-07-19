@@ -1,0 +1,94 @@
+name: Run planning UX and household rules
+
+on:
+  push:
+    branches:
+      - claude/planning-p4-support-slots
+
+permissions:
+  contents: write
+
+env:
+  NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: stub
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/planning-p4-support-slots
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Apply reviewed transformations
+        shell: python
+        run: |
+          from pathlib import Path
+          workflow = Path('.github/workflows/prepare-planning-ux-rules.yml').read_text()
+          section = workflow.split('- name: Apply UX and household-rule corrections', 1)[1]
+          block = section.split('run: |\n', 1)[1].split('\n      - name: Run unit tests', 1)[0]
+          script = '\n'.join(line[10:] if line.startswith('          ') else line for line in block.splitlines())
+          exec(compile(script, 'prepare-planning-ux-rules.yml', 'exec'))
+      - run: npx vitest run
+      - run: npm run build
+      - name: Create verified blobs and branch metadata
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          import base64, json, os, pathlib, subprocess
+          paths = [
+            'app/planning/PlanningDashboard.css',
+            'app/planning/page.js',
+            'lib/domain/planning/memberPlanningRules.js',
+            'lib/domain/planning/personalizedMeals.js',
+            'tests/planning/memberPlanningRules.test.js',
+            'tests/planning/personalizedMeals.test.js',
+          ]
+          mapping = {}
+          for path in paths:
+            raw = pathlib.Path(path).read_bytes()
+            payload = json.dumps({'content': base64.b64encode(raw).decode(), 'encoding': 'base64'})
+            result = subprocess.run(
+              ['gh', 'api', f'repos/{os.environ["REPOSITORY"]}/git/blobs', '--method', 'POST', '--input', '-'],
+              input=payload, text=True, check=True, capture_output=True,
+            )
+            mapping[path] = json.loads(result.stdout)['sha']
+          meta = {
+            'head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+            'tree': subprocess.check_output(['git', 'rev-parse', 'HEAD^{tree}'], text=True).strip(),
+            'blobs': mapping,
+          }
+          pathlib.Path('/tmp/planning-ux-rules.json').write_text(json.dumps(meta, indent=2, sort_keys=True))
+      - uses: actions/upload-artifact@v4
+        with:
+          name: planning-ux-rules-verified
+          path: /tmp/planning-ux-rules.json
+          retention-days: 1
+      - name: Publish verification manifest on the branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          payload=$(python - <<'PY'
+          import base64, json
+          content = open('/tmp/planning-ux-rules.json', 'rb').read()
+          print(json.dumps({
+            'message': 'chore(planning): enregistrer la validation UX',
+            'content': base64.b64encode(content).decode(),
+            'branch': 'claude/planning-p4-support-slots',
+          }))
+          PY
+          )
+          existing=$(gh api "repos/$REPOSITORY/contents/.github/planning-ux-rules-result.json?ref=claude/planning-p4-support-slots" --jq .sha 2>/dev/null || true)
+          if [ -n "$existing" ]; then
+            payload=$(echo "$payload" | python -c 'import json,sys; d=json.load(sys.stdin); d["sha"]="'"$existing"'"; print(json.dumps(d))')
+          fi
+          echo "$payload" | gh api "repos/$REPOSITORY/contents/.github/planning-ux-rules-result.json" --method PUT --input -
