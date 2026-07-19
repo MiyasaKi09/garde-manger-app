@@ -33,6 +33,7 @@ jobs:
           cp app/api/meals/cook/route.js audit-source/meals-cook-route.js
           cp scripts/db/apply-migrations.sh audit-source/apply-migrations.sh
           cp scripts/db/migration-manifest.json audit-source/migration-manifest.json
+          cp -R .github/workflows audit-source/workflows
 
       - name: Upload audited sources
         uses: actions/upload-artifact@v4
