@@ -71,3 +71,24 @@ jobs:
           name: planning-ux-rules-verified
           path: /tmp/planning-ux-rules.json
           retention-days: 1
+      - name: Publish verification manifest on the branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          payload=$(python - <<'PY'
+          import base64, json
+          content = open('/tmp/planning-ux-rules.json', 'rb').read()
+          print(json.dumps({
+            'message': 'chore(planning): enregistrer la validation UX',
+            'content': base64.b64encode(content).decode(),
+            'branch': 'claude/planning-p4-support-slots',
+          }))
+          PY
+          )
+          existing=$(gh api "repos/$REPOSITORY/contents/.github/planning-ux-rules-result.json?ref=claude/planning-p4-support-slots" --jq .sha 2>/dev/null || true)
+          if [ -n "$existing" ]; then
+            payload=$(echo "$payload" | python -c 'import json,sys; d=json.load(sys.stdin); d["sha"]="'"$existing"'"; print(json.dumps(d))')
+          fi
+          echo "$payload" | gh api "repos/$REPOSITORY/contents/.github/planning-ux-rules-result.json" --method PUT --input -
