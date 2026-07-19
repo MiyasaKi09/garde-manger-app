@@ -1,0 +1,26 @@
+name: Expose planning P4 tree
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  expose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/planning-p4-support-slots
+          fetch-depth: 1
+      - name: Capture branch head and tree
+        run: |
+          printf '{"head":"%s","tree":"%s"}\n' "$(git rev-parse HEAD)" "$(git rev-parse HEAD^{tree})" > /tmp/p4-tree.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: planning-p4-tree
+          path: /tmp/p4-tree.json
+          retention-days: 1
