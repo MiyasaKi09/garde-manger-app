@@ -1,0 +1,139 @@
+name: Apply planning P1-P2 once
+
+on:
+  push:
+    branches:
+      - claude/verify-planning-2026-07-19
+
+permissions:
+  contents: read
+
+env:
+  DB_NAME: postgres
+  PGSSLMODE: require
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install PostgreSQL client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client dnsutils
+
+      - name: Normalize connection secrets
+        shell: bash
+        env:
+          RAW_HOST: "${{ secrets.SUPABASE_POOLER_HOST }}"
+          RAW_REF: "${{ secrets.SUPABASE_PROJECT_REF }}"
+        run: |
+          set -euo pipefail
+          H="$RAW_HOST"
+          H="${H#postgresql://}"; H="${H#postgres://}"
+          [[ "$H" == *"@"* ]] && H="${H#*@}"
+          H="${H%%/*}"; H="${H%%:*}"
+          H="$(echo -n "$H" | tr -d '[:space:]')"
+          REF="$(echo -n "$RAW_REF" | tr -d '[:space:]')"
+          test -n "$H" && test -n "$REF"
+          echo "HOST_CLEAN=$H" >> "$GITHUB_ENV"
+          echo "REF_CLEAN=$REF" >> "$GITHUB_ENV"
+
+      - name: Detect working pooler connection
+        id: pick
+        shell: bash
+        env:
+          PGPASSWORD: "${{ secrets.SUPABASE_DB_PASSWORD }}"
+        run: |
+          set -euo pipefail
+          try_conn() {
+            local port="$1" user="$2" pgopt="$3"
+            if [ -n "$pgopt" ]; then
+              PGOPTIONS="$pgopt" psql "host=$HOST_CLEAN port=$port dbname=$DB_NAME user=$user sslmode=require" -Atc "select 1" >/dev/null
+            else
+              psql "host=$HOST_CLEAN port=$port dbname=$DB_NAME user=$user sslmode=require" -Atc "select 1" >/dev/null
+            fi
+          }
+          if try_conn 6543 "postgres.${REF_CLEAN}" ""; then
+            echo "PORT=6543" >> "$GITHUB_OUTPUT"; echo "USER=postgres.${REF_CLEAN}" >> "$GITHUB_OUTPUT"; echo "PGOPT=" >> "$GITHUB_OUTPUT"
+          elif try_conn 6543 postgres "project=${REF_CLEAN}"; then
+            echo "PORT=6543" >> "$GITHUB_OUTPUT"; echo "USER=postgres" >> "$GITHUB_OUTPUT"; echo "PGOPT=project=${REF_CLEAN}" >> "$GITHUB_OUTPUT"
+          elif try_conn 6544 "postgres.${REF_CLEAN}" ""; then
+            echo "PORT=6544" >> "$GITHUB_OUTPUT"; echo "USER=postgres.${REF_CLEAN}" >> "$GITHUB_OUTPUT"; echo "PGOPT=" >> "$GITHUB_OUTPUT"
+          elif try_conn 6544 postgres "project=${REF_CLEAN}"; then
+            echo "PORT=6544" >> "$GITHUB_OUTPUT"; echo "USER=postgres" >> "$GITHUB_OUTPUT"; echo "PGOPT=project=${REF_CLEAN}" >> "$GITHUB_OUTPUT"
+          else
+            echo "No working Supabase connection" >&2
+            exit 1
+          fi
+
+      - name: Select only P1 and P2
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/planning-migrations/includes
+          cp supabase/migrations/20260717000001_p1_cooked_dish_reservations.sql /tmp/planning-migrations/
+          cp supabase/migrations/20260717000002_p2_planned_productions.sql /tmp/planning-migrations/
+          cp supabase/migrations/includes/20260717000002_atomic_planned_task_materialization.sql /tmp/planning-migrations/includes/
+
+      - name: Status before apply
+        shell: bash
+        env:
+          PGPASSWORD: "${{ secrets.SUPABASE_DB_PASSWORD }}"
+          PGOPTIONS: "${{ steps.pick.outputs.PGOPT }}"
+          DATABASE_URL: "host=${{ env.HOST_CLEAN }} port=${{ steps.pick.outputs.PORT }} dbname=postgres user=${{ steps.pick.outputs.USER }} sslmode=require"
+        run: bash scripts/db/apply-migrations.sh status /tmp/planning-migrations | tee /tmp/status-before.txt
+
+      - name: Apply P1 and P2 transactionally
+        shell: bash
+        env:
+          PGPASSWORD: "${{ secrets.SUPABASE_DB_PASSWORD }}"
+          PGOPTIONS: "${{ steps.pick.outputs.PGOPT }}"
+          DATABASE_URL: "host=${{ env.HOST_CLEAN }} port=${{ steps.pick.outputs.PORT }} dbname=postgres user=${{ steps.pick.outputs.USER }} sslmode=require"
+        run: bash scripts/db/apply-migrations.sh apply /tmp/planning-migrations | tee /tmp/apply.txt
+
+      - name: Verify installed contract
+        shell: bash
+        env:
+          PGPASSWORD: "${{ secrets.SUPABASE_DB_PASSWORD }}"
+          PGOPTIONS: "${{ steps.pick.outputs.PGOPT }}"
+          DATABASE_URL: "host=${{ env.HOST_CLEAN }} port=${{ steps.pick.outputs.PORT }} dbname=postgres user=${{ steps.pick.outputs.USER }} sslmode=require"
+        run: |
+          set -euo pipefail
+          bash scripts/db/apply-migrations.sh status /tmp/planning-migrations | tee /tmp/status-after.txt
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -X -At <<'SQL' | tee /tmp/verification.txt
+          SELECT 'inventory_reservations.cooked_dish_id=' || EXISTS (
+            SELECT 1 FROM information_schema.columns
+            WHERE table_schema='public' AND table_name='inventory_reservations' AND column_name='cooked_dish_id'
+          );
+          SELECT 'planned_productions=' || (to_regclass('public.planned_productions') IS NOT NULL);
+          SELECT 'planned_consumptions=' || (to_regclass('public.planned_consumptions') IS NOT NULL);
+          SELECT 'set_planned_task_done=' || EXISTS (
+            SELECT 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
+            WHERE n.nspname='public' AND p.proname='set_planned_task_done'
+          );
+          SELECT 'publish_closed_loop_plan=' || EXISTS (
+            SELECT 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
+            WHERE n.nspname='public' AND p.proname='publish_closed_loop_plan'
+          );
+          SELECT 'ledger=' || string_agg(version || ':' || name, ',' ORDER BY version)
+          FROM supabase_migrations.schema_migrations
+          WHERE version IN ('20260717000001','20260717000002');
+          SQL
+          grep -qx 'inventory_reservations.cooked_dish_id=true' /tmp/verification.txt
+          grep -qx 'planned_productions=true' /tmp/verification.txt
+          grep -qx 'planned_consumptions=true' /tmp/verification.txt
+          grep -qx 'set_planned_task_done=true' /tmp/verification.txt
+          grep -qx 'publish_closed_loop_plan=true' /tmp/verification.txt
+          grep -q '20260717000001:p1_cooked_dish_reservations' /tmp/verification.txt
+          grep -q '20260717000002:p2_planned_productions' /tmp/verification.txt
+
+      - name: Upload migration proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: planning-migration-proof
+          path: |
+            /tmp/status-before.txt
+            /tmp/apply.txt
+            /tmp/status-after.txt
+            /tmp/verification.txt
+          retention-days: 7
