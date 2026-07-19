@@ -1116,7 +1116,7 @@
     "file": "20260719000001_p4_support_slot_reservations.sql",
     "github_version": "20260719000001",
     "name": "p4_support_slot_reservations",
-    "sha256": "5c76727a361368c78be75b1a1a55503d854d0e7714d913333bab7c5b0d117b25",
+    "sha256": "a0a86f87f1b13d5a42491810db22ad9779faf7dcc86383188e6351dc6c5f6ea7",
     "role": "apply",
     "baseline": "new",
     "historical_version": null,

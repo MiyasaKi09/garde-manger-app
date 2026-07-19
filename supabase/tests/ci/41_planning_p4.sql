@@ -32,8 +32,14 @@ BEGIN
 
   -- …mais les créneaux support en sont exemptés (P4). Sans cette exemption,
   -- publier un plan avec un petit-déjeuner/collation lèverait l'exception.
-  IF _def NOT LIKE '%source <> ''support''%' THEN
-    RAISE EXCEPTION '[P4] exemption des créneaux support (source=support) absente du garde-fou';
+  IF _def NOT LIKE '%source IS DISTINCT FROM ''support''%' THEN
+    RAISE EXCEPTION '[P4] exemption sûre des créneaux support (source=support) absente du garde-fou';
+  END IF;
+
+  IF _def NOT LIKE '%support_slot_invalid%'
+     OR _def NOT LIKE '%meal_type%pdj%collation%'
+     OR _def NOT LIKE '%preparation,mode%support%' THEN
+    RAISE EXCEPTION '[P4] validation stricte des créneaux support absente';
   END IF;
 
   RAISE NOTICE '[P4] exemption des créneaux support présente — assertions passent.';

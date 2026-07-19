@@ -115,4 +115,23 @@ describe('P4 — créneaux support et réservations pdj/collation', () => {
     // Le skyr reste entièrement disponible → rien ne le consomme.
     expect(payload.reservations.some((res) => res.lot_id === 'lot-skyr')).toBe(false)
   })
+
+  it('links support meals, uses a bounded support mode and schedules boiled eggs', () => {
+    const payload = buildCanonicalPlanPayload({
+      plan: basePlan(), recipes: [recipe], windowStart: '2026-07-20',
+      members: [julien], constraints: {},
+      inventoryLots: [
+        { id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 200 },
+        { id: 'lot-eggs', formNormalized: 'oeuf', gramsAvailable: 600 },
+      ],
+    })
+    const breakfast = payload.slots.find((slot) => slot.meal_type === 'pdj')
+    const breakfastMeals = payload.legacy_meals.filter((meal) => meal.meal_type === 'pdj')
+    expect(breakfast).toBeTruthy()
+    expect(breakfast.preparation.mode).toBe('support')
+    expect(breakfast.servings).toBeGreaterThanOrEqual(1)
+    expect(breakfastMeals.every((meal) => meal.slot_key === breakfast.slot_key)).toBe(true)
+    expect(payload.tasks.some((task) => task.slot_key === breakfast.slot_key && task.task_type === 'prepare_support')).toBe(true)
+  })
+
 })

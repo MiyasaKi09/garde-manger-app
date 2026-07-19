@@ -51,6 +51,23 @@ BEGIN
     RAISE EXCEPTION 'invalid_plan_payload';
   END IF;
 
+  -- Un créneau sans recette n'est autorisé que pour une prise support bornée.
+  -- Le garde-fou est volontairement strict : un client ne peut pas étiqueter un
+  -- déjeuner arbitraire comme « support » pour contourner le mapping canonique.
+  IF EXISTS (
+    SELECT 1
+    FROM jsonb_array_elements(COALESCE(p_payload->'slots', '[]'::jsonb)) AS support_slot(value)
+    WHERE value->>'source' = 'support'
+      AND (
+        COALESCE(value->>'meal_type', '') NOT IN ('pdj', 'collation')
+        OR NULLIF(value->>'recipe_code', '') IS NOT NULL
+        OR NULLIF(value->>'cooked_dish_id', '') IS NOT NULL
+        OR value#>>'{preparation,mode}' IS DISTINCT FROM 'support'
+      )
+  ) THEN
+    RAISE EXCEPTION 'support_slot_invalid';
+  END IF;
+
   IF (p_payload->>'window_start')::date IS NULL
      OR (p_payload->>'window_end')::date IS NULL
      OR (p_payload->>'window_end')::date < (p_payload->>'window_start')::date
@@ -154,7 +171,7 @@ BEGIN
     WHERE plan_version_id = v_version_id
       AND recipe_execution_id IS NULL
       AND cooked_dish_id IS NULL
-      AND source <> 'support'
+      AND source IS DISTINCT FROM 'support'
   ) THEN
     RAISE EXCEPTION 'recipe_execution_mapping_incomplete';
   END IF;
