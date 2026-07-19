@@ -44,7 +44,6 @@ jobs:
                   raise SystemExit(f"{path}: expected exactly one match, got {count}: {old[:80]!r}")
               p.write_text(text.replace(old, new, 1))
 
-          # Support legacy meals must reference the actual support slot.
           replace_once(
               'lib/domain/planning/personalizedMeals.js',
               "    slot_key: null,\n    person_name: member.name,",
@@ -91,7 +90,7 @@ jobs:
         task_type: 'prepare_support',
         earliest_start_at: new Date(`${prepDate}T07:00:00Z`).toISOString(),
         due_at: due,
-        safety_deadline_at: new Date(`${group.date}T07:00:00Z`).toISOString(),
+        safety_deadline_at: due,
         duration_min: 12,
         priority: 65,
         instructions: [{
@@ -128,7 +127,7 @@ jobs:
     FROM jsonb_array_elements(COALESCE(p_payload->'slots', '[]'::jsonb)) AS support_slot(value)
     WHERE value->>'source' = 'support'
       AND (
-        value->>'meal_type' NOT IN ('pdj', 'collation')
+        COALESCE(value->>'meal_type', '') NOT IN ('pdj', 'collation')
         OR NULLIF(value->>'recipe_code', '') IS NOT NULL
         OR NULLIF(value->>'cooked_dish_id', '') IS NOT NULL
         OR value#>>'{preparation,mode}' IS DISTINCT FROM 'support'
@@ -188,7 +187,14 @@ jobs:
           extra_test = r'''
 
   it('links support meals, uses a bounded support mode and schedules boiled eggs', () => {
-    const payload = buildCanonicalPlanPayload(baseArgs({ inventoryLots: lotsForAllSupplements() }))
+    const payload = buildCanonicalPlanPayload({
+      plan: basePlan(), recipes: [recipe], windowStart: '2026-07-20',
+      members: [julien], constraints: {},
+      inventoryLots: [
+        { id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 200 },
+        { id: 'lot-eggs', formNormalized: 'oeuf', gramsAvailable: 600 },
+      ],
+    })
     const breakfast = payload.slots.find((slot) => slot.meal_type === 'pdj')
     const breakfastMeals = payload.legacy_meals.filter((meal) => meal.meal_type === 'pdj')
     expect(breakfast).toBeTruthy()
