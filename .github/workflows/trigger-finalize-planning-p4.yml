@@ -1,0 +1,63 @@
+name: Trigger final planning P4 fixes
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+env:
+  NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: stub
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout working branch
+        uses: actions/checkout@v4
+        with:
+          ref: claude/planning-p4-support-slots
+          fetch-depth: 0
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply the reviewed one-shot transformations
+        shell: python
+        run: |
+          from pathlib import Path
+          workflow = Path('.github/workflows/finalize-planning-p4-once.yml').read_text()
+          section = workflow.split('- name: Harden support slots, link meals and add real preparation tasks', 1)[1]
+          block = section.split('run: |\n', 1)[1].split('\n      - name: Regenerate migration manifest', 1)[0]
+          script = '\n'.join(line[10:] if line.startswith('          ') else line for line in block.splitlines())
+          exec(compile(script, 'finalize-planning-p4-once.yml', 'exec'))
+
+      - name: Regenerate migration manifest
+        run: node scripts/db/build-manifest.mjs
+
+      - name: Run all unit tests
+        run: npx vitest run
+
+      - name: Build application
+        run: npm run build
+
+      - name: Commit verified fixes
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/finalize-planning-p4-once.yml
+          rm .github/workflows/trigger-finalize-planning-p4.yml
+          git config user.name "OpenAI"
+          git config user.email "openai@users.noreply.github.com"
+          git add -A
+          git commit -m "fix(planning): sécuriser et rendre exécutables les prises support"
+          git push origin HEAD:claude/planning-p4-support-slots
