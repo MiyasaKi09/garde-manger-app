@@ -66,14 +66,19 @@ describe('closedLoopPlanner', () => {
 
   it('garde un plan faisable avec répétition pénalisée si une seule recette est sûre', () => {
     const onlySafe = makeRecipe('A', 'fresh_acidic')
+    // Les deux créneaux sont espacés au-delà de la fenêtre de conservation
+    // (72 h réfrigérateur) : la stratégie production du lot P2 est impossible,
+    // le second créneau recuisine la même recette et la répétition est
+    // pénalisée comme avant.
     const plan = generateClosedLoopPlan({
-      slots: [{ key: 'd1', date: '2026-07-20' }, { key: 'd2', date: '2026-07-21' }],
+      slots: [{ key: 'd1', date: '2026-07-20' }, { key: 'd2', date: '2026-07-25' }],
       recipes: [onlySafe],
       constraints: { allowShopping: true },
     })
     expect(plan.status).toBe('published')
     expect(plan.slots).toHaveLength(2)
     expect(plan.slots[1].explanations).toContain('recipe_repeated')
+    expect(JSON.stringify(plan)).not.toContain('production')
   })
 
   it('préserve les repas fixes et remplace seulement le créneau ciblé', () => {

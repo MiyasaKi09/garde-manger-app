@@ -6,6 +6,7 @@ import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan, isMealSuitableRecipe } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
+import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
 import { SUPPLEMENT_FORMS } from '@/lib/domain/planning/personalizedMeals'
 
 export const dynamic = 'force-dynamic'
@@ -153,6 +154,70 @@ async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = n
   return { plannerLots, existingReservations }
 }
 
+// Nutrition mémorisée du plat, PAR portion. Utilisée seulement si les quatre
+// macros principales sont toutes présentes (les restes créés par
+// /api/meals/cook les remplissent, les plats saisis à la main non) ; sinon le
+// solveur retombe sur la nutrition de la recette appariée.
+function dishStoredNutrition(dish) {
+  const values = {
+    kcal: Number(dish.kcal_per_portion),
+    proteinG: Number(dish.protein_g_per_portion),
+    carbsG: Number(dish.carbs_g_per_portion),
+    fatG: Number(dish.fat_g_per_portion),
+  }
+  if (!Object.values(values).every(Number.isFinite)) return null
+  const fiber = Number(dish.fiber_g_per_portion)
+  return { ...values, fiberG: Number.isFinite(fiber) ? fiber : 0 }
+}
+
+/**
+ * Plats cuisinés visibles du solveur (audit P1-1) : portions restantes > 0 et
+ * non expirés (comparaison UTC, DLC absente = valide), accompagnés des
+ * réservations de portions actives des AUTRES versions de plan — celles de la
+ * version remplacée (excludedPlanVersionId) ne comptent pas, exactement comme
+ * pour les lots. Le net par plat est calculé par buildDishAvailability côté
+ * solveur ; rien n'est décrémenté ici.
+ */
+async function loadPlannerCookedDishes(supabase, excludedPlanVersionId = null) {
+  const { data: dishes, error: dishError } = await supabase
+    .from('cooked_dishes')
+    .select('id, name, portions_remaining, expiration_date, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion')
+    .gt('portions_remaining', 0)
+  if (dishError) throw new Error(`Plats cuisinés indisponibles: ${dishError.message}`)
+  const today = todayUtcIso()
+  const cookedDishes = (dishes || [])
+    .filter((dish) => !isDishExpired(dish.expiration_date, today))
+    .map((dish) => ({
+      id: dish.id,
+      name: dish.name,
+      portionsRemaining: Number(dish.portions_remaining) || 0,
+      expiresOn: dish.expiration_date ? String(dish.expiration_date).slice(0, 10) : null,
+      nutritionPerPortion: dishStoredNutrition(dish),
+    }))
+  if (!cookedDishes.length) return { cookedDishes: [], existingDishReservations: [] }
+
+  const { data: reservations, error: reservationError } = await supabase
+    .from('inventory_reservations')
+    .select('cooked_dish_id, plan_version_id, reserved_quantity, status')
+    .eq('status', 'active')
+  if (reservationError) {
+    // 42703 : colonne cooked_dish_id pas encore migrée (déploiement croisé
+    // avec la migration du lot P1) — aucune réservation de plat n'a donc pu
+    // être écrite, on continue sans.
+    if (reservationError.code === '42703') return { cookedDishes, existingDishReservations: [] }
+    throw new Error(`Réservations de plats indisponibles: ${reservationError.message}`)
+  }
+  const existingDishReservations = (reservations || [])
+    .filter((reservation) => reservation.cooked_dish_id != null)
+    .filter((reservation) => !excludedPlanVersionId || reservation.plan_version_id !== excludedPlanVersionId)
+    .map((reservation) => ({
+      cookedDishId: reservation.cooked_dish_id,
+      portions: Number(reservation.reserved_quantity) || 0,
+      status: 'active',
+    }))
+  return { cookedDishes, existingDishReservations }
+}
+
 export async function POST(request) {
   const { supabase, user, error: authError } = await authenticateRequest(request)
   if (authError || !user) return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
@@ -204,7 +269,10 @@ export async function POST(request) {
       }
     })
 
-    const { plannerLots, existingReservations } = await loadPlannerInventory(supabase, recipes, existing.activePlanVersionId)
+    const [{ plannerLots, existingReservations }, { cookedDishes, existingDishReservations }] = await Promise.all([
+      loadPlannerInventory(supabase, recipes, existing.activePlanVersionId),
+      loadPlannerCookedDishes(supabase, existing.activePlanVersionId),
+    ])
     const forbiddenForms = [...new Set([...dietary.allergies, ...dietary.bans].map(normalizeFoodForm).filter(Boolean))]
     const constraints = {
       allowShopping: true,
@@ -217,7 +285,7 @@ export async function POST(request) {
       preferredActiveMinutes: 30,
       recentRecipeTitles,
     }
-    const plan = generateClosedLoopPlan({ slots, recipes, inventoryLots: plannerLots, existingReservations, constraints, beamWidth: 48 })
+    const plan = generateClosedLoopPlan({ slots, recipes, inventoryLots: plannerLots, existingReservations, cookedDishes, existingDishReservations, constraints, beamWidth: 48 })
     if (plan.status !== 'published') {
       return NextResponse.json({ error: 'Aucun planning sûr ne satisfait les contraintes du foyer', issues: plan.issues }, { status: 422 })
     }
@@ -225,6 +293,7 @@ export async function POST(request) {
     const payload = buildCanonicalPlanPayload({
       plan, recipes, members, goals: goalsResult.data || [], windowStart, constraints, inventoryLots: plannerLots,
       existingReservations,
+      cookedDishes,
       corpusVersion: operationalCatalog.metadata.corpusVersion,
     })
     if (existing.planImport) payload.import_id = existing.planImport.id

@@ -15,3 +15,40 @@
 }
 .bat-prep-cook.bat-prep-cook-expired > svg { flex: none; }
 .bat-prep-cook.bat-prep-cook-expired .bat-cook-undo { color: var(--state-expired, #b3402a); }
+
+/* Dépendances du plan canonique (Lot P3 volet B, audit §13/F10) :
+   « Réchauffer X — mardi ← préparé ce jour ». Même vocabulaire visuel que la
+   check-list (mono, discret), aucune nouvelle esthétique. */
+.bat-deps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 3px;
+}
+.bat-dep {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: var(--font-text);
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+.bat-dep-when {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.bat-dep-t { color: var(--ink-1); }
+.bat-dep-arrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-3);
+}

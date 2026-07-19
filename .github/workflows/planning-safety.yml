@@ -1,0 +1,57 @@
+name: Planning safety
+
+on:
+  pull_request:
+    paths:
+      - 'app/api/meals/cook/**'
+      - 'app/api/planning/prep-tasks/**'
+      - 'lib/server/legacyMealCookRoute.js'
+      - 'tests/planning/mealsCook*.test.js'
+      - 'tests/planning/planProductionConsumption.test.js'
+      - 'tests/planning/prepTaskMaterialization.test.js'
+      - 'supabase/migrations/20260717000002_p2_planned_productions.sql'
+      - 'supabase/migrations/includes/**'
+      - 'scripts/db/build-manifest.mjs'
+      - 'scripts/db/migration-manifest.json'
+      - '.github/workflows/planning-safety.yml'
+  push:
+    branches:
+      - 'claude/**'
+    paths:
+      - 'app/api/meals/cook/**'
+      - 'app/api/planning/prep-tasks/**'
+      - 'lib/server/legacyMealCookRoute.js'
+      - 'tests/planning/mealsCook*.test.js'
+      - 'tests/planning/planProductionConsumption.test.js'
+      - 'tests/planning/prepTaskMaterialization.test.js'
+      - 'supabase/migrations/20260717000002_p2_planned_productions.sql'
+      - 'supabase/migrations/includes/**'
+      - 'scripts/db/build-manifest.mjs'
+      - 'scripts/db/migration-manifest.json'
+      - '.github/workflows/planning-safety.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  prepared-source-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Vérifier les plats préparés, les productions et la façade RPC
+        run: >-
+          npx vitest run
+          tests/planning/mealsCookExpiry.test.js
+          tests/planning/mealsCookPreparedSource.test.js
+          tests/planning/planProductionConsumption.test.js
+          tests/planning/prepTaskMaterialization.test.js
+          --reporter=verbose
+      - name: Vérifier le manifeste composite des migrations
+        run: |
+          node scripts/db/build-manifest.mjs
+          git diff --exit-code -- scripts/db/migration-manifest.json

@@ -1,23 +1,34 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
 import { normalizeRecipeName } from '@/lib/recipeNormalizer'
-import Anthropic from '@anthropic-ai/sdk'
+import { COOKED_DISH_SHELF_LIFE } from '@/lib/shelfLifeRules'
 
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
 
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-
 /**
  * POST /api/planning/batch/generate  { importId? }
  *
- * Génère un batch « prépa à l'avance » INTELLIGENT et le persiste dans l'app.
- * - Claude planifie QUAND cuisiner chaque plat (1 à 3 sessions selon la fraîcheur :
- *   les mijotés/congelables la veille, les plats fragiles en session d'appoint) et
- *   donne les conseils de conservation/réchauffage. Repli déterministe (règles par
- *   type de plat) si l'appel échoue → la génération n'échoue jamais.
- * - Les ingrédients sont agrégés/échelonnés depuis la fiche recette (déterministe).
- * Idempotent par import. S'exécute avec le client utilisateur → RLS = propriété.
+ * DÉRIVATEUR déterministe du batch cooking (audit F12, Lot P3 volet B) :
+ * plus AUCUN appel IA dans ce chemin — mêmes entrées, même sortie, toujours.
+ *
+ * 1. Chemin canonique (plans « boucle fermée ») : la version active du plan
+ *    (meal_plan_versions published/review_required) a publié des
+ *    planned_productions + des tâches versionnées (source='closed_loop').
+ *    L'endpoint ne DÉCIDE rien : il dérive les recettes batch de ces
+ *    productions (portions = planned_portions, jamais le nombre de lignes —
+ *    test K/F08 ; conservation = storage_method + use_by du solveur — F13)
+ *    et relie les repas via planned_consumptions.
+ * 2. Repli legacy (anciens plans sans productions) : le regroupement
+ *    déterministe historique MOINS l'appel IA. Les règles de conservation ne
+ *    viennent JAMAIS d'une regex sur le nom du plat (F13) : sans profil
+ *    validé, valeurs prudentes par défaut (72 h réfrigérateur via
+ *    lib/shelfLifeRules.js, congélation non déclarée → non congelable,
+ *    réchauffage générique) et conservation_source='default_conservative'.
+ *
+ * Idempotent par import. Ne touche JAMAIS aux tâches canoniques versionnées
+ * (source='closed_loop' / plan_version_id non nul) — audit F09, régression P0-8.
+ * S'exécute avec le client utilisateur → RLS = propriété.
  */
 
 /* ───────── matching fiche recette (même logique que /api/recipes/generated) ───────── */
@@ -62,54 +73,32 @@ const daysBetween = (a, b) => Math.round((new Date(`${b}T00:00:00Z`) - new Date(
 const DOW_FR = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
 const frShort = (iso) => { const d = new Date(`${iso}T00:00:00Z`); return `${DOW_FR[d.getUTCDay()]} ${d.getUTCDate()}` }
 const cap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : s
+const frPortions = (value) => String(Math.round((Number(value) || 0) * 100) / 100).replace('.', ',')
 
-/* ───────── profils de conservation par type de plat (repli déterministe) ───────── */
-// NOTE : ces regexes classifient les durées de conservation frigo/congélo,
-// elles ne filtrent PAS les aliments interdits. Les mots comme "thon", "crevette",
-// "veau", "agneau" apparaissent ici uniquement pour estimer la fragilité du plat
-// (poisson = 2 j, viande = 4 j). Les interdits alimentaires vivent désormais dans
-// la table user_food_bans (migration 20260709_routine_v5.sql) et sont injectés
-// dans les prompts IA via buildConstraintsBlock (lib/aiSystemPrompts.js) et
-// fetchDietaryConstraints (lib/aiContextBuilder.js).
-const DISH_PROFILES = [
-  { re: /(bourguignon|blanquette|daube|pot-au-feu|joues|tajine|navarin|carbonnade|osso|boeuf braise|bœuf braise)/, keeps: 5, freeze: true, better: true },
-  { re: /(dahl|dhal|curry|chili|cassoulet|lentille|pois chiche|haricot|soupe|veloute|velouté|potage|minestrone|ragout|ragoût|mijot)/, keeps: 5, freeze: true, better: true },
-  { re: /(bolognaise|bolognese|sauce tomate|ratatouille|sauce)/, keeps: 5, freeze: true, better: true },
-  { re: /(couscous|semoule|boulgour|boulghour)/, keeps: 4, freeze: true, better: false },
-  { re: /(quinoa|buddha bowl|bowl|riz|risotto|pates|pâtes|nouilles|gnocchi|pilaf|poke)/, keeps: 4, freeze: true, better: false },
-  { re: /(gratin|lasagne|hachis|parmentier|moussaka|enchilada|tarte|quiche|cake sale|clafoutis)/, keeps: 4, freeze: true, better: false },
-  { re: /(poulet|dinde|volaille|porc|veau|agneau|saucisse|boeuf|bœuf|steak|wok|saute|sauté|emince|émincé|boulette)/, keeps: 4, freeze: true, better: false },
-  { re: /(pho|ramen|bouillon)/, keeps: 4, freeze: true, better: false },
-  { re: /(poisson|cabillaud|saumon|thon|colin|lieu|merlu|crevette|gambas|fruits de mer|moule|seiche|calamar|crustace)/, keeps: 2, freeze: false, better: false },
-  { re: /(salade|crudite|crudité|tartine|wrap|carpaccio|taboule|taboulé|gaspacho|rouleau)/, keeps: 2, freeze: false, better: false },
-  { re: /(omelette|oeuf|œuf|frittata|tortilla)/, keeps: 3, freeze: false, better: false },
-]
-function classifyDish(name) {
-  const n = (name || '').toLowerCase()
-  for (const p of DISH_PROFILES) if (p.re.test(n)) return p
-  return { keeps: 3, freeze: true, better: false } // défaut prudent
+/* ───────── conservation déterministe (F13 : jamais de regex sur le nom) ───────── */
+// Sans profil validé : règle prudente de lib/shelfLifeRules.js — 3 j (72 h)
+// au réfrigérateur pour un plat cuisiné maison. Congélation non déclarée →
+// non congelable. Réchauffage générique (aucune inférence par nom de plat).
+const DEFAULT_KEEPS_DAYS = COOKED_DISH_SHELF_LIFE.fridge
+const REHEAT_GENERIC = 'Réchauffer à cœur : micro-ondes 2–3 min à couvert, ou casserole / poêle à feu doux — remuer à mi-parcours.'
+
+// Chemin canonique : la conservation vient du procédé choisi par le solveur
+// (storage_method) et de sa date limite (use_by) — profil de recette validé.
+function canonicalConservation(production) {
+  if (production.storage_method === 'freezer') {
+    return cap(`au congélateur dès la cuisson — décongeler la veille au réfrigérateur, à consommer avant le ${frShort(production.use_by)}`)
+  }
+  return cap(`au réfrigérateur — à consommer avant le ${frShort(production.use_by)}`)
 }
-function conservationAdvice(prof, cookDate, eats) {
+
+// Repli legacy : règle prudente par défaut, annoncée comme telle.
+function conservativeConservation(cookDate, eats) {
   const latest = eats[eats.length - 1]
-  const gap = daysBetween(cookDate, latest)
-  const bits = []
-  if (prof.better) bits.push('encore meilleur réchauffé')
-  if (gap <= prof.keeps) bits.push(`se garde ${prof.keeps} j au frigo`)
-  else if (prof.freeze) bits.push(`frigo jusqu'au ${frShort(addDays(cookDate, prof.keeps))}, congèle les portions suivantes (sortir la veille)`)
-  else bits.push(`fragile, à manger sous ${prof.keeps} j`)
-  return cap(bits.join(' · '))
-}
-function reheatFor(name) {
-  const n = (name || '').toLowerCase()
-  if (/(soupe|veloute|velouté|bouillon|dahl|curry|pho|ramen|chili|mijot|bourguignon|pot-au-feu|ragout|ragoût|tajine|blanquette)/.test(n))
-    return "Casserole à feu doux 6–8 min en remuant (un filet d'eau si besoin), ou micro-ondes 3 min à couvert."
-  if (/(salade|tartine|wrap|poke|carpaccio|taboul|cru|gaspacho)/.test(n))
-    return "Se mange froid : sortir du frigo 10 min avant. Garder sauce/croûtons à part jusqu'au service."
-  if (/(gratin|lasagne|hachis|parmentier|moussaka|enchilada|tarte|quiche)/.test(n))
-    return "Four 180°C 12–15 min (ou micro-ondes 3–4 min). Couvrir pour garder le moelleux."
-  if (/(riz|pates|pâtes|poulet|boeuf|bœuf|poisson|cabillaud|saumon|porc|dinde|veau|agneau|legume|légume|wok|saute|sauté|gnocchi|risotto|quinoa|semoule|couscous|nouilles)/.test(n))
-    return "Micro-ondes 2–3 min à couvert (un filet d'eau sur le féculent), ou poêle à feu moyen 4–5 min."
-  return "Micro-ondes 2–3 min à couvert, ou poêle à feu moyen — remuer à mi-parcours."
+  const limit = addDays(cookDate, DEFAULT_KEEPS_DAYS)
+  if (daysBetween(cookDate, latest) <= DEFAULT_KEEPS_DAYS) {
+    return `Règle prudente par défaut : se garde ${DEFAULT_KEEPS_DAYS} j (72 h) au réfrigérateur`
+  }
+  return `Règle prudente par défaut : à consommer avant le ${frShort(limit)} — congélation non déclarée, prévoir une cuisson d'appoint pour ${frShort(latest)}`
 }
 
 /* ───────── ingrédient échelonné « 600g blanc de poulet » ───────── */
@@ -123,86 +112,187 @@ function fmtIngredient(it, factor) {
   return [qtyStr, it.name].filter(Boolean).join(' ').trim()
 }
 
-/* ───────── planification intelligente (Claude) ───────── */
-const SYSTEM_PROMPT = `Tu es chef spécialiste du batch cooking et de la sécurité alimentaire. On te donne les déjeuners (lundi→vendredi) d'une semaine, DÉJÀ choisis : tu ne changes pas les plats, tu planifies seulement QUAND les cuisiner à l'avance et COMMENT les conserver.
-
-Objectif : un bon ÉQUILIBRE entre peu de sessions ET fraîcheur. Vise au plus ~3 jours entre la cuisson et la consommation : il vaut mieux 2 sessions que garder un plat 5 jours au frigo.
-
-Règles :
-- Fais en général DEUX sessions : une le dimanche (cook_sunday) pour les déjeuners du DÉBUT de semaine (lundi→mercredi), et une session d'appoint en MILIEU de semaine (ex. le mercredi) pour la FIN de semaine (jeudi→vendredi). Ne cuisine PAS tout le dimanche pour le vendredi (5 jours, c'est trop long).
-- Exception : un mijoté robuste et meilleur réchauffé (bourguignon, daube, dahl, currys) PEUT être cuisiné le dimanche même pour le milieu de semaine.
-- Plats fragiles NON congelables (poisson/fruits de mer ≈2 j, salades/crudités/plats crus ≈1–2 j, œufs ≈3 j) : à cuisiner au plus près du jour où ils sont mangés (session d'appoint), jamais le dimanche pour la fin de semaine.
-- cook_date ∈ allowed_cook_dates, et TOUJOURS ≤ au premier jour où le plat est mangé.
-- Regroupe les plats d'une même tranche de semaine sur le MÊME jour de cuisine (2 sessions, pas 5).
-- keeps_days = conservation frigo réaliste (entier). freezable = booléen. conservation = phrase COURTE, concrète, en français (ex : « Se garde 5 j au frigo, encore meilleur réchauffé » ou « Congèle les portions de vendredi, sors-les la veille »). reheat = consigne de réchauffage courte et adaptée. prep_minutes = temps de cuisson estimé du lot (entier).
-
-Réponds UNIQUEMENT en JSON valide, sans texte autour, en RÉUTILISANT EXACTEMENT l'id fourni pour chaque plat : {"dishes":[{"id":"0","cook_date":"YYYY-MM-DD","keeps_days":5,"freezable":true,"conservation":"…","reheat":"…","prep_minutes":35}]}`
-
-function extractJson(text) {
-  if (!text) return null
-  const a = text.indexOf('{'), b = text.lastIndexOf('}')
-  if (a < 0 || b <= a) return null
-  try { return JSON.parse(text.slice(a, b + 1)) } catch { return null }
+function instructionsFromTask(task) {
+  const steps = Array.isArray(task?.instructions_json) ? task.instructions_json : []
+  if (!steps.length) return null
+  return steps.map((s, i) => `${i + 1}. ${s?.instruction || ''}`.trim()).join('\n') || null
 }
-async function scheduleWithClaude(dishesInput, cookSunday, allowedDates) {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    console.error('[batch] ANTHROPIC_API_KEY absente en prod — repli sur les règles')
-    return null
+
+/* ───────── nettoyage idempotent (ordre FK-safe, commun aux deux chemins) ───────── */
+async function sweepPreviousBatch(supabase, importId) {
+  const { error: unlinkErr } = await supabase
+    .from('nutrition_plan_meals').update({ batch_recipe_id: null }).eq('import_id', importId)
+  if (unlinkErr) return unlinkErr
+
+  // On ne remplace QUE les tâches de CE générateur (source='batch') et les
+  // lignes au défaut 'legacy' : la colonne `source` est NOT NULL DEFAULT
+  // 'legacy' (migration 20260713134235) et des endpoints VIVANTS insèrent
+  // encore des tâches sans `source` explicite (createImport via
+  // lib/nutritionPlanService) — le balayage 'legacy' n'est donc PAS un
+  // nettoyage one-shot historique. Les tâches canoniques versionnées
+  // (source='closed_loop', plan_version_id renseigné) ne doivent JAMAIS être
+  // touchées (audit F09, régression P0-8) — garde-fou supplémentaire : on ne
+  // supprime rien qui soit rattaché à une version de plan.
+  const { error: taskDelErr } = await supabase
+    .from('nutrition_plan_prep_tasks')
+    .delete()
+    .eq('import_id', importId)
+    .in('source', ['batch', 'legacy'])
+    .is('plan_version_id', null)
+  if (taskDelErr) return taskDelErr
+
+  const { error: recipeDelErr } = await supabase
+    .from('nutrition_plan_batch_recipes').delete().eq('import_id', importId)
+  if (recipeDelErr) return recipeDelErr
+  return null
+}
+
+/* ═════════ Chemin 1 — dérivation depuis le plan canonique (versions actives) ═════════ */
+async function deriveFromCanonicalPlan(supabase, importId) {
+  const { data: versions, error: vErr } = await supabase
+    .from('meal_plan_versions')
+    .select('id, version_no, status')
+    .eq('import_id', importId)
+    .in('status', ['published', 'review_required'])
+    .order('version_no', { ascending: false })
+    .limit(1)
+  if (vErr) return { error: vErr }
+  const version = versions?.[0]
+  if (!version) return { productions: null }
+
+  const { data: productions, error: pErr } = await supabase
+    .from('planned_productions')
+    .select('*')
+    .eq('plan_version_id', version.id)
+    .neq('status', 'cancelled')
+    .order('production_key', { ascending: true })
+  if (pErr) return { error: pErr }
+  if (!productions?.length) return { productions: null }
+
+  const { data: tasks, error: tErr } = await supabase
+    .from('nutrition_plan_prep_tasks')
+    .select('*')
+    .eq('import_id', importId)
+    .eq('plan_version_id', version.id)
+    .eq('source', 'closed_loop')
+    .order('id', { ascending: true })
+  if (tErr) return { error: tErr }
+
+  const { data: consumptions, error: cErr } = await supabase
+    .from('planned_consumptions')
+    .select('id, plan_version_id, slot_id, planned_production_id, portions')
+    .eq('plan_version_id', version.id)
+    .order('id', { ascending: true })
+  if (cErr) return { error: cErr }
+
+  return { version, productions, tasks: tasks || [], consumptions: consumptions || [] }
+}
+
+async function runCanonical(supabase, importId, canonical) {
+  const { productions, tasks, consumptions } = canonical
+  const taskById = new Map(tasks.map(t => [String(t.id), t]))
+
+  const { data: meals, error: mealsErr } = await supabase
+    .from('nutrition_plan_meals')
+    .select('id, meal_plan_slot_id, planned_servings, person_name')
+    .eq('import_id', importId)
+    .order('id', { ascending: true })
+  if (mealsErr) return NextResponse.json({ error: mealsErr.message }, { status: 500 })
+
+  const sweepErr = await sweepPreviousBatch(supabase, importId)
+  if (sweepErr) return NextResponse.json({ error: sweepErr.message }, { status: 500 })
+
+  const slotIdsByProduction = new Map()
+  for (const consumption of consumptions) {
+    if (!consumption.planned_production_id || !consumption.slot_id) continue
+    const key = String(consumption.planned_production_id)
+    if (!slotIdsByProduction.has(key)) slotIdsByProduction.set(key, new Set())
+    slotIdsByProduction.get(key).add(consumption.slot_id)
   }
-  try {
-    const payload = { cook_sunday: cookSunday, allowed_cook_dates: allowedDates, dishes: dishesInput }
-    const msg = await anthropic.messages.create({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 2000,
-      // cache_control sur le system prompt statique (même pattern que
-      // app/api/ai/chat). NB : sous le minimum cachable du modèle, le flag est
-      // simplement ignoré (aucune erreur) — utile dès que le prompt grossit.
-      system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }],
-      messages: [{ role: 'user', content: `Semaine à organiser (JSON) :\n${JSON.stringify(payload)}` }],
+
+  let batchCount = 0, linkedCount = 0
+  const cookDatesUsed = new Set()
+  const recipesOut = []
+
+  for (const production of productions) {
+    const sourceTask = production.source_task_id != null ? taskById.get(String(production.source_task_id)) : null
+    const cookDate = sourceTask?.prep_date || production.available_from
+    // F08/test K : portions = planned_portions du solveur, JAMAIS un nombre
+    // de lignes de repas (portions_total est un entier — l'exact vit dans
+    // rendement).
+    const plannedPortions = Number(production.planned_portions) || 1
+    const portionsTotal = Math.max(1, Math.round(plannedPortions))
+    const keepsDays = Math.max(0, daysBetween(cookDate, production.use_by))
+    const freezable = production.storage_method === 'freezer'
+
+    const slotIds = [...(slotIdsByProduction.get(String(production.id)) || [])]
+    const linkedMeals = slotIds.length
+      ? (meals || []).filter(m => m.meal_plan_slot_id && slotIds.includes(m.meal_plan_slot_id))
+      : []
+    const byPerson = {}
+    for (const m of linkedMeals) {
+      byPerson[m.person_name] = (byPerson[m.person_name] || 0) + (Number(m.planned_servings) || 1)
+    }
+    const portionsLabel = Object.entries(byPerson)
+      .map(([person, count]) => `${person}: ${frPortions(count)}`).join(' · ') || null
+
+    const { data: inserted, error: insErr } = await supabase
+      .from('nutrition_plan_batch_recipes')
+      .insert({
+        import_id: importId,
+        name: production.output_name,
+        cook_date: cookDate,
+        portions_total: portionsTotal,
+        keeps_days: keepsDays,
+        freezable,
+        ingredients: null,
+        instructions: instructionsFromTask(sourceTask),
+        reheat: REHEAT_GENERIC,
+        conservation: canonicalConservation(production),
+        portions: portionsLabel,
+        rendement: `${frPortions(plannedPortions)} portions`,
+      })
+      .select('id').single()
+    if (insErr || !inserted) continue
+    batchCount++
+    cookDatesUsed.add(cookDate)
+    recipesOut.push({
+      name: production.output_name,
+      cook_date: cookDate,
+      portions_total: portionsTotal,
+      planned_portions: plannedPortions,
+      freezable,
+      conservation_source: 'recipe_profile',
     })
-    const text = (msg.content || []).filter(b => b.type === 'text').map(b => b.text).join('')
-    const json = extractJson(text)
-    if (!json || !Array.isArray(json.dishes)) {
-      console.error('[batch] Réponse Claude inexploitable:', (text || '').slice(0, 160))
-      return null
+
+    if (linkedMeals.length) {
+      const ids = linkedMeals.map(m => m.id)
+      const { error: linkErr } = await supabase
+        .from('nutrition_plan_meals').update({ batch_recipe_id: inserted.id }).in('id', ids)
+      if (!linkErr) linkedCount += ids.length
     }
-    const map = new Map()
-    for (const d of json.dishes) {
-      const id = d?.id != null ? String(d.id) : null
-      if (id != null) map.set(id, d)
-    }
-    if (!map.size) {
-      console.error('[batch] Claude: dishes sans id exploitable —', JSON.stringify(json.dishes).slice(0, 200))
-      return null
-    }
-    return map
-  } catch (e) {
-    console.error('[batch] Claude indisponible:', e?.message || e)
-    return null
   }
+
+  // Aucune tâche source='batch' recréée ici : la check-list du jour de
+  // cuisine EST le plan canonique (tâches versionnées « Préparer X — N
+  // portions » dont la validation matérialise la production, P2).
+  return NextResponse.json({
+    ok: true, import_id: importId,
+    sessions: [...cookDatesUsed].sort(),
+    batch_recipes: batchCount, linked_meals: linkedCount,
+    planner: 'canonical',
+    recipes: recipesOut,
+  })
 }
 
-export async function POST(request) {
-  const { supabase, user, error: authError } = await authenticateRequest(request)
-  if (authError || !user) return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
-
-  let body = {}
-  try { body = await request.json() } catch { /* body optionnel */ }
-  let importId = body?.importId || null
-
-  let imp = null
-  if (importId) {
-    const { data } = await supabase.from('nutrition_plan_imports').select('*').eq('id', importId).maybeSingle()
-    imp = data
-  } else {
-    const { data } = await supabase.from('nutrition_plan_imports').select('*').order('id', { ascending: false }).limit(1)
-    imp = data?.[0] || null
-  }
-  if (!imp) return NextResponse.json({ error: 'Plan introuvable' }, { status: 404 })
-  importId = imp.id
-
+/* ═════════ Chemin 2 — repli déterministe legacy (anciens plans sans productions) ═════════ */
+async function runLegacy(supabase, importId, imp, user) {
   const { data: allMeals, error: mErr } = await supabase
-    .from('nutrition_plan_meals').select('*').eq('import_id', importId).eq('meal_type', 'dejeuner')
+    .from('nutrition_plan_meals')
+    .select('*')
+    .eq('import_id', importId)
+    .eq('meal_type', 'dejeuner')
+    .order('id', { ascending: true })
   if (mErr) return NextResponse.json({ error: mErr.message }, { status: 500 })
   const lunches = (allMeals || []).filter(m => { const wd = weekdayOf(m.meal_date); return wd >= 1 && wd <= 5 })
   if (!lunches.length) return NextResponse.json({ error: 'Aucun déjeuner en semaine à préparer' }, { status: 400 })
@@ -210,7 +300,9 @@ export async function POST(request) {
   const { data: recipes } = await supabase
     .from('generated_recipes').select('id,title,name_normalized,servings,ingredients,steps').eq('user_id', user.id)
 
-  // Regroupement par plat + jours mangés.
+  // Regroupement par plat + jours mangés (le regroupement par nom sert à
+  // identifier LE MÊME plat sur plusieurs jours — pas à en déduire des règles
+  // de conservation, F13).
   const groups = new Map() // key -> { name, meals[], eats:Set }
   for (const m of lunches) {
     const key = dishKey(m)
@@ -219,107 +311,50 @@ export async function POST(request) {
   }
 
   const cookSunday = addDays(imp.date_range_start, -1)
-  const allowedDates = [cookSunday, ...Array.from({ length: 5 }, (_, i) => addDays(imp.date_range_start, i))] // dim + lun→ven
 
-  // Entrée pour Claude — chaque plat porte un id stable (matching robuste, indépendant du nom).
-  const groupList = [...groups.entries()] // [key, g] — l'index sert d'id
-  const dishesInput = groupList.map(([key, g], i) => {
-    const byDate = {}
-    for (const m of g.meals) byDate[m.meal_date] = (byDate[m.meal_date] || 0) + 1
-    return {
-      id: String(i),
-      name: g.name,
-      total_portions: g.meals.length,
-      eats: Object.entries(byDate).sort().map(([date, portions]) => ({ date, weekday: DOW_FR[weekdayOf(date)], portions })),
-    }
-  })
-
-  const ai = await scheduleWithClaude(dishesInput, cookSunday, allowedDates)
-
-  // Planning final par plat : Claude si valide, sinon règles déterministes.
-  const plan = new Map() // key -> { cook_date, keeps_days, freezable, conservation, reheat, prep_minutes }
-  let aiApplied = 0
-  groupList.forEach(([key, g], i) => {
+  // Planification déterministe : fenêtre de fraîcheur alignée sur la règle
+  // prudente (72 h) → session du dimanche pour le début de semaine, session
+  // d'appoint le mercredi pour la fin de semaine. On ne cuisine jamais après
+  // le premier repas du plat. Mêmes entrées → même sortie, toujours (F12).
+  const FRESH = DEFAULT_KEEPS_DAYS
+  const midweek = addDays(cookSunday, 3)
+  const plan = new Map() // key -> { cook_date, keeps_days, freezable, conservation, reheat }
+  for (const [key, g] of groups) {
     const eats = [...g.eats].sort()
     const earliest = eats[0]
     const latest = eats[eats.length - 1]
-    const prof = classifyDish(g.name)
-
-    // base déterministe : on évite de garder un plat trop longtemps. Fenêtre de
-    // fraîcheur ~3 j → session du dimanche pour le début de semaine (lun→mer),
-    // session d'appoint le mercredi pour la fin de semaine (jeu→ven). On ne
-    // cuisine jamais après le 1er repas du plat.
-    const FRESH = 3
-    const midweek = addDays(cookSunday, 3)
     let cookDate
     if (daysBetween(cookSunday, latest) <= FRESH) cookDate = cookSunday
     else cookDate = midweek <= earliest ? midweek : earliest
-    let entry = {
+    plan.set(key, {
       cook_date: cookDate,
-      keeps_days: prof.keeps,
-      freezable: prof.freeze,
-      conservation: conservationAdvice(prof, cookDate, eats),
-      reheat: reheatFor(g.name),
-      prep_minutes: null,
-    }
+      keeps_days: DEFAULT_KEEPS_DAYS,
+      freezable: false, // congélation non déclarée → non congelable (F13)
+      conservation: conservativeConservation(cookDate, eats),
+      reheat: REHEAT_GENERIC,
+    })
+  }
 
-    // override Claude (matché par id) si cohérent (date allouée, jamais après le 1er repas)
-    const a = ai?.get(String(i))
-    if (a) {
-      let used = false
-      const cd = typeof a.cook_date === 'string' ? a.cook_date.slice(0, 10) : null
-      if (cd && allowedDates.includes(cd) && cd <= earliest) { entry.cook_date = cd; used = true }
-      if (Number.isFinite(a.keeps_days)) entry.keeps_days = Math.round(a.keeps_days)
-      if (typeof a.freezable === 'boolean') entry.freezable = a.freezable
-      if (typeof a.conservation === 'string' && a.conservation.trim()) { entry.conservation = cap(a.conservation.trim()); used = true }
-      if (typeof a.reheat === 'string' && a.reheat.trim()) { entry.reheat = a.reheat.trim(); used = true }
-      if (Number.isFinite(a.prep_minutes)) entry.prep_minutes = Math.round(a.prep_minutes)
-      if (used) aiApplied++
-    }
-    plan.set(key, entry)
-  })
-
-  // ── Idempotence (ordre FK-safe) ──
-  const { error: unlinkErr } = await supabase
-    .from('nutrition_plan_meals').update({ batch_recipe_id: null }).eq('import_id', importId)
-  if (unlinkErr) return NextResponse.json({ error: unlinkErr.message }, { status: 500 })
-
-  // On ne remplace QUE les tâches de CE générateur (source='batch') et les
-  // lignes au défaut 'legacy' : la colonne `source` est NOT NULL DEFAULT
-  // 'legacy' (migration 20260713134235) et des endpoints VIVANTS insèrent
-  // encore des tâches sans `source` explicite (createImport via
-  // lib/nutritionPlanService) — le balayage 'legacy' n'est donc PAS un
-  // nettoyage one-shot historique : il reproduit durablement le comportement
-  // de main (remplacement des tâches non canoniques de l'import à chaque
-  // génération). Les tâches canoniques versionnées (source='closed_loop',
-  // plan_version_id renseigné) ne doivent JAMAIS être touchées (audit F09) —
-  // garde-fou supplémentaire : on ne supprime rien qui soit rattaché à une
-  // version de plan.
-  const { error: taskDelErr } = await supabase
-    .from('nutrition_plan_prep_tasks')
-    .delete()
-    .eq('import_id', importId)
-    .in('source', ['batch', 'legacy'])
-    .is('plan_version_id', null)
-  if (taskDelErr) return NextResponse.json({ error: taskDelErr.message }, { status: 500 })
-
-  const { error: recipeDelErr } = await supabase
-    .from('nutrition_plan_batch_recipes').delete().eq('import_id', importId)
-  if (recipeDelErr) return NextResponse.json({ error: recipeDelErr.message }, { status: 500 })
+  const sweepErr = await sweepPreviousBatch(supabase, importId)
+  if (sweepErr) return NextResponse.json({ error: sweepErr.message }, { status: 500 })
 
   let batchCount = 0, linkedCount = 0
   const prepRows = []
   const cookDatesUsed = new Set()
+  const recipesOut = []
 
   for (const [key, g] of groups) {
     const p = plan.get(key)
-    const portions = g.meals.length
+    // F08/test K : portions = somme des planned_servings des lignes liées
+    // (défaut 1 par ligne), jamais le nombre de lignes.
+    const portionsExact = g.meals.reduce((sum, m) => sum + (Number(m.planned_servings) || 1), 0)
+    const portionsTotal = Math.max(1, Math.round(portionsExact))
     const rec = recipes?.length ? matchRecipe(g.meals[0].description || g.name, recipes) : null
 
     let ingredients = null, instructions = null, recMinutes = null
     if (rec) {
-      const servings = Number(rec.servings) || portions || 1
-      const factor = portions / servings
+      const servings = Number(rec.servings) || portionsExact || 1
+      const factor = portionsExact / servings
       const ingArr = Array.isArray(rec.ingredients) ? rec.ingredients : []
       if (ingArr.length) ingredients = ingArr.map(it => fmtIngredient(it, factor)).filter(Boolean).join(' · ')
       const stepArr = Array.isArray(rec.steps) ? rec.steps : []
@@ -329,11 +364,13 @@ export async function POST(request) {
         if (sum > 0) recMinutes = Math.min(sum, 90)
       }
     }
-    const minutes = p.prep_minutes || recMinutes || 30
+    const minutes = recMinutes || 30
 
     const byPerson = {}
-    for (const m of g.meals) byPerson[m.person_name] = (byPerson[m.person_name] || 0) + 1
-    const portionsLabel = Object.entries(byPerson).map(([per, c]) => `${per}: ${c}`).join(' · ')
+    for (const m of g.meals) {
+      byPerson[m.person_name] = (byPerson[m.person_name] || 0) + (Number(m.planned_servings) || 1)
+    }
+    const portionsLabel = Object.entries(byPerson).map(([per, c]) => `${per}: ${frPortions(c)}`).join(' · ')
 
     const { data: inserted, error: insErr } = await supabase
       .from('nutrition_plan_batch_recipes')
@@ -341,7 +378,7 @@ export async function POST(request) {
         import_id: importId,
         name: g.name,
         cook_date: p.cook_date,
-        portions_total: portions,
+        portions_total: portionsTotal,
         keeps_days: p.keeps_days,
         freezable: p.freezable,
         ingredients,
@@ -349,12 +386,20 @@ export async function POST(request) {
         reheat: p.reheat,
         conservation: p.conservation,
         portions: portionsLabel,
-        rendement: `${portions} portions`,
+        rendement: `${frPortions(portionsExact)} portions`,
       })
       .select('id').single()
     if (insErr || !inserted) continue
     batchCount++
     cookDatesUsed.add(p.cook_date)
+    recipesOut.push({
+      name: g.name,
+      cook_date: p.cook_date,
+      portions_total: portionsTotal,
+      planned_portions: portionsExact,
+      freezable: p.freezable,
+      conservation_source: 'default_conservative',
+    })
 
     const ids = g.meals.map(m => m.id)
     await supabase.from('nutrition_plan_meals').update({ batch_recipe_id: inserted.id }).in('id', ids)
@@ -364,7 +409,7 @@ export async function POST(request) {
       import_id: importId,
       prep_date: p.cook_date,
       prep_label: 'Jour de cuisine',
-      task: `Cuisiner ${g.name} — ${portions} portions, portionner en barquettes`,
+      task: `Cuisiner ${g.name} — ${frPortions(portionsExact)} portions, portionner en barquettes`,
       estimated_time: `${minutes} min`,
       source: 'batch', // tague les tâches de ce générateur (idempotence scoping, F09)
     })
@@ -390,6 +435,35 @@ export async function POST(request) {
     ok: true, import_id: importId,
     sessions: [...cookDatesUsed].sort(),
     batch_recipes: batchCount, linked_meals: linkedCount,
-    planner: aiApplied > 0 ? 'ai' : 'rules',
+    planner: 'rules',
+    recipes: recipesOut,
   })
+}
+
+export async function POST(request) {
+  const { supabase, user, error: authError } = await authenticateRequest(request)
+  if (authError || !user) return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
+
+  let body = {}
+  try { body = await request.json() } catch { /* body optionnel */ }
+  let importId = body?.importId || null
+
+  let imp = null
+  if (importId) {
+    const { data } = await supabase.from('nutrition_plan_imports').select('*').eq('id', importId).maybeSingle()
+    imp = data
+  } else {
+    const { data } = await supabase.from('nutrition_plan_imports').select('*').order('id', { ascending: false }).limit(1)
+    imp = data?.[0] || null
+  }
+  if (!imp) return NextResponse.json({ error: 'Plan introuvable' }, { status: 404 })
+  importId = imp.id
+
+  // Version active + productions publiées par le solveur ? → dérivation
+  // canonique. Sinon (anciens plans), repli déterministe pur.
+  const canonical = await deriveFromCanonicalPlan(supabase, importId)
+  if (canonical.error) return NextResponse.json({ error: canonical.error.message }, { status: 500 })
+  if (canonical.productions?.length) return runCanonical(supabase, importId, canonical)
+
+  return runLegacy(supabase, importId, imp, user)
 }

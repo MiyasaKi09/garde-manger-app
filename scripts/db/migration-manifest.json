@@ -1055,5 +1055,61 @@
         "table": "nutrition_plan_meals"
       }
     ]
+  },
+  {
+    "file": "20260717000001_p1_cooked_dish_reservations.sql",
+    "github_version": "20260717000001",
+    "name": "p1_cooked_dish_reservations",
+    "sha256": "e16e2424a9ff63dd6965d328b6951535b337a5d679ca8830c17605c35aad3706",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260717000001_p1_cooked_dish_reservations_rollback.sql",
+    "github_version": "20260717000001",
+    "name": "p1_cooked_dish_reservations_rollback",
+    "sha256": "a8db3e5f5273d2d112d13902f1b7314f9eaa7dfa573b833cbe1d8d1b7fc0c3b8",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260717000002_p2_planned_productions.sql",
+    "github_version": "20260717000002",
+    "name": "p2_planned_productions",
+    "sha256": "f8c12519fcc63540092e16f2d9dee66c5ba9387dfe3aba40909254253762b67a",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "planned_productions"
+      },
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "planned_consumptions"
+      },
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "set_planned_task_done"
+      }
+    ]
+  },
+  {
+    "file": "20260717000002_p2_planned_productions_rollback.sql",
+    "github_version": "20260717000002",
+    "name": "p2_planned_productions_rollback",
+    "sha256": "25d2cf4488178f56e0f9c5b1538bdee9620df3c9ff7a1863c6e240f758572d1d",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

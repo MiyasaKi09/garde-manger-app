@@ -310,7 +310,19 @@ describe('canonical plan publication payload', () => {
     })
     expect(plan.status).toBe('published')
     expect(plan.slots).toHaveLength(14)
-    expect(new Set(plan.slots.map((slot) => slot.recipeCode)).size).toBeGreaterThan(10)
+    // Depuis le lot P2, la semaine mutualise au plus 2 productions (≤ 4 repas
+    // chacune) : la diversité minimale passe de > 10 recettes distinctes à
+    // ≥ 6, et les règles hebdomadaires restent arbitrées par les déficits.
+    expect(new Set(plan.slots.map((slot) => slot.recipeCode)).size).toBeGreaterThanOrEqual(6)
+    const producers = plan.slots.filter((slot) => slot.production)
+    expect(producers.length).toBeLessThanOrEqual(2)
+    // Aucun consommateur orphelin : chaque créneau couvert référence un
+    // producteur antérieur du même plan (test L côté solveur).
+    const producerKeys = new Set(producers.map((slot) => slot.key))
+    for (const slot of plan.slots.filter((item) => item.productionKey)) {
+      expect(producerKeys.has(slot.producerSlotKey)).toBe(true)
+      expect(slot.allocations).toEqual([])
+    }
     expect(plan.shoppingItems.every((item) => item.grams > 0)).toBe(true)
   })
 })
