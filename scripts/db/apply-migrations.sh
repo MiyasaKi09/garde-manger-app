@@ -90,20 +90,35 @@ if [ "${#FILES[@]}" -eq 0 ]; then
   exit 1
 fi
 
+# Les anciens fichiers préfixés seulement par YYYYMMDD peuvent être plusieurs
+# le même jour. Une version brute partagée ne peut pas servir de clé primaire au
+# ledger. Comme le générateur de manifeste, utiliser le basename complet pour
+# les seules versions collisionnelles.
+declare -A VERSION_COUNTS=()
+for f in "${FILES[@]}"; do
+  count_base="$(basename "$f" .sql)"
+  count_version="${count_base%%_*}"
+  VERSION_COUNTS["$count_version"]=$(( ${VERSION_COUNTS["$count_version"]:-0} + 1 ))
+done
+
 applied=0
 skipped=0
 
 for f in "${FILES[@]}"; do
   base="$(basename "$f" .sql)"
-  version="${base%%_*}"
-  name="${base#*_}"
+  raw_version="${base%%_*}"
+  version="$raw_version"
+  if [ "${VERSION_COUNTS["$raw_version"]}" -gt 1 ]; then
+    version="$base"
+  fi
+  name="${base#${raw_version}_}"
 
   # P2 est une migration composée : le gros contrat de publication reste dans le
   # fichier historique, tandis que la clôture atomique des tâches est isolée dans
   # un include lisible. Les deux sont inclus dans la même transaction et dans la
   # même empreinte de drift ; ils constituent donc une seule version logique.
   extra_include=""
-  if [ "$version" = "20260717000002" ]; then
+  if [ "$raw_version" = "20260717000002" ]; then
     candidate="$MIGRATION_DIR/includes/20260717000002_atomic_planned_task_materialization.sql"
     if [ ! -f "$candidate" ]; then
       echo "ERREUR include P2 manquant : $candidate" >&2

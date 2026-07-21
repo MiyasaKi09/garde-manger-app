@@ -102,12 +102,49 @@ while IFS= read -r entry; do
   file="$(echo "$entry" | jq -r '.file')"
 
   # ── Déjà reconcilié (github_version dans schema_migrations) ? ─────────────
-  present="$(psql "$DATABASE_URL" -tAq \
-    -c "SELECT 1 FROM supabase_migrations.schema_migrations WHERE version='${github_version}' LIMIT 1" \
-    | tr -d '[:space:]')"
+  # Une ancienne exécution peut avoir écrit le ledger Supabase sans le checksum
+  # ops. Dans ce cas, compléter le checksum au lieu de considérer l'entrée comme
+  # totalement réconciliée. Un checksum divergent est toujours bloquant.
+  state_row="$(psql "$DATABASE_URL" -tAq -F '|' -c "
+    SELECT
+      CASE WHEN sm.version IS NOT NULL THEN '1' ELSE '0' END,
+      COALESCE(ck.name, ''),
+      COALESCE(ck.sha256, '')
+    FROM (SELECT 1) AS seed
+    LEFT JOIN supabase_migrations.schema_migrations sm
+      ON sm.version = '${github_version}'
+    LEFT JOIN ops.schema_migration_checksums ck
+      ON ck.version = '${github_version}'
+    LIMIT 1;")"
+  IFS='|' read -r present checksum_name checksum_sha <<< "$state_row"
+
   if [ "$present" = "1" ]; then
-    echo "skip   $file (github_version déjà dans le ledger)"
-    skipped=$((skipped + 1))
+    if [ -n "$checksum_sha" ]; then
+      if [ "$checksum_name" != "$name" ] || [ "$checksum_sha" != "$sha256" ]; then
+        echo "ERREUR : checksum divergent pour $file" >&2
+        echo "  Enregistré : ${checksum_name} ${checksum_sha}" >&2
+        echo "  Manifeste  : ${name} ${sha256}" >&2
+        errors=$((errors + 1))
+      else
+        echo "skip   $file (ledger et checksum déjà réconciliés)"
+        skipped=$((skipped + 1))
+      fi
+      continue
+    fi
+
+    if [ "$MODE" = "dry-run" ]; then
+      echo "would_record_checksum $file (ledger présent, checksum absent)"
+      recorded=$((recorded + 1))
+      continue
+    fi
+
+    echo "record checksum $file (ledger déjà présent)"
+    psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q --single-transaction \
+      -c "DO \$lock\$ BEGIN PERFORM pg_advisory_xact_lock(hashtext('myko_schema_migrations')); END \$lock\$;" \
+      -c "INSERT INTO ops.schema_migration_checksums(version, name, sha256)
+            VALUES ('${github_version}', '${name}', '${sha256}')
+            ON CONFLICT DO NOTHING;"
+    recorded=$((recorded + 1))
     continue
   fi
 

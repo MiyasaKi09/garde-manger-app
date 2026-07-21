@@ -141,7 +141,7 @@
   },
   {
     "file": "20260518_add_short_label_meals.sql",
-    "github_version": "20260518",
+    "github_version": "20260518_add_short_label_meals",
     "name": "add_short_label_meals",
     "sha256": "746129a106095a0f0c3d6691b1ea36444d687270ce3f6edc27a7083800ab32c3",
     "role": "apply",
@@ -151,7 +151,7 @@
   },
   {
     "file": "20260518_generated_recipe_ingredients.sql",
-    "github_version": "20260518",
+    "github_version": "20260518_generated_recipe_ingredients",
     "name": "generated_recipe_ingredients",
     "sha256": "e777a1d5b40473a028219ed21bcf654913536391c9a240724e620330233ef72d",
     "role": "apply",
@@ -161,7 +161,7 @@
   },
   {
     "file": "20260525_shelf_life_canonical_foods.sql",
-    "github_version": "20260525",
+    "github_version": "20260525_shelf_life_canonical_foods",
     "name": "shelf_life_canonical_foods",
     "sha256": "7100ec628b547b3a01df46b1c0e92d2ddf4913eecc2508ecc3a26ba506152ac9",
     "role": "apply",
@@ -171,7 +171,7 @@
   },
   {
     "file": "20260525_shopping_items_ids.sql",
-    "github_version": "20260525",
+    "github_version": "20260525_shopping_items_ids",
     "name": "shopping_items_ids",
     "sha256": "19d876b6565e11ae34bac17b7acd650aeabfabd297baa6cafbfe17d1ebbbb6e0",
     "role": "apply",
@@ -201,7 +201,7 @@
   },
   {
     "file": "20260609_consume_lots_fefo_rpc.sql",
-    "github_version": "20260609",
+    "github_version": "20260609_consume_lots_fefo_rpc",
     "name": "consume_lots_fefo_rpc",
     "sha256": "3dd444c8b21fe659adadcdc4e11d2bc3575fd2662607f0767ca34623bb2115f4",
     "role": "apply",
@@ -211,7 +211,7 @@
   },
   {
     "file": "20260609_db_hardening.sql",
-    "github_version": "20260609",
+    "github_version": "20260609_db_hardening",
     "name": "db_hardening",
     "sha256": "eec0123cc51702c3a0cb24a364811e8c5a3ddf43aed77afad6dbef95ccacb9c3",
     "role": "apply",
@@ -221,7 +221,7 @@
   },
   {
     "file": "20260610_archetype_nutrition_overrides.sql",
-    "github_version": "20260610",
+    "github_version": "20260610_archetype_nutrition_overrides",
     "name": "archetype_nutrition_overrides",
     "sha256": "d6b249094ff7efdbd8b95372087e70606fd98fee47acb779b62e7d9870d247c8",
     "role": "apply",
@@ -231,7 +231,7 @@
   },
   {
     "file": "20260610_auto_open_lot.sql",
-    "github_version": "20260610",
+    "github_version": "20260610_auto_open_lot",
     "name": "auto_open_lot",
     "sha256": "8411ca311cd7b32ed0d6d6c9edad2d235cc2a55ade2f013f70f919ef166b6899",
     "role": "apply",
@@ -241,7 +241,7 @@
   },
   {
     "file": "20260610_ciqual_reference.sql",
-    "github_version": "20260610",
+    "github_version": "20260610_ciqual_reference",
     "name": "ciqual_reference",
     "sha256": "3d4a6240ad86960e09df7c7ca8ec9d66df2d592ea1615c4809db965087976897",
     "role": "apply",
@@ -251,7 +251,7 @@
   },
   {
     "file": "20260610_common_foods.sql",
-    "github_version": "20260610",
+    "github_version": "20260610_common_foods",
     "name": "common_foods",
     "sha256": "34a3b4805f52518a012978d781644517f506401c8ca488fd9c99f9f7ed4c2716",
     "role": "apply",
@@ -261,7 +261,7 @@
   },
   {
     "file": "20260610_fix_ciqual_links.sql",
-    "github_version": "20260610",
+    "github_version": "20260610_fix_ciqual_links",
     "name": "fix_ciqual_links",
     "sha256": "4daeeaa85a434cb931a8a8b325c18f6cfe9c1318952888316838c8fe03e895b8",
     "role": "apply",
@@ -271,7 +271,7 @@
   },
   {
     "file": "20260610_fix_expiry_kind_perishables.sql",
-    "github_version": "20260610",
+    "github_version": "20260610_fix_expiry_kind_perishables",
     "name": "fix_expiry_kind_perishables",
     "sha256": "4f224886570c844d04c88bcd6fd8615339164f07b260c3285ddbe805f4709997",
     "role": "apply",
@@ -281,7 +281,7 @@
   },
   {
     "file": "20260610_fix_shelf_life_data.sql",
-    "github_version": "20260610",
+    "github_version": "20260610_fix_shelf_life_data",
     "name": "fix_shelf_life_data",
     "sha256": "58f3677a34357d906434df3b8a43bccc9ac27fdacaa529f2c524fa4e5c42de14",
     "role": "apply",
@@ -291,7 +291,7 @@
   },
   {
     "file": "20260610_meal_loop.sql",
-    "github_version": "20260610",
+    "github_version": "20260610_meal_loop",
     "name": "meal_loop",
     "sha256": "412c814ea6b8b912dab2a4cf371c0cd4d3b001b4c7078f4ffe9c11ef47b570ad",
     "role": "apply",
@@ -301,7 +301,7 @@
   },
   {
     "file": "20260611_decimal_portions.sql",
-    "github_version": "20260611",
+    "github_version": "20260611_decimal_portions",
     "name": "decimal_portions",
     "sha256": "119941e99f52dfd7b3252197121b89e1db62f7d2bea6a30004299971c9fa50fd",
     "role": "apply",
@@ -311,7 +311,7 @@
   },
   {
     "file": "20260611_merge_duplicate_canonicals.sql",
-    "github_version": "20260611",
+    "github_version": "20260611_merge_duplicate_canonicals",
     "name": "merge_duplicate_canonicals",
     "sha256": "9bf6428ad726309f07f1579166a28c3479a843e7341ed4d8ba6adb75687c936c",
     "role": "apply",
@@ -321,7 +321,7 @@
   },
   {
     "file": "20260708_nutrition_functions_consolidated.sql",
-    "github_version": "20260708",
+    "github_version": "20260708_nutrition_functions_consolidated",
     "name": "nutrition_functions_consolidated",
     "sha256": "d11d3cb1554148ec787688c8562a8418f528d8988b1f4fa7f27fb4d2db371664",
     "role": "apply",
@@ -331,7 +331,7 @@
   },
   {
     "file": "20260708_rls_user_tables.sql",
-    "github_version": "20260708",
+    "github_version": "20260708_rls_user_tables",
     "name": "rls_user_tables",
     "sha256": "13a579e155b76d1ec6c342babec8cfebcbe8aaf219760f12684595d689376d8f",
     "role": "apply",
@@ -351,7 +351,7 @@
   },
   {
     "file": "20260708_waste_prevention_log.sql",
-    "github_version": "20260708",
+    "github_version": "20260708_waste_prevention_log",
     "name": "waste_prevention_log",
     "sha256": "5ce0b7bd49ab6064d390d5d0b29a3be3e12fc1dec6bedbe0f0751aab3da2bd76",
     "role": "apply",
@@ -361,7 +361,7 @@
   },
   {
     "file": "20260709_meal_stock_deductions.sql",
-    "github_version": "20260709",
+    "github_version": "20260709_meal_stock_deductions",
     "name": "meal_stock_deductions",
     "sha256": "97c97b9eebff7927e6be83ed4656d2b03ca6f1964aad047999aa67c08eaac3a3",
     "role": "apply",
@@ -371,7 +371,7 @@
   },
   {
     "file": "20260709_routine_v5.sql",
-    "github_version": "20260709",
+    "github_version": "20260709_routine_v5",
     "name": "routine_v5",
     "sha256": "2f2bdeb62bf96da4e302136a2032fcc2ec500a190d1c3d3718eede6eb4a4bf08",
     "role": "apply",
