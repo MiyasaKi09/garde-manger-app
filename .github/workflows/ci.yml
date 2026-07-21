@@ -337,7 +337,9 @@ jobs:
             -c "CREATE SCHEMA IF NOT EXISTS supabase_migrations;" \
             -c "CREATE TABLE IF NOT EXISTS supabase_migrations.schema_migrations (version text PRIMARY KEY, name text, applied_at timestamptz NOT NULL DEFAULT now());" \
             -c "CREATE SCHEMA IF NOT EXISTS ops;" \
-            -c "CREATE TABLE IF NOT EXISTS ops.schema_migration_checksums (version text PRIMARY KEY, name text, sha256 text NOT NULL, applied_at timestamptz NOT NULL DEFAULT now());"
+            -c "CREATE TABLE IF NOT EXISTS ops.schema_migration_checksums (version text PRIMARY KEY, name text, sha256 text NOT NULL, applied_at timestamptz NOT NULL DEFAULT now());" \
+            -c "INSERT INTO supabase_migrations.schema_migrations(version, name)
+                  VALUES ('001', 'shelf_life_after_opening') ON CONFLICT DO NOTHING;"
 
       - name: "[B] Simulation état prod — appliquer migrations avec VERSIONS HISTORIQUES"
         env:
@@ -414,11 +416,13 @@ jobs:
             [ -z "$v" ] && continue
             present=$(psql "$DATABASE_URL" -tAc "SELECT 1 FROM supabase_migrations.schema_migrations WHERE version = '$v'")
             if [ "$present" != "1" ]; then echo "MANQUE dans le ledger : $v"; missing=1; fi
+            checksum=$(psql "$DATABASE_URL" -tAc "SELECT 1 FROM ops.schema_migration_checksums WHERE version = '$v'")
+            if [ "$checksum" != "1" ]; then echo "MANQUE dans les checksums : $v"; missing=1; fi
           done < <(node -e "
             const m = JSON.parse(require('fs').readFileSync('scripts/db/migration-manifest.json'));
             for (const e of m) if (e.role === 'apply' && e.baseline !== 'new') console.log(e.github_version);
           ")
-          [ "$missing" -eq 0 ] && echo "OK : toutes les github_versions baseline présentes dans le ledger."
+          [ "$missing" -eq 0 ] && echo "OK : toutes les github_versions baseline ont un ledger et un checksum."
 
       - name: "[B] Simulation état prod — socle stock historique"
         env:
