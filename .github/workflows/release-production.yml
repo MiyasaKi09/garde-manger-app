@@ -110,6 +110,10 @@ jobs:
         run: |
           node scripts/db/build-manifest.mjs
           git diff --exit-code -- scripts/db/migration-manifest.json
+      - name: Réconcilier le registre de migrations
+        run: |
+          bash scripts/db/reconcile-ledger.sh --dry-run
+          bash scripts/db/reconcile-ledger.sh apply
       - name: Dry-run migrations production
         run: bash scripts/db/apply-migrations.sh status
       - name: Appliquer les migrations production
