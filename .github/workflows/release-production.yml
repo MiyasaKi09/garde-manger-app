@@ -39,9 +39,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     env:
-      DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      PGSSLMODE: require
+      PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+      VERCEL_ORG_ID: team_MVt6BMtIICl0edY7H0YFiCaC
+      VERCEL_PROJECT_ID: prj_uAqd9Tniy2CDeN2bAWCPYlgVCET0
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -53,6 +54,58 @@ jobs:
           npm ci
           sudo apt-get update
           sudo apt-get install -y postgresql-client
+      - name: Configurer la connexion Supabase de production
+        env:
+          RAW_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
+          RAW_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+        run: |
+          set -euo pipefail
+          host="$RAW_HOST"
+          host="${host#postgresql://}"
+          host="${host#postgres://}"
+          if [[ "$host" == *"@"* ]]; then
+            host="${host#*@}"
+          fi
+          host="${host%%/*}"
+          host="${host%%:*}"
+          host="$(echo -n "$host" | tr -d '[:space:]')"
+          ref="$(echo -n "$RAW_REF" | tr -d '[:space:]')"
+
+          test -n "$host" || { echo "SUPABASE_POOLER_HOST est absent"; exit 1; }
+          test -n "$ref" || { echo "SUPABASE_PROJECT_REF est absent"; exit 1; }
+          test -n "$PGPASSWORD" || { echo "SUPABASE_DB_PASSWORD est absent"; exit 1; }
+
+          select_connection() {
+            local port="$1" user="$2" pg_options="$3"
+            if [ -n "$pg_options" ]; then
+              PGOPTIONS="$pg_options" psql \
+                "host=$host port=$port dbname=postgres user=$user sslmode=require" \
+                -Atc "select 1" >/dev/null 2>&1
+            else
+              psql "host=$host port=$port dbname=postgres user=$user sslmode=require" \
+                -Atc "select 1" >/dev/null 2>&1
+            fi
+          }
+
+          for candidate in \
+            "6543|postgres.${ref}|" \
+            "6543|postgres|project=${ref}" \
+            "6544|postgres.${ref}|" \
+            "6544|postgres|project=${ref}"
+          do
+            IFS='|' read -r port user pg_options <<< "$candidate"
+            if select_connection "$port" "$user" "$pg_options"; then
+              echo "DATABASE_URL=host=$host port=$port dbname=postgres user=$user sslmode=require" >> "$GITHUB_ENV"
+              if [ -n "$pg_options" ]; then
+                echo "PGOPTIONS=$pg_options" >> "$GITHUB_ENV"
+              fi
+              echo "Connexion Supabase validée sur le port $port"
+              exit 0
+            fi
+          done
+
+          echo "Aucune connexion Supabase de production n'a abouti"
+          exit 1
       - name: Vérifier le manifeste de migrations
         run: |
           node scripts/db/build-manifest.mjs
