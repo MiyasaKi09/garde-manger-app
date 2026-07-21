@@ -61,6 +61,9 @@ const NEW_VERSIONS = new Set([
   '20260717000001',
   '20260717000002',
   '20260719000001',
+  '20260721195504',
+  '20260721210000',
+  '20260721211500',
   '20260715190000',
   '20260715214547',
   '20260715221042',
@@ -113,6 +116,22 @@ const NEW_EXPECTED_OBJECTS = {
     { type: 'table', schema: 'public', name: 'planned_productions' },
     { type: 'table', schema: 'public', name: 'planned_consumptions' },
     { type: 'function', schema: 'public', name: 'set_planned_task_done' },
+  ],
+  '20260721195504': [
+    { type: 'table', schema: 'public', name: 'planned_demands' },
+    { type: 'function', schema: 'public', name: 'publish_canonical_final_demand_plan' },
+    { type: 'function', schema: 'public', name: 'planning_schema_compatibility' },
+    { type: 'column', schema: 'public', name: 'canonical_recipe_code', table: 'cooked_dishes' },
+    { type: 'column', schema: 'public', name: 'exact_required_qty', table: 'nutrition_plan_shopping_items' },
+    { type: 'trigger', schema: 'public', name: 'trg_sync_materialized_production_identity', table: 'planned_productions' },
+  ],
+  '20260721211500': [
+    { type: 'index', schema: 'public', name: 'idx_planned_demands_slot_id', table: 'planned_demands' },
+    { type: 'index', schema: 'public', name: 'idx_planned_demands_user_id', table: 'planned_demands' },
+    { type: 'index', schema: 'public', name: 'idx_planned_productions_recipe_execution_id', table: 'planned_productions' },
+    { type: 'index', schema: 'public', name: 'idx_cooked_dishes_canonical_recipe_execution_id', table: 'cooked_dishes' },
+    { type: 'index', schema: 'public', name: 'idx_cooked_dishes_planned_production_id', table: 'cooked_dishes' },
+    { type: 'index', schema: 'public', name: 'idx_cooked_dishes_source_plan_version_id', table: 'cooked_dishes' },
   ],
 };
 

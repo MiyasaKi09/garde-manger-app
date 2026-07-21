@@ -1,9 +1,7 @@
 'use client'
 
-/**
- * Toggle entre les personnes (Julien / Zoé).
- */
-export default function PersonSelector({ people = ['Julien', 'Zoé'], selected, onChange }) {
+/** Sélectionne un membre parmi la liste configurée pour le foyer. */
+export default function PersonSelector({ people = [], selected, onChange }) {
   return (
     <div style={styles.container}>
       {people.map(name => (

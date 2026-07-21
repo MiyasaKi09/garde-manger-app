@@ -43,12 +43,19 @@ describe('canonical plan publication payload', () => {
     const payload = buildCanonicalPlanPayload({
       plan, recipes: [recipe], windowStart: '2026-07-20',
       members: [{ name: 'Alex', portion_multiplier: 1 }, { name: 'Sam', portion_multiplier: 1 }],
+      goals: [
+        { person_name: 'Alex', target_calories: 1100, target_protein_g: 50, target_carbs_g: 140, target_fat_g: 35, target_fiber_g: 20 },
+        { person_name: 'Sam', target_calories: 1100, target_protein_g: 50, target_carbs_g: 140, target_fat_g: 35, target_fiber_g: 20 },
+      ],
       constraints: {}, inventoryLots: [{ id: 'lot-1', formNormalized: 'carotte crue', gramsAvailable: 150 }],
     })
-    expect(payload.recipe_executions).toHaveLength(1)
-    expect(payload.recipe_executions[0].content_hash).toMatch(/^[a-f0-9]{64}$/)
-    expect(payload.reservations[0]).toMatchObject({ reserved_quantity: 150, reserved_unit: 'g' })
-    expect(payload.shopping_items[0]).toMatchObject({ purchase_qty: 50, required_qty: 400, stock_qty: 150 })
+    expect(payload.recipe_executions).toHaveLength(2)
+    expect(payload.recipe_executions.every((execution) => /^[a-f0-9]{64}$/.test(execution.content_hash))).toBe(true)
+    expect(payload.reservations.filter((reservation) => reservation.lot_id === 'lot-1')
+      .reduce((sum, reservation) => sum + reservation.reserved_quantity, 0)).toBe(150)
+    const carrots = payload.shopping_items.find((item) => item.product_name === 'Carotte crue')
+    const exactRequired = payload.recipe_executions.reduce((sum, execution) => sum + execution.exact_ingredients_snapshot[0].grams, 0)
+    expect(carrots).toMatchObject({ purchase_qty: exactRequired - 150, required_qty: exactRequired, stock_qty: 150 })
     expect(payload.tasks[0].instructions).toEqual(recipe.exactSteps)
     expect(payload.legacy_meals).toHaveLength(6)
     expect(payload.slots[0].nutrition_by_member).toHaveProperty('Alex')
@@ -69,7 +76,7 @@ describe('canonical plan publication payload', () => {
     }
     const payload = buildCanonicalPlanPayload({
       plan, recipes: [recipe], windowStart: '2026-07-20',
-      members: [{ name: 'Julien', portion_multiplier: 1 }], constraints: {}, inventoryLots: [],
+      members: [{ name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }], constraints: {}, inventoryLots: [],
     })
     const skyr = payload.shopping_items.find((item) => item.product_name === 'Skyr nature')
     expect(skyr).toMatchObject({
@@ -102,7 +109,7 @@ describe('canonical plan publication payload', () => {
     ])
   })
 
-  it('publishes a kcal-valid day that misses the protein floor with a warning, never a throw', () => {
+  it('publishes an executable but nutritionally weak week as review_required', () => {
     const plan = {
       status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
       slots: [
@@ -113,7 +120,7 @@ describe('canonical plan publication payload', () => {
     const payload = buildCanonicalPlanPayload({
       plan, recipes: [recipe], windowStart: '2026-07-20',
       members: [{ name: 'Alex', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true } } }],
-      goals: [{ person_name: 'Alex', target_calories: 2000, target_protein_g: 300, target_carbs_g: 230, target_fat_g: 70, target_fiber_g: 25 }],
+      goals: [{ person_name: 'Alex', target_calories: 1450, target_protein_g: 300, target_carbs_g: 230, target_fat_g: 70, target_fiber_g: 25 }],
       constraints: {}, inventoryLots: [],
     })
 
@@ -139,6 +146,8 @@ describe('canonical plan publication payload', () => {
       energy: { valid_days: 1, days_total: 1 },
       protein: { valid_days: 0, days_total: 1 },
     })
+    expect(payload.validation_summary.status).toBe('review_required')
+    expect(payload.issues).toContainEqual(expect.objectContaining({ code: 'nutrition_week_review_required', severity: 'error' }))
     expect(payload.validation_summary.nutrition_dimensions.carbs.days_total).toBe(1)
     expect(payload.validation_summary.nutrition_dimensions.fat.days_total).toBe(1)
     expect(payload.validation_summary.nutrition_dimensions.fiber.days_total).toBe(1)
@@ -146,7 +155,7 @@ describe('canonical plan publication payload', () => {
     expect(payload.validation_summary.nutrition_coverage_pct).toBeUndefined()
   })
 
-  it('still refuses to publish when the daily energy target is out of tolerance', () => {
+  it('keeps safe bounded plates and marks infeasible energy targets review_required', () => {
     const plan = {
       status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
       slots: [
@@ -154,12 +163,15 @@ describe('canonical plan publication payload', () => {
         { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
       ],
     }
-    expect(() => buildCanonicalPlanPayload({
+    const payload = buildCanonicalPlanPayload({
       plan, recipes: [recipe], windowStart: '2026-07-20',
       members: [{ name: 'Alex', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true } } }],
       goals: [{ person_name: 'Alex', target_calories: 500 }],
       constraints: {}, inventoryLots: [],
-    })).toThrow(/Cibles énergétiques hors tolérance/)
+    })
+    expect(payload.validation_summary.status).toBe('review_required')
+    expect(payload.validation_summary.daily_energy_targets_valid).toBe(false)
+    expect(payload.legacy_meals.filter((meal) => meal.canonical_recipe_code).every((meal) => meal.planned_servings <= 2)).toBe(true)
   })
 
   it('allocates existing supplement lots FEFO and only ships the residual to shopping', () => {
@@ -172,7 +184,9 @@ describe('canonical plan publication payload', () => {
     }
     const build = () => buildCanonicalPlanPayload({
       plan, recipes: [recipe], windowStart: '2026-07-20',
-      members: [{ name: 'Julien', portion_multiplier: 1 }], constraints: {},
+      members: [{ name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }],
+      goals: [{ person_name: 'Julien', target_calories: 2000, target_protein_g: 150 }],
+      constraints: {},
       inventoryLots: [
         { id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 100, expiresOn: '2026-07-22', opened: true },
         { id: 'lot-oeufs', formNormalized: 'oeufs durs', gramsAvailable: 60, expiresOn: '2026-07-24', opened: false },
@@ -188,7 +202,9 @@ describe('canonical plan publication payload', () => {
       required_qty: 200,
       stock_qty: 100,
       reserved_qty: 100,
-      purchase_qty: 100,
+      purchase_qty: 200,
+      exact_required_qty: 100,
+      projected_surplus_qty: 100,
       purchase_unit: 'g',
       display_quantity: '1 pot de 200 g',
       container_qty: 1,
@@ -229,7 +245,7 @@ describe('canonical plan publication payload', () => {
     }
     const payload = buildCanonicalPlanPayload({
       plan, recipes: [recipe], windowStart: '2026-07-20',
-      members: [{ name: 'Julien', portion_multiplier: 1 }], constraints: {},
+      members: [{ name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }], constraints: {},
       inventoryLots: [
         // Noms réels du vocabulaire d'export (normalisés par loadPlannerInventory).
         { id: 'lot-oeuf', formNormalized: 'oeuf', gramsAvailable: 600, expiresOn: '2026-07-24', opened: false },
@@ -286,14 +302,22 @@ describe('canonical plan publication payload', () => {
     }
     const payload = buildCanonicalPlanPayload({
       plan: planWithReservation, recipes: [recipe], windowStart: '2026-07-20',
-      members: [{ name: 'Julien', portion_multiplier: 1 }], constraints: {},
+      members: [{ name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }], constraints: {},
       inventoryLots: [{ id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 200, expiresOn: '2026-07-22', opened: true }],
       existingReservations: [{ lotId: 'lot-skyr', grams: 50, status: 'active' }],
     })
     const skyr = payload.shopping_items.find((item) => item.product_name === 'Skyr nature')
-    // 200 g physiques - 120 g réservés par le plan - 50 g par une autre
-    // version = 30 g réellement allouables au petit-déjeuner.
-    expect(skyr).toMatchObject({ required_qty: 200, stock_qty: 30, reserved_qty: 30, purchase_qty: 170 })
+    // Les réservations de l'ancien grain `plan` sont volontairement ignorées :
+    // seule la demande finale est allouée. La réservation externe de 50 g est
+    // soustraite, puis l'achat est arrondi au pot physique de 200 g.
+    expect(skyr).toMatchObject({
+      required_qty: 200,
+      stock_qty: 150,
+      reserved_qty: 150,
+      exact_required_qty: 50,
+      purchase_qty: 200,
+      projected_surplus_qty: 150,
+    })
   })
 
   it('can compose a full week from the publishable V3 corpus without invented stock', () => {

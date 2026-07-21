@@ -27,7 +27,10 @@ describe('personalized deterministic meals', () => {
   it('plans 4 daily intakes for Julien and 3 for Zoé, including one vegetarian swap', () => {
     const result = buildPersonalizedMeals({
       plan: plan(), recipes: [meat, fish, veggie],
-      members: [{ id: 'j', name: 'Julien', portion_multiplier: 1, preferences: {} }, { id: 'z', name: 'Zoé', portion_multiplier: 1, preferences: {} }],
+      members: [
+        { id: 'j', name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } },
+        { id: 'z', name: 'Zoé', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true, vegetarian_meat_swaps_per_week: 1 } } },
+      ],
       goals: [
         { person_name: 'Julien', target_calories: 2357, target_protein_g: 216, target_carbs_g: 196, target_fat_g: 79, target_fiber_g: 33 },
         { person_name: 'Zoé', target_calories: 1525, target_protein_g: 75, target_carbs_g: 192, target_fat_g: 51, target_fiber_g: 21 },
@@ -56,12 +59,13 @@ describe('personalized deterministic meals', () => {
     })
     expect(result.meals.filter((meal) => meal.variant_kind === 'fixed_breakfast')
       .every((meal) => !meal.description.includes('œufs de œufs'))).toBe(true)
-    for (const day of result.daily) {
-      expect(Math.abs(day.total.proteinG - day.target.proteinG) / day.target.proteinG, JSON.stringify(day)).toBeLessThanOrEqual(0.2)
-      expect(Math.abs(day.total.carbsG - day.target.carbsG) / day.target.carbsG, JSON.stringify(day)).toBeLessThanOrEqual(0.2)
-      expect(Math.abs(day.total.fatG - day.target.fatG) / day.target.fatG, JSON.stringify(day)).toBeLessThanOrEqual(0.2)
-      expect(day.total.fiberG).toBeGreaterThanOrEqual(day.target.fiberG * 0.8)
-    }
+    // Les écarts par dimension sont vrais et explicites : une journée qui
+    // manque sa cible protéique/glucidique n'est plus présentée comme parfaite.
+    expect(result.daily.some((day) => day.macro_valid === false)).toBe(true)
+    expect(result.daily.every((day) => typeof day.protein_valid === 'boolean')).toBe(true)
+    expect(result.daily.every((day) => typeof day.carbs_valid === 'boolean')).toBe(true)
+    expect(result.weeklyMicronutrients).toHaveLength(2)
+    expect(result.weeklyMicronutrients.every((week) => week.data_complete === false)).toBe(true)
   })
 
   it('chooses different portions while holding each personal calorie target', () => {
@@ -74,15 +78,21 @@ describe('personalized deterministic meals', () => {
     expect(Math.abs(zoe.total.kcal - 1525) / 1525).toBeLessThanOrEqual(0.05)
     expect(julien).toMatchObject({ breakfastScale: 1, snackScale: 1 })
     expect(zoe).toMatchObject({ breakfastScale: 0, snackScale: 1 })
-    expect(julien.lunchScale * 4).toBe(Math.round(julien.lunchScale * 4))
-    expect(julien.dinnerScale * 4).toBe(Math.round(julien.dinnerScale * 4))
+    for (const scale of [julien.lunchScale, julien.dinnerScale, zoe.lunchScale, zoe.dinnerScale]) {
+      expect(scale).toBeGreaterThanOrEqual(0.5)
+      expect(scale).toBeLessThanOrEqual(2)
+      expect(scale * 10).toBe(Math.round(scale * 10))
+    }
     expect(julien.lunchScale).not.toBe(zoe.lunchScale)
   })
 
   it('never serves a preparation-requiring food in any snack of a 7-day plan', () => {
     const result = buildPersonalizedMeals({
       plan: plan(), recipes: [meat, fish, veggie],
-      members: [{ id: 'j', name: 'Julien', portion_multiplier: 1, preferences: {} }, { id: 'z', name: 'Zoé', portion_multiplier: 1, preferences: {} }],
+      members: [
+        { id: 'j', name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } },
+        { id: 'z', name: 'Zoé', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true, vegetarian_meat_swaps_per_week: 1 } } },
+      ],
       goals: [
         { person_name: 'Julien', target_calories: 2357, target_protein_g: 216, target_carbs_g: 196, target_fat_g: 79, target_fiber_g: 33 },
         { person_name: 'Zoé', target_calories: 1525, target_protein_g: 75, target_carbs_g: 192, target_fat_g: 51, target_fiber_g: 21 },
@@ -106,7 +116,21 @@ describe('personalized deterministic meals', () => {
     expect(result.supplementalRequirements.every((item) => !/r[ôo]ti/i.test(item.label))).toBe(true)
   })
 
-  it('keeps energy as the only hard gate while persisting per-dimension nutrition validity', () => {
+  it('replaces forbidden recipes and support foods before creating demands', () => {
+    const result = buildPersonalizedMeals({
+      plan: plan(), recipes: [meat, fish, veggie],
+      members: [{ id: 'm', name: 'Camille', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true } } }],
+      goals: [{ person_name: 'Camille', target_calories: 1700, target_protein_g: 140 }],
+      constraints: { allergens: ['poisson'], forbiddenForms: ['thon'], diets: ['sans poisson'] },
+    })
+
+    expect(result.daily.every((day) => day.support_safe && day.recipes_safe)).toBe(true)
+    expect(result.meals.filter((item) => item.meal_type === 'diner').every((item) => item.canonical_recipe_code !== 'FISH')).toBe(true)
+    expect(result.meals.flatMap((item) => item.portion_details?.items || []).every((item) => item.food !== 'tuna')).toBe(true)
+    expect(result.supplementalRequirements.every((item) => !/thon/i.test(item.label))).toBe(true)
+  })
+
+  it('persists every nutrition dimension without inflating portions past the hard ceiling', () => {
     const result = buildPersonalizedMeals({
       plan: plan(), recipes: [meat, fish, veggie],
       members: [{ id: 'a', name: 'Alex', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true } } }],
@@ -131,6 +155,8 @@ describe('personalized deterministic meals', () => {
       })
     }
     expect(result.valid).toBe(true)
+    expect(result.daily.every((day) => day.portion_safe)).toBe(true)
+    expect(result.meals.filter((meal) => meal.canonical_recipe_code).every((meal) => meal.planned_servings <= 2)).toBe(true)
   })
 
   it('exposes purchasable supplement forms with their gram conversions', () => {

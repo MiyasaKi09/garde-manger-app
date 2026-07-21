@@ -148,7 +148,8 @@ function WeightCurve({ weights, target }) {
 
 export default function NutritionPage() {
   const router = useRouter()
-  const [person, setPerson] = useState('Julien')
+  const [people, setPeople] = useState([])
+  const [person, setPerson] = useState('')
   const [date, setDate] = useState(new Date().toISOString().split('T')[0])
   const [meals, setMeals] = useState([])
   const [goals, setGoals] = useState(null)
@@ -158,13 +159,20 @@ export default function NutritionPage() {
   const [newWeight, setNewWeight] = useState('')
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (!session?.user) router.push('/login')
-      else loadData()
+      else {
+        const response = await authFetch('/api/household/members')
+        const payload = await response.json().catch(() => ({}))
+        const names = (payload.members || []).filter(member => member.active !== false).map(member => member.name).filter(Boolean)
+        setPeople(names)
+        setPerson(current => current || names[0] || '')
+        if (!names.length) setLoading(false)
+      }
     })
   }, [])
 
-  useEffect(() => { loadData() }, [person, date])
+  useEffect(() => { if (person) loadData() }, [person, date])
 
   async function loadData() {
     setLoading(true)
@@ -253,7 +261,7 @@ export default function NutritionPage() {
           <p className="v21-lede">Ce qui nourrit {person}, jour après jour.</p>
         </div>
         <div className="v21-hero-side">
-          <PersonSelector selected={person} onChange={setPerson} />
+          <PersonSelector people={people} selected={person} onChange={setPerson} />
         </div>
       </header>
 

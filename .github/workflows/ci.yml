@@ -6,6 +6,7 @@ on:
     branches:
       - main
       - 'claude/**'
+      - 'agent/**'
 
 jobs:
   test:
@@ -30,9 +31,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint (non bloquant)
+      - name: Lint
         run: npm run lint
-        continue-on-error: true
 
       - name: Tests unitaires
         run: npx vitest run
@@ -441,36 +441,26 @@ jobs:
         run: |
           output=$(bash scripts/db/apply-migrations.sh status)
           echo "$output"
-          # Quatorze migrations postérieures au snapshot de production simulé.
+          # Toutes les migrations classées « new » dans le manifeste doivent
+          # être proposées. Le nombre évolue avec le dépôt : aucun compte figé.
           count=$(echo "$output" | grep -c '^apply ' || true)
-          echo "Migrations à appliquer : $count"
-          [ "$count" -eq 14 ]
-          # Et ce sont bien les 14 nouvelles.
-          echo "$output" | grep '^apply ' | grep -q '20260715090001'
-          echo "$output" | grep '^apply ' | grep -q '20260715090002'
-          echo "$output" | grep '^apply ' | grep -q '20260715090003'
-          echo "$output" | grep '^apply ' | grep -q '20260715090004'
-          echo "$output" | grep '^apply ' | grep -q '20260715190000'
-          echo "$output" | grep '^apply ' | grep -q '20260715214547'
-          echo "$output" | grep '^apply ' | grep -q '20260715221042'
-          echo "$output" | grep '^apply ' | grep -q '20260715221509'
-          echo "$output" | grep '^apply ' | grep -q '20260716111718'
-          echo "$output" | grep '^apply ' | grep -q '20260716152121'
-          echo "$output" | grep '^apply ' | grep -q '20260716162509'
-          echo "$output" | grep '^apply ' | grep -q '20260717000001'
-          echo "$output" | grep '^apply ' | grep -q '20260717000002'
-          echo "$output" | grep '^apply ' | grep -q '20260719000001'
-          echo "$output" | grep '^apply ' | grep -q '20260719000001'
+          expected=$(node -e "const m=require('./scripts/db/migration-manifest.json'); console.log(m.filter(e => e.role === 'apply' && e.baseline === 'new').length)")
+          echo "Migrations à appliquer : $count (attendu depuis le manifeste : $expected)"
+          [ "$count" -eq "$expected" ]
+          while IFS= read -r version; do
+            [ -z "$version" ] || echo "$output" | grep '^apply ' | grep -q "$version"
+          done < <(node -e "const m=require('./scripts/db/migration-manifest.json'); for (const e of m) if (e.role === 'apply' && e.baseline === 'new') console.log(e.github_version)")
 
-      - name: "[B] Apply réel (14 migrations post-snapshot)"
+      - name: "[B] Apply réel (migrations post-snapshot)"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |
           output=$(bash scripts/db/apply-migrations.sh apply)
           echo "$output"
-          echo "$output" | grep -E '^migrations : 14 appliquées'
+          expected=$(node -e "const m=require('./scripts/db/migration-manifest.json'); console.log(m.filter(e => e.role === 'apply' && e.baseline === 'new').length)")
+          echo "$output" | grep -E "^migrations : ${expected} appliquées"
 
-      - name: "[B] Assertions objets — 14 nouvelles migrations installées"
+      - name: "[B] Assertions objets — nouvelles migrations installées"
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: |

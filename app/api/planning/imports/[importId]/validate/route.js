@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { authenticateRequest } from '@/lib/apiAuth'
+import { expectedMealTypesForMember } from '@/lib/domain/planning/memberPlanningRules'
 
 export const dynamic = 'force-dynamic'
 
@@ -21,13 +22,6 @@ export const dynamic = 'force-dynamic'
  *   ok: boolean
  * }
  */
-
-// Grille attendue par jour : Julien 4 repas, Zoé 3 (pas de pdj) → 7 lignes/jour.
-const EXPECTED_GRID = [
-  { person: 'Julien', types: ['pdj', 'dejeuner', 'diner', 'collation'] },
-  { person: 'Zoé', types: ['dejeuner', 'diner', 'collation'] },
-]
-const LINES_PER_DAY = EXPECTED_GRID.reduce((s, g) => s + g.types.length, 0)
 
 // Comparaison en UTC (piège DLC/timezone du projet) ; garde-fou 62 jours.
 function datesBetween(startIso, endIso) {
@@ -72,7 +66,7 @@ export async function GET(request, { params }) {
 
   // ── Repas : colonnes v5 (generated_recipe_id, is_leftover) avec repli si la
   //    migration n'est pas encore appliquée. ──
-  const BASE_COLS = 'meal_date, meal_type, person_name, description, kcal'
+  const BASE_COLS = 'meal_date, meal_type, person_name, household_member_id, description, kcal'
   let hasV5Columns = true
   let { data: meals, error: mealsErr } = await supabase
     .from('nutrition_plan_meals')
@@ -90,6 +84,19 @@ export async function GET(request, { params }) {
   }
   meals = meals || []
 
+  const { data: members, error: memberError } = await supabase
+    .from('household_members')
+    .select('id, name, preferences')
+    .eq('user_id', user.id)
+    .eq('active', true)
+  if (memberError) return NextResponse.json({ error: 'Erreur lecture foyer' }, { status: 500 })
+  const expectedGrid = (members || []).map((member) => ({
+    id: member.id,
+    person: member.name,
+    types: expectedMealTypesForMember(member),
+  }))
+  const linesPerDay = expectedGrid.reduce((sum, member) => sum + member.types.length, 0)
+
   // ── Liste de courses (comptage seul) ──
   const { count: shoppingCount, error: shopErr } = await supabase
     .from('nutrition_plan_shopping_items')
@@ -104,18 +111,18 @@ export async function GET(request, { params }) {
   let dates = datesBetween(imp.date_range_start, imp.date_range_end)
   if (!dates.length) dates = [...new Set(meals.map(m => m.meal_date))].sort()
 
-  const present = new Set(meals.map(m => `${m.meal_date}|${m.meal_type}|${m.person_name}`))
+  const present = new Set(meals.map(m => `${m.meal_date}|${m.meal_type}|${m.household_member_id || m.person_name}`))
   const missing_slots = []
   for (const date of dates) {
-    for (const g of EXPECTED_GRID) {
+    for (const g of expectedGrid) {
       for (const type of g.types) {
-        if (!present.has(`${date}|${type}|${g.person}`)) {
+        if (!present.has(`${date}|${type}|${g.id}`) && !present.has(`${date}|${type}|${g.person}`)) {
           missing_slots.push({ date, type, person: g.person })
         }
       }
     }
   }
-  const expected_count = dates.length * LINES_PER_DAY
+  const expected_count = dates.length * linesPerDay
 
   // ── Macros invalides : kcal null/0 sur un repas non-restes ──
   const invalid_macros = meals
@@ -139,8 +146,7 @@ export async function GET(request, { params }) {
     meals.length > 0 &&
     missing_slots.length === 0 &&
     invalid_macros.length === 0 &&
-    dej_diner_sans_fiche.length === 0 &&
-    (shoppingCount || 0) > 0
+    dej_diner_sans_fiche.length === 0
 
   return NextResponse.json({
     meals_count: meals.length,

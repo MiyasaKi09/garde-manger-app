@@ -1,4 +1,4 @@
-# Mécanisme de migrations — Myko V2
+# Mécanisme de migrations — Myko
 
 ## Problème de divergence
 
@@ -151,9 +151,9 @@ base vierge myko_ci_b
                        appliquer 220006, 230001-230003 SANS enregistrement ledger
   → reconcile-ledger.sh --dry-run (vérification du plan)
   → reconcile-ledger.sh (apply)
-  → apply-migrations.sh --dry-run → exactement 4 à appliquer (090001-090004)
-  → apply-migrations.sh → "4 appliquées"
-  → assertions objets (090001-090004 installés)
+  → apply-migrations.sh --dry-run → toutes les entrées `baseline: new` du manifest
+  → apply-migrations.sh → le même nombre dynamique d’entrées appliquées
+  → assertions objets et contrats Planning installés
   → 2e apply → "0 appliquées"
   → [drift] corrompre sha256 → apply échoue (exit 2)
   → assertions SQL complètes
@@ -187,7 +187,10 @@ Vérifier la sortie finale : `N enregistrées, M ignorées, 0 avertissements`. T
 DATABASE_URL=postgres://... bash scripts/db/apply-migrations.sh status
 ```
 
-Doit rapporter **exactement 4 à appliquer** : `20260715090001`, `20260715090002`, `20260715090003`, `20260715090004`. Si d'autres migrations apparaissent, STOP — investigation manuelle.
+La liste doit correspondre exactement aux entrées `role: apply` et
+`baseline: new` du manifeste qui ne figurent pas encore dans le ledger. Le
+nombre n’est volontairement pas figé : la CI calcule l’attendu depuis le
+manifeste et vérifie chaque version.
 
 ### Étape 4 — Apply réel
 
@@ -195,7 +198,7 @@ Doit rapporter **exactement 4 à appliquer** : `20260715090001`, `20260715090002
 DATABASE_URL=postgres://... bash scripts/db/apply-migrations.sh
 ```
 
-Sortie attendue : `migrations : 4 appliquées, N déjà présentes.`
+Le nombre appliqué doit être identique à celui du dry-run.
 
 ### Étape 5 — Vérification finale
 
@@ -203,16 +206,35 @@ Sortie attendue : `migrations : 4 appliquées, N déjà présentes.`
 # 2e apply doit donner 0
 DATABASE_URL=postgres://... bash scripts/db/apply-migrations.sh
 # → migrations : 0 appliquées, N déjà présentes.
+
+# Contrat Planning V5 et invariants métier, sans écriture
+DATABASE_URL=postgres://... psql "$DATABASE_URL" -v ON_ERROR_STOP=1 \
+  -f supabase/tests/ci/42_planning_final_demands.sql
+DATABASE_URL=postgres://... psql "$DATABASE_URL" -v ON_ERROR_STOP=1 \
+  -f scripts/db/verify-planning-production.sql
 ```
+
+## Chaîne de mise en production
+
+Le workflow `.github/workflows/release-production.yml`, déclenché à chaque
+push sur `main` (et relançable manuellement), impose cet ordre : lint, tests unitaires, build, E2E, approbation de
+l’environnement GitHub `production`, dry-run SQL, migrations, second passage à
+zéro, contrôle du contrat et des invariants, puis seulement build et déploiement
+Vercel. Les secrets requis sont `PRODUCTION_DATABASE_URL`, `VERCEL_TOKEN`,
+`VERCEL_ORG_ID` et `VERCEL_PROJECT_ID`.
+
+`vercel.json` désactive les déploiements issus directement de Git. Le workflow
+est ainsi la voie unique qui garantit que le schéma précède l’application.
 
 ## Critères de succès (exit criteria)
 
 Après un cycle complet reconcile + apply :
 
 1. **GitHub = ledger** : pour chaque fichier non-rollback dans `supabase/migrations/`, son `github_version` est présent dans `schema_migrations`.
-2. **Objets installés** : les objets créés par les nouvelles migrations (090001-090004) existent en base.
+2. **Objets installés** : tous les objets attendus par le manifeste et le contrat Planning V5 existent en base.
 3. **Idempotence** : un second `apply-migrations.sh` rapporte `0 appliquées`.
 4. **Drift refusé** : si un fichier de migration est modifié après application, `apply-migrations.sh` sort avec le code 2.
+5. **Production sûre** : `verify-planning-production.sql` ne trouve aucune réservation expirée, dépendance inter-version, portion hors plafond, quantité déséquilibrée ou blocage sur un plan publié.
 
 ## Fichiers de rollback
 

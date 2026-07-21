@@ -31,6 +31,10 @@ export default function PersonsPage() {
   }, [data])
 
   const currentDate = dates[dayIndex]
+  const people = useMemo(() => {
+    const configured = (data?.householdMembers || []).map(member => member.name).filter(Boolean)
+    return configured.length ? configured : [...new Set((data?.meals || []).map(meal => meal.person_name).filter(Boolean))].sort()
+  }, [data])
 
   function getMeals(person) {
     if (!data || !currentDate) return []
@@ -78,7 +82,7 @@ export default function PersonsPage() {
             <span className="v21-eyebrow">Planning · par personne</span>
             <h1 className="v21-title">Par personne.</h1>
             <div className="v21-rule" />
-            <p className="v21-lede">Les assiettes de Julien et Zoé, jour par jour.</p>
+            <p className="v21-lede">Les assiettes du foyer, jour par jour.</p>
           </div>
           {/* Day selector */}
           <div className="pers-daynav">
@@ -95,7 +99,7 @@ export default function PersonsPage() {
         </header>
 
         <div className="pers-grid">
-          {['Julien', 'Zoé'].map(person => {
+          {people.map(person => {
             const meals = getMeals(person)
             const total = getTotal(person)
             return (
@@ -163,10 +167,11 @@ export default function PersonsPage() {
           color: var(--ink-2); min-width: 150px; text-align: center;
         }
 
-        .pers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+        .pers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; }
         .pers-col { padding: 30px 0; min-width: 0; }
-        .pers-col:first-child { border-right: 1px solid var(--line); padding-right: 32px; }
-        .pers-col:last-child { padding-left: 32px; }
+        .pers-col { border-right: 1px solid var(--line); padding-left: 32px; padding-right: 32px; }
+        .pers-col:first-child { padding-left: 0; }
+        .pers-col:last-child { border-right: none; padding-right: 0; }
 
         /* Ligne repas adaptée : barre | label | corps (nom + macros) */
         .v21-meal.pers-meal { grid-template-columns: 8px 92px 1fr; align-items: start; }
@@ -194,8 +199,8 @@ export default function PersonsPage() {
 
         @media (max-width: 768px) {
           .pers-grid { grid-template-columns: 1fr; }
-          .pers-col:first-child { border-right: none; padding-right: 0; border-bottom: 1px solid var(--line); }
-          .pers-col:last-child { padding-left: 0; }
+          .pers-col { border-right: none; border-bottom: 1px solid var(--line); padding-left: 0; padding-right: 0; }
+          .pers-col:last-child { border-bottom: none; }
         }
         @media (max-width: 560px) {
           .v21-meal.pers-meal { grid-template-columns: 8px 1fr; }

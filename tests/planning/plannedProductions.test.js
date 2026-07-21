@@ -214,31 +214,34 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
 
   it('test K : les portions produites viennent des planned_servings, jamais du nombre de lignes', () => {
     const { payload } = buildPlanAndPayload()
-    // 2 membres × 2 créneaux = 4 lignes de repas ; les planned_servings
-    // (multiplicateur de portion × ajustement énergétique) totalisent 4,5 —
-    // c'est CETTE somme qui dimensionne la production, pas les 4 lignes.
+    // 2 membres × 2 créneaux = 4 lignes de repas. C'est la somme finale des
+    // portions optimisées qui dimensionne la production, pas les 4 lignes.
     const mealLines = payload.legacy_meals.filter((meal) => ['dejeuner', 'diner'].includes(meal.meal_type))
     expect(mealLines).toHaveLength(4)
     const plannedServingsTotal = mealLines.reduce((sum, meal) => sum + meal.planned_servings, 0)
-    expect(plannedServingsTotal).toBe(4.5)
-    expect(payload.productions).toEqual([{
+    expect(payload.productions).toHaveLength(1)
+    expect(payload.productions[0]).toMatchObject({
       production_key: 'production-2026-07-20-dejeuner',
       task_key: 'prepare-2026-07-20-dejeuner',
       slot_key: '2026-07-20-dejeuner',
       recipe_code: 'FR-GRA',
       output_name: 'Gratin de courgettes',
-      planned_portions: plannedServingsTotal,
       storage_method: 'refrigerator',
       available_from: '2026-07-20',
       use_by: '2026-07-23',
-    }])
+    })
+    expect(payload.productions[0].execution_key).toBeTruthy()
+    expect(payload.productions[0].planned_portions).toBeCloseTo(plannedServingsTotal, 8)
     // Une consommation par créneau nourri (producteur compris), la somme
     // égale les portions produites.
-    // L'ajustement énergétique diffère entre déjeuner et dîner : 2 + 2,5.
-    expect(payload.consumptions).toEqual([
-      { slot_key: '2026-07-20-dejeuner', source: { production_key: 'production-2026-07-20-dejeuner' }, portions: 2, role: 'main' },
-      { slot_key: '2026-07-20-diner', source: { production_key: 'production-2026-07-20-dejeuner' }, portions: 2.5, role: 'main' },
-    ])
+    expect(payload.consumptions).toHaveLength(2)
+    for (const consumption of payload.consumptions) {
+      const demandServings = payload.planned_demands
+        .filter((demand) => demand.slot_key === consumption.slot_key && demand.source_id === consumption.source.production_key)
+        .reduce((sum, demand) => sum + demand.requested_servings, 0)
+      expect(consumption.portions).toBeCloseTo(demandServings, 8)
+    }
+    expect(payload.consumptions.reduce((sum, row) => sum + row.portions, 0)).toBeCloseTo(plannedServingsTotal, 8)
   })
 
   it('tests L et E : la dépendance réchauffage → cuisson relie deux tâches de la même version', () => {
@@ -255,10 +258,11 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
 
   it('test I : tâche de cuisson lisible (« N portions, Y repas ») et tâche de réchauffage minimale', () => {
     const { payload } = buildPlanAndPayload()
+    const portions = payload.productions[0].planned_portions
     const cookTask = payload.tasks.find((task) => task.task_key === 'prepare-2026-07-20-dejeuner')
     expect(cookTask).toMatchObject({
       task_type: 'prepare_recipe',
-      title: 'Préparer Gratin de courgettes — 4,5 portions (2 repas)',
+      title: `Préparer Gratin de courgettes — ${String(portions).replace('.', ',')} portions (2 repas)`,
       duration_min: 30,
     })
     const reheatTask = payload.tasks.find((task) => task.task_key === 'reheat-2026-07-20-diner')
@@ -283,8 +287,8 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
       source: 'planned_production',
       production_key: 'production-2026-07-20-dejeuner',
       recipe_code: 'FR-GRA',
-      // Même chemin nutritionnel que le producteur (recette produite).
-      nutrition_source: 'deterministic_exact_forms',
+      // Même vérité nutritionnelle que les demandes personnelles du producteur.
+      nutrition_source: 'final_personal_demands',
     })
     expect(consumerSlot.preparation).toMatchObject({ mode: 'reheat', recipe_code: 'FR-GRA' })
     expect(consumerSlot.stock_summary).toMatchObject({
@@ -296,10 +300,12 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
         portions: 2,
       },
     })
-    // Besoin total = 2 × 100 g (portions produites), pas 100 g par créneau
-    // ni 300 g : le consommateur ne compte pas.
+    // Besoin total = recette × portions finales / rendement de référence. Le
+    // consommateur ne crée jamais une seconde demande d'ingrédients.
     const courgette = payload.shopping_items.find((item) => item.product_name === 'courgette cuite')
-    expect(courgette).toMatchObject({ required_qty: 200, purchase_qty: 200 })
+    const expectedGrams = 100 * payload.productions[0].planned_portions / GRATIN.servings
+    expect(courgette.required_qty).toBeCloseTo(expectedGrams, 3)
+    expect(courgette.purchase_qty).toBeCloseTo(expectedGrams, 3)
   })
 
   it('régression zéro production : le payload est identique octet pour octet à l’existant', () => {
@@ -335,14 +341,18 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
       members, constraints: {}, inventoryLots: [],
       cookedDishes: [{ id: 9, name: 'Gratin de courgettes', portionsRemaining: 4, expiresOn: '2026-07-22' }],
     })
-    // La réservation de portions du P1 reste émise EN PARALLÈLE de la
-    // consommation (contrat partagé).
-    expect(payload.reservations).toHaveLength(2)
-    expect(payload.reservations[0]).toMatchObject({ cooked_dish_id: 9, reserved_unit: 'portion', reserved_quantity: 2 })
-    expect(payload.consumptions).toEqual([
-      { slot_key: '2026-07-20-dejeuner', source: { cooked_dish_id: 9 }, portions: 2, role: 'main' },
-      { slot_key: '2026-07-20-diner', source: { cooked_dish_id: 9 }, portions: 2, role: 'main' },
-    ])
+    // Le solveur au grain foyer proposait 4 portions, mais les demandes
+    // personnelles finales dépassent ce total. V5 consomme exactement le
+    // restant puis publie un complément frais explicite sur le second créneau.
+    const dishReservations = payload.reservations.filter((row) => row.cooked_dish_id === 9)
+    expect(dishReservations).toHaveLength(2)
+    expect(dishReservations.every((row) => row.cooked_dish_id === 9 && row.reserved_unit === 'portion')).toBe(true)
+    expect(dishReservations.reduce((sum, row) => sum + row.reserved_quantity, 0)).toBe(4)
+    expect(payload.consumptions).toHaveLength(2)
+    expect(payload.consumptions.every((row) => row.source.cooked_dish_id === 9)).toBe(true)
+    expect(payload.slots.filter((slot) => slot.source === 'cooked_dish')).toHaveLength(1)
+    expect(payload.slots.filter((slot) => slot.source === 'mixed_dish_and_fresh')).toHaveLength(1)
+    expect(payload.issues.some((issue) => issue.code === 'cooked_dish_partial_with_fresh_complement')).toBe(true)
     // Le plat existe déjà : aucune production, aucune dépendance.
     expect(payload.productions).toBeUndefined()
     expect(payload.dependencies).toEqual([])

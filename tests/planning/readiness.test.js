@@ -30,6 +30,16 @@ describe('computeWeekReadiness', () => {
     expect(result).toEqual({ ready: true, missingMeals: 0, reason: null })
   })
 
+  it('une version en revue ne peut jamais être annoncée prête', () => {
+    expect(computeWeekReadiness({
+      expectedMeals: 49,
+      uniqueMealCount: 49,
+      prepTaskCount: 14,
+      planStatus: 'review_required',
+      validationStatus: 'review_required',
+    })).toEqual({ ready: false, missingMeals: 0, reason: 'review_required' })
+  })
+
   it('plus de prises que prévu ne casse rien (surplus toléré)', () => {
     const result = computeWeekReadiness({ expectedMeals: 49, uniqueMealCount: 52, prepTaskCount: 3 })
     expect(result.ready).toBe(true)

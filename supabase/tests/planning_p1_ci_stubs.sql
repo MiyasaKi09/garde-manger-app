@@ -21,11 +21,28 @@ CREATE TABLE IF NOT EXISTS public.cooked_dishes (
   fiber_g_per_portion   numeric
 );
 
+CREATE TABLE IF NOT EXISTS public.household_members (
+  id                   uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id              uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  name                 text NOT NULL,
+  portion_multiplier   numeric(4,2) NOT NULL DEFAULT 1,
+  active               boolean NOT NULL DEFAULT true,
+  preferences          jsonb NOT NULL DEFAULT '{}'::jsonb,
+  created_at           timestamptz NOT NULL DEFAULT now(),
+  updated_at           timestamptz NOT NULL DEFAULT now()
+);
+
 CREATE TABLE IF NOT EXISTS public.meal_plan_versions (
-  id         uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id    uuid NOT NULL,
-  import_id  bigint NOT NULL,
-  status     text NOT NULL DEFAULT 'published'
+  id                  uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id             uuid NOT NULL,
+  import_id           bigint NOT NULL,
+  status              text NOT NULL DEFAULT 'published',
+  source              text NOT NULL DEFAULT 'closed_loop',
+  window_start        date NOT NULL DEFAULT current_date,
+  window_end          date NOT NULL DEFAULT current_date,
+  validation_summary  jsonb NOT NULL DEFAULT '{}'::jsonb,
+  rules_version       text NOT NULL DEFAULT 'closed-loop-v1',
+  updated_at          timestamptz NOT NULL DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS public.meal_plan_slots (

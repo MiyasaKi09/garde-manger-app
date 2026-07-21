@@ -8,6 +8,7 @@ import { generateClosedLoopPlan, isMealSuitableRecipe } from '@/lib/domain/plann
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
 import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
 import { SUPPLEMENT_FORMS } from '@/lib/domain/planning/personalizedMeals'
+import { resolveHouseholdTimeZone, zonedDateTimeToUtc } from '@/lib/domain/planning/planningTime'
 
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
@@ -64,8 +65,42 @@ function isTargeted(slot, scope, days, meals) {
   return meals.has(`${slot.date}|${slot.mealType}`)
 }
 
+async function ensurePlanningSchema(supabase) {
+  const { data, error } = await supabase.rpc('planning_schema_compatibility')
+  if (error || data?.compatible !== true || Number(data?.contract_version) < 5) {
+    const upgrade = new Error('Le schéma Planning doit être mis à niveau avant toute génération')
+    upgrade.code = 'schema_upgrade_required'
+    upgrade.status = 503
+    upgrade.details = data || { database_error: error?.message || null }
+    throw upgrade
+  }
+}
+
+function slotProtectionState(slot, meals, tasks, now = new Date(), timeZone = 'Europe/Paris') {
+  const slotMeals = meals.filter((meal) => meal.meal_plan_slot_id === slot.id)
+  const slotTasks = tasks.filter((task) => task.meal_plan_slot_id === slot.id)
+  const localServiceTime = {
+    pdj: '08:00:00',
+    dejeuner: '12:30:00',
+    collation: '16:30:00',
+    diner: '19:30:00',
+  }[slot.meal_type] || '12:30:00'
+  const serviceAt = zonedDateTimeToUtc(slot.meal_date, localServiceTime, timeZone)
+  const within48Hours = serviceAt.getTime() <= now.getTime() + 48 * 60 * 60 * 1000
+  const consumed = ['consumed', 'completed', 'cooked', 'skipped'].includes(slot.status)
+    || slotTasks.some((task) => task.done === true || task.workflow_status === 'done')
+  const locked = Boolean(slot.locked) || slotMeals.some((meal) => meal.locked)
+  return {
+    status: slot.status || 'planned',
+    locked,
+    consumed,
+    protected: consumed || locked || within48Hours,
+    protection_reason: consumed ? 'consumed' : locked ? 'locked' : within48Hours ? 'within_48_hours' : null,
+  }
+}
+
 async function loadExistingImport(supabase, userId, importId) {
-  if (!importId) return { planImport: null, slots: [], activePlanVersionId: null }
+  if (!importId) return { planImport: null, slots: [], meals: [], tasks: [], slotStates: {}, activePlanVersionId: null }
   const { data: planImport, error } = await supabase
     .from('nutrition_plan_imports')
     .select('id, user_id, date_range_start, date_range_end, active_plan_version_id')
@@ -73,14 +108,27 @@ async function loadExistingImport(supabase, userId, importId) {
     .eq('user_id', userId)
     .maybeSingle()
   if (error || !planImport) throw new Error('Planning introuvable ou non autorisé')
-  if (!planImport.active_plan_version_id) return { planImport, slots: [], activePlanVersionId: null }
-  const { data: slots, error: slotError } = await supabase
-    .from('meal_plan_slots')
-    .select('meal_date, meal_type, title, preparation')
-    .eq('plan_version_id', planImport.active_plan_version_id)
-    .eq('user_id', userId)
+  if (!planImport.active_plan_version_id) return { planImport, slots: [], meals: [], tasks: [], slotStates: {}, activePlanVersionId: null }
+  const [slotResult, mealResult, taskResult] = await Promise.all([
+    supabase.from('meal_plan_slots')
+      .select('id, slot_key, meal_date, meal_type, title, preparation, status, locked, source')
+      .eq('plan_version_id', planImport.active_plan_version_id)
+      .eq('user_id', userId),
+    supabase.from('nutrition_plan_meals')
+      .select('person_name, household_member_id, meal_date, meal_type, day_type, short_label, description, kcal, protein_g, carbs_g, fat_g, fiber_g, micronutrients, meal_plan_slot_id, planned_servings, locked, canonical_recipe_code, variant_kind, portion_details, target_snapshot, constraints_snapshot, planning_status, demand_key, execution_key')
+      .eq('import_id', planImport.id),
+    supabase.from('nutrition_plan_prep_tasks')
+      .select('meal_plan_slot_id, done, workflow_status')
+      .eq('plan_version_id', planImport.active_plan_version_id),
+  ])
+  const { data: slots, error: slotError } = slotResult
   if (slotError) throw new Error(`Lecture du planning impossible: ${slotError.message}`)
-  return { planImport, slots: slots || [], activePlanVersionId: planImport.active_plan_version_id }
+  if (mealResult.error) throw new Error(`Lecture des repas impossible: ${mealResult.error.message}`)
+  if (taskResult.error) throw new Error(`Lecture des tâches impossible: ${taskResult.error.message}`)
+  const meals = mealResult.data || []
+  const tasks = taskResult.data || []
+  const slotStates = Object.fromEntries((slots || []).map((slot) => [slot.slot_key, slotProtectionState(slot, meals, tasks)]))
+  return { planImport, slots: slots || [], meals, tasks, slotStates, activePlanVersionId: planImport.active_plan_version_id }
 }
 
 async function loadRecentRecipeTitles(supabase, windowStart) {
@@ -96,7 +144,7 @@ async function loadRecentRecipeTitles(supabase, windowStart) {
 async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = null) {
   const [{ data: lots, error: lotError }, { data: reservations }] = await Promise.all([
     supabase.from('inventory_lots')
-      .select('id, canonical_food_id, archetype_id, qty_remaining, unit, expiration_date, adjusted_expiration_date, is_opened, requires_storage_review')
+      .select('id, canonical_food_id, archetype_id, qty_remaining, unit, expiration_date, adjusted_expiration_date, is_opened, requires_storage_review, container_size, container_unit, packaging_type')
       .gt('qty_remaining', 0),
     supabase.from('inventory_reservations')
       .select('lot_id, plan_version_id, reserved_quantity, reserved_unit, status')
@@ -140,8 +188,20 @@ async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = n
     if (!formNormalized) continue
     const conversion = toGramsV2(lot.qty_remaining, lot.unit, canonical || {})
     if (!conversion.ok || conversion.grams <= 0) continue
+    const packageConversion = Number(lot.container_size) > 0 && lot.container_unit
+      ? toGramsV2(lot.container_size, lot.container_unit, canonical || {})
+      : null
     lotMeta.set(lot.id, canonical || {})
-    plannerLots.push({ id: lot.id, formNormalized, gramsAvailable: conversion.grams, expiresOn: expiry ? String(expiry).slice(0, 10) : null, opened: Boolean(lot.is_opened) })
+    plannerLots.push({
+      id: lot.id,
+      formNormalized,
+      gramsAvailable: conversion.grams,
+      expiresOn: expiry ? String(expiry).slice(0, 10) : null,
+      opened: Boolean(lot.is_opened),
+      packageSizeGrams: packageConversion?.ok ? packageConversion.grams : null,
+      packageLabel: lot.packaging_type || null,
+      packagingType: lot.packaging_type || null,
+    })
   }
 
   const existingReservations = []
@@ -181,7 +241,7 @@ function dishStoredNutrition(dish) {
 async function loadPlannerCookedDishes(supabase, excludedPlanVersionId = null) {
   const { data: dishes, error: dishError } = await supabase
     .from('cooked_dishes')
-    .select('id, name, portions_remaining, expiration_date, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion')
+    .select('id, name, portions_remaining, expiration_date, kcal_per_portion, protein_g_per_portion, carbs_g_per_portion, fat_g_per_portion, fiber_g_per_portion, canonical_recipe_code, canonical_recipe_execution_id, planned_production_id, source_plan_version_id')
     .gt('portions_remaining', 0)
   if (dishError) throw new Error(`Plats cuisinés indisponibles: ${dishError.message}`)
   const today = todayUtcIso()
@@ -193,6 +253,10 @@ async function loadPlannerCookedDishes(supabase, excludedPlanVersionId = null) {
       portionsRemaining: Number(dish.portions_remaining) || 0,
       expiresOn: dish.expiration_date ? String(dish.expiration_date).slice(0, 10) : null,
       nutritionPerPortion: dishStoredNutrition(dish),
+      recipeCode: dish.canonical_recipe_code || null,
+      recipeExecutionId: dish.canonical_recipe_execution_id || null,
+      plannedProductionId: dish.planned_production_id || null,
+      sourcePlanVersionId: dish.source_plan_version_id || null,
     }))
   if (!cookedDishes.length) return { cookedDishes: [], existingDishReservations: [] }
 
@@ -223,10 +287,13 @@ export async function POST(request) {
   if (authError || !user) return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
 
   try {
+    await ensurePlanningSchema(supabase)
     const body = await request.json().catch(() => ({}))
     const importId = Number(body.import_id ?? body.importId) || null
     const existing = await loadExistingImport(supabase, user.id, importId)
-    const windowStart = existing.planImport?.date_range_start || (ISO_DATE.test(body.window_start || '') ? body.window_start : nextMondayIso())
+    let householdTimeZone = resolveHouseholdTimeZone(user)
+    let windowStart = existing.planImport?.date_range_start
+      || (ISO_DATE.test(body.window_start || '') ? body.window_start : nextMondayIso(new Date(), householdTimeZone))
     const scope = ['week', 'days', 'meals'].includes(body.scope) ? body.scope : 'week'
     const selectedDays = new Set((body.days || []).filter((value) => ISO_DATE.test(value)))
     const selectedMeals = new Set((body.meals || [])
@@ -235,11 +302,10 @@ export async function POST(request) {
     if (scope === 'days' && !selectedDays.size) return NextResponse.json({ error: 'Sélectionne au moins un jour' }, { status: 400 })
     if (scope === 'meals' && !selectedMeals.size) return NextResponse.json({ error: 'Sélectionne au moins un repas' }, { status: 400 })
 
-    const [membersResult, goalsResult, dietary, recentRecipeTitles] = await Promise.all([
+    const [membersResult, goalsResult, dietary] = await Promise.all([
       supabase.from('household_members').select('id, name, portion_multiplier, preferences').eq('user_id', user.id).eq('active', true).order('created_at'),
       supabase.from('user_health_goals').select('person_name, target_calories, target_protein_g, target_carbs_g, target_fat_g, target_fiber_g').eq('user_id', user.id),
       fetchDietaryConstraints(supabase, user.id),
-      loadRecentRecipeTitles(supabase, windowStart),
     ])
     let members = membersResult.data || []
     if (!members.length) {
@@ -249,6 +315,23 @@ export async function POST(request) {
       if (memberError) throw new Error(`Initialisation du foyer impossible: ${memberError.message}`)
       members = [defaultMember]
     }
+    householdTimeZone = resolveHouseholdTimeZone(user, members)
+    if (!existing.planImport && !ISO_DATE.test(body.window_start || '')) {
+      windowStart = nextMondayIso(new Date(), householdTimeZone)
+    }
+    existing.slotStates = Object.fromEntries(existing.slots.map((slot) => [
+      slot.slot_key,
+      slotProtectionState(slot, existing.meals, existing.tasks, new Date(), householdTimeZone),
+    ]))
+    const recentRecipeTitles = await loadRecentRecipeTitles(supabase, windowStart)
+    const goalNames = new Set((goalsResult.data || []).map((goal) => fold(goal.person_name)).filter(Boolean))
+    const missingGoals = members.filter((member) => !goalNames.has(fold(member.name))).map((member) => member.name)
+    if (missingGoals.length) {
+      const error = new Error(`Objectifs nutritionnels manquants pour : ${missingGoals.join(', ')}`)
+      error.code = 'nutrition_goals_required'
+      error.status = 422
+      throw error
+    }
     const servings = Math.max(1, members.reduce((sum, member) => sum + (Number(member.portion_multiplier) || 1), 0))
     const operationalCatalog = await listOperationalRecipes(supabase, { servings })
     const recipes = operationalCatalog.recipes.filter(isMealSuitableRecipe)
@@ -257,12 +340,20 @@ export async function POST(request) {
     const recipeCodes = new Set(recipes.map((recipe) => recipe.code))
     const existingBySlot = new Map(existing.slots.map((slot) => [
       `${slot.meal_date}|${slot.meal_type}`,
-      slot.preparation?.recipe_code || null,
+      { recipeCode: slot.preparation?.recipe_code || null, slotKey: slot.slot_key, state: existing.slotStates[slot.slot_key] || {} },
     ]))
     const intent = resolveIntent(body)
     const slots = buildWeekSlots(windowStart).map((slot) => {
-      const currentCode = existingBySlot.get(`${slot.date}|${slot.mealType}`)
-      const target = !currentCode || !recipeCodes.has(currentCode) || isTargeted(slot, scope, selectedDays, selectedMeals)
+      const current = existingBySlot.get(`${slot.date}|${slot.mealType}`)
+      const currentCode = current?.recipeCode || null
+      if (current?.state?.protected && (!currentCode || !recipeCodes.has(currentCode))) {
+        const error = new Error(`Le repas protégé ${slot.date} ${slot.mealType} n'a plus de recette canonique disponible`)
+        error.code = 'protected_meal_requires_review'
+        error.status = 409
+        throw error
+      }
+      const requested = !currentCode || !recipeCodes.has(currentCode) || isTargeted(slot, scope, selectedDays, selectedMeals)
+      const target = requested && !current?.state?.protected
       return {
         ...slot,
         ...(target ? { intent, excludedRecipeCodes: currentCode ? [currentCode] : [] } : { fixedRecipeCode: currentCode }),
@@ -294,28 +385,19 @@ export async function POST(request) {
       plan, recipes, members, goals: goalsResult.data || [], windowStart, constraints, inventoryLots: plannerLots,
       existingReservations,
       cookedDishes,
+      existingDishReservations,
+      preservedMeals: existing.meals.flatMap((meal) => {
+        const currentSlot = existing.slots.find((slot) => slot.id === meal.meal_plan_slot_id)
+        const state = currentSlot ? existing.slotStates[currentSlot.slot_key] : null
+        return state?.protected ? [{ ...meal, planning_status: state.consumed ? 'consumed' : 'planned' }] : []
+      }),
+      slotStates: existing.slotStates,
       corpusVersion: operationalCatalog.metadata.corpusVersion,
+      householdTimeZone,
     })
     if (existing.planImport) payload.import_id = existing.planImport.id
-    const { data, error } = await supabase.rpc('publish_canonical_closed_loop_plan', { p_payload: payload })
+    const { data, error } = await supabase.rpc('publish_canonical_final_demand_plan', { p_payload: payload })
     if (error) throw new Error(error.message)
-
-    // Le RPC historique publie les besoins structurés mais ne recopie pas encore
-    // les trois colonnes de conditionnement. On les rattache immédiatement au
-    // même plan afin que « 4 pots de 200 g » devienne bien quatre contenants
-    // physiques lors du rangement, et jamais un lot abstrait de 800 g.
-    const packagedItems = payload.shopping_items.filter((item) => item.container_qty && item.container_size && item.container_unit)
-    const packageUpdates = await Promise.all(packagedItems.map((item) => supabase
-      .from('nutrition_plan_shopping_items')
-      .update({
-        container_qty: item.container_qty,
-        container_size: item.container_size,
-        container_unit: item.container_unit,
-      })
-      .eq('plan_version_id', data.plan_version_id)
-      .eq('product_name', item.product_name)))
-    const packageError = packageUpdates.find((result) => result.error)?.error
-    if (packageError) throw new Error(`Conditionnement du planning non enregistré : ${packageError.message}`)
 
     return NextResponse.json({
       ok: true,
@@ -334,6 +416,10 @@ export async function POST(request) {
     })
   } catch (error) {
     console.error('[Planning V3]', error)
-    return NextResponse.json({ error: error.message || 'Échec de génération du planning' }, { status: 500 })
+    return NextResponse.json({
+      error: error.message || 'Échec de génération du planning',
+      code: error.code || 'planning_generation_failed',
+      ...(error.details ? { details: error.details } : {}),
+    }, { status: Number(error.status) || 500 })
   }
 }

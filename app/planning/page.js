@@ -1,11 +1,10 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { AlertTriangle, ArrowRight, CalendarDays, Check, Clock3, RefreshCw, ShoppingBasket, Sparkles, X } from 'lucide-react'
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
-import { computeWeekReadiness } from '@/lib/domain/planning/readiness'
 import { toast } from '@/components/Toast'
 import WeekGrid from './components/WeekGrid'
 import WeeklyNutritionRecap from './components/WeeklyNutritionRecap'
@@ -66,8 +65,6 @@ export default function PlanningPage() {
   // l'import précédent (minor P0 : « Semaine incomplète — 0/N » fantôme).
   const [weekStatus, setWeekStatus] = useState('idle') // 'idle' | 'loading' | 'ready' | 'error'
   const [reloadKey, setReloadKey] = useState(0)
-  const [horizonStatus, setHorizonStatus] = useState('idle')
-  const [batchStatus, setBatchStatus] = useState('idle')
   const [repairStatus, setRepairStatus] = useState('idle')
   const [nutritionGoals, setNutritionGoals] = useState([])
   const [goalsStatus, setGoalsStatus] = useState('loading') // 'loading' | 'ready' | 'error'
@@ -78,7 +75,6 @@ export default function PlanningPage() {
   const [intent, setIntent] = useState('balanced')
   const [instructions, setInstructions] = useState('')
   const [modifyStatus, setModifyStatus] = useState('idle')
-  const horizonStarted = useRef(false)
 
   const weekDates = weekDatesForOffset(weekOffset)
   const weekStart = localIso(weekDates[0])
@@ -136,36 +132,6 @@ export default function PlanningPage() {
   }, [user, refreshImports])
 
   useEffect(() => {
-    if (!user || !importsLoaded || horizonStarted.current) return
-    horizonStarted.current = true
-    ;(async () => {
-      const currentStart = localIso(mondayForOffset(0))
-      const nextStart = addDays(currentStart, 7)
-      const missing = [currentStart, nextStart].filter((start) =>
-        !imports.some((item) => item.file_name === 'myko-canonical-v3' && item.date_range_start === start))
-      if (!missing.length) { setHorizonStatus('ready'); return }
-      setHorizonStatus('preparing')
-      try {
-        for (const windowStart of missing) {
-          const response = await authFetch('/api/planning/generate-v3', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ window_start: windowStart, scope: 'week', intent: 'balanced' }),
-          })
-          const data = await response.json().catch(() => ({}))
-          if (!response.ok) throw new Error(data.error || 'Préparation automatique incomplète')
-        }
-        await refreshImports()
-        setReloadKey((value) => value + 1)
-        setHorizonStatus('ready')
-      } catch (error) {
-        setHorizonStatus('error')
-        toast.error(error.message)
-      }
-    })()
-  }, [imports, importsLoaded, refreshImports, user])
-
-  useEffect(() => {
     // Reset systématique au changement d'import : les repas de la semaine
     // précédente ne doivent jamais être évalués comme ceux de l'import courant.
     setWeekData(null)
@@ -183,6 +149,10 @@ export default function PlanningPage() {
             batchRecipes: data.batchRecipes || [],
             prepTasks: data.prepTasks || [],
             shoppingItems: data.shoppingItems || [],
+            readiness: data.readiness || null,
+            householdMembers: data.householdMembers || [],
+            activePlanVersion: data.activePlanVersion || null,
+            canonicalPreparationCount: data.canonicalPreparationCount || 0,
           })
           setWeekStatus('ready')
         }
@@ -213,7 +183,11 @@ export default function PlanningPage() {
       await refreshImports()
       setReloadKey((value) => value + 1)
       setRepairStatus('idle')
-      toast.success('Semaine recalculée : les repas non verrouillés ont été remplacés')
+      if (data.status === 'review_required') {
+        toast.warning('Semaine recalculée, mais une revue nutritionnelle reste nécessaire')
+      } else {
+        toast.success('Semaine recalculée : les repas non verrouillés ont été remplacés')
+      }
     } catch (error) {
       setRepairStatus('error')
       toast.error(error.message)
@@ -264,31 +238,19 @@ export default function PlanningPage() {
       setReloadKey((value) => value + 1)
       setModifyOpen(false)
       const recalculated = data.summary?.personalized_meals || data.summary?.changed || 14
-      toast.success(`${recalculated} prises personnalisées recalculées avec les règles du foyer`)
+      if (data.status === 'review_required') {
+        toast.warning(`${recalculated} prises recalculées — semaine à revoir avant exécution`)
+      } else {
+        toast.success(`${recalculated} prises personnalisées recalculées avec les règles du foyer`)
+      }
     } catch (error) {
       setModifyStatus('error')
       toast.error(error.message)
     }
   }
 
-  async function planBatch() {
-    if (!selectedImportId || batchStatus === 'saving') return
-    setBatchStatus('saving')
-    try {
-      const response = await authFetch('/api/planning/batch/generate', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ importId: selectedImportId }),
-      })
-      const data = await response.json().catch(() => ({}))
-      if (!response.ok) throw new Error(data.error || 'Batch impossible')
-      setBatchStatus('done')
-      setReloadKey((value) => value + 1)
-      toast.success('Les préparations de la semaine sont prêtes')
-      // P0-6 (audit F18) : accès direct au jour de cuisine après le calcul.
-      router.push(`/planning/${selectedImportId}/batch`)
-    } catch (error) {
-      setBatchStatus('error')
-      toast.error(error.message)
-    }
+  function openBatch() {
+    if (selectedImportId) router.push(`/planning/${selectedImportId}/batch`)
   }
 
   const plannedSlots = new Set(meals
@@ -297,19 +259,16 @@ export default function PlanningPage() {
   const personalizedMeals = new Set(meals.map((meal) => `${meal.meal_date}|${meal.meal_type}|${meal.person_name}`)).size
   const plannedDays = new Set(meals.map((meal) => meal.meal_date)).size
 
-  // Prises attendues sur la semaine — formule héritée de l'ancienne réparation
-  // automatique : 3 prises/jour/personne + 1 collation pour Julien. Règle codée
-  // en dur (audit F19, hors périmètre P0) : la source de vérité future est
-  // memberRules / household_members.preferences.
-  const goalPeople = [...new Set(nutritionGoals.map((goal) => goal.person_name).filter(Boolean))]
-  const expectedPerDay = goalPeople.length * 3 + (goalPeople.some((name) => name.localeCompare('Julien', 'fr', { sensitivity: 'base' }) === 0) ? 1 : 0)
-  const expectedMeals = expectedPerDay * 7
-  const prepTaskCount = (weekData?.prepTasks || []).length
-  const readiness = computeWeekReadiness({ expectedMeals, uniqueMealCount: personalizedMeals, prepTaskCount })
+  // Le serveur calcule l'attendu depuis household_members.preferences et le
+  // verdict de la version active. L'interface ne déduit plus rien d'un prénom.
+  const readiness = weekData?.readiness || { ready: false, missingMeals: 0, reason: selectedImportId ? 'loading' : 'meals_missing' }
+  const expectedMeals = Number(weekData?.readiness?.expectedMeals) || 0
+  const preparationCount = Number(weekData?.canonicalPreparationCount) || batchRecipes.length
 
   const rangeLabel = `${weekDates[0].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })} — ${weekDates[6].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}`
   const nextWeekStart = addDays(localIso(mondayForOffset(0)), 7)
   const nextWeekReady = imports.some((item) => item.file_name === 'myko-canonical-v3' && item.date_range_start === nextWeekStart)
+  const horizonStatus = nextWeekReady ? 'ready' : 'idle'
   const loading = authLoading || !importsLoaded
   const weekLoading = weekStatus === 'loading'
   // Un import sélectionné n'est « évalué » que si sa semaine est réellement
@@ -340,8 +299,8 @@ export default function PlanningPage() {
         </div>
         <div className="planning-overview-actions">
           <div className={`planning-horizon ${horizonStatus}`}>
-            {horizonStatus === 'preparing' ? <RefreshCw size={15} className="planning-spin" /> : <Check size={15} />}
-            <span>{horizonStatus === 'preparing' ? 'Préparation des deux semaines…' : nextWeekReady ? 'Semaine suivante déjà prête' : 'Horizon à compléter'}</span>
+            {nextWeekReady ? <Check size={15} /> : <AlertTriangle size={15} />}
+            <span>{nextWeekReady ? 'Semaine suivante déjà prête' : 'Semaine suivante non préparée'}</span>
           </div>
           <button className="planning-primary" onClick={() => openModification({ scope: 'week' })}>
             <Sparkles size={16} /> {selectedImportId ? 'Modifier la semaine' : 'Préparer cette semaine'}
@@ -360,12 +319,14 @@ export default function PlanningPage() {
             <p>
               {readiness.reason === 'goals_missing'
                 ? 'Objectifs nutritionnels indisponibles : le nombre de prises attendues ne peut pas être vérifié.'
+                : readiness.reason === 'review_required'
+                  ? 'La version active demande une revue : Myko ne la présente pas comme prête.'
                 : readiness.reason === 'meals_missing'
                   ? `${readiness.missingMeals} prise${readiness.missingMeals > 1 ? 's' : ''} manquante${readiness.missingMeals > 1 ? 's' : ''} sur les ${expectedMeals} attendues (petits-déjeuners, collations ou variantes non générés).`
                   : 'Aucune tâche de préparation n’est planifiée pour cette semaine.'}
             </p>
           </div>
-          {readiness.reason !== 'goals_missing' && (
+          {!['goals_missing', 'review_required'].includes(readiness.reason) && (
             <button className="planning-repair" onClick={repairWeek} disabled={repairStatus === 'saving'}>
               <RefreshCw size={14} className={repairStatus === 'saving' ? 'planning-spin' : undefined} />
               {repairStatus === 'saving' ? 'Recalcul en cours…' : 'Recalculer la semaine (remplace les repas non verrouillés)'}
@@ -400,7 +361,7 @@ export default function PlanningPage() {
           </span>
         </div>
         <div><ShoppingBasket size={18} /><span><b>{shoppingItems.length} produits</b><small>À prévoir aux courses</small></span></div>
-        <div><Clock3 size={18} /><span><b>{batchRecipes.length} préparations</b><small>Organisation en avance</small></span></div>
+        <div><Clock3 size={18} /><span><b>{preparationCount} préparations</b><small>Organisation en avance</small></span></div>
       </section>
 
       {loading ? (
@@ -446,12 +407,11 @@ export default function PlanningPage() {
               <span className="planning-side-label">Cuisine en avance</span>
               <h2>Préparer sans courir</h2>
               <p>Les déjeuners compatibles sont regroupés en sessions de cuisine et reliés aux jours où ils seront servis.</p>
-              <button onClick={planBatch} disabled={!selectedImportId || batchStatus === 'saving'}>
-                {batchStatus === 'saving' ? <RefreshCw size={14} className="planning-spin" /> : <Clock3 size={14} />}
-                {batchRecipes.length ? 'Recalculer les préparations' : 'Organiser les préparations'}
+              <button onClick={openBatch} disabled={!selectedImportId}>
+                <Clock3 size={14} /> Voir le jour de cuisine
               </button>
               {/* P0-6 (F18) : accès permanent à la page batch quand des préparations existent. */}
-              {selectedImportId && batchRecipes.length > 0 && (
+              {selectedImportId && preparationCount > 0 && (
                 <button className="planning-batch-link" onClick={() => router.push(`/planning/${selectedImportId}/batch`)}>
                   <ArrowRight size={14} /> Voir les préparations
                 </button>

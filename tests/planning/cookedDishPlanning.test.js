@@ -244,16 +244,23 @@ describe('buildCanonicalPlanPayload — créneaux nourris par un plat cuisiné',
       recipe_code: 'FR-TEST',
       cooked_dish_id: 42,
       source: 'cooked_dish',
-      nutrition_source: 'cooked_dish_stored',
+      nutrition_source: 'cooked_dish_stored_final_demands',
     })
-    // Nutrition mémorisée du plat : 2 portions × 320 kcal.
-    expect(slot.nutrition_total).toEqual({ kcal: 640, proteinG: 28, carbsG: 84, fatG: 22, fiberG: 14 })
+    // Nutrition mémorisée du plat, multipliée par les portions personnelles
+    // finales plutôt que par l'ancien grain foyer du solveur.
+    expect(slot.nutrition_total).toEqual({
+      kcal: 320 * slot.servings,
+      proteinG: 14 * slot.servings,
+      carbsG: 42 * slot.servings,
+      fatG: 11 * slot.servings,
+      fiberG: 7 * slot.servings,
+    })
     expect(slot.preparation).toMatchObject({ recipe_code: 'FR-TEST', mode: 'reheat', cooked_dish_id: 42 })
     expect(slot.preparation.exact_steps).toHaveLength(1)
     expect(slot.preparation.exact_steps[0].instruction).toContain('Réchauffer')
     expect(slot.stock_summary).toMatchObject({
       coverage: 1, allocations: [], shortages: [],
-      cooked_dish: { id: 42, name: 'Plat test', portions: 2 },
+      cooked_dish: { id: 42, name: 'Plat test', portions: slot.servings },
     })
 
     // Contrat partagé : réservation de portions, jamais de lot.
@@ -261,11 +268,11 @@ describe('buildCanonicalPlanPayload — créneaux nourris par un plat cuisiné',
       slot_key: '2026-07-20-diner',
       cooked_dish_id: 42,
       ingredient_name: 'Plat test',
-      reserved_quantity: 2,
+      reserved_quantity: slot.servings,
       reserved_unit: 'portion',
-      needed_quantity: 2,
+      needed_quantity: slot.servings,
       needed_unit: 'portion',
-      metadata: { allocation_strategy: 'cooked_dish_fefo' },
+      metadata: { allocation_strategy: 'cooked_dish_fefo', needed_on: '2026-07-20', expires_on: '2026-07-24' },
     }])
 
     // Jamais de « Préparer X » pour un plat déjà cuisiné.
@@ -281,13 +288,19 @@ describe('buildCanonicalPlanPayload — créneaux nourris par un plat cuisiné',
     expect(payload.tasks.find((task) => task.slot_key === '2026-07-20-dejeuner').task_type).toBe('prepare_recipe')
 
     // Le créneau nourri par le plat ne consomme aucun ingrédient : le besoin
-    // total reste celui du seul créneau frais (200 g, pas 400).
+    // total reste celui du seul créneau frais, dimensionné depuis ses demandes.
     const carrot = payload.shopping_items.find((item) => item.product_name === 'Carotte crue')
-    expect(carrot).toMatchObject({ required_qty: 200, purchase_qty: 200 })
+    const lunchExecution = payload.recipe_executions.find((item) => item.source_slot_key === '2026-07-20-dejeuner')
+    const exactCarrot = lunchExecution.exact_ingredients_snapshot.find((item) => item.formNormalized === 'carotte crue').grams
+    expect(carrot.required_qty).toBe(exactCarrot)
+    expect(carrot.purchase_qty).toBe(exactCarrot)
 
     // Les plats en jeu sont snapshotés dans les entrées du plan.
     expect(payload.input_snapshot.cooked_dishes).toEqual([
-      { id: 42, name: 'Plat test', portions_remaining: 4, expires_on: '2026-07-24' },
+      {
+        id: 42, name: 'Plat test', portions_remaining: 4, expires_on: '2026-07-24',
+        canonical_recipe_code: null, canonical_recipe_execution_id: null, planned_production_id: null,
+      },
     ])
   })
 
@@ -295,10 +308,42 @@ describe('buildCanonicalPlanPayload — créneaux nourris par un plat cuisiné',
     const payload = buildCanonicalPlanPayload({
       plan: dishPlan({ dishNutritionPerPortion: null }), recipes: [recipe], windowStart: '2026-07-20',
       members, constraints: {}, inventoryLots: [],
+      cookedDishes: [{ id: 42, name: 'Plat test', portionsRemaining: 4, expiresOn: '2026-07-24' }],
     })
     const slot = payload.slots[1]
-    expect(slot.nutrition_source).toBe('deterministic_exact_forms')
-    expect(slot.nutrition_total.kcal).toBe(600)
+    expect(slot.nutrition_source).toBe('final_personal_demands_recipe_fallback')
+    expect(slot.nutrition_total.kcal).toBe(recipe.nutritionPerServing.kcal * slot.servings)
+  })
+
+  it('publie séparément un reste partiel et son complément frais', () => {
+    const payload = buildCanonicalPlanPayload({
+      plan: dishPlan(), recipes: [recipe], windowStart: '2026-07-20',
+      members, constraints: {}, inventoryLots: [],
+      cookedDishes: [{
+        id: 42, name: 'Plat test', portionsRemaining: 1, expiresOn: '2026-07-24',
+        nutritionPerPortion: dishSlot().dishNutritionPerPortion,
+      }],
+    })
+    const slot = payload.slots.find((item) => item.slot_key === '2026-07-20-diner')
+    expect(slot).toMatchObject({
+      source: 'mixed_dish_and_fresh', cooked_dish_id: 42,
+      stock_summary: {
+        cooked_dish: { id: 42, portions: 1 },
+        fresh_complement: { portions: slot.servings - 1 },
+      },
+    })
+    expect(payload.reservations).toContainEqual(expect.objectContaining({ cooked_dish_id: 42, reserved_quantity: 1 }))
+    expect(payload.recipe_executions
+      .filter((execution) => execution.source_slot_key === '2026-07-20-diner')
+      .map((execution) => [execution.selected_configuration.source_mode, execution.servings]))
+      .toEqual([['existing_dish', 1], ['fresh_recipe', slot.servings - 1]])
+    expect(payload.tasks).toEqual(expect.arrayContaining([
+      expect.objectContaining({ task_key: 'prepare-2026-07-20-diner', task_type: 'prepare_recipe' }),
+      expect.objectContaining({ task_key: 'reheat-partial-2026-07-20-diner', task_type: 'reheat_dish' }),
+    ]))
+    expect(payload.consumptions).toContainEqual({
+      slot_key: '2026-07-20-diner', source: { cooked_dish_id: 42 }, portions: 1, role: 'component',
+    })
   })
 
   it('régression zéro plat : le payload est identique octet pour octet à l’existant', () => {
@@ -319,16 +364,22 @@ describe('buildCanonicalPlanPayload — créneaux nourris par un plat cuisiné',
     const withEmpty = build({ cookedDishes: [] })
     expect(JSON.stringify(withEmpty)).toBe(JSON.stringify(before))
     expect(JSON.stringify(before)).not.toContain('cooked_dish')
-    // La forme historique des réservations de lots est inchangée.
-    expect(before.reservations[0]).toEqual({
-      slot_key: '2026-07-20-diner',
+    // Le lot est promis au premier besoin chronologique et porte désormais
+    // la date d'usage ainsi que les demandes finales qu'il couvre.
+    expect(before.reservations[0]).toMatchObject({
+      slot_key: '2026-07-20-dejeuner',
       lot_id: 'lot-1',
       ingredient_name: 'Carotte crue',
       reserved_quantity: 150,
       reserved_unit: 'g',
-      needed_quantity: 150,
       needed_unit: 'g',
-      metadata: { form_normalized: 'carotte crue', allocation_strategy: 'opened_first_then_fefo' },
+      metadata: {
+        form_normalized: 'carotte crue',
+        allocation_strategy: 'opened_first_then_fefo_before_use',
+        needed_on: '2026-07-20',
+      },
     })
+    expect(before.reservations[0].metadata.demand_keys).toHaveLength(2)
+    expect(before.reservations[0].needed_quantity).toBeGreaterThan(before.reservations[0].reserved_quantity)
   })
 })

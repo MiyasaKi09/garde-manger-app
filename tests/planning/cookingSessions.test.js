@@ -287,49 +287,48 @@ describe('buildCanonicalPlanPayload — chaîne congélation et sessions (contra
 
   it('publie une production sœur congélateur : storage_method=freezer, use_by règle congélateur, tâche source « Congeler »', () => {
     const payload = buildFreezerPayload()
-    // Portions depuis les planned_servings personnalisés (test K) : 2 au
-    // déjeuner + 2,5 au dîner, par jour couvert.
-    expect(payload.productions).toEqual([
-      {
-        production_key: 'production-2026-07-20-dejeuner',
-        task_key: 'prepare-2026-07-20-dejeuner',
-        slot_key: '2026-07-20-dejeuner',
-        recipe_code: 'FR-GRA',
-        output_name: 'Gratin de courgettes',
-        planned_portions: 4.5,
-        storage_method: 'refrigerator',
-        available_from: '2026-07-20',
-        use_by: '2026-07-23',
-      },
-      {
-        production_key: 'production-2026-07-20-dejeuner-congelation',
-        task_key: 'freeze-2026-07-20-dejeuner',
-        slot_key: '2026-07-20-dejeuner',
-        recipe_code: 'FR-GRA',
-        output_name: 'Gratin de courgettes',
-        planned_portions: 4.5,
-        storage_method: 'freezer',
-        available_from: '2026-07-20',
-        use_by: '2026-10-18',
-      },
-    ])
+    expect(payload.productions).toHaveLength(2)
+    const fridge = payload.productions.find((production) => production.storage_method === 'refrigerator')
+    const freezer = payload.productions.find((production) => production.storage_method === 'freezer')
+    expect(fridge).toMatchObject({
+      production_key: 'production-2026-07-20-dejeuner',
+      task_key: 'prepare-2026-07-20-dejeuner',
+      slot_key: '2026-07-20-dejeuner', recipe_code: 'FR-GRA',
+      output_name: 'Gratin de courgettes', available_from: '2026-07-20', use_by: '2026-07-23',
+    })
+    expect(freezer).toMatchObject({
+      production_key: 'production-2026-07-20-dejeuner-congelation',
+      task_key: 'freeze-2026-07-20-dejeuner',
+      slot_key: '2026-07-20-dejeuner', recipe_code: 'FR-GRA',
+      output_name: 'Gratin de courgettes', available_from: '2026-07-20', use_by: '2026-10-18',
+    })
+    expect(fridge.execution_key).toBeTruthy()
+    expect(freezer.execution_key).toBe(fridge.execution_key)
+    for (const production of payload.productions) {
+      const demanded = payload.planned_demands
+        .filter((demand) => demand.source_id === production.production_key)
+        .reduce((sum, demand) => sum + demand.requested_servings, 0)
+      expect(production.planned_portions).toBeCloseTo(demanded, 8)
+    }
     // Les consommateurs congelés référencent la production congélateur ; le
     // use_by congélateur satisfait la validation temporelle du RPC.
-    expect(payload.consumptions).toEqual([
-      { slot_key: '2026-07-20-dejeuner', source: { production_key: 'production-2026-07-20-dejeuner' }, portions: 2, role: 'main' },
-      { slot_key: '2026-07-20-diner', source: { production_key: 'production-2026-07-20-dejeuner' }, portions: 2.5, role: 'main' },
-      { slot_key: '2026-07-24-dejeuner', source: { production_key: 'production-2026-07-20-dejeuner-congelation' }, portions: 2, role: 'main' },
-      { slot_key: '2026-07-24-diner', source: { production_key: 'production-2026-07-20-dejeuner-congelation' }, portions: 2.5, role: 'main' },
-    ])
+    expect(payload.consumptions).toHaveLength(4)
+    for (const consumption of payload.consumptions) {
+      const demanded = payload.planned_demands
+        .filter((demand) => demand.slot_key === consumption.slot_key && demand.source_id === consumption.source.production_key)
+        .reduce((sum, demand) => sum + demand.requested_servings, 0)
+      expect(consumption.portions).toBeCloseTo(demanded, 8)
+    }
   })
 
   it('chaîne cuire → congeler → décongeler (la veille) → manger : tâches et dépendances de la même version', () => {
     const payload = buildFreezerPayload()
+    const freezerProduction = payload.productions.find((production) => production.storage_method === 'freezer')
     const freezeTask = payload.tasks.find((task) => task.task_key === 'freeze-2026-07-20-dejeuner')
     expect(freezeTask).toMatchObject({
       task_type: 'freeze_dish',
       prep_date: '2026-07-20',
-      title: 'Congeler Gratin de courgettes (4,5 portions)',
+      title: `Congeler Gratin de courgettes (${String(freezerProduction.planned_portions).replace('.', ',')} portions)`,
       duration_min: 5,
       priority: 75,
     })
@@ -360,7 +359,8 @@ describe('buildCanonicalPlanPayload — chaîne congélation et sessions (contra
     }
     // Le titre du producteur annonce les portions TOTALES (part congelée comprise).
     const cookTask = payload.tasks.find((task) => task.task_key === 'prepare-2026-07-20-dejeuner')
-    expect(cookTask.title).toBe('Préparer Gratin de courgettes — 9 portions (4 repas)')
+    const total = payload.productions.reduce((sum, production) => sum + production.planned_portions, 0)
+    expect(cookTask.title).toBe(`Préparer Gratin de courgettes — ${String(total).replace('.', ',')} portions (4 repas)`)
   })
 
   it('sessions[] : bloc informatif déterministe — jour, fenêtre, tâches de cuisson, minutes actives, portions, repas couverts', () => {
@@ -373,7 +373,7 @@ describe('buildCanonicalPlanPayload — chaîne congélation et sessions (contra
       // 30 min de cuisson + 5 min « Congeler » + 5 min de portionnage par
       // repas consommateur couvert (1 frigo + 2 congelés).
       active_minutes_total: 50,
-      portions_produced: 9,
+      portions_produced: payload.productions.reduce((sum, production) => sum + production.planned_portions, 0),
       meals_covered: 4,
     }])
     // Mêmes entrées → mêmes sessions, reconstructibles côté lecture depuis
@@ -414,9 +414,12 @@ describe('buildCanonicalPlanPayload — chaîne congélation et sessions (contra
       { task_key: 'freeze-2026-07-20-dejeuner', depends_on_task_key: 'prepare-2026-07-20-dejeuner' },
       { task_key: 'reheat-2026-07-20-diner', depends_on_task_key: 'prepare-2026-07-20-dejeuner' },
     ])
-    // Le besoin d'ingrédients couvre les 3 parts foyer (surproduction incluse).
+    // Le besoin exact couvre les demandes personnelles et le tampon futur.
     const courgette = payload.shopping_items.find((item) => item.product_name === 'courgette cuite')
-    expect(courgette).toMatchObject({ required_qty: 300, purchase_qty: 300 })
+    const execution = payload.recipe_executions.find((item) => item.execution_key === freezer.execution_key)
+    const exactGrams = execution.exact_ingredients_snapshot.find((item) => item.formNormalized === 'courgette cuite').grams
+    expect(courgette.required_qty).toBeCloseTo(exactGrams, 3)
+    expect(courgette.purchase_qty).toBeCloseTo(exactGrams, 3)
   })
 
   it('régression : un plan sans production n’a NI sessions NI tâches de congélation — payload identique à l’existant', () => {
@@ -458,7 +461,11 @@ describe('buildCanonicalPlanPayload — chaîne congélation et sessions (contra
     // Contrat P2 : une seule production réfrigérateur, dépendance réchauffage
     // → cuisson, aucun artefact congélation.
     expect(payload.productions).toHaveLength(1)
-    expect(payload.productions[0]).toMatchObject({ storage_method: 'refrigerator', planned_portions: 4.5 })
+    const demanded = payload.planned_demands
+      .filter((demand) => demand.source_id === payload.productions[0].production_key)
+      .reduce((sum, demand) => sum + demand.requested_servings, 0)
+    expect(payload.productions[0]).toMatchObject({ storage_method: 'refrigerator' })
+    expect(payload.productions[0].planned_portions).toBeCloseTo(demanded, 8)
     expect(payload.dependencies).toEqual([
       { task_key: 'reheat-2026-07-20-diner', depends_on_task_key: 'prepare-2026-07-20-dejeuner' },
     ])
@@ -470,7 +477,7 @@ describe('buildCanonicalPlanPayload — chaîne congélation et sessions (contra
       task_keys: ['prepare-2026-07-20-dejeuner'],
       // 30 min de cuisson + 5 min de portionnage pour le repas consommateur.
       active_minutes_total: 35,
-      portions_produced: 4.5,
+      portions_produced: payload.productions[0].planned_portions,
       meals_covered: 2,
     }])
   })

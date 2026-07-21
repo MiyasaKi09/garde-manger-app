@@ -31,7 +31,7 @@ function formatWeekLabel(monday) {
 
 export default function PlanningAssistantPage() {
   const router = useRouter()
-  const [status, setStatus] = useState('pick') // pick | generating | success | error
+  const [status, setStatus] = useState('pick') // pick | generating | success | review | error
   const [progressText, setProgressText] = useState(PROGRESS_MESSAGES[0].text)
   const [errorMsg, setErrorMsg] = useState('')
   const abortRef = useRef(null)
@@ -65,8 +65,8 @@ export default function PlanningAssistantPage() {
       })
       const data = await response.json().catch(() => ({}))
       if (!response.ok) throw new Error(data.error || `Échec de génération (${response.status})`)
-      setStatus('success')
-      setProgressText('Planning vérifié et sauvegardé !')
+      setStatus(data.status === 'review_required' ? 'review' : 'success')
+      setProgressText(data.status === 'review_required' ? 'Planning sauvegardé — revue nécessaire.' : 'Planning vérifié et sauvegardé !')
       setTimeout(() => router.push('/planning'), 700)
 
     } catch (err) {
@@ -155,6 +155,14 @@ export default function PlanningAssistantPage() {
           <span className="asst-eyebrow-live">Terminé</span>
           <p className="asst-progress">Planning sauvegardé.</p>
           <p className="asst-note">Redirection…</p>
+        </section>
+      )}
+
+      {status === 'review' && (
+        <section className="v21-section flush asst-body">
+          <span className="asst-eyebrow-live">À vérifier</span>
+          <p className="asst-progress">Planning sauvegardé, avec des alertes nutritionnelles.</p>
+          <p className="asst-note">La semaine ne sera pas annoncée comme prête tant que ces écarts persistent. Redirection…</p>
         </section>
       )}
 

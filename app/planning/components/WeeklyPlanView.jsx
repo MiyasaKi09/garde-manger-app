@@ -16,14 +16,14 @@ import StockDot from './StockDot'
  */
 function extractDishName(descriptions) {
   if (!descriptions.length) return ''
-  // On affiche la description complète (Julien si dispo). Le calcul de
-  // préfixe commun coupait le nom dès que la version de Zoé divergeait
+  // On affiche la première description complète. Le calcul de préfixe commun
+  // coupait le nom dès qu'une variante personnelle divergeait
   // (« Risotto primavera — », « Collation — »). On ne fait plus ça.
   let s = (descriptions[0] || '').trim()
   // Ancien format .xlsx : "Nom du plat: 380g de ..." → garder avant ':'
   const colonIdx = s.indexOf(':')
   if (colonIdx > 0 && colonIdx < 60) return s.substring(0, colonIdx).trim()
-  // Retirer un éventuel suffixe "(portion Zoé)" / "(portion …)"
+  // Retirer un éventuel suffixe "(portion …)"
   return s.replace(/\s*\((?:portion|part)[^)]*\)\s*$/i, '').trim()
 }
 
@@ -134,8 +134,8 @@ export default function WeeklyPlanView({ imports = [] }) {
   }
 
   async function prefetchRecipe(typeMeals) {
-    const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-    const q = julien?.description
+    const representative = typeMeals[0]
+    const q = representative?.description
     if (!q || recipeCacheRef.current[q] !== undefined) return
     recipeCacheRef.current[q] = null // en cours
     try {
@@ -188,8 +188,8 @@ export default function WeeklyPlanView({ imports = [] }) {
         setDoneSet(s => { const n = new Set(s); n.delete(key); return n })
       } catch {}
     } else {
-      const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-      const dishName = (julien?.short_label || '').trim() || extractDishName(typeMeals.map(m => m.description))
+      const representative = typeMeals[0]
+      const dishName = (representative?.short_label || '').trim() || extractDishName(typeMeals.map(m => m.description))
       setCookSheetMeal({ type, dishName, entries: typeMeals })
     }
   }
@@ -284,8 +284,8 @@ export default function WeeklyPlanView({ imports = [] }) {
                     const typeMeals = dayMeals.filter(m => m.meal_type === type)
                     const descriptions = typeMeals.map(m => m.description)
                     // Surnom court écrit par la routine si dispo, sinon extraction.
-                    const julienRow = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-                    const dishName = (julienRow?.short_label || '').trim() || extractDishName(descriptions)
+                    const representative = typeMeals[0]
+                    const dishName = (representative?.short_label || '').trim() || extractDishName(descriptions)
                     const isGenerating = generatingFor === dishName
                     // Seuls déjeuner/dîner ont une fiche recette (pas pdj/collation).
                     const clickable = type === 'dejeuner' || type === 'diner'
@@ -293,8 +293,9 @@ export default function WeeklyPlanView({ imports = [] }) {
                     const descStyle = done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined
 
                     // Couverture stock pour déjeuner/dîner
-                    const stockCov = (clickable && julienRow?.id)
-                      ? coverageByMeal[julienRow.id]
+                    const coverageMeal = typeMeals.find((meal) => coverageByMeal[meal.id]) || representative
+                    const stockCov = (clickable && coverageMeal?.id)
+                      ? coverageByMeal[coverageMeal.id]
                       : null
 
                     return (

@@ -1,0 +1,85 @@
+name: Release production
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-release
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: stub
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - run: npx playwright install chromium --with-deps
+      - run: npm run test:e2e
+
+  migrate-and-deploy:
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Installer les dépendances et psql
+        run: |
+          npm ci
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+      - name: Vérifier le manifeste de migrations
+        run: |
+          node scripts/db/build-manifest.mjs
+          git diff --exit-code -- scripts/db/migration-manifest.json
+      - name: Dry-run migrations production
+        run: bash scripts/db/apply-migrations.sh status
+      - name: Appliquer les migrations production
+        run: bash scripts/db/apply-migrations.sh apply
+      - name: Vérifier idempotence, contrat et invariants
+        run: |
+          output=$(bash scripts/db/apply-migrations.sh apply)
+          echo "$output"
+          echo "$output" | grep -E '^migrations : 0 appliquées'
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/ci/42_planning_final_demands.sql
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f scripts/db/verify-planning-production.sql
+      - name: Construire avec l’environnement Vercel de production
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npx --yes vercel@56.4.1 pull --yes --environment=production --token="$VERCEL_TOKEN"
+          npx --yes vercel@56.4.1 build --prod --token="$VERCEL_TOKEN"
+      - name: Déployer Vercel après validation du schéma
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          deployment_url=$(npx --yes vercel@56.4.1 deploy --prebuilt --prod --token="$VERCEL_TOKEN")
+          echo "Déploiement : $deployment_url"
+          curl --fail --location --retry 8 --retry-delay 5 "$deployment_url/"
+      - name: Canary transactionnel Planning V5
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/canary/planning_v5_transaction_canary.sql

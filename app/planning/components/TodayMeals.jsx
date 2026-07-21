@@ -89,6 +89,7 @@ const MEAL_BAR_VAR = {
  */
 export default function TodayMeals({ importId }) {
   const [meals, setMeals] = useState([])
+  const [householdMembers, setHouseholdMembers] = useState([])
   const [loading, setLoading] = useState(true)
 
   // « Cuisiné » : créneaux faits (clé `${date}|${type}`) + feuille de confirmation
@@ -154,7 +155,7 @@ export default function TodayMeals({ importId }) {
     const planEntries = meals.filter(m => m.meal_date === todayStr && m.meal_type === type)
     const persons = planEntries.length
       ? [...new Set(planEntries.map(e => e.person_name).filter(Boolean))]
-      : ['Julien']
+      : householdMembers.map(member => member.name).filter(Boolean)
     setCookSheetMeal({
       type,
       dishName: dish.name,
@@ -267,6 +268,7 @@ export default function TodayMeals({ importId }) {
       const res = await authFetch(`/api/planning/imports/${importId}`)
       const data = await res.json()
       if (data.meals) setMeals(data.meals)
+      if (Array.isArray(data.householdMembers)) setHouseholdMembers(data.householdMembers)
     } catch (err) {
       console.error('Erreur chargement meals:', err)
     } finally {
@@ -295,8 +297,8 @@ export default function TodayMeals({ importId }) {
   // ── COOK FLOW ──
   async function handleCook() {
     if (!selectedMeal || generatingRecipe) return
-    const julien = selectedMeal.entries.find(e => e.person_name === 'Julien') || selectedMeal.entries[0]
-    const query = julien?.description || selectedMeal.dishName
+    const representative = selectedMeal.entries[0]
+    const query = representative?.description || selectedMeal.dishName
     if (!query) return
     setGeneratingRecipe(true)
     setShowChoice(false)
@@ -351,7 +353,7 @@ export default function TodayMeals({ importId }) {
           import_id: importId,
           meal_date: selectedMeal.entries[0].meal_date,
           meal_type: selectedMeal.type,
-          person_name: 'Julien',
+          person_name: selectedMeal.entries[0].person_name,
           direction: swapDirection || '',
         }),
       })
@@ -422,10 +424,10 @@ export default function TodayMeals({ importId }) {
             onClick={() => setCookSheetMeal({
               type: currentMealType(),
               freeform: true,
-              entries: [
-                { person_name: 'Julien', meal_date: todayStr },
-                { person_name: 'Zoé', meal_date: todayStr },
-              ],
+              entries: (householdMembers.length
+                ? householdMembers
+                : [...new Set(meals.map(meal => meal.person_name).filter(Boolean))].map(name => ({ name })))
+                .map(member => ({ person_name: member.name, meal_date: todayStr })),
             })}
           >
             <ChefHat size={13} aria-hidden="true" />
@@ -527,10 +529,9 @@ export default function TodayMeals({ importId }) {
                 const isGenerating = generatingRecipe && selectedMeal?.dishName === meal.dishName
                 const done = isDone(meal)
                 const isMainMeal = meal.type === 'dejeuner' || meal.type === 'diner'
-                // Lit la couverture depuis l'id de Julien (premier entry Julien, sinon premier)
-                const julienEntry = meal.entries.find(e => e.person_name === 'Julien') || meal.entries[0]
-                const stockCov = (isMainMeal && julienEntry?.id)
-                  ? coverageByMeal[julienEntry.id]
+                const coveredEntry = meal.entries.find(entry => coverageByMeal[entry.id]) || meal.entries[0]
+                const stockCov = (isMainMeal && coveredEntry?.id)
+                  ? coverageByMeal[coveredEntry.id]
                   : null
                 return (
                   <div key={i} className="tm-meal" style={{ opacity: generatingRecipe && !isGenerating ? 0.5 : 1 }}>
