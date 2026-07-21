@@ -177,20 +177,34 @@ const files = readdirSync(MIGRATIONS_DIR)
   .filter(f => f.endsWith('.sql'))
   .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
 
+// Quelques migrations historiques utilisent seulement YYYYMMDD comme préfixe
+// et plusieurs fichiers partagent alors la même date. Le ledger a une clé
+// primaire sur version : ces collisions doivent recevoir une version stable et
+// unique. Pour elles uniquement, le basename complet devient la version. Les
+// timestamps Supabase modernes (14 chiffres) restent inchangés.
+const applyVersionCounts = new Map();
+for (const filename of files) {
+  const base = filename.replace(/\.sql$/, '');
+  if (isRollback(base)) continue;
+  const rawVersion = extractVersion(base);
+  applyVersionCounts.set(rawVersion, (applyVersionCounts.get(rawVersion) || 0) + 1);
+}
+
 const manifest = files.map(filename => {
   const base = filename.replace(/\.sql$/, '');
-  const version = extractVersion(base);
+  const rawVersion = extractVersion(base);
   const rollback = isRollback(base);
-  const name = extractName(base, version);
+  const version = !rollback && applyVersionCounts.get(rawVersion) > 1 ? base : rawVersion;
+  const name = extractName(base, rawVersion);
   const filepath = resolve(MIGRATIONS_DIR, filename);
-  const hash = sha256(filepath, version);
-  const { role, baseline } = classify(version, rollback);
+  const hash = sha256(filepath, rawVersion);
+  const { role, baseline } = classify(rawVersion, rollback);
 
   let expected_objects = [];
-  if (baseline === 'verify_objects' && VERIFY_OBJECTS[version]) {
-    expected_objects = VERIFY_OBJECTS[version];
-  } else if (baseline === 'new' && NEW_EXPECTED_OBJECTS[version]) {
-    expected_objects = NEW_EXPECTED_OBJECTS[version];
+  if (baseline === 'verify_objects' && VERIFY_OBJECTS[rawVersion]) {
+    expected_objects = VERIFY_OBJECTS[rawVersion];
+  } else if (baseline === 'new' && NEW_EXPECTED_OBJECTS[rawVersion]) {
+    expected_objects = NEW_EXPECTED_OBJECTS[rawVersion];
   }
 
   return {
@@ -200,10 +214,17 @@ const manifest = files.map(filename => {
     sha256: hash,
     role,
     baseline,
-    historical_version: LEDGER_MATCH[version] || null,
+    historical_version: LEDGER_MATCH[rawVersion] || null,
     expected_objects,
   };
 });
+
+const duplicateApplyVersions = Object.entries(
+  Object.groupBy(manifest.filter(entry => entry.role === 'apply'), entry => entry.github_version),
+).filter(([, entries]) => entries.length > 1);
+if (duplicateApplyVersions.length > 0) {
+  throw new Error(`Versions de migration encore dupliquées : ${duplicateApplyVersions.map(([v]) => v).join(', ')}`);
+}
 
 writeFileSync(OUTPUT_FILE, JSON.stringify(manifest, null, 2) + '\n');
 console.log(`Manifest généré : ${manifest.length} entrées → ${OUTPUT_FILE}`);
