@@ -50,7 +50,7 @@ export default function WeekGrid({
   meals = [], weekDates = [], weekOffset = 0, onPrevWeek, onNextWeek,
   importId = null, onModifyDay = null, onModifyMeal = null,
 }) {
-  const [person, setPerson] = useState('all') // 'all' | 'Julien' | 'Zoé'
+  const [person, setPerson] = useState('all')
   const [showStock, setShowStock] = useState(true)
 
   const { coverageByMeal, summary } = useStockCoverage(importId)
@@ -71,6 +71,11 @@ export default function WeekGrid({
   // ⚠️ Date LOCALE (toISOString décalerait de -1 jour en UTC+).
   const fmt = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
   const todayStr = fmt(new Date())
+  const people = [...new Set(meals.map((meal) => meal.person_name).filter(Boolean))].sort((left, right) => left.localeCompare(right, 'fr'))
+
+  useEffect(() => {
+    if (person !== 'all' && !people.includes(person)) setPerson('all')
+  }, [people.join('|'), person]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => { loadDone() }, [weekOffset]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -95,9 +100,9 @@ export default function WeekGrid({
   }
 
   async function prefetchRecipe(typeMeals) {
-    const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-    if (canonicalRecipeHref(julien)) return
-    const q = julien?.description
+    const representative = typeMeals[0]
+    if (canonicalRecipeHref(representative)) return
+    const q = representative?.description
     if (!q || recipeCacheRef.current[q] !== undefined) return
     recipeCacheRef.current[q] = null
     try {
@@ -119,8 +124,8 @@ export default function WeekGrid({
         setDoneSet(s => { const n = new Set(s); n.delete(key); return n })
       } catch {}
     } else {
-      const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-      const dishName = (julien?.short_label || '').trim() || extractDishName(typeMeals.map(m => m.description))
+      const representative = typeMeals[0]
+      const dishName = (representative?.short_label || '').trim() || extractDishName(typeMeals.map(m => m.description))
       setCookSheetMeal({ type, dishName, entries: typeMeals })
     }
   }
@@ -171,22 +176,24 @@ export default function WeekGrid({
       )
     }
 
-    const julienRow = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-    const dishName = dishOf(julienRow)
+    const representative = typeMeals[0]
+    const dishName = dishOf(representative)
     const isGenerating = generatingFor === dishName
     const clickable = type === 'dejeuner' || type === 'diner'
     const done = doneSet.has(`${typeMeals[0]?.meal_date}|${type}`)
 
-    // Couverture stock : seulement pour déjeuner/dîner, lu depuis l'id Julien
-    const stockCov = (showStock && clickable && julienRow?.id)
-      ? coverageByMeal[julienRow.id]
+    // La couverture est celle du créneau canonique ; n'importe quelle ligne
+    // personnelle du créneau peut donc la porter.
+    const coverageMeal = typeMeals.find((meal) => coverageByMeal[meal.id]) || representative
+    const stockCov = (showStock && clickable && coverageMeal?.id)
+      ? coverageByMeal[coverageMeal.id]
       : null
     const dishStyle = done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined
     // Repas couvert par une préparation batch (déjeuners liés par la Routine) → réchauffe.
     const batched = typeMeals.some(m => m.batch_recipe_id)
 
     // Plat spécial = déjeuner/dîner où les convives ont des plats DIFFÉRENTS
-    // (le « carné pour Julien / végé pour Zoé » hebdomadaire). On compare les
+    // (par exemple une variante végétarienne personnelle). On compare les
     // surnoms (donc une simple différence de portion ne compte pas).
     const labels = [...new Set(allTypeMeals.map(dishOf))]
     const isSpecial = (type === 'dejeuner' || type === 'diner') && labels.length > 1
@@ -279,8 +286,9 @@ export default function WeekGrid({
       <div className="wg-filt">
         <span className="wg-filt-lab">Convive</span>
         <button className={`wg-chip${person === 'all' ? ' on' : ''}`} onClick={() => setPerson('all')}>Tous</button>
-        <button className={`wg-chip${person === 'Julien' ? ' on' : ''}`} onClick={() => setPerson('Julien')}>Julien</button>
-        <button className={`wg-chip${person === 'Zoé' ? ' on' : ''}`} onClick={() => setPerson('Zoé')}>Zoé</button>
+        {people.map((name) => (
+          <button key={name} className={`wg-chip${person === name ? ' on' : ''}`} onClick={() => setPerson(name)}>{name}</button>
+        ))}
         {/* Séparateur visuel */}
         <span className="wg-filt-sep" aria-hidden="true" />
         <span className="wg-filt-lab">Stock</span>

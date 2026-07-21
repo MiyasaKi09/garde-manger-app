@@ -232,7 +232,7 @@ export default function CookSession({ open, meal, onClose, onDone }) {
       let merged = []
 
       for (const variant of variants) {
-        const rep = variant.entries.find(e => e.person_name === 'Julien') || variant.entries[0]
+        const rep = variant.entries[0]
         const q = rep?.description || meal?.dishName
         if (!q) continue
 

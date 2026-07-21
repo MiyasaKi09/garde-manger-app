@@ -174,7 +174,7 @@ export default function BatchPage() {
     // tâches « Préparer X » (leur validation matérialise la production, P2).
     const prepTasks = allTasks.filter(t => t.source !== 'closed_loop')
     const closedLoop = allTasks.filter(t => t.source === 'closed_loop')
-    const prepareTasks = closedLoop.filter(t => t.task_type === 'prepare_recipe')
+    const prepareTasks = closedLoop.filter(t => ['prepare_recipe', 'prepare_recipe_variant', 'prepare_support'].includes(t.task_type))
     const recipes = data.batchRecipes || []
 
     // Index canoniques : production par tâche source, tâches dépendantes
@@ -321,7 +321,7 @@ export default function BatchPage() {
         {!hasAnything && (
           <section className="v21-section flush">
             <div className="v21-empty">
-              <p>Pas encore de préparations. Depuis le planning, lance <b>« Organiser les préparations »</b> : Myko dérive les lots à cuisiner d'avance depuis le plan de la semaine.</p>
+              <p>Pas encore de préparations publiées. Demande ou recalcule le planning : Myko publiera les sessions, les variantes et les quantités avec le reste de la semaine.</p>
               <button className="v21-btn" onClick={() => router.push('/planning')}>← Retour au planning</button>
             </div>
           </section>

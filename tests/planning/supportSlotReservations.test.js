@@ -28,7 +28,7 @@ const basePlan = () => ({
 })
 
 // Julien prend petit-déjeuner ET collation (memberRules) → deux créneaux support.
-const julien = { name: 'Julien', portion_multiplier: 1 }
+const julien = { name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }
 
 describe('P4 — créneaux support et réservations pdj/collation', () => {
   it('émet des créneaux support (pdj + collation) avec source=support et sans recette ni plat', () => {
@@ -78,7 +78,7 @@ describe('P4 — créneaux support et réservations pdj/collation', () => {
     const payload = buildCanonicalPlanPayload({
       plan: basePlan(), recipes: [recipe], windowStart: '2026-07-20',
       members: [julien], constraints: {},
-      // Un demi-pot (100 g) : la moitié réservée, la moitié achetée.
+      // Un demi-pot (100 g) : la moitié réservée, puis un pot physique acheté.
       inventoryLots: [{ id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 100 }],
     })
     const reserved = payload.reservations
@@ -86,7 +86,13 @@ describe('P4 — créneaux support et réservations pdj/collation', () => {
       .reduce((sum, res) => sum + res.reserved_quantity, 0)
     expect(reserved).toBe(100)
     const skyr = payload.shopping_items.find((item) => item.product_name === 'Skyr nature')
-    expect(skyr).toMatchObject({ stock_qty: 100, required_qty: 200, purchase_qty: 100 })
+    expect(skyr).toMatchObject({
+      stock_qty: 100,
+      required_qty: 200,
+      exact_required_qty: 100,
+      purchase_qty: 200,
+      projected_surplus_qty: 100,
+    })
   })
 
   it('est déterministe : deux constructions identiques produisent un payload identique', () => {

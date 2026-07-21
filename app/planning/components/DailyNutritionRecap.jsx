@@ -5,11 +5,6 @@ import { authFetch } from '@/lib/authFetch'
 
 const DAY_NAMES = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
 
-const TARGETS = {
-  Julien: { kcal: 2050, p: 170, g: 170, l: 70 },
-  Zoé: { kcal: 1350, p: 90, g: 120, l: 55 },
-}
-
 function pct(value, target) {
   if (!target || !value) return 0
   return Math.round((value / target) * 100)
@@ -23,6 +18,7 @@ function statusColor(percent) {
 
 export default function DailyNutritionRecap({ importId }) {
   const [totals, setTotals] = useState([])
+  const [targets, setTargets] = useState({})
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -32,9 +28,22 @@ export default function DailyNutritionRecap({ importId }) {
 
   async function loadTotals() {
     try {
-      const res = await authFetch(`/api/planning/imports/${importId}`)
-      const data = await res.json()
+      const [planResponse, goalsResponse] = await Promise.all([
+        authFetch(`/api/planning/imports/${importId}`),
+        authFetch('/api/nutrition/goals'),
+      ])
+      const data = await planResponse.json()
       if (data.dailyTotals) setTotals(data.dailyTotals)
+      if (goalsResponse.ok) {
+        const goalData = await goalsResponse.json()
+        const rows = Array.isArray(goalData) ? goalData : (goalData.goals || [])
+        setTargets(Object.fromEntries(rows.map(goal => [goal.person_name, {
+          kcal: Number(goal.target_calories) || 0,
+          p: Number(goal.target_protein_g) || 0,
+          g: Number(goal.target_carbs_g) || 0,
+          l: Number(goal.target_fat_g) || 0,
+        }])))
+      }
     } catch (err) {
       console.error('Erreur chargement totals:', err)
     } finally {
@@ -76,10 +85,9 @@ export default function DailyNutritionRecap({ importId }) {
               <span style={S.dayDate}>{dayNum} {month}</span>
             </div>
             <div className="nutri-persons-wrap">
-              {['Julien', 'Zoé'].map(name => {
+              {Object.keys(persons).sort().map(name => {
                 const p = persons[name]
-                if (!p) return null
-                const target = TARGETS[name] || {}
+                const target = targets[name] || {}
                 const kcalPct = pct(p.kcal, target.kcal)
                 const protPct = pct(p.protein_g, target.p)
                 const carbsPct = pct(p.carbs_g, target.g)

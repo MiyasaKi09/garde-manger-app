@@ -55,7 +55,7 @@
 .wg-dish-btn:hover:not(:disabled) .wg-dish { color: var(--terracotta); }
 .wg-empty { font-family: var(--font-mono); font-size: 13px; color: var(--ink-3); }
 
-/* Plat spécial de la semaine : déjeuner/dîner où Julien et Zoé divergent
+/* Plat spécial de la semaine : déjeuner/dîner où les convives divergent
    (carné / végé). Accent prune distinct + la version de l'autre convive. */
 .wg-special { background: rgba(122, 90, 166, 0.05); }
 .wg-special::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #7A5AA6; }

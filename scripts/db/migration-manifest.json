@@ -1131,5 +1131,126 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260721195504_planning_final_demand_truth.sql",
+    "github_version": "20260721195504",
+    "name": "planning_final_demand_truth",
+    "sha256": "d706e9ef6b1298fcebf24974768ff6d3fd114f5eba094006108181c2f4cdaa25",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "planned_demands"
+      },
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "publish_canonical_final_demand_plan"
+      },
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "planning_schema_compatibility"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "name": "canonical_recipe_code",
+        "table": "cooked_dishes"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "name": "exact_required_qty",
+        "table": "nutrition_plan_shopping_items"
+      },
+      {
+        "type": "trigger",
+        "schema": "public",
+        "name": "trg_sync_materialized_production_identity",
+        "table": "planned_productions"
+      }
+    ]
+  },
+  {
+    "file": "20260721195504_planning_final_demand_truth_rollback.sql",
+    "github_version": "20260721195504",
+    "name": "planning_final_demand_truth_rollback",
+    "sha256": "61c511e2bf418d6609b2d9707f70b61a69a821a43e335d38f06c513a7fc3a06d",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260721210000_planning_legacy_active_week_repair.sql",
+    "github_version": "20260721210000",
+    "name": "planning_legacy_active_week_repair",
+    "sha256": "5d43ec723287887b2d18150e00045cc3a9fba10a8a675ae36a9030952bd2e310",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260721211500_planning_v5_fk_indexes.sql",
+    "github_version": "20260721211500",
+    "name": "planning_v5_fk_indexes",
+    "sha256": "1baf892d403abc3661ae4b963e90afd9c73a7e14e17adab2e850bcae77a4ddfe",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "index",
+        "schema": "public",
+        "name": "idx_planned_demands_slot_id",
+        "table": "planned_demands"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "name": "idx_planned_demands_user_id",
+        "table": "planned_demands"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "name": "idx_planned_productions_recipe_execution_id",
+        "table": "planned_productions"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "name": "idx_cooked_dishes_canonical_recipe_execution_id",
+        "table": "cooked_dishes"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "name": "idx_cooked_dishes_planned_production_id",
+        "table": "cooked_dishes"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "name": "idx_cooked_dishes_source_plan_version_id",
+        "table": "cooked_dishes"
+      }
+    ]
+  },
+  {
+    "file": "20260721211500_planning_v5_fk_indexes_rollback.sql",
+    "github_version": "20260721211500",
+    "name": "planning_v5_fk_indexes_rollback",
+    "sha256": "c8e0aaaf263c4d5c17964a3750b8865bb7a232db963a55c03483347e7c9b1c4d",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

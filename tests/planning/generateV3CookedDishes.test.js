@@ -75,7 +75,12 @@ function seedMock({ dishReservations = [] } = {}) {
     inventory_reservations: dishReservations,
     cooked_dishes: [dishRow],
   })
-  mock.rpc = vi.fn(async () => ({ data: { import_id: 42, plan_version_id: 'v-new', status: 'published' }, error: null }))
+  mock.rpc = vi.fn(async (name) => {
+    if (name === 'planning_schema_compatibility') {
+      return { data: { compatible: true, contract_version: 5 }, error: null }
+    }
+    return { data: { import_id: 42, plan_version_id: 'v-new', status: 'published' }, error: null }
+  })
   return mock
 }
 
@@ -84,7 +89,8 @@ async function generate(mock) {
   listOperationalRecipes.mockResolvedValue({ recipes: CATALOG, metadata: { corpusVersion: 'test-corpus' } })
   const response = await POST(request({ import_id: 42 }))
   const body = await response.json()
-  return { response, body, payload: mock.rpc.mock.calls[0]?.[1]?.p_payload }
+  const publishCall = mock.rpc.mock.calls.find(([name]) => name === 'publish_canonical_final_demand_plan')
+  return { response, body, payload: publishCall?.[1]?.p_payload }
 }
 
 describe('POST /api/planning/generate-v3 — plats cuisinés dans la boucle', () => {
@@ -110,9 +116,9 @@ describe('POST /api/planning/generate-v3 — plats cuisinés dans la boucle', ()
       expect(slot.meal_date <= '2026-07-22').toBe(true)
       expect(slot.stock_summary.coverage).toBe(1)
       expect(slot.stock_summary.allocations).toEqual([])
-      // Nutrition mémorisée sur le plat (2 portions × 480 kcal).
-      expect(slot.nutrition_source).toBe('cooked_dish_stored')
-      expect(slot.nutrition_total.kcal).toBe(960)
+      // Nutrition mémorisée sur le plat × portions personnelles finales.
+      expect(slot.nutrition_source).toBe('cooked_dish_stored_final_demands')
+      expect(slot.nutrition_total.kcal).toBeCloseTo(480 * slot.servings, 6)
     }
 
     const dishReservations = payload.reservations.filter((row) => row.cooked_dish_id != null)
@@ -121,9 +127,10 @@ describe('POST /api/planning/generate-v3 — plats cuisinés dans la boucle', ()
       expect(row).toMatchObject({
         cooked_dish_id: 501,
         ingredient_name: 'Hachis parmentier',
-        reserved_quantity: 2,
         reserved_unit: 'portion',
       })
+      const slot = dishSlots.find((item) => item.slot_key === row.slot_key)
+      expect(row.reserved_quantity).toBeCloseTo(slot.servings, 6)
       expect(row.lot_id).toBeUndefined()
     }
 
@@ -137,8 +144,23 @@ describe('POST /api/planning/generate-v3 — plats cuisinés dans la boucle', ()
     }
 
     expect(payload.input_snapshot.cooked_dishes).toEqual([
-      { id: 501, name: 'Hachis parmentier', portions_remaining: 6, expires_on: '2026-07-22' },
+      {
+        id: 501, name: 'Hachis parmentier', portions_remaining: 6, expires_on: '2026-07-22',
+        canonical_recipe_code: null, canonical_recipe_execution_id: null, planned_production_id: null,
+      },
     ])
+  })
+
+  it('refuse proprement une base sans contrat V5 avant toute publication', async () => {
+    const mock = seedMock()
+    mock.rpc = vi.fn(async (name) => name === 'planning_schema_compatibility'
+      ? { data: { compatible: false, contract_version: 4 }, error: null }
+      : { data: null, error: new Error('ne doit pas publier') })
+    const { response, body, payload } = await generate(mock)
+    expect(response.status).toBe(503)
+    expect(body.code).toBe('schema_upgrade_required')
+    expect(payload).toBeUndefined()
+    expect(mock.rpc).toHaveBeenCalledTimes(1)
   })
 
   it('libère les réservations de la version remplacée (excludedPlanVersionId) lors de la régénération', async () => {

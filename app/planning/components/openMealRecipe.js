@@ -37,15 +37,15 @@ export async function openMealRecipe({
   toastError,
   dishName,
 }) {
-  const julien = typeMeals.find(m => m.person_name === 'Julien') || typeMeals[0]
-  const canonicalHref = canonicalRecipeHref(julien)
+  const representative = typeMeals[0]
+  const canonicalHref = canonicalRecipeHref(representative)
   if (canonicalHref) {
     window.location.assign(canonicalHref)
     return
   }
-  const query = julien?.description
+  const query = representative?.description
   // FK-first : les repas écrits par la routine v5 portent generated_recipe_id.
-  const recipeId = julien?.generated_recipe_id ?? null
+  const recipeId = representative?.generated_recipe_id ?? null
   if (!query && !recipeId) return
 
   const cacheKey = recipeId ? `id:${recipeId}` : query
