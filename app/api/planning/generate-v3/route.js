@@ -389,7 +389,15 @@ export async function POST(request) {
       preservedMeals: existing.meals.flatMap((meal) => {
         const currentSlot = existing.slots.find((slot) => slot.id === meal.meal_plan_slot_id)
         const state = currentSlot ? existing.slotStates[currentSlot.slot_key] : null
-        return state?.protected ? [{ ...meal, planning_status: state.consumed ? 'consumed' : 'planned' }] : []
+        if (!state?.protected) return []
+        // Les plans publiés avant la colonne canonical_recipe_code (V5) ont des
+        // repas principaux sans code : on réhydrate depuis le créneau, sinon le
+        // modèle à demandes finales requalifiait ces repas en « support » et
+        // dupliquait les slot_keys principaux (payload à 40 créneaux → rejet
+        // invalid_plan_payload du garde-fou, incident prod du 24/07).
+        const rehydratedCode = meal.canonical_recipe_code
+          || (['dejeuner', 'diner'].includes(meal.meal_type) ? currentSlot?.preparation?.recipe_code || null : null)
+        return [{ ...meal, canonical_recipe_code: rehydratedCode, planning_status: state.consumed ? 'consumed' : 'planned' }]
       }),
       slotStates: existing.slotStates,
       corpusVersion: operationalCatalog.metadata.corpusVersion,
