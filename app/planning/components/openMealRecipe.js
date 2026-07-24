@@ -33,6 +33,63 @@ export function canonicalRecipeHref(meal) {
   return code ? `/recipes/canonical/${encodeURIComponent(code)}` : null
 }
 
+function personQuantityKeys(meal) {
+  return [meal?.household_member_id, meal?.person_name].filter(Boolean).map(String)
+}
+
+/** Ajoute au modal les accompagnements réellement calculés pour chaque convive. */
+export function decorateRecipeWithMealPlate(recipe, typeMeals = []) {
+  if (!recipe) return recipe
+  const rows = new Map()
+
+  for (const meal of typeMeals || []) {
+    for (const companion of meal?.portion_details?.companions || []) {
+      const key = companion.form_normalized || companion.key || companion.label
+      const row = rows.get(key) || {
+        name: `${companion.label || 'Accompagnement'} · accompagnement calculé`,
+        quantity: 0,
+        unit: 'g',
+        notes: 'Quantité personnalisée selon les objectifs',
+        per_person_quantities: {},
+        preparation: companion.preparation || null,
+        companion: true,
+      }
+      const quantity = Number(companion.quantity_g) || 0
+      row.quantity += quantity
+      for (const personKey of personQuantityKeys(meal)) row.per_person_quantities[personKey] = quantity
+      rows.set(key, row)
+    }
+  }
+
+  if (!rows.size) return recipe
+  const companionIngredients = [...rows.values()].map((row) => ({
+    ...row,
+    quantity: Math.round(row.quantity * 10) / 10,
+  }))
+  const companionSteps = companionIngredients.map((ingredient, index) => {
+    const distribution = (typeMeals || []).map((meal) => {
+      const quantity = personQuantityKeys(meal)
+        .map((key) => ingredient.per_person_quantities[key])
+        .find((value) => Number.isFinite(Number(value)))
+      return quantity > 0 ? `${meal.person_name}: ${Math.round(quantity * 10) / 10} g` : null
+    }).filter(Boolean).join(' · ')
+    return {
+      n: (recipe.steps?.length || 0) + index + 1,
+      instruction: `${ingredient.preparation || `Préparer ${ingredient.name.replace(/ ·.*/, '').toLowerCase()}.`} Répartir ainsi : ${distribution}.`,
+      duration_min: null,
+      companion: true,
+    }
+  })
+
+  return {
+    ...recipe,
+    ingredients: [...(recipe.ingredients || []), ...companionIngredients],
+    steps: [...(recipe.steps || []), ...companionSteps],
+    plate_components: companionIngredients,
+    plate_personalized: true,
+  }
+}
+
 async function fetchCanonicalRecipe({ code, typeMeals, recipeCacheRef, authFetch }) {
   const portions = (typeMeals || []).reduce((sum, meal) => sum + (Number(meal?.planned_servings) || 0), 0)
   const params = new URLSearchParams()
@@ -111,7 +168,7 @@ export async function openMealRecipe({
         toastError(NO_SHEET_MSG)
         return
       }
-      setGeneratedRecipe(recipe)
+      setGeneratedRecipe(decorateRecipeWithMealPlate(recipe, typeMeals))
       setCookModeOpen(true)
     } catch (error) {
       console.error('Erreur recette canonique:', error)
