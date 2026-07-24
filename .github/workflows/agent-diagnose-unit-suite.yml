@@ -1,0 +1,60 @@
+name: Agent diagnose unit suite
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    if: github.event.pull_request.head.ref == 'agent/planning-speed-objectives-diversity-modal'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/planning-speed-objectives-diversity-modal
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Capturer uniquement les échecs Vitest
+        run: |
+          set +e
+          npx vitest run --reporter=json --outputFile=/tmp/vitest-results.json
+          status=$?
+          node <<'NODE'
+          const fs = require('fs')
+          const raw = JSON.parse(fs.readFileSync('/tmp/vitest-results.json', 'utf8'))
+          const failed = (raw.testResults || []).filter((file) => file.status === 'failed' || file.assertionResults?.some((test) => test.status === 'failed'))
+          const result = {
+            success: raw.success,
+            numFailedTestSuites: raw.numFailedTestSuites,
+            numFailedTests: raw.numFailedTests,
+            failed: failed.map((file) => ({
+              name: file.name,
+              message: file.message || file.failureMessage || null,
+              assertions: (file.assertionResults || []).filter((test) => test.status === 'failed').map((test) => ({
+                title: test.fullName || test.title,
+                failureMessages: test.failureMessages || [],
+              })),
+            })),
+          }
+          fs.writeFileSync('unit-suite-failures.json', JSON.stringify(result, null, 2))
+          NODE
+          echo "exit_status=$status" >> unit-suite-failures.json
+          exit 0
+      - name: Publier le diagnostic une seule fois
+        run: |
+          if git ls-tree -r HEAD --name-only | grep -qx 'unit-suite-failures.json'; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add unit-suite-failures.json
+          git commit -m "chore(agent): publier les échecs unitaires"
+          git push origin HEAD:agent/planning-speed-objectives-diversity-modal
