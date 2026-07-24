@@ -1,0 +1,303 @@
+name: Agent apply explicit recalculation
+
+on:
+  push:
+    branches:
+      - agent/explicit-recalculate-protected-meals
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/explicit-recalculate-protected-meals
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Apply audited patch
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          route_path = Path('app/api/planning/generate-v3/route.js')
+          route = route_path.read_text()
+          route = route.replace(
+            "import { resolveHouseholdTimeZone, zonedDateTimeToUtc } from '@/lib/domain/planning/planningTime'\n",
+            "import { resolveHouseholdTimeZone, zonedDateTimeToUtc } from '@/lib/domain/planning/planningTime'\nimport { isSlotImmutable } from '@/lib/domain/planning/slotProtection'\n",
+          )
+          old = """  const serviceAt = zonedDateTimeToUtc(slot.meal_date, localServiceTime, timeZone)
+  const within48Hours = serviceAt.getTime() <= now.getTime() + 48 * 60 * 60 * 1000
+  const consumed = ['consumed', 'completed', 'cooked', 'skipped'].includes(slot.status)
+    || slotTasks.some((task) => task.done === true || task.workflow_status === 'done')
+  const locked = Boolean(slot.locked) || slotMeals.some((meal) => meal.locked)
+  return {
+    status: slot.status || 'planned',
+    locked,
+    consumed,
+    protected: consumed || locked || within48Hours,
+    protection_reason: consumed ? 'consumed' : locked ? 'locked' : within48Hours ? 'within_48_hours' : null,
+  }
+"""
+          new = """  const serviceAt = zonedDateTimeToUtc(slot.meal_date, localServiceTime, timeZone)
+  const serviceAtMs = serviceAt.getTime()
+  const past = serviceAtMs <= now.getTime()
+  const within48Hours = !past && serviceAtMs <= now.getTime() + 48 * 60 * 60 * 1000
+  const consumed = ['consumed', 'completed', 'cooked', 'skipped'].includes(slot.status)
+    || slotTasks.some((task) => task.done === true || task.workflow_status === 'done')
+  const locked = Boolean(slot.locked) || slotMeals.some((meal) => meal.locked)
+  return {
+    status: slot.status || 'planned',
+    locked,
+    consumed,
+    past,
+    within_48_hours: within48Hours,
+    protected: consumed || locked || past || within48Hours,
+    protection_reason: consumed ? 'consumed' : locked ? 'locked' : past ? 'past' : within48Hours ? 'within_48_hours' : null,
+  }
+"""
+          assert old in route, 'slotProtectionState block not found'
+          route = route.replace(old, new)
+          old = """    const body = await request.json().catch(() => ({}))
+    const importId = Number(body.import_id ?? body.importId) || null
+"""
+          new = """    const body = await request.json().catch(() => ({}))
+    const overrideWithin48Hours = body.override_within_48_hours === true
+    const importId = Number(body.import_id ?? body.importId) || null
+"""
+          assert old in route, 'body block not found'
+          route = route.replace(old, new)
+          old = """      if (current?.state?.protected && (!currentCode || !recipeCodes.has(currentCode))) {
+        const error = new Error(`Le repas protégé ${slot.date} ${slot.mealType} n'a plus de recette canonique disponible`)
+        error.code = 'protected_meal_requires_review'
+        error.status = 409
+        throw error
+      }
+      const requested = !currentCode || !recipeCodes.has(currentCode) || isTargeted(slot, scope, selectedDays, selectedMeals)
+      const target = requested && !current?.state?.protected
+      return {
+"""
+          new = """      const immutable = isSlotImmutable(current?.state, { overrideWithin48Hours })
+      if (immutable && (!currentCode || !recipeCodes.has(currentCode))) {
+        const error = new Error(`Le repas protégé ${slot.date} ${slot.mealType} n'a plus de recette canonique disponible`)
+        error.code = 'protected_meal_requires_review'
+        error.status = 409
+        throw error
+      }
+      const requested = !currentCode || !recipeCodes.has(currentCode) || isTargeted(slot, scope, selectedDays, selectedMeals)
+      const target = requested && !immutable
+      return {
+"""
+          assert old in route, 'target block not found'
+          route = route.replace(old, new)
+          old = """    const targetByMeal = nutritionTargets(goalsResult.data || [], members)
+"""
+          new = """    const requestedSlotCount = buildWeekSlots(windowStart).filter((slot) => {
+      const current = existingBySlot.get(`${slot.date}|${slot.mealType}`)
+      const currentCode = current?.recipeCode || null
+      return !currentCode || !recipeCodes.has(currentCode) || isTargeted(slot, scope, selectedDays, selectedMeals)
+    }).length
+    const changedSlotCount = slots.filter((slot) => !slot.fixedRecipeCode).length
+    const protectedRequestedSlotCount = Math.max(0, requestedSlotCount - changedSlotCount)
+    if (existing.planImport && requestedSlotCount > 0 && changedSlotCount === 0) {
+      const error = new Error('Aucun repas ne peut être recalculé : les repas sélectionnés sont passés, verrouillés ou protégés dans les 48 prochaines heures')
+      error.code = 'no_recalculable_meals'
+      error.status = 409
+      error.details = {
+        requested_slots: requestedSlotCount,
+        protected_slots: protectedRequestedSlotCount,
+        can_override_within_48_hours: !overrideWithin48Hours,
+      }
+      throw error
+    }
+
+    const targetByMeal = nutritionTargets(goalsResult.data || [], members)
+"""
+          assert old in route, 'targetByMeal anchor not found'
+          route = route.replace(old, new)
+          old = """        if (!state?.protected) return []
+"""
+          new = """        if (!isSlotImmutable(state, { overrideWithin48Hours })) return []
+"""
+          assert old in route, 'preserved meals condition not found'
+          route = route.replace(old, new)
+          old = """        changed: slots.filter((slot) => !slot.fixedRecipeCode).length,
+        recipes: new Set(payload.slots.map((slot) => slot.recipe_code)).size,
+"""
+          new = """        changed: changedSlotCount,
+        protected: protectedRequestedSlotCount,
+        override_within_48_hours: overrideWithin48Hours,
+        recipes: new Set(payload.slots.map((slot) => slot.recipe_code)).size,
+"""
+          assert old in route, 'summary block not found'
+          route = route.replace(old, new)
+          route_path.write_text(route)
+
+          helper = """/**
+ * Les repas passés, consommés ou verrouillés sont toujours immuables.
+ * La protection des 48 heures peut uniquement être levée par une action
+ * explicite de l’utilisateur depuis la fenêtre « Modifier la semaine ».
+ */
+export function isSlotImmutable(state, { overrideWithin48Hours = false } = {}) {
+  if (!state) return false
+  const reason = state.protection_reason || null
+  if (state.consumed || state.locked || state.past || ['consumed', 'locked', 'past'].includes(reason)) return true
+  if (state.within_48_hours || reason === 'within_48_hours') return !overrideWithin48Hours
+  return Boolean(state.protected)
+}
+"""
+          Path('lib/domain/planning/slotProtection.js').write_text(helper)
+
+          page_path = Path('app/planning/page.js')
+          page = page_path.read_text()
+          old = """  const [modifyStatus, setModifyStatus] = useState('idle')
+"""
+          new = """  const [modifyStatus, setModifyStatus] = useState('idle')
+  const [overrideWithin48Hours, setOverrideWithin48Hours] = useState(true)
+"""
+          assert old in page, 'state anchor not found'
+          page = page.replace(old, new)
+          old = """    setInstructions('')
+    setModifyStatus('idle')
+    setModifyOpen(true)
+"""
+          new = """    setInstructions('')
+    setModifyStatus('idle')
+    setOverrideWithin48Hours(weekOffset === 0)
+    setModifyOpen(true)
+"""
+          assert old in page, 'open modification block not found'
+          page = page.replace(old, new)
+          old = """          instructions: instructions.trim() || null,
+        }),
+"""
+          new = """          instructions: instructions.trim() || null,
+          override_within_48_hours: overrideWithin48Hours,
+        }),
+"""
+          assert old in page, 'request body anchor not found'
+          page = page.replace(old, new)
+          old = """      const recalculated = data.summary?.personalized_meals || data.summary?.changed || 14
+      if (data.status === 'review_required') {
+        toast.warning(`${recalculated} prises recalculées — semaine à revoir avant exécution`)
+      } else {
+        toast.success(`${recalculated} prises personnalisées recalculées avec les règles du foyer`)
+      }
+"""
+          new = """      const changed = Number(data.summary?.changed) || 0
+      if (data.status === 'review_required') {
+        toast.warning(`${changed} repas remplacé${changed > 1 ? 's' : ''} — semaine à revoir avant exécution`)
+      } else {
+        toast.success(`${changed} repas remplacé${changed > 1 ? 's' : ''} avec les règles du foyer`)
+      }
+"""
+          assert old in page, 'toast block not found'
+          page = page.replace(old, new)
+          old = """            <footer>
+              <p>Les repas non sélectionnés restent inchangés. Stock et courses sont recalculés pour toute la semaine.</p>
+"""
+          new = """            {selectedImportId && weekOffset === 0 && (
+              <label className=\"planning-protection-override\">
+                <input
+                  type=\"checkbox\"
+                  checked={overrideWithin48Hours}
+                  onChange={(event) => setOverrideWithin48Hours(event.target.checked)}
+                />
+                <span>
+                  <b>Recalculer aussi les repas futurs des 48 prochaines heures</b>
+                  <small>Les repas passés, consommés, cuisinés ou verrouillés restent toujours protégés.</small>
+                </span>
+              </label>
+            )}
+
+            <footer>
+              <p>Les repas non sélectionnés restent inchangés. Stock et courses sont recalculés pour toute la semaine.</p>
+"""
+          assert old in page, 'footer anchor not found'
+          page = page.replace(old, new)
+          page_path.write_text(page)
+
+          css_path = Path('app/planning/PlanningDashboard.css')
+          css = css_path.read_text()
+          marker = '.planning-protection-override {'
+          if marker not in css:
+            css += """
+
+.planning-protection-override {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--terracotta) 45%, var(--line));
+  background: color-mix(in srgb, var(--terracotta) 7%, transparent);
+  cursor: pointer;
+}
+
+.planning-protection-override input {
+  margin-top: 0.18rem;
+  accent-color: var(--forest);
+}
+
+.planning-protection-override span {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.planning-protection-override b {
+  font-size: 0.82rem;
+}
+
+.planning-protection-override small {
+  color: var(--ink-3);
+  line-height: 1.35;
+}
+"""
+          css_path.write_text(css)
+
+          tests = """import { describe, expect, it } from 'vitest'
+import { readFileSync } from 'node:fs'
+import { isSlotImmutable } from '@/lib/domain/planning/slotProtection'
+
+describe('explicit planning recalculation protection', () => {
+  it('never changes past, consumed or locked meals', () => {
+    expect(isSlotImmutable({ past: true, protection_reason: 'past' }, { overrideWithin48Hours: true })).toBe(true)
+    expect(isSlotImmutable({ consumed: true, protection_reason: 'consumed' }, { overrideWithin48Hours: true })).toBe(true)
+    expect(isSlotImmutable({ locked: true, protection_reason: 'locked' }, { overrideWithin48Hours: true })).toBe(true)
+  })
+
+  it('only lifts the 48-hour protection after an explicit override', () => {
+    const state = { protected: true, within_48_hours: true, protection_reason: 'within_48_hours' }
+    expect(isSlotImmutable(state)).toBe(true)
+    expect(isSlotImmutable(state, { overrideWithin48Hours: true })).toBe(false)
+  })
+
+  it('wires the explicit override through the page and the generation route', () => {
+    const page = readFileSync('app/planning/page.js', 'utf8')
+    const route = readFileSync('app/api/planning/generate-v3/route.js', 'utf8')
+    expect(page).toContain('override_within_48_hours: overrideWithin48Hours')
+    expect(page).toContain('Recalculer aussi les repas futurs des 48 prochaines heures')
+    expect(route).toContain("body.override_within_48_hours === true")
+    expect(route).toContain('changed: changedSlotCount')
+    expect(route).toContain("error.code = 'no_recalculable_meals'")
+  })
+})
+"""
+          Path('tests/planning/explicitRecalculationProtection.test.js').write_text(tests)
+
+          Path('.github/workflows/agent-apply-explicit-recalculation.yml').unlink()
+          PY
+      - name: Commit generated change
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix(planning): rendre le recalcul explicite effectif"
+          git push origin HEAD:agent/explicit-recalculate-protected-meals
