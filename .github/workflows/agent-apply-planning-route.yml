@@ -1,28 +1,38 @@
 name: Agent apply planning route
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/planning-speed-objectives-diversity-modal
+      - main
 
 permissions:
   contents: write
 
 jobs:
   apply:
-    if: contains(github.event.head_commit.message, 'chore(agent): trigger route patch')
+    if: github.event.pull_request.head.ref == 'agent/planning-speed-objectives-diversity-modal'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: agent/planning-speed-objectives-diversity-modal
           fetch-depth: 0
+      - name: Vérifier si la route est déjà corrigée
+        id: state
+        run: |
+          if grep -q "selectPlanningRecipePool" app/api/planning/generate-v3/route.js; then
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          fi
       - name: Appliquer la politique nutrition et diversité
+        if: steps.state.outputs.needed == 'true'
         run: |
           git apply --check scripts/agent/generate-v3-speed-objectives-diversity.patch
           git apply scripts/agent/generate-v3-speed-objectives-diversity.patch
           node --check app/api/planning/generate-v3/route.js
       - name: Publier la route corrigée
+        if: steps.state.outputs.needed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
