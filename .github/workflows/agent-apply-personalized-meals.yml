@@ -1,0 +1,41 @@
+name: Agent apply personalized meals
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.event.pull_request.head.ref == 'agent/planning-speed-objectives-diversity-modal'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/planning-speed-objectives-diversity-modal
+          fetch-depth: 0
+      - name: Vérifier si le moteur journalier est déjà corrigé
+        id: state
+        run: |
+          if grep -q "safeSupportTemplates" lib/domain/planning/personalizedMeals.js; then
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Appliquer l’optimisation des prises quotidiennes
+        if: steps.state.outputs.needed == 'true'
+        run: |
+          git apply --check scripts/agent/personalized-meals-objectives.patch
+          git apply scripts/agent/personalized-meals-objectives.patch
+          node --check lib/domain/planning/personalizedMeals.js
+      - name: Publier le moteur et ses tests
+        if: steps.state.outputs.needed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lib/domain/planning/personalizedMeals.js tests/planning/personalizedMeals.test.js
+          git commit -m "fix(planning): optimiser les prises selon les objectifs journaliers"
+          git push origin HEAD:agent/planning-speed-objectives-diversity-modal
