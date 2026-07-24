@@ -11,8 +11,7 @@
 .planning-primary:disabled { opacity: .55; cursor: not-allowed; }
 .planning-spin { animation: planning-spin .9s linear infinite; }
 @keyframes planning-spin { to { transform: rotate(360deg); } }
-
-/* Bannière « Semaine incomplète » (F16/F17) : état explicite + recalcul sur action. */
+.planning-mobile-weekbar { display: none; }
 .planning-incomplete { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 18px; margin-top: 18px; border: 1px solid var(--terracotta); border-left-width: 4px; border-radius: 8px; background: rgba(193, 96, 60, .08); }
 .planning-incomplete > svg { flex: none; color: var(--terracotta); }
 .planning-incomplete-text { flex: 1; min-width: 220px; }
@@ -21,7 +20,6 @@
 .planning-repair { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid var(--terracotta); border-radius: 6px; color: var(--terracotta); background: transparent; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
 .planning-repair:hover:not(:disabled) { color: white; background: var(--terracotta); }
 .planning-repair:disabled { opacity: .55; cursor: not-allowed; }
-
 .planning-summary { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--ink-1); }
 .planning-summary .planning-summary-warn svg { color: var(--terracotta); }
 .planning-summary .planning-summary-warn small { color: var(--terracotta); }
@@ -32,7 +30,6 @@
 .planning-summary span { display: flex; min-width: 0; flex-direction: column; }
 .planning-summary b { overflow: hidden; font-family: var(--font-display); font-size: 17px; text-overflow: ellipsis; white-space: nowrap; }
 .planning-summary small { margin-top: 2px; color: var(--ink-3); font-family: var(--font-mono); font-size: 9px; letter-spacing: .05em; text-transform: uppercase; }
-
 .planning-workspace { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; padding-top: 24px; }
 .planning-main { min-width: 0; border: 1px solid var(--ink-1); background: rgba(255,255,255,.12); }
 .wnr { padding: 24px 28px 28px; border-bottom: 1px solid var(--ink-1); background: rgba(255,255,255,.2); }
@@ -72,14 +69,12 @@
 .planning-side-card button { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; min-height: 42px; padding: 0 12px; border: 1px solid var(--ink-1); border-radius: 5px; color: var(--ink-1); background: transparent; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
 .planning-side-card button:hover:not(:disabled) { color: white; background: var(--ink-1); }
 .planning-side-card button:disabled { opacity: .5; }
-/* Lien permanent vers la page batch (F18) — style secondaire sous le bouton principal. */
 .planning-side-card button.planning-batch-link { margin-top: 8px; border: none; min-height: 34px; color: var(--terracotta); background: transparent; text-decoration: underline; text-underline-offset: 3px; }
 .planning-side-card button.planning-batch-link:hover:not(:disabled) { color: var(--ink-1); background: transparent; }
 .planning-loading, .planning-empty { display: flex; min-height: 420px; align-items: center; justify-content: center; gap: 10px; color: var(--ink-3); font-family: var(--font-mono); font-size: 11px; }
 .planning-empty { flex-direction: column; text-align: center; }
 .planning-empty h2 { margin: 8px 0 0; color: var(--ink-1); font-family: var(--font-display); font-size: 28px; }
 .planning-empty p { margin: 0 0 10px; }
-
 .planning-modify-overlay { position: fixed; inset: 0; z-index: var(--z-modal); display: grid; place-items: center; padding: 24px; background: rgba(24,28,22,.5); backdrop-filter: blur(6px); }
 .planning-modify { width: min(760px, 100%); max-height: calc(100vh - 48px); overflow-y: auto; border: 1px solid var(--ink-1); border-radius: 14px; color: var(--ink-1); background: var(--paper, #f7f3e9); box-shadow: 0 28px 80px rgba(22,28,20,.3); }
 .planning-modify > header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 24px; border-bottom: 1px solid var(--line-strong); }
@@ -95,8 +90,8 @@
 .planning-day-picker span { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; }
 .planning-day-picker b { font-family: var(--font-display); font-size: 20px; }
 .planning-day-picker button.active, .planning-meal-picker button.active { color: white; border-color: var(--terracotta); background: var(--terracotta); }
-.planning-meal-picker { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 14px; padding: 18px 24px 0; }
-.planning-meal-picker > div { display: grid; grid-template-columns: 1fr 80px 80px; align-items: center; gap: 6px; }
+.planning-meal-picker { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 12px; padding: 18px 24px 0; }
+.planning-meal-picker > div { display: grid; grid-template-columns: 1fr 70px 70px; gap: 7px; align-items: center; }
 .planning-meal-picker > div > span { font-size: 12px; }
 .planning-meal-picker button { min-height: 34px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink-2); background: transparent; cursor: pointer; }
 .planning-intents, .planning-instructions { display: block; padding: 20px 24px 0; }
@@ -109,15 +104,65 @@
 .planning-instructions > small { display: block; margin-top: 5px; color: var(--ink-3); font-size: 10px; }
 .planning-modify footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 24px; margin-top: 20px; border-top: 1px solid var(--line-strong); }
 .planning-modify footer p { max-width: 420px; margin: 0; color: var(--ink-3); font-size: 11px; line-height: 1.45; }
-
 @media (max-width: 1100px) {
   .planning-workspace { grid-template-columns: 1fr; }
   .planning-side { display: grid; grid-template-columns: 1fr 1fr; }
 }
+@media (max-width: 880px) {
+  .planning-mobile-weekbar {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
+    gap: 10px;
+    align-items: center;
+    margin-top: 16px;
+    padding: 12px;
+    border: 1px solid var(--ink-1);
+    border-radius: 10px;
+    background: rgba(250,247,239,.96);
+    position: sticky;
+    top: 78px;
+    z-index: 25;
+    box-shadow: 0 8px 28px rgba(28,34,25,.08);
+  }
+  .planning-mobile-week-arrow {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    color: var(--ink-1);
+    background: var(--paper);
+    cursor: pointer;
+  }
+  .planning-mobile-week-current { min-width: 0; text-align: center; }
+  .planning-mobile-week-current span { display: block; color: var(--terracotta); font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .planning-mobile-week-current b { display: block; margin-top: 3px; overflow: hidden; font-family: var(--font-display); font-size: 17px; line-height: 1.1; text-overflow: ellipsis; white-space: nowrap; }
+  .planning-mobile-week-action {
+    grid-column: 1 / -1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 16px;
+    border: 1px solid var(--brand);
+    border-radius: 9px;
+    color: white;
+    background: var(--brand);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .planning-overview-actions { display: none; }
+}
 @media (max-width: 760px) {
   .planning-shell { width: min(100% - 28px, 1500px); padding-top: 28px; }
   .planning-overview { align-items: flex-start; flex-direction: column; }
-  .planning-overview-actions { width: 100%; align-items: stretch; }
   .planning-summary { grid-template-columns: 1fr 1fr; }
   .planning-summary > div, .planning-summary > div:first-child { padding: 13px 10px; border-bottom: 1px solid var(--line); }
   .planning-side { grid-template-columns: 1fr; }
