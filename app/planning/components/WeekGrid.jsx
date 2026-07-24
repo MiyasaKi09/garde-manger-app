@@ -6,7 +6,7 @@ import CookMode from '@/components/CookMode'
 import CookSession from './CookSession'
 import { ChevronLeft, ChevronRight, Loader2, Check, Pencil } from 'lucide-react'
 import { toast } from '@/components/Toast'
-import { canonicalRecipeHref, openMealRecipe } from './openMealRecipe'
+import { openMealRecipe, prefetchMealRecipe } from './openMealRecipe'
 import useStockCoverage from './useStockCoverage'
 import StockDot from './StockDot'
 import './WeekGrid.css'
@@ -100,15 +100,7 @@ export default function WeekGrid({
   }
 
   async function prefetchRecipe(typeMeals) {
-    const representative = typeMeals[0]
-    if (canonicalRecipeHref(representative)) return
-    const q = representative?.description
-    if (!q || recipeCacheRef.current[q] !== undefined) return
-    recipeCacheRef.current[q] = null
-    try {
-      const res = await authFetch(`/api/recipes/generated?q=${encodeURIComponent(q)}`)
-      recipeCacheRef.current[q] = res.ok ? ((await res.json()).recipe || false) : false
-    } catch { recipeCacheRef.current[q] = false }
+    await prefetchMealRecipe({ typeMeals, recipeCacheRef, authFetch })
   }
 
   async function toggleDone(typeMeals, type) {
