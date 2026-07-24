@@ -1,0 +1,41 @@
+name: Agent diagnose personalized meals
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    if: github.event.pull_request.head.ref == 'agent/planning-speed-objectives-diversity-modal'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/planning-speed-objectives-diversity-modal
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Capturer le test ciblé
+        run: |
+          set +e
+          npx vitest run tests/planning/personalizedMeals.test.js --reporter=verbose > personalized-meals-test-output.txt 2>&1
+          status=$?
+          echo "exit_status=$status" >> personalized-meals-test-output.txt
+          exit 0
+      - name: Publier le diagnostic une seule fois
+        run: |
+          if git ls-tree -r HEAD --name-only | grep -qx 'personalized-meals-test-output.txt'; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add personalized-meals-test-output.txt
+          git commit -m "chore(agent): publier le diagnostic nutrition"
+          git push origin HEAD:agent/planning-speed-objectives-diversity-modal
