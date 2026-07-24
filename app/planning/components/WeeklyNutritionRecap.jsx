@@ -1,6 +1,7 @@
 'use client'
 
-import { CheckCircle2, Gauge } from 'lucide-react'
+import Link from 'next/link'
+import { CheckCircle2, Gauge, Settings2 } from 'lucide-react'
 import { aggregateDailyTotals } from '@/lib/nutritionPlanService'
 
 const METRICS = [
@@ -50,6 +51,7 @@ export function buildWeeklyNutritionRows(meals = [], goals = []) {
 export default function WeeklyNutritionRecap({ meals = [], goals = [] }) {
   const rows = buildWeeklyNutritionRows(meals, goals)
   if (!rows.length) return null
+  const needsReview = rows.some((row) => row.tone === 'off' || row.tone === 'none')
 
   return (
     <section className="wnr" aria-labelledby="wnr-title">
@@ -58,7 +60,19 @@ export default function WeeklyNutritionRecap({ meals = [], goals = [] }) {
           <span className="wnr-eyebrow">Équilibre personnalisé</span>
           <h2 id="wnr-title">Prévisions quotidiennes</h2>
         </div>
-        <p>Portions calculées séparément pour chaque convive sur les objectifs actifs.</p>
+        <div style={{ display: 'flex', maxWidth: 470, flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
+          <p style={{ maxWidth: 'none' }}>
+            {needsReview
+              ? 'Cette semaine ne rejoint pas les cibles actives. Vérifie le questionnaire et les prises quotidiennes, puis relance explicitement le calcul.'
+              : 'Portions calculées séparément pour chaque convive sur les objectifs actifs.'}
+          </p>
+          <Link
+            href="/settings/planning"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'var(--terracotta)', fontFamily: 'var(--font-mono)', fontSize: 9, fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase', textDecoration: 'underline', textUnderlineOffset: 3 }}
+          >
+            <Settings2 size={13} /> Régler les objectifs et interdits
+          </Link>
+        </div>
       </header>
 
       <div className="wnr-grid">
