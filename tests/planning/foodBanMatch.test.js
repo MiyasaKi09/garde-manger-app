@@ -21,9 +21,23 @@ describe('foodBanMatch — frontières de mots', () => {
     expect(banTermMatches('fruits de mer surgelés', 'fruits de mer')).toBe(true)
   })
 
-  it('tolère le singulier/pluriel mot à mot', () => {
+  it('tolère le singulier/pluriel mot à mot (« s » ET « x » finaux)', () => {
     expect(banTermMatches('épinard frais', 'épinards')).toBe(true)
     expect(banTermMatches('épinards hachés surgelés', 'épinard')).toBe(true)
+    // Pluriels français en -x, présents dans le vocabulaire réel du corpus.
+    expect(banTermMatches('poireaux', 'poireau')).toBe(true)
+    expect(banTermMatches('choux de bruxelles', 'chou')).toBe(true)
+    expect(banTermMatches('chou rouge émincé', 'choux')).toBe(true)
+    expect(banTermMatches('gâteaux apéritifs', 'gâteau')).toBe(true)
+    expect(banTermMatches('oignons nouveaux', 'oignon nouveau')).toBe(true)
+    expect(banTermMatches('pruneaux prunes sechees', 'pruneau')).toBe(true)
+  })
+
+  it('la dépluralisation ne crée pas de faux positifs sur radicaux courts', () => {
+    // « maïs » plié devient « mais » : le radical « mai » est trop court pour
+    // être dépluralisé — un interdit « maïs » ne bannit pas le mot « mai ».
+    expect(banTermMatches('salade de mai', 'maïs')).toBe(false)
+    expect(banTermMatches('maïs doux en grains', 'maïs')).toBe(true)
   })
 
   it('ne banni JAMAIS un fragment de l’interdit (les collisions de l’incident prod)', () => {
@@ -153,6 +167,12 @@ describe('régression incident prod — interdits foyer et boucle complète', ()
       inventoryLots: [],
       constraints: PROD_CONSTRAINTS,
     })
+    // Assertions NON vacueuses : sur l'ancien matching, TOUTES les recettes
+    // (eau ⊂ veau/agneau) étaient forbidden_food → beam vide, slots=[] et
+    // status='review_required' — le test doit donc exiger un plan publié
+    // avec ses deux créneaux réellement pourvus.
+    expect(plan.status).toBe('published')
+    expect(plan.slots).toHaveLength(2)
     const chosen = new Set(plan.slots.map((slot) => slot.recipeCode))
     expect(chosen.has('FR-VEAU')).toBe(false)
     // Les recettes à l'eau ne sont plus « forbidden_food » : elles sont bien choisies.

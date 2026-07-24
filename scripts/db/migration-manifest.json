@@ -1252,5 +1252,36 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260724000001_fix_forbidden_food_word_boundaries.sql",
+    "github_version": "20260724000001",
+    "name": "fix_forbidden_food_word_boundaries",
+    "sha256": "7656dba14d057f459ebbe8d8ea24cc3f3ec2dec7720f205c7c4f7e7d678ab3ca",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "planning_food_ban_fold"
+      },
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "planning_food_ban_matches"
+      }
+    ]
+  },
+  {
+    "file": "20260724000001_fix_forbidden_food_word_boundaries_rollback.sql",
+    "github_version": "20260724000001",
+    "name": "fix_forbidden_food_word_boundaries_rollback",
+    "sha256": "caeae30a27e113b751b7471ae3d22a5d8cf32e941b0a2e22680241eac0558d8e",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]
