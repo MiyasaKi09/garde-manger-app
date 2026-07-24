@@ -64,6 +64,7 @@ const NEW_VERSIONS = new Set([
   '20260721195504',
   '20260721210000',
   '20260721211500',
+  '20260724000001',
   '20260715190000',
   '20260715214547',
   '20260715221042',
@@ -132,6 +133,10 @@ const NEW_EXPECTED_OBJECTS = {
     { type: 'index', schema: 'public', name: 'idx_cooked_dishes_canonical_recipe_execution_id', table: 'cooked_dishes' },
     { type: 'index', schema: 'public', name: 'idx_cooked_dishes_planned_production_id', table: 'cooked_dishes' },
     { type: 'index', schema: 'public', name: 'idx_cooked_dishes_source_plan_version_id', table: 'cooked_dishes' },
+  ],
+  '20260724000001': [
+    { type: 'function', schema: 'public', name: 'planning_food_ban_fold' },
+    { type: 'function', schema: 'public', name: 'planning_food_ban_matches' },
   ],
 };
 
