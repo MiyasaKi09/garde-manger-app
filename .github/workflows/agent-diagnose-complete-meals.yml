@@ -1,0 +1,38 @@
+name: Agent diagnose complete meals
+
+on:
+  push:
+    branches:
+      - agent/conditional-complete-meals
+
+permissions:
+  contents: read
+
+tasks: {}
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Collect failed unit tests
+        shell: bash
+        run: |
+          set +e
+          npx vitest run --reporter=json --outputFile=/tmp/complete-meals-failures.json
+          status=$?
+          cp /tmp/complete-meals-failures.json complete-meals-failures.json
+          echo "$status" > complete-meals-exit-status.txt
+          exit 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: complete-meals-diagnostics
+          path: |
+            complete-meals-failures.json
+            complete-meals-exit-status.txt
+          retention-days: 1
