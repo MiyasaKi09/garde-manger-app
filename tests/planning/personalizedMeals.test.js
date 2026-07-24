@@ -5,7 +5,18 @@ import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 const recipe = (code, family, nutrition, category = 'legumes') => ({
   code, family, eligible: true, servings: 2, prepMinutes: 20, cookMinutes: 25, cuisineOrigin: 'France',
   nutritionPerServing: nutrition,
-  exactIngredients: [{ name: category === 'viandes' ? 'Bœuf' : 'Lentilles', formNormalized: category === 'viandes' ? 'boeuf' : 'lentilles', category, grams: 200 }],
+  exactIngredients: [
+    {
+      name: category === 'viandes' ? 'Bœuf' : category === 'poissons_fruits_de_mer' ? 'Poisson' : 'Lentilles',
+      formNormalized: category === 'viandes' ? 'boeuf' : category === 'poissons_fruits_de_mer' ? 'poisson' : 'lentilles',
+      category,
+      role: 'protéine',
+      grams: 200,
+      per100g: { kcal: 180, proteinG: 20, carbsG: category === 'legumes' ? 20 : 0, fatG: 5, fiberG: category === 'legumes' ? 8 : 0 },
+    },
+    { name: 'Riz', formNormalized: 'riz blanc cru', category: 'cereales_feculents', role: 'féculent', grams: 140, per100g: { kcal: 352, proteinG: 7.4, carbsG: 78, fatG: 0.91, fiberG: 1.05 } },
+    { name: 'Haricots verts', formNormalized: 'haricot vert cru', category: 'legumes', role: 'accompagnement', grams: 360, per100g: { kcal: 25.9, proteinG: 1.85, carbsG: 4.14, fatG: 0.21, fiberG: 2.68 } },
+  ],
   sensory: { profile: 'warm_aromatic', scores: { richness: 3 } },
 })
 
@@ -75,8 +86,9 @@ describe('personalized deterministic meals', () => {
   it('chooses different portions while holding each personal calorie target', () => {
     const breakfast = { nutrition: { kcal: 600, proteinG: 60, carbsG: 40, fatG: 20, fiberG: 5 } }
     const snack = { nutrition: { kcal: 350, proteinG: 30, carbsG: 30, fatG: 13, fiberG: 5 } }
-    const julien = optimizeDailyPortions({ target: { kcal: 2357, proteinG: 216, carbsG: 196, fatG: 79, fiberG: 33 }, breakfast, snack, lunch: meat.nutritionPerServing, dinner: fish.nutritionPerServing })
-    const zoe = optimizeDailyPortions({ target: { kcal: 1525, proteinG: 75, carbsG: 192, fatG: 51, fiberG: 21 }, breakfast: null, snack, lunch: veggie.nutritionPerServing, dinner: fish.nutritionPerServing })
+    const pasta = { nutrition: { kcal: 232, proteinG: 8, carbsG: 46, fatG: 1.3, fiberG: 0.6 } }
+    const julien = optimizeDailyPortions({ target: { kcal: 2357, proteinG: 216, carbsG: 196, fatG: 79, fiberG: 33 }, breakfast, snack, lunch: meat.nutritionPerServing, dinner: fish.nutritionPerServing, lunchCompanion: pasta })
+    const zoe = optimizeDailyPortions({ target: { kcal: 1525, proteinG: 75, carbsG: 192, fatG: 51, fiberG: 21 }, breakfast: null, snack, lunch: veggie.nutritionPerServing, dinner: fish.nutritionPerServing, lunchCompanion: pasta })
 
     expect(Math.abs(julien.total.kcal - 2357) / 2357).toBeLessThanOrEqual(0.05)
     expect(Math.abs(zoe.total.kcal - 1525) / 1525).toBeLessThanOrEqual(0.05)
@@ -88,6 +100,7 @@ describe('personalized deterministic meals', () => {
       expect(scale * 10).toBe(Math.round(scale * 10))
     }
     expect(julien.lunchScale).not.toBe(zoe.lunchScale)
+    expect(julien.lunchCompanionScale).not.toBe(zoe.lunchCompanionScale)
   })
 
   it('never serves a preparation-requiring food in any snack of a 7-day plan', () => {

@@ -301,11 +301,26 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   if (currentStep === -1) {
     const persons = mealEntries || []
     const totalKcal = persons.reduce((s, p) => s + (Number(p.kcal) || 0), 0)
+    const totalMainServings = persons.reduce((s, p) => s + (Number(p.planned_servings) || 0), 0)
     const parseQty = (q) => parseFloat(String(q ?? '').replace(',', '.'))
-    const isScalable = (ing) => persons.length >= 2 && totalKcal > 0 && !isNaN(parseQty(ing.quantity))
+    const personKeys = (p) => [p?.household_member_id, p?.person_name].filter(Boolean).map(String)
+    const explicitPersonQuantity = (ing, p) => personKeys(p)
+      .map((key) => ing?.per_person_quantities?.[key])
+      .find((value) => Number.isFinite(Number(value)))
+    const isScalable = (ing) => persons.length >= 2 && (
+      persons.some((p) => explicitPersonQuantity(ing, p) != null)
+      || ((totalMainServings > 0 || totalKcal > 0) && !isNaN(parseQty(ing.quantity)))
+    )
     const scaledQty = (ing, p) => {
+      const explicit = explicitPersonQuantity(ing, p)
+      if (explicit != null) {
+        const rounded = Number(explicit) >= 10 ? Math.round(Number(explicit)) : Math.round(Number(explicit) * 10) / 10
+        return `${rounded}${ing.unit ? ' ' + ing.unit : ''}`
+      }
       const num = parseQty(ing.quantity)
-      const share = totalKcal ? (Number(p.kcal) || 0) / totalKcal : 1 / Math.max(persons.length, 1)
+      const share = totalMainServings > 0
+        ? (Number(p.planned_servings) || 0) / totalMainServings
+        : totalKcal ? (Number(p.kcal) || 0) / totalKcal : 1 / Math.max(persons.length, 1)
       const v = num * share
       const r = v >= 10 ? Math.round(v) : Math.round(v * 10) / 10
       return `${r}${ing.unit ? ' ' + ing.unit : ''}`
@@ -336,7 +351,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
               <section className="cm-persona">
                 <div className="cm-persona-head">
                   <span className="cm-seclabel">Nutrition par personne</span>
-                  <span className="cm-same">Même plat · {persons.length} portion{persons.length > 1 ? 's' : ''}</span>
+                  <span className="cm-same">Assiette personnalisée · {persons.length} convive{persons.length > 1 ? 's' : ''}</span>
                 </div>
                 <div className="cm-split" style={{ gridTemplateColumns: `repeat(${persons.length}, 1fr)` }}>
                   {persons.map((p, i) => (

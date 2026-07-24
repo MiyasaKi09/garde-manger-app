@@ -197,4 +197,52 @@ describe('final planning demands', () => {
     expect(eggs).toMatchObject({ exact_required_qty: 60, purchase_qty: 360, container_qty: 1, display_quantity: 'boîte de 6 œufs' })
     expect(apple).toMatchObject({ exact_required_qty: 100, purchase_qty: 150, container_qty: 1, display_quantity: '1 pièce (~150 g)' })
   })
+
+  it('reserves and buys a personalized accompaniment on the main meal slot', () => {
+    const slot = { key: '2026-07-22-dejeuner', date: '2026-07-22', mealType: 'dejeuner', recipeCode: 'BASE' }
+    const platedMeal = {
+      ...meal({ name: 'A', memberId: 'a', servings: 1 }),
+      kcal: 632,
+      protein_g: 28,
+      carbs_g: 101,
+      fat_g: 11.3,
+      fiber_g: 12.6,
+      portion_details: {
+        multiplier: 1,
+        companions: [{
+          key: 'pasta', role: 'starch', label: 'Pâtes sèches courtes',
+          form_normalized: 'pates seches courtes', quantity_g: 70,
+          nutrition: { kcal: 232, proteinG: 8, carbsG: 46, fatG: 1.3, fiberG: 0.6 },
+          preparation: 'Cuire les pâtes.',
+        }],
+      },
+    }
+    const model = buildFinalDemandModel({
+      plan: { slots: [slot] },
+      recipes: [recipe('BASE')],
+      personalized: { meals: [platedMeal] },
+      inventoryLots: [{
+        id: 'pasta-lot', formNormalized: 'pates seches courtes', gramsAvailable: 50,
+        expiresOn: '2027-01-01', opened: false,
+      }],
+    })
+
+    expect(model.reservations).toContainEqual(expect.objectContaining({
+      slot_key: slot.key,
+      lot_id: 'pasta-lot',
+      ingredient_name: 'Pâtes sèches courtes',
+      reserved_quantity: 50,
+      metadata: expect.objectContaining({ companion: true }),
+    }))
+    expect(model.shoppingItems.find((item) => item.product_name === 'Pâtes sèches courtes')).toMatchObject({
+      required_qty: 70,
+      stock_qty: 50,
+      exact_required_qty: 20,
+      purchase_qty: 500,
+      projected_surplus_qty: 480,
+      shortage_reason: 'pantry_refill_from_final_demand',
+    })
+    expect(model.mainSlotSummaries.get(slot.key).nutritionTotal.kcal).toBe(632)
+  })
+
 })
