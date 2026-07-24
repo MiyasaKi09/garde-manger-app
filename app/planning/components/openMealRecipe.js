@@ -14,9 +14,10 @@
 const NO_SHEET_MSG =
   "La fiche recette de ce plat n’est pas disponible."
 
-export function canonicalRecipeHref(meal) {
+export function canonicalRecipeCode(meal) {
   const direct = String(meal?.recipe_href || '').trim()
-  if (/^\/recipes\/canonical\/[a-z0-9-]+(?:\?.*)?$/i.test(direct)) return direct
+  const directMatch = direct.match(/^\/recipes\/canonical\/([a-z0-9-]+)(?:\?.*)?$/i)
+  if (directMatch) return directMatch[1]
   const code = String(
     meal?.canonical_recipe_code
     || meal?.recipe_code
@@ -24,7 +25,65 @@ export function canonicalRecipeHref(meal) {
     || meal?.preparation?.recipe_code
     || ''
   ).trim()
-  return /^[a-z0-9-]+$/i.test(code) ? `/recipes/canonical/${encodeURIComponent(code)}` : null
+  return /^[a-z0-9-]+$/i.test(code) ? code : null
+}
+
+export function canonicalRecipeHref(meal) {
+  const code = canonicalRecipeCode(meal)
+  return code ? `/recipes/canonical/${encodeURIComponent(code)}` : null
+}
+
+async function fetchCanonicalRecipe({ code, typeMeals, recipeCacheRef, authFetch }) {
+  const portions = (typeMeals || []).reduce((sum, meal) => sum + (Number(meal?.planned_servings) || 0), 0)
+  const params = new URLSearchParams()
+  if (Number.isFinite(portions) && portions > 0) params.set('portions', String(portions))
+  const cacheKey = `canonical:${code}:${params.get('portions') || 'base'}`
+  const cached = recipeCacheRef.current[cacheKey]
+  if (cached !== undefined) return { cacheKey, recipe: cached || null }
+
+  const suffix = params.size ? `?${params.toString()}` : ''
+  const response = await authFetch(`/api/recipes/canonical/${encodeURIComponent(code)}${suffix}`)
+  const payload = await response.json().catch(() => ({}))
+  if (!response.ok) {
+    const error = new Error(payload.error || NO_SHEET_MSG)
+    error.status = response.status
+    throw error
+  }
+  const recipe = payload.recipe || null
+  recipeCacheRef.current[cacheKey] = recipe || false
+  return { cacheKey, recipe }
+}
+
+export async function prefetchMealRecipe({ typeMeals, recipeCacheRef, authFetch }) {
+  const representative = typeMeals?.[0]
+  if (!representative) return
+
+  const canonicalCode = canonicalRecipeCode(representative)
+  if (canonicalCode) {
+    try {
+      await fetchCanonicalRecipe({ code: canonicalCode, typeMeals, recipeCacheRef, authFetch })
+    } catch {
+      // Préchargement best-effort : le clic affichera le message précis.
+    }
+    return
+  }
+
+  const query = representative.generated_recipe_id
+    ? `id:${representative.generated_recipe_id}`
+    : representative.description
+  if (!query || recipeCacheRef.current[query] !== undefined) return
+
+  recipeCacheRef.current[query] = null
+  try {
+    const endpoint = representative.generated_recipe_id
+      ? `/api/recipes/generated?id=${encodeURIComponent(representative.generated_recipe_id)}`
+      : `/api/recipes/generated?q=${encodeURIComponent(representative.description)}`
+    const response = await authFetch(endpoint)
+    const payload = await response.json().catch(() => ({}))
+    recipeCacheRef.current[query] = response.ok ? (payload.recipe || false) : false
+  } catch {
+    recipeCacheRef.current[query] = false
+  }
 }
 
 export async function openMealRecipe({
@@ -38,9 +97,28 @@ export async function openMealRecipe({
   dishName,
 }) {
   const representative = typeMeals[0]
-  const canonicalHref = canonicalRecipeHref(representative)
-  if (canonicalHref) {
-    window.location.assign(canonicalHref)
+  const canonicalCode = canonicalRecipeCode(representative)
+  if (canonicalCode) {
+    setGeneratingFor(dishName)
+    try {
+      const { recipe } = await fetchCanonicalRecipe({
+        code: canonicalCode,
+        typeMeals,
+        recipeCacheRef,
+        authFetch,
+      })
+      if (!recipe) {
+        toastError(NO_SHEET_MSG)
+        return
+      }
+      setGeneratedRecipe(recipe)
+      setCookModeOpen(true)
+    } catch (error) {
+      console.error('Erreur recette canonique:', error)
+      toastError(error.status === 404 ? NO_SHEET_MSG : (error.message || 'Erreur lors du chargement de la recette.'))
+    } finally {
+      setGeneratingFor(null)
+    }
     return
   }
   const query = representative?.description
