@@ -1,0 +1,195 @@
+--- a/app/api/planning/generate-v3/route.js
++++ b/app/api/planning/generate-v3/route.js
+@@ -5,6 +5,7 @@
+ import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
+ import { toGramsV2 } from '@/lib/domain/units'
+ import { generateClosedLoopPlan, isMealSuitableRecipe } from '@/lib/domain/planning/closedLoopPlanner'
++import { selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidatePolicy'
+ import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
+ import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
+ import { SUPPLEMENT_FORMS } from '@/lib/domain/planning/personalizedMeals'
+@@ -34,18 +35,37 @@
+   .replace(/[^a-z0-9]+/g, ' ')
+   .trim()
+ 
+-function nutritionTargets(goals) {
+-  const daily = {
+-    kcal: average(goals.map((goal) => goal.target_calories)),
+-    proteinG: average(goals.map((goal) => goal.target_protein_g)),
+-    carbsG: average(goals.map((goal) => goal.target_carbs_g)),
+-    fatG: average(goals.map((goal) => goal.target_fat_g)),
+-    fiberG: average(goals.map((goal) => goal.target_fiber_g)),
++function nutritionTargets(goals, members = []) {
++  const byName = new Map((goals || []).map((goal) => [fold(goal.person_name), goal]))
++  const metrics = {
++    kcal: 'target_calories',
++    proteinG: 'target_protein_g',
++    carbsG: 'target_carbs_g',
++    fatG: 'target_fat_g',
++    fiberG: 'target_fiber_g',
+   }
+-  const mealTarget = (share) => Object.fromEntries(Object.entries(daily)
+-    .filter(([, value]) => Number.isFinite(value))
+-    .map(([key, value]) => [key, value * share]))
+-  return { dejeuner: mealTarget(0.35), diner: mealTarget(0.35) }
++
++  // La part disponible pour les plats principaux dépend des prises réellement
++  // activées pour chaque membre. Zoé sans petit-déjeuner ne doit pas recevoir
++  // la même cible déjeuner/dîner que Julien avec quatre prises quotidiennes.
++  const perMemberShare = (member) => {
++    const planning = member?.preferences?.planning || {}
++    const supportShare = (planning.breakfast ? 0.20 : 0) + (planning.snack ? 0.15 : 0)
++    return Math.max(0.25, (1 - supportShare) / 2)
++  }
++
++  const mealTarget = Object.fromEntries(Object.entries(metrics).flatMap(([key, field]) => {
++    const values = (members || []).flatMap((member) => {
++      const goal = byName.get(fold(member.name))
++      const value = Number(goal?.[field])
++      return Number.isFinite(value) && value > 0 ? [value * perMemberShare(member)] : []
++    })
++    const fallback = average((goals || []).map((goal) => goal[field]))
++    const value = values.length ? average(values) : (fallback ? fallback * 0.35 : null)
++    return Number.isFinite(value) ? [[key, value]] : []
++  }))
++
++  return { dejeuner: mealTarget, diner: mealTarget }
+ }
+ 
+ function resolveIntent(body) {
+@@ -131,14 +151,34 @@
+   return { planImport, slots: slots || [], meals, tasks, slotStates, activePlanVersionId: planImport.active_plan_version_id }
+ }
+ 
+-async function loadRecentRecipeTitles(supabase, windowStart) {
+-  const { data } = await supabase
++async function loadRecentRecipeUsage(supabase, windowStart) {
++  const previousWeekStart = addDays(windowStart, -7)
++  const { data, error } = await supabase
+     .from('nutrition_plan_meals')
+-    .select('description, short_label')
+-    .gte('meal_date', addDays(windowStart, -14))
++    .select('canonical_recipe_code, meal_date, description, short_label')
++    .gte('meal_date', addDays(windowStart, -35))
+     .lt('meal_date', windowStart)
+     .in('meal_type', ['dejeuner', 'diner'])
+-  return [...new Set((data || []).flatMap((row) => [fold(row.short_label), fold(row.description)]).filter(Boolean))]
++  if (error) throw new Error(`Historique des recettes indisponible: ${error.message}`)
++
++  const previousWeekRecipeCodes = new Set()
++  const recentRecipeUsage = {}
++  const recentRecipeTitles = new Set()
++  for (const row of data || []) {
++    const code = String(row.canonical_recipe_code || '').trim()
++    if (code) {
++      recentRecipeUsage[code] = (recentRecipeUsage[code] || 0) + 1
++      if (row.meal_date >= previousWeekStart) previousWeekRecipeCodes.add(code)
++    }
++    for (const title of [fold(row.short_label), fold(row.description)]) {
++      if (title) recentRecipeTitles.add(title)
++    }
++  }
++  return {
++    previousWeekRecipeCodes: [...previousWeekRecipeCodes].sort(),
++    recentRecipeUsage,
++    recentRecipeTitles: [...recentRecipeTitles],
++  }
+ }
+ 
+ async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = null) {
+@@ -323,7 +363,7 @@
+       slot.slot_key,
+       slotProtectionState(slot, existing.meals, existing.tasks, new Date(), householdTimeZone),
+     ]))
+-    const recentRecipeTitles = await loadRecentRecipeTitles(supabase, windowStart)
++    const recentRecipes = await loadRecentRecipeUsage(supabase, windowStart)
+     const goalNames = new Set((goalsResult.data || []).map((goal) => fold(goal.person_name)).filter(Boolean))
+     const missingGoals = members.filter((member) => !goalNames.has(fold(member.name))).map((member) => member.name)
+     if (missingGoals.length) {
+@@ -334,10 +374,10 @@
+     }
+     const servings = Math.max(1, members.reduce((sum, member) => sum + (Number(member.portion_multiplier) || 1), 0))
+     const operationalCatalog = await listOperationalRecipes(supabase, { servings })
+-    const recipes = operationalCatalog.recipes.filter(isMealSuitableRecipe)
+-    if (!recipes.length) throw new Error('Aucune recette complète n’est disponible pour le planning')
++    const allRecipes = operationalCatalog.recipes.filter(isMealSuitableRecipe)
++    if (!allRecipes.length) throw new Error('Aucune recette complète n’est disponible pour le planning')
+ 
+-    const recipeCodes = new Set(recipes.map((recipe) => recipe.code))
++    const recipeCodes = new Set(allRecipes.map((recipe) => recipe.code))
+     const existingBySlot = new Map(existing.slots.map((slot) => [
+       `${slot.meal_date}|${slot.meal_type}`,
+       { recipeCode: slot.preparation?.recipe_code || null, slotKey: slot.slot_key, state: existing.slotStates[slot.slot_key] || {} },
+@@ -360,8 +400,20 @@
+       }
+     })
+ 
++    const targetByMeal = nutritionTargets(goalsResult.data || [], members)
++    const fixedRecipeCodes = slots.map((slot) => slot.fixedRecipeCode).filter(Boolean)
++    const recipes = selectPlanningRecipePool({
++      recipes: allRecipes,
++      targetByMeal,
++      previousWeekRecipeCodes: recentRecipes.previousWeekRecipeCodes,
++      fixedRecipeCodes,
++      allowPreviousWeek: false,
++    })
++
+     const [{ plannerLots, existingReservations }, { cookedDishes, existingDishReservations }] = await Promise.all([
+-      loadPlannerInventory(supabase, recipes, existing.activePlanVersionId),
++      // Le stock est indexé sur tout le corpus : le repli diversité ne perd
++      // aucune forme alimentaire déjà présente dans le garde-manger.
++      loadPlannerInventory(supabase, allRecipes, existing.activePlanVersionId),
+       loadPlannerCookedDishes(supabase, existing.activePlanVersionId),
+     ])
+     const forbiddenForms = [...new Set([...dietary.allergies, ...dietary.bans].map(normalizeFoodForm).filter(Boolean))]
+@@ -371,18 +423,46 @@
+       forbiddenForms,
+       dislikedForms: dietary.dislikes.map(normalizeFoodForm).filter(Boolean),
+       diets: dietary.diets,
+-      targetByMeal: nutritionTargets(goalsResult.data || []),
++      targetByMeal,
+       maxMinutesByMeal: { dejeuner: 120, diner: 240 },
+       preferredActiveMinutes: 30,
+-      recentRecipeTitles,
++      recentRecipeTitles: recentRecipes.recentRecipeTitles,
++    }
++    let plan = generateClosedLoopPlan({ slots, recipes, inventoryLots: plannerLots, existingReservations, cookedDishes, existingDishReservations, constraints, beamWidth: 48 })
++    // La semaine précédente est exclue en priorité. Un repli explicite et
++    // fortement pénalisé n'est autorisé que si le corpus ne permet réellement
++    // aucun plan sûr — jamais une répétition silencieuse.
++    if (plan.status !== 'published' && recentRecipes.previousWeekRecipeCodes.length) {
++      const fallbackRecipes = selectPlanningRecipePool({
++        recipes: allRecipes,
++        targetByMeal,
++        previousWeekRecipeCodes: recentRecipes.previousWeekRecipeCodes,
++        fixedRecipeCodes,
++        allowPreviousWeek: true,
++      })
++      plan = generateClosedLoopPlan({
++        slots,
++        recipes: fallbackRecipes,
++        inventoryLots: plannerLots,
++        existingReservations,
++        cookedDishes,
++        existingDishReservations,
++        constraints,
++        beamWidth: 48,
++      })
++      if (plan.status === 'published') {
++        plan = {
++          ...plan,
++          issues: [...(plan.issues || []), { severity: 'warning', code: 'previous_week_recipe_reuse_fallback' }],
++        }
++      }
+     }
+-    const plan = generateClosedLoopPlan({ slots, recipes, inventoryLots: plannerLots, existingReservations, cookedDishes, existingDishReservations, constraints, beamWidth: 48 })
+     if (plan.status !== 'published') {
+       return NextResponse.json({ error: 'Aucun planning sûr ne satisfait les contraintes du foyer', issues: plan.issues }, { status: 422 })
+     }
+ 
+     const payload = buildCanonicalPlanPayload({
+-      plan, recipes, members, goals: goalsResult.data || [], windowStart, constraints, inventoryLots: plannerLots,
++      plan, recipes: allRecipes, members, goals: goalsResult.data || [], windowStart, constraints, inventoryLots: plannerLots,
+       existingReservations,
+       cookedDishes,
+       existingDishReservations,
