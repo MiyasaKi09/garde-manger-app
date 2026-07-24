@@ -1,0 +1,31 @@
+name: Agent apply planning route
+
+on:
+  push:
+    branches:
+      - agent/planning-speed-objectives-diversity-modal
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: contains(github.event.head_commit.message, 'chore(agent): trigger route patch')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/planning-speed-objectives-diversity-modal
+          fetch-depth: 0
+      - name: Appliquer la politique nutrition et diversité
+        run: |
+          git apply --check scripts/agent/generate-v3-speed-objectives-diversity.patch
+          git apply scripts/agent/generate-v3-speed-objectives-diversity.patch
+          node --check app/api/planning/generate-v3/route.js
+      - name: Publier la route corrigée
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/api/planning/generate-v3/route.js
+          git commit -m "feat(planning): appliquer objectifs et diversité inter-semaines"
+          git push origin HEAD:agent/planning-speed-objectives-diversity-modal
