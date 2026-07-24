@@ -1,0 +1,153 @@
+name: Agent apply mobile week navigation
+
+on:
+  push:
+    branches:
+      - agent/mobile-week-navigation
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/mobile-week-navigation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Appliquer le correctif responsive
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          page = Path('app/planning/page.js')
+          text = page.read_text()
+          text = text.replace("import { AlertTriangle, ArrowRight, CalendarDays, Check, Clock3, RefreshCw, ShoppingBasket, Sparkles, X } from 'lucide-react'", "import { AlertTriangle, ArrowRight, CalendarDays, Check, ChevronLeft, ChevronRight, Clock3, RefreshCw, ShoppingBasket, Sparkles, X } from 'lucide-react'")
+          anchor = "      <section className=\"planning-summary\" aria-label=\"Résumé de la semaine\">"
+          mobile = '''      <section className="planning-mobile-weekbar" aria-label="Navigation de semaine">
+        <button type="button" className="planning-mobile-week-arrow" onClick={() => setWeekOffset((value) => value - 1)} aria-label="Semaine précédente">
+          <ChevronLeft size={20} />
+        </button>
+        <div className="planning-mobile-week-current">
+          <span>{weekOffset === 0 ? 'Cette semaine' : weekOffset === 1 ? 'Semaine prochaine' : weekOffset < 0 ? 'Semaine passée' : `Dans ${weekOffset} semaines`}</span>
+          <b>{rangeLabel}</b>
+        </div>
+        <button type="button" className="planning-mobile-week-arrow" onClick={() => setWeekOffset((value) => value + 1)} aria-label="Semaine suivante">
+          <ChevronRight size={20} />
+        </button>
+        <button type="button" className="planning-mobile-week-action" onClick={() => openModification({ scope: 'week' })}>
+          <Sparkles size={16} /> {selectedImportId ? 'Modifier cette semaine' : 'Préparer cette semaine'}
+        </button>
+      </section>
+
+'''
+          if mobile not in text:
+              text = text.replace(anchor, mobile + anchor)
+          page.write_text(text)
+
+          css = Path('app/planning/PlanningDashboard.css')
+          style = css.read_text()
+          base = '''\n.planning-mobile-weekbar { display: none; }\n'''
+          if '.planning-mobile-weekbar { display: none; }' not in style:
+              style += base
+          mobile_css = '''
+@media (max-width: 880px) {
+  .planning-mobile-weekbar {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
+    gap: 10px;
+    align-items: center;
+    margin-top: 16px;
+    padding: 12px;
+    border: 1px solid var(--ink-1);
+    border-radius: 10px;
+    background: rgba(250, 247, 239, .92);
+    position: sticky;
+    top: 78px;
+    z-index: 25;
+    box-shadow: 0 8px 28px rgba(28, 34, 25, .08);
+  }
+  .planning-mobile-week-arrow {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    color: var(--ink-1);
+    background: var(--paper);
+  }
+  .planning-mobile-week-current { min-width: 0; text-align: center; }
+  .planning-mobile-week-current span {
+    display: block;
+    color: var(--terracotta);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .planning-mobile-week-current b {
+    display: block;
+    margin-top: 3px;
+    overflow: hidden;
+    font-family: var(--font-display);
+    font-size: 17px;
+    line-height: 1.1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .planning-mobile-week-action {
+    grid-column: 1 / -1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 16px;
+    border: 1px solid var(--brand);
+    border-radius: 9px;
+    color: white;
+    background: var(--brand);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .planning-overview-actions { display: none; }
+}
+'''
+          if '.planning-mobile-week-action {' not in style:
+              style += mobile_css
+          css.write_text(style)
+
+          wg = Path('app/planning/components/WeekGrid.css')
+          w = wg.read_text()
+          w = w.replace('  .wg-wknav { display: none; }', '  .wg-wknav { display: none; } /* navigation mobile déplacée au-dessus du planning */')
+          wg.write_text(w)
+
+          test = Path('tests/planning/mobileWeekNavigation.test.js')
+          test.write_text("""import assert from 'node:assert/strict'\nimport test from 'node:test'\nimport { readFileSync } from 'node:fs'\n\ntest('la navigation de semaine reste disponible sur mobile', () => {\n  const page = readFileSync('app/planning/page.js', 'utf8')\n  const css = readFileSync('app/planning/PlanningDashboard.css', 'utf8')\n  assert.match(page, /planning-mobile-weekbar/)\n  assert.match(page, /setWeekOffset\(\(value\) => value \+ 1\)/)\n  assert.match(page, /Préparer cette semaine/)\n  assert.match(page, /Modifier cette semaine/)\n  assert.match(css, /@media \(max-width: 880px\)[\s\S]*planning-mobile-weekbar[\s\S]*display: grid/)\n  assert.match(css, /planning-mobile-week-arrow[\s\S]*height: 48px/)\n})\n""")
+          PY
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test -- --runInBand
+      - run: npm run build
+      - name: Nettoyer le workflow temporaire
+        run: rm .github/workflows/agent-apply-mobile-week-navigation.yml
+      - name: Publier le correctif
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/planning/page.js app/planning/PlanningDashboard.css app/planning/components/WeekGrid.css tests/planning/mobileWeekNavigation.test.js .github/workflows/agent-apply-mobile-week-navigation.yml
+          git commit -m "fix(planning): restaurer la navigation mobile des semaines"
+          git push origin HEAD:agent/mobile-week-navigation
