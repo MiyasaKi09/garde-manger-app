@@ -10,7 +10,7 @@
 -- Deux tables :
 --   member_food_preferences : le profil de goûts, alimenté par le questionnaire
 --                             puis enrichi par les retours après consommation ;
---   meal_feedback           : ces retours eux-mêmes (§15).
+--   meal_taste_feedback     : ces retours eux-mêmes (§15).
 --
 -- Migration idempotente. Rollback : 20260727120000_member_taste_preferences_rollback.sql
 
@@ -119,9 +119,16 @@ DO $$ BEGIN
   END IF;
 END $$;
 
--- ── 2. meal_feedback ────────────────────────────────────────────────────────
+-- ── 2. meal_taste_feedback ──────────────────────────────────────────────────
+-- ATTENTION : `public.meal_feedback` existe déjà depuis
+-- 20260713134235_closed_loop_planning_v2 et répond à une TOUTE AUTRE question —
+-- l'adhérence au plan (a-t-on mangé ce qui était prévu ?), rattachée à un
+-- créneau et à une version de plan, alimentée par un RPC. Le retour de goût du
+-- §15 est distinct : il porte sur l'appréciation, pas sur l'exécution, et
+-- n'exige ni slot_id ni plan_version_id. D'où un nom propre plutôt qu'une
+-- extension d'une table déjà en service.
 
-CREATE TABLE IF NOT EXISTS public.meal_feedback (
+CREATE TABLE IF NOT EXISTS public.meal_taste_feedback (
   id                  uuid        NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id             uuid        NOT NULL DEFAULT auth.uid()
                                   REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -143,43 +150,43 @@ CREATE TABLE IF NOT EXISTS public.meal_feedback (
   created_at          timestamptz NOT NULL DEFAULT now()
 );
 
-COMMENT ON TABLE public.meal_feedback IS
+COMMENT ON TABLE public.meal_taste_feedback IS
   'Retour après consommation (plan de refonte §6, §15). Alimente progressivement
    member_food_preferences : « ne plus proposer » y écrit une aversion, « aimé »
    un favori.';
 
-CREATE INDEX IF NOT EXISTS idx_meal_feedback_user_date
-  ON public.meal_feedback (user_id, meal_date DESC);
+CREATE INDEX IF NOT EXISTS idx_meal_taste_feedback_user_date
+  ON public.meal_taste_feedback (user_id, meal_date DESC);
 
-CREATE INDEX IF NOT EXISTS idx_meal_feedback_recipe
-  ON public.meal_feedback (canonical_recipe_code)
+CREATE INDEX IF NOT EXISTS idx_meal_taste_feedback_recipe
+  ON public.meal_taste_feedback (canonical_recipe_code)
   WHERE canonical_recipe_code IS NOT NULL;
 
-ALTER TABLE public.meal_feedback ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.meal_taste_feedback ENABLE ROW LEVEL SECURITY;
 
 DO $$ BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_policies
-                 WHERE schemaname = 'public' AND tablename = 'meal_feedback'
+                 WHERE schemaname = 'public' AND tablename = 'meal_taste_feedback'
                    AND policyname = 'mfb_select_own') THEN
-    CREATE POLICY mfb_select_own ON public.meal_feedback
+    CREATE POLICY mfb_select_own ON public.meal_taste_feedback
       FOR SELECT USING ((SELECT auth.uid()) = user_id);
   END IF;
 END $$;
 
 DO $$ BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_policies
-                 WHERE schemaname = 'public' AND tablename = 'meal_feedback'
+                 WHERE schemaname = 'public' AND tablename = 'meal_taste_feedback'
                    AND policyname = 'mfb_insert_own') THEN
-    CREATE POLICY mfb_insert_own ON public.meal_feedback
+    CREATE POLICY mfb_insert_own ON public.meal_taste_feedback
       FOR INSERT WITH CHECK ((SELECT auth.uid()) = user_id);
   END IF;
 END $$;
 
 DO $$ BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_policies
-                 WHERE schemaname = 'public' AND tablename = 'meal_feedback'
+                 WHERE schemaname = 'public' AND tablename = 'meal_taste_feedback'
                    AND policyname = 'mfb_delete_own') THEN
-    CREATE POLICY mfb_delete_own ON public.meal_feedback
+    CREATE POLICY mfb_delete_own ON public.meal_taste_feedback
       FOR DELETE USING ((SELECT auth.uid()) = user_id);
   END IF;
 END $$;

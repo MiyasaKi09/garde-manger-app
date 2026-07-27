@@ -97,6 +97,39 @@ describe('lot 7 — rotation des petits-déjeuners', () => {
   })
 })
 
+describe('§13 — famille « préparation maison »', () => {
+  // La rotation compte huit familles : la semaine qui sert le granola n'est pas
+  // forcément celle-ci, on la cherche plutôt que de figer une date.
+  const withHomemade = ['2026-07-20', '2026-07-27', '2026-08-03', '2026-08-10', '2026-08-17']
+    .map((start) => weekSupports(start))
+    .find(({ payload }) => payload.legacy_meals.some((meal) => meal.portion_details?.homemade))
+
+  it('sert un assemblage qui demande un geste, et le décrit', () => {
+    expect(withHomemade).toBeTruthy()
+    const meal = withHomemade.payload.legacy_meals.find((item) => item.portion_details?.homemade)
+    expect(meal.portion_details.homemade).toMatchObject({
+      title: expect.stringMatching(/Préparer/),
+      durationMin: expect.any(Number),
+      keepsDays: 7,
+    })
+    // Les ingrédients restent des aliments achetables : c'est le geste qui
+    // distingue la famille, pas une recette du catalogue.
+    expect(meal.portion_details.items.length).toBeGreaterThan(0)
+    expect(meal.canonical_recipe_code).toBeNull()
+  })
+
+  it('programme le geste comme une tâche rattachée au créneau', () => {
+    const meal = withHomemade.payload.legacy_meals.find((item) => item.portion_details?.homemade)
+    const task = withHomemade.payload.tasks.find((item) => item.slot_key === meal.slot_key
+      && item.task_key.startsWith('support-')
+      && !item.task_key.startsWith('support-eggs'))
+    expect(task).toMatchObject({ task_type: 'prepare_support', slot_key: meal.slot_key })
+    // Un petit-déjeuner se prépare la veille ; une collation le matin même.
+    expect(task.prep_date < meal.meal_date).toBe(meal.meal_type === 'pdj')
+    expect(task.instructions[0].instruction).toContain('7 jours')
+  })
+})
+
 describe('lot 7 — rotation des collations', () => {
   const { breakfasts, snacks } = weekSupports('2026-07-20')
 

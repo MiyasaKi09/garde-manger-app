@@ -76,11 +76,16 @@ const NEW_VERSIONS = new Set([
 ]);
 
 const NEW_EXPECTED_OBJECTS = {
+  // Vérifier des COLONNES et pas seulement des noms de tables : `meal_feedback`
+  // existait déjà pour un tout autre usage, si bien qu'un contrôle d'existence
+  // par nom passait au vert sans que la migration ait rien créé.
   '20260727120000': [
     { type: 'table', schema: 'public', name: 'member_food_preferences' },
-    { type: 'table', schema: 'public', name: 'meal_feedback' },
+    { type: 'column', schema: 'public', table: 'member_food_preferences', name: 'appreciation' },
+    { type: 'table', schema: 'public', name: 'meal_taste_feedback' },
+    { type: 'column', schema: 'public', table: 'meal_taste_feedback', name: 'appreciation' },
     { type: 'policy', schema: 'public', name: 'mfp_select_own', table: 'member_food_preferences' },
-    { type: 'policy', schema: 'public', name: 'mfb_select_own', table: 'meal_feedback' },
+    { type: 'policy', schema: 'public', name: 'mfb_select_own', table: 'meal_taste_feedback' },
   ],
   '20260715090001': [
     { type: 'function', schema: 'culinary', name: 'family_has_published_version' },

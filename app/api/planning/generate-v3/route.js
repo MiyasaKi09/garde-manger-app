@@ -8,6 +8,7 @@ import { generateClosedLoopPlan, isMealSuitableRecipe, recipeDiversityProfile } 
 import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
 import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferences'
 import { explainWeek, previewInputs } from '@/lib/domain/planning/planExplanation'
+import { discoveryTarget } from '@/lib/domain/planning/discoveryProfile'
 import { checkPlanInvariants } from '@/lib/domain/planning/planInvariants'
 import { selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidatePolicy'
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
@@ -523,6 +524,9 @@ export async function POST(request) {
       preferredActiveMinutes: 30,
       recentRecipeTitles: recentRecipes.recentRecipeTitles,
       tasteProfile,
+      // Niveau de nouveauté du foyer (§6) : le mode le plus prudent exprimé
+      // par ses membres, ou un nombre exact de découvertes s'il est fixé.
+      discoveryTarget: discoveryTarget({ members, mealCount: slots.length }),
     }
     const planOptions = {
       inventoryLots: plannerLots,
@@ -651,6 +655,7 @@ export async function POST(request) {
         diversity_score: plan.objectiveScores.diversityScore,
         repetition_violations: plan.objectiveScores.repetitionViolations,
         familiarity: plan.objectiveScores.familiarity,
+        discovery: plan.objectiveScores.discovery,
       },
       // Explication des choix, repas par repas (§10, §16).
       explanation: explainWeek({ ...plan, issues: payload.issues }, { history }),

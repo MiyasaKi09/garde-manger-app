@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { buildCanonicalPlanPayload, buildWeekSlots, collectSupplementLots, nextMondayIso, normalizePlanIssues } from '@/lib/domain/planning/canonicalPlanPayload'
 import { allocateFromLots, buildAvailability, generateClosedLoopPlan } from '@/lib/domain/planning/closedLoopPlanner'
 import { getCanonicalRecipes } from '@/lib/domain/recipes/canonicalCatalog'
+import { demandOf, findSupportWindow, isoAddDays } from './supportWindow'
 
 const recipe = {
   code: 'FR-TEST', family: 'Plat test', servings: 2, prepMinutes: 20,
@@ -15,6 +16,42 @@ const recipe = {
   nutritionPerServing: { kcal: 300, proteinG: 12, carbsG: 40, fatG: 10, fiberG: 8 },
   nutritionCoverage: { pct: 100 },
 }
+
+// Julien prend petit-déjeuner et collation : ses deux créneaux support portent
+// les demandes de suppléments que les tests ci-dessous couvrent par des lots.
+const julien = { name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }
+const highProteinGoals = [{ person_name: 'Julien', target_calories: 2000, target_protein_g: 150 }]
+
+const supportPlan = (date) => ({
+  status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
+  slots: [
+    { key: `${date}-dejeuner`, date, mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
+    { key: `${date}-diner`, date, mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
+  ],
+})
+
+const supportPayload = (date, { goals = null, inventoryLots = [], ...rest } = {}) => buildCanonicalPlanPayload({
+  plan: supportPlan(date), recipes: [recipe], windowStart: date,
+  members: [julien], ...(goals ? { goals } : {}), constraints: {}, inventoryLots, ...rest,
+})
+
+// La rotation des supports est dérivée de la date (lot 7, §13) : ces fenêtres
+// sont cherchées sur ce qu'elles servent, pas figées sur un calendrier. Figer
+// une date reviendrait à casser ces tests à chaque famille ajoutée.
+const richDemand = (date) => supportPayload(date, { goals: highProteinGoals })
+
+/** Un pot de skyr, une boîte de thon et un fruit la même semaine. */
+const FEFO_DATE = findSupportWindow(richDemand, (payload) => demandOf(payload, 'Skyr nature') === 200
+  && demandOf(payload, 'Thon au naturel égoutté') === 100
+  && demandOf(payload, 'Pomme') > 0)
+
+/** Une semaine qui sert des œufs, comptés en pièces. */
+const EGG_DATE = findSupportWindow(richDemand, (payload) => demandOf(payload, 'Œufs durs') >= 2)
+
+/** Une semaine qui sert amandes, flocons d'avoine et skyr — trois alias de lots. */
+const ALIAS_DATE = findSupportWindow(supportPayload, (payload) => demandOf(payload, 'Amandes') > 0
+  && demandOf(payload, 'Flocons d’avoine') > 25
+  && demandOf(payload, 'Skyr nature') === 200)
 
 describe('canonical plan publication payload', () => {
   it('builds fourteen ordered lunch and dinner slots', () => {
@@ -67,17 +104,7 @@ describe('canonical plan publication payload', () => {
   })
 
   it('publishes skyr as physical 200 g pots instead of an arbitrary gram total', () => {
-    const plan = {
-      status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
-      slots: [
-        { key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-        { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-      ],
-    }
-    const payload = buildCanonicalPlanPayload({
-      plan, recipes: [recipe], windowStart: '2026-07-20',
-      members: [{ name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }], constraints: {}, inventoryLots: [],
-    })
+    const payload = supportPayload(ALIAS_DATE)
     const skyr = payload.shopping_items.find((item) => item.product_name === 'Skyr nature')
     expect(skyr).toMatchObject({
       display_quantity: '1 pot de 200 g',
@@ -175,22 +202,12 @@ describe('canonical plan publication payload', () => {
   })
 
   it('allocates existing supplement lots FEFO and only ships the residual to shopping', () => {
-    const plan = {
-      status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
-      slots: [
-        { key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-        { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-      ],
-    }
-    const build = () => buildCanonicalPlanPayload({
-      plan, recipes: [recipe], windowStart: '2026-07-20',
-      members: [{ name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }],
-      goals: [{ person_name: 'Julien', target_calories: 2000, target_protein_g: 150 }],
-      constraints: {},
+    const build = () => supportPayload(FEFO_DATE, {
+      goals: highProteinGoals,
       inventoryLots: [
-        { id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 100, expiresOn: '2026-07-22', opened: true },
-        { id: 'lot-oeufs', formNormalized: 'oeufs durs', gramsAvailable: 60, expiresOn: '2026-07-24', opened: false },
-        { id: 'lot-pomme', formNormalized: 'pomme', gramsAvailable: 300, expiresOn: '2026-07-23', opened: false },
+        { id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 100, expiresOn: isoAddDays(FEFO_DATE, 2), opened: true },
+        { id: 'lot-oeufs', formNormalized: 'oeufs durs', gramsAvailable: 60, expiresOn: isoAddDays(FEFO_DATE, 4), opened: false },
+        { id: 'lot-pomme', formNormalized: 'pomme', gramsAvailable: 300, expiresOn: isoAddDays(FEFO_DATE, 3), opened: false },
       ],
     })
     const payload = build()
@@ -230,23 +247,11 @@ describe('canonical plan publication payload', () => {
   })
 
   it('décompte les œufs en pièces : le lot couvre une unité, le reste part aux courses', () => {
-    // Depuis le lot 7, la rotation des petits-déjeuners est dérivée de la date
-    // et les œufs ne sont plus servis tous les matins. Cette semaine-là tombe
-    // sur la famille « œufs et tartine ».
-    const date = '2026-08-20'
-    const plan = {
-      status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
-      slots: [
-        { key: `${date}-dejeuner`, date, mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-        { key: `${date}-diner`, date, mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-      ],
-    }
-    const payload = buildCanonicalPlanPayload({
-      plan, recipes: [recipe], windowStart: date,
-      members: [{ name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }],
-      goals: [{ person_name: 'Julien', target_calories: 2000, target_protein_g: 150 }],
-      constraints: {},
-      inventoryLots: [{ id: 'lot-oeufs', formNormalized: 'oeufs durs', gramsAvailable: 60, expiresOn: `${date}`, opened: false }],
+    // Un lot de 60 g couvre exactement UN œuf : le reste part aux courses en
+    // pièces, jamais en grammes.
+    const payload = supportPayload(EGG_DATE, {
+      goals: highProteinGoals,
+      inventoryLots: [{ id: 'lot-oeufs', formNormalized: 'oeufs durs', gramsAvailable: 60, expiresOn: EGG_DATE, opened: false }],
     })
     const eggs = payload.shopping_items.find((item) => item.product_name === 'Œufs durs')
     expect(eggs).toMatchObject({ stock_qty: 1, reserved_qty: 1, purchase_unit: 'u' })
@@ -257,38 +262,43 @@ describe('canonical plan publication payload', () => {
   // ('œuf', 'Thon en conserve', 'amande', 'avoine'…), pas les libellés
   // d'affichage des suppléments — les aliases doivent suffire à les matcher.
   it('matches production lot vocabulary (canonique/archétype) through supplement aliases', () => {
-    const plan = {
-      status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
-      slots: [
-        { key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-        { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-      ],
-    }
-    const payload = buildCanonicalPlanPayload({
-      plan, recipes: [recipe], windowStart: '2026-07-20',
-      members: [{ name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }], constraints: {},
+    // Un alias ne se vérifie que sur une fenêtre qui sert vraiment l'aliment :
+    // la rotation ne propose jamais œufs, amandes et thon le même jour, et une
+    // assertion « absent des courses » sur un aliment non demandé ne prouve rien.
+    const missing = (payload, productName) => payload.shopping_items.find((item) => item.product_name === productName)
+
+    // Noms réels du vocabulaire d'export (normalisés par loadPlannerInventory).
+    const dryGoods = supportPayload(ALIAS_DATE, {
       inventoryLots: [
-        // Noms réels du vocabulaire d'export (normalisés par loadPlannerInventory).
-        { id: 'lot-oeuf', formNormalized: 'oeuf', gramsAvailable: 600, expiresOn: '2026-07-24', opened: false },
-        { id: 'lot-thon', formNormalized: 'thon en conserve', gramsAvailable: 300, expiresOn: '2027-01-01', opened: false },
-        { id: 'lot-amande', formNormalized: 'amande', gramsAvailable: 200, expiresOn: '2026-12-01', opened: false },
-        { id: 'lot-avoine', formNormalized: 'avoine', gramsAvailable: 25, expiresOn: '2026-11-01', opened: false },
+        { id: 'lot-amande', formNormalized: 'amande', gramsAvailable: 200, expiresOn: isoAddDays(ALIAS_DATE, 120), opened: false },
+        { id: 'lot-avoine', formNormalized: 'avoine', gramsAvailable: 25, expiresOn: isoAddDays(ALIAS_DATE, 90), opened: false },
       ],
     })
-
-    // Couvert intégralement par le stock → plus jamais aux courses.
-    expect(payload.shopping_items.find((item) => item.product_name === 'Œufs durs')).toBeUndefined()
-    expect(payload.shopping_items.find((item) => item.product_name === 'Thon au naturel égoutté')).toBeUndefined()
-    expect(payload.shopping_items.find((item) => item.product_name === 'Amandes')).toBeUndefined()
+    // Couvert intégralement par le stock → plus jamais aux courses. La demande
+    // se lit sur la semaine sans lot : une fois couvert, l'article disparaît.
+    expect(demandOf(supportPayload(ALIAS_DATE), 'Amandes')).toBeGreaterThan(0)
+    expect(missing(dryGoods, 'Amandes')).toBeUndefined()
 
     // Couverture partielle : le lot 'avoine' (25 g) réduit l'achat, le manque part aux courses.
-    const oats = payload.shopping_items.find((item) => item.product_name === 'Flocons d’avoine')
+    const oats = missing(dryGoods, 'Flocons d’avoine')
     expect(oats).toMatchObject({ stock_qty: 25, reserved_qty: 25 })
     expect(oats.purchase_qty).toBe(oats.required_qty - 25)
 
     // Sans lot d'aucune forme acceptée, l'article part intégralement aux courses.
-    const skyr = payload.shopping_items.find((item) => item.product_name === 'Skyr nature')
-    expect(skyr).toMatchObject({ stock_qty: 0, purchase_qty: 200 })
+    expect(missing(dryGoods, 'Skyr nature')).toMatchObject({ stock_qty: 0, purchase_qty: 200 })
+
+    // 'oeuf' et 'thon en conserve' se vérifient sur leurs propres semaines.
+    const eggs = supportPayload(EGG_DATE, {
+      goals: highProteinGoals,
+      inventoryLots: [{ id: 'lot-oeuf', formNormalized: 'oeuf', gramsAvailable: 600, expiresOn: isoAddDays(EGG_DATE, 4), opened: false }],
+    })
+    expect(missing(eggs, 'Œufs durs')).toBeUndefined()
+
+    const tuna = supportPayload(FEFO_DATE, {
+      goals: highProteinGoals,
+      inventoryLots: [{ id: 'lot-thon', formNormalized: 'thon en conserve', gramsAvailable: 300, expiresOn: isoAddDays(FEFO_DATE, 400), opened: false }],
+    })
+    expect(missing(tuna, 'Thon au naturel égoutté')).toBeUndefined()
   })
 
   it('never serves the same lot twice when two entries accept the same alias, and keeps FEFO across forms', () => {
@@ -313,18 +323,12 @@ describe('canonical plan publication payload', () => {
   })
 
   it('subtracts recipe reservations and other active plans before allocating supplements', () => {
-    const planWithReservation = {
-      status: 'published', issues: [], objectiveScores: {}, shoppingItems: [],
-      slots: [
-        { key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-        { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-      ],
-      reservations: [{ slotKey: '2026-07-20-diner', lotId: 'lot-skyr', formNormalized: 'skyr nature', ingredientName: 'Skyr nature', grams: 120, status: 'active' }],
-    }
-    const payload = buildCanonicalPlanPayload({
-      plan: planWithReservation, recipes: [recipe], windowStart: '2026-07-20',
-      members: [{ name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }], constraints: {},
-      inventoryLots: [{ id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 200, expiresOn: '2026-07-22', opened: true }],
+    const payload = supportPayload(ALIAS_DATE, {
+      plan: {
+        ...supportPlan(ALIAS_DATE),
+        reservations: [{ slotKey: `${ALIAS_DATE}-diner`, lotId: 'lot-skyr', formNormalized: 'skyr nature', ingredientName: 'Skyr nature', grams: 120, status: 'active' }],
+      },
+      inventoryLots: [{ id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 200, expiresOn: isoAddDays(ALIAS_DATE, 2), opened: true }],
       existingReservations: [{ lotId: 'lot-skyr', grams: 50, status: 'active' }],
     })
     const skyr = payload.shopping_items.find((item) => item.product_name === 'Skyr nature')
