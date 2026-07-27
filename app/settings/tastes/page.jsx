@@ -2,9 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Ban, Heart, Plus, RefreshCw, Sparkles, Trash2, Users } from 'lucide-react'
+import { ArrowLeft, Ban, Check, ChevronLeft, ChevronRight, Heart, ListChecks, Plus, RefreshCw, Sparkles, Trash2, Users } from 'lucide-react'
 import { authFetch } from '@/lib/authFetch'
 import { toast } from '@/components/Toast'
+import { QUESTION_STEPS, WEEKDAYS, answeredCount, answersFromExisting } from './questionnaire'
 
 // Lot 2 du plan de refonte — questionnaire de goûts (§5).
 // Les réponses sont INDIVIDUELLES ; le compromis de foyer est calculé par le
@@ -44,6 +45,49 @@ const REPEAT_CHOICES = [
 const APPRECIATION_LABEL = Object.fromEntries(APPRECIATIONS.map((item) => [item.value, item.label]))
 const NEGATIVE = new Set(['forbidden', 'disliked', 'avoided'])
 
+/**
+ * Saisie d'une liste courte : un mot, Entrée, on passe au suivant. Une liste
+ * vide est une réponse valable — « aucun aliment refusé » se dit en n'ajoutant
+ * rien, pas en écrivant « aucun ».
+ */
+function TagInput({ values = [], placeholder, onChange }) {
+  const [text, setText] = useState('')
+  const add = () => {
+    const value = text.trim()
+    if (!value || values.includes(value)) { setText(''); return }
+    onChange([...values, value])
+    setText('')
+  }
+  return (
+    <div className="ts-tags">
+      <div className="ts-tag-row">
+        <input
+          type="text"
+          value={text}
+          placeholder={placeholder}
+          onChange={(event) => setText(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key !== 'Enter') return
+            event.preventDefault()
+            add()
+          }}
+        />
+        <button type="button" onClick={add} disabled={!text.trim()}><Plus size={14} /></button>
+      </div>
+      {values.length > 0 && (
+        <div className="ts-tag-list">
+          {values.map((value) => (
+            <span key={value}>
+              {value}
+              <button type="button" onClick={() => onChange(values.filter((item) => item !== value))} aria-label={`Retirer ${value}`}>×</button>
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function TastesSettingsPage() {
   const router = useRouter()
   const [members, setMembers] = useState([])
@@ -51,6 +95,10 @@ export default function TastesSettingsPage() {
   const [preferences, setPreferences] = useState([])
   const [household, setHousehold] = useState(null)
   const [draft, setDraft] = useState({ subject_type: 'ingredient', subject_label: '', appreciation: 'liked', repeat_delay_days: '' })
+  const [mode, setMode] = useState('guided')
+  const [stepIndex, setStepIndex] = useState(0)
+  const [answers, setAnswers] = useState({})
+  const [stepSaving, setStepSaving] = useState(false)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [unavailable, setUnavailable] = useState(null)
@@ -92,6 +140,88 @@ export default function TastesSettingsPage() {
     [preferences, selectedId],
   )
   const subjectMeta = SUBJECTS.find((item) => item.value === draft.subject_type) || SUBJECTS[0]
+
+  // Reprendre le parcours là où il s'est arrêté plutôt que de tout redemander.
+  useEffect(() => {
+    if (!selected) return
+    setAnswers(answersFromExisting({
+      preferences: memberPreferences,
+      planning: selected.preferences?.planning || {},
+    }))
+    setStepIndex(0)
+  }, [selectedId, selected, memberPreferences])
+
+  const step = QUESTION_STEPS[stepIndex] || null
+  const progress = answeredCount(answers)
+
+  const setAnswer = (value) => setAnswers((current) => ({ ...current, [step.key]: value }))
+
+  const toggleDay = (day) => {
+    const current = Array.isArray(answers[step.key]) ? answers[step.key] : []
+    setAnswer(current.includes(day) ? current.filter((item) => item !== day) : [...current, day].sort())
+  }
+
+  /**
+   * Enregistre l'étape courante. Une question de GOÛT écrit dans le profil de
+   * goûts ; une question d'ORGANISATION écrit dans les préférences du membre.
+   * Les deux destinations sont décrites par l'étape, l'écran n'a pas à savoir
+   * laquelle est laquelle.
+   */
+  async function saveStep() {
+    if (!selected || !step || stepSaving) return true
+    const value = answers[step.key]
+    setStepSaving(true)
+    try {
+      if (step.kind === 'setting') {
+        const planning = { ...(selected.preferences?.planning || {}) }
+        if (value == null || value === '') delete planning[step.field]
+        else planning[step.field] = step.numeric ? Number(value) : value
+        const response = await authFetch(`/api/household/members/${selected.id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ preferences: { ...(selected.preferences || {}), planning } }),
+        })
+        if (!response.ok) throw new Error('Enregistrement impossible')
+      } else {
+        const labels = step.multiple
+          ? (Array.isArray(value) ? value : []).filter(Boolean)
+          : (value ? [step.subjectValue || step.key] : [])
+        for (const label of labels) {
+          const response = await authFetch('/api/settings/taste-preferences', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              household_member_id: selected.id,
+              subject_type: step.subjectType,
+              subject_label: label,
+              // Une question à choix porte l'appréciation choisie ; une question
+              // à liste porte celle que l'étape déclare.
+              appreciation: step.choices ? value : step.appreciation,
+              repeat_delay_days: step.repeatDelayDays ?? null,
+            }),
+          })
+          if (!response.ok) throw new Error('Enregistrement impossible')
+        }
+      }
+      return true
+    } catch (error) {
+      toast.error(error.message)
+      return false
+    } finally {
+      setStepSaving(false)
+    }
+  }
+
+  async function goNext() {
+    if (!(await saveStep())) return
+    if (stepIndex + 1 >= QUESTION_STEPS.length) {
+      await load()
+      toast.success(`Profil de ${selected.name} enregistré`)
+      setMode('free')
+      return
+    }
+    setStepIndex((current) => current + 1)
+  }
 
   async function addPreference(event) {
     event.preventDefault()
@@ -178,11 +308,99 @@ export default function TastesSettingsPage() {
             ))}
           </nav>
 
+          <div className="ts-modes">
+            <button type="button" className={mode === 'guided' ? 'active' : ''} onClick={() => setMode('guided')}>
+              <ListChecks size={14} /> Parcours guidé
+            </button>
+            <button type="button" className={mode === 'free' ? 'active' : ''} onClick={() => setMode('free')}>
+              <Plus size={14} /> Ajout libre
+            </button>
+          </div>
+
           <div className="ts-layout">
+            {mode === 'guided' && step ? (
             <section className="ts-card">
               <div className="ts-card-head">
                 <div>
-                  <span className="ts-step">01 · Réponses</span>
+                  <span className="ts-step">
+                    Question {stepIndex + 1} sur {QUESTION_STEPS.length} · {progress} renseignée{progress > 1 ? 's' : ''}
+                  </span>
+                  <h2>{step.title}</h2>
+                </div>
+                <ListChecks size={18} />
+              </div>
+              {step.help && <p className="ts-help">{step.help}</p>}
+
+              {step.choices && (
+                <div className="ts-choices">
+                  {step.choices.map((choice) => (
+                    <button
+                      key={choice.value}
+                      type="button"
+                      className={answers[step.key] === choice.value ? 'active' : ''}
+                      onClick={() => setAnswer(choice.value)}
+                    >
+                      <b>{choice.label}</b>
+                      {choice.hint && <small>{choice.hint}</small>}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {step.days && (
+                <div className="ts-days">
+                  {WEEKDAYS.map((day) => (
+                    <button
+                      key={day.value}
+                      type="button"
+                      className={(answers[step.key] || []).includes(day.value) ? 'active' : ''}
+                      onClick={() => toggleDay(day.value)}
+                    >
+                      {day.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {step.numeric && (
+                <input
+                  type="number"
+                  className="ts-number"
+                  min={step.numeric.min}
+                  max={step.numeric.max}
+                  value={answers[step.key] ?? ''}
+                  placeholder="Selon mon niveau de curiosité"
+                  onChange={(event) => setAnswer(event.target.value)}
+                />
+              )}
+
+              {step.multiple && (
+                <TagInput
+                  values={Array.isArray(answers[step.key]) ? answers[step.key] : []}
+                  placeholder={step.placeholder}
+                  onChange={setAnswer}
+                />
+              )}
+
+              <div className="ts-nav">
+                <button type="button" disabled={stepIndex === 0} onClick={() => setStepIndex((current) => current - 1)}>
+                  <ChevronLeft size={14} /> Précédent
+                </button>
+                <button type="button" className="ts-skip" onClick={() => setStepIndex((current) => Math.min(current + 1, QUESTION_STEPS.length - 1))}>
+                  Passer
+                </button>
+                <button type="button" className="ts-primary" disabled={stepSaving} onClick={goNext}>
+                  {stepIndex + 1 >= QUESTION_STEPS.length
+                    ? <><Check size={14} /> Terminer</>
+                    : <>Suivant <ChevronRight size={14} /></>}
+                </button>
+              </div>
+            </section>
+            ) : (
+            <section className="ts-card">
+              <div className="ts-card-head">
+                <div>
+                  <span className="ts-step">Ajout libre</span>
                   <h2>{selected ? `Les goûts de ${selected.name}` : 'Les goûts'}</h2>
                 </div>
                 <Heart size={18} />
@@ -241,6 +459,7 @@ export default function TastesSettingsPage() {
                 ))}
               </div>
             </section>
+            )}
 
             <section className="ts-card ts-side">
               <div className="ts-card-head">
@@ -310,6 +529,30 @@ export default function TastesSettingsPage() {
         .ts-item button{display:grid;width:30px;height:30px;place-items:center;border:0;background:transparent;color:var(--ink-3);cursor:pointer}
         .ts-item button:hover{color:var(--terracotta)}
         .ts-empty{color:var(--ink-3);font-size:12px}
+        .ts-modes{display:flex;gap:8px;padding:16px 0 0}
+        .ts-modes button{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border:1px solid var(--line-strong);border-radius:6px;background:transparent;color:var(--ink-2);font-family:var(--font-mono);font-size:9px;text-transform:uppercase;cursor:pointer}
+        .ts-modes button.active{border-color:var(--brand);background:var(--brand);color:#fff}
+        .ts-choices{display:grid;gap:9px}
+        .ts-choices button{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:13px;border:1px solid var(--line-strong);border-radius:6px;background:transparent;color:var(--ink-1);text-align:left;cursor:pointer}
+        .ts-choices button.active{border-color:var(--terracotta);background:rgba(193,96,60,.1)}
+        .ts-choices b{font-size:14px}.ts-choices small{color:var(--ink-3);font-size:11px}
+        .ts-days{display:flex;flex-wrap:wrap;gap:7px}
+        .ts-days button{min-width:52px;min-height:42px;border:1px solid var(--line-strong);border-radius:6px;background:transparent;color:var(--ink-2);cursor:pointer}
+        .ts-days button.active{border-color:var(--terracotta);background:var(--terracotta);color:#fff}
+        .ts-number{width:100%;min-height:44px;padding:0 12px;border:1px solid var(--line-strong);border-radius:5px;background:rgba(255,255,255,.42);color:var(--ink-1);font:inherit}
+        .ts-tags{display:flex;flex-direction:column;gap:10px}
+        .ts-tag-row{display:flex;gap:8px}
+        .ts-tag-row input{flex:1;min-height:44px;padding:0 12px;border:1px solid var(--line-strong);border-radius:5px;background:rgba(255,255,255,.42);color:var(--ink-1);font:inherit}
+        .ts-tag-row button{display:grid;width:46px;place-items:center;border:1px solid var(--ink-1);border-radius:5px;background:transparent;cursor:pointer}
+        .ts-tag-row button:disabled{opacity:.4;cursor:default}
+        .ts-tag-list{display:flex;flex-wrap:wrap;gap:6px}
+        .ts-tag-list span{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:99px;background:rgba(46,90,68,.1);font-size:12px}
+        .ts-tag-list span button{border:0;background:transparent;color:var(--ink-3);font-size:15px;line-height:1;cursor:pointer}
+        .ts-nav{display:flex;align-items:center;gap:9px;margin-top:22px}
+        .ts-nav button{display:inline-flex;align-items:center;gap:6px;min-height:42px;padding:0 15px;border:1px solid var(--line-strong);border-radius:6px;background:transparent;color:var(--ink-2);font-family:var(--font-mono);font-size:9px;text-transform:uppercase;cursor:pointer}
+        .ts-nav button:disabled{opacity:.4;cursor:default}
+        .ts-nav .ts-skip{border:0;text-decoration:underline}
+        .ts-nav .ts-primary{margin-left:auto;border-color:var(--brand);background:var(--brand);color:#fff}
         .ts-unavailable{margin-top:22px}
         .ts-unavailable h2{margin:0 0 8px;font-family:var(--font-display);font-size:26px}
         .ts-unavailable code{font-family:var(--font-mono);font-size:11px}
