@@ -28,8 +28,10 @@ const validationError = (message) => {
  * la garantie d'intégrité.
  */
 function normalizeInput(body = {}) {
-  const memberId = Number(body.household_member_id ?? body.householdMemberId)
-  if (!Number.isFinite(memberId)) throw validationError('household_member_id requis')
+  // household_members.id est un uuid : jamais de conversion numérique, qui
+  // rejetterait tout identifiant valide.
+  const memberId = String(body.household_member_id ?? body.householdMemberId ?? '').trim()
+  if (!memberId) throw validationError('household_member_id requis')
 
   const subjectType = String(body.subject_type ?? body.subjectType ?? '').trim()
   if (!PREFERENCE_SUBJECTS.includes(subjectType)) {

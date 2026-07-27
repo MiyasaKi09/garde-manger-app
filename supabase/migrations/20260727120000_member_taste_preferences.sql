@@ -20,7 +20,9 @@ CREATE TABLE IF NOT EXISTS public.member_food_preferences (
   id                  uuid        NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id             uuid        NOT NULL DEFAULT auth.uid()
                                   REFERENCES auth.users(id) ON DELETE CASCADE,
-  household_member_id bigint      NOT NULL
+  -- household_members.id est un uuid (20260713134235_closed_loop_planning_v2),
+  -- comme partout ailleurs où cette clé est référencée.
+  household_member_id uuid        NOT NULL
                                   REFERENCES public.household_members(id) ON DELETE CASCADE,
   -- Ce sur quoi porte le goût. Les valeurs miroitent les dimensions de
   -- diversité du moteur (lib/domain/planning/repetitionRules.js) pour qu'une
@@ -123,7 +125,7 @@ CREATE TABLE IF NOT EXISTS public.meal_feedback (
   id                  uuid        NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id             uuid        NOT NULL DEFAULT auth.uid()
                                   REFERENCES auth.users(id) ON DELETE CASCADE,
-  household_member_id bigint      REFERENCES public.household_members(id) ON DELETE CASCADE,
+  household_member_id uuid        REFERENCES public.household_members(id) ON DELETE CASCADE,
   meal_date           date        NOT NULL,
   meal_type           text        NOT NULL
                                   CHECK (meal_type IN ('pdj', 'dejeuner', 'collation', 'diner')),

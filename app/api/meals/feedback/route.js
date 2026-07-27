@@ -28,9 +28,10 @@ function normalizeFeedback(body = {}) {
   if (body.portion_fit != null && !PORTION_FITS.includes(body.portion_fit)) {
     throw validationError(`portion_fit invalide (attendu : ${PORTION_FITS.join(', ')})`)
   }
-  const memberId = Number(body.household_member_id)
+  // household_members.id est un uuid : on le transmet tel quel.
+  const memberId = String(body.household_member_id ?? '').trim()
   return {
-    household_member_id: Number.isFinite(memberId) ? memberId : null,
+    household_member_id: memberId || null,
     meal_date: body.meal_date,
     meal_type: body.meal_type,
     canonical_recipe_code: body.canonical_recipe_code || null,

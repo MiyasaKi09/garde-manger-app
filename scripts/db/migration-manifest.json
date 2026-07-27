@@ -1288,7 +1288,7 @@
     "file": "20260727120000_member_taste_preferences.sql",
     "github_version": "20260727120000",
     "name": "member_taste_preferences",
-    "sha256": "05ad406d8101e1f67f568e4f166ff893d68ec02ad8a6b2be77ba6f359498b803",
+    "sha256": "6fae295e3d62e6a511931e415b21f41b35a24dc70312c3717339c0982eb0a576",
     "role": "apply",
     "baseline": "new",
     "historical_version": null,
