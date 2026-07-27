@@ -55,13 +55,13 @@ export async function POST(request) {
   try {
     const feedback = normalizeFeedback(body)
     const { data, error } = await supabase
-      .from('meal_feedback')
+      .from('meal_taste_feedback')
       .insert({ ...feedback, user_id: user.id })
       .select('id, meal_date, meal_type, canonical_recipe_code, appreciation')
       .single()
     if (error) {
       if (error.code === '42P01') {
-        return NextResponse.json({ error: 'Le retour après repas nécessite la migration meal_feedback' }, { status: 503 })
+        return NextResponse.json({ error: 'Le retour après repas nécessite la migration meal_taste_feedback' }, { status: 503 })
       }
       throw new Error(`Enregistrement du retour impossible: ${error.message}`)
     }
