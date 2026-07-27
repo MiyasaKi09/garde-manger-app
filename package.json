@@ -11,6 +11,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
+    "encyclopedia:build": "node scripts/data/encyclopedia/build-library.mjs",
+    "encyclopedia:check": "node scripts/data/encyclopedia/build-library.mjs --check",
     "test:e2e": "playwright test"
   },
   "dependencies": {
