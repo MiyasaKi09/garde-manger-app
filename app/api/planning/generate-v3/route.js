@@ -4,7 +4,12 @@ import { fetchDietaryConstraints } from '@/lib/aiContextBuilder'
 import { listOperationalRecipes } from '@/lib/db/operationalRecipeCatalog'
 import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { toGramsV2 } from '@/lib/domain/units'
-import { generateClosedLoopPlan, isMealSuitableRecipe } from '@/lib/domain/planning/closedLoopPlanner'
+import { generateClosedLoopPlan, isMealSuitableRecipe, recipeDiversityProfile } from '@/lib/domain/planning/closedLoopPlanner'
+import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
+import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferences'
+import { explainWeek, previewInputs } from '@/lib/domain/planning/planExplanation'
+import { discoveryTarget } from '@/lib/domain/planning/discoveryProfile'
+import { checkPlanInvariants } from '@/lib/domain/planning/planInvariants'
 import { selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidatePolicy'
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
 import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
@@ -151,12 +156,32 @@ async function loadExistingImport(supabase, userId, importId) {
   return { planImport, slots: slots || [], meals, tasks, slotStates, activePlanVersionId: planImport.active_plan_version_id }
 }
 
+// Fenêtre d'historique du moteur de diversité (plan de refonte §9 : « historique
+// des quatre à huit semaines précédentes »). Huit semaines, borne haute : c'est
+// la mémoire nécessaire pour faire respecter le délai de retour d'une recette
+// exacte (14 à 28 jours) sans jamais confondre « pas revu depuis longtemps » et
+// « jamais vu ».
+const HISTORY_WINDOW_DAYS = 56
+
+// Avertissements de diversité remontés à l'appelant même sans sévérité
+// bloquante : ils expliquent une semaine moins variée que d'habitude.
+const DIVERSITY_WARNING_CODES = new Set([
+  'previous_week_recipe_reuse_fallback',
+  'cuisine_cluster',
+  'sensory_profile_cluster',
+  'recipe_returned_too_soon',
+  'recipe_family_returned_too_soon',
+  'protein_returned_too_soon',
+  'starch_returned_too_soon',
+  'cuisine_returned_too_soon',
+])
+
 async function loadRecentRecipeUsage(supabase, windowStart) {
   const previousWeekStart = addDays(windowStart, -7)
   const { data, error } = await supabase
     .from('nutrition_plan_meals')
     .select('canonical_recipe_code, meal_date, description, short_label')
-    .gte('meal_date', addDays(windowStart, -35))
+    .gte('meal_date', addDays(windowStart, -HISTORY_WINDOW_DAYS))
     .lt('meal_date', windowStart)
     .in('meal_type', ['dejeuner', 'diner'])
   if (error) throw new Error(`Historique des recettes indisponible: ${error.message}`)
@@ -164,6 +189,7 @@ async function loadRecentRecipeUsage(supabase, windowStart) {
   const previousWeekRecipeCodes = new Set()
   const recentRecipeUsage = {}
   const recentRecipeTitles = new Set()
+  const rows = []
   for (const row of data || []) {
     const code = String(row.canonical_recipe_code || '').trim()
     if (code) {
@@ -173,12 +199,76 @@ async function loadRecentRecipeUsage(supabase, windowStart) {
     for (const title of [fold(row.short_label), fold(row.description)]) {
       if (title) recentRecipeTitles.add(title)
     }
+    rows.push({
+      recipeCode: code || null,
+      date: row.meal_date,
+      title: row.short_label || null,
+      description: row.description || null,
+    })
   }
   return {
     previousWeekRecipeCodes: [...previousWeekRecipeCodes].sort(),
     recentRecipeUsage,
     recentRecipeTitles: [...recentRecipeTitles],
+    rows,
   }
+}
+
+/**
+ * Historique exploitable par le moteur de diversité (§9, lot 1). Les repas
+ * passés ne portent que leur code recette : leurs dimensions de diversité
+ * (famille, cuisine, protéine, féculent) sont reconstituées en rapprochant ce
+ * code du corpus courant. Un code disparu du catalogue ne contribue plus qu'au
+ * délai de retour de la recette exacte — jamais à une dimension inventée.
+ */
+function planningHistoryFrom(rows, recipes, windowStart) {
+  const byCode = new Map(recipes.map((recipe) => [recipe.code, recipe]))
+  return buildPlanningHistory({
+    referenceDate: windowStart,
+    entries: rows.map((row) => {
+      const recipe = row.recipeCode ? byCode.get(row.recipeCode) : null
+      return { ...row, diversity: recipe ? recipeDiversityProfile(recipe) : null }
+    }),
+  })
+}
+
+/**
+ * Profil de goûts du foyer (§5, lot 2). Les réponses sont individuelles ; le
+ * compromis se recalcule à chaque génération, jamais stocké — un profil
+ * modifié prend donc effet immédiatement.
+ *
+ * Repli SOUPLE : tant que la migration des goûts n'est pas appliquée, la
+ * lecture échoue et le moteur retombe sur les seules contraintes de compte
+ * (allergies, régimes, interdits). Jamais d'échec de génération pour ça.
+ */
+async function loadHouseholdTasteProfile(supabase, userId) {
+  const { data, error } = await supabase
+    .from('member_food_preferences')
+    .select('household_member_id, subject_type, subject_value, subject_label, appreciation, strict, repeat_delay_days')
+    .eq('user_id', userId)
+  if (error) return buildHouseholdTasteProfile([])
+  return buildHouseholdTasteProfile(data || [])
+}
+
+/**
+ * Règles de répétition effectives (§3 : « Ces délais doivent être
+ * configurables »). Trois sources, de la plus générale à la plus spécifique :
+ * les valeurs par défaut du domaine, les préférences du foyer
+ * (`household_members.preferences.planning.repetition`, première définition
+ * rencontrée dans l'ordre des membres), puis une éventuelle surcharge de la
+ * requête. `buildRepetitionRules` borne le résultat : un réglage aberrant
+ * retombe sur la valeur par défaut, jamais sur une règle absolue désactivée.
+ */
+function resolveRepetitionRules(members = [], body = {}) {
+  const memberRules = members
+    .map((member) => member?.preferences?.planning?.repetition)
+    .find((rules) => rules && typeof rules === 'object') || {}
+  const requestRules = body?.repetition_rules && typeof body.repetition_rules === 'object' ? body.repetition_rules : {}
+  return buildRepetitionRules({
+    ...memberRules,
+    ...requestRules,
+    returnDelays: { ...(memberRules.returnDelays || {}), ...(requestRules.returnDelays || {}) },
+  })
 }
 
 async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = null) {
@@ -342,10 +432,11 @@ export async function POST(request) {
     if (scope === 'days' && !selectedDays.size) return NextResponse.json({ error: 'Sélectionne au moins un jour' }, { status: 400 })
     if (scope === 'meals' && !selectedMeals.size) return NextResponse.json({ error: 'Sélectionne au moins un repas' }, { status: 400 })
 
-    const [membersResult, goalsResult, dietary] = await Promise.all([
+    const [membersResult, goalsResult, dietary, tasteProfile] = await Promise.all([
       supabase.from('household_members').select('id, name, portion_multiplier, preferences').eq('user_id', user.id).eq('active', true).order('created_at'),
       supabase.from('user_health_goals').select('person_name, target_calories, target_protein_g, target_carbs_g, target_fat_g, target_fiber_g').eq('user_id', user.id),
       fetchDietaryConstraints(supabase, user.id),
+      loadHouseholdTasteProfile(supabase, user.id),
     ])
     let members = membersResult.data || []
     if (!members.length) {
@@ -401,6 +492,11 @@ export async function POST(request) {
     })
 
     const targetByMeal = nutritionTargets(goalsResult.data || [], members)
+    // Moteur de diversité global (§9, lot 1) : les huit semaines précédentes
+    // et les règles de répétition du foyer entrent dans le solveur au même
+    // titre que le stock et les objectifs nutritionnels.
+    const history = planningHistoryFrom(recentRecipes.rows, allRecipes, windowStart)
+    const repetitionRules = resolveRepetitionRules(members, body)
     const fixedRecipeCodes = slots.map((slot) => slot.fixedRecipeCode).filter(Boolean)
     const recipes = selectPlanningRecipePool({
       recipes: allRecipes,
@@ -427,8 +523,22 @@ export async function POST(request) {
       maxMinutesByMeal: { dejeuner: 120, diner: 240 },
       preferredActiveMinutes: 30,
       recentRecipeTitles: recentRecipes.recentRecipeTitles,
+      tasteProfile,
+      // Niveau de nouveauté du foyer (§6) : le mode le plus prudent exprimé
+      // par ses membres, ou un nombre exact de découvertes s'il est fixé.
+      discoveryTarget: discoveryTarget({ members, mealCount: slots.length }),
     }
-    let plan = generateClosedLoopPlan({ slots, recipes, inventoryLots: plannerLots, existingReservations, cookedDishes, existingDishReservations, constraints, beamWidth: 48 })
+    const planOptions = {
+      inventoryLots: plannerLots,
+      existingReservations,
+      cookedDishes,
+      existingDishReservations,
+      constraints,
+      beamWidth: 48,
+      repetitionRules,
+      history,
+    }
+    let plan = generateClosedLoopPlan({ slots, recipes, ...planOptions })
     // La semaine précédente est exclue en priorité. Un repli explicite et
     // fortement pénalisé n'est autorisé que si le corpus ne permet réellement
     // aucun plan sûr — jamais une répétition silencieuse.
@@ -440,25 +550,50 @@ export async function POST(request) {
         fixedRecipeCodes,
         allowPreviousWeek: true,
       })
-      plan = generateClosedLoopPlan({
-        slots,
-        recipes: fallbackRecipes,
-        inventoryLots: plannerLots,
-        existingReservations,
-        cookedDishes,
-        existingDishReservations,
-        constraints,
-        beamWidth: 48,
-      })
-      if (plan.status === 'published') {
+      const fallbackPlan = generateClosedLoopPlan({ slots, recipes: fallbackRecipes, ...planOptions })
+      // Le repli n'est retenu que s'il fait réellement mieux : une semaine
+      // complète l'emporte sur une semaine incomplète, une semaine publiable
+      // sur une semaine à revoir. Sinon on conserve le plan initial.
+      const fallbackIsBetter = fallbackPlan.slots.length > plan.slots.length
+        || (fallbackPlan.slots.length === plan.slots.length && fallbackPlan.status === 'published' && plan.status !== 'published')
+      if (fallbackIsBetter) {
+        // Avertissement explicite : ce plan réutilise des recettes de la semaine
+        // précédente, sa diversité est donc structurellement plus faible (lot 0).
         plan = {
-          ...plan,
-          issues: [...(plan.issues || []), { severity: 'warning', code: 'previous_week_recipe_reuse_fallback' }],
+          ...fallbackPlan,
+          issues: [...(fallbackPlan.issues || []), { severity: 'warning', code: 'previous_week_recipe_reuse_fallback' }],
         }
       }
     }
-    if (plan.status !== 'published') {
+    // Une semaine dégradée n'est PAS un échec de génération : le plan de
+    // refonte demande explicitement de la produire et de la marquer
+    // `review_required` (lot 0) plutôt que de la publier en silence — « mieux
+    // vaut une semaine à compléter qu'une semaine contenant quatre pizzas ».
+    // Les issues bloquantes voyagent dans le payload : le RPC en déduit le
+    // statut de la version, et l'interface affiche l'avertissement.
+    // Seul un plan réellement incomplet reste un échec dur.
+    if (plan.slots.length !== slots.length) {
       return NextResponse.json({ error: 'Aucun planning sûr ne satisfait les contraintes du foyer', issues: plan.issues }, { status: 422 })
+    }
+
+    // Aperçu avant publication (§16, lot 8) : la semaine est calculée et
+    // expliquée, mais RIEN n'est écrit. Aucune version publiée, aucune
+    // réservation posée — l'utilisateur voit ce qu'il obtiendrait.
+    if (body.preview === true) {
+      return NextResponse.json({
+        ok: true,
+        preview: true,
+        status: plan.status,
+        before: previewInputs({
+          slots,
+          cookedDishes,
+          inventoryLots: plannerLots,
+          tasteProfile,
+          history,
+          today: windowStart,
+        }),
+        after: explainWeek(plan, { history }),
+      })
     }
 
     const payload = buildCanonicalPlanPayload({
@@ -483,6 +618,21 @@ export async function POST(request) {
       corpusVersion: operationalCatalog.metadata.corpusVersion,
       householdTimeZone,
     })
+    // Dernier garde-fou avant publication (§17, lot 9). Les règles de
+    // répétition sont déjà vérifiées par le moteur ; on contrôle ici la
+    // cohérence STRUCTURELLE — chaque portion a une source, aucune consommation
+    // ne précède sa production, aucun lot périmé n'est servi, aucun repas déjà
+    // consommé n'est réécrit. Une incohérence ici est un défaut du moteur, pas
+    // une semaine à revoir : on refuse d'écrire.
+    const structural = checkPlanInvariants(plan, { expectedSlotCount: slots.length, slotStates: existing.slotStates })
+    if (structural.length) {
+      const failure = new Error('Le planning calculé est structurellement incohérent et n’a pas été publié')
+      failure.code = 'plan_invariant_violation'
+      failure.status = 500
+      failure.details = { violations: structural.slice(0, 10) }
+      throw failure
+    }
+
     if (existing.planImport) payload.import_id = existing.planImport.id
     const { data, error } = await supabase.rpc('publish_canonical_final_demand_plan', { p_payload: payload })
     if (error) throw new Error(error.message)
@@ -500,7 +650,23 @@ export async function POST(request) {
         stock_coverage: plan.objectiveScores.stockCoverage,
         shopping_items: payload.shopping_items.length,
         weekly_rule_violations: plan.objectiveScores.weeklyRuleViolations,
+        // Aperçu après génération (§16) : ce que vaut réellement la semaine
+        // au-delà du simple compte de recettes.
+        diversity_score: plan.objectiveScores.diversityScore,
+        repetition_violations: plan.objectiveScores.repetitionViolations,
+        familiarity: plan.objectiveScores.familiarity,
+        discovery: plan.objectiveScores.discovery,
       },
+      // Explication des choix, repas par repas (§10, §16).
+      explanation: explainWeek({ ...plan, issues: payload.issues }, { history }),
+      // Les règles franchies sont nommées, avec leur libellé français : la
+      // page peut expliquer pourquoi la semaine demande une revue au lieu
+      // d'afficher un échec nu. On repart des issues du PAYLOAD, déjà
+      // normalisées et traduites. Les avertissements de diversité remontent
+      // aussi — le lot 0 exige un avertissement EXPLICITE quand un repli a
+      // réduit la variété, et celui-ci ne porte qu'une sévérité `warning`.
+      issues: (payload.issues || []).filter((issue) => ['blocker', 'error'].includes(issue.severity)
+        || DIVERSITY_WARNING_CODES.has(issue.code)),
     })
   } catch (error) {
     console.error('[Planning V3]', error)

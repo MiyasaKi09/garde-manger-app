@@ -38,13 +38,18 @@ const makeRecipe = (code, family, form = 'courgette cuite', overrides = {}) => (
 
 const GRATIN = makeRecipe('FR-GRA', 'Gratin de courgettes')
 
+// Créneau producteur et créneau consommateur, espacés conformément aux règles
+// absolues de répétition (plan de refonte §3) : jamais le même plat au déjeuner
+// et au dîner du même jour, et au moins deux repas d'écart entre la cuisson et
+// la nouvelle consommation. Lundi midi → mardi soir = trois repas d'écart, dans
+// la fenêtre de conservation de 72 h.
 const daySlots = [
   { key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner' },
-  { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner' },
+  { key: '2026-07-21-diner', date: '2026-07-21', mealType: 'diner' },
 ]
 
 describe('generateClosedLoopPlan — stratégies de production (audit P2)', () => {
-  it('test B : produit 4 portions au déjeuner et couvre le dîner — ingrédients réservés UNE fois à hauteur de 4 portions', () => {
+  it('test B : produit 4 portions au déjeuner et couvre un dîner ultérieur — ingrédients réservés UNE fois à hauteur de 4 portions', () => {
     const plan = generateClosedLoopPlan({
       slots: daySlots,
       recipes: [GRATIN],
@@ -62,7 +67,7 @@ describe('generateClosedLoopPlan — stratégies de production (audit P2)', () =
       storageMethod: 'refrigerator',
       availableFrom: '2026-07-20',
       useBy: '2026-07-23',
-      consumerSlotKeys: ['2026-07-20-diner'],
+      consumerSlotKeys: ['2026-07-21-diner'],
     })
     // 2 × 100 g réservés sur le créneau producteur, rien ailleurs.
     expect(producer.allocations).toEqual([
@@ -100,21 +105,34 @@ describe('generateClosedLoopPlan — stratégies de production (audit P2)', () =
   })
 
   it('respecte la fenêtre de conservation : couvre jusqu’à use_by inclus, jamais au-delà', () => {
+    // Une seconde recette occupe le créneau hors fenêtre : depuis les règles
+    // absolues de répétition (§3), une recette n'est cuisinée qu'une fois par
+    // semaine — le créneau au-delà de use_by ne peut donc plus être une
+    // recuisson du même plat, il doit être servi par autre chose.
+    const other = makeRecipe('FR-SAL', 'Salade de lentilles', 'lentilles cuites')
     const plan = generateClosedLoopPlan({
       slots: [
         daySlots[0],
         // Jeudi 23 = use_by exact (lundi + 72 h) → couvert.
         { key: '2026-07-23-dejeuner', date: '2026-07-23', mealType: 'dejeuner' },
-        // Vendredi 24 > use_by → jamais couvert, recuisson fraîche.
+        // Vendredi 24 > use_by → jamais couvert par cette production.
         { key: '2026-07-24-dejeuner', date: '2026-07-24', mealType: 'dejeuner' },
       ],
-      recipes: [GRATIN],
+      recipes: [GRATIN, other],
       constraints: { allowShopping: true },
     })
-    expect(plan.slots[0].production?.consumerSlotKeys).toEqual(['2026-07-23-dejeuner'])
+    // Une seule production possible : depuis le créneau du lundi. Celle du
+    // jeudi ne pourrait couvrir que le vendredi, à un repas d'écart seulement.
+    const producer = plan.slots[0]
+    expect(producer.production.useBy).toBe('2026-07-23')
+    expect(producer.production.consumerSlotKeys).toEqual(['2026-07-23-dejeuner'])
     expect(plan.slots[1].source).toBe('planned_production')
+    expect(plan.slots[1].recipeCode).toBe(producer.recipeCode)
+    // Au-delà de use_by, la production ne couvre plus rien et la recette ne
+    // peut pas être recuisinée : le créneau revient à une autre recette.
+    expect(plan.slots[2].recipeCode).not.toBe(producer.recipeCode)
     expect(plan.slots[2].productionKey).toBeUndefined()
-    expect(plan.slots[2].explanations).toContain('recipe_repeated')
+    expect(plan.status).toBe('published')
   })
 
   it('utilise la fenêtre déclarée par la recette quand elle existe (audit §9.3)', () => {
@@ -177,19 +195,23 @@ describe('generateClosedLoopPlan — stratégies de production (audit P2)', () =
     expect(JSON.parse(JSON.stringify(build()))).toEqual(JSON.parse(JSON.stringify(build())))
   })
 
-  it('régression zéro production : sans temps actif économisé, le plan est identique octet pour octet à l’existant', () => {
+  it('régression zéro production : sans temps actif économisé, aucune stratégie n’est générée', () => {
     const quick = makeRecipe('FR-GRA', 'Gratin de courgettes', 'courgette cuite', { prepMinutes: 10 })
+    const otherQuick = makeRecipe('FR-SAL', 'Salade de lentilles', 'lentilles cuites', { prepMinutes: 10 })
     const plan = generateClosedLoopPlan({
       slots: daySlots,
-      recipes: [quick],
+      recipes: [quick, otherQuick],
       inventoryLots: [{ id: 'lot-c', formNormalized: 'courgette cuite', gramsAvailable: 200, expiresOn: '2026-07-24' }],
       constraints: { allowShopping: true },
     })
     expect(plan.status).toBe('published')
     // Réchauffer coûte autant que cuisiner (10 min) : la mutualisation ne
     // domine pas, aucune stratégie n'est même générée.
-    expect(JSON.stringify(plan)).not.toContain('production')
-    expect(plan.slots[1].explanations).toContain('recipe_repeated')
+    expect(JSON.stringify(plan)).not.toContain('productionKey')
+    // Chaque créneau cuisine frais, et deux recettes distinctes se partagent
+    // la semaine : aucune répétition à justifier.
+    expect(plan.slots.every((slot) => slot.source === 'fresh')).toBe(true)
+    expect(new Set(plan.slots.map((slot) => slot.recipeCode)).size).toBe(2)
   })
 })
 
@@ -198,14 +220,29 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
     { name: 'Alex', portion_multiplier: 1 },
     { name: 'Sam', portion_multiplier: 0.5 },
   ]
+  // Deux journées COMPLÈTES (déjeuner + dîner) : les repas personnalisés ne
+  // sont produits que pour les jours dont les deux créneaux principaux sont
+  // planifiés. La production part du lundi midi et nourrit le mardi soir —
+  // trois repas d'écart, conformément aux règles absolues (§3).
+  const twoDaySlots = [
+    { key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner' },
+    { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner' },
+    { key: '2026-07-21-dejeuner', date: '2026-07-21', mealType: 'dejeuner' },
+    { key: '2026-07-21-diner', date: '2026-07-21', mealType: 'diner' },
+  ]
+  // Une recette n'est cuisinée qu'une fois par semaine : il faut donc autant de
+  // recettes distinctes que de créneaux non couverts par une production.
+  const TIAN = makeRecipe('FR-TOM', 'Tian de tomates', 'tomate cuite')
+  const SALADE = makeRecipe('FR-SAL', 'Salade de lentilles', 'lentilles cuites')
+  const corpus = [GRATIN, SALADE, TIAN]
   const buildPlanAndPayload = (extra = {}) => {
     const plan = generateClosedLoopPlan({
-      slots: daySlots,
-      recipes: [GRATIN],
+      slots: twoDaySlots,
+      recipes: corpus,
       constraints: { allowShopping: true },
     })
     const payload = buildCanonicalPlanPayload({
-      plan, recipes: [GRATIN], windowStart: '2026-07-20',
+      plan, recipes: corpus, windowStart: '2026-07-20',
       members, constraints: {}, inventoryLots: [],
       ...extra,
     })
@@ -217,8 +254,10 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
     // 2 membres × 2 créneaux = 4 lignes de repas. C'est la somme finale des
     // portions optimisées qui dimensionne la production, pas les 4 lignes.
     const mealLines = payload.legacy_meals.filter((meal) => ['dejeuner', 'diner'].includes(meal.meal_type))
-    expect(mealLines).toHaveLength(4)
-    const plannedServingsTotal = mealLines.reduce((sum, meal) => sum + meal.planned_servings, 0)
+    expect(mealLines).toHaveLength(8)
+    const plannedServingsTotal = mealLines
+      .filter((meal) => meal.canonical_recipe_code === 'FR-GRA')
+      .reduce((sum, meal) => sum + meal.planned_servings, 0)
     expect(payload.productions).toHaveLength(1)
     expect(payload.productions[0]).toMatchObject({
       production_key: 'production-2026-07-20-dejeuner',
@@ -247,7 +286,7 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
   it('tests L et E : la dépendance réchauffage → cuisson relie deux tâches de la même version', () => {
     const { payload } = buildPlanAndPayload()
     expect(payload.dependencies).toEqual([
-      { task_key: 'reheat-2026-07-20-diner', depends_on_task_key: 'prepare-2026-07-20-dejeuner' },
+      { task_key: 'reheat-2026-07-21-diner', depends_on_task_key: 'prepare-2026-07-20-dejeuner' },
     ])
     const taskKeys = new Set(payload.tasks.map((task) => task.task_key))
     for (const dependency of payload.dependencies) {
@@ -265,7 +304,7 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
       title: `Préparer Gratin de courgettes — ${String(portions).replace('.', ',')} portions (2 repas)`,
       duration_min: 30,
     })
-    const reheatTask = payload.tasks.find((task) => task.task_key === 'reheat-2026-07-20-diner')
+    const reheatTask = payload.tasks.find((task) => task.task_key === 'reheat-2026-07-21-diner')
     expect(reheatTask).toMatchObject({
       task_type: 'reheat_dish',
       title: 'Réchauffer Gratin de courgettes',
@@ -277,8 +316,8 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
 
   it('le créneau consommateur n’ajoute aucun besoin d’ingrédients : courses à hauteur de N portions, une seule fois', () => {
     const { payload } = buildPlanAndPayload()
-    const producerSlot = payload.slots[0]
-    const consumerSlot = payload.slots[1]
+    const producerSlot = payload.slots.find((slot) => slot.slot_key === '2026-07-20-dejeuner')
+    const consumerSlot = payload.slots.find((slot) => slot.slot_key === '2026-07-21-diner')
     expect(producerSlot).toMatchObject({
       source: 'canonical_v3',
       production_key: 'production-2026-07-20-dejeuner',
@@ -309,14 +348,19 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
   })
 
   it('régression zéro production : le payload est identique octet pour octet à l’existant', () => {
-    const quick = makeRecipe('FR-GRA', 'Gratin de courgettes', 'courgette cuite', { prepMinutes: 10 })
+    const quickCorpus = [
+      makeRecipe('FR-GRA', 'Gratin de courgettes', 'courgette cuite', { prepMinutes: 10 }),
+      makeRecipe('FR-SAL', 'Salade de lentilles', 'lentilles cuites', { prepMinutes: 10 }),
+      makeRecipe('FR-TOM', 'Tian de tomates', 'tomate cuite', { prepMinutes: 10 }),
+      makeRecipe('FR-POI', 'Poireaux vinaigrette', 'poireau cuit', { prepMinutes: 10 }),
+    ]
     const plan = generateClosedLoopPlan({
-      slots: daySlots,
-      recipes: [quick],
+      slots: twoDaySlots,
+      recipes: quickCorpus,
       constraints: { allowShopping: true },
     })
     const build = () => buildCanonicalPlanPayload({
-      plan, recipes: [quick], windowStart: '2026-07-20',
+      plan, recipes: quickCorpus, windowStart: '2026-07-20',
       members, constraints: {}, inventoryLots: [],
     })
     const payload = build()
@@ -328,18 +372,20 @@ describe('buildCanonicalPlanPayload — productions, consommations, dépendances
   })
 
   it('contrat P1 intact : plat existant → consommation avec source cooked_dish_id, réservation de portions conservée, aucune dépendance', () => {
+    const dishes = [{ id: 9, name: 'Gratin de courgettes', portionsRemaining: 4, expiresOn: '2026-07-22' }]
     const plan = generateClosedLoopPlan({
-      slots: daySlots,
-      recipes: [GRATIN],
-      cookedDishes: [{ id: 9, name: 'Gratin de courgettes', portionsRemaining: 4, expiresOn: '2026-07-22' }],
+      slots: twoDaySlots,
+      recipes: corpus,
+      cookedDishes: dishes,
       constraints: { allowShopping: true },
     })
-    // 4 portions → les deux créneaux sont nourris par le plat existant.
-    expect(plan.slots.map((slot) => slot.cookedDishId)).toEqual([9, 9])
+    // 4 portions → deux créneaux nourris par le plat existant, ESPACÉS de trois
+    // repas : le reste ne monopolise plus des créneaux consécutifs (§3, §12).
+    expect(plan.slots.map((slot) => slot.cookedDishId ?? null)).toEqual([9, null, null, 9])
     const payload = buildCanonicalPlanPayload({
-      plan, recipes: [GRATIN], windowStart: '2026-07-20',
+      plan, recipes: corpus, windowStart: '2026-07-20',
       members, constraints: {}, inventoryLots: [],
-      cookedDishes: [{ id: 9, name: 'Gratin de courgettes', portionsRemaining: 4, expiresOn: '2026-07-22' }],
+      cookedDishes: dishes,
     })
     // Le solveur au grain foyer proposait 4 portions, mais les demandes
     // personnelles finales dépassent ce total. V5 consomme exactement le

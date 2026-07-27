@@ -64,21 +64,27 @@ describe('closedLoopPlanner', () => {
     expect(plan.slots[0].recipeCode).toBe('B')
   })
 
-  it('garde un plan faisable avec répétition pénalisée si une seule recette est sûre', () => {
+  it('produit une semaine dégradée EXPLICITE quand une seule recette est sûre, au lieu de publier la répétition en silence', () => {
     const onlySafe = makeRecipe('A', 'fresh_acidic')
     // Les deux créneaux sont espacés au-delà de la fenêtre de conservation
-    // (72 h réfrigérateur) : la stratégie production du lot P2 est impossible,
-    // le second créneau recuisine la même recette et la répétition est
-    // pénalisée comme avant.
+    // (72 h réfrigérateur) : la stratégie production du lot P2 est impossible.
+    // Une recette n'étant cuisinée qu'une fois par semaine (§3), aucune
+    // semaine strictement conforme n'existe — le moteur retombe alors sur sa
+    // passe dégradée, rend quand même un plan complet, mais le marque
+    // `review_required` avec la règle franchie nommée (§4, lot 0).
     const plan = generateClosedLoopPlan({
       slots: [{ key: 'd1', date: '2026-07-20' }, { key: 'd2', date: '2026-07-25' }],
       recipes: [onlySafe],
       constraints: { allowShopping: true },
     })
-    expect(plan.status).toBe('published')
+    expect(plan.status).toBe('review_required')
     expect(plan.slots).toHaveLength(2)
-    expect(plan.slots[1].explanations).toContain('recipe_repeated')
-    expect(JSON.stringify(plan)).not.toContain('production')
+    expect(plan.issues.map((issue) => issue.code)).toContain('recipe_recooked_within_week')
+    expect(plan.issues.some((issue) => issue.severity === 'blocker')).toBe(true)
+    // Le repas subi est identifié comme tel : ce n'est ni un favori en
+    // rotation, ni un reste planifié.
+    expect(plan.slots[1].mealStatus).toBe('backup_meal')
+    expect(JSON.stringify(plan)).not.toContain('productionKey')
   })
 
   it('préserve les repas fixes et remplace seulement le créneau ciblé', () => {

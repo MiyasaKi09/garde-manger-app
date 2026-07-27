@@ -1283,5 +1283,60 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260727120000_member_taste_preferences.sql",
+    "github_version": "20260727120000",
+    "name": "member_taste_preferences",
+    "sha256": "73fcd94e6a5808df3b7ab521ff554ecdce47549fb420049caabeda4a140c3c56",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "member_food_preferences"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "table": "member_food_preferences",
+        "name": "appreciation"
+      },
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "meal_taste_feedback"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "table": "meal_taste_feedback",
+        "name": "appreciation"
+      },
+      {
+        "type": "policy",
+        "schema": "public",
+        "name": "mfp_select_own",
+        "table": "member_food_preferences"
+      },
+      {
+        "type": "policy",
+        "schema": "public",
+        "name": "mfb_select_own",
+        "table": "meal_taste_feedback"
+      }
+    ]
+  },
+  {
+    "file": "20260727120000_member_taste_preferences_rollback.sql",
+    "github_version": "20260727120000",
+    "name": "member_taste_preferences_rollback",
+    "sha256": "92c84640d0ca68493880c960c5b11d5661607aa0991aed61328cc83f7447ca32",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

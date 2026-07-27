@@ -40,11 +40,23 @@ const weekSlots = [
 const HACHIS = makeRecipe('FR-HAC', 'Hachis parmentier', 'boeuf hache cuit')
 const SALADE = makeRecipe('FR-SAL', 'Salade de lentilles', 'lentilles cuites')
 
+// Quatre journées complètes : de quoi espacer trois consommations d'un même
+// plat (§3 — au moins deux repas d'écart) sans jamais deux prises consécutives.
+const fourDaySlots = ['2026-07-20', '2026-07-21', '2026-07-22', '2026-07-23'].flatMap((date) => [
+  { key: `${date}-dejeuner`, date, mealType: 'dejeuner' },
+  { key: `${date}-diner`, date, mealType: 'diner' },
+])
+// Corpus de remplissage : une recette par créneau frais, `prepMinutes` à 10
+// pour qu'aucune stratégie de production ne vienne brouiller le scénario
+// (réchauffer coûte autant que cuisiner → mutualisation nulle).
+const FILLERS = ['FR-F01', 'FR-F02', 'FR-F03', 'FR-F04', 'FR-F05']
+  .map((code, index) => makeRecipe(code, `Plat ${index + 1}`, `legume ${index + 1} cuit`, { prepMinutes: 10 }))
+
 describe('generateClosedLoopPlan — plats cuisinés (audit P1)', () => {
-  it('test B : un plat de six portions nourrit trois créneaux de deux portions, sans rachat ni recuisson', () => {
+  it('test B : un plat de six portions nourrit trois créneaux ESPACÉS de deux portions, sans rachat ni recuisson', () => {
     const plan = generateClosedLoopPlan({
-      slots: weekSlots,
-      recipes: [HACHIS, SALADE],
+      slots: fourDaySlots,
+      recipes: [HACHIS, SALADE, ...FILLERS],
       cookedDishes: [{ id: 7, name: 'Hachis Parmentier', portionsRemaining: 6, expiresOn: '2026-07-25' }],
       constraints: { allowShopping: true },
     })
@@ -52,25 +64,31 @@ describe('generateClosedLoopPlan — plats cuisinés (audit P1)', () => {
 
     const dishSlots = plan.slots.filter((slot) => slot.cookedDishId != null)
     expect(dishSlots).toHaveLength(3)
-    expect(plan.slots.slice(0, 3).map((slot) => slot.cookedDishId)).toEqual([7, 7, 7])
+    // Les trois prises sont réparties, jamais enchaînées ni doublées sur une
+    // même journée : c'est la correction du lot 0 (le plat de six portions
+    // nourrissait auparavant trois créneaux consécutifs).
+    // Lundi midi → mardi soir → jeudi midi : trois repas d'écart à chaque fois.
+    expect(dishSlots.map((slot) => slot.key)).toEqual([
+      '2026-07-20-dejeuner', '2026-07-21-diner', '2026-07-23-dejeuner',
+    ])
     for (const slot of dishSlots) {
       expect(slot.source).toBe('cooked_dish')
       expect(slot.recipeCode).toBe('FR-HAC')
       expect(slot.dishPortions).toBe(2)
+      expect(slot.mealStatus).toBe('planned_leftover')
       expect(slot.allocations).toEqual([])
       expect(slot.shortages).toEqual([])
       expect(slot.stockCoverage).toBe(1)
     }
     // Portions suivies : jamais plus que le restant (6 = 3 × 2).
     expect(dishSlots.reduce((sum, slot) => sum + slot.dishPortions, 0)).toBe(6)
-    expect(plan.slots[3].cookedDishId).toBeUndefined()
 
     // Une réservation de portions par (créneau, plat) — aucun lot pour ces créneaux.
     const dishReservations = plan.reservations.filter((row) => row.cookedDishId != null)
     expect(dishReservations).toEqual([
       { cookedDishId: 7, dishName: 'Hachis Parmentier', portions: 2, slotKey: '2026-07-20-dejeuner', status: 'active' },
-      { cookedDishId: 7, dishName: 'Hachis Parmentier', portions: 2, slotKey: '2026-07-20-diner', status: 'active' },
-      { cookedDishId: 7, dishName: 'Hachis Parmentier', portions: 2, slotKey: '2026-07-21-dejeuner', status: 'active' },
+      { cookedDishId: 7, dishName: 'Hachis Parmentier', portions: 2, slotKey: '2026-07-21-diner', status: 'active' },
+      { cookedDishId: 7, dishName: 'Hachis Parmentier', portions: 2, slotKey: '2026-07-23-dejeuner', status: 'active' },
     ])
     // Le plat ne repart jamais aux courses.
     expect(plan.shoppingItems.some((item) => item.formNormalized === 'boeuf hache cuit' && item.grams > 100)).toBe(false)

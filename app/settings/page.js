@@ -22,6 +22,13 @@ export default function SettingsHome() {
             </span>
             <span className="v21-it-r">Configurer →</span>
           </Link>
+          <Link href="/settings/tastes" className="v21-it v21-link-row">
+            <span className="v21-it-main">
+              <span className="v21-it-name">Goûts de chacun</span>
+              <span className="v21-it-sub">Ce que chaque personne aime, évite ou refuse — aliments, plats, cuisines, textures — et le compromis du foyer</span>
+            </span>
+            <span className="v21-it-r">Répondre →</span>
+          </Link>
         </div>
       </section>
 

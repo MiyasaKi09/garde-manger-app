@@ -86,41 +86,64 @@ describe('cookingSessions — congélabilité et fenêtres (helpers déterminist
 })
 
 describe('generateClosedLoopPlan — capacité temporelle des sessions (audit P3 item 6)', () => {
-  const fourSlots = [
-    { key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner' },
-    { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner' },
-    { key: '2026-07-21-dejeuner', date: '2026-07-21', mealType: 'dejeuner' },
-    { key: '2026-07-21-diner', date: '2026-07-21', mealType: 'diner' },
-  ]
+  // Quatre journées complètes. Depuis les règles absolues de répétition (§3),
+  // deux consommations d'un même plat sont séparées d'au moins deux repas :
+  // un producteur du lundi midi ne peut couvrir que le mardi soir puis le
+  // jeudi midi. Il faut donc cette profondeur pour que le PLAFOND de session
+  // soit ce qui borne la stratégie, et non l'espacement.
+  const fourDaySlots = ['2026-07-20', '2026-07-21', '2026-07-22', '2026-07-23'].flatMap((date) => [
+    { key: `${date}-dejeuner`, date, mealType: 'dejeuner' },
+    { key: `${date}-diner`, date, mealType: 'diner' },
+  ])
+  // Recettes de remplissage : une par créneau frais, sans mutualisation
+  // possible (réchauffer coûte autant que cuisiner).
+  const fillers = ['FR-F01', 'FR-F02', 'FR-F03', 'FR-F04', 'FR-F05', 'FR-F06']
+    .map((code, index) => makeRecipe(code, `Plat ${index + 1}`, `legume ${index + 1} cuit`, { prepMinutes: 10 }))
 
-  it('borne la stratégie quand elle déborde : 50 min de cuisson + 5 min de portionnage par repas couvert ≤ 60', () => {
-    const longPrep = makeRecipe('FR-GRA', 'Gratin de courgettes', 'courgette cuite', { prepMinutes: 50 })
-    const plan = generateClosedLoopPlan({ slots: fourSlots, recipes: [longPrep], constraints: { allowShopping: true } })
-    // 3 consommateurs = 50 + 15 = 65 > 60 → borné à 2 (50 + 10 = 60).
-    expect(plan.slots[0].production.consumerSlotKeys).toEqual(['2026-07-20-diner', '2026-07-21-dejeuner'])
+  it('borne la stratégie quand elle déborde : 55 min de cuisson + 5 min de portionnage par repas couvert ≤ 60', () => {
+    const longPrep = makeRecipe('FR-GRA', 'Gratin de courgettes', 'courgette cuite', { prepMinutes: 55 })
+    const plan = generateClosedLoopPlan({
+      slots: fourDaySlots,
+      recipes: [longPrep, ...fillers],
+      constraints: { allowShopping: true },
+    })
+    // 2 consommateurs = 55 + 10 = 65 > 60 → borné à 1 (55 + 5 = 60).
+    expect(plan.slots[0].production.consumerSlotKeys).toEqual(['2026-07-21-diner'])
+  })
+
+  it('un plafond plus généreux laisse passer les deux consommateurs autorisés par l’espacement', () => {
+    const longPrep = makeRecipe('FR-GRA', 'Gratin de courgettes', 'courgette cuite', { prepMinutes: 55 })
+    const plan = generateClosedLoopPlan({
+      slots: fourDaySlots,
+      recipes: [longPrep, ...fillers],
+      constraints: { allowShopping: true, planning: { maxSessionActiveMinutes: 90 } },
+    })
+    // 55 + 10 = 65 ≤ 90 : les deux créneaux espacés sont couverts.
+    expect(plan.slots[0].production.consumerSlotKeys).toEqual(['2026-07-21-diner', '2026-07-23-dejeuner'])
   })
 
   it('respecte une préférence planning transmise par l’appelant (household preferences → constraints.planning)', () => {
     const longPrep = makeRecipe('FR-GRA', 'Gratin de courgettes', 'courgette cuite', { prepMinutes: 50 })
     const plan = generateClosedLoopPlan({
-      slots: fourSlots,
-      recipes: [longPrep],
+      slots: fourDaySlots,
+      recipes: [longPrep, ...fillers],
       constraints: { allowShopping: true, planning: { maxSessionActiveMinutes: 55 } },
     })
-    expect(plan.slots[0].production.consumerSlotKeys).toEqual(['2026-07-20-diner'])
+    expect(plan.slots[0].production.consumerSlotKeys).toEqual(['2026-07-21-diner'])
   })
 
   it('renonce à la production quand même un seul consommateur déborde — la cuisson fraîche n’est jamais bloquée', () => {
     const heavyPrep = makeRecipe('FR-GRA', 'Gratin de courgettes', 'courgette cuite', { prepMinutes: 58 })
     const plan = generateClosedLoopPlan({
-      slots: [fourSlots[0], fourSlots[1]],
-      recipes: [heavyPrep],
+      slots: [fourDaySlots[0], fourDaySlots[3]],
+      recipes: [heavyPrep, fillers[0]],
       constraints: { allowShopping: true },
     })
     // 58 + 5 = 63 > 60 (jour avec déjeuner) : aucune production, deux
     // cuissons fraîches publiées quand même.
     expect(plan.status).toBe('published')
-    expect(JSON.stringify(plan)).not.toContain('production')
+    expect(JSON.stringify(plan)).not.toContain('productionKey')
+    expect(plan.slots.every((slot) => slot.source === 'fresh')).toBe(true)
   })
 
   it('un jour sans déjeuner planifié laisse 90 min : la même stratégie redevient possible', () => {
@@ -128,13 +151,13 @@ describe('generateClosedLoopPlan — capacité temporelle des sessions (audit P3
     const plan = generateClosedLoopPlan({
       slots: [
         { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner' },
-        { key: '2026-07-21-diner', date: '2026-07-21', mealType: 'diner' },
+        { key: '2026-07-22-diner', date: '2026-07-22', mealType: 'diner' },
       ],
       recipes: [heavyPrep],
       constraints: { allowShopping: true },
     })
     // 58 + 5 = 63 ≤ 90 → production possible.
-    expect(plan.slots[0].production.consumerSlotKeys).toEqual(['2026-07-21-diner'])
+    expect(plan.slots[0].production.consumerSlotKeys).toEqual(['2026-07-22-diner'])
   })
 })
 
@@ -195,17 +218,22 @@ describe('generateClosedLoopPlan — congélation/décongélation (audit P3 item
     expect(JSON.parse(JSON.stringify(build()))).toEqual(JSON.parse(JSON.stringify(build())))
   })
 
-  it('sans information de congélabilité : PAS de congélation, recuisson fraîche (conservateur)', () => {
+  it('sans information de congélabilité : PAS de congélation ni de production (conservateur)', () => {
+    // Une recette n'étant cuisinée qu'une fois par semaine (§3), les créneaux
+    // hors fenêtre réfrigérateur reviennent à d'autres recettes au lieu d'être
+    // une recuisson du même plat.
+    const others = ['FR-O01', 'FR-O02', 'FR-O03']
+      .map((code, index) => makeRecipe(code, `Autre ${index + 1}`, `legume ${index + 1} cuit`, { prepMinutes: 10 }))
     const plan = generateClosedLoopPlan({
       slots: freezeSlots,
-      recipes: [GRATIN],
+      recipes: [GRATIN, ...others],
       inventoryLots: lots,
       constraints: { allowShopping: true },
     })
     expect(plan.status).toBe('published')
     expect(JSON.stringify(plan)).not.toContain('congelation')
-    expect(JSON.stringify(plan)).not.toContain('production')
-    expect(plan.slots[1].explanations).toContain('recipe_repeated')
+    expect(JSON.stringify(plan)).not.toContain('productionKey')
+    expect(plan.slots.every((slot) => slot.source === 'fresh')).toBe(true)
   })
 
   it('surproduction volontaire bornée (item 4) : +1 part foyer congelée pour la semaine suivante quand elle ne coûte rien de plus', () => {
