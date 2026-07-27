@@ -6,6 +6,7 @@ import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan, isMealSuitableRecipe, recipeDiversityProfile } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
+import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferences'
 import { selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidatePolicy'
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
 import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
@@ -229,6 +230,24 @@ function planningHistoryFrom(rows, recipes, windowStart) {
 }
 
 /**
+ * Profil de goûts du foyer (§5, lot 2). Les réponses sont individuelles ; le
+ * compromis se recalcule à chaque génération, jamais stocké — un profil
+ * modifié prend donc effet immédiatement.
+ *
+ * Repli SOUPLE : tant que la migration des goûts n'est pas appliquée, la
+ * lecture échoue et le moteur retombe sur les seules contraintes de compte
+ * (allergies, régimes, interdits). Jamais d'échec de génération pour ça.
+ */
+async function loadHouseholdTasteProfile(supabase, userId) {
+  const { data, error } = await supabase
+    .from('member_food_preferences')
+    .select('household_member_id, subject_type, subject_value, subject_label, appreciation, strict, repeat_delay_days')
+    .eq('user_id', userId)
+  if (error) return buildHouseholdTasteProfile([])
+  return buildHouseholdTasteProfile(data || [])
+}
+
+/**
  * Règles de répétition effectives (§3 : « Ces délais doivent être
  * configurables »). Trois sources, de la plus générale à la plus spécifique :
  * les valeurs par défaut du domaine, les préférences du foyer
@@ -410,10 +429,11 @@ export async function POST(request) {
     if (scope === 'days' && !selectedDays.size) return NextResponse.json({ error: 'Sélectionne au moins un jour' }, { status: 400 })
     if (scope === 'meals' && !selectedMeals.size) return NextResponse.json({ error: 'Sélectionne au moins un repas' }, { status: 400 })
 
-    const [membersResult, goalsResult, dietary] = await Promise.all([
+    const [membersResult, goalsResult, dietary, tasteProfile] = await Promise.all([
       supabase.from('household_members').select('id, name, portion_multiplier, preferences').eq('user_id', user.id).eq('active', true).order('created_at'),
       supabase.from('user_health_goals').select('person_name, target_calories, target_protein_g, target_carbs_g, target_fat_g, target_fiber_g').eq('user_id', user.id),
       fetchDietaryConstraints(supabase, user.id),
+      loadHouseholdTasteProfile(supabase, user.id),
     ])
     let members = membersResult.data || []
     if (!members.length) {
@@ -500,6 +520,7 @@ export async function POST(request) {
       maxMinutesByMeal: { dejeuner: 120, diner: 240 },
       preferredActiveMinutes: 30,
       recentRecipeTitles: recentRecipes.recentRecipeTitles,
+      tasteProfile,
     }
     const planOptions = {
       inventoryLots: plannerLots,
