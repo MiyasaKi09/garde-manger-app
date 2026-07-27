@@ -52,6 +52,18 @@ describe('mealOrdinal', () => {
     expect(mealOrdinal({ mealType: 'diner' })).toBeNull()
     expect(mealOrdinal(null)).toBeNull()
   })
+
+  it('ne mélange jamais positions absolues et positions de séquence', () => {
+    // Un créneau daté suivi d'un candidat sans date : si les deux bases se
+    // mélangeaient, l'écart calculé vaudrait des dizaines de milliers de repas
+    // et la règle de proximité ne se déclencherait plus jamais.
+    const violations = repetitionViolations({
+      plannedSlots: [{ key: 'a', date: '2026-07-20', mealType: 'dejeuner', recipeCode: 'CARBO' }],
+      recipeCode: 'CARBO',
+      source: MEAL_SOURCES.COOKED_DISH,
+    })
+    expect(violations.map((violation) => violation.code)).toContain('recipe_repeat_too_close')
+  })
 })
 
 describe('repetitionViolations — règles absolues (§3)', () => {
