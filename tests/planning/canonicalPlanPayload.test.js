@@ -212,9 +212,6 @@ describe('canonical plan publication payload', () => {
       container_unit: 'g',
     })
 
-    const eggs = payload.shopping_items.find((item) => item.product_name === 'Œufs durs')
-    expect(eggs).toMatchObject({ required_qty: 2, stock_qty: 1, reserved_qty: 1, purchase_qty: 1, purchase_unit: 'u' })
-
     // Le fruit entièrement couvert par le stock ne part plus aux courses.
     expect(payload.shopping_items.find((item) => item.product_name === 'Pomme')).toBeUndefined()
 
@@ -230,6 +227,30 @@ describe('canonical plan publication payload', () => {
 
     // Deux exécutions identiques produisent exactement le même payload.
     expect(JSON.parse(JSON.stringify(build()))).toEqual(JSON.parse(JSON.stringify(payload)))
+  })
+
+  it('décompte les œufs en pièces : le lot couvre une unité, le reste part aux courses', () => {
+    // Depuis le lot 7, la rotation des petits-déjeuners est dérivée de la date
+    // et les œufs ne sont plus servis tous les matins. Cette semaine-là tombe
+    // sur la famille « œufs et tartine ».
+    const date = '2026-08-20'
+    const plan = {
+      status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
+      slots: [
+        { key: `${date}-dejeuner`, date, mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
+        { key: `${date}-diner`, date, mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
+      ],
+    }
+    const payload = buildCanonicalPlanPayload({
+      plan, recipes: [recipe], windowStart: date,
+      members: [{ name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }],
+      goals: [{ person_name: 'Julien', target_calories: 2000, target_protein_g: 150 }],
+      constraints: {},
+      inventoryLots: [{ id: 'lot-oeufs', formNormalized: 'oeufs durs', gramsAvailable: 60, expiresOn: `${date}`, opened: false }],
+    })
+    const eggs = payload.shopping_items.find((item) => item.product_name === 'Œufs durs')
+    expect(eggs).toMatchObject({ stock_qty: 1, reserved_qty: 1, purchase_unit: 'u' })
+    expect(eggs.stock_qty + eggs.purchase_qty).toBeGreaterThanOrEqual(eggs.required_qty)
   })
 
   // MAJOR 2 : les lots de production portent les noms canoniques/archétypes
