@@ -5,9 +5,9 @@ import { describe, expect, it } from 'vitest'
 const corpus = JSON.parse(readFileSync(join(process.cwd(), 'data', 'recipes', 'corpus-v3.json'), 'utf8'))
 
 describe('corpus culinaire V3', () => {
-  it('contient les 302 plats réels et les graphes annoncés', () => {
+  it('contient les 309 plats réels et les graphes annoncés', () => {
     expect(corpus.corpus_version).toBe('v3-300-real-dishes')
-    expect(corpus.recipes).toHaveLength(302)
+    expect(corpus.recipes).toHaveLength(309)
     expect(corpus.food_form_graph).toHaveLength(727)
     expect(corpus.technique_graph).toHaveLength(351)
     expect(corpus.aroma_graph).toHaveLength(328)
@@ -32,7 +32,7 @@ describe('corpus culinaire V3', () => {
       acc[recipe.identity_level] = (acc[recipe.identity_level] || 0) + 1
       return acc
     }, {})
-    expect(counts).toEqual({ named_traditional_dish: 260, domestic_standard: 42 })
+    expect(counts).toEqual({ named_traditional_dish: 263, domestic_standard: 46 })
   })
 
   it('porte les règles sensorielles du planificateur', () => {

@@ -65262,6 +65262,1429 @@
         "gluten",
         "poisson"
       ]
+    },
+    {
+      "code": "PROT-001",
+      "family": "Cabillaud vapeur et dal de lentilles corail aux épinards",
+      "cuisine_origin": "Inde du Sud (Kerala) / adaptation domestique française",
+      "identity_level": "domestic_standard",
+      "category": "poisson",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 2,
+      "prep_minutes": 20,
+      "cook_minutes": 30,
+      "difficulty": "facile",
+      "sources": [
+        "kerala_meen_curry",
+        "dal_tadka_reference",
+        "ciqual_2020",
+        "myko_protein_density_2026"
+      ],
+      "canonical_arbitration": "Le dal reste le féculent du plat : aucune garniture de riz n'est ajoutée, la lentille corail apportant à la fois les glucides et une part des protéines. Le poisson cuit à la vapeur au-dessus du dal, jamais dedans, pour garder des lamelles nacrées.",
+      "ingredients": [
+        {
+          "form": "Dos de cabillaud cru",
+          "quantity": 500,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Lentille corail sèche, crue",
+          "quantity": 120,
+          "unit": "g",
+          "role": "légumineuse",
+          "optional": false
+        },
+        {
+          "form": "Épinard frais",
+          "quantity": 240,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Tomate fraîche mûre",
+          "quantity": 160,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 80,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Gingembre frais",
+          "quantity": 12,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 10,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Curcuma moulu",
+          "quantity": 3,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Cumin en graines",
+          "quantity": 3,
+          "unit": "g",
+          "role": "tadka",
+          "optional": false
+        },
+        {
+          "form": "Piment en poudre",
+          "quantity": 1.5,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Coriandre fraîche",
+          "quantity": 12,
+          "unit": "g",
+          "role": "herbe",
+          "optional": false
+        },
+        {
+          "form": "Jus de citron frais",
+          "quantity": 20,
+          "unit": "ml",
+          "role": "acidité",
+          "optional": false
+        },
+        {
+          "form": "Huile de colza raffinée",
+          "quantity": 6,
+          "unit": "ml",
+          "role": "tadka",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 4,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 1,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Rincer les lentilles corail à l'eau claire jusqu'à ce qu'elle sorte limpide. Les couvrir de trois fois leur volume d'eau avec le curcuma et une pincée de sel."
+        },
+        {
+          "n": 2,
+          "instruction": "Porter à frémissement, écumer, puis cuire 18 à 20 minutes à découvert : les lentilles doivent se défaire en une purée fluide, encore coulante."
+        },
+        {
+          "n": 3,
+          "instruction": "Pendant ce temps, tailler le cabillaud en gros tronçons, les saler légèrement et les laisser 10 minutes au frais avec la moitié du jus de citron."
+        },
+        {
+          "n": 4,
+          "instruction": "Faire chauffer l'huile de colza dans une petite poêle, y jeter les graines de cumin : dès qu'elles crépitent et embaument, ajouter l'oignon émincé, le gingembre et l'ail hachés. Faire blondir 5 minutes."
+        },
+        {
+          "n": 5,
+          "instruction": "Ajouter la tomate concassée grossièrement et le piment en poudre, laisser compoter 4 minutes, puis verser ce tadka dans les lentilles. Mélanger."
+        },
+        {
+          "n": 6,
+          "instruction": "Incorporer les épinards au dal encore chaud : ils tombent en une minute. Rectifier en sel et poivre."
+        },
+        {
+          "n": 7,
+          "instruction": "Poser les tronçons de cabillaud dans un panier vapeur au-dessus du dal frémissant, couvrir et cuire 7 à 9 minutes, jusqu'à 55–58 °C à cœur : la chair se sépare en lamelles nacrées."
+        },
+        {
+          "n": 8,
+          "instruction": "Dresser le dal en creux, poser le poisson dessus, arroser du reste de jus de citron et couvrir de coriandre ciselée."
+        }
+      ],
+      "techniques": [
+        "rinçage",
+        "tadka",
+        "compotage",
+        "cuisson vapeur",
+        "contrôle température"
+      ],
+      "variants": [
+        "Saint-pierre à la place du cabillaud (même temps de vapeur)",
+        "Lentille verte pour un dal moins fondant",
+        "Sans piment pour les enfants"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 2,
+          "pungency": 3,
+          "richness": 2,
+          "freshness": 4,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "épices chaudes",
+          "agrume",
+          "végétal"
+        ],
+        "aroma_families": [
+          "cumin_grillé",
+          "gingembre",
+          "ail",
+          "coriandre_fraîche",
+          "agrume"
+        ],
+        "target_textures": [
+          "poisson_lamellé",
+          "dal_fluide",
+          "épinard_fondant"
+        ],
+        "signature_ingredients": [
+          "Dos de cabillaud cru",
+          "Lentille corail sèche, crue",
+          "Épinard frais",
+          "Cumin en graines"
+        ],
+        "identity_guardrails": [
+          "poisson_cuit_vapeur_jamais_bouilli",
+          "tadka_indispensable",
+          "dal_reste_le_feculent_du_plat",
+          "pas_de_creme_ni_de_lait_de_coco"
+        ]
+      },
+      "conservation": "2 jours au réfrigérateur, dal et poisson séparés. Réchauffer le dal seul et remettre le poisson hors du feu. Congélation déconseillée pour le poisson vapeur.",
+      "allergens": [
+        "poisson"
+      ]
+    },
+    {
+      "code": "PROT-002",
+      "family": "Morue et pois chiches au four à la portugaise",
+      "cuisine_origin": "Portugal / Alentejo",
+      "identity_level": "named_traditional_dish",
+      "category": "plat complet",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 2,
+      "prep_minutes": 25,
+      "cook_minutes": 45,
+      "difficulty": "moyenne",
+      "sources": [
+        "bacalhau_com_grao_alentejo",
+        "cozinha_tradicional_portuguesa",
+        "ciqual_2020",
+        "myko_protein_density_2026"
+      ],
+      "canonical_arbitration": "Le bacalhau com grão se sert traditionnellement tiède, arrosé d'huile d'olive et de vinaigre. On garde le pois chiche comme unique féculent (pas de pomme de terre) et on limite l'huile à une cuillère, ajoutée crue en fin de cuisson pour qu'elle reste parfumée.",
+      "ingredients": [
+        {
+          "form": "Morue salée sèche",
+          "quantity": 260,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Pois chiche sec, cru",
+          "quantity": 112,
+          "unit": "g",
+          "role": "légumineuse",
+          "optional": false
+        },
+        {
+          "form": "Épinard frais",
+          "quantity": 240,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Tomate fraîche mûre",
+          "quantity": 200,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 120,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 16,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Huile d'olive vierge extra",
+          "quantity": 8,
+          "unit": "ml",
+          "role": "matière grasse",
+          "optional": false
+        },
+        {
+          "form": "Persil frais",
+          "quantity": 20,
+          "unit": "g",
+          "role": "herbe",
+          "optional": false
+        },
+        {
+          "form": "Feuille de laurier séchée",
+          "quantity": 2,
+          "unit": "u",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Paprika fumé",
+          "quantity": 4,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Vinaigre de vin rouge",
+          "quantity": 10,
+          "unit": "ml",
+          "role": "acidité",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 1,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Dessaler la morue 36 à 48 heures au réfrigérateur dans un grand volume d'eau froide, peau vers le haut, en changeant l'eau cinq à six fois. Goûter une miette avant de cuire : elle doit être franchement salée mais mangeable."
+        },
+        {
+          "n": 2,
+          "instruction": "La veille également, mettre les pois chiches à tremper dans trois fois leur volume d'eau froide."
+        },
+        {
+          "n": 3,
+          "instruction": "Égoutter les pois chiches, les cuire 50 à 60 minutes à petits bouillons avec le laurier et la moitié de l'oignon, sans sel. Réserver une louche d'eau de cuisson."
+        },
+        {
+          "n": 4,
+          "instruction": "Pocher la morue 8 minutes dans une eau frémissante non salée, jamais bouillante. L'égoutter, retirer peau et arêtes, l'effeuiller en gros pétales."
+        },
+        {
+          "n": 5,
+          "instruction": "Dans un plat à four, mêler les pois chiches égouttés, le reste de l'oignon émincé, l'ail en lamelles, la tomate en quartiers et le paprika fumé. Mouiller d'un peu d'eau de cuisson des pois chiches."
+        },
+        {
+          "n": 6,
+          "instruction": "Enfourner 20 minutes à 190 °C, puis ajouter les épinards et les pétales de morue, et poursuivre 8 minutes : le poisson doit être juste chaud, pas desséché."
+        },
+        {
+          "n": 7,
+          "instruction": "Hors du four, arroser d'huile d'olive crue et de vinaigre de vin rouge, poivrer, couvrir de persil grossièrement haché. Servir tiède."
+        }
+      ],
+      "techniques": [
+        "dessalage",
+        "trempage",
+        "pochage doux",
+        "cuisson au four",
+        "assaisonnement à cru"
+      ],
+      "variants": [
+        "Version froide en salada de bacalhau com grão",
+        "Œuf dur émietté au service",
+        "Haricot blanc à la place du pois chiche"
+      ],
+      "sensory": {
+        "profile": "smoky_sweet",
+        "scores": {
+          "sweet": 2,
+          "salty": 4,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 5,
+          "heat": 1,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 3,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "iodé",
+          "fumé",
+          "olive"
+        ],
+        "aroma_families": [
+          "morue_dessalée",
+          "paprika_fumé",
+          "ail",
+          "laurier",
+          "huile_d_olive"
+        ],
+        "target_textures": [
+          "morue_en_pétales",
+          "pois_chiche_fondant",
+          "épinard_fondant"
+        ],
+        "signature_ingredients": [
+          "Morue salée sèche",
+          "Pois chiche sec, cru",
+          "Huile d'olive vierge extra",
+          "Paprika fumé"
+        ],
+        "identity_guardrails": [
+          "dessalage_long_obligatoire",
+          "pois_chiche_unique_feculent",
+          "huile_ajoutee_a_cru",
+          "pas_de_creme"
+        ]
+      },
+      "conservation": "3 jours au réfrigérateur, encore meilleur le lendemain à température ambiante. Ne pas congeler après dessalage.",
+      "allergens": [
+        "poisson"
+      ]
+    },
+    {
+      "code": "PROT-005",
+      "family": "Murgh tandoori et dal palak",
+      "cuisine_origin": "Inde du Nord",
+      "identity_level": "named_traditional_dish",
+      "category": "volaille",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 40,
+      "difficulty": "moyenne",
+      "sources": [
+        "epicurious_indian",
+        "bbc_good_food"
+      ],
+      "canonical_arbitration": null,
+      "ingredients": [
+        {
+          "form": "Haut de cuisse de poulet cru, désossé, sans peau",
+          "quantity": 1150,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Yaourt nature",
+          "quantity": 100,
+          "unit": "g",
+          "role": "marinade",
+          "optional": false
+        },
+        {
+          "form": "Lentille corail sèche, crue",
+          "quantity": 225,
+          "unit": "g",
+          "role": "légumineuse",
+          "optional": false
+        },
+        {
+          "form": "Épinard frais",
+          "quantity": 350,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Tomate fraîche mûre",
+          "quantity": 100,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 70,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 12,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Gingembre frais",
+          "quantity": 15,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Cumin moulu",
+          "quantity": 4,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Coriandre moulue",
+          "quantity": 4,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Curcuma moulu",
+          "quantity": 3,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Paprika fumé",
+          "quantity": 4,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Piment d'Espelette moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Jus de citron frais",
+          "quantity": 40,
+          "unit": "ml",
+          "role": "acidité",
+          "optional": false
+        },
+        {
+          "form": "Coriandre fraîche",
+          "quantity": 20,
+          "unit": "g",
+          "role": "finition",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 8,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Entailler les hauts de cuisse, les mélanger au yaourt, à la moitié de l’ail et du gingembre râpés, au paprika fumé, au piment, à la moitié du cumin et au jus de citron. Saler et laisser mariner au moins 2 heures au frais."
+        },
+        {
+          "n": 2,
+          "instruction": "Rincer les lentilles corail, les couvrir de trois volumes d’eau avec le curcuma et laisser frémir 15 minutes à découvert jusqu’à ce qu’elles se défassent en purée légère."
+        },
+        {
+          "n": 3,
+          "instruction": "Dans une cocotte à sec et bien chaude, blondir l’oignon émincé, ajouter le reste d’ail et de gingembre, la coriandre moulue et le reste de cumin, puis la tomate concassée ; laisser compoter 5 minutes."
+        },
+        {
+          "n": 4,
+          "instruction": "Verser les lentilles dans la cocotte, ajouter les épinards par poignées et laisser tomber 5 minutes : le dal palak doit rester coulant, allonger d’un peu d’eau si nécessaire."
+        },
+        {
+          "n": 5,
+          "instruction": "Égoutter le poulet de sa marinade et le griller 6 à 7 minutes par face sur une grille très chaude (four position gril ou plancha), jusqu’à ce que les bords soient noircis et le cœur à 75 °C."
+        },
+        {
+          "n": 6,
+          "instruction": "Trancher le poulet, le poser sur le dal, parsemer de coriandre fraîche et servir avec un quartier de citron."
+        }
+      ],
+      "techniques": [
+        "marinade lactique",
+        "grillade",
+        "mijotage",
+        "tempérage des épices"
+      ],
+      "variants": [],
+      "sensory": {
+        "profile": "spicy_umami",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 3,
+          "pungency": 4,
+          "richness": 2,
+          "freshness": 3,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "épices grillées",
+          "yaourt acidulé",
+          "lentille terreuse"
+        ],
+        "aroma_families": [
+          "cumin",
+          "coriandre",
+          "gingembre",
+          "ail",
+          "paprika_fume",
+          "epinard"
+        ],
+        "target_textures": [
+          "chair_grillée",
+          "dal_crémeux",
+          "épinard_fondant"
+        ],
+        "signature_ingredients": [
+          "yaourt",
+          "paprika fumé",
+          "lentille corail"
+        ],
+        "identity_guardrails": [
+          "marinade_au_yaourt",
+          "cuisson_a_feu_vif",
+          "pas_de_creme"
+        ]
+      },
+      "conservation": "3 jours au réfrigérateur ; le dal se congèle 2 mois, le poulet se réchauffe à la poêle.",
+      "allergens": [
+        "lait"
+      ]
+    },
+    {
+      "code": "PROT-006",
+      "family": "Filet mignon de porc à la moutarde et lentilles vertes",
+      "cuisine_origin": "France (Bourgogne)",
+      "identity_level": "domestic_standard",
+      "category": "plat complet",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "difficulty": "facile",
+      "sources": [
+        "marmiton_poulet_moutarde",
+        "marmiton_top"
+      ],
+      "canonical_arbitration": null,
+      "ingredients": [
+        {
+          "form": "Filet mignon de porc cru",
+          "quantity": 1180,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Lentille verte sèche, crue",
+          "quantity": 228,
+          "unit": "g",
+          "role": "légumineuse",
+          "optional": false
+        },
+        {
+          "form": "Champignon de Paris frais",
+          "quantity": 320,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Haricot vert cru",
+          "quantity": 200,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Moutarde de Dijon",
+          "quantity": 35,
+          "unit": "g",
+          "role": "sauce",
+          "optional": false
+        },
+        {
+          "form": "Vin blanc sec",
+          "quantity": 100,
+          "unit": "ml",
+          "role": "déglaçage",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 70,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 10,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Estragon frais",
+          "quantity": 12,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Feuille de laurier séchée",
+          "quantity": 2,
+          "unit": "u",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 8,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Rincer les lentilles vertes, les couvrir largement d’eau froide avec le laurier et la moitié de l’oignon piqué, porter à frémissement et cuire 22 minutes sans saler ; saler en fin de cuisson et égoutter en gardant une louche de jus."
+        },
+        {
+          "n": 2,
+          "instruction": "Parer les filets mignons, les couper en médaillons épais, les poivrer et les saisir 2 minutes par face dans une sauteuse antiadhésive très chaude, sans matière grasse. Réserver."
+        },
+        {
+          "n": 3,
+          "instruction": "Dans la même sauteuse, faire suer le reste d’oignon ciselé et l’ail, ajouter les champignons émincés et les laisser rendre puis reprendre leur eau, 6 à 7 minutes."
+        },
+        {
+          "n": 4,
+          "instruction": "Déglacer au vin blanc, gratter les sucs, réduire de moitié puis lier hors du feu avec la moutarde et une louche de jus de lentilles — ne plus faire bouillir."
+        },
+        {
+          "n": 5,
+          "instruction": "Faire cuire les haricots verts 8 minutes à la vapeur, les garder fermes."
+        },
+        {
+          "n": 6,
+          "instruction": "Remettre les médaillons et leur jus dans la sauteuse, ajouter les lentilles et les haricots verts, réchauffer 3 minutes à couvert et finir à l’estragon ciselé."
+        }
+      ],
+      "techniques": [
+        "saisie à sec",
+        "déglaçage",
+        "réduction",
+        "liaison à la moutarde"
+      ],
+      "variants": [],
+      "sensory": {
+        "profile": "earthy_herbal",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 1,
+          "pungency": 3,
+          "richness": 2,
+          "freshness": 3,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "moutarde",
+          "lentille terreuse",
+          "estragon"
+        ],
+        "aroma_families": [
+          "moutarde",
+          "vin_blanc_reduit",
+          "champignon_terreux",
+          "estragon",
+          "oignon_compoté"
+        ],
+        "target_textures": [
+          "médaillon_nacré",
+          "lentille_ferme",
+          "haricot_croquant"
+        ],
+        "signature_ingredients": [
+          "moutarde de Dijon",
+          "estragon",
+          "lentille verte"
+        ],
+        "identity_guardrails": [
+          "moutarde_ajoutee_hors_du_feu",
+          "pas_de_creme",
+          "lentilles_non_ecrasees"
+        ]
+      },
+      "conservation": "3 jours au réfrigérateur ; réchauffer doucement pour ne pas trancher la moutarde.",
+      "allergens": [
+        "moutarde"
+      ]
+    },
+    {
+      "code": "PROT-007",
+      "family": "Tajine de veau aux lentilles corail et courgettes",
+      "cuisine_origin": "Maroc",
+      "identity_level": "named_traditional_dish",
+      "category": "plat mijoté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 95,
+      "difficulty": "facile",
+      "sources": [
+        "marmiton_couscous",
+        "simply_mediterranean"
+      ],
+      "canonical_arbitration": null,
+      "ingredients": [
+        {
+          "form": "Épaule de veau crue, en cubes",
+          "quantity": 1120,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Lentille corail sèche, crue",
+          "quantity": 225,
+          "unit": "g",
+          "role": "légumineuse",
+          "optional": false
+        },
+        {
+          "form": "Courgette fraîche",
+          "quantity": 400,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Tomate entière pelée en conserve",
+          "quantity": 250,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 80,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 12,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Gingembre frais",
+          "quantity": 12,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Cumin moulu",
+          "quantity": 4,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Curcuma moulu",
+          "quantity": 3,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Piment d'Espelette moulu",
+          "quantity": 1.5,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Zeste de citron",
+          "quantity": 10,
+          "unit": "g",
+          "role": "arôme",
+          "optional": false
+        },
+        {
+          "form": "Coriandre fraîche",
+          "quantity": 20,
+          "unit": "g",
+          "role": "finition",
+          "optional": false
+        },
+        {
+          "form": "Menthe fraîche",
+          "quantity": 10,
+          "unit": "g",
+          "role": "finition",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 8,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Colorer les cubes de veau à sec, par fournées, dans une cocotte en fonte bien chaude : la viande doit accrocher avant de se décoller d’elle-même."
+        },
+        {
+          "n": 2,
+          "instruction": "Ajouter l’oignon émincé, l’ail et le gingembre râpés, le cumin, le curcuma et le piment ; remuer 2 minutes pour réveiller les épices."
+        },
+        {
+          "n": 3,
+          "instruction": "Verser les tomates pelées écrasées à la main et 500 ml d’eau, saler, couvrir et laisser mijoter 70 minutes à petit feu jusqu’à ce que le veau se défasse à la cuillère."
+        },
+        {
+          "n": 4,
+          "instruction": "Ajouter les lentilles corail rincées et poursuivre 15 minutes à découvert : elles épaississent le bouillon en une sauce nappante."
+        },
+        {
+          "n": 5,
+          "instruction": "Déposer les courgettes en gros tronçons sur le dessus, couvrir et cuire 10 minutes de plus pour qu’elles restent fermes."
+        },
+        {
+          "n": 6,
+          "instruction": "Hors du feu, râper le zeste de citron et parsemer de coriandre et de menthe ciselées."
+        }
+      ],
+      "techniques": [
+        "saisie à sec",
+        "mijotage long",
+        "liaison aux légumineuses",
+        "cuisson étagée"
+      ],
+      "variants": [],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 2,
+          "pungency": 3,
+          "richness": 2,
+          "freshness": 3,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "cumin",
+          "agrume",
+          "veau confit"
+        ],
+        "aroma_families": [
+          "cumin",
+          "curcuma",
+          "gingembre",
+          "citron",
+          "menthe",
+          "tomate_cuite"
+        ],
+        "target_textures": [
+          "veau_effiloché",
+          "sauce_nappante",
+          "courgette_ferme"
+        ],
+        "signature_ingredients": [
+          "épaule de veau",
+          "lentille corail",
+          "zeste de citron"
+        ],
+        "identity_guardrails": [
+          "cuisson_lente_a_couvert",
+          "legumes_ajoutes_en_fin",
+          "pas_de_matiere_grasse_ajoutee"
+        ]
+      },
+      "conservation": "4 jours au réfrigérateur, meilleur réchauffé le lendemain ; se congèle 2 mois.",
+      "allergens": []
+    },
+    {
+      "code": "PROT-008",
+      "family": "Poulet rôti à la créole et haricots rouges",
+      "cuisine_origin": "Louisiane",
+      "identity_level": "domestic_standard",
+      "category": "volaille",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 75,
+      "difficulty": "moyenne",
+      "sources": [
+        "serious_global",
+        "allrecipes_world"
+      ],
+      "canonical_arbitration": null,
+      "ingredients": [
+        {
+          "form": "Poulet entier cru, prêt à cuire",
+          "quantity": 1200,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Haricot rouge sec",
+          "quantity": 220,
+          "unit": "g",
+          "role": "légumineuse",
+          "optional": false
+        },
+        {
+          "form": "Poivron vert frais",
+          "quantity": 180,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Céleri branche cru",
+          "quantity": 150,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Tomate entière pelée en conserve",
+          "quantity": 250,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 100,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 14,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Paprika fumé",
+          "quantity": 5,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Piment d'Espelette moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Thym frais",
+          "quantity": 6,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Feuille de laurier séchée",
+          "quantity": 2,
+          "unit": "u",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 9,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "La veille, mettre les haricots rouges à tremper dans un grand volume d’eau froide."
+        },
+        {
+          "n": 2,
+          "instruction": "Découper le poulet en huit morceaux, le frotter au paprika fumé, au piment, au poivre et au sel, et le laisser reposer 30 minutes à température ambiante."
+        },
+        {
+          "n": 3,
+          "instruction": "Égoutter les haricots, les couvrir d’eau fraîche avec le laurier et une branche de thym, porter à ébullition franche 10 minutes puis laisser cuire 50 minutes à petit bouillon ; saler à mi-cuisson."
+        },
+        {
+          "n": 4,
+          "instruction": "Dans une cocotte allant au four, faire suer à sec l’oignon, le poivron et le céleri taillés en petits dés (la « sainte trinité ») jusqu’à ce qu’ils rendent leur eau, puis ajouter l’ail et les tomates pelées écrasées."
+        },
+        {
+          "n": 5,
+          "instruction": "Ajouter les haricots égouttés avec une louche de leur cuisson, poser les morceaux de poulet peau vers le haut sur ce lit et enfourner à 200 °C, à découvert, 40 minutes : la peau caramélise pendant que les haricots absorbent le jus."
+        },
+        {
+          "n": 6,
+          "instruction": "Sortir la cocotte, effeuiller le reste du thym sur le plat et laisser reposer 10 minutes avant de servir."
+        }
+      ],
+      "techniques": [
+        "rub sec",
+        "suée à sec",
+        "braisage au four",
+        "rôtissage"
+      ],
+      "variants": [],
+      "sensory": {
+        "profile": "smoky_sweet",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 3,
+          "pungency": 3,
+          "richness": 3,
+          "freshness": 2,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "paprika fumé",
+          "poivron",
+          "haricot rouge"
+        ],
+        "aroma_families": [
+          "paprika_fume",
+          "thym",
+          "poivron",
+          "celeri",
+          "oignon_compoté",
+          "laurier"
+        ],
+        "target_textures": [
+          "peau_dorée",
+          "haricot_fondant",
+          "trinité_croquante"
+        ],
+        "signature_ingredients": [
+          "sainte trinité",
+          "paprika fumé",
+          "haricot rouge"
+        ],
+        "identity_guardrails": [
+          "trinite_oignon_poivron_celeri",
+          "pas_de_roux",
+          "cuisson_a_decouvert"
+        ]
+      },
+      "conservation": "3 jours au réfrigérateur ; les haricots se congèlent 2 mois, le poulet se réchauffe au four.",
+      "allergens": [
+        "céleri"
+      ]
+    },
+    {
+      "code": "PROT-009",
+      "family": "Jarret de bœuf braisé aux lentilles vertes et aux épinards, moutarde et thym",
+      "cuisine_origin": "France / Auvergne — cuisine domestique",
+      "identity_level": "domestic_standard",
+      "category": "plat mijoté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 30,
+      "cook_minutes": 165,
+      "difficulty": "moyenne",
+      "sources": [
+        "ciqual_2020",
+        "myko_corpus_proteique",
+        "tradition_lentilles_du_puy"
+      ],
+      "canonical_arbitration": "Version canonique haute densité protéique : le jarret est saisi À SEC dans une cocotte en fonte brûlante (le collagène et le gras intramusculaire suffisent), aucune matière grasse ajoutée. Les lentilles cuisent DANS le braisage et tiennent lieu de féculent : ni pommes de terre ni pain à côté.",
+      "ingredients": [
+        {
+          "form": "Jarret de bœuf cru, avec os",
+          "quantity": 1300,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Lentille verte sèche, crue",
+          "quantity": 230,
+          "unit": "g",
+          "role": "légumineuse",
+          "optional": false
+        },
+        {
+          "form": "Épinard frais",
+          "quantity": 500,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Champignon de Paris frais",
+          "quantity": 300,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 90,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 16,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Moutarde de Dijon",
+          "quantity": 24,
+          "unit": "g",
+          "role": "condiment",
+          "optional": false
+        },
+        {
+          "form": "Vin blanc sec",
+          "quantity": 120,
+          "unit": "ml",
+          "role": "déglaçage",
+          "optional": false
+        },
+        {
+          "form": "Thym frais",
+          "quantity": 5,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Feuille de laurier séchée",
+          "quantity": 2,
+          "unit": "u",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Eau",
+          "quantity": 800,
+          "unit": "ml",
+          "role": "liquide de braisage",
+          "optional": false
+        },
+        {
+          "form": "Vinaigre de vin rouge",
+          "quantity": 12,
+          "unit": "ml",
+          "role": "acidité",
+          "optional": false
+        },
+        {
+          "form": "Persil frais",
+          "quantity": 25,
+          "unit": "g",
+          "role": "finition",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 8,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": true
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 3,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": true
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Détailler le jarret en gros tronçons de 4–5 cm en gardant les os. Éponger soigneusement la viande : une surface humide ne colore pas."
+        },
+        {
+          "n": 2,
+          "instruction": "Chauffer une cocotte en fonte à vide jusqu'à ce qu'une goutte d'eau y danse. Saisir les morceaux à sec, en deux fournées, 4 minutes par face sans les bouger : le jarret relâche assez de gras pour dorer seul. Réserver."
+        },
+        {
+          "n": 3,
+          "instruction": "Jeter l'oignon émincé dans la graisse rendue, gratter les sucs, ajouter l'ail écrasé et le thym, cuire 3 minutes."
+        },
+        {
+          "n": 4,
+          "instruction": "Déglacer au vin blanc, laisser réduire de moitié, puis remettre la viande et les os. Ajouter l'eau, le laurier, couvrir et braiser à 150 °C pendant 1 h 45."
+        },
+        {
+          "n": 5,
+          "instruction": "Ajouter les lentilles vertes rincées (elles doivent être immergées ; compléter d'un peu d'eau chaude si besoin) et poursuivre 35 à 40 minutes à couvert, jusqu'à ce qu'elles soient tendres mais entières."
+        },
+        {
+          "n": 6,
+          "instruction": "Poêler les champignons émincés à sec dans une poêle très chaude jusqu'à évaporation complète de leur eau et coloration, puis les verser dans la cocotte."
+        },
+        {
+          "n": 7,
+          "instruction": "Retirer les os. Délayer la moutarde dans une louche de jus chaud (jamais en plein bouillon, elle tournerait amère) et la reverser dans la cocotte hors du feu."
+        },
+        {
+          "n": 8,
+          "instruction": "Ajouter les épinards par poignées : ils tombent en 2 minutes dans le jus brûlant. Réveiller au vinaigre de vin rouge, poivrer, saler seulement à ce moment, parsemer de persil et servir."
+        }
+      ],
+      "techniques": [
+        "saisie à sec",
+        "déglaçage",
+        "braisage",
+        "cuisson des légumineuses dans le braisage",
+        "liaison à la moutarde hors du feu"
+      ],
+      "variants": [
+        "Lentilles corail à la place des vertes pour une texture plus liée",
+        "Chou frisé à la place des épinards",
+        "Version cocotte-minute : 45 min sous pression puis 15 min lentilles"
+      ],
+      "sensory": {
+        "profile": "earthy_herbal",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 5,
+          "heat": 0,
+          "pungency": 3,
+          "richness": 3,
+          "freshness": 2,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "umami",
+          "terreux",
+          "rôti",
+          "herbacé"
+        ],
+        "aroma_families": [
+          "bœuf",
+          "oignon_compoté",
+          "thym",
+          "laurier",
+          "moutarde",
+          "champignon_terreux"
+        ],
+        "target_textures": [
+          "viande_fondante",
+          "légumes_tendres",
+          "sauce_courte"
+        ],
+        "signature_ingredients": [
+          "Jarret de bœuf cru, avec os",
+          "Lentille verte sèche, crue",
+          "Moutarde de Dijon",
+          "Épinard frais"
+        ],
+        "identity_guardrails": [
+          "conserver_les_ingrédients_signatures",
+          "conserver_la_technique_centrale",
+          "ne_pas_remplacer_par_un_simple_équivalent_nutritionnel",
+          "cuisson_longue",
+          "pas_de_crème",
+          "lentilles_cuites_dans_le_braisage"
+        ]
+      },
+      "conservation": "4 jours au réfrigérateur ; 3 mois au congélateur sans les épinards (les ajouter au réchauffage). Meilleur le lendemain, le jus prend en gelée grâce au collagène du jarret.",
+      "allergens": [
+        "moutarde"
+      ]
     }
   ]
 }
