@@ -1,7 +1,7 @@
 Output format is unaligned.
 Pager usage is off.
 # Schéma PostgreSQL (public)
-_Généré le : Fri Jul 24 22:23:02 UTC 2026_
+_Généré le : Mon Jul 27 16:11:53 UTC 2026_
 
 ## Tables
 - _backup_views
@@ -1380,20 +1380,20 @@ _Généré le : Fri Jul 24 22:23:02 UTC 2026_
  - pantry_items.user_id → legacy_users.id  (constraint pantry_items_user_id_fkey)
  - pantry_items.product_id → products.id  (constraint pantry_items_product_id_fkey)
  - plan_regen_requests.import_id → nutrition_plan_imports.id  (constraint plan_regen_requests_import_id_fkey)
- - planned_consumptions.slot_id → meal_plan_slots.id  (constraint planned_consumptions_slot_id_fkey)
- - planned_consumptions.plan_version_id → meal_plan_versions.id  (constraint planned_consumptions_plan_version_id_fkey)
  - planned_consumptions.planned_production_id → planned_productions.id  (constraint planned_consumptions_planned_production_id_fkey)
  - planned_consumptions.cooked_dish_id → cooked_dishes.id  (constraint planned_consumptions_cooked_dish_id_fkey)
  - planned_consumptions.lot_id → inventory_lots.id  (constraint planned_consumptions_lot_id_fkey)
+ - planned_consumptions.plan_version_id → meal_plan_versions.id  (constraint planned_consumptions_plan_version_id_fkey)
+ - planned_consumptions.slot_id → meal_plan_slots.id  (constraint planned_consumptions_slot_id_fkey)
  - planned_demands.recipe_execution_id → recipe_executions.id  (constraint planned_demands_recipe_execution_id_fkey)
- - planned_demands.slot_id → meal_plan_slots.id  (constraint planned_demands_slot_id_fkey)
  - planned_demands.plan_version_id → meal_plan_versions.id  (constraint planned_demands_plan_version_id_fkey)
  - planned_demands.household_member_id → household_members.id  (constraint planned_demands_household_member_id_fkey)
+ - planned_demands.slot_id → meal_plan_slots.id  (constraint planned_demands_slot_id_fkey)
  - planned_meals.plan_id → meal_plans.id  (constraint planned_meals_plan_id_fkey)
  - planned_meals.recipe_id → recipes.id  (constraint planned_meals_recipe_id_fkey)
- - planned_productions.source_task_id → nutrition_plan_prep_tasks.id  (constraint planned_productions_source_task_id_fkey)
  - planned_productions.recipe_execution_id → recipe_executions.id  (constraint planned_productions_recipe_execution_id_fkey)
  - planned_productions.materialized_cooked_dish_id → cooked_dishes.id  (constraint planned_productions_materialized_cooked_dish_id_fkey)
+ - planned_productions.source_task_id → nutrition_plan_prep_tasks.id  (constraint planned_productions_source_task_id_fkey)
  - planned_productions.plan_version_id → meal_plan_versions.id  (constraint planned_productions_plan_version_id_fkey)
  - prep_task_dependencies.depends_on_task_id → nutrition_plan_prep_tasks.id  (constraint prep_task_dependencies_depends_on_task_id_fkey)
  - prep_task_dependencies.task_id → nutrition_plan_prep_tasks.id  (constraint prep_task_dependencies_task_id_fkey)
@@ -1408,16 +1408,16 @@ _Généré le : Fri Jul 24 22:23:02 UTC 2026_
  - recipe_pairings.main_recipe_id → recipes.id  (constraint recipe_pairings_main_recipe_id_fkey)
  - recipe_pairings.side_recipe_id → recipes.id  (constraint recipe_pairings_side_recipe_id_fkey)
  - recipe_steps.recipe_id → recipes.id  (constraint recipe_steps_recipe_id_fkey)
- - recipe_tags.recipe_id → recipes.id  (constraint recipe_tags_recipe_id_fkey)
  - recipe_tags.tag_id → tags.id  (constraint recipe_tags_tag_id_fkey)
+ - recipe_tags.recipe_id → recipes.id  (constraint recipe_tags_recipe_id_fkey)
  - reference_subcategories.category_id → reference_categories.id  (constraint reference_subcategories_category_id_fkey)
  - seasonality.food_id → canonical_foods.id  (constraint seasonality_food_id_fkey)
  - user_allergies.canonical_food_id → canonical_foods.id  (constraint user_allergies_canonical_food_id_fkey)
  - user_diets.diet_id → diets.id  (constraint user_diets_diet_id_fkey)
  - user_food_bans.canonical_food_id → canonical_foods.id  (constraint user_food_bans_canonical_food_id_fkey)
  - user_health_goals.household_member_id → household_members.id  (constraint user_health_goals_household_member_id_fkey)
- - user_recipe_interactions.recipe_id → recipes.id  (constraint user_recipe_interactions_recipe_id_fkey)
  - user_recipe_interactions.user_id → legacy_users.id  (constraint user_recipe_interactions_user_id_fkey)
+ - user_recipe_interactions.recipe_id → recipes.id  (constraint user_recipe_interactions_recipe_id_fkey)
  - waste_prevention_log.lot_id → inventory_lots.id  (constraint waste_prevention_log_lot_id_fkey)
  - weight_entries.household_member_id → household_members.id  (constraint weight_entries_household_member_id_fkey)
 
