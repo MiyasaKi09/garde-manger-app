@@ -159,6 +159,19 @@ async function loadExistingImport(supabase, userId, importId) {
 // « jamais vu ».
 const HISTORY_WINDOW_DAYS = 56
 
+// Avertissements de diversité remontés à l'appelant même sans sévérité
+// bloquante : ils expliquent une semaine moins variée que d'habitude.
+const DIVERSITY_WARNING_CODES = new Set([
+  'previous_week_recipe_reuse_fallback',
+  'cuisine_cluster',
+  'sensory_profile_cluster',
+  'recipe_returned_too_soon',
+  'recipe_family_returned_too_soon',
+  'protein_returned_too_soon',
+  'starch_returned_too_soon',
+  'cuisine_returned_too_soon',
+])
+
 async function loadRecentRecipeUsage(supabase, windowStart) {
   const previousWeekStart = addDays(windowStart, -7)
   const { data, error } = await supabase
@@ -581,9 +594,14 @@ export async function POST(request) {
         repetition_violations: plan.objectiveScores.repetitionViolations,
         familiarity: plan.objectiveScores.familiarity,
       },
-      // Les règles franchies sont nommées : l'interface peut expliquer
-      // pourquoi la semaine demande une revue au lieu d'afficher un échec nu.
-      issues: (plan.issues || []).filter((issue) => ['blocker', 'error'].includes(issue.severity)),
+      // Les règles franchies sont nommées, avec leur libellé français : la
+      // page peut expliquer pourquoi la semaine demande une revue au lieu
+      // d'afficher un échec nu. On repart des issues du PAYLOAD, déjà
+      // normalisées et traduites. Les avertissements de diversité remontent
+      // aussi — le lot 0 exige un avertissement EXPLICITE quand un repli a
+      // réduit la variété, et celui-ci ne porte qu'une sévérité `warning`.
+      issues: (payload.issues || []).filter((issue) => ['blocker', 'error'].includes(issue.severity)
+        || DIVERSITY_WARNING_CODES.has(issue.code)),
     })
   } catch (error) {
     console.error('[Planning V3]', error)

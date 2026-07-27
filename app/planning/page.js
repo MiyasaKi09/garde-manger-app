@@ -174,7 +174,10 @@ export default function PlanningPage() {
       setReloadKey((value) => value + 1)
       setRepairStatus('idle')
       if (data.status === 'review_required') {
-        toast.warning('Semaine recalculée, mais une revue nutritionnelle reste nécessaire')
+        // La cause n'est plus seulement nutritionnelle : depuis le lot 0, une
+        // règle de répétition franchie place aussi la semaine en revue. On
+        // affiche donc la première raison réellement remontée par le moteur.
+        toast.warning(data.issues?.[0]?.message || 'Semaine recalculée, mais une revue reste nécessaire')
       } else {
         toast.success('Semaine recalculée : les repas non verrouillés ont été remplacés')
       }
@@ -229,7 +232,10 @@ export default function PlanningPage() {
       setModifyOpen(false)
       const recalculated = data.summary?.changed ?? data.summary?.personalized_meals ?? 14
       if (data.status === 'review_required') {
-        toast.warning(`${recalculated} repas recalculés — semaine à revoir avant exécution`)
+        const reason = data.issues?.[0]?.message
+        toast.warning(reason
+          ? `${recalculated} repas recalculés — ${reason}`
+          : `${recalculated} repas recalculés — semaine à revoir avant exécution`)
       } else {
         toast.success(`${recalculated} repas recalculés avec les règles du foyer`)
       }
