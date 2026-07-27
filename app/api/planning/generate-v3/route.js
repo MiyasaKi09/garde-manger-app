@@ -6,6 +6,9 @@ import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan, isMealSuitableRecipe, recipeDiversityProfile } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
+import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferences'
+import { explainWeek, previewInputs } from '@/lib/domain/planning/planExplanation'
+import { checkPlanInvariants } from '@/lib/domain/planning/planInvariants'
 import { selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidatePolicy'
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
 import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
@@ -229,6 +232,24 @@ function planningHistoryFrom(rows, recipes, windowStart) {
 }
 
 /**
+ * Profil de goûts du foyer (§5, lot 2). Les réponses sont individuelles ; le
+ * compromis se recalcule à chaque génération, jamais stocké — un profil
+ * modifié prend donc effet immédiatement.
+ *
+ * Repli SOUPLE : tant que la migration des goûts n'est pas appliquée, la
+ * lecture échoue et le moteur retombe sur les seules contraintes de compte
+ * (allergies, régimes, interdits). Jamais d'échec de génération pour ça.
+ */
+async function loadHouseholdTasteProfile(supabase, userId) {
+  const { data, error } = await supabase
+    .from('member_food_preferences')
+    .select('household_member_id, subject_type, subject_value, subject_label, appreciation, strict, repeat_delay_days')
+    .eq('user_id', userId)
+  if (error) return buildHouseholdTasteProfile([])
+  return buildHouseholdTasteProfile(data || [])
+}
+
+/**
  * Règles de répétition effectives (§3 : « Ces délais doivent être
  * configurables »). Trois sources, de la plus générale à la plus spécifique :
  * les valeurs par défaut du domaine, les préférences du foyer
@@ -410,10 +431,11 @@ export async function POST(request) {
     if (scope === 'days' && !selectedDays.size) return NextResponse.json({ error: 'Sélectionne au moins un jour' }, { status: 400 })
     if (scope === 'meals' && !selectedMeals.size) return NextResponse.json({ error: 'Sélectionne au moins un repas' }, { status: 400 })
 
-    const [membersResult, goalsResult, dietary] = await Promise.all([
+    const [membersResult, goalsResult, dietary, tasteProfile] = await Promise.all([
       supabase.from('household_members').select('id, name, portion_multiplier, preferences').eq('user_id', user.id).eq('active', true).order('created_at'),
       supabase.from('user_health_goals').select('person_name, target_calories, target_protein_g, target_carbs_g, target_fat_g, target_fiber_g').eq('user_id', user.id),
       fetchDietaryConstraints(supabase, user.id),
+      loadHouseholdTasteProfile(supabase, user.id),
     ])
     let members = membersResult.data || []
     if (!members.length) {
@@ -500,6 +522,7 @@ export async function POST(request) {
       maxMinutesByMeal: { dejeuner: 120, diner: 240 },
       preferredActiveMinutes: 30,
       recentRecipeTitles: recentRecipes.recentRecipeTitles,
+      tasteProfile,
     }
     const planOptions = {
       inventoryLots: plannerLots,
@@ -549,6 +572,26 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Aucun planning sûr ne satisfait les contraintes du foyer', issues: plan.issues }, { status: 422 })
     }
 
+    // Aperçu avant publication (§16, lot 8) : la semaine est calculée et
+    // expliquée, mais RIEN n'est écrit. Aucune version publiée, aucune
+    // réservation posée — l'utilisateur voit ce qu'il obtiendrait.
+    if (body.preview === true) {
+      return NextResponse.json({
+        ok: true,
+        preview: true,
+        status: plan.status,
+        before: previewInputs({
+          slots,
+          cookedDishes,
+          inventoryLots: plannerLots,
+          tasteProfile,
+          history,
+          today: windowStart,
+        }),
+        after: explainWeek(plan, { history }),
+      })
+    }
+
     const payload = buildCanonicalPlanPayload({
       plan, recipes: allRecipes, members, goals: goalsResult.data || [], windowStart, constraints, inventoryLots: plannerLots,
       existingReservations,
@@ -571,6 +614,21 @@ export async function POST(request) {
       corpusVersion: operationalCatalog.metadata.corpusVersion,
       householdTimeZone,
     })
+    // Dernier garde-fou avant publication (§17, lot 9). Les règles de
+    // répétition sont déjà vérifiées par le moteur ; on contrôle ici la
+    // cohérence STRUCTURELLE — chaque portion a une source, aucune consommation
+    // ne précède sa production, aucun lot périmé n'est servi, aucun repas déjà
+    // consommé n'est réécrit. Une incohérence ici est un défaut du moteur, pas
+    // une semaine à revoir : on refuse d'écrire.
+    const structural = checkPlanInvariants(plan, { expectedSlotCount: slots.length, slotStates: existing.slotStates })
+    if (structural.length) {
+      const failure = new Error('Le planning calculé est structurellement incohérent et n’a pas été publié')
+      failure.code = 'plan_invariant_violation'
+      failure.status = 500
+      failure.details = { violations: structural.slice(0, 10) }
+      throw failure
+    }
+
     if (existing.planImport) payload.import_id = existing.planImport.id
     const { data, error } = await supabase.rpc('publish_canonical_final_demand_plan', { p_payload: payload })
     if (error) throw new Error(error.message)
@@ -594,6 +652,8 @@ export async function POST(request) {
         repetition_violations: plan.objectiveScores.repetitionViolations,
         familiarity: plan.objectiveScores.familiarity,
       },
+      // Explication des choix, repas par repas (§10, §16).
+      explanation: explainWeek({ ...plan, issues: payload.issues }, { history }),
       // Les règles franchies sont nommées, avec leur libellé français : la
       // page peut expliquer pourquoi la semaine demande une revue au lieu
       // d'afficher un échec nu. On repart des issues du PAYLOAD, déjà

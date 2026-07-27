@@ -72,9 +72,16 @@ const NEW_VERSIONS = new Set([
   '20260716111718',
   '20260716152121',
   '20260716162509',
+  '20260727120000',
 ]);
 
 const NEW_EXPECTED_OBJECTS = {
+  '20260727120000': [
+    { type: 'table', schema: 'public', name: 'member_food_preferences' },
+    { type: 'table', schema: 'public', name: 'meal_feedback' },
+    { type: 'policy', schema: 'public', name: 'mfp_select_own', table: 'member_food_preferences' },
+    { type: 'policy', schema: 'public', name: 'mfb_select_own', table: 'meal_feedback' },
+  ],
   '20260715090001': [
     { type: 'function', schema: 'culinary', name: 'family_has_published_version' },
     { type: 'trigger', schema: 'culinary', name: 'trg_recipe_variation_axes_immutable', table: 'recipe_variation_axes' },
