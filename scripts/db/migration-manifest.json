@@ -1290,9 +1290,32 @@
     "name": "member_taste_preferences",
     "sha256": "05ad406d8101e1f67f568e4f166ff893d68ec02ad8a6b2be77ba6f359498b803",
     "role": "apply",
-    "baseline": "trust",
+    "baseline": "new",
     "historical_version": null,
-    "expected_objects": []
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "member_food_preferences"
+      },
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "meal_feedback"
+      },
+      {
+        "type": "policy",
+        "schema": "public",
+        "name": "mfp_select_own",
+        "table": "member_food_preferences"
+      },
+      {
+        "type": "policy",
+        "schema": "public",
+        "name": "mfb_select_own",
+        "table": "meal_feedback"
+      }
+    ]
   },
   {
     "file": "20260727120000_member_taste_preferences_rollback.sql",
