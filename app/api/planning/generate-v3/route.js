@@ -7,6 +7,8 @@ import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan, isMealSuitableRecipe, recipeDiversityProfile } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
 import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferences'
+import { explainWeek, previewInputs } from '@/lib/domain/planning/planExplanation'
+import { checkPlanInvariants } from '@/lib/domain/planning/planInvariants'
 import { selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidatePolicy'
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
 import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
@@ -570,6 +572,26 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Aucun planning sûr ne satisfait les contraintes du foyer', issues: plan.issues }, { status: 422 })
     }
 
+    // Aperçu avant publication (§16, lot 8) : la semaine est calculée et
+    // expliquée, mais RIEN n'est écrit. Aucune version publiée, aucune
+    // réservation posée — l'utilisateur voit ce qu'il obtiendrait.
+    if (body.preview === true) {
+      return NextResponse.json({
+        ok: true,
+        preview: true,
+        status: plan.status,
+        before: previewInputs({
+          slots,
+          cookedDishes,
+          inventoryLots: plannerLots,
+          tasteProfile,
+          history,
+          today: windowStart,
+        }),
+        after: explainWeek(plan, { history }),
+      })
+    }
+
     const payload = buildCanonicalPlanPayload({
       plan, recipes: allRecipes, members, goals: goalsResult.data || [], windowStart, constraints, inventoryLots: plannerLots,
       existingReservations,
@@ -592,6 +614,21 @@ export async function POST(request) {
       corpusVersion: operationalCatalog.metadata.corpusVersion,
       householdTimeZone,
     })
+    // Dernier garde-fou avant publication (§17, lot 9). Les règles de
+    // répétition sont déjà vérifiées par le moteur ; on contrôle ici la
+    // cohérence STRUCTURELLE — chaque portion a une source, aucune consommation
+    // ne précède sa production, aucun lot périmé n'est servi, aucun repas déjà
+    // consommé n'est réécrit. Une incohérence ici est un défaut du moteur, pas
+    // une semaine à revoir : on refuse d'écrire.
+    const structural = checkPlanInvariants(plan, { expectedSlotCount: slots.length, slotStates: existing.slotStates })
+    if (structural.length) {
+      const failure = new Error('Le planning calculé est structurellement incohérent et n’a pas été publié')
+      failure.code = 'plan_invariant_violation'
+      failure.status = 500
+      failure.details = { violations: structural.slice(0, 10) }
+      throw failure
+    }
+
     if (existing.planImport) payload.import_id = existing.planImport.id
     const { data, error } = await supabase.rpc('publish_canonical_final_demand_plan', { p_payload: payload })
     if (error) throw new Error(error.message)
@@ -615,6 +652,8 @@ export async function POST(request) {
         repetition_violations: plan.objectiveScores.repetitionViolations,
         familiarity: plan.objectiveScores.familiarity,
       },
+      // Explication des choix, repas par repas (§10, §16).
+      explanation: explainWeek({ ...plan, issues: payload.issues }, { history }),
       // Les règles franchies sont nommées, avec leur libellé français : la
       // page peut expliquer pourquoi la semaine demande une revue au lieu
       // d'afficher un échec nu. On repart des issues du PAYLOAD, déjà
