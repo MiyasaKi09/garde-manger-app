@@ -14,7 +14,8 @@ import { selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidateP
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
 import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
 import { SUPPLEMENT_FORMS } from '@/lib/domain/planning/personalizedMeals'
-import { resolveHouseholdTimeZone, zonedDateTimeToUtc } from '@/lib/domain/planning/planningTime'
+import { resolveHouseholdTimeZone } from '@/lib/domain/planning/planningTime'
+import { slotProtectionState } from '@/lib/domain/planning/slotProtection'
 
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
@@ -101,28 +102,6 @@ async function ensurePlanningSchema(supabase) {
   }
 }
 
-function slotProtectionState(slot, meals, tasks, now = new Date(), timeZone = 'Europe/Paris') {
-  const slotMeals = meals.filter((meal) => meal.meal_plan_slot_id === slot.id)
-  const slotTasks = tasks.filter((task) => task.meal_plan_slot_id === slot.id)
-  const localServiceTime = {
-    pdj: '08:00:00',
-    dejeuner: '12:30:00',
-    collation: '16:30:00',
-    diner: '19:30:00',
-  }[slot.meal_type] || '12:30:00'
-  const serviceAt = zonedDateTimeToUtc(slot.meal_date, localServiceTime, timeZone)
-  const within48Hours = serviceAt.getTime() <= now.getTime() + 48 * 60 * 60 * 1000
-  const consumed = ['consumed', 'completed', 'cooked', 'skipped'].includes(slot.status)
-    || slotTasks.some((task) => task.done === true || task.workflow_status === 'done')
-  const locked = Boolean(slot.locked) || slotMeals.some((meal) => meal.locked)
-  return {
-    status: slot.status || 'planned',
-    locked,
-    consumed,
-    protected: consumed || locked || within48Hours,
-    protection_reason: consumed ? 'consumed' : locked ? 'locked' : within48Hours ? 'within_48_hours' : null,
-  }
-}
 
 async function loadExistingImport(supabase, userId, importId) {
   if (!importId) return { planImport: null, slots: [], meals: [], tasks: [], slotStates: {}, activePlanVersionId: null }
@@ -452,7 +431,7 @@ export async function POST(request) {
     }
     existing.slotStates = Object.fromEntries(existing.slots.map((slot) => [
       slot.slot_key,
-      slotProtectionState(slot, existing.meals, existing.tasks, new Date(), householdTimeZone),
+      slotProtectionState(slot, existing.meals, existing.tasks),
     ]))
     const recentRecipes = await loadRecentRecipeUsage(supabase, windowStart)
     const goalNames = new Set((goalsResult.data || []).map((goal) => fold(goal.person_name)).filter(Boolean))
