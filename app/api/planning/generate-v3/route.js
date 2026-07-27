@@ -6,6 +6,7 @@ import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan, isMealSuitableRecipe, recipeDiversityProfile } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
+import { buildWeeklyBalance } from '@/lib/domain/planning/weeklyBalance'
 import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferences'
 import { explainWeek, previewInputs } from '@/lib/domain/planning/planExplanation'
 import { discoveryTarget } from '@/lib/domain/planning/discoveryProfile'
@@ -248,6 +249,22 @@ function resolveRepetitionRules(members = [], body = {}) {
     ...requestRules,
     returnDelays: { ...(memberRules.returnDelays || {}), ...(requestRules.returnDelays || {}) },
   })
+}
+
+/**
+ * Équilibre hebdomadaire du foyer : plafonds de poisson et de viande, plancher
+ * végétarien, et nombre de repas autorisés par famille de protéine. Ces bornes
+ * étaient en dur ; elles décidaient pourtant seules du plafond protéique d'une
+ * semaine. Un foyer qui vise une cible élevée doit pouvoir les assumer
+ * autrement — c'est son arbitrage, pas celui du moteur. Sans réglage explicite,
+ * les valeurs par défaut reproduisent exactement l'ancien comportement.
+ */
+function resolveWeeklyBalance(members = [], body = {}) {
+  const memberBalance = members
+    .map((member) => member?.preferences?.planning?.weekly_balance)
+    .find((balance) => balance && typeof balance === 'object') || {}
+  const requestBalance = body?.weekly_balance && typeof body.weekly_balance === 'object' ? body.weekly_balance : {}
+  return buildWeeklyBalance({ ...memberBalance, ...requestBalance })
 }
 
 async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = null) {
@@ -499,6 +516,9 @@ export async function POST(request) {
       dislikedForms: dietary.dislikes.map(normalizeFoodForm).filter(Boolean),
       diets: dietary.diets,
       targetByMeal,
+      // Équilibre hebdomadaire réglable par le foyer (poisson, viande, plancher
+      // végétarien, répétition par famille de protéine).
+      weeklyBalance: resolveWeeklyBalance(members, body),
       maxMinutesByMeal: { dejeuner: 120, diner: 240 },
       preferredActiveMinutes: 30,
       recentRecipeTitles: recentRecipes.recentRecipeTitles,
