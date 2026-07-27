@@ -1283,5 +1283,25 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260727120000_member_taste_preferences.sql",
+    "github_version": "20260727120000",
+    "name": "member_taste_preferences",
+    "sha256": "05ad406d8101e1f67f568e4f166ff893d68ec02ad8a6b2be77ba6f359498b803",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260727120000_member_taste_preferences_rollback.sql",
+    "github_version": "20260727120000",
+    "name": "member_taste_preferences_rollback",
+    "sha256": "4046a05edef05669e33cf8040dc64b36e574949bd18c19ac68cdf2e45c79c669",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]
