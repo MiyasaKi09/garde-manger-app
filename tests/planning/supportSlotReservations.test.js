@@ -19,13 +19,18 @@ const recipe = {
   nutritionCoverage: { pct: 100 },
 }
 
-const basePlan = () => ({
+const basePlan = (date = '2026-07-20') => ({
   status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],
   slots: [
-    { key: '2026-07-20-dejeuner', date: '2026-07-20', mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
-    { key: '2026-07-20-diner', date: '2026-07-20', mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
+    { key: `${date}-dejeuner`, date, mealType: 'dejeuner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
+    { key: `${date}-diner`, date, mealType: 'diner', recipeCode: 'FR-TEST', allocations: [], shortages: [], stockCoverage: 0, explanations: [] },
   ],
 })
+
+// Depuis le lot 7, la rotation des petits-déjeuners et des collations est
+// dérivée de la date : les œufs durs ne sont plus servis tous les matins. Le
+// test ne présuppose donc plus QUEL support porte les œufs — il le trouve.
+const EGG_SUPPORT_DATE = '2026-07-23'
 
 // Julien prend petit-déjeuner ET collation (memberRules) → deux créneaux support.
 const julien = { name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }
@@ -124,7 +129,7 @@ describe('P4 — créneaux support et réservations pdj/collation', () => {
 
   it('links support meals, uses a bounded support mode and schedules boiled eggs', () => {
     const payload = buildCanonicalPlanPayload({
-      plan: basePlan(), recipes: [recipe], windowStart: '2026-07-20',
+      plan: basePlan(EGG_SUPPORT_DATE), recipes: [recipe], windowStart: EGG_SUPPORT_DATE,
       members: [julien], constraints: {},
       inventoryLots: [
         { id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 200 },
@@ -137,7 +142,11 @@ describe('P4 — créneaux support et réservations pdj/collation', () => {
     expect(breakfast.preparation.mode).toBe('support')
     expect(breakfast.servings).toBeGreaterThanOrEqual(1)
     expect(breakfastMeals.every((meal) => meal.slot_key === breakfast.slot_key)).toBe(true)
-    expect(payload.tasks.some((task) => task.slot_key === breakfast.slot_key && task.task_type === 'prepare_support')).toBe(true)
+    // La cuisson des œufs est programmée sur le créneau support qui en
+    // contient, quel qu'il soit ce jour-là.
+    const eggMeal = payload.legacy_meals.find((meal) => String(meal.short_label || '').includes('Œufs'))
+    expect(eggMeal).toBeTruthy()
+    expect(payload.tasks.some((task) => task.slot_key === eggMeal.slot_key && task.task_type === 'prepare_support')).toBe(true)
   })
 
 })
