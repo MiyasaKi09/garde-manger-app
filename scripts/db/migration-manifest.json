@@ -1285,6 +1285,26 @@
     "expected_objects": []
   },
   {
+    "file": "20260725000500_fix_planning_task_production_cascade.sql",
+    "github_version": "20260725000500",
+    "name": "fix_planning_task_production_cascade",
+    "sha256": "d4401a67ea81647e975984c88466d78cf7678232e990abc7763ca9bbfa47e948",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260725000500_fix_planning_task_production_cascade_rollback.sql",
+    "github_version": "20260725000500",
+    "name": "fix_planning_task_production_cascade_rollback",
+    "sha256": "cf1b59758e50d32ea3e637f7fbb7161ff39d88fa6c18af36a69522d68d18b3d2",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
     "file": "20260727120000_member_taste_preferences.sql",
     "github_version": "20260727120000",
     "name": "member_taste_preferences",
