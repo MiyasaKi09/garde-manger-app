@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { buildCanonicalPlanPayload } from '@/lib/domain/planning/canonicalPlanPayload'
+import { demandOf, findSupportWindow, supportFoods } from './supportWindow'
 
 // Lot P4 — Bloquant #4 du verdict directeur : les petits-déjeuners et
 // collations sont désormais des créneaux « support » (source='support') qui
@@ -27,13 +28,27 @@ const basePlan = (date = '2026-07-20') => ({
   ],
 })
 
-// Depuis le lot 7, la rotation des petits-déjeuners et des collations est
-// dérivée de la date : les œufs durs ne sont plus servis tous les matins. Le
-// test ne présuppose donc plus QUEL support porte les œufs — il le trouve.
-const EGG_SUPPORT_DATE = '2026-07-23'
-
 // Julien prend petit-déjeuner ET collation (memberRules) → deux créneaux support.
 const julien = { name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } }
+
+// Depuis le lot 7, la rotation des supports est dérivée de la date : ni les œufs
+// durs ni le skyr ne sont servis tous les matins. Les fenêtres ci-dessous sont
+// donc CHERCHÉES, pas figées — sinon chaque famille ajoutée à la rotation (§13)
+// casserait ces tests sans qu'aucune régression ne se soit produite.
+const demandPayload = (date) => buildCanonicalPlanPayload({
+  plan: basePlan(date), recipes: [recipe], windowStart: date,
+  members: [julien], constraints: {}, inventoryLots: [],
+})
+
+/** Une semaine dont le petit-déjeuner du jour 0 sert un pot entier de skyr. */
+const SKYR_PDJ_DATE = findSupportWindow(demandPayload, (payload) => (
+  supportFoods(payload, 'pdj').some((item) => item.food === 'skyr' && item.quantity === 200)
+  && demandOf(payload, 'Skyr nature') === 200
+))
+
+/** Une semaine dont un support du jour 0 porte des œufs à cuire. */
+const EGG_SUPPORT_DATE = findSupportWindow(demandPayload, (payload) => payload.legacy_meals
+  .some((meal) => String(meal.short_label || '').includes('Œufs')))
 
 describe('P4 — créneaux support et réservations pdj/collation', () => {
   it('émet des créneaux support (pdj + collation) avec source=support et sans recette ni plat', () => {
@@ -58,14 +73,14 @@ describe('P4 — créneaux support et réservations pdj/collation', () => {
 
   it('persiste une réservation de lot rattachée au créneau support (fin de la double promesse)', () => {
     const payload = buildCanonicalPlanPayload({
-      plan: basePlan(), recipes: [recipe], windowStart: '2026-07-20',
+      plan: basePlan(SKYR_PDJ_DATE), recipes: [recipe], windowStart: SKYR_PDJ_DATE,
       members: [julien], constraints: {},
       // Un pot de skyr de 200 g couvre exactement le pdj du jour 0 (skyr 200 g).
       inventoryLots: [{ id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 200 }],
     })
     const skyrReservation = payload.reservations.find((res) => res.lot_id === 'lot-skyr')
     expect(skyrReservation).toMatchObject({
-      slot_key: '2026-07-20-pdj',
+      slot_key: `${SKYR_PDJ_DATE}-pdj`,
       lot_id: 'lot-skyr',
       reserved_unit: 'g',
       reserved_quantity: 200,
@@ -81,7 +96,7 @@ describe('P4 — créneaux support et réservations pdj/collation', () => {
 
   it('ne réserve que le stock disponible et envoie le résidu aux courses (stock_qty inchangé)', () => {
     const payload = buildCanonicalPlanPayload({
-      plan: basePlan(), recipes: [recipe], windowStart: '2026-07-20',
+      plan: basePlan(SKYR_PDJ_DATE), recipes: [recipe], windowStart: SKYR_PDJ_DATE,
       members: [julien], constraints: {},
       // Un demi-pot (100 g) : la moitié réservée, puis un pot physique acheté.
       inventoryLots: [{ id: 'lot-skyr', formNormalized: 'skyr nature', gramsAvailable: 100 }],
