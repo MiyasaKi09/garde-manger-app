@@ -6,6 +6,7 @@ import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan, isMealSuitableRecipe, recipeDiversityProfile } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
+import { buildWeeklyBalance } from '@/lib/domain/planning/weeklyBalance'
 import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferences'
 import { explainWeek, previewInputs } from '@/lib/domain/planning/planExplanation'
 import { discoveryTarget } from '@/lib/domain/planning/discoveryProfile'
@@ -14,7 +15,8 @@ import { selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidateP
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
 import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
 import { SUPPLEMENT_FORMS } from '@/lib/domain/planning/personalizedMeals'
-import { resolveHouseholdTimeZone, zonedDateTimeToUtc } from '@/lib/domain/planning/planningTime'
+import { resolveHouseholdTimeZone } from '@/lib/domain/planning/planningTime'
+import { slotProtectionState } from '@/lib/domain/planning/slotProtection'
 
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
@@ -101,28 +103,6 @@ async function ensurePlanningSchema(supabase) {
   }
 }
 
-function slotProtectionState(slot, meals, tasks, now = new Date(), timeZone = 'Europe/Paris') {
-  const slotMeals = meals.filter((meal) => meal.meal_plan_slot_id === slot.id)
-  const slotTasks = tasks.filter((task) => task.meal_plan_slot_id === slot.id)
-  const localServiceTime = {
-    pdj: '08:00:00',
-    dejeuner: '12:30:00',
-    collation: '16:30:00',
-    diner: '19:30:00',
-  }[slot.meal_type] || '12:30:00'
-  const serviceAt = zonedDateTimeToUtc(slot.meal_date, localServiceTime, timeZone)
-  const within48Hours = serviceAt.getTime() <= now.getTime() + 48 * 60 * 60 * 1000
-  const consumed = ['consumed', 'completed', 'cooked', 'skipped'].includes(slot.status)
-    || slotTasks.some((task) => task.done === true || task.workflow_status === 'done')
-  const locked = Boolean(slot.locked) || slotMeals.some((meal) => meal.locked)
-  return {
-    status: slot.status || 'planned',
-    locked,
-    consumed,
-    protected: consumed || locked || within48Hours,
-    protection_reason: consumed ? 'consumed' : locked ? 'locked' : within48Hours ? 'within_48_hours' : null,
-  }
-}
 
 async function loadExistingImport(supabase, userId, importId) {
   if (!importId) return { planImport: null, slots: [], meals: [], tasks: [], slotStates: {}, activePlanVersionId: null }
@@ -269,6 +249,22 @@ function resolveRepetitionRules(members = [], body = {}) {
     ...requestRules,
     returnDelays: { ...(memberRules.returnDelays || {}), ...(requestRules.returnDelays || {}) },
   })
+}
+
+/**
+ * Équilibre hebdomadaire du foyer : plafonds de poisson et de viande, plancher
+ * végétarien, et nombre de repas autorisés par famille de protéine. Ces bornes
+ * étaient en dur ; elles décidaient pourtant seules du plafond protéique d'une
+ * semaine. Un foyer qui vise une cible élevée doit pouvoir les assumer
+ * autrement — c'est son arbitrage, pas celui du moteur. Sans réglage explicite,
+ * les valeurs par défaut reproduisent exactement l'ancien comportement.
+ */
+function resolveWeeklyBalance(members = [], body = {}) {
+  const memberBalance = members
+    .map((member) => member?.preferences?.planning?.weekly_balance)
+    .find((balance) => balance && typeof balance === 'object') || {}
+  const requestBalance = body?.weekly_balance && typeof body.weekly_balance === 'object' ? body.weekly_balance : {}
+  return buildWeeklyBalance({ ...memberBalance, ...requestBalance })
 }
 
 async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = null) {
@@ -452,7 +448,7 @@ export async function POST(request) {
     }
     existing.slotStates = Object.fromEntries(existing.slots.map((slot) => [
       slot.slot_key,
-      slotProtectionState(slot, existing.meals, existing.tasks, new Date(), householdTimeZone),
+      slotProtectionState(slot, existing.meals, existing.tasks),
     ]))
     const recentRecipes = await loadRecentRecipeUsage(supabase, windowStart)
     const goalNames = new Set((goalsResult.data || []).map((goal) => fold(goal.person_name)).filter(Boolean))
@@ -520,6 +516,9 @@ export async function POST(request) {
       dislikedForms: dietary.dislikes.map(normalizeFoodForm).filter(Boolean),
       diets: dietary.diets,
       targetByMeal,
+      // Équilibre hebdomadaire réglable par le foyer (poisson, viande, plancher
+      // végétarien, répétition par famille de protéine).
+      weeklyBalance: resolveWeeklyBalance(members, body),
       maxMinutesByMeal: { dejeuner: 120, diner: 240 },
       preferredActiveMinutes: 30,
       recentRecipeTitles: recentRecipes.recentRecipeTitles,
