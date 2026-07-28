@@ -131,7 +131,13 @@ describe('une semaine réelle pour un foyer à cible protéique élevée', () =>
     expect(conformes).toBeLessThan(jours.length)
   })
 
-  it('sert confortablement un membre dont la cible est atteignable', () => {
+  it('sert confortablement un membre dont la cible est atteignable', { timeout: 20000 }, () => {
+    // Ce test n'avait pas de délai explicite, contrairement à ses deux voisins,
+    // et il a fini par expirer au bout des 5 s par défaut. Rien n'avait cassé :
+    // le corpus publiable est passé de 50 à 100 recettes, et la recherche par
+    // faisceau explore d'autant plus d'états. À 3 000 recettes le coût de cette
+    // recherche deviendra un sujet en soi, bien avant d'être un sujet de test.
+    //
     // Zoé vise 0,049 g/kcal, soit le troisième quartile du corpus.
     const plan = semaine('2026-08-03', recipes)
     const perso = buildPersonalizedMeals({ plan, recipes, members: MEMBERS, goals: GOALS })
