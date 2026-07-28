@@ -37,7 +37,7 @@ export const NUTRIENT_COLUMNS = [
   ['vitamin_b3_mg', 'mg',   /Vitamine B3\b/i],
   ['vitamin_b5_mg', 'mg',   /Vitamine B5\b/i],
   ['vitamin_b6_mg', 'mg',   /Vitamine B6\b/i],
-  ['vitamin_b9_ug', 'µg',   /Vitamine B9\b/i],
+  ['vitamin_b9_ug', 'µg',   /Vitamine B9 ou\s*Folates totaux\s*\(µg/i],
   ['vitamin_b12_ug','µg',   /Vitamine B12\b/i],
 ]
 

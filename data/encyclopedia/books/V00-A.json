@@ -1,0 +1,1001 @@
+{
+  "$schema": "myko://encyclopedia/doctrine-book/v1",
+  "schema_version": 1,
+  "book_code": "V00-A",
+  "title": "Philosophie",
+  "version": "0.1.0",
+  "status": "draft",
+  "locale": "fr-FR",
+  "authored_on": "2026-07-28",
+  "objective": "Fixer la raison d’être de Myko et les principes qui doivent gouverner toute donnée, toute règle de calcul, toute suggestion et toute interface : donner chaque jour une réponse culinaire faisable, sûre, agréable, nutritionnellement cohérente et compatible avec le stock réel, sans faire passer une invention probabiliste pour une connaissance.",
+  "promise": "Myko transforme un corpus culinaire validé et l’état réel du foyer en décisions explicables. Il n’utilise jamais la fluidité d’un texte généré comme preuve de vérité.",
+  "scope": {
+    "includes": [
+      "la finalité du produit",
+      "la place respective du corpus, des moteurs déterministes et de l’IA",
+      "les critères philosophiques d’acceptation d’une donnée ou d’une décision",
+      "la relation entre vérité culinaire, état du foyer et préférences personnelles",
+      "les comportements attendus en cas d’incertitude ou de manque"
+    ],
+    "excludes": [
+      "les schémas techniques détaillés, traités dans V00-B",
+      "les niveaux de preuve et la procédure de publication, traités dans V00-C",
+      "les conventions de nommage et de déduplication, traitées dans V00-D",
+      "les transitions d’état et responsabilités opérationnelles, traitées dans V00-E",
+      "l’ordonnancement détaillé des lots, traité dans V00-F"
+    ]
+  },
+  "definitions": [
+    {
+      "code": "DEF-PHI-001",
+      "term": "Corpus validé",
+      "definition": "Ensemble versionné d’objets culinaires ayant franchi leurs contrôles de complétude, de provenance, de cohérence et de validation. Sa présence, et non la vraisemblance d’un texte, autorise un objet à piloter Myko."
+    },
+    {
+      "code": "DEF-PHI-002",
+      "term": "Candidat",
+      "definition": "Objet ou fait repéré mais encore incomplet, non arbitré ou insuffisamment sourcé. Un candidat peut être étudié ; il ne peut pas devenir silencieusement une vérité opérationnelle."
+    },
+    {
+      "code": "DEF-PHI-003",
+      "term": "Objet canonique",
+      "definition": "Identité unique et stable d’un concept culinaire. Plusieurs produits, synonymes, formes ou vues éditoriales peuvent y faire référence sans créer de doublon."
+    },
+    {
+      "code": "DEF-PHI-004",
+      "term": "Produit commercial",
+      "definition": "Article vendu, identifié notamment par une marque, un conditionnement ou un code-barres. Il décrit ce qui a été acheté et pointe vers un ou plusieurs objets culinaires canoniques ; il n’est pas lui-même la vérité culinaire générale."
+    },
+    {
+      "code": "DEF-PHI-005",
+      "term": "Ingrédient canonique",
+      "definition": "Concept alimentaire stable utilisé pour relier nutrition, allergènes, saison, formes culinaires, substitutions, stock et recettes."
+    },
+    {
+      "code": "DEF-PHI-006",
+      "term": "Forme culinaire",
+      "definition": "État significatif d’un ingrédient — cru, cuit, entier, haché, surgelé, égoutté ou autre — lorsque cet état modifie son usage, ses conversions, sa nutrition, sa conservation ou sa sécurité."
+    },
+    {
+      "code": "DEF-PHI-007",
+      "term": "Préparation intermédiaire",
+      "definition": "Objet culinaire réutilisable produit par une transformation, tel qu’un bouillon, une pâte ou une crème, possédant son rendement, sa conservation et ses propres dépendances."
+    },
+    {
+      "code": "DEF-PHI-008",
+      "term": "Recette canonique",
+      "definition": "Méthode versionnée qui transforme des formes exactes d’ingrédients et des préparations en un résultat culinaire identifiable, reproductible et calculable."
+    },
+    {
+      "code": "DEF-PHI-009",
+      "term": "Assiette",
+      "definition": "Composition servie à une personne pour un repas : recette principale ou assemblage, accompagnements, sauce éventuelle et portions individualisées."
+    },
+    {
+      "code": "DEF-PHI-010",
+      "term": "État du foyer",
+      "definition": "Données privées et datées décrivant les personnes, le stock par lots, les réservations, l’équipement, le temps disponible, le budget, l’historique et les préférences."
+    },
+    {
+      "code": "DEF-PHI-011",
+      "term": "Contrainte dure",
+      "definition": "Condition qui interdit une décision, par exemple un allergène déclaré, une incompatibilité médicale explicite, un aliment impropre, un équipement indispensable absent ou une quantité insuffisante non achetable."
+    },
+    {
+      "code": "DEF-PHI-012",
+      "term": "Préférence",
+      "definition": "Signal personnel qui influence le classement des solutions sans modifier les faits culinaires ni contourner une contrainte dure."
+    },
+    {
+      "code": "DEF-PHI-013",
+      "term": "Provenance",
+      "definition": "Chaîne permettant de retrouver la source, sa version, l’enregistrement d’origine, la transformation appliquée et la décision humaine ayant produit une donnée Myko."
+    },
+    {
+      "code": "DEF-PHI-014",
+      "term": "Décision traçable",
+      "definition": "Résultat pour lequel Myko peut restituer les objets, versions, contraintes, scores, arbitrages et éventuels modes dégradés réellement utilisés."
+    },
+    {
+      "code": "DEF-PHI-015",
+      "term": "Lacune de corpus",
+      "definition": "Absence explicite d’un objet ou d’une relation validée nécessaire à une décision. Une lacune est un résultat légitime à corriger, pas une invitation à inventer."
+    }
+  ],
+  "sources": [
+    {
+      "code": "SRC-MYKO-BIBLE-V1",
+      "title": "Myko Corpus Bible — Master Blueprint",
+      "version": 1,
+      "path": "docs/encyclopedia/sources/Myko-Corpus-Bible-v1.md",
+      "locators": [
+        "Objectif",
+        "Architecture",
+        "Catalogue maître",
+        "Principe directeur"
+      ],
+      "role": "source fondatrice de l’architecture du corpus, de l’ordre de production et du critère d’utilité",
+      "authority": "foundational"
+    },
+    {
+      "code": "SRC-MYKO-PLAN-V1",
+      "title": "MYKO — Encyclopédie culinaire — Plan directeur",
+      "version": 1,
+      "path": "docs/encyclopedia/sources/MYKO-Encyclopedie-Culinaire-Plan-Directeur.md",
+      "locators": [
+        "Vision",
+        "Organisation des données",
+        "Objectif final"
+      ],
+      "role": "source fondatrice de la bibliothèque documentaire et des finalités produit",
+      "authority": "foundational"
+    }
+  ],
+  "rules": [
+    {
+      "code": "PHI-001",
+      "title": "Le résultat attendu est une décision quotidienne faisable",
+      "rule": "La sortie principale de Myko n’est ni une collection de recettes ni un texte inspirant. C’est une réponse datée indiquant quoi cuisiner, quoi préparer à l’avance, en quelles quantités et avec quelles actions de stock ou de courses.",
+      "justification": "Une recette isolée ignore les personnes présentes, les portions, les restes, les dates de consommation, l’équipement, le temps disponible et l’équilibre des autres repas. La valeur du corpus se mesure donc à sa capacité à produire une décision exécutable dans le foyer.",
+      "consequences": [
+        "toute recette doit pouvoir être transformée en besoins quantifiés et en étapes planifiables",
+        "le résultat doit distinguer cuisine immédiate, préparation anticipée, décongélation, réchauffage et achat",
+        "une suggestion inexécutable avec les contraintes connues doit être rejetée ou explicitement conditionnée"
+      ],
+      "improves": [
+        "planning",
+        "stock",
+        "courses",
+        "batch_cooking",
+        "experience_utilisateur"
+      ],
+      "examples": [
+        {
+          "case": "Repas du mardi soir",
+          "situation": "Deux personnes dînent à 19 h 30, 35 minutes sont disponibles, des haricots verts doivent être consommés et une portion de sauce est déjà congelée.",
+          "decision": "Myko choisit une assiette compatible, réserve les quantités exactes, programme la décongélation de la sauce et indique l’heure de démarrage.",
+          "result": "L’utilisateur sait quoi faire et le stock futur est calculable."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Liste d’idées",
+          "rejected": "Afficher dix recettes de saison sans vérifier temps, stock, portions ni équilibre hebdomadaire.",
+          "reason": "La sortie déplace tout le travail de décision vers l’utilisateur et ne permet aucune réservation de stock."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Exploration volontaire",
+          "handling": "Un écran d’inspiration peut présenter des candidats clairement étiquetés comme non planifiés.",
+          "limits": "Ces candidats ne réservent aucun stock, ne modifient aucune course et ne sont jamais confondus avec le plan validé."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-001-T01",
+          "given": "un plan contenant une recette mais aucune date, portion ni action",
+          "when": "la porte de publication du planning est évaluée",
+          "then": "le plan est refusé comme non exécutable",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-002",
+      "title": "La connaissance précède la génération",
+      "rule": "L’IA ne crée pas la vérité culinaire de Myko. Elle peut rechercher, classer, assembler, reformuler et expliquer uniquement des objets et des relations présents dans le corpus autorisé.",
+      "justification": "Un modèle de langage optimise la plausibilité de sa réponse ; il ne garantit ni l’existence d’une recette, ni une durée de conservation, ni une conversion, ni une valeur nutritionnelle. Séparer génération et connaissance rend les décisions auditables et corrigeables.",
+      "consequences": [
+        "aucun identifiant canonique ne peut être créé par une réponse conversationnelle",
+        "aucune donnée de sécurité, nutrition, conservation ou allergène n’est acceptée sans provenance",
+        "une proposition de l’IA reste un candidat tant qu’une procédure dédiée ne l’a pas validée"
+      ],
+      "improves": [
+        "qualite",
+        "nutrition",
+        "stock",
+        "substitutions",
+        "securite"
+      ],
+      "examples": [
+        {
+          "case": "Choix d’un dîner",
+          "situation": "Le corpus contient trois assiettes compatibles avec les contraintes du soir.",
+          "decision": "L’IA peut les comparer et expliquer pourquoi l’une utilise mieux les produits urgents.",
+          "result": "Le langage sert l’explication ; les objets et calculs restent ceux du corpus."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Recette improvisée",
+          "rejected": "Inventer des quantités et des temps pour une recette absente puis la faire entrer automatiquement dans le planning.",
+          "reason": "La recette n’a ni identité arbitrée, ni nutrition déterministe, ni comportement de conservation validé."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Bac à sable de recherche",
+          "handling": "Une idée générée peut être enregistrée dans une zone de travail isolée avec le statut candidat.",
+          "limits": "Elle ne peut influencer le planning, le stock, les courses ou les conseils de sécurité avant validation."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-002-T01",
+          "given": "une réponse IA citant un code de recette absent du snapshot validé",
+          "when": "la réponse tente de créer une réservation de stock",
+          "then": "l’opération est bloquée et une lacune de corpus est enregistrée",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-003",
+      "title": "L’exécution fonctionne en monde fermé",
+      "rule": "Pour toute action qui modifie un planning, un lot de stock, une liste de courses ou un calcul nutritionnel, ce qui n’est pas validé est considéré comme inconnu et non comme probablement vrai.",
+      "justification": "Le raisonnement en monde fermé évite qu’une donnée manquante soit remplacée par une valeur moyenne silencieuse. Une réponse incomplète mais honnête est préférable à une décision précise et fausse.",
+      "consequences": [
+        "les valeurs inconnues sont représentées explicitement",
+        "les valeurs par défaut ne sont autorisées que si leur domaine, leur provenance et leur incertitude sont définis",
+        "chaque opération précise si elle peut fonctionner avec des champs inconnus"
+      ],
+      "improves": [
+        "stock",
+        "nutrition",
+        "planning",
+        "qualite"
+      ],
+      "examples": [
+        {
+          "case": "Durée de conservation inconnue",
+          "situation": "Un produit frais est ajouté sans date d’achat fiable et sans règle validée pour sa forme.",
+          "decision": "Myko demande l’information ou crée un lot incomplet à traiter rapidement ; il n’invente pas de date.",
+          "result": "Le risque est visible et ne se transforme pas en fausse certitude."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Valeur arbitraire",
+          "rejected": "Attribuer automatiquement 90 jours à tout article dont la durée est inconnue.",
+          "reason": "La valeur peut rendre invisible un risque sanitaire et fausser l’ordre d’urgence."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Estimation explicitement autorisée",
+          "handling": "Une estimation peut être calculée pour une fonction non critique si elle est identifiée comme telle, accompagnée d’un intervalle et remplaçable par la valeur réelle.",
+          "limits": "Elle ne peut jamais assouplir une règle de sécurité ou masquer une donnée requise."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-003-T01",
+          "given": "un lot sans règle de conservation applicable",
+          "when": "une date limite interne est demandée",
+          "then": "le résultat est inconnu avec une action de résolution, jamais une durée générique silencieuse",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-004",
+      "title": "Chaque couche répond à une question différente",
+      "rule": "Produit commercial, ingrédient, forme, technique, préparation, sauce, accompagnement, recette, assiette, menu et planning restent des objets distincts reliés par des identifiants stables.",
+      "justification": "Confondre les couches multiplie les doublons et propage des propriétés au mauvais niveau. Le prix et le code-barres appartiennent au produit ; la nutrition peut dépendre de la forme ; la portion appartient à l’assiette ; la date d’usage appartient au planning.",
+      "consequences": [
+        "un même ingrédient peut être relié à plusieurs produits commerciaux",
+        "une recette réutilise une préparation au lieu de copier ses étapes",
+        "un même plat peut recevoir des portions et accompagnements différents selon les personnes"
+      ],
+      "improves": [
+        "deduplication",
+        "stock",
+        "nutrition",
+        "planning",
+        "courses"
+      ],
+      "examples": [
+        {
+          "case": "Boîte de tomates",
+          "situation": "Deux marques vendent des tomates pelées de conditionnements différents.",
+          "decision": "Les produits restent distincts pour le prix et le stock, mais pointent vers la même forme canonique si leur usage culinaire est équivalent.",
+          "result": "Les recettes ne sont pas dupliquées par marque."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Objet fourre-tout",
+          "rejected": "Créer un ingrédient nommé « tomates pelées Marque X 400 g achetées mardi ».",
+          "reason": "Le nom mélange concept culinaire, produit, quantité et événement de stock."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Produit non décomposable utilement",
+          "handling": "Un produit transformé peut devenir un concept culinaire canonique lorsque sa composition et son usage forment réellement une unité stable.",
+          "limits": "La décision doit être arbitrée ; la seule présence d’une marque ou d’un code-barres ne suffit pas."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-004-T01",
+          "given": "deux codes-barres reliés à la même forme culinaire",
+          "when": "une recette demande cette forme",
+          "then": "la recette conserve un seul besoin canonique et le moteur de courses peut choisir entre les deux produits",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-005",
+      "title": "Une identité canonique peut avoir plusieurs vues",
+      "rule": "Un objet culinaire n’est rédigé qu’une fois dans sa source de vérité ; les volumes, catégories, saisons, cuisines et usages créent des références ou des appartenances, jamais des copies divergentes.",
+      "justification": "Une carbonade peut relever de la cuisine du Nord, des mijotés, des plats invités et du batch cooking. La dupliquer dans quatre livres créerait quatre corrections, quatre nutritions et quatre historiques potentiellement contradictoires.",
+      "consequences": [
+        "chaque objet possède un volume principal ou une source canonique",
+        "les autres classements ne contiennent que des liens et des métadonnées de vue",
+        "la correction d’un objet met à jour toutes ses vues sans duplication"
+      ],
+      "improves": [
+        "coherence",
+        "maintenance",
+        "planning",
+        "qualite"
+      ],
+      "examples": [
+        {
+          "case": "Recette multi-catégories",
+          "situation": "Une recette est à la fois végétarienne, économique et adaptée au quotidien.",
+          "decision": "Elle garde un seul code et plusieurs appartenances éditoriales.",
+          "result": "Tous les écrans lisent la même version."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Copies par volume",
+          "rejected": "Créer trois recettes identiques avec des codes différents afin de remplir trois objectifs de couverture.",
+          "reason": "Le volume statistique augmente mais la connaissance et la maintenabilité diminuent."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Variantes réellement distinctes",
+          "handling": "Deux versions peuvent devenir deux objets lorsque leur identité, leur procédé ou leur résultat culinaire diffère de façon structurante.",
+          "limits": "La décision de scission doit documenter les garde-fous d’identité et les éléments communs."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-005-T01",
+          "given": "un même code recette rattaché à plusieurs volumes",
+          "when": "la recette est corrigée",
+          "then": "toutes les vues résolvent la nouvelle version sans créer de seconde identité",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-006",
+      "title": "Tout fait possède une provenance et un degré de confiance",
+      "rule": "Une donnée factuelle doit être reliée à sa source, sa version, son contexte d’application, sa méthode de transformation et son niveau de confiance ; une divergence entre sources reste visible jusqu’à arbitrage.",
+      "justification": "Nutrition, densité, saisonnalité et conservation varient selon la forme, le territoire, la méthode et le temps. Une valeur sans contexte semble universelle alors qu’elle ne l’est pas.",
+      "consequences": [
+        "les sources brutes ne remplacent pas l’arbitrage canonique",
+        "les valeurs dérivées conservent la formule et les données utilisées",
+        "un niveau de confiance insuffisant bloque les usages critiques"
+      ],
+      "improves": [
+        "nutrition",
+        "stock",
+        "qualite",
+        "explicabilite"
+      ],
+      "examples": [
+        {
+          "case": "Profil nutritionnel",
+          "situation": "Une valeur provient d’une table officielle pour l’aliment cuit et égoutté.",
+          "decision": "Elle est reliée à cette forme exacte, avec la version de la table et l’identifiant de ligne.",
+          "result": "Le calcul peut être reproduit et ne s’applique pas silencieusement à l’aliment cru."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Nombre orphelin",
+          "rejected": "Enregistrer « 120 kcal » sans unité de référence, forme, source ni date.",
+          "reason": "La valeur est inutilisable et impossible à corriger proprement."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Préférence subjective",
+          "handling": "Une préférence utilisateur n’exige pas de source externe, mais conserve son auteur, sa date et son contexte.",
+          "limits": "Elle ne peut pas être promue en fait culinaire général."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-006-T01",
+          "given": "une valeur nutritionnelle sans identifiant de source",
+          "when": "un profil demande le statut validé",
+          "then": "la publication est refusée",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-007",
+      "title": "Myko compose une assiette, pas seulement une recette",
+      "rule": "Le moteur évalue l’ensemble servi — composant principal, accompagnements, sauce, portions et éventuels restes — pour juger faisabilité, plaisir, nutrition et diversité.",
+      "justification": "La plupart des recettes ne constituent pas seules un repas équilibré ou complet. Les quantités utiles et la qualité nutritionnelle émergent de la composition de l’assiette et de son insertion dans la journée et la semaine.",
+      "consequences": [
+        "les accompagnements et sauces sont des objets planifiables",
+        "les portions sont calculées par personne",
+        "l’évaluation nutritionnelle porte sur l’assiette puis sur les fenêtres temporelles pertinentes"
+      ],
+      "improves": [
+        "nutrition",
+        "planning",
+        "diversite",
+        "experience_utilisateur"
+      ],
+      "examples": [
+        {
+          "case": "Carbonade",
+          "situation": "La recette principale apporte protéines et sauce mais peu de légumes.",
+          "decision": "Myko compose l’assiette avec pommes vapeur et haricots verts, puis adapte chaque portion.",
+          "result": "Le repas est calculable comme un ensemble et non comme un titre de recette."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Score isolé",
+          "rejected": "Déclarer une carbonade « repas complet » sans examiner garniture, portion et reste de la journée.",
+          "reason": "Le jugement confond identité du plat et composition réellement servie."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Recette complète par construction",
+          "handling": "Une recette peut constituer seule une assiette si ses composants et portions couvrent explicitement les rôles attendus.",
+          "limits": "Cette propriété est calculée et versionnée ; elle n’est pas déduite du nom « plat complet »."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-007-T01",
+          "given": "une recette principale marquée comme nécessitant un accompagnement",
+          "when": "le moteur construit un dîner",
+          "then": "le plan reste incomplet tant qu’un accompagnement compatible et quantifié n’est pas sélectionné",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-008",
+      "title": "Les contraintes dures précèdent toute optimisation",
+      "rule": "Sécurité alimentaire, allergènes déclarés, interdits médicaux explicites et impossibilités matérielles éliminent une solution avant le calcul du goût, du coût, de la variété ou de la commodité.",
+      "justification": "Un score global peut sinon compenser un danger par plusieurs qualités secondaires. Une solution dangereuse ou impossible ne doit jamais gagner parce qu’elle est économique ou appréciée.",
+      "consequences": [
+        "les contraintes dures produisent des exclusions explicables",
+        "aucun poids positif ne peut compenser une exclusion",
+        "les conflits entre contraintes dures aboutissent à une absence de solution, pas à un compromis silencieux"
+      ],
+      "improves": [
+        "securite",
+        "allergenes",
+        "planning",
+        "confiance"
+      ],
+      "examples": [
+        {
+          "case": "Allergène",
+          "situation": "La recette la mieux notée contient un allergène déclaré pour une personne présente.",
+          "decision": "Elle est exclue avant classement, même si une autre personne l’adore.",
+          "result": "Le moteur évalue uniquement des solutions admissibles."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Compensation par score",
+          "rejected": "Conserver une recette allergène parce qu’elle obtient un excellent score anti-gaspillage.",
+          "reason": "La fonction de score transforme un interdit en préférence négociable."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Information allergène inconnue",
+          "handling": "La solution est bloquée pour la personne concernée ou requiert une vérification explicite selon la politique de risque.",
+          "limits": "L’absence de donnée n’est jamais assimilée à l’absence d’allergène."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-008-T01",
+          "given": "une recette contenant un allergène dur pour un convive",
+          "when": "tous ses autres scores sont maximaux",
+          "then": "son admissibilité reste fausse et elle n’apparaît pas dans les choix exécutables",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-009",
+      "title": "Le stock décrit des lots réels, pas des catégories abstraites",
+      "rule": "Chaque entrée de stock représente une quantité localisée et datée d’un produit ou d’une forme canonique, avec un mode de conservation compatible. Les valeurs de lieu et de péremption proviennent du produit, de la forme, de l’emballage et de l’état du lot.",
+      "justification": "La catégorie générale « viande » ne suffit pas pour déterminer lieu ou durée. Une pintade crue, une pintade cuite et une conserve de pintade peuvent relever de règles différentes. Une erreur de lot contamine l’urgence, les réservations, le planning et les courses.",
+      "consequences": [
+        "le lieu proposé doit être compatible avec la forme et le conditionnement",
+        "la durée est recalculée lors d’une ouverture, cuisson, décongélation ou reconditionnement",
+        "une quantité réservée reste visible mais indisponible pour un autre plan"
+      ],
+      "improves": [
+        "stock",
+        "securite",
+        "planning",
+        "courses",
+        "anti_gaspillage"
+      ],
+      "examples": [
+        {
+          "case": "Pintade crue réfrigérée",
+          "situation": "Une pintade fraîche emballée est ajoutée après achat.",
+          "decision": "Myko propose le réfrigérateur et calcule sa fenêtre d’usage à partir des informations du produit et des règles validées de la forme crue réfrigérée.",
+          "result": "Le lot devient urgent selon des données applicables à son état réel."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Pintade au garde-manger",
+          "rejected": "Classer automatiquement la pintade fraîche au garde-manger avec 90 jours de durée.",
+          "reason": "Le lieu et la durée sont incompatibles avec la forme et créent un risque sanitaire majeur."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Produit stable non reconnu",
+          "handling": "L’utilisateur peut choisir manuellement un lieu et saisir la date imprimée, tout en maintenant le rattachement canonique en attente.",
+          "limits": "Le choix manuel s’applique au lot ; il ne crée pas une règle générale de conservation."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-009-T01",
+          "given": "une forme « volaille crue réfrigérée » et un lieu « garde-manger ambiant »",
+          "when": "le lot est validé",
+          "then": "la validation est bloquée avec une incompatibilité de conservation",
+          "severity": "blocking",
+          "automatable": true
+        },
+        {
+          "code": "PHI-009-T02",
+          "given": "une règle de durée absente",
+          "when": "le lot est créé",
+          "then": "aucune durée arbitraire de 90 jours n’est enregistrée",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-010",
+      "title": "Une substitution est une transformation explicite",
+      "rule": "Remplacer un objet par un autre exige une relation validée qui précise le contexte, le facteur de quantité et les impacts sur technique, texture, goût, nutrition, allergènes, coût et conservation.",
+      "justification": "Deux ingrédients partageant une fonction apparente ne sont pas interchangeables dans tous les usages. Une substitution silencieuse peut casser une émulsion, modifier un temps de cuisson ou introduire un allergène.",
+      "consequences": [
+        "les substitutions sont directionnelles et contextualisées",
+        "le moteur recalcule les propriétés affectées",
+        "une substitution qui change l’identité du plat peut être proposée comme variante, pas comme équivalence"
+      ],
+      "improves": [
+        "substitutions",
+        "nutrition",
+        "courses",
+        "stock",
+        "qualite_culinaire"
+      ],
+      "examples": [
+        {
+          "case": "Crème remplacée",
+          "situation": "Une sauce accepte une crème végétale validée pour cet usage.",
+          "decision": "Myko applique le facteur prévu, recalcule allergènes et nutrition, puis signale l’évolution du profil aromatique.",
+          "result": "Le remplacement est utilisable sans prétendre être neutre."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Remplacement par similarité textuelle",
+          "rejected": "Remplacer automatiquement du beurre par n’importe quelle huile parce que les deux sont des matières grasses.",
+          "reason": "La teneur en eau, le comportement à la cuisson, la texture et l’identité de la préparation peuvent différer."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Choix manuel hors corpus",
+          "handling": "L’utilisateur peut confirmer une substitution expérimentale pour une exécution ponctuelle.",
+          "limits": "Myko la marque comme non validée, demande un retour et ne la promeut pas automatiquement dans le corpus."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-010-T01",
+          "given": "deux ingrédients sans relation de substitution validée",
+          "when": "le premier manque au stock",
+          "then": "le second n’est pas injecté automatiquement dans la recette",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-011",
+      "title": "Les décisions sont déterministes, versionnées et explicables",
+      "rule": "À état du foyer, contraintes, snapshot de corpus et paramètres identiques, Myko doit reproduire les mêmes calculs. Toute diversité volontaire utilise une graine ou une politique explicite et reste traçable.",
+      "justification": "Sans reproductibilité, un écart de nutrition, de stock ou de courses ne peut pas être diagnostiqué. L’explication doit refléter les causes réellement calculées, pas un récit généré après coup.",
+      "consequences": [
+        "chaque plan enregistre les versions et paramètres utilisés",
+        "les scores intermédiaires sont inspectables",
+        "une explication cite les règles et objets ayant effectivement influencé la décision"
+      ],
+      "improves": [
+        "planning",
+        "qualite",
+        "debug",
+        "confiance"
+      ],
+      "examples": [
+        {
+          "case": "Recalcul d’un plan",
+          "situation": "Aucune donnée ni contrainte n’a changé depuis la génération.",
+          "decision": "Le recalcul produit le même plan et les mêmes réservations.",
+          "result": "Une différence éventuelle révèle un bug ou une politique de diversité explicitement enregistrée."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Justification inventée",
+          "rejected": "Expliquer qu’une recette a été choisie pour consommer un légume urgent alors que ce signal n’a pas participé au score.",
+          "reason": "L’explication devient une fiction persuasive et empêche l’audit."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Rotation contrôlée",
+          "handling": "Une sélection aléatoire peut départager des solutions équivalentes si la graine, l’ensemble candidat et la règle sont conservés.",
+          "limits": "L’aléa n’intervient qu’après les contraintes dures et ne modifie aucun calcul factuel."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-011-T01",
+          "given": "deux exécutions avec le même snapshot, le même état et la même graine",
+          "when": "le plan est généré",
+          "then": "les sorties et réservations sont identiques",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-012",
+      "title": "La complexité reste dans le système",
+      "rule": "Myko doit demander à l’utilisateur uniquement les informations impossibles à déduire de manière fiable ou les arbitrages qui lui appartiennent ; la normalisation, les conversions, les réservations et les contrôles sont automatiques et explicables.",
+      "justification": "Une gestion parfaite qui exige de remplir des dizaines de champs à chaque achat ne sera pas tenue à jour. À l’inverse, masquer les hypothèses produit une simplicité trompeuse. Le bon compromis est une saisie courte, des propositions sûres et une correction facile.",
+      "consequences": [
+        "les choix probables sont préremplis uniquement lorsqu’ils sont fondés",
+        "l’utilisateur peut corriger une proposition sans comprendre le schéma interne",
+        "les champs critiques inconnus sont demandés au bon moment"
+      ],
+      "improves": [
+        "experience_utilisateur",
+        "stock",
+        "courses",
+        "qualite_des_donnees"
+      ],
+      "examples": [
+        {
+          "case": "Ajout d’un achat",
+          "situation": "Le code-barres fournit produit, conditionnement et date imprimée.",
+          "decision": "Myko préremplit le concept, la quantité et le lieu compatible, puis demande seulement une confirmation si une ambiguïté subsiste.",
+          "result": "Le lot est précis sans formulaire encyclopédique."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Simplicité fictive",
+          "rejected": "Masquer tous les champs et inventer quantité, lieu et péremption.",
+          "reason": "L’interface semble simple mais détruit la fiabilité du système."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Mode expert",
+          "handling": "Les détails, sources et paramètres peuvent être édités ou inspectés dans une vue avancée.",
+          "limits": "Le mode expert ne permet pas de contourner silencieusement les invariants critiques."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-012-T01",
+          "given": "un ajout de produit entièrement résolu par une source fiable",
+          "when": "l’utilisateur confirme l’achat",
+          "then": "aucune question redondante n’est imposée et toutes les valeurs dérivées restent consultables",
+          "severity": "major",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-013",
+      "title": "La personnalisation ne réécrit pas la vérité culinaire",
+      "rule": "Les goûts, habitudes, notes et retours d’une personne modifient ses préférences et les scores de choix ; ils ne changent ni l’identité, ni la nutrition, ni les allergènes, ni les règles générales du corpus.",
+      "justification": "Séparer connaissance et préférence permet à plusieurs profils d’utiliser le même corpus sans le rendre contradictoire. Un utilisateur peut ne pas aimer un ingrédient sans que celui-ci devienne objectivement incompatible avec une recette.",
+      "consequences": [
+        "les préférences sont rattachées à un profil et versionnées séparément",
+        "un retour négatif peut réduire la fréquence sans supprimer la recette canonique",
+        "la promotion d’un retour en règle générale exige une revue du corpus"
+      ],
+      "improves": [
+        "personnalisation",
+        "planning",
+        "coherence",
+        "apprentissage"
+      ],
+      "examples": [
+        {
+          "case": "Préférence pour les pommes de terre",
+          "situation": "Une personne apprécie particulièrement les accompagnements à base de pommes de terre.",
+          "decision": "Le moteur peut les favoriser dans les solutions admissibles tout en respectant diversité et nutrition.",
+          "result": "Le corpus reste inchangé ; seul le classement personnel évolue."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Goût transformé en fait",
+          "rejected": "Marquer globalement les betteraves comme incompatibles avec une recette parce qu’un utilisateur ne les aime pas.",
+          "reason": "Une préférence locale devient à tort une règle culinaire universelle."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Signal de défaut",
+          "handling": "Des retours répétés peuvent ouvrir une tâche de revue sur une recette ou une relation.",
+          "limits": "La donnée canonique ne change qu’après analyse, preuve et nouvelle version."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-013-T01",
+          "given": "une note utilisateur négative sur une recette",
+          "when": "le feedback est enregistré",
+          "then": "la préférence du profil change mais la version canonique de la recette reste identique",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-014",
+      "title": "L’absence de solution est une réponse valide",
+      "rule": "Lorsque le corpus ou l’état du foyer ne permet pas de satisfaire les contraintes, Myko doit annoncer précisément ce qui manque, proposer des actions de résolution autorisées et ne jamais fabriquer une solution complète.",
+      "justification": "Forcer une réponse masque les lacunes, diminue la confiance et peut produire une décision dangereuse. Une lacune explicite crée au contraire une tâche de corpus, une question utilisateur ou une course identifiable.",
+      "consequences": [
+        "les échecs sont typés : donnée manquante, stock insuffisant, conflit de contraintes ou lacune de corpus",
+        "les assouplissements sont proposés et confirmés, jamais appliqués silencieusement",
+        "les lacunes sont mesurées pour guider la production éditoriale"
+      ],
+      "improves": [
+        "confiance",
+        "qualite",
+        "planning",
+        "roadmap"
+      ],
+      "examples": [
+        {
+          "case": "Aucune recette compatible",
+          "situation": "Aucune recette validée n’utilise le stock disponible dans le temps imparti sans allergène.",
+          "decision": "Myko indique le conflit et propose soit une course minimale, soit un élargissement explicite du temps, soit l’ajout d’un candidat à rédiger.",
+          "result": "L’utilisateur choisit un compromis réel au lieu de recevoir une invention."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Réponse à tout prix",
+          "rejected": "Inventer une recette à partir des ingrédients restants et lui attribuer une nutrition approximative comme si elle était validée.",
+          "reason": "La fluidité de la réponse cache l’absence de connaissance et de contrôles."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Mode expérimental confirmé",
+          "handling": "L’utilisateur peut demander une idée hors corpus dans un espace non opérationnel.",
+          "limits": "La sortie est étiquetée expérimentation, ne décrémente pas le stock automatiquement et ne produit aucun conseil critique non sourcé."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-014-T01",
+          "given": "zéro solution validée après application des contraintes dures",
+          "when": "le moteur répond",
+          "then": "il retourne un état no_solution avec les contraintes bloquantes et aucune recette synthétique",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-015",
+      "title": "Les corrections créent de nouvelles versions",
+      "rule": "Une donnée publiée n’est jamais réécrite silencieusement. Toute correction conserve l’ancienne version, documente sa raison, identifie les objets dépendants et déclenche les recalculs nécessaires.",
+      "justification": "Un planning passé, une nutrition calculée ou un mouvement de stock doit rester explicable avec les connaissances disponibles au moment de la décision. L’historique protège à la fois l’audit et la possibilité de corriger les effets futurs.",
+      "consequences": [
+        "les plans référencent un snapshot immuable",
+        "les dépendances impactées sont repérées avant publication",
+        "les corrections critiques peuvent invalider les décisions futures sans falsifier le passé"
+      ],
+      "improves": [
+        "historique",
+        "qualite",
+        "debug",
+        "confiance"
+      ],
+      "examples": [
+        {
+          "case": "Correction d’une densité",
+          "situation": "Une densité validée est découverte erronée.",
+          "decision": "Une nouvelle version est publiée avec motif, source et liste des recettes ou conversions à recalculer.",
+          "result": "Les calculs futurs sont corrigés et les calculs passés restent auditables."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Modification en place",
+          "rejected": "Changer la valeur dans la base sans conserver l’ancienne ni recalculer les dépendances.",
+          "reason": "Les résultats historiques deviennent inexplicables et les dérivés restent incohérents."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Correction purement typographique",
+          "handling": "Une modification sans impact sémantique peut suivre un flux allégé.",
+          "limits": "Elle reste tracée et ne peut modifier identifiant, sens, valeur ou relation."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-015-T01",
+          "given": "un objet publié et référencé par un plan",
+          "when": "un champ sémantique est corrigé",
+          "then": "un nouvel identifiant de version est créé et la référence historique continue de résoudre l’ancienne version",
+          "severity": "blocking",
+          "automatable": true
+        }
+      ]
+    },
+    {
+      "code": "PHI-016",
+      "title": "Chaque ajout doit améliorer une décision réelle",
+      "rule": "Un nouvel objet, champ ou volume n’est accepté que s’il améliore de manière démontrable au moins un usage : planification, nutrition, stock, courses, substitutions, batch cooking, sécurité ou simplicité utilisateur.",
+      "justification": "La taille brute d’un corpus peut augmenter sans améliorer le produit. Ce critère empêche les listes décoratives, les champs jamais utilisés et les doublons créés uniquement pour atteindre une cible quantitative.",
+      "consequences": [
+        "chaque proposition nomme ses consommateurs et ses décisions affectées",
+        "les cibles quantitatives restent des seuils de couverture, pas une définition suffisante de qualité",
+        "une donnée coûteuse sans usage prévu peut être différée"
+      ],
+      "improves": [
+        "roadmap",
+        "qualite",
+        "maintenabilite",
+        "experience_utilisateur"
+      ],
+      "examples": [
+        {
+          "case": "Ajout du poids unitaire",
+          "situation": "Le planning doit convertir trois pommes en grammes pour calculer nutrition et courses.",
+          "decision": "Le champ poids unitaire est ajouté avec une distribution ou une valeur contextualisée.",
+          "result": "La conversion et la liste de courses deviennent déterministes."
+        }
+      ],
+      "counterexamples": [
+        {
+          "case": "Métadonnée décorative",
+          "rejected": "Ajouter une longue description marketing à chaque ingrédient sans consommateur produit ni contrôle qualité.",
+          "reason": "Le coût de maintenance augmente sans améliorer une décision."
+        }
+      ],
+      "exceptions": [
+        {
+          "case": "Recherche préparatoire",
+          "handling": "Une donnée peut être inventoriée avant son usage si elle prépare un lot explicitement planifié.",
+          "limits": "Elle reste candidate, porte un propriétaire et une date de réévaluation."
+        }
+      ],
+      "tests": [
+        {
+          "code": "PHI-016-T01",
+          "given": "une proposition de nouveau champ sans consommateur, règle ni indicateur d’impact",
+          "when": "la revue éditoriale est effectuée",
+          "then": "la proposition ne peut pas passer au statut validé",
+          "severity": "major",
+          "automatable": true
+        }
+      ]
+    }
+  ],
+  "global_exceptions": [
+    {
+      "code": "EXC-PHI-001",
+      "case": "Création culinaire libre",
+      "rule": "Myko peut offrir un espace d’idéation clairement séparé du corpus opérationnel.",
+      "guardrails": [
+        "aucune promotion automatique vers le corpus",
+        "aucune décrémentation ou réservation de stock",
+        "aucun calcul nutritionnel présenté comme déterministe",
+        "aucun conseil de sécurité non sourcé"
+      ]
+    },
+    {
+      "code": "EXC-PHI-002",
+      "case": "Décision manuelle de l’utilisateur",
+      "rule": "L’utilisateur reste libre d’exécuter une décision hors recommandation.",
+      "guardrails": [
+        "la décision est distinguée d’une recommandation Myko",
+        "les contraintes de sécurité connues restent signalées",
+        "le choix ponctuel ne modifie pas la vérité canonique"
+      ]
+    }
+  ],
+  "global_tests": [
+    {
+      "code": "PHI-GLOBAL-T01",
+      "assertion": "Aucun objet au statut structure, inventory ou draft ne peut être utilisé comme vérité opérationnelle par le planning.",
+      "severity": "blocking",
+      "automatable": true
+    },
+    {
+      "code": "PHI-GLOBAL-T02",
+      "assertion": "Toute décision publiée peut restituer les identifiants et versions des objets et règles utilisés.",
+      "severity": "blocking",
+      "automatable": true
+    },
+    {
+      "code": "PHI-GLOBAL-T03",
+      "assertion": "Toute absence de solution reste distinguable d’une erreur technique et d’une lacune de corpus.",
+      "severity": "major",
+      "automatable": true
+    },
+    {
+      "code": "PHI-GLOBAL-T04",
+      "assertion": "Aucune préférence utilisateur ne modifie directement un objet canonique publié.",
+      "severity": "blocking",
+      "automatable": true
+    },
+    {
+      "code": "PHI-GLOBAL-T05",
+      "assertion": "Toute donnée critique inconnue reste inconnue ou bloque l’action ; elle n’est pas remplacée par une constante générique non sourcée.",
+      "severity": "blocking",
+      "automatable": true
+    }
+  ],
+  "validation": {
+    "authoring_complete": true,
+    "machine_review_status": "approved",
+    "human_review_status": "pending",
+    "required_human_roles": [
+      "product_owner",
+      "culinary_editor"
+    ],
+    "publication_blockers": [
+      "validation humaine non réalisée",
+      "cohérence avec V00-B à V00-F non encore vérifiable"
+    ]
+  }
+}

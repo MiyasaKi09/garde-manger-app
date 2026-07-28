@@ -12,7 +12,8 @@ import { parseCiqualValue } from '../lib/normalize.mjs'
  * @param {string} filePath chemin du .xls Ciqual
  * @returns {{ header:string[], nutrientMap:object, records:object[] }}
  *   record = { alim_code, alim_nom_fr, alim_nom_sci, grp_nom, ssgrp_nom, ssssgrp_nom,
- *              values:{code:amount}, statuses:{code:status} }
+ *              values:{code:amount}, upper_bounds:{code:amount},
+ *              traces:string[], statuses:{code:status} }
  */
 export function parseCiqualWorkbook(filePath) {
   // The source archive is committed as `.xls.gz` so the complete official
@@ -30,11 +31,15 @@ export function parseCiqualWorkbook(filePath) {
     const r = rows[i]
     if (!r || r[COL.alim_code] == null) continue
     const values = {}
+    const upperBounds = {}
+    const traces = []
     const statuses = {}
     for (const [code, { index }] of Object.entries(nutrientMap)) {
-      const { amount, status } = parseCiqualValue(r[index])
+      const { amount, status, upper_bound: upperBound } = parseCiqualValue(r[index])
       statuses[code] = status
       if (amount != null) values[code] = amount
+      if (upperBound != null) upperBounds[code] = upperBound
+      if (status === 'trace') traces.push(code)
     }
     records.push({
       alim_code: String(r[COL.alim_code]),
@@ -44,6 +49,8 @@ export function parseCiqualWorkbook(filePath) {
       ssgrp_nom: r[COL.ssgrp_nom] != null ? String(r[COL.ssgrp_nom]) : '',
       ssssgrp_nom: r[COL.ssssgrp_nom] != null ? String(r[COL.ssssgrp_nom]) : '',
       values,
+      upper_bounds: upperBounds,
+      traces,
       statuses,
     })
   }

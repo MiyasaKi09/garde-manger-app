@@ -1,0 +1,54 @@
+{
+  "schema": "myko://food-canonical-candidates/v2",
+  "schema_version": 2,
+  "source_corpus": "MYKO-CIQUAL-REF-2025-1",
+  "generated_on": "2026-07-28",
+  "candidate_count": 2212,
+  "source_entry_count": 3484,
+  "grouping_rule": "Premier segment du libellé Ciqual avant la première virgule, normalisé uniquement pour créer une proposition de frontière.",
+  "status": "pending_review",
+  "shards": [
+    {
+      "path": "candidates/part-0001.json",
+      "position": 1,
+      "candidate_count": 400,
+      "first_candidate_id": "CAND-CIQ-40601",
+      "last_candidate_id": "CAND-CIQ-31026"
+    },
+    {
+      "path": "candidates/part-0002.json",
+      "position": 2,
+      "candidate_count": 400,
+      "first_candidate_id": "CAND-CIQ-18104",
+      "last_candidate_id": "CAND-CIQ-11082"
+    },
+    {
+      "path": "candidates/part-0003.json",
+      "position": 3,
+      "candidate_count": 400,
+      "first_candidate_id": "CAND-CIQ-32140",
+      "last_candidate_id": "CAND-CIQ-20359"
+    },
+    {
+      "path": "candidates/part-0004.json",
+      "position": 4,
+      "candidate_count": 400,
+      "first_candidate_id": "CAND-CIQ-20586",
+      "last_candidate_id": "CAND-CIQ-26271"
+    },
+    {
+      "path": "candidates/part-0005.json",
+      "position": 5,
+      "candidate_count": 400,
+      "first_candidate_id": "CAND-CIQ-26273",
+      "last_candidate_id": "CAND-CIQ-12356"
+    },
+    {
+      "path": "candidates/part-0006.json",
+      "position": 6,
+      "candidate_count": 212,
+      "first_candidate_id": "CAND-CIQ-20901",
+      "last_candidate_id": "CAND-CIQ-19557"
+    }
+  ]
+}

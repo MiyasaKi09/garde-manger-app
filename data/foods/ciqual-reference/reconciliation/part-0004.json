@@ -1,0 +1,5591 @@
+{
+  "schema": "myko://ciqual-reconciliation-shard/v1",
+  "shard": "part-0004",
+  "change_count": 500,
+  "changes": [
+    {
+      "source_record_key": "19060",
+      "previous_entry_id": "CIQ-19060",
+      "current_entry_id": "CIQ-19060",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19114",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19114",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19116",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19116",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19117",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19117",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19118",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19118",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19119",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19119",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19120",
+      "previous_entry_id": "CIQ-19120",
+      "current_entry_id": "CIQ-19120",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19122",
+      "previous_entry_id": "CIQ-19122",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19127",
+      "previous_entry_id": "CIQ-19127",
+      "current_entry_id": "CIQ-19127",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19200",
+      "previous_entry_id": "CIQ-19200",
+      "current_entry_id": "CIQ-19200",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19201",
+      "previous_entry_id": "CIQ-19201",
+      "current_entry_id": "CIQ-19201",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19202",
+      "previous_entry_id": "CIQ-19202",
+      "current_entry_id": "CIQ-19202",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19225",
+      "previous_entry_id": "CIQ-19225",
+      "current_entry_id": "CIQ-19225",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19250",
+      "previous_entry_id": "CIQ-19250",
+      "current_entry_id": "CIQ-19250",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19270",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19270",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19402",
+      "previous_entry_id": "CIQ-19402",
+      "current_entry_id": "CIQ-19402",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19403",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19403",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19404",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19404",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19410",
+      "previous_entry_id": "CIQ-19410",
+      "current_entry_id": "CIQ-19410",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19411",
+      "previous_entry_id": "CIQ-19411",
+      "current_entry_id": "CIQ-19411",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19415",
+      "previous_entry_id": "CIQ-19415",
+      "current_entry_id": "CIQ-19415",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19417",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19417",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19420",
+      "previous_entry_id": "CIQ-19420",
+      "current_entry_id": "CIQ-19420",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19430",
+      "previous_entry_id": "CIQ-19430",
+      "current_entry_id": "CIQ-19430",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19431",
+      "previous_entry_id": "CIQ-19431",
+      "current_entry_id": "CIQ-19431",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19432",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19432",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19433",
+      "previous_entry_id": "CIQ-19433",
+      "current_entry_id": "CIQ-19433",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19434",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19434",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19435",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19435",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19436",
+      "previous_entry_id": "CIQ-19436",
+      "current_entry_id": "CIQ-19436",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19437",
+      "previous_entry_id": "CIQ-19437",
+      "current_entry_id": "CIQ-19437",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19500",
+      "previous_entry_id": "CIQ-19500",
+      "current_entry_id": "CIQ-19500",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19501",
+      "previous_entry_id": "CIQ-19501",
+      "current_entry_id": "CIQ-19501",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19508",
+      "previous_entry_id": "CIQ-19508",
+      "current_entry_id": "CIQ-19508",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19516",
+      "previous_entry_id": "CIQ-19516",
+      "current_entry_id": "CIQ-19516",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19530",
+      "previous_entry_id": "CIQ-19530",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19534",
+      "previous_entry_id": "CIQ-19534",
+      "current_entry_id": "CIQ-19534",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19535",
+      "previous_entry_id": "CIQ-19535",
+      "current_entry_id": "CIQ-19535",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19536",
+      "previous_entry_id": "CIQ-19536",
+      "current_entry_id": "CIQ-19536",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19538",
+      "previous_entry_id": "CIQ-19538",
+      "current_entry_id": "CIQ-19538",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19539",
+      "previous_entry_id": "CIQ-19539",
+      "current_entry_id": "CIQ-19539",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19541",
+      "previous_entry_id": "CIQ-19541",
+      "current_entry_id": "CIQ-19541",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19542",
+      "previous_entry_id": "CIQ-19542",
+      "current_entry_id": "CIQ-19542",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19543",
+      "previous_entry_id": "CIQ-19543",
+      "current_entry_id": "CIQ-19543",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19544",
+      "previous_entry_id": "CIQ-19544",
+      "current_entry_id": "CIQ-19544",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19546",
+      "previous_entry_id": "CIQ-19546",
+      "current_entry_id": "CIQ-19546",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19548",
+      "previous_entry_id": "CIQ-19548",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19550",
+      "previous_entry_id": "CIQ-19550",
+      "current_entry_id": "CIQ-19550",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19551",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19551",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19552",
+      "previous_entry_id": "CIQ-19552",
+      "current_entry_id": "CIQ-19552",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19553",
+      "previous_entry_id": "CIQ-19553",
+      "current_entry_id": "CIQ-19553",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19554",
+      "previous_entry_id": "CIQ-19554",
+      "current_entry_id": "CIQ-19554",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19555",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19555",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19556",
+      "previous_entry_id": "CIQ-19556",
+      "current_entry_id": "CIQ-19556",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19557",
+      "previous_entry_id": "CIQ-19557",
+      "current_entry_id": "CIQ-19557",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19558",
+      "previous_entry_id": "CIQ-19558",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19559",
+      "previous_entry_id": "CIQ-19559",
+      "current_entry_id": "CIQ-19559",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19572",
+      "previous_entry_id": "CIQ-19572",
+      "current_entry_id": "CIQ-19572",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19574",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19574",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19575",
+      "previous_entry_id": "CIQ-19575",
+      "current_entry_id": "CIQ-19575",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19577",
+      "previous_entry_id": "CIQ-19577",
+      "current_entry_id": "CIQ-19577",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19578",
+      "previous_entry_id": "CIQ-19578",
+      "current_entry_id": "CIQ-19578",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19579",
+      "previous_entry_id": "CIQ-19579",
+      "current_entry_id": "CIQ-19579",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19580",
+      "previous_entry_id": "CIQ-19580",
+      "current_entry_id": "CIQ-19580",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19581",
+      "previous_entry_id": "CIQ-19581",
+      "current_entry_id": "CIQ-19581",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19582",
+      "previous_entry_id": "CIQ-19582",
+      "current_entry_id": "CIQ-19582",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19584",
+      "previous_entry_id": "CIQ-19584",
+      "current_entry_id": "CIQ-19584",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19585",
+      "previous_entry_id": "CIQ-19585",
+      "current_entry_id": "CIQ-19585",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19587",
+      "previous_entry_id": "CIQ-19587",
+      "current_entry_id": "CIQ-19587",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19589",
+      "previous_entry_id": "CIQ-19589",
+      "current_entry_id": "CIQ-19589",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19590",
+      "previous_entry_id": "CIQ-19590",
+      "current_entry_id": "CIQ-19590",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19591",
+      "previous_entry_id": "CIQ-19591",
+      "current_entry_id": "CIQ-19591",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19592",
+      "previous_entry_id": "CIQ-19592",
+      "current_entry_id": "CIQ-19592",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19593",
+      "previous_entry_id": "CIQ-19593",
+      "current_entry_id": "CIQ-19593",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19594",
+      "previous_entry_id": "CIQ-19594",
+      "current_entry_id": "CIQ-19594",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19596",
+      "previous_entry_id": "CIQ-19596",
+      "current_entry_id": "CIQ-19596",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19597",
+      "previous_entry_id": "CIQ-19597",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19598",
+      "previous_entry_id": "CIQ-19598",
+      "current_entry_id": "CIQ-19598",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19599",
+      "previous_entry_id": "CIQ-19599",
+      "current_entry_id": "CIQ-19599",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19600",
+      "previous_entry_id": "CIQ-19600",
+      "current_entry_id": "CIQ-19600",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19624",
+      "previous_entry_id": "CIQ-19624",
+      "current_entry_id": "CIQ-19624",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19628",
+      "previous_entry_id": "CIQ-19628",
+      "current_entry_id": "CIQ-19628",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19638",
+      "previous_entry_id": "CIQ-19638",
+      "current_entry_id": "CIQ-19638",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19639",
+      "previous_entry_id": "CIQ-19639",
+      "current_entry_id": "CIQ-19639",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19641",
+      "previous_entry_id": "CIQ-19641",
+      "current_entry_id": "CIQ-19641",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19643",
+      "previous_entry_id": "CIQ-19643",
+      "current_entry_id": "CIQ-19643",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19644",
+      "previous_entry_id": "CIQ-19644",
+      "current_entry_id": "CIQ-19644",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19645",
+      "previous_entry_id": "CIQ-19645",
+      "current_entry_id": "CIQ-19645",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19646",
+      "previous_entry_id": "CIQ-19646",
+      "current_entry_id": "CIQ-19646",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19647",
+      "previous_entry_id": "CIQ-19647",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19648",
+      "previous_entry_id": "CIQ-19648",
+      "current_entry_id": "CIQ-19648",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19649",
+      "previous_entry_id": "CIQ-19649",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19650",
+      "previous_entry_id": "CIQ-19650",
+      "current_entry_id": "CIQ-19650",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19651",
+      "previous_entry_id": "CIQ-19651",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19652",
+      "previous_entry_id": "CIQ-19652",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19653",
+      "previous_entry_id": "CIQ-19653",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19654",
+      "previous_entry_id": "CIQ-19654",
+      "current_entry_id": "CIQ-19654",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19655",
+      "previous_entry_id": "CIQ-19655",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19656",
+      "previous_entry_id": "CIQ-19656",
+      "current_entry_id": "CIQ-19656",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19657",
+      "previous_entry_id": "CIQ-19657",
+      "current_entry_id": "CIQ-19657",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19658",
+      "previous_entry_id": "CIQ-19658",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19659",
+      "previous_entry_id": "CIQ-19659",
+      "current_entry_id": "CIQ-19659",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19660",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19660",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19661",
+      "previous_entry_id": "CIQ-19661",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19662",
+      "previous_entry_id": "CIQ-19662",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19663",
+      "previous_entry_id": "CIQ-19663",
+      "current_entry_id": "CIQ-19663",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19664",
+      "previous_entry_id": "CIQ-19664",
+      "current_entry_id": "CIQ-19664",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19665",
+      "previous_entry_id": "CIQ-19665",
+      "current_entry_id": "CIQ-19665",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19666",
+      "previous_entry_id": "CIQ-19666",
+      "current_entry_id": "CIQ-19666",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19667",
+      "previous_entry_id": "CIQ-19667",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19668",
+      "previous_entry_id": "CIQ-19668",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19669",
+      "previous_entry_id": "CIQ-19669",
+      "current_entry_id": "CIQ-19669",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19671",
+      "previous_entry_id": "CIQ-19671",
+      "current_entry_id": "CIQ-19671",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19672",
+      "previous_entry_id": "CIQ-19672",
+      "current_entry_id": "CIQ-19672",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19673",
+      "previous_entry_id": "CIQ-19673",
+      "current_entry_id": "CIQ-19673",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19674",
+      "previous_entry_id": "CIQ-19674",
+      "current_entry_id": "CIQ-19674",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19675",
+      "previous_entry_id": "CIQ-19675",
+      "current_entry_id": "CIQ-19675",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19676",
+      "previous_entry_id": "CIQ-19676",
+      "current_entry_id": "CIQ-19676",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19677",
+      "previous_entry_id": "CIQ-19677",
+      "current_entry_id": "CIQ-19677",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19678",
+      "previous_entry_id": "CIQ-19678",
+      "current_entry_id": "CIQ-19678",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19679",
+      "previous_entry_id": "CIQ-19679",
+      "current_entry_id": "CIQ-19679",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19680",
+      "previous_entry_id": "CIQ-19680",
+      "current_entry_id": "CIQ-19680",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19681",
+      "previous_entry_id": "CIQ-19681",
+      "current_entry_id": "CIQ-19681",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19682",
+      "previous_entry_id": "CIQ-19682",
+      "current_entry_id": "CIQ-19682",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19683",
+      "previous_entry_id": "CIQ-19683",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19684",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19684",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19685",
+      "previous_entry_id": "CIQ-19685",
+      "current_entry_id": "CIQ-19685",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19686",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19686",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19688",
+      "previous_entry_id": "CIQ-19688",
+      "current_entry_id": "CIQ-19688",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19689",
+      "previous_entry_id": "CIQ-19689",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "19691",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19691",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19692",
+      "previous_entry_id": "CIQ-19692",
+      "current_entry_id": "CIQ-19692",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19693",
+      "previous_entry_id": "CIQ-19693",
+      "current_entry_id": "CIQ-19693",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19694",
+      "previous_entry_id": "CIQ-19694",
+      "current_entry_id": "CIQ-19694",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19695",
+      "previous_entry_id": "CIQ-19695",
+      "current_entry_id": "CIQ-19695",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19696",
+      "previous_entry_id": "CIQ-19696",
+      "current_entry_id": "CIQ-19696",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19697",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19697",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19698",
+      "previous_entry_id": "CIQ-19698",
+      "current_entry_id": "CIQ-19698",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19699",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19699",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19705",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19705",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19707",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19707",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19708",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19708",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19709",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19709",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19711",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19711",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19712",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19712",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19713",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19713",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19714",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19714",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19715",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19715",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19716",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19716",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19718",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19718",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19719",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19719",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19720",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19720",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19721",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19721",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19722",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19722",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19723",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19723",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19724",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19724",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19725",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19725",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19726",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19726",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19727",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19727",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19728",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19728",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19733",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19733",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "19801",
+      "previous_entry_id": "CIQ-19801",
+      "current_entry_id": "CIQ-19801",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19805",
+      "previous_entry_id": "CIQ-19805",
+      "current_entry_id": "CIQ-19805",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19852",
+      "previous_entry_id": "CIQ-19852",
+      "current_entry_id": "CIQ-19852",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19860",
+      "previous_entry_id": "CIQ-19860",
+      "current_entry_id": "CIQ-19860",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19862",
+      "previous_entry_id": "CIQ-19862",
+      "current_entry_id": "CIQ-19862",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19863",
+      "previous_entry_id": "CIQ-19863",
+      "current_entry_id": "CIQ-19863",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19864",
+      "previous_entry_id": "CIQ-19864",
+      "current_entry_id": "CIQ-19864",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19865",
+      "previous_entry_id": "CIQ-19865",
+      "current_entry_id": "CIQ-19865",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19882",
+      "previous_entry_id": "CIQ-19882",
+      "current_entry_id": "CIQ-19882",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "19999",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-19999",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20000",
+      "previous_entry_id": "CIQ-20000",
+      "current_entry_id": "CIQ-20000",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20001",
+      "previous_entry_id": "CIQ-20001",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20002",
+      "previous_entry_id": "CIQ-20002",
+      "current_entry_id": "CIQ-20002",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20003",
+      "previous_entry_id": "CIQ-20003",
+      "current_entry_id": "CIQ-20003",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20004",
+      "previous_entry_id": "CIQ-20004",
+      "current_entry_id": "CIQ-20004",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20005",
+      "previous_entry_id": "CIQ-20005",
+      "current_entry_id": "CIQ-20005",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20006",
+      "previous_entry_id": "CIQ-20006",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20007",
+      "previous_entry_id": "CIQ-20007",
+      "current_entry_id": "CIQ-20007",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20008",
+      "previous_entry_id": "CIQ-20008",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20009",
+      "previous_entry_id": "CIQ-20009",
+      "current_entry_id": "CIQ-20009",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20010",
+      "previous_entry_id": "CIQ-20010",
+      "current_entry_id": "CIQ-20010",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20011",
+      "previous_entry_id": "CIQ-20011",
+      "current_entry_id": "CIQ-20011",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20012",
+      "previous_entry_id": "CIQ-20012",
+      "current_entry_id": "CIQ-20012",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20013",
+      "previous_entry_id": "CIQ-20013",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20014",
+      "previous_entry_id": "CIQ-20014",
+      "current_entry_id": "CIQ-20014",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20015",
+      "previous_entry_id": "CIQ-20015",
+      "current_entry_id": "CIQ-20015",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20016",
+      "previous_entry_id": "CIQ-20016",
+      "current_entry_id": "CIQ-20016",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20017",
+      "previous_entry_id": "CIQ-20017",
+      "current_entry_id": "CIQ-20017",
+      "identity_change": "renamed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20018",
+      "previous_entry_id": "CIQ-20018",
+      "current_entry_id": "CIQ-20018",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20019",
+      "previous_entry_id": "CIQ-20019",
+      "current_entry_id": "CIQ-20019",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20020",
+      "previous_entry_id": "CIQ-20020",
+      "current_entry_id": "CIQ-20020",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20021",
+      "previous_entry_id": "CIQ-20021",
+      "current_entry_id": "CIQ-20021",
+      "identity_change": "renamed",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20022",
+      "previous_entry_id": "CIQ-20022",
+      "current_entry_id": "CIQ-20022",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20023",
+      "previous_entry_id": "CIQ-20023",
+      "current_entry_id": "CIQ-20023",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20024",
+      "previous_entry_id": "CIQ-20024",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20025",
+      "previous_entry_id": "CIQ-20025",
+      "current_entry_id": "CIQ-20025",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20026",
+      "previous_entry_id": "CIQ-20026",
+      "current_entry_id": "CIQ-20026",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20027",
+      "previous_entry_id": "CIQ-20027",
+      "current_entry_id": "CIQ-20027",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20028",
+      "previous_entry_id": "CIQ-20028",
+      "current_entry_id": "CIQ-20028",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20029",
+      "previous_entry_id": "CIQ-20029",
+      "current_entry_id": "CIQ-20029",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20030",
+      "previous_entry_id": "CIQ-20030",
+      "current_entry_id": "CIQ-20030",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20031",
+      "previous_entry_id": "CIQ-20031",
+      "current_entry_id": "CIQ-20031",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20033",
+      "previous_entry_id": "CIQ-20033",
+      "current_entry_id": "CIQ-20033",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20034",
+      "previous_entry_id": "CIQ-20034",
+      "current_entry_id": "CIQ-20034",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20035",
+      "previous_entry_id": "CIQ-20035",
+      "current_entry_id": "CIQ-20035",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20036",
+      "previous_entry_id": "CIQ-20036",
+      "current_entry_id": "CIQ-20036",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20037",
+      "previous_entry_id": "CIQ-20037",
+      "current_entry_id": "CIQ-20037",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20038",
+      "previous_entry_id": "CIQ-20038",
+      "current_entry_id": "CIQ-20038",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20039",
+      "previous_entry_id": "CIQ-20039",
+      "current_entry_id": "CIQ-20039",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20040",
+      "previous_entry_id": "CIQ-20040",
+      "current_entry_id": "CIQ-20040",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20041",
+      "previous_entry_id": "CIQ-20041",
+      "current_entry_id": "CIQ-20041",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20043",
+      "previous_entry_id": "CIQ-20043",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20044",
+      "previous_entry_id": "CIQ-20044",
+      "current_entry_id": "CIQ-20044",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20045",
+      "previous_entry_id": "CIQ-20045",
+      "current_entry_id": "CIQ-20045",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20046",
+      "previous_entry_id": "CIQ-20046",
+      "current_entry_id": "CIQ-20046",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20047",
+      "previous_entry_id": "CIQ-20047",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20048",
+      "previous_entry_id": "CIQ-20048",
+      "current_entry_id": "CIQ-20048",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20049",
+      "previous_entry_id": "CIQ-20049",
+      "current_entry_id": "CIQ-20049",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20050",
+      "previous_entry_id": "CIQ-20050",
+      "current_entry_id": "CIQ-20050",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20051",
+      "previous_entry_id": "CIQ-20051",
+      "current_entry_id": "CIQ-20051",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20052",
+      "previous_entry_id": "CIQ-20052",
+      "current_entry_id": "CIQ-20052",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20053",
+      "previous_entry_id": "CIQ-20053",
+      "current_entry_id": "CIQ-20053",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20054",
+      "previous_entry_id": "CIQ-20054",
+      "current_entry_id": "CIQ-20054",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20055",
+      "previous_entry_id": "CIQ-20055",
+      "current_entry_id": "CIQ-20055",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20056",
+      "previous_entry_id": "CIQ-20056",
+      "current_entry_id": "CIQ-20056",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20057",
+      "previous_entry_id": "CIQ-20057",
+      "current_entry_id": "CIQ-20057",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20058",
+      "previous_entry_id": "CIQ-20058",
+      "current_entry_id": "CIQ-20058",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20059",
+      "previous_entry_id": "CIQ-20059",
+      "current_entry_id": "CIQ-20059",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20060",
+      "previous_entry_id": "CIQ-20060",
+      "current_entry_id": "CIQ-20060",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20061",
+      "previous_entry_id": "CIQ-20061",
+      "current_entry_id": "CIQ-20061",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20062",
+      "previous_entry_id": "CIQ-20062",
+      "current_entry_id": "CIQ-20062",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20063",
+      "previous_entry_id": "CIQ-20063",
+      "current_entry_id": "CIQ-20063",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20064",
+      "previous_entry_id": "CIQ-20064",
+      "current_entry_id": "CIQ-20064",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20065",
+      "previous_entry_id": "CIQ-20065",
+      "current_entry_id": "CIQ-20065",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20066",
+      "previous_entry_id": "CIQ-20066",
+      "current_entry_id": "CIQ-20066",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20067",
+      "previous_entry_id": "CIQ-20067",
+      "current_entry_id": "CIQ-20067",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20068",
+      "previous_entry_id": "CIQ-20068",
+      "current_entry_id": "CIQ-20068",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20069",
+      "previous_entry_id": "CIQ-20069",
+      "current_entry_id": "CIQ-20069",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20070",
+      "previous_entry_id": "CIQ-20070",
+      "current_entry_id": "CIQ-20070",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20071",
+      "previous_entry_id": "CIQ-20071",
+      "current_entry_id": "CIQ-20071",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20072",
+      "previous_entry_id": "CIQ-20072",
+      "current_entry_id": "CIQ-20072",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20073",
+      "previous_entry_id": "CIQ-20073",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20074",
+      "previous_entry_id": "CIQ-20074",
+      "current_entry_id": "CIQ-20074",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20076",
+      "previous_entry_id": "CIQ-20076",
+      "current_entry_id": "CIQ-20076",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20077",
+      "previous_entry_id": "CIQ-20077",
+      "current_entry_id": "CIQ-20077",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20078",
+      "previous_entry_id": "CIQ-20078",
+      "current_entry_id": "CIQ-20078",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20079",
+      "previous_entry_id": "CIQ-20079",
+      "current_entry_id": "CIQ-20079",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20081",
+      "previous_entry_id": "CIQ-20081",
+      "current_entry_id": "CIQ-20081",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20082",
+      "previous_entry_id": "CIQ-20082",
+      "current_entry_id": "CIQ-20082",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20083",
+      "previous_entry_id": "CIQ-20083",
+      "current_entry_id": "CIQ-20083",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20084",
+      "previous_entry_id": "CIQ-20084",
+      "current_entry_id": "CIQ-20084",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20085",
+      "previous_entry_id": "CIQ-20085",
+      "current_entry_id": "CIQ-20085",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20086",
+      "previous_entry_id": "CIQ-20086",
+      "current_entry_id": "CIQ-20086",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20087",
+      "previous_entry_id": "CIQ-20087",
+      "current_entry_id": "CIQ-20087",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20088",
+      "previous_entry_id": "CIQ-20088",
+      "current_entry_id": "CIQ-20088",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20089",
+      "previous_entry_id": "CIQ-20089",
+      "current_entry_id": "CIQ-20089",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20090",
+      "previous_entry_id": "CIQ-20090",
+      "current_entry_id": "CIQ-20090",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20091",
+      "previous_entry_id": "CIQ-20091",
+      "current_entry_id": "CIQ-20091",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20092",
+      "previous_entry_id": "CIQ-20092",
+      "current_entry_id": "CIQ-20092",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20093",
+      "previous_entry_id": "CIQ-20093",
+      "current_entry_id": "CIQ-20093",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20094",
+      "previous_entry_id": "CIQ-20094",
+      "current_entry_id": "CIQ-20094",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20095",
+      "previous_entry_id": "CIQ-20095",
+      "current_entry_id": "CIQ-20095",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20096",
+      "previous_entry_id": "CIQ-20096",
+      "current_entry_id": "CIQ-20096",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20097",
+      "previous_entry_id": "CIQ-20097",
+      "current_entry_id": "CIQ-20097",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20099",
+      "previous_entry_id": "CIQ-20099",
+      "current_entry_id": "CIQ-20099",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20101",
+      "previous_entry_id": "CIQ-20101",
+      "current_entry_id": "CIQ-20101",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20102",
+      "previous_entry_id": "CIQ-20102",
+      "current_entry_id": "CIQ-20102",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20103",
+      "previous_entry_id": "CIQ-20103",
+      "current_entry_id": "CIQ-20103",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20105",
+      "previous_entry_id": "CIQ-20105",
+      "current_entry_id": "CIQ-20105",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20106",
+      "previous_entry_id": "CIQ-20106",
+      "current_entry_id": "CIQ-20106",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20108",
+      "previous_entry_id": "CIQ-20108",
+      "current_entry_id": "CIQ-20108",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20111",
+      "previous_entry_id": "CIQ-20111",
+      "current_entry_id": "CIQ-20111",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20114",
+      "previous_entry_id": "CIQ-20114",
+      "current_entry_id": "CIQ-20114",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20116",
+      "previous_entry_id": "CIQ-20116",
+      "current_entry_id": "CIQ-20116",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20118",
+      "previous_entry_id": "CIQ-20118",
+      "current_entry_id": "CIQ-20118",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20119",
+      "previous_entry_id": "CIQ-20119",
+      "current_entry_id": "CIQ-20119",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20121",
+      "previous_entry_id": "CIQ-20121",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20122",
+      "previous_entry_id": "CIQ-20122",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20123",
+      "previous_entry_id": "CIQ-20123",
+      "current_entry_id": "CIQ-20123",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20124",
+      "previous_entry_id": "CIQ-20124",
+      "current_entry_id": "CIQ-20124",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20125",
+      "previous_entry_id": "CIQ-20125",
+      "current_entry_id": "CIQ-20125",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20126",
+      "previous_entry_id": "CIQ-20126",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20127",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20127",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20128",
+      "previous_entry_id": "CIQ-20128",
+      "current_entry_id": "CIQ-20128",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20132",
+      "previous_entry_id": "CIQ-20132",
+      "current_entry_id": "CIQ-20132",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20133",
+      "previous_entry_id": "CIQ-20133",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20134",
+      "previous_entry_id": "CIQ-20134",
+      "current_entry_id": "CIQ-20134",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20135",
+      "previous_entry_id": "CIQ-20135",
+      "current_entry_id": "CIQ-20135",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20136",
+      "previous_entry_id": "CIQ-20136",
+      "current_entry_id": "CIQ-20136",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20137",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20137",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20138",
+      "previous_entry_id": "CIQ-20138",
+      "current_entry_id": "CIQ-20138",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20139",
+      "previous_entry_id": "CIQ-20139",
+      "current_entry_id": "CIQ-20139",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20141",
+      "previous_entry_id": "CIQ-20141",
+      "current_entry_id": "CIQ-20141",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20143",
+      "previous_entry_id": "CIQ-20143",
+      "current_entry_id": "CIQ-20143",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20145",
+      "previous_entry_id": "CIQ-20145",
+      "current_entry_id": "CIQ-20145",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20151",
+      "previous_entry_id": "CIQ-20151",
+      "current_entry_id": "CIQ-20151",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20155",
+      "previous_entry_id": "CIQ-20155",
+      "current_entry_id": "CIQ-20155",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20156",
+      "previous_entry_id": "CIQ-20156",
+      "current_entry_id": "CIQ-20156",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20158",
+      "previous_entry_id": "CIQ-20158",
+      "current_entry_id": "CIQ-20158",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20159",
+      "previous_entry_id": "CIQ-20159",
+      "current_entry_id": "CIQ-20159",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20160",
+      "previous_entry_id": "CIQ-20160",
+      "current_entry_id": "CIQ-20160",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20161",
+      "previous_entry_id": "CIQ-20161",
+      "current_entry_id": "CIQ-20161",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20162",
+      "previous_entry_id": "CIQ-20162",
+      "current_entry_id": "CIQ-20162",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20163",
+      "previous_entry_id": "CIQ-20163",
+      "current_entry_id": "CIQ-20163",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20165",
+      "previous_entry_id": "CIQ-20165",
+      "current_entry_id": "CIQ-20165",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20166",
+      "previous_entry_id": "CIQ-20166",
+      "current_entry_id": "CIQ-20166",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20167",
+      "previous_entry_id": "CIQ-20167",
+      "current_entry_id": "CIQ-20167",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20168",
+      "previous_entry_id": "CIQ-20168",
+      "current_entry_id": "CIQ-20168",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20169",
+      "previous_entry_id": "CIQ-20169",
+      "current_entry_id": "CIQ-20169",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20170",
+      "previous_entry_id": "CIQ-20170",
+      "current_entry_id": "CIQ-20170",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20171",
+      "previous_entry_id": "CIQ-20171",
+      "current_entry_id": "CIQ-20171",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20172",
+      "previous_entry_id": "CIQ-20172",
+      "current_entry_id": "CIQ-20172",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20173",
+      "previous_entry_id": "CIQ-20173",
+      "current_entry_id": "CIQ-20173",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20180",
+      "previous_entry_id": "CIQ-20180",
+      "current_entry_id": "CIQ-20180",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20181",
+      "previous_entry_id": "CIQ-20181",
+      "current_entry_id": "CIQ-20181",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20183",
+      "previous_entry_id": "CIQ-20183",
+      "current_entry_id": "CIQ-20183",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20188",
+      "previous_entry_id": "CIQ-20188",
+      "current_entry_id": "CIQ-20188",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20189",
+      "previous_entry_id": "CIQ-20189",
+      "current_entry_id": "CIQ-20189",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20192",
+      "previous_entry_id": "CIQ-20192",
+      "current_entry_id": "CIQ-20192",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20194",
+      "previous_entry_id": "CIQ-20194",
+      "current_entry_id": "CIQ-20194",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20195",
+      "previous_entry_id": "CIQ-20195",
+      "current_entry_id": "CIQ-20195",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20196",
+      "previous_entry_id": "CIQ-20196",
+      "current_entry_id": "CIQ-20196",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20197",
+      "previous_entry_id": "CIQ-20197",
+      "current_entry_id": "CIQ-20197",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20198",
+      "previous_entry_id": "CIQ-20198",
+      "current_entry_id": "CIQ-20198",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20199",
+      "previous_entry_id": "CIQ-20199",
+      "current_entry_id": "CIQ-20199",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20200",
+      "previous_entry_id": "CIQ-20200",
+      "current_entry_id": "CIQ-20200",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20201",
+      "previous_entry_id": "CIQ-20201",
+      "current_entry_id": "CIQ-20201",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20202",
+      "previous_entry_id": "CIQ-20202",
+      "current_entry_id": "CIQ-20202",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "protein_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20203",
+      "previous_entry_id": "CIQ-20203",
+      "current_entry_id": "CIQ-20203",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20204",
+      "previous_entry_id": "CIQ-20204",
+      "current_entry_id": "CIQ-20204",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20205",
+      "previous_entry_id": "CIQ-20205",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20206",
+      "previous_entry_id": "CIQ-20206",
+      "current_entry_id": "CIQ-20206",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20207",
+      "previous_entry_id": "CIQ-20207",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20208",
+      "previous_entry_id": "CIQ-20208",
+      "current_entry_id": "CIQ-20208",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20209",
+      "previous_entry_id": "CIQ-20209",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20210",
+      "previous_entry_id": "CIQ-20210",
+      "current_entry_id": "CIQ-20210",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20211",
+      "previous_entry_id": "CIQ-20211",
+      "current_entry_id": "CIQ-20211",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20212",
+      "previous_entry_id": "CIQ-20212",
+      "current_entry_id": "CIQ-20212",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20214",
+      "previous_entry_id": "CIQ-20214",
+      "current_entry_id": "CIQ-20214",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20215",
+      "previous_entry_id": "CIQ-20215",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20216",
+      "previous_entry_id": "CIQ-20216",
+      "current_entry_id": "CIQ-20216",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20217",
+      "previous_entry_id": "CIQ-20217",
+      "current_entry_id": "CIQ-20217",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20218",
+      "previous_entry_id": "CIQ-20218",
+      "current_entry_id": "CIQ-20218",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20219",
+      "previous_entry_id": "CIQ-20219",
+      "current_entry_id": "CIQ-20219",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20221",
+      "previous_entry_id": "CIQ-20221",
+      "current_entry_id": "CIQ-20221",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20228",
+      "previous_entry_id": "CIQ-20228",
+      "current_entry_id": "CIQ-20228",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20230",
+      "previous_entry_id": "CIQ-20230",
+      "current_entry_id": "CIQ-20230",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20231",
+      "previous_entry_id": "CIQ-20231",
+      "current_entry_id": "CIQ-20231",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20232",
+      "previous_entry_id": "CIQ-20232",
+      "current_entry_id": "CIQ-20232",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20233",
+      "previous_entry_id": "CIQ-20233",
+      "current_entry_id": "CIQ-20233",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20234",
+      "previous_entry_id": "CIQ-20234",
+      "current_entry_id": "CIQ-20234",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20235",
+      "previous_entry_id": "CIQ-20235",
+      "current_entry_id": "CIQ-20235",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20236",
+      "previous_entry_id": "CIQ-20236",
+      "current_entry_id": "CIQ-20236",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20237",
+      "previous_entry_id": "CIQ-20237",
+      "current_entry_id": "CIQ-20237",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20238",
+      "previous_entry_id": "CIQ-20238",
+      "current_entry_id": "CIQ-20238",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20239",
+      "previous_entry_id": "CIQ-20239",
+      "current_entry_id": "CIQ-20239",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20240",
+      "previous_entry_id": "CIQ-20240",
+      "current_entry_id": "CIQ-20240",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20241",
+      "previous_entry_id": "CIQ-20241",
+      "current_entry_id": "CIQ-20241",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20242",
+      "previous_entry_id": "CIQ-20242",
+      "current_entry_id": "CIQ-20242",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20243",
+      "previous_entry_id": "CIQ-20243",
+      "current_entry_id": "CIQ-20243",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20246",
+      "previous_entry_id": "CIQ-20246",
+      "current_entry_id": "CIQ-20246",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20247",
+      "previous_entry_id": "CIQ-20247",
+      "current_entry_id": "CIQ-20247",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20248",
+      "previous_entry_id": "CIQ-20248",
+      "current_entry_id": "CIQ-20248",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20249",
+      "previous_entry_id": "CIQ-20249",
+      "current_entry_id": "CIQ-20249",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20250",
+      "previous_entry_id": "CIQ-20250",
+      "current_entry_id": "CIQ-20250",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20251",
+      "previous_entry_id": "CIQ-20251",
+      "current_entry_id": "CIQ-20251",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20252",
+      "previous_entry_id": "CIQ-20252",
+      "current_entry_id": "CIQ-20252",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20253",
+      "previous_entry_id": "CIQ-20253",
+      "current_entry_id": "CIQ-20253",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20254",
+      "previous_entry_id": "CIQ-20254",
+      "current_entry_id": "CIQ-20254",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20255",
+      "previous_entry_id": "CIQ-20255",
+      "current_entry_id": "CIQ-20255",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20256",
+      "previous_entry_id": "CIQ-20256",
+      "current_entry_id": "CIQ-20256",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20257",
+      "previous_entry_id": "CIQ-20257",
+      "current_entry_id": "CIQ-20257",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20258",
+      "previous_entry_id": "CIQ-20258",
+      "current_entry_id": "CIQ-20258",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20259",
+      "previous_entry_id": "CIQ-20259",
+      "current_entry_id": "CIQ-20259",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20260",
+      "previous_entry_id": "CIQ-20260",
+      "current_entry_id": "CIQ-20260",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20261",
+      "previous_entry_id": "CIQ-20261",
+      "current_entry_id": "CIQ-20261",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20262",
+      "previous_entry_id": "CIQ-20262",
+      "current_entry_id": "CIQ-20262",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20263",
+      "previous_entry_id": "CIQ-20263",
+      "current_entry_id": "CIQ-20263",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20264",
+      "previous_entry_id": "CIQ-20264",
+      "current_entry_id": "CIQ-20264",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20265",
+      "previous_entry_id": "CIQ-20265",
+      "current_entry_id": "CIQ-20265",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20266",
+      "previous_entry_id": "CIQ-20266",
+      "current_entry_id": "CIQ-20266",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20267",
+      "previous_entry_id": "CIQ-20267",
+      "current_entry_id": "CIQ-20267",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20268",
+      "previous_entry_id": "CIQ-20268",
+      "current_entry_id": "CIQ-20268",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20269",
+      "previous_entry_id": "CIQ-20269",
+      "current_entry_id": "CIQ-20269",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20270",
+      "previous_entry_id": "CIQ-20270",
+      "current_entry_id": "CIQ-20270",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20271",
+      "previous_entry_id": "CIQ-20271",
+      "current_entry_id": "CIQ-20271",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20272",
+      "previous_entry_id": "CIQ-20272",
+      "current_entry_id": "CIQ-20272",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20273",
+      "previous_entry_id": "CIQ-20273",
+      "current_entry_id": "CIQ-20273",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20274",
+      "previous_entry_id": "CIQ-20274",
+      "current_entry_id": "CIQ-20274",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20275",
+      "previous_entry_id": "CIQ-20275",
+      "current_entry_id": "CIQ-20275",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20276",
+      "previous_entry_id": "CIQ-20276",
+      "current_entry_id": "CIQ-20276",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20277",
+      "previous_entry_id": "CIQ-20277",
+      "current_entry_id": "CIQ-20277",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20278",
+      "previous_entry_id": "CIQ-20278",
+      "current_entry_id": "CIQ-20278",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20279",
+      "previous_entry_id": "CIQ-20279",
+      "current_entry_id": "CIQ-20279",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20280",
+      "previous_entry_id": "CIQ-20280",
+      "current_entry_id": "CIQ-20280",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20282",
+      "previous_entry_id": "CIQ-20282",
+      "current_entry_id": "CIQ-20282",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20283",
+      "previous_entry_id": "CIQ-20283",
+      "current_entry_id": "CIQ-20283",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20284",
+      "previous_entry_id": "CIQ-20284",
+      "current_entry_id": "CIQ-20284",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20285",
+      "previous_entry_id": "CIQ-20285",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20288",
+      "previous_entry_id": "CIQ-20288",
+      "current_entry_id": "CIQ-20288",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20289",
+      "previous_entry_id": "CIQ-20289",
+      "current_entry_id": "CIQ-20289",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20290",
+      "previous_entry_id": "CIQ-20290",
+      "current_entry_id": "CIQ-20290",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20291",
+      "previous_entry_id": "CIQ-20291",
+      "current_entry_id": "CIQ-20291",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20292",
+      "previous_entry_id": "CIQ-20292",
+      "current_entry_id": "CIQ-20292",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20293",
+      "previous_entry_id": "CIQ-20293",
+      "current_entry_id": "CIQ-20293",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20295",
+      "previous_entry_id": "CIQ-20295",
+      "current_entry_id": "CIQ-20295",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20296",
+      "previous_entry_id": "CIQ-20296",
+      "current_entry_id": "CIQ-20296",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20297",
+      "previous_entry_id": "CIQ-20297",
+      "current_entry_id": "CIQ-20297",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20298",
+      "previous_entry_id": "CIQ-20298",
+      "current_entry_id": "CIQ-20298",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20299",
+      "previous_entry_id": "CIQ-20299",
+      "current_entry_id": "CIQ-20299",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20300",
+      "previous_entry_id": "CIQ-20300",
+      "current_entry_id": "CIQ-20300",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20301",
+      "previous_entry_id": "CIQ-20301",
+      "current_entry_id": "CIQ-20301",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20302",
+      "previous_entry_id": "CIQ-20302",
+      "current_entry_id": "CIQ-20302",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20303",
+      "previous_entry_id": "CIQ-20303",
+      "current_entry_id": "CIQ-20303",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20304",
+      "previous_entry_id": "CIQ-20304",
+      "current_entry_id": "CIQ-20304",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20305",
+      "previous_entry_id": "CIQ-20305",
+      "current_entry_id": "CIQ-20305",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20306",
+      "previous_entry_id": "CIQ-20306",
+      "current_entry_id": "CIQ-20306",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20307",
+      "previous_entry_id": "CIQ-20307",
+      "current_entry_id": "CIQ-20307",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20308",
+      "previous_entry_id": "CIQ-20308",
+      "current_entry_id": "CIQ-20308",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20309",
+      "previous_entry_id": "CIQ-20309",
+      "current_entry_id": "CIQ-20309",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20310",
+      "previous_entry_id": "CIQ-20310",
+      "current_entry_id": "CIQ-20310",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20311",
+      "previous_entry_id": "CIQ-20311",
+      "current_entry_id": "CIQ-20311",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20312",
+      "previous_entry_id": "CIQ-20312",
+      "current_entry_id": "CIQ-20312",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20313",
+      "previous_entry_id": "CIQ-20313",
+      "current_entry_id": "CIQ-20313",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20314",
+      "previous_entry_id": "CIQ-20314",
+      "current_entry_id": "CIQ-20314",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20315",
+      "previous_entry_id": "CIQ-20315",
+      "current_entry_id": "CIQ-20315",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20316",
+      "previous_entry_id": "CIQ-20316",
+      "current_entry_id": "CIQ-20316",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20317",
+      "previous_entry_id": "CIQ-20317",
+      "current_entry_id": "CIQ-20317",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20318",
+      "previous_entry_id": "CIQ-20318",
+      "current_entry_id": "CIQ-20318",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20320",
+      "previous_entry_id": "CIQ-20320",
+      "current_entry_id": "CIQ-20320",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20321",
+      "previous_entry_id": "CIQ-20321",
+      "current_entry_id": "CIQ-20321",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20322",
+      "previous_entry_id": "CIQ-20322",
+      "current_entry_id": "CIQ-20322",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20323",
+      "previous_entry_id": "CIQ-20323",
+      "current_entry_id": "CIQ-20323",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20324",
+      "previous_entry_id": "CIQ-20324",
+      "current_entry_id": "CIQ-20324",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20325",
+      "previous_entry_id": "CIQ-20325",
+      "current_entry_id": "CIQ-20325",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20326",
+      "previous_entry_id": "CIQ-20326",
+      "current_entry_id": "CIQ-20326",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20327",
+      "previous_entry_id": "CIQ-20327",
+      "current_entry_id": "CIQ-20327",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20328",
+      "previous_entry_id": "CIQ-20328",
+      "current_entry_id": "CIQ-20328",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20329",
+      "previous_entry_id": "CIQ-20329",
+      "current_entry_id": "CIQ-20329",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20330",
+      "previous_entry_id": "CIQ-20330",
+      "current_entry_id": "CIQ-20330",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20331",
+      "previous_entry_id": "CIQ-20331",
+      "current_entry_id": "CIQ-20331",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20332",
+      "previous_entry_id": "CIQ-20332",
+      "current_entry_id": "CIQ-20332",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20333",
+      "previous_entry_id": "CIQ-20333",
+      "current_entry_id": "CIQ-20333",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20334",
+      "previous_entry_id": "CIQ-20334",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20335",
+      "previous_entry_id": "CIQ-20335",
+      "current_entry_id": "CIQ-20335",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20336",
+      "previous_entry_id": "CIQ-20336",
+      "current_entry_id": "CIQ-20336",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20337",
+      "previous_entry_id": "CIQ-20337",
+      "current_entry_id": "CIQ-20337",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20338",
+      "previous_entry_id": "CIQ-20338",
+      "current_entry_id": "CIQ-20338",
+      "identity_change": "taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20339",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20339",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20340",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20340",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20343",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20343",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20344",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20344",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20345",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20345",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20346",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20346",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20347",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20347",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20348",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20348",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20349",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20349",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20350",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20350",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20351",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20351",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20352",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20352",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20353",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20353",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20354",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20354",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20355",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20355",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20356",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20356",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20357",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20357",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20358",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20358",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20359",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20359",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20360",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20360",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20385",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20385",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20496",
+      "previous_entry_id": "CIQ-20496",
+      "current_entry_id": "CIQ-20496",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20497",
+      "previous_entry_id": "CIQ-20497",
+      "current_entry_id": "CIQ-20497",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20498",
+      "previous_entry_id": "CIQ-20498",
+      "current_entry_id": "CIQ-20498",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20499",
+      "previous_entry_id": "CIQ-20499",
+      "current_entry_id": "CIQ-20499",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20500",
+      "previous_entry_id": "CIQ-20500",
+      "current_entry_id": "CIQ-20500",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20501",
+      "previous_entry_id": "CIQ-20501",
+      "current_entry_id": "CIQ-20501",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20502",
+      "previous_entry_id": "CIQ-20502",
+      "current_entry_id": "CIQ-20502",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20503",
+      "previous_entry_id": "CIQ-20503",
+      "current_entry_id": "CIQ-20503",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20504",
+      "previous_entry_id": "CIQ-20504",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20505",
+      "previous_entry_id": "CIQ-20505",
+      "current_entry_id": null,
+      "identity_change": "removed",
+      "nutrition_change": "not_comparable",
+      "migration_action": "retire_source_reference"
+    },
+    {
+      "source_record_key": "20506",
+      "previous_entry_id": "CIQ-20506",
+      "current_entry_id": "CIQ-20506",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20507",
+      "previous_entry_id": "CIQ-20507",
+      "current_entry_id": "CIQ-20507",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20508",
+      "previous_entry_id": "CIQ-20508",
+      "current_entry_id": "CIQ-20508",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20510",
+      "previous_entry_id": "CIQ-20510",
+      "current_entry_id": "CIQ-20510",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20511",
+      "previous_entry_id": "CIQ-20511",
+      "current_entry_id": "CIQ-20511",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20513",
+      "previous_entry_id": "CIQ-20513",
+      "current_entry_id": "CIQ-20513",
+      "identity_change": "unchanged",
+      "nutrition_change": "unchanged",
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20515",
+      "previous_entry_id": "CIQ-20515",
+      "current_entry_id": "CIQ-20515",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "carbohydrate_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20516",
+      "previous_entry_id": "CIQ-20516",
+      "current_entry_id": "CIQ-20516",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20517",
+      "previous_entry_id": "CIQ-20517",
+      "current_entry_id": "CIQ-20517",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20518",
+      "previous_entry_id": "CIQ-20518",
+      "current_entry_id": "CIQ-20518",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20521",
+      "previous_entry_id": "CIQ-20521",
+      "current_entry_id": "CIQ-20521",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20524",
+      "previous_entry_id": "CIQ-20524",
+      "current_entry_id": "CIQ-20524",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20525",
+      "previous_entry_id": "CIQ-20525",
+      "current_entry_id": "CIQ-20525",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20527",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20527",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20529",
+      "previous_entry_id": null,
+      "current_entry_id": "CIQ-20529",
+      "identity_change": "added",
+      "nutrition_change": "not_comparable",
+      "migration_action": "add_source_reference"
+    },
+    {
+      "source_record_key": "20530",
+      "previous_entry_id": "CIQ-20530",
+      "current_entry_id": "CIQ-20530",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal",
+        "protein_g",
+        "fat_g"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20531",
+      "previous_entry_id": "CIQ-20531",
+      "current_entry_id": "CIQ-20531",
+      "identity_change": "renamed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20532",
+      "previous_entry_id": "CIQ-20532",
+      "current_entry_id": "CIQ-20532",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20534",
+      "previous_entry_id": "CIQ-20534",
+      "current_entry_id": "CIQ-20534",
+      "identity_change": "renamed_and_taxonomy_changed",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    },
+    {
+      "source_record_key": "20535",
+      "previous_entry_id": "CIQ-20535",
+      "current_entry_id": "CIQ-20535",
+      "identity_change": "unchanged",
+      "nutrition_change": "changed",
+      "changed_core_nutrients": [
+        "energy_kcal"
+      ],
+      "migration_action": "carry_source_code_forward"
+    }
+  ]
+}

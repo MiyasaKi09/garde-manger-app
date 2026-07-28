@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { supabase } from '@/lib/supabaseClient';
+import { isSupabaseConfigured, supabase } from '@/lib/supabaseClient';
 
 export default function MinimalistHeader() {
   const router = useRouter();
@@ -15,6 +15,7 @@ export default function MinimalistHeader() {
   const plusRef = useRef(null);
 
   useEffect(() => {
+    if (!isSupabaseConfigured) return undefined;
     const init = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       setUser(session?.user ?? null);
@@ -68,6 +69,7 @@ export default function MinimalistHeader() {
   const plusItems = [
     { href: '/planning', label: 'Planning' },
     { href: '/nutrition', label: 'Nutrition' },
+    { href: '/encyclopedie', label: 'Encyclopédie' },
     { href: '/garden', label: 'Potager' },
     { href: '/settings', label: 'Paramètres' },
   ];
