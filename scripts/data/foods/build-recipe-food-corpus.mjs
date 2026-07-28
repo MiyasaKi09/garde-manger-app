@@ -169,7 +169,7 @@ function conversionFor(form, units, explicit = null) {
   if (Number.isFinite(explicit?.grams_per_unit)) conversion.grams_per_unit = explicit.grams_per_unit
   if (Number.isFinite(explicit?.density_g_per_ml)) conversion.density_g_per_ml = explicit.density_g_per_ml
   if (units.has('u') && !conversion.grams_per_unit && UNIT_WEIGHTS_G.has(normalized)) conversion.grams_per_unit = UNIT_WEIGHTS_G.get(normalized)
-  if (units.has('tranche') && !conversion.grams_per_unit) {
+  if ((units.has('tranche') || units.has('feuille')) && !conversion.grams_per_unit) {
     if (/jambon/.test(normalized)) conversion.grams_per_unit = 40
     if (/pain de mie/.test(normalized)) conversion.grams_per_unit = 30
   }
@@ -409,8 +409,11 @@ const recipeEligibility = corpus.recipes.map((recipe) => {
       if (ingredient.unit === 'g') return false
       const conversion = catalogByNormalized.get(normalizeName(ingredient.form))?.conversion || {}
       if (ingredient.unit === 'ml') return !Number.isFinite(conversion.density_g_per_ml)
-      if (ingredient.unit === 'u') return !Number.isFinite(conversion.grams_per_unit)
-      if (ingredient.unit === 'tranche') return !Number.isFinite(conversion.grams_per_unit)
+      // « u », « tranche » et « feuille » sont trois manières de compter des
+      // pièces : une seule masse unitaire les couvre. « feuille » manquait, si
+      // bien qu'aucune recette l'employant ne pouvait devenir publiable, quelle
+      // que soit la conversion renseignée.
+      if (['u', 'tranche', 'feuille'].includes(ingredient.unit)) return !Number.isFinite(conversion.grams_per_unit)
       return true
     })
     .map((ingredient) => ingredient.form)
