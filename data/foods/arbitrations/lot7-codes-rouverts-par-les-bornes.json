@@ -1,0 +1,41 @@
+{
+  "lot": "corrections — codes écartés jadis au motif d'une macro « absente » qui était en réalité bornée",
+  "contexte": "Sept mappings avaient été détournés vers un aliment voisin parce que le code exact paraissait amputé d'une macro. C'était le statut « inférieur à » du classeur, que ni le générateur ni l'applicateur ne savaient lire. Ils le lisent désormais, et ces codes redeviennent employables. Quatre des détournements désignaient carrément un autre aliment — une coquille Saint-Jacques pour un brochet, un feijoa pour une papaye, un pamplemousse chinois pour une orange — et un cinquième un autre état, de l'ail poêlé pour de l'ail cru.",
+  "decisions": [
+    {
+      "forme": "Ail cru entier",
+      "alim_code": "11000",
+      "remplace": "11307",
+      "confidence": "A",
+      "note": "Le libellé exact, rendu employable par la lecture des bornes : les lipides de l'ail cru sont au statut « inférieur à 0,5 g », une valeur majorée et non une absence. 111 kcal, 5,31 g de protéines, 18,6 g de glucides. Remplace 11307 « Ail, sauté/poêlé, sans matière grasse » (130 kcal), qui était une erreur d'état — l'ail entier d'une recette est cru quand elle le fait revenir elle-même."
+    },
+    {
+      "forme": "Chair de brochet crue",
+      "alim_code": "27011",
+      "remplace": "10045",
+      "confidence": "A",
+      "note": "27011 « Brochet, cru » est le code exact : 83,7 kcal, 18,8 g de protéines, 0,94 g de lipides, et ses glucides — non mesurés comme pour tous les poissons du classeur — sont clos à 0,01 g par fermeture d'Atwater. Remplace 10045 « Coquille Saint-Jacques, noix, crue », retenue faute de mieux : les chiffres étaient voisins par coïncidence, mais un mollusque n'est pas un poisson, et la provenance mentait."
+    },
+    {
+      "forme": "Orange fraîche",
+      "alim_code": "13034",
+      "remplace": "13614",
+      "confidence": "A",
+      "note": "13034 « Orange, pulpe, crue » (45,5 kcal) est le code exact ; ses lipides sont au statut « inférieur à 0,5 g », désormais lus. Remplace 13614 « Pamplemousse chinois, pulpe, cru » (37,9 kcal), retenu par défaut : le pomelo n'est pas une orange, et l'écart de 17 % sur l'énergie s'ajoutait à une fausse identité."
+    },
+    {
+      "forme": "Papaye verte",
+      "alim_code": "13035",
+      "remplace": "13061",
+      "confidence": "B",
+      "note": "La papaye verte est la papaye non mûre : même fruit, cueilli plus tôt, employé en légume. 13035 « Papaye, pulpe, crue » (42,2 kcal, 8,53 g de glucides) est redevenu employable — ses lipides sont bornés à 0,3 g. Réserve : le fruit vert est plus ferme et moins sucré, ses glucides réels sont un peu plus bas. Remplace 13061 « Feijoa, pulpe, crue », qui est un autre fruit d'un autre genre botanique."
+    },
+    {
+      "forme": "Olive noire",
+      "alim_code": "13032",
+      "remplace": "13186",
+      "confidence": "B",
+      "note": "13032 « Olive noire, en saumure, égouttée » décrit exactement ce que les recettes emploient, et ses glucides au statut « inférieur à 0,1 g » sont désormais lus. 160,7 kcal contre 181,7 pour 13186 « Olive noire (aliment moyen) », qui moyennait des préparations plus grasses."
+    }
+  ]
+}

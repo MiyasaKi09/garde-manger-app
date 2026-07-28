@@ -79,6 +79,29 @@ describe('Encyclopédie Myko', () => {
     expect(index.summary.recipe_memberships).toBeGreaterThan(index.summary.recipes)
   })
 
+  it('compte les recettes de façon cohérente entre V10 et les lentilles éditoriales', () => {
+    // Deux comptes différents du même corpus, longtemps divergents sans que
+    // rien ne le signale : V10 compte des familles canoniques — des recettes
+    // DISTINCTES — quand V11 à V40 comptent des APPARTENANCES, une même recette
+    // étant rangée dans plusieurs volumes. Les cibles annoncées étaient 2 000
+    // familles d'un côté et 3 120 appartenances de l'autre : au ratio réel, la
+    // première en impliquait près de 10 000, soit trois fois la capacité
+    // déclarée par les lentilles.
+    const lentilles = manifest.volumes.filter((volume) => /^V(?:1[1-9]|[23][0-9]|40)$/.test(volume.code))
+    expect(lentilles).toHaveLength(30)
+    const cibleAppartenances = lentilles.reduce((somme, volume) => somme + volume.target_metric.target, 0)
+    const cibleFamilles = manifest.volumes.find((volume) => volume.code === 'V10').target_metric.target
+
+    // Les unités ne doivent jamais être confondues.
+    expect(lentilles.every((volume) => volume.target_metric.mode === 'editorial_lens')).toBe(true)
+    expect(manifest.volumes.find((volume) => volume.code === 'V10').target_metric.mode).toBe('canonical')
+
+    const ratio = index.summary.recipe_memberships / index.summary.recipes
+    expect(ratio).toBeGreaterThan(1)
+    const implique = cibleFamilles * ratio
+    expect(Math.abs(implique - cibleAppartenances) / cibleAppartenances).toBeLessThanOrEqual(0.25)
+  })
+
   it('rattache toutes les techniques extraites au volume V02', () => {
     expect(index.techniques.length).toBeGreaterThanOrEqual(250)
     expect(index.techniques.every((technique) => /^V02-[A-J]$/.test(technique.book_code))).toBe(true)

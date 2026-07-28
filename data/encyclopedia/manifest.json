@@ -33,13 +33,13 @@
       "food_concepts_ambition": 4500,
       "techniques": 250,
       "preparations": 250,
-      "sauces": 300,
-      "accompaniments": 300,
-      "recipes": 2000,
-      "desserts": 350,
-      "breakfasts": 120,
-      "snacks": 120,
-      "beverages": 150
+      "sauces": 1440,
+      "accompaniments": 1440,
+      "recipes": 3000,
+      "desserts": 1680,
+      "breakfasts": 575,
+      "snacks": 575,
+      "beverages": 720
     }
   },
   "generated_summary": {
@@ -1538,7 +1538,7 @@
       ],
       "target_metric": {
         "key": "sauces",
-        "target": 300,
+        "target": 1440,
         "unit": "sauces",
         "mode": "recipe_role"
       },
@@ -1946,7 +1946,7 @@
       ],
       "target_metric": {
         "key": "accompaniments",
-        "target": 300,
+        "target": 1440,
         "unit": "accompagnements",
         "mode": "recipe_role"
       },
@@ -2361,7 +2361,7 @@
       ],
       "target_metric": {
         "key": "desserts",
-        "target": 350,
+        "target": 1680,
         "unit": "desserts",
         "mode": "recipe_role"
       },
@@ -2706,7 +2706,7 @@
       ],
       "target_metric": {
         "key": "breakfasts",
-        "target": 120,
+        "target": 575,
         "unit": "petits-déjeuners",
         "mode": "meal_role"
       },
@@ -3003,7 +3003,7 @@
       ],
       "target_metric": {
         "key": "snacks",
-        "target": 120,
+        "target": 575,
         "unit": "collations",
         "mode": "meal_role"
       },
@@ -3230,7 +3230,7 @@
       ],
       "target_metric": {
         "key": "beverages",
-        "target": 150,
+        "target": 720,
         "unit": "boissons",
         "mode": "recipe_role"
       },
@@ -3497,7 +3497,7 @@
       ],
       "target_metric": {
         "key": "recipe_families",
-        "target": 2000,
+        "target": 3000,
         "unit": "familles de recettes",
         "mode": "canonical"
       },
@@ -3541,7 +3541,7 @@
             "culinary.recipe_families",
             "culinary.recipe_versions"
           ],
-          "target_entries": 2000,
+          "target_entries": 3000,
           "content_status": "structure",
           "required_fields": [
             "code_stable",
@@ -3679,7 +3679,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.11",
-        "target": 90,
+        "target": 430,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -3889,7 +3889,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.12",
-        "target": 90,
+        "target": 430,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -4099,7 +4099,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.13",
-        "target": 85,
+        "target": 410,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -4309,7 +4309,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.14",
-        "target": 75,
+        "target": 360,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -4519,7 +4519,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.15",
-        "target": 95,
+        "target": 455,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -4729,7 +4729,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.16",
-        "target": 90,
+        "target": 430,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -4939,7 +4939,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.17",
-        "target": 70,
+        "target": 335,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -5149,7 +5149,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.18",
-        "target": 100,
+        "target": 480,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -5359,7 +5359,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.19",
-        "target": 75,
+        "target": 360,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -5569,7 +5569,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.20",
-        "target": 85,
+        "target": 410,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -5779,7 +5779,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.21",
-        "target": 80,
+        "target": 385,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -5989,7 +5989,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.22",
-        "target": 105,
+        "target": 505,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -6199,7 +6199,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.23",
-        "target": 150,
+        "target": 720,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -6409,7 +6409,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.24",
-        "target": 100,
+        "target": 480,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -6619,7 +6619,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.25",
-        "target": 150,
+        "target": 720,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -6829,7 +6829,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.26",
-        "target": 80,
+        "target": 385,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -7039,7 +7039,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.27",
-        "target": 90,
+        "target": 430,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -7249,7 +7249,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.28",
-        "target": 120,
+        "target": 575,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -7459,7 +7459,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.29",
-        "target": 110,
+        "target": 530,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -7669,7 +7669,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.30",
-        "target": 120,
+        "target": 575,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -7879,7 +7879,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.31",
-        "target": 130,
+        "target": 625,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -8089,7 +8089,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.32",
-        "target": 80,
+        "target": 385,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -8299,7 +8299,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.33",
-        "target": 130,
+        "target": 625,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -8509,7 +8509,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.34",
-        "target": 110,
+        "target": 530,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -8719,7 +8719,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.35",
-        "target": 180,
+        "target": 865,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -8929,7 +8929,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.36",
-        "target": 100,
+        "target": 480,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -9139,7 +9139,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.37",
-        "target": 60,
+        "target": 290,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -9349,7 +9349,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.38",
-        "target": 120,
+        "target": 575,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -9559,7 +9559,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.39",
-        "target": 100,
+        "target": 480,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },
@@ -9769,7 +9769,7 @@
       ],
       "target_metric": {
         "key": "recipe_memberships.40",
-        "target": 150,
+        "target": 720,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       },

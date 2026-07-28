@@ -8,11 +8,13 @@
  * label. Fuzzy suggestions remain review-only.
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
+import { gunzipSync } from 'node:zlib'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { parseCiqualWorkbook } from '../parse/ciqual.mjs'
 import { normalizeName, parseFoodName } from '../lib/normalize.mjs'
 import { resolveCategory } from '../lib/categories.mjs'
+import { comblerParAtwater } from '../lib/atwater.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
@@ -22,11 +24,44 @@ const CIQUAL_PATH = join(ROOT, 'data', 'sources', 'raw', 'ciqual_2020_FR_2020-07
 const MAPPINGS_PATH = join(ROOT, 'data', 'foods', 'recipe-food-mappings-v3.json')
 const NUTRITION_PATH = join(ROOT, 'data', 'ciqual_nutrition_import.csv')
 
+// Référence USDA distillée : complément de Ciqual pour les aliments absents du
+// classeur français et pour les macronutriments que l'ANSES ne mesure pas. La
+// provenance reste tracée par entrée — une valeur américaine ne doit jamais
+// pouvoir passer pour une mesure de l'ANSES.
+const USDA_PATH = join(ROOT, 'data', 'foods', 'usda-reference', 'sr-legacy-macros.json.gz')
+const usdaByFdcId = new Map()
+if (existsSync(USDA_PATH)) {
+  const usda = JSON.parse(gunzipSync(readFileSync(USDA_PATH)).toString('utf8'))
+  for (const entry of usda.entries || []) usdaByFdcId.set(String(entry.fdc_id), entry)
+}
+
 const corpus = JSON.parse(readFileSync(CORPUS_PATH, 'utf8'))
 const mappings = existsSync(MAPPINGS_PATH)
   ? JSON.parse(readFileSync(MAPPINGS_PATH, 'utf8')).mappings || {}
   : {}
 const { records } = parseCiqualWorkbook(CIQUAL_PATH)
+
+// Une référence USDA se transcrit à la main, donc elle se trompe : au premier
+// lot, trois identifiants sur dix désignaient un autre aliment — le congre
+// pointait sur du saumon sockeye, la morue salée sur du thon. Les chiffres
+// tombaient juste par hasard (tous les poissons ont zéro glucide) et la
+// provenance mentait sans que rien ne le montre. Chaque mapping porte donc le
+// libellé attendu, et le générateur refuse de démarrer s'il ne correspond pas.
+const desaccordsUsda = []
+for (const [cle, mapping] of Object.entries(mappings)) {
+  if (!mapping?.usda_fdc_id) continue
+  const entree = usdaByFdcId.get(String(mapping.usda_fdc_id))
+  if (!entree) { desaccordsUsda.push(`${cle} : identifiant USDA ${mapping.usda_fdc_id} introuvable`); continue }
+  if (mapping.usda_name && mapping.usda_name !== entree.description) {
+    desaccordsUsda.push(`${cle} : USDA ${mapping.usda_fdc_id} est « ${entree.description} », le mapping annonce « ${mapping.usda_name} »`)
+  }
+}
+if (desaccordsUsda.length) {
+  console.error('Références USDA incohérentes :')
+  for (const ecart of desaccordsUsda) console.error(`  - ${ecart}`)
+  process.exit(1)
+}
+
 const nutritionRows = readFileSync(NUTRITION_PATH, 'utf8').split(/\r?\n/).slice(1)
 const nutritionByCode = new Map()
 for (const row of nutritionRows) {
@@ -125,15 +160,20 @@ const UNIT_WEIGHTS_G = new Map(Object.entries({
   'blanc d oeuf cru': 33,
 }))
 
-function conversionFor(form, units) {
+function conversionFor(form, units, explicit = null) {
   const normalized = normalizeName(form)
   const conversion = {}
-  if (units.has('u') && UNIT_WEIGHTS_G.has(normalized)) conversion.grams_per_unit = UNIT_WEIGHTS_G.get(normalized)
-  if (units.has('tranche')) {
+  // Une conversion arbitrée l'emporte sur la table interne : la décision et son
+  // poids appartiennent au même endroit, faute de quoi arbitrer une forme
+  // comptée en unités obligerait à modifier le script en plus du registre.
+  if (Number.isFinite(explicit?.grams_per_unit)) conversion.grams_per_unit = explicit.grams_per_unit
+  if (Number.isFinite(explicit?.density_g_per_ml)) conversion.density_g_per_ml = explicit.density_g_per_ml
+  if (units.has('u') && !conversion.grams_per_unit && UNIT_WEIGHTS_G.has(normalized)) conversion.grams_per_unit = UNIT_WEIGHTS_G.get(normalized)
+  if ((units.has('tranche') || units.has('feuille')) && !conversion.grams_per_unit) {
     if (/jambon/.test(normalized)) conversion.grams_per_unit = 40
     if (/pain de mie/.test(normalized)) conversion.grams_per_unit = 30
   }
-  if (units.has('ml')) {
+  if (units.has('ml') && !conversion.density_g_per_ml) {
     if (/huile/.test(normalized)) conversion.density_g_per_ml = 0.92
     else if (/rhum|alcool/.test(normalized)) conversion.density_g_per_ml = 0.95
     else if (/lait|creme|yaourt/.test(normalized)) conversion.density_g_per_ml = 1.03
@@ -143,13 +183,45 @@ function conversionFor(form, units) {
   return conversion
 }
 
+// Fermeture énergétique d'Atwater : voir scripts/data/lib/atwater.mjs.
+
 const allRecords = records
   .map((record) => {
+    // Le classeur ANSES fait foi, le CSV ne sert qu'en secours.
+    //
+    // L'inverse était en place, et le CSV s'est révélé faux sur les fibres pour
+    // 153 des 233 formes comparables. Deux défauts distincts : il sous-estime
+    // massivement les épices et herbes séchées (cannelle 3,6 g quand l'ANSES
+    // mesure 53,1 ; curry 7,07 pour 53,2 ; laurier 3,62 pour 26,3), et sur les
+    // condiments salés il porte carrément la teneur en SEL — sauce poisson
+    // 22,2 g de « fibres » là où le classeur lit 0,2 g de fibres et 22,2 g de
+    // sel. Servir du sel sous l'étiquette « fibres » n'est pas une imprécision.
+    //
+    // Le CSV n'a par ailleurs aucune provenance vérifiable : il a été produit
+    // par un script `/data/import_ciqual.sh` qui ne vit pas dans le dépôt. Le
+    // classeur, lui, porte son sha256 au registre des sources. On le garde
+    // néanmoins comme secours, car il couvre des codes que le classeur laisse
+    // vides — et comme seule source d'énergie, absente du classeur.
+    //
+    // Entre les deux vient une troisième lecture du classeur, souvent
+    // confondue avec une absence : le statut « inférieur à ». L'ANSES écrit
+    // « < 0,5 » pour les lipides de la carotte, du radis, du poivron —
+    // 209 aliments dont TOUTES les macros manquantes sont ainsi bornées. Ce
+    // n'est pas une donnée absente, c'est une donnée majorée, et l'ANSES
+    // l'emploie elle-même pour calculer l'énergie de ces aliments. La refuser
+    // bloquait des recettes entières sur le gras d'un radis.
     const imported = nutritionByCode.get(record.alim_code) || {}
-    const protein = imported.protein_g ?? record.values.protein_g ?? null
-    const carbohydrate = imported.carbohydrate_g ?? record.values.carbohydrate_g ?? null
-    const fat = imported.fat_g ?? record.values.fat_g ?? null
-    const fiber = imported.fiber_g ?? record.values.fiber_g ?? null
+    const bornes = []
+    const lire = (champ, secours) => {
+      if (Number.isFinite(record.values[champ])) return record.values[champ]
+      const borne = Number(record.upper_bounds?.[champ])
+      if (Number.isFinite(borne)) { bornes.push(champ); return borne }
+      return secours ?? null
+    }
+    const protein = lire('protein_g', imported.protein_g)
+    const carbohydrate = lire('carbohydrate_g', imported.carbohydrate_g)
+    const fat = lire('fat_g', imported.fat_g)
+    const fiber = lire('fiber_g', imported.fiber_g)
     const energy = imported.energy_kcal ?? record.values.energy_kcal
       ?? ([protein, carbohydrate, fat].every(Number.isFinite)
         ? protein * 4 + carbohydrate * 4 + fat * 9
@@ -159,6 +231,7 @@ const allRecords = records
       normalized: normalizeName(record.alim_nom_fr),
       category: resolveCategory(record.grp_nom, record.ssgrp_nom, record.alim_nom_fr),
       nutrition: { energy_kcal: energy, protein_g: protein, carbohydrate_g: carbohydrate, fat_g: fat, fiber_g: fiber },
+      bounded_fields: bornes,
     }
   })
 const candidates = allRecords.filter((record) => record.category)
@@ -196,6 +269,25 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
     .sort((a, b) => b.score - a.score || a.record.alim_code.localeCompare(b.record.alim_code))
     .slice(0, 5)
   const exact = ranked.find(({ record }) => record.normalized === normalized)
+  // Une référence USDA n'est retenue que si elle est explicitement demandée, et
+  // JAMAIS en remplacement d'une valeur française existante. Deux usages, et
+  // deux seulement :
+  //   - aliment absent de Ciqual (ghee, riz jasmin) : l'entrée USDA fait foi ;
+  //   - aliment présent mais dont l'ANSES ne mesure pas toutes les macros
+  //     (les glucides du cabillaud, du comté) : Ciqual reste la base et USDA
+  //     ne COMBLE que les champs manquants, champ par champ.
+  // Écraser une mesure de l'ANSES par une mesure américaine serait perdre de
+  // l'information sans le dire.
+  const usdaEntry = explicit?.usda_fdc_id ? usdaByFdcId.get(String(explicit.usda_fdc_id)) : null
+  const usdaNutrition = usdaEntry ? {
+    energy_kcal: usdaEntry.per100g.kcal,
+    protein_g: usdaEntry.per100g.proteinG,
+    carbohydrate_g: usdaEntry.per100g.carbsG,
+    fat_g: usdaEntry.per100g.fatG,
+    fiber_g: usdaEntry.per100g.fiberG,
+  } : null
+  const baseCiqual = explicit?.ciqual_alim_code ? byCode.get(String(explicit.ciqual_alim_code)) : exact?.record
+  const champsCombles = []
   const selected = explicit?.nutrition_override
     ? {
         alim_code: null,
@@ -203,9 +295,34 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
         category: explicit.category,
         nutrition: explicit.nutrition_override,
       }
-    : explicit?.ciqual_alim_code
-      ? byCode.get(String(explicit.ciqual_alim_code))
-      : exact?.record
+    : usdaNutrition && baseCiqual
+      ? {
+          ...baseCiqual,
+          nutrition: Object.fromEntries(Object.entries(baseCiqual.nutrition).map(([champ, valeur]) => {
+            if (Number.isFinite(valeur)) return [champ, valeur]
+            const secours = usdaNutrition[champ]
+            if (Number.isFinite(secours)) champsCombles.push(champ)
+            return [champ, Number.isFinite(secours) ? secours : valeur]
+          })),
+        }
+      : usdaNutrition
+        ? {
+            alim_code: String(usdaEntry.fdc_id),
+            alim_nom_fr: usdaEntry.description,
+            category: explicit.category || null,
+            nutrition: usdaNutrition,
+          }
+        : baseCiqual
+  // Dernier recours, après Ciqual puis USDA : fermeture énergétique. Elle doit
+  // intervenir AVANT que `nutrition_complete` ne soit évalué, sans quoi la
+  // valeur comblée n'atteindrait jamais le verdict d'éligibilité. Et sur une
+  // COPIE : `baseCiqual` est l'enregistrement partagé par toutes les formes qui
+  // pointent le même code Ciqual, le muter ferait fuiter la valeur dérivée
+  // ailleurs, sans mention de provenance.
+  const derive = selected?.nutrition ? comblerParAtwater(selected.nutrition) : null
+  const retenu = derive
+    ? { ...selected, nutrition: { ...selected.nutrition, [derive.champ]: derive.valeur } }
+    : selected
   const selectionMode = explicit ? 'curated' : exact ? 'exact_label' : 'review_required'
   results.push({
     form: usage.name,
@@ -214,12 +331,13 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
     recipe_count: usage.recipes.size,
     units: [...usage.units].sort(),
     selection_mode: selectionMode,
-    selected: selected ? {
-      ciqual_alim_code: selected.alim_code,
-      ciqual_name: selected.alim_nom_fr,
-      category: explicit?.category || selected.category,
+    selected: retenu ? {
+      ciqual_alim_code: retenu.alim_code,
+      ciqual_name: retenu.alim_nom_fr,
+      category: explicit?.category || retenu.category,
       nutrition_complete: ['energy_kcal', 'protein_g', 'carbohydrate_g', 'fat_g']
-        .every((key) => Number.isFinite(selected.nutrition?.[key])),
+        .every((key) => Number.isFinite(retenu.nutrition?.[key])),
+      ...(derive ? { derived_field: derive.champ } : {}),
       confidence: explicit?.confidence || 'B',
       note: explicit?.note || null,
     } : null,
@@ -231,24 +349,38 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
       score,
     })),
   })
-  if (selected) {
+  if (retenu) {
     selectedCatalog.push({
       canonical_name: usage.name,
       canonical_name_normalized: normalized,
-      category: explicit?.category || selected.category,
+      category: explicit?.category || retenu.category,
       confidence: explicit?.confidence || 'B',
-      source: explicit?.nutrition_override ? 'myko_curated_override' : 'ciqual_2020',
-      source_record_key: selected.alim_code,
-      source_name: selected.alim_nom_fr,
+      source: explicit?.nutrition_override
+        ? 'myko_curated_override'
+        : champsCombles.length ? 'ciqual_2020+usda_fdc'
+          : explicit?.usda_fdc_id && !baseCiqual ? 'usda_fdc' : 'ciqual_2020',
+      ...(champsCombles.length ? { filled_from_usda: { fdc_id: String(explicit.usda_fdc_id), fields: champsCombles } } : {}),
+      ...(retenu.bounded_fields?.length ? { bounded_from_ciqual: retenu.bounded_fields } : {}),
+      ...(derive ? {
+        derived: {
+          field: derive.champ,
+          value: derive.valeur,
+          ...(derive.valeur_brute !== undefined ? { raw_value: derive.valeur_brute, clamped_to_zero: true } : {}),
+          method: 'atwater_closure',
+          formula: derive.formule,
+        },
+      } : {}),
+      source_record_key: retenu.alim_code,
+      source_name: retenu.alim_nom_fr,
       state: parseFoodName(usage.name),
       units_used: [...usage.units].sort(),
-      conversion: conversionFor(usage.name, usage.units),
+      conversion: conversionFor(usage.name, usage.units, explicit),
       per100g: {
-        kcal: selected.nutrition?.energy_kcal ?? null,
-        proteinG: selected.nutrition?.protein_g ?? null,
-        carbsG: selected.nutrition?.carbohydrate_g ?? null,
-        fatG: selected.nutrition?.fat_g ?? null,
-        fiberG: selected.nutrition?.fiber_g ?? null,
+        kcal: retenu.nutrition?.energy_kcal ?? null,
+        proteinG: retenu.nutrition?.protein_g ?? null,
+        carbsG: retenu.nutrition?.carbohydrate_g ?? null,
+        fatG: retenu.nutrition?.fat_g ?? null,
+        fiberG: retenu.nutrition?.fiber_g ?? null,
       },
       note: explicit?.note || null,
     })
@@ -277,8 +409,11 @@ const recipeEligibility = corpus.recipes.map((recipe) => {
       if (ingredient.unit === 'g') return false
       const conversion = catalogByNormalized.get(normalizeName(ingredient.form))?.conversion || {}
       if (ingredient.unit === 'ml') return !Number.isFinite(conversion.density_g_per_ml)
-      if (ingredient.unit === 'u') return !Number.isFinite(conversion.grams_per_unit)
-      if (ingredient.unit === 'tranche') return !Number.isFinite(conversion.grams_per_unit)
+      // « u », « tranche » et « feuille » sont trois manières de compter des
+      // pièces : une seule masse unitaire les couvre. « feuille » manquait, si
+      // bien qu'aucune recette l'employant ne pouvait devenir publiable, quelle
+      // que soit la conversion renseignée.
+      if (['u', 'tranche', 'feuille'].includes(ingredient.unit)) return !Number.isFinite(conversion.grams_per_unit)
       return true
     })
     .map((ingredient) => ingredient.form)
@@ -300,6 +435,15 @@ const report = {
   summary,
   recipes_total: recipeEligibility.length,
   recipes_eligible_for_publication: recipeEligibility.filter((recipe) => recipe.eligible_for_publication).length,
+  // « Non éligible » recouvre deux situations très différentes : une recette
+  // dont un ingrédient reste inconnu, et une recette entièrement résolue dont
+  // une seule référence est un proxy assumé. La seconde n'attend pas un travail
+  // de recherche mais une décision — et le compte global la taisait.
+  recipes_blocked_only_by_proxy: recipeEligibility.filter((recipe) => !recipe.eligible_for_publication
+    && recipe.low_confidence_required_forms.length > 0
+    && recipe.unresolved_required_forms.length === 0
+    && recipe.incomplete_nutrition_required_forms.length === 0
+    && recipe.unresolved_conversion_required_forms.length === 0).length,
   v1_enriched_eligible_for_publication: recipeEligibility.slice(0, 72).filter((recipe) => recipe.eligible_for_publication).length,
   unresolved_required: results.filter((item) => item.required && !item.selected).map((item) => item.form),
   recipe_eligibility: recipeEligibility,
@@ -318,5 +462,6 @@ console.log(JSON.stringify({
   summary,
   unresolved_required: report.unresolved_required.length,
   recipes_eligible_for_publication: report.recipes_eligible_for_publication,
+  recipes_blocked_only_by_proxy: report.recipes_blocked_only_by_proxy,
   v1_enriched_eligible_for_publication: report.v1_enriched_eligible_for_publication,
 }, null, 2))

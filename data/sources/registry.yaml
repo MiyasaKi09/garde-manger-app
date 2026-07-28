@@ -59,7 +59,64 @@ sources:
       modify: true
       attribution_required: false
     update_strategy: api_or_download
-    role: complément des aliments absents de Ciqual, découpes détaillées, contrôle croisé
+    current_version: "sr_legacy 2021-10-28"
+    dataset: SR Legacy (Standard Reference, jeu historique complet)
+    raw_file: data/sources/raw/sr_legacy.zip
+    raw_download_url: "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_json_2021-10-28.zip"
+    sha256: 789240d42d51640b931782310403c415eb4aa03383d8f0a52f6315db80f96bc7
+    accessed_on: "2026-07-28"
+    transformation: >
+      Extrait déterministe par scripts/data/foods/build-usda-reference.mjs : on ne
+      conserve que fdc_id, description, catégorie et les cinq macronutriments pour
+      100 g. Le brut fait 210 Mo décompressés ; l'extrait gzippé en fait 212 Ko.
+      Énergie prise sur le nutriment 1008, avec repli sur les variantes Atwater
+      2047 puis 2048.
+    confidence: B
+    role: >
+      Complément de Ciqual, dans deux cas seulement : aliment absent du classeur
+      français (ghee, riz jasmin, vin de cuisine), ou macronutriment que l'ANSES
+      ne mesure pas alors que la valeur existe et compte (les glucides du
+      cabillaud, du comté ou du vinaigre). Ne remplace jamais une valeur Ciqual
+      existante : la provenance reste tracée par entrée.
+
+  # Ce n'est pas une source : rien n'est importé de nulle part. C'est une
+  # dérivation, inscrite ici pour qu'elle soit soumise aux mêmes exigences de
+  # traçabilité que les sources réelles — et pour qu'on ne puisse pas la
+  # confondre avec une mesure.
+  - code: atwater_closure
+    name: Fermeture énergétique d'Atwater
+    publisher: Myko (dérivation interne)
+    kind: derivation
+    license_code: n/a
+    allowed_uses:
+      store_raw: false
+      redistribute: true
+      modify: true
+      attribution_required: false
+    method: >
+      kcal = 4 × protéines + 4 × glucides + 9 × lipides. Quand une seule des
+      quatre grandeurs manque et que les trois autres sont mesurées sur le MÊME
+      aliment, l'équation n'a qu'une inconnue et se résout exactement.
+      Implémentée par scripts/data/foods/build-recipe-food-corpus.mjs, appliquée
+      seulement après Ciqual puis USDA.
+    confidence: C
+    role: >
+      Dernier recours, jamais un raccourci. Employée uniquement là où ni l'ANSES
+      ni USDA ne fournissent la valeur : les lipides de l'estragon frais, les
+      glucides de l'olive verte en saumure et du Saint-Pierre. Le résultat n'est
+      jamais présenté comme une mesure — la forme du catalogue porte `derived`
+      avec le champ comblé, la valeur et la formule.
+    guardrails: >
+      Exactement une grandeur manquante, sinon abandon. Résultat négatif au-delà
+      de −0,05 g : abandon, car il signale une incohérence de la source, pas une
+      trace. Résidu négatif infime (arrondis Ciqual) : ramené à zéro, mais la
+      valeur brute est conservée dans `derived.raw_value` avec
+      `clamped_to_zero`. Une valeur dérivée ne dispense pas du contrôle de
+      confiance : elle ne relève pas un proxy de C à B.
+    proscribed: >
+      Aucune analogie entre états. Déduire l'estragon frais du séché par teneur
+      en eau donne entre 0,59 et 1,21 g de lipides selon le rapport retenu, soit
+      un facteur deux : c'est l'invention que la doctrine du corpus interdit.
 
   - code: openfoodfacts
     name: Open Food Facts

@@ -1,0 +1,84 @@
+{
+  "lot": "lot 2 bis — reprise des 14 décisions écartées par la réfutation adversariale",
+  "contexte": "La réfutation a rejeté 14 décisions du lot 2. Sept l'ont été parce que le code retenu paraissait amputé d'une macro : c'était en réalité un statut « inférieur à » du classeur, que ni l'arbitre ni l'applicateur ne savaient lire. Le générateur retient désormais la borne supérieure, comme l'ANSES le fait pour calculer l'énergie de ces mêmes aliments. Les sept autres rejets portaient sur le fond et sont suivis : mauvais état, confiance surévaluée, ou choix fait sur un jeu d'options tronqué.",
+  "decisions": [
+    {
+      "forme": "Pousse de soja fraîche",
+      "alim_code": "20183",
+      "confidence": "A",
+      "note": "Le germe de haricot mungo est bien ce que le commerce vend comme « pousse de soja ». Les lipides sont au statut « inférieur à 0,5 g » : une valeur majorée, pas une absence — l'ANSES s'en sert elle-même pour l'énergie de cet aliment. 28,4 kcal, 2,81 g de protéines, 3,4 g de glucides. Le candidat 20029 est l'appertisé égoutté, mauvais état pour une pousse fraîche."
+    },
+    {
+      "forme": "Citron vert frais",
+      "alim_code": "13067",
+      "confidence": "A",
+      "note": "La forme est employée en fruits entiers : il faut la pulpe, pas le jus. Lipides au statut « inférieur à 0,3 g », valeur majorée retenue. 40,2 kcal, 1,13 g de protéines, 3,14 g de glucides."
+    },
+    {
+      "forme": "Piment doux vert frais",
+      "alim_code": "20085",
+      "confidence": "B",
+      "note": "« Piment doux » désigne un piment non piquant : nutritionnellement un poivron, pas un piment fort. 20151 « Piment, cru » (41,2 kcal, 7,7 g de glucides) surestimerait, et reste réservé au piment vert piquant, concept distinct. Lipides au statut « inférieur à 0,5 g », valeur majorée retenue."
+    },
+    {
+      "forme": "Radis frais",
+      "alim_code": "20045",
+      "confidence": "B",
+      "note": "Le classeur n'a pas de radis générique ; le radis rouge est le radis courant, et 20089 « Radis noir » est un autre légume, deux fois plus énergétique. Lipides au statut « inférieur à 0,5 g », valeur majorée retenue — les deux seules entrées « radis » du classeur sont bornées de la même façon, il n'existait donc aucun code de radis exploitable avant cette lecture."
+    },
+    {
+      "forme": "Poitrine de porc crue fine",
+      "alim_code": "28002",
+      "confidence": "B",
+      "note": "Le code exact de la pièce, retenu après vérification : 28002 « Porc, poitrine, crue » porte bien des glucides mesurés à zéro, il n'est pas incomplet. Le repli initial sur 28479 « poitrine cutter, sans mouille » était une erreur de lecture doublée d'une erreur de fond : « cutter » désigne une matière première industrielle de charcuterie, à 323 kcal et 28,7 g de lipides contre 253 et 20,5 pour la pièce de cuisine — +28 % d'énergie répercutés sur toutes les recettes. La finesse de la tranche est une découpe, pas un état."
+    },
+    {
+      "forme": "Poitrine de porc crue avec couenne",
+      "alim_code": "28002",
+      "confidence": "B",
+      "note": "Même code et même correction que la poitrine tranchée fine : 28002 est la poitrine de porc crue, glucides mesurés à zéro. La couenne est comprise dans la pièce entière du classeur."
+    },
+    {
+      "forme": "Poulet cuit effiloché",
+      "alim_code": "36030",
+      "confidence": "B",
+      "note": "État retenu volontairement, options complètes vérifiées : 36018 « filet sans peau, sauté » (141 kcal) et 36006 « cuisse, rôtie » (171 kcal) sont l'un et l'autre exploitables, contrairement à ce qu'affirmait la première note. L'effilochage suppose une viande pochée puis tirée à la fourchette, ce que décrit 36030 « cuisse, viande, bouillie » (188 kcal, 24,8 g de protéines) ; le filet poêlé est un autre geste et une autre texture. Réserve : c'est le plus énergétique des trois, l'écart tient au gras de la cuisse."
+    },
+    {
+      "forme": "Pied de porc cru",
+      "alim_code": "28540",
+      "confidence": "C",
+      "note": "Proxy assumé, et non « la même pièce simplement saumurée » comme l'annonçait la première note. 28540 « Pied de porc demi-sel » est classé en spécialités charcutières, à 75 g d'eau et 946 mg de sodium pour 100 g : la reprise d'eau de saumure dilue les macros. 137 kcal et 11,6 g de protéines, contre environ 212 et 23 pour un pied cru — un tiers d'énergie et la moitié des protéines en moins. C'est le seul pied de porc du classeur ; la réserve doit être connue avant de publier."
+    },
+    {
+      "forme": "Bouillon de crevette",
+      "alim_code": "25919",
+      "confidence": "C",
+      "note": "Proxy assumé. Le classeur n'a aucun bouillon de crustacés. Entre les deux états de la soupe de poissons et crustacés, on retient le plus léger — 25919 déshydratée reconstituée, 29 kcal — et non 25904 préemballée à réchauffer (42,8 kcal), qui est la ligne la plus dense de la famille. Un bouillon de carapaces clair vaut 5 à 15 kcal : l'énergie reste surestimée d'un facteur deux à trois sur 200 à 500 ml par recette. C'est le registre d'erreur que la doctrine des bouillons vise à contenir, et il n'existe pas de plus juste."
+    },
+    {
+      "forme": "Choucroute crue fermentée",
+      "alim_code": "20116",
+      "confidence": "C",
+      "note": "Proxy assumé sur le chou blanc cru, en suivant le précédent déjà arbitré du kimchi — même légume, même lacto-fermentation, même code. La choucroute est du chou BLANC fermenté : 20116 (36,5 kcal, 4,63 g de glucides) encadre mieux les ~4,3 g réels que 20069 « Chou vert, cru » (1,92 g). 25220 « Choucroute, égouttée, cuite » est écartée : elle porte 6,6 g de graisse de cuisson, absurdes pour un produit cru."
+    },
+    {
+      "forme": "Cinq épices chinoises",
+      "alim_code": "11081",
+      "confidence": "C",
+      "note": "Proxy assumé sur l'agrégat « Epice (aliment moyen) », que l'ANSES publie précisément pour un mélange absent du classeur — et que le corpus emploie déjà pour le ras el-hanout, mélange propriétaire posant exactement le même problème. 11056 « Quatre épices » est écarté : c'est un mélange nommé, un concept canonique réel et distinct, et l'y ranger créerait une fausse identité entre deux mélanges différents. Emploi de l'ordre du gramme."
+    },
+    {
+      "forme": "Chorizo criollo",
+      "alim_code": "30110",
+      "confidence": "C",
+      "note": "Proxy assumé, et concept distinct du chorizo sec. Le criollo argentin est une saucisse FRAÎCHE crue à griller ; 30315 « Chorizo » est une charcuterie séchée à 433 kcal et 23,5 g de protéines, où le séchage a pratiquement doublé la teneur en protéines d'une saucisse fraîche. On retient la saucisse de Toulouse crue (327 kcal, 13,2 g de protéines, 30 g de lipides), même état et même composition ; ce qui les sépare est l'assaisonnement — paprika et piment — qui ne pèse pas sur les macros. La règle de la Bible interdit de scinder un concept en deux canoniques ; elle n'oblige jamais à en fusionner deux."
+    },
+    {
+      "forme": "Chocolat noir mexicain",
+      "alim_code": "31085",
+      "confidence": "C",
+      "note": "Proxy assumé. Le chocolat mexicain type Ibarra est une tablette granuleuse à sucre dominant, destinée au mole et au champurrado : environ 450 kcal, 75 à 80 g de glucides et 15 g de lipides. 31085 « Chocolat noir à 40 % de cacao minimum, à pâtisser » titre 529 kcal, 51,4 g de glucides et 33,1 g de lipides : les lipides sont surestimés d'un facteur deux et les glucides sous-estimés d'un quart. C'est l'usage qui rapproche les deux, pas la composition — d'où la confiance C, là où la première note ne signalait qu'une énergie « légèrement surestimée »."
+    }
+  ]
+}
