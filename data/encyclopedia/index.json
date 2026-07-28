@@ -12,11 +12,11 @@
     "drafted_books": 1,
     "validated_books": 0,
     "ready_for_integration": false,
-    "recipes": 356,
+    "recipes": 309,
     "drafted_recipes": 0,
     "validated_recipes": 0,
-    "recipe_memberships": 1781,
-    "techniques": 429,
+    "recipe_memberships": 1543,
+    "techniques": 363,
     "food_concepts": 27,
     "drafted_food_concepts": 0,
     "validated_food_concepts": 0,
@@ -76,8 +76,8 @@
       "title": "Bible des techniques",
       "phase": "fondations",
       "books": 10,
-      "current_entries": 429,
-      "inventory_entries": 429,
+      "current_entries": 363,
+      "inventory_entries": 363,
       "drafted_entries": 0,
       "validated_entries": 0,
       "inventory_percent": 100,
@@ -97,11 +97,11 @@
       "title": "Préparations intermédiaires",
       "phase": "fondations",
       "books": 8,
-      "current_entries": 129,
-      "inventory_entries": 129,
+      "current_entries": 116,
+      "inventory_entries": 116,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 52,
+      "inventory_percent": 46,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -118,11 +118,11 @@
       "title": "Sauces",
       "phase": "fondations",
       "books": 10,
-      "current_entries": 185,
-      "inventory_entries": 185,
+      "current_entries": 164,
+      "inventory_entries": 164,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 13,
+      "inventory_percent": 11,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -139,11 +139,11 @@
       "title": "Accompagnements",
       "phase": "fondations",
       "books": 10,
-      "current_entries": 137,
-      "inventory_entries": 137,
+      "current_entries": 122,
+      "inventory_entries": 122,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 10,
+      "inventory_percent": 8,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -160,11 +160,11 @@
       "title": "Desserts",
       "phase": "fondations",
       "books": 8,
-      "current_entries": 31,
-      "inventory_entries": 31,
+      "current_entries": 25,
+      "inventory_entries": 25,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 2,
+      "inventory_percent": 1,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -223,11 +223,11 @@
       "title": "Boissons",
       "phase": "fondations",
       "books": 6,
-      "current_entries": 13,
-      "inventory_entries": 13,
+      "current_entries": 8,
+      "inventory_entries": 8,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 2,
+      "inventory_percent": 1,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -244,11 +244,11 @@
       "title": "Catalogue maître des recettes",
       "phase": "fondations",
       "books": 5,
-      "current_entries": 356,
-      "inventory_entries": 356,
+      "current_entries": 309,
+      "inventory_entries": 309,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 12,
+      "inventory_percent": 10,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -265,8 +265,8 @@
       "title": "Salades et crudités",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 15,
-      "inventory_entries": 15,
+      "current_entries": 11,
+      "inventory_entries": 11,
       "drafted_entries": 0,
       "validated_entries": 0,
       "inventory_percent": 3,
@@ -286,11 +286,11 @@
       "title": "Soupes, veloutés et bouillons-repas",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 85,
-      "inventory_entries": 85,
+      "current_entries": 73,
+      "inventory_entries": 73,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 20,
+      "inventory_percent": 17,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -307,11 +307,11 @@
       "title": "Bœuf, veau et agneau",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 79,
-      "inventory_entries": 79,
+      "current_entries": 68,
+      "inventory_entries": 68,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 19,
+      "inventory_percent": 17,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -328,11 +328,11 @@
       "title": "Porc et charcuteries cuisinées",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 80,
-      "inventory_entries": 80,
+      "current_entries": 74,
+      "inventory_entries": 74,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 22,
+      "inventory_percent": 21,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -349,11 +349,11 @@
       "title": "Volaille et lapin",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 69,
-      "inventory_entries": 69,
+      "current_entries": 62,
+      "inventory_entries": 62,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 15,
+      "inventory_percent": 14,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -370,8 +370,8 @@
       "title": "Poissons",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 48,
-      "inventory_entries": 48,
+      "current_entries": 47,
+      "inventory_entries": 47,
       "drafted_entries": 0,
       "validated_entries": 0,
       "inventory_percent": 11,
@@ -391,8 +391,8 @@
       "title": "Fruits de mer et coquillages",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 23,
-      "inventory_entries": 23,
+      "current_entries": 22,
+      "inventory_entries": 22,
       "drafted_entries": 0,
       "validated_entries": 0,
       "inventory_percent": 7,
@@ -412,11 +412,11 @@
       "title": "Cuisine italienne",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 23,
-      "inventory_entries": 23,
+      "current_entries": 15,
+      "inventory_entries": 15,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 5,
+      "inventory_percent": 3,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -433,11 +433,11 @@
       "title": "Cuisines ibériques",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 23,
-      "inventory_entries": 23,
+      "current_entries": 17,
+      "inventory_entries": 17,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 6,
+      "inventory_percent": 5,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -454,11 +454,11 @@
       "title": "Cuisines grecque et levantine",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 26,
-      "inventory_entries": 26,
+      "current_entries": 18,
+      "inventory_entries": 18,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 6,
+      "inventory_percent": 4,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -475,11 +475,11 @@
       "title": "Cuisines du Maghreb",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 12,
-      "inventory_entries": 12,
+      "current_entries": 7,
+      "inventory_entries": 7,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 3,
+      "inventory_percent": 2,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -517,8 +517,8 @@
       "title": "Cuisines d’Asie de l’Est et du Sud-Est",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 68,
-      "inventory_entries": 68,
+      "current_entries": 67,
+      "inventory_entries": 67,
       "drafted_entries": 0,
       "validated_entries": 0,
       "inventory_percent": 9,
@@ -559,11 +559,11 @@
       "title": "Cuisine végétarienne et légumineuses",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 131,
-      "inventory_entries": 131,
+      "current_entries": 103,
+      "inventory_entries": 103,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 18,
+      "inventory_percent": 14,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -643,11 +643,11 @@
       "title": "Riz, céréales et semoules",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 90,
-      "inventory_entries": 90,
+      "current_entries": 79,
+      "inventory_entries": 79,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 17,
+      "inventory_percent": 15,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -664,11 +664,11 @@
       "title": "Desserts français",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 23,
-      "inventory_entries": 23,
+      "current_entries": 18,
+      "inventory_entries": 18,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 4,
+      "inventory_percent": 3,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -685,8 +685,8 @@
       "title": "Desserts du monde",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 8,
-      "inventory_entries": 8,
+      "current_entries": 7,
+      "inventory_entries": 7,
       "drafted_entries": 0,
       "validated_entries": 0,
       "inventory_percent": 1,
@@ -706,11 +706,11 @@
       "title": "Œufs et brunch salé",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 101,
-      "inventory_entries": 101,
+      "current_entries": 89,
+      "inventory_entries": 89,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 26,
+      "inventory_percent": 23,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -727,11 +727,11 @@
       "title": "Mijotés, braisés et plats en sauce",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 67,
-      "inventory_entries": 67,
+      "current_entries": 58,
+      "inventory_entries": 58,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 11,
+      "inventory_percent": 9,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -748,11 +748,11 @@
       "title": "Grillades, rôtis et cuissons au four",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 85,
-      "inventory_entries": 85,
+      "current_entries": 76,
+      "inventory_entries": 76,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 16,
+      "inventory_percent": 14,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -769,11 +769,11 @@
       "title": "Plats complets du quotidien",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 195,
-      "inventory_entries": 195,
+      "current_entries": 156,
+      "inventory_entries": 156,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 23,
+      "inventory_percent": 18,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -790,11 +790,11 @@
       "title": "Cuisine végétalienne",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 57,
-      "inventory_entries": 57,
+      "current_entries": 43,
+      "inventory_entries": 43,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 12,
+      "inventory_percent": 9,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -811,11 +811,11 @@
       "title": "Fermentations et conserves maison",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 60,
-      "inventory_entries": 60,
+      "current_entries": 48,
+      "inventory_entries": 48,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 21,
+      "inventory_percent": 17,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -832,8 +832,8 @@
       "title": "Cuisine économique et anti-gaspillage",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 5,
-      "inventory_entries": 5,
+      "current_entries": 4,
+      "inventory_entries": 4,
       "drafted_entries": 0,
       "validated_entries": 0,
       "inventory_percent": 1,
@@ -853,11 +853,11 @@
       "title": "Cuisine festive et invités",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 129,
-      "inventory_entries": 129,
+      "current_entries": 126,
+      "inventory_entries": 126,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 27,
+      "inventory_percent": 26,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -874,11 +874,11 @@
       "title": "Assemblages et assiettes canoniques",
       "phase": "rédaction",
       "books": 5,
-      "current_entries": 144,
-      "inventory_entries": 144,
+      "current_entries": 120,
+      "inventory_entries": 120,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 20,
+      "inventory_percent": 17,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
@@ -1116,17 +1116,6 @@
     },
     {
       "code": "TECH-0006",
-      "name": "aplatissage",
-      "normalized_name": "aplatissage",
-      "book_code": "V02-J",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "FRA-007",
-        "ITA-007"
-      ]
-    },
-    {
-      "code": "TECH-0007",
       "name": "appareil à crème prise",
       "normalized_name": "appareil a creme prise",
       "book_code": "V02-F",
@@ -1141,7 +1130,7 @@
       ]
     },
     {
-      "code": "TECH-0008",
+      "code": "TECH-0007",
       "name": "appareil à flan",
       "normalized_name": "appareil a flan",
       "book_code": "V02-F",
@@ -1151,7 +1140,7 @@
       ]
     },
     {
-      "code": "TECH-0009",
+      "code": "TECH-0008",
       "name": "appareil liquide",
       "normalized_name": "appareil liquide",
       "book_code": "V02-F",
@@ -1162,18 +1151,17 @@
       ]
     },
     {
-      "code": "TECH-0010",
+      "code": "TECH-0009",
       "name": "arrosage",
       "normalized_name": "arrosage",
       "book_code": "V02-J",
-      "recipe_count": 2,
+      "recipe_count": 1,
       "recipe_codes": [
-        "FR-017",
-        "FRA-008"
+        "FR-017"
       ]
     },
     {
-      "code": "TECH-0011",
+      "code": "TECH-0010",
       "name": "assaisonnement",
       "normalized_name": "assaisonnement",
       "book_code": "V02-J",
@@ -1184,7 +1172,7 @@
       ]
     },
     {
-      "code": "TECH-0012",
+      "code": "TECH-0011",
       "name": "assaisonnement à cru",
       "normalized_name": "assaisonnement a cru",
       "book_code": "V02-J",
@@ -1194,27 +1182,7 @@
       ]
     },
     {
-      "code": "TECH-0013",
-      "name": "assaisonnement à l'huile",
-      "normalized_name": "assaisonnement a l huile",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "GRC-002"
-      ]
-    },
-    {
-      "code": "TECH-0014",
-      "name": "assaisonnement à tiède",
-      "normalized_name": "assaisonnement a tiede",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "LVT-003"
-      ]
-    },
-    {
-      "code": "TECH-0015",
+      "code": "TECH-0012",
       "name": "assaisonnement tardif",
       "normalized_name": "assaisonnement tardif",
       "book_code": "V02-J",
@@ -1224,7 +1192,7 @@
       ]
     },
     {
-      "code": "TECH-0016",
+      "code": "TECH-0013",
       "name": "assaisonnement tiède",
       "normalized_name": "assaisonnement tiede",
       "book_code": "V02-J",
@@ -1234,7 +1202,7 @@
       ]
     },
     {
-      "code": "TECH-0017",
+      "code": "TECH-0014",
       "name": "assemblage",
       "normalized_name": "assemblage",
       "book_code": "V02-J",
@@ -1268,7 +1236,7 @@
       ]
     },
     {
-      "code": "TECH-0018",
+      "code": "TECH-0015",
       "name": "assemblage à table",
       "normalized_name": "assemblage a table",
       "book_code": "V02-J",
@@ -1278,7 +1246,7 @@
       ]
     },
     {
-      "code": "TECH-0019",
+      "code": "TECH-0016",
       "name": "assemblage de sauce",
       "normalized_name": "assemblage de sauce",
       "book_code": "V02-G",
@@ -1288,7 +1256,7 @@
       ]
     },
     {
-      "code": "TECH-0020",
+      "code": "TECH-0017",
       "name": "assemblage hors feu",
       "normalized_name": "assemblage hors feu",
       "book_code": "V02-J",
@@ -1298,7 +1266,7 @@
       ]
     },
     {
-      "code": "TECH-0021",
+      "code": "TECH-0018",
       "name": "attendrissement",
       "normalized_name": "attendrissement",
       "book_code": "V02-J",
@@ -1308,17 +1276,7 @@
       ]
     },
     {
-      "code": "TECH-0022",
-      "name": "bain-marie",
-      "normalized_name": "bain marie",
-      "book_code": "V02-D",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-011"
-      ]
-    },
-    {
-      "code": "TECH-0023",
+      "code": "TECH-0019",
       "name": "base tomate",
       "normalized_name": "base tomate",
       "book_code": "V02-J",
@@ -1328,7 +1286,7 @@
       ]
     },
     {
-      "code": "TECH-0024",
+      "code": "TECH-0020",
       "name": "battage",
       "normalized_name": "battage",
       "book_code": "V02-J",
@@ -1339,20 +1297,18 @@
       ]
     },
     {
-      "code": "TECH-0025",
+      "code": "TECH-0021",
       "name": "béchamel",
       "normalized_name": "bechamel",
       "book_code": "V02-J",
-      "recipe_count": 4,
+      "recipe_count": 2,
       "recipe_codes": [
         "FR-022",
-        "FRA-004",
-        "FRA-012",
         "GR-001"
       ]
     },
     {
-      "code": "TECH-0026",
+      "code": "TECH-0022",
       "name": "beurre manié",
       "normalized_name": "beurre manie",
       "book_code": "V02-J",
@@ -1362,7 +1318,7 @@
       ]
     },
     {
-      "code": "TECH-0027",
+      "code": "TECH-0023",
       "name": "beurre noisette",
       "normalized_name": "beurre noisette",
       "book_code": "V02-J",
@@ -1373,7 +1329,7 @@
       ]
     },
     {
-      "code": "TECH-0028",
+      "code": "TECH-0024",
       "name": "beurre persillé",
       "normalized_name": "beurre persille",
       "book_code": "V02-J",
@@ -1383,7 +1339,7 @@
       ]
     },
     {
-      "code": "TECH-0029",
+      "code": "TECH-0025",
       "name": "bhuna",
       "normalized_name": "bhuna",
       "book_code": "V02-J",
@@ -1394,18 +1350,15 @@
       ]
     },
     {
-      "code": "TECH-0030",
+      "code": "TECH-0026",
       "name": "blanchiment",
       "normalized_name": "blanchiment",
       "book_code": "V02-D",
-      "recipe_count": 15,
+      "recipe_count": 12,
       "recipe_codes": [
         "DESS-008",
-        "ESP-006",
         "FR-011",
         "FR-026",
-        "FRA-003",
-        "FRA-018",
         "REAL-104",
         "REAL-173",
         "REAL-191",
@@ -1418,17 +1371,7 @@
       ]
     },
     {
-      "code": "TECH-0031",
-      "name": "blanchiment des jaunes",
-      "normalized_name": "blanchiment des jaunes",
-      "book_code": "V02-D",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-015"
-      ]
-    },
-    {
-      "code": "TECH-0032",
+      "code": "TECH-0027",
       "name": "bouillon",
       "normalized_name": "bouillon",
       "book_code": "V02-D",
@@ -1442,7 +1385,7 @@
       ]
     },
     {
-      "code": "TECH-0033",
+      "code": "TECH-0028",
       "name": "bouillon long",
       "normalized_name": "bouillon long",
       "book_code": "V02-D",
@@ -1452,20 +1395,16 @@
       ]
     },
     {
-      "code": "TECH-0034",
+      "code": "TECH-0029",
       "name": "braisage",
       "normalized_name": "braisage",
       "book_code": "V02-E",
-      "recipe_count": 22,
+      "recipe_count": 18,
       "recipe_codes": [
         "FR-001",
         "FR-003",
         "FR-016",
         "FR-038",
-        "FRA-002",
-        "FRA-003",
-        "FRA-013",
-        "ITA-007",
         "PROT-009",
         "REAL-083",
         "REAL-093",
@@ -1483,7 +1422,7 @@
       ]
     },
     {
-      "code": "TECH-0035",
+      "code": "TECH-0030",
       "name": "braisage à découvert",
       "normalized_name": "braisage a decouvert",
       "book_code": "V02-E",
@@ -1493,7 +1432,7 @@
       ]
     },
     {
-      "code": "TECH-0036",
+      "code": "TECH-0031",
       "name": "braisage au four",
       "normalized_name": "braisage au four",
       "book_code": "V02-C",
@@ -1503,17 +1442,7 @@
       ]
     },
     {
-      "code": "TECH-0037",
-      "name": "braisage court",
-      "normalized_name": "braisage court",
-      "book_code": "V02-E",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-014"
-      ]
-    },
-    {
-      "code": "TECH-0038",
+      "code": "TECH-0032",
       "name": "brochette",
       "normalized_name": "brochette",
       "book_code": "V02-J",
@@ -1525,7 +1454,7 @@
       ]
     },
     {
-      "code": "TECH-0039",
+      "code": "TECH-0033",
       "name": "brouillage rapide",
       "normalized_name": "brouillage rapide",
       "book_code": "V02-J",
@@ -1535,7 +1464,7 @@
       ]
     },
     {
-      "code": "TECH-0040",
+      "code": "TECH-0034",
       "name": "brûlage",
       "normalized_name": "brulage",
       "book_code": "V02-J",
@@ -1545,7 +1474,7 @@
       ]
     },
     {
-      "code": "TECH-0041",
+      "code": "TECH-0035",
       "name": "caramel",
       "normalized_name": "caramel",
       "book_code": "V02-J",
@@ -1557,23 +1486,19 @@
       ]
     },
     {
-      "code": "TECH-0042",
+      "code": "TECH-0036",
       "name": "caramélisation",
       "normalized_name": "caramelisation",
       "book_code": "V02-J",
-      "recipe_count": 7,
+      "recipe_count": 3,
       "recipe_codes": [
-        "ESP-006",
-        "FRA-013",
-        "FRA-015",
-        "FRA-016",
         "REAL-089",
         "REAL-136",
         "REAL-255"
       ]
     },
     {
-      "code": "TECH-0043",
+      "code": "TECH-0037",
       "name": "caramélisation des oignons",
       "normalized_name": "caramelisation des oignons",
       "book_code": "V02-J",
@@ -1583,7 +1508,7 @@
       ]
     },
     {
-      "code": "TECH-0044",
+      "code": "TECH-0038",
       "name": "caramélisation lente",
       "normalized_name": "caramelisation lente",
       "book_code": "V02-J",
@@ -1593,7 +1518,7 @@
       ]
     },
     {
-      "code": "TECH-0045",
+      "code": "TECH-0039",
       "name": "chiffonnade",
       "normalized_name": "chiffonnade",
       "book_code": "V02-J",
@@ -1603,7 +1528,7 @@
       ]
     },
     {
-      "code": "TECH-0046",
+      "code": "TECH-0040",
       "name": "choc thermique",
       "normalized_name": "choc thermique",
       "book_code": "V02-J",
@@ -1613,27 +1538,7 @@
       ]
     },
     {
-      "code": "TECH-0047",
-      "name": "ciselage au couteau",
-      "normalized_name": "ciselage au couteau",
-      "book_code": "V02-A",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "LVT-003"
-      ]
-    },
-    {
-      "code": "TECH-0048",
-      "name": "citronnage",
-      "normalized_name": "citronnage",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-009"
-      ]
-    },
-    {
-      "code": "TECH-0049",
+      "code": "TECH-0041",
       "name": "coagulation",
       "normalized_name": "coagulation",
       "book_code": "V02-J",
@@ -1647,7 +1552,7 @@
       ]
     },
     {
-      "code": "TECH-0050",
+      "code": "TECH-0042",
       "name": "coagulation contrôlée",
       "normalized_name": "coagulation controlee",
       "book_code": "V02-J",
@@ -1660,7 +1565,7 @@
       ]
     },
     {
-      "code": "TECH-0051",
+      "code": "TECH-0043",
       "name": "coagulation en couches",
       "normalized_name": "coagulation en couches",
       "book_code": "V02-J",
@@ -1670,23 +1575,18 @@
       ]
     },
     {
-      "code": "TECH-0052",
+      "code": "TECH-0044",
       "name": "coloration",
       "normalized_name": "coloration",
       "book_code": "V02-J",
-      "recipe_count": 7,
+      "recipe_count": 2,
       "recipe_codes": [
-        "ESP-003",
-        "ESP-005",
         "FR-013",
-        "FRA-006",
-        "FRA-008",
-        "MGH-002",
         "REAL-300"
       ]
     },
     {
-      "code": "TECH-0053",
+      "code": "TECH-0045",
       "name": "comal",
       "normalized_name": "comal",
       "book_code": "V02-J",
@@ -1696,17 +1596,13 @@
       ]
     },
     {
-      "code": "TECH-0054",
+      "code": "TECH-0046",
       "name": "compotage",
       "normalized_name": "compotage",
       "book_code": "V02-E",
-      "recipe_count": 18,
+      "recipe_count": 14,
       "recipe_codes": [
-        "ESP-002",
         "FR-007",
-        "MGH-001",
-        "MGH-002",
-        "MGH-004",
         "PROT-001",
         "REAL-092",
         "REAL-106",
@@ -1723,7 +1619,7 @@
       ]
     },
     {
-      "code": "TECH-0055",
+      "code": "TECH-0047",
       "name": "compotage long",
       "normalized_name": "compotage long",
       "book_code": "V02-E",
@@ -1733,17 +1629,7 @@
       ]
     },
     {
-      "code": "TECH-0056",
-      "name": "concassage",
-      "normalized_name": "concassage",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ITA-003"
-      ]
-    },
-    {
-      "code": "TECH-0057",
+      "code": "TECH-0048",
       "name": "confire",
       "normalized_name": "confire",
       "book_code": "V02-J",
@@ -1753,27 +1639,7 @@
       ]
     },
     {
-      "code": "TECH-0058",
-      "name": "confisage",
-      "normalized_name": "confisage",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-006"
-      ]
-    },
-    {
-      "code": "TECH-0059",
-      "name": "confisage de l'ail",
-      "normalized_name": "confisage de l ail",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ESP-005"
-      ]
-    },
-    {
-      "code": "TECH-0060",
+      "code": "TECH-0049",
       "name": "confit",
       "normalized_name": "confit",
       "book_code": "V02-J",
@@ -1784,7 +1650,7 @@
       ]
     },
     {
-      "code": "TECH-0061",
+      "code": "TECH-0050",
       "name": "confit d’oignon",
       "normalized_name": "confit d oignon",
       "book_code": "V02-J",
@@ -1794,7 +1660,7 @@
       ]
     },
     {
-      "code": "TECH-0062",
+      "code": "TECH-0051",
       "name": "contrôle température",
       "normalized_name": "controle temperature",
       "book_code": "V02-J",
@@ -1806,7 +1672,7 @@
       ]
     },
     {
-      "code": "TECH-0063",
+      "code": "TECH-0052",
       "name": "craquage coco",
       "normalized_name": "craquage coco",
       "book_code": "V02-J",
@@ -1816,17 +1682,7 @@
       ]
     },
     {
-      "code": "TECH-0064",
-      "name": "crème anglaise",
-      "normalized_name": "creme anglaise",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-017"
-      ]
-    },
-    {
-      "code": "TECH-0065",
+      "code": "TECH-0053",
       "name": "crème citron",
       "normalized_name": "creme citron",
       "book_code": "V02-J",
@@ -1836,7 +1692,7 @@
       ]
     },
     {
-      "code": "TECH-0066",
+      "code": "TECH-0054",
       "name": "croustillage",
       "normalized_name": "croustillage",
       "book_code": "V02-J",
@@ -1846,7 +1702,7 @@
       ]
     },
     {
-      "code": "TECH-0067",
+      "code": "TECH-0055",
       "name": "croûte de riz",
       "normalized_name": "croute de riz",
       "book_code": "V02-J",
@@ -1856,7 +1712,7 @@
       ]
     },
     {
-      "code": "TECH-0068",
+      "code": "TECH-0056",
       "name": "cuisson",
       "normalized_name": "cuisson",
       "book_code": "V02-J",
@@ -1866,7 +1722,7 @@
       ]
     },
     {
-      "code": "TECH-0069",
+      "code": "TECH-0057",
       "name": "cuisson à blanc",
       "normalized_name": "cuisson a blanc",
       "book_code": "V02-J",
@@ -1876,7 +1732,7 @@
       ]
     },
     {
-      "code": "TECH-0070",
+      "code": "TECH-0058",
       "name": "cuisson à deux températures",
       "normalized_name": "cuisson a deux temperatures",
       "book_code": "V02-J",
@@ -1886,17 +1742,7 @@
       ]
     },
     {
-      "code": "TECH-0071",
-      "name": "cuisson à l'anglaise",
-      "normalized_name": "cuisson a l anglaise",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-012"
-      ]
-    },
-    {
-      "code": "TECH-0072",
+      "code": "TECH-0059",
       "name": "cuisson à l'eau",
       "normalized_name": "cuisson a l eau",
       "book_code": "V02-J",
@@ -1908,17 +1754,7 @@
       ]
     },
     {
-      "code": "TECH-0073",
-      "name": "cuisson à la nappe",
-      "normalized_name": "cuisson a la nappe",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-017"
-      ]
-    },
-    {
-      "code": "TECH-0074",
+      "code": "TECH-0060",
       "name": "cuisson à la poêle",
       "normalized_name": "cuisson a la poele",
       "book_code": "V02-C",
@@ -1930,17 +1766,7 @@
       ]
     },
     {
-      "code": "TECH-0075",
-      "name": "cuisson à la vapeur de vin",
-      "normalized_name": "cuisson a la vapeur de vin",
-      "book_code": "V02-D",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-001"
-      ]
-    },
-    {
-      "code": "TECH-0076",
+      "code": "TECH-0061",
       "name": "cuisson al dente",
       "normalized_name": "cuisson al dente",
       "book_code": "V02-J",
@@ -1957,7 +1783,7 @@
       ]
     },
     {
-      "code": "TECH-0077",
+      "code": "TECH-0062",
       "name": "cuisson alvéoles",
       "normalized_name": "cuisson alveoles",
       "book_code": "V02-J",
@@ -1967,27 +1793,7 @@
       ]
     },
     {
-      "code": "TECH-0078",
-      "name": "cuisson au bain-marie",
-      "normalized_name": "cuisson au bain marie",
-      "book_code": "V02-D",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-015"
-      ]
-    },
-    {
-      "code": "TECH-0079",
-      "name": "cuisson au beurre",
-      "normalized_name": "cuisson au beurre",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-016"
-      ]
-    },
-    {
-      "code": "TECH-0080",
+      "code": "TECH-0063",
       "name": "cuisson au bouillon",
       "normalized_name": "cuisson au bouillon",
       "book_code": "V02-D",
@@ -1999,11 +1805,11 @@
       ]
     },
     {
-      "code": "TECH-0081",
+      "code": "TECH-0064",
       "name": "cuisson au four",
       "normalized_name": "cuisson au four",
       "book_code": "V02-C",
-      "recipe_count": 25,
+      "recipe_count": 23,
       "recipe_codes": [
         "DESS-003",
         "DESS-006",
@@ -2018,8 +1824,6 @@
         "FR-036",
         "FR-039",
         "FR-040",
-        "FRA-011",
-        "GRC-003",
         "LEV-002",
         "PROT-002",
         "REAL-085",
@@ -2033,17 +1837,7 @@
       ]
     },
     {
-      "code": "TECH-0082",
-      "name": "cuisson boulangère",
-      "normalized_name": "cuisson boulangere",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-008"
-      ]
-    },
-    {
-      "code": "TECH-0083",
+      "code": "TECH-0065",
       "name": "cuisson combinée",
       "normalized_name": "cuisson combinee",
       "book_code": "V02-J",
@@ -2053,7 +1847,7 @@
       ]
     },
     {
-      "code": "TECH-0084",
+      "code": "TECH-0066",
       "name": "cuisson contrôlée",
       "normalized_name": "cuisson controlee",
       "book_code": "V02-J",
@@ -2063,7 +1857,7 @@
       ]
     },
     {
-      "code": "TECH-0085",
+      "code": "TECH-0067",
       "name": "cuisson courte",
       "normalized_name": "cuisson courte",
       "book_code": "V02-J",
@@ -2075,7 +1869,7 @@
       ]
     },
     {
-      "code": "TECH-0086",
+      "code": "TECH-0068",
       "name": "cuisson couverte",
       "normalized_name": "cuisson couverte",
       "book_code": "V02-J",
@@ -2085,7 +1879,7 @@
       ]
     },
     {
-      "code": "TECH-0087",
+      "code": "TECH-0069",
       "name": "cuisson crème",
       "normalized_name": "cuisson creme",
       "book_code": "V02-J",
@@ -2095,7 +1889,7 @@
       ]
     },
     {
-      "code": "TECH-0088",
+      "code": "TECH-0070",
       "name": "cuisson de sauce",
       "normalized_name": "cuisson de sauce",
       "book_code": "V02-G",
@@ -2105,17 +1899,7 @@
       ]
     },
     {
-      "code": "TECH-0089",
-      "name": "cuisson départ à froid",
-      "normalized_name": "cuisson depart a froid",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-020"
-      ]
-    },
-    {
-      "code": "TECH-0090",
+      "code": "TECH-0071",
       "name": "cuisson des graines",
       "normalized_name": "cuisson des graines",
       "book_code": "V02-J",
@@ -2125,7 +1909,7 @@
       ]
     },
     {
-      "code": "TECH-0091",
+      "code": "TECH-0072",
       "name": "cuisson des légumineuses dans le braisage",
       "normalized_name": "cuisson des legumineuses dans le braisage",
       "book_code": "V02-E",
@@ -2135,7 +1919,7 @@
       ]
     },
     {
-      "code": "TECH-0092",
+      "code": "TECH-0073",
       "name": "cuisson des lentilles",
       "normalized_name": "cuisson des lentilles",
       "book_code": "V02-J",
@@ -2145,7 +1929,7 @@
       ]
     },
     {
-      "code": "TECH-0093",
+      "code": "TECH-0074",
       "name": "cuisson des pâtes dans le bouillon",
       "normalized_name": "cuisson des pates dans le bouillon",
       "book_code": "V02-D",
@@ -2155,7 +1939,7 @@
       ]
     },
     {
-      "code": "TECH-0094",
+      "code": "TECH-0075",
       "name": "cuisson des vermicelles",
       "normalized_name": "cuisson des vermicelles",
       "book_code": "V02-J",
@@ -2165,17 +1949,7 @@
       ]
     },
     {
-      "code": "TECH-0095",
-      "name": "cuisson douce",
-      "normalized_name": "cuisson douce",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-018"
-      ]
-    },
-    {
-      "code": "TECH-0096",
+      "code": "TECH-0076",
       "name": "cuisson du dal",
       "normalized_name": "cuisson du dal",
       "book_code": "V02-J",
@@ -2185,7 +1959,7 @@
       ]
     },
     {
-      "code": "TECH-0097",
+      "code": "TECH-0077",
       "name": "cuisson du masala",
       "normalized_name": "cuisson du masala",
       "book_code": "V02-J",
@@ -2195,7 +1969,7 @@
       ]
     },
     {
-      "code": "TECH-0098",
+      "code": "TECH-0078",
       "name": "cuisson du riz",
       "normalized_name": "cuisson du riz",
       "book_code": "V02-J",
@@ -2207,7 +1981,7 @@
       ]
     },
     {
-      "code": "TECH-0099",
+      "code": "TECH-0079",
       "name": "cuisson en papillote",
       "normalized_name": "cuisson en papillote",
       "book_code": "V02-J",
@@ -2217,7 +1991,7 @@
       ]
     },
     {
-      "code": "TECH-0100",
+      "code": "TECH-0080",
       "name": "cuisson en pot",
       "normalized_name": "cuisson en pot",
       "book_code": "V02-J",
@@ -2227,7 +2001,7 @@
       ]
     },
     {
-      "code": "TECH-0101",
+      "code": "TECH-0081",
       "name": "cuisson étagée",
       "normalized_name": "cuisson etagee",
       "book_code": "V02-J",
@@ -2237,7 +2011,7 @@
       ]
     },
     {
-      "code": "TECH-0102",
+      "code": "TECH-0082",
       "name": "cuisson étouffée",
       "normalized_name": "cuisson etouffee",
       "book_code": "V02-J",
@@ -2251,7 +2025,7 @@
       ]
     },
     {
-      "code": "TECH-0103",
+      "code": "TECH-0083",
       "name": "cuisson forte",
       "normalized_name": "cuisson forte",
       "book_code": "V02-J",
@@ -2263,7 +2037,7 @@
       ]
     },
     {
-      "code": "TECH-0104",
+      "code": "TECH-0084",
       "name": "cuisson haute température",
       "normalized_name": "cuisson haute temperature",
       "book_code": "V02-J",
@@ -2273,17 +2047,7 @@
       ]
     },
     {
-      "code": "TECH-0105",
-      "name": "cuisson ladera",
-      "normalized_name": "cuisson ladera",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "GRC-004"
-      ]
-    },
-    {
-      "code": "TECH-0106",
+      "code": "TECH-0085",
       "name": "cuisson légumes",
       "normalized_name": "cuisson legumes",
       "book_code": "V02-J",
@@ -2294,31 +2058,29 @@
       ]
     },
     {
-      "code": "TECH-0107",
+      "code": "TECH-0086",
       "name": "cuisson lente",
       "normalized_name": "cuisson lente",
       "book_code": "V02-J",
-      "recipe_count": 3,
+      "recipe_count": 2,
       "recipe_codes": [
-        "ITA-006",
         "REAL-128",
         "REAL-263"
       ]
     },
     {
-      "code": "TECH-0108",
+      "code": "TECH-0087",
       "name": "cuisson lente au four",
       "normalized_name": "cuisson lente au four",
       "book_code": "V02-C",
-      "recipe_count": 3,
+      "recipe_count": 2,
       "recipe_codes": [
         "FR-006",
-        "FRA-006",
         "REAL-073"
       ]
     },
     {
-      "code": "TECH-0109",
+      "code": "TECH-0088",
       "name": "cuisson lente au lait",
       "normalized_name": "cuisson lente au lait",
       "book_code": "V02-J",
@@ -2328,7 +2090,7 @@
       ]
     },
     {
-      "code": "TECH-0110",
+      "code": "TECH-0089",
       "name": "cuisson longue",
       "normalized_name": "cuisson longue",
       "book_code": "V02-J",
@@ -2339,7 +2101,7 @@
       ]
     },
     {
-      "code": "TECH-0111",
+      "code": "TECH-0090",
       "name": "cuisson nouilles",
       "normalized_name": "cuisson nouilles",
       "book_code": "V02-J",
@@ -2350,7 +2112,7 @@
       ]
     },
     {
-      "code": "TECH-0112",
+      "code": "TECH-0091",
       "name": "cuisson par absorption",
       "normalized_name": "cuisson par absorption",
       "book_code": "V02-J",
@@ -2362,7 +2124,7 @@
       ]
     },
     {
-      "code": "TECH-0113",
+      "code": "TECH-0092",
       "name": "cuisson par mouillage progressif",
       "normalized_name": "cuisson par mouillage progressif",
       "book_code": "V02-J",
@@ -2372,7 +2134,7 @@
       ]
     },
     {
-      "code": "TECH-0114",
+      "code": "TECH-0093",
       "name": "cuisson plaque",
       "normalized_name": "cuisson plaque",
       "book_code": "V02-J",
@@ -2382,7 +2144,7 @@
       ]
     },
     {
-      "code": "TECH-0115",
+      "code": "TECH-0094",
       "name": "cuisson séparée",
       "normalized_name": "cuisson separee",
       "book_code": "V02-J",
@@ -2392,7 +2154,7 @@
       ]
     },
     {
-      "code": "TECH-0116",
+      "code": "TECH-0095",
       "name": "cuisson séparée des légumes",
       "normalized_name": "cuisson separee des legumes",
       "book_code": "V02-J",
@@ -2402,7 +2164,7 @@
       ]
     },
     {
-      "code": "TECH-0117",
+      "code": "TECH-0096",
       "name": "cuisson séquencée",
       "normalized_name": "cuisson sequencee",
       "book_code": "V02-J",
@@ -2419,7 +2181,7 @@
       ]
     },
     {
-      "code": "TECH-0118",
+      "code": "TECH-0097",
       "name": "cuisson sous pression",
       "normalized_name": "cuisson sous pression",
       "book_code": "V02-J",
@@ -2430,19 +2192,18 @@
       ]
     },
     {
-      "code": "TECH-0119",
+      "code": "TECH-0098",
       "name": "cuisson vapeur",
       "normalized_name": "cuisson vapeur",
       "book_code": "V02-D",
-      "recipe_count": 3,
+      "recipe_count": 2,
       "recipe_codes": [
         "FR-031",
-        "MGH-001",
         "PROT-001"
       ]
     },
     {
-      "code": "TECH-0120",
+      "code": "TECH-0099",
       "name": "cuissons séparées",
       "normalized_name": "cuissons separees",
       "book_code": "V02-J",
@@ -2458,7 +2219,7 @@
       ]
     },
     {
-      "code": "TECH-0121",
+      "code": "TECH-0100",
       "name": "curry",
       "normalized_name": "curry",
       "book_code": "V02-J",
@@ -2468,7 +2229,7 @@
       ]
     },
     {
-      "code": "TECH-0122",
+      "code": "TECH-0101",
       "name": "dashi",
       "normalized_name": "dashi",
       "book_code": "V02-J",
@@ -2478,7 +2239,7 @@
       ]
     },
     {
-      "code": "TECH-0123",
+      "code": "TECH-0102",
       "name": "déchirage",
       "normalized_name": "dechirage",
       "book_code": "V02-J",
@@ -2488,7 +2249,7 @@
       ]
     },
     {
-      "code": "TECH-0124",
+      "code": "TECH-0103",
       "name": "découpe au couteau",
       "normalized_name": "decoupe au couteau",
       "book_code": "V02-A",
@@ -2498,14 +2259,12 @@
       ]
     },
     {
-      "code": "TECH-0125",
+      "code": "TECH-0104",
       "name": "déglaçage",
       "normalized_name": "deglacage",
       "book_code": "V02-E",
-      "recipe_count": 26,
+      "recipe_count": 22,
       "recipe_codes": [
-        "ESP-003",
-        "ESP-005",
         "FR-001",
         "FR-003",
         "FR-008",
@@ -2515,8 +2274,6 @@
         "FR-017",
         "FR-018",
         "FR-038",
-        "FRA-005",
-        "FRA-007",
         "GR-001",
         "IT-001",
         "IT-002",
@@ -2533,7 +2290,7 @@
       ]
     },
     {
-      "code": "TECH-0126",
+      "code": "TECH-0105",
       "name": "déglacage sauce",
       "normalized_name": "deglacage sauce",
       "book_code": "V02-E",
@@ -2543,17 +2300,7 @@
       ]
     },
     {
-      "code": "TECH-0127",
-      "name": "dégorgeage",
-      "normalized_name": "degorgeage",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "GRC-001"
-      ]
-    },
-    {
-      "code": "TECH-0128",
+      "code": "TECH-0106",
       "name": "dégorgement",
       "normalized_name": "degorgement",
       "book_code": "V02-J",
@@ -2569,7 +2316,7 @@
       ]
     },
     {
-      "code": "TECH-0129",
+      "code": "TECH-0107",
       "name": "délayage",
       "normalized_name": "delayage",
       "book_code": "V02-J",
@@ -2579,7 +2326,7 @@
       ]
     },
     {
-      "code": "TECH-0130",
+      "code": "TECH-0108",
       "name": "démoulage",
       "normalized_name": "demoulage",
       "book_code": "V02-J",
@@ -2589,7 +2336,7 @@
       ]
     },
     {
-      "code": "TECH-0131",
+      "code": "TECH-0109",
       "name": "départ à froid",
       "normalized_name": "depart a froid",
       "book_code": "V02-J",
@@ -2599,7 +2346,7 @@
       ]
     },
     {
-      "code": "TECH-0132",
+      "code": "TECH-0110",
       "name": "dépelliculage",
       "normalized_name": "depelliculage",
       "book_code": "V02-J",
@@ -2610,7 +2357,7 @@
       ]
     },
     {
-      "code": "TECH-0133",
+      "code": "TECH-0111",
       "name": "dessalage",
       "normalized_name": "dessalage",
       "book_code": "V02-J",
@@ -2625,7 +2372,7 @@
       ]
     },
     {
-      "code": "TECH-0134",
+      "code": "TECH-0112",
       "name": "dessiccation",
       "normalized_name": "dessiccation",
       "book_code": "V02-J",
@@ -2640,7 +2387,7 @@
       ]
     },
     {
-      "code": "TECH-0135",
+      "code": "TECH-0113",
       "name": "double cuisson",
       "normalized_name": "double cuisson",
       "book_code": "V02-J",
@@ -2650,7 +2397,7 @@
       ]
     },
     {
-      "code": "TECH-0136",
+      "code": "TECH-0114",
       "name": "double friture",
       "normalized_name": "double friture",
       "book_code": "V02-C",
@@ -2660,7 +2407,7 @@
       ]
     },
     {
-      "code": "TECH-0137",
+      "code": "TECH-0115",
       "name": "double marinade",
       "normalized_name": "double marinade",
       "book_code": "V02-J",
@@ -2670,7 +2417,7 @@
       ]
     },
     {
-      "code": "TECH-0138",
+      "code": "TECH-0116",
       "name": "dum",
       "normalized_name": "dum",
       "book_code": "V02-J",
@@ -2680,17 +2427,7 @@
       ]
     },
     {
-      "code": "TECH-0139",
-      "name": "duxelles",
-      "normalized_name": "duxelles",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-011"
-      ]
-    },
-    {
-      "code": "TECH-0140",
+      "code": "TECH-0117",
       "name": "ébullition longue",
       "normalized_name": "ebullition longue",
       "book_code": "V02-J",
@@ -2700,7 +2437,7 @@
       ]
     },
     {
-      "code": "TECH-0141",
+      "code": "TECH-0118",
       "name": "échaudage",
       "normalized_name": "echaudage",
       "book_code": "V02-J",
@@ -2710,7 +2447,7 @@
       ]
     },
     {
-      "code": "TECH-0142",
+      "code": "TECH-0119",
       "name": "écrasement",
       "normalized_name": "ecrasement",
       "book_code": "V02-B",
@@ -2725,18 +2462,7 @@
       ]
     },
     {
-      "code": "TECH-0143",
-      "name": "écrasement à la fourchette",
-      "normalized_name": "ecrasement a la fourchette",
-      "book_code": "V02-B",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "LVT-001",
-        "MGH-001"
-      ]
-    },
-    {
-      "code": "TECH-0144",
+      "code": "TECH-0120",
       "name": "écrasement partiel",
       "normalized_name": "ecrasement partiel",
       "book_code": "V02-B",
@@ -2746,7 +2472,7 @@
       ]
     },
     {
-      "code": "TECH-0145",
+      "code": "TECH-0121",
       "name": "écumage",
       "normalized_name": "ecumage",
       "book_code": "V02-J",
@@ -2758,7 +2484,7 @@
       ]
     },
     {
-      "code": "TECH-0146",
+      "code": "TECH-0122",
       "name": "effeuillage",
       "normalized_name": "effeuillage",
       "book_code": "V02-J",
@@ -2769,17 +2495,7 @@
       ]
     },
     {
-      "code": "TECH-0147",
-      "name": "effilage à la main",
-      "normalized_name": "effilage a la main",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ESP-004"
-      ]
-    },
-    {
-      "code": "TECH-0148",
+      "code": "TECH-0123",
       "name": "effilochage",
       "normalized_name": "effilochage",
       "book_code": "V02-J",
@@ -2796,23 +2512,22 @@
       ]
     },
     {
-      "code": "TECH-0149",
+      "code": "TECH-0124",
       "name": "égouttage",
       "normalized_name": "egouttage",
       "book_code": "V02-J",
-      "recipe_count": 7,
+      "recipe_count": 6,
       "recipe_codes": [
         "FR-022",
         "FR-029",
         "FR-034",
-        "LVT-001",
         "REAL-123",
         "REAL-139",
         "VEG-002"
       ]
     },
     {
-      "code": "TECH-0150",
+      "code": "TECH-0125",
       "name": "égrenage",
       "normalized_name": "egrenage",
       "book_code": "V02-J",
@@ -2823,17 +2538,7 @@
       ]
     },
     {
-      "code": "TECH-0151",
-      "name": "embrochage",
-      "normalized_name": "embrochage",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "LVT-004"
-      ]
-    },
-    {
-      "code": "TECH-0152",
+      "code": "TECH-0126",
       "name": "empilage",
       "normalized_name": "empilage",
       "book_code": "V02-J",
@@ -2843,7 +2548,7 @@
       ]
     },
     {
-      "code": "TECH-0153",
+      "code": "TECH-0127",
       "name": "émulsion",
       "normalized_name": "emulsion",
       "book_code": "V02-G",
@@ -2868,17 +2573,7 @@
       ]
     },
     {
-      "code": "TECH-0154",
-      "name": "émulsion à la moutarde",
-      "normalized_name": "emulsion a la moutarde",
-      "book_code": "V02-G",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-009"
-      ]
-    },
-    {
-      "code": "TECH-0155",
+      "code": "TECH-0128",
       "name": "émulsion au beurre",
       "normalized_name": "emulsion au beurre",
       "book_code": "V02-G",
@@ -2889,7 +2584,7 @@
       ]
     },
     {
-      "code": "TECH-0156",
+      "code": "TECH-0129",
       "name": "émulsion froide",
       "normalized_name": "emulsion froide",
       "book_code": "V02-G",
@@ -2899,7 +2594,7 @@
       ]
     },
     {
-      "code": "TECH-0157",
+      "code": "TECH-0130",
       "name": "émulsion hors feu",
       "normalized_name": "emulsion hors feu",
       "book_code": "V02-G",
@@ -2910,7 +2605,7 @@
       ]
     },
     {
-      "code": "TECH-0158",
+      "code": "TECH-0131",
       "name": "enrobage",
       "normalized_name": "enrobage",
       "book_code": "V02-J",
@@ -2924,7 +2619,7 @@
       ]
     },
     {
-      "code": "TECH-0159",
+      "code": "TECH-0132",
       "name": "enveloppement",
       "normalized_name": "enveloppement",
       "book_code": "V02-J",
@@ -2934,7 +2629,7 @@
       ]
     },
     {
-      "code": "TECH-0160",
+      "code": "TECH-0133",
       "name": "équilibrage",
       "normalized_name": "equilibrage",
       "book_code": "V02-J",
@@ -2946,7 +2641,7 @@
       ]
     },
     {
-      "code": "TECH-0161",
+      "code": "TECH-0134",
       "name": "étalage",
       "normalized_name": "etalage",
       "book_code": "V02-J",
@@ -2957,18 +2652,7 @@
       ]
     },
     {
-      "code": "TECH-0162",
-      "name": "étuvage sous couvercle",
-      "normalized_name": "etuvage sous couvercle",
-      "book_code": "V02-E",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "ESP-004",
-        "MGH-004"
-      ]
-    },
-    {
-      "code": "TECH-0163",
+      "code": "TECH-0135",
       "name": "étuvée",
       "normalized_name": "etuvee",
       "book_code": "V02-E",
@@ -2978,17 +2662,7 @@
       ]
     },
     {
-      "code": "TECH-0164",
-      "name": "évacuation de l'eau de végétation",
-      "normalized_name": "evacuation de l eau de vegetation",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ITA-006"
-      ]
-    },
-    {
-      "code": "TECH-0165",
+      "code": "TECH-0136",
       "name": "évaporation",
       "normalized_name": "evaporation",
       "book_code": "V02-J",
@@ -3002,30 +2676,26 @@
       ]
     },
     {
-      "code": "TECH-0166",
+      "code": "TECH-0137",
       "name": "évidage",
       "normalized_name": "evidage",
       "book_code": "V02-J",
-      "recipe_count": 3,
+      "recipe_count": 2,
       "recipe_codes": [
-        "GRC-003",
         "REAL-085",
         "REAL-165"
       ]
     },
     {
-      "code": "TECH-0167",
+      "code": "TECH-0138",
       "name": "façonnage",
       "normalized_name": "faconnage",
       "book_code": "V02-B",
-      "recipe_count": 14,
+      "recipe_count": 11,
       "recipe_codes": [
-        "ESP-003",
         "FR-019",
         "IT-007",
-        "ITA-005",
         "LEV-002",
-        "MGH-003",
         "REAL-097",
         "REAL-109",
         "REAL-183",
@@ -3037,7 +2707,7 @@
       ]
     },
     {
-      "code": "TECH-0168",
+      "code": "TECH-0139",
       "name": "façonnage par fossettes",
       "normalized_name": "faconnage par fossettes",
       "book_code": "V02-B",
@@ -3047,13 +2717,12 @@
       ]
     },
     {
-      "code": "TECH-0169",
+      "code": "TECH-0140",
       "name": "farce",
       "normalized_name": "farce",
       "book_code": "V02-J",
-      "recipe_count": 14,
+      "recipe_count": 13,
       "recipe_codes": [
-        "FRA-003",
         "REAL-085",
         "REAL-124",
         "REAL-132",
@@ -3070,27 +2739,7 @@
       ]
     },
     {
-      "code": "TECH-0170",
-      "name": "farce au riz cru",
-      "normalized_name": "farce au riz cru",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "GRC-003"
-      ]
-    },
-    {
-      "code": "TECH-0171",
-      "name": "farce sèche",
-      "normalized_name": "farce seche",
-      "book_code": "V02-H",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ITA-007"
-      ]
-    },
-    {
-      "code": "TECH-0172",
+      "code": "TECH-0141",
       "name": "farcissage",
       "normalized_name": "farcissage",
       "book_code": "V02-J",
@@ -3100,19 +2749,18 @@
       ]
     },
     {
-      "code": "TECH-0173",
+      "code": "TECH-0142",
       "name": "farinage",
       "normalized_name": "farinage",
       "book_code": "V02-J",
-      "recipe_count": 3,
+      "recipe_count": 2,
       "recipe_codes": [
-        "FRA-007",
         "REAL-081",
         "REAL-093"
       ]
     },
     {
-      "code": "TECH-0174",
+      "code": "TECH-0143",
       "name": "fermentation",
       "normalized_name": "fermentation",
       "book_code": "V02-I",
@@ -3125,7 +2773,7 @@
       ]
     },
     {
-      "code": "TECH-0175",
+      "code": "TECH-0144",
       "name": "fermentation existante",
       "normalized_name": "fermentation existante",
       "book_code": "V02-I",
@@ -3135,7 +2783,7 @@
       ]
     },
     {
-      "code": "TECH-0176",
+      "code": "TECH-0145",
       "name": "fermentation filtrée",
       "normalized_name": "fermentation filtree",
       "book_code": "V02-I",
@@ -3145,7 +2793,7 @@
       ]
     },
     {
-      "code": "TECH-0177",
+      "code": "TECH-0146",
       "name": "feuilletage",
       "normalized_name": "feuilletage",
       "book_code": "V02-F",
@@ -3155,7 +2803,7 @@
       ]
     },
     {
-      "code": "TECH-0178",
+      "code": "TECH-0147",
       "name": "filage du fromage",
       "normalized_name": "filage du fromage",
       "book_code": "V02-J",
@@ -3165,7 +2813,7 @@
       ]
     },
     {
-      "code": "TECH-0179",
+      "code": "TECH-0148",
       "name": "filaments d’œuf",
       "normalized_name": "filaments d oeuf",
       "book_code": "V02-J",
@@ -3175,17 +2823,7 @@
       ]
     },
     {
-      "code": "TECH-0180",
-      "name": "filtrage du jus",
-      "normalized_name": "filtrage du jus",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-001"
-      ]
-    },
-    {
-      "code": "TECH-0181",
+      "code": "TECH-0149",
       "name": "filtration",
       "normalized_name": "filtration",
       "book_code": "V02-J",
@@ -3201,7 +2839,7 @@
       ]
     },
     {
-      "code": "TECH-0182",
+      "code": "TECH-0150",
       "name": "finition",
       "normalized_name": "finition",
       "book_code": "V02-J",
@@ -3214,7 +2852,7 @@
       ]
     },
     {
-      "code": "TECH-0183",
+      "code": "TECH-0151",
       "name": "finition aromatique",
       "normalized_name": "finition aromatique",
       "book_code": "V02-J",
@@ -3224,17 +2862,7 @@
       ]
     },
     {
-      "code": "TECH-0184",
-      "name": "finition au gril",
-      "normalized_name": "finition au gril",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ITA-006"
-      ]
-    },
-    {
-      "code": "TECH-0185",
+      "code": "TECH-0152",
       "name": "finition crème",
       "normalized_name": "finition creme",
       "book_code": "V02-J",
@@ -3247,7 +2875,7 @@
       ]
     },
     {
-      "code": "TECH-0186",
+      "code": "TECH-0153",
       "name": "finition huile",
       "normalized_name": "finition huile",
       "book_code": "V02-J",
@@ -3257,7 +2885,7 @@
       ]
     },
     {
-      "code": "TECH-0187",
+      "code": "TECH-0154",
       "name": "foisonnement",
       "normalized_name": "foisonnement",
       "book_code": "V02-J",
@@ -3269,7 +2897,7 @@
       ]
     },
     {
-      "code": "TECH-0188",
+      "code": "TECH-0155",
       "name": "foisonnement léger",
       "normalized_name": "foisonnement leger",
       "book_code": "V02-J",
@@ -3279,7 +2907,7 @@
       ]
     },
     {
-      "code": "TECH-0189",
+      "code": "TECH-0156",
       "name": "fonçage",
       "normalized_name": "foncage",
       "book_code": "V02-J",
@@ -3296,7 +2924,7 @@
       ]
     },
     {
-      "code": "TECH-0190",
+      "code": "TECH-0157",
       "name": "fondue",
       "normalized_name": "fondue",
       "book_code": "V02-J",
@@ -3310,7 +2938,7 @@
       ]
     },
     {
-      "code": "TECH-0191",
+      "code": "TECH-0158",
       "name": "fondue d’oignons",
       "normalized_name": "fondue d oignons",
       "book_code": "V02-J",
@@ -3320,7 +2948,7 @@
       ]
     },
     {
-      "code": "TECH-0192",
+      "code": "TECH-0159",
       "name": "fonte des anchois",
       "normalized_name": "fonte des anchois",
       "book_code": "V02-J",
@@ -3331,7 +2959,7 @@
       ]
     },
     {
-      "code": "TECH-0193",
+      "code": "TECH-0160",
       "name": "friture",
       "normalized_name": "friture",
       "book_code": "V02-C",
@@ -3358,7 +2986,7 @@
       ]
     },
     {
-      "code": "TECH-0194",
+      "code": "TECH-0161",
       "name": "friture aromates",
       "normalized_name": "friture aromates",
       "book_code": "V02-C",
@@ -3368,7 +2996,7 @@
       ]
     },
     {
-      "code": "TECH-0195",
+      "code": "TECH-0162",
       "name": "friture de concentré",
       "normalized_name": "friture de concentre",
       "book_code": "V02-C",
@@ -3379,7 +3007,7 @@
       ]
     },
     {
-      "code": "TECH-0196",
+      "code": "TECH-0163",
       "name": "friture de sauce",
       "normalized_name": "friture de sauce",
       "book_code": "V02-C",
@@ -3389,7 +3017,7 @@
       ]
     },
     {
-      "code": "TECH-0197",
+      "code": "TECH-0164",
       "name": "friture des aromates",
       "normalized_name": "friture des aromates",
       "book_code": "V02-C",
@@ -3400,7 +3028,7 @@
       ]
     },
     {
-      "code": "TECH-0198",
+      "code": "TECH-0165",
       "name": "friture épices",
       "normalized_name": "friture epices",
       "book_code": "V02-C",
@@ -3410,7 +3038,7 @@
       ]
     },
     {
-      "code": "TECH-0199",
+      "code": "TECH-0166",
       "name": "friture nouilles",
       "normalized_name": "friture nouilles",
       "book_code": "V02-C",
@@ -3420,7 +3048,7 @@
       ]
     },
     {
-      "code": "TECH-0200",
+      "code": "TECH-0167",
       "name": "friture œuf",
       "normalized_name": "friture oeuf",
       "book_code": "V02-C",
@@ -3430,7 +3058,7 @@
       ]
     },
     {
-      "code": "TECH-0201",
+      "code": "TECH-0168",
       "name": "friture ou rôtissage",
       "normalized_name": "friture ou rotissage",
       "book_code": "V02-C",
@@ -3443,7 +3071,7 @@
       ]
     },
     {
-      "code": "TECH-0202",
+      "code": "TECH-0169",
       "name": "friture ou vapeur",
       "normalized_name": "friture ou vapeur",
       "book_code": "V02-C",
@@ -3453,7 +3081,7 @@
       ]
     },
     {
-      "code": "TECH-0203",
+      "code": "TECH-0170",
       "name": "friture pâte",
       "normalized_name": "friture pate",
       "book_code": "V02-C",
@@ -3466,7 +3094,7 @@
       ]
     },
     {
-      "code": "TECH-0204",
+      "code": "TECH-0171",
       "name": "friture peu profonde",
       "normalized_name": "friture peu profonde",
       "book_code": "V02-C",
@@ -3476,7 +3104,7 @@
       ]
     },
     {
-      "code": "TECH-0205",
+      "code": "TECH-0172",
       "name": "friture rapide",
       "normalized_name": "friture rapide",
       "book_code": "V02-C",
@@ -3486,7 +3114,7 @@
       ]
     },
     {
-      "code": "TECH-0206",
+      "code": "TECH-0173",
       "name": "friture sèche",
       "normalized_name": "friture seche",
       "book_code": "V02-C",
@@ -3497,7 +3125,7 @@
       ]
     },
     {
-      "code": "TECH-0207",
+      "code": "TECH-0174",
       "name": "fritures séparées",
       "normalized_name": "fritures separees",
       "book_code": "V02-C",
@@ -3507,7 +3135,7 @@
       ]
     },
     {
-      "code": "TECH-0208",
+      "code": "TECH-0175",
       "name": "fumet",
       "normalized_name": "fumet",
       "book_code": "V02-H",
@@ -3518,7 +3146,7 @@
       ]
     },
     {
-      "code": "TECH-0209",
+      "code": "TECH-0176",
       "name": "fusion douce",
       "normalized_name": "fusion douce",
       "book_code": "V02-J",
@@ -3529,7 +3157,7 @@
       ]
     },
     {
-      "code": "TECH-0210",
+      "code": "TECH-0177",
       "name": "garniture séparée",
       "normalized_name": "garniture separee",
       "book_code": "V02-J",
@@ -3541,7 +3169,7 @@
       ]
     },
     {
-      "code": "TECH-0211",
+      "code": "TECH-0178",
       "name": "gelée de bouillon",
       "normalized_name": "gelee de bouillon",
       "book_code": "V02-D",
@@ -3551,7 +3179,7 @@
       ]
     },
     {
-      "code": "TECH-0212",
+      "code": "TECH-0179",
       "name": "gélification",
       "normalized_name": "gelification",
       "book_code": "V02-J",
@@ -3561,33 +3189,22 @@
       ]
     },
     {
-      "code": "TECH-0213",
+      "code": "TECH-0180",
       "name": "glacage",
       "normalized_name": "glacage",
       "book_code": "V02-J",
-      "recipe_count": 3,
+      "recipe_count": 2,
       "recipe_codes": [
-        "FRA-013",
         "REAL-143",
         "REAL-210"
       ]
     },
     {
-      "code": "TECH-0214",
-      "name": "gonflement du boulgour",
-      "normalized_name": "gonflement du boulgour",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "LVT-003"
-      ]
-    },
-    {
-      "code": "TECH-0215",
+      "code": "TECH-0181",
       "name": "gratinage",
       "normalized_name": "gratinage",
       "book_code": "V02-J",
-      "recipe_count": 16,
+      "recipe_count": 14,
       "recipe_codes": [
         "FR-004",
         "FR-012",
@@ -3595,8 +3212,6 @@
         "FR-022",
         "FR-023",
         "FR-037",
-        "FRA-004",
-        "FRA-012",
         "GR-001",
         "IT-001",
         "IT-006",
@@ -3608,7 +3223,7 @@
       ]
     },
     {
-      "code": "TECH-0216",
+      "code": "TECH-0182",
       "name": "gratination",
       "normalized_name": "gratination",
       "book_code": "V02-J",
@@ -3618,7 +3233,7 @@
       ]
     },
     {
-      "code": "TECH-0217",
+      "code": "TECH-0183",
       "name": "gremolata",
       "normalized_name": "gremolata",
       "book_code": "V02-J",
@@ -3628,14 +3243,12 @@
       ]
     },
     {
-      "code": "TECH-0218",
+      "code": "TECH-0184",
       "name": "grillade",
       "normalized_name": "grillade",
       "book_code": "V02-C",
-      "recipe_count": 16,
+      "recipe_count": 14,
       "recipe_codes": [
-        "LVT-002",
-        "LVT-004",
         "MAG-001",
         "PROT-005",
         "REAL-121",
@@ -3653,7 +3266,7 @@
       ]
     },
     {
-      "code": "TECH-0219",
+      "code": "TECH-0185",
       "name": "grillade aromates",
       "normalized_name": "grillade aromates",
       "book_code": "V02-C",
@@ -3663,7 +3276,7 @@
       ]
     },
     {
-      "code": "TECH-0220",
+      "code": "TECH-0186",
       "name": "grillade des nouilles",
       "normalized_name": "grillade des nouilles",
       "book_code": "V02-C",
@@ -3673,7 +3286,7 @@
       ]
     },
     {
-      "code": "TECH-0221",
+      "code": "TECH-0187",
       "name": "grillade directe",
       "normalized_name": "grillade directe",
       "book_code": "V02-C",
@@ -3683,7 +3296,7 @@
       ]
     },
     {
-      "code": "TECH-0222",
+      "code": "TECH-0188",
       "name": "grillade du pain",
       "normalized_name": "grillade du pain",
       "book_code": "V02-C",
@@ -3694,7 +3307,7 @@
       ]
     },
     {
-      "code": "TECH-0223",
+      "code": "TECH-0189",
       "name": "grillade forte",
       "normalized_name": "grillade forte",
       "book_code": "V02-C",
@@ -3704,7 +3317,7 @@
       ]
     },
     {
-      "code": "TECH-0224",
+      "code": "TECH-0190",
       "name": "grillade fumée",
       "normalized_name": "grillade fumee",
       "book_code": "V02-C",
@@ -3714,7 +3327,7 @@
       ]
     },
     {
-      "code": "TECH-0225",
+      "code": "TECH-0191",
       "name": "grillade piments",
       "normalized_name": "grillade piments",
       "book_code": "V02-C",
@@ -3724,17 +3337,7 @@
       ]
     },
     {
-      "code": "TECH-0226",
-      "name": "grillage",
-      "normalized_name": "grillage",
-      "book_code": "V02-C",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "MGH-004"
-      ]
-    },
-    {
-      "code": "TECH-0227",
+      "code": "TECH-0192",
       "name": "hachage",
       "normalized_name": "hachage",
       "book_code": "V02-A",
@@ -3745,17 +3348,7 @@
       ]
     },
     {
-      "code": "TECH-0228",
-      "name": "hachage au couteau",
-      "normalized_name": "hachage au couteau",
-      "book_code": "V02-A",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "LVT-002"
-      ]
-    },
-    {
-      "code": "TECH-0229",
+      "code": "TECH-0193",
       "name": "hachage fin",
       "normalized_name": "hachage fin",
       "book_code": "V02-A",
@@ -3765,7 +3358,7 @@
       ]
     },
     {
-      "code": "TECH-0230",
+      "code": "TECH-0194",
       "name": "hachis poché",
       "normalized_name": "hachis poche",
       "book_code": "V02-A",
@@ -3775,7 +3368,7 @@
       ]
     },
     {
-      "code": "TECH-0231",
+      "code": "TECH-0195",
       "name": "huile fumante",
       "normalized_name": "huile fumante",
       "book_code": "V02-H",
@@ -3785,7 +3378,7 @@
       ]
     },
     {
-      "code": "TECH-0232",
+      "code": "TECH-0196",
       "name": "huile pimentée",
       "normalized_name": "huile pimentee",
       "book_code": "V02-J",
@@ -3795,17 +3388,7 @@
       ]
     },
     {
-      "code": "TECH-0233",
-      "name": "humectage du pain",
-      "normalized_name": "humectage du pain",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ITA-003"
-      ]
-    },
-    {
-      "code": "TECH-0234",
+      "code": "TECH-0197",
       "name": "humidification",
       "normalized_name": "humidification",
       "book_code": "V02-J",
@@ -3815,7 +3398,7 @@
       ]
     },
     {
-      "code": "TECH-0235",
+      "code": "TECH-0198",
       "name": "hydratation",
       "normalized_name": "hydratation",
       "book_code": "V02-J",
@@ -3827,7 +3410,7 @@
       ]
     },
     {
-      "code": "TECH-0236",
+      "code": "TECH-0199",
       "name": "hydratation élevée",
       "normalized_name": "hydratation elevee",
       "book_code": "V02-J",
@@ -3837,7 +3420,7 @@
       ]
     },
     {
-      "code": "TECH-0237",
+      "code": "TECH-0200",
       "name": "imbibage",
       "normalized_name": "imbibage",
       "book_code": "V02-J",
@@ -3848,7 +3431,7 @@
       ]
     },
     {
-      "code": "TECH-0238",
+      "code": "TECH-0201",
       "name": "incision",
       "normalized_name": "incision",
       "book_code": "V02-J",
@@ -3858,7 +3441,7 @@
       ]
     },
     {
-      "code": "TECH-0239",
+      "code": "TECH-0202",
       "name": "incorporation",
       "normalized_name": "incorporation",
       "book_code": "V02-J",
@@ -3868,17 +3451,7 @@
       ]
     },
     {
-      "code": "TECH-0240",
-      "name": "incorporation à la maryse",
-      "normalized_name": "incorporation a la maryse",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-018"
-      ]
-    },
-    {
-      "code": "TECH-0241",
+      "code": "TECH-0203",
       "name": "incorporation de garniture",
       "normalized_name": "incorporation de garniture",
       "book_code": "V02-J",
@@ -3888,7 +3461,7 @@
       ]
     },
     {
-      "code": "TECH-0242",
+      "code": "TECH-0204",
       "name": "incorporation délicate",
       "normalized_name": "incorporation delicate",
       "book_code": "V02-J",
@@ -3898,7 +3471,7 @@
       ]
     },
     {
-      "code": "TECH-0243",
+      "code": "TECH-0205",
       "name": "incorporation des œufs",
       "normalized_name": "incorporation des oeufs",
       "book_code": "V02-J",
@@ -3908,16 +3481,14 @@
       ]
     },
     {
-      "code": "TECH-0244",
+      "code": "TECH-0206",
       "name": "infusion",
       "normalized_name": "infusion",
       "book_code": "V02-J",
-      "recipe_count": 10,
+      "recipe_count": 8,
       "recipe_codes": [
         "DESS-006",
         "DESS-012",
-        "ESP-006",
-        "FRA-015",
         "REAL-090",
         "REAL-116",
         "REAL-180",
@@ -3927,40 +3498,18 @@
       ]
     },
     {
-      "code": "TECH-0245",
-      "name": "infusion à froid",
-      "normalized_name": "infusion a froid",
-      "book_code": "V02-J",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "ITA-004",
-        "ITA-008"
-      ]
-    },
-    {
-      "code": "TECH-0246",
-      "name": "infusion du safran",
-      "normalized_name": "infusion du safran",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-019"
-      ]
-    },
-    {
-      "code": "TECH-0247",
+      "code": "TECH-0207",
       "name": "julienne",
       "normalized_name": "julienne",
       "book_code": "V02-J",
-      "recipe_count": 3,
+      "recipe_count": 2,
       "recipe_codes": [
         "FR-010",
-        "FRA-009",
         "REAL-207"
       ]
     },
     {
-      "code": "TECH-0248",
+      "code": "TECH-0208",
       "name": "laminage",
       "normalized_name": "laminage",
       "book_code": "V02-J",
@@ -3971,7 +3520,7 @@
       ]
     },
     {
-      "code": "TECH-0249",
+      "code": "TECH-0209",
       "name": "laquage",
       "normalized_name": "laquage",
       "book_code": "V02-J",
@@ -3981,7 +3530,7 @@
       ]
     },
     {
-      "code": "TECH-0250",
+      "code": "TECH-0210",
       "name": "lavage",
       "normalized_name": "lavage",
       "book_code": "V02-J",
@@ -3991,7 +3540,7 @@
       ]
     },
     {
-      "code": "TECH-0251",
+      "code": "TECH-0211",
       "name": "liaison",
       "normalized_name": "liaison",
       "book_code": "V02-G",
@@ -4009,39 +3558,17 @@
       ]
     },
     {
-      "code": "TECH-0252",
+      "code": "TECH-0212",
       "name": "liaison à l'eau de cuisson",
       "normalized_name": "liaison a l eau de cuisson",
       "book_code": "V02-G",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "IT-005",
-        "ITA-004"
-      ]
-    },
-    {
-      "code": "TECH-0253",
-      "name": "liaison à l'écrasé",
-      "normalized_name": "liaison a l ecrase",
-      "book_code": "V02-B",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "ITA-002",
-        "MGH-005"
-      ]
-    },
-    {
-      "code": "TECH-0254",
-      "name": "liaison à la fécule",
-      "normalized_name": "liaison a la fecule",
-      "book_code": "V02-G",
       "recipe_count": 1,
       "recipe_codes": [
-        "ESP-006"
+        "IT-005"
       ]
     },
     {
-      "code": "TECH-0255",
+      "code": "TECH-0213",
       "name": "liaison à la moutarde",
       "normalized_name": "liaison a la moutarde",
       "book_code": "V02-G",
@@ -4051,7 +3578,7 @@
       ]
     },
     {
-      "code": "TECH-0256",
+      "code": "TECH-0214",
       "name": "liaison à la moutarde hors du feu",
       "normalized_name": "liaison a la moutarde hors du feu",
       "book_code": "V02-G",
@@ -4061,7 +3588,7 @@
       ]
     },
     {
-      "code": "TECH-0257",
+      "code": "TECH-0215",
       "name": "liaison au pain",
       "normalized_name": "liaison au pain",
       "book_code": "V02-G",
@@ -4073,7 +3600,7 @@
       ]
     },
     {
-      "code": "TECH-0258",
+      "code": "TECH-0216",
       "name": "liaison au roux",
       "normalized_name": "liaison au roux",
       "book_code": "V02-G",
@@ -4083,7 +3610,7 @@
       ]
     },
     {
-      "code": "TECH-0259",
+      "code": "TECH-0217",
       "name": "liaison aux jaunes",
       "normalized_name": "liaison aux jaunes",
       "book_code": "V02-G",
@@ -4093,7 +3620,7 @@
       ]
     },
     {
-      "code": "TECH-0260",
+      "code": "TECH-0218",
       "name": "liaison aux légumineuses",
       "normalized_name": "liaison aux legumineuses",
       "book_code": "V02-G",
@@ -4103,7 +3630,7 @@
       ]
     },
     {
-      "code": "TECH-0261",
+      "code": "TECH-0219",
       "name": "liaison aux œufs",
       "normalized_name": "liaison aux oeufs",
       "book_code": "V02-G",
@@ -4113,7 +3640,7 @@
       ]
     },
     {
-      "code": "TECH-0262",
+      "code": "TECH-0220",
       "name": "liaison crème aigre",
       "normalized_name": "liaison creme aigre",
       "book_code": "V02-G",
@@ -4123,7 +3650,7 @@
       ]
     },
     {
-      "code": "TECH-0263",
+      "code": "TECH-0221",
       "name": "liaison naturelle",
       "normalized_name": "liaison naturelle",
       "book_code": "V02-G",
@@ -4133,7 +3660,7 @@
       ]
     },
     {
-      "code": "TECH-0264",
+      "code": "TECH-0222",
       "name": "liaison par amidon",
       "normalized_name": "liaison par amidon",
       "book_code": "V02-G",
@@ -4143,7 +3670,7 @@
       ]
     },
     {
-      "code": "TECH-0265",
+      "code": "TECH-0223",
       "name": "macération",
       "normalized_name": "maceration",
       "book_code": "V02-J",
@@ -4153,25 +3680,23 @@
       ]
     },
     {
-      "code": "TECH-0266",
+      "code": "TECH-0224",
       "name": "mantecatura",
       "normalized_name": "mantecatura",
       "book_code": "V02-J",
-      "recipe_count": 3,
+      "recipe_count": 2,
       "recipe_codes": [
         "IT-002",
-        "ITA-001",
         "REAL-101"
       ]
     },
     {
-      "code": "TECH-0267",
+      "code": "TECH-0225",
       "name": "marinade",
       "normalized_name": "marinade",
       "book_code": "V02-J",
-      "recipe_count": 27,
+      "recipe_count": 26,
       "recipe_codes": [
-        "FRA-002",
         "REAL-127",
         "REAL-128",
         "REAL-142",
@@ -4201,7 +3726,7 @@
       ]
     },
     {
-      "code": "TECH-0268",
+      "code": "TECH-0226",
       "name": "marinade courte",
       "normalized_name": "marinade courte",
       "book_code": "V02-J",
@@ -4211,7 +3736,7 @@
       ]
     },
     {
-      "code": "TECH-0269",
+      "code": "TECH-0227",
       "name": "marinade froide",
       "normalized_name": "marinade froide",
       "book_code": "V02-J",
@@ -4223,17 +3748,7 @@
       ]
     },
     {
-      "code": "TECH-0270",
-      "name": "marinade lactée",
-      "normalized_name": "marinade lactee",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "LVT-004"
-      ]
-    },
-    {
-      "code": "TECH-0271",
+      "code": "TECH-0228",
       "name": "marinade lactique",
       "normalized_name": "marinade lactique",
       "book_code": "V02-J",
@@ -4243,7 +3758,7 @@
       ]
     },
     {
-      "code": "TECH-0272",
+      "code": "TECH-0229",
       "name": "marinade longue",
       "normalized_name": "marinade longue",
       "book_code": "V02-J",
@@ -4253,7 +3768,7 @@
       ]
     },
     {
-      "code": "TECH-0273",
+      "code": "TECH-0230",
       "name": "marinade sèche",
       "normalized_name": "marinade seche",
       "book_code": "V02-H",
@@ -4263,28 +3778,7 @@
       ]
     },
     {
-      "code": "TECH-0274",
-      "name": "maturation",
-      "normalized_name": "maturation",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ITA-003"
-      ]
-    },
-    {
-      "code": "TECH-0275",
-      "name": "maturation au frais",
-      "normalized_name": "maturation au frais",
-      "book_code": "V02-J",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "FRA-009",
-        "FRA-010"
-      ]
-    },
-    {
-      "code": "TECH-0276",
+      "code": "TECH-0231",
       "name": "mélange",
       "normalized_name": "melange",
       "book_code": "V02-B",
@@ -4301,7 +3795,7 @@
       ]
     },
     {
-      "code": "TECH-0277",
+      "code": "TECH-0232",
       "name": "mélange de farce",
       "normalized_name": "melange de farce",
       "book_code": "V02-B",
@@ -4311,7 +3805,7 @@
       ]
     },
     {
-      "code": "TECH-0278",
+      "code": "TECH-0233",
       "name": "mélange directionnel",
       "normalized_name": "melange directionnel",
       "book_code": "V02-B",
@@ -4322,7 +3816,7 @@
       ]
     },
     {
-      "code": "TECH-0279",
+      "code": "TECH-0234",
       "name": "mélange limité",
       "normalized_name": "melange limite",
       "book_code": "V02-B",
@@ -4333,7 +3827,7 @@
       ]
     },
     {
-      "code": "TECH-0280",
+      "code": "TECH-0235",
       "name": "meringue",
       "normalized_name": "meringue",
       "book_code": "V02-J",
@@ -4343,7 +3837,7 @@
       ]
     },
     {
-      "code": "TECH-0281",
+      "code": "TECH-0236",
       "name": "meurtrissage",
       "normalized_name": "meurtrissage",
       "book_code": "V02-J",
@@ -4353,28 +3847,24 @@
       ]
     },
     {
-      "code": "TECH-0282",
+      "code": "TECH-0237",
       "name": "mijotage",
       "normalized_name": "mijotage",
       "book_code": "V02-E",
-      "recipe_count": 55,
+      "recipe_count": 51,
       "recipe_codes": [
-        "ESP-003",
         "FR-007",
         "FR-008",
         "FR-009",
         "FR-012",
         "FR-019",
         "FR-033",
-        "FRA-005",
         "IND-001",
         "IND-002",
         "IT-001",
         "IT-004",
         "IT-006",
         "MED-001",
-        "MGH-002",
-        "MGH-005",
         "MX-001",
         "PROT-005",
         "REAL-074",
@@ -4417,7 +3907,7 @@
       ]
     },
     {
-      "code": "TECH-0283",
+      "code": "TECH-0238",
       "name": "mijotage court",
       "normalized_name": "mijotage court",
       "book_code": "V02-E",
@@ -4428,7 +3918,7 @@
       ]
     },
     {
-      "code": "TECH-0284",
+      "code": "TECH-0239",
       "name": "mijotage doux",
       "normalized_name": "mijotage doux",
       "book_code": "V02-E",
@@ -4439,7 +3929,7 @@
       ]
     },
     {
-      "code": "TECH-0285",
+      "code": "TECH-0240",
       "name": "mijotage long",
       "normalized_name": "mijotage long",
       "book_code": "V02-E",
@@ -4452,7 +3942,7 @@
       ]
     },
     {
-      "code": "TECH-0286",
+      "code": "TECH-0241",
       "name": "mijotage séquencé",
       "normalized_name": "mijotage sequence",
       "book_code": "V02-E",
@@ -4464,7 +3954,7 @@
       ]
     },
     {
-      "code": "TECH-0287",
+      "code": "TECH-0242",
       "name": "mijotage sous couvercle tombant",
       "normalized_name": "mijotage sous couvercle tombant",
       "book_code": "V02-E",
@@ -4474,7 +3964,7 @@
       ]
     },
     {
-      "code": "TECH-0288",
+      "code": "TECH-0243",
       "name": "mise en place",
       "normalized_name": "mise en place",
       "book_code": "V02-J",
@@ -4485,16 +3975,14 @@
       ]
     },
     {
-      "code": "TECH-0289",
+      "code": "TECH-0244",
       "name": "mixage",
       "normalized_name": "mixage",
       "book_code": "V02-B",
-      "recipe_count": 26,
+      "recipe_count": 24,
       "recipe_codes": [
-        "ESP-001",
         "FR-013",
         "FR-014",
-        "FRA-019",
         "REAL-096",
         "REAL-114",
         "REAL-115",
@@ -4520,7 +4008,7 @@
       ]
     },
     {
-      "code": "TECH-0290",
+      "code": "TECH-0245",
       "name": "mixage fin",
       "normalized_name": "mixage fin",
       "book_code": "V02-B",
@@ -4530,17 +4018,7 @@
       ]
     },
     {
-      "code": "TECH-0291",
-      "name": "mixage partiel",
-      "normalized_name": "mixage partiel",
-      "book_code": "V02-B",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ITA-008"
-      ]
-    },
-    {
-      "code": "TECH-0292",
+      "code": "TECH-0246",
       "name": "montage",
       "normalized_name": "montage",
       "book_code": "V02-J",
@@ -4572,7 +4050,7 @@
       ]
     },
     {
-      "code": "TECH-0293",
+      "code": "TECH-0247",
       "name": "montage brick",
       "normalized_name": "montage brick",
       "book_code": "V02-J",
@@ -4582,18 +4060,17 @@
       ]
     },
     {
-      "code": "TECH-0294",
+      "code": "TECH-0248",
       "name": "montage des blancs",
       "normalized_name": "montage des blancs",
       "book_code": "V02-J",
-      "recipe_count": 2,
+      "recipe_count": 1,
       "recipe_codes": [
-        "DESS-005",
-        "FRA-017"
+        "DESS-005"
       ]
     },
     {
-      "code": "TECH-0295",
+      "code": "TECH-0249",
       "name": "montage en couches",
       "normalized_name": "montage en couches",
       "book_code": "V02-J",
@@ -4603,7 +4080,7 @@
       ]
     },
     {
-      "code": "TECH-0296",
+      "code": "TECH-0250",
       "name": "montage filo",
       "normalized_name": "montage filo",
       "book_code": "V02-J",
@@ -4613,7 +4090,7 @@
       ]
     },
     {
-      "code": "TECH-0297",
+      "code": "TECH-0251",
       "name": "montage froid",
       "normalized_name": "montage froid",
       "book_code": "V02-J",
@@ -4623,7 +4100,7 @@
       ]
     },
     {
-      "code": "TECH-0298",
+      "code": "TECH-0252",
       "name": "montage inversé",
       "normalized_name": "montage inverse",
       "book_code": "V02-J",
@@ -4633,7 +4110,7 @@
       ]
     },
     {
-      "code": "TECH-0299",
+      "code": "TECH-0253",
       "name": "mouillage progressif",
       "normalized_name": "mouillage progressif",
       "book_code": "V02-J",
@@ -4643,17 +4120,7 @@
       ]
     },
     {
-      "code": "TECH-0300",
-      "name": "mouillement progressif",
-      "normalized_name": "mouillement progressif",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ITA-001"
-      ]
-    },
-    {
-      "code": "TECH-0301",
+      "code": "TECH-0254",
       "name": "moulage",
       "normalized_name": "moulage",
       "book_code": "V02-J",
@@ -4663,19 +4130,17 @@
       ]
     },
     {
-      "code": "TECH-0302",
+      "code": "TECH-0255",
       "name": "nacrage",
       "normalized_name": "nacrage",
       "book_code": "V02-J",
-      "recipe_count": 3,
+      "recipe_count": 1,
       "recipe_codes": [
-        "GRC-003",
-        "IT-002",
-        "ITA-001"
+        "IT-002"
       ]
     },
     {
-      "code": "TECH-0303",
+      "code": "TECH-0256",
       "name": "nappage",
       "normalized_name": "nappage",
       "book_code": "V02-J",
@@ -4685,7 +4150,7 @@
       ]
     },
     {
-      "code": "TECH-0304",
+      "code": "TECH-0257",
       "name": "nettoyage",
       "normalized_name": "nettoyage",
       "book_code": "V02-J",
@@ -4695,7 +4160,7 @@
       ]
     },
     {
-      "code": "TECH-0305",
+      "code": "TECH-0258",
       "name": "œuf mollet",
       "normalized_name": "oeuf mollet",
       "book_code": "V02-J",
@@ -4705,7 +4170,7 @@
       ]
     },
     {
-      "code": "TECH-0306",
+      "code": "TECH-0259",
       "name": "œufs brouillés facultatifs",
       "normalized_name": "oeufs brouilles facultatifs",
       "book_code": "V02-J",
@@ -4715,7 +4180,7 @@
       ]
     },
     {
-      "code": "TECH-0307",
+      "code": "TECH-0260",
       "name": "œufs pochés en sauce",
       "normalized_name": "oeufs poches en sauce",
       "book_code": "V02-D",
@@ -4725,13 +4190,12 @@
       ]
     },
     {
-      "code": "TECH-0308",
+      "code": "TECH-0261",
       "name": "panade",
       "normalized_name": "panade",
       "book_code": "V02-J",
-      "recipe_count": 7,
+      "recipe_count": 6,
       "recipe_codes": [
-        "ESP-003",
         "FR-019",
         "FR-031",
         "REAL-082",
@@ -4741,17 +4205,7 @@
       ]
     },
     {
-      "code": "TECH-0309",
-      "name": "panade au lait",
-      "normalized_name": "panade au lait",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ITA-005"
-      ]
-    },
-    {
-      "code": "TECH-0310",
+      "code": "TECH-0262",
       "name": "panure",
       "normalized_name": "panure",
       "book_code": "V02-J",
@@ -4765,7 +4219,7 @@
       ]
     },
     {
-      "code": "TECH-0311",
+      "code": "TECH-0263",
       "name": "papillote",
       "normalized_name": "papillote",
       "book_code": "V02-J",
@@ -4775,7 +4229,7 @@
       ]
     },
     {
-      "code": "TECH-0312",
+      "code": "TECH-0264",
       "name": "parage",
       "normalized_name": "parage",
       "book_code": "V02-J",
@@ -4786,7 +4240,7 @@
       ]
     },
     {
-      "code": "TECH-0313",
+      "code": "TECH-0265",
       "name": "parboiling",
       "normalized_name": "parboiling",
       "book_code": "V02-J",
@@ -4796,17 +4250,7 @@
       ]
     },
     {
-      "code": "TECH-0314",
-      "name": "passage au chinois",
-      "normalized_name": "passage au chinois",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-019"
-      ]
-    },
-    {
-      "code": "TECH-0315",
+      "code": "TECH-0266",
       "name": "pâte",
       "normalized_name": "pate",
       "book_code": "V02-F",
@@ -4817,7 +4261,7 @@
       ]
     },
     {
-      "code": "TECH-0316",
+      "code": "TECH-0267",
       "name": "pâte eau chaude",
       "normalized_name": "pate eau chaude",
       "book_code": "V02-F",
@@ -4827,7 +4271,7 @@
       ]
     },
     {
-      "code": "TECH-0317",
+      "code": "TECH-0268",
       "name": "pâte fluide",
       "normalized_name": "pate fluide",
       "book_code": "V02-F",
@@ -4837,7 +4281,7 @@
       ]
     },
     {
-      "code": "TECH-0318",
+      "code": "TECH-0269",
       "name": "pâte froide",
       "normalized_name": "pate froide",
       "book_code": "V02-F",
@@ -4848,7 +4292,7 @@
       ]
     },
     {
-      "code": "TECH-0319",
+      "code": "TECH-0270",
       "name": "pâte glacée",
       "normalized_name": "pate glacee",
       "book_code": "V02-F",
@@ -4858,7 +4302,7 @@
       ]
     },
     {
-      "code": "TECH-0320",
+      "code": "TECH-0271",
       "name": "pâte levée",
       "normalized_name": "pate levee",
       "book_code": "V02-F",
@@ -4869,17 +4313,7 @@
       ]
     },
     {
-      "code": "TECH-0321",
-      "name": "paupiettes",
-      "normalized_name": "paupiettes",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-003"
-      ]
-    },
-    {
-      "code": "TECH-0322",
+      "code": "TECH-0272",
       "name": "pelage",
       "normalized_name": "pelage",
       "book_code": "V02-J",
@@ -4889,7 +4323,7 @@
       ]
     },
     {
-      "code": "TECH-0323",
+      "code": "TECH-0273",
       "name": "pétrissage",
       "normalized_name": "petrissage",
       "book_code": "V02-B",
@@ -4903,17 +4337,7 @@
       ]
     },
     {
-      "code": "TECH-0324",
-      "name": "pétrissage liant",
-      "normalized_name": "petrissage liant",
-      "book_code": "V02-B",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "LVT-002"
-      ]
-    },
-    {
-      "code": "TECH-0325",
+      "code": "TECH-0274",
       "name": "pickles",
       "normalized_name": "pickles",
       "book_code": "V02-J",
@@ -4924,7 +4348,7 @@
       ]
     },
     {
-      "code": "TECH-0326",
+      "code": "TECH-0275",
       "name": "pilonnage",
       "normalized_name": "pilonnage",
       "book_code": "V02-J",
@@ -4938,7 +4362,7 @@
       ]
     },
     {
-      "code": "TECH-0327",
+      "code": "TECH-0276",
       "name": "plaque",
       "normalized_name": "plaque",
       "book_code": "V02-J",
@@ -4948,7 +4372,7 @@
       ]
     },
     {
-      "code": "TECH-0328",
+      "code": "TECH-0277",
       "name": "pliage",
       "normalized_name": "pliage",
       "book_code": "V02-J",
@@ -4966,16 +4390,15 @@
       ]
     },
     {
-      "code": "TECH-0329",
+      "code": "TECH-0278",
       "name": "pochage",
       "normalized_name": "pochage",
       "book_code": "V02-D",
-      "recipe_count": 26,
+      "recipe_count": 25,
       "recipe_codes": [
         "DESS-011",
         "FR-002",
         "FR-031",
-        "FRA-017",
         "IT-006",
         "REAL-080",
         "REAL-082",
@@ -5001,29 +4424,7 @@
       ]
     },
     {
-      "code": "TECH-0330",
-      "name": "pochage dans la sauce",
-      "normalized_name": "pochage dans la sauce",
-      "book_code": "V02-D",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "ITA-005",
-        "MGH-003"
-      ]
-    },
-    {
-      "code": "TECH-0331",
-      "name": "pochage des œufs",
-      "normalized_name": "pochage des oeufs",
-      "book_code": "V02-D",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "ESP-002",
-        "MGH-003"
-      ]
-    },
-    {
-      "code": "TECH-0332",
+      "code": "TECH-0279",
       "name": "pochage doux",
       "normalized_name": "pochage doux",
       "book_code": "V02-D",
@@ -5033,7 +4434,7 @@
       ]
     },
     {
-      "code": "TECH-0333",
+      "code": "TECH-0280",
       "name": "pochage long",
       "normalized_name": "pochage long",
       "book_code": "V02-D",
@@ -5044,7 +4445,7 @@
       ]
     },
     {
-      "code": "TECH-0334",
+      "code": "TECH-0281",
       "name": "pochage ou poêlage",
       "normalized_name": "pochage ou poelage",
       "book_code": "V02-C",
@@ -5054,7 +4455,7 @@
       ]
     },
     {
-      "code": "TECH-0335",
+      "code": "TECH-0282",
       "name": "pochage ou rôtissage doux",
       "normalized_name": "pochage ou rotissage doux",
       "book_code": "V02-C",
@@ -5064,7 +4465,7 @@
       ]
     },
     {
-      "code": "TECH-0336",
+      "code": "TECH-0283",
       "name": "pochage ou saisie",
       "normalized_name": "pochage ou saisie",
       "book_code": "V02-C",
@@ -5074,7 +4475,7 @@
       ]
     },
     {
-      "code": "TECH-0337",
+      "code": "TECH-0284",
       "name": "poêlage",
       "normalized_name": "poelage",
       "book_code": "V02-C",
@@ -5090,7 +4491,7 @@
       ]
     },
     {
-      "code": "TECH-0338",
+      "code": "TECH-0285",
       "name": "poêlage-vapeur",
       "normalized_name": "poelage vapeur",
       "book_code": "V02-C",
@@ -5100,7 +4501,7 @@
       ]
     },
     {
-      "code": "TECH-0339",
+      "code": "TECH-0286",
       "name": "polenta ferme",
       "normalized_name": "polenta ferme",
       "book_code": "V02-J",
@@ -5110,7 +4511,7 @@
       ]
     },
     {
-      "code": "TECH-0340",
+      "code": "TECH-0287",
       "name": "précuisson",
       "normalized_name": "precuisson",
       "book_code": "V02-J",
@@ -5126,7 +4527,7 @@
       ]
     },
     {
-      "code": "TECH-0341",
+      "code": "TECH-0288",
       "name": "précuisson dans le lait",
       "normalized_name": "precuisson dans le lait",
       "book_code": "V02-J",
@@ -5136,7 +4537,7 @@
       ]
     },
     {
-      "code": "TECH-0342",
+      "code": "TECH-0289",
       "name": "précuisson de garniture",
       "normalized_name": "precuisson de garniture",
       "book_code": "V02-J",
@@ -5146,7 +4547,7 @@
       ]
     },
     {
-      "code": "TECH-0343",
+      "code": "TECH-0290",
       "name": "précuisson fruit",
       "normalized_name": "precuisson fruit",
       "book_code": "V02-J",
@@ -5157,7 +4558,7 @@
       ]
     },
     {
-      "code": "TECH-0344",
+      "code": "TECH-0291",
       "name": "préparation",
       "normalized_name": "preparation",
       "book_code": "V02-J",
@@ -5167,37 +4568,7 @@
       ]
     },
     {
-      "code": "TECH-0345",
-      "name": "pressage",
-      "normalized_name": "pressage",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "GRC-001"
-      ]
-    },
-    {
-      "code": "TECH-0346",
-      "name": "pressage de l'oignon",
-      "normalized_name": "pressage de l oignon",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "LVT-002"
-      ]
-    },
-    {
-      "code": "TECH-0347",
-      "name": "presse-purée",
-      "normalized_name": "presse puree",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-020"
-      ]
-    },
-    {
-      "code": "TECH-0348",
+      "code": "TECH-0292",
       "name": "prise au froid",
       "normalized_name": "prise au froid",
       "book_code": "V02-J",
@@ -5209,7 +4580,7 @@
       ]
     },
     {
-      "code": "TECH-0349",
+      "code": "TECH-0293",
       "name": "purée",
       "normalized_name": "puree",
       "book_code": "V02-J",
@@ -5222,17 +4593,7 @@
       ]
     },
     {
-      "code": "TECH-0350",
-      "name": "purée d'ail",
-      "normalized_name": "puree d ail",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "GRC-001"
-      ]
-    },
-    {
-      "code": "TECH-0351",
+      "code": "TECH-0294",
       "name": "rabats",
       "normalized_name": "rabats",
       "book_code": "V02-J",
@@ -5242,7 +4603,7 @@
       ]
     },
     {
-      "code": "TECH-0352",
+      "code": "TECH-0295",
       "name": "rafraîchissement",
       "normalized_name": "rafraichissement",
       "book_code": "V02-J",
@@ -5252,17 +4613,7 @@
       ]
     },
     {
-      "code": "TECH-0353",
-      "name": "râpage",
-      "normalized_name": "rapage",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-010"
-      ]
-    },
-    {
-      "code": "TECH-0354",
+      "code": "TECH-0296",
       "name": "réchauffage",
       "normalized_name": "rechauffage",
       "book_code": "V02-J",
@@ -5275,14 +4626,12 @@
       ]
     },
     {
-      "code": "TECH-0355",
+      "code": "TECH-0297",
       "name": "réduction",
       "normalized_name": "reduction",
       "book_code": "V02-E",
-      "recipe_count": 41,
+      "recipe_count": 34,
       "recipe_codes": [
-        "ESP-001",
-        "ESP-005",
         "FR-001",
         "FR-004",
         "FR-008",
@@ -5291,12 +4640,7 @@
         "FR-018",
         "FR-021",
         "FR-038",
-        "FRA-002",
-        "FRA-005",
-        "FRA-007",
         "GR-001",
-        "GRC-004",
-        "ITA-004",
         "MX-001",
         "PROT-006",
         "REAL-083",
@@ -5325,7 +4669,7 @@
       ]
     },
     {
-      "code": "TECH-0356",
+      "code": "TECH-0298",
       "name": "réduction longue",
       "normalized_name": "reduction longue",
       "book_code": "V02-E",
@@ -5335,7 +4679,7 @@
       ]
     },
     {
-      "code": "TECH-0357",
+      "code": "TECH-0299",
       "name": "refroidissement",
       "normalized_name": "refroidissement",
       "book_code": "V02-H",
@@ -5353,7 +4697,7 @@
       ]
     },
     {
-      "code": "TECH-0358",
+      "code": "TECH-0300",
       "name": "réhydratation",
       "normalized_name": "rehydratation",
       "book_code": "V02-J",
@@ -5365,7 +4709,7 @@
       ]
     },
     {
-      "code": "TECH-0359",
+      "code": "TECH-0301",
       "name": "remuage",
       "normalized_name": "remuage",
       "book_code": "V02-J",
@@ -5375,7 +4719,7 @@
       ]
     },
     {
-      "code": "TECH-0360",
+      "code": "TECH-0302",
       "name": "rendu de graisse",
       "normalized_name": "rendu de graisse",
       "book_code": "V02-J",
@@ -5387,17 +4731,7 @@
       ]
     },
     {
-      "code": "TECH-0361",
-      "name": "rendu du gras",
-      "normalized_name": "rendu du gras",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-014"
-      ]
-    },
-    {
-      "code": "TECH-0362",
+      "code": "TECH-0303",
       "name": "renversement",
       "normalized_name": "renversement",
       "book_code": "V02-J",
@@ -5407,18 +4741,17 @@
       ]
     },
     {
-      "code": "TECH-0363",
+      "code": "TECH-0304",
       "name": "repos",
       "normalized_name": "repos",
       "book_code": "V02-J",
-      "recipe_count": 14,
+      "recipe_count": 13,
       "recipe_codes": [
         "DESS-001",
         "DESS-002",
         "DESS-010",
         "FR-006",
         "FR-017",
-        "FRA-008",
         "LEV-002",
         "REAL-110",
         "REAL-111",
@@ -5430,7 +4763,7 @@
       ]
     },
     {
-      "code": "TECH-0364",
+      "code": "TECH-0305",
       "name": "repos froid",
       "normalized_name": "repos froid",
       "book_code": "V02-J",
@@ -5441,7 +4774,7 @@
       ]
     },
     {
-      "code": "TECH-0365",
+      "code": "TECH-0306",
       "name": "repos long",
       "normalized_name": "repos long",
       "book_code": "V02-J",
@@ -5451,7 +4784,7 @@
       ]
     },
     {
-      "code": "TECH-0366",
+      "code": "TECH-0307",
       "name": "retournement",
       "normalized_name": "retournement",
       "book_code": "V02-J",
@@ -5463,7 +4796,7 @@
       ]
     },
     {
-      "code": "TECH-0367",
+      "code": "TECH-0308",
       "name": "rinçage",
       "normalized_name": "rincage",
       "book_code": "V02-J",
@@ -5476,7 +4809,7 @@
       ]
     },
     {
-      "code": "TECH-0368",
+      "code": "TECH-0309",
       "name": "rotation",
       "normalized_name": "rotation",
       "book_code": "V02-C",
@@ -5486,13 +4819,12 @@
       ]
     },
     {
-      "code": "TECH-0369",
+      "code": "TECH-0310",
       "name": "rôtissage",
       "normalized_name": "rotissage",
       "book_code": "V02-C",
-      "recipe_count": 11,
+      "recipe_count": 10,
       "recipe_codes": [
-        "ESP-001",
         "FR-017",
         "GR-001",
         "PROT-008",
@@ -5506,24 +4838,12 @@
       ]
     },
     {
-      "code": "TECH-0370",
-      "name": "rôtissage à sec",
-      "normalized_name": "rotissage a sec",
-      "book_code": "V02-C",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "ESP-004",
-        "LVT-001"
-      ]
-    },
-    {
-      "code": "TECH-0371",
+      "code": "TECH-0311",
       "name": "roulage",
       "normalized_name": "roulage",
       "book_code": "V02-J",
-      "recipe_count": 7,
+      "recipe_count": 6,
       "recipe_codes": [
-        "ITA-007",
         "REAL-124",
         "REAL-202",
         "REAL-225",
@@ -5533,7 +4853,7 @@
       ]
     },
     {
-      "code": "TECH-0372",
+      "code": "TECH-0312",
       "name": "roux",
       "normalized_name": "roux",
       "book_code": "V02-G",
@@ -5544,20 +4864,18 @@
       ]
     },
     {
-      "code": "TECH-0373",
+      "code": "TECH-0313",
       "name": "roux blanc",
       "normalized_name": "roux blanc",
       "book_code": "V02-G",
-      "recipe_count": 4,
+      "recipe_count": 2,
       "recipe_codes": [
         "FR-002",
-        "FR-024",
-        "FRA-004",
-        "FRA-012"
+        "FR-024"
       ]
     },
     {
-      "code": "TECH-0374",
+      "code": "TECH-0314",
       "name": "rub sec",
       "normalized_name": "rub sec",
       "book_code": "V02-J",
@@ -5567,7 +4885,7 @@
       ]
     },
     {
-      "code": "TECH-0375",
+      "code": "TECH-0315",
       "name": "sablage",
       "normalized_name": "sablage",
       "book_code": "V02-J",
@@ -5578,11 +4896,11 @@
       ]
     },
     {
-      "code": "TECH-0376",
+      "code": "TECH-0316",
       "name": "saisie",
       "normalized_name": "saisie",
       "book_code": "V02-C",
-      "recipe_count": 39,
+      "recipe_count": 36,
       "recipe_codes": [
         "FR-001",
         "FR-003",
@@ -5591,9 +4909,6 @@
         "FR-016",
         "FR-018",
         "FR-019",
-        "FRA-005",
-        "FRA-007",
-        "FRA-020",
         "GR-001",
         "IT-001",
         "IT-004",
@@ -5626,7 +4941,7 @@
       ]
     },
     {
-      "code": "TECH-0377",
+      "code": "TECH-0317",
       "name": "saisie à sec",
       "normalized_name": "saisie a sec",
       "book_code": "V02-C",
@@ -5638,7 +4953,7 @@
       ]
     },
     {
-      "code": "TECH-0378",
+      "code": "TECH-0318",
       "name": "saisie de viande",
       "normalized_name": "saisie de viande",
       "book_code": "V02-C",
@@ -5648,7 +4963,7 @@
       ]
     },
     {
-      "code": "TECH-0379",
+      "code": "TECH-0319",
       "name": "saisie douce",
       "normalized_name": "saisie douce",
       "book_code": "V02-C",
@@ -5659,17 +4974,7 @@
       ]
     },
     {
-      "code": "TECH-0380",
-      "name": "saisie en fournées",
-      "normalized_name": "saisie en fournees",
-      "book_code": "V02-C",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-002"
-      ]
-    },
-    {
-      "code": "TECH-0381",
+      "code": "TECH-0320",
       "name": "saisie rapide",
       "normalized_name": "saisie rapide",
       "book_code": "V02-C",
@@ -5679,7 +4984,7 @@
       ]
     },
     {
-      "code": "TECH-0382",
+      "code": "TECH-0321",
       "name": "saisie vive",
       "normalized_name": "saisie vive",
       "book_code": "V02-C",
@@ -5690,7 +4995,7 @@
       ]
     },
     {
-      "code": "TECH-0383",
+      "code": "TECH-0322",
       "name": "saisie wok",
       "normalized_name": "saisie wok",
       "book_code": "V02-C",
@@ -5700,7 +5005,7 @@
       ]
     },
     {
-      "code": "TECH-0384",
+      "code": "TECH-0323",
       "name": "salage anticipé",
       "normalized_name": "salage anticipe",
       "book_code": "V02-J",
@@ -5710,7 +5015,7 @@
       ]
     },
     {
-      "code": "TECH-0385",
+      "code": "TECH-0324",
       "name": "sauce",
       "normalized_name": "sauce",
       "book_code": "V02-G",
@@ -5720,7 +5025,7 @@
       ]
     },
     {
-      "code": "TECH-0386",
+      "code": "TECH-0325",
       "name": "sauce crustacés",
       "normalized_name": "sauce crustaces",
       "book_code": "V02-G",
@@ -5730,7 +5035,7 @@
       ]
     },
     {
-      "code": "TECH-0387",
+      "code": "TECH-0326",
       "name": "sauces",
       "normalized_name": "sauces",
       "book_code": "V02-J",
@@ -5740,7 +5045,7 @@
       ]
     },
     {
-      "code": "TECH-0388",
+      "code": "TECH-0327",
       "name": "sauté",
       "normalized_name": "saute",
       "book_code": "V02-J",
@@ -5763,7 +5068,7 @@
       ]
     },
     {
-      "code": "TECH-0389",
+      "code": "TECH-0328",
       "name": "sauté de légumes",
       "normalized_name": "saute de legumes",
       "book_code": "V02-J",
@@ -5773,7 +5078,7 @@
       ]
     },
     {
-      "code": "TECH-0390",
+      "code": "TECH-0329",
       "name": "sauté sur plaque",
       "normalized_name": "saute sur plaque",
       "book_code": "V02-J",
@@ -5783,7 +5088,7 @@
       ]
     },
     {
-      "code": "TECH-0391",
+      "code": "TECH-0330",
       "name": "sauté vif",
       "normalized_name": "saute vif",
       "book_code": "V02-J",
@@ -5794,7 +5099,7 @@
       ]
     },
     {
-      "code": "TECH-0392",
+      "code": "TECH-0331",
       "name": "sauté wok",
       "normalized_name": "saute wok",
       "book_code": "V02-J",
@@ -5804,7 +5109,7 @@
       ]
     },
     {
-      "code": "TECH-0393",
+      "code": "TECH-0332",
       "name": "sauter",
       "normalized_name": "sauter",
       "book_code": "V02-J",
@@ -5815,7 +5120,7 @@
       ]
     },
     {
-      "code": "TECH-0394",
+      "code": "TECH-0333",
       "name": "secouage",
       "normalized_name": "secouage",
       "book_code": "V02-J",
@@ -5825,7 +5130,7 @@
       ]
     },
     {
-      "code": "TECH-0395",
+      "code": "TECH-0334",
       "name": "service en deux temps",
       "normalized_name": "service en deux temps",
       "book_code": "V02-J",
@@ -5835,18 +5140,17 @@
       ]
     },
     {
-      "code": "TECH-0396",
+      "code": "TECH-0335",
       "name": "singer",
       "normalized_name": "singer",
       "book_code": "V02-J",
-      "recipe_count": 2,
+      "recipe_count": 1,
       "recipe_codes": [
-        "FRA-014",
         "REAL-083"
       ]
     },
     {
-      "code": "TECH-0397",
+      "code": "TECH-0336",
       "name": "sirop",
       "normalized_name": "sirop",
       "book_code": "V02-J",
@@ -5856,7 +5160,7 @@
       ]
     },
     {
-      "code": "TECH-0398",
+      "code": "TECH-0337",
       "name": "socarrat",
       "normalized_name": "socarrat",
       "book_code": "V02-J",
@@ -5866,21 +5170,20 @@
       ]
     },
     {
-      "code": "TECH-0399",
+      "code": "TECH-0338",
       "name": "soffritto",
       "normalized_name": "soffritto",
       "book_code": "V02-J",
-      "recipe_count": 5,
+      "recipe_count": 4,
       "recipe_codes": [
         "IT-001",
         "IT-004",
-        "ITA-002",
         "REAL-093",
         "REAL-098"
       ]
     },
     {
-      "code": "TECH-0400",
+      "code": "TECH-0339",
       "name": "sofrito",
       "normalized_name": "sofrito",
       "book_code": "V02-J",
@@ -5893,28 +5196,7 @@
       ]
     },
     {
-      "code": "TECH-0401",
-      "name": "suée",
-      "normalized_name": "suee",
-      "book_code": "V02-J",
-      "recipe_count": 2,
-      "recipe_codes": [
-        "FRA-001",
-        "FRA-019"
-      ]
-    },
-    {
-      "code": "TECH-0402",
-      "name": "suée à l'huile",
-      "normalized_name": "suee a l huile",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "GRC-004"
-      ]
-    },
-    {
-      "code": "TECH-0403",
+      "code": "TECH-0340",
       "name": "suée à sec",
       "normalized_name": "suee a sec",
       "book_code": "V02-J",
@@ -5924,17 +5206,7 @@
       ]
     },
     {
-      "code": "TECH-0404",
-      "name": "suée échelonnée",
-      "normalized_name": "suee echelonnee",
-      "book_code": "V02-J",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "ESP-002"
-      ]
-    },
-    {
-      "code": "TECH-0405",
+      "code": "TECH-0341",
       "name": "suer",
       "normalized_name": "suer",
       "book_code": "V02-J",
@@ -5956,7 +5228,7 @@
       ]
     },
     {
-      "code": "TECH-0406",
+      "code": "TECH-0342",
       "name": "tadka",
       "normalized_name": "tadka",
       "book_code": "V02-J",
@@ -5969,7 +5241,7 @@
       ]
     },
     {
-      "code": "TECH-0407",
+      "code": "TECH-0343",
       "name": "taillage",
       "normalized_name": "taillage",
       "book_code": "V02-A",
@@ -5983,38 +5255,17 @@
       ]
     },
     {
-      "code": "TECH-0408",
-      "name": "taillage grossier",
-      "normalized_name": "taillage grossier",
-      "book_code": "V02-A",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "GRC-002"
-      ]
-    },
-    {
-      "code": "TECH-0409",
+      "code": "TECH-0344",
       "name": "taillage régulier",
       "normalized_name": "taillage regulier",
       "book_code": "V02-A",
-      "recipe_count": 2,
+      "recipe_count": 1,
       "recipe_codes": [
-        "ESP-001",
         "FR-006"
       ]
     },
     {
-      "code": "TECH-0410",
-      "name": "tamisage",
-      "normalized_name": "tamisage",
-      "book_code": "V02-B",
-      "recipe_count": 1,
-      "recipe_codes": [
-        "FRA-018"
-      ]
-    },
-    {
-      "code": "TECH-0411",
+      "code": "TECH-0345",
       "name": "tare",
       "normalized_name": "tare",
       "book_code": "V02-J",
@@ -6024,7 +5275,7 @@
       ]
     },
     {
-      "code": "TECH-0412",
+      "code": "TECH-0346",
       "name": "tare miso",
       "normalized_name": "tare miso",
       "book_code": "V02-J",
@@ -6034,7 +5285,7 @@
       ]
     },
     {
-      "code": "TECH-0413",
+      "code": "TECH-0347",
       "name": "tarka",
       "normalized_name": "tarka",
       "book_code": "V02-J",
@@ -6048,7 +5299,7 @@
       ]
     },
     {
-      "code": "TECH-0414",
+      "code": "TECH-0348",
       "name": "tempérage",
       "normalized_name": "temperage",
       "book_code": "V02-J",
@@ -6064,7 +5315,7 @@
       ]
     },
     {
-      "code": "TECH-0415",
+      "code": "TECH-0349",
       "name": "tempérage des épices",
       "normalized_name": "temperage des epices",
       "book_code": "V02-J",
@@ -6074,7 +5325,7 @@
       ]
     },
     {
-      "code": "TECH-0416",
+      "code": "TECH-0350",
       "name": "tempérage du yaourt",
       "normalized_name": "temperage du yaourt",
       "book_code": "V02-J",
@@ -6084,7 +5335,7 @@
       ]
     },
     {
-      "code": "TECH-0417",
+      "code": "TECH-0351",
       "name": "tombée",
       "normalized_name": "tombee",
       "book_code": "V02-J",
@@ -6095,7 +5346,7 @@
       ]
     },
     {
-      "code": "TECH-0418",
+      "code": "TECH-0352",
       "name": "tombée des épinards",
       "normalized_name": "tombee des epinards",
       "book_code": "V02-J",
@@ -6105,7 +5356,7 @@
       ]
     },
     {
-      "code": "TECH-0419",
+      "code": "TECH-0353",
       "name": "torréfaction",
       "normalized_name": "torrefaction",
       "book_code": "V02-C",
@@ -6126,19 +5377,18 @@
       ]
     },
     {
-      "code": "TECH-0420",
+      "code": "TECH-0354",
       "name": "torréfaction des épices",
       "normalized_name": "torrefaction des epices",
       "book_code": "V02-C",
-      "recipe_count": 3,
+      "recipe_count": 2,
       "recipe_codes": [
         "IND-001",
-        "MGH-005",
         "MX-001"
       ]
     },
     {
-      "code": "TECH-0421",
+      "code": "TECH-0355",
       "name": "torréfaction douce",
       "normalized_name": "torrefaction douce",
       "book_code": "V02-C",
@@ -6148,7 +5398,7 @@
       ]
     },
     {
-      "code": "TECH-0422",
+      "code": "TECH-0356",
       "name": "tourage",
       "normalized_name": "tourage",
       "book_code": "V02-J",
@@ -6158,7 +5408,7 @@
       ]
     },
     {
-      "code": "TECH-0423",
+      "code": "TECH-0357",
       "name": "tranchage",
       "normalized_name": "tranchage",
       "book_code": "V02-A",
@@ -6172,7 +5422,7 @@
       ]
     },
     {
-      "code": "TECH-0424",
+      "code": "TECH-0358",
       "name": "tranchage fin",
       "normalized_name": "tranchage fin",
       "book_code": "V02-A",
@@ -6182,18 +5432,13 @@
       ]
     },
     {
-      "code": "TECH-0425",
+      "code": "TECH-0359",
       "name": "trempage",
       "normalized_name": "trempage",
       "book_code": "V02-J",
-      "recipe_count": 27,
+      "recipe_count": 22,
       "recipe_codes": [
-        "FRA-006",
-        "FRA-016",
-        "ITA-002",
-        "ITA-008",
         "LEV-002",
-        "MGH-005",
         "PROT-002",
         "REAL-073",
         "REAL-077",
@@ -6218,7 +5463,7 @@
       ]
     },
     {
-      "code": "TECH-0426",
+      "code": "TECH-0360",
       "name": "vapeur",
       "normalized_name": "vapeur",
       "book_code": "V02-D",
@@ -6234,7 +5479,7 @@
       ]
     },
     {
-      "code": "TECH-0427",
+      "code": "TECH-0361",
       "name": "velveting",
       "normalized_name": "velveting",
       "book_code": "V02-J",
@@ -6244,18 +5489,17 @@
       ]
     },
     {
-      "code": "TECH-0428",
+      "code": "TECH-0362",
       "name": "vinaigrette",
       "normalized_name": "vinaigrette",
       "book_code": "V02-J",
-      "recipe_count": 2,
+      "recipe_count": 1,
       "recipe_codes": [
-        "FR-035",
-        "FRA-010"
+        "FR-035"
       ]
     },
     {
-      "code": "TECH-0429",
+      "code": "TECH-0363",
       "name": "wok hei",
       "normalized_name": "wok hei",
       "book_code": "V02-J",
@@ -6451,97 +5695,6 @@
       "primary_volume": "V32",
       "volumes": [
         "V25",
-        "V32",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "ESP-001",
-      "title": "Patatas bravas",
-      "cuisine_origin": "Espagne",
-      "category": "accompagnement",
-      "primary_volume": "V34",
-      "volumes": [
-        "V19",
-        "V25",
-        "V34",
-        "V35",
-        "V36",
-        "V37",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "ESP-002",
-      "title": "Pisto manchego",
-      "cuisine_origin": "Espagne",
-      "category": "plat mijoté",
-      "primary_volume": "V32",
-      "volumes": [
-        "V19",
-        "V25",
-        "V32",
-        "V33",
-        "V35",
-        "V37",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "ESP-003",
-      "title": "Albóndigas en salsa",
-      "cuisine_origin": "Espagne",
-      "category": "plat mijoté",
-      "primary_volume": "V13",
-      "volumes": [
-        "V13",
-        "V14",
-        "V19",
-        "V32",
-        "V33",
-        "V35",
-        "V37",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "ESP-004",
-      "title": "Escalivada",
-      "cuisine_origin": "Espagne",
-      "category": "accompagnement",
-      "primary_volume": "V34",
-      "volumes": [
-        "V19",
-        "V25",
-        "V34",
-        "V35",
-        "V36",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "ESP-005",
-      "title": "Pollo al ajillo",
-      "cuisine_origin": "Espagne",
-      "category": "sauté",
-      "primary_volume": "V15",
-      "volumes": [
-        "V15",
-        "V19",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "ESP-006",
-      "title": "Crema catalana",
-      "cuisine_origin": "Espagne",
-      "category": "dessert",
-      "primary_volume": "V31",
-      "volumes": [
-        "V19",
-        "V25",
-        "V29",
-        "V31",
         "V32",
         "V35"
       ]
@@ -7088,273 +6241,6 @@
       ]
     },
     {
-      "recipe_code": "FRA-001",
-      "title": "Moules marinières",
-      "cuisine_origin": "France",
-      "category": "coquillage",
-      "primary_volume": "V17",
-      "volumes": [
-        "V17",
-        "V35",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "FRA-002",
-      "title": "Daube provençale",
-      "cuisine_origin": "France",
-      "category": "plat mijoté",
-      "primary_volume": "V13",
-      "volumes": [
-        "V13",
-        "V33",
-        "V39",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "FRA-003",
-      "title": "Chou farci",
-      "cuisine_origin": "France",
-      "category": "plat mijoté",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V13",
-        "V14",
-        "V29",
-        "V32",
-        "V33",
-        "V37",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "FRA-004",
-      "title": "Gratin de macaronis",
-      "cuisine_origin": "France",
-      "category": "gratin",
-      "primary_volume": "V14",
-      "volumes": [
-        "V14",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "FRA-005",
-      "title": "Poulet chasseur",
-      "cuisine_origin": "France",
-      "category": "plat mijoté",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V15",
-        "V33",
-        "V35",
-        "V37",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "FRA-006",
-      "title": "Épaule d'agneau confite aux haricots blancs",
-      "cuisine_origin": "France",
-      "category": "rôti",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V13",
-        "V34",
-        "V39"
-      ]
-    },
-    {
-      "recipe_code": "FRA-007",
-      "title": "Escalope de veau à la crème et aux champignons",
-      "cuisine_origin": "France",
-      "category": "sauté",
-      "primary_volume": "V13",
-      "volumes": [
-        "V13",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "FRA-008",
-      "title": "Rôti de porc aux pommes de terre boulangère",
-      "cuisine_origin": "France",
-      "category": "rôti",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V14",
-        "V15",
-        "V34"
-      ]
-    },
-    {
-      "recipe_code": "FRA-009",
-      "title": "Céleri rémoulade",
-      "cuisine_origin": "France",
-      "category": "entrée froide",
-      "primary_volume": "V25",
-      "volumes": [
-        "V25",
-        "V35",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "FRA-010",
-      "title": "Carottes râpées à l'orange",
-      "cuisine_origin": "France",
-      "category": "entrée froide",
-      "primary_volume": "V25",
-      "volumes": [
-        "V25",
-        "V35",
-        "V36",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "FRA-011",
-      "title": "Œufs cocotte à la crème et aux champignons",
-      "cuisine_origin": "France",
-      "category": "œufs",
-      "primary_volume": "V32",
-      "volumes": [
-        "V25",
-        "V32",
-        "V34",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "FRA-012",
-      "title": "Gratin de chou-fleur",
-      "cuisine_origin": "France",
-      "category": "gratin",
-      "primary_volume": "V25",
-      "volumes": [
-        "V25",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "FRA-013",
-      "title": "Endives braisées au jus",
-      "cuisine_origin": "France",
-      "category": "accompagnement",
-      "primary_volume": "V30",
-      "volumes": [
-        "V12",
-        "V15",
-        "V25",
-        "V29",
-        "V30",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "FRA-014",
-      "title": "Petits pois à la française",
-      "cuisine_origin": "France",
-      "category": "accompagnement",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V14",
-        "V15",
-        "V35",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "FRA-015",
-      "title": "Crème brûlée à la vanille",
-      "cuisine_origin": "France",
-      "category": "dessert",
-      "primary_volume": "V30",
-      "volumes": [
-        "V25",
-        "V29",
-        "V30",
-        "V32",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "FRA-016",
-      "title": "Pain perdu",
-      "cuisine_origin": "France",
-      "category": "dessert",
-      "primary_volume": "V30",
-      "volumes": [
-        "V25",
-        "V29",
-        "V30",
-        "V32",
-        "V35",
-        "V38"
-      ]
-    },
-    {
-      "recipe_code": "FRA-017",
-      "title": "Œufs à la neige, crème anglaise",
-      "cuisine_origin": "France",
-      "category": "dessert",
-      "primary_volume": "V30",
-      "volumes": [
-        "V25",
-        "V29",
-        "V30",
-        "V32",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "FRA-018",
-      "title": "Quatre-quarts breton",
-      "cuisine_origin": "France",
-      "category": "gâteau",
-      "primary_volume": "V30",
-      "volumes": [
-        "V25",
-        "V29",
-        "V30",
-        "V32",
-        "V35",
-        "V39"
-      ]
-    },
-    {
-      "recipe_code": "FRA-019",
-      "title": "Soupe de poisson à la rouille",
-      "cuisine_origin": "France",
-      "category": "soupe",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V16",
-        "V23",
-        "V35",
-        "V37"
-      ]
-    },
-    {
-      "recipe_code": "FRA-020",
-      "title": "Steak haché, purée maison",
-      "cuisine_origin": "France",
-      "category": "plat complet",
-      "primary_volume": "V13",
-      "volumes": [
-        "V13",
-        "V35",
-        "V40"
-      ]
-    },
-    {
       "recipe_code": "GR-001",
       "title": "Moussaka",
       "cuisine_origin": "France / cuisine domestique internationale",
@@ -7366,64 +6252,6 @@
         "V34",
         "V37",
         "V39"
-      ]
-    },
-    {
-      "recipe_code": "GRC-001",
-      "title": "Tzatziki",
-      "cuisine_origin": "Grèce",
-      "category": "entrée froide",
-      "primary_volume": "V20",
-      "volumes": [
-        "V20",
-        "V25",
-        "V35",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "GRC-002",
-      "title": "Horiatiki, la salade grecque",
-      "cuisine_origin": "Grèce",
-      "category": "salade composée",
-      "primary_volume": "V11",
-      "volumes": [
-        "V11",
-        "V20",
-        "V25",
-        "V35",
-        "V36",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "GRC-003",
-      "title": "Gemista, légumes farcis au riz",
-      "cuisine_origin": "Grèce",
-      "category": "plat complet",
-      "primary_volume": "V29",
-      "volumes": [
-        "V20",
-        "V25",
-        "V29",
-        "V34",
-        "V36",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "GRC-004",
-      "title": "Fasolakia, haricots verts à l'huile",
-      "cuisine_origin": "Grèce",
-      "category": "accompagnement",
-      "primary_volume": "V20",
-      "volumes": [
-        "V20",
-        "V25",
-        "V35",
-        "V36",
-        "V37",
-        "V40"
       ]
     },
     {
@@ -7563,122 +6391,6 @@
       ]
     },
     {
-      "recipe_code": "ITA-001",
-      "title": "Risotto alla milanese",
-      "cuisine_origin": "Italie",
-      "category": "risotto",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V15",
-        "V18",
-        "V25",
-        "V29",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "ITA-002",
-      "title": "Pasta e fagioli",
-      "cuisine_origin": "Italie",
-      "category": "soupe",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V18",
-        "V25",
-        "V35",
-        "V36"
-      ]
-    },
-    {
-      "recipe_code": "ITA-003",
-      "title": "Panzanella toscane",
-      "cuisine_origin": "Italie",
-      "category": "salade composée",
-      "primary_volume": "V11",
-      "volumes": [
-        "V11",
-        "V18",
-        "V25",
-        "V35",
-        "V36"
-      ]
-    },
-    {
-      "recipe_code": "ITA-004",
-      "title": "Penne all'arrabbiata",
-      "cuisine_origin": "Italie",
-      "category": "pâtes",
-      "primary_volume": "V18",
-      "volumes": [
-        "V18",
-        "V25",
-        "V35",
-        "V36",
-        "V37"
-      ]
-    },
-    {
-      "recipe_code": "ITA-005",
-      "title": "Polpette al sugo",
-      "cuisine_origin": "Italie",
-      "category": "plat mijoté",
-      "primary_volume": "V13",
-      "volumes": [
-        "V13",
-        "V14",
-        "V18",
-        "V32",
-        "V33",
-        "V35",
-        "V37",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "ITA-006",
-      "title": "Frittata di zucchine",
-      "cuisine_origin": "Italie",
-      "category": "œufs",
-      "primary_volume": "V32",
-      "volumes": [
-        "V18",
-        "V25",
-        "V32",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "ITA-007",
-      "title": "Involtini di manzo",
-      "cuisine_origin": "Italie",
-      "category": "plat mijoté",
-      "primary_volume": "V13",
-      "volumes": [
-        "V13",
-        "V18",
-        "V33",
-        "V37",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "ITA-008",
-      "title": "Zuppa di ceci e rosmarino",
-      "cuisine_origin": "Italie",
-      "category": "soupe",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V18",
-        "V25",
-        "V35",
-        "V36",
-        "V40"
-      ]
-    },
-    {
       "recipe_code": "LEV-001",
       "title": "Houmous",
       "cuisine_origin": "France / cuisine domestique internationale",
@@ -7703,61 +6415,6 @@
         "V34",
         "V35",
         "V36"
-      ]
-    },
-    {
-      "recipe_code": "LVT-001",
-      "title": "Mutabbal d'aubergine",
-      "cuisine_origin": "Levant",
-      "category": "entrée froide",
-      "primary_volume": "V34",
-      "volumes": [
-        "V20",
-        "V25",
-        "V34",
-        "V35",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "LVT-002",
-      "title": "Kofta d'agneau aux épices",
-      "cuisine_origin": "Levant",
-      "category": "grillade",
-      "primary_volume": "V13",
-      "volumes": [
-        "V13",
-        "V20",
-        "V34",
-        "V35"
-      ]
-    },
-    {
-      "recipe_code": "LVT-003",
-      "title": "Salade de boulgour aux herbes",
-      "cuisine_origin": "Levant",
-      "category": "salade composée",
-      "primary_volume": "V11",
-      "volumes": [
-        "V11",
-        "V20",
-        "V25",
-        "V29",
-        "V35",
-        "V36"
-      ]
-    },
-    {
-      "recipe_code": "LVT-004",
-      "title": "Poulet shish taouk mariné au yaourt",
-      "cuisine_origin": "Levant",
-      "category": "grillade",
-      "primary_volume": "V15",
-      "volumes": [
-        "V15",
-        "V20",
-        "V34",
-        "V35"
       ]
     },
     {
@@ -7788,80 +6445,6 @@
         "V32",
         "V35",
         "V37"
-      ]
-    },
-    {
-      "recipe_code": "MGH-001",
-      "title": "Zaalouk d'aubergines",
-      "cuisine_origin": "Maroc",
-      "category": "entrée froide",
-      "primary_volume": "V21",
-      "volumes": [
-        "V21",
-        "V25",
-        "V35",
-        "V36",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "MGH-002",
-      "title": "Chorba frik à l'agneau",
-      "cuisine_origin": "Algérie",
-      "category": "soupe",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V13",
-        "V21",
-        "V29"
-      ]
-    },
-    {
-      "recipe_code": "MGH-003",
-      "title": "Kefta mkaouara aux œufs",
-      "cuisine_origin": "Maroc",
-      "category": "plat mijoté",
-      "primary_volume": "V13",
-      "volumes": [
-        "V13",
-        "V21",
-        "V32",
-        "V33",
-        "V35",
-        "V37",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "MGH-004",
-      "title": "Taktouka, salade de poivrons grillés",
-      "cuisine_origin": "Maroc",
-      "category": "entrée froide",
-      "primary_volume": "V11",
-      "volumes": [
-        "V11",
-        "V21",
-        "V25",
-        "V35",
-        "V36",
-        "V40"
-      ]
-    },
-    {
-      "recipe_code": "MGH-005",
-      "title": "Loubia, haricots blancs à la marocaine",
-      "cuisine_origin": "Maroc",
-      "category": "plat mijoté",
-      "primary_volume": "V12",
-      "volumes": [
-        "V12",
-        "V21",
-        "V25",
-        "V33",
-        "V36",
-        "V37",
-        "V40"
       ]
     },
     {

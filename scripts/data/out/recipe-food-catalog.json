@@ -5366,7 +5366,6 @@
         "skin_state": null
       },
       "units_used": [
-        "g",
         "u"
       ],
       "conversion": {
@@ -8933,36 +8932,6 @@
       "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 175159 « Fish, cod, Atlantic, dried and salted », réellement mesurée — jamais un zéro posé par défaut."
     },
     {
-      "canonical_name": "Moule commune crue",
-      "canonical_name_normalized": "moule commune crue",
-      "category": "poissons_fruits_de_mer",
-      "confidence": "B",
-      "source": "ciqual_2020",
-      "source_record_key": "10014",
-      "source_name": "Moule commune, crue",
-      "state": {
-        "concept": "Moule commune crue",
-        "rest": "",
-        "cooking_state": "raw",
-        "preservation_state": null,
-        "physical_state": null,
-        "bone_state": null,
-        "skin_state": null
-      },
-      "units_used": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 71.8,
-        "proteinG": 11.2,
-        "carbsG": 2.69,
-        "fatG": 1.82,
-        "fiberG": 0
-      },
-      "note": "Correspondance directe : 71,8 kcal, 11,2 g de protéines, 2,69 g de glucides, 1,82 g de lipides. Retenu le cru, puisque les recettes les cuisent elles-mêmes — 10082 « Moules marinières » est le plat fini et ferait doublon avec la recette qui l'emploie. ATTENTION à l'unité : le classeur mesure la CHAIR, pas la coquille. Une recette doit donc peser la chair (environ un tiers du poids acheté) et rappeler l'équivalent en moules entières dans ses étapes, faute de quoi l'apport serait triplé."
-    },
-    {
       "canonical_name": "Moutarde de Dijon",
       "canonical_name_normalized": "moutarde de dijon",
       "category": "condiments_sauces",
@@ -9607,7 +9576,6 @@
         "skin_state": null
       },
       "units_used": [
-        "g",
         "u"
       ],
       "conversion": {},
