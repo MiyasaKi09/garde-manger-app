@@ -2500,9 +2500,9 @@
       "source": "ciqual_2020",
       "derived": {
         "field": "fat_g",
-        "value": 1.378,
+        "value": 0,
         "method": "atwater_closure",
-        "formula": "fat_g = (kcal − 4·protein_g − 4·carbohydrate_g) / 9"
+        "formula": "fat_g = (kcal − 4·protein_g − 4·carbohydrate_g − 2·fiber_g) / 9"
       },
       "source_record_key": "11092",
       "source_name": "Estragon, frais",
@@ -2523,7 +2523,7 @@
         "kcal": 44,
         "proteinG": 3.8,
         "carbsG": 4.1,
-        "fatG": 1.378,
+        "fatG": 0,
         "fiberG": 6.2
       },
       "note": null
@@ -4803,9 +4803,9 @@
       "source": "ciqual_2020",
       "derived": {
         "field": "carbohydrate_g",
-        "value": 2.115,
+        "value": 0.315,
         "method": "atwater_closure",
-        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g) / 4"
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
       },
       "source_record_key": "13033",
       "source_name": "Olive verte, en saumure, égouttée",
@@ -4825,7 +4825,7 @@
       "per100g": {
         "kcal": 155,
         "proteinG": 1.31,
-        "carbsG": 2.115,
+        "carbsG": 0.315,
         "fatG": 15.7,
         "fiberG": 3.6
       },
@@ -6739,7 +6739,7 @@
         "raw_value": -0.025,
         "clamped_to_zero": true,
         "method": "atwater_closure",
-        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g) / 4"
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
       },
       "source_record_key": "26104",
       "source_name": "Saint-Pierre, cru",

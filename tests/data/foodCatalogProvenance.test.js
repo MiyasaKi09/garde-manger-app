@@ -12,7 +12,12 @@ const catalog = JSON.parse(readFileSync(join(process.cwd(), 'scripts', 'data', '
 const report = JSON.parse(readFileSync(join(process.cwd(), 'scripts', 'data', 'out', 'recipe-food-match-report.json'), 'utf8'))
 
 const MACROS = ['proteinG', 'carbsG', 'fatG']
+// Ciqual applique les facteurs du règlement 1169/2011 : les fibres valent
+// 2 kcal/g et ne sont pas comptées dans `carbohydrate_g`, qui est le glucide
+// disponible. Les omettre biaise la reconstruction de −13,5 % en moyenne sur
+// les aliments à plus de 10 g de fibres.
 const FACTEURS = { proteinG: 4, carbsG: 4, fatG: 9 }
+const FACTEUR_FIBRES = 2
 
 describe('provenance du catalogue des formes d’aliments', () => {
   const derivees = catalog.forms.filter((form) => form.derived)
@@ -29,7 +34,8 @@ describe('provenance du catalogue des formes d’aliments', () => {
   it('ne déduit que ce qui se vérifie par l’identité d’Atwater', () => {
     for (const form of derivees) {
       const { kcal } = form.per100g
-      const reconstruit = MACROS.reduce((somme, cle) => somme + form.per100g[cle] * FACTEURS[cle], 0)
+      const apportFibres = form.derived.formula.includes('fiber_g') ? form.per100g.fiberG * FACTEUR_FIBRES : 0
+      const reconstruit = MACROS.reduce((somme, cle) => somme + form.per100g[cle] * FACTEURS[cle], apportFibres)
       // La fermeture n'a qu'une inconnue : réinjectée, elle doit redonner
       // l'énergie mesurée. Seule exception admise, et déclarée : un résidu
       // négatif infime, artefact des arrondis de Ciqual, ramené à zéro. La
@@ -43,6 +49,23 @@ describe('provenance du catalogue des formes d’aliments', () => {
       expect(Math.abs(exact - kcal), `${form.canonical_name} : ${exact} ≠ ${kcal}`).toBeLessThan(0.05)
       // Et jamais une valeur publiée physiquement impossible.
       for (const cle of MACROS) expect(form.per100g[cle], form.canonical_name).toBeGreaterThanOrEqual(0)
+    }
+  })
+
+  it('compte les fibres dans la fermeture, comme le fait Ciqual', () => {
+    // L'olive verte en saumure est le cas qui tranche : 155 kcal, 1,31 g de
+    // protéines, 15,7 g de lipides, 3,6 g de fibres. Sans le terme de fibres la
+    // fermeture donne 2,115 g de glucides ; avec, 0,315 — et la valeur publiée
+    // ailleurs pour l'olive verte est d'environ 0,5 g de glucides disponibles.
+    // Le terme de fibres n'est pas un raffinement, il corrige un facteur sept.
+    const olive = catalog.forms.find((form) => form.canonical_name_normalized === 'olive verte denoyautee')
+    expect(olive.derived.formula).toContain('2·fiber_g')
+    expect(olive.per100g.carbsG).toBeLessThan(1)
+
+    // Toute forme dérivée dont les fibres sont connues doit les compter.
+    for (const form of derivees) {
+      if (!Number.isFinite(form.per100g.fiberG)) continue
+      expect(form.derived.formula, form.canonical_name).toContain('fiber_g')
     }
   })
 

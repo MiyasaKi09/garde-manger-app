@@ -159,15 +159,20 @@ const UNIT_WEIGHTS_G = new Map(Object.entries({
   'blanc d oeuf cru': 33,
 }))
 
-function conversionFor(form, units) {
+function conversionFor(form, units, explicit = null) {
   const normalized = normalizeName(form)
   const conversion = {}
-  if (units.has('u') && UNIT_WEIGHTS_G.has(normalized)) conversion.grams_per_unit = UNIT_WEIGHTS_G.get(normalized)
-  if (units.has('tranche')) {
+  // Une conversion arbitrée l'emporte sur la table interne : la décision et son
+  // poids appartiennent au même endroit, faute de quoi arbitrer une forme
+  // comptée en unités obligerait à modifier le script en plus du registre.
+  if (Number.isFinite(explicit?.grams_per_unit)) conversion.grams_per_unit = explicit.grams_per_unit
+  if (Number.isFinite(explicit?.density_g_per_ml)) conversion.density_g_per_ml = explicit.density_g_per_ml
+  if (units.has('u') && !conversion.grams_per_unit && UNIT_WEIGHTS_G.has(normalized)) conversion.grams_per_unit = UNIT_WEIGHTS_G.get(normalized)
+  if (units.has('tranche') && !conversion.grams_per_unit) {
     if (/jambon/.test(normalized)) conversion.grams_per_unit = 40
     if (/pain de mie/.test(normalized)) conversion.grams_per_unit = 30
   }
-  if (units.has('ml')) {
+  if (units.has('ml') && !conversion.density_g_per_ml) {
     if (/huile/.test(normalized)) conversion.density_g_per_ml = 0.92
     else if (/rhum|alcool/.test(normalized)) conversion.density_g_per_ml = 0.95
     else if (/lait|creme|yaourt/.test(normalized)) conversion.density_g_per_ml = 1.03
@@ -184,16 +189,28 @@ function conversionFor(form, units) {
  * valeur. Il ne s'agit pas d'une analogie — déduire l'estragon frais du séché
  * par teneur en eau donne entre 0,59 et 1,21 g de lipides selon le rapport
  * retenu, soit un facteur deux d'incertitude. La fermeture énergétique, elle,
- * n'a qu'une inconnue et n'utilise que des valeurs mesurées du même aliment :
+ * n'a qu'une inconnue et n'utilise que des valeurs mesurées du même aliment.
  *
- *   kcal = 4 × protéines + 4 × glucides + 9 × lipides
- *   44 = 4 × 3,8 + 4 × 4,1 + 9 × L  →  L = 1,378 g
+ * Les FIBRES comptent. Ciqual applique les facteurs du règlement européen
+ * 1169/2011, qui leur attribue 2 kcal/g, et son `carbohydrate_g` est le glucide
+ * DISPONIBLE, fibres exclues. Les ignorer biaise lourdement la déduction dès
+ * que l'aliment est fibreux — mesuré sur les 125 aliments du classeur à plus de
+ * 10 g de fibres dont les cinq valeurs sont connues :
  *
- * Conditions strictes : exactement une macro manquante, les trois autres
- * mesurées, et un résultat physiquement plausible. Le résultat n'est JAMAIS
- * présenté comme une mesure : la forme porte `derived` avec sa formule.
+ *   sans les fibres : biais moyen −13,5 %, erreur médiane 9,36 %
+ *   avec les fibres : biais moyen  +3,6 %, erreur médiane 0,23 %
+ *
+ *   kcal = 4 × protéines + 4 × glucides + 9 × lipides + 2 × fibres
+ *
+ * Quand les fibres elles-mêmes sont inconnues, on retombe sur les trois termes
+ * — et la formule enregistrée le dit, pour que la réserve reste lisible.
+ *
+ * Conditions strictes : exactement une macro manquante, les autres mesurées, et
+ * un résultat physiquement plausible. Le résultat n'est JAMAIS présenté comme
+ * une mesure : la forme porte `derived` avec sa formule.
  */
 const FACTEURS_ATWATER = { protein_g: 4, carbohydrate_g: 4, fat_g: 9 }
+const FACTEUR_FIBRES = 2
 
 function comblerParAtwater(nutrition) {
   const champs = ['energy_kcal', 'protein_g', 'carbohydrate_g', 'fat_g']
@@ -201,16 +218,24 @@ function comblerParAtwater(nutrition) {
   if (manquants.length !== 1) return null
   const [manquant] = manquants
 
+  const fibres = Number.isFinite(nutrition.fiber_g) ? nutrition.fiber_g : null
+  const apportFibres = fibres === null ? 0 : fibres * FACTEUR_FIBRES
+  const termeFibres = fibres === null ? '' : ` + ${FACTEUR_FIBRES}·fiber_g`
+
   if (manquant === 'energy_kcal') {
     const kcal = Object.entries(FACTEURS_ATWATER)
-      .reduce((somme, [champ, facteur]) => somme + nutrition[champ] * facteur, 0)
-    return { champ: manquant, valeur: Math.round(kcal * 100) / 100, formule: 'kcal = 4·protéines + 4·glucides + 9·lipides' }
+      .reduce((somme, [champ, facteur]) => somme + nutrition[champ] * facteur, apportFibres)
+    return {
+      champ: manquant,
+      valeur: Math.round(kcal * 100) / 100,
+      formule: `kcal = 4·protéines + 4·glucides + 9·lipides${termeFibres ? ' + 2·fibres' : ''}`,
+    }
   }
 
   const facteur = FACTEURS_ATWATER[manquant]
   const autres = Object.entries(FACTEURS_ATWATER)
     .filter(([champ]) => champ !== manquant)
-    .reduce((somme, [champ, poids]) => somme + nutrition[champ] * poids, 0)
+    .reduce((somme, [champ, poids]) => somme + nutrition[champ] * poids, apportFibres)
   const valeur = (nutrition.energy_kcal - autres) / facteur
 
   // Une valeur franchement négative signale une incohérence de la source, pas
@@ -226,7 +251,7 @@ function comblerParAtwater(nutrition) {
     champ: manquant,
     valeur: arrondie,
     ...(valeur < 0 ? { valeur_brute: Math.round(valeur * 1000) / 1000 } : {}),
-    formule: `${manquant} = (kcal − ${Object.entries(FACTEURS_ATWATER).filter(([c]) => c !== manquant).map(([c, f]) => `${f}·${c}`).join(' − ')}) / ${facteur}`,
+    formule: `${manquant} = (kcal − ${Object.entries(FACTEURS_ATWATER).filter(([c]) => c !== manquant).map(([c, f]) => `${f}·${c}`).join(' − ')}${termeFibres.replace(' + ', ' − ')}) / ${facteur}`,
   }
 }
 
@@ -402,7 +427,7 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
       source_name: retenu.alim_nom_fr,
       state: parseFoodName(usage.name),
       units_used: [...usage.units].sort(),
-      conversion: conversionFor(usage.name, usage.units),
+      conversion: conversionFor(usage.name, usage.units, explicit),
       per100g: {
         kcal: retenu.nutrition?.energy_kcal ?? null,
         proteinG: retenu.nutrition?.protein_g ?? null,
