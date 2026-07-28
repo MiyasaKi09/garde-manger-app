@@ -3,13 +3,13 @@
   "nutrition_source": "Ciqual 2020",
   "forms_total": 719,
   "summary": {
-    "review_required": 256,
-    "curated": 415,
-    "exact_label": 48
+    "review_required": 223,
+    "curated": 449,
+    "exact_label": 47
   },
   "recipes_total": 309,
-  "recipes_eligible_for_publication": 100,
-  "recipes_blocked_only_by_proxy": 46,
+  "recipes_eligible_for_publication": 118,
+  "recipes_blocked_only_by_proxy": 69,
   "v1_enriched_eligible_for_publication": 56,
   "unresolved_required": [
     "Achiote pâte",
@@ -21,9 +21,7 @@
     "Ciboule japonaise negi",
     "Ciboulette asiatique",
     "Cime di rapa fraîches",
-    "Citron confit au sel",
     "Cœur de bœuf cru",
-    "Cognac",
     "Côte de porc désossée crue",
     "Crevette crue décortiquée avec queue",
     "Crevette cuite décortiquée",
@@ -32,8 +30,6 @@
     "Cuisse de poulet crue, désossée",
     "Curry de Durban",
     "Curry jamaïcain en poudre",
-    "Eau chaude",
-    "Eau glacée gazeuse",
     "Échalote frite",
     "Échine de porc crue",
     "Échine de porc crue en bandes",
@@ -61,8 +57,6 @@
     "Feuille de bananier",
     "Feuille de laksa vietnamienne",
     "Feuille de maïs sèche",
-    "Feuille de sauge fraîche",
-    "Feuille de vigne en saumure",
     "Fideo court sec",
     "Filet de cabillaud cru",
     "Filet de poisson blanc ferme cru",
@@ -89,17 +83,10 @@
     "Haricot tarbais sec",
     "Haricot vert plat cru",
     "Herbes vietnamiennes fraîches",
-    "Huile de dendê",
-    "Huile de palme rouge",
-    "Huile pimentée au roucou",
     "Jambon de Bayonne avec os",
     "Jambon de Parme",
-    "Jaune d’œuf cuit",
-    "Jus d orange amère",
     "Katsuobushi",
-    "Kecap manis",
     "Krupuk crackers",
-    "Lait évaporé",
     "Laitue romaine fraîche",
     "Lapin cru en morceaux",
     "Lentille chana dal sèche",
@@ -113,7 +100,6 @@
     "Masa harina pour tamal",
     "Menma pousse de bambou assaisonnée",
     "Mérou cru entier",
-    "Mirin",
     "Miso blanc",
     "Miso rouge",
     "Moutarde allemande",
@@ -163,8 +149,6 @@
     "Piment ají amarillo frais",
     "Piment ancho moulu",
     "Piment d Alep",
-    "Piment habanero",
-    "Piment jalapeño frais",
     "Piment jalapeño mariné",
     "Piment moulu",
     "Piment mulato séché",
@@ -198,29 +182,18 @@
     "Roux de curry japonais",
     "Saewoojeot crevette fermentée",
     "Saindoux asiento",
-    "Saké",
-    "Saké de cuisine",
-    "Sauce huître",
     "Sauce okonomiyaki",
-    "Sauce soja",
-    "Sauce soja claire",
-    "Sauce soja légère spéciale poisson",
-    "Sauce soja philippine",
     "Sauce takoyaki",
     "Sauce tomate salvadorienne",
-    "Sauce Worcestershire",
-    "Sauce yakisoba",
     "Saucisse de Strasbourg",
     "Saucisse fumée kielbasa",
     "Saucisse linguiça",
-    "Saumure légère",
     "Shirataki rincé",
     "Sole entière crue, parée",
     "Steak de bœuf cru fin",
     "Sucre glace",
     "Tahini de sésame chinois",
     "Tamarin frais ou pâte",
-    "Tare de soja",
     "Tasajo de bœuf",
     "Tempeh frit",
     "Tenkasu miettes de tempura",
@@ -243,13 +216,7 @@
     "Vermicelle de riz cuit",
     "Vermicelle de riz sec",
     "Viande de chèvre crue avec os",
-    "Vin blanc sec d Alsace",
-    "Vin rouge de Bourgogne",
-    "Vinaigre de canne",
-    "Vinaigre de malt",
-    "Vinaigre de palmier ou cidre",
     "Ya cai légumes de moutarde conservés",
-    "Zakwas de betterave fermenté",
     "Zeste d orange"
   ],
   "recipe_eligibility": [
@@ -952,8 +919,7 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Palette de porc fumée",
-        "Saucisse de Strasbourg",
-        "Vin blanc sec d Alsace"
+        "Saucisse de Strasbourg"
       ],
       "low_confidence_required_forms": [
         "Choucroute crue fermentée",
@@ -962,9 +928,7 @@
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Saucisse de Strasbourg",
-        "Saucisse de Montbéliard",
-        "Vin blanc sec d Alsace",
-        "Baie de genièvre"
+        "Saucisse de Montbéliard"
       ]
     },
     {
@@ -1053,16 +1017,11 @@
       "family": "Quenelles de brochet sauce Nantua",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Écrevisse cuite décortiquée",
-        "Cognac"
+        "Écrevisse cuite décortiquée"
       ],
-      "low_confidence_required_forms": [
-        "Chair de brochet crue"
-      ],
+      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Cognac"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-083",
@@ -1103,21 +1062,16 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Tomate fraîche mûre"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-086",
       "family": "Œufs en meurette",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Vin rouge de Bourgogne"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Vin rouge de Bourgogne",
         "Pain de campagne"
       ]
     },
@@ -1195,15 +1149,13 @@
       "family": "Saltimbocca alla romana",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Jambon de Parme",
-        "Feuille de sauge fraîche"
+        "Jambon de Parme"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Escalope de veau crue fine",
-        "Jambon de Parme",
-        "Feuille de sauge fraîche"
+        "Jambon de Parme"
       ]
     },
     {
@@ -1221,14 +1173,11 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Noix de veau crue",
-        "Thon à l’huile en conserve, égoutté",
-        "Jaune d’œuf cuit"
+        "Thon à l’huile en conserve, égoutté"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Jaune d’œuf cuit"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-097",
@@ -1333,14 +1282,11 @@
       "family": "Focaccia genovese",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Farine de blé T65",
-        "Saumure légère"
+        "Farine de blé T65"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Saumure légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-108",
@@ -1385,9 +1331,7 @@
         "Fumet de poisson"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Fumet de poisson"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-112",
@@ -1400,9 +1344,7 @@
         "Fumet de poisson"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Fumet de poisson"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-113",
@@ -1428,13 +1370,11 @@
     {
       "code": "REAL-115",
       "family": "Salmorejo cordobés",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Œuf dur"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-116",
@@ -1500,8 +1440,7 @@
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Pain de mie épais",
-        "Steak de bœuf cru fin",
-        "Piment frais"
+        "Steak de bœuf cru fin"
       ]
     },
     {
@@ -1513,9 +1452,7 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Bâton de cannelle"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-123",
@@ -1532,15 +1469,11 @@
     {
       "code": "REAL-124",
       "family": "Dolmades",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Feuille de vigne en saumure"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Feuille de vigne en saumure"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-125",
@@ -1595,13 +1528,11 @@
     {
       "code": "REAL-130",
       "family": "İmam bayıldı",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Aubergine fraîche"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-131",
@@ -1685,8 +1616,7 @@
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Pain pita",
-        "Mélasse de grenade"
+        "Pain pita"
       ]
     },
     {
@@ -1718,9 +1648,7 @@
         "Mélasse de grenade"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Mélasse de grenade"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-141",
@@ -1736,26 +1664,20 @@
     {
       "code": "REAL-142",
       "family": "Tajine de poulet au citron confit et olives",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Citron confit au sel"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Citron confit au sel"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-143",
       "family": "Tajine d’agneau aux pruneaux",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Cannelle en bâton"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-144",
@@ -1815,9 +1737,7 @@
         "Beurre clarifié épicé niter kibbeh"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Œuf dur"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-149",
@@ -1863,9 +1783,7 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment scotch bonnet"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-153",
@@ -1877,31 +1795,25 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-154",
       "family": "Poulet yassa",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-155",
       "family": "Mafé de bœuf",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-156",
@@ -1920,15 +1832,11 @@
         "Graine de melon egusi moulue",
         "Épinard africain frais",
         "Poisson fumé",
-        "Huile de palme rouge",
         "Écrevisse séchée moulue"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Huile de palme rouge",
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-158",
@@ -1939,9 +1847,7 @@
         "Haricot cornille sec"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-159",
@@ -1952,9 +1858,7 @@
         "Haricot cornille sec"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-160",
@@ -2018,31 +1922,26 @@
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Pain blanc en miche",
-        "Feuille de curry fraîche"
+        "Pain blanc en miche"
       ]
     },
     {
       "code": "REAL-166",
       "family": "Chakalaka",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-167",
       "family": "Kedjenou de poulet",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-168",
@@ -2093,10 +1992,7 @@
         "Garam masala"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Cardamome verte",
-        "Cannelle en bâton"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-172",
@@ -2109,10 +2005,7 @@
         "Piment du Cachemire moulu"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Cardamome noire",
-        "Cannelle en bâton"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-173",
@@ -2170,9 +2063,7 @@
         "Huile de moutarde"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment vert frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-178",
@@ -2202,9 +2093,7 @@
         "Feuille de curry fraîche"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Feuille de curry fraîche"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-180",
@@ -2216,9 +2105,7 @@
         "Feuille de curry fraîche"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Feuille de curry fraîche"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-181",
@@ -2231,9 +2118,7 @@
         "Feuille de curry fraîche"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Feuille de curry fraîche"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-182",
@@ -2260,9 +2145,7 @@
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Pain pav",
-        "Piment vert frais",
-        "Feuille de curry fraîche"
+        "Pain pav"
       ]
     },
     {
@@ -2289,9 +2172,7 @@
         "Garam masala"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment vert frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-186",
@@ -2310,16 +2191,11 @@
     {
       "code": "REAL-187",
       "family": "Vindaloo de porc",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Vinaigre de palmier ou cidre"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Vinaigre de palmier ou cidre",
-        "Cannelle en bâton"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-188",
@@ -2331,9 +2207,7 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment vert frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-189",
@@ -2386,9 +2260,7 @@
         "Poivre du Sichuan"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-193",
@@ -2403,9 +2275,7 @@
         "Poivre du Sichuan"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-194",
@@ -2416,11 +2286,7 @@
         "Anis étoilé"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère",
-        "Sauce soja foncée",
-        "Cannelle cassia"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-195",
@@ -2434,9 +2300,7 @@
         "Douchi haricot noir fermenté"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-196",
@@ -2447,9 +2311,7 @@
         "Doubanjiang"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-197",
@@ -2484,48 +2346,36 @@
         "Châtaigne d’eau"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-200",
       "family": "Jiaozi porc ciboulette",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-201",
       "family": "Xiaolongbao",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Eau chaude",
         "Gelée de bouillon de porc"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Eau chaude",
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-202",
       "family": "Cong you bing",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Eau chaude"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Eau chaude"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-203",
@@ -2539,10 +2389,7 @@
         "Saucisse chinoise lap cheong"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère",
-        "Sauce soja foncée"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-204",
@@ -2556,24 +2403,18 @@
         "Cinq épices chinoises"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-205",
       "family": "Poisson vapeur gingembre ciboule",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Sauce soja légère spéciale poisson"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Bar entier cru vidé"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère spéciale poisson"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-206",
@@ -2597,9 +2438,7 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-208",
@@ -2612,10 +2451,7 @@
         "Cinq épices chinoises"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère",
-        "Sauce soja foncée"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-209",
@@ -2627,23 +2463,16 @@
         "Anis étoilé"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-210",
       "family": "San bei ji",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
-      "low_confidence_required_forms": [
-        "Ail cru entier"
-      ],
+      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère",
-        "Piment rouge frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-211",
@@ -2659,8 +2488,6 @@
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Sauce soja japonaise",
-        "Œuf mariné ajitama",
         "Nori"
       ]
     },
@@ -2686,50 +2513,40 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Nouille ramen fine fraîche",
-        "Os de porc blanchis",
-        "Tare de soja"
+        "Os de porc blanchis"
       ],
       "low_confidence_required_forms": [
         "Pied de porc cru"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Œuf mariné ajitama",
-        "Tare de soja"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-214",
       "family": "Oyakodon",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Mirin"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
-        "Dashi"
+        "Dashi",
+        "Mirin"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja japonaise",
-        "Mirin"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-215",
       "family": "Katsudon",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Côte de porc désossée crue",
-        "Mirin"
+        "Côte de porc désossée crue"
       ],
       "low_confidence_required_forms": [
-        "Dashi"
+        "Dashi",
+        "Mirin"
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Côte de porc désossée crue",
-        "Sauce soja japonaise",
-        "Mirin"
+        "Côte de porc désossée crue"
       ]
     },
     {
@@ -2737,17 +2554,14 @@
       "family": "Gyudon",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Mirin",
         "Gingembre mariné beni shoga"
       ],
       "low_confidence_required_forms": [
-        "Dashi"
+        "Dashi",
+        "Mirin"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja japonaise",
-        "Mirin"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-217",
@@ -2784,34 +2598,25 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Crevette crue décortiquée avec queue",
-        "Farine de blé faible en gluten",
-        "Eau glacée gazeuse",
-        "Mirin"
+        "Farine de blé faible en gluten"
       ],
       "low_confidence_required_forms": [
-        "Dashi"
+        "Dashi",
+        "Mirin"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Eau glacée gazeuse",
-        "Sauce soja japonaise",
-        "Mirin"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-220",
       "family": "Karaage",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Saké de cuisine",
         "Fécule de pomme de terre katakuriko"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja japonaise",
-        "Saké de cuisine"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-221",
@@ -2829,17 +2634,14 @@
       "family": "Nikujaga",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Shirataki rincé",
-        "Mirin"
+        "Shirataki rincé"
       ],
       "low_confidence_required_forms": [
-        "Dashi"
+        "Dashi",
+        "Mirin"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja japonaise",
-        "Mirin"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-223",
@@ -2847,49 +2649,39 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Shirataki rincé",
-        "Ciboule japonaise negi",
-        "Mirin",
-        "Saké"
+        "Ciboule japonaise negi"
       ],
       "low_confidence_required_forms": [
-        "Shiitaké frais"
+        "Shiitaké frais",
+        "Mirin"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja japonaise",
-        "Mirin",
-        "Saké"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-224",
       "family": "Yakisoba",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Nouille yakisoba précuite",
+        "Nouille yakisoba précuite"
+      ],
+      "low_confidence_required_forms": [
         "Sauce yakisoba"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce yakisoba"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-225",
       "family": "Tamagoyaki",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Mirin"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
-        "Dashi"
+        "Dashi",
+        "Mirin"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja japonaise",
-        "Mirin"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-226",
@@ -2901,8 +2693,7 @@
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Pâte à gyoza",
-        "Sauce soja japonaise"
+        "Pâte à gyoza"
       ]
     },
     {
@@ -2926,24 +2717,20 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja coréenne"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-229",
       "family": "Galbi gui",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Travers de bœuf flanken cru",
+        "Travers de bœuf flanken cru"
+      ],
+      "low_confidence_required_forms": [
         "Mirin"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja coréenne",
-        "Mirin"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-230",
@@ -2956,9 +2743,7 @@
         "Shiitaké frais"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja coréenne"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-231",
@@ -2997,9 +2782,7 @@
         "Bouillon d’anchois"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment vert frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-234",
@@ -3027,9 +2810,7 @@
         "Gâteau de riz coréen tteok"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja coréenne"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-236",
@@ -3043,9 +2824,7 @@
         "Vinaigre de riz"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja coréenne"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-237",
@@ -3088,11 +2867,7 @@
         "Anis étoilé"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Cannelle cassia",
-        "Sauce poisson",
-        "Citron vert frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-240",
@@ -3103,13 +2878,10 @@
       ],
       "low_confidence_required_forms": [
         "Sucre de palme",
-        "Vinaigre de riz",
-        "Papaye verte"
+        "Vinaigre de riz"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce poisson"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-241",
@@ -3124,9 +2896,7 @@
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Baguette vietnamienne",
-        "Piment frais",
-        "Sauce soja légère"
+        "Baguette vietnamienne"
       ]
     },
     {
@@ -3155,7 +2925,6 @@
       "unresolved_required_forms": [
         "Nouille de riz épaisse ronde",
         "Pâte de crevette fermentée mắm ruốc",
-        "Huile pimentée au roucou",
         "Herbes vietnamiennes fraîches"
       ],
       "low_confidence_required_forms": [
@@ -3163,22 +2932,16 @@
         "Citronnelle fraîche"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Huile pimentée au roucou",
-        "Sauce poisson"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-244",
       "family": "Thịt kho trứng",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Œuf dur",
-        "Sauce poisson"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-245",
@@ -3189,10 +2952,7 @@
         "Sucre de palme"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce poisson",
-        "Citron vert frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-246",
@@ -3206,10 +2966,7 @@
         "Sucre de palme"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Feuille de combava",
-        "Sauce poisson"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-247",
@@ -3222,11 +2979,7 @@
         "Sucre de palme"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce poisson",
-        "Cannelle en bâton",
-        "Cardamome verte"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-248",
@@ -3240,11 +2993,7 @@
         "Feuille de combava"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Feuille de combava",
-        "Piment frais",
-        "Sauce poisson"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-249",
@@ -3257,11 +3006,7 @@
         "Feuille de combava"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Feuille de combava",
-        "Sauce poisson",
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-250",
@@ -3272,15 +3017,11 @@
         "Crevette séchée"
       ],
       "low_confidence_required_forms": [
-        "Papaye verte",
         "Haricot kilomètre cru",
         "Sucre de palme"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment oiseau frais",
-        "Sauce poisson"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-251",
@@ -3292,28 +3033,18 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce poisson"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-252",
       "family": "Pad kra pao",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Sauce soja claire",
-        "Sauce huître"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Sucre de palme"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment oiseau frais",
-        "Sauce poisson",
-        "Sauce soja claire",
-        "Sauce huître"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-253",
@@ -3330,9 +3061,7 @@
         "Huile pimentée"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Citron vert frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-254",
@@ -3340,15 +3069,13 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Riz jasmin cuit froid",
-        "Kecap manis",
         "Terasi pâte de crevette"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Kecap manis"
+      ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Kecap manis",
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-255",
@@ -3363,9 +3090,7 @@
         "Feuille de combava"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Feuille de combava"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-256",
@@ -3381,10 +3106,7 @@
         "Sucre de palme"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Œuf dur",
-        "Piment frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-257",
@@ -3400,10 +3122,7 @@
         "Bouillon de crevette"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Œuf dur",
-        "Citron vert frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-258",
@@ -3416,25 +3135,16 @@
         "Saucisse chinoise lap cheong"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja foncée",
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-259",
       "family": "Chicken adobo",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Vinaigre de canne",
-        "Sauce soja philippine"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Vinaigre de canne",
-        "Sauce soja philippine"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-260",
@@ -3449,10 +3159,7 @@
         "Haricot kilomètre cru"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce poisson",
-        "Piment vert frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-261",
@@ -3477,13 +3184,10 @@
       "family": "Carnitas",
       "eligible_for_publication": false,
       "unresolved_required_forms": [],
-      "low_confidence_required_forms": [
-        "Orange fraîche"
-      ],
+      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Orange fraîche",
-        "Cannelle en bâton",
         "Tortilla de maïs"
       ]
     },
@@ -3493,16 +3197,12 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Achiote pâte",
-        "Jus d orange amère",
-        "Feuille de bananier",
-        "Piment habanero"
+        "Feuille de bananier"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Jus d orange amère",
-        "Feuille de bananier",
-        "Piment habanero"
+        "Feuille de bananier"
       ]
     },
     {
@@ -3521,8 +3221,7 @@
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Tortilla de maïs grillée",
-        "Cannelle en bâton"
+        "Tortilla de maïs grillée"
       ]
     },
     {
@@ -3537,8 +3236,7 @@
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Tortilla de maïs",
-        "Piment serrano"
+        "Tortilla de maïs"
       ]
     },
     {
@@ -3570,9 +3268,7 @@
         "Piment ancho séché"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Citron vert frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-268",
@@ -3584,9 +3280,7 @@
         "Piment ancho séché"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Cannelle en bâton"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-269",
@@ -3617,8 +3311,7 @@
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Tlayuda grande",
-        "Avocat frais"
+        "Tlayuda grande"
       ]
     },
     {
@@ -3633,8 +3326,7 @@
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Tortilla de maïs",
-        "Avocat frais"
+        "Tortilla de maïs"
       ]
     },
     {
@@ -3660,8 +3352,6 @@
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Piment serrano",
-        "Avocat frais",
         "Tostada de maïs"
       ]
     },
@@ -3672,16 +3362,13 @@
       "unresolved_required_forms": [
         "Maïs doux frais en grains",
         "Fromage cotija",
-        "Piment ancho moulu",
-        "Piment jalapeño frais"
+        "Piment ancho moulu"
       ],
       "low_confidence_required_forms": [
         "Crème mexicaine"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment jalapeño frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-275",
@@ -3709,9 +3396,7 @@
         "Travers de porc salés",
         "Farofa de manioc"
       ],
-      "low_confidence_required_forms": [
-        "Orange fraîche"
-      ],
+      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Orange fraîche"
@@ -3722,14 +3407,11 @@
       "family": "Moqueca baiana",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Filet de poisson blanc ferme cru",
-        "Huile de dendê"
+        "Filet de poisson blanc ferme cru"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Huile de dendê"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-278",
@@ -3755,13 +3437,11 @@
     {
       "code": "REAL-280",
       "family": "Empanadas argentines au bœuf",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Œuf dur"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-281",
@@ -3790,24 +3470,18 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce soja légère"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-283",
       "family": "Ají de gallina",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Piment ají amarillo en pâte",
-        "Lait évaporé"
+        "Piment ají amarillo en pâte"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Lait évaporé",
-        "Œuf dur"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-284",
@@ -3819,10 +3493,7 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Avocat frais",
-        "Œuf dur"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-285",
@@ -3846,34 +3517,25 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Avocat frais"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-287",
       "family": "Pabellón criollo",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Banane plantain mûre"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-288",
       "family": "Jerk chicken",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Sauce soja"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment scotch bonnet",
-        "Sauce soja"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-289",
@@ -3885,9 +3547,7 @@
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Piment scotch bonnet"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-290",
@@ -3909,9 +3569,7 @@
         "Chicharrón de porc"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Banane plantain verte"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-292",
@@ -3924,9 +3582,7 @@
         "Baie de genièvre"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Baie de genièvre"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-293",
@@ -3976,14 +3632,11 @@
       "family": "Pierogi ruskie",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Eau chaude",
         "Fromage blanc twaróg"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Eau chaude"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-298",
@@ -3997,23 +3650,18 @@
         "Baie de genièvre"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Baie de genièvre"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-299",
       "family": "Barszcz czerwony",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [
         "Zakwas de betterave fermenté"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Zakwas de betterave fermenté",
-        "Piment de la Jamaïque en grains"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-300",
@@ -4028,31 +3676,24 @@
       "code": "REAL-301",
       "family": "Shepherd’s pie",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Sauce Worcestershire"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Agneau haché cru",
         "Bouillon d’agneau"
       ],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Sauce Worcestershire"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-302",
       "family": "Fish and chips",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Filet de cabillaud cru",
-        "Vinaigre de malt"
+        "Filet de cabillaud cru"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Vinaigre de malt"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "PROT-001",
@@ -4335,12 +3976,12 @@
       ],
       "selection_mode": "curated",
       "selected": {
-        "ciqual_alim_code": "11307",
-        "ciqual_name": "Ail, sauté/poêlé, sans matière grasse",
+        "ciqual_alim_code": "11000",
+        "ciqual_name": "Ail, cru",
         "category": "herbes_aromates",
         "nutrition_complete": true,
-        "confidence": "C",
-        "note": "Le libellé exact 11000 « Ail, cru » est INUTILISABLE : ses lipides ne sont qu'une borne supérieure (« < 0,5 »), donc absents du classeur, et l'applicateur le refuserait. 11307 est le même ail sans matière grasse ajoutée, seulement concentré par la perte d'eau (130 vs 111 kcal, 6 vs 5,31 P, 22 vs 18,6 G). Proxy d'état assumé cru→sauté ; aux quelques grammes d'usage l'écart absolu est de l'ordre de 2 kcal. Les cinq candidats proposés étaient tous des céréales (blé, mil, maïs, sorgho) — le score textuel a suivi « entier, cru » en ignorant « ail »."
+        "confidence": "B",
+        "note": "Le libellé exact, rendu employable par la lecture des bornes : les lipides de l'ail cru sont au statut « inférieur à 0,5 g », une valeur majorée et non une absence. 111 kcal, 5,31 g de protéines, 18,6 g de glucides. Remplace 11307 « Ail, sauté/poêlé, sans matière grasse » (130 kcal), qui était une erreur d'état — l'ail entier d'une recette est cru quand elle le fait revenir elle-même."
       },
       "suggestions": [
         {
@@ -5420,7 +5061,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": null
+        "note": "Conversion : 1 aubergine moyenne = 250 g (20053 mesure l'aubergine crue parée). Contrôle : 6 u dans l'İmam bayıldı = 1500 g → 230 kcal pour 6 parts, soit une aubergine par personne — cohérent avec les 1400 g de la moussaka et les 1600 g de la parmigiana."
       },
       "suggestions": [
         {
@@ -5585,7 +5226,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Seule entrée avocat du classeur hors huile. Forme comptée en unités : la conversion unité → grammes doit porter sur la pulpe seule (peau et noyau ≈ 30 % du fruit entier), sinon surestimation."
+        "note": "Seule entrée avocat du classeur hors huile. Forme comptée en unités : la conversion unité → grammes doit porter sur la pulpe seule (peau et noyau ≈ 30 % du fruit entier), sinon surestimation. Conversion : 1 avocat = 200 g entier, dont 140 g de CHAIR — 13004 mesure la pulpe, peau et noyau (≈ 30 %) sont donc retranchés comme le demandait déjà la note. Contrôle : 3 u dans la causa limeña = 420 g → 861 kcal pour 8 parts, soit 108 kcal par personne."
       },
       "suggestions": [
         {
@@ -5743,7 +5384,7 @@
         "category": "epices",
         "nutrition_complete": true,
         "confidence": "C",
-        "note": "Proxy assumé : aucune entrée genièvre dans le classeur (0 occurrence). Le seul candidat proposé, 13126 « Sureau, baie, crue », est un fruit frais sans rapport botanique ni nutritionnel (52,7 kcal, 88 % d'eau) — refusé. 11081 approxime une épice sèche entière (345 kcal, 12,3 g de protéines), profil correct pour des baies séchées ; l'emploi en unités (2 à 5 baies, ~0,1 g pièce, souvent retirées à la fin) rend l'écart résiduel négligeable."
+        "note": "Proxy assumé : aucune entrée genièvre dans le classeur (0 occurrence). Le seul candidat proposé, 13126 « Sureau, baie, crue », est un fruit frais sans rapport botanique ni nutritionnel (52,7 kcal, 88 % d'eau) — refusé. 11081 approxime une épice sèche entière (345 kcal, 12,3 g de protéines), profil correct pour des baies séchées ; l'emploi en unités (2 à 5 baies, ~0,1 g pièce, souvent retirées à la fin) rend l'écart résiduel négligeable. Conversion : 1 baie séchée = 0,1 g, valeur déjà annoncée par la note ci-dessus. Baies infusées puis RETIRÉES le plus souvent. Contrôle : 10 u dans la choucroute = 1 g → 3,5 kcal pour tout le plat, l'écart du proxy C reste sans portée."
       },
       "suggestions": [
         {
@@ -5854,7 +5495,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Même aliment à l'état cru (127 kcal, P 1,28 / G 29,6 / L 0,39, complet). Le Ciqual ne distingue pas la maturité : à maturité l'amidon se convertit en sucres mais l'énergie reste équivalente. 53101 est la version cuite, à réserver aux formes déjà cuisinées ; 13029 « Mûre (de ronce) » était un accrochage sur le mot « mûre »."
+        "note": "Même aliment à l'état cru (127 kcal, P 1,28 / G 29,6 / L 0,39, complet). Le Ciqual ne distingue pas la maturité : à maturité l'amidon se convertit en sucres mais l'énergie reste équivalente. 53101 est la version cuite, à réserver aux formes déjà cuisinées ; 13029 « Mûre (de ronce) » était un accrochage sur le mot « mûre ». Conversion : 1 plantain = 250 g entier, dont 180 g de CHAIR épluchée — 53100 mesure le fruit cru épluché, la peau (≈ 30 %) est retranchée. Contrôle : 4 u dans le pabellón criollo = 720 g → 914 kcal pour 6 parts, soit 152 kcal de plantain frit par personne ; cohérent avec les 1000 g pesés du kelewele."
       },
       "suggestions": [
         {
@@ -5909,7 +5550,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Le plantain vert est le plantain non mûr, c'est-à-dire l'état cru du fruit. Ciqual ne qualifie pas la maturité : le vert a davantage d'amidon résistant et moins de sucres, mais l'énergie et les glucides totaux sont inchangés. Écarté 53101 « cuite » (l'état commande) et 20119 « Tomate verte, crue », retenu sur le seul mot « verte »."
+        "note": "Le plantain vert est le plantain non mûr, c'est-à-dire l'état cru du fruit. Ciqual ne qualifie pas la maturité : le vert a davantage d'amidon résistant et moins de sucres, mais l'énergie et les glucides totaux sont inchangés. Écarté 53101 « cuite » (l'état commande) et 20119 « Tomate verte, crue », retenu sur le seul mot « verte ». Conversion : 1 plantain vert = 250 g entier, dont 180 g de CHAIR épluchée (53100 mesure le fruit épluché). Contrôle : 6 u dans le mofongo = 1080 g → 1372 kcal pour 6 parts, soit 229 kcal par personne : c'est bien la base amylacée du plat, pas une garniture."
       },
       "suggestions": [
         {
@@ -6184,7 +5825,7 @@
         "category": "epices",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Même épice, même matière (écorce de cannelier) : seule la présentation diffère, bâton contre poudre, sans effet sur la composition. Ciqual ne propose que la poudre — c'était d'ailleurs l'unique candidat, et il est correct."
+        "note": "Même épice, même matière (écorce de cannelier) : seule la présentation diffère, bâton contre poudre, sans effet sur la composition. Ciqual ne propose que la poudre — c'était d'ailleurs l'unique candidat, et il est correct. Conversion : 1 bâton = 4 g d'écorce. Infusé dans le lait des pastéis puis RETIRÉ : la masse sert au calcul, l'apport réel est nul. Contrôle : 1 u = 4 g → 9,7 kcal pour toute la recette."
       },
       "suggestions": [
         {
@@ -9044,7 +8685,7 @@
         "category": "epices",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Ciqual ne distingue pas cassia et Ceylan et n'a pas d'entree « baton/ecorce » : la cannelle du commerce europeen est majoritairement de la cassia. Meme epice, forme moulue au lieu du baton, sans consequence sur les macros pour 100 g."
+        "note": "Ciqual ne distingue pas cassia et Ceylan et n'a pas d'entree « baton/ecorce » : la cannelle du commerce europeen est majoritairement de la cassia. Meme epice, forme moulue au lieu du baton, sans consequence sur les macros pour 100 g. Conversion : 1 bâton de cassia = 4 g. Infusé dans le bouillon puis RETIRÉ — apport réel nul. Contrôle : 2 u dans le phở = 8 g → 19 kcal pour 8 parts."
       },
       "suggestions": [
         {
@@ -9099,7 +8740,7 @@
         "category": "epices",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Seule entrée cannelle du classeur (l'autre, 13435, est une pomme cannelle, fruit sans rapport). Bâton et poudre sont la même écorce, différant par la mouture seule : composition pour 100 g identique. Réserve d'usage : le bâton est infusé puis retiré, donc l'apport réel dépend de la conversion unité → grammes, pas du choix de code."
+        "note": "Seule entrée cannelle du classeur (l'autre, 13435, est une pomme cannelle, fruit sans rapport). Bâton et poudre sont la même écorce, différant par la mouture seule : composition pour 100 g identique. Réserve d'usage : le bâton est infusé puis retiré, donc l'apport réel dépend de la conversion unité → grammes, pas du choix de code. Conversion : 1 bâton = 4 g d'écorce. Le bâton est infusé puis RETIRÉ — la masse sert au calcul, l'apport réel est nul. Contrôle : 2 u dans le tajine = 8 g → 19 kcal pour 6 parts, majorant assumé."
       },
       "suggestions": [
         {
@@ -9319,7 +8960,7 @@
         "category": "epices",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Seul code cardamome du classeur. La cardamome noire (Amomum subulatum) diffère botaniquement de la verte, mais reste une cardamome et s'emploie en quantités infimes : l'écart de macros est sans portée. Les autres candidats accrochaient le mot « noire » (mûre, olive, forêt-noire) et n'ont rien à voir."
+        "note": "Seul code cardamome du classeur. La cardamome noire (Amomum subulatum) diffère botaniquement de la verte, mais reste une cardamome et s'emploie en quantités infimes : l'écart de macros est sans portée. Les autres candidats accrochaient le mot « noire » (mûre, olive, forêt-noire) et n'ont rien à voir. Conversion : 1 gousse noire = 1 g, soit cinq fois la gousse verte (Amomum subulatum est nettement plus grosse). Gousse entière, retirée en fin de cuisson. Contrôle : 3 u dans le rogan josh = 3 g → 9,6 kcal."
       },
       "suggestions": [
         {
@@ -9374,7 +9015,7 @@
         "category": "epices",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "La cardamome verte est la cardamome de reference du Ciqual, qui ne recense que la poudre. Gousse au lieu de poudre : meme epice, macros identiques pour 100 g. Les quatre autres candidats (tomate verte, chicoree verte, asperge verte, lentille verte) ne devaient leur score qu'au mot « verte »."
+        "note": "La cardamome verte est la cardamome de reference du Ciqual, qui ne recense que la poudre. Gousse au lieu de poudre : meme epice, macros identiques pour 100 g. Les quatre autres candidats (tomate verte, chicoree verte, asperge verte, lentille verte) ne devaient leur score qu'au mot « verte ». Conversion : 1 gousse verte = 0,2 g, gousse entière (enveloppe comprise, généralement retirée). La référence est la poudre de graines : la masse retenue majore donc l'apport. Contrôle : 8 u dans le biryani = 1,6 g → 5 kcal."
       },
       "suggestions": [
         {
@@ -9754,12 +9395,13 @@
       ],
       "selection_mode": "curated",
       "selected": {
-        "ciqual_alim_code": "10045",
-        "ciqual_name": "Coquille Saint-Jacques, noix, crue",
+        "ciqual_alim_code": "27011",
+        "ciqual_name": "Brochet, cru",
         "category": "poissons_fruits_de_mer",
         "nutrition_complete": true,
-        "confidence": "C",
-        "note": "Proxy assumé et contraint. Le code exact 27011 « Brochet, cru » existe mais ses glucides sont absents de la source : l'applicateur le refuserait et la recette resterait bloquée. Vérification faite, AUCUN poisson frais cru ou simplement cuit du classeur (26xxx/27xxx) ne possède les quatre macros — les seuls complets sont panés, fumés ou appertisés. La noix de Saint-Jacques crue est la chair marine maigre complète dont le profil colle presque exactement au brochet cru : 83,6 kcal contre 83,7, 17,9 g de protéines contre 18,8, 0,84 g de lipides contre 0,94. Les candidats proposés étaient de la chair à saucisse (323 kcal) et trois légumes crus."
+        "derived_field": "carbohydrate_g",
+        "confidence": "B",
+        "note": "27011 « Brochet, cru » est le code exact : 83,7 kcal, 18,8 g de protéines, 0,94 g de lipides, et ses glucides — non mesurés comme pour tous les poissons du classeur — sont clos à 0,01 g par fermeture d'Atwater. Remplace 10045 « Coquille Saint-Jacques, noix, crue », retenue faute de mieux : les chiffres étaient voisins par coïncidence, mais un mollusque n'est pas un poisson, et la provenance mentait."
       },
       "suggestions": [
         {
@@ -11896,8 +11538,15 @@
       "units": [
         "u"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "13009",
+        "ciqual_name": "Citron, pulpe, cru",
+        "category": "fruits",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même aliment que le citron du registre (« citron jaune frais » est déjà sur 13009 « Citron, pulpe, cru ») : le confisage au sel est une conservation, pas un changement d'état nutritionnel — l'eau reste, l'énergie reste (27,6 kcal). La divergence porte sur le SEL, ce que la doctrine laisse en B ; le sodium du citron confit est considérable et n'est pas représenté ici. Protéines, lipides et fibres sont au statut « inférieur à 0,5 g », bornes retenues. 13125 « Citron, zeste, cru » (29,8 kcal) a été comparé : écart nul sur l'énergie, et le zeste est déjà le canonique d'une autre forme. Conversion : 1 citron confit égoutté et épépiné = 70 g. Contrôle : 2 u dans le tajine = 140 g → 39 kcal pour 6 parts ; l'écart avec le zeste serait de 3 kcal, celui d'un fruit entier de 100 g de 17 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "13009",
@@ -12006,7 +11655,7 @@
         "category": "fruits",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "La forme est employée en fruits entiers : il faut la pulpe, pas le jus. Lipides au statut « inférieur à 0,3 g », valeur majorée retenue. 40,2 kcal, 1,13 g de protéines, 3,14 g de glucides."
+        "note": "La forme est employée en fruits entiers : il faut la pulpe, pas le jus. Lipides au statut « inférieur à 0,3 g », valeur majorée retenue. 40,2 kcal, 1,13 g de protéines, 3,14 g de glucides. Conversion : 1 citron vert = 70 g entier, dont 35 g de PULPE — c'est la pulpe que mesure 13067, la masse retenue est donc 35 g et non celle du fruit entier. Contrôle : 4 u dans le phở = 140 g → 56 kcal ; servis en quartiers à presser, l'apport réel se limite au jus, 56 kcal est un majorant."
       },
       "suggestions": [
         {
@@ -12267,8 +11916,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "1023",
+        "ciqual_name": "Eau de vie de vin, type armagnac, cognac",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même aliment, libellé du classeur : 1023 « Eau de vie de vin, type armagnac, cognac » (228 kcal, 1 g de glucides, 32 g d'alcool). Densité 0,95 et non 0,99 : à 32 g d'alcool pour 100 g — soit ~40 %vol — la table eau-éthanol donne 0,948 à 20 °C. Le 0,99 vaut pour les boissons à 10-16 %vol (vin, saké), pas pour une eau-de-vie ; c'est aussi la valeur que retient déjà conversionFor() pour /rhum|alcool/. Contrôle : REAL-082, 40 ml → 38 g → 87 kcal dans une sauce."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1023",
@@ -14493,8 +14149,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "18066",
+        "ciqual_name": "Eau du robinet",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même aliment : l'eau du robinet, chaude. Le classeur reste la source — 18066 porte 0 kcal et 0 pour les trois macros. La référence USDA n'est là que pour l'énergie : data/ciqual_nutrition_import.csv ne contient AUCUNE ligne pour les codes eaux (18066, 18008, 18044-18046), or c'est la seule colonne d'énergie que lit l'applicateur ; sans elle une eau serait refusée pour « macronutriments incomplets ». USDA 173647 confirme 0 kcal, elle ne remplace rien. Densité 1,000 : eau pure à 20 °C (0,988 à 50 °C, écart sans effet, le profil est nul). Contrôle : REAL-297, 300 ml → 300 g → 0 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11218",
@@ -14651,8 +14314,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "18046",
+        "ciqual_name": "Eau minérale, gazeuse (aliment moyen)",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même aliment : eau gazeuse, servie glacée pour une pâte à tempura. Le classeur reste la source (18046 « Eau minérale, gazeuse (aliment moyen) », 0 kcal et 0 pour les trois macros). USDA 174842 « club soda » n'est cité que pour l'énergie : aucun code eau n'a de ligne dans data/ciqual_nutrition_import.csv, seule colonne d'énergie que lit l'applicateur, et une eau y serait refusée pour « macronutriments incomplets ». Densité 1,00 : le CO2 dissous (~5 g/l) ne déplace pas la masse volumique au centième près ; l'eau à 0-4 °C vaut 1,000. Contrôle : REAL-219, 400 ml → 400 g → 0 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "18046",
@@ -16952,7 +16622,7 @@
         "category": "epices",
         "nutrition_complete": true,
         "confidence": "C",
-        "note": "Proxy assumé : aucune entrée combava / kaffir / makrut dans le Ciqual 2020 (vérifié). Les candidats proposés étaient du thé, un mille-feuille, de la feuille de brick et des dolmas — sans rapport. Le laurier est la seule feuille aromatique du classeur, employée exactement de la même façon (1 à 3 feuilles entières, infusées puis retirées) ; à ces quantités l'apport est nul quel que soit le code. Macros complètes (353 kcal, P 7,61 / G 48,6 / L 8,36)."
+        "note": "Proxy assumé : aucune entrée combava / kaffir / makrut dans le Ciqual 2020 (vérifié). Les candidats proposés étaient du thé, un mille-feuille, de la feuille de brick et des dolmas — sans rapport. Le laurier est la seule feuille aromatique du classeur, employée exactement de la même façon (1 à 3 feuilles entières, infusées puis retirées) ; à ces quantités l'apport est nul quel que soit le code. Macros complètes (353 kcal, P 7,61 / G 48,6 / L 8,36). Conversion : 0,2 g par feuille, masse de feuille SÉCHÉE — la référence 11053 est un laurier déshydraté (353 kcal), il fallait donc l'équivalent sec et non les ~0,4 g de la feuille fraîche, sans quoi l'eau serait comptée deux fois. Même valeur que « feuille de laurier séchée » au registre. Les feuilles sont infusées puis RETIRÉES : l'apport réel est nul. Contrôle : 10 u dans le tom yum = 2 g → 7 kcal."
       },
       "suggestions": [
         {
@@ -17007,7 +16677,7 @@
         "category": "herbes_aromates",
         "nutrition_complete": true,
         "confidence": "C",
-        "note": "Proxy assumé : la feuille de kaloupilé (Murraya koenigii) n'existe pas dans Ciqual 2020. On approxime une feuille aromatique fraîche, coriace et dense, par une autre — le thym frais (107 kcal, 5,56 g de protéines, 1,68 g de lipides) est le profil le plus proche des données publiées pour la feuille de curry fraîche. 11005 « Curry, poudre » est un mélange d'épices sans rapport botanique, et 11053 « Laurier, feuille » est un déshydraté (353 kcal) : mauvais état. Impact réel négligeable, la forme est comptée en unités et quelques feuilles pèsent moins d'un gramme."
+        "note": "Proxy assumé : la feuille de kaloupilé (Murraya koenigii) n'existe pas dans Ciqual 2020. On approxime une feuille aromatique fraîche, coriace et dense, par une autre — le thym frais (107 kcal, 5,56 g de protéines, 1,68 g de lipides) est le profil le plus proche des données publiées pour la feuille de curry fraîche. 11005 « Curry, poudre » est un mélange d'épices sans rapport botanique, et 11053 « Laurier, feuille » est un déshydraté (353 kcal) : mauvais état. Impact réel négligeable, la forme est comptée en unités et quelques feuilles pèsent moins d'un gramme. Conversion : 1 feuille (foliole) fraîche = 0,2 g — masse fraîche, cohérente avec la référence thym FRAIS. Contrôle : 15 u dans le sambar = 3 g → 3,2 kcal ; le proxy C reste sans portée à cette échelle."
       },
       "suggestions": [
         {
@@ -17261,8 +16931,15 @@
       "units": [
         "u"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11069",
+        "ciqual_name": "Sauge, fraîche",
+        "category": "herbes_aromates",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "11069 « Sauge, fraîche » : même aliment, même état (la feuille EST la sauge fraîche du classeur) ; 11037 « Sauge, séchée » (320 kcal) aurait été un facteur 9 sur l'énergie. Lipides au statut « inférieur à 0,5 g », borne retenue comme le fait l'ANSES. Conversion : 1 feuille fraîche = 0,5 g. Contrôle : 16 u dans la saltimbocca = 8 g → 2,9 kcal pour 4 parts, deux feuilles par escalope."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11069",
@@ -17357,8 +17034,15 @@
       "units": [
         "u"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "169393",
+        "ciqual_name": "Grape leaves, canned",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Recours à USDA : le Ciqual 2020 n'a aucune feuille de vigne nature — sa seule entrée, 25217 « Feuille de vigne farcie au riz ou dolmas », est le PLAT COMPOSÉ fini (riz, huile, farce), qui ferait compter la farce deux fois. USDA 169393 « Grape leaves, canned » est exactement la feuille en saumure égouttée (69 kcal), et non 168575 « Grape leaves, raw » (93 kcal) : l'état commande, la saumure lessive et hydrate. Conversion : 1 feuille égouttée = 4 g. Contrôle : 50 u dans les dolmades = 200 g → 138 kcal pour 8 parts, soit 17 kcal d'enveloppe par personne — cohérent avec un bocal de 250 g égouttés pour une soixantaine de feuilles."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "25217",
@@ -20791,8 +20475,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "16129",
+        "ciqual_name": "Huile de palme, sans précision",
+        "category": "matieres_grasses",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "L'azeite de dendê brésilien EST l'huile de palme rouge : même concept culinaire, donc même canonique que la forme « huile de palme rouge » du corpus. 16129 « Huile de palme, sans précision » : 900 kcal, 100 g de lipides. La divergence porte sur les caroténoïdes de l'huile brute, micronutriments — B. Densité 0,92, valeur usuelle des huiles à 20 °C (le dendê est semi-solide sous 24 °C mais se mesure fondu). Contrôle : REAL-277, 80 ml → 74 g → 662 kcal, ordre de grandeur attendu d'un corps gras employé généreusement dans une moqueca."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "17030",
@@ -21004,8 +20695,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "16129",
+        "ciqual_name": "Huile de palme, sans précision",
+        "category": "matieres_grasses",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même aliment, état légèrement différent : l'huile de palme rouge est l'huile de palme brute, non décolorée. 16129 « Huile de palme, sans précision » donne 900 kcal et 100 g de lipides ; la divergence porte uniquement sur les caroténoïdes et le tocotriénol, des micronutriments — B. Écarté 16150 « Huile de palme raffinée » : mêmes chiffres mais un état explicitement raffiné, contraire à « rouge ». Densité 0,92, valeur usuelle des huiles alimentaires à 20 °C. Contrôle : REAL-157, 120 ml → 110 g → 994 kcal ; c'est beaucoup mais c'est la quantité de la recette, et l'ordre de grandeur d'une huile est bien 9 kcal/g."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "16150",
@@ -21162,8 +20860,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "17001",
+        "ciqual_name": "Huile végétale (aliment moyen)",
+        "category": "matieres_grasses",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Une huile infusée reste une huile : le roucou et le piment sont filtrés ou représentent moins de 1 % de la masse, et les quatre grandeurs sont celles du corps gras. 17001 « Huile végétale (aliment moyen) » : 900 kcal, 99,9 g de lipides, complètes. La divergence porte sur les caroténoïdes et la capsaïcine, des micronutriments — B. Densité 0,92, valeur usuelle des huiles à 20 °C. Contrôle : REAL-243, 80 ml → 74 g → 662 kcal ; c'est bien l'ordre de grandeur d'un corps gras et c'est la quantité voulue par la recette, une huile de finition de plat vietnamien pour toute une marmite."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "17030",
@@ -21905,8 +21610,15 @@
       "units": [
         "u"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "22009",
+        "ciqual_name": "Oeuf, jaune (jaune d'oeuf), cuit",
+        "category": "oeufs",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "22009 « Oeuf, jaune (jaune d'oeuf), cuit » : même aliment, même état — 22002 est le jaune CRU (307 kcal contre 340). Conversion : 1 jaune = 18 g, même masse que « jaune d oeuf cru » déjà retenue par le générateur ; la cuisson d'un œuf dur ne fait pas varier la masse du jaune. Contrôle : 3 u dans le vitello tonnato = 54 g → 184 kcal de jaune dans la sauce, pour 8 parts."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "22009",
@@ -21953,8 +21665,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "2070",
+        "ciqual_name": "Jus d'orange, pur jus",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Réduction d'une variété d'agrume vers le jus d'orange du classeur : 2070 « Jus d'orange, pur jus » (45,4 kcal, 0,61 g de protéines, 9,61 g de glucides, 0,11 g de lipides). Écart et sens : l'orange amère (Citrus aurantium) titre ~8 °Brix contre ~11 pour l'orange douce, le jus retenu SURESTIME donc les sucres d'environ 20 % — soit 19 kcal sur les 250 ml de REAL-263, ~3 kcal par portion, sans conséquence à l'échelle de la recette. Écarté 13432 « Orange amère, pulpe, crue » : c'est la pulpe et non le jus, et ni son énergie ni ses glucides ne sont renseignés. Densité 1,03, valeur des jus d'agrumes (~10 °Brix). Contrôle : 250 ml → 258 g → 117 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "2013",
@@ -22159,8 +21878,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "31067",
+        "ciqual_name": "Mélasse de canne",
+        "category": "produits_sucres",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé : les quatre grandeurs viennent d'un autre aliment. Le kecap manis est une sauce soja au sucre de palme, ~270 kcal, ~63 g de glucides, ~3 g de protéines pour 100 g. Son entrée littérale au classeur, 11216 « Sauce soja sucrée, préemballée », est inexploitable : ni énergie ni glucides, deux valeurs manquantes, la fermeture d'Atwater n'en comble qu'une. 11104 « Sauce soja » (45,5 kcal) serait six fois trop clair. Retenu 31067 « Mélasse de canne », même nature de sirop de sucre foncé, quatre grandeurs complètes. Écart et sens : 299,7 kcal contre ~270 (+11 %), 74,7 g de glucides contre ~63 (+19 %), et 0 g de protéines là où le kecap manis en porte ~3 (sous-estimation). Même arbitrage que « mélasse de grenade ». Densité 1,30 : sirop à ~63 g de sucres pour 100 g, la table sucrose donne 1,31 à 63 % en masse. Contrôle : REAL-254, 80 ml → 104 g → 312 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -22475,8 +22201,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "19026",
+        "ciqual_name": "Lait concentré non sucré, entier",
+        "category": "produits_laitiers",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même aliment : « lait évaporé » est le nom commercial du lait concentré non sucré. 19026 « Lait concentré non sucré, entier » : 123 kcal, 6,31 g de protéines, 9,91 g de glucides, 5,9 g de lipides. Densité 1,06 et non 1,03 : le lait est concentré à ~25 % de matière sèche contre 12,5 % pour un lait ordinaire ; la portion USDA de référence, 1 cup (236,6 ml) = 252 g, donne 1,065. Contrôle : REAL-283, 500 ml → 530 g → 652 kcal, cohérent avec une boîte et demie de lait concentré dans une sauce."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "19023",
@@ -24357,8 +24090,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "1015",
+        "ciqual_name": "Marsala",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Ni Ciqual ni USDA SR Legacy ne référencent le mirin. Retenu 1015 « Marsala » : vin de dessert fortifié, même emploi culinaire (glaçage sucré-alcoolisé), quatre grandeurs complètes et mesurées par l'ANSES. Écart et sens : 211 kcal contre ~241 kcal pour le hon-mirin (−12 %), et surtout 27,9 g de glucides contre ~43 g (−35 %) — le marsala porte en alcool ce que le mirin porte en sucre, d'où une énergie proche mais une répartition différente. Écartés : 1006 « Vin doux » (42,8 kcal, facteur 5,6 en dessous), 1003 « Liqueur » (328 kcal, +36 %), 11216 « Sauce soja sucrée » (ni énergie ni glucides au classeur, inexploitable). Densité 1,15 : table japonaise 1 tasse (200 ml) de mirin = 230 g ; cohérent avec ~43 g de sucres (solution sucrée seule ≈ 1,19) abaissés par ~10 g d'éthanol. Contrôle : REAL-223, 120 ml → 138 g → 291 kcal pour un warishita de sukiyaki familial."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -25970,14 +25710,14 @@
       "units": [
         "u"
       ],
-      "selection_mode": "exact_label",
+      "selection_mode": "curated",
       "selected": {
         "ciqual_alim_code": "22010",
         "ciqual_name": "Oeuf, dur",
         "category": "oeufs",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": null
+        "note": "Libellé exact du classeur (22010 « Oeuf, dur », 134 kcal, macros complètes) : même aliment, même état. Conversion : 1 œuf calibre M ÉCALÉ = 50 g, car 22010 mesure l'œuf sans coquille (norme européenne : 53-63 g en coquille, dont ~11 % de coquille). Contrôle : 8 u dans le thịt kho trứng = 400 g → 536 kcal pour 6 parts, soit 89 kcal d'œuf par personne ; 4 u dans la causa = 200 g → 268 kcal pour 8 parts."
       },
       "suggestions": [
         {
@@ -26032,7 +25772,7 @@
         "category": "oeufs",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "L'ajitama est un œuf mollet écalé puis mariné dans un mélange soja-mirin ; l'apport de la marinade absorbée est marginal. Ciqual n'a pas d'œuf mollet, et l'écart entre 22010 (134 kcal) et 22014 « à la coque » (142 kcal) est négligeable. Unité u cohérente avec un œuf entier."
+        "note": "L'ajitama est un œuf mollet écalé puis mariné dans un mélange soja-mirin ; l'apport de la marinade absorbée est marginal. Ciqual n'a pas d'œuf mollet, et l'écart entre 22010 (134 kcal) et 22014 « à la coque » (142 kcal) est négligeable. Unité u cohérente avec un œuf entier. Conversion : 1 œuf calibre M écalé = 50 g (53-63 g en coquille) ; 22010 mesure l'œuf sans coquille. Contrôle : 6 u dans le shoyu ramen = 300 g → 402 kcal, soit un œuf et 67 kcal par bol."
       },
       "suggestions": [
         {
@@ -26460,12 +26200,12 @@
       ],
       "selection_mode": "curated",
       "selected": {
-        "ciqual_alim_code": "13186",
-        "ciqual_name": "Olive noire (aliment moyen)",
+        "ciqual_alim_code": "13032",
+        "ciqual_name": "Olive noire, en saumure, égouttée",
         "category": "condiments_sauces",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "13032 « Olive noire, en saumure, égouttée » est plus spécifique mais ses glucides sont au statut « inférieur à » (< 0,1) sans valeur mesurée, donc absents : il aurait été refusé. L'aliment moyen est complet et couvre le même concept."
+        "note": "13032 « Olive noire, en saumure, égouttée » décrit exactement ce que les recettes emploient, et ses glucides au statut « inférieur à 0,1 g » sont désormais lus. 160,7 kcal contre 181,7 pour 13186 « Olive noire (aliment moyen) », qui moyennait des préparations plus grasses."
       },
       "suggestions": [
         {
@@ -26674,12 +26414,12 @@
       ],
       "selection_mode": "curated",
       "selected": {
-        "ciqual_alim_code": "13614",
-        "ciqual_name": "Pamplemousse chinois, pulpe, cru",
+        "ciqual_alim_code": "13034",
+        "ciqual_name": "Orange, pulpe, crue",
         "category": "fruits",
         "nutrition_complete": true,
-        "confidence": "C",
-        "note": "Piège du score : les cinq candidats étaient des jus et nectars, pas un fruit. Le code exact serait 13034 « Orange, pulpe, crue » (45,5 kcal) mais ses lipides sont au statut « inférieur à » (< 0,5) sans valeur mesurée, donc absents — il aurait été refusé et la recette serait restée bloquée ; les deux autres oranges (13431, 13432, Martinique) manquent énergie et glucides. Application de la consigne « préférer un code voisin complet à un code exact incomplet » : le pomelo est une pulpe d'agrume crue complète, au profil très proche (protéines 0,76 contre 0,75 ; glucides 8,62 contre 8,03), énergie inférieure de 17%. Préféré à 2070 « Jus d'orange, pur jus » qui reproduirait l'énergie à l'identique mais conflictuerait avec le canonique évident du jus d'orange et supprimerait les fibres, alors que l'unité u désigne un fruit entier."
+        "confidence": "B",
+        "note": "13034 « Orange, pulpe, crue » (45,5 kcal) est le code exact ; ses lipides sont au statut « inférieur à 0,5 g », désormais lus. Remplace 13614 « Pamplemousse chinois, pulpe, cru » (37,9 kcal), retenu par défaut : le pomelo n'est pas une orange, et l'écart de 17 % sur l'énergie s'ajoutait à une fausse identité."
       },
       "suggestions": [
         {
@@ -28084,12 +27824,12 @@
       ],
       "selection_mode": "curated",
       "selected": {
-        "ciqual_alim_code": "13061",
-        "ciqual_name": "Feijoa, pulpe, crue",
+        "ciqual_alim_code": "13035",
+        "ciqual_name": "Papaye, pulpe, crue",
         "category": "fruits",
         "nutrition_complete": true,
-        "confidence": "C",
-        "note": "Aucune papaye verte dans Ciqual, et les quatre codes de papaye sont tous inexploitables : 13035 et 13202 ont des lipides au statut « inférieur à » sans valeur mesurée, 20829 et 20830 (Martinique) manquent énergie et glucides. Seul 2045 « Nectar de papaye » est complet, mais c'est une boisson sucrée (13,9 g de glucides) incompatible avec une unité en grammes. Application de la consigne sur le code voisin complet : la papaye verte crue de la salade som tam pèse ~39 kcal, 0,6 g de protéines, 9 g de glucides, quasi superposables au feijoa (39,4 / 0,71 / 8,2), autre fruit subtropical cru. Aliment différent, macros représentatives et complètes."
+        "confidence": "B",
+        "note": "La papaye verte est la papaye non mûre : même fruit, cueilli plus tôt, employé en légume. 13035 « Papaye, pulpe, crue » (42,2 kcal, 8,53 g de glucides) est redevenu employable — ses lipides sont bornés à 0,3 g. Réserve : le fruit vert est plus ferme et moins sucré, ses glucides réels sont un peu plus bas. Remplace 13061 « Feijoa, pulpe, crue », qui est un autre fruit d'un autre genre botanique."
       },
       "suggestions": [
         {
@@ -30274,7 +30014,7 @@
         "category": "epices",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Code ABSENT des cinq candidats. En français « quatre-épices » est le nom courant de Pimenta dioica, c'est-à-dire le piment/poivre de la Jamaïque (allspice) — et non un mélange : les macros de 11056 (P 6,09 / L 8,69) reproduisent exactement celles de l'allspice moulu de référence. Seul écart : baies entières vs moulues, sans conséquence nutritionnelle. Aucun des cinq candidats proposés ne convenait (piment frais, cayenne, blé en grains, céréales soufflées)."
+        "note": "Code ABSENT des cinq candidats. En français « quatre-épices » est le nom courant de Pimenta dioica, c'est-à-dire le piment/poivre de la Jamaïque (allspice) — et non un mélange : les macros de 11056 (P 6,09 / L 8,69) reproduisent exactement celles de l'allspice moulu de référence. Seul écart : baies entières vs moulues, sans conséquence nutritionnelle. Aucun des cinq candidats proposés ne convenait (piment frais, cayenne, blé en grains, céréales soufflées). Conversion : 1 baie entière de Pimenta dioica = 0,1 g (≈ 100 baies pour 10 g). Contrôle : 6 u dans le barszcz = 0,6 g → 2 kcal ; cohérent avec les 12 g pesés de la marinade du jerk chicken, soit environ 120 baies."
       },
       "suggestions": [
         {
@@ -30549,7 +30289,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Piège écarté : le candidat 2023 « Jus de mangue, frais » n'a aucun rapport. Frais ≡ cru pour ce légume. Seule autre entrée piment du classeur : 11088 « Poivre de Cayenne » (épice séchée, 376 kcal), inadaptée à un piment employé à l'unité."
+        "note": "Piège écarté : le candidat 2023 « Jus de mangue, frais » n'a aucun rapport. Frais ≡ cru pour ce légume. Seule autre entrée piment du classeur : 11088 « Poivre de Cayenne » (épice séchée, 376 kcal), inadaptée à un piment employé à l'unité. Conversion : 1 piment frais moyen = 15 g, piment entier cru, ce que mesure 20151. Contrôle : 2 u dans l'Egusi soup = 30 g → 12 kcal ; l'écart entre variétés (5 à 20 g) reste sous 4 kcal par recette."
       },
       "suggestions": [
         {
@@ -30652,8 +30392,15 @@
       "units": [
         "u"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20151",
+        "ciqual_name": "Piment, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même concept culinaire que « piment frais », « piment scotch bonnet » et « piment serrano », tous réunis sur 20151 « Piment, cru » (41,2 kcal) : Ciqual ne distingue aucune variété de piment frais, et réduire la variété à son espèce est une divergence sans effet sur les quatre grandeurs. 11088 « Poivre de Cayenne » (376 kcal, épice séchée) serait une erreur d'état, facteur 9. Conversion : 1 habanero = 8 g (piment court et charnu). Contrôle : 2 u dans la cochinita pibil = 16 g → 7 kcal pour 10 parts, servi à part en pickle."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20151",
@@ -30700,8 +30447,15 @@
       "units": [
         "u"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20151",
+        "ciqual_name": "Piment, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même concept culinaire que « piment frais » et les autres variétés déjà réunies sur 20151 « Piment, cru » : réduction de la variété à l'espèce, sans effet sur les quatre grandeurs. USDA 168576 « Peppers, jalapeno, raw » (29 kcal) existe mais ne doit pas remplacer une valeur française existante. Conversion : 1 jalapeño = 15 g. Contrôle : 2 u dans les esquites = 30 g → 12 kcal pour 6 parts."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20151",
@@ -30899,7 +30653,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Piment fort frais d'une variété particulière ; Ciqual n'a qu'une seule entrée générique de piment frais. Cohérent avec l'arbitrage du lot précédent (« piment frais » et « piment vert frais » sur 20151) : même concept culinaire, même canonique. Unité « u » cohérente avec un légume frais."
+        "note": "Piment fort frais d'une variété particulière ; Ciqual n'a qu'une seule entrée générique de piment frais. Cohérent avec l'arbitrage du lot précédent (« piment frais » et « piment vert frais » sur 20151) : même concept culinaire, même canonique. Unité « u » cohérente avec un légume frais. Conversion : 1 piment oiseau = 1 g (piment minuscule, 2 à 4 cm). Contrôle : 6 u dans le pad kra pao = 6 g → 2,5 kcal ; retenir 15 g comme pour un jalapeño aurait multiplié la masse par quinze."
       },
       "suggestions": [
         {
@@ -31010,7 +30764,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Même concept que « piment frais » déjà arbitré sur 20151 ; la couleur ne crée pas un ingrédient canonique distinct. Attention aux faux candidats à score élevé : 9109 « Riz rouge, cru », 5214 « Vin rouge », 20525 « Haricot rouge, sec »."
+        "note": "Même concept que « piment frais » déjà arbitré sur 20151 ; la couleur ne crée pas un ingrédient canonique distinct. Attention aux faux candidats à score élevé : 9109 « Riz rouge, cru », 5214 « Vin rouge », 20525 « Haricot rouge, sec ». Conversion : 1 piment rouge frais = 15 g (piment entier cru, ce que mesure 20151). Contrôle : 2 u dans le san bei ji = 30 g → 12 kcal ; cohérent avec les 80 g pesés du rendang, soit environ cinq piments."
       },
       "suggestions": [
         {
@@ -31168,7 +30922,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Piment frais entier, employé à l'unité : le Ciqual ne distingue aucune variété, 20151 est le piment frais générique (41,2 kcal, complet). Cohérent avec l'arbitrage précédent qui a réuni « piment frais » et « piment vert frais » sur ce code. 11088 (Cayenne séché) serait un mauvais état."
+        "note": "Piment frais entier, employé à l'unité : le Ciqual ne distingue aucune variété, 20151 est le piment frais générique (41,2 kcal, complet). Cohérent avec l'arbitrage précédent qui a réuni « piment frais » et « piment vert frais » sur ce code. 11088 (Cayenne séché) serait un mauvais état. Conversion : 1 scotch bonnet = 10 g (piment court et charnu, plus petit qu'un jalapeño). Contrôle : 5 u dans le jerk chicken = 50 g → 21 kcal."
       },
       "suggestions": [
         {
@@ -31326,7 +31080,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Variété de piment fort frais ; Ciqual n'a pas d'entrée par variété. Le candidat 28845 « Jambon sec Serrano » (score 0,46) est un piège textuel pur — charcuterie, aucun rapport."
+        "note": "Variété de piment fort frais ; Ciqual n'a pas d'entrée par variété. Le candidat 28845 « Jambon sec Serrano » (score 0,46) est un piège textuel pur — charcuterie, aucun rapport. Conversion : 1 serrano = 7 g (variété fine et courte, plus petite que le jalapeño). Contrôle : 3 u dans les enchiladas verdes = 21 g → 9 kcal."
       },
       "suggestions": [
         {
@@ -31437,7 +31191,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Pièges écartés : 20061 haricot vert, 20069 chou vert et 2031 jus de citron vert, rapprochés par le seul mot « vert ». Ciqual ne distingue pas les piments par couleur ; le piment vert est une variante du canonique « piment frais », qui reçoit donc le même code — même concept culinaire, pas deux."
+        "note": "Pièges écartés : 20061 haricot vert, 20069 chou vert et 2031 jus de citron vert, rapprochés par le seul mot « vert ». Ciqual ne distingue pas les piments par couleur ; le piment vert est une variante du canonique « piment frais », qui reçoit donc le même code — même concept culinaire, pas deux. Conversion : 1 piment vert frais = 15 g (piment entier cru, ce que mesure 20151). Contrôle : 4 u dans le vada pav = 60 g → 25 kcal ; cohérent avec les 150 g pesés du tibs, soit une dizaine de piments."
       },
       "suggestions": [
         {
@@ -36014,8 +35768,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "1026",
+        "ciqual_name": "Saké ou Alcool de riz",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même aliment, libellé du classeur : 1026 « Saké ou Alcool de riz ». Densité 0,99 : ~15 %vol, l'éthanol allège légèrement le mélange sous 1,00. Contrôle : REAL-223, 100 ml → 99 g → 132 kcal dans un warishita."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1026",
@@ -36062,8 +35823,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "1026",
+        "ciqual_name": "Saké ou Alcool de riz",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même aliment, préparation légèrement différente : le ryôrishu est du saké additionné de ~2 % de sel pour échapper à la fiscalité des boissons. Divergence portant uniquement sur le sel, donc B. 1026 « Saké ou Alcool de riz » : 133 kcal, 5 g de glucides, 16,1 g d'alcool, quatre grandeurs complètes. Densité 0,99 : boisson à ~15 %vol, mélange eau-éthanol un peu plus léger que l'eau. Contrôle : REAL-220, 50 ml → 49,5 g → 66 kcal dans une marinade."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "9082",
@@ -36385,8 +36153,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "174529",
+        "ciqual_name": "Sauce, oyster, ready-to-serve",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Recours à USDA parce que le classeur ne connaît l'huître que comme mollusque cru (10011, 10035, 10036) et n'a aucune sauce d'huître ; prendre l'huître crue à 67 kcal pour un condiment liquide serait une faute d'aliment. USDA 174529 référence exactement la sauce d'huître prête à l'emploi : 51 kcal, 1,35 g de protéines, 10,9 g de glucides, 0,25 g de lipides. Densité 1,20 : saumure sucrée très chargée, du même ordre que la sauce poisson. Contrôle : REAL-252, 40 ml → 48 g → 25 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "10035",
@@ -36536,8 +36311,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11104",
+        "ciqual_name": "Sauce soja, préemballée",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même aliment, libellé du classeur : 11104 « Sauce soja, préemballée ». C'est le canonique de tout le concept « sauce soja » du corpus. Densité 1,18 : la composition Ciqual donne ~29 g de solutés pour 100 g (18,6 g de sel, 7,08 g de protéines, 3,64 g de glucides), et la table de mesure japonaise pose 15 ml de shoyu = 18 g, soit 1,20 ; 1,18 est le milieu de la fourchette 1,15-1,20 annoncée pour une saumure de ce chargement. Contrôle : REAL-288, 50 ml → 59 g → 27 kcal et 4,2 g de protéines dans une marinade."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11104",
@@ -36584,8 +36366,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11104",
+        "ciqual_name": "Sauce soja, préemballée",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même concept canonique que « sauce soja légère », « japonaise », « coréenne » et « foncée » : la sauce soja claire est la sauce soja de référence, le classeur ne distingue ni la couleur ni l'origine. 11216 « Sauce soja sucrée » écartée : produit sucré distinct, sans énergie ni glucides renseignés. Densité 1,18, milieu de la fourchette 1,15-1,20 d'une saumure à 18,6 g de sel et ~29 g de solutés pour 100 g. Contrôle : REAL-252, 30 ml → 35 g → 16 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11104",
@@ -36852,8 +36641,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11104",
+        "ciqual_name": "Sauce soja, préemballée",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même concept canonique que « sauce soja légère » et « sauce soja japonaise » : la sauce à poisson vapeur cantonaise (蒸魚豉油) est une sauce soja claire à peine sucrée. 11104 est la seule sauce soja salée exploitable du classeur ; 11216 « Sauce soja sucrée » n'a ni énergie ni glucides, donc reste inutilisable. Densité 1,18 : la composition Ciqual de 11104 donne ~29 g de solutés pour 100 g (18,6 g de sel, 7,1 g de protéines, 3,6 g de glucides), et la table de mesure japonaise pose 大さじ (15 ml) de shoyu = 18 g, soit 1,20 ; 1,18 est le milieu de la fourchette 1,15-1,20. Contrôle : REAL-205, 50 ml → 59 g → 27 kcal et 4,2 g de protéines."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "25146",
@@ -36900,8 +36696,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11104",
+        "ciqual_name": "Sauce soja, préemballée",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le toyo philippin relève du concept « sauce soja » : sauce claire et salée, que rien ne distingue nutritionnellement de la sauce soja générique, et le classeur n'a pas d'entrée régionale. Même canonique que les autres sauces soja du corpus — application de la règle de la Bible. Densité 1,18, milieu de la fourchette 1,15-1,20 d'une sauce soja. Contrôle : REAL-259, 120 ml → 142 g → 64 kcal et 10 g de protéines dans un adobo."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11104",
@@ -37044,8 +36847,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "171610",
+        "ciqual_name": "Sauce, worcestershire",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Recours à USDA parce que le classeur français n'a aucune entrée « worcestershire » — vérifié par recherche sur le libellé. USDA 171610 la référence exactement : 77 kcal, 0 g de protéines, 19,2 g de glucides, 0 lipide. Densité 1,09 : solution à ~19 g de sucres pour 100 g (table sucrose à 20 % = 1,081) plus ~2,5 g de sel, soit ~1,09. Contrôle : REAL-301, 40 ml → 44 g → 34 kcal en touche umami."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11051",
@@ -37092,8 +36902,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11100",
+        "ciqual_name": "Sauce barbecue, préemballée",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé : les quatre grandeurs viennent d'un autre condiment. Ni Ciqual ni USDA ne référencent la sauce yakisoba, sauce épaisse de la famille des ウスターソース japonaises (fruits et légumes, sucre, vinaigre, épices), étiquetée autour de 135-145 kcal et 30-35 g de glucides pour 100 g. 11100 « Sauce barbecue, préemballée » colle à ±5 % sur les quatre grandeurs (136 kcal, 0,56 g de protéines, 30,3 g de glucides, 0,6 g de lipides) mais reste un autre aliment, à base de tomate. Sens de l'écart : le sel est sous-estimé (1,77 g contre ~5 g réels), divergence qui ne touche pas les quatre grandeurs calculées. Écarté USDA 171610 « Sauce, worcestershire » (77 kcal, 19,2 g de glucides), presque deux fois trop clair pour une sauce yakisoba épaissie. Densité 1,15 : ~30 g de sucres pour 100 g (solution sucrée 30 % = 1,127) plus ~5 g de sel. Contrôle : REAL-224, 160 ml → 184 g → 250 kcal pour un yakisoba familial."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11051",
@@ -37504,8 +37321,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "18066",
+        "ciqual_name": "Eau du robinet",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Une saumure légère est de l'eau salée : les quatre grandeurs calculées sont celles de l'eau (0 kcal, 0 protéine, 0 glucide, 0 lipide), la seule divergence porte sur le sel — ce qui reste un B. USDA 173647 n'est cité que pour l'énergie : aucun code eau n'a de ligne dans data/ciqual_nutrition_import.csv, seule colonne d'énergie que lit l'applicateur ; le classeur (18066, 0 kcal) demeure la source. Densité 1,03 : solution de NaCl à ~5 % en masse, 1,034 à 20 °C. Contrôle : REAL-107, 80 ml → 82 g → 0 kcal, la saumure n'apporte que du sel."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "13032",
@@ -38665,8 +38489,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "171167",
+        "ciqual_name": "Sauce, teriyaki, ready-to-serve",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même objet sous deux noms : une tare de soja est un mélange sauce soja + mirin + saké + sucre mijoté, c'est exactement la définition de la sauce teriyaki. Recours à USDA parce que le classeur ne référence aucune sauce soja composée : 11104 seule (45,5 kcal) sous-estimerait d'un facteur 2 une tare sucrée, et 11216 « Sauce soja sucrée » n'a ni énergie ni glucides. USDA 171167 donne 89 kcal, 5,93 g de protéines, 15,6 g de glucides, 0,02 g de lipides — cohérent avec une tare non réduite. Sens de l'écart : une tare longuement réduite serait plus concentrée que cette valeur. Densité 1,15 : base sauce soja (1,18) allongée de mirin (1,15) et de saké (0,99) puis resserrée par le sucre. Contrôle : REAL-213, 180 ml → 207 g → 184 kcal et 12 g de protéines."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11104",
@@ -39689,7 +39520,7 @@
         "category": "legumes",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": null
+        "note": "Conversion : 1 tomate moyenne = 120 g ; 20047 mesure la tomate crue entière, sans déchet notable. Contrôle : 12 u dans les tomates farcies = 1440 g → 278 kcal, soit deux tomates par personne pour 6 parts, cohérent avec les 500 à 1200 g pesés des autres recettes."
       },
       "suggestions": [
         {
@@ -40801,8 +40632,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "174837",
+        "ciqual_name": "Alcoholic beverage, wine, table, white",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Réduction canonique d'une appellation vers l'espèce : vin blanc sec de table. Recours à USDA parce que la valeur française n'existe pas et que son substitut est démontrablement faux : au classeur, 5215 « Vin blanc (sec) » porte « - » dans les DEUX colonnes d'énergie (vérifié dans le .xls), et les 18,2 kcal de data/ciqual_nutrition_import.csv valent exactement 4 × 0,5 + 4 × 4,04 = 18,16, c'est-à-dire une somme d'Atwater qui ignore les 7,75 g d'alcool que le classeur mesure lui-même — l'alcool seul vaut 54 kcal. Sur les 500 ml de REAL-074 cela ferait 91 kcal au lieu de 406, facteur 4,5. USDA 174837 (82 kcal, 0,07 g de protéines, 2,6 g de glucides, 0 lipide) est cohérent avec les 82,1 kcal que l'ANSES publie, elle, pour le vin rouge 5214. Densité 0,99 : vin à 11-13 %vol, mélange eau-éthanol légèrement plus léger que l'eau. Contrôle : 500 ml → 495 g → 406 kcal pour une cuisson familiale."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "5215",
@@ -40904,8 +40742,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "5214",
+        "ciqual_name": "Vin rouge",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Réduction canonique d'une appellation vers l'espèce : 5214 « Vin rouge ». Énergie mesurée par l'ANSES et vérifiée par identité (4 × 2,63 g de glucides + 7 × 10,2 g d'alcool = 81,9 ≈ 82,1 kcal annoncées), les quatre grandeurs sont complètes. Densité 0,99 : vin à ~12,5 %vol. Contrôle : REAL-086, 750 ml → 742 g → 610 kcal pour la bouteille entière d'un bœuf bourguignon familial ; le corpus ne modélise pas l'évaporation de l'alcool à la cuisson, ce qui vaut pour tous les vins du corpus."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "5214",
@@ -41117,8 +40962,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11018",
+        "ciqual_name": "Vinaigre",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Réduction vers l'espèce : 11018 « Vinaigre », 22,6 kcal mesurées par l'ANSES et présentes dans le classeur. Le vinaigre de canne (sukang maasim) est un vinaigre à ~4-5 % d'acide comme les autres, indiscernable sur les quatre grandeurs. Écarté 11090 « Vinaigre de cidre » : son énergie est absente du classeur et les 3,7 kcal du CSV ne sont qu'un 4 × 0,93 qui ignore l'acide acétique, six fois sous la valeur ANSES d'un vinaigre. Densité 1,01 : 5 g d'acide acétique (d = 1,049) dans 100 ml d'eau → 1,006. Contrôle : REAL-259, 180 ml → 182 g → 41 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11018",
@@ -41220,8 +41072,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11018",
+        "ciqual_name": "Vinaigre",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Réduction vers l'espèce : 11018 « Vinaigre », 22,6 kcal mesurées par l'ANSES. Le vinaigre de malt est un vinaigre d'orge à ~5 % d'acide ; ses ~0,4 g de glucides résiduels le placent dans le même ordre de grandeur que le vinaigre générique (0,62 g), sans conséquence sur les quatre grandeurs. Écarté 11090 « Vinaigre de cidre » : énergie absente du classeur, et le 3,7 kcal du CSV n'est qu'une somme d'Atwater sans l'acide acétique. Densité 1,01 : 5 g d'acide acétique (d = 1,049) dans 100 ml d'eau → 1,006, un vinaigre est un peu plus dense que l'eau. Contrôle : REAL-302, 100 ml → 101 g → 23 kcal servi à table sur un fish and chips."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11018",
@@ -41268,8 +41127,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11018",
+        "ciqual_name": "Vinaigre",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Réduction vers l'espèce : 11018 « Vinaigre », 22,6 kcal réellement mesurées par l'ANSES (valeur présente dans le classeur, pas reconstruite). Écarté 11090 « Vinaigre de cidre », pourtant plus proche du libellé : son énergie est « - » au classeur et les 3,7 kcal du CSV valent exactement 4 × 0,93, une somme d'Atwater qui oublie l'acide acétique — facteur 6 sous les ~21-22 kcal que donnent aussi bien l'ANSES (11018, 11220) qu'USDA pour un vinaigre. Vinaigre de palme et vinaigre de cidre sont deux vinaigres de fruit à ~5 % d'acide, indiscernables sur les quatre grandeurs. Densité 1,01 : 5 g d'acide acétique (d = 1,049) pour 100 ml d'eau → 1,006 ; un vinaigre est légèrement PLUS dense que l'eau, pas moins. Contrôle : REAL-187, 120 ml → 121 g → 27 kcal dans une marinade d'adobo."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11090",
@@ -41742,8 +41608,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "2075",
+        "ciqual_name": "Jus de légumes, pur jus (aliment moyen)",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé : les quatre grandeurs viennent d'un autre aliment. Le zakwas buraczany est un jus de betterave lacto-fermenté puis filtré, absent de Ciqual comme d'USDA ; les étiquettes du commerce donnent ~22 kcal, ~4,5 g de glucides et ~0,6 g de protéines pour 100 ml. 2075 « Jus de légumes, pur jus (aliment moyen) » (21,7 / 0,72 / 4,66 / 0,13) colle à ±10 % sur les quatre grandeurs, mais c'est une moyenne de jus de légumes, pas une betterave fermentée. Écarté 20091 « Betterave rouge, crue » (45,5 kcal, 9,1 g de glucides) : c'est le légume entier, deux fois trop chargé pour un liquide filtré. Densité 1,02 : liquide à ~5 g de solutés pour 100 ml, à peine au-dessus de l'eau. Contrôle : REAL-299, 400 ml → 408 g → 89 kcal dans un barszcz."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20003",

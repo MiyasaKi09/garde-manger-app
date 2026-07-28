@@ -142,9 +142,26 @@ for (const decision of lot) {
   const memeCible = existant
     && String(existant.ciqual_alim_code || '') === code
     && String(existant.usda_fdc_id || '') === fdcId
+  // Changer de cible est légitime — un arbitrage antérieur peut s'être trompé,
+  // ou reposer sur une contrainte qui n'existe plus. Mais il faut le dire :
+  // la décision doit nommer la cible qu'elle remplace, et cette mention doit
+  // correspondre à ce que porte réellement le registre. Un remplacement qui se
+  // trompe d'ancienne cible est un remplacement qui n'a pas regardé.
+  const remplace = String(decision.remplace || '').trim()
+  const cibleActuelle = String(existant?.ciqual_alim_code || existant?.usda_fdc_id || '')
   if (existant && !memeCible) {
-    rejeter(`écrase un mapping existant (${existant.ciqual_alim_code || existant.usda_fdc_id}) — arbitrage explicite requis`)
-    continue
+    if (!remplace) {
+      rejeter(`écrase un mapping existant (${cibleActuelle}) — ajoutez « remplace » pour l'assumer`)
+      continue
+    }
+    if (remplace !== cibleActuelle) {
+      rejeter(`annonce remplacer ${remplace}, mais le registre porte ${cibleActuelle}`)
+      continue
+    }
+    if (!String(decision.note || '').trim()) {
+      rejeter('remplacement sans note expliquant pourquoi la cible précédente ne convenait pas')
+      continue
+    }
   }
 
   retenus.push({

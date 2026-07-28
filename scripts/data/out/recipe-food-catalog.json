@@ -69,10 +69,13 @@
       "canonical_name": "Ail cru entier",
       "canonical_name_normalized": "ail cru entier",
       "category": "herbes_aromates",
-      "confidence": "C",
+      "confidence": "B",
       "source": "ciqual_2020",
-      "source_record_key": "11307",
-      "source_name": "Ail, sauté/poêlé, sans matière grasse",
+      "bounded_from_ciqual": [
+        "fat_g"
+      ],
+      "source_record_key": "11000",
+      "source_name": "Ail, cru",
       "state": {
         "concept": "Ail cru entier",
         "rest": "",
@@ -87,13 +90,13 @@
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 130,
-        "proteinG": 6,
-        "carbsG": 22,
-        "fatG": 0.4,
+        "kcal": 111,
+        "proteinG": 5.31,
+        "carbsG": 18.6,
+        "fatG": 0.5,
         "fiberG": 5.8
       },
-      "note": "Le libellé exact 11000 « Ail, cru » est INUTILISABLE : ses lipides ne sont qu'une borne supérieure (« < 0,5 »), donc absents du classeur, et l'applicateur le refuserait. 11307 est le même ail sans matière grasse ajoutée, seulement concentré par la perte d'eau (130 vs 111 kcal, 6 vs 5,31 P, 22 vs 18,6 G). Proxy d'état assumé cru→sauté ; aux quelques grammes d'usage l'écart absolu est de l'ordre de 2 kcal. Les cinq candidats proposés étaient tous des céréales (blé, mil, maïs, sorgho) — le score textuel a suivi « entier, cru » en ignorant « ail »."
+      "note": "Le libellé exact, rendu employable par la lecture des bornes : les lipides de l'ail cru sont au statut « inférieur à 0,5 g », une valeur majorée et non une absence. 111 kcal, 5,31 g de protéines, 18,6 g de glucides. Remplace 11307 « Ail, sauté/poêlé, sans matière grasse » (130 kcal), qui était une erreur d'état — l'ail entier d'une recette est cru quand elle le fait revenir elle-même."
     },
     {
       "canonical_name": "Ail cru tranché",
@@ -602,7 +605,9 @@
         "g",
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 250
+      },
       "per100g": {
         "kcal": 15.3,
         "proteinG": 1.12,
@@ -610,7 +615,7 @@
         "fatG": 0.14,
         "fiberG": 2.7
       },
-      "note": null
+      "note": "Conversion : 1 aubergine moyenne = 250 g (20053 mesure l'aubergine crue parée). Contrôle : 6 u dans l'İmam bayıldı = 1500 g → 230 kcal pour 6 parts, soit une aubergine par personne — cohérent avec les 1400 g de la moussaka et les 1600 g de la parmigiana."
     },
     {
       "canonical_name": "Aubergine japonaise fraîche",
@@ -692,7 +697,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 140
+      },
       "per100g": {
         "kcal": 205,
         "proteinG": 1.56,
@@ -700,7 +707,7 @@
         "fatG": 20.6,
         "fiberG": 3.6
       },
-      "note": "Seule entrée avocat du classeur hors huile. Forme comptée en unités : la conversion unité → grammes doit porter sur la pulpe seule (peau et noyau ≈ 30 % du fruit entier), sinon surestimation."
+      "note": "Seule entrée avocat du classeur hors huile. Forme comptée en unités : la conversion unité → grammes doit porter sur la pulpe seule (peau et noyau ≈ 30 % du fruit entier), sinon surestimation. Conversion : 1 avocat = 200 g entier, dont 140 g de CHAIR — 13004 mesure la pulpe, peau et noyau (≈ 30 %) sont donc retranchés comme le demandait déjà la note. Contrôle : 3 u dans la causa limeña = 420 g → 861 kcal pour 8 parts, soit 108 kcal par personne."
     },
     {
       "canonical_name": "Baguette vietnamienne",
@@ -752,7 +759,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 0.1
+      },
       "per100g": {
         "kcal": 345,
         "proteinG": 12.4,
@@ -760,7 +769,7 @@
         "fatG": 10.4,
         "fiberG": 25.9
       },
-      "note": "Proxy assumé : aucune entrée genièvre dans le classeur (0 occurrence). Le seul candidat proposé, 13126 « Sureau, baie, crue », est un fruit frais sans rapport botanique ni nutritionnel (52,7 kcal, 88 % d'eau) — refusé. 11081 approxime une épice sèche entière (345 kcal, 12,3 g de protéines), profil correct pour des baies séchées ; l'emploi en unités (2 à 5 baies, ~0,1 g pièce, souvent retirées à la fin) rend l'écart résiduel négligeable."
+      "note": "Proxy assumé : aucune entrée genièvre dans le classeur (0 occurrence). Le seul candidat proposé, 13126 « Sureau, baie, crue », est un fruit frais sans rapport botanique ni nutritionnel (52,7 kcal, 88 % d'eau) — refusé. 11081 approxime une épice sèche entière (345 kcal, 12,3 g de protéines), profil correct pour des baies séchées ; l'emploi en unités (2 à 5 baies, ~0,1 g pièce, souvent retirées à la fin) rend l'écart résiduel négligeable. Conversion : 1 baie séchée = 0,1 g, valeur déjà annoncée par la note ci-dessus. Baies infusées puis RETIRÉES le plus souvent. Contrôle : 10 u dans la choucroute = 1 g → 3,5 kcal pour tout le plat, l'écart du proxy C reste sans portée."
     },
     {
       "canonical_name": "Banane mûre",
@@ -816,7 +825,9 @@
         "g",
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 180
+      },
       "per100g": {
         "kcal": 127,
         "proteinG": 1.28,
@@ -824,7 +835,7 @@
         "fatG": 0.39,
         "fiberG": 2.3
       },
-      "note": "Même aliment à l'état cru (127 kcal, P 1,28 / G 29,6 / L 0,39, complet). Le Ciqual ne distingue pas la maturité : à maturité l'amidon se convertit en sucres mais l'énergie reste équivalente. 53101 est la version cuite, à réserver aux formes déjà cuisinées ; 13029 « Mûre (de ronce) » était un accrochage sur le mot « mûre »."
+      "note": "Même aliment à l'état cru (127 kcal, P 1,28 / G 29,6 / L 0,39, complet). Le Ciqual ne distingue pas la maturité : à maturité l'amidon se convertit en sucres mais l'énergie reste équivalente. 53101 est la version cuite, à réserver aux formes déjà cuisinées ; 13029 « Mûre (de ronce) » était un accrochage sur le mot « mûre ». Conversion : 1 plantain = 250 g entier, dont 180 g de CHAIR épluchée — 53100 mesure le fruit cru épluché, la peau (≈ 30 %) est retranchée. Contrôle : 4 u dans le pabellón criollo = 720 g → 914 kcal pour 6 parts, soit 152 kcal de plantain frit par personne ; cohérent avec les 1000 g pesés du kelewele."
     },
     {
       "canonical_name": "Banane plantain verte",
@@ -846,7 +857,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 180
+      },
       "per100g": {
         "kcal": 127,
         "proteinG": 1.28,
@@ -854,7 +867,7 @@
         "fatG": 0.39,
         "fiberG": 2.3
       },
-      "note": "Le plantain vert est le plantain non mûr, c'est-à-dire l'état cru du fruit. Ciqual ne qualifie pas la maturité : le vert a davantage d'amidon résistant et moins de sucres, mais l'énergie et les glucides totaux sont inchangés. Écarté 53101 « cuite » (l'état commande) et 20119 « Tomate verte, crue », retenu sur le seul mot « verte »."
+      "note": "Le plantain vert est le plantain non mûr, c'est-à-dire l'état cru du fruit. Ciqual ne qualifie pas la maturité : le vert a davantage d'amidon résistant et moins de sucres, mais l'énergie et les glucides totaux sont inchangés. Écarté 53101 « cuite » (l'état commande) et 20119 « Tomate verte, crue », retenu sur le seul mot « verte ». Conversion : 1 plantain vert = 250 g entier, dont 180 g de CHAIR épluchée (53100 mesure le fruit épluché). Contrôle : 6 u dans le mofongo = 1080 g → 1372 kcal pour 6 parts, soit 229 kcal par personne : c'est bien la base amylacée du plat, pas une garniture."
     },
     {
       "canonical_name": "Bar entier cru vidé",
@@ -996,7 +1009,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 4
+      },
       "per100g": {
         "kcal": 243,
         "proteinG": 3.87,
@@ -1004,7 +1019,7 @@
         "fatG": 1.22,
         "fiberG": 53.1
       },
-      "note": "Même épice, même matière (écorce de cannelier) : seule la présentation diffère, bâton contre poudre, sans effet sur la composition. Ciqual ne propose que la poudre — c'était d'ailleurs l'unique candidat, et il est correct."
+      "note": "Même épice, même matière (écorce de cannelier) : seule la présentation diffère, bâton contre poudre, sans effet sur la composition. Ciqual ne propose que la poudre — c'était d'ailleurs l'unique candidat, et il est correct. Conversion : 1 bâton = 4 g d'écorce. Infusé dans le lait des pastéis puis RETIRÉ : la masse sert au calcul, l'apport réel est nul. Contrôle : 1 u = 4 g → 9,7 kcal pour toute la recette."
     },
     {
       "canonical_name": "Béchamel préparée",
@@ -2627,7 +2642,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 4
+      },
       "per100g": {
         "kcal": 243,
         "proteinG": 3.87,
@@ -2635,7 +2652,7 @@
         "fatG": 1.22,
         "fiberG": 53.1
       },
-      "note": "Ciqual ne distingue pas cassia et Ceylan et n'a pas d'entree « baton/ecorce » : la cannelle du commerce europeen est majoritairement de la cassia. Meme epice, forme moulue au lieu du baton, sans consequence sur les macros pour 100 g."
+      "note": "Ciqual ne distingue pas cassia et Ceylan et n'a pas d'entree « baton/ecorce » : la cannelle du commerce europeen est majoritairement de la cassia. Meme epice, forme moulue au lieu du baton, sans consequence sur les macros pour 100 g. Conversion : 1 bâton de cassia = 4 g. Infusé dans le bouillon puis RETIRÉ — apport réel nul. Contrôle : 2 u dans le phở = 8 g → 19 kcal pour 8 parts."
     },
     {
       "canonical_name": "Cannelle en bâton",
@@ -2657,7 +2674,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 4
+      },
       "per100g": {
         "kcal": 243,
         "proteinG": 3.87,
@@ -2665,7 +2684,7 @@
         "fatG": 1.22,
         "fiberG": 53.1
       },
-      "note": "Seule entrée cannelle du classeur (l'autre, 13435, est une pomme cannelle, fruit sans rapport). Bâton et poudre sont la même écorce, différant par la mouture seule : composition pour 100 g identique. Réserve d'usage : le bâton est infusé puis retiré, donc l'apport réel dépend de la conversion unité → grammes, pas du choix de code."
+      "note": "Seule entrée cannelle du classeur (l'autre, 13435, est une pomme cannelle, fruit sans rapport). Bâton et poudre sont la même écorce, différant par la mouture seule : composition pour 100 g identique. Réserve d'usage : le bâton est infusé puis retiré, donc l'apport réel dépend de la conversion unité → grammes, pas du choix de code. Conversion : 1 bâton = 4 g d'écorce. Le bâton est infusé puis RETIRÉ — la masse sert au calcul, l'apport réel est nul. Contrôle : 2 u dans le tajine = 8 g → 19 kcal pour 6 parts, majorant assumé."
     },
     {
       "canonical_name": "Cannelle moulue",
@@ -2777,7 +2796,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 1
+      },
       "per100g": {
         "kcal": 321,
         "proteinG": 10.8,
@@ -2785,7 +2806,7 @@
         "fatG": 6.7,
         "fiberG": 28
       },
-      "note": "Seul code cardamome du classeur. La cardamome noire (Amomum subulatum) diffère botaniquement de la verte, mais reste une cardamome et s'emploie en quantités infimes : l'écart de macros est sans portée. Les autres candidats accrochaient le mot « noire » (mûre, olive, forêt-noire) et n'ont rien à voir."
+      "note": "Seul code cardamome du classeur. La cardamome noire (Amomum subulatum) diffère botaniquement de la verte, mais reste une cardamome et s'emploie en quantités infimes : l'écart de macros est sans portée. Les autres candidats accrochaient le mot « noire » (mûre, olive, forêt-noire) et n'ont rien à voir. Conversion : 1 gousse noire = 1 g, soit cinq fois la gousse verte (Amomum subulatum est nettement plus grosse). Gousse entière, retirée en fin de cuisson. Contrôle : 3 u dans le rogan josh = 3 g → 9,6 kcal."
     },
     {
       "canonical_name": "Cardamome verte",
@@ -2807,7 +2828,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 0.2
+      },
       "per100g": {
         "kcal": 321,
         "proteinG": 10.8,
@@ -2815,7 +2838,7 @@
         "fatG": 6.7,
         "fiberG": 28
       },
-      "note": "La cardamome verte est la cardamome de reference du Ciqual, qui ne recense que la poudre. Gousse au lieu de poudre : meme epice, macros identiques pour 100 g. Les quatre autres candidats (tomate verte, chicoree verte, asperge verte, lentille verte) ne devaient leur score qu'au mot « verte »."
+      "note": "La cardamome verte est la cardamome de reference du Ciqual, qui ne recense que la poudre. Gousse au lieu de poudre : meme epice, macros identiques pour 100 g. Les quatre autres candidats (tomate verte, chicoree verte, asperge verte, lentille verte) ne devaient leur score qu'au mot « verte ». Conversion : 1 gousse verte = 0,2 g, gousse entière (enveloppe comprise, généralement retirée). La référence est la poudre de graines : la masse retenue majore donc l'apport. Contrôle : 8 u dans le biryani = 1,6 g → 5 kcal."
     },
     {
       "canonical_name": "Carotte crue",
@@ -3013,10 +3036,16 @@
       "canonical_name": "Chair de brochet crue",
       "canonical_name_normalized": "chair de brochet crue",
       "category": "poissons_fruits_de_mer",
-      "confidence": "C",
+      "confidence": "B",
       "source": "ciqual_2020",
-      "source_record_key": "10045",
-      "source_name": "Coquille Saint-Jacques, noix, crue",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 0.01,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
+      },
+      "source_record_key": "27011",
+      "source_name": "Brochet, cru",
       "state": {
         "concept": "Chair de brochet crue",
         "rest": "",
@@ -3031,13 +3060,13 @@
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 83.6,
-        "proteinG": 17.9,
-        "carbsG": 1.15,
-        "fatG": 0.84,
+        "kcal": 83.7,
+        "proteinG": 18.8,
+        "carbsG": 0.01,
+        "fatG": 0.94,
         "fiberG": 0
       },
-      "note": "Proxy assumé et contraint. Le code exact 27011 « Brochet, cru » existe mais ses glucides sont absents de la source : l'applicateur le refuserait et la recette resterait bloquée. Vérification faite, AUCUN poisson frais cru ou simplement cuit du classeur (26xxx/27xxx) ne possède les quatre macros — les seuls complets sont panés, fumés ou appertisés. La noix de Saint-Jacques crue est la chair marine maigre complète dont le profil colle presque exactement au brochet cru : 83,6 kcal contre 83,7, 17,9 g de protéines contre 18,8, 0,84 g de lipides contre 0,94. Les candidats proposés étaient de la chair à saucisse (323 kcal) et trois légumes crus."
+      "note": "27011 « Brochet, cru » est le code exact : 83,7 kcal, 18,8 g de protéines, 0,94 g de lipides, et ses glucides — non mesurés comme pour tous les poissons du classeur — sont clos à 0,01 g par fermeture d'Atwater. Remplace 10045 « Coquille Saint-Jacques, noix, crue », retenue faute de mieux : les chiffres étaient voisins par coïncidence, mais un mollusque n'est pas un poisson, et la provenance mentait."
     },
     {
       "canonical_name": "Champignon de paille",
@@ -3979,6 +4008,43 @@
       "note": "Proxy assumé sur l'agrégat « Epice (aliment moyen) », que l'ANSES publie précisément pour un mélange absent du classeur — et que le corpus emploie déjà pour le ras el-hanout, mélange propriétaire posant exactement le même problème. 11056 « Quatre épices » est écarté : c'est un mélange nommé, un concept canonique réel et distinct, et l'y ranger créerait une fausse identité entre deux mélanges différents. Emploi de l'ordre du gramme."
     },
     {
+      "canonical_name": "Citron confit au sel",
+      "canonical_name_normalized": "citron confit au sel",
+      "category": "fruits",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "protein_g",
+        "fat_g",
+        "fiber_g"
+      ],
+      "source_record_key": "13009",
+      "source_name": "Citron, pulpe, cru",
+      "state": {
+        "concept": "Citron confit au sel",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 70
+      },
+      "per100g": {
+        "kcal": 27.6,
+        "proteinG": 0.5,
+        "carbsG": 1.56,
+        "fatG": 0.5,
+        "fiberG": 0.5
+      },
+      "note": "Même aliment que le citron du registre (« citron jaune frais » est déjà sur 13009 « Citron, pulpe, cru ») : le confisage au sel est une conservation, pas un changement d'état nutritionnel — l'eau reste, l'énergie reste (27,6 kcal). La divergence porte sur le SEL, ce que la doctrine laisse en B ; le sodium du citron confit est considérable et n'est pas représenté ici. Protéines, lipides et fibres sont au statut « inférieur à 0,5 g », bornes retenues. 13125 « Citron, zeste, cru » (29,8 kcal) a été comparé : écart nul sur l'énergie, et le zeste est déjà le canonique d'une autre forme. Conversion : 1 citron confit égoutté et épépiné = 70 g. Contrôle : 2 u dans le tajine = 140 g → 39 kcal pour 6 parts ; l'écart avec le zeste serait de 3 kcal, celui d'un fruit entier de 100 g de 17 kcal."
+    },
+    {
       "canonical_name": "Citron jaune frais",
       "canonical_name_normalized": "citron jaune frais",
       "category": "fruits",
@@ -4038,7 +4104,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 35
+      },
       "per100g": {
         "kcal": 40.2,
         "proteinG": 1.13,
@@ -4046,7 +4114,7 @@
         "fatG": 0.3,
         "fiberG": 4.3
       },
-      "note": "La forme est employée en fruits entiers : il faut la pulpe, pas le jus. Lipides au statut « inférieur à 0,3 g », valeur majorée retenue. 40,2 kcal, 1,13 g de protéines, 3,14 g de glucides."
+      "note": "La forme est employée en fruits entiers : il faut la pulpe, pas le jus. Lipides au statut « inférieur à 0,3 g », valeur majorée retenue. 40,2 kcal, 1,13 g de protéines, 3,14 g de glucides. Conversion : 1 citron vert = 70 g entier, dont 35 g de PULPE — c'est la pulpe que mesure 13067, la masse retenue est donc 35 g et non celle du fruit entier. Contrôle : 4 u dans le phở = 140 g → 56 kcal ; servis en quartiers à presser, l'apport réel se limite au jus, 56 kcal est un majorant."
     },
     {
       "canonical_name": "Citronnelle fraîche",
@@ -4139,6 +4207,38 @@
         "fiberG": 33.9
       },
       "note": "Même épice, même code que le clou entier : la mouture ne change pas la composition. 335 kcal."
+    },
+    {
+      "canonical_name": "Cognac",
+      "canonical_name_normalized": "cognac",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "1023",
+      "source_name": "Eau de vie de vin, type armagnac, cognac",
+      "state": {
+        "concept": "Cognac",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.95
+      },
+      "per100g": {
+        "kcal": 228,
+        "proteinG": 0,
+        "carbsG": 1,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Même aliment, libellé du classeur : 1023 « Eau de vie de vin, type armagnac, cognac » (228 kcal, 1 g de glucides, 32 g d'alcool). Densité 0,95 et non 0,99 : à 32 g d'alcool pour 100 g — soit ~40 %vol — la table eau-éthanol donne 0,948 à 20 °C. Le 0,99 vaut pour les boissons à 10-16 %vol (vin, saké), pas pour une eau-de-vie ; c'est aussi la valeur que retient déjà conversionFor() pour /rhum|alcool/. Contrôle : REAL-082, 40 ml → 38 g → 87 kcal dans une sauce."
     },
     {
       "canonical_name": "Comté",
@@ -5080,6 +5180,38 @@
       "note": null
     },
     {
+      "canonical_name": "Eau chaude",
+      "canonical_name_normalized": "eau chaude",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "18066",
+      "source_name": "Eau du robinet",
+      "state": {
+        "concept": "Eau chaude",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 0,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Même aliment : l'eau du robinet, chaude. Le classeur reste la source — 18066 porte 0 kcal et 0 pour les trois macros. La référence USDA n'est là que pour l'énergie : data/ciqual_nutrition_import.csv ne contient AUCUNE ligne pour les codes eaux (18066, 18008, 18044-18046), or c'est la seule colonne d'énergie que lit l'applicateur ; sans elle une eau serait refusée pour « macronutriments incomplets ». USDA 173647 confirme 0 kcal, elle ne remplace rien. Densité 1,000 : eau pure à 20 °C (0,988 à 50 °C, écart sans effet, le profil est nul). Contrôle : REAL-297, 300 ml → 300 g → 0 kcal."
+    },
+    {
       "canonical_name": "Eau de coco",
       "canonical_name_normalized": "eau de coco",
       "category": "boissons",
@@ -5147,6 +5279,38 @@
         "fiberG": 0
       },
       "note": null
+    },
+    {
+      "canonical_name": "Eau glacée gazeuse",
+      "canonical_name_normalized": "eau glacee gazeuse",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "18046",
+      "source_name": "Eau minérale, gazeuse (aliment moyen)",
+      "state": {
+        "concept": "Eau glacée gazeuse",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 0,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Même aliment : eau gazeuse, servie glacée pour une pâte à tempura. Le classeur reste la source (18046 « Eau minérale, gazeuse (aliment moyen) », 0 kcal et 0 pour les trois macros). USDA 174842 « club soda » n'est cité que pour l'énergie : aucun code eau n'a de ligne dans data/ciqual_nutrition_import.csv, seule colonne d'énergie que lit l'applicateur, et une eau y serait refusée pour « macronutriments incomplets ». Densité 1,00 : le CO2 dissous (~5 g/l) ne déplace pas la masse volumique au centième près ; l'eau à 0-4 °C vaut 1,000. Contrôle : REAL-219, 400 ml → 400 g → 0 kcal."
     },
     {
       "canonical_name": "Échalote crue",
@@ -5755,7 +5919,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 0.2
+      },
       "per100g": {
         "kcal": 353,
         "proteinG": 7.61,
@@ -5763,7 +5929,7 @@
         "fatG": 8.36,
         "fiberG": 26.3
       },
-      "note": "Proxy assumé : aucune entrée combava / kaffir / makrut dans le Ciqual 2020 (vérifié). Les candidats proposés étaient du thé, un mille-feuille, de la feuille de brick et des dolmas — sans rapport. Le laurier est la seule feuille aromatique du classeur, employée exactement de la même façon (1 à 3 feuilles entières, infusées puis retirées) ; à ces quantités l'apport est nul quel que soit le code. Macros complètes (353 kcal, P 7,61 / G 48,6 / L 8,36)."
+      "note": "Proxy assumé : aucune entrée combava / kaffir / makrut dans le Ciqual 2020 (vérifié). Les candidats proposés étaient du thé, un mille-feuille, de la feuille de brick et des dolmas — sans rapport. Le laurier est la seule feuille aromatique du classeur, employée exactement de la même façon (1 à 3 feuilles entières, infusées puis retirées) ; à ces quantités l'apport est nul quel que soit le code. Macros complètes (353 kcal, P 7,61 / G 48,6 / L 8,36). Conversion : 0,2 g par feuille, masse de feuille SÉCHÉE — la référence 11053 est un laurier déshydraté (353 kcal), il fallait donc l'équivalent sec et non les ~0,4 g de la feuille fraîche, sans quoi l'eau serait comptée deux fois. Même valeur que « feuille de laurier séchée » au registre. Les feuilles sont infusées puis RETIRÉES : l'apport réel est nul. Contrôle : 10 u dans le tom yum = 2 g → 7 kcal."
     },
     {
       "canonical_name": "Feuille de curry fraîche",
@@ -5785,7 +5951,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 0.2
+      },
       "per100g": {
         "kcal": 107,
         "proteinG": 5.56,
@@ -5793,7 +5961,7 @@
         "fatG": 1.68,
         "fiberG": 14
       },
-      "note": "Proxy assumé : la feuille de kaloupilé (Murraya koenigii) n'existe pas dans Ciqual 2020. On approxime une feuille aromatique fraîche, coriace et dense, par une autre — le thym frais (107 kcal, 5,56 g de protéines, 1,68 g de lipides) est le profil le plus proche des données publiées pour la feuille de curry fraîche. 11005 « Curry, poudre » est un mélange d'épices sans rapport botanique, et 11053 « Laurier, feuille » est un déshydraté (353 kcal) : mauvais état. Impact réel négligeable, la forme est comptée en unités et quelques feuilles pèsent moins d'un gramme."
+      "note": "Proxy assumé : la feuille de kaloupilé (Murraya koenigii) n'existe pas dans Ciqual 2020. On approxime une feuille aromatique fraîche, coriace et dense, par une autre — le thym frais (107 kcal, 5,56 g de protéines, 1,68 g de lipides) est le profil le plus proche des données publiées pour la feuille de curry fraîche. 11005 « Curry, poudre » est un mélange d'épices sans rapport botanique, et 11053 « Laurier, feuille » est un déshydraté (353 kcal) : mauvais état. Impact réel négligeable, la forme est comptée en unités et quelques feuilles pèsent moins d'un gramme. Conversion : 1 feuille (foliole) fraîche = 0,2 g — masse fraîche, cohérente avec la référence thym FRAIS. Contrôle : 15 u dans le sambar = 3 g → 3,2 kcal ; le proxy C reste sans portée à cette échelle."
     },
     {
       "canonical_name": "Feuille de lasagne sèche",
@@ -5856,6 +6024,73 @@
         "fiberG": 26.3
       },
       "note": null
+    },
+    {
+      "canonical_name": "Feuille de sauge fraîche",
+      "canonical_name_normalized": "feuille de sauge fraiche",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "fat_g"
+      ],
+      "source_record_key": "11069",
+      "source_name": "Sauge, fraîche",
+      "state": {
+        "concept": "Feuille de sauge fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 0.5
+      },
+      "per100g": {
+        "kcal": 36.7,
+        "proteinG": 4,
+        "carbsG": 0.97,
+        "fatG": 0.5,
+        "fiberG": 7
+      },
+      "note": "11069 « Sauge, fraîche » : même aliment, même état (la feuille EST la sauge fraîche du classeur) ; 11037 « Sauge, séchée » (320 kcal) aurait été un facteur 9 sur l'énergie. Lipides au statut « inférieur à 0,5 g », borne retenue comme le fait l'ANSES. Conversion : 1 feuille fraîche = 0,5 g. Contrôle : 16 u dans la saltimbocca = 8 g → 2,9 kcal pour 4 parts, deux feuilles par escalope."
+    },
+    {
+      "canonical_name": "Feuille de vigne en saumure",
+      "canonical_name_normalized": "feuille de vigne en saumure",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "169393",
+      "source_name": "Grape leaves, canned",
+      "state": {
+        "concept": "Feuille de vigne en saumure",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 4
+      },
+      "per100g": {
+        "kcal": 69,
+        "proteinG": 4.27,
+        "carbsG": 11.7,
+        "fatG": 1.97,
+        "fiberG": 9.9
+      },
+      "note": "Recours à USDA : le Ciqual 2020 n'a aucune feuille de vigne nature — sa seule entrée, 25217 « Feuille de vigne farcie au riz ou dolmas », est le PLAT COMPOSÉ fini (riz, huile, farce), qui ferait compter la farce deux fois. USDA 169393 « Grape leaves, canned » est exactement la feuille en saumure égouttée (69 kcal), et non 168575 « Grape leaves, raw » (93 kcal) : l'état commande, la saumure lessive et hydrate. Conversion : 1 feuille égouttée = 4 g. Contrôle : 50 u dans les dolmades = 200 g → 138 kcal pour 8 parts, soit 17 kcal d'enveloppe par personne — cohérent avec un bocal de 250 g égouttés pour une soixantaine de feuilles."
     },
     {
       "canonical_name": "Filet de bœuf cru en lanières",
@@ -6027,7 +6262,9 @@
       "units_used": [
         "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1
+      },
       "per100g": {
         "kcal": 29,
         "proteinG": 0.91,
@@ -7012,6 +7249,38 @@
       "note": null
     },
     {
+      "canonical_name": "Huile de dendê",
+      "canonical_name_normalized": "huile de dende",
+      "category": "matieres_grasses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "16129",
+      "source_name": "Huile de palme, sans précision",
+      "state": {
+        "concept": "Huile de dendê",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 100,
+        "fiberG": 0
+      },
+      "note": "L'azeite de dendê brésilien EST l'huile de palme rouge : même concept culinaire, donc même canonique que la forme « huile de palme rouge » du corpus. 16129 « Huile de palme, sans précision » : 900 kcal, 100 g de lipides. La divergence porte sur les caroténoïdes de l'huile brute, micronutriments — B. Densité 0,92, valeur usuelle des huiles à 20 °C (le dendê est semi-solide sous 24 °C mais se mesure fondu). Contrôle : REAL-277, 80 ml → 74 g → 662 kcal, ordre de grandeur attendu d'un corps gras employé généreusement dans une moqueca."
+    },
+    {
       "canonical_name": "Huile de friture",
       "canonical_name_normalized": "huile de friture",
       "category": "matieres_grasses",
@@ -7108,6 +7377,38 @@
       "note": null
     },
     {
+      "canonical_name": "Huile de palme rouge",
+      "canonical_name_normalized": "huile de palme rouge",
+      "category": "matieres_grasses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "16129",
+      "source_name": "Huile de palme, sans précision",
+      "state": {
+        "concept": "Huile de palme rouge",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 100,
+        "fiberG": 0
+      },
+      "note": "Même aliment, état légèrement différent : l'huile de palme rouge est l'huile de palme brute, non décolorée. 16129 « Huile de palme, sans précision » donne 900 kcal et 100 g de lipides ; la divergence porte uniquement sur les caroténoïdes et le tocotriénol, des micronutriments — B. Écarté 16150 « Huile de palme raffinée » : mêmes chiffres mais un état explicitement raffiné, contraire à « rouge ». Densité 0,92, valeur usuelle des huiles alimentaires à 20 °C. Contrôle : REAL-157, 120 ml → 110 g → 994 kcal ; c'est beaucoup mais c'est la quantité de la recette, et l'ordre de grandeur d'une huile est bien 9 kcal/g."
+    },
+    {
       "canonical_name": "Huile de sésame grillé",
       "canonical_name_normalized": "huile de sesame grille",
       "category": "matieres_grasses",
@@ -7170,6 +7471,38 @@
         "fiberG": 0
       },
       "note": "Proxy assumé : pas d'huile pimentée au classeur. Ce qui est approximé : une huile de base infusée au piment, composée à plus de 95 % de corps gras — 900 kcal, 99,9 g de lipides ; le piment et les aromates n'apportent rien de mesurable à cette échelle. J'ai retenu l'entrée générique plutôt qu'une huile nommée (lin, son de riz, amande, avocat, germe de blé — tous candidats à 900 kcal, tous nutritionnellement interchangeables) pour ne pas affirmer une identité botanique fausse : le choix entre huiles n'a aucune conséquence sur les macros."
+    },
+    {
+      "canonical_name": "Huile pimentée au roucou",
+      "canonical_name_normalized": "huile pimentee au roucou",
+      "category": "matieres_grasses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "17001",
+      "source_name": "Huile végétale (aliment moyen)",
+      "state": {
+        "concept": "Huile pimentée au roucou",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0.21,
+        "carbsG": 0,
+        "fatG": 99.9,
+        "fiberG": 0
+      },
+      "note": "Une huile infusée reste une huile : le roucou et le piment sont filtrés ou représentent moins de 1 % de la masse, et les quatre grandeurs sont celles du corps gras. 17001 « Huile végétale (aliment moyen) » : 900 kcal, 99,9 g de lipides, complètes. La divergence porte sur les caroténoïdes et la capsaïcine, des micronutriments — B. Densité 0,92, valeur usuelle des huiles à 20 °C. Contrôle : REAL-243, 80 ml → 74 g → 662 kcal ; c'est bien l'ordre de grandeur d'un corps gras et c'est la quantité voulue par la recette, une huile de finition de plat vietnamien pour toute une marmite."
     },
     {
       "canonical_name": "Huile végétale",
@@ -7481,6 +7814,70 @@
       "note": null
     },
     {
+      "canonical_name": "Jaune d’œuf cuit",
+      "canonical_name_normalized": "jaune d oeuf cuit",
+      "category": "oeufs",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "22009",
+      "source_name": "Oeuf, jaune (jaune d'oeuf), cuit",
+      "state": {
+        "concept": "Jaune d’œuf cuit",
+        "rest": "",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 18
+      },
+      "per100g": {
+        "kcal": 340,
+        "proteinG": 16,
+        "carbsG": 1.31,
+        "fatG": 30.1,
+        "fiberG": 0
+      },
+      "note": "22009 « Oeuf, jaune (jaune d'oeuf), cuit » : même aliment, même état — 22002 est le jaune CRU (307 kcal contre 340). Conversion : 1 jaune = 18 g, même masse que « jaune d oeuf cru » déjà retenue par le générateur ; la cuisson d'un œuf dur ne fait pas varier la masse du jaune. Contrôle : 3 u dans le vitello tonnato = 54 g → 184 kcal de jaune dans la sauce, pour 8 parts."
+    },
+    {
+      "canonical_name": "Jus d orange amère",
+      "canonical_name_normalized": "jus d orange amere",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "2070",
+      "source_name": "Jus d'orange, pur jus",
+      "state": {
+        "concept": "Jus d orange amère",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "liquid",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 45.4,
+        "proteinG": 0.61,
+        "carbsG": 9.61,
+        "fatG": 0.11,
+        "fiberG": 0.28
+      },
+      "note": "Réduction d'une variété d'agrume vers le jus d'orange du classeur : 2070 « Jus d'orange, pur jus » (45,4 kcal, 0,61 g de protéines, 9,61 g de glucides, 0,11 g de lipides). Écart et sens : l'orange amère (Citrus aurantium) titre ~8 °Brix contre ~11 pour l'orange douce, le jus retenu SURESTIME donc les sucres d'environ 20 % — soit 19 kcal sur les 250 ml de REAL-263, ~3 kcal par portion, sans conséquence à l'échelle de la recette. Écarté 13432 « Orange amère, pulpe, crue » : c'est la pulpe et non le jus, et ni son énergie ni ses glucides ne sont renseignés. Densité 1,03, valeur des jus d'agrumes (~10 °Brix). Contrôle : 250 ml → 258 g → 117 kcal."
+    },
+    {
       "canonical_name": "Jus de citron frais",
       "canonical_name_normalized": "jus de citron frais",
       "category": "boissons",
@@ -7543,6 +7940,38 @@
         "fiberG": 0.4
       },
       "note": "« Frais » désigne le jus pressé, donc la forme maison (9,1 kcal), pas 2031 « pur jus » qui est le jus conditionné."
+    },
+    {
+      "canonical_name": "Kecap manis",
+      "canonical_name_normalized": "kecap manis",
+      "category": "produits_sucres",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "31067",
+      "source_name": "Mélasse de canne",
+      "state": {
+        "concept": "Kecap manis",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.3
+      },
+      "per100g": {
+        "kcal": 299.7,
+        "proteinG": 0,
+        "carbsG": 74.7,
+        "fatG": 0.1,
+        "fiberG": 0
+      },
+      "note": "Proxy assumé : les quatre grandeurs viennent d'un autre aliment. Le kecap manis est une sauce soja au sucre de palme, ~270 kcal, ~63 g de glucides, ~3 g de protéines pour 100 g. Son entrée littérale au classeur, 11216 « Sauce soja sucrée, préemballée », est inexploitable : ni énergie ni glucides, deux valeurs manquantes, la fermeture d'Atwater n'en comble qu'une. 11104 « Sauce soja » (45,5 kcal) serait six fois trop clair. Retenu 31067 « Mélasse de canne », même nature de sirop de sucre foncé, quatre grandeurs complètes. Écart et sens : 299,7 kcal contre ~270 (+11 %), 74,7 g de glucides contre ~63 (+19 %), et 0 g de protéines là où le kecap manis en porte ~3 (sous-estimation). Même arbitrage que « mélasse de grenade ». Densité 1,30 : sirop à ~63 g de sucres pour 100 g, la table sucrose donne 1,31 à 63 % en masse. Contrôle : REAL-254, 80 ml → 104 g → 312 kcal."
     },
     {
       "canonical_name": "Kimchi de chou fermenté mûr",
@@ -7669,6 +8098,41 @@
         "fiberG": 0
       },
       "note": null
+    },
+    {
+      "canonical_name": "Lait évaporé",
+      "canonical_name_normalized": "lait evapore",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "fiber_g"
+      ],
+      "source_record_key": "19026",
+      "source_name": "Lait concentré non sucré, entier",
+      "state": {
+        "concept": "Lait évaporé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.06
+      },
+      "per100g": {
+        "kcal": 123,
+        "proteinG": 6.31,
+        "carbsG": 9.91,
+        "fatG": 5.9,
+        "fiberG": 3
+      },
+      "note": "Même aliment : « lait évaporé » est le nom commercial du lait concentré non sucré. 19026 « Lait concentré non sucré, entier » : 123 kcal, 6,31 g de protéines, 9,91 g de glucides, 5,9 g de lipides. Densité 1,06 et non 1,03 : le lait est concentré à ~25 % de matière sèche contre 12,5 % pour un lait ordinaire ; la portion USDA de référence, 1 cup (236,6 ml) = 252 g, donne 1,065. Contrôle : REAL-283, 500 ml → 530 g → 652 kcal, cohérent avec une boîte et demie de lait concentré dans une sauce."
     },
     {
       "canonical_name": "Laitue fraîche",
@@ -8204,7 +8668,9 @@
       "units_used": [
         "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.33
+      },
       "per100g": {
         "kcal": 299.7,
         "proteinG": 0,
@@ -8333,6 +8799,38 @@
         "fiberG": 0
       },
       "note": null
+    },
+    {
+      "canonical_name": "Mirin",
+      "canonical_name_normalized": "mirin",
+      "category": "boissons",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "1015",
+      "source_name": "Marsala",
+      "state": {
+        "concept": "Mirin",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.15
+      },
+      "per100g": {
+        "kcal": 211,
+        "proteinG": 0.1,
+        "carbsG": 27.9,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Proxy assumé. Ni Ciqual ni USDA SR Legacy ne référencent le mirin. Retenu 1015 « Marsala » : vin de dessert fortifié, même emploi culinaire (glaçage sucré-alcoolisé), quatre grandeurs complètes et mesurées par l'ANSES. Écart et sens : 211 kcal contre ~241 kcal pour le hon-mirin (−12 %), et surtout 27,9 g de glucides contre ~43 g (−35 %) — le marsala porte en alcool ce que le mirin porte en sucre, d'où une énergie proche mais une répartition différente. Écartés : 1006 « Vin doux » (42,8 kcal, facteur 5,6 en dessous), 1003 « Liqueur » (328 kcal, +36 %), 11216 « Sauce soja sucrée » (ni énergie ni glucides au classeur, inexploitable). Densité 1,15 : table japonaise 1 tasse (200 ml) de mirin = 230 g ; cohérent avec ~43 g de sucres (solution sucrée seule ≈ 1,19) abaissés par ~10 g d'éthanol. Contrôle : REAL-223, 120 ml → 138 g → 291 kcal pour un warishita de sukiyaki familial."
     },
     {
       "canonical_name": "Morcilla asturienne",
@@ -8695,7 +9193,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 50
+      },
       "per100g": {
         "kcal": 134,
         "proteinG": 13.5,
@@ -8703,7 +9203,7 @@
         "fatG": 8.62,
         "fiberG": 0
       },
-      "note": null
+      "note": "Libellé exact du classeur (22010 « Oeuf, dur », 134 kcal, macros complètes) : même aliment, même état. Conversion : 1 œuf calibre M ÉCALÉ = 50 g, car 22010 mesure l'œuf sans coquille (norme européenne : 53-63 g en coquille, dont ~11 % de coquille). Contrôle : 8 u dans le thịt kho trứng = 400 g → 536 kcal pour 6 parts, soit 89 kcal d'œuf par personne ; 4 u dans la causa = 200 g → 268 kcal pour 8 parts."
     },
     {
       "canonical_name": "Œuf mariné ajitama",
@@ -8725,7 +9225,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 50
+      },
       "per100g": {
         "kcal": 134,
         "proteinG": 13.5,
@@ -8733,7 +9235,7 @@
         "fatG": 8.62,
         "fiberG": 0
       },
-      "note": "L'ajitama est un œuf mollet écalé puis mariné dans un mélange soja-mirin ; l'apport de la marinade absorbée est marginal. Ciqual n'a pas d'œuf mollet, et l'écart entre 22010 (134 kcal) et 22014 « à la coque » (142 kcal) est négligeable. Unité u cohérente avec un œuf entier."
+      "note": "L'ajitama est un œuf mollet écalé puis mariné dans un mélange soja-mirin ; l'apport de la marinade absorbée est marginal. Ciqual n'a pas d'œuf mollet, et l'écart entre 22010 (134 kcal) et 22014 « à la coque » (142 kcal) est négligeable. Unité u cohérente avec un œuf entier. Conversion : 1 œuf calibre M écalé = 50 g (53-63 g en coquille) ; 22010 mesure l'œuf sans coquille. Contrôle : 6 u dans le shoyu ramen = 300 g → 402 kcal, soit un œuf et 67 kcal par bol."
     },
     {
       "canonical_name": "Oignon blanc cru",
@@ -8924,8 +9426,11 @@
       "category": "condiments_sauces",
       "confidence": "B",
       "source": "ciqual_2020",
-      "source_record_key": "13186",
-      "source_name": "Olive noire (aliment moyen)",
+      "bounded_from_ciqual": [
+        "carbohydrate_g"
+      ],
+      "source_record_key": "13032",
+      "source_name": "Olive noire, en saumure, égouttée",
       "state": {
         "concept": "Olive noire",
         "rest": "",
@@ -8940,13 +9445,13 @@
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 181.7,
-        "proteinG": 1.49,
-        "carbsG": 0.05,
-        "fatG": 19.5,
-        "fiberG": 6.97
+        "kcal": 160.7,
+        "proteinG": 1.38,
+        "carbsG": 0.1,
+        "fatG": 17.2,
+        "fiberG": 6.2
       },
-      "note": "13032 « Olive noire, en saumure, égouttée » est plus spécifique mais ses glucides sont au statut « inférieur à » (< 0,1) sans valeur mesurée, donc absents : il aurait été refusé. L'aliment moyen est complet et couvre le même concept."
+      "note": "13032 « Olive noire, en saumure, égouttée » décrit exactement ce que les recettes emploient, et ses glucides au statut « inférieur à 0,1 g » sont désormais lus. 160,7 kcal contre 181,7 pour 13186 « Olive noire (aliment moyen) », qui moyennait des préparations plus grasses."
     },
     {
       "canonical_name": "Olive noire dénoyautée",
@@ -9021,10 +9526,13 @@
       "canonical_name": "Orange fraîche",
       "canonical_name_normalized": "orange fraiche",
       "category": "fruits",
-      "confidence": "C",
+      "confidence": "B",
       "source": "ciqual_2020",
-      "source_record_key": "13614",
-      "source_name": "Pamplemousse chinois, pulpe, cru",
+      "bounded_from_ciqual": [
+        "fat_g"
+      ],
+      "source_record_key": "13034",
+      "source_name": "Orange, pulpe, crue",
       "state": {
         "concept": "Orange fraîche",
         "rest": "",
@@ -9039,13 +9547,13 @@
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 37.9,
-        "proteinG": 0.76,
-        "carbsG": 8.62,
-        "fatG": 0.04,
-        "fiberG": 1
+        "kcal": 45.5,
+        "proteinG": 0.75,
+        "carbsG": 8.03,
+        "fatG": 0.5,
+        "fiberG": 2.7
       },
-      "note": "Piège du score : les cinq candidats étaient des jus et nectars, pas un fruit. Le code exact serait 13034 « Orange, pulpe, crue » (45,5 kcal) mais ses lipides sont au statut « inférieur à » (< 0,5) sans valeur mesurée, donc absents — il aurait été refusé et la recette serait restée bloquée ; les deux autres oranges (13431, 13432, Martinique) manquent énergie et glucides. Application de la consigne « préférer un code voisin complet à un code exact incomplet » : le pomelo est une pulpe d'agrume crue complète, au profil très proche (protéines 0,76 contre 0,75 ; glucides 8,62 contre 8,03), énergie inférieure de 17%. Préféré à 2070 « Jus d'orange, pur jus » qui reproduirait l'énergie à l'identique mais conflictuerait avec le canonique évident du jus d'orange et supprimerait les fibres, alors que l'unité u désigne un fruit entier."
+      "note": "13034 « Orange, pulpe, crue » (45,5 kcal) est le code exact ; ses lipides sont au statut « inférieur à 0,5 g », désormais lus. Remplace 13614 « Pamplemousse chinois, pulpe, cru » (37,9 kcal), retenu par défaut : le pomelo n'est pas une orange, et l'écart de 17 % sur l'énergie s'ajoutait à une fausse identité."
     },
     {
       "canonical_name": "Origan mexicain séché",
@@ -9507,10 +10015,13 @@
       "canonical_name": "Papaye verte",
       "canonical_name_normalized": "papaye verte",
       "category": "fruits",
-      "confidence": "C",
+      "confidence": "B",
       "source": "ciqual_2020",
-      "source_record_key": "13061",
-      "source_name": "Feijoa, pulpe, crue",
+      "bounded_from_ciqual": [
+        "fat_g"
+      ],
+      "source_record_key": "13035",
+      "source_name": "Papaye, pulpe, crue",
       "state": {
         "concept": "Papaye verte",
         "rest": "",
@@ -9525,13 +10036,13 @@
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 39.4,
-        "proteinG": 0.71,
-        "carbsG": 8.2,
-        "fatG": 0.42,
-        "fiberG": 6.4
+        "kcal": 42.2,
+        "proteinG": 0.75,
+        "carbsG": 8.53,
+        "fatG": 0.3,
+        "fiberG": 1.8
       },
-      "note": "Aucune papaye verte dans Ciqual, et les quatre codes de papaye sont tous inexploitables : 13035 et 13202 ont des lipides au statut « inférieur à » sans valeur mesurée, 20829 et 20830 (Martinique) manquent énergie et glucides. Seul 2045 « Nectar de papaye » est complet, mais c'est une boisson sucrée (13,9 g de glucides) incompatible avec une unité en grammes. Application de la consigne sur le code voisin complet : la papaye verte crue de la salade som tam pèse ~39 kcal, 0,6 g de protéines, 9 g de glucides, quasi superposables au feijoa (39,4 / 0,71 / 8,2), autre fruit subtropical cru. Aliment différent, macros représentatives et complètes."
+      "note": "La papaye verte est la papaye non mûre : même fruit, cueilli plus tôt, employé en légume. 13035 « Papaye, pulpe, crue » (42,2 kcal, 8,53 g de glucides) est redevenu employable — ses lipides sont bornés à 0,3 g. Réserve : le fruit vert est plus ferme et moins sucré, ses glucides réels sont un peu plus bas. Remplace 13061 « Feijoa, pulpe, crue », qui est un autre fruit d'un autre genre botanique."
     },
     {
       "canonical_name": "Paprika doux",
@@ -10267,7 +10778,9 @@
         "g",
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 0.1
+      },
       "per100g": {
         "kcal": 348,
         "proteinG": 6.09,
@@ -10275,7 +10788,7 @@
         "fatG": 8.69,
         "fiberG": 21.6
       },
-      "note": "Code ABSENT des cinq candidats. En français « quatre-épices » est le nom courant de Pimenta dioica, c'est-à-dire le piment/poivre de la Jamaïque (allspice) — et non un mélange : les macros de 11056 (P 6,09 / L 8,69) reproduisent exactement celles de l'allspice moulu de référence. Seul écart : baies entières vs moulues, sans conséquence nutritionnelle. Aucun des cinq candidats proposés ne convenait (piment frais, cayenne, blé en grains, céréales soufflées)."
+      "note": "Code ABSENT des cinq candidats. En français « quatre-épices » est le nom courant de Pimenta dioica, c'est-à-dire le piment/poivre de la Jamaïque (allspice) — et non un mélange : les macros de 11056 (P 6,09 / L 8,69) reproduisent exactement celles de l'allspice moulu de référence. Seul écart : baies entières vs moulues, sans conséquence nutritionnelle. Aucun des cinq candidats proposés ne convenait (piment frais, cayenne, blé en grains, céréales soufflées). Conversion : 1 baie entière de Pimenta dioica = 0,1 g (≈ 100 baies pour 10 g). Contrôle : 6 u dans le barszcz = 0,6 g → 2 kcal ; cohérent avec les 12 g pesés de la marinade du jerk chicken, soit environ 120 baies."
     },
     {
       "canonical_name": "Piment de la Jamaïque moulu",
@@ -10420,7 +10933,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 15
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -10428,7 +10943,7 @@
         "fatG": 0.32,
         "fiberG": 1.65
       },
-      "note": "Piège écarté : le candidat 2023 « Jus de mangue, frais » n'a aucun rapport. Frais ≡ cru pour ce légume. Seule autre entrée piment du classeur : 11088 « Poivre de Cayenne » (épice séchée, 376 kcal), inadaptée à un piment employé à l'unité."
+      "note": "Piège écarté : le candidat 2023 « Jus de mangue, frais » n'a aucun rapport. Frais ≡ cru pour ce légume. Seule autre entrée piment du classeur : 11088 « Poivre de Cayenne » (épice séchée, 376 kcal), inadaptée à un piment employé à l'unité. Conversion : 1 piment frais moyen = 15 g, piment entier cru, ce que mesure 20151. Contrôle : 2 u dans l'Egusi soup = 30 g → 12 kcal ; l'écart entre variétés (5 à 20 g) reste sous 4 kcal par recette."
     },
     {
       "canonical_name": "Piment guajillo séché",
@@ -10461,6 +10976,70 @@
       "note": "Proxy assumé, même raisonnement que l'ancho : piment doux à moyennement doux, séché, réhydraté pour les sauces. Le Ciqual n'offre aucune granularité variétale sur les piments séchés ; le paprika (piment rouge doux séché, 319 kcal) est l'état correct et le bon niveau de piquant, contre 41,2 kcal pour le piment cru et 376 kcal pour le Cayenne."
     },
     {
+      "canonical_name": "Piment habanero",
+      "canonical_name_normalized": "piment habanero",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20151",
+      "source_name": "Piment, cru",
+      "state": {
+        "concept": "Piment habanero",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 8
+      },
+      "per100g": {
+        "kcal": 41.2,
+        "proteinG": 1.87,
+        "carbsG": 7.7,
+        "fatG": 0.32,
+        "fiberG": 1.65
+      },
+      "note": "Même concept culinaire que « piment frais », « piment scotch bonnet » et « piment serrano », tous réunis sur 20151 « Piment, cru » (41,2 kcal) : Ciqual ne distingue aucune variété de piment frais, et réduire la variété à son espèce est une divergence sans effet sur les quatre grandeurs. 11088 « Poivre de Cayenne » (376 kcal, épice séchée) serait une erreur d'état, facteur 9. Conversion : 1 habanero = 8 g (piment court et charnu). Contrôle : 2 u dans la cochinita pibil = 16 g → 7 kcal pour 10 parts, servi à part en pickle."
+    },
+    {
+      "canonical_name": "Piment jalapeño frais",
+      "canonical_name_normalized": "piment jalapeno frais",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20151",
+      "source_name": "Piment, cru",
+      "state": {
+        "concept": "Piment jalapeño frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 15
+      },
+      "per100g": {
+        "kcal": 41.2,
+        "proteinG": 1.87,
+        "carbsG": 7.7,
+        "fatG": 0.32,
+        "fiberG": 1.65
+      },
+      "note": "Même concept culinaire que « piment frais » et les autres variétés déjà réunies sur 20151 « Piment, cru » : réduction de la variété à l'espèce, sans effet sur les quatre grandeurs. USDA 168576 « Peppers, jalapeno, raw » (29 kcal) existe mais ne doit pas remplacer une valeur française existante. Conversion : 1 jalapeño = 15 g. Contrôle : 2 u dans les esquites = 30 g → 12 kcal pour 6 parts."
+    },
+    {
       "canonical_name": "Piment oiseau frais",
       "canonical_name_normalized": "piment oiseau frais",
       "category": "legumes",
@@ -10480,7 +11059,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 1
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -10488,7 +11069,7 @@
         "fatG": 0.32,
         "fiberG": 1.65
       },
-      "note": "Piment fort frais d'une variété particulière ; Ciqual n'a qu'une seule entrée générique de piment frais. Cohérent avec l'arbitrage du lot précédent (« piment frais » et « piment vert frais » sur 20151) : même concept culinaire, même canonique. Unité « u » cohérente avec un légume frais."
+      "note": "Piment fort frais d'une variété particulière ; Ciqual n'a qu'une seule entrée générique de piment frais. Cohérent avec l'arbitrage du lot précédent (« piment frais » et « piment vert frais » sur 20151) : même concept culinaire, même canonique. Unité « u » cohérente avec un légume frais. Conversion : 1 piment oiseau = 1 g (piment minuscule, 2 à 4 cm). Contrôle : 6 u dans le pad kra pao = 6 g → 2,5 kcal ; retenir 15 g comme pour un jalapeño aurait multiplié la masse par quinze."
     },
     {
       "canonical_name": "Piment pasilla séché",
@@ -10541,7 +11122,9 @@
         "g",
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 15
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -10549,7 +11132,7 @@
         "fatG": 0.32,
         "fiberG": 1.65
       },
-      "note": "Même concept que « piment frais » déjà arbitré sur 20151 ; la couleur ne crée pas un ingrédient canonique distinct. Attention aux faux candidats à score élevé : 9109 « Riz rouge, cru », 5214 « Vin rouge », 20525 « Haricot rouge, sec »."
+      "note": "Même concept que « piment frais » déjà arbitré sur 20151 ; la couleur ne crée pas un ingrédient canonique distinct. Attention aux faux candidats à score élevé : 9109 « Riz rouge, cru », 5214 « Vin rouge », 20525 « Haricot rouge, sec ». Conversion : 1 piment rouge frais = 15 g (piment entier cru, ce que mesure 20151). Contrôle : 2 u dans le san bei ji = 30 g → 12 kcal ; cohérent avec les 80 g pesés du rendang, soit environ cinq piments."
     },
     {
       "canonical_name": "Piment rouge séché",
@@ -10601,7 +11184,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 10
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -10609,7 +11194,7 @@
         "fatG": 0.32,
         "fiberG": 1.65
       },
-      "note": "Piment frais entier, employé à l'unité : le Ciqual ne distingue aucune variété, 20151 est le piment frais générique (41,2 kcal, complet). Cohérent avec l'arbitrage précédent qui a réuni « piment frais » et « piment vert frais » sur ce code. 11088 (Cayenne séché) serait un mauvais état."
+      "note": "Piment frais entier, employé à l'unité : le Ciqual ne distingue aucune variété, 20151 est le piment frais générique (41,2 kcal, complet). Cohérent avec l'arbitrage précédent qui a réuni « piment frais » et « piment vert frais » sur ce code. 11088 (Cayenne séché) serait un mauvais état. Conversion : 1 scotch bonnet = 10 g (piment court et charnu, plus petit qu'un jalapeño). Contrôle : 5 u dans le jerk chicken = 50 g → 21 kcal."
     },
     {
       "canonical_name": "Piment séché",
@@ -10661,7 +11246,9 @@
       "units_used": [
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 7
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -10669,7 +11256,7 @@
         "fatG": 0.32,
         "fiberG": 1.65
       },
-      "note": "Variété de piment fort frais ; Ciqual n'a pas d'entrée par variété. Le candidat 28845 « Jambon sec Serrano » (score 0,46) est un piège textuel pur — charcuterie, aucun rapport."
+      "note": "Variété de piment fort frais ; Ciqual n'a pas d'entrée par variété. Le candidat 28845 « Jambon sec Serrano » (score 0,46) est un piège textuel pur — charcuterie, aucun rapport. Conversion : 1 serrano = 7 g (variété fine et courte, plus petite que le jalapeño). Contrôle : 3 u dans les enchiladas verdes = 21 g → 9 kcal."
     },
     {
       "canonical_name": "Piment vert doux frais",
@@ -10725,7 +11312,9 @@
         "g",
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 15
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -10733,7 +11322,7 @@
         "fatG": 0.32,
         "fiberG": 1.65
       },
-      "note": "Pièges écartés : 20061 haricot vert, 20069 chou vert et 2031 jus de citron vert, rapprochés par le seul mot « vert ». Ciqual ne distingue pas les piments par couleur ; le piment vert est une variante du canonique « piment frais », qui reçoit donc le même code — même concept culinaire, pas deux."
+      "note": "Pièges écartés : 20061 haricot vert, 20069 chou vert et 2031 jus de citron vert, rapprochés par le seul mot « vert ». Ciqual ne distingue pas les piments par couleur ; le piment vert est une variante du canonique « piment frais », qui reçoit donc le même code — même concept culinaire, pas deux. Conversion : 1 piment vert frais = 15 g (piment entier cru, ce que mesure 20151). Contrôle : 4 u dans le vada pav = 60 g → 25 kcal ; cohérent avec les 150 g pesés du tibs, soit une dizaine de piments."
     },
     {
       "canonical_name": "Poire asiatique fraîche",
@@ -12481,6 +13070,70 @@
       "note": null
     },
     {
+      "canonical_name": "Saké",
+      "canonical_name_normalized": "sake",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "1026",
+      "source_name": "Saké ou Alcool de riz",
+      "state": {
+        "concept": "Saké",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.99
+      },
+      "per100g": {
+        "kcal": 133,
+        "proteinG": 0,
+        "carbsG": 5,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Même aliment, libellé du classeur : 1026 « Saké ou Alcool de riz ». Densité 0,99 : ~15 %vol, l'éthanol allège légèrement le mélange sous 1,00. Contrôle : REAL-223, 100 ml → 99 g → 132 kcal dans un warishita."
+    },
+    {
+      "canonical_name": "Saké de cuisine",
+      "canonical_name_normalized": "sake de cuisine",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "1026",
+      "source_name": "Saké ou Alcool de riz",
+      "state": {
+        "concept": "Saké de cuisine",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.99
+      },
+      "per100g": {
+        "kcal": 133,
+        "proteinG": 0,
+        "carbsG": 5,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Même aliment, préparation légèrement différente : le ryôrishu est du saké additionné de ~2 % de sel pour échapper à la fiscalité des boissons. Divergence portant uniquement sur le sel, donc B. 1026 « Saké ou Alcool de riz » : 133 kcal, 5 g de glucides, 16,1 g d'alcool, quatre grandeurs complètes. Densité 0,99 : boisson à ~15 %vol, mélange eau-éthanol un peu plus léger que l'eau. Contrôle : REAL-220, 50 ml → 49,5 g → 66 kcal dans une marinade."
+    },
+    {
       "canonical_name": "Salsa roja",
       "canonical_name_normalized": "salsa roja",
       "category": "legumes",
@@ -12634,6 +13287,38 @@
       "note": "PROXY ASSUMÉ. La sauce hoisin est absente de Ciqual 2020. Le plus proche conceptuellement serait 11216 « Sauce soja sucrée, préemballée », mais son énergie ET ses glucides manquent : elle serait refusée par l'applicateur. 11100 est une sauce condimentaire épaisse à dominante sucrée, macros complètes (136 kcal / 0,56 P / 30,3 G / 0,6 L), profil (glucides majoritaires, très peu de lipides) représentatif du hoisin ; l'énergie reste sous-estimée (~220 kcal réels pour le hoisin). Retenue plutôt que 11301 « teriyaki » (88,8 kcal, 16 g de glucides), plus éloignée encore en densité. Les cinq candidats proposés étaient tous faux : sauces crémeuses, poisson en sauce surgelé, quenelle en sauce."
     },
     {
+      "canonical_name": "Sauce huître",
+      "canonical_name_normalized": "sauce huitre",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "174529",
+      "source_name": "Sauce, oyster, ready-to-serve",
+      "state": {
+        "concept": "Sauce huître",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.2
+      },
+      "per100g": {
+        "kcal": 51,
+        "proteinG": 1.35,
+        "carbsG": 10.9,
+        "fatG": 0.25,
+        "fiberG": 0.3
+      },
+      "note": "Recours à USDA parce que le classeur ne connaît l'huître que comme mollusque cru (10011, 10035, 10036) et n'a aucune sauce d'huître ; prendre l'huître crue à 67 kcal pour un condiment liquide serait une faute d'aliment. USDA 174529 référence exactement la sauce d'huître prête à l'emploi : 51 kcal, 1,35 g de protéines, 10,9 g de glucides, 0,25 g de lipides. Densité 1,20 : saumure sucrée très chargée, du même ordre que la sauce poisson. Contrôle : REAL-252, 40 ml → 48 g → 25 kcal."
+    },
+    {
       "canonical_name": "Sauce poisson",
       "canonical_name_normalized": "sauce poisson",
       "category": "condiments_sauces",
@@ -12653,7 +13338,9 @@
       "units_used": [
         "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.2
+      },
       "per100g": {
         "kcal": 81.2,
         "proteinG": 9.3,
@@ -12662,6 +13349,70 @@
         "fiberG": 0.2
       },
       "note": "Piège avéré écarté : les quatre premiers candidats (26054 « Poisson en sauce, surgelé », 8932 quenelle, 25142 et 25146) sont des plats de poisson. Le bon code est le cinquième, un condiment liquide employé en ml."
+    },
+    {
+      "canonical_name": "Sauce soja",
+      "canonical_name_normalized": "sauce soja",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11104",
+      "source_name": "Sauce soja, préemballée",
+      "state": {
+        "concept": "Sauce soja",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
+      "per100g": {
+        "kcal": 45.5,
+        "proteinG": 7.08,
+        "carbsG": 3.64,
+        "fatG": 0.1,
+        "fiberG": 0.86
+      },
+      "note": "Même aliment, libellé du classeur : 11104 « Sauce soja, préemballée ». C'est le canonique de tout le concept « sauce soja » du corpus. Densité 1,18 : la composition Ciqual donne ~29 g de solutés pour 100 g (18,6 g de sel, 7,08 g de protéines, 3,64 g de glucides), et la table de mesure japonaise pose 15 ml de shoyu = 18 g, soit 1,20 ; 1,18 est le milieu de la fourchette 1,15-1,20 annoncée pour une saumure de ce chargement. Contrôle : REAL-288, 50 ml → 59 g → 27 kcal et 4,2 g de protéines dans une marinade."
+    },
+    {
+      "canonical_name": "Sauce soja claire",
+      "canonical_name_normalized": "sauce soja claire",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11104",
+      "source_name": "Sauce soja, préemballée",
+      "state": {
+        "concept": "Sauce soja claire",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
+      "per100g": {
+        "kcal": 45.5,
+        "proteinG": 7.08,
+        "carbsG": 3.64,
+        "fatG": 0.1,
+        "fiberG": 0.86
+      },
+      "note": "Même concept canonique que « sauce soja légère », « japonaise », « coréenne » et « foncée » : la sauce soja claire est la sauce soja de référence, le classeur ne distingue ni la couleur ni l'origine. 11216 « Sauce soja sucrée » écartée : produit sucré distinct, sans énergie ni glucides renseignés. Densité 1,18, milieu de la fourchette 1,15-1,20 d'une saumure à 18,6 g de sel et ~29 g de solutés pour 100 g. Contrôle : REAL-252, 30 ml → 35 g → 16 kcal."
     },
     {
       "canonical_name": "Sauce soja coréenne",
@@ -12683,7 +13434,9 @@
       "units_used": [
         "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
       "per100g": {
         "kcal": 45.5,
         "proteinG": 7.08,
@@ -12713,7 +13466,9 @@
       "units_used": [
         "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
       "per100g": {
         "kcal": 45.5,
         "proteinG": 7.08,
@@ -12743,7 +13498,9 @@
       "units_used": [
         "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
       "per100g": {
         "kcal": 45.5,
         "proteinG": 7.08,
@@ -12773,7 +13530,9 @@
       "units_used": [
         "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
       "per100g": {
         "kcal": 45.5,
         "proteinG": 7.08,
@@ -12782,6 +13541,134 @@
         "fiberG": 0.86
       },
       "note": "Ciqual 2020 ne contient que deux sauces soja : 11104 (salée) et 11216 (sucrée, sans énergie). La sauce soja légère est la sauce soja de référence ; rien ne la distingue nutritionnellement de la forme générique. Concept unique « sauce soja » partagé avec « sauce soja japonaise »."
+    },
+    {
+      "canonical_name": "Sauce soja légère spéciale poisson",
+      "canonical_name_normalized": "sauce soja legere speciale poisson",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11104",
+      "source_name": "Sauce soja, préemballée",
+      "state": {
+        "concept": "Sauce soja légère spéciale poisson",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
+      "per100g": {
+        "kcal": 45.5,
+        "proteinG": 7.08,
+        "carbsG": 3.64,
+        "fatG": 0.1,
+        "fiberG": 0.86
+      },
+      "note": "Même concept canonique que « sauce soja légère » et « sauce soja japonaise » : la sauce à poisson vapeur cantonaise (蒸魚豉油) est une sauce soja claire à peine sucrée. 11104 est la seule sauce soja salée exploitable du classeur ; 11216 « Sauce soja sucrée » n'a ni énergie ni glucides, donc reste inutilisable. Densité 1,18 : la composition Ciqual de 11104 donne ~29 g de solutés pour 100 g (18,6 g de sel, 7,1 g de protéines, 3,6 g de glucides), et la table de mesure japonaise pose 大さじ (15 ml) de shoyu = 18 g, soit 1,20 ; 1,18 est le milieu de la fourchette 1,15-1,20. Contrôle : REAL-205, 50 ml → 59 g → 27 kcal et 4,2 g de protéines."
+    },
+    {
+      "canonical_name": "Sauce soja philippine",
+      "canonical_name_normalized": "sauce soja philippine",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11104",
+      "source_name": "Sauce soja, préemballée",
+      "state": {
+        "concept": "Sauce soja philippine",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
+      "per100g": {
+        "kcal": 45.5,
+        "proteinG": 7.08,
+        "carbsG": 3.64,
+        "fatG": 0.1,
+        "fiberG": 0.86
+      },
+      "note": "Le toyo philippin relève du concept « sauce soja » : sauce claire et salée, que rien ne distingue nutritionnellement de la sauce soja générique, et le classeur n'a pas d'entrée régionale. Même canonique que les autres sauces soja du corpus — application de la règle de la Bible. Densité 1,18, milieu de la fourchette 1,15-1,20 d'une sauce soja. Contrôle : REAL-259, 120 ml → 142 g → 64 kcal et 10 g de protéines dans un adobo."
+    },
+    {
+      "canonical_name": "Sauce Worcestershire",
+      "canonical_name_normalized": "sauce worcestershire",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "171610",
+      "source_name": "Sauce, worcestershire",
+      "state": {
+        "concept": "Sauce Worcestershire",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.09
+      },
+      "per100g": {
+        "kcal": 77,
+        "proteinG": 0,
+        "carbsG": 19.2,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Recours à USDA parce que le classeur français n'a aucune entrée « worcestershire » — vérifié par recherche sur le libellé. USDA 171610 la référence exactement : 77 kcal, 0 g de protéines, 19,2 g de glucides, 0 lipide. Densité 1,09 : solution à ~19 g de sucres pour 100 g (table sucrose à 20 % = 1,081) plus ~2,5 g de sel, soit ~1,09. Contrôle : REAL-301, 40 ml → 44 g → 34 kcal en touche umami."
+    },
+    {
+      "canonical_name": "Sauce yakisoba",
+      "canonical_name_normalized": "sauce yakisoba",
+      "category": "condiments_sauces",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "11100",
+      "source_name": "Sauce barbecue, préemballée",
+      "state": {
+        "concept": "Sauce yakisoba",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.15
+      },
+      "per100g": {
+        "kcal": 136,
+        "proteinG": 0.56,
+        "carbsG": 30.3,
+        "fatG": 0.6,
+        "fiberG": 1.2
+      },
+      "note": "Proxy assumé : les quatre grandeurs viennent d'un autre condiment. Ni Ciqual ni USDA ne référencent la sauce yakisoba, sauce épaisse de la famille des ウスターソース japonaises (fruits et légumes, sucre, vinaigre, épices), étiquetée autour de 135-145 kcal et 30-35 g de glucides pour 100 g. 11100 « Sauce barbecue, préemballée » colle à ±5 % sur les quatre grandeurs (136 kcal, 0,56 g de protéines, 30,3 g de glucides, 0,6 g de lipides) mais reste un autre aliment, à base de tomate. Sens de l'écart : le sel est sous-estimé (1,77 g contre ~5 g réels), divergence qui ne touche pas les quatre grandeurs calculées. Écarté USDA 171610 « Sauce, worcestershire » (77 kcal, 19,2 g de glucides), presque deux fois trop clair pour une sauce yakisoba épaissie. Densité 1,15 : ~30 g de sucres pour 100 g (solution sucrée 30 % = 1,127) plus ~5 g de sel. Contrôle : REAL-224, 160 ml → 184 g → 250 kcal pour un yakisoba familial."
     },
     {
       "canonical_name": "Saucisse chinoise lap cheong",
@@ -12902,6 +13789,38 @@
         "fiberG": 2.64
       },
       "note": null
+    },
+    {
+      "canonical_name": "Saumure légère",
+      "canonical_name_normalized": "saumure legere",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "18066",
+      "source_name": "Eau du robinet",
+      "state": {
+        "concept": "Saumure légère",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 0,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Une saumure légère est de l'eau salée : les quatre grandeurs calculées sont celles de l'eau (0 kcal, 0 protéine, 0 glucide, 0 lipide), la seule divergence porte sur le sel — ce qui reste un B. USDA 173647 n'est cité que pour l'énergie : aucun code eau n'a de ligne dans data/ciqual_nutrition_import.csv, seule colonne d'énergie que lit l'applicateur ; le classeur (18066, 0 kcal) demeure la source. Densité 1,03 : solution de NaCl à ~5 % en masse, 1,034 à 20 °C. Contrôle : REAL-107, 80 ml → 82 g → 0 kcal, la saumure n'apporte que du sel."
     },
     {
       "canonical_name": "Sel fin",
@@ -13354,6 +14273,38 @@
       "note": "Unique entrée tamarin du classeur. La pâte de tamarin en bloc est de la pulpe mûre pressée et dénoyautée : même aliment, mise en forme différente. Tous les candidats proposés étaient des pâtés de viande ou un nem — le score a confondu « pâte » et « pâté »."
     },
     {
+      "canonical_name": "Tare de soja",
+      "canonical_name_normalized": "tare de soja",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "171167",
+      "source_name": "Sauce, teriyaki, ready-to-serve",
+      "state": {
+        "concept": "Tare de soja",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.15
+      },
+      "per100g": {
+        "kcal": 89,
+        "proteinG": 5.93,
+        "carbsG": 15.6,
+        "fatG": 0.02,
+        "fiberG": 0.1
+      },
+      "note": "Même objet sous deux noms : une tare de soja est un mélange sauce soja + mirin + saké + sucre mijoté, c'est exactement la définition de la sauce teriyaki. Recours à USDA parce que le classeur ne référence aucune sauce soja composée : 11104 seule (45,5 kcal) sous-estimerait d'un facteur 2 une tare sucrée, et 11216 « Sauce soja sucrée » n'a ni énergie ni glucides. USDA 171167 donne 89 kcal, 5,93 g de protéines, 15,6 g de glucides, 0,02 g de lipides — cohérent avec une tare non réduite. Sens de l'écart : une tare longuement réduite serait plus concentrée que cette valeur. Densité 1,15 : base sauce soja (1,18) allongée de mirin (1,15) et de saké (0,99) puis resserrée par le sucre. Contrôle : REAL-213, 180 ml → 207 g → 184 kcal et 12 g de protéines."
+    },
+    {
       "canonical_name": "Thon au naturel en conserve, égoutté",
       "canonical_name_normalized": "thon au naturel en conserve egoutte",
       "category": "poissons_fruits_de_mer",
@@ -13623,7 +14574,9 @@
         "g",
         "u"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 120
+      },
       "per100g": {
         "kcal": 19.3,
         "proteinG": 0.86,
@@ -13631,7 +14584,7 @@
         "fatG": 0.26,
         "fiberG": 1.2
       },
-      "note": null
+      "note": "Conversion : 1 tomate moyenne = 120 g ; 20047 mesure la tomate crue entière, sans déchet notable. Contrôle : 12 u dans les tomates farcies = 1440 g → 278 kcal, soit deux tomates par personne pour 6 parts, cohérent avec les 500 à 1200 g pesés des autres recettes."
     },
     {
       "canonical_name": "Tomate râpée",
@@ -13881,6 +14834,38 @@
       "note": null
     },
     {
+      "canonical_name": "Vin blanc sec d Alsace",
+      "canonical_name_normalized": "vin blanc sec d alsace",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "174837",
+      "source_name": "Alcoholic beverage, wine, table, white",
+      "state": {
+        "concept": "Vin blanc sec d Alsace",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.99
+      },
+      "per100g": {
+        "kcal": 82,
+        "proteinG": 0.07,
+        "carbsG": 2.6,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Réduction canonique d'une appellation vers l'espèce : vin blanc sec de table. Recours à USDA parce que la valeur française n'existe pas et que son substitut est démontrablement faux : au classeur, 5215 « Vin blanc (sec) » porte « - » dans les DEUX colonnes d'énergie (vérifié dans le .xls), et les 18,2 kcal de data/ciqual_nutrition_import.csv valent exactement 4 × 0,5 + 4 × 4,04 = 18,16, c'est-à-dire une somme d'Atwater qui ignore les 7,75 g d'alcool que le classeur mesure lui-même — l'alcool seul vaut 54 kcal. Sur les 500 ml de REAL-074 cela ferait 91 kcal au lieu de 406, facteur 4,5. USDA 174837 (82 kcal, 0,07 g de protéines, 2,6 g de glucides, 0 lipide) est cohérent avec les 82,1 kcal que l'ANSES publie, elle, pour le vin rouge 5214. Densité 0,99 : vin à 11-13 %vol, mélange eau-éthanol légèrement plus léger que l'eau. Contrôle : 500 ml → 495 g → 406 kcal pour une cuisson familiale."
+    },
+    {
       "canonical_name": "Vin de riz taïwanais",
       "canonical_name_normalized": "vin de riz taiwanais",
       "category": "boissons",
@@ -13911,6 +14896,38 @@
         "fiberG": 0
       },
       "note": "Même famille et même entrée que le Shaoxing : alcool de riz de cuisine."
+    },
+    {
+      "canonical_name": "Vin rouge de Bourgogne",
+      "canonical_name_normalized": "vin rouge de bourgogne",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "5214",
+      "source_name": "Vin rouge",
+      "state": {
+        "concept": "Vin rouge de Bourgogne",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.99
+      },
+      "per100g": {
+        "kcal": 82.1,
+        "proteinG": 0.07,
+        "carbsG": 2.63,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Réduction canonique d'une appellation vers l'espèce : 5214 « Vin rouge ». Énergie mesurée par l'ANSES et vérifiée par identité (4 × 2,63 g de glucides + 7 × 10,2 g d'alcool = 81,9 ≈ 82,1 kcal annoncées), les quatre grandeurs sont complètes. Densité 0,99 : vin à ~12,5 %vol. Contrôle : REAL-086, 750 ml → 742 g → 610 kcal pour la bouteille entière d'un bœuf bourguignon familial ; le corpus ne modélise pas l'évaporation de l'alcool à la cuisson, ce qui vaut pour tous les vins du corpus."
     },
     {
       "canonical_name": "Vin rouge sec",
@@ -14009,6 +15026,38 @@
       "note": "Le « Vinaigre » générique du Ciqual est le vinaigre d'alcool blanc : même produit. 22,6 kcal, P 0,04 / G 0,62 / L 0,1, complet. Les candidats 9100 (riz blanc cru) et 1018 (Kir) sont des accrochages sur « blanc », 11040 et 11055 des condiments conservés au vinaigre."
     },
     {
+      "canonical_name": "Vinaigre de canne",
+      "canonical_name_normalized": "vinaigre de canne",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11018",
+      "source_name": "Vinaigre",
+      "state": {
+        "concept": "Vinaigre de canne",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.01
+      },
+      "per100g": {
+        "kcal": 22.6,
+        "proteinG": 0.04,
+        "carbsG": 0.62,
+        "fatG": 0.1,
+        "fiberG": 0
+      },
+      "note": "Réduction vers l'espèce : 11018 « Vinaigre », 22,6 kcal mesurées par l'ANSES et présentes dans le classeur. Le vinaigre de canne (sukang maasim) est un vinaigre à ~4-5 % d'acide comme les autres, indiscernable sur les quatre grandeurs. Écarté 11090 « Vinaigre de cidre » : son énergie est absente du classeur et les 3,7 kcal du CSV ne sont qu'un 4 × 0,93 qui ignore l'acide acétique, six fois sous la valeur ANSES d'un vinaigre. Densité 1,01 : 5 g d'acide acétique (d = 1,049) dans 100 ml d'eau → 1,006. Contrôle : REAL-259, 180 ml → 182 g → 41 kcal."
+    },
+    {
       "canonical_name": "Vinaigre de cidre",
       "canonical_name_normalized": "vinaigre de cidre",
       "category": "condiments_sauces",
@@ -14039,6 +15088,70 @@
         "fiberG": 0
       },
       "note": null
+    },
+    {
+      "canonical_name": "Vinaigre de malt",
+      "canonical_name_normalized": "vinaigre de malt",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11018",
+      "source_name": "Vinaigre",
+      "state": {
+        "concept": "Vinaigre de malt",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.01
+      },
+      "per100g": {
+        "kcal": 22.6,
+        "proteinG": 0.04,
+        "carbsG": 0.62,
+        "fatG": 0.1,
+        "fiberG": 0
+      },
+      "note": "Réduction vers l'espèce : 11018 « Vinaigre », 22,6 kcal mesurées par l'ANSES. Le vinaigre de malt est un vinaigre d'orge à ~5 % d'acide ; ses ~0,4 g de glucides résiduels le placent dans le même ordre de grandeur que le vinaigre générique (0,62 g), sans conséquence sur les quatre grandeurs. Écarté 11090 « Vinaigre de cidre » : énergie absente du classeur, et le 3,7 kcal du CSV n'est qu'une somme d'Atwater sans l'acide acétique. Densité 1,01 : 5 g d'acide acétique (d = 1,049) dans 100 ml d'eau → 1,006, un vinaigre est un peu plus dense que l'eau. Contrôle : REAL-302, 100 ml → 101 g → 23 kcal servi à table sur un fish and chips."
+    },
+    {
+      "canonical_name": "Vinaigre de palmier ou cidre",
+      "canonical_name_normalized": "vinaigre de palmier ou cidre",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11018",
+      "source_name": "Vinaigre",
+      "state": {
+        "concept": "Vinaigre de palmier ou cidre",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.01
+      },
+      "per100g": {
+        "kcal": 22.6,
+        "proteinG": 0.04,
+        "carbsG": 0.62,
+        "fatG": 0.1,
+        "fiberG": 0
+      },
+      "note": "Réduction vers l'espèce : 11018 « Vinaigre », 22,6 kcal réellement mesurées par l'ANSES (valeur présente dans le classeur, pas reconstruite). Écarté 11090 « Vinaigre de cidre », pourtant plus proche du libellé : son énergie est « - » au classeur et les 3,7 kcal du CSV valent exactement 4 × 0,93, une somme d'Atwater qui oublie l'acide acétique — facteur 6 sous les ~21-22 kcal que donnent aussi bien l'ANSES (11018, 11220) qu'USDA pour un vinaigre. Vinaigre de palme et vinaigre de cidre sont deux vinaigres de fruit à ~5 % d'acide, indiscernables sur les quatre grandeurs. Densité 1,01 : 5 g d'acide acétique (d = 1,049) pour 100 ml d'eau → 1,006 ; un vinaigre est légèrement PLUS dense que l'eau, pas moins. Contrôle : REAL-187, 120 ml → 121 g → 27 kcal dans une marinade d'adobo."
     },
     {
       "canonical_name": "Vinaigre de riz",
@@ -14239,6 +15352,38 @@
         "fiberG": 3
       },
       "note": null
+    },
+    {
+      "canonical_name": "Zakwas de betterave fermenté",
+      "canonical_name_normalized": "zakwas de betterave fermente",
+      "category": "boissons",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "2075",
+      "source_name": "Jus de légumes, pur jus (aliment moyen)",
+      "state": {
+        "concept": "Zakwas de betterave fermenté",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.02
+      },
+      "per100g": {
+        "kcal": 21.7,
+        "proteinG": 0.72,
+        "carbsG": 4.66,
+        "fatG": 0.13,
+        "fiberG": 0.37
+      },
+      "note": "Proxy assumé : les quatre grandeurs viennent d'un autre aliment. Le zakwas buraczany est un jus de betterave lacto-fermenté puis filtré, absent de Ciqual comme d'USDA ; les étiquettes du commerce donnent ~22 kcal, ~4,5 g de glucides et ~0,6 g de protéines pour 100 ml. 2075 « Jus de légumes, pur jus (aliment moyen) » (21,7 / 0,72 / 4,66 / 0,13) colle à ±10 % sur les quatre grandeurs, mais c'est une moyenne de jus de légumes, pas une betterave fermentée. Écarté 20091 « Betterave rouge, crue » (45,5 kcal, 9,1 g de glucides) : c'est le légume entier, deux fois trop chargé pour un liquide filtré. Densité 1,02 : liquide à ~5 g de solutés pour 100 ml, à peine au-dessus de l'eau. Contrôle : REAL-299, 400 ml → 408 g → 89 kcal dans un barszcz."
     },
     {
       "canonical_name": "Zeste de citron",

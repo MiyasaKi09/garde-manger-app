@@ -10,7 +10,7 @@
     "recettes_actuelles": 309,
     "cible_recettes": 3000,
     "reste_a_ecrire": 2691,
-    "formes_employables": 380,
+    "formes_employables": 413,
     "formes_bloquees": 83
   },
   "formes_employables": [
@@ -215,9 +215,14 @@
         "service"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 120
+      },
       "per100g": {
         "kcal": 19.3,
         "proteinG": 0.86,
@@ -606,9 +611,12 @@
         "sauce"
       ],
       "unites": [
-        "g"
+        "g",
+        "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
       "per100g": {
         "kcal": 45.5,
         "proteinG": 7.08,
@@ -752,9 +760,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 15
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -931,9 +944,12 @@
         "marinade_et_sauce"
       ],
       "unites": [
-        "g"
+        "g",
+        "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.2
+      },
       "per100g": {
         "kcal": 81.2,
         "proteinG": 9.3,
@@ -1035,9 +1051,14 @@
         "légume"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 250
+      },
       "per100g": {
         "kcal": 15.3,
         "proteinG": 1.12,
@@ -1129,9 +1150,14 @@
         "garniture"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 50
+      },
       "per100g": {
         "kcal": 134,
         "proteinG": 13.5,
@@ -1378,9 +1404,12 @@
         "warishita"
       ],
       "unites": [
-        "g"
+        "g",
+        "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
       "per100g": {
         "kcal": 45.5,
         "proteinG": 7.08,
@@ -1553,9 +1582,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 4
+      },
       "per100g": {
         "kcal": 243,
         "proteinG": 3.87,
@@ -2058,9 +2092,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 15
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -2509,9 +2548,14 @@
         "garniture"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 140
+      },
       "per100g": {
         "kcal": 205,
         "proteinG": 1.56,
@@ -2582,9 +2626,14 @@
         "service"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 35
+      },
       "per100g": {
         "kcal": 40.2,
         "proteinG": 1.13,
@@ -2826,9 +2875,12 @@
         "sauce"
       ],
       "unites": [
-        "g"
+        "g",
+        "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
       "per100g": {
         "kcal": 45.5,
         "proteinG": 7.08,
@@ -3324,9 +3376,12 @@
         "sauce"
       ],
       "unites": [
-        "g"
+        "g",
+        "ml"
       ],
-      "conversion": {},
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
       "per100g": {
         "kcal": 45.5,
         "proteinG": 7.08,
@@ -3670,6 +3725,30 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Eau chaude",
+      "normalise": "eau chaude",
+      "categorie": "boissons",
+      "recettes_actuelles": 3,
+      "roles_observes": [
+        "pâte"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 0,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Fenugrec en graines",
       "normalise": "fenugrec en graines",
       "categorie": "epices",
@@ -4006,9 +4085,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 10
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -4336,9 +4420,14 @@
         "garniture"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 180
+      },
       "per100g": {
         "kcal": 127,
         "proteinG": 1.28,
@@ -4401,9 +4490,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 4
+      },
       "per100g": {
         "kcal": 243,
         "proteinG": 3.87,
@@ -4422,9 +4516,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 0.2
+      },
       "per100g": {
         "kcal": 321,
         "proteinG": 10.8,
@@ -5260,9 +5359,14 @@
         "garniture"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 50
+      },
       "per100g": {
         "kcal": 134,
         "proteinG": 13.5,
@@ -5285,11 +5389,33 @@
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 181.7,
-        "proteinG": 1.49,
-        "carbsG": 0.05,
-        "fatG": 19.5,
-        "fiberG": 6.97
+        "kcal": 160.7,
+        "proteinG": 1.38,
+        "carbsG": 0.1,
+        "fatG": 17.2,
+        "fiberG": 6.2
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Orange fraîche",
+      "normalise": "orange fraiche",
+      "categorie": "fruits",
+      "recettes_actuelles": 2,
+      "roles_observes": [
+        "arôme",
+        "service"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 45.5,
+        "proteinG": 0.75,
+        "carbsG": 8.03,
+        "fatG": 0.5,
+        "fiberG": 2.7
       },
       "source": "ciqual_2020"
     },
@@ -5403,6 +5529,28 @@
         "carbsG": 56.5,
         "fatG": 1.3,
         "fiberG": 2.68
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Papaye verte",
+      "normalise": "papaye verte",
+      "categorie": "fruits",
+      "recettes_actuelles": 2,
+      "roles_observes": [
+        "base",
+        "pickles"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 42.2,
+        "proteinG": 0.75,
+        "carbsG": 8.53,
+        "fatG": 0.3,
+        "fiberG": 1.8
       },
       "source": "ciqual_2020"
     },
@@ -5521,9 +5669,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 0.1
+      },
       "per100g": {
         "kcal": 348,
         "proteinG": 6.09,
@@ -5563,9 +5716,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 1
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -5584,9 +5742,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 15
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -5605,9 +5768,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 7
+      },
       "per100g": {
         "kcal": 41.2,
         "proteinG": 1.87,
@@ -6009,6 +6177,27 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Ail cru entier",
+      "normalise": "ail cru entier",
+      "categorie": "herbes_aromates",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "aromatique"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 111,
+        "proteinG": 5.31,
+        "carbsG": 18.6,
+        "fatG": 0.5,
+        "fiberG": 5.8
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Algue gim nori",
       "normalise": "algue gim nori",
       "categorie": "condiments_sauces",
@@ -6248,9 +6437,14 @@
         "base"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 180
+      },
       "per100g": {
         "kcal": 127,
         "proteinG": 1.28,
@@ -6290,9 +6484,14 @@
         "arôme"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 4
+      },
       "per100g": {
         "kcal": 243,
         "proteinG": 3.87,
@@ -6883,9 +7082,14 @@
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 1
+      },
       "per100g": {
         "kcal": 321,
         "proteinG": 10.8,
@@ -6936,6 +7140,28 @@
         "fiberG": 1.6
       },
       "source": "ciqual_2020"
+    },
+    {
+      "nom": "Chair de brochet crue",
+      "normalise": "chair de brochet crue",
+      "categorie": "poissons_fruits_de_mer",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "base"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 83.7,
+        "proteinG": 18.8,
+        "carbsG": 0.01,
+        "fatG": 0.94,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020",
+      "valeur_derivee": "carbohydrate_g"
     },
     {
       "nom": "Chapelure fine de blé",
@@ -7127,6 +7353,32 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Citron confit au sel",
+      "normalise": "citron confit au sel",
+      "categorie": "fruits",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "signature"
+      ],
+      "unites": [
+        "g",
+        "u",
+        "tranche",
+        "feuille"
+      ],
+      "conversion": {
+        "grams_per_unit": 70
+      },
+      "per100g": {
+        "kcal": 27.6,
+        "proteinG": 0.5,
+        "carbsG": 1.56,
+        "fatG": 0.5,
+        "fiberG": 0.5
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Clou de girofle moulu",
       "normalise": "clou de girofle moulu",
       "categorie": "epices",
@@ -7144,6 +7396,30 @@
         "carbsG": 31.6,
         "fatG": 13,
         "fiberG": 33.9
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Cognac",
+      "normalise": "cognac",
+      "categorie": "boissons",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "sauce"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.95
+      },
+      "per100g": {
+        "kcal": 228,
+        "proteinG": 0,
+        "carbsG": 1,
+        "fatG": 0,
+        "fiberG": 0
       },
       "source": "ciqual_2020"
     },
@@ -7231,6 +7507,30 @@
         "carbsG": 3.33,
         "fatG": 0.3,
         "fiberG": 0.5
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Eau glacée gazeuse",
+      "normalise": "eau glacee gazeuse",
+      "categorie": "boissons",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "pâte"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 0,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0
       },
       "source": "ciqual_2020"
     },
@@ -7385,6 +7685,58 @@
         "fiberG": 3
       },
       "source": "ciqual_2020"
+    },
+    {
+      "nom": "Feuille de sauge fraîche",
+      "normalise": "feuille de sauge fraiche",
+      "categorie": "herbes_aromates",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "aromate"
+      ],
+      "unites": [
+        "g",
+        "u",
+        "tranche",
+        "feuille"
+      ],
+      "conversion": {
+        "grams_per_unit": 0.5
+      },
+      "per100g": {
+        "kcal": 36.7,
+        "proteinG": 4,
+        "carbsG": 0.97,
+        "fatG": 0.5,
+        "fiberG": 7
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Feuille de vigne en saumure",
+      "normalise": "feuille de vigne en saumure",
+      "categorie": null,
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "enveloppe"
+      ],
+      "unites": [
+        "g",
+        "u",
+        "tranche",
+        "feuille"
+      ],
+      "conversion": {
+        "grams_per_unit": 4
+      },
+      "per100g": {
+        "kcal": 69,
+        "proteinG": 4.27,
+        "carbsG": 11.7,
+        "fatG": 1.97,
+        "fiberG": 9.9
+      },
+      "source": "usda_fdc"
     },
     {
       "nom": "Filet de bœuf cru en lanières",
@@ -7597,6 +7949,78 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Huile de dendê",
+      "normalise": "huile de dende",
+      "categorie": "matieres_grasses",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "signature"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 100,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Huile de palme rouge",
+      "normalise": "huile de palme rouge",
+      "categorie": "matieres_grasses",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "cuisson"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 100,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Huile pimentée au roucou",
+      "normalise": "huile pimentee au roucou",
+      "categorie": "matieres_grasses",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "finition"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0.21,
+        "carbsG": 0,
+        "fatG": 99.9,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Jaggery",
       "normalise": "jaggery",
       "categorie": "produits_sucres",
@@ -7635,6 +8059,80 @@
         "carbsG": 0,
         "fatG": 3.66,
         "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Jaune d’œuf cuit",
+      "normalise": "jaune d oeuf cuit",
+      "categorie": "oeufs",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "sauce"
+      ],
+      "unites": [
+        "g",
+        "u",
+        "tranche",
+        "feuille"
+      ],
+      "conversion": {
+        "grams_per_unit": 18
+      },
+      "per100g": {
+        "kcal": 340,
+        "proteinG": 16,
+        "carbsG": 1.31,
+        "fatG": 30.1,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Jus d orange amère",
+      "normalise": "jus d orange amere",
+      "categorie": "boissons",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "acidité"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 45.4,
+        "proteinG": 0.61,
+        "carbsG": 9.61,
+        "fatG": 0.11,
+        "fiberG": 0.28
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Lait évaporé",
+      "normalise": "lait evapore",
+      "categorie": "produits_laitiers",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "sauce"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.06
+      },
+      "per100g": {
+        "kcal": 123,
+        "proteinG": 6.31,
+        "carbsG": 9.91,
+        "fatG": 5.9,
+        "fiberG": 3
       },
       "source": "ciqual_2020"
     },
@@ -8025,6 +8523,58 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Piment habanero",
+      "normalise": "piment habanero",
+      "categorie": "legumes",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "service"
+      ],
+      "unites": [
+        "g",
+        "u",
+        "tranche",
+        "feuille"
+      ],
+      "conversion": {
+        "grams_per_unit": 8
+      },
+      "per100g": {
+        "kcal": 41.2,
+        "proteinG": 1.87,
+        "carbsG": 7.7,
+        "fatG": 0.32,
+        "fiberG": 1.65
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Piment jalapeño frais",
+      "normalise": "piment jalapeno frais",
+      "categorie": "legumes",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "épice"
+      ],
+      "unites": [
+        "g",
+        "u",
+        "tranche",
+        "feuille"
+      ],
+      "conversion": {
+        "grams_per_unit": 15
+      },
+      "per100g": {
+        "kcal": 41.2,
+        "proteinG": 1.87,
+        "carbsG": 7.7,
+        "fatG": 0.32,
+        "fiberG": 1.65
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Piment vert doux frais",
       "normalise": "piment vert doux frais",
       "categorie": "legumes",
@@ -8342,6 +8892,54 @@
       "valeur_derivee": "carbohydrate_g"
     },
     {
+      "nom": "Saké",
+      "normalise": "sake",
+      "categorie": "boissons",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "warishita"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.99
+      },
+      "per100g": {
+        "kcal": 133,
+        "proteinG": 0,
+        "carbsG": 5,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Saké de cuisine",
+      "normalise": "sake de cuisine",
+      "categorie": "boissons",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "marinade"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.99
+      },
+      "per100g": {
+        "kcal": 133,
+        "proteinG": 0,
+        "carbsG": 5,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Sambal",
       "normalise": "sambal",
       "categorie": "condiments_sauces",
@@ -8361,6 +8959,150 @@
         "fiberG": 5.1
       },
       "source": "ciqual_2020"
+    },
+    {
+      "nom": "Sauce huître",
+      "normalise": "sauce huitre",
+      "categorie": null,
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "sauce"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.2
+      },
+      "per100g": {
+        "kcal": 51,
+        "proteinG": 1.35,
+        "carbsG": 10.9,
+        "fatG": 0.25,
+        "fiberG": 0.3
+      },
+      "source": "usda_fdc"
+    },
+    {
+      "nom": "Sauce soja",
+      "normalise": "sauce soja",
+      "categorie": "condiments_sauces",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "marinade"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
+      "per100g": {
+        "kcal": 45.5,
+        "proteinG": 7.08,
+        "carbsG": 3.64,
+        "fatG": 0.1,
+        "fiberG": 0.86
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Sauce soja claire",
+      "normalise": "sauce soja claire",
+      "categorie": "condiments_sauces",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "assaisonnement"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
+      "per100g": {
+        "kcal": 45.5,
+        "proteinG": 7.08,
+        "carbsG": 3.64,
+        "fatG": 0.1,
+        "fiberG": 0.86
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Sauce soja légère spéciale poisson",
+      "normalise": "sauce soja legere speciale poisson",
+      "categorie": "condiments_sauces",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "sauce"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
+      "per100g": {
+        "kcal": 45.5,
+        "proteinG": 7.08,
+        "carbsG": 3.64,
+        "fatG": 0.1,
+        "fiberG": 0.86
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Sauce soja philippine",
+      "normalise": "sauce soja philippine",
+      "categorie": "condiments_sauces",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "assaisonnement"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.18
+      },
+      "per100g": {
+        "kcal": 45.5,
+        "proteinG": 7.08,
+        "carbsG": 3.64,
+        "fatG": 0.1,
+        "fiberG": 0.86
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Sauce Worcestershire",
+      "normalise": "sauce worcestershire",
+      "categorie": null,
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "umami"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.09
+      },
+      "per100g": {
+        "kcal": 77,
+        "proteinG": 0,
+        "carbsG": 19.2,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "source": "usda_fdc"
     },
     {
       "nom": "Saucisse de Montbéliard",
@@ -8426,6 +9168,30 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Saumure légère",
+      "normalise": "saumure legere",
+      "categorie": "boissons",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "surface"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 0,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Semoule de blé dur moyenne sèche",
       "normalise": "semoule de ble dur moyenne seche",
       "categorie": "cereales_feculents",
@@ -8445,6 +9211,30 @@
         "fiberG": 3.37
       },
       "source": "ciqual_2020"
+    },
+    {
+      "nom": "Tare de soja",
+      "normalise": "tare de soja",
+      "categorie": null,
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "assaisonnement"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.15
+      },
+      "per100g": {
+        "kcal": 89,
+        "proteinG": 5.93,
+        "carbsG": 15.6,
+        "fatG": 0.02,
+        "fiberG": 0.1
+      },
+      "source": "usda_fdc"
     },
     {
       "nom": "Tofu soyeux ferme",
@@ -8510,6 +9300,30 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Vin blanc sec d Alsace",
+      "normalise": "vin blanc sec d alsace",
+      "categorie": null,
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "cuisson"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.99
+      },
+      "per100g": {
+        "kcal": 82,
+        "proteinG": 0.07,
+        "carbsG": 2.6,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "source": "usda_fdc"
+    },
+    {
       "nom": "Vin de riz taïwanais",
       "normalise": "vin de riz taiwanais",
       "categorie": "boissons",
@@ -8529,6 +9343,54 @@
         "proteinG": 0,
         "carbsG": 5,
         "fatG": 0,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Vin rouge de Bourgogne",
+      "normalise": "vin rouge de bourgogne",
+      "categorie": "boissons",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "sauce"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.99
+      },
+      "per100g": {
+        "kcal": 82.1,
+        "proteinG": 0.07,
+        "carbsG": 2.63,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Vinaigre de canne",
+      "normalise": "vinaigre de canne",
+      "categorie": "condiments_sauces",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "acidité"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.01
+      },
+      "per100g": {
+        "kcal": 22.6,
+        "proteinG": 0.04,
+        "carbsG": 0.62,
+        "fatG": 0.1,
         "fiberG": 0
       },
       "source": "ciqual_2020"
@@ -8556,6 +9418,54 @@
         "fiberG": 0
       },
       "source": "ciqual_2020"
+    },
+    {
+      "nom": "Vinaigre de malt",
+      "normalise": "vinaigre de malt",
+      "categorie": "condiments_sauces",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "service"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.01
+      },
+      "per100g": {
+        "kcal": 22.6,
+        "proteinG": 0.04,
+        "carbsG": 0.62,
+        "fatG": 0.1,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Vinaigre de palmier ou cidre",
+      "normalise": "vinaigre de palmier ou cidre",
+      "categorie": "condiments_sauces",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "marinade"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.01
+      },
+      "per100g": {
+        "kcal": 22.6,
+        "proteinG": 0.04,
+        "carbsG": 0.62,
+        "fatG": 0.1,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
     }
   ],
   "formes_bloquees": [
@@ -8568,18 +9478,6 @@
         "garniture",
         "protéine",
         "viande"
-      ],
-      "motifs": [
-        "confiance C — proxy assumé, non publiable"
-      ]
-    },
-    {
-      "nom": "Ail cru entier",
-      "normalise": "ail cru entier",
-      "categorie": "herbes_aromates",
-      "recettes_actuelles": 1,
-      "roles_observes": [
-        "aromatique"
       ],
       "motifs": [
         "confiance C — proxy assumé, non publiable"
@@ -8786,18 +9684,6 @@
       "recettes_actuelles": 8,
       "roles_observes": [
         "aromate"
-      ],
-      "motifs": [
-        "confiance C — proxy assumé, non publiable"
-      ]
-    },
-    {
-      "nom": "Chair de brochet crue",
-      "normalise": "chair de brochet crue",
-      "categorie": "poissons_fruits_de_mer",
-      "recettes_actuelles": 1,
-      "roles_observes": [
-        "base"
       ],
       "motifs": [
         "confiance C — proxy assumé, non publiable"
@@ -9203,6 +10089,18 @@
       ]
     },
     {
+      "nom": "Kecap manis",
+      "normalise": "kecap manis",
+      "categorie": "produits_sucres",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "sauce"
+      ],
+      "motifs": [
+        "confiance C — proxy assumé, non publiable"
+      ]
+    },
+    {
       "nom": "Kimchi de chou fermenté mûr",
       "normalise": "kimchi de chou fermente mur",
       "categorie": "legumes",
@@ -9252,6 +10150,21 @@
       ]
     },
     {
+      "nom": "Mirin",
+      "normalise": "mirin",
+      "categorie": "boissons",
+      "recettes_actuelles": 8,
+      "roles_observes": [
+        "douceur",
+        "marinade",
+        "tentsuyu",
+        "warishita"
+      ],
+      "motifs": [
+        "confiance C — proxy assumé, non publiable"
+      ]
+    },
+    {
       "nom": "Nouille ramen fraîche",
       "normalise": "nouille ramen fraiche",
       "categorie": "cereales_feculents",
@@ -9264,38 +10177,12 @@
       ]
     },
     {
-      "nom": "Orange fraîche",
-      "normalise": "orange fraiche",
-      "categorie": "fruits",
-      "recettes_actuelles": 2,
-      "roles_observes": [
-        "arôme",
-        "service"
-      ],
-      "motifs": [
-        "confiance C — proxy assumé, non publiable"
-      ]
-    },
-    {
       "nom": "Os à moelle de bœuf",
       "normalise": "os a moelle de boeuf",
       "categorie": "viandes",
       "recettes_actuelles": 1,
       "roles_observes": [
         "garniture"
-      ],
-      "motifs": [
-        "confiance C — proxy assumé, non publiable"
-      ]
-    },
-    {
-      "nom": "Papaye verte",
-      "normalise": "papaye verte",
-      "categorie": "fruits",
-      "recettes_actuelles": 2,
-      "roles_observes": [
-        "base",
-        "pickles"
       ],
       "motifs": [
         "confiance C — proxy assumé, non publiable"
@@ -9475,6 +10362,18 @@
       ]
     },
     {
+      "nom": "Sauce yakisoba",
+      "normalise": "sauce yakisoba",
+      "categorie": "condiments_sauces",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "sauce"
+      ],
+      "motifs": [
+        "confiance C — proxy assumé, non publiable"
+      ]
+    },
+    {
       "nom": "Saucisse chinoise lap cheong",
       "normalise": "saucisse chinoise lap cheong",
       "categorie": "produits_transformes",
@@ -9581,6 +10480,18 @@
       "recettes_actuelles": 1,
       "roles_observes": [
         "sauce"
+      ],
+      "motifs": [
+        "confiance C — proxy assumé, non publiable"
+      ]
+    },
+    {
+      "nom": "Zakwas de betterave fermenté",
+      "normalise": "zakwas de betterave fermente",
+      "categorie": "boissons",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "acidité"
       ],
       "motifs": [
         "confiance C — proxy assumé, non publiable"
