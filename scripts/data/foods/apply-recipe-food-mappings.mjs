@@ -92,8 +92,18 @@ for (const decision of lot) {
   // le matérialiseur l'abandonnerait, et la recette resterait bloquée sans que
   // le mapping le signale. USDA peut combler, jamais remplacer.
   const kcal = code ? energieParCode.get(code) : usda?.per100g.kcal
+  // Même lecture du classeur que le générateur : valeur mesurée, puis borne
+  // supérieure d'un statut « inférieur à » — l'ANSES s'en sert elle-même pour
+  // calculer l'énergie de ces aliments. Une lecture plus stricte ici ferait
+  // refuser des décisions que le générateur, lui, accepterait.
+  const lireCiqual = (champ) => {
+    if (!record) return NaN
+    if (Number.isFinite(record.values?.[champ])) return Number(record.values[champ])
+    const borne = Number(record.upper_bounds?.[champ])
+    return Number.isFinite(borne) ? borne : NaN
+  }
   const macros = ['protein_g', 'carbohydrate_g', 'fat_g'].map((champ, index) => {
-    const ciqual = record ? Number(record.values?.[champ]) : NaN
+    const ciqual = lireCiqual(champ)
     if (Number.isFinite(ciqual)) return ciqual
     return Number(usda?.per100g[['proteinG', 'carbsG', 'fatG'][index]])
   })
@@ -101,7 +111,7 @@ for (const decision of lot) {
   // Une macro encore manquante après Ciqual et USDA n'est pas rédhibitoire si
   // la fermeture d'Atwater peut la clore — c'est ce que fait le générateur, et
   // refuser ici alors qu'il accepterait rejetterait des décisions valables.
-  const fibres = record ? Number(record.values?.fiber_g) : Number(usda?.per100g.fiberG)
+  const fibres = record ? lireCiqual('fiber_g') : Number(usda?.per100g.fiberG)
   const cloture = macros.every(Number.isFinite) ? null : comblerParAtwater({
     energy_kcal: energie,
     protein_g: macros[0],

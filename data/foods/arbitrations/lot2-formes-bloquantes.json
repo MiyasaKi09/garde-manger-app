@@ -1,0 +1,1212 @@
+{
+  "lot": "lot 2 — arbitrage de 150 formes, arbitres puis réfutation adversariale",
+  "decisions": [
+    {
+      "cle": "feuille de combava",
+      "forme": "Feuille de combava",
+      "verdict": "mapper",
+      "alim_code": "11053",
+      "nom_ciqual": "Laurier, feuille",
+      "confidence": "C",
+      "note": "Proxy assumé : aucune entrée combava / kaffir / makrut dans le Ciqual 2020 (vérifié). Les candidats proposés étaient du thé, un mille-feuille, de la feuille de brick et des dolmas — sans rapport. Le laurier est la seule feuille aromatique du classeur, employée exactement de la même façon (1 à 3 feuilles entières, infusées puis retirées) ; à ces quantités l'apport est nul quel que soit le code. Macros complètes (353 kcal, P 7,61 / G 48,6 / L 8,36)."
+    },
+    {
+      "cle": "piment ancho seche",
+      "forme": "Piment ancho séché",
+      "verdict": "mapper",
+      "alim_code": "11049",
+      "nom_ciqual": "Paprika",
+      "confidence": "C",
+      "note": "Proxy assumé, code absent des candidats. L'ancho est un piment doux séché : 20151 « Piment, cru » (41,2 kcal) est le frais et sous-estimerait d'un facteur 7 une forme pesée en grammes secs. Le Ciqual n'a que deux piments séchés : le paprika (piment rouge doux séché, 319 kcal, P 14,1 / G 19,1 / L 12,9) et le Cayenne (376 kcal, fort). L'ancho réel tourne autour de 280-300 kcal : le paprika est le plus juste, et c'est aussi le même registre de piquant. Macros complètes."
+    },
+    {
+      "cle": "piment guajillo seche",
+      "forme": "Piment guajillo séché",
+      "verdict": "mapper",
+      "alim_code": "11049",
+      "nom_ciqual": "Paprika",
+      "confidence": "C",
+      "note": "Proxy assumé, même raisonnement que l'ancho : piment doux à moyennement doux, séché, réhydraté pour les sauces. Le Ciqual n'offre aucune granularité variétale sur les piments séchés ; le paprika (piment rouge doux séché, 319 kcal) est l'état correct et le bon niveau de piquant, contre 41,2 kcal pour le piment cru et 376 kcal pour le Cayenne."
+    },
+    {
+      "cle": "eau chaude",
+      "forme": "Eau chaude",
+      "verdict": "ecarter",
+      "motif": "Aucun code exploitable. Les deux seuls candidats étaient des sauces (« Sauce au poivre, chaude » 156 kcal, « Sauce chaude (aliment moyen) » 106 kcal) : le score s'est accroché à « chaude », ce sont des aliments totalement différents. Les vraies entrées eau du classeur (18066 Eau du robinet, 18008, 18044, 18045, 18430) sont toutes absentes de data/ciqual_nutrition_import.csv : pas d'énergie ni de macros, l'applicateur les refuserait. Par ailleurs l'eau n'apporte rien : cette forme relève d'une exclusion nutritionnelle, pas d'un mapping."
+    },
+    {
+      "cle": "pain rassis",
+      "forme": "Pain rassis",
+      "verdict": "mapper",
+      "alim_code": "7000",
+      "nom_ciqual": "Pain (aliment moyen)",
+      "confidence": "B",
+      "note": "Code absent des candidats, qui proposaient tous des pains spéciaux (au son, complet, multicéréale) voire le fruit à pain. Le pain rassis est du pain ordinaire desséché : l'aliment moyen 7000 (273 kcal, P 8,21 / G 54,4 / L 1,61) est le représentant neutre. La perte d'eau du rassissement concentre légèrement les macros au gramme ; écart sans conséquence aux quantités d'usage (chapelure, panade)."
+    },
+    {
+      "cle": "piment rouge seche",
+      "forme": "Piment rouge séché",
+      "verdict": "mapper",
+      "alim_code": "11088",
+      "nom_ciqual": "Poivre de Cayenne ou piment de Cayenne",
+      "confidence": "B",
+      "note": "Même aliment et surtout même état : piment rouge fort séché (376 kcal, P 12,0 / G 29,4 / L 17,3), à la mouture près. Le candidat de tête 20996 est un lichen de mer, et 20151 « Piment, cru » est le frais — le retenir diviserait l'énergie par neuf sur une forme pesée en grammes secs."
+    },
+    {
+      "cle": "piment scotch bonnet",
+      "forme": "Piment scotch bonnet",
+      "verdict": "mapper",
+      "alim_code": "20151",
+      "nom_ciqual": "Piment, cru",
+      "confidence": "B",
+      "note": "Piment frais entier, employé à l'unité : le Ciqual ne distingue aucune variété, 20151 est le piment frais générique (41,2 kcal, complet). Cohérent avec l'arbitrage précédent qui a réuni « piment frais » et « piment vert frais » sur ce code. 11088 (Cayenne séché) serait un mauvais état."
+    },
+    {
+      "cle": "poitrine de porc fumee",
+      "forme": "Poitrine de porc fumée",
+      "verdict": "mapper",
+      "alim_code": "28502",
+      "nom_ciqual": "Poitrine de porc, fumée, crue",
+      "confidence": "A",
+      "note": "Correspondance directe, macros complètes (303 kcal, P 15,6 / G 0,79 / L 26,1)."
+    },
+    {
+      "cle": "poulet entier cru en morceaux",
+      "forme": "Poulet entier cru en morceaux",
+      "verdict": "mapper",
+      "alim_code": "36016",
+      "nom_ciqual": "Poulet, viande et peau, cru",
+      "confidence": "B",
+      "note": "Code absent des candidats (qui proposaient du blé dur, du mil, un couscous et un burger). 36016 est la composition moyenne du poulet entier cru, chair et peau : 173 kcal, P 20,2 / G 0,3 / L 10,1, complet. Le libellé le plus littéral, 36020 « Poulet éviscéré sans abats, cru », est refusé faute de glucides dans le référentiel. Réserve mineure : la forme est pesée en morceaux, os compris, alors que le code porte sur la chair et la peau."
+    },
+    {
+      "cle": "pruneau denoyaute",
+      "forme": "Pruneau dénoyauté",
+      "verdict": "mapper",
+      "alim_code": "13042",
+      "nom_ciqual": "Pruneau, sec",
+      "confidence": "A",
+      "note": "Le pruneau du commerce est vendu dénoyauté ; le dénoyautage ne change pas la composition de la partie comestible. 229 kcal, P 1,63 / G 55,4 / L 0,4, complet. Les candidats abricot (13001, 13623) sont un autre fruit et 2018 un jus."
+    },
+    {
+      "cle": "tomate rapee",
+      "forme": "Tomate râpée",
+      "verdict": "mapper",
+      "alim_code": "20047",
+      "nom_ciqual": "Tomate, crue",
+      "confidence": "A",
+      "note": "Râper est une découpe, pas un état : c'est de la tomate crue (19,3 kcal, P 0,86 / G 2,49 / L 0,26). Le candidat 25103 « Tomate farcie » est un plat, 20189 la tomate séchée (257 kcal), et 2026/2032 des jus salés."
+    },
+    {
+      "cle": "vinaigre blanc",
+      "forme": "Vinaigre blanc",
+      "verdict": "mapper",
+      "alim_code": "11018",
+      "nom_ciqual": "Vinaigre",
+      "confidence": "A",
+      "note": "Le « Vinaigre » générique du Ciqual est le vinaigre d'alcool blanc : même produit. 22,6 kcal, P 0,04 / G 0,62 / L 0,1, complet. Les candidats 9100 (riz blanc cru) et 1018 (Kir) sont des accrochages sur « blanc », 11040 et 11055 des condiments conservés au vinaigre."
+    },
+    {
+      "cle": "vinaigre de riz",
+      "forme": "Vinaigre de riz",
+      "verdict": "mapper",
+      "alim_code": "11018",
+      "nom_ciqual": "Vinaigre",
+      "confidence": "C",
+      "note": "Proxy assumé : le Ciqual ne connaît que quatre vinaigres (générique, cidre, balsamique, vin rouge), aucun vinaigre de riz. Ce n'est donc pas le même produit, mais les macros du vinaigre générique (22,6 kcal, P 0,04 / G 0,62 / L 0,1) encadrent bien le vinaigre de riz réel (18-25 kcal) et l'apport est quasi nul aux volumes d'usage. Les deux autres pistes sont écartées : 11090 « Vinaigre de cidre » est INCOMPLET (protéines et lipides absents du référentiel) et 11091 balsamique (125 kcal) est sucré et sans lipides renseignés. Concept distinct du vinaigre blanc, faute de code plus fin."
+    },
+    {
+      "cle": "achiote pate",
+      "forme": "Achiote pâte",
+      "verdict": "ecarter",
+      "motif": "Aucun code ne convient. Le rocou / achiote est absent du Ciqual 2020 (recherche rocou, roucou, annatto, achiote : zéro résultat hors « Mont-Roucous », une eau minérale). Les cinq candidats se sont accrochés à « pâte » et sont tous des pâtés de viande (pâté breton, de lapin, de gibier, de foie d'oie) ou un nem : aliments sans aucun rapport, 250 à 460 kcal de charcuterie. Le seul rapprochement d'usage possible serait une pâte de condiment épicée type harissa (11112, 66 kcal), mais elle sous-estimerait la pâte d'achiote (~200 kcal, dense en graines et épices) d'un facteur trois : ce n'est pas un proxy représentatif. Mieux vaut créer un canonique dédié que fausser la recette."
+    },
+    {
+      "cle": "aioli",
+      "forme": "Aïoli",
+      "verdict": "mapper",
+      "alim_code": "11168",
+      "nom_ciqual": "Sauce aïoli, préemballée",
+      "confidence": "A",
+      "note": "Correspondance directe et unique. 392,3 kcal, P 1,13 / G 4,7 / L 41,0, complet."
+    },
+    {
+      "cle": "amande mondee",
+      "forme": "Amande mondée",
+      "verdict": "mapper",
+      "alim_code": "15041",
+      "nom_ciqual": "Amande, mondée, émondée ou blanchie",
+      "confidence": "A",
+      "note": "Le libellé nomme explicitement la forme mondée. 593,1 kcal, P 21,4 / G 8,76 / L 52,5, complet. 15000 (avec peau) et 15042 (grillée salée) sont d'autres formes."
+    },
+    {
+      "cle": "amchur poudre de mangue",
+      "forme": "Amchur poudre de mangue",
+      "verdict": "ecarter",
+      "motif": "Aucun code ne convient. L'amchur est une poudre de mangue verte séchée : le Ciqual n'a que des mangues à l'état frais ou liquide — 13025 « Mangue, pulpe, crue » (73,9 kcal), 13200, 2370 nectar, et les entrées martiniquaises 13428/13429 qui sont en plus incomplètes. Retenir une mangue fraîche pour une poudre sèche sous-estimerait l'énergie d'un facteur quatre, exactement le piège d'état signalé. Les candidats proposés (œuf en poudre, curry, gingembre, cannelle, cardamome) ne partagent que le mot « poudre » et sont des aliments distincts sans parenté avec le fruit séché acidifiant. Rien de représentatif : forme à traiter comme canonique dédié."
+    },
+    {
+      "cle": "aubergine africaine fraiche",
+      "forme": "Aubergine africaine fraîche",
+      "verdict": "mapper",
+      "alim_code": "20053",
+      "nom_ciqual": "Aubergine, crue",
+      "confidence": "B",
+      "note": "Espèce voisine (Solanum aethiopicum, aubergine amère / djakatou) que le Ciqual ne référence pas ; même légume-fruit, même état cru, même usage en ragoût, et une composition du même ordre (légume très aqueux, ~15 à 30 kcal). 20053 : 15,3 kcal, P 1,12 / G 2,39 / L 0,14, complet. 20002 est la version cuite, à ne pas retenir pour une forme fraîche. Les candidats noix, menthe et coriandre n'étaient accrochés que sur « fraîche »."
+    },
+    {
+      "cle": "banane plantain mure",
+      "forme": "Banane plantain mûre",
+      "verdict": "mapper",
+      "alim_code": "53100",
+      "nom_ciqual": "Banane plantain, crue",
+      "confidence": "B",
+      "note": "Même aliment à l'état cru (127 kcal, P 1,28 / G 29,6 / L 0,39, complet). Le Ciqual ne distingue pas la maturité : à maturité l'amidon se convertit en sucres mais l'énergie reste équivalente. 53101 est la version cuite, à réserver aux formes déjà cuisinées ; 13029 « Mûre (de ronce) » était un accrochage sur le mot « mûre »."
+    },
+    {
+      "cle": "beurre demi sel",
+      "forme": "Beurre demi-sel",
+      "verdict": "mapper",
+      "alim_code": "16402",
+      "nom_ciqual": "Beurre à 80% MG, demi-sel",
+      "confidence": "A",
+      "note": "Correspondance directe pour le beurre demi-sel standard. 738 kcal, P 0,72 / G 0,55 / L 81,4, complet. 16411 est un beurre allégé, 16400 un beurre doux."
+    },
+    {
+      "cle": "bouillon d agneau non sale",
+      "forme": "Bouillon d’agneau non salé",
+      "verdict": "mapper",
+      "alim_code": "25909",
+      "nom_ciqual": "Bouillon de viande et légumes type pot-au-feu, prêt à consommer",
+      "confidence": "C",
+      "note": "Aucun bouillon d'agneau au Ciqual. Les cinq candidats etaient tous des morceaux de viande crus (ris, gigot, coeur, foie) : impossible pour une forme employee en ml. Retenu le seul bouillon de viande liquide pret a consommer (4,8 kcal/100 ml, macros completes), coherent avec l'arbitrage « bouillon de volaille » = reconstitue et non deshydrate. Proxy assume : ni agneau, ni exactement non sale, mais la densite energetique d'un fond de viande maison non sale est bien celle-la."
+    },
+    {
+      "cle": "bouillon de veau non sale",
+      "forme": "Bouillon de veau non salé",
+      "verdict": "mapper",
+      "alim_code": "25930",
+      "nom_ciqual": "Bouillon de boeuf, déshydraté reconstitué",
+      "confidence": "C",
+      "note": "Le veau est un bovin : le bouillon de boeuf reconstitue est l'espece correcte, sous forme liquide (9,05 kcal/100 ml), exactement le registre impose par le precedent « bouillon de volaille reconstitue = 5,58 kcal ». 11304 « Fond de veau, prealable » (40,9 kcal) a ete ecarte : un fond reduit est 4x plus concentre qu'un bouillon employe en ml. Proxy assume : cube reconstitue et sale, la forme se dit non salee."
+    },
+    {
+      "cle": "boulgour fin cru",
+      "forme": "Boulgour fin cru",
+      "verdict": "mapper",
+      "alim_code": "9690",
+      "nom_ciqual": "Boulgour de blé, cru",
+      "confidence": "A"
+    },
+    {
+      "cle": "cannelle cassia",
+      "forme": "Cannelle cassia",
+      "verdict": "mapper",
+      "alim_code": "11025",
+      "nom_ciqual": "Cannelle, poudre",
+      "confidence": "B",
+      "note": "Ciqual ne distingue pas cassia et Ceylan et n'a pas d'entree « baton/ecorce » : la cannelle du commerce europeen est majoritairement de la cassia. Meme epice, forme moulue au lieu du baton, sans consequence sur les macros pour 100 g."
+    },
+    {
+      "cle": "cardamome verte",
+      "forme": "Cardamome verte",
+      "verdict": "mapper",
+      "alim_code": "11075",
+      "nom_ciqual": "Cardamome, poudre",
+      "confidence": "B",
+      "note": "La cardamome verte est la cardamome de reference du Ciqual, qui ne recense que la poudre. Gousse au lieu de poudre : meme epice, macros identiques pour 100 g. Les quatre autres candidats (tomate verte, chicoree verte, asperge verte, lentille verte) ne devaient leur score qu'au mot « verte »."
+    },
+    {
+      "cle": "carvi en graines",
+      "forme": "Carvi en graines",
+      "verdict": "mapper",
+      "alim_code": "11064",
+      "nom_ciqual": "Carvi, graine",
+      "confidence": "A"
+    },
+    {
+      "cle": "champignon de paille",
+      "forme": "Champignon de paille",
+      "verdict": "mapper",
+      "alim_code": "20011",
+      "nom_ciqual": "Champignon, tout type, appertisé, égoutté",
+      "confidence": "B",
+      "note": "Volvariella volvacea n'a pas d'entree Ciqual ; la ligne « tout type » est justement l'agregat generique des champignons. Etat appertise egoutte retenu car le champignon de paille n'est commercialise qu'en conserve en France. J'ai evite 20010 (« tout type, cru »), reserve generique du champignon frais, pour ne pas ecraser deux concepts sur un meme code."
+    },
+    {
+      "cle": "champignon seche",
+      "forme": "Champignon séché",
+      "verdict": "mapper",
+      "alim_code": "20211",
+      "nom_ciqual": "Champignon, lentin comestible ou shiitaké, séché",
+      "confidence": "B",
+      "note": "Seul champignon seche exploitable du Ciqual : 20202 « Champignon noir, séché » a une energie et des glucides absents et serait refuse par l'applicateur. Le shiitake seche est de toute facon le champignon seche dominant. Etat sec respecte (316 kcal), ce qui est l'essentiel : le meme champignon rehydrate vaudrait dix fois moins."
+    },
+    {
+      "cle": "chashu de porc",
+      "forme": "Chashu de porc",
+      "verdict": "mapper",
+      "alim_code": "28401",
+      "nom_ciqual": "Porc, travers, braisé",
+      "confidence": "B",
+      "note": "Le chashu est une poitrine de porc roulee et braisee, donc deja cuite : les cinq candidats proposaient tous du porc CRU, ce qui aurait sous-estime la matiere seche. Ciqual n'a pas de poitrine cuite ; le travers braise est le seul porc gras cuit par braisage (333 kcal, 26,6 g de lipides), profil quasi identique au chashu. Le sucre de la marinade soja/mirin n'est pas compte."
+    },
+    {
+      "cle": "chou kale frais",
+      "forme": "Chou kale frais",
+      "verdict": "mapper",
+      "alim_code": "20218",
+      "nom_ciqual": "Chou frisé, cru",
+      "confidence": "A",
+      "note": "« Chou frise » est le libelle Ciqual du kale, verifie sur les micronutriments : beta-carotene 5930 ug, vitamine C 145 mg, calcium 185 mg — signature du kale, quand le chou vert (20069) plafonne a 321 ug / 69 mg / 96 mg. Aucun des cinq candidats proposes (chou-fleur, Bruxelles, rave, vert, blanc) n'etait le bon."
+    },
+    {
+      "cle": "concentre de tomate",
+      "forme": "Concentré de tomate",
+      "verdict": "mapper",
+      "alim_code": "20068",
+      "nom_ciqual": "Tomate, concentré, appertisé",
+      "confidence": "A",
+      "note": "Concentre simple retenu ; 20268 est le double concentre, qui reste un concept distinct."
+    },
+    {
+      "cle": "confit de canard cuit",
+      "forme": "Confit de canard cuit",
+      "verdict": "mapper",
+      "alim_code": "8110",
+      "nom_ciqual": "Confit de canard",
+      "confidence": "A",
+      "note": "Le confit est cuit par definition : la mention « cuit » de la forme ne cree pas d'ecart d'etat."
+    },
+    {
+      "cle": "coriandre en graines",
+      "forme": "Coriandre en graines",
+      "verdict": "mapper",
+      "alim_code": "11026",
+      "nom_ciqual": "Coriandre, graine",
+      "confidence": "A",
+      "note": "Bien distinguer de 11094 « Coriandre, fraiche » (22,3 kcal), l'herbe : la graine est a 346 kcal, facteur quinze."
+    },
+    {
+      "cle": "courge fraiche",
+      "forme": "Courge fraîche",
+      "verdict": "mapper",
+      "alim_code": "20139",
+      "nom_ciqual": "Courge, crue",
+      "confidence": "A",
+      "note": "Entree generique exacte, etat cru = frais. Je n'ai pas glisse vers butternut, potimarron ou potiron, qui sont des concepts canoniques distincts a part entiere."
+    },
+    {
+      "cle": "creme aigre",
+      "forme": "Crème aigre",
+      "verdict": "mapper",
+      "alim_code": "19431",
+      "nom_ciqual": "Crème de lait, 15 à 20% MG, légère, épaisse, rayon frais",
+      "confidence": "B",
+      "note": "Ciqual n'a pas d'entree « creme aigre / smetana », mais la creme epaisse du rayon frais est maturee par ferments lactiques, donc bien une creme acidifiee ; le taux 15-20 % MG (166 kcal, 15,3 g de lipides) est celui de la sour cream, contre 30-40 % pour 19410 et 19411. Les cinq candidats proposes (creme de marrons, patissiere, d'Isigny, de cassis, sauce a la creme) ne devaient leur score qu'au mot « creme »."
+    },
+    {
+      "cle": "crevette crue entiere",
+      "forme": "Crevette crue entière",
+      "verdict": "mapper",
+      "alim_code": "10021",
+      "nom_ciqual": "Crevette, crue",
+      "confidence": "A",
+      "note": "Etat cru respecte ; « entiere » ne designe qu'un mode de presentation. Attention au candidat 9320 « Orge entiere, crue », classe haut par le seul mot « entiere »."
+    },
+    {
+      "cle": "doenjang pate de soja fermentee",
+      "forme": "Doenjang pâte de soja fermentée",
+      "verdict": "mapper",
+      "alim_code": "20916",
+      "nom_ciqual": "Miso",
+      "confidence": "B",
+      "note": "Les cinq candidats etaient des pates de charcuterie, retenus sur le mot « pate ». Le doenjang coreen et le miso japonais sont le meme concept culinaire — pate de soja fermentee salee — et se reduisent donc au meme canonique, conformement a la regle de la Bible ; profils voisins (163 kcal, 11,7 g de proteines, 18,1 g de glucides)."
+    },
+    {
+      "cle": "douchi haricot noir fermente",
+      "forme": "Douchi haricot noir fermenté",
+      "verdict": "mapper",
+      "alim_code": "20917",
+      "nom_ciqual": "Tempeh",
+      "confidence": "C",
+      "note": "Le douchi est du soja noir entier fermente et sale, pas un haricot vert ni un haricot sec : les cinq candidats etaient hors sujet. Le tempeh est la seule graine de soja ENTIERE fermentee du Ciqual, donc le meme registre de transformation, avec macros completes (151 kcal, 17,6 g de proteines). Proxy assume : le douchi, sale et plus sec, est plus dense (environ 200-240 kcal) ; 20901 « Soja, graine entiere » (419 kcal, non fermente) aurait double l'erreur. Emploi de l'ordre de la cuillere, impact limite."
+    },
+    {
+      "cle": "escalope de veau crue fine",
+      "forme": "Escalope de veau crue fine",
+      "verdict": "mapper",
+      "alim_code": "6521",
+      "nom_ciqual": "Veau, escalope, crue",
+      "confidence": "A",
+      "note": "« Fine » ne qualifie que l'epaisseur de la tranche, pas l'aliment."
+    },
+    {
+      "cle": "farine de pois chiche",
+      "forme": "Farine de pois chiche",
+      "verdict": "mapper",
+      "alim_code": "9580",
+      "nom_ciqual": "Farine de pois chiche",
+      "confidence": "A",
+      "note": "Presence dans le classeur 2020 verifiee malgre un groupe vide, macros completes (359 kcal, 22,4 / 47 / 6,69)."
+    },
+    {
+      "cle": "feuille de brick",
+      "forme": "Feuille de brick",
+      "verdict": "mapper",
+      "alim_code": "51550",
+      "nom_ciqual": "Khatfa feuille de brick, préemballée",
+      "confidence": "B",
+      "note": "Etat tel qu'achete retenu : 23430 « Feuille de brick, cuite à sec sans matière grasse » decrit une feuille recuite et deshydratee (376 kcal), pas le produit sorti du paquet (283 kcal). Presence dans le classeur 2020 et macros completes verifiees. Le qualificatif « Khatfa » ne change pas l'aliment designe."
+    },
+    {
+      "cle": "fumet de poisson",
+      "forme": "Fumet de poisson",
+      "verdict": "mapper",
+      "alim_code": "25919",
+      "nom_ciqual": "Soupe de poissons et / ou crustacés, déshydratée reconstituée",
+      "confidence": "C",
+      "note": "Piege confirme : les candidats etaient des plats (brochette, couscous, accra, poisson en sauce surgele, feuillete). Il n'existe pas de fumet au Ciqual, et 11172 « Court-bouillon pour poissons, deshydrate » (260 kcal) est une poudre — inutilisable pour une forme en ml, facteur trente. Retenu la preparation de poisson liquide reconstituee (29 kcal, macros completes), etat conforme a l'usage courant du fumet obtenu par dilution d'une base. Proxy assume : une soupe reste plus chargee qu'un fumet clair."
+    },
+    {
+      "cle": "gateau de riz coreen tteok",
+      "forme": "Gâteau de riz coréen tteok",
+      "verdict": "mapper",
+      "alim_code": "26265",
+      "nom_ciqual": "Gnocchi à la semoule, cru",
+      "confidence": "C",
+      "note": "Aucun tteok ni riz gluant dans Ciqual. Piège écarté : 39232 « Gâteau de riz, appertisé » est un riz au lait (groupe produits laitiers), pas un tteok. Le tteok est une pâte de riz étuvée puis compactée, ~45% d'eau, soit ~230 kcal/100 g, 52 g de glucides, 4 g de protéines (contrôle par matière sèche : riz cru 350 kcal à 12% d'eau → 350 x 0.55/0.88 = 219 kcal). Le riz blanc cuit 9104 (144 kcal, 68% d'eau) sous-estimerait l'énergie de 38%, le riz cru 9100 (350) la surestimerait de 50%. Le gnocchi cru à la semoule est le boulet d'amidon dense à bouillir le plus proche : 200 kcal (-13%), lipides et densité comparables ; protéines surestimées (6,2 vs 4,1). Proxy assumé, macros complètes."
+    },
+    {
+      "cle": "gingembre marine rouge",
+      "forme": "Gingembre mariné rouge",
+      "verdict": "mapper",
+      "alim_code": "11074",
+      "nom_ciqual": "Gingembre, racine crue",
+      "confidence": "B",
+      "note": "Beni shoga : gingembre saumuré au vinaigre de prune, sans sucre ajouté (contrairement au gari sucré). Même aliment, préparation différente, sans conséquence notable sur les macros — seul le sodium change. 11006 « Gingembre, poudre » (335 kcal) est un déshydraté, facteur dix, écarté. Partage le canonique gingembre conformément à la règle de la bible."
+    },
+    {
+      "cle": "haricot kilometre cru",
+      "forme": "Haricot kilomètre cru",
+      "verdict": "mapper",
+      "alim_code": "20061",
+      "nom_ciqual": "Haricot vert, cru",
+      "confidence": "C",
+      "note": "Le haricot kilomètre (Vigna unguiculata sesquipedalis) est une espèce distincte du haricot vert (Phaseolus vulgaris), pas une simple variété : à gousse comestible également, mais plus dense (~1,5x l'énergie d'après le rapport USDA yardlong 47 kcal / snap bean 31 kcal, soit ~39 kcal rapporté à l'échelle Ciqual contre 25,9 ici). Aucune entrée Ciqual pour cette espèce. Retenu comme proxy de catégorie « gousse verte crue » ; l'énergie est sous-estimée d'environ un tiers. Macros complètes."
+    },
+    {
+      "cle": "haricot noir sec",
+      "forme": "Haricot noir sec",
+      "verdict": "mapper",
+      "alim_code": "20525",
+      "nom_ciqual": "Haricot rouge, sec",
+      "confidence": "B"
+    },
+    {
+      "cle": "huile de moutarde",
+      "forme": "Huile de moutarde",
+      "verdict": "mapper",
+      "alim_code": "17130",
+      "nom_ciqual": "Huile de colza",
+      "confidence": "C",
+      "note": "Aucune huile de moutarde dans Ciqual. Le colza (Brassica napus) est la brassicacée la plus proche de la moutarde (Brassica juncea) : même famille botanique, même profil riche en AG monoinsaturés. Nutritionnellement l'écart est nul de toute façon (900 kcal, 100 g de lipides, comme toute huile). Non mappé sur 17001 « Huile végétale (aliment moyen) », déjà attribué au lot précédent à huile végétale / huile de friture / huile végétale raffinée : y verser une huile nommée distincte fusionnerait deux concepts. Unité ml respectée (liquide). Macros complètes vérifiées au classeur (P=0, G=0), le CSV les affiche à tort comme vides."
+    },
+    {
+      "cle": "jambon serrano",
+      "forme": "Jambon serrano",
+      "verdict": "mapper",
+      "alim_code": "28845",
+      "nom_ciqual": "Jambon sec Serrano",
+      "confidence": "A"
+    },
+    {
+      "cle": "jarret de boeuf cru",
+      "forme": "Jarret de bœuf cru",
+      "verdict": "mapper",
+      "alim_code": "6150",
+      "nom_ciqual": "Boeuf, jarret, cru",
+      "confidence": "A",
+      "note": "Espèce, morceau et état (cru) concordent. Glucides à 0 dans le classeur bien que la colonne du CSV soit vide : les quatre macros sont donc bien présentes."
+    },
+    {
+      "cle": "laitue fraiche",
+      "forme": "Laitue fraîche",
+      "verdict": "mapper",
+      "alim_code": "20031",
+      "nom_ciqual": "Laitue, crue",
+      "confidence": "A"
+    },
+    {
+      "cle": "lentille urad blanche seche",
+      "forme": "Lentille urad blanche sèche",
+      "verdict": "mapper",
+      "alim_code": "20530",
+      "nom_ciqual": "Haricot mungo, sec",
+      "confidence": "C",
+      "note": "L'urad dal (Vigna mungo, black gram décortiqué donc blanc) n'est pas une lentille (Lens culinaris) malgré son nom commercial. Le haricot mungo (Vigna radiata) est du même genre Vigna, c'est le parent le plus proche du classeur, à l'état sec conforme : 301,2 kcal / 24,5 P contre ~341 kcal / 25 P pour l'urad. Préféré à 20504 « Lentille, sèche » qui est botaniquement plus éloigné et qui sera selon toute vraisemblance le canonique de la lentille proprement dite — l'y verser fusionnerait deux concepts distincts. Décorticage non reflété (fibres un peu surestimées). Macros complètes."
+    },
+    {
+      "cle": "mayonnaise japonaise",
+      "forme": "Mayonnaise japonaise",
+      "verdict": "mapper",
+      "alim_code": "11054",
+      "nom_ciqual": "Mayonnaise (70% MG min.), préemballée",
+      "confidence": "B",
+      "note": "La mayonnaise japonaise (type Kewpie) se distingue par le jaune d'œuf seul et le vinaigre de riz, mais reste une émulsion à ~72-75% de matière grasse : 692,7 kcal et 75,2 g de lipides sont représentatifs. Même concept culinaire, conformément à la règle de la bible."
+    },
+    {
+      "cle": "melasse de grenade",
+      "forme": "Mélasse de grenade",
+      "verdict": "mapper",
+      "alim_code": "31067",
+      "nom_ciqual": "Mélasse de canne",
+      "confidence": "C",
+      "note": "Aliment différent (réduction de jus de grenade contre sous-produit du raffinage de la canne) mais macros quasi superposables : mélasse de grenade ~290 kcal, 72 g de glucides, 0,3 g de lipides, contre 299,7 / 74,7 / 0,1 ici. Surtout, c'est un sirop, cohérent avec l'unité ml. Les jus de grenade proposés (2017 à 55 kcal, 2039 à 47 kcal) sont écartés : la mélasse est un concentré, ils sous-estimeraient l'énergie d'un facteur six. Macros complètes (protéines à 0 au classeur)."
+    },
+    {
+      "cle": "noix",
+      "forme": "Noix",
+      "verdict": "mapper",
+      "alim_code": "15005",
+      "nom_ciqual": "Noix, séchée, cerneaux",
+      "confidence": "B",
+      "note": "« Noix » sans qualificatif désigne en français le cerneau de noix (Juglans regia), et la forme de garde-manger est le fruit séché, disponible toute l'année, non la noix fraîche de saison. 15023 « Noix, fraîche » (370 kcal) sous-estimerait l'énergie de 46%. Code absent des cinq candidats. Les autres propositions désignent des espèces distinctes (noix du Brésil, pécan, macadamia) ou une huile."
+    },
+    {
+      "cle": "nouille de ble chinoise seche",
+      "forme": "Nouille de blé chinoise sèche",
+      "verdict": "mapper",
+      "alim_code": "9863",
+      "nom_ciqual": "Pâtes ou nouilles asiatiques au blé et aux oeufs, crues, nature",
+      "confidence": "B",
+      "note": "Seule nouille asiatique au blé du classeur à l'état sec/cru, conforme à l'état demandé. Les cinq candidats proposés étaient tous des déshydratés sans rapport (oignon séché, lentille, fève, figue, pomme) retenus sur le seul mot « sèche ». Réserve mineure : la référence Ciqual inclut de l'œuf, absent des nouilles chinoises nature, d'où des protéines légèrement majorées (13 g)."
+    },
+    {
+      "cle": "nouille de riz plate seche",
+      "forme": "Nouille de riz plate sèche",
+      "verdict": "mapper",
+      "alim_code": "9900",
+      "nom_ciqual": "Vermicelle de riz, sèche",
+      "confidence": "B",
+      "note": "Même matière et même état (riz, sèche) ; seule la découpe diffère, plate (banh pho) au lieu de filiforme, sans incidence nutritionnelle. Code absent des cinq candidats, qui ne proposaient que des déshydratés hors sujet. Ne pas confondre avec 9901, version cuite, dont les lipides manquent."
+    },
+    {
+      "cle": "nouille ramen fraiche",
+      "forme": "Nouille ramen fraîche",
+      "verdict": "mapper",
+      "alim_code": "9815",
+      "nom_ciqual": "Pâtes fraîches, aux oeufs, crues",
+      "confidence": "C",
+      "note": "Aucune nouille ramen dans Ciqual. L'état commande ici : le ramen frais contient ~33% d'eau (~280-300 kcal/100 g), il ne peut pas prendre le code sec 9863 (366 kcal) déjà retenu pour la nouille chinoise sèche, ni 9086 qui est cuit. Les pâtes fraîches crues (279 kcal) reproduisent exactement le bon état d'hydratation d'une pâte de blé fraîche non cuite. Aliment différent (pâte italienne à l'œuf contre nouille au kansui), macros représentatives. Complètes."
+    },
+    {
+      "cle": "oeuf marine ajitama",
+      "forme": "Œuf mariné ajitama",
+      "verdict": "mapper",
+      "alim_code": "22010",
+      "nom_ciqual": "Oeuf, dur",
+      "confidence": "B",
+      "note": "L'ajitama est un œuf mollet écalé puis mariné dans un mélange soja-mirin ; l'apport de la marinade absorbée est marginal. Ciqual n'a pas d'œuf mollet, et l'écart entre 22010 (134 kcal) et 22014 « à la coque » (142 kcal) est négligeable. Unité u cohérente avec un œuf entier."
+    },
+    {
+      "cle": "olive noire",
+      "forme": "Olive noire",
+      "verdict": "mapper",
+      "alim_code": "13186",
+      "nom_ciqual": "Olive noire (aliment moyen)",
+      "confidence": "A",
+      "note": "13032 « Olive noire, en saumure, égouttée » est plus spécifique mais ses glucides sont au statut « inférieur à » (< 0,1) sans valeur mesurée, donc absents : il aurait été refusé. L'aliment moyen est complet et couvre le même concept."
+    },
+    {
+      "cle": "orange fraiche",
+      "forme": "Orange fraîche",
+      "verdict": "mapper",
+      "alim_code": "13614",
+      "nom_ciqual": "Pamplemousse chinois, pulpe, cru",
+      "confidence": "C",
+      "note": "Piège du score : les cinq candidats étaient des jus et nectars, pas un fruit. Le code exact serait 13034 « Orange, pulpe, crue » (45,5 kcal) mais ses lipides sont au statut « inférieur à » (< 0,5) sans valeur mesurée, donc absents — il aurait été refusé et la recette serait restée bloquée ; les deux autres oranges (13431, 13432, Martinique) manquent énergie et glucides. Application de la consigne « préférer un code voisin complet à un code exact incomplet » : le pomelo est une pulpe d'agrume crue complète, au profil très proche (protéines 0,76 contre 0,75 ; glucides 8,62 contre 8,03), énergie inférieure de 17%. Préféré à 2070 « Jus d'orange, pur jus » qui reproduirait l'énergie à l'identique mais conflictuerait avec le canonique évident du jus d'orange et supprimerait les fibres, alors que l'unité u désigne un fruit entier."
+    },
+    {
+      "cle": "pain blanc rassis",
+      "forme": "Pain blanc rassis",
+      "verdict": "mapper",
+      "alim_code": "7012",
+      "nom_ciqual": "Pain courant, 400g ou boule",
+      "confidence": "B",
+      "note": "Pain blanc ordinaire en miche, forme sous laquelle un pain rassit et telle qu'employée en cuisine (chapelure, panades, boulettes). Préféré à 7260 « Pain blanc maison (avec farine pour machine à pain) » proposé en tête : macros quasi identiques (253 contre 263 kcal) mais libellé restreint à un pain de machine domestique. Le rassissement est une perte d'eau qui densifie légèrement l'aliment ; convention usuelle, on retient les valeurs du pain frais."
+    },
+    {
+      "cle": "pain pav",
+      "forme": "Pain pav",
+      "verdict": "mapper",
+      "alim_code": "7259",
+      "nom_ciqual": "Pain pour hamburger ou hot dog (bun), préemballé",
+      "confidence": "B",
+      "note": "Le pav indien (pav bhaji, vada pav) est un petit pain blanc moelleux légèrement enrichi en sucre et matière grasse : le bun en est l'équivalent direct, à 290 kcal et 5,35 g de lipides. Unité u cohérente avec un pain à l'unité. Les candidats en tête (pain de mie au son, pain au son, fruit à pain) relèvent d'un artefact textuel sur « pain »."
+    },
+    {
+      "cle": "pain toscan rassis",
+      "forme": "Pain toscan rassis",
+      "verdict": "mapper",
+      "alim_code": "7160",
+      "nom_ciqual": "Pain, baguette, sans sel",
+      "confidence": "B",
+      "note": "Le pane toscano est défini par son absence de sel (pane sciocco), trait que ce code reproduit exactement ; c'est le pain de la panzanella et de la ribollita, précisément consommé rassis. Distinct à dessein du code retenu pour « pain blanc rassis » (7012), les deux libellés ne désignant pas le même pain."
+    },
+    {
+      "cle": "papaye verte",
+      "forme": "Papaye verte",
+      "verdict": "mapper",
+      "alim_code": "13061",
+      "nom_ciqual": "Feijoa, pulpe, crue",
+      "confidence": "C",
+      "note": "Aucune papaye verte dans Ciqual, et les quatre codes de papaye sont tous inexploitables : 13035 et 13202 ont des lipides au statut « inférieur à » sans valeur mesurée, 20829 et 20830 (Martinique) manquent énergie et glucides. Seul 2045 « Nectar de papaye » est complet, mais c'est une boisson sucrée (13,9 g de glucides) incompatible avec une unité en grammes. Application de la consigne sur le code voisin complet : la papaye verte crue de la salade som tam pèse ~39 kcal, 0,6 g de protéines, 9 g de glucides, quasi superposables au feijoa (39,4 / 0,71 / 8,2), autre fruit subtropical cru. Aliment différent, macros représentatives et complètes."
+    },
+    {
+      "cle": "paprika doux hongrois",
+      "forme": "Paprika doux hongrois",
+      "verdict": "mapper",
+      "alim_code": "11049",
+      "nom_ciqual": "Paprika",
+      "confidence": "A",
+      "note": "Le paprika Ciqual correspond au paprika doux, dont la Hongrie est l'origine de référence ; « doux hongrois » est un qualificatif d'origine et de force, pas un aliment distinct."
+    },
+    {
+      "cle": "patate douce crue epluchee",
+      "forme": "Patate douce crue, épluchée",
+      "verdict": "mapper",
+      "alim_code": "4101",
+      "nom_ciqual": "Patate douce, crue",
+      "confidence": "A",
+      "note": "Les valeurs Ciqual de la patate douce crue portent déjà sur la chair épluchée ; espèce et état concordent."
+    },
+    {
+      "cle": "pate d arachide pure",
+      "forme": "Pâte d’arachide pure",
+      "verdict": "mapper",
+      "alim_code": "15202",
+      "nom_ciqual": "Beurre de cacahuète ou Pâte d'arachide",
+      "confidence": "A",
+      "note": "Le libellé Ciqual contient littéralement « Pâte d'arachide ». La mention « pure » (sans sucre ni sel ajoutés) ne déplace pas les macros de façon notable (625,7 kcal / 22,2 P / 16,1 G / 52,5 L). Quatre macros complètes."
+    },
+    {
+      "cle": "persil plat frais",
+      "forme": "Persil plat frais",
+      "verdict": "mapper",
+      "alim_code": "11014",
+      "nom_ciqual": "Persil, frais",
+      "confidence": "A",
+      "note": "Ciqual ne distingue pas persil plat et persil frisé : une seule entrée fraîche. Ne pas prendre 11024 « Persil, séché » (291 kcal, facteur 7)."
+    },
+    {
+      "cle": "piment de cayenne",
+      "forme": "Piment de Cayenne",
+      "verdict": "mapper",
+      "alim_code": "11088",
+      "nom_ciqual": "Poivre de Cayenne ou piment de Cayenne",
+      "confidence": "A",
+      "note": "Correspondance nominale exacte, épice séchée moulue. 20151 « Piment, cru » (41,2 kcal) est un piment frais : facteur 9 sur l'énergie, à écarter ici."
+    },
+    {
+      "cle": "piment de la jamaique en grains",
+      "forme": "Piment de la Jamaïque en grains",
+      "verdict": "mapper",
+      "alim_code": "11056",
+      "nom_ciqual": "Quatre épices",
+      "confidence": "B",
+      "note": "Code ABSENT des cinq candidats. En français « quatre-épices » est le nom courant de Pimenta dioica, c'est-à-dire le piment/poivre de la Jamaïque (allspice) — et non un mélange : les macros de 11056 (P 6,09 / L 8,69) reproduisent exactement celles de l'allspice moulu de référence. Seul écart : baies entières vs moulues, sans conséquence nutritionnelle. Aucun des cinq candidats proposés ne convenait (piment frais, cayenne, blé en grains, céréales soufflées)."
+    },
+    {
+      "cle": "piment oiseau frais",
+      "forme": "Piment oiseau frais",
+      "verdict": "mapper",
+      "alim_code": "20151",
+      "nom_ciqual": "Piment, cru",
+      "confidence": "B",
+      "note": "Piment fort frais d'une variété particulière ; Ciqual n'a qu'une seule entrée générique de piment frais. Cohérent avec l'arbitrage du lot précédent (« piment frais » et « piment vert frais » sur 20151) : même concept culinaire, même canonique. Unité « u » cohérente avec un légume frais."
+    },
+    {
+      "cle": "piment pasilla seche",
+      "forme": "Piment pasilla séché",
+      "verdict": "mapper",
+      "alim_code": "11049",
+      "nom_ciqual": "Paprika",
+      "confidence": "C",
+      "note": "PROXY ASSUMÉ. Le pasilla séché est absent de Ciqual 2020 ; aucun piment séché entier n'y figure. 20151 « Piment, cru » (41,2 kcal) est un piment FRAIS et serait faux d'un facteur 8 sur un produit séché. Paprika est un piment doux séché et moulu : 319 kcal / 14,1 P / 19,1 G / 12,9 L, très proche des valeurs de référence du pasilla séché (~345 kcal / 12,4 P / 15,9 L), et son piquant faible correspond à celui du pasilla. J'écarte volontairement 11088 (Cayenne), déjà retenu pour le concept distinct « piment de Cayenne » : deux concepts distincts ne doivent pas partager un code. Macros complètes."
+    },
+    {
+      "cle": "piment rouge frais",
+      "forme": "Piment rouge frais",
+      "verdict": "mapper",
+      "alim_code": "20151",
+      "nom_ciqual": "Piment, cru",
+      "confidence": "A",
+      "note": "Même concept que « piment frais » déjà arbitré sur 20151 ; la couleur ne crée pas un ingrédient canonique distinct. Attention aux faux candidats à score élevé : 9109 « Riz rouge, cru », 5214 « Vin rouge », 20525 « Haricot rouge, sec »."
+    },
+    {
+      "cle": "piment serrano",
+      "forme": "Piment serrano",
+      "verdict": "mapper",
+      "alim_code": "20151",
+      "nom_ciqual": "Piment, cru",
+      "confidence": "B",
+      "note": "Variété de piment fort frais ; Ciqual n'a pas d'entrée par variété. Le candidat 28845 « Jambon sec Serrano » (score 0,46) est un piège textuel pur — charcuterie, aucun rapport."
+    },
+    {
+      "cle": "poire asiatique fraiche",
+      "forme": "Poire asiatique fraîche",
+      "verdict": "mapper",
+      "alim_code": "13107",
+      "nom_ciqual": "Poire, pulpe, crue",
+      "confidence": "B",
+      "note": "La poire asiatique (nashi, Pyrus pyrifolia) reste une poire ; ses valeurs de référence (~42 kcal / 0,5 P / 10,7 G / 0,2 L) sont quasi identiques à 13107 (43,7 / 0,3 / 10,4 / 0,1). Elle est le plus souvent pelée à l'usage, d'où la pulpe plutôt que 13037 « pulpe et peau ». 2054 « Nectar de poire » est une boisson sucrée, à écarter."
+    },
+    {
+      "cle": "poulet entier cru",
+      "forme": "Poulet entier cru",
+      "verdict": "mapper",
+      "alim_code": "36016",
+      "nom_ciqual": "Poulet, viande et peau, cru",
+      "confidence": "B",
+      "note": "Code ABSENT des cinq candidats — les cinq proposés étaient faux (blé entier, mil entier, couscous au poulet, burger, pilon). MACROS : 36020 « Poulet éviscéré sans abats, cru », le libellé le plus littéral pour un poulet entier, n'a pas de glucides et serait refusé. 36016 « viande et peau » représente la partie comestible d'un poulet entier, macros complètes (173 kcal / 20,2 P / 0,3 G / 10,1 L)."
+    },
+    {
+      "cle": "pousse de bambou",
+      "forme": "Pousse de bambou",
+      "verdict": "mapper",
+      "alim_code": "20198",
+      "nom_ciqual": "Bambou, pousse, crue",
+      "confidence": "B",
+      "note": "La forme ne précise aucun état ; on retient donc l'entrée générique crue, libellé le plus direct. Si le corpus visait explicitement des pousses en boîte égouttées, 20188 (15,4 kcal) s'appliquerait — l'écart reste faible en valeur absolue (35,1 vs 15,4 kcal)."
+    },
+    {
+      "cle": "riz basmati cru",
+      "forme": "Riz basmati cru",
+      "verdict": "mapper",
+      "alim_code": "9119",
+      "nom_ciqual": "Riz thaï ou basmati, cru",
+      "confidence": "A",
+      "note": "État cru respecté. Ne pas prendre 9125 « Riz basmati, cuit » (116 kcal) : facteur 3 sur l'énergie."
+    },
+    {
+      "cle": "riz rond coreen cru",
+      "forme": "Riz rond coréen cru",
+      "verdict": "mapper",
+      "alim_code": "9100",
+      "nom_ciqual": "Riz blanc, cru",
+      "confidence": "B",
+      "note": "Code ABSENT des cinq candidats — les trois proposés étaient de la viande et un beignet (piège « rond »). Le riz rond coréen est un riz blanc à grain court : Ciqual ne classe pas les riz par forme de grain, seulement par type. Même concept culinaire que « riz rond cru » ci-dessous, donc MÊME canonique 9100, conformément à la règle un concept = un ingrédient. 9119 (thaï/basmati) est un riz long, à ne pas utiliser ici."
+    },
+    {
+      "cle": "riz rond cru",
+      "forme": "Riz rond cru",
+      "verdict": "mapper",
+      "alim_code": "9100",
+      "nom_ciqual": "Riz blanc, cru",
+      "confidence": "B",
+      "note": "Code ABSENT des trois candidats, tous faux (bœuf rond de gîte, rond de jambon, beignet rond) malgré des scores de 0,94. Riz blanc à grain court = riz blanc cru, macros identiques (350 kcal / 7,04 P / 78,0 G / 0,91 L). Partage volontairement le canonique de « riz rond coréen cru » : même concept."
+    },
+    {
+      "cle": "sauce hoisin",
+      "forme": "Sauce hoisin",
+      "verdict": "mapper",
+      "alim_code": "11100",
+      "nom_ciqual": "Sauce barbecue, préemballée",
+      "confidence": "C",
+      "note": "PROXY ASSUMÉ. La sauce hoisin est absente de Ciqual 2020. Le plus proche conceptuellement serait 11216 « Sauce soja sucrée, préemballée », mais son énergie ET ses glucides manquent : elle serait refusée par l'applicateur. 11100 est une sauce condimentaire épaisse à dominante sucrée, macros complètes (136 kcal / 0,56 P / 30,3 G / 0,6 L), profil (glucides majoritaires, très peu de lipides) représentatif du hoisin ; l'énergie reste sous-estimée (~220 kcal réels pour le hoisin). Retenue plutôt que 11301 « teriyaki » (88,8 kcal, 16 g de glucides), plus éloignée encore en densité. Les cinq candidats proposés étaient tous faux : sauces crémeuses, poisson en sauce surgelé, quenelle en sauce."
+    },
+    {
+      "cle": "saucisse chinoise lap cheong",
+      "forme": "Saucisse chinoise lap cheong",
+      "verdict": "mapper",
+      "alim_code": "30309",
+      "nom_ciqual": "Saucisse sèche",
+      "confidence": "C",
+      "note": "PROXY ASSUMÉ. Le lap cheong (saucisse de porc chinoise séchée, sucrée au sucre et au vin de riz) n'existe pas dans Ciqual : ce n'est pas le même aliment qu'une saucisse sèche française, sa recette comporte du sucre. Mais c'est bien une saucisse de porc crue-séchée non cuite, et les macros de 30309 (451 kcal / 27,3 P / 1,7 G / 37,1 L) encadrent correctement les valeurs de référence du lap cheong (~500 kcal, ~20 P, ~40 L) ; seuls les glucides sont sous-estimés de quelques grammes. Écartées : les saucisses fraîches à cuire (Morteau, Montbéliard, Francfort, foie), qui sont beaucoup plus humides."
+    },
+    {
+      "cle": "sesame",
+      "forme": "Sésame",
+      "verdict": "mapper",
+      "alim_code": "15010",
+      "nom_ciqual": "Sésame, graine",
+      "confidence": "A",
+      "note": "Forme employée en grammes, sans qualificatif : la graine entière non décortiquée est la référence par défaut. Ne pas confondre avec 17400 « Huile de sésame » (900 kcal, et protéines/glucides manquants → refus applicateur) ni avec 15203 « Tahin »."
+    },
+    {
+      "cle": "shiitake seche",
+      "forme": "Shiitaké séché",
+      "verdict": "mapper",
+      "alim_code": "20211",
+      "nom_ciqual": "Champignon, lentin comestible ou shiitaké, séché",
+      "confidence": "A",
+      "note": "Correspondance directe, état séché respecté (316 kcal / 9,58 P / 63,9 G / 0,99 L). Les autres candidats (oignon séché, lentille sèche, fève sèche, figue sèche) ne partagent que le mot « séché »."
+    },
+    {
+      "cle": "sumac moulu",
+      "forme": "Sumac moulu",
+      "verdict": "mapper",
+      "alim_code": "11081",
+      "nom_ciqual": "Epice (aliment moyen)",
+      "confidence": "C",
+      "note": "PROXY ASSUMÉ. Le sumac est totalement absent de Ciqual 2020 (recherche exhaustive sur le classeur : zéro occurrence). L'unique candidat proposé, 18003 « Café, moulu », est un piège textuel sur le seul mot « moulu ». 11081 « Epice (aliment moyen) » est l'entrée de repli conçue pour ce cas : 345 kcal / 12,3 P / 37,7 G / 10,4 L, très proche des valeurs de référence du sumac moulu (~340 kcal, ~15 L), macros complètes. Le sumac s'emploie de toute façon à la cuillère à café, l'erreur résiduelle est de quelques kcal par recette."
+    },
+    {
+      "cle": "tomatillo frais",
+      "forme": "Tomatillo frais",
+      "verdict": "mapper",
+      "alim_code": "20119",
+      "nom_ciqual": "Tomate verte, crue",
+      "confidence": "C",
+      "note": "PROXY ASSUMÉ. Le tomatillo (Physalis philadelphica) est absent de Ciqual ; ce n'est pas botaniquement une tomate. Code ABSENT des cinq candidats, qui étaient tous des pièges « frais » (jus de mangue, jus de grenade, cerfeuil, persil, basilic). 20119 « Tomate verte, crue » (22,6 kcal / 1,2 P / 4,0 G / 0,2 L) encadre correctement les valeurs de référence du tomatillo (~32 kcal / 1,0 P / 5,8 G / 1,0 L) : même usage culinaire (fruit vert acide cuit en sauce), même ordre de grandeur, macros complètes."
+    },
+    {
+      "cle": "vinaigre de xeres",
+      "forme": "Vinaigre de xérès",
+      "verdict": "mapper",
+      "alim_code": "11018",
+      "nom_ciqual": "Vinaigre",
+      "confidence": "B",
+      "note": "MACROS : le vinaigre de xérès est un vinaigre de vin, donc 11220 « Vinaigre de vin rouge » serait le voisin le plus juste — mais ses glucides ET ses lipides manquent, il serait refusé par l'applicateur. 11018 « Vinaigre » générique a les quatre macros (22,6 kcal / 0,04 P / 0,62 G / 0,1 L) et une énergie quasi identique à celle du vinaigre de vin (21,6 kcal). Bien un liquide, cohérent avec l'unité ml. À ne pas remplacer par 11091 « Vinaigre balsamique » (125 kcal, 25,8 g de sucres — vinaigre sucré, concept différent) ni par les câpres/oignons au vinaigre."
+    },
+    {
+      "cle": "ya cai legumes de moutarde conserves",
+      "forme": "Ya cai légumes de moutarde conservés",
+      "verdict": "ecarter",
+      "motif": "Aucun code honnête n'existe dans Ciqual 2020. Le ya cai est une tige/feuille de moutarde (Brassica juncea) salée, pressée, fermentée et séchée. Recherche exhaustive du classeur : (1) aucune feuille ni tige de moutarde, sous aucun nom — les sept occurrences de « moutarde » sont le condiment (11013 : 152 kcal, 11,2 g de lipides) ou des plats, sans rapport ; (2) aucun légume lacto-fermenté salé nu — la seule choucroute utilisable, 25220, est « égouttée, cuite » avec 6,6 g de lipides ajoutés par la cuisson, ce qui fausse le profil ; (3) les brassicas frais disponibles (20167 chou chinois 13,9 kcal, 20116 chou blanc 36,5 kcal) sont des légumes gorgés d'eau et sous-estimeraient d'un facteur 3 à 4 un légume salé, pressé et séché. Aucun des cinq candidats proposés ne convient : moutarde condiment, flan/gratin/beignet de légumes sont des préparations composées. Mieux vaut laisser la forme non mappée que lui coller un profil faux."
+    },
+    {
+      "cle": "ail cru entier",
+      "forme": "Ail cru entier",
+      "verdict": "mapper",
+      "alim_code": "11307",
+      "nom_ciqual": "Ail, sauté/poêlé, sans matière grasse",
+      "confidence": "C",
+      "note": "Le libellé exact 11000 « Ail, cru » est INUTILISABLE : ses lipides ne sont qu'une borne supérieure (« < 0,5 »), donc absents du classeur, et l'applicateur le refuserait. 11307 est le même ail sans matière grasse ajoutée, seulement concentré par la perte d'eau (130 vs 111 kcal, 6 vs 5,31 P, 22 vs 18,6 G). Proxy d'état assumé cru→sauté ; aux quelques grammes d'usage l'écart absolu est de l'ordre de 2 kcal. Les cinq candidats proposés étaient tous des céréales (blé, mil, maïs, sorgho) — le score textuel a suivi « entier, cru » en ignorant « ail »."
+    },
+    {
+      "cle": "ail cru tranche",
+      "forme": "Ail cru tranché",
+      "verdict": "mapper",
+      "alim_code": "11307",
+      "nom_ciqual": "Ail, sauté/poêlé, sans matière grasse",
+      "confidence": "C",
+      "note": "Même concept culinaire que « ail cru entier » : le tranchage ne modifie aucune macro, donc un seul canonique pour les deux (règle de la Bible). Même motif de proxy : 11000 « Ail, cru » est refusé pour lipides en borne supérieure. Les cinq candidats proposés étaient des viandes et pains retenus sur le mot « tranche » (tende de tranche, pain tranché, jambon en tranche, surimi) — aucun n'est de l'ail."
+    },
+    {
+      "cle": "ajwain graines",
+      "forme": "Ajwain graines",
+      "verdict": "mapper",
+      "alim_code": "11064",
+      "nom_ciqual": "Carvi, graine",
+      "confidence": "C",
+      "note": "L'ajowan (Trachyspermum ammi) est absent de Ciqual 2020 : aucun code ne le désigne. Le carvi est la graine d'ombellifère la plus proche, botaniquement et en composition (334 kcal / 19,8 P / 11,9 G / 14,6 L contre ~350 / 16 / ~25 / ~22 pour l'ajwain de référence). Employé en pincée (1 à 3 g), l'écart est sans portée sur la recette. Les cinq candidats proposés (kiwi, figue de Barbarie, pain suédois, mélanges apéritifs) sortaient tous du registre des épices — retenus sur le seul mot « graines »."
+    },
+    {
+      "cle": "algue gim nori",
+      "forme": "Algue gim nori",
+      "verdict": "mapper",
+      "alim_code": "20987",
+      "nom_ciqual": "Nori (Porphyra sp.), séchée ou déshydratée",
+      "confidence": "A",
+      "note": "Le gim coréen est exactement le nori japonais (Porphyra/Pyropia), vendu en feuilles séchées : le libellé Ciqual désigne le même aliment dans le même état. L'unité « feuille » est cohérente avec un produit conditionné en feuilles. Écarté 11084 « Agar (algue), cru », qui est un gélifiant, et 20995 « Ao-nori », une autre espèce (Enteromorpha)."
+    },
+    {
+      "cle": "amande",
+      "forme": "Amande",
+      "verdict": "mapper",
+      "alim_code": "15000",
+      "nom_ciqual": "Amande (avec peau)",
+      "confidence": "A",
+      "note": "Amande entière non transformée, forme par défaut. Écartés les candidats mieux scorés mais faux : 31036 « Dragée amande » (confiserie) et 17030 « Huile d'amande » (corps gras, par ailleurs refusé car protéines et glucides manquants)."
+    },
+    {
+      "cle": "amande effilee",
+      "forme": "Amande effilée",
+      "verdict": "mapper",
+      "alim_code": "15041",
+      "nom_ciqual": "Amande, mondée, émondée ou blanchie",
+      "confidence": "B",
+      "note": "Les amandes effilées sont taillées dans des amandes émondées (sans peau) : 15041 décrit précisément cette matière première, seule la découpe en lamelles diffère et elle ne change aucune macro. Préféré à 15000 « Amande (avec peau) », retenu pour la forme « amande » nue, ce qui garde les deux concepts distincts. Code absent des cinq propositions."
+    },
+    {
+      "cle": "amande grillee",
+      "forme": "Amande grillée",
+      "verdict": "mapper",
+      "alim_code": "15042",
+      "nom_ciqual": "Amande, grillée, salée",
+      "confidence": "B",
+      "note": "Seul code d'amande grillée du classeur ; le sel ajouté n'affecte aucun des quatre macronutriments contrôlés (il ne joue que sur le sodium). État de préparation exact."
+    },
+    {
+      "cle": "ananas frais",
+      "forme": "Ananas frais",
+      "verdict": "mapper",
+      "alim_code": "13999",
+      "nom_ciqual": "Fruit cru (aliment moyen)",
+      "confidence": "C",
+      "note": "Aucun code d'ananas frais n'est utilisable : 13002 « Ananas, pulpe, cru » a protéines ET lipides en borne supérieure (« < »), 13201 (Victoria) a les lipides en borne supérieure, 13402 (Martinique) n'a ni énergie ni glucides. Tous seraient refusés. 13999 est l'agrégat « fruit cru » de Ciqual, conçu pour ce cas : 59,5 kcal / 0,7 P / 11,6 G / 0,26 L contre 54,4 / ~0,5 / 11,7 / ~0,2 pour l'ananas — moins de 10 % d'écart sur l'énergie et un profil glucidique quasi identique. Ce n'est pas l'ananas, c'est un proxy assumé. Les cinq candidats proposés étaient quatre jus/nectars et du cerfeuil : un jus ne convient pas à une forme employée en grammes de chair."
+    },
+    {
+      "cle": "arachide grillee moulue",
+      "forme": "Arachide grillée moulue",
+      "verdict": "mapper",
+      "alim_code": "15053",
+      "nom_ciqual": "Cacahuète, grillée, sans sel ajouté",
+      "confidence": "B",
+      "note": "État exact (arachide grillée) et sans sel ajouté, ce qui colle mieux à un ingrédient de cuisine que 15002 « Cacahuète, grillée, salée » proposé. La mouture ne modifie aucune macro. Code absent des cinq propositions."
+    },
+    {
+      "cle": "aubergine chinoise fraiche",
+      "forme": "Aubergine chinoise fraîche",
+      "verdict": "mapper",
+      "alim_code": "20053",
+      "nom_ciqual": "Aubergine, crue",
+      "confidence": "B",
+      "note": "L'aubergine chinoise est un cultivar de Solanum melongena : même légume, même état (fraîche = crue), composition équivalente. Ciqual ne distingue aucun cultivar, donc un seul canonique. Écarté 20002 « Aubergine, cuite » : l'état commande, la forme est crue."
+    },
+    {
+      "cle": "aubergine japonaise fraiche",
+      "forme": "Aubergine japonaise fraîche",
+      "verdict": "mapper",
+      "alim_code": "20053",
+      "nom_ciqual": "Aubergine, crue",
+      "confidence": "B",
+      "note": "Cultivar de Solanum melongena comme l'aubergine chinoise : un concept culinaire (l'aubergine crue) = un canonique, conformément à la règle de la Bible. Aucune conséquence nutritionnelle de la variété."
+    },
+    {
+      "cle": "aubergine thai fraiche",
+      "forme": "Aubergine thaï fraîche",
+      "verdict": "mapper",
+      "alim_code": "20053",
+      "nom_ciqual": "Aubergine, crue",
+      "confidence": "B",
+      "note": "L'aubergine thaï (petite, ronde, verte) est une variété de Solanum melongena : texture et amertume diffèrent, la composition non. Ciqual n'offre pas d'autre aubergine crue. Attention au candidat 9119 « Riz thaï ou basmati, cru », retenu sur le seul mot « thaï » : c'est une céréale."
+    },
+    {
+      "cle": "baguette vietnamienne",
+      "forme": "Baguette vietnamienne",
+      "verdict": "mapper",
+      "alim_code": "7001",
+      "nom_ciqual": "Pain, baguette, courante",
+      "confidence": "B",
+      "note": "La baguette de bánh mì est une baguette de froment (parfois coupée de farine de riz), plus aérée mais de composition très voisine du pain baguette courant. Écartés les candidats 25517 à 25519, qui sont des sandwichs garnis (jambon-beurre, camembert, pâté) et non du pain."
+    },
+    {
+      "cle": "banane plantain verte",
+      "forme": "Banane plantain verte",
+      "verdict": "mapper",
+      "alim_code": "53100",
+      "nom_ciqual": "Banane plantain, crue",
+      "confidence": "B",
+      "note": "Le plantain vert est le plantain non mûr, c'est-à-dire l'état cru du fruit. Ciqual ne qualifie pas la maturité : le vert a davantage d'amidon résistant et moins de sucres, mais l'énergie et les glucides totaux sont inchangés. Écarté 53101 « cuite » (l'état commande) et 20119 « Tomate verte, crue », retenu sur le seul mot « verte »."
+    },
+    {
+      "cle": "bar entier cru vide",
+      "forme": "Bar entier cru vidé",
+      "verdict": "mapper",
+      "alim_code": "26250",
+      "nom_ciqual": "Poisson blanc, de mer, cuit (aliment moyen)",
+      "confidence": "C",
+      "note": "Aucun bar cru n'est utilisable : 26072, 26075, 26205, 26206, 26001 et 26172 portent tous des glucides à l'état « traces », donc sans valeur dans le classeur, et seraient tous refusés — de même que 27030 (bar rôti). Aucun poisson cru du classeur ne passe le contrôle, il n'existe pas d'agrégat « poisson cru ». 26250 est l'agrégat des poissons blancs de mer cuits (106 kcal / 22,1 P / 0 G / 2 L) et encadre correctement le bar cru (82 à 124 kcal, 16,6 à 21,4 P, 0,7 à 4,3 L), le bar étant plus maigre que la moyenne, ce qui compense la concentration due à la cuisson. Proxy d'état cru→cuit assumé. Les cinq candidats proposés étaient des céréales entières crues (blé, mil, maïs, sorgho), retenues sur « entier, cru »."
+    },
+    {
+      "cle": "basilic sacre frais",
+      "forme": "Basilic sacré frais",
+      "verdict": "mapper",
+      "alim_code": "11033",
+      "nom_ciqual": "Basilic, frais",
+      "confidence": "B",
+      "note": "Le basilic sacré ou tulsi (Ocimum tenuiflorum) est une espèce voisine du basilic commun (O. basilicum), employée de la même façon en herbe fraîche et de composition équivalente. Écarté 11032 « Basilic, séché » : 244 kcal contre 34,8, l'état sec multiplierait le résultat par sept."
+    },
+    {
+      "cle": "baton de cannelle",
+      "forme": "Bâton de cannelle",
+      "verdict": "mapper",
+      "alim_code": "11025",
+      "nom_ciqual": "Cannelle, poudre",
+      "confidence": "B",
+      "note": "Même épice, même matière (écorce de cannelier) : seule la présentation diffère, bâton contre poudre, sans effet sur la composition. Ciqual ne propose que la poudre — c'était d'ailleurs l'unique candidat, et il est correct."
+    },
+    {
+      "cle": "betterave crue",
+      "forme": "Betterave crue",
+      "verdict": "mapper",
+      "alim_code": "20091",
+      "nom_ciqual": "Betterave rouge, crue",
+      "confidence": "A",
+      "note": "Correspondance directe, état cru respecté. Écarté 20003 « Betterave rouge, cuite »."
+    },
+    {
+      "cle": "beurre clarifie ghee",
+      "forme": "Beurre clarifié ghee",
+      "verdict": "mapper",
+      "alim_code": "16401",
+      "nom_ciqual": "Huile de beurre ou Beurre concentré",
+      "confidence": "B",
+      "note": "Le ghee est du beurre clarifié, c'est-à-dire de la matière grasse butyrique débarrassée de son eau et de ses solides lactés : « Huile de beurre ou Beurre concentré » désigne exactement cette matière (900 kcal, 99,9 g de lipides). Les candidats 16400, 16402 et 16403 (beurres à 80-82 % MG, 732 à 753 kcal) sous-estimeraient l'énergie de 20 % et les lipides de 17 points, parce qu'ils contiennent encore 16 % d'eau. Code absent des cinq propositions. Écartés aussi 20195 et 20203, qui sont des haricots beurre — un légume."
+    },
+    {
+      "cle": "biere blonde",
+      "forme": "Bière blonde",
+      "verdict": "mapper",
+      "alim_code": "5001",
+      "nom_ciqual": "Bière \"coeur de marché\" (4-5° alcool)",
+      "confidence": "B",
+      "note": "La bière « cœur de marché » à 4-5° est la blonde de consommation courante ; c'est le seul code de bière standard exploitable. 5000 « Bière brune », 5009 « Bière blanche », 5010 « spéciale », 5008 et 5030 sont soit d'autres types, soit refusés pour macros en borne supérieure ou en traces. Écartés 5002 « Bière forte (>8°) », proposé en tête mais deux fois plus énergétique, et les lentilles blondes 20586/20588, retenues sur le seul mot « blonde ». Unité ml cohérente avec un liquide."
+    },
+    {
+      "cle": "biere blonde froide",
+      "forme": "Bière blonde froide",
+      "verdict": "mapper",
+      "alim_code": "5001",
+      "nom_ciqual": "Bière \"coeur de marché\" (4-5° alcool)",
+      "confidence": "B",
+      "note": "« Froide » désigne une température de service, pas un état de transformation : la composition est identique à « bière blonde ». Un concept culinaire, un canonique — même code que la forme précédente, conformément à la règle de la Bible."
+    },
+    {
+      "cle": "blanc de poulet cru sans peau",
+      "forme": "Blanc de poulet cru, sans peau",
+      "verdict": "mapper",
+      "alim_code": "36017",
+      "nom_ciqual": "Poulet, filet, sans peau, cru",
+      "confidence": "A",
+      "note": "Correspondance directe sur les trois attributs : filet (blanc), sans peau, cru. Les glucides valent bien 0 dans le classeur, la macro est donc complète malgré une case vide dans le CSV d'énergie. Écarté 36007 « viande et peau », proposé au même score, qui inclut la peau (4,3 g de lipides contre 1,5)."
+    },
+    {
+      "cle": "ble concasse",
+      "forme": "Blé concassé",
+      "verdict": "mapper",
+      "alim_code": "9690",
+      "nom_ciqual": "Boulgour de blé, cru",
+      "confidence": "B",
+      "note": "Le blé concassé du commerce correspond au boulgour, dans son état cru et sec (348 kcal). Les deux candidats proposés sont du frik (51510 et 51511), c'est-à-dire du blé dur immature grillé — un produit distinct au goût fumé ; de surcroît 51511 est cuit et ne vaut que 75 kcal, cinq fois moins que la forme sèche employée ici. Code absent des propositions."
+    },
+    {
+      "cle": "boeuf a braiser cru en petits cubes",
+      "forme": "Bœuf à braiser cru, en petits cubes",
+      "verdict": "mapper",
+      "alim_code": "6231",
+      "nom_ciqual": "Boeuf, à bourguignon ou pot-au-feu, cru",
+      "confidence": "A",
+      "note": "Ciqual dispose d'un agrégat exactement fait pour ce morceau : la viande de bœuf à mijoter, crue, vendue en cubes pour bourguignon ou pot-au-feu. Correspondance directe de morceau et d'état. Code absent des cinq propositions, qui étaient toutes fausses comme signalé : 25033, 25065 et 25558 sont des plats cuisinés, 6101 est du bœuf déjà braisé (240 kcal), et 6116 est du filet, un morceau à griller."
+    },
+    {
+      "cle": "boeuf a griller cru en cubes",
+      "forme": "Bœuf à griller cru, en cubes",
+      "verdict": "mapper",
+      "alim_code": "6206",
+      "nom_ciqual": "Boeuf, rumsteck, cru",
+      "confidence": "B",
+      "note": "Ciqual n'a pas d'agrégat « viande à griller » symétrique de 6231. Le rumsteck est le morceau à griller de référence pour les cubes et brochettes : maigre, tendre, cru (114 kcal / 22,5 P / 2,5 L). Préféré à 6201 « steak ou bifteck, cru », générique mais très gras (223 kcal, 16,2 g de lipides), qui doublerait presque l'énergie réelle de brochettes. Décision volontairement distincte de celle du bœuf à braiser (6231) : morceaux et taux de gras différents, deux canoniques séparés. Mêmes candidats erronés que la forme précédente (plats cuisinés et viande déjà braisée)."
+    },
+    {
+      "cle": "boeuf a griller cru en fines lamelles",
+      "forme": "Bœuf à griller cru, en fines lamelles",
+      "verdict": "mapper",
+      "alim_code": "6111",
+      "nom_ciqual": "Boeuf, faux-filet, cru",
+      "confidence": "B",
+      "note": "Concept unique « bœuf cru finement tranché » partagé avec « boeuf cru tres finement tranche » et « boeuf persille cru tres fin » (règle de la Bible). Le faux-filet est le morceau à griller persillé de référence, cru et complet (152 kcal / 22,3 / 0,6 / 6,74). Le générique exact 6201 « Boeuf, steak ou bifteck, cru » a été écarté : ses glucides sont absents du CSV, l'applicateur le refuserait. Les cinq candidats proposés étaient soit des plats cuisinés (25033, 25065, 25558) soit du bœuf déjà cuit (6101)."
+    },
+    {
+      "cle": "boeuf cru tres finement tranche",
+      "forme": "Bœuf cru très finement tranché",
+      "verdict": "mapper",
+      "alim_code": "6111",
+      "nom_ciqual": "Boeuf, faux-filet, cru",
+      "confidence": "B",
+      "note": "Même concept culinaire que « boeuf a griller cru en fines lamelles » et « boeuf persille cru tres fin » : bœuf cru en tranches fines pour saisie rapide. Le candidat le mieux noté 6160 « Boeuf, tende de tranche, crue » est complet mais très maigre (2,34 g de lipides) et ne représente pas la découpe persillée du concept ; 6111 est le compromis retenu pour les trois libellés."
+    },
+    {
+      "cle": "boeuf hache au couteau",
+      "forme": "Bœuf haché au couteau",
+      "verdict": "mapper",
+      "alim_code": "6254",
+      "nom_ciqual": "Boeuf, steak haché 15% MG, cru",
+      "confidence": "B",
+      "note": "« Haché au couteau » n'est qu'une technique de coupe : même ingrédient canonique que « boeuf hache cru », donc même code (règle de la Bible). Le 15 % MG est le grade standard du haché français et le seul niveau intermédiaire complet côté macros. Les candidats cuits (6251, 6253) contredisent l'état cru et ont en outre les glucides absents."
+    },
+    {
+      "cle": "boeuf hache cru",
+      "forme": "Bœuf haché cru",
+      "verdict": "mapper",
+      "alim_code": "6254",
+      "nom_ciqual": "Boeuf, steak haché 15% MG, cru",
+      "confidence": "B",
+      "note": "Haché de bœuf cru générique ; 15 % MG retenu comme grade représentatif (le « aliment moyen » cuit 6259, à 231 kcal, correspond à ce niveau de gras). 6256 (20 % MG, cru) a été écarté malgré son score identique : ses glucides manquent dans le CSV et il serait refusé."
+    },
+    {
+      "cle": "boeuf marine bulgogi cuit",
+      "forme": "Bœuf mariné bulgogi cuit",
+      "verdict": "mapper",
+      "alim_code": "6100",
+      "nom_ciqual": "Boeuf, entrecôte, partie maigre, grillée/poêlée",
+      "confidence": "C",
+      "note": "Proxy assumé : le bulgogi est du bœuf persillé mariné (soja, sucre, huile de sésame, poire) puis grillé, absent de Ciqual. 6100 restitue l'essentiel — bœuf grillé, 198 kcal / 25,5 P / 10,7 L — mais ne porte pas les sucres de la marinade (bulgogi réel ≈ 4 à 6 g de glucides). Les cinq candidats étaient hors sujet : abats (40053 cœur, 40403 rognon) ou hachés cuits aux glucides manquants."
+    },
+    {
+      "cle": "boeuf persille cru tres fin",
+      "forme": "Bœuf persillé cru très fin",
+      "verdict": "mapper",
+      "alim_code": "6111",
+      "nom_ciqual": "Boeuf, faux-filet, cru",
+      "confidence": "B",
+      "note": "Troisième libellé du même concept (bœuf cru tranché très fin) ; « persillé » est un qualificatif de qualité, pas un aliment distinct, exactement comme « huile végétale raffinée » face à « huile végétale ». Le faux-filet est précisément la découpe persillée. Les cinq candidats proposés étaient tous faux (trois plats cuisinés, un bœuf braisé)."
+    },
+    {
+      "cle": "bouillon d agneau",
+      "forme": "Bouillon d’agneau",
+      "verdict": "mapper",
+      "alim_code": "25930",
+      "nom_ciqual": "Bouillon de boeuf, déshydraté reconstitué",
+      "confidence": "C",
+      "note": "Proxy assumé : aucun bouillon d'agneau dans Ciqual. Employé en ml, donc reconstitué obligatoire (9,05 kcal) et non déshydraté. Le bouillon de bœuf est le bouillon de viande rouge disponible le plus proche. Les cinq candidats proposés étaient des morceaux d'agneau solides (ris, gigot, cœur, foie) à 120–230 kcal : un facteur quinze sur un ingrédient liquide."
+    },
+    {
+      "cle": "bouillon d anchois et algue",
+      "forme": "Bouillon d’anchois et algue",
+      "verdict": "mapper",
+      "alim_code": "25948",
+      "nom_ciqual": "Bouillon de légumes, déshydraté reconstitué",
+      "confidence": "C",
+      "note": "Proxy assumé : le dashi anchois-kombu n'existe pas dans Ciqual. Bouillon clair très léger (≈ 5 à 10 kcal/100 ml), l'algue en fournit le corps ; 25948 en donne le profil (5,38 kcal / 0,34 P). Le candidat 11084 « Agar (algue), cru » est un gélifiant, pas un bouillon, et les codes déshydratés 11001/11174 (233–240 kcal) sont exclus par l'unité ml — facteur quarante."
+    },
+    {
+      "cle": "bouillon de legumes",
+      "forme": "Bouillon de légumes",
+      "verdict": "mapper",
+      "alim_code": "25948",
+      "nom_ciqual": "Bouillon de légumes, déshydraté reconstitué",
+      "confidence": "A",
+      "note": "Correspondance directe, et forme reconstituée cohérente avec l'unité ml. Les quatre autres candidats sont des bouillons pot-au-feu, dont trois déshydratés à 197–213 kcal."
+    },
+    {
+      "cle": "bouillon de porc et poulet",
+      "forme": "Bouillon de porc et poulet",
+      "verdict": "mapper",
+      "alim_code": "25947",
+      "nom_ciqual": "Bouillon de volaille, déshydraté reconstitué",
+      "confidence": "C",
+      "note": "Proxy assumé : pas de bouillon de porc dans Ciqual. Le poulet est l'un des deux composants du fond, et le bouillon de volaille reconstitué (5,58 kcal / 0,6 P) donne le profil d'un bouillon clair mixte. Le candidat le mieux noté 25205 « Chop suey (porc ou poulet), préemballé » est un plat sauté à 78,2 kcal, et les quatre autres des morceaux de porc crus : aucun n'est un liquide."
+    },
+    {
+      "cle": "bouillon de poulet",
+      "forme": "Bouillon de poulet",
+      "verdict": "mapper",
+      "alim_code": "25947",
+      "nom_ciqual": "Bouillon de volaille, déshydraté reconstitué",
+      "confidence": "A",
+      "note": "Bouillon de volaille = bouillon de poulet ; forme reconstituée imposée par l'unité ml. Aucun des cinq candidats n'était un bouillon (couscous, burger, pilon, cœur, foie) — le score textuel n'a retenu que le mot « poulet »."
+    },
+    {
+      "cle": "bouillon de volaille clair",
+      "forme": "Bouillon de volaille clair",
+      "verdict": "mapper",
+      "alim_code": "25947",
+      "nom_ciqual": "Bouillon de volaille, déshydraté reconstitué",
+      "confidence": "A",
+      "note": "Même concept canonique que « bouillon de poulet », donc même code (règle de la Bible) ; « clair » décrit précisément l'état reconstitué. Le candidat le mieux noté 11174 est le déshydraté à 233 kcal : le piège des ml, exactement le cas cité en consigne (facteur quarante)."
+    },
+    {
+      "cle": "bucatini secs",
+      "forme": "Bucatini secs",
+      "verdict": "mapper",
+      "alim_code": "9810",
+      "nom_ciqual": "Pâtes sèches standard, crues",
+      "confidence": "A",
+      "note": "Code absent des cinq propositions, qui étaient toutes des confiseries ou mueslis accrochés au mot « secs » (barre chocolatée, mélanges apéritifs, muesli). Le bucatini est une pâte sèche de blé dur ; l'état sec/cru est respecté (331 kcal contre 125 pour la version cuite 9811 — un facteur près de trois)."
+    },
+    {
+      "cle": "capre au vinaigre",
+      "forme": "Câpre au vinaigre",
+      "verdict": "mapper",
+      "alim_code": "11040",
+      "nom_ciqual": "Câpres, au vinaigre",
+      "confidence": "A",
+      "note": "Correspondance directe. Le candidat le mieux noté était 11018 « Vinaigre » (score 0,48 contre 0,46) : le condiment de conservation, pas l'aliment."
+    },
+    {
+      "cle": "cardamome noire",
+      "forme": "Cardamome noire",
+      "verdict": "mapper",
+      "alim_code": "11075",
+      "nom_ciqual": "Cardamome, poudre",
+      "confidence": "B",
+      "note": "Seul code cardamome du classeur. La cardamome noire (Amomum subulatum) diffère botaniquement de la verte, mais reste une cardamome et s'emploie en quantités infimes : l'écart de macros est sans portée. Les autres candidats accrochaient le mot « noire » (mûre, olive, forêt-noire) et n'ont rien à voir."
+    },
+    {
+      "cle": "carotte nouvelle crue",
+      "forme": "Carotte nouvelle crue",
+      "verdict": "mapper",
+      "alim_code": "20009",
+      "nom_ciqual": "Carotte, crue",
+      "confidence": "B",
+      "note": "Code absent des cinq propositions. « Nouvelle » est un qualificatif de saison, pas un aliment distinct. Le candidat le mieux noté 20208 est la carotte surgelée (24,9 kcal contre 40,2 pour la fraîche) et le deuxième, 4023, est une pomme de terre — le score s'est accroché à « nouvelle ». La forme est crue : 20008 (cuite) et 20092 (déshydratée, 269,8 kcal) sont exclus par l'état."
+    },
+    {
+      "cle": "chair de brochet crue",
+      "forme": "Chair de brochet crue",
+      "verdict": "mapper",
+      "alim_code": "10045",
+      "nom_ciqual": "Coquille Saint-Jacques, noix, crue",
+      "confidence": "C",
+      "note": "Proxy assumé et contraint. Le code exact 27011 « Brochet, cru » existe mais ses glucides sont absents de la source : l'applicateur le refuserait et la recette resterait bloquée. Vérification faite, AUCUN poisson frais cru ou simplement cuit du classeur (26xxx/27xxx) ne possède les quatre macros — les seuls complets sont panés, fumés ou appertisés. La noix de Saint-Jacques crue est la chair marine maigre complète dont le profil colle presque exactement au brochet cru : 83,6 kcal contre 83,7, 17,9 g de protéines contre 18,8, 0,84 g de lipides contre 0,94. Les candidats proposés étaient de la chair à saucisse (323 kcal) et trois légumes crus."
+    },
+    {
+      "cle": "chana masala",
+      "forme": "Chana masala",
+      "verdict": "mapper",
+      "alim_code": "20507",
+      "nom_ciqual": "Pois chiche, bouilli/cuit à l'eau",
+      "confidence": "C",
+      "note": "Proxy assumé : le chana masala (curry de pois chiches) n'existe pas comme plat dans Ciqual. Le pois chiche cuit en est le composant largement dominant et son profil (147 kcal / 8,31 P / 17,7 G / 3 L) est représentatif du plat fini (≈ 130–160 kcal). L'unique candidat, 11202 « Sauce indienne type tandoori ou tikka masala », est une sauce accrochée au mot « masala » et ignore les pois chiches. L'état compte : 20516 « Pois chiche, sec » (324,6 kcal) serait plus du double."
+    },
+    {
+      "cle": "chapelure fine de ble",
+      "forme": "Chapelure fine de blé",
+      "verdict": "mapper",
+      "alim_code": "7500",
+      "nom_ciqual": "Chapelure",
+      "confidence": "A",
+      "note": "Correspondance directe, et seul code chapelure du classeur. « Fine de blé » décrit la mouture standard. Les quatre autres candidats (pâte à pizza, gaufres) étaient accrochés au mot « fine »."
+    },
+    {
+      "cle": "chataigne d eau",
+      "forme": "Châtaigne d’eau",
+      "verdict": "mapper",
+      "alim_code": "20196",
+      "nom_ciqual": "Topinambour, cru",
+      "confidence": "C",
+      "note": "Proxy assumé. Piège majeur : la châtaigne d'eau (Eleocharis dulcis) n'est PAS une châtaigne — c'est un tubercule aquatique croquant, sans lien avec le Castanea. Les cinq candidats, tous notés 0,94–0,96, sont de vraies châtaignes à 112–335 kcal, soit deux à six fois trop. L'espèce est absente du classeur ; le topinambour cru (60,7 kcal / 1,94 P / 11,5 G / 0,31 L) est le tubercule croquant amylacé dont les macros encadrent le mieux la châtaigne d'eau (crue ≈ 97 kcal et 24 g de glucides, égouttée en conserve ≈ 50 kcal et 12 g — les glucides tombent presque pile). La pousse de bambou appertisée, autre réflexe possible, est trois fois trop pauvre (15,4 kcal)."
+    },
+    {
+      "cle": "chicharron de porc",
+      "forme": "Chicharrón de porc",
+      "verdict": "mapper",
+      "alim_code": "8001",
+      "nom_ciqual": "Rillettes pur porc",
+      "confidence": "C",
+      "note": "Proxy assumé : ni couenne frite ni chicharrón dans le classeur, vérification faite. Le chicharrón est du porc gras frit jusqu'au croustillant (≈ 500–550 kcal, 25 P, 45 L) ; les rillettes pur porc sont la préparation de porc cuite et fondue la plus proche disponible en macros complètes (414 kcal / 16,7 P / 38,3 L), avec une énergie sous-estimée d'environ 20 % et des protéines nettement basses si c'est la couenne soufflée qui est visée. Les cinq candidats étaient des morceaux de porc CRUS (146–237 kcal), ce que l'état interdit."
+    },
+    {
+      "cle": "chorizo asturien",
+      "forme": "Chorizo asturien",
+      "verdict": "mapper",
+      "alim_code": "30315",
+      "nom_ciqual": "Chorizo",
+      "confidence": "B",
+      "note": "« Asturien » est un qualificatif régional sur un produit unique, exactement comme « sauce soja japonaise » face à « sauce soja légère » : un concept culinaire, un canonique. Le chorizo asturien est un chorizo séché à cuire, ce que représente le code générique 30315. Le candidat 25462 est une pizza."
+    },
+    {
+      "cle": "chou blanc blanchi",
+      "forme": "Chou blanc blanchi",
+      "verdict": "mapper",
+      "alim_code": "20308",
+      "nom_ciqual": "Chou blanc, bouilli/cuit à l'eau",
+      "confidence": "B",
+      "note": "Code absent des cinq propositions. L'état commande : blanchi est un état cuit, donc 20308 (23,5 kcal) plutôt que le candidat le mieux noté 20116 « Chou blanc, cru » (36,5 kcal). Le blanchiment étant plus bref qu'une cuisson complète, la valeur réelle se situe un peu au-dessus de 23,5. Les candidats 9100 « Riz blanc, cru » et 1018 « Kir (au vin blanc) » sont le piège « blanc » signalé en consigne."
+    }
+  ]
+}

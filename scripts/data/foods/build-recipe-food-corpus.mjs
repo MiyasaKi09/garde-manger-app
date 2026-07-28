@@ -202,11 +202,26 @@ const allRecords = records
     // classeur, lui, porte son sha256 au registre des sources. On le garde
     // néanmoins comme secours, car il couvre des codes que le classeur laisse
     // vides — et comme seule source d'énergie, absente du classeur.
+    //
+    // Entre les deux vient une troisième lecture du classeur, souvent
+    // confondue avec une absence : le statut « inférieur à ». L'ANSES écrit
+    // « < 0,5 » pour les lipides de la carotte, du radis, du poivron —
+    // 209 aliments dont TOUTES les macros manquantes sont ainsi bornées. Ce
+    // n'est pas une donnée absente, c'est une donnée majorée, et l'ANSES
+    // l'emploie elle-même pour calculer l'énergie de ces aliments. La refuser
+    // bloquait des recettes entières sur le gras d'un radis.
     const imported = nutritionByCode.get(record.alim_code) || {}
-    const protein = record.values.protein_g ?? imported.protein_g ?? null
-    const carbohydrate = record.values.carbohydrate_g ?? imported.carbohydrate_g ?? null
-    const fat = record.values.fat_g ?? imported.fat_g ?? null
-    const fiber = record.values.fiber_g ?? imported.fiber_g ?? null
+    const bornes = []
+    const lire = (champ, secours) => {
+      if (Number.isFinite(record.values[champ])) return record.values[champ]
+      const borne = Number(record.upper_bounds?.[champ])
+      if (Number.isFinite(borne)) { bornes.push(champ); return borne }
+      return secours ?? null
+    }
+    const protein = lire('protein_g', imported.protein_g)
+    const carbohydrate = lire('carbohydrate_g', imported.carbohydrate_g)
+    const fat = lire('fat_g', imported.fat_g)
+    const fiber = lire('fiber_g', imported.fiber_g)
     const energy = imported.energy_kcal ?? record.values.energy_kcal
       ?? ([protein, carbohydrate, fat].every(Number.isFinite)
         ? protein * 4 + carbohydrate * 4 + fat * 9
@@ -216,6 +231,7 @@ const allRecords = records
       normalized: normalizeName(record.alim_nom_fr),
       category: resolveCategory(record.grp_nom, record.ssgrp_nom, record.alim_nom_fr),
       nutrition: { energy_kcal: energy, protein_g: protein, carbohydrate_g: carbohydrate, fat_g: fat, fiber_g: fiber },
+      bounded_fields: bornes,
     }
   })
 const candidates = allRecords.filter((record) => record.category)
@@ -344,6 +360,7 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
         : champsCombles.length ? 'ciqual_2020+usda_fdc'
           : explicit?.usda_fdc_id && !baseCiqual ? 'usda_fdc' : 'ciqual_2020',
       ...(champsCombles.length ? { filled_from_usda: { fdc_id: String(explicit.usda_fdc_id), fields: champsCombles } } : {}),
+      ...(retenu.bounded_fields?.length ? { bounded_from_ciqual: retenu.bounded_fields } : {}),
       ...(derive ? {
         derived: {
           field: derive.champ,

@@ -1,0 +1,23 @@
+{
+  "lot": "cohérence — les bouillons « non salés » notés C pointaient la même référence que leurs jumeaux notés B",
+  "decisions": [
+    {
+      "forme": "Bouillon de bœuf non salé",
+      "alim_code": "25930",
+      "confidence": "B",
+      "note": "Même référence que « Bouillon de bœuf », qui était déjà en confiance B : le liquide prêt à consommer (9,05 kcal), et non le cube déshydraté 11001 à 240 kcal. La mention « non salé » ne change que le sodium — l'entrée du classeur en porte davantage qu'un fond maison sans sel. Les quatre grandeurs que le corpus calcule (énergie, protéines, glucides, lipides) sont celles d'un bouillon clair et ne bougent pas : 0,6 g de protéines, 1,33 g de glucides, 0,15 g de lipides. Un écart de sodium ne fait pas d'une référence un proxy."
+    },
+    {
+      "forme": "Bouillon de volaille non salé",
+      "alim_code": "25947",
+      "confidence": "B",
+      "note": "Même référence que « Bouillon de volaille », déjà en confiance B. Même raisonnement : le sodium diffère, les macronutriments non (5,58 kcal, 0,6 g de protéines, 0,5 g de glucides, 0,13 g de lipides)."
+    },
+    {
+      "forme": "Bouillon de légumes non salé",
+      "alim_code": "25948",
+      "confidence": "B",
+      "note": "Même raisonnement que les deux précédents, sur le bouillon de légumes reconstitué (5,38 kcal). Le classeur n'a pas de version non salée ; la différence est portée par le sel, hors des quatre grandeurs calculées."
+    }
+  ]
+}
