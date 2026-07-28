@@ -34,6 +34,9 @@ const recipeCorpus = JSON.parse(
 const foodCorpus = JSON.parse(
   readFileSync(join(ROOT, 'data', 'foods', 'f0-corpus.json'), 'utf8'),
 )
+const ciqualReferenceManifest = JSON.parse(
+  readFileSync(join(ROOT, 'data', 'foods', 'ciqual-reference', 'manifest.json'), 'utf8'),
+)
 
 const catalogBooks = volumes.flatMap((entry) => entry.books)
 const catalogBookByCode = new Map(catalogBooks.map((entry) => [entry.code, entry]))
@@ -682,6 +685,18 @@ const buildVolumeMarkdown = (entry, coverage) => {
     : entryLabel(coverage.inventory_entries, 'repérée', 'repérées')
   const drafted = entryLabel(coverage.drafted_entries || 0, 'réellement rédigée', 'réellement rédigées')
   const validated = entryLabel(coverage.validated_entries || 0, 'validée', 'validées')
+  const referenceCorpusBlock = entry.code === 'V01'
+    ? `## Corpus source industrialisé
+
+- [Lire le rapport du corpus CIQUAL](../ingredients/CIQUAL-2020-CORPUS.md)
+- Références de formes alimentaires : ${ciqualReferenceManifest.counts.source_entries}
+- Profils techniquement acceptés : ${ciqualReferenceManifest.counts.accepted}
+- Entrées à revoir : ${ciqualReferenceManifest.counts.review}
+- Entrées en quarantaine : ${ciqualReferenceManifest.counts.quarantined}
+- Candidats de concepts canoniques : ${ciqualReferenceManifest.counts.canonical_candidates}
+- Grain : une référence source décrit une forme ; elle ne vaut pas validation d’un ingrédient canonique.
+- Migration requise : \`ciqual_2025\` avant publication finale.`
+    : null
 
   const books = entry.books.map((entryBook) => {
     const content = bookContents.get(entryBook.code)
@@ -738,7 +753,7 @@ ${markdownList(entryBook.quality_gates)}
 | Validation | ${validated} |
 | État réel | \`${coverage.completion_status}\` |
 
-## Définition de terminé
+${referenceCorpusBlock ? `${referenceCorpusBlock}\n\n` : ''}## Définition de terminé
 
 Un livre n’est terminé ni parce que son contrat existe, ni parce que des noms ont été inventoriés. Il est publiable uniquement lorsque sa cible est atteinte avec des fiches intégralement rédigées, sourcées et validées, que toutes ses portes de qualité sont franchies et que chaque référence pointe vers une identité canonique validée. Le volume n’est terminé que lorsque tous ses livres et toutes ses dépendances le sont. Une correction crée une nouvelle version ; elle ne réécrit pas silencieusement l’historique.
 
@@ -768,6 +783,11 @@ Cette bibliothèque transforme la Bible et le Plan directeur Myko en **48 volume
 - Libellés de techniques extraits : ${summary.techniques}
 - Concepts alimentaires du snapshot F0 : ${summary.food_concepts}
 - Formes alimentaires du snapshot F0 : ${summary.food_forms}
+- Références alimentaires CIQUAL matérialisées : ${summary.food_reference_entries}
+- Références CIQUAL techniquement acceptées : ${summary.food_reference_accepted_entries}
+- Références CIQUAL à revoir : ${summary.food_reference_review_entries}
+- Références CIQUAL en quarantaine : ${summary.food_reference_quarantined_entries}
+- Candidats de concepts canoniques : ${summary.food_canonical_candidates}
 
 Les mesures live de Supabase enrichissent uniquement l’inventaire. Elles ne peuvent jamais augmenter le nombre d’entrées validées ni la complétude éditoriale.
 
@@ -917,6 +937,11 @@ const summary = {
   drafted_food_concepts: draftFoodConcepts.length,
   validated_food_concepts: validatedFoodConcepts.length,
   food_forms: countFoodForms(),
+  food_reference_entries: ciqualReferenceManifest.counts.source_entries,
+  food_reference_accepted_entries: ciqualReferenceManifest.counts.accepted,
+  food_reference_review_entries: ciqualReferenceManifest.counts.review,
+  food_reference_quarantined_entries: ciqualReferenceManifest.counts.quarantined,
+  food_canonical_candidates: ciqualReferenceManifest.counts.canonical_candidates,
 }
 
 const manifest = {
@@ -930,6 +955,7 @@ const index = {
   source_versions: {
     recipes: recipeCorpus.corpus_version,
     foods: foodCorpus.source?.code || 'myko_f0_curated',
+    food_references: `${ciqualReferenceManifest.source.code}@${ciqualReferenceManifest.source.version}`,
   },
   summary,
   coverage,
