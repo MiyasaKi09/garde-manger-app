@@ -232,11 +232,26 @@ function comblerParAtwater(nutrition) {
 
 const allRecords = records
   .map((record) => {
+    // Le classeur ANSES fait foi, le CSV ne sert qu'en secours.
+    //
+    // L'inverse était en place, et le CSV s'est révélé faux sur les fibres pour
+    // 153 des 233 formes comparables. Deux défauts distincts : il sous-estime
+    // massivement les épices et herbes séchées (cannelle 3,6 g quand l'ANSES
+    // mesure 53,1 ; curry 7,07 pour 53,2 ; laurier 3,62 pour 26,3), et sur les
+    // condiments salés il porte carrément la teneur en SEL — sauce poisson
+    // 22,2 g de « fibres » là où le classeur lit 0,2 g de fibres et 22,2 g de
+    // sel. Servir du sel sous l'étiquette « fibres » n'est pas une imprécision.
+    //
+    // Le CSV n'a par ailleurs aucune provenance vérifiable : il a été produit
+    // par un script `/data/import_ciqual.sh` qui ne vit pas dans le dépôt. Le
+    // classeur, lui, porte son sha256 au registre des sources. On le garde
+    // néanmoins comme secours, car il couvre des codes que le classeur laisse
+    // vides — et comme seule source d'énergie, absente du classeur.
     const imported = nutritionByCode.get(record.alim_code) || {}
-    const protein = imported.protein_g ?? record.values.protein_g ?? null
-    const carbohydrate = imported.carbohydrate_g ?? record.values.carbohydrate_g ?? null
-    const fat = imported.fat_g ?? record.values.fat_g ?? null
-    const fiber = imported.fiber_g ?? record.values.fiber_g ?? null
+    const protein = record.values.protein_g ?? imported.protein_g ?? null
+    const carbohydrate = record.values.carbohydrate_g ?? imported.carbohydrate_g ?? null
+    const fat = record.values.fat_g ?? imported.fat_g ?? null
+    const fiber = record.values.fiber_g ?? imported.fiber_g ?? null
     const energy = imported.energy_kcal ?? record.values.energy_kcal
       ?? ([protein, carbohydrate, fat].every(Number.isFinite)
         ? protein * 4 + carbohydrate * 4 + fat * 9

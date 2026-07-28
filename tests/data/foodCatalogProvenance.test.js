@@ -83,6 +83,30 @@ describe('provenance du catalogue des formes d’aliments', () => {
     expect(vanille.derived).toBeUndefined()
   })
 
+  it('prend les fibres dans le classeur ANSES, pas dans le CSV d’import', () => {
+    // Le CSV `data/ciqual_nutrition_import.csv` était prioritaire sur le
+    // classeur. Il est faux sur les fibres pour 153 des 233 formes comparables,
+    // de deux façons : il sous-estime lourdement les épices et herbes séchées,
+    // et sur les condiments salés il porte la teneur en SEL. Le classeur ANSES
+    // fait foi désormais ; le CSV ne sert plus qu'en secours, et pour l'énergie
+    // qu'il est seul à fournir.
+    const fibres = (nom) => catalog.forms.find((form) => form.canonical_name_normalized === nom)?.per100g.fiberG
+    // Sauce poisson : le CSV lisait 22,2 — c'est son sel, pas ses fibres.
+    expect(fibres('sauce poisson')).toBeCloseTo(0.2, 2)
+    // Cannelle : 3,6 au CSV, 53,1 au classeur. Une écorce séchée est presque
+    // entièrement fibreuse.
+    expect(fibres('cannelle moulue')).toBeCloseTo(53.1, 1)
+    // Ail cru : 1,51 au CSV, 5,8 au classeur — la valeur publiée partout.
+    expect(fibres('ail cru')).toBeCloseTo(5.8, 1)
+    // Et une viande n'a aucune fibre : le CSV en donnait 0,96 à l'agneau haché.
+    expect(fibres('agneau hache cru')).toBe(0)
+
+    // L'énergie, elle, reste hors du classeur : sans le CSV, aucune forme n'en
+    // aurait. C'est la seule raison de le garder.
+    const avecEnergie = catalog.forms.filter((form) => Number.isFinite(form.per100g.kcal))
+    expect(avecEnergie.length).toBeGreaterThan(catalog.forms.length * 0.9)
+  })
+
   it('trace la provenance USDA champ par champ, sans écraser Ciqual', () => {
     const comblees = catalog.forms.filter((form) => form.filled_from_usda)
     expect(comblees.length).toBeGreaterThan(0)
