@@ -9,9 +9,9 @@ export const dynamic = 'force-dynamic'
 /**
  * GET /api/encyclopedie
  *
- * Le manifeste versionné reste disponible même si le contrat SQL n'est pas
- * encore déployé. Une session authentifiée enrichit la réponse avec les
- * agrégats canoniques live, sans exposer de lignes métier.
+ * Le manifeste structurel versionné reste disponible même si le contrat SQL
+ * n'est pas encore déployé. Une session authentifiée enrichit uniquement
+ * l'inventaire avec les agrégats live, sans modifier la complétude validée.
  */
 export async function GET(request) {
   const { supabase, user, error: authError } = await authenticateRequest(request)

@@ -7,14 +7,17 @@
     "subtitle": "Bibliothèque documentaire du réseau cuisine, stock, nutrition et planning",
     "locale": "fr-FR",
     "released_on": "2026-07-28",
-    "status": "active",
+    "status": "authoring",
+    "integration_policy": "blocked_until_all_volumes_validated",
     "doctrine": [
       "Un concept culinaire possède une seule identité canonique.",
       "Un volume organise la connaissance sans dupliquer les objets canoniques.",
       "Toute donnée factuelle est sourcée, versionnée et associée à un niveau de confiance.",
       "Une recette publiée est immuable ; une correction crée une nouvelle version.",
       "L’IA assemble et explique uniquement à partir du corpus validé.",
-      "Chaque ajout doit améliorer au moins la planification, la nutrition, le stock, les courses, les substitutions ou le batch cooking."
+      "Chaque ajout doit améliorer au moins la planification, la nutrition, le stock, les courses, les substitutions ou le batch cooking.",
+      "Une entrée inventoriée ou rédigée ne compte jamais comme validée.",
+      "Les ingrédients, recettes et interactions ne sont intégrés au produit qu’après validation de tous les volumes dont ils dépendent."
     ],
     "architecture": [
       "Produits commerciaux",
@@ -42,10 +45,17 @@
   "generated_summary": {
     "volumes": 48,
     "books": 282,
+    "validated_volumes": 0,
+    "validated_books": 0,
+    "ready_for_integration": false,
     "recipes": 309,
+    "drafted_recipes": 0,
+    "validated_recipes": 0,
     "recipe_memberships": 1543,
     "techniques": 363,
     "food_concepts": 27,
+    "drafted_food_concepts": 0,
+    "validated_food_concepts": 0,
     "food_forms": 31
   },
   "volumes": [
@@ -78,6 +88,7 @@
             "MYKO-Encyclopedie-Culinaire-Plan-Directeur"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "objectif",
             "règle",
@@ -107,6 +118,7 @@
             "MYKO-Encyclopedie-Culinaire-Plan-Directeur"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "objectif",
             "règle",
@@ -136,6 +148,7 @@
             "MYKO-Encyclopedie-Culinaire-Plan-Directeur"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -165,6 +178,7 @@
             "MYKO-Encyclopedie-Culinaire-Plan-Directeur"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "objectif",
             "règle",
@@ -194,6 +208,7 @@
             "MYKO-Encyclopedie-Culinaire-Plan-Directeur"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -225,6 +240,7 @@
             "MYKO-Encyclopedie-Culinaire-Plan-Directeur"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -284,6 +300,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "objectif",
             "règle",
@@ -315,6 +332,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": 4500,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -346,6 +364,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "objectif",
             "règle",
@@ -377,6 +396,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -408,6 +428,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -439,6 +460,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -470,6 +492,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -501,6 +524,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -532,6 +556,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -563,6 +588,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -594,6 +620,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -625,6 +652,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -656,6 +684,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -687,6 +716,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -718,6 +748,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -749,6 +780,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -780,6 +812,7 @@
             "catalog.food_nutrition_profiles"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -832,6 +865,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -863,6 +897,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -894,6 +929,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -925,6 +961,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -956,6 +993,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -987,6 +1025,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -1018,6 +1057,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -1049,6 +1089,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -1080,6 +1121,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -1111,6 +1153,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -1166,6 +1209,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1205,6 +1249,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1244,6 +1289,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1283,6 +1329,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1322,6 +1369,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1361,6 +1409,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1400,6 +1449,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1439,6 +1489,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -1493,6 +1544,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1532,6 +1584,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1571,6 +1624,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1610,6 +1664,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1649,6 +1704,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1688,6 +1744,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1727,6 +1784,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1766,6 +1824,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "matériel",
@@ -1797,6 +1856,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1836,6 +1896,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -1891,6 +1952,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1930,6 +1992,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -1969,6 +2032,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2008,6 +2072,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2047,6 +2112,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2086,6 +2152,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2125,6 +2192,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2164,6 +2232,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2203,6 +2272,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2242,6 +2312,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -2296,6 +2367,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2335,6 +2407,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2374,6 +2447,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2413,6 +2487,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2452,6 +2527,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2491,6 +2567,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2530,6 +2607,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2569,6 +2647,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2633,6 +2712,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2672,6 +2752,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2711,6 +2792,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2750,6 +2832,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2789,6 +2872,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2828,6 +2912,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -2867,6 +2952,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -2923,6 +3009,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -2952,6 +3039,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -2981,6 +3069,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -3010,6 +3099,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3049,6 +3139,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3088,6 +3179,7 @@
             "planning support slots"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -3144,6 +3236,7 @@
             "catalog.food_forms"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3183,6 +3276,7 @@
             "catalog.food_forms"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3222,6 +3316,7 @@
             "catalog.food_forms"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3261,6 +3356,7 @@
             "catalog.food_forms"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3300,6 +3396,7 @@
             "catalog.food_forms"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3339,6 +3436,7 @@
             "catalog.food_forms"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3405,6 +3503,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -3434,6 +3533,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": 2000,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -3463,6 +3563,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -3492,6 +3593,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -3521,6 +3623,7 @@
             "culinary.recipe_versions"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -3584,6 +3687,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -3615,6 +3719,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3656,6 +3761,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3697,6 +3803,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -3728,6 +3835,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -3789,6 +3897,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -3820,6 +3929,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3861,6 +3971,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -3902,6 +4013,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -3933,6 +4045,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -3994,6 +4107,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -4025,6 +4139,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -4066,6 +4181,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -4107,6 +4223,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -4138,6 +4255,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -4199,6 +4317,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -4230,6 +4349,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -4271,6 +4391,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -4312,6 +4433,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -4343,6 +4465,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -4404,6 +4527,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -4435,6 +4559,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -4476,6 +4601,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -4517,6 +4643,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -4548,6 +4675,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -4609,6 +4737,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -4640,6 +4769,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -4681,6 +4811,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -4722,6 +4853,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -4753,6 +4885,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -4814,6 +4947,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -4845,6 +4979,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -4886,6 +5021,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -4927,6 +5063,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -4958,6 +5095,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -5019,6 +5157,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -5050,6 +5189,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -5091,6 +5231,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -5132,6 +5273,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -5163,6 +5305,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -5224,6 +5367,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -5255,6 +5399,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -5296,6 +5441,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -5337,6 +5483,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -5368,6 +5515,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -5429,6 +5577,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -5460,6 +5609,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -5501,6 +5651,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -5542,6 +5693,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -5573,6 +5725,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -5634,6 +5787,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -5665,6 +5819,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -5706,6 +5861,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -5747,6 +5903,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -5778,6 +5935,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -5839,6 +5997,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -5870,6 +6029,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -5911,6 +6071,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -5952,6 +6113,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -5983,6 +6145,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -6044,6 +6207,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -6075,6 +6239,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -6116,6 +6281,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -6157,6 +6323,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -6188,6 +6355,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -6249,6 +6417,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -6280,6 +6449,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -6321,6 +6491,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -6362,6 +6533,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -6393,6 +6565,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -6454,6 +6627,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -6485,6 +6659,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -6526,6 +6701,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -6567,6 +6743,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -6598,6 +6775,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -6659,6 +6837,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -6690,6 +6869,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -6731,6 +6911,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -6772,6 +6953,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -6803,6 +6985,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -6864,6 +7047,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -6895,6 +7079,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -6936,6 +7121,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -6977,6 +7163,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -7008,6 +7195,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -7069,6 +7257,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -7100,6 +7289,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -7141,6 +7331,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -7182,6 +7373,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -7213,6 +7405,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -7274,6 +7467,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -7305,6 +7499,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -7346,6 +7541,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -7387,6 +7583,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -7418,6 +7615,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -7479,6 +7677,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -7510,6 +7709,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -7551,6 +7751,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -7592,6 +7793,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -7623,6 +7825,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -7684,6 +7887,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -7715,6 +7919,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -7756,6 +7961,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -7797,6 +8003,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -7828,6 +8035,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -7889,6 +8097,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -7920,6 +8129,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -7961,6 +8171,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -8002,6 +8213,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -8033,6 +8245,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -8094,6 +8307,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -8125,6 +8339,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -8166,6 +8381,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -8207,6 +8423,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -8238,6 +8455,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -8299,6 +8517,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -8330,6 +8549,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -8371,6 +8591,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -8412,6 +8633,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -8443,6 +8665,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -8504,6 +8727,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -8535,6 +8759,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -8576,6 +8801,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -8617,6 +8843,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -8648,6 +8875,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -8709,6 +8937,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -8740,6 +8969,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -8781,6 +9011,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -8822,6 +9053,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -8853,6 +9085,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -8914,6 +9147,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -8945,6 +9179,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -8986,6 +9221,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -9027,6 +9263,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -9058,6 +9295,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -9119,6 +9357,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -9150,6 +9389,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -9191,6 +9431,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -9232,6 +9473,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -9263,6 +9505,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -9324,6 +9567,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -9355,6 +9599,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -9396,6 +9641,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -9437,6 +9683,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -9468,6 +9715,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -9529,6 +9777,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -9560,6 +9809,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -9601,6 +9851,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "famille",
@@ -9642,6 +9893,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -9673,6 +9925,7 @@
             "culinary.recipe_steps"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -9731,6 +9984,7 @@
             "planning menus"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -9762,6 +10016,7 @@
             "planning menus"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -9793,6 +10048,7 @@
             "planning menus"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -9824,6 +10080,7 @@
             "planning menus"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -9855,6 +10112,7 @@
             "planning menus"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -9886,6 +10144,7 @@
             "planning menus"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -9917,6 +10176,7 @@
             "planning menus"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "objectif",
             "règle",
@@ -9975,6 +10235,7 @@
             "planned demands"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10007,6 +10268,7 @@
             "planned demands"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10039,6 +10301,7 @@
             "planned demands"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10071,6 +10334,7 @@
             "planned demands"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10103,6 +10367,7 @@
             "planned demands"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10135,6 +10400,7 @@
             "planned demands"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10167,6 +10433,7 @@
             "planned demands"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10224,6 +10491,7 @@
             "nutrition targets"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -10254,6 +10522,7 @@
             "nutrition targets"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "code_stable",
             "nom_canonique",
@@ -10284,6 +10553,7 @@
             "nutrition targets"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10316,6 +10586,7 @@
             "nutrition targets"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10348,6 +10619,7 @@
             "nutrition targets"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -10404,6 +10676,7 @@
             "inventory reservations"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10436,6 +10709,7 @@
             "inventory reservations"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10468,6 +10742,7 @@
             "inventory reservations"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10500,6 +10775,7 @@
             "inventory reservations"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10532,6 +10808,7 @@
             "inventory reservations"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -10589,6 +10866,7 @@
             "commercial products"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10621,6 +10899,7 @@
             "commercial products"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10653,6 +10932,7 @@
             "commercial products"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10685,6 +10965,7 @@
             "commercial products"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10717,6 +10998,7 @@
             "commercial products"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10776,6 +11058,7 @@
             "user feedback"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "objectif",
             "règle",
@@ -10806,6 +11089,7 @@
             "user feedback"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10838,6 +11122,7 @@
             "user feedback"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10870,6 +11155,7 @@
             "user feedback"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "entrées",
             "sorties",
@@ -10902,6 +11188,7 @@
             "user feedback"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -10964,6 +11251,7 @@
             "catalog releases"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -10994,6 +11282,7 @@
             "catalog releases"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -11024,6 +11313,7 @@
             "catalog releases"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -11054,6 +11344,7 @@
             "catalog releases"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",
@@ -11084,6 +11375,7 @@
             "catalog releases"
           ],
           "target_entries": null,
+          "content_status": "structure",
           "required_fields": [
             "contrôle",
             "sévérité",

@@ -185,9 +185,84 @@ const buildTechniques = () => {
 const countFoodForms = () => foodCorpus.concepts
   .reduce((count, concept) => count + (concept.forms || []).length, 0)
 
-const countRecipeRole = (patterns) => recipeCorpus.recipes
+const countRecipeRole = (recipes, patterns) => recipes
   .filter((recipe) => includesAny(recipeText(recipe), patterns))
   .length
+
+const hasOwn = (value, key) => Object.prototype.hasOwnProperty.call(value || {}, key)
+
+const isDraftFoodConcept = (concept) => Boolean(
+  concept?.canonical_name
+  && concept?.category
+  && concept?.identity_confidence
+  && concept?.status
+  && concept?.provenance
+  && Array.isArray(concept?.synonyms)
+  && Array.isArray(concept?.varieties)
+  && Array.isArray(concept?.allergens)
+  && Array.isArray(concept?.compatibilities)
+  && Array.isArray(concept?.substitutions)
+  && concept?.sensory_profile
+  && hasOwn(concept, 'seasonality')
+  && Array.isArray(concept?.forms)
+  && concept.forms.length
+  && concept.forms.every((form) => (
+    form?.canonical_name
+    && form?.default_quantity_unit
+    && form?.nutrition
+    && Array.isArray(form?.storage)
+    && Array.isArray(form?.conversions)
+  )),
+)
+
+const isValidatedFoodConcept = (concept) => (
+  ['validated', 'published'].includes(normalize(concept?.status))
+  && isDraftFoodConcept(concept)
+)
+
+const isDraftRecipe = (recipe) => Boolean(
+  recipe?.code
+  && recipe?.family
+  && recipe?.cuisine_origin
+  && recipe?.category
+  && recipe?.meal_role
+  && Number(recipe?.servings) > 0
+  && Array.isArray(recipe?.sources)
+  && recipe.sources.length
+  && Array.isArray(recipe?.ingredients)
+  && recipe.ingredients.length
+  && recipe.ingredients.every((ingredient) => (
+    ingredient?.form
+    && Number.isFinite(Number(ingredient?.quantity))
+    && Number(ingredient.quantity) > 0
+    && ingredient?.unit
+  ))
+  && Array.isArray(recipe?.steps)
+  && recipe.steps.length
+  && recipe.steps.every((step) => step?.instruction)
+  && recipe?.sensory?.profile
+  && recipe?.nutrition
+  && recipe?.batch
+  && recipe?.freezing
+  && recipe?.reheating
+  && Array.isArray(recipe?.accompaniments)
+  && Array.isArray(recipe?.variants)
+  && Array.isArray(recipe?.substitutions)
+  && recipe?.planning_score
+)
+
+const isValidatedRecipe = (recipe) => (
+  ['validated', 'published'].includes(normalize(recipe?.status))
+  && isDraftRecipe(recipe)
+)
+
+const completionStatus = ({ inventory, drafted, validated, target }) => {
+  if (target && validated >= target) return 'validated'
+  if (validated > 0) return 'validation'
+  if (drafted > 0) return 'draft'
+  if (inventory > 0) return 'inventory'
+  return 'structure'
+}
 
 const validateCatalog = (memberships, techniques) => {
   const errors = []
@@ -217,6 +292,9 @@ const validateCatalog = (memberships, techniques) => {
     for (const entryBook of entry.books) {
       if (!entryBook.mission || !entryBook.required_fields?.length || !entryBook.quality_gates?.length) {
         errors.push(`${entryBook.code} ne possède pas son contrat éditorial complet.`)
+      }
+      if (!['structure', 'inventory', 'draft', 'reviewed', 'validated'].includes(entryBook.content_status)) {
+        errors.push(`${entryBook.code} possède un état de contenu inconnu : ${entryBook.content_status}.`)
       }
     }
   }
@@ -257,9 +335,11 @@ const buildVolumeMarkdown = (entry, coverage) => {
       .map(([key, value]) => `${key}: ${value}`)
       .join(' · ')
     : 'aucune cible quantitative'
-  const current = coverage.current_entries == null
-    ? 'mesure disponible via les contrats opérationnels'
-    : `${coverage.current_entries} entrées dans le snapshot local`
+  const inventory = coverage.inventory_entries == null
+    ? 'non mesuré'
+    : `${coverage.inventory_entries} entrées repérées`
+  const drafted = `${coverage.drafted_entries || 0} entrées réellement rédigées`
+  const validated = `${coverage.validated_entries || 0} entrées validées`
 
   const books = entry.books.map((entryBook) => `## ${entryBook.code} — ${entryBook.title}
 
@@ -268,6 +348,7 @@ ${entryBook.mission}
 | Contrat | Valeur |
 |---|---|
 | Type | \`${entryBook.kind}\` |
+| État du contenu | \`${entryBook.content_status}\` |
 | Cible propre | ${entryBook.target_entries ?? 'hérite du volume'} |
 | Sources | ${entryBook.source_contracts.map((source) => `\`${source}\``).join(', ') || 'doctrine Myko'} |
 | Sorties | ${entryBook.outputs.join(', ') || 'fiche versionnée et indexable'} |
@@ -292,11 +373,14 @@ ${markdownList(entryBook.quality_gates)}
 | Dépendances | ${entry.dependencies.map((dependency) => `\`${dependency}\``).join(', ') || 'aucune'} |
 | Sources canoniques | ${entry.source_contracts.map((source) => `\`${source}\``).join(', ') || 'doctrine Myko'} |
 | Cible | ${target} |
-| État mesuré | ${current} |
+| Inventaire | ${inventory} |
+| Rédaction | ${drafted} |
+| Validation | ${validated} |
+| État réel | \`${coverage.completion_status}\` |
 
 ## Définition de terminé
 
-Un livre est publiable lorsque tous ses champs obligatoires sont présents, que ses portes de qualité sont franchies et que chaque référence pointe vers l’identité canonique existante. Une correction crée une nouvelle version ; elle ne réécrit pas silencieusement l’historique.
+Un livre n’est terminé ni parce que son contrat existe, ni parce que des noms ont été inventoriés. Il est publiable uniquement lorsque sa cible est atteinte avec des fiches intégralement rédigées, sourcées et validées, que toutes ses portes de qualité sont franchies et que chaque référence pointe vers une identité canonique validée. Le volume n’est terminé que lorsque tous ses livres et toutes ses dépendances le sont. Une correction crée une nouvelle version ; elle ne réécrit pas silencieusement l’historique.
 
 ${books}
 `
@@ -304,31 +388,41 @@ ${books}
 
 const buildReadme = (summary, coverage) => `# MYKO — Encyclopédie culinaire
 
-Cette bibliothèque transforme la Bible et le Plan directeur Myko en **48 volumes** et **${summary.books} livres** exploitables par le site. Elle ne copie ni les ingrédients ni les recettes : elle les organise par vues éditoriales versionnées.
+Cette bibliothèque transforme la Bible et le Plan directeur Myko en **48 volumes** et **${summary.books} livres à produire**. Le registre, les contrats et les rattachements constituent l’ossature du chantier ; ils ne sont pas le contenu terminé.
+
+> **Règle de vérité :** inventorié ≠ rédigé ≠ validé. Seules les entrées validées comptent dans la complétude. L’intégration des ingrédients, recettes et interactions reste bloquée tant que les 48 volumes et leurs dépendances ne sont pas validés.
 
 ## Contrat d’édition
 
 - Édition : \`${edition.code}\`
 - Contrat : \`${edition.contract_version}\`
-- Volumes : ${summary.volumes}
-- Livres : ${summary.books}
-- Recettes canoniques indexées : ${summary.recipes}
+- État : \`${edition.status}\`
+- Volumes structurés : ${summary.volumes}
+- Volumes validés : ${summary.validated_volumes}
+- Livres structurés : ${summary.books}
+- Livres validés : ${summary.validated_books}
+- Prêt pour intégration : ${summary.ready_for_integration ? 'oui' : 'non'}
+- Recettes inventoriées : ${summary.recipes}
 - Appartenances éditoriales : ${summary.recipe_memberships}
-- Techniques extraites : ${summary.techniques}
+- Libellés de techniques extraits : ${summary.techniques}
 - Concepts alimentaires du snapshot F0 : ${summary.food_concepts}
 - Formes alimentaires du snapshot F0 : ${summary.food_forms}
 
-Les mesures du site fusionnent ce snapshot versionné avec les agrégats live de Supabase. Les objets culinaires restent dans \`catalog.*\` et \`culinary.*\`.
+Les mesures live de Supabase enrichissent uniquement l’inventaire. Elles ne peuvent jamais augmenter le nombre d’entrées validées ni la complétude éditoriale.
 
 ## Volumes
 
-| Code | Volume | Phase | Livres | Snapshot | Cible |
-|---|---|---:|---:|---:|---:|
+| Code | Volume | Phase | Livres | Inventorié | Rédigé | Validé | Cible | État |
+|---|---|---:|---:|---:|---:|---:|---:|---|
 ${volumes.map((entry) => {
     const item = coverage.find((candidate) => candidate.code === entry.code)
     const target = entry.target_metric?.target ?? entry.target_metric?.minimum ?? '—'
-    return `| [${entry.code}](volumes/${entry.code}.md) | ${entry.title} | ${entry.phase} | ${entry.books.length} | ${item.current_entries ?? '—'} | ${target} |`
+    return `| [${entry.code}](volumes/${entry.code}.md) | ${entry.title} | ${entry.phase} | ${entry.books.length} | ${item.inventory_entries ?? '—'} | ${item.drafted_entries} | ${item.validated_entries} | ${target} | ${item.completion_status} |`
   }).join('\n')}
+
+## Ordre de production
+
+Le protocole complet, les critères de passage et l’ordre de dépendance sont décrits dans [PRODUCTION.md](PRODUCTION.md).
 
 ## Régénération
 
@@ -344,47 +438,119 @@ const recipeMemberships = buildRecipeMemberships()
 const techniques = buildTechniques()
 validateCatalog(recipeMemberships, techniques)
 
-const membershipCounts = Object.fromEntries(
-  volumes
-    .filter((entry) => entry.number >= 11 && entry.number <= 40)
-    .map((entry) => [
-      entry.code,
-      recipeMemberships.filter((membership) => membership.volumes.includes(entry.code)).length,
-    ]),
-)
+const draftFoodConcepts = foodCorpus.concepts.filter(isDraftFoodConcept)
+const validatedFoodConcepts = foodCorpus.concepts.filter(isValidatedFoodConcept)
+const draftRecipes = recipeCorpus.recipes.filter(isDraftRecipe)
+const validatedRecipes = recipeCorpus.recipes.filter(isValidatedRecipe)
 
-const staticCounts = {
-  V00: volumes.find((entry) => entry.code === 'V00').books.length,
-  V01: foodCorpus.concepts.length,
-  V02: techniques.length,
-  V03: countRecipeRole([/\bfond\b/, /\bfumet\b/, /\bbouillon\b/, /\bmarinade\b/, /\bsaumure\b/, /\bpate de base\b/]),
-  V04: countRecipeRole([/\bsauce\b/, /\bpesto\b/, /\bvinaigrette\b/, /\bchutney\b/, /\bjus reduit\b/]),
-  V05: countRecipeRole([/\baccompagnement\b/, /\bgarniture\b/, /\bpuree\b/, /\bgratin\b/, /\bpolenta\b/]),
-  V06: recipeCorpus.recipes.filter((recipe) => isDessert(recipe)).length,
-  V07: countRecipeRole([/\bpetit dejeuner\b/, /\bporridge\b/, /\bgranola\b/, /\bpancake\b/, /\bgaufre\b/]),
-  V08: countRecipeRole([/\bcollation\b/, /\bbarre\b/, /\benergy ball\b/, /\bcompote\b/]),
-  V09: countRecipeRole([/\bboisson\b/, /\bsmoothie\b/, /\bcocktail\b/, /\bmocktail\b/, /\binfusion\b/]),
-  V10: recipeCorpus.recipes.length,
-  ...membershipCounts,
+const membershipCountsFor = (recipes) => {
+  const recipeCodes = new Set(recipes.map((recipe) => recipe.code))
+  return Object.fromEntries(
+    volumes
+      .filter((entry) => entry.number >= 11 && entry.number <= 40)
+      .map((entry) => [
+        entry.code,
+        recipeMemberships.filter((membership) => (
+          recipeCodes.has(membership.recipe_code)
+          && membership.volumes.includes(entry.code)
+        )).length,
+      ]),
+  )
 }
 
-const coverage = volumes.map((entry) => ({
-  code: entry.code,
-  title: entry.title,
-  phase: entry.phase,
-  books: entry.books.length,
-  current_entries: staticCounts[entry.code] ?? null,
-  target: entry.target_metric?.target ?? entry.target_metric?.minimum ?? null,
-  target_metric: entry.target_metric,
-}))
+const inventoryMembershipCounts = membershipCountsFor(recipeCorpus.recipes)
+const draftMembershipCounts = membershipCountsFor(draftRecipes)
+const validatedMembershipCounts = membershipCountsFor(validatedRecipes)
+
+const inventoryCounts = {
+  V00: 0,
+  V01: foodCorpus.concepts.length,
+  V02: techniques.length,
+  V03: countRecipeRole(recipeCorpus.recipes, [/\bfond\b/, /\bfumet\b/, /\bbouillon\b/, /\bmarinade\b/, /\bsaumure\b/, /\bpate de base\b/]),
+  V04: countRecipeRole(recipeCorpus.recipes, [/\bsauce\b/, /\bpesto\b/, /\bvinaigrette\b/, /\bchutney\b/, /\bjus reduit\b/]),
+  V05: countRecipeRole(recipeCorpus.recipes, [/\baccompagnement\b/, /\bgarniture\b/, /\bpuree\b/, /\bgratin\b/, /\bpolenta\b/]),
+  V06: recipeCorpus.recipes.filter((recipe) => isDessert(recipe)).length,
+  V07: countRecipeRole(recipeCorpus.recipes, [/\bpetit dejeuner\b/, /\bporridge\b/, /\bgranola\b/, /\bpancake\b/, /\bgaufre\b/]),
+  V08: countRecipeRole(recipeCorpus.recipes, [/\bcollation\b/, /\bbarre\b/, /\benergy ball\b/, /\bcompote\b/]),
+  V09: countRecipeRole(recipeCorpus.recipes, [/\bboisson\b/, /\bsmoothie\b/, /\bcocktail\b/, /\bmocktail\b/, /\binfusion\b/]),
+  V10: recipeCorpus.recipes.length,
+  ...inventoryMembershipCounts,
+}
+
+const draftCounts = {
+  V00: 0,
+  V01: draftFoodConcepts.length,
+  V02: 0,
+  V03: 0,
+  V04: 0,
+  V05: 0,
+  V06: draftRecipes.filter((recipe) => isDessert(recipe)).length,
+  V07: countRecipeRole(draftRecipes, [/\bpetit dejeuner\b/, /\bporridge\b/, /\bgranola\b/, /\bpancake\b/, /\bgaufre\b/]),
+  V08: countRecipeRole(draftRecipes, [/\bcollation\b/, /\bbarre\b/, /\benergy ball\b/, /\bcompote\b/]),
+  V09: countRecipeRole(draftRecipes, [/\bboisson\b/, /\bsmoothie\b/, /\bcocktail\b/, /\bmocktail\b/, /\binfusion\b/]),
+  V10: draftRecipes.length,
+  ...draftMembershipCounts,
+}
+
+const validatedCounts = {
+  V00: 0,
+  V01: validatedFoodConcepts.length,
+  V02: 0,
+  V03: 0,
+  V04: 0,
+  V05: 0,
+  V06: validatedRecipes.filter((recipe) => isDessert(recipe)).length,
+  V07: countRecipeRole(validatedRecipes, [/\bpetit dejeuner\b/, /\bporridge\b/, /\bgranola\b/, /\bpancake\b/, /\bgaufre\b/]),
+  V08: countRecipeRole(validatedRecipes, [/\bcollation\b/, /\bbarre\b/, /\benergy ball\b/, /\bcompote\b/]),
+  V09: countRecipeRole(validatedRecipes, [/\bboisson\b/, /\bsmoothie\b/, /\bcocktail\b/, /\bmocktail\b/, /\binfusion\b/]),
+  V10: validatedRecipes.length,
+  ...validatedMembershipCounts,
+}
+
+const coverage = volumes.map((entry) => {
+  const target = entry.target_metric?.target ?? entry.target_metric?.minimum ?? null
+  const inventoryEntries = inventoryCounts[entry.code] ?? 0
+  const draftedEntries = draftCounts[entry.code] ?? 0
+  const validatedEntries = validatedCounts[entry.code] ?? 0
+  return {
+    code: entry.code,
+    title: entry.title,
+    phase: entry.phase,
+    books: entry.books.length,
+    current_entries: inventoryEntries,
+    inventory_entries: inventoryEntries,
+    drafted_entries: draftedEntries,
+    validated_entries: validatedEntries,
+    inventory_percent: target ? Math.min(100, Math.round((inventoryEntries / target) * 100)) : null,
+    draft_percent: target ? Math.min(100, Math.round((draftedEntries / target) * 100)) : null,
+    completion_percent: target ? Math.min(100, Math.round((validatedEntries / target) * 100)) : null,
+    completion_status: completionStatus({
+      inventory: inventoryEntries,
+      drafted: draftedEntries,
+      validated: validatedEntries,
+      target,
+    }),
+    target,
+    target_metric: entry.target_metric,
+  }
+})
 
 const summary = {
   volumes: volumes.length,
   books: volumes.reduce((count, entry) => count + entry.books.length, 0),
+  validated_volumes: coverage.filter((entry) => entry.completion_status === 'validated').length,
+  validated_books: volumes
+    .flatMap((entry) => entry.books)
+    .filter((entry) => entry.content_status === 'validated').length,
+  ready_for_integration: coverage.every((entry) => entry.completion_status === 'validated'),
   recipes: recipeCorpus.recipes.length,
+  drafted_recipes: draftRecipes.length,
+  validated_recipes: validatedRecipes.length,
   recipe_memberships: recipeMemberships.reduce((count, item) => count + item.volumes.length, 0),
   techniques: techniques.length,
   food_concepts: foodCorpus.concepts.length,
+  drafted_food_concepts: draftFoodConcepts.length,
+  validated_food_concepts: validatedFoodConcepts.length,
   food_forms: countFoodForms(),
 }
 
