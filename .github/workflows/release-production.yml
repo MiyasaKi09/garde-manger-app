@@ -44,6 +44,30 @@ jobs:
       VERCEL_ORG_ID: team_MVt6BMtIICl0edY7H0YFiCaC
       VERCEL_PROJECT_ID: prj_uAqd9Tniy2CDeN2bAWCPYlgVCET0
     steps:
+      # Les secrets sont vérifiés AVANT toute action sur la production. Sans ce
+      # garde-fou, un VERCEL_TOKEN absent ne se manifestait qu'après six minutes
+      # de migrations, sous la forme d'un « You defined "--token", but it's
+      # missing a value » de la CLI Vercel — un message qui ne nomme ni le
+      # secret ni le dépôt. La base se retrouvait migrée, le front non déployé,
+      # et le canary jamais exécuté.
+      - name: Vérifier les secrets de release
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          SUPABASE_POOLER_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+        run: |
+          manquants=""
+          for secret in VERCEL_TOKEN SUPABASE_DB_PASSWORD SUPABASE_POOLER_HOST SUPABASE_PROJECT_REF; do
+            if [ -z "${!secret}" ]; then manquants="$manquants $secret"; fi
+          done
+          if [ -n "$manquants" ]; then
+            echo "::error title=Secret de release manquant::Secrets absents ou vides :$manquants"
+            echo "Renseignez-les dans Settings → Secrets and variables → Actions du dépôt." >&2
+            echo "Aucune migration n'a été appliquée : la production est inchangée." >&2
+            exit 1
+          fi
+          echo "Tous les secrets de release sont présents."
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
