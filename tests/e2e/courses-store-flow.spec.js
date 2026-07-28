@@ -186,12 +186,17 @@ test.describe('Courses — acheté → ranger', () => {
     await expect(dialog.getByText(/15 juil/i)).toBeVisible()
 
     // Click "Tout ranger"
+    // Même précaution que pour le PATCH plus haut, et pour la même raison :
+    // la route est mockée, sa réponse part dans le même tick que le clic. Armée
+    // après, l'attente pouvait la manquer et expirer au bout de 30 s — ce
+    // qu'elle a fini par faire en CI, jamais en local.
     const toutRangerBtn = dialog.getByRole('button', { name: /tout ranger/i })
     await expect(toutRangerBtn).toBeVisible()
+    const addToStockDone = page.waitForResponse((r) => r.url().includes('/api/courses/add-to-stock'))
     await toutRangerBtn.click()
 
     // add-to-stock should have been called
-    await page.waitForResponse((r) => r.url().includes('/api/courses/add-to-stock'))
+    await addToStockDone
     expect(addToStockCalled).toBe(true)
 
     // Phase "done": success state in sheet

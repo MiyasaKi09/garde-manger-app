@@ -481,6 +481,11 @@
       "confidence": "B",
       "note": "Code absent des cinq propositions. L'état commande : blanchi est un état cuit, donc 20308 (23,5 kcal) plutôt que le candidat le mieux noté 20116 « Chou blanc, cru » (36,5 kcal). Le blanchiment étant plus bref qu'une cuisson complète, la valeur réelle se situe un peu au-dessus de 23,5. Les candidats 9100 « Riz blanc, cru » et 1018 « Kir (au vin blanc) » sont le piège « blanc » signalé en consigne."
     },
+    "chou blanc fermente curtido": {
+      "ciqual_alim_code": "20116",
+      "confidence": "C",
+      "note": "Proxy assumé, en suivant le précédent du kimchi et de la choucroute : chou blanc cru pour un chou blanc lacto-fermenté. La fermentation consomme une partie des sucres ; le classeur n'a aucun légume lacto-fermenté nu."
+    },
     "chou blanc frais": {
       "ciqual_alim_code": "20116",
       "note": "Pièges écartés : 9100 « Riz blanc, cru » et 1018 « Kir (au vin blanc) », rapprochés par le seul mot « blanc ». Frais ≡ cru ; 20308 est la version bouillie, non retenue."
@@ -489,12 +494,36 @@
       "ciqual_alim_code": "20167",
       "note": "Frais = cru. 20221 (cuit) écarté : l'état importe et la forme est pesée crue."
     },
+    "chou chinois sale": {
+      "ciqual_alim_code": "20167",
+      "confidence": "C",
+      "note": "Proxy assumé. Le chou chinois cru (13,9 kcal) est gorgé d'eau ; salé et pressé, le produit réel est concentré et pèse davantage au gramme. Le classeur n'a pas d'état salé pour ce légume."
+    },
+    "chou emince frais": {
+      "ciqual_alim_code": "20116",
+      "confidence": "B",
+      "note": "« Chou » sans autre précision, émincé cru, est du chou blanc : 36,5 kcal, 4,63 g de glucides. L'éminçage est une découpe."
+    },
     "chou fleur frais": {
       "ciqual_alim_code": "20016"
     },
     "chou kale frais": {
       "ciqual_alim_code": "20218",
       "note": "« Chou frise » est le libelle Ciqual du kale, verifie sur les micronutriments : beta-carotene 5930 ug, vitamine C 145 mg, calcium 185 mg — signature du kale, quand le chou vert (20069) plafonne a 321 ug / 69 mg / 96 mg. Aucun des cinq candidats proposes (chou-fleur, Bruxelles, rave, vert, blanc) n'etait le bon."
+    },
+    "chou kale portugais": {
+      "ciqual_alim_code": "20218",
+      "confidence": "B",
+      "note": "La couve galega est un chou frisé non pommé — 20218 « Chou frisé, cru », 43,8 kcal, 4,33 g de protéines. À distinguer de 20069 « Chou vert, cru », qui porte déjà le chou vert pommé."
+    },
+    "chou noir kale": {
+      "ciqual_alim_code": "20218",
+      "confidence": "B",
+      "note": "Le cavolo nero est un chou frisé à feuilles sombres : même espèce et même état que la couve galega, même code."
+    },
+    "chou vert frais": {
+      "ciqual_alim_code": "20069",
+      "note": "Correspondance directe : 21,5 kcal, 2,53 g de protéines."
     },
     "choucroute crue fermentee": {
       "ciqual_alim_code": "20116",
@@ -506,6 +535,11 @@
       "usda_name": "Sausage, pork, chorizo, link or ground, raw",
       "confidence": "B",
       "note": "Le classeur ne connaît le chorizo qu'en garniture de pizza. Chouriço, chorizo et linguiça sont la même famille : saucisse de porc au paprika, séchée ou fumée. Réduction canonique sur la référence USDA du chorizo cru."
+    },
+    "chutney d abricot": {
+      "ciqual_alim_code": "31037",
+      "confidence": "C",
+      "note": "Proxy assumé. Le classeur n'a aucun chutney. La confiture d'abricot (247 kcal, 59,7 g de glucides) partage le fruit et la cuisson au sucre, mais un chutney est moins sucré, allongé de vinaigre et d'épices : l'énergie est surestimée d'environ un tiers."
     },
     "ciboule fraiche": {
       "ciqual_alim_code": "11003"
@@ -534,6 +568,10 @@
       "ciqual_alim_code": "11080",
       "confidence": "C",
       "note": "Proxy assumé : aucune entrée citronnelle (Cymbopogon) dans Ciqual 2020 (0 résultat sur citronnelle/lemon/verveine). On approxime la tige aromatique fraîche par la moyenne des herbes fraîches (49,4 kcal ; 3,58 g prot). La citronnelle réelle est plus fibreuse et environ deux fois plus énergétique (~99 kcal), mais elle est employée en quelques grammes, souvent écrasée puis retirée. Les candidats proposés (Noix fraîche 370 kcal, Menthe, Coriandre) ne tenaient qu'au mot « fraîche »."
+    },
+    "clou de girofle moulu": {
+      "ciqual_alim_code": "11052",
+      "note": "Même épice, même code que le clou entier : la mouture ne change pas la composition. 335 kcal."
     },
     "comte": {
       "usda_fdc_id": "171242",
@@ -660,11 +698,20 @@
     "endive fraiche": {
       "ciqual_alim_code": "20026"
     },
+    "eomuk gateau de poisson": {
+      "ciqual_alim_code": "26046",
+      "confidence": "B",
+      "note": "L'eomuk coréen est un surimi : chair de poisson blanc broyée, liée à l'amidon et pochée ou frite. 26046 « Surimi, bâtonnets, tranche ou râpé » est le même produit sous son nom japonais d'origine (125 kcal, 8,31 g de protéines, 11,8 g de glucides)."
+    },
     "epaule d agneau crue": {
       "ciqual_alim_code": "21504"
     },
     "epaule de porc crue": {
       "ciqual_alim_code": "28001"
+    },
+    "epaule de veau crue": {
+      "ciqual_alim_code": "6560",
+      "note": "Correspondance directe : 124 kcal, 20,7 g de protéines, 4,63 g de lipides."
     },
     "epaule de veau crue en cubes": {
       "ciqual_alim_code": "6560"
@@ -686,9 +733,19 @@
       "confidence": "B",
       "note": "Proxy technologique T45, le plus proche de la farine italienne type 00."
     },
+    "farine de mais blanche": {
+      "ciqual_alim_code": "9545",
+      "confidence": "B",
+      "note": "361 kcal, 78,1 g de glucides. La couleur tient au cultivar, pas à la composition ; le classeur ne distingue pas le maïs blanc du jaune. À ne pas confondre avec la masa harina, nixtamalisée, qui a son propre canonique."
+    },
     "farine de pois chiche": {
       "ciqual_alim_code": "9580",
       "note": "Presence dans le classeur 2020 verifiee malgre un groupe vide, macros completes (359 kcal, 22,4 / 47 / 6,69)."
+    },
+    "farine de pois chiche grillee": {
+      "ciqual_alim_code": "9580",
+      "confidence": "B",
+      "note": "359 kcal, 22,4 g de protéines. Le grillage préalable de la farine (besan grillé) développe l'arôme et retire un peu d'eau ; il ne déplace pas les macronutriments de façon mesurable."
     },
     "fecule de mais": {
       "ciqual_alim_code": "9510",
@@ -696,6 +753,11 @@
     },
     "fenugrec en graines": {
       "ciqual_alim_code": "11077"
+    },
+    "fenugrec seche kasuri methi": {
+      "ciqual_alim_code": "11077",
+      "confidence": "C",
+      "note": "Proxy assumé, et le piège est dans la partie de la plante. Le kasuri methi est la FEUILLE de fenugrec séchée ; 11077 est la GRAINE (350 kcal, 27,1 g de protéines, 6,41 g de lipides). La feuille séchée est nettement moins grasse et moins protéinée. Le classeur n'a que la graine, et l'emploi est de l'ordre du gramme, écrasé entre les paumes en fin de cuisson."
     },
     "feuille de brick": {
       "ciqual_alim_code": "51550",
@@ -720,8 +782,21 @@
     "feuille de laurier sechee": {
       "ciqual_alim_code": "11053"
     },
+    "filet de boeuf cru en lanieres": {
+      "ciqual_alim_code": "6116",
+      "note": "Correspondance directe : 132 kcal, 21,6 g de protéines. La découpe en lanières est un geste, pas un état."
+    },
     "filet mignon de porc cru": {
       "ciqual_alim_code": "28204"
+    },
+    "flanchet de boeuf cru": {
+      "ciqual_alim_code": "6122",
+      "confidence": "C",
+      "note": "Proxy assumé. Le classeur n'a pas le flanchet. 6122 « Boeuf, plat de côtes, cru » vient de la même région de la carcasse — le ventre — et partage son gras persillé et son usage en cuisson longue : 287 kcal, 18,4 g de protéines, 23,7 g de lipides. Le flanchet réel est un peu plus maigre."
+    },
+    "frisee fraiche": {
+      "ciqual_alim_code": "20012",
+      "note": "Correspondance directe : « Salade ou chicorée frisée, crue », 17,8 kcal."
     },
     "fromage frais mexicain": {
       "ciqual_alim_code": "12060",
@@ -804,10 +879,20 @@
       "confidence": "C",
       "note": "Proxy assumé : ni cornille, ni niébé, ni dolique au classeur (0 occurrence). Ce qui est approximé : une légumineuse sèche à réhydrater, ~23 g de protéines et ~46 g de glucides pour 100 g de graine sèche. 20525 (283,9 kcal, 22,5 g de protéines) colle mieux que 20501 « Haricot blanc, sec » proposé en candidat (268 kcal, 19,1 g de protéines), en retrait de 19 % sur les protéines. L'état sec est respecté : les autres candidats (haricot vert, beurre, plat, de Lima, tous « crus ») sont des gousses fraîches à ~26-31 kcal, soit dix fois moins — contresens majeur si retenus."
     },
+    "haricot geant sec": {
+      "ciqual_alim_code": "20501",
+      "confidence": "B",
+      "note": "Même espèce et même état que le lingot : le haricot géant (gigantes) est un haricot blanc de gros calibre. Le calibre change le temps de trempage, pas la composition."
+    },
     "haricot kilometre cru": {
       "ciqual_alim_code": "20061",
       "confidence": "C",
       "note": "Le haricot kilomètre (Vigna unguiculata sesquipedalis) est une espèce distincte du haricot vert (Phaseolus vulgaris), pas une simple variété : à gousse comestible également, mais plus dense (~1,5x l'énergie d'après le rapport USDA yardlong 47 kcal / snap bean 31 kcal, soit ~39 kcal rapporté à l'échelle Ciqual contre 25,9 ici). Aucune entrée Ciqual pour cette espèce. Retenu comme proxy de catégorie « gousse verte crue » ; l'énergie est sous-estimée d'environ un tiers. Macros complètes."
+    },
+    "haricot lingot sec": {
+      "ciqual_alim_code": "20501",
+      "confidence": "B",
+      "note": "Le lingot est un cultivar de haricot blanc ; le classeur ne descend pas à la variété. 268 kcal, 19,1 g de protéines, 43,9 g de glucides à l'état sec."
     },
     "haricot noir sec": {
       "ciqual_alim_code": "20525",
@@ -878,6 +963,11 @@
     "jarret de boeuf cru avec os": {
       "ciqual_alim_code": "6150"
     },
+    "jarret de veau cru en tranches avec os": {
+      "ciqual_alim_code": "6583",
+      "confidence": "B",
+      "note": "Même morceau, tranché en osso-buco. Le classeur porte la chair (118 kcal, 21,3 g de protéines) ; la forme est pesée avec l'os, ce qui surestime l'apport d'environ un quart selon l'épaisseur des tranches. Réserve d'usage, pas erreur d'aliment."
+    },
     "jaune d oeuf cru": {
       "ciqual_alim_code": "22002"
     },
@@ -887,6 +977,11 @@
     "jus de citron vert frais": {
       "ciqual_alim_code": "2030",
       "note": "« Frais » désigne le jus pressé, donc la forme maison (9,1 kcal), pas 2031 « pur jus » qui est le jus conditionné."
+    },
+    "kimchi de chou fermente mur": {
+      "ciqual_alim_code": "20116",
+      "confidence": "C",
+      "note": "Même arbitrage que le kimchi déjà en base et que la choucroute : chou blanc cru. Le kimchi mûr est plus acide et un peu moins sucré que le jeune, écart sans expression sur les quatre grandeurs calculées."
     },
     "lait de coco": {
       "ciqual_alim_code": "18041"
@@ -915,8 +1010,17 @@
       "confidence": "C",
       "note": "L'urad dal (Vigna mungo, black gram décortiqué donc blanc) n'est pas une lentille (Lens culinaris) malgré son nom commercial. Le haricot mungo (Vigna radiata) est du même genre Vigna, c'est le parent le plus proche du classeur, à l'état sec conforme : 301,2 kcal / 24,5 P contre ~341 kcal / 25 P pour l'urad. Préféré à 20504 « Lentille, sèche » qui est botaniquement plus éloigné et qui sera selon toute vraisemblance le canonique de la lentille proprement dite — l'y verser fusionnerait deux concepts distincts. Décorticage non reflété (fibres un peu surestimées). Macros complètes."
     },
+    "lentille urad noire entiere seche": {
+      "ciqual_alim_code": "20504",
+      "confidence": "C",
+      "note": "Proxy assumé. L'urad (Vigna mungo) n'est pas une lentille (Lens culinaris) mais un haricot ; le classeur ne le référence pas. La lentille sèche générique (316,1 kcal, 25,4 g de protéines, 50,6 g de glucides) encadre bien l'urad réel (environ 341 kcal et 25 g de protéines), même usage et même état sec."
+    },
     "lentille verte seche crue": {
       "ciqual_alim_code": "20585"
+    },
+    "levure boulangere fraiche": {
+      "ciqual_alim_code": "11010",
+      "note": "« Levure de boulanger, compressée » est exactement la levure fraîche en cube : 97,6 kcal, 8,3 g de protéines. À ne pas confondre avec 11045, la déshydratée (306,9 kcal), ni avec 11046, la levure chimique."
     },
     "levure boulangere seche": {
       "ciqual_alim_code": "11045"
@@ -1011,6 +1115,11 @@
       "confidence": "B",
       "note": "Pièges écartés : 9100 « Riz blanc, cru » et 1018 « Kir (au vin blanc) », à score égal au bon candidat. Le classeur n'a pas d'oignon blanc cru ; il regroupe d'ailleurs blanc et jaune dans une même entrée (20322, sauté). L'oignon générique cru est donc le canonique, l'oignon blanc n'en étant qu'une variante."
     },
+    "oignon en poudre": {
+      "usda_fdc_id": "171327",
+      "usda_name": "Spices, onion powder",
+      "note": "Le classeur a l'ail en poudre (11023) mais pas l'oignon. USDA le référence exactement : 341 kcal, 10,4 g de protéines, 79,1 g de glucides."
+    },
     "oignon grelot cru": {
       "ciqual_alim_code": "20034"
     },
@@ -1103,6 +1212,10 @@
     "paprika doux hongrois": {
       "ciqual_alim_code": "11049",
       "note": "Le paprika Ciqual correspond au paprika doux, dont la Hongrie est l'origine de référence ; « doux hongrois » est un qualificatif d'origine et de force, pas un aliment distinct."
+    },
+    "paprika fort hongrois": {
+      "ciqual_alim_code": "11049",
+      "note": "Le paprika est le paprika : 319 kcal, 14,1 g de protéines. Le degré de force tient au cultivar et à la présence des graines, sans effet sur les macronutriments."
     },
     "paprika fume": {
       "ciqual_alim_code": "11049"
@@ -1252,6 +1365,11 @@
       "confidence": "B",
       "note": "Variété de piment fort frais ; Ciqual n'a pas d'entrée par variété. Le candidat 28845 « Jambon sec Serrano » (score 0,46) est un piège textuel pur — charcuterie, aucun rapport."
     },
+    "piment vert doux frais": {
+      "ciqual_alim_code": "20085",
+      "confidence": "B",
+      "note": "Même arbitrage que « piment doux vert frais » : un piment non piquant est nutritionnellement un poivron. 20151 « Piment, cru » reste réservé au piment piquant. Lipides au statut « inférieur à 0,5 g », valeur majorée retenue."
+    },
     "piment vert frais": {
       "ciqual_alim_code": "20151",
       "confidence": "B",
@@ -1389,6 +1507,11 @@
       "confidence": "C",
       "note": "Proxy curry en poudre ; assemblage aromatique à sourcer séparément."
     },
+    "reblochon au lait cru": {
+      "ciqual_alim_code": "12034",
+      "confidence": "B",
+      "note": "Le classeur n'a pas de reblochon nommé, mais il publie l'agrégat « Fromage à pâte molle et croûte lavée » : 322 kcal, 20,2 g de protéines, 26,5 g de lipides, contre environ 330, 20 et 27 pour le reblochon. C'est sa famille technologique et son profil. Le lait cru change l'affinage et la flore, pas les macronutriments."
+    },
     "rhum ambre": {
       "ciqual_alim_code": "1004"
     },
@@ -1416,6 +1539,10 @@
       "ciqual_alim_code": "9100",
       "confidence": "B",
       "note": "Réduction canonique : « riz cru » sans autre précision est du riz blanc long cru."
+    },
+    "riz etuve cru": {
+      "ciqual_alim_code": "9101",
+      "note": "Correspondance directe : « Riz blanc étuvé, cru », 354 kcal. L'étuvage préalable au décorticage change la texture et migre des vitamines vers l'amande, il ne change pas les macronutriments."
     },
     "riz japonais cru": {
       "ciqual_alim_code": "9100",
@@ -1579,6 +1706,11 @@
       "confidence": "B",
       "note": "Le tofu nature préemballé de Ciqual est le bloc ferme (143 kcal, 14,7 g de protéines). À distinguer nettement de 20906 « Tofu soyeux » (52,5 kcal) et de 20912 « Tofu fumé », qui sont d'autres concepts."
     },
+    "tofu soyeux ferme": {
+      "ciqual_alim_code": "20906",
+      "confidence": "B",
+      "note": "« Tofu soyeux, préemballé », 52,5 kcal, 5 g de protéines. Le soyeux ferme est la version la moins hydratée de la même famille — trois fois moins dense que le tofu ferme classique (20904, 143 kcal), qu'il ne faut pas confondre avec lui."
+    },
     "tomate concassee en conserve": {
       "ciqual_alim_code": "20169"
     },
@@ -1601,12 +1733,27 @@
       "confidence": "C",
       "note": "PROXY ASSUMÉ. Le tomatillo (Physalis philadelphica) est absent de Ciqual ; ce n'est pas botaniquement une tomate. Code ABSENT des cinq candidats, qui étaient tous des pièges « frais » (jus de mangue, jus de grenade, cerfeuil, persil, basilic). 20119 « Tomate verte, crue » (22,6 kcal / 1,2 P / 4,0 G / 0,2 L) encadre correctement les valeurs de référence du tomatillo (~32 kcal / 1,0 P / 5,8 G / 1,0 L) : même usage culinaire (fruit vert acide cuit en sauce), même ordre de grandeur, macros complètes."
     },
+    "tome fraiche de l aubrac": {
+      "ciqual_alim_code": "12034",
+      "confidence": "C",
+      "note": "Proxy assumé. La tome fraîche est un caillé pressé jeune, non salé et non affiné, destiné à l'aligot — l'agrégat des pâtes molles à croûte lavée est affiné et salé. Environ 290 kcal, 23 g de protéines et 22 g de lipides pour la tome réelle, contre 322/20,2/26,5 : l'ordre de grandeur tient à 10 % près, la nature du produit non."
+    },
+    "tonnarelli secs": {
+      "ciqual_alim_code": "9810",
+      "confidence": "B",
+      "note": "Pâtes sèches de semoule de blé dur, comme les spaghettis déjà arbitrés sur ce code. Le tonnarello est un spaghetto à section carrée : une filière, pas une composition."
+    },
     "tortilla de mais": {
       "ciqual_alim_code": "7813",
       "note": "Le candidat en tête (38105 « Chips de maïs ou tortilla chips », 495 kcal) est un produit apéritif frit, pas une galette : écarté malgré son score."
     },
     "vanille liquide": {
       "ciqual_alim_code": "11098"
+    },
+    "vermicelle fin sec": {
+      "ciqual_alim_code": "9810",
+      "confidence": "B",
+      "note": "Même code que les autres pâtes sèches de blé. Le vermicelle fin est la découpe la plus mince de la même semoule ; les nouilles de riz, elles, ont leur propre canonique sur 9900."
     },
     "vin blanc sec": {
       "ciqual_alim_code": "5215"
@@ -1652,6 +1799,11 @@
       "ciqual_alim_code": "11018",
       "confidence": "B",
       "note": "Le classeur n'a ni vinaigre de riz ni vinaigre noir. L'entrée générique « Vinaigre » (22,6 kcal) est le parent exact ; le vinaigre de Chinkiang garde un peu plus de sucres résiduels, mais 11091 « Vinaigre balsamique » (125 kcal, 25,8 g de glucides) surestimerait d'un facteur cinq."
+    },
+    "yaourt grec": {
+      "ciqual_alim_code": "19646",
+      "confidence": "C",
+      "note": "Proxy assumé, et le choix mérite d'être expliqué. 19550 « Yaourt à la grecque, au lait de brebis » porte le mot mais pas le produit : c'est un yaourt de brebis non égoutté, à 3,76 g de protéines. Le yaourt grec du commerce est un yaourt de vache ÉGOUTTÉ, autour de 9 g de protéines — l'égouttage est ce qui le définit. Le fromage blanc à 3 % (77,5 kcal, 7,86 g de protéines, 3,26 g de lipides) est le produit égoutté le plus proche du classeur. Réserve : un peu moins gras et un peu moins protéiné que le yaourt grec entier."
     },
     "yaourt nature": {
       "ciqual_alim_code": "19593"

@@ -3,25 +3,18 @@
   "nutrition_source": "Ciqual 2020",
   "forms_total": 719,
   "summary": {
-    "review_required": 288,
-    "curated": 383,
+    "review_required": 256,
+    "curated": 415,
     "exact_label": 48
   },
   "recipes_total": 309,
-  "recipes_eligible_for_publication": 88,
-  "recipes_blocked_only_by_proxy": 31,
+  "recipes_eligible_for_publication": 100,
+  "recipes_blocked_only_by_proxy": 46,
   "v1_enriched_eligible_for_publication": 56,
   "unresolved_required": [
     "Achiote pâte",
     "Amchur poudre de mangue",
     "Asafoetida",
-    "Chou blanc fermenté curtido",
-    "Chou chinois salé",
-    "Chou émincé frais",
-    "Chou kale portugais",
-    "Chou noir kale",
-    "Chou vert frais",
-    "Chutney d abricot",
     "Chutney sec ail cacahuète",
     "Chutney vert coriandre",
     "Ciboule fraîche longue",
@@ -29,7 +22,6 @@
     "Ciboulette asiatique",
     "Cime di rapa fraîches",
     "Citron confit au sel",
-    "Clou de girofle moulu",
     "Cœur de bœuf cru",
     "Cognac",
     "Côte de porc désossée crue",
@@ -50,18 +42,14 @@
     "Écrevisse séchée moulue",
     "Encre de seiche",
     "Entrecôte de bœuf crue finement tranchée",
-    "Eomuk gâteau de poisson",
     "Épaule de porc salée",
-    "Épaule de veau crue",
     "Épinard africain frais",
     "Épinard d’eau kangkong",
     "Faba asturiana sèche",
     "Farine de blé atta",
     "Farine de blé faible en gluten",
     "Farine de blé T65",
-    "Farine de maïs blanche",
     "Farine de maïs précuite blanche",
-    "Farine de pois chiche grillée",
     "Farine de riz",
     "Farofa de manioc",
     "Fécule de manioc aigre polvilho azedo",
@@ -69,7 +57,6 @@
     "Fécule de pomme de terre katakuriko",
     "Fenouil frais",
     "Fenouil moulu",
-    "Fenugrec séché kasuri methi",
     "Feta",
     "Feuille de bananier",
     "Feuille de laksa vietnamienne",
@@ -77,14 +64,11 @@
     "Feuille de sauge fraîche",
     "Feuille de vigne en saumure",
     "Fideo court sec",
-    "Filet de bœuf cru en lanières",
     "Filet de cabillaud cru",
     "Filet de poisson blanc ferme cru",
     "Filet de vivaneau cru",
     "Filet ou faux-filet de bœuf cru en lanières",
-    "Flanchet de bœuf cru",
     "Fleur de sel",
-    "Frisée fraîche",
     "Frite de pomme de terre",
     "Fromage blanc twaróg",
     "Fromage cotija",
@@ -100,8 +84,6 @@
     "Graine de melon egusi moulue",
     "Haleem masala",
     "Haricot cannellini sec",
-    "Haricot géant sec",
-    "Haricot lingot sec",
     "Haricot noir refrit",
     "Haricot rouge refrit",
     "Haricot tarbais sec",
@@ -112,20 +94,16 @@
     "Huile pimentée au roucou",
     "Jambon de Bayonne avec os",
     "Jambon de Parme",
-    "Jarret de veau cru, en tranches avec os",
     "Jaune d’œuf cuit",
     "Jus d orange amère",
     "Katsuobushi",
     "Kecap manis",
-    "Kimchi de chou fermenté mûr",
     "Krupuk crackers",
     "Lait évaporé",
     "Laitue romaine fraîche",
     "Lapin cru en morceaux",
     "Lentille chana dal sèche",
-    "Lentille urad noire entière sèche",
     "Lentille urad sèche",
-    "Levure boulangère fraîche",
     "Maïs blanc sec hominy",
     "Maïs choclo cuit",
     "Maïs doux en grains",
@@ -154,7 +132,6 @@
     "Nouille frite croustillante",
     "Nouille ramen fine fraîche",
     "Nouille yakisoba précuite",
-    "Oignon en poudre",
     "Oignon frit",
     "Olive noire entière",
     "Orecchiette sèches",
@@ -168,7 +145,6 @@
     "Palette de porc demi-sel",
     "Palette de porc fumée",
     "Palourde fraîche",
-    "Paprika fort hongrois",
     "Pâte à gyoza",
     "Pâte à wonton",
     "Pâte d ají amarillo",
@@ -194,7 +170,6 @@
     "Piment mulato séché",
     "Piment rouge moulu",
     "Piment séché moulu",
-    "Piment vert doux frais",
     "Poireau chinois",
     "Pois d arhar toor dal sec",
     "Poisson blanc très frais sans arêtes",
@@ -213,10 +188,8 @@
     "Pousse de soja blanchie",
     "Radis jaune mariné danmuji",
     "Rascasse crue entière",
-    "Reblochon au lait cru",
     "Ricotta salata",
     "Rigatoni secs",
-    "Riz étuvé cru",
     "Riz gluant cru grillé moulu",
     "Riz jasmin cuit froid",
     "Riz long blanc cuit",
@@ -256,11 +229,8 @@
     "Tlayuda grande",
     "Tofu ferme frit",
     "Tofu puff frit",
-    "Tofu soyeux ferme",
     "Tofu soyeux sundubu",
     "Tomate cerise fraîche",
-    "Tome fraîche de l’Aubrac",
-    "Tonnarelli secs",
     "Tortilla de maïs grillée",
     "Tortilla de maïs rassise",
     "Tostada de maïs",
@@ -272,7 +242,6 @@
     "Veau haché cru",
     "Vermicelle de riz cuit",
     "Vermicelle de riz sec",
-    "Vermicelle fin sec",
     "Viande de chèvre crue avec os",
     "Vin blanc sec d Alsace",
     "Vin rouge de Bourgogne",
@@ -280,7 +249,6 @@
     "Vinaigre de malt",
     "Vinaigre de palmier ou cidre",
     "Ya cai légumes de moutarde conservés",
-    "Yaourt grec",
     "Zakwas de betterave fermenté",
     "Zeste d orange"
   ],
@@ -971,9 +939,7 @@
       "code": "REAL-073",
       "family": "Cassoulet de Castelnaudary",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Haricot lingot sec"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Bouquet garni frais"
       ],
@@ -1004,10 +970,8 @@
     {
       "code": "REAL-075",
       "family": "Tartiflette",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Reblochon au lait cru"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -1016,10 +980,10 @@
       "code": "REAL-076",
       "family": "Aligot de l’Aubrac",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [
         "Tome fraîche de l’Aubrac"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
@@ -1029,7 +993,6 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Haricot tarbais sec",
-        "Chou vert frais",
         "Jambon de Bayonne avec os"
       ],
       "low_confidence_required_forms": [
@@ -1042,9 +1005,7 @@
       "code": "REAL-078",
       "family": "Axoa de veau",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Épaule de veau crue"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Bouillon de veau non salé"
       ],
@@ -1163,10 +1124,8 @@
     {
       "code": "REAL-087",
       "family": "Salade lyonnaise",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Frisée fraîche"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -1185,10 +1144,8 @@
     {
       "code": "REAL-089",
       "family": "Kouign-amann",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Levure boulangère fraîche"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -1226,9 +1183,7 @@
       "code": "REAL-093",
       "family": "Ossobuco alla milanese",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Jarret de veau cru, en tranches avec os"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Bouillon de veau non salé"
       ],
@@ -1289,8 +1244,7 @@
       "family": "Ribollita toscane",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Haricot cannellini sec",
-        "Chou noir kale"
+        "Haricot cannellini sec"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
@@ -1308,10 +1262,8 @@
     {
       "code": "REAL-100",
       "family": "Cacio e pepe",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Tonnarelli secs"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -1529,10 +1481,8 @@
     {
       "code": "REAL-120",
       "family": "Caldo verde",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Chou kale portugais"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -1604,10 +1554,8 @@
     {
       "code": "REAL-126",
       "family": "Gigantes plaki",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Haricot géant sec"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -1659,9 +1607,7 @@
       "code": "REAL-131",
       "family": "Menemen",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Piment vert doux frais"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Pul biber"
       ],
@@ -1672,10 +1618,10 @@
       "code": "REAL-132",
       "family": "Mantı turcs",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [
         "Yaourt grec"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
@@ -1814,10 +1760,8 @@
     {
       "code": "REAL-144",
       "family": "Harira",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Vermicelle fin sec"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -1891,9 +1835,7 @@
       "code": "REAL-150",
       "family": "Shiro wat",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Farine de pois chiche grillée"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Berbéré",
         "Beurre clarifié épicé niter kibbeh"
@@ -1964,10 +1906,8 @@
     {
       "code": "REAL-156",
       "family": "Suya de bœuf",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Oignon en poudre"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -2019,10 +1959,8 @@
     {
       "code": "REAL-160",
       "family": "Kelewele",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Clou de girofle moulu"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -2050,10 +1988,8 @@
     {
       "code": "REAL-163",
       "family": "Ugali et sukuma wiki",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Farine de maïs blanche"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -2062,10 +1998,10 @@
       "code": "REAL-164",
       "family": "Bobotie",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [
         "Chutney d abricot"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
@@ -2112,11 +2048,10 @@
       "code": "REAL-168",
       "family": "Butter chicken murgh makhani",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Fenugrec séché kasuri methi"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Garam masala",
+        "Fenugrec séché kasuri methi",
         "Piment du Cachemire moulu"
       ],
       "incomplete_nutrition_required_forms": [],
@@ -2243,10 +2178,9 @@
       "code": "REAL-178",
       "family": "Dal makhani",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Lentille urad noire entière sèche"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
+        "Lentille urad noire entière sèche",
         "Garam masala",
         "Piment du Cachemire moulu"
       ],
@@ -2305,9 +2239,7 @@
       "code": "REAL-182",
       "family": "Idli",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Riz étuvé cru"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Lentille urad blanche sèche"
       ],
@@ -2435,9 +2367,7 @@
       "code": "REAL-191",
       "family": "Mapo tofu",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Tofu soyeux ferme"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Doubanjiang",
         "Douchi haricot noir fermenté",
@@ -3034,9 +2964,7 @@
       "code": "REAL-231",
       "family": "Tteokbokki",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Eomuk gâteau de poisson"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Gâteau de riz coréen tteok",
         "Gochujang",
@@ -3050,10 +2978,9 @@
       "code": "REAL-232",
       "family": "Kimchi jjigae",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Kimchi de chou fermenté mûr"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
+        "Kimchi de chou fermenté mûr",
         "Bouillon d’anchois",
         "Gochugaru"
       ],
@@ -3140,10 +3067,10 @@
       "family": "Bossam",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Chou chinois salé",
         "Saewoojeot crevette fermentée"
       ],
       "low_confidence_required_forms": [
+        "Chou chinois salé",
         "Ssamjang",
         "Ail cru tranché"
       ],
@@ -3229,7 +3156,6 @@
         "Nouille de riz épaisse ronde",
         "Pâte de crevette fermentée mắm ruốc",
         "Huile pimentée au roucou",
-        "Chou émincé frais",
         "Herbes vietnamiennes fraîches"
       ],
       "low_confidence_required_forms": [
@@ -3765,10 +3691,11 @@
         "Fromage quesillo",
         "Porc cuit haché chicharrón",
         "Haricot rouge refrit",
-        "Chou blanc fermenté curtido",
         "Sauce tomate salvadorienne"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Chou blanc fermenté curtido"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
@@ -3966,10 +3893,10 @@
       "code": "REAL-290",
       "family": "Ropa vieja",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [
         "Flanchet de bœuf cru"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
@@ -4029,10 +3956,8 @@
     {
       "code": "REAL-295",
       "family": "Goulash hongrois",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Paprika fort hongrois"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -4093,10 +4018,8 @@
     {
       "code": "REAL-300",
       "family": "Beef stroganoff",
-      "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Filet de bœuf cru en lanières"
-      ],
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -10750,8 +10673,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20116",
+        "ciqual_name": "Chou blanc, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé, en suivant le précédent du kimchi et de la choucroute : chou blanc cru pour un chou blanc lacto-fermenté. La fermentation consomme une partie des sucres ; le classeur n'a aucun légume lacto-fermenté nu."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20116",
@@ -10908,8 +10838,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20167",
+        "ciqual_name": "Chou chinois ou pak-choi ou pé-tsai, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Le chou chinois cru (13,9 kcal) est gorgé d'eau ; salé et pressé, le produit réel est concentré et pèse davantage au gramme. Le classeur n'a pas d'état salé pour ce légume."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20167",
@@ -10956,8 +10893,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20116",
+        "ciqual_name": "Chou blanc, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "« Chou » sans autre précision, émincé cru, est du chou blanc : 36,5 kcal, 4,63 g de glucides. L'éminçage est une découpe."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20014",
@@ -11059,8 +11003,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20218",
+        "ciqual_name": "Chou frisé, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "La couve galega est un chou frisé non pommé — 20218 « Chou frisé, cru », 43,8 kcal, 4,33 g de protéines. À distinguer de 20069 « Chou vert, cru », qui porte déjà le chou vert pommé."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20014",
@@ -11107,8 +11058,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20218",
+        "ciqual_name": "Chou frisé, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le cavolo nero est un chou frisé à feuilles sombres : même espèce et même état que la couve galega, même code."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11015",
@@ -11155,8 +11113,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20069",
+        "ciqual_name": "Chou vert, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance directe : 21,5 kcal, 2,53 g de protéines."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20015",
@@ -11368,8 +11333,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "31037",
+        "ciqual_name": "Confiture d'abricot (extra ou classique)",
+        "category": "produits_sucres",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Le classeur n'a aucun chutney. La confiture d'abricot (247 kcal, 59,7 g de glucides) partage le fruit et la cuisson au sucre, mais un chutney est moins sucré, allongé de vinaigre et d'épices : l'énergie est surestimée d'environ un tiers."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "2043",
@@ -12192,8 +12164,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11052",
+        "ciqual_name": "Clou de girofle",
+        "category": "epices",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même épice, même code que le clou entier : la mouture ne change pas la composition. 335 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11052",
@@ -15214,8 +15193,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "26046",
+        "ciqual_name": "Surimi, bâtonnets, tranche ou râpé saveur crabe",
+        "category": "poissons_fruits_de_mer",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "L'eomuk coréen est un surimi : chair de poisson blanc broyée, liée à l'amidon et pochée ou frite. 26046 « Surimi, bâtonnets, tranche ou râpé » est le même produit sous son nom japonais d'origine (125 kcal, 8,31 g de protéines, 11,8 g de glucides)."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "23000",
@@ -15420,8 +15406,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "6560",
+        "ciqual_name": "Veau, épaule, crue",
+        "category": "viandes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance directe : 124 kcal, 20,7 g de protéines, 4,63 g de lipides."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "6560",
@@ -16087,8 +16080,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9545",
+        "ciqual_name": "Farine de maïs",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "361 kcal, 78,1 g de glucides. La couleur tient au cultivar, pas à la composition ; le classeur ne distingue pas le maïs blanc du jaune. À ne pas confondre avec la masa harina, nixtamalisée, qui a son propre canonique."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "5009",
@@ -16238,8 +16238,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9580",
+        "ciqual_name": "Farine de pois chiche",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "359 kcal, 22,4 g de protéines. Le grillage préalable de la farine (besan grillé) développe l'arôme et retire un peu d'eau ; il ne déplace pas les macronutriments de façon mesurable."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20036",
@@ -16732,8 +16739,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11077",
+        "ciqual_name": "Fenugrec, graine",
+        "category": "epices",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé, et le piège est dans la partie de la plante. Le kasuri methi est la FEUILLE de fenugrec séchée ; 11077 est la GRAINE (350 kcal, 27,1 g de protéines, 6,41 g de lipides). La feuille séchée est nettement moins grasse et moins protéinée. Le classeur n'a que la graine, et l'emploi est de l'ordre du gramme, écrasé entre les paumes en fin de cuisson."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11077",
@@ -17439,8 +17453,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "6116",
+        "ciqual_name": "Boeuf, filet, cru",
+        "category": "viandes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance directe : 132 kcal, 21,6 g de protéines. La découpe en lanières est un geste, pas un état."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "6116",
@@ -17734,8 +17755,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "6122",
+        "ciqual_name": "Boeuf, plat de côtes, cru",
+        "category": "viandes",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Le classeur n'a pas le flanchet. 6122 « Boeuf, plat de côtes, cru » vient de la même région de la carcasse — le ventre — et partage son gras persillé et son usage en cuisson longue : 287 kcal, 18,4 g de protéines, 23,7 g de lipides. Le flanchet réel est un peu plus maigre."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "40052",
@@ -17830,8 +17858,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20012",
+        "ciqual_name": "Salade ou chicorée frisée, crue",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance directe : « Salade ou chicorée frisée, crue », 17,8 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20012",
@@ -19691,8 +19726,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20501",
+        "ciqual_name": "Haricot blanc, sec",
+        "category": "legumineuses",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même espèce et même état que le lingot : le haricot géant (gigantes) est un haricot blanc de gros calibre. Le calibre change le temps de trempage, pas la composition."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20501",
@@ -19794,8 +19836,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20501",
+        "ciqual_name": "Haricot blanc, sec",
+        "category": "legumineuses",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le lingot est un cultivar de haricot blanc ; le classeur ne descend pas à la variété. 268 kcal, 19,1 g de protéines, 43,9 g de glucides à l'état sec."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20501",
@@ -21746,8 +21795,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "6583",
+        "ciqual_name": "Veau, jarret, cru",
+        "category": "viandes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même morceau, tranché en osso-buco. Le classeur porte la chair (118 kcal, 21,3 g de protéines) ; la forme est pesée avec l'os, ce qui surestime l'apport d'environ un quart selon l'épaisseur des tranches. Réserve d'usage, pas erreur d'aliment."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "6583",
@@ -22151,8 +22207,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20116",
+        "ciqual_name": "Chou blanc, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Même arbitrage que le kimchi déjà en base et que la choucroute : chou blanc cru. Le kimchi mûr est plus acide et un peu moins sucré que le jeune, écart sans expression sur les quatre grandeurs calculées."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "19801",
@@ -22934,8 +22997,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20504",
+        "ciqual_name": "Lentille, sèche",
+        "category": "legumineuses",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. L'urad (Vigna mungo) n'est pas une lentille (Lens culinaris) mais un haricot ; le classeur ne le référence pas. La lentille sèche générique (316,1 kcal, 25,4 g de protéines, 50,6 g de glucides) encadre bien l'urad réel (environ 341 kcal et 25 g de protéines), même usage et même état sec."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20504",
@@ -23085,8 +23155,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11010",
+        "ciqual_name": "Levure de boulanger, compressée",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "« Levure de boulanger, compressée » est exactement la levure fraîche en cube : 97,6 kcal, 8,3 g de protéines. À ne pas confondre avec 11045, la déshydratée (306,9 kcal), ni avec 11046, la levure chimique."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11009",
@@ -26058,8 +26135,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "171327",
+        "ciqual_name": "Spices, onion powder",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le classeur a l'ail en poudre (11023) mais pas l'oignon. USDA le référence exactement : 341 kcal, 10,4 g de protéines, 79,1 g de glucides."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11005",
@@ -28163,8 +28247,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11049",
+        "ciqual_name": "Paprika",
+        "category": "epices",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le paprika est le paprika : 319 kcal, 14,1 g de protéines. Le degré de force tient au cultivar et à la présence des graines, sans effet sur les macronutriments."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11049",
@@ -31283,8 +31374,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20085",
+        "ciqual_name": "Poivron vert, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même arbitrage que « piment doux vert frais » : un piment non piquant est nutritionnellement un poivron. 20151 « Piment, cru » reste réservé au piment piquant. Lipides au statut « inférieur à 0,5 g », valeur majorée retenue."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20151",
@@ -34389,8 +34487,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "12034",
+        "ciqual_name": "Fromage à pâte molle et croûte lavée (aliment moyen)",
+        "category": "produits_laitiers",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le classeur n'a pas de reblochon nommé, mais il publie l'agrégat « Fromage à pâte molle et croûte lavée » : 322 kcal, 20,2 g de protéines, 26,5 g de lipides, contre environ 330, 20 et 27 pour le reblochon. C'est sa famille technologique et son profil. Le lait cru change l'affinage et la flore, pas les macronutriments."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "12045",
@@ -34863,8 +34968,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9101",
+        "ciqual_name": "Riz blanc étuvé, cru",
+        "category": "cereales_feculents",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance directe : « Riz blanc étuvé, cru », 354 kcal. L'étuvage préalable au décorticage change la texture et migre des vitamines vers l'amande, il ne change pas les macronutriments."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "9101",
@@ -39253,8 +39365,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20906",
+        "ciqual_name": "Tofu soyeux, préemballé",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "« Tofu soyeux, préemballé », 52,5 kcal, 5 g de protéines. Le soyeux ferme est la version la moins hydratée de la même famille — trois fois moins dense que le tofu ferme classique (20904, 143 kcal), qu'il ne faut pas confondre avec lui."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20906",
@@ -39728,8 +39847,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "12034",
+        "ciqual_name": "Fromage à pâte molle et croûte lavée (aliment moyen)",
+        "category": "produits_laitiers",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. La tome fraîche est un caillé pressé jeune, non salé et non affiné, destiné à l'aligot — l'agrégat des pâtes molles à croûte lavée est affiné et salé. Environ 290 kcal, 23 g de protéines et 22 g de lipides pour la tome réelle, contre 322/20,2/26,5 : l'ordre de grandeur tient à 10 % près, la nature du produit non."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "12763",
@@ -39776,8 +39902,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9810",
+        "ciqual_name": "Pâtes sèches standard, crues",
+        "category": "cereales_feculents",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Pâtes sèches de semoule de blé dur, comme les spaghettis déjà arbitrés sur ce code. Le tonnarello est un spaghetto à section carrée : une filière, pas une composition."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "31071",
@@ -40510,8 +40643,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9810",
+        "ciqual_name": "Pâtes sèches standard, crues",
+        "category": "cereales_feculents",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même code que les autres pâtes sèches de blé. Le vermicelle fin est la découpe la plus mince de la même semoule ; les nouilles de riz, elles, ont leur propre canonique sur 9900."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "9900",
@@ -41492,8 +41632,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "19646",
+        "ciqual_name": "Fromage blanc nature, 3% MG environ",
+        "category": "produits_laitiers",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé, et le choix mérite d'être expliqué. 19550 « Yaourt à la grecque, au lait de brebis » porte le mot mais pas le produit : c'est un yaourt de brebis non égoutté, à 3,76 g de protéines. Le yaourt grec du commerce est un yaourt de vache ÉGOUTTÉ, autour de 9 g de protéines — l'égouttage est ce qui le définit. Le fromage blanc à 3 % (77,5 kcal, 7,86 g de protéines, 3,26 g de lipides) est le produit égoutté le plus proche du classeur. Réserve : un peu moins gras et un peu moins protéiné que le yaourt grec entier."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "11166",
