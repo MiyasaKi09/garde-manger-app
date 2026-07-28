@@ -256,10 +256,12 @@ const isValidatedRecipe = (recipe) => (
   && isDraftRecipe(recipe)
 )
 
-const completionStatus = (validated, target) => {
-  if (!validated) return 'not_started'
-  if (!target || validated < target) return 'in_progress'
-  return 'validated'
+const completionStatus = ({ inventory, drafted, validated, target }) => {
+  if (target && validated >= target) return 'validated'
+  if (validated > 0) return 'validation'
+  if (drafted > 0) return 'draft'
+  if (inventory > 0) return 'inventory'
+  return 'structure'
 }
 
 const validateCatalog = (memberships, techniques) => {
@@ -522,7 +524,12 @@ const coverage = volumes.map((entry) => {
     inventory_percent: target ? Math.min(100, Math.round((inventoryEntries / target) * 100)) : null,
     draft_percent: target ? Math.min(100, Math.round((draftedEntries / target) * 100)) : null,
     completion_percent: target ? Math.min(100, Math.round((validatedEntries / target) * 100)) : null,
-    completion_status: completionStatus(validatedEntries, target),
+    completion_status: completionStatus({
+      inventory: inventoryEntries,
+      drafted: draftedEntries,
+      validated: validatedEntries,
+      target,
+    }),
     target,
     target_metric: entry.target_metric,
   }
