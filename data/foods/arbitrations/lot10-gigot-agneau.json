@@ -1,0 +1,15 @@
+{
+  "lot": "lot10 — le gigot d'agneau, rendu à lui-même",
+  "contexte": "Le catalogue n'avait aucune forme pour le gigot d'agneau entier. La seule forme d'agneau publiable, « Agneau haché cru », est un proxy de confiance C qui emprunte précisément l'entrée Ciqual du gigot (21502) faute d'entrée hachée dédiée. Conséquence : une recette de gigot rôti se rattachait au haché — et héritait d'une confiance C qui la rendait non publiable, alors que la donnée sous-jacente lui correspond exactement. Le proxy du haché reste inchangé et reste un proxy ; c'est le gigot qui récupère son entrée.",
+  "decisions": [
+    {
+      "cle": "gigot d agneau cru",
+      "forme": "Gigot d'agneau cru",
+      "verdict": "mapper",
+      "alim_code": "21502",
+      "nom_ciqual": "Agneau, gigot, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte, pas un rapprochement : l'entrée Ciqual s'appelle « Agneau, gigot, cru » et la recette emploie un gigot d'agneau cru. Macros complètes (128 kcal, P 20 / G 0,48 / L 5,13). La confiance A se justifie ici alors que « Agneau haché cru » reste en C sur le même code, et ce n'est pas une contradiction : le haché emprunte une donnée qui n'est pas la sienne — un gigot désossé et haché n'a ni le même gras ni le même rendement — tandis que le gigot, lui, est chez lui."
+    }
+  ]
+}

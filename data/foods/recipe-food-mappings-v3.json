@@ -219,6 +219,11 @@
       "confidence": "B",
       "note": "Le blé concassé du commerce correspond au boulgour, dans son état cru et sec (348 kcal). Les deux candidats proposés sont du frik (51510 et 51511), c'est-à-dire du blé dur immature grillé — un produit distinct au goût fumé ; de surcroît 51511 est cuit et ne vaut que 75 kcal, cinq fois moins que la forme sèche employée ici. Code absent des propositions."
     },
+    "blette crue": {
+      "ciqual_alim_code": "20004",
+      "confidence": "B",
+      "note": "Légume de la soupe au pistou dans les versions provençales. Lipides publiés sous forme de borne (< 0,5 g), lus comme majoration."
+    },
     "boeuf a braiser cru": {
       "ciqual_alim_code": "6231",
       "note": "Code trouvé hors des cinq candidats proposés : c'est l'entrée générique du classeur pour la viande de bœuf à braiser crue (164 kcal, 24 g protéines). Les candidats fournis étaient tous faux — 25033/25065/25558 sont des plats cuisinés, 6101 « Boeuf, braisé » est cuit (240 kcal), et 6116 « filet, cru » est un morceau à griller, non à braiser."
@@ -263,7 +268,8 @@
       "note": "Haché de bœuf cru générique ; 15 % MG retenu comme grade représentatif (le « aliment moyen » cuit 6259, à 231 kcal, correspond à ce niveau de gras). 6256 (20 % MG, cru) a été écarté malgré son score identique : ses glucides manquent dans le CSV et il serait refusé."
     },
     "boeuf hache cru 15 mg": {
-      "ciqual_alim_code": "6254"
+      "ciqual_alim_code": "6254",
+      "note": "Le taux de matière grasse change tout : de 5 % à 20 %, l'apport passe de 130 à 249 kcal pour 100 g. Une « viande hachée » sans taux serait une valeur inventée. 15 % est le taux courant des farces domestiques, et c'est celui que le corpus retient par défaut quand la source ne le précise pas — le nom de la forme l'affiche, il n'est pas caché dans une note."
     },
     "boeuf marine bulgogi cuit": {
       "ciqual_alim_code": "6100",
@@ -355,6 +361,10 @@
       "confidence": "C",
       "note": "Proxy persil frais pour un bouquet aromatique non consommé intégralement."
     },
+    "brocoli cru": {
+      "ciqual_alim_code": "20057",
+      "note": "Le gratin de brocolis ne peut pas exister sans son ingrédient principal. Entrée crue directe, macros complètes."
+    },
     "bucatini secs": {
       "ciqual_alim_code": "9810",
       "note": "Code absent des cinq propositions, qui étaient toutes des confiseries ou mueslis accrochés au mot « secs » (barre chocolatée, mélanges apéritifs, muesli). Le bucatini est une pâte sèche de blé dur ; l'état sec/cru est respecté (331 kcal contre 125 pour la version cuite 9811 — un facteur près de trois)."
@@ -373,6 +383,11 @@
     "calamar cru nettoye": {
       "ciqual_alim_code": "10001",
       "note": "« Nettoyé » décrit un parage, pas un état nutritionnel. Les entrées cuite (149 kcal), beignet (252) et poêlée (173) auraient toutes faussé l'état."
+    },
+    "calvados": {
+      "ciqual_alim_code": "1023",
+      "confidence": "B",
+      "note": "Le Ciqual porte bien une entrée « Eau de vie, type calvados » (1024), mais sans valeur énergétique — ses macros sont toutes à zéro et l'énergie manquante. La reprendre telle quelle ferait passer un alcool à 40 % vol pour un produit à 0 kcal, ce qui est faux : l'apport d'une eau-de-vie vient presque entièrement de l'éthanol. L'entrée armagnac/cognac est le même produit du point de vue nutritionnel — un distillat à 40 % vol — et elle est chiffrée (228 kcal). C'est un proxy assumé, choisi parce qu'une absence ne doit jamais devenir un zéro."
     },
     "cannelle cassia": {
       "ciqual_alim_code": "11025",
@@ -419,6 +434,10 @@
     },
     "cassonade": {
       "ciqual_alim_code": "31017"
+    },
+    "cerfeuil frais": {
+      "ciqual_alim_code": "11002",
+      "note": "Herbe de finition citée par plusieurs sources. Employée en brins, donc en quantités où l'apport est négligeable — mais la nommer évite de la faire disparaître de la liste."
     },
     "cerise fraiche denoyautee": {
       "ciqual_alim_code": "13008"
@@ -662,6 +681,11 @@
       "ciqual_alim_code": "10021",
       "note": "Etat cru respecte ; « entiere » ne designe qu'un mode de presentation. Attention au candidat 9320 « Orge entiere, crue », classe haut par le seul mot « entiere »."
     },
+    "croutons nature": {
+      "ciqual_alim_code": "7432",
+      "confidence": "B",
+      "note": "Garniture du potage Parmentier et des salades. L'entrée préemballée est plus grasse qu'un croûton poêlé maison ; le retenir majore l'apport plutôt que de l'omettre."
+    },
     "cuisse de poulet crue avec os avec peau": {
       "ciqual_alim_code": "36002"
     },
@@ -687,6 +711,10 @@
       "density_g_per_ml": 1,
       "confidence": "C",
       "note": "Proxy assumé. Le dashi est une infusion de kombu et de copeaux de bonite, filtrée : un bouillon clair à quelques kilocalories près. Le classeur n'en a pas ; son bouillon de légumes reconstitué (5,38 kcal) est le seul bouillon clair générique et donne le bon ordre de grandeur. Ce qui fait le dashi — l'umami du glutamate et de l'inosinate — n'a pas d'expression nutritionnelle."
+    },
+    "dinde escalope crue": {
+      "ciqual_alim_code": "36304",
+      "note": "Les neuf sources de la blanquette de dinde partent toutes d'escalopes ou de sauté détaillés en cubes, jamais d'une dinde entière. Entrée crue dédiée, macros complètes."
     },
     "doenjang pate de soja fermentee": {
       "ciqual_alim_code": "20916",
@@ -729,6 +757,15 @@
       "usda_name": "Beverages, carbonated, club soda",
       "density_g_per_ml": 1,
       "note": "Même aliment : eau gazeuse, servie glacée pour une pâte à tempura. Le classeur reste la source (18046 « Eau minérale, gazeuse (aliment moyen) », 0 kcal et 0 pour les trois macros). USDA 174842 « club soda » n'est cité que pour l'énergie : aucun code eau n'a de ligne dans data/ciqual_nutrition_import.csv, seule colonne d'énergie que lit l'applicateur, et une eau y serait refusée pour « macronutriments incomplets ». Densité 1,00 : le CO2 dissous (~5 g/l) ne déplace pas la masse volumique au centième près ; l'eau à 0-4 °C vaut 1,000. Contrôle : REAL-219, 400 ml → 400 g → 0 kcal."
+    },
+    "echine de porc crue": {
+      "ciqual_alim_code": "28302",
+      "note": "Entrée dédiée du classeur, macros complètes (198 kcal, P 18 / G 0,1 / L 14). L'écart avec l'épaule n'est pas cosmétique : 198 kcal contre 178, et 14 g de lipides contre 11,2 — c'est ce gras persillé qui tient la cuisson longue d'un sauté."
+    },
+    "emmental rape": {
+      "ciqual_alim_code": "12118",
+      "confidence": "B",
+      "note": "En cuisine domestique française, le sachet vendu comme « gruyère râpé » contient le plus souvent de l'emmental. Les deux formes coexistent donc : les recettes suivent ce que la source écrit plutôt que de trancher un débat d'étiquetage. Entrée râpée dédiée au classeur, macros complètes hors glucides (fermés à zéro par Atwater)."
     },
     "endive fraiche": {
       "ciqual_alim_code": "20026"
@@ -850,6 +887,11 @@
       "ciqual_alim_code": "20012",
       "note": "Correspondance directe : « Salade ou chicorée frisée, crue », 17,8 kcal."
     },
+    "fromage de chevre buche": {
+      "ciqual_alim_code": "12812",
+      "confidence": "B",
+      "note": "Forme la plus courante du chèvre en cuisine domestique, et celle que nomment les sources. Glucides non renseignés, fermés par Atwater."
+    },
     "fromage frais mexicain": {
       "ciqual_alim_code": "12060",
       "confidence": "C",
@@ -883,6 +925,10 @@
       "usda_fdc_id": "171314",
       "usda_name": "Butter, Clarified butter (ghee)",
       "note": "Absent du classeur français, référencé tel quel par USDA. Matière grasse pure : 100 g de lipides, ni protéines ni glucides — la clarification retire l'eau et les solides du lait."
+    },
+    "gigot d agneau cru": {
+      "ciqual_alim_code": "21502",
+      "note": "Correspondance exacte, pas un rapprochement : l'entrée Ciqual s'appelle « Agneau, gigot, cru » et la recette emploie un gigot d'agneau cru. Macros complètes (128 kcal, P 20 / G 0,48 / L 5,13). La confiance A se justifie ici alors que « Agneau haché cru » reste en C sur le même code, et ce n'est pas une contradiction : le haché emprunte une donnée qui n'est pas la sienne — un gigot désossé et haché n'a ni le même gras ni le même rendement — tandis que le gigot, lui, est chez lui."
     },
     "gingembre frais": {
       "ciqual_alim_code": "11074"
@@ -919,6 +965,11 @@
       "confidence": "C",
       "note": "Proxy assumé : Ciqual 2020 ne contient aucune graine de moutarde (seulement 11013 « Moutarde » et 11021 « Moutarde à l'ancienne », condiments humides à 152 et 142 kcal, ~68 % d'eau — facteur 3 sur une graine sèche, erreur d'état rédhibitoire). Le lin, petite graine oléagineuse (436,6 kcal ; 23,9 g prot ; 36,6 g lip), approxime de près la graine de moutarde réelle (~500 kcal ; 26 g prot ; 36 g lip) : les lipides coïncident, l'énergie est sous-estimée d'environ 14 %."
     },
+    "gruyere rape": {
+      "ciqual_alim_code": "12114",
+      "confidence": "B",
+      "note": "Huit plats du batch appellent du « gruyère râpé » : gratins, croque-madame, bouchées. Le Ciqual publie l'entrée râpée pour l'emmental (12118) mais pas pour le gruyère ; râper ne change ni la composition ni la densité énergétique, seulement la surface. On retient donc le gruyère en bloc. Les glucides ne sont pas renseignés : la fermeture d'Atwater les ramène à zéro (4×27,9 + 9×34,6 = 423 kcal, exactement l'énergie publiée), ce qui est le comportement attendu d'une pâte pressée cuite."
+    },
     "guanciale cru": {
       "ciqual_alim_code": "28858",
       "confidence": "B",
@@ -931,6 +982,14 @@
       "ciqual_alim_code": "20525",
       "confidence": "C",
       "note": "Proxy assumé : ni cornille, ni niébé, ni dolique au classeur (0 occurrence). Ce qui est approximé : une légumineuse sèche à réhydrater, ~23 g de protéines et ~46 g de glucides pour 100 g de graine sèche. 20525 (283,9 kcal, 22,5 g de protéines) colle mieux que 20501 « Haricot blanc, sec » proposé en candidat (268 kcal, 19,1 g de protéines), en retrait de 19 % sur les protéines. L'état sec est respecté : les autres candidats (haricot vert, beurre, plat, de Lima, tous « crus ») sont des gousses fraîches à ~26-31 kcal, soit dix fois moins — contresens majeur si retenus."
+    },
+    "haricot flageolet en conserve egoutte": {
+      "ciqual_alim_code": "20508",
+      "note": "Forme courante du gigot d'agneau aux flageolets en cuisine domestique. L'entrée appertisée égouttée est la bonne : c'est le poids net après égouttage que porte une recette, pas le poids du bocal."
+    },
+    "haricot flageolet sec": {
+      "ciqual_alim_code": "20539",
+      "note": "Deux des sources partent du sec, avec trempage. Les deux formes ne sont pas interchangeables au poids : 100 g de sec donnent environ 230 g d'égoutté, et les confondre triplerait l'apport annoncé."
     },
     "haricot geant sec": {
       "ciqual_alim_code": "20501",
@@ -1066,6 +1125,10 @@
       "confidence": "C",
       "note": "Proxy assumé : les quatre grandeurs viennent d'un autre aliment. Le kecap manis est une sauce soja au sucre de palme, ~270 kcal, ~63 g de glucides, ~3 g de protéines pour 100 g. Son entrée littérale au classeur, 11216 « Sauce soja sucrée, préemballée », est inexploitable : ni énergie ni glucides, deux valeurs manquantes, la fermeture d'Atwater n'en comble qu'une. 11104 « Sauce soja » (45,5 kcal) serait six fois trop clair. Retenu 31067 « Mélasse de canne », même nature de sirop de sucre foncé, quatre grandeurs complètes. Écart et sens : 299,7 kcal contre ~270 (+11 %), 74,7 g de glucides contre ~63 (+19 %), et 0 g de protéines là où le kecap manis en porte ~3 (sous-estimation). Même arbitrage que « mélasse de grenade ». Densité 1,30 : sirop à ~63 g de sucres pour 100 g, la table sucrose donne 1,31 à 63 % en masse. Contrôle : REAL-254, 80 ml → 104 g → 312 kcal."
     },
+    "ketchup": {
+      "ciqual_alim_code": "11008",
+      "note": "Cité en condiment par deux sources. Produit industriel par nature : l'entrée préemballée est la bonne."
+    },
     "kimchi de chou fermente mur": {
       "ciqual_alim_code": "20116",
       "confidence": "C",
@@ -1087,6 +1150,10 @@
     },
     "laitue fraiche": {
       "ciqual_alim_code": "20031"
+    },
+    "langue de boeuf crue": {
+      "ciqual_alim_code": "40202",
+      "note": "Ingrédient principal du plat, sans substitut possible. Entrée crue dédiée, macros complètes."
     },
     "lapin cru decoupe": {
       "ciqual_alim_code": "34001"
@@ -1128,6 +1195,19 @@
       "confidence": "B",
       "note": "Même réduction que le chouriço. Comptée en unités : un maillon de linguiça pèse de 100 à 150 g, on retient 120 g."
     },
+    "mache crue": {
+      "ciqual_alim_code": "20099",
+      "confidence": "B",
+      "note": "Sept plats du batch sont accompagnés d'une salade verte ; il fallait des feuilles nommées plutôt qu'une « salade » indéterminée. Les lipides sont publiés sous forme de borne (< 0,5 g) : c'est une majoration, pas une absence, et le corpus la lit comme telle."
+    },
+    "margarine": {
+      "ciqual_alim_code": "16615",
+      "note": "Citée en alternative au beurre par une source. Le taux figure dans le nom pour la même raison que pour le bœuf haché : sans lui, la valeur ne veut rien dire."
+    },
+    "marjolaine sechee": {
+      "ciqual_alim_code": "11034",
+      "note": "Seule entrée marjolaine du classeur, et c'est bien la forme séchée qu'emploient les sources."
+    },
     "masa harina": {
       "usda_fdc_id": "169696",
       "usda_name": "Corn flour, masa, unenriched, white",
@@ -1151,6 +1231,11 @@
       "density_g_per_ml": 1.33,
       "confidence": "C",
       "note": "Aliment différent (réduction de jus de grenade contre sous-produit du raffinage de la canne) mais macros quasi superposables : mélasse de grenade ~290 kcal, 72 g de glucides, 0,3 g de lipides, contre 299,7 / 74,7 / 0,1 ici. Surtout, c'est un sirop, cohérent avec l'unité ml. Les jus de grenade proposés (2017 à 55 kcal, 2039 à 47 kcal) sont écartés : la mélasse est un concentré, ils sous-estimeraient l'énergie d'un facteur six. Macros complètes (protéines à 0 au classeur)."
+    },
+    "mesclun": {
+      "ciqual_alim_code": "20272",
+      "confidence": "B",
+      "note": "Mélange, donc moyenne : à retenir quand la source dit « mesclun » ou « jeunes pousses » sans préciser, et seulement là. Une source qui nomme une feuille précise garde sa feuille."
     },
     "miel": {
       "ciqual_alim_code": "31008"
@@ -1298,6 +1383,10 @@
     },
     "paleron de boeuf cru pare": {
       "ciqual_alim_code": "6270"
+    },
+    "panais cru": {
+      "ciqual_alim_code": "20181",
+      "note": "Racine du pot-au-feu et des gratins d'hiver. Macros complètes."
     },
     "paneer": {
       "usda_fdc_id": "172223",
@@ -1579,6 +1668,10 @@
     "potimarron frais epepine": {
       "ciqual_alim_code": "20132"
     },
+    "poule viande crue": {
+      "ciqual_alim_code": "36001",
+      "note": "La poule au pot se fait avec une poule, pas un poulet : bête plus âgée, plus grasse, qui demande un bouillon long. Le catalogue ne portait que du poulet, ce qui aurait effacé la distinction que le plat porte dans son nom."
+    },
     "poulet cuit effiloche": {
       "ciqual_alim_code": "36030",
       "confidence": "B",
@@ -1644,6 +1737,10 @@
     "rhum ambre": {
       "ciqual_alim_code": "1004"
     },
+    "ricotta": {
+      "ciqual_alim_code": "19585",
+      "note": "Farce des courgettes dans plusieurs sources. Entrée directe."
+    },
     "riz arborio cru": {
       "ciqual_alim_code": "9100",
       "confidence": "B",
@@ -1698,6 +1795,10 @@
       "ciqual_alim_code": "9100",
       "confidence": "B",
       "note": "Code ABSENT des trois candidats, tous faux (bœuf rond de gîte, rond de jambon, beignet rond) malgré des scores de 0,94. Riz blanc à grain court = riz blanc cru, macros identiques (350 kcal / 7,04 P / 78,0 G / 0,91 L). Partage volontairement le canonique de « riz rond coréen cru » : même concept."
+    },
+    "roquette crue": {
+      "ciqual_alim_code": "20217",
+      "note": "Même besoin que la mâche, avec un profil amer distinct qui compte pour l'empreinte sensorielle. Macros complètes."
     },
     "rouget grondin cru": {
       "ciqual_alim_code": "26106",

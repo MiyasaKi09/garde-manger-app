@@ -117,19 +117,73 @@ const analyserLigne = (brut) => {
 
   // « 1 kg de veau » → on retire l'article de liaison
   texte = texte.replace(/^(?:de la|de l|du|des|de|d|a la|au|aux|en)\s+/, '').trim()
+  texte = traduire(texte)
 
   return { quantite, unite, piece, designation: texte, brut }
 }
 
+/**
+ * Ce que les sites écrivent contre ce que le catalogue nomme. Une bonne moitié
+ * des lignes non rattachées ne réclamaient aucun nouvel ingrédient : « maïzena »
+ * est de la fécule de maïs, « nuoc mam » de la sauce poisson, « ventrèche » du
+ * lardon — tous déjà au catalogue. Créer une forme pour chacun aurait dupliqué
+ * le concept et cassé les graphes de diversité du planificateur, qui ne
+ * rapprochent pas deux synonymes. On traduit donc à la lecture.
+ *
+ * Ces équivalences valent pour la LECTURE des sources, pas pour la rédaction :
+ * une recette publiée nomme toujours la forme canonique.
+ */
+const SYNONYMES = [
+  [/\bmaizena\b|\bfecule de mais\b/g, 'fecule mais'],
+  [/\bnuoc ?mam\b|\bsauce de poisson\b/g, 'sauce poisson'],
+  [/\bventreche\b|\bpancetta\b|\blard fume\b|\bpoitrine fumee\b/g, 'lardon fume'],
+  [/\bvol.?au.?vent\b|\bbouchee.? feuilletee.?\b|\bcroute feuilletee\b/g, 'pate feuilletee'],
+  [/\bcoquillettes?\b|\bmacaronis?\b|\bpennes?\b|\bcoudes?\b|\btorsades?\b/g, 'pates seches courtes'],
+  [/\blinguines?\b|\btagliatelles?\b|\bspaghettis?\b/g, 'pates seches'],
+  [/\bcebettes?\b|\boignons? nouveaux?\b/g, 'ciboule'],
+  [/\bdindonneau\b/g, 'dinde'],
+  [/\bviande hachee\b|\bboeuf hache\b|\bsteak hache\b/g, 'boeuf hache 15'],
+  [/\bcrevettes?\b/g, 'crevette'],
+  // Les noms de découpe vendue en boucherie. « Sauté de porc » n'est pas une
+  // préparation, c'est de l'épaule détaillée en cubes — et sûrement pas du
+  // haché, vers quoi la lecture penchait faute de mieux.
+  [/\bsaute de porc\b/g, 'epaule de porc'],
+  [/\bporc (?:coupe|en de|en cube|en morceau|en laniere)\w*\b/g, 'epaule de porc'],
+  [/\bsaute de veau\b|\bsauté de veau\b/g, 'epaule de veau'],
+  [/\bblanquette de (?:dinde|veau)\b/g, 'escalope de dinde'],
+]
+
+const traduire = (texte) => SYNONYMES.reduce((acc, [motif, cible]) => acc.replace(motif, cible), texte)
+
 const catalogue = JSON.parse(readFileSync(CATALOGUE, 'utf8')).forms
 
+/**
+ * Le pluriel français ne se réduit pas au « s » : poireau fait poireaux, chou
+ * fait choux. Comparer les deux côtés désaccordés fait manquer des formes
+ * pourtant présentes au catalogue — « 3 poireaux » ne trouvait pas « Poireau
+ * cru ». On ramène donc chaque mot au singulier avant de comparer.
+ */
+const singulier = (mot) => mot.replace(/(?:eaux|aux)$/, 'eau').replace(/x$/, '').replace(/s$/, '')
+
+/**
+ * Les mots d'état ne désignent aucun aliment. Les laisser servir de clé fait
+ * apparier n'importe quoi : « 400 g de flageolets secs » a trouvé « Spaghetti
+ * secs », les deux n'ayant en commun que le mot « secs ». Un rapprochement doit
+ * tenir sur le nom de l'aliment, jamais sur la façon dont il est conservé.
+ */
 const MOTS_VIDES = new Set([
   'cru', 'crue', 'cuit', 'cuite', 'frais', 'fraiche', 'sec', 'seche', 'en', 'de',
   'du', 'des', 'la', 'le', 'les', 'au', 'aux', 'a', 'et', 'nature', 'entier',
-  'entiere', 'conserve', 'surgele', 'surgelee',
+  'entiere', 'conserve', 'surgele', 'surgelee', 'moulu', 'moulue', 'rape',
+  'rapee', 'egoutte', 'egouttee', 'appertise', 'fumee', 'fume', 'liquide',
+  'doux', 'douce', 'demi', 'fine', 'fin', 'gros', 'grosse', 'petit', 'petite',
 ])
 
-const clesDe = (nom) => normaliser(nom).split(' ').filter((m) => m.length > 2 && !MOTS_VIDES.has(m))
+// Les clés passent au singulier avant d'être filtrées : « secs » doit être
+// reconnu comme « sec », sinon le filtre le laisse passer.
+const clesDe = (nom) => normaliser(nom).split(' ')
+  .map((mot) => singulier(mot))
+  .filter((m) => m.length > 2 && !MOTS_VIDES.has(m))
 
 /**
  * Combien de recettes emploient déjà chaque forme. À égalité de recouvrement,
@@ -142,6 +196,24 @@ for (const forme of JSON.parse(readFileSync(VOCABULAIRE, 'utf8')).formes_employa
   usage.set(forme.nom, forme.recettes_actuelles || 0)
 }
 
+/**
+ * Le catalogue ne contient que les formes qu'une recette emploie déjà — c'est
+ * son rôle. Mais on écrit ici des recettes NOUVELLES, dont les ingrédients
+ * viennent d'être arbitrés et qu'aucune recette n'emploie encore : ils seraient
+ * invisibles, et on rouvrirait un arbitrage déjà tranché. Le registre des
+ * mappings, lui, liste tout ce qu'on sait nourrir. On complète donc avec lui.
+ */
+const REGISTRE = join(ROOT, 'data', 'foods', 'recipe-food-mappings-v3.json')
+const ARBITRAGES = join(ROOT, 'data', 'foods', 'arbitrations')
+
+const nomsArbitres = new Map()
+for (const fichier of readdirSync(ARBITRAGES).filter((f) => f.endsWith('.json'))) {
+  const lot = JSON.parse(readFileSync(join(ARBITRAGES, fichier), 'utf8'))
+  for (const decision of lot.decisions || lot.confirmees || []) {
+    if (decision.cle && decision.forme) nomsArbitres.set(decision.cle, decision.forme)
+  }
+}
+
 const INDEX = catalogue.map((forme) => ({
   nom: forme.canonical_name,
   cles: clesDe(forme.canonical_name),
@@ -151,20 +223,29 @@ const INDEX = catalogue.map((forme) => ({
   usage: usage.get(forme.canonical_name) || 0,
 }))
 
+const dejaIndexees = new Set(INDEX.map((f) => normaliser(f.nom)))
+const registre = JSON.parse(readFileSync(REGISTRE, 'utf8')).mappings || {}
+for (const [cle, entree] of Object.entries(registre)) {
+  if (dejaIndexees.has(cle)) continue
+  const nom = nomsArbitres.get(cle) || cle
+  INDEX.push({
+    nom,
+    cles: clesDe(nom),
+    conversion: {},
+    unites: [],
+    confiance: entree.confidence || 'B',
+    // Aucune recette ne l'emploie encore : c'est un fait, pas un défaut.
+    usage: 0,
+    inedite: true,
+  })
+}
+
 /**
  * Exiger que TOUS les mots-clés d'une forme figurent dans la ligne ne marche
  * pas : « 75 g de beurre » ne contient pas « doux », et ne trouverait donc
  * jamais « Beurre doux ». On note plutôt le recouvrement, et on propose les
  * meilleurs candidats — la ligne la plus précise gagne, à égalité de tête.
  */
-/**
- * Le pluriel français ne se réduit pas au « s » : poireau fait poireaux, chou
- * fait choux. Comparer les deux côtés désaccordés fait manquer des formes
- * pourtant présentes au catalogue — « 3 poireaux » ne trouvait pas « Poireau
- * cru ». On ramène donc chaque mot au singulier avant de comparer.
- */
-const singulier = (mot) => mot.replace(/(?:eaux|aux)$/, 'eau').replace(/x$/, '').replace(/s$/, '')
-
 const contient = (texte, mot) => {
   const cible = singulier(mot)
   return texte.split(' ').some((present) => singulier(present) === cible)

@@ -1,0 +1,15 @@
+{
+  "lot": "lot11 — l'échine de porc, morceau du sauté",
+  "contexte": "Le catalogue portait l'épaule, la poitrine, le filet mignon, le pied — mais pas l'échine, qui est justement le morceau du sauté de porc et des rôtis mijotés. Faute de mieux, une ligne « 800 g de porc coupé en dés » se rattachait au porc haché : même animal, ni le même gras ni la même cuisson.",
+  "decisions": [
+    {
+      "cle": "echine de porc crue",
+      "forme": "Échine de porc crue",
+      "verdict": "mapper",
+      "alim_code": "28302",
+      "nom_ciqual": "Porc, échine, crue",
+      "confidence": "A",
+      "note": "Entrée dédiée du classeur, macros complètes (198 kcal, P 18 / G 0,1 / L 14). L'écart avec l'épaule n'est pas cosmétique : 198 kcal contre 178, et 14 g de lipides contre 11,2 — c'est ce gras persillé qui tient la cuisson longue d'un sauté."
+    }
+  ]
+}
