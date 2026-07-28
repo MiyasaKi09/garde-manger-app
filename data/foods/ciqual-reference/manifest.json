@@ -1,0 +1,118 @@
+{
+  "schema": "myko://food-reference-corpus/v1",
+  "schema_version": 1,
+  "corpus_code": "MYKO-CIQUAL-REF-2020-1",
+  "status": "candidate",
+  "generated_on": "2026-07-28",
+  "locale": "fr-FR",
+  "grain": "Une entrée correspond à une référence de forme alimentaire CIQUAL, pas encore à un ingrédient canonique validé.",
+  "source": {
+    "code": "ciqual_2020",
+    "name": "Table Ciqual 2020",
+    "publisher": "ANSES",
+    "source_url": "https://ciqual.anses.fr/",
+    "license_code": "etalab-2.0",
+    "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+    "version": "2020-07-07",
+    "extracted_from": [
+      "public.ciqual_reference",
+      "public.nutritional_data"
+    ],
+    "extracted_on": "2026-07-28",
+    "attribution": "Source : Table Ciqual 2020, ANSES — Licence Ouverte / Open Licence 2.0"
+  },
+  "migration_target": {
+    "code": "ciqual_2025",
+    "doi": "10.57745/RDMHWY",
+    "status": "required_before_final_validation",
+    "reason": "Le millésime 2025 remplace la table 2020 et doit être réconcilié avant publication finale."
+  },
+  "counts": {
+    "source_entries": 3185,
+    "nutrition_profiles_present": 3178,
+    "accepted": 2701,
+    "review": 483,
+    "quarantined": 1,
+    "canonical_candidates": 2081,
+    "multi_form_candidate_groups": 453
+  },
+  "issue_counts": {
+    "missing_energy_kcal": 107,
+    "missing_fat_g": 30,
+    "missing_carbohydrate_g": 410,
+    "missing_taxonomy": 45,
+    "missing_nutrition": 7,
+    "missing_protein_g": 24,
+    "energy_out_of_range": 1
+  },
+  "quality_policy": {
+    "accepted": "Taxonomie présente, profil nutritionnel présent, quatre macronutriments de base renseignés et valeurs dans les bornes.",
+    "review": "Une information requise manque ; la ligne reste disponible comme référence mais ne peut être publiée automatiquement.",
+    "quarantined": "Une valeur sort des bornes physiques ; la ligne est exclue de toute publication ou calcul jusqu’à correction."
+  },
+  "publication_rules": [
+    "Les références ne deviennent jamais automatiquement des concepts canoniques.",
+    "Une entrée en review ou quarantined ne peut pas alimenter un calcul publié.",
+    "Aucun champ de conservation, allergène, saisonnalité ou substitution n’est inféré depuis CIQUAL.",
+    "La publication finale exige la migration ou la réconciliation avec Ciqual 2025."
+  ],
+  "canonical_candidates_path": "canonical-candidates.json",
+  "shards": [
+    {
+      "path": "shards/part-0001.json",
+      "position": 1,
+      "entry_count": 400,
+      "first_entry_id": "CIQ-01000",
+      "last_entry_id": "CIQ-08703"
+    },
+    {
+      "path": "shards/part-0002.json",
+      "position": 2,
+      "entry_count": 400,
+      "first_entry_id": "CIQ-08704",
+      "last_entry_id": "CIQ-12736"
+    },
+    {
+      "path": "shards/part-0003.json",
+      "position": 3,
+      "entry_count": 400,
+      "first_entry_id": "CIQ-12737",
+      "last_entry_id": "CIQ-18028"
+    },
+    {
+      "path": "shards/part-0004.json",
+      "position": 4,
+      "entry_count": 400,
+      "first_entry_id": "CIQ-18029",
+      "last_entry_id": "CIQ-20235"
+    },
+    {
+      "path": "shards/part-0005.json",
+      "position": 5,
+      "entry_count": 400,
+      "first_entry_id": "CIQ-20236",
+      "last_entry_id": "CIQ-24060"
+    },
+    {
+      "path": "shards/part-0006.json",
+      "position": 6,
+      "entry_count": 400,
+      "first_entry_id": "CIQ-24070",
+      "last_entry_id": "CIQ-26035"
+    },
+    {
+      "path": "shards/part-0007.json",
+      "position": 7,
+      "entry_count": 400,
+      "first_entry_id": "CIQ-26036",
+      "last_entry_id": "CIQ-31092"
+    },
+    {
+      "path": "shards/part-0008.json",
+      "position": 8,
+      "entry_count": 385,
+      "first_entry_id": "CIQ-31093",
+      "last_entry_id": "CIQ-96781"
+    }
+  ]
+}

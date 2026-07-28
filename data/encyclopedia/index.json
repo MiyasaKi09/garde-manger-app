@@ -2,7 +2,8 @@
   "contract_version": "myko-encyclopedia-v1",
   "source_versions": {
     "recipes": "v3-300-real-dishes",
-    "foods": "myko_f0_curated"
+    "foods": "myko_f0_curated",
+    "food_references": "ciqual_2020@2020-07-07"
   },
   "summary": {
     "volumes": 48,
@@ -19,7 +20,12 @@
     "food_concepts": 27,
     "drafted_food_concepts": 0,
     "validated_food_concepts": 0,
-    "food_forms": 31
+    "food_forms": 31,
+    "food_reference_entries": 3185,
+    "food_reference_accepted_entries": 2701,
+    "food_reference_review_entries": 483,
+    "food_reference_quarantined_entries": 1,
+    "food_canonical_candidates": 2081
   },
   "coverage": [
     {

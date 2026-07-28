@@ -20,6 +20,11 @@ Cette bibliothèque transforme la Bible et le Plan directeur Myko en **48 volume
 - Libellés de techniques extraits : 363
 - Concepts alimentaires du snapshot F0 : 27
 - Formes alimentaires du snapshot F0 : 31
+- Références alimentaires CIQUAL matérialisées : 3185
+- Références CIQUAL techniquement acceptées : 2701
+- Références CIQUAL à revoir : 483
+- Références CIQUAL en quarantaine : 1
+- Candidats de concepts canoniques : 2081
 
 Les mesures live de Supabase enrichissent uniquement l’inventaire. Elles ne peuvent jamais augmenter le nombre d’entrées validées ni la complétude éditoriale.
 
