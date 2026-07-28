@@ -363,7 +363,7 @@ report.forms_with_override = 0
 report.forms_missing_nutrition = 0
 report.r0_coverage.covered = 0
 report.missing_nutrition = []
-report.estimated_zero_macros = []
+report.unquantified_macros = []
 
 /**
  * Génère les lignes SQL INSERT pour food_nutrient_values (list of VALUES).
@@ -381,22 +381,33 @@ function nutrientValuesFromCiqual(ciqualCode, nprofVar, formName) {
     const colIdx = csvHeaders.indexOf(nm.csv)
     if (colIdx < 0) continue
     const raw = cols[colIdx]?.trim() ?? ''
-    const { amount, status } = parseCiqualValue(raw)
-    byCode.set(nm.code, { amount, unit: nm.unit, status })
+    const { amount, status, upper_bound = null } = parseCiqualValue(raw)
+    byCode.set(nm.code, {
+      amount,
+      unit: nm.unit,
+      status,
+      upper_bound,
+    })
   }
-  // Macro essentiel absent (cellule Ciqual vide) => 0 ESTIMÉ. Ciqual laisse la case
-  // vide pour un macro réellement nul (glucides d'une viande/poisson/fromage/huile,
-  // lipides d'un vin/vinaigre). C'est un zéro INFÉRÉ (value_status='estimated'),
-  // jamais fabriqué pour un macro dominant — et requis par le garde-fou de publication.
-  const estimated = []
+  // Une absence, une trace ou une borne ne devient jamais un zéro. La forme
+  // reste candidate tant que les quatre macros ne sont pas quantifiés.
+  const unquantified = []
   for (const code of ESSENTIAL_MACROS) {
     const cur = byCode.get(code)
     if (!cur || cur.amount === null) {
-      byCode.set(code, { amount: 0, unit: code === 'energy_kcal' ? 'kcal' : 'g', status: 'estimated' })
-      estimated.push(code)
+      unquantified.push({
+        code,
+        status: cur?.status || 'not_available',
+        ...(cur?.upper_bound != null ? { upper_bound: cur.upper_bound } : {}),
+      })
     }
   }
-  if (estimated.length) report.estimated_zero_macros.push({ form: formName, macros: estimated.sort() })
+  if (unquantified.length) {
+    report.unquantified_macros.push({
+      form: formName,
+      macros: unquantified.sort((left, right) => left.code.localeCompare(right.code)),
+    })
+  }
   const rows = []
   for (const [code, v] of byCode) {
     const amountSql = v.amount === null ? 'NULL' : String(v.amount)

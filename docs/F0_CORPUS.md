@@ -2,6 +2,11 @@
 
 Réf. MYKO_DATA_FOUNDATION_V2 §3, §5, §7 · PR 106
 
+> **Périmètre historique.** F0 reste rattaché au snapshot Ciqual 2020 déjà
+> publié. Le corpus encyclopédique courant est désormais
+> [Ciqual 2025](encyclopedia/ingredients/CIQUAL-2025-CORPUS.md) ; sa présence ne
+> modifie pas automatiquement les données publiées.
+
 ---
 
 ## Vue d'ensemble
@@ -122,15 +127,17 @@ pas `not_available`. Le chargeur l'insère en `food_nutrient_values` avec `value
 
 Exemple : Sel fin (NaCl pur, absent du fichier nutrition CIQUAL).
 
-### Macros essentiels manquants → zéro *estimé*
+### Macros essentiels manquants, traces ou bornés
 
-CIQUAL laisse parfois vide un macro réellement nul (glucides d'une viande / poisson /
-fromage / huile ; lipides d'un vin / vinaigre). Comme les 4 macros essentiels
-(énergie, protéines, glucides, lipides) sont **exigés par le garde-fou de publication**,
-le chargeur remplit une case essentielle vide par `0` en `value_status='estimated'`
-(zéro **inféré**, jamais fabriqué pour un macro dominant). Chaque cas est listé dans
-`f0-corpus-report.json → estimated_zero_macros` pour revue. La CI vérifie que **toutes**
-les formes portent les 4 macros non nuls.
+Une cellule CIQUAL vide n'est jamais assimilée à zéro. La documentation 2025
+précise qu'une valeur manquante doit rester manquante ; `traces` signifie présent
+mais non quantifiable, et `< x` exprime une borne supérieure, pas une estimation
+ponctuelle.
+
+Les quatre macros essentiels (énergie, protéines, glucides, lipides) restent
+exigés par le garde-fou de publication. Une forme qui ne les possède pas sous
+forme quantifiée demeure donc candidate. Chaque cas est listé dans
+`f0-corpus-report.json → unquantified_macros` pour traitement ou revue.
 
 ---
 

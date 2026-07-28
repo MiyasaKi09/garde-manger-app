@@ -1,117 +1,167 @@
 {
-  "schema": "myko://food-reference-corpus/v1",
-  "schema_version": 1,
-  "corpus_code": "MYKO-CIQUAL-REF-2020-1",
+  "schema": "myko://food-reference-corpus/v2",
+  "schema_version": 2,
+  "corpus_code": "MYKO-CIQUAL-REF-2025-1",
   "status": "candidate",
   "generated_on": "2026-07-28",
   "locale": "fr-FR",
-  "grain": "Une entrée correspond à une référence de forme alimentaire CIQUAL, pas encore à un ingrédient canonique validé.",
+  "grain": "Une entrée correspond à une référence de forme alimentaire Ciqual 2025, pas à un ingrédient canonique validé.",
   "source": {
-    "code": "ciqual_2020",
-    "name": "Table Ciqual 2020",
+    "code": "ciqual_2025",
+    "name": "Table de composition nutritionnelle des aliments Ciqual 2025",
     "publisher": "ANSES",
-    "source_url": "https://ciqual.anses.fr/",
+    "dataset_doi": "10.57745/RDMHWY",
+    "file_doi": "10.57745/RPWYZD",
+    "source_url": "https://entrepot.recherche.data.gouv.fr/dataset.xhtml?persistentId=doi:10.57745/RDMHWY",
+    "download_url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/:persistentId?persistentId=doi:10.57745/RPWYZD",
     "license_code": "etalab-2.0",
     "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
-    "version": "2020-07-07",
-    "extracted_from": [
-      "public.ciqual_reference",
-      "public.nutritional_data"
-    ],
-    "extracted_on": "2026-07-28",
-    "attribution": "Source : Table Ciqual 2020, ANSES — Licence Ouverte / Open Licence 2.0"
+    "version": "1.0",
+    "published_on": "2025-11-19",
+    "raw_path": "data/sources/raw/ciqual_2025_FR_v1.0.xlsx.gz",
+    "official_md5": "0d9758ce23f3f13dd63a005bc1bb4f2c",
+    "sha256": "5555c572fa3735991298d832d0427788fa69a11b4fd20a5d580d58942369fbb0",
+    "attribution": "Anses. 2025. Table de composition nutritionnelle des aliments Ciqual 2025. https://doi.org/10.57745/RDMHWY"
   },
-  "migration_target": {
-    "code": "ciqual_2025",
-    "doi": "10.57745/RDMHWY",
-    "status": "required_before_final_validation",
-    "reason": "Le millésime 2025 remplace la table 2020 et doit être réconcilié avant publication finale."
+  "previous_source": {
+    "code": "ciqual_2020",
+    "version": "2020-07-07",
+    "raw_path": "data/sources/raw/ciqual_2020_FR_2020-07-07.xls.gz",
+    "reconciliation_status": "completed"
   },
   "counts": {
-    "source_entries": 3185,
-    "nutrition_profiles_present": 3178,
-    "accepted": 2701,
-    "review": 483,
-    "quarantined": 1,
-    "canonical_candidates": 2081,
-    "multi_form_candidate_groups": 453
+    "source_entries": 3484,
+    "constituents": 74,
+    "measured_values": 151981,
+    "upper_bound_values": 20075,
+    "trace_values": 2514,
+    "missing_values": 83246,
+    "accepted": 2991,
+    "review": 493,
+    "quarantined": 0,
+    "canonical_candidates": 2212,
+    "multi_form_candidate_groups": 527
   },
   "issue_counts": {
-    "missing_energy_kcal": 107,
-    "missing_fat_g": 30,
-    "missing_carbohydrate_g": 410,
-    "missing_taxonomy": 45,
-    "missing_nutrition": 7,
-    "missing_protein_g": 24,
-    "energy_out_of_range": 1
+    "less_than:carbohydrate_g": 8,
+    "less_than:fat_g": 166,
+    "missing_taxonomy": 1,
+    "nonpositive_upper_bound:butyric_acid_g": 2,
+    "nonpositive_upper_bound:capric_acid_g": 1,
+    "nonpositive_upper_bound:caproic_acid_g": 1,
+    "nonpositive_upper_bound:caprylic_acid_g": 1,
+    "nonpositive_upper_bound:cholesterol_mg": 1,
+    "nonpositive_upper_bound:dha_g": 2,
+    "nonpositive_upper_bound:epa_g": 2,
+    "nonpositive_upper_bound:folates_total_ug": 1,
+    "nonpositive_upper_bound:fructose_g": 1,
+    "nonpositive_upper_bound:glucose_g": 1,
+    "nonpositive_upper_bound:iodine_ug": 3,
+    "nonpositive_upper_bound:lactose_g": 2,
+    "nonpositive_upper_bound:lauric_acid_g": 1,
+    "nonpositive_upper_bound:maltose_g": 1,
+    "nonpositive_upper_bound:monounsaturated_fat_g": 1,
+    "nonpositive_upper_bound:myristic_acid_g": 1,
+    "nonpositive_upper_bound:palmitic_acid_g": 1,
+    "nonpositive_upper_bound:polyunsaturated_fat_g": 1,
+    "nonpositive_upper_bound:retinol_ug": 2,
+    "nonpositive_upper_bound:stearic_acid_g": 1,
+    "nonpositive_upper_bound:sucrose_g": 1,
+    "nonpositive_upper_bound:vitamin_b1_mg": 1,
+    "nonpositive_upper_bound:vitamin_b12_ug": 1,
+    "nonpositive_upper_bound:vitamin_b2_mg": 1,
+    "nonpositive_upper_bound:vitamin_b3_mg": 1,
+    "nonpositive_upper_bound:vitamin_b6_mg": 1,
+    "nonpositive_upper_bound:vitamin_c_mg": 1,
+    "nonpositive_upper_bound:vitamin_d_ug": 1,
+    "nonpositive_upper_bound:vitamin_d2_ug": 3,
+    "nonpositive_upper_bound:vitamin_d3_ug": 2,
+    "not_available:carbohydrate_g": 70,
+    "not_available:energy_kcal": 143,
+    "not_available:fat_g": 20,
+    "not_available:protein_g": 29,
+    "trace:carbohydrate_g": 134,
+    "trace:energy_kcal": 2,
+    "trace:fat_g": 15,
+    "trace:protein_g": 4
   },
   "quality_policy": {
-    "accepted": "Taxonomie présente, profil nutritionnel présent, quatre macronutriments de base renseignés et valeurs dans les bornes.",
-    "review": "Une information requise manque ; la ligne reste disponible comme référence mais ne peut être publiée automatiquement.",
-    "quarantined": "Une valeur sort des bornes physiques ; la ligne est exclue de toute publication ou calcul jusqu’à correction."
+    "accepted": "Taxonomie présente, quatre macronutriments de base mesurés, valeurs dans les bornes physiques et aucune borne source non positive.",
+    "review": "Une macro est absente, à l’état de trace ou seulement bornée, ou une borne source est non positive ; la référence reste consultable mais non publiable pour un calcul déterministe.",
+    "quarantined": "Une valeur mesurée sort des bornes physiques ; la référence est exclue de toute publication jusqu’à correction."
   },
   "publication_rules": [
     "Les références ne deviennent jamais automatiquement des concepts canoniques.",
+    "Une valeur manquante, une trace ou une borne supérieure ne devient jamais zéro.",
     "Une entrée en review ou quarantined ne peut pas alimenter un calcul publié.",
-    "Aucun champ de conservation, allergène, saisonnalité ou substitution n’est inféré depuis CIQUAL.",
-    "La publication finale exige la migration ou la réconciliation avec Ciqual 2025."
+    "Aucun champ de conservation, allergène, saisonnalité ou substitution n’est inféré depuis Ciqual.",
+    "La publication des concepts exige une validation explicite de leurs frontières."
   ],
+  "constituent_registry_path": "constituent-registry.json",
   "canonical_candidates_path": "canonical-candidates.json",
+  "reconciliation_path": "reconciliation-2020.json",
   "shards": [
     {
       "path": "shards/part-0001.json",
       "position": 1,
       "entry_count": 400,
       "first_entry_id": "CIQ-01000",
-      "last_entry_id": "CIQ-08703"
+      "last_entry_id": "CIQ-08250"
     },
     {
       "path": "shards/part-0002.json",
       "position": 2,
       "entry_count": 400,
-      "first_entry_id": "CIQ-08704",
-      "last_entry_id": "CIQ-12736"
+      "first_entry_id": "CIQ-08290",
+      "last_entry_id": "CIQ-12037"
     },
     {
       "path": "shards/part-0003.json",
       "position": 3,
       "entry_count": 400,
-      "first_entry_id": "CIQ-12737",
-      "last_entry_id": "CIQ-18028"
+      "first_entry_id": "CIQ-12038",
+      "last_entry_id": "CIQ-15054"
     },
     {
       "path": "shards/part-0004.json",
       "position": 4,
       "entry_count": 400,
-      "first_entry_id": "CIQ-18029",
-      "last_entry_id": "CIQ-20235"
+      "first_entry_id": "CIQ-15055",
+      "last_entry_id": "CIQ-20022"
     },
     {
       "path": "shards/part-0005.json",
       "position": 5,
       "entry_count": 400,
-      "first_entry_id": "CIQ-20236",
-      "last_entry_id": "CIQ-24060"
+      "first_entry_id": "CIQ-20023",
+      "last_entry_id": "CIQ-21516"
     },
     {
       "path": "shards/part-0006.json",
       "position": 6,
       "entry_count": 400,
-      "first_entry_id": "CIQ-24070",
-      "last_entry_id": "CIQ-26035"
+      "first_entry_id": "CIQ-21517",
+      "last_entry_id": "CIQ-25490"
     },
     {
       "path": "shards/part-0007.json",
       "position": 7,
       "entry_count": 400,
-      "first_entry_id": "CIQ-26036",
-      "last_entry_id": "CIQ-31092"
+      "first_entry_id": "CIQ-25501",
+      "last_entry_id": "CIQ-26271"
     },
     {
       "path": "shards/part-0008.json",
       "position": 8,
-      "entry_count": 385,
-      "first_entry_id": "CIQ-31093",
+      "entry_count": 400,
+      "first_entry_id": "CIQ-26272",
+      "last_entry_id": "CIQ-36302"
+    },
+    {
+      "path": "shards/part-0009.json",
+      "position": 9,
+      "entry_count": 284,
+      "first_entry_id": "CIQ-36304",
       "last_entry_id": "CIQ-96781"
     }
   ]

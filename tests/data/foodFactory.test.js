@@ -15,9 +15,18 @@ describe('normalizeName', () => {
 describe('parseCiqualValue', () => {
   it('virgule décimale, traces, tirets, seuils <', () => {
     expect(parseCiqualValue('45,4')).toEqual({ amount: 45.4, status: 'measured' })
-    expect(parseCiqualValue('traces')).toEqual({ amount: 0, status: 'trace' })
+    expect(parseCiqualValue('traces')).toEqual({ amount: null, status: 'trace' })
     expect(parseCiqualValue('-')).toEqual({ amount: null, status: 'not_available' })
-    expect(parseCiqualValue('< 0,01')).toEqual({ amount: 0.01, status: 'estimated' })
+    expect(parseCiqualValue('< 0,01')).toEqual({
+      amount: null,
+      status: 'less_than',
+      upper_bound: 0.01,
+    })
+    expect(parseCiqualValue('< 0')).toEqual({
+      amount: null,
+      status: 'less_than',
+      upper_bound: 0,
+    })
     expect(parseCiqualValue(12.5)).toEqual({ amount: 12.5, status: 'measured' })
     expect(parseCiqualValue(null)).toEqual({ amount: null, status: 'not_available' })
   })
@@ -88,5 +97,13 @@ describe('mapNutrientColumns', () => {
     expect(m.protein_g.index).toBe(3)
     expect(m.iron_mg).toMatchObject({ unit: 'mg' })
     expect(m.vitamin_b12_ug.index).toBe(6)
+  })
+
+  it('distingue les folates totaux des équivalents DFE de Ciqual 2025', () => {
+    const header = [
+      'Vitamine B9, équivalents folates alimentaires DFE (µg/100 g)',
+      'Vitamine B9 ou Folates totaux (µg/100 g)',
+    ]
+    expect(mapNutrientColumns(header).vitamin_b9_ug.index).toBe(1)
   })
 })

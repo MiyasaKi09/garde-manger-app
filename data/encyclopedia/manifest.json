@@ -58,11 +58,11 @@
     "drafted_food_concepts": 0,
     "validated_food_concepts": 0,
     "food_forms": 31,
-    "food_reference_entries": 3185,
-    "food_reference_accepted_entries": 2701,
-    "food_reference_review_entries": 483,
-    "food_reference_quarantined_entries": 1,
-    "food_canonical_candidates": 2081
+    "food_reference_entries": 3484,
+    "food_reference_accepted_entries": 2991,
+    "food_reference_review_entries": 493,
+    "food_reference_quarantined_entries": 0,
+    "food_canonical_candidates": 2212
   },
   "volumes": [
     {

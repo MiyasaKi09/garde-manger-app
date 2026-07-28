@@ -6,46 +6,58 @@ import { validateCiqualReferenceCorpus } from '@/scripts/data/foods/validate-ciq
 describe('Corpus industriel des ingrédients CIQUAL', () => {
   it('matérialise plus de 3 000 références alimentaires réelles et sourcées', () => {
     expect(manifest.counts).toMatchObject({
-      source_entries: 3185,
-      nutrition_profiles_present: 3178,
-      accepted: 2701,
-      review: 483,
-      quarantined: 1,
-      canonical_candidates: 2081,
-      multi_form_candidate_groups: 453,
+      source_entries: 3484,
+      constituents: 74,
+      measured_values: 151981,
+      upper_bound_values: 20075,
+      trace_values: 2514,
+      missing_values: 83246,
+      accepted: 2991,
+      review: 493,
+      quarantined: 0,
+      canonical_candidates: 2212,
+      multi_form_candidate_groups: 527,
     })
     expect(manifest.source).toMatchObject({
-      code: 'ciqual_2020',
+      code: 'ciqual_2025',
       publisher: 'ANSES',
       license_code: 'etalab-2.0',
-      version: '2020-07-07',
+      version: '1.0',
+      dataset_doi: '10.57745/RDMHWY',
+      file_doi: '10.57745/RPWYZD',
     })
-    expect(manifest.migration_target).toMatchObject({
-      code: 'ciqual_2025',
-      status: 'required_before_final_validation',
-    })
+    expect(
+      manifest.counts.measured_values
+        + manifest.counts.upper_bound_values
+        + manifest.counts.trace_values
+        + manifest.counts.missing_values,
+    ).toBe(3484 * 74)
   })
 
   it('sépare les formes sources des frontières canoniques à valider', () => {
-    expect(candidateIndex.source_entry_count).toBe(3185)
-    expect(candidateIndex.candidate_count).toBe(2081)
+    expect(candidateIndex.source_entry_count).toBe(3484)
+    expect(candidateIndex.candidate_count).toBe(2212)
     expect(candidateIndex.status).toBe('pending_review')
     expect(candidateIndex.shards).toHaveLength(6)
     expect(candidateIndex.shards.reduce(
       (count, shard) => count + shard.candidate_count,
       0,
-    )).toBe(2081)
+    )).toBe(2212)
   })
 
-  it('valide unicité, grain, nutrition, qualité et rattachement de chaque entrée', () => {
+  it('valide unicité, grain, nutrition, qualité, rattachements et migration', () => {
     expect(validateCiqualReferenceCorpus()).toEqual({
-      corpus_code: 'MYKO-CIQUAL-REF-2020-1',
-      source_entries: 3185,
-      accepted: 2701,
-      review: 483,
-      quarantined: 1,
-      canonical_candidates: 2081,
-      shards: 8,
+      corpus_code: 'MYKO-CIQUAL-REF-2025-1',
+      source_entries: 3484,
+      constituents: 74,
+      accepted: 2991,
+      review: 493,
+      quarantined: 0,
+      canonical_candidates: 2212,
+      entry_shards: 9,
+      reconciliation_rows: 3666,
+      added_since_2020: 481,
+      removed_since_2020: 182,
     })
   })
 })

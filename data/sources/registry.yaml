@@ -4,6 +4,29 @@
 # tout import. Cette liste alimente ops.source_datasets.
 
 sources:
+  - code: ciqual_2025
+    name: Table Ciqual 2025 (composition nutritionnelle des aliments)
+    publisher: ANSES
+    source_url: "https://entrepot.recherche.data.gouv.fr/dataset.xhtml?persistentId=doi:10.57745/RDMHWY"
+    download_url: "https://entrepot.recherche.data.gouv.fr/api/access/datafile/:persistentId?persistentId=doi:10.57745/RPWYZD"
+    dataset_doi: 10.57745/RDMHWY
+    file_doi: 10.57745/RPWYZD
+    license_code: etalab-2.0
+    license_url: https://www.etalab.gouv.fr/licence-ouverte-open-licence
+    allowed_uses:
+      store_raw: true
+      redistribute: true
+      modify: true
+      attribution_required: true
+    attribution: "Source : Table Ciqual 2025, ANSES — Licence Ouverte / Open Licence 2.0"
+    update_strategy: manual_versioned
+    current_version: "1.0"
+    published_on: "2025-11-19"
+    official_md5: 0d9758ce23f3f13dd63a005bc1bb4f2c
+    sha256: 5555c572fa3735991298d832d0427788fa69a11b4fd20a5d580d58942369fbb0
+    supersedes: ciqual_2020
+    role: base nutritionnelle française principale (aliments génériques)
+
   - code: ciqual_2020
     name: Table Ciqual 2020 (composition nutritionnelle des aliments)
     publisher: ANSES
@@ -19,7 +42,9 @@ sources:
     attribution: "Source : Table Ciqual 2020, ANSES — Licence Ouverte / Open Licence 2.0"
     update_strategy: manual_versioned
     current_version: "2020-07-07"
-    role: base nutritionnelle française principale (aliments génériques)
+    status: superseded
+    superseded_by: ciqual_2025
+    role: archive de provenance et base du journal de réconciliation 2020→2025
 
   - code: usda_fdc
     name: USDA FoodData Central

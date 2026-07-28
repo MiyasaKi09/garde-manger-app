@@ -1,0 +1,90 @@
+{
+  "schema": "myko://ciqual-reconciliation/v1",
+  "schema_version": 1,
+  "from": "ciqual_2020@2020-07-07",
+  "to": "ciqual_2025@1.0",
+  "generated_on": "2026-07-28",
+  "identity_change_counts": {
+    "unchanged": 1162,
+    "renamed": 665,
+    "taxonomy_changed": 854,
+    "renamed_and_taxonomy_changed": 322,
+    "added": 481,
+    "removed": 182
+  },
+  "core_nutrition_change_counts": {
+    "unchanged": 935,
+    "changed": 2068,
+    "not_comparable": 663
+  },
+  "compared_core_nutrients": [
+    "energy_kcal",
+    "protein_g",
+    "carbohydrate_g",
+    "fat_g"
+  ],
+  "rules": [
+    "Le code aliment source est la clé de rapprochement prioritaire.",
+    "Une disparition retire une référence source sans supprimer automatiquement un concept canonique.",
+    "Un ajout reste une référence source candidate.",
+    "Toute modification de nom, taxonomie ou macro exige une nouvelle sélection de provenance avant publication."
+  ],
+  "shards": [
+    {
+      "path": "reconciliation/part-0001.json",
+      "position": 1,
+      "change_count": 500,
+      "first_source_record_key": "1000",
+      "last_source_record_key": "9330"
+    },
+    {
+      "path": "reconciliation/part-0002.json",
+      "position": 2,
+      "change_count": 500,
+      "first_source_record_key": "9331",
+      "last_source_record_key": "13041"
+    },
+    {
+      "path": "reconciliation/part-0003.json",
+      "position": 3,
+      "change_count": 500,
+      "first_source_record_key": "13042",
+      "last_source_record_key": "19054"
+    },
+    {
+      "path": "reconciliation/part-0004.json",
+      "position": 4,
+      "change_count": 500,
+      "first_source_record_key": "19060",
+      "last_source_record_key": "20535"
+    },
+    {
+      "path": "reconciliation/part-0005.json",
+      "position": 5,
+      "change_count": 500,
+      "first_source_record_key": "20536",
+      "last_source_record_key": "25401"
+    },
+    {
+      "path": "reconciliation/part-0006.json",
+      "position": 6,
+      "change_count": 500,
+      "first_source_record_key": "25402",
+      "last_source_record_key": "28002"
+    },
+    {
+      "path": "reconciliation/part-0007.json",
+      "position": 7,
+      "change_count": 500,
+      "first_source_record_key": "28003",
+      "last_source_record_key": "40007"
+    },
+    {
+      "path": "reconciliation/part-0008.json",
+      "position": 8,
+      "change_count": 166,
+      "first_source_record_key": "40052",
+      "last_source_record_key": "96781"
+    }
+  ]
+}

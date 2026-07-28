@@ -1,5 +1,9 @@
 # Corpus industriel des ingrédients — CIQUAL 2020
 
+> **Archive historique.** Ce snapshot a été remplacé par le
+> [corpus Ciqual 2025](CIQUAL-2025-CORPUS.md). Ses chiffres sont conservés pour
+> documenter le point de départ de la réconciliation.
+
 Ce lot matérialise **3 185 références alimentaires réelles** issues de la Table Ciqual 2020. Il remplace la rédaction manuelle fiche par fiche pour les domaines que Ciqual couvre effectivement : identité de la référence, taxonomie source et nutrition par 100 g.
 
 ## Résultat
@@ -51,7 +55,9 @@ La ligne `CIQ-42501` (« Poudre cacaotée pour bébé ») porte 1 680 kcal/100 g
 
 Ciqual ne fournit pas conservation, saisonnalité, allergènes réglementaires, compatibilités, substitutions, unités ménagères ni relations aux produits commerciaux. Ces champs ne sont donc pas inventés. Ils seront enrichis par lots depuis les sources appropriées après validation des frontières concept/forme.
 
-Le snapshot est le millésime **2020-07-07** déjà présent dans Myko. La publication finale exige une réconciliation avec **Ciqual 2025** (DOI `10.57745/RDMHWY`), qui remplace ce millésime.
+Le snapshot est le millésime **2020-07-07** déjà présent dans Myko. Sa
+réconciliation avec **Ciqual 2025** (DOI `10.57745/RDMHWY`) est désormais
+matérialisée dans le corpus actif.
 
 ## Contrôle
 
