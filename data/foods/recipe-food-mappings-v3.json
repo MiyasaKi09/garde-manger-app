@@ -341,7 +341,9 @@
       "ciqual_alim_code": "26264"
     },
     "gousse de vanille": {
-      "ciqual_alim_code": "11057"
+      "ciqual_alim_code": "11081",
+      "confidence": "C",
+      "note": "Proxy assumé. 11057 « Vanille, gousse » est bien la référence d'identité, mais l'ANSES y déclare énergie, protéines, glucides, lipides et fibres « not_available » — seuls les micronutriments sont mesurés. Aucune fermeture d'Atwater n'est possible sans une seule valeur d'ancrage, et USDA SR Legacy ne contient aucune gousse de vanille (uniquement 173471 « Vanilla extract », un liquide alcoolisé à 288 kcal, et des produits vanillés). On retient donc 11081 « Epice (aliment moyen) », l'agrégat que l'ANSES publie pour le sous-groupe « épices » auquel 11057 appartient précisément. Réserve d'usage : la gousse est fendue, grattée, infusée puis retirée, et elle est comptée en unités — deux gousses pèsent environ 6 g, soit une vingtaine de kilocalories réparties sur toute la préparation, dont l'essentiel n'est jamais avalé."
     },
     "graine de moutarde": {
       "ciqual_alim_code": "15034",

@@ -44,13 +44,14 @@ describe('densité protéique du corpus', () => {
   const densite = (recipe) => recipe.nutritionPerServing.proteinG / recipe.nutritionPerServing.kcal
 
   it('offre des plats complets réellement denses en protéines', () => {
-    // Six et non sept : PROT-006 reste bloquée sur l'estragon frais, dont
-    // Ciqual ne mesure pas les lipides et dont USDA n'a que la version séchée
-    // — sept fois plus dense. Combler ce trou par une valeur dérivée serait
-    // l'invention que la doctrine du corpus interdit ; la recette attend une
-    // source réelle plutôt qu'un chiffre plausible.
+    // Les sept, désormais. PROT-006 est restée bloquée tant que l'estragon
+    // frais n'avait pas de lipides : Ciqual ne les mesure pas et USDA n'a que
+    // la version séchée, sept fois plus concentrée. La fermeture énergétique
+    // d'Atwater résout le cas sans rien inventer — 44 = 4×3,8 + 4×4,1 + 9×L
+    // n'a qu'une inconnue, et n'utilise que des valeurs mesurées du même
+    // aliment. La forme porte sa formule dans `derived`.
     const denses = recipes.filter((recipe) => densite(recipe) >= 0.125)
-    expect(denses.length).toBeGreaterThanOrEqual(6)
+    expect(denses.length).toBeGreaterThanOrEqual(7)
     // Denses ET répartis sur plusieurs familles : le moteur plafonne le nombre
     // de repas par famille de protéine, si bien que sept plats de cabillaud ne
     // vaudraient pas mieux que deux.

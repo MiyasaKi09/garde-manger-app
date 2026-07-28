@@ -8,8 +8,8 @@
     "exact_label": 48
   },
   "recipes_total": 309,
-  "recipes_eligible_for_publication": 64,
-  "v1_enriched_eligible_for_publication": 46,
+  "recipes_eligible_for_publication": 68,
+  "v1_enriched_eligible_for_publication": 48,
   "unresolved_required": [
     "Achiote pâte",
     "Ail cru entier",
@@ -552,12 +552,10 @@
     {
       "code": "FR-009",
       "family": "Poulet à la moutarde et champignons",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
-        "Estragon frais"
-      ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -931,11 +929,10 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [
-        "Pâte brisée crue"
-      ],
-      "incomplete_nutrition_required_forms": [
+        "Pâte brisée crue",
         "Gousse de vanille"
       ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -952,10 +949,10 @@
       "family": "Riz au lait vanille",
       "eligible_for_publication": false,
       "unresolved_required_forms": [],
-      "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
+      "low_confidence_required_forms": [
         "Gousse de vanille"
       ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -997,12 +994,10 @@
     {
       "code": "FR-028",
       "family": "Cake jambon et olives",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
-        "Olive verte dénoyautée"
-      ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -1148,10 +1143,10 @@
       "family": "Panna cotta vanille",
       "eligible_for_publication": false,
       "unresolved_required_forms": [],
-      "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
+      "low_confidence_required_forms": [
         "Gousse de vanille"
       ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -1265,9 +1260,7 @@
         "Rouille"
       ],
       "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
-        "Saint-pierre cru"
-      ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -1408,10 +1401,10 @@
       "family": "Cannelés de Bordeaux",
       "eligible_for_publication": false,
       "unresolved_required_forms": [],
-      "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
+      "low_confidence_required_forms": [
         "Gousse de vanille"
       ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -1598,12 +1591,10 @@
     {
       "code": "REAL-106",
       "family": "Caponata sicilienne",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
-        "Olive verte dénoyautée"
-      ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -2070,9 +2061,7 @@
         "Citron confit au sel"
       ],
       "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
-        "Olive verte dénoyautée"
-      ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Citron confit au sel"
       ]
@@ -4174,9 +4163,7 @@
         "Piment jalapeño mariné"
       ],
       "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
-        "Olive verte dénoyautée"
-      ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -4295,9 +4282,7 @@
         "Bœuf haché au couteau"
       ],
       "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
-        "Olive verte dénoyautée"
-      ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Œuf dur"
       ]
@@ -4449,9 +4434,7 @@
         "Flanchet de bœuf cru"
       ],
       "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
-        "Olive verte dénoyautée"
-      ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -4664,12 +4647,10 @@
     {
       "code": "PROT-006",
       "family": "Filet mignon de porc à la moutarde et lentilles vertes",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [
-        "Estragon frais"
-      ],
+      "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
     {
@@ -15651,7 +15632,8 @@
         "ciqual_alim_code": "11092",
         "ciqual_name": "Estragon, frais",
         "category": "herbes_aromates",
-        "nutrition_complete": false,
+        "nutrition_complete": true,
+        "derived_field": "fat_g",
         "confidence": "B",
         "note": null
       },
@@ -19072,12 +19054,12 @@
       ],
       "selection_mode": "curated",
       "selected": {
-        "ciqual_alim_code": "11057",
-        "ciqual_name": "Vanille, gousse",
+        "ciqual_alim_code": "11081",
+        "ciqual_name": "Epice (aliment moyen)",
         "category": "epices",
-        "nutrition_complete": false,
-        "confidence": "B",
-        "note": null
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. 11057 « Vanille, gousse » est bien la référence d'identité, mais l'ANSES y déclare énergie, protéines, glucides, lipides et fibres « not_available » — seuls les micronutriments sont mesurés. Aucune fermeture d'Atwater n'est possible sans une seule valeur d'ancrage, et USDA SR Legacy ne contient aucune gousse de vanille (uniquement 173471 « Vanilla extract », un liquide alcoolisé à 288 kcal, et des produits vanillés). On retient donc 11081 « Epice (aliment moyen) », l'agrégat que l'ANSES publie pour le sous-groupe « épices » auquel 11057 appartient précisément. Réserve d'usage : la gousse est fendue, grattée, infusée puis retirée, et elle est comptée en unités — deux gousses pèsent environ 6 g, soit une vingtaine de kilocalories réparties sur toute la préparation, dont l'essentiel n'est jamais avalé."
       },
       "suggestions": [
         {
@@ -26257,7 +26239,8 @@
         "ciqual_alim_code": "13033",
         "ciqual_name": "Olive verte, en saumure, égouttée",
         "category": "condiments_sauces",
-        "nutrition_complete": false,
+        "nutrition_complete": true,
+        "derived_field": "carbohydrate_g",
         "confidence": "B",
         "note": null
       },
@@ -35247,7 +35230,8 @@
         "ciqual_alim_code": "26104",
         "ciqual_name": "Saint-Pierre, cru",
         "category": "poissons_fruits_de_mer",
-        "nutrition_complete": false,
+        "nutrition_complete": true,
+        "derived_field": "carbohydrate_g",
         "confidence": "B",
         "note": null
       },

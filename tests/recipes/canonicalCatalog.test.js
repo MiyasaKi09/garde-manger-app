@@ -10,14 +10,14 @@ import { dedupCatalog } from '@/app/recipes/catalogDedup'
 describe('canonical recipe catalog V3', () => {
   it('publishes only fully executable recipes', () => {
     const recipes = getCanonicalRecipes()
-    expect(recipes).toHaveLength(64)
+    expect(recipes).toHaveLength(68)
     expect(recipes.every((recipe) => recipe.eligible)).toBe(true)
     expect(recipes.every((recipe) => recipe.nutritionCoverage.pct === 100)).toBe(true)
   })
 
   it('keeps all 309 candidates auditable without exposing blockers', () => {
     expect(getCanonicalRecipes({ eligibleOnly: false })).toHaveLength(309)
-    expect(canonicalCatalogMetadata).toMatchObject({ recipeCount: 309, eligibleCount: 64 })
+    expect(canonicalCatalogMetadata).toMatchObject({ recipeCount: 309, eligibleCount: 68 })
   })
 
   it('builds stable canonical cards and a code lookup', () => {

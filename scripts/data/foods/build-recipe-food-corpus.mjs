@@ -177,6 +177,59 @@ function conversionFor(form, units) {
   return conversion
 }
 
+/**
+ * Comble la dernière macro manquante par fermeture énergétique d'Atwater.
+ *
+ * Dernier recours, employé seulement quand ni Ciqual ni USDA ne fournissent la
+ * valeur. Il ne s'agit pas d'une analogie — déduire l'estragon frais du séché
+ * par teneur en eau donne entre 0,59 et 1,21 g de lipides selon le rapport
+ * retenu, soit un facteur deux d'incertitude. La fermeture énergétique, elle,
+ * n'a qu'une inconnue et n'utilise que des valeurs mesurées du même aliment :
+ *
+ *   kcal = 4 × protéines + 4 × glucides + 9 × lipides
+ *   44 = 4 × 3,8 + 4 × 4,1 + 9 × L  →  L = 1,378 g
+ *
+ * Conditions strictes : exactement une macro manquante, les trois autres
+ * mesurées, et un résultat physiquement plausible. Le résultat n'est JAMAIS
+ * présenté comme une mesure : la forme porte `derived` avec sa formule.
+ */
+const FACTEURS_ATWATER = { protein_g: 4, carbohydrate_g: 4, fat_g: 9 }
+
+function comblerParAtwater(nutrition) {
+  const champs = ['energy_kcal', 'protein_g', 'carbohydrate_g', 'fat_g']
+  const manquants = champs.filter((champ) => !Number.isFinite(nutrition[champ]))
+  if (manquants.length !== 1) return null
+  const [manquant] = manquants
+
+  if (manquant === 'energy_kcal') {
+    const kcal = Object.entries(FACTEURS_ATWATER)
+      .reduce((somme, [champ, facteur]) => somme + nutrition[champ] * facteur, 0)
+    return { champ: manquant, valeur: Math.round(kcal * 100) / 100, formule: 'kcal = 4·protéines + 4·glucides + 9·lipides' }
+  }
+
+  const facteur = FACTEURS_ATWATER[manquant]
+  const autres = Object.entries(FACTEURS_ATWATER)
+    .filter(([champ]) => champ !== manquant)
+    .reduce((somme, [champ, poids]) => somme + nutrition[champ] * poids, 0)
+  const valeur = (nutrition.energy_kcal - autres) / facteur
+
+  // Une valeur franchement négative signale une incohérence de la source, pas
+  // une trace : la combler reviendrait à fabriquer un chiffre pour masquer un
+  // défaut. Un résidu infime, lui, vient des arrondis de Ciqual — le
+  // Saint-Pierre annonce 86,7 kcal quand ses macros en impliquent 86,8, d'où
+  // −0,025 g de glucides. On ramène à zéro, mais on garde la valeur brute :
+  // sans elle, l'identité d'Atwater ne se vérifierait plus et le lecteur ne
+  // saurait pas d'où vient l'écart.
+  if (!Number.isFinite(valeur) || valeur < -0.05) return null
+  const arrondie = Math.round(Math.max(0, valeur) * 1000) / 1000
+  return {
+    champ: manquant,
+    valeur: arrondie,
+    ...(valeur < 0 ? { valeur_brute: Math.round(valeur * 1000) / 1000 } : {}),
+    formule: `${manquant} = (kcal − ${Object.entries(FACTEURS_ATWATER).filter(([c]) => c !== manquant).map(([c, f]) => `${f}·${c}`).join(' − ')}) / ${facteur}`,
+  }
+}
+
 const allRecords = records
   .map((record) => {
     const imported = nutritionByCode.get(record.alim_code) || {}
@@ -274,6 +327,16 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
             nutrition: usdaNutrition,
           }
         : baseCiqual
+  // Dernier recours, après Ciqual puis USDA : fermeture énergétique. Elle doit
+  // intervenir AVANT que `nutrition_complete` ne soit évalué, sans quoi la
+  // valeur comblée n'atteindrait jamais le verdict d'éligibilité. Et sur une
+  // COPIE : `baseCiqual` est l'enregistrement partagé par toutes les formes qui
+  // pointent le même code Ciqual, le muter ferait fuiter la valeur dérivée
+  // ailleurs, sans mention de provenance.
+  const derive = selected?.nutrition ? comblerParAtwater(selected.nutrition) : null
+  const retenu = derive
+    ? { ...selected, nutrition: { ...selected.nutrition, [derive.champ]: derive.valeur } }
+    : selected
   const selectionMode = explicit ? 'curated' : exact ? 'exact_label' : 'review_required'
   results.push({
     form: usage.name,
@@ -282,12 +345,13 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
     recipe_count: usage.recipes.size,
     units: [...usage.units].sort(),
     selection_mode: selectionMode,
-    selected: selected ? {
-      ciqual_alim_code: selected.alim_code,
-      ciqual_name: selected.alim_nom_fr,
-      category: explicit?.category || selected.category,
+    selected: retenu ? {
+      ciqual_alim_code: retenu.alim_code,
+      ciqual_name: retenu.alim_nom_fr,
+      category: explicit?.category || retenu.category,
       nutrition_complete: ['energy_kcal', 'protein_g', 'carbohydrate_g', 'fat_g']
-        .every((key) => Number.isFinite(selected.nutrition?.[key])),
+        .every((key) => Number.isFinite(retenu.nutrition?.[key])),
+      ...(derive ? { derived_field: derive.champ } : {}),
       confidence: explicit?.confidence || 'B',
       note: explicit?.note || null,
     } : null,
@@ -299,28 +363,37 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
       score,
     })),
   })
-  if (selected) {
+  if (retenu) {
     selectedCatalog.push({
       canonical_name: usage.name,
       canonical_name_normalized: normalized,
-      category: explicit?.category || selected.category,
+      category: explicit?.category || retenu.category,
       confidence: explicit?.confidence || 'B',
       source: explicit?.nutrition_override
         ? 'myko_curated_override'
         : champsCombles.length ? 'ciqual_2020+usda_fdc'
           : explicit?.usda_fdc_id && !baseCiqual ? 'usda_fdc' : 'ciqual_2020',
       ...(champsCombles.length ? { filled_from_usda: { fdc_id: String(explicit.usda_fdc_id), fields: champsCombles } } : {}),
-      source_record_key: selected.alim_code,
-      source_name: selected.alim_nom_fr,
+      ...(derive ? {
+        derived: {
+          field: derive.champ,
+          value: derive.valeur,
+          ...(derive.valeur_brute !== undefined ? { raw_value: derive.valeur_brute, clamped_to_zero: true } : {}),
+          method: 'atwater_closure',
+          formula: derive.formule,
+        },
+      } : {}),
+      source_record_key: retenu.alim_code,
+      source_name: retenu.alim_nom_fr,
       state: parseFoodName(usage.name),
       units_used: [...usage.units].sort(),
       conversion: conversionFor(usage.name, usage.units),
       per100g: {
-        kcal: selected.nutrition?.energy_kcal ?? null,
-        proteinG: selected.nutrition?.protein_g ?? null,
-        carbsG: selected.nutrition?.carbohydrate_g ?? null,
-        fatG: selected.nutrition?.fat_g ?? null,
-        fiberG: selected.nutrition?.fiber_g ?? null,
+        kcal: retenu.nutrition?.energy_kcal ?? null,
+        proteinG: retenu.nutrition?.protein_g ?? null,
+        carbsG: retenu.nutrition?.carbohydrate_g ?? null,
+        fatG: retenu.nutrition?.fat_g ?? null,
+        fiberG: retenu.nutrition?.fiber_g ?? null,
       },
       note: explicit?.note || null,
     })

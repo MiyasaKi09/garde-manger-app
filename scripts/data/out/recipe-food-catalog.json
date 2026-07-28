@@ -2498,6 +2498,12 @@
       "category": "herbes_aromates",
       "confidence": "B",
       "source": "ciqual_2020",
+      "derived": {
+        "field": "fat_g",
+        "value": 1.378,
+        "method": "atwater_closure",
+        "formula": "fat_g = (kcal − 4·protein_g − 4·carbohydrate_g) / 9"
+      },
       "source_record_key": "11092",
       "source_name": "Estragon, frais",
       "state": {
@@ -2517,7 +2523,7 @@
         "kcal": 44,
         "proteinG": 3.8,
         "carbsG": 4.1,
-        "fatG": null,
+        "fatG": 1.378,
         "fiberG": 0.025
       },
       "note": null
@@ -2978,10 +2984,10 @@
       "canonical_name": "Gousse de vanille",
       "canonical_name_normalized": "gousse de vanille",
       "category": "epices",
-      "confidence": "B",
+      "confidence": "C",
       "source": "ciqual_2020",
-      "source_record_key": "11057",
-      "source_name": "Vanille, gousse",
+      "source_record_key": "11081",
+      "source_name": "Epice (aliment moyen)",
       "state": {
         "concept": "Gousse de vanille",
         "rest": "",
@@ -2998,13 +3004,13 @@
         "grams_per_unit": 4
       },
       "per100g": {
-        "kcal": null,
-        "proteinG": null,
-        "carbsG": null,
-        "fatG": null,
-        "fiberG": null
+        "kcal": 345,
+        "proteinG": 12.3,
+        "carbsG": 37.7,
+        "fatG": 10.4,
+        "fiberG": 4.79
       },
-      "note": null
+      "note": "Proxy assumé. 11057 « Vanille, gousse » est bien la référence d'identité, mais l'ANSES y déclare énergie, protéines, glucides, lipides et fibres « not_available » — seuls les micronutriments sont mesurés. Aucune fermeture d'Atwater n'est possible sans une seule valeur d'ancrage, et USDA SR Legacy ne contient aucune gousse de vanille (uniquement 173471 « Vanilla extract », un liquide alcoolisé à 288 kcal, et des produits vanillés). On retient donc 11081 « Epice (aliment moyen) », l'agrégat que l'ANSES publie pour le sous-groupe « épices » auquel 11057 appartient précisément. Réserve d'usage : la gousse est fendue, grattée, infusée puis retirée, et elle est comptée en unités — deux gousses pèsent environ 6 g, soit une vingtaine de kilocalories réparties sur toute la préparation, dont l'essentiel n'est jamais avalé."
     },
     {
       "canonical_name": "Graine de moutarde",
@@ -4795,6 +4801,12 @@
       "category": "condiments_sauces",
       "confidence": "B",
       "source": "ciqual_2020",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 2.115,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g) / 4"
+      },
       "source_record_key": "13033",
       "source_name": "Olive verte, en saumure, égouttée",
       "state": {
@@ -4813,7 +4825,7 @@
       "per100g": {
         "kcal": 155,
         "proteinG": 1.31,
-        "carbsG": null,
+        "carbsG": 2.115,
         "fatG": 15.7,
         "fiberG": 3.27
       },
@@ -6721,6 +6733,14 @@
       "category": "poissons_fruits_de_mer",
       "confidence": "B",
       "source": "ciqual_2020",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 0,
+        "raw_value": -0.025,
+        "clamped_to_zero": true,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g) / 4"
+      },
       "source_record_key": "26104",
       "source_name": "Saint-Pierre, cru",
       "state": {
@@ -6739,7 +6759,7 @@
       "per100g": {
         "kcal": 86.7,
         "proteinG": 19.9,
-        "carbsG": null,
+        "carbsG": 0,
         "fatG": 0.8,
         "fiberG": 1.11
       },
