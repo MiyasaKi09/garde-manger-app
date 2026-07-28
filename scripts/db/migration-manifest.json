@@ -1384,5 +1384,15 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260728220000_corpus_v3_batch1_sources.sql",
+    "github_version": "20260728220000",
+    "name": "corpus_v3_batch1_sources",
+    "sha256": "ac7fc04849ec0a6b8df3f7128457bf8afdc52d1aea9c2493d15f684b927c8c22",
+    "role": "apply",
+    "baseline": "trust",
+    "historical_version": null,
+    "expected_objects": []
   }
 ]
