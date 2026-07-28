@@ -2623,6 +2623,36 @@
       "note": "« Nettoyé » décrit un parage, pas un état nutritionnel. Les entrées cuite (149 kcal), beignet (252) et poêlée (173) auraient toutes faussé l'état."
     },
     {
+      "canonical_name": "Calvados",
+      "canonical_name_normalized": "calvados",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "1023",
+      "source_name": "Eau de vie de vin, type armagnac, cognac",
+      "state": {
+        "concept": "Calvados",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 228,
+        "proteinG": 0,
+        "carbsG": 1,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Le Ciqual porte bien une entrée « Eau de vie, type calvados » (1024), mais sans valeur énergétique — ses macros sont toutes à zéro et l'énergie manquante. La reprendre telle quelle ferait passer un alcool à 40 % vol pour un produit à 0 kcal, ce qui est faux : l'apport d'une eau-de-vie vient presque entièrement de l'éthanol. L'entrée armagnac/cognac est le même produit du point de vue nutritionnel — un distillat à 40 % vol — et elle est chiffrée (228 kcal). C'est un proxy assumé, choisi parce qu'une absence ne doit jamais devenir un zéro."
+    },
+    {
       "canonical_name": "Cannelle cassia",
       "canonical_name_normalized": "cannelle cassia",
       "category": "epices",
@@ -3978,6 +4008,36 @@
       "note": null
     },
     {
+      "canonical_name": "Cidre brut",
+      "canonical_name_normalized": "cidre brut",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "5006",
+      "source_name": "Cidre brut",
+      "state": {
+        "concept": "Cidre brut",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 10.5,
+        "proteinG": 0,
+        "carbsG": 2.62,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Le brut plutôt que le doux : c'est celui que nomment les sources, et l'écart n'est pas anecdotique — 10,5 kcal contre 37,5, soit plus du triple, parce que le doux garde son sucre résiduel. Le cidre étant alcoolisé, l'énergie publiée ne se referme pas sur les seuls macronutriments ; c'est la valeur du classeur qui fait foi, pas un calcul d'Atwater."
+    },
+    {
       "canonical_name": "Cinq épices chinoises",
       "canonical_name_normalized": "cinq epices chinoises",
       "category": "epices",
@@ -4164,6 +4224,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {
@@ -5346,6 +5407,36 @@
       "note": null
     },
     {
+      "canonical_name": "Échine de porc crue",
+      "canonical_name_normalized": "echine de porc crue",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "28302",
+      "source_name": "Porc, échine, crue",
+      "state": {
+        "concept": "Échine de porc crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 198,
+        "proteinG": 18,
+        "carbsG": 0.1,
+        "fatG": 14,
+        "fiberG": 0
+      },
+      "note": "Entrée dédiée du classeur, macros complètes (198 kcal, P 18 / G 0,1 / L 14). L'écart avec l'épaule n'est pas cosmétique : 198 kcal contre 178, et 14 g de lipides contre 11,2 — c'est ce gras persillé qui tient la cuisson longue d'un sauté."
+    },
+    {
       "canonical_name": "Endive fraîche",
       "canonical_name_normalized": "endive fraiche",
       "category": "legumes",
@@ -5581,6 +5672,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {},
@@ -6458,6 +6550,36 @@
       "note": "Absent du classeur français, référencé tel quel par USDA. Matière grasse pure : 100 g de lipides, ni protéines ni glucides — la clarification retire l'eau et les solides du lait."
     },
     {
+      "canonical_name": "Gigot d'agneau cru",
+      "canonical_name_normalized": "gigot d agneau cru",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "21502",
+      "source_name": "Agneau, gigot, cru",
+      "state": {
+        "concept": "Gigot d'agneau cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 128,
+        "proteinG": 20,
+        "carbsG": 0.48,
+        "fatG": 5.13,
+        "fiberG": 0
+      },
+      "note": "Correspondance exacte, pas un rapprochement : l'entrée Ciqual s'appelle « Agneau, gigot, cru » et la recette emploie un gigot d'agneau cru. Macros complètes (128 kcal, P 20 / G 0,48 / L 5,13). La confiance A se justifie ici alors que « Agneau haché cru » reste en C sur le même code, et ce n'est pas une contradiction : le haché emprunte une donnée qui n'est pas la sienne — un gigot désossé et haché n'a ni le même gras ni le même rendement — tandis que le gigot, lui, est chez lui."
+    },
+    {
       "canonical_name": "Gingembre frais",
       "canonical_name_normalized": "gingembre frais",
       "category": "epices",
@@ -6818,6 +6940,36 @@
         "fiberG": 15.2
       },
       "note": "Proxy assumé : ni cornille, ni niébé, ni dolique au classeur (0 occurrence). Ce qui est approximé : une légumineuse sèche à réhydrater, ~23 g de protéines et ~46 g de glucides pour 100 g de graine sèche. 20525 (283,9 kcal, 22,5 g de protéines) colle mieux que 20501 « Haricot blanc, sec » proposé en candidat (268 kcal, 19,1 g de protéines), en retrait de 19 % sur les protéines. L'état sec est respecté : les autres candidats (haricot vert, beurre, plat, de Lima, tous « crus ») sont des gousses fraîches à ~26-31 kcal, soit dix fois moins — contresens majeur si retenus."
+    },
+    {
+      "canonical_name": "Haricot flageolet sec",
+      "canonical_name_normalized": "haricot flageolet sec",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20539",
+      "source_name": "Haricot flageolet, vert, sec",
+      "state": {
+        "concept": "Haricot flageolet sec",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 268.2,
+        "proteinG": 19.1,
+        "carbsG": 42.1,
+        "fatG": 2.6,
+        "fiberG": 23.4
+      },
+      "note": "Deux des sources partent du sec, avec trempage. Les deux formes ne sont pas interchangeables au poids : 100 g de sec donnent environ 230 g d'égoutté, et les confondre triplerait l'apport annoncé."
     },
     {
       "canonical_name": "Haricot géant sec",
@@ -9192,6 +9344,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {
@@ -12059,6 +12212,36 @@
         "fiberG": 1.1
       },
       "note": null
+    },
+    {
+      "canonical_name": "Poule crue",
+      "canonical_name_normalized": "poule crue",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "36001",
+      "source_name": "Poule, viande ,crue",
+      "state": {
+        "concept": "Poule crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 124,
+        "proteinG": 20.9,
+        "carbsG": 0,
+        "fatG": 4.51,
+        "fiberG": 0
+      },
+      "note": "La poule au pot se fait avec une poule, pas un poulet : bête plus âgée, plus grasse, qui demande un bouillon long. Le catalogue ne portait que du poulet, ce qui aurait effacé la distinction que le plat porte dans son nom."
     },
     {
       "canonical_name": "Poulet cuit effiloché",

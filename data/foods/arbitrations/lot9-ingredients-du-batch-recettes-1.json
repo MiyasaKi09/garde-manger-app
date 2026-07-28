@@ -30,7 +30,7 @@
       "note": "Le gratin de brocolis ne peut pas exister sans son ingrédient principal. Entrée crue directe, macros complètes."
     },
     {
-      "cle": "dinde escalope crue",
+      "cle": "escalope de dinde crue",
       "forme": "Escalope de dinde crue",
       "verdict": "mapper",
       "alim_code": "36304",
@@ -102,7 +102,7 @@
       "note": "Ingrédient principal du plat, sans substitut possible. Entrée crue dédiée, macros complètes."
     },
     {
-      "cle": "poule viande crue",
+      "cle": "poule crue",
       "forme": "Poule crue",
       "verdict": "mapper",
       "alim_code": "36001",
@@ -183,7 +183,7 @@
       "note": "Garniture du potage Parmentier et des salades. L'entrée préemballée est plus grasse qu'un croûton poêlé maison ; le retenir majore l'apport plutôt que de l'omettre."
     },
     {
-      "cle": "margarine",
+      "cle": "margarine 80 mg",
       "forme": "Margarine 80 % MG",
       "verdict": "mapper",
       "alim_code": "16615",

@@ -78,6 +78,10 @@ const TYPES_DE_PLAT = new Set([
   'panade', 'panzanella', 'horiatiki', 'gemista', 'fasolakia', 'mutabbal',
   'zaalouk', 'chorba', 'kefta', 'taktouka', 'loubia', 'tzatziki', 'involtini',
   'albondigas', 'escalivada', 'pisto', 'patatas', 'polpettone', 'frittatine',
+  // Une paupiette est une escalope roulée autour d'une farce : un montage, pas
+  // un aliment. Le nom n'annonce donc aucun ingrédient à retrouver dans la liste.
+  'paupiette', 'roulade', 'ballotine', 'bouchee', 'socca', 'anchoiade',
+  'pissaladiere', 'tapenade', 'croque', 'pistou',
 ])
 const UNITES = new Set(['g', 'ml', 'u', 'tranche', 'feuille'])
 const IDENTITES = new Set(['named_traditional_dish', 'domestic_standard'])
@@ -151,6 +155,11 @@ for (const [rang, recette] of recettes.entries()) {
   let glucides = 0
   let lipides = 0
   let masseTotale = 0
+  // Un ingrédient tout juste arbitré n'a pas encore de masse : le catalogue ne
+  // le portera qu'après reconstruction. Continuer à totaliser sans lui donnerait
+  // un chiffre faux — une poule au pot annoncée à 215 kcal la part, sa poule non
+  // comptée. On mesure ou on s'abstient, on n'estime pas à moitié.
+  let peseeIncomplete = false
   for (const ingredient of ingredients) {
     const libelle = String(ingredient.form || '').trim()
     if (!libelle) { dire('un ingrédient sans `form`'); continue }
@@ -161,6 +170,7 @@ for (const [rang, recette] of recettes.entries()) {
     const forme = formesEmployables.get(cle)
     if (!forme && arbitreesRecemment.has(cle)) {
       reserves.push(`« ${libelle} » vient d'être arbitrée : elle ne sera employable qu'après reconstruction du catalogue`)
+      peseeIncomplete = true
       continue
     }
     if (!forme) {
@@ -185,7 +195,9 @@ for (const [rang, recette] of recettes.entries()) {
   }
 
   // ── vraisemblance ───────────────────────────────────────────────────────
-  if (portions > 0 && masseTotale > 0) {
+  if (peseeIncomplete) {
+    reserves.push('vraisemblance nutritionnelle non vérifiée : des ingrédients arbitrés ne sont pas encore au catalogue — à revalider après reconstruction')
+  } else if (portions > 0 && masseTotale > 0) {
     const parPart = kcal / portions
     const grammesParPart = masseTotale / portions
     if (parPart < 80) dire(`${Math.round(parPart)} kcal par part — trop peu pour un plat, vérifiez les quantités`)
@@ -211,7 +223,10 @@ for (const [rang, recette] of recettes.entries()) {
   const motsDuNom = normalizeName(famille).split(' ').filter((mot) => mot.length >= 4)
   const premier = motsDuNom[0]
   const racineDuPremier = premier ? premier.replace(/s$/, '') : ''
-  if (premier && !TYPES_DE_PLAT.has(premier) && lexiqueAliments.has(racineDuPremier)) {
+  // Le nom du plat est souvent au pluriel — « Paupiettes de veau », « Œufs
+  // mimosa ». Interroger la liste des types avec le mot tel quel la manque.
+  const estUnTypeDePlat = TYPES_DE_PLAT.has(premier) || TYPES_DE_PLAT.has(racineDuPremier)
+  if (premier && !estUnTypeDePlat && lexiqueAliments.has(racineDuPremier)) {
     const contexte = normalizeName([
       ...ingredients.map((ingredient) => ingredient.form),
       recette.category, recette.cuisine_origin,
@@ -262,11 +277,14 @@ for (const [rang, recette] of recettes.entries()) {
     valide: refus.length === 0,
     refus,
     reserves,
-    nutrition: portions > 0 ? {
+    // Rien plutôt qu'un total amputé : afficher « 215 kcal » pour une poule au
+    // pot dont la poule n'est pas comptée serait pire que ne rien afficher.
+    nutrition: (portions > 0 && !peseeIncomplete) ? {
       kcal_par_part: Math.round(kcal / portions),
       proteines_par_part: Math.round(proteines / portions * 10) / 10,
       grammes_par_part: Math.round(masseTotale / portions),
     } : null,
+    peseeIncomplete,
   })
 }
 
@@ -292,7 +310,7 @@ if (flags.includes('--json')) {
     console.log('\nValides :')
     for (const rapport of valides) {
       const n = rapport.nutrition
-      console.log(`  ✓ ${rapport.code}  ${rapport.famille.slice(0, 40).padEnd(42)} ${n ? `${n.kcal_par_part} kcal · ${n.proteines_par_part} g prot · ${n.grammes_par_part} g` : ''}`)
+      console.log(`  ✓ ${rapport.code}  ${rapport.famille.slice(0, 40).padEnd(42)} ${n ? `${n.kcal_par_part} kcal · ${n.proteines_par_part} g prot · ${n.grammes_par_part} g` : (rapport.peseeIncomplete ? 'nutrition à revalider après reconstruction' : '')}`)
     }
   }
 }

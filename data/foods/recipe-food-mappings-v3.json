@@ -716,10 +716,6 @@
       "confidence": "C",
       "note": "Proxy assumé. Le dashi est une infusion de kombu et de copeaux de bonite, filtrée : un bouillon clair à quelques kilocalories près. Le classeur n'en a pas ; son bouillon de légumes reconstitué (5,38 kcal) est le seul bouillon clair générique et donne le bon ordre de grandeur. Ce qui fait le dashi — l'umami du glutamate et de l'inosinate — n'a pas d'expression nutritionnelle."
     },
-    "dinde escalope crue": {
-      "ciqual_alim_code": "36304",
-      "note": "Les neuf sources de la blanquette de dinde partent toutes d'escalopes ou de sauté détaillés en cubes, jamais d'une dinde entière. Entrée crue dédiée, macros complètes."
-    },
     "doenjang pate de soja fermentee": {
       "ciqual_alim_code": "20916",
       "confidence": "B",
@@ -794,6 +790,10 @@
     },
     "epinard frais": {
       "ciqual_alim_code": "20059"
+    },
+    "escalope de dinde crue": {
+      "ciqual_alim_code": "36304",
+      "note": "Les neuf sources de la blanquette de dinde partent toutes d'escalopes ou de sauté détaillés en cubes, jamais d'une dinde entière. Entrée crue dédiée, macros complètes."
     },
     "escalope de veau crue fine": {
       "ciqual_alim_code": "6521",
@@ -1204,7 +1204,7 @@
       "confidence": "B",
       "note": "Sept plats du batch sont accompagnés d'une salade verte ; il fallait des feuilles nommées plutôt qu'une « salade » indéterminée. Les lipides sont publiés sous forme de borne (< 0,5 g) : c'est une majoration, pas une absence, et le corpus la lit comme telle."
     },
-    "margarine": {
+    "margarine 80 mg": {
       "ciqual_alim_code": "16615",
       "note": "Citée en alternative au beurre par une source. Le taux figure dans le nom pour la même raison que pour le bœuf haché : sans lui, la valeur ne veut rien dire."
     },
@@ -1672,7 +1672,7 @@
     "potimarron frais epepine": {
       "ciqual_alim_code": "20132"
     },
-    "poule viande crue": {
+    "poule crue": {
       "ciqual_alim_code": "36001",
       "note": "La poule au pot se fait avec une poule, pas un poulet : bête plus âgée, plus grasse, qui demande un bouillon long. Le catalogue ne portait que du poulet, ce qui aurait effacé la distinction que le plat porte dans son nom."
     },
