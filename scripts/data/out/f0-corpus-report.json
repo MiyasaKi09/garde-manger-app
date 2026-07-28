@@ -12,60 +12,90 @@
   },
   "missing_nutrition": [],
   "warnings": [],
-  "estimated_zero_macros": [
+  "unquantified_macros": [
     {
       "form": "cabillaud cru",
       "macros": [
-        "carbohydrate_g"
+        {
+          "code": "carbohydrate_g",
+          "status": "not_available"
+        }
       ]
     },
     {
       "form": "comte",
       "macros": [
-        "carbohydrate_g"
+        {
+          "code": "carbohydrate_g",
+          "status": "not_available"
+        }
       ]
     },
     {
       "form": "gruyere rape",
       "macros": [
-        "carbohydrate_g"
+        {
+          "code": "carbohydrate_g",
+          "status": "not_available"
+        }
       ]
     },
     {
       "form": "huile d olive vierge extra",
       "macros": [
-        "carbohydrate_g"
+        {
+          "code": "carbohydrate_g",
+          "status": "not_available"
+        }
       ]
     },
     {
       "form": "blanc de poulet cru sans peau",
       "macros": [
-        "carbohydrate_g"
+        {
+          "code": "carbohydrate_g",
+          "status": "not_available"
+        }
       ]
     },
     {
       "form": "cuisse de poulet crue avec os avec peau",
       "macros": [
-        "carbohydrate_g"
+        {
+          "code": "carbohydrate_g",
+          "status": "not_available"
+        }
       ]
     },
     {
       "form": "haut de cuisse de poulet cru desosse sans peau",
       "macros": [
-        "carbohydrate_g"
+        {
+          "code": "carbohydrate_g",
+          "status": "not_available"
+        }
       ]
     },
     {
       "form": "vin blanc sec",
       "macros": [
-        "fat_g"
+        {
+          "code": "fat_g",
+          "status": "not_available"
+        }
       ]
     },
     {
       "form": "vinaigre de vin rouge",
       "macros": [
-        "carbohydrate_g",
-        "fat_g"
+        {
+          "code": "carbohydrate_g",
+          "status": "not_available"
+        },
+        {
+          "code": "fat_g",
+          "status": "not_available"
+        }
       ]
     }
   ]

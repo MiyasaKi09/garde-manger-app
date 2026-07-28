@@ -1,109 +1,479 @@
 {
-  "schema_version": 1,
-  "source_corpus": "MYKO-CIQUAL-REF-2020-1",
+  "schema": "myko://food-canonical-candidate-shard/v1",
   "shard": "part-0003",
   "candidate_count": 400,
-  "first_candidate_id": "CAND-CIQ-12720",
-  "last_candidate_id": "CAND-CIQ-20049",
   "candidates": [
     {
-      "candidate_id": "CAND-CIQ-12720",
-      "canonical_name_candidate": "Fromage à pâte ferme",
-      "normalized_key": "fromage-a-pate-ferme",
+      "candidate_id": "CAND-CIQ-32140",
+      "canonical_name_candidate": "Flocons d'avoine",
+      "normalized_key": "flocons-d-avoine",
       "source_entry_ids": [
-        "CIQ-12720"
+        "CIQ-32140"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits sucrés"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "céréales de petit-déjeuner"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-12705",
-      "canonical_name_candidate": "Fromage à pâte ferme environ 14% MG type Masdaam à teneur réduite en MG",
-      "normalized_key": "fromage-a-pate-ferme-environ-14-mg-type-masdaam-a-teneur-reduite-en-mg",
+      "candidate_id": "CAND-CIQ-09313",
+      "canonical_name_candidate": "Flocons d'avoine bouillis/cuits à l'eau",
+      "normalized_key": "flocons-d-avoine-bouillis-cuits-a-l-eau",
       "source_entry_ids": [
-        "CIQ-12705"
+        "CIQ-09313"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits céréaliers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "pâtes, riz et céréales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-12741",
-      "canonical_name_candidate": "Fromage à pâte ferme environ 27% MG type Maasdam",
-      "normalized_key": "fromage-a-pate-ferme-environ-27-mg-type-maasdam",
+      "candidate_id": "CAND-CIQ-04016",
+      "canonical_name_candidate": "Flocons de pomme de terre",
+      "normalized_key": "flocons-de-pomme-de-terre",
       "source_entry_ids": [
-        "CIQ-12741"
+        "CIQ-04016",
+        "CIQ-04022"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 2,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "fruits, légumes, légumineuses et oléagineux"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "pommes de terre et autres tubercules"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-12047",
-      "canonical_name_candidate": "Fromage à pâte molle à croûte lavée",
-      "normalized_key": "fromage-a-pate-molle-a-croute-lavee",
+      "candidate_id": "CAND-CIQ-24056",
+      "canonical_name_candidate": "Florentin (biscuit sec au chocolat et aux amandes)",
+      "normalized_key": "florentin-biscuit-sec-au-chocolat-et-aux-amandes",
       "source_entry_ids": [
-        "CIQ-12047"
+        "CIQ-24056"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits sucrés"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "biscuits sucrés"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-12008",
-      "canonical_name_candidate": "Fromage à pâte molle et croûte fleurie double crème environ 30% MG",
-      "normalized_key": "fromage-a-pate-molle-et-croute-fleurie-double-creme-environ-30-mg",
+      "candidate_id": "CAND-CIQ-07811",
+      "canonical_name_candidate": "Focaccia",
+      "normalized_key": "focaccia",
       "source_entry_ids": [
-        "CIQ-12008"
+        "CIQ-07811"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "entrées et plats composés"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "sandwichs"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-40102",
+      "canonical_name_candidate": "Foie",
+      "normalized_key": "foie",
+      "source_entry_ids": [
+        "CIQ-40102",
+        "CIQ-40103",
+        "CIQ-40104",
+        "CIQ-40105",
+        "CIQ-40106",
+        "CIQ-40107",
+        "CIQ-40108",
+        "CIQ-40109",
+        "CIQ-40110",
+        "CIQ-40111",
+        "CIQ-40113",
+        "CIQ-40115",
+        "CIQ-40116",
+        "CIQ-40118",
+        "CIQ-40119",
+        "CIQ-40120",
+        "CIQ-40121"
+      ],
+      "source_entry_count": 17,
+      "source_groups": [
+        "viandes, oeufs, poissons"
+      ],
+      "source_subgroups": [
+        "viandes crues",
+        "viandes cuites"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-26141",
+      "canonical_name_candidate": "Foie de morue",
+      "normalized_key": "foie-de-morue",
+      "source_entry_ids": [
+        "CIQ-26141",
+        "CIQ-26142"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "viandes, oeufs, poissons"
+      ],
+      "source_subgroups": [
+        "poissons crus",
+        "produits à base de poissons et produits de la mer"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-08321",
+      "canonical_name_candidate": "Foie gras",
+      "normalized_key": "foie-gras",
+      "source_entry_ids": [
+        "CIQ-08321",
+        "CIQ-08323",
+        "CIQ-08324",
+        "CIQ-08325",
+        "CIQ-08328",
+        "CIQ-08331"
+      ],
+      "source_entry_count": 6,
+      "source_groups": [
+        "viandes, oeufs, poissons"
+      ],
+      "source_subgroups": [
+        "charcuteries et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-11304",
+      "canonical_name_candidate": "Fond de veau",
+      "normalized_key": "fond-de-veau",
+      "source_entry_ids": [
+        "CIQ-11304"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "aides culinaires et ingrédients divers"
+      ],
+      "source_subgroups": [
+        "aides culinaires"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-11169",
+      "canonical_name_candidate": "Fond de veau pour sauces et cuisson",
+      "normalized_key": "fond-de-veau-pour-sauces-et-cuisson",
+      "source_entry_ids": [
+        "CIQ-11169"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "aides culinaires et ingrédients divers"
+      ],
+      "source_subgroups": [
+        "aides culinaires"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-11171",
+      "canonical_name_candidate": "Fond de volaille pour sauces et cuisson",
+      "normalized_key": "fond-de-volaille-pour-sauces-et-cuisson",
+      "source_entry_ids": [
+        "CIQ-11171"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "aides culinaires et ingrédients divers"
+      ],
+      "source_subgroups": [
+        "aides culinaires"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-39233",
+      "canonical_name_candidate": "Fondant au chocolat noir et crème anglaise",
+      "normalized_key": "fondant-au-chocolat-noir-et-creme-anglaise",
+      "source_entry_ids": [
+        "CIQ-39233"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "produits laitiers frais et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-20135",
+      "canonical_name_candidate": "Fondue de poireau",
+      "normalized_key": "fondue-de-poireau",
+      "source_entry_ids": [
+        "CIQ-20135"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "légumes"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12121",
+      "canonical_name_candidate": "Fontina",
+      "normalized_key": "fontina",
+      "source_entry_ids": [
+        "CIQ-12121"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-23006",
+      "canonical_name_candidate": "Forêt noire",
+      "normalized_key": "foret-noire",
+      "source_entry_ids": [
+        "CIQ-23006"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-07812",
+      "canonical_name_candidate": "Fougasse",
+      "normalized_key": "fougasse",
+      "source_entry_ids": [
+        "CIQ-07812"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "entrées et plats composés"
+      ],
+      "source_subgroups": [
+        "sandwichs"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12522",
+      "canonical_name_candidate": "Fourme d'Ambert",
+      "normalized_key": "fourme-d-ambert",
+      "source_entry_ids": [
+        "CIQ-12522"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12519",
+      "canonical_name_candidate": "Fourme de Montbrison",
+      "normalized_key": "fourme-de-montbrison",
+      "source_entry_ids": [
+        "CIQ-12519"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-13014",
+      "canonical_name_candidate": "Fraise",
+      "normalized_key": "fraise",
+      "source_entry_ids": [
+        "CIQ-13014"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "fruits"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-23009",
+      "canonical_name_candidate": "Fraisier ou framboisier",
+      "normalized_key": "fraisier-ou-framboisier",
+      "source_entry_ids": [
+        "CIQ-23009"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-13015",
+      "canonical_name_candidate": "Framboise",
+      "normalized_key": "framboise",
+      "source_entry_ids": [
+        "CIQ-13015",
+        "CIQ-13136"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "fruits"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-51510",
+      "canonical_name_candidate": "Frik (blé dur immature concassé)",
+      "normalized_key": "frik-ble-dur-immature-concasse",
+      "source_entry_ids": [
+        "CIQ-51510",
+        "CIQ-51511"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "produits céréaliers"
+      ],
+      "source_subgroups": [
+        "pâtes, riz et céréales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-04030",
+      "canonical_name_candidate": "Frites de pommes de terre",
+      "normalized_key": "frites-de-pommes-de-terre",
+      "source_entry_ids": [
+        "CIQ-04030",
+        "CIQ-04032",
+        "CIQ-04044",
+        "CIQ-04045",
+        "CIQ-04046"
+      ],
+      "source_entry_count": 5,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "pommes de terre et autres tubercules"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12111",
+      "canonical_name_candidate": "Fromage à effilocher ou à dérouler",
+      "normalized_key": "fromage-a-effilocher-ou-a-derouler",
+      "source_entry_ids": [
+        "CIQ-12111"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12033",
+      "canonical_name_candidate": "Fromage à pâte molle",
+      "normalized_key": "fromage-a-pate-molle",
+      "source_entry_ids": [
+        "CIQ-12033"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-12003",
-      "canonical_name_candidate": "Fromage à pâte molle et croûte fleurie (type camembert)",
-      "normalized_key": "fromage-a-pate-molle-et-croute-fleurie-type-camembert",
+      "canonical_name_candidate": "Fromage à pâte molle et croûte fleurie",
+      "normalized_key": "fromage-a-pate-molle-et-croute-fleurie",
       "source_entry_ids": [
-        "CIQ-12003"
+        "CIQ-12003",
+        "CIQ-12004",
+        "CIQ-12008"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 3,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -113,14 +483,15 @@
       "canonical_name_candidate": "Fromage à pâte molle et croûte lavée",
       "normalized_key": "fromage-a-pate-molle-et-croute-lavee",
       "source_entry_ids": [
-        "CIQ-12035"
+        "CIQ-12035",
+        "CIQ-12041"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 2,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -134,10 +505,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -151,27 +522,27 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-12033",
-      "canonical_name_candidate": "Fromage à pâte molle triple crème environ 40% MG",
-      "normalized_key": "fromage-a-pate-molle-triple-creme-environ-40-mg",
+      "candidate_id": "CAND-CIQ-12015",
+      "canonical_name_candidate": "Fromage à pâte molle type carré ou brique",
+      "normalized_key": "fromage-a-pate-molle-type-carre-ou-brique",
       "source_entry_ids": [
-        "CIQ-12033"
+        "CIQ-12015"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -185,27 +556,80 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-12116",
-      "canonical_name_candidate": "Fromage à pate pressée cuite type emmental ou emmenthal",
+      "canonical_name_candidate": "Fromage à pâte pressée cuite type emmental ou emmenthal",
       "normalized_key": "fromage-a-pate-pressee-cuite-type-emmental-ou-emmenthal",
       "source_entry_ids": [
         "CIQ-12116"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12816",
+      "canonical_name_candidate": "Fromage à pâte pressée demi-cuite",
+      "normalized_key": "fromage-a-pate-pressee-demi-cuite",
+      "source_entry_ids": [
+        "CIQ-12816"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12720",
+      "canonical_name_candidate": "Fromage à pâte pressée non cuite",
+      "normalized_key": "fromage-a-pate-pressee-non-cuite",
+      "source_entry_ids": [
+        "CIQ-12720",
+        "CIQ-12721"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12705",
+      "canonical_name_candidate": "Fromage à pâte pressée non cuite type maasdam",
+      "normalized_key": "fromage-a-pate-pressee-non-cuite-type-maasdam",
+      "source_entry_ids": [
+        "CIQ-12705",
+        "CIQ-12741"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -219,109 +643,118 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-19501",
+      "canonical_name_candidate": "Fromage blanc",
+      "normalized_key": "fromage-blanc",
+      "source_entry_ids": [
+        "CIQ-19501",
+        "CIQ-19644",
+        "CIQ-19645",
+        "CIQ-19646",
+        "CIQ-19648",
+        "CIQ-19711",
+        "CIQ-19712",
+        "CIQ-19713",
+        "CIQ-19716"
+      ],
+      "source_entry_count": 9,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-19643",
-      "canonical_name_candidate": "Fromage blanc et crème fouettée sur lit de fruits",
-      "normalized_key": "fromage-blanc-et-creme-fouettee-sur-lit-de-fruits",
+      "canonical_name_candidate": "Fromage blanc et crème fouettée",
+      "normalized_key": "fromage-blanc-et-creme-fouettee",
       "source_entry_ids": [
-        "CIQ-19643"
+        "CIQ-19643",
+        "CIQ-19650"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 2,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-19644",
-      "canonical_name_candidate": "Fromage blanc nature",
-      "normalized_key": "fromage-blanc-nature",
+      "candidate_id": "CAND-CIQ-12306",
+      "canonical_name_candidate": "Fromage blanc fondu en portion (carré)",
+      "normalized_key": "fromage-blanc-fondu-en-portion-carre",
       "source_entry_ids": [
-        "CIQ-19644",
-        "CIQ-19645",
-        "CIQ-19646",
-        "CIQ-19647",
-        "CIQ-19648",
-        "CIQ-19649"
-      ],
-      "source_entry_count": 6,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "produits laitiers frais et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-19501",
-      "canonical_name_candidate": "Fromage blanc nature ou aux fruits (aliment moyen)",
-      "normalized_key": "fromage-blanc-nature-ou-aux-fruits-aliment-moyen",
-      "source_entry_ids": [
-        "CIQ-19501"
+        "CIQ-12306"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-19651",
+      "candidate_id": "CAND-CIQ-12307",
+      "canonical_name_candidate": "Fromage blanc fondu en portion (carré ou bâtonnet)",
+      "normalized_key": "fromage-blanc-fondu-en-portion-carre-ou-batonnet",
+      "source_entry_ids": [
+        "CIQ-12307"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-19654",
       "canonical_name_candidate": "Fromage blanc ou spécialité laitière",
       "normalized_key": "fromage-blanc-ou-specialite-laitiere",
       "source_entry_ids": [
-        "CIQ-19651",
-        "CIQ-19652",
-        "CIQ-19653",
         "CIQ-19654",
-        "CIQ-19655",
         "CIQ-19656",
         "CIQ-19657",
-        "CIQ-19658",
         "CIQ-19659",
-        "CIQ-19668"
+        "CIQ-19660",
+        "CIQ-19691",
+        "CIQ-19697",
+        "CIQ-19705",
+        "CIQ-19707",
+        "CIQ-19708",
+        "CIQ-19709",
+        "CIQ-19714",
+        "CIQ-19715",
+        "CIQ-19718",
+        "CIQ-19725"
       ],
-      "source_entry_count": 10,
+      "source_entry_count": 15,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-19650",
-      "canonical_name_candidate": "Fromage blanc ou spécialité laitière nature et crème fouetté",
-      "normalized_key": "fromage-blanc-ou-specialite-laitiere-nature-et-creme-fouette",
-      "source_entry_ids": [
-        "CIQ-19650"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -331,14 +764,15 @@
       "canonical_name_candidate": "Fromage bleu au lait de vache",
       "normalized_key": "fromage-bleu-au-lait-de-vache",
       "source_entry_ids": [
-        "CIQ-12520"
+        "CIQ-12520",
+        "CIQ-12528"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 2,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -352,44 +786,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-12527",
-      "canonical_name_candidate": "Fromage bleu de Bresse",
-      "normalized_key": "fromage-bleu-de-bresse",
-      "source_entry_ids": [
-        "CIQ-12527"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "fromages et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-12528",
-      "canonical_name_candidate": "Fromage bleu de Bresse allegé environ 15% MG",
-      "normalized_key": "fromage-bleu-de-bresse-allege-environ-15-mg",
-      "source_entry_ids": [
-        "CIQ-12528"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -403,10 +803,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -420,95 +820,95 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-12827",
-      "canonical_name_candidate": "Fromage de brebis à pâte pressée",
-      "normalized_key": "fromage-de-brebis-a-pate-pressee",
-      "source_entry_ids": [
-        "CIQ-12827"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "fromages et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-12762",
-      "canonical_name_candidate": "Fromage de brebis Corse à pâte molle",
-      "normalized_key": "fromage-de-brebis-corse-a-pate-molle",
-      "source_entry_ids": [
-        "CIQ-12762"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-12747",
-      "canonical_name_candidate": "Fromage de brebis des Pyrénées",
-      "normalized_key": "fromage-de-brebis-des-pyrenees",
+      "canonical_name_candidate": "Fromage de brebis à pâte pressée non cuite des Pyrénées",
+      "normalized_key": "fromage-de-brebis-a-pate-pressee-non-cuite-des-pyrenees",
       "source_entry_ids": [
         "CIQ-12747"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12762",
+      "canonical_name_candidate": "Fromage de brebis corse à pâte molle",
+      "normalized_key": "fromage-de-brebis-corse-a-pate-molle",
+      "source_entry_ids": [
+        "CIQ-12762"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-12820",
-      "canonical_name_candidate": "Fromage de chèvre à pâte molle et croûte fleurie type camembert",
+      "canonical_name_candidate": "Fromage de chèvre à pâte molle et croûte fleurie (type camembert",
       "normalized_key": "fromage-de-chevre-a-pate-molle-et-croute-fleurie-type-camembert",
       "source_entry_ids": [
         "CIQ-12820"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-12814",
-      "canonical_name_candidate": "Fromage de chèvre à pâte molle non pressée non cuite croûte naturelle",
-      "normalized_key": "fromage-de-chevre-a-pate-molle-non-pressee-non-cuite-croute-naturelle",
+      "canonical_name_candidate": "Fromage de chèvre à pâte molle non pressée non cuite et croûte naturelle",
+      "normalized_key": "fromage-de-chevre-a-pate-molle-non-pressee-non-cuite-et-croute-naturelle",
       "source_entry_ids": [
         "CIQ-12814"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12850",
+      "canonical_name_candidate": "Fromage de chèvre à pâte pressée non cuite",
+      "normalized_key": "fromage-de-chevre-a-pate-pressee-non-cuite",
+      "source_entry_ids": [
+        "CIQ-12850"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -522,10 +922,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -540,13 +940,13 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-12810",
@@ -557,64 +957,44 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-12800",
+      "candidate_id": "CAND-CIQ-12805",
       "canonical_name_candidate": "Fromage de chèvre frais",
       "normalized_key": "fromage-de-chevre-frais",
       "source_entry_ids": [
-        "CIQ-12800",
-        "CIQ-12804",
         "CIQ-12805"
       ],
-      "source_entry_count": 3,
+      "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-12801",
-      "canonical_name_candidate": "Fromage de chèvre lactique affiné",
-      "normalized_key": "fromage-de-chevre-lactique-affine",
-      "source_entry_ids": [
-        "CIQ-12801",
-        "CIQ-12802"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "fromages et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-12803",
-      "canonical_name_candidate": "Fromage de chèvre lactique affiné (type bûchette",
-      "normalized_key": "fromage-de-chevre-lactique-affine-type-buchette",
+      "canonical_name_candidate": "Fromage de chèvre lactique affiné",
+      "normalized_key": "fromage-de-chevre-lactique-affine",
       "source_entry_ids": [
         "CIQ-12803"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -645,10 +1025,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -662,10 +1042,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -679,61 +1059,45 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-12320",
-      "canonical_name_candidate": "Fromage fondu double crème",
-      "normalized_key": "fromage-fondu-double-creme",
-      "source_entry_ids": [
-        "CIQ-12320"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "fromages et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-12310",
-      "canonical_name_candidate": "Fromage fondu en portions ou en cubes environ 20% MG",
-      "normalized_key": "fromage-fondu-en-portions-ou-en-cubes-environ-20-mg",
-      "source_entry_ids": [
-        "CIQ-12310"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "fromages et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-12305",
-      "canonical_name_candidate": "Fromage fondu en portions ou en cubes environ 8% MG",
-      "normalized_key": "fromage-fondu-en-portions-ou-en-cubes-environ-8-mg",
+      "canonical_name_candidate": "Fromage fondu",
+      "normalized_key": "fromage-fondu",
       "source_entry_ids": [
         "CIQ-12305"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12303",
+      "canonical_name_candidate": "Fromage fondu en portion (triangle)",
+      "normalized_key": "fromage-fondu-en-portion-triangle",
+      "source_entry_ids": [
+        "CIQ-12303",
+        "CIQ-12304"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -747,10 +1111,31 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12068",
+      "canonical_name_candidate": "Fromage frais ou spécialité fromagère non affinée",
+      "normalized_key": "fromage-frais-ou-specialite-fromagere-non-affinee",
+      "source_entry_ids": [
+        "CIQ-12068",
+        "CIQ-12069",
+        "CIQ-12070",
+        "CIQ-12073",
+        "CIQ-12342"
+      ],
+      "source_entry_count": 5,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -761,22 +1146,23 @@
       "normalized_key": "fromage-frais-type-petit-suisse",
       "source_entry_ids": [
         "CIQ-19572",
-        "CIQ-19661",
-        "CIQ-19662",
         "CIQ-19663",
         "CIQ-19664",
         "CIQ-19666",
-        "CIQ-19667"
+        "CIQ-19719",
+        "CIQ-19720",
+        "CIQ-19721",
+        "CIQ-19722"
       ],
-      "source_entry_count": 7,
+      "source_entry_count": 8,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-25546",
@@ -796,52 +1182,18 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-12009",
-      "canonical_name_candidate": "Fromage rond à pâte molle et croûte fleurie 5 à 11% MG type camembert allégé en matière grasse",
-      "normalized_key": "fromage-rond-a-pate-molle-et-croute-fleurie-5-a-11-mg-type-camembert-allege-en-matiere-grasse",
+      "candidate_id": "CAND-CIQ-12053",
+      "canonical_name_candidate": "Fromage pour tartiflette (pâte molle et croûte mixte)",
+      "normalized_key": "fromage-pour-tartiflette-pate-molle-et-croute-mixte",
       "source_entry_ids": [
-        "CIQ-12009"
+        "CIQ-12053"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-12012",
-      "canonical_name_candidate": "Fromage rond à pâte molle et croûte fleurie environ 11% MG type coulommiers allégé en matière grasse",
-      "normalized_key": "fromage-rond-a-pate-molle-et-croute-fleurie-environ-11-mg-type-coulommiers-allege-en-matiere-grasse",
-      "source_entry_ids": [
-        "CIQ-12012"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "fromages et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-12013",
-      "canonical_name_candidate": "Fromage rond à pâte molle et croûte fleurie environ 5% MG type camembert allégé en matière grasse",
-      "normalized_key": "fromage-rond-a-pate-molle-et-croute-fleurie-environ-5-mg-type-camembert-allege-en-matiere-grasse",
-      "source_entry_ids": [
-        "CIQ-12013"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -852,17 +1204,20 @@
       "normalized_key": "fromage-type-feta",
       "source_entry_ids": [
         "CIQ-12060",
-        "CIQ-12063"
+        "CIQ-12061",
+        "CIQ-12063",
+        "CIQ-12067",
+        "CIQ-12768"
       ],
-      "source_entry_count": 2,
+      "source_entry_count": 5,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-31077",
@@ -894,11 +1249,10 @@
         "fruits, légumes, légumineuses et oléagineux"
       ],
       "source_subgroups": [
-        "légumes",
-        "pommes de terre et autres tubercules"
+        "légumes"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-31027",
@@ -952,6 +1306,59 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-13440",
+      "canonical_name_candidate": "Fruit du jacquier ou jacque",
+      "normalized_key": "fruit-du-jacquier-ou-jacque",
+      "source_entry_ids": [
+        "CIQ-13440",
+        "CIQ-13499"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "fruits"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-13996",
+      "canonical_name_candidate": "Fruit séché (aliment moyen)",
+      "normalized_key": "fruit-seche-aliment-moyen",
+      "source_entry_ids": [
+        "CIQ-13996"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "fruits"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-15065",
+      "canonical_name_candidate": "Fruits à coques et cacahuète",
+      "normalized_key": "fruits-a-coques-et-cacahuete",
+      "source_entry_ids": [
+        "CIQ-15065",
+        "CIQ-15066"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "fruits à coque et graines oléagineuses"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-10080",
       "canonical_name_candidate": "Fruits de mer",
       "normalized_key": "fruits-de-mer",
@@ -960,7 +1367,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "mollusques et crustacés cuits"
@@ -977,7 +1384,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "mollusques et crustacés cuits"
@@ -1020,18 +1427,52 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-11303",
+      "canonical_name_candidate": "Fumet de poisson",
+      "normalized_key": "fumet-de-poisson",
+      "source_entry_ids": [
+        "CIQ-11303"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "aides culinaires et ingrédients divers"
+      ],
+      "source_subgroups": [
+        "aides culinaires"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-08350",
-      "canonical_name_candidate": "Galantine (aliment moyen)",
-      "normalized_key": "galantine-aliment-moyen",
+      "canonical_name_candidate": "Galantine",
+      "normalized_key": "galantine",
       "source_entry_ids": [
         "CIQ-08350"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-07357",
+      "canonical_name_candidate": "Galette de céréale(s) soufflée(s)",
+      "normalized_key": "galette-de-cereale-s-soufflee-s",
+      "source_entry_ids": [
+        "CIQ-07357"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits céréaliers"
+      ],
+      "source_subgroups": [
+        "pains et assimilés"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -1071,11 +1512,11 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-07354",
-      "canonical_name_candidate": "Galette de maïs soufflé",
-      "normalized_key": "galette-de-mais-souffle",
+      "candidate_id": "CAND-CIQ-07353",
+      "canonical_name_candidate": "Galette de céréales soufflées",
+      "normalized_key": "galette-de-cereales-soufflees",
       "source_entry_ids": [
-        "CIQ-07354"
+        "CIQ-07353"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -1088,9 +1529,29 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-07354",
+      "canonical_name_candidate": "Galette de maïs soufflé",
+      "normalized_key": "galette-de-mais-souffle",
+      "source_entry_ids": [
+        "CIQ-07354",
+        "CIQ-07356"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "produits céréaliers",
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "biscuits sucrés",
+        "pains et assimilés"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-07352",
-      "canonical_name_candidate": "Galette de riz soufflé complet",
-      "normalized_key": "galette-de-riz-souffle-complet",
+      "canonical_name_candidate": "Galette de riz complet soufflé",
+      "normalized_key": "galette-de-riz-complet-souffle",
       "source_entry_ids": [
         "CIQ-07352"
       ],
@@ -1100,6 +1561,23 @@
       ],
       "source_subgroups": [
         "pains et assimilés"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-07355",
+      "canonical_name_candidate": "Galette de riz soufflé",
+      "normalized_key": "galette-de-riz-souffle",
+      "source_entry_ids": [
+        "CIQ-07355"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "biscuits sucrés"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -1135,23 +1613,6 @@
       ],
       "source_subgroups": [
         "gâteaux et pâtisseries"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-07353",
-      "canonical_name_candidate": "Galette multicéréales soufflée",
-      "normalized_key": "galette-multicereales-soufflee",
-      "source_entry_ids": [
-        "CIQ-07353"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits céréaliers"
-      ],
-      "source_subgroups": [
-        "pains et assimilés"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -1208,13 +1669,14 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-25597",
+      "candidate_id": "CAND-CIQ-20914",
       "canonical_name_candidate": "Galette ou pavé au soja",
       "normalized_key": "galette-ou-pave-au-soja",
       "source_entry_ids": [
+        "CIQ-20914",
         "CIQ-25597"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 2,
       "source_groups": [
         "entrées et plats composés"
       ],
@@ -1276,6 +1738,23 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-54035",
+      "canonical_name_candidate": "Gari",
+      "normalized_key": "gari",
+      "source_entry_ids": [
+        "CIQ-54035"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits céréaliers"
+      ],
+      "source_subgroups": [
+        "pâtes, riz et céréales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-23000",
       "canonical_name_candidate": "Gâteau (aliment moyen)",
       "normalized_key": "gateau-aliment-moyen",
@@ -1302,90 +1781,22 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "produits laitiers et assimilés",
+        "produits laitiers",
         "produits sucrés"
       ],
       "source_subgroups": [
         "gâteaux et pâtisseries",
-        "produits laitiers frais et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-23006",
-      "canonical_name_candidate": "Gâteau au chocolat type forêt noire (génoise au chocolat et crème multi-couches",
-      "normalized_key": "gateau-au-chocolat-type-foret-noire-genoise-au-chocolat-et-creme-multi-couches",
-      "source_entry_ids": [
-        "CIQ-23006"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "gâteaux et pâtisseries"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-23103",
-      "canonical_name_candidate": "Gâteau au citron",
-      "normalized_key": "gateau-au-citron",
+      "candidate_id": "CAND-CIQ-23586",
+      "canonical_name_candidate": "Gâteau au chocolat type fondant ou mi-cuit",
+      "normalized_key": "gateau-au-chocolat-type-fondant-ou-mi-cuit",
       "source_entry_ids": [
-        "CIQ-23103"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "gâteaux et pâtisseries"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-23589",
-      "canonical_name_candidate": "Gâteau au fromage blanc",
-      "normalized_key": "gateau-au-fromage-blanc",
-      "source_entry_ids": [
-        "CIQ-23589"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "gâteaux et pâtisseries"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-23588",
-      "canonical_name_candidate": "Gâteau au yaourt",
-      "normalized_key": "gateau-au-yaourt",
-      "source_entry_ids": [
-        "CIQ-23588"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "gâteaux et pâtisseries"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-24665",
-      "canonical_name_candidate": "Gâteau aux amandes",
-      "normalized_key": "gateau-aux-amandes",
-      "source_entry_ids": [
-        "CIQ-24665"
+        "CIQ-23586"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -1416,13 +1827,12 @@
     },
     {
       "candidate_id": "CAND-CIQ-23802",
-      "canonical_name_candidate": "Gâteau basque",
-      "normalized_key": "gateau-basque",
+      "canonical_name_candidate": "Gâteau basque à la crème pâtissière",
+      "normalized_key": "gateau-basque-a-la-creme-patissiere",
       "source_entry_ids": [
-        "CIQ-23802",
-        "CIQ-23803"
+        "CIQ-23802"
       ],
-      "source_entry_count": 2,
+      "source_entry_count": 1,
       "source_groups": [
         "produits sucrés"
       ],
@@ -1430,21 +1840,38 @@
         "gâteaux et pâtisseries"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-39232",
-      "canonical_name_candidate": "Gâteau de riz",
-      "normalized_key": "gateau-de-riz",
+      "candidate_id": "CAND-CIQ-23803",
+      "canonical_name_candidate": "Gâteau basque aux cerises",
+      "normalized_key": "gateau-basque-aux-cerises",
       "source_entry_ids": [
-        "CIQ-39232"
+        "CIQ-23803"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits sucrés"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-23120",
+      "canonical_name_candidate": "Gâteau breton fourré à la crème de pruneaux",
+      "normalized_key": "gateau-breton-fourre-a-la-creme-de-pruneaux",
+      "source_entry_ids": [
+        "CIQ-23120"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "gâteaux et pâtisseries"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -1458,27 +1885,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-23535",
-      "canonical_name_candidate": "Gâteau de semoule",
-      "normalized_key": "gateau-de-semoule",
-      "source_entry_ids": [
-        "CIQ-23535"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -1492,18 +1902,18 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-23925",
-      "canonical_name_candidate": "Gâteau marbré",
-      "normalized_key": "gateau-marbre",
+      "canonical_name_candidate": "Gâteau marbré au chocolat",
+      "normalized_key": "gateau-marbre-au-chocolat",
       "source_entry_ids": [
         "CIQ-23925"
       ],
@@ -1518,11 +1928,11 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-23586",
-      "canonical_name_candidate": "Gâteau moelleux au chocolat",
-      "normalized_key": "gateau-moelleux-au-chocolat",
+      "candidate_id": "CAND-CIQ-23103",
+      "canonical_name_candidate": "Gâteau moelleux au citron",
+      "normalized_key": "gateau-moelleux-au-citron",
       "source_entry_ids": [
-        "CIQ-23586"
+        "CIQ-23103"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -1569,11 +1979,64 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-23943",
+      "canonical_name_candidate": "Gâteau moelleux aux pépites de chocolat",
+      "normalized_key": "gateau-moelleux-aux-pepites-de-chocolat",
+      "source_entry_ids": [
+        "CIQ-23943"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-23939",
-      "canonical_name_candidate": "Gâteau moelleux fourré au chocolat ou aux pépites de chocolat ou au lait",
-      "normalized_key": "gateau-moelleux-fourre-au-chocolat-ou-aux-pepites-de-chocolat-ou-au-lait",
+      "canonical_name_candidate": "Gâteau moelleux fourré au chocolat",
+      "normalized_key": "gateau-moelleux-fourre-au-chocolat",
       "source_entry_ids": [
         "CIQ-23939"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-23945",
+      "canonical_name_candidate": "Gâteau moelleux fourré au chocolat et au lait",
+      "normalized_key": "gateau-moelleux-fourre-au-chocolat-et-au-lait",
+      "source_entry_ids": [
+        "CIQ-23945",
+        "CIQ-31073"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "chocolats et produits à base de chocolat",
+        "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-23944",
+      "canonical_name_candidate": "Gâteau moelleux fourré au chocolat et enrobé ou nappé de chocolat",
+      "normalized_key": "gateau-moelleux-fourre-au-chocolat-et-enrobe-ou-nappe-de-chocolat",
+      "source_entry_ids": [
+        "CIQ-23944"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -1603,11 +2066,63 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-23935",
+      "canonical_name_candidate": "Gâteau moelleux nature",
+      "normalized_key": "gateau-moelleux-nature",
+      "source_entry_ids": [
+        "CIQ-23935"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-23594",
       "canonical_name_candidate": "Gâteau moelleux nature type génoise",
       "normalized_key": "gateau-moelleux-nature-type-genoise",
       "source_entry_ids": [
         "CIQ-23594"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-24674",
+      "canonical_name_candidate": "Gâteau moelleux sans gluten (cake",
+      "normalized_key": "gateau-moelleux-sans-gluten-cake",
+      "source_entry_ids": [
+        "CIQ-24674",
+        "CIQ-24675"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-23540",
+      "canonical_name_candidate": "Gâteau moka ou gâteau au café",
+      "normalized_key": "gateau-moka-ou-gateau-au-cafe",
+      "source_entry_ids": [
+        "CIQ-23540"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -1637,6 +2152,23 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-23588",
+      "canonical_name_candidate": "Gâteau ou cake au yaourt",
+      "normalized_key": "gateau-ou-cake-au-yaourt",
+      "source_entry_ids": [
+        "CIQ-23588"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-23005",
       "canonical_name_candidate": "Gâteau Paris-Brest (pâte à choux crème mousseline praliné)",
       "normalized_key": "gateau-paris-brest-pate-a-choux-creme-mousseline-praline",
@@ -1654,26 +2186,9 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-23930",
-      "canonical_name_candidate": "Gâteau sablé aux fruits",
-      "normalized_key": "gateau-sable-aux-fruits",
-      "source_entry_ids": [
-        "CIQ-23930"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "gâteaux et pâtisseries"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
       "candidate_id": "CAND-CIQ-23850",
-      "canonical_name_candidate": "Gaufre bruxelloise ou liégeoise",
-      "normalized_key": "gaufre-bruxelloise-ou-liegeoise",
+      "canonical_name_candidate": "Gaufre bruxelloise ou liégeoise nature",
+      "normalized_key": "gaufre-bruxelloise-ou-liegeoise-nature",
       "source_entry_ids": [
         "CIQ-23850"
       ],
@@ -1692,10 +2207,9 @@
       "canonical_name_candidate": "Gaufre croustillante (fine ou sèche)",
       "normalized_key": "gaufre-croustillante-fine-ou-seche",
       "source_entry_ids": [
-        "CIQ-23853",
-        "CIQ-23854"
+        "CIQ-23853"
       ],
-      "source_entry_count": 2,
+      "source_entry_count": 1,
       "source_groups": [
         "produits sucrés"
       ],
@@ -1703,7 +2217,7 @@
         "gâteaux et pâtisseries"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-23849",
@@ -1738,7 +2252,7 @@
         "gâteaux et pâtisseries"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-24313",
@@ -1758,28 +2272,11 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-24320",
-      "canonical_name_candidate": "Gaufrette fourrée",
-      "normalized_key": "gaufrette-fourree",
+      "candidate_id": "CAND-CIQ-24300",
+      "canonical_name_candidate": "Gaufrette (éventail",
+      "normalized_key": "gaufrette-eventail",
       "source_entry_ids": [
-        "CIQ-24320"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "biscuits sucrés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-24311",
-      "canonical_name_candidate": "Gaufrette fourrée chocolat",
-      "normalized_key": "gaufrette-fourree-chocolat",
-      "source_entry_ids": [
-        "CIQ-24311"
+        "CIQ-24300"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -1793,12 +2290,13 @@
     },
     {
       "candidate_id": "CAND-CIQ-24312",
-      "canonical_name_candidate": "Gaufrette fourrée fruits à coque (noisette",
-      "normalized_key": "gaufrette-fourree-fruits-a-coque-noisette",
+      "canonical_name_candidate": "Gaufrette fourrée",
+      "normalized_key": "gaufrette-fourree",
       "source_entry_ids": [
-        "CIQ-24312"
+        "CIQ-24312",
+        "CIQ-24320"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 2,
       "source_groups": [
         "produits sucrés"
       ],
@@ -1809,11 +2307,11 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-24300",
-      "canonical_name_candidate": "Gaufrette ou éventail sans fourrage",
-      "normalized_key": "gaufrette-ou-eventail-sans-fourrage",
+      "candidate_id": "CAND-CIQ-24311",
+      "canonical_name_candidate": "Gaufrette fourrée et/ou enrobée de chocolat",
+      "normalized_key": "gaufrette-fourree-et-ou-enrobee-de-chocolat",
       "source_entry_ids": [
-        "CIQ-24300"
+        "CIQ-24311"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -1837,7 +2335,24 @@
         "aides culinaires et ingrédients divers"
       ],
       "source_subgroups": [
-        "ingrédients divers"
+        "aides culinaires"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-30886",
+      "canonical_name_candidate": "Gelée",
+      "normalized_key": "gelee",
+      "source_entry_ids": [
+        "CIQ-30886"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "confitures et assimilés"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -1858,14 +2373,14 @@
         "aides culinaires"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-31086",
-      "canonical_name_candidate": "Gelée de fruits divers (extra ou classique)",
-      "normalized_key": "gelee-de-fruits-divers-extra-ou-classique",
+      "candidate_id": "CAND-CIQ-30998",
+      "canonical_name_candidate": "Gelée de framboise (extra ou classique)",
+      "normalized_key": "gelee-de-framboise-extra-ou-classique",
       "source_entry_ids": [
-        "CIQ-31086"
+        "CIQ-30998"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -1895,6 +2410,23 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-30991",
+      "canonical_name_candidate": "Gelée de mûre (extra ou classique)",
+      "normalized_key": "gelee-de-mure-extra-ou-classique",
+      "source_entry_ids": [
+        "CIQ-30991"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits sucrés"
+      ],
+      "source_subgroups": [
+        "confitures et assimilés"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-31108",
       "canonical_name_candidate": "Gelée royale",
       "normalized_key": "gelee-royale",
@@ -1906,7 +2438,7 @@
         "aides culinaires et ingrédients divers"
       ],
       "source_subgroups": [
-        "ingrédients divers"
+        "aides culinaires"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -1923,41 +2455,7 @@
         "aides culinaires et ingrédients divers"
       ],
       "source_subgroups": [
-        "ingrédients divers"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-23940",
-      "canonical_name_candidate": "Génoise fourrée et nappée au chocolat",
-      "normalized_key": "genoise-fourree-et-nappee-au-chocolat",
-      "source_entry_ids": [
-        "CIQ-23940"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "gâteaux et pâtisseries"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-24686",
-      "canonical_name_candidate": "Génoise sèche fourrée aux fruits et nappée de chocolat",
-      "normalized_key": "genoise-seche-fourree-aux-fruits-et-nappee-de-chocolat",
-      "source_entry_ids": [
-        "CIQ-24686"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "biscuits sucrés"
+        "aides culinaires"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -1974,7 +2472,7 @@
         "aides culinaires et ingrédients divers"
       ],
       "source_subgroups": [
-        "ingrédients divers"
+        "aides culinaires"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -1989,14 +2487,14 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "viandes crues",
         "viandes cuites"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-36603",
@@ -2007,7 +2505,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "viandes cuites"
@@ -2024,7 +2522,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "viandes cuites"
@@ -2065,7 +2563,7 @@
         "épices"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20814",
@@ -2084,7 +2582,7 @@
         "légumes"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20817",
@@ -2103,7 +2601,7 @@
         "légumes"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-39526",
@@ -2169,31 +2667,15 @@
         "CIQ-39522",
         "CIQ-39523",
         "CIQ-39527",
-        "CIQ-39531"
+        "CIQ-39531",
+        "CIQ-39535"
       ],
-      "source_entry_count": 9,
+      "source_entry_count": 10,
       "source_groups": [
         "glaces et sorbets"
       ],
       "source_subgroups": [
         "glaces"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-25579",
-      "canonical_name_candidate": "Gnocchi",
-      "normalized_key": "gnocchi",
-      "source_entry_ids": [
-        "CIQ-25579"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits céréaliers"
-      ],
-      "source_subgroups": [
-        "pâtes, riz et céréales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -2214,17 +2696,16 @@
         "pâtes, riz et céréales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-25479",
+      "candidate_id": "CAND-CIQ-26265",
       "canonical_name_candidate": "Gnocchi à la semoule",
       "normalized_key": "gnocchi-a-la-semoule",
       "source_entry_ids": [
-        "CIQ-25479",
         "CIQ-26265"
       ],
-      "source_entry_count": 2,
+      "source_entry_count": 1,
       "source_groups": [
         "produits céréaliers"
       ],
@@ -2232,7 +2713,7 @@
         "pâtes, riz et céréales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20820",
@@ -2242,9 +2723,10 @@
         "CIQ-20820",
         "CIQ-20821",
         "CIQ-20822",
+        "CIQ-58100",
         "CIQ-58103"
       ],
-      "source_entry_count": 4,
+      "source_entry_count": 5,
       "source_groups": [
         "fruits, légumes, légumineuses et oléagineux"
       ],
@@ -2252,7 +2734,7 @@
         "légumes"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-12524",
@@ -2263,10 +2745,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -2280,10 +2762,27 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-12767",
+      "canonical_name_candidate": "Gouda au cumin",
+      "normalized_key": "gouda-au-cumin",
+      "source_entry_ids": [
+        "CIQ-12767"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -2306,13 +2805,14 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-24231",
+      "candidate_id": "CAND-CIQ-24230",
       "canonical_name_candidate": "Goûter sec fourré (\"sandwiché\") parfum chocolat",
       "normalized_key": "gouter-sec-fourre-sandwiche-parfum-chocolat",
       "source_entry_ids": [
+        "CIQ-24230",
         "CIQ-24231"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 2,
       "source_groups": [
         "produits sucrés"
       ],
@@ -2372,7 +2872,7 @@
         "fruits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20993",
@@ -2396,10 +2896,9 @@
       "canonical_name_candidate": "Graine de couscous (semoule de blé dur précuite)",
       "normalized_key": "graine-de-couscous-semoule-de-ble-dur-precuite",
       "source_entry_ids": [
-        "CIQ-09681",
-        "CIQ-09683"
+        "CIQ-09681"
       ],
-      "source_entry_count": 2,
+      "source_entry_count": 1,
       "source_groups": [
         "produits céréaliers"
       ],
@@ -2407,33 +2906,86 @@
         "pâtes, riz et céréales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-20029",
+      "canonical_name_candidate": "Graine germée de haricot mungo ou pousse de \"soja\"",
+      "normalized_key": "graine-germee-de-haricot-mungo-ou-pousse-de-soja",
+      "source_entry_ids": [
+        "CIQ-20029",
+        "CIQ-20183"
+      ],
+      "source_entry_count": 2,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "légumes"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-20521",
+      "canonical_name_candidate": "Graine germée de lentille",
+      "normalized_key": "graine-germee-de-lentille",
+      "source_entry_ids": [
+        "CIQ-20521"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "légumes"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-15029",
+      "canonical_name_candidate": "Graine germée de luzerne",
+      "normalized_key": "graine-germee-de-luzerne",
+      "source_entry_ids": [
+        "CIQ-15029"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "légumes"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-15030",
+      "canonical_name_candidate": "Graine germée de radis",
+      "normalized_key": "graine-germee-de-radis",
+      "source_entry_ids": [
+        "CIQ-15030"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "légumes"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-32000",
       "canonical_name_candidate": "Grains de blé soufflés au miel ou caramel",
       "normalized_key": "grains-de-ble-souffles-au-miel-ou-caramel",
       "source_entry_ids": [
-        "CIQ-32000"
+        "CIQ-32000",
+        "CIQ-32040"
       ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "céréales de petit-déjeuner"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-32115",
-      "canonical_name_candidate": "Grains de blé soufflés chocolatés",
-      "normalized_key": "grains-de-ble-souffles-chocolates",
-      "source_entry_ids": [
-        "CIQ-32115"
-      ],
-      "source_entry_count": 1,
+      "source_entry_count": 2,
       "source_groups": [
         "produits sucrés"
       ],
@@ -2520,10 +3072,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -2584,9 +3136,10 @@
       "canonical_name_candidate": "Gratin de légumes",
       "normalized_key": "gratin-de-legumes",
       "source_entry_ids": [
-        "CIQ-25162"
+        "CIQ-25162",
+        "CIQ-25238"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 2,
       "source_groups": [
         "entrées et plats composés"
       ],
@@ -2615,8 +3168,8 @@
     },
     {
       "candidate_id": "CAND-CIQ-25122",
-      "canonical_name_candidate": "Gratin de pâtes",
-      "normalized_key": "gratin-de-pates",
+      "canonical_name_candidate": "Gratin de pâtes au jambon",
+      "normalized_key": "gratin-de-pates-au-jambon",
       "source_entry_ids": [
         "CIQ-25122"
       ],
@@ -2663,7 +3216,7 @@
         "plats composés"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-13018",
@@ -2683,23 +3236,6 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-26214",
-      "canonical_name_candidate": "Grenadier bleu ou hoki de Nouvelle-Zélande",
-      "normalized_key": "grenadier-bleu-ou-hoki-de-nouvelle-zelande",
-      "source_entry_ids": [
-        "CIQ-26214"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
       "candidate_id": "CAND-CIQ-26128",
       "canonical_name_candidate": "Grenadier (de roche)",
       "normalized_key": "grenadier-de-roche",
@@ -2708,7 +3244,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "poissons crus"
@@ -2726,27 +3262,30 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "mollusques et crustacés crus",
         "mollusques et crustacés cuits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-07525",
       "canonical_name_candidate": "Gressin",
       "normalized_key": "gressin",
       "source_entry_ids": [
-        "CIQ-07525"
+        "CIQ-07525",
+        "CIQ-38414",
+        "CIQ-38415"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 3,
       "source_groups": [
         "produits céréaliers"
       ],
       "source_subgroups": [
+        "biscuits apéritifs",
         "pains et assimilés"
       ],
       "status": "pending_review",
@@ -2778,7 +3317,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "poissons crus"
@@ -2795,7 +3334,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "poissons crus"
@@ -2846,10 +3385,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -2863,10 +3402,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -2883,7 +3422,7 @@
         "aides culinaires et ingrédients divers"
       ],
       "source_subgroups": [
-        "sauces"
+        "tartinables végétariens"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -2904,18 +3443,18 @@
         "confiseries non chocolatées"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-06260",
-      "canonical_name_candidate": "Haché à base de boeuf ou Préparation de viande hachée de boeuf",
-      "normalized_key": "hache-a-base-de-boeuf-ou-preparation-de-viande-hachee-de-boeuf",
+      "candidate_id": "CAND-CIQ-01032",
+      "canonical_name_candidate": "Haché à base de boeuf et soja",
+      "normalized_key": "hache-a-base-de-boeuf-et-soja",
       "source_entry_ids": [
-        "CIQ-06260"
+        "CIQ-01032"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "autres produits à base de viande"
@@ -2932,10 +3471,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -2983,10 +3522,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "poissons cuits"
+        "produits à base de poissons et produits de la mer"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -3019,14 +3558,14 @@
       ],
       "source_entry_count": 3,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "poissons crus",
         "poissons cuits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-25998",
@@ -3039,13 +3578,13 @@
       ],
       "source_entry_count": 3,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "poissons cuits"
+        "produits à base de poissons et produits de la mer"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-26238",
@@ -3056,7 +3595,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "poissons crus"
@@ -3073,7 +3612,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "poissons crus"
@@ -3090,7 +3629,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "produits à base de poissons et produits de la mer"
@@ -3116,7 +3655,7 @@
         "légumes"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20501",
@@ -3135,7 +3674,7 @@
         "légumineuses"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20293",
@@ -3155,18 +3694,18 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-20126",
-      "canonical_name_candidate": "Haricot de Lima",
-      "normalized_key": "haricot-de-lima",
+      "candidate_id": "CAND-CIQ-20529",
+      "canonical_name_candidate": "Haricot de Lima ou pois savon ou pois du Cap ou pois souche",
+      "normalized_key": "haricot-de-lima-ou-pois-savon-ou-pois-du-cap-ou-pois-souche",
       "source_entry_ids": [
-        "CIQ-20126"
+        "CIQ-20529"
       ],
       "source_entry_count": 1,
       "source_groups": [
         "fruits, légumes, légumineuses et oléagineux"
       ],
       "source_subgroups": [
-        "légumes"
+        "légumineuses"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -3207,7 +3746,7 @@
         "légumineuses"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20530",
@@ -3225,25 +3764,7 @@
         "légumineuses"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-20029",
-      "canonical_name_candidate": "Haricot mungo germé ou pousse de \"soja\"",
-      "normalized_key": "haricot-mungo-germe-ou-pousse-de-soja",
-      "source_entry_ids": [
-        "CIQ-20029",
-        "CIQ-20183"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "légumes"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20269",
@@ -3279,7 +3800,7 @@
         "légumineuses"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20030",
@@ -3301,7 +3822,7 @@
         "légumes"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20194",
@@ -3339,8 +3860,8 @@
     },
     {
       "candidate_id": "CAND-CIQ-11112",
-      "canonical_name_candidate": "Harissa (sauce condimentaire)",
-      "normalized_key": "harissa-sauce-condimentaire",
+      "canonical_name_candidate": "Harissa (sauce au piment)",
+      "normalized_key": "harissa-sauce-au-piment",
       "source_entry_ids": [
         "CIQ-11112"
       ],
@@ -3397,7 +3918,24 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
+      ],
+      "source_subgroups": [
+        "poissons crus"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-26214",
+      "canonical_name_candidate": "Hoki de Nouvelle-Zélande",
+      "normalized_key": "hoki-de-nouvelle-zelande",
+      "source_entry_ids": [
+        "CIQ-26214"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "poissons crus"
@@ -3415,14 +3953,14 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "mollusques et crustacés crus",
         "mollusques et crustacés cuits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-25403",
@@ -3453,7 +3991,7 @@
         "aides culinaires et ingrédients divers"
       ],
       "source_subgroups": [
-        "sauces"
+        "tartinables végétariens"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -3498,23 +4036,6 @@
       "normalized_key": "huile-d-amande",
       "source_entry_ids": [
         "CIQ-17030"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "matières grasses"
-      ],
-      "source_subgroups": [
-        "huiles et graisses végétales"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-17020",
-      "canonical_name_candidate": "Huile d'amandes d'abricot",
-      "normalized_key": "huile-d-amandes-d-abricot",
-      "source_entry_ids": [
-        "CIQ-17020"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -3596,7 +4117,7 @@
     },
     {
       "candidate_id": "CAND-CIQ-16401",
-      "canonical_name_candidate": "Huile de beurre ou Beurre concentré",
+      "canonical_name_candidate": "Huile de beurre ou beurre concentré",
       "normalized_key": "huile-de-beurre-ou-beurre-concentre",
       "source_entry_ids": [
         "CIQ-16401"
@@ -3612,11 +4133,28 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-17126",
-      "canonical_name_candidate": "Huile de carthame",
-      "normalized_key": "huile-de-carthame",
+      "candidate_id": "CAND-CIQ-17800",
+      "canonical_name_candidate": "Huile de cameline",
+      "normalized_key": "huile-de-cameline",
       "source_entry_ids": [
-        "CIQ-17126"
+        "CIQ-17800"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "matières grasses"
+      ],
+      "source_subgroups": [
+        "huiles et graisses végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-17850",
+      "canonical_name_candidate": "Huile de chanvre",
+      "normalized_key": "huile-de-chanvre",
+      "source_entry_ids": [
+        "CIQ-17850"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -3782,11 +4320,11 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-16129",
-      "canonical_name_candidate": "Huile de palme",
-      "normalized_key": "huile-de-palme",
+      "candidate_id": "CAND-CIQ-17020",
+      "canonical_name_candidate": "Huile de noyaux d'abricot",
+      "normalized_key": "huile-de-noyaux-d-abricot",
       "source_entry_ids": [
-        "CIQ-16129"
+        "CIQ-17020"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -3800,8 +4338,8 @@
     },
     {
       "candidate_id": "CAND-CIQ-16150",
-      "canonical_name_candidate": "Huile de palme raffinée",
-      "normalized_key": "huile-de-palme-raffinee",
+      "canonical_name_candidate": "Huile de palme",
+      "normalized_key": "huile-de-palme",
       "source_entry_ids": [
         "CIQ-16150"
       ],
@@ -3811,23 +4349,6 @@
       ],
       "source_subgroups": [
         "huiles et graisses végétales"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-17999",
-      "canonical_name_candidate": "Huile de paraffine",
-      "normalized_key": "huile-de-paraffine",
-      "source_entry_ids": [
-        "CIQ-17999"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "matières grasses"
-      ],
-      "source_subgroups": [
-        "autres matières grasses"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -4004,11 +4525,11 @@
     },
     {
       "candidate_id": "CAND-CIQ-16040",
-      "canonical_name_candidate": "Huile ou graisse de coco (coprah)",
-      "normalized_key": "huile-ou-graisse-de-coco-coprah",
+      "canonical_name_candidate": "Huile ou graisse de coco",
+      "normalized_key": "huile-ou-graisse-de-coco",
       "source_entry_ids": [
         "CIQ-16040",
-        "CIQ-16060"
+        "CIQ-16050"
       ],
       "source_entry_count": 2,
       "source_groups": [
@@ -4018,7 +4539,24 @@
         "huiles et graisses végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-16060",
+      "canonical_name_candidate": "Huile ou graisse de coco (coprah)",
+      "normalized_key": "huile-ou-graisse-de-coco-coprah",
+      "source_entry_ids": [
+        "CIQ-16060"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "matières grasses"
+      ],
+      "source_subgroups": [
+        "huiles et graisses végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-16200",
@@ -4080,7 +4618,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "mollusques et crustacés crus"
@@ -4097,7 +4635,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "mollusques et crustacés crus"
@@ -4114,7 +4652,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "mollusques et crustacés crus"
@@ -4128,9 +4666,10 @@
       "normalized_key": "igname",
       "source_entry_ids": [
         "CIQ-53502",
-        "CIQ-53503"
+        "CIQ-53503",
+        "CIQ-53672"
       ],
-      "source_entry_count": 2,
+      "source_entry_count": 3,
       "source_groups": [
         "fruits, légumes, légumineuses et oléagineux"
       ],
@@ -4138,7 +4677,7 @@
         "pommes de terre et autres tubercules"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20823",
@@ -4200,27 +4739,27 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-13440",
-      "canonical_name_candidate": "Jacques",
-      "normalized_key": "jacques",
+      "candidate_id": "CAND-CIQ-20903",
+      "canonical_name_candidate": "Isolat de soja",
+      "normalized_key": "isolat-de-soja",
       "source_entry_ids": [
-        "CIQ-13440"
+        "CIQ-20903"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
+        "aides culinaires et ingrédients divers"
       ],
       "source_subgroups": [
-        "fruits"
+        "ingrédients pour végétariens"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -4234,10 +4773,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -4247,19 +4786,35 @@
       "canonical_name_candidate": "Jambon cru",
       "normalized_key": "jambon-cru",
       "source_entry_ids": [
-        "CIQ-28800",
+        "CIQ-28800"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "viandes, oeufs, poissons"
+      ],
+      "source_subgroups": [
+        "charcuteries et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-28801",
+      "canonical_name_candidate": "Jambon cru fumé",
+      "normalized_key": "jambon-cru-fume",
+      "source_entry_ids": [
         "CIQ-28801",
         "CIQ-28804"
       ],
-      "source_entry_count": 3,
+      "source_entry_count": 2,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-28803",
@@ -4279,13 +4834,13 @@
       ],
       "source_entry_count": 10,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-28811",
@@ -4296,61 +4851,78 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-28964",
-      "canonical_name_candidate": "Jambon de dinde ou Blanc de dinde en tranche",
+      "canonical_name_candidate": "Jambon de dinde ou blanc de dinde en tranche",
       "normalized_key": "jambon-de-dinde-ou-blanc-de-dinde-en-tranche",
       "source_entry_ids": [
         "CIQ-28964"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-28700",
-      "canonical_name_candidate": "Jambon de porc à cuire ou Jambon à rôtir/cuire au four",
+      "canonical_name_candidate": "Jambon de porc à cuire ou jambon à rôtir/cuire au four",
       "normalized_key": "jambon-de-porc-a-cuire-ou-jambon-a-rotir-cuire-au-four",
       "source_entry_ids": [
         "CIQ-28700"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-28963",
-      "canonical_name_candidate": "Jambon de poulet ou Blanc de poulet en tranche",
+      "canonical_name_candidate": "Jambon de poulet ou blanc de poulet en tranche",
       "normalized_key": "jambon-de-poulet-ou-blanc-de-poulet-en-tranche",
       "source_entry_ids": [
         "CIQ-28963"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-28965",
+      "canonical_name_candidate": "Jambon de volaille ou blanc de volaille",
+      "normalized_key": "jambon-de-volaille-ou-blanc-de-volaille",
+      "source_entry_ids": [
+        "CIQ-28965"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "viandes, oeufs, poissons"
+      ],
+      "source_subgroups": [
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -4364,10 +4936,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -4381,31 +4953,30 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-28802",
+      "candidate_id": "CAND-CIQ-28812",
       "canonical_name_candidate": "Jambon sec",
       "normalized_key": "jambon-sec",
       "source_entry_ids": [
-        "CIQ-28802",
         "CIQ-28812"
       ],
-      "source_entry_count": 2,
+      "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-28844",
@@ -4416,10 +4987,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -4433,10 +5004,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -4450,10 +5021,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -4467,7 +5038,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "poissons crus"
@@ -4494,7 +5065,7 @@
     },
     {
       "candidate_id": "CAND-CIQ-26130",
-      "canonical_name_candidate": "Julienne ou Lingue",
+      "canonical_name_candidate": "Julienne ou lingue",
       "normalized_key": "julienne-ou-lingue",
       "source_entry_ids": [
         "CIQ-26130",
@@ -4502,14 +5073,14 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "poissons crus",
         "poissons cuits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-02000",
@@ -4525,23 +5096,6 @@
       ],
       "source_subgroups": [
         "boissons sans alcool"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-20920",
-      "canonical_name_candidate": "Jus d'ananas pour ananas appertisé au jus",
-      "normalized_key": "jus-d-ananas-pour-ananas-appertise-au-jus",
-      "source_entry_ids": [
-        "CIQ-20920"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "aides culinaires et ingrédients divers"
-      ],
-      "source_subgroups": [
-        "ingrédients divers"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -4563,7 +5117,7 @@
         "boissons sans alcool"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-02377",
@@ -4571,6 +5125,23 @@
       "normalized_key": "jus-d-orange-sanguine",
       "source_entry_ids": [
         "CIQ-02377"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "eaux et autres boissons"
+      ],
+      "source_subgroups": [
+        "boissons sans alcool"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-02381",
+      "canonical_name_candidate": "Jus de canneberge ou cranberry",
+      "normalized_key": "jus-de-canneberge-ou-cranberry",
+      "source_entry_ids": [
+        "CIQ-02381"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -4598,7 +5169,7 @@
         "fruits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-02006",
@@ -4606,6 +5177,23 @@
       "normalized_key": "jus-de-carotte",
       "source_entry_ids": [
         "CIQ-02006"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "eaux et autres boissons"
+      ],
+      "source_subgroups": [
+        "boissons sans alcool"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-02040",
+      "canonical_name_candidate": "Jus de cerise des Antilles ou d'acérola",
+      "normalized_key": "jus-de-cerise-des-antilles-ou-d-acerola",
+      "source_entry_ids": [
+        "CIQ-02040"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -4633,7 +5221,7 @@
         "boissons sans alcool"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-13410",
@@ -4668,7 +5256,7 @@
         "boissons sans alcool"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-13411",
@@ -4739,7 +5327,7 @@
         "fruits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-02052",
@@ -4774,7 +5362,7 @@
         "boissons sans alcool"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-02004",
@@ -4812,7 +5400,7 @@
         "fruits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-02075",
@@ -4864,7 +5452,7 @@
         "fruits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-13418",
@@ -4934,7 +5522,7 @@
         "boissons sans alcool"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-13420",
@@ -4969,7 +5557,7 @@
         "boissons sans alcool"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-13421",
@@ -4987,7 +5575,7 @@
         "fruits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-13423",
@@ -5005,7 +5593,7 @@
         "fruits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-02018",
@@ -5040,7 +5628,7 @@
         "boissons sans alcool"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-02026",
@@ -5059,7 +5647,7 @@
         "boissons sans alcool"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-02002",
@@ -5067,65 +5655,17 @@
       "normalized_key": "jus-multifruit",
       "source_entry_ids": [
         "CIQ-02002",
+        "CIQ-02011",
         "CIQ-02033",
         "CIQ-02035",
+        "CIQ-02036",
+        "CIQ-02038",
+        "CIQ-02048",
+        "CIQ-02050",
         "CIQ-02069",
         "CIQ-02071"
       ],
-      "source_entry_count": 5,
-      "source_groups": [
-        "eaux et autres boissons"
-      ],
-      "source_subgroups": [
-        "boissons sans alcool"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-02011",
-      "canonical_name_candidate": "Jus multifruit - base orange",
-      "normalized_key": "jus-multifruit-base-orange",
-      "source_entry_ids": [
-        "CIQ-02011",
-        "CIQ-02038"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "eaux et autres boissons"
-      ],
-      "source_subgroups": [
-        "boissons sans alcool"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-02048",
-      "canonical_name_candidate": "Jus multifruit - base pomme",
-      "normalized_key": "jus-multifruit-base-pomme",
-      "source_entry_ids": [
-        "CIQ-02048",
-        "CIQ-02050"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "eaux et autres boissons"
-      ],
-      "source_subgroups": [
-        "boissons sans alcool"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-02036",
-      "canonical_name_candidate": "Jus multifruit - base raisin",
-      "normalized_key": "jus-multifruit-base-raisin",
-      "source_entry_ids": [
-        "CIQ-02036"
-      ],
-      "source_entry_count": 1,
+      "source_entry_count": 10,
       "source_groups": [
         "eaux et autres boissons"
       ],
@@ -5141,6 +5681,23 @@
       "normalized_key": "kaki",
       "source_entry_ids": [
         "CIQ-13066"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "fruits, légumes, légumineuses et oléagineux"
+      ],
+      "source_subgroups": [
+        "fruits"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-13547",
+      "canonical_name_candidate": "Kaki de brousse",
+      "normalized_key": "kaki-de-brousse",
+      "source_entry_ids": [
+        "CIQ-13547"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -5170,6 +5727,23 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-18316",
+      "canonical_name_candidate": "Kéfir d'eau et de fruits",
+      "normalized_key": "kefir-d-eau-et-de-fruits",
+      "source_entry_ids": [
+        "CIQ-18316"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "eaux et autres boissons"
+      ],
+      "source_subgroups": [
+        "boissons sans alcool"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-19865",
       "canonical_name_candidate": "Kéfir de lait",
       "normalized_key": "kefir-de-lait",
@@ -5178,10 +5752,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -5221,24 +5795,11 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-51550",
-      "canonical_name_candidate": "Khatfa feuille de brick",
-      "normalized_key": "khatfa-feuille-de-brick",
+      "candidate_id": "CAND-CIQ-01019",
+      "canonical_name_candidate": "Kir royal (champagne",
+      "normalized_key": "kir-royal-champagne",
       "source_entry_ids": [
-        "CIQ-51550"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [],
-      "source_subgroups": [],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-01018",
-      "canonical_name_candidate": "Kir (au vin blanc)",
-      "normalized_key": "kir-au-vin-blanc",
-      "source_entry_ids": [
-        "CIQ-01018"
+        "CIQ-01019"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -5251,11 +5812,11 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-01019",
-      "canonical_name_candidate": "Kir royal (au champagne)",
-      "normalized_key": "kir-royal-au-champagne",
+      "candidate_id": "CAND-CIQ-01018",
+      "canonical_name_candidate": "Kir (vin blanc",
+      "normalized_key": "kir-vin-blanc",
       "source_entry_ids": [
-        "CIQ-01019"
+        "CIQ-01018"
       ],
       "source_entry_count": 1,
       "source_groups": [
@@ -5303,8 +5864,8 @@
     },
     {
       "candidate_id": "CAND-CIQ-20990",
-      "canonical_name_candidate": "Kombu ou kombu japonais (Laminaria japonica)",
-      "normalized_key": "kombu-ou-kombu-japonais-laminaria-japonica",
+      "canonical_name_candidate": "Kombu ou kombu japonais (Saccharina japonica)",
+      "normalized_key": "kombu-ou-kombu-japonais-saccharina-japonica",
       "source_entry_ids": [
         "CIQ-20990"
       ],
@@ -5353,18 +5914,36 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-23122",
-      "canonical_name_candidate": "Kouign Amann",
+      "candidate_id": "CAND-CIQ-23023",
+      "canonical_name_candidate": "Kouign amann",
       "normalized_key": "kouign-amann",
       "source_entry_ids": [
+        "CIQ-23023",
         "CIQ-23122"
       ],
-      "source_entry_count": 1,
+      "source_entry_count": 2,
       "source_groups": [
         "produits sucrés"
       ],
       "source_subgroups": [
         "gâteaux et pâtisseries"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-11222",
+      "canonical_name_candidate": "Ktipiti",
+      "normalized_key": "ktipiti",
+      "source_entry_ids": [
+        "CIQ-11222"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "aides culinaires et ingrédients divers"
+      ],
+      "source_subgroups": [
+        "tartinables végétariens"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -5395,7 +5974,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
@@ -5419,7 +5998,7 @@
         "laits et boissons infantiles"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-03002",
@@ -5437,7 +6016,7 @@
         "laits et boissons infantiles"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-19038",
@@ -5448,7 +6027,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
@@ -5458,14 +6037,14 @@
     },
     {
       "candidate_id": "CAND-CIQ-19026",
-      "canonical_name_candidate": "Lait concentré non sucré",
-      "normalized_key": "lait-concentre-non-sucre",
+      "canonical_name_candidate": "Lait concentré sans sucres ajoutés",
+      "normalized_key": "lait-concentre-sans-sucres-ajoutes",
       "source_entry_ids": [
         "CIQ-19026"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
@@ -5482,7 +6061,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
@@ -5499,7 +6078,24 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "laits"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-19270",
+      "canonical_name_candidate": "Lait de bufflesse",
+      "normalized_key": "lait-de-bufflesse",
+      "source_entry_ids": [
+        "CIQ-19270"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
@@ -5518,27 +6114,27 @@
       ],
       "source_entry_count": 3,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-18041",
-      "canonical_name_candidate": "Lait de coco ou Crème de coco",
-      "normalized_key": "lait-de-coco-ou-creme-de-coco",
+      "canonical_name_candidate": "Lait de coco",
+      "normalized_key": "lait-de-coco",
       "source_entry_ids": [
         "CIQ-18041"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "eaux et autres boissons"
+        "aides culinaires et ingrédients divers"
       ],
       "source_subgroups": [
-        "boissons sans alcool"
+        "aides culinaires"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -5561,6 +6157,23 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-19000",
+      "canonical_name_candidate": "Lait de grand mélange",
+      "normalized_key": "lait-de-grand-melange",
+      "source_entry_ids": [
+        "CIQ-19000"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "laits"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-19225",
       "canonical_name_candidate": "Lait de jument",
       "normalized_key": "lait-de-jument",
@@ -5569,7 +6182,7 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
@@ -5586,10 +6199,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -5605,24 +6218,41 @@
       ],
       "source_entry_count": 3,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-19033",
+      "canonical_name_candidate": "Lait demi-écrémé (aliment moyen)",
+      "normalized_key": "lait-demi-ecreme-aliment-moyen",
+      "source_entry_ids": [
+        "CIQ-19033"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "laits"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-19060",
-      "canonical_name_candidate": "Lait demi-écrémé (ou à teneur en matière grasse légèrement inférieure) à teneur réduite en lactose",
-      "normalized_key": "lait-demi-ecreme-ou-a-teneur-en-matiere-grasse-legerement-inferieure-a-teneur-reduite-en-lactose",
+      "canonical_name_candidate": "Lait demi-écrémé (ou à teneur en matière grasse légèrement inférieure)",
+      "normalized_key": "lait-demi-ecreme-ou-a-teneur-en-matiere-grasse-legerement-inferieure",
       "source_entry_ids": [
         "CIQ-19060"
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
@@ -5640,13 +6270,13 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-19678",
@@ -5657,10 +6287,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -5676,72 +6306,145 @@
       ],
       "source_entry_count": 3,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-19023",
+      "candidate_id": "CAND-CIQ-19010",
       "canonical_name_candidate": "Lait entier",
       "normalized_key": "lait-entier",
       "source_entry_ids": [
+        "CIQ-19010",
         "CIQ-19023",
         "CIQ-19024"
       ],
-      "source_entry_count": 2,
+      "source_entry_count": 3,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
         "laits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-19016",
+      "canonical_name_candidate": "Lait entier (aliment moyen)",
+      "normalized_key": "lait-entier-aliment-moyen",
+      "source_entry_ids": [
+        "CIQ-19016"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "laits"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-19500",
+      "canonical_name_candidate": "Lait fermenté à boire",
+      "normalized_key": "lait-fermente-a-boire",
+      "source_entry_ids": [
+        "CIQ-19500",
+        "CIQ-19516",
+        "CIQ-19538",
+        "CIQ-19551"
+      ],
+      "source_entry_count": 4,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "produits laitiers frais et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-19801",
-      "canonical_name_candidate": "Lait fermenté à boire",
-      "normalized_key": "lait-fermente-a-boire",
+      "canonical_name_candidate": "Lait fermenté à boire ou lait ribot",
+      "normalized_key": "lait-fermente-a-boire-ou-lait-ribot",
       "source_entry_ids": [
         "CIQ-19801",
         "CIQ-19805"
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-19508",
+      "canonical_name_candidate": "Lait fermenté ou yaourt à boire",
+      "normalized_key": "lait-fermente-ou-yaourt-a-boire",
+      "source_entry_ids": [
+        "CIQ-19508",
+        "CIQ-19534",
+        "CIQ-19535",
+        "CIQ-19536"
+      ],
+      "source_entry_count": 4,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "produits laitiers frais et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-19539",
-      "canonical_name_candidate": "Lait fermenté ou spécialité laitière type yaourt",
-      "normalized_key": "lait-fermente-ou-specialite-laitiere-type-yaourt",
+      "canonical_name_candidate": "Lait fermenté type yaourt au bifidus",
+      "normalized_key": "lait-fermente-type-yaourt-au-bifidus",
       "source_entry_ids": [
         "CIQ-19539",
         "CIQ-19541",
         "CIQ-19542",
-        "CIQ-19543",
         "CIQ-19544",
-        "CIQ-19546",
-        "CIQ-19548"
+        "CIQ-19546"
       ],
-      "source_entry_count": 7,
+      "source_entry_count": 5,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
+      "candidate_id": "CAND-CIQ-19543",
+      "canonical_name_candidate": "Lait fermenté type yaourt aux esters de stérol",
+      "normalized_key": "lait-fermente-type-yaourt-aux-esters-de-sterol",
+      "source_entry_ids": [
+        "CIQ-19543"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "produits laitiers"
+      ],
+      "source_subgroups": [
+        "produits laitiers frais et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-19679",
@@ -5749,18 +6452,17 @@
       "normalized_key": "lait-gelifie-aromatise",
       "source_entry_ids": [
         "CIQ-19679",
-        "CIQ-19680",
-        "CIQ-19683"
+        "CIQ-19680"
       ],
-      "source_entry_count": 3,
+      "source_entry_count": 2,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "produits laitiers frais et assimilés"
+        "produits laitiers frais et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-19015",
@@ -5857,14 +6559,14 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "mollusques et crustacés crus",
         "mollusques et crustacés cuits"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-10012",
@@ -5877,7 +6579,7 @@
       ],
       "source_entry_count": 3,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "mollusques et crustacés crus",
@@ -5885,7 +6587,7 @@
         "produits à base de poissons et produits de la mer"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-12040",
@@ -5896,10 +6598,10 @@
       ],
       "source_entry_count": 1,
       "source_groups": [
-        "produits laitiers et assimilés"
+        "produits laitiers"
       ],
       "source_subgroups": [
-        "fromages et assimilés"
+        "fromages et alternatives végétales"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -5918,14 +6620,14 @@
       ],
       "source_entry_count": 6,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "viandes crues",
         "viandes cuites"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-25201",
@@ -5955,14 +6657,14 @@
       ],
       "source_entry_count": 3,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "viandes crues",
         "viandes cuites"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-25063",
@@ -5991,14 +6693,14 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
         "viandes crues",
         "viandes cuites"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-16530",
@@ -6018,6 +6720,23 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
+      "candidate_id": "CAND-CIQ-28723",
+      "canonical_name_candidate": "Lardon",
+      "normalized_key": "lardon",
+      "source_entry_ids": [
+        "CIQ-28723"
+      ],
+      "source_entry_count": 1,
+      "source_groups": [
+        "viandes, oeufs, poissons"
+      ],
+      "source_subgroups": [
+        "charcuteries et alternatives végétales"
+      ],
+      "status": "pending_review",
+      "review_reason": "canonical_boundary_to_validate"
+    },
+    {
       "candidate_id": "CAND-CIQ-28720",
       "canonical_name_candidate": "Lardon fumé",
       "normalized_key": "lardon-fume",
@@ -6027,13 +6746,13 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-28501",
@@ -6045,18 +6764,18 @@
       ],
       "source_entry_count": 2,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
+        "viandes, oeufs, poissons"
       ],
       "source_subgroups": [
-        "charcuteries et assimilés"
+        "charcuteries et alternatives végétales"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-25081",
-      "canonical_name_candidate": "Lasagnes ou cannelloni à la viande (bolognaise)",
-      "normalized_key": "lasagnes-ou-cannelloni-a-la-viande-bolognaise",
+      "canonical_name_candidate": "Lasagnes ou canellonis à la viande (bolognaise)",
+      "normalized_key": "lasagnes-ou-canellonis-a-la-viande-bolognaise",
       "source_entry_ids": [
         "CIQ-25081"
       ],
@@ -6109,10 +6828,9 @@
       "canonical_name_candidate": "Lasagnes ou cannellonis aux légumes",
       "normalized_key": "lasagnes-ou-cannellonis-aux-legumes",
       "source_entry_ids": [
-        "CIQ-25131",
-        "CIQ-25218"
+        "CIQ-25131"
       ],
-      "source_entry_count": 2,
+      "source_entry_count": 1,
       "source_groups": [
         "entrées et plats composés"
       ],
@@ -6120,7 +6838,7 @@
         "plats composés"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-25219",
@@ -6168,7 +6886,7 @@
         "aides culinaires et ingrédients divers"
       ],
       "source_subgroups": [
-        "ingrédients divers"
+        "aides culinaires"
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
@@ -6274,7 +6992,7 @@
         "légumes"
       ],
       "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
+      "review_reason": "canonical_boundary_to_validate"
     },
     {
       "candidate_id": "CAND-CIQ-20263",
@@ -6311,496 +7029,16 @@
       "review_reason": "canonical_boundary_to_validate"
     },
     {
-      "candidate_id": "CAND-CIQ-20504",
+      "candidate_id": "CAND-CIQ-20359",
       "canonical_name_candidate": "Lentille",
       "normalized_key": "lentille",
       "source_entry_ids": [
-        "CIQ-20504",
-        "CIQ-20505",
-        "CIQ-20510",
-        "CIQ-20521"
-      ],
-      "source_entry_count": 4,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "légumineuses"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-20586",
-      "canonical_name_candidate": "Lentille blonde",
-      "normalized_key": "lentille-blonde",
-      "source_entry_ids": [
-        "CIQ-20586",
-        "CIQ-20588"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "légumineuses"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-20535",
-      "canonical_name_candidate": "Lentille corail",
-      "normalized_key": "lentille-corail",
-      "source_entry_ids": [
-        "CIQ-20535",
-        "CIQ-20589"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "légumineuses"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-20585",
-      "canonical_name_candidate": "Lentille verte",
-      "normalized_key": "lentille-verte",
-      "source_entry_ids": [
-        "CIQ-20585",
-        "CIQ-20587"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "légumineuses"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-11009",
-      "canonical_name_candidate": "Levure alimentaire",
-      "normalized_key": "levure-alimentaire",
-      "source_entry_ids": [
-        "CIQ-11009"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "aides culinaires et ingrédients divers"
-      ],
-      "source_subgroups": [
-        "ingrédients divers"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-11046",
-      "canonical_name_candidate": "Levure chimique ou Poudre à lever",
-      "normalized_key": "levure-chimique-ou-poudre-a-lever",
-      "source_entry_ids": [
-        "CIQ-11046"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "aides culinaires et ingrédients divers"
-      ],
-      "source_subgroups": [
-        "ingrédients divers"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-11010",
-      "canonical_name_candidate": "Levure de boulanger",
-      "normalized_key": "levure-de-boulanger",
-      "source_entry_ids": [
-        "CIQ-11010",
-        "CIQ-11045"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "aides culinaires et ingrédients divers"
-      ],
-      "source_subgroups": [
-        "ingrédients divers"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-20996",
-      "canonical_name_candidate": "Lichen de mer ou pioca ou goémon rouge (Chondrus crispus)",
-      "normalized_key": "lichen-de-mer-ou-pioca-ou-goemon-rouge-chondrus-crispus",
-      "source_entry_ids": [
-        "CIQ-20996"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "aides culinaires et ingrédients divers"
-      ],
-      "source_subgroups": [
-        "algues"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-39220",
-      "canonical_name_candidate": "Liégeois aux fruits",
-      "normalized_key": "liegeois-aux-fruits",
-      "source_entry_ids": [
-        "CIQ-39220"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "produits laitiers frais et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-19681",
-      "canonical_name_candidate": "Liégeois ou viennois (chocolat",
-      "normalized_key": "liegeois-ou-viennois-chocolat",
-      "source_entry_ids": [
-        "CIQ-19681"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "produits laitiers frais et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-26129",
-      "canonical_name_candidate": "Lieu jaune ou colin",
-      "normalized_key": "lieu-jaune-ou-colin",
-      "source_entry_ids": [
-        "CIQ-26129",
-        "CIQ-26192"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus",
-        "poissons cuits"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-26015",
-      "canonical_name_candidate": "Lieu noir",
-      "normalized_key": "lieu-noir",
-      "source_entry_ids": [
-        "CIQ-26015",
-        "CIQ-26047",
-        "CIQ-26134"
+        "CIQ-20359",
+        "CIQ-20360",
+        "CIQ-20510"
       ],
       "source_entry_count": 3,
       "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus",
-        "poissons cuits"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-26006",
-      "canonical_name_candidate": "Lieu ou colin d'Alaska",
-      "normalized_key": "lieu-ou-colin-d-alaska",
-      "source_entry_ids": [
-        "CIQ-26006",
-        "CIQ-26152"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus",
-        "poissons cuits"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-14004",
-      "canonical_name_candidate": "Lièvre",
-      "normalized_key": "lievre",
-      "source_entry_ids": [
-        "CIQ-14004"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "viandes crues"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-26057",
-      "canonical_name_candidate": "Limande",
-      "normalized_key": "limande",
-      "source_entry_ids": [
-        "CIQ-26057"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-26016",
-      "canonical_name_candidate": "Limande-sole",
-      "normalized_key": "limande-sole",
-      "source_entry_ids": [
-        "CIQ-26016",
-        "CIQ-26017",
-        "CIQ-26135"
-      ],
-      "source_entry_count": 3,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus",
-        "poissons cuits",
-        "produits à base de poissons et produits de la mer"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-18010",
-      "canonical_name_candidate": "Limonade",
-      "normalized_key": "limonade",
-      "source_entry_ids": [
-        "CIQ-18010",
-        "CIQ-18016",
-        "CIQ-18035"
-      ],
-      "source_entry_count": 3,
-      "source_groups": [
-        "eaux et autres boissons"
-      ],
-      "source_subgroups": [
-        "boissons sans alcool"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-15034",
-      "canonical_name_candidate": "Lin",
-      "normalized_key": "lin",
-      "source_entry_ids": [
-        "CIQ-15034",
-        "CIQ-15052"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "fruits à coque et graines oléagineuses"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-26194",
-      "canonical_name_candidate": "Lingue bleue ou Lingue",
-      "normalized_key": "lingue-bleue-ou-lingue",
-      "source_entry_ids": [
-        "CIQ-26194"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-01003",
-      "canonical_name_candidate": "Liqueur",
-      "normalized_key": "liqueur",
-      "source_entry_ids": [
-        "CIQ-01003"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "eaux et autres boissons"
-      ],
-      "source_subgroups": [
-        "boisson alcoolisées"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-13023",
-      "canonical_name_candidate": "Litchi",
-      "normalized_key": "litchi",
-      "source_entry_ids": [
-        "CIQ-13023"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "fruits"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-12037",
-      "canonical_name_candidate": "Livarot",
-      "normalized_key": "livarot",
-      "source_entry_ids": [
-        "CIQ-12037"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits laitiers et assimilés"
-      ],
-      "source_subgroups": [
-        "fromages et assimilés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-26168",
-      "canonical_name_candidate": "Lompe",
-      "normalized_key": "lompe",
-      "source_entry_ids": [
-        "CIQ-26168"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-13552",
-      "canonical_name_candidate": "Longan",
-      "normalized_key": "longan",
-      "source_entry_ids": [
-        "CIQ-13552"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "fruits"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-27023",
-      "canonical_name_candidate": "Lotte de rivière",
-      "normalized_key": "lotte-de-riviere",
-      "source_entry_ids": [
-        "CIQ-27023"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-26018",
-      "canonical_name_candidate": "Lotte ou baudroie",
-      "normalized_key": "lotte-ou-baudroie",
-      "source_entry_ids": [
-        "CIQ-26018",
-        "CIQ-26081"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus",
-        "poissons cuits"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-26172",
-      "canonical_name_candidate": "Loup tacheté",
-      "normalized_key": "loup-tachete",
-      "source_entry_ids": [
-        "CIQ-26172"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "viandes, œufs, poissons et assimilés"
-      ],
-      "source_subgroups": [
-        "poissons crus"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-20534",
-      "canonical_name_candidate": "Lupin",
-      "normalized_key": "lupin",
-      "source_entry_ids": [
-        "CIQ-20534"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
         "fruits, légumes, légumineuses et oléagineux"
       ],
       "source_subgroups": [
@@ -6808,202 +7046,6 @@
       ],
       "status": "pending_review",
       "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-15029",
-      "canonical_name_candidate": "Luzerne",
-      "normalized_key": "luzerne",
-      "source_entry_ids": [
-        "CIQ-15029",
-        "CIQ-15032"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "fruits à coque et graines oléagineuses"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-23024",
-      "canonical_name_candidate": "Macaron moelleux fourré à la confiture ou à la crème",
-      "normalized_key": "macaron-moelleux-fourre-a-la-confiture-ou-a-la-creme",
-      "source_entry_ids": [
-        "CIQ-23024"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "gâteaux et pâtisseries"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-23027",
-      "canonical_name_candidate": "Macaron sec",
-      "normalized_key": "macaron-sec",
-      "source_entry_ids": [
-        "CIQ-23027"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "biscuits sucrés"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-20051",
-      "canonical_name_candidate": "Macédoine de légumes",
-      "normalized_key": "macedoine-de-legumes",
-      "source_entry_ids": [
-        "CIQ-20051",
-        "CIQ-20271"
-      ],
-      "source_entry_count": 2,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "légumes"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-25626",
-      "canonical_name_candidate": "Macédoine de légumes en salade",
-      "normalized_key": "macedoine-de-legumes-en-salade",
-      "source_entry_ids": [
-        "CIQ-25626"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "entrées et plats composés"
-      ],
-      "source_subgroups": [
-        "salades composées et crudités"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-13705",
-      "canonical_name_candidate": "Macédoine ou cocktail ou salade de fruits",
-      "normalized_key": "macedoine-ou-cocktail-ou-salade-de-fruits",
-      "source_entry_ids": [
-        "CIQ-13705",
-        "CIQ-13706",
-        "CIQ-13707",
-        "CIQ-13708",
-        "CIQ-13709"
-      ],
-      "source_entry_count": 5,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "fruits"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-20099",
-      "canonical_name_candidate": "Mâche",
-      "normalized_key": "mache",
-      "source_entry_ids": [
-        "CIQ-20099"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "légumes"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-24630",
-      "canonical_name_candidate": "Madeleine",
-      "normalized_key": "madeleine",
-      "source_entry_ids": [
-        "CIQ-24630"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "gâteaux et pâtisseries"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-24631",
-      "canonical_name_candidate": "Madeleine au chocolat",
-      "normalized_key": "madeleine-au-chocolat",
-      "source_entry_ids": [
-        "CIQ-24631"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "gâteaux et pâtisseries"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-24632",
-      "canonical_name_candidate": "Madeleine ordinaire",
-      "normalized_key": "madeleine-ordinaire",
-      "source_entry_ids": [
-        "CIQ-24632"
-      ],
-      "source_entry_count": 1,
-      "source_groups": [
-        "produits sucrés"
-      ],
-      "source_subgroups": [
-        "gâteaux et pâtisseries"
-      ],
-      "status": "pending_review",
-      "review_reason": "canonical_boundary_to_validate"
-    },
-    {
-      "candidate_id": "CAND-CIQ-20049",
-      "canonical_name_candidate": "Maïs doux",
-      "normalized_key": "mais-doux",
-      "source_entry_ids": [
-        "CIQ-20049",
-        "CIQ-20066",
-        "CIQ-20108",
-        "CIQ-20233"
-      ],
-      "source_entry_count": 4,
-      "source_groups": [
-        "fruits, légumes, légumineuses et oléagineux"
-      ],
-      "source_subgroups": [
-        "légumes"
-      ],
-      "status": "pending_review",
-      "review_reason": "multi_form_boundary_to_validate"
     }
   ]
 }

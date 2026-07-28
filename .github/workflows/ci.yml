@@ -204,8 +204,9 @@ jobs:
               AND nv.amount > 0;
             IF n <> 1 THEN RAISE EXCEPTION '[F0] sel fin: sodium_mg > 0 attendu, obtenu %', n; END IF;
 
-            -- CHAQUE forme doit porter les 4 macros essentiels (énergie/protéines/glucides/lipides)
-            -- non nuls sur son profil primaire — sinon le garde-fou de publication (PR 111) rejettera.
+            -- Le snapshot Ciqual 2020 laisse 9 formes avec au moins une macro
+            -- non quantifiée. Elles restent candidates : une absence ne doit
+            -- jamais être transformée en zéro pour satisfaire la publication.
             SELECT count(*) INTO n
             FROM catalog.food_forms ff
             WHERE NOT (
@@ -217,7 +218,26 @@ jobs:
                       WHERE p.food_form_id=ff.id AND p.is_primary AND v.nutrient_code='carbohydrate_g' AND v.amount IS NOT NULL)
               AND EXISTS (SELECT 1 FROM catalog.food_nutrition_profiles p JOIN catalog.food_nutrient_values v ON v.nutrition_profile_id=p.id
                       WHERE p.food_form_id=ff.id AND p.is_primary AND v.nutrient_code='fat_g'          AND v.amount IS NOT NULL));
-            IF n <> 0 THEN RAISE EXCEPTION '[F0] % forme(s) sans les 4 macros essentiels', n; END IF;
+            IF n <> 9 THEN RAISE EXCEPTION '[F0] formes avec macro non quantifiée: attendu 9, obtenu %', n; END IF;
+
+            -- Aucun ancien zéro artificiel ne doit subsister dans les profils
+            -- Ciqual 2020. Les seuls zéros mesurés autorisés viennent d'un
+            -- override explicite, comme celui du sel fin vérifié plus haut.
+            SELECT count(*) INTO n
+            FROM catalog.food_nutrient_values nv
+            JOIN catalog.food_nutrition_profiles np ON np.id = nv.nutrition_profile_id
+            WHERE np.data_version = 'ciqual_2020'
+              AND nv.nutrient_code IN ('energy_kcal','protein_g','carbohydrate_g','fat_g')
+              AND nv.value_status = 'estimated'
+              AND nv.amount = 0;
+            IF n <> 0 THEN RAISE EXCEPTION '[F0] % zéro(s) artificiel(s) subsistent dans Ciqual 2020', n; END IF;
+
+            -- F0 reste un snapshot historique : le corpus encyclopédique 2025
+            -- ne remplace pas silencieusement ses 30 profils Ciqual.
+            SELECT count(*) INTO n
+            FROM catalog.food_nutrition_profiles
+            WHERE data_version = 'ciqual_2020';
+            IF n <> 30 THEN RAISE EXCEPTION '[F0] profils Ciqual 2020: attendu 30, obtenu %', n; END IF;
 
             -- ops.publish_catalog_release doit rejeter (pas de release créée)
             BEGIN

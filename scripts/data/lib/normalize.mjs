@@ -18,9 +18,15 @@ export function normalizeName(raw) {
 }
 
 /**
- * Parse une valeur numérique Ciqual (virgule décimale française + marqueurs).
- * @returns {{amount:number|null, status:string}}
- *   status ∈ measured | trace | estimated | not_available
+ * Parse une mesure Ciqual sans transformer une absence ou une borne en valeur.
+ *
+ * La documentation Ciqual 2025 impose de ne jamais assimiler une valeur
+ * manquante à zéro. « traces » signifie présent mais non quantifiable (ou
+ * présumé très faible), tandis que « < x » est une borne supérieure et non une
+ * estimation ponctuelle.
+ *
+ * @returns {{amount:number|null, status:string, upper_bound?:number}}
+ *   status ∈ measured | trace | less_than | not_available
  */
 export function parseCiqualValue(v) {
   if (v == null) return { amount: null, status: 'not_available' }
@@ -29,10 +35,10 @@ export function parseCiqualValue(v) {
   }
   const s = String(v).trim()
   if (s === '' || s === '-') return { amount: null, status: 'not_available' }
-  if (/^traces$/i.test(s)) return { amount: 0, status: 'trace' }
-  // "< 0,01" → borne de détection : valeur estimée = la borne.
+  if (/^traces$/i.test(s)) return { amount: null, status: 'trace' }
+  // « < 0,01 » exprime uniquement une borne supérieure.
   const lt = s.match(/^<\s*([0-9]+(?:[.,][0-9]+)?)$/)
-  if (lt) return { amount: toNumber(lt[1]), status: 'estimated' }
+  if (lt) return { amount: null, status: 'less_than', upper_bound: toNumber(lt[1]) }
   const n = toNumber(s)
   return n == null ? { amount: null, status: 'not_available' } : { amount: n, status: 'measured' }
 }

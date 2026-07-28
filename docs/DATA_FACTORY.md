@@ -4,7 +4,8 @@
 
 Chaîne d'import **contrôlée, reproductible et auditable** : une machine peut importer,
 proposer, rapprocher, calculer et détecter — elle ne déclare pas seule qu'une donnée
-est vraie. La première release F0 (300 formes) est construite depuis **Ciqual 2020**.
+est vraie. La première release F0 (300 formes) reste construite depuis **Ciqual
+2020** ; le corpus de référence courant est **Ciqual 2025 v1.0**.
 
 ## Pipeline (§5.4)
 
@@ -15,18 +16,21 @@ Download → Verify checksum → Store raw → Parse → Normalize (texte + unit
 
 | Étape | Fichier | Rôle |
 |---|---|---|
-| Download | `scripts/data/download/ciqual.mjs` | télécharge le XLS, calcule le `sha256`, imprime la fiche blob |
-| Parse | `scripts/data/parse/ciqual.mjs` | XLS (SheetJS) → enregistrements homogènes ; colonnes nutriments repérées par motif |
+| Download | `scripts/data/download/ciqual.mjs` | télécharge le classeur Ciqual 2025 officiel et vérifie son `sha256` |
+| Parse | `scripts/data/parse/ciqual.mjs` | XLS/XLSX (SheetJS) → enregistrements homogènes ; mesures, traces, bornes et absences séparées |
 | Normalize | `scripts/data/lib/normalize.mjs` | minuscules/accents, virgule décimale FR, `traces`/`-`/`< x`, extraction d'états |
-| Nutriments | `scripts/data/lib/ciqual-nutrients.mjs` | 33 colonnes Ciqual → `nutrient_code` contrôlé + unité |
+| Nutriments | `scripts/data/lib/ciqual-nutrients.mjs` | sous-ensemble historique F0 → `nutrient_code` contrôlé + unité |
+| Corpus 2025 | `scripts/data/foods/build-ciqual-reference-corpus.mjs` | 3 484 références × 74 constituants + candidats et réconciliation 2020→2025 |
 | Catégories | `scripts/data/lib/categories.mjs` | groupe Ciqual → taxonomie Myko (17 catégories, word-boundaries) |
 | Anomalies | `scripts/data/lib/anomalies.mjs` | §5.7 : négatifs, somme macros > 100 g, 4-4-9, énergie aberrante, sel/sodium |
 | Orchestrateur | `scripts/data/run-f0.mjs` | sélection équilibrée de 300 formes → artefact candidat déterministe |
 | Publish | `scripts/data/publish/emit-publish.mjs` | génère le SQL idempotent (concepts/formes/profils/valeurs + release) |
 
-Le fichier source brut vit dans `.data-cache/` (gitignoré). L'artefact candidat
+Les sources officielles utilisées pour un build reproductible sont compressées
+dans `data/sources/raw/`. `.data-cache/` reste un espace gitignoré pour les
+téléchargements de contrôle. L'artefact candidat historique
 (`scripts/data/out/f0-release.json`) et le SQL de publication
-(`scripts/data/out/f0-publish/`) sont committés (reproductibles).
+(`scripts/data/out/f0-publish/`) sont committés.
 
 ## Sources & licences (§5.2)
 
@@ -34,7 +38,8 @@ Le fichier source brut vit dans `.data-cache/` (gitignoré). L'artefact candidat
 
 | Source | Licence | Usage |
 |---|---|---|
-| Ciqual 2020 (ANSES) | Licence Ouverte / Etalab 2.0 | base nutritionnelle française principale |
+| Ciqual 2025 (ANSES) | Licence Ouverte / Etalab 2.0 | corpus nutritionnel français de référence |
+| Ciqual 2020 (ANSES) | Licence Ouverte / Etalab 2.0 | snapshot historique F0 et réconciliation |
 | USDA FoodData Central | CC0 | complément, découpes, contrôle croisé (F1+) |
 | Open Food Facts | ODbL | produits commerciaux uniquement (PR 3) |
 
@@ -48,7 +53,8 @@ Le fichier source brut vit dans `.data-cache/` (gitignoré). L'artefact candidat
   vit A, D, C, B9, B12 + macros).
 - **17 catégories** couvertes (quotas équilibrés : légumes 45, fruits 35, viandes 30,
   poissons 25, laitiers 30, féculents 30, volailles 20, légumineuses 15…).
-- `value_status` distingue `measured` / `estimated` (seuils `< x`) / `trace` — un zéro
+- `value_status` distingue une mesure, une trace, une borne `< x` et une absence.
+  Une trace ou une borne n'est jamais convertie en valeur ponctuelle ; un zéro
   mesuré n'est jamais confondu avec une valeur absente.
 - **8 tâches de revue** (`quality.review_tasks`) pour anomalies non bloquantes
   (sel/sodium sur légumes ; incohérence 4-4-9 sur boissons alcoolisées — l'alcool
@@ -61,9 +67,13 @@ Rejets à l'import : sans catégorie (84), sans énergie (881), anomalie bloquan
 ## Rejouer
 
 ```bash
-node scripts/data/download/ciqual.mjs      # (ou télécharger le XLS dans .data-cache/)
-node scripts/data/run-f0.mjs               # → scripts/data/out/f0-release.json + rapport
-node scripts/data/publish/emit-publish.mjs # → scripts/data/out/f0-publish/*.sql
+node scripts/data/download/ciqual.mjs
+npm run ingredients:build
+npm run ingredients:check
+
+# Reproduction de la release F0 historique uniquement :
+node scripts/data/run-f0.mjs data/sources/raw/ciqual_2020_FR_2020-07-07.xls.gz
+node scripts/data/publish/emit-publish.mjs
 # puis appliquer 00-setup, 10a/10b/10c-forms, 90-finalize (idempotents, ON CONFLICT DO NOTHING)
 ```
 

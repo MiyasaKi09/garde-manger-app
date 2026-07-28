@@ -688,14 +688,15 @@ const buildVolumeMarkdown = (entry, coverage) => {
   const referenceCorpusBlock = entry.code === 'V01'
     ? `## Corpus source industrialisé
 
-- [Lire le rapport du corpus CIQUAL](../ingredients/CIQUAL-2020-CORPUS.md)
+- [Lire le rapport du corpus Ciqual 2025](../ingredients/CIQUAL-2025-CORPUS.md)
 - Références de formes alimentaires : ${ciqualReferenceManifest.counts.source_entries}
+- Constituants nutritionnels par référence : ${ciqualReferenceManifest.counts.constituents}
 - Profils techniquement acceptés : ${ciqualReferenceManifest.counts.accepted}
 - Entrées à revoir : ${ciqualReferenceManifest.counts.review}
 - Entrées en quarantaine : ${ciqualReferenceManifest.counts.quarantined}
 - Candidats de concepts canoniques : ${ciqualReferenceManifest.counts.canonical_candidates}
 - Grain : une référence source décrit une forme ; elle ne vaut pas validation d’un ingrédient canonique.
-- Migration requise : \`ciqual_2025\` avant publication finale.`
+- Réconciliation : \`ciqual_2020\` → \`ciqual_2025\` matérialisée ; validation canonique encore requise.`
     : null
 
   const books = entry.books.map((entryBook) => {

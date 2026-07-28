@@ -1,7 +1,7 @@
 -- ============================================================================
 -- Chargement F0 (catalogue alimentaire candidat). Généré par build-f0-corpus.mjs.
 -- corpus_hash = 50343360792c40f5a187745aee447ca7
--- corpus_path = /home/user/garde-manger-app/data/foods/f0-corpus.json
+-- corpus_path = /workspace/scratch/b1f68f05970b/repo/data/foods/f0-corpus.json
 -- IDEMPOTENT — tous les objets créés en status='candidate', published_at=NULL.
 -- ============================================================================
 
@@ -499,7 +499,7 @@ BEGIN
   VALUES
     (v_nprof, 'energy_kcal', 77.6, 'kcal', 'measured'),
     (v_nprof, 'protein_g', 18.1, 'g', 'measured'),
-    (v_nprof, 'carbohydrate_g', 0, 'g', 'estimated'),
+    (v_nprof, 'carbohydrate_g', NULL, 'g', 'not_available'),
     (v_nprof, 'fat_g', 0.57, 'g', 'measured'),
     (v_nprof, 'fiber_g', 1.1, 'g', 'measured'),
     (v_nprof, 'sugars_g', NULL, 'g', 'not_available'),
@@ -1066,7 +1066,7 @@ BEGIN
   VALUES
     (v_nprof, 'energy_kcal', 420, 'kcal', 'measured'),
     (v_nprof, 'protein_g', 27.2, 'g', 'measured'),
-    (v_nprof, 'carbohydrate_g', 0, 'g', 'estimated'),
+    (v_nprof, 'carbohydrate_g', NULL, 'g', 'not_available'),
     (v_nprof, 'fat_g', 34.6, 'g', 'measured'),
     (v_nprof, 'fiber_g', 3.3, 'g', 'measured'),
     (v_nprof, 'sugars_g', NULL, 'g', 'not_available'),
@@ -1440,7 +1440,7 @@ BEGIN
   VALUES
     (v_nprof, 'energy_kcal', 426, 'kcal', 'measured'),
     (v_nprof, 'protein_g', 28.4, 'g', 'measured'),
-    (v_nprof, 'carbohydrate_g', 0, 'g', 'estimated'),
+    (v_nprof, 'carbohydrate_g', NULL, 'g', 'not_available'),
     (v_nprof, 'fat_g', 34.6, 'g', 'measured'),
     (v_nprof, 'fiber_g', 3.75, 'g', 'measured'),
     (v_nprof, 'sugars_g', NULL, 'g', 'not_available'),
@@ -1814,7 +1814,7 @@ BEGIN
   VALUES
     (v_nprof, 'energy_kcal', 900, 'kcal', 'measured'),
     (v_nprof, 'protein_g', 0.5, 'g', 'measured'),
-    (v_nprof, 'carbohydrate_g', 0, 'g', 'estimated'),
+    (v_nprof, 'carbohydrate_g', NULL, 'g', 'not_available'),
     (v_nprof, 'fat_g', 99.9, 'g', 'measured'),
     (v_nprof, 'fiber_g', 0.25, 'g', 'measured'),
     (v_nprof, 'sugars_g', NULL, 'g', 'not_available'),
@@ -3998,7 +3998,7 @@ BEGIN
   VALUES
     (v_nprof, 'energy_kcal', 113, 'kcal', 'measured'),
     (v_nprof, 'protein_g', 20, 'g', 'measured'),
-    (v_nprof, 'carbohydrate_g', 0, 'g', 'estimated'),
+    (v_nprof, 'carbohydrate_g', NULL, 'g', 'not_available'),
     (v_nprof, 'fat_g', 3.73, 'g', 'measured'),
     (v_nprof, 'fiber_g', 1.01, 'g', 'measured'),
     (v_nprof, 'sugars_g', NULL, 'g', 'not_available'),
@@ -4153,7 +4153,7 @@ BEGIN
   VALUES
     (v_nprof, 'energy_kcal', 192, 'kcal', 'measured'),
     (v_nprof, 'protein_g', 17.3, 'g', 'measured'),
-    (v_nprof, 'carbohydrate_g', 0, 'g', 'estimated'),
+    (v_nprof, 'carbohydrate_g', NULL, 'g', 'not_available'),
     (v_nprof, 'fat_g', 13.5, 'g', 'measured'),
     (v_nprof, 'fiber_g', 0.97, 'g', 'measured'),
     (v_nprof, 'sugars_g', NULL, 'g', 'not_available'),
@@ -4308,7 +4308,7 @@ BEGIN
   VALUES
     (v_nprof, 'energy_kcal', 116, 'kcal', 'measured'),
     (v_nprof, 'protein_g', 19.7, 'g', 'measured'),
-    (v_nprof, 'carbohydrate_g', 0, 'g', 'estimated'),
+    (v_nprof, 'carbohydrate_g', NULL, 'g', 'not_available'),
     (v_nprof, 'fat_g', 4.12, 'g', 'measured'),
     (v_nprof, 'fiber_g', 0.95, 'g', 'measured'),
     (v_nprof, 'sugars_g', NULL, 'g', 'not_available'),
@@ -5351,7 +5351,7 @@ BEGIN
     (v_nprof, 'energy_kcal', 18.2, 'kcal', 'measured'),
     (v_nprof, 'protein_g', 0.5, 'g', 'measured'),
     (v_nprof, 'carbohydrate_g', 4.04, 'g', 'measured'),
-    (v_nprof, 'fat_g', 0, 'g', 'estimated'),
+    (v_nprof, 'fat_g', NULL, 'g', 'not_available'),
     (v_nprof, 'fiber_g', 0.19, 'g', 'measured'),
     (v_nprof, 'sugars_g', 0.17, 'g', 'measured'),
     (v_nprof, 'saturated_fat_g', 0.09, 'g', 'measured'),
@@ -5529,8 +5529,8 @@ BEGIN
   VALUES
     (v_nprof, 'energy_kcal', 21.6, 'kcal', 'measured'),
     (v_nprof, 'protein_g', 0.5, 'g', 'measured'),
-    (v_nprof, 'carbohydrate_g', 0, 'g', 'estimated'),
-    (v_nprof, 'fat_g', 0, 'g', 'estimated'),
+    (v_nprof, 'carbohydrate_g', NULL, 'g', 'not_available'),
+    (v_nprof, 'fat_g', NULL, 'g', 'not_available'),
     (v_nprof, 'fiber_g', 0.25, 'g', 'measured'),
     (v_nprof, 'sugars_g', NULL, 'g', 'not_available'),
     (v_nprof, 'saturated_fat_g', 0.5, 'g', 'measured'),
