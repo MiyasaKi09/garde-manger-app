@@ -504,6 +504,35 @@ const validateCatalog = (memberships, techniques, contents) => {
   if (memberships.length !== recipeCorpus.recipes.length) {
     errors.push('Toutes les recettes du corpus V3 doivent être indexées.')
   }
+
+  // Cohérence entre les DEUX façons de compter les recettes, longtemps
+  // divergentes sans que rien ne le signale : V10 compte des familles
+  // canoniques (des recettes distinctes), V11 à V40 comptent des
+  // APPARTENANCES éditoriales — une même recette est rangée dans plusieurs
+  // volumes. Les cibles annoncées étaient 2 000 familles d'un côté et 3 120
+  // appartenances de l'autre : au ratio observé, la première impliquait près
+  // de 10 000 appartenances, soit trois fois la capacité déclarée par les
+  // lentilles. Le validateur vérifiait le manifeste contre ses sources, jamais
+  // les cibles entre elles.
+  const lensVolumes = volumes.filter((entry) => entry.number >= 11 && entry.number <= 40)
+  const lensTarget = lensVolumes.reduce((sum, entry) => sum + (Number(entry.target_metric?.target) || 0), 0)
+  const canonicalTarget = Number(volumes.find((entry) => entry.code === 'V10')?.target_metric?.target) || 0
+  const observedMemberships = memberships.reduce((sum, item) => sum + item.volumes.length, 0)
+  if (memberships.length > 0 && lensTarget > 0 && canonicalTarget > 0) {
+    const ratio = observedMemberships / memberships.length
+    const impliedMemberships = canonicalTarget * ratio
+    // Tolérance large : le ratio est une propriété émergente des prédicats de
+    // lentille et du mélange de recettes, il bougera. On ne cherche pas
+    // l'exactitude, seulement à empêcher un écart d'un facteur deux.
+    const ecart = Math.abs(impliedMemberships - lensTarget) / lensTarget
+    if (ecart > 0.25) {
+      errors.push(
+        `Cibles de recettes incohérentes : V10 vise ${canonicalTarget} familles, ce qui implique `
+        + `~${Math.round(impliedMemberships)} appartenances au ratio observé (${ratio.toFixed(2)} volumes par recette), `
+        + `alors que V11–V40 en déclarent ${lensTarget}. Ajustez l'une ou l'autre.`,
+      )
+    }
+  }
   for (const technique of techniques) {
     if (!bookCodes.has(technique.book_code) || !technique.book_code.startsWith('V02-')) {
       errors.push(`${technique.code} n’est pas rattachée à un livre du volume V02.`)

@@ -248,14 +248,14 @@
       "inventory_entries": 309,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 15,
+      "inventory_percent": 49,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 2000,
+      "target": 625,
       "target_metric": {
         "key": "recipe_families",
-        "target": 2000,
+        "target": 625,
         "unit": "familles de recettes",
         "mode": "canonical"
       }

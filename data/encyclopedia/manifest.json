@@ -35,7 +35,7 @@
       "preparations": 250,
       "sauces": 300,
       "accompaniments": 300,
-      "recipes": 2000,
+      "recipes": 625,
       "desserts": 350,
       "breakfasts": 120,
       "snacks": 120,
@@ -3497,7 +3497,7 @@
       ],
       "target_metric": {
         "key": "recipe_families",
-        "target": 2000,
+        "target": 625,
         "unit": "familles de recettes",
         "mode": "canonical"
       },
@@ -3541,7 +3541,7 @@
             "culinary.recipe_families",
             "culinary.recipe_versions"
           ],
-          "target_entries": 2000,
+          "target_entries": 625,
           "content_status": "structure",
           "required_fields": [
             "code_stable",

@@ -42,7 +42,10 @@ export const edition = {
     preparations: 250,
     sauces: 300,
     accompaniments: 300,
-    recipes: 2000,
+    // Recettes DISTINCTES. Les 30 lentilles éditoriales V11–V40 comptent des
+    // appartenances (≈ 5 volumes par recette), pas des recettes : leurs 3 120
+    // emplacements correspondent à ce nombre-ci de recettes réelles.
+    recipes: 625,
     desserts: 350,
     breakfasts: 120,
     snacks: 120,
@@ -325,10 +328,14 @@ export const volumes = [
     slug: 'catalogue-maitre-des-recettes',
     dependencies: ['V01', 'V02', 'V03', 'V04', 'V05'],
     source_contracts: ['culinary.recipe_families', 'culinary.recipe_versions'],
-    target_metric: { key: 'recipe_families', target: 2000, unit: 'familles de recettes', mode: 'canonical' },
+    // 625 familles et non 2 000 : la cible du chantier est exprimée en
+    // APPARTENANCES éditoriales (3 120 réparties sur V11–V40), et le ratio
+    // observé est de 4,99 volumes par recette. Le validateur refuse désormais
+    // toute divergence de plus de 25 % entre ces deux comptes.
+    target_metric: { key: 'recipe_families', target: 625, unit: 'familles de recettes', mode: 'canonical' },
   }, [
     book('A', 'Taxonomie des familles', 'Définir familles, sous-familles, rôles de repas et structures de plats.', { kind: 'catalog' }),
-    book('B', 'Catalogue des identités', 'Lister nom, origine, rôle et critères d’identité sans dupliquer la rédaction.', { kind: 'catalog', target_entries: 2000 }),
+    book('B', 'Catalogue des identités', 'Lister nom, origine, rôle et critères d’identité sans dupliquer la rédaction.', { kind: 'catalog', target_entries: 625 }),
     book('C', 'Matrice de complétude', 'Mesurer ingrédients exacts, étapes, nutrition, sensoriel, conservation et planning.', { kind: 'quality' }),
     book('D', 'Déduplication et arbitrage', 'Fusionner les doublons et consigner les décisions canoniques.', { kind: 'quality' }),
     book('E', 'Ordre de rédaction', 'Prioriser les lots selon couverture, utilité et dépendances.', { kind: 'operations' }),

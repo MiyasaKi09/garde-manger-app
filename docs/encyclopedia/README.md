@@ -42,7 +42,7 @@ Les mesures live de Supabase enrichissent uniquement l’inventaire. Elles ne pe
 | [V07](volumes/V07.md) | Petit-déjeuners | fondations | 7 | 2 | 0 | 0 | 120 | inventory |
 | [V08](volumes/V08.md) | Collations | fondations | 6 | 0 | 0 | 0 | 120 | structure |
 | [V09](volumes/V09.md) | Boissons | fondations | 6 | 8 | 0 | 0 | 150 | inventory |
-| [V10](volumes/V10.md) | Catalogue maître des recettes | fondations | 5 | 309 | 0 | 0 | 2000 | inventory |
+| [V10](volumes/V10.md) | Catalogue maître des recettes | fondations | 5 | 309 | 0 | 0 | 625 | inventory |
 | [V11](volumes/V11.md) | Salades et crudités | rédaction | 5 | 11 | 0 | 0 | 90 | inventory |
 | [V12](volumes/V12.md) | Soupes, veloutés et bouillons-repas | rédaction | 5 | 73 | 0 | 0 | 90 | inventory |
 | [V13](volumes/V13.md) | Bœuf, veau et agneau | rédaction | 5 | 68 | 0 | 0 | 85 | inventory |
