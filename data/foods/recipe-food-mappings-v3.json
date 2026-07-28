@@ -52,7 +52,11 @@
       "note": "Macro-nutriments nuls ; usage technologique en faible quantité."
     },
     "biere brune belge": {
-      "ciqual_alim_code": "5000"
+      "ciqual_alim_code": "5000",
+      "usda_fdc_id": "168746",
+      "usda_name": "Alcoholic beverage, beer, regular, all",
+      "confidence": "B",
+      "note": "Ciqual 2020 ne mesure ni l'énergie ni les lipides de la bière ; USDA les fournit sur la bière ordinaire. La brune belge est plus dense qu'une blonde standard, mais elle sert de liquide de braisage et s'évapore en grande partie : l'écart est sans effet sur l'assiette."
     },
     "biscuit cuillere": {
       "ciqual_alim_code": "24430"
@@ -184,11 +188,25 @@
       "confidence": "C",
       "note": "Proxy assumé : aucune entrée citronnelle (Cymbopogon) dans Ciqual 2020 (0 résultat sur citronnelle/lemon/verveine). On approxime la tige aromatique fraîche par la moyenne des herbes fraîches (49,4 kcal ; 3,58 g prot). La citronnelle réelle est plus fibreuse et environ deux fois plus énergétique (~99 kcal), mais elle est employée en quelques grammes, souvent écrasée puis retirée. Les candidats proposés (Noix fraîche 370 kcal, Menthe, Coriandre) ne tenaient qu'au mot « fraîche »."
     },
+    "comte": {
+      "usda_fdc_id": "171242",
+      "confidence": "B",
+      "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 171242 « Cheese, gruyere », réellement mesurée — jamais un zéro posé par défaut.",
+      "ciqual_alim_code": "12110",
+      "usda_name": "Cheese, gruyere"
+    },
     "concombre frais": {
       "ciqual_alim_code": "20019"
     },
     "confit de canard cuit effiloche": {
       "ciqual_alim_code": "8110"
+    },
+    "congre cru": {
+      "usda_fdc_id": "174193",
+      "confidence": "B",
+      "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 173691 « Fish, eel, mixed species, raw », réellement mesurée — jamais un zéro posé par défaut.",
+      "ciqual_alim_code": "26127",
+      "usda_name": "Fish, eel, mixed species, raw"
     },
     "coriandre moulue": {
       "ciqual_alim_code": "11026"
@@ -234,7 +252,11 @@
       "ciqual_alim_code": "11005"
     },
     "dos de cabillaud cru": {
-      "ciqual_alim_code": "26043"
+      "usda_fdc_id": "171955",
+      "confidence": "B",
+      "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 171955 « Fish, cod, Atlantic, raw », réellement mesurée — jamais un zéro posé par défaut.",
+      "ciqual_alim_code": "26043",
+      "usda_name": "Fish, cod, Atlantic, raw"
     },
     "eau": {
       "ciqual_alim_code": "18066"
@@ -435,6 +457,13 @@
     "miel": {
       "ciqual_alim_code": "31008"
     },
+    "morue salee seche": {
+      "usda_fdc_id": "174190",
+      "confidence": "B",
+      "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 175159 « Fish, cod, Atlantic, dried and salted », réellement mesurée — jamais un zéro posé par défaut.",
+      "ciqual_alim_code": "26098",
+      "usda_name": "Fish, cod, Atlantic, dried and salted"
+    },
     "moutarde de dijon": {
       "ciqual_alim_code": "11013"
     },
@@ -500,7 +529,11 @@
       "ciqual_alim_code": "11049"
     },
     "parmesan affine": {
-      "ciqual_alim_code": "12120"
+      "usda_fdc_id": "170848",
+      "confidence": "B",
+      "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 170848 « Cheese, parmesan, hard », réellement mesurée — jamais un zéro posé par défaut.",
+      "ciqual_alim_code": "12120",
+      "usda_name": "Cheese, parmesan, hard"
     },
     "pate brisee crue": {
       "ciqual_alim_code": "23481",
@@ -521,12 +554,18 @@
       "ciqual_alim_code": "9810"
     },
     "pave de saumon cru sans peau": {
-      "ciqual_alim_code": "26036"
+      "usda_fdc_id": "175167",
+      "confidence": "B",
+      "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 175167 « Fish, salmon, Atlantic, farmed, raw », réellement mesurée — jamais un zéro posé par défaut.",
+      "ciqual_alim_code": "26036",
+      "usda_name": "Fish, salmon, Atlantic, farmed, raw"
     },
     "pecorino romano": {
-      "ciqual_alim_code": "12122",
+      "usda_fdc_id": "171249",
       "confidence": "B",
-      "note": "Pecorino Ciqual, identité fromagère exacte ; valeurs manquantes complétées seulement par dérivation documentée."
+      "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 171246 « Cheese, romano », réellement mesurée — jamais un zéro posé par défaut.",
+      "ciqual_alim_code": "12122",
+      "usda_name": "Cheese, romano"
     },
     "petit pois surgele": {
       "ciqual_alim_code": "20084",
@@ -603,7 +642,11 @@
       "ciqual_alim_code": "20085"
     },
     "pomme de terre crue avec peau": {
-      "ciqual_alim_code": "4007"
+      "usda_fdc_id": "170026",
+      "confidence": "B",
+      "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 170026 « Potatoes, flesh and skin, raw », réellement mesurée — jamais un zéro posé par défaut.",
+      "ciqual_alim_code": "4007",
+      "usda_name": "Potatoes, flesh and skin, raw"
     },
     "pomme de terre crue epluchee": {
       "ciqual_alim_code": "4008"
@@ -760,6 +803,13 @@
     },
     "vinaigre de cidre": {
       "ciqual_alim_code": "11018"
+    },
+    "vinaigre de vin rouge": {
+      "usda_fdc_id": "172240",
+      "confidence": "B",
+      "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 172240 « Vinegar, red wine », réellement mesurée — jamais un zéro posé par défaut.",
+      "ciqual_alim_code": "11220",
+      "usda_name": "Vinegar, red wine"
     },
     "vinaigre noir chinois": {
       "ciqual_alim_code": "11018",

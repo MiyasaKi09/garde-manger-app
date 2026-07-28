@@ -59,7 +59,25 @@ sources:
       modify: true
       attribution_required: false
     update_strategy: api_or_download
-    role: complément des aliments absents de Ciqual, découpes détaillées, contrôle croisé
+    current_version: "sr_legacy 2021-10-28"
+    dataset: SR Legacy (Standard Reference, jeu historique complet)
+    raw_file: data/sources/raw/sr_legacy.zip
+    raw_download_url: "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_json_2021-10-28.zip"
+    sha256: 789240d42d51640b931782310403c415eb4aa03383d8f0a52f6315db80f96bc7
+    accessed_on: "2026-07-28"
+    transformation: >
+      Extrait déterministe par scripts/data/foods/build-usda-reference.mjs : on ne
+      conserve que fdc_id, description, catégorie et les cinq macronutriments pour
+      100 g. Le brut fait 210 Mo décompressés ; l'extrait gzippé en fait 212 Ko.
+      Énergie prise sur le nutriment 1008, avec repli sur les variantes Atwater
+      2047 puis 2048.
+    confidence: B
+    role: >
+      Complément de Ciqual, dans deux cas seulement : aliment absent du classeur
+      français (ghee, riz jasmin, vin de cuisine), ou macronutriment que l'ANSES
+      ne mesure pas alors que la valeur existe et compte (les glucides du
+      cabillaud, du comté ou du vinaigre). Ne remplace jamais une valeur Ciqual
+      existante : la provenance reste tracée par entrée.
 
   - code: openfoodfacts
     name: Open Food Facts

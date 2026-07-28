@@ -8,6 +8,7 @@
  * label. Fuzzy suggestions remain review-only.
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
+import { gunzipSync } from 'node:zlib'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { parseCiqualWorkbook } from '../parse/ciqual.mjs'
@@ -22,11 +23,44 @@ const CIQUAL_PATH = join(ROOT, 'data', 'sources', 'raw', 'ciqual_2020_FR_2020-07
 const MAPPINGS_PATH = join(ROOT, 'data', 'foods', 'recipe-food-mappings-v3.json')
 const NUTRITION_PATH = join(ROOT, 'data', 'ciqual_nutrition_import.csv')
 
+// Référence USDA distillée : complément de Ciqual pour les aliments absents du
+// classeur français et pour les macronutriments que l'ANSES ne mesure pas. La
+// provenance reste tracée par entrée — une valeur américaine ne doit jamais
+// pouvoir passer pour une mesure de l'ANSES.
+const USDA_PATH = join(ROOT, 'data', 'foods', 'usda-reference', 'sr-legacy-macros.json.gz')
+const usdaByFdcId = new Map()
+if (existsSync(USDA_PATH)) {
+  const usda = JSON.parse(gunzipSync(readFileSync(USDA_PATH)).toString('utf8'))
+  for (const entry of usda.entries || []) usdaByFdcId.set(String(entry.fdc_id), entry)
+}
+
 const corpus = JSON.parse(readFileSync(CORPUS_PATH, 'utf8'))
 const mappings = existsSync(MAPPINGS_PATH)
   ? JSON.parse(readFileSync(MAPPINGS_PATH, 'utf8')).mappings || {}
   : {}
 const { records } = parseCiqualWorkbook(CIQUAL_PATH)
+
+// Une référence USDA se transcrit à la main, donc elle se trompe : au premier
+// lot, trois identifiants sur dix désignaient un autre aliment — le congre
+// pointait sur du saumon sockeye, la morue salée sur du thon. Les chiffres
+// tombaient juste par hasard (tous les poissons ont zéro glucide) et la
+// provenance mentait sans que rien ne le montre. Chaque mapping porte donc le
+// libellé attendu, et le générateur refuse de démarrer s'il ne correspond pas.
+const desaccordsUsda = []
+for (const [cle, mapping] of Object.entries(mappings)) {
+  if (!mapping?.usda_fdc_id) continue
+  const entree = usdaByFdcId.get(String(mapping.usda_fdc_id))
+  if (!entree) { desaccordsUsda.push(`${cle} : identifiant USDA ${mapping.usda_fdc_id} introuvable`); continue }
+  if (mapping.usda_name && mapping.usda_name !== entree.description) {
+    desaccordsUsda.push(`${cle} : USDA ${mapping.usda_fdc_id} est « ${entree.description} », le mapping annonce « ${mapping.usda_name} »`)
+  }
+}
+if (desaccordsUsda.length) {
+  console.error('Références USDA incohérentes :')
+  for (const ecart of desaccordsUsda) console.error(`  - ${ecart}`)
+  process.exit(1)
+}
+
 const nutritionRows = readFileSync(NUTRITION_PATH, 'utf8').split(/\r?\n/).slice(1)
 const nutritionByCode = new Map()
 for (const row of nutritionRows) {
@@ -196,6 +230,25 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
     .sort((a, b) => b.score - a.score || a.record.alim_code.localeCompare(b.record.alim_code))
     .slice(0, 5)
   const exact = ranked.find(({ record }) => record.normalized === normalized)
+  // Une référence USDA n'est retenue que si elle est explicitement demandée, et
+  // JAMAIS en remplacement d'une valeur française existante. Deux usages, et
+  // deux seulement :
+  //   - aliment absent de Ciqual (ghee, riz jasmin) : l'entrée USDA fait foi ;
+  //   - aliment présent mais dont l'ANSES ne mesure pas toutes les macros
+  //     (les glucides du cabillaud, du comté) : Ciqual reste la base et USDA
+  //     ne COMBLE que les champs manquants, champ par champ.
+  // Écraser une mesure de l'ANSES par une mesure américaine serait perdre de
+  // l'information sans le dire.
+  const usdaEntry = explicit?.usda_fdc_id ? usdaByFdcId.get(String(explicit.usda_fdc_id)) : null
+  const usdaNutrition = usdaEntry ? {
+    energy_kcal: usdaEntry.per100g.kcal,
+    protein_g: usdaEntry.per100g.proteinG,
+    carbohydrate_g: usdaEntry.per100g.carbsG,
+    fat_g: usdaEntry.per100g.fatG,
+    fiber_g: usdaEntry.per100g.fiberG,
+  } : null
+  const baseCiqual = explicit?.ciqual_alim_code ? byCode.get(String(explicit.ciqual_alim_code)) : exact?.record
+  const champsCombles = []
   const selected = explicit?.nutrition_override
     ? {
         alim_code: null,
@@ -203,9 +256,24 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
         category: explicit.category,
         nutrition: explicit.nutrition_override,
       }
-    : explicit?.ciqual_alim_code
-      ? byCode.get(String(explicit.ciqual_alim_code))
-      : exact?.record
+    : usdaNutrition && baseCiqual
+      ? {
+          ...baseCiqual,
+          nutrition: Object.fromEntries(Object.entries(baseCiqual.nutrition).map(([champ, valeur]) => {
+            if (Number.isFinite(valeur)) return [champ, valeur]
+            const secours = usdaNutrition[champ]
+            if (Number.isFinite(secours)) champsCombles.push(champ)
+            return [champ, Number.isFinite(secours) ? secours : valeur]
+          })),
+        }
+      : usdaNutrition
+        ? {
+            alim_code: String(usdaEntry.fdc_id),
+            alim_nom_fr: usdaEntry.description,
+            category: explicit.category || null,
+            nutrition: usdaNutrition,
+          }
+        : baseCiqual
   const selectionMode = explicit ? 'curated' : exact ? 'exact_label' : 'review_required'
   results.push({
     form: usage.name,
@@ -237,7 +305,11 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
       canonical_name_normalized: normalized,
       category: explicit?.category || selected.category,
       confidence: explicit?.confidence || 'B',
-      source: explicit?.nutrition_override ? 'myko_curated_override' : 'ciqual_2020',
+      source: explicit?.nutrition_override
+        ? 'myko_curated_override'
+        : champsCombles.length ? 'ciqual_2020+usda_fdc'
+          : explicit?.usda_fdc_id && !baseCiqual ? 'usda_fdc' : 'ciqual_2020',
+      ...(champsCombles.length ? { filled_from_usda: { fdc_id: String(explicit.usda_fdc_id), fields: champsCombles } } : {}),
       source_record_key: selected.alim_code,
       source_name: selected.alim_nom_fr,
       state: parseFoodName(usage.name),

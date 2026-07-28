@@ -1,0 +1,15 @@
+{
+  "schema": "myko://usda-reference-manifest/v1",
+  "source_code": "usda_fdc",
+  "dataset": "sr_legacy",
+  "dataset_version": "2021-10-28",
+  "license_code": "cc0-1.0",
+  "raw_file": "data/sources/raw/sr_legacy.zip",
+  "raw_sha256": "789240d42d51640b931782310403c415eb4aa03383d8f0a52f6315db80f96bc7",
+  "extract_path": "sr-legacy-macros.json.gz",
+  "extract_sha256": "597f0d7910d0b9a77372ff8bad3fef0be378b3e9110b674418c1a462d1a6f149",
+  "entry_count": 7793,
+  "entries_with_complete_macros": 7793,
+  "grain": "Une entrée correspond à un aliment SR Legacy, pas à un ingrédient canonique validé.",
+  "role": "Complément de Ciqual : aliments absents du classeur français, et macronutriments non mesurés par l'ANSES."
+}
