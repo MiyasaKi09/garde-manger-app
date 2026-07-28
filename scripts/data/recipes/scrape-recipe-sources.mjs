@@ -76,7 +76,8 @@ const extraireRecette = (html) => {
         portions: objet.recipeYield ?? null,
         duree_preparation: objet.prepTime || null,
         duree_cuisson: objet.cookTime || null,
-        ingredients: (objet.recipeIngredient || objet.ingredients || [])
+        // Certains sites publient une chaîne unique au lieu d'un tableau.
+        ingredients: [objet.recipeIngredient || objet.ingredients || []].flat()
           .map((ligne) => String(ligne).replace(/&#(\d+);/g, (_, n) => String.fromCharCode(n)).trim())
           .filter(Boolean),
         // Conservées comme preuve de lecture, PAS pour être recopiées.

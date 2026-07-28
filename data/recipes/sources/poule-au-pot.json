@@ -1,0 +1,103 @@
+{
+  "dish": "Poule au pot",
+  "slug": "poule-au-pot",
+  "sources_count": 3,
+  "avertissement": "Les étapes source sont conservées comme preuve de lecture. La recette du corpus les REFORMULE ; elle ne les recopie pas.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/poule-au-pot-farcie-henri-iv-r792.htm",
+      "site": "750g.com",
+      "nom": "Poule au pot farcie Henri IV",
+      "portions": "6 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "1 poule  avec cœur, foie et gésiers",
+        "500 g de navets",
+        "500 g de carottes",
+        "1 kg de poireau  en botte",
+        "1 kg de pomme de terre",
+        "300 g de jambon cru",
+        "250 g d'oignons",
+        "3 oeufs",
+        "150 g de mie de pain",
+        "4 céleri branche",
+        "6 gousses d'ail",
+        "4 clous de girofle",
+        "1 chou vert",
+        "Persil plat",
+        "10 cl de lait",
+        "3 cl d'armagnac",
+        "Noix de muscade",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_source": [
+        "Mettre &amp;agrave; tremper 150g de mie de pain en miette avec 10 cl de lait.Hacher le foie, le coeur, le g&amp;eacute;sier de la poule. Hacher 300g de jambon cru. Ajouter la mie de pain sans exc&amp;eacute;dents de lait. Ajouter 6 gousses d&#039;ail hach&amp;eacute;es, 3 oeufs entiers, 1/4 de botte de persil plat, une pinc&amp;eacute;e de noix de muscade, 3 cl d&#039;Armagnac, le sel, le poivre du moulin. Bien m&amp;eacute;langer &amp;agrave; la spatule.",
+        "Saler et poivrer l&#039;int&amp;eacute;rieur de la poule (3 kg) et garnir d&#039;une partie de la farce. Coudre soigneusement et brider. R&amp;eacute;server au froid quelques heures.",
+        "Poser la poule dans une grande marmite avec le cou et les ailerons de la poule. Couvrir d&#039;eau froide, porter &amp;agrave; &amp;eacute;bullition et &amp;eacute;cumer. Ajouter un bouquet garni, du gros sel de Gu&amp;eacute;rande et quelques grains de poivre blanc.Apr&amp;egrave;s 40 min de cuisson, ajouter 250g d&#039;oignons clout&amp;eacute;s de 4 clous de girofle. Ajouter 500g de carottes, 500g de navets, les branches de c&amp;egrave;leri et 1 kg de poireaux en botte. Laisser cuire 30 minutes environ &amp;agrave; petit bouillon.",
+        "Blanchir fortement un chou vert. Reconstituer 8 mini-choux, avec un peu de farce &amp;agrave; coeur. Teminer la cuisson avec un peu de bouillon gras.",
+        "Cuire 1 kg de pommes de terre &amp;agrave; l&#039;anglaise dans un peu de bouillon.",
+        "Servir la poule avec tous les l&amp;eacute;gumes autour de moutarde &amp;agrave; l&#039;ancienne, cornichons et gros sel. La bouillon de poule est servi en premi&amp;egrave;re entr&amp;eacute;e avec des vermicelles."
+      ],
+      "sha256_page": "f198cb3fb6c2a120"
+    },
+    {
+      "url": "https://www.recettes-et-terroirs.com/poule-au-pot-dhenri-iv/",
+      "site": "recettes-et-terroirs.com",
+      "nom": "Poule au pot d&#8217;Henri IV",
+      "portions": "8",
+      "duree_preparation": "PT60M",
+      "duree_cuisson": "PT190M",
+      "ingredients": [
+        "1 poule de 2,2 kg environ, 1 oignon blanc, 6 carottes nouvelles moyennes, 6 blancs de jeunes poireaux moyens, 1/2 céleri-rave, 1 bouquet garni, 20 cl de vin blanc, 25 cl de crème liquide, 80 g de beurre doux, 2 clous de girofle, 1 truffe facultatif, 50 grammes de farine type 55, Gros sel de cuisine, Poivre noir en grains du moulin."
+      ],
+      "etapes_source": [
+        "Dans un faitout, porter 3 litres d&#8217;eau salée à ébullition avec le vin blanc, l&#8217;oignon piqué des clous de girofle, 1 carotte, 1 blanc de poireau, 1 morceau de céleri, le bouquet garni et 10 grains de poivre. Couvrir. Laisser frémir 30 minutes puis filtrer. Reverser dans le faitout. Couper la truffe en lamelles, à glisser sous la peau de la poule, en appuyant pour les faire adhérer à la chair. Ficeler, puis la plonger dans le bouillon. La laisser pocher 2 heures à couvert. 30 minutes avant la fin de la cuisson. Ajouter le reste des légumes épluchés. Au terme de la cuisson, égoutter la poularde et ses légumes. Les maintenir au chaud. Dégraisser 50 cl du bouillon. Dans une casserole, faire fondre le beurre, saupoudrer avec la farine, mélanger puis, verser le bouillon réduit. Laisser cuire, en remuant sans arrêt jusqu&#8217;à ce que la préparation épaississe. Ajouter la crème et laisser réduire quelques instants sans cesser de remuer. Rectifier l&#8217;assaisonnement. Présenter la poularde coupée en morceaux entourée des légumes et accompagnée de la sauce."
+      ],
+      "sha256_page": "e003f035df888e55"
+    },
+    {
+      "url": "https://www.lesfoodies.com/jeanmerode/recette/poule-au-pot-henri-iv",
+      "site": "lesfoodies.com",
+      "nom": "Poule au pot Henri IV",
+      "portions": "4",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "Une poule prete a cuire de 1 kg 4 environ",
+        "un oignon piqué de 3 clous de girofle",
+        "une carotte",
+        "un vert de poreaux",
+        "une branche de céleri",
+        "un bouquet garni",
+        "gros sel",
+        "10 grains de poivre noirs",
+        "une cac de coriandre",
+        "ficelle de cuisine.Farce; un oeuf",
+        "200 gr de chair a saucisse",
+        "50 gr de jambon de bayonne",
+        "une tranche de pain de mie complet",
+        "une gousse d ail",
+        "thym",
+        "un demi bouquet de persil",
+        "lait.Garniure",
+        "4 carottes fanes",
+        "2 beaux navets",
+        "un blanc de poireaux.Sauce;beurre",
+        "2 jaunes d oeuf",
+        "3 cas de creme fraiche",
+        "farine",
+        "sel",
+        "poivre blanc",
+        "une cas de jus de citron",
+        "noix de muscade",
+        "250gr de champignons de paris"
+      ],
+      "etapes_source": [
+        "Pr&eacute;parez la farce; dans un bol la tranche de pain de mie avec 2cas de lait,laisser bien imbiber,puis exprimez et &eacute;crasez-la dans un bol.M&eacute;langez avec la chair a saucisse,le jambon coup&eacute; en petits d&eacute;s,le persil hach&eacute;,la gousse d ail &eacute;cras&eacute;e,l oeuf,thym &eacute;mi&eacute;t&eacute;,sel,poivre. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Farcir la poule avec cette farce,coudre l ouverture de la poule avec de la ficelle de cuisine &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.Mettre a cuire la poule dans un faitout surr feu vif,avec lz vert de poireaux,la carotte &eacute;pluch&eacute;e,l oignon piqu&eacute; de clous de girofle,bouquet garni,gros sel,grains de poivre et le coriandre.Couvrir d eau a hauteur.Laisser cuire a fr&eacute;missement 2 heure trente a 3 heures &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.Pr&eacute;parez la garniture,&eacute;pluchez les carottes et les navets,coupez les navets en quatre,laver et couper en sifflet le blanc de poireaux.Mettre a cuire les l&eacute;gumes dans une sauteuse avec deux louches de cuisson de la poule.Emincez les champignons,les faires cuire dans une petite poele avec une noix de beurre sel,poivre. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Faire la sauce:dans une casserole sur feu moyen,50gr de beurre,faire fondre faire le roux avec 50gr de farine,mouillez avec 4 a 5 louches de bouillon de la poule,ajoutez les champignons,noix de muscade rap&eacute;e.Dans un petit bol les jaunes d oeuf,la creme fraiche,le jus de citron.Incorporez ce m&eacute;lange a la sauce.Lisser bien &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.Sortir la poule,coupez-la en morceaux.Disposez sur un plat de service,farrce au milieu,autour les morceaux de poule et les l&eacute;gumes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.Nappez de sauce.Servir avec du riz pilaf et le reste de sauce en sauci&egrave;re.&nbsp;"
+      ],
+      "sha256_page": "a2b9db77b12119dd"
+    }
+  ]
+}
